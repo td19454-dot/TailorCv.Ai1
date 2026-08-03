@@ -3,12 +3,11 @@ title: How ATS Works in Malaysia: Beating Applicant Tracking Systems in 2026
 description: A complete guide to how Applicant Tracking Systems work in Malaysia, why your resume gets filtered out, and exactly how to optimise your resume to pass the ATS used by Malaysian banks, MNCs, GLCs, and JobStreet.
 date: 2026-07-28
 author: TailorCV Team
-tags: [ATS Malaysia, [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) Malaysia, Malaysian ATS, beat ATS Malaysia]
+tags: [ATS Malaysia, applicant tracking system Malaysia, Malaysian ATS, beat ATS Malaysia]
 category: ATS Optimization
 slug: ats-in-malaysia-guide
 keywords: ats in malaysia, malaysia applicant tracking system, beat ats malaysia, ats resume malaysia, jobstreet ats
-image: public/blog-images/ats-in-malaysia-guide.png
----
+image: public/blog-images/ats-in-malaysia-guide.png---
 
 If you have applied to dozens of jobs in Malaysia and heard nothing back, the problem may not be your qualifications — it may be that a machine rejected your resume before any human read it. That machine is the Applicant Tracking System (ATS), and it is used by the majority of mid-sized and large Malaysian employers, from banks and GLCs to MNCs and the country's biggest [job portals](https://thetailorcv.com/blog/best-job-search-websites-2026).
 

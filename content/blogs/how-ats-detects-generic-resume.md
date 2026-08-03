@@ -3,12 +3,11 @@ title: How ATS Detects a Generic Resume - And Why It Filters You Out
 description: ATS systems don't just scan for keywords - they score your resume on multiple dimensions. Learn exactly how ATS identifies generic, untailored resumes and get filtered before any human sees your application.
 date: 2026-06-11
 author: TailorCV Team
-tags: ATS, generic resume, [ATS score, resume, job search]
+tags: [ATS, generic resume, ATS score, resume, job search]
 category: ATS Optimization
 image: public/blog-images/how-ats-detects-generic-resume-2.webp
 slug: how-ats-detects-generic-resume
-keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
----
+keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons---
 
 Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)s. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
 

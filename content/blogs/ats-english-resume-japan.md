@@ -1,14 +1,13 @@
 ---
 title: ATS and English Resumes for Jobs in Japan (2026 Guide)
-description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume that passes the filters.
+description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an ATS-friendly resume that passes the filters.
 date: 2026-08-08
 author: TailorCV Team
-tags: [ATS Japan, English resume Japan, resume for global companies Japan, [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)]
+tags: [ATS Japan, English resume Japan, resume for global companies Japan, applicant tracking system]
 category: Resume Writing
 slug: ats-english-resume-japan
 keywords: ats english resume japan, english resume for jobs in japan, applicant tracking system japan, resume for global companies japan
-image: public/blog-images/ats-english-resume-japan.png
----
+image: public/blog-images/ats-english-resume-japan.png---
 
 Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
 

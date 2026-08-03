@@ -3,12 +3,11 @@ title: How to Sync Your LinkedIn Profile With Your Tailored Resume (2026 Guide)
 description: Sending a tailored resume but keeping a generic LinkedIn profile is a contradiction that costs interviews. Learn how to keep your LinkedIn aligned with your resume tailoring - without updating your profile for every single application.
 date: 2026-06-29
 author: TailorCV Team
-tags: LinkedIn Profile, Resume Tailoring, [LinkedIn Optimization, Job Search 2026, Personal Branding]
+tags: [LinkedIn Profile, Resume Tailoring, LinkedIn Optimization, Job Search 2026, Personal Branding]
 category: Resume Optimization
 image: public/blog-images/linkedin-resume-tailoring-sync.webp
 slug: linkedin-resume-tailoring-sync
-keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency
----
+keywords: LinkedIn resume sync, LinkedIn profile tailoring, align LinkedIn with resume, LinkedIn job search 2026, resume and LinkedIn consistency---
 
 You spent two hours [tailoring your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a senior marketing role.
 

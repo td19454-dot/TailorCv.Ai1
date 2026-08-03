@@ -1117,6 +1117,35 @@ header.navbar {
   color: #ffffff !important;
 }
 
+/* The white-text rule above is inherited by every descendant, including
+   blockquotes / answer boxes - which keep their own light cream background,
+   so their text was rendering white-on-cream and became unreadable. Put the
+   dark ink back inside those boxes only. */
+.blog-detail-page .step-card.step-tone-4 blockquote,
+.blog-detail-page .step-card.step-tone-5 blockquote,
+.blog-detail-page .step-card.step-tone-4 blockquote p,
+.blog-detail-page .step-card.step-tone-5 blockquote p,
+.blog-detail-page .step-card.step-tone-4 blockquote li,
+.blog-detail-page .step-card.step-tone-5 blockquote li,
+.blog-detail-page .step-card.step-tone-4 blockquote strong,
+.blog-detail-page .step-card.step-tone-5 blockquote strong,
+.blog-detail-page .step-card.step-tone-4 .answer-box,
+.blog-detail-page .step-card.step-tone-5 .answer-box,
+.blog-detail-page .step-card.step-tone-4 .answer-box p,
+.blog-detail-page .step-card.step-tone-5 .answer-box p,
+.blog-detail-page .step-card.step-tone-4 .answer-box strong,
+.blog-detail-page .step-card.step-tone-5 .answer-box strong {
+  color: #1e293b !important;
+}
+
+.blog-detail-page .step-card.step-tone-4 blockquote a,
+.blog-detail-page .step-card.step-tone-5 blockquote a,
+.blog-detail-page .step-card.step-tone-4 .answer-box a,
+.blog-detail-page .step-card.step-tone-5 .answer-box a {
+  color: #5B42F3 !important;
+  text-decoration-color: currentColor;
+}
+
 .blog-detail-page .step-card.step-tone-4 a,
 .blog-detail-page .step-card.step-tone-5 a {
   color: #ffffff;
@@ -1738,24 +1767,26 @@ header.navbar {
 /* One preview, shown whole. Resume shots are portrait pages and portfolio
    shots are landscape screenshots, so the image keeps its natural ratio -
    no aspect-ratio + object-fit:cover, which cropped the page edges off. */
-.blog-detail-page .blog-tpl-card { margin: 0; width: 100%; max-width: 430px; }
-.blog-detail-page .blog-tpl--portfolio .blog-tpl-card { max-width: 640px; }
+.blog-detail-page .blog-tpl-card { margin: 0; width: 100%; max-width: 780px; }
+.blog-detail-page .blog-tpl--portfolio .blog-tpl-card { max-width: 920px; }
 
 .blog-detail-page .blog-tpl-shot {
   display: block;
-  padding: 10px;
+  overflow: hidden;          /* clips the baked-in edge, see img below */
   border: 1px solid #d8e0ee;
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 8px 22px rgba(16, 32, 60, 0.1);
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
+
+/* Shown whole at natural ratio. The thin dark scrollbar strips some
+   screenshots carried have been trimmed from the source files instead of
+   cropped here - a blanket CSS crop cut real margin off the clean ones. */
 .blog-detail-page .blog-tpl-shot img {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  border-radius: 6px;
 }
 
 .blog-detail-page .blog-tpl-shot:hover {
