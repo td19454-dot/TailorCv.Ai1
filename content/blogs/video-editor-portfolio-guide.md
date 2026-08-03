@@ -21,11 +21,13 @@ For video editors and videographers, the portfolio *is* the pitch - clients and 
 - Avoid common mistakes like slow-loading reels, mixing unrelated genres, and sharing unreleased client work.
 
 ## What to Include
-- **A 60-90 second reel** - your best work first, cut fast, no slow build-up
-- **Genre-specific samples** - narrative, commercial, corporate, social/short-form, documentary - grouped so a client can find their use case immediately
-- **Before/after or raw-vs-edit clips** - especially valuable for color grading and sound design work
-- **Client or project context** - what the brief was, what you delivered, and any results (views, engagement, campaign use)
-- **Technical skills** - software (Premiere, DaVinci Resolve, After Effects), codecs, and delivery formats you are fluent in
+| What to include | Why |
+|---|---|
+| **A 60-90 second reel** | your best work first, cut fast, no slow build-up |
+| **Genre-specific samples** | narrative, commercial, corporate, social/short-form, documentary - grouped so a client can find their use case immediately |
+| **Before/after or raw-vs-edit clips** | especially valuable for color grading and sound design work |
+| **Client or project context** | what the brief was, what you delivered, and any results (views, engagement, campaign use) |
+| **Technical skills** | software (Premiere, DaVinci Resolve, After Effects), codecs, and delivery formats you are fluent in |
 
 ## Frame the Reel Like a Trailer
 Your reel should follow the same logic as a movie trailer: hook, variety, payoff.
@@ -106,10 +108,12 @@ By following this checklist, you can create a polished and professional portfoli
 - **Do optimize for SEO**: Use relevant keywords in video titles, descriptions, and tags to enhance discoverability.
 
 ### Don'ts
-- **Don’t overload with content**: Avoid cluttering your portfolio with too many videos; focus on your strongest pieces.
-- **Don’t neglect mobile optimization**: Ensure your portfolio is accessible and looks good on mobile devices.
-- **Don’t forget to proofread**: Check for any typos or errors in your descriptions and titles.
-- **Don’t ignore feedback**: Seek critiques from peers or mentors and be willing to make adjustments based on their advice.
+| What | Details |
+|---|---|
+| **Don’t overload with content** | Avoid cluttering your portfolio with too many videos; focus on your strongest pieces |
+| **Don’t neglect mobile optimization** | Ensure your portfolio is accessible and looks good on mobile devices |
+| **Don’t forget to proofread** | Check for any typos or errors in your descriptions and titles |
+| **Don’t ignore feedback** | Seek critiques from peers or mentors and be willing to make adjustments based on their advice |
 
 By adhering to these do's and don'ts, you can create a more effective and professional video portfolio.
 

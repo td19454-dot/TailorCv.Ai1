@@ -111,11 +111,13 @@ The opening verb sets the tone for the entire bullet. Weak openings ("helped," "
 
 Use strong, specific verbs:
 
-- **Building/creating**: Developed, Engineered, Designed, Built, Launched, Created, Established
-- **Improving**: Optimized, Streamlined, Reduced, Accelerated, Improved, Enhanced, Transformed
-- **Leading**: Led, Managed, Directed, Oversaw, Mentored, Coordinated, Spearheaded
-- **Achieving**: Exceeded, Delivered, Achieved, Surpassed, Completed, Generated
-- **Analyzing**: Analyzed, Modeled, Evaluated, Researched, Identified, Assessed
+| What | Details |
+|---|---|
+| **Building/creating** | Developed, Engineered, Designed, Built, Launched, Created, Established |
+| **Improving** | Optimized, Streamlined, Reduced, Accelerated, Improved, Enhanced, Transformed |
+| **Leading** | Led, Managed, Directed, Oversaw, Mentored, Coordinated, Spearheaded |
+| **Achieving** | Exceeded, Delivered, Achieved, Surpassed, Completed, Generated |
+| **Analyzing** | Analyzed, Modeled, Evaluated, Researched, Identified, Assessed |
 
 Read [200 best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume) for a categorized list by function.
 

@@ -98,10 +98,12 @@ Creating a portfolio can be daunting, but adhering to these do's and don'ts can 
 - **Do Update Regularly**: Keep your portfolio fresh by adding new projects and removing outdated ones. This shows your growth and adaptability.
 
 ### Don'ts
-- **Don’t Overcomplicate Your Design**: A cluttered design can distract from your work. Keep it simple and focused.
-- **Don’t Include Irrelevant Projects**: Quality over quantity. Only showcase projects that are relevant to the roles you’re applying for.
-- **Don’t Neglect Mobile Responsiveness**: With the prevalence of mobile browsing, ensure your portfolio is responsive and looks good on all devices.
-- **Don’t Forget About SEO**: Use keywords relevant to your skills and projects to help your portfolio rank better in search engines.
+| What to include | Why |
+|---|---|
+| **Don’t Overcomplicate Your Design** | A cluttered design can distract from your work. Keep it simple and focused |
+| **Don’t Include Irrelevant Projects** | Quality over quantity. Only showcase projects that are relevant to the roles you’re applying for |
+| **Don’t Neglect Mobile Responsiveness** | With the prevalence of mobile browsing, ensure your portfolio is responsive and looks good on all devices |
+| **Don’t Forget About SEO** | Use keywords relevant to your skills and projects to help your portfolio rank better in search engines |
 
 ## Scenario: Turning a Side Project into a Portfolio Piece
 

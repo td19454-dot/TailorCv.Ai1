@@ -18,11 +18,13 @@ These tests usually sit early in the process, sometimes right after your [resume
 
 Aptitude and psychometric assessments come in a handful of predictable formats:
 
-- **Numerical reasoning** — interpreting data, charts, and percentages under time pressure.
-- **Verbal reasoning** — reading passages and judging whether statements are true, false, or cannot be determined.
-- **Logical / abstract reasoning** — spotting patterns and sequences, often with shapes.
-- **Situational judgment tests (SJTs)** — choosing how you'd respond to realistic workplace scenarios.
-- **Personality questionnaires** — no right answers, but consistency and authenticity matter.
+| Type | What it involves |
+|---|---|
+| **Numerical reasoning** | interpreting data, charts, and percentages under time pressure |
+| **Verbal reasoning** | reading passages and judging whether statements are true, false, or cannot be determined |
+| **Logical / abstract reasoning** | spotting patterns and sequences, often with shapes |
+| **Situational judgment tests (SJTs)** | choosing how you'd respond to realistic workplace scenarios |
+| **Personality questionnaires** | no right answers, but consistency and authenticity matter |
 
 Knowing which types a role uses lets you focus your practice — research the company and process, as in [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 

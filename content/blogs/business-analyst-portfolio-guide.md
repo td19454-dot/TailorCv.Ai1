@@ -21,11 +21,13 @@ A business analyst's value is in translation - turning a vague business problem 
 - Create compelling case studies by selecting impactful projects, clearly defining problems, outlining your approach, and detailing the solutions implemented.
 
 ## What to Include
-- **A requirements document** - a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs
-- **Process maps** - a before/after workflow diagram (BPMN, swimlane, or simple flowchart) for a process you improved
-- **Stakeholder management case study** - how you resolved conflicting requirements between departments
-- **A wireframe or prototype** - if you worked on product or system design, showing your input into the solution
-- **Certifications** - CBAP, PMI-PBA, or relevant coursework
+| What to include | Why |
+|---|---|
+| **A requirements document** | a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs |
+| **Process maps** | a before/after workflow diagram (BPMN, swimlane, or simple flowchart) for a process you improved |
+| **Stakeholder management case study** | how you resolved conflicting requirements between departments |
+| **A wireframe or prototype** | if you worked on product or system design, showing your input into the solution |
+| **Certifications** | CBAP, PMI-PBA, or relevant coursework |
 
 ## Frame the Translation, Not Just the Document
 A requirements doc alone does not show judgment - the story behind it does. For each artifact:

@@ -43,10 +43,12 @@ By tailoring your resume to meet [ATS requirements](https://thetailorcv.com/blog
 
 Before diving into ATS optimization, it's important to familiarize yourself with Canadian resume norms:
 
-- **No Personal Information**: Avoid including a photo, age, or marital status.
-- **Length**: A two-page resume is acceptable if it’s well-organized and relevant.
-- **Contact Information**: Use the Canadian format for phone numbers and addresses (e.g., (123) 456-7890, 123 Street Name, City, Province, Postal Code).
-- **References**: State "References available upon request" rather than listing them on your resume.
+| Rule | What it means |
+|---|---|
+| **No Personal Information** | Avoid including a photo, age, or marital status |
+| **Length** | A two-page resume is acceptable if it’s well-organized and relevant |
+| **Contact Information** | Use the Canadian format for phone numbers and addresses (e.g., (123) 456-7890, 123 Street Name, City, Province, Postal Code) |
+| **References** | State "References available upon request" rather than listing them on your resume |
 
 Understanding these norms will help you create a resume that resonates with Canadian employers while also being [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 

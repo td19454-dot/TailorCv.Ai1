@@ -40,13 +40,15 @@ None of this requires a job title. It requires specifics - what you did, what ch
 
 The biggest block most first-time resume writers hit is thinking "experience" only means paid, full-time work. It doesn't. Hiring managers reading entry-level resumes expect to see a mix of the following, and they read all of it the same way: as evidence of what you can do.
 
-- **Class and group projects** - a semester-long project, a capstone, a case competition, a research assignment done with a team
-- **Part-time and hourly jobs** - retail, food service, tutoring, campus jobs, babysitting or lifeguarding
-- **Gig and freelance work** - freelance design, writing, social media management, selling on Etsy or Depop, running a small side hustle
-- **Volunteering** - fundraising, event organizing, mentoring, community service hours; see [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for how to phrase it
-- **Student organizations and clubs** - a role in student government, a cultural club, a hobby club, a Greek organization
-- **Sports and leadership roles** - team captain, section leader in band, club officer
-- **Personal projects** - a website you built, a small app, a blog with a real readership, a YouTube channel you grew, a portfolio piece
+| Rule | What it means |
+|---|---|
+| **Class and group projects** | a semester-long project, a capstone, a case competition, a research assignment done with a team |
+| **Part-time and hourly jobs** | retail, food service, tutoring, campus jobs, babysitting or lifeguarding |
+| **Gig and freelance work** | freelance design, writing, social media management, selling on Etsy or Depop, running a small side hustle |
+| **Volunteering** | fundraising, event organizing, mentoring, community service hours; see [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for how to phrase it |
+| **Student organizations and clubs** | a role in student government, a cultural club, a hobby club, a Greek organization |
+| **Sports and leadership roles** | team captain, section leader in band, club officer |
+| **Personal projects** | a website you built, a small app, a blog with a real readership, a YouTube channel you grew, a portfolio piece |
 
 The structure for writing about any of these is identical to writing about a job: start with an action verb, describe what you actually did, and end with the result or impact where you can measure it. A resume reader doesn't care whether the paycheck existed - they care whether the skill did. If you led a project team as a volunteer, that's team leadership. If you managed a budget for a club, that's budget management. Write it that way.
 

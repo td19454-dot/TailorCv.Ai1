@@ -21,16 +21,20 @@ Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - Avoid common mistakes like verbatim copying from LinkedIn and neglecting to include clear contact information or calls to action on your portfolio.
 
 ## What to Carry Over From LinkedIn
-- **Your headline and summary** - rewrite them slightly more personally; a portfolio can be less formal than LinkedIn's corporate tone
-- **Experience and role descriptions** - expand the bullet points into short narratives with more context
-- **Skills** - group them by category instead of a flat tag list
-- **Recommendations** - pull 2-3 of your strongest LinkedIn recommendations into a testimonials section
+| Skill | Why it matters |
+|---|---|
+| **Your headline and summary** | rewrite them slightly more personally; a portfolio can be less formal than LinkedIn's corporate tone |
+| **Experience and role descriptions** | expand the bullet points into short narratives with more context |
+| **Skills** | group them by category instead of a flat tag list |
+| **Recommendations** | pull 2-3 of your strongest LinkedIn recommendations into a testimonials section |
 
 ## What a Portfolio Adds That LinkedIn Cannot
-- **Case studies** - full [project write-ups](https://thetailorcv.com/blog/project-manager-portfolio-guide) with process, decisions, and outcomes, not just a bullet
-- **Visual work** - screenshots, demos, videos, and design files that LinkedIn cannot showcase well
-- **A consistent design that is yours** - not constrained to LinkedIn's fixed template
-- **Direct contact and calls to action** - a contact form or scheduling link tailored to your job search
+| What to include | Why |
+|---|---|
+| **Case studies** | full [project write-ups](https://thetailorcv.com/blog/project-manager-portfolio-guide) with process, decisions, and outcomes, not just a bullet |
+| **Visual work** | screenshots, demos, videos, and design files that LinkedIn cannot showcase well |
+| **A consistent design that is yours** | not constrained to LinkedIn's fixed template |
+| **Direct contact and calls to action** | a contact form or scheduling link tailored to your job search |
 
 ## The Fastest Way to Do This
 Rather than starting from a blank page, the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) can generate a portfolio shell directly from your resume (which is often close to your LinkedIn content already). From there:

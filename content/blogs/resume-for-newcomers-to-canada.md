@@ -23,10 +23,12 @@ Landing your first job in Canada can be a daunting task, especially for newcomer
 
 Before diving into the specifics of resume writing, it’s crucial to understand the fundamental differences in Canadian resume expectations compared to other regions. Here are some key points to consider:
 
-- **Length**: While some countries expect concise one-page resumes, Canadian employers typically accept two-page resumes, especially for those with extensive experience.
-- **Personal Information**: In Canada, it is standard to exclude personal details such as your photo, age, marital status, or nationality. Employers are focused on your skills and qualifications.
-- **Format**: Use a clean, professional format. Avoid excessive graphics or colors that may distract from your content. A simple, clear layout enhances readability.
-- **References**: It’s common to include a line stating “References available upon request” rather than listing them on your resume.
+| Rule | What it means |
+|---|---|
+| **Length** | While some countries expect concise one-page resumes, Canadian employers typically accept two-page resumes, especially for those with extensive experience |
+| **Personal Information** | In Canada, it is standard to exclude personal details such as your photo, age, marital status, or nationality. Employers are focused on your skills and qualifications |
+| **Format** | Use a clean, professional format. Avoid excessive graphics or colors that may distract from your content. A simple, clear layout enhances readability |
+| **References** | It’s common to include a line stating “References available upon request” rather than listing them on your resume |
 
 ## Crafting Your Resume
 

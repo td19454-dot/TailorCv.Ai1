@@ -42,10 +42,12 @@ Practical reality: most employers must justify hiring a foreigner over a local, 
 
 ## Step 4: Where and How to Apply
 
-- **Company career pages** — the MNCs, banks, and larger firms, usually via Greenhouse, Workday, or SuccessFactors. Tailoring matters most here, since there's no human buffer.
-- **Recruitment agencies** — a huge share of Singapore hiring; get into their databases with keyword-rich resumes, since they search you for current and future roles.
-- **LinkedIn** — heavily used by Singapore recruiters. Keep your [profile optimised](/blog/how-to-use-linkedin-for-job-search) with a [strong headline](/blog/linkedin-headline-examples-job-seekers), and be careful on [Easy Apply](/blog/resume-optimization-linkedin-easy-apply) not to fire off generic applications.
-- **Job boards** — MyCareersFuture (which prioritises locals under the Fair Consideration Framework), plus regional boards.
+| Step | What to do |
+|---|---|
+| **Company career pages** | the MNCs, banks, and larger firms, usually via Greenhouse, Workday, or SuccessFactors. Tailoring matters most here, since there's no human buffer |
+| **Recruitment agencies** | a huge share of Singapore hiring; get into their databases with keyword-rich resumes, since they search you for current and future roles |
+| **LinkedIn** | heavily used by Singapore recruiters. Keep your [profile optimised](/blog/how-to-use-linkedin-for-job-search) with a [strong headline](/blog/linkedin-headline-examples-job-seekers), and be careful on [Easy Apply](/blog/resume-optimization-linkedin-easy-apply) not to fire off generic applications |
+| **Job boards** | MyCareersFuture (which prioritises locals under the Fair Consideration Framework), plus regional boards |
 
 Whichever channel, the same rule holds: matched beats generic, and being *found* by recruiter search beats waiting to be discovered. And always watch for [job scams](/blog/how-to-spot-a-job-scam) — fake "recruiters" asking for money or documents up front are a red flag.
 

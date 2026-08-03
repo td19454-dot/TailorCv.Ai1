@@ -64,10 +64,12 @@ The resume needs to reflect that.
 
 At VP and above, your resume may be reviewed by:
 
-- **Executive search firms (headhunters)** - They are filtering for specific board-level signals, track records, and cultural fit for the client company. They are experienced resume readers who can immediately distinguish executive presence from manager-level presentation. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) applies here - but the stakes and the speed of judgment are different.
-- **Board members or board committees** - For C-suite roles, board members are often involved in final selection. They want strategic thinkers and proven P&L leaders.
-- **HR at large enterprises** - They still use structured criteria, but at senior levels, criteria are more qualitative.
-- **Peer interviewers** - Other VPs and C-suite members often participate in executive hiring.
+| Check | What to look for |
+|---|---|
+| **Executive search firms (headhunters)** | They are filtering for specific board-level signals, track records, and cultural fit for the client company. They are experienced resume readers who can immediately distinguish executive presence from manager-level presentation. Understanding [how recruiters read resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes) applies here - but the stakes and the speed of judgment are different |
+| **Board members or board committees** | For C-suite roles, board members are often involved in final selection. They want strategic thinkers and proven P&L leaders |
+| **HR at large enterprises** | They still use structured criteria, but at senior levels, criteria are more qualitative |
+| **Peer interviewers** | Other VPs and C-suite members often participate in executive hiring |
 
 None of these readers want a list of your past responsibilities.
 All of them want evidence of business impact, leadership philosophy, and strategic thinking.

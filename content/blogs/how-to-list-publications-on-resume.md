@@ -65,11 +65,13 @@ For anyone with a substantial body of work, maintaining an external profile is s
 
 ## Common publication-listing mistakes
 
-- **Inconsistent citation style** — pick one and apply it everywhere; inconsistency reads like carelessness on a [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
-- **Listing everything** — for industry roles, curate to your strongest few and link the rest.
-- **Hiding your own name** — bold it so a reviewer spots your contribution instantly.
-- **Formatting in tables or columns** — it breaks the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); use plain text.
-- **Crowding out experience** — keep [quantified experience](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) front and center on a standard [resume](https://www.thetailorcv.com/modify-cv).
+| Mistake | Why it costs you |
+|---|---|
+| **Inconsistent citation style** | pick one and apply it everywhere; inconsistency reads like carelessness on a [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) |
+| **Listing everything** | for industry roles, curate to your strongest few and link the rest |
+| **Hiding your own name** | bold it so a reviewer spots your contribution instantly |
+| **Formatting in tables or columns** | it breaks the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); use plain text |
+| **Crowding out experience** | keep [quantified experience](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) front and center on a standard [resume](https://www.thetailorcv.com/modify-cv) |
 
 For a broader list of what quietly weakens applications, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 

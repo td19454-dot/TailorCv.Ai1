@@ -106,10 +106,12 @@ For how ATS scoring works in detail, see the [ATS score guide](https://thetailor
 
 Common misconceptions:
 
-- **It does not mean lying** - you only add terms that reflect real skills and real experience
-- **It does not mean rewriting everything** - the core work history stays the same; you change positioning
-- **It does not take hours** - the 5-minute checklist handles 80% of the benefit
-- **It is not keyword stuffing** - keywords go into meaningful achievement sentences, not lists
+| Term | Why it matters |
+|---|---|
+| **It does not mean lying** | you only add terms that reflect real skills and real experience |
+| **It does not mean rewriting everything** | the core work history stays the same; you change positioning |
+| **It does not take hours** | the 5-minute checklist handles 80% of the benefit |
+| **It is not keyword stuffing** | keywords go into meaningful achievement sentences, not lists |
 
 Read [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) for the checklist.
 

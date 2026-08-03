@@ -164,17 +164,21 @@ To ensure you're ready for your panel interview, follow this structured preparat
 
 ### Do’s
 
-- **Engage with Everyone**: Make an effort to connect with all panel members, not just the one asking questions.
-- **Listen Actively**: Show that you are listening by nodding and responding to comments made by each member.
-- **Be Concise**: Keep your answers focused and relevant. Avoid rambling to maintain the panel's attention.
-- **Follow Up**: After the interview, send personalized thank-you notes to each member, expressing your appreciation for their time and insights.
+| What | Details |
+|---|---|
+| **Engage with Everyone** | Make an effort to connect with all panel members, not just the one asking questions |
+| **Listen Actively** | Show that you are listening by nodding and responding to comments made by each member |
+| **Be Concise** | Keep your answers focused and relevant. Avoid rambling to maintain the panel's attention |
+| **Follow Up** | After the interview, send personalized thank-you notes to each member, expressing your appreciation for their time and insights |
 
 ### Don’ts
 
-- **Don’t Speak Over Others**: Allow each panel member to finish their thoughts before responding. Interrupting can be perceived as disrespectful.
-- **Don’t Show Nervousness**: If you feel nervous, practice deep breathing techniques beforehand to help calm your nerves.
-- **Don’t Over-Prepare**: While preparation is crucial, overly rehearsed answers can sound robotic. Aim for a natural conversation style.
-- **Don’t Ignore Non-Verbal Cues**: Pay attention to the panel's body language and adjust your responses accordingly.
+| What | Details |
+|---|---|
+| **Don’t Speak Over Others** | Allow each panel member to finish their thoughts before responding. Interrupting can be perceived as disrespectful |
+| **Don’t Show Nervousness** | If you feel nervous, practice deep breathing techniques beforehand to help calm your nerves |
+| **Don’t Over-Prepare** | While preparation is crucial, overly rehearsed answers can sound robotic. Aim for a natural conversation style |
+| **Don’t Ignore Non-Verbal Cues** | Pay attention to the panel's body language and adjust your responses accordingly |
 
 ## Scenarios for Effective Responses
 

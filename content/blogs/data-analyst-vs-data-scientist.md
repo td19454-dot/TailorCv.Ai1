@@ -155,10 +155,12 @@ Read the [how to get your first tech job guide](https://thetailorcv.com/blog/how
 ## Related Roles to Consider
 
 The data field has more than two roles:
-- **Data Engineer**: Builds the data infrastructure and pipelines. Read the [data engineer resume guide](https://thetailorcv.com/blog/data-engineer-resume-2026).
-- **ML Engineer**: Productionizes ML models. Read the [ML engineer resume guide](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026).
-- **Analytics Engineer**: Bridges analyst and engineer (dbt, modeling).
-- **BI Developer**: Specializes in business intelligence and dashboards.
+| Role | What it involves |
+|---|---|
+| **Data Engineer** | Builds the data infrastructure and pipelines. Read the [data engineer resume guide](https://thetailorcv.com/blog/data-engineer-resume-2026) |
+| **ML Engineer** | Productionizes ML models. Read the [ML engineer resume guide](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) |
+| **Analytics Engineer** | Bridges analyst and engineer (dbt, modeling) |
+| **BI Developer** | Specializes in business intelligence and dashboards |
 
 ---
 

@@ -21,11 +21,13 @@ DevOps and SRE work is often invisible until something breaks - which makes it h
 - Avoid common mistakes such as listing tools without context, sharing sensitive information, and providing dead links or expired environments.
 
 ## What to Include
-- **Infrastructure-as-code repos** - Terraform, Pulumi, or CloudFormation modules with clear READMEs
-- **CI/CD pipeline projects** - a working pipeline (GitHub Actions, GitLab CI, Jenkins) with build, test, and deploy stages documented
-- **Observability setups** - dashboards or alerting configs (Grafana, Prometheus, Datadog) built for a real or side project
-- **Incident write-ups** - a sanitized postmortem showing root cause, remediation, and prevention steps
-- **Certifications** - AWS/GCP/Azure certifications, CKA/CKAD, HashiCorp certifications
+| What to include | Why |
+|---|---|
+| **Infrastructure-as-code repos** | Terraform, Pulumi, or CloudFormation modules with clear READMEs |
+| **CI/CD pipeline projects** | a working pipeline (GitHub Actions, GitLab CI, Jenkins) with build, test, and deploy stages documented |
+| **Observability setups** | dashboards or alerting configs (Grafana, Prometheus, Datadog) built for a real or side project |
+| **Incident write-ups** | a sanitized postmortem showing root cause, remediation, and prevention steps |
+| **Certifications** | AWS/GCP/Azure certifications, CKA/CKAD, HashiCorp certifications |
 
 ## Frame Reliability, Not Just Tools
 Listing "Kubernetes, Terraform, Prometheus" tells a hiring manager what you have used, not what you improved. For each project:

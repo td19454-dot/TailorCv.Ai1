@@ -103,11 +103,13 @@ The trait the [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to
 If your [projects section](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) feels thin, you likely have more material than you realize:
 
 - **Course capstones and group projects** — treat the best one like a job.
-- **Hackathons or competitions** — even an unfinished entry shows initiative.
-- **Volunteering** — a nonprofit you helped, an event you organized.
-- **Clubs and societies** — any [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with responsibility (treasurer, organizer, lead).
-- **Freelance or gig work** — a logo you designed, a site you built for a friend's business.
-- **Self-directed builds** — an app, a bot, a dataset analysis you did for fun.
+| What | Details |
+|---|---|
+| **Hackathons or competitions** | even an unfinished entry shows initiative |
+| **Volunteering** | a nonprofit you helped, an event you organized |
+| **Clubs and societies** | any [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with responsibility (treasurer, organizer, lead) |
+| **Freelance or gig work** | a logo you designed, a site you built for a friend's business |
+| **Self-directed builds** | an app, a bot, a dataset analysis you did for fun |
 
 Any of these, described with a result, becomes a legitimate entry. Do one small new project this month if you truly have nothing — a weekend build gives you a bullet no template can fake.
 

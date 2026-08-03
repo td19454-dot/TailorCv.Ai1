@@ -48,11 +48,13 @@ When you apply through a portal — Workday, Greenhouse, Taleo, iCIMS, Naukri �
 
 Parsers are not smart. They read top to bottom, left to right, and they were built for conventional documents. The things that make a resume beautiful are precisely the things that confuse them:
 
-- **Columns** — a two-column layout can be read straight across, interleaving your skills with your job titles into gibberish.
-- **Text boxes and graphics** — often skipped entirely, so whatever is inside them simply does not exist.
-- **Icons and infographic elements** — a skill bar showing "Python ████████░░" may parse as the word Python and nothing else, or as nothing at all.
-- **Headers and footers** — some parsers ignore them completely, which is a problem if your contact details live there.
-- **Unusual section names** — "What I love doing" is charming and human, and a parser looking for "Experience" or "Skills" does not know what to do with it.
+| Rule | What it means |
+|---|---|
+| **Columns** | a two-column layout can be read straight across, interleaving your skills with your job titles into gibberish |
+| **Text boxes and graphics** | often skipped entirely, so whatever is inside them simply does not exist |
+| **Icons and infographic elements** | a skill bar showing "Python ████████░░" may parse as the word Python and nothing else, or as nothing at all |
+| **Headers and footers** | some parsers ignore them completely, which is a problem if your contact details live there |
+| **Unusual section names** | "What I love doing" is charming and human, and a parser looking for "Experience" or "Skills" does not know what to do with it |
 
 So the uncomfortable truth is this: **the more distinctive the resume looks, the more risk it carries through an ATS.** A resume that makes a recruiter smile is worth a great deal — but only if a recruiter ever sees it.
 

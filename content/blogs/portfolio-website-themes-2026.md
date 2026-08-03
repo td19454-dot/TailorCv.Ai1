@@ -21,10 +21,12 @@ The theme you choose for your [portfolio](https://thetailorcv.com/blog/how-to-bu
 - Utilize tools like AI auto-fill to preview content in different themes and seek feedback from industry peers to gauge credibility.
 
 ## What Makes a Portfolio Theme "Good" in 2026
-- **Fast load time** - recruiters give a portfolio seconds, not minutes, before deciding to keep scrolling
-- **Mobile-first layout** - a large share of recruiter traffic is on a phone between meetings
-- **Clear hierarchy** - name, role, and one strongest project visible without scrolling
-- **Matches your industry's expectations** - a fintech analyst and a game developer should not use the same visual language
+| Rule | What it means |
+|---|---|
+| **Fast load time** | recruiters give a portfolio seconds, not minutes, before deciding to keep scrolling |
+| **Mobile-first layout** | a large share of recruiter traffic is on a phone between meetings |
+| **Clear hierarchy** | name, role, and one strongest project visible without scrolling |
+| **Matches your industry's expectations** | a fintech analyst and a game developer should not use the same visual language |
 
 ## Theme Styles and Who They Fit
 Using the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio)'s theme library as a reference point, here is how different styles map to different roles:
@@ -110,10 +112,12 @@ Before you launch your portfolio, use this checklist to ensure everything is in 
 - **Do Keep Navigation Simple**: Ensure users can easily find what they are looking for.
 
 ### Don'ts
-- **Don’t Overload with Text**: Limit lengthy descriptions; let your work speak for itself.
-- **Don’t Use Generic Themes**: Stand out by customizing your theme rather than choosing a widely-used template.
-- **Don’t Ignore Analytics**: Use tools to track visitor behavior and make data-driven improvements.
-- **Don’t Forget to Update Regularly**: Keep your portfolio fresh by regularly adding new projects and removing outdated ones.
+| What | Details |
+|---|---|
+| **Don’t Overload with Text** | Limit lengthy descriptions; let your work speak for itself |
+| **Don’t Use Generic Themes** | Stand out by customizing your theme rather than choosing a widely-used template |
+| **Don’t Ignore Analytics** | Use tools to track visitor behavior and make data-driven improvements |
+| **Don’t Forget to Update Regularly** | Keep your portfolio fresh by regularly adding new projects and removing outdated ones |
 
 ## Real Examples of Inspiring Portfolio Themes
 

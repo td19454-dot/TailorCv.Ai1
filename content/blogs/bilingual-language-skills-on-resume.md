@@ -67,10 +67,12 @@ If a role weights languages heavily, back up your claim with evidence. Certifica
 ## Common mistakes to avoid
 
 - **Vague levels** — always use a recognized scale.
-- **Skill "bars" or graphics** — they break the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); use text.
-- **Overstating fluency** — you may be [tested](https://thetailorcv.com/blog/how-to-practice-interviews-at-home).
-- **Listing a language you can barely use** — basic tourist phrases don't belong.
-- **Hiding a required language** — put it in the [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) when the role demands it.
+| Mistake | Why it costs you |
+|---|---|
+| **Skill "bars" or graphics** | they break the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); use text |
+| **Overstating fluency** | you may be [tested](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) |
+| **Listing a language you can barely use** | basic tourist phrases don't belong |
+| **Hiding a required language** | put it in the [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) when the role demands it |
 
 ## Final checklist
 

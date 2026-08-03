@@ -35,10 +35,12 @@ Before diving into job applications, it’s crucial to understand the landscape 
 
 A well-crafted resume is your first step in making a positive impression on potential employers. Here are some Canadian resume norms to keep in mind:
 
-- **Length**: Two pages are acceptable, especially if you have relevant experience.
-- **Format**: Use a clear layout with headings and bullet points. Avoid including personal details like age, marital status, or a photo.
-- **Language**: Use Canadian English spelling and terminology. For example, use "colour" instead of "color" and "centre" instead of "center."
-- **References**: It’s standard to state that references are available upon request rather than listing them on your resume.
+| Step | What to do |
+|---|---|
+| **Length** | Two pages are acceptable, especially if you have relevant experience |
+| **Format** | Use a clear layout with headings and bullet points. Avoid including personal details like age, marital status, or a photo |
+| **Language** | Use Canadian English spelling and terminology. For example, use "colour" instead of "color" and "centre" instead of "center." |
+| **References** | It’s standard to state that references are available upon request rather than listing them on your resume |
 
 ### Common Resume Mistakes to Avoid
 

@@ -148,10 +148,12 @@ For related tough questions, see [why leaving current job](https://thetailorcv.c
 ## Do's and Don'ts for Answering the Weakness Question
 
 ### Do's
-- **Be Honest**: Choose a real weakness that you are genuinely working to improve.
-- **Be Specific**: Provide concrete examples and details to support your answer.
-- **Be Positive**: Frame your weakness in a way that shows you are proactive about personal growth.
-- **Practice Your Delivery**: Rehearse your answer to ensure you can deliver it smoothly and confidently.
+| What | Details |
+|---|---|
+| **Be Honest** | Choose a real weakness that you are genuinely working to improve |
+| **Be Specific** | Provide concrete examples and details to support your answer |
+| **Be Positive** | Frame your weakness in a way that shows you are proactive about personal growth |
+| **Practice Your Delivery** | Rehearse your answer to ensure you can deliver it smoothly and confidently |
 
 ### Don'ts
 - **Don’t Blame Others**: Avoid attributing your weakness to external factors or other people.

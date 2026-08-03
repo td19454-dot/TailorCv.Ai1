@@ -165,10 +165,12 @@ In HR interviews, storytelling can be a powerful tool. Create a 2-3 minute narra
 
 During the HR round, you may be asked to provide examples from your past experiences. Use the STAR method (Situation, Task, Action, Result) to structure your answers effectively. Here’s a breakdown:
 
-- **Situation**: Describe the context within which you performed a task or faced a challenge.
-- **Task**: Explain the actual task or challenge that was involved.
-- **Action**: Detail the specific actions you took to address the task or challenge.
-- **Result**: Share the outcomes of your actions, quantifying success whenever possible.
+| Section | What goes in it |
+|---|---|
+| **Situation** | Describe the context within which you performed a task or faced a challenge |
+| **Task** | Explain the actual task or challenge that was involved |
+| **Action** | Detail the specific actions you took to address the task or challenge |
+| **Result** | Share the outcomes of your actions, quantifying success whenever possible |
 
 ## Common HR Round Scenarios and Responses
 

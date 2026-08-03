@@ -127,14 +127,16 @@ Take the time. Do not accept or decline on the spot if you feel uncertain. Evalu
 
 Many candidates only negotiate base salary. The full compensation package includes:
 
-- **Signing bonus** - Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve.
-- **Equity / Stock Options / RSUs** - For tech and startup roles, the equity cliff and vesting schedule matter enormously.
-- **Start date** - More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or take a break.
-- **Remote work flexibility** - Fewer commute days = thousands of dollars in time and transport saved.
-- **Title** - Sometimes easier to move than salary, and impacts future offers.
-- **Annual review timing** - Ask if you can have a performance and salary review at 6 months rather than 12.
-- **Professional development budget** - Conferences, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), courses.
-- **PTO / vacation days** - Especially valuable if the standard offer is low.
+| What to include | Why |
+|---|---|
+| **Signing bonus** | Often has more flexibility than base salary. Companies can call it "non-recurring" which is easier to approve |
+| **Equity / Stock Options / RSUs** | For tech and startup roles, the equity cliff and vesting schedule matter enormously |
+| **Start date** | More time to mentally transition, finish freelance [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or take a break |
+| **Remote work flexibility** | Fewer commute days = thousands of dollars in time and transport saved |
+| **Title** | Sometimes easier to move than salary, and impacts future offers |
+| **Annual review timing** | Ask if you can have a performance and salary review at 6 months rather than 12 |
+| **Professional development budget** | Conferences, [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume), courses |
+| **PTO / vacation days** | Especially valuable if the standard offer is low |
 
 ---
 

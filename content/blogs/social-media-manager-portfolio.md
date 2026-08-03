@@ -21,11 +21,13 @@ Anyone can screenshot a few posts and call it a portfolio. What actually gets so
 - Highlight a turnaround case study and showcase your content calendar to illustrate strategic planning skills.
 
 ## What to Include
-- **Growth metrics** - follower growth, engagement rate, reach, and how they changed under your management
-- **2-4 campaign case studies** - a launch, a viral moment you engineered, a community-building initiative
-- **Content samples** - a mix of formats (short-form video, carousels, static posts) organized by platform
-- **A sample content calendar** - shows planning and consistency, not just one-off posts
-- **Crisis or community management examples** - how you handled a negative comment wave or a customer service escalation on social
+| What to include | Why |
+|---|---|
+| **Growth metrics** | follower growth, engagement rate, reach, and how they changed under your management |
+| **2-4 campaign case studies** | a launch, a viral moment you engineered, a community-building initiative |
+| **Content samples** | a mix of formats (short-form video, carousels, static posts) organized by platform |
+| **A sample content calendar** | shows planning and consistency, not just one-off posts |
+| **Crisis or community management examples** | how you handled a negative comment wave or a customer service escalation on social |
 
 ## Frame Strategy, Not Just Content
 A feed of pretty posts does not tell a hiring manager you can grow an account from zero or manage a brand's voice under pressure. For each campaign:
@@ -103,10 +105,12 @@ Creating a portfolio can be a balancing act. Here’s a handy list of do's and d
 
 ### Don'ts
 
-- **Don’t Overload with Content**: Quality over quantity. Select only your best work to showcase.
-- **Don’t Ignore the User Experience**: Make sure your portfolio is easy to navigate. A cluttered or confusing layout can deter potential employers.
-- **Don’t Forget to Promote Your Portfolio**: Share your portfolio on social media and include it in your job applications. Visibility is key to getting noticed.
-- **Don’t Neglect Your Online Presence**: Ensure your social media profiles are up-to-date and align with the brand you present in your portfolio.
+| What | Details |
+|---|---|
+| **Don’t Overload with Content** | Quality over quantity. Select only your best work to showcase |
+| **Don’t Ignore the User Experience** | Make sure your portfolio is easy to navigate. A cluttered or confusing layout can deter potential employers |
+| **Don’t Forget to Promote Your Portfolio** | Share your portfolio on social media and include it in your job applications. Visibility is key to getting noticed |
+| **Don’t Neglect Your Online Presence** | Ensure your social media profiles are up-to-date and align with the brand you present in your portfolio |
 
 ## Mini Checklist for Your Portfolio
 

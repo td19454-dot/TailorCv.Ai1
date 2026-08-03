@@ -75,19 +75,23 @@ Practice this structure in [AI mock interview sessions](https://thetailorcv.com/
 
 ## What to Do During a Gap (Before the Interview)
 
-- **Take Online Courses**: Enhance your skills with relevant online courses and list them on your resume. Websites like Coursera or Udemy offer a plethora of options.
-- **Build Portfolio Projects**: Create and showcase portfolio projects that reflect your skills. For guidance, see [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-- **Freelance or Volunteer**: Engage in [freelance work](https://www.thetailorcv.com/portfolio) or volunteer opportunities to keep your skills sharp and gain new experiences. Refer to [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for tips.
-- **Stay Interview-Ready**: Regularly practice your interview skills with [mock interview practice](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai).
-- **Optimize Your Resume**: Ensure your resume remains ATS-friendly. Check out our [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) for tips.
+| What | Details |
+|---|---|
+| **Take Online Courses** | Enhance your skills with relevant online courses and list them on your resume. Websites like Coursera or Udemy offer a plethora of options |
+| **Build Portfolio Projects** | Create and showcase portfolio projects that reflect your skills. For guidance, see [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) |
+| **Freelance or Volunteer** | Engage in [freelance work](https://www.thetailorcv.com/portfolio) or volunteer opportunities to keep your skills sharp and gain new experiences. Refer to [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume) for tips |
+| **Stay Interview-Ready** | Regularly practice your interview skills with [mock interview practice](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) |
+| **Optimize Your Resume** | Ensure your resume remains ATS-friendly. Check out our [ATS-friendly resume guide](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) for tips |
 
 ## Common Mistakes to Avoid
 
-- **Lying About Dates**: Background checks will catch this, and dishonesty can cost you the job.
-- **Apologizing Excessively**: A brief explanation suffices. Focus on your strengths and confidence afterward.
-- **Blaming Others**: Maintain professionalism. Instead of blaming, focus on what you learned.
-- **No Forward Momentum**: Ensure you can demonstrate how you used your time productively.
-- **Ignoring the Question**: If they ask, answer directly and confidently.
+| Mistake | Why it costs you |
+|---|---|
+| **Lying About Dates** | Background checks will catch this, and dishonesty can cost you the job |
+| **Apologizing Excessively** | A brief explanation suffices. Focus on your strengths and confidence afterward |
+| **Blaming Others** | Maintain professionalism. Instead of blaming, focus on what you learned |
+| **No Forward Momentum** | Ensure you can demonstrate how you used your time productively |
+| **Ignoring the Question** | If they ask, answer directly and confidently |
 
 For more pitfalls, see [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
 

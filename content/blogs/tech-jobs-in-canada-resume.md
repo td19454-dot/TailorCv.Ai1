@@ -23,10 +23,12 @@ In the competitive landscape of Canada’s tech job market, crafting a stellar r
 
 Before diving into resume writing, it’s crucial to familiarize yourself with the Canadian resume format. Here are the key components:
 
-- **No Personal Information**: Unlike some countries, Canadian resumes do not require personal details such as a photo, age, or marital status. Focus on your professional qualifications and experience.
-- **Length**: A two-page resume is acceptable, especially for those with extensive experience. However, aim for brevity and relevance.
-- **Contact Information**: Include your name, Canadian phone number, and address (city and province). Format your phone number as (123) 456-7890.
-- **References**: It’s common to state “References available upon request” rather than listing them on your resume.
+| Rule | What it means |
+|---|---|
+| **No Personal Information** | Unlike some countries, Canadian resumes do not require personal details such as a photo, age, or marital status. Focus on your professional qualifications and experience |
+| **Length** | A two-page resume is acceptable, especially for those with extensive experience. However, aim for brevity and relevance |
+| **Contact Information** | Include your name, Canadian phone number, and address (city and province). Format your phone number as (123) 456-7890 |
+| **References** | It’s common to state “References available upon request” rather than listing them on your resume |
 
 For more detailed insights, check out our [Canadian Resume Format Guide (2026)](https://thetailorcv.com/blog/canadian-resume-format-guide-2026).
 
@@ -47,12 +49,14 @@ For guidance on matching your resume with job descriptions, refer to our [Resume
 
 A well-structured resume is easier to read and more likely to grab the attention of hiring managers. Consider the following sections:
 
-- **Contact Information**: As mentioned, include your name, phone number, and location.
-- **Professional Summary**: Write a concise summary (2-3 sentences) that outlines your background, skills, and what you bring to the role.
-- **Technical Skills**: List your technical proficiencies, focusing on those relevant to the job.
-- **Work Experience**: Include your job title, employer’s name, location, and dates of employment. Use bullet points to describe your achievements and responsibilities.
-- **Education**: Detail your degrees, certifications, and relevant training.
-- **Projects or Portfolio**: Showcase specific projects or provide links to your [portfolio website](https://www.thetailorcv.com/portfolio) if applicable.
+| Section | What goes in it |
+|---|---|
+| **Contact Information** | As mentioned, include your name, phone number, and location |
+| **Professional Summary** | Write a concise summary (2-3 sentences) that outlines your background, skills, and what you bring to the role |
+| **Technical Skills** | List your technical proficiencies, focusing on those relevant to the job |
+| **Work Experience** | Include your job title, employer’s name, location, and dates of employment. Use bullet points to describe your achievements and responsibilities |
+| **Education** | Detail your degrees, certifications, and relevant training |
+| **Projects or Portfolio** | Showcase specific projects or provide links to your [portfolio website](https://www.thetailorcv.com/portfolio) if applicable |
 
 For more on structuring your resume, visit our guide on [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
 

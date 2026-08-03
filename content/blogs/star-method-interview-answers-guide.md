@@ -130,10 +130,12 @@ To effectively utilize the STAR method in interviews, you need to develop well-s
 2. **Select Relevant Experiences**: Choose past experiences that showcase these competencies. Aim for a mix of professional, academic, and volunteer experiences to show versatility.
 
 3. **Outline Your STAR Components**:
-   - **Situation**: Start with a brief context. Who was involved? What was the setting?
-   - **Task**: Define your role and responsibilities. What was the challenge you faced?
-   - **Action**: Detail the specific steps you took. Highlight your thought process and any collaboration.
-   - **Result**: Share the outcomes. Use quantifiable results when possible, such as percentages or dollar amounts.
+| Step | What to do |
+|---|---|
+| **Situation** | Start with a brief context. Who was involved? What was the setting? |
+| **Task** | Define your role and responsibilities. What was the challenge you faced? |
+| **Action** | Detail the specific steps you took. Highlight your thought process and any collaboration |
+| **Result** | Share the outcomes. Use quantifiable results when possible, such as percentages or dollar amounts |
 
 4. **Practice Your Delivery**: Rehearse your stories aloud. Aim for clarity and conciseness, keeping your responses under two minutes.
 
@@ -176,10 +178,12 @@ By using this checklist, you can ensure that you are thoroughly prepared to effe
 Practicing with hypothetical scenarios can help you refine your STAR responses. Here are a few short scenarios to consider:
 
 1. **Scenario**: You had a conflict with a coworker over project priorities.
-   - **Situation**: Describe the workplace environment and the project.
-   - **Task**: Explain your role in addressing the conflict.
-   - **Action**: Detail how you initiated a conversation to resolve the issue.
-   - **Result**: Share how the resolution led to a successful project completion.
+| Question | What they are checking |
+|---|---|
+| **Situation** | Describe the workplace environment and the project |
+| **Task** | Explain your role in addressing the conflict |
+| **Action** | Detail how you initiated a conversation to resolve the issue |
+| **Result** | Share how the resolution led to a successful project completion |
 
 2. **Scenario**: You were tasked with improving a process that was inefficient.
    - **Situation**: Outline the existing process and its issues.

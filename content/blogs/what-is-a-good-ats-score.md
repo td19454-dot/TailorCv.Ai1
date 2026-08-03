@@ -144,10 +144,12 @@ To ensure your resume meets ATS requirements and achieves a good score, follow t
 
 ### Don'ts
 
-- **Don’t Stuff Keywords**: Avoid overloading your resume with keywords; this can come off as unnatural and may even lead to disqualification.
-- **Don’t Use Uncommon Abbreviations**: Always spell out acronyms the first time you use them to ensure clarity.
-- **Don’t Include Personal Information**: Avoid putting sensitive information like your age, gender, or marital status, as these can lead to bias.
-- **Don’t Submit Without Testing**: Always check your ATS score before sending your resume out to potential employers.
+| Type | What it involves |
+|---|---|
+| **Don’t Stuff Keywords** | Avoid overloading your resume with keywords; this can come off as unnatural and may even lead to disqualification |
+| **Don’t Use Uncommon Abbreviations** | Always spell out acronyms the first time you use them to ensure clarity |
+| **Don’t Include Personal Information** | Avoid putting sensitive information like your age, gender, or marital status, as these can lead to bias |
+| **Don’t Submit Without Testing** | Always check your ATS score before sending your resume out to potential employers |
 
 ## Scenario: A Real-Life Example of ATS Optimization
 

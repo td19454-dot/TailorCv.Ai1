@@ -83,10 +83,12 @@ Sincerely,
 
 ## Common Mistakes First-Time Applicants Make
 
-- **Apologizing for Lack of Experience**: Instead of framing your lack of experience as a negative, focus on your eagerness to learn and grow. 
-- **Using Generic Filler**: Phrases like "I am a hardworking team player" do not add value without specific examples.
-- **Neglecting Company Research**: Failing to understand the company’s culture or values can lead to a generic cover letter. See [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview).
-- **Making the Letter Longer than the Resume**: Aim for a concise letter; ideally, it should not exceed one page.
+| Mistake | Why it costs you |
+|---|---|
+| **Apologizing for Lack of Experience** | Instead of framing your lack of experience as a negative, focus on your eagerness to learn and grow |
+| **Using Generic Filler** | Phrases like "I am a hardworking team player" do not add value without specific examples |
+| **Neglecting Company Research** | Failing to understand the company’s culture or values can lead to a generic cover letter. See [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview) |
+| **Making the Letter Longer than the Resume** | Aim for a concise letter; ideally, it should not exceed one page |
 
 
 ## Additional Tips for Writing an Effective Cover Letter

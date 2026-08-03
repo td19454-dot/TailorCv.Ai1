@@ -58,10 +58,12 @@ A few short case studies or posts give Google something to index and recruiters 
 
 ### Content Structure Checklist
 
-- **Title**: Include the project name and your role.
-- **Introduction**: Briefly introduce the project and its objectives.
-- **Process**: Describe your methodology, including tools and techniques used.
-- **Results**: Share measurable outcomes (e.g., “Increased user engagement by 30%”).
+| Section | What goes in it |
+|---|---|
+| **Title** | Include the project name and your role |
+| **Introduction** | Briefly introduce the project and its objectives |
+| **Process** | Describe your methodology, including tools and techniques used |
+| **Results** | Share measurable outcomes (e.g., “Increased user engagement by 30%”) |
 
 ## Technical Hygiene
 

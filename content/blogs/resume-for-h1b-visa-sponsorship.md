@@ -24,10 +24,12 @@ Aiming for an H-1B visa sponsorship job can feel daunting, especially when it co
 
 Before diving into the specifics of resume writing, it’s essential to understand the U.S. job market landscape. Employers in the U.S. often receive hundreds of applications for a single position, making it vital to present your qualifications clearly and concisely. Here are some key resume norms specific to the U.S.:
 
-- **Length**: For early-career professionals, a one-page resume is preferred. More experienced candidates can extend to two pages.
-- **Format**: U.S. resumes should not include personal information such as photos, age, or marital status. Instead, focus on your name, contact information, and relevant skills.
-- **Action Verbs**: Use strong action verbs to convey your achievements and responsibilities. Words like “developed,” “designed,” and “implemented” can make a significant impact.
-- **Quantified Achievements**: Whenever possible, quantify your accomplishments. For example, instead of saying “improved sales,” say “increased sales by 20% in six months.”
+| Rule | What it means |
+|---|---|
+| **Length** | For early-career professionals, a one-page resume is preferred. More experienced candidates can extend to two pages |
+| **Format** | U.S. resumes should not include personal information such as photos, age, or marital status. Instead, focus on your name, contact information, and relevant skills |
+| **Action Verbs** | Use strong action verbs to convey your achievements and responsibilities. Words like “developed,” “designed,” and “implemented” can make a significant impact |
+| **Quantified Achievements** | Whenever possible, quantify your accomplishments. For example, instead of saying “improved sales,” say “increased sales by 20% in six months.” |
 
 ## Crafting Your Resume: Key Sections
 
