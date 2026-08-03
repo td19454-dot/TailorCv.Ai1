@@ -163,6 +163,10 @@ Write as if the reader is busy and slightly skeptical — because they usually a
 
 For newcomers, the cover letter is the ideal place to defuse the "Canadian experience" concern before it becomes a barrier. Rather than hiding your international background, frame it as an asset and connect it directly to the role. Translate your experience into Canadian terms and metrics, note any credential assessment (e.g. WES), and convey genuine commitment to building your career in Canada. A sentence like *"My five years leading delivery teams internationally translates directly to the coordination and stakeholder-management this role requires, and I'm fully settled in Toronto and eager to contribute"* addresses the concern head-on with confidence. For the full newcomer strategy, see [how to get a job in Canada as a newcomer](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer).
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
 ## Cover Letters for Career Changes and Gaps
 
 The cover letter is especially valuable when your resume raises a question:

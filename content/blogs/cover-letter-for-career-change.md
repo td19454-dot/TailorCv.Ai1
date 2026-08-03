@@ -85,6 +85,10 @@ Sincerely,
 
 ---
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
+
 ## Concrete Steps for Crafting Your Cover Letter
 
 ### Step 1: Research the Target Role and Company

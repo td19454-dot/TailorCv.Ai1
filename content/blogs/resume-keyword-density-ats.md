@@ -110,6 +110,10 @@ Watch for these warning signs while editing:
 
 If you are unsure whether your resume has crossed the line, [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) covers the most common stuffing patterns recruiters and parsers both react badly to, and [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) explains how repetition without specificity gets flagged as low-effort even when every required word is technically present.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Checking against the real job description - rather than optimising in the abstract - is the step that actually moves the score.
+
 ## Synonyms and Variant Forms: Why Exact-Match Isn't Enough
 
 Keyword density is not just about how many times you say the exact phrase from the job posting. It is also about whether you cover the different ways that skill gets written across the industry. Relying only on the literal string from the job description, and repeating it, is a narrower strategy than covering the term and its natural variants once each.

@@ -48,6 +48,10 @@ A rewrite is useless if the output does not parse. Good tailoring produces a res
 
 The better tools do not stop at the resume. In the same flow you can generate a [matching cover letter](/blog/cover-letter-guide-2026) built from the same posting and the same base resume, with a [strong opening line](/blog/cover-letter-opening-lines-that-work) and without the usual [mistakes](/blog/cover-letter-mistakes-2026). And each tailored version is saved automatically with its score and the job it was written for, so you have a record of exactly what you sent where — useful weeks later when a recruiter calls about a role you barely remember applying to.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Why It Works Better Than Manual — Even at the Same Quality
 
 Here is the counterintuitive part: even if a careful human could tailor slightly better than the tool on any single resume, the tool wins over a real search. The reason is not quality per application; it is *consistency across applications*.

@@ -82,6 +82,10 @@ The rules differ enough to need their own treatment, and this is where preparati
 
 **Carry something sensible.** A tidy bag or folder with copies of your resume. Which is a good moment to check your [file format and naming](/blog/resume-file-format-guide) are right on the version you bring.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Mistakes to Avoid
 
 **Overdressing for a casual culture.** Less commonly discussed than underdressing and equally real. A three-piece suit at a ten-person startup reads as a misread.

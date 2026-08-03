@@ -80,6 +80,10 @@ The gap between the first and second [interview](https://thetailorcv.com/blog/ai
 
 Second rounds often introduce more senior people, and each interviewer is evaluating something different. The engineer probes depth; the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) probes collaboration and reliability; the skip-level or executive probes judgment and fit with the bigger picture. Tailor your emphasis to who is in front of you: go technical with the engineer, talk teamwork with the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and think out loud about trade-offs and impact with leadership. Recognizing what each person is really assessing lets you give the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) they are actually looking for.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 ## Using the STAR Method in Second Rounds
 
 Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lean heavily on [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — "tell me about a time when..." — and the [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) them well almost always use a structure, whether they name it or not. The [STAR method](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) keeps a story tight and complete:

@@ -86,6 +86,10 @@ Never send a generic letter. For each application:
 
 A tailored letter shows exactly the diligence and sincerity Japanese employers reward.
 
+![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
+
+Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
+
 ## Feature Your Language Credentials
 
 If relevant, note your **JLPT** and **TOEIC** levels — trusted, concrete signals in the Japanese market — and any Japan-relevant experience. These reassure employers about your fit.

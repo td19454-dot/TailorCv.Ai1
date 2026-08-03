@@ -54,6 +54,10 @@ So the caution is not paranoia; it is proportionate. Your resume is personal dat
 
 Safety is necessary but not sufficient — a private extension that produces bad resumes is not worth installing either. Once you have confirmed a tool is trustworthy, judge it on whether it actually helps: does it [score your match honestly](/blog/how-to-check-ats-score-free), [tailor without keyword-stuffing](/blog/ats-keyword-mistakes), keep [your voice](/blog/how-to-stop-sounding-generic-on-resume), avoid [fabricating experience](/blog/ai-resume-tailoring-human-voice), and output a [parseable resume](/blog/ats-resume-parser-friendly-format)? A tool that is both safe and genuinely useful — reading the posting, closing your [keyword gap](/blog/best-resume-keywords-to-beat-ats) from your real experience, across [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri) and [ATS boards](/blog/tailor-resume-on-greenhouse-lever-workday) — is what you are after. Safety gets it onto your toolbar; usefulness keeps it there.
 
+![The TailorCV extension running on a Greenhouse job posting, showing a 67% skill match with options to tailor and download the resume](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
+A 67% match on the real posting tells you where you stand before you submit, and that there is room to close the gap.
+
 ## The Trade-Off Is Real, and Usually Worth It
 
 Let us be balanced, because a privacy guide that ends "install nothing" is useless. Every extension is a trade: you grant some access in exchange for some help. The question is never "zero risk or risk" — it is "is the help worth the access, and is the tool trustworthy with it?"
@@ -65,6 +69,10 @@ The tools that fail the trade are the ones asking for far more access than the h
 ## Beyond the Extension: Protecting Your Search
 
 Privacy in a job search goes beyond browser extensions. Be careful what you put on public [portfolio sites](/blog/how-to-build-professional-portfolio) — showcase work without over-sharing personal contact details. Watch out for "recruiters" who ask for money, bank details, or documents before any real process; that is a [scam](/blog/how-to-spot-a-job-scam) signal. And apply the same "does this make sense" scrutiny to every tool you add, whether you are a [fresher](/blog/ats-score-for-freshers) starting out or experienced, applying [in the USA](/blog/how-to-get-a-job-in-usa), [Canada](/blog/how-to-get-a-job-in-canada), or anywhere else.
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 ## After You Choose a Safe Tool
 

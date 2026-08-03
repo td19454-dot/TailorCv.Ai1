@@ -153,6 +153,10 @@ Kafka, RabbitMQ, SQS - decouple services, handle async processing, smooth traffi
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Common System Design Questions
 
 - Design a URL shortener (TinyURL)

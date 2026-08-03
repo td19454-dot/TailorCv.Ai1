@@ -126,6 +126,10 @@ That means six weeks in, our tracker can tell you not just *where* you applied b
 
 **Where Careerflow beats us here, honestly:** their unlimited tracking on Premium holds more roles than ours does, and they let you track jobs you have no intention of tailoring for. If you want to bookmark forty interesting roles and decide later, theirs handles that better.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## Round 6: Application Autofill
 
 **Careerflow wins — we do not have this.**

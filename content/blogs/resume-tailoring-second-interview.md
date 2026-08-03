@@ -182,6 +182,10 @@ Read [how to follow up after an interview](https://thetailorcv.com/blog/how-to-f
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Preparing for the Final Round: What Usually Changes
 
 By round two or three, the focus usually shifts:

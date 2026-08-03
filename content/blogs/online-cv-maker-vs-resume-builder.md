@@ -105,6 +105,10 @@ Not every job search needs a fully tailored, ATS-optimized workflow. A basic CV 
 
 In these cases, spending time evaluating ATS scoring features or job-description matching is probably overkill. Get a clean, readable document out the door and move on.
 
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
+
 ## When You Need More Than a Template Tool
 
 On the other end, a handful of situations call for a builder with real tailoring and scoring capability, not just a template:

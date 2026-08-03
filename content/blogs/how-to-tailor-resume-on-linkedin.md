@@ -68,6 +68,10 @@ Here is the full flow, start to finish, the fast way.
 
 **Step 6 — Apply.** Upload the tailored PDF, submit, move to the next role. Because each version is saved automatically with its score and the job, you always know what you sent where.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## A Common Question: Will Tailoring Trip LinkedIn or the ATS?
 
 No. Tailoring your resume to a posting is exactly what recruiters *want* you to do — it is not gaming the system, it is answering the question the job asked. The ATS is designed to reward relevance; a tailored resume scores higher because it genuinely is a better match. The thing that trips filters is the opposite: [formatting the ATS cannot parse](/blog/how-to-make-resume-ats-friendly), and keyword-stuffing that a human then sees through. Honest tailoring avoids both.

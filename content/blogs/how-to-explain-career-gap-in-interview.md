@@ -113,15 +113,15 @@ For career changers after a gap, read [career change to tech guide](https://thet
 3. **Example from a Teacher**: 
    "I stepped away from teaching to travel and explore educational systems in different countries. I returned with a fresh perspective on curriculum development and have since taken courses in digital learning tools to enhance my teaching methods."
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Data Points on Career Gaps
 
 - **Prevalence**: According to a 2023 study by the Bureau of Labor Statistics, nearly 60% of professionals have experienced at least one significant career gap in their lifetime.
 - **Perception**: A survey by Jobvite found that 75% of hiring managers consider a well-explained career gap to be acceptable, especially if the candidate demonstrates continuous learning or skill development during that time.
 - **Impact on Hiring**: A LinkedIn report indicates that candidates who address their career gaps candidly in interviews are 30% more likely to receive job offers compared to those who do not.
-
-## Conclusion
-
-Explaining a career gap in a job interview can be a daunting task, but with the right approach and preparation, you can turn what might be perceived as a negative into a positive. Focus on honesty, demonstrate how you've stayed productive, and convey your enthusiasm for the role you're applying for. By following the tips and examples in this guide, you'll be well-equipped to tackle any questions about your career gaps confidently. Remember, your unique experiences can set you apart in a competitive job market.
 
 ## Crafting Your Personal Narrative
 
@@ -179,6 +179,10 @@ To further enhance your job application and interview skills, consider checking 
 - **ATS Checker**: Before submitting your application, run your resume through our [ATS checker](https://www.thetailorcv.com/solutions) to ensure it meets the necessary criteria.
 
 By integrating these strategies and insights into your preparation, you can confidently address your career gap in interviews and present yourself as a strong candidate.
+
+## Conclusion
+
+Explaining a career gap in a job interview can be a daunting task, but with the right approach and preparation, you can turn what might be perceived as a negative into a positive. Focus on honesty, demonstrate how you've stayed productive, and convey your enthusiasm for the role you're applying for. By following the tips and examples in this guide, you'll be well-equipped to tackle any questions about your career gaps confidently. Remember, your unique experiences can set you apart in a competitive job market.
 
 ## Frequently Asked Questions
 

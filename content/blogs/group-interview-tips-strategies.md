@@ -121,6 +121,10 @@ Freshers often face group interviews in campus drives - see [campus placement pr
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Scenario-Based Group Interview Practice
 
 One of the best ways to prepare for a group interview is to simulate the experience. Gather a few friends or peers and conduct mock group interviews. Here’s a step-by-step guide on how to organize this practice:

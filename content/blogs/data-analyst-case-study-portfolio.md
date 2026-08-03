@@ -65,12 +65,6 @@ Do not over-design the [portfolio](https://thetailorcv.com/blog/how-to-build-pro
 
 ---
 
-## Conclusion
-
-A strong [data analyst case study](https://thetailorcv.com/blog/data-analyst-portfolio-guide) proves business thinking and technical skill together. Link it from your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026), then use the [ATS score checker](/solutions) to make sure your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026) reflects the same tools and outcomes.
-
----
-
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the [target role](https://thetailorcv.com/blog/resume-matching-data-analyst), update one part of the application, test the result, then repeat. That is especially important for your data analyst [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) because small wording choices can change how recruiters and ATS systems understand your fit.
@@ -154,6 +148,12 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
+
+---
+
+## Conclusion
+
+A strong [data analyst case study](https://thetailorcv.com/blog/data-analyst-portfolio-guide) proves business thinking and technical skill together. Link it from your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026), then use the [ATS score checker](/solutions) to make sure your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026) reflects the same tools and outcomes.
 
 ---
 

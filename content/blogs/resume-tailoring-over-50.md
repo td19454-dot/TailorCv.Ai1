@@ -190,6 +190,10 @@ They are designed for modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-s
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Step 6: Update Your Email and Digital Presence
 
 Your email address matters.

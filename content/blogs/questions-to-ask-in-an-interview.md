@@ -98,6 +98,10 @@ Prepare 6-8 questions (you may only get to ask 3-4, and some may be answered dur
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 ## Questions That Show Deep Research (Use Sparingly, One or Two)
 
 33. I read that the company recently [launched X / entered Y market / raised funding]. How does this role contribute to that?

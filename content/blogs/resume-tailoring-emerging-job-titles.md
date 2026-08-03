@@ -226,6 +226,10 @@ Key resume signals: ESG reporting, sustainability initiative outcomes, industry 
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## The Application Timing Advantage
 
 Emerging roles are easier to get into before they become mainstream.

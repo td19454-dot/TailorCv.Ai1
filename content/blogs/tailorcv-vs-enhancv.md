@@ -113,6 +113,10 @@ So the most beautiful resume in the world, sent to a portal, gets filtered out j
 
 TailorCV starts from the posting. [Free ATS match score](/ats-analysis), exact missing keywords, and the AI **rewrites your bullets** to carry that language honestly — without inventing anything you did not do. About a minute per job.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## Round 5: The Chrome Extension
 
 **TailorCV wins — Enhancv does not have one.**

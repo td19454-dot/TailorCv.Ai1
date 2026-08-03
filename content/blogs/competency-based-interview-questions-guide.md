@@ -176,6 +176,10 @@ Manage pressure with [interview anxiety tips](https://thetailorcv.com/blog/inter
 
 This expanded guide aims to provide you with thorough preparation strategies and insights into competency-based interviews, ensuring you approach your next interview with confidence and clarity.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 ## Effective STAR Method Application in Interviews
 
 The STAR method (Situation, Task, Action, Result) is a structured approach for answering competency-based interview questions. Understanding how to effectively apply this method can significantly enhance your responses. Here’s a detailed breakdown of how to utilize the STAR method in your answers:

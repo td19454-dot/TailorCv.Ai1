@@ -118,6 +118,10 @@ See [common interview mistakes](https://thetailorcv.com/blog/common-interview-mi
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
 ## How to Practice Remote Interviews at Home
 
 1. **Simulate the exact setup** - use the same platform, camera, and room to create familiarity.

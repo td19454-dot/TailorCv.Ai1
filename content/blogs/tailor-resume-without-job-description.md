@@ -209,6 +209,10 @@ That is your [keyword guide](https://thetailorcv.com/blog/resume-keywords-guide)
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## The Universal Tailoring Principles (No JD Required)
 
 Whether you have a referral, are doing cold outreach, or are facing a vague posting - these principles apply:

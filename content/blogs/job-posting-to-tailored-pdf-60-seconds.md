@@ -46,6 +46,10 @@ Run the arithmetic across a real search and the compression compounds.
 
 Twenty-five applications a month at ten minutes each is over four hours of tailoring — the exact hours people do not have, so they skip it. At one minute each, it is twenty-five minutes total. That is not just time saved; it is the difference between tailoring every application and tailoring none by week three. The reply rate on twenty-five *matched* applications is a different universe from twenty-five generic ones, and our [tailored vs generic resume](/blog/tailored-vs-generic-resume) piece shows the gap. Speed here does not trade against quality — it *protects* quality by keeping the habit alive.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Once the content is right, the editor is where you make it fit - font size, spacing, accent colour and template, with a live page counter.
+
 ## The Objections, Answered Honestly
 
 Fast anything invites suspicion, and some of it is fair. Here are the real objections and honest answers.

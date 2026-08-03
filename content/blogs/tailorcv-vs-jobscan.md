@@ -111,6 +111,10 @@ By week three most people quit. They go back to one generic resume sent to eight
 
 TailorCV closes that gap in about a minute per job, under a hard rule: the AI may only rephrase and re-emphasise what is genuinely on your resume. It will not invent an employer, a project, or a skill. A resume that lies gets you caught in the interview, which is worse than never getting one.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## Round 5: What Else Is in the Box
 
 **TailorCV wins on breadth.**

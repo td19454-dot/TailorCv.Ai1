@@ -44,6 +44,10 @@ By hand: read the Wellfound posting closely (startups pack a lot into a short JD
 
 That last part matters on Wellfound: use the tool to get a tailored, matched draft fast, then add the specific, human touch a founder responds to. The tool removes the mechanical tailoring so you can spend your effort on the part that actually differentiates you at a startup — showing you care about their specific problem. It works the same across [LinkedIn](/blog/how-to-tailor-resume-on-linkedin), [Indeed](/blog/how-to-tailor-resume-on-indeed), [Naukri](/blog/how-to-tailor-resume-on-naukri) and [ATS boards](/blog/tailor-resume-on-greenhouse-lever-workday) too, so your whole search stays consistent.
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Formatting controls sit next to the live preview, so you can see the page count change as you adjust.
+
 ## Step by Step
 
 **Step 1 — Set your base resume once.** Upload your resume; make sure it is solid with a [free ATS score](/blog/how-to-check-ats-score-free) first, keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) and [parseable](/blog/ats-resume-parser-friendly-format), and lean toward impact and breadth if you are targeting startups. Do it fast with a [one-click tailor](/blog/one-click-resume-tailoring-how-it-works) rather than the [ten-minute manual grind](/blog/how-to-tailor-resume-in-5-minutes).

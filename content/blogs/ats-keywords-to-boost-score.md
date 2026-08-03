@@ -111,6 +111,10 @@ Same experience - the second version mirrors the job's keywords and quantifies i
 
 ---
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+Passed and failed checks are listed individually, so you can see exactly which part of the resume is costing you points.
+
 ## Common ATS Keyword Pitfalls: What to Avoid
 
 While optimizing your resume with [ATS keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) is crucial, it's equally important to recognize common pitfalls that can hinder your efforts. Here’s a list of mistakes to avoid:

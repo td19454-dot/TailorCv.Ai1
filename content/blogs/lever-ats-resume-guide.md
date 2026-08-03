@@ -109,6 +109,10 @@ Paste the Lever job posting into [TailorCV's resume optimizer](/solutions) to in
 
 6. **Proofread and Optimize**: Before submitting, proofread your resume for spelling and grammatical errors. Use an ATS checker to ensure your resume is optimized for Lever’s system.
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## Common Mistakes to Avoid When Applying to Lever
 
 - **Neglecting Keywords**: Failing to include specific keywords from the job description can result in your resume being overlooked. Make sure to integrate both required and preferred qualifications from the posting. Learn how to [Prioritize What You Match](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications).

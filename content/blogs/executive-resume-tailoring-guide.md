@@ -197,6 +197,10 @@ The keywords at executive level are different - "P&L ownership," "organizational
 
 ---
 
+![The TailorCV resume editor, with font size, line spacing and accent colour controls beside a one-page resume preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ## What to Leave Off an Executive Resume
 
 **Remove:**

@@ -105,6 +105,10 @@ While your resume is crucial, a well-crafted cover letter can complement your ap
 
 Once your resume gets you an interview, preparation is key. Utilizing TailorCV’s [AI mock interview](https://www.thetailorcv.com/mock-interview) can help you practice common interview questions and improve your confidence.
 
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
+
 ## Building Your Online Presence
 
 In addition to a polished resume, having a strong online presence can enhance your job search. Consider creating a portfolio website with TailorCV’s [portfolio website builder](https://www.thetailorcv.com/portfolio) to showcase your work and skills.

@@ -119,6 +119,10 @@ The waiting period is where most of the emotional damage happens, not because th
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
+
 ## Protecting Yourself Emotionally and Practically
 
 Ghosting has a way of feeling personal even when you intellectually know it probably isn't. It's worth naming that directly, because the emotional toll is real and it compounds across a long search.

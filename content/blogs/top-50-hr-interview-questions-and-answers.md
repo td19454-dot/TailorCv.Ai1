@@ -129,6 +129,10 @@ For "why are you leaving," always frame it forward — toward what you're moving
 
 ---
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
 ## Category 6: Team, Culture & Collaboration
 
 41. How do you handle working with a difficult colleague?

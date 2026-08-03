@@ -41,6 +41,10 @@ Make rescheduling easy for them by proposing two or three specific new time slot
 
 Keep the tone warm, appreciative, and confident — not apologetic to the point of sounding like you expect to be dropped.
 
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 ## Special case: rescheduling for a competing offer
 
 If you're rescheduling because you're juggling another opportunity, never say so — simply cite a scheduling conflict and offer alternatives. Managing multiple processes is normal; the [negotiating multiple job offers guide](https://thetailorcv.com/blog/negotiating-multiple-job-offers) covers how to handle the bigger picture without burning bridges. Stay professional with every employer, because timelines shift and you want all options open.

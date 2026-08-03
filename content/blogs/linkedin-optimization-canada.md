@@ -110,6 +110,10 @@ LinkedIn's skills section feeds directly into how you're matched to recruiter se
 
 Optimising LinkedIn isn't a one-off task. Check your search appearances and profile views (LinkedIn shows these) to gauge whether your keywords and activity are landing — rising numbers are a good sign. Update your headline and About whenever your target role shifts, refresh your Experience with new quantified achievements, keep your network growing in your field and region, and stay lightly but consistently active. Think of your profile as a living asset: a little maintenance each month keeps you visible to recruiters and ready the moment the right opportunity appears.
 
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+This is the step most people skip - checking against the real job description rather than optimising in the abstract.
+
 ## Turning Profile Views Into Conversations
 
 Getting found only matters if it leads somewhere. Respond promptly and professionally to recruiter messages — even to politely decline roles that aren't a fit, since you're building relationships for the future. When someone views your profile, it can be a natural moment to connect with a short, friendly note. And when you spot a role you want at a company where you have a connection, ask for a referral before applying cold. LinkedIn's real power isn't the profile itself — it's the doors it opens and the follow-through that walks you through them.
