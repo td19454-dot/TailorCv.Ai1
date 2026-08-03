@@ -2058,3 +2058,61 @@ header.navbar {
   }
   @keyframes tcx-bar-grow { from { transform: scaleX(0); transform-origin: left; } to { transform: scaleX(1); } }
 }
+
+/* ---- Highlighted sections (mistakes / examples) ---- */
+.blog-detail-page .post-content .callout-box {
+  max-width: 1000px;
+  margin: 30px 0;
+  padding: 22px 28px 6px;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #94a3b8;
+  border-radius: 10px;
+  background: #ffffff;
+}
+.blog-detail-page .post-content .callout-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.blog-detail-page .post-content .callout-ico { flex: 0 0 auto; line-height: 0; }
+.blog-detail-page .post-content .callout-ico svg { width: 22px; height: 22px; display: block; }
+
+/* the heading sits inline with the icon, so strip its section chrome */
+.blog-detail-page .post-content .callout-head h2,
+.blog-detail-page .post-content .callout-head h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 1.16rem !important;
+  font-weight: 800 !important;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .callout-head .anchor-link { display: none; }
+
+.blog-detail-page .post-content .callout-mistake {
+  border-top-color: #ef4444;
+  background: #fffafa;
+}
+.blog-detail-page .post-content .callout-mistake .callout-ico svg circle { fill: #ef4444; }
+.blog-detail-page .post-content .callout-mistake .callout-head h2,
+.blog-detail-page .post-content .callout-mistake .callout-head h3 { color: #b42318 !important; }
+
+.blog-detail-page .post-content .callout-example {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .callout-example .callout-ico svg circle { fill: #16a34a; }
+.blog-detail-page .post-content .callout-example .callout-head h2,
+.blog-detail-page .post-content .callout-example .callout-head h3 { color: #15803d !important; }
+
+/* blockquotes inside an example read as the sample text itself */
+.blog-detail-page .post-content .callout-example blockquote {
+  border-color: #bbf7d0;
+  border-left-color: #16a34a;
+  background: #f0fdf4;
+}
+
+@media (max-width: 680px) {
+  .blog-detail-page .post-content .callout-box { padding: 18px 18px 4px; }
+}
