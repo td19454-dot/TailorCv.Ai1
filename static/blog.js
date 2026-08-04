@@ -507,14 +507,19 @@
     });
     const preferredHref = preferredAnchor ? preferredAnchor.getAttribute("href") || "" : "";
     const preferredText = preferredAnchor ? normalizeText(preferredAnchor) : "";
-    const profile = profiles.find((item) => item.test(preferredHref, preferredText)) || {
+    let profile = profiles.find((item) => item.test(preferredHref, preferredText)) || {
       title: "Your resume should be easy to read and easy to rank.",
       text: "Check the match before you send it, then tune the words, sections, and formatting for the role.",
       label: "Try a free resume scan",
       fallback: "/solutions",
       art: "resume",
     };
-    const ctaHref = preferredAnchor ? preferredAnchor.href : profile.fallback;
+    // Same reasoning: the server already matched this post to a tool, so send
+    // the reader there rather than to whichever product link appeared first.
+    const serverUrl = content.dataset.ctaUrl;
+    const serverLabel = content.dataset.ctaLabel;
+    const ctaHref = serverUrl || (preferredAnchor ? preferredAnchor.href : profile.fallback);
+    if (serverLabel) profile = Object.assign({}, profile, { label: serverLabel });
 
     const cta = document.createElement("aside");
     cta.className = "article-cta-strip";
@@ -545,10 +550,17 @@
     const content = document.querySelector(".post-content");
     if (!content || content.querySelector(".end-cta")) return;
 
+    // Use the CTA the SERVER picked from the post's topic (blog_cta in
+    // main.py) - the same one the hero and sidebar show. Reading it off the
+    // mid-article strip instead meant a tailoring guide that happened to link
+    // to the portfolio builder ended with "Build your portfolio", contradicting
+    // its own sidebar.
     const strip = content.querySelector(".article-cta-strip");
     const stripLink = strip ? strip.querySelector(".article-cta-button") : null;
-    const href = stripLink ? stripLink.getAttribute("href") : "/solutions";
-    const label = stripLink ? (stripLink.textContent || "").trim() : "Try a free resume scan";
+    const href = content.dataset.ctaUrl ||
+                 (stripLink ? stripLink.getAttribute("href") : "/solutions");
+    const label = content.dataset.ctaLabel ||
+                  (stripLink ? (stripLink.textContent || "").trim() : "Try a free resume scan");
 
     const box = document.createElement("aside");
     box.className = "end-cta";
