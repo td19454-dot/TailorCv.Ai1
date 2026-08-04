@@ -10,6 +10,14 @@ slug: resume-tailoring-freelance-contract
 keywords: freelance resume tailoring, contract job resume, how to list freelance work on resume, contract vs permanent resume, gig worker resume 2026
 ---
 
+## Key Takeaways
+
+- Contract hiring managers prioritize proven delivery in short timeframes, while permanent hiring managers focus on long-term commitment and cultural fit.
+- Tailor your resume for contract roles by emphasizing project outcomes rather than duration of employment.
+- Match your skills section to the specific requirements listed in the contract job description for better alignment.
+- Highlight your ability to onboard quickly and deliver results promptly to appeal to contract employers.
+
+
 You have been freelancing for three years.
 
 You have worked with eight different clients.
@@ -33,13 +41,6 @@ This is the same core challenge as [startup vs enterprise resume tailoring](http
 This guide breaks down what each wants - and how to [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) to win both.
 
 ---
-
-## Key Takeaways
-
-- Contract hiring managers prioritize proven delivery in short timeframes, while permanent hiring managers focus on long-term commitment and cultural fit.
-- Tailor your resume for contract roles by emphasizing project outcomes rather than duration of employment.
-- Match your skills section to the specific requirements listed in the contract job description for better alignment.
-- Highlight your ability to onboard quickly and deliver results promptly to appeal to contract employers.
 
 ## The Core Difference: Contract vs. Permanent Hiring Logic
 
@@ -264,13 +265,13 @@ Only if they are publicly referenceable. Some contracts require confidentiality.
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Handle Job Hopping on a Resume](https://thetailorcv.com/blog/resume-tailoring-job-hopping)
-- How to Explain Resume Gaps
-- Resume Matching for Career Changers
-- How to Write a Resume Summary
-- ATS Score Guide
-- Managing Multiple Resume Versions
-- Remote Job Search Guide
-- Personal Branding for Professionals
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 
 ---
 

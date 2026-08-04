@@ -74,8 +74,8 @@ A phone screen is a filter, and [recruiters](https://thetailorcv.com/blog/how-to
 - **Badmouthing a current or former [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).** It signals you will do the same to them.
 - **Not knowing what role you applied for.** If you are applying widely, keep notes so you are never caught flat.
 - **Vague [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) evasion.** A confident range keeps things moving; total deflection frustrates [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
-- **Low energy or distraction.** Background noise, obvious multitasking, or one-word answers read as disinterest.
-- **No questions at the end.** It suggests you have not thought seriously about the role.
+- **Low energy or distraction.** Background noise, obvious multitasking, or one-word [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) read as disinterest.
+- **No [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) at the end.** It suggests you have not thought seriously about the role.
 
 
 ## Prepare Your Own Questions
@@ -89,7 +89,7 @@ A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 1. **Genuine interest.** Do you actually want *this* role, or are you applying to everything? A specific [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) to "why this job" checks this box.
 2. **Compensation fit.** Are your expectations in the company's range? This is why they raise [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) early — to avoid investing in a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) they cannot afford.
 3. **Basic qualification and logistics.** Eligibility, location or time zone, availability, notice period. Boring but disqualifying if there is a mismatch.
-4. **Communication.** Can you explain your experience clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
+4. **Communication.** Can you explain your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
 
 Everything else in the call is secondary. If you clear those four, you almost always advance.
 
@@ -102,7 +102,7 @@ A phone screen is a two-way read. Pay attention to what the [recruiter](https://
 The screen is not just a filter to survive; it is your chance to actively advance. Three moves make a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) want to push you forward:
 
 - **Match your language to the posting.** When you describe your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) in the exact terms the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses, the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can easily "sell" you to the hiring manager.
-- **Show low-friction enthusiasm.** Recruiters are also assessing whether you will accept an offer. Genuine, specific interest makes you a safer bet to advance.
+- **Show low-friction enthusiasm.** [Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are also assessing whether you will accept an offer. Genuine, specific interest makes you a safer bet to advance.
 - **Ask about the process.** "What do the next rounds look like?" signals you are serious and helps you prepare. It also subtly moves the conversation toward next steps.
 
 ## A Sample Phone Screen, Start to Finish

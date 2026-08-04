@@ -10,8 +10,6 @@ slug: marketing-portfolio-guide
 keywords: marketing portfolio, digital marketing portfolio, campaign case study, marketing results portfolio
 ---
 
-Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
-
 ## Key Takeaways
 
 - Focus on showcasing measurable results in your marketing portfolio, such as traffic, leads, and revenue, rather than just deliverables.
@@ -19,6 +17,9 @@ Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you s
 - Handle NDA work by describing the impact without naming clients, using rounded numbers to maintain clarity.
 - Ensure your resume, LinkedIn, and portfolio tell a consistent story to avoid confusing recruiters.
 - Avoid common mistakes like lacking metrics, having an unfocused layout, and including dead links in your portfolio.
+
+
+Marketing portfolios live and die on numbers. Anyone can show a pretty ad; you show what it **did** - the traffic, the leads, the revenue. The fastest way to stand out is to be relentlessly outcome-focused. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide).
 
 ## Lead With Results
 For each campaign, present: the goal, the audience, the strategy and channels, the creative, and the **results** (traffic, leads, ROAS, revenue). A traffic graph beats a paragraph of adjectives.
@@ -157,15 +158,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Digital Marketing Resume 2026](https://thetailorcv.com/blog/digital-marketing-resume-2026)
 - [Marketing Manager Resume 2026](https://thetailorcv.com/blog/marketing-manager-resume-2026)
-- Content Writer Portfolio Guide
-- How to Quantify Resume Achievements
-- Personal Branding for Professionals
-- How to Write a Portfolio Case Study
-- LinkedIn Profile Optimization Guide
-- Portfolio Checklist Before You Apply
-- Portfolio Mistakes to Avoid
-- Portfolio SEO: Get Found
-- Best Portfolio Website Builders 2026
+- [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
 
 ## Make This Practical
 
@@ -183,8 +184,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

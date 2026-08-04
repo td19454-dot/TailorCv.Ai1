@@ -10,6 +10,14 @@ slug: how-to-write-resume-bullet-points
 keywords: how to write resume bullet points, resume bullet point examples, strong resume bullets, resume achievement bullets, resume work experience bullets, resume bullet formula, resume impact statements
 ---
 
+## Key Takeaways
+
+- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
+- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
+- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
+- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
+
+
 Most [resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) are weak. They describe job duties rather than accomplishments, use passive language, and give recruiters nothing memorable to anchor their evaluation. A few simple changes to how you write bullets can dramatically increase your callback rate.
 
 This guide gives you the formula, real before-and-after examples, and the rules that separate a good bullet from a forgettable one.
@@ -17,13 +25,6 @@ This guide gives you the formula, real before-and-after examples, and the rules 
 Before polishing your bullets, make sure your overall resume scores well with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) and is built on an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
 ---
-
-## Key Takeaways
-
-- Resume bullet points should focus on accomplishments rather than just job duties to stand out to recruiters.
-- A strong bullet point includes an action, method or skill, and the impact or result, ideally quantified.
-- Use specific formulas for crafting bullet points: Action + Result, Action + Method + Result, or Action + Scale + Result for senior roles.
-- Transform weak bullet points into strong ones by adding measurable outcomes and specific actions taken.
 
 ## Why Bullet Points Matter So Much
 
@@ -188,11 +189,11 @@ ATS systems scan your bullet points for keyword matches. Tailor your verb choice
 - [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- The Anatomy of a Perfect Resume
-- How Recruiters Read Resumes in Under 10 Seconds
-- Resume Keywords Guide
-- ATS Score Guide
-- Resume Proofreading Checklist
+- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
+- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
+- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
 
 ---
 

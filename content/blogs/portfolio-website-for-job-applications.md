@@ -10,8 +10,6 @@ slug: portfolio-website-for-job-applications
 keywords: portfolio website for job applications, job seeker portfolio, resume portfolio website, personal portfolio for jobs
 ---
 
-A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-portfolio) gives recruiters proof beyond your resume, but most applicants stop at "build the site" and never think through how it actually gets used inside an application. Where you place the link, how you describe it, and what a recruiter sees in the first few seconds after clicking matter as much as the projects themselves. This post is about that second half of the problem: getting a finished [portfolio](https://www.thetailorcv.com/portfolio) to actually do work for you during the application process, not just exist somewhere online.
-
 ## Key Takeaways
 
 - A portfolio website enhances your job application by providing proof of your skills beyond a resume, but its effectiveness depends on how you present it.
@@ -19,6 +17,9 @@ A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-por
 - Place your portfolio link in high-visibility areas such as your resume header, cover letter closing, LinkedIn profile, and application forms to ensure recruiters see it.
 - In quick-apply scenarios where dedicated portfolio fields are absent, always include the link in your resume to maintain accessibility for recruiters.
 - If submitting a cover letter as free text, reference your portfolio link to guide recruiters to your work effectively.
+
+
+A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-portfolio) gives recruiters proof beyond your resume, but most applicants stop at "build the site" and never think through how it actually gets used inside an application. Where you place the link, how you describe it, and what a recruiter sees in the first few seconds after clicking matter as much as the projects themselves. This post is about that second half of the problem: getting a finished [portfolio](https://www.thetailorcv.com/portfolio) to actually do work for you during the application process, not just exist somewhere online.
 
 ## Who Actually Needs a Portfolio Link in an Application
 

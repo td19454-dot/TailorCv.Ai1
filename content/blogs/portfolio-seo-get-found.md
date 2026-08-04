@@ -6,12 +6,6 @@ slug: portfolio-seo-get-found
 image: public/blog-images/portfolio-seo-get-found.webp
 ---
 
-## Portfolio SEO: How to Get Your Portfolio Found on Google
-
-A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
-
-
-
 ## Key Takeaways
 
 - Optimize your portfolio with a clear title tag and meta description to improve visibility in search results.
@@ -19,6 +13,12 @@ A portfolio nobody can find still helps inside applications - but with a little 
 - Create content like case studies and blog posts to provide valuable information for recruiters and enhance search indexing.
 - Ensure technical SEO best practices are followed, including mobile optimization, page speed, and structured data implementation.
 - Keep your resume and portfolio consistent in messaging to avoid confusing recruiters and maximize interview opportunities.
+
+## Portfolio SEO: How to Get Your Portfolio Found on Google
+
+A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
+
+
 
 ## On-Page Basics
 
@@ -154,15 +154,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
-- LinkedIn Profile Optimization Guide
-- How to Host Your Portfolio for Free
-- Portfolio Domain Name Guide
-- How to Write a Portfolio Case Study
-- Best Portfolio Website Builders 2026
-- Portfolio Mistakes to Avoid
-- GitHub Portfolio Optimization
-- Portfolio Checklist Before You Apply
-- Personal Website vs Portfolio
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 

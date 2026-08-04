@@ -10,10 +10,6 @@ keywords: cover letter for jobs in japan, japanese cover letter, how to write a 
 image: public/blog-images/japanese-cover-letter-guide.png
 ---
 
-The cover letter's role in Japan depends heavily on the employer. Traditional Japanese hiring centres on the *rirekisho* and *shokumu-keirekisho*, where your motivation is expressed in the *shibō dōki* (motivation) section rather than a separate letter. But at global companies, tech firms, and international roles — the ones many foreigners target — a Western-style cover letter is often expected, and a strong one can set you apart. Either way, the tone that wins in Japan is consistent: sincere, respectful, specific to the company, and focused on long-term commitment.
-
-This guide explains how to write a cover letter for jobs in Japan in 2026: when it's needed, how to structure it, the tone to strike, and how foreigners can make a respectful, compelling case.
-
 ## Key Takeaways
 
 - Whether a separate cover letter is expected **depends on the employer** — common at global/English roles, less so at traditional firms (where motivation lives in the rirekisho).
@@ -21,6 +17,11 @@ This guide explains how to write a cover letter for jobs in Japan in 2026: when 
 - Your **motivation (*shibō dōki*)** — why *this* company — is the heart of any Japanese application.
 - Emphasise **commitment, teamwork, and long-term fit**, not just individual achievement.
 - Keep it concise, polished, and tailored to each role.
+
+
+The cover letter's role in Japan depends heavily on the employer. Traditional Japanese hiring centres on the *rirekisho* and *shokumu-keirekisho*, where your motivation is expressed in the *shibō dōki* (motivation) section rather than a separate letter. But at global companies, tech firms, and international roles — the ones many foreigners target — a Western-style cover letter is often expected, and a strong one can set you apart. Either way, the tone that wins in Japan is consistent: sincere, respectful, specific to the company, and focused on long-term commitment.
+
+This guide explains how to write a cover letter for jobs in Japan in 2026: when it's needed, how to structure it, the tone to strike, and how foreigners can make a respectful, compelling case.
 
 ## Do You Need a Cover Letter in Japan?
 
@@ -125,7 +126,7 @@ If relevant, note your **JLPT** and **TOEIC** levels — trusted, concrete signa
 
 - Match your resume format to the employer — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
 - Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the AI mock interview.
-- Find the right roles via the best job sites for Japan and how to find a job in Tokyo.
+- Find the right roles via the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 
 ## Frequently Asked Questions
 

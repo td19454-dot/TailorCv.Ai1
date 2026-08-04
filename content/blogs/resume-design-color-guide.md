@@ -10,14 +10,6 @@ slug: resume-design-color-guide
 keywords: resume design 2026, resume color guide, should resume have color, professional resume colors, best resume design, resume aesthetics, colorful resume pros cons, resume visual design
 ---
 
-Should your resume be black and white or colorful? Simple or designed? The honest answer: it depends on your industry - but in almost every case, the simpler and more [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible your design, the better your chances of getting through the process.
-
-This guide breaks down exactly when and how to use color and design elements on a resume, what looks professional versus gimmicky, and how to balance visual appeal with [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility.
-
-Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) that has the right design baked in. Test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm your design choices are not breaking parsing.
-
----
-
 ## Key Takeaways
 
 - The effectiveness of resume design and color largely depends on the industry; simpler, ATS-compatible designs generally perform better.
@@ -25,6 +17,15 @@ Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) tha
 - Use minimal and strategic color to enhance visual hierarchy, but avoid bright or multiple colors that can distract from content.
 - Creative industries can afford more design latitude, but resumes must remain legible and professional while being ATS-compatible.
 - Conservative industries prefer clean, black-and-white resumes, as excessive design may signal a lack of cultural awareness.
+
+
+Should your resume be black and white or colorful? Simple or designed? The honest answer: it depends on your industry - but in almost every case, the simpler and more [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible your design, the better your chances of getting through the process.
+
+This guide breaks down exactly when and how to use color and design elements on a resume, what looks professional versus gimmicky, and how to balance visual appeal with [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility.
+
+Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) that has the right design baked in. Test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm your design choices are not breaking parsing.
+
+---
 
 ## The Core Rule: Substance Over Style
 
@@ -162,10 +163,10 @@ Run your designed resume through the [TailorCV ATS checker](https://www.thetailo
 - [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
 - [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- How to Make Your Resume ATS-Friendly
-- How Recruiters Read Resumes in Under 10 Seconds
-- How to Choose the Right Resume Template
-- Should You Put a Photo on Your Resume?
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
+- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
+- [Should You Put a Photo on Your Resume?](https://thetailorcv.com/blog/photo-on-resume)
 
 ---
 

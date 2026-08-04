@@ -10,14 +10,6 @@ slug: resume-file-format-guide
 keywords: resume file format, PDF vs Word resume, should resume be PDF or Word, how to name resume file, resume file name, docx vs pdf resume, resume format 2026
 ---
 
-You have written a great resume. Now - should you save it as a PDF or a Word document? And what should you name the file? These seem like trivial questions, but the wrong choice can cause formatting to break, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems to parse incorrectly, or your file to get lost in a recruiter's inbox.
-
-This guide gives you clear rules for file format and naming so your resume reaches every reviewer the way you intended it to look.
-
-For the content of your resume, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and start from an [ATS-friendly template](https://www.thetailorcv.com/templates). Test your resume for ATS compatibility with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Save your resume as a PDF unless the job posting specifically requests a Word document (.docx).
@@ -25,6 +17,15 @@ For the content of your resume, read [the anatomy of a perfect resume](https://t
 - Word documents may be necessary if explicitly requested by employers or for certain older ATS systems.
 - Avoid using formats like .pages, .rtf, Google Docs links, .txt, or image files, as they can cause compatibility issues.
 - Most modern ATS systems handle both PDF and Word formats well, but be cautious of specific requirements.
+
+
+You have written a great resume. Now - should you save it as a PDF or a Word document? And what should you name the file? These seem like trivial questions, but the wrong choice can cause formatting to break, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems to parse incorrectly, or your file to get lost in a recruiter's inbox.
+
+This guide gives you clear rules for file format and naming so your resume reaches every reviewer the way you intended it to look.
+
+For the content of your resume, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and start from an [ATS-friendly template](https://www.thetailorcv.com/templates). Test your resume for ATS compatibility with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## PDF vs Word: The Short Answer
 
@@ -193,10 +194,10 @@ Note: Design-heavy tools like Canva may produce PDFs with text embedded as graph
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- How to Tailor Your Resume for Every Job
-- Resume Proofreading Checklist
-- Resume Margins, Spacing and Layout
-- Best Resume Fonts for 2026
+- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
+- [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
 
 ---
 

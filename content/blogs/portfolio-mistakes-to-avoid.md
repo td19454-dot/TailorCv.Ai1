@@ -6,8 +6,6 @@ slug: portfolio-mistakes-to-avoid
 image: public/blog-images/portfolio-mistakes-to-avoid.webp
 ---
 
-A weak portfolio can sink a strong candidate. The good news: almost every portfolio mistake is fast to fix once you know to look for it. Here are the 11 that cost the most interviews, with the fix for each. Pair this with the [Portfolio Checklist: 20 Things to Check Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and the full [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-
 ## Key Takeaways
 
 - Prioritize quality over quantity by showcasing 3-5 strong projects instead of many weaker ones.
@@ -15,6 +13,9 @@ A weak portfolio can sink a strong candidate. The good news: almost every portfo
 - Provide context for each project by clearly stating the problem, target audience, constraints, and your role.
 - Ensure your portfolio is technically sound by checking for dead links and optimizing for mobile and speed.
 - Keep your portfolio updated with fresh content and a clear contact path to facilitate hiring opportunities.
+
+
+A weak portfolio can sink a strong candidate. The good news: almost every portfolio mistake is fast to fix once you know to look for it. Here are the 11 that cost the most interviews, with the fix for each. Pair this with the [Portfolio Checklist: 20 Things to Check Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and the full [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Content Mistakes
 
@@ -143,15 +144,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- Portfolio Contact Section
-- Portfolio SEO: Get Found
-- Portfolio About Me Section
-- How to Quantify Resume Achievements
-- 15 Developer Portfolio Project Ideas
-- What to Put in Your Portfolio With No Projects
-- How to Host Your Portfolio for Free
-- Turn Your Resume Into a Portfolio in Minutes
-- How to Add Your Portfolio Link to Your Resume
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
 
 ## Make This Practical
 

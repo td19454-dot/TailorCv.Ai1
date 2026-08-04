@@ -68,8 +68,8 @@ A few avoidable errors sink otherwise strong candidates:
 - **No service metrics.** Add passenger counts, ratings, or languages — [quantify](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) where you can.
 - **Hiding languages.** They're a top differentiator — list them with [honest levels](https://thetailorcv.com/blog/bilingual-language-skills-on-resume).
 - **Generic customer-service phrasing.** Show specific, real situations, not clichés — a classic [generic resume mistake](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
-- **Typos on a customer-facing role.** Proofread carefully; presentation is part of the audition.
-- **One resume for every airline.** Tailor to each carrier's brand and requirements.
+- **Typos on a customer-facing role.** [Proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) carefully; presentation is part of the audition.
+- **One resume for every airline.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each carrier's brand and requirements.
 
 For a broader view of what quietly costs interviews, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 

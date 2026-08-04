@@ -10,16 +10,17 @@ keywords: recruiter ghosting after interview, no response after interview, recru
 image: public/blog-images/recruiter-ghosting-after-interview.webp
 ---
 
-You had a great interview, felt genuine momentum, and then - silence. No email, no LinkedIn reply, no answer to the voicemail you left three days ago. Recruiter ghosting after an interview is one of the more disorienting parts of a modern job search, partly because the silence itself gives you nothing to work with - no rejection to process, no offer to celebrate, just an open loop your brain keeps returning to. This guide walks through why it happens, how long is genuinely normal to wait, exactly what to send and when, and how to keep your search moving instead of stalling out on one company's inbox. If you also want to check whether your resume made it past the first screen at all, the [free ATS score checker](https://www.thetailorcv.com/solutions) is a useful gut check while you wait.
-
----
-
 ## Key Takeaways
 
 - Recruiter ghosting often stems from internal processes and circumstances unrelated to your interview performance, such as budget cuts or internal candidates being preferred.
 - It's normal to wait 3-5 business days after an interview before interpreting silence, as various internal discussions take time.
 - If given a specific timeline for feedback, wait until one business day after that date to follow up, as delays are common.
 - After two polite follow-ups with no response over 2-3 weeks, it's reasonable to consider the process closed, even without formal rejection.
+
+
+You had a great interview, felt genuine momentum, and then - silence. No email, no LinkedIn reply, no answer to the voicemail you left three days ago. Recruiter ghosting after an interview is one of the more disorienting parts of a modern job search, partly because the silence itself gives you nothing to work with - no rejection to process, no offer to celebrate, just an open loop your brain keeps returning to. This guide walks through why it happens, how long is genuinely normal to wait, exactly what to send and when, and how to keep your search moving instead of stalling out on one company's inbox. If you also want to check whether your resume made it past the first screen at all, the [free ATS score checker](https://www.thetailorcv.com/solutions) is a useful gut check while you wait.
+
+---
 
 ## Why Recruiters Go Silent (It's Rarely About You)
 

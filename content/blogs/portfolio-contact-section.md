@@ -6,8 +6,6 @@ slug: portfolio-contact-section
 image: public/blog-images/portfolio-contact-section.webp
 ---
 
-You can have a brilliant portfolio and still lose opportunities if the contact path is buried or broken. The contact section is where interest becomes action - treat it like a conversion point, not an afterthought. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section).
-
 ## Key Takeaways
 
 - Treat the contact section as a conversion point by including a clear primary call-to-action (CTA) and a clickable email or contact form.
@@ -15,6 +13,9 @@ You can have a brilliant portfolio and still lose opportunities if the contact p
 - Position the contact CTA prominently in the navigation and repeat it after project showcases to capture interest at its peak.
 - Build trust by using a professional design, including a real photo or logo, and stating response time expectations.
 - Keep your resume, LinkedIn, and portfolio consistent to avoid confusion for recruiters and ensure all content is regularly updated.
+
+
+You can have a brilliant portfolio and still lose opportunities if the contact path is buried or broken. The contact section is where interest becomes action - treat it like a conversion point, not an afterthought. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section).
 
 ## What to Include
 - A clear primary CTA ("Hire me," "Let's talk," "Work with me")
@@ -135,15 +136,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
 - [Resume Contact Section](https://thetailorcv.com/blog/resume-contact-section)
-- LinkedIn Profile Optimization Guide
-- Portfolio Mistakes to Avoid
-- How to Add Your Portfolio Link to Your Resume
-- Portfolio Checklist Before You Apply
-- Personal Branding for Professionals
-- Portfolio SEO: Get Found
-- Portfolio vs Resume
-- Turn Your Resume Into a Portfolio in Minutes
-- How to Host Your Portfolio for Free
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
 
 ## Make This Practical
 

@@ -10,6 +10,14 @@ slug: resume-tailoring-emerging-job-titles
 keywords: AI engineer resume, prompt engineer resume 2026, emerging job titles resume, new tech jobs resume tailoring, how to apply for AI jobs, GenAI resume tips
 ---
 
+## Key Takeaways
+
+- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
+- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
+- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
+- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
+
+
 Three years ago, "Prompt Engineer" did not exist as a job title.
 
 Two years ago, a handful of companies listed it.
@@ -34,13 +42,6 @@ And they are almost impossible to tailor a resume for using traditional advice -
 This guide gives you the strategy for breaking into emerging roles before the market catches up to them. For context on what makes these roles challenging to apply for, see also [how to tailor your resume when you're underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified) - the same principles of reframing transferable experience apply here.
 
 ---
-
-## Key Takeaways
-
-- Emerging job titles like "AI Engineer" and "Prompt Engineer" lack standardized job descriptions and skill sets, making resume tailoring challenging.
-- To tailor your resume effectively, analyze 10-15 job descriptions to identify common skills and responsibilities across postings.
-- Research LinkedIn profiles of individuals in your target roles to understand their backgrounds, emphasized skills, and daily work descriptions.
-- Investigate the specific AI stack used by companies before applying, as context is crucial for emerging roles.
 
 ## The Challenge With Emerging Roles
 
@@ -275,13 +276,13 @@ Absolutely. For emerging roles, personal projects are primary evidence. They sho
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Projects in Resume for Freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Machine Learning Engineer Resume 2026](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
-- Data Scientist Resume 2026
-- Resume Tailoring When Underqualified
-- How to Write a Resume with AI
-- Skills to Add to Your Resume in 2026
-- How to Build a Professional Portfolio
-- Career Change to Tech Guide
-- AI Resume Tailoring - Human Voice Guide
+- [Data Scientist Resume 2026](https://thetailorcv.com/blog/data-scientist-resume-2026)
+- [Resume Tailoring When Underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified)
+- [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [Career Change to Tech Guide](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [AI Resume Tailoring - Human Voice Guide](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice)
 
 ---
 

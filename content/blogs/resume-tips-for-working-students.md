@@ -25,7 +25,7 @@ For early-career students, a slightly different structure works best:
 1. **Summary or objective** — one line on your field and goal. See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary).
 2. **Education** — near the top while you're a student, with your degree, expected graduation, and GPA if strong. See [how to list education](https://thetailorcv.com/blog/how-to-list-education-on-resume).
 3. **Experience & projects** — combined if needed, with [quantified bullets](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
-4. **Skills** — tools, software, and languages you actually use, per the skills section guide.
+4. **Skills** — tools, software, and languages you actually use, per the [skills section guide](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
 
 Use a [clean, ATS-friendly template](https://www.thetailorcv.com/templates), and for section order see the [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide).
 

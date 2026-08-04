@@ -10,10 +10,6 @@ keywords: ats english resume japan, english resume for jobs in japan, applicant 
 image: public/blog-images/ats-english-resume-japan.png
 ---
 
-Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
-
-This guide explains how ATS and English resumes work for jobs in Japan in 2026: when an English resume is the right tool, how these employers screen, and how to build a resume that passes the filters and reaches a human.
-
 ## Key Takeaways
 
 - Many **global companies, tech firms, and startups in Japan** hire in English and use **ATS** to screen resumes.
@@ -21,6 +17,11 @@ This guide explains how ATS and English resumes work for jobs in Japan in 2026: 
 - ATS software **parses and ranks** resumes by keywords and formatting; a poorly formatted resume can be filtered out before a human sees it.
 - **Keyword matching** to each job description is the single most important optimisation.
 - Traditional Japanese firms still expect Japanese-format documents — know which type of employer you're applying to.
+
+
+Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
+
+This guide explains how ATS and English resumes work for jobs in Japan in 2026: when an English resume is the right tool, how these employers screen, and how to build a resume that passes the filters and reaches a human.
 
 ## When to Use an English Resume in Japan
 
@@ -90,7 +91,7 @@ Even on an English resume for a global employer in Japan, feature:
 - Add a targeted cover letter where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
 - Optimise your LinkedIn, which global recruiters in Japan search directly.
 - Prepare for interviews — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- For tech and creative roles, link a portfolio — build one with the TailorCV portfolio builder.
+- For tech and creative roles, link a portfolio — build one with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
 To find these English-friendly employers, see the [best job sites for finding work in Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 

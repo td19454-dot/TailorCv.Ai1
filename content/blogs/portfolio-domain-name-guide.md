@@ -6,8 +6,6 @@ slug: portfolio-domain-name-guide
 image: public/blog-images/portfolio-domain-name-guide.webp
 ---
 
-Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
-
 ## Key Takeaways
 
 - Choose a domain name that reflects your personal brand, ideally using your name with a .com extension for credibility.
@@ -15,6 +13,9 @@ Your domain is your personal brand's address - the thing you say out loud in int
 - Ensure your domain is easy to spell, memorable, and consistent across social media platforms to avoid confusion.
 - Use reputable registrars for purchasing your domain, and enable WHOIS privacy to protect your personal information.
 - Keep your resume and portfolio aligned in branding and messaging to present a cohesive professional identity.
+
+
+Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Best Choice: Your Name
 **yourname.com** is ideal - memorable, professional, and timeless. If it is taken, try in roughly this order:
@@ -136,15 +137,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
 - [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
-- Personal Branding for Professionals
-- How to Add Your Portfolio Link to Your Resume
-- LinkedIn Profile Optimization Guide
-- Portfolio SEO: Get Found
-- Personal Website vs Portfolio
-- Portfolio Contact Section
-- Turn Your Resume Into a Portfolio in Minutes
-- Portfolio Checklist Before You Apply
-- Photographer Portfolio Guide
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide)
 
 ## Make This Practical
 
@@ -162,8 +163,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

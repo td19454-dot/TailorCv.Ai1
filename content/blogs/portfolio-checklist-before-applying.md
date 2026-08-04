@@ -10,8 +10,6 @@ slug: portfolio-checklist-before-applying
 keywords: portfolio checklist, portfolio before applying, portfolio review, is my portfolio ready, portfolio audit
 ---
 
-Before you send a single application, run your portfolio through this checklist. Five minutes here prevents the silent rejections that come from a dead link, a slow page, or a missing contact path. Pair this with [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-
 ## Key Takeaways
 
 - Include 3-5 strong projects in your portfolio, ensuring each has a clear problem, process, and outcome.
@@ -19,6 +17,9 @@ Before you send a single application, run your portfolio through this checklist.
 - Provide an obvious contact path and ensure your LinkedIn and GitHub links are correct.
 - Maintain consistency across your resume, LinkedIn, and portfolio by using the same name, headline, and key projects.
 - Regularly update your portfolio to reflect your latest work and seek feedback to catch any errors.
+
+
+Before you send a single application, run your portfolio through this checklist. Five minutes here prevents the silent rejections that come from a dead link, a slow page, or a missing contact path. Pair this with [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Content
 - [ ] 3-5 strong projects; weak ones removed ([15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas))
@@ -155,15 +156,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- Portfolio SEO: Get Found
-- Turn Your Resume Into a Portfolio in Minutes
-- Portfolio Contact Section
-- Portfolio About Me Section
-- How to Write a Portfolio Case Study
-- How to Quantify Resume Achievements
-- How to Host Your Portfolio for Free
-- Portfolio Domain Name Guide
-- GitHub Portfolio Optimization
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 
 ## Make This Practical
 
@@ -181,8 +182,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

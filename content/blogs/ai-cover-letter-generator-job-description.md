@@ -10,10 +10,6 @@ slug: ai-cover-letter-generator-job-description
 keywords: ai cover letter generator, cover letter generator job description, generate cover letter from resume, tailored cover letter
 ---
 
-An AI cover letter generator can turn your resume and a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) into a focused cover letter in minutes, but only if you feed it the right input. Paste in a job title and you get a generic letter that could apply to a thousand companies. Paste in the actual [job description](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast) and the tool has something real to work with: the employer's own language, their stated priorities, and the specific problems they are hiring someone to solve. This post is about that difference, and how to use it well.
-
-Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) after optimizing your resume with the [ATS score checker](https://www.thetailorcv.com/solutions) so the letter and the resume are pulling from the same tailored story.
-
 ## Key Takeaways
 
 - An AI cover letter generator produces better results when provided with a full job description rather than just a job title.
@@ -21,6 +17,11 @@ Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) af
 - Using the exact language from the job description in your cover letter signals alignment with the employer's expectations.
 - The generator can prioritize content and adjust tone based on the details provided in the job posting.
 - A cover letter generator works best when used in conjunction with a tailored resume, ensuring consistency in messaging and vocabulary.
+
+
+An AI cover letter generator can turn your resume and a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) into a focused cover letter in minutes, but only if you feed it the right input. Paste in a job title and you get a generic letter that could apply to a thousand companies. Paste in the actual [job description](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast) and the tool has something real to work with: the employer's own language, their stated priorities, and the specific problems they are hiring someone to solve. This post is about that difference, and how to use it well.
+
+Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) after optimizing your resume with the [ATS score checker](https://www.thetailorcv.com/solutions) so the letter and the resume are pulling from the same tailored story.
 
 ## Why the Job Description Changes Everything
 

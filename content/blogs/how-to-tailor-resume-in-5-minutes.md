@@ -10,12 +10,6 @@ slug: how-to-tailor-resume-in-5-minutes
 keywords: how to tailor a resume in 5 minutes, quick resume tailoring, resume customization checklist, tailor resume fast, resume tailoring tips
 ---
 
-The number one reason qualified candidates don't get interviews is sending the same resume to every job. The fix is not rewriting your resume - it is making five targeted changes in five minutes. This checklist tells you exactly what to change, in order, before every application.
-
-Run your tailored resume through the [free ATS checker](/solutions) to confirm your changes hit the mark.
-
----
-
 ## Key Takeaways
 
 - Tailoring your resume instead of sending a generic one significantly increases your chances of landing interviews.
@@ -23,6 +17,13 @@ Run your tailored resume through the [free ATS checker](/solutions) to confirm y
 - Highlight key terms from the job posting, including job title, required skills, and desired outcomes, to guide your changes.
 - Ensure your professional summary reflects the job's language and includes relevant skills and outcomes you can deliver.
 - Adjust your skills section to match the exact terminology used in the job posting and prioritize must-have skills.
+
+
+The number one reason qualified candidates don't get interviews is sending the same resume to every job. The fix is not rewriting your resume - it is making five targeted changes in five minutes. This checklist tells you exactly what to change, in order, before every application.
+
+Run your tailored resume through the [free ATS checker](/solutions) to confirm your changes hit the mark.
+
+---
 
 ## Why 5 Minutes Is Enough
 
@@ -162,15 +163,15 @@ Yes. Matching your headline, summary, and skills to the job description are the 
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
 - [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
 - [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- How Much Should You Change Your Resume for Every Job
-- How to Write a Resume Summary
-- How to Write a Resume Headline
-- How to Match Resume Keywords to Job Description
-- How to Check Your ATS Score for Free
-- How to Increase Your ATS Score
-- ATS Keywords - How to Find and Add Them to Boost Your Score
-- Resume Customization Checklist for Every Application
-- Resume Matching With Job Description - Complete Guide
+- [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
+- [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
+- [ATS Keywords - How to Find and Add Them to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [Resume Customization Checklist for Every Application](https://thetailorcv.com/blog/resume-customization-checklist)
+- [Resume Matching With Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 
 ---
 

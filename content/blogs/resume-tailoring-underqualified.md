@@ -10,6 +10,15 @@ slug: resume-tailoring-underqualified
 keywords: resume tailoring underqualified, how to apply when underqualified, resume when missing qualifications, underqualified job application tips, how to get job without meeting all requirements 2026
 ---
 
+## Key Takeaways
+
+- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
+- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
+- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
+- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
+- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
+
+
 You see the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 It asks for 5 years of experience.
@@ -33,14 +42,6 @@ The result: the more hesitant candidates often miss roles they could have won.
 This guide shows you how to tailor your resume when you are underqualified - honestly, specifically, and in a way that gets real interviews. Understanding [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) often comes back to not applying at all, or applying with a [generic resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) when tailoring would have made the difference.
 
 ---
-
-## Key Takeaways
-
-- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
-- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
-- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
-- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
-- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
 
 ## The Truth About "Required" Qualifications
 
@@ -260,13 +261,13 @@ No. Each application is independent. If you want to ensure your resume aligns we
 - [Resume Matching with No Experience](https://thetailorcv.com/blog/resume-matching-no-experience)
 - [How to Match Your Resume When Overqualified](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- How to Write Resume Bullet Points
-- How to Quantify Resume Achievements
-- Cover Letter Guide 2026
-- ATS Score Guide
-- Resume Keywords Guide
-- How to Explain Resume Gaps
-- Why Your Resume Gets No Responses
+- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 
 ---
 

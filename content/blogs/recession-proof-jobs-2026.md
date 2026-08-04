@@ -10,12 +10,6 @@ keywords: recession proof jobs 2026, recession proof careers, jobs that are safe
 image: public/blog-images/recession-proof-jobs-2026.webp
 ---
 
-No job is truly "recession-proof," but some fields are consistently more resistant to mass layoffs than others - because the demand for them doesn't disappear when budgets tighten. Healthcare, essential infrastructure, and cost-saving roles tend to hold steady while discretionary spending categories get cut first, which is a very different risk profile than jobs tied to [AI-proof careers](https://thetailorcv.com/blog/ai-proof-jobs-2026) or other emerging-risk categories.
-
-If you're evaluating a move into a more stable field, start by checking how your current resume would score against roles in that industry with the [free ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - No job is completely "recession-proof," but certain fields like healthcare and essential infrastructure are more resistant to layoffs due to consistent demand.
@@ -23,6 +17,13 @@ If you're evaluating a move into a more stable field, start by checking how your
 - Healthcare roles, particularly nursing and pharmacy, remain in demand regardless of economic conditions, with most spending backed by insurance or government funding.
 - Skilled trades benefit from both non-discretionary demand and the trend of repairing rather than replacing, keeping them busy during recessions.
 - Evaluating roles based on their alignment with these resilience patterns can help identify more stable career options.
+
+
+No job is truly "recession-proof," but some fields are consistently more resistant to mass layoffs than others - because the demand for them doesn't disappear when budgets tighten. Healthcare, essential infrastructure, and cost-saving roles tend to hold steady while discretionary spending categories get cut first, which is a very different risk profile than jobs tied to [AI-proof careers](https://thetailorcv.com/blog/ai-proof-jobs-2026) or other emerging-risk categories.
+
+If you're evaluating a move into a more stable field, start by checking how your current resume would score against roles in that industry with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What Actually Makes a Job Recession-Resistant
 

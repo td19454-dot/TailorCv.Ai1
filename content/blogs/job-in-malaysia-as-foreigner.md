@@ -10,12 +10,6 @@ keywords: job in malaysia for foreigners, work in malaysia as expat, malaysia em
 image: public/blog-images/job-in-malaysia-as-foreigner.png
 ---
 
-Malaysia is one of Southeast Asia's most attractive destinations for foreign professionals: a lower cost of living than [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide), widespread use of English, a diverse culture, and a growing base of multinationals and regional headquarters. Getting hired as a foreigner takes more planning than for locals — there are work-authorisation rules and employers must justify hiring from abroad — but for the right skills, it's very achievable.
-
-This guide walks you through getting a job in Malaysia as a foreigner in 2026: which sectors hire expats, how work permits and Employment Passes work, where to search, and how to present yourself so Malaysian employers choose you.
-
-> **Note:** Immigration rules and pass categories change. Treat the permit information here as a practical overview and always confirm current requirements with the Malaysian Immigration Department, the Expatriate Services Division (ESD), or your prospective employer before acting.
-
 ## Key Takeaways
 
 - Foreigners generally need an employer-sponsored **Employment Pass** to work in Malaysia; you usually secure the job first, then the employer sponsors the pass.
@@ -23,6 +17,13 @@ This guide walks you through getting a job in Malaysia as a foreigner in 2026: w
 - Your resume should follow **Malaysian conventions**, not your home country's format.
 - A clear value proposition — skills the local market needs — is what convinces an employer to sponsor you.
 - English is widely used in Malaysian business, which lowers the barrier for many international professionals.
+
+
+Malaysia is one of Southeast Asia's most attractive destinations for foreign professionals: a lower cost of living than [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide), widespread use of English, a diverse culture, and a growing base of multinationals and regional headquarters. Getting hired as a foreigner takes more planning than for locals — there are work-authorisation rules and employers must justify hiring from abroad — but for the right skills, it's very achievable.
+
+This guide walks you through getting a job in Malaysia as a foreigner in 2026: which sectors hire expats, how work permits and Employment Passes work, where to search, and how to present yourself so Malaysian employers choose you.
+
+> **Note:** Immigration rules and pass categories change. Treat the permit information here as a practical overview and always confirm current requirements with the Malaysian Immigration Department, the Expatriate Services Division (ESD), or your prospective employer before acting.
 
 ## Can Foreigners Work in Malaysia?
 

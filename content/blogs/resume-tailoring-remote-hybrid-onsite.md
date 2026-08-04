@@ -10,6 +10,14 @@ slug: resume-tailoring-remote-hybrid-onsite
 keywords: remote work resume tips, hybrid job resume, how to tailor resume for remote job, work from home resume 2026, on-site job resume tailoring, remote vs hybrid resume differences
 ---
 
+## Key Takeaways
+
+- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
+- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
+- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
+- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
+
+
 In 2024, "remote work" changed overnight.
 
 Companies that had been fully remote for four years suddenly announced return-to-office mandates.
@@ -25,13 +33,6 @@ If you are applying to remote roles with the same resume you use for on-site app
 This guide breaks down exactly what changes, and how to tailor your resume for each work model. For a broader look at how targeting the right type of employer changes your resume strategy, see also [startup vs enterprise resume tailoring](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise).
 
 ---
-
-## Key Takeaways
-
-- Tailor your resume for each work model—remote, hybrid, or on-site—since each attracts different candidates and requires distinct signals.
-- For remote roles, emphasize demonstrated remote work experience, async communication skills, and self-direction in your accomplishments.
-- Include relevant tools for distributed work, such as Slack, Jira, and Google Docs, to showcase your fluency in remote collaboration.
-- Your professional summary should explicitly mention remote work experience and highlight skills in async communication and team coordination.
 
 ## Why Work Model Changes What Recruiters Look For
 
@@ -239,13 +240,13 @@ Only if you genuinely have experience in a remote-first environment and if the [
 - [How to Match Your Resume to a Remote Job Description](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
 - [Remote Job Search Guide 2026](https://thetailorcv.com/blog/remote-job-search-guide)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- Resume Matching with Job Description - Complete Guide
-- Skills to Add to Your Resume in 2026
-- ATS Score Guide
-- Resume Tailoring Startup vs Enterprise
-- LinkedIn Profile Optimization Guide
-- How to Match Resume Keywords to Job Description
-- Tailored vs Generic Resume
+- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Tailoring Startup vs Enterprise](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
 
 ---
 

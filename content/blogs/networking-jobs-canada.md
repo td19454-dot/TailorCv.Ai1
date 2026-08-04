@@ -10,10 +10,6 @@ keywords: networking to find jobs in canada, hidden job market canada, informati
 image: public/blog-images/networking-jobs-canada.png
 ---
 
-Here's a truth that surprises many job seekers in Canada: a large share of jobs are never publicly advertised, or are filled through referrals before the posting closes. This is the "hidden job market," and networking is how you access it. In Canada — where relationships, trust, and word-of-mouth carry real weight in hiring — networking is often more effective than firing off applications online, especially for newcomers building a career from scratch.
-
-This guide shows you how to network your way into a Canadian job in 2026: why it works, how to do it authentically (even if you're shy or new to the country), and how to turn conversations into referrals and offers.
-
 ## Key Takeaways
 
 - A large portion of Canadian jobs are filled through **referrals and the hidden job market**, not public postings.
@@ -21,6 +17,11 @@ This guide shows you how to network your way into a Canadian job in 2026: why it
 - **LinkedIn** is essential for building and maintaining your Canadian network.
 - Networking is about **giving and relationship-building**, not asking for jobs.
 - For newcomers, networking is often the single most effective job-search strategy.
+
+
+Here's a truth that surprises many job seekers in Canada: a large share of jobs are never publicly advertised, or are filled through referrals before the posting closes. This is the "hidden job market," and networking is how you access it. In Canada — where relationships, trust, and word-of-mouth carry real weight in hiring — networking is often more effective than firing off applications online, especially for newcomers building a career from scratch.
+
+This guide shows you how to network your way into a Canadian job in 2026: why it works, how to do it authentically (even if you're shy or new to the country), and how to turn conversations into referrals and offers.
 
 ## The Numbers Behind the Hidden Job Market
 

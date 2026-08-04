@@ -10,6 +10,14 @@ slug: resume-mistakes-every-fresher-makes
 keywords: resume mistakes to avoid, Common resume mistakes , Common resume mistakes for freshers
 ---
 
+## Key Takeaways
+
+- Freshers often struggle to get job responses due to resume mistakes rather than lack of experience.
+- Modern hiring relies on ATS systems, making resume optimization essential for visibility.
+- Using a generic resume for multiple job applications significantly reduces chances of being shortlisted.
+- Tailoring resumes to match specific job descriptions improves ATS compatibility and recruiter interest.
+- Key resume elements include relevant keywords, proper formatting, and clear alignment with job roles.
+
 ## Introduction
 
 You can fix many of these faster by reviewing the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), using the [resume optimization tool](https://www.thetailorcv.com/solutions), and starting from [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience).
@@ -30,14 +38,6 @@ You'll also learn:
 - How to improve resume visibility
 - How to optimize resumes for job descriptions
 - Ways to increase [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) chances
-
-## Key Takeaways
-
-- Freshers often struggle to get job responses due to resume mistakes rather than lack of experience.
-- Modern hiring relies on ATS systems, making resume optimization essential for visibility.
-- Using a generic resume for multiple job applications significantly reduces chances of being shortlisted.
-- Tailoring resumes to match specific job descriptions improves ATS compatibility and recruiter interest.
-- Key resume elements include relevant keywords, proper formatting, and clear alignment with job roles.
 
 ## Why Resume Optimization Matters More Than Ever
 
@@ -567,15 +567,15 @@ Yes. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-dec
 - [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- How to Write a Resume Headline
-- How to Write a Resume Summary With No Experience (10 Real Examples for
-- 10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews
-- Soft Skills for Resume
-- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
-- What Not to Put on a Resume
-- 200 Best Action Verbs for Resume
-- Chronological vs Functional Resume
-- How to Explain Resume Gaps
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ## Make This Practical
 

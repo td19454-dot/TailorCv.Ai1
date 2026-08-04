@@ -10,6 +10,14 @@ slug: resume-tailoring-over-50
 keywords: resume tailoring over 50, resume for 50+ job seekers, age bias resume tips, how to hide age on resume, mature job seeker resume 2026, career after 50 resume
 ---
 
+## Key Takeaways
+
+- Age bias can manifest in resume screening as assumptions about culture fit, overqualification, or outdated formats, often before qualifications are evaluated.
+- Limit your work history to the past 10-15 years and include relevant earlier roles without dates to keep your resume focused and modern.
+- Remove graduation dates if you graduated before 2000 to avoid age-related assumptions while still showcasing your education.
+- Modernize your technology language by including current tools and platforms you are familiar with, demonstrating your relevance in today's job market.
+
+
 You are one of the most experienced candidates who will apply for this role.
 
 You have lived through industry transformations.
@@ -34,13 +42,6 @@ Not to tell you to lie about your experience.
 But to give you a real, practical strategy to [tailor your resume](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) so that your decades of experience register as *compelling* rather than *concerning*.
 
 ---
-
-## Key Takeaways
-
-- Age bias can manifest in resume screening as assumptions about culture fit, overqualification, or outdated formats, often before qualifications are evaluated.
-- Limit your work history to the past 10-15 years and include relevant earlier roles without dates to keep your resume focused and modern.
-- Remove graduation dates if you graduated before 2000 to avoid age-related assumptions while still showcasing your education.
-- Modernize your technology language by including current tools and platforms you are familiar with, demonstrating your relevance in today's job market.
 
 ## What Age Bias Actually Looks Like in Resume Screening
 
@@ -301,13 +302,13 @@ You do not need to unless it comes up. If it does, pivot to your value: "I bring
 - [Resume Matching for Experienced Professionals](https://thetailorcv.com/blog/resume-matching-experienced-professionals)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Update Your Resume](https://thetailorcv.com/blog/how-to-update-your-resume)
-- Skills to Add to Your Resume in 2026
-- Best Free Online Certificates for Resume
-- LinkedIn Profile Optimization Guide
-- ATS Mistakes Experienced Professionals Make
-- Executive Resume Tailoring Guide
-- How to Explain Resume Gaps
-- Why Your Resume Gets No Responses
+- [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Executive Resume Tailoring Guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 
 ---
 

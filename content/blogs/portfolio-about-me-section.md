@@ -6,8 +6,6 @@ slug: portfolio-about-me-section
 image: public/blog-images/portfolio-about-me-section.webp
 ---
 
-The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
-
 ## Key Takeaways
 
 - The About Me section should be specific, human, and concise, avoiding lengthy narratives and empty adjectives.
@@ -15,6 +13,9 @@ The About Me section is where a visitor decides whether to trust you - and most 
 - Start with a strong opening line that clearly summarizes your professional identity and avoid jargon.
 - Provide evidence of your skills through notable achievements or metrics that demonstrate your value.
 - Tailor your tone and content to resonate with your target audience, and keep your resume and portfolio aligned in messaging.
+
+
+The About Me section is where a visitor decides whether to trust you - and most people get it wrong by writing either a life story or a wall of empty adjectives. A great About Me is specific, human, and short. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## The Formula
 - **Who you are + what you do** (one sharp line)
@@ -154,15 +155,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 - [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
-- How to Write a Resume Summary
-- Portfolio Mistakes to Avoid
-- LinkedIn Profile Optimization Guide
-- Portfolio SEO: Get Found
-- Personal Website vs Portfolio
-- Build a Portfolio With No Experience
-- How to Write a Resume Headline
-- Turn Your Resume Into a Portfolio in Minutes
-- Portfolio Checklist Before You Apply
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
 ## Make This Practical
 

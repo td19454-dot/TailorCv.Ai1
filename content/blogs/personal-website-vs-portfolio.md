@@ -6,8 +6,6 @@ slug: personal-website-vs-portfolio
 image: public/blog-images/personal-website-vs-portfolio.webp
 ---
 
-People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
-
 ## Key Takeaways
 
 - A portfolio is a focused showcase of your work aimed at winning jobs or clients, while a personal website serves as a broader home base for your professional identity.
@@ -15,6 +13,9 @@ People use "personal website" and "portfolio" interchangeably, but they serve sl
 - A personal website should feature an "About Me" section, a blog for thought leadership, a downloadable resume, and easy contact information.
 - Early career individuals should prioritize a portfolio, while those building a long-term brand or freelancing should consider a personal website that includes their portfolio.
 - The ideal solution for most is a combined site with a strong landing page, portfolio section, and contact information, optimized for SEO.
+
+
+People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 
 ## What a Portfolio Is
 A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
@@ -110,15 +111,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
-- Portfolio vs Resume
-- LinkedIn Profile Optimization Guide
-- Portfolio Domain Name Guide
-- How to Host Your Portfolio for Free
-- Portfolio SEO: Get Found
-- How to Write a Portfolio Case Study
-- Portfolio Contact Section
-- Best Portfolio Website Builders 2026
-- Turn Your Resume Into a Portfolio in Minutes
+- [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
 
 ## Make This Practical
 

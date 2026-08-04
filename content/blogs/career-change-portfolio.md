@@ -6,10 +6,6 @@ slug: career-change-portfolio
 image: public/blog-images/career-change-portfolio.webp
 ---
 
-## Career Change Portfolio: Prove Skills From a New Field
-
-When you switch fields, your resume works against you - it is full of the *old* career. A portfolio flips the script: it proves you can already do the *new* work, which is the only thing a skeptical hiring manager actually cares about. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the [Career Change Resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
-
 ## Key Takeaways
 
 - A career change portfolio demonstrates your ability to perform in a new field, countering the limitations of a resume focused on your previous career.
@@ -17,6 +13,10 @@ When you switch fields, your resume works against you - it is full of the *old* 
 - Clearly connect your past experience to your new career by showcasing how your old skills can be an asset in the new context.
 - Craft a compelling narrative that explains your career pivot, including your motivation, completed projects, and future aspirations.
 - Quantify achievements from both your previous and new projects to highlight your impact and capabilities across industries.
+
+## Career Change Portfolio: Prove Skills From a New Field
+
+When you switch fields, your resume works against you - it is full of the *old* career. A portfolio flips the script: it proves you can already do the *new* work, which is the only thing a skeptical hiring manager actually cares about. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the [Career Change Resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ## Lead With New-Field Projects
 
@@ -137,15 +137,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Career Change Resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
 - [Career Change to Tech Guide](https://thetailorcv.com/blog/career-change-to-tech-guide)
-- What to Put in Your Portfolio With No Projects
-- Build a Portfolio With No Experience
-- Personal Branding for Professionals
-- Portfolio About Me Section
-- How to Quantify Resume Achievements
-- 15 Developer Portfolio Project Ideas
-- How to Get a Job With No Experience
-- Portfolio Mistakes to Avoid
-- Turn Your Resume Into a Portfolio in Minutes
+- [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
 
 ## Make This Practical
 

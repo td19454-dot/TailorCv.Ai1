@@ -10,10 +10,6 @@ slug: frontend-developer-portfolio
 keywords: frontend developer portfolio, react portfolio, frontend projects, ui developer portfolio, frontend portfolio examples
 ---
 
-For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site from a frontend developer is a contradiction the recruiter will not forgive.
-
-This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
-
 ## Key Takeaways
 
 - Your portfolio is a crucial demonstration of your skills as a frontend developer; it should be fast, polished, and responsive.
@@ -21,6 +17,11 @@ This guide covers what to build, what to show, and the details that separate "ju
 - Document your work thoroughly, showcasing responsiveness, accessibility efforts, and clean code on GitHub while explaining challenges faced in each project.
 - Ensure your resume, LinkedIn, and portfolio are consistent in messaging to avoid confusing recruiters.
 - Avoid common mistakes like slow performance, lack of live demos, and dead links to maintain credibility.
+
+
+For frontend roles, your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) *is* the interview. Before anyone reads a line of your code, they judge the site itself - its speed, polish, responsiveness, and taste. A sloppy [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site from a frontend developer is a contradiction the recruiter will not forgive.
+
+This guide covers what to build, what to show, and the details that separate "junior" from "hire this person." Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
 
 ## Your Site Is Your First Project
 Treat your own [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) as your flagship demo.
@@ -159,15 +160,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Frontend Developer Resume 2026](https://thetailorcv.com/blog/frontend-developer-resume-2026)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- Full Stack Developer Portfolio Guide
-- Backend Developer Portfolio Guide
-- GitHub Portfolio Optimization
-- How to Write a Portfolio Case Study
-- Portfolio Mistakes to Avoid
-- How to Get Your First Tech Job
-- Portfolio Checklist Before You Apply
-- How to Host Your Portfolio for Free
-- React Developer Resume 2026
+- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
+- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [React Developer Resume 2026](https://thetailorcv.com/blog/react-developer-resume-2026)
 
 ## Make This Practical
 

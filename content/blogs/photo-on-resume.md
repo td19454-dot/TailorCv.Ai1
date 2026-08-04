@@ -10,14 +10,6 @@ slug: photo-on-resume
 keywords: should you put a photo on resume, resume with photo, resume photo 2026, photo on CV, resume headshot, professional photo on resume, is a photo required on resume
 ---
 
-The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded - or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
-
-This guide gives you a clear answer by country and situation, plus the risks and rules you need to know.
-
-For overall resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and test your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Including a photo on your resume is generally not expected in the US, Canada, UK, and Australia, and may lead to bias or discrimination concerns.
@@ -25,6 +17,15 @@ For overall resume structure, read [the anatomy of a perfect resume](https://the
 - Anti-discrimination laws in the US and UK discourage the use of photos to avoid bias in hiring decisions.
 - Applicant Tracking Systems (ATS) cannot read images, so including a photo can disrupt text parsing and negatively affect your resume's visibility.
 - When a photo is required, use a professional headshot with appropriate attire, a neutral background, and ensure it is recent and of high quality.
+
+
+The photo question divides job seekers more than almost any other resume decision. In some countries, sending a resume without a photo is unusual. In others, including a photo can get your application immediately discarded - or worse, expose you to discrimination claims. The answer depends entirely on where you are applying.
+
+This guide gives you a clear answer by country and situation, plus the risks and rules you need to know.
+
+For overall resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and test your document with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## The Short Answer
 
@@ -122,10 +123,10 @@ Whatever you decide, make sure your resume content is strong. Read [how to write
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- How to Make Your Resume ATS-Friendly
-- LinkedIn Profile Optimization Guide
-- Resume Design and Color Guide
-- Resume vs CV: What's the Difference?
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
+- [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
 
 ---
 

@@ -10,16 +10,17 @@ slug: resume-keyword-density-ats
 keywords: resume keyword density, ATS keywords, resume keyword stuffing, job description keywords resume
 ---
 
-Resume keyword density means how often important job description terms appear in your resume, and getting it wrong in either direction costs you interviews. Too few mentions and the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) never registers you as a match; too many and a recruiter reading the same resume five minutes later assumes you stuffed it. This guide focuses specifically on frequency: how many times a keyword should show up, where, and how to tell natural repetition from a red flag.
-
-For a broader look at keyword strategy overall, read [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide) and [Best Resume Keywords to Beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
-
 ## Key Takeaways
 
 - Resume keyword density refers to the frequency and context of important job description terms in your resume.
 - Modern ATS evaluates keyword presence, context, section placement, and relevance rather than relying on a specific density percentage.
 - Focus on including required hard skills, specific tools, certifications, role responsibilities, industry terms, and relevant job titles in your resume.
 - For key skills, aim to mention them once in the skills section, once in the summary, and one to two times in experience bullets, ensuring each mention is contextually relevant.
+
+
+Resume keyword density means how often important job description terms appear in your resume, and getting it wrong in either direction costs you interviews. Too few mentions and the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) never registers you as a match; too many and a recruiter reading the same resume five minutes later assumes you stuffed it. This guide focuses specifically on frequency: how many times a keyword should show up, where, and how to tell natural repetition from a red flag.
+
+For a broader look at keyword strategy overall, read [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide) and [Best Resume Keywords to Beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
 ## What Keyword Density Actually Means for ATS
 

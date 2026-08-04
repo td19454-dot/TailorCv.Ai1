@@ -107,7 +107,7 @@ Avoid the errors that quietly cost hygienists interviews:
 - **Listing duties, not results.** Every role needs [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets, not a job description.
 - **Skipping software keywords.** Name Dentrix, Eaglesoft, or Open Dental if you know them — the [ATS](https://thetailorcv.com/blog/ats-score-guide) scans for them.
 - **One resume for every office.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) each application to the practice.
-- **Over-designing.** A decorative layout can break the ATS; keep it clean and run the ATS score checker.
+- **Over-designing.** A decorative layout can break the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); keep it clean and run the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 For a broader list of what silently sinks applications, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and [common resume mistakes for freshers](https://thetailorcv.com/blog/resume-mistakes-freshers).
 
@@ -144,6 +144,6 @@ Your dental hygienist [resume](https://www.thetailorcv.com/modify-cv) is ready w
 - Names the exact clinical procedures and software from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 - Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) patient impact.
 - Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
-- Reads cleanly after a final pass with the resume review checklist.
+- Reads cleanly after a final pass with the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying).
 
 Do those things and your clinical skill will finally be seen by the hiring dentist instead of getting filtered out by software. Start in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) it to every practice you apply to.

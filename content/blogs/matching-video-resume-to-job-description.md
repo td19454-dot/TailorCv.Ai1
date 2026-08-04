@@ -10,14 +10,6 @@ keywords: video resume job description matching, tailor video pitch job applicat
 image: public/blog-images/matching-video-resume-to-job-description.webp
 ---
 
-More applications, especially for retail, hospitality, customer-facing, and some tech and creative roles, now include an optional or required 30-to-60 second video pitch. And most candidates treat it the same generic way they treat an untailored resume: one script, recorded once, sent to every application.
-
-That is a mistake. The same [matching principles](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that apply to your written resume apply to your video pitch, and a script tailored to the specific role will consistently outperform a generic one.
-
-Use [TailorCV's resume optimizer](/solutions) to identify the job description's core priorities first, then use that same analysis to write your video pitch script.
-
----
-
 ## Key Takeaways
 
 - Tailor your 30-second video pitch to match the specific job description, just like you would with your resume, to enhance your chances of success.
@@ -25,6 +17,15 @@ Use [TailorCV's resume optimizer](/solutions) to identify the job description's 
 - Structure your pitch with a clear opening, a core match of experiences or skills, and a closing that expresses genuine interest in the role and company.
 - Match your delivery style to the tone of the job description to demonstrate cultural fit and engagement.
 - Avoid common mistakes such as reusing the same script for all applications, neglecting to address fit, over-preparing, and overlooking video/audio quality.
+
+
+More applications, especially for retail, hospitality, customer-facing, and some tech and creative roles, now include an optional or required 30-to-60 second video pitch. And most candidates treat it the same generic way they treat an untailored resume: one script, recorded once, sent to every application.
+
+That is a mistake. The same [matching principles](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) that apply to your written resume apply to your video pitch, and a script tailored to the specific role will consistently outperform a generic one.
+
+Use [TailorCV's resume optimizer](/solutions) to identify the job description's core priorities first, then use that same analysis to write your video pitch script.
+
+---
 
 ## Why Video Pitches Need the Same Matching Treatment as Resumes
 
@@ -196,13 +197,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to a
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Video Resume Guide 2026](https://thetailorcv.com/blog/video-resume-guide-2026)
 - [Matching Your Resume to the Soft Skills Buried in a Job Description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description)
-- How to Match Your Portfolio to the Job Description
-- Job Description Keyword Extraction Guide
-- AI Mock Interview Complete Guide 2026
-- How to Answer Tell Me About Yourself
-- Interview Body Language and Communication Tips
-- ATS Score Guide 2026
-- Cover Letter Guide 2026
+- [How to Match Your Portfolio to the Job Description](https://thetailorcv.com/blog/matching-portfolio-to-job-description)
+- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [AI Mock Interview Complete Guide 2026](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
+- [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- [Interview Body Language and Communication Tips](https://thetailorcv.com/blog/interview-body-language-communication-tips)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
 
 ---
 

@@ -121,9 +121,9 @@ The errors that cost architects interviews:
 
 - **Over-designing the resume.** Save the artistry for the [portfolio](https://www.thetailorcv.com/portfolio); keep the [resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) clean and parseable.
 - **Listing software without projects.** Tie tools to delivered work with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets.
-- **No portfolio link.** Always include your portfolio website.
-- **Ignoring keywords.** Mirror the job description and check with the ATS score checker.
-- **One resume everywhere.** Tailor to each firm.
+- **No portfolio link.** Always include your [portfolio website](https://www.thetailorcv.com/portfolio).
+- **Ignoring keywords.** Mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and check with the [ATS score checker](https://www.thetailorcv.com/solutions).
+- **One resume everywhere.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each firm.
 
 For more, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
@@ -155,6 +155,6 @@ Your architect [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 - Leads with **license status** and software [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 - Shows projects with scope, role, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
 - Links a strong [portfolio website](https://www.thetailorcv.com/portfolio).
-- Stays ATS-safe and passes the ATS score checker.
+- Stays [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Keep the [resume](https://www.thetailorcv.com/modify-cv) clean, let the [portfolio](https://www.thetailorcv.com/portfolio) shine, and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) every application. Start in the resume builder and score it with the free ATS checker.

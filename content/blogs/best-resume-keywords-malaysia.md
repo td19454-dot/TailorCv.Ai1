@@ -10,10 +10,6 @@ keywords: resume keywords malaysia, ats keywords malaysia, best resume keywords,
 image: public/blog-images/best-resume-keywords-malaysia.png
 ---
 
-Keywords are what get your resume noticed — first by the [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
-
-This guide gives you the best resume keywords for Malaysian jobs in 2026, organised by industry and role, plus the crucial part most people miss: how to use them naturally so you pass both the software and the human.
-
 ## Key Takeaways
 
 - Resume keywords are the specific skills, tools, and phrases a job description uses — and the ATS scans for.
@@ -21,6 +17,11 @@ This guide gives you the best resume keywords for Malaysian jobs in 2026, organi
 - Use keywords **truthfully and in context** — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) is detected and penalised.
 - Include a dedicated skills section plus keywords woven into your experience bullets.
 - Test your resume against each posting with an [ATS score checker](https://thetailorcv.com/solutions) to see which keywords you're missing.
+
+
+Keywords are what get your resume noticed — first by the [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
+
+This guide gives you the best resume keywords for Malaysian jobs in 2026, organised by industry and role, plus the crucial part most people miss: how to use them naturally so you pass both the software and the human.
 
 ## How Resume Keywords Actually Work
 

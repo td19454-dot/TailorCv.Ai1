@@ -114,8 +114,8 @@ The errors that keep good cooks out of good kitchens:
 - **No numbers.** Covers per night, food cost, team size — [quantify](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) everything.
 - **Cuisine left vague.** Name your specialties; they're [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the concept hires for.
 - **Missing certifications.** List ServSafe and food-safety credentials — see [how to list certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
-- **Two cluttered pages.** Keep it one clean page.
-- **Same resume everywhere.** Tailor to each restaurant.
+- **Two cluttered pages.** Keep it [one clean page](https://thetailorcv.com/blog/ideal-resume-length-guide).
+- **Same resume everywhere.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each restaurant.
 
 For a broader list, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and [generic resume mistakes that cost interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
 

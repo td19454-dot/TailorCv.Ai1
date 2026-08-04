@@ -10,13 +10,6 @@ slug: how-to-quit-your-job-professionally
 keywords: how to quit your job, resignation guide 2026, how to resign professionally, resignation letter, two weeks notice, how to tell your boss you are quitting, notice period
 ---
 
-How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
-
-
-Before you quit, make sure your next step is secure. If you are [job searching](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume), optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to ensure your new offer is solid.
-
----
-
 ## Key Takeaways
 
 - Secure your next step before resigning; always have a signed offer letter if moving to a new job.
@@ -24,6 +17,14 @@ Before you quit, make sure your next step is secure. If you are [job searching](
 - Keep the resignation conversation brief and positive, clearly stating your last day and expressing appreciation for your time at the company.
 - Write a formal resignation letter that is concise, professional, and free of complaints to document your departure.
 - Maintain professionalism during your notice period by continuing to work diligently and assisting with the transition.
+
+
+How you leave a job matters almost as much as how you perform in it. The world is smaller than it seems - former managers become references, ex-colleagues become future hiring managers, and industries have long memories. Quitting professionally protects your reputation and your network. Quitting badly can follow you for years.
+
+
+Before you quit, make sure your next step is secure. If you are [job searching](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume), optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to ensure your new offer is solid.
+
+---
 
 ## Before You Quit: Get Your Next Step Secured
 
@@ -175,21 +176,21 @@ Counteroffers rarely fix the underlying reasons for leaving. Think carefully.
 - [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- How to Build a Professional Portfolio
-- Networking Tips for Job Search
-- How to Get a Job With No Experience
-- How to Handle Job Rejection
-- How to Negotiate a Salary Offer
-- How to Use LinkedIn for Job Search
-- How to Write a Cold Email to a Recruiter
-- LinkedIn Profile Optimization Guide
-- Remote Job Search Guide
-- Behavioral Interview Questions and Answers - Complete 2026 Guide
-- Career Change to Tech in 2026 - Complete Guide for Switchers
-- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
-- Freelancing vs Full-Time Employment in 2026 - Honest Comparison
-- Ideal Resume Length in 2026 - One Page or Two? Complete Guide
-- Personal Branding for Professionals in 2026 - Complete Guide
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [Behavioral Interview Questions and Answers - Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [Career Change to Tech in 2026 - Complete Guide for Switchers](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Ideal Resume Length in 2026 - One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [Personal Branding for Professionals in 2026 - Complete Guide](https://thetailorcv.com/blog/personal-branding-for-professionals)
 
 ## Make This Practical
 

@@ -8264,6 +8264,14 @@ _BLOG_RESUME_TEMPLATES = [
     ("/static/pic21.webp", "Modern Tech"), ("/static/pic22.webp", "Academic Serif"),
 ]
 
+# Withdrawn from the blog gallery. Filtered out of the pool rather than swapped
+# after selection, so a post still gets its full `limit` of distinct cards.
+_BLOG_RETIRED_TEMPLATES = {
+    "/static/pic1.webp", "/static/pic2.webp", "/static/pic3.webp", "/static/pic4.webp",
+    "/static/pic5.webp", "/static/pic11.webp", "/static/pic22.webp",
+}
+_BLOG_TEMPLATE_POOL = [t for t in _BLOG_RESUME_TEMPLATES if t[0] not in _BLOG_RETIRED_TEMPLATES]
+
 # Topic -> template names to lead with, so a fresher guide opens on the fresher
 # template and a data-role guide on the analyst one. Anything not matched falls
 # through to the slug-seeded rotation below.
@@ -8342,7 +8350,7 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     if not is_resume_topic or any(t in subject for t in off_topic):
         return None
 
-    by_name = {name: (img, name) for img, name in _BLOG_RESUME_TEMPLATES}
+    by_name = {name: (img, name) for img, name in _BLOG_TEMPLATE_POOL}
     ordered: list = []
     for terms, names in _BLOG_TEMPLATE_AFFINITY:
         if any(t in hay for t in terms):
@@ -8354,25 +8362,11 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
             ordered.extend(_blog_rotate(matched, post.slug)[:1])
             break
     # Top up (and de-dupe) from the rotated full set so every post differs.
-    for item in _blog_rotate(_BLOG_RESUME_TEMPLATES, post.slug + post.title):
+    for item in _blog_rotate(_BLOG_TEMPLATE_POOL, post.slug + post.title):
         if len(ordered) >= limit:
             break
         if item not in ordered:
             ordered.append(item)
-
-    # pic1-pic5 are withdrawn from the blog gallery; anything that lands on one
-    # falls back to pic6 (Compact One-Page).
-    _retired = {"/static/pic1.webp", "/static/pic2.webp", "/static/pic3.webp",
-                "/static/pic4.webp", "/static/pic5.webp", "/static/pic22.webp"}
-    _fallback = ("/static/pic6.webp", "Compact One-Page")
-    swapped, seen_img = [], set()
-    for img, name in ordered:
-        img, name = _fallback if img in _retired else (img, name)
-        if img in seen_img:
-            continue
-        seen_img.add(img)
-        swapped.append((img, name))
-    ordered = swapped
 
     # Topic-matched heading, so an extension post and a keywords post do not
     # open the same block with the same generic line.

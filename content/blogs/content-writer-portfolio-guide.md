@@ -10,8 +10,6 @@ slug: content-writer-portfolio-guide
 keywords: writing portfolio, copywriter portfolio, content writer portfolio, freelance writing samples, writing portfolio examples
 ---
 
-A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
-
 ## Key Takeaways
 
 - Curate 10-15 relevant writing samples that align with the types of projects you want to attract, ensuring they demonstrate your skills across various formats.
@@ -19,6 +17,9 @@ A writing portfolio is proof that you can write for **a purpose** - to rank, to 
 - Organize your portfolio for quick navigation by grouping samples by format or industry and providing context for each piece.
 - Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative and avoid confusing potential employers.
 - Include detailed case studies in your portfolio that outline the challenges faced, your approach, and the results achieved to enhance credibility.
+
+
+A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
 ## Choose the Right Samples
 Show 10-15 pieces across the formats you want to be hired for, and cut everything off-target:
@@ -156,15 +157,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Content Writer Resume 2026](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Technical Writer Resume 2026](https://thetailorcv.com/blog/technical-writer-resume-2026)
-- Marketing Portfolio Guide
-- Freelancing vs Full-Time Employment
-- Personal Branding for Professionals
-- Portfolio About Me Section
-- Portfolio Contact Section
-- How to Quantify Resume Achievements
-- Portfolio Checklist Before You Apply
-- How to Host Your Portfolio for Free
-- Portfolio Mistakes to Avoid
+- [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide)
+- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
 ## Make This Practical
 
@@ -182,8 +183,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

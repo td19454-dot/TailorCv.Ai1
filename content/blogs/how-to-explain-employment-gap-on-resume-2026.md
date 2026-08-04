@@ -168,7 +168,7 @@ The gap itself is rarely the problem. These reactions to it are:
 - **Vagueness.** "I was dealing with some things" invites the imagination to fill in the worst.
 - **Defensiveness.** Over-explaining signals that you think the gap is disqualifying, which teaches the interviewer to think so too.
 - **Inconsistency.** A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that says one thing and a [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) answer that says another.
-- **A gap with genuinely nothing in it.** If the break is recent, add one real activity now — a course, a small freelance job, a volunteering stint — so the answer is never "nothing."
+- **A gap with genuinely nothing in it.** If the break is recent, add one real activity now — a course, a small freelance job, a volunteering stint — so the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is never "nothing."
 
 ## Frequently Asked Questions
 

@@ -10,6 +10,14 @@ slug: resume-vs-cv
 keywords: resume vs cv, difference between resume and cv, when to use a cv, cv vs resume, curriculum vitae vs resume, resume or cv for job application, academic cv vs resume
 ---
 
+## Key Takeaways
+
+- A resume is a concise document (1-2 pages) tailored for specific job applications, while a CV is a comprehensive record of your entire academic and professional history (2-20+ pages).
+- Resumes are commonly used in the US, Canada, and Australia for industry jobs, whereas CVs are standard for academic positions and in many countries in Europe, the Middle East, and Africa.
+- The content of a resume focuses on skills and achievements relevant to the job, while a CV includes all professional details such as publications, research, and teaching experience.
+- Geographic differences in terminology can lead to confusion; for instance, in the UK, "CV" is equivalent to a US resume, while "CV" in the US refers specifically to academic documents.
+
+
 "Should I send a resume or a CV?" is one of the most common questions job seekers ask - and getting it wrong can make you look out of touch with the role or region you are targeting. The answer depends on where you are applying, what industry you are in, and what level of role you are pursuing.
 
 This guide explains the key differences, when each is appropriate, and what to include in each document.
@@ -17,13 +25,6 @@ This guide explains the key differences, when each is appropriate, and what to i
 Before you send either, check your document against the job with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) and start from an [ATS-compatible template](https://www.thetailorcv.com/templates).
 
 ---
-
-## Key Takeaways
-
-- A resume is a concise document (1-2 pages) tailored for specific job applications, while a CV is a comprehensive record of your entire academic and professional history (2-20+ pages).
-- Resumes are commonly used in the US, Canada, and Australia for industry jobs, whereas CVs are standard for academic positions and in many countries in Europe, the Middle East, and Africa.
-- The content of a resume focuses on skills and achievements relevant to the job, while a CV includes all professional details such as publications, research, and teaching experience.
-- Geographic differences in terminology can lead to confusion; for instance, in the UK, "CV" is equivalent to a US resume, while "CV" in the US refers specifically to academic documents.
 
 ## The Core Difference
 
@@ -165,8 +166,8 @@ If you have an academic CV and need to create an industry resume:
 4. **Lead with impact** - Use a strong [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) that speaks to business value
 5. **Add a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)** - Technical and transferable skills prominently displayed
 6. **Quantify** - Add numbers and results wherever possible. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-7. **Keep to 2 pages** - See the ideal resume length guide
-8. **Check ATS compatibility** - Run the final version through the ATS score checker
+7. **Keep to 2 pages** - See the [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+8. **Check ATS compatibility** - Run the final version through the [ATS score checker](https://www.thetailorcv.com/solutions)
 
 ---
 
@@ -175,13 +176,13 @@ If you have an academic CV and need to create an industry resume:
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- How to Write a Resume Summary
-- How to Make Your Resume ATS-Friendly
-- Career Change Resume Guide
-- How to Quantify Resume Achievements
-- Chronological vs Functional Resume
-- ATS Score Guide
-- How to Write a Resume from Scratch
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
 
 ---
 

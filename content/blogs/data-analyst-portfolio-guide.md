@@ -10,8 +10,6 @@ slug: data-analyst-portfolio-guide
 keywords: data analyst portfolio, sql portfolio, tableau portfolio, power bi portfolio, data projects portfolio
 ---
 
-A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
-
 ## Key Takeaways
 
 - Include projects in your portfolio that demonstrate actionable insights, such as polished dashboards, SQL case studies, end-to-end analyses, and A/B tests.
@@ -19,6 +17,9 @@ A data analyst portfolio proves one thing above all: you can turn raw data into 
 - Host your portfolio on platforms like GitHub, Tableau Public, and Kaggle, ensuring it is visually appealing and easy to skim for recruiters.
 - Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative.
 - Avoid common mistakes such as using toy datasets, failing to demonstrate SQL skills, and including dead links in your portfolio.
+
+
+A data analyst portfolio proves one thing above all: you can turn raw data into a decision. Hiring managers do not want another rainbow dashboard - they want the **insight** and the **[business action](https://thetailorcv.com/blog/business-analyst-portfolio-guide)** it supports. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide).
 
 ## Projects to Include
 - A polished **dashboard** (Tableau Public or Power BI Web) on a real dataset
@@ -155,15 +156,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
 - [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide)
-- Data Analyst vs Data Scientist
-- How to Quantify Resume Achievements
-- Portfolio SEO: Get Found
-- GitHub Portfolio Optimization
-- How to Host Your Portfolio for Free
-- Portfolio Checklist Before You Apply
-- Portfolio Mistakes to Avoid
-- How to Write a Portfolio Case Study
-- Business Analyst Resume 2026
+- [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Business Analyst Resume 2026](https://thetailorcv.com/blog/business-analyst-resume-2026)
 
 ## Make This Practical
 
@@ -181,8 +182,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

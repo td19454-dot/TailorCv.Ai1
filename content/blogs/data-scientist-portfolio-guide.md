@@ -10,8 +10,6 @@ slug: data-scientist-portfolio-guide
 keywords: data scientist portfolio, machine learning portfolio, ml projects, kaggle portfolio, ml portfolio examples
 ---
 
-A data science portfolio should prove you can frame a problem, model it responsibly, and explain the impact - not just chase a leaderboard score. Most rejected portfolios are a wall of Kaggle notebooks with a final accuracy number and nothing else; the ones that get callbacks show a small number of projects done end to end, with the reasoning made visible. Pair this guide with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for the fundamentals, and read the [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) if you are not sure which track fits your background.
-
 ## Key Takeaways
 
 - A strong data science portfolio should demonstrate problem framing, responsible modeling, and impact explanation, rather than just leaderboard scores.
@@ -19,6 +17,9 @@ A data science portfolio should prove you can frame a problem, model it responsi
 - Include at least one end-to-end project showcasing the entire modeling process, along with one or two technique-demonstration projects.
 - Ensure projects highlight your decision-making process, including what didn't work and why, rather than just presenting final metrics.
 - Dashboards can support your portfolio but should not dominate, as they may lead hiring managers to view you as an analyst rather than a data scientist.
+
+
+A data science portfolio should prove you can frame a problem, model it responsibly, and explain the impact - not just chase a leaderboard score. Most rejected portfolios are a wall of Kaggle notebooks with a final accuracy number and nothing else; the ones that get callbacks show a small number of projects done end to end, with the reasoning made visible. Pair this guide with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for the fundamentals, and read the [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) if you are not sure which track fits your background.
 
 ## Data Scientist vs. Data Analyst Portfolios: What Actually Changes
 
@@ -160,8 +161,8 @@ A few next actions, in order:
 1. Pick your flagship end-to-end project and rewrite its README using the worked-example outline above.
 2. Add the portfolio link to your resume correctly with [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 3. Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so the resume and portfolio present one consistent story.
-4. Before you start applying, run through the Portfolio Checklist Before Applying and see Portfolio Examples That Landed Interviews for concrete formats that have worked.
-5. Practice explaining your flagship project's modeling decisions out loud - the AI mock interview tool is a low-pressure way to rehearse the "why did you choose this model" question before it comes up live.
+4. Before you start applying, run through the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and see [Portfolio Examples That Landed Interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews) for concrete formats that have worked.
+5. Practice explaining your flagship project's modeling decisions out loud - the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool is a low-pressure way to rehearse the "why did you choose this model" question before it comes up live.
 
 
 ## Key Differences in Data Scientist and Data Analyst Portfolios
