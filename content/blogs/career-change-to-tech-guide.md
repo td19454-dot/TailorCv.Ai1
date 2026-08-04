@@ -61,6 +61,13 @@ Pick based on:
 - Your available time to learn
 - Your genuine interest (you will spend months learning it)
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 Do not try to learn everything. Pick one role and go deep.
 
 ---
@@ -154,11 +161,6 @@ You bring domain knowledge that pure-tech candidates lack, plus your new technic
 - Your first tech role is the hardest to get; subsequent moves are much easier
 - Domain expertise + new tech skills is a strong combination that improves your odds significantly
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ---

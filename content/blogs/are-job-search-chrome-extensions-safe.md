@@ -16,6 +16,13 @@ A job-search extension can, by its nature, see the pages you open — that is ho
 
 Start with the honest technical reality, because vague reassurance helps no one. When you install a Chrome extension, it requests *permissions* — and those permissions define exactly what it can and cannot do. A job-search extension typically asks to read the content of pages (so it can pull the job description) and sometimes to access its own website (so it can sign you in).
 
+### What it looks like on a LinkedIn job post
+
+![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
+
+
 The important nuance is *scope and timing*. There is a big difference between an extension that reads a page **only when you actively open its panel on a job posting**, and one that silently reads **every page you visit, all the time**. Both might request similar-looking permissions, so the permission text alone does not tell you which you have — the tool's behaviour and privacy policy do. A well-built job extension reads the job page when you invoke it, uses that description to [tailor your resume](/blog/one-click-resume-tailoring-how-it-works), and does nothing with your banking, email, or general browsing.
 
 ## The Real Red Flags
@@ -60,11 +67,6 @@ Safety is necessary but not sufficient — a private extension that produces bad
 Let us be balanced, because a privacy guide that ends "install nothing" is useless. Every extension is a trade: you grant some access in exchange for some help. The question is never "zero risk or risk" — it is "is the help worth the access, and is the tool trustworthy with it?"
 
 
-### What it looks like on a LinkedIn job post
-
-![The TailorCV extension on a LinkedIn job posting, showing the job title and a 33% skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-And the same on LinkedIn: the extension reads the posting off the page you are already on, so the match score arrives before you hit Easy Apply.
 
 
 For a job-search extension, the access is reading job postings, and the help is [tailoring your resume in one click](/blog/one-click-resume-tailoring-how-it-works) instead of ten minutes by hand — the difference, across a whole search, between [tailoring every application and none](/blog/how-to-apply-to-jobs-faster). That is a large benefit for a narrow, sensible access grant, provided the tool reads only the job page when invoked and is transparent about it. Weighed honestly, a trustworthy tool clears that bar easily.

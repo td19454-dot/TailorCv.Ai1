@@ -10,6 +10,13 @@ image: public/blog-images/backend-developer-portfolio.webp
 
 Backend work is invisible by nature - there is no UI to admire. So your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) has a harder job: it must make architecture, reliability, and production thinking *visible* to someone skimming for 30 seconds. Done well, a backend [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) signals seniority faster than years on a resume.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas), and [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide).
 
 ## Key Takeaways
@@ -82,11 +89,6 @@ When they reinforce each other, every recruiter touchpoint pushes you forward. S
 
 Identifying and avoiding common pitfalls can greatly enhance your portfolio's effectiveness:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 | Mistake | Why it costs you |

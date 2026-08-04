@@ -144,11 +144,6 @@ For a complete placement strategy, read [how to add ATS keywords to boost your s
 
 The general lists above are starting points. The keywords that matter most are the ones in the *specific posting* you're applying to.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs in visible stages against the specific job description you paste in.
 
 
 **Step-by-step:**

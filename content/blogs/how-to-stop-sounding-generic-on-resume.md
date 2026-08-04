@@ -37,6 +37,13 @@ Both problems are fixable with the same solution: replace categories with specif
 
 ## The 8 Most Common Generic Phrases - and How to Rewrite Them
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### 1. "Results-oriented professional"
 
 This phrase says absolutely nothing. Every candidate claims to care about results.
@@ -164,11 +171,6 @@ Check your resume's keyword match with the [free TailorCV ATS checker](/solution
 3. For each circled phrase: add a specific tool, a number, a team size, a time frame, or an outcome
 4. Retest with the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker to confirm the rewrites hit keyword targets
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 The entire audit takes 20-30 minutes for a standard resume.

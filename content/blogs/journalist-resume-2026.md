@@ -18,6 +18,13 @@ Before applying, run your draft through the [free ATS score checker](https://www
 
 Editors hire reporters who can find stories, write cleanly under deadline, and bring an audience. The [ATS](https://thetailorcv.com/blog/ats-score-guide), meanwhile, is scanning for beat and skill [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) — "investigative," "SEO," "CMS," "data journalism," "audio." Your [resume](https://www.thetailorcv.com/modify-cv) has to satisfy both: lead with a clear beat and bylines for the editor, and mirror the posting's exact language for the software. Miss the keywords and even a decorated reporter's [resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Lead with beats and outlets
 
 State your focus and where you've published right at the top: "Investigative and political reporter — bylines in [outlets]." Editors want to know your beat immediately, and your beat is one of the strongest [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the [ATS](https://thetailorcv.com/blog/ats-score-guide) scans for. A tight [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) frames the rest:
@@ -63,11 +70,6 @@ Front-load impact, keep it to [one page](https://thetailorcv.com/blog/ideal-resu
 
 If you're freelance or building your first clips, treat published work, student journalism, and internships as real experience — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) shows how. Group freelance clients cleanly, and read the [freelancing vs full-time guide](https://thetailorcv.com/blog/freelancing-vs-full-time-employment) if you're weighing the path. A steady stream of bylines on a [portfolio](https://www.thetailorcv.com/portfolio) can outweigh a thin staff history.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Tailor to each outlet

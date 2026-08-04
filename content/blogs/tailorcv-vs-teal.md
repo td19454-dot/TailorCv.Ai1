@@ -47,6 +47,13 @@ Teal+ — around **$29/month**, with weekly (~$13) and quarterly (~$79) options 
 
 TailorCV is built around one loop: get the resume past the filter, per job.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+
+
 Paste a job description and your resume. Get a [free ATS match score](/ats-analysis) — unlimited — with the exact missing keywords. The AI **rewrites your bullets** to carry that language honestly, without inventing anything. Download the tailored PDF. Next job.
 
 Then the things that come immediately after: a [matching cover letter](/cover-letter), [AI mock interviews](/mock-interview) for the role, [interview prep](/interview-prep), a [portfolio site](/portfolio), and a [Job Tracker](/my-resumes) that records every tailored version with its score and its job.
@@ -125,11 +132,6 @@ We have [a builder](/modify-cv) and [20+ templates](/templates) too, and they ar
 Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 **Teal's extension saves the job.** You are on a posting, you click, and it lands in your tracker with the description and link intact. It is the smoothest part of their product and it is tightly integrated with the board. If your workflow is "collect roles now, apply later", it is excellent.

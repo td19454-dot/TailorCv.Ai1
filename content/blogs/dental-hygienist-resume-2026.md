@@ -32,6 +32,13 @@ For the difference between a summary and an objective, see [resume objective vs 
 
 The [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026) is where the [ATS](https://thetailorcv.com/blog/ats-score-guide) looks for procedure and tool [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). Mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and include what's genuinely true for you:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Clinical:** prophylaxis, scaling and root planing, periodontal charting, sealants, fluoride application, digital and panoramic radiography, oral cancer screening.
 - **Tools & software:** ultrasonic scalers, intraoral cameras, and practice-management systems like Dentrix, Eaglesoft, or Open Dental.
 - **Patient care:** patient education, anxiety management, infection control, OSHA compliance.
@@ -80,11 +87,6 @@ A pediatric office, a periodontal specialist, and a general family practice all 
 
 If you're a recent hygiene-school graduate, you still have plenty to show: clinical rotations, patient counts, externships, and any specialty exposure. Lead with those instead of a thin work history — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [technical skills for freshers guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) show how to present training as real experience. A short list of [projects or clinical highlights](https://thetailorcv.com/blog/projects-in-resume) can carry an early-career [resume](https://www.thetailorcv.com/modify-cv).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Prepare for the interview, too

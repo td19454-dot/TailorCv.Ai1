@@ -176,11 +176,6 @@ Germany has some of the most specific resume conventions in the world.
 
 **Length:** A standardized template - the Rirekisho - is the conventional format for Japanese employers. It is a structured form, not a free-format document.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 **Photo:** Required on the Rirekisho. Typically a formal passport-style photo attached to the upper left corner.

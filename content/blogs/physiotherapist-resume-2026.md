@@ -33,6 +33,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. Work experience
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages.
 
 ---
@@ -160,11 +167,6 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 - [Cybersecurity Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## Make This Practical

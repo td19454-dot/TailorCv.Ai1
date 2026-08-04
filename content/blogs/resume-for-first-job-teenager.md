@@ -38,15 +38,17 @@ Because you don't have a work-experience section to lead with, open with a one-l
 
 The trick is to turn ordinary activities into evidence of workplace skills. "Captained a soccer team of 15" shows leadership and teamwork. "Tutored younger students weekly for a year" shows responsibility and communication. "Babysat regularly for three families" shows trust and time management. This is the same skill you'll use your whole career — [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) — just applied to teen experiences. A number ("100+ transactions per shift" once you have a job, or "team of 15" now) always beats a vague claim.
 
-## Structure a teenager's first resume
-
-Keep it simple and one page:
-
 ### Your resume after optimization
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
 This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
+## Structure a teenager's first resume
+
+Keep it simple and one page:
+
 
 
 1. **Header** — name, phone, email (use a professional address), city.

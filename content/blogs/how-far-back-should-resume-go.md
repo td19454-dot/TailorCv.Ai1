@@ -72,11 +72,6 @@ Four situations justify going further back.
 
 Many people ask this question because they're worried about age bias. It's a fair concern and it deserves a straight answer.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Trimming to 10-15 years does reduce obvious age signalling, and that's a legitimate reason to do it. But treat it as a side effect of a decision you should make anyway, not as the goal. A resume trimmed for relevance is a better resume; a resume trimmed purely to hide something reads defensive and usually shows.

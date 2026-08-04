@@ -29,6 +29,13 @@ For most other jobs, one or two standout pieces are plenty — and sometimes a l
 
 Use a consistent citation style — **APA, MLA, IEEE, or Chicago** — matching the convention in your field, and list your work **newest first**. A typical entry looks like:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 > Author(s). (Year). *Title of the work*. Journal / Publisher, volume(issue), pages. DOI or link.
 
 A few rules that make the section look professional:
@@ -59,11 +66,6 @@ A long, complex publications list can trip the [ATS](https://thetailorcv.com/blo
 
 If you don't have formal publications but do have relevant output, related sections can serve the same purpose. **Projects** show applied work — see [projects in resume](https://thetailorcv.com/blog/projects-in-resume). **Presentations, talks, and conference appearances** demonstrate thought leadership. **Patents and technical reports** count in engineering and science. Choose the section that best proves your credibility for the target role, and treat it with the same consistent formatting.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## Use Google Scholar, ORCID, and a portfolio

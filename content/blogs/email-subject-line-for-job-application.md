@@ -51,18 +51,8 @@ Professionalism in the subject sets the tone for the whole application, the same
 
 The subject gets you opened; a short, tailored body does the rest. Keep it to a few lines: a warm greeting, one or two sentences on why you're a strong fit for *this* role, a mention of your attached [resume](https://www.thetailorcv.com/modify-cv) (and [cover letter](https://www.thetailorcv.com/cover-letter) if included), and a polite close. Mirror the priorities in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), and don't paste your whole [resume](https://www.thetailorcv.com/modify-cv) into the body. For cold outreach to a recruiter you don't know, the [cold email to a recruiter guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) goes deeper.
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ## Attach the resume the right way
@@ -81,6 +71,20 @@ Timing and targeting help. Applying early to a fresh posting improves your odds,
 ## Application email checklist
 
 Before you send, confirm your email:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 - Has a **clear, professional subject line** with the role and your name.
 - Includes a **short, tailored body**, not a pasted resume.

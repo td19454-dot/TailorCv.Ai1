@@ -26,6 +26,13 @@ A resume for [remote developer](https://thetailorcv.com/blog/how-to-match-resume
 
 Include relevant terms such as:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Remote collaboration
 - Async communication
 - Code reviews
@@ -101,11 +108,6 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

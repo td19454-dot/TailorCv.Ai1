@@ -35,6 +35,13 @@ Employers hiring for entry-level roles expect a short [work history](https://the
 
 Give each [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a title, a one-line context, and result-focused bullets:
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You can start from an existing CV or import from LinkedIn instead of retyping everything.
+
+
 > **Personal Finance Tracker — Python, SQLite**
 > Built a web app that categorizes bank transactions and charts monthly spending.
 > - Parsed 12 months of CSV data and auto-tagged 90% of transactions with a rules engine.
@@ -102,11 +109,6 @@ The trait the [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to
 
 If your [projects section](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) feels thin, you likely have more material than you realize:
 
-### Building the resume section by section
-
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You can start from an existing CV or import from LinkedIn instead of retyping everything.
 
 
 - **Course capstones and group projects** — treat the best one like a job.

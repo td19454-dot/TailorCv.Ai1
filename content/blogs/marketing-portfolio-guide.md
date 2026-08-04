@@ -26,6 +26,13 @@ For each campaign, present: the goal, the audience, the strategy and channels, t
 ## Build Campaign Case Studies
 Create a simple page or deck per major campaign using the [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) structure:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - Objective and target audience
 - Strategy and channel mix
 - Creative (screenshots of ads, emails, landing pages)
@@ -76,11 +83,6 @@ In marketing, visuals can often communicate complex ideas more effectively than 
 
 Creating a case study is a powerful way to demonstrate your skills and the impact of your work. Here’s a step-by-step guide to crafting an effective case study:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 1. **Choose Your Project**: Select a project that had a significant impact on your company or client. Ideally, it should showcase a variety of skills and strategies.

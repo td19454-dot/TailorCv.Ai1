@@ -31,6 +31,13 @@ A resume gives you no feedback after you hit send. A [portfolio](https://thetail
 ## What the TailorCV Portfolio Builder Tracks
 Every portfolio published with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) includes a built-in view counter, visible from your **My Portfolios** dashboard. This gives you a simple, no-setup way to see total views without installing separate analytics tools.
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 ## How to Use the Data
 1. **Set a baseline** - note your view count the moment you send out a batch of applications
 2. **Check again 24-72 hours later** - a jump usually means your link was opened; no movement at all after several applications is worth investigating
@@ -92,11 +99,6 @@ Use this mini checklist to ensure your portfolio is effectively leveraging analy
 The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
 - [ ] Have I regularly reviewed my portfolio analytics?

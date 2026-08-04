@@ -33,6 +33,13 @@ Before applying, compare your resume with the job description using the [ATS sco
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for engineers with under 8 years of experience. Senior engineers with microservices architecture experience or significant [system design](https://thetailorcv.com/blog/system-design-interview-guide) ownership may use two pages.
 
 ---
@@ -130,11 +137,6 @@ Logistics Platform | Jun 2023 - Present
 
 Strong backend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - REST API with authentication and authorization

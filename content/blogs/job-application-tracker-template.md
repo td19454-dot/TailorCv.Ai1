@@ -47,6 +47,13 @@ The most important column is [resume](https://thetailorcv.com/blog/resume-vs-cv)
 
 Use simple labels:
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 - Saved
 - Applied
 - Followed up
@@ -89,6 +96,13 @@ The goal is not to copy the [job description](https://thetailorcv.com/blog/job-d
 
 Before you send the application, review this checklist:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 1. Does the top section match the target role clearly?
 2. Are the most important keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) included naturally?
 3. Is there at least one [measurable result](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) or concrete example?
@@ -106,18 +120,8 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

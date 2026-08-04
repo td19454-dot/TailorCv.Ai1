@@ -82,6 +82,13 @@ Do not apply when:
 
 ## How to Tailor Your Resume When You're Underqualified
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+
 ### Step 1: Map What You Have Against What They Need
 
 Create a simple side-by-side comparison.
@@ -191,11 +198,6 @@ Completely different impression.
 
 When you are underqualified, a strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) can bridge the gap your resume cannot.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 Use it to:

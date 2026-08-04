@@ -53,6 +53,13 @@ This guide shows you how to use AI to [tailor your resume](https://thetailorcv.c
 
 Before we fix the problem, let us understand what the tool does well.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 AI excels at:
 
 **Keyword identification and gap analysis**
@@ -199,11 +206,6 @@ Avoid these signals:
 
 Here is the tension:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) needs keywords, structured format, and matching terminology.

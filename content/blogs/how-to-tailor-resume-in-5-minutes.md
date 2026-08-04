@@ -34,6 +34,13 @@ For why this matters at the [ATS](https://thetailorcv.com/blog/what-is-a-good-at
 
 ## The 5-Minute Resume Tailoring Checklist
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
+
 ### Minute 1 - Read the Job Description Once, Highlight Key Terms
 
 Before changing anything, scan the job posting and highlight:
@@ -120,11 +127,6 @@ This takes another 60 seconds and removes guesswork. See [how to check your ATS 
 
 You do not need to rewrite:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 - Your work experience bullets (unless you want to reorder them)

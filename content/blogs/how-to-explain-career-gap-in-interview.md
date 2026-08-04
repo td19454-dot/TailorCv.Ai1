@@ -10,6 +10,13 @@ image: public/blog-images/how-to-explain-career-gap-in-interview.webp
 
 Employment gaps are more common than ever - parental leave, health issues, caregiving, layoffs, travel, upskilling, or simply a difficult job market. Yet "Explain this gap in your resume" still makes candidates nervous.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 
 
 The good news: gaps do not automatically disqualify you. **How you explain them** determines whether they become a non-issue or a red flag.
@@ -126,11 +133,6 @@ For career changers after a gap, read [career change to tech guide](https://thet
 - **Perception**: A survey by Jobvite found that 75% of hiring managers consider a well-explained career gap to be acceptable, especially if the candidate demonstrates continuous learning or skill development during that time.
 - **Impact on Hiring**: A LinkedIn report indicates that candidates who address their career gaps candidly in interviews are 30% more likely to receive job offers compared to those who do not.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 ## Crafting Your Personal Narrative

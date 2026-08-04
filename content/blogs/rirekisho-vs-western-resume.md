@@ -91,11 +91,6 @@ These employers value a clear, achievement-focused, ATS-friendly resume. This is
 4. **Consider language.** Japanese-language roles expect Japanese documents; English roles accept English resumes.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Many foreigners primarily use a strong Western resume (for global/English roles) and prepare a rirekisho only when a traditional employer requires it.
@@ -104,6 +99,13 @@ Many foreigners primarily use a strong Western resume (for global/English roles)
 
 - **Western resume:** build a clean, ATS-friendly resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 - **Rirekisho:** follow the conventions in the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) — formal photo, correct dates, neatness, and a specific *shibō dōki* (motivation).
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 Whichever you use, add a cover letter where expected (see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide)) and prepare for Japan's interview etiquette (see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide)) — rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 

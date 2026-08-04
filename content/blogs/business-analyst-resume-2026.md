@@ -36,6 +36,13 @@ Before submitting your application, compare your resume against the job descript
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One to two pages depending on experience and project [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) depth.
 
 ---
@@ -133,11 +140,6 @@ Banking and Financial Services | Apr 2022 - Present
 
 Useful BA [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - CBAP (Certified Business Analysis Professional) - IIBA

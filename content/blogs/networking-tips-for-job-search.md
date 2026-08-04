@@ -36,6 +36,13 @@ When you apply online, you compete with hundreds of applicants and must first pa
 - Are far more likely to get an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - Often learn about roles before they are publicly posted
 
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
+
 Referrals dramatically increase your hiring odds. This is why [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) is worth the discomfort.
 
 ---
@@ -120,17 +127,7 @@ Networking is not one-and-done. After a good conversation, [follow up](https://t
 
 
 
-### Tailoring without leaving LinkedIn
 
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 ### Reconnecting
 "Hi [Name], great to see your update about [their news]! I've been meaning to reconnect. I'm currently exploring [field] roles - would love to catch up and hear how things are going with you."

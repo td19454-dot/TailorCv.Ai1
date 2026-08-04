@@ -34,6 +34,13 @@ If your resume is not generating responses, fix that before anything else. Run i
 ## What a Portfolio Actually Does
 A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) removes doubt. Once your resume earns a shortlist spot, hiring managers Google you - and a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is the proof that turns "looks okay on paper" into "let's talk to this person."
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 - It shows finished [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes
 - It demonstrates taste, craft, and judgment a resume can only claim
 - It gives interviewers concrete things to ask about (so you steer the conversation)
@@ -71,11 +78,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Make the [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) load fast and look great on mobile - most first views are on phones.
 - Audit every link before each application with the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 

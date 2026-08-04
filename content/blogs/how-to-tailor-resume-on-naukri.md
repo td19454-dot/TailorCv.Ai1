@@ -18,6 +18,13 @@ This guide is about getting your resume into the visible group: what to change w
 
 On Naukri, the filter is not abstract — recruiters literally search the resume database using keywords from the role they are hiring for. Your resume is [parsed into structured data](/blog/ats-resume-checker-how-it-works), and if it does not contain the terms they search, you never appear in their results.
 
+### Tailoring straight from a Naukri listing
+
+![The TailorCV extension open on a Naukri job posting, reading the role and offering to tailor the resume without leaving the page](public/blog-images/how-to-tailor-resume-on-naukri-extension.webp)
+
+The extension reads the posting off the Naukri page you are already on, so you can check the match and tailor without copying the description into another tab.
+
+
 This is why [matching the posting's language](/blog/how-to-match-resume-keywords-to-job-description) matters so much. If the JD asks for "stakeholder management" and your resume says "coordinated with teams", a recruiter searching "stakeholder management" will not find you — a human would call them identical, but [the search matches words, not meaning](/blog/how-to-pass-ats-in-2026). Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) breakdown shows how much this costs.
 
 So updating your Naukri profile once with a generic resume, then applying to everything with it, quietly guarantees you stay unfound. The fix is fewer, tailored applications — and if you have wondered [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day), that is the honest answer.
@@ -48,6 +55,13 @@ A few points matter specifically on Naukri.
 
 Before the per-job tailoring, your standing Naukri profile does quiet work in the background, and most people leave it half-built.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 Two fields matter more than the rest. Your **resume headline** is one of the first things a searching recruiter sees, and a vague line like "Experienced professional seeking opportunities" carries none of the terms they filter by. Rewrite it to name your role and two or three of your strongest, most searchable skills. Your **key skills** section is literally a set of search tags — fill it with the exact terms used in the roles you want, not adjacent approximations.
 
 Then keep the profile fresh. Naukri surfaces recently active and recently updated profiles higher in recruiter searches, so a profile you touch weekly outperforms an identical one left stale for months. None of this replaces per-job tailoring — the profile gets you *found*, the tailored resume gets you *shortlisted* — but a weak profile means the tailored resume never gets seen in the first place. Think of it as two layers: the profile is the net, the tailored resume is the catch.
@@ -71,18 +85,8 @@ A minute instead of ten — and because it lives on the page, the habit survives
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send. Unsure it is solid? Run a [free ATS score](/blog/how-to-check-ats-score-free) first.
 
-### Tailoring straight from a Naukri listing
-
-![The TailorCV extension open on a Naukri job posting, reading the role and offering to tailor the resume without leaving the page](public/blog-images/how-to-tailor-resume-on-naukri-extension.webp)
-
-The extension reads the posting off the Naukri page you are already on, so you can check the match and tailor without copying the description into another tab.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 **Step 2 — Open a Naukri job you actually want.** Load the full posting.

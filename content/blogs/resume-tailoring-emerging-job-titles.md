@@ -121,6 +121,13 @@ The [hidden keywords guide](https://thetailorcv.com/blog/hidden-keywords-in-job-
 
 ## How to Tailor Your Resume for an Emerging Role
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
 ### 1. Build a Bridge From Your Past to Their Future
 
 You probably do not have 3 years of "Prompt Engineering" experience.
@@ -231,11 +238,6 @@ Key resume signals: ESG reporting, sustainability initiative outcomes, industry 
 
 Emerging roles are easier to get into before they become mainstream.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 When a field is new:

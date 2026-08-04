@@ -103,11 +103,6 @@ Check it directly: run your resume against a specific posting with a [free ATS s
 
 Two cases.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 **You haven't been hired yet.** Correct it. Send an updated resume, or raise it in the interview plainly: "I want to correct something on my resume." Some processes end there. Many don't, and the ones that continue now involve someone who trusts you more than they did before.

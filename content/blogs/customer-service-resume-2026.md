@@ -35,6 +35,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for most [customer service](https://thetailorcv.com/blog/customer-service-resume-2026) roles. Two pages for team leads or customer success managers with program ownership.
 
 ---
@@ -118,11 +125,6 @@ Maintained / Reduced / Created / Managed + [support metric or process] + [ticket
 Senior Support Specialist - SaaS Platform
 Tech Company | Feb 2022 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Managed 80-100 support tickets daily across email, chat, and phone channels using Zendesk and Intercom for a B2B SaaS product with 6K+ active customers.

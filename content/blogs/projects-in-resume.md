@@ -150,6 +150,13 @@ If your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-fo
 
 Knowing **how to add projects in resume for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)** is not just about listing titles. Presentation matters.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Project Title
 
 Use a clear and professional title.
@@ -310,11 +317,6 @@ Write descriptions in your own words.
 ## Tips to Make Your Projects Stand Out
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### Use Action Verbs
 

@@ -32,6 +32,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 Use a simple, single-column format. No graphics, no columns, no infographics.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Best structure for an [internship resume](https://thetailorcv.com/blog/internship-resume-guide):
 
 1. Header
@@ -187,11 +194,6 @@ Example:
 
 Add free or low-cost [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that are directly relevant:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Google Data Analytics Certificate (Coursera)

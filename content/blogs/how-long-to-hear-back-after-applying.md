@@ -75,11 +75,6 @@ But volume alone is a trap, and this is where many people go wrong. Sending fift
 
 Concrete things worth doing instead of refreshing:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 **Diagnose, don't guess.** If you're getting silence at high volume, the problem is usually upstream of the wait. Run your resume against one of the postings you applied to with a [free ATS score](/blog/how-to-check-ats-score-free). A low match on roles you're genuinely qualified for means your resume isn't being read at all — fix that and every future application improves. [How to increase your ATS score](/blog/how-to-increase-ats-score), [keyword matching](/blog/how-to-match-resume-keywords-to-job-description), [the keywords that matter](/blog/best-resume-keywords-to-beat-ats), and [formatting mistakes that break parsing](/blog/ats-resume-formatting-mistakes) are where the fixes live.
@@ -111,6 +106,13 @@ The first response is only the first wait. Knowing the rest helps you plan and s
 ## When It Goes Quiet Mid-Process
 
 Silence after you've already interviewed feels worse than silence after applying, because you have something to lose. It's usually still procedural.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 
 Common causes: the preferred candidate is in final stages and you're the backup, an internal approval is stalled, a key interviewer is on leave, the role's budget is under review, or the requirements changed. None of these are about you, and all of them are invisible from outside.
 

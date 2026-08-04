@@ -35,6 +35,13 @@ Before applying, compare your resume to the job description with the [ATS score 
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for analysts with under 6 years of experience. Two pages for senior FP&A professionals or analysts with significant deal or modeling history.
 
 ---
@@ -131,11 +138,6 @@ FMCG Company | Mar 2022 - Present
 ## Common Financial Analyst Resume Mistakes
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 ### Mistake 1: No dollar context
 

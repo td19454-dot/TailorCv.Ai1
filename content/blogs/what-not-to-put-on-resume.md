@@ -28,6 +28,13 @@ Start with the right foundation. Use the [ATS score checker](https://www.thetail
 
 ## Personal Information to Remove
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### 1. Photo (unless specifically required)
 
 In the US, UK, Canada, Australia, and most Western countries, including a photo creates unconscious bias and can actually get your resume rejected to protect the company from discrimination claims. Check norms for your specific country. If not required, remove it.
@@ -155,11 +162,6 @@ Inflating your GPA, claiming a certification you have not completed, or listing 
 
 Before sending your next application:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Photo removed (unless required)?

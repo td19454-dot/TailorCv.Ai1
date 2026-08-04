@@ -40,6 +40,13 @@ This guide breaks down exactly how to [tailor your resume](https://thetailorcv.c
 Startups are building something.
 They need people who can figure things out fast, wear multiple hats, and thrive in chaos.
 
+### Tailoring straight from a Wellfound listing
+
+![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
+
+Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
+
+
 Enterprises are operating something.
 They need people who can work within structure, follow process, and scale what already exists.
 
@@ -60,6 +67,13 @@ Your resume has to reflect that. Understanding [how recruiters read resumes](htt
 ---
 
 ## Tailoring Your Resume for a Startup
+
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 ### 1. Lead With Impact, Not Title
 
@@ -211,18 +225,8 @@ It will likely fail keyword matching.
 Informal language, missing certifications, unconventional formatting - all hurt your enterprise [ATS match score](https://thetailorcv.com/blog/improve-resume-job-match-score).
 
 
-### Tailoring straight from a Wellfound listing
-
-![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
-
-Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 **Sending an enterprise resume to a startup**

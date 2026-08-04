@@ -85,11 +85,6 @@ For English-friendly employers:
 - **LinkedIn** and recruitment agencies that place foreigners.
 - **The JET Programme and language schools** for teaching.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 See the [best job sites for finding work in Japan](https://thetailorcv.com/blog/job-sites-japan).

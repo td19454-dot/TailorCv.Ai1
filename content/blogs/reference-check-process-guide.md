@@ -18,6 +18,13 @@ Reaching the reference stage means you're close, often alongside or just before 
 
 After you've impressed in interviews, an employer contacts your references to confirm your experience and get a sense of what you're like to work with. They typically ask about your role and responsibilities, your strengths, how you handled challenges, and whether they'd rehire or recommend you. Some employers call; others send a short form. The tone is usually confirmatory — they want reasons to feel confident, not to dig for dirt — but a vague or unenthusiastic reference plants doubt at the worst possible moment.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ## Who to choose as references
 
 Pick people who know your work well and will speak specifically and positively:
@@ -36,11 +43,6 @@ Never list someone as a reference without permission. Reach out ahead of time, c
 
 Once someone agrees, set them up to give the best possible reference. Send them:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 - **The role you're applying for** and a link to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).

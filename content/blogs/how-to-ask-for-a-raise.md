@@ -52,6 +52,13 @@ This is related to the [salary negotiation guide](https://thetailorcv.com/blog/h
 
 A raise request is a business case. Gather:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
@@ -147,11 +154,6 @@ Also ask: "What specifically would I need to demonstrate to justify this raise w
 
 A no is not the end. Your options:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 1. **Get a roadmap**: Ask exactly what you need to achieve for a yes, and a timeline.

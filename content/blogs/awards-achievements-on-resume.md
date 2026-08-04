@@ -170,11 +170,6 @@ Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes 
 - Old awards that are no longer relevant to your current career
 - Awards that contradict the image you want to project (e.g., humor awards in a serious industry)
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ---

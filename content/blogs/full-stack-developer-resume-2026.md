@@ -36,6 +36,13 @@ Test your resume against the job description with the [ATS score checker](https:
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for engineers with under 8 years of experience. Your project section matters especially for full stack candidates since it shows real end-to-end ownership.
 
 ---
@@ -133,11 +140,6 @@ EdTech Startup | Apr 2023 - Present
 
 Strong full stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add to your resume:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - E-commerce store with authentication, cart, payments

@@ -16,6 +16,13 @@ Before you spend twenty minutes on an application, it helps to know one thing in
 
 A skill-match score compares the skills on your resume against the skills a job posting asks for, and reports the overlap. It is a focused slice of the broader [ATS match](/blog/ats-resume-checker-how-it-works): where a full match looks at keywords, titles, phrasing and formatting, skill-matching zeroes in on the concrete capabilities — the tools, technologies, and competencies the role requires.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 That focus makes it fast and clear. You get a percentage and, more usefully, two lists: the skills you have that the job wants, and the skills the job wants that your resume does not show. Because it is [matching specific terms](/blog/how-to-match-resume-keywords-to-job-description), it is honest about the difference between "I have this skill" and "my resume *shows* I have this skill" — which are not the same thing, and the gap between them is why qualified people get filtered out.
 
 ## Why Speed Matters Here
@@ -50,11 +57,6 @@ A high skill-match is only worth something if the resume behind it is real and r
 
 The single most useful thing a skill-match reveals is the gap between the skills you *have* and the skills your resume *shows* — and it is worth dwelling on, because it is where most qualified people lose interviews they should have got.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 Here is the pattern. You have used SQL for two years, but your resume says "pulled data for reporting". You have led projects, but your bullets say "helped with initiatives". You know the skills are there; you lived them. But a [skill-match reads what is written](/blog/how-to-match-resume-keywords-to-job-description), not what you did, and so does the recruiter's filter. The skill exists in your head and your history — just not in a form the machine or the busy human can see. That is the "show vs have" gap, and it is invisible until a match score surfaces it.

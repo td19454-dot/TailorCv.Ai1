@@ -101,6 +101,13 @@ Even with AI's assistance, it's easy to make mistakes that can hurt your chances
 
 No - using AI to speed up writing is no different than using a template or asking a friend to review your resume. What matters is that the content stays accurate and that you can speak to every claim confidently in an interview. See [how to write a resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai) for a responsible approach.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Embracing AI as a Tool, Not a Crutch
 AI should be viewed as a valuable tool that can enhance your resume writing process. Here’s how to maximize its benefits:
 
@@ -114,11 +121,6 @@ By incorporating AI thoughtfully into your resume writing process, you can creat
 
 Before you submit your resume, it's essential to assess whether any sections may appear AI-generated. Here’s a step-by-step guide to help you identify potential red flags:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Analyze Sentence Structure**: AI often generates sentences that are overly complex or too uniform in structure. Read your resume aloud. If the sentences sound robotic or lack natural variation, consider rephrasing them.

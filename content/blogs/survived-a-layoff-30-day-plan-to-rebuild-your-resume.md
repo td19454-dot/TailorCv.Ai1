@@ -40,6 +40,13 @@ Start with a quick win: check your current resume against a role you actually wa
 - Update your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) to match your resume and signal you're open to opportunities
 - If your field supports it, build or refresh a [portfolio](https://www.thetailorcv.com/portfolio) to show recent work
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Week 3: Network and Apply Strategically
@@ -84,11 +91,6 @@ Rebuilding your resume after a layoff can be daunting, and it's easy to make mis
 
 Networking is a critical component of your job search, especially after a layoff. Here are some effective do’s and don’ts to guide you:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ### Do’s:

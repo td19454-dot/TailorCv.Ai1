@@ -34,6 +34,20 @@ Familiarizing yourself with these aspects will help you tailor your job search e
 
 Your resume is often the first impression you make on potential employers, so it’s essential to craft it with care, especially for remote roles. Here are some tips to optimize your resume:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
+### Tailoring without leaving Glassdoor
+
+![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
+
+Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
+
+
 - **Focus on Relevant Experience**: Highlight any previous remote work experience or roles that required self-discipline and communication skills.
 - **Use Quantified Achievements**: Instead of saying you “managed a team,” specify that you “led a remote team of 5, increasing productivity by 20% over six months.”
 - **Include Keywords**: Align your resume with the job description to improve your ATS score. Utilize tools like the [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets the necessary criteria.
@@ -64,18 +78,8 @@ To maximize your chances, consider utilizing our [remote job search guide](https
 
 Networking is a powerful tool for finding remote job opportunities. Here’s how to make connections:
 
-### Tailoring without leaving Glassdoor
-
-![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
-
-Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Use LinkedIn**: Optimize your profile and connect with industry professionals. Engage with their posts and share relevant content to increase your visibility. For tips, check out our guide on [LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
