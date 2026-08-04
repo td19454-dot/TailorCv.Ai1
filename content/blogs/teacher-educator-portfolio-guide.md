@@ -22,6 +22,7 @@ keywords: teacher portfolio, educator portfolio website, teaching portfolio exam
 Hiring committees for teaching roles often review dozens of nearly identical resumes. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is where you show your actual classroom practice - lesson design, student growth, and your teaching philosophy - in a way a resume bullet never can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **A teaching philosophy statement** | one page on how you approach learning, differentiation, and classroom culture |

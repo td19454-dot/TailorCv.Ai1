@@ -149,6 +149,7 @@ For related tough questions, see [why leaving current job](https://thetailorcv.c
 ## Do's and Don'ts for Answering the Weakness Question
 
 ### Do's
+
 | What | Details |
 |---|---|
 | **Be Honest** | Choose a real weakness that you are genuinely working to improve |

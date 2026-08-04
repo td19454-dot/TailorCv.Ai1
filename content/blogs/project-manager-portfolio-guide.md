@@ -22,6 +22,7 @@ keywords: project manager portfolio, pm portfolio website, project management ca
 Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **2-4 project case studies** | scope, timeline, budget, team size, and what you delivered |
@@ -66,6 +67,7 @@ Creating a project manager portfolio can seem daunting, but breaking it down int
 2. **Gather Your Best Projects**: Select 3-5 projects that best showcase your skills and achievements. Ensure these projects highlight diverse aspects of project management, such as planning, execution, and stakeholder communication.
 
 3. **Document Each Project**: For each project, include the following:
+
 | Step | What to do |
 |---|---|
 | **Project Overview** | Briefly describe the project and its objectives |

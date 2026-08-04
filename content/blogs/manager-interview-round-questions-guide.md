@@ -165,6 +165,7 @@ Use "I" for your contributions. Managers want people who take responsibility.
 | [Final round with director](https://thetailorcv.com/blog/final-round-interview-tips) | More strategic, less tactical |
 
 ### Tips for Each Format:
+
 | Type | What it involves |
 |---|---|
 | **1:1** | Focus on building personal rapport and understanding the manager's expectations |

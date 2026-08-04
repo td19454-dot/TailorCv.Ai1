@@ -21,6 +21,7 @@ People use "personal website" and "portfolio" interchangeably, but they serve sl
 A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
 
 ### Key Elements of a Strong Portfolio
+
 | Tool | What it does |
 |---|---|
 | **Diverse Projects** | Include a variety of work that demonstrates your skills and versatility |
@@ -33,6 +34,7 @@ A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/ho
 A broader **home base**: who you are, your work, maybe a blog, your resume, contact, and your overall brand. A personal website can *contain* a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) plus more (writing, speaking, a newsletter).
 
 ### Components of a Personal Website
+
 | Tool | What it does |
 |---|---|
 | **About Me Section** | Share your story, values, and professional journey. This is your opportunity to connect with your audience on a personal level. For tips on crafting this section, see [How to Write the About Me Section of Your Portfolio (With Examples)](https://thetailorcv.com/blog/portfolio-about-me-section) |

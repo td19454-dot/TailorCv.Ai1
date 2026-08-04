@@ -22,6 +22,7 @@ keywords: video editor portfolio, videographer portfolio website, video editing 
 For video editors and videographers, the portfolio *is* the pitch - clients and hiring managers decide within the first ten seconds of your reel whether to keep watching. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around a strong reel and organized samples converts far better than a folder of raw clips. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **A 60-90 second reel** | your best work first, cut fast, no slow build-up |
@@ -116,6 +117,7 @@ By following this checklist, you can create a polished and professional portfoli
 - **Do optimize for SEO**: Use relevant keywords in video titles, descriptions, and tags to enhance discoverability.
 
 ### Don'ts
+
 | What | Details |
 |---|---|
 | **Don’t overload with content** | Avoid cluttering your portfolio with too many videos; focus on your strongest pieces |

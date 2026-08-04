@@ -22,6 +22,7 @@ keywords: sales portfolio, sales rep portfolio website, business development por
 A resume tells a recruiter you hit 130% of quota. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) shows *how* - the territory you inherited, the deals you built, and the numbers behind them. Sales is one of the few fields where a portfolio is still rare, which makes having one a real edge over other candidates. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **Quota attainment history** | a simple chart or table by quarter or year |
@@ -67,6 +68,7 @@ One of the most impactful ways to demonstrate your revenue impact in a sales por
 1. **Choose the Right Projects**: Select projects that had significant revenue implications. Look for examples where you played a crucial role in closing deals or turning around difficult client relationships.
 
 2. **Structure Your Case Study**:
+
 | Section | What goes in it |
 |---|---|
 | **Background** | Briefly describe the client’s business and the challenges they faced |

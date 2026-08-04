@@ -86,6 +86,7 @@ When base is capped, these often have room, and asking about them signals sophis
 - **Annual bonus target** — worth clarifying and sometimes negotiable.
 - **Start date** — a later start to rest, or an earlier one for cash flow.
 - **Remote or hybrid flexibility** — sometimes worth more than money.
+
 | Check | What to look for |
 |---|---|
 | **Extra PTO** | a few extra days is a common, low-friction win |

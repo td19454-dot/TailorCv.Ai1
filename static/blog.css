@@ -2511,28 +2511,30 @@ header.navbar {
 }
 .blog-detail-page .post-content .lead-list > li {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
   margin: 0;
-  padding: 14px 20px 14px 40px;
+  padding: 14px 20px;
   border: 1px solid #e6e9f2;
   border-radius: 10px;
   background: #fbfbff;
 }
+/* The marker is a flex item, not an absolutely positioned one - that way it
+   stays locked to the first text line at any font size or zoom level. */
 .blog-detail-page .post-content .lead-list > li::before {
   content: "";
-  position: absolute;
-  left: 18px;
-  top: 23px;
+  flex: 0 0 auto;
+  margin-top: 10px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: linear-gradient(135deg, #AF40FF, #5B42F3);
 }
-.blog-detail-page .post-content ol.lead-list > li { padding-left: 58px; }
 .blog-detail-page .post-content ol.lead-list > li::before {
   counter-increment: tcxlead;
   content: counter(tcxlead);
-  left: 16px;
-  top: 14px;
+  margin-top: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2550,8 +2552,7 @@ header.navbar {
 }
 .blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
 @media (max-width: 640px) {
-  .blog-detail-page .post-content .lead-list > li { padding: 12px 14px 12px 34px; }
-  .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
+  .blog-detail-page .post-content .lead-list > li { padding: 12px 14px; gap: 10px; }
   .blog-detail-page .post-content .point-run > .point-card { padding: 15px 16px; }
 }
 
@@ -2620,7 +2621,7 @@ header.navbar {
 }
 .blog-detail-page .post-content .lead-list > li.task-item > .task-box {
   left: 18px;
-  top: 16px;
+  top: 17px;
 }
 
 /* An H3 immediately under an H2 was rendering almost as large as its parent,
@@ -2630,7 +2631,7 @@ header.navbar {
   font-size: clamp(1.3rem, 1.6vw, 1.75rem);
 }
 .blog-detail-page .post-content > h2 + h3 {
-  margin-top: 18px;
+  margin-top: 34px;
 }
 
 /* ---- Before / After comparison panels ---- */

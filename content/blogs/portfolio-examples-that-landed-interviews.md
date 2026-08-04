@@ -98,6 +98,7 @@ Cybersecurity candidates who documented CTF writeups or personal security resear
 ## What Every Strong Portfolio Has in Common
 
 - **3-6 focused projects**, not a dumping ground of everything you've touched - see [portfolio checklist before applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+
 | Tool | What it does |
 |---|---|
 | **Context before code or visuals** | the problem, your role, and the outcome |

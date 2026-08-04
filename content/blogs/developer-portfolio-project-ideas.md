@@ -22,6 +22,7 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 ## Beginner Projects (Prove the Fundamentals)
 
 ### 1. API Dashboard
+
 | Tool | What it does |
 |---|---|
 | **Overview** | Create a dashboard that pulls live data from APIs, such as weather, cryptocurrency prices, or sports statistics |
@@ -30,6 +31,7 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 | **Example** | Use the OpenWeatherMap API to display current weather conditions and a weekly forecast |
 
 ### 2. Personal Portfolio Site
+
 | Tool | What it does |
 |---|---|
 | **Overview** | Build a personal website to showcase your work. This site should be responsive, fast, and visually appealing |
