@@ -14,7 +14,7 @@ AI has changed [how resumes are screened](https://thetailorcv.com/blog/hidden-at
 And most candidates have no idea.
 
 They prepare their [resume](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply)s the same way they did five years ago.
-They [apply](https://thetailorcv.com/blog/how-ats-detects-generic-resume).
+They apply.
 They hear nothing.
 
 The reason: modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are no longer just keyword scanners.

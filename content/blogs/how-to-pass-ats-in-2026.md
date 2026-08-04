@@ -66,11 +66,11 @@ Before you submit, run your [resume](https://thetailorcv.com/blog/anatomy-of-a-r
 
 ## The Real Reasons Resumes Get Filtered
 
-[Candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) imagine the ATS as a ruthless gatekeeper rejecting people for sport. In reality, most filtering comes down to three fixable causes:
+Candidates imagine the ATS as a ruthless gatekeeper rejecting people for sport. In reality, most filtering comes down to three fixable causes:
 
 - **Unparseable layout.** Multi-column templates, tables, text boxes, and graphics look great to humans and confuse the parser. When the software cannot tell where your job titles end and your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) begin, it scores you low or drops content entirely.
 - **Missing [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).** If the posting wants "Kubernetes" and your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) says "container orchestration," a keyword-matching system may not connect them. Mirror the exact terms.
-- **Irrelevance.** Sometimes the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) parses fine and simply is not a close enough match. This is not an ATS problem — it is a tailoring problem, and it is solved by adjusting each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) to the specific [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+- **Irrelevance.** Sometimes the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) parses fine and simply is not a close enough match. This is not an ATS problem — it is a tailoring problem, and it is solved by adjusting each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) to the specific role.
 
 ## Formatting Do's and Don'ts at a Glance
 
@@ -93,7 +93,7 @@ There is no format hack that substitutes for relevance. The same [resume](https:
 
 A lot of [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) advice is built on outdated fears. Clearing these up saves you effort:
 
-- **Myth: "The ATS auto-rejects [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) below a score."** Most systems rank and surface [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) for a human [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter); they rarely hard-reject on a score alone. Your real goal is to rank well and be readable, not to beat a mythical cutoff.
+- **Myth: "The ATS auto-rejects [resumes](https://thetailorcv.com/blog/anatomy-of-a-resume) below a score."** Most systems rank and surface candidates for a human [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter); they rarely hard-reject on a score alone. Your real goal is to rank well and be readable, not to beat a mythical cutoff.
 - **Myth: "Keyword stuffing tricks the system."** Modern parsers weight context and flag unnatural repetition. Stuffing lowers your quality signal and looks terrible to the human who reads next.
 - **Myth: "You need a plain, ugly text [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)."** You need a *clean, single-column* [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) — it can still look professional. Ugly is not the requirement; parseable is.
 - **Myth: "PDFs don't work with ATS."** Text-based PDFs parse fine in modern systems. Only scanned-image PDFs fail.
@@ -105,7 +105,7 @@ The heart of passing an ATS is matching the posting's language — but there is 
 
 - **In your [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** for the named technologies you genuinely have.
 - **Inside real [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) bullets**, showing the [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in action: "Built REST APIs in Python backed by PostgreSQL," not a bare keyword list.
-- **In your summary**, mirroring the exact [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) title where it fits.
+- **In your summary**, mirroring the exact role title where it fits.
 
 Use the posting's exact terms, not near-synonyms — "REST APIs" if that is what it says, not "web services." And never claim a [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in a bullet that you do not actually have; list it in [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for matching if you must, but keep your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) honest.
 
@@ -115,12 +115,12 @@ It is easy to obsess over the software and forget that the software's whole job 
 
 ## Test Before Every Submission
 
-Before you hit apply, run the [free ATS score](https://thetailorcv.com/solutions) or the 60-second copy-paste test on your [tailored resume](https://thetailorcv.com/optimize) against the specific posting. It takes a minute and it converts "I hope this passes" into "I know this matches." Given how much effort goes into finding and applying to [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), skipping this final check is a false economy — it is the cheapest insurance in your entire [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+Before you hit apply, run the [free ATS score](https://thetailorcv.com/solutions) or the 60-second copy-paste test on your [tailored resume](https://thetailorcv.com/optimize) against the specific posting. It takes a minute and it converts "I hope this passes" into "I know this matches." Given how much effort goes into finding and applying to roles, skipping this final check is a false economy — it is the cheapest insurance in your entire [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
 
 ## Frequently Asked Questions
 
 ### Do all companies use an ATS?
-Most mid-size and large [employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) do, and many small ones use one through their [job board](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Assume your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) will be parsed by software first.
+Most mid-size and large employers do, and many small ones use one through their [job board](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Assume your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) will be parsed by software first.
 
 ### Is a PDF or Word document better for ATS?
 Both work with modern systems if they are text-based. Follow the posting's instruction; if none is given, a text-based PDF is safe.

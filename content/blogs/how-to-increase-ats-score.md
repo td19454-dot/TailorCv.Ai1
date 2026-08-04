@@ -194,7 +194,7 @@ Usually under an hour. Formatting and keywords produce the fastest, largest gain
 
 ### What is the fastest way to raise my score?
 
-Fix formatting (use a single-column [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) template) and add the exact [keywords](https://thetailorcv.com/blog/how-ats-detects-generic-resume) from the job description. Those two steps account for most of the improvement.
+Fix formatting (use a single-column [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) template) and add the exact keywords from the job description. Those two steps account for most of the improvement.
 
 ### Should I aim for 100?
 

@@ -253,7 +253,7 @@ Not necessarily. Focus on your resume and the formal application. Updating [Link
 
 ### What if I am competing against an external candidate?
 
-You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and [interview](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) reflect it. Do not assume it is enough on its own. Consider also how to get a [promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) to enhance your chances.
+You have insider knowledge of the company, culture, and needs. That is a real advantage - if your resume and interview reflect it. Do not assume it is enough on its own. Consider also how to get a [promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) to enhance your chances.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)

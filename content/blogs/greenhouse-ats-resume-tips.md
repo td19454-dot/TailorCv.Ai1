@@ -36,7 +36,7 @@ Greenhouse extracts your work history, education, and skills into structured can
 
 ### Keyword and Requirement Matching
 
-Once parsed, your resume is compared against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)'s listed requirements. Greenhouse is commonly configured by recruiting teams to flag or auto-sort candidates based on specific must-have [keywords](https://thetailorcv.com/blog/resume-matching-skills-based-hiring), so missing an exact required term can push you out of the initial review queue.
+Once parsed, your resume is compared against the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)'s listed requirements. Greenhouse is commonly configured by recruiting teams to flag or auto-sort candidates based on specific must-have keywords, so missing an exact required term can push you out of the initial review queue.
 
 ### Recruiter Scorecards
 
