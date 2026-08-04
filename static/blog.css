@@ -2328,3 +2328,43 @@ header.navbar {
   margin-bottom: 3px;
   color: #b42318;
 }
+
+/* ---- Copy-ready template blocks ---- */
+.blog-detail-page .post-content .tpl-block {
+  max-width: 1000px;
+  margin: 30px 0;
+  padding: 24px 28px 8px;
+  border: 1px solid #f0d9a0;
+  border-left: 5px solid #eab308;
+  border-radius: 12px;
+  background: #fffbeb;
+}
+.blog-detail-page .post-content .tpl-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #a16207;
+}
+.blog-detail-page .post-content .tpl-head svg { width: 22px; height: 22px; flex: 0 0 auto; }
+.blog-detail-page .post-content .tpl-head h2,
+.blog-detail-page .post-content .tpl-head h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 1.2rem !important;
+  font-weight: 800 !important;
+  color: #92400e !important;
+}
+.blog-detail-page .post-content .tpl-head .anchor-link { display: none; }
+.blog-detail-page .post-content .tpl-block p { color: #422006; }
+.blog-detail-page .post-content .tpl-block pre,
+.blog-detail-page .post-content .tpl-block .codehilite {
+  border: 1px solid #f0d9a0;
+  background: #fffef8;
+}
+.blog-detail-page .post-content .tpl-block blockquote {
+  border-color: #f0d9a0;
+  border-left-color: #eab308;
+  background: #fffef8;
+}

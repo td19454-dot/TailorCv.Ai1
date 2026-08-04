@@ -1140,3 +1140,49 @@ if (document.readyState === "loading") {
 } else {
   setTimeout(tcxRunPairs, 0);
 }
+
+/* Copy-ready template blocks ("Full Template", "Template 2: ...", sample
+   letters and email scripts) get an amber card. They are the thing readers
+   actually take away from these posts, so they should not look like ordinary
+   body copy. Runs after the other enhancers so it never re-wraps a section
+   already inside a callout, FAQ or step card. */
+const tcxTemplateBlocks = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const RE = /^(full template|template\b|the template|sample (letter|email|message|script)|email (template|script)|message template|letter template)/i;
+  const INSIDE = ".callout-box, .faq-box, .key-takeaways-box, .step-card, .dd-grid, .blog-ats, .blog-tpl, .end-cta, .tpl-block";
+
+  Array.from(content.querySelectorAll("h2, h3")).forEach((h) => {
+    const text = (h.textContent || "").replace("#", "").trim();
+    if (!RE.test(text) || h.closest(INSIDE)) return;
+
+    const nodes = [];
+    let n = h.nextElementSibling;
+    while (n && !/^H[1-6]$/.test(n.tagName)) {
+      if (n.matches && n.matches(INSIDE)) break;
+      if (n.tagName === "P" && n.querySelector("img")) break;
+      nodes.push(n);
+      n = n.nextElementSibling;
+    }
+    if (!nodes.length) return;
+
+    const box = document.createElement("section");
+    box.className = "tpl-block";
+    h.before(box);
+    const head = document.createElement("div");
+    head.className = "tpl-head";
+    head.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" ' +
+      'fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' +
+      '<path d="M5 7v12a2 2 0 0 0 2 2h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    box.appendChild(head);
+    head.appendChild(h);
+    nodes.forEach((x) => box.appendChild(x));
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxTemplateBlocks, 0));
+} else {
+  setTimeout(tcxTemplateBlocks, 0);
+}
