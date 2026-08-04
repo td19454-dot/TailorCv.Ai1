@@ -1029,3 +1029,54 @@
     p.classList.add("callout-note-inline");
   });
 })();
+
+/* Do / Don't pairs rendered side by side, like the reference layouts.
+   The corpus writes these as "### Do's:" immediately followed by "### Don'ts:".
+   Pairing them into two columns makes the contrast readable at a glance
+   instead of asking the reader to hold the first list in their head. */
+(() => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const DO = /^(do'?s?|dos)\s*:?\s*$/i;
+  const DONT = /^(don'?ts?|donts)\s*:?\s*$/i;
+  const clean = (h) => (h.textContent || "").replace("#", "").trim();
+
+  const ICON = {
+    do: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#16a34a"/><path d="M8 12.5l2.6 2.6L16 9.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    dont: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ef4444"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>',
+  };
+
+  const take = (heading) => {
+    const nodes = [];
+    let n = heading.nextElementSibling;
+    while (n && !/^H[1-6]$/.test(n.tagName)) { nodes.push(n); n = n.nextElementSibling; }
+    return nodes;
+  };
+
+  Array.from(content.querySelectorAll("h3")).forEach((doH) => {
+    if (!DO.test(clean(doH)) || doH.closest(".dd-grid")) return;
+    const doNodes = take(doH);
+    const dontH = doNodes.length ? doNodes[doNodes.length - 1].nextElementSibling : doH.nextElementSibling;
+    if (!dontH || dontH.tagName !== "H3" || !DONT.test(clean(dontH))) return;
+    const dontNodes = take(dontH);
+    if (!doNodes.length || !dontNodes.length) return;
+
+    const grid = document.createElement("div");
+    grid.className = "dd-grid";
+    doH.before(grid);
+
+    [["do", doH, doNodes], ["dont", dontH, dontNodes]].forEach(([kind, h, nodes]) => {
+      const col = document.createElement("section");
+      col.className = "dd-col dd-" + kind;
+      const head = document.createElement("div");
+      head.className = "dd-head";
+      head.innerHTML = '<span class="dd-ico">' + ICON[kind] + "</span>";
+      col.appendChild(head);
+      // normalise the label so one column never reads "Do's:" and the other "Don'ts"
+      h.textContent = kind === "do" ? "Do" : "Don't";
+      head.appendChild(h);
+      nodes.forEach((n) => col.appendChild(n));
+      grid.appendChild(col);
+    });
+  });
+})();

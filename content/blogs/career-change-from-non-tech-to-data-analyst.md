@@ -47,7 +47,7 @@ Aspiring [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) |
 
 Your summary should connect old and new:
 
-Operations professional transitioning into data analytics, with experience tracking KPIs, building Excel reports, and identifying process gaps. Skilled in SQL, Power BI, and dashboard storytelling through recent [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) [projects](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
+Operations professional transitioning into data analytics, with experience tracking KPIs, building Excel reports, and identifying process gaps. Skilled in SQL, Power BI, and dashboard storytelling through recent [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) projects.
 
 ---
 

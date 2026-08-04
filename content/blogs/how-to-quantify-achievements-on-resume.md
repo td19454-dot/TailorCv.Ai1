@@ -57,7 +57,7 @@ Estimate honestly with a range or a scale word: "roughly 30 clients," "a mid-six
 
 ## The Metrics-Finding Worksheet
 
-Most people say "my job wasn't measurable" and then, walked through the right [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), find five numbers in ten minutes. Sit down with each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) these prompts. Any "yes" is a bullet waiting to be written.
+Most people say "my job wasn't measurable" and then, walked through the right [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), find five numbers in ten minutes. Sit down with each role and [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) these prompts. Any "yes" is a bullet waiting to be written.
 
 - **Scale:** How many people, customers, tickets, or dollars did you touch? Even "supported 8 enterprise accounts" is a number.
 - **Change:** Did anything go up or down while you owned it? Revenue, errors, wait times, satisfaction, churn.
@@ -68,11 +68,11 @@ Most people say "my job wasn't measurable" and then, walked through the right [q
 - **Money:** Did you save, earn, or manage money? Budgets managed count even if you did not "earn" the revenue.
 - **Team:** How many people did you lead, mentor, or coordinate across?
 
-Run every [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) through those eight prompts and you will almost always surface more numbers than you can fit.
+Run every role through those eight prompts and you will almost always surface more numbers than you can fit.
 
 ## Before and After, by Role
 
-The transformation looks a little different in every field. Here is what turning duties into results looks like across common [roles](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+The transformation looks a little different in every field. Here is what turning duties into results looks like across common roles.
 
 **Customer Support**
 - Before: "Answered customer inquiries and resolved issues."
@@ -87,7 +87,7 @@ The transformation looks a little different in every field. Here is what turning
 - After: "Cut API p95 latency from 850ms to 240ms by adding caching and query indexing, improving checkout completion 9%."
 
 **Marketing**
-- Before: "Managed the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s social media accounts."
+- Before: "Managed the company's social media accounts."
 - After: "Grew combined social following from 4K to 31K in a year and drove 22% of inbound demo requests through organic content."
 
 **Operations**
@@ -113,7 +113,7 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 
 - **Fabricating precision.** "Increased efficiency by 37.2%" from a job with no analytics reads as invented. An honest "by roughly a third" is more believable.
 - **Vanity metrics.** "Sent 10,000 emails" is activity, not achievement. "10,000 emails driving a 24% open rate and 340 signups" is achievement.
-- **Numbering everything.** If all ten bullets carry a statistic, the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) starts to feel like a spreadsheet and each number loses weight. Two or three strong metrics per [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) is the target.
+- **Numbering everything.** If all ten bullets carry a statistic, the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) starts to feel like a spreadsheet and each number loses weight. Two or three strong metrics per role is the target.
 - **Confidential leaks.** Do not publish revenue figures your [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) treats as private. Convert to percentages or multiples.
 - **Context-free numbers.** "$2M" means nothing without a frame. "$2M annual budget across four teams" tells the story.
 
@@ -147,11 +147,11 @@ The kind of number that impresses shifts as you advance:
 - **Mid level:** outcomes you drove. "Cut churn 15%," "shipped 3 features that lifted conversion 9%," "reduced processing time from 10 days to 3." You are proving impact.
 - **Senior and leadership:** scale and strategic results. "Owned a $2M budget," "led a 15-person org," "grew ARR from $4M to $11M in two years." You are proving you move the business.
 
-Match your metrics to your level, and lead each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with the number that best proves the value expected at that stage.
+Match your metrics to your level, and lead each role with the number that best proves the value expected at that stage.
 
 ## Building Quantified Bullets Into a Tailored Resume
 
-Numbers do their best work when they are also relevant to the specific job. A metric that matters to one [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats); you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) values, and your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as though it was written for them — because it was. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that pairs the right [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) in the same read.
+Numbers do their best work when they are also relevant to the specific job. A metric that matters to one role may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats); you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) values, and your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as though it was written for them — because it was. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that pairs the right [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) in the same read.
 
 ## Frequently Asked Questions
 
@@ -159,7 +159,7 @@ Numbers do their best work when they are also relevant to the specific job. A me
 Use relative figures instead of absolutes: "grew revenue 30%" rather than the dollar amount. Percentages and multiples are rarely confidential.
 
 ### Should every bullet have a number?
-No. Aim for a number in your top two or three bullets per [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where every line has a statistic starts to feel padded.
+No. Aim for a number in your top two or three bullets per role. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where every line has a statistic starts to feel padded.
 
 ### Can I quantify soft skills?
 Indirectly. "Mentored 4 junior designers, two of whom were promoted within a year" proves leadership with a number without claiming "great mentor."
@@ -174,12 +174,12 @@ Round sensibly. "Cut costs by about 20%" is more credible than "by 19.7%" unless
 Use relative figures and scope. "Managed a [portfolio](https://thetailorcv.com/portfolio) in the low eight figures" or "improved retention double digits" conveys scale without disclosing protected numbers. Percentages and ranges are almost never confidential.
 
 ### How many quantified bullets should a resume have overall?
-Aim for a number in the top two or three bullets of each recent [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Across a one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.
+Aim for a number in the top two or three bullets of each recent role. Across a one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that is roughly six to nine metrics — enough to prove a pattern of impact without turning the page into a data dump.
 
 ## The Rule You Can Never Break: Honesty
 
-Everything about quantifying achievements rests on one non-negotiable foundation: the numbers must be true. A fabricated statistic is a liability that detonates at the worst possible moment — in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), when a sharp interviewer asks "how did you measure that 40% improvement?" and you have no [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), or later, when a [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) contradicts a claim. Invented metrics also tend to sound invented; a suspiciously precise "increased efficiency by 37.2%" from a [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) with no analytics reads as fiction to an experienced [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). The good news is you never need to lie, because honest estimation covers every real situation: reconstruct a defensible figure from what you know, use ranges and qualifiers when you lack precision, quantify scope when you cannot quantify outcome, and convert confidential absolutes into percentages. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) built on true numbers survives every [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) probe and every [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) check — which is the entire point of putting numbers on it in the first place. Impressive-but-false loses to modest-but-true every time it is tested, and in a serious [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) process, it will be tested.
+Everything about quantifying achievements rests on one non-negotiable foundation: the numbers must be true. A fabricated statistic is a liability that detonates at the worst possible moment — in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), when a sharp interviewer asks "how did you measure that 40% improvement?" and you have no [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), or later, when a [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) contradicts a claim. Invented metrics also tend to sound invented; a suspiciously precise "increased efficiency by 37.2%" from a role with no analytics reads as fiction to an experienced [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid). The good news is you never need to lie, because honest estimation covers every real situation: reconstruct a defensible figure from what you know, use ranges and qualifiers when you lack precision, quantify scope when you cannot quantify outcome, and convert confidential absolutes into percentages. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) built on true numbers survives every [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) probe and every [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) check — which is the entire point of putting numbers on it in the first place. Impressive-but-false loses to modest-but-true every time it is tested, and in a serious hiring process, it will be tested.
 
 ## Putting It All Together
 
-Quantifying achievements is the single highest-return edit you can make to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Walk each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) through the eight-prompt worksheet, rewrite your top bullets with the X-Y-Z formula, front-load the number, and keep every figure honest. The result is a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) believes in seconds and an [ATS scores](https://thetailorcv.com/solutions) as real [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) — the two audiences you have to win to get the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
+Quantifying achievements is the single highest-return edit you can make to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Walk each role through the eight-prompt worksheet, rewrite your top bullets with the X-Y-Z formula, front-load the number, and keep every figure honest. The result is a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) believes in seconds and an [ATS scores](https://thetailorcv.com/solutions) as real [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) — the two audiences you have to win to get the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).

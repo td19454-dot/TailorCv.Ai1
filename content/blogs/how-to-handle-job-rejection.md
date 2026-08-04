@@ -35,7 +35,7 @@ Before the next application, make sure your [resume](https://thetailorcv.com/blo
 You applied, never heard back, or received an automated "We've decided to move forward with other candidates" email.
 
 What it likely means:
-- [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword mismatch - your [resume](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026) did not match the job description well enough
+- [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword mismatch - your resume did not match the job description well enough
 - Too many applicants - companies receive hundreds of applications for single roles
 - Experience gap - you were under or over-qualified
 - Role was filled internally or cancelled

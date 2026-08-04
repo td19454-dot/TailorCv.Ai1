@@ -13,13 +13,13 @@ keywords: phone screen interview, recruiter phone screen, phone interview tips, 
 ## Key Takeaways
 
 - The phone screen filters out mismatches on [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email), logistics, and basic fit.
-- Nail the three staples: "tell me about yourself," "why this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)," and "[salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations."
+- Nail the three staples: "tell me about yourself," "why this role," and "[salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations."
 - Have your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) in front of you — this is an open-book call.
 - Confirm mutual fit and next steps before you hang up.
 
 ## What a Phone Screen Is For
 
-A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s phone screen is usually 20–30 minutes and is not deeply technical. It exists to confirm the basics before the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) spends a [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)'s time: Are you actually interested? Are your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations in range? Are you eligible and available? Do you communicate clearly? Clear most of those, and you advance.
+A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s phone screen is usually 20–30 minutes and is not deeply technical. It exists to confirm the basics before the company spends a [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)'s time: Are you actually interested? Are your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations in range? Are you eligible and available? Do you communicate clearly? Clear most of those, and you advance.
 
 ## Prepare Like It's Open Book
 
@@ -34,9 +34,9 @@ The scorecard at the end is the useful bit - an honest score plus specific feedb
 
 ## The Three Questions to Nail
 
-**"Tell me about yourself."** Give a 60-second arc: what you do now, one relevant highlight, and why this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Not your life story.
+**"Tell me about yourself."** Give a 60-second arc: what you do now, one relevant highlight, and why this role. Not your life story.
 
-**"Why are you interested in this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)?"** Connect something specific about the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to your direction. Generic enthusiasm is forgettable; a specific reason is not. (See [how to answer "why do you want this job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job).)
+**"Why are you interested in this role?"** Connect something specific about the company or role to your direction. Generic enthusiasm is forgettable; a specific reason is not. (See [how to answer "why do you want this job?"](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job).)
 
 **"What are your [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) expectations?"** Give a researched range and frame it as flexible. Deflecting entirely can stall the process; a confident range keeps it moving.
 
@@ -72,22 +72,22 @@ Anchor to market data, not to what you currently make or personally need. If the
 A phone screen is a filter, and [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are listening for reasons to *not* advance you as much as reasons to. Avoid these:
 
 - **Badmouthing a current or former [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).** It signals you will do the same to them.
-- **Not knowing what [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) you applied for.** If you are applying widely, keep notes so you are never caught flat.
+- **Not knowing what role you applied for.** If you are applying widely, keep notes so you are never caught flat.
 - **Vague [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) evasion.** A confident range keeps things moving; total deflection frustrates [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
 - **Low energy or distraction.** Background noise, obvious multitasking, or one-word [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) read as disinterest.
-- **No [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) at the end.** It suggests you have not thought seriously about the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).
+- **No [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) at the end.** It suggests you have not thought seriously about the role.
 
 
 ## Prepare Your Own Questions
 
-Even on a 20-minute screen, have two or three genuine [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) ready. Good ones for a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter): "What does the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)?" Thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) tighter and your nerves quieter.
+Even on a 20-minute screen, have two or three genuine [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) ready. Good ones for a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter): "What does the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) process look like from here?", "What's the team's biggest priority this quarter?", and "What are you personally hoping to see in the person who fills this role?" Thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) signal seriousness and give you real information to decide with. Rehearsing the whole call once in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) makes your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) tighter and your nerves quieter.
 
 ## What the Recruiter Is Actually Screening For
 
 A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s phone screen is a filter with four quiet checkboxes, and knowing them lets you clear each on purpose:
 
-1. **Genuine interest.** Do you actually want *this* [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), or are you applying to everything? A specific [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) to "why this job" checks this box.
-2. **Compensation fit.** Are your expectations in the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s range? This is why they raise [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) early — to avoid investing in a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) they cannot afford.
+1. **Genuine interest.** Do you actually want *this* role, or are you applying to everything? A specific [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) to "why this job" checks this box.
+2. **Compensation fit.** Are your expectations in the company's range? This is why they raise [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) early — to avoid investing in a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) they cannot afford.
 3. **Basic qualification and logistics.** Eligibility, location or time zone, availability, notice period. Boring but disqualifying if there is a mismatch.
 4. **Communication.** Can you explain your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
 
@@ -107,7 +107,7 @@ The screen is not just a filter to survive; it is your chance to actively advanc
 
 ## A Sample Phone Screen, Start to Finish
 
-A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), "why are you interested in this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)," a couple of logistics and [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), your [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)" [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and your salary range until they are smooth, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and notes in front of you, and have two [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single [mock interview](https://thetailorcv.com/mock-interview) run-through the day before makes the real thing feel routine.
+A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), "why are you interested in this role," a couple of logistics and [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), your [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and your salary range until they are smooth, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and notes in front of you, and have two [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single [mock interview](https://thetailorcv.com/mock-interview) run-through the day before makes the real thing feel routine.
 
 ## Frequently Asked Questions
 
@@ -140,7 +140,7 @@ Reschedule as early as possible with a brief, apologetic, professional message o
 
 ## Common Phone Screen Mistakes
 
-Even well-qualified [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) trip on the phone screen, almost always for avoidable reasons:
+Even well-qualified candidates trip on the phone screen, almost always for avoidable reasons:
 
 - **Taking the call somewhere noisy.** A crackly line or background chatter undercuts everything you say. If your quiet space falls through, ask to reschedule rather than push through a bad connection.
 - **Rambling on "tell me about yourself."** Without a prepared 60-second arc, this opener sprawls and sets a scattered tone. Script it.

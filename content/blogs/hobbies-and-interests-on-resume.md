@@ -24,7 +24,7 @@ There are a few clear situations where a hobbies section earns its space:
 
 ## When to skip hobbies
 
-If you have a full page of strong, relevant [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), cut hobbies to make room for what matters. A senior professional's [resume](https://www.thetailorcv.com/modify-cv) almost never needs them. And always skip anything controversial, polarizing, or so generic it says nothing — "reading, music, traveling" is filler that adds zero signal. When space is tight, the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying) helps you decide what to trim, and [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) covers what to leave off entirely.
+If you have a full page of strong, relevant experience, cut hobbies to make room for what matters. A senior professional's [resume](https://www.thetailorcv.com/modify-cv) almost never needs them. And always skip anything controversial, polarizing, or so generic it says nothing — "reading, music, traveling" is filler that adds zero signal. When space is tight, the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying) helps you decide what to trim, and [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) covers what to leave off entirely.
 
 ## How to list hobbies well
 
@@ -53,7 +53,7 @@ Include hobbies on your [resume](https://www.thetailorcv.com/modify-cv) only whe
 
 - **Add real signal** — relevance, culture fit, or transferable skill.
 - Are **specific**, not generic ("marathon runner," not "fitness").
-- Don't **crowd out** stronger [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) or [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
+- Don't **crowd out** stronger experience or [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
 - Keep the [resume](https://www.thetailorcv.com/modify-cv) [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passing the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Build a focused [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and only add hobbies if they make your case stronger.
