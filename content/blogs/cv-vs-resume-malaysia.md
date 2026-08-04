@@ -10,10 +10,6 @@ keywords: cv vs resume malaysia, difference between cv and resume malaysia, resu
 image: public/blog-images/cv-vs-resume-malaysia.png
 ---
 
-"Please submit your CV." "Attach your resume." In Malaysia, you'll see both requests — often for the same kind of job — and it's easy to wonder whether you're supposed to send two different documents. The short answer: for most Malaysian jobs, "CV" and "resume" mean the same thing, but there are important exceptions where the difference genuinely matters.
-
-This guide clears up the confusion for good: what a CV and a resume actually are, how the terms are used in Malaysia, which document specific employers expect, and how to make sure whatever you send gets you shortlisted.
-
 ## Key Takeaways
 
 - In Malaysia, **"CV" and "resume" are usually used interchangeably** for a concise 1–2 page application document.
@@ -21,6 +17,11 @@ This guide clears up the confusion for good: what a CV and a resume actually are
 - Whatever you call it, most Malaysian private-sector roles want a **tailored, ATS-ready 1–2 page document**.
 - The exception: academia and research expect a **full, multi-page CV** listing publications, grants, and teaching.
 - When unsure, follow the language and expectations of the specific job posting.
+
+
+"Please submit your CV." "Attach your resume." In Malaysia, you'll see both requests — often for the same kind of job — and it's easy to wonder whether you're supposed to send two different documents. The short answer: for most Malaysian jobs, "CV" and "resume" mean the same thing, but there are important exceptions where the difference genuinely matters.
+
+This guide clears up the confusion for good: what a CV and a resume actually are, how the terms are used in Malaysia, which document specific employers expect, and how to make sure whatever you send gets you shortlisted.
 
 ## What Is a Resume?
 
@@ -95,7 +96,7 @@ Learn the full mechanics in [how ATS works in Malaysia](https://thetailorcv.com/
 
 - For a company role, build a tailored, ATS-safe resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions).
 - Match each role's language using [best resume keywords for Malaysian jobs](https://thetailorcv.com/blog/best-resume-keywords-malaysia).
-- Add a targeted cover letter — see the Malaysia cover letter guide.
+- Add a targeted cover letter — see the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 
 For the full job-search picture, see [how to get a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia).
 

@@ -10,8 +10,6 @@ slug: student-portfolio-guide
 keywords: student portfolio, college portfolio, portfolio for internship, undergraduate portfolio, student portfolio examples
 ---
 
-A portfolio is a student's single biggest edge, because most of your peers will not bother to build one. Start now and you graduate with **proof**, not just a degree and a GPA. Here is the playbook. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
-
 ## Key Takeaways
 
 - Start building your portfolio early to showcase proof of skills beyond just a degree and GPA.
@@ -19,6 +17,9 @@ A portfolio is a student's single biggest edge, because most of your peers will 
 - Update your portfolio every semester to maintain a comprehensive body of work for job placements.
 - Ensure your resume, LinkedIn, and portfolio tell a consistent story to avoid confusing recruiters.
 - Tailor your portfolio to fit the expectations of your specific field, emphasizing relevant skills and examples.
+
+
+A portfolio is a student's single biggest edge, because most of your peers will not bother to build one. Start now and you graduate with **proof**, not just a degree and a GPA. Here is the playbook. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ## What to Include
 - 2-4 academic or personal **[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** with outcomes
@@ -149,15 +150,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
-- Build a Portfolio With No Experience
-- How to Get a Job With No Experience
-- Internship Resume Guide
-- How to Get Your First Tech Job
-- 15 Developer Portfolio Project Ideas
-- GitHub Portfolio Optimization
-- How to Add Your Portfolio Link to Your Resume
-- Portfolio Mistakes to Avoid
-- Turn Your Resume Into a Portfolio in Minutes
+- [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
 
 ## Make This Practical
 

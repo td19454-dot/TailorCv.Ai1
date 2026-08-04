@@ -10,18 +10,19 @@ slug: how-ats-detects-generic-resume
 keywords: how ats detects generic resume, ats generic resume, ats resume filtering, ats resume score low, ats reject resume reasons
 ---
 
-Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)s. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
-
-See how your resume scores right now with the [free ATS checker](/solutions).
-
----
-
 ## Key Takeaways
 
 - ATS systems evaluate resumes through parsing, keyword matching, section weighting, job title alignment, and contextual scoring.
 - Generic resumes often fail to match critical keywords specific to job postings, resulting in low keyword match scores.
 - Job title alignment is crucial; using vague or internal titles can lead to significant mismatches and low ATS scores.
 - Non-standard section names in generic resumes can confuse ATS parsers, negatively impacting the overall score.
+
+
+Most job seekers think [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems are simple keyword matchers. The reality is more sophisticated - and more unforgiving for [generic resume](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)s. Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms score your resume on multiple signals simultaneously, and a resume that hasn't been tailored to the specific role will fail on several of them at once. Here is exactly how it happens.
+
+See how your resume scores right now with the [free ATS checker](/solutions).
+
+---
 
 ## What ATS Actually Does When It Receives Your Resume
 
@@ -165,15 +166,15 @@ Aim for 75% or above. Scores above 80% consistently land in recruiter review que
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- ATS Keywords - How to Find and Add Them
-- ATS Score Guide for 2026
-- ATS Resume Formatting Mistakes
-- How to Check Your ATS Score for Free
-- Does My Resume Pass ATS? A 12-Point Checklist
-- How to Make Your Resume ATS-Friendly
-- ATS Resume Checker - How It Works and How to Pass
-- How to Match Resume Keywords to Job Description
-- How to Quantify Resume Achievements
+- [ATS Keywords - How to Find and Add Them](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
+- [Does My Resume Pass ATS? A 12-Point Checklist](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [ATS Resume Checker - How It Works and How to Pass](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
+- [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 
 ---
 

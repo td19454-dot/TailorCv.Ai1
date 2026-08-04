@@ -10,14 +10,6 @@ slug: how-to-decline-job-offer
 keywords: how to decline a job offer, decline job offer email, turning down a job offer, reject job offer professionally, decline offer template, how to say no to a job offer
 ---
 
-Declining a job offer is a delicate but common situation. You may have received a better offer, decided the role is not the right fit, or chosen to stay at your current job. However you decline, doing it professionally protects your reputation and keeps the door open - the company may be a future employer, client, or part of your network.
-
-This guide shows you how to decline a job offer gracefully, with templates.
-
-If you are deciding between offers, read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to make sure you are choosing well. Keep your resume current for future opportunities with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Decline a job offer promptly to show professionalism and respect for the company's time.
@@ -25,6 +17,15 @@ If you are deciding between offers, read the [salary negotiation guide](https://
 - A professional decline should include gratitude, a clear statement of decline, a brief positive reason, and an invitation to keep the relationship open.
 - Sharing a reason for declining is optional; if chosen, keep it positive and avoid criticizing the company or offer.
 - Maintaining good relations can lead to future opportunities with the company or within your network.
+
+
+Declining a job offer is a delicate but common situation. You may have received a better offer, decided the role is not the right fit, or chosen to stay at your current job. However you decline, doing it professionally protects your reputation and keeps the door open - the company may be a future employer, client, or part of your network.
+
+This guide shows you how to decline a job offer gracefully, with templates.
+
+If you are deciding between offers, read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to make sure you are choosing well. Keep your resume current for future opportunities with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## When and How to Decline
 
@@ -162,21 +163,21 @@ Always decline graciously. Connect with the recruiter or hiring manager on [Link
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- How to Build a Professional Portfolio
-- How to Handle Job Rejection
-- How to Negotiate a Salary Offer
-- Networking Tips for Job Search
-- Cover Letter Guide
-- How to Use LinkedIn for Job Search
-- LinkedIn Profile Optimization Guide
-- Remote Job Search Guide
-- How to Follow Up After a Job Interview
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
-- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
-- Freelancing vs Full-Time Employment in 2026 - Honest Comparison
-- How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026
-- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Make This Practical
 

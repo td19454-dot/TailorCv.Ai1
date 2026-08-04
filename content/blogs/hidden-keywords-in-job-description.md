@@ -10,6 +10,15 @@ slug: hidden-keywords-in-job-description
 keywords: hidden keywords job description, job description analysis resume, how to read job description for resume, decode job description 2026, resume tailoring job description clues
 ---
 
+## Key Takeaways
+
+- Job descriptions contain three layers: explicit requirements, priority signals, and subtext, which provide deeper insights into the role.
+- Priority signals, such as the position of requirements and repetition of key terms, indicate what the employer values most.
+- The "Required vs. Preferred" sections reveal essential qualifications and differentiators that can set candidates apart.
+- Understanding the subtext, including the problems the company is facing, helps tailor applications more effectively.
+- Candidates who analyze all three layers of a job description are more likely to stand out in the hiring process.
+
+
 You read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 You see: "Python, SQL, [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026), cross-functional collaboration, communication skills."
@@ -35,14 +44,6 @@ All of that is encoded in the language - if you know how to read it.
 This guide teaches you how. It goes deeper than the standard [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - that covers finding the obvious terms. This guide covers finding the ones that are not obvious.
 
 ---
-
-## Key Takeaways
-
-- Job descriptions contain three layers: explicit requirements, priority signals, and subtext, which provide deeper insights into the role.
-- Priority signals, such as the position of requirements and repetition of key terms, indicate what the employer values most.
-- The "Required vs. Preferred" sections reveal essential qualifications and differentiators that can set candidates apart.
-- Understanding the subtext, including the problems the company is facing, helps tailor applications more effectively.
-- Candidates who analyze all three layers of a job description are more likely to stand out in the hiring process.
 
 ## The Three Layers of a Job Description
 
@@ -258,13 +259,13 @@ For a priority application: 30 minutes. For a volume application where you are u
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
-- How to Tailor Your Resume for Every Job
-- ATS Keyword Mistakes That Cost Interviews
-- How to Stop Sounding Generic on Your Resume
-- Tailored vs Generic Resume
-- How to Write Resume Bullet Points
-- Resume Matching with Job Description - Complete Guide
-- How Recruiters Read Resumes
+- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [ATS Keyword Mistakes That Cost Interviews](https://thetailorcv.com/blog/ats-keyword-mistakes)
+- [How to Stop Sounding Generic on Your Resume](https://thetailorcv.com/blog/how-to-stop-sounding-generic-on-resume)
+- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
+- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [How Recruiters Read Resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes)
 
 ---
 

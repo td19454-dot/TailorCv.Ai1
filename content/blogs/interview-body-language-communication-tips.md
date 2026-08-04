@@ -6,6 +6,14 @@ slug: interview-body-language-communication-tips
 image: public/blog-images/interview-body-language-communication-tips.webp
 ---
 
+## Key Takeaways
+
+- Body language accounts for 50-60% of communication impact in interviews, making it crucial for success.
+- Maintain an upright posture and lean slightly forward to show engagement during in-person interviews.
+- Make eye contact 60-70% of the time while speaking, and distribute your gaze among all interviewers in panel settings.
+- Use natural hand gestures to emphasize points, avoiding crossed arms and excessive fidgeting.
+- For video interviews, position the camera at eye level and look at the lens to create the illusion of eye contact.
+
 ## Interview Body Language and Communication Tips - What Interviewers Notice in 2026
 
 You can give a perfect answer on paper and still lose the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) if your **body language** says something different. Interviewers notice posture, eye contact, facial expressions, and vocal tone - often subconsciously - and use them to assess confidence, engagement, and cultural fit.
@@ -15,14 +23,6 @@ This guide covers body language and communication for in-person, [virtual](https
 Pair this with [AI mock interview practice](https://thetailorcv.com/mock-interview) where you can rehearse delivery, not just content. Also read the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips), and optimize your resume with the TailorCV ATS checker.
 
 ---
-
-## Key Takeaways
-
-- Body language accounts for 50-60% of communication impact in interviews, making it crucial for success.
-- Maintain an upright posture and lean slightly forward to show engagement during in-person interviews.
-- Make eye contact 60-70% of the time while speaking, and distribute your gaze among all interviewers in panel settings.
-- Use natural hand gestures to emphasize points, avoiding crossed arms and excessive fidgeting.
-- For video interviews, position the camera at eye level and look at the lens to create the illusion of eye contact.
 
 ## Why Body Language Matters in Interviews
 

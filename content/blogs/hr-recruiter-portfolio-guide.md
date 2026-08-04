@@ -10,8 +10,6 @@ slug: hr-recruiter-portfolio-guide
 keywords: hr portfolio, recruiter portfolio, human resources portfolio website, talent acquisition portfolio, hr case study
 ---
 
-HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you show the process behind a hiring metric - how you cut time-to-fill, redesigned onboarding, or built a sourcing pipeline from scratch. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
-
 ## Key Takeaways
 
 - A portfolio allows HR and recruiters to showcase the impact of their work through metrics and case studies, making their contributions visible.
@@ -19,6 +17,9 @@ HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [po
 - Frame your work by presenting the initial problem, the changes made, and the resulting improvements to demonstrate effectiveness.
 - Host your portfolio on a personal site, LinkedIn, or as a shareable PDF, ensuring it aligns with your resume and LinkedIn profile.
 - Avoid common mistakes such as listing tasks instead of outcomes and failing to provide before-and-after metrics to illustrate improvements.
+
+
+HR and recruiting work is judgment-heavy and mostly invisible on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you show the process behind a hiring metric - how you cut time-to-fill, redesigned onboarding, or built a sourcing pipeline from scratch. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
 ## What to Include
 | What to include | Why |
@@ -139,15 +140,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide)
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio About Me Section
-- Portfolio Contact Section
-- How to Use LinkedIn for Job Search
-- AI Portfolio Builder: No Code Required
-- Private Portfolio Sharing Guide
-- Portfolio With No Experience
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
+- [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
 
 ## Make This Practical
 
@@ -164,8 +165,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

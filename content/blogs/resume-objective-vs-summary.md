@@ -10,12 +10,6 @@ slug: resume-objective-vs-summary
 keywords: resume objective vs summary, career objective vs professional summary, should I use resume objective or summary, resume objective statement, professional summary for resume, resume opening statement 2026
 ---
 
-The resume objective was standard advice for decades: a brief statement at the top of your resume expressing what kind of job you are looking for. Today, for most candidates, the professional summary has completely replaced it - and for good reason. This guide explains the difference, who should use each, and how to write both effectively.
-
-After choosing your approach, build your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - The resume objective has largely fallen out of favor, as it focuses on what the candidate wants rather than what they can offer to employers.
@@ -23,6 +17,13 @@ After choosing your approach, build your resume on an [ATS-friendly template](ht
 - Use a summary if you have any relevant experience, including internships or projects; it is more effective for most candidates.
 - An objective may be appropriate for first-time job seekers with no relevant experience, during major career changes, or in specific traditional industries.
 - A well-crafted professional summary should include your title, years of experience, core strengths, and a specific, quantified accomplishment.
+
+
+The resume objective was standard advice for decades: a brief statement at the top of your resume expressing what kind of job you are looking for. Today, for most candidates, the professional summary has completely replaced it - and for good reason. This guide explains the difference, who should use each, and how to write both effectively.
+
+After choosing your approach, build your resume on an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What Is a Resume Objective?
 
@@ -164,11 +165,11 @@ The headline can stand alone or precede a summary. Read [how to write a resume h
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Resume Summary With No Experience](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- The Anatomy of a Perfect Resume
-- How to Write a Resume from Scratch
-- ATS Score Guide
-- Resume Keywords Guide
-- Resume Red Flags
+- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
+- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
+- [Resume Red Flags](https://thetailorcv.com/blog/resume-red-flags)
 
 ---
 

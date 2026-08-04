@@ -10,6 +10,15 @@ slug: how-to-ask-for-a-raise
 keywords: how to ask for a raise, asking for a raise 2026, salary increase request, raise negotiation script, how to get a pay raise, request salary increase
 ---
 
+## Key Takeaways
+
+- Approach the raise conversation as a business case by presenting evidence of your value rather than making a personal plea.
+- The best times to ask for a raise include after significant accomplishments, during performance reviews, or when the company is financially healthy.
+- Gather evidence of your achievements, market data on salary benchmarks, and demonstrate your growth in value since your last raise.
+- Schedule a meeting with your manager to discuss your contributions and compensation, signaling seriousness and allowing them to prepare.
+- Use a structured script during the conversation, clearly stating your accomplishments and desired salary, then pause to let your manager respond.
+
+
 Asking for a raise is one of the most uncomfortable but financially important conversations in your career. A successful raise conversation can increase your income by 5-20% - and since future raises and offers are often percentages of your current salary, the impact compounds for years.
 
 The key is to approach it as a business case, not a personal plea. You are not asking for a favor - you are presenting evidence that your value to the company has grown and that your compensation should reflect it.
@@ -19,14 +28,6 @@ This guide covers when to ask, how to build your case, the exact scripts to use,
 This is related to the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) for new offers and the [how to get a promotion guide](https://thetailorcv.com/blog/how-to-get-a-promotion). To understand your [market value](https://thetailorcv.com/blog/how-to-check-ats-score-free), keep your resume updated and run it through the TailorCV ATS score checker periodically.
 
 ---
-
-## Key Takeaways
-
-- Approach the raise conversation as a business case by presenting evidence of your value rather than making a personal plea.
-- The best times to ask for a raise include after significant accomplishments, during performance reviews, or when the company is financially healthy.
-- Gather evidence of your achievements, market data on salary benchmarks, and demonstrate your growth in value since your last raise.
-- Schedule a meeting with your manager to discuss your contributions and compensation, signaling seriousness and allowing them to prepare.
-- Use a structured script during the conversation, clearly stating your accomplishments and desired salary, then pause to let your manager respond.
 
 ## When to Ask for a Raise
 
@@ -176,20 +177,20 @@ Caution: only use this if you are genuinely prepared to leave. Bluffing can back
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- How to Get Your First Tech Job
-- Personal Branding for Professionals
-- Career Change to Tech
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
-- Freelancing vs Full-Time Employment
-- How to Follow Up After a Job Interview
-- How to Get a Job With No Experience
-- How to Prepare for Campus Placement
-- LinkedIn Profile Optimization Guide
-- Best Questions to Ask in a Job Interview in 2026 - 40 Smart Questions
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
-- Behavioral Interview Questions and Answers - Complete 2026 Guide
-- 200 Best Action Verbs for Resume in 2026 - By Role and Category
-- 20 Common Interview Mistakes to Avoid in 2026
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Best Questions to Ask in a Job Interview in 2026 - 40 Smart Questions](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Behavioral Interview Questions and Answers - Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 
 ## Make This Practical
 

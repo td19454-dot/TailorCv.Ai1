@@ -86,7 +86,7 @@ The errors that keep good planners out of interviews:
 - **Task lists, not delivery.** Lead with events executed and results, not responsibilities.
 - **A disorganized layout.** It undercuts an organizer — keep it clean and [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 - **Missing tools.** Name Cvent, Asana, and CRM platforms — they're [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- **One resume everywhere.** Tailor to each employer and check the ATS score.
+- **One resume everywhere.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each employer and check the [ATS score](https://www.thetailorcv.com/solutions).
 
 For more, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 

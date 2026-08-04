@@ -6,6 +6,14 @@ slug: github-portfolio-optimization
 image: public/blog-images/github-portfolio-optimization.webp
 ---
 
+## Key Takeaways
+
+- Optimize your GitHub profile by creating a README in a repository named after your username, including a bio, tech stack, featured projects, and contact information.
+- Pin only your six best repositories, ensuring each has a descriptive name, a clear README, and relevant visuals to showcase your work effectively.
+- Maintain readable repositories with clear setup instructions, meaningful commit messages, and a logical commit history to enhance their professionalism.
+- Active GitHub profiles with consistent contributions and at least one open-source contribution significantly increase your appeal to recruiters.
+- Ensure your resume, LinkedIn, and portfolio tell a cohesive story, avoiding discrepancies that could confuse recruiters.
+
 ## GitHub Portfolio Optimization: Make Recruiters Take You Seriously
 
 For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
@@ -20,14 +28,6 @@ You upload the resume you already have and the sections fill themselves in - bas
 
 
 
-
-## Key Takeaways
-
-- Optimize your GitHub profile by creating a README in a repository named after your username, including a bio, tech stack, featured projects, and contact information.
-- Pin only your six best repositories, ensuring each has a descriptive name, a clear README, and relevant visuals to showcase your work effectively.
-- Maintain readable repositories with clear setup instructions, meaningful commit messages, and a logical commit history to enhance their professionalism.
-- Active GitHub profiles with consistent contributions and at least one open-source contribution significantly increase your appeal to recruiters.
-- Ensure your resume, LinkedIn, and portfolio tell a cohesive story, avoiding discrepancies that could confuse recruiters.
 
 ## Build a Profile README
 Create a repository named exactly your username and add a README. It renders at the top of your profile. 
@@ -240,15 +240,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- Frontend Developer Portfolio Guide
-- Backend Developer Portfolio Guide
-- Full Stack Developer Portfolio Guide
-- LinkedIn Profile Optimization Guide
-- How to Write a Portfolio Case Study
-- Portfolio Checklist Before You Apply
-- Portfolio SEO: Get Found
-- Software Engineer Resume FAANG
-- Portfolio Mistakes to Avoid
+- [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio)
+- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
+- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Software Engineer Resume FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
 ## Make This Practical
 

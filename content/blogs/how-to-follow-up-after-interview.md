@@ -10,14 +10,6 @@ slug: how-to-follow-up-after-interview
 keywords: how to follow up after interview, thank you email after interview, interview follow up email, interview follow up timing, when to follow up after interview
 ---
 
-Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most underused tools in the job search process. A well-timed, well-written [thank-you email](https://thetailorcv.com/blog/how-to-decline-job-offer) can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
-
-This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the [thank-you email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) templates you can adapt for any role.
-
-Before your interview, make sure your [resume](https://www.thetailorcv.com/templates) is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and full interview preparation guide.
-
----
-
 ## Key Takeaways
 
 - Following up after a job interview demonstrates professionalism and enthusiasm, reinforcing your candidacy.
@@ -25,6 +17,15 @@ Before your interview, make sure your [resume](https://www.thetailorcv.com/templ
 - Keep the thank-you email concise, under 150 words, including a genuine thank-you, a specific discussion point, and a brief restatement of interest.
 - Avoid asking about the hiring timeline or seeking feedback in your initial thank-you email.
 - A thoughtful thank-you note can positively influence hiring managers' perceptions of candidates.
+
+
+Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most underused tools in the job search process. A well-timed, well-written [thank-you email](https://thetailorcv.com/blog/how-to-decline-job-offer) can reinforce your candidacy, address something you said poorly, and demonstrate professionalism. Not sending one is a missed opportunity. Sending a bad one can hurt you.
+
+This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the [thank-you email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) templates you can adapt for any role.
+
+Before your interview, make sure your [resume](https://www.thetailorcv.com/templates) is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and full interview preparation guide.
+
+---
 
 ## Why Follow Up After an Interview?
 
@@ -175,21 +176,21 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- How to Prepare for a Job Interview
-- How to Research a Company Before Your Job Interview
-- Best Questions to Ask in a Job Interview
-- Virtual Interview Tips
-- Group Discussion Tips
-- How to Decline a Job Offer Professionally
-- How to Handle Job Rejection
-- How to Write a Cold Email to a Recruiter
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
-- How to Build a Professional Portfolio in 2026 - Guide for All Industries
-- LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters
-- Networking Tips for Job Search in 2026 - Even If You Hate Networking
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
-- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
-- How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work
+- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search in 2026 - Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ## Make This Practical
 

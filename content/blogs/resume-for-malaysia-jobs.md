@@ -10,10 +10,6 @@ keywords: resume for malaysia, malaysian resume format, how to write a resume ma
 image: public/blog-images/resume-for-malaysia-jobs.png
 ---
 
-Writing a resume for the Malaysian job market is different from writing one for the US, UK, or Europe. Malaysian employers expect a specific mix of personal details, a clean single- or two-page layout, and clear evidence that you can do the job from day one. Get the format wrong and your application can be filtered out before a hiring manager ever sees it — either by an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) or by a recruiter skimming dozens of CVs a day.
-
-This guide walks you through exactly how to write a resume for Malaysia jobs in 2026: what to include, what to leave out, how to structure each section, how to beat the ATS, and the mistakes that quietly cost Malaysian job seekers interviews. Whether you are a fresh graduate in Kuala Lumpur or an experienced professional switching industries, you will finish with a clear template you can adapt to any role.
-
 ## Key Takeaways
 
 - Malaysian resumes usually run **one to two pages**, list personal details more openly than Western resumes, and prioritise clear, keyword-rich content.
@@ -21,6 +17,11 @@ This guide walks you through exactly how to write a resume for Malaysia jobs in 
 - **Tailoring your resume to each job description** is the single biggest lever for getting interviews — generic resumes underperform badly.
 - Most mid-to-large Malaysian employers screen resumes with an ATS, so **standard formatting and the right keywords** are essential.
 - A strong skills section (technical + language proficiency in BM, English, and often Mandarin) makes your resume far more competitive.
+
+
+Writing a resume for the Malaysian job market is different from writing one for the US, UK, or Europe. Malaysian employers expect a specific mix of personal details, a clean single- or two-page layout, and clear evidence that you can do the job from day one. Get the format wrong and your application can be filtered out before a hiring manager ever sees it — either by an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) or by a recruiter skimming dozens of CVs a day.
+
+This guide walks you through exactly how to write a resume for Malaysia jobs in 2026: what to include, what to leave out, how to structure each section, how to beat the ATS, and the mistakes that quietly cost Malaysian job seekers interviews. Whether you are a fresh graduate in Kuala Lumpur or an experienced professional switching industries, you will finish with a clear template you can adapt to any role.
 
 ## What Malaysian Employers Actually Look For
 
@@ -190,8 +191,8 @@ A great resume gets you the interview, but it is one piece of the puzzle. To giv
 - Write a targeted cover letter — see [how to write a cover letter for Malaysia jobs](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 - Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
 - Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic AI mock interview.
-- If you are targeting the capital specifically, read how to find a job in Kuala Lumpur.
-- Relocating to Malaysia? Start with our guide to getting a job in Malaysia as a foreigner.
+- If you are targeting the capital specifically, read [how to find a job in Kuala Lumpur](https://thetailorcv.com/blog/how-to-find-a-job-in-kuala-lumpur).
+- Relocating to Malaysia? Start with our [guide to getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
 
 ## Frequently Asked Questions
 

@@ -10,12 +10,6 @@ slug: scrum-master-resume-2026
 keywords: scrum master resume, scrum master resume 2026, agile coach resume, CSM resume, SAFe resume, agile facilitation resume, scrum master ATS keywords
 ---
 
-A scrum master resume in 2026 must show that you enable teams to deliver faster and better through agile facilitation, impediment removal, and continuous improvement. Scrum masters are servant-leaders - your resume should demonstrate measurable team improvements, not just a list of ceremonies you facilitate.
-
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For related roles, read the [project manager resume guide](https://thetailorcv.com/blog/project-manager-resume-2026).
-
----
-
 ## Key Takeaways
 
 - A Scrum Master resume in 2026 should emphasize measurable team improvements rather than just listing facilitated ceremonies.
@@ -23,6 +17,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 - Strong resume bullet points should highlight specific achievements in agile processes, using metrics like velocity and predictability.
 - Key ATS keywords for a Scrum Master resume include terms related to agile methodologies, tools, and coaching practices.
 - Examples of effective summaries and bullet points can guide both experienced and entry-level Scrum Masters in showcasing their impact on team performance.
+
+
+A scrum master resume in 2026 must show that you enable teams to deliver faster and better through agile facilitation, impediment removal, and continuous improvement. Scrum masters are servant-leaders - your resume should demonstrate measurable team improvements, not just a list of ceremonies you facilitate.
+
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For related roles, read the [project manager resume guide](https://thetailorcv.com/blog/project-manager-resume-2026).
+
+---
 
 ## Best Scrum Master Resume Format
 
@@ -166,16 +167,16 @@ CSM or PSM is largely expected for scrum master roles. If you do not have one, g
 - [Project Manager Resume](https://thetailorcv.com/blog/project-manager-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- Backend Developer Resume
-- Business Analyst Resume
-- Chemical Engineer Resume
-- Civil Engineer Resume
-- Cloud Engineer Resume
-- Consultant Resume
-- Content Writer Resume
-- Customer Service Resume
-- Cybersecurity Engineer Resume
-- How to List Education on a Resume in 2026 - Complete Guide with Examples
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Make This Practical
 

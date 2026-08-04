@@ -10,10 +10,6 @@ keywords: how to find a job in tokyo, jobs in tokyo for foreigners, work in toky
 image: public/blog-images/how-to-find-a-job-in-tokyo.png
 ---
 
-Tokyo is the beating heart of Japan's economy — home to global corporations, a thriving tech and startup scene, major financial institutions, and the largest concentration of English-friendly and international roles in the country. For foreigners aiming to work in Japan, Tokyo is where the most opportunities are, and where a career in Japan most often begins. But it's also competitive and fast-moving, so a focused strategy — knowing the industries, the right search channels, and how to present yourself — makes all the difference.
-
-This guide walks you through finding a job in Tokyo in 2026: the city's key sectors, where foreigners fit, how and where to search, the language question, and how to build an application that wins interviews.
-
 ## Key Takeaways
 
 - Tokyo has **Japan's largest concentration of international, tech, finance, and English-friendly roles**.
@@ -21,6 +17,11 @@ This guide walks you through finding a job in Tokyo in 2026: the city's key sect
 - **Japanese-language ability widens your options**, but many Tokyo roles operate in English.
 - Use **foreigner-focused [job sites](https://thetailorcv.com/blog/best-job-search-websites-2026), LinkedIn, and recruitment agencies** that place foreigners.
 - Tailor your resume and application to each role — the market is competitive.
+
+
+Tokyo is the beating heart of Japan's economy — home to global corporations, a thriving tech and startup scene, major financial institutions, and the largest concentration of English-friendly and international roles in the country. For foreigners aiming to work in Japan, Tokyo is where the most opportunities are, and where a career in Japan most often begins. But it's also competitive and fast-moving, so a focused strategy — knowing the industries, the right search channels, and how to present yourself — makes all the difference.
+
+This guide walks you through finding a job in Tokyo in 2026: the city's key sectors, where foreigners fit, how and where to search, the language question, and how to build an application that wins interviews.
 
 ## Why Tokyo?
 
@@ -59,7 +60,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 Match your documents to the employer:
 
 - **Global/English-language roles** (the bulk of foreigner-friendly jobs in Tokyo): a strong Western-style, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume. See [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
-- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the Japanese resume guide and rirekisho vs Western resume.
+- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
 
 Tailor every application with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 

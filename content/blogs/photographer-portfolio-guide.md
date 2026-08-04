@@ -6,8 +6,6 @@ slug: photographer-portfolio-guide
 image: public/blog-images/photographer-portfolio-guide.webp
 ---
 
-A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
-
 ## Key Takeaways
 
 - Curate your portfolio by focusing on a specific niche and include 20-40 strong images organized into clear galleries.
@@ -15,6 +13,9 @@ A photography portfolio sells two things at once: a feeling and a standard. Tigh
 - Ensure your portfolio is technically optimized with fast-loading images, a clean layout, and mobile-first design.
 - Choose a suitable platform for hosting your portfolio, considering user-friendliness and customization options.
 - Keep your resume and portfolio aligned in terms of branding and messaging to avoid confusion for potential clients or employers.
+
+
+A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
 
 ## Curate by Intent
 Show only the niche you want to be booked for. A wedding client should not have to scroll past product shots. Aim for 20-40 strong images, organized into clear galleries (e.g., Weddings, Portraits, Editorial). 
@@ -132,15 +133,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide)
 - [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
-- How to Host Your Portfolio for Free
-- Portfolio Domain Name Guide
-- Portfolio About Me Section
-- Personal Branding for Professionals
-- Best Portfolio Website Builders 2026
-- Portfolio SEO: Get Found
-- Portfolio Mistakes to Avoid
-- Portfolio Checklist Before You Apply
-- Personal Website vs Portfolio
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 
@@ -158,8 +159,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

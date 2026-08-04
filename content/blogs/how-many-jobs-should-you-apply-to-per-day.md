@@ -10,14 +10,15 @@ keywords: how many jobs should i apply to per day, how many jobs to apply for pe
 image: public/blog-images/how-many-jobs-should-you-apply-to-per-day.webp
 ---
 
-There's no universal magic number, but the range most experienced job seekers and recruiters converge on is somewhere between 3 and 8 genuinely tailored applications per day, not 50 mass-submitted ones. The question "how many jobs should I apply to" is really two questions people conflate: how many can you physically submit, and how many can you submit *well*. Before you scale up your daily count, it's worth checking whether your current resume is even passing automated screening with the [free ATS score checker](https://www.thetailorcv.com/solutions), because a low score means every extra application just compounds the same problem instead of fixing it.
-
 ## Key Takeaways
 
 - Aim to submit between 3 to 8 tailored job applications per day for effective job searching, rather than mass applying to numerous positions.
 - Quality over quantity is crucial; generic resumes often fail to pass automated screenings, leading to low callback rates.
 - Applying too few times, such as 2-3 applications per week, can stall your job search due to insufficient data points and feedback.
 - Determine your optimal application volume based on the tailoring effort required, the time you can dedicate, and the specificity of the roles you are targeting.
+
+
+There's no universal magic number, but the range most experienced job seekers and recruiters converge on is somewhere between 3 and 8 genuinely tailored applications per day, not 50 mass-submitted ones. The question "how many jobs should I apply to" is really two questions people conflate: how many can you physically submit, and how many can you submit *well*. Before you scale up your daily count, it's worth checking whether your current resume is even passing automated screening with the [free ATS score checker](https://www.thetailorcv.com/solutions), because a low score means every extra application just compounds the same problem instead of fixing it.
 
 ## The Spray-and-Pray Instinct, and Why It Backfires
 
@@ -78,7 +79,7 @@ The reason most people believe they have to choose between quantity and quality 
 - **A tracking system** that records which version of your resume went to which company, on what date, with what follow-up plan. Without this, you either lose track entirely or waste time reconstructing what you sent. The [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template) is built for exactly this.
 - **A reusable but customizable cover letter structure** - a consistent opening, body, and closing format where only the specifics change per role, rather than reinventing the structure every time.
 - **Templated but personalized outreach messages** for networking and follow-ups, so you're not starting from a blank page for every recruiter or contact. [Follow-up email after application](https://thetailorcv.com/blog/follow-up-email-after-application) has message structures you can adapt quickly.
-- **A fast tailoring workflow**, such as how to tailor a resume in 5 minutes, for roles similar enough to your base resume that they don't need a full rebuild.
+- **A fast tailoring workflow**, such as [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), for roles similar enough to your base resume that they don't need a full rebuild.
 
 With this kind of system in place, the "cost" of tailoring drops significantly, which means the volume you can sustainably manage per day goes up without any drop in per-application quality. This is the actual lever for applying to more jobs - not skipping tailoring, but making tailoring faster.
 

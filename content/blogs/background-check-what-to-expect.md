@@ -33,7 +33,7 @@ The exact scope depends on the role, the industry, and local laws, but common ch
 - **Employment history** — verifying past titles, dates, and sometimes reasons for leaving. This is the most common source of delays when a [resume](https://www.thetailorcv.com/modify-cv) doesn't match official records.
 - **Education and credentials** — confirming degrees and certifications you listed, which is why you should [list education](https://thetailorcv.com/blog/how-to-list-education-on-resume) and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) accurately.
 - **Criminal record** — within the legal limits for the role and region.
-- **References** — the people you provided, covered in the reference check guide.
+- **References** — the people you provided, covered in the [reference check guide](https://thetailorcv.com/blog/reference-check-process-guide).
 - **Credit** (for some finance roles) or **driving record** (for roles that require driving).
 
 For roles requiring clearances, checks go deeper — see [matching your resume to security-clearance jobs](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs).

@@ -10,10 +10,6 @@ keywords: linkedin optimization malaysia, linkedin profile tips malaysia, get fo
 image: public/blog-images/linkedin-optimization-malaysia.png
 ---
 
-In Malaysia's professional job market, LinkedIn is where a huge share of hiring quietly begins. Recruiters at banks, MNCs, tech companies, and agencies search LinkedIn daily for candidates — often before a role is even advertised. An optimised profile means you show up in those searches and get approached; a weak or incomplete one means you're invisible, no matter how good you are.
-
-This guide shows you how to optimise your LinkedIn profile for the Malaysian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
-
 ## Key Takeaways
 
 - Recruiters in Malaysia actively **search LinkedIn** — optimisation determines whether you appear in their results.
@@ -21,6 +17,11 @@ This guide shows you how to optimise your LinkedIn profile for the Malaysian job
 - A professional photo, a compelling headline, and a complete profile dramatically increase recruiter interest.
 - **Activity and connections** boost your visibility and credibility.
 - Your LinkedIn and your resume should tell a consistent, keyword-aligned story.
+
+
+In Malaysia's professional job market, LinkedIn is where a huge share of hiring quietly begins. Recruiters at banks, MNCs, tech companies, and agencies search LinkedIn daily for candidates — often before a role is even advertised. An optimised profile means you show up in those searches and get approached; a weak or incomplete one means you're invisible, no matter how good you are.
+
+This guide shows you how to optimise your LinkedIn profile for the Malaysian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
 
 ## Why LinkedIn Matters So Much in Malaysia
 
@@ -115,8 +116,8 @@ LinkedIn works best as part of a coherent search:
 
 - Keep your **resume** consistent with your profile — see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Use a targeted **cover letter** when applying — see the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
-- Prepare for interviews once recruiters reach out — see Malaysia interview tips and rehearse with the AI mock interview.
-- For tech and creative fields, link a portfolio — build one from your resume with the TailorCV portfolio builder.
+- Prepare for interviews once recruiters reach out — see [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- For tech and creative fields, link a portfolio — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
 ## Reaching Out: Messages That Get Replies
 

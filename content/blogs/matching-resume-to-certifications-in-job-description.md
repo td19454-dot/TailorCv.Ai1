@@ -10,14 +10,6 @@ keywords: job description requires certification I don't have, resume matching m
 image: public/blog-images/matching-resume-to-certifications-in-job-description.webp
 ---
 
-You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
-
-This is one of the most common gaps candidates face when trying to [match their resume to a job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), and how you handle it matters more than most people realize.
-
-Check how a missing certification affects your overall match score with the [TailorCV ATS score checker](/solutions) before deciding whether to apply.
-
----
-
 ## Key Takeaways
 
 - Assess the importance of a missing certification by determining if it is required, preferred, or legally mandatory before applying.
@@ -25,6 +17,15 @@ Check how a missing certification affects your overall match score with the [Tai
 - Highlight equivalent experience if you lack a formal certification, and consider addressing the gap in your cover letter.
 - Avoid applying for roles that require a legal or safety certification you do not possess and cannot obtain before the start date.
 - If a certification frequently appears in job postings, prioritize obtaining it through expedited or online courses.
+
+
+You find a role that fits everything else, the responsibilities, the seniority level, the industry, but the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) lists a certification you do not have yet. A PMP for a project manager role. An AWS certification for a cloud role. A CPA for a senior accounting position. Do you apply anyway, and if you do, how do you handle it on your resume?
+
+This is one of the most common gaps candidates face when trying to [match their resume to a job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), and how you handle it matters more than most people realize.
+
+Check how a missing certification affects your overall match score with the [TailorCV ATS score checker](/solutions) before deciding whether to apply.
+
+---
 
 ## First, Figure Out How "Required" the Certification Really Is
 
@@ -186,13 +187,13 @@ Track which certifications repeatedly appear across job descriptions in your tar
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [How to List Certifications on Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- Best Free Online Certificates for Resume
-- Resume Tailoring for Underqualified Candidates
-- Job Description Analysis Checklist
-- Resume Matching for Security-Clearance and Government-Contractor Job Descriptions
-- Cover Letter Guide 2026
-- ATS Score Guide 2026
-- How to Explain Resume Gaps
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
+- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
+- [Resume Matching for Security-Clearance and Government-Contractor Job Descriptions](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 
 ---
 

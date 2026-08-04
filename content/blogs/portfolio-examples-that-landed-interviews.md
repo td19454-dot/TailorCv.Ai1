@@ -10,12 +10,6 @@ keywords: portfolio examples that get interviews, developer portfolio examples, 
 image: public/blog-images/portfolio-examples-that-landed-interviews.webp
 ---
 
-A resume tells a recruiter what you claim you can do. A portfolio shows them. Across every field we've reviewed - design, development, data, and marketing - the portfolios that consistently land interviews share the same traits: a handful of focused projects, clear context on your role, and measurable results, not just screenshots.
-
-You can build a version of every example below in minutes by turning your existing resume into a live site with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - no separate design work required.
-
----
-
 ## Key Takeaways
 
 - Effective portfolios across design, development, data, and marketing should focus on a few key projects with clear context and measurable results.
@@ -23,6 +17,13 @@ You can build a version of every example below in minutes by turning your existi
 - Data portfolios should showcase the transformation of messy datasets into clean outputs and highlight business impacts of technical work.
 - UX design portfolios must document the entire design process, while graphic design portfolios should curate a selection of diverse works.
 - Marketing portfolios should emphasize campaign metrics and provide context for writing samples to better connect with potential employers.
+
+
+A resume tells a recruiter what you claim you can do. A portfolio shows them. Across every field we've reviewed - design, development, data, and marketing - the portfolios that consistently land interviews share the same traits: a handful of focused projects, clear context on your role, and measurable results, not just screenshots.
+
+You can build a version of every example below in minutes by turning your existing resume into a live site with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - no separate design work required.
+
+---
 
 ## Development Portfolios
 

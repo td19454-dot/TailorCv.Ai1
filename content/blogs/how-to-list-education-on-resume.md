@@ -10,14 +10,6 @@ slug: how-to-list-education-on-resume
 keywords: how to list education on resume, education on resume 2026, resume education section, where to put education resume, GPA on resume, resume education format
 ---
 
-The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)) than others (experienced professionals), but everyone should get it right.
-
-This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
-
-Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and use an [ATS-friendly template](https://www.thetailorcv.com/templates).
-
----
-
 ## Key Takeaways
 
 - Include core elements in the education section: degree type, institution name, location, graduation year, GPA, relevant coursework, and honors if applicable.
@@ -25,6 +17,15 @@ Before finalizing, run your resume through the [ATS score checker](https://www.t
 - Include GPA if it is strong (3.5+ or 8.0+) and you are a recent graduate; otherwise, omit it to avoid negative impressions.
 - List relevant coursework only if you are a student or recent graduate and it directly relates to the job; remove it once you have relevant work experience.
 - Use a clear format for the education section, emphasizing degree, institution, and graduation year for clarity and professionalism.
+
+
+The education section seems simple, but candidates make surprisingly common mistakes - including the wrong details, placing it incorrectly, or including (or omitting) GPA at the wrong times. How you list education matters more for some candidates (students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)) than others (experienced professionals), but everyone should get it right.
+
+This guide covers exactly how to list [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) on your resume for every situation.
+
+Before finalizing, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and use an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
 
 ## What to Include in the Education Section
 
@@ -204,20 +205,20 @@ Keep degree, institution, and date formatting consistent throughout.
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- 200 Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- How to Write a Resume Headline
-- How to Write a Resume Summary
-- Top Skills to Add to Your Resume
-- Chronological vs Functional Resume
-- How to Explain Resume Gaps
-- How to Make Your Resume ATS-Friendly
-- Ideal Resume Length
-- How to Write a Resume with AI in 2026 - Smart Use Without the Risks
-- MBA Resume 2026 - Complete Guide with Examples
-- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
-- 10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume
-- How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 
 ## Make This Practical
 

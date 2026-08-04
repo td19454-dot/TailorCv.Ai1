@@ -19,8 +19,8 @@ Whatever platform you use, the same rule applies: don't blast the same file ever
 The major platforms cover the widest range of roles:
 
 - **LinkedIn** — the strongest platform for professional roles, networking, and being found by recruiters. Keep your profile sharp with [LinkedIn profile optimization](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) and a strong [headline](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers), and read [how to use LinkedIn for job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). Its Easy Apply is convenient but competitive — still tailor each application.
-- **Indeed** — huge volume across every level and industry, great for broad searches and setting up alerts. Learn to tailor your resume on Indeed.
-- **Glassdoor** — jobs plus company reviews, salary data, and interview insights, which makes it excellent for researching companies before you apply.
+- **Indeed** — huge volume across every level and industry, great for broad searches and setting up alerts. Learn to [tailor your resume on Indeed](https://thetailorcv.com/blog/how-to-tailor-resume-on-indeed).
+- **Glassdoor** — jobs plus company reviews, salary data, and interview insights, which makes it excellent for [researching companies](https://thetailorcv.com/blog/how-to-research-company-before-interview) before you apply.
 
 ## Specialized and niche boards
 
@@ -55,9 +55,9 @@ The platform matters less than how you use it:
 
 - **Set up alerts** for your target roles so you apply early — freshness matters, per [how to apply to jobs faster](https://thetailorcv.com/blog/how-to-apply-to-jobs-faster).
 - **Tailor every application** with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match the posting.
-- **Track your applications** so you can follow up — a simple job application tracker helps.
-- **Follow up** politely after about a week, per how to follow up after a job application.
-- **Avoid burnout** by working in focused sessions rather than endless scrolling — see job search burnout.
+- **Track your applications** so you can follow up — a simple [job application tracker](https://thetailorcv.com/blog/job-application-tracker-template) helps.
+- **Follow up** politely after about a week, per [how to follow up after a job application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application).
+- **Avoid burnout** by working in focused sessions rather than endless scrolling — see [job search burnout](https://thetailorcv.com/blog/job-search-burnout).
 
 ## Watch out for scams
 

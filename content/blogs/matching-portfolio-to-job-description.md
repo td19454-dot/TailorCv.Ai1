@@ -10,14 +10,6 @@ keywords: match portfolio to job description, tailor portfolio for job applicati
 image: public/blog-images/matching-portfolio-to-job-description.webp
 ---
 
-Most job seekers tailor their resume for every application and never think twice about their portfolio. It sits static, the same set of projects, the same order, the same descriptions, no matter which job they are applying to. That is a missed opportunity, because a portfolio that is [matched to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) can reinforce your fit far more convincingly than a resume bullet ever could.
-
-If a resume tells an employer what you did, a portfolio shows them. But only if you show them the right things, in the right order, described in the right language.
-
-Build or update your portfolio in minutes with [TailorCV's Portfolio Builder](/portfolio), then read on for how to tailor it project by project.
-
----
-
 ## Key Takeaways
 
 - Tailor your portfolio for each job application by showcasing the most relevant projects instead of maintaining a static collection.
@@ -25,6 +17,15 @@ Build or update your portfolio in minutes with [TailorCV's Portfolio Builder](/p
 - Feature 3-5 projects that closely align with the job requirements, prioritizing relevance over impressiveness.
 - Reorder your portfolio to present the most pertinent projects first and rewrite descriptions using the job's language for better alignment.
 - Consider adding a detailed case study for your strongest match to provide deeper insights into your relevant work.
+
+
+Most job seekers tailor their resume for every application and never think twice about their portfolio. It sits static, the same set of projects, the same order, the same descriptions, no matter which job they are applying to. That is a missed opportunity, because a portfolio that is [matched to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) can reinforce your fit far more convincingly than a resume bullet ever could.
+
+If a resume tells an employer what you did, a portfolio shows them. But only if you show them the right things, in the right order, described in the right language.
+
+Build or update your portfolio in minutes with [TailorCV's Portfolio Builder](/portfolio), then read on for how to tailor it project by project.
+
+---
 
 ## Why a Static Portfolio Undersells You
 
@@ -208,13 +209,13 @@ Use [TailorCV's Portfolio Builder](https://www.thetailorcv.com/portfolio) to cre
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- Data Analyst Portfolio Guide
-- Add Portfolio Link to Resume
-- Portfolio Checklist Before Applying
-- Managing Multiple Resume Versions
-- How to Match Your 30-Second Video Pitch to the Job Description
-- Job Description Keyword Extraction Guide
-- Portfolio Examples That Landed Interviews
+- [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
+- [How to Match Your 30-Second Video Pitch to the Job Description](https://thetailorcv.com/blog/matching-video-resume-to-job-description)
+- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [Portfolio Examples That Landed Interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews)
 
 ---
 

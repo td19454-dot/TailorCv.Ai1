@@ -10,6 +10,14 @@ keywords: should I tailor resume for referral, referral resume job description, 
 image: public/blog-images/resume-matching-referral-applications.webp
 ---
 
+## Key Takeaways
+
+- Referrals improve your chances of getting an interview, but a tailored resume is still essential for making a strong impression.
+- Referred resumes often go through the ATS, so it's important to ensure your resume matches the job description.
+- A well-matched resume enhances your referrer's credibility and reflects positively on them.
+- Tailoring your resume should include updating the summary, aligning skills with job requirements, and maintaining ATS-friendly formatting.
+
+
 Getting a referral is one of the most effective ways to boost your odds of landing an interview. Referred candidates are significantly more likely to get hired than candidates who apply cold. That statistic leads many job seekers to a reasonable-sounding but incorrect conclusion: if I have a referral, I don't need to bother [matching my resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to the job description.
 
 That assumption can quietly cost you the advantage a referral is supposed to give you. Here is what actually happens to a referred resume, and how much tailoring effort still pays off.
@@ -17,13 +25,6 @@ That assumption can quietly cost you the advantage a referral is supposed to giv
 Whether you have a referral or not, check your resume's match score with the [TailorCV ATS score checker](/solutions) before it goes to the hiring team.
 
 ---
-
-## Key Takeaways
-
-- Referrals improve your chances of getting an interview, but a tailored resume is still essential for making a strong impression.
-- Referred resumes often go through the ATS, so it's important to ensure your resume matches the job description.
-- A well-matched resume enhances your referrer's credibility and reflects positively on them.
-- Tailoring your resume should include updating the summary, aligning skills with job requirements, and maintaining ATS-friendly formatting.
 
 ## What a Referral Actually Changes
 
@@ -196,13 +197,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Do You Still Need to Match Your Resume Through a Recruiter?](https://thetailorcv.com/blog/resume-matching-recruiter-vs-direct-application)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- Referral Message Template LinkedIn
-- How Much to Change Your Resume for Every Job
-- Resume Summary Match Job Description
-- How ATS Detects a Generic Resume
-- ATS Score Guide 2026
-- Cover Letter Guide 2026
-- How to Use LinkedIn for Job Search
+- [Referral Message Template LinkedIn](https://thetailorcv.com/blog/referral-message-template-linkedin)
+- [How Much to Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
+- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 
 ---
 

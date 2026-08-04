@@ -10,6 +10,14 @@ slug: international-resume-tailoring-guide
 keywords: international resume tailoring, resume format by country, global resume guide 2026, UK resume vs US resume, European CV format, how to apply for international jobs resume
 ---
 
+## Key Takeaways
+
+- Resume conventions vary significantly by country, affecting format, length, and personal details included.
+- In the US, resumes should be one page, without photos or personal information like date of birth or nationality.
+- The UK typically uses a two-page CV format, includes a personal statement, and also avoids photos to minimize bias.
+- Understanding and adhering to country-specific resume norms is crucial for job applicants to demonstrate market knowledge and professionalism.
+
+
 You are a strong candidate.
 
 Your experience is real.
@@ -39,13 +47,6 @@ Applying with a US-style resume to a German, UK, or Australian employer signals 
 This guide gives you the country-specific knowledge you need. For federal government applications in the US specifically, see the [federal government resume guide](https://thetailorcv.com/blog/federal-government-resume-guide) - that is another major context where standard resume advice fails candidates.
 
 ---
-
-## Key Takeaways
-
-- Resume conventions vary significantly by country, affecting format, length, and personal details included.
-- In the US, resumes should be one page, without photos or personal information like date of birth or nationality.
-- The UK typically uses a two-page CV format, includes a personal statement, and also avoids photos to minimize bias.
-- Understanding and adhering to country-specific resume norms is crucial for job applicants to demonstrate market knowledge and professionalism.
 
 ## Why Country-Specific Resume Conventions Exist
 
@@ -278,13 +279,13 @@ This is a personal decision. Omitting a photo may reduce your chances slightly w
 - [Resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Federal Government Resume Guide](https://thetailorcv.com/blog/federal-government-resume-guide)
-- Resume File Format Guide
-- Remote Job Search Guide 2026
-- Cover Letter Guide 2026
-- ATS Score Guide
-- Photo on Resume
-- How to Match Your Resume to a Remote Job Description
-- Managing Multiple Resume Versions
+- [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
+- [Remote Job Search Guide 2026](https://thetailorcv.com/blog/remote-job-search-guide)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Photo on Resume](https://thetailorcv.com/blog/photo-on-resume)
+- [How to Match Your Resume to a Remote Job Description](https://thetailorcv.com/blog/how-to-match-resume-to-remote-job-description)
+- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
 
 ---
 

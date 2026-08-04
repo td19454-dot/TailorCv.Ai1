@@ -10,8 +10,6 @@ slug: private-portfolio-sharing-guide
 keywords: private portfolio link, unlisted portfolio, share portfolio with recruiter, confidential portfolio, portfolio privacy
 ---
 
-Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should be fully public. If you are job searching while employed, working with confidential client data, or simply not ready for your current employer to find your portfolio through a Google search, a private or unlisted link solves the problem without giving up the format. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
-
 ## Key Takeaways
 
 - Use an unlisted link for your portfolio to maintain privacy while job searching or handling sensitive work.
@@ -19,6 +17,9 @@ Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-por
 - Share your portfolio link only through private channels to avoid unwanted visibility by current employers or the public.
 - Avoid sharing confidential client data even in private portfolios, as privacy settings do not override confidentiality agreements.
 - Transition your portfolio to public once you are ready to actively seek new job opportunities to maximize visibility.
+
+
+Not every [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should be fully public. If you are job searching while employed, working with confidential client data, or simply not ready for your current employer to find your portfolio through a Google search, a private or unlisted link solves the problem without giving up the format. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
 
 ## When a Private Portfolio Makes Sense
 - **You are job searching while still employed** and do not want your current employer stumbling onto it
@@ -148,15 +149,15 @@ You do not need to code a site or manage separate hosting for a private page. Tu
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Analytics and View Tracking](https://thetailorcv.com/blog/portfolio-analytics-view-tracking)
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
-- Career Change Portfolio
-- Nurse and Healthcare Professional Portfolio Guide
-- Finance and Accounting Portfolio Guide
-- Business Analyst Portfolio Guide
-- AI Portfolio Builder: No Code Required
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Personal Website vs Portfolio
-- Custom Domain Portfolio Guide
+- [Career Change Portfolio](https://thetailorcv.com/blog/career-change-portfolio)
+- [Nurse and Healthcare Professional Portfolio Guide](https://thetailorcv.com/blog/nursing-resume-2026)
+- [Finance and Accounting Portfolio Guide](https://thetailorcv.com/blog/finance-accounting-portfolio-guide)
+- [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
 
 ## Make This Practical
 
@@ -173,8 +174,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

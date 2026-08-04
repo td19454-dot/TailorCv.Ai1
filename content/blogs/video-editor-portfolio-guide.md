@@ -10,8 +10,6 @@ slug: video-editor-portfolio-guide
 keywords: video editor portfolio, videographer portfolio website, video editing reel, demo reel guide, video portfolio examples
 ---
 
-For video editors and videographers, the portfolio *is* the pitch - clients and hiring managers decide within the first ten seconds of your reel whether to keep watching. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around a strong reel and organized samples converts far better than a folder of raw clips. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide).
-
 ## Key Takeaways
 
 - A strong portfolio should feature a 60-90 second reel that showcases your best work first, without slow introductions.
@@ -19,6 +17,9 @@ For video editors and videographers, the portfolio *is* the pitch - clients and 
 - Host your portfolio on a personal site or platforms like Vimeo and LinkedIn to ensure fast loading and discoverability.
 - Keep your resume and portfolio aligned in terms of specialty and software skills to present a cohesive narrative.
 - Avoid common mistakes like slow-loading reels, mixing unrelated genres, and sharing unreleased client work.
+
+
+For video editors and videographers, the portfolio *is* the pitch - clients and hiring managers decide within the first ten seconds of your reel whether to keep watching. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around a strong reel and organized samples converts far better than a folder of raw clips. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide).
 
 ## What to Include
 | What to include | Why |
@@ -159,15 +160,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide)
 - [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide)
-- Content Writer Portfolio Guide
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio Homepage Copy Examples
-- How to Host Your Portfolio for Free
-- Portfolio Website Themes 2026
-- AI Portfolio Builder: No Code Required
-- Custom Domain Portfolio Guide
+- [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio Homepage Copy Examples](https://thetailorcv.com/blog/portfolio-homepage-copy-examples)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
 
 ## Make This Practical
 
@@ -184,8 +185,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

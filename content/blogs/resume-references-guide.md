@@ -10,12 +10,6 @@ slug: resume-references-guide
 keywords: resume references, should I put references on resume, references available upon request, how to list references on resume, professional references, reference letter vs reference list, resume reference section 2026
 ---
 
-"References available upon request" was standard resume advice for decades. Today it is outdated, wastes space, and signals that you are using advice from 20 years ago. This guide tells you exactly what to do with references in 2026 - when to include them, what format to use, how to prepare them, and what common mistakes to avoid.
-
-Once your references are sorted, focus on making your resume content exceptional. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - In 2026, do not include references on your resume as they take up space and are assumed by employers.
@@ -23,6 +17,13 @@ Once your references are sorted, focus on making your resume content exceptional
 - When preparing a reference list, create a separate document with details such as name, title, relationship, email, and phone number.
 - Aim for 3 references for standard roles and 4-5 for senior positions, and have them ready before applying.
 - Choose credible references like former managers or peers, and avoid family or friends unless exceptional. Always ask for permission before listing someone as a reference.
+
+
+"References available upon request" was standard resume advice for decades. Today it is outdated, wastes space, and signals that you are using advice from 20 years ago. This guide tells you exactly what to do with references in 2026 - when to include them, what format to use, how to prepare them, and what common mistakes to avoid.
+
+Once your references are sorted, focus on making your resume content exceptional. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## The Short Answer: Do Not Put References on Your Resume
 
@@ -184,10 +185,10 @@ Prepare your references to answer these questions with specific examples - not j
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- How to Write a Resume from Scratch
-- Resume vs CV: What's the Difference?
-- How to Follow Up After an Interview
-- Mock Interview Practice
+- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
+- [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
+- [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Mock Interview Practice](https://thetailorcv.com/interview-prep)
 
 ---
 

@@ -10,10 +10,6 @@ keywords: interview tips malaysia, malaysia interview questions and answers, job
 image: public/blog-images/interview-tips-malaysia.png
 ---
 
-You've done the hard part — your tailored resume got you shortlisted. Now the interview decides whether you get the offer. In Malaysia, interviews blend professional substance with cultural courtesy: employers assess your skills and fit, but they also notice punctuality, politeness, and how well you communicate across languages and contexts.
-
-This guide gives you everything you need to walk into a Malaysian interview prepared and confident: the most common questions and how to answer them, local etiquette, what to wear, and a preparation routine that consistently turns shortlists into offers.
-
 ## Key Takeaways
 
 - Malaysian interviews assess **skills, fit, and communication** — and quietly reward courtesy and punctuality.
@@ -21,6 +17,11 @@ This guide gives you everything you need to walk into a Malaysian interview prep
 - Research the company thoroughly and prepare thoughtful questions to ask them.
 - Dress professionally and arrive early; first impressions carry weight.
 - Practising out loud — ideally with a realistic [mock interview](https://thetailorcv.com/mock-interview) — is the difference between knowing your points and delivering them well.
+
+
+You've done the hard part — your tailored resume got you shortlisted. Now the interview decides whether you get the offer. In Malaysia, interviews blend professional substance with cultural courtesy: employers assess your skills and fit, but they also notice punctuality, politeness, and how well you communicate across languages and contexts.
+
+This guide gives you everything you need to walk into a Malaysian interview prepared and confident: the most common questions and how to answer them, local etiquette, what to wear, and a preparation routine that consistently turns shortlists into offers.
 
 ## Before the Interview: Preparation Wins
 

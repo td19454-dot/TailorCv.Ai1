@@ -10,10 +10,6 @@ keywords: linkedin optimization canada, linkedin profile tips canada, get found 
 image: public/blog-images/linkedin-optimization-canada.png
 ---
 
-In Canada, LinkedIn is where a large share of professional hiring begins. Recruiters at banks, tech companies, government, and agencies search LinkedIn daily — often sourcing candidates directly before a role is even posted. For newcomers especially, an optimised LinkedIn profile is one of the most powerful (and free) tools for breaking into the Canadian job market. An incomplete or keyword-poor profile, on the other hand, leaves you invisible no matter how strong your background is.
-
-This guide shows you how to optimise your LinkedIn profile for the Canadian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
-
 ## Key Takeaways
 
 - Canadian recruiters actively **search LinkedIn** — optimisation determines whether you appear in their results.
@@ -21,6 +17,11 @@ This guide shows you how to optimise your LinkedIn profile for the Canadian job 
 - A professional photo, a strong headline, and a complete profile dramatically raise recruiter interest.
 - **Activity and connections** boost visibility and credibility — especially valuable for newcomers.
 - Your LinkedIn and resume should tell one consistent, keyword-aligned story.
+
+
+In Canada, LinkedIn is where a large share of professional hiring begins. Recruiters at banks, tech companies, government, and agencies search LinkedIn daily — often sourcing candidates directly before a role is even posted. For newcomers especially, an optimised LinkedIn profile is one of the most powerful (and free) tools for breaking into the Canadian job market. An incomplete or keyword-poor profile, on the other hand, leaves you invisible no matter how strong your background is.
+
+This guide shows you how to optimise your LinkedIn profile for the Canadian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
 
 ## Why LinkedIn Matters So Much in Canada
 
@@ -126,8 +127,8 @@ Getting found only matters if it leads somewhere. Respond promptly and professio
 
 - Keep your **resume** consistent with your profile — see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Use a targeted **cover letter** — see the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
-- Prepare for interviews when recruiters reach out — see interview tips for Canada and rehearse with the AI mock interview.
-- For tech and creative fields, link a portfolio — build one with the TailorCV portfolio builder.
+- Prepare for interviews when recruiters reach out — see [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- For tech and creative fields, link a portfolio — build one with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
 ## How LinkedIn Decides Who Recruiters See
 

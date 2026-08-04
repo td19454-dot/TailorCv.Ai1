@@ -10,12 +10,6 @@ slug: resume-contact-section
 keywords: resume contact section, what to include in resume contact, resume header, resume email phone LinkedIn, resume personal information, resume contact info 2026
 ---
 
-The contact section of your resume is the first thing a recruiter sees and the last thing you want to get wrong. A hiring manager who wants to call you should never have to search for your phone number. An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system should never struggle to identify your email address. This guide tells you exactly what to include, what to leave out, and how to format it correctly.
-
-For complete resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that formats the contact section correctly, and test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - Include your full name prominently, using the same version across all professional platforms.
@@ -23,6 +17,13 @@ For complete resume structure, read [the anatomy of a perfect resume](https://th
 - List only your city and state/province for location, omitting your full address for privacy reasons.
 - Provide a LinkedIn profile link if it is up to date, and ensure consistency with your resume.
 - Include GitHub or portfolio links only if they are active and representative of your work, while avoiding outdated personal websites.
+
+
+The contact section of your resume is the first thing a recruiter sees and the last thing you want to get wrong. A hiring manager who wants to call you should never have to search for your phone number. An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system should never struggle to identify your email address. This guide tells you exactly what to include, what to leave out, and how to format it correctly.
+
+For complete resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that formats the contact section correctly, and test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What to Include in Your Resume Contact Section
 
@@ -167,11 +168,11 @@ Images are invisible to [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Should You Put a Photo on Your Resume?](https://thetailorcv.com/blog/photo-on-resume)
-- LinkedIn Profile Optimization Guide
-- How to Use LinkedIn for Job Search
-- ATS Resume Formatting Mistakes
-- Resume Proofreading Checklist
-- How to Make Your Resume ATS-Friendly
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 
 ---
 

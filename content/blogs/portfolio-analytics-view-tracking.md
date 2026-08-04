@@ -10,8 +10,6 @@ slug: portfolio-analytics-view-tracking
 keywords: portfolio analytics, portfolio view tracking, portfolio website traffic, resume click tracking, job search analytics
 ---
 
-A resume gives you no feedback after you hit send. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with view tracking tells you something a resume never can: whether anyone is actually looking at your work, and when. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
-
 ## Key Takeaways
 
 - Portfolio analytics provide feedback on recruiter interest that resumes cannot, including view counts and engagement.
@@ -19,6 +17,9 @@ A resume gives you no feedback after you hit send. A [portfolio](https://thetail
 - To effectively use data, establish a baseline view count, check for changes after applications, and correlate views with interview requests.
 - Avoid common mistakes like overinterpreting single data points and relying solely on view counts to assess portfolio quality.
 - For targeted tracking, use private links for specific applications and analyze trends over time to refine your job search strategy.
+
+
+A resume gives you no feedback after you hit send. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with view tracking tells you something a resume never can: whether anyone is actually looking at your work, and when. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
 ## Why Portfolio Analytics Matter in a Job Search
 | Reason | What it gets you |
@@ -157,15 +158,15 @@ You do not need to code a site or bolt on a separate analytics tool. Turn your e
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- Portfolio SEO: Get Found
-- AI Portfolio Builder: No Code Required
-- How to Write a Portfolio Case Study
-- Add Portfolio Link to Resume
-- How to Follow Up After a Job Interview
-- Custom Domain Portfolio Guide
-- Personal Website vs Portfolio
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 
 ## Make This Practical
 
@@ -182,8 +183,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

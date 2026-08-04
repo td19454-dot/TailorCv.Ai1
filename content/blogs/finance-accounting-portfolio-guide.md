@@ -10,8 +10,6 @@ slug: finance-accounting-portfolio-guide
 keywords: finance portfolio, accounting portfolio website, financial analyst portfolio, fp&a portfolio, accounting case study
 ---
 
-Finance and accounting roles are conservative about confidentiality, which is exactly why most candidates skip a portfolio - and exactly why a well-built one stands out. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around sanitized models and process work shows analytical rigor no resume bullet can capture. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
-
 ## Key Takeaways
 
 - A well-constructed finance and accounting portfolio can highlight analytical skills that a resume cannot convey, especially when built around sanitized models and process work.
@@ -19,6 +17,9 @@ Finance and accounting roles are conservative about confidentiality, which is ex
 - Frame each project by stating the business question, your method, and the recommendation/outcome to provide context for your models.
 - Avoid common mistakes such as sharing unredacted data, lacking a business question, or presenting overly complex spreadsheets without summaries.
 - Craft a compelling narrative by starting with a personal statement, using case studies to present achievements, and highlighting learning experiences to demonstrate growth.
+
+
+Finance and accounting roles are conservative about confidentiality, which is exactly why most candidates skip a portfolio - and exactly why a well-built one stands out. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around sanitized models and process work shows analytical rigor no resume bullet can capture. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ## What to Include
 | What to include | Why |
@@ -150,15 +151,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide)
 - [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide)
-- How to Quantify Resume Achievements
-- Private Portfolio Sharing Guide
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio With No Experience
-- AI Portfolio Builder: No Code Required
-- Portfolio Analytics and View Tracking
-- Personal Website vs Portfolio
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio Analytics and View Tracking](https://thetailorcv.com/blog/portfolio-analytics-view-tracking)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 
@@ -175,8 +176,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

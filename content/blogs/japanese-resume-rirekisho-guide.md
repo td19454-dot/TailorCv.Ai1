@@ -10,10 +10,6 @@ keywords: japanese resume, rirekisho, shokumu keirekisho, how to write a japanes
 image: public/blog-images/japanese-resume-rirekisho-guide.png
 ---
 
-Applying for a job in Japan means learning a resume system unlike almost anywhere else. Japanese hiring traditionally uses **two documents**: the *rirekisho* (履歴書), a standardised personal-history form, and the *shokumu-keirekisho* (職務経歴書), a more detailed work-history document. The rirekisho is highly formatted with specific conventions — down to how you write dates and attach your photo — and getting these details right signals respect for Japanese business culture.
-
-This guide explains how to write a Japanese resume in 2026: what the rirekisho and shokumu-keirekisho are, how they differ, the formatting rules that matter, and how foreigners can navigate the system (including when a Western-style resume is acceptable).
-
 ## Key Takeaways
 
 - Japanese hiring typically uses **two documents**: the *rirekisho* (standardised personal-history form) and the *shokumu-keirekisho* (detailed work history).
@@ -21,6 +17,11 @@ This guide explains how to write a Japanese resume in 2026: what the rirekisho a
 - The **shokumu-keirekisho** is where you detail your experience and achievements, more like a Western resume.
 - Foreign-facing and global companies in Japan may accept an **English (or Western-style) resume** — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 - Neatness, accuracy, and cultural fit matter as much as content.
+
+
+Applying for a job in Japan means learning a resume system unlike almost anywhere else. Japanese hiring traditionally uses **two documents**: the *rirekisho* (履歴書), a standardised personal-history form, and the *shokumu-keirekisho* (職務経歴書), a more detailed work-history document. The rirekisho is highly formatted with specific conventions — down to how you write dates and attach your photo — and getting these details right signals respect for Japanese business culture.
+
+This guide explains how to write a Japanese resume in 2026: what the rirekisho and shokumu-keirekisho are, how they differ, the formatting rules that matter, and how foreigners can navigate the system (including when a Western-style resume is acceptable).
 
 ## The Two Documents: Rirekisho and Shokumu-keirekisho
 
@@ -93,7 +94,7 @@ Present yourself as diligent, respectful, and genuinely interested, and you alig
 
 - For **global/English roles**, focus on a strong Western-style resume and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions); many international employers in Japan use applicant tracking systems — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 - Add a cover letter where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
-- Prepare for Japan's distinctive interview etiquette — see Japan interview etiquette and rehearse with the AI mock interview.
+- Prepare for Japan's distinctive interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 
 For the bigger picture, see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner).
 

@@ -10,13 +10,6 @@ slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---
 
-Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and specific team challenges is research.
-
-
-Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the TailorCV ATS score checker before the interview even starts.
-
----
-
 ## Key Takeaways
 
 - Conduct thorough company research beyond the "About Us" page, focusing on revenue, product launches, and team challenges.
@@ -24,6 +17,14 @@ Prepare your research in parallel with your interview answers. Read the [behavio
 - Use a structured framework for research, starting with the company's basics, products, and financial health.
 - Understand the competitive landscape and industry trends to impress interviewers with your market knowledge.
 - Utilize various sources such as company websites, LinkedIn, and news outlets to gather comprehensive insights before the interview.
+
+
+Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and specific team challenges is research.
+
+
+Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the TailorCV ATS score checker before the interview even starts.
+
+---
 
 ## Why Company Research Matters More Than You Think
 
@@ -153,21 +154,21 @@ Pair your research with the [behavioral interview guide](https://thetailorcv.com
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- Behavioral Interview Questions and Answers
-- Group Discussion Tips
-- How to Follow Up After a Job Interview
-- Best Questions to Ask in a Job Interview
-- Virtual Interview Tips
-- Coding Interview Preparation Guide
-- Final Round Interview Tips
-- Phone Interview Tips
-- Technical Interview Preparation Guide
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
-- 200 Best Action Verbs for Resume in 2026 - By Role and Category
-- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
-- First 90 Days at a New Job in 2026 - How to Succeed and Stand Out
-- How to Build a Professional Portfolio in 2026 - Guide for All Industries
+- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
+- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
+- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
+- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
+- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
+- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
+- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
+- [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [First 90 Days at a New Job in 2026 - How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
+- [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 
 ## Make This Practical
 

@@ -10,6 +10,15 @@ slug: how-to-negotiate-salary-offer
 keywords: how to negotiate salary, salary negotiation tactics, salary negotiation 2026, negotiate job offer, salary negotiation script, how to ask for more money
 ---
 
+## Key Takeaways
+
+- Most candidates accept the first salary offer, often leaving significant money on the table; negotiation can yield a 10-20% increase.
+- Always negotiate unless in fixed pay roles, hourly positions with collective agreements, or if you're already at the top of your market range.
+- The best time to negotiate is after receiving a written or verbal offer, not during initial interviews.
+- Research your market value using multiple sources to establish a target salary range and understand your negotiation leverage.
+- Use a structured negotiation script: express enthusiasm, clearly state your desired salary, and then remain silent to create pressure on the employer.
+
+
 Most people accept the first salary offer they receive. Most of those people leave money on the table. Studies consistently show that [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-guide) works - employers expect candidates to negotiate, and the vast majority of initial offers have room.
 
 
@@ -18,14 +27,6 @@ This guide covers when to negotiate, how to research your market value, what to 
 Before negotiating, your resume needs to demonstrate the value you are asking for. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume before applying, and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to make sure your accomplishments are clearly quantified.
 
 ---
-
-## Key Takeaways
-
-- Most candidates accept the first salary offer, often leaving significant money on the table; negotiation can yield a 10-20% increase.
-- Always negotiate unless in fixed pay roles, hourly positions with collective agreements, or if you're already at the top of your market range.
-- The best time to negotiate is after receiving a written or verbal offer, not during initial interviews.
-- Research your market value using multiple sources to establish a target salary range and understand your negotiation leverage.
-- Use a structured negotiation script: express enthusiasm, clearly state your desired salary, and then remain silent to create pressure on the employer.
 
 ## Should You Always Negotiate?
 
@@ -183,19 +184,19 @@ For entry-level tech roles, negotiating base salary up by 5-10% is very common a
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- How to Ask for a Raise
-- How to Build a Professional Portfolio
-- How to Handle Job Rejection
-- How to Use LinkedIn for Job Search
-- How to Write a Cold Email to a Recruiter
-- LinkedIn Profile Optimization Guide
-- Networking Tips for Job Search
-- Cover Letter Guide
-- Freelancing vs Full-Time Employment
-- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
-- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
-- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
-- How to Follow Up After a Job Interview in 2026 - What to Send and When
+- [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [How to Follow Up After a Job Interview in 2026 - What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Make This Practical
 

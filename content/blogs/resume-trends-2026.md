@@ -10,10 +10,6 @@ slug: resume-trends-2026
 keywords: resume trends 2026, what to put on a resume 2026, resume format 2026, modern resume tips
 ---
 
-Resume conventions shift every year, but 2026 has produced a sharper split than usual between changes that actually affect whether you get an interview and changes that are purely cosmetic. Two forces are driving most of it: AI tools now sit on both sides of the hiring process, and hiring signals are shifting away from pure title-and-degree gatekeeping toward evidence of what you can actually do. Based on patterns across thousands of resumes optimized through [TailorCV](https://www.thetailorcv.com/solutions), here is what's genuinely changing this year, what's overstated, and what you should actually act on. Check where your own resume stands against these shifts with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you change anything based on a trends article.
-
----
-
 ## Key Takeaways
 
 - Tailoring resumes to specific job descriptions is crucial in 2026, as ATS engines have become more precise and recruiters expect customized applications.
@@ -21,6 +17,11 @@ Resume conventions shift every year, but 2026 has produced a sharper split than 
 - Emphasizing skills and evidence of capabilities is now more important than traditional qualifications like titles and degrees.
 - Portfolios are becoming standard in resumes, moving from optional to essential for showcasing relevant work.
 - Cosmetic trends, such as video resumes and frequent visual redesigns, are less impactful and should be approached with skepticism.
+
+
+Resume conventions shift every year, but 2026 has produced a sharper split than usual between changes that actually affect whether you get an interview and changes that are purely cosmetic. Two forces are driving most of it: AI tools now sit on both sides of the hiring process, and hiring signals are shifting away from pure title-and-degree gatekeeping toward evidence of what you can actually do. Based on patterns across thousands of resumes optimized through [TailorCV](https://www.thetailorcv.com/solutions), here is what's genuinely changing this year, what's overstated, and what you should actually act on. Check where your own resume stands against these shifts with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you change anything based on a trends article.
+
+---
 
 ## The Signal-vs-Noise Problem With "Resume Trends" Articles
 
