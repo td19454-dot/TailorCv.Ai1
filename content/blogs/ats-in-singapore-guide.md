@@ -16,6 +16,13 @@ If your Singapore applications keep disappearing into silence, the culprit is us
 
 Applicant tracking systems are widespread across Singapore's job market:
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
+
+
 - **MNCs and banks** in the CBD — nearly all use enterprise ATS platforms (Workday, SuccessFactors, Taleo, Greenhouse).
 - **Recruitment and search agencies** — which handle a large share of Singapore hiring — run candidate databases you must be *found* in, searched by keyword.
 - **Government-linked and large local firms** — increasingly automated screening.
@@ -56,11 +63,6 @@ Three moves, in order.
 
 Singapore's reliance on recruitment agencies deserves special attention, because it changes strategy. When an agency has your resume, it sits in their database, searched by keyword for *current and future* roles. So:
 
-### What an ATS score report actually shows you
-
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
 
 
 - **Your headline and skills are search tags.** Fill them with the exact terms recruiters would search for your target roles — a vague "experienced professional" carries none.

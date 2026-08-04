@@ -119,6 +119,13 @@ A [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) mak
 
 You do not need to rewrite your resume from scratch for every job. You need to:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. Swap your summary to mirror the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Add 3-5 keywords from the posting into your bullets
 3. Update your headline to match the exact job title
@@ -133,11 +140,6 @@ You can also run the [free ATS checker at TailorCV](/solutions) to see exactly w
 ## Frequently Asked Questions
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 ### Do recruiters really notice if a resume is generic?
 

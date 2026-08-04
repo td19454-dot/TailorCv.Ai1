@@ -63,6 +63,13 @@ If your skills fall into these areas, sponsorship is far more likely.
 
 A common expat mistake is submitting a resume in the home-country format. Malaysian employers expect local conventions:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - A concise 1–2 page document (not the long CV common in some countries).
 - Personal details more openly listed than in Western resumes, including nationality and work-authorisation status.
 - Clear evidence of the specific skills the role needs.
@@ -143,11 +150,6 @@ Ask prospective employers whether the offer is quoted gross or net, and what sup
 
 Even as a foreigner, networking accelerates your search and eases your landing. Malaysia has active professional and expat communities, especially in Kuala Lumpur and Penang:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Connect with expats and professionals already in Malaysia** via LinkedIn and professional groups — they offer realistic advice and sometimes referrals.

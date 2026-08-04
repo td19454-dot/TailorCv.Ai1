@@ -36,6 +36,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Publications or open-source contributions
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for engineers with under 8 years of experience. Two pages for principal or research-engineering roles with significant [system design](https://thetailorcv.com/blog/system-design-interview-guide) history.
 
 ---
@@ -139,11 +146,6 @@ E-commerce Platform | Jan 2023 - Present
 
 Good ML engineering [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - End-to-end ML pipeline with retraining

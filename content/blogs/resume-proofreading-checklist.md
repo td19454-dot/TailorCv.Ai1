@@ -35,6 +35,13 @@ Go through each item methodically before every application. For tailored applica
 **1. Every bullet point starts with a strong action verb**  
 Weak openers: "Responsible for," "Helped," "Assisted," "Was part of." Replace with power verbs. Read [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 **2. At least 60% of bullets contain quantified results**  
 Numbers, percentages, dollar amounts, time saved, users impacted. If bullets are missing numbers, add estimates. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
 
@@ -133,11 +140,6 @@ After completing the checklist, read your entire resume out loud. You will catch
 - Repeated phrases across bullets
 - Inconsistencies in tone
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 This takes 3-5 minutes and consistently catches things written review misses.

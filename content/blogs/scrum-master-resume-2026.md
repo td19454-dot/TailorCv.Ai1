@@ -33,6 +33,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One to two pages.
 
 ---
@@ -126,11 +133,6 @@ Enterprise Software Company | Feb 2022 - Present
 - PMI-ACP (Agile Certified Practitioner)
 - ICP-ACC (Agile Coaching)
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 List format:

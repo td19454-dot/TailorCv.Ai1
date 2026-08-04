@@ -278,11 +278,6 @@ It is simply no longer an easy one.
 
 Another overlooked reality is that many applicants struggle because their resumes fail to communicate value effectively.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 In highly competitive markets, resumes are often filtered through Applicant Tracking Systems ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) before reaching recruiters.

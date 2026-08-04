@@ -99,16 +99,18 @@ Your About Me should resonate with your target audience. Avoid overly technical 
 
 Your resume, LinkedIn, and portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
-## Pro Tips
-- **Add a Real Photo:** Faces build trust. Use a professional headshot that reflects your personality.
-- **Optimize for SEO:** Include your specialty in the first six words to enhance visibility for search engines and skimmers. Learn more in [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
-- **Use a Portfolio Builder:** Publish your About Me on a site built with the [portfolio builder](https://www.thetailorcv.com/portfolio) to ensure a professional presentation.
-
 ### Turning a resume into a portfolio site
 
 ![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
 
 The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
+## Pro Tips
+- **Add a Real Photo:** Faces build trust. Use a professional headshot that reflects your personality.
+- **Optimize for SEO:** Include your specialty in the first six words to enhance visibility for search engines and skimmers. Learn more in [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found).
+- **Use a Portfolio Builder:** Publish your About Me on a site built with the [portfolio builder](https://www.thetailorcv.com/portfolio) to ensure a professional presentation.
+
 
 
 ## Enhancing Your About Me with Analytics

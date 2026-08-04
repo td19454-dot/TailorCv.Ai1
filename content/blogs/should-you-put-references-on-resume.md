@@ -75,11 +75,6 @@ The best reference is a recent [manager](https://thetailorcv.com/blog/common-int
 
 References are almost always a late-stage step, requested at or near the offer. That is exactly why they do not belong on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) — they are irrelevant to getting the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and only matter once the [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) is seriously considering you. Keep your sheet ready so you can send it the moment it is asked for, but keep it off the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) itself, where the space is better spent on a result that helps you [stand out](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## How Reference Checks Actually Work
@@ -152,6 +147,13 @@ The references you choose quietly say something about you before they even speak
 ## A Reference Sheet Template You Can Reuse
 
 Keep a ready-to-send document, matching your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume)'s header, that you can produce the moment an [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) asks:
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 > **[Your Name] — References**
 > [same contact header as your resume]

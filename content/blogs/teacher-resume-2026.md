@@ -36,6 +36,13 @@ Before submitting your application, test your resume against the job description
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Professional development or awards
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages depending on experience. New teachers may keep it to one page. Experienced educators with leadership, curriculum development, or department head experience may use two pages.
 
 ---
@@ -140,11 +147,6 @@ Taught / Designed / Developed / Led + [curriculum, activity, or initiative] + [s
 English Teacher - Grades 9 to 12
 Green Valley International School | June 2021 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Teach IB English A Language and Literature to 120 students across 4 classes, achieving a 91% pass rate on IB examinations with an average grade of 5.3 of 7.

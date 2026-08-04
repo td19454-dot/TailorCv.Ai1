@@ -18,6 +18,13 @@ This guide shows you how to be in that second group: what to change when you tai
 
 The volume on Indeed makes the [ATS filter](/blog/ats-resume-checker-how-it-works) unavoidable. When thousands apply, no human reads every resume first — software parses each one into structured data and matches it, by exact language, against the job description. Recruiters then filter that data down to a shortlist.
 
+### Tailoring straight from an Indeed listing
+
+![The TailorCV extension open on an Indeed job posting, reading the role and company and showing a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - 17% here, which is the kind of gap worth closing first rather than discovering through silence.
+
+
 The catch that sinks most applicants is that [the filter matches language, not meaning](/blog/how-to-match-resume-keywords-to-job-description). If the posting asks for "inventory management" and your resume says "kept stock organised", a person would call those the same thing, but the software will not. Your genuinely relevant experience does not register, and you are filtered out in seconds — with no email to tell you why. Our [tailored vs generic resume](/blog/tailored-vs-generic-resume) breakdown shows how wide that gap is, and [how to pass the ATS in 2026](/blog/how-to-pass-ats-in-2026) explains the mechanism.
 
 So the instinct to blast the same resume at fifty Indeed jobs is precisely wrong. You send more and land less. The move that works is fewer applications, each actually matched — and if you have wondered [how many jobs to apply to per day](/blog/how-many-jobs-should-you-apply-to-per-day), that is the honest answer.
@@ -63,18 +70,8 @@ A minute instead of ten — and because it lives on the page, tailoring survives
 
 **Step 1 — Set your base resume once.** Upload the resume you normally send; it becomes the starting point the tool rewrites from every time. If you are unsure it is even solid, run a [free ATS score](/blog/how-to-check-ats-score-free) on it first.
 
-### Tailoring straight from an Indeed listing
-
-![The TailorCV extension open on an Indeed job posting, reading the role and company and showing a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
-
-On Indeed the panel reads the posting off the page and shows the match before you hit Apply - 17% here, which is the kind of gap worth closing first rather than discovering through silence.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 **Step 2 — Open an Indeed job you actually want.** Not a stretch, not a safety. Load the full posting.

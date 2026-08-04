@@ -36,6 +36,13 @@ Before applying, test your resume against the job description with the [ATS scor
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Publications or [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page is ideal for candidates with under six years of experience. Two pages are acceptable for PhD researchers or scientists with publications and multiple deployed model systems.
 
 ---
@@ -143,11 +150,6 @@ Health-Tech Company | Aug 2023 - Present
 
 Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) prove applied ability. Good project topics:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Churn prediction model

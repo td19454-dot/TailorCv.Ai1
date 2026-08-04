@@ -16,6 +16,13 @@ Wellfound (formerly AngelList Talent) is where a huge share of startup hiring ha
 
 At a large company, your resume often hits an [ATS first](/blog/ats-resume-checker-how-it-works) and gets filtered by keyword before a human looks. Many startups, especially smaller ones, have no ATS at all — a founder or early employee reads every application personally. That changes what matters, and it is the core of why [tailoring for a startup differs from an enterprise](/blog/resume-tailoring-startup-vs-enterprise).
 
+### Tailoring straight from a Wellfound listing
+
+![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
+
+Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
+
+
 Startups tend to care about: breadth over narrow specialisation (you will wear many hats), evidence you can build and ship without much structure, direct impact you can point to, and genuine interest in *their* specific problem. A resume optimised purely to [beat a keyword filter](/blog/how-to-pass-ats-in-2026) can actually underperform with a founder who wants to see initiative and range. So on Wellfound, you are tailoring for a human reader more than a machine — though a matched, relevant resume still wins either way.
 
 ## What to Emphasise for Startups
@@ -49,18 +56,8 @@ That last part matters on Wellfound: use the tool to get a tailored, matched dra
 
 **Step 1 — Set your base resume once.** Upload your resume; make sure it is solid with a [free ATS score](/blog/how-to-check-ats-score-free) first, keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) and [parseable](/blog/ats-resume-parser-friendly-format), and lean toward impact and breadth if you are targeting startups. Do it fast with a [one-click tailor](/blog/one-click-resume-tailoring-how-it-works) rather than the [ten-minute manual grind](/blog/how-to-tailor-resume-in-5-minutes).
 
-### Tailoring straight from a Wellfound listing
-
-![The TailorCV extension open on a Wellfound job posting, showing the match and offering to tailor the resume without leaving the page](public/blog-images/extension-on-wellfound.webp)
-
-Startup boards work the same way - the extension reads the Wellfound listing you are already on, so the match check happens before you apply rather than after a rejection.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 **Step 2 — Open the Wellfound role** you actually want. Read it closely — the stack, the stage, the range.

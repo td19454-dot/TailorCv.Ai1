@@ -39,6 +39,13 @@ This is where Singapore differs from Western resumes, and where many applicants 
 
 Use standard, parser-friendly section headings in this order:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 **1. Header** — name, contact, LinkedIn, and PR/citizenship status.
 
 **2. Professional Summary** — 2–3 lines stating your role, years of experience, and strongest, most relevant skills, [in your own voice](/blog/how-to-stop-sounding-generic-on-resume) rather than generic filler. This is prime keyword real estate.
@@ -80,11 +87,6 @@ The reason this matters so much: the [filter matches language, not meaning](/blo
 - **A generic resume for every role.** The single biggest reason applications vanish — [tailor each one](/blog/how-to-match-resume-keywords-to-job-description).
 - **No quantified results.** "Responsible for sales" loses to "Grew regional sales 23% in FY2025." [Quantify everything](/blog/how-to-quantify-resume-achievements).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## For Freshers and Recent Grads

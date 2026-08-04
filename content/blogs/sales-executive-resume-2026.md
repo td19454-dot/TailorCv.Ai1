@@ -35,6 +35,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (if applicable)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for SDRs and junior AEs. One to two pages for senior AEs, enterprise sales, or sales directors with large territory or team leadership history.
 
 ---
@@ -120,11 +127,6 @@ Closed / Generated / Exceeded / Grew + [deal type or pipeline] + [territory, seg
 Senior Account Executive - Mid-Market
 SaaS HR Platform | Mar 2023 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Closed $2.4M in net new ARR in FY2025, 126% of quota, across 28 accounts in the financial services and professional services verticals.

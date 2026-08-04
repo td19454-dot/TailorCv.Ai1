@@ -24,6 +24,13 @@ A [portfolio website](https://thetailorcv.com/blog/how-to-build-professional-por
 
 Not every application benefits equally from a portfolio link. Where you sit on this spectrum should change how much weight you give it.
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 - **High value, almost expected:** UI/UX designers, product designers, front-end and full-stack developers, data analysts, data scientists, video editors, and content or copywriters. In these fields, a missing portfolio link can itself read as a gap.
 - **Medium value, a differentiator:** Product managers, marketers, technical writers, QA engineers, and consultants. A portfolio here is not assumed, but a well-built one with real [case studies](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) sets you apart from candidates who only submit a resume.
 - **Low value, use with judgment:** Finance, HR, operations, sales, legal, and most people-management roles. A portfolio is unusual here and can look out of place unless you have something genuinely relevant, like a public speaking reel or a published research report.
@@ -99,11 +106,6 @@ Because the click is short, put your strongest, most relevant proof where it can
 You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
 - **Headline:** Your name and role, stated plainly. "Product Designer" beats a clever tagline that requires interpretation.

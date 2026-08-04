@@ -151,11 +151,6 @@ No matter how visually impressive your resume looks, it must pass [ATS](https://
 - Standard fonts (Calibri, Arial, Georgia, Garamond)
 - Subtle accent color for headers (text, not background images)
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Run your designed resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to confirm all content parses correctly. Read [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) to catch common design-related errors.

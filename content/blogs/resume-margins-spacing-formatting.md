@@ -106,6 +106,13 @@ This is one of the most common ATS resume formatting mistakes. Read [10 ATS resu
 
 Create visual hierarchy through consistent spacing:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. **Resume name** - Largest text on the page (18-24pt), followed by contact info
 2. **Section headers** - Bold, consistent size (12-14pt or same as body, bold), with clear space above and below
 3. **Role headers** (Company | Title | Dates) - Bold for title, consistent formatting
@@ -136,11 +143,6 @@ The biggest formatting mistake is inconsistency. Small inconsistencies signal ca
 
 Before submitting your resume, verify:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - [ ] Margins are 0.5-1 inch on all sides

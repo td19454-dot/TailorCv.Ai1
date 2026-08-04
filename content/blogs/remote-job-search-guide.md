@@ -28,6 +28,13 @@ Before applying to any remote role, optimize your resume for the job description
 
 ## Best Remote Job Boards in 2026
 
+
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
 ### General Remote
 
 - **Remote.co** - Curated remote jobs across all categories
@@ -66,6 +73,13 @@ Before applying to any remote role, optimize your resume for the job description
 ## How to Optimize Your Resume for Remote Roles
 
 Remote employers specifically look for candidates who can work independently, communicate asynchronously, and manage their own time. Your resume should signal these qualities.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 
 ### Add "Remote" to your experience
 
@@ -132,18 +146,8 @@ Strong answers share specific systems you use - morning routines, time-blocking,
 
 Remote salaries can vary enormously based on where the employer is headquartered and your location. There are three common approaches:
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 **Location-based pay** - Employer pays based on your local market cost of living. Living in a lower-cost area earns less than the US-based team.

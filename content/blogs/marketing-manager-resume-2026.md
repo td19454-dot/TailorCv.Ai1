@@ -36,6 +36,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages depending on experience. Senior marketing managers with multi-channel experience, team leadership, and significant budget ownership may use two pages.
 
 ---
@@ -122,11 +129,6 @@ Managed / Launched / Grew / Reduced + [campaign or channel] + [budget or audienc
 Growth Marketing Manager
 B2B SaaS Company | Feb 2023 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Owned a $1.1M annual marketing budget across paid search, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), email, and content channels.

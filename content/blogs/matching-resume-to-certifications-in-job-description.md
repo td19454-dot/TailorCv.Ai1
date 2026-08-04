@@ -93,17 +93,19 @@ Precision here builds credibility rather than undermining it.
 
 Paste the job description into [TailorCV's resume optimizer](/solutions) to see exactly how much a missing certification affects your overall match score, and which other requirements you should emphasize to offset the gap. TailorCV highlights your closest equivalent experience so it reads as strongly as possible alongside an honest certification status.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Common Mistakes to Avoid When Addressing Missing Certifications
 
 When navigating the challenges of missing certifications, it's easy to make mistakes that can hinder your job application process. Here are some common pitfalls to watch out for:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Ignoring the Certification Requirement**: Some candidates may overlook the importance of the certification altogether. If it’s listed as a requirement, even if it's labeled as "preferred," acknowledging it in your application is crucial.

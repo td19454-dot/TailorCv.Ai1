@@ -113,6 +113,13 @@ Many employers use ATS to filter resumes before they reach human eyes. To optimi
 
 A [one-size-fits-all approach](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes) will not work in the competitive U.S. job market. Tailor your resume for each application by:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - Analyzing the job description for keywords and required skills.
 - Adjusting your summary and experience sections to align with the job’s expectations.
 - Using our guide on [resume matching with job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) for detailed strategies.
@@ -129,11 +136,6 @@ Once your resume secures you an interview, preparation is key. Consider using ou
 
 Avoiding common pitfalls can significantly enhance your resume's effectiveness. Here are some key mistakes to steer clear of:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Using a One-Size-Fits-All Approach**: Many applicants submit the same resume for multiple positions. This generic approach can lead to rejection. Tailor your resume to each specific job by incorporating relevant keywords and experiences. For more insights, check out [How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).

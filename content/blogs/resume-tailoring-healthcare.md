@@ -38,6 +38,13 @@ This guide covers healthcare [resume tailoring](https://thetailorcv.com/blog/how
 
 ## Why Healthcare Resume Tailoring Is Different
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
+
 ### 1. Credentialing Is Not Optional
 
 In most industries, you prove your skills through accomplishments.
@@ -208,11 +215,6 @@ Allied health roles - physical therapy, occupational therapy, respiratory therap
 
 Healthcare systems - especially large hospital networks and health systems - use enterprise [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms (Taleo, Workday, Oracle HCM).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after optimization - the tailored content is already in place, and these controls are how you fit it: font size, spacing, accent colour, template, with a live page counter.
 
 
 These systems:

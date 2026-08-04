@@ -29,6 +29,13 @@ Numbers prove product thinking — the [quantify achievements guide](https://the
 
 A short [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) frames your level and focus:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 > "Product designer with 5 years shipping B2B SaaS features end to end. Redesigned onboarding for +22% activation, owned a design system used across 3 squads, and partner closely with PM and engineering. Expert in Figma and research-driven design."
 
 See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) for the opening lines.
@@ -63,11 +70,6 @@ Keep it to one page, [ATS-friendly](https://www.thetailorcv.com/templates), and 
 
 If you're transitioning from UX, graphic design, or another field, lead with transferable skills and self-directed projects — the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how. A [portfolio](https://www.thetailorcv.com/portfolio) of even one strong end-to-end case study can outweigh a thin work history — see [portfolio with no experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Where product designers find roles

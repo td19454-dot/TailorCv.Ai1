@@ -26,11 +26,6 @@ The rule works because it's relative. A suit is correct at a law firm and wrong 
 
 Five reliable methods, in rough order of usefulness:
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 **Ask the recruiter.** The most direct and least used. "Is there a dress code I should know about?" is a completely normal question that recruiters answer readily, and asking it signals care rather than ignorance.
@@ -60,6 +55,13 @@ You can rehearse this before the real thing. The interviewer reads your resume f
 ## Video Interviews
 
 The rules differ enough to need their own treatment, and this is where preparation pays off most — see [video interview tips](/blog/video-interview-tips-2026) for the full setup.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
 
 **Dress fully.** Not just the top half. It affects how you sit and speak, and you may need to stand.
 

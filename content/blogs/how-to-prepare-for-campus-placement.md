@@ -36,6 +36,13 @@ Typical stages:
 5. **[technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide)** - Projects, fundamentals, problem-solving
 6. **HR [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - Behavioral, fit, communication
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 Prepare for each stage specifically.
 
 ---
@@ -140,11 +147,6 @@ HR rounds assess fit, communication, and motivation. Common questions:
 - "Where do you see yourself in 5 years?"
 - "Why should we hire you?"
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 Prepare honest, structured answers. Research the company using the [company research guide](https://thetailorcv.com/blog/how-to-research-company-before-interview). Practice [behavioral answers](https://thetailorcv.com/blog/top-50-hr-interview-questions-and-answers) with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).

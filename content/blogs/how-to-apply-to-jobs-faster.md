@@ -26,6 +26,13 @@ The real goal is not more applications. It is more *matched* applications per ho
 
 Here is a workflow that keeps both. It has three phases: prepare once, apply in batches, and follow up.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 **Phase 1 — Prepare once (60 minutes, one time).** Get your base resume genuinely solid before you apply to anything, because every tailored copy inherits its quality. Run it through a [free ATS score](/blog/how-to-check-ats-score-free), fix the [formatting so it parses](/blog/ats-resume-parser-friendly-format), make sure it is [ATS-friendly](/blog/how-to-make-resume-ats-friendly), and [quantify your achievements](/blog/how-to-quantify-achievements-on-resume). This hour is not overhead — it is the thing that makes every later application faster, because you are only ever adjusting a strong base, never fixing a weak one.
 
 **Phase 2 — Apply in focused batches.** Do not apply reactively as you scroll. Set aside a block, gather five to ten roles you genuinely want, and work through them. For each: read the posting, tailor the resume to it, attach a [matching cover letter](/blog/write-cover-letter-from-job-posting), submit. Batching beats scattered applying because you stay in the same mental mode instead of context-switching, and it stops the endless-scroll that feels like searching but is not.
@@ -74,11 +81,6 @@ Whichever board you are on, the extension opens beside the listing, reads the de
 Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 ## After the Applications

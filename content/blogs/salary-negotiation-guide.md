@@ -40,6 +40,13 @@ Every one of these is solvable with preparation, which is the whole purpose of t
 
 You cannot negotiate confidently without a number to negotiate from. Before any conversation:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Benchmark the role, level, and location** using multiple sources — aggregated salary data, industry reports, and if possible, direct conversations with people in similar roles.
 - **Understand the full compensation package**, not just base salary — bonus structure, equity, benefits, and remote/hybrid flexibility all factor into total value. If you're comparing a remote offer to an in-office one, note that [compensation and tailoring both shift for remote roles](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite).
 - **Account for your specific leverage** — competing offers, scarce skills, or a strong track record all shift what's reasonable to ask for.
@@ -107,11 +114,6 @@ If the rejection is about the role itself rather than compensation, it's worth u
 - **Not knowing your walk-away point in advance.** Deciding your minimum acceptable number before the conversation prevents an emotional decision in the moment.
 - **Focusing only on base salary.** Bonus structure, equity, benefits, and flexibility (especially relevant for [remote or hybrid roles](https://thetailorcv.com/blog/remote-job-search-guide)) are all negotiable levers beyond the headline number.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ---

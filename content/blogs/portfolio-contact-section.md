@@ -54,6 +54,13 @@ A real photo or logo, a response-time note ("I reply within 24 hours"), and corr
 ## Keep Your Resume and Portfolio in Sync
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Keeping Content Updated
 Regularly update your portfolio to reflect new projects or skills. If you change your availability status or contact methods, make sure to update these sections promptly.
 
@@ -72,11 +79,6 @@ Regularly update your portfolio to reflect new projects or skills. If you change
 - If freelancing, add a one-line "what I help with" so inquiries are qualified.
 - Build a portfolio with a built-in contact section using the [portfolio builder](https://thetailorcv.com/portfolio).
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 ### Examples of Effective Contact Sections

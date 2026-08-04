@@ -25,6 +25,13 @@ A data analyst [portfolio](https://thetailorcv.com/blog/how-to-build-professiona
 
 Use this order:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 1. Business question
 2. Dataset source
 3. Cleaning steps
@@ -96,11 +103,6 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

@@ -49,6 +49,13 @@ That breadth is the product. Careerflow is betting that job searching is a many-
 
 TailorCV makes the opposite bet: that for most people, especially students and [freshers](/blog/ats-score-for-freshers), the bottleneck is not their LinkedIn headline. It is that their resume is being filtered out by software before a person ever reads it.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 So the product is built around one loop. Paste a job description and your resume. Get a [free ATS match score](/ats-analysis) for that specific posting, with the exact keywords you are missing. Then — the part that matters — the AI **rewrites your bullets** so they carry that language honestly, without inventing experience you do not have. Download the tailored PDF. Repeat for the next job.
 
 Around that loop sit the things you need immediately after: a [matching cover letter](/cover-letter), [AI mock interviews](/mock-interview) for the role, [interview question prep](/interview-prep), a [portfolio website builder](/portfolio) that turns your resume into a live link, and a [Job Tracker](/my-resumes) where every tailored version is saved automatically with its score and the job it was written for.
@@ -131,11 +138,6 @@ That means six weeks in, our tracker can tell you not just *where* you applied b
 
 **Careerflow wins — we do not have this.**
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 Job Autofill fills out application forms for you, and it is on their free plan. Filling the same details into the fortieth Workday form is genuinely miserable, and if that is your pain, Careerflow addresses it directly and we do not.

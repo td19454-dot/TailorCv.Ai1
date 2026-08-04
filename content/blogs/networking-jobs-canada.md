@@ -54,6 +54,13 @@ Approach it as learning and connecting, and the opportunities follow naturally.
 
 An informational interview is a short (15–20 minute) conversation with someone in your field — not a job request, but a chance to learn about their role, company, and industry. It's the single most effective networking tactic.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ### How to Do One
 
 1. **Reach out politely** (LinkedIn or email), briefly introducing yourself and asking for 15 minutes of their advice about the industry or their career path.
@@ -112,11 +119,6 @@ Once you've built genuine relationships:
 
 For newcomers to Canada, networking is often *the* deciding factor in landing that first role — and yet it's the hardest to do when you arrive without an existing network. The good news is that Canada has an unusually well-developed support system to help:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Immigrant-serving and settlement agencies** run mentorship programs that pair you with a professional in your field — an instant, valuable connection who offers advice, referrals, and cultural insight.

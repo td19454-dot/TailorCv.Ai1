@@ -18,6 +18,13 @@ Preparation is more than packing a bag, of course. The best thing you bring is a
 
 For an on-site interview, arrive with:
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 - **Several copies of your resume** — one per interviewer, plus a spare. Print clean copies from your [resume builder](https://www.thetailorcv.com/modify-cv) on quality paper. Even in a digital age, offering a copy is a professional touch.
 - **A notepad and pen** for jotting notes and questions. Taking a few notes shows engagement.
 - **A list of questions to ask** — thoughtful questions signal genuine interest, per [questions to ask in an interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview).
@@ -56,11 +63,6 @@ Minimizing distractions keeps the focus where it belongs: on the conversation.
 
 The physical items matter, but the real preparation is mental. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) so you can speak to why you want *this* role. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of examples you can adapt to any question, and rehearse [common behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and classics like [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself) and [why do you want this job](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job). Plan [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview) the night before so nothing is rushed.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 ## Handle nerves and logistics

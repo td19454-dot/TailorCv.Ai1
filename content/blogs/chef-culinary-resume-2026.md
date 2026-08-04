@@ -32,6 +32,13 @@ See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-
 
 Your [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should match your level and cuisine:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - **Line cook:** "Line cook with 3 years in high-volume Italian and American kitchens, fast and consistent across grill and sauté stations. ServSafe certified."
 - **Sous chef:** "Sous chef with 6 years in fine dining and hotel kitchens. Ran lines serving 250+ covers nightly, trained a brigade of 10, and cut food cost 6%."
 - **Executive chef:** "Executive chef with 12 years leading concepts from opening to profitability, owning menu development, purchasing, and P&L across teams of 25+."
@@ -86,11 +93,6 @@ Hiring chefs skim, and applicant systems parse. A [clean one-page resume](https:
 
 If you're early in your career, lead with culinary school, stages (unpaid trials), apprenticeships, and any station experience — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [first job resume for a teenager](https://thetailorcv.com/blog/resume-for-first-job-teenager) show how to frame limited experience. Even a part-time kitchen job becomes strong with the right [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and numbers.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## Moving up to executive chef

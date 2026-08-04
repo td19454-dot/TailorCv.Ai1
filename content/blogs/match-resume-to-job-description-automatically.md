@@ -34,6 +34,13 @@ Read the number as a signal, not a verdict. Against a specific posting, [80%+](/
 
 Scoring tells you the gap; matching closes it. The tool rewrites your bullets to carry the missing terms — under the guardrail that it may only re-express what is [genuinely on your resume](/blog/ai-resume-tailoring-human-voice). It works "stakeholder management" into a bullet *if your experience supports it*; it does not invent it. It avoids [keyword-stuffing](/blog/ats-keyword-mistakes) and [generic phrasing](/blog/how-to-stop-sounding-generic-on-resume), keeps the result [parseable](/blog/ats-resume-parser-friendly-format) and [ATS-friendly](/blog/how-to-make-resume-ats-friendly), and where it can, keeps your [achievements quantified](/blog/how-to-quantify-achievements-on-resume).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 The output is not a new resume — it is your resume, re-expressed to match this posting. That honesty guardrail is what separates automatic matching worth using from a tool that keyword-stuffs you into a rejection at the human stage.
 
 ## Step 4: Read and Submit
@@ -44,11 +51,6 @@ Automatic does not mean unread. Glance over the rewrite — is it true, does it 
 
 By hand, matching degrades. You do it well early and skip it late, because the friction is real and willpower runs out — by [application fifteen](/blog/how-many-jobs-should-you-apply-to-per-day) you are sending the generic version. Automatic matching does application fifteen exactly as well as application one, which is the real win: not the minutes saved per job, but the consistency across the whole search. A resume matched to every posting, every time, beats one matched occasionally and generic the rest — which is what manual matching becomes in practice. The [fast manual method](/blog/how-to-match-resume-to-job-description-fast) and [tailoring in 5 minutes](/blog/how-to-tailor-resume-in-5-minutes) help, but the tool removes the willpower cost entirely.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## What It Looks Like in Practice

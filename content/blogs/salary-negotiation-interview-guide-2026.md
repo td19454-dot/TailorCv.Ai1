@@ -44,11 +44,6 @@ Do not negotiate before you have a written offer unless you are clarifying a ran
 
 Before negotiating, know your number:
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
 
 
 1. **Check Salary Data:** Use platforms like Glassdoor, Levels.fyi, and Payscale for your role and location.
@@ -129,6 +124,13 @@ After negotiating, send a professional [follow-up after interview](https://theta
 | [HR Round](https://thetailorcv.com/blog/hr-round-interview-questions-answers) | Range discussion, benefits overview               |
 | [Manager Round](https://thetailorcv.com/blog/manager-interview-round-questions-guide) | Focus on role value, defer numbers                |
 | [Panel Interview](https://thetailorcv.com/blog/panel-interview-tips-strategies) | Do not bring up salary - wait for HR              |
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
+
 
 ### Tips for Handling Salary Questions
 

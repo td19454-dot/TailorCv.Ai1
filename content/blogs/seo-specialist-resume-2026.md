@@ -18,6 +18,13 @@ Before applying, run your draft through the [free ATS score checker](https://www
 
 An SEO [resume](https://www.thetailorcv.com/modify-cv) without numbers is a red flag in a data-driven field. Lead with outcomes using the [bullet point formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) — a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume), what you did, and a measurable result:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - "Grew organic traffic 140% in 12 months to 500K monthly sessions."
 - "Ranked 30+ target keywords on page one within two quarters."
 - "Increased organic-driven revenue 45% year over year."
@@ -63,11 +70,6 @@ Use a clean, [ATS-friendly template](https://www.thetailorcv.com/templates), a [
 
 If you're transitioning in, lead with self-directed projects — a site you grew, a blog you ranked, a technical audit you ran — and any certifications. The [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how to present these as real experience. A [portfolio](https://www.thetailorcv.com/portfolio) with one real ranking case study can outweigh a thin work history.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Tailor to each role

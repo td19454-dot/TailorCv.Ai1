@@ -273,11 +273,6 @@ Read [common resume and job description mismatch mistakes](https://thetailorcv.c
 ## Resume Matching for Different Situations
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### Career Changers
 
@@ -316,6 +311,13 @@ Read [how to match your resume to a remote job description](https://thetailorcv.
 
 Manual [resume matching](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) takes 20-40 minutes per application.
 That is unsustainable when you are applying to 10-20 jobs per week.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 TailorCV automates the process:
 

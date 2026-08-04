@@ -32,6 +32,13 @@ See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-
 
 The [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026) should cover the work firms rely on: legal research, drafting and proofreading documents, e-filing, case management, discovery, trial preparation, and client communication. Mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and confirm coverage with the [ATS score checker](https://www.thetailorcv.com/solutions).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Name your tools
 
 List the platforms you know — Relativity, Clio, iManage, Westlaw, LexisNexis, and advanced Microsoft Office. Legal software proficiency is a genuine differentiator and a [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the [ATS](https://thetailorcv.com/blog/ats-score-guide) rewards.
@@ -66,11 +73,6 @@ Use a conservative, [ATS-friendly template](https://www.thetailorcv.com/template
 
 If you're a recent certificate graduate or moving in from another field, lead with your certification, coursework, internships, and transferable skills like research, writing, and organization — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) show how. Volunteer or pro bono legal work counts — see [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Tailor to each firm

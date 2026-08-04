@@ -43,6 +43,13 @@ The shokumu-keirekisho complements the rirekisho with a fuller account of your c
 
 Japanese employers notice details. Key conventions:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - **The photo:** a formal, recent headshot in business attire against a plain background, attached in the designated spot. Neat and professional is essential.
 - **Dates:** Japan often uses the Japanese era calendar (e.g. Reiwa) alongside or instead of the Western calendar — be consistent throughout the document.
 - **Handwriting vs typed:** historically handwritten rirekisho were common (and neat handwriting was valued); today typed/digital versions are widely accepted, especially at global companies. Follow the employer's preference.
@@ -80,11 +87,6 @@ Present yourself as diligent, respectful, and genuinely interested, and you alig
 - **TOEIC:** widely used to certify English ability, valued at many Japanese firms.
 - List these clearly — they're concrete, trusted credentials in the Japanese market.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## Building Your Application

@@ -45,6 +45,13 @@ For most candidates with any experience, an objective actively weakens the top o
 
 A professional summary is 2-4 sentences at the top of your resume that highlights your most relevant experience, key strengths, and most impressive accomplishments. It answers the employer's question: *"What can this person do for us?"*
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 **Example:**
 > "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) with 4 years of experience transforming complex datasets into executive-level insights. Built Python and SQL pipelines that cut reporting time by 65%. Seeking to bring strong predictive modeling experience to a high-growth fintech team."
 
@@ -127,11 +134,6 @@ An objective rarely includes keywords beyond the job title. Run your resume summ
 ## Common Mistakes with Both
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### Mistakes with Summaries
 - **Too generic.** "Hardworking professional with excellent communication skills" adds zero value.

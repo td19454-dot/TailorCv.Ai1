@@ -223,11 +223,6 @@ Here is what to do:
 
 Entry-level roles often have more flexibility than senior roles.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 Target: **60-70%** match score for entry-level positions.

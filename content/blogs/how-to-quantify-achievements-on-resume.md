@@ -117,11 +117,6 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 - **Confidential leaks.** Do not publish revenue figures your [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) treats as private. Convert to percentages or multiples.
 - **Context-free numbers.** "$2M" means nothing without a frame. "$2M annual budget across four teams" tells the story.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## How This Interacts With the ATS
@@ -152,6 +147,13 @@ Match your metrics to your level, and lead each role with the number that best p
 ## Building Quantified Bullets Into a Tailored Resume
 
 Numbers do their best work when they are also relevant to the specific job. A metric that matters to one role may be noise to another — a growth number dazzles a startup and means less to a compliance-heavy enterprise that cares about accuracy and risk reduction. When you [tailor your resume](https://thetailorcv.com/optimize) to a posting, you are not just matching [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats); you are choosing *which* of your quantified wins to feature. Lead with the metrics that map to what this [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) values, and your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as though it was written for them — because it was. A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that pairs the right [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) with the right numbers is what convinces both the [ATS](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) and the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) in the same read.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 ## Frequently Asked Questions
 

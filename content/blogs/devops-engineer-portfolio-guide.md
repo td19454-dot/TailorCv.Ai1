@@ -41,6 +41,13 @@ Listing "Kubernetes, Terraform, Prometheus" tells a hiring manager what you have
 - **A personal site** via the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - to narrate the projects and link out to the repos
 - A short architecture diagram or Loom-style walkthrough embedded on your site for complex systems
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ## Keep Your Resume and Portfolio in Sync
 
 Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same tech stack, same scale (traffic, node count, team size) - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
@@ -95,11 +102,6 @@ Creating case studies is an effective way to showcase your work. Follow these st
 
 When creating your DevOps portfolio, be mindful of these common pitfalls:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 - **Overloading with Technical Jargon**: While it's important to demonstrate your technical knowledge, avoid excessive jargon that may alienate non-technical viewers. Aim for clarity and accessibility.

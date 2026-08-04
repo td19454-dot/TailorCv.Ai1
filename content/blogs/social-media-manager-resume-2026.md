@@ -32,6 +32,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 4. Work experience
 5. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages.
 
 ---
@@ -110,11 +117,6 @@ Grew / Created / Managed / Launched + [platform or campaign] + [content or audie
 Social Media Manager
 DTC Lifestyle Brand | Apr 2023 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Own organic and paid social strategy across Instagram, TikTok, and Pinterest for a DTC brand with 1.2M combined followers.

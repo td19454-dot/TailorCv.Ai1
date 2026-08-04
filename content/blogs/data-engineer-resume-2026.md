@@ -36,6 +36,13 @@ Before applying, test your resume against the job description using the [ATS sco
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages depending on pipeline complexity and warehouse architecture experience.
 
 ---
@@ -135,11 +142,6 @@ E-commerce Analytics Company | Feb 2022 - Present
 
 Strong project ideas:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - End-to-end ELT pipeline (API -> Airflow -> Snowflake/BigQuery -> dbt -> dashboard)

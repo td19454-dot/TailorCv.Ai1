@@ -95,6 +95,13 @@ Newcomers, in particular, should lean on networking and newcomer organisations �
 
 Quality beats quantity in Toronto. For each role:
 
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
+
 1. Tailor your resume and add a targeted cover letter — see the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
 2. Apply early — popular roles and graduate programs fill fast.
 3. Track every application and follow up politely.
@@ -123,11 +130,6 @@ None of these are complicated, but done consistently they're what separate the c
 
 Toronto employers rely heavily on behavioural interviews. Prepare STAR stories, research each company, and rehearse. Use [interview prep](https://thetailorcv.com/interview-prep) to generate likely questions, practise with the [AI mock interview](https://thetailorcv.com/mock-interview), and review our [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada).
 
-### Tailoring without leaving Indeed
-
-![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
-
-On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
 
 
 ### What optimizing actually does to your resume

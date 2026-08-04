@@ -109,6 +109,13 @@ A weak bullet only does one of these - usually the first, without any depth.
 
 The opening verb sets the tone for the entire bullet. Weak openings ("helped," "assisted," "was responsible for") immediately signal a passive, duty-focused bullet.
 
+### Building the resume section by section
+
+![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
+
+You can start from an existing CV or import from LinkedIn instead of retyping everything.
+
+
 Use strong, specific verbs:
 
 | What | Details |
@@ -152,11 +159,6 @@ You rarely need exact numbers - reasonable estimates and relative comparisons co
 ## Common Bullet Point Mistakes
 
 
-### Building the resume section by section
-
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You can start from an existing CV or import from LinkedIn instead of retyping everything.
 
 ### Mistake 1: Listing duties instead of achievements
 Duties tell recruiters what your job was. Achievements tell them how well you did it. Replace "Responsible for X" with "Achieved X by doing Y."

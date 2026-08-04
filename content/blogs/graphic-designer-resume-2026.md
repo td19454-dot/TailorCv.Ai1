@@ -36,6 +36,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for designers with under 7 years of experience. Your [resume's visual design](https://thetailorcv.com/blog/resume-margins-spacing-formatting) should be [clean and minimal](https://thetailorcv.com/blog/how-to-choose-resume-template) - not a showcase of every Illustrator technique you know.
 
 ---
@@ -132,11 +139,6 @@ Consumer Lifestyle Company | Mar 2023 - Present
 
 Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is more important than your resume in graphic design. Key rules:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Curate ruthlessly - 6-10 strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not 30 average ones

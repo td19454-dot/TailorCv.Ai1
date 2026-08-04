@@ -55,6 +55,13 @@ Operations professional transitioning into data analytics, with experience track
 
 Build 2-3 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - Sales dashboard
 - Customer churn analysis
 - Operations efficiency report
@@ -95,11 +102,6 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

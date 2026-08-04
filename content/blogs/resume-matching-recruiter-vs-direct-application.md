@@ -46,6 +46,13 @@ Unlike a fully automated application, a recruiter conversation lets you explain 
 
 Yes. Here is why it still matters:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 1. **The resume usually still passes through an ATS** at the employer's end, so keyword matching still affects your score.
 2. **The recruiter uses your resume to build internal credibility** with the hiring manager, and a well-matched resume makes their pitch stronger.
 3. **A generic resume signals lower effort**, even to a recruiter who already believes in you, and can slow down how confidently they advocate for you internally.
@@ -111,18 +118,8 @@ Paste the job description your recruiter shares into [TailorCV's resume optimize
 Navigating the job market with the assistance of a recruiter can be beneficial, but there are common pitfalls that candidates should avoid. Here’s a list of mistakes that can hinder your chances of success:
 
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Neglecting to Customize Your Resume**: Even when working with a recruiter, failing to tailor your resume to the specific role can lead to missed opportunities. Recruiters appreciate candidates who make an effort to reflect the job description in their resumes.

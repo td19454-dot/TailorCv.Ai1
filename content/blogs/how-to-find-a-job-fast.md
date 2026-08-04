@@ -18,6 +18,13 @@ It's also, for most people, the slowest route to an offer. Not because volume is
 
 The arithmetic is unforgiving. Sending a [generic resume](/blog/tailored-vs-generic-resume) to a hundred postings and converting at one percent gets you one interview. Sending thirty tailored ones and converting at ten percent gets you three — in a third of the applications.
 
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
+
 The reason is structural. Your resume is screened by an [applicant tracking system](/blog/ats-resume-checker-how-it-works) that [matches on language, not on merit](/blog/how-to-match-resume-keywords-to-job-description). A resume that doesn't carry the posting's terms is filtered before any human sees it, and the resulting [silence looks identical](/blog/how-long-to-hear-back-after-applying) to being narrowly beaten. So mass applying feels productive while producing almost no information about what's wrong.
 
 The trap is that people respond to silence by applying more, which multiplies an unfixed conversion problem. **If your resume doesn't convert, more applications make you slower, not faster.**
@@ -92,18 +99,8 @@ That last diagnostic is the most valuable part of the system: it tells you which
 
 **No experience:** lean hard on [projects](/blog/fresher-resume-projects-that-get-interviews), a [portfolio](/blog/how-to-build-professional-portfolio), and referrals — [getting a job with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) and [first tech job](/blog/how-to-get-first-tech-job) cover the route, and [ATS scores for freshers](/blog/ats-score-for-freshers) set expectations.
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 **Career change:** speed comes from translation, not from starting over — [career-change resumes](/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), [moving into tech](/blog/career-change-to-tech-guide), [non-tech to data](/blog/career-change-from-non-tech-to-data-analyst), and a [career-change portfolio](/blog/career-change-portfolio).

@@ -153,11 +153,6 @@ Why it works: clear role, level, specialization, key skills, and domain - all sc
 - **Summary**: 2-4 lines. Your experience, achievements, and value. Read the [resume summary guide](https://thetailorcv.com/blog/how-to-write-resume-summary).
 - **Objective**: Mostly outdated. Only for career changers or true entry-level.
 
-### Building the resume section by section
-
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You can start from an existing CV or import from LinkedIn instead of retyping everything.
 
 
 You can use a headline + summary together for maximum impact.

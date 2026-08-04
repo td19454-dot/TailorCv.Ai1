@@ -88,6 +88,13 @@ Depending on your background, you may also want to include:
 
 Customizing your resume for each job application is essential. Here’s how you can do that effectively:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 - **Match Keywords**: Review the job description and incorporate relevant keywords into your resume. This not only helps with ATS optimization but also shows that you are aligned with the employer's needs. For more details on this, check out our guide on [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
 - **Highlight Relevant Experience**: Focus on the experience that is most relevant to the job. Use quantifiable achievements to demonstrate your impact in previous roles. For example, instead of stating "responsible for managing a team," say "led a team of 5 to achieve a 20% increase in sales over six months."
 
@@ -124,11 +131,6 @@ To further enhance your job application process, consider using the following re
 
 The Canadian job market is diverse, with opportunities across various sectors. Here are some insights to keep in mind:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - **Networking is Key**: Building connections can significantly enhance your job search. Utilize platforms like LinkedIn to network with industry professionals. Attend networking events and informational interviews to expand your reach.

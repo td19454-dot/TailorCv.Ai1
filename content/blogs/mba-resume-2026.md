@@ -30,6 +30,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 
 Most MBA programs require a specific one-page format. Common structure:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. Header
 2. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) (MBA first, prominent - this is key during/post-MBA)
 3. Professional experience
@@ -119,11 +126,6 @@ Emphasize: strategic initiatives, business impact, leadership, analytical skills
 
 PROFESSIONAL EXPERIENCE
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Operations Manager

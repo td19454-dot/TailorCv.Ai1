@@ -48,6 +48,13 @@ It has grown outward over the years — LinkedIn optimization, a resume builder,
 
 TailorCV starts where Jobscan stops.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 Paste a job description and your resume. Get a [free ATS match score](/ats-analysis) — unlimited, not five a month — with the exact missing keywords. Then the AI **rewrites your bullets** so they carry the posting's language honestly, without inventing anything you did not do — [keeping your own voice intact](/blog/ai-resume-tailoring-human-voice). Download the tailored PDF. Next job.
 
 Around that loop: a [matching cover letter](/cover-letter), [AI mock interviews](/mock-interview) for the specific role, [interview prep](/interview-prep), a [portfolio website builder](/portfolio), and a [Job Tracker](/my-resumes) that fills itself in — every tailored version saved with its score and the job it was written for.
@@ -116,11 +123,6 @@ TailorCV closes that gap in about a minute per job, under a hard rule: the AI ma
 
 **TailorCV wins on breadth.**
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 Jobscan is a scanner with satellites. TailorCV covers the steps that come immediately after the score:

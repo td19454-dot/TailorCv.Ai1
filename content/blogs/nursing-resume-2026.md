@@ -36,6 +36,13 @@ Before submitting, test your resume against the job description using the [ATS s
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Additional training or awards
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages depending on experience. New graduates may keep it to one page. Experienced nurses with multiple specializations and leadership roles may use two pages.
 
 ---
@@ -149,11 +156,6 @@ Provided / Managed / Assessed / Administered + [clinical action] + [patient popu
 Staff Nurse - Medical ICU
 City General Hospital | Jan 2022 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Provided direct nursing care for 4-6 adult ICU patients per shift, including mechanical ventilation, CRRT, and multi-vasopressor management.

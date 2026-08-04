@@ -149,11 +149,6 @@ Your two weeks notice may be kept in your personnel file and could be seen by fu
 - Stay positive and professional with colleagues
 - Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before losing access
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 Read the [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally) for full transition advice.

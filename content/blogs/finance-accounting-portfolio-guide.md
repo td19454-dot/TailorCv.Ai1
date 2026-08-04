@@ -43,6 +43,13 @@ For real employer work, replace confidential figures with illustrative or indexe
 - **A private, unlisted link** shared only with hiring managers if any of your work is sensitive - see [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
 - **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Featured section** linking to your portfolio
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## Keep Your Resume and Portfolio in Sync
 
 Your resume and portfolio should tell the same story - same specialty (FP&A, audit, tax, controllership), same tools - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
@@ -90,11 +97,6 @@ Creating a finance and accounting portfolio can seem daunting. Follow these step
 
 To ensure your finance and accounting portfolio stands out for the right reasons, avoid these common pitfalls:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 - **Overloading with Information**: While it’s important to showcase your skills, avoid overwhelming the reader with too much detail. Focus on key achievements that align with your career goals.

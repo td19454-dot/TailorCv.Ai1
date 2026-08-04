@@ -37,6 +37,13 @@ Core elements:
 - Relevant coursework (for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes))
 - Honors, awards, or distinctions (if applicable)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Education Section Format
@@ -142,11 +149,6 @@ List in reverse chronological order (most recent first). Include both, but keep 
 ## Special Situations
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### Incomplete Degree
 

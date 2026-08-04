@@ -65,6 +65,13 @@ A referral primarily affects whether you get an interview, not whether you get t
 
 You do not need to disappear into hours of keyword optimization the way you might for a cold application into a heavily automated pipeline. But a baseline level of matching effort still pays off:
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 1. **Read the job description fully**, and confirm your resume reflects its core requirements clearly.
 2. **Update your summary** to reflect the specific role and its priorities, following [resume summary match job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide).
 3. **Confirm your top skills and bullets align** with what the role actually asks for, even if you skip a full keyword-by-keyword optimization pass.
@@ -101,11 +108,6 @@ Paste the job description into [TailorCV's resume optimizer](/solutions) to quic
 
 When tailoring your resume for a referral, it's easy to make missteps that can undermine your chances, even with the advantage of a referral. Here are some common mistakes to watch out for:
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
 ### Your resume after optimization

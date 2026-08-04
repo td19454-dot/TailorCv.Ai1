@@ -38,6 +38,13 @@ If you want a shortcut, you can build a clean, correctly-structured Malaysian re
 
 Here is where Malaysia diverges from Western norms. Follow these conventions and your resume will feel familiar and professional to local recruiters.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Length
 
 [One page](https://thetailorcv.com/blog/anatomy-of-a-resume) is ideal for fresh graduates and those with under three years of experience. Two pages are perfectly acceptable for experienced professionals — as long as every line earns its place. Three pages or more is almost always too long unless you are in academia or a highly technical senior role.
@@ -178,11 +185,6 @@ You can produce a polished version of this in minutes with the [resume builder](
 
 A great resume gets you the interview, but it is one piece of the puzzle. To give yourself the best shot at Malaysian roles:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Write a targeted cover letter — see [how to write a cover letter for Malaysia jobs](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).

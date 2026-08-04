@@ -139,6 +139,13 @@ This works particularly well in tech, design, consulting, and marketing - where 
 
 The most powerful antidote to a job hopping concern is undeniable results.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 If every role on your resume has a strong "here is what I accomplished" bullet at the top, the reader is focused on what you did - not how long you stayed.
 
 **Weak (draws attention to short tenure):**
@@ -179,11 +186,6 @@ Each short role confirms the narrative rather than questioning it.
 
 You do not have to include everything.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 If you had a role that lasted 2 months before a mutual agreement to part, and it adds nothing to your narrative, omit it.

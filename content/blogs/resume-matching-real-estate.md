@@ -107,17 +107,19 @@ Review [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-
 
 Paste any real estate job posting into [TailorCV's resume optimizer](/solutions) to identify missing licensing, software, and metric keywords instantly. TailorCV rewrites your bullets to reflect the posting's exact language while preserving your real production numbers and experience, and checks your formatting against [ATS parsing rules](https://thetailorcv.com/blog/ats-resume-parser-friendly-format). Build a tailored [cover letter](/cover-letter) for each brokerage or firm you apply to.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Real Estate Job Description Analysis: A Step-by-Step Guide
 
 When preparing your resume for a real estate position, analyzing the job description is crucial. Here’s a step-by-step approach to ensure you capture all relevant details:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 1. **Read the Job Description Thoroughly**: Begin by reading the entire job description carefully. Highlight key responsibilities, required skills, and qualifications.

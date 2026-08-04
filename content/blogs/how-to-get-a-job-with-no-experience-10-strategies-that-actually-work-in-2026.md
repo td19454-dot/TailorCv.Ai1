@@ -103,6 +103,13 @@ That sounds like real work because it is real work.
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can help, especially for [entry-level](https://thetailorcv.com/blog/how-to-get-first-tech-job) jobs where you need to show commitment. They are not magic, but they can fill gaps and give you keywords for your resume.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ### Choose Recognized, Relevant Certifications
 
 For digital marketing, look at Google, HubSpot, Meta, or analytics certifications. For IT support, consider CompTIA, Google IT Support, Microsoft, or cloud fundamentals. For project coordination, look at project management foundations. For data roles, build skills in Excel, SQL, Python, Tableau, or Power BI. This list of [free online certificates for resumes](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) can help you choose more strategically.
@@ -162,6 +169,13 @@ Use standard headings, clean [bullet points](https://thetailorcv.com/blog/how-to
 
 Not every "entry-level" job is truly entry-level. Some job posts ask for three years of experience because employers are optimistic, not because it is always required.
 
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
+
 Apply when you meet around 60 to 70 percent of the requirements, especially if you match the core skills and can learn the rest.
 
 ### Search for Better Keywords
@@ -184,18 +198,8 @@ Also search by skill, not only title. For example, search "Excel reporting assis
 
 [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) does not mean begging strangers for jobs. It means starting conversations, learning from people, and becoming visible.
 
-### Tailoring without leaving Indeed
-
-![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
-
-On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 Message alumni, former classmates, community members, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) creators, recruiters, or people in roles you admire. Keep messages short and specific.

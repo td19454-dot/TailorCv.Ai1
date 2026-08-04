@@ -67,6 +67,13 @@ Networking remains one of the most powerful tools in the job search process. Her
 
 With your resume and online presence ready, it's time to start applying:
 
+### Tailoring without leaving Glassdoor
+
+![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
+
+Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
+
+
 - **Job Boards:** Utilize popular job boards such as Indeed, Glassdoor, and LinkedIn Jobs. Tailor your search by filtering for remote positions or specific industries.
 
 - **Direct Applications:** Visit company websites and apply directly to open positions. This often puts you ahead in the application process.
@@ -77,11 +84,6 @@ With your resume and online presence ready, it's time to start applying:
 
 Once you’ve secured an interview, preparation is key:
 
-### Tailoring without leaving Glassdoor
-
-![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
-
-Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
 
 
 ### What optimizing actually does to your resume

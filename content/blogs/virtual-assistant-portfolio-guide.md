@@ -41,6 +41,13 @@ Clients hiring a VA or freelance support professional want to know two things: c
 - **Upwork/Fiverr profiles** - keep them consistent with your site, but drive traffic to your own portfolio for direct clients
 - **[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Featured section** - link your portfolio and pin your best testimonial
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## Keep Your Resume and Portfolio in Sync
 
 Your resume and portfolio should tell the same story - same service specialty, same industries served - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
@@ -76,11 +83,6 @@ Creating a compelling portfolio can be a straightforward process if you follow t
 
 Understanding how to navigate common situations can improve your portfolio's effectiveness. Here are a few scenarios with practical solutions:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 - **Scenario 1**: You lack client work samples because you are just starting.

@@ -35,6 +35,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages. SRE roles are senior-leaning - two pages are acceptable for candidates with significant reliability improvement history.
 
 ---
@@ -116,11 +123,6 @@ Reduced / Built / Defined / Led + [reliability system or process] + [service sca
 Senior Site Reliability Engineer
 Fintech Platform | Jan 2022 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Maintained 99.97% availability for a payment processing platform handling $420M in annual transaction volume across 3 production regions.

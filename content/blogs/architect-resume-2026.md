@@ -32,6 +32,13 @@ See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-
 
 Your [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) should flex to your level. A few models:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Intern / recent graduate:** "Architecture graduate proficient in Revit and Rhino, with studio and internship experience on residential and mixed-use projects. Seeking an architectural designer role to grow toward licensure."
 - **Licensed architect:** "Licensed architect with 7 years in commercial and mixed-use projects, leading construction documentation and BIM coordination on developments up to $30M."
 - **Senior / project architect:** "Project architect with 12 years delivering healthcare and hospitality projects from concept to occupancy, managing multidisciplinary teams and $50M+ budgets."
@@ -86,11 +93,6 @@ Architects often ask whether to include drawings or renders directly on the [res
 
 If you're a recent graduate or intern architect, lead with your degree, studio projects, internships, and software proficiency — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how to present academic and personal work as real experience. Your [portfolio](https://www.thetailorcv.com/portfolio) does a lot of heavy lifting at this stage.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Presenting academic, competition, and international work
