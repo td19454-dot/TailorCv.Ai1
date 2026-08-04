@@ -192,16 +192,16 @@ Whatever format, keep your dates consistent (e.g., "Jan 2023 - Present" througho
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- How to Write a Resume with AI
+- Resume Keywords Guide
+- 200 Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How to Write a Resume Summary
+- How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
+- 10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews
+- First Time Resume With No Experience: Complete Guide for Freshers & College Students
+- 10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume
 
 ## Make This Practical
 

@@ -60,7 +60,7 @@ Your international resume almost certainly needs reformatting. Canadian resumes:
 - Use Canadian spelling and metric units.
 - Must be **ATS-friendly**, since most employers screen with software.
 
-Follow our complete [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide), learn to beat the screener in [how ATS works in Canada](https://thetailorcv.com/blog/ats-in-canada-guide), and test each version with the free [ATS score checker](https://thetailorcv.com/solutions). Build a clean version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it per role with the [resume optimizer](https://thetailorcv.com/solutions).
+Follow our complete [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide), learn to beat the screener in [how ATS works in Canada](https://thetailorcv.com/blog/ats-in-canada-guide), and test each version with the free [ATS score checker](https://thetailorcv.com/solutions). Build a clean version with the TailorCV resume builder and tailor it per role with the resume optimizer.
 
 ## Step 4: Tackle the "Canadian Experience" Hurdle
 
@@ -137,7 +137,7 @@ Replacing these myths with an accurate picture — and an active, well-prepared 
 
 ## Step 7: Prepare for Canadian Interviews
 
-Canadian interviews often use [behavioural questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) ("Tell me about a time…") answered with the STAR method. Research the company, prepare structured stories, and practise. Use [interview prep](https://thetailorcv.com/interview-prep) to generate likely questions, rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview), and review our [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada).
+Canadian interviews often use [behavioural questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) ("Tell me about a time…") answered with the STAR method. Research the company, prepare structured stories, and practise. Use [interview prep](https://thetailorcv.com/interview-prep) to generate likely questions, rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview), and review our interview tips for Canada.
 
 ## Practical Tips for Newcomers
 
@@ -211,7 +211,7 @@ A structured plan turns an overwhelming search into steady progress:
 
 - **Days 1–30:** Get set up — local phone number and professional email, an ECA in progress, a Canadian-style resume built with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), and an optimised LinkedIn profile (see [LinkedIn optimization for Canadian job seekers](https://thetailorcv.com/blog/linkedin-optimization-canada)). Register with settlement services and newcomer programs.
 - **Days 31–60:** Apply consistently to tailored roles, start volunteering or a bridge role, and begin networking in earnest — informational interviews, meetups, and professional associations (see [networking to find jobs in Canada](https://thetailorcv.com/blog/networking-jobs-canada)).
-- **Days 61–90:** Intensify networking and interviews, refine your materials based on responses, and follow up diligently. Rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- **Days 61–90:** Intensify networking and interviews, refine your materials based on responses, and follow up diligently. Rehearse with the AI mock interview.
 
 Progress may feel slow at first, then accelerate as your network, references, and Canadian experience compound. Persistence with the right strategy is what gets newcomers hired.
 

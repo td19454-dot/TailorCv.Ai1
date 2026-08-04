@@ -125,7 +125,7 @@ To further enhance your job application process, consider using the following re
 - **[AI Cover Letter Generator](https://www.thetailorcv.com/cover-letter)**: Create a personalized cover letter that complements your resume.
 - **[Resume Templates](https://www.thetailorcv.com/templates)**: Choose from professionally designed templates that adhere to Canadian standards.
 - **[Portfolio Website Builder](https://www.thetailorcv.com/portfolio)**: Showcase your work and skills through a personal portfolio website.
-- **[AI Mock Interview](https://www.thetailorcv.com/mock-interview)**: Prepare for interviews with realistic mock interview sessions.
+- **AI Mock Interview**: Prepare for interviews with realistic mock interview sessions.
 
 ## Understanding the Canadian Job Market
 
@@ -219,11 +219,11 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
 - [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
 - [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
-- [In-Demand Jobs in Canada for 2026 (and How to Match Your Resume)](https://thetailorcv.com/blog/in-demand-jobs-canada-2026)
-- [Internship Resume Guide 2026 - How to Write a Resume for Your First Internship](https://thetailorcv.com/blog/internship-resume-guide)
-- [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
-- [Top Skills to Add to Your Resume in 2026 - By Industry and Role](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- In-Demand Jobs in Canada for 2026 (and How to Match Your Resume)
+- Internship Resume Guide 2026 - How to Write a Resume for Your First Internship
+- Resume Keywords Guide 2026 - How to Find and Use the Right Keywords
+- Top Skills to Add to Your Resume in 2026 - By Industry and Role
+- Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

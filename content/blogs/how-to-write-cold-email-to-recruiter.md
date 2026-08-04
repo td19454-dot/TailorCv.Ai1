@@ -51,7 +51,7 @@ A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) who rece
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) - Most company recruiters are findable. Message them directly on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) (InMail or connection message).
 - Company careers page - Often lists a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) contact or careers@company email.
 - Hunter.io or Apollo.io - Email finder tools that can surface company email patterns.
-- Email patterns - Once you know someone's email at a company (e.g., firstname.lastname@company.com), you can guess the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s format.
+- Email patterns - Once you know someone's email at a company (e.g., firstname.lastname@company.com), you can guess the recruiter's format.
 
 [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) messages are often more effective than email in 2026 because recruiters are actively working there.
 
@@ -166,20 +166,20 @@ If you misspell someone's name in the opening line, the email is over.
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
-- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [How to Quit Your Job Professionally in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- How to Handle Job Rejection
+- How to Write a Two Weeks Notice
+- Networking Tips for Job Search
+- Cover Letter Guide
+- How to Build a Professional Portfolio
+- How to Negotiate a Salary Offer
+- Remote Job Search Guide
+- How to Follow Up After a Job Interview
+- How to Get a Job With No Experience
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
+- Freelancing vs Full-Time Employment in 2026 - Honest Comparison
+- How to Quit Your Job Professionally in 2026 - Complete Guide
+- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
 
 ## Make This Practical
 
@@ -190,7 +190,7 @@ Use the letter to explain context that does not fit neatly on the resume. Career
 ## Conclusion
 A well-written cold email or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) message is one of the most underused job search tools. Most candidates apply and wait. A short, specific, confident message to a recruiter takes 10 minutes to write and can compress a 6-week job search to 6 days.
 
-Make sure your resume is ready before sending outreach. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it, read the [cover letter guide](https://thetailorcv.com/blog/cover-letter-guide-2026), and check [LinkedIn job search tips](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the full outreach strategy. For interview preparation, use the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Make sure your resume is ready before sending outreach. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it, read the [cover letter guide](https://thetailorcv.com/blog/cover-letter-guide-2026), and check [LinkedIn job search tips](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the full outreach strategy. For interview preparation, use the interview guide.
 
 ## Frequently Asked Questions
 

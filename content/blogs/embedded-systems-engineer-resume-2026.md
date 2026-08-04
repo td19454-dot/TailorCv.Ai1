@@ -174,25 +174,25 @@ Embedded is hardware-software integration. Show that you understand and work wit
 - [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
-- [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
-- [Mechanical Engineer Resume](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
-- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
-- [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [Android Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [DevOps Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
-- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Cloud Engineer Resume
+- Cybersecurity Engineer Resume
+- Data Engineer Resume
+- Game Developer Resume
+- Machine Learning Engineer Resume
+- Mechanical Engineer Resume
+- QA Engineer Resume
+- Site Reliability Engineer (SRE) Resume
+- Accountant Resume
+- Android Developer Resume 2026 - Complete Guide with Examples
+- DevOps Engineer Resume 2026 - Complete Guide with Examples
+- Software Engineer Resume for FAANG in 2026
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
-A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or case studies.
+A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 
 ## Conclusion
 A strong embedded systems engineer resume in 2026 shows firmware expertise, hardware integration, RTOS and protocol knowledge, and measurable constraints-driven outcomes (power, memory, timing). Every bullet should connect your firmware work to a system result.

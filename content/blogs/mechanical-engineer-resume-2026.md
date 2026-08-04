@@ -14,7 +14,7 @@ A mechanical engineer resume in 2026 needs to show more than CAD proficiency. Em
 
 Whether you are applying to automotive, aerospace, consumer goods, FMCG, manufacturing, or R&D roles, your resume must show both technical depth and practical engineering judgment.
 
-Before applying, compare your resume to the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). If you want to see how resume structure differs across engineering disciplines, also read the [civil engineer resume guide](https://thetailorcv.com/blog/civil-engineer-resume-2026) and the [electrical engineer resume guide](https://thetailorcv.com/blog/electrical-engineer-resume-2026).
+Before applying, compare your resume to the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). If you want to see how resume structure differs across engineering disciplines, also read the [civil engineer resume guide](https://thetailorcv.com/blog/civil-engineer-resume-2026) and the electrical engineer resume guide.
 
 ---
 
@@ -191,22 +191,22 @@ This guide uses career data from the [BLS Mechanical Engineers Occupational Outl
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
-- [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
-- [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
-- [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
-- [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [DevOps Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
-- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Electrical Engineer Resume
+- Cloud Engineer Resume
+- Cybersecurity Engineer Resume
+- Embedded Systems Engineer Resume
+- Game Developer Resume
+- Machine Learning Engineer Resume
+- QA Engineer Resume
+- Site Reliability Engineer (SRE) Resume
+- Accountant Resume
+- DevOps Engineer Resume 2026 - Complete Guide with Examples
+- Software Engineer Resume for FAANG in 2026
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

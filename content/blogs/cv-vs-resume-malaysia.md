@@ -95,7 +95,7 @@ Learn the full mechanics in [how ATS works in Malaysia](https://thetailorcv.com/
 
 - For a company role, build a tailored, ATS-safe resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions).
 - Match each role's language using [best resume keywords for Malaysian jobs](https://thetailorcv.com/blog/best-resume-keywords-malaysia).
-- Add a targeted cover letter — see the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
+- Add a targeted cover letter — see the Malaysia cover letter guide.
 
 For the full job-search picture, see [how to get a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia).
 

@@ -211,11 +211,11 @@ Keep building your US job search with these related TailorCV guides:
 - [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
 - [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
 - [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
-- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
-- [Survived a Layoff? A 30-Day Plan to Rebuild Your Resume and Restart Your Search](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume)
-- [Salary Negotiation Guide — How to Negotiate Pay With Confidence (2026)](https://thetailorcv.com/blog/salary-negotiation-guide)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs
+- Survived a Layoff? A 30-Day Plan to Rebuild Your Resume and Restart Your Search
+- Salary Negotiation Guide — How to Negotiate Pay With Confidence (2026)
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

@@ -10,7 +10,7 @@ slug: linkedin-to-portfolio-guide
 keywords: linkedin to portfolio, turn linkedin into website, linkedin portfolio converter, personal website from linkedin, linkedin profile portfolio
 ---
 
-Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile already has most of the raw material for a portfolio - experience, summary, skills, and projects. The problem is that LinkedIn's format is generic and shared with 900 million other profiles. A dedicated [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets that same content breathe, with room for case studies, media, and a design that reflects you specifically. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
+Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile already has most of the raw material for a portfolio - experience, summary, skills, and projects. The problem is that LinkedIn's format is generic and shared with 900 million other profiles. A dedicated [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets that same content breathe, with room for case studies, media, and a design that reflects you specifically. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and LinkedIn Profile Optimization Guide.
 
 ## Key Takeaways
 
@@ -149,19 +149,19 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
-- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
-- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
-- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
-- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
-- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- AI Portfolio Builder: No Code Required
+- Personal Website vs Portfolio
+- Portfolio About Me Section
+- Portfolio Website Themes 2026
+- Portfolio SEO: Get Found
+- Portfolio Checklist Before Applying
+- Portfolio Mistakes to Avoid
+- Add Portfolio Link to Resume
+- Personal Branding for Professionals
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name and strongest work are easier to discover.
 
@@ -174,8 +174,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- Portfolio Mistakes to Avoid
+- How to Write Portfolio Case Study
+- Add Portfolio Link to Resume
+- Resume Matching With Job Description
+- ATS-Friendly Resume Builder

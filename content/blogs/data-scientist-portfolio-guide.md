@@ -160,8 +160,8 @@ A few next actions, in order:
 1. Pick your flagship end-to-end project and rewrite its README using the worked-example outline above.
 2. Add the portfolio link to your resume correctly with [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 3. Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so the resume and portfolio present one consistent story.
-4. Before you start applying, run through the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying) and see [Portfolio Examples That Landed Interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews) for concrete formats that have worked.
-5. Practice explaining your flagship project's modeling decisions out loud - the [AI mock interview](https://www.thetailorcv.com/mock-interview) tool is a low-pressure way to rehearse the "why did you choose this model" question before it comes up live.
+4. Before you start applying, run through the Portfolio Checklist Before Applying and see Portfolio Examples That Landed Interviews for concrete formats that have worked.
+5. Practice explaining your flagship project's modeling decisions out loud - the AI mock interview tool is a low-pressure way to rehearse the "why did you choose this model" question before it comes up live.
 
 
 ## Key Differences in Data Scientist and Data Analyst Portfolios

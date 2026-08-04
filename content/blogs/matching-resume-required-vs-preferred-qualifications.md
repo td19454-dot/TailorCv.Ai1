@@ -229,13 +229,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to s
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
-- [Matching Your Resume to Certification Requirements You Don't Have Yet](https://thetailorcv.com/blog/matching-resume-to-certifications-in-job-description)
-- [Common Resume and Job Description Mismatch Mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [ATS Keywords to Boost Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
-- [Overqualified Resume Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- Matching Your Resume to Certification Requirements You Don't Have Yet
+- Common Resume and Job Description Mismatch Mistakes
+- ATS Keywords to Boost Score
+- Overqualified Resume Match Job Description
+- Resume Tailoring for Underqualified Candidates
+- ATS Score Guide 2026
+- Cover Letter Guide 2026
 
 ---
 

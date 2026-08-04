@@ -56,7 +56,7 @@ The score itself matters less than the breakdown beside it: each check names wha
 1. **Open a free ATS score checker.** You can [check your ATS score on TailorCV](https://thetailorcv.com/solutions) in seconds.
 2. **Paste your resume** (or upload it) and add the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) you are targeting.
 3. **Run the scan.** The tool parses your resume just like an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) would.
-4. **Read the detailed breakdown.** TailorCV runs 25 separate checks and shows you what passed and what failed - contact info, skills match, formatting, [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume), quantified impact, and more.
+4. **Read the detailed breakdown.** TailorCV runs 25 separate checks and shows you what passed and what failed - contact info, skills match, formatting, action verbs, quantified impact, and more.
 5. **Fix and re-scan.** Make the suggested changes and run it again to watch your score climb.
 
 Because the report is itemized, you are never left wondering what to do next. Each failed check is something specific you can correct.
@@ -79,8 +79,8 @@ Once you know your score, improving it is straightforward when you focus on the 
 - **Match keywords to the job description.** Mirror the exact skills and terms the posting uses. A tool that [tailors your resume to each job](https://thetailorcv.com/solutions) makes this fast.
 - **Use a clean, single-column layout.** Fancy multi-column designs and text boxes often break ATS parsing. Start from [free ATS friendly resume templates](https://thetailorcv.com/templates) instead of building from scratch.
 - **Label your sections clearly.** Use standard headings like Experience, Education, Skills, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
-- **Quantify your impact.** Numbers (percentages, dollar amounts, user counts) strengthen both [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scoring and recruiter appeal.
-- **Lead bullets with [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume).** "Built," "Led," "Improved," and "Launched" read better to both software and humans.
+- **Quantify your impact.** Numbers (percentages, dollar amounts, user counts) strengthen both ATS scoring and recruiter appeal.
+- **Lead bullets with action verbs.** "Built," "Led," "Improved," and "Launched" read better to both software and humans.
 - **Keep contact details simple.** Plain text email and phone, no images or headers that the parser may skip.
 
 After each change, run the **free [ATS score checker](https://www.thetailorcv.com/solutions)** again. Optimization is a loop: scan, fix, re-scan.
@@ -93,9 +93,9 @@ With TailorCV, you can check your score, tailor your resume to a job, build from
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## Final Thoughts
 You should never apply to a job blind. A **free [ATS score checker](https://www.thetailorcv.com/solutions)** turns your resume from a guess into a measurable, improvable document. Check your ATS score, fix what fails, tailor it to the role, and apply with confidence.

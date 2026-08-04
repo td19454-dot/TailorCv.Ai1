@@ -249,33 +249,33 @@ Internship resumes should be exactly one page. Use 10-11pt font, 0.5-0.75in marg
 ## Conclusion
 A strong [internship resume](https://thetailorcv.com/blog/internship-resume-guide) in 2026 shows academic foundation, relevant skills, real projects, and any achievement that proves initiative and ability. The absence of work experience is normal and expected - what matters is what you have done with your time as a student.
 
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For [interview](https://thetailorcv.com/blog/interview-story-bank-star-method) prep, try the [free AI mock interview tool](https://thetailorcv.com/mock-interview).
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to match your skills to the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the full [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for structuring your bullets effectively. For interview prep, try the free AI mock interview tool.
 
 ## Related Guides
 
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [Business Analyst Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
-- [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
-- [Financial Analyst Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/financial-analyst-resume-2026)
-- [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
+- 200 Best Action Verbs for Resume
+- How to Explain Resume Gaps
+- How to Get Your First Tech Job
+- How to List Certifications on a Resume
+- How to List Education on a Resume
+- How to Prepare for Campus Placement
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- Business Analyst Resume 2026 - Complete Guide with Examples
+- Data Analyst Resume 2026
+- Financial Analyst Resume 2026 - Complete Guide with Examples
+- How to Tailor Your Resume for Every Job Application (Step-by-Step)
+- How to Write a Resume Summary in 2026 - With 20 Examples
 
 ## Make This Practical
 
 Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
-After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice [interview](https://thetailorcv.com/blog/interview-story-bank-star-method)s with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice [interview](https://thetailorcv.com/blog/interview-story-bank-star-method)s with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the portfolio website builder if you need a stronger online presence.
 
 ## Strong vs. Weak Internship Resume Examples
 

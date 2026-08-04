@@ -258,9 +258,9 @@ Fix: Embed keywords in [bullet points](https://thetailorcv.com/blog/how-to-write
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### How often should I go through this checklist?
@@ -287,13 +287,13 @@ Extract what you can. If the JD is vague, research the company and role to suppl
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [How to Match Your Resume Summary to a Job Description](https://thetailorcv.com/blog/resume-summary-match-job-description)
-- [How to Match Your Resume Skills Section to Any Job Description](https://thetailorcv.com/blog/resume-skills-match-job-description)
-- [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
-- [Job Description Resume Match Percentage](https://thetailorcv.com/blog/resume-job-description-match-percentage)
-- [Common Resume and Job Description Mismatch Mistakes](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes)
-- [How to Improve Your Resume-to-Job Match Score](https://thetailorcv.com/blog/improve-resume-job-match-score)
-- [Why Your Resume Doesn't Match the Job Description](https://thetailorcv.com/blog/why-resume-doesnt-match-job-description)
+- How to Match Your Resume Summary to a Job Description
+- How to Match Your Resume Skills Section to Any Job Description
+- How to Match Resume Keywords to Job Description
+- Job Description Resume Match Percentage
+- Common Resume and Job Description Mismatch Mistakes
+- How to Improve Your Resume-to-Job Match Score
+- Why Your Resume Doesn't Match the Job Description
 
 ---
 

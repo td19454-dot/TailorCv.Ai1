@@ -207,13 +207,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Should You Still Tailor Your Resume for a Referral?](https://thetailorcv.com/blog/resume-matching-referral-applications)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Executive Resume Tailoring Guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide)
-- [Common Resume and Job Description Mismatch Mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- Resume Matching for Career Changers
+- Executive Resume Tailoring Guide
+- Common Resume and Job Description Mismatch Mistakes
+- Job Description Keyword Extraction Guide
+- Networking Tips for Job Search
+- ATS Score Guide 2026
+- Cover Letter Guide 2026
 
 ---
 

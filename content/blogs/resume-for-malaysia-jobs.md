@@ -189,9 +189,9 @@ A great resume gets you the interview, but it is one piece of the puzzle. To giv
 
 - Write a targeted cover letter — see [how to write a cover letter for Malaysia jobs](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 - Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
-- Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic [AI mock interview](https://thetailorcv.com/mock-interview).
-- If you are targeting the capital specifically, read [how to find a job in Kuala Lumpur](https://thetailorcv.com/blog/how-to-find-a-job-in-kuala-lumpur).
-- Relocating to Malaysia? Start with our [guide to getting a job in Malaysia as a foreigner](https://thetailorcv.com/blog/job-in-malaysia-as-foreigner).
+- Prepare for local interview norms with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia), and practise with a realistic AI mock interview.
+- If you are targeting the capital specifically, read how to find a job in Kuala Lumpur.
+- Relocating to Malaysia? Start with our guide to getting a job in Malaysia as a foreigner.
 
 ## Frequently Asked Questions
 

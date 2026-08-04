@@ -241,8 +241,8 @@ A strong resume gets the interview; the rest of your application seals it:
 - Add a targeted cover letter — see the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
 - Optimise your LinkedIn — see [LinkedIn optimization for Canadian job seekers](https://thetailorcv.com/blog/linkedin-optimization-canada).
 - Network effectively — much of Canadian hiring happens through connections; see [networking to find jobs in Canada](https://thetailorcv.com/blog/networking-jobs-canada).
-- Prepare for interviews — see [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- International students should read [getting a job in Canada as an international student](https://thetailorcv.com/blog/job-in-canada-international-student).
+- Prepare for interviews — see interview tips for Canada and rehearse with the AI mock interview.
+- International students should read getting a job in Canada as an international student.
 
 ## Frequently Asked Questions
 

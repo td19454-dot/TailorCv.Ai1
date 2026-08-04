@@ -115,8 +115,8 @@ LinkedIn works best as part of a coherent search:
 
 - Keep your **resume** consistent with your profile — see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Use a targeted **cover letter** when applying — see the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
-- Prepare for interviews once recruiters reach out — see [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- For tech and creative fields, link a portfolio — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
+- Prepare for interviews once recruiters reach out — see Malaysia interview tips and rehearse with the AI mock interview.
+- For tech and creative fields, link a portfolio — build one from your resume with the TailorCV portfolio builder.
 
 ## Reaching Out: Messages That Get Replies
 

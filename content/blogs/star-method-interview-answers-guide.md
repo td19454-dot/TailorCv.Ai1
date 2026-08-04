@@ -14,7 +14,7 @@ keywords: STAR method interview, STAR method examples, behavioral interview STAR
 
 This guide explains how to use STAR in 2026, with examples for common questions and a practice plan using [AI mock interviews](https://thetailorcv.com/mock-interview).
 
-Before your next interview, review the [behavioral interview questions guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Make sure your resume highlights the stories you will tell - optimize it with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Before your next interview, review the [behavioral interview questions guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Make sure your resume highlights the stories you will tell - optimize it with the TailorCV ATS checker.
 
 ---
 
@@ -92,7 +92,7 @@ For more on framing failures, see [how to answer greatest weakness](https://thet
 2. **Prepare 8-10 stories** covering leadership, conflict, failure, success, teamwork, and deadline pressure.
 3. **Map stories to question types** - one story can answer multiple questions with different emphasis.
 4. **Practice with AI** - run [mock interview sessions](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) until answers feel natural, not memorized.
-5. **Watch your delivery** - read [interview body language tips](https://thetailorcv.com/blog/interview-body-language-communication-tips) and manage [interview nerves](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
+5. **Watch your delivery** - read [interview body language tips](https://thetailorcv.com/blog/interview-body-language-communication-tips) and manage interview nerves.
 
 
 

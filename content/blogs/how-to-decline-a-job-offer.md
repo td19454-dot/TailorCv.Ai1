@@ -79,7 +79,7 @@ When a colleague referred you, protect that relationship explicitly — they spe
 - **Respond promptly.** The company is holding a spot and often a runner-up. A fast, kind no lets everyone move on.
 - **Decline to a person, warmly.** Address the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) or [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) by name; do not just ignore the offer.
 - **Keep it short.** A paragraph is plenty. Over-explaining helps no one.
-- **Never [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) through a decline.** If you actually want more money, [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) honestly; do not use a fake decline as a tactic.
+- **Never [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) through a decline.** If you actually want more money, negotiate honestly; do not use a fake decline as a tactic.
 - **Stay reachable.** "I hope our paths cross again" is not just polite — it keeps a real door open.
 
 ## Why This Matters More Than It Seems
@@ -94,7 +94,7 @@ Declining one offer usually means you are accepting another — which means it i
 
 ## Deciding Whether to Decline in the First Place
 
-Before you write the decline, make sure it is the right call — a graceful no to the wrong offer is only valuable if it is genuinely the wrong offer. Weigh the decision against the things that actually predict job satisfaction: the work itself, the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) and team, growth opportunity, compensation, and life fit like location and flexibility. Money is real but rarely the whole story; a slightly higher offer with a bad [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) often turns out worse than the alternative. If your hesitation is really about compensation, the right move may be to [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) rather than decline — many offers have room, and asking is far cheaper than walking away. Decline when the role is genuinely wrong for you; [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) when it is close but the terms are off.
+Before you write the decline, make sure it is the right call — a graceful no to the wrong offer is only valuable if it is genuinely the wrong offer. Weigh the decision against the things that actually predict job satisfaction: the work itself, the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) and team, growth opportunity, compensation, and life fit like location and flexibility. Money is real but rarely the whole story; a slightly higher offer with a bad [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) often turns out worse than the alternative. If your hesitation is really about compensation, the right move may be to [negotiate](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) rather than decline — many offers have room, and asking is far cheaper than walking away. Decline when the role is genuinely wrong for you; negotiate when it is close but the terms are off.
 
 ## Timing and Sequence Matter
 

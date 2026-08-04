@@ -10,16 +10,11 @@ image: public/blog-images/remote-job-interview-preparation-2026.webp
 
 Remote work is standard in 2026 - and so are **[remote job](https://thetailorcv.com/blog/remote-job-search-guide)** interviews. Whether it is a Zoom call with a hiring manager, an async video recording, or a phone screen, interviewing from home introduces unique challenges: tech failures, distracting environments, and the difficulty of building rapport through a screen.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
 
 
 This guide covers remote job interview preparation for 2026 - setup, delivery, and practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
 
-Also read [virtual interview tips](https://thetailorcv.com/blog/virtual-interview-tips), [interview body language guide](https://thetailorcv.com/blog/interview-body-language-communication-tips), [phone interview tips](https://thetailorcv.com/blog/phone-interview-tips), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Tailor your resume for remote roles with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) and [remote resume tailoring guide](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite).
+Also read [virtual interview tips](https://thetailorcv.com/blog/virtual-interview-tips), [interview body language guide](https://thetailorcv.com/blog/interview-body-language-communication-tips), [phone interview tips](https://thetailorcv.com/blog/phone-interview-tips), and the complete interview guide. Tailor your resume for remote roles with the TailorCV ATS checker and remote resume tailoring guide.
 
 ---
 
@@ -152,6 +147,13 @@ For [HR round](https://thetailorcv.com/blog/hr-round-interview-questions-answers
 - **Send a thank-you email within 24 hours** - use the [follow-up guide](https://thetailorcv.com/blog/how-to-follow-up-after-interview) for tips on crafting a thoughtful message.
 - **Note any tech issues** - if there were connection problems, briefly mention them in your thank-you email to show awareness.
 - **If an offer comes, negotiate remotely too** - familiarize yourself with the [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) to approach discussions confidently.
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+The useful part is the scorecard at the end - an honest score plus concrete feedback, which is what turns practice into an actual improvement.
+
 
 
 ### Building Long-Term Relationships

@@ -162,10 +162,10 @@ Run your designed resume through the [TailorCV ATS checker](https://www.thetailo
 - [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
 - [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
-- [Should You Put a Photo on Your Resume?](https://thetailorcv.com/blog/photo-on-resume)
+- How to Make Your Resume ATS-Friendly
+- How Recruiters Read Resumes in Under 10 Seconds
+- How to Choose the Right Resume Template
+- Should You Put a Photo on Your Resume?
 
 ---
 

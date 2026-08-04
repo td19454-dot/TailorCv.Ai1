@@ -176,18 +176,18 @@ This hybrid approach is increasingly viable in 2026 with remote work normalizing
 - [Work-Life Balance Tips for Professionals](https://thetailorcv.com/blog/work-life-balance-tips)
 - [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [First 90 Days at a New Job in 2026 - How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [How to Ask for a Raise in 2026 - Scripts, Timing, and Strategy](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [Personal Branding for Professionals in 2026 - Complete Guide](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- How to Get a Job With No Experience
+- How to Negotiate a Salary Offer
+- Remote Job Search Guide
+- Cover Letter Guide
+- How to Build a Professional Portfolio
+- How to Decline a Job Offer Professionally
+- How to Get a Promotion
+- How to Handle Job Rejection
+- How to Quit Your Job Professionally
+- First 90 Days at a New Job in 2026 - How to Succeed and Stand Out
+- How to Ask for a Raise in 2026 - Scripts, Timing, and Strategy
+- Personal Branding for Professionals in 2026 - Complete Guide
 
 ## Make This Practical
 

@@ -170,17 +170,17 @@ Practice all of this with the [free AI mock interview tool](https://thetailorcv.
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
 - [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
-- [How to Practice Mock Interviews Online for Free Using AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
-- [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
-- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
-- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- How to Practice Mock Interviews Online for Free Using AI
+- 20 Common Interview Mistakes to Avoid
+- Final Round Interview Tips
+- Group Discussion Tips
+- How to Answer "Tell Me About Yourself"
+- How to Prepare for a Job Interview
+- Phone Interview Tips
+- Behavioral Interview Questions and Answers
+- How to Follow Up After a Job Interview
+- How to Prepare for Campus Placement in 2026 - Complete Guide
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
 
 ## Make This Practical
 
@@ -191,7 +191,7 @@ Before the interview, make sure the resume that earned the call is still aligned
 ## Conclusion
 [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide) preparation is a structured process: master DSA patterns, understand system design fundamentals, know your projects deeply, and prepare behavioral stories. Consistent practice over 8-12 weeks prepares most candidates well.
 
-Start with a resume that gets you interviews - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then work through the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), [system design guide](https://thetailorcv.com/blog/system-design-interview-guide), and [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers). Practice delivery with the [mock interview tool](https://thetailorcv.com/mock-interview).
+Start with a resume that gets you interviews - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then work through the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), [system design guide](https://thetailorcv.com/blog/system-design-interview-guide), and behavioral interview guide. Practice delivery with the mock interview tool.
 
 ## Frequently Asked Questions
 

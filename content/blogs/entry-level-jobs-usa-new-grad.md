@@ -197,11 +197,11 @@ Keep building your US job search with these related TailorCV guides:
 - [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
 - [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
 - [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
-- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
-- [Recruiter Ghosting You After an Interview? What It Means and What to Do Next](https://thetailorcv.com/blog/recruiter-ghosting-after-interview)
-- [AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice](https://thetailorcv.com/blog/ai-job-search-agent-2026)
-- [Follow-Up Email After Job Application - Templates That Sound Professional](https://thetailorcv.com/blog/follow-up-email-after-application)
-- [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
+- How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs
+- Recruiter Ghosting You After an Interview? What It Means and What to Do Next
+- AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice
+- Follow-Up Email After Job Application - Templates That Sound Professional
+- Job Application Tracker Template - What to Track After Every Application
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

@@ -133,11 +133,11 @@ Keep building your US job search with these related TailorCV guides:
 - [US Resume Format Guide (2026): How to Write a Resume for American Jobs](https://thetailorcv.com/blog/us-resume-format-guide-2026)
 - [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
 - [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
-- [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
-- [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
-- [LinkedIn Referral Message Template - Ask Without Sounding Awkward](https://thetailorcv.com/blog/referral-message-template-linkedin)
-- [Video Resume Guide 2026 - When to Use One and What to Say](https://thetailorcv.com/blog/video-resume-guide-2026)
-- [Entry-Level Jobs in the USA: A New-Grad Resume and Job Search Guide](https://thetailorcv.com/blog/entry-level-jobs-usa-new-grad)
+- How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs
+- Job Application Tracker Template - What to Track After Every Application
+- LinkedIn Referral Message Template - Ask Without Sounding Awkward
+- Video Resume Guide 2026 - When to Use One and What to Say
+- Entry-Level Jobs in the USA: A New-Grad Resume and Job Search Guide
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

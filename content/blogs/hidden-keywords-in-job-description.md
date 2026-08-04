@@ -233,9 +233,9 @@ The combination of AI-powered keyword matching and human-level subtext reading i
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Do ATS systems pick up subtext and context?
@@ -258,13 +258,13 @@ For a priority application: 30 minutes. For a volume application where you are u
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [ATS Keyword Mistakes That Cost Interviews](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [How to Stop Sounding Generic on Your Resume](https://thetailorcv.com/blog/how-to-stop-sounding-generic-on-resume)
-- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [How Recruiters Read Resumes](https://thetailorcv.com/blog/how-recruiters-read-resumes)
+- How to Tailor Your Resume for Every Job
+- ATS Keyword Mistakes That Cost Interviews
+- How to Stop Sounding Generic on Your Resume
+- Tailored vs Generic Resume
+- How to Write Resume Bullet Points
+- Resume Matching with Job Description - Complete Guide
+- How Recruiters Read Resumes
 
 ---
 

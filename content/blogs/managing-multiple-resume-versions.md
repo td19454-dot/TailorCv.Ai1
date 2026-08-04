@@ -159,7 +159,7 @@ Why the resume version column matters:
 If Stripe invites you for an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), you need to know exactly which resume you sent.
 Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) references it.
 Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation depends on it.
-If a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) quotes something back at you, you need to know where it came from.
+If a recruiter quotes something back at you, you need to know where it came from.
 
 Use a simple Google Sheet or Notion database.
 Update it immediately when you apply - not later.
@@ -175,7 +175,7 @@ You need a smart set of base versions.
 Create one polished, [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) per role category you are applying for.
 - "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Backend" base version
 - "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026)" base version
-- "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)" base version
+- "data analyst" base version
 
 Spend real time on these.
 These are your 80% versions - strong enough to apply with minor tweaks.
@@ -264,9 +264,9 @@ Use the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proo
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### How many resume versions is too many?
@@ -283,19 +283,19 @@ Create separate versions for each role - even if the company is the same. Differ
 
 ### Should my resume versions have different ATS scores?
 
-Yes, and that is the point. Each version is tailored to a specific type of role or specific company - so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the [ATS score](https://thetailorcv.com/blog/ats-score-guide) for each version against its target job description. Additionally, consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) to ensure it resonates well with hiring managers. For more insights on managing your job search, check out [Build One Job Search System](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system).
+Yes, and that is the point. Each version is tailored to a specific type of role or specific company - so the keyword match scores will differ. Use [TailorCV](https://www.thetailorcv.com/solutions) to check the [ATS score](https://thetailorcv.com/blog/ats-score-guide) for each version against its target job description. Additionally, consider using [AI to tailor your resume](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) to ensure it resonates well with hiring managers. For more insights on managing your job search, check out Build One Job Search System.
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [Resume Customization Checklist](https://thetailorcv.com/blog/resume-customization-checklist)
-- [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
-- [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
-- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [How to Update Your Resume](https://thetailorcv.com/blog/how-to-update-your-resume)
-- [Resume Matching for Multiple Similar Jobs](https://thetailorcv.com/blog/resume-matching-for-multiple-jobs)
-- [How to Tailor Your Resume When Underqualified](https://thetailorcv.com/blog/resume-tailoring-underqualified)
+- Resume File Format Guide
+- Resume Matching Checklist
+- Tailored vs Generic Resume
+- ATS Score Guide
+- How to Update Your Resume
+- Resume Matching for Multiple Similar Jobs
+- How to Tailor Your Resume When Underqualified
 
 ---
 

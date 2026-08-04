@@ -260,13 +260,13 @@ No. Each application is independent. If you want to ensure your resume aligns we
 - [Resume Matching with No Experience](https://thetailorcv.com/blog/resume-matching-no-experience)
 - [How to Match Your Resume When Overqualified](https://thetailorcv.com/blog/overqualified-resume-match-job-description)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- How to Write Resume Bullet Points
+- How to Quantify Resume Achievements
+- Cover Letter Guide 2026
+- ATS Score Guide
+- Resume Keywords Guide
+- How to Explain Resume Gaps
+- Why Your Resume Gets No Responses
 
 ---
 

@@ -67,7 +67,7 @@ In the resumes we looked at, this was consistently the single largest gap betwee
 - Mirror the *exact* phrasing for anything you genuinely have experience with. If the posting says "stakeholder management," use that phrase - not just "worked with clients."
 - Do not stuff keywords that do not reflect real experience; that creates a different problem (see the nuance section below).
 - Paste both your resume and the job description into the [ATS score checker](https://thetailorcv.com/ats-analysis) to see exactly which terms are missing, and browse role-specific keyword lists in the [resume examples by job role](https://thetailorcv.com/resume-examples) library.
-- For a deeper walkthrough of how to extract the right terms from a posting without overdoing it, see the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and the [hidden keywords in job descriptions](https://thetailorcv.com/blog/hidden-keywords-in-job-description) post.
+- For a deeper walkthrough of how to extract the right terms from a posting without overdoing it, see the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and the hidden keywords in job descriptions post.
 
 ## 2. Formatting the ATS can't parse
 
@@ -178,9 +178,9 @@ None of this makes the four categories above less useful as a checklist - they l
 
 ## Make This Practical
 
-Do not guess whether your resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result against the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether your resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result against the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates). If you want a second data point on how closely score and callback rate track together, read [Resume Match Score and Callback Rate: A Data Study](https://thetailorcv.com/blog/resume-match-score-callback-rate-data-study).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template. If you want a second data point on how closely score and callback rate track together, read Resume Match Score and Callback Rate: A Data Study.
 
 ## FAQ
 

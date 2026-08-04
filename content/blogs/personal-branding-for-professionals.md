@@ -122,7 +122,7 @@ Beyond [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-searc
 - **Portfolio website** - Showcases your work (essential for designers, developers, writers). Read the [portfolio building guide](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 - **[GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) profile** - For developers, an active, well-organized [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) is part of your brand.
 - **Speaking and writing** - Conference talks, podcast appearances, guest articles.
-- **A consistent professional resume** - Keep it updated with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+- **A consistent professional resume** - Keep it updated with the TailorCV ATS score checker.
 
 ---
 
@@ -187,20 +187,20 @@ A great personal brand cannot compensate for a weak resume or profile. Get the f
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [Behavioral Interview Questions and Answers - Complete 2026 Guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Prepare for a Job Interview in 2026 - Complete Guide for Every Industry](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Career Change to Tech
+- How to Build a Professional Portfolio
+- How to Get Your First Tech Job
+- Freelancing vs Full-Time Employment
+- How to Decline a Job Offer Professionally
+- How to Prepare for Campus Placement
+- How to Quit Your Job Professionally
+- How to Use LinkedIn for Job Search
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- MBA Resume 2026 - Complete Guide with Examples
+- Behavioral Interview Questions and Answers - Complete 2026 Guide
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
+- How to Prepare for a Job Interview in 2026 - Complete Guide for Every Industry
 
 ## Make This Practical
 

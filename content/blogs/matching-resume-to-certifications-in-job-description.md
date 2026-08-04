@@ -186,13 +186,13 @@ Track which certifications repeatedly appear across job descriptions in your tar
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [How to List Certifications on Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
-- [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
-- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
-- [Resume Matching for Security-Clearance and Government-Contractor Job Descriptions](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- Best Free Online Certificates for Resume
+- Resume Tailoring for Underqualified Candidates
+- Job Description Analysis Checklist
+- Resume Matching for Security-Clearance and Government-Contractor Job Descriptions
+- Cover Letter Guide 2026
+- ATS Score Guide 2026
+- How to Explain Resume Gaps
 
 ---
 

@@ -171,19 +171,19 @@ If a company's culture makes balance impossible, individual habits can only do s
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Use LinkedIn for Job Search in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Networking Tips for Job Search in 2026 - Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- How to Get a Job With No Experience
+- How to Negotiate a Salary Offer
+- Virtual Interview Tips
+- Cover Letter Guide
+- Data Analyst vs Data Scientist
+- How to Build a Professional Portfolio
+- How to Decline a Job Offer Professionally
+- How to Get a Promotion
+- How to Quit Your Job Professionally
+- How to Use LinkedIn for Job Search in 2026 - Complete Guide
+- LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters
+- Networking Tips for Job Search in 2026 - Even If You Hate Networking
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
 
 ## Make This Practical
 
@@ -200,11 +200,11 @@ Use these internal guides to connect this topic with career planning and job-sea
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
+- How to Handle Job Rejection
+- Networking Tips for Job Search
+- Why Your Resume Gets No Responses
+- Remote Job Search Guide
+- Personal Branding for Professionals
 
 ## Conclusion
 Work-life balance in 2026 requires intentional boundaries, energy management, healthy habits, and sometimes choosing the right employer. It is not about working less for its own sake - it is about sustaining high performance and well-being over a long career.

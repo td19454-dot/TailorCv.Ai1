@@ -183,19 +183,19 @@ For entry-level tech roles, negotiating base salary up by 5-10% is very common a
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
-- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [How to Follow Up After a Job Interview in 2026 - What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- How to Ask for a Raise
+- How to Build a Professional Portfolio
+- How to Handle Job Rejection
+- How to Use LinkedIn for Job Search
+- How to Write a Cold Email to a Recruiter
+- LinkedIn Profile Optimization Guide
+- Networking Tips for Job Search
+- Cover Letter Guide
+- Freelancing vs Full-Time Employment
+- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
+- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
+- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
+- How to Follow Up After a Job Interview in 2026 - What to Send and When
 
 ## Make This Practical
 

@@ -178,13 +178,13 @@ Read the [resume proofreading checklist](https://thetailorcv.com/blog/resume-pro
 - [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Resume Red Flags](https://thetailorcv.com/blog/resume-red-flags)
+- How to Quantify Resume Achievements
+- Ideal Resume Length Guide
+- ATS Score Guide
+- Resume Proofreading Checklist
+- Career Change Resume Guide
+- How to List Certifications on a Resume
+- Resume Red Flags
 
 ---
 

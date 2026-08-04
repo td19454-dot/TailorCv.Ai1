@@ -164,23 +164,23 @@ In 2026, marketing managers are expected to be proficient with HubSpot, Salesfor
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Digital Marketing Resume](https://thetailorcv.com/blog/digital-marketing-resume-2026)
 - [Product Manager Resume](https://thetailorcv.com/blog/product-manager-resume-2026)
-- [Social Media Manager Resume](https://thetailorcv.com/blog/social-media-manager-resume-2026)
-- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
-- [Operations Manager Resume](https://thetailorcv.com/blog/operations-manager-resume-2026)
-- [Project Manager Resume](https://thetailorcv.com/blog/project-manager-resume-2026)
-- [Supply Chain Manager Resume](https://thetailorcv.com/blog/supply-chain-manager-resume-2026)
-- [Teacher Resume](https://thetailorcv.com/blog/teacher-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Financial Analyst Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/financial-analyst-resume-2026)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Match Your Resume to a Marketing Job Description in 2026](https://thetailorcv.com/blog/resume-matching-marketing)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- Social Media Manager Resume
+- Business Analyst Resume
+- Operations Manager Resume
+- Project Manager Resume
+- Supply Chain Manager Resume
+- Teacher Resume
+- Accountant Resume
+- Android Developer Resume
+- Backend Developer Resume
+- Financial Analyst Resume 2026 - Complete Guide with Examples
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
+- How to Match Your Resume to a Marketing Job Description in 2026
+- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

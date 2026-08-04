@@ -14,7 +14,7 @@ The HR round is often the first live conversation in a hiring process - and the 
 
 This guide covers the most common **HR round interview questions and answers** for 2026, with preparation strategies and [AI mock interview practice](https://thetailorcv.com/mock-interview).
 
-Review the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself). Ensure resume consistency with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Review the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself). Ensure resume consistency with the TailorCV ATS checker.
 
 ---
 
@@ -110,7 +110,7 @@ Always say yes. [Questions to ask guide](https://thetailorcv.com/blog/questions-
 4. **Prepare salary range** - researched, not guessed
 5. **Practice with AI** - [mock interview tool](https://thetailorcv.com/mock-interview)
 6. **Plan your outfit and setup** - [body language tips](https://thetailorcv.com/blog/interview-body-language-communication-tips)
-7. **Manage anxiety** - [interview nerves guide](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips)
+7. **Manage anxiety** - interview nerves guide
 
 For [phone HR screens](https://thetailorcv.com/blog/phone-interview-tips), have your notes ready but do not read verbatim.
 

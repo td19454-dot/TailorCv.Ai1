@@ -184,20 +184,20 @@ A headline that does not match the target job creates an immediate mismatch impr
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
-- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [How to Write a Two Weeks Notice in 2026 - Templates and Examples](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
+- How to List Education on a Resume
+- How to Quantify Resume Achievements
+- First Time Resume With No Experience: Complete Guide for Freshers & College Students
+- Top Skills to Add to Your Resume
+- Soft Skills for Resume
+- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
+- What Not to Put on a Resume
+- How to Explain Resume Gaps
+- Ideal Resume Length
+- How to Write a Resume with AI in 2026 - Smart Use Without the Risks
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
+- MBA Resume 2026 - Complete Guide with Examples
+- How to Write a Two Weeks Notice in 2026 - Templates and Examples
 
 ## Make This Practical
 

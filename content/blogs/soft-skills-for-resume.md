@@ -176,21 +176,21 @@ If you have real achievements, they demonstrate [soft skills](https://thetailorc
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [20 Common Interview Mistakes to Avoid in 2026](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [How to Answer "Tell Me About Yourself" in 2026 - With Examples](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
+- What Not to Put on a Resume
+- 200 Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How to Write a Resume Summary
+- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
+- How to Explain Resume Gaps
+- Ideal Resume Length
+- MBA Resume
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- 20 Common Interview Mistakes to Avoid in 2026
+- How to Answer "Tell Me About Yourself" in 2026 - With Examples
 
 ## Make This Practical
 
@@ -201,7 +201,7 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) matter - but on a resume, they must be shown, not listed. Replace every "excellent communicator" with a specific example of communication that produced a result. Your achievements are the proof of your [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume).
 
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify keyword matching, read the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [quantify achievements guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to make your evidence-based bullets stronger, and check [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for what to remove.
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify keyword matching, read the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [quantify achievements guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) to make your evidence-based bullets stronger, and check what not to put on a resume for what to remove.
 
 ## Frequently Asked Questions
 

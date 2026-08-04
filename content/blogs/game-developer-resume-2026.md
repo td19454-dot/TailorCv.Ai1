@@ -167,22 +167,22 @@ On shipped titles, specify exactly what systems you built, not just "worked on t
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
-- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
-- [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
-- [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
-- [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
-- [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
-- [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
-- [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
-- [Go (Golang) Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/golang-developer-resume-2026)
-- [iOS Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/ios-developer-resume-2026)
-- [Java Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/java-developer-resume-2026)
+- Civil Engineer Resume
+- Cloud Engineer Resume
+- Cybersecurity Engineer Resume
+- Data Engineer Resume
+- Electrical Engineer Resume
+- Embedded Systems Engineer Resume
+- Flutter Developer Resume
+- Frontend Developer Resume
+- Full Stack Developer Resume
+- Go (Golang) Developer Resume 2026 - Complete Guide with Examples
+- iOS Developer Resume 2026 - Complete Guide with Examples
+- Java Developer Resume 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

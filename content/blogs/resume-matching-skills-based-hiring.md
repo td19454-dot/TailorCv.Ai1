@@ -223,13 +223,13 @@ Use the [TailorCV ATS score checker](/solutions) to see how well your resume dem
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Match Your Resume to an AI-Generated Job Description](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions)
-- [Highest Paying Jobs Without a Degree 2026](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026)
-- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [Projects in Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
-- [Skills to Add to Resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- Highest Paying Jobs Without a Degree 2026
+- Chronological vs Functional Resume
+- Projects in Resume
+- Job Description Analysis Checklist
+- Skills to Add to Resume 2026
+- ATS Score Guide 2026
+- Developer Portfolio Project Ideas
 
 ---
 

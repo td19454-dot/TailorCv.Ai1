@@ -16,7 +16,7 @@ Language ability is also a valuable [keyword](https://thetailorcv.com/blog/how-t
 
 ## Why language skills matter more than ever
 
-Remote and international hiring has made multilingual candidates more valuable across nearly every field. For [customer service](https://thetailorcv.com/blog/customer-service-resume-2026), sales, hospitality, healthcare, and any company with global customers, a second or third language can be the deciding factor between two otherwise equal candidates. When a [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) names a language as required or preferred, it becomes a top-priority [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) — put it where both the [ATS](https://thetailorcv.com/blog/ats-score-guide) and the recruiter will see it immediately.
+Remote and international hiring has made multilingual candidates more valuable across nearly every field. For [customer service](https://thetailorcv.com/blog/customer-service-resume-2026), sales, hospitality, healthcare, and any company with global customers, a second or third language can be the deciding factor between two otherwise equal candidates. When a [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) names a language as required or preferred, it becomes a top-priority [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) — put it where both the ATS and the recruiter will see it immediately.
 
 ## Use recognized proficiency levels
 
@@ -44,7 +44,7 @@ Never overstate your level. Many roles that value languages will test them, eith
 
 ## Connect languages to impact
 
-Where a language directly helped you deliver results, show it in your [experience bullets](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), not just a list. Use the [bullet point formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) with a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume) and a [quantified result](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume):
+Where a language directly helped you deliver results, show it in your [experience bullets](https://thetailorcv.com/blog/how-to-write-resume-bullet-points), not just a list. Use the [bullet point formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) with a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume) and a quantified result:
 
 - "Supported Spanish-speaking clients, improving retention in that segment 15%."
 - "Localized marketing content for three European markets, growing regional signups 20%."
@@ -54,7 +54,7 @@ This turns a passive skill into evidence of value — exactly the kind of specif
 
 ## Tailor languages to the market
 
-If a role serves a specific market, foreground the relevant language and connect it to the audience. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the language that matters to that employer is prominent — the [resume optimizer](https://www.thetailorcv.com/solutions) helps you align your [resume](https://www.thetailorcv.com/modify-cv) to the posting's requirements. If you're applying internationally, the [international resume tailoring guide](https://thetailorcv.com/blog/international-resume-tailoring-guide) covers regional expectations, and [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) explains the light-touch approach.
+If a role serves a specific market, foreground the relevant language and connect it to the audience. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) so the language that matters to that employer is prominent — the [resume optimizer](https://www.thetailorcv.com/solutions) helps you align your [resume](https://www.thetailorcv.com/modify-cv) to the posting's requirements. If you're applying internationally, the international resume tailoring guide covers regional expectations, and how much to change your resume for every job explains the light-touch approach.
 
 ### Your resume after optimization
 
@@ -65,11 +65,11 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 
 ## Which languages are most in demand
 
-While any additional language helps, some are especially valuable depending on your industry and region. Spanish is a major asset across the Americas and in [US roles](https://thetailorcv.com/blog/us-resume-format-guide-2026); Mandarin, Japanese, and Korean open doors in tech and trade; Arabic, French, and German are prized in international business, NGOs, and government. If you're targeting a specific country, research what's valued there — the [how to get a job in Canada guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada), [how to get a job in the USA guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa), and [how to get a job in Singapore guide](https://thetailorcv.com/blog/how-to-get-a-job-in-singapore) all touch on local expectations. Whatever languages you list, align them to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and confirm the match with the [resume optimizer](https://www.thetailorcv.com/solutions).
+While any additional language helps, some are especially valuable depending on your industry and region. Spanish is a major asset across the Americas and in [US roles](https://thetailorcv.com/blog/us-resume-format-guide-2026); Mandarin, Japanese, and Korean open doors in tech and trade; Arabic, French, and German are prized in international business, NGOs, and government. If you're targeting a specific country, research what's valued there — the [how to get a job in Canada guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada), [how to get a job in the USA guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa), and how to get a job in Singapore guide all touch on local expectations. Whatever languages you list, align them to the job description and confirm the match with the resume optimizer.
 
 ## How to strengthen and prove your language skills
 
-If a role weights languages heavily, back up your claim with evidence. Certifications — DELE for Spanish, JLPT for Japanese, DELF/DALF for French, Goethe for German, HSK for Mandarin — are concrete proof and [ATS](https://thetailorcv.com/blog/ats-score-guide) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); format them with [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Study-abroad experience, roles where you used the language daily, or content you've produced in it all reinforce the skill. In interviews, be ready to switch into the language naturally — practice staying calm under that pressure with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep), and review [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) if being tested makes you nervous.
+If a role weights languages heavily, back up your claim with evidence. Certifications — DELE for Spanish, JLPT for Japanese, DELF/DALF for French, Goethe for German, HSK for Mandarin — are concrete proof and [ATS](https://thetailorcv.com/blog/ats-score-guide) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description); format them with [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Study-abroad experience, roles where you used the language daily, or content you've produced in it all reinforce the skill. In interviews, be ready to switch into the language naturally — practice staying calm under that pressure with a free AI mock interview and the interview prep tool, and review interview anxiety tips if being tested makes you nervous.
 
 ## Common mistakes to avoid
 

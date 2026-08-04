@@ -227,9 +227,9 @@ Before applying to any role, do this 3-minute check:
 1. Open your [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
 2. Open your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) in another tab
 3. Check: **Headline** - does [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) reflect the same role focus as your resume?
-4. Check: **Summary** - does [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) tell a consistent story?
+4. Check: **Summary** - does LinkedIn tell a consistent story?
 5. Check: **Most recent role** - do the title and dates match?
-6. Check: **Skills** - are the top skills from your resume visible on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)?
+6. Check: **Skills** - are the top skills from your resume visible on LinkedIn?
 
 If something is inconsistent, fix it before you apply.
 
@@ -258,9 +258,9 @@ For Easy Apply applications specifically, read [resume optimization for LinkedIn
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Should I mention I am open to work on LinkedIn while applying for specific roles?
@@ -286,13 +286,13 @@ Yes - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [Resume Optimization for LinkedIn Easy Apply](https://thetailorcv.com/blog/resume-optimization-linkedin-easy-apply)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
-- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- How to Tailor Your Resume for Every Job
+- Personal Branding for Professionals
+- How to Write a Resume Summary
+- Managing Multiple Resume Versions
+- Resume Matching with Job Description - Complete Guide
+- How to Build a Professional Portfolio
+- How to Write a Cold Email to a Recruiter
 
 ---
 

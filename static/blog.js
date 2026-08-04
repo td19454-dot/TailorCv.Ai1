@@ -960,12 +960,14 @@
     if (heading.closest(INSIDE) || heading.closest(".callout-box")) return;
     const nodes = [];
     let next = heading.nextElementSibling;
-    // stop at the next heading of the same or higher rank
-    const rank = Number(heading.tagName[1]);
     while (next) {
-      const t = next.tagName;
-      if (/^H[1-6]$/.test(t) && Number(t[1]) <= rank) break;
+      // Stop at ANY heading. Continuing past a lower-rank one swallowed the
+      // image sections ("### What the finished letter looks like") that sit
+      // under a "## Common Mistakes" card.
+      if (/^H[1-6]$/.test(next.tagName)) break;
       if (next.matches && next.matches(INSIDE)) break;
+      // never absorb a screenshot panel into a text callout
+      if (next.tagName === "P" && next.querySelector("img")) break;
       nodes.push(next);
       next = next.nextElementSibling;
     }
@@ -1051,10 +1053,24 @@ const tcxRunPairs = () => {
     weak: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#d97706"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>',
   };
 
+  const BOXED = ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, " +
+                ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid";
   const take = (heading) => {
     const nodes = [];
     let n = heading.nextElementSibling;
-    while (n && !/^H[1-6]$/.test(n.tagName)) { nodes.push(n); n = n.nextElementSibling; }
+    let seenList = false;
+    while (n && !/^H[1-6]$/.test(n.tagName)) {
+      // Stop at anything an earlier enhancer already boxed up - otherwise the
+      // FAQ, the template gallery or a screenshot ends up inside a Don't column.
+      if (n.matches && n.matches(BOXED)) break;
+      if (n.tagName === "P" && n.querySelector("img")) break;
+      // Prose AFTER the list is the section's sign-off, not another item -
+      // it was being pulled into the column and unbalancing the pair.
+      if (seenList && n.tagName === "P") break;
+      if (n.tagName === "UL" || n.tagName === "OL") seenList = true;
+      nodes.push(n);
+      n = n.nextElementSibling;
+    }
     return nodes;
   };
 

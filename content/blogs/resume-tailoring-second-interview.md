@@ -273,13 +273,13 @@ Avoid referencing things the first interviewer told you in confidence or that se
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [How to Prepare for a Job Interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [How to Research a Company Before Your Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- Behavioral Interview Questions and Answers
+- How to Research a Company Before Your Interview
+- How to Tailor Your Resume for Every Job
+- Common Interview Mistakes to Avoid
+- How to Negotiate a Salary Offer
+- How to Handle Job Rejection
+- Resume Matching with Job Description - Complete Guide
 
 ---
 

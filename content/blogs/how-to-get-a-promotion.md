@@ -171,20 +171,20 @@ If you cannot list your specific quantified achievements, you cannot make a stro
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
-- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
-- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Work-Life Balance Tips for Professionals](https://thetailorcv.com/blog/work-life-balance-tips)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [How to Handle Job Rejection in 2026 - Practical Guide for Job Seekers](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [How to Quit Your Job Professionally in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Write a Resume Headline in 2026 - With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- How to Get Your First Tech Job
+- Career Change to Tech
+- Freelancing vs Full-Time Employment
+- How to Get a Job With No Experience
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Work-Life Balance Tips for Professionals
+- How to Build a Professional Portfolio
+- How to Decline a Job Offer Professionally
+- How to Explain Resume Gaps
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- How to Handle Job Rejection in 2026 - Practical Guide for Job Seekers
+- How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work
+- How to Quit Your Job Professionally in 2026 - Complete Guide
+- How to Write a Resume Headline in 2026 - With 30 Examples
 
 ## Make This Practical
 

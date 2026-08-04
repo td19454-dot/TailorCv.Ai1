@@ -200,13 +200,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide)
-- [Matching Your Resume to a Legal Job Description](https://thetailorcv.com/blog/resume-matching-legal-jobs)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Volunteer Work on Resume](https://thetailorcv.com/blog/volunteer-work-on-resume)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [How to Tailor Your Resume for Every Job Application](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- Resume Keywords Guide 2026
+- Matching Your Resume to a Legal Job Description
+- ATS Resume Formatting Mistakes
+- Volunteer Work on Resume
+- Cover Letter Guide 2026
+- ATS Score Guide 2026
+- How to Tailor Your Resume for Every Job Application
 
 ---
 

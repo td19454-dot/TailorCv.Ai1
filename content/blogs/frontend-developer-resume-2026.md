@@ -14,7 +14,7 @@ A [frontend developer](https://thetailorcv.com/blog/frontend-developer-resume-20
 
 The frontend job market is highly competitive because JavaScript is the most popular programming language and most developers claim frontend skills. What distinguishes a strong candidate is specificity - [real performance metrics](https://thetailorcv.com/blog/prompt-engineer-resume-2026), [real user bases](https://thetailorcv.com/blog/job-description-analysis-checklist), real component systems, and real business impact.
 
-Start by testing your current resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Browse [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and use the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to sharpen your bullet points. If you are building toward a full stack role, also read the [full stack developer resume guide](https://thetailorcv.com/blog/full-stack-developer-resume-2026).
+Start by testing your current resume against the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Browse [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and use the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) to sharpen your bullet points. If you are building toward a full stack role, also read the full stack developer resume guide.
 
 ---
 
@@ -189,20 +189,20 @@ In 2026, React and TypeScript are standard expectations. If your resume only sho
 - [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
 - [React Developer Resume](https://thetailorcv.com/blog/react-developer-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Go (Golang) Developer Resume](https://thetailorcv.com/blog/golang-developer-resume-2026)
-- [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
-- [Java Developer Resume](https://thetailorcv.com/blog/java-developer-resume-2026)
-- [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
-- [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Backend Developer Resume
+- Flutter Developer Resume
+- Game Developer Resume
+- Go (Golang) Developer Resume
+- iOS Developer Resume
+- Java Developer Resume
+- Python Developer Resume
+- Technical Writer Resume
+- Accountant Resume
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

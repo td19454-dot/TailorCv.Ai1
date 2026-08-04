@@ -181,13 +181,13 @@ Use the [TailorCV ATS score checker](/solutions) to get a match score based on t
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [Matching Your Resume to the Soft Skills Buried in a Job Description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [How Much to Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [Skills-Based Hiring: Matching When JDs List Skills, Not Titles](https://thetailorcv.com/blog/resume-matching-skills-based-hiring)
-- [How AI Resume Matching Works](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Resume Trends 2026](https://thetailorcv.com/blog/resume-trends-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
+- Job Description Keyword Extraction Guide
+- How Much to Change Your Resume for Every Job
+- Skills-Based Hiring: Matching When JDs List Skills, Not Titles
+- How AI Resume Matching Works
+- Resume Trends 2026
+- ATS Score Guide 2026
+- Job Description Analysis Checklist
 
 ---
 

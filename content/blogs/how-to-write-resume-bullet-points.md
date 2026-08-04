@@ -188,11 +188,11 @@ ATS systems scan your bullet points for keyword matches. Tailor your verb choice
 - [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
-- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- The Anatomy of a Perfect Resume
+- How Recruiters Read Resumes in Under 10 Seconds
+- Resume Keywords Guide
+- ATS Score Guide
+- Resume Proofreading Checklist
 
 ---
 

@@ -12,7 +12,7 @@ keywords: whiteboard interview, live coding interview, technical whiteboard inte
 
 Whiteboard interviews — solving a problem live in front of interviewers — test how you think, not just whether you land the perfect answer. Many strong candidates freeze here, not because they lack the skill, but because they lack a process for performing under pressure. The good news: whiteboarding is a learnable skill, and a clear method plus practice will get you through. This guide gives you both.
 
-Whiteboard rounds usually come after you've passed a screen and possibly a [take-home assignment](https://thetailorcv.com/blog/take-home-assignment-interview-tips), so you've already proven baseline competence. Now you're proving communication and composure. Prepare with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), the [interview prep tool](https://www.thetailorcv.com/interview-prep), and the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide).
+Whiteboard rounds usually come after you've passed a screen and possibly a [take-home assignment](https://thetailorcv.com/blog/take-home-assignment-interview-tips), so you've already proven baseline competence. Now you're proving communication and composure. Prepare with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), the [interview prep tool](https://www.thetailorcv.com/interview-prep), and the technical interview guide.
 
 ## What interviewers are actually evaluating
 

@@ -49,7 +49,7 @@ Professionalism in the subject sets the tone for the whole application, the same
 
 ## Get the email body right too
 
-The subject gets you opened; a short, tailored body does the rest. Keep it to a few lines: a warm greeting, one or two sentences on why you're a strong fit for *this* role, a mention of your attached [resume](https://www.thetailorcv.com/modify-cv) (and [cover letter](https://www.thetailorcv.com/cover-letter) if included), and a polite close. Mirror the priorities in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), and don't paste your whole [resume](https://www.thetailorcv.com/modify-cv) into the body. For cold outreach to a recruiter you don't know, the [cold email to a recruiter guide](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) goes deeper.
+The subject gets you opened; a short, tailored body does the rest. Keep it to a few lines: a warm greeting, one or two sentences on why you're a strong fit for *this* role, a mention of your attached [resume](https://www.thetailorcv.com/modify-cv) (and [cover letter](https://www.thetailorcv.com/cover-letter) if included), and a polite close. Mirror the priorities in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist), and don't paste your whole resume into the body. For cold outreach to a recruiter you don't know, the cold email to a recruiter guide goes deeper.
 
 
 
@@ -66,7 +66,7 @@ A few practical rules for the attachment itself:
 
 ## When and who to email
 
-Timing and targeting help. Applying early to a fresh posting improves your odds, as [how to apply to jobs faster](https://thetailorcv.com/blog/how-to-apply-to-jobs-faster) explains. Where possible, address a real person rather than a generic inbox — a little [company research](https://thetailorcv.com/blog/how-to-research-company-before-interview) or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) digging can surface the hiring manager or recruiter. Personalized beats generic every time. And if you don't hear back, a brief, polite [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) after a week is appropriate.
+Timing and targeting help. Applying early to a fresh posting improves your odds, as [how to apply to jobs faster](https://thetailorcv.com/blog/how-to-apply-to-jobs-faster) explains. Where possible, address a real person rather than a generic inbox — a little [company research](https://thetailorcv.com/blog/how-to-research-company-before-interview) or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) digging can surface the hiring manager or recruiter. Personalized beats generic every time. And if you don't hear back, a brief, polite follow-up after a week is appropriate.
 
 ## Application email checklist
 

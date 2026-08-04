@@ -14,7 +14,7 @@ Most resume advice tells you what to add. This guide tells you what to remove. K
 
 If your resume has any of the following 25 things, remove them before your next application.
 
-Start with the right foundation. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to see if your resume is well-matched to the job description, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture. For the opposite view - what to add - read the [guide to best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+Start with the right foundation. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to see if your resume is well-matched to the job description, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture. For the opposite view - what to add - read the guide to best action verbs for resume and how to quantify resume achievements.
 
 ---
 
@@ -184,19 +184,19 @@ Before sending your next application:
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- 200 Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How to Write a Resume Summary
+- Top Skills to Add to Your Resume
+- 20 Common Interview Mistakes to Avoid
+- How to Explain Resume Gaps
+- Ideal Resume Length
+- First Time Resume With No Experience: Complete Guide for Freshers & College Students
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
 
 ## Make This Practical
 
@@ -207,7 +207,7 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 ## Conclusion
 What you remove from your resume is as important as what you add. A clean, focused resume that removes noise lets your strongest achievements stand out.
 
-Once you have removed the wrong things, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and then strengthen your bullets with the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and [achievement quantification guide](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+Once you have removed the wrong things, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your keywords match the job description. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and then strengthen your bullets with the [action verbs guide](https://thetailorcv.com/blog/best-action-verbs-for-resume) and achievement quantification guide.
 
 ## Frequently Asked Questions
 

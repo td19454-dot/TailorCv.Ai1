@@ -150,23 +150,23 @@ Markdown, Git, OpenAPI, Docusaurus - modern technical writing is tool-driven. Li
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Digital Marketing Resume](https://thetailorcv.com/blog/digital-marketing-resume-2026)
-- [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
-- [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
-- [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Go (Golang) Developer Resume](https://thetailorcv.com/blog/golang-developer-resume-2026)
-- [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
-- [Java Developer Resume](https://thetailorcv.com/blog/java-developer-resume-2026)
-- [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to List Certifications on a Resume in 2026 - With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to Write a Resume Headline in 2026 - With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- Digital Marketing Resume
+- Flutter Developer Resume
+- Frontend Developer Resume
+- Full Stack Developer Resume
+- Game Developer Resume
+- Go (Golang) Developer Resume
+- iOS Developer Resume
+- Java Developer Resume
+- Python Developer Resume
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
+- How to List Certifications on a Resume in 2026 - With Examples
+- How to Write a Resume Headline in 2026 - With 30 Examples
+- How to Write a Resume Summary in 2026 - With 20 Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

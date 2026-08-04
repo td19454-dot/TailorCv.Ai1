@@ -198,13 +198,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Customer Service Resume 2026](https://thetailorcv.com/blog/customer-service-resume-2026)
-- [Matching Your Resume to a Real Estate Job Description](https://thetailorcv.com/blog/resume-matching-real-estate)
-- [Matching Your Resume to an Insurance Industry Job Description](https://thetailorcv.com/blog/resume-matching-insurance-jobs)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [AI Mock Interview Complete Guide 2026](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
+- Resume Keywords Guide 2026
+- ATS Resume Formatting Mistakes
+- Customer Service Resume 2026
+- Matching Your Resume to a Real Estate Job Description
+- Matching Your Resume to an Insurance Industry Job Description
+- ATS Score Guide 2026
+- AI Mock Interview Complete Guide 2026
 
 ---
 
