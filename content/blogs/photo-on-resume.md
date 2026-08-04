@@ -81,23 +81,11 @@ If applying to an international company with offices in photo-required countries
 
 If you are in a country or industry where a photo is expected:
 
-**Do:**
-- Use a professional headshot (head and upper shoulders, not a casual selfie)
-- Wear professional clothing appropriate to the industry
-- Use a neutral, clean background
-- Smile naturally - approachable but professional
-- Use a recent photo (within 1-2 years)
-- Use a square or portrait format, small enough not to dominate the page
-
-**Don't:**
-- Use a casual holiday or party photo
-- Include a photo with other people in the background
-- Use a blurry or low-resolution image
-- Use a photo older than 3-4 years
-
-**Technical:**
-- Embed the photo as a small element in the top corner (top right is common in Europe)
-- Keep file size small to avoid bloating the document
+| Option | What to know |
+|---|---|
+| **Do:** | Use a professional headshot (head and upper shoulders, not a casual selfie) · Wear professional clothing appropriate to the industry · Use a neutral, clean background · Smile naturally - approachable but professional · Use a recent photo (within 1-2 years) · Use a square or portrait format, small enough not to dominate the page |
+| **Don't:** | Use a casual holiday or party photo · Include a photo with other people in the background · Use a blurry or low-resolution image · Use a photo older than 3-4 years |
+| **Technical:** | Embed the photo as a small element in the top corner (top right is common in Europe) · Keep file size small to avoid bloating the document |
 
 ---
 

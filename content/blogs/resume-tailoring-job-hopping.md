@@ -45,23 +45,11 @@ This guide shows you how to get to the second impression.
 
 First, let us calibrate what is actually a problem.
 
-**Rarely a problem:**
-- Roles under 3 years in the tech industry (this is the norm)
-- Contract roles or project-based work (see [resume tailoring for freelance and contract roles](https://thetailorcv.com/blog/resume-tailoring-freelance-contract))
-- Any role that was a layoff (documented)
-- One short role in an otherwise stable career
-- Moves that show clear upward progression
-
-**Sometimes a problem:**
-- Two or more roles under 12 months in a row
-- Multiple lateral moves with no visible growth narrative
-- A pattern of leaving within weeks (6 months or less)
-- Short stints at companies that do not overlap into a clear story
-
-**More likely a problem:**
-- 5+ jobs in 3 years with no explanation
-- Short stints at the same type of role without progression
-- Gaps between short stints that add up
+| Option | What to know |
+|---|---|
+| **Rarely a problem:** | Roles under 3 years in the tech industry (this is the norm) · Contract roles or project-based work (see [resume tailoring for freelance and contract roles](https://thetailorcv.com/blog/resume-tailoring-freelance-contract)) · Any role that was a layoff (documented) · One short role in an otherwise stable career · Moves that show clear upward progression |
+| **Sometimes a problem:** | Two or more roles under 12 months in a row · Multiple lateral moves with no visible growth narrative · A pattern of leaving within weeks (6 months or less) · Short stints at companies that do not overlap into a clear story |
+| **More likely a problem:** | 5+ jobs in 3 years with no explanation · Short stints at the same type of role without progression · Gaps between short stints that add up |
 
 Even in the worst case, there is almost always a presentable version of the story.
 

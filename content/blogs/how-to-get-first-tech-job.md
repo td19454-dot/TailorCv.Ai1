@@ -57,22 +57,11 @@ What makes a strong project:
 
 ### Strong Project Ideas by Track
 
-**Backend/Full Stack:**
-- Job board with authentication, search, and application tracking
-- REST API for task or project management
-- E-commerce backend with payment integration
-- URL shortener with analytics dashboard
-
-**Data Science/ML:**
-- Churn prediction model on real dataset
-- Sentiment analysis on product reviews
-- Recommendation engine for movies or music
-- Forecasting model with dashboard
-
-**Data Analytics:**
-- Sales performance dashboard in Power BI or Tableau
-- Customer segmentation analysis
-- Financial expense tracker with charts
+| Option | What to know |
+|---|---|
+| **Backend/Full Stack:** | Job board with authentication, search, and application tracking · REST API for task or project management · E-commerce backend with payment integration · URL shortener with analytics dashboard |
+| **Data Science/ML:** | Churn prediction model on real dataset · Sentiment analysis on product reviews · Recommendation engine for movies or music · Forecasting model with dashboard |
+| **Data Analytics:** | Sales performance dashboard in Power BI or Tableau · Customer segmentation analysis · Financial expense tracker with charts |
 
 **[DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026)/Cloud:**
 - Multi-environment AWS infrastructure with Terraform
