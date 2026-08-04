@@ -106,6 +106,7 @@ You have the experience.
 But you describe them in different words than the JD uses.
 
 **Common mismatches:**
+
 | Your Language | JD Language | Fix |
 |---|---|---|
 | "client management" | "customer success" | Use "customer success" |

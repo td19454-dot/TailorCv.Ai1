@@ -133,6 +133,7 @@ To effectively utilize the STAR method in interviews, you need to develop well-s
 2. **Select Relevant Experiences**: Choose past experiences that showcase these competencies. Aim for a mix of professional, academic, and volunteer experiences to show versatility.
 
 3. **Outline Your STAR Components**:
+
 | Step | What to do |
 |---|---|
 | **Situation** | Start with a brief context. Who was involved? What was the setting? |
@@ -181,6 +182,7 @@ By using this checklist, you can ensure that you are thoroughly prepared to effe
 Practicing with hypothetical scenarios can help you refine your STAR responses. Here are a few short scenarios to consider:
 
 1. **Scenario**: You had a conflict with a coworker over project priorities.
+
 | Question | What they are checking |
 |---|---|
 | **Situation** | Describe the workplace environment and the project |

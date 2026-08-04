@@ -22,6 +22,7 @@ keywords: business analyst portfolio, ba portfolio website, requirements documen
 A business analyst's value is in translation - turning a vague business problem into requirements a technical team can build. That is hard to show in resume bullets but easy to show in a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real artifacts. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **A requirements document** | a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs |

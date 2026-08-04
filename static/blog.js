@@ -197,8 +197,12 @@
       // like "8-Week Prep Plan" or "30-Day Reset" were read as "Step 8" and
       // lost their leading number to the badge.
       const STEP = /^\s*(?:Step\s+)?(\d+)\s*(?::|\.|\)|\s+[-\u2013\u2014]\s+)\s*/i;
-      const match = (h.textContent || "").trim().match(STEP);
-      if (!match || h.closest(".faq-box")) return;
+      const text = (h.textContent || "").trim();
+      const match = text.match(STEP);
+      // A numbered question is an FAQ entry, not a step. The FAQ box is built
+      // later, so closest('.faq-box') is still null at this point and the
+      // questions were being turned into blue step cards.
+      if (!match || h.closest(".faq-box") || text.endsWith("?")) return;
 
       for (const node of h.childNodes) {
         if (node.nodeType === Node.TEXT_NODE && /\S/.test(node.textContent || "")) {

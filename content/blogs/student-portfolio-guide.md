@@ -119,6 +119,7 @@ Creating a student portfolio involves making strategic choices. Here are some do
 - **Do Use Analytics**: If your portfolio is online, use analytics tools to understand viewer engagement and adjust accordingly.
 
 ### Don'ts:
+
 | Skill | Why it matters |
 |---|---|
 | **Don’t Use Generic Templates** | Avoid using overly common templates that may make your portfolio blend in with others |

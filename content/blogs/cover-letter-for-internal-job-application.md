@@ -191,6 +191,7 @@ Creating an effective internal cover letter involves knowing what to do—and wh
 - **Do Keep It Concise**: Aim for a one-page cover letter that gets straight to the point.
 
 ### Don'ts
+
 | Step | What to do |
 |---|---|
 | **Don’t Be Overly Familiar** | Maintain professionalism and avoid being too casual, even if you know the team well |

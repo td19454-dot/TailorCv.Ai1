@@ -22,6 +22,7 @@ keywords: mobile developer portfolio, ios developer portfolio, android developer
 Mobile development is one of the few disciplines where you can point a recruiter directly to a live app on the App Store or Google Play - use that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) ties your published apps, code, and store metrics together in one place. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **2-4 published apps** | App Store/Google Play links, screenshots, and a short description of your role on each |
@@ -64,6 +65,7 @@ One of the best ways to showcase your skills as a mobile app developer is throug
 1. **Select Projects Wisely**: Choose projects that highlight a range of skills. Focus on those that had significant challenges or required innovative solutions. If you have multiple projects, consider selecting a mix of personal, freelance, and professional work.
 
 2. **Structure Your Case Study**:
+
 | Section | What goes in it |
 |---|---|
 | **Project Overview** | Briefly describe the project, including its purpose and target audience |

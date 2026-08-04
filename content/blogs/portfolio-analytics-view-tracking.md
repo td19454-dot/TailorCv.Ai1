@@ -22,6 +22,7 @@ keywords: portfolio analytics, portfolio view tracking, portfolio website traffi
 A resume gives you no feedback after you hit send. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with view tracking tells you something a resume never can: whether anyone is actually looking at your work, and when. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 
 ## Why Portfolio Analytics Matter in a Job Search
+
 | Reason | What it gets you |
 |---|---|
 | **Confirmation your link works** | if an application says "portfolio attached" and you see zero views a week later, something is broken - a dead link, a typo, or a spam-filtered email |

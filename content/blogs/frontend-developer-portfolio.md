@@ -114,6 +114,7 @@ When building your frontend developer portfolio, be wary of these common pitfall
 - **Do Add a Call to Action**: Encourage potential employers or clients to contact you with a [clear call to action](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ### Don'ts
+
 | Check | What to look for |
 |---|---|
 | **Don’t Use Stock Photos** | Authenticity is key. Use your own images or visuals that reflect your personality and work |

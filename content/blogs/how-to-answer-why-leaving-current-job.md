@@ -139,6 +139,7 @@ To help you formulate a strong response, consider this handy do's and don'ts lis
 - **Do Tailor Your Answer**: Customize your response based on the job you’re applying for to show alignment with the company’s values and goals.
 
 ### Don'ts
+
 | Tool | What it does |
 |---|---|
 | **Don’t Badmouth Your Current Job** | Keep your answer professional and avoid personal grievances |

@@ -78,6 +78,7 @@ Overcommitment is a leading cause of poor balance. Politely decline or renegotia
 Remote work offers flexibility but creates specific balance challenges:
 
 - **Always-on pressure**: Set notification boundaries and clear hours
+
 | Mistake | Why it costs you |
 |---|---|
 | **No separation** | Create physical and ritual boundaries |

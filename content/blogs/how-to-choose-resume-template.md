@@ -57,6 +57,7 @@ The template must:
 Test any template you use by running the exported PDF through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
 ### 2. Correct Structure for Your Experience Level
+
 | Section | What goes in it |
 |---|---|
 | **No experience / fresher** | Template should lead with Education and Projects, not experience. Read [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience) |

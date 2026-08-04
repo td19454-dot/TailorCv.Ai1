@@ -87,6 +87,7 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 
 
 ### Do's
+
 | What | Details |
 |---|---|
 | **Keep It Simple** | A clean, straightforward design helps visitors focus on your content |

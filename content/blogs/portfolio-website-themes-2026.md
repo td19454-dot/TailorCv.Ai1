@@ -22,6 +22,7 @@ keywords: portfolio website themes, portfolio design 2026, developer portfolio t
 The theme you choose for your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) sets expectations before a recruiter reads a single word. A cluttered, generic template signals low effort; the right theme for your field signals that you understand your audience. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026).
 
 ## What Makes a Portfolio Theme "Good" in 2026
+
 | Rule | What it means |
 |---|---|
 | **Fast load time** | recruiters give a portfolio seconds, not minutes, before deciding to keep scrolling |
@@ -120,6 +121,7 @@ You upload the resume you already have and the sections fill themselves in - bas
 - **Do Keep Navigation Simple**: Ensure users can easily find what they are looking for.
 
 ### Don'ts
+
 | What | Details |
 |---|---|
 | **Don’t Overload with Text** | Limit lengthy descriptions; let your work speak for itself |

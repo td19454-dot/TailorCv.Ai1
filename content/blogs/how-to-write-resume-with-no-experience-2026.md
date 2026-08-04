@@ -112,6 +112,7 @@ If your [projects section](https://thetailorcv.com/blog/how-to-add-projects-in-r
 
 
 - **Course capstones and group projects** — treat the best one like a job.
+
 | What | Details |
 |---|---|
 | **Hackathons or competitions** | even an unfinished entry shows initiative |
