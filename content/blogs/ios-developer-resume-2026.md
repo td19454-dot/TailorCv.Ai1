@@ -12,7 +12,7 @@ keywords: iOS developer resume, iOS resume 2026, Swift resume, SwiftUI resume, X
 
 An iOS developer [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) in 2026 needs to show Swift proficiency, modern Apple platform patterns, App Store shipping experience, and the ability to build apps that users actually love. SwiftUI is increasingly the expected standard alongside UIKit, and employers in 2026 want engineers who can navigate both.
 
-Before applying, run your [resume](https://thetailorcv.com/blog/job-description-analysis-checklist) through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). If you are also considering Android, read the [Android developer resume guide](https://thetailorcv.com/blog/android-developer-resume-2026).
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). If you are also considering Android, read the [Android developer resume guide](https://thetailorcv.com/blog/android-developer-resume-2026).
 
 ---
 

@@ -45,11 +45,11 @@ Placement depends on the role:
 - **Academic/research roles:** a dedicated "Publications" section, usually on a full CV, often quite long.
 - **Industry roles:** a short "Selected Publications" list of your three to five strongest pieces, or a single line linking to a fuller list on a [portfolio](https://www.thetailorcv.com/portfolio) or Google Scholar profile.
 
-For a standard [resume](https://www.thetailorcv.com/modify-cv), keep it below your [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) unless publishing is the core of the job. The [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide) helps you decide.
+For a standard [resume](https://www.thetailorcv.com/modify-cv), keep it below your experience and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) unless publishing is the core of the job. The [resume section order guide](https://thetailorcv.com/blog/resume-section-order-guide) helps you decide.
 
 ## Keep industry resumes tight
 
-For non-academic jobs, don't let publications crowd out your [experience](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) and [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume). A hiring manager for an industry role cares more about impact than a long bibliography. Link to a [portfolio website](https://www.thetailorcv.com/portfolio) or a scholar profile with your full list, and feature only the pieces that reinforce your fit for this specific [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Keeping the [resume](https://www.thetailorcv.com/modify-cv) to [the right length](https://thetailorcv.com/blog/ideal-resume-length-guide) matters even for accomplished authors.
+For non-academic jobs, don't let publications crowd out your experience and [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume). A hiring manager for an industry role cares more about impact than a long bibliography. Link to a [portfolio website](https://www.thetailorcv.com/portfolio) or a scholar profile with your full list, and feature only the pieces that reinforce your fit for this specific [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Keeping the [resume](https://www.thetailorcv.com/modify-cv) to [the right length](https://thetailorcv.com/blog/ideal-resume-length-guide) matters even for accomplished authors.
 
 ## Make publications ATS-safe
 

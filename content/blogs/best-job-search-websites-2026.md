@@ -75,6 +75,6 @@ To make job boards work for you:
 - Use **LinkedIn, Indeed, and Glassdoor** for reach, plus **niche boards** for signal.
 - Apply on **company career pages** directly where you can.
 - **Tailor every application** and [ATS-score it](https://www.thetailorcv.com/solutions).
-- Combine boards with **[networking](https://thetailorcv.com/blog/networking-tips-for-job-search) and [recruiters](https://thetailorcv.com/blog/how-to-work-with-recruitment-agencies)**, and **watch for scams**.
+- Combine boards with **[networking](https://thetailorcv.com/blog/networking-tips-for-job-search) and recruiters**, and **watch for scams**.
 
 Use the right sites the right way and you'll spend less time scrolling and more time interviewing. Start every application from a strong [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), scored with the [ATS checker](https://www.thetailorcv.com/solutions).

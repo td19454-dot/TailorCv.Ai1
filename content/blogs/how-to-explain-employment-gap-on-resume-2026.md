@@ -34,9 +34,9 @@ Add a real, dated line to the [experience](https://thetailorcv.com/blog/first-ti
 > **Career Break — Full-Time Caregiver** (2024 – 2025)
 > Managed household logistics and part-time freelance design work; completed Google UX certification.
 
-Notice it has a title, dates, and one line of substance. It reads like a [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), not an excuse.
+Notice it has a title, dates, and one line of substance. It reads like a role, not an excuse.
 
-For a **layoff**, the cause was the [company](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), not you — say so plainly in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):
+For a **layoff**, the cause was the company, not you — say so plainly in the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):
 
 > "My role was eliminated in a company-wide restructuring in 2024. Since then I have completed two freelance analytics projects and a SQL certification."
 
@@ -64,11 +64,11 @@ Not all gaps are the same, and the right move depends on the cause. Here is how 
 
 ### The Layoff or Redundancy
 
-This is the easiest gap to explain because the cause was external. Restructurings, budget cuts, and whole-team layoffs are so common that no [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) blinks at them. State it once, factually, and pivot immediately to what you did next. The mistake people make is sounding wounded. "My [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) was eliminated" is neutral and true; "I was let go" carries a shadow that "eliminated in a restructuring" does not.
+This is the easiest gap to explain because the cause was external. Restructurings, budget cuts, and whole-team layoffs are so common that no [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) blinks at them. State it once, factually, and pivot immediately to what you did next. The mistake people make is sounding wounded. "My role was eliminated" is neutral and true; "I was let go" carries a shadow that "eliminated in a restructuring" does not.
 
 ### The Caregiving Break
 
-Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong [candidates](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. [Employers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
+Whether you cared for a child, a parent, or a partner, this gap is nothing to hide — millions of strong candidates have one. Give it a real title on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) ("Career Break — Family Caregiving") so the timeline stays intact, and if you did anything to stay current (a course, freelance work, volunteering), add one line. Employers in 2026 are far more comfortable with caregiving breaks than they were a decade ago, and many have explicit returnship programs.
 
 ### The Health Break
 
@@ -119,7 +119,7 @@ The pattern is clear: honesty plus framing wins, concealment loses.
 
 If you are staring at a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) with an obvious hole, here is the exact sequence to fix it without lying.
 
-1. **List every real date first.** Write out your actual start and end dates for each [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search). You cannot decide how to present a timeline you have not seen clearly.
+1. **List every real date first.** Write out your actual start and end dates for each role. You cannot decide how to present a timeline you have not seen clearly.
 2. **Measure the gap.** Under six months rarely needs anything beyond a formatting tweak. Six to twelve months usually needs one line somewhere. Over twelve months needs a dated entry.
 3. **Switch to year-only dates if it closes the gap.** If you left a job in March 2024 and started looking, then landed a contract in November 2024, `2024 – 2024` erases the visual gap entirely and is completely honest.
 4. **Add a dated bridge entry for long gaps.** Give the period a title, dates, and one real line of substance — freelance, study, caregiving, or volunteering.
