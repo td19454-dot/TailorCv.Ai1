@@ -119,7 +119,7 @@ When interviews come, translate your stories the same way you translated your [r
 - **Listing duties, not results.** Always [quantify](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
 - **One resume for every job.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) each application.
 - **Over-formatting.** Keep it [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
-- **Skipping the score check.** Always run the ATS score checker before applying.
+- **Skipping the score check.** Always run the [ATS score checker](https://www.thetailorcv.com/solutions) before applying.
 
 For more on what silently sinks applications, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and [generic resume mistakes that cost interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
 
@@ -152,6 +152,6 @@ Before you apply, make sure your veteran [resume](https://www.thetailorcv.com/mo
 - Leads with a translated [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and a clear target title.
 - Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
 - Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) keywords.
-- Uses an ATS-friendly template and passes the ATS score checker.
+- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Your service already proved you can lead, adapt, and deliver under pressure. The only job left is translating that into language the civilian market — and the [ATS](https://thetailorcv.com/blog/ats-score-guide) — understands. Start with the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), build a matching cover letter, and tailor it to every role you want.

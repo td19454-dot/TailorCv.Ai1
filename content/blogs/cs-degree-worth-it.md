@@ -10,6 +10,13 @@ slug: cs-degree-bubble-oversaturated-2026
 keywords: computer science oversaturated, is computer science worth it in 2026, AI replacing software engineers, entry level tech jobs, software engineering competition, tech layoffs 2026, CS degree bubble
 ---
 
+## Key Takeaways
+
+- The perception of computer science as a guaranteed path to financial security is diminishing as competition for entry-level positions intensifies.
+- The tech hiring boom attracted a massive influx of graduates, leading to an oversaturated job market with similar candidate profiles.
+- Cultural narratives surrounding tech careers have shifted, with increased visibility of high salaries and flexible work-life balance attracting many to the field.
+- While demand for software engineers remains, the landscape has changed, making it harder for new graduates to stand out in the hiring process.
+
 ## The CS Degree Bubble Is Real - But Not for the Reason You Think
 
 If you are still trying to stand out in tech hiring, build stronger proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), sharpen your [technical skills section](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide), and check your resume with the [ATS resume tool](https://www.thetailorcv.com/solutions). For a role-specific example, use the FAANG software engineer resume guide to see how to turn CS skills into stronger software engineering bullets.
@@ -46,13 +53,6 @@ Computer science is not dying.
 However, the era of treating it as an automatic ticket to financial security is rapidly coming to an end.
 
 ---
-
-## Key Takeaways
-
-- The perception of computer science as a guaranteed path to financial security is diminishing as competition for entry-level positions intensifies.
-- The tech hiring boom attracted a massive influx of graduates, leading to an oversaturated job market with similar candidate profiles.
-- Cultural narratives surrounding tech careers have shifted, with increased visibility of high salaries and flexible work-life balance attracting many to the field.
-- While demand for software engineers remains, the landscape has changed, making it harder for new graduates to stand out in the hiring process.
 
 ## The Rise of the Computer Science Boom
 
@@ -300,7 +300,7 @@ Additional resources that can help include:
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
 - [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
-- Why Am I Not Getting Interviews
+- [Why Am I Not Getting Interviews](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 
 ---
 
@@ -431,7 +431,7 @@ Useful resources include:
 - [ATS Resume Solutions](https://www.thetailorcv.com/solutions)
 - [Modify CV](https://thetailorcv.com/modify-cv)
 - [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- Technical Skills in Resume for Freshers
+- [Technical Skills in Resume for Freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 
 ---
 
@@ -500,15 +500,15 @@ Computer Science is not dying.
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- Data Scientist Resume
-- Career Change to Tech
-- Cover Letter Guide
-- Data Analyst vs Data Scientist
-- Freelancing vs Full-Time Employment
-- How to Build a Professional Portfolio
-- How to Decline a Job Offer Professionally
-- How to Handle Job Rejection
-- How to Negotiate a Salary Offer
+- [Data Scientist Resume](https://thetailorcv.com/blog/data-scientist-resume-2026)
+- [Career Change to Tech](https://thetailorcv.com/blog/career-change-to-tech-guide)
+- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [Data Analyst vs Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ## Frequently Asked Questions
 

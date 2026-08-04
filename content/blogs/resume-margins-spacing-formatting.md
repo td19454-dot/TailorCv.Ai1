@@ -10,6 +10,14 @@ slug: resume-margins-spacing-formatting
 keywords: resume margins, resume spacing, resume layout, resume formatting guide, resume line spacing, resume white space, how to format a resume 2026, resume page setup
 ---
 
+## Key Takeaways
+
+- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
+- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
+- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
+- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
+
+
 Resume formatting is not glamorous - but it is the difference between a resume that gets read and one that gets skipped. Correct margins, spacing, and layout create a document that looks professional, scans easily for recruiters, and parses correctly for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems.
 
 This guide covers the exact measurements and formatting rules for a polished, readable resume in 2026.
@@ -17,13 +25,6 @@ This guide covers the exact measurements and formatting rules for a polished, re
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that has these settings pre-configured, then use this guide to understand and adjust them. Check your final resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
-
-## Key Takeaways
-
-- Use standard margins of 0.75-1 inch for a professional appearance; avoid going below 0.5 inch to maintain readability.
-- Line spacing should be set between 1.0-1.15 for paragraphs and bullets, with 6-12pt space between sections for clarity.
-- Utilize white space effectively to enhance document scan-ability and prevent a cluttered look.
-- A single-column layout is recommended for ATS compatibility and recruiter preference, while two-column formats should generally be avoided.
 
 ## Resume Margins: The Exact Numbers
 
@@ -183,12 +184,12 @@ The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-deci
 - [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
 - [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- How to Make Your Resume ATS-Friendly
-- Ideal Resume Length Guide
-- How Recruiters Read Resumes in Under 10 Seconds
-- How to Choose the Right Resume Template
-- Resume Proofreading Checklist
-- What Not to Put on a Resume
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
+- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 
 ---
 

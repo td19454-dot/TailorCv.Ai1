@@ -10,17 +10,18 @@ slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---
 
-[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can strengthen your [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for maximum impact.
-
-
----
-
 ## Key Takeaways
 
 - Certifications enhance resumes, especially in technical, healthcare, finance, and project management fields.
 - Place certifications in a dedicated section, near the top, or in the education section based on their relevance to the job.
 - Use a standard format that includes the certification name, issuing organization, and year, with expiration dates when applicable.
 - Include only relevant, industry-standard certifications and those mentioned in job descriptions, while omitting outdated or irrelevant ones.
+
+
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can strengthen your [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for maximum impact.
+
+
+---
 
 ## Why Certifications Matter
 
@@ -99,7 +100,7 @@ If you are studying for a certification, you can list it as in progress:
 - Irrelevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (a sommelier certification on a software engineer [resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews))
 - Very outdated or obsolete [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Trivial or low-credibility "certificates" that add no value
-- Too many minor certifications that dilute the important ones
+- Too many minor [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that dilute the important ones
 
 Quality over quantity. Three relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) beat fifteen random ones.
 
@@ -196,20 +197,20 @@ Use the official certification name, especially since [ATS](https://thetailorcv.
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- 200 Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- How to Write a Resume Headline
-- How to Write a Resume Summary
-- Top Skills to Add to Your Resume
-- Chronological vs Functional Resume
-- How to Explain Resume Gaps
-- How to Make Your Resume ATS-Friendly
-- Ideal Resume Length
-- How to Write a Resume with AI in 2026 - Smart Use Without the Risks
-- MBA Resume 2026 - Complete Guide with Examples
-- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
-- 10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume
-- How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
+- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 
 ## Make This Practical
 

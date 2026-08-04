@@ -100,8 +100,8 @@ When in doubt, slow down and verify. A real opportunity survives a day of due di
 3. **Find roles on company career pages and remote-specific boards**, not just the crowded aggregators.
 4. **Tailor every [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application)** to the posting's exact language.
 5. **Pursue [referrals](https://thetailorcv.com/blog/networking-messages-for-referrals)** for your top targets — they cut through the applicant flood best.
-6. **Prepare for polished video interviews** as proof of remote competence.
-7. **Verify every employer** before sharing personal details.
+6. **Prepare for polished [video interviews](https://thetailorcv.com/blog/video-interview-tips-2026)** as proof of remote competence.
+7. **Verify every [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)** before sharing personal details.
 
 ## Where Remote Roles Actually Hide
 

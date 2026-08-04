@@ -24,8 +24,8 @@ Formatting is where most [resumes](https://www.thetailorcv.com/modify-cv) silent
 - [ ] **Standard section headings** — "Experience," "Education," "Skills," not creative labels.
 - [ ] **A safe, [readable font](https://thetailorcv.com/blog/resume-fonts-guide)** at 10.5–12pt.
 - [ ] **Text-based PDF**, not a scanned image or an unusual format.
-- [ ] **No critical info in the header/footer** — some parsers skip these zones. See ATS parser-friendly format.
-- [ ] **Consistent margins and spacing** so it reads cleanly.
+- [ ] **No critical info in the header/footer** — some parsers skip these zones. See [ATS parser-friendly format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+- [ ] **Consistent [margins and spacing](https://thetailorcv.com/blog/resume-margins-spacing-formatting)** so it reads cleanly.
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) and most of these are handled for you.
 
@@ -35,11 +35,11 @@ Once the format is clean, the content has to match the role:
 
 - [ ] **Job title near the top matches the role** you want — a clear target title raises your [match score](https://thetailorcv.com/blog/resume-job-description-match-percentage).
 - [ ] **[Keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist)** appear naturally, where they're true for you.
-- [ ] **Every role has at least one quantified result** — numbers, percentages, or outcomes.
-- [ ] **Strong action verbs** open each bullet, using the bullet point formula.
-- [ ] **A tight summary** — three lines, not a paragraph.
-- [ ] **A focused skills section** with the exact terms the role uses.
-- [ ] **No spelling or date inconsistencies** — proofread carefully.
+- [ ] **Every role has at least one [quantified result](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume)** — numbers, percentages, or outcomes.
+- [ ] **Strong [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume)** open each bullet, using the [bullet point formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+- [ ] **A tight [summary](https://thetailorcv.com/blog/how-to-write-resume-summary)** — three lines, not a paragraph.
+- [ ] **A focused [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the exact terms the role uses.
+- [ ] **No spelling or date inconsistencies** — [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) carefully.
 
 Avoiding generic, duty-only bullets is essential — they're a top reason a [resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and a classic [generic resume mistake](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
 
@@ -86,7 +86,7 @@ Your [resume](https://www.thetailorcv.com/modify-cv) is ready to submit when it:
 
 - Uses a **clean, single-column, [ATS-friendly](https://www.thetailorcv.com/templates)** format.
 - Leads with a **matching job title** and mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Backs every role with a quantified result.
-- Is proofread, correctly sized, and **passes the ATS score checker**.
+- Backs every role with a [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) result.
+- Is [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist), correctly sized, and **passes the [ATS score checker](https://www.thetailorcv.com/solutions)**.
 
 Run it through the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and you'll clear the software that filters out most applicants.

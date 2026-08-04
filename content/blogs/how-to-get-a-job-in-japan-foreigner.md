@@ -10,12 +10,6 @@ keywords: how to get a job in japan as a foreigner, jobs in japan for foreigners
 image: public/blog-images/how-to-get-a-job-in-japan-foreigner.png
 ---
 
-Japan has steadily opened up to foreign talent, driven by a shrinking workforce and a growing need for global skills — especially in technology, English education, and international business. For foreigners, Japan offers a fascinating culture, a high quality of life, and real career opportunities. But getting hired takes understanding: the visa system, the role of Japanese-language ability, and how to present yourself in a business culture that values precision, respect, and long-term commitment.
-
-This guide walks you through getting a job in Japan as a foreigner in 2026 — which sectors hire, how work visas function, the language question, where to search, and how to make your application stand out.
-
-> **Note:** Japanese immigration and visa rules change and depend on your nationality, qualifications, and role. Treat visa information here as a general overview and always confirm current requirements with the Japanese Immigration Services Agency, a Japanese embassy/consulate, or your prospective employer.
-
 ## Key Takeaways
 
 - Foreigners generally need an **employer-sponsored work visa** matched to their role and qualifications; you secure the job first, then the employer sponsors.
@@ -23,6 +17,13 @@ This guide walks you through getting a job in Japan as a foreigner in 2026 — w
 - **Japanese-language ability (JLPT)** widens your options significantly, though many global and tech roles operate in English.
 - A resume tailored to the employer — Japanese-format documents or a strong English resume — is essential.
 - Respect for Japanese business culture, shown throughout your application and interviews, matters a great deal.
+
+
+Japan has steadily opened up to foreign talent, driven by a shrinking workforce and a growing need for global skills — especially in technology, English education, and international business. For foreigners, Japan offers a fascinating culture, a high quality of life, and real career opportunities. But getting hired takes understanding: the visa system, the role of Japanese-language ability, and how to present yourself in a business culture that values precision, respect, and long-term commitment.
+
+This guide walks you through getting a job in Japan as a foreigner in 2026 — which sectors hire, how work visas function, the language question, where to search, and how to make your application stand out.
+
+> **Note:** Japanese immigration and visa rules change and depend on your nationality, qualifications, and role. Treat visa information here as a general overview and always confirm current requirements with the Japanese Immigration Services Agency, a Japanese embassy/consulate, or your prospective employer.
 
 ## Can Foreigners Work in Japan?
 

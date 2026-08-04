@@ -10,10 +10,6 @@ keywords: canadian resume, resume format canada, how to write a canadian resume,
 image: public/blog-images/canadian-resume-guide.png
 ---
 
-A Canadian resume follows conventions that differ from resumes in India, the UK, the Middle East, and many other regions — and those differences matter. Canadian employers and the Applicant Tracking Systems they use expect a specific format, and submitting a resume in your home-country style is one of the most common reasons newcomers and international applicants get overlooked.
-
-This guide shows you exactly how to write a Canadian resume in 2026: the right format and length, what to include (and crucially, what to leave out), how to make it [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder), and examples you can adapt whether you're a newcomer, a student, or an experienced professional.
-
 ## Key Takeaways
 
 - Canadian resumes are **concise (1–2 pages)**, achievement-focused, and tailored to each job.
@@ -21,6 +17,11 @@ This guide shows you exactly how to write a Canadian resume in 2026: the right f
 - Most Canadian employers use an **ATS**, so clean formatting and job-specific keywords are essential.
 - **Canadian-style spelling and metrics**, plus clear evidence of results, help you fit local expectations.
 - Tailoring each application to the job description is the biggest driver of getting interviews.
+
+
+A Canadian resume follows conventions that differ from resumes in India, the UK, the Middle East, and many other regions — and those differences matter. Canadian employers and the Applicant Tracking Systems they use expect a specific format, and submitting a resume in your home-country style is one of the most common reasons newcomers and international applicants get overlooked.
+
+This guide shows you exactly how to write a Canadian resume in 2026: the right format and length, what to include (and crucially, what to leave out), how to make it [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder), and examples you can adapt whether you're a newcomer, a student, or an experienced professional.
 
 ## Why Canadian Resume Conventions Exist
 
@@ -241,8 +242,8 @@ A strong resume gets the interview; the rest of your application seals it:
 - Add a targeted cover letter — see the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
 - Optimise your LinkedIn — see [LinkedIn optimization for Canadian job seekers](https://thetailorcv.com/blog/linkedin-optimization-canada).
 - Network effectively — much of Canadian hiring happens through connections; see [networking to find jobs in Canada](https://thetailorcv.com/blog/networking-jobs-canada).
-- Prepare for interviews — see interview tips for Canada and rehearse with the AI mock interview.
-- International students should read getting a job in Canada as an international student.
+- Prepare for interviews — see [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- International students should read [getting a job in Canada as an international student](https://thetailorcv.com/blog/job-in-canada-international-student).
 
 ## Frequently Asked Questions
 

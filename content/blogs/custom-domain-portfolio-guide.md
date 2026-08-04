@@ -10,8 +10,6 @@ slug: custom-domain-portfolio-guide
 keywords: custom domain portfolio, portfolio website domain, how to buy a domain for portfolio, portfolio netlify deploy, personal domain name
 ---
 
-`yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
-
 ## Key Takeaways
 
 - A custom domain enhances credibility, memorability, and longevity for your portfolio.
@@ -19,6 +17,9 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 - Use reputable registrars for domain purchase and expect to pay around $10-15/year.
 - Follow a straightforward process to connect your custom domain to your portfolio, including DNS settings and SSL confirmation.
 - Avoid common mistakes like not linking your domain or forgetting to update your resume and online profiles.
+
+
+`yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
 
 ## Why It Matters
 | Reason | What it gets you |
@@ -143,15 +144,15 @@ You do not need to code a site or spend a weekend wrestling with DNS settings fr
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
-- Portfolio Website Builders 2026
-- Portfolio Website Themes 2026
-- AI Portfolio Builder: No Code Required
-- Portfolio SEO: Get Found
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Personal Website vs Portfolio
-- Portfolio Analytics and View Tracking
-- Add Portfolio Link to Resume
+- [Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Portfolio Analytics and View Tracking](https://thetailorcv.com/blog/portfolio-analytics-view-tracking)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
 
 ## Make This Practical
 
@@ -168,8 +169,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

@@ -10,8 +10,6 @@ slug: devops-engineer-portfolio-guide
 keywords: devops portfolio, sre portfolio, infrastructure as code portfolio, devops engineer portfolio website, kubernetes portfolio
 ---
 
-DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
-
 ## Key Takeaways
 
 - Include Infrastructure-as-code repos, CI/CD pipeline projects, observability setups, incident write-ups, and relevant certifications in your DevOps portfolio.
@@ -19,6 +17,9 @@ DevOps and SRE work is often invisible until something breaks - which makes it h
 - Host your portfolio on GitHub and a personal site, ensuring it narrates your projects and links to relevant repositories.
 - Keep your resume and portfolio aligned in terms of technology stack and project scale to present a cohesive narrative.
 - Avoid common mistakes such as listing tools without context, sharing sensitive information, and providing dead links or expired environments.
+
+
+DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
 ## What to Include
 | What to include | Why |
@@ -165,15 +166,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Backend Developer Portfolio](https://thetailorcv.com/blog/backend-developer-portfolio)
-- Full Stack Portfolio Guide
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio No Projects
-- Custom Domain Portfolio Guide
-- AI Portfolio Builder: No Code Required
-- Portfolio Website Themes 2026
-- Personal Website vs Portfolio
+- [Full Stack Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 
@@ -190,8 +191,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

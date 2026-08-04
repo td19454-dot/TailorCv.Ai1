@@ -10,14 +10,6 @@ keywords: required vs preferred qualifications, job description must-have vs nic
 image: public/blog-images/matching-resume-required-vs-preferred-qualifications.webp
 ---
 
-Every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a ranked list, even when it does not look like one. Some qualifications are non-negotiable filters. Others are wish-list items a hiring manager would love but will not reject a strong candidate over. Treating every line of a job posting with equal weight is one of the most common [resume matching mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) job seekers make.
-
-Knowing the difference between required and preferred qualifications changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), what you should prioritize, and whether a job is even worth applying to in the first place.
-
-Paste any [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
-
----
-
 ## Key Takeaways
 
 - Job descriptions often rank qualifications, distinguishing between required non-negotiable filters and preferred wish-list items.
@@ -25,6 +17,15 @@ Paste any [job description](https://thetailorcv.com/blog/job-description-analysi
 - ATS systems prioritize required qualifications heavily; missing them can lead to disqualification, while missing preferred qualifications rarely does.
 - Applicants should consider applying if they lack one or two required skills but are strong in other areas, while missing most required qualifications suggests seeking other opportunities.
 - To effectively tailor a resume, create separate lists for required and preferred qualifications from the job posting and audit your resume accordingly.
+
+
+Every [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a ranked list, even when it does not look like one. Some qualifications are non-negotiable filters. Others are wish-list items a hiring manager would love but will not reject a strong candidate over. Treating every line of a job posting with equal weight is one of the most common [resume matching mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) job seekers make.
+
+Knowing the difference between required and preferred qualifications changes how you should [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), what you should prioritize, and whether a job is even worth applying to in the first place.
+
+Paste any [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [TailorCV resume optimizer](/solutions) to see exactly how your resume stacks up against the posting's true priorities.
+
+---
 
 ## How to Spot Required vs Preferred Qualifications
 
@@ -229,13 +230,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to s
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
-- Matching Your Resume to Certification Requirements You Don't Have Yet
-- Common Resume and Job Description Mismatch Mistakes
-- ATS Keywords to Boost Score
-- Overqualified Resume Match Job Description
-- Resume Tailoring for Underqualified Candidates
-- ATS Score Guide 2026
-- Cover Letter Guide 2026
+- [Matching Your Resume to Certification Requirements You Don't Have Yet](https://thetailorcv.com/blog/matching-resume-to-certifications-in-job-description)
+- [Common Resume and Job Description Mismatch Mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS Keywords to Boost Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [Overqualified Resume Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
 
 ---
 

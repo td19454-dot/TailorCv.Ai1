@@ -10,6 +10,15 @@ keywords: workday resume, workday ats, workday resume format, match resume to wo
 image: public/blog-images/workday-resume-matching-guide.webp
 ---
 
+## Key Takeaways
+
+- Workday's parsing differs from generic ATS platforms, affecting how resumes are scored and matched to job descriptions.
+- The auto-fill extraction process can lead to matching failures if resumes use complex formatting like multi-columns or tables.
+- Workday scores resumes based on exact keyword matches, making it crucial to align your skills with the job description.
+- Always check and correct auto-filled fields before submitting your application, as errors can lead to disqualification.
+- Use a single-column layout, standard section headers, and save as .docx or text-based PDFs to improve parsing accuracy.
+
+
 Workday is the [ATS](https://thetailorcv.com/blog/ats-score-guide) behind more Fortune 500 job applications than almost any other platform. If you have applied to a large company recently, you have probably typed your work history into a Workday form and wondered whether it even read your resume.
 
 It did. But Workday parses differently than a generic [ATS](https://thetailorcv.com/blog/ats-score-guide), and it scores differently too. A resume that is perfectly [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) on one platform can still lose points on Workday if you do not understand its quirks.
@@ -19,14 +28,6 @@ This guide covers exactly how Workday parses and ranks resumes, and how to [matc
 Check your resume against any job description in seconds with the [TailorCV ATS score checker](/solutions) before you submit it through Workday.
 
 ---
-
-## Key Takeaways
-
-- Workday's parsing differs from generic ATS platforms, affecting how resumes are scored and matched to job descriptions.
-- The auto-fill extraction process can lead to matching failures if resumes use complex formatting like multi-columns or tables.
-- Workday scores resumes based on exact keyword matches, making it crucial to align your skills with the job description.
-- Always check and correct auto-filled fields before submitting your application, as errors can lead to disqualification.
-- Use a single-column layout, standard section headers, and save as .docx or text-based PDFs to improve parsing accuracy.
 
 ## What Makes Workday Different From Other ATS Platforms
 
@@ -227,13 +228,13 @@ A text-based PDF or .docx file works best. Avoid scanned images or resumes expor
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Greenhouse ATS Resume Tips](https://thetailorcv.com/blog/greenhouse-ats-resume-tips)
 - [Lever ATS Resume Guide](https://thetailorcv.com/blog/lever-ats-resume-guide)
-- iCIMS and Taleo Resume Formatting Guide
-- ATS Score Guide 2026
-- ATS Resume Formatting Mistakes
-- ATS Resume Parser Friendly Format
-- Job Description Keyword Extraction Guide
-- How to Make Your Resume ATS-Friendly
-- Managing Multiple Resume Versions
+- [iCIMS and Taleo Resume Formatting Guide](https://thetailorcv.com/blog/icims-taleo-resume-formatting-guide)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format)
+- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
 
 ---
 

@@ -10,10 +10,6 @@ keywords: canadian vs american resume, canada vs usa resume, resume differences 
 image: public/blog-images/canadian-vs-american-resume.png
 ---
 
-Canada and the United States share a border, a language, and many workplace norms — so it's easy to assume a resume that works in one will work in the other. Mostly, that's true: both favour concise, achievement-focused, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resumes. But there are real differences in spelling, terminology, and a few conventions that can subtly mark you as "not local" if you get them wrong.
-
-This guide breaks down the Canadian vs American resume in 2026: what's the same, what's different, and exactly how to adapt your resume when you apply across the border — so you always send the right version for the right market.
-
 ## Key Takeaways
 
 - Canadian and US resumes are **broadly similar**: 1–2 pages, achievement-focused, ATS-friendly, no photo or personal details.
@@ -21,6 +17,11 @@ This guide breaks down the Canadian vs American resume in 2026: what's the same,
 - Both markets screen with an **ATS**, so formatting and keywords matter equally.
 - Adapting the details — spelling, metrics, and local terms — signals you fit the market.
 - When applying across the border, tailor a dedicated version rather than reusing one blindly.
+
+
+Canada and the United States share a border, a language, and many workplace norms — so it's easy to assume a resume that works in one will work in the other. Mostly, that's true: both favour concise, achievement-focused, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resumes. But there are real differences in spelling, terminology, and a few conventions that can subtly mark you as "not local" if you get them wrong.
+
+This guide breaks down the Canadian vs American resume in 2026: what's the same, what's different, and exactly how to adapt your resume when you apply across the border — so you always send the right version for the right market.
 
 ## Why Both Markets Converged on the Same Core Format
 
@@ -163,7 +164,7 @@ If Canada is your target, use our dedicated resources:
 - The complete [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide).
 - [Best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada).
 - The [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
-- For newcomers, how to get a job in Canada as a newcomer.
+- For newcomers, [how to get a job in Canada as a newcomer](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer).
 
 ## Credentials and Professional Designations Across the Border
 

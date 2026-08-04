@@ -10,10 +10,6 @@ slug: ats-resume-data-study-2026
 keywords: ats score data, what lowers ats score, ats resume study, ats keywords data, resume rejection reasons, ats score statistics
 ---
 
-Most resumes never reach a human. They are scored, ranked, and filtered by an Applicant Tracking System (ATS) first - and the gap between a callback and silence usually comes down to a handful of fixable issues. We looked at the patterns across resumes run through TailorCV's [free ATS score checker](https://thetailorcv.com/solutions) to see which problems show up most often and which fixes actually move the number.
-
-This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
-
 ## Key Takeaways
 
 - Most resumes are filtered by an Applicant Tracking System (ATS) before reaching a human, making small, fixable issues critical for success.
@@ -21,6 +17,11 @@ This is not a controlled lab experiment - it's an observational look at what ten
 - The most common issues affecting scores include missing keywords, unparseable formatting, generic resumes, and lack of measurable impact.
 - Keyword matching is the primary factor in ATS scoring; resumes must align closely with the specific language used in job descriptions.
 - Tailoring your resume to each job description is more important than overall presentation or design.
+
+
+Most resumes never reach a human. They are scored, ranked, and filtered by an Applicant Tracking System (ATS) first - and the gap between a callback and silence usually comes down to a handful of fixable issues. We looked at the patterns across resumes run through TailorCV's [free ATS score checker](https://thetailorcv.com/solutions) to see which problems show up most often and which fixes actually move the number.
+
+This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
 
 ## How we looked at this
 

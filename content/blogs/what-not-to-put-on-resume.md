@@ -10,14 +10,6 @@ slug: what-not-to-put-on-resume
 keywords: what not to put on resume, things to remove from resume, resume mistakes 2026, bad resume advice, resume red flags, resume tips 2026
 ---
 
-Most resume advice tells you what to add. This guide tells you what to remove. Knowing what does not belong on a resume is just as important as knowing what does - because many candidates actively hurt their chances with information that is irrelevant, outdated, or counterproductive.
-
-If your resume has any of the following 25 things, remove them before your next application.
-
-Start with the right foundation. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to see if your resume is well-matched to the job description, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture. For the opposite view - what to add - read the guide to best action verbs for resume and how to quantify resume achievements.
-
----
-
 ## Key Takeaways
 
 - Remove personal information such as photos, date of birth, marital status, and full home addresses to avoid bias and protect privacy.
@@ -25,6 +17,15 @@ Start with the right foundation. Use the [ATS score checker](https://www.thetail
 - Do not list basic skills like Microsoft Office; focus on advanced competencies relevant to the job.
 - Eliminate vague personality traits and instead demonstrate your abilities through specific examples or achievements.
 - Only include hobbies if they are directly relevant to the role or showcase unique accomplishments.
+
+
+Most resume advice tells you what to add. This guide tells you what to remove. Knowing what does not belong on a resume is just as important as knowing what does - because many candidates actively hurt their chances with information that is irrelevant, outdated, or counterproductive.
+
+If your resume has any of the following 25 things, remove them before your next application.
+
+Start with the right foundation. Use the [ATS score checker](https://www.thetailorcv.com/solutions) to see if your resume is well-matched to the job description, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for the complete picture. For the opposite view - what to add - read the guide to best action verbs for resume and how to quantify resume achievements.
+
+---
 
 ## Personal Information to Remove
 
@@ -184,19 +185,19 @@ Before sending your next application:
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- 200 Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- How to Write a Resume Headline
-- How to Write a Resume Summary
-- Top Skills to Add to Your Resume
-- 20 Common Interview Mistakes to Avoid
-- How to Explain Resume Gaps
-- Ideal Resume Length
-- First Time Resume With No Experience: Complete Guide for Freshers & College Students
-- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
-- Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026
-- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
+- [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
+- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Make This Practical
 

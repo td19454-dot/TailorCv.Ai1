@@ -10,12 +10,6 @@ slug: what-is-a-resume
 keywords: what is a resume, what is a resume used for, why does a resume matter, resume definition, how resumes work, resume in job search, resume basics 2026
 ---
 
-A resume is the single most important document in your job search. Yet most people have never been taught what it actually is, what it is supposed to do, or why getting it right matters so much. This guide gives you the full picture - what a resume is, how it travels through the hiring process, and why your resume quality directly controls your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) rate.
-
-Once you understand what a resume is supposed to do, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to measure how well yours performs, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates) built for the modern hiring process.
-
----
-
 ## Key Takeaways
 
 - A resume is a targeted marketing document that summarizes your relevant work experience, skills, and accomplishments to secure an interview.
@@ -23,6 +17,13 @@ Once you understand what a resume is supposed to do, use the [TailorCV ATS score
 - Resumes first pass through Applicant Tracking Systems (ATS), which filter them based on keywords and formatting, making ATS optimization essential.
 - After ATS, recruiters and HR professionals quickly scan resumes for role match and standout accomplishments, often in under 10 seconds.
 - Only resumes that pass through ATS and receive positive reviews from recruiters and hiring managers lead to interview invitations.
+
+
+A resume is the single most important document in your job search. Yet most people have never been taught what it actually is, what it is supposed to do, or why getting it right matters so much. This guide gives you the full picture - what a resume is, how it travels through the hiring process, and why your resume quality directly controls your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) rate.
+
+Once you understand what a resume is supposed to do, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to measure how well yours performs, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates) built for the modern hiring process.
+
+---
 
 ## What Is a Resume?
 
@@ -152,9 +153,9 @@ Only for under 10 years of experience. See the [ideal resume length guide](https
 1. Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) - formatting that parses correctly
 2. Write achievement-focused bullets using [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 3. Add quantified results - read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-4. Tailor keywords to each job - use the resume keywords guide
-5. Check your ATS score - run it through TailorCV's ATS checker
-6. Practice your interview - once your resume gets you in, use the mock interview tool to prepare
+4. Tailor keywords to each job - use the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide)
+5. Check your ATS score - run it through [TailorCV's ATS checker](https://www.thetailorcv.com/solutions)
+6. Practice your interview - once your resume gets you in, use the [mock interview tool](https://thetailorcv.com/interview-prep) to prepare
 
 ---
 
@@ -168,15 +169,15 @@ Start with an [ATS-friendly template](https://www.thetailorcv.com/templates), bu
 - [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- How to Write a Resume from Scratch
-- Ideal Resume Length Guide
-- How to Write a Resume Summary
-- Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- Resume Keywords Guide
-- How to Make Your Resume ATS-Friendly
-- ATS Score Guide
-- Resume Optimization Guide
+- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
+- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 
 ---
 

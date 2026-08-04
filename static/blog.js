@@ -171,8 +171,14 @@
     document.querySelectorAll(".post-content h2").forEach((h2) => {
       if (!/^(key takeaways|quick takeaways|summary)$/.test(normalizeText(h2))) return;
       if (h2.closest(".key-takeaways-box")) return;
-      const nodes = collectUntilNextHeading(h2, ["H2"]);
+      let nodes = collectUntilNextHeading(h2, ["H2"]);
       if (!nodes.length) return;
+      // The box is the bullet summary and nothing else. Since Key Takeaways
+      // now leads every post, the article's intro paragraphs sit directly
+      // after it - without this they were pulled inside and the "clean list"
+      // became a wall of prose.
+      const firstList = nodes.find((n) => /^(UL|OL)$/.test(n.tagName));
+      if (firstList) nodes = [firstList];
 
       const box = document.createElement("aside");
       box.className = "key-takeaways-box";
@@ -187,12 +193,16 @@
 
   const enhanceStepCards = () => {
     document.querySelectorAll(".post-content h2, .post-content h3").forEach((h) => {
-      const match = (h.textContent || "").trim().match(/^(?:Step\s+)?(\d+)\s*[:.\-\u2013\u2014)]\s*/i);
+      // A bare dash must have spaces around it. Without that, compound titles
+      // like "8-Week Prep Plan" or "30-Day Reset" were read as "Step 8" and
+      // lost their leading number to the badge.
+      const STEP = /^\s*(?:Step\s+)?(\d+)\s*(?::|\.|\)|\s+[-\u2013\u2014]\s+)\s*/i;
+      const match = (h.textContent || "").trim().match(STEP);
       if (!match || h.closest(".faq-box")) return;
 
       for (const node of h.childNodes) {
         if (node.nodeType === Node.TEXT_NODE && /\S/.test(node.textContent || "")) {
-          node.textContent = node.textContent.replace(/^\s*(?:Step\s+)?\d+\s*[:.\-\u2013\u2014)]\s*/i, "");
+          node.textContent = node.textContent.replace(STEP, "");
           break;
         }
       }
@@ -998,6 +1008,53 @@
 
   });
 
+  /* Most "Common Mistakes" sections are one heading + a single numbered list,
+     which wrap() above boxes as ONE card - unlike the ~37 posts that already
+     write each mistake as its own "### Mistake N: ..." heading (and so
+     already get individual cards). Split the list inside each mistake box
+     into the same individual-card treatment, auto-numbered, so every
+     mistakes section reads the same way regardless of how the post wrote it.
+     Purely a DOM restructure of text already on the page - invents nothing. */
+  content.querySelectorAll(".callout-mistake").forEach((box) => {
+    const list = box.querySelector(":scope > ol, :scope > ul");
+    if (!list) return;
+    const items = Array.from(list.children).filter((n) => n.tagName === "LI");
+    if (items.length < 2) return;
+
+    const grid = document.createElement("div");
+    grid.className = "mistake-grid";
+    list.before(grid);
+
+    items.forEach((li, i) => {
+      const card = document.createElement("section");
+      card.className = "callout-box callout-mistake mistake-grid-item";
+      const head = document.createElement("div");
+      head.className = "callout-head";
+      head.innerHTML = '<span class="callout-ico">' + ICON.mistake + "</span>";
+      const h3 = document.createElement("h3");
+
+      // if the item leads with **Bold text**, use it as the card's own
+      // title and drop it (plus a following ": ") from the body so it is
+      // not shown twice.
+      const firstP = li.querySelector(":scope > p:first-child") || li;
+      const lead = firstP.querySelector(":scope > strong:first-child, :scope > b:first-child");
+      let title = "Mistake " + (i + 1);
+      if (lead && firstP.firstChild === lead) {
+        title += ": " + (lead.textContent || "").replace(/:\s*$/, "");
+        lead.remove();
+        if (firstP.firstChild && firstP.firstChild.nodeType === Node.TEXT_NODE) {
+          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^\s*:\s*/, "");
+        }
+      }
+      h3.textContent = title;
+      head.appendChild(h3);
+      card.appendChild(head);
+      Array.from(li.childNodes).forEach((n) => card.appendChild(n));
+      grid.appendChild(card);
+    });
+    list.remove();
+  });
+
   /* "Before (generic resume)" / "After (Matched Resume)" followed by a code
      block. These are the strongest proof in the article but rendered as two
      identical grey boxes, so the contrast was invisible. Pair the label with
@@ -1185,4 +1242,297 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => setTimeout(tcxTemplateBlocks, 0));
 } else {
   setTimeout(tcxTemplateBlocks, 0);
+}
+
+/* Runs of "**The core.** ..." / "**The formal adjustment.** ..." paragraphs
+   render as an undifferentiated wall of text even though the author already
+   labelled each point. Give every paragraph in such a run its own light card
+   so the labels read as separate points. Pure restyling - the wording, order
+   and markup content are untouched. */
+const tcxLeadRuns = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const BOXED =
+    ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
+    ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, .lead-run";
+
+  // A lead paragraph is "<strong>Short label.</strong> then real prose" - not a
+  // fully bolded line, and not a long bolded sentence acting as a heading.
+  const isLead = (p) => {
+    if (p.tagName !== "P") return false;
+    if (p.closest(BOXED)) return false;
+    if (p.querySelector("img")) return false;
+    const lead = p.firstElementChild;
+    if (!lead || !/^(STRONG|B)$/.test(lead.tagName) || p.firstChild !== lead) return false;
+    const label = (lead.textContent || "").trim();
+    if (!label || label.length > 80) return false;
+    const rest = (p.textContent || "").slice(label.length).trim();
+    return rest.length > 20;
+  };
+
+  const kids = Array.from(content.children);
+  let i = 0;
+  while (i < kids.length) {
+    if (!isLead(kids[i])) { i++; continue; }
+    let j = i;
+    while (j < kids.length && isLead(kids[j])) j++;
+    if (j - i >= 3) {
+      const run = document.createElement("div");
+      run.className = "lead-run";
+      kids[i].before(run);
+      for (let k = i; k < j; k++) {
+        kids[k].classList.add("lead-item");
+        run.appendChild(kids[k]);
+      }
+    }
+    i = j;
+  }
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxLeadRuns, 0));
+} else {
+  setTimeout(tcxLeadRuns, 0);
+}
+
+/* Two more "wall of plain text" shapes the corpus uses constantly:
+     1. a run of "### Short heading" each followed by one or two paragraphs
+     2. a list whose items each open with a **bold lead**
+   Both already carry the author's own structure - it just isn't visible. Give
+   each unit a light card so the page reads as points, not prose. Restyling
+   only: no text is added, removed or reordered. */
+const tcxPointCards = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const BOXED =
+    ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
+    ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, " +
+    ".lead-run, .point-run";
+
+  /* 1. h3 + short prose runs. Only when the body is one or two plain
+     paragraphs - a section with a list, image or code block is already
+     structured and must not be boxed. */
+  const kids = Array.from(content.children);
+  const unit = (i) => {
+    if (kids[i].tagName !== "H3" || kids[i].closest(BOXED)) return null;
+    const body = [];
+    let j = i + 1;
+    while (j < kids.length && kids[j].tagName === "P") {
+      if (kids[j].querySelector("img")) return null;
+      body.push(kids[j]);
+      j++;
+    }
+    if (!body.length || body.length > 2) return null;
+    if (body.reduce((n, p) => n + p.textContent.length, 0) > 700) return null;
+    return { end: j, nodes: [kids[i]].concat(body) };
+  };
+
+  let i = 0;
+  while (i < kids.length) {
+    const units = [];
+    let j = i;
+    for (;;) {
+      const u = unit(j);
+      if (!u) break;
+      units.push(u);
+      j = u.end;
+    }
+    if (units.length >= 3) {
+      const run = document.createElement("div");
+      run.className = "point-run";
+      units[0].nodes[0].before(run);
+      units.forEach((u) => {
+        const card = document.createElement("section");
+        card.className = "point-card";
+        run.appendChild(card);
+        u.nodes.forEach((n) => card.appendChild(n));
+      });
+      i = j;
+    } else {
+      i = units.length ? j : i + 1;
+    }
+  }
+
+  /* 2. Lists where most items open with a bold lead. */
+  content.querySelectorAll("ul, ol").forEach((list) => {
+    if (list.closest(BOXED) || list.closest("li")) return;
+    const items = Array.from(list.children).filter((n) => n.tagName === "LI");
+    // Two is enough: a 2-item bold-lead list sitting next to a 3-item one
+    // looked like a rendering bug when only the longer list got cards.
+    if (items.length < 2) return;
+    const led = items.filter((li) => {
+      const first = li.firstElementChild;
+      const host = first && first.tagName === "P" ? first : li;
+      // Checklist items open with the checkbox markers, so look past those.
+      const lead = Array.from(host.children).find((n) => !n.matches(".sr-only, .task-box"));
+      return lead && /^(STRONG|B)$/.test(lead.tagName);
+    });
+    if (led.length < Math.ceil(items.length * 0.6)) return;
+    list.classList.add("lead-list");
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxPointCards, 0));
+} else {
+  setTimeout(tcxPointCards, 0);
+}
+
+/* Day plans, schedules and label lists are written as single-newline lines
+   inside one markdown paragraph ("**Monday:** ... \n **Tuesday:** ..."), which
+   markdown collapses into one run-on block. Split the paragraph back into one
+   row per label. Nothing is reworded - only the line breaks the author already
+   typed are restored. */
+const tcxSplitLabelRows = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+
+  Array.from(content.querySelectorAll("p")).forEach((p) => {
+    const labels = Array.from(p.children).filter(
+      (n) => /^(STRONG|B)$/.test(n.tagName) && /:\s*$/.test(n.textContent || "")
+    );
+    if (labels.length < 3) return;
+    const firstReal = Array.from(p.childNodes).find(
+      (n) => n.nodeType !== Node.TEXT_NODE || n.textContent.trim()
+    );
+    if (firstReal !== labels[0]) return;
+
+    const rows = [];
+    let row = null;
+    Array.from(p.childNodes).forEach((n) => {
+      if (labels.includes(n)) {
+        row = document.createElement("p");
+        row.className = "row-line";
+        rows.push(row);
+      }
+      if (row) row.appendChild(n);
+    });
+    if (rows.length < 3) return;
+
+    rows.forEach((r) => {
+      while (r.lastChild && r.lastChild.nodeType === Node.TEXT_NODE && !r.lastChild.textContent.trim()) {
+        r.removeChild(r.lastChild);
+      }
+    });
+
+    const wrap = document.createElement("div");
+    wrap.className = "row-lines";
+    p.before(wrap);
+    rows.forEach((r) => wrap.appendChild(r));
+    p.remove();
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxSplitLabelRows, 0));
+} else {
+  setTimeout(tcxSplitLabelRows, 0);
+}
+
+/* The inline ATS scanner is appended at the very end of the article, but most
+   posts explicitly tell the reader to "run your resume through the free ATS
+   score checker" somewhere earlier. Move the widget to that sentence so the
+   tool is right where the reader is told to use it. */
+const tcxPlaceAtsWidget = () => {
+  const content = document.querySelector(".post-content");
+  const widget = content && content.querySelector(".blog-ats");
+  if (!widget) return;
+
+  // Drop the preview shot if the post already embeds the same screenshot.
+  const shot = widget.querySelector(".blog-ats-preview img");
+  if (shot) {
+    const src = shot.getAttribute("src");
+    const dupe = Array.from(content.querySelectorAll("img")).some(
+      (i) => i !== shot && (i.getAttribute("src") || "").endsWith(src.split("/").pop())
+    );
+    if (dupe) shot.closest(".blog-ats-preview").remove();
+  }
+
+  const CUE = /(free )?ats (score )?(checker|scanner)|check your ats score|scan your resume/i;
+  const anchor = Array.from(content.querySelectorAll("p")).find(
+    (p) => !p.closest(".blog-ats, .end-cta, .article-cta-strip, .blog-rate") && CUE.test(p.textContent || "")
+  );
+  if (!anchor) return;
+
+  // Keep it out of the middle of a boxed section - attach after the box.
+  const host = anchor.closest(".callout-box, .step-card, .tpl-block, .point-run, .lead-run, .faq-box") || anchor;
+  host.after(widget);
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxPlaceAtsWidget, 0));
+} else {
+  setTimeout(tcxPlaceAtsWidget, 0);
+}
+
+/* Two more raw shapes the markdown leaves behind:
+     1. a code block whose lines are "Before: ..." / "After: ..." - the single
+        most persuasive comparison in a tailoring post, rendered as grey code
+     2. a dash list typed on one line ("The after version: - uses ... - shows
+        ...") which markdown collapses into a run-on sentence
+   Both are re-presented using structure the author already implied. */
+const tcxBeforeAfterBlocks = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+
+  content.querySelectorAll("pre").forEach((pre) => {
+    if (pre.closest(".ba-split")) return;
+    const lines = (pre.textContent || "").split("\n").map((l) => l.trim()).filter(Boolean);
+    if (lines.length < 2) return;
+    const parsed = lines.map((l) => /^(before|after)\s*:\s*(.+)$/i.exec(l));
+    if (parsed.some((m) => !m)) return;
+    if (!parsed.some((m) => /before/i.test(m[1])) || !parsed.some((m) => /after/i.test(m[1]))) return;
+
+    const split = document.createElement("div");
+    split.className = "ba-split";
+    parsed.forEach((m) => {
+      const kind = m[1].toLowerCase() === "before" ? "before" : "after";
+      const panel = document.createElement("section");
+      panel.className = "ba-panel ba-" + kind;
+      const label = document.createElement("p");
+      label.className = "ba-panel-label";
+      label.textContent = kind === "before" ? "Before" : "After";
+      const body = document.createElement("p");
+      body.className = "ba-panel-text";
+      body.textContent = m[2];
+      panel.append(label, body);
+      split.appendChild(panel);
+    });
+    pre.replaceWith(split);
+  });
+
+  // "Lead-in: - item - item - item" typed on a single markdown line.
+  const DASH = /\s[-\u2013\u2014]\s/g;
+  Array.from(content.querySelectorAll("p")).forEach((p) => {
+    if (p.closest(".ba-split, .row-lines, .lead-list")) return;
+    if (p.children.length && p.querySelector("img, br")) return;
+    const text = p.textContent || "";
+    const parts = text.split(DASH);
+    if (parts.length < 4) return;
+    if (!/:\s*$/.test(parts[0].trim())) return;
+    // Only when the whole paragraph is plain text or links - rebuilding it
+    // would otherwise drop nested markup.
+    if (Array.from(p.children).some((n) => !/^(A|EM|STRONG|B|CODE)$/.test(n.tagName))) return;
+
+    const wrap = document.createElement("div");
+    wrap.className = "dash-list-wrap";
+    const lead = document.createElement("p");
+    lead.className = "dash-list-lead";
+    lead.textContent = parts[0].trim();
+    const ul = document.createElement("ul");
+    ul.className = "dash-list";
+    parts.slice(1).forEach((t) => {
+      const li = document.createElement("li");
+      li.textContent = t.trim();
+      ul.appendChild(li);
+    });
+    wrap.append(lead, ul);
+    p.replaceWith(wrap);
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxBeforeAfterBlocks, 0));
+} else {
+  setTimeout(tcxBeforeAfterBlocks, 0);
 }

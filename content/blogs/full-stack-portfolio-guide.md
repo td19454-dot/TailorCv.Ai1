@@ -10,8 +10,6 @@ slug: full-stack-portfolio-guide
 keywords: full stack portfolio, full stack developer projects, end to end project portfolio, mern portfolio
 ---
 
-Full stack is about range *and* depth, and your portfolio has to prove both without looking scattered. The winning formula: one flagship app you go deep on, plus a couple of focused pieces that show your edges. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
-
 ## Key Takeaways
 
 - Create a standout flagship app that demonstrates your full stack capabilities, including authentication, a responsive frontend, a documented API, third-party integrations, and live deployment.
@@ -19,6 +17,9 @@ Full stack is about range *and* depth, and your portfolio has to prove both with
 - Ensure all projects in your portfolio have live demos, clean GitHub repositories, and detailed READMEs to validate your work.
 - Write a mini case study for your flagship app that outlines the problem, your technology choices, challenges faced, and the final outcome.
 - Keep your resume, LinkedIn, and portfolio aligned in messaging to avoid confusion for recruiters, reinforcing your professional narrative across all platforms.
+
+
+Full stack is about range *and* depth, and your portfolio has to prove both without looking scattered. The winning formula: one flagship app you go deep on, plus a couple of focused pieces that show your edges. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
 ## Show One Flagship End-to-End App
 Pick a single product and go all the way:
@@ -150,15 +151,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Full Stack Developer Resume 2026](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
 - [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio)
-- Backend Developer Portfolio Guide
-- 15 Developer Portfolio Project Ideas
-- GitHub Portfolio Optimization
-- How to Write a Portfolio Case Study
-- How to Get Your First Tech Job
-- Portfolio Checklist Before You Apply
-- Portfolio Mistakes to Avoid
-- How to Host Your Portfolio for Free
-- Software Engineer Resume FAANG
+- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [Software Engineer Resume FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang)
 
 ## Make This Practical
 
@@ -176,8 +177,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

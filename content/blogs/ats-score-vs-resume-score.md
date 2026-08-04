@@ -10,12 +10,6 @@ slug: ats-score-vs-resume-score
 keywords: ats score vs resume score, resume score meaning, ats score meaning, resume rating
 ---
 
-You may have seen tools report an "[ATS score](https://thetailorcv.com/blog/ats-score-guide)" and others report a "resume score." Are they the same thing? Not quite. This guide explains the **difference between an [ATS score](https://thetailorcv.com/blog/ats-score-guide) and a resume score**, how they overlap, and which to prioritize.
-
-You can get both perspectives by scanning your resume with the [free ATS score checker](/solutions).
-
----
-
 ## Key Takeaways
 
 - An ATS score measures how well a resume matches a specific job description and its compatibility with Applicant Tracking Software.
@@ -23,6 +17,13 @@ You can get both perspectives by scanning your resume with the [free ATS score c
 - Both scores share best practices like clean formatting and quantified achievements, but only the ATS score captures keyword matching for a job.
 - Prioritize the ATS score for each job application after establishing a strong foundation with a high-quality resume.
 - Common mistakes include using generic templates and ignoring job-specific keywords, which can negatively impact both scores.
+
+
+You may have seen tools report an "[ATS score](https://thetailorcv.com/blog/ats-score-guide)" and others report a "resume score." Are they the same thing? Not quite. This guide explains the **difference between an [ATS score](https://thetailorcv.com/blog/ats-score-guide) and a resume score**, how they overlap, and which to prioritize.
+
+You can get both perspectives by scanning your resume with the [free ATS score checker](/solutions).
+
+---
 
 ## Quick Definitions
 
@@ -205,12 +206,12 @@ Always check your **ATS score against the specific job description** before appl
 - [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
 - [What Is a Good ATS Score?](https://thetailorcv.com/blog/what-is-a-good-ats-score)
 - [ATS Resume Checker - How It Works](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
-- How to Increase Your ATS Score
-- ATS Score Guide for 2026
-- Does My Resume Pass ATS? A 12-Point Checklist (2026)
-- Free ATS Resume Scan - Test Your Resume in 60 Seconds (2026)
-- Why Is My ATS Score So Low? 12 Reasons and Fixes (2026)
-- ATS Keywords - How to Find and Add Them to Boost Your Score (2026)
+- [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
+- [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [Free ATS Resume Scan - Test Your Resume in 60 Seconds (2026)](https://thetailorcv.com/blog/free-ats-resume-scan)
+- [Why Is My ATS Score So Low? 12 Reasons and Fixes (2026)](https://thetailorcv.com/blog/why-is-my-ats-score-low)
+- [ATS Keywords - How to Find and Add Them to Boost Your Score (2026)](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
 
 ---
 

@@ -10,18 +10,19 @@ slug: resume-fonts-guide
 keywords: best resume fonts, resume font size, professional fonts for resume, resume fonts 2026, what font to use for resume, ATS-safe resume fonts, worst fonts for resume
 ---
 
-Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
-
-After choosing your font, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that already uses optimal typography, and run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly.
-
----
-
 ## Key Takeaways
 
 - Font choice significantly impacts readability, professionalism, and ATS compatibility of your resume.
 - Recommended fonts for 2026 include Calibri, Garamond, Georgia, Arial, Cambria, Lato, and Helvetica for their clarity and ATS support.
 - Avoid using fonts like Comic Sans, Papyrus, and script styles, as they hinder readability and ATS parsing.
 - Times New Roman and Verdana are acceptable but not ideal; consider more modern alternatives for a contemporary feel.
+
+
+Your choice of font affects how professional your resume looks, how easy it is to read, and - critically - whether an Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)) can parse it correctly. Most candidates spend hours on resume content and seconds on typography. This guide fixes that.
+
+After choosing your font, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that already uses optimal typography, and run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to confirm it parses cleanly.
+
+---
 
 ## Why Font Choice Matters
 
@@ -161,12 +162,12 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 - [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
 - [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
 - [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- ATS Resume Formatting Mistakes
-- How to Make Your Resume ATS-Friendly
-- Ideal Resume Length Guide
-- How to Choose the Right Resume Template
-- The Anatomy of a Perfect Resume
-- Resume File Format Guide: PDF vs Word
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
+- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
+- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
+- [Resume File Format Guide: PDF vs Word](https://thetailorcv.com/blog/resume-file-format-guide)
 
 ---
 

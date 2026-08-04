@@ -101,7 +101,7 @@ Read the room. A cover letter to a formal financial institution should open with
 - "A former colleague described your engineering culture to me two years ago, and I have quietly wanted to work here since."
 - "I read your entire documentation site before applying — partly to prepare, mostly because it was genuinely good."
 - "Your product solved a problem I had been complaining about for a year; now I want to help solve it for everyone else."
-- "I am early in my career, but I have shipped more side projects than some people ship jobs, and your role is exactly where I want to point that energy."
+- "I am early in my career, but I have shipped more side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) than some people ship jobs, and your role is exactly where I want to point that energy."
 
 Adapt, never copy — the power is in the specific truth you attach to the pattern.
 

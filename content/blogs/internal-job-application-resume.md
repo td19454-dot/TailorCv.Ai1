@@ -10,6 +10,14 @@ slug: internal-job-application-resume
 keywords: internal job application resume, resume for internal transfer, how to apply for internal position, tailoring resume for internal role, internal promotion resume 2026
 ---
 
+## Key Takeaways
+
+- Internal job applications require a tailored resume, just like external ones, to effectively convey your qualifications and fit for the role.
+- Consider your relationship with your manager before applying; transparency can build trust, but it may be wise to wait if your manager is unsupportive.
+- Use insider knowledge of the company’s language and priorities to enhance your resume and demonstrate your qualifications.
+- Quantify your contributions to the company to showcase your impact and relevance to the new role.
+
+
 You have been at the company for two years.
 
 You know the product better than most interviewers.
@@ -26,13 +34,6 @@ Internal job applications are loaded with nuance that no one talks about.
 This guide covers all of it - the resume strategy, the politics, and how to tailor your application to win the role you want inside your own company.
 
 ---
-
-## Key Takeaways
-
-- Internal job applications require a tailored resume, just like external ones, to effectively convey your qualifications and fit for the role.
-- Consider your relationship with your manager before applying; transparency can build trust, but it may be wise to wait if your manager is unsupportive.
-- Use insider knowledge of the company’s language and priorities to enhance your resume and demonstrate your qualifications.
-- Quantify your contributions to the company to showcase your impact and relevance to the new role.
 
 ## Why Internal Applications Are Different
 
@@ -261,13 +262,13 @@ You have insider knowledge of the company, culture, and needs. That is a real ad
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Get a Promotion in 2026](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-summary-match-job-description)
-- How to Write a Resume Summary
-- ATS Score Guide
-- How to Handle Job Rejection
-- Cover Letter Guide 2026
-- Tailored vs Generic Resume
-- Resume Matching with Job Description - Complete Guide
-- How to Negotiate a Salary Offer
+- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
+- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 
 ---
 

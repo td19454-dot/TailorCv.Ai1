@@ -10,14 +10,6 @@ slug: how-recruiters-read-resumes
 keywords: how recruiters read resumes, resume scanning, 10 second resume test, what recruiters look for on resume, recruiter resume review, resume scan tips, hiring manager resume review
 ---
 
-Eye-tracking studies of recruiters reviewing resumes show something uncomfortable: most resumes are read in under 10 seconds before a decision is made. Not because recruiters are lazy - but because they review hundreds of resumes per role, and pattern recognition is faster than reading.
-
-Understanding how recruiters scan resumes lets you put the right information in the right places - so your resume gets through the initial cut and earns a proper read.
-
-Before optimizing your layout, make sure your content passes ATS first with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then use an [ATS-friendly template](https://www.thetailorcv.com/templates) that is designed for the scan pattern described in this guide.
-
----
-
 ## Key Takeaways
 
 - Recruiters spend an average of 6-7 seconds on an initial resume scan, focusing on specific patterns of information.
@@ -25,6 +17,15 @@ Before optimizing your layout, make sure your content passes ATS first with the 
 - Use a single-column layout to ensure all key information is easily visible, as the right side of the resume is often ignored.
 - Ensure job titles and company names are clear and left-aligned, with consistent date formatting to avoid confusion about employment history.
 - A resume that passes the initial scan can earn a longer review, where bullet point quality and relevance to the job description become critical.
+
+
+Eye-tracking studies of recruiters reviewing resumes show something uncomfortable: most resumes are read in under 10 seconds before a decision is made. Not because recruiters are lazy - but because they review hundreds of resumes per role, and pattern recognition is faster than reading.
+
+Understanding how recruiters scan resumes lets you put the right information in the right places - so your resume gets through the initial cut and earns a proper read.
+
+Before optimizing your layout, make sure your content passes ATS first with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then use an [ATS-friendly template](https://www.thetailorcv.com/templates) that is designed for the scan pattern described in this guide.
+
+---
 
 ## What Eye-Tracking Research Shows
 
@@ -174,15 +175,15 @@ If the answer to any of these is no, your resume needs work. Use an [ATS-friendl
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- How to Write Resume Bullet Points That Get Results
-- Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- How to Make Your Resume ATS-Friendly
-- ATS Resume Formatting Mistakes
-- How to Explain Resume Gaps
-- Resume Proofreading Checklist
-- Resume Design and Color Guide
-- Resume Margins, Spacing and Layout
+- [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
+- [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
 
 ---
 

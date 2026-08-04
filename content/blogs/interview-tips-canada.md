@@ -10,10 +10,6 @@ keywords: interview tips canada, canadian interview questions and answers, star 
 image: public/blog-images/interview-tips-canada.png
 ---
 
-Your Canadian-style resume got you the interview — now preparation decides the offer. Canadian interviews lean heavily on **behavioural questions** ("Tell me about a time when…"), which assess how you've actually handled real situations. The candidates who succeed aren't necessarily the most experienced; they're the ones who tell clear, structured, results-focused stories and show genuine fit.
-
-This guide gives you everything you need for a Canadian job interview in 2026: how to master the STAR method, the most common questions and how to answer them, local etiquette, and a preparation routine that consistently converts shortlists into offers.
-
 ## Key Takeaways
 
 - Canadian interviews rely on **behavioural questions** — prepare using the **STAR method**.
@@ -21,6 +17,11 @@ This guide gives you everything you need for a Canadian job interview in 2026: h
 - Ask thoughtful questions of your own — it signals genuine interest and engagement.
 - Professional courtesy, punctuality, and clear communication matter.
 - Practising out loud — ideally with a realistic [mock interview](https://thetailorcv.com/mock-interview) — is what makes the difference.
+
+
+Your Canadian-style resume got you the interview — now preparation decides the offer. Canadian interviews lean heavily on **behavioural questions** ("Tell me about a time when…"), which assess how you've actually handled real situations. The candidates who succeed aren't necessarily the most experienced; they're the ones who tell clear, structured, results-focused stories and show genuine fit.
+
+This guide gives you everything you need for a Canadian job interview in 2026: how to master the STAR method, the most common questions and how to answer them, local etiquette, and a preparation routine that consistently converts shortlists into offers.
 
 ## Why Canada Loves Behavioural Interviews
 

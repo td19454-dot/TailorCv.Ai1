@@ -10,16 +10,17 @@ slug: resume-matcher-tool-job-description
 keywords: resume matcher tool, match resume to job description, job description resume matcher, resume keyword matcher
 ---
 
-A resume matcher tool takes your resume and a specific job posting and tells you, in concrete terms, how close a match you are on paper. That is a different exercise from reading the posting yourself and guessing what stands out - the tool runs the same comparison an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) or recruiter would, without the fatigue of reading the two hundredth resume of the day. If you have not seen the underlying framework, start with [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), then come back here to learn how to actually run and read a match report.
-
-This post is about the tool itself: what it measures, how to work with its output, and how to avoid the two most common mistakes people make with it - treating a high score as a guarantee, and stuffing in keywords they cannot back up in an interview.
-
 ## Key Takeaways
 
 - A resume matcher tool evaluates how well your resume aligns with a job description by comparing hard skills, responsibilities, seniority signals, language, and qualifications.
 - The match score reflects the overlap of required terms, semantic closeness in phrasing, experience-level alignment, and the depth of keyword presence in your resume.
 - High match scores do not guarantee job suitability; they serve as a signal to refine your resume rather than a definitive measure of employability.
 - A thorough reading of the job description is crucial for effective use of the matcher, focusing on required versus preferred qualifications and repeated terms.
+
+
+A resume matcher tool takes your resume and a specific job posting and tells you, in concrete terms, how close a match you are on paper. That is a different exercise from reading the posting yourself and guessing what stands out - the tool runs the same comparison an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) or recruiter would, without the fatigue of reading the two hundredth resume of the day. If you have not seen the underlying framework, start with [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), then come back here to learn how to actually run and read a match report.
+
+This post is about the tool itself: what it measures, how to work with its output, and how to avoid the two most common mistakes people make with it - treating a high score as a guarantee, and stuffing in keywords they cannot back up in an interview.
 
 ## What a Resume Matcher Tool Actually Compares
 

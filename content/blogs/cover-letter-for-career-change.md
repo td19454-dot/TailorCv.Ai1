@@ -10,18 +10,19 @@ slug: cover-letter-for-career-change
 keywords: cover letter for career change, career change cover letter example, cover letter for switching careers, transferable skills cover letter
 ---
 
-A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) cover letter has one job the resume can't fully do: explain *why* you're pivoting, in your own voice, before a recruiter decides you're "not a fit" on paper alone. Get this letter right, and it becomes your strongest asset in the entire application - stronger than the resume itself.
-
-Before writing, make sure your [resume is already tailored for the switch](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026). Then use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to draft a first version in your voice, and check your resume's match with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you send anything.
-
----
-
 ## Key Takeaways
 
 - A career change cover letter should explain the reason for the pivot and highlight transferable skills to address potential concerns from recruiters.
 - Structure the letter with a focus on connection, a clear statement of transition, specific examples of transferable skills, and proof of momentum through relevant projects or coursework.
 - Avoid apologizing for the career change and instead own the narrative while ensuring the letter addresses the specific needs of the target role and company.
 - Customize each cover letter to reflect genuine motivation for the role and the company, rather than using a generic template.
+
+
+A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) cover letter has one job the resume can't fully do: explain *why* you're pivoting, in your own voice, before a recruiter decides you're "not a fit" on paper alone. Get this letter right, and it becomes your strongest asset in the entire application - stronger than the resume itself.
+
+Before writing, make sure your [resume is already tailored for the switch](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026). Then use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) to draft a first version in your voice, and check your resume's match with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you send anything.
+
+---
 
 ## Why Career Change Cover Letters Are Different
 

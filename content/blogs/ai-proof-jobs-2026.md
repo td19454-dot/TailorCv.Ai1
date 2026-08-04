@@ -10,10 +10,6 @@ slug: ai-proof-jobs-2026
 keywords: ai proof jobs, jobs ai cannot replace, careers safe from ai, future proof career 2026
 ---
 
-Every few months another headline claims a language model is about to replace your job, and most people have learned to tune out the panic without ever answering the actual question underneath it: is your specific role exposed, and if so, what should you do about it? The honest answer has less to do with your job title than with what your work actually requires day to day - judgment, physical presence, trust, and accountability are far harder to automate than repetitive pattern-matching on existing data. This is a different question from [which jobs survive a recession](https://thetailorcv.com/blog/recession-proof-jobs-2026), which is about budget cuts, not automation - a role can be completely safe from layoffs during a downturn and still be quietly reshaped by AI tools over the same period. Before going further, see exactly how your resume reads today with the [free ATS score checker](https://www.thetailorcv.com/solutions), because the positioning advice below only helps if you're honest about where you're starting from.
-
----
-
 ## Key Takeaways
 
 - "AI-proof" jobs are largely a myth; most roles will be affected by AI in some capacity.
@@ -21,6 +17,11 @@ Every few months another headline claims a language model is about to replace yo
 - "AI-augmented" jobs involve AI handling routine tasks, allowing humans to focus on oversight and complex decision-making.
 - Key factors that make jobs resistant to automation include high-stakes judgment calls, physical dexterity in unpredictable environments, and deep interpersonal trust.
 - Understanding the underlying skills needed for resilience against AI is more important than memorizing specific job titles.
+
+
+Every few months another headline claims a language model is about to replace your job, and most people have learned to tune out the panic without ever answering the actual question underneath it: is your specific role exposed, and if so, what should you do about it? The honest answer has less to do with your job title than with what your work actually requires day to day - judgment, physical presence, trust, and accountability are far harder to automate than repetitive pattern-matching on existing data. This is a different question from [which jobs survive a recession](https://thetailorcv.com/blog/recession-proof-jobs-2026), which is about budget cuts, not automation - a role can be completely safe from layoffs during a downturn and still be quietly reshaped by AI tools over the same period. Before going further, see exactly how your resume reads today with the [free ATS score checker](https://www.thetailorcv.com/solutions), because the positioning advice below only helps if you're honest about where you're starting from.
+
+---
 
 ## "AI-Proof" vs. "AI-Resistant" - Why the Framing Matters
 

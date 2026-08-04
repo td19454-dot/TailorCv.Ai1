@@ -124,6 +124,6 @@ Your journalist [resume](https://www.thetailorcv.com/modify-cv) is ready when it
 - Leads with your **beat and bylines**.
 - Quantifies **audience and output** with [numbers](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
 - Names reporting and digital [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
-- Links your best clips and passes the ATS score checker.
+- Links your best clips and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Write a lead-first [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every outlet.

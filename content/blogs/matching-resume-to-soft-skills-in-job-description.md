@@ -10,14 +10,6 @@ keywords: soft skills job description resume, how to match soft skills to job de
 image: public/blog-images/matching-resume-to-soft-skills-in-job-description.webp
 ---
 
-Most candidates hunt job descriptions for hard skills, tools, certifications, years of experience, and ignore the soft skills entirely, or worse, copy generic words like "team player" and "hard worker" straight onto their [resume](https://www.thetailorcv.com/solutions) without any real matching effort. Both approaches miss something important: soft skills are rarely listed as a bullet point. They are buried in the responsibilities section, the culture blurb, and the way the role is described.
-
-Learning to read between the lines and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these implied soft skills, with real evidence instead of buzzwords, is a differentiator most candidates skip entirely.
-
-Paste any job description into the [TailorCV resume optimizer](/solutions) to see how well your resume reflects both the hard and soft skills the role demands.
-
----
-
 ## Key Takeaways
 
 - Soft skills are often implied in job descriptions rather than explicitly listed, requiring candidates to read between the lines to identify them.
@@ -25,6 +17,15 @@ Paste any job description into the [TailorCV resume optimizer](/solutions) to se
 - Resumes should provide concrete examples of soft skills in action, rather than simply listing unsupported adjectives.
 - Candidates should extract implied soft skills from job descriptions and match them with real experiences to enhance their resumes.
 - Using the specific language from the job posting to describe your experiences can strengthen the alignment between your resume and the role.
+
+
+Most candidates hunt job descriptions for hard skills, tools, certifications, years of experience, and ignore the soft skills entirely, or worse, copy generic words like "team player" and "hard worker" straight onto their [resume](https://www.thetailorcv.com/solutions) without any real matching effort. Both approaches miss something important: soft skills are rarely listed as a bullet point. They are buried in the responsibilities section, the culture blurb, and the way the role is described.
+
+Learning to read between the lines and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these implied soft skills, with real evidence instead of buzzwords, is a differentiator most candidates skip entirely.
+
+Paste any job description into the [TailorCV resume optimizer](/solutions) to see how well your resume reflects both the hard and soft skills the role demands.
+
+---
 
 ## Where Soft Skills Actually Hide in a Job Description
 
@@ -212,13 +213,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to a
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
-- Soft Skills for Resume
-- How to Write Resume Bullet Points
-- How to Quantify Resume Achievements
-- Hidden Keywords in Job Description
-- Best Action Verbs for Resume
-- ATS Score Guide 2026
-- Job Description Analysis Checklist
+- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Hidden Keywords in Job Description](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
+- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 
 ---
 

@@ -2371,3 +2371,306 @@ header.navbar {
   border-left-color: #eab308;
   background: #fffef8;
 }
+
+/* ---- FAQ: light blue panel, big section header, questions as sub-headings ----
+   Two FAQ shapes exist in the corpus: questions as <h3>, and questions as a
+   bold lead inside the answer paragraph. Both need to read as a question
+   sitting above its answer, so the bold lead is promoted to its own line. */
+.blog-detail-page .faq-box {
+  background: linear-gradient(180deg, #f2f7ff 0%, #eaf2fe 100%);
+  border: 1px solid #d6e4fb;
+  box-shadow: 0 2px 6px rgba(20, 50, 110, .04), 0 16px 36px rgba(20, 50, 110, .07);
+}
+
+.blog-detail-page .post-content .faq-box > h2 {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+  font-weight: 750;
+  color: #0d2a5c;
+  letter-spacing: -0.015em;
+}
+
+.blog-detail-page .faq-item {
+  padding: 20px 0;
+  border-top: 1px solid #dbe7fa;
+}
+
+/* questions written as "### Question" */
+.blog-detail-page .post-content .faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.22rem;
+  font-weight: 750;
+  color: #10305f;
+}
+
+/* questions written as "**Question?** answer..." - lift the lead onto its
+   own line so it reads as a heading rather than running into the answer */
+.blog-detail-page .post-content .faq-box > p {
+  margin: 0;
+  padding: 20px 0;
+  border-top: 1px solid #dbe7fa;
+  color: #253a5c;
+}
+.blog-detail-page .post-content .faq-box > p:first-of-type { border-top: 0; }
+.blog-detail-page .post-content .faq-box > p > strong:first-child {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.22rem;
+  font-weight: 750;
+  line-height: 1.35;
+  color: #10305f;
+}
+.blog-detail-page .post-content .faq-box a { color: #1d4ed8; }
+
+/* ---- Individually numbered mistake cards ----
+   When a "## Common Mistakes" section's list gets exploded (see blog.js),
+   each <li> becomes its own .callout-mistake card. Stack them with a gap so
+   they read as separate items, not one continuous box. */
+.blog-detail-page .post-content .mistake-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 20px 0;
+}
+.blog-detail-page .post-content .mistake-grid .mistake-grid-item {
+  margin: 0;
+}
+.blog-detail-page .post-content .mistake-grid-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Bold-lead paragraph runs ----
+   Three or more consecutive "**Label.** prose" paragraphs. Each becomes its
+   own light card so the labels the author already wrote read as distinct
+   points instead of one grey wall. */
+.blog-detail-page .post-content .lead-run {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 24px 0;
+}
+.blog-detail-page .post-content .lead-run > .lead-item {
+  margin: 0;
+  padding: 16px 22px;
+  border: 1px solid #e6e9f2;
+  border-left: 4px solid #5B42F3;
+  border-radius: 10px;
+  background: #fbfbff;
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child {
+  display: block;
+  margin-bottom: 5px;
+  color: #4c34e0;
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .lead-run > .lead-item { padding: 14px 16px; }
+}
+
+/* ---- Heading + short-prose runs ---- */
+.blog-detail-page .post-content .point-run {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 24px 0;
+}
+.blog-detail-page .post-content .point-run > .point-card {
+  margin: 0;
+  padding: 18px 22px;
+  border: 1px solid #e6e9f2;
+  border-left: 4px solid #5B42F3;
+  border-radius: 10px;
+  background: #fbfbff;
+}
+.blog-detail-page .post-content .point-run > .point-card > h3 {
+  margin: 0 0 7px;
+  padding: 0;
+  border: 0;
+  font-size: 1.08rem;
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .point-run > .point-card > p { margin: 0 0 10px; }
+.blog-detail-page .post-content .point-run > .point-card > p:last-child { margin-bottom: 0; }
+
+/* ---- Lists whose items open with a bold lead ---- */
+.blog-detail-page .post-content ul.lead-list,
+.blog-detail-page .post-content ol.lead-list {
+  list-style: none;
+  counter-reset: tcxlead;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 1000px;
+  margin: 22px 0;
+  padding: 0;
+}
+.blog-detail-page .post-content .lead-list > li {
+  position: relative;
+  margin: 0;
+  padding: 14px 20px 14px 40px;
+  border: 1px solid #e6e9f2;
+  border-radius: 10px;
+  background: #fbfbff;
+}
+.blog-detail-page .post-content .lead-list > li::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 23px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #AF40FF, #5B42F3);
+}
+.blog-detail-page .post-content ol.lead-list > li { padding-left: 58px; }
+.blog-detail-page .post-content ol.lead-list > li::before {
+  counter-increment: tcxlead;
+  content: counter(tcxlead);
+  left: 16px;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > b:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .lead-list > li { padding: 12px 14px 12px 34px; }
+  .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
+  .blog-detail-page .post-content .point-run > .point-card { padding: 15px 16px; }
+}
+
+/* Headings inherited a 10px side margin from `.blog-post h2, h3, p` that the
+   paragraph rules later reset to 0 - so every heading sat 10px right of its
+   own body text. Align them back to the text column. */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* ---- Label-per-line rows (day plans, schedules) ---- */
+.blog-detail-page .post-content .row-lines {
+  display: flex;
+  flex-direction: column;
+  margin: 14px 0;
+}
+.blog-detail-page .post-content .row-lines > .row-line {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.09);
+}
+.blog-detail-page .post-content .row-lines > .row-line:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.blog-detail-page .post-content .row-lines > .row-line:last-child { padding-bottom: 0; }
+.blog-detail-page .post-content .row-lines > .row-line > strong:first-child,
+.blog-detail-page .post-content .row-lines > .row-line > b:first-child {
+  color: #4c34e0;
+}
+.blog-detail-page .post-content .tpl-block .row-lines > .row-line {
+  border-top-color: rgba(180, 130, 20, 0.22);
+}
+.blog-detail-page .post-content .tpl-block .row-lines > .row-line > strong:first-child {
+  color: #92400e;
+}
+
+/* ---- ATS widget: scorecard preview ---- */
+.blog-detail-page .post-content .blog-ats-preview {
+  margin: 22px 0 0;
+}
+.blog-detail-page .post-content .blog-ats-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(91, 66, 243, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+}
+.blog-detail-page .post-content .blog-ats-preview figcaption {
+  margin-top: 10px;
+  color: #64748b;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* Checklist items in a carded list: the checkbox is the marker, so drop the
+   dot and give the box the card's left gutter. */
+.blog-detail-page .post-content .lead-list > li.task-item::before { display: none; }
+.blog-detail-page .post-content .lead-list > li.task-item {
+  margin-left: 0;
+  padding-left: 48px;
+}
+.blog-detail-page .post-content .lead-list > li.task-item > .task-box {
+  left: 18px;
+  top: 16px;
+}
+
+/* An H3 immediately under an H2 was rendering almost as large as its parent,
+   so a section opened with two competing headlines. Make the subheading
+   clearly subordinate and close the gap between the pair. */
+.blog-detail-page .post-content h3 {
+  font-size: clamp(1.3rem, 1.6vw, 1.75rem);
+}
+.blog-detail-page .post-content > h2 + h3 {
+  margin-top: 18px;
+}
+
+/* ---- Before / After comparison panels ---- */
+.blog-detail-page .post-content .ba-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  max-width: 1000px;
+  margin: 22px 0;
+}
+.blog-detail-page .post-content .ba-panel {
+  padding: 16px 20px;
+  border: 1px solid #e2e8f0;
+  border-top: 4px solid #94a3b8;
+  border-radius: 10px;
+  background: #fff;
+}
+.blog-detail-page .post-content .ba-panel.ba-before {
+  border-top-color: #f97316;
+  background: #fffbf5;
+}
+.blog-detail-page .post-content .ba-panel.ba-after {
+  border-top-color: #16a34a;
+  background: #f8fdfa;
+}
+.blog-detail-page .post-content .ba-panel-label {
+  margin: 0 0 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-content .ba-panel.ba-before .ba-panel-label { color: #c2410c; }
+.blog-detail-page .post-content .ba-panel.ba-after .ba-panel-label { color: #15803d; }
+.blog-detail-page .post-content .ba-panel-text { margin: 0; }
+@media (max-width: 760px) {
+  .blog-detail-page .post-content .ba-split { grid-template-columns: 1fr; }
+}
+
+/* ---- Single-line dash lists rebuilt as bullets ---- */
+.blog-detail-page .post-content .dash-list-wrap { margin: 18px 0; max-width: 1000px; }
+.blog-detail-page .post-content .dash-list-lead { margin: 0 0 8px; }
+.blog-detail-page .post-content ul.dash-list { margin: 0; }

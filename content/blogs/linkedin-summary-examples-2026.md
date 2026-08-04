@@ -103,7 +103,7 @@ The tool parses your resume the way an ATS would before it changes anything, so 
 
 - **Put your key [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in your headline, About section, and [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)** — naturally, in real sentences.
 - **Use the exact terms [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search**, not clever synonyms. "Product Manager," not "Product Ninja."
-- **Fill the Skills section** with the tools and abilities you want to be found for, and get a few endorsements.
+- **Fill the [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the tools and abilities you want to be found for, and get a few endorsements.
 - **Set your headline to your target role**, not just your current title, if you are actively looking.
 
 The goal is simple: when a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) searches for someone like you, you appear — and when they click, your first two lines make them stay.

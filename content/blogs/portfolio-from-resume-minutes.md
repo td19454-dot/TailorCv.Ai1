@@ -10,8 +10,6 @@ slug: portfolio-from-resume-minutes
 keywords: resume to portfolio, portfolio from resume, generate portfolio, portfolio in minutes, no code portfolio
 ---
 
-The number one reason people do not have a portfolio is time. Building a site from scratch feels like a weekend project you keep postponing. Here is how to skip all of that and publish a real portfolio **today**, using something you already have: your resume. Pair this with the [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-
 ## Key Takeaways
 
 - Transform your resume into a portfolio website quickly using a portfolio builder that automatically fills in your details.
@@ -19,6 +17,9 @@ The number one reason people do not have a portfolio is time. Building a site fr
 - Ensure consistency between your resume, LinkedIn, and portfolio to avoid confusion for recruiters.
 - Regularly update your portfolio to keep it current and avoid common mistakes like broken links or placeholder text.
 - Select 3-5 key projects to showcase, including case studies that highlight your contributions and measurable outcomes.
+
+
+The number one reason people do not have a portfolio is time. Building a site from scratch feels like a weekend project you keep postponing. Here is how to skip all of that and publish a real portfolio **today**, using something you already have: your resume. Pair this with the [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Start From What You Already Have
 Your resume already contains everything a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) needs - your projects, experience, skills, education, and contact info. Instead of starting from a blank page, reuse it.
@@ -166,15 +167,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
-- How to Add Your Portfolio Link to Your Resume
-- Portfolio Checklist Before You Apply
-- How to Write a Resume From Scratch
-- Portfolio About Me Section
-- Portfolio Contact Section
-- Portfolio Domain Name Guide
-- Portfolio SEO: Get Found
-- Portfolio Mistakes to Avoid
-- Portfolio vs Resume
+- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [How to Write a Resume From Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
+- [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume)
 
 ## Make This Practical
 

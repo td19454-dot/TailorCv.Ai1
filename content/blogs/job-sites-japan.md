@@ -10,8 +10,6 @@ keywords: best job sites japan, job sites for foreigners in japan, where to find
 image: public/blog-images/job-sites-japan.png
 ---
 
-Knowing *where* to look is half the battle when job-hunting in Japan. The right channels — foreigner-focused job boards, LinkedIn, and recruitment agencies that specialise in placing foreigners — connect you to the English-friendly and international employers most likely to hire and sponsor you. Search in the wrong places, and you'll drown in Japanese-only listings for roles that aren't open to you. This guide maps the best job sites and channels for finding work in Japan in 2026, with practical tips for using each as a foreign job seeker.
-
 ## Key Takeaways
 
 - **Foreigner-focused job sites** ([bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume)/international roles) are the best starting point for most foreigners.
@@ -19,6 +17,9 @@ Knowing *where* to look is half the battle when job-hunting in Japan. The right 
 - **Recruitment agencies that place foreigners** are invaluable — they know which employers sponsor and guide you through the process.
 - For **English teaching**, the JET Programme, language schools, and international schools are dedicated routes.
 - Use **multiple channels**, tailor your application to each role, and prioritise Tokyo for the most opportunities.
+
+
+Knowing *where* to look is half the battle when job-hunting in Japan. The right channels — foreigner-focused job boards, LinkedIn, and recruitment agencies that specialise in placing foreigners — connect you to the English-friendly and international employers most likely to hire and sponsor you. Search in the wrong places, and you'll drown in Japanese-only listings for roles that aren't open to you. This guide maps the best job sites and channels for finding work in Japan in 2026, with practical tips for using each as a foreign job seeker.
 
 ## Category 1: Foreigner-Focused Job Sites
 
@@ -96,9 +97,9 @@ A warm introduction can carry real weight — see the networking tips woven thro
 
 1. **Prepare your application first.** Match the format to the employer — a strong ATS-friendly English resume for global roles (see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan)), or a rirekisho for traditional firms (see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide)). Build it with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. **Use multiple channels** — job sites, LinkedIn, and agencies together.
-3. **Tailor every application** to the specific role with the resume optimizer.
-4. **Add a cover letter** where expected — see the Japanese cover letter guide.
-5. **Prepare for interviews** — see Japan interview etiquette and rehearse with the AI mock interview.
+3. **Tailor every application** to the specific role with the [resume optimizer](https://thetailorcv.com/solutions).
+4. **Add a cover letter** where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
+5. **Prepare for interviews** — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 6. **Prioritise Tokyo** for the widest range of foreigner-friendly roles.
 
 ## The Visa Reality

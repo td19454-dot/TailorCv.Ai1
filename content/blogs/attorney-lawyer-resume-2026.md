@@ -104,8 +104,8 @@ Avoid the errors that undercut otherwise strong candidates:
 - **Typos or inconsistent citations.** In law, this is disqualifying — [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) relentlessly.
 - **Vague "attorney" positioning.** Name your [practice area](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) and match the posting.
 - **Duty lists instead of results.** [Quantify](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) matters and outcomes.
-- **Over-formatting.** A decorative layout breaks the ATS — keep it clean and run the ATS score checker.
-- **One resume for every firm.** Tailor each application.
+- **Over-formatting.** A decorative layout breaks the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) — keep it clean and run the [ATS score checker](https://www.thetailorcv.com/solutions).
+- **One resume for every firm.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) each application.
 
 For a wider list of what quietly sinks applications, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and [generic resume mistakes that cost interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
 
@@ -141,7 +141,7 @@ Your attorney [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 - Leads with **bar admissions** and a clear practice area.
 - Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 - Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), confidentiality-safe results.
-- Is flawlessly proofread with consistent formatting.
-- Uses an ATS-friendly template and passes the ATS score checker.
+- Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) with consistent formatting.
+- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 In law, precision wins. Build your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every firm you apply to.

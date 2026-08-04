@@ -10,8 +10,6 @@ slug: social-media-manager-portfolio
 keywords: social media manager portfolio, social media portfolio website, content strategy portfolio, social media case study, community management portfolio
 ---
 
-Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
-
 ## Key Takeaways
 
 - Include growth metrics, campaign case studies, content samples, and crisis management examples in your social media manager portfolio.
@@ -19,6 +17,9 @@ Anyone can screenshot a few posts and call it a portfolio. What actually gets so
 - Host your portfolio on a personal site, linking to live accounts you managed and ensuring it aligns with your resume.
 - Avoid vanity metrics without context and include diverse content formats to match target role requirements.
 - Highlight a turnaround case study and showcase your content calendar to illustrate strategic planning skills.
+
+
+Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
 ## What to Include
 | What to include | Why |
@@ -153,15 +154,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide)
 - [Content Writer Portfolio Guide](https://thetailorcv.com/blog/content-writer-portfolio-guide)
-- Virtual Assistant and Freelancer Portfolio Guide
-- How to Quantify Resume Achievements
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio No Projects
-- AI Portfolio Builder: No Code Required
-- Portfolio Website Themes 2026
-- Personal Website vs Portfolio
+- [Virtual Assistant and Freelancer Portfolio Guide](https://thetailorcv.com/blog/virtual-assistant-portfolio-guide)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 
@@ -178,8 +179,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

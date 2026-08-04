@@ -10,18 +10,19 @@ slug: awards-achievements-on-resume
 keywords: awards on resume, achievements on resume, how to list awards resume, resume achievements section, professional awards resume, academic awards resume, accomplishments on resume
 ---
 
-Awards and achievements can significantly strengthen a resume - but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
-
-Before adding achievements, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to check your overall score, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
-
----
-
 ## Key Takeaways
 
 - Awards and achievements enhance a resume by providing independent validation of performance and making candidates more memorable.
 - Place awards within the relevant Work Experience or Education sections, or create a dedicated "Awards & Achievements" section if you have multiple notable recognitions.
 - Include high-value awards such as prestigious recognitions, competition wins, and significant academic honors, while using discretion for lower-value awards.
 - Frame awards with context to highlight their significance, including what the award was for, its selectivity, and your contributions to earning it.
+
+
+Awards and achievements can significantly strengthen a resume - but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
+
+Before adding achievements, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to check your overall score, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
 
 ## Why Awards Matter on a Resume
 
@@ -190,11 +191,11 @@ Test your resume's full ATS score with the [TailorCV checker](https://www.thetai
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- How to List Certifications on a Resume
-- Resume with No Experience Guide
-- Internship Resume Guide
-- How to List Education on a Resume
-- What Not to Put on a Resume
+- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
+- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 
 ---
 

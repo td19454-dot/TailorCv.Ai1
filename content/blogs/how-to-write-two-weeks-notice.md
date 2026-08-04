@@ -10,14 +10,6 @@ slug: how-to-write-two-weeks-notice
 keywords: how to write two weeks notice, two weeks notice letter, resignation letter template 2026, how to give notice, notice letter example, resignation notice
 ---
 
-A two weeks notice is the standard professional courtesy when leaving a job - a formal notification to your employer that you are resigning and will work for two more weeks before departing. Writing it correctly protects your professional reputation, keeps your references intact, and ensures a smooth transition.
-
-This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
-
-This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - A two weeks notice is a formal resignation letter given at least two weeks before your last working day to maintain professionalism.
@@ -25,6 +17,15 @@ This complements the broader [how to quit your job professionally guide](https:/
 - A professional two weeks notice should include the date, a clear resignation statement, last working day, gratitude, and an offer to assist with the transition.
 - Avoid including complaints, detailed reasons for leaving, or any negativity in your notice to protect your professional reputation.
 - Use one of the provided templates to ensure your letter is concise, positive, and professional.
+
+
+A two weeks notice is the standard professional courtesy when leaving a job - a formal notification to your employer that you are resigning and will work for two more weeks before departing. Writing it correctly protects your professional reputation, keeps your references intact, and ensures a smooth transition.
+
+This guide gives you templates, examples, and the rules for writing a professional two weeks notice.
+
+This complements the broader [how to quit your job professionally guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally). If your resignation is part of a job move, make sure your next step is secure first - optimize your [resume](https://www.thetailorcv.com/templates) with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What Is a Two Weeks Notice?
 
@@ -184,21 +185,21 @@ A two weeks notice is brief. A few sentences is enough - do not write an essay.
 - [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- How to Write a Cold Email to a Recruiter
-- How to Build a Professional Portfolio
-- Networking Tips for Job Search
-- How to Get a Job With No Experience
-- How to Handle Job Rejection
-- How to Negotiate a Salary Offer
-- How to Use LinkedIn for Job Search
-- LinkedIn Profile Optimization Guide
-- Remote Job Search Guide
-- How to Write a Resume Headline in 2026 - With 30 Examples
-- How to Write a Resume Summary in 2026 - With 20 Examples
-- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
-- Freelancing vs Full-Time Employment in 2026 - Honest Comparison
-- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
-- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
+- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
+- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
+- [How to Write a Resume Headline in 2026 - With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
+- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 
 ## Make This Practical
 

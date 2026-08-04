@@ -10,8 +10,6 @@ slug: project-manager-portfolio-guide
 keywords: project manager portfolio, pm portfolio website, project management case study, pmp portfolio, project delivery portfolio
 ---
 
-Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
-
 ## Key Takeaways
 
 - Include 2-4 project case studies detailing scope, timeline, budget, team size, and deliverables in your portfolio.
@@ -19,6 +17,9 @@ Project management is judged on delivery - on time, on budget, on scope, with a 
 - Use a personal site or private link to host your portfolio, ensuring it aligns with your resume's content and metrics.
 - Avoid common mistakes such as omitting challenges faced, sharing confidential information, or failing to connect your portfolio to your certifications.
 - Tailor your portfolio for your target audience and document each project with clear overviews, your role, challenges, and quantifiable results.
+
+
+Project management is judged on delivery - on time, on budget, on scope, with a team that did not burn out along the way. A resume line like "managed cross-functional projects" says nothing about how well you actually did that. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real project case studies does. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide).
 
 ## What to Include
 | What to include | Why |
@@ -145,15 +146,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide)
 - [Product Manager Portfolio Guide](https://thetailorcv.com/blog/product-manager-portfolio-guide)
-- How to Quantify Resume Achievements
-- Private Portfolio Sharing Guide
-- Portfolio Website for Job Applications
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- Portfolio No Projects
-- AI Portfolio Builder: No Code Required
-- Resume + Portfolio + Mock Interview System
-- Personal Website vs Portfolio
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
+- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Resume + Portfolio + Mock Interview System](https://thetailorcv.com/blog/resume-portfolio-mock-interview-system)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
 
 ## Make This Practical
 
@@ -170,8 +171,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

@@ -10,14 +10,6 @@ slug: how-to-write-resume-from-scratch
 keywords: how to write a resume from scratch, write a resume step by step, resume writing guide 2026, build resume from scratch, how to start a resume, first resume guide, resume writing for beginners
 ---
 
-Writing a resume from scratch feels overwhelming until you break it into a clear sequence of steps. This guide walks you through the entire process - from deciding what to include, to writing each section, to testing the final document before you submit.
-
-Follow these steps whether you are writing your first resume, rebuilding after years out of the job market, or starting fresh for a [career change](https://thetailorcv.com/blog/career-change-to-tech-guide).
-
-For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gives you the correct structure automatically. Test your finished resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before applying.
-
----
-
 ## Key Takeaways
 
 - Gather all relevant information, including job history, education, projects, certifications, skills, achievements, and the target job description before starting your resume.
@@ -25,6 +17,15 @@ For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com
 - Include a clear contact section at the top of your resume with your name, professional email, phone number, and relevant links, avoiding unnecessary personal details.
 - Write a concise professional summary that highlights your experience, strengths, and how you can contribute to the prospective employer.
 - Build a skills section by matching your skills to those listed in the job description, using exact wording to enhance ATS compatibility.
+
+
+Writing a resume from scratch feels overwhelming until you break it into a clear sequence of steps. This guide walks you through the entire process - from deciding what to include, to writing each section, to testing the final document before you submit.
+
+Follow these steps whether you are writing your first resume, rebuilding after years out of the job market, or starting fresh for a [career change](https://thetailorcv.com/blog/career-change-to-tech-guide).
+
+For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gives you the correct structure automatically. Test your finished resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before applying.
+
+---
 
 ## Before You Write: Gather Everything
 
@@ -37,7 +38,7 @@ Resist the urge to open a blank document and start typing. Before writing a sing
 - **Skills**: All tools, languages, platforms, methodologies you use
 - **Achievements**: Numbers - revenue generated, time saved, users impacted, growth percentages
 - **Awards/honors**: Academic and professional
-- **Target job description**: The specific role you are building this resume for
+- **Target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)**: The specific role you are building this resume for
 
 This preparation phase prevents you from writing generic content that applies to nothing. With your raw materials assembled, writing becomes a curation and framing exercise.
 
@@ -212,14 +213,14 @@ Aim for a strong match score before submitting. Read [how to increase your ATS s
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- How to Write Resume Bullet Points That Get Results
-- Best Action Verbs for Resume
-- How to Quantify Resume Achievements
-- How to Tailor Your Resume for Every Job
-- Resume Proofreading Checklist
-- ATS Score Guide
-- Resume File Format Guide
-- Resume with No Experience Guide
+- [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
+- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 
 ---
 

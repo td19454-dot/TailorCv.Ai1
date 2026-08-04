@@ -10,10 +10,6 @@ slug: ui-ux-case-study-portfolio
 keywords: UI UX case study portfolio, UX portfolio case study, UI UX designer portfolio, UX case study structure
 ---
 
-A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should not be a gallery of screens. Recruiters and design leads want to understand the problem, your process, your trade-offs, and the outcome.
-
----
-
 ## Key Takeaways
 
 - A strong UI UX case study portfolio should focus on the problem, process, trade-offs, and outcomes rather than just polished visuals.
@@ -21,6 +17,11 @@ A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-profess
 - Common mistakes to avoid include excessive mockups without process explanation, lack of user evidence, and using generic design language.
 - Tailor your resume to highlight measurable results and align with specific job descriptions to demonstrate relevant experience.
 - Use a practical checklist to ensure your application clearly matches the target role and includes relevant keywords and measurable outcomes.
+
+
+A UI UX case study [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) should not be a gallery of screens. Recruiters and design leads want to understand the problem, your process, your trade-offs, and the outcome.
+
+---
 
 ## Best UX [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Structure
 
@@ -102,7 +103,7 @@ Before you send the application, review this checklist:
 4. Can a recruiter understand your fit in less than 10 seconds?
 5. Does the content avoid generic phrases like "hardworking," "responsible for," or "passionate professional"?
 6. Are your links, portfolio, GitHub, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), or contact details easy to find?
-7. Does the application use the same positioning across resume, cover letter, and profile?
+7. Does the application use the same positioning across resume, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), and profile?
 8. Have you removed anything that distracts from the target role?
 
 If the answer is no for any item, fix that before applying. Most candidates do not need a complete rewrite. They need sharper alignment.
@@ -134,10 +135,10 @@ Use these related TailorCV guides to strengthen the rest of your application:
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- ATS-Friendly Resume Builder
-- Free ATS Resume Scan
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- [Free ATS Resume Scan](https://thetailorcv.com/blog/free-ats-resume-scan)
 
 These internal guides are useful because one document rarely wins a job alone. A strong resume needs matching keywords, a clean format, a convincing [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), a credible LinkedIn profile, and interview answers that support the same story. If one part says you are targeting data analytics and another part looks like a generic admin resume, the recruiter gets mixed signals.
 
@@ -150,21 +151,21 @@ If you want to keep improving this topic, these closely related guides are worth
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [Resume Customization Checklist](https://thetailorcv.com/blog/resume-customization-checklist)
 - [Resume Skills Match Job Description](https://thetailorcv.com/blog/resume-skills-match-job-description)
-- Resume Summary Match Job Description
-- How to Write Resume Summary
-- How to Write Resume Headline
-- How to Quantify Resume Achievements
-- Best Action Verbs for Resume
-- Resume Red Flags
-- Resume Proofreading Checklist
-- Does My Resume Pass ATS?
-- ATS Resume Formatting Mistakes
-- ATS Keyword Mistakes
-- ATS Keywords to Boost Score
-- Best Resume Keywords to Beat ATS
-- Hidden Keywords in Job Description
-- Job Description Keyword Extraction Guide
-- Resume Keyword Density Guide
+- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-summary-match-job-description)
+- [How to Write Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [How to Write Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
+- [Resume Red Flags](https://thetailorcv.com/blog/resume-red-flags)
+- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
+- [Does My Resume Pass ATS?](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
+- [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)
+- [ATS Keywords to Boost Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
+- [Best Resume Keywords to Beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
+- [Hidden Keywords in Job Description](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
+- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
 
 Use these links as a practical cluster: first fix the resume and ATS alignment, then improve the supporting proof such as portfolio, LinkedIn, [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026), or interview examples. That gives search engines clearer topical connections and gives readers a useful next step instead of a dead end.
 

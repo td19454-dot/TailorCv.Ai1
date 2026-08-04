@@ -10,8 +10,6 @@ slug: portfolio-no-projects
 keywords: portfolio no projects, what to put in portfolio, portfolio without experience, build first project, empty portfolio
 ---
 
-An empty portfolio feels like a chicken-and-egg trap - you need work to get hired, but you need to be hired to get work. It is not. You can create credible material in a weekend or two. Here is exactly what to put in your portfolio when you are starting from zero. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
-
 ## Key Takeaways
 
 - Build small, real projects that solve actual problems to establish credibility in your portfolio.
@@ -19,6 +17,9 @@ An empty portfolio feels like a chicken-and-egg trap - you need work to get hire
 - Contribute to open-source projects, collaborate with others, or help nonprofits to gain practical experience.
 - Document your learning process and create case studies from hypothetical scenarios to demonstrate problem-solving skills.
 - Ensure your resume and portfolio tell a consistent story to avoid confusion for recruiters.
+
+
+An empty portfolio feels like a chicken-and-egg trap - you need work to get hired, but you need to be hired to get work. It is not. You can create credible material in a weekend or two. Here is exactly what to put in your portfolio when you are starting from zero. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
 
 ## Build Something Small and Real
 Solve a problem you or someone near you actually has. The realness is the credibility.
@@ -149,15 +150,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
 - [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide)
-- How to Get a Job With No Experience
-- 15 Developer Portfolio Project Ideas
-- Projects on a Resume
-- How to Write a Portfolio Case Study
-- GitHub Portfolio Optimization
-- Portfolio About Me Section
-- Turn Your Resume Into a Portfolio in Minutes
-- Resume With No Experience
-- Portfolio Checklist Before You Apply
+- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
+- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
 ## Make This Practical
 
@@ -175,8 +176,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)

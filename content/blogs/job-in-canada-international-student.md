@@ -10,12 +10,6 @@ keywords: international student jobs canada, jobs for international students can
 image: public/blog-images/job-in-canada-international-student.png
 ---
 
-As an international student in Canada, work is more than extra income — it's how you build the Canadian experience, references, and network that lead to a career here after you graduate. Canada actively encourages international students to work, and the pathway from student to post-graduation employment (and often permanent residence) is well-established. But making the most of it takes planning: understanding the work rules, finding the right roles, and presenting yourself the Canadian way.
-
-This guide walks international students through getting a job in Canada in 2026 — from part-time and co-op work while you study, to landing a graduate role on a Post-Graduation Work Permit (PGWP).
-
-> **Important:** Study-permit work rules and PGWP eligibility change over time and depend on your specific situation. Always confirm current rules with Immigration, Refugees and Citizenship Canada (IRCC) and your school's international student office before relying on any of the general guidance below.
-
 ## Key Takeaways
 
 - International students can usually work **on and off campus** while studying, within the conditions of their study permit — always verify current IRCC limits.
@@ -23,6 +17,13 @@ This guide walks international students through getting a job in Canada in 2026 
 - After graduating, the **Post-Graduation Work Permit (PGWP)** lets eligible students work full-time in Canada.
 - A **Canadian-style, ATS-ready resume** and active **networking** are essential.
 - Start early — building experience and connections during your studies pays off at graduation.
+
+
+As an international student in Canada, work is more than extra income — it's how you build the Canadian experience, references, and network that lead to a career here after you graduate. Canada actively encourages international students to work, and the pathway from student to post-graduation employment (and often permanent residence) is well-established. But making the most of it takes planning: understanding the work rules, finding the right roles, and presenting yourself the Canadian way.
+
+This guide walks international students through getting a job in Canada in 2026 — from part-time and co-op work while you study, to landing a graduate role on a Post-Graduation Work Permit (PGWP).
+
+> **Important:** Study-permit work rules and PGWP eligibility change over time and depend on your specific situation. Always confirm current rules with Immigration, Refugees and Citizenship Canada (IRCC) and your school's international student office before relying on any of the general guidance below.
 
 ## Why Working During Your Studies Matters
 
@@ -107,7 +108,7 @@ As an international student, adapting your application to Canadian norms is esse
 - **Translate coursework and projects into experience.** With limited work history, your final-year projects, group work, and academic achievements become resume material — described with achievement bullets.
 - **Emphasise transferable skills** for part-time roles: reliability, customer service, teamwork, and communication all count.
 - **Tailor every application** with the [resume optimizer](https://thetailorcv.com/solutions), and add a targeted cover letter using the Canadian cover letter guide.
-- **Prepare for behavioural interviews** — Canadian employers love "Tell me about a time…" questions. Rehearse with the AI mock interview.
+- **Prepare for behavioural interviews** — Canadian employers love "Tell me about a time…" questions. Rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 
 Getting these fundamentals right early means that by the time you're chasing a graduate role, presenting yourself the Canadian way is second nature.
 

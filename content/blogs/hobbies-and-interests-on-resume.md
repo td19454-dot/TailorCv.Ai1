@@ -20,7 +20,7 @@ There are a few clear situations where a hobbies section earns its space:
 
 - **You're early-career or light on experience.** For students and new graduates, hobbies add personality and signal transferable skills — the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [first job resume for a teenager](https://thetailorcv.com/blog/resume-for-first-job-teenager) explain how to fill a page meaningfully.
 - **The hobby is relevant to the role.** A photography hobby for a marketing or design job, chess or competitive gaming for analytical roles, or a coding side project for a developer role all reinforce your fit. A [portfolio](https://www.thetailorcv.com/portfolio) can showcase relevant creative hobbies.
-- **The company clearly values certain interests.** Some employers signal culture in the job description — volunteering, teamwork, endurance sports. When they do, a matching interest is a genuine plus. Research the company first, as in how to research a company before an interview.
+- **The company clearly values certain interests.** Some employers signal culture in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) — volunteering, teamwork, endurance sports. When they do, a matching interest is a genuine plus. Research the company first, as in [how to research a company before an interview](https://thetailorcv.com/blog/how-to-research-company-before-interview).
 
 ## When to skip hobbies
 

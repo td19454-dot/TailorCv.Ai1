@@ -10,14 +10,6 @@ slug: can-recruiters-tell-if-resume-was-written-by-ai
 keywords: can recruiters tell if resume is ai written, ai detection resume, does ats detect ai resume, chatgpt resume detection
 ---
 
-## Can Recruiters Tell If Your Resume Was Written by AI? What ATS and Humans Actually Check
-
-ATS systems don't run "AI detection" on your resume the way plagiarism checkers scan essays - they're built to parse and score content, not fingerprint its origin. Recruiters, however, absolutely can tell when a resume was generated and never edited: the tell isn't that it's AI-written, it's that it's generic.
-
-The safest path isn't avoiding AI tools - it's using ones built specifically for resumes, which keep your real experience central instead of generating filler. Test yours with the [free ATS score checker](https://www.thetailorcv.com/solutions).
-
----
-
 ## Key Takeaways
 
 - ATS systems focus on parsing resumes for structure and keyword relevance, not detecting AI-generated content.
@@ -25,6 +17,14 @@ The safest path isn't avoiding AI tools - it's using ones built specifically for
 - To avoid sounding generic, always edit AI-generated content to reflect your unique voice and experiences.
 - Use specific metrics and context in your resume to create a compelling narrative that stands out to recruiters.
 - Practice discussing every bullet point on your resume to ensure you can confidently elaborate during interviews.
+
+## Can Recruiters Tell If Your Resume Was Written by AI? What ATS and Humans Actually Check
+
+ATS systems don't run "AI detection" on your resume the way plagiarism checkers scan essays - they're built to parse and score content, not fingerprint its origin. Recruiters, however, absolutely can tell when a resume was generated and never edited: the tell isn't that it's AI-written, it's that it's generic.
+
+The safest path isn't avoiding AI tools - it's using ones built specifically for resumes, which keep your real experience central instead of generating filler. Test yours with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+---
 
 ## What ATS Systems Actually Check
 

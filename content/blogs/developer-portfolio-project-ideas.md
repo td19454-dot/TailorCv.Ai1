@@ -6,10 +6,6 @@ slug: developer-portfolio-project-ideas
 image: public/blog-images/developer-portfolio-project-ideas.webp
 ---
 
-Recruiters have seen a thousand to-do apps. What they have *not* seen is [your version of a project](https://thetailorcv.com/blog/content-writer-portfolio-guide) that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
-
-Below are 15 project ideas grouped by level, plus exactly what turns each one into a hireable portfolio piece. For how to present them, pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
-
 ## Key Takeaways
 
 - Project choice and polish are crucial for creating a standout developer portfolio that attracts recruiters.
@@ -17,6 +13,11 @@ Below are 15 project ideas grouped by level, plus exactly what turns each one in
 - Intermediate projects should demonstrate the ability to ship applications, like a SaaS mini-clone with payment functionality or a real-time chat application.
 - Common mistakes include neglecting user experience, security measures, and proper documentation, which can detract from the quality of the project.
 - Each project should solve a real problem and be presented with clear documentation to showcase your skills effectively.
+
+
+Recruiters have seen a thousand to-do apps. What they have *not* seen is [your version of a project](https://thetailorcv.com/blog/content-writer-portfolio-guide) that solves a real problem, ships to production, and is documented like you actually care. The difference between a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) that gets ignored and one that gets interviews is almost never the language - it is the **project choice and the polish**.
+
+Below are 15 project ideas grouped by level, plus exactly what turns each one into a hireable portfolio piece. For how to present them, pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 ## Beginner Projects (Prove the Fundamentals)
 
@@ -137,8 +138,8 @@ Three polished projects beat ten clones every time. Avoid the traps in [Portfoli
 - **Optimize Your GitHub Profile**: Make your projects easy to find with a well-organized profile. Refer to [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization) for tips.
 - **Write a Short Case Study**: For your best project, write a brief case study outlining the challenge, your approach, and the results. This can help provide context and demonstrate your thought process. See [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) for guidance.
 - **Leverage AI Tools**: Consider using AI tools to assist in building your portfolio, especially if you’re not confident in your design skills. Check out [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for more information.
-- **Use a Custom Domain**: A custom domain makes your portfolio look more professional. Learn how to set this up in How to Put Your Portfolio on a Custom Domain.
-- **Keep Learning**: Stay updated with the latest technologies and trends in development. Explore guides like the Business Analyst Portfolio Guide or the DevOps Engineer Portfolio Guide to expand your skill set.
+- **Use a Custom Domain**: A custom domain makes your portfolio look more professional. Learn how to set this up in [How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
+- **Keep Learning**: Stay updated with the latest technologies and trends in development. Explore guides like the [Business Analyst Portfolio Guide](https://thetailorcv.com/blog/business-analyst-portfolio-guide) or the [DevOps Engineer Portfolio Guide](https://thetailorcv.com/blog/devops-engineer-portfolio-guide) to expand your skill set.
 
 ### Turning a resume into a portfolio site
 
@@ -171,15 +172,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- Frontend Developer Portfolio Guide
-- Backend Developer Portfolio Guide
-- Full Stack Developer Portfolio Guide
-- GitHub Portfolio Optimization
-- How to Write a Portfolio Case Study
-- What to Put in Your Portfolio With No Projects
-- Portfolio Mistakes to Avoid
-- Portfolio Checklist Before You Apply
-- Backend Developer Resume 2026
+- [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio)
+- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
+- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Backend Developer Resume 2026](https://thetailorcv.com/blog/backend-developer-resume-2026)
 
 ## Make This Practical
 

@@ -10,10 +10,6 @@ keywords: japanese interview etiquette, japan job interview tips, interview in j
 image: public/blog-images/japan-interview-etiquette-guide.png
 ---
 
-In Japan, *how* you interview can matter as much as *what* you say. Japanese business culture places enormous value on etiquette, respect, and attention to detail — and an interview is a stage where all of these are on display. From how you enter the room and bow, to the formal language you use, to when you sit down, every step follows conventions that signal whether you understand and respect Japanese professional culture. For foreigners, mastering this etiquette is a powerful way to stand out and reassure employers you'll fit in.
-
-This guide explains Japanese job interview etiquette in 2026: the manners, language, and preparation that make a strong, respectful impression — plus the common questions you'll face and how to handle them.
-
 ## Key Takeaways
 
 - Japanese interviews follow **detailed etiquette** — bowing, formal language, seating, and punctuality all matter.
@@ -21,6 +17,11 @@ This guide explains Japanese job interview etiquette in 2026: the manners, langu
 - **Humility, respect, and long-term commitment** are the qualities Japanese employers seek.
 - Dress **conservatively and formally** — the "recruit suit" is standard.
 - Preparation, rehearsal, and cultural awareness set foreign candidates apart.
+
+
+In Japan, *how* you interview can matter as much as *what* you say. Japanese business culture places enormous value on etiquette, respect, and attention to detail — and an interview is a stage where all of these are on display. From how you enter the room and bow, to the formal language you use, to when you sit down, every step follows conventions that signal whether you understand and respect Japanese professional culture. For foreigners, mastering this etiquette is a powerful way to stand out and reassure employers you'll fit in.
+
+This guide explains Japanese job interview etiquette in 2026: the manners, language, and preparation that make a strong, respectful impression — plus the common questions you'll face and how to handle them.
 
 ## Before the Interview: Preparation
 

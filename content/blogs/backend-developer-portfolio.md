@@ -6,14 +6,6 @@ slug: backend-developer-portfolio
 image: public/blog-images/backend-developer-portfolio.webp
 ---
 
-## Backend Developer Portfolio Guide (2026): Make the Invisible Visible
-
-Backend work is invisible by nature - there is no UI to admire. So your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) has a harder job: it must make architecture, reliability, and production thinking *visible* to someone skimming for 30 seconds. Done well, a backend [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) signals seniority faster than years on a resume.
-
-
-
-Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas), and [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide).
-
 ## Key Takeaways
 
 - Highlight your APIs with documented specifications and live hosting for potential employers to test.
@@ -21,6 +13,14 @@ Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/b
 - Demonstrate production readiness through unit tests, security measures, and performance metrics.
 - Maintain effective documentation with setup instructions, architecture overviews, and a decision log.
 - Ensure consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative.
+
+## Backend Developer Portfolio Guide (2026): Make the Invisible Visible
+
+Backend work is invisible by nature - there is no UI to admire. So your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) has a harder job: it must make architecture, reliability, and production thinking *visible* to someone skimming for 30 seconds. Done well, a backend [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) signals seniority faster than years on a resume.
+
+
+
+Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas), and [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide).
 
 ## Lead With APIs and Architecture
 
@@ -139,15 +139,15 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Backend Developer Resume 2026](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
-- Full Stack Developer Portfolio Guide
-- 15 Developer Portfolio Project Ideas
-- GitHub Portfolio Optimization
-- How to Write a Portfolio Case Study
-- How to Quantify Resume Achievements
-- Portfolio Checklist Before You Apply
-- How to Host Your Portfolio for Free
-- DevOps Engineer Resume 2026
-- Portfolio Mistakes to Avoid
+- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
+- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
+- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
+- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
+- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
+- [DevOps Engineer Resume 2026](https://thetailorcv.com/blog/devops-engineer-resume-2026)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
 ## Make This Practical
 

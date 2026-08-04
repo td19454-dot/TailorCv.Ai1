@@ -80,9 +80,9 @@ The errors that cost retail leaders interviews:
 
 - **No metrics.** A management [resume](https://www.thetailorcv.com/modify-cv) without sales, shrink, and team numbers reads as junior — [quantify](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) everything.
 - **Duty lists.** Lead each role with results, not responsibilities — a classic [generic resume mistake](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
-- **Missing systems.** Name your POS and workforce tools — they're ATS keywords.
-- **One resume everywhere.** Tailor to each retailer.
-- **Cluttered formatting.** Keep it ATS-safe and run the ATS score checker.
+- **Missing systems.** Name your POS and workforce tools — they're [ATS keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- **One resume everywhere.** [Tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to each retailer.
+- **Cluttered formatting.** Keep it [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and run the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 For more, read [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
 

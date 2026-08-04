@@ -10,12 +10,6 @@ slug: pharmacist-resume-2026
 keywords: pharmacist resume, pharmacist resume 2026, clinical pharmacist resume, retail pharmacist resume, hospital pharmacist resume, pharmacy ATS keywords, PharmD resume
 ---
 
-A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) must be immediately visible, and your clinical responsibilities must be specific.
-
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
-
----
-
 ## Key Takeaways
 
 - A pharmacist resume in 2026 should highlight clinical competence, licensure, and medication safety records relevant to the specific pharmacy setting.
@@ -23,6 +17,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 - Strong bullet points should quantify achievements and demonstrate clinical or operational impact, using action verbs and specific outcomes.
 - Incorporate relevant ATS keywords such as "medication therapy management," "patient counseling," and "controlled substances" to enhance visibility to employers.
 - Tailor your resume summary to reflect your experience level, emphasizing key skills and certifications that align with the desired pharmacy role.
+
+
+A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) must be immediately visible, and your clinical responsibilities must be specific.
+
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
+
+---
 
 ## Best Pharmacist Resume Format
 
@@ -147,28 +148,22 @@ Epic Willow, Cerner, Pyxis, Omnicell - list the systems you have used. These are
 
 ---
 
-## Sources Checked
-
-This guide uses career context from the [BLS Pharmacists Occupational Outlook Handbook](https://www.bls.gov/ooh/healthcare/pharmacists.htm) and TailorCV analysis of pharmacy job descriptions.
-
----
-
 ## Related Guides
 
 - [Nursing Resume](https://thetailorcv.com/blog/nursing-resume-2026)
 - [Physiotherapist Resume](https://thetailorcv.com/blog/physiotherapist-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- Android Developer Resume
-- Backend Developer Resume
-- Business Analyst Resume
-- Chemical Engineer Resume
-- Civil Engineer Resume
-- Cloud Engineer Resume
-- Consultant Resume
-- Content Writer Resume
-- Customer Service Resume
-- Cybersecurity Engineer Resume 2026 - Complete Guide with Examples
-- How to List Education on a Resume in 2026 - Complete Guide with Examples
+- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
+- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
+- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
+- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
+- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
+- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
+- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
+- [Cybersecurity Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
+- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ## Make This Practical
 

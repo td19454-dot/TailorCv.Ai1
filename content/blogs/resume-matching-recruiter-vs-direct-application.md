@@ -10,14 +10,6 @@ keywords: resume matching through recruiter, should I tailor resume for recruite
 image: public/blog-images/resume-matching-recruiter-vs-direct-application.webp
 ---
 
-A recruiter reaches out about a role, or you connect with a staffing agency, and suddenly the resume matching calculus feels different. Since a human recruiter, not just an [ATS](https://thetailorcv.com/blog/ats-score-guide), is reviewing your resume and vouching for you internally, does [matching your resume to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) still matter as much?
-
-Short answer: yes, but the reasons and the emphasis shift. This guide breaks down exactly how.
-
-Whether you are working with a recruiter or applying directly, check your match score with the [TailorCV ATS score checker](/solutions) before your resume goes out the door.
-
----
-
 ## Key Takeaways
 
 - Your resume still goes through an ATS when submitted by a recruiter, making keyword matching important.
@@ -25,6 +17,15 @@ Whether you are working with a recruiter or applying directly, check your match 
 - Tailoring your resume shows effort and strengthens the recruiter's internal advocacy for you.
 - Provide the full job description to extract relevant keywords and tailor your resume effectively.
 - Use conversations with the recruiter to explain nuances that a resume cannot capture.
+
+
+A recruiter reaches out about a role, or you connect with a staffing agency, and suddenly the resume matching calculus feels different. Since a human recruiter, not just an [ATS](https://thetailorcv.com/blog/ats-score-guide), is reviewing your resume and vouching for you internally, does [matching your resume to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) still matter as much?
+
+Short answer: yes, but the reasons and the emphasis shift. This guide breaks down exactly how.
+
+Whether you are working with a recruiter or applying directly, check your match score with the [TailorCV ATS score checker](/solutions) before your resume goes out the door.
+
+---
 
 ## What Actually Changes When a Recruiter Is Involved
 
@@ -207,13 +208,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Should You Still Tailor Your Resume for a Referral?](https://thetailorcv.com/blog/resume-matching-referral-applications)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- Resume Matching for Career Changers
-- Executive Resume Tailoring Guide
-- Common Resume and Job Description Mismatch Mistakes
-- Job Description Keyword Extraction Guide
-- Networking Tips for Job Search
-- ATS Score Guide 2026
-- Cover Letter Guide 2026
+- [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [Executive Resume Tailoring Guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide)
+- [Common Resume and Job Description Mismatch Mistakes](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
 
 ---
 

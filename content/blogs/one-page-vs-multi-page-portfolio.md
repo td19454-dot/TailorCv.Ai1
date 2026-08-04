@@ -10,8 +10,6 @@ slug: one-page-vs-multi-page-portfolio
 keywords: one page portfolio, multi page portfolio, portfolio website structure, single page portfolio design, portfolio layout
 ---
 
-Before you write a line of content, you have to decide on structure: one scrolling page, or several linked pages with dedicated project detail views. This choice affects how deep you can go on each project and how a recruiter navigates your work. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026).
-
 ## Key Takeaways
 
 - One-page portfolios are best for early-career candidates and generalists with 3-5 projects, offering quick scanning and simplicity.
@@ -19,6 +17,9 @@ Before you write a line of content, you have to decide on structure: one scrolli
 - A hybrid approach, combining a one-page overview with links to deep-dive pages, often serves both recruiters and hiring managers effectively.
 - Common mistakes include creating overly long one-page portfolios, unclear navigation in multi-page sites, and inconsistent project depth.
 - Starting with a one-page structure is advisable for early career professionals, expanding to multi-page as experience grows.
+
+
+Before you write a line of content, you have to decide on structure: one scrolling page, or several linked pages with dedicated project detail views. This choice affects how deep you can go on each project and how a recruiter navigates your work. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026).
 
 ## One-Page Portfolios
 **Best for:** early-career candidates, generalists, and anyone with 3-5 projects that do not need deep individual write-ups.
@@ -171,15 +172,15 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
-- Portfolio Homepage Copy Examples
-- Portfolio SEO: Get Found
-- AI Portfolio Builder: No Code Required
-- Portfolio Checklist Before Applying
-- Portfolio Mistakes to Avoid
-- UX Designer Portfolio Guide
-- Personal Website vs Portfolio
-- Custom Domain Portfolio Guide
-- Portfolio Contact Section
+- [Portfolio Homepage Copy Examples](https://thetailorcv.com/blog/portfolio-homepage-copy-examples)
+- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
+- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide)
+- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
+- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
 
 ## Make This Practical
 
@@ -196,8 +197,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- Portfolio Mistakes to Avoid
-- How to Write Portfolio Case Study
-- Add Portfolio Link to Resume
-- Resume Matching With Job Description
-- ATS-Friendly Resume Builder
+- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
+- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
