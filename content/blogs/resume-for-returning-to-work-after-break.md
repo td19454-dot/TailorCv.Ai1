@@ -26,6 +26,13 @@ Returning to work after a break can feel difficult, but the resume strategy is s
 
 Operations professional returning to full-time work after a planned [career break](https://thetailorcv.com/blog/how-to-explain-resume-gaps). Experienced in vendor coordination, reporting, Excel, process improvement, and stakeholder communication. Recently completed a Power BI reporting project and updated skills in data analysis and workflow automation.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ---
 
 ## Where to Mention the Break
@@ -92,11 +99,6 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

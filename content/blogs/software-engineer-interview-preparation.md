@@ -38,6 +38,13 @@ Treating these as one undifferentiated "the interview" is the most common mistak
 
 ## Round 1: Coding Interviews
 
+
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
+
 ### What's actually being tested
 
 Interviewers are watching for correctness, but almost equally for how you *think* — do you clarify the problem before coding, do you consider edge cases, do you narrate your reasoning instead of going silent. A correct answer delivered silently often scores worse than a mostly-correct answer delivered with clear reasoning.
@@ -107,11 +114,6 @@ A resume that has actually been matched against the target job description also 
 
 Trying to prepare all four rounds equally in the final 48 hours is how most candidates burn out before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) even starts. A more realistic split, assuming roughly two to three weeks of runway:
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Rather than a fixed question list, the session is built from your own resume and target role, and ends with a scorecard naming the specific things to fix.
 
 
 **Weeks 1–2: Coding foundation**

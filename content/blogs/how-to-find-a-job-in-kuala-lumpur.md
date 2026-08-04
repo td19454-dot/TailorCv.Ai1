@@ -45,6 +45,13 @@ KL's economy is diverse, which is good news for job seekers across fields.
 
 KL is competitive, so your application has to be sharp before you send it anywhere.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - Build an ATS-ready, one-to-two-page resume following local norms — see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs).
 - Make sure it passes the software screen — most KL employers use an ATS; learn the mechanics in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide) and test each version with the free [ATS score checker](https://thetailorcv.com/solutions).
 - Match each posting's keywords using [best resume keywords for Malaysian jobs](https://thetailorcv.com/blog/best-resume-keywords-malaysia).
@@ -67,6 +74,13 @@ In a city this networked, many roles are filled through referrals. Attend indust
 ## Step 3: Tailor and Apply Strategically
 
 Quality beats quantity in KL. For each role:
+
+### Tailoring without leaving Indeed
+
+![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
+
+On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
+
 
 1. Tailor your resume and, where it helps, add a targeted cover letter — see the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs).
 2. Apply early — graduate schemes and popular roles fill fast.
@@ -133,18 +147,8 @@ For fresh graduates and in-demand fields, one to three months of focused effort 
 
 KL offers Malaysia's highest salaries, but also higher living costs than smaller states — so evaluate offers on take-home value, not just the headline number. The biggest variable is **housing**: rents range widely between city-centre condominiums and suburban homes in Petaling Jaya, Kajang, or further out. **Transport** is the next lever — living near an LRT/MRT line close to work saves both money and hours of traffic. Factor in **food** (hawker meals keep daily costs low; frequent dining out and imported goods add up), utilities, and lifestyle. A useful mental model: a job paying slightly less but fifteen minutes from home, near a rail line, can leave you better off — in money and quality of life — than a higher-paying role with a punishing commute and expensive city-centre rent.
 
-### Tailoring without leaving Indeed
-
-![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
-
-On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ## MNCs vs GLCs vs Startups: Which KL Employer Suits You?

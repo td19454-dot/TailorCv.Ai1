@@ -10,6 +10,13 @@ image: public/blog-images/portfolio-seo-get-found.webp
 
 A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## Key Takeaways
 
 - Optimize your portfolio with a clear title tag and meta description to improve visibility in search results.
@@ -89,11 +96,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Slow, image-heavy pages.
 - Blocking indexing by accident - see the broader [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 ### Avoiding SEO Pitfalls

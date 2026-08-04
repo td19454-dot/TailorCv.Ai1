@@ -24,6 +24,13 @@ Knowing *where* to look is half the battle when job-hunting in Japan. The right 
 
 The most useful starting point for most foreigners is a job site that specialises in **bilingual and international roles in Japan**. These platforms curate positions open to non-Japanese speakers or requiring English, across tech, finance, teaching, and business — filtering out the noise of Japanese-only listings you can't apply to.
 
+### Tailoring without leaving the job board
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+This is what tailoring per posting looks like in practice: the panel reads the job off the page you are already browsing and rewrites against it, instead of you copying the description into another tab.
+
+
 **How to use them well:**
 
 - Filter by **language requirement** (English-friendly / bilingual) and your field.
@@ -75,18 +82,8 @@ Teaching typically requires a degree and native/fluent English, but not Japanese
 
 Not every opportunity is advertised. In Japan, connections and referrals matter:
 
-### Tailoring without leaving the job board
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-This is what tailoring per posting looks like in practice: the panel reads the job off the page you are already browsing and rewrites against it, instead of you copying the description into another tab.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 - **Professional meetups and industry events** (especially in Tokyo's tech and startup scene).

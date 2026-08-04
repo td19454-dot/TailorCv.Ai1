@@ -132,11 +132,6 @@ Multiple follow-ups in quick succession or demanding a decision pressures the em
 5. **Mind the details** - Be on time, dress right, set up your video properly
 6. **[follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) well** - One thoughtful thank-you note, no aggressive pestering
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 ---

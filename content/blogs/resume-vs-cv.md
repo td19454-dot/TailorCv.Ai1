@@ -144,11 +144,6 @@ When in doubt, check what is standard in the industry and location. A two-page t
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems (used by most companies for initial screening) are optimized for resumes, not CVs. A lengthy CV submitted to a corporate job application will likely parse poorly - the sections, the length, and the academic structure are not what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) expects.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 If you are applying to industry roles:

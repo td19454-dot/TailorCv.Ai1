@@ -35,6 +35,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One to two pages depending on experience and scope of HR programs managed.
 
 ---
@@ -131,11 +138,6 @@ Tech Startup (Series B, 380 employees) | Jan 2022 - Present
 ## Common HR Manager Resume Mistakes
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 ### Mistake 1: No people metrics
 

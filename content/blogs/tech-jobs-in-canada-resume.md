@@ -36,6 +36,13 @@ For more detailed insights, check out our [Canadian Resume Format Guide (2026)](
 
 When applying for tech jobs, customization is key. Follow these steps to tailor your resume effectively:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ### Analyze Job Descriptions
 
 Start by thoroughly analyzing the job descriptions for positions you're interested in. Identify keywords and phrases that are frequently mentioned. These often include specific skills, programming languages, or technologies. Use these insights to align your resume with the job description. This practice not only enhances your resume's relevance but also improves its ATS score.
@@ -105,11 +112,6 @@ For a comprehensive overview, check out our [interview preparation guide](https:
 
 The tech job market in Canada is continually evolving. Stay informed about in-demand jobs and industry trends by regularly checking resources and job boards. Understanding what skills are in demand can help you tailor your resume accordingly. For insights on in-demand jobs, visit our article on [In-Demand Jobs in Canada for 2026](https://thetailorcv.com/blog/in-demand-jobs-canada-2026).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Common Mistakes to Avoid in Your Tech Resume

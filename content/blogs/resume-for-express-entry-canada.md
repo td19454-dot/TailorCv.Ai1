@@ -38,6 +38,13 @@ For more in-depth guidance, check out our [Canadian Resume Format Guide (2026)](
 
 One of the most effective strategies for creating a standout resume is tailoring it to match the specific job you are applying for. Here’s how to do it:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Analyze Job Descriptions**: Carefully read job postings and note the skills and experiences that are frequently mentioned.
 - **Use Keywords**: Incorporate relevant keywords from the job description into your resume. This practice not only aligns your qualifications with the job but also enhances your ATS score, which is crucial given that many Canadian employers utilize Applicant Tracking Systems (ATS).
 - **Highlight Relevant Experience**: Focus on showcasing experiences and skills that directly relate to the job. This might mean adjusting or rephrasing your past duties to emphasize the most relevant tasks.
@@ -98,11 +105,6 @@ Networking plays a vital role in the Canadian job market. Here’s how to enhanc
 
 When crafting your resume for Express Entry and PR applications in Canada, avoiding common pitfalls can significantly enhance your chances of making a positive impression. Here’s a list of frequent mistakes to watch out for:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Using Outdated Formatting**: Stick to contemporary formatting styles. Overly creative designs can confuse ATS and hiring managers alike.

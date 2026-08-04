@@ -52,6 +52,13 @@ If a modern [ATS](https://thetailorcv.com/blog/ats-score-guide) is forgiving of 
 | Submit as a text-based PDF or .docx | Avoid scanned or image-based resumes entirely |
 | Use fully spelled-out section headers | "Professional Experience" and "Education" parse more reliably than abbreviated or creative headers |
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Start with a [free ATS-friendly resume template](/templates) built for maximum parser compatibility, and avoid rebuilding this from scratch for every legacy-ATS application.
 
 ---
@@ -115,11 +122,6 @@ TailorCV's [resume optimizer](/solutions) rewrites your resume using exact keywo
 
 1. **Ignoring Application Instructions**: Always read the application instructions carefully. Missing a specific requirement can lead to immediate disqualification.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 2. **Overloading with Graphics**: Avoid using images, charts, or graphics. These elements can disrupt the ATS parsing process and lead to misinterpretations of your qualifications.

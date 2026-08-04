@@ -42,6 +42,13 @@ Malaysian employers look for candidates who are job-ready, communicate well (oft
 
 Nothing else matters if your resume does not get you shortlisted. In Malaysia, most mid-to-large employers screen applications with an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) before a human sees them, so your resume must be both [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and genuinely persuasive.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 Before you apply to a single role:
 
 - Build a clean, one-to-two-page resume following local conventions — our complete [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs) covers exactly what to include.
@@ -71,6 +78,13 @@ If you are targeting the capital specifically, our [guide to finding a job in Ku
 ## Step 3: Tailor Every Application
 
 The most common mistake is blasting the same resume to every job. Both the ATS and the recruiter are matching you against *that* role's requirements. Tailoring means:
+
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
 
 1. Read the job description and highlight the required skills, tools, and responsibilities.
 2. Adjust your summary and top bullet points to reflect those priorities — truthfully.
@@ -146,18 +160,8 @@ Your **alumni network** is just as powerful. Graduates who came before you are n
 
 Beyond role-specific qualifications, Malaysian employers consistently prize a set of transferable skills that make you effective from day one. Weave evidence of these into your resume and interview answers:
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 - **Communication across languages.** The ability to work in Bahasa Malaysia and English — and often Mandarin — is a real asset in Malaysia's multicultural, regionally connected economy.

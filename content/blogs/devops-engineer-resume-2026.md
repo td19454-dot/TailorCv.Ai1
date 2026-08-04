@@ -35,6 +35,13 @@ Check your resume against your target job description using the [ATS score check
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or certifications
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for engineers with under 8 years of experience. Two pages are fine for senior or staff-level engineers with deep cloud architecture or platform leadership.
 
 ---
@@ -133,11 +140,6 @@ B2B SaaS Platform | Feb 2022 - Present
 
 Strong project ideas:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Kubernetes cluster setup with Helm and monitoring

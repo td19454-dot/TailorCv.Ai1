@@ -18,6 +18,13 @@ The single best protection against background-check problems is an accurate appl
 
 Most employers run a background check *after* extending a conditional offer, not during the application. That's why getting to this stage is encouraging — they want to hire you, pending verification. Occasionally the check runs in parallel with final interviews, but the offer almost always comes first. Understanding this timing removes a lot of the anxiety: you're not being screened out, you're being confirmed.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 ## What employers typically check
 
 The exact scope depends on the role, the industry, and local laws, but common checks include:
@@ -39,11 +46,6 @@ Most background checks take a few days to about two weeks, depending on the dept
 
 You can smooth the process considerably:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Make sure your resume dates and titles are accurate.** The number-one cause of delays is a mismatch between your [resume](https://www.thetailorcv.com/modify-cv) and what a former employer's HR reports. If you rounded dates or used a slightly different title, correct it — see [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume).

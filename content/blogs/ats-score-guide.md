@@ -42,6 +42,13 @@ You'll also discover how tools like the [ATS score checker](https://www.thetailo
 
 An [ATS score](https://thetailorcv.com/blog/ats-score-guide) is a compatibility rating that shows how well your resume matches a specific [job description](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
+### What an ATS score report actually shows you
+
+![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
+
+The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
+
+
 Applicant Tracking Systems scan resumes and analyze several factors, including:
 
 - Keywords
@@ -494,11 +501,6 @@ This saves hours of manual editing and guesswork.
 
 Modern AI tools can dramatically improve resume performance.
 
-### What an ATS score report actually shows you
-
-![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-The score itself matters less than the breakdown beside it: each check names what passed, what failed, and why it matters - which is the list you actually work through.
 
 
 The Resume Optimizer from The Tailor CV helps tailor resumes for specific jobs automatically.

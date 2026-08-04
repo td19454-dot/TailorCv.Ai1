@@ -47,6 +47,13 @@ See [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-re
 4. **"Rewrite this bullet point to lead with a measurable result: [paste bullet]"**
    - **Example:** Original: "Managed a team." Improved: "Led a team of 10, increasing project delivery speed by 30%."
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 5. **"Turn this task description into a resume bullet using the format: action verb + what you did + measurable outcome: [paste task]"**
    - **Example:** Task: "Responsible for overseeing marketing campaigns." Output: "Executed marketing campaigns that boosted brand awareness by 50% over six months."
 
@@ -126,11 +133,6 @@ For a version of this that's actually resume-aware and interactive rather than a
 - **No built-in tailoring workflow.** You have to manually copy suggestions back into your resume every time - see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) for a faster, structured alternative.
 - **Risk of sounding generic.** Left unedited, AI-generated phrasing has recognizable patterns - see [AI resume tailoring without losing your voice](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ---

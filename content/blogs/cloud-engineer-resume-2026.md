@@ -36,6 +36,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 7. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One to two pages. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) are important signals in cloud roles and should be clearly visible.
 
 ---
@@ -133,11 +140,6 @@ B2B SaaS Company | Nov 2021 - Present
 
 Highly valued in cloud engineering:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - [AWS Certified Solutions Architect](https://thetailorcv.com/blog/how-to-choose-resume-template) - Associate (most common starting point)

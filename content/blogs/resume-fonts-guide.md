@@ -166,11 +166,6 @@ The most important thing is consistency and readability, not the serif vs sans-s
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems convert your PDF to text. Some fonts introduce special characters or unusual encodings that cause words to be misread. Stick to widely used, standard fonts to avoid this.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe fonts:** Calibri, Arial, Garamond, Georgia, Cambria, Helvetica, Times New Roman, Verdana
@@ -190,6 +185,13 @@ After formatting your resume, run it through the [TailorCV ATS checker](https://
 - Stick to standard fonts: Calibri, Arial, Garamond, Georgia, Cambria
 - Avoid decorative, script, and novelty fonts entirely
 - Test your PDF export - some fonts embed oddly
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 
 ---
 

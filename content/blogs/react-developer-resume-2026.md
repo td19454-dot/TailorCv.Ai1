@@ -33,6 +33,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for engineers with under 8 years of experience. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is essential.
 
 ---
@@ -129,11 +136,6 @@ SaaS Analytics Company | Mar 2022 - Present
 - Movie/recipe search app with API integration
 - Component library with Storybook
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ### Strong Project Example

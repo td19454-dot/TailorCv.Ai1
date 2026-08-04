@@ -129,11 +129,6 @@ Avoid:
 
 If you send an email and hear nothing after 5-7 business days, one [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) is appropriate.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 "Hi [Name], I wanted to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) on my note from [date]. I'm still very interested in the [Role] at [Company] and would welcome the chance to connect. Happy to share my resume or anything else that would be helpful. Thanks for your time."

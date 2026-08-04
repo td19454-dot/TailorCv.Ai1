@@ -43,6 +43,13 @@ Numbers show you deliver, not just code — the [quantify achievements guide](ht
 
 Frame your experience around outcomes and users served, not a raw technology list. A hiring manager wants to know what you shipped, how many people used it, and what problem it solved. Tie each project to business impact, and keep a [portfolio](https://www.thetailorcv.com/portfolio) or GitHub link if you have shareable work — see [GitHub portfolio optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ## Structure a Salesforce developer resume
 
 1. **Header** — name, title, phone, email, GitHub/[portfolio](https://www.thetailorcv.com/portfolio).
@@ -66,11 +73,6 @@ If you're transitioning in via Trailhead and certifications, lead with your cert
 
 The Salesforce ecosystem is one of the best-paid corners of tech, and demand for certified developers, admins, and architects stays high. When an offer comes, research market rates and negotiate professionally with [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) and the [salary negotiation guide](https://thetailorcv.com/blog/salary-negotiation-guide). Beyond general job boards, Salesforce roles surface through the Trailblazer community, ecosystem-focused [recruitment agencies](https://thetailorcv.com/blog/how-to-work-with-recruitment-agencies), consulting partners, and [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) — the [best job search websites guide](https://thetailorcv.com/blog/best-job-search-websites-2026) covers the rest. Keep earning certifications to stay competitive, and keep your [resume](https://www.thetailorcv.com/modify-cv) current and [ATS-ready](https://www.thetailorcv.com/solutions) so you can move quickly when the right role appears.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## Tailor to each role

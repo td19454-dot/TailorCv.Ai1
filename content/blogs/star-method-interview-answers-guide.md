@@ -33,6 +33,13 @@ Before your next interview, review the [behavioral interview questions guide](ht
 **A - Action:** What did **you** do? Use "I" not "we."
 **R - Result:** What happened? [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) when possible.
 
+### See it in action: a resume-based mock interview
+
+![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
+
+You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
+
+
 STAR keeps answers focused, usually under two minutes, and easy for interviewers to evaluate. It is essential for [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), [manager rounds](https://thetailorcv.com/blog/manager-interview-round-questions-guide), and [competency-based interviews](https://thetailorcv.com/blog/competency-based-interview-questions-guide).
 
 ---
@@ -87,11 +94,6 @@ For more on framing failures, see [how to answer greatest weakness](https://thet
 4. **Practice with AI** - run [mock interview sessions](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) until answers feel natural, not memorized.
 5. **Watch your delivery** - read [interview body language tips](https://thetailorcv.com/blog/interview-body-language-communication-tips) and manage [interview nerves](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-You can rehearse this before the real thing. The interviewer reads your resume first, so the questions come from your actual experience rather than a generic list.
 
 
 ---

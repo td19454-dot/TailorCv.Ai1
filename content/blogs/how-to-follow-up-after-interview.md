@@ -30,6 +30,13 @@ Before your interview, make sure your [resume](https://www.thetailorcv.com/templ
 
 Following up:
 
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
+
 - Signals genuine enthusiasm and professionalism
 - Keeps you top of mind after a busy hiring process
 - Gives you a chance to reinforce a key point you made - or clarify something you could have said better
@@ -149,11 +156,6 @@ After two [follow-up](https://thetailorcv.com/blog/recruiter-ghosting-after-inte
 - Do not use the thank-you email to renegotiate anything
 - Do not send a generic copy-paste email - personalization is the entire point
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
 ---

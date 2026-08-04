@@ -84,6 +84,13 @@ Missing any of these fields creates grounds for disqualification.
 
 If you are applying to federal positions, use the USAJOBS Resume Builder rather than uploading a PDF.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 The Resume Builder ensures all required fields are filled.
 It formats your resume to meet federal standards automatically.
 HR specialists can review it in the system they use.
@@ -219,11 +226,6 @@ Read every section.
 
 1. **Use exact phrases from the vacancy announcement.** If the posting says "program management," use that phrase - not "project oversight." This is the core principle of [matching keywords to a job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 2. **Never assume experience is implied.** If you managed a budget, say the dollar amount. If you supervised staff, give the number. Federal HR cannot infer.

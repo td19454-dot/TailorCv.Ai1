@@ -94,6 +94,13 @@ A weak portfolio can sink a strong candidate. The good news: almost every portfo
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ### Additional Strategies for Success
 
 - **Use a Custom Domain:** A professional custom domain (e.g., www.yourname.com) can elevate your portfolio's credibility. Learn how to [Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide).
@@ -106,11 +113,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 - **User Testing:** Ask a friend to use your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) on their phone and watch where they get stuck. Their feedback can provide invaluable insights.
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 - **Highlight Your Best Work:** Lead with your single strongest project above the fold. This is the first thing potential employers will see, so make it count.

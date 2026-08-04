@@ -10,6 +10,13 @@ image: public/blog-images/product-manager-portfolio-guide.webp
 
 PM portfolios are still rare - which is exactly why one sets you apart. While other candidates send a resume and hope, you hand the hiring manager evidence of product thinking and shipped impact. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ## Key Takeaways
 
 - A strong PM portfolio should include 2-3 diverse case studies that demonstrate product thinking and measurable impact.
@@ -110,11 +117,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Confidential roadmaps shown without permission
 - Dead links - run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 ### Additional Common Pitfalls

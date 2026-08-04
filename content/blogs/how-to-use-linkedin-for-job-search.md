@@ -184,11 +184,6 @@ These profile actions increase your visibility in [recruiter](https://thetailorc
 
 ![How to Use LinkedIn](public/blog-images/how-to-use-linkedin.webp)
 
-### Tailoring without leaving Indeed
-
-![The TailorCV extension open on an Indeed job posting, showing the role, company and a 17% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-indeed.webp)
-
-On Indeed the panel reads the posting off the page and shows the match before you hit Apply - the kind of gap worth closing first rather than discovering through silence.
 
 
 This guide covers every major lever: optimizing your profile for recruiter search, using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs effectively, networking with intention, sending cold messages that get replies, and using [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) signals to get found without actively applying.

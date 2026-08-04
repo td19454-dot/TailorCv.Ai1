@@ -54,6 +54,13 @@ To help you get started, check out our [resume templates](https://www.thetailorc
 
 Many Canadian employers use Applicant Tracking Systems (ATS) to filter resumes. To improve your chances of passing this initial screening, follow these tips:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
 - **Keyword Matching**: Tailor your resume to include keywords from the job description. This increases your chances of being flagged as a good match.
 - **ATS-Friendly Format**: Avoid complex formatting, graphics, or unusual fonts. Stick to standard file formats like .docx or PDF. Our [resume file format guide](https://www.thetailorcv.com/blog/resume-file-format-guide) offers more insights.
 - **ATS Score Checker**: Use our [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate your resume's compatibility with ATS.
@@ -99,11 +106,6 @@ Networking is a powerful tool for job seekers. Here are effective strategies for
 
 Once you secure an interview, preparation is key. Here are some tips:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Research the Company**: Understand the company’s mission, values, and recent developments. This knowledge will help you tailor your responses.

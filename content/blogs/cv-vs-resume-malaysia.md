@@ -71,6 +71,13 @@ So the same word can mean two different things depending on the sector. The safe
 - **Resume (most jobs):** [one page](https://thetailorcv.com/blog/anatomy-of-a-resume) for fresh graduates and early-career candidates; up to two pages for experienced professionals.
 - **Academic CV:** as long as needed to fully document your record — often three or more pages.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 Never pad a resume to look more impressive, and never trim an academic CV so much that it omits required detail. Match the format to the purpose.
 
 ## Whatever You Send, Make It ATS-Ready
@@ -121,11 +128,6 @@ Whatever the medium, the same principle applies: tailored, relevant, and easy to
 **Do:**
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - Send a concise 1–2 page resume for any company role, whatever the posting calls it.

@@ -121,11 +121,6 @@ Many data scientists start as analysts and transition up. The analyst role is an
 
 ## Which Should You Choose?
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 ### Choose Data Analyst If You:
 - Enjoy answering business questions and finding insights

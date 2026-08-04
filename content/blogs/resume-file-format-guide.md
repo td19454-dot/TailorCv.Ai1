@@ -67,6 +67,13 @@ When applying internally within your company (through internal portals or emaili
 
 ## Other Formats: What to Avoid
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### .pages (Apple Pages)
 Not universally readable. If you created your resume in Pages, export it as PDF or Word before submitting.
 
@@ -138,11 +145,6 @@ This is useful if you are tailoring resumes per role and want to keep track of v
 
 If you tailor your resume for different roles (which you should - read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)), maintain a clear naming system:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 **Master resume**: `John-Smith-Resume-Master.pdf` - full version, never submitted directly

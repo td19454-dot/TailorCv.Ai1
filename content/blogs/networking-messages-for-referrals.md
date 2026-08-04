@@ -71,11 +71,6 @@ Miss any of these and the message gets slower, weaker, or ignored. Hit all four 
 
 The message is only half of it. Attach or link:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) [tailored to that exact role](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)** — a generic [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) makes the referrer look careless, a tailored one makes them look good.

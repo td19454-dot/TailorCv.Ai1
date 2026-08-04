@@ -47,11 +47,6 @@ A large share of roles are filled through referrals and networking before they'r
 This is what tailoring per posting looks like in practice: the panel reads the job off the page you are already browsing and rewrites against it, instead of you copying the description into another tab.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ## How to use any job board effectively
@@ -71,6 +66,13 @@ More boards also mean more scams. Be cautious of "jobs" that ask for payment, re
 ## Job search website checklist
 
 To make job boards work for you:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
 
 - Use **LinkedIn, Indeed, and Glassdoor** for reach, plus **niche boards** for signal.
 - Apply on **company career pages** directly where you can.

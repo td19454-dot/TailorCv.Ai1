@@ -95,11 +95,6 @@ A well-organized search is also a safer search: when you know exactly which real
 
 Understanding job scams is crucial, but seeing real-life scenarios can help solidify your knowledge. Here are three hypothetical situations to illustrate how to identify scams effectively:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 ### Scenario 1: The Too-Good-To-Be-True Offer
@@ -129,6 +124,13 @@ You find a job posting online with minimal details about the role and responsibi
 ## Step-by-Step Checklist for Evaluating Job Postings
 
 When you come across a job posting or a recruiter message, follow this straightforward checklist to assess its legitimacy:
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
 
 1. **Research the Company:**
    - Look up the company’s official website.

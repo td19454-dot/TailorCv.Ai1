@@ -78,6 +78,13 @@ The honest answer: it depends on your relationship.
 
 ## How to Tailor Your Resume for an Internal Role
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 ### 1. Treat It Like an External Application
 
 Write a full, [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume).
@@ -188,11 +195,6 @@ Even those who do want to see you take the role seriously.
 Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 **Skipping the tailoring**

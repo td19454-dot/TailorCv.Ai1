@@ -32,6 +32,13 @@ If you are new to ATS, start with the [ATS score guide](https://thetailorcv.com/
 
 Use a simple one-page resume if you are a fresher, entry-level candidate, or analyst with less than 7 years of experience.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Best structure:
 
 1. Header
@@ -264,11 +271,6 @@ If you completed a certification project, add it under [projects](https://thetai
 
 [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) should use this order:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. Header

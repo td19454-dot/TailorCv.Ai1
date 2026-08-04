@@ -29,6 +29,13 @@ The resume has to surface these in a way [both the ATS and the hiring manager](/
 
 Tech resumes are especially prone to ATS-breaking formatting — designers and engineers love clean two-column layouts, skill bars, and icons, all of which [scramble the parser](/blog/ats-resume-formatting-mistakes). Keep it strictly parser-safe:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - **Single column**, standard headings, black text, PDF.
 - **No skill bars or rating graphics** — "React ████░" parses as nothing; write the skill plainly.
 - **No tables** for your skills grid — a plain comma-separated list parses cleanly.
@@ -70,11 +77,6 @@ This is why [tailoring for every job](/blog/how-to-tailor-resume-for-every-job) 
 
 For tech in Singapore, a [portfolio site](/blog/how-to-build-professional-portfolio) and an active GitHub often matter as much as the resume — they show real, working code that a one-page PDF can't. [Linking your portfolio](/blog/portfolio-website-vs-resume) gives hiring managers something concrete to evaluate. This is doubly true for freshers: [projects that get interviews](/blog/fresher-resume-projects-that-get-interviews) and a strong portfolio are how you compensate for a short resume when chasing a [first tech job](/blog/how-to-get-first-tech-job) or [a role with no experience](/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026). Your [ATS score as a fresher](/blog/ats-score-for-freshers) leans heavily on these.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 ## Check, Then Apply

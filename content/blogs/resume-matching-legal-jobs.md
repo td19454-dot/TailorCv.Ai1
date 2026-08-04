@@ -103,17 +103,19 @@ Legal resumes with dense formatting or unconventional layouts risk parsing failu
 
 Paste any paralegal or associate attorney job posting into [TailorCV's resume optimizer](/solutions) to instantly identify which practice-area and software keywords are missing from your resume. TailorCV rewrites your bullets to reflect the posting's exact terminology while keeping your experience accurate, and checks your formatting against [ATS parsing rules](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) before you apply. Pair it with a tailored [cover letter](/cover-letter) for each firm you apply to.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Step-by-Step Guide to Analyzing a Legal Job Description
 
 To effectively match your resume to a legal job description, follow this systematic approach:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Identify Key Responsibilities**: Start by listing the main tasks and responsibilities outlined in the job description. Look for verbs like "draft," "analyze," and "research." These action words can guide you in framing your experience.

@@ -41,6 +41,20 @@ For the full breakdown of each rival, see the dedicated pages: [TailorCV vs Jobs
 
 TailorCV combines four things most job seekers buy separately: an [ATS score checker](https://www.thetailorcv.com/ats-analysis), an AI resume tailoring engine, an [AI mock interview](https://www.thetailorcv.com/mock-interview) tool, and a [portfolio website builder](https://www.thetailorcv.com/portfolio) - all built around your actual resume and a real job description, not a generic template.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The optimized resume renders live beside the controls, so you see the page count change as you adjust.
+
+
+### What the extension looks like on a real posting
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
+
+
 ### Where it Wins:
 - **Detailed ATS Score:** You upload a resume and paste a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and get a real ATS score with specific missing keywords - not a vague "grade."
 - **Tailored Rewrite:** The tailored rewrite keeps your [voice and real experience](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) instead of generating generic AI filler.
@@ -82,18 +96,8 @@ Teal's job application tracker is genuinely useful, but tailoring your resume to
 
 Jobscan popularized the "match rate" score, but it only checks keywords - it doesn't rewrite your resume, doesn't do interview prep, and free scans are capped monthly. If you want the scoring without the scan limit, compare it directly on the [Jobscan alternative page](https://www.thetailorcv.com/jobscan-alternative) or read [best free ATS resume checkers compared](https://thetailorcv.com/blog/best-free-ats-resume-checkers-compared).
 
-### What the extension looks like on a real posting
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-Rather than duplicating a resume in a builder and hand-editing it per job, the panel does the match check and the tailoring on the posting itself.
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 
 ### Strengths of Jobscan:

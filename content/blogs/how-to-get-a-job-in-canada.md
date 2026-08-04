@@ -89,6 +89,13 @@ For tips on crafting a compelling cover letter, consult our [cover letter guide 
 
 LinkedIn is a powerful tool for job seekers in Canada. Here’s how to make the most of it:
 
+### Tailoring without leaving LinkedIn
+
+![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
+
+The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
+
+
 - **Optimize Your Profile**: Use a professional photo, write a strong headline, and summarize your experience effectively.
 - **Network**: Connect with industry professionals and join relevant groups.
 - **Engage with Content**: Share articles and comment on posts to increase your visibility.
@@ -134,18 +141,8 @@ For templates and examples, check out our article on [Follow-Up Email After Job 
 
 With the rise of remote work, many Canadian employers are now open to hiring remote employees. If you’re interested in remote positions:
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - **Broaden Your Search**: Look for remote-specific job boards and listings.

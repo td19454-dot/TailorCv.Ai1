@@ -123,11 +123,6 @@ This loop usually takes two or three passes, not one. If the score barely moves 
 
 There are two very different ways to respond to a missing-keyword list, and only one of them works past the resume stage.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 **Reframing real experience (honest, and effective).** You did the work, but described it vaguely. "Helped with reports" becomes "Built weekly SQL-driven reports used by the sales team to track pipeline." Nothing here is invented - it is the same work, described precisely, using the employer's vocabulary.
@@ -139,6 +134,13 @@ The rule of thumb: if a keyword shows up in your resume, you should be able to d
 ## Soft Skills and Qualification Tiers Matter Too
 
 Matchers are often thought of as purely a hard-skills exercise, but most postings also embed soft skills and communication expectations that carry real weight in the score - "cross-functional," "stakeholder-facing," "fast-paced environment," "mentoring junior staff." These are not filler phrases; they describe how the role actually operates.
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
 
 See [Matching Your Resume to Soft Skills in a Job Description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description) for how to surface these without resorting to vague adjectives like "excellent communicator" that carry no evidence.
 

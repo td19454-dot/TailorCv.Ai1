@@ -993,8 +993,7 @@
     const text = (h.textContent || "").replace("#", "").trim();
     if (MISTAKE.test(text)) wrap(h, "mistake");
     else if (h.tagName === "H3" && EXAMPLE.test(text) && text.length < 60) wrap(h, "example");
-    else if (h.tagName === "H3" && text.length < 40 && WEAK.test(text)) wrap(h, "weak");
-    else if (h.tagName === "H3" && text.length < 40 && STRONG.test(text)) wrap(h, "strong");
+
   });
 
   /* "Before (generic resume)" / "After (Matched Resume)" followed by a code
@@ -1034,7 +1033,11 @@
    The corpus writes these as "### Do's:" immediately followed by "### Don'ts:".
    Pairing them into two columns makes the contrast readable at a glance
    instead of asking the reader to hold the first list in their head. */
-(() => {
+/* Deferred to a tick after DOMContentLoaded so it runs AFTER init()'s
+   enhancers have finished restructuring .post-content - pairing headings
+   while step cards and FAQ boxes are still being moved gave inconsistent
+   results. */
+const tcxRunPairs = () => {
   const content = document.querySelector(".post-content");
   if (!content) return;
   const DO = /^(do'?s?|dos)\s*:?\s*$/i;
@@ -1044,6 +1047,8 @@
   const ICON = {
     do: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#16a34a"/><path d="M8 12.5l2.6 2.6L16 9.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     dont: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#ef4444"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>',
+    strong: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#16a34a"/><path d="M8 12.5l2.6 2.6L16 9.5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    weak: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#d97706"/><path d="M15 9l-6 6M9 9l6 6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>',
   };
 
   const take = (heading) => {
@@ -1052,6 +1057,39 @@
     while (n && !/^H[1-6]$/.test(n.tagName)) { nodes.push(n); n = n.nextElementSibling; }
     return nodes;
   };
+
+  // Weak/Strong pairs - same grid, different labels + icons. The corpus
+  // writes "### Weak Bullet Points" then "### Strong Bullet Points" (or the
+  // reverse order in a few posts), one right after the other.
+  const startsWith = (word) => (h) => clean(h).toLowerCase().startsWith(word);
+  const WEAK_H = startsWith("weak"), STRONG_H = startsWith("strong");
+  const pairUp = (firstTest, firstKind, secondTest, secondKind) => {
+    Array.from(content.querySelectorAll("h3")).forEach((h1) => {
+      if (!firstTest(h1) || h1.closest(".dd-grid")) return;
+      const n1 = take(h1);
+      const h2 = n1.length ? n1[n1.length - 1].nextElementSibling : h1.nextElementSibling;
+      if (!h2 || h2.tagName !== "H3" || !secondTest(h2)) return;
+      const n2 = take(h2);
+      if (!n1.length || !n2.length) return;
+
+      const grid = document.createElement("div");
+      grid.className = "dd-grid";
+      h1.before(grid);
+      [[firstKind, h1, n1], [secondKind, h2, n2]].forEach(([kind, h, nodes]) => {
+        const col = document.createElement("section");
+        col.className = "dd-col dd-" + kind;
+        const head = document.createElement("div");
+        head.className = "dd-head";
+        head.innerHTML = '<span class="dd-ico">' + ICON[kind] + "</span>";
+        col.appendChild(head);
+        head.appendChild(h);
+        nodes.forEach((n) => col.appendChild(n));
+        grid.appendChild(col);
+      });
+    });
+  };
+  pairUp(WEAK_H, "weak", STRONG_H, "strong");
+  pairUp(STRONG_H, "strong", WEAK_H, "weak");
 
   Array.from(content.querySelectorAll("h3")).forEach((doH) => {
     if (!DO.test(clean(doH)) || doH.closest(".dd-grid")) return;
@@ -1079,4 +1117,10 @@
       grid.appendChild(col);
     });
   });
-})();
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxRunPairs, 0));
+} else {
+  setTimeout(tcxRunPairs, 0);
+}

@@ -26,6 +26,13 @@ Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfoli
 
 Use:
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 Name + target role + core value + proof link
 
 Example:
@@ -78,11 +85,6 @@ The goal is not to copy the [job description](https://thetailorcv.com/blog/job-d
 
 Before you send the application, review this checklist:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 1. Does the top section match the target role clearly?

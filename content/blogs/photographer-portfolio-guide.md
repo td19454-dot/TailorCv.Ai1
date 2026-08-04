@@ -67,6 +67,13 @@ Host it fast and free where you can - see [How to Host Your Portfolio for Free](
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 ### Syncing Strategies
 - **Use Consistent Language**: Ensure the descriptions in your resume match those in your portfolio.
 - **Highlight Key Projects**: Choose 2-3 projects that illustrate your skills and include them in both documents.
@@ -88,11 +95,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Add a short About with your style and a friendly photo of you ([Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)).
 - Generate a simple, fast site from your bio with the [portfolio builder](https://thetailorcv.com/portfolio).
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 ### Additional Enhancements

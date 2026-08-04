@@ -185,6 +185,13 @@ For managing the different resume versions alongside this, read [managing multip
 [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) has features your resume does not.
 Use them.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
+
+
 **Recommendations**
 A written recommendation from a former manager or senior colleague is worth more than almost any bullet point on your resume.
 It is social proof that someone who has worked with you says you are as good as you claim.
@@ -215,11 +222,6 @@ Read the [LinkedIn profile optimization guide](https://thetailorcv.com/blog/link
 
 Before applying to any role, do this 3-minute check:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
 
 
 1. Open your [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)

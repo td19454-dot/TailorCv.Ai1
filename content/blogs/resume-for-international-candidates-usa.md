@@ -36,6 +36,13 @@ Before you begin crafting your resume, familiarize yourself with the typical str
 
 A well-structured resume typically consists of several key sections. Here’s how to organize yours:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 ### 1. Contact Information
 
 - Name
@@ -99,11 +106,6 @@ If you're seeking visa sponsorship, it’s essential to address your work author
 
 Networking is crucial in the U.S. job market. Here are some strategies to enhance your networking efforts:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 - **LinkedIn Profile**: Maintain an updated LinkedIn profile that reflects your resume. Use the platform to connect with professionals in your field and engage with relevant content.

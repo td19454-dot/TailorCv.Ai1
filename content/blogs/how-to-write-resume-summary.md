@@ -144,11 +144,6 @@ Why it works: specific role, quantified achievements, relevant keywords, clear d
 5. Keep it tight - 2-4 lines maximum
 6. Avoid clichés - no "hardworking," "team player," or "results-driven" without proof
 
-### Building the resume section by section
-
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You can start from an existing CV or import from LinkedIn instead of retyping everything.
 
 
 ---

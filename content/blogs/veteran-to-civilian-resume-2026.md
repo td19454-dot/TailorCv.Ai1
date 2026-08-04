@@ -35,6 +35,13 @@ Write every line for someone who has never served. If you're moving into a techn
 
 Employers value what the military builds better than almost any institution: leadership, project management, training, security, logistics, and calm decision-making under pressure. Put these transferable skills front and center, and back each one with a [quantified result](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 - "Led a 25-person team maintaining $4M in equipment at 100% operational readiness."
 - "Trained 60+ personnel, cutting onboarding time by a third."
 - "Coordinated logistics across three sites with zero supply failures over 18 months."
@@ -73,11 +80,6 @@ There is no universal veteran [resume](https://www.thetailorcv.com/modify-cv). D
 
 Before you can translate your experience, you need a target. A [resume](https://www.thetailorcv.com/modify-cv) written for "any job" reads as generic to both recruiters and the [ATS](https://thetailorcv.com/blog/ats-score-guide). Start by mapping your military role to two or three civilian career paths — operations, logistics, project management, security, IT, or trades are common landing spots — and then write toward those specific titles.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 Research the target role the way you'd plan a mission: read ten real postings, note the repeated [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) and required skills, and use the [job description analysis checklist](https://thetailorcv.com/blog/job-description-analysis-checklist) to extract what matters. If you're aiming for a technical field, the [career change to tech guide](https://thetailorcv.com/blog/career-change-to-tech-guide) shows how to bridge the gap, and the [how to get your first tech job guide](https://thetailorcv.com/blog/how-to-get-first-tech-job) covers early-career strategy. Once you know the target, every line of your [resume](https://www.thetailorcv.com/modify-cv) can point at it, and the [resume optimizer](https://www.thetailorcv.com/solutions) can score how well you match.

@@ -98,17 +98,19 @@ A well-matched script delivered with poor lighting or unclear audio still underc
 
 Use [TailorCV's resume optimizer](/solutions) to quickly identify a job description's top priorities and keywords, the same insights you need to write a matched video pitch script. Then practice your delivery and refine your framing with an [AI mock interview](/mock-interview), which builds practice questions directly from your resume and target role.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ---
 
 ## Step-by-Step Guide to Crafting Your Video Pitch
 
 Creating a compelling 30-second video pitch involves more than just reciting your qualifications. Here’s a step-by-step approach to ensure your pitch aligns perfectly with the job description:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Analyze the Job Description Thoroughly**: Use the [Job Description Analysis Checklist Before You Apply](https://thetailorcv.com/blog/job-description-analysis-checklist) to identify key responsibilities and requirements. Highlight any specific skills or experiences that are mentioned.

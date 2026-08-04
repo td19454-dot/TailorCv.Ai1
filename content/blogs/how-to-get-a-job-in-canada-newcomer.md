@@ -26,6 +26,13 @@ This guide is a practical, step-by-step roadmap for newcomers and immigrants on 
 
 Canada's opportunities vary by province and city, but demand is consistently strong in:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+
+
 - **Technology** (Toronto, Vancouver, Waterloo, Montreal): software, data, IT, product.
 - **Healthcare** across the country: chronic shortages mean steady demand (often requiring licensing).
 - **Skilled trades and construction**: strong demand nationally.
@@ -139,18 +146,8 @@ Canadian interviews often use [behavioural questions](https://thetailorcv.com/bl
 - **Be patient but persistent:** a first Canadian role often takes time; each interview and application improves your approach.
 - **Use free resources:** settlement services, libraries, and newcomer programs offer resume help, workshops, and connections at no cost.
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 ## Understanding Credential Assessment in Detail

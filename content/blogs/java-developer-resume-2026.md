@@ -33,6 +33,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for engineers with under 8 years of experience.
 
 ---
@@ -113,11 +120,6 @@ Built / Designed / Optimized + [service or system] in Java/Spring + [scale or co
 Senior Java Developer
 FinTech Company | Feb 2022 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Led backend development for a payment settlement platform processing $420M in annual transaction volume using Java 17 and Spring Boot.

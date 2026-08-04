@@ -87,11 +87,6 @@ A warm introduction or referral carries weight in Japan and can open doors that 
 
 As a foreigner, you generally need an employer-sponsored work visa matched to your role and qualifications — you secure the job first, then the employer sponsors. Factor visa processing (including the Certificate of Eligibility) into your timeline, and always confirm current rules with official Japanese authorities. See [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner) for context.
 
-### Tailoring without leaving LinkedIn
-
-![The TailorCV extension open on a LinkedIn job posting, reading the job title and showing a skill match with buttons to tailor the resume or write a cover letter](public/blog-images/best-chrome-extensions-for-job-seekers-2026-linkedin.webp)
-
-The panel reads the description straight off the listing you are already on and scores your resume against that role, so tailoring per application is a click rather than a detour.
 
 
 ### What optimizing actually does to your resume

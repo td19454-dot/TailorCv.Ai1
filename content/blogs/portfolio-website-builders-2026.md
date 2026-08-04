@@ -19,6 +19,13 @@ You do not need to hand-code a site to have a great portfolio - you need to *fin
 ## Fastest: Resume-to-Portfolio
 If you already have a resume, the quickest path by far is the [TailorCV portfolio builder](https://thetailorcv.com/portfolio): pick a template, upload your CV, tweak the details, and publish a live link. Ideal when you want results **today** - see [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes).
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
+
+
 ## For Developers
 - **GitHub Pages** - free, simple static hosting straight from a repo ([GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)).
 - **Vercel** - perfect for Next.js, generous free tier.
@@ -90,11 +97,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - **Optimize for SEO**: Use relevant keywords, alt text for images, and meta descriptions to enhance your portfolio's visibility.
 - **Analytics Tracking**: Implement tools like Google Analytics to track visitor behavior and optimize your site accordingly.
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
 ## Real Examples to Inspire You

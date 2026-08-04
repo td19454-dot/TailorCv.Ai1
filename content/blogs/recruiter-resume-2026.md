@@ -32,6 +32,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 4. Work experience
 5. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One to two pages.
 
 ---
@@ -109,11 +116,6 @@ Sourced / Filled / Reduced / Improved + [hiring activity] + [role type and volum
 Senior Technical [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)
 High-Growth SaaS Startup | Mar 2022 - Present
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Owned full-cycle recruiting for engineering and data roles during a scale-up from 200 to 420 employees in 18 months.

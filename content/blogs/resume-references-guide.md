@@ -148,11 +148,6 @@ If your resume currently includes this line, delete it. It:
 - Is assumed by all employers
 - Makes your resume look dated
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Replace that space with a strong bullet point, certification, or achievement. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for more things to remove.

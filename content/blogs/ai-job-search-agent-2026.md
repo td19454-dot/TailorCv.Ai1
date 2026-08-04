@@ -28,6 +28,20 @@ Use AI as a strategy assistant, not as a replacement for your judgment.
 
 A useful AI [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) workflow should help you:
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+
+
+### Tailoring without leaving Glassdoor
+
+![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
+
+Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
+
+
 - Read a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and extract the real requirements
 - Compare those requirements with your [resume](https://thetailorcv.com/blog/how-to-choose-resume-template)
 - Suggest missing [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
@@ -105,18 +119,8 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 
 Weak version:
 
-### Tailoring without leaving Glassdoor
-
-![The TailorCV extension open on a Glassdoor job posting, showing a 27% skill match with options to tailor the resume or write a cover letter](public/blog-images/extension-on-glassdoor.webp)
-
-Glassdoor tells you which qualifications it thinks you are missing; the panel beside it scores the whole resume against the role and rewrites it to close that gap.
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.

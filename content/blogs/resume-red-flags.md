@@ -46,6 +46,13 @@ Multiple short tenures (under 12-18 months per role) - especially a string of th
 
 A summary that says "results-driven professional seeking challenging opportunities" tells a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) your resume was not written for their role. Generic language immediately signals a mass-application approach - which signals low genuine interest.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 **Fix:** Tailor your summary and top bullets to each role. This takes 15-20 minutes per application and dramatically increases callback rates. Read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and use the [TailorCV optimizer](https://www.thetailorcv.com/solutions) to match keywords.
 
 ---
@@ -110,11 +117,6 @@ If your phone number is missing, your email is wrong, or your [LinkedIn](https:/
 
 Your part-time job from college, a skill from 15 years ago, an expired certification, or five [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) about a role from 2008 - these fill space with content that actively dilutes your relevance.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 **Fix:** Remove roles older than 10-15 years unless they are exceptional. Update or remove expired [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume). Ruthlessly edit for relevance to the target role.

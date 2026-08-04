@@ -119,11 +119,6 @@ Your relationship with your manager is critical in the first 90 days:
 ## Common First 90 Days Mistakes
 
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 ### Mistake 1: Trying to change everything immediately
 

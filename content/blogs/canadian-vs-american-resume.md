@@ -26,6 +26,13 @@ This guide breaks down the Canadian vs American resume in 2026: what's the same,
 
 It helps to understand *why* Canadian and American resumes look so alike. Both countries have strong anti-discrimination norms, which is why neither includes a photo, age, marital status, or other personal identifiers that could enable bias — a sharp contrast with markets like Malaysia or parts of Europe where photos are common. Both also have results-oriented business cultures and widespread use of applicant tracking systems, which reward concise, keyword-relevant, achievement-focused resumes. So the shared format isn't a coincidence; it reflects shared legal norms, shared hiring technology, and a shared preference for evidence over ornamentation. That common foundation is exactly why adapting between the two is quick — you're adjusting surface details, not rebuilding from scratch.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 ## Who Needs to Worry About This?
 
 This comparison matters most if you fall into one of a few groups: professionals relocating between Canada and the US for work; newcomers who studied or worked in one country and are applying in the other; people applying to [remote roles](https://thetailorcv.com/blog/cover-letter-for-remote-jobs) that could be based on either side of the border; and job seekers near the border who naturally consider opportunities in both markets. If you're firmly settled and job-hunting in just one country, you mainly need that country's conventions — see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) for the full Canadian treatment. But if you're moving between the two, or hedging across both, the details below are exactly what keep you from sending a resume that quietly reads as "from the other country."
@@ -119,11 +126,6 @@ The practical approach: set your word processor's language to English (Canada) o
 When you apply in the other country, create a dedicated version:
 
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Switch spelling** to match the target country.

@@ -109,11 +109,6 @@ Not all tech jobs behave the same way in a downturn - and tech has proven that n
 
 Insurance is a useful case study in regulatory-driven, non-discretionary demand: most insurance products (auto, health, homeowners, commercial liability) are legally or contractually required, so premiums keep getting paid even when household budgets are tight elsewhere.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
 - Underwriting, claims processing, and actuarial roles tend to be stable because the core function of the industry - assessing and paying out risk - doesn't pause in a downturn. See [resume matching for insurance jobs](https://thetailorcv.com/blog/resume-matching-insurance-jobs) for how to tailor your resume to this industry's specific keyword patterns.
@@ -230,3 +225,10 @@ Every few months, or immediately after any measurable win - a completed project,
 ## Next Step
 
 Start by seeing exactly where your resume stands today with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
+

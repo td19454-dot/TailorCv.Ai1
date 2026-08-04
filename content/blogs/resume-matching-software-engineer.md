@@ -174,6 +174,13 @@ The specific version contains dozens more matchable keywords.
 
 ## Before and After: SWE Resume Bullet Matching
 
+
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
 ### Mid-Level Backend Engineer at a SaaS Startup
 
 **JD Requirements:** Python, Django, PostgreSQL, REST APIs, AWS, microservices, Agile
@@ -230,11 +237,6 @@ Before applying to any SWE role:
 4. Close gaps in [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and top bullets
 5. Re-run the check
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 Target 75%+ for most SWE roles.

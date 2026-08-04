@@ -111,6 +111,13 @@ Without proper ATS optimization, even a strong candidate gets filtered out autom
 
 Every resume should include:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 1. **Contact information** - Name, email, phone, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), city
 2. **Professional summary** - 2-3 sentences that frame your value
 3. **Skills** - Key technical and professional skills
@@ -127,11 +134,6 @@ Read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a
 **"My resume just needs to look good"**  
 Visual design matters, but ATS cannot read fancy graphics, columns, or tables reliably. An [ATS-friendly template](https://www.thetailorcv.com/templates) beats a beautifully designed resume that fails the scan.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 **"I should list everything I've done"**  

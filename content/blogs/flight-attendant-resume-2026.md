@@ -32,6 +32,13 @@ Numbers and specifics make you credible — the [quantify achievements guide](ht
 
 A short [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) frames your fit:
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 > "Customer-focused hospitality professional with 4 years in high-pressure service roles. Calm under pressure, safety-minded, and fluent in English and Spanish. Seeking a cabin crew position with a passenger-first airline."
 
 See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) for the opening lines, and lead with a clear target so the [ATS](https://thetailorcv.com/blog/ats-score-guide) and recruiter both see the fit.
@@ -74,11 +81,6 @@ The role is customer-facing, so a polished, error-free [resume](https://www.thet
 
 You don't need prior flying experience — airlines hire heavily from hospitality, retail, and customer service. Frame those roles around service, safety awareness, and composure, and lean on the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) if your history is light. Transferable skills from any people-facing job translate directly.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 ## International vs domestic carrier resumes

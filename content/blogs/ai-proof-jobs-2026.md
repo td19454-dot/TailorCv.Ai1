@@ -100,11 +100,6 @@ It's worth applying the same standard to your own job search. Using AI tools to 
 
 Job titles are a poor unit of analysis - two people with the same title can have very different exposure depending on what they actually spend their time on. Ask yourself these questions about your real day-to-day work, not your title:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 - If you wrote down every task you did last week, what fraction of it was pattern-matching against something that's happened before, versus judgment calls on something genuinely new or ambiguous?
@@ -176,3 +171,10 @@ No - the opposite. Even the most AI-resistant roles are being reshaped by AI too
 ## Next Step
 
 Check exactly how your resume reads today, including whether it reflects judgment-based, AI-resistant experience or reads as purely task-based, with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+

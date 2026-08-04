@@ -113,11 +113,6 @@ Make sure your LinkedIn photo is professional and consistent with how you presen
 
 If a job posting explicitly asks for a photo and you are applying to a country where it is the norm, include it. If you are in a country where photos are not expected and an employer requests one, use your judgment - this may be a small or international company operating under different cultural norms.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 In the US or UK, if a job posting requests a photo, it may signal the company has not updated their practices - or it may be an international employer. You can include one if specifically requested without significant risk.

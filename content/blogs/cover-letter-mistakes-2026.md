@@ -64,11 +64,6 @@ I would welcome the chance to discuss how my experience in [skill] and [outcome]
 
 Treat this guide as a working document, not just something to read once. The best [job seekers](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers) use a simple loop: compare the [target role](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job), update one part of the application, test the result, then repeat. That is especially important for your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) [targeting process](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) because small wording choices can change how recruiters and [ATS systems](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) understand your fit.
 
-### Generating the letter from a job description
-
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
 
 
 Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn profile](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers), portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.

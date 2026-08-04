@@ -86,11 +86,6 @@ With this kind of system in place, the "cost" of tailoring drops significantly, 
 
 A job search is rarely a single week - it's usually a multi-week or multi-month process, and the pace you set in week one needs to be a pace you can still hold in week six. An aggressive sprint of 15-20 applications a day for a few days, followed by burnout and a week of doing nothing, produces worse total output than a steady 5 a day sustained for a month.
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
 
 
 Burnout in a job search shows up in specific, recognizable ways:
@@ -167,3 +162,10 @@ Track response rate, not just application count, in your tracker. If your respon
 ## Next Step
 
 Before you send another application, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) to see exactly where it stands - it takes less time than a single untailored application, and it tells you whether volume or quality is your actual bottleneck.
+
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimising runs against the specific job description you paste in, not in the abstract.
+

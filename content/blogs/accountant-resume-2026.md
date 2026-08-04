@@ -34,6 +34,13 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and licenses
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter.
+
+
 One page for staff and senior accountants. Two pages for controllers or accountants with extensive experience.
 
 ---
@@ -136,11 +143,6 @@ Manufacturing Company | Mar 2021 - Present
 - CIMA
 - Enrolled Agent (EA) - US tax
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 
 List format:

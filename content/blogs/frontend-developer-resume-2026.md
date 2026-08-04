@@ -35,6 +35,13 @@ Start by testing your current resume against the job description with the [ATS s
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 One page for engineers with under 8 years of experience. Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is extremely important for frontend roles - always include it.
 
 ---
@@ -134,11 +141,6 @@ SaaS Analytics Company | Sep 2023 - Present
 
 Strong frontend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 - Personal [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) site

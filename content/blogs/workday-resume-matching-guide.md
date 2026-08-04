@@ -70,6 +70,13 @@ Workday applications almost always include extra screener questions ("Do you hav
 | Spell out dates clearly (Month Year - Month Year) | Ambiguous date formats can break the employment-history field |
 | List job titles exactly as held | Workday matches parsed titles against the job's title requirements |
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
+
+
 Start from an [ATS-friendly resume template](/templates) built for exactly this kind of parsing, so you are not troubleshooting formatting after the fact.
 
 ---
@@ -142,11 +149,6 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 
 To ensure your resume passes through the Workday ATS effectively, follow this checklist:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 
 1. **Analyze the Job Description:**
