@@ -55,6 +55,7 @@ Open strong, vary the rhythm, and close strong. Cut anything that breaks your st
 - Keep branding minimal so the photos lead
 
 ### Comparing Portfolio Platforms
+
 | Platform     | Best For                    | Pros                                   | Cons                          |
 |--------------|-----------------------------|----------------------------------------|-------------------------------|
 | Squarespace  | All-in-one solutions        | User-friendly, customizable templates  | Monthly fee                   |

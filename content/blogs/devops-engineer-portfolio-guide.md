@@ -22,6 +22,7 @@ keywords: devops portfolio, sre portfolio, infrastructure as code portfolio, dev
 DevOps and SRE work is often invisible until something breaks - which makes it hard to show on a resume. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets you demonstrate the pipelines, infrastructure, and incident response that keep systems reliable. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **Infrastructure-as-code repos** | Terraform, Pulumi, or CloudFormation modules with clear READMEs |

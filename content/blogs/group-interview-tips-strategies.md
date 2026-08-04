@@ -154,6 +154,7 @@ Practicing in a simulated environment can significantly boost your confidence an
 Navigating a group interview can be tricky. Here’s a concise list of do's and don'ts to help you shine:
 
 ### Do's:
+
 | Question | What they are checking |
 |---|---|
 | **Engage with Everyone** | Make eye contact with all interviewers and acknowledge your fellow candidates. It shows you’re a [team player](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026) |
@@ -162,6 +163,7 @@ Navigating a group interview can be tricky. Here’s a concise list of do's and 
 | **Ask Questions** | Show your interest by asking insightful questions related to the role or company. This can set you apart from other candidates |
 
 ### Don'ts:
+
 | What | Details |
 |---|---|
 | **Dominate the Conversation** | While it’s important to assert yourself, make sure you’re not overshadowing others. Collaboration is key |

@@ -22,6 +22,7 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 `yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
 
 ## Why It Matters
+
 | Reason | What it gets you |
 |---|---|
 | **Credibility** | a custom domain reads as more established than a free subdomain |

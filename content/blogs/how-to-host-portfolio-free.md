@@ -117,6 +117,7 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 For tips on incorporating your portfolio link into your resume, see [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 
 ## Common Mistakes to Avoid
+
 | Mistake | Why it costs you |
 |---|---|
 | **Forgetting HTTPS** | Browsers flag "not secure," which can deter visitors |

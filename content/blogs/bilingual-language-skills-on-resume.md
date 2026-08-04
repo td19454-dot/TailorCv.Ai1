@@ -74,6 +74,7 @@ If a role weights languages heavily, back up your claim with evidence. Certifica
 ## Common mistakes to avoid
 
 - **Vague levels** — always use a recognized scale.
+
 | Mistake | Why it costs you |
 |---|---|
 | **Skill "bars" or graphics** | they break the [ATS](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly); use text |

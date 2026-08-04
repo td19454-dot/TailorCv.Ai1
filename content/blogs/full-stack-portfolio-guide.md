@@ -106,6 +106,7 @@ Creating a portfolio can be daunting, but adhering to these do's and don'ts can 
 - **Do Update Regularly**: Keep your portfolio fresh by adding new projects and removing outdated ones. This shows your growth and adaptability.
 
 ### Don'ts
+
 | What to include | Why |
 |---|---|
 | **Don’t Overcomplicate Your Design** | A cluttered design can distract from your work. Keep it simple and focused |

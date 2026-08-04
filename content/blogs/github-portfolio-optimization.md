@@ -99,6 +99,7 @@ Curate ruthlessly - pinned repos are your highlight reel. Each one needs:
 GitHub shows the code; a portfolio site frames the story. Generate one from your resume with the [portfolio builder](https://thetailorcv.com/portfolio) and link your best repos from it. Need project ideas to fill it? See [15 Developer Portfolio Project Ideas That Get You Hired in 2026](https://thetailorcv.com/blog/developer-portfolio-project-ideas).
 
 ### Key Elements of a Strong Portfolio Site
+
 | Tool | What it does |
 |---|---|
 | **Personal Branding** | Your portfolio should reflect your personality and style |

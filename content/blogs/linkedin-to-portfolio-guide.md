@@ -22,6 +22,7 @@ keywords: linkedin to portfolio, turn linkedin into website, linkedin portfolio 
 Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile already has most of the raw material for a portfolio - experience, summary, skills, and projects. The problem is that LinkedIn's format is generic and shared with 900 million other profiles. A dedicated [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) lets that same content breathe, with room for case studies, media, and a design that reflects you specifically. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and LinkedIn Profile Optimization Guide.
 
 ## What to Carry Over From LinkedIn
+
 | Skill | Why it matters |
 |---|---|
 | **Your headline and summary** | rewrite them slightly more personally; a portfolio can be less formal than LinkedIn's corporate tone |
@@ -30,6 +31,7 @@ Your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 | **Recommendations** | pull 2-3 of your strongest LinkedIn recommendations into a testimonials section |
 
 ## What a Portfolio Adds That LinkedIn Cannot
+
 | What to include | Why |
 |---|---|
 | **Case studies** | full [project write-ups](https://thetailorcv.com/blog/project-manager-portfolio-guide) with process, decisions, and outcomes, not just a bullet |

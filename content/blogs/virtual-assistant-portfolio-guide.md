@@ -22,6 +22,7 @@ keywords: virtual assistant portfolio, freelancer portfolio website, va portfoli
 As a virtual assistant or freelance support professional, you are usually selling trust as much as skill - clients are handing over calendars, inboxes, and sometimes finances to someone they have never met in person. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with clear service packages and real testimonials closes that trust gap faster than a resume ever could. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Social Media Manager Portfolio](https://thetailorcv.com/blog/social-media-manager-portfolio).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **Clear service packages** | calendar/inbox management, bookkeeping, customer support, project coordination, listed with what is included |

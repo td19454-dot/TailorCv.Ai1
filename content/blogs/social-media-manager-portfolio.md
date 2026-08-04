@@ -22,6 +22,7 @@ keywords: social media manager portfolio, social media portfolio website, conten
 Anyone can screenshot a few posts and call it a portfolio. What actually gets social media managers hired is proof of growth - follower gains, engagement rate changes, and campaigns tied to real business outcomes. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
 ## What to Include
+
 | What to include | Why |
 |---|---|
 | **Growth metrics** | follower growth, engagement rate, reach, and how they changed under your management |

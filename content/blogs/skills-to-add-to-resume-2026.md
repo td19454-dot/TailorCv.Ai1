@@ -67,6 +67,7 @@ Since hybrid and remote work is standard:
 ### Software Engineering
 
 Highest demand in 2026:
+
 | Tool | What it does |
 |---|---|
 | **AI/ML integration** | embedding LLMs, building AI-powered features (OpenAI API, Anthropic Claude API, LangChain) |
@@ -92,6 +93,7 @@ Highest demand:
 Highest demand:
 - **Kubernetes and GitOps** - ArgoCD, Flux
 - **Terraform / Pulumi** - IaC is non-negotiable
+
 | Tool | What it does |
 |---|---|
 | **FinOps** | cloud cost management is an explicit discipline |

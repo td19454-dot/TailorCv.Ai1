@@ -151,6 +151,7 @@ It is the most important piece.
 Every application needs a row in your tracker.
 
 Minimum columns:
+
 | Company | Role | Date Applied | Resume Version Used | ATS Score | Status | Notes |
 |---------|------|-------------|--------------------|-----------|----|-------|
 | Stripe | Product Manager | Jun 12 | JaneDoe_PM_Stripe_Jun2026.pdf | 82% | Phone screen scheduled | Referred by Alex |

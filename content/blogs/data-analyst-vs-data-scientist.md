@@ -157,6 +157,7 @@ Read the [how to get your first tech job guide](https://thetailorcv.com/blog/how
 ## Related Roles to Consider
 
 The data field has more than two roles:
+
 | Role | What it involves |
 |---|---|
 | **Data Engineer** | Builds the data infrastructure and pipelines. Read the [data engineer resume guide](https://thetailorcv.com/blog/data-engineer-resume-2026) |
