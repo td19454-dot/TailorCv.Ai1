@@ -10,11 +10,6 @@ image: public/blog-images/github-portfolio-optimization.webp
 
 For developers, GitHub is a portfolio recruiters already know how to read - which means a few hours of cleanup pays off more than almost anything else you can do. Most candidates leave it a mess; optimize yours and you instantly look more senior. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio), and [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio).
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
 
 
 ### Turning a resume into a portfolio site
@@ -127,6 +122,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Add topics to repos so they are searchable.
 - Star and follow [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you admire - it signals technical taste.
 
+### What optimizing actually does to your resume
+
+![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
+
+Optimizing runs in visible stages against the specific job description you paste in - it parses your resume the way an ATS would before rewriting anything.
+
+
 
 
 
@@ -238,19 +240,19 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Frontend Developer Portfolio Guide](https://thetailorcv.com/blog/frontend-developer-portfolio)
-- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
-- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
-- [Software Engineer Resume FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- Frontend Developer Portfolio Guide
+- Backend Developer Portfolio Guide
+- Full Stack Developer Portfolio Guide
+- LinkedIn Profile Optimization Guide
+- How to Write a Portfolio Case Study
+- Portfolio Checklist Before You Apply
+- Portfolio SEO: Get Found
+- Software Engineer Resume FAANG
+- Portfolio Mistakes to Avoid
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

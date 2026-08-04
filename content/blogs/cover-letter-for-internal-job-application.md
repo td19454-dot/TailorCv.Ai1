@@ -14,11 +14,6 @@ keywords: cover letter for internal job application, internal promotion cover le
 
 Applying for a role inside your own company feels like it shouldn't need a cover letter - everyone already knows you. But that familiarity can work against you if you don't put your case in writing: hiring panels often include people from other teams who don't know your track record, and a lazy or missing letter can read as a lack of seriousness about the move.
 
-### Keeping every tailored resume with its job
-
-![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
-
-Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
 
 
 
@@ -157,6 +152,13 @@ Best regards,
 ## Common Mistakes to Avoid in Your Internal Cover Letter
 
 When crafting your internal cover letter, it’s essential to avoid some common pitfalls that could undermine your application. Here are key mistakes to watch out for:
+
+### Keeping every tailored resume with its job
+
+![TailorCV My Resumes: each saved resume shown against its job title, company and status - Interview, Applied, Rejected or Saved - with the job description and a PDF download](public/blog-images/job-application-tracker-my-resumes.webp)
+
+Every resume you tailor is saved against the job it was written for, with the company, the job description and a status you can move from Saved to Applied to Interview. That is the part a spreadsheet usually gets wrong - the tracker and the actual document drift apart, and you end up guessing which version you sent.
+
 
 
 

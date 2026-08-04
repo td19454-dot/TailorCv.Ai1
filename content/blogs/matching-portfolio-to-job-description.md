@@ -208,13 +208,13 @@ Use [TailorCV's Portfolio Builder](https://www.thetailorcv.com/portfolio) to cre
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
-- [How to Match Your 30-Second Video Pitch to the Job Description](https://thetailorcv.com/blog/matching-video-resume-to-job-description)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [Portfolio Examples That Landed Interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews)
+- Data Analyst Portfolio Guide
+- Add Portfolio Link to Resume
+- Portfolio Checklist Before Applying
+- Managing Multiple Resume Versions
+- How to Match Your 30-Second Video Pitch to the Job Description
+- Job Description Keyword Extraction Guide
+- Portfolio Examples That Landed Interviews
 
 ---
 

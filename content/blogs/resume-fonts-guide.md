@@ -200,12 +200,12 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 - [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
 - [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
 - [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
-- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
-- [Resume File Format Guide: PDF vs Word](https://thetailorcv.com/blog/resume-file-format-guide)
+- ATS Resume Formatting Mistakes
+- How to Make Your Resume ATS-Friendly
+- Ideal Resume Length Guide
+- How to Choose the Right Resume Template
+- The Anatomy of a Perfect Resume
+- Resume File Format Guide: PDF vs Word
 
 ---
 

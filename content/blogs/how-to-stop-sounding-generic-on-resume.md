@@ -195,15 +195,15 @@ Absolutely. Specificity at any level beats vagueness. "Helped with marketing" vs
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
-- [Generic Resume Mistakes That Cost You Interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)
-- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Resume Customization Checklist](https://thetailorcv.com/blog/resume-customization-checklist)
-- [How to Write Resume With AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [Tailored Resume vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
+- Generic Resume Mistakes That Cost You Interviews
+- How ATS Detects a Generic Resume
+- Best Resume Keywords to Beat ATS Systems
+- How to Write a Resume Summary
+- How to Tailor a Resume in 5 Minutes
+- Why Your Resume Gets No Responses
+- Resume Customization Checklist
+- How to Write Resume With AI
+- Tailored Resume vs Generic Resume
 
 ---
 

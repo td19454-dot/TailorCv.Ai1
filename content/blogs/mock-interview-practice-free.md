@@ -59,7 +59,7 @@ Here is a simple, effective routine you can start today:
 3. **Answer out loud.** Do not type or think silently - speak as if the interviewer is in front of you.
 4. **Use the [STAR method](https://thetailorcv.com/blog/star-method-interview-guide).** Situation, Task, Action, Result keeps behavioral answers structured and concise.
 5. **Read the feedback carefully.** Note repeated issues: filler words, vague answers, missing metrics, weak structure.
-6. **Fix one weakness at a time.** Re-run the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) focusing on a single improvement.
+6. **Fix one weakness at a time.** Re-run the interview focusing on a single improvement.
 7. **Practice consistently.** Fifteen focused minutes a day beats one long cram session.
 
 ## How AI Mock Interview Feedback Works

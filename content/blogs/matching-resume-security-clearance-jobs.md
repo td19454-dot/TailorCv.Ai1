@@ -206,13 +206,13 @@ Use the [TailorCV ATS score checker](/solutions) to compare your resume against 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Federal Government Resume Guide](https://thetailorcv.com/blog/federal-government-resume-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
-- [Matching Your Resume to Certification Requirements You Don't Have Yet](https://thetailorcv.com/blog/matching-resume-to-certifications-in-job-description)
-- [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Cybersecurity Engineer Resume 2026](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide)
+- Matching Your Resume to Certification Requirements You Don't Have Yet
+- Resume Tailoring for Underqualified Candidates
+- ATS Resume Formatting Mistakes
+- Cybersecurity Engineer Resume 2026
+- How to Explain Resume Gaps
+- ATS Score Guide 2026
+- Resume Keywords Guide 2026
 
 ---
 

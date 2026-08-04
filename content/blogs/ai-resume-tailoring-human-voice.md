@@ -243,9 +243,9 @@ This is the same principle behind [using a mock interview](https://www.thetailor
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Can recruiters detect AI-written resumes?
@@ -268,13 +268,13 @@ The best tool is one that shows you keyword gaps and gives you control over the 
 - [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Resume Keyword Density Guide](https://thetailorcv.com/blog/resume-keyword-density-guide)
-- [How AI Resume Matching Works](https://thetailorcv.com/blog/how-ai-resume-matching-works)
-- [ATS Keyword Mistakes That Cost Interviews](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Stop Sounding Generic on Your Resume](https://thetailorcv.com/blog/how-to-stop-sounding-generic-on-resume)
-- [Generic Resume Mistakes That Cost Interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- How AI Resume Matching Works
+- ATS Keyword Mistakes That Cost Interviews
+- How to Write Resume Bullet Points
+- How to Write a Resume Summary
+- How to Stop Sounding Generic on Your Resume
+- Generic Resume Mistakes That Cost Interviews
+- ATS Score Guide
 
 ---
 

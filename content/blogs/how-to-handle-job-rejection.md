@@ -16,7 +16,7 @@ What separates candidates who recover fast and land offers from those who get st
 
 This guide covers how to respond to rejection professionally, how to extract useful signal from it, and how to rebuild momentum after a difficult stretch.
 
-Before the next application, make sure your [resume](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume) is as strong as possible. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize keyword matching, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
+Before the next application, make sure your [resume](https://thetailorcv.com/blog/survived-a-layoff-30-day-plan-to-rebuild-your-resume) is as strong as possible. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize keyword matching, use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the resume optimization guide.
 
 ---
 
@@ -187,18 +187,18 @@ If you are consistently failing technical rounds, the answer is not just to appl
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Work-Life Balance Tips for Professionals](https://thetailorcv.com/blog/work-life-balance-tips)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
+- Remote Job Search Guide
+- How to Build a Professional Portfolio
+- How to Negotiate a Salary Offer
+- How to Use LinkedIn for Job Search
+- LinkedIn Profile Optimization Guide
+- Work-Life Balance Tips for Professionals
+- Cover Letter Guide
+- How to Follow Up After a Job Interview
+- How to Get a Job With No Experience
+- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
+- Data Analyst vs Data Scientist in 2026 - Which Career Is Right for You?
+- Freelancing vs Full-Time Employment in 2026 - Honest Comparison
 
 ## Make This Practical
 
@@ -209,7 +209,7 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 ## Conclusion
 Job rejection is a process, not a verdict. Every successful candidate has a rejection story. The ones who land offers are the ones who process rejection quickly, learn what they can, fix what they can, and keep going.
 
-Make your resume as strong as possible before each application cycle - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). Prepare for interviews using the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [mock interview tool](https://thetailorcv.com/mock-interview).
+Make your resume as strong as possible before each application cycle - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide). Prepare for interviews using the behavioral interview guide and the mock interview tool.
 
 ## Frequently Asked Questions
 

@@ -257,7 +257,7 @@ Going in with a high keyword match and detailed experience descriptions dramatic
 
 Use this guide as part of a complete job-search workflow. Check your resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
-After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a [project-backed proof page](https://www.thetailorcv.com/portfolio) with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
+After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a [project-backed proof page](https://www.thetailorcv.com/portfolio) with the portfolio website builder if you need a stronger online presence.
 
 ## FAQ
 ### How long should a federal resume be?
@@ -280,12 +280,12 @@ Many positions do not require one at the application stage. The agency will init
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [International Resume Tailoring Guide](https://thetailorcv.com/blog/international-resume-tailoring-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- How to Write a Resume Summary
+- Resume vs CV
+- Resume Keywords Guide
+- How to Quantify Resume Achievements
+- International Resume Tailoring Guide
+- Cover Letter Guide 2026
 
 ---
 

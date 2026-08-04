@@ -12,7 +12,7 @@ keywords: recruitment agencies, working with recruiters, staffing agency, how to
 
 Recruitment agencies can open doors to roles you'd never find on a [job board](https://thetailorcv.com/blog/best-job-search-websites-2026) — including unadvertised positions and relationships with hiring managers who trust the agency's judgment. But they only work in your favor if you understand how they operate. Recruiters are paid by employers, not by you, so the relationship works best when you make yourself easy to place. This guide shows you how to get recruiters genuinely working on your behalf.
 
-Whether you go through an agency or apply directly, the foundation is the same: a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that passes the [ATS](https://thetailorcv.com/blog/ats-score-guide). Build it in the [resume builder](https://www.thetailorcv.com/modify-cv) and score it with the [ATS checker](https://www.thetailorcv.com/solutions) before you engage a single recruiter.
+Whether you go through an agency or apply directly, the foundation is the same: a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that passes the [ATS](https://thetailorcv.com/blog/ats-score-guide). Build it in the [resume builder](https://www.thetailorcv.com/modify-cv) and score it with the ATS checker before you engage a single recruiter.
 
 ## Understand how agencies get paid
 
@@ -28,7 +28,7 @@ Recruiters place candidates who are easy to work with. Tell them exactly what yo
 
 ## Give them a strong, tailored resume
 
-Recruiters often submit your [resume](https://www.thetailorcv.com/modify-cv) directly to employers, sometimes reformatted onto their letterhead, so make it excellent. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), lead with [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [tailor it](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to the kinds of roles they pitch you. A recruiter can only sell what's on the page — a sharp, results-driven [resume](https://www.thetailorcv.com/modify-cv) makes their job easy and your placement more likely. Ask whether they'll tweak keywords for specific submissions, and provide a version aligned to each [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
+Recruiters often submit your [resume](https://www.thetailorcv.com/modify-cv) directly to employers, sometimes reformatted onto their letterhead, so make it excellent. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), lead with [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and tailor it to the kinds of roles they pitch you. A recruiter can only sell what's on the page — a sharp, results-driven resume makes their job easy and your placement more likely. Ask whether they'll tweak keywords for specific submissions, and provide a version aligned to each job description.
 
 ### What optimizing actually does to your resume
 
@@ -43,7 +43,7 @@ Treat recruiters as long-term relationships, not one-off transactions. Keep in t
 
 ## Don't rely on agencies alone
 
-Agencies are one channel, not your whole strategy. Keep applying directly, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), using [job boards](https://thetailorcv.com/blog/best-job-search-websites-2026), and sending [cold emails to hiring managers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in parallel. The candidates who land roles fastest run several channels at once, as [how to apply to jobs faster](https://thetailorcv.com/blog/how-to-apply-to-jobs-faster) and [how to find a job fast](https://thetailorcv.com/blog/how-to-find-a-job-fast) explain. Recruiters accelerate your search; they don't replace it.
+Agencies are one channel, not your whole strategy. Keep applying directly, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), using [job boards](https://thetailorcv.com/blog/best-job-search-websites-2026), and sending [cold emails to hiring managers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in parallel. The candidates who land roles fastest run several channels at once, as how to apply to jobs faster and how to find a job fast explain. Recruiters accelerate your search; they don't replace it.
 
 ## Recruitment agency checklist
 

@@ -29,7 +29,7 @@ A resume is a fast, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-
 - It is skimmed top-to-bottom in seconds
 - It rewards clarity, keywords, and quantified results
 
-If your resume is not generating responses, fix that before anything else. Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions), switch to an [ATS-friendly template](https://www.thetailorcv.com/templates), and read [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline) to sharpen the top third of the page.
+If your resume is not generating responses, fix that before anything else. Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions), switch to an [ATS-friendly template](https://www.thetailorcv.com/templates), and read [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and How to Write a Resume Headline to sharpen the top third of the page.
 
 ## What a Portfolio Actually Does
 A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) removes doubt. Once your resume earns a shortlist spot, hiring managers Google you - and a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is the proof that turns "looks okay on paper" into "let's talk to this person."
@@ -104,19 +104,19 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
-- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
-- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [How to Write a Resume From Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
-- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Make a Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Resume vs CV](https://thetailorcv.com/blog/resume-vs-cv)
-- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- Personal Website vs Portfolio
+- Projects on a Resume
+- LinkedIn Profile Optimization Guide
+- How to Write a Resume From Scratch
+- Portfolio Checklist Before You Apply
+- Portfolio Mistakes to Avoid
+- How to Make a Resume ATS-Friendly
+- Resume vs CV
+- Best Portfolio Website Builders 2026
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

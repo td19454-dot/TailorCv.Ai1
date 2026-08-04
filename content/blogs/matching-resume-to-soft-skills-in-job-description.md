@@ -212,13 +212,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to a
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
-- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Hidden Keywords in Job Description](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
-- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
+- Soft Skills for Resume
+- How to Write Resume Bullet Points
+- How to Quantify Resume Achievements
+- Hidden Keywords in Job Description
+- Best Action Verbs for Resume
+- ATS Score Guide 2026
+- Job Description Analysis Checklist
 
 ---
 

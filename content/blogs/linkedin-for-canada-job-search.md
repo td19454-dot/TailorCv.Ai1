@@ -182,11 +182,11 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [How ATS Works in Canada: Beating Applicant Tracking Systems for Canadian Jobs](https://thetailorcv.com/blog/ats-in-canada-guide)
 - [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
 - [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
-- [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
-- [LinkedIn for a US Job Search: Get Found by American Recruiters](https://thetailorcv.com/blog/linkedin-for-usa-job-search)
-- [Executive LinkedIn Summary Examples for Senior Leaders](https://thetailorcv.com/blog/executive-linkedin-summary-examples)
-- [LinkedIn Headline Examples for Job Seekers in 2026](https://thetailorcv.com/blog/linkedin-headline-examples-job-seekers)
-- [How to Write a Two Weeks Notice in 2026 - Templates and Examples](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
+- How to Get a Job in Canada in 2026: A Step-by-Step Guide
+- LinkedIn for a US Job Search: Get Found by American Recruiters
+- Executive LinkedIn Summary Examples for Senior Leaders
+- LinkedIn Headline Examples for Job Seekers in 2026
+- How to Write a Two Weeks Notice in 2026 - Templates and Examples
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

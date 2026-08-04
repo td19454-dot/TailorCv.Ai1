@@ -2249,3 +2249,82 @@ header.navbar {
    red/green, since "weak" is a lesser version rather than a mistake. */
 .blog-detail-page .post-content .dd-weak .dd-head h3 { color: #b45309 !important; }
 .blog-detail-page .post-content .dd-strong .dd-head h3 { color: #15803d !important; }
+
+/* ---- Readability pass ----
+   The complaint was "overcrowded": headings sat too close to the text above,
+   paragraphs ran long, and link-dense paragraphs turned into walls of purple.
+   Widen the rhythm and calm the links down. */
+.blog-detail-page .post-content p,
+.blog-detail-page .post-content li {
+  line-height: 1.78;
+}
+.blog-detail-page .post-content p { margin: 0 0 1.35em; }
+
+.blog-detail-page .post-content h2 {
+  margin-top: 64px;
+  padding-top: 40px;
+  letter-spacing: -0.015em;
+}
+.blog-detail-page .post-content h3 {
+  margin-top: 40px;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.blog-detail-page .post-content h2 + p,
+.blog-detail-page .post-content h3 + p { margin-top: 0; }
+
+/* Links: keep them findable without shouting. A paragraph with eight links
+   was rendering as solid purple underline. */
+.blog-detail-page .post-content p a,
+.blog-detail-page .post-content li a {
+  font-size: 1em;
+  font-weight: 500;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(100, 5, 252, 0.35);
+}
+.blog-detail-page .post-content p a:hover,
+.blog-detail-page .post-content li a:hover {
+  text-decoration-color: currentColor;
+}
+
+/* Equal-height comparison columns. */
+.blog-detail-page .post-content .dd-grid { align-items: stretch; }
+.blog-detail-page .post-content .dd-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* FAQ: lift it off the page instead of a flat outlined box. */
+.blog-detail-page .faq-box {
+  border: 0;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(16, 32, 60, .05), 0 18px 40px rgba(16, 32, 60, .09);
+  padding: clamp(26px, 3.2vw, 40px);
+}
+.blog-detail-page .faq-item {
+  padding: 22px 0;
+  border-top: 1px solid #eef2f8;
+}
+.blog-detail-page .faq-item:first-of-type { border-top: 0; padding-top: 6px; }
+.blog-detail-page .post-content .faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+}
+
+/* "Common Mistakes" written as bold lead-in + prose reads as a wall. Give each
+   point its own line and a divider so it scans like a list. */
+.blog-detail-page .post-content .callout-mistake > p {
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid #fbe3e3;
+}
+.blog-detail-page .post-content .callout-mistake > p:first-of-type { border-top: 0; }
+.blog-detail-page .post-content .callout-mistake > p > strong:first-child {
+  display: block;
+  margin-bottom: 3px;
+  color: #b42318;
+}

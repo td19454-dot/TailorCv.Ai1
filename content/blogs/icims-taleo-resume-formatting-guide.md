@@ -187,13 +187,13 @@ Use the [TailorCV ATS score checker](/solutions) to test your resume's match sco
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Workday Resume Matching Guide](https://thetailorcv.com/blog/workday-resume-matching-guide)
 - [Greenhouse ATS Resume Tips](https://thetailorcv.com/blog/greenhouse-ats-resume-tips)
-- [Lever ATS Resume Guide](https://thetailorcv.com/blog/lever-ats-resume-guide)
-- [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [ATS Keywords to Boost Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
-- [Federal Government Resume Guide](https://thetailorcv.com/blog/federal-government-resume-guide)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- Lever ATS Resume Guide
+- ATS Resume Parser Friendly Format
+- ATS Resume Formatting Mistakes
+- ATS Keywords to Boost Score
+- Federal Government Resume Guide
+- Job Description Keyword Extraction Guide
+- ATS Score Guide 2026
 
 ---
 

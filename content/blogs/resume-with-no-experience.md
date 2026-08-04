@@ -362,19 +362,19 @@ You can explore professional fresher resume templates here:
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Ideal Resume Length in 2026 - One Page or Two? Complete Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Improve Your ATS Score in 2026](https://thetailorcv.com/blog/resume-optimization-guide)
-- [Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
+- How to Get Your First Tech Job
+- How to Write a Resume Headline
+- 200 Best Action Verbs for Resume
+- How to List Certifications on a Resume
+- How to List Education on a Resume
+- How to Make Your Resume ATS-Friendly
+- How to Prepare for Campus Placement
+- How to Quantify Resume Achievements
+- Ideal Resume Length in 2026 - One Page or Two? Complete Guide
+- How to Write a Resume Summary in 2026 - With 20 Examples
+- How to Improve Your ATS Score in 2026
+- Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)
 
 ## Make This Practical
 

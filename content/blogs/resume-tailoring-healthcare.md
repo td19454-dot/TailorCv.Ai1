@@ -252,9 +252,9 @@ This is what a healthcare recruiter and an [ATS](https://thetailorcv.com/blog/wh
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Should I include my NCLEX result on my nursing resume?
@@ -277,13 +277,13 @@ Very specific. "Medical-surgical nursing" is vague. "32-bed cardiac step-down un
 - [Nursing Resume 2026](https://thetailorcv.com/blog/nursing-resume-2026)
 - [Pharmacist Resume 2026](https://thetailorcv.com/blog/pharmacist-resume-2026)
 - [Physiotherapist Resume 2026](https://thetailorcv.com/blog/physiotherapist-resume-2026)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- How to List Certifications on a Resume
+- ATS Resume Formatting Mistakes
+- How to Tailor Your Resume for Every Job
+- Resume Matching with Job Description - Complete Guide
+- Resume Keywords Guide
+- How to Write Resume Bullet Points
+- ATS Score Guide
 
 ---
 

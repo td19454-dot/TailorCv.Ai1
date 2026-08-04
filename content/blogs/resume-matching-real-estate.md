@@ -210,13 +210,13 @@ Use the [TailorCV ATS score checker](/solutions) to compare your resume against 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Keywords Guide 2026](https://thetailorcv.com/blog/resume-keywords-guide)
-- [Matching Your Resume to a Hospitality and Hotel Job Description](https://thetailorcv.com/blog/resume-matching-hospitality-hotel)
-- [Matching Your Resume to an Insurance Industry Job Description](https://thetailorcv.com/blog/resume-matching-insurance-jobs)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Sales Executive Resume 2026](https://thetailorcv.com/blog/sales-executive-resume-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- Resume Keywords Guide 2026
+- Matching Your Resume to a Hospitality and Hotel Job Description
+- Matching Your Resume to an Insurance Industry Job Description
+- ATS Resume Formatting Mistakes
+- Sales Executive Resume 2026
+- ATS Score Guide 2026
+- Cover Letter Guide 2026
 
 ---
 

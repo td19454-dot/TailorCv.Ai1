@@ -78,7 +78,7 @@ The reason most people believe they have to choose between quantity and quality 
 - **A tracking system** that records which version of your resume went to which company, on what date, with what follow-up plan. Without this, you either lose track entirely or waste time reconstructing what you sent. The [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template) is built for exactly this.
 - **A reusable but customizable cover letter structure** - a consistent opening, body, and closing format where only the specifics change per role, rather than reinventing the structure every time.
 - **Templated but personalized outreach messages** for networking and follow-ups, so you're not starting from a blank page for every recruiter or contact. [Follow-up email after application](https://thetailorcv.com/blog/follow-up-email-after-application) has message structures you can adapt quickly.
-- **A fast tailoring workflow**, such as [how to tailor a resume in 5 minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), for roles similar enough to your base resume that they don't need a full rebuild.
+- **A fast tailoring workflow**, such as how to tailor a resume in 5 minutes, for roles similar enough to your base resume that they don't need a full rebuild.
 
 With this kind of system in place, the "cost" of tailoring drops significantly, which means the volume you can sustainably manage per day goes up without any drop in per-application quality. This is the actual lever for applying to more jobs - not skipping tailoring, but making tailoring faster.
 
@@ -123,7 +123,7 @@ If you're searching for remote positions specifically, the calculus shifts sligh
 
 ## Make This Practical
 
-The shift to make is from counting applications to measuring quality per application, and from applications-only to a balanced weekly system. Check each resume's fit before you submit with the [free ATS score checker](https://www.thetailorcv.com/solutions), build and store your tailored versions with a resume from the [resume template library](https://www.thetailorcv.com/templates), draft a genuinely custom cover letter in minutes with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), track your pipeline with the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template), and stay interview-ready between callbacks with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). Related reading: [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job) and [why your resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses).
+The shift to make is from counting applications to measuring quality per application, and from applications-only to a balanced weekly system. Check each resume's fit before you submit with the [free ATS score checker](https://www.thetailorcv.com/solutions), build and store your tailored versions with a resume from the [resume template library](https://www.thetailorcv.com/templates), draft a genuinely custom cover letter in minutes with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), track your pipeline with the job application tracker template, and stay interview-ready between callbacks with the AI mock interview tool. Related reading: how much to change your resume for every job and why your resume gets no responses.
 
 ## FAQ
 

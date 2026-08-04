@@ -124,8 +124,8 @@ If relevant, note your **JLPT** and **TOEIC** levels — trusted, concrete signa
 ## Pair It With a Strong Application
 
 - Match your resume format to the employer — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
-- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- Find the right roles via the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
+- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the AI mock interview.
+- Find the right roles via the best job sites for Japan and how to find a job in Tokyo.
 
 ## Frequently Asked Questions
 

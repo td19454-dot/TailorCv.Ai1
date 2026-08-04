@@ -102,8 +102,8 @@ Interviewers often pick a project directly off your resume and ask you to go dee
 - Make sure every project on your resume is something you can explain in technical depth for five minutes straight, including decisions you'd revisit today.
 - If you're targeting a specific role, tailor your resume language to match the job description's actual stack and priorities — a generic resume creates generic, easily-derailed conversations. See [resume matching for software engineers](https://thetailorcv.com/blog/resume-matching-software-engineer) and the [complete resume matching guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide).
 - If you're targeting large tech companies specifically, the bar for how achievements are framed is different — see [software engineer resume for FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang).
-- Make sure your resume language matches your actual stack — see the relevant role guide for [Python developers](https://thetailorcv.com/blog/python-developer-resume-2026), [Java developers](https://thetailorcv.com/blog/java-developer-resume-2026), [React developers](https://thetailorcv.com/blog/react-developer-resume-2026), [full-stack developers](https://thetailorcv.com/blog/full-stack-developer-resume-2026), [backend developers](https://thetailorcv.com/blog/backend-developer-resume-2026), or [frontend developers](https://thetailorcv.com/blog/frontend-developer-resume-2026).
-- If you're presenting personal or open-source projects, make sure your GitHub reflects well too — see [GitHub portfolio optimization](https://thetailorcv.com/blog/github-portfolio-optimization) and, for a fuller project showcase, the [full-stack portfolio guide](https://thetailorcv.com/blog/full-stack-portfolio-guide), [backend developer portfolio](https://thetailorcv.com/blog/backend-developer-portfolio), or [frontend developer portfolio](https://thetailorcv.com/blog/frontend-developer-portfolio) depending on your focus.
+- Make sure your resume language matches your actual stack — see the relevant role guide for Python developers, Java developers, React developers, full-stack developers, backend developers, or frontend developers.
+- If you're presenting personal or open-source projects, make sure your GitHub reflects well too — see GitHub portfolio optimization and, for a fuller project showcase, the full-stack portfolio guide, backend developer portfolio, or frontend developer portfolio depending on your focus.
 
 A resume that has actually been matched against the target job description also makes AI-assisted matching tools work in your favor rather than against you — see [how AI resume matching works](https://thetailorcv.com/blog/how-ai-resume-matching-works).
 
@@ -136,7 +136,7 @@ Throughout this whole process, rehearsing out loud matters more than reading sil
 
 - **Phone screens** are usually a lighter coding round plus a resume walkthrough — pacing and clarity matter even more with no visual cues; see [phone interview tips](https://thetailorcv.com/blog/phone-interview-tips).
 - **Virtual onsite loops** are now standard for most companies — see [virtual interview tips](https://thetailorcv.com/blog/virtual-interview-tips) for screen-sharing etiquette and camera presence during whiteboard-style problems.
-- **Final/onsite rounds** often stack multiple interviewers back-to-back and probe your answers more deeply across rounds — see [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips) and [resume tailoring for a second interview](https://thetailorcv.com/blog/resume-tailoring-second-interview) for how expectations shift as you advance.
+- **Final/onsite rounds** often stack multiple interviewers back-to-back and probe your answers more deeply across rounds — see [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips) and resume tailoring for a second interview for how expectations shift as you advance.
 
 ---
 
@@ -176,13 +176,13 @@ Speaking your answers out loud to questions generated from your actual resume, w
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
-- [Software Engineer Resume for FAANG](https://thetailorcv.com/blog/software-engineer-resume-faang)
-- [Resume Matching for Software Engineers](https://thetailorcv.com/blog/resume-matching-software-engineer)
-- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
-- [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [Free Mock Interview Practice](https://thetailorcv.com/blog/mock-interview-practice-free)
+- Technical Interview Preparation Guide
+- Software Engineer Resume for FAANG
+- Resume Matching for Software Engineers
+- GitHub Portfolio Optimization
+- Common Interview Mistakes to Avoid
+- Final Round Interview Tips
+- Free Mock Interview Practice
 
 ---
 

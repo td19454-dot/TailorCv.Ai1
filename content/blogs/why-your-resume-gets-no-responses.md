@@ -152,15 +152,15 @@ Possibly, but less often than candidates assume. More often the problem is commu
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
 - [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
-- [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free)
-- [Does My Resume Pass ATS? A 12-Point Checklist](https://thetailorcv.com/blog/does-my-resume-pass-ats)
-- [Hidden ATS Mistakes in Job Search](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
-- [Common Resume Job Description Mismatch Mistakes](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes)
+- How to Increase Your ATS Score
+- ATS Resume Formatting Mistakes
+- How to Quantify Resume Achievements
+- Best Resume Keywords to Beat ATS Systems
+- How to Write a Resume Summary
+- How to Check Your ATS Score for Free
+- Does My Resume Pass ATS? A 12-Point Checklist
+- Hidden ATS Mistakes in Job Search
+- Common Resume Job Description Mismatch Mistakes
 
 ---
 

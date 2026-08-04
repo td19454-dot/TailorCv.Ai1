@@ -193,13 +193,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) for 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Resume Match Percentage Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Increase Your ATS Score](https://thetailorcv.com/blog/how-to-increase-ats-score)
-- [Why Is My ATS Score Low](https://thetailorcv.com/blog/why-is-my-ats-score-low)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [ATS Resume Data Study 2026](https://thetailorcv.com/blog/ats-resume-data-study-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [ATS Score vs Resume Score](https://thetailorcv.com/blog/what-is-a-good-ats-score)
+- Why Is My ATS Score Low
+- Why Your Resume Gets No Responses
+- ATS Keyword Mistakes
+- How to Quantify Resume Achievements
+- ATS Resume Data Study 2026
+- ATS Score Guide 2026
+- ATS Score vs Resume Score
 
 ---
 

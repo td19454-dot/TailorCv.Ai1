@@ -15,7 +15,7 @@ keywords: second interview questions, second round interview, final interview qu
 - A second [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) tests fit and depth, not whether you are qualified — that was round one.
 - Expect harder, more specific [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) and more senior interviewers.
 - Have fresh stories ready; repeating round-one [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) verbatim falls flat.
-- Your [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) matter more now — they signal how seriously you are evaluating them back.
+- Your questions matter more now — they signal how seriously you are evaluating them back.
 
 ## What a Second Interview Is Really For
 
@@ -80,8 +80,8 @@ The gap between the first and second [interview](https://thetailorcv.com/blog/ai
 - **Debrief round one.** Write down every [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) you were asked and grade your own [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Fix the weak ones.
 - **Research deeper.** Read the company's recent news, product updates, and the [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profiles of your upcoming interviewers.
 - **Prepare fresh stories.** Interviewers compare notes; new examples show range. (Reusing round-one anecdotes verbatim falls flat.)
-- **Rehearse out loud.** A few reps in an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) turn rambling [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) into crisp ones.
-- **Prepare your own [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).** Round two is when thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) carry the most weight.
+- **Rehearse out loud.** A few reps in an AI mock interview turn rambling answers into crisp ones.
+- **Prepare your own questions.** Round two is when thoughtful questions carry the most weight.
 
 ## Reading the Panel
 
@@ -90,7 +90,7 @@ Second rounds often introduce more senior people, and each interviewer is evalua
 
 ## Using the STAR Method in Second Rounds
 
-Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lean heavily on [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — "tell me about a time when..." — and the candidates who [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) them well almost always use a structure, whether they name it or not. The [STAR method](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) keeps a story tight and complete:
+Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) lean heavily on [behavioral questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — "tell me about a time when..." — and the candidates who [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) them well almost always use a structure, whether they name it or not. The STAR method keeps a story tight and complete:
 
 - **Situation:** briefly set the scene. One or two sentences.
 - **Task:** what you specifically needed to do.
@@ -111,16 +111,16 @@ Without structure, behavioral [answers](https://thetailorcv.com/blog/ai-mock-int
 
 ## What Interviewers Are Really Evaluating
 
-By the second round, competence is largely assumed — you cleared that bar in round one. Now the panel is weighing subtler things: Will you fit the team's working style? Do you communicate clearly under a harder [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)? Are you self-aware about your weaknesses? Are you actually going to accept, or are you using this to leverage another offer? Every [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) you give is read through those lenses. This is why enthusiasm, consistency across your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) matter as much as the technical content — they are the signals that decide a close call between two qualified people.
+By the second round, competence is largely assumed — you cleared that bar in round one. Now the panel is weighing subtler things: Will you fit the team's working style? Do you communicate clearly under a harder [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)? Are you self-aware about your weaknesses? Are you actually going to accept, or are you using this to leverage another offer? Every [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) you give is read through those lenses. This is why enthusiasm, consistency across your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful questions matter as much as the technical content — they are the signals that decide a close call between two qualified people.
 
 ## The Day Before: A Preparation Routine
 
 - **Re-read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)** and your own [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), so you can speak fluently to both.
 - **Review your round-one [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)** and sharpen any you fumbled.
 - **Prepare fresh STAR stories** you did not use in round one.
-- **Research your interviewers** on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to anticipate their angle.
-- **Write down three genuine [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)** to ask, tuned to who you will meet.
-- **Do one full spoken rehearsal**, ideally in an [AI mock interview](https://thetailorcv.com/mock-interview), so your delivery is warm and unhurried.
+- **Research your interviewers** on LinkedIn to anticipate their angle.
+- **Write down three genuine questions** to ask, tuned to who you will meet.
+- **Do one full spoken rehearsal**, ideally in an AI mock interview, so your delivery is warm and unhurried.
 
 ## Frequently Asked Questions
 

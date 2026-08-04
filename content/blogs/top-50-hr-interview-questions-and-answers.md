@@ -249,10 +249,10 @@ Reading this list is step one. Saying the answers out loud, under time pressure,
 1. **Tailor your resume first.** Your answers should echo the language of your resume, not contradict it — [check your resume against the job description](https://thetailorcv.com/solutions) before you rehearse.
 2. **Pick 4–5 stories** from your career that can flex across multiple behavioral questions (a conflict story, a failure story, an initiative story, a pressure story).
 3. **Practice out loud**, not silently. Use a [free AI mock interview](https://thetailorcv.com/mock-interview) that asks questions generated from your actual resume, so you're rehearsing the exact follow-ups a real interviewer would ask.
-4. **Adapt for format.** A [phone interview](https://thetailorcv.com/blog/phone-interview-tips) and a [virtual interview](https://thetailorcv.com/blog/virtual-interview-tips) reward different things — pacing and clarity on the phone, eye contact and framing on video.
-5. **Prepare for technical or panel rounds separately** if your role includes them — see the [technical interview preparation guide](https://thetailorcv.com/blog/technical-interview-preparation-guide), [coding interview preparation guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), or [system design interview guide](https://thetailorcv.com/blog/system-design-interview-guide) depending on the role.
-6. **Avoid the common traps.** Rambling, vague answers, and no questions at the end are the most frequent reasons candidates lose an HR round — see [common interview mistakes to avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
-7. **Follow up afterward.** How you close the loop matters almost as much as how you answered — see [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
+4. **Adapt for format.** A [phone interview](https://thetailorcv.com/blog/phone-interview-tips) and a virtual interview reward different things — pacing and clarity on the phone, eye contact and framing on video.
+5. **Prepare for technical or panel rounds separately** if your role includes them — see the technical interview preparation guide, coding interview preparation guide, or system design interview guide depending on the role.
+6. **Avoid the common traps.** Rambling, vague answers, and no questions at the end are the most frequent reasons candidates lose an HR round — see common interview mistakes to avoid.
+7. **Follow up afterward.** How you close the loop matters almost as much as how you answered — see how to follow up after an interview.
 
 ---
 
@@ -288,14 +288,14 @@ The core categories stay the same, but the depth changes. Senior and executive c
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [How to Prepare for a Job Interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- [Questions to Ask in an Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
-- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [Free Mock Interview Practice](https://thetailorcv.com/blog/mock-interview-practice-free)
+- How to Answer "Tell Me About Yourself"
+- Questions to Ask in an Interview
+- Phone Interview Tips
+- Virtual Interview Tips
+- Final Round Interview Tips
+- How to Follow Up After an Interview
+- How to Negotiate a Salary Offer
+- Free Mock Interview Practice
 
 ---
 

@@ -225,15 +225,15 @@ Read [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to Add Projects to Your Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
+- How to Quantify Resume Achievements
+- Resume Keywords Guide
+- Skills to Add to Your Resume in 2026
+- How to List Education on a Resume
+- How to List Certifications on a Resume
+- How to Add Projects to Your Resume
+- Ideal Resume Length Guide
+- How to Make Your Resume ATS-Friendly
+- Resume Contact Section Guide
 
 ---
 

@@ -138,8 +138,8 @@ STAR shows up differently depending on the round:
 
 - **Phone interviews** reward pacing and clarity even more than in-person rounds, since the interviewer has no visual cues — see [phone interview tips](https://thetailorcv.com/blog/phone-interview-tips) for adjustments specific to that format.
 - **Virtual interviews** add the challenge of screen presence — see [virtual interview tips](https://thetailorcv.com/blog/virtual-interview-tips) for how to keep STAR answers from feeling flat on camera.
-- **Technical interviews** often blend STAR with a technical walkthrough — see the [technical interview preparation guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) and [system design interview guide](https://thetailorcv.com/blog/system-design-interview-guide) for how behavioral and technical structure combine in those rounds.
-- **Final rounds** tend to probe STAR answers harder with follow-up questions — see [final round interview tips](https://thetailorcv.com/blog/final-round-interview-tips) and [resume tailoring for a second interview](https://thetailorcv.com/blog/resume-tailoring-second-interview) for what changes as you advance.
+- **Technical interviews** often blend STAR with a technical walkthrough — see the [technical interview preparation guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) and system design interview guide for how behavioral and technical structure combine in those rounds.
+- **Final rounds** tend to probe STAR answers harder with follow-up questions — see final round interview tips and resume tailoring for a second interview for what changes as you advance.
 
 Whatever the format, always come prepared with your own [questions to ask the interviewer](https://thetailorcv.com/blog/questions-to-ask-in-an-interview) at the end — a strong STAR performance can lose momentum if the interview closes with no genuine curiosity from your side.
 
@@ -187,13 +187,13 @@ Speaking the answer out loud, under time pressure, to questions generated from y
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [How to Prepare for a Job Interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [Questions to Ask in an Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Free Mock Interview Practice](https://thetailorcv.com/blog/mock-interview-practice-free)
+- How to Answer "Tell Me About Yourself"
+- How to Quantify Resume Achievements
+- How to Write Resume Bullet Points
+- Questions to Ask in an Interview
+- Final Round Interview Tips
+- How to Follow Up After an Interview
+- Free Mock Interview Practice
 
 ---
 

@@ -43,7 +43,7 @@ Anyone can show a code sample - what stands out is evidence you can ship and mai
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same platforms, same architecture patterns, same headline apps - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), and portfolio should tell the same story - same platforms, same architecture patterns, same headline apps - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 ## Common Mistakes
 - Screenshots with no live link or demo video - reviewers rarely install unfamiliar apps
@@ -143,26 +143,26 @@ Show whatever matches your target roles. If you know both, lead with your strong
 Keep platform names, architecture patterns, and app names consistent across resume and portfolio. You can also use our [Free ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume aligns well with industry standards.
 ## Build Your Portfolio Now
 
-You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell [one consistent story](https://thetailorcv.com/blog/one-page-vs-multi-page-portfolio).
+You do not need to code a site or spend a weekend on a website builder. Turn your existing resume into a live, shareable portfolio in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a theme, upload your CV, let AI pull in your experience, then embed your app store links and demo videos and publish a link for your resume and LinkedIn. Before you apply, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one consistent story.
 
 ## Related Guides
 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Frontend Developer Portfolio](https://thetailorcv.com/blog/frontend-developer-portfolio)
-- [Full Stack Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
-- [Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
-- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [Portfolio No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
-- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
-- [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026)
-- [Custom Domain Portfolio Guide](https://thetailorcv.com/blog/custom-domain-portfolio-guide)
+- Full Stack Portfolio Guide
+- Developer Portfolio Project Ideas
+- Portfolio Website for Job Applications
+- Portfolio Checklist Before Applying
+- Portfolio Mistakes to Avoid
+- Portfolio No Projects
+- AI Portfolio Builder: No Code Required
+- Portfolio Website Themes 2026
+- Custom Domain Portfolio Guide
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, platform, and strongest apps are easier to discover.
 
@@ -175,8 +175,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- Portfolio Mistakes to Avoid
+- How to Write Portfolio Case Study
+- Add Portfolio Link to Resume
+- Resume Matching With Job Description
+- ATS-Friendly Resume Builder

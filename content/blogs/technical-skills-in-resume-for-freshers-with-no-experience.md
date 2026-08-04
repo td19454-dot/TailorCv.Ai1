@@ -12,7 +12,7 @@ image: public/blog-images/technical-skills-freshers.webp
 
 ## Technical Skills in Resume for Freshers With No Experience (2026 Guide)
 
-Once you choose your skills, strengthen the proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), improve your [first-time resume](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and check ATS alignment with the [resume optimization tool](https://www.thetailorcv.com/solutions). For role-specific skills, compare the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) with the [data analyst resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026).
+Once you choose your skills, strengthen the proof with [resume projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), improve your [first-time resume](https://thetailorcv.com/blog/first-time-resume-with-no-experience), and check ATS alignment with the [resume optimization tool](https://www.thetailorcv.com/solutions). For role-specific skills, compare the FAANG software engineer resume guide with the data analyst resume guide.
 
 The hiring market in 2026 is more skill-focused than ever before. Recruiters are no longer selecting [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) only based on degrees or academic scores. Instead, companies now prioritize candidates who can demonstrate practical abilities, technical expertise, and industry-relevant skills.
 
@@ -948,17 +948,17 @@ Ideally:
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
-- [Internship Resume Guide 2026 - How to Write a Resume for Your First Internship](https://thetailorcv.com/blog/internship-resume-guide)
-- [Business Analyst Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
+- Top Skills to Add to Your Resume
+- Resume Keywords Guide
+- ATS Score Guide for
+- 200 Best Action Verbs for Resume
+- How to Tailor Your Resume for Every Job Application (Step-by-Step)
+- How to Write a Resume Headline
+- How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
+- Soft Skills for Resume
+- What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It
+- Internship Resume Guide 2026 - How to Write a Resume for Your First Internship
+- Business Analyst Resume 2026 - Complete Guide with Examples
 
 ## Make This Practical
 

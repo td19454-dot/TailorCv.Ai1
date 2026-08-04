@@ -210,11 +210,11 @@ Keep building your US job search with these related TailorCV guides:
 - [How to Get a Job in the USA in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-usa)
 - [Resume for H-1B Visa Sponsorship Jobs: How to Stand Out](https://thetailorcv.com/blog/resume-for-h1b-visa-sponsorship)
 - [How ATS Works in the USA: Beating Applicant Tracking Systems for US Jobs](https://thetailorcv.com/blog/ats-in-usa-guide)
-- [How to Write a Cover Letter for US Jobs (With Structure and Examples)](https://thetailorcv.com/blog/cover-letter-for-us-jobs)
-- [How to Handle Job Hopping on Your Resume - Tailoring Strategies That Actually Work (2026)](https://thetailorcv.com/blog/resume-tailoring-job-hopping)
-- [Resume Tailoring for Job Seekers Over 50 - How to Overcome Age Bias and Win Interviews in 2026](https://thetailorcv.com/blog/resume-tailoring-over-50)
-- [10 Generic Resume Mistakes That Are Costing You Interviews in 2026](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)
-- [How Much Should You Change Your Resume for Every Job? (The Honest Answer)](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
+- How to Write a Cover Letter for US Jobs (With Structure and Examples)
+- How to Handle Job Hopping on Your Resume - Tailoring Strategies That Actually Work (2026)
+- Resume Tailoring for Job Seekers Over 50 - How to Overcome Age Bias and Win Interviews in 2026
+- 10 Generic Resume Mistakes That Are Costing You Interviews in 2026
+- How Much Should You Change Your Resume for Every Job? (The Honest Answer)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

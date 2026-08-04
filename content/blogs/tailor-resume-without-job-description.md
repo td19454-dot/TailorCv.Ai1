@@ -252,9 +252,9 @@ This tells you whether your keyword coverage is strong for this type of role.
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## FAQ
 ### Is it worth applying without a job description?
@@ -277,13 +277,13 @@ Only if the recipients are at very similar companies. For each distinct company 
 - [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-summary-match-job-description)
-- [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
-- [Resume Startup vs Enterprise Tailoring Guide](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Research a Company Before Your Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- How to Use LinkedIn for Job Search
+- Job Description Keyword Extraction Guide
+- Resume Summary Match Job Description
+- Tailored vs Generic Resume
+- Resume Startup vs Enterprise Tailoring Guide
+- Cover Letter Guide 2026
+- How to Research a Company Before Your Interview
 
 ---
 

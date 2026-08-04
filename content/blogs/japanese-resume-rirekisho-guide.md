@@ -93,7 +93,7 @@ Present yourself as diligent, respectful, and genuinely interested, and you alig
 
 - For **global/English roles**, focus on a strong Western-style resume and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions); many international employers in Japan use applicant tracking systems — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 - Add a cover letter where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
-- Prepare for Japan's distinctive interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- Prepare for Japan's distinctive interview etiquette — see Japan interview etiquette and rehearse with the AI mock interview.
 
 For the bigger picture, see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner).
 

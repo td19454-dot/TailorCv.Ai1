@@ -202,7 +202,7 @@ Optimising for the ATS is a process, and the candidates who improve fastest trea
 
 ## Beyond the ATS: Winning the Human Stage
 
-Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia) and a realistic [AI mock interview](https://thetailorcv.com/mock-interview).
+Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our Malaysia interview tips and a realistic AI mock interview.
 
 ## Formatting Details That Quietly Break Parsers
 

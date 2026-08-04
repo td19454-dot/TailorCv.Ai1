@@ -74,7 +74,7 @@ The tool parses your resume the way an ATS would before it changes anything, so 
 - Personal details more openly listed than in Western resumes, including nationality and work-authorisation status.
 - Clear evidence of the specific skills the role needs.
 
-Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free [ATS score checker](https://thetailorcv.com/solutions); the mechanics are in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide).
+Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free ATS score checker; the mechanics are in how ATS works in Malaysia.
 
 Build a clean, ATS-safe version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions).
 

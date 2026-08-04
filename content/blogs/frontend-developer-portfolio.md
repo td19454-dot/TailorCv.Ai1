@@ -47,7 +47,7 @@ React, Next.js, TypeScript, Tailwind, testing libraries, and a build/deploy pipe
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
+Your resume, your LinkedIn, and [your portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
 
 
 ## Common Mistakes
@@ -152,26 +152,26 @@ Three to five, each deployed with a live demo. Lead with your most polished, rea
 Mirror your portfolio in the [Frontend Developer Resume guide](https://thetailorcv.com/blog/frontend-developer-resume-2026) and run it through the [ATS checker](https://www.thetailorcv.com/solutions). Consider also reviewing the [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide) for additional insights.
 ## Build Your Portfolio Now
 
-You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a [live, shareable portfolio website](https://www.thetailorcv.com/portfolio) in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
+You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a [live, shareable portfolio website](https://www.thetailorcv.com/portfolio) in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an ATS-friendly template so your portfolio and resume tell one clean, consistent story to every recruiter.
 
 ## Related Guides
 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Frontend Developer Resume 2026](https://thetailorcv.com/blog/frontend-developer-resume-2026)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Full Stack Developer Portfolio Guide](https://thetailorcv.com/blog/full-stack-portfolio-guide)
-- [Backend Developer Portfolio Guide](https://thetailorcv.com/blog/backend-developer-portfolio)
-- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
-- [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
-- [React Developer Resume 2026](https://thetailorcv.com/blog/react-developer-resume-2026)
+- Full Stack Developer Portfolio Guide
+- Backend Developer Portfolio Guide
+- GitHub Portfolio Optimization
+- How to Write a Portfolio Case Study
+- Portfolio Mistakes to Avoid
+- How to Get Your First Tech Job
+- Portfolio Checklist Before You Apply
+- How to Host Your Portfolio for Free
+- React Developer Resume 2026
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

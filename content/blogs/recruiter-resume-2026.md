@@ -64,7 +64,7 @@ Recruiter with 2 years of full-cycle recruiting experience across sales and oper
 Sourcing: Boolean search, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Recruiter, GitHub sourcing, X-ray search, talent mapping, passive candidate engagement
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and Tools: Greenhouse, Lever, Workday, SmartRecruiters, Ashby, LinkedIn Recruiter, SeekOut, Gem
 Full-Cycle Recruiting: Intake meetings, screening, [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) coordination, offer negotiation, closing
-Employer Branding: [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) writing, candidate experience, careers content, talent community building
+Employer Branding: job description writing, candidate experience, careers content, talent community building
 Metrics: Time-to-fill, time-to-hire, offer acceptance rate, quality-of-hire, pipeline conversion, source effectiveness
 Specializations: Technical recruiting, executive search, high-volume hiring, diversity hiring
 
@@ -151,20 +151,20 @@ Technical, executive, high-volume, and diversity recruiting require different sk
 - [HR Manager Resume](https://thetailorcv.com/blog/hr-manager-resume-2026)
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
-- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
-- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
-- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
-- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Android Developer Resume
+- Backend Developer Resume
+- Business Analyst Resume
+- Chemical Engineer Resume
+- Civil Engineer Resume
+- Cloud Engineer Resume
+- Consultant Resume
+- Content Writer Resume
+- Customer Service Resume
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

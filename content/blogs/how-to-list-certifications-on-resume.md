@@ -99,7 +99,7 @@ If you are studying for a certification, you can list it as in progress:
 - Irrelevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (a sommelier certification on a software engineer [resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews))
 - Very outdated or obsolete [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Trivial or low-credibility "certificates" that add no value
-- Too many minor [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that dilute the important ones
+- Too many minor certifications that dilute the important ones
 
 Quality over quantity. Three relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) beat fifteen random ones.
 
@@ -142,7 +142,7 @@ Quality over quantity. Three relevant [certifications](https://thetailorcv.com/b
 
 ![How to List Certifications](public/blog-images/how-to-list-certifications.webp)
 
-Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-resume-with-ai) through the [ATS score checker](https://www.thetailorcv.com/solutions) - many job descriptions list required [certifications](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) as keywords, and the ATS scans for them. Use an [ATS-friendly template](https://www.thetailorcv.com/templates).
+Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-resume-with-ai) through the [ATS score checker](https://www.thetailorcv.com/solutions) - many job descriptions list required [certifications](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) as keywords, and the ATS scans for them. Use an ATS-friendly template.
 
 ### Example for a Cloud Engineer
 
@@ -196,31 +196,31 @@ Use the official certification name, especially since [ATS](https://thetailorcv.
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
+- 200 Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How to Write a Resume Summary
+- Top Skills to Add to Your Resume
+- Chronological vs Functional Resume
+- How to Explain Resume Gaps
+- How to Make Your Resume ATS-Friendly
+- Ideal Resume Length
+- How to Write a Resume with AI in 2026 - Smart Use Without the Risks
+- MBA Resume 2026 - Complete Guide with Examples
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- 10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume
+- How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
 
 ## Make This Practical
 
-Use this guide as part of a complete job-search workflow. Check your [resume](https://thetailorcv.com/blog/accountant-resume-2026) with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+Use this guide as part of a complete job-search workflow. Check your [resume](https://thetailorcv.com/blog/accountant-resume-2026) with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the ATS-friendly resume templates.
 
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
 List [certifications](https://thetailorcv.com/blog/soft-skills-for-resume) in a clear, consistently formatted section, place critical credentials prominently, and include only relevant [certifications](https://thetailorcv.com/blog/ideal-resume-length-guide). Use the exact official names so [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems can match them to job requirements.
 
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your [certifications](https://thetailorcv.com/blog/resume-section-order-guide) match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete resume guidance.
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your [certifications](https://thetailorcv.com/blog/resume-section-order-guide) match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the resume optimization guide for complete resume guidance.
 
 ## Frequently Asked Questions
 

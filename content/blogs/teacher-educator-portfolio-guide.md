@@ -156,19 +156,19 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
-- [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
-- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
-- [Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience)
-- [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
-- [Private Portfolio Sharing Guide](https://thetailorcv.com/blog/private-portfolio-sharing-guide)
-- [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- Portfolio Website for Job Applications
+- Portfolio Checklist Before Applying
+- Portfolio Mistakes to Avoid
+- Portfolio About Me Section
+- Portfolio Contact Section
+- Portfolio With No Experience
+- AI Portfolio Builder: No Code Required
+- Private Portfolio Sharing Guide
+- Personal Website vs Portfolio
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure hiring committees can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure hiring committees can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, grade level, and strongest work are easier to discover.
 
@@ -181,8 +181,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- Portfolio Mistakes to Avoid
+- How to Write Portfolio Case Study
+- Add Portfolio Link to Resume
+- Resume Matching With Job Description
+- ATS-Friendly Resume Builder

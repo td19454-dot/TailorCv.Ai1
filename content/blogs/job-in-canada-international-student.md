@@ -48,7 +48,7 @@ Your home-country resume needs adapting. Canadian resumes:
 - Are concise (usually [one page](https://thetailorcv.com/blog/anatomy-of-a-resume) for students), achievement-focused, and tailored.
 - Must be [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder).
 
-For part-time roles, emphasise reliability, customer service, teamwork, and any relevant coursework or projects. Follow our [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide), test it with the free [ATS score checker](https://thetailorcv.com/solutions), and build a clean version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv). For the terms employers scan for, see [best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada).
+For part-time roles, emphasise reliability, customer service, teamwork, and any relevant coursework or projects. Follow our [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide), test it with the free [ATS score checker](https://thetailorcv.com/solutions), and build a clean version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv). For the terms employers scan for, see best resume keywords for Canadian jobs.
 
 ## Types of Work Available to International Students
 
@@ -106,8 +106,8 @@ As an international student, adapting your application to Canadian norms is esse
 - **Use a Canadian-style resume** — no photo or personal details, concise, achievement-focused, and ATS-friendly. See the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 - **Translate coursework and projects into experience.** With limited work history, your final-year projects, group work, and academic achievements become resume material — described with achievement bullets.
 - **Emphasise transferable skills** for part-time roles: reliability, customer service, teamwork, and communication all count.
-- **Tailor every application** with the [resume optimizer](https://thetailorcv.com/solutions), and add a targeted cover letter using the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
-- **Prepare for behavioural interviews** — Canadian employers love "Tell me about a time…" questions. Rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- **Tailor every application** with the [resume optimizer](https://thetailorcv.com/solutions), and add a targeted cover letter using the Canadian cover letter guide.
+- **Prepare for behavioural interviews** — Canadian employers love "Tell me about a time…" questions. Rehearse with the AI mock interview.
 
 Getting these fundamentals right early means that by the time you're chasing a graduate role, presenting yourself the Canadian way is second nature.
 

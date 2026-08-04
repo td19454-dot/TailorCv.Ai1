@@ -34,7 +34,7 @@ Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutio
 4. Work experience
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or case studies (if freelance or entry-level)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+7. certifications
 
 One page is preferred. Two pages are acceptable for senior designers with leadership, design systems, or research ops experience. The [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) link is not optional - it is your primary evidence.
 
@@ -184,20 +184,20 @@ In product design roles, thinking process and business impact matter as much as 
 - [Graphic Designer Resume](https://thetailorcv.com/blog/graphic-designer-resume-2026)
 - [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
 - [Product Manager Resume](https://thetailorcv.com/blog/product-manager-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
-- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
-- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
-- [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
-- [Marketing Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
+- Accountant Resume
+- Android Developer Resume
+- Backend Developer Resume
+- Business Analyst Resume
+- Chemical Engineer Resume
+- Civil Engineer Resume
+- Cloud Engineer Resume
+- Consultant Resume
+- Content Writer Resume
+- Marketing Manager Resume 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

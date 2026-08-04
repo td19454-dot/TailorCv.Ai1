@@ -14,7 +14,7 @@ keywords: why are you leaving your current job, why leaving current job intervie
 
 This guide provides positive, honest scripts for 2026 - and ways to practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
 
-Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Keep your resume consistent with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Prepare alongside [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [HR round questions](https://thetailorcv.com/blog/hr-round-interview-questions-answers), and the complete interview guide. Keep your resume consistent with the TailorCV ATS checker.
 
 ---
 

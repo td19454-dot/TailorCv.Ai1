@@ -191,13 +191,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Workday Resume Matching Guide](https://thetailorcv.com/blog/workday-resume-matching-guide)
 - [Greenhouse ATS Resume Tips](https://thetailorcv.com/blog/greenhouse-ats-resume-tips)
-- [iCIMS and Taleo Resume Formatting Guide](https://thetailorcv.com/blog/icims-taleo-resume-formatting-guide)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Hidden Keywords in Job Description](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
-- [How to Tailor Your Resume for Every Job Application](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
+- iCIMS and Taleo Resume Formatting Guide
+- LinkedIn Profile Optimization Guide
+- Hidden Keywords in Job Description
+- How to Tailor Your Resume for Every Job Application
+- Job Description Keyword Extraction Guide
+- ATS Score Guide 2026
+- Networking Tips for Job Search
 
 ---
 

@@ -180,15 +180,15 @@ No, as long as your core content stays accurate. The changes are positioning and
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
 - [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [Resume Customization Checklist for Every Application](https://thetailorcv.com/blog/resume-customization-checklist)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
-- [Resume Matching for Multiple Jobs](https://thetailorcv.com/blog/resume-matching-for-multiple-jobs)
-- [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [How to Match Resume to Job Description Fast](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast)
-- [Improve Resume Job Match Score](https://thetailorcv.com/blog/improve-resume-job-match-score)
+- Best Resume Keywords to Beat ATS Systems
+- Resume Customization Checklist for Every Application
+- How to Write a Resume Summary
+- How to Write a Resume Headline
+- Career Change Resume Guide
+- Resume Matching for Multiple Jobs
+- ATS Score Guide for 2026
+- How to Match Resume to Job Description Fast
+- Improve Resume Job Match Score
 
 ---
 

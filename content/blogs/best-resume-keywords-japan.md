@@ -118,9 +118,9 @@ Keyword **stuffing** — cramming irrelevant terms or repeating them unnaturally
 
 1. Build a clean, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. For each job, tailor keywords and check your match with the [resume optimizer](https://thetailorcv.com/solutions).
-3. Ensure the format is [parser-friendly](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
+3. Ensure the format is parser-friendly — see ATS and English resumes for Japan.
 4. Mirror your keywords on LinkedIn, which global recruiters in Japan search.
-5. Add a targeted cover letter — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
+5. Add a targeted cover letter — see the Japanese cover letter guide.
 
 For the wider job search, see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner) and the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan).
 

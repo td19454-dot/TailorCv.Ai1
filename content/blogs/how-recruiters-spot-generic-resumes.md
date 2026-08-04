@@ -161,15 +161,15 @@ Use a tool that compares your resume to the job description and highlights the g
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
 - [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [ATS Keywords - How to Find and Add Them to Boost Your Score](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
-- [How to Match Your Resume to a Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description)
-- [Does My Resume Pass ATS? A 12-Point Checklist](https://thetailorcv.com/blog/does-my-resume-pass-ats)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Common Resume Job Description Mismatch Mistakes](https://thetailorcv.com/blog/common-resume-job-description-mismatch-mistakes)
+- How to Write a Resume Summary
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How Much Should You Change Your Resume for Every Job
+- ATS Keywords - How to Find and Add Them to Boost Your Score
+- How to Match Your Resume to a Job Description
+- Does My Resume Pass ATS? A 12-Point Checklist
+- ATS Resume Formatting Mistakes
+- Common Resume Job Description Mismatch Mistakes
 
 ---
 

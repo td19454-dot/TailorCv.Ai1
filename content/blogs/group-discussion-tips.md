@@ -167,21 +167,21 @@ Not building on others or ignoring the discussion flow signals weak teamwork.
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
-- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
-- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
-- [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Phone Interview Tips 2026 - How to Ace the Phone Screen](https://thetailorcv.com/blog/phone-interview-tips)
-- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [Networking Tips for Job Search in 2026 - Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [System Design Interview Guide 2026 - Framework and Examples](https://thetailorcv.com/blog/system-design-interview-guide)
+- How to Research a Company Before Your Job Interview
+- Behavioral Interview Questions and Answers
+- Final Round Interview Tips
+- How to Follow Up After a Job Interview
+- How to Prepare for Campus Placement
+- Best Questions to Ask in a Job Interview
+- Virtual Interview Tips
+- Coding Interview Preparation Guide
+- First 90 Days at a New Job
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Phone Interview Tips 2026 - How to Ace the Phone Screen
+- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
+- How to Get a Job With No Experience - 10 Strategies That Actually Work in 2026
+- Networking Tips for Job Search in 2026 - Even If You Hate Networking
+- System Design Interview Guide 2026 - Framework and Examples
 
 ## Make This Practical
 
@@ -198,11 +198,11 @@ Use these internal guides to connect this topic with interviews, communication, 
 - [How to Prepare for a Job Interview in 2026](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [STAR Method Interview Guide](https://thetailorcv.com/blog/star-method-interview-guide)
-- [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
-- [Interview Body Language and Communication Tips](https://thetailorcv.com/blog/interview-body-language-communication-tips)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [Questions to Ask in an Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Mock Interview Practice Online Free AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
+- Common Interview Mistakes to Avoid
+- Interview Body Language and Communication Tips
+- How to Prepare for Campus Placement
+- Questions to Ask in an Interview
+- Mock Interview Practice Online Free AI
 
 ## Conclusion
 To stand out in a group discussion, contribute substantial and well-structured points, listen actively and build on others, handle conflict gracefully, and demonstrate leadership through inclusivity and structure - not domination. Quality contributions beat quantity every time.

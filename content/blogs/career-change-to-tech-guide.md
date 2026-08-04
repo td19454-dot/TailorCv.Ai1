@@ -45,7 +45,7 @@ Not all tech roles require years of computer science [education](https://thetail
 - **[backend developer](https://thetailorcv.com/blog/backend-developer-resume-2026)** - Python, Node.js, databases.
 - **Full Stack Developer** - Both front and back.
 - **[data scientist](https://thetailorcv.com/blog/data-scientist-resume-2026)** - Requires statistics + Python + ML (steeper for non-quantitative backgrounds).
-- **Cloud / [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) Engineer** - AWS, Linux, automation.
+- **Cloud / DevOps Engineer** - AWS, Linux, automation.
 
 ### Best Leverage of Existing Experience
 
@@ -190,15 +190,15 @@ Career changers benefit enormously from [networking](https://thetailorcv.com/blo
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
-- [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
-- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Prepare for Campus Placement](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
+- How to Get a Promotion
+- Personal Branding for Professionals
+- Remote Job Search Guide
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- How to Explain Resume Gaps
+- How to Get a Job With No Experience
+- How to Prepare for Campus Placement
+- How to Quit Your Job Professionally
+- How to Write a Two Weeks Notice
 
 ## Make This Practical
 
@@ -209,7 +209,7 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 ## Conclusion
 Changing careers into tech in 2026 is achievable with the right strategy: choose an accessible role, build real skills and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), write a resume that bridges your past and future, and leverage your domain expertise.
 
-Optimize your career-change resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), read the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), build your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and follow the [first tech job guide](https://thetailorcv.com/blog/how-to-get-first-tech-job).
+Optimize your career-change resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), read the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026), build your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and follow the first tech job guide.
 
 ## Frequently Asked Questions
 

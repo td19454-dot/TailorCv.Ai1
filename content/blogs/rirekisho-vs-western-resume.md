@@ -98,7 +98,7 @@ Many foreigners primarily use a strong Western resume (for global/English roles)
 ## Building Each Document
 
 - **Western resume:** build a clean, ATS-friendly resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
-- **Rirekisho:** follow the conventions in the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) — formal photo, correct dates, neatness, and a specific *shibō dōki* (motivation).
+- **Rirekisho:** follow the conventions in the Japanese resume guide — formal photo, correct dates, neatness, and a specific *shibō dōki* (motivation).
 
 ### Your resume after optimization
 

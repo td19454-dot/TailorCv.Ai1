@@ -257,23 +257,23 @@ Build it, link it on your resume, and keep it updated. Run your resume through t
 - [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
-- [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Follow Up After a Job Interview in 2026 - What to Send and When](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- How to Negotiate a Salary Offer
+- How to Quit Your Job Professionally
+- How to Use LinkedIn for Job Search
+- How to Write a Cold Email to a Recruiter
+- How to Write a Two Weeks Notice
+- LinkedIn Profile Optimization Guide
+- Remote Job Search Guide
+- Cover Letter Guide
+- How to Get a Job With No Experience
+- How to Follow Up After a Job Interview in 2026 - What to Send and When
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- Work-Life Balance Tips for Professionals in 2026 - Practical Guide
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a [live proof page](https://www.thetailorcv.com/portfolio) with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a [live proof page](https://www.thetailorcv.com/portfolio) with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the Portfolio Checklist Before Applying, and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

@@ -196,13 +196,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Do You Still Need to Match Your Resume Through a Recruiter?](https://thetailorcv.com/blog/resume-matching-recruiter-vs-direct-application)
 - [Networking Tips for Job Search](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [Referral Message Template LinkedIn](https://thetailorcv.com/blog/referral-message-template-linkedin)
-- [How Much to Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- Referral Message Template LinkedIn
+- How Much to Change Your Resume for Every Job
+- Resume Summary Match Job Description
+- How ATS Detects a Generic Resume
+- ATS Score Guide 2026
+- Cover Letter Guide 2026
+- How to Use LinkedIn for Job Search
 
 ---
 

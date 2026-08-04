@@ -90,7 +90,7 @@ Even on an English resume for a global employer in Japan, feature:
 - Add a targeted cover letter where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
 - Optimise your LinkedIn, which global recruiters in Japan search directly.
 - Prepare for interviews — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- For tech and creative roles, link a portfolio — build one with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
+- For tech and creative roles, link a portfolio — build one with the TailorCV portfolio builder.
 
 To find these English-friendly employers, see the [best job sites for finding work in Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 

@@ -14,7 +14,7 @@ Competency-based interviews - also called skills-based or structured interviews 
 
 Used by Fortune 500 companies, government agencies, and structured hiring programs, competency interviews require **[prepared, evidence-based answers](https://www.thetailorcv.com/cover-letter)**. This guide covers how to prepare in 2026.
 
-Practice competency answers with [AI mock interviews](https://thetailorcv.com/mock-interview). Also read [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method guide](https://thetailorcv.com/blog/star-method-interview-answers-guide), [situational questions](https://thetailorcv.com/blog/situational-interview-questions-answers), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Practice competency answers with [AI mock interviews](https://thetailorcv.com/mock-interview). Also read [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method guide](https://thetailorcv.com/blog/star-method-interview-answers-guide), situational questions, and the complete interview guide.
 
 ---
 

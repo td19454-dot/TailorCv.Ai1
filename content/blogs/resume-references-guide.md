@@ -184,10 +184,10 @@ Prepare your references to answer these questions with specific examples - not j
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
-- [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
-- [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Mock Interview Practice](https://thetailorcv.com/interview-prep)
+- How to Write a Resume from Scratch
+- Resume vs CV: What's the Difference?
+- How to Follow Up After an Interview
+- Mock Interview Practice
 
 ---
 

@@ -14,7 +14,7 @@ A panel [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interv
 
 This guide covers panel interview tips for 2026 - before, during, and after - plus how to practice with [AI mock interviews](https://thetailorcv.com/mock-interview).
 
-Prepare with the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [STAR method](https://thetailorcv.com/blog/star-method-interview-answers-guide), and [company research tips](https://thetailorcv.com/blog/how-to-research-company-before-interview). Ensure your resume earned you the panel with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Prepare with the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [STAR method](https://thetailorcv.com/blog/star-method-interview-answers-guide), and [company research tips](https://thetailorcv.com/blog/how-to-research-company-before-interview). Ensure your resume earned you the panel with the TailorCV ATS checker.
 
 ---
 

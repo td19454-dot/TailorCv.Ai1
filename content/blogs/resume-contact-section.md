@@ -167,11 +167,11 @@ Images are invisible to [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Should You Put a Photo on Your Resume?](https://thetailorcv.com/blog/photo-on-resume)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
+- LinkedIn Profile Optimization Guide
+- How to Use LinkedIn for Job Search
+- ATS Resume Formatting Mistakes
+- Resume Proofreading Checklist
+- How to Make Your Resume ATS-Friendly
 
 ---
 

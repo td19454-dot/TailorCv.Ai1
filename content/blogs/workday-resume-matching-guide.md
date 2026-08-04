@@ -227,13 +227,13 @@ A text-based PDF or .docx file works best. Avoid scanned images or resumes expor
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Greenhouse ATS Resume Tips](https://thetailorcv.com/blog/greenhouse-ats-resume-tips)
 - [Lever ATS Resume Guide](https://thetailorcv.com/blog/lever-ats-resume-guide)
-- [iCIMS and Taleo Resume Formatting Guide](https://thetailorcv.com/blog/icims-taleo-resume-formatting-guide)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Managing Multiple Resume Versions](https://thetailorcv.com/blog/managing-multiple-resume-versions)
+- iCIMS and Taleo Resume Formatting Guide
+- ATS Score Guide 2026
+- ATS Resume Formatting Mistakes
+- ATS Resume Parser Friendly Format
+- Job Description Keyword Extraction Guide
+- How to Make Your Resume ATS-Friendly
+- Managing Multiple Resume Versions
 
 ---
 

@@ -62,11 +62,11 @@ Use a [clean, simple template](https://www.thetailorcv.com/templates) and the [r
 
 ## Keep it honest, clean, and one page
 
-Never invent experience — honesty matters, as [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume) explains, and it's easy to get caught. Keep the [resume](https://www.thetailorcv.com/modify-cv) to one page (you won't need more), use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide), and [proofread carefully](https://thetailorcv.com/blog/resume-proofreading-checklist) — a mistake-free page shows the care employers want. If you apply through an online system, keep it [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
+Never invent experience — honesty matters, as [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume) explains, and it's easy to get caught. Keep the [resume](https://www.thetailorcv.com/modify-cv) to one page (you won't need more), use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide), and proofread carefully — a mistake-free page shows the care employers want. If you apply through an online system, keep it ATS-friendly.
 
 ## Preparing for the interview
 
-Once your [resume](https://www.thetailorcv.com/modify-cv) lands an interview, a little practice goes a long way for a first job. Rehearse simple answers to "tell me about yourself" and "why do you want this job" with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), review [first job interview tips](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026), plan [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview) and [what to bring](https://thetailorcv.com/blog/what-to-bring-to-an-interview), and send a short [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) afterward. That level of preparation will set you apart from other teen applicants.
+Once your [resume](https://www.thetailorcv.com/modify-cv) lands an interview, a little practice goes a long way for a first job. Rehearse simple answers to "tell me about yourself" and "why do you want this job" with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), review [first job interview tips](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026), plan what to wear and what to bring, and send a short thank-you email afterward. That level of preparation will set you apart from other teen applicants.
 
 ## First-resume checklist
 

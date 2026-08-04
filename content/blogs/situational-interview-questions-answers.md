@@ -14,7 +14,7 @@ Behavioral questions ask about the past: "Tell me about a time when..." **Situat
 
 This guide covers how to answer situational questions in 2026 - with frameworks, examples, and [AI mock interview practice](https://thetailorcv.com/mock-interview).
 
-Also study [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method](https://thetailorcv.com/blog/star-method-interview-answers-guide), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Optimize your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Also study [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), [STAR method](https://thetailorcv.com/blog/star-method-interview-answers-guide), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Optimize your resume with the TailorCV ATS checker.
 
 ---
 

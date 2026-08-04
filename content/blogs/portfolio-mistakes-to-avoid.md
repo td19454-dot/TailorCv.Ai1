@@ -143,19 +143,19 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section)
-- [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
-- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
-- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
-- [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
-- [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
+- Portfolio Contact Section
+- Portfolio SEO: Get Found
+- Portfolio About Me Section
+- How to Quantify Resume Achievements
+- 15 Developer Portfolio Project Ideas
+- What to Put in Your Portfolio With No Projects
+- How to Host Your Portfolio for Free
+- Turn Your Resume Into a Portfolio in Minutes
+- How to Add Your Portfolio Link to Your Resume
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

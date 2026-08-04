@@ -152,9 +152,9 @@ Only for under 10 years of experience. See the [ideal resume length guide](https
 1. Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) - formatting that parses correctly
 2. Write achievement-focused bullets using [best action verbs for resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 3. Add quantified results - read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-4. Tailor keywords to each job - use the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide)
-5. Check your ATS score - run it through [TailorCV's ATS checker](https://www.thetailorcv.com/solutions)
-6. Practice your interview - once your resume gets you in, use the [mock interview tool](https://thetailorcv.com/interview-prep) to prepare
+4. Tailor keywords to each job - use the resume keywords guide
+5. Check your ATS score - run it through TailorCV's ATS checker
+6. Practice your interview - once your resume gets you in, use the mock interview tool to prepare
 
 ---
 
@@ -168,15 +168,15 @@ Start with an [ATS-friendly template](https://www.thetailorcv.com/templates), bu
 - [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
+- How to Write a Resume from Scratch
+- Ideal Resume Length Guide
+- How to Write a Resume Summary
+- Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- Resume Keywords Guide
+- How to Make Your Resume ATS-Friendly
+- ATS Score Guide
+- Resume Optimization Guide
 
 ---
 

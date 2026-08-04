@@ -12,7 +12,7 @@ keywords: how to add projects in resume for freshers, projects in resume for fre
 
 ## How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters
 
-If you are building a full fresher resume, also read the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), choose [ATS-friendly beginner templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your match with the [ATS score checker](https://www.thetailorcv.com/solutions). For role-specific project examples, see the [FAANG software engineer resume guide](https://thetailorcv.com/blog/software-engineer-resume-faang) and the [data analyst resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026).
+If you are building a full fresher resume, also read the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience), choose [ATS-friendly beginner templates](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), and check your match with the [ATS score checker](https://www.thetailorcv.com/solutions). For role-specific project examples, see the FAANG software engineer resume guide and the data analyst resume guide.
 
 
 
@@ -138,7 +138,7 @@ This placement ensures recruiters immediately see practical experience.
 3. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 4. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 5. Skills
-6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+6. certifications
 7. Achievements
 8. Extra-Curricular Activities
 
@@ -417,8 +417,8 @@ You may also find these helpful:
 - [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - [Why Am I Not Getting Interviews?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [Technical Skills in Resume for Freshers With No Experience](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [Mock Interview Practice Online Free AI](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai)
+- Technical Skills in Resume for Freshers With No Experience
+- Mock Interview Practice Online Free AI
 
 ---
 
@@ -478,15 +478,15 @@ Yes, especially for software development and technical roles.
 - [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
 - [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [Resume Mistakes Every Fresher Makes (And How to Fix Them](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
-- [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- How to List Education on a Resume
+- How to Make Your Resume ATS-Friendly
+- How to Quantify Resume Achievements
+- How to Write a Resume Headline
+- How to Write a Resume with AI
+- Resume Mistakes Every Fresher Makes (And How to Fix Them
+- Top Skills to Add to Your Resume
+- 200 Best Action Verbs for Resume
+- 15 Best Free Online Certificates That Actually Look Good on a Resume
 
 ## Make This Practical
 

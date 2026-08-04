@@ -76,8 +76,8 @@ For English-friendly employers:
 1. **Build a strong, ATS-friendly English resume** — many global firms in Japan use applicant tracking systems. See [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and use the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. **Tailor each application** with the [resume optimizer](https://thetailorcv.com/solutions).
 3. **Feature English credentials** (e.g. TOEIC) and any Japanese level (JLPT).
-4. **Add a cover letter** where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
-5. **Prepare for interviews** — Japanese etiquette still matters even in English interviews. See [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+4. **Add a cover letter** where expected — see the Japanese cover letter guide.
+5. **Prepare for interviews** — Japanese etiquette still matters even in English interviews. See Japan interview etiquette and rehearse with the AI mock interview.
 
 ## Where to Search
 

@@ -185,11 +185,11 @@ Include technical skills used in volunteer work in your skills section - ATS wil
 - [Resume With No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
-- [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
-- [Awards and Achievements on Resume](https://thetailorcv.com/blog/awards-achievements-on-resume)
+- Career Change Resume Guide
+- How to Write Resume Bullet Points That Get Results
+- How to Quantify Resume Achievements
+- The Anatomy of a Perfect Resume
+- Awards and Achievements on Resume
 
 ---
 

@@ -61,7 +61,7 @@ Minimizing distractions keeps the focus where it belongs: on the conversation.
 
 ## Bring your preparation, not just your bag
 
-The physical items matter, but the real preparation is mental. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) so you can speak to why you want *this* role. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of examples you can adapt to any question, and rehearse [common behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and classics like [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself) and [why do you want this job](https://thetailorcv.com/blog/how-to-answer-why-do-you-want-this-job). Plan [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview) the night before so nothing is rushed.
+The physical items matter, but the real preparation is mental. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) so you can speak to why you want *this* role. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of examples you can adapt to any question, and rehearse [common behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and classics like tell me about yourself and why do you want this job. Plan what to wear the night before so nothing is rushed.
 
 
 

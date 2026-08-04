@@ -10,10 +10,10 @@ slug: how-to-research-company-before-interview
 keywords: how to research company before interview, company research interview 2026, interview preparation company research, what to know before job interview, company background check
 ---
 
-Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and [specific team challenges](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day) is research.
+Company research before an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) is one of the most impactful things you can do - and one of the things most candidates do too superficially. Reading the company's "About Us" page is not research. Knowing the company's revenue, [recent product launches](https://thetailorcv.com/blog/negotiating-multiple-job-offers), competitive position, [engineering culture](https://thetailorcv.com/blog/ai-proof-jobs-2026), and specific team challenges is research.
 
 
-Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) before the interview even starts.
+Prepare your research in parallel with your interview answers. Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and practice with the [free AI mock interview tool](https://thetailorcv.com/mock-interview). Make sure your [resume](https://www.thetailorcv.com/templates) is optimized with the TailorCV ATS score checker before the interview even starts.
 
 ---
 
@@ -181,34 +181,34 @@ Interviewers ask "What do you know about us?" and "Why do you want to work here?
 
 Spend 60-90 minutes per company on research before a final round [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For first screens, 30 minutes is sufficient.
 
-Pair your research with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), the [how to answer tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Practice with the [mock interview tool](https://thetailorcv.com/mock-interview) for delivery confidence.
+Pair your research with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), the [how to answer tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Practice with the mock interview tool for delivery confidence.
 
 ## Related Guides
 
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
-- [How to Follow Up After a Job Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
-- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
-- [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [Phone Interview Tips](https://thetailorcv.com/blog/phone-interview-tips)
-- [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [200 Best Action Verbs for Resume in 2026 - By Role and Category](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [First 90 Days at a New Job in 2026 - How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- Behavioral Interview Questions and Answers
+- Group Discussion Tips
+- How to Follow Up After a Job Interview
+- Best Questions to Ask in a Job Interview
+- Virtual Interview Tips
+- Coding Interview Preparation Guide
+- Final Round Interview Tips
+- Phone Interview Tips
+- Technical Interview Preparation Guide
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- 200 Best Action Verbs for Resume in 2026 - By Role and Category
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- First 90 Days at a New Job in 2026 - How to Succeed and Stand Out
+- How to Build a Professional Portfolio in 2026 - Guide for All Industries
 
 ## Make This Practical
 
 Use this advice as interview practice, not just reading material. Start a role-specific session with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), prepare your opening with [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), and structure evidence-heavy answers with the [STAR Method Interview Answers Guide](https://thetailorcv.com/blog/star-method-interview-answers-guide).
 
-Before the interview, make sure the [resume](https://www.thetailorcv.com/templates) that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
+Before the interview, make sure the [resume](https://www.thetailorcv.com/templates) that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use How to Follow Up After an Interview once the conversation is over.
 
 ## Comparison of Superficial vs. In-Depth Company Research
 

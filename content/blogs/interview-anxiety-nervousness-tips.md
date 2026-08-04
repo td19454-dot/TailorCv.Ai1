@@ -14,7 +14,7 @@ Your resume is strong. You know the answers. But thirty minutes before the [inte
 
 The fix is not "just relax." It is systematic preparation that builds genuine confidence. This guide covers proven strategies for 2026, including [AI mock interview practice](https://thetailorcv.com/mock-interview) - the closest thing to a real interview without the stakes.
 
-Start with the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and [how to practice interviews at home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home). Reduce pre-interview stress by knowing your resume is solid - check it with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
+Start with the [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [common interview mistakes](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and [how to practice interviews at home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home). Reduce pre-interview stress by knowing your resume is solid - check it with the TailorCV ATS score checker.
 
 ---
 
@@ -47,7 +47,7 @@ Speak every answer aloud at least five times. Use [TailorCV's AI mock interview]
 
 ### 2. Prepare your top 10 questions
 
-Cover [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [greatest weakness](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview), [why leaving current job](https://thetailorcv.com/blog/how-to-answer-why-leaving-current-job), and 5 STAR stories from the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers).
+Cover [tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself), [why should we hire you](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you), [greatest weakness](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview), why leaving current job, and 5 STAR stories from the behavioral interview guide.
 
 ### 3. Research the company thoroughly
 
