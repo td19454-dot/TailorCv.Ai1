@@ -27,7 +27,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=44">
+    <link rel="stylesheet" href="/static/blog.css?v=45">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -120,7 +120,11 @@
                 </div>
             </aside>
 
-            <section class="post-content">
+            <section class="post-content"
+                     data-cta-url="{{ hero_cta.url }}"
+                     data-cta-label="{{ hero_cta.label }}"
+                     data-cta-title="{{ hero_cta.title }}"
+                     data-cta-text="{{ hero_cta.text }}">
                 {{ post.content_html | safe }}
                 {% if show_ats_widget %}{% include "_blog_ats_widget.html" %}{% endif %}
                 {% if template_showcase %}{% include "_blog_template_showcase.html" %}{% endif %}
@@ -155,7 +159,7 @@
 </main>
 <button id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
         {% include "_footer.html" %}
-<script src="/static/blog.js?v=26" defer></script>
+<script src="/static/blog.js?v=27" defer></script>
 {% if show_ats_widget %}<script src="/static/blog_ats.js?v=1" defer></script>{% endif %}
 <script src="/static/auth_nav.js?v=16"></script>
 <script src="/static/mobile_nav.js"></script>
