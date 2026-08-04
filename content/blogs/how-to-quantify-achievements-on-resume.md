@@ -74,29 +74,14 @@ Run every role through those eight prompts and you will almost always surface mo
 
 The transformation looks a little different in every field. Here is what turning duties into results looks like across common roles.
 
-**Customer Support**
-- Before: "Answered customer inquiries and resolved issues."
-- After: "Resolved 60+ tickets daily at a 94% first-contact resolution rate, holding a 4.8/5 CSAT across 18 months."
-
-**Sales**
-- Before: "Responsible for meeting sales targets."
-- After: "Exceeded quota by an average of 118% across six quarters, closing $1.2M in new business in the last fiscal year."
-
-**Software Engineering**
-- Before: "Worked on improving [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) performance."
-- After: "Cut API p95 latency from 850ms to 240ms by adding caching and query indexing, improving checkout completion 9%."
-
-**Marketing**
-- Before: "Managed the company's social media accounts."
-- After: "Grew combined social following from 4K to 31K in a year and drove 22% of inbound demo requests through organic content."
-
-**Operations**
-- Before: "Helped streamline internal processes."
-- After: "Redesigned the vendor onboarding workflow, cutting setup time from 10 days to 3 and saving ~15 staff hours a week."
-
-**Teaching / Training**
-- Before: "Taught classes and supported student learning."
-- After: "Raised average exam pass rates from 72% to 88% across three cohorts of 30+ students by redesigning the practice curriculum."
+| Role | Before | After |
+|---|---|---|
+| **Customer Support** | "Answered customer inquiries and resolved issues." | "Resolved 60+ tickets daily at a 94% first-contact resolution rate, holding a 4.8/5 CSAT across 18 months." |
+| **Sales** | "Responsible for meeting sales targets." | "Exceeded quota by an average of 118% across six quarters, closing $1.2M in new business in the last fiscal year." |
+| **Software Engineering** | "Worked on improving [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) performance." | "Cut API p95 latency from 850ms to 240ms by adding caching and query indexing, improving checkout completion 9%." |
+| **Marketing** | "Managed the company's social media accounts." | "Grew combined social following from 4K to 31K in a year and drove 22% of inbound demo requests through organic content." |
+| **Operations** | "Helped streamline internal processes." | "Redesigned the vendor onboarding workflow, cutting setup time from 10 days to 3 and saving ~15 staff hours a week." |
+| **Teaching / Training** | "Taught classes and supported student learning." | "Raised average exam pass rates from 72% to 88% across three cohorts of 30+ students by redesigning the practice curriculum." |
 
 Notice the pattern in every pair: the "before" describes *activity*, the "after" describes *impact*. Numbers are simply the most efficient proof of impact.
 

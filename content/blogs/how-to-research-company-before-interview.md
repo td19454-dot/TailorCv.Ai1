@@ -43,29 +43,12 @@ A candidate who says "I'm excited because your team recently shipped X and I wor
 
 Start with the basics, but go deeper than most candidates:
 
-**What they do:**
-- Primary product or service
-- Customer segments (B2B, B2C, enterprise, SMB, consumer)
-- Revenue model (SaaS, marketplace, services, advertising)
-- Geography (local, regional, global)
-
-**Company stage and health:**
-- Public or private? If public, check the most recent earnings call transcript on Seeking Alpha or the IR website.
-- If private: funding stage (Seed, Series A-D, pre-IPO), recent funding round, total funding, notable investors
-- Revenue range (if public or reported): growth rate signals health
-- Headcount: check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for headcount trend - growing or contracting?
-
-**Products:**
-- Use the product if it is a consumer or SaaS product - even a 30-minute trial session gives you real observations
-- Read recent product announcements on the blog or Product Hunt
-- Check the App Store or web reviews for user sentiment
-
-**Sources:**
-- Company website, About page, Blog, Press section
-- Crunchbase - funding, investors, acquisitions
-- [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Company page - headcount, employee count over time
-- Y Combinator profile (if applicable)
-- TechCrunch / The Information for funded tech companies
+| Option | What to know |
+|---|---|
+| **What they do:** | Primary product or service · Customer segments (B2B, B2C, enterprise, SMB, consumer) · Revenue model (SaaS, marketplace, services, advertising) · Geography (local, regional, global) |
+| **Company stage and health:** | Public or private? If public, check the most recent earnings call transcript on Seeking Alpha or the IR website. · If private: funding stage (Seed, Series A-D, pre-IPO), recent funding round, total funding, notable investors · Revenue range (if public or reported): growth rate signals health · Headcount: check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for headcount trend - growing or contracting? |
+| **Products:** | Use the product if it is a consumer or SaaS product - even a 30-minute trial session gives you real observations · Read recent product announcements on the blog or Product Hunt · Check the App Store or web reviews for user sentiment |
+| **Sources:** | Company website, About page, Blog, Press section · Crunchbase - funding, investors, acquisitions · [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Company page - headcount, employee count over time · Y Combinator profile (if applicable) · TechCrunch / The Information for funded tech companies |
 
 ---
 
@@ -73,19 +56,11 @@ Start with the basics, but go deeper than most candidates:
 
 Understanding the company in its market context impresses interviewers significantly.
 
-**Who are their main competitors?**
-- G2, Capterra, Product Hunt - see what alternatives customers compare them against
-- Google "Company X vs Competitor" - see how they position themselves
-
-**What's the industry trend?**
-- Is the market growing or contracting?
-- Are there regulatory changes affecting the industry?
-- What macro trends are driving demand for this company's product?
-
-**Recent news:**
-- Set a Google alert for the company name before your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- Check TechCrunch, Business Insider, Financial Times for coverage
-- Check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for company posts and what their executives have been saying
+| Option | What to know |
+|---|---|
+| **Who are their main competitors?** | G2, Capterra, Product Hunt - see what alternatives customers compare them against · Google "Company X vs Competitor" - see how they position themselves |
+| **What's the industry trend?** | Is the market growing or contracting? · Are there regulatory changes affecting the industry? · What macro trends are driving demand for this company's product? |
+| **Recent news:** | Set a Google alert for the company name before your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) · Check TechCrunch, Business Insider, Financial Times for coverage · Check [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for company posts and what their executives have been saying |
 
 ---
 
@@ -93,21 +68,11 @@ Understanding the company in its market context impresses interviewers significa
 
 Research the specific team, not just the company.
 
-**The hiring manager:**
-- Find them on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) - what is their background?
-- Have they published any articles, given talks, or written company blog posts?
-- Understanding their career trajectory tells you what they value
-
-**The team:**
-- What is the [team size](https://thetailorcv.com/blog/recession-proof-jobs-2026)? (Often mentioned in the job posting or discoverable on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search))
-- What technologies does the team use? (Engineering blog, job postings, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization))
-- What are current team members' backgrounds? (signals what the team prioritizes)
-
-**The engineering / team culture:**
-- Engineering blog (if they have one)
-- [Glassdoor reviews](https://thetailorcv.com/blog/how-to-spot-a-job-scam) - look for patterns, not individual complaints
-- Blind (Teamblind) for tech company candid reviews
-- Levels.fyi for tech compensation context
+| Option | What to know |
+|---|---|
+| **The hiring manager:** | Find them on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) - what is their background? · Have they published any articles, given talks, or written company blog posts? · Understanding their career trajectory tells you what they value |
+| **The team:** | What is the [team size](https://thetailorcv.com/blog/recession-proof-jobs-2026)? (Often mentioned in the job posting or discoverable on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)) · What technologies does the team use? (Engineering blog, job postings, [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)) · What are current team members' backgrounds? (signals what the team prioritizes) |
+| **The engineering / team culture:** | Engineering blog (if they have one) · [Glassdoor reviews](https://thetailorcv.com/blog/how-to-spot-a-job-scam) - look for patterns, not individual complaints · Blind (Teamblind) for tech company candid reviews · Levels.fyi for tech compensation context |
 
 ---
 

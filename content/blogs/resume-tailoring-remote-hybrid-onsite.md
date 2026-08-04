@@ -152,27 +152,11 @@ Show that you thrive in both.
 
 Job descriptions for remote, hybrid, and on-site roles contain specific keywords.
 
-**Remote JD keywords to match:**
-- Remote
-- Distributed team
-- Async / asynchronous
-- Self-directed
-- Independent contributor
-- Remote-first
-- Digital-first
-
-**On-site JD keywords to match:**
-- In-person collaboration
-- On-site presence
-- Office environment
-- Team culture
-- Physical co-location (less common, but present)
-
-**Hybrid JD keywords:**
-- Hybrid
-- Flexible work model
-- In-office and remote
-- Collaborative environment
+| Option | What to know |
+|---|---|
+| **Remote JD keywords to match:** | Remote · Distributed team · Async / asynchronous · Self-directed · Independent contributor · Remote-first · Digital-first |
+| **On-site JD keywords to match:** | In-person collaboration · On-site presence · Office environment · Team culture · Physical co-location (less common, but present) |
+| **Hybrid JD keywords:** | Hybrid · Flexible work model · In-office and remote · Collaborative environment |
 
 Match the language the JD uses. This is the same principle as [matching resume keywords to the job description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) - but applied to work model language, not just skills.
 If the posting says "remote-first," use "remote-first" in your resume.
