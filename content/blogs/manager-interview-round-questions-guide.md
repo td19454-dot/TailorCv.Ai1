@@ -14,7 +14,7 @@ After HR screens you for fit, the **hiring manager** evaluates whether you can a
 
 This guide covers what hiring managers ask in 2026 and how to prepare with [AI mock interviews](https://thetailorcv.com/mock-interview).
 
-Start with the [HR round guide](https://thetailorcv.com/blog/hr-round-interview-questions-answers), [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Tailor your resume to the role with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Start with the [HR round guide](https://thetailorcv.com/blog/hr-round-interview-questions-answers), [behavioral interview questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), and [complete interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Tailor your resume to the role with the TailorCV ATS checker.
 
 ---
 

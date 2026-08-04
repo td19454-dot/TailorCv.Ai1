@@ -10,9 +10,9 @@ slug: product-designer-resume-2026
 keywords: product designer resume, product design cv, ux resume, product designer resume 2026
 ---
 
-Product design sits between UX, UI, and product strategy, so your [resume](https://www.thetailorcv.com/modify-cv) has to show more than pretty screens — it has to show product thinking and business impact. Design leads read for process and outcomes, not just tools, while the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scans for exact [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Your job is to satisfy both, then let your [portfolio](https://www.thetailorcv.com/portfolio) close the deal.
+Product design sits between UX, UI, and product strategy, so your [resume](https://www.thetailorcv.com/modify-cv) has to show more than pretty screens — it has to show product thinking and business impact. Design leads read for process and outcomes, not just tools, while the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scans for exact [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) from the job description. Your job is to satisfy both, then let your portfolio close the deal.
 
-Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you work in an adjacent design field, the [UX designer resume guide](https://thetailorcv.com/blog/ux-designer-resume-2026) and [interior designer resume guide](https://thetailorcv.com/blog/interior-designer-resume-2026) follow the same logic.
+Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you work in an adjacent design field, the UX designer resume guide and interior designer resume guide follow the same logic.
 
 ## Lead with impact, not tasks
 
@@ -42,7 +42,7 @@ See [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-
 
 ## Cover the full process
 
-Signal end-to-end capability in your [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026): user research, information architecture, wireframing, prototyping, design systems, usability testing, and cross-functional collaboration with PMs and engineers. These are the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that separate a product designer from a visual designer, so mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and confirm coverage with the [ATS score checker](https://www.thetailorcv.com/solutions).
+Signal end-to-end capability in your [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026): user research, information architecture, wireframing, prototyping, design systems, usability testing, and cross-functional collaboration with PMs and engineers. These are the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that separate a product designer from a visual designer, so mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and confirm coverage with the ATS score checker.
 
 ## Name your tools — but keep them in their place
 
@@ -50,7 +50,7 @@ List Figma, FigJam, Framer, and any research or analytics tools, but don't let a
 
 ## Portfolio is non-negotiable
 
-Product-design hiring lives and dies on the portfolio and case studies, so link a strong [portfolio website](https://www.thetailorcv.com/portfolio) at the top of your [resume](https://www.thetailorcv.com/modify-cv). Write case studies that show your thinking — the problem, your process, the trade-offs, and the outcome — using [how to write a portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) and [UI/UX case study portfolio](https://thetailorcv.com/blog/ui-ux-case-study-portfolio). A great case study beats a wall of screens, and [portfolio examples that landed interviews](https://thetailorcv.com/blog/portfolio-examples-that-landed-interviews) shows what strong work looks like. Understand [portfolio vs resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) so each does its job.
+Product-design hiring lives and dies on the portfolio and case studies, so link a strong [portfolio website](https://www.thetailorcv.com/portfolio) at the top of your [resume](https://www.thetailorcv.com/modify-cv). Write case studies that show your thinking — the problem, your process, the trade-offs, and the outcome — using [how to write a portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) and UI/UX case study portfolio. A great case study beats a wall of screens, and portfolio examples that landed interviews shows what strong work looks like. Understand portfolio vs resume so each does its job.
 
 ## Structure a product designer resume
 
@@ -64,25 +64,25 @@ This mirrors the layout in the [resume builder](https://www.thetailorcv.com/modi
 
 ## Keep the resume tight and ATS-safe
 
-Keep it to one page, [ATS-friendly](https://www.thetailorcv.com/templates), and text-based — a designed [resume](https://www.thetailorcv.com/modify-cv) can break parsing. Use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide) and standard headings, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), then confirm parsing with the [ATS score checker](https://www.thetailorcv.com/solutions).
+Keep it to one page, [ATS-friendly](https://www.thetailorcv.com/templates), and text-based — a designed [resume](https://www.thetailorcv.com/modify-cv) can break parsing. Use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide) and standard headings, per how to make your resume ATS-friendly, then confirm parsing with the ATS score checker.
 
 ## Breaking into product design?
 
-If you're transitioning from UX, graphic design, or another field, lead with transferable skills and self-directed projects — the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how. A [portfolio](https://www.thetailorcv.com/portfolio) of even one strong end-to-end case study can outweigh a thin work history — see [portfolio with no experience](https://thetailorcv.com/blog/portfolio-with-no-experience).
+If you're transitioning from UX, graphic design, or another field, lead with transferable skills and self-directed projects — the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) and [projects in resume guide](https://thetailorcv.com/blog/projects-in-resume) show how. A [portfolio](https://www.thetailorcv.com/portfolio) of even one strong end-to-end case study can outweigh a thin work history — see portfolio with no experience.
 
 
 
 ## Where product designers find roles
 
-Product-design roles are concentrated in tech companies, startups, agencies, and increasingly non-tech companies building digital products. Beyond job boards, designers find work through design communities, [portfolio](https://www.thetailorcv.com/portfolio) discovery, referrals, and direct outreach — a strong portfolio link in a [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can start a conversation. [Networking](https://thetailorcv.com/blog/networking-tips-for-job-search) and a polished [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) matter, and the [best job search websites guide](https://thetailorcv.com/blog/best-job-search-websites-2026) covers where to look. Because design hiring is portfolio-first, investing in one or two exceptional [case studies](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) often opens more doors than another round of applications.
+Product-design roles are concentrated in tech companies, startups, agencies, and increasingly non-tech companies building digital products. Beyond job boards, designers find work through design communities, [portfolio](https://www.thetailorcv.com/portfolio) discovery, referrals, and direct outreach — a strong portfolio link in a [cold email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can start a conversation. [Networking](https://thetailorcv.com/blog/networking-tips-for-job-search) and a polished LinkedIn profile matter, and the best job search websites guide covers where to look. Because design hiring is portfolio-first, investing in one or two exceptional case studies often opens more doors than another round of applications.
 
 ## Tailor to each company
 
-A B2B SaaS company, a consumer app, and an agency want different emphases. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).
+A B2B SaaS company, a consumer app, and an agency want different emphases. [Tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) with the [resume optimizer](https://www.thetailorcv.com/solutions) so your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) match, and see how much to change your resume for every job.
 
 ## Prepare for the design interview
 
-Product-design interviews include a portfolio review and often a design exercise. Prepare to walk through your thinking, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). If you get a [take-home assignment](https://thetailorcv.com/blog/take-home-assignment-interview-tips), scope it well. Afterward, send a [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) and [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
+Product-design interviews include a portfolio review and often a design exercise. Prepare to walk through your thinking, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). If you get a [take-home assignment](https://thetailorcv.com/blog/take-home-assignment-interview-tips), scope it well. Afterward, send a thank-you email and follow up.
 
 ## Sample product designer resume bullets
 
@@ -123,7 +123,7 @@ Your product designer [resume](https://www.thetailorcv.com/modify-cv) is ready w
 
 - Leads with **outcomes**, not tasks, and [quantifies](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) impact.
 - Signals **end-to-end process** and names the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Links a strong [portfolio](https://www.thetailorcv.com/portfolio) with real case studies.
-- Stays one page, [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- Links a strong portfolio with real case studies.
+- Stays one page, ATS-safe, and passes the ATS score checker.
 
-Build an outcome-focused [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) it to every company.
+Build an outcome-focused [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every company.

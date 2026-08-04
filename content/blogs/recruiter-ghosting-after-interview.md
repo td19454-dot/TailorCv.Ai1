@@ -167,7 +167,7 @@ Worth a second look: a "recruiter" who never gets on a call, asks for sensitive 
 
 ## Make This Practical
 
-Silence from one recruiter should never be the reason your whole search loses momentum. Keep your resume sharp and ready for the next opportunity with the [free ATS score checker](https://www.thetailorcv.com/solutions), log every application and follow-up date with the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template), and keep your interview skills warm between processes with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). If you're mid-search across multiple companies at once, [how to follow up after an interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) and [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) are the natural next reads for keeping your pipeline healthy while you wait on any single outcome.
+Silence from one recruiter should never be the reason your whole search loses momentum. Keep your resume sharp and ready for the next opportunity with the [free ATS score checker](https://www.thetailorcv.com/solutions), log every application and follow-up date with the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template), and keep your interview skills warm between processes with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). If you're mid-search across multiple companies at once, how to follow up after an interview and how to handle job rejection are the natural next reads for keeping your pipeline healthy while you wait on any single outcome.
 
 ---
 

@@ -28,7 +28,7 @@ Before writing the letter, make sure your [resume with no experience](https://th
 - **Internships**, even short or unpaid ones - see the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide)
 - **Part-time or campus jobs** - customer service, tutoring, retail all show reliability
 - **Clubs, leadership roles, and volunteer work** - see [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume)
-- **Personal or portfolio projects** - see [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- **Personal or portfolio projects** - see [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and projects in resume
 
 Employers hiring for entry-level roles expect a thin work history. What they're actually evaluating is whether you can talk about your experience with specificity and confidence.
 

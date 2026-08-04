@@ -37,7 +37,7 @@ Resist the urge to open a blank document and start typing. Before writing a sing
 - **Skills**: All tools, languages, platforms, methodologies you use
 - **Achievements**: Numbers - revenue generated, time saved, users impacted, growth percentages
 - **Awards/honors**: Academic and professional
-- **Target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)**: The specific role you are building this resume for
+- **Target job description**: The specific role you are building this resume for
 
 This preparation phase prevents you from writing generic content that applies to nothing. With your raw materials assembled, writing becomes a curation and framing exercise.
 
@@ -212,14 +212,14 @@ Aim for a strong match score before submitting. Read [how to increase your ATS s
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
-- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- How to Write Resume Bullet Points That Get Results
+- Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Tailor Your Resume for Every Job
+- Resume Proofreading Checklist
+- ATS Score Guide
+- Resume File Format Guide
+- Resume with No Experience Guide
 
 ---
 

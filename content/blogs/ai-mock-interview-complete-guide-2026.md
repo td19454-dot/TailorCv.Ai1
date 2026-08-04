@@ -14,7 +14,7 @@ Most candidates prepare for interviews by reading articles and rehearsing answer
 
 **AI mock interviews** solve this. They simulate a real [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) environment, ask role-specific questions, and give you feedback before a hiring manager ever sees you. In 2026, they are one of the fastest ways to go from "I think I'm ready" to "I've actually proven I'm ready."
 
-Start practicing today with [TailorCV's free AI mock interview tool](https://thetailorcv.com/mock-interview). Before you do, make sure your resume is interview-ready using the [ATS score checker](https://www.thetailorcv.com/solutions), then read the [complete job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and [how to practice interviews at home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home).
+Start practicing today with [TailorCV's free AI mock interview tool](https://thetailorcv.com/mock-interview). Before you do, make sure your resume is interview-ready using the [ATS score checker](https://www.thetailorcv.com/solutions), then read the [complete job interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and how to practice interviews at home.
 
 ---
 
@@ -62,7 +62,7 @@ Weak answers sound fine in your head. An AI [mock interview](https://thetailorcv
 
 ### 3. You build confidence for every interview round
 
-Whether you are facing an [HR round](https://thetailorcv.com/blog/hr-round-interview-questions-answers), a [manager round](https://thetailorcv.com/blog/manager-interview-round-questions-guide), or a [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide), repeated practice reduces [interview anxiety](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips).
+Whether you are facing an [HR round](https://thetailorcv.com/blog/hr-round-interview-questions-answers), a [manager round](https://thetailorcv.com/blog/manager-interview-round-questions-guide), or a [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide), repeated practice reduces interview anxiety.
 
 ### 4. You prepare for role-specific questions
 
@@ -87,7 +87,7 @@ Start with the questions that appear in almost every [interview](https://thetail
 - [Tell me about yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - [Why should we hire you?](https://thetailorcv.com/blog/how-to-answer-why-should-we-hire-you)
 - [Why are you leaving your current job?](https://thetailorcv.com/blog/how-to-answer-why-leaving-current-job)
-- [What is your greatest weakness?](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview)
+- What is your greatest weakness?
 
 ### Step 4: Run multiple sessions
 
@@ -118,8 +118,8 @@ The best approach combines all of them - but if you only have 30 minutes tonight
 - **Freshers** preparing for campus or first job interviews - see [first job interview tips for freshers](https://thetailorcv.com/blog/first-job-interview-tips-freshers-2026)
 - **Career changers** explaining gaps and transitions - read [how to explain career gaps](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview)
 - **Remote job seekers** preparing for video calls - see [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026)
-- **Senior candidates** facing [panel interviews](https://thetailorcv.com/blog/panel-interview-tips-strategies) or [final round interviews](https://thetailorcv.com/blog/final-round-interview-tips)
-- **Tech candidates** combining mock practice with [coding interview prep](https://thetailorcv.com/blog/coding-interview-preparation-guide) and [system design interviews](https://thetailorcv.com/blog/system-design-interview-guide)
+- **Senior candidates** facing panel interviews or final round interviews
+- **Tech candidates** combining mock practice with coding interview prep and system design interviews
 
 ---
 

@@ -303,8 +303,8 @@ A cover letter works best as part of a coherent application:
 
 - Start with an ATS-ready, tailored resume — see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Make sure both documents mirror the job's keywords — see [best resume keywords for Malaysian jobs](https://thetailorcv.com/blog/best-resume-keywords-malaysia).
-- Optimise your LinkedIn so recruiters find you — see [LinkedIn optimization for Malaysian job seekers](https://thetailorcv.com/blog/linkedin-optimization-malaysia).
-- Prepare for the interview once you're shortlisted — see [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- Optimise your LinkedIn so recruiters find you — see LinkedIn optimization for Malaysian job seekers.
+- Prepare for the interview once you're shortlisted — see Malaysia interview tips and rehearse with the AI mock interview.
 
 For the bigger picture of landing the role, read our [complete guide to getting a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia).
 

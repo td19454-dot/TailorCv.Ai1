@@ -56,7 +56,7 @@ If the break is still recent, you can add genuine, verifiable activity: freelanc
 
 ## How TailorCV Helps
 
-When you tailor a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) to a job, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure first. Keeping a clean, gap-free timeline with year-based dates means the parser sees continuous employment, and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) sees a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who is in control of their own story.
+When you tailor a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) to a job, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure first. Keeping a clean, gap-free timeline with year-based dates means the parser sees continuous employment, and the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) sees a candidate who is in control of their own story.
 
 ### Your resume after optimization
 
@@ -87,7 +87,7 @@ This is arguably the strongest gap of all, because it shows initiative. Frame it
 
 ### The "I Was Just Job Searching" Gap
 
-The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). Even a modest, real [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) converts "unemployed and searching" into "kept building while looking."
+The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). Even a modest, real project converts "unemployed and searching" into "kept building while looking."
 
 ## How to Talk About the Gap in an Interview
 
@@ -115,7 +115,7 @@ The pattern is clear: honesty plus framing wins, concealment loses.
 
 ## Update Your LinkedIn to Match
 
-[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) and matched on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
+[Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) cross-check your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) against [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and a mismatch in dates is a genuine red flag. LinkedIn now supports "Career Break" as a formal entry type with categories like caregiving, health, and layoff. Use it. A gap that is openly labeled on LinkedIn and matched on your resume reads as transparent; a gap that appears on one and is hidden on the other reads as evasive.
 
 ## Step by Step: Reworking Your Timeline
 
@@ -167,8 +167,8 @@ The gap itself is rarely the problem. These reactions to it are:
 - **Fudged dates.** The fastest way to lose an offer at the background-check stage.
 - **Vagueness.** "I was dealing with some things" invites the imagination to fill in the worst.
 - **Defensiveness.** Over-explaining signals that you think the gap is disqualifying, which teaches the interviewer to think so too.
-- **Inconsistency.** A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that says one thing and a [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) that says another.
-- **A gap with genuinely nothing in it.** If the break is recent, add one real activity now — a course, a small freelance job, a volunteering stint — so the [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is never "nothing."
+- **Inconsistency.** A [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that says one thing and a [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) or [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) answer that says another.
+- **A gap with genuinely nothing in it.** If the break is recent, add one real activity now — a course, a small freelance job, a volunteering stint — so the answer is never "nothing."
 
 ## Frequently Asked Questions
 
@@ -195,6 +195,6 @@ Address the most recent and longest gap directly, since that is what a [recruite
 
 ## Putting It All Together
 
-A gap is a formatting-and-framing problem, not a character problem. Measure it, present the timeline cleanly with year-based dates or a dated bridge entry, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) in agreement, and rehearse a short, calm verbal version for the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Do that, and the gap stops being the story. The story becomes what you did, what you learned, and why you are the right hire now — which is exactly where you want a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)'s attention.
+A gap is a formatting-and-framing problem, not a character problem. Measure it, present the timeline cleanly with year-based dates or a dated bridge entry, keep your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) in agreement, and rehearse a short, calm verbal version for the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Do that, and the gap stops being the story. The story becomes what you did, what you learned, and why you are the right hire now — which is exactly where you want a recruiter's attention.
 
 When you run your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) through TailorCV, the [ATS scan](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) reads your dates and structure the way a real parser does, so you can see immediately whether your timeline reads as continuous before a human ever opens it.

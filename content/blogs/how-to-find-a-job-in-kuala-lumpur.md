@@ -54,7 +54,7 @@ Optimising runs against the specific job description you paste in, not in the ab
 
 - Build an ATS-ready, one-to-two-page resume following local norms — see [how to write a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs).
 - Make sure it passes the software screen — most KL employers use an ATS; learn the mechanics in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide) and test each version with the free [ATS score checker](https://thetailorcv.com/solutions).
-- Match each posting's keywords using [best resume keywords for Malaysian jobs](https://thetailorcv.com/blog/best-resume-keywords-malaysia).
+- Match each posting's keywords using best resume keywords for Malaysian jobs.
 
 A resume built with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailored per role with the [resume optimizer](https://thetailorcv.com/solutions) gives you a real edge in KL's applicant pools.
 
@@ -139,7 +139,7 @@ Kuala Lumpur is competitive, so set realistic expectations and keep a steady rhy
 
 - **Weeks 1–2:** Build your ATS-ready resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), optimise your LinkedIn, and draft a base cover letter. Research and list 20–30 target employers.
 - **Weeks 2–6:** Apply consistently — quality over quantity — tailoring each application with the [resume optimizer](https://thetailorcv.com/solutions). Network actively: attend events, reconnect with alumni, and reach out to people at target companies. Track everything.
-- **Weeks 4–10:** Attend screens, assessments, and interviews. Prepare intensively for each with [interview prep](https://thetailorcv.com/interview-prep) and the [AI mock interview](https://thetailorcv.com/mock-interview), and follow up politely.
+- **Weeks 4–10:** Attend screens, assessments, and interviews. Prepare intensively for each with [interview prep](https://thetailorcv.com/interview-prep) and the AI mock interview, and follow up politely.
 
 For fresh graduates and in-demand fields, one to three months of focused effort is typical; senior and niche roles can take longer. The candidates who succeed treat the search as a disciplined routine rather than a burst of activity.
 
@@ -253,4 +253,4 @@ Prioritise proximity to your workplace and a rail line (LRT/MRT/monorail). KL tr
 
 Kuala Lumpur offers the widest range of opportunities in Malaysia — and the stiffest competition. Winning here means a sharp, tailored, ATS-ready application; an active mix of portals and networking; and genuine interview preparation.
 
-Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each KL role with the [ATS optimizer](https://thetailorcv.com/solutions), sharpen your [LinkedIn](https://thetailorcv.com/blog/linkedin-optimization-malaysia), and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview). The capital's next great role could be yours.
+Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each KL role with the [ATS optimizer](https://thetailorcv.com/solutions), sharpen your [LinkedIn](https://thetailorcv.com/blog/linkedin-optimization-malaysia), and rehearse with the AI mock interview. The capital's next great role could be yours.

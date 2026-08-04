@@ -179,11 +179,11 @@ Before submitting any application:
 - [Resume Red Flags That Get You Rejected](https://thetailorcv.com/blog/resume-red-flags)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
+- Best Action Verbs for Resume
+- Resume File Format Guide
+- ATS Resume Formatting Mistakes
+- How Recruiters Read Resumes in Under 10 Seconds
+- Resume Contact Section Guide
 
 ---
 

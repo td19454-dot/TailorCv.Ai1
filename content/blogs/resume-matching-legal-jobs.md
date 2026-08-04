@@ -200,13 +200,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to c
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Resume Matching for Career Changers](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Matching Your Resume to an Insurance Industry Job Description](https://thetailorcv.com/blog/resume-matching-insurance-jobs)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- How to Quantify Resume Achievements
+- How ATS Detects a Generic Resume
+- ATS Resume Formatting Mistakes
+- Resume Summary Match Job Description
+- Matching Your Resume to an Insurance Industry Job Description
+- Cover Letter Guide 2026
+- ATS Score Guide 2026
 
 ---
 

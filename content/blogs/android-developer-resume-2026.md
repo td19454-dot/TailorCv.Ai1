@@ -14,7 +14,7 @@ An Android developer resume in 2026 needs to prove that you can build polished, 
 
 The mobile job market is highly competitive because Android is one of the most popular platforms globally. Your resume needs to show app quality, scale, and technical depth beyond just listing tools.
 
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for structuring your skills section. If you are also considering iOS development, read the [iOS developer resume guide](https://thetailorcv.com/blog/ios-developer-resume-2026).
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for structuring your skills section. If you are also considering iOS development, read the iOS developer resume guide.
 
 ---
 
@@ -33,7 +33,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 4. Work experience
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with Play Store links where available)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+7. certifications
 
 ### Your resume after optimization
 
@@ -191,20 +191,20 @@ Unit tests (JUnit + MockK) and UI tests (Espresso or Compose UI tests) should be
 - [Flutter Developer Resume](https://thetailorcv.com/blog/flutter-developer-resume-2026)
 - [iOS Developer Resume](https://thetailorcv.com/blog/ios-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Frontend Developer Resume](https://thetailorcv.com/blog/frontend-developer-resume-2026)
-- [Full Stack Developer Resume](https://thetailorcv.com/blog/full-stack-developer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Go (Golang) Developer Resume](https://thetailorcv.com/blog/golang-developer-resume-2026)
-- [Java Developer Resume](https://thetailorcv.com/blog/java-developer-resume-2026)
-- [Python Developer Resume](https://thetailorcv.com/blog/python-developer-resume-2026)
-- [React Developer Resume](https://thetailorcv.com/blog/react-developer-resume-2026)
-- [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Frontend Developer Resume
+- Full Stack Developer Resume
+- Game Developer Resume
+- Go (Golang) Developer Resume
+- Java Developer Resume
+- Python Developer Resume
+- React Developer Resume
+- Technical Writer Resume
+- Accountant Resume
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

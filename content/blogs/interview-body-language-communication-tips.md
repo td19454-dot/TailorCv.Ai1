@@ -12,7 +12,7 @@ You can give a perfect answer on paper and still lose the [interview](https://th
 
 This guide covers body language and communication for in-person, [virtual](https://thetailorcv.com/blog/virtual-interview-tips), and [remote interviews](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) in 2026.
 
-Pair this with [AI mock interview practice](https://thetailorcv.com/mock-interview) where you can rehearse delivery, not just content. Also read the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips), and optimize your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+Pair this with [AI mock interview practice](https://thetailorcv.com/mock-interview) where you can rehearse delivery, not just content. Also read the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips), and optimize your resume with the TailorCV ATS checker.
 
 ---
 

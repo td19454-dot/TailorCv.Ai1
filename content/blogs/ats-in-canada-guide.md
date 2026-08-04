@@ -104,7 +104,7 @@ For assistance with crafting bullet points, check out our guide on [how to write
 
 ## Testing Your Resume with ATS
 
-Before submitting your resume, it’s wise to test it for [ATS compatibility](https://thetailorcv.com/blog/does-my-resume-pass-ats). TailorCV offers a [free ATS score checker](https://www.thetailorcv.com/solutions) that evaluates how well your resume aligns with [ATS requirements](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). This tool can help pinpoint areas for improvement, ensuring your resume stands the best chance of passing through [ATS filters](https://thetailorcv.com/blog/ats-resume-checker-how-it-works).
+Before submitting your resume, it’s wise to test it for [ATS compatibility](https://thetailorcv.com/blog/does-my-resume-pass-ats). TailorCV offers a [free ATS score checker](https://www.thetailorcv.com/solutions) that evaluates how well your resume aligns with [ATS requirements](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). This tool can help pinpoint areas for improvement, ensuring your resume stands the best chance of passing through ATS filters.
 
 ## The Importance of a Cover Letter
 
@@ -195,11 +195,11 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [Canadian Resume Format Guide (2026): How to Write a Resume for Canada](https://thetailorcv.com/blog/canadian-resume-format-guide-2026)
 - [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
 - [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
-- [In-Demand Jobs in Canada for 2026 (and How to Match Your Resume)](https://thetailorcv.com/blog/in-demand-jobs-canada-2026)
-- [How to Check Your ATS Score for Free (2026 Guide)](https://thetailorcv.com/blog/how-to-check-ats-score-free)
-- [What Is a Good ATS Score? Benchmarks and Targets for 2026](https://thetailorcv.com/blog/what-is-a-good-ats-score)
-- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- In-Demand Jobs in Canada for 2026 (and How to Match Your Resume)
+- How to Check Your ATS Score for Free (2026 Guide)
+- What Is a Good ATS Score? Benchmarks and Targets for 2026
+- ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

@@ -34,7 +34,7 @@ Before comparing tools, know what "useful" actually looks like. A free ATS check
 
 - Your overall [ATS match score](https://thetailorcv.com/blog/what-is-a-good-ats-score) against the specific [job description](https://thetailorcv.com/blog/resume-job-description-match-percentage).
 - Exactly which [keywords are missing](https://thetailorcv.com/blog/hidden-keywords-in-job-description), not just a vague percentage.
-- Whether your [formatting is parser-friendly](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+- Whether your formatting is parser-friendly.
 - A clear next step, not just a score with no explanation.
 
 If a "free" tool won't show you the [missing keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) without paying, it isn't really free - it's a paywall with a teaser.
@@ -59,8 +59,8 @@ A number alone doesn't get you hired. Once you have your score:
 
 1. Fix the [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) that silently break parsing - tables, headers in text boxes, and images with important text.
 2. Add the [missing keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score) - but only where they're honestly true. See [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) to avoid keyword stuffing.
-3. Re-run the check. Improvement should be measurable, not guessed. Use [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) as your checklist.
-4. Once your score is solid, move to [tailoring your resume for the specific role](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) rather than sending the same version everywhere.
+3. Re-run the check. Improvement should be measurable, not guessed. Use how to increase ATS score as your checklist.
+4. Once your score is solid, move to tailoring your resume for the specific role rather than sending the same version everywhere.
 
 ---
 
@@ -177,7 +177,7 @@ No - PDFs with complex formatting, tables, or graphics can confuse both the chec
 
 ## Make This Practical
 
-Run your resume against the job you actually want with the [free ATS score checker](https://www.thetailorcv.com/solutions), fix what it flags using [best resume keywords to beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), then build the rest of your application with the [ATS-friendly cover letter format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) and [resume templates built for parsing](https://www.thetailorcv.com/templates).
+Run your resume against the job you actually want with the [free ATS score checker](https://www.thetailorcv.com/solutions), fix what it flags using [best resume keywords to beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), then build the rest of your application with the [ATS-friendly cover letter format](https://thetailorcv.com/blog/ats-friendly-cover-letter-format) and resume templates built for parsing.
 
 ## Conclusion
 

@@ -8363,7 +8363,7 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     # pic1-pic5 are withdrawn from the blog gallery; anything that lands on one
     # falls back to pic6 (Compact One-Page).
     _retired = {"/static/pic1.webp", "/static/pic2.webp", "/static/pic3.webp",
-                "/static/pic4.webp", "/static/pic5.webp"}
+                "/static/pic4.webp", "/static/pic5.webp", "/static/pic22.webp"}
     _fallback = ("/static/pic6.webp", "Compact One-Page")
     swapped, seen_img = [], set()
     for img, name in ordered:

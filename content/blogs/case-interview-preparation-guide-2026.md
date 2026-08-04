@@ -14,7 +14,7 @@ Case interviews - where you solve a business problem live with an interviewer - 
 
 Unlike [behavioral interviews](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers), case interviews evaluate how you think, not what you have done. This guide covers case interview preparation for 2026.
 
-Practice structured communication with [AI mock interviews](https://thetailorcv.com/mock-interview) - clear thinking aloud is half the battle. Also read [situational interview questions](https://thetailorcv.com/blog/situational-interview-questions-answers), [technical interview prep](https://thetailorcv.com/blog/technical-interview-preparation-guide), and the [complete interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Practice structured communication with [AI mock interviews](https://thetailorcv.com/mock-interview) - clear thinking aloud is half the battle. Also read [situational interview questions](https://thetailorcv.com/blog/situational-interview-questions-answers), [technical interview prep](https://thetailorcv.com/blog/technical-interview-preparation-guide), and the complete interview guide.
 
 ---
 

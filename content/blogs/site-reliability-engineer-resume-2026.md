@@ -14,7 +14,7 @@ A site reliability engineer resume in 2026 must show that you can keep systems r
 
 SRE roles sit between software engineering and operations. Your resume should look like a [software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang)'s resume with operational reliability expertise added - not a system administrator's resume with a title change.
 
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). For related roles, read the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [cloud engineer resume guide](https://thetailorcv.com/blog/cloud-engineer-resume-2026). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). For related roles, read the [DevOps engineer resume guide](https://thetailorcv.com/blog/devops-engineer-resume-2026) and [cloud engineer resume guide](https://thetailorcv.com/blog/cloud-engineer-resume-2026). Use ATS-friendly resume templates.
 
 ---
 
@@ -158,22 +158,22 @@ In 2026, SRE candidates without SLO/SLI/error budget experience are at a disadva
 - [DevOps Engineer Resume](https://thetailorcv.com/blog/devops-engineer-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
 - [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
-- [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
-- [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
-- [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
-- [Electrical Engineer Resume](https://thetailorcv.com/blog/electrical-engineer-resume-2026)
-- [Embedded Systems Engineer Resume](https://thetailorcv.com/blog/embedded-systems-engineer-resume-2026)
-- [Game Developer Resume](https://thetailorcv.com/blog/game-developer-resume-2026)
-- [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
-- [Mechanical Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mechanical-engineer-resume-2026)
-- [QA Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/qa-engineer-resume-2026)
-- [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
+- Cloud Engineer Resume
+- Consultant Resume
+- Customer Service Resume
+- Cybersecurity Engineer Resume
+- Data Engineer Resume
+- Electrical Engineer Resume
+- Embedded Systems Engineer Resume
+- Game Developer Resume
+- Machine Learning Engineer Resume
+- Mechanical Engineer Resume 2026 - Complete Guide with Examples
+- QA Engineer Resume 2026 - Complete Guide with Examples
+- Software Engineer Resume for FAANG in 2026
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

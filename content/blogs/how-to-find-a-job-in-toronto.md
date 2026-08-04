@@ -56,7 +56,7 @@ Toronto is competitive, so sharpen your application before sending it:
 
 - Build a Canadian-style, ATS-ready resume — see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide).
 - Make sure it passes the screener — most Toronto employers use an ATS; learn the mechanics in [how ATS works in Canada](https://thetailorcv.com/blog/ats-in-canada-guide) and test each version with the free [ATS score checker](https://thetailorcv.com/solutions).
-- Match each posting's keywords using [best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada).
+- Match each posting's keywords using best resume keywords for Canadian jobs.
 
 Build a clean version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it per role with the [resume optimizer](https://thetailorcv.com/solutions).
 
@@ -186,7 +186,7 @@ Toronto is competitive, so keep a steady rhythm and realistic expectations:
 
 - **Weeks 1–2:** Build your Canadian-style, ATS-ready resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), optimise your LinkedIn, and draft a base cover letter. Research and list 20–30 target employers.
 - **Weeks 2–6:** Apply consistently — quality over quantity — tailoring each application with the [resume optimizer](https://thetailorcv.com/solutions). Network actively: attend events, do informational interviews, and reach out to people at target companies. Track everything.
-- **Weeks 4–10:** Attend screens, assessments, and behavioural interviews. Prepare intensively with [interview prep](https://thetailorcv.com/interview-prep) and the [AI mock interview](https://thetailorcv.com/mock-interview), and follow up politely.
+- **Weeks 4–10:** Attend screens, assessments, and behavioural interviews. Prepare intensively with [interview prep](https://thetailorcv.com/interview-prep) and the AI mock interview, and follow up politely.
 
 Depending on your field and experience, expect a focused search to take a few months. The candidates who succeed treat it as a disciplined routine, combining tailored applications with genuine networking rather than relying on either alone.
 
@@ -232,4 +232,4 @@ Job-hunting in Toronto can test your resilience — the competition is real, and
 
 Toronto offers the widest range of opportunities in Canada — and the stiffest competition. Winning here means a sharp, tailored, ATS-ready application; an active mix of online applications and networking; and genuine interview preparation.
 
-Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each Toronto role with the [ATS optimizer](https://thetailorcv.com/solutions), sharpen your [LinkedIn](https://thetailorcv.com/blog/linkedin-optimization-canada), and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview). Canada's biggest market has a place for well-prepared candidates.
+Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each Toronto role with the [ATS optimizer](https://thetailorcv.com/solutions), sharpen your [LinkedIn](https://thetailorcv.com/blog/linkedin-optimization-canada), and rehearse with the AI mock interview. Canada's biggest market has a place for well-prepared candidates.

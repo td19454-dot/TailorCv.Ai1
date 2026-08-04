@@ -33,7 +33,7 @@ If you just want the fast answer: run your resume through the [free TailorCV ATS
 | ATS-friendly templates | Yes | Yes | Yes | No (checker only) |
 | Pricing | Free to start | Paid plans required for full use | Paid plans required for full use | Subscription required for repeat scans |
 
-For the full breakdown of each rival, see the dedicated pages: [TailorCV vs Jobscan](https://www.thetailorcv.com/jobscan-alternative), [TailorCV vs Teal](https://www.thetailorcv.com/teal-alternative), [TailorCV vs Rezi](https://www.thetailorcv.com/rezi-alternative), [TailorCV vs CareerFlow](https://www.thetailorcv.com/careerflow-alternative), and [TailorCV vs Resume Worded](https://www.thetailorcv.com/resume-worded-alternative).
+For the full breakdown of each rival, see the dedicated pages: [TailorCV vs Jobscan](https://www.thetailorcv.com/jobscan-alternative), [TailorCV vs Teal](https://www.thetailorcv.com/teal-alternative), [TailorCV vs Rezi](https://www.thetailorcv.com/rezi-alternative), TailorCV vs CareerFlow, and TailorCV vs Resume Worded.
 
 ---
 
@@ -120,8 +120,8 @@ Choosing the right AI resume builder depends on your specific needs and job appl
 
 - **Just need a keyword check before applying?** Start with the [free ATS score checker](https://www.thetailorcv.com/solutions) to quickly assess your resume’s strengths and weaknesses.
 - **Applying to 10+ roles and need every version tracked and tailored?** Use [TailorCV's resume tailoring](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) alongside the [resume customization checklist](https://thetailorcv.com/blog/resume-customization-checklist) to ensure each application is optimized.
-- **Got an interview and need to prep fast?** No competitor on this list matches [TailorCV's AI mock interview](https://www.thetailorcv.com/mock-interview), which builds questions from your actual resume, giving you a personalized prep experience.
-- **Want a shareable portfolio to stand out?** Only TailorCV turns your resume into a [live portfolio site](https://www.thetailorcv.com/portfolio) in minutes, allowing you to showcase your work effectively.
+- **Got an interview and need to prep fast?** No competitor on this list matches TailorCV's AI mock interview, which builds questions from your actual resume, giving you a personalized prep experience.
+- **Want a shareable portfolio to stand out?** Only TailorCV turns your resume into a live portfolio site in minutes, allowing you to showcase your work effectively.
 
 ### Additional Considerations:
 - **Tailoring for Specific Fields:** If you’re in a specialized field, consider looking at resources like [Resume Tailoring for Healthcare Jobs - Clinical, Administrative, and Allied Health (2026 Guide)](https://thetailorcv.com/blog/resume-tailoring-healthcare) to ensure your resume meets industry standards.
@@ -152,7 +152,7 @@ No tool guarantees a job. What they can guarantee is a resume that passes automa
 
 ## Make This Practical
 
-Don't just read comparisons - test your own resume. Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions) against a real job posting, fix the gaps using [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords-to-boost-score), then build a [tailored cover letter](https://www.thetailorcv.com/cover-letter) and practice with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) before the real thing.
+Don't just read comparisons - test your own resume. Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions) against a real job posting, fix the gaps using [ATS keywords to boost your score](https://thetailorcv.com/blog/ats-keywords-to-boost-score), then build a [tailored cover letter](https://www.thetailorcv.com/cover-letter) and practice with the AI mock interview tool before the real thing.
 
 ## Conclusion
 

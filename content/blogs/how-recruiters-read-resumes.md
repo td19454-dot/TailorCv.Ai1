@@ -174,15 +174,15 @@ If the answer to any of these is no, your resume needs work. Use an [ATS-friendl
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
-- [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
+- How to Write Resume Bullet Points That Get Results
+- Best Action Verbs for Resume
+- How to Quantify Resume Achievements
+- How to Make Your Resume ATS-Friendly
+- ATS Resume Formatting Mistakes
+- How to Explain Resume Gaps
+- Resume Proofreading Checklist
+- Resume Design and Color Guide
+- Resume Margins, Spacing and Layout
 
 ---
 

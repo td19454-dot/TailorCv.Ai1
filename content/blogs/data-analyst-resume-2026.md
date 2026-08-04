@@ -16,7 +16,7 @@ The data job market is still strong, but it is also more competitive. The U.S. B
 
 Use this guide to write a data analyst resume that is clear for recruiters, readable for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software, and strong enough to earn interviews.
 
-If you are new to ATS, start with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), then test your resume with the [ATS score checker](https://www.thetailorcv.com/solutions). You can also use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) if your current format is hard to scan. If you are applying as a beginner, pair this guide with [how to get a job with no experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026) and the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience).
+If you are new to ATS, start with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), then test your resume with the [ATS score checker](https://www.thetailorcv.com/solutions). You can also use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) if your current format is hard to scan. If you are applying as a beginner, pair this guide with how to get a job with no experience and the first-time resume guide.
 
 ---
 
@@ -47,7 +47,7 @@ Best structure:
 4. Work experience
 5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+7. certifications
 
 If you do not have full-time data experience, move [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) above work experience. For data analyst roles, strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) can carry a lot of weight because they prove you can work with real datasets.
 
@@ -256,7 +256,7 @@ Useful [certifications](https://thetailorcv.com/blog/how-to-list-certifications-
 - Tableau Desktop Specialist
 - SQL [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - IBM [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) Professional Certificate
-- Excel or advanced spreadsheet [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- Excel or advanced spreadsheet certifications
 
 How to list them:
 
@@ -394,18 +394,18 @@ This guide uses current labor-market context from the [BLS Data Scientists Occup
 - [Product Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/product-manager-resume-2026)
 - [Business Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Financial Analyst Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/financial-analyst-resume-2026)
-- [Marketing Manager Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
-- [Data Scientist Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/data-scientist-resume-2026)
-- [How to Match Your Resume to a Data Analyst Job Description in 2026](https://thetailorcv.com/blog/resume-matching-data-analyst)
-- [Data Engineer Resume 2026 — Complete Guide with Examples](https://thetailorcv.com/blog/data-engineer-resume-2026)
-- [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [How to Improve Your ATS Score in 2026](https://thetailorcv.com/blog/resume-optimization-guide)
-- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- Marketing Manager Resume 2026 — Complete Guide with Examples
+- Data Scientist Resume 2026 — Complete Guide with Examples
+- How to Match Your Resume to a Data Analyst Job Description in 2026
+- Data Engineer Resume 2026 — Complete Guide with Examples
+- How to Tailor Your Resume for Every Job Application (Step-by-Step)
+- How to Improve Your ATS Score in 2026
+- ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)
+- ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

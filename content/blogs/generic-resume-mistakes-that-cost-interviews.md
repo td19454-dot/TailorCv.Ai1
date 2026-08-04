@@ -156,15 +156,15 @@ The [5-minute checklist](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
 - [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
-- [Why Your Resume Gets No Responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
-- [Resume Mistakes Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
-- [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- Why Your Resume Gets No Responses
+- How to Quantify Resume Achievements
+- ATS Resume Formatting Mistakes
+- Best Resume Keywords to Beat ATS Systems
+- How to Write a Resume Summary
+- How to Write a Resume Headline
+- How Much Should You Change Your Resume for Every Job
+- Resume Mistakes Freshers Make
+- ATS Mistakes Experienced Professionals Make
 
 ---
 

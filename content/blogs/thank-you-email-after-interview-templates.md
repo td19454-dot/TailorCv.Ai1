@@ -43,7 +43,7 @@ A thank-you email rarely wins a job on its own, but a missing one can lose a clo
 
 ## Panel Interview
 
-Send an individual note to each person, and vary the specific detail so they do not read like carbon copies if forwarded. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) what *that* person asked about — the engineer got a technical [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) a team-fit [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid).
+Send an individual note to each person, and vary the specific detail so they do not read like carbon copies if forwarded. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) what *that* person asked about — the engineer got a technical [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), the [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) a team-fit question.
 
 ## When You Fumbled a Question
 
@@ -165,7 +165,7 @@ The excuse for not sending a thank-you is usually time, but a genuine one takes 
 
 ## The Rejection Thank-You (Yes, Really)
 
-Almost nobody sends a thank-you after being rejected, which is exactly why doing so is powerful. A brief, gracious note — "Thank you for the opportunity and the thoughtful process; I really enjoyed meeting the team, and I'd welcome being considered for future roles" — leaves a lasting impression on a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) who is used to candidates going cold or bitter after a no. Roles reopen, chosen candidates decline, and [hiring managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) move to new companies with their impressions intact. More than one person has been called back weeks or months later precisely because they handled a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) with grace. It costs two minutes and it keeps a door open that most people slam. In a [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), the relationships you maintain after a "no" are often worth as much as the ones you build during a "yes."
+Almost nobody sends a thank-you after being rejected, which is exactly why doing so is powerful. A brief, gracious note — "Thank you for the opportunity and the thoughtful process; I really enjoyed meeting the team, and I'd welcome being considered for future roles" — leaves a lasting impression on a [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) who is used to candidates going cold or bitter after a no. Roles reopen, chosen candidates decline, and [hiring managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) move to new companies with their impressions intact. More than one person has been called back weeks or months later precisely because they handled a [rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) with grace. It costs two minutes and it keeps a door open that most people slam. In a job search, the relationships you maintain after a "no" are often worth as much as the ones you build during a "yes."
 
 ## Putting It All Together
 

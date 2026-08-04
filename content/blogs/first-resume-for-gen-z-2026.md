@@ -28,9 +28,9 @@ Before you finalize it, run it through the [free ATS score checker](https://www.
 
 - **Clarity over length** - one clean page beats two padded ones every time. See [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide).
 - **Projects and coursework** in place of formal jobs - see [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
-- **A tight skills section** listing tools and platforms you're actually comfortable with, not aspirational ones - see [skills to add to resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- **A short, specific summary** instead of a vague objective - see [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary)
-- **An ATS-friendly format** that survives automated screening on your first try - see [ATS-friendly resume builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- **A tight skills section** listing tools and platforms you're actually comfortable with, not aspirational ones - see skills to add to resume 2026
+- **A short, specific summary** instead of a vague objective - see resume objective vs summary
+- **An ATS-friendly format** that survives automated screening on your first try - see ATS-friendly resume builder
 
 None of this requires a job title. It requires specifics - what you did, what changed because you did it, and what tools or skills you used to do it. That's true whether the "role" was a summer job, a student club, or a class project.
 
@@ -181,7 +181,7 @@ A hiring manager who asks a follow-up question in an interview should get an ans
 
 ## Make This Practical
 
-Turn your draft into an application-ready package. Check your resume's ATS fit with the [free ATS score checker](https://www.thetailorcv.com/solutions), start from a clean layout with [TailorCV's resume templates](https://www.thetailorcv.com/templates), pair it with a [cover letter built for no experience](https://thetailorcv.com/blog/cover-letter-no-work-experience), and practice your first interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview). If your field supports it, a simple [portfolio](https://www.thetailorcv.com/portfolio) can back up your resume with real work samples - see the [student portfolio guide](https://thetailorcv.com/blog/student-portfolio-guide) for how to put one together fast.
+Turn your draft into an application-ready package. Check your resume's ATS fit with the [free ATS score checker](https://www.thetailorcv.com/solutions), start from a clean layout with [TailorCV's resume templates](https://www.thetailorcv.com/templates), pair it with a [cover letter built for no experience](https://thetailorcv.com/blog/cover-letter-no-work-experience), and practice your first interviews with the AI mock interview tool. If your field supports it, a simple portfolio can back up your resume with real work samples - see the student portfolio guide for how to put one together fast.
 
 ---
 

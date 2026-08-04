@@ -182,15 +182,15 @@ Yes. Build a "master" version tailored for each role type you target. Apply the 
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [How Much Should You Change Your Resume for Every Job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job)
 - [How Recruiters Spot Generic Resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes)
-- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [Best Resume Keywords to Beat ATS Systems](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [Resume Matching Checklist](https://thetailorcv.com/blog/resume-matching-checklist)
-- [Resume Matching With Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Does My Resume Pass ATS? A 12-Point Checklist](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- How ATS Detects a Generic Resume
+- Best Resume Keywords to Beat ATS Systems
+- How to Quantify Resume Achievements
+- ATS Resume Formatting Mistakes
+- How to Write a Resume Summary
+- How to Write a Resume Headline
+- Resume Matching Checklist
+- Resume Matching With Job Description - Complete Guide
+- Does My Resume Pass ATS? A 12-Point Checklist
 
 ---
 

@@ -48,7 +48,7 @@ If you're rescheduling because you're juggling another opportunity, never say so
 
 ## After you reschedule: prepare and reconfirm
 
-Rescheduling gives you extra time — use it well. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) more deeply, refine your [STAR stories](https://thetailorcv.com/blog/interview-story-bank-star-method), run a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and plan [what to bring](https://thetailorcv.com/blog/what-to-bring-to-an-interview) and [what to wear](https://thetailorcv.com/blog/what-to-wear-to-an-interview). Send a brief confirmation once the new time is set, and treat the rescheduled interview with extra care — arrive early (or test your tech for a [video interview](https://thetailorcv.com/blog/video-interview-tips-2026)) and bring your best. Afterward, a prompt [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) reinforces your professionalism.
+Rescheduling gives you extra time — use it well. [Research the company](https://thetailorcv.com/blog/how-to-research-company-before-interview) more deeply, refine your [STAR stories](https://thetailorcv.com/blog/interview-story-bank-star-method), run a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and plan what to bring and what to wear. Send a brief confirmation once the new time is set, and treat the rescheduled interview with extra care — arrive early (or test your tech for a video interview) and bring your best. Afterward, a prompt thank-you email reinforces your professionalism.
 
 ### See it in action: a resume-based mock interview
 

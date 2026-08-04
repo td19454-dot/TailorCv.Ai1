@@ -10,11 +10,6 @@ image: public/blog-images/product-manager-portfolio-guide.webp
 
 PM portfolios are still rare - which is exactly why one sets you apart. While other candidates send a resume and hope, you hand the hiring manager evidence of product thinking and shipped impact. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and the template in [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
 
 
 ## Key Takeaways
@@ -117,6 +112,13 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Confidential roadmaps shown without permission
 - Dead links - run the [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
+### Turning a resume into a portfolio site
+
+![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
+
+The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
+
+
 
 
 ### Additional Common Pitfalls
@@ -165,19 +167,19 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Product Manager Resume 2026](https://thetailorcv.com/blog/product-manager-resume-2026)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Resume Matching for Product Managers](https://thetailorcv.com/blog/resume-matching-product-manager)
-- [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
-- [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
-- [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide)
-- [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
-- [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026)
+- How to Quantify Resume Achievements
+- Resume Matching for Product Managers
+- Personal Branding for Professionals
+- Portfolio About Me Section
+- UX Designer Portfolio Guide
+- Portfolio Checklist Before You Apply
+- Portfolio Mistakes to Avoid
+- How to Host Your Portfolio for Free
+- Best Portfolio Website Builders 2026
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 
@@ -191,8 +193,8 @@ Use these internal guides to connect this topic with the rest of your job-search
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [Portfolio Website for Job Applications](https://thetailorcv.com/blog/portfolio-website-for-job-applications)
 - [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-- [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [How to Write Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
-- [Add Portfolio Link to Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
-- [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [ATS-Friendly Resume Builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
+- Portfolio Mistakes to Avoid
+- How to Write Portfolio Case Study
+- Add Portfolio Link to Resume
+- Resume Matching With Job Description
+- ATS-Friendly Resume Builder

@@ -62,10 +62,10 @@ You edit one section at a time - personal info, education, experience, projects,
 1. **Start from an ATS-safe structure.** Use [free ATS friendly resume templates](https://thetailorcv.com/templates) - including the popular Jake's Resume layout - instead of a decorative design.
 2. **Add clear, standard sections.** Contact, Summary, Skills, Experience, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), Education.
 3. **Mirror the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).** Pull the exact skills and terms from the posting and weave them in naturally.
-4. **Write strong [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).** Lead with an action verb and include a measurable result wherever possible.
-5. **[quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) everything you can.** "Reduced load time by 40%" beats "improved performance."
-6. **Tailor for each role.** A generic resume rarely scores well. [Tailor your resume to each job description](https://thetailorcv.com/solutions) to maximize keyword match.
-7. **Test before you send.** Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide), fix what fails, and re-scan.
+4. **Write strong bullet points.** Lead with an action verb and include a measurable result wherever possible.
+5. **quantify everything you can.** "Reduced load time by 40%" beats "improved performance."
+6. **Tailor for each role.** A generic resume rarely scores well. Tailor your resume to each job description to maximize keyword match.
+7. **Test before you send.** Check your ATS score, fix what fails, and re-scan.
 
 ## Best Free ATS Friendly Resume Builder Tools
 
@@ -93,9 +93,9 @@ And once your resume is landing interviews, prepare for the next step: [practice
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
 ## Final Thoughts
 The best **ATS friendly resume builder** is one that helps you structure, tailor, and verify your resume in a single flow. Start from a clean template, match the job description, quantify your impact, and confirm your work with an [ATS score](https://thetailorcv.com/blog/ats-score-guide) check before you hit apply.

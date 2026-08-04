@@ -164,11 +164,11 @@ The headline can stand alone or precede a summary. Read [how to write a resume h
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [Resume Summary With No Experience](https://thetailorcv.com/blog/resume-summary-with-no-experience)
 - [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
-- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [Resume Red Flags](https://thetailorcv.com/blog/resume-red-flags)
+- The Anatomy of a Perfect Resume
+- How to Write a Resume from Scratch
+- ATS Score Guide
+- Resume Keywords Guide
+- Resume Red Flags
 
 ---
 

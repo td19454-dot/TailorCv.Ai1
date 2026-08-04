@@ -53,7 +53,7 @@ Before you apply to a single role:
 
 - Build a clean, one-to-two-page resume following local conventions — our complete [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs) covers exactly what to include.
 - Make sure it passes the ATS. Learn the mechanics in [how ATS works in Malaysia](https://thetailorcv.com/blog/ats-in-malaysia-guide), and test your resume against each posting with the free [ATS score checker](https://thetailorcv.com/solutions).
-- If you are unsure whether to submit a "CV" or a "resume," read [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia).
+- If you are unsure whether to submit a "CV" or a "resume," read CV vs resume in Malaysia.
 
 A polished resume built with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailored to each job with the [resume optimizer](https://thetailorcv.com/solutions) will consistently out-perform a generic one.
 

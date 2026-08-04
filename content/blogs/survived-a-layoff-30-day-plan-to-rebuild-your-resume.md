@@ -38,7 +38,7 @@ Start with a quick win: check your current resume against a role you actually wa
 - Rewrite your summary and recent role bullets with specific, quantified outcomes - see [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) against 2-3 real target roles to see where it's weak
 - Update your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) to match your resume and signal you're open to opportunities
-- If your field supports it, build or refresh a [portfolio](https://www.thetailorcv.com/portfolio) to show recent work
+- If your field supports it, build or refresh a portfolio to show recent work
 
 ### Your resume after optimization
 
@@ -53,8 +53,8 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 
 - Reach out to former colleagues and managers - see [networking tips for job search](https://thetailorcv.com/blog/networking-tips-for-job-search) and [how to write a cold email to a recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 - Begin applying to 3-5 tailored roles per day rather than mass-applying - see [how many jobs should you apply to per day](https://thetailorcv.com/blog/how-many-jobs-should-you-apply-to-per-day)
-- Tailor each application using [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- Track every application in the [job application tracker template](https://thetailorcv.com/blog/job-application-tracker-template)
+- Tailor each application using how to tailor your resume for every job
+- Track every application in the job application tracker template
 
 ---
 

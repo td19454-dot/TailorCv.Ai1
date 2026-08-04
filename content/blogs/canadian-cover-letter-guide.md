@@ -276,8 +276,8 @@ It's worth restating because it's the single biggest factor: a tailored cover le
 
 - Start with a Canadian-style, ATS-ready resume — see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Match the role's language — see [best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada).
-- Optimise LinkedIn — see [LinkedIn optimization for Canadian job seekers](https://thetailorcv.com/blog/linkedin-optimization-canada).
-- Prepare for interviews — see [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+- Optimise LinkedIn — see LinkedIn optimization for Canadian job seekers.
+- Prepare for interviews — see interview tips for Canada and rehearse with the AI mock interview.
 
 Newcomers should also read [how to get a job in Canada as a newcomer](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer).
 

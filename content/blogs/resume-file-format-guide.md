@@ -193,10 +193,10 @@ Note: Design-heavy tools like Canva may produce PDFs with text embedded as graph
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [Resume Margins, Spacing and Layout](https://thetailorcv.com/blog/resume-margins-spacing-formatting)
-- [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
+- How to Tailor Your Resume for Every Job
+- Resume Proofreading Checklist
+- Resume Margins, Spacing and Layout
+- Best Resume Fonts for 2026
 
 ---
 

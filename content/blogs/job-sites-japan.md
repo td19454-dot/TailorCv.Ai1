@@ -96,9 +96,9 @@ A warm introduction can carry real weight — see the networking tips woven thro
 
 1. **Prepare your application first.** Match the format to the employer — a strong ATS-friendly English resume for global roles (see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan)), or a rirekisho for traditional firms (see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide)). Build it with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. **Use multiple channels** — job sites, LinkedIn, and agencies together.
-3. **Tailor every application** to the specific role with the [resume optimizer](https://thetailorcv.com/solutions).
-4. **Add a cover letter** where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).
-5. **Prepare for interviews** — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
+3. **Tailor every application** to the specific role with the resume optimizer.
+4. **Add a cover letter** where expected — see the Japanese cover letter guide.
+5. **Prepare for interviews** — see Japan interview etiquette and rehearse with the AI mock interview.
 6. **Prioritise Tokyo** for the widest range of foreigner-friendly roles.
 
 ## The Visa Reality

@@ -14,7 +14,7 @@ Following up after a job [interview](https://thetailorcv.com/blog/how-to-prepare
 
 This guide covers when to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview), what to say, how to handle silence, and the [thank-you email](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) templates you can adapt for any role.
 
-Before your interview, make sure your [resume](https://www.thetailorcv.com/templates) is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+Before your interview, make sure your [resume](https://www.thetailorcv.com/templates) is strong - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it. Then prepare your answers with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and full interview preparation guide.
 
 ---
 
@@ -175,21 +175,21 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Answer "Tell Me About Yourself"](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- [How to Prepare for a Job Interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
-- [How to Research a Company Before Your Job Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
-- [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
-- [Virtual Interview Tips](https://thetailorcv.com/blog/virtual-interview-tips)
-- [Group Discussion Tips](https://thetailorcv.com/blog/group-discussion-tips)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Networking Tips for Job Search in 2026 - Even If You Hate Networking](https://thetailorcv.com/blog/networking-tips-for-job-search)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
-- [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- How to Prepare for a Job Interview
+- How to Research a Company Before Your Job Interview
+- Best Questions to Ask in a Job Interview
+- Virtual Interview Tips
+- Group Discussion Tips
+- How to Decline a Job Offer Professionally
+- How to Handle Job Rejection
+- How to Write a Cold Email to a Recruiter
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- How to Build a Professional Portfolio in 2026 - Guide for All Industries
+- LinkedIn Profile Optimization Guide 2026 - Get Found by Recruiters
+- Networking Tips for Job Search in 2026 - Even If You Hate Networking
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
+- How to Explain Resume Gaps in 2026 - Honest Strategies That Work
+- How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work
 
 ## Make This Practical
 
@@ -200,7 +200,7 @@ Before the interview, make sure the resume that earned the call is still aligned
 ## Conclusion
 A thank-you email after an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) takes 10 minutes and is one of the highest-leverage low-effort actions in a job search. Send one within 24 hours, make it specific and genuine, and keep it short.
 
-For the interview itself, prepare with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For getting to the interview in the first place, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume, and use [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
+For the interview itself, prepare with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and the [full interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). For getting to the interview in the first place, use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize your resume, and use ATS-friendly resume templates.
 
 ## Frequently Asked Questions
 

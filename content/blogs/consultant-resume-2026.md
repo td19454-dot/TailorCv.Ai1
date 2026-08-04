@@ -163,21 +163,21 @@ Consulting resumes are judged partly on communication and structure. A cluttered
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [MBA Resume](https://thetailorcv.com/blog/mba-resume-2026)
 - [Product Manager Resume](https://thetailorcv.com/blog/product-manager-resume-2026)
-- [Project Manager Resume](https://thetailorcv.com/blog/project-manager-resume-2026)
-- [Sales Executive Resume](https://thetailorcv.com/blog/sales-executive-resume-2026)
-- [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
-- [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
-- [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
-- [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
-- [Civil Engineer Resume](https://thetailorcv.com/blog/civil-engineer-resume-2026)
-- [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
-- [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- Project Manager Resume
+- Sales Executive Resume
+- Site Reliability Engineer (SRE) Resume
+- Accountant Resume
+- Android Developer Resume
+- Backend Developer Resume
+- Chemical Engineer Resume
+- Civil Engineer Resume
+- Cloud Engineer Resume
+- ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)
+- How to List Education on a Resume in 2026 - Complete Guide with Examples
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

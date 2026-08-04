@@ -163,7 +163,7 @@ If Canada is your target, use our dedicated resources:
 - The complete [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide).
 - [Best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada).
 - The [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
-- For newcomers, [how to get a job in Canada as a newcomer](https://thetailorcv.com/blog/how-to-get-a-job-in-canada-newcomer).
+- For newcomers, how to get a job in Canada as a newcomer.
 
 ## Credentials and Professional Designations Across the Border
 

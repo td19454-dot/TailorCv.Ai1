@@ -165,8 +165,8 @@ If you have an academic CV and need to create an industry resume:
 4. **Lead with impact** - Use a strong [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) that speaks to business value
 5. **Add a [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)** - Technical and transferable skills prominently displayed
 6. **Quantify** - Add numbers and results wherever possible. Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-7. **Keep to 2 pages** - See the [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-8. **Check ATS compatibility** - Run the final version through the [ATS score checker](https://www.thetailorcv.com/solutions)
+7. **Keep to 2 pages** - See the ideal resume length guide
+8. **Check ATS compatibility** - Run the final version through the ATS score checker
 
 ---
 
@@ -175,13 +175,13 @@ If you have an academic CV and need to create an industry resume:
 - [What Is a Resume and Why Does It Matter?](https://thetailorcv.com/blog/what-is-a-resume)
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
-- [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
-- [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
-- [How to Write a Resume from Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
+- How to Write a Resume Summary
+- How to Make Your Resume ATS-Friendly
+- Career Change Resume Guide
+- How to Quantify Resume Achievements
+- Chronological vs Functional Resume
+- ATS Score Guide
+- How to Write a Resume from Scratch
 
 ---
 

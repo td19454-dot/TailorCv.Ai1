@@ -134,10 +134,10 @@ Whatever you decide, make sure your resume content is strong. Read [how to write
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
-- [Resume vs CV: What's the Difference?](https://thetailorcv.com/blog/resume-vs-cv)
+- How to Make Your Resume ATS-Friendly
+- LinkedIn Profile Optimization Guide
+- Resume Design and Color Guide
+- Resume vs CV: What's the Difference?
 
 ---
 

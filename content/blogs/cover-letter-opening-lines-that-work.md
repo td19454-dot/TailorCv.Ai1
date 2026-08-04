@@ -96,12 +96,12 @@ Read the room. A cover letter to a formal financial institution should open with
 - "Your [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) describes a retention problem I spent all of last year solving; here is what I learned."
 - "I do not usually apply to roles this senior, but the specific work you described is exactly what I want to be doing for the next five years."
 - "Three of my last four side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) were attempts to build something like what your team ships — so I would rather build the real thing."
-- "The line in your posting about 'engineers who write' is why I am applying; I believe the two [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) are the same [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026)."
+- "The line in your posting about 'engineers who write' is why I am applying; I believe the two [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) are the same skill."
 - "I switched careers into data because of a problem that looks a lot like the one your Analytics role owns."
 - "A former colleague described your engineering culture to me two years ago, and I have quietly wanted to work here since."
 - "I read your entire documentation site before applying — partly to prepare, mostly because it was genuinely good."
 - "Your product solved a problem I had been complaining about for a year; now I want to help solve it for everyone else."
-- "I am early in my career, but I have shipped more side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) than some people ship jobs, and your role is exactly where I want to point that energy."
+- "I am early in my career, but I have shipped more side projects than some people ship jobs, and your role is exactly where I want to point that energy."
 
 Adapt, never copy — the power is in the specific truth you attach to the pattern.
 
@@ -161,7 +161,7 @@ Reuse the *structure* freely, but never the exact sentence — the specific deta
 
 ## Openers to Avoid at All Costs
 
-Just as important as knowing what works is recognizing the openers that quietly sink a cover letter. "I am writing to apply for the [position] I saw on [job board]" restates what the reader already knows and wastes the one line most likely to be read. "To whom it may concern" signals you did not bother to find a name. "My name is [Name] and I am a [job title]" is information already on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). "I believe I would be a great fit for this role" asserts the very thing you are supposed to prove. "I am the perfect [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) for this [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)" is empty confidence with nothing behind it. And any opener that could be pasted, unchanged, into an [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) for a completely different company has failed the specificity test by definition. If your first line survives a find-and-replace of the company name without becoming false, it is too generic to earn attention.
+Just as important as knowing what works is recognizing the openers that quietly sink a cover letter. "I am writing to apply for the [position] I saw on [job board]" restates what the reader already knows and wastes the one line most likely to be read. "To whom it may concern" signals you did not bother to find a name. "My name is [Name] and I am a [job title]" is information already on your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume). "I believe I would be a great fit for this role" asserts the very thing you are supposed to prove. "I am the perfect [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) for this [position](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)" is empty confidence with nothing behind it. And any opener that could be pasted, unchanged, into an application for a completely different company has failed the specificity test by definition. If your first line survives a find-and-replace of the company name without becoming false, it is too generic to earn attention.
 
 ## Testing Your Opener Before You Send
 

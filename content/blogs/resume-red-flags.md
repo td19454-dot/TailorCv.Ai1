@@ -172,13 +172,13 @@ A resume from `partyguy88@hotmail.com` or `xX_gamemaster_Xx@gmail.com` signals i
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [How to Tailor Your Resume for Every Job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [Why Is My ATS Score Low?](https://thetailorcv.com/blog/why-is-my-ats-score-low)
-- [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
-- [Resume Mistakes That Freshers Make](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- ATS Resume Formatting Mistakes
+- Ideal Resume Length Guide
+- Resume Proofreading Checklist
+- How to Tailor Your Resume for Every Job
+- Why Is My ATS Score Low?
+- Resume Contact Section Guide
+- Resume Mistakes That Freshers Make
 
 ---
 

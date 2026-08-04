@@ -183,12 +183,12 @@ The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-deci
 - [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)
 - [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
-- [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
-- [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How Recruiters Read Resumes in Under 10 Seconds](https://thetailorcv.com/blog/how-recruiters-read-resumes)
-- [How to Choose the Right Resume Template](https://thetailorcv.com/blog/how-to-choose-resume-template)
-- [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
-- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- How to Make Your Resume ATS-Friendly
+- Ideal Resume Length Guide
+- How Recruiters Read Resumes in Under 10 Seconds
+- How to Choose the Right Resume Template
+- Resume Proofreading Checklist
+- What Not to Put on a Resume
 
 ---
 

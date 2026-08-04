@@ -59,7 +59,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 Match your documents to the employer:
 
 - **Global/English-language roles** (the bulk of foreigner-friendly jobs in Tokyo): a strong Western-style, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume. See [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
-- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
+- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the Japanese resume guide and rirekisho vs Western resume.
 
 Tailor every application with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 

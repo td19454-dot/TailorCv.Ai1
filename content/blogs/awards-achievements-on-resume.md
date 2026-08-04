@@ -190,11 +190,11 @@ Test your resume's full ATS score with the [TailorCV checker](https://www.thetai
 - [The Anatomy of a Perfect Resume](https://thetailorcv.com/blog/anatomy-of-a-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
+- How to List Certifications on a Resume
+- Resume with No Experience Guide
+- Internship Resume Guide
+- How to List Education on a Resume
+- What Not to Put on a Resume
 
 ---
 

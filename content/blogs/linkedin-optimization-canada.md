@@ -126,8 +126,8 @@ Getting found only matters if it leads somewhere. Respond promptly and professio
 
 - Keep your **resume** consistent with your profile — see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and test it with the [ATS checker](https://thetailorcv.com/solutions).
 - Use a targeted **cover letter** — see the [Canadian cover letter guide](https://thetailorcv.com/blog/canadian-cover-letter-guide).
-- Prepare for interviews when recruiters reach out — see [interview tips for Canada](https://thetailorcv.com/blog/interview-tips-canada) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
-- For tech and creative fields, link a portfolio — build one with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
+- Prepare for interviews when recruiters reach out — see interview tips for Canada and rehearse with the AI mock interview.
+- For tech and creative fields, link a portfolio — build one with the TailorCV portfolio builder.
 
 ## How LinkedIn Decides Who Recruiters See
 

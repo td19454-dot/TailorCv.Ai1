@@ -85,7 +85,7 @@ Startup job descriptions frequently include values-driven language ("scrappy," "
 3. Rewrite your top bullets and skills section to mirror those exact terms, following the [resume matching guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide).
 4. Simplify formatting to a clean, single-column layout.
 5. Fill in any optional fields, including [cover letter](https://www.thetailorcv.com/cover-letter) prompts, with tailored content.
-6. Check your [ATS score](https://thetailorcv.com/blog/ats-score-guide) before submitting.
+6. Check your ATS score before submitting.
 
 ---
 
@@ -205,13 +205,13 @@ Use the [TailorCV ATS score checker](/solutions) to compare your resume against 
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Workday Resume Matching Guide](https://thetailorcv.com/blog/workday-resume-matching-guide)
 - [Lever ATS Resume Guide](https://thetailorcv.com/blog/lever-ats-resume-guide)
-- [iCIMS and Taleo Resume Formatting Guide](https://thetailorcv.com/blog/icims-taleo-resume-formatting-guide)
-- [Resume Tailoring: Startup vs Enterprise](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)
-- [How ATS Detects a Generic Resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume)
-- [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes)
-- [Resume Summary Match Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
+- iCIMS and Taleo Resume Formatting Guide
+- Resume Tailoring: Startup vs Enterprise
+- How ATS Detects a Generic Resume
+- ATS Keyword Mistakes
+- Resume Summary Match Job Description
+- Cover Letter Guide 2026
+- ATS Score Guide 2026
 
 ---
 

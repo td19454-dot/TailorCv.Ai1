@@ -122,8 +122,8 @@ If the rejection is about the role itself rather than compensation, it's worth u
 
 - **Early career / first job:** Leverage is lower, but a modest, well-researched ask is still reasonable and rarely backfires — see [how to get your first tech job](https://thetailorcv.com/blog/how-to-get-first-tech-job) for context on entry-level expectations specifically.
 - **Career changers:** If you're moving industries, your negotiating leverage often comes from transferable achievements rather than direct experience — see [career change resume guidance](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) for how to frame that value before the negotiation even starts.
-- **Freelance or contract work:** Rate negotiation works differently than salary negotiation — project scope, timeline, and revisions all factor in alongside the number itself. See [freelancing vs. full-time employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment) and [resume tailoring for freelance and contract roles](https://thetailorcv.com/blog/resume-tailoring-freelance-contract) for how positioning shifts.
-- **Later-round or executive negotiations:** By the time you're deep into a [final round](https://thetailorcv.com/blog/final-round-interview-tips) or a [second interview](https://thetailorcv.com/blog/resume-tailoring-second-interview), the company has invested real time in you — which is exactly when your negotiating leverage is highest.
+- **Freelance or contract work:** Rate negotiation works differently than salary negotiation — project scope, timeline, and revisions all factor in alongside the number itself. See [freelancing vs. full-time employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment) and resume tailoring for freelance and contract roles for how positioning shifts.
+- **Later-round or executive negotiations:** By the time you're deep into a final round or a second interview, the company has invested real time in you — which is exactly when your negotiating leverage is highest.
 
 ---
 
@@ -164,13 +164,13 @@ If the total package already meets your researched target and there's little roo
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
-- [How to Decline a Job Offer](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Write a Two Weeks' Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
-- [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [Freelancing vs. Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
-- [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
-- [Free Mock Interview Practice](https://thetailorcv.com/blog/mock-interview-practice-free)
+- How to Decline a Job Offer
+- How to Quit Your Job Professionally
+- How to Write a Two Weeks' Notice
+- First 90 Days at a New Job
+- Freelancing vs. Full-Time Employment
+- Final Round Interview Tips
+- Free Mock Interview Practice
 
 ---
 

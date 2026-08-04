@@ -127,10 +127,10 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 Don't try to prepare a fresh answer for every possible variation — build a smaller, reusable set instead:
 
 1. **Pick 2–3 strongest projects from your resume** and be ready to go deep on each — the model choice, the metric you optimized for, what you'd change if you rebuilt it today. If your resume doesn't currently make these projects easy to talk about, it's worth [tailoring it to the specific role](https://thetailorcv.com/solutions) first, especially since ML and [data scientist resumes](https://thetailorcv.com/blog/data-scientist-resume-2026) or [machine learning engineer resumes](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) are read differently than typical software engineering resumes.
-2. **Prepare 4–5 [behavioral stories](https://thetailorcv.com/blog/star-method-interview-answers-guide)** covering a technical disagreement, a failed model, a messy-data situation, and a stakeholder communication challenge.
+2. **Prepare 4–5 behavioral stories** covering a technical disagreement, a failed model, a messy-data situation, and a stakeholder communication challenge.
 3. **Drill fundamentals and statistics out loud**, not just by reading — explaining a concept clearly under time pressure is a different skill from recognizing the right multiple-choice answer.
-4. **Practice at least one applied case study end-to-end**, narrating your reasoning the whole way through, the same way you'd approach a [system design interview](https://thetailorcv.com/blog/system-design-interview-guide).
-5. **Rehearse the behavioral round specifically** — it's the round ML candidates most often under-prepare for, and a [free AI mock interview](https://thetailorcv.com/mock-interview) built from your actual resume will ask about the exact projects you'd need to defend live.
+4. **Practice at least one applied case study end-to-end**, narrating your reasoning the whole way through, the same way you'd approach a system design interview.
+5. **Rehearse the behavioral round specifically** — it's the round ML candidates most often under-prepare for, and a free AI mock interview built from your actual resume will ask about the exact projects you'd need to defend live.
 
 ---
 
@@ -152,7 +152,7 @@ Confirm the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-in
 
 ## Don't Forget the Portfolio
 
-For ML and data science roles especially, a portfolio of [real projects](https://www.thetailorcv.com/portfolio) often carries as much weight as the resume itself, since it's the clearest evidence of applied skill. See the [data scientist portfolio guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide) and [data analyst portfolio guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) for what to include, and make sure any code you're pointing interviewers to is clean and well-documented — see [GitHub portfolio optimization](https://thetailorcv.com/blog/github-portfolio-optimization). If you're deciding what kind of project to build to fill a gap, the [developer portfolio project ideas guide](https://thetailorcv.com/blog/developer-portfolio-project-ideas) is a useful starting point.
+For ML and data science roles especially, a portfolio of [real projects](https://www.thetailorcv.com/portfolio) often carries as much weight as the resume itself, since it's the clearest evidence of applied skill. See the [data scientist portfolio guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide) and [data analyst portfolio guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) for what to include, and make sure any code you're pointing interviewers to is clean and well-documented — see GitHub portfolio optimization. If you're deciding what kind of project to build to fill a gap, the developer portfolio project ideas guide is a useful starting point.
 
 If you're coming from a data analyst background and moving toward ML or data science roles, it's worth understanding how the two are actually evaluated differently — see [data analyst vs. data scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist).
 
@@ -187,13 +187,13 @@ Say the answer out loud, ideally to someone without an ML background, and check 
 - [Technical Interview Preparation Guide](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 - [Coding Interview Preparation Guide](https://thetailorcv.com/blog/coding-interview-preparation-guide)
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
-- [Behavioral Interview Questions and Answers](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
-- [Machine Learning Engineer Resume 2026](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
-- [Data Scientist Resume 2026](https://thetailorcv.com/blog/data-scientist-resume-2026)
-- [Data Scientist Portfolio Guide](https://thetailorcv.com/blog/data-scientist-portfolio-guide)
-- [Data Analyst vs. Data Scientist](https://thetailorcv.com/blog/data-analyst-vs-data-scientist)
-- [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
-- [Free Mock Interview Practice](https://thetailorcv.com/blog/mock-interview-practice-free)
+- Behavioral Interview Questions and Answers
+- Machine Learning Engineer Resume 2026
+- Data Scientist Resume 2026
+- Data Scientist Portfolio Guide
+- Data Analyst vs. Data Scientist
+- GitHub Portfolio Optimization
+- Free Mock Interview Practice
 
 ---
 

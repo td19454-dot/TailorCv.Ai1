@@ -196,13 +196,13 @@ Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to a
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Video Resume Guide 2026](https://thetailorcv.com/blog/video-resume-guide-2026)
 - [Matching Your Resume to the Soft Skills Buried in a Job Description](https://thetailorcv.com/blog/matching-resume-to-soft-skills-in-job-description)
-- [How to Match Your Portfolio to the Job Description](https://thetailorcv.com/blog/matching-portfolio-to-job-description)
-- [Job Description Keyword Extraction Guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- [AI Mock Interview Complete Guide 2026](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026)
-- [How to Answer Tell Me About Yourself](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
-- [Interview Body Language and Communication Tips](https://thetailorcv.com/blog/interview-body-language-communication-tips)
-- [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)
-- [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
+- How to Match Your Portfolio to the Job Description
+- Job Description Keyword Extraction Guide
+- AI Mock Interview Complete Guide 2026
+- How to Answer Tell Me About Yourself
+- Interview Body Language and Communication Tips
+- ATS Score Guide 2026
+- Cover Letter Guide 2026
 
 ---
 

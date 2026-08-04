@@ -56,11 +56,11 @@ For a standard [resume](https://www.thetailorcv.com/modify-cv), keep it below yo
 
 ## Keep industry resumes tight
 
-For non-academic jobs, don't let publications crowd out your experience and [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume). A hiring manager for an industry role cares more about impact than a long bibliography. Link to a [portfolio website](https://www.thetailorcv.com/portfolio) or a scholar profile with your full list, and feature only the pieces that reinforce your fit for this specific [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Keeping the [resume](https://www.thetailorcv.com/modify-cv) to [the right length](https://thetailorcv.com/blog/ideal-resume-length-guide) matters even for accomplished authors.
+For non-academic jobs, don't let publications crowd out your experience and [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume). A hiring manager for an industry role cares more about impact than a long bibliography. Link to a [portfolio website](https://www.thetailorcv.com/portfolio) or a scholar profile with your full list, and feature only the pieces that reinforce your fit for this specific [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Keeping the resume to the right length matters even for accomplished authors.
 
 ## Make publications ATS-safe
 
-A long, complex publications list can trip the [ATS](https://thetailorcv.com/blog/ats-score-guide) if it's formatted with tables, columns, or unusual characters. Keep it as clean, single-column text with standard punctuation, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). Then confirm it parses with the [ATS score checker](https://www.thetailorcv.com/solutions).
+A long, complex publications list can trip the [ATS](https://thetailorcv.com/blog/ats-score-guide) if it's formatted with tables, columns, or unusual characters. Keep it as clean, single-column text with standard punctuation, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). Then confirm it parses with the ATS score checker.
 
 ## Publications vs projects vs presentations
 
@@ -70,7 +70,7 @@ If you don't have formal publications but do have relevant output, related secti
 
 ## Use Google Scholar, ORCID, and a portfolio
 
-For anyone with a substantial body of work, maintaining an external profile is smarter than cramming everything onto your [resume](https://www.thetailorcv.com/modify-cv). A **Google Scholar** profile shows citation counts and an h-index at a glance; **ORCID** gives you a permanent researcher ID; and a personal [portfolio website](https://www.thetailorcv.com/portfolio) lets you present publications alongside projects, talks, and context. Link one of these from your header so a curious reviewer can see your full record without you sacrificing [resume](https://www.thetailorcv.com/modify-cv) space — the same logic behind [adding a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume). For guidance on building that presence, see [how to write a portfolio case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study).
+For anyone with a substantial body of work, maintaining an external profile is smarter than cramming everything onto your [resume](https://www.thetailorcv.com/modify-cv). A **Google Scholar** profile shows citation counts and an h-index at a glance; **ORCID** gives you a permanent researcher ID; and a personal [portfolio website](https://www.thetailorcv.com/portfolio) lets you present publications alongside projects, talks, and context. Link one of these from your header so a curious reviewer can see your full record without you sacrificing [resume](https://www.thetailorcv.com/modify-cv) space — the same logic behind adding a portfolio link to your resume. For guidance on building that presence, see how to write a portfolio case study.
 
 ## Common publication-listing mistakes
 

@@ -10,7 +10,7 @@ slug: ats-resume-checklist-2026
 keywords: ats checklist, ats friendly resume, resume checklist, ats resume checklist 2026
 ---
 
-Before you hit submit, run your [resume](https://www.thetailorcv.com/modify-cv) through this checklist. Each item is something an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) or a recruiter actually checks — and fixing them takes minutes. Most qualified candidates get filtered not because they lack the skills, but because their [resume](https://www.thetailorcv.com/modify-cv) trips one of these avoidable traps. Work through the list, then confirm everything with the [free ATS score checker](https://www.thetailorcv.com/solutions).
+Before you hit submit, run your [resume](https://www.thetailorcv.com/modify-cv) through this checklist. Each item is something an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) or a recruiter actually checks — and fixing them takes minutes. Most qualified candidates get filtered not because they lack the skills, but because their [resume](https://www.thetailorcv.com/modify-cv) trips one of these avoidable traps. Work through the list, then confirm everything with the free ATS score checker.
 
 If you want the background first, read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide) and [what is an ATS score](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to understand how the software reads and scores your [resume](https://www.thetailorcv.com/modify-cv). Then use the checklist below every single time you apply.
 
@@ -24,8 +24,8 @@ Formatting is where most [resumes](https://www.thetailorcv.com/modify-cv) silent
 - [ ] **Standard section headings** — "Experience," "Education," "Skills," not creative labels.
 - [ ] **A safe, [readable font](https://thetailorcv.com/blog/resume-fonts-guide)** at 10.5–12pt.
 - [ ] **Text-based PDF**, not a scanned image or an unusual format.
-- [ ] **No critical info in the header/footer** — some parsers skip these zones. See [ATS parser-friendly format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
-- [ ] **Consistent [margins and spacing](https://thetailorcv.com/blog/resume-margins-spacing-formatting)** so it reads cleanly.
+- [ ] **No critical info in the header/footer** — some parsers skip these zones. See ATS parser-friendly format.
+- [ ] **Consistent margins and spacing** so it reads cleanly.
 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) and most of these are handled for you.
 
@@ -35,11 +35,11 @@ Once the format is clean, the content has to match the role:
 
 - [ ] **Job title near the top matches the role** you want — a clear target title raises your [match score](https://thetailorcv.com/blog/resume-job-description-match-percentage).
 - [ ] **[Keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist)** appear naturally, where they're true for you.
-- [ ] **Every role has at least one [quantified result](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume)** — numbers, percentages, or outcomes.
-- [ ] **Strong [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume)** open each bullet, using the [bullet point formula](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
-- [ ] **A tight [summary](https://thetailorcv.com/blog/how-to-write-resume-summary)** — three lines, not a paragraph.
-- [ ] **A focused [skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the exact terms the role uses.
-- [ ] **No spelling or date inconsistencies** — [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) carefully.
+- [ ] **Every role has at least one quantified result** — numbers, percentages, or outcomes.
+- [ ] **Strong action verbs** open each bullet, using the bullet point formula.
+- [ ] **A tight summary** — three lines, not a paragraph.
+- [ ] **A focused skills section** with the exact terms the role uses.
+- [ ] **No spelling or date inconsistencies** — proofread carefully.
 
 Avoiding generic, duty-only bullets is essential — they're a top reason a [resume gets no responses](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) and a classic [generic resume mistake](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews).
 
@@ -74,11 +74,11 @@ Passed and failed checks are listed individually, so you can see exactly which p
 
 ## Final step: score it
 
-Instead of guessing, turn this checklist into a number. Paste your [resume](https://www.thetailorcv.com/modify-cv) and the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [free ATS score checker](https://www.thetailorcv.com/solutions). It shows the exact keywords and format issues costing you interviews before a human ever sees your application. If your score is low, [why is my ATS score low](https://thetailorcv.com/blog/why-is-my-ats-score-low) and [how to increase your ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score) explain the fixes, and [what is a good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) tells you what to aim for.
+Instead of guessing, turn this checklist into a number. Paste your [resume](https://www.thetailorcv.com/modify-cv) and the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) into the [free ATS score checker](https://www.thetailorcv.com/solutions). It shows the exact keywords and format issues costing you interviews before a human ever sees your application. If your score is low, why is my ATS score low and how to increase your ATS score explain the fixes, and what is a good ATS score tells you what to aim for.
 
 ## Tailor and repeat for every application
 
-This isn't a one-time task. Run the checklist every time you apply, because each posting wants slightly different [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). [Tailoring takes minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) once you have a base [resume](https://www.thetailorcv.com/modify-cv) — see [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job). Then, once you land the interview, prepare with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep).
+This isn't a one-time task. Run the checklist every time you apply, because each posting wants slightly different [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description). [Tailoring takes minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) once you have a base [resume](https://www.thetailorcv.com/modify-cv) — see how much to change your resume for every job. Then, once you land the interview, prepare with a free AI mock interview and the interview prep tool.
 
 ## Checklist summary
 
@@ -86,7 +86,7 @@ Your [resume](https://www.thetailorcv.com/modify-cv) is ready to submit when it:
 
 - Uses a **clean, single-column, [ATS-friendly](https://www.thetailorcv.com/templates)** format.
 - Leads with a **matching job title** and mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Backs every role with a [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) result.
-- Is [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist), correctly sized, and **passes the [ATS score checker](https://www.thetailorcv.com/solutions)**.
+- Backs every role with a quantified result.
+- Is proofread, correctly sized, and **passes the ATS score checker**.
 
 Run it through the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and you'll clear the software that filters out most applicants.

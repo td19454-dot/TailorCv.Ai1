@@ -168,21 +168,21 @@ Replace every instance of these with a specific ownership verb.
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-- [How to Write a Resume Headline](https://thetailorcv.com/blog/how-to-write-resume-headline)
-- [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
-- [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
-- [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
-- [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)
-- [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
-- [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- How to List Education on a Resume
+- How to Write a Resume Headline
+- How to Write a Resume Summary
+- Soft Skills for Resume
+- 35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)
+- What Not to Put on a Resume
+- How to Explain Resume Gaps
+- Ideal Resume Length
+- 10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews
+- How to Write a Resume with AI in 2026 - Smart Use Without the Risks
+- Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read
+- MBA Resume 2026 - Complete Guide with Examples
+- Why Am I Not Getting Interviews for Jobs I'm Qualified For?
+- How to Write a Resume Summary With No Experience (10 Real Examples for 2026)
+- ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)
 
 ## Make This Practical
 

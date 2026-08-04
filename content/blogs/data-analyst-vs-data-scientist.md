@@ -170,15 +170,15 @@ The data field has more than two roles:
 - [Freelancing vs Full-Time Employment](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
-- [How to Decline a Job Offer Professionally](https://thetailorcv.com/blog/how-to-decline-job-offer)
-- [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
-- [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
-- [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
-- [How to Quit Your Job Professionally](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
-- [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
-- [How to Write a Cold Email to a Recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
-- [How to Write a Two Weeks Notice](https://thetailorcv.com/blog/how-to-write-two-weeks-notice)
-- [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
+- How to Decline a Job Offer Professionally
+- How to Get a Job With No Experience
+- How to Handle Job Rejection
+- How to Negotiate a Salary Offer
+- How to Quit Your Job Professionally
+- How to Use LinkedIn for Job Search
+- How to Write a Cold Email to a Recruiter
+- How to Write a Two Weeks Notice
+- LinkedIn Profile Optimization Guide
 
 ## Make This Practical
 

@@ -55,8 +55,8 @@ If you're weighing whether a degree is worth pursuing at all, see [is a CS degre
 
 1. **Build proof, not just claims.** A [portfolio](https://www.thetailorcv.com/portfolio) with real projects does more work than a bullet point saying "self-taught."
 2. **Get certified where it matters.** Industry certifications can directly offset a missing degree line - see [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
-3. **Lead with skills, not education.** Structure your resume so your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and projects come before a thin education section - see [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) for how to frame it without drawing unnecessary attention.
-4. **Tailor aggressively to each posting.** Use the [free ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume reads as qualified before you apply.
+3. **Lead with skills, not education.** Structure your resume so your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and projects come before a thin education section - see how to list education on a resume for how to frame it without drawing unnecessary attention.
+4. **Tailor aggressively to each posting.** Use the free ATS score checker to confirm your resume reads as qualified before you apply.
 
 ---
 
