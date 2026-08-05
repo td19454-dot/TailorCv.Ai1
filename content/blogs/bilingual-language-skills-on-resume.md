@@ -10,6 +10,14 @@ slug: bilingual-language-skills-on-resume
 keywords: languages on resume, bilingual resume, language skills resume, multilingual resume
 ---
 
+## Key Takeaways
+
+- Remote and international hiring has made multilingual candidates more valuable across nearly every field.
+- The biggest mistake is vague self-assessment - use a clear, recognised proficiency scale instead of "conversational-plus".
+- Where you place language skills depends on how central the language is to the role.
+- Never overstate your level; many roles that value languages will test them in the interview or on the job.
+- Where a language directly helped you deliver results, show it in an experience bullet rather than only in a list.
+
 In a global job market, language skills can be a genuine differentiator — for customer-facing roles, international teams, and any company serving multiple markets. But listed vaguely, they raise more questions than they answer, and listed dishonestly they can blow up in an interview. This guide shows you how to present languages on your [resume](https://www.thetailorcv.com/modify-cv) with the clarity and honesty that turns them into a real advantage.
 
 Language ability is also a valuable [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scans for when a role requires it, so getting this right helps you pass screening as well as impress a recruiter. Confirm your overall match with the [free ATS score checker](https://www.thetailorcv.com/solutions) once your languages are in place.

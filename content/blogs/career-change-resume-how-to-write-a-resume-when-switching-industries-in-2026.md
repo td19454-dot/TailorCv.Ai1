@@ -18,7 +18,7 @@ keywords: career change resume, switching industries resume 2026, transferable s
 - The resume should quickly answer three key questions: why the new field, what skills transfer, and where is the proof of those skills.
 
 
-# Career Change Resume - How to Write a Resume When Switching Industries in 2026
+## Career Change Resume - How to Write a Resume When Switching Industries in 2026
 
 Use this guide with the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), the [ATS score checker](https://www.thetailorcv.com/solutions), and the [mock interview tool](https://thetailorcv.com/mock-interview) so your resume, keywords, and career-change story all line up.
 

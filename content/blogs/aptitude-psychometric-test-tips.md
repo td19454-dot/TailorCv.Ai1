@@ -10,6 +10,14 @@ slug: aptitude-psychometric-test-tips
 keywords: aptitude test, psychometric test, pre-employment assessment, numerical reasoning test
 ---
 
+## Key Takeaways
+
+- Aptitude and psychometric assessments come in a handful of predictable formats - numerical, verbal, logical, situational judgment, and personality.
+- Practising the format beats cramming content: familiarity with the question style, layout, and pacing is where the score gains come from.
+- Numerical reasoning rewards fast, accurate work with percentages, ratios, tables, and charts rather than advanced maths.
+- These tests are time-pressured by design, so answer and move on instead of getting stuck on a single question.
+- Answer situational judgment and personality tests as the professional the role wants, and keep your resume, applications, and interview prep moving alongside.
+
 Many employers — especially large firms, graduate schemes, and consulting and finance roles — use aptitude and psychometric tests to screen candidates before or between [interviews](https://www.thetailorcv.com/interview-prep). They feel intimidating, particularly under a timer, but here's the reassuring truth: they're highly coachable. Once you know the format and practice against the clock, your scores rise significantly. This guide walks through each test type and how to prepare for it.
 
 These tests usually sit early in the process, sometimes right after your [resume](https://www.thetailorcv.com/modify-cv) passes screening, so treat them as seriously as the interview itself. Prepare alongside your other interview prep with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep).

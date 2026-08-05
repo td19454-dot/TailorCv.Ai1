@@ -19,7 +19,7 @@ keywords: how to prepare for job interview 2026, interview preparation guide, ST
 - Practice your responses out loud and prepare thoughtful questions to demonstrate your interest and engagement.
 
 
-# How to Prepare for a Job Interview in 2026 - Complete Guide for Every Industry
+## How to Prepare for a Job Interview in 2026 - Complete Guide for Every Industry
 
 Before [interview](https://thetailorcv.com/blog/how-to-explain-getting-fired-in-an-interview) day, make sure your application story is consistent by reviewing the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), using the [ATS score checker](https://www.thetailorcv.com/solutions), and practicing with the AI mock interview tool. If you are preparing for technical roles, review the FAANG software engineer resume guide or data analyst resume guide so your interview stories match the resume you submitted.
 
