@@ -19,7 +19,7 @@ keywords: what is ATS score, ATS resume checker, improve ATS score, applicant tr
 - Understanding ATS scoring can help candidates optimize their resumes for better visibility and chances of being selected for interviews.
 
 
-# What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It
+## What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It
 
 Use this guide with the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide), the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide), and the [ATS score checker](https://www.thetailorcv.com/solutions) to improve your resume before applying.
 

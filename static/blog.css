@@ -2504,37 +2504,38 @@ header.navbar {
   counter-reset: tcxlead;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
   max-width: 1000px;
-  margin: 22px 0;
+  margin: 26px 0;
   padding: 0;
 }
 .blog-detail-page .post-content .lead-list > li {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
   margin: 0;
-  padding: 14px 20px;
+  padding: 18px 24px 18px 44px;
   border: 1px solid #e6e9f2;
   border-radius: 10px;
   background: #fbfbff;
 }
-/* The marker is a flex item, not an absolutely positioned one - that way it
-   stays locked to the first text line at any font size or zoom level. */
+/* Absolute, not flex: a flex container would blockify <strong> and <a> into
+   separate flex items and tear the sentence apart. Offsets are derived from
+   the 27.2px line box so the marker centres on the first line. */
 .blog-detail-page .post-content .lead-list > li::before {
   content: "";
-  flex: 0 0 auto;
-  margin-top: 10px;
+  position: absolute;
+  left: 20px;
+  top: 27px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: linear-gradient(135deg, #AF40FF, #5B42F3);
 }
+.blog-detail-page .post-content ol.lead-list > li { padding-left: 58px; }
 .blog-detail-page .post-content ol.lead-list > li::before {
   counter-increment: tcxlead;
   content: counter(tcxlead);
-  margin-top: 2px;
+  left: 18px;
+  top: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2552,7 +2553,8 @@ header.navbar {
 }
 .blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
 @media (max-width: 640px) {
-  .blog-detail-page .post-content .lead-list > li { padding: 12px 14px; gap: 10px; }
+  .blog-detail-page .post-content .lead-list > li { padding: 15px 16px 15px 36px; }
+  .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
   .blog-detail-page .post-content .point-run > .point-card { padding: 15px 16px; }
 }
 
@@ -2675,3 +2677,150 @@ header.navbar {
 .blog-detail-page .post-content .dash-list-wrap { margin: 18px 0; max-width: 1000px; }
 .blog-detail-page .post-content .dash-list-lead { margin: 0 0 8px; }
 .blog-detail-page .post-content ul.dash-list { margin: 0; }
+
+/* =====================================================================
+   ARTICLE TYPOGRAPHY
+   Serif reading text with bold sans headings, matching the reference
+   layout. Serif is scoped to prose only - the boxed components (Key
+   Takeaways, FAQ, cards, tables, code, ATS widget) stay on the UI sans
+   so they still read as interface rather than article body.
+   ===================================================================== */
+.blog-detail-page .post-content {
+  --tcx-serif: "Source Serif 4", Charter, "Bitstream Charter", Georgia, "Times New Roman", serif;
+  --tcx-display: "Plus Jakarta Sans", Inter, "Segoe UI", sans-serif;
+}
+
+/* --- Headings: bold sans, sized down to the reference proportions --- */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4 {
+  font-family: var(--tcx-display);
+  color: #0f2133;
+  letter-spacing: -0.02em;
+}
+.blog-detail-page .post-content h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+.blog-detail-page .post-content h3 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.blog-detail-page .post-content h4 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+.blog-detail-page .post-content > h2 {
+  padding-top: 30px;
+  margin-top: 46px;
+}
+.blog-detail-page .post-content > h2 + h3 { margin-top: 26px; }
+.blog-detail-page .post-content h2 .anchor-link { top: 30px; }
+
+/* --- Reading text: serif --- */
+.blog-detail-page .post-content p,
+.blog-detail-page .post-content li,
+.blog-detail-page .post-content blockquote {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: #1f2a37;
+}
+.blog-detail-page .post-content p { margin-bottom: 15px; }
+.blog-detail-page .post-content li { margin-bottom: 8px; }
+.blog-detail-page .post-content p > strong,
+.blog-detail-page .post-content li > strong { font-weight: 700; }
+
+/* --- Interface blocks stay on the sans stack --- */
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li,
+.blog-detail-page .post-content .callout-box p,
+.blog-detail-page .post-content .callout-box li,
+.blog-detail-page .post-content .step-card p,
+.blog-detail-page .post-content .step-card li,
+.blog-detail-page .post-content .dd-grid p,
+.blog-detail-page .post-content .dd-grid li,
+.blog-detail-page .post-content .tpl-block p,
+.blog-detail-page .post-content .tpl-block li,
+.blog-detail-page .post-content .ba-split p,
+.blog-detail-page .post-content .lead-list > li,
+.blog-detail-page .post-content .point-card p,
+.blog-detail-page .post-content .lead-run p,
+.blog-detail-page .post-content .row-lines p,
+.blog-detail-page .post-content .article-bottomline p,
+.blog-detail-page .post-content .article-bottomline li,
+.blog-detail-page .post-content .blog-ats p,
+.blog-detail-page .post-content .blog-ats li,
+.blog-detail-page .post-content .blog-tpl p,
+.blog-detail-page .post-content .end-cta p,
+.blog-detail-page .post-content .article-cta-strip p,
+.blog-detail-page .post-content .blog-rate p,
+.blog-detail-page .post-content table,
+.blog-detail-page .post-content table p,
+.blog-detail-page .post-content th,
+.blog-detail-page .post-content td {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.blog-detail-page .post-content pre,
+.blog-detail-page .post-content code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* The ATS widget owns its colours outright. It can be relocated next to any
+   section, and inheriting a coloured card's text colour made its copy
+   invisible on its own light panel. */
+.blog-detail-page .post-content .blog-ats,
+.blog-detail-page .post-content .blog-ats p,
+.blog-detail-page .post-content .blog-ats li,
+.blog-detail-page .post-content .blog-ats label,
+.blog-detail-page .post-content .blog-ats figcaption {
+  color: #334155;
+}
+.blog-detail-page .post-content .blog-ats h2,
+.blog-detail-page .post-content .blog-ats h3,
+.blog-detail-page .post-content .blog-ats .blog-ats-label,
+.blog-detail-page .post-content .blog-ats .blog-ats-drop-title {
+  color: #0f172a;
+}
+.blog-detail-page .post-content .blog-ats .blog-ats-head p,
+.blog-detail-page .post-content .blog-ats .blog-ats-privacy,
+.blog-detail-page .post-content .blog-ats .blog-ats-drop-sub {
+  color: #52607a;
+}
+.blog-detail-page .post-content .blog-ats .blog-ats-chip { color: #4c34e0; }
+.blog-detail-page .post-content .blog-ats .blog-ats-go { color: #fff; }
+
+/* Bullet lists recovered from mis-fenced code blocks. */
+.blog-detail-page .post-content ul.pre-list {
+  margin: 12px 0;
+  padding-left: 22px;
+}
+.blog-detail-page .post-content ul.pre-list > li { margin-bottom: 7px; }
+.blog-detail-page .post-content .ba-block ul.pre-list { margin: 0; }
+
+/* The rating row is a small footer action, not a content card - the box gave
+   it more weight than it deserves. Plain row with a hairline above it, edges
+   aligned to the article text column. */
+.blog-detail-page .blog-rate {
+  margin: 40px 0 10px;
+  padding: 20px 0 0;
+  border: 0;
+  border-top: 1px solid #e6e9f2;
+  border-radius: 0;
+  background: none;
+}
+/* Keyboard focus only - clicking a star was leaving a blue square behind it. */
+.blog-detail-page .blog-rate-star:focus { outline: none; }
+.blog-detail-page .blog-rate-star:focus-visible {
+  outline: 2px solid #5B42F3;
+  outline-offset: 2px;
+  border-radius: 6px;
+}

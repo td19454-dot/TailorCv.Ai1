@@ -224,8 +224,12 @@
       card.classList.add(`step-tone-${Math.min(Number(match[1]) || 1, 5)}`);
       h.before(card);
       card.appendChild(h);
+      // Stop only at a heading of equal or higher rank. An H2 step owns its
+      // H3 subsections - stopping at any heading left them stranded between
+      // one step card and the next.
+      const stopAt = h.tagName === "H2" ? ["H2"] : ["H2", "H3"];
       let next = card.nextElementSibling;
-      while (next && !["H2", "H3"].includes(next.tagName)) {
+      while (next && !stopAt.includes(next.tagName)) {
         const current = next;
         next = next.nextElementSibling;
         card.appendChild(current);
@@ -1453,13 +1457,42 @@ const tcxPlaceAtsWidget = () => {
   }
 
   const CUE = /(free )?ats (score )?(checker|scanner)|check your ats score|scan your resume/i;
+
+  // A whole section about the score checker ("Why Use The TailorCV ATS Score
+  // Checker") is the best possible home for it: drop the widget at the end of
+  // that section so the reader finishes the pitch and lands on the tool.
+  const CARD = ".step-card, .callout-box, .dd-grid, .tpl-block, .point-run, .lead-run, .ba-split";
+  const section = Array.from(content.querySelectorAll("h2, h3")).find(
+    (h) => !h.closest(".blog-ats, .faq-box") && CUE.test(h.textContent || "")
+  );
+  if (section) {
+    // Never drop the widget inside a card - it would inherit that card's
+    // colour scheme (white text on the widget's own light panel) and the copy
+    // becomes invisible. Attach after the whole card instead.
+    const card = section.closest(CARD);
+    if (card) {
+      card.after(widget);
+      return;
+    }
+    const rank = section.tagName;
+    let last = section;
+    let n = section.nextElementSibling;
+    while (n && !(/^H[1-6]$/.test(n.tagName) && n.tagName <= rank)) {
+      if (n === widget) { n = n.nextElementSibling; continue; }
+      last = n;
+      n = n.nextElementSibling;
+    }
+    last.after(widget);
+    return;
+  }
+
   const anchor = Array.from(content.querySelectorAll("p")).find(
     (p) => !p.closest(".blog-ats, .end-cta, .article-cta-strip, .blog-rate") && CUE.test(p.textContent || "")
   );
   if (!anchor) return;
 
   // Keep it out of the middle of a boxed section - attach after the box.
-  const host = anchor.closest(".callout-box, .step-card, .tpl-block, .point-run, .lead-run, .faq-box") || anchor;
+  const host = anchor.closest(CARD + ", .faq-box") || anchor;
   host.after(widget);
 };
 
@@ -1478,6 +1511,23 @@ if (document.readyState === "loading") {
 const tcxBeforeAfterBlocks = () => {
   const content = document.querySelector(".post-content");
   if (!content) return;
+
+  /* A bullet list that was fenced as a code block: the highlighter bolds
+     random words like "and" and the block scrolls sideways instead of
+     wrapping. It is a list, so render it as one. */
+  content.querySelectorAll("pre").forEach((pre) => {
+    const raw = (pre.textContent || "").split("\n").map((l) => l.trim()).filter(Boolean);
+    if (raw.length < 2) return;
+    if (!raw.every((l) => /^[-*•]\s+\S/.test(l))) return;
+    const ul = document.createElement("ul");
+    ul.className = "pre-list";
+    raw.forEach((l) => {
+      const li = document.createElement("li");
+      li.textContent = l.replace(/^[-*•]\s+/, "");
+      ul.appendChild(li);
+    });
+    pre.replaceWith(ul);
+  });
 
   content.querySelectorAll("pre").forEach((pre) => {
     if (pre.closest(".ba-split")) return;
@@ -1539,4 +1589,41 @@ if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => setTimeout(tcxBeforeAfterBlocks, 0));
 } else {
   setTimeout(tcxBeforeAfterBlocks, 0);
+}
+
+/* A Do/Don't pair reads as a comparison, so both columns have to look alike.
+   The corpus sometimes writes one side as a bullet list and the other as a
+   two-column table, which then overflows inside the narrow column. Flatten
+   any table in a Do/Don't column into the same bullet shape as its partner -
+   the cells keep their exact text and links. */
+const tcxNormalizeDdColumns = () => {
+  document.querySelectorAll(".post-content .dd-col table").forEach((table) => {
+    const rows = Array.from(table.querySelectorAll("tr")).filter(
+      (tr) => !tr.querySelector("th") && tr.children.length >= 2
+    );
+    if (!rows.length) return;
+
+    const ul = document.createElement("ul");
+    rows.forEach((tr) => {
+      const cells = Array.from(tr.children);
+      const li = document.createElement("li");
+      const lead = document.createElement("strong");
+      lead.append(...cells[0].childNodes);
+      if (!lead.textContent.trim()) return;
+      li.appendChild(lead);
+      cells.slice(1).forEach((cell, i) => {
+        if (!cell.textContent.trim()) return;
+        li.appendChild(document.createTextNode(i === 0 ? ": " : " - "));
+        li.append(...cell.childNodes);
+      });
+      ul.appendChild(li);
+    });
+    if (ul.children.length) table.replaceWith(ul);
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxNormalizeDdColumns, 0));
+} else {
+  setTimeout(tcxNormalizeDdColumns, 0);
 }

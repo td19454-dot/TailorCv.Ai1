@@ -10,6 +10,14 @@ slug: attorney-lawyer-resume-2026
 keywords: attorney resume, lawyer resume, legal cv, attorney resume 2026
 ---
 
+## Key Takeaways
+
+- A legal resume is a writing sample - one typo or inconsistent citation signals carelessness in a profession built on care.
+- Lead with bar admissions (states and dates), your JD, law school, and honours such as law review or moot court.
+- State your practice area clearly; a generic "attorney" reads weaker than a specific focus.
+- Show scale and results without breaching confidentiality by pairing a strong action verb with a measurable outcome.
+- Litigation, transactional, law-firm, and in-house resumes each emphasise different things, so tailor every application.
+
 Legal hiring is precise, and your [resume](https://www.thetailorcv.com/modify-cv) should be too. Whether you're a new associate or a seasoned litigator, firms and legal departments look for clear practice areas, credentials, and evidence that you deliver results — with zero typos. And with more firms and corporate legal teams using an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to screen applications, your [resume](https://www.thetailorcv.com/modify-cv) now has to satisfy both software and a detail-obsessed hiring partner.
 
 This guide walks through every section of an attorney [resume](https://www.thetailorcv.com/modify-cv), the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that matter, and how to pass the [ATS](https://thetailorcv.com/blog/ats-score-guide). Before you send anything, run your draft through the free ATS score checker, start from an ATS-friendly template, and read the ATS score guide. If you support a legal team as a paralegal, that guide covers your path.

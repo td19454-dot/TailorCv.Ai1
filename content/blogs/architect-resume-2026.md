@@ -10,6 +10,14 @@ slug: architect-resume-2026
 keywords: architect resume, architecture cv, architectural designer resume, architect resume 2026
 ---
 
+## Key Takeaways
+
+- Architects instinctively design their resume, and that is exactly what breaks it - multi-column layouts, custom fonts, and graphics do not survive the ATS.
+- Lead with your licence status and the software you command: Revit, AutoCAD, Rhino, SketchUp.
+- Present each key project with its type, size, your role, and the phase, ending on a quantified outcome.
+- Keep drawings and renders out of the resume itself and link a strong portfolio site prominently in the header.
+- Tailor every application - a residential studio, a large commercial practice, and a landscape firm each want a different emphasis.
+
 An architect's [resume](https://www.thetailorcv.com/modify-cv) has a dual audience: HR and the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scan for keywords, while design leads look for taste and delivery. You need both — a clean, parseable [resume](https://www.thetailorcv.com/modify-cv) plus a portfolio that shows the work. This guide covers how to structure your resume, which keywords to include, and how to pass the ATS without dulling your credibility.
 
 Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you're in an adjacent design field, the interior designer resume guide and UX designer resume guide follow the same logic.
