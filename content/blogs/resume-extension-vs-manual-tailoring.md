@@ -31,6 +31,9 @@ And the same on LinkedIn: the extension reads the posting off the page you are a
 
 Done properly, that is about ten minutes. Our [tailor in 5 minutes](/blog/how-to-tailor-resume-in-5-minutes) guide trims it with practice, but ten is realistic for most people doing it carefully. The skill itself is learnable and worth learning — understanding [which keywords beat the ATS](/blog/best-resume-keywords-to-beat-ats) and how to [quantify achievements](/blog/how-to-quantify-achievements-on-resume) makes you better at judging any resume, tool or no tool.
 
+
+![TailorCV tailoring on a Wellfound posting in place of manual editing](public/blog-images/extension-on-wellfound.webp)
+
 ## What the Extension Saves
 
 The extension collapses those ten minutes to about one. Open the job, the panel reads the description off the page, shows your [match score](/ats-analysis), and one click rewrites the resume and downloads the PDF — the flow [TailorCV's extension](/extension) is built around.

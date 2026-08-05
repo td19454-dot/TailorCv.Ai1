@@ -2504,18 +2504,19 @@ header.navbar {
   counter-reset: tcxlead;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   max-width: 1000px;
-  margin: 26px 0;
+  margin: 24px 0;
   padding: 0;
 }
 .blog-detail-page .post-content .lead-list > li {
   position: relative;
   margin: 0;
-  padding: 18px 24px 18px 44px;
-  border: 1px solid #e6e9f2;
-  border-radius: 10px;
-  background: #fbfbff;
+  padding: 11px 18px 11px 46px;
+  border: 1px solid #e8e6fb;
+  border-left: 4px solid #5B42F3;
+  border-radius: 8px;
+  background: #fbfaff;
 }
 /* Absolute, not flex: a flex container would blockify <strong> and <a> into
    separate flex items and tear the sentence apart. Offsets are derived from
@@ -2523,8 +2524,8 @@ header.navbar {
 .blog-detail-page .post-content .lead-list > li::before {
   content: "";
   position: absolute;
-  left: 20px;
-  top: 27px;
+  left: 22px;
+  top: 20px;
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -2534,8 +2535,8 @@ header.navbar {
 .blog-detail-page .post-content ol.lead-list > li::before {
   counter-increment: tcxlead;
   content: counter(tcxlead);
-  left: 18px;
-  top: 19px;
+  left: 14px;
+  top: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2553,7 +2554,7 @@ header.navbar {
 }
 .blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
 @media (max-width: 640px) {
-  .blog-detail-page .post-content .lead-list > li { padding: 15px 16px 15px 36px; }
+  .blog-detail-page .post-content .lead-list > li { padding: 10px 14px 10px 38px; }
   .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
   .blog-detail-page .post-content .point-run > .point-card { padding: 15px 16px; }
 }
@@ -2824,3 +2825,10 @@ header.navbar {
   outline-offset: 2px;
   border-radius: 6px;
 }
+
+
+/* Numbered/bulleted card lists read as one grouped block, not floating boxes:
+   tight stack, solid brand edge, badge centred on the first line. */
+.blog-detail-page .post-content .lead-list > li > p { margin: 0 0 6px; }
+.blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
+.blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }

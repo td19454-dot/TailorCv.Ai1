@@ -34,6 +34,9 @@ Here is the full path from posting to PDF, using an on-page tool like [TailorCV'
 
 Sixty seconds, posting to PDF, and every second of it maps to something you would have done by hand — just without the file-duplicating, keyword-hunting, reformatting friction.
 
+
+![Turning an Indeed job posting into a tailored resume without leaving the page](public/blog-images/extension-on-indeed.webp)
+
 ## Where the Quality Comes From
 
 Fast and good sound like opposites, so it is worth being clear about why the sixty-second version is not worse.

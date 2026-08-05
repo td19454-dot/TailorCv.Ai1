@@ -26,6 +26,9 @@ That is the entire install. If you do not see the icon afterward, click the litt
 
 A note on the permissions, since a careful person should read them: the extension reads the job page *only when you open its panel on a job posting*, uses that description to tailor your resume, and does not track your general browsing. We cover this fully in our guide on [whether job-search extensions are safe](/blog/are-job-search-chrome-extensions-safe), and it is worth understanding for any extension you install, not just ours.
 
+
+![The TailorCV extension running on an Indeed job posting after install](public/blog-images/extension-on-indeed.webp)
+
 ## Step 2: Set Your Base Resume
 
 This is the one-time setup that makes everything else one click. Your "base resume" is the resume the extension rewrites from for every job — you upload it once, and the tool adapts it per posting rather than making you start over each time.

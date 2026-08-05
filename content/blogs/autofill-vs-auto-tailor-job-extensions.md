@@ -26,6 +26,9 @@ Job-search extensions fall into two camps that sound similar and do completely d
 
 That is the whole thing, and it is worth sitting with, because it tells you which to prioritise. Autofill makes a task faster. Auto-tailor makes an application *better*. Both are useful, but only one of them affects the outcome you actually care about.
 
+
+![TailorCV auto-tailoring from a job posting instead of only autofilling a form](public/blog-images/extension-on-simplify-job-board.webp)
+
 ## What Autofill Does
 
 Application autofill reads your saved profile — name, email, work history, education — and populates the fields on an application form. On a long [Workday](/blog/tailor-resume-on-greenhouse-lever-workday) form that makes you re-enter your entire history, this is a genuine relief. It is pure time-saving on a genuinely tedious task.
