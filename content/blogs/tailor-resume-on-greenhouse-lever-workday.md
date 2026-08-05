@@ -34,6 +34,9 @@ Each ATS behaves a little differently, and knowing the quirks helps.
 
 **Workday** is the strict one. It is used by large enterprises, its forms are long, and its parser is notoriously literal — [formatting mistakes](/blog/ats-resume-formatting-mistakes) that other systems tolerate can scramble your resume here. Keep it simple: no tables, no columns, no text boxes, and follow [ATS-friendly formatting](/blog/how-to-make-resume-ats-friendly) strictly. Workday also often makes you re-enter your history into its own fields even after you upload — tedious, but the fields are what get searched, so do them properly.
 
+
+![TailorCV reading a Greenhouse posting and scoring the resume against it](public/blog-images/best-free-chrome-extension-to-beat-ats-greenhouse.webp)
+
 ## What to Tailor
 
 The four moves are the same everywhere, and they matter more here because there is no human buffer.

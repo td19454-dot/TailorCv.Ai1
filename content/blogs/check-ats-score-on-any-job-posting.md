@@ -30,6 +30,9 @@ It is important to be precise about what this is and is not. A match score is no
 
 One honest caveat: no third-party tool can perfectly replicate a specific employer's ATS, because Workday, Greenhouse, Taleo and others parse differently and every company configures them differently. A match score is a strong *relative* signal — is this version better than that one, and what am I obviously missing — not a precise prediction. Used that way, it is one of the most useful numbers in a job search. Our [ATS score guide](/blog/ats-score-guide) is honest about the limits.
 
+
+![Checking an ATS match score directly on a Glassdoor job posting](public/blog-images/extension-on-glassdoor.webp)
+
 ## How to Read the Score
 
 The number matters less than what sits underneath it: the missing-keywords list. That list is the actual information.

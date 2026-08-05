@@ -28,6 +28,9 @@ Before the list, one filter that cuts it down fast. A job-search extension is wo
 
 So the question for each tool is: **does this do something on every job, or just once?**
 
+
+![TailorCV open on a Simplify job board listing, showing a 50% skill match](public/blog-images/extension-on-simplify-job-board.webp)
+
 ## 1. Resume Tailoring — the highest-leverage slot
 
 This is the one that changes outcomes, not just convenience, so it goes first.

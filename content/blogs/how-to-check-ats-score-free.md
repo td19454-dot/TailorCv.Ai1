@@ -42,6 +42,9 @@ The score is based on factors like:
 
 ---
 
+
+![A free ATS match score shown on a live Glassdoor posting](public/blog-images/extension-on-glassdoor.webp)
+
 ## Why You Should Check Your ATS Score Before Applying
 
 Most large companies use [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software to handle the volume of applications they receive. If your resume is hard to parse or missing the right keywords, it can be ranked low automatically - even when you are qualified.
