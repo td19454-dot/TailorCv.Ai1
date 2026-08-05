@@ -11,6 +11,7 @@ email-validator>=2.0.0
 psycopg2-binary>=2.9.9
 itsdangerous>=2.0.0
 sqlalchemy
+pgvector>=0.5.0
 bs4
 # Google Sign-In
 google-auth>=2.29.0
@@ -46,3 +47,9 @@ sentry-sdk[fastapi]>=2.0.0
 # Payments
 razorpay>=1.4.0
 polar-sdk>=0.1.0
+
+# Auto-apply (cloud browser automation). connect_over_cdp attaches to a
+# Browserbase-hosted browser, so no local Chromium download is needed —
+# do NOT add `playwright install chromium` to the build.
+stagehand>=3.19.0
+playwright>=1.47.0

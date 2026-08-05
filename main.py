@@ -53,6 +53,9 @@ from functions import (
     score_mock_interview,
     generate_tts_audio,
     agent_chat_reply,
+    display_link,
+    _clean_resume_line,
+    _extract_contact_from_resume_text,
 )
 
 from extraction import process_resume
@@ -62,6 +65,7 @@ from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeReque
 from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
 from routers.feedback import router as feedback_router
+from routers.job_dashboard import router as job_dashboard_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -377,6 +381,7 @@ templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)
+app.include_router(job_dashboard_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
@@ -512,10 +517,111 @@ def _ensure_usage_columns() -> None:
         to_add.append("ADD COLUMN cover_letters INTEGER NOT NULL DEFAULT 0")
     if "linkedin_imports" not in cols:
         to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
+    if "auto_applies" not in cols:
+        to_add.append("ADD COLUMN auto_applies INTEGER NOT NULL DEFAULT 0")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
                 conn.execute(_text(f"ALTER TABLE usage_records {clause}"))
+
+
+def _ensure_job_dashboard_columns() -> None:
+    """Add the embedding columns (job dashboard match scoring) to the existing
+    users and job_listings tables if missing. New tables (saved_jobs,
+    job_board_applications, job_search_queries) are created by create_all."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if insp.has_table("users"):
+        cols = {c["name"] for c in insp.get_columns("users")}
+        to_add = []
+        if "base_resume_embedding" not in cols:
+            to_add.append("ADD COLUMN base_resume_embedding TEXT")
+        if "base_resume_embedding_model" not in cols:
+            to_add.append("ADD COLUMN base_resume_embedding_model VARCHAR(60)")
+        if to_add:
+            with engine.begin() as conn:
+                for clause in to_add:
+                    conn.execute(_text(f"ALTER TABLE users {clause}"))
+
+    if insp.has_table("job_listings"):
+        cols = {c["name"] for c in insp.get_columns("job_listings")}
+        to_add = []
+        if "embedding" not in cols:
+            to_add.append("ADD COLUMN embedding TEXT")
+        if "embedding_model" not in cols:
+            to_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        if to_add:
+            with engine.begin() as conn:
+                for clause in to_add:
+                    conn.execute(_text(f"ALTER TABLE job_listings {clause}"))
+
+    if insp.has_table("job_search_queries"):
+        cols = {c["name"] for c in insp.get_columns("job_search_queries")}
+        if "embedding" not in cols:
+            with engine.begin() as conn:
+                conn.execute(_text("ALTER TABLE job_search_queries ADD COLUMN embedding TEXT"))
+
+
+def _reap_stale_auto_apply_runs() -> None:
+    """Fail any auto-apply run still queued/running at boot.
+
+    Runs are driven by an asyncio task in this process, so a run left in a
+    non-terminal state belongs to a process that no longer exists — nothing
+    will ever finish it, and the dashboard would spin on it forever.
+
+    Single-instance only: on a 2+ instance deploy this would fail the *other*
+    instance's live runs on every boot. Gate it on an env flag before scaling."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    if not _inspect(engine).has_table("auto_apply_runs"):
+        return
+    try:
+        with engine.begin() as conn:
+            conn.execute(
+                _text(
+                    "UPDATE auto_apply_runs SET status = 'failed', "
+                    "error = 'reaped_on_startup', "
+                    "detail = 'Interrupted by a server restart. Please try again.', "
+                    "finished_at = :now "
+                    "WHERE status IN ('queued', 'running')"
+                ),
+                {"now": datetime.utcnow()},
+            )
+    except Exception as exc:
+        print(f"⚠️  Could not reap stale auto-apply runs: {exc}")
+
+
+def _ensure_pgvector() -> None:
+    """Enable pgvector and add a native vector column + HNSW index on
+    job_listings, so the job dashboard's semantic search can ask Postgres for
+    the top-K nearest jobs directly instead of pulling every embedding into
+    Python and scoring them one by one (measured at 30-90s per search once
+    the corpus reached ~5,000 rows — the whole point of this migration).
+
+    SQLite (the local/no-DATABASE_URL fallback) has no pgvector equivalent,
+    so this is a no-op there; job_dashboard.py keeps its Python-side scan as
+    a fallback for that case."""
+    if engine.dialect.name != "postgresql":
+        return
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    with engine.begin() as conn:
+        conn.execute(_text("CREATE EXTENSION IF NOT EXISTS vector"))
+
+    insp = _inspect(engine)
+    cols = {c["name"] for c in insp.get_columns("job_listings")}
+    if "embedding_vec" not in cols:
+        with engine.begin() as conn:
+            conn.execute(_text("ALTER TABLE job_listings ADD COLUMN embedding_vec vector(1536)"))
+
+    # HNSW: no training/build-time data requirement (unlike ivfflat), good
+    # default for an index that needs to stay usable as the corpus grows.
+    with engine.begin() as conn:
+        conn.execute(_text(
+            "CREATE INDEX IF NOT EXISTS ix_job_listings_embedding_vec "
+            "ON job_listings USING hnsw (embedding_vec vector_cosine_ops)"
+        ))
 
 
 def initialize_database() -> None:
@@ -526,6 +632,9 @@ def initialize_database() -> None:
         _ensure_portfolio_columns()
         _ensure_user_columns()
         _ensure_usage_columns()
+        _ensure_job_dashboard_columns()
+        _ensure_pgvector()
+        _reap_stale_auto_apply_runs()
         db_init_status["ok"] = True
         db_init_status["error"] = None
     except Exception as exc:
@@ -679,6 +788,43 @@ def quota_exhausted(db: Session, user, field: str) -> bool:
         or 0
     )
     return used >= limit
+
+
+def enforce_auto_apply_quota(db: Session, user) -> None:
+    """Cap auto-apply runs per calendar month. Raises HTTP 429 when exhausted.
+
+    Deliberately not enforce_quota(): that one sums usage across all months (a
+    lifetime "N free ever" rule) and exempts Pro entirely. Auto-apply costs real
+    Browserbase minutes and agent tokens on every single run, so the cap has to
+    reset monthly and has to apply to Pro too — just at a higher number."""
+    from auto_apply import config as aa_config
+
+    # Serialize concurrent clicks from the same user so two requests can't both
+    # observe the same remaining allowance (same lock enforce_quota uses).
+    db.query(User).filter(User.id == user.id).with_for_update().one()
+
+    limit = aa_config.pro_monthly_cap() if is_pro(user) else aa_config.free_monthly_cap()
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = get_or_create_usage(db, user.id, month)
+    used = int(rec.auto_applies or 0)
+    if used >= limit:
+        raise HTTPException(
+            status_code=429,
+            detail={"error": "auto_apply_limit", "limit": limit, "isPro": is_pro(user)},
+        )
+    rec.auto_applies = used + 1
+    db.commit()
+
+
+def auto_apply_remaining(db: Session, user) -> int:
+    """Read-only counterpart to enforce_auto_apply_quota — no lock, no increment."""
+    from auto_apply import config as aa_config
+
+    limit = aa_config.pro_monthly_cap() if is_pro(user) else aa_config.free_monthly_cap()
+    month = datetime.utcnow().strftime("%Y-%m")
+    rec = db.query(UsageRecord).filter_by(user_id=user.id, month=month).first()
+    used = int(getattr(rec, "auto_applies", 0) or 0) if rec else 0
+    return max(0, limit - used)
 
 
 def refund_quota(db: Session, user_id: int, field: str) -> None:
@@ -1835,17 +1981,6 @@ def normalize_url(value: str) -> str:
     return f"https://{value}"
 
 
-def display_link(value: str) -> str:
-    value = str(value or "").strip()
-    if not value:
-        return ""
-    for prefix in ("https://", "http://", "mailto:", "tel:"):
-        if value.startswith(prefix):
-            value = value[len(prefix):]
-            break
-    return value.rstrip("/")
-
-
 # Domain -> short, human-friendly label. Used so links display "GitHub", "Kaggle",
 # "Live Demo", "Coursera", etc. instead of a generic "Link" or a giant URL.
 _LINK_LABELS = (
@@ -1878,11 +2013,6 @@ def smart_link_label(url: str, fallback: str = "Link") -> str:
         if domain in u:
             return label
     return fallback
-
-
-def _clean_resume_line(line: str) -> str:
-    line = re.sub(r"\s+", " ", str(line or "")).strip()
-    return line.strip("|_: ")
 
 
 def _normalize_resume_text(text: str) -> str:
@@ -1984,71 +2114,6 @@ def _split_resume_sections(text: str) -> dict[str, list[str]]:
         sections[current_section].append(line)
 
     return sections
-
-
-def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, str]:
-    email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b", text)
-    email = email_match.group(0).strip() if email_match else ""
-
-    phone = ""
-    for match in re.finditer(r"(?:\+?\d[\d()\-\s]{7,}\d)", text):
-        candidate = re.sub(r"\s+", " ", match.group(0)).strip()
-        digits = re.sub(r"\D", "", candidate)
-        if 8 <= len(digits) <= 15:
-            phone = candidate
-            break
-
-    urls = re.findall(r"(https?://[^\s)]+|www\.[^\s)]+|[A-Za-z0-9.-]+\.(?:com|in|org|io|dev|ai|net)/[^\s)]*)", text)
-    normalized_urls = []
-    for url in urls:
-        clean = str(url).strip().rstrip(".,);")
-        if not clean:
-            continue
-        normalized_urls.append(clean if clean.startswith(("http://", "https://")) else f"https://{clean}")
-
-    def first_url_containing(keyword: str) -> str:
-        for url in normalized_urls:
-            if keyword in url.lower():
-                return url
-        return ""
-
-    linkedin = first_url_containing("linkedin")
-    github = first_url_containing("github")
-    kaggle = first_url_containing("kaggle")
-    leetcode = first_url_containing("leetcode")
-    google_scholar = first_url_containing("scholar.google")
-
-    portfolio = ""
-    for url in normalized_urls:
-        lower = url.lower()
-        if all(token not in lower for token in ("linkedin", "github", "kaggle", "leetcode", "scholar.google")):
-            portfolio = url
-            break
-
-    top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
-    location = ""
-    for line in top_lines:
-        if email and email in line:
-            continue
-        if phone and phone in line:
-            continue
-        if "@" in line or "http" in line.lower() or "www." in line.lower():
-            continue
-        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
-            location = line
-            break
-
-    return {
-        "email": email,
-        "phone": phone,
-        "linkedin": display_link(linkedin) if linkedin else "",
-        "github": display_link(github) if github else "",
-        "kaggle": display_link(kaggle) if kaggle else "",
-        "leetcode": display_link(leetcode) if leetcode else "",
-        "googleScholar": display_link(google_scholar) if google_scholar else "",
-        "portfolio": display_link(portfolio) if portfolio else "",
-        "location": location,
-    }
 
 
 def _split_paragraphs(lines: list[str]) -> list[list[str]]:

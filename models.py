@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Index, Integer, String, Text, UniqueConstraint
 from sqlalchemy.orm import relationship
 
 from database import Base
@@ -36,6 +36,10 @@ class User(Base):
     # Extracted once at upload time so the extension's skill-match score never
     # needs to re-parse the PDF on every job the user looks at.
     base_resume_text = Column(Text, nullable=True)
+    # Embedding of base_resume_text, cached the same way so the job dashboard's
+    # match score never needs to re-embed the resume on every dashboard load.
+    base_resume_embedding = Column(Text, nullable=True)          # JSON-encoded list[float]
+    base_resume_embedding_model = Column(String(60), nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
@@ -45,6 +49,10 @@ class User(Base):
     saved_resumes = relationship("SavedResume", back_populates="user", cascade="all, delete-orphan")
     personality_cards = relationship("PersonalityCard", back_populates="user", cascade="all, delete-orphan")
     portfolios = relationship("Portfolio", back_populates="user", cascade="all, delete-orphan")
+    saved_jobs = relationship("SavedJob", back_populates="user", cascade="all, delete-orphan")
+    job_board_applications = relationship("JobBoardApplication", back_populates="user", cascade="all, delete-orphan")
+    auto_apply_runs = relationship("AutoApplyRun", back_populates="user", cascade="all, delete-orphan")
+    apply_profile = relationship("UserApplyProfile", back_populates="user", uselist=False, cascade="all, delete-orphan")
 
 
 class PasswordResetToken(Base):
@@ -240,6 +248,7 @@ class UsageRecord(Base):
     interview_questions = Column(Integer, default=0, nullable=False)
     cover_letters = Column(Integer, default=0, nullable=False)
     linkedin_imports = Column(Integer, default=0, nullable=False)
+    auto_applies = Column(Integer, default=0, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
@@ -272,6 +281,12 @@ class JobListing(Base):
     is_remote = Column(Boolean, default=True, nullable=False)
     apply_url = Column(String(600), nullable=False)                # external apply link (source site)
 
+    # Embedding of title+description, computed once at ingest, so the job
+    # dashboard's match score is a cheap cosine-similarity lookup at read time
+    # instead of an OpenAI call per job per dashboard load.
+    embedding = Column(Text, nullable=True)                        # JSON-encoded list[float]
+    embedding_model = Column(String(60), nullable=True)
+
     posted_at = Column(DateTime, nullable=True)
     fetched_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     last_seen_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
@@ -287,3 +302,169 @@ class JobListing(Base):
     __table_args__ = (
         UniqueConstraint("source", "source_job_id", name="uq_source_jobid"),
     )
+
+
+class SavedJob(Base):
+    """A job the user bookmarked from the job dashboard. Independent of
+    JobApplication (the manual Job Tracker), which isn't tied to a specific
+    cached JobListing row."""
+    __tablename__ = "saved_jobs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    job_listing_id = Column(Integer, ForeignKey("job_listings.id", ondelete="CASCADE"), nullable=False, index=True)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    __table_args__ = (UniqueConstraint("user_id", "job_listing_id", name="uq_user_job_saved"),)
+
+    user = relationship("User", back_populates="saved_jobs")
+    job = relationship("JobListing")
+
+
+class JobBoardApplication(Base):
+    """Logs every 'Apply manually' / 'Auto-apply' click from the job dashboard,
+    distinct from the job_applications (Job Tracker) table. Both apply buttons
+    currently do the same thing (open apply_url) but log with a different
+    method so history/analytics already separates them ahead of real
+    auto-apply logic landing later."""
+    __tablename__ = "job_board_applications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    job_listing_id = Column(Integer, ForeignKey("job_listings.id", ondelete="CASCADE"), nullable=False, index=True)
+    method = Column(String(10), nullable=False)                    # "manual" | "auto"
+    status = Column(String(30), nullable=False, default="applied")
+    applied_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="job_board_applications")
+    job = relationship("JobListing")
+
+
+class UserApplyProfile(Base):
+    """The answer bank auto-apply fills forms from.
+
+    Auto-apply submits unattended, so every declarative answer it types must be
+    one the user themselves gave — that is what this table is for. The LLM is
+    only ever allowed to write the narrative fields (why_this_role); work
+    authorization, sponsorship, salary and the EEO answers are copied verbatim
+    from here, and a run refuses to start until the required ones are set.
+
+    Kept as its own table rather than more columns on the already-wide users
+    table, so create_all() handles it with no hand-written ALTER."""
+    __tablename__ = "user_apply_profiles"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, unique=True, index=True)
+
+    # Contact — defaults parsed from the resume, editable by the user.
+    phone = Column(String(40), nullable=True)
+    location = Column(String(160), nullable=True)
+    linkedin_url = Column(String(300), nullable=True)
+    github_url = Column(String(300), nullable=True)
+    portfolio_url = Column(String(300), nullable=True)
+
+    # Declarative answers — never LLM-generated.
+    work_authorized = Column(String(10), nullable=True)        # "yes" | "no"
+    requires_sponsorship = Column(String(10), nullable=True)   # "yes" | "no"
+    visa_status = Column(String(60), nullable=True)
+    willing_to_relocate = Column(String(10), nullable=True)    # "yes" | "no"
+    remote_preference = Column(String(20), nullable=True)      # remote|hybrid|onsite|flexible
+    years_experience = Column(String(20), nullable=True)
+    current_title = Column(String(120), nullable=True)
+    notice_period = Column(String(60), nullable=True)
+    expected_salary = Column(String(60), nullable=True)
+    available_start_date = Column(String(60), nullable=True)
+    how_did_you_hear = Column(String(120), nullable=True)
+    why_this_role = Column(Text, nullable=True)
+
+    # Voluntary self-identification. Default to declining rather than guessing.
+    gender = Column(String(60), nullable=True)
+    race_ethnicity = Column(String(80), nullable=True)
+    veteran_status = Column(String(80), nullable=True)
+    disability_status = Column(String(80), nullable=True)
+
+    # Standing permissions, both captured once in the profile modal.
+    agreed_to_employer_terms = Column(Boolean, default=False, nullable=False)
+    auto_apply_consent_at = Column(DateTime, nullable=True)
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    user = relationship("User", back_populates="apply_profile")
+
+
+class AutoApplyRun(Base):
+    """One attempt to fill and submit a job application in a cloud browser.
+
+    Operational record, one row per attempt — a retry creates a new row. The
+    user-facing history stays in JobBoardApplication, which is only written
+    once a run reaches a terminal state (never on enqueue), so history can't
+    claim the user applied to something the browser never submitted."""
+    __tablename__ = "auto_apply_runs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+    job_listing_id = Column(Integer, ForeignKey("job_listings.id", ondelete="CASCADE"), nullable=False, index=True)
+
+    # queued | running | submitted | needs_input | failed | dry_run
+    status = Column(String(20), nullable=False, default="queued", index=True)
+    stage = Column(String(60), nullable=True)     # machine stage, e.g. "filling_form"
+    detail = Column(String(400), nullable=True)   # one-liner shown to the user
+
+    browserbase_session_id = Column(String(80), nullable=True)
+    live_view_url = Column(String(600), nullable=True)   # only valid while the session is live
+    replay_url = Column(String(600), nullable=True)      # permanent, survives the run
+
+    steps = Column(Text, nullable=True)               # JSON list[{t, stage, detail}]
+    error = Column(Text, nullable=True)               # operator-facing
+    confirmation_text = Column(Text, nullable=True)   # extracted success signal
+    missing_fields = Column(Text, nullable=True)      # JSON list[str]
+
+    submitted = Column(Boolean, default=False, nullable=False)
+    dry_run = Column(Boolean, default=False, nullable=False)
+    job_board_application_id = Column(Integer, nullable=True)
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+    started_at = Column(DateTime, nullable=True)
+    finished_at = Column(DateTime, nullable=True)
+
+    __table_args__ = (Index("ix_auto_apply_user_job", "user_id", "job_listing_id"),)
+
+    user = relationship("User", back_populates="auto_apply_runs")
+    job = relationship("JobListing")
+
+
+class JobSearchQuery(Base):
+    """Tracks when a (query, location) search was last fetched from the
+    external job API, so the job dashboard only re-hits JSearch when that
+    search's cached JobListing rows have gone stale."""
+    __tablename__ = "job_search_queries"
+
+    id = Column(Integer, primary_key=True, index=True)
+    query_norm = Column(String(200), nullable=False, index=True)
+    location_norm = Column(String(200), nullable=False, index=True)
+    last_fetched_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    # Embedding of the search query text itself, cached so repeated pagination
+    # requests for the same search don't each pay for a fresh OpenAI call —
+    # used to rank the pre-ingested ATS corpus by semantic relevance.
+    embedding = Column(Text, nullable=True)
+
+    __table_args__ = (UniqueConstraint("query_norm", "location_norm", name="uq_query_location"),)
+
+
+class JobSearchResult(Base):
+    """Which cached JobListing rows matched a given (query, location) search,
+    in JSearch's own relevance order. Replaces re-filtering cached rows with a
+    title/description ILIKE on the raw query text, which incorrectly dropped
+    jobs JSearch had already judged relevant just because their title didn't
+    literally contain the search phrase (e.g. "Applied Scientist" for a
+    "Machine Learning Engineer" search)."""
+    __tablename__ = "job_search_results"
+
+    id = Column(Integer, primary_key=True, index=True)
+    query_norm = Column(String(200), nullable=False, index=True)
+    location_norm = Column(String(200), nullable=False, index=True)
+    job_listing_id = Column(Integer, ForeignKey("job_listings.id", ondelete="CASCADE"), nullable=False, index=True)
+    rank = Column(Integer, nullable=False, default=0)
+
+    __table_args__ = (UniqueConstraint("query_norm", "location_norm", "job_listing_id", name="uq_search_job"),)

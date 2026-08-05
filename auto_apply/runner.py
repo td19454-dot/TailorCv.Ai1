@@ -1,0 +1,645 @@
+"""Auto-apply orchestration: the asyncio worker that drives one run.
+
+There is no job queue in this app, and a run takes 1-5 minutes, so a run is an
+asyncio task holding a semaphore slot, with all state in the auto_apply_runs
+row that the frontend polls.
+
+Two rules encoded structurally here rather than left to the agent:
+
+  1. The agent is told NOT to click submit. Submission is a separate,
+     deterministic act() after the verify step. That keeps AUTO_APPLY_SUBMIT=0
+     an honest dry run, and stops an agent's "I think I submitted it" from
+     becoming status='submitted'.
+  2. status='submitted' requires an extracted confirmation signal. Without one
+     the run ends as needs_input, because a false success is worse than an
+     honest unknown — the user stops following up on the role.
+"""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import logging
+from datetime import datetime
+
+from auto_apply import config
+from auto_apply.profile import (
+    ApplicantProfile,
+    build_applicant_profile,
+    snapshot_user,
+    validate_profile,
+)
+
+logger = logging.getLogger(__name__)
+
+_SEM: asyncio.Semaphore | None = None
+# Strong refs: asyncio only holds weak references to tasks, so a GC'd task
+# would silently vanish mid-run.
+_TASKS: set[asyncio.Task] = set()
+
+MAX_FORM_PAGES = 4
+
+TERMINAL = ("submitted", "needs_input", "failed", "dry_run")
+
+STAGE_TEXT = {
+    "preparing": "Getting your details ready…",
+    "opening_browser": "Opening a browser…",
+    "loading_page": "Loading the application page…",
+    "reading_page": "Reading the form…",
+    "opening_form": "Opening the application form…",
+    "attaching_resume": "Attaching your resume…",
+    "filling_form": "Filling in your details…",
+    "verifying": "Checking every field…",
+    "submitting": "Submitting your application…",
+    "confirming": "Confirming the submission…",
+}
+
+AGENT_SYSTEM_PROMPT = """You are completing a job application on behalf of the candidate.
+CANDIDATE_DATA contains the candidate's own answers to every question a form may ask.
+
+- Fill EVERY field that actually exists on THIS page, required and optional, using
+  CANDIDATE_DATA. This includes work authorization, visa/sponsorship, salary
+  expectations, notice period, start date, and EEO / demographic questions. The
+  candidate has already answered these — use their answers exactly as given.
+- Not every CANDIDATE_DATA key has a matching field on every form — this is normal.
+  If you cannot find a field that clearly corresponds to a CANDIDATE_DATA key (for
+  example, no cover letter box, no "why this role" box), SKIP it. Do not type it
+  into a different field, and never re-target a field you already filled correctly
+  (name, email, phone) to hold leftover text — each field gets exactly one value.
+- Tick agreement, consent, privacy-policy and terms-and-conditions checkboxes. The
+  candidate has authorized submission on their behalf.
+- For a free-text question with no exact match in CANDIDATE_DATA, adapt the closest
+  available answer (why_do_you_want_this_role, cover_letter, top_skills) — but only
+  into a field that is genuinely asking for that kind of content. Never state a fact
+  about the candidate that does not appear in CANDIDATE_DATA.
+- If a demographic question is genuinely absent from CANDIDATE_DATA, choose
+  "Decline to self-identify" or "Prefer not to say".
+- Do NOT solve CAPTCHAs, create an account, or log in. Stop and report instead.
+- Do NOT upload or attach files — the resume is attached separately.
+- Do NOT click the final submit/apply button. Stop once the form is complete."""
+
+PAGE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "is_application_form": {"type": "boolean"},
+        "requires_login": {"type": "boolean"},
+        "has_captcha": {"type": "boolean"},
+        "apply_button_text": {"type": "string"},
+    },
+    "required": ["is_application_form", "requires_login", "has_captcha"],
+}
+
+VERIFY_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "missing_required": {"type": "array", "items": {"type": "string"}},
+        "resume_attached": {"type": "boolean"},
+        "blocked_reason": {"type": "string"},
+        "email_field_value": {"type": "string"},
+        "name_field_value": {"type": "string"},
+    },
+    "required": ["missing_required", "resume_attached"],
+}
+
+VERIFY_INSTRUCTION = (
+    "List the labels of any REQUIRED fields on this form that are still empty or "
+    "invalid, and say whether a resume file is attached. Also report the CURRENT "
+    "value typed into the email field and the name field, exactly as they appear "
+    "right now — this is a safety check, report the literal text even if it looks wrong."
+)
+
+CONFIRM_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "submitted": {"type": "boolean"},
+        "confirmation_text": {"type": "string"},
+        "error_text": {"type": "string"},
+        "has_next_page": {"type": "boolean"},
+        "rejected_permanently": {"type": "boolean"},
+    },
+    "required": ["submitted"],
+}
+
+
+# ── task plumbing ────────────────────────────────────────────────────────────
+
+def _sem() -> asyncio.Semaphore:
+    global _SEM
+    if _SEM is None:
+        _SEM = asyncio.Semaphore(config.max_concurrency())
+    return _SEM
+
+
+def enqueue_run(run_id: int) -> None:
+    task = asyncio.create_task(_worker(run_id))
+    _TASKS.add(task)
+    task.add_done_callback(_TASKS.discard)
+
+
+async def _worker(run_id: int) -> None:
+    async with _sem():
+        try:
+            await asyncio.wait_for(_execute(run_id), timeout=config.run_timeout_seconds())
+        except asyncio.TimeoutError:
+            mins = int(config.run_timeout_seconds() // 60)
+            await _finish(run_id, "failed", f"Timed out after about {mins} minutes.", error="timeout")
+        except Exception as exc:
+            logger.exception("auto-apply run %s crashed", run_id)
+            await _finish(run_id, "failed", "Something went wrong while applying.", error=repr(exc))
+
+
+# ── DB helpers (sync SQLAlchemy, always off the event loop) ──────────────────
+
+def _db_write(run_id: int, fields: dict, step: dict | None = None) -> None:
+    from database import SessionLocal
+    from models import AutoApplyRun
+
+    db = SessionLocal()
+    try:
+        run = db.query(AutoApplyRun).filter(AutoApplyRun.id == run_id).first()
+        if not run:
+            return
+        for key, value in fields.items():
+            setattr(run, key, value)
+        if step:
+            try:
+                steps = json.loads(run.steps) if run.steps else []
+            except (TypeError, ValueError):
+                steps = []
+            steps.append(step)
+            run.steps = json.dumps(steps[-40:])
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("failed to persist auto-apply run %s", run_id)
+    finally:
+        db.close()
+
+
+async def _set_stage(run_id: int, stage: str, detail: str | None = None) -> None:
+    text = detail or STAGE_TEXT.get(stage, "Working…")
+    await asyncio.to_thread(
+        _db_write,
+        run_id,
+        {"status": "running", "stage": stage, "detail": text},
+        {"t": datetime.utcnow().isoformat(), "stage": stage, "detail": text},
+    )
+
+
+async def _finish(
+    run_id: int,
+    status: str,
+    detail: str,
+    *,
+    error: str | None = None,
+    confirmation: str | None = None,
+    missing: list[str] | None = None,
+) -> None:
+    fields = {
+        "status": status,
+        "detail": detail,
+        "finished_at": datetime.utcnow(),
+        "submitted": status == "submitted",
+    }
+    if error is not None:
+        fields["error"] = error
+    if confirmation is not None:
+        fields["confirmation_text"] = confirmation
+    if missing is not None:
+        fields["missing_fields"] = json.dumps(missing[:25])
+    await asyncio.to_thread(
+        _db_write,
+        run_id,
+        fields,
+        {"t": datetime.utcnow().isoformat(), "stage": status, "detail": detail},
+    )
+    if status in ("submitted", "needs_input"):
+        await asyncio.to_thread(_record_application, run_id, status)
+
+
+def _record_application(run_id: int, status: str) -> None:
+    """Write the user-facing history row — only on a terminal outcome.
+
+    Never on enqueue: if the browser did not actually send anything, the user's
+    application history must not claim they applied."""
+    from database import SessionLocal
+    from models import AutoApplyRun, JobBoardApplication
+
+    db = SessionLocal()
+    try:
+        run = db.query(AutoApplyRun).filter(AutoApplyRun.id == run_id).first()
+        if not run or run.job_board_application_id:
+            return
+        entry = JobBoardApplication(
+            user_id=run.user_id,
+            job_listing_id=run.job_listing_id,
+            method="auto",
+            status="submitted" if status == "submitted" else "needs_review",
+        )
+        db.add(entry)
+        db.flush()
+        run.job_board_application_id = entry.id
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("failed to log JobBoardApplication for run %s", run_id)
+    finally:
+        db.close()
+
+
+def _load_run(run_id: int) -> dict:
+    from database import SessionLocal
+    from models import AutoApplyRun
+
+    db = SessionLocal()
+    try:
+        run = db.query(AutoApplyRun).filter(AutoApplyRun.id == run_id).first()
+        if not run:
+            return {}
+        return {"user_id": run.user_id, "job_listing_id": run.job_listing_id, "dry_run": bool(run.dry_run)}
+    finally:
+        db.close()
+
+
+def _snapshot(user_id: int, job_id: int) -> dict:
+    from database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        return snapshot_user(db, user_id, job_id)
+    finally:
+        db.close()
+
+
+def _refund(user_id: int) -> None:
+    """Give the monthly allowance back when a run dies before it could do
+    anything useful — the user shouldn't pay for our failure."""
+    from database import SessionLocal
+
+    db = SessionLocal()
+    try:
+        from main import refund_quota
+
+        refund_quota(db, user_id, "auto_applies")
+    except Exception:
+        logger.exception("could not refund auto-apply quota for user %s", user_id)
+    finally:
+        db.close()
+
+
+# ── the run itself ───────────────────────────────────────────────────────────
+
+def _email_corrupted(reported: str, expected: str) -> bool:
+    """True if the email field's actual current value doesn't look like the
+    real email — the signal for a grounding mis-target overwriting it.
+
+    Observed in practice: a form with no dedicated cover-letter field led the
+    agent's field-description grounding to resolve "Cover Letter" to the
+    Email input's own selector and .fill() it, replacing the address outright
+    with the full cover letter text. A short field containing the expected
+    address is healthy; anything long, spaced, or missing '@' is not."""
+    reported = (reported or "").strip().lower()
+    expected = (expected or "").strip().lower()
+    if not reported or not expected:
+        return False
+    if expected in reported:
+        return False
+    return len(reported) > 60 or " " in reported or "@" not in reported
+
+
+def _name_corrupted(reported: str, expected: str) -> bool:
+    reported = (reported or "").strip()
+    expected = (expected or "").strip()
+    if not reported or not expected:
+        return False
+    if expected.lower() in reported.lower():
+        return False
+    return len(reported) > len(expected) + 40
+
+
+async def _repair_field(run_id: int, browser, label: str, bad_value: str, correct_value: str) -> None:
+    await _set_stage(run_id, "filling_form", f"Fixing the {label.lower()} field…")
+    try:
+        await browser.agent(
+            f"The field labeled {label} currently contains the WRONG value: "
+            f"\"{bad_value[:200]}\". Clear that field completely and type exactly "
+            f"this instead: {correct_value}\nDo not touch any other field.",
+            AGENT_SYSTEM_PROMPT,
+            max_steps=10,
+            timeout=90.0,
+        )
+    except Exception:
+        logger.exception("run %s %s-repair pass failed", run_id, label.lower())
+
+
+def _fill_instruction(p: ApplicantProfile, snap: dict) -> str:
+    return (
+        f"Complete this job application for the role \"{snap.get('job_title', '')}\" at "
+        f"\"{snap.get('job_company', '')}\".\n\n"
+        f"CANDIDATE_DATA:\n{p.to_agent_json()}\n\n"
+        "Fill every field on the form from CANDIDATE_DATA, including work authorization, "
+        "sponsorship, and any voluntary self-identification questions. Tick any required "
+        "agreement or consent checkboxes. Do not click the final submit button."
+    )
+
+
+async def _execute(run_id: int) -> None:
+    meta = _load_run(run_id)
+    if not meta:
+        return
+
+    await asyncio.to_thread(_db_write, run_id, {"started_at": datetime.utcnow()})
+    await _set_stage(run_id, "preparing")
+
+    snap = await asyncio.to_thread(_snapshot, meta["user_id"], meta["job_listing_id"])
+    if not snap:
+        _refund(meta["user_id"])
+        await _finish(run_id, "failed", "That job is no longer available.", error="snapshot_missing")
+        return
+
+    profile = await build_applicant_profile(snap)
+    blockers = validate_profile(profile, snap)
+    if blockers:
+        # Nothing was spent yet — no session, so give the run back.
+        _refund(meta["user_id"])
+        await _finish(run_id, "failed", blockers[0], error="profile_incomplete", missing=blockers)
+        return
+
+    await _set_stage(run_id, "opening_browser")
+    from auto_apply.browser import open_browser
+
+    try:
+        browser = await open_browser()
+    except Exception as exc:
+        logger.exception("could not open Browserbase session for run %s", run_id)
+        _refund(meta["user_id"])
+        await _finish(run_id, "failed", "Couldn't start the browser. Try again in a moment.", error=repr(exc))
+        return
+
+    # Persist session identity immediately: if anything below dies, the user can
+    # still watch the live view or read the replay.
+    await asyncio.to_thread(
+        _db_write,
+        run_id,
+        {
+            "browserbase_session_id": browser.session_id,
+            "live_view_url": browser.live_view_url,
+            "replay_url": browser.replay_url,
+        },
+    )
+
+    try:
+        await _drive(run_id, browser, profile, snap, meta)
+    finally:
+        await browser.end()
+
+
+async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, meta: dict) -> None:
+    apply_url = snap.get("apply_url") or ""
+
+    await _set_stage(run_id, "loading_page")
+    try:
+        await browser.navigate(apply_url)
+    except Exception as exc:
+        await _finish(run_id, "failed", "Couldn't open the application page.", error=repr(exc))
+        return
+
+    await _set_stage(run_id, "reading_page")
+    page = await browser.extract(
+        "Describe this page: is it a job application form the visitor can fill in, does it "
+        "require signing in or creating an account, and is there a CAPTCHA or bot check?",
+        PAGE_SCHEMA,
+    )
+
+    # The only two blocks a stored answer can't clear. Everything else, we fill.
+    if page.get("has_captcha"):
+        await _finish(
+            run_id, "needs_input",
+            "This form has a CAPTCHA, so it has to be finished by hand.",
+            error="captcha",
+        )
+        return
+    if page.get("requires_login"):
+        await _finish(
+            run_id, "needs_input",
+            "This employer requires an account login before applying.",
+            error="login_required",
+        )
+        return
+
+    if not page.get("is_application_form"):
+        await _set_stage(run_id, "opening_form")
+        try:
+            await browser.act(page.get("apply_button_text") or "Click the apply button to open the application form")
+            page = await browser.extract("Is this now a job application form the visitor can fill in?", PAGE_SCHEMA)
+        except Exception:
+            logger.exception("run %s could not open the form", run_id)
+        if not page.get("is_application_form"):
+            await _finish(
+                run_id, "needs_input",
+                "Couldn't find an application form on that page.",
+                error="no_form",
+            )
+            return
+
+    # Attach the resume before filling: most ATS parse the PDF and pre-populate
+    # name/email/experience, which shrinks the agent's job to corrections.
+    await _set_stage(run_id, "attaching_resume")
+    attached = await browser.upload_resume(profile.resume_path)
+
+    await _set_stage(run_id, "filling_form")
+    instruction = _fill_instruction(profile, snap)
+    try:
+        await browser.agent(instruction, AGENT_SYSTEM_PROMPT, max_steps=50, timeout=300.0)
+    except Exception as exc:
+        await _finish(run_id, "failed", "Couldn't fill in the form.", error=repr(exc))
+        return
+
+    # Some ATS run their own async JS right after a fill completes — Ashby
+    # shows an "Autofill completed!" banner and re-renders the form fields
+    # slightly after the fact. Checking immediately can catch that transition
+    # mid-flight and misread freshly-filled fields as empty (observed in
+    # practice: Email and Name correctly held real values a moment later, but
+    # a verify run 4s after fill finished read both as "").
+    await asyncio.sleep(2.0)
+
+    await _set_stage(run_id, "verifying")
+    verify = await browser.extract(VERIFY_INSTRUCTION, VERIFY_SCHEMA)
+    missing = [str(m) for m in (verify.get("missing_required") or [])]
+
+    # Never trust the earlier attaching_resume() result alone — it only proves
+    # SOME file input on the page received the file, not necessarily the
+    # required one (some ATS, Ashby included, have both a convenience
+    # "autofill from resume" uploader and a separate required Resume* field).
+    # This is the only chance to correct it: the agent can't fix a missing
+    # attachment in the repair pass below, since file inputs are explicitly
+    # off-limits for act().
+    resume_flagged_missing = any("resum" in m.lower() or m.lower() == "cv" for m in missing)
+    if not verify.get("resume_attached") or resume_flagged_missing:
+        attached = await browser.upload_resume(profile.resume_path)
+
+    # Guard against the agent's grounding mis-targeting a field that doesn't
+    # exist on this page onto one that does, silently overwriting it —
+    # observed in practice: a form with no Cover Letter field ended up with
+    # the entire cover letter typed into the Email input via a .fill() on
+    # Email's own selector. This is the only check standing between that and
+    # an application submitted under the wrong contact details.
+    email_reported = str(verify.get("email_field_value") or "")
+    if _email_corrupted(email_reported, profile.email):
+        await _repair_field(run_id, browser, "Email", email_reported, profile.email)
+    name_reported = str(verify.get("name_field_value") or "")
+    if _name_corrupted(name_reported, profile.full_name):
+        await _repair_field(run_id, browser, "Name", name_reported, profile.full_name)
+
+    if missing:
+        # A repair pass, not a stopping point — the answers are all on file, so
+        # name the exact fields and let the agent finish them.
+        await _set_stage(run_id, "filling_form", "Finishing the last few fields…")
+        try:
+            await browser.agent(
+                "These REQUIRED fields are still empty or invalid: "
+                + "; ".join(missing[:15])
+                + ".\nFill each one using CANDIDATE_DATA below. Tick any required agreement "
+                "checkboxes. Do not click submit.\n\nCANDIDATE_DATA:\n"
+                + profile.to_agent_json(),
+                AGENT_SYSTEM_PROMPT,
+                max_steps=25,
+                timeout=180.0,
+            )
+        except Exception:
+            logger.exception("run %s repair pass failed", run_id)
+
+    if not config.submit_enabled():
+        recheck = await browser.extract(
+            "List the labels of any REQUIRED fields still empty or invalid.", VERIFY_SCHEMA
+        )
+        left = [str(m) for m in (recheck.get("missing_required") or [])]
+        await _finish(
+            run_id, "dry_run",
+            "Dry run — the form was filled but not submitted.",
+            missing=left,
+        )
+        return
+
+    await _submit_and_confirm(run_id, browser, profile, missing)
+
+
+CONFIRM_INSTRUCTION = (
+    "Did the application submit successfully?\n"
+    "- If YES: set submitted=true and put the success message in confirmation_text.\n"
+    "- If NO: set submitted=false and put the reason in error_text. This includes validation "
+    "errors AND any rejection banner the site shows — for example \"flagged as spam\", "
+    "\"blocked\", or similar. confirmation_text must stay empty unless the application "
+    "actually went through; do not put a rejection message there.\n"
+    "- If the rejection looks permanent (flagged as spam/abuse, blocked, too many attempts) "
+    "rather than a fixable validation error, set rejected_permanently=true.\n"
+    "- Also say whether this is another page of the form that still needs completing."
+)
+
+_PERMANENT_REJECTION_MARKERS = ("spam", "flagged", "blocked", "abuse", "banned", "too many attempts")
+
+
+def _looks_permanently_rejected(text: str) -> bool:
+    """Safety net for when the model reports a clear rejection reason but
+    doesn't set rejected_permanently — a site telling us it flagged the
+    submission as spam is not a validation error to fix and resubmit; doing
+    that again just looks more like abuse, not less."""
+    lowered = (text or "").lower()
+    return any(m in lowered for m in _PERMANENT_REJECTION_MARKERS)
+
+
+async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, missing: list[str]) -> None:
+    for attempt in range(MAX_FORM_PAGES):
+        await _set_stage(run_id, "submitting")
+        try:
+            await browser.act("Click the final submit button to send the application")
+        except Exception as exc:
+            await _finish(run_id, "failed", "Couldn't click submit on the form.", error=repr(exc))
+            return
+
+        # Real ATS forms redirect or show a confirmation banner over 1-3s, not
+        # instantly. Checking the instant after the click risks reading the
+        # page mid-transition as "nothing happened".
+        await asyncio.sleep(3.0)
+
+        await _set_stage(run_id, "confirming")
+        result = await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA)
+
+        # A fully ambiguous first read — no confirmation, no error, no next
+        # page — is often just a slow-loading confirmation screen rather than
+        # a genuinely failed click. Give it one more look before concluding
+        # the submit didn't do anything.
+        if not result.get("submitted") and not result.get("has_next_page") and not str(result.get("error_text") or "").strip():
+            await asyncio.sleep(4.0)
+            result = await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA)
+
+        if result.get("submitted") and not result.get("has_next_page"):
+            confirmation = str(result.get("confirmation_text") or "").strip()
+            if not confirmation:
+                # Submitted-but-unconfirmed is reported honestly, never as success.
+                await _finish(
+                    run_id, "needs_input",
+                    "The form was sent but we couldn't confirm it went through — please double-check.",
+                    error="no_confirmation",
+                )
+                return
+            await _finish(run_id, "submitted", "Application submitted.", confirmation=confirmation)
+            return
+
+        if result.get("has_next_page"):
+            await _set_stage(run_id, "filling_form", "Filling in the next page…")
+            try:
+                await browser.agent(
+                    "Complete this next page of the application form using CANDIDATE_DATA "
+                    "below. Tick any required agreement checkboxes. Do not click submit.\n\n"
+                    "CANDIDATE_DATA:\n" + profile.to_agent_json(),
+                    AGENT_SYSTEM_PROMPT,
+                    max_steps=30,
+                    timeout=240.0,
+                )
+            except Exception:
+                logger.exception("run %s failed on form page %s", run_id, attempt + 2)
+            continue
+
+        error_text = str(result.get("error_text") or "").strip()
+        # Tolerate the model putting a rejection message in confirmation_text
+        # despite the instruction above (observed in practice on an Ashby
+        # spam-flag rejection) — a non-empty message on a failed submission
+        # is a rejection reason regardless of which field it landed in.
+        if not error_text and not result.get("submitted"):
+            error_text = str(result.get("confirmation_text") or "").strip()
+
+        permanent = bool(result.get("rejected_permanently")) or _looks_permanently_rejected(error_text)
+        if error_text and attempt == 0 and not permanent:
+            await _set_stage(run_id, "filling_form", "Fixing what the form flagged…")
+            try:
+                await browser.agent(
+                    f"The form rejected the submission with: {error_text}\nFix the flagged "
+                    "fields using CANDIDATE_DATA below, then stop without submitting.\n\n"
+                    "CANDIDATE_DATA:\n" + profile.to_agent_json(),
+                    AGENT_SYSTEM_PROMPT,
+                    max_steps=25,
+                    timeout=180.0,
+                )
+            except Exception:
+                logger.exception("run %s could not fix validation errors", run_id)
+            continue
+
+        # A permanent rejection (spam/abuse flag) is a dead end, not a "try
+        # again" signal — the site's own retry suggestion is meant for a
+        # human on a fresh visit, not an automated resubmit on the same
+        # session, which just looks like more of the behavior that got it
+        # flagged. Stop here rather than looping through another attempt.
+        await _finish(
+            run_id, "needs_input",
+            error_text or "The form wouldn't submit — it needs finishing by hand.",
+            error="submit_rejected",
+            missing=missing,
+        )
+        return
+
+    await _finish(
+        run_id, "needs_input",
+        "This application has more steps than we can complete automatically.",
+        error="too_many_pages",
+    )

@@ -508,6 +508,41 @@ def _normalize_openai_error(exc: Exception) -> RuntimeError:
         )
     return RuntimeError(f"OpenAI request failed: {message}")
 
+
+EMBEDDING_MODEL = "text-embedding-3-small"
+
+
+async def embed_text(text: str) -> list[float]:
+    """Embed a string with OpenAI for job-dashboard match scoring. Truncated to
+    a generous character budget since job descriptions/resumes are always well
+    under the model's token limit at that length."""
+    client = await _build_openai_client()
+    try:
+        response = await client.embeddings.create(model=EMBEDDING_MODEL, input=text[:20000])
+    except Exception as exc:
+        raise _normalize_openai_error(exc)
+    return response.data[0].embedding
+
+
+def cosine_similarity(a: list[float], b: list[float]) -> float:
+    """Plain-Python cosine similarity — no numpy dependency needed at this scale
+    (one resume vector against a page of cached job vectors per request)."""
+    if not a or not b or len(a) != len(b):
+        return 0.0
+    dot = sum(x * y for x, y in zip(a, b))
+    norm_a = math.sqrt(sum(x * x for x in a))
+    norm_b = math.sqrt(sum(y * y for y in b))
+    if norm_a == 0 or norm_b == 0:
+        return 0.0
+    return dot / (norm_a * norm_b)
+
+
+def embedding_match_score(resume_embedding: list[float], job_embedding: list[float]) -> int:
+    """Cosine similarity scaled to a 0-100 match score for the job dashboard."""
+    sim = cosine_similarity(resume_embedding, job_embedding)
+    return round(max(0.0, min(1.0, sim)) * 100)
+
+
 def create_prompt(resume_string,jd_string):
     """Creates a detailed prompt for AI-powered resume optimization based on a job description.
 
@@ -3872,3 +3907,90 @@ Return JSON only:
     parsed["grade"] = _grade_from_score(parsed["overall"])
     parsed["completion_rate"] = round(answered_count / total_q * 100)
     return parsed
+
+
+# ── Resume contact-block parsing ─────────────────────────────────────────────
+# These three live here rather than in main.py so non-web callers (auto_apply/
+# profile.py) can reuse them without importing main and creating an import cycle
+# (main -> routers.job_dashboard -> auto_apply -> main). main.py re-imports them
+# from here, so every existing call site is unchanged.
+
+def display_link(value: str) -> str:
+    value = str(value or "").strip()
+    if not value:
+        return ""
+    for prefix in ("https://", "http://", "mailto:", "tel:"):
+        if value.startswith(prefix):
+            value = value[len(prefix):]
+            break
+    return value.rstrip("/")
+
+
+def _clean_resume_line(line: str) -> str:
+    line = re.sub(r"\s+", " ", str(line or "")).strip()
+    return line.strip("|_: ")
+
+
+def _extract_contact_from_resume_text(text: str, lines: list[str]) -> dict[str, str]:
+    email_match = re.search(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b", text)
+    email = email_match.group(0).strip() if email_match else ""
+
+    phone = ""
+    for match in re.finditer(r"(?:\+?\d[\d()\-\s]{7,}\d)", text):
+        candidate = re.sub(r"\s+", " ", match.group(0)).strip()
+        digits = re.sub(r"\D", "", candidate)
+        if 8 <= len(digits) <= 15:
+            phone = candidate
+            break
+
+    urls = re.findall(r"(https?://[^\s)]+|www\.[^\s)]+|[A-Za-z0-9.-]+\.(?:com|in|org|io|dev|ai|net)/[^\s)]*)", text)
+    normalized_urls = []
+    for url in urls:
+        clean = str(url).strip().rstrip(".,);")
+        if not clean:
+            continue
+        normalized_urls.append(clean if clean.startswith(("http://", "https://")) else f"https://{clean}")
+
+    def first_url_containing(keyword: str) -> str:
+        for url in normalized_urls:
+            if keyword in url.lower():
+                return url
+        return ""
+
+    linkedin = first_url_containing("linkedin")
+    github = first_url_containing("github")
+    kaggle = first_url_containing("kaggle")
+    leetcode = first_url_containing("leetcode")
+    google_scholar = first_url_containing("scholar.google")
+
+    portfolio = ""
+    for url in normalized_urls:
+        lower = url.lower()
+        if all(token not in lower for token in ("linkedin", "github", "kaggle", "leetcode", "scholar.google")):
+            portfolio = url
+            break
+
+    top_lines = [_clean_resume_line(line) for line in lines[:8] if _clean_resume_line(line)]
+    location = ""
+    for line in top_lines:
+        if email and email in line:
+            continue
+        if phone and phone in line:
+            continue
+        if "@" in line or "http" in line.lower() or "www." in line.lower():
+            continue
+        if re.search(r"\b(?:india|usa|united states|uk|canada|australia|remote)\b", line.lower()) or "," in line:
+            location = line
+            break
+
+    return {
+        "email": email,
+        "phone": phone,
+        "linkedin": display_link(linkedin) if linkedin else "",
+        "github": display_link(github) if github else "",
+        "kaggle": display_link(kaggle) if kaggle else "",
+        "leetcode": display_link(leetcode) if leetcode else "",
+        "googleScholar": display_link(google_scholar) if google_scholar else "",
+        "portfolio": display_link(portfolio) if portfolio else "",
+        "location": location,
+    }
