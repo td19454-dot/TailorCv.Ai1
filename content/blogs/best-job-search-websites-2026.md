@@ -30,6 +30,9 @@ The major platforms cover the widest range of roles:
 - **Indeed** — huge volume across every level and industry, great for broad searches and setting up alerts. Learn to [tailor your resume on Indeed](https://thetailorcv.com/blog/how-to-tailor-resume-on-indeed).
 - **Glassdoor** — jobs plus company reviews, salary data, and interview insights, which makes it excellent for [researching companies](https://thetailorcv.com/blog/how-to-research-company-before-interview) before you apply.
 
+![TailorCV scoring a resume against a live Glassdoor job posting](public/blog-images/extension-on-glassdoor.webp)
+
+
 ## Specialized and niche boards
 
 Niche boards often have higher signal than the giants for your specific field:
