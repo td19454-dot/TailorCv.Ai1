@@ -534,8 +534,16 @@
     };
     // Same reasoning: the server already matched this post to a tool, so send
     // the reader there rather than to whichever product link appeared first.
-    const serverUrl = content.dataset.ctaUrl;
-    const serverLabel = content.dataset.ctaLabel;
+    const serverUrl = content.dataset.ctaUrl || "";
+    const serverLabel = content.dataset.ctaLabel || "";
+    // The button's destination is the server's decision, so the artwork and
+    // the copy have to be chosen from THAT - not from whichever product link
+    // happened to appear first in the body. The two were disagreeing: an
+    // envelope illustration sat above a "Try a Free AI Mock Interview" button.
+    if (serverUrl || serverLabel) {
+      const byServer = profiles.find((item) => item.test(serverUrl, serverLabel.toLowerCase()));
+      if (byServer) profile = byServer;
+    }
     const ctaHref = serverUrl || (preferredAnchor ? preferredAnchor.href : profile.fallback);
     if (serverLabel) profile = Object.assign({}, profile, { label: serverLabel });
 
