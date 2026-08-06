@@ -10,6 +10,14 @@ keywords: how long to hear back after applying, how long does it take to hear ba
 image: public/blog-images/how-long-to-hear-back-after-applying.webp
 ---
 
+## Key Takeaways
+
+- One to two weeks is normal, two to four weeks is common, and beyond four weeks usually means no - though not always.
+- Understanding why silence happens is the difference between "I'm being ignored" and "a process is running".
+- Following up helps at the right moment and hurts at the wrong one.
+- The first response is only the first wait - knowing the later timelines stops each silence feeling like a reversal.
+- Silence after you have already interviewed feels worse because you have something to lose, but it is usually still procedural.
+
 You applied on a Tuesday. By Thursday you're checking your email before you're fully awake. By the following week you're re-reading the posting wondering whether you misread something. By week three you've decided you didn't get it, and you're still checking.
 
 The waiting is one of the most corrosive parts of a job search, largely because nobody tells you what normal looks like. So you invent a timeline, the invented timeline is always too fast, and every day past it feels like a rejection. This guide gives you the real numbers, explains what's actually happening in the silence, and covers what to do with the wait — including the part most people get wrong.

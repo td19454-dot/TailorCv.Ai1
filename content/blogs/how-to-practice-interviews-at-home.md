@@ -47,6 +47,9 @@ Home practice fixes all of this before the real [HR round](https://thetailorcv.c
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Method 1: AI Mock Interviews (Best for Solo Practice)
 
 AI mock interviews are the closest thing to a real [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) you can do alone:

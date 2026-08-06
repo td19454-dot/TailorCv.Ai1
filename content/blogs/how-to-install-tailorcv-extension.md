@@ -10,6 +10,14 @@ keywords: install tailorcv extension, tailorcv chrome extension setup, how to se
 image: public/blog-images/how-to-install-tailorcv-extension.webp
 ---
 
+## Key Takeaways
+
+- You need two things to start: a Chromium-based browser and a TailorCV account.
+- Chrome will show a permissions prompt on install - it asks to read job pages so it can pull the job description.
+- Setting your base resume is the one-time step that makes everything afterwards a single click.
+- Once set up, the panel opens beside any posting on LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday, Ashby, Glassdoor and more.
+- Fifteen major boards are supported out of the box, and there is a fallback for company career pages nobody has built an adapter for.
+
 Setting up the [TailorCV Chrome extension](/extension) takes about two minutes and two steps: install it, and tell it which resume to tailor from. After that, tailoring your resume to any job is one click on the posting itself. This guide walks through the whole thing, plus what to do if something does not work.
 
 ## Before You Start

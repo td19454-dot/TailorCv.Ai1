@@ -10,6 +10,14 @@ keywords: informational interview, how to ask for an informational interview, in
 image: public/blog-images/informational-interview-guide.webp
 ---
 
+## Key Takeaways
+
+- Informational interviews work for four reasons, none of which involve asking for a job.
+- Ask people one or two steps ahead of you, not twenty - they remember the transition and have time.
+- The outreach message must be short, specific, and must not smell like a job request.
+- Prepare six to eight questions, expect to use four, and ask about their experience rather than about openings.
+- The most damaging mistake is treating it as a covert job application - people feel it immediately.
+
 An informational interview is a short conversation with someone doing work you're interested in, where you ask about their field and they answer. That's it. No job is on the table, and that absence is the entire reason it works.
 
 Most people either never try this or ruin it by treating it as a disguised job application. Done properly it's one of the highest-return activities in a job search — it surfaces roles that never get posted, gives you language that makes your applications land, and builds relationships that pay off months later. Done badly it's a wasted twenty minutes and a contact who won't reply again.

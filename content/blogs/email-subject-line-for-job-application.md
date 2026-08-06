@@ -10,6 +10,14 @@ slug: email-subject-line-for-job-application
 keywords: job application email subject, email subject line, application email, how to email resume
 ---
 
+## Key Takeaways
+
+- An effective subject line does four things at once, so treat it as its own piece of writing rather than an afterthought.
+- A few clean formats work reliably - use one of those rather than inventing something clever.
+- Certain phrasings act as instant-delete triggers and are worth steering clear of.
+- The subject gets the email opened; a short, tailored body of a few lines does the rest.
+- How you name and attach the resume file matters, as does timing your send and addressing a real person where possible.
+
 When you email a [resume](https://www.thetailorcv.com/modify-cv) directly to a recruiter or hiring manager, the subject line decides whether your message gets opened or buried. A vague or missing subject line is one of the easiest ways to get ignored — a busy recruiter scanning dozens of emails simply skips what they can't identify. A clear, professional subject line gets you read. This guide covers exactly what to write, with templates, plus how to handle the rest of the application email.
 
 Emailing your application is often the moment right after you've [tailored your resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) and want to reach a real person. Make sure the [resume](https://www.thetailorcv.com/modify-cv) you attach is strong and [ATS-ready](https://www.thetailorcv.com/solutions) first, then get the email itself right.

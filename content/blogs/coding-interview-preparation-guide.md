@@ -67,6 +67,9 @@ Track connected components efficiently. Used for graph connectivity and cycle de
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## The Problem-Solving Framework (UMPIRE)
 
 When you receive a problem, follow this:

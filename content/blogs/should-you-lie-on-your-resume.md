@@ -10,6 +10,14 @@ keywords: should you lie on your resume, lying on resume consequences, resume li
 image: public/blog-images/should-you-lie-on-your-resume.webp
 ---
 
+## Key Takeaways
+
+- No - and the reason is practical rather than moral: the payoff is one interview and the detection risk runs for your whole tenure.
+- Lies are mostly caught by routine process, not dramatic investigation.
+- Before hiring the offer is simply withdrawn, and that is the mild, common outcome.
+- There is a real difference between misrepresenting facts and presenting facts well.
+- Every reason to lie has a legitimate answer that works better and carries no risk.
+
 The honest reason people consider it is not dishonesty. It's desperation. You've sent eighty applications, heard nothing, and the postings all demand five years of something you have two years of. Adding three years feels less like fraud and more like correcting an unfair filter.
 
 This guide takes that seriously rather than lecturing. Here's what actually gets caught and how, what the consequences genuinely are — including the ones that arrive years later — and, more usefully, what to do instead when your history is weaker than the posting demands. Because the real problem is almost never that you needed to lie. It's that the true version of your resume was being presented badly.

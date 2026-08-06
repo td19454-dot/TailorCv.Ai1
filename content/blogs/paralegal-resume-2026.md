@@ -10,6 +10,14 @@ slug: paralegal-resume-2026
 keywords: paralegal resume, legal assistant resume, paralegal cv, paralegal resume 2026
 ---
 
+## Key Takeaways
+
+- In legal support a typo suggests you will make the same mistake on a filing - your resume is a live demonstration of accuracy.
+- Put any paralegal certification, your education, and your practice area near the top.
+- Cover legal research, drafting and proofreading, e-filing, case management, discovery, and trial preparation.
+- Name the platforms you know - Relativity, Clio, iManage, Westlaw, LexisNexis, advanced Microsoft Office.
+- A litigation boutique, a corporate legal department, and an immigration practice each want different experience.
+
 Paralegals keep legal teams running, and firms hire for accuracy, discretion, and the specific practice-area experience the role needs. A precise, well-organized [resume](https://www.thetailorcv.com/modify-cv) signals exactly those qualities — and because firms and legal departments screen with an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) have to match the job description before a hiring attorney reads a word.
 
 Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you're aiming higher in the legal field, the attorney resume guide covers the next step.

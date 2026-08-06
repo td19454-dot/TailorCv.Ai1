@@ -26,6 +26,9 @@ Practice structured communication with [AI mock interviews](https://thetailorcv.
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## What Is a Case Interview?
 
 A case [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) presents a business scenario:

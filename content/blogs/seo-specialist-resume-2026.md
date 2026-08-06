@@ -10,6 +10,14 @@ slug: seo-specialist-resume-2026
 keywords: seo specialist resume, seo resume, search marketing cv, seo specialist resume 2026
 ---
 
+## Key Takeaways
+
+- An SEO resume without numbers is a red flag in a data-driven field.
+- Signal breadth: keyword research, on-page SEO, technical SEO, content strategy, and link building.
+- List Ahrefs, SEMrush, Search Console, GA4, Screaming Frog and any CMS - but keep the tool list tight, since tools are table stakes.
+- SEO roles lean technical or content-focused, and the best specialists show one win from each.
+- A technical-SEO role, a content-SEO role, and an agency generalist role each want a different emphasis.
+
 SEO is one of the most measurable jobs there is, so an SEO specialist [resume](https://www.thetailorcv.com/modify-cv) that lacks numbers undercuts itself. Show the traffic, the rankings, and the technical depth — and prove you can move a business metric, not just a vanity one. Because marketing teams and agencies screen with an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) also have to match the job description — a nice irony for someone who does keyword work for a living.
 
 Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you work in a broader marketing role, the digital marketing resume guide and marketing manager resume guide share the same principles.

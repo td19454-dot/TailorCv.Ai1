@@ -10,6 +10,14 @@ slug: hobbies-and-interests-on-resume
 keywords: hobbies on resume, interests on resume, resume hobbies section
 ---
 
+## Key Takeaways
+
+- There are a few specific situations where a hobbies section earns its space - outside those, it usually does not.
+- If you have a full page of strong, relevant experience, cut hobbies to make room for what matters.
+- Be specific and show depth: "Marathon runner (3 completed)" signals something, "fitness" says nothing.
+- Volunteering is usually stronger than a hobby because it shows commitment and real-world skills, so give it its own section.
+- Hobbies are a small supporting detail - the summary, quantified experience, and role-matched keywords do the real work.
+
 Should you put hobbies on your [resume](https://www.thetailorcv.com/modify-cv)? Sometimes — but only when they add real value. Space on a [resume](https://www.thetailorcv.com/modify-cv) is expensive, and a random list of interests can look like filler that pushes your actual [experience and skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) further down the page. Used strategically, though, hobbies can show culture fit or relevant skills that set you apart. This guide covers exactly when to include them, when to cut them, and how to list them so they help.
 
 Before you agonize over hobbies, make sure the core of your [resume](https://www.thetailorcv.com/modify-cv) is strong: a matching job title, [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that pass the ATS. Confirm all that with the free ATS score checker first — hobbies are a garnish, never the meal.

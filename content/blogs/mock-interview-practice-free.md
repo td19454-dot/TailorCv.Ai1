@@ -36,6 +36,9 @@ Generic prep fails for a few clear reasons:
 
 The fix is practice that is personal, spoken out loud, and followed by honest feedback - which is exactly what [AI mock interview](https://www.thetailorcv.com/mock-interview)s provide.
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## What Is Resume-Based Mock Interview Practice?
 
 Resume-based [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice flips the script. Instead of random questions, an AI interviewer reads your actual resume and asks about *your* experience: the projects you built, the tools you used, the results you claim, and the decisions you made.

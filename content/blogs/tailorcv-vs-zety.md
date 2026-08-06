@@ -10,6 +10,14 @@ keywords: tailorcv vs zety, zety alternative, zety review 2026, zety pricing, is
 image: public/blog-images/tailorcv-vs-zety.webp
 ---
 
+## Key Takeaways
+
+- The .txt download is the single most common complaint about Zety, and it catches people at the worst possible moment.
+- Zety's $1.95 14-day trial auto-renews at $25.95, which is why most people click it.
+- Zety wins at building a resume from scratch - that is what it is for.
+- TailorCV wins job-specific tailoring and the ATS question.
+- The criticisms are about the pricing model rather than the product itself.
+
 Zety is one of the most visible resume builders on the internet. If you have ever searched "resume template" or "how to write a resume", you have landed on one of their pages — they have an enormous content library and it ranks for nearly everything.
 
 The builder itself is good. Clean templates, guided writing, sensible structure. If you are starting from a blank page, Zety will get you to a decent-looking resume quickly.
