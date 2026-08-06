@@ -10,6 +10,14 @@ keywords: how to tailor resume on naukri, naukri resume tips, tailor resume nauk
 image: public/blog-images/how-to-tailor-resume-on-naukri.webp
 ---
 
+## Key Takeaways
+
+- On Naukri the filter is not abstract - recruiters literally search the resume database using keywords from the role they are hiring for.
+- Tailoring is four focused changes, not a rewrite from scratch.
+- A few points matter specifically on Naukri and nowhere else.
+- Your standing Naukri profile does quiet work in the background, and most people leave it half-built.
+- The habit travels to every other board, because they all feed the same filter.
+
 Naukri is where most of India's job search happens, and it runs on a scale that makes the applicant tracking system unavoidable. A single posting for a common role — analyst, developer, sales, operations — can pull hundreds or thousands of applications. Recruiters do not read them all. They search and filter, and the resumes that surface are the ones that matched the posting's language. Everyone else is invisible.
 
 This guide is about getting your resume into the visible group: what to change when you tailor to a Naukri posting, how to match the keywords that recruiters actually search, and how to do it in about a minute rather than ten.

@@ -37,6 +37,9 @@ Treating these as one undifferentiated "the interview" is the most common mistak
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Round 1: Coding Interviews
 
 

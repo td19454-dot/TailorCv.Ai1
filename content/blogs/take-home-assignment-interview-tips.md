@@ -10,6 +10,14 @@ slug: take-home-assignment-interview-tips
 keywords: take home assignment, interview assignment, take home test, take home interview
 ---
 
+## Key Takeaways
+
+- Employers use take-homes because they predict on-the-job performance better than abstract questions.
+- Clarify the goal, constraints and expected format before writing a single line.
+- Scope your work to the time given - over-investing twenty hours on a two-hour task signals poor judgment.
+- Reviewers care about how you work as much as the final artifact, so include a short note explaining your thinking.
+- Occasionally a take-home is unpaid work in disguise, and it is reasonable to ask about scope.
+
 Take-home assignments are increasingly common across [interview](https://www.thetailorcv.com/interview-prep) processes — a design task, a coding challenge, a data analysis, a strategy memo. They let you show real skill instead of just talking about it, but they also eat time and can spiral into a weekend-consuming project. The candidates who win these are focused, clear, and know exactly when to stop. This guide shows you how to deliver a standout assignment without over-investing.
 
 Your take-home usually comes after you've passed the initial screen, so treat it as a serious step. Keep your [resume](https://www.thetailorcv.com/modify-cv) and story consistent with the work you submit, and prepare for the follow-up conversation with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep).

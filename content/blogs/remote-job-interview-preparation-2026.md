@@ -26,6 +26,9 @@ Also read [virtual interview tips](https://thetailorcv.com/blog/virtual-intervie
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Types of Remote Interviews
 
 | Format | Key challenge |

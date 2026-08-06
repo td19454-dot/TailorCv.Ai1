@@ -40,6 +40,9 @@ After each [mock interview](https://thetailorcv.com/blog/mock-interview-practice
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Score Each Answer
 
 Use a 1-5 score for:

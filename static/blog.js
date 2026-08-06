@@ -525,13 +525,14 @@
     });
     const preferredHref = preferredAnchor ? preferredAnchor.getAttribute("href") || "" : "";
     const preferredText = preferredAnchor ? normalizeText(preferredAnchor) : "";
-    let profile = profiles.find((item) => item.test(preferredHref, preferredText)) || {
+    const DEFAULT_PROFILE = {
       title: "Your resume should be easy to read and easy to rank.",
       text: "Check the match before you send it, then tune the words, sections, and formatting for the role.",
       label: "Try a free resume scan",
       fallback: "/solutions",
       art: "resume",
     };
+    let profile = profiles.find((item) => item.test(preferredHref, preferredText)) || DEFAULT_PROFILE;
     // Same reasoning: the server already matched this post to a tool, so send
     // the reader there rather than to whichever product link appeared first.
     const serverUrl = content.dataset.ctaUrl || "";
@@ -541,8 +542,13 @@
     // happened to appear first in the body. The two were disagreeing: an
     // envelope illustration sat above a "Try a Free AI Mock Interview" button.
     if (serverUrl || serverLabel) {
-      const byServer = profiles.find((item) => item.test(serverUrl, serverLabel.toLowerCase()));
-      if (byServer) profile = byServer;
+      // Once the server has chosen the destination, the body link no longer
+      // gets a vote. If the server CTA matches no topic profile (e.g. a plain
+      // "Tailor Your Resume" pointing at /solutions), fall back to the generic
+      // resume profile - NOT to whatever the first body link happened to be.
+      // Keeping the old profile is what left an envelope illustration and
+      // cover-letter headline above a "Tailor Your Resume" button.
+      profile = profiles.find((item) => item.test(serverUrl, serverLabel.toLowerCase())) || DEFAULT_PROFILE;
     }
     const ctaHref = serverUrl || (preferredAnchor ? preferredAnchor.href : profile.fallback);
     if (serverLabel) profile = Object.assign({}, profile, { label: serverLabel });

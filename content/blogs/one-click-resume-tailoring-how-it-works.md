@@ -10,6 +10,14 @@ keywords: one click resume tailoring, how ai tailors resume, ai resume tailoring
 image: public/blog-images/one-click-resume-tailoring-how-it-works.webp
 ---
 
+## Key Takeaways
+
+- When you apply through a portal your resume is parsed and matched by exact language, which is the problem this solves.
+- The tool first reads the posting, pulling the job description straight off the page you are already on.
+- Before changing anything it scores your existing resume against the posting's requirements.
+- The rewrite step carries guardrails, because a careless tool here produces garbage or worse, lies.
+- A rewrite is useless if the output does not parse, so the result has to stay single-column with standard headings.
+
 "Tailor your resume in one click" sounds like marketing until you understand what is actually happening in that click — and once you do, you can judge whether it produces a resume worth sending or just a keyword-stuffed mess. This is an honest look under the hood: what one-click tailoring reads, what it changes, what it deliberately will not do, and why the good version genuinely works.
 
 ## The Problem It Is Solving

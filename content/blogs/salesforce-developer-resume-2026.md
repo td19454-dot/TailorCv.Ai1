@@ -10,6 +10,14 @@ slug: salesforce-developer-resume-2026
 keywords: salesforce developer resume, salesforce resume, apex developer cv, salesforce developer resume 2026
 ---
 
+## Key Takeaways
+
+- In the Salesforce world certifications are a primary filter - many postings will not consider you without them, and the ATS treats them as high-value keywords.
+- Name exactly what you build with: Apex, Lightning Web Components, SOQL/SOSL, Flows, triggers, and REST/SOAP integrations.
+- Quantify org scale and impact rather than listing technologies.
+- Frame experience around what you shipped and how many people used it, not a raw technology list.
+- An admin-heavy role, a pure dev role, and an architect role want very different keywords, so tailor each application.
+
 The Salesforce ecosystem hires heavily on certifications and hands-on platform experience, so a Salesforce developer [resume](https://www.thetailorcv.com/modify-cv) has to make both instantly visible. Recruiters and the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scan for specific certs, technologies, and the scale of the orgs you've worked in — and if those [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) don't match the job description, you're filtered before a human looks.
 
 Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you work in a related engineering role, the backend developer resume guide and full-stack developer resume guide share the same fundamentals.

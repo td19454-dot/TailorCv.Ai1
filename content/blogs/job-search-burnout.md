@@ -10,6 +10,14 @@ keywords: job search burnout, job hunting burnout, exhausted from job searching,
 image: public/blog-images/job-search-burnout.webp
 ---
 
+## Key Takeaways
+
+- Six structural features make job searching uniquely exhausting - none of them are about you.
+- Burnout and ordinary discouragement need different responses, so it is worth telling them apart.
+- Much job search burnout is caused by doing high volumes of work that does not convert, so fix the cause rather than the feeling.
+- Fixed working hours with a real end matter, because the endlessness is the problem.
+- A single-digit response rate is ordinary in a competitive market - knowing the base rate stops each rejection reading as a verdict.
+
 There's a particular kind of tiredness that comes from job searching, and it doesn't match the effort involved. You've sent forty applications, which is maybe fifteen hours of work, and you feel wrecked in a way that fifteen hours of actual work never does.
 
 That's not weakness and it isn't a character problem. Job searching has a structure that is unusually good at exhausting people, and understanding why is most of the fix. This guide covers what's actually draining you, how to tell burnout from ordinary discouragement, and a system that protects your energy — which, not coincidentally, also produces better results.

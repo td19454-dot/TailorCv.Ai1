@@ -10,6 +10,14 @@ slug: reference-check-process-guide
 keywords: reference check, job references, how references work, professional references
 ---
 
+## Key Takeaways
+
+- Reference checks come after you have impressed in interviews, to confirm your experience and what you are like to work with.
+- Pick people who know your work well and will speak specifically and positively.
+- Never list someone without permission - ask directly whether they can give a strong reference.
+- Once someone agrees, set them up to succeed by sending them the details they need.
+- Only share references when asked, which is usually late in the process.
+
 Reference checks are one of the last steps before an offer is finalized, and a lukewarm reference can quietly sink an otherwise strong candidacy. Most candidates treat references as an afterthought — they scramble to list three names at the last minute and hope for the best. A little preparation turns your references into a genuine asset that closes the deal. This guide explains how reference checks work, who to choose, and how to prepare them.
 
 Reaching the reference stage means you're close, often alongside or just before a [background check](https://thetailorcv.com/blog/background-check-what-to-expect). Keep the momentum by staying organized and professional right through to the offer.

@@ -28,6 +28,9 @@ Most job seekers treat their resume, [portfolio](https://thetailorcv.com/blog/ho
 
 If these three stages tell different stories - different headline numbers, different framing of the same project - you create doubt at exactly the moment you need to build trust.
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Step 1: Lock Down the Resume First
 Everything else should be built to match your resume, not the other way around. Run it through the [free ATS score checker](https://www.thetailorcv.com/solutions) and choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates) so the foundation is solid before you build on top of it.
 

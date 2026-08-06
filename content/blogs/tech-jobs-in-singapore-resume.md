@@ -10,6 +10,14 @@ keywords: tech jobs singapore resume, software engineer resume singapore, data a
 image: public/blog-images/tech-jobs-in-singapore-resume.webp
 ---
 
+## Key Takeaways
+
+- Tech hiring in Singapore rewards a few things consistently, and knowing them shapes the whole resume.
+- Tech resumes are especially prone to ATS-breaking formatting - two-column layouts, skill bars and icons all cause problems.
+- Your skills section is the keyword engine: it is what recruiters search and what the ATS matches on.
+- Tech hiring managers scan for what you built and what it did, so lead each bullet with quantified impact.
+- A portfolio site and an active GitHub often matter as much as the resume itself.
+
 Singapore has become one of Asia's leading tech hubs — the regional base for global giants and a magnet for startups, fintech, and data-driven firms. That means strong demand for engineers, data professionals, product managers, and designers, and it also means fierce competition and heavy [ATS screening](/blog/ats-resume-checker-how-it-works). A tech resume that gets interviews in Singapore has to clear the software filter *and* speak to what hiring managers here actually want. This guide shows you how.
 
 ## What Singapore Tech Employers Look For
