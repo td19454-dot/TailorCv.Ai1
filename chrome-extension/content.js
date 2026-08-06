@@ -648,6 +648,26 @@
     }
   }
 
+  // Forces the panel open — unlike togglePanel(), never collapses it. Used
+  // after the toolbar-icon click that grants the one-time broad host
+  // permission (see requestBroadPermission() below): that click fires on a
+  // panel that's already open (showing the "click the icon, then click
+  // Apply again" message), so a plain toggle would collapse it instead,
+  // leaving nothing for the user's very next instructed step to click.
+  function openPanel() {
+    if (!document.getElementById('tailorcv-sidebar')) { createPanel(); return; }
+    const wasCollapsed = sb.classList.contains('tcv-collapsed');
+    sb.classList.remove('tcv-collapsed');
+    launcher.classList.remove('tcv-visible');
+
+    if (wasCollapsed && sessionReady && !tcvBusy) {
+      const ta = body.querySelector('#tcvManualJd');
+      if (ta && !ta.value.trim()) renderJobFromPage();
+    } else if (wasCollapsed && noBaseResumeShown && !tcvBusy) {
+      refreshFull();
+    }
+  }
+
   // ── State renderers ──────────────────────────────────
 
   // An <img>-loaded SVG can't be scripted (isolated rendering context), so to
@@ -1160,8 +1180,10 @@
   // fire, and asks the user for the one click that makes it real.
   async function requestBroadPermission() {
     const res = await sendMessage({ type: 'CHECK_BROAD_PERMISSION' });
+    console.log('[TailorCV] requestBroadPermission: CHECK_BROAD_PERMISSION ->', res); // DEBUG
     if (res && res.granted) return true;
     await chrome.storage.local.set({ tcv_permission_pending: true });
+    console.log('[TailorCV] requestBroadPermission: set tcv_permission_pending=true, returning false'); // DEBUG
     return false;
   }
 
@@ -1190,8 +1212,10 @@
     const alreadyHasForm = isLinkedInEasyApply || !!(window.__tcvAutofill
       && typeof window.__tcvAutofill.looksLikeApplicationForm === 'function'
       && window.__tcvAutofill.looksLikeApplicationForm());
+    console.log('[TailorCV] runApply: isLinkedIn=', isLinkedIn, 'isLinkedInEasyApply=', isLinkedInEasyApply, 'alreadyHasForm=', alreadyHasForm); // DEBUG
     if (!alreadyHasForm) {
       const granted = await requestBroadPermission();
+      console.log('[TailorCV] runApply: requestBroadPermission ->', granted); // DEBUG
       if (!granted) {
         globalStatus.className = 'tcv-status-text tcv-error';
         globalStatus.textContent = 'One-time setup: click the TailorCV icon in your toolbar to allow it, then click Apply again.';
@@ -1300,8 +1324,10 @@
     const alreadyHasForm = isLinkedInEasyApply || !!(window.__tcvAutofill
       && typeof window.__tcvAutofill.looksLikeApplicationForm === 'function'
       && window.__tcvAutofill.looksLikeApplicationForm());
+    console.log('[TailorCV] runApplyBase: isLinkedIn=', isLinkedIn, 'isLinkedInEasyApply=', isLinkedInEasyApply, 'alreadyHasForm=', alreadyHasForm); // DEBUG
     if (!alreadyHasForm) {
       const granted = await requestBroadPermission();
+      console.log('[TailorCV] runApplyBase: requestBroadPermission ->', granted); // DEBUG
       if (!granted) {
         globalStatus.className = 'tcv-status-text tcv-error';
         globalStatus.textContent = 'One-time setup: click the TailorCV icon in your toolbar to allow it, then click Apply again.';
@@ -1529,6 +1555,8 @@
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg.type === 'TOGGLE_PANEL') {
       togglePanel();
+    } else if (msg.type === 'OPEN_PANEL') {
+      openPanel();
     } else if (msg.type === 'REFRESH_AUTH') {
       // The login tab we opened (Continue with Google / Forgot password, both
       // carry ?ext=1) told background.js it succeeded via externally_connectable

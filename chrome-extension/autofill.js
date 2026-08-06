@@ -760,6 +760,27 @@
     return false;
   }
 
+  // Same JD-content selectors the content.js LinkedIn adapter already relies
+  // on to find "the currently open job" (see ADAPTERS in content.js) — proven
+  // to track whichever job is actually open, on both the standalone job page
+  // and the search-results layout where the list keeps every card's markup
+  // (including previously-viewed, now-stale detail panes) mounted at once.
+  const LINKEDIN_JD_CONTENT_SELECTORS = [
+    '.jobs-description__content', '.jobs-box__html-content', '#job-details',
+    '.jobs-description-content__text', '[class*="jobs-description"]'
+  ];
+
+  function getLinkedInJobDetailScope() {
+    for (const sel of LINKEDIN_JD_CONTENT_SELECTORS) {
+      const jd = document.querySelector(sel);
+      if (!jd) continue;
+      return jd.closest('[class*="jobs-details"], [class*="job-details"], [class*="scaffold-layout__detail"]')
+        || jd.parentElement
+        || jd;
+    }
+    return document;
+  }
+
   function findLinkedInApplyControl() {
     // LinkedIn ships a dedicated test hook on the real per-job Apply/Easy
     // Apply CTA (data-live-test-job-apply-button) — unambiguous in a way text
@@ -767,12 +788,29 @@
     // the search-results "Easy Apply" FILTER pill got clicked instead of the
     // real button — see isFilterOrToggleControl). Prefer it when present,
     // fall back to the text scan for any layout that doesn't carry it.
-    const testHooked = document.querySelector('button[data-live-test-job-apply-button]');
+    //
+    // Scoped to the open job's detail pane rather than the whole document:
+    // on the search-results layout LinkedIn can keep more than one job's
+    // markup mounted at once (the list + the open detail pane, sometimes a
+    // previously-viewed pane left behind), so an unscoped document query can
+    // match a DIFFERENT job's button than the one actually open, silently
+    // misclassifying an Easy Apply job as an external one. If the guessed
+    // scope doesn't actually contain a match (layout we didn't anticipate),
+    // fall back to the full document so this can only improve accuracy, never
+    // regress to "no button found at all".
+    const scope = getLinkedInJobDetailScope();
+    const found = findApplyControlIn(scope);
+    if (found) return found;
+    return scope === document ? null : findApplyControlIn(document);
+  }
+
+  function findApplyControlIn(scope) {
+    const testHooked = scope.querySelector('button[data-live-test-job-apply-button]');
     if (testHooked && visible(testHooked) && !isFilterOrToggleControl(testHooked)) {
       return { el: testHooked, easyApply: /^easy apply\b/.test(controlLabel(testHooked)) };
     }
 
-    const buttons = document.querySelectorAll('button');
+    const buttons = scope.querySelectorAll('button');
     for (const el of buttons) {
       if (!visible(el) || isFilterOrToggleControl(el)) continue;
       if (/^easy apply\b/.test(controlLabel(el))) return { el, easyApply: true };

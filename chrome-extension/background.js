@@ -27,6 +27,12 @@ function arrayBufferToBase64(buffer) {
 // That is what lets the extension work everywhere without asking every user for
 // "read your data on all websites" at install time.
 chrome.action.onClicked.addListener(async (tab) => {
+  // DEBUG — remove once the broad-permission flow is confirmed working.
+  // This logs to the SERVICE WORKER console, not the page console: open
+  // chrome://extensions, find TailorCV, click "service worker" (Inspect
+  // views) to see these.
+  console.log('[TailorCV][bg] action.onClicked, tab=', tab && tab.id, tab && tab.url);
+
   if (!tab || !tab.id) return;
 
   // chrome.permissions is not exposed to content scripts at all, and a
@@ -37,13 +43,28 @@ chrome.action.onClicked.addListener(async (tab) => {
   // request() directly). A native toolbar click IS a trusted gesture, so
   // this is where the actual prompt fires.
   const { tcv_permission_pending } = await chrome.storage.local.get('tcv_permission_pending');
+  console.log('[TailorCV][bg] tcv_permission_pending =', tcv_permission_pending); // DEBUG
   if (tcv_permission_pending) {
     try {
-      await chrome.permissions.request({ origins: ['*://*/*'] });
+      const granted = await chrome.permissions.request({ origins: ['*://*/*'] });
+      console.log('[TailorCV][bg] permissions.request({origins:["*://*/*"]}) resolved =', granted); // DEBUG
     } catch (e) {
       console.warn('TailorCV: permission request failed —', e.message);
     }
     await chrome.storage.local.remove('tcv_permission_pending');
+
+    // This click was specifically to grant the pending permission, not a
+    // normal show/hide toggle — the panel was already open (it's what told
+    // the user to click here), so force it back OPEN instead of the usual
+    // toggle below, which would collapse it and leave nothing for the
+    // user's very next instructed step ("then click Apply again") to click.
+    try {
+      await chrome.tabs.sendMessage(tab.id, { type: 'OPEN_PANEL' });
+      console.log('[TailorCV][bg] sent OPEN_PANEL'); // DEBUG
+    } catch (e) {
+      console.log('[TailorCV][bg] OPEN_PANEL send failed —', e.message); // DEBUG
+    }
+    return;
   }
 
   try {
@@ -344,8 +365,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         // Read-only — no gesture requirement, safe to relay (unlike request()).
         try {
           const granted = await chrome.permissions.contains({ origins: ['*://*/*'] });
+          console.log('[TailorCV][bg] CHECK_BROAD_PERMISSION contains(*://*/*) =', granted); // DEBUG
           sendResponse({ granted });
         } catch (e) {
+          console.warn('[TailorCV][bg] CHECK_BROAD_PERMISSION error —', e.message); // DEBUG
           sendResponse({ granted: false, error: e.message });
         }
 
