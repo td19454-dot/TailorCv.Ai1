@@ -28,31 +28,59 @@ logger = logging.getLogger(__name__)
 #
 # Matched case-sensitively (lower-case only) so that a missing space after a
 # full stop - "built in Python.It was" - cannot be read as a domain.
-_LINK_TLDS = (
-    # generic
+# Unambiguous endings: no English word is "com" or "org", so these are safe to
+# match in ANY case - which is what rescues an all-caps "GITHUB.COM/JANE".
+_LINK_TLDS_ANYCASE = (
     "com|org|net|info|biz|io|dev|ai|app|tech|live|site|space|online|store|"
-    "blog|cloud|page|xyz|me|co|edu|gov|"
-    # country
-    "in|uk|us|ca|au|de|fr|nl|es|se|ch|sg|ae"
+    "blog|cloud|page|xyz|edu|gov"
 )
+# Short country endings that double as English words once a PDF loses the space
+# after a full stop ("Python.In the next role"). Lower-case only, deliberately.
+_LINK_TLDS_LOWER = "in|uk|us|ca|au|de|fr|nl|es|se|ch|sg|ae|me|co"
 # Two-part suffixes must be tried first, or "jane.co.uk" matches only ".co".
 _LINK_MULTI_TLDS = "co\\.uk|co\\.in|com\\.au|ac\\.uk|ac\\.in|co\\.nz|com\\.br"
 
+_DOMAIN_BODY = r'(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+'
+_LINK_PATH = r'(?:/[^\s,;)\]]*)?'
+
 _LINK_RE = re.compile(
     r'(?<!https://)(?<!http://)(?<![\w@.])'
-    r'((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+'
-    rf'(?:{_LINK_MULTI_TLDS}|{_LINK_TLDS})\b'
-    r'(?:/[^\s,;)\]]*)?)'
+    r'(' + _DOMAIN_BODY + rf'(?:(?i:{_LINK_MULTI_TLDS}|{_LINK_TLDS_ANYCASE})|{_LINK_TLDS_LOWER})'
+    r'\b' + _LINK_PATH + r')'
 )
+
+# --- PDF text-extraction artefacts that hide real links -------------------- #
+# 1. a stray space before the dot: "github .com/jane"
+_LINK_SPACED_DOT_RE = re.compile(
+    rf'(\b[a-zA-Z0-9][a-zA-Z0-9-]*)\s+\.\s*((?i:{_LINK_TLDS_ANYCASE})\b)'
+)
+# 2. a long URL wrapped onto the next line, which pdfplumber breaks at the
+#    slash or hyphen: "github.com/jane/\nproject-name"
+_LINK_WRAPPED_RE = re.compile(
+    r'((?:https?://|\b[a-zA-Z0-9-]+\.)[^\s]*[-/])\n[ \t]*(?=[A-Za-z0-9])'
+)
+
+
+def repair_pdf_link_artifacts(text: str) -> str:
+    """Undo the two ways PDF extraction breaks a URL before we try to match it.
+
+    Without this, "github .com/jane" is never seen as a link at all, and a
+    wrapped URL yields a truncated one ("https://github.com/jane/"), which is
+    worse than none because it renders as a dead link.
+    """
+    s = str(text or "")
+    s = _LINK_SPACED_DOT_RE.sub(r'\1.\2', s)
+    s = _LINK_WRAPPED_RE.sub(r'\1', s)
+    return s
 
 
 def normalize_links(text):
     """Prefix bare domains with https:// so they survive as real links.
 
-    Skips anything already carrying a scheme, and anything preceded by "@"
-    (email addresses keep their own handling).
+    Repairs PDF extraction damage first, then skips anything that already
+    carries a scheme or is part of an email address.
     """
-    return _LINK_RE.sub(r'https://\1', str(text or ""))
+    return _LINK_RE.sub(r'https://\1', repair_pdf_link_artifacts(text))
 
 
 def _escape_braces(text: str) -> str:
@@ -71,10 +99,22 @@ def _slice_section(text: str, start_markers: list[str], stop_markers: list[str])
 
     lines = [line.rstrip() for line in raw.splitlines()]
     lowered = [line.strip().lower() for line in lines]
+    # PDF extraction routinely injects stray spaces into letter-spaced headings:
+    # a real resume rendered "Projects" as "Pro jects", so the marker never
+    # matched and the entire Projects section - every project link with it - was
+    # invisible to this function. Compare with all whitespace removed as well.
+    squeezed = [re.sub(r"\s+", "", line) for line in lowered]
+    start_squeezed = [re.sub(r"\s+", "", m) for m in start_markers]
+    stop_squeezed = [re.sub(r"\s+", "", m) for m in stop_markers]
+
+    def _hits(idx: int, markers: list[str], markers_squeezed: list[str]) -> bool:
+        if any(m in lowered[idx] for m in markers):
+            return True
+        return any(m and m in squeezed[idx] for m in markers_squeezed)
 
     start_idx = None
-    for i, line in enumerate(lowered):
-        if any(marker in line for marker in start_markers):
+    for i in range(len(lines)):
+        if _hits(i, start_markers, start_squeezed):
             start_idx = i
             break
     if start_idx is None:
@@ -82,8 +122,7 @@ def _slice_section(text: str, start_markers: list[str], stop_markers: list[str])
 
     stop_idx = len(lines)
     for j in range(start_idx + 1, len(lines)):
-        line = lowered[j]
-        if any(marker in line for marker in stop_markers):
+        if _hits(j, stop_markers, stop_squeezed):
             stop_idx = j
             break
 

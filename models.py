@@ -36,6 +36,8 @@ class User(Base):
     # Extracted once at upload time so the extension's skill-match score never
     # needs to re-parse the PDF on every job the user looks at.
     base_resume_text = Column(Text, nullable=True)
+    # Stored application-form autofill profile used by the Chrome extension.
+    application_profile_json = Column(Text, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
