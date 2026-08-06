@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-about-me-section
 image: public/blog-images/portfolio-about-me-section.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

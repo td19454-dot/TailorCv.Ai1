@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: how-to-explain-career-gap-in-interview
 image: public/blog-images/how-to-explain-career-gap-in-interview.webp
+category: Interview Preparation
+tags: [Interview Preparation, Career Advice, Job Search]
+keywords: Interview Preparation, Career Advice, Job Search
 ---
 
 ## Key Takeaways

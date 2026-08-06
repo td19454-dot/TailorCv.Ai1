@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: competency-based-interview-questions-guide
 image: public/blog-images/competency-based-interview-questions-guide.webp
+category: Interview Preparation
+tags: [Interview Preparation, Career Advice, Job Search]
+keywords: Interview Preparation, Career Advice, Job Search
 ---
 
 ## Key Takeaways

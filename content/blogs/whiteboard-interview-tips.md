@@ -4,7 +4,7 @@ description: Think out loud, structure your approach, and stay calm in a live wh
 date: 2026-07-26
 author: TailorCV Team
 tags: [interview, whiteboard, technical]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/whiteboard-interview-tips.webp
 slug: whiteboard-interview-tips
 keywords: whiteboard interview, live coding interview, technical whiteboard interview

@@ -4,7 +4,7 @@ description: Politely reschedule a job interview and keep the employer's confide
 date: 2026-07-26
 author: TailorCV Team
 tags: [interview, etiquette, job search]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/how-to-reschedule-an-interview.webp
 slug: how-to-reschedule-an-interview
 keywords: reschedule interview, move interview, interview conflict email, postpone interview
