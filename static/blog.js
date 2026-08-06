@@ -1641,3 +1641,133 @@ if (document.readyState === "loading") {
 } else {
   setTimeout(tcxNormalizeDdColumns, 0);
 }
+
+/* ---------------------------------------------------------------------------
+   Mobile reading experience.
+
+   Below 900px the sidebar becomes a static block ABOVE the article, so a post
+   with 21 headings pushed the first sentence 1,922px down - 2.3 screens of
+   scrolling before a phone reader saw a single word. Collapse the contents
+   into a tappable bar, and give the reader a persistent CTA instead of the
+   sidebar card they lost.
+   --------------------------------------------------------------------------- */
+const tcxMobileReading = () => {
+  const MOBILE = () => window.innerWidth <= 900;
+  const toc = document.querySelector(".post-layout .toc");
+  const content = document.querySelector(".post-content");
+
+  /* --- 1. Collapsible contents --- */
+  if (toc && !toc.querySelector(".toc-toggle")) {
+    const list = toc.querySelector("ul");
+    const heading = toc.querySelector("h2");
+    if (list) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "toc-toggle";
+      btn.setAttribute("aria-expanded", "false");
+      btn.innerHTML =
+        '<span class="toc-toggle-label">Contents</span>' +
+        '<span class="toc-toggle-count">' + list.querySelectorAll("a").length + "</span>" +
+        '<svg class="toc-toggle-ico" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">' +
+        '<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" ' +
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      (heading || list).before(btn);
+
+      const sync = () => {
+        if (MOBILE()) {
+          toc.classList.add("toc-collapsible");
+          if (!toc.classList.contains("toc-open")) btn.setAttribute("aria-expanded", "false");
+        } else {
+          // Desktop keeps the always-open sidebar it has always had.
+          toc.classList.remove("toc-collapsible", "toc-open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      };
+      btn.addEventListener("click", () => {
+        const open = toc.classList.toggle("toc-open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      // Tapping a heading link should close the drawer, not leave it covering
+      // the section the reader just jumped to.
+      list.addEventListener("click", (e) => {
+        if (e.target.closest("a") && MOBILE()) {
+          toc.classList.remove("toc-open");
+          btn.setAttribute("aria-expanded", "false");
+        }
+      });
+      window.addEventListener("resize", sync);
+      sync();
+    }
+  }
+
+  /* --- 2. Sticky CTA bar (mobile only) --- */
+  if (content && !document.querySelector(".tcx-mcta")) {
+    const url = content.dataset.ctaUrl;
+    const label = content.dataset.ctaLabel;
+    if (url && label && !sessionStorage.getItem("tcxMctaDismissed")) {
+      const bar = document.createElement("div");
+      bar.className = "tcx-mcta";
+      bar.innerHTML =
+        '<a class="tcx-mcta-btn" href="' + url + '"><span class="tcx-btn-label"></span></a>' +
+        '<button class="tcx-mcta-x" type="button" aria-label="Dismiss">&times;</button>';
+      bar.querySelector(".tcx-btn-label").textContent = label;
+      document.body.appendChild(bar);
+
+      bar.querySelector(".tcx-mcta-x").addEventListener("click", () => {
+        bar.remove();
+        try { sessionStorage.setItem("tcxMctaDismissed", "1"); } catch (_) {}
+      });
+
+      // Hide whenever a full-size CTA is already on screen, so the reader
+      // never sees two competing asks at once.
+      const rivals = Array.from(content.querySelectorAll(".blog-ats, .end-cta, .article-cta-strip"));
+      const rivalVisible = () =>
+        rivals.some((el) => {
+          const r = el.getBoundingClientRect();
+          return r.top < window.innerHeight && r.bottom > 0;
+        });
+
+      const sync = () => {
+        if (!MOBILE()) { bar.classList.remove("is-in"); return; }
+        const r = content.getBoundingClientRect();
+        const read = (-r.top) / Math.max(1, content.offsetHeight - window.innerHeight);
+        bar.classList.toggle("is-in", read > 0.3 && read < 0.97 && !rivalVisible());
+      };
+      window.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      sync();
+    }
+  }
+};
+
+/* Copy-link button in the share rail. */
+const tcxShareCopy = () => {
+  const btn = document.getElementById("postShareCopy");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
+    const url = btn.dataset.url || window.location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch (_) {
+      const t = document.createElement("textarea");
+      t.value = url;
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch (__) {}
+      t.remove();
+    }
+    const flag = btn.querySelector(".post-share-copied");
+    if (!flag) return;
+    flag.hidden = false;
+    btn.classList.add("is-copied");
+    setTimeout(() => { flag.hidden = true; btn.classList.remove("is-copied"); }, 1600);
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(() => {
+    tcxMobileReading(); tcxShareCopy();
+  }, 0));
+} else {
+  setTimeout(() => { tcxMobileReading(); tcxShareCopy(); }, 0);
+}

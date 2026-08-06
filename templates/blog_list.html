@@ -46,7 +46,7 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
     </style>
-    <link rel="stylesheet" href="/static/blog.css?v=71">
+    <link rel="stylesheet" href="/static/blog.css?v=73">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 </head>
@@ -67,15 +67,55 @@
             <button type="submit">Search</button>
         </form>
         <div class="tags-row">
-            <a class="tag {% if not selected_category %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category=">All</a>
+            <a class="tag {% if not selected_category and not selected_tag %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category=">All</a>
             {% for c in categories %}
             <a class="tag {% if c == selected_category %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category={{ c | urlencode }}">{{ c }}</a>
             {% endfor %}
         </div>
+        {# Topic chips. ?tag= was already supported by the route and survives
+           pagination — it simply had no UI until now. #}
+        {% if top_tags %}
+        <div class="topic-row" aria-label="Browse by topic">
+            <span class="topic-row-label">Topics</span>
+            {% for t in top_tags %}
+            <a class="topic-chip {% if t == selected_tag %}active{% endif %}"
+               href="/blog?tag={{ '' if t == selected_tag else t | urlencode }}">{{ t }}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
     </section>
 
+    {% if show_featured and posts %}
+    {% set feat = posts[0] %}
+    <a class="blog-featured" href="/blog/{{ feat.slug }}">
+        {% if feat.image %}
+        <span class="blog-featured-media">
+            <img src="{{ feat.image }}" alt="{{ feat.title }}" loading="eager" decoding="async" fetchpriority="high">
+        </span>
+        {% endif %}
+        <span class="blog-featured-body">
+            <span class="blog-featured-flag">Latest guide</span>
+            <span class="blog-featured-title">{{ feat.title }}</span>
+            {% if feat.description %}<span class="blog-featured-desc">{{ feat.description }}</span>{% endif %}
+            <span class="blog-featured-meta">
+                {% if feat.category %}<span class="blog-featured-cat">{{ feat.category }}</span>{% endif %}
+                {{ feat.date_display }} &middot; {{ feat.read_time }} min read
+            </span>
+        </span>
+    </a>
+    {% endif %}
+
     <section class="blog-grid" aria-label="Blog posts">
-        {% for post in posts %}
+        {# The featured card above already shows posts[0], so drop it here. #}
+        {% for post in (posts[1:] if show_featured else posts) %}
+        {% if loop.index == 7 %}
+        <a class="blog-card blog-card-cta" href="/solutions">
+            <span class="blog-card-cta-flag">Free &middot; No account needed</span>
+            <span class="blog-card-cta-title">How does your resume actually score?</span>
+            <span class="blog-card-cta-text">Scan it against any job description and see the exact keywords you are missing.</span>
+            <span class="blog-card-cta-btn">Check my ATS score</span>
+        </a>
+        {% endif %}
         <article class="blog-card">
             <a href="/blog/{{ post.slug }}" class="blog-cover-wrap">
                 {% if post.image %}

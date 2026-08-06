@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: personal-website-vs-portfolio
 image: public/blog-images/personal-website-vs-portfolio.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

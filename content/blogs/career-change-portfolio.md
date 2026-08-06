@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: career-change-portfolio
 image: public/blog-images/career-change-portfolio.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

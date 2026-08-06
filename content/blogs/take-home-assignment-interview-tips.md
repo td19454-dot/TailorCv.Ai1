@@ -4,7 +4,7 @@ description: Stand out on take-home interview assignments without burning a whol
 date: 2026-07-26
 author: TailorCV Team
 tags: [interview, assignment, job search]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/take-home-assignment-interview-tips.webp
 slug: take-home-assignment-interview-tips
 keywords: take home assignment, interview assignment, take home test, take home interview
