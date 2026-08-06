@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: developer-portfolio-project-ideas
 image: public/blog-images/developer-portfolio-project-ideas.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

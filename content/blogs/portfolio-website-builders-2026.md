@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-website-builders-2026
 image: public/blog-images/portfolio-website-builders-2026.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

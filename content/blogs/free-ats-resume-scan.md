@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: free-ats-resume-scan
 image: public/blog-images/free-ats-resume-scan.webp
+category: ATS Optimization
+tags: [ATS Resume, Resume Tips, Job Search]
+keywords: ATS Resume, Resume Tips, Job Search
 ---
 
 ## Key Takeaways

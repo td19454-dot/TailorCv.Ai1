@@ -35,6 +35,12 @@ class BlogPost:
     toc_html: str
     word_count: int
     lastmod_iso: str
+    # Opt-in "Updated" stamp. Only set when a post carries an `updated:` field
+    # in its frontmatter - deliberately NOT derived from file mtime, which
+    # would claim every post was revised on whatever day the files were last
+    # touched in bulk. Empty string means "show nothing".
+    updated_iso: str = ""
+    updated_display: str = ""
 
 
 class BlogService:
@@ -220,11 +226,19 @@ class BlogService:
             groups[-1][1] = groups[-1][1] + pool[:needed]
         return [{"title": t, "posts": ps} for t, ps in groups if ps]
 
-    def list_filters(self) -> dict[str, list[str]]:
+    def list_filters(self, top_tag_count: int = 10) -> dict[str, list[str]]:
         posts = self.load_posts()
         tags = sorted({tag for p in posts for tag in p.tags})
         categories = sorted({p.category for p in posts if p.category})
-        return {"tags": tags, "categories": categories}
+        # The full tag list runs to hundreds of entries, which is useless as a
+        # UI. `top_tags` is the handful worth showing as chips - ordered by how
+        # many posts carry them, so the chips lead somewhere populated.
+        counts: dict[str, int] = {}
+        for p in posts:
+            for tag in p.tags:
+                counts[tag] = counts.get(tag, 0) + 1
+        top_tags = [t for t, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:top_tag_count]]
+        return {"tags": tags, "categories": categories, "top_tags": top_tags}
 
     def search_posts(
         self,
@@ -294,6 +308,12 @@ class BlogService:
         parsed_date = self._parse_date(str(frontmatter.get("date") or ""))
         if parsed_date is None:
             parsed_date = datetime.utcfromtimestamp(os.path.getmtime(file_path)).date()
+        # Only honour an explicit `updated:` field, and only when it is actually
+        # later than the publish date - a stamp that matches the publish date
+        # tells the reader nothing.
+        updated_date = self._parse_date(str(frontmatter.get("updated") or ""))
+        if updated_date is not None and updated_date <= parsed_date:
+            updated_date = None
 
         md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"])
         content_html = md.convert(body)
@@ -327,6 +347,8 @@ class BlogService:
             toc_html=toc_html,
             word_count=word_count,
             lastmod_iso=lastmod_iso,
+            updated_iso=updated_date.strftime("%Y-%m-%d") if updated_date else "",
+            updated_display=updated_date.strftime("%b %d, %Y") if updated_date else "",
         )
 
     @staticmethod

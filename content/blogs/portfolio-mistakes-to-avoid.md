@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-mistakes-to-avoid
 image: public/blog-images/portfolio-mistakes-to-avoid.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

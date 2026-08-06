@@ -4,7 +4,7 @@ description: Prepare for numerical, verbal, logical, and personality assessments
 date: 2026-07-26
 author: TailorCV Team
 tags: [assessment, hiring, job search]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/aptitude-psychometric-test-tips.webp
 slug: aptitude-psychometric-test-tips
 keywords: aptitude test, psychometric test, pre-employment assessment, numerical reasoning test

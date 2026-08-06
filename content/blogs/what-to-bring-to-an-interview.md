@@ -4,7 +4,7 @@ description: The essentials to bring to an in-person or virtual interview so you
 date: 2026-07-26
 author: TailorCV Team
 tags: [interview, preparation, job search]
-category: Interview Prep
+category: Interview Preparation
 image: public/blog-images/what-to-bring-to-an-interview.webp
 slug: what-to-bring-to-an-interview
 keywords: what to bring to interview, interview checklist, interview essentials

@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: remote-job-interview-preparation-2026
 image: public/blog-images/remote-job-interview-preparation-2026.webp
+category: Interview Preparation
+tags: [Interview Preparation, Career Advice, Job Search]
+keywords: Interview Preparation, Career Advice, Job Search
 ---
 
 ## Key Takeaways

@@ -4442,7 +4442,12 @@ def build_blogposting_schema(post, canonical_url: str, author_profile: dict | No
             "logo": {"@type": "ImageObject", "url": build_absolute_url("/static/logo.png")},
         },
         "datePublished": post.date_iso,
-        "dateModified": post.lastmod_iso,
+        # Prefer an explicit `updated:` field, else fall back to the publish
+        # date. Deliberately NOT file mtime: a bulk edit that touches every
+        # file would otherwise tell Google all 507 posts were revised on the
+        # same day, which is both untrue and a bad freshness signal.
+        # (lastmod_iso still drives sitemap.xml, where mtime is the right idea.)
+        "dateModified": post.updated_iso or post.date_iso,
         "mainEntityOfPage": canonical_url,
         "keywords": post.keywords,
     }
@@ -8138,7 +8143,11 @@ async def blog_listing_page(
             "selected_tag": tag,
             "selected_category": category,
             "tags": filters["tags"],
+            "top_tags": filters["top_tags"],
             "categories": filters["categories"],
+            # Feature the newest post only on an unfiltered page 1 - on a
+            # filtered or deeper page a "featured" card would be arbitrary.
+            "show_featured": page == 1 and not q and not tag and not category,
             "meta_title": "Resume Optimization Blog | TailorCV",
             "meta_description": "Read ATS, resume, and job search strategies to improve interview outcomes.",
             "meta_keywords": "resume optimization blog, ats resume tips, job search guide",
@@ -8197,6 +8206,14 @@ _BLOG_TO_ROLE = {
 }
 
 
+# Blog CTAs that a logged-out reader may follow straight through. These tools
+# meter guests on their own, so the reader gets to use the product first and
+# meets the signup wall at a moment when it has already proved its worth.
+# Anything NOT listed here produces a saved asset (a resume, a portfolio, a
+# cover letter, an interview record) and so still routes through /login?next=.
+_BLOG_CTA_OPEN_PATHS = {"/solutions", "/templates", "/extension"}
+
+
 def blog_cta(post, is_logged_in: bool = False) -> dict:
     """Pick a topic-aware hero CTA from the post's category/slug/title so each
     blog points to the most relevant tool. Returns title + text as well as the
@@ -8242,9 +8259,12 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
                "text": "Tailor your resume to any job and beat the ATS — free to start.",
                "label": "Tailor Your Resume", "url": "/solutions"}
 
-    # Logged-out readers: go through login first, then land on the tool logged in.
-    # (The login page reads ?next and redirects there after sign-in.)
-    if not is_logged_in and cta["url"].startswith("/"):
+    # Logged-out readers: only wall the tools whose OUTPUT needs an account to
+    # live somewhere. The open tools already meter guests themselves (the ATS
+    # scanner allows one free scan via enforce_guest_ats_allowed), so sending a
+    # reader to /login first spends the highest-intent moment on a form before
+    # they have seen anything the article just promised them.
+    if not is_logged_in and cta["url"] not in _BLOG_CTA_OPEN_PATHS and cta["url"].startswith("/"):
         cta["url"] = "/login?next=" + cta["url"]
     return cta
 

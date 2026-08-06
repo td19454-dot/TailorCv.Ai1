@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: interview-body-language-communication-tips
 image: public/blog-images/interview-body-language-communication-tips.webp
+category: Interview Preparation
+tags: [Interview Preparation, Career Advice, Job Search]
+keywords: Interview Preparation, Career Advice, Job Search
 ---
 
 ## Key Takeaways

@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: product-manager-portfolio-guide
 image: public/blog-images/product-manager-portfolio-guide.webp
+category: Portfolio
+tags: [Portfolio Guide, Career Advice, Job Search]
+keywords: Portfolio Guide, Career Advice, Job Search
 ---
 
 ## Key Takeaways

@@ -4,6 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: ats-score-for-freshers
 image: public/blog-images/ats-score-for-freshers.webp
+category: ATS Optimization
+tags: [ATS Resume, Resume Tips, Job Search]
+keywords: ATS Resume, Resume Tips, Job Search
 ---
 
 ## Key Takeaways
