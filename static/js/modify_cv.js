@@ -44,6 +44,7 @@
 
     let selectedTemplate = null;
     let templates = [];
+    const OPTIMIZED_EDITOR_STORAGE_KEY = "tailorcv_optimized_editor_payload";
 
     function getTemplatePreviewSrc(templateId) {
         const id = Number(templateId);
@@ -529,6 +530,43 @@
     let debouncedPersistDraft = debounce(persistDraft, 500);
     window.addEventListener("resize", debounce(applyPreviewScale, 120));
 
+    async function buildEditorPayload() {
+        if (!selectedTemplate) {
+            throw new Error("Select a template first.");
+        }
+
+        const response = await fetch("/api/render-template-preview", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                templateId: selectedTemplate,
+                cvData
+            })
+        });
+        if (!response.ok) {
+            let detail = "Could not prepare the resume editor.";
+            try {
+                const payload = await response.json();
+                detail = payload?.detail || payload?.error || detail;
+            } catch {}
+            throw new Error(detail);
+        }
+        const data = await response.json();
+        if (!data?.html) {
+            throw new Error("Could not render the selected template.");
+        }
+
+        return {
+            success: true,
+            source: "modify-cv",
+            html: data.html,
+            template_id: selectedTemplate,
+            resume_data: cvData,
+            candidate_name: (cvData.personalInfo && cvData.personalInfo.name) || "",
+            filename: "custom_cv_edited.pdf"
+        };
+    }
+
     function bindInteractions() {
         document.querySelectorAll("[data-scroll-to]").forEach((button) => {
             button.addEventListener("click", () => {
@@ -592,33 +630,10 @@
                 }
                 setDownloadLoading(true);
                 try {
-                    const response = await fetch("/api/download-cv-pdf", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ templateId: selectedTemplate, cvData })
-                    });
-                    if (!response.ok) {
-                        let detail = "Primary download route failed";
-                        try {
-                            const payload = await response.json();
-                            detail = payload?.detail || payload?.error || detail;
-                        } catch {}
-                        const error = new Error(detail);
-                        error.status = response.status;
-                        throw error;
-                    }
-                    const blob = await response.blob();
-                    const url = window.URL.createObjectURL(blob);
-                    const link = document.createElement("a");
-                    link.href = url;
-                    link.download = "custom_cv.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-                    setTimeout(() => window.URL.revokeObjectURL(url), 2000);
-                    setDownloadLoading(false);
-                    downloadBtn.classList.add("pulse-success");
-                    setTimeout(() => downloadBtn.classList.remove("pulse-success"), 1000);
+                    const payload = await buildEditorPayload();
+                    sessionStorage.setItem(OPTIMIZED_EDITOR_STORAGE_KEY, JSON.stringify(payload));
+                    sessionStorage.removeItem("tailorcv_current_resume_id");
+                    window.location.href = "/optimized-editor?source=modify-cv";
                     return;
                 } catch (error) {
                     const message = (error?.message || "").toLowerCase();
@@ -627,7 +642,7 @@
                         redirectToLogin();
                         return;
                     }
-                    console.warn("Primary download failed, using fallback.", error);
+                    console.warn("Could not open resume editor, using direct download fallback.", error);
                 }
 
                 setDownloadLoading(false);
