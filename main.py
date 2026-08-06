@@ -39,6 +39,7 @@ from functions import (
     compute_skill_match_score,
     compute_skill_match_score_structured,
     sanitize_resume_data,
+    factcheck_against_original,
     _is_atomic_hard_skill,
     map_demo_links,
     extract_project_links,
@@ -9168,7 +9169,9 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
             extracted_pub_links = merged_pub
 
     parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
-    parsed = inject_jd_hard_skills(parsed, jd_string)
+    # resume_string is the ORIGINAL uploaded text - it is what decides whether a
+    # JD skill is evidenced or becomes a declared gap.
+    parsed = inject_jd_hard_skills(parsed, jd_string, resume_string)
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
@@ -9348,6 +9351,18 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     # skills, strip stray bullets) so malformed AI/post-processing output
     # never reaches the rendered resume. Must run after all injection.
     parsed = sanitize_resume_data(parsed)
+
+    # Verify rather than trust. The prompt forbids inventing employers, dates
+    # and numbers, but an instruction is not a guarantee - and an invented fact
+    # is the one failure a candidate cannot recover from in an interview.
+    # Reports onto parsed["factcheck"]; nothing is deleted automatically,
+    # because wrongly removing a real job would be worse than the problem.
+    parsed = factcheck_against_original(parsed, resume_string)
+    if not parsed.get("factcheck", {}).get("clean", True):
+        logger.warning(
+            "Rewrite introduced facts absent from the original resume: %s",
+            parsed["factcheck"]["findings"][:8],
+        )
     return parsed
 
 
@@ -9750,6 +9765,14 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
                     "Strong" if s < 90 else
                     "Excellent"
                 )
+
+        # The report has always rendered a portfolio card, but nothing ever set
+        # this flag - so every user hit the "no portfolio" branch, including
+        # people whose resume clearly linked one. Detect it for real.
+        # Note this is informational only: there is no portfolio term anywhere
+        # in compute_deterministic_ats_score_breakdown, so it must never be
+        # presented as costing points.
+        result["has_portfolio"] = _has_portfolio_link(resume_string)
 
         if is_guest:
             mark_guest_ats_used(request, db)

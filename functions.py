@@ -17,12 +17,42 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 logger = logging.getLogger(__name__)
 
 
+# Domain endings that actually turn up in resume links. The previous list was
+# com|in|org|io|dev|ai|net, which silently dropped every link on a TLD outside
+# it - most damagingly ".app", so every Vercel and Netlify portfolio URL
+# ("jane.vercel.app", "resume.netlify.app") was never linked at all.
+#
+# This stays an allowlist rather than a generic "word.word" pattern on purpose:
+# a loose pattern turns "Node.js", "resume.pdf" and "v1.2" into links. Anything
+# not listed here is left as plain text, which is the safe failure.
+#
+# Matched case-sensitively (lower-case only) so that a missing space after a
+# full stop - "built in Python.It was" - cannot be read as a domain.
+_LINK_TLDS = (
+    # generic
+    "com|org|net|info|biz|io|dev|ai|app|tech|live|site|space|online|store|"
+    "blog|cloud|page|xyz|me|co|edu|gov|"
+    # country
+    "in|uk|us|ca|au|de|fr|nl|es|se|ch|sg|ae"
+)
+# Two-part suffixes must be tried first, or "jane.co.uk" matches only ".co".
+_LINK_MULTI_TLDS = "co\\.uk|co\\.in|com\\.au|ac\\.uk|ac\\.in|co\\.nz|com\\.br"
+
+_LINK_RE = re.compile(
+    r'(?<!https://)(?<!http://)(?<![\w@.])'
+    r'((?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+'
+    rf'(?:{_LINK_MULTI_TLDS}|{_LINK_TLDS})\b'
+    r'(?:/[^\s,;)\]]*)?)'
+)
+
+
 def normalize_links(text):
-    return re.sub(
-        r'(?<!https://)(?<!http://)(\b[a-zA-Z0-9.-]+\.(com|in|org|io|dev|ai|net)\b)',
-        r'https://\1',
-        text
-    )
+    """Prefix bare domains with https:// so they survive as real links.
+
+    Skips anything already carrying a scheme, and anything preceded by "@"
+    (email addresses keep their own handling).
+    """
+    return _LINK_RE.sub(r'https://\1', str(text or ""))
 
 
 def _escape_braces(text: str) -> str:
@@ -548,7 +578,9 @@ You must preserve factual details already present in the resume such as dates, C
 
 Guidelines to Follow:
 1)Keyword and Skill Optimization:
-Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
+Rule01: EVIDENCED SKILLS ONLY — The `skills` array MUST contain every hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that the job description names AND the candidate's resume actually evidences anywhere — in a bullet, a project, a summary line, or an existing skills list. Use the job description's exact wording for those (if the resume says "Postgres" and the JD says "PostgreSQL", output "PostgreSQL"), because the filter matches language, not meaning.
+
+If the job description names a hard skill the resume shows NO evidence for, do NOT put it in `skills`. Leave it out entirely. A skills list is a set of claims the candidate has to defend in an interview — a keyword they have never touched clears the filter and then collapses in the conversation, which is a worse outcome for them than not being shortlisted. We surface those separately as gaps so the candidate can add them only if they are genuinely true. Do not fabricate experience, expertise, or accomplishments.
 
 Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. NEVER extract fragments of a RESPONSIBILITY or ACTIVITY sentence as if they were named technologies — many JD lines describe what the candidate will DO, not a tool they must know, and these must be skipped entirely unless a genuine named technology can be pulled out of them. For example: "designing and implementing scalable API architectures" → skip entirely, do NOT add "designing", "implementing", or "scalable API architectures" as skills (only add "API"/"REST APIs" if that technology is separately and explicitly named elsewhere in the JD, never derived from this sentence). "establishing and maintaining technical standards for multi-agent orchestration" → skip entirely, do NOT add "establishing", "maintaining technical standards", or "multi-agent orchestration". "experience with the Microsoft Copilot ecosystem, including Power Platform integration and Microsoft Graph API" → extract ONLY the real product names ("Microsoft Copilot", "Power Platform", "Microsoft Graph API"); discard "ecosystem" and "integration" as connective words, not skills. Rule of thumb: if a phrase is a verb-led description of an activity ("designing...", "implementing...", "establishing...", "maintaining...", "building...", "developing...", "driving...", "leading...") or a vague noun phrase about scope/process rather than a specific tool ("architecture", "ecosystem", "orchestration", "roadmap", "workload", "standard", "strategy", "pattern" used generically), it is NOT an atomic skill — extract only the concrete proper-noun technology named inside it, if any, never the sentence fragment itself. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
 
@@ -722,6 +754,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                 {'role': 'user', 'content': prompt}
             ],
             temperature=temperature,
+            seed=_ATS_SEED,  # same resume + same job -> same rewrite
             max_tokens=16384,  # gpt-4o-mini max output; avoids truncating long resumes
         )
         choice = response.choices[0] if response.choices else None
@@ -754,6 +787,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                         )},
                     ],
                     temperature=temperature,
+                    seed=_ATS_SEED,
                     max_tokens=16384,
                 )
             except Exception:
@@ -1118,7 +1152,11 @@ def _sanitize_hard_skill_list(
         if not _is_atomic_hard_skill(t):
             return
         t_lower = t.lower()
-        if t_lower in resume_lower:
+        # Word-boundary match, not a raw substring test. `t_lower in resume_lower`
+        # counted "R" as present in any word containing an r, "Go" inside
+        # "Google"/"Django", and "C" inside almost everything - inflating the
+        # 25-point skills score with matches that were never really there.
+        if _contains_skill(resume_lower, t_lower):
             if t_lower not in seen_matched:
                 seen_matched.add(t_lower)
                 newly_matched.append(kw_lower_map.get(t_lower, t))
@@ -1169,10 +1207,17 @@ def _sanitize_hard_skill_list(
     return cleaned_missing, newly_matched
 
 
-def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
+def inject_jd_hard_skills(data: dict, jd_string: str, resume_text: str = "") -> dict:
     """
-    Post-process: ensure every hard skill from the JD appears in the resume's skills array.
-    Adds missing skills without touching existing ones.
+    Post-process the skills array.
+
+    Keeps the atomic hard skills the model produced, and adds a JD skill only
+    when the original resume actually evidences it. JD skills with no evidence
+    are returned on `data["skill_gaps"]` instead of being written into the
+    resume, so we never make a claim the candidate cannot defend.
+
+    `resume_text` is the raw text of the uploaded resume. When it is omitted no
+    JD skill can be evidenced, so every unmatched JD skill becomes a gap.
     """
     if not isinstance(data, dict) or not jd_string:
         return data
@@ -1191,13 +1236,30 @@ def inject_jd_hard_skills(data: dict, jd_string: str) -> dict:
         seen_lower.add(key)
         cleaned_skills.append(skill)
 
+    # A JD skill is only added to the resume when the person's own resume backs
+    # it up. Previously every JD skill was appended regardless, which is exactly
+    # the keyword-stuffing our own guides warn against - it clears the filter and
+    # then collapses in the interview, which is a worse outcome for the candidate
+    # than not being shortlisted.
+    #
+    # Skills with no evidence are returned separately as `skill_gaps` so the user
+    # can be shown what this job wants and decide for themselves.
+    resume_evidence = str(resume_text or "")
+    skill_gaps: list[str] = []
     for skill in _extract_hard_skills_from_jd(jd_string):
         key = skill.lower()
-        if key not in seen_lower:
+        if key in seen_lower:
+            continue
+        if resume_evidence and _contains_skill(resume_evidence, skill):
+            # Named somewhere in the resume but missing from the skills list -
+            # safe to surface, because the evidence is already there.
             seen_lower.add(key)
             cleaned_skills.append(skill)
+        else:
+            skill_gaps.append(skill)
 
     data["skills"] = cleaned_skills
+    data["skill_gaps"] = skill_gaps
 
     return data
 
@@ -1462,6 +1524,107 @@ def sanitize_resume_data(data: dict) -> dict:
                     b for b in (_clean_inline_text(x) for x in item["bullets"]) if b
                 ]
 
+    return data
+
+
+_FACTCHECK_YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
+# Figures a rewrite might invent: percentages, money, multipliers, plain counts.
+_FACTCHECK_NUMBER_RE = re.compile(
+    r"\b\d+(?:\.\d+)?\s*%"          # 40%, 12.5 %
+    r"|[$₹€£]\s*\d[\d,.]*"          # $2M, ₹50,000
+    r"|\b\d+(?:\.\d+)?\s*[xX]\b"    # 3x
+    r"|\b\d[\d,]{2,}\b"             # 1,200  15000
+)
+
+
+def _factcheck_numbers(text: str) -> set[str]:
+    """Normalised figures appearing in a piece of text.
+
+    Bare four-digit years are excluded - they are reported separately as
+    `year` findings, and counting them here too listed every date twice.
+    """
+    out: set[str] = set()
+    for m in _FACTCHECK_NUMBER_RE.finditer(str(text or "")):
+        token = m.group(0).replace(" ", "").lower()
+        if _FACTCHECK_YEAR_RE.fullmatch(token):
+            continue
+        out.add(token)
+    return out
+
+
+def factcheck_against_original(data: dict, resume_text: str) -> dict:
+    """Catch facts the rewrite introduced that the original resume never had.
+
+    The prompt tells the model repeatedly not to invent, and mostly it obeys -
+    but an instruction is not a guarantee, and the one thing a candidate cannot
+    survive is defending an employer, a date or a number that was never theirs.
+    So we check rather than trust.
+
+    This is deliberately conservative: it only flags a value when the ORIGINAL
+    resume does not contain it anywhere. Rewording is expected and untouched;
+    only genuinely new facts are reported. Findings land on
+    `data["factcheck"]` - nothing is deleted here, because a false positive
+    that silently removed a real job would be worse than the problem.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    original = str(resume_text or "")
+    if not original.strip():
+        return data
+
+    original_lower = original.lower()
+    # finditer, not findall: the pattern has a group, so findall would return
+    # just the century ("20") rather than the whole year.
+    original_years = {m.group(0) for m in _FACTCHECK_YEAR_RE.finditer(original)}
+    original_numbers = _factcheck_numbers(original)
+
+    findings: list[dict] = []
+
+    def _check_value(label: str, value, where: str) -> None:
+        v = str(value or "").strip()
+        if len(v) < 3:
+            return
+        if v.lower() not in original_lower:
+            findings.append({"type": label, "value": v, "where": where})
+
+    # Employers, schools and job titles must already exist in the original.
+    for entry in data.get("experience") or []:
+        if isinstance(entry, dict):
+            _check_value("company", entry.get("company"), "experience")
+    for entry in data.get("education") or []:
+        if isinstance(entry, dict):
+            _check_value("school", entry.get("school"), "education")
+            _check_value("degree", entry.get("degree"), "education")
+
+    # Years that appear nowhere in the original resume.
+    def _walk_text(node):
+        if isinstance(node, str):
+            yield node
+        elif isinstance(node, dict):
+            for v in node.values():
+                yield from _walk_text(v)
+        elif isinstance(node, list):
+            for v in node:
+                yield from _walk_text(v)
+
+    seen_years: set[str] = set()
+    seen_numbers: set[str] = set()
+    for chunk in _walk_text(data):
+        for y in _FACTCHECK_YEAR_RE.finditer(chunk):
+            year = y.group(0)
+            if year not in original_years and year not in seen_years:
+                seen_years.add(year)
+                findings.append({"type": "year", "value": year, "where": "resume"})
+        for num in _factcheck_numbers(chunk):
+            if num not in original_numbers and num not in seen_numbers:
+                seen_numbers.add(num)
+                findings.append({"type": "number", "value": num, "where": "resume"})
+
+    if findings:
+        data["factcheck"] = {"clean": False, "findings": findings}
+    else:
+        data["factcheck"] = {"clean": True, "findings": []}
     return data
 
 
@@ -2449,14 +2612,22 @@ def _repair_false_future_chronology(parsed: dict, current_date: date | None = No
 _ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
 _ATS_CACHE_MAX = 50
 
+# Fixed seed so the same resume + job description scores the same number on
+# every run and on every machine. A score that moves on its own is not a
+# measurement, and this is a scoring product.
+_ATS_SEED = 7
+
 
 async def ats_scoring(resume_string, jd_string):
     """Gives ats score for the resume highlignting strengths and weaknesses"""
     current_date = date.today()
     _cache_key = hashlib.md5(
         (
-            "ats-chronology-v2|" + current_date.isoformat() + "|" +
-            str(resume_string) + str(jd_string)
+            "ats-chronology-v3|" + current_date.isoformat() + "|" +
+            # The separator matters: joining these with nothing meant a resume
+            # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
+            # different scans could collide and return each other's score.
+            str(resume_string) + "\x00--jd--\x00" + str(jd_string)
         ).encode()
     ).hexdigest()
     if _cache_key in _ATS_SCORE_CACHE:
@@ -2485,7 +2656,15 @@ async def ats_scoring(resume_string, jd_string):
                 {"role": "user", "content": user_message},
             ],
             temperature=0,
-            max_tokens=1500,
+            # ~62 of the 100 points come from this call's yes/no answers, so a
+            # user rescanning the same resume could see a different number.
+            # temperature=0 alone does not guarantee identical output; the seed
+            # makes the score reproducible.
+            seed=_ATS_SEED,
+            # 1500 was not enough for the full audit JSON on a long resume - it
+            # truncated and fell back to _repair_truncated_json, silently losing
+            # checks (a missing check scores 0, so truncation cost real points).
+            max_tokens=4000,
             stream=True,
         )
         chunks: list[str] = []
