@@ -2836,12 +2836,12 @@ header.navbar {
 /* =====================================================================
    AUTHOR CARD — the bio in BLOG_AUTHORS was written and never rendered.
    ===================================================================== */
-.blog-detail-page .post-author-card {
+.blog-detail-page .post-content .post-author-card {
   display: flex;
   gap: 20px;
   align-items: flex-start;
   max-width: 1000px;
-  margin: 44px 0 8px;
+  margin: 40px 0 10px;
   padding: 26px 28px;
   border: 1px solid #e6e9f2;
   border-radius: 14px;
@@ -2932,7 +2932,19 @@ header.navbar {
   align-items: center;
   gap: 10px;
   max-width: 1000px;
-  margin: 0 0 18px;
+  /* Sits under the hero CTA, so it inherits the hero column's alignment. */
+  margin: 18px 0 0;
+}
+.blog-detail-page .post-share .post-share-label { color: #93a4c4; }
+.blog-detail-page .post-share .post-share-btn {
+  border-color: rgba(147, 197, 253, .28);
+  background: rgba(255, 255, 255, .06);
+  color: #cbd8ef;
+}
+.blog-detail-page .post-share .post-share-btn:hover {
+  color: #fff;
+  border-color: rgba(147, 197, 253, .6);
+  background: rgba(255, 255, 255, .12);
 }
 .blog-detail-page .post-share-label {
   color: #7c8aa5;
@@ -3241,4 +3253,56 @@ header.navbar {
   color: #4c34e0;
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+/* The author card lives inside .post-content, so the article's serif
+   paragraph rules (.post-content p) outrank the card's own styling by one
+   element selector. Re-assert it at matching specificity. */
+.blog-detail-page .post-content .post-author-card p {
+  font-family: Inter, "Segoe UI", sans-serif;
+  margin: 0;
+}
+.blog-detail-page .post-content .post-author-card .post-author-eyebrow {
+  margin-bottom: 2px;
+  color: #7c8aa5;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.blog-detail-page .post-content .post-author-card .post-author-name {
+  font-family: "Plus Jakarta Sans", Inter, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f2133;
+}
+.blog-detail-page .post-content .post-author-card .post-author-role {
+  margin: 2px 0 8px;
+  color: #4c34e0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.blog-detail-page .post-content .post-author-card .post-author-bio {
+  color: #48546b;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+.blog-detail-page .post-content .post-author-card a.post-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 12px;
+  color: #4c34e0;
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 0;
+  background: none;
+}
+.blog-detail-page .post-content .post-author-card a.post-author-link:hover {
+  text-decoration: underline;
 }
