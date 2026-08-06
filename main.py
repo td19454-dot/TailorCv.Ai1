@@ -9906,7 +9906,12 @@ async def download_cv_pdf(request: Request):
     try:
         from weasyprint import HTML
 
-        await asyncio.to_thread(lambda: HTML(string=html_output).write_pdf(pdf_path))
+        await asyncio.to_thread(
+            lambda: HTML(string=html_output, base_url=BASE_DIR).write_pdf(
+                pdf_path,
+                optimize_size=("fonts",),
+            )
+        )
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
@@ -9938,7 +9943,12 @@ async def download_cv_pdf_browser(
     try:
         from weasyprint import HTML
 
-        await asyncio.to_thread(lambda: HTML(string=html_output).write_pdf(pdf_path))
+        await asyncio.to_thread(
+            lambda: HTML(string=html_output, base_url=BASE_DIR).write_pdf(
+                pdf_path,
+                optimize_size=("fonts",),
+            )
+        )
         return FileResponse(
             pdf_path,
             media_type="application/pdf",
@@ -9996,7 +10006,140 @@ async def rerender_template(request: Request):
 
     return JSONResponse({"html": new_html, "template_id": template_id})
 
+def _editor_cv_data_to_resume_parsed(cv_data: dict) -> dict:
+    data = cv_data if isinstance(cv_data, dict) else {}
+    personal = data.get("personalInfo", {}) if isinstance(data.get("personalInfo", {}), dict) else {}
+
+    def t(value) -> str:
+        return str(value or "").strip()
+
+    def editor_bullets(item: dict) -> list[str]:
+        raw_bullets = item.get("bullets") if isinstance(item.get("bullets"), list) else None
+        if raw_bullets is None:
+            raw_bullets = str(item.get("details", "") or "").splitlines()
+        bullets = []
+        for bullet in raw_bullets or []:
+            text = t(bullet).lstrip("-*•").strip()
+            if text:
+                bullets.append(text)
+        return bullets
+
+    def dict_items(key: str) -> list[dict]:
+        value = data.get(key, [])
+        return [item for item in value if isinstance(item, dict)] if isinstance(value, list) else []
+
+    skills = []
+    for skill in data.get("skills", []) if isinstance(data.get("skills", []), list) else []:
+        if isinstance(skill, dict):
+            name = t(skill.get("name"))
+            details = t(skill.get("details"))
+            if name or details:
+                skills.append(f"{name}: {details}" if name and details else name or details)
+        elif t(skill):
+            skills.append(t(skill))
+
+    awards = []
+    for award in data.get("awards", []) if isinstance(data.get("awards", []), list) else []:
+        if isinstance(award, dict):
+            title = t(award.get("title") or award.get("name") or award.get("text"))
+        else:
+            title = t(award)
+        if title:
+            awards.append(title)
+
+    return {
+        "name": t(personal.get("name")),
+        "headline": t(personal.get("headline")),
+        "summary": t(personal.get("summary")),
+        "contact": {
+            "email": t(personal.get("email")),
+            "phone": t(personal.get("phone")),
+            "address": t(personal.get("location")),
+            "linkedin": t(personal.get("linkedin")),
+            "github": t(personal.get("github")),
+            "portfolio": t(personal.get("portfolio")),
+            "kaggle": t(personal.get("kaggle")),
+            "google_scholar": t(personal.get("googleScholar")),
+            "leetcode": t(personal.get("leetcode")),
+        },
+        "education": [
+            {
+                "school": t(edu.get("school")),
+                "degree": t(edu.get("degree")),
+                "year": t(edu.get("year")),
+                "score": t(edu.get("score") or edu.get("details")),
+            }
+            for edu in dict_items("education")
+            if any(t(edu.get(key)) for key in ("school", "degree", "year", "score", "details"))
+        ],
+        "experience": [
+            {
+                "company": t(exp.get("company")),
+                "title": t(exp.get("title")),
+                "dates": t(exp.get("dates")),
+                "location": t(exp.get("location")),
+                "url": t(exp.get("url")),
+                "bullets": editor_bullets(exp),
+            }
+            for exp in dict_items("experience")
+            if any(t(exp.get(key)) for key in ("company", "title", "dates", "location", "url", "details")) or editor_bullets(exp)
+        ],
+        "projects": [
+            {
+                "name": t(project.get("name")),
+                "subtitle": t(project.get("subtitle")),
+                "dates": t(project.get("dates")),
+                "url": t(project.get("url")),
+                "github_link": t(project.get("github_link")),
+                "bullets": editor_bullets(project),
+            }
+            for project in dict_items("projects")
+            if any(t(project.get(key)) for key in ("name", "subtitle", "dates", "url", "github_link", "details")) or editor_bullets(project)
+        ],
+        "skills": group_skills(skills),
+        "extracurriculars": [
+            {
+                "role": t(item.get("role")),
+                "organization": t(item.get("organization")),
+                "dates": t(item.get("dates")),
+                "url": t(item.get("url")),
+                "bullets": editor_bullets(item),
+            }
+            for item in dict_items("extracurriculars")
+            if any(t(item.get(key)) for key in ("role", "organization", "dates", "url", "details")) or editor_bullets(item)
+        ],
+        "certifications": [
+            {
+                "name": t(cert.get("name")),
+                "issuer": t(cert.get("issuer")),
+                "year": t(cert.get("year")),
+                "url": t(cert.get("url")),
+            }
+            for cert in dict_items("certifications")
+            if any(t(cert.get(key)) for key in ("name", "issuer", "year", "url", "details"))
+        ],
+        "awards": awards,
+        "achievements": awards,
+        "publications": [
+            {
+                "title": t(pub.get("title")),
+                "publisher": t(pub.get("publisher")),
+                "year": t(pub.get("year")),
+                "url": t(pub.get("url")),
+            }
+            for pub in dict_items("publications")
+            if any(t(pub.get(key)) for key in ("title", "publisher", "year", "url", "details"))
+        ],
+    }
+
+
 def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
+    parsed = _editor_cv_data_to_resume_parsed(cv_data)
+    html_output, _ = _render_resume_html(parsed, "", int(template_id or 1), 1)
+    return html_output
+
+
+def _render_custom_cv_html_legacy(template_id: int, cv_data: dict) -> str:
     template_filename = f"template{template_id}.html"
     template_path = os.path.join(BASE_DIR, "resume-templates", "resume-templates", "html", template_filename)
     if not os.path.exists(template_path):
