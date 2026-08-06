@@ -10,6 +10,14 @@ keywords: tailor resume greenhouse, workday resume tips, lever ats resume, ashby
 image: public/blog-images/tailor-resume-on-greenhouse-lever-workday.webp
 ---
 
+## Key Takeaways
+
+- On an ATS board there is no aggregation layer - you are applying straight into the employer's system.
+- Each ATS behaves a little differently, and knowing the quirks helps.
+- The four tailoring moves are the same everywhere, but they matter more here because there is no human buffer.
+- By hand the flow is read, note the repeated skills, duplicate, work keywords in honestly, reorder, verify parsing, export and upload.
+- The same habit carries across every board, because they all run the same kind of filter.
+
 Everyone obsesses over LinkedIn and Indeed, but some of the best jobs never really live there. They live on company career pages, powered by applicant tracking systems like Greenhouse, Lever, Ashby and Workday. And these are the pages where tailoring matters *most*, because you are applying directly into the ATS with nothing in between.
 
 This guide covers why ATS-board applications deserve extra care, the quirks of each platform, and how to tailor and apply in one click even on career pages no other tool bothers to support.

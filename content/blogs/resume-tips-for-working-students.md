@@ -10,6 +10,14 @@ slug: resume-tips-for-working-students
 keywords: student resume, working student, part time resume, college student resume
 ---
 
+## Key Takeaways
+
+- Part-time jobs, campus roles, internships, freelance gigs, volunteer work and class projects all count as experience.
+- A slightly different structure works best for early-career students.
+- The skill that transforms a student resume is reframing routine work as impact.
+- When paid experience is thin, academic and extracurricular work fills the gap convincingly.
+- One clean page is ideal at this stage, tailored so the most relevant material sits first.
+
 Juggling school and a job is genuinely impressive, and your [resume](https://www.thetailorcv.com/modify-cv) should say so. Working students often undersell exactly the experience hiring managers value most — time management, reliability, and real-world skills built while carrying a full course load. This guide shows you how to turn part-time jobs, campus roles, and class projects into a [resume](https://www.thetailorcv.com/modify-cv) that lands interviews, even when your "professional" experience is limited.
 
 The principles here overlap with the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), scaled to a student's reality. Build your [resume](https://www.thetailorcv.com/modify-cv) in the free [resume builder](https://www.thetailorcv.com/modify-cv), keep it to one page, and score it with the ATS checker for online applications.

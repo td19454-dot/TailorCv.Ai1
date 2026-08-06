@@ -10,6 +10,14 @@ slug: resume-for-first-job-teenager
 keywords: teenager resume, first job resume, high school resume, resume with no experience teen
 ---
 
+## Key Takeaways
+
+- For a first job, managers care about attitude and dependability far more than experience.
+- You have more material than a blank page suggests - school, activities, volunteering and informal work all count.
+- Open with a one-line objective, since you have no work-experience section to lead with.
+- Turn ordinary activities into evidence of workplace skills rather than listing them flatly.
+- Never invent experience, and keep the whole thing to one clean page.
+
 Writing your first [resume](https://www.thetailorcv.com/modify-cv) with no work history feels impossible — but employers hiring teenagers aren't expecting a career. They're looking for reliability, a good attitude, and a little proof that you'll show up and try. You have far more to work with than you think, and this guide shows you exactly how to turn school, activities, and odd jobs into a first [resume](https://www.thetailorcv.com/modify-cv) that gets you hired.
 
 The same principles that help any [candidate with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) apply here, just scaled to a teen's situation. Build it in the free [resume builder](https://www.thetailorcv.com/modify-cv), keep it to one page, and confirm it's clean with the [ATS score checker](https://www.thetailorcv.com/solutions) if you're applying online.

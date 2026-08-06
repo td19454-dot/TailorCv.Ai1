@@ -10,6 +10,14 @@ slug: journalist-resume-2026
 keywords: journalist resume, reporter resume, journalism cv, journalist resume 2026
 ---
 
+## Key Takeaways
+
+- Editors hire reporters who can find stories, write cleanly under deadline, and bring an audience; the ATS scans for beat and skill keywords.
+- State your focus and where you have published right at the top.
+- Modern journalism is measured, so quantify audience and output wherever you can.
+- Cover reporting, interviewing, fact-checking, editing, SEO, CMS, analytics, and any multimedia skills.
+- Bylines are your portfolio - link your best clips prominently, ideally collected on one site.
+
 Newsrooms and digital media move fast and hire on evidence — your beats, your bylines, and the reach of your work. A journalist's [resume](https://www.thetailorcv.com/modify-cv) should read tight and lead-first, just like a good story, and it has to clear the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) that most publishers now use to screen applications. That means your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) have to match the job description before an editor ever reads your clips.
 
 Before applying, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you write in a related field, the content writer resume guide and technical writer resume guide share the same fundamentals.

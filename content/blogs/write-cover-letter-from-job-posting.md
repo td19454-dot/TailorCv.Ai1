@@ -10,6 +10,14 @@ keywords: cover letter from job posting, write cover letter from job description
 image: public/blog-images/write-cover-letter-from-job-posting.webp
 ---
 
+## Key Takeaways
+
+- Cover letters matter sometimes - on a high-volume ATS-filtered application the letter may never be opened.
+- A letter drawn from the specific posting, rather than a template, does four things a generic one cannot.
+- By hand it means reading the posting closely, identifying its top priorities, and mapping your examples to them.
+- Doing it on the page changes the equation, because the posting is already open in front of you.
+- Whatever you draft it with, a strong letter follows a simple shape.
+
 Most cover letters are written once, saved as "Cover Letter Final.docx", and pasted into every application with the company name swapped out — and recruiters can smell it instantly. A cover letter is only worth writing if it is built from the specific posting in front of you. The good news is that doing it properly no longer means starting from a blank page every time.
 
 This guide covers what a cover letter actually needs to do in 2026, how to build one from a job posting, and how to generate a genuinely tailored letter in one click straight from the page you are applying on.

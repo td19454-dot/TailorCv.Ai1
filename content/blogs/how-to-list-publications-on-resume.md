@@ -10,6 +10,14 @@ slug: how-to-list-publications-on-resume
 keywords: publications on resume, research on resume, academic resume publications
 ---
 
+## Key Takeaways
+
+- Publications belong on your resume when they are relevant to the role - not automatically.
+- Use one consistent citation style matching your field (APA, MLA, IEEE, or Chicago) and list newest first.
+- Where the section sits depends on whether the role is academic or industry.
+- For non-academic jobs, do not let publications crowd out your experience and quantified achievements.
+- For a substantial body of work, a Google Scholar or ORCID profile beats cramming everything onto the resume.
+
 For researchers, academics, technical experts, and thought leaders, publications are proof of credibility — evidence you've contributed to your field, not just worked in it. But most job seekers list them awkwardly, inconsistently, or bury them where no one looks. Done right, a publications section signals authority; done wrong, it clutters your [resume](https://www.thetailorcv.com/modify-cv) and confuses the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). This guide shows you exactly how to present them.
 
 Before you fine-tune publications, make sure the core of your [resume](https://www.thetailorcv.com/modify-cv) is strong and passes screening — confirm it with the [free ATS score checker](https://www.thetailorcv.com/solutions) and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).

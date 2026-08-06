@@ -46,6 +46,9 @@ If you've been wondering how to get better at interviews without spending money 
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Why Mock Interviews Matter
 
 Most candidates underestimate how different interviewing feels compared to simply "knowing the answer."

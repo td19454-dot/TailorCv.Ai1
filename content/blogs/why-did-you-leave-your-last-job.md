@@ -10,6 +10,14 @@ keywords: why did you leave your last job, why did you leave your previous job a
 image: public/blog-images/why-did-you-leave-your-last-job.webp
 ---
 
+## Key Takeaways
+
+- They are not really checking the reason - three other things sit underneath the question.
+- The structure is three parts and twenty to forty seconds; short is the point.
+- Being laid off is the easiest of the hard cases and carries no stigma when stated plainly.
+- Any criticism of a person lands badly and is remembered, even when justified.
+- Your resume has already told a version of this story before you walk in, and the two need to agree.
+
 This is the question people most often over-explain. The instinct is understandable — if the reason was difficult, silence feels like concealment, so you fill it. But length reads as discomfort, and discomfort invites more questions.
 
 The counter-intuitive truth is that a short, calm, forward-looking answer works better than a thorough one, almost regardless of what actually happened. This guide covers the structure that does that, and then handles the specific hard cases: fired, laid off, quit without a plan, left after a few months, or left because the job was genuinely bad.

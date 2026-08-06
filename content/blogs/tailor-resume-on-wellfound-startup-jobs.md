@@ -10,6 +10,14 @@ keywords: tailor resume wellfound, wellfound resume tips, startup job resume, an
 image: public/blog-images/tailor-resume-on-wellfound-startup-jobs.webp
 ---
 
+## Key Takeaways
+
+- Many startups have no ATS layer at all - a founder or hiring lead reads your application personally.
+- The four tailoring moves still apply, but the emphasis shifts toward impact, breadth and stage fit.
+- The honesty guardrail matters even more here, because you interview with the people you would work beside.
+- Startups pack a lot into a short job description, so read for the stack, the stage, and the range they want.
+- A portfolio site showing shipped work is gold at a startup, because a human is actually reading.
+
 Wellfound (formerly AngelList Talent) is where a huge share of startup hiring happens, and startups do not read resumes the way big companies do. Applying there with the same resume you would send to an enterprise is a mismatch — not because startups are less rigorous, but because they are looking for different things. This guide covers what startups actually want, how tailoring for Wellfound differs, and how to do it in one click.
 
 ## How Startup Hiring Is Different

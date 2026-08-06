@@ -36,6 +36,9 @@ Before interviews begin, your resume must get you into the room. Use the [Tailor
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Coding / DSA Preparation
 
 ### Topics to Master (in priority order)

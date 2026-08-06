@@ -49,6 +49,9 @@ For a deeper dive into free online practice, read [mock interview practice onlin
 
 ---
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Why AI Mock Interviews Improve Your SEO-Relevant Job Search
 
 Getting interviews starts with a strong resume. Keeping them starts with strong answers. AI mock interviews bridge the gap between "I got the callback" and "I got the offer."

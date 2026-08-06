@@ -10,6 +10,14 @@ slug: what-to-bring-to-an-interview
 keywords: what to bring to interview, interview checklist, interview essentials
 ---
 
+## Key Takeaways
+
+- For an on-site interview there is a short list of essentials worth arriving with.
+- For a remote interview, "bringing" the right setup matters just as much as carrying the right items.
+- What you leave at home or off-screen matters as much as what you bring.
+- The physical items matter, but the real preparation is mental - research the company and build a STAR story bank.
+- Arriving prepared is the best antidote to nerves, and planning your route removes one more variable.
+
 Showing up prepared is half the battle in any [interview](https://www.thetailorcv.com/interview-prep). Bringing the right things signals organization and respect for the interviewer's time — and it spares you the quiet panic of realizing you forgot something important. This guide gives you a complete checklist for both in-person and virtual interviews, plus what to leave at home.
 
 Preparation is more than packing a bag, of course. The best thing you bring is a well-rehearsed set of stories and a clear understanding of the role, so pair this checklist with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep).

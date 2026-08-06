@@ -10,6 +10,14 @@ slug: how-to-reschedule-an-interview
 keywords: reschedule interview, move interview, interview conflict email, postpone interview
 ---
 
+## Key Takeaways
+
+- The single most important rule is to reach out the moment you know there is a conflict.
+- You do not owe a detailed explanation - a brief, honest, professional reason is enough.
+- Propose two or three specific alternative slots rather than a vague "sometime next week".
+- If you are rescheduling because of a competing offer, never say so - cite a scheduling conflict and offer alternatives.
+- Rescheduling buys you extra preparation time, so use it rather than just deferring.
+
 Sometimes life gets in the way of an [interview](https://www.thetailorcv.com/interview-prep) — an illness, a family emergency, an unavoidable work conflict, or a scheduling clash between two opportunities. The good news is that rescheduling is usually fine as long as you handle it professionally and promptly. Done poorly, though, it can read as unreliable and cost you the opportunity. This guide shows you how to reschedule gracefully and keep the employer's confidence.
 
 Rescheduling well is really about communication and respect for the interviewer's time — the same qualities the interview itself is testing. Handle it right and you can even reinforce a good impression. Then use the extra time to prepare thoroughly with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep).

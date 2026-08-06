@@ -49,6 +49,9 @@ So instead of a generic "describe a challenging project," you get something tied
 
 This is the core difference from generic practice: the question already assumes you did the thing you claimed, and it is testing whether you can back it up.
 
+
+![TailorCV mock interview scorecard showing overall, completion, communication, depth, relevance and confidence scores](public/blog-images/mock-interview-scorecard-complete.webp)
+
 ## Why Resume-Based Practice Works
 
 Interviewers almost always work from your resume in front of them. They usually ask about:
