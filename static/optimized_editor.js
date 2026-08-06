@@ -1160,7 +1160,9 @@ body {
             const blob = await res.blob();
             const url  = URL.createObjectURL(blob);
             const a    = document.createElement("a");
-            a.href = url; a.download = "optimized_resume_edited.pdf";
+            const payload = getPayload() || {};
+            a.href = url;
+            a.download = payload.filename || "optimized_resume_edited.pdf";
             document.body.appendChild(a); a.click(); a.remove();
             URL.revokeObjectURL(url);
             setStatus("PDF downloaded successfully.");
@@ -1740,7 +1742,7 @@ body {
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
-            setStatus("No optimised resume found. Please optimise first.");
+            setStatus("No resume found. Please build or optimise one first.");
             return;
         }
 
@@ -1764,6 +1766,10 @@ body {
             buildAccentPanel();
             applyFreeUserProtection(frame.contentDocument);
             applyQuotaExhaustedLock(frame.contentDocument);
+
+            if (payload.source === "modify-cv") {
+                setStatus("Tip: adjust size, spacing, and colour, then download your resume.");
+            }
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {
                 hasAutoDownloaded = true;
