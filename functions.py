@@ -810,7 +810,12 @@ Job Description:
 """
 @retry(
     stop=stop_after_attempt(5),
-    wait=wait_exponential(multiplier=1, min=4, max=60)
+    wait=wait_exponential(multiplier=1, min=4, max=60),
+    # Re-raise the ORIGINAL error after the last attempt. Without this tenacity
+    # raises RetryError, which hides the cause: a quota problem, an invalid key
+    # and a transient rate limit all surfaced as the same opaque traceback and
+    # the same generic 500, so there was nothing to act on.
+    reraise=True,
 )
 async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
     """
