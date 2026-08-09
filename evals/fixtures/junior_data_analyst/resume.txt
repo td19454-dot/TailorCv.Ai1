@@ -1,0 +1,46 @@
+PRIYA RAMANATHAN
+Bengaluru, India | priya.ramanathan@example.com | +91 98765 43210
+linkedin.com/in/priya-ramanathan | github.com/priyaram
+
+EDUCATION
+B.Tech, Computer Science and Engineering
+Anna University, Chennai | 2021 - 2025
+CGPA: 8.42/10
+
+EXPERIENCE
+Data Analyst Intern
+Nexora Retail Solutions, Bengaluru | Jan 2025 - Jun 2025
+- Worked on cleaning and preparing sales data from 14 retail stores using Python and Pandas.
+- Helped the merchandising team by writing SQL queries against the PostgreSQL order database to pull weekly stock reports.
+- Was responsible for a weekly summary of slow-moving inventory that was shared with 3 category managers.
+- Contributed to a churn analysis notebook that flagged 1,200 lapsed loyalty customers.
+
+Teaching Assistant, Data Structures
+Anna University | Aug 2024 - Dec 2024
+- Assisted the course instructor in grading assignments for a class of 96 students.
+- Conducted weekly doubt-clearing sessions covering recursion, trees and graph traversal.
+
+PROJECTS
+YouTube Comment Sentiment Analyzer | github.com/priyaram/yt-sentiment
+- Built a text classification pipeline in Python using scikit-learn and NLTK to label 10,000 YouTube comments as positive, negative or neutral, reaching 91% accuracy on a held-out set.
+- Handled preprocessing including tokenization, stopword removal and TF-IDF vectorization.
+
+Inventory Management System | github.com/priyaram/inventory-api
+- Developed a REST API with FastAPI and PostgreSQL supporting stock entry, supplier records and low-stock alerts across 500+ SKUs.
+- Wrote 34 unit tests and set up a GitHub Actions workflow to run them on every push.
+
+CT Scan Image Exploration
+- Performed exploratory data analysis on 1,097 chest CT scan images across two public datasets using NumPy and Matplotlib.
+- Documented class imbalance findings that informed the sampling strategy for a follow-up classification experiment.
+
+SKILLS
+Python, SQL, Pandas, NumPy, scikit-learn, Matplotlib, FastAPI, PostgreSQL, Git, Excel
+
+CERTIFICATIONS
+Google Data Analytics Professional Certificate, Coursera, 2024
+Python for Data Science, NPTEL, 2023
+SQL for Data Analysis, Udacity, 2024
+
+ACHIEVEMENTS
+- Finalist, Anna University Inter-College Hackathon 2024 (team of 4, 210 teams total).
+- Solved 400+ problems on LeetCode.

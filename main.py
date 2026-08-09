@@ -36,10 +36,12 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    promptable_skill_gaps,
     compute_skill_match_score,
     compute_skill_match_score_structured,
     sanitize_resume_data,
     factcheck_against_original,
+    _clean_inline_text,
     _is_atomic_hard_skill,
     map_demo_links,
     extract_project_links,
@@ -65,7 +67,7 @@ from routers.billing import router as billing_router
 from routers.feedback import router as feedback_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
-from blog_system import BlogService, codehilite_css, xml_escape
+from blog_system import BlogService, canonical_filter_label, codehilite_css, xml_escape
 
 
 from starlette.middleware.sessions import SessionMiddleware
@@ -8374,8 +8376,8 @@ async def blog_listing_page(
             "page": results["page"],
             "total_pages": results["total_pages"],
             "q": q,
-            "selected_tag": tag,
-            "selected_category": category,
+            "selected_tag": canonical_filter_label(tag),
+            "selected_category": canonical_filter_label(category),
             "tags": filters["tags"],
             "top_tags": filters["top_tags"],
             "categories": filters["categories"],
@@ -9330,6 +9332,42 @@ async def reset_password(request: Request):
         db.close()
 
 
+def _jd_skills_from_ats_result(ats_result) -> list[str] | None:
+    """Pull the JD's hard skills out of an ats_scoring() response.
+
+    Both `matched` and `missing` are taken: together they are the ATS analysis's
+    full picture of what this job asks for. inject_jd_hard_skills() then decides
+    which are evidenced, so the split is recomputed against the resume rather
+    than trusted - what we adopt from the ATS pass is WHICH SKILLS COUNT, which
+    is the part the regex extractor gets wrong.
+
+    Returns None when the payload is unusable, so the caller falls back to the
+    regex extractor instead of ending up with an empty requirement list (which
+    would silently report zero gaps).
+    """
+    try:
+        parsed = parse_ai_json_response(ats_result) if isinstance(ats_result, str) else ats_result
+    except Exception:
+        logger.warning("Could not parse ATS result for JD skills; using regex extraction.")
+        return None
+
+    if not isinstance(parsed, dict):
+        return None
+
+    hard = ((parsed.get("skills") or {}).get("hard_skills") or {})
+    if not isinstance(hard, dict):
+        return None
+
+    skills: list[str] = []
+    for bucket in ("matched", "missing"):
+        for value in (hard.get(bucket) or []):
+            text = str(value or "").strip()
+            if text:
+                skills.append(text)
+
+    return skills or None
+
+
 async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
     resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
@@ -9348,11 +9386,34 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
 
     prompt = create_prompt(resume_string, jd_string)
+
+    # The ATS analysis decides which JD skills actually matter, and it is the
+    # list the user has already seen on the score page. Running it here keeps
+    # the two surfaces from reporting different missing skills for the same
+    # resume and JD. It is a separate LLM call, so it runs CONCURRENTLY with the
+    # rewrite rather than after it - wall-clock cost is close to zero.
     try:
-        response_string = await get_resume_response(prompt)
-    except Exception as e:
+        response_string, ats_result = await asyncio.gather(
+            get_resume_response(prompt),
+            ats_scoring(resume_string, jd_string),
+            return_exceptions=True,
+        )
+    except Exception:
         logger.exception("AI generation failed")
         raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+
+    if isinstance(response_string, BaseException):
+        logger.exception("AI generation failed", exc_info=response_string)
+        raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+
+    # A failed ATS pass must never break tailoring. Falling back to None makes
+    # inject_jd_hard_skills use its own regex extractor, which is what shipped
+    # before this call existed.
+    jd_hard_skills = None
+    if isinstance(ats_result, BaseException):
+        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
+    else:
+        jd_hard_skills = _jd_skills_from_ats_result(ats_result)
 
     parsed = parse_ai_json_response(response_string)
 
@@ -9403,8 +9464,9 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
 
     parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
     # resume_string is the ORIGINAL uploaded text - it is what decides whether a
-    # JD skill is evidenced or becomes a declared gap.
-    parsed = inject_jd_hard_skills(parsed, jd_string, resume_string)
+    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
+    # ATS analysis's verdict on which skills the job actually requires.
+    parsed = inject_jd_hard_skills(parsed, jd_string, resume_string, jd_skills=jd_hard_skills)
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
@@ -9736,7 +9798,14 @@ async def upload_resume(
                     "success": True,
                     "html": html_content,
                     "template_id": template_id,
+                    "style_id": style_id,
                     "resume_data": parsed if isinstance(parsed, dict) else None,
+                    # Gaps fit to show a person. The raw skill_gaps list carries
+                    # extractor noise ("another cloud data warehouse"), so the
+                    # filtering happens here rather than in the browser.
+                    "promptable_skill_gaps": promptable_skill_gaps(
+                        (parsed or {}).get("skill_gaps") if isinstance(parsed, dict) else []
+                    ),
                     "candidate_name": (
                         str((parsed or {}).get("name") or "").strip()[:255]
                         if isinstance(parsed, dict) else None
@@ -9777,6 +9846,110 @@ async def upload_resume(
             os.remove(file_path)
         if pdf_path and os.path.exists(pdf_path) and not isinstance(response, FileResponse):
             os.remove(pdf_path)
+
+
+@app.post("/api/resume/add-confirmed-skills", include_in_schema=False)
+async def add_confirmed_skills(request: Request):
+    """Add skills the candidate has personally confirmed they have.
+
+    The tailoring pipeline is deliberately strict: inject_jd_hard_skills() only
+    lets a JD skill into the resume when the uploaded text evidences it, and
+    strips anything the model claimed without backing. That stops the MODEL from
+    inventing credentials, and it must stay strict.
+
+    But it also means a skill the candidate genuinely has and simply never wrote
+    down is unreachable. This endpoint is the other door: the candidate is shown
+    the gaps and ticks the ones that are true. The trust source is different (the
+    person, not the model), so it lives here rather than by loosening the gate.
+
+    Only skills currently listed in the payload's own `skill_gaps` can be added.
+    That keeps this from becoming a general "write anything into my resume" hole
+    and means a user can only confirm something we actually asked them about.
+    """
+    require_logged_in(request)
+
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON body")
+
+    resume_data = body.get("resume_data")
+    if not isinstance(resume_data, dict):
+        raise HTTPException(status_code=400, detail="resume_data is required")
+
+    requested = body.get("skills")
+    if not isinstance(requested, list) or not requested:
+        raise HTTPException(status_code=400, detail="skills must be a non-empty list")
+
+    jd_string = str(body.get("jd_string") or "")
+    try:
+        template_id = int(body.get("template_id") or 1)
+        style_id = int(body.get("style_id") or 1)
+    except (TypeError, ValueError):
+        raise HTTPException(status_code=400, detail="template_id and style_id must be numbers")
+
+    # Only what we offered. Matching on the raw skill_gaps rather than the
+    # filtered display list keeps this tolerant of the filter changing later.
+    offered = {
+        str(g).strip().lower(): str(g).strip()
+        for g in (resume_data.get("skill_gaps") or [])
+        if str(g or "").strip()
+    }
+
+    skills = resume_data.get("skills")
+    if not isinstance(skills, list):
+        skills = []
+    existing = {str(s).strip().lower() for s in skills if str(s or "").strip()}
+
+    added: list[str] = []
+    rejected: list[str] = []
+    for raw in requested:
+        key = str(raw or "").strip().lower()
+        if not key:
+            continue
+        if key not in offered:
+            rejected.append(str(raw))
+            continue
+        if key in existing:
+            continue
+        # Use the wording from skill_gaps (which follows the JD's own casing),
+        # not whatever the client echoed back.
+        canonical = _clean_inline_text(offered[key])
+        if not canonical:
+            continue
+        skills.append(canonical)
+        existing.add(key)
+        added.append(canonical)
+
+    if not added:
+        raise HTTPException(
+            status_code=400,
+            detail="None of those skills were offered as gaps for this resume.",
+        )
+
+    resume_data["skills"] = skills
+    added_lower = {s.lower() for s in added}
+    resume_data["skill_gaps"] = [
+        g for g in (resume_data.get("skill_gaps") or [])
+        if str(g).strip().lower() not in added_lower
+    ]
+
+    try:
+        html_content, _ = _render_resume_html(resume_data, jd_string, template_id, style_id)
+    except HTTPException:
+        raise
+    except Exception:
+        logger.exception("Re-render after confirming skills failed")
+        raise HTTPException(status_code=500, detail="Could not update the resume. Please try again.")
+
+    return JSONResponse({
+        "success": True,
+        "added": added,
+        "rejected": rejected,
+        "html": html_content,
+        "resume_data": resume_data,
+        "promptable_skill_gaps": promptable_skill_gaps(resume_data.get("skill_gaps")),
+    })
 
 
 @app.post("/api/download-html-pdf")
