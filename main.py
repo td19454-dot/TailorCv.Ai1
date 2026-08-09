@@ -1599,8 +1599,13 @@ _RESTORE_DATE = (
 # Open-ended range words: "Present", "Current", "Currently", "Now", "Ongoing",
 # "Till Date", "To Date", etc. (a range like "12/2024 - Currently").
 _RESTORE_OPEN_END = r"(?:present|current(?:ly)?|ongoing|now|(?:to|till)\s*(?:date|now|present))"
+# Range separators. A dash was the only form recognised, so a leaked header row
+# written with a word - "Outlier May 2026 to June 2026" - was not detected as
+# meta and got restored as a bullet on the PREVIOUS entry.
+_RESTORE_RANGE_SEP = r"(?:\s*[-–—]\s*|\s+(?:to|until|through|thru)\s+)"
 _RESTORE_DATE_RANGE = (
-    _RESTORE_DATE + r"\s*[-–—]\s*(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r")"
+    _RESTORE_DATE + _RESTORE_RANGE_SEP +
+    r"(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r"|date)"
 )
 
 
