@@ -9339,6 +9339,31 @@ async def reset_password(request: Request):
         db.close()
 
 
+def _ats_resume_text_for(pdf_text: str, linkedin_url: str | None) -> str:
+    """Build the exact resume text ats_scoring() is fed.
+
+    This must match between /get-score and the optimizer BYTE FOR BYTE, and the
+    reason is not tidiness. The two flows used different extractors -
+    extract_pdf_text for tailoring, _extract_pdf_text_for_ats for scoring - which
+    differ only in whitespace around the PDF's icon glyphs (" +91..." vs
+    "+91..."). That was enough to:
+
+      1. miss the _ATS_SCORE_CACHE, since the cache key hashes the resume text,
+         so the same resume scored twice cost two LLM calls; and
+      2. hand the model two different documents, which made it return two
+         different missing-skill lists. The score page showed 13 missing hard
+         skills while the optimizer showed 5, for the same resume and the same
+         job description.
+
+    Keeping the construction in one function is what stops those two call sites
+    drifting apart again.
+    """
+    text = str(pdf_text or "")
+    if linkedin_url:
+        text += f"\nLinkedIn: {linkedin_url}"
+    return text
+
+
 def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str]]:
     """Pull the JD's skills out of an ats_scoring() response.
 
@@ -9396,14 +9421,23 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
     normalized_resume_string = normalize_links(resume_string)
 
-    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially
+    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
+    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
+    # see _ats_resume_text_for below for why that has to match byte for byte.
     link_tasks = [
         asyncio.to_thread(extract_project_links, normalized_resume_string),
         asyncio.to_thread(extract_publication_links, normalized_resume_string),
         asyncio.to_thread(map_project_demo_links, normalized_resume_string),
         asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
+        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
     ]
-    extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
+    (
+        extracted_links, extracted_pub_links, mapped_links, project_link_map,
+        ats_pdf_text, ats_linkedin_url,
+    ) = await asyncio.gather(*link_tasks)
+
+    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
 
     prompt = create_prompt(resume_string, jd_string)
 
@@ -9415,7 +9449,7 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     try:
         response_string, ats_result = await asyncio.gather(
             get_resume_response(prompt),
-            ats_scoring(resume_string, jd_string),
+            ats_scoring(ats_resume_string, jd_string),
             return_exceptions=True,
         )
     except Exception:
@@ -10167,8 +10201,9 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
                 asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
                 asyncio.to_thread(_detect_two_column_layout, file_path),
             )
-            if linkedin_url:
-                resume_string += f"\nLinkedIn: {linkedin_url}"
+            # Shared with the optimizer so both flows hash to the same cache key
+            # and get the same verdict - see _ats_resume_text_for.
+            resume_string = _ats_resume_text_for(resume_string, linkedin_url)
             ats_score = await ats_scoring(resume_string, jd_string)
 
         result = parse_ai_json_response(ats_score)
