@@ -1131,6 +1131,7 @@ def _first_significant_token(text: str) -> str:
 
 
 _LAST_PROJECT_TITLE_POSITIONS: list = []
+_LAST_LINK_DECISIONS: list = []
 
 
 def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], section: str = "projects") -> dict[str, list[tuple[str, str]]]:
@@ -1323,8 +1324,9 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
     # Exposed for project_links_debug.txt. When a link lands on the wrong
     # project it is because a title was not located, and this is the only way to
     # see that from a real run.
-    global _LAST_PROJECT_TITLE_POSITIONS
+    global _LAST_PROJECT_TITLE_POSITIONS, _LAST_LINK_DECISIONS
     _LAST_PROJECT_TITLE_POSITIONS = list(title_positions)
+    _LAST_LINK_DECISIONS = []
 
     # Links we could not attribute by text. Parked rather than dropped.
     unplaced: list[dict] = []
@@ -1382,6 +1384,14 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
 
             label = "GitHub" if "github.com" in lowered_uri else "Link"
             matched_project, dist = match_project(top, bottom, candidates)
+            # Where the link physically sits and who claimed it. Title positions
+            # alone were not enough: every title was located and links STILL went
+            # to the wrong project, which means the link's own coordinates are
+            # the missing half of the picture.
+            _LAST_LINK_DECISIONS.append({
+                "uri": uri, "page": page_idx, "top": round(top, 1),
+                "x0": round(x0, 1), "matched": matched_project, "dist": round(dist, 1),
+            })
             if not matched_project:
                 # Park it. Dropping the link here is what made a whole project
                 # lose its links whenever the layout put them somewhere the text
@@ -10136,6 +10146,12 @@ async def _optimize_resume_core(
                 _located.add(_nm)
                 _pf.write(f"  page{_pg} top={_tp:.1f}  {_nm!r}\n")
             _pf.write(f"  NOT LOCATED: {[n for n in (project_names or []) if n not in _located]}\n")
+            _pf.write("\n=== LINK POSITIONS AND DECISIONS ===\n")
+            for _d in (_LAST_LINK_DECISIONS or []):
+                _pf.write(
+                    f"  page{_d['page']} top={_d['top']:>7} x0={_d['x0']:>6}"
+                    f" -> {_d['matched']!r} (dist {_d['dist']})  {_d['uri']}\n"
+                )
             _pf.write("\n=== TEXT MAP ===\n")
             _pf.write(_json.dumps(project_link_map or {}, indent=1) + "\n")
             _pf.write("\n=== EFFECTIVE MAP ===\n")
