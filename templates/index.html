@@ -666,24 +666,36 @@
             padding-top: 0 !important;
         }
         @media (max-width: 768px) {
-            header.navbar + .ext-promo-bar { margin-top: 74px !important; }
+            header.navbar + .ext-promo-bar { margin-top: 38px !important; }
         }
     </style>
 
-
     <style>
-        #primary-nav-index .mobile-feature-link {
-            display: none;
-        }
-
+        /* Mobile navbar: the site-wide base (style3.css `header.navbar{height:100px}`)
+           has higher specificity than style3's own mobile override, so mobile was
+           stuck at the desktop-sized 100px bar — much thicker than intended. Slim
+           it down here, and while at it swap the hamburger (which opens the drawer
+           containing Features) to the left edge with the logo centered, instead of
+           the logo pinned left and the hamburger floating at an awkward 63%. */
         @media (max-width: 768px) {
-            #primary-nav-index .mobile-feature-link {
-                display: block;
-                text-align: center;
+            header.navbar {
+                height: 64px !important;
             }
-
-            #primary-nav-index .features-dropdown {
-                display: none;
+            header.navbar + * {
+                padding-top: 64px !important;
+            }
+            header.navbar .logo {
+                position: absolute !important;
+                left: 50% !important;
+                top: 50% !important;
+                transform: translate(-50%, -50%) !important;
+                margin: 0 !important;
+            }
+            header.navbar .mobile-menu-toggle {
+                left: 14px !important;
+                transform: translateY(-50%) !important;
+                width: 46px !important;
+                height: 32px !important;
             }
         }
 
@@ -2579,7 +2591,7 @@
             aria-label="Close notification">&times;</button>
     </div>
 
-    <a href="/solutions" class="mobile-sticky-cta" id="mobile_sticky_optimize_resume" aria-label="Optimize resume for free">Optimize Resume Free</a>
+    
 
 
 
