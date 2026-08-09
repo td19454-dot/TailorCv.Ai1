@@ -1771,78 +1771,90 @@ body {
 }
 .tc-gap-backdrop {
     position: absolute; inset: 0;
-    background: rgba(2,8,24,0.78);
-    backdrop-filter: blur(7px);
+    background: rgba(2,8,24,0.55);
+    backdrop-filter: blur(6px);
     animation: tc-bgin 0.3s ease both;
 }
 .tc-gap-modal {
     position: relative; z-index: 2;
-    background: linear-gradient(160deg, #0d1f3c, #0a1628);
-    border: 1px solid rgba(59,130,246,0.35);
-    border-radius: 20px;
-    padding: 1.6rem 1.5rem 1.4rem;
-    width: min(620px, 94vw);
+    background: #ffffff;
+    border: 1px solid rgba(15,23,42,0.07);
+    border-radius: 16px;
+    padding: 1.35rem 1.4rem 1.15rem;
+    width: min(560px, 92vw);
     max-height: 88vh; overflow-y: auto;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    box-shadow: 0 24px 60px rgba(15,23,42,0.22), 0 2px 6px rgba(15,23,42,0.06);
     animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    -webkit-font-smoothing: antialiased;
 }
 .tc-gap-modal h2 {
-    margin: 0 0 0.4rem; color: #e2e8f0; font-size: 1.2rem; font-weight: 700;
+    margin: 0 0 0.3rem;
+    color: #0f172a; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
 }
-.tc-gap-sub { margin: 0 0 0.9rem; color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+.tc-gap-sub {
+    margin: 0 0 0.95rem;
+    color: #64748b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
+}
 .tc-gap-toolbar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 0.75rem; margin-bottom: 0.6rem;
+    gap: 0.75rem; margin-bottom: 0.55rem;
+    border-top: 1px solid rgba(15,23,42,0.06); padding-top: 0.75rem;
 }
-.tc-gap-count { color: #64748b; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; }
+.tc-gap-count {
+    color: #94a3b8; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.01em;
+}
 .tc-gap-selectall {
     background: none; border: none; padding: 0;
-    color: #60a5fa; font-size: 0.82rem; font-weight: 600;
-    cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+    color: #2563eb; font-size: 0.72rem; font-weight: 500;
+    cursor: pointer; text-decoration: none;
     transition: color 0.18s ease;
 }
-.tc-gap-selectall:hover { color: #93c5fd; }
-.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.3rem; }
+.tc-gap-selectall:hover { color: #1d4ed8; text-decoration: underline; text-underline-offset: 3px; }
+.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.15rem; }
 .tc-gap-pill {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    background: rgba(148,163,184,0.08);
-    border: 1px solid rgba(148,163,184,0.32);
+    display: inline-flex; align-items: center; gap: 0.38rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
     border-radius: 999px;
-    padding: 0.45rem 0.9rem;
-    color: #cbd5e1; font-size: 0.88rem; font-weight: 500;
-    cursor: pointer; transition: all 0.18s ease;
+    padding: 0.32rem 0.7rem 0.32rem 0.45rem;
+    color: #475569; font-size: 0.76rem; font-weight: 400;
+    cursor: pointer; transition: all 0.16s ease;
 }
-.tc-gap-pill:hover { border-color: rgba(59,130,246,0.6); color: #e2e8f0; }
+.tc-gap-pill:hover { border-color: #cbd5e1; background: #f8fafc; color: #1e293b; }
 .tc-gap-pill .tc-gap-tick {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 16px; height: 16px; border-radius: 50%;
-    border: 1.5px solid rgba(148,163,184,0.5);
-    font-size: 10px; line-height: 1; color: transparent;
-    transition: all 0.18s ease;
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid #cbd5e1; background: #fff;
+    font-size: 8px; line-height: 1; color: transparent;
+    transition: all 0.16s ease;
 }
 .tc-gap-pill[aria-pressed="true"] {
-    background: rgba(34,197,94,0.14);
-    border-color: rgba(34,197,94,0.65);
-    color: #86efac;
+    background: #eff6ff;
+    border-color: #93c5fd;
+    color: #1d4ed8; font-weight: 500;
 }
 .tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
-    background: #22c55e; border-color: #22c55e; color: #05240f;
+    background: #2563eb; border-color: #2563eb; color: #fff;
 }
-.tc-gap-actions { display: flex; justify-content: flex-end; gap: 0.6rem; flex-wrap: wrap; }
+.tc-gap-actions {
+    display: flex; justify-content: flex-end; align-items: center;
+    gap: 0.5rem; flex-wrap: wrap;
+}
 .tc-gap-btn {
-    border-radius: 10px; padding: 0.55rem 1.1rem;
-    font-size: 0.9rem; font-weight: 600; cursor: pointer;
-    transition: all 0.2s; border: 1px solid transparent;
+    border-radius: 8px; padding: 0.45rem 0.95rem;
+    font-size: 0.78rem; font-weight: 500; cursor: pointer;
+    transition: all 0.18s; border: 1px solid transparent;
 }
 .tc-gap-skip {
-    background: none; border-color: rgba(148,163,184,0.3); color: #94a3b8;
+    background: none; border-color: #e2e8f0; color: #64748b;
 }
-.tc-gap-skip:hover { border-color: #94a3b8; color: #e2e8f0; }
+.tc-gap-skip:hover { border-color: #cbd5e1; background: #f8fafc; color: #334155; }
 .tc-gap-add {
-    background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff;
-    box-shadow: 0 6px 18px rgba(37,99,235,0.35);
+    background: #2563eb; color: #fff;
+    box-shadow: 0 1px 2px rgba(37,99,235,0.25);
 }
-.tc-gap-add:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.tc-gap-add:hover:not(:disabled) { background: #1d4ed8; }
+.tc-gap-add:disabled { background: #cbd5e1; color: #f1f5f9; cursor: not-allowed; box-shadow: none; }
 @media (max-width: 480px) {
     .tc-gap-actions { flex-direction: column-reverse; }
     .tc-gap-btn { width: 100%; }
