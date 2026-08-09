@@ -1779,9 +1779,9 @@ body {
     position: relative; z-index: 2;
     background: #ffffff;
     border: 1px solid rgba(15,23,42,0.07);
-    border-radius: 16px;
-    padding: 1.35rem 1.4rem 1.15rem;
-    width: min(560px, 92vw);
+    border-radius: 18px;
+    padding: 2rem 2.1rem 1.7rem;
+    width: min(720px, 94vw);
     max-height: 88vh; overflow-y: auto;
     box-shadow: 0 24px 60px rgba(15,23,42,0.22), 0 2px 6px rgba(15,23,42,0.06);
     animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
@@ -1789,7 +1789,7 @@ body {
 }
 .tc-gap-modal h2 {
     margin: 0 0 0.3rem;
-    color: #0f172a; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
+    color: #0f172a; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
 }
 .tc-gap-sub {
     margin: 0 0 0.95rem;
@@ -1801,25 +1801,27 @@ body {
     border-top: 1px solid rgba(15,23,42,0.06); padding-top: 0.75rem;
 }
 .tc-gap-count {
-    color: #94a3b8; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.01em;
+    color: #94a3b8; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
 }
 .tc-gap-selectall {
     background: none; border: none; padding: 0;
-    color: #2563eb; font-size: 0.72rem; font-weight: 500;
+    color: #2563eb; font-size: 0.72rem; font-weight: 400;
     cursor: pointer; text-decoration: none;
     transition: color 0.18s ease;
 }
 .tc-gap-selectall:hover { color: #1d4ed8; text-decoration: underline; text-underline-offset: 3px; }
-.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.15rem; }
+.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
 .tc-gap-pill {
     display: inline-flex; align-items: center; gap: 0.38rem;
     background: #fff;
     border: 1px solid #e2e8f0;
     border-radius: 999px;
-    padding: 0.32rem 0.7rem 0.32rem 0.45rem;
+    padding: 0.4rem 0.85rem 0.4rem 0.55rem;
     color: #475569; font-size: 0.76rem; font-weight: 400;
     cursor: pointer; transition: all 0.16s ease;
 }
+.tc-gap-pill:focus { outline: none; }
+.tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,0.18); }
 .tc-gap-pill:hover { border-color: #cbd5e1; background: #f8fafc; color: #1e293b; }
 .tc-gap-pill .tc-gap-tick {
     display: inline-flex; align-items: center; justify-content: center;
@@ -1831,7 +1833,7 @@ body {
 .tc-gap-pill[aria-pressed="true"] {
     background: #eff6ff;
     border-color: #93c5fd;
-    color: #1d4ed8; font-weight: 500;
+    color: #1d4ed8; font-weight: 400;
 }
 .tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
     background: #2563eb; border-color: #2563eb; color: #fff;
@@ -1842,7 +1844,7 @@ body {
 }
 .tc-gap-btn {
     border-radius: 8px; padding: 0.45rem 0.95rem;
-    font-size: 0.78rem; font-weight: 500; cursor: pointer;
+    font-size: 0.78rem; font-weight: 400; cursor: pointer;
     transition: all 0.18s; border: 1px solid transparent;
 }
 .tc-gap-skip {
