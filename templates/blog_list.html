@@ -46,7 +46,7 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
     </style>
-    <link rel="stylesheet" href="/static/blog.css?v=75">
+    <link rel="stylesheet" href="/static/blog.css?v=76">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 </head>
@@ -72,17 +72,6 @@
             <a class="tag {% if c == selected_category %}active{% endif %}" href="/blog?q={{ q | urlencode }}&category={{ c | urlencode }}">{{ c }}</a>
             {% endfor %}
         </div>
-        {# Topic chips. ?tag= was already supported by the route and survives
-           pagination — it simply had no UI until now. #}
-        {% if top_tags %}
-        <div class="topic-row" aria-label="Browse by topic">
-            <span class="topic-row-label">Topics</span>
-            {% for t in top_tags %}
-            <a class="topic-chip {% if t == selected_tag %}active{% endif %}"
-               href="/blog?tag={{ '' if t == selected_tag else t | urlencode }}">{{ t }}</a>
-            {% endfor %}
-        </div>
-        {% endif %}
     </section>
 
     {% if show_featured and posts %}
@@ -208,8 +197,6 @@
 </script>
 </body>
 </html>
-
-
 
 
 
