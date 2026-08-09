@@ -3644,6 +3644,14 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     # Cross-project dedup: a URL must never appear under more than one project, and
     # cap per-project links — the AI sometimes dumps every resume link onto a single
     # project (e.g. the last one), producing "GitHub | Link | Link | Link ..." rows.
+    #
+    # This is a guard against the AI guessing wrong, so it must NOT apply to links a
+    # person typed in themselves. In the /modify-cv builder the user fills a Live URL
+    # and GitHub URL per project, and reusing one URL across several projects is a
+    # legitimate thing to do — a shared demo site, or one profile link. Deduping
+    # those silently blanked every project after the first, which read as "the
+    # builder ignores the links I entered".
+    author_is_user = bool(parsed.get("user_authored_links"))
     seen_project_hrefs: set[str] = set()
     MAX_PROJECT_LINKS = 4
     for project in parsed.get("projects", []) or []:
@@ -3654,7 +3662,9 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         _seen_here: set[str] = set()
         for _l in links:
             _h = str(_l.get("href", "")).strip().lower()
-            if not _h or _h in _seen_here or _h in seen_project_hrefs:
+            if not _h or _h in _seen_here:
+                continue
+            if not author_is_user and _h in seen_project_hrefs:
                 continue
             _seen_here.add(_h)
             _filtered.append(_l)
@@ -10983,6 +10993,10 @@ def _editor_cv_data_to_resume_parsed(cv_data: dict) -> dict:
 
 def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
     parsed = _editor_cv_data_to_resume_parsed(cv_data)
+    # Everything here was typed by the person in the /modify-cv builder, so their
+    # links are taken at face value - including the same URL on more than one
+    # project. See the cross-project dedup in build_resume_context.
+    parsed["user_authored_links"] = True
     html_output, _ = _render_resume_html(parsed, "", int(template_id or 1), 1)
     return html_output
 
