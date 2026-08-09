@@ -85,12 +85,21 @@ other people's personal data and must never be committed. Then fill in
 
 ## Known limitations
 
+- **The harness uses the regex JD extractor; production no longer does.**
+  `_optimize_resume_core` now takes its JD skill list from the ATS analysis
+  (`ats_scoring`), which understands "PostgreSQL or MySQL" and required vs
+  preferred. `run_eval.py` deliberately calls `inject_jd_hard_skills` without
+  that list, so a run stays deterministic and costs one LLM call instead of
+  two. Consequence: the `skill_gating` and `evidence` columns are measured
+  against `_extract_hard_skills_from_jd`, not against what a real user now
+  sees. They remain valid as a *model-behaviour probe* — every model is scored
+  against the same list — but they are no longer the production gap list.
 - `_extract_hard_skills_from_jd` returns sentence fragments alongside real
   skills ("another cloud data warehouse", "consumer goods analytics",
   "e-commerce"). These inflate the denominator, so `evidence` and
   `skill_gating` scores read lower than reality. Fine for A/B comparison —
   every model gets the same inflated denominator — but don't read the absolute
-  numbers as truth until the extractor is fixed.
+  numbers as truth.
 - Matching is literal (`_contains_skill` is a word-boundary regex). A resume
   that migrated Jenkins to GitHub Actions still scores `CI/CD` as missing.
 - Fixture count is small. Two fixtures catch gross regressions, not subtle
