@@ -34,6 +34,15 @@ META_ROWS = [
     # role/company + date range
     "Freelancer Dec 2025 – Present",
     "Machine Learning Engineer Sep 2025 - Present",
+    # ranges joined by a WORD, not a dash. Only dashes were recognised, so
+    # "Outlier May 2026 to June 2026" was restored as a bullet on the entry
+    # ABOVE it — the next job's header row appearing inside the previous job.
+    "Outlier May 2026 to June 2026",
+    "May 2026 to June 2026",
+    "Jan 2024 to Present",
+    "Jan 2024 to date",
+    "Remote Jan 2024 until Mar 2024",
+    "Data Analyst Feb 2023 through Aug 2023",
     # location + numeric date range
     "San Francisco, USA 12/2022 – 11/2024",
     "Thailand 01/2022 - 12/2022",
@@ -55,6 +64,10 @@ def test_meta_rows_are_skipped():
 # Real bullets that must be KEPT (is_meta -> False)
 # --------------------------------------------------------------------------- #
 REAL_BULLETS = [
+    # Widening the range separator to accept "to"/"until"/"through" must not
+    # start eating sentences that merely mention a span of months.
+    "Reduced onboarding time from Jan 2024 to June 2024 by 15%.",
+    "Led a team of four mentees from May 2026 to June 2026 across two products.",
     "Led a team of four mentees, enhancing their skills in data science.",
     "Developed an Anti-spoofing Face-App, reducing identity fraud by 70%.",
     "Secured a position among the Top 100 Kaggle contributors globally in 2024",

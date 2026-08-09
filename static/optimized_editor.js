@@ -2036,8 +2036,20 @@ body {
                     promptable_skill_gaps: data.promptable_skill_gaps || [],
                 });
 
-                // Re-render the preview. The frame's existing load handler
-                // re-applies zoom, spacing and the edit overlay.
+                // Re-render the preview. captureBaseFonts/captureBaseLineSpacing
+                // stamp data-base-font and data-base-lh onto the nodes of the
+                // document they measure, and both are one-shot guarded. A fresh
+                // srcdoc has none of those attributes, so leaving the flags set
+                // means the A+/A-/S+/S- controls silently stop doing anything.
+                // Same reset the template switcher does on its re-render.
+                //
+                // currentZoom, currentLineSpacing and currentAccentColor are
+                // deliberately kept: the load handler's applyWordStylePreview()
+                // re-applies them once the new document has been re-measured, so
+                // the user's adjustments survive adding a skill.
+                baseFontsCaptured        = false;
+                baseLineSpacingsCaptured = false;
+
                 currentHtml = addEditingOverlay(data.html);
                 frame.srcdoc = currentHtml;
 
