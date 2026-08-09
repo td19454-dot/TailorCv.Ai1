@@ -1,0 +1,32 @@
+{
+  "name": "junior_data_analyst",
+  "notes": "Early-career analyst against a commercial-analytics JD. Tests the core promise: the JD demands Power BI/Tableau/Snowflake/Airflow/MySQL and the resume evidences none of them, so any model that lists them is fabricating credentials. Also carries deliberately weak openers ('Worked on', 'Helped', 'Was responsible for', 'Contributed to') that a good rewrite should strengthen without inventing scale, and real metrics (10,000 comments, 91%, 1,097 images, 500+ SKUs, 34 tests) that should survive.",
+
+  "expected_counts": {
+    "experience": 2,
+    "projects": 3,
+    "education": 1,
+    "certifications": 3,
+    "achievements": 2
+  },
+
+  "expected_entry_names": [
+    "nexora",
+    "teaching assistant",
+    "sentiment",
+    "inventory management",
+    "ct scan",
+    "anna university",
+    "google data analytics",
+    "nptel",
+    "udacity"
+  ],
+
+  "unevidenced_jd_skills": [
+    "Power BI",
+    "Tableau",
+    "Snowflake",
+    "Airflow",
+    "MySQL"
+  ]
+}

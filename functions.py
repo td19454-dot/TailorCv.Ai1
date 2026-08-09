@@ -1246,7 +1246,12 @@ def _sanitize_hard_skill_list(
     return cleaned_missing, newly_matched
 
 
-def inject_jd_hard_skills(data: dict, jd_string: str, resume_text: str = "") -> dict:
+def inject_jd_hard_skills(
+    data: dict,
+    jd_string: str,
+    resume_text: str = "",
+    jd_skills: list[str] | None = None,
+) -> dict:
     """
     Post-process the skills array.
 
@@ -1257,6 +1262,14 @@ def inject_jd_hard_skills(data: dict, jd_string: str, resume_text: str = "") -> 
 
     `resume_text` is the raw text of the uploaded resume. When it is omitted no
     JD skill can be evidenced, so every unmatched JD skill becomes a gap.
+
+    `jd_skills` overrides which skills the job description is considered to
+    require. Callers pass the ATS analysis's own skill list so the optimizer and
+    the ATS score page stop disagreeing about what is missing: the regex
+    extractor used by default has no notion of "PostgreSQL or MySQL" being
+    satisfied by PostgreSQL alone, nor of required vs preferred qualifications,
+    so it reported gaps the ATS page correctly ignored. Falls back to
+    _extract_hard_skills_from_jd() when not supplied.
     """
     if not isinstance(data, dict) or not jd_string:
         return data
@@ -1285,22 +1298,140 @@ def inject_jd_hard_skills(data: dict, jd_string: str, resume_text: str = "") -> 
     # can be shown what this job wants and decide for themselves.
     resume_evidence = str(resume_text or "")
     skill_gaps: list[str] = []
-    for skill in _extract_hard_skills_from_jd(jd_string):
+
+    if jd_skills is None:
+        required_skills = _extract_hard_skills_from_jd(jd_string)
+    else:
+        # Supplied lists come from the ATS analysis, i.e. an LLM, so they still
+        # get the same atomic-skill sanitising the regex path relies on.
+        required_skills = []
+        seen_required: set[str] = set()
+        for candidate in jd_skills:
+            skill = _clean_inline_text(candidate)
+            if not skill or not _is_atomic_hard_skill(skill):
+                continue
+            key = skill.lower()
+            if key in seen_required:
+                continue
+            seen_required.add(key)
+            required_skills.append(skill)
+
+    for skill in required_skills:
         key = skill.lower()
-        if key in seen_lower:
-            continue
+        claimed_by_model = key in seen_lower
+
         if resume_evidence and _contains_skill(resume_evidence, skill):
             # Named somewhere in the resume but missing from the skills list -
             # safe to surface, because the evidence is already there.
-            seen_lower.add(key)
-            cleaned_skills.append(skill)
-        else:
-            skill_gaps.append(skill)
+            if not claimed_by_model:
+                seen_lower.add(key)
+                cleaned_skills.append(skill)
+            continue
+
+        if claimed_by_model:
+            # The model asserted a JD skill the resume does not evidence. This
+            # used to be skipped as already-present, which meant the unbacked
+            # claim shipped in the resume AND was dropped from skill_gaps - the
+            # candidate was told they had a skill they had never touched. That
+            # is the precise failure this function exists to prevent, so strip
+            # the claim and report it as a gap like any other.
+            #
+            # Only done when we actually have resume text to check against;
+            # with no text nothing can be evidenced and stripping the model's
+            # whole skills list would be worse than leaving it alone.
+            if not resume_evidence:
+                continue
+            cleaned_skills = [s for s in cleaned_skills if s.lower() != key]
+            seen_lower.discard(key)
+
+        skill_gaps.append(skill)
 
     data["skills"] = cleaned_skills
     data["skill_gaps"] = skill_gaps
 
     return data
+
+
+# Industry/domain nouns a job description uses to describe the BUSINESS, not a
+# tool the candidate could own. "Do you have e-commerce?" is not a question
+# anyone can answer, so these must never be offered as a claimable gap.
+_INDUSTRY_DOMAIN_TERMS: set[str] = {
+    "retail", "e-commerce", "ecommerce", "fintech", "healthcare", "saas",
+    "logistics", "banking", "insurance", "telecom", "telecommunications",
+    "edtech", "gaming", "manufacturing", "consumer goods",
+    "consumer goods analytics", "supply chain", "b2b", "b2c",
+    "startup", "enterprise", "regulated domain", "payments",
+}
+
+# Category names that stand in for a real tool ("version control" is Git;
+# "cloud platform" is AWS). The tool itself is extracted separately, so the
+# category adds nothing and cannot meaningfully be ticked.
+_SKILL_CATEGORY_TERMS: set[str] = {
+    "version control", "source control", "cloud data warehouse",
+    "data warehouse", "data warehousing", "relational database",
+    "relational databases", "database", "databases", "nosql database",
+    "nosql databases", "programming language", "programming languages",
+    "cloud platform", "cloud platforms", "cloud", "web framework",
+    "web frameworks", "scripting language", "scripting languages",
+    "operating system", "operating systems", "api", "apis",
+    "framework", "frameworks", "library", "libraries", "tool", "tools",
+}
+
+# Placeholder references lifted from JD prose ("or another cloud data
+# warehouse", "a comparable caching layer"). They name no specific thing.
+_VAGUE_SKILL_REFERENCE_RE = re.compile(
+    r'^(?:another|other|similar|comparable|equivalent|alternative|any|some|'
+    r'various|several|related|preferred|modern|standard)\b',
+    re.IGNORECASE,
+)
+
+
+def promptable_skill_gaps(gaps) -> list[str]:
+    """The subset of `skill_gaps` worth asking a candidate to confirm.
+
+    `skill_gaps` is built from _extract_hard_skills_from_jd(), which returns
+    sentence fragments alongside real technologies. Shown verbatim it produces
+    prompts like "do you have another cloud data warehouse?" or "do you have
+    consumer goods analytics?", which makes the feature look broken and trains
+    people to ignore it.
+
+    Deliberately conservative. A gap dropped here can never be claimed by the
+    candidate, so a borderline term is kept: one slightly odd pill costs far
+    less than silently hiding a skill the person actually has. Methodologies
+    and artifacts (Agile, BPMN, user stories, wireframes) are therefore KEPT -
+    a business analyst legitimately lists those on a resume.
+
+    This is a display filter. `skill_gaps` itself is untouched, so scoring and
+    anything else reading it are unaffected.
+    """
+    promptable: list[str] = []
+    seen: set[str] = set()
+
+    for raw_gap in (gaps or []):
+        skill = _strip_skill_qualifiers(str(raw_gap or ""))
+        if not skill:
+            continue
+
+        normalized = re.sub(r"\s+", " ", skill).lower()
+        if normalized in seen:
+            continue
+        if not _is_atomic_hard_skill(skill):
+            continue
+        if _VAGUE_SKILL_REFERENCE_RE.match(normalized):
+            continue
+        if normalized in _INDUSTRY_DOMAIN_TERMS or normalized in _SKILL_CATEGORY_TERMS:
+            continue
+
+        # Collapse "Kafka" / "Apache Kafka" style pairs, which the JD extractor
+        # emits together. First seen wins, so the canonical short form is the
+        # one offered rather than two pills for the same thing.
+        if any(_contains_skill(skill, kept) or _contains_skill(kept, skill) for kept in promptable):
+            continue
+
+        seen.add(normalized)
+        promptable.append(skill)
+
+    return promptable
 
 
 _SKILLS_SECTION_HEADER_RE = re.compile(

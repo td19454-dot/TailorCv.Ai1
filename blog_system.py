@@ -16,6 +16,63 @@ except Exception:  # pragma: no cover
 
 WORD_PER_MINUTE = 220
 
+FILTER_ALIASES = {
+    "ats": "ATS Optimization",
+    "ats optimization": "ATS Optimization",
+    "ats resume": "ATS Optimization",
+    "resume": "Resume Writing",
+    "resume tips": "Resume Writing",
+    "resume writing": "Resume Writing",
+    "resume optimization": "Resume Optimization",
+    "resume tailoring": "Resume Optimization",
+    "career advice": "Career Advice",
+    "job search": "Job Search",
+    "portfolio": "Portfolio",
+    "portfolio guide": "Portfolio",
+    "interview prep": "Interview Preparation",
+    "interview preparation": "Interview Preparation",
+    "cover letter": "Cover Letters",
+    "cover letters": "Cover Letters",
+    "linkedin": "LinkedIn",
+}
+
+CATEGORY_ORDER = [
+    "ATS Optimization",
+    "Resume Optimization",
+    "Resume Writing",
+    "Job Search",
+    "Career Advice",
+    "Cover Letters",
+    "Interview Preparation",
+    "LinkedIn",
+    "Portfolio",
+    "Resume Examples",
+    "Comparisons",
+]
+
+TOPIC_ORDER = [
+    "ATS Resume Checker",
+    "ATS Keywords",
+    "Resume Keywords",
+    "Resume Match",
+    "Resume Tips 2026",
+    "Free Resume Optimizer",
+    "Chrome Extension",
+    "AI Resume",
+    "Mock Interview",
+    "Portfolio Builder",
+]
+
+BROAD_FILTER_LABELS = set(CATEGORY_ORDER)
+
+
+def canonical_filter_label(value: str) -> str:
+    text = re.sub(r"\s+", " ", str(value or "").strip())
+    if not text:
+        return ""
+    key = text.lower()
+    return FILTER_ALIASES.get(key, text)
+
 
 @dataclass
 class BlogPost:
@@ -228,16 +285,38 @@ class BlogService:
 
     def list_filters(self, top_tag_count: int = 10) -> dict[str, list[str]]:
         posts = self.load_posts()
-        tags = sorted({tag for p in posts for tag in p.tags})
-        categories = sorted({p.category for p in posts if p.category})
+        tags = sorted({canonical_filter_label(tag) for p in posts for tag in p.tags if canonical_filter_label(tag)})
+        category_counts: dict[str, int] = {}
+        for p in posts:
+            category = canonical_filter_label(p.category)
+            if category:
+                category_counts[category] = category_counts.get(category, 0) + 1
+        categories = sorted(
+            category_counts,
+            key=lambda name: (
+                CATEGORY_ORDER.index(name) if name in CATEGORY_ORDER else len(CATEGORY_ORDER),
+                name.lower(),
+            ),
+        )
         # The full tag list runs to hundreds of entries, which is useless as a
         # UI. `top_tags` is the handful worth showing as chips - ordered by how
         # many posts carry them, so the chips lead somewhere populated.
         counts: dict[str, int] = {}
         for p in posts:
             for tag in p.tags:
-                counts[tag] = counts.get(tag, 0) + 1
-        top_tags = [t for t, _ in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))[:top_tag_count]]
+                label = canonical_filter_label(tag)
+                if label and label not in BROAD_FILTER_LABELS and label != canonical_filter_label(p.category):
+                    counts[label] = counts.get(label, 0) + 1
+        top_tags = [
+            t for t, _ in sorted(
+                counts.items(),
+                key=lambda kv: (
+                    TOPIC_ORDER.index(kv[0]) if kv[0] in TOPIC_ORDER else len(TOPIC_ORDER),
+                    -kv[1],
+                    kv[0].lower(),
+                ),
+            )[:top_tag_count]
+        ]
         return {"tags": tags, "categories": categories, "top_tags": top_tags}
 
     def search_posts(
@@ -250,8 +329,8 @@ class BlogService:
     ) -> dict[str, Any]:
         posts = self.load_posts()
         q = query.strip().lower()
-        t = tag.strip().lower()
-        c = category.strip().lower()
+        t = canonical_filter_label(tag).lower()
+        c = canonical_filter_label(category).lower()
 
         filtered: list[BlogPost] = []
         for post in posts:
@@ -259,9 +338,11 @@ class BlogService:
                 hay = " ".join([post.title, post.description, " ".join(post.tags), post.category]).lower()
                 if q not in hay:
                     continue
-            if t and t not in [x.lower() for x in post.tags]:
+            post_tags = [canonical_filter_label(x).lower() for x in post.tags]
+            post_category = canonical_filter_label(post.category).lower()
+            if t and t not in post_tags and t != post_category:
                 continue
-            if c and post.category.lower() != c:
+            if c and post_category != c:
                 continue
             filtered.append(post)
 

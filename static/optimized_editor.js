@@ -45,6 +45,9 @@
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
     let allTemplates             = [];
+    // The frame's load handler re-runs on every srcdoc swap, including the one
+    // that applies confirmed skills, so the prompt is shown at most once.
+    let hasShownSkillGapPrompt   = false;
 
     /* ─────────────────────────────────────────────────────────────────────────
        HELPERS – STATUS / BADGE
@@ -1739,6 +1742,246 @@ body {
     /* ─────────────────────────────────────────────────────────────────────────
        INIT
     ───────────────────────────────────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────────────────
+       MISSING SKILLS — tick what you actually have
+
+       The optimizer only writes a JD skill into the resume when the uploaded
+       resume evidences it; everything else is reported as a gap. That keeps the
+       AI from inventing credentials, but it also hides skills the candidate
+       genuinely has and simply never wrote down. This box is where they say so.
+
+       Nothing is pre-ticked, and the copy makes clear they are vouching for the
+       skill — a tick is the candidate's own claim, not ours.
+    ───────────────────────────────────────────────────────────────────────── */
+    function savePayload(patch) {
+        try {
+            const current = getPayload() || {};
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ ...current, ...patch }));
+        } catch (e) {}
+    }
+
+    function injectSkillGapStyles() {
+        if (document.getElementById("tc-gap-styles")) return;
+        const st = document.createElement("style");
+        st.id = "tc-gap-styles";
+        st.textContent = `
+#tc-gap-overlay {
+    position: fixed; inset: 0; z-index: 99998;
+    display: flex; align-items: center; justify-content: center;
+}
+.tc-gap-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(2,8,24,0.78);
+    backdrop-filter: blur(7px);
+    animation: tc-bgin 0.3s ease both;
+}
+.tc-gap-modal {
+    position: relative; z-index: 2;
+    background: linear-gradient(160deg, #0d1f3c, #0a1628);
+    border: 1px solid rgba(59,130,246,0.35);
+    border-radius: 20px;
+    padding: 1.6rem 1.5rem 1.4rem;
+    width: min(620px, 94vw);
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+    animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+.tc-gap-modal h2 {
+    margin: 0 0 0.4rem; color: #e2e8f0; font-size: 1.2rem; font-weight: 700;
+}
+.tc-gap-sub { margin: 0 0 1.1rem; color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.3rem; }
+.tc-gap-pill {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: rgba(148,163,184,0.08);
+    border: 1px solid rgba(148,163,184,0.32);
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    color: #cbd5e1; font-size: 0.88rem; font-weight: 500;
+    cursor: pointer; transition: all 0.18s ease;
+}
+.tc-gap-pill:hover { border-color: rgba(59,130,246,0.6); color: #e2e8f0; }
+.tc-gap-pill .tc-gap-tick {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 50%;
+    border: 1.5px solid rgba(148,163,184,0.5);
+    font-size: 10px; line-height: 1; color: transparent;
+    transition: all 0.18s ease;
+}
+.tc-gap-pill[aria-pressed="true"] {
+    background: rgba(34,197,94,0.14);
+    border-color: rgba(34,197,94,0.65);
+    color: #86efac;
+}
+.tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
+    background: #22c55e; border-color: #22c55e; color: #05240f;
+}
+.tc-gap-actions { display: flex; justify-content: flex-end; gap: 0.6rem; flex-wrap: wrap; }
+.tc-gap-btn {
+    border-radius: 10px; padding: 0.55rem 1.1rem;
+    font-size: 0.9rem; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; border: 1px solid transparent;
+}
+.tc-gap-skip {
+    background: none; border-color: rgba(148,163,184,0.3); color: #94a3b8;
+}
+.tc-gap-skip:hover { border-color: #94a3b8; color: #e2e8f0; }
+.tc-gap-add {
+    background: linear-gradient(135deg, #3b82f6, #2563eb); color: #fff;
+    box-shadow: 0 6px 18px rgba(37,99,235,0.35);
+}
+.tc-gap-add:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+@media (max-width: 480px) {
+    .tc-gap-actions { flex-direction: column-reverse; }
+    .tc-gap-btn { width: 100%; }
+}
+`;
+        document.head.appendChild(st);
+    }
+
+    function showSkillGapPrompt(payload) {
+        const gaps = Array.isArray(payload?.promptable_skill_gaps)
+            ? payload.promptable_skill_gaps.filter(s => String(s || "").trim())
+            : [];
+        if (!gaps.length) return;
+        if (document.getElementById("tc-gap-overlay")) return;
+
+        injectSkillGapStyles();
+
+        const selected = new Set();
+
+        const overlay = document.createElement("div");
+        overlay.id = "tc-gap-overlay";
+        overlay.innerHTML = `
+            <div class="tc-gap-backdrop"></div>
+            <div class="tc-gap-modal" role="dialog" aria-modal="true" aria-labelledby="tc-gap-title">
+                <h2 id="tc-gap-title">This job asks for ${gaps.length} skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
+                <p class="tc-gap-sub">
+                    Tick the ones you genuinely have and could defend in an interview —
+                    we'll add them to your resume. Leave the rest untouched.
+                </p>
+                <div class="tc-gap-pills"></div>
+                <div class="tc-gap-actions">
+                    <button type="button" class="tc-gap-btn tc-gap-skip">Not now</button>
+                    <button type="button" class="tc-gap-btn tc-gap-add" disabled>Add to resume</button>
+                </div>
+            </div>`;
+
+        const pillWrap = overlay.querySelector(".tc-gap-pills");
+        const addBtn   = overlay.querySelector(".tc-gap-add");
+        const skipBtn  = overlay.querySelector(".tc-gap-skip");
+
+        function refreshAddBtn() {
+            addBtn.disabled = selected.size === 0;
+            addBtn.textContent = selected.size
+                ? `Add ${selected.size} skill${selected.size === 1 ? "" : "s"}`
+                : "Add to resume";
+        }
+
+        gaps.forEach(skill => {
+            const pill = document.createElement("button");
+            pill.type = "button";
+            pill.className = "tc-gap-pill";
+            pill.setAttribute("aria-pressed", "false");
+            // textContent for the label so a skill like "C++" or any odd JD
+            // wording can never be parsed as markup.
+            const tick = document.createElement("span");
+            tick.className = "tc-gap-tick";
+            tick.textContent = "✓";
+            const label = document.createElement("span");
+            label.textContent = skill;
+            pill.append(tick, label);
+
+            pill.addEventListener("click", () => {
+                const on = pill.getAttribute("aria-pressed") === "true";
+                pill.setAttribute("aria-pressed", on ? "false" : "true");
+                if (on) selected.delete(skill); else selected.add(skill);
+                refreshAddBtn();
+            });
+            pillWrap.appendChild(pill);
+        });
+
+        function close() { overlay.remove(); }
+
+        skipBtn.addEventListener("click", close);
+        overlay.querySelector(".tc-gap-backdrop").addEventListener("click", close);
+        document.addEventListener("keydown", function onEsc(e) {
+            if (e.key === "Escape" && document.getElementById("tc-gap-overlay")) {
+                close();
+                document.removeEventListener("keydown", onEsc);
+            }
+        });
+
+        addBtn.addEventListener("click", async () => {
+            if (!selected.size) return;
+            const original = addBtn.textContent;
+            addBtn.disabled = true;
+            addBtn.textContent = "Adding…";
+
+            let jd = "";
+            try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+
+            try {
+                // This route is not in EXEMPT_PATHS, so the double-submit CSRF
+                // token is required or the middleware answers 403.
+                const csrfToken = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+                const res = await fetch("/api/resume/add-confirmed-skills", {
+                    method:  "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                    },
+                    body:    JSON.stringify({
+                        resume_data: payload.resume_data || null,
+                        skills:      Array.from(selected),
+                        jd_string:   jd,
+                        template_id: Number(payload.template_id || 1),
+                        style_id:    Number(payload.style_id || 1),
+                    }),
+                });
+                if (res.status === 401) {
+                    window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
+                    return;
+                }
+                if (!res.ok) throw new Error("Request failed");
+
+                const data = await res.json();
+                if (!data || !data.html) throw new Error("No resume returned");
+
+                // Persist first, so a refresh keeps the added skills.
+                savePayload({
+                    html: data.html,
+                    resume_data: data.resume_data,
+                    promptable_skill_gaps: data.promptable_skill_gaps || [],
+                });
+
+                // Re-render the preview. The frame's existing load handler
+                // re-applies zoom, spacing and the edit overlay.
+                currentHtml = addEditingOverlay(data.html);
+                frame.srcdoc = currentHtml;
+
+                close();
+                const added = (data.added || []).join(", ");
+                if (typeof showToast === "function") {
+                    showToast(`Added ${added} to your resume.`, "success", "Skills updated");
+                } else {
+                    setStatus(`Added ${added} to your resume.`);
+                }
+            } catch (e) {
+                addBtn.disabled = false;
+                addBtn.textContent = original;
+                if (typeof showToast === "function") {
+                    showToast("Could not add those skills. Please try again.", "error", "Update failed");
+                } else {
+                    setStatus("Could not add those skills. Please try again.");
+                }
+            }
+        });
+
+        document.body.appendChild(overlay);
+    }
+
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
@@ -1769,6 +2012,13 @@ body {
 
             if (payload.source === "modify-cv") {
                 setStatus("Tip: adjust size, spacing, and colour, then download your resume.");
+            }
+
+            // Ask about missing skills once the resume is on screen, so the
+            // person can see what they are adding it to.
+            if (!hasShownSkillGapPrompt) {
+                hasShownSkillGapPrompt = true;
+                setTimeout(() => showSkillGapPrompt(getPayload() || payload), 600);
             }
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {

@@ -187,3 +187,8 @@ candidate_data.json
 
 # Local extension signing key (keeps the unpacked dev extension ID stable) — never commit
 .secrets/
+
+# Eval harness: results are regenerated, and fixtures/private/ holds real
+# candidate resumes (personal data) that must never be committed.
+evals/results/
+evals/fixtures/private/

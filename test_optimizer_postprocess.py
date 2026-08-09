@@ -23,6 +23,7 @@ from functions import (
     factcheck_against_original,
     inject_jd_hard_skills,
     normalize_links,
+    promptable_skill_gaps,
     sanitize_resume_data,
 )
 
@@ -301,6 +302,110 @@ def test_no_resume_text_means_every_jd_skill_is_a_gap():
     out = inject_jd_hard_skills({"skills": []}, "Required: Kubernetes, Terraform.")
     assert out["skills"] == [], out["skills"]
     assert len(out["skill_gaps"]) == 2, out["skill_gaps"]
+
+
+def test_model_claimed_unevidenced_jd_skill_is_stripped():
+    # Regression: the gating loop used to `continue` when a JD skill was already
+    # in the model's skills array, so a skill the model invented was neither
+    # evidence-checked nor reported. The candidate shipped a claim they could not
+    # defend AND was never told about it. Caught by evals/run_eval.py, where
+    # gpt-4o-mini put "Power BI" on a resume with no Power BI anywhere.
+    resume = "Analyst. Built dashboards in Excel and wrote SQL against PostgreSQL."
+    jd = "Required: SQL, Power BI, Tableau."
+    out = inject_jd_hard_skills({"skills": ["SQL", "Power BI", "Tableau"]}, jd, resume)
+
+    lowered = [s.lower() for s in out["skills"]]
+    gaps = [s.lower() for s in out["skill_gaps"]]
+
+    assert "sql" in lowered, out["skills"]
+    # The model asserted these; the resume evidences neither -> stripped.
+    assert "power bi" not in lowered, out["skills"]
+    assert "tableau" not in lowered, out["skills"]
+    # ...and the candidate is told, instead of being silently credited.
+    assert "power bi" in gaps and "tableau" in gaps, out["skill_gaps"]
+
+
+def test_model_claimed_skill_survives_when_resume_evidences_it():
+    # The strip must not fire on a genuine claim: same shape as above, but the
+    # resume actually names Power BI.
+    resume = "Analyst. Published Power BI dashboards for regional leadership."
+    jd = "Required: Power BI, Tableau."
+    out = inject_jd_hard_skills({"skills": ["Power BI", "Tableau"]}, jd, resume)
+
+    lowered = [s.lower() for s in out["skills"]]
+    assert "power bi" in lowered, out["skills"]
+    assert "tableau" not in lowered, out["skills"]
+    assert [s.lower() for s in out["skill_gaps"]] == ["tableau"], out["skill_gaps"]
+
+
+def test_no_resume_text_leaves_model_skills_alone():
+    # With nothing to check against, stripping the model's whole skills list
+    # would destroy real content, so the claims are left in place.
+    out = inject_jd_hard_skills({"skills": ["Python", "Kubernetes"]}, "Required: Kubernetes.", "")
+    assert [s.lower() for s in out["skills"]] == ["python", "kubernetes"], out["skills"]
+
+
+# --------------------------------------------------------------------------- #
+# promptable_skill_gaps: which gaps are fit to show a candidate.
+#
+# skill_gaps comes from _extract_hard_skills_from_jd, which emits sentence
+# fragments next to real technologies. Asking "do you have another cloud data
+# warehouse?" makes the feature look broken, so the display list is filtered.
+# The filter is deliberately conservative - a dropped gap can never be claimed.
+# --------------------------------------------------------------------------- #
+def test_promptable_drops_vague_reference_phrases():
+    gaps = ["Snowflake", "another cloud data warehouse", "a comparable caching layer"]
+    assert promptable_skill_gaps(gaps) == ["Snowflake"], promptable_skill_gaps(gaps)
+
+
+def test_promptable_drops_industry_domains():
+    # A JD names these to describe the business, not a tool anyone can tick.
+    gaps = ["Tableau", "retail", "e-commerce", "consumer goods analytics", "fintech"]
+    assert promptable_skill_gaps(gaps) == ["Tableau"], promptable_skill_gaps(gaps)
+
+
+def test_promptable_drops_category_stand_ins():
+    # The real skill is Git / PostgreSQL; the category adds nothing.
+    gaps = ["Git", "Version Control", "databases", "cloud platforms"]
+    assert promptable_skill_gaps(gaps) == ["Git"], promptable_skill_gaps(gaps)
+
+
+def test_promptable_collapses_duplicate_forms():
+    # The extractor emits both; two pills for one thing is confusing.
+    assert promptable_skill_gaps(["Kafka", "Apache Kafka"]) == ["Kafka"]
+    assert promptable_skill_gaps(["Apache Kafka", "Kafka"]) == ["Apache Kafka"]
+
+
+def test_promptable_keeps_methodologies_and_artifacts():
+    # A business analyst legitimately lists these. Conservative by design:
+    # keeping an odd pill beats hiding a skill the candidate really has.
+    gaps = ["agile", "waterfall", "BPMN", "user stories", "wireframes", "BRDs"]
+    assert promptable_skill_gaps(gaps) == gaps, promptable_skill_gaps(gaps)
+
+
+def test_promptable_keeps_real_tools_including_punctuated_names():
+    gaps = ["Power BI", "scikit-learn", "Node.js", "C++", "CI/CD", "gRPC", "SAP"]
+    assert promptable_skill_gaps(gaps) == gaps, promptable_skill_gaps(gaps)
+
+
+def test_promptable_dedupes_case_insensitively():
+    assert promptable_skill_gaps(["Tableau", "tableau", "TABLEAU"]) == ["Tableau"]
+
+
+def test_promptable_handles_empty_and_junk_input():
+    assert promptable_skill_gaps(None) == []
+    assert promptable_skill_gaps([]) == []
+    assert promptable_skill_gaps(["", "   ", None]) == []
+
+
+def test_promptable_matches_the_real_optimizer_output():
+    # The exact skill_gaps list the pipeline produces for the committed
+    # junior_data_analyst eval fixture.
+    gaps = ["MySQL", "Snowflake", "Airflow", "Tableau", "Power BI", "Version Control",
+            "another cloud data warehouse", "e-commerce", "consumer goods analytics"]
+    assert promptable_skill_gaps(gaps) == [
+        "MySQL", "Snowflake", "Airflow", "Tableau", "Power BI",
+    ], promptable_skill_gaps(gaps)
 
 
 # --------------------------------------------------------------------------- #
