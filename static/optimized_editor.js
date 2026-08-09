@@ -1811,23 +1811,32 @@ body {
 }
 .tc-gap-toolbar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 0.75rem; margin-bottom: 0.7rem;
-    border-top: 1px solid #dbe5f7; padding-top: 0.8rem;
+    gap: 0.75rem; margin-bottom: 0.85rem;
+    border-top: 1px solid #dbe5f7; padding-top: 0.95rem;
 }
 .tc-gap-count {
-    color: #1e3a8a; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
+    color: #1e3a8a; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.01em;
     background: #e4ecfd; border: 1px solid #c7d7f5;
-    padding: 0.2rem 0.6rem; border-radius: 999px;
+    padding: 0.3rem 0.75rem; border-radius: 999px;
 }
+/* Deliberately the largest control in the header: ticking 15 pills one by one
+   is the slow path, so the shortcut has to be the thing the eye lands on. */
 .tc-gap-selectall {
-    background: none; border: none; padding: 0.2rem 0.1rem;
-    color: #1d4ed8; font-size: 0.72rem; font-weight: 400;
-    cursor: pointer; text-decoration: none;
-    transition: color 0.18s ease;
+    background: #fff; border: 1.5px solid #1d4ed8;
+    padding: 0.5rem 1.25rem; border-radius: 999px;
+    color: #1d4ed8; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(29,78,216,0.16);
+    transition: all 0.18s ease;
 }
-.tc-gap-selectall:hover { color: #6d28d9; text-decoration: underline; text-underline-offset: 3px; }
+.tc-gap-selectall:hover {
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 5px 16px rgba(29,78,216,0.36);
+    transform: translateY(-1px);
+}
 .tc-gap-selectall:focus { outline: none; }
-.tc-gap-selectall:focus-visible { outline: none; border-radius: 5px; box-shadow: 0 0 0 3px rgba(29,78,216,0.24); }
+.tc-gap-selectall:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(29,78,216,0.26); }
 .tc-gap-btn:focus { outline: none; }
 .tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.30); }
 .tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
