@@ -22,6 +22,7 @@ from functions import (
     _repair_false_future_chronology,
     factcheck_against_original,
     inject_jd_hard_skills,
+    inject_links,
     normalize_links,
     promptable_skill_gaps,
     sanitize_resume_data,
@@ -354,6 +355,50 @@ def test_no_resume_text_leaves_model_skills_alone():
 # warehouse?" makes the feature look broken, so the display list is filtered.
 # The filter is deliberately conservative - a dropped gap can never be claimed.
 # --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
+# Link LABELS are not links. Resumes render URLs as anchor text ("Live Demo |
+# GitHub") and the model transcribes what it sees, returning url="Live Demo".
+# That counted as "this project already has a link", so the real URLs recovered
+# from the PDF annotations were never injected - a project showed no links while
+# its neighbour, whose row read only "GitHub", kept them. Reproduced on a live
+# run against the real resume before this was fixed.
+# --------------------------------------------------------------------------- #
+def test_label_text_in_url_field_does_not_block_injection():
+    data = {"projects": [{"name": "Tailorcv.com", "url": "Live Demo", "github_link": "GitHub"}]}
+    out = inject_links(data, {"Tailorcv.com": [
+        ("Link", "https://www.thetailorcv.com"),
+        ("GitHub", "https://github.com/td19454-dot/TailorCv.Ai1"),
+    ]}, [])
+    hrefs = {l["url"] for l in out["projects"][0]["links"]}
+    assert hrefs == {
+        "https://www.thetailorcv.com",
+        "https://github.com/td19454-dot/TailorCv.Ai1",
+    }, out["projects"][0]
+
+
+def test_label_text_is_scrubbed_from_url_fields():
+    # Left in place it renders as a dead link on the resume.
+    data = {"projects": [{"name": "P", "url": "Live Demo", "github_link": "GitHub"}]}
+    out = inject_links(data, {}, [])
+    assert out["projects"][0]["url"] == "", out["projects"][0]
+    assert out["projects"][0]["github_link"] == "", out["projects"][0]
+
+
+def test_a_real_url_still_blocks_injection():
+    # The guard must keep working: a project that genuinely has its own link
+    # must not have a second one layered on top.
+    data = {"projects": [{"name": "P", "url": "https://mysite.com"}]}
+    out = inject_links(data, {"P": [("GitHub", "https://github.com/x/y")]}, [])
+    assert out["projects"][0]["url"] == "https://mysite.com"
+    assert not out["projects"][0].get("links"), out["projects"][0]
+
+
+def test_bare_domain_counts_as_a_real_url():
+    data = {"projects": [{"name": "P", "github_link": "github.com/x/y"}]}
+    out = inject_links(data, {}, [])
+    assert out["projects"][0]["github_link"] == "github.com/x/y"
+
+
 def test_promptable_drops_vague_reference_phrases():
     gaps = ["Snowflake", "another cloud data warehouse", "a comparable caching layer"]
     assert promptable_skill_gaps(gaps) == ["Snowflake"], promptable_skill_gaps(gaps)
