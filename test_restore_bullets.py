@@ -236,6 +236,63 @@ def test_restore_does_not_duplicate_an_existing_project_bullets():
     assert names == ["Customer Behaviour Analytics"], names
 
 
+# --------------------------------------------------------------------------- #
+# Section headings carry decoration on BOTH sides. "Technical Skills and
+# Interests" (suffix) once left the whole skills block tagged as Experience;
+# "Core Achievements" (prefix) left the achievements block tagged as Projects,
+# so hackathon and LeetCode lines were restored as bullets on the last project.
+# --------------------------------------------------------------------------- #
+DECORATED_HEADINGS = {
+    "Core Achievements": "achievements",
+    "Key Achievements": "achievements",
+    "Relevant Experience": "experience",
+    "Additional Projects": "projects",
+    "Notable Projects": "projects",
+    "Other Certifications": "certifications",
+    "Technical Skills and Interests": "skills",
+    "Selected Publications": "publications",
+    "Professional Experience": "experience",
+}
+
+NOT_HEADINGS = [
+    "Machine Learning Projects",      # a project title, not a heading
+    "Customer Behaviour Analytics",
+    "Myntra E-commerce Website Clone",
+    "Data Science Portfolio",
+    "Berger Paints",
+]
+
+
+def test_decorated_headings_resolve():
+    for text, expected in DECORATED_HEADINGS.items():
+        assert main._heading_key(text) == expected, (text, main._heading_key(text))
+
+
+def test_entry_titles_are_not_read_as_headings():
+    for text in NOT_HEADINGS:
+        assert main._heading_key(text) is None, (text, main._heading_key(text))
+
+
+def test_achievements_do_not_leak_into_projects():
+    source = chr(10).join([
+        "Projects",
+        "Tailorcv.com - html, css, javascript Feb 2026",
+        "- Built and scaled an AI resume-optimization platform to 16,000 plus users.",
+        "Core Achievements",
+        "- Finalist at the Inter-College Hackathon 2024 among 210 competing teams.",
+        "- Solved 400 plus problems on LeetCode across data structures and algorithms.",
+        "Certifications",
+        "LeetCode SQL 50 Badge",
+    ])
+    parsed = {"projects": [
+        {"name": "Tailorcv.com", "bullets": ["Built and scaled an AI resume-optimization platform."]},
+    ]}
+    bullets = main.restore_dropped_bullets(parsed, source)["projects"][0]["bullets"]
+    joined = " ".join(bullets).lower()
+    assert "hackathon" not in joined, bullets
+    assert "leetcode" not in joined, bullets
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]
