@@ -13,6 +13,16 @@
         { id: "templates", label: "Templates" },
     ];
 
+    // Seeded the first time a user opens Skills on a fresh resume. Purely a
+    // starting point — categories can be renamed, removed, or added to.
+    const DEFAULT_SKILL_CATEGORIES = [
+        { category: "Languages", items: "" },
+        { category: "AI/ML", items: "" },
+        { category: "Frameworks & Libraries", items: "" },
+        { category: "Cloud & DevOps", items: "" },
+        { category: "Databases", items: "" },
+    ];
+
     function createEmptyCvData() {
         return {
             personalInfo: {
@@ -115,6 +125,27 @@
                 })
                 .filter((item) => item.title);
 
+        // Migrates the old single-text-field skills ("Category: a, b" typed as
+        // one string, or bare "a" from LinkedIn import) into {category, items}.
+        // Already-migrated data ({category, items}) passes through unchanged.
+        const normalizeSkills = (skills) =>
+            normalizeArray(skills)
+                .map((item) => {
+                    if (item && typeof item === "object") {
+                        if ("category" in item || "items" in item) {
+                            return { category: toString(item.category), items: toString(item.items) };
+                        }
+                        const raw = toString(item.name || item.details);
+                        const colonIndex = raw.indexOf(":");
+                        if (colonIndex > -1) {
+                            return { category: raw.slice(0, colonIndex).trim(), items: raw.slice(colonIndex + 1).trim() };
+                        }
+                        return { category: "", items: raw };
+                    }
+                    return { category: "", items: toString(item) };
+                })
+                .filter((item) => item.category || item.items);
+
         return {
             personalInfo: {
                 name: toString(personalInfo.name),
@@ -133,7 +164,7 @@
             education: normalizeArray(data.education),
             experience: normalizeArray(data.experience),
             projects: normalizeArray(data.projects),
-            skills: normalizeArray(data.skills),
+            skills: normalizeSkills(data.skills),
             extracurriculars: normalizeArray(data.extracurriculars),
             certifications: normalizeArray(data.certifications),
             awards: normalizeAwards(data.awards),
@@ -261,25 +292,36 @@
     }
 
     function SkillsSection() {
-        const skills = cvData.skills.length ? cvData.skills : [{ name: ""}];
+        if (!cvData.skills.length) {
+            cvData.skills = DEFAULT_SKILL_CATEGORIES.map((preset) => ({ ...preset }));
+        }
+        const categories = cvData.skills;
         return `
             <section id="skills" class="form-card section-card">
                 <h2 class="form-title">Skills</h2>
-                ${skills
+                ${categories
                     .map(
-                        (skill, index) => `
+                        (cat, index) => `
                         <div class="entry-card">
-                            <label class="form-label">Skill / Category</label>
-                            <input class="section-input" value="${escapeHtml(skill.name || "")}" data-oninput="skills.${index}.name" placeholder="Languages: JavaScript, Python" />
+                            <div class="skill-category-row">
+                                <div>
+                                    <label class="form-label">Category</label>
+                                    <input class="section-input" value="${escapeHtml(cat.category || "")}" data-oninput="skills.${index}.category" placeholder="e.g. Cloud &amp; DevOps" />
+                                </div>
+                                <div>
+                                    <label class="form-label">Skills</label>
+                                    <input class="section-input" value="${escapeHtml(cat.items || "")}" data-oninput="skills.${index}.items" placeholder="AWS, Docker, Kubernetes, Terraform" />
+                                </div>
+                            </div>
                             <div class="section-controls">
-                                <button type="button" class="small-btn" data-remove-entry="skills" data-index="${index}">Remove</button>
+                                <button type="button" class="small-btn" data-remove-entry="skills" data-index="${index}">Remove Category</button>
                             </div>
                         </div>
                     `
                     )
                     .join("")}
                 <div class="section-controls">
-                    <button type="button" class="small-btn" data-add-entry="skills">+ Add Skill</button>
+                    <button type="button" class="small-btn" data-add-entry="skills">+ Add Skill Category</button>
                 </div>
             </section>
         `;
@@ -430,7 +472,7 @@
             education: () => ({ school: "", degree: "", year: "", score: ""}),
             experience: () => ({ company: "", title: "", dates: "", location: "", details: "" }),
             projects: () => ({ name: "", subtitle: "", dates: "", url: "", github_link: "", details: "" }),
-            skills: () => ({ name: "" }),
+            skills: () => ({ category: "", items: "" }),
             extracurriculars: () => ({ role: "", organization: "", dates: "", url: "" }),
             certifications: () => ({ name: "", issuer: "", year: "", url: ""}),
             awards: () => ({ title: "" }),
@@ -744,14 +786,14 @@
             };
         }).filter((edu) => edu.school || edu.degree);
 
-        mapped.skills = asArray(data.skills)
-            .map((skill) => {
-                const name = skill && typeof skill === "object"
-                    ? toText(skill.name || skill.skill || Object.values(skill)[0])
-                    : toText(skill);
-                return { name };
-            })
-            .filter((skill) => skill.name);
+        const importedSkillNames = asArray(data.skills)
+            .map((skill) => (skill && typeof skill === "object"
+                ? toText(skill.name || skill.skill || Object.values(skill)[0])
+                : toText(skill)))
+            .filter(Boolean);
+        mapped.skills = importedSkillNames.length
+            ? [{ category: "Skills", items: importedSkillNames.join(", ") }]
+            : [];
 
         mapped.certifications = asArray(data.certifications).map((cert) => ({
             name: toText(cert?.name),

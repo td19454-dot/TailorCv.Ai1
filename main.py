@@ -19,6 +19,7 @@ from dotenv import load_dotenv
 from pydantic import ValidationError
 from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, RedirectResponse, Response
+from starlette.requests import ClientDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -10533,7 +10534,10 @@ async def download_html_pdf(request: Request):
 async def estimate_html_pages(request: Request):
     """Estimate rendered PDF pages for edited resume HTML."""
     require_logged_in(request)
-    payload = await request.json()
+    try:
+        payload = await request.json()
+    except ClientDisconnect:
+        return Response(status_code=499)
     html = str(payload.get("html", "")).strip()
     raw_scale = payload.get("pdf_scale", 1)
     try:
@@ -10783,25 +10787,61 @@ def _template_parsed_to_editor_payload(parsed: dict) -> dict:
 
     contact = parsed.get("contact", {}) or {}
 
-    # skills: list of strings or list of dicts like {"category": "values"}
-    raw_skill_strings = []
+    # skills: list of strings or list of dicts like {"category": "values"}.
+    # Anything that already names its own category (a "Label: a, b" string, or
+    # a {name/category, items} dict) is kept verbatim — NOT routed through
+    # group_skills()'s keyword classifier, which only knows a fixed 9-bucket
+    # taxonomy and silently reassigns/drops any category name (e.g. an
+    # "Other Technical Skills" header from the source resume) it doesn't
+    # recognize as a synonym of one of its own labels. But the AI's "skills"
+    # array is very often just a flat list of bare names ("SQL", "Python", ...)
+    # with no category at all — those still need bucketing, otherwise each one
+    # becomes its own single-item, category-less card. So flat/uncategorized
+    # names are collected separately and grouped through group_skills().
+    skill_entries = []
+    flat_skill_names = []
     for skill in parsed.get("skills", []) or []:
         if isinstance(skill, str) and skill.strip():
-            raw_skill_strings.append(skill.strip())
+            raw = skill.strip()
+            if ":" in raw:
+                category, items = raw.split(":", 1)
+                skill_entries.append({"category": category.strip(), "items": items.strip()})
+            else:
+                flat_skill_names.append(raw)
         elif isinstance(skill, dict):
             name = skill.get("name") or skill.get("category")
             items = skill.get("skills") or skill.get("items") or skill.get("values")
             if name and items and isinstance(items, list):
                 items_str = ", ".join(str(i).strip() for i in items if str(i).strip())
-                raw_skill_strings.append(f"{t(name)}: {items_str}" if items_str else t(name))
+                skill_entries.append({"category": t(name), "items": items_str})
             elif name:
-                raw_skill_strings.append(t(name))
+                skill_entries.append({"category": t(name), "items": ""})
             else:
                 for key, value in skill.items():
-                    key_text = str(key).strip()
-                    value_text = str(value).strip()
-                    raw_skill_strings.append(f"{key_text}: {value_text}" if value_text else key_text)
-    skill_entries = [{"name": s} for s in group_skills(raw_skill_strings)]
+                    skill_entries.append({"category": str(key).strip(), "items": str(value).strip()})
+
+    for grouped in group_skills(flat_skill_names):
+        category, _, items = grouped.partition(":")
+        skill_entries.append({"category": category.strip(), "items": items.strip()})
+
+    # Merge rows that ended up with the same category name (e.g. the source
+    # resume had an explicit "Languages: SQL, Python" line AND a bare "HTML"
+    # that group_skills() also bucketed under Languages) into one row.
+    merged_by_category: dict = {}
+    merged_order: list = []
+    for entry in skill_entries:
+        key = entry["category"].lower()
+        if key in merged_by_category:
+            existing = merged_by_category[key]
+            existing_items = [i.strip() for i in existing["items"].split(",") if i.strip()]
+            for item in (i.strip() for i in entry["items"].split(",")):
+                if item and item not in existing_items:
+                    existing_items.append(item)
+            existing["items"] = ", ".join(existing_items)
+        else:
+            merged_by_category[key] = entry
+            merged_order.append(key)
+    skill_entries = [merged_by_category[key] for key in merged_order]
 
     cv_data = {
         "personalInfo": {
@@ -11137,13 +11177,19 @@ def _editor_cv_data_to_resume_parsed(cv_data: dict) -> dict:
         value = data.get(key, [])
         return [item for item in value if isinstance(item, dict)] if isinstance(value, list) else []
 
+    # Builder skills are user-defined {category, items} groups. Rendered verbatim
+    # (not run through group_skills()'s keyword classifier) so a category the user
+    # typed or renamed always survives — auto-classification would otherwise
+    # silently reassign anything it doesn't recognize.
     skills = []
     for skill in data.get("skills", []) if isinstance(data.get("skills", []), list) else []:
         if isinstance(skill, dict):
-            name = t(skill.get("name"))
-            details = t(skill.get("details"))
-            if name or details:
-                skills.append(f"{name}: {details}" if name and details else name or details)
+            category = t(skill.get("category") or skill.get("name"))
+            items = t(skill.get("items") or skill.get("details"))
+            if category and items:
+                skills.append(f"{category}: {items}")
+            elif category or items:
+                skills.append(category or items)
         elif t(skill):
             skills.append(t(skill))
 
@@ -11205,7 +11251,7 @@ def _editor_cv_data_to_resume_parsed(cv_data: dict) -> dict:
             for project in dict_items("projects")
             if any(t(project.get(key)) for key in ("name", "subtitle", "dates", "url", "github_link", "details")) or editor_bullets(project)
         ],
-        "skills": group_skills(skills),
+        "skills": skills,
         "extracurriculars": [
             {
                 "role": t(item.get("role")),
