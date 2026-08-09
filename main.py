@@ -10189,10 +10189,16 @@ async def add_confirmed_skills(request: Request):
 
     resume_data = body.get("resume_data")
     if not isinstance(resume_data, dict):
+        # Seen when the editor was opened from a payload that carries only HTML
+        # (a saved resume, or a flow that never stored the parsed dict).
+        logger.warning(
+            "add-confirmed-skills rejected: resume_data missing (got %s)", type(resume_data).__name__
+        )
         raise HTTPException(status_code=400, detail="resume_data is required")
 
     requested = body.get("skills")
     if not isinstance(requested, list) or not requested:
+        logger.warning("add-confirmed-skills rejected: skills list empty or malformed (%r)", requested)
         raise HTTPException(status_code=400, detail="skills must be a non-empty list")
 
     jd_string = str(body.get("jd_string") or "")
@@ -10236,9 +10242,16 @@ async def add_confirmed_skills(request: Request):
         added.append(canonical)
 
     if not added:
+        logger.warning(
+            "add-confirmed-skills rejected: none of %r matched skill_gaps %r (already in skills: %r)",
+            requested, list(offered.values()), sorted(existing),
+        )
         raise HTTPException(
             status_code=400,
-            detail="None of those skills were offered as gaps for this resume.",
+            detail=(
+                "Those skills are no longer listed as gaps for this resume - "
+                "they may already have been added."
+            ),
         )
 
     resume_data["skills"] = skills
