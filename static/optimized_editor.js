@@ -2057,6 +2057,20 @@ body {
                 if (!res.ok) throw new Error("Request failed");
 
                 const data = await res.json();
+
+                // Nothing to do: everything ticked is already on the resume
+                // (a second click, or a click after switching template). The
+                // server returns no HTML in that case - there is nothing to
+                // re-render, and it is not an error.
+                if (data && data.success && (!data.added || !data.added.length)) {
+                    savePayload({ skill_prompt_answered: true });
+                    close();
+                    if (typeof showToast === "function") {
+                        showToast("Those skills are already on your resume.", "info", "Nothing to add");
+                    }
+                    return;
+                }
+
                 if (!data || !data.html) throw new Error("No resume returned");
 
                 // Persist first, so a refresh keeps the added skills.

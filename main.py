@@ -959,6 +959,28 @@ _SECTION_HEADING_KEYS = {
 _COLUMN_GAP = 40.0
 
 
+def _heading_key(text: str) -> str | None:
+    """The canonical section a heading names, or None.
+
+    Resumes decorate headings - "Technical Skills and Interests", "Skills &
+    Interests", "Professional Experience & Projects" - and an exact lookup missed
+    every one of them. A missed heading is not cosmetic: the section boundary
+    never moves, so the whole Skills block stayed tagged as Experience and its
+    lines were restored as bullets on the last job.
+
+    Matches the longest leading run of words that names a section, so the
+    decoration is ignored while the section is still identified.
+    """
+    words = str(text or "").split()
+    if not words or len(words) > 5:
+        return None
+    for take in range(len(words), 0, -1):
+        key = _normalize_key(" ".join(words[:take]))
+        if key in _SECTION_HEADING_KEYS:
+            return _SECTION_HEADING_KEYS[key]
+    return None
+
+
 def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str, float]]:
     """Return ordered (page_idx, top, section_name, x0) for every section heading.
 
@@ -994,11 +1016,10 @@ def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str, float
                     if not placed:
                         lines.append({"text": t, "top": top, "x0": x0, "x1": x1})
                 for ln in lines:
-                    nk = _normalize_key(ln["text"])
-                    if nk in _SECTION_HEADING_KEYS and len(ln["text"].split()) <= 4:
+                    nk = _heading_key(ln["text"])
+                    if nk:
                         headings.append((
-                            page_idx, float(ln["top"]),
-                            _SECTION_HEADING_KEYS[nk], float(ln["x0"]),
+                            page_idx, float(ln["top"]), nk, float(ln["x0"]),
                         ))
     except Exception:
         return []
@@ -1827,9 +1848,9 @@ def _restore_section_lines(resume_string: str) -> list:
     cur = None
     for raw in str(resume_string or "").splitlines():
         line = raw.rstrip()
-        nk = _normalize_key(line)
-        if nk in _SECTION_HEADING_KEYS and len(line.split()) <= 4:
-            cur = _SECTION_HEADING_KEYS[nk]
+        nk = _heading_key(line)
+        if nk:
+            cur = nk
             continue
         out.append((line, cur))
     return out
@@ -3561,6 +3582,20 @@ def group_skills(skills: list[str]) -> list[str]:
     return result
 
 
+def _link_identity(href: str) -> str:
+    """A URL's identity for de-duplication.
+
+    The same target reaches us spelled differently from different recovery paths
+    - with and without a trailing slash, with or without "www." - so exact-string
+    de-duplication let one link render twice. A project showed
+    "Link | GitHub | Live Demo | GitHub", all four pointing at two places.
+    """
+    v = str(href or "").strip().lower()
+    v = re.sub(r"^https?://", "", v)
+    v = re.sub(r"^www\.", "", v)
+    return v.rstrip("/")
+
+
 def collect_project_links(project: dict) -> list[dict]:
     def _looks_like_url_label(text: str) -> bool:
         value = str(text or "").strip().lower()
@@ -3606,8 +3641,8 @@ def collect_project_links(project: dict) -> list[dict]:
             continue
         href = normalize_url(value)
         visible_label = _normalize_visible_label(label, href)
-        key = (label, href)
-        if key in seen:
+        key = _link_identity(href)
+        if not key or key in seen:
             continue
         seen.add(key)
         links.append({
@@ -3626,8 +3661,8 @@ def collect_project_links(project: dict) -> list[dict]:
                     continue
                 href = normalize_url(value)
                 visible_label = _normalize_visible_label(label, href)
-                key = (label, href)
-                if key in seen:
+                key = _link_identity(href)
+                if not key or key in seen:
                     continue
                 seen.add(key)
                 links.append({
@@ -10407,6 +10442,25 @@ async def upload_resume(
             os.remove(pdf_path)
 
 
+def _fallback_skill_is_acceptable(raw) -> bool:
+    """Whether a ticked skill may be added when resume_data carries no gaps list.
+
+    The normal gate is "it was one of the gaps we offered". When that list is
+    missing we still must not let a payload write arbitrary prose into someone's
+    resume, so this applies the same filter the pills are built from plus a hard
+    word limit - real skill names are short ("ERP systems", "user stories"),
+    while injected sentences are not.
+    """
+    text = str(raw or "").strip()
+    if not text or len(text) > 40 or len(text.split()) > 3:
+        return False
+    # Skill names are words and a little punctuation ("C++", "CI/CD",
+    # "Node.js", "R&D"). Anything else is not a skill.
+    if not re.fullmatch(r"[A-Za-z0-9 .+#/&()'-]+", text):
+        return False
+    return bool(promptable_skill_gaps([text]))
+
+
 @app.post("/api/resume/add-confirmed-skills", include_in_schema=False)
 async def add_confirmed_skills(request: Request):
     """Add skills the candidate has personally confirmed they have.
@@ -10477,17 +10531,19 @@ async def add_confirmed_skills(request: Request):
 
     added: list[str] = []
     rejected: list[str] = []
+    already: list[str] = []
     for raw in requested:
         key = str(raw or "").strip().lower()
         if not key:
             continue
         if key not in offered:
-            if gate_is_open and _is_atomic_hard_skill(str(raw)):
+            if gate_is_open and _fallback_skill_is_acceptable(raw):
                 offered[key] = _clean_inline_text(raw)
             else:
                 rejected.append(str(raw))
                 continue
         if key in existing:
+            already.append(str(raw).strip())
             continue
         # Use the wording from skill_gaps (which follows the JD's own casing),
         # not whatever the client echoed back.
@@ -10497,6 +10553,22 @@ async def add_confirmed_skills(request: Request):
         skills.append(canonical)
         existing.add(key)
         added.append(canonical)
+
+    if not added and already and not rejected:
+        # Everything asked for is already on the resume. Clicking add a second
+        # time - after a first successful add, or after switching template - used
+        # to answer 400, which surfaced as "Update failed" even though the resume
+        # already said exactly what the user wanted. Nothing to do is success.
+        logger.info("add-confirmed-skills: %d skill(s) already present, nothing to add", len(already))
+        return JSONResponse({
+            "success": True,
+            "added": [],
+            "already_present": already,
+            "rejected": [],
+            "html": None,
+            "resume_data": resume_data,
+            "promptable_skill_gaps": promptable_skill_gaps(resume_data.get("skill_gaps")),
+        })
 
     if not added:
         logger.warning(
