@@ -62,6 +62,7 @@ from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
 from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
+from routers.billing import _get_region
 from routers.feedback import router as feedback_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
@@ -5253,7 +5254,12 @@ async def optimized_editor_page(request: Request):
     return templates.TemplateResponse(
         request,
         "optimized_editor.html",
-        {"request": request, "is_pro": user_is_pro, "quota_exhausted_flag": quota_exhausted_flag},
+        {
+            "request": request,
+            "is_pro": user_is_pro,
+            "quota_exhausted_flag": quota_exhausted_flag,
+            "region": _get_region(request),
+        },
     )
 
 
