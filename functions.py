@@ -2204,6 +2204,11 @@ The explanation must clearly identify:
 * missing technologies
 * missing domain expertise
 
+Use the Current Date supplied in the user message for every date comparison.
+Never call a month "in the future" if it is in or before the current month —
+double-check the arithmetic against the Current Date before writing that
+word into an explanation.
+
 ==================================================
 COMPANY NAME RULES
 ==================
@@ -2607,44 +2612,82 @@ _MONTH_YEAR_RE = re.compile(
 )
 
 
-def _repair_false_future_chronology(parsed: dict, current_date: date | None = None) -> None:
-    """Correct an LLM chronology failure when every cited future date is already past."""
-    if not isinstance(parsed, dict):
-        return
+def _apply_false_future_repair(
+    check: dict, current_date: date, independent_issues: tuple
+) -> bool:
+    """Flip a failed pass/explanation check to passed when the *only* stated
+    reason is a resume date being "in the future" that is actually already
+    past (the model miscounts months relative to the supplied Current Date).
+    Returns True if the check was repaired.
+    """
+    if not isinstance(check, dict) or bool_score(check.get("passed")):
+        return False
 
-    chronology = parsed.get("sections", {}).get("chronological_dates", {})
-    if not isinstance(chronology, dict) or bool_score(chronology.get("passed")):
-        return
-
-    explanation = str(chronology.get("explanation") or "")
+    explanation = str(check.get("explanation") or "")
     explanation_lower = explanation.lower()
     if "future" not in explanation_lower:
-        return
+        return False
 
     cited_dates = [
         (int(year), _MONTH_NUMBERS[month.lower()])
         for month, year in _MONTH_YEAR_RE.findall(explanation)
     ]
     if not cited_dates:
-        return
+        return False
 
-    today = current_date or date.today()
-    current_month = (today.year, today.month)
+    current_month = (current_date.year, current_date.month)
     if any(cited_date > current_month for cited_date in cited_dates):
-        return
+        return False
 
-    independent_issues = (
-        "out of order", "not in reverse chronological order", "missing date",
-        "dates are missing", "cannot be determined", "unable to determine",
-        "overlapping dates",
-    )
     if any(issue in explanation_lower for issue in independent_issues):
-        return
+        return False
 
-    chronology["passed"] = "true"
-    chronology["explanation"] = (
-        f"The cited experience dates are not in the future as of "
-        f"{today.strftime('%B %Y')}."
+    check["passed"] = "true"
+    check["explanation"] = (
+        f"The cited dates are not in the future as of "
+        f"{current_date.strftime('%B %Y')}."
+    )
+    return True
+
+
+_CHRONOLOGY_INDEPENDENT_ISSUES = (
+    "out of order", "not in reverse chronological order", "missing date",
+    "dates are missing", "cannot be determined", "unable to determine",
+    "overlapping dates",
+)
+
+# Broader/fuzzier on purpose: experience-match failures can legitimately cite
+# many other reasons (years, responsibilities, technologies, domain), and we
+# only want to auto-repair when the false future-date claim is the sole
+# reason given — any of these hints means a real issue may still be there.
+_EXPERIENCE_MATCH_INDEPENDENT_ISSUES = (
+    "missing years", "missing responsibilit", "missing technolog",
+    "missing domain", "does not meet", "insufficient", "not met",
+    "not clearly demonstrated", "not found", "lacks", "lacking", "gap in",
+    "underqualified",
+)
+
+
+def _repair_false_future_chronology(parsed: dict, current_date: date | None = None) -> None:
+    """Correct an LLM chronology failure when every cited future date is already past."""
+    if not isinstance(parsed, dict):
+        return
+    chronology = parsed.get("sections", {}).get("chronological_dates", {})
+    _apply_false_future_repair(
+        chronology, current_date or date.today(), _CHRONOLOGY_INDEPENDENT_ISSUES
+    )
+
+
+def _repair_false_future_experience_match(parsed: dict, current_date: date | None = None) -> None:
+    """The same past-date-miscounted-as-future failure also leaks into the
+    Experience Match explanation, e.g. "most recent experience is dated in
+    the future (Jan 2026 - Mar 2026)" when Jan-Mar 2026 has already passed.
+    """
+    if not isinstance(parsed, dict):
+        return
+    experience_match = parsed.get("experience", {}).get("experience_match", {})
+    _apply_false_future_repair(
+        experience_match, current_date or date.today(), _EXPERIENCE_MATCH_INDEPENDENT_ISSUES
     )
 
 
@@ -2979,6 +3022,11 @@ The explanation must clearly identify:
 * missing responsibilities
 * missing technologies
 * missing domain expertise
+
+Use the Current Date supplied in the user message for every date comparison.
+Never call a month "in the future" if it is in or before the current month —
+double-check the arithmetic against the Current Date before writing that
+word into an explanation.
 
 ==================================================
 COMPANY NAME RULES
@@ -3377,6 +3425,7 @@ The JSON must strictly follow the schema provided below.
 
     _deep_merge(parsed, precheck)
     _repair_false_future_chronology(parsed, current_date)
+    _repair_false_future_experience_match(parsed, current_date)
 
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
