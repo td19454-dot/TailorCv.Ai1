@@ -1920,6 +1920,11 @@ body {
             : [];
         if (!gaps.length) return;
         if (document.getElementById("tc-gap-overlay")) return;
+        // Answered already. The in-memory guard alone is not enough: switching
+        // template re-runs the editor from scratch while the stored payload still
+        // lists the same gaps, so the box came back after the user had dealt with
+        // it. Persisting the decision keeps it dismissed for this resume.
+        if (payload && payload.skill_prompt_answered) return;
 
         injectSkillGapStyles();
 
@@ -2002,7 +2007,11 @@ body {
         selectAll.addEventListener("click", () => setAll(selected.size !== gaps.length));
         refreshAddBtn();
 
-        function close() { overlay.remove(); }
+        function close() {
+            overlay.remove();
+            // Remember across template switches and reloads, not just this render.
+            savePayload({ skill_prompt_answered: true });
+        }
 
         skipBtn.addEventListener("click", close);
         overlay.querySelector(".tc-gap-backdrop").addEventListener("click", close);
@@ -2055,6 +2064,7 @@ body {
                     html: data.html,
                     resume_data: data.resume_data,
                     promptable_skill_gaps: data.promptable_skill_gaps || [],
+                    skill_prompt_answered: true,
                 });
 
                 // Re-render the preview. captureBaseFonts/captureBaseLineSpacing
