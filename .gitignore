@@ -193,3 +193,6 @@ candidate_data.json
 evals/results/
 evals/fixtures/private/
 project_links_debug.txt
+
+# Real resumes dropped in for testing - personal data, never commit.
+resume_lab/*.pdf
