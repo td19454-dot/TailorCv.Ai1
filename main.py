@@ -1932,7 +1932,39 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
                 for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
             ]
             header_values = [h for h in header_values if h]
+            # ...and any OTHER entry's header too. Templates that put the entry
+            # name in a narrow gutter wrap it across lines ("Myntra E-" /
+            # "commerce"), and those fragments sit inside the previous entry's
+            # line range, so the first project absorbed the next projects'
+            # titles and bullets as its own.
+            for other in entries:
+                if other is e:
+                    continue
+                header_values.extend(
+                    str(other.get(k, "")).strip()
+                    for k in ("company", "title", "role", "organization", "name")
+                    if str(other.get(k, "")).strip()
+                )
             cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
+            # A stack row ("html,css,javascript") or a link caption row is never
+            # a bullet, whichever entry it sits under.
+            cands = [
+                c for c in cands
+                if not _looks_like_stack_line(c)
+                and not _RESTORE_LINK_LABEL_ROW_RE.fullmatch(str(c).strip())
+            ]
+            # Another entry's name leaking in mid-line, e.g. "Customer Python,
+            # PowerBI, SQL, Excel" - a wrapped title glued to a stack row.
+            other_names = {
+                _normalize_key(str(o.get(f, "")))
+                for o in entries if o is not e
+                for f in id_fields if str(o.get(f, "")).strip()
+            }
+            other_names.discard("")
+            cands = [
+                c for c in cands
+                if not any(n and _normalize_key(c).startswith(n[:12]) for n in other_names)
+            ]
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
@@ -10433,6 +10465,15 @@ async def add_confirmed_skills(request: Request):
         skills = []
     existing = {str(s).strip().lower() for s in skills if str(s or "").strip()}
 
+    # skill_gaps is the list the pills were built from, so normally every ticked
+    # skill is in it. It can go missing when the editor is working from a payload
+    # that lost the field (a saved resume, an older session, a re-render that
+    # rebuilt resume_data). Rejecting everything then makes the box look broken
+    # while showing pills the user just ticked. The gate exists to stop a forged
+    # payload writing arbitrary text into a resume, and _is_atomic_hard_skill
+    # already provides that, so fall back to it rather than refusing outright.
+    gate_is_open = not offered
+
     added: list[str] = []
     rejected: list[str] = []
     for raw in requested:
@@ -10440,8 +10481,11 @@ async def add_confirmed_skills(request: Request):
         if not key:
             continue
         if key not in offered:
-            rejected.append(str(raw))
-            continue
+            if gate_is_open and _is_atomic_hard_skill(str(raw)):
+                offered[key] = _clean_inline_text(raw)
+            else:
+                rejected.append(str(raw))
+                continue
         if key in existing:
             continue
         # Use the wording from skill_gaps (which follows the JD's own casing),
@@ -10455,8 +10499,9 @@ async def add_confirmed_skills(request: Request):
 
     if not added:
         logger.warning(
-            "add-confirmed-skills rejected: none of %r matched skill_gaps %r (already in skills: %r)",
-            requested, list(offered.values()), sorted(existing),
+            "add-confirmed-skills rejected: none of %r matched skill_gaps %r "
+            "(already in skills: %r, gaps present: %s)",
+            requested, list(offered.values()), sorted(existing), not gate_is_open,
         )
         raise HTTPException(
             status_code=400,
