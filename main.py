@@ -37,6 +37,7 @@ from functions import (
     inject_links,
     inject_jd_hard_skills,
     promptable_skill_gaps,
+    weave_soft_skills_into_summary,
     compute_skill_match_score,
     compute_skill_match_score_structured,
     sanitize_resume_data,
@@ -9338,40 +9339,53 @@ async def reset_password(request: Request):
         db.close()
 
 
-def _jd_skills_from_ats_result(ats_result) -> list[str] | None:
-    """Pull the JD's hard skills out of an ats_scoring() response.
+def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str]]:
+    """Pull the JD's skills out of an ats_scoring() response.
 
-    Both `matched` and `missing` are taken: together they are the ATS analysis's
-    full picture of what this job asks for. inject_jd_hard_skills() then decides
-    which are evidenced, so the split is recomputed against the resume rather
-    than trusted - what we adopt from the ATS pass is WHICH SKILLS COUNT, which
-    is the part the regex extractor gets wrong.
+    Returns (hard_skills, missing_soft_skills).
 
-    Returns None when the payload is unusable, so the caller falls back to the
-    regex extractor instead of ending up with an empty requirement list (which
-    would silently report zero gaps).
+    For HARD skills both `matched` and `missing` are taken: together they are the
+    ATS analysis's full picture of what this job asks for. inject_jd_hard_skills()
+    then decides which are evidenced, so the split is recomputed against the
+    resume rather than trusted - what we adopt from the ATS pass is WHICH SKILLS
+    COUNT, which is the part the regex extractor gets wrong.
+
+    For SOFT skills only `missing` is taken, because those are handled by
+    rephrasing the summary rather than by an evidence check.
+
+    hard_skills is None when the payload is unusable, so the caller falls back to
+    the regex extractor instead of ending up with an empty requirement list
+    (which would silently report zero gaps).
     """
     try:
         parsed = parse_ai_json_response(ats_result) if isinstance(ats_result, str) else ats_result
     except Exception:
         logger.warning("Could not parse ATS result for JD skills; using regex extraction.")
-        return None
+        return None, []
 
     if not isinstance(parsed, dict):
-        return None
+        return None, []
 
-    hard = ((parsed.get("skills") or {}).get("hard_skills") or {})
-    if not isinstance(hard, dict):
-        return None
+    skills_block = parsed.get("skills") or {}
+    hard = skills_block.get("hard_skills") or {}
+    soft = skills_block.get("soft_skills") or {}
 
-    skills: list[str] = []
-    for bucket in ("matched", "missing"):
-        for value in (hard.get(bucket) or []):
+    hard_skills: list[str] = []
+    if isinstance(hard, dict):
+        for bucket in ("matched", "missing"):
+            for value in (hard.get(bucket) or []):
+                text = str(value or "").strip()
+                if text:
+                    hard_skills.append(text)
+
+    soft_missing: list[str] = []
+    if isinstance(soft, dict):
+        for value in (soft.get("missing") or []):
             text = str(value or "").strip()
             if text:
-                skills.append(text)
+                soft_missing.append(text)
 
-    return skills or None
+    return (hard_skills or None), soft_missing
 
 
 async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
@@ -9416,10 +9430,11 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     # inject_jd_hard_skills use its own regex extractor, which is what shipped
     # before this call existed.
     jd_hard_skills = None
+    missing_soft_skills: list[str] = []
     if isinstance(ats_result, BaseException):
         logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
     else:
-        jd_hard_skills = _jd_skills_from_ats_result(ats_result)
+        jd_hard_skills, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
 
     parsed = parse_ai_json_response(response_string)
 
@@ -9473,6 +9488,11 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
     # ATS analysis's verdict on which skills the job actually requires.
     parsed = inject_jd_hard_skills(parsed, jd_string, resume_string, jd_skills=jd_hard_skills)
+
+    # Soft skills the rewrite failed to express go into the summary, not the
+    # skills array (Rule01b). Handled automatically rather than asked about:
+    # unlike "do you know Tableau?", this is presentation, not a credential.
+    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills)
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while

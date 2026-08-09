@@ -25,6 +25,7 @@ from functions import (
     normalize_links,
     promptable_skill_gaps,
     sanitize_resume_data,
+    weave_soft_skills_into_summary,
 )
 
 
@@ -396,6 +397,61 @@ def test_promptable_handles_empty_and_junk_input():
     assert promptable_skill_gaps(None) == []
     assert promptable_skill_gaps([]) == []
     assert promptable_skill_gaps(["", "   ", None]) == []
+
+
+# --------------------------------------------------------------------------- #
+# Soft skills go into the summary, never the skills array (Rule01b). Handled
+# automatically rather than asked about: unlike "do you know Tableau?", this is
+# presentation of existing work, not a credential only the candidate can confirm.
+# --------------------------------------------------------------------------- #
+def test_soft_skills_are_appended_to_the_summary():
+    data = {"summary": "Data Analyst with experience in Python and SQL."}
+    out = weave_soft_skills_into_summary(data, ["mentoring", "facilitation"])
+    assert out["summary"].endswith("Skilled in mentoring and facilitation."), out["summary"]
+    assert out["soft_skills_added"] == ["mentoring", "facilitation"], out["soft_skills_added"]
+
+
+def test_soft_skills_never_touch_the_skills_array_or_bullets():
+    # Rule01b: "Skills: Python, SQL, mentoring" reads as padding. And a bullet
+    # describing a mentee who appears nowhere in the original would be invented.
+    data = {
+        "summary": "Analyst.",
+        "skills": ["Python"],
+        "experience": [{"company": "Acme", "bullets": ["Analyzed data."]}],
+    }
+    out = weave_soft_skills_into_summary(data, ["mentoring", "leadership"])
+    assert out["skills"] == ["Python"], out["skills"]
+    assert out["experience"][0]["bullets"] == ["Analyzed data."], out["experience"]
+
+
+def test_soft_skill_phrasing_by_count():
+    base = {"summary": "Analyst."}
+    one = weave_soft_skills_into_summary(dict(base), ["mentoring"])["summary"]
+    three = weave_soft_skills_into_summary(
+        dict(base), ["mentoring", "facilitation", "stakeholder management"]
+    )["summary"]
+    assert one.endswith("Skilled in mentoring."), one
+    assert three.endswith("Skilled in mentoring, facilitation and stakeholder management."), three
+
+
+def test_soft_skill_already_in_summary_is_not_repeated():
+    data = {"summary": "Analyst skilled in mentoring junior staff."}
+    out = weave_soft_skills_into_summary(data, ["mentoring"])
+    assert out["summary"] == "Analyst skilled in mentoring junior staff.", out["summary"]
+    assert "soft_skills_added" not in out, out.get("soft_skills_added")
+
+
+def test_soft_skills_noop_on_empty_input():
+    data = {"summary": "Analyst."}
+    assert weave_soft_skills_into_summary(dict(data), [])["summary"] == "Analyst."
+    assert weave_soft_skills_into_summary(dict(data), None)["summary"] == "Analyst."
+    # Must not crash on an odd shape.
+    weave_soft_skills_into_summary({}, ["communication"])
+    weave_soft_skills_into_summary(None, ["communication"])
+
+
+def test_soft_skills_build_a_summary_when_none_exists():
+    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Skilled in communication."
 
 
 def test_promptable_matches_the_real_optimizer_output():
