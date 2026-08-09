@@ -1789,7 +1789,19 @@ body {
 .tc-gap-modal h2 {
     margin: 0 0 0.4rem; color: #e2e8f0; font-size: 1.2rem; font-weight: 700;
 }
-.tc-gap-sub { margin: 0 0 1.1rem; color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+.tc-gap-sub { margin: 0 0 0.9rem; color: #94a3b8; font-size: 0.9rem; line-height: 1.5; }
+.tc-gap-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.6rem;
+}
+.tc-gap-count { color: #64748b; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; }
+.tc-gap-selectall {
+    background: none; border: none; padding: 0;
+    color: #60a5fa; font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; text-decoration: underline; text-underline-offset: 3px;
+    transition: color 0.18s ease;
+}
+.tc-gap-selectall:hover { color: #93c5fd; }
 .tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1.3rem; }
 .tc-gap-pill {
     display: inline-flex; align-items: center; gap: 0.45rem;
@@ -1860,6 +1872,10 @@ body {
                     Tick the ones you genuinely have and could defend in an interview —
                     we'll add them to your resume. Leave the rest untouched.
                 </p>
+                <div class="tc-gap-toolbar">
+                    <span class="tc-gap-count"></span>
+                    <button type="button" class="tc-gap-selectall">Select all</button>
+                </div>
                 <div class="tc-gap-pills"></div>
                 <div class="tc-gap-actions">
                     <button type="button" class="tc-gap-btn tc-gap-skip">Not now</button>
@@ -1867,15 +1883,33 @@ body {
                 </div>
             </div>`;
 
-        const pillWrap = overlay.querySelector(".tc-gap-pills");
-        const addBtn   = overlay.querySelector(".tc-gap-add");
-        const skipBtn  = overlay.querySelector(".tc-gap-skip");
+        const pillWrap  = overlay.querySelector(".tc-gap-pills");
+        const addBtn    = overlay.querySelector(".tc-gap-add");
+        const skipBtn   = overlay.querySelector(".tc-gap-skip");
+        const countEl   = overlay.querySelector(".tc-gap-count");
+        const selectAll = overlay.querySelector(".tc-gap-selectall");
+        const pillEls   = [];
 
         function refreshAddBtn() {
             addBtn.disabled = selected.size === 0;
             addBtn.textContent = selected.size
                 ? `Add ${selected.size} skill${selected.size === 1 ? "" : "s"}`
                 : "Add to resume";
+            countEl.textContent = `${selected.size} of ${gaps.length} selected`;
+            // Once everything is ticked the same control clears it, so a
+            // mis-click on "Select all" is one click to undo.
+            selectAll.textContent = selected.size === gaps.length ? "Clear all" : "Select all";
+        }
+
+        /* Ticks (or unticks) every pill. Deliberately fills the boxes rather
+           than submitting: the user still sees exactly what is about to be
+           claimed and can untick anything before pressing add. */
+        function setAll(on) {
+            pillEls.forEach(({ skill, el }) => {
+                el.setAttribute("aria-pressed", on ? "true" : "false");
+                if (on) selected.add(skill); else selected.delete(skill);
+            });
+            refreshAddBtn();
         }
 
         gaps.forEach(skill => {
@@ -1898,8 +1932,12 @@ body {
                 if (on) selected.delete(skill); else selected.add(skill);
                 refreshAddBtn();
             });
+            pillEls.push({ skill, el: pill });
             pillWrap.appendChild(pill);
         });
+
+        selectAll.addEventListener("click", () => setAll(selected.size !== gaps.length));
+        refreshAddBtn();
 
         function close() { overlay.remove(); }
 
