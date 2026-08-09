@@ -192,3 +192,4 @@ candidate_data.json
 # candidate resumes (personal data) that must never be committed.
 evals/results/
 evals/fixtures/private/
+project_links_debug.txt

@@ -9738,6 +9738,32 @@ async def _optimize_resume_core(
             extracted_pub_links = merged_pub
 
     parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+
+    # Diagnostics for per-project link recovery, mirroring cert_debug.txt. Every
+    # stage of this path passes when reproduced offline, so the difference has to
+    # be in what the live AI returns - most likely the project NAMES, which are
+    # what the annotation matcher keys on. Recording them turns the next report
+    # into an answer instead of another round of guessing.
+    try:
+        import json as _json
+        with open(os.path.join(BASE_DIR, "project_links_debug.txt"), "w", encoding="utf-8") as _pf:
+            _pf.write("=== PROJECT NAMES FROM AI ===\n")
+            for _n in project_names or []:
+                _pf.write(f"  {_n!r}\n")
+            _pf.write("\n=== ANNOTATION MAP (pdf) ===\n")
+            _pf.write(_json.dumps(pdf_project_link_map if project_names else {}, indent=1) + "\n")
+            _pf.write("\n=== TEXT MAP ===\n")
+            _pf.write(_json.dumps(project_link_map or {}, indent=1) + "\n")
+            _pf.write("\n=== EFFECTIVE MAP ===\n")
+            _pf.write(_json.dumps(effective_map or {}, indent=1) + "\n")
+            _pf.write("\n=== AFTER inject_links ===\n")
+            for _p in (parsed.get("projects") or []):
+                if isinstance(_p, dict):
+                    _pf.write(f"  {_p.get('name')!r}\n")
+                    _pf.write(f"     links={_json.dumps(_p.get('links') or [])}\n")
+                    _pf.write(f"     github_link={_p.get('github_link')!r} url={_p.get('url')!r}\n")
+    except Exception:
+        pass
     # resume_string is the ORIGINAL uploaded text - it is what decides whether a
     # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
     # ATS analysis's verdict on which skills the job actually requires.
