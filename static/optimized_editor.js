@@ -94,11 +94,32 @@
        EDITING OVERLAY
     ───────────────────────────────────────────────────────────────────────── */
     function addEditingOverlay(html) {
+        // The preview body is contentEditable so the resume can be typed into.
+        // A side effect is that browsers stop FOLLOWING links inside it - a click
+        // just drops the caret - so the links looked broken even though the
+        // exported PDF carries them correctly. The handler below restores plain
+        // click-to-open, and alt+click still places the caret for editing the
+        // label text.
         const script = `<script>
 document.addEventListener("DOMContentLoaded", function () {
   document.body.contentEditable = "true";
   document.body.spellcheck      = false;
   document.body.style.outline   = "none";
+
+  var style = document.createElement("style");
+  style.textContent = "a[href]{cursor:pointer;}";
+  document.head.appendChild(style);
+
+  document.addEventListener("click", function (e) {
+    if (e.altKey || e.defaultPrevented) return;
+    var el = e.target;
+    while (el && el.nodeName !== "A") el = el.parentElement;
+    if (!el) return;
+    var href = el.getAttribute("href") || "";
+    if (!href || href.charAt(0) === "#") return;
+    e.preventDefault();
+    window.open(href, "_blank", "noopener,noreferrer");
+  });
 });
 <\/script>`;
         return html.includes("</body>")
