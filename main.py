@@ -9889,6 +9889,34 @@ def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str],
     return (hard_skills or None), hard_missing, soft_missing
 
 
+def _ai_failure_detail(exc: BaseException) -> str:
+    """A message that says what actually went wrong with an AI call.
+
+    Every failure used to read "AI generation failed. Please try again." - the
+    same words whether the key was rejected, the account was out of credit, or
+    the request was merely rate-limited. The first two are not worth retrying
+    and need someone to act; the third clears on its own. _normalize_openai_error
+    already produces a specific message, so use it rather than discarding it.
+    """
+    # tenacity wraps the cause when it gives up; unwrap to the real one.
+    cause = getattr(exc, "last_attempt", None)
+    if cause is not None:
+        try:
+            exc = cause.exception() or exc
+        except Exception:
+            pass
+    text = str(exc or "")
+    low = text.lower()
+    if "quota" in low or "insufficient_quota" in low or "billing" in low:
+        return "The AI account is out of credit. Add billing, then try again."
+    if ("invalid_api_key" in low or "unauthorized" in low
+            or ("api_key" in low or "api key" in low) and "invalid" in low):
+        return "The AI API key is not valid. Check the server configuration."
+    if "rate limit" in low or "429" in low or "timeout" in low or "timed out" in low:
+        return "The AI service is busy right now. Please try again in a moment."
+    return "AI generation failed. Please try again."
+
+
 async def _optimize_resume_core(
     file_path: str, jd_string: str, ats_payload: str | None = None
 ) -> dict:
@@ -9934,9 +9962,9 @@ async def _optimize_resume_core(
     if forwarded_ats is not None:
         try:
             response_string = await get_resume_response(prompt)
-        except Exception:
+        except Exception as exc:
             logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
         ats_result = forwarded_ats
     else:
         # No analysis to reuse (optimized without scoring first). Score it here,
@@ -9947,13 +9975,13 @@ async def _optimize_resume_core(
                 ats_scoring(ats_resume_string, jd_string),
                 return_exceptions=True,
             )
-        except Exception:
+        except Exception as exc:
             logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
 
     if isinstance(response_string, BaseException):
         logger.exception("AI generation failed", exc_info=response_string)
-        raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
 
     # A failed ATS pass must never break tailoring. Falling back to None makes
     # inject_jd_hard_skills use its own regex extractor, which is what shipped
