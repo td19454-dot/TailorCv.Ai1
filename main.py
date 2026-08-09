@@ -950,9 +950,23 @@ _SECTION_HEADING_KEYS = {
 }
 
 
-def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str]]:
-    """Return ordered (page_idx, top, section_name) for every detected section heading."""
-    headings: list[tuple[int, float, str]] = []
+# Horizontal gap that means "different column" rather than "same line". Sidebar
+# templates put an unrelated heading at the same height as body text, and words
+# were grouped by vertical position alone - so "Skills" from the sidebar merged
+# with "Projects" from the main column into one line that matched neither, and
+# both headings disappeared from detection.
+_COLUMN_GAP = 40.0
+
+
+def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str, float]]:
+    """Return ordered (page_idx, top, section_name, x0) for every section heading.
+
+    x0 is what makes two-column resumes work: without it a heading in the left
+    sidebar appears to govern everything below it on the page, including the
+    right column, so a project's links were attributed to whatever sidebar
+    section happened to sit above them.
+    """
+    headings: list[tuple[int, float, str, float]] = []
     try:
         with pdfplumber.open(pdf_path) as pdf:
             for page_idx, page in enumerate(pdf.pages):
@@ -963,32 +977,75 @@ def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str]]:
                     if not t:
                         continue
                     top = float(w.get("top", 0.0))
+                    x0 = float(w.get("x0", 0.0))
+                    x1 = float(w.get("x1", x0))
                     placed = False
                     for ln in lines:
-                        if abs(top - ln["top"]) <= 2.5:
+                        # Same row AND horizontally adjacent - a wide gap means the
+                        # words belong to different columns.
+                        if abs(top - ln["top"]) <= 2.5 and x0 <= ln["x1"] + _COLUMN_GAP:
                             ln["text"] = (ln["text"] + " " + t).strip()
                             ln["top"] = min(ln["top"], top)
+                            ln["x0"] = min(ln["x0"], x0)
+                            ln["x1"] = max(ln["x1"], x1)
                             placed = True
                             break
                     if not placed:
-                        lines.append({"text": t, "top": top})
+                        lines.append({"text": t, "top": top, "x0": x0, "x1": x1})
                 for ln in lines:
                     nk = _normalize_key(ln["text"])
                     if nk in _SECTION_HEADING_KEYS and len(ln["text"].split()) <= 4:
-                        headings.append((page_idx, float(ln["top"]), _SECTION_HEADING_KEYS[nk]))
+                        headings.append((
+                            page_idx, float(ln["top"]),
+                            _SECTION_HEADING_KEYS[nk], float(ln["x0"]),
+                        ))
     except Exception:
         return []
     headings.sort(key=lambda h: (h[0], h[1]))
     return headings
 
 
-def _section_of(headings: list[tuple[int, float, str]], page_idx: int, top: float) -> str | None:
-    """Which section a (page, top) position belongs to. None = header/contact region
-    (above the first content heading)."""
+def _column_starts(headings, page_idx: int) -> list[float]:
+    """Left edges of the columns a page's headings fall into."""
+    cols: list[float] = []
+    for hx in sorted(h[3] for h in headings if h[0] == page_idx and len(h) > 3):
+        if not cols or hx - cols[-1] > _COLUMN_GAP:
+            cols.append(hx)
+    return cols
+
+
+def _column_start_for(x: float, cols: list[float]) -> float:
+    """The column a horizontal position sits in."""
+    chosen = cols[0]
+    for c in cols:
+        if x >= c - 20.0:
+            chosen = c
+    return chosen
+
+
+def _section_of(headings, page_idx: int, top: float, x: float | None = None) -> str | None:
+    """Which section a position belongs to. None = header/contact region.
+
+    Pass `x` on multi-column resumes: only headings in the same column are
+    allowed to claim the position. Without it a sidebar heading swallows the
+    main column, which is how a project's GitHub link ended up on a
+    certification. Single-column pages are unaffected - the filter only engages
+    when a page genuinely has more than one column of headings.
+    """
+    scoped = headings
+    if x is not None:
+        cols = _column_starts(headings, page_idx)
+        if len(cols) > 1:
+            mine = _column_start_for(float(x), cols)
+            scoped = [
+                h for h in headings
+                if h[0] != page_idx
+                or (len(h) > 3 and _column_start_for(h[3], cols) == mine)
+            ]
     current = None
-    for (hp, ht, name) in headings:
-        if (hp, ht) <= (page_idx, top):
-            current = name
+    for h in scoped:
+        if (h[0], h[1]) <= (page_idx, top):
+            current = h[2]
         else:
             break
     return current
@@ -1189,7 +1246,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
     # certification link being pulled into a project). Only enforced when a Projects
     # heading is actually detected, so resumes without clear headings still work.
     headings = _detect_section_headings(pdf_path)
-    enforce_section = any(name == section for (_p, _t, name) in headings)
+    enforce_section = any(h[2] == section for h in headings)
 
     # Where each project's TITLE physically sits. A PDF stores a link as a
     # rectangle and a URL - nothing tells us which project owns it, and the
@@ -1205,7 +1262,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             owner = best_match(ln["text"])
             if not owner or owner in seen_titles:
                 continue
-            if enforce_section and _section_of(headings, page_idx, float(ln["top"])) != section:
+            if enforce_section and _section_of(headings, page_idx, float(ln["top"]), float(ln.get("x0", 0.0))) != section:
                 continue
             seen_titles.add(owner)
             title_positions.append((page_idx, float(ln["top"]), owner))
@@ -1262,7 +1319,7 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             bottom = page_height - y0
 
             # Reject links that don't live in the Projects section.
-            if enforce_section and _section_of(headings, page_idx, top) != section:
+            if enforce_section and _section_of(headings, page_idx, top, x0) != section:
                 continue
 
             label = "GitHub" if "github.com" in lowered_uri else "Link"
@@ -1370,7 +1427,7 @@ def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
                     if rect and len(rect) >= 4:
                         try:
                             top = page_height - float(rect[3])
-                            if _section_of(headings, page_idx, top) not in header_ok:
+                            if _section_of(headings, page_idx, top, float(rect[0])) not in header_ok:
                                 continue
                         except Exception:
                             pass
@@ -1522,7 +1579,7 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
     if not names:
         return {}
     headings = _detect_section_headings(pdf_path) if section else []
-    enforce_section = bool(section) and any(nm == section for (_p, _t, nm) in headings)
+    enforce_section = bool(section) and any(h[2] == section for h in headings)
     norm_to_name = {_normalize_key(n): n for n in names}
     norm_names = sorted((k for k in norm_to_name if k), key=len, reverse=True)
 
@@ -1587,7 +1644,7 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
                 r_bot = page_height - ry0
                 r_xa, r_xb = min(rx0, rx1), max(rx0, rx1)
                 # Reject links outside the target section (prevents cross-section exchange).
-                if enforce_section and _section_of(headings, page_idx, r_top) != section:
+                if enforce_section and _section_of(headings, page_idx, r_top, r_x0) != section:
                     continue
                 # Words overlapping the link rectangle (the anchor text = the item name).
                 seg = [
@@ -1894,6 +1951,105 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
                     added = True
             if added:
                 e["bullets"] = ai_bullets
+    return parsed
+
+
+# A date left on the end of a title row once the stack has been split off
+# ("Customer Behaviour Analytics January 2026").
+_RESTORE_TRAILING_DATE_RE = re.compile(
+    r"\s*(?:" + _RESTORE_DATE_RANGE + r"|" + _RESTORE_DATE + r")\s*$",
+    re.IGNORECASE,
+)
+
+
+# A row made only of link captions - "Live Demo | GitHub", "Demo · Source".
+_RESTORE_LINK_LABEL_ROW_RE = re.compile(
+    r"\s*(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|repo(?:sitory)?|link|website|"
+    r"site|preview|play\s*store|app\s*store|video|paper|docs?)"
+    r"(?:\s*[|/,·•–—-]\s*(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|repo(?:sitory)?|"
+    r"link|website|site|preview|play\s*store|app\s*store|video|paper|docs?))*\s*",
+    re.IGNORECASE,
+)
+
+
+def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
+    """Put back a whole PROJECT the optimizer omitted.
+
+    restore_dropped_bullets recovers bullets onto entries that survived, but
+    nothing noticed when an entire entry vanished. On a long resume the model
+    silently returned two projects out of three, and the damage compounds: the
+    missing project's links have no owner left, so the positional and
+    reading-order fills hand them to whatever section is nearest - which is how
+    a project's GitHub ended up on a certification and a stray "Link" on a
+    school.
+
+    Only titles that clearly head an entry are restored, and only when the
+    original has real bullets under them, so prose is never promoted into a
+    fake project.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+
+    projects = parsed.get("projects")
+    if not isinstance(projects, list):
+        return parsed
+
+    section_lines = _restore_section_lines(resume_string)
+    idx = [i for i, (_l, s) in enumerate(section_lines) if s == "projects"]
+    if not idx:
+        return parsed
+    lo, hi = idx[0], idx[-1] + 1
+
+    have = {_normalize_key(str(p.get("name") or "")) for p in projects if isinstance(p, dict)}
+    have.discard("")
+
+    # Walk the original Projects block, collecting each title and its bullets.
+    found: list[tuple[str, list[str]]] = []
+    current: tuple[str, list[str]] | None = None
+    for i in range(lo, hi):
+        line = str(section_lines[i][0] or "").strip()
+        if not line:
+            continue
+        is_bullet = bool(re.match(r"^\s*[•‣▪◦●·*\-–—]", section_lines[i][0]))
+        if is_bullet:
+            if current:
+                text = re.sub(r"^\s*[•‣▪◦●·*\-–—]+\s*", "", line).strip()
+                if len(text) > 25:
+                    current[1].append(text)
+            continue
+        if _restore_is_meta_line(line) or len(line) > 90:
+            continue
+        # A row that only names links ("Live Demo | GitHub") sits BETWEEN the
+        # title and its bullets. Treating it as a title stole the bullets and
+        # left the real project looking empty, so it was never restored.
+        if _RESTORE_LINK_LABEL_ROW_RE.fullmatch(line):
+            continue
+        # A title row: short, not a sentence. Strip the stack/date that resumes
+        # put after the name, whichever separator they use ("Name - stack date",
+        # "Name | stack", "Name — stack"). Spaces are required around the plain
+        # hyphen so a hyphenated title ("End-to-End Pipeline") stays intact.
+        title = re.split(r"\s+[|/·—–-]\s+", line)[0].strip()
+        title = _RESTORE_TRAILING_DATE_RE.sub("", title).strip(" ,;|-–—")
+        if len(title) < 3 or title.endswith((".", ":")):
+            continue
+        current = (title, [])
+        found.append(current)
+
+    restored = 0
+    for title, bullets in found:
+        key = _normalize_key(title)
+        if not key or key in have:
+            continue
+        # Require real content, so a stray line never becomes a project.
+        if len(bullets) < 1:
+            continue
+        have.add(key)
+        projects.append({"name": title, "bullets": bullets[:8]})
+        restored += 1
+
+    if restored:
+        logger.warning("Restored %d project(s) the optimizer dropped: %s",
+                       restored, [t for t, _b in found if _normalize_key(t) in have])
     return parsed
 
 
@@ -9695,6 +9851,10 @@ async def _optimize_resume_core(
     # Recover any bullet point the optimizer silently dropped/merged on a
     # long resume, restoring it onto the exact entry it came from.
     parsed = restore_dropped_bullets(parsed, resume_string)
+
+    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
+    # entry's links, which then leak into neighbouring sections.
+    parsed = restore_dropped_entries(parsed, resume_string)
 
     # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
     # The AI response already contains the optimized data - no need to re-extract original data
