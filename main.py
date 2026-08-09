@@ -1191,6 +1191,29 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
     headings = _detect_section_headings(pdf_path)
     enforce_section = any(name == section for (_p, _t, name) in headings)
 
+    # Where each project's TITLE physically sits. A PDF stores a link as a
+    # rectangle and a URL - nothing tells us which project owns it, and the
+    # name-based matching above only works when a project name happens to sit
+    # near the link. Resumes routinely put links on their own row ("Live Demo |
+    # GitHub" under the title), in a sidebar, or behind an icon, and those links
+    # used to be discarded. Positions let us answer it the way a reader does:
+    # the link belongs to the title directly above it.
+    title_positions: list[tuple[int, float, str]] = []  # (page, top, project)
+    seen_titles: set[str] = set()
+    for page_idx, lines in line_boxes.items():
+        for ln in lines:
+            owner = best_match(ln["text"])
+            if not owner or owner in seen_titles:
+                continue
+            if enforce_section and _section_of(headings, page_idx, float(ln["top"])) != section:
+                continue
+            seen_titles.add(owner)
+            title_positions.append((page_idx, float(ln["top"]), owner))
+    title_positions.sort(key=lambda t: (t[0], t[1]))
+
+    # Links we could not attribute by text. Parked rather than dropped.
+    unplaced: list[dict] = []
+
     for page_idx, page in enumerate(reader.pages):
         annots = page.get("/Annots") or []
         try:
@@ -1242,15 +1265,35 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             if enforce_section and _section_of(headings, page_idx, top) != section:
                 continue
 
+            label = "GitHub" if "github.com" in lowered_uri else "Link"
             matched_project, dist = match_project(top, bottom, candidates)
             if not matched_project:
+                # Park it. Dropping the link here is what made a whole project
+                # lose its links whenever the layout put them somewhere the text
+                # matcher could not read.
+                unplaced.append({"uri": uri, "label": label, "page": page_idx, "top": top})
                 continue
 
-            label = "GitHub" if "github.com" in lowered_uri else "Link"
             prev = best_for_uri.get(uri)
             # Keep the closest (most confident) project for each unique URL.
             if prev is None or dist < prev[1]:
                 best_for_uri[uri] = (matched_project, dist, label)
+
+    # Place the parked links by position: the owner is the nearest project title
+    # at or above the link. This is how a person reads the page, and it does not
+    # care whether the link sits beside the title, on its own row underneath, in
+    # a sidebar, or behind an icon.
+    for item in unplaced:
+        if item["uri"] in best_for_uri:
+            continue  # already attributed with better evidence elsewhere
+        owner = None
+        for page_idx, top, project in title_positions:
+            if (page_idx, top) <= (item["page"], item["top"]):
+                owner = project
+            else:
+                break
+        if owner:
+            best_for_uri[item["uri"]] = (owner, 1e6, item["label"])
 
     result: dict[str, list[tuple[str, str]]] = {}
     for uri, (project, _dist, label) in best_for_uri.items():
@@ -1258,6 +1301,16 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
         pair = (label, uri)
         if pair not in result[project]:
             result[project].append(pair)
+
+    # Layer 3 - reading-order safety net. If a project still has nothing and
+    # links are still spare, hand them out in document order, the same trick the
+    # certifications path already uses. Only runs when it is unambiguous: one
+    # empty project and one spare link. Guessing between several would risk
+    # putting a link on the WRONG project, which is worse than a missing one.
+    leftovers = [i for i in unplaced if i["uri"] not in best_for_uri]
+    empty = [n for n in names if not result.get(n)]
+    if len(empty) == 1 and len(leftovers) == 1:
+        result.setdefault(empty[0], []).append((leftovers[0]["label"], leftovers[0]["uri"]))
 
     return result
 
