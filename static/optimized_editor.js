@@ -1792,21 +1792,13 @@ body {
     content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
     background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
 }
-.tc-gap-head { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 1.15rem; }
-.tc-gap-icon {
-    flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
-    width: 34px; height: 34px; border-radius: 10px;
-    background: linear-gradient(140deg, #1d4ed8, #6d28d9);
-    color: #fff; box-shadow: 0 5px 14px rgba(29,78,216,0.38);
-}
-.tc-gap-headtext { min-width: 0; }
 .tc-gap-modal h2 {
     margin: 0 0 0.28rem;
     color: #0b1220; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
 }
 .tc-gap-modal h2 em { font-style: normal; font-weight: 600; color: #1d4ed8; }
 .tc-gap-sub {
-    margin: 0;
+    margin: 0 0 1.15rem;
     color: #44506b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
 }
 .tc-gap-toolbar {
@@ -1917,21 +1909,11 @@ body {
         overlay.innerHTML = `
             <div class="tc-gap-backdrop"></div>
             <div class="tc-gap-modal" role="dialog" aria-modal="true" aria-labelledby="tc-gap-title">
-                <div class="tc-gap-head">
-                    <span class="tc-gap-icon" aria-hidden="true">
-                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2l2.4 6.2L21 10l-5.2 4.1L17 21l-5-3.4L7 21l1.2-6.9L3 10l6.6-1.8z"/>
-                        </svg>
-                    </span>
-                    <div class="tc-gap-headtext">
-                        <h2 id="tc-gap-title">This job asks for <em>${gaps.length}</em> skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
-                        <p class="tc-gap-sub">
-                            Tick the ones you genuinely have and could defend in an interview —
-                            we'll add them to your resume. Leave the rest untouched.
-                        </p>
-                    </div>
-                </div>
+                <h2 id="tc-gap-title">This job asks for <em>${gaps.length}</em> skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
+                <p class="tc-gap-sub">
+                    Tick the ones you genuinely have and could defend in an interview —
+                    we'll add them to your resume. Leave the rest untouched.
+                </p>
                 <div class="tc-gap-toolbar">
                     <span class="tc-gap-count"></span>
                     <button type="button" class="tc-gap-selectall">Select all</button>
