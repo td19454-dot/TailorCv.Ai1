@@ -137,6 +137,64 @@ def test_restore_does_not_leak_but_restores_dropped():
     assert "evaluated model generalization" in joined, "dropped bullet not restored"
 
 
+# --------------------------------------------------------------------------- #
+# A dropped ENTRY is worse than a dropped bullet: the whole project disappears,
+# and its links are then orphaned, so the positional and reading-order fills
+# hand them to whatever section is nearest - a project's GitHub landing on a
+# certification, a stray "Link" on a school.
+# --------------------------------------------------------------------------- #
+PROJECTS_SOURCE = """Projects
+Tailorcv.com - html,css,javascript,FastApi Feb 2026
+Live Demo | GitHub
+- Built and scaled an AI resume-optimization platform to 16,000 plus users worldwide.
+Myntra E-commerce Website Clone - html,css,javascript mar 2025
+Live Demo | GitHub
+- Developed a frontend clone of the Myntra e-commerce platform with product listings.
+Customer Behaviour Analytics - Python, PowerBI, SQL, Excel January 2026
+GitHub
+- Executed end-to-end data analysis using Python to clean 3,900 transaction records.
+- Developed an interactive Power BI dashboard to visualize customer segments clearly.
+Education
+Jadavpur University
+"""
+
+
+def test_dropped_project_is_restored():
+    parsed = {"projects": [
+        {"name": "Tailorcv.com", "bullets": ["x"]},
+        {"name": "Myntra E-commerce Website Clone", "bullets": ["y"]},
+    ]}
+    out = main.restore_dropped_entries(parsed, PROJECTS_SOURCE)
+    names = [p["name"] for p in out["projects"]]
+    assert "Customer Behaviour Analytics" in names, names
+    restored = next(p for p in out["projects"] if p["name"] == "Customer Behaviour Analytics")
+    assert len(restored["bullets"]) == 2, restored
+
+
+def test_link_label_row_never_becomes_a_project():
+    # "Live Demo | GitHub" sits between the title and its bullets.
+    parsed = {"projects": []}
+    names = [p["name"].lower() for p in main.restore_dropped_entries(parsed, PROJECTS_SOURCE)["projects"]]
+    for junk in ("live demo", "github", "live demo | github"):
+        assert junk not in names, names
+
+
+def test_restore_entries_is_a_noop_when_nothing_is_missing():
+    parsed = {"projects": [
+        {"name": "Tailorcv.com", "bullets": ["x"]},
+        {"name": "Myntra E-commerce Website Clone", "bullets": ["y"]},
+        {"name": "Customer Behaviour Analytics", "bullets": ["z"]},
+    ]}
+    out = main.restore_dropped_entries(parsed, PROJECTS_SOURCE)
+    assert len(out["projects"]) == 3, [p["name"] for p in out["projects"]]
+
+
+def test_restore_entries_handles_odd_input():
+    assert main.restore_dropped_entries({}, PROJECTS_SOURCE) == {}
+    assert main.restore_dropped_entries({"projects": []}, "") == {"projects": []}
+    main.restore_dropped_entries(None, PROJECTS_SOURCE)
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]
