@@ -2077,8 +2077,11 @@ _RESTORE_TRAILING_DATE_RE = re.compile(
 _RESTORE_LINK_LABEL_ROW_RE = re.compile(
     r"\s*(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|repo(?:sitory)?|link|website|"
     r"site|preview|play\s*store|app\s*store|video|paper|docs?)"
-    r"(?:\s*[|/,·•–—-]\s*(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|repo(?:sitory)?|"
-    r"link|website|site|preview|play\s*store|app\s*store|video|paper|docs?))*\s*",
+    # Separator may be punctuation OR just whitespace: the pipe in
+    # "Live Demo | GitHub" does not always survive text extraction, and the
+    # bare "Live Demo GitHub" that remains was taken for a project title.
+    r"(?:(?:\s*[|/,·•–—-]\s*|\s+)(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|"
+    r"repo(?:sitory)?|link|website|site|preview|play\s*store|app\s*store|video|paper|docs?))*\s*",
     re.IGNORECASE,
 )
 
@@ -2128,8 +2131,15 @@ def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
                 if len(text) > 25:
                     current[1].append(text)
             continue
-        if _restore_is_meta_line(line) or len(line) > 90:
+        if len(line) > 90:
             continue
+        # NOT skipped for being a "meta" line. _restore_is_meta_line is designed
+        # to spot entry-HEADER rows so they never become bullets - and an entry
+        # header is exactly what a title is. Skipping them here meant a project
+        # whose title row carries a date ("Myntra E-commerce Website Clone mar
+        # 2025") could never be restored. Bare dates are still excluded, because
+        # nothing survives once the date is stripped below.
+        #
         # A row that only names links ("Live Demo | GitHub") sits BETWEEN the
         # title and its bullets. Treating it as a title stole the bullets and
         # left the real project looking empty, so it was never restored.
