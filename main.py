@@ -1102,6 +1102,9 @@ def _first_significant_token(text: str) -> str:
     return ""
 
 
+_LAST_PROJECT_TITLE_POSITIONS: list = []
+
+
 def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], section: str = "projects") -> dict[str, list[tuple[str, str]]]:
     """
     Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
@@ -1289,6 +1292,11 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             seen_titles.add(owner)
             title_positions.append((page_idx, float(ln["top"]), owner))
     title_positions.sort(key=lambda t: (t[0], t[1]))
+    # Exposed for project_links_debug.txt. When a link lands on the wrong
+    # project it is because a title was not located, and this is the only way to
+    # see that from a real run.
+    global _LAST_PROJECT_TITLE_POSITIONS
+    _LAST_PROJECT_TITLE_POSITIONS = list(title_positions)
 
     # Links we could not attribute by text. Parked rather than dropped.
     unplaced: list[dict] = []
@@ -10060,6 +10068,12 @@ async def _optimize_resume_core(
                 _pf.write(f"  {_n!r}\n")
             _pf.write("\n=== ANNOTATION MAP (pdf) ===\n")
             _pf.write(_json.dumps(pdf_project_link_map if project_names else {}, indent=1) + "\n")
+            _pf.write("\n=== TITLE POSITIONS FOUND IN PDF ===\n")
+            _located = set()
+            for _pg, _tp, _nm in (_LAST_PROJECT_TITLE_POSITIONS or []):
+                _located.add(_nm)
+                _pf.write(f"  page{_pg} top={_tp:.1f}  {_nm!r}\n")
+            _pf.write(f"  NOT LOCATED: {[n for n in (project_names or []) if n not in _located]}\n")
             _pf.write("\n=== TEXT MAP ===\n")
             _pf.write(_json.dumps(project_link_map or {}, indent=1) + "\n")
             _pf.write("\n=== EFFECTIVE MAP ===\n")
