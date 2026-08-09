@@ -9339,6 +9339,37 @@ async def reset_password(request: Request):
         db.close()
 
 
+def _usable_ats_payload(ats_payload: str | None):
+    """Validate a client-forwarded ATS analysis before trusting it.
+
+    The client sends back the analysis the user was shown so the optimizer can
+    reuse it instead of scoring again. It arrives from the browser, so it is
+    checked rather than trusted: anything without a hard-skills block is
+    discarded and the caller scores the resume itself. Nothing here can forge a
+    skill onto a resume - inject_jd_hard_skills still evidence-checks every
+    entry against the uploaded text - so a bad payload costs an LLM call, not
+    correctness.
+    """
+    if not ats_payload:
+        return None
+
+    try:
+        parsed = json.loads(ats_payload) if isinstance(ats_payload, str) else ats_payload
+    except (ValueError, TypeError):
+        logger.warning("Forwarded ATS payload was not valid JSON; scoring instead.")
+        return None
+
+    if not isinstance(parsed, dict):
+        return None
+
+    hard = (parsed.get("skills") or {}).get("hard_skills")
+    if not isinstance(hard, dict) or not (hard.get("matched") or hard.get("missing")):
+        logger.warning("Forwarded ATS payload had no hard-skills block; scoring instead.")
+        return None
+
+    return parsed
+
+
 def _ats_resume_text_for(pdf_text: str, linkedin_url: str | None) -> str:
     """Build the exact resume text ats_scoring() is fed.
 
@@ -9364,10 +9395,16 @@ def _ats_resume_text_for(pdf_text: str, linkedin_url: str | None) -> str:
     return text
 
 
-def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str]]:
+def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str], list[str]]:
     """Pull the JD's skills out of an ats_scoring() response.
 
-    Returns (hard_skills, missing_soft_skills).
+    Returns (hard_skills, missing_hard_skills, missing_soft_skills).
+
+    `missing_hard_skills` is the ATS analysis's own verdict and is what the user
+    is shown as gaps, verbatim. Re-deriving the matched/missing split with the
+    regex evidence check would reintroduce exactly the disagreement this is
+    meant to end: the analysis can count "Power BI" as matched from context the
+    literal matcher cannot see, and the two screens would differ again.
 
     For HARD skills both `matched` and `missing` are taken: together they are the
     ATS analysis's full picture of what this job asks for. inject_jd_hard_skills()
@@ -9386,38 +9423,48 @@ def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str]]
         parsed = parse_ai_json_response(ats_result) if isinstance(ats_result, str) else ats_result
     except Exception:
         logger.warning("Could not parse ATS result for JD skills; using regex extraction.")
-        return None, []
+        return None, [], []
 
     if not isinstance(parsed, dict):
-        return None, []
+        return None, [], []
 
     skills_block = parsed.get("skills") or {}
     hard = skills_block.get("hard_skills") or {}
     soft = skills_block.get("soft_skills") or {}
 
-    hard_skills: list[str] = []
-    if isinstance(hard, dict):
-        for bucket in ("matched", "missing"):
-            for value in (hard.get(bucket) or []):
-                text = str(value or "").strip()
-                if text:
-                    hard_skills.append(text)
-
-    soft_missing: list[str] = []
-    if isinstance(soft, dict):
-        for value in (soft.get("missing") or []):
+    def _clean(values) -> list[str]:
+        out: list[str] = []
+        seen: set[str] = set()
+        for value in (values or []):
             text = str(value or "").strip()
-            if text:
-                soft_missing.append(text)
+            if text and text.lower() not in seen:
+                seen.add(text.lower())
+                out.append(text)
+        return out
 
-    return (hard_skills or None), soft_missing
+    hard_matched = _clean(hard.get("matched")) if isinstance(hard, dict) else []
+    hard_missing = _clean(hard.get("missing")) if isinstance(hard, dict) else []
+    soft_missing = _clean(soft.get("missing")) if isinstance(soft, dict) else []
+
+    hard_skills = hard_matched + [s for s in hard_missing if s.lower() not in {m.lower() for m in hard_matched}]
+
+    return (hard_skills or None), hard_missing, soft_missing
 
 
-async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
+async def _optimize_resume_core(
+    file_path: str, jd_string: str, ats_payload: str | None = None
+) -> dict:
     """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
     resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
     and the extension's /api/extension/tailor-resume, which differ only in where the
-    source PDF comes from (fresh upload vs. a user's stored base resume)."""
+    source PDF comes from (fresh upload vs. a user's stored base resume).
+
+    `ats_payload` is the ATS analysis the user has already been shown, forwarded
+    by the client. When present it is used verbatim and no second scoring call is
+    made. This is the only way to guarantee the editor's missing-skill list
+    matches the score page: two separate LLM calls do not reliably agree even on
+    identical input, which is how the score page came to list 13 missing hard
+    skills while the editor listed 5 for the same resume and job."""
     resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
     normalized_resume_string = normalize_links(resume_string)
 
@@ -9441,20 +9488,30 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
 
     prompt = create_prompt(resume_string, jd_string)
 
-    # The ATS analysis decides which JD skills actually matter, and it is the
-    # list the user has already seen on the score page. Running it here keeps
-    # the two surfaces from reporting different missing skills for the same
-    # resume and JD. It is a separate LLM call, so it runs CONCURRENTLY with the
-    # rewrite rather than after it - wall-clock cost is close to zero.
-    try:
-        response_string, ats_result = await asyncio.gather(
-            get_resume_response(prompt),
-            ats_scoring(ats_resume_string, jd_string),
-            return_exceptions=True,
-        )
-    except Exception:
-        logger.exception("AI generation failed")
-        raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+    # Prefer the analysis the user was already shown. Re-scoring would be a
+    # second LLM call whose answer can differ from the first, and the user has
+    # no way to tell which is right - they just see two screens disagreeing.
+    forwarded_ats = _usable_ats_payload(ats_payload)
+
+    if forwarded_ats is not None:
+        try:
+            response_string = await get_resume_response(prompt)
+        except Exception:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+        ats_result = forwarded_ats
+    else:
+        # No analysis to reuse (optimized without scoring first). Score it here,
+        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
+        try:
+            response_string, ats_result = await asyncio.gather(
+                get_resume_response(prompt),
+                ats_scoring(ats_resume_string, jd_string),
+                return_exceptions=True,
+            )
+        except Exception:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
 
     if isinstance(response_string, BaseException):
         logger.exception("AI generation failed", exc_info=response_string)
@@ -9464,11 +9521,12 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     # inject_jd_hard_skills use its own regex extractor, which is what shipped
     # before this call existed.
     jd_hard_skills = None
+    ats_missing_hard: list[str] = []
     missing_soft_skills: list[str] = []
     if isinstance(ats_result, BaseException):
         logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
     else:
-        jd_hard_skills, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
+        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
 
     parsed = parse_ai_json_response(response_string)
 
@@ -9522,6 +9580,13 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
     # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
     # ATS analysis's verdict on which skills the job actually requires.
     parsed = inject_jd_hard_skills(parsed, jd_string, resume_string, jd_skills=jd_hard_skills)
+
+    # The gaps shown to the user are the ATS analysis's own `missing` list,
+    # used verbatim. inject_jd_hard_skills still decides what gets WRITTEN into
+    # the resume via its evidence check - that stays strict - but what the user
+    # is TOLD is missing must be the same list the score page showed them.
+    if jd_hard_skills is not None:
+        parsed["skill_gaps"] = ats_missing_hard
 
     # Soft skills the rewrite failed to express go into the summary, not the
     # skills array (Rule01b). Handled automatically rather than asked about:
@@ -9819,6 +9884,7 @@ async def upload_resume(
     template_id: int | None = Form(1),
     style_id: int | None = Form(1),
     editor_mode: str | None = Form(None),
+    ats_payload: str | None = Form(None),
 ):
     """Upload a resume PDF file and JD with selected template and style"""
     if jd_string is None:
@@ -9841,7 +9907,7 @@ async def upload_resume(
             f.write(content)
 
         async with request_semaphore:
-            parsed = await _optimize_resume_core(file_path, jd_string)
+            parsed = await _optimize_resume_core(file_path, jd_string, ats_payload)
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
 
             # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
