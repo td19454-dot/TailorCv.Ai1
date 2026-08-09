@@ -1954,6 +1954,31 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
     return parsed
 
 
+def _restore_tokens(text: str) -> set[str]:
+    """Content words of a bullet, for comparing what is already on the resume."""
+    return {t for t in re.findall(r"[a-z0-9]+", str(text or "").lower()) if len(t) > 3}
+
+
+def _looks_like_stack_line(text: str) -> bool:
+    """Whether a row is a technology list rather than a project name.
+
+    Resumes put the stack on its own row under the title ("Python, PowerBI, SQL,
+    Excel"). Restoring that as a project produced an entry named after the tech
+    list carrying a copy of the real project's bullets.
+    """
+    t = str(text or "").strip()
+    if not t:
+        return True
+    if t.count(",") >= 2:
+        return True
+    parts = [p.strip() for p in re.split(r"[,/|]", t) if p.strip()]
+    if len(parts) >= 2 and all(len(p.split()) <= 2 for p in parts):
+        known = sum(1 for p in parts if _is_atomic_hard_skill(p))
+        if known >= max(2, len(parts) - 1):
+            return True
+    return False
+
+
 # A date left on the end of a title row once the stack has been split off
 # ("Customer Behaviour Analytics January 2026").
 _RESTORE_TRAILING_DATE_RE = re.compile(
@@ -2035,15 +2060,42 @@ def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
         current = (title, [])
         found.append(current)
 
+    # Bullets already in the output. A candidate whose content is ALREADY on the
+    # resume is not a dropped project - it is a line we mis-read as a title
+    # (a subtitle row like "Python, PowerBI, SQL, Excel", or a link row). This
+    # is the strongest guard: without it, restoration invented projects and
+    # duplicated another project's bullets underneath them.
+    existing_bullets = set()
+    for entry in projects:
+        if isinstance(entry, dict):
+            for b in (entry.get("bullets") or []):
+                existing_bullets |= _restore_tokens(str(b))
+
+    # Subtitles of entries that survived - never restore one as a project.
+    existing_subtitles = {
+        _normalize_key(str(e.get("subtitle") or ""))
+        for e in projects if isinstance(e, dict)
+    }
+    existing_subtitles.discard("")
+
     restored = 0
     for title, bullets in found:
         key = _normalize_key(title)
-        if not key or key in have:
+        if not key or key in have or key in existing_subtitles:
             continue
         # Require real content, so a stray line never becomes a project.
         if len(bullets) < 1:
             continue
+        if _looks_like_stack_line(title):
+            continue
+        # Content already present under another entry -> not a dropped project.
+        cand = set()
+        for b in bullets:
+            cand |= _restore_tokens(b)
+        if cand and len(cand & existing_bullets) / len(cand) > 0.5:
+            continue
         have.add(key)
+        existing_bullets |= cand
         projects.append({"name": title, "bullets": bullets[:8]})
         restored += 1
 
