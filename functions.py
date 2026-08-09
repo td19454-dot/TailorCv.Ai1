@@ -418,18 +418,51 @@ def inject_links(data, links, mapped_links, pub_links=None):
             if isinstance(project, dict):
                 project.setdefault("links", [])
 
+        def _looks_like_url(value) -> bool:
+            """Whether a field actually holds a link rather than a link's LABEL.
+
+            Resumes render links as anchor text - "Live Demo | GitHub" - and the
+            model transcribes what it sees, so it returns url="Live Demo". That
+            is a caption, not an address. Counting it as a link made
+            _project_has_any_link report the project as already linked, so the
+            real URLs recovered from the PDF annotations were never injected: a
+            project showed no links at all while its neighbour, whose row said
+            only "GitHub", kept them.
+            """
+            v = str(value or "").strip()
+            if not v:
+                return False
+            if v.lower().startswith(("http://", "https://", "www.", "mailto:", "tel:")):
+                return True
+            # A bare domain ("github.com/user/repo"). Labels contain spaces and
+            # no dot, so this keeps them out.
+            return "." in v and " " not in v
+
+        # Drop label text sitting in URL fields. Left in place it would render as
+        # a dead link, and it would also poison the used_urls set below.
+        for project in projects:
+            if isinstance(project, dict):
+                for fld in ("url", "github_link"):
+                    if project.get(fld) and not _looks_like_url(project.get(fld)):
+                        project[fld] = ""
+                project["links"] = [
+                    item for item in (project.get("links") or [])
+                    if isinstance(item, dict)
+                    and _looks_like_url(item.get("url") or item.get("href") or item.get("link"))
+                ]
+
         def _project_has_any_link(p: dict) -> bool:
             if not isinstance(p, dict):
                 return False
-            if str(p.get("url") or "").strip():
+            if _looks_like_url(p.get("url")):
                 return True
-            if str(p.get("github_link") or "").strip():
+            if _looks_like_url(p.get("github_link")):
                 return True
             # Check nested links array for any usable url.
             for item in p.get("links") or []:
                 if not isinstance(item, dict):
                     continue
-                if str(item.get("url") or item.get("href") or item.get("link") or "").strip():
+                if _looks_like_url(item.get("url") or item.get("href") or item.get("link")):
                     return True
             return False
 
