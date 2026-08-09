@@ -994,6 +994,35 @@ def _section_of(headings: list[tuple[int, float, str]], page_idx: int, top: floa
     return current
 
 
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+# Words a project title may open with that identify nothing on their own.
+_WEAK_TITLE_LEADS = {
+    "the", "a", "an", "my", "our", "project", "ai", "ml", "web", "app",
+    "application", "system", "tool", "platform", "end", "full", "smart",
+}
+
+
+def _title_tokens(text: str) -> set[str]:
+    """The identifying words of a title, minus filler shared by every project."""
+    return {
+        token for token in _TOKEN_RE.findall(str(text or "").lower())
+        if len(token) > 2 and token not in _WEAK_TITLE_LEADS
+    }
+
+
+def _first_significant_token(text: str) -> str:
+    """The first word of a title that actually identifies it.
+
+    Used to pair a rewritten project name back to its row in the source PDF.
+    Leading filler ("The", "AI", "Smart") is skipped because it is shared by
+    unrelated projects and would pair them with the wrong links.
+    """
+    for token in _TOKEN_RE.findall(str(text or "").lower()):
+        if len(token) > 2 and token not in _WEAK_TITLE_LEADS:
+            return token
+    return ""
+
+
 def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], section: str = "projects") -> dict[str, list[tuple[str, str]]]:
     """
     Extract *clickable* link annotations (URIs) from the PDF and map them to the nearest
@@ -1028,6 +1057,42 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             # word matching a long project title (a common cause of link bleed).
             if k in nn and len(k) >= max(4, int(0.5 * len(nn))):
                 return norm_to_name[nn]
+
+        # Tertiary: the optimizer REWRITES project titles, so the stored name is
+        # often the PDF's title plus extra words ("TailorCV.ai" becomes
+        # "TailorCV.ai - AI Resume Optimizer"). Both checks above need one string
+        # inside the other, so a rename made the project match nothing - and every
+        # link then piled onto whichever project still matched, i.e. links landed
+        # on the WRONG project rather than merely going missing.
+        #
+        # A project title leads with its distinctive word, and that word survives
+        # rewriting, so fall back to comparing first tokens. Only used when
+        # exactly one project claims that token, so two projects starting with
+        # the same word ("Resume Parser" / "Resume Builder") stay ambiguous and
+        # are left to the positional logic rather than guessed at.
+        line_first = _first_significant_token(line_text)
+        if line_first:
+            owners = [n for n in names if _first_significant_token(n) == line_first]
+            if len(owners) == 1:
+                return owners[0]
+
+        # Quaternary: a heavier rewrite can also REORDER the title ("Youtube
+        # Sentiment Analysis" -> "Sentiment Analysis on YouTube Comments"), which
+        # moves the leading word and defeats the check above. Fall back to how
+        # much of the project's own vocabulary appears on the line. The winner
+        # must be a clear winner - tied scores mean we cannot tell the projects
+        # apart, and a wrong link is worse than a missing one.
+        line_tokens = _title_tokens(line_text)
+        if line_tokens:
+            scored = []
+            for n in names:
+                tokens = _title_tokens(n)
+                if tokens:
+                    scored.append((len(tokens & line_tokens) / len(tokens), n))
+            scored.sort(key=lambda pair: pair[0], reverse=True)
+            if scored and scored[0][0] >= 0.34:
+                if len(scored) == 1 or scored[0][0] > scored[1][0]:
+                    return scored[0][1]
         return None
 
     # Build line boxes using pdfplumber so we can locate nearby text for each link annotation.
@@ -2923,6 +2988,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "Cloud & DevOps": [],
         "Networking & Protocols": [],
         "Security & SIEM": [],
+        "Methodologies & Practices": [],
         "Other Technical Skills": [],
     }
 
@@ -2992,7 +3058,33 @@ def group_skills(skills: list[str]) -> list[str]:
         "power bi", "powerbi", "tableau",
         "excel", "jira", "confluence",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
-        "pytest", "jest", "selenium", "cuda", "jupyter"
+        "pytest", "jest", "selenium", "cuda", "jupyter",
+        # BI / analytics
+        "looker", "looker studio", "qlik", "qlikview", "qlik sense",
+        "quicksight", "google data studio", "data studio", "alteryx",
+        "google analytics", "advanced excel", "google sheets", "powerpoint",
+        # Diagramming / modelling
+        "visio", "microsoft visio", "lucidchart", "draw.io", "drawio",
+        "miro", "figma", "balsamiq",
+        # Enterprise platforms (ERP / CRM / ITSM)
+        "sap", "salesforce", "servicenow", "hubspot", "workday",
+        "sharepoint", "erp", "erp systems", "crm",
+        # Project / work tracking
+        "ms project", "microsoft project", "asana", "trello", "notion"
+    }
+    # Ways of working and analysis artefacts. These are legitimate resume
+    # skills - a business analyst lists Agile, BPMN and user stories - but they
+    # are not tools, so grouping them under "Tools & Platforms" reads wrong.
+    methodology_terms = {
+        "agile", "waterfall", "scrum", "kanban", "safe", "lean", "six sigma",
+        "bpmn", "uml", "sdlc", "rup",
+        "user stories", "user story", "use cases", "use case",
+        "brd", "brds", "business requirements document",
+        "frd", "srs", "user acceptance testing", "uat",
+        "wireframes", "wireframing", "prototyping", "mockups",
+        "requirements gathering", "requirement gathering", "gap analysis",
+        "process mapping", "process modelling", "process modeling",
+        "process flow", "data modelling", "data modeling",
     }
     cloud_devops_terms = {
         "aws", "amazon web services", "azure", "gcp",
@@ -3071,6 +3163,8 @@ def group_skills(skills: list[str]) -> list[str]:
             return "AI/ML"
         if item_norm in framework_terms:
             return "Frameworks/Libraries"
+        if item_norm in methodology_terms:
+            return "Methodologies & Practices"
         return "uncategorized"
 
     for skill in skills:
@@ -3167,7 +3261,7 @@ def group_skills(skills: list[str]) -> list[str]:
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
                   "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
-                  "Other Technical Skills"):
+                  "Methodologies & Practices", "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result
