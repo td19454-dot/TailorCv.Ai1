@@ -1778,7 +1778,7 @@ body {
 .tc-gap-modal {
     position: relative; z-index: 2;
     background: #ffffff;
-    border: 1px solid rgba(15,23,42,0.07);
+    border: 1px solid rgba(15,23,42,0.12);
     border-radius: 18px;
     padding: 2rem 2.1rem 1.7rem;
     width: min(720px, 94vw);
@@ -1793,50 +1793,54 @@ body {
 }
 .tc-gap-sub {
     margin: 0 0 0.95rem;
-    color: #64748b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
+    color: #475569; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
 }
 .tc-gap-toolbar {
     display: flex; align-items: center; justify-content: space-between;
     gap: 0.75rem; margin-bottom: 0.55rem;
-    border-top: 1px solid rgba(15,23,42,0.06); padding-top: 0.75rem;
+    border-top: 1px solid rgba(15,23,42,0.11); padding-top: 0.75rem;
 }
 .tc-gap-count {
-    color: #94a3b8; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
+    color: #475569; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
 }
 .tc-gap-selectall {
     background: none; border: none; padding: 0;
-    color: #2563eb; font-size: 0.72rem; font-weight: 400;
+    color: #1d4ed8; font-size: 0.72rem; font-weight: 400;
     cursor: pointer; text-decoration: none;
     transition: color 0.18s ease;
 }
-.tc-gap-selectall:hover { color: #1d4ed8; text-decoration: underline; text-underline-offset: 3px; }
+.tc-gap-selectall:hover { color: #1e3a8a; text-decoration: underline; text-underline-offset: 3px; }
+.tc-gap-selectall:focus { outline: none; }
+.tc-gap-selectall:focus-visible { outline: none; border-radius: 4px; box-shadow: 0 0 0 3px rgba(29,78,216,0.22); }
+.tc-gap-btn:focus { outline: none; }
+.tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.28); }
 .tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
 .tc-gap-pill {
     display: inline-flex; align-items: center; gap: 0.38rem;
     background: #fff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 999px;
     padding: 0.4rem 0.85rem 0.4rem 0.55rem;
-    color: #475569; font-size: 0.76rem; font-weight: 400;
+    color: #334155; font-size: 0.76rem; font-weight: 400;
     cursor: pointer; transition: all 0.16s ease;
 }
 .tc-gap-pill:focus { outline: none; }
 .tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,0.18); }
-.tc-gap-pill:hover { border-color: #cbd5e1; background: #f8fafc; color: #1e293b; }
+.tc-gap-pill:hover { border-color: #94a3b8; background: #f1f5f9; color: #0f172a; }
 .tc-gap-pill .tc-gap-tick {
     display: inline-flex; align-items: center; justify-content: center;
     width: 14px; height: 14px; border-radius: 50%;
-    border: 1px solid #cbd5e1; background: #fff;
+    border: 1px solid #94a3b8; background: #fff;
     font-size: 8px; line-height: 1; color: transparent;
     transition: all 0.16s ease;
 }
 .tc-gap-pill[aria-pressed="true"] {
-    background: #eff6ff;
-    border-color: #93c5fd;
-    color: #1d4ed8; font-weight: 400;
+    background: #dbeafe;
+    border-color: #2563eb;
+    color: #1e3a8a; font-weight: 400;
 }
 .tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
-    background: #2563eb; border-color: #2563eb; color: #fff;
+    background: #1d4ed8; border-color: #1d4ed8; color: #fff;
 }
 .tc-gap-actions {
     display: flex; justify-content: flex-end; align-items: center;
@@ -1848,15 +1852,15 @@ body {
     transition: all 0.18s; border: 1px solid transparent;
 }
 .tc-gap-skip {
-    background: none; border-color: #e2e8f0; color: #64748b;
+    background: none; border-color: #cbd5e1; color: #334155;
 }
-.tc-gap-skip:hover { border-color: #cbd5e1; background: #f8fafc; color: #334155; }
+.tc-gap-skip:hover { border-color: #94a3b8; background: #f1f5f9; color: #0f172a; }
 .tc-gap-add {
-    background: #2563eb; color: #fff;
-    box-shadow: 0 1px 2px rgba(37,99,235,0.25);
+    background: #1d4ed8; color: #fff;
+    box-shadow: 0 1px 3px rgba(29,78,216,0.35);
 }
-.tc-gap-add:hover:not(:disabled) { background: #1d4ed8; }
-.tc-gap-add:disabled { background: #cbd5e1; color: #f1f5f9; cursor: not-allowed; box-shadow: none; }
+.tc-gap-add:hover:not(:disabled) { background: #1e3a8a; }
+.tc-gap-add:disabled { background: #94a3b8; color: #f8fafc; cursor: not-allowed; box-shadow: none; }
 @media (max-width: 480px) {
     .tc-gap-actions { flex-direction: column-reverse; }
     .tc-gap-btn { width: 100%; }
