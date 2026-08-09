@@ -38,7 +38,10 @@
 var _upgradeModalOpen = false;
 
 // Region-aware pricing — mirrors /pricing and home pricing preview.
-var _upgradeRegionCache = null;
+// Pages that can show the paywall modal on load (e.g. the optimized editor)
+// inject window.__TCV_REGION__ server-side so the first render is already
+// correct — no client fetch to race against before the popup is shown.
+var _upgradeRegionCache = (typeof window.__TCV_REGION__ === "string") ? window.__TCV_REGION__ : null;
 var _upgradeRegionFetch = null;
 var _UPGRADE_PRICING = {
   india:  { sym: '₹', pro: '167' },
