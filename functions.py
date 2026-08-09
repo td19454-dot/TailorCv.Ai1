@@ -1434,6 +1434,61 @@ def promptable_skill_gaps(gaps) -> list[str]:
     return promptable
 
 
+def weave_soft_skills_into_summary(data: dict, soft_skills) -> dict:
+    """Fold JD soft skills the rewrite missed into the professional summary.
+
+    Rule01c already tells the model to express every JD soft skill through work
+    the resume describes, and Rule01b is explicit that they belong in the summary
+    rather than the `skills` array ("Skills: Python, SQL, mentoring" reads as
+    padding to a recruiter). The model does not always comply, which is why the
+    ATS pass still reports soft skills as missing after tailoring.
+
+    This closes that gap without asking the candidate. Unlike a hard skill -
+    where "do you know Tableau?" is a factual question only they can answer -
+    a soft skill is a matter of how existing work is presented, so it is safe
+    to handle automatically.
+
+    Deliberately conservative: it appends ONE plain capability sentence and never
+    touches the bullets, because a bullet describing a team, mentee or client
+    that appears nowhere in the original resume would be an invented event.
+    Skills already named in the summary are skipped.
+    """
+    if not isinstance(data, dict):
+        return data
+
+    summary = str(data.get("summary") or "").strip()
+
+    additions: list[str] = []
+    seen: set[str] = set()
+    for raw in (soft_skills or []):
+        skill = _clean_inline_text(raw).strip().rstrip(".")
+        if not skill or len(skill) > 60:
+            continue
+        key = skill.lower()
+        if key in seen:
+            continue
+        # Already stated - do not repeat it.
+        if summary and _contains_skill(summary, skill):
+            continue
+        seen.add(key)
+        additions.append(skill[0].lower() + skill[1:] if skill[:1].isupper() and not skill.isupper() else skill)
+
+    if not additions:
+        return data
+
+    if len(additions) == 1:
+        phrase = additions[0]
+    elif len(additions) == 2:
+        phrase = f"{additions[0]} and {additions[1]}"
+    else:
+        phrase = ", ".join(additions[:-1]) + f" and {additions[-1]}"
+
+    sentence = f"Skilled in {phrase}."
+    data["summary"] = f"{summary} {sentence}".strip() if summary else sentence
+    data["soft_skills_added"] = additions
+    return data
+
+
 _SKILLS_SECTION_HEADER_RE = re.compile(
     r'^\s*(?:[-•*]\s*)?(?:technical\s+skills|core\s+competenc(?:y|ies)|key\s+skills|'
     r'skills?(?:\s*(?:&|and)\s*(?:abilities|expertise))?|technologies|'
