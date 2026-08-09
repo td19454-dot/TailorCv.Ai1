@@ -1771,96 +1771,119 @@ body {
 }
 .tc-gap-backdrop {
     position: absolute; inset: 0;
-    background: rgba(2,8,24,0.55);
+    background: rgba(8,15,40,0.62);
     backdrop-filter: blur(6px);
     animation: tc-bgin 0.3s ease both;
 }
 .tc-gap-modal {
-    position: relative; z-index: 2;
-    background: #ffffff;
-    border: 1px solid rgba(15,23,42,0.12);
+    position: relative; z-index: 2; overflow: hidden;
+    background: linear-gradient(170deg, #f6f9ff 0%, #ffffff 42%);
+    border: 1px solid #c7d7f5;
     border-radius: 18px;
-    padding: 2rem 2.1rem 1.7rem;
+    padding: 1.9rem 2.1rem 1.6rem;
     width: min(720px, 94vw);
     max-height: 88vh; overflow-y: auto;
-    box-shadow: 0 24px 60px rgba(15,23,42,0.22), 0 2px 6px rgba(15,23,42,0.06);
+    box-shadow: 0 26px 70px rgba(15,32,80,0.30), 0 2px 8px rgba(15,32,80,0.10);
     animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
     -webkit-font-smoothing: antialiased;
 }
-.tc-gap-modal h2 {
-    margin: 0 0 0.3rem;
-    color: #0f172a; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
+/* Accent bar - the colour that makes the card read as ours, not a browser dialog. */
+.tc-gap-modal::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+    background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
 }
+.tc-gap-head { display: flex; gap: 0.8rem; align-items: flex-start; margin-bottom: 1.15rem; }
+.tc-gap-icon {
+    flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 10px;
+    background: linear-gradient(140deg, #1d4ed8, #6d28d9);
+    color: #fff; box-shadow: 0 5px 14px rgba(29,78,216,0.38);
+}
+.tc-gap-headtext { min-width: 0; }
+.tc-gap-modal h2 {
+    margin: 0 0 0.28rem;
+    color: #0b1220; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
+}
+.tc-gap-modal h2 em { font-style: normal; font-weight: 600; color: #1d4ed8; }
 .tc-gap-sub {
-    margin: 0 0 0.95rem;
-    color: #475569; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
+    margin: 0;
+    color: #44506b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
 }
 .tc-gap-toolbar {
     display: flex; align-items: center; justify-content: space-between;
-    gap: 0.75rem; margin-bottom: 0.55rem;
-    border-top: 1px solid rgba(15,23,42,0.11); padding-top: 0.75rem;
+    gap: 0.75rem; margin-bottom: 0.7rem;
+    border-top: 1px solid #dbe5f7; padding-top: 0.8rem;
 }
 .tc-gap-count {
-    color: #475569; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
+    color: #1e3a8a; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.01em;
+    background: #e4ecfd; border: 1px solid #c7d7f5;
+    padding: 0.2rem 0.6rem; border-radius: 999px;
 }
 .tc-gap-selectall {
-    background: none; border: none; padding: 0;
+    background: none; border: none; padding: 0.2rem 0.1rem;
     color: #1d4ed8; font-size: 0.72rem; font-weight: 400;
     cursor: pointer; text-decoration: none;
     transition: color 0.18s ease;
 }
-.tc-gap-selectall:hover { color: #1e3a8a; text-decoration: underline; text-underline-offset: 3px; }
+.tc-gap-selectall:hover { color: #6d28d9; text-decoration: underline; text-underline-offset: 3px; }
 .tc-gap-selectall:focus { outline: none; }
-.tc-gap-selectall:focus-visible { outline: none; border-radius: 4px; box-shadow: 0 0 0 3px rgba(29,78,216,0.22); }
+.tc-gap-selectall:focus-visible { outline: none; border-radius: 5px; box-shadow: 0 0 0 3px rgba(29,78,216,0.24); }
 .tc-gap-btn:focus { outline: none; }
-.tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.28); }
+.tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.30); }
 .tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
 .tc-gap-pill {
-    display: inline-flex; align-items: center; gap: 0.38rem;
+    display: inline-flex; align-items: center; gap: 0.4rem;
     background: #fff;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #c3d1ea;
     border-radius: 999px;
     padding: 0.4rem 0.85rem 0.4rem 0.55rem;
-    color: #334155; font-size: 0.76rem; font-weight: 400;
+    color: #24324e; font-size: 0.76rem; font-weight: 400;
     cursor: pointer; transition: all 0.16s ease;
 }
 .tc-gap-pill:focus { outline: none; }
-.tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,0.18); }
-.tc-gap-pill:hover { border-color: #94a3b8; background: #f1f5f9; color: #0f172a; }
+.tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.22); }
+.tc-gap-pill:hover {
+    border-color: #1d4ed8; background: #f0f5ff; color: #0b1220;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(29,78,216,0.14);
+}
 .tc-gap-pill .tc-gap-tick {
     display: inline-flex; align-items: center; justify-content: center;
-    width: 14px; height: 14px; border-radius: 50%;
-    border: 1px solid #94a3b8; background: #fff;
-    font-size: 8px; line-height: 1; color: transparent;
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1px solid #9db3d8; background: #fff;
+    font-size: 9px; line-height: 1; color: transparent;
     transition: all 0.16s ease;
 }
+/* Selected reads as a solid brand-coloured chip - unmistakable at a glance. */
 .tc-gap-pill[aria-pressed="true"] {
-    background: #dbeafe;
-    border-color: #2563eb;
-    color: #1e3a8a; font-weight: 400;
+    background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+    border-color: transparent;
+    color: #fff; font-weight: 400;
+    box-shadow: 0 4px 12px rgba(29,78,216,0.34);
 }
+.tc-gap-pill[aria-pressed="true"]:hover { transform: translateY(-1px); }
 .tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
-    background: #1d4ed8; border-color: #1d4ed8; color: #fff;
+    background: #fff; border-color: #fff; color: #1d4ed8;
 }
 .tc-gap-actions {
     display: flex; justify-content: flex-end; align-items: center;
     gap: 0.5rem; flex-wrap: wrap;
 }
 .tc-gap-btn {
-    border-radius: 8px; padding: 0.45rem 0.95rem;
+    border-radius: 9px; padding: 0.48rem 1rem;
     font-size: 0.78rem; font-weight: 400; cursor: pointer;
     transition: all 0.18s; border: 1px solid transparent;
 }
-.tc-gap-skip {
-    background: none; border-color: #cbd5e1; color: #334155;
-}
-.tc-gap-skip:hover { border-color: #94a3b8; background: #f1f5f9; color: #0f172a; }
+.tc-gap-skip { background: #fff; border-color: #c3d1ea; color: #24324e; }
+.tc-gap-skip:hover { border-color: #9db3d8; background: #f0f5ff; color: #0b1220; }
 .tc-gap-add {
-    background: #1d4ed8; color: #fff;
-    box-shadow: 0 1px 3px rgba(29,78,216,0.35);
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    color: #fff; box-shadow: 0 5px 16px rgba(29,78,216,0.38);
 }
-.tc-gap-add:hover:not(:disabled) { background: #1e3a8a; }
-.tc-gap-add:disabled { background: #94a3b8; color: #f8fafc; cursor: not-allowed; box-shadow: none; }
+.tc-gap-add:hover:not(:disabled) { filter: brightness(1.08); box-shadow: 0 7px 20px rgba(29,78,216,0.46); }
+.tc-gap-add:disabled {
+    background: #dbe3f2; color: #8496b8; cursor: not-allowed; box-shadow: none;
+}
 @media (max-width: 480px) {
     .tc-gap-actions { flex-direction: column-reverse; }
     .tc-gap-btn { width: 100%; }
@@ -1885,11 +1908,21 @@ body {
         overlay.innerHTML = `
             <div class="tc-gap-backdrop"></div>
             <div class="tc-gap-modal" role="dialog" aria-modal="true" aria-labelledby="tc-gap-title">
-                <h2 id="tc-gap-title">This job asks for ${gaps.length} skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
-                <p class="tc-gap-sub">
-                    Tick the ones you genuinely have and could defend in an interview —
-                    we'll add them to your resume. Leave the rest untouched.
-                </p>
+                <div class="tc-gap-head">
+                    <span class="tc-gap-icon" aria-hidden="true">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2l2.4 6.2L21 10l-5.2 4.1L17 21l-5-3.4L7 21l1.2-6.9L3 10l6.6-1.8z"/>
+                        </svg>
+                    </span>
+                    <div class="tc-gap-headtext">
+                        <h2 id="tc-gap-title">This job asks for <em>${gaps.length}</em> skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
+                        <p class="tc-gap-sub">
+                            Tick the ones you genuinely have and could defend in an interview —
+                            we'll add them to your resume. Leave the rest untouched.
+                        </p>
+                    </div>
+                </div>
                 <div class="tc-gap-toolbar">
                     <span class="tc-gap-count"></span>
                     <button type="button" class="tc-gap-selectall">Select all</button>
