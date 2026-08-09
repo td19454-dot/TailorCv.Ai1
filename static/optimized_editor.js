@@ -1915,9 +1915,21 @@ body {
     }
 
     function showSkillGapPrompt(payload) {
-        const gaps = Array.isArray(payload?.promptable_skill_gaps)
-            ? payload.promptable_skill_gaps.filter(s => String(s || "").trim())
-            : [];
+        // Never offer a skill the resume already lists. The stored gap list can
+        // outlive the add that satisfied it - a template switch or a reload
+        // rewrites the payload while keeping the old gaps - and the box then
+        // showed 15 pills that were already on the resume, so ticking them
+        // correctly did nothing and read as broken.
+        const present = new Set(
+            ((payload && payload.resume_data && payload.resume_data.skills) || [])
+                .map(s => String(s || "").trim().toLowerCase())
+                .filter(Boolean)
+        );
+        const gaps = (Array.isArray(payload?.promptable_skill_gaps)
+            ? payload.promptable_skill_gaps
+            : []
+        ).map(s => String(s || "").trim())
+         .filter(s => s && !present.has(s.toLowerCase()));
         if (!gaps.length) return;
         if (document.getElementById("tc-gap-overlay")) return;
         // Answered already. The in-memory guard alone is not enough: switching
@@ -2030,6 +2042,7 @@ body {
 
             let jd = "";
             try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+            const current = getPayload() || payload || {};
 
             try {
                 // This route is not in EXEMPT_PATHS, so the double-submit CSRF
@@ -2043,18 +2056,33 @@ body {
                         "X-Requested-With": "XMLHttpRequest",
                     },
                     body:    JSON.stringify({
-                        resume_data: payload.resume_data || null,
+                        // Read the payload NOW, not when the box was opened. A
+                        // template switch rewrites it while the box is up, and
+                        // sending the stale copy meant posting resume_data that
+                        // no longer matched what is on screen.
+                        resume_data: current.resume_data || null,
                         skills:      Array.from(selected),
                         jd_string:   jd,
-                        template_id: Number(payload.template_id || 1),
-                        style_id:    Number(payload.style_id || 1),
+                        template_id: Number(current.template_id || 1),
+                        style_id:    Number(current.style_id || 1),
                     }),
                 });
                 if (res.status === 401) {
                     window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
                     return;
                 }
-                if (!res.ok) throw new Error("Request failed");
+                if (!res.ok) {
+                    // Surface what the server actually said. Replacing it with
+                    // "Request failed" meant every cause - no resume_data, a
+                    // skill no longer listed, a render error - reached the user
+                    // as the same unactionable "Update failed".
+                    let detail = "";
+                    try {
+                        const body = await res.json();
+                        detail = (body && (body.detail || body.error)) || "";
+                    } catch (e) {}
+                    throw new Error(detail || `Request failed (${res.status})`);
+                }
 
                 const data = await res.json();
 
@@ -2108,10 +2136,11 @@ body {
             } catch (e) {
                 addBtn.disabled = false;
                 addBtn.textContent = original;
+                const why = (e && e.message) ? String(e.message) : "Please try again.";
                 if (typeof showToast === "function") {
-                    showToast("Could not add those skills. Please try again.", "error", "Update failed");
+                    showToast(why, "error", "Could not add skills");
                 } else {
-                    setStatus("Could not add those skills. Please try again.");
+                    setStatus("Could not add skills: " + why);
                 }
             }
         });
