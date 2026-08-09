@@ -959,6 +959,16 @@ _SECTION_HEADING_KEYS = {
 _COLUMN_GAP = 40.0
 
 
+# Words that only qualify a section name and never identify one on their own.
+# Deliberately a closed list: anything broader would let a project or job title
+# ending in a section word be read as a heading.
+_HEADING_QUALIFIERS = {
+    "core", "key", "relevant", "additional", "other", "notable", "selected",
+    "major", "personal", "academic", "professional", "technical", "primary",
+    "main", "top", "career", "my", "important", "significant", "recent",
+}
+
+
 def _heading_key(text: str) -> str | None:
     """The canonical section a heading names, or None.
 
@@ -970,6 +980,14 @@ def _heading_key(text: str) -> str | None:
 
     Matches the longest leading run of words that names a section, so the
     decoration is ignored while the section is still identified.
+
+    Decoration also comes FIRST - "Core Achievements", "Key Achievements",
+    "Relevant Experience". Those were missed too, and the consequence was the
+    same in reverse: the achievements block stayed tagged as `projects` and its
+    lines were restored as bullets on the last project. So a leading qualifier
+    is stripped as well, but only from a fixed list, so an ordinary line that
+    happens to end in a section word ("Machine Learning Projects" as a PROJECT
+    title) is not mistaken for a heading.
     """
     words = str(text or "").split()
     if not words or len(words) > 5:
@@ -978,6 +996,16 @@ def _heading_key(text: str) -> str | None:
         key = _normalize_key(" ".join(words[:take]))
         if key in _SECTION_HEADING_KEYS:
             return _SECTION_HEADING_KEYS[key]
+
+    # Strip leading qualifiers, then re-test what remains.
+    start = 0
+    while start < len(words) - 1 and _normalize_key(words[start]) in _HEADING_QUALIFIERS:
+        start += 1
+    if start:
+        for take in range(len(words), start, -1):
+            key = _normalize_key(" ".join(words[start:take]))
+            if key in _SECTION_HEADING_KEYS:
+                return _SECTION_HEADING_KEYS[key]
     return None
 
 
