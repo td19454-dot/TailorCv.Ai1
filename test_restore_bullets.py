@@ -195,6 +195,47 @@ def test_restore_entries_handles_odd_input():
     main.restore_dropped_entries(None, PROJECTS_SOURCE)
 
 
+# --------------------------------------------------------------------------- #
+# Restoring dropped entries must not INVENT them. The first version promoted a
+# stack row ("Python, PowerBI, SQL, Excel") and a link row ("html, css,
+# javascript Live") into projects, each carrying a copy of another project's
+# bullets — visibly worse than the missing project it was meant to fix.
+# --------------------------------------------------------------------------- #
+def test_stack_rows_are_not_projects():
+    for row in ("Python, PowerBI, SQL, Excel", "html, css, javascript Live",
+                "html,css,javascript,FastApi", "HTML, CSS, JavaScript"):
+        assert main._looks_like_stack_line(row) is True, row
+
+
+def test_real_project_titles_are_not_mistaken_for_stacks():
+    for row in ("Customer Behaviour Analytics", "Tailorcv.com",
+                "Myntra E-commerce Website Clone", "Anti-spoofing Face App"):
+        assert main._looks_like_stack_line(row) is False, row
+
+
+def test_restore_does_not_duplicate_an_existing_project_bullets():
+    # The stack row sits under a project that SURVIVED, so its bullets are
+    # already on the resume - restoring it would duplicate them.
+    source = chr(10).join([
+        "Projects",
+        "Customer Behaviour Analytics - Python, PowerBI, SQL, Excel January 2026",
+        "GitHub",
+        "- Executed end-to-end data analysis using Python to clean 3,900 transaction records.",
+        "- Developed an interactive Power BI dashboard to visualize customer segments clearly.",
+        "Education",
+    ])
+    parsed = {"projects": [{
+        "name": "Customer Behaviour Analytics",
+        "subtitle": "Python, PowerBI, SQL, Excel",
+        "bullets": [
+            "Executed end-to-end data analysis using Python to clean 3,900 transaction records.",
+            "Developed an interactive Power BI dashboard to visualize customer segments clearly.",
+        ],
+    }]}
+    names = [p["name"] for p in main.restore_dropped_entries(parsed, source)["projects"]]
+    assert names == ["Customer Behaviour Analytics"], names
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]
