@@ -1891,6 +1891,18 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             if k > start:
                 end = k
                 break
+        # Every OTHER entry's title, so this entry's range can be closed the
+        # moment the next one begins - even when that title was never located.
+        # `end` above is the next title we FOUND; a title split across lines by a
+        # narrow gutter ("Myntra E-" / "commerce") is never found, so without
+        # this the range ran to the end of the section and the first entry
+        # swallowed every following entry's bullets.
+        own_key = _normalize_key(ident)
+        other_keys = [
+            k for k in (_normalize_key(x) for x in identifiers if x)
+            if k and len(k) >= 4 and k != own_key
+        ]
+
         cands = []
         for i in range(start + 1, end):
             line = section_lines[i][0]
@@ -1899,6 +1911,18 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             # here prevents capturing a following entry the optimizer may have
             # dropped (which would otherwise be restored onto the wrong entry).
             if "|" in line and not _restore_is_meta_line(line):
+                break
+            # Hard boundary: the line is (or begins) another entry's title. A
+            # prefix match catches the wrapped case, where only the first
+            # fragment of the next title appears on its own line.
+            lnorm = _normalize_key(line)
+            if lnorm and len(lnorm) >= 4 and any(
+                k.startswith(lnorm) or lnorm.startswith(k) for k in other_keys
+            ):
+                break
+            # Hard boundary: a technology row sits directly under a title, so
+            # reaching one means the next entry has already started.
+            if _looks_like_stack_line(line.strip()):
                 break
             if _restore_is_meta_line(line):
                 continue
