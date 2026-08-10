@@ -906,6 +906,58 @@ def is_production_environment() -> bool:
     return os.getenv("ENVIRONMENT", "development").lower() == "production"
 
 
+def _column_split_x(words: list, page_width: float) -> float | None:
+    """The x of the gutter on a two-column page, or None if it reads as one column.
+
+    Sidebar templates put unrelated content side by side. Grouping words by
+    vertical position alone then merges across the gutter, producing lines like
+    "EXPERIENCE CONTACT" and "EDUCATION - MySQL" - two columns' worth of text on
+    one line. Everything downstream reads that: the section tagger never sees a
+    PROJECTS heading, and the model is handed interleaved nonsense as the
+    candidate's resume.
+
+    Deliberately strict. Splitting a single-column resume would be far worse
+    than not splitting a two-column one, so it requires a genuinely empty
+    vertical band near the middle with substantial text on both sides.
+    """
+    if not words or not page_width:
+        return None
+
+    # Candidate gutters: scan the middle of the page for an x with no word
+    # crossing it. Edges are ignored - a margin is not a gutter.
+    lo, hi = page_width * 0.25, page_width * 0.75
+    spans = [(float(w["x0"]), float(w["x1"])) for w in words]
+
+    # A handful of crossings is tolerated. Requiring a perfectly empty band let a
+    # single full-width element - a header rule, a name spanning the page - veto
+    # the split on a page that is plainly two columns, and the columns then
+    # interleaved word by word.
+    tolerance = max(2, int(len(spans) * 0.01))
+
+    best_x, best_score = None, None
+    x = lo
+    while x <= hi:
+        crossings = sum(1 for a, b in spans if a < x < b)
+        if crossings <= tolerance:
+            left = max((b for a, b in spans if b <= x), default=0.0)
+            right = min((a for a, b in spans if a >= x), default=page_width)
+            # Prefer few crossings first, then the widest clear band.
+            score = (crossings, -(right - left))
+            if best_score is None or score < best_score:
+                best_score, best_x = score, x
+        x += 2.0
+
+    if best_x is None:
+        return None
+
+    left_count = sum(1 for a, _b in spans if a < best_x)
+    right_count = len(spans) - left_count
+    # Both sides must carry real content, otherwise it is a margin or an indent.
+    if min(left_count, right_count) < max(12, len(spans) * 0.12):
+        return None
+    return best_x
+
+
 def extract_pdf_text(path: str) -> str:
     text_parts = []
     with pdfplumber.open(path) as pdf:
@@ -914,14 +966,25 @@ def extract_pdf_text(path: str) -> str:
             if not words:
                 text_parts.append(page.extract_text() or "")
                 continue
-            # Group words into lines by vertical position (4pt bucket) then sort left-to-right
-            lines: dict[int, list] = {}
-            for word in words:
-                bucket = round(word["top"] / 4) * 4
-                lines.setdefault(bucket, []).append(word)
-            for bucket_key in sorted(lines):
-                line_words = sorted(lines[bucket_key], key=lambda w: w["x0"])
-                text_parts.append(" ".join(w["text"] for w in line_words))
+
+            def emit(group: list) -> None:
+                """Group words into lines by vertical position, left to right."""
+                lines: dict[int, list] = {}
+                for word in group:
+                    bucket = round(word["top"] / 4) * 4
+                    lines.setdefault(bucket, []).append(word)
+                for bucket_key in sorted(lines):
+                    line_words = sorted(lines[bucket_key], key=lambda w: w["x0"])
+                    text_parts.append(" ".join(w["text"] for w in line_words))
+
+            split_x = _column_split_x(words, float(page.width or 0))
+            if split_x is None:
+                emit(words)
+            else:
+                # Each column read top to bottom in turn, which is how a person
+                # reads the page and how the sections actually run.
+                emit([w for w in words if float(w["x0"]) < split_x])
+                emit([w for w in words if float(w["x0"]) >= split_x])
     return "\n".join(text_parts)
 
 
@@ -989,7 +1052,21 @@ def _heading_key(text: str) -> str | None:
     happens to end in a section word ("Machine Learning Projects" as a PROJECT
     title) is not mistaken for a heading.
     """
-    words = str(text or "").split()
+    raw = str(text or "").strip()
+
+    # A two-column page whose gutter is not empty enough to split cleanly leaves
+    # the heading glued to content from the other column:
+    #     "PROJECTS - Core Member - E-cell Club (May 2024 - jan 2026)"
+    # The heading is still right there at the start, followed by a bullet marker.
+    # Without this the PROJECTS heading is missed entirely and the whole section
+    # is tagged as whatever came before it.
+    lead = re.match(r"^([A-Za-z][A-Za-z&/ ]{2,28}?)\s*[•‣▪◦●·|]\s+\S", raw)
+    if lead:
+        key = _normalize_key(lead.group(1))
+        if key in _SECTION_HEADING_KEYS:
+            return _SECTION_HEADING_KEYS[key]
+
+    words = raw.split()
     if not words or len(words) > 5:
         return None
     for take in range(len(words), 0, -1):
