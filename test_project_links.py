@@ -89,6 +89,26 @@ def build_links_inline_in_bullet() -> str:
     return "".join(out)
 
 
+def build_links_at_end_of_block() -> str:
+    """Links AFTER the bullets, at the foot of each project block.
+
+    The layout that broke attribution. Such a row sits a line above the NEXT
+    project's title and many lines below its own, so a nearest-title rule gave
+    every link to the following project - one project showed four links and its
+    neighbour none.
+    """
+    out = []
+    for title, sub, date, links in PROJECTS:
+        out.append(
+            f'<div><b>{title}</b><span class="d">{date}</span></div>'
+            f'<div><i>{sub}</i></div>'
+            f'<ul><li>Did the work for {title}, at some length so the block is tall.</li>'
+            f'<li>A second bullet, so the link row ends up far from its own title.</li></ul>'
+            f'<div class="lk">{_links_html(links)}</div>'
+        )
+    return "".join(out)
+
+
 def build_links_beside_title() -> str:
     """Links on the same row as the title."""
     out = []
@@ -105,6 +125,7 @@ LAYOUTS = {
     "links on their own row (regressed layout)": build_links_on_own_row,
     "links inline in a bullet": build_links_inline_in_bullet,
     "links beside the title": build_links_beside_title,
+    "links at the end of the block": build_links_at_end_of_block,
 }
 
 
