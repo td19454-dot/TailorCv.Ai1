@@ -1329,15 +1329,31 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
     # the link belongs to the title directly above it.
     title_positions: list[tuple[int, float, str]] = []  # (page, top, project)
     seen_titles: set[str] = set()
-    for page_idx, lines in line_boxes.items():
-        for ln in lines:
-            owner = best_match(ln["text"])
-            if not owner or owner in seen_titles:
-                continue
-            if enforce_section and _section_of(headings, page_idx, float(ln["top"]), float(ln.get("x0", 0.0))) != section:
-                continue
-            seen_titles.add(owner)
-            title_positions.append((page_idx, float(ln["top"]), owner))
+
+    def _scan_titles(bounded: bool) -> None:
+        for page_idx, lines in line_boxes.items():
+            for ln in lines:
+                owner = best_match(ln["text"])
+                if not owner or owner in seen_titles:
+                    continue
+                if bounded and enforce_section and _section_of(
+                    headings, page_idx, float(ln["top"]), float(ln.get("x0", 0.0))
+                ) != section:
+                    continue
+                seen_titles.add(owner)
+                title_positions.append((page_idx, float(ln["top"]), owner))
+
+    # Prefer titles that sit inside the Projects section.
+    _scan_titles(bounded=True)
+    # Then look again WITHOUT that restriction for any project still unplaced.
+    # Section bounds come from detected headings, and a heading can be missed or
+    # mis-placed on a decorated or multi-column resume - the last project's title
+    # was being rejected that way, so its link fell to the previous project and
+    # that project rendered three links while this one rendered none. A title we
+    # can name is better evidence than a section boundary we inferred.
+    if len(seen_titles) < len(names):
+        _scan_titles(bounded=False)
+
     title_positions.sort(key=lambda t: (t[0], t[1]))
     # Exposed for project_links_debug.txt. When a link lands on the wrong
     # project it is because a title was not located, and this is the only way to
@@ -1397,8 +1413,36 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             bottom = page_height - y0
 
             # Reject links that don't live in the Projects section.
+            #
+            # Section bounds are INFERRED from detected headings, and a decorated
+            # or multi-column resume can put a heading where it does not belong -
+            # which then discards a real project link. So before rejecting, ask a
+            # more direct question: is this link still inside a project's block?
+            # It is, if the nearest project title above it is BELOW the nearest
+            # non-project heading above it. A genuine certification link fails
+            # that test (its heading is nearer), so the guard against
+            # cross-section leaks still holds.
             if enforce_section and _section_of(headings, page_idx, top, x0) != section:
-                continue
+                # Compared as (page, top) pairs. Comparing bare vertical
+                # positions treats "far down page 0" as below "near the top of
+                # page 1", which let certification links on a later page look
+                # like they sat inside the last project.
+                here = (page_idx, top)
+                nearest_title = max(
+                    ((p, t) for (p, t, _n) in title_positions if (p, t) <= here),
+                    default=None,
+                )
+                nearest_other_heading = max(
+                    ((h[0], h[1]) for h in headings
+                     if h[2] != section and (h[0], h[1]) <= here),
+                    default=None,
+                )
+                inside_a_project_block = (
+                    nearest_title is not None
+                    and (nearest_other_heading is None or nearest_title > nearest_other_heading)
+                )
+                if not inside_a_project_block:
+                    continue
 
             label = "GitHub" if "github.com" in lowered_uri else "Link"
             matched_project, dist = match_project(top, bottom, candidates)
