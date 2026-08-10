@@ -1595,26 +1595,55 @@ function startTimer(){
   }, 1000);
 }
 
+/* Which English the recogniser should expect.
+
+   It was hardcoded to en-US. Accuracy on the Web Speech API drops sharply when
+   the accent model does not match the speaker, and most of our candidates are in
+   India - en-IN recognises Indian-accented English far better than en-US, which
+   is a large part of "it cannot hear me".
+
+   The browser's own locale is preferred when it is already an English variant,
+   so a US or UK user is unaffected; a non-English locale falls back to the
+   region's English if we know it, because the interview itself is in English. */
+function speechLang(){
+  try{
+    const nav = (navigator.language || '').trim();
+    if(/^en[-_]/i.test(nav)) return nav.replace('_', '-');
+    const region = (nav.split(/[-_]/)[1] || '').toUpperCase();
+    const byRegion = { IN:'en-IN', GB:'en-GB', AU:'en-AU', CA:'en-CA',
+                       NZ:'en-NZ', IE:'en-IE', ZA:'en-ZA', SG:'en-SG',
+                       PH:'en-PH', NG:'en-NG', PK:'en-IN', BD:'en-IN', LK:'en-IN' };
+    if(byRegion[region]) return byRegion[region];
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+    if(/Asia\/(Kolkata|Calcutta|Colombo|Karachi|Dhaka)/i.test(tz)) return 'en-IN';
+  }catch(e){}
+  return 'en-US';
+}
+
 function initSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR) return false;
   const rec = new SR();
   rec.continuous       = true;
   rec.interimResults   = true;
-  rec.maxAlternatives  = 5;   // get up to 5 alternatives per result
-  rec.lang             = 'en-US';
+  rec.maxAlternatives  = 1;   // [0] is already the engine's best guess
+  rec.lang             = speechLang();
 
   rec.onresult = (e) => {
     let final = '', interim = '';
     for(let i = e.resultIndex; i < e.results.length; i++){
-      // Pick the alternative with the highest confidence score
-      let best = e.results[i][0];
-      for(let a = 1; a < e.results[i].length; a++){
-        if(e.results[i][a].confidence > best.confidence) best = e.results[i][a];
-      }
+      // Alternatives come back ordered by likelihood, so [0] IS the best guess.
+      // Scanning for the highest `confidence` did the opposite of what it looks
+      // like: Chrome reports 0 for most alternatives, so a worse alternative
+      // with a token score could beat the engine's own first choice.
+      const best = e.results[i][0];
+      if(!best) continue;
       if(e.results[i].isFinal){
-        // Accept unless confidence is explicitly very low (some browsers always report 0)
-        if(best.confidence === 0 || best.confidence >= 0.45) final += best.transcript;
+        // Never drop a final result. This used to require confidence >= 0.45,
+        // which silently binned correctly-heard speech - accented English,
+        // short answers and anything with room noise score below that, so the
+        // interview looked like it could not hear the candidate at all.
+        final += best.transcript;
       } else {
         interim += best.transcript;
       }
@@ -1628,6 +1657,17 @@ function initSpeech(){
   rec.onerror = (e) => {
     if(e.error === 'no-speech' || e.error === 'aborted') return; // non-fatal
     console.warn('SpeechRecognition error:', e.error);
+
+    // A blocked microphone is NOT recoverable, and retrying it silently every
+    // 300ms just looks like the interview cannot hear you. Say so instead.
+    if(e.error === 'not-allowed' || e.error === 'service-not-allowed'){
+      STATE.isRecording = false;
+      const tEl = document.getElementById('transcript');
+      if(tEl) tEl.textContent =
+        'Microphone blocked. Allow mic access for this site (padlock in the address bar), then start again.';
+      return;
+    }
+
     // Restart on recoverable errors without resetting transcript
     if(STATE.isRecording){
       setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 300);
