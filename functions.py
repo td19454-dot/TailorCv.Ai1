@@ -397,18 +397,58 @@ def extract_publication_links(text: str) -> list[str]:
     return filtered
 
 
-def inject_links(data, links, mapped_links, pub_links=None):
+def _url_identity(value) -> str:
+    """A URL reduced to what identifies it, for comparing against the source."""
+    v = str(value or "").strip().lower()
+    v = re.sub(r"^https?://", "", v)
+    v = re.sub(r"^www\.", "", v)
+    return v.rstrip("/")
+
+
+def inject_links(data, links, mapped_links, pub_links=None, known_urls=None):
     """
     Backfill missing project and publication URLs in the AI JSON using URLs extracted from the original PDF text.
 
     Important: only fill projects/publications that are missing their own links. This avoids showing
     unrelated URLs when the user/resume contains multiple projects/links.
+
+    `known_urls` is every URL actually found in the uploaded resume. Anything the
+    model produced that is not in that set is DISCARDED before backfilling.
+    Without it the model's inventions won: asked to rewrite a resume it also
+    rewrote the URLs, turning github.com/td19454-dot/TailorCv.Ai1 into
+    github.com/td19454-dot/tailorcv and inventing myntra-clone-demo.com outright.
+    Those look like URLs, so they counted as "this project already has a link"
+    and the real ones recovered from the PDF were never applied - shipping a
+    resume whose links 404 in front of a recruiter.
+
+    A URL is a fact about the candidate's work, exactly like an employer or a
+    date, so it is held to the same rule: it must exist in the original.
     """
     if pub_links is None:
         pub_links = []
-    
+
     if not isinstance(data, dict):
         return data
+
+    # Drop invented URLs before anything else looks at them.
+    if known_urls:
+        allowed = {_url_identity(u) for u in known_urls if str(u or "").strip()}
+        allowed.discard("")
+        if allowed:
+            for project in (data.get("projects") or []):
+                if not isinstance(project, dict):
+                    continue
+                for field in ("url", "github_link"):
+                    if project.get(field) and _url_identity(project[field]) not in allowed:
+                        project[field] = ""
+                kept = []
+                for item in (project.get("links") or []):
+                    if not isinstance(item, dict):
+                        continue
+                    href = item.get("url") or item.get("href") or item.get("link")
+                    if href and _url_identity(href) in allowed:
+                        kept.append(item)
+                project["links"] = kept
 
     # Handle Projects
     projects = data.get("projects")
@@ -494,6 +534,28 @@ def inject_links(data, links, mapped_links, pub_links=None):
             if pname in key and len(pname) >= 5:
                 return True
             return False
+
+        # Where the PDF's own annotation layer names a project's links, those ARE
+        # the links. The model rewrites URLs the way it rewrites prose - it
+        # turned TailorCv.Ai1 into "tailorcv" and invented myntra-clone-demo.com
+        # - and merely filling empty fields let those inventions stand, because a
+        # project holding a fabricated URL does not look empty. Recovered links
+        # replace whatever the model produced for that project rather than
+        # waiting for a gap to fill.
+        for project in projects:
+            if not isinstance(project, dict):
+                continue
+            recovered = None
+            for key, pairs in (links or {}).items():
+                if _match_name(str(project.get("name") or "").strip().lower(),
+                               str(key or "").strip().lower()):
+                    recovered = pairs
+                    break
+            if not recovered:
+                continue
+            project["links"] = [{"label": lbl, "url": u} for lbl, u in recovered]
+            project["url"] = ""
+            project["github_link"] = ""
 
         for project in projects:
             if not isinstance(project, dict):
