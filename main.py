@@ -1279,8 +1279,26 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             mp = best_match(ln["text"])
             if mp:
                 return mp, d
-        # 3) Last resort: nearest project-name line anywhere on the page (closest center).
-        #    Global URL dedup downstream still guarantees no link appears twice.
+        # 3) Fall back to the nearest project title ABOVE the link, however far.
+        #    Not the nearest in absolute distance: plenty of resumes put the link
+        #    row at the END of a project block, after its bullets. Such a row sits
+        #    a line above the NEXT project's title and many lines below its own,
+        #    so "closest" handed every link to the following project - Tailorcv's
+        #    Link/GitHub landed on Myntra while Tailorcv showed none.
+        #
+        #    A link belongs to the block it sits inside, and blocks start at a
+        #    title, so the owner is the last title that precedes it.
+        above = [
+            ln for ln in candidates
+            if float(ln["bottom"]) <= bottom + SAME_LINE_TOL and best_match(ln["text"])
+        ]
+        if above:
+            ln = max(above, key=lambda l: float(l["top"]))
+            return best_match(ln["text"]), abs(
+                ((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center
+            )
+
+        # 4) Nothing above it at all (a link before the first title): nearest wins.
         all_scored = sorted(
             candidates,
             key=lambda ln: abs(((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center),
