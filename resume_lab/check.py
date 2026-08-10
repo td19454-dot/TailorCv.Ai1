@@ -150,11 +150,32 @@ def check(path: Path) -> list[str]:
     if missing_titles:
         problems.append(f"title not located: {missing_titles}")
 
-    section_links = project_section_links(path)
-    attributed = sum(len(v) for v in mapping.values())
-    if section_links and attributed < len(section_links):
+    # Count DISTINCT destinations. A wrapped anchor emits one annotation per line
+    # it spans, so the raw count triples for no reason and every such resume
+    # looked like it was losing links.
+    section_links = {main._link_identity(u) for u in project_section_links(path)}
+    section_links.discard("")
+    attributed = {
+        main._link_identity(u)
+        for pairs in mapping.values() for _label, u in pairs
+    }
+    attributed.discard("")
+    lost = section_links - attributed
+    if lost:
         problems.append(
-            f"links lost: {len(section_links)} in Projects, {attributed} attributed"
+            f"links lost: {len(section_links)} in Projects, "
+            f"{len(attributed)} attributed, missing {sorted(lost)[:3]}"
+        )
+
+    # Every link on ONE project, when the destinations are clearly different
+    # repos or sites, means the other titles were never found - attribution then
+    # looks complete while actually being wrong. Without this the check reported
+    # a clean pass on a resume where one project had swallowed all five links.
+    owners_with_links = [n for n, pairs in mapping.items() if pairs]
+    if len(owners_with_links) == 1 and len(attributed) >= 3 and len(titles) > 1:
+        problems.append(
+            f"all {len(attributed)} links landed on one project "
+            f"({owners_with_links[0]!r}) - other titles likely not found"
         )
 
     # A URL must never sit on two projects.
