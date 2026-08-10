@@ -1575,9 +1575,17 @@ async function speakQuestion(text, onDone){
 function stopTimer(){
   if(STATE.timerId){ clearInterval(STATE.timerId); STATE.timerId = null; }
 }
+/* How long a candidate gets per answer.
+
+   This was 60s, and at zero the answer is force-submitted with whatever has been
+   captured so far. A real interview answer - especially a "tell me about a time
+   when" - runs past a minute, so the rest was never heard. That is
+   indistinguishable from the interviewer failing to hear you. */
+const ANSWER_SECONDS = 120;
+
 function startTimer(){
   stopTimer();
-  STATE.timerSec = 60;
+  STATE.timerSec = ANSWER_SECONDS;
   const timerEl = document.getElementById('timerText');
   timerEl.textContent = `Time left: ${STATE.timerSec}s`;
   STATE.timerId = setInterval(async () => {
@@ -1710,7 +1718,10 @@ function stopMicAndFlush(){
       }
       resolve();
     };
-    const guard = setTimeout(finish, 600); // hard timeout
+    // Chrome finalises the last utterance asynchronously after stop(). 600ms was
+    // not always enough, and when the guard fired first the tail of the answer -
+    // usually the candidate's conclusion - was cut off.
+    const guard = setTimeout(finish, 1500); // hard timeout
     const origOnEnd = rec.onend;
     rec.onend = () => { clearTimeout(guard); rec.onend = origOnEnd; finish(); };
     try{ rec.stop(); }catch(e){ clearTimeout(guard); finish(); }
@@ -2494,7 +2505,7 @@ function startNewInterview(){
   STATE.totalWords = 0;
   STATE.speechRec = null;
   STATE.isRecording = false;
-  STATE.timerSec = 60;
+  STATE.timerSec = ANSWER_SECONDS;
   STATE.timerId = null;
   STATE.camStream = null;
   STATE.isCameraOn = false;
