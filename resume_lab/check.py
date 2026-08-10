@@ -231,6 +231,62 @@ def check(path: Path) -> list[str]:
     return problems
 
 
+TEMPLATE_IDS = list(range(1, 23))
+
+
+def _link_placement_errors(html: str, projects: list) -> list[str]:
+    """Every project's links must render inside that project's own block.
+
+    Presence alone is not enough - a link rendered under the next project reads
+    as that project's work. Blocks are delimited in the HTML by the project
+    names in order, so a link belongs between its own name and the next one.
+    """
+    errors: list[str] = []
+    low = html.lower()
+
+    starts = []
+    for p in projects:
+        name = str(p.get("name") or "").strip()
+        pos = low.find(name.lower()) if name else -1
+        starts.append(pos)
+
+    for i, p in enumerate(projects):
+        links = [str(l.get("url") or l.get("href") or "") for l in (p.get("links") or [])]
+        links = [u for u in links if u]
+        if not links:
+            continue
+        start = starts[i]
+        if start < 0:
+            errors.append(f"project {p.get('name')!r} missing from render")
+            continue
+        later = [x for x in starts[i + 1:] if x > start]
+        end = min(later) if later else len(html)
+        block = low[start:end]
+        for u in links:
+            bare = u.lower().rstrip("/")
+            if bare not in block and u.lower() not in block:
+                where = "absent" if bare not in low else "under a different project"
+                errors.append(f"{u} {where} (owner {p.get('name')!r})")
+    return errors
+
+
+def check_all_templates(parsed: dict, jd: str) -> list[str]:
+    """Render the optimized resume in all 22 templates and audit link placement."""
+    projects = [p for p in (parsed.get("projects") or []) if isinstance(p, dict)]
+    if not projects:
+        return []
+    problems: list[str] = []
+    for tid in TEMPLATE_IDS:
+        try:
+            html, _ = quiet(main._render_resume_html, parsed, jd, tid, 1)
+        except Exception as exc:  # noqa: BLE001
+            problems.append(f"template {tid}: render failed ({type(exc).__name__})")
+            continue
+        for err in _link_placement_errors(html, projects):
+            problems.append(f"template {tid}: {err}")
+    return problems
+
+
 def check_live(path: Path, jd: str) -> list[str]:
     """Run the REAL optimizer against a job description and audit the result.
 
@@ -243,7 +299,9 @@ def check_live(path: Path, jd: str) -> list[str]:
 
     problems: list[str] = []
     text = quiet(main.extract_pdf_text, str(path))
-    expected = project_section_links(path)
+    # Distinct destinations. A wrapped anchor emits one annotation per line it
+    # spans, so raw counts triple and every such resume reads as losing links.
+    expected = sorted({main._link_identity(u) for u in project_section_links(path)} - {""})
 
     parsed = quiet(lambda: asyncio.run(main._optimize_resume_core(str(path), jd)))
     projects = [p for p in (parsed.get("projects") or []) if isinstance(p, dict)]
@@ -261,15 +319,15 @@ def check_live(path: Path, jd: str) -> list[str]:
         for p in projects for l in (p.get("links") or [])
     }
     placed.discard("")
-    lost = [u for u in expected if main._link_identity(u) not in placed]
+    lost = [u for u in expected if u not in placed]
     if lost:
         problems.append(f"{len(lost)} of {len(expected)} link(s) missing after optimize: {lost[:3]}")
 
-    # And they must survive rendering, not just live in the JSON.
-    html, _ = quiet(main._render_resume_html, parsed, jd, 1, 1)
-    not_rendered = [u for u in expected if u not in html and u.rstrip("/") not in html]
-    if not_rendered:
-        problems.append(f"{len(not_rendered)} link(s) not in rendered HTML")
+    # And they must survive rendering in EVERY template, on the RIGHT project.
+    # A link present in the JSON but rendered under a different heading is still
+    # wrong to the person reading the resume, and templates differ enough that
+    # one can drop or misplace what the others handle.
+    problems.extend(check_all_templates(parsed, jd))
 
     # A project must not carry another project's link.
     seen: dict[str, str] = {}

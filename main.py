@@ -10059,6 +10059,30 @@ def _ai_failure_detail(exc: BaseException) -> str:
     return "AI generation failed. Please try again."
 
 
+def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
+    """Every clickable URL in the PDF, wherever it sits.
+
+    The safety net for URL invention: a link the candidate really has appears
+    somewhere in their own document, so this is the full set of URLs they can
+    legitimately claim.
+    """
+    urls: set[str] = set()
+    try:
+        from pypdf import PdfReader
+        for page in PdfReader(pdf_path).pages:
+            for ref in (page.get("/Annots") or []):
+                try:
+                    obj = ref.get_object()
+                except Exception:
+                    continue
+                uri = (obj.get("/A") or {}).get("/URI")
+                if uri:
+                    urls.add(str(uri).strip())
+    except Exception:
+        return urls
+    return urls
+
+
 async def _optimize_resume_core(
     file_path: str, jd_string: str, ats_payload: str | None = None
 ) -> dict:
@@ -10187,7 +10211,22 @@ async def _optimize_resume_core(
                     merged_pub.append(u)
             extracted_pub_links = merged_pub
 
-    parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+    # Every URL the uploaded resume actually contains - annotation layer, text
+    # layer and the per-project maps. inject_links discards any project URL that
+    # is not in here, because the model rewrites URLs the way it rewrites prose.
+    known_urls = set()
+    for pairs in (effective_map or {}).values():
+        for _label, u in pairs:
+            known_urls.add(u)
+    for _name, u in (mapped_links or []):
+        known_urls.add(u)
+    known_urls.update(extracted_links or [])
+    known_urls.update(extracted_pub_links or [])
+    known_urls.update(_all_pdf_annotation_urls(file_path))
+
+    parsed = inject_links(
+        parsed, effective_map, mapped_links, extracted_pub_links, known_urls=known_urls
+    )
 
     # Diagnostics for per-project link recovery, mirroring cert_debug.txt. Every
     # stage of this path passes when reproduced offline, so the difference has to

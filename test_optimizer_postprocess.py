@@ -384,13 +384,34 @@ def test_label_text_is_scrubbed_from_url_fields():
     assert out["projects"][0]["github_link"] == "", out["projects"][0]
 
 
-def test_a_real_url_still_blocks_injection():
-    # The guard must keep working: a project that genuinely has its own link
-    # must not have a second one layered on top.
-    data = {"projects": [{"name": "P", "url": "https://mysite.com"}]}
+def test_recovered_links_beat_whatever_the_model_produced():
+    # Changed deliberately. A URL recovered from the PDF's annotation layer is
+    # what the candidate actually published; the model's is a rewrite of it. It
+    # invented "github.com/td19454-dot/tailorcv" for a project whose real repo is
+    # TailorCv.Ai1, and merely FILLING empty fields let that stand, because a
+    # project holding a fabricated URL does not look empty.
+    data = {"projects": [{"name": "P", "url": "https://model-invented.com"}]}
     out = inject_links(data, {"P": [("GitHub", "https://github.com/x/y")]}, [])
-    assert out["projects"][0]["url"] == "https://mysite.com"
-    assert not out["projects"][0].get("links"), out["projects"][0]
+    hrefs = {l["url"] for l in out["projects"][0]["links"]}
+    assert hrefs == {"https://github.com/x/y"}, out["projects"][0]
+    assert out["projects"][0]["url"] == "", out["projects"][0]
+
+
+def test_model_url_survives_when_nothing_was_recovered():
+    # We only override where the PDF gave us something better. A project we
+    # recovered no link for keeps what it had, so a resume whose links are plain
+    # text rather than annotations is not stripped.
+    data = {"projects": [{"name": "P", "url": "https://mysite.com"}]}
+    out = inject_links(data, {}, [], known_urls=["https://mysite.com"])
+    assert out["projects"][0]["url"] == "https://mysite.com", out["projects"][0]
+
+
+def test_invented_url_is_discarded_when_not_in_the_source():
+    # Same rule as skills: a URL is a fact about the candidate's work, so it
+    # must exist in their original document.
+    data = {"projects": [{"name": "P", "url": "https://myntra-clone-demo.com"}]}
+    out = inject_links(data, {}, [], known_urls=["https://myntraaclone.onrender.com/"])
+    assert out["projects"][0]["url"] == "", out["projects"][0]
 
 
 def test_bare_domain_counts_as_a_real_url():
