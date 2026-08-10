@@ -1676,6 +1676,15 @@ function initSpeech(){
 
   rec.onend = () => {
     if(STATE.isRecording){
+      // Chrome ends a session on silence even with continuous = true, and the
+      // next session rebuilds liveInterim from scratch. Anything still interim
+      // at that moment was simply lost - a word or two disappearing every time
+      // the candidate paused, which is most of "it keeps mishearing me".
+      // Promote it to the transcript before restarting.
+      if(STATE.liveInterim && STATE.liveInterim.trim()){
+        STATE.currentTranscript += STATE.liveInterim.trim() + ' ';
+        STATE.liveInterim = '';
+      }
       // Small gap prevents a tight restart loop on some browsers
       setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 80);
     }
@@ -1714,8 +1723,19 @@ function startMic(){
   STATE.currentTranscript = ''; STATE.liveInterim = '';
   const tEl = document.getElementById('transcript');
   if(tEl) tEl.textContent = 'Listening…';
-  STATE.speechRec.start();
+  // start() throws InvalidStateError when the previous session has not finished
+  // unwinding yet. Unguarded, the throw happened BEFORE isRecording was set, so
+  // the function aborted and the microphone was silently dead for that whole
+  // question - the interview simply never heard the answer.
   STATE.isRecording = true;
+  try{
+    STATE.speechRec.start();
+  }catch(err){
+    // Already running is harmless. Anything else: let it settle and retry once.
+    setTimeout(() => {
+      if(STATE.isRecording){ try{ STATE.speechRec.start(); }catch(e){} }
+    }, 250);
+  }
   const btnSetup = document.getElementById('micBtnSetup');
   if(btnSetup){ btnSetup.textContent = 'Mic Enabled'; btnSetup.disabled = true; btnSetup.style.opacity = '0.7'; }
   updateSetupCards();
