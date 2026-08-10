@@ -210,17 +210,83 @@ def check(path: Path) -> list[str]:
     return problems
 
 
+def check_live(path: Path, jd: str) -> list[str]:
+    """Run the REAL optimizer against a job description and audit the result.
+
+    The offline check isolates link handling; this one adds what only a real run
+    exercises - the model renaming a project, dropping one, or writing a link
+    caption into a field - and confirms the links survive all of it into the
+    rendered HTML. Costs two API calls per resume.
+    """
+    import asyncio
+
+    problems: list[str] = []
+    text = quiet(main.extract_pdf_text, str(path))
+    expected = project_section_links(path)
+
+    parsed = quiet(lambda: asyncio.run(main._optimize_resume_core(str(path), jd)))
+    projects = [p for p in (parsed.get("projects") or []) if isinstance(p, dict)]
+    if not projects:
+        return ["optimizer returned no projects"]
+
+    source_titles = project_titles_from_text(text)
+    if source_titles and len(projects) < len(source_titles):
+        problems.append(
+            f"project dropped: source has {len(source_titles)}, output has {len(projects)}"
+        )
+
+    placed = {
+        main._link_identity(l.get("url") or l.get("href") or "")
+        for p in projects for l in (p.get("links") or [])
+    }
+    placed.discard("")
+    lost = [u for u in expected if main._link_identity(u) not in placed]
+    if lost:
+        problems.append(f"{len(lost)} of {len(expected)} link(s) missing after optimize: {lost[:3]}")
+
+    # And they must survive rendering, not just live in the JSON.
+    html, _ = quiet(main._render_resume_html, parsed, jd, 1, 1)
+    not_rendered = [u for u in expected if u not in html and u.rstrip("/") not in html]
+    if not_rendered:
+        problems.append(f"{len(not_rendered)} link(s) not in rendered HTML")
+
+    # A project must not carry another project's link.
+    seen: dict[str, str] = {}
+    for p in projects:
+        for l in (p.get("links") or []):
+            key = main._link_identity(l.get("url") or l.get("href") or "")
+            if key and key in seen and seen[key] != p.get("name"):
+                problems.append(f"link on two projects: {key}")
+            if key:
+                seen[key] = p.get("name")
+    return problems
+
+
 def main_runner() -> int:
+    live = "--live" in sys.argv
+    jd_arg = next((a for a in sys.argv[1:] if a.endswith((".txt", ".md"))), None)
+
     pdfs = sorted(p for p in ROOT.glob("*.pdf"))
     if not pdfs:
         print(f"No PDFs found in {ROOT}. Drop resumes there and run again.")
         return 0
 
-    print(f"Checking {len(pdfs)} resume(s)\n")
+    jd = ""
+    if live:
+        jd_path = Path(jd_arg) if jd_arg else (ROOT / "jd.txt")
+        if not jd_path.exists():
+            print(f"--live needs a job description. Put one at {ROOT / 'jd.txt'} "
+                  f"or pass a path.")
+            return 1
+        jd = jd_path.read_text(encoding="utf-8")
+
+    mode = "LIVE (real optimizer, 2 API calls each)" if live else "offline (no API calls)"
+    print(f"Checking {len(pdfs)} resume(s) - {mode}\n")
+
     clean = 0
     for pdf in pdfs:
         try:
-            problems = check(pdf)
+            problems = check_live(pdf, jd) if live else check(pdf)
         except Exception as exc:  # noqa: BLE001
             problems = [f"crashed: {type(exc).__name__}: {exc}"]
         if problems:

@@ -196,3 +196,4 @@ project_links_debug.txt
 
 # Real resumes dropped in for testing - personal data, never commit.
 resume_lab/*.pdf
+resume_lab/jd.txt
