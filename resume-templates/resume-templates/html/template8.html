@@ -602,22 +602,26 @@
             {% if project.links or project.primary_link or project.github_link or project.url %}
             <div class="project-links">
               {% set project_state = namespace(seen='') %}
-              {% set project_sources = [] %}
+              {# A plain {% set %} inside a {% for %} does not survive the loop in
+                 Jinja2, so every link from project.links was silently discarded
+                 and only primary_link / github_link / url ever rendered. Held in
+                 a namespace so the loop's additions persist. #}
+              {% set project_ns = namespace(sources=[]) %}
               {% if project.primary_link %}
-                {% set project_sources = project_sources + [project.primary_link.href or project.primary_link.display or project.primary_link.label or ''] %}
+                {% set project_ns.sources = project_ns.sources + [project.primary_link.href or project.primary_link.display or project.primary_link.label or ''] %}
               {% endif %}
               {% if project.links %}
                 {% for link in project.links %}
-                  {% set project_sources = project_sources + [link.href or link.display or link.label or ''] %}
+                  {% set project_ns.sources = project_ns.sources + [link.href or link.display or link.label or ''] %}
                 {% endfor %}
               {% endif %}
               {% if project.github_link %}
-                {% set project_sources = project_sources + [project.github_link] %}
+                {% set project_ns.sources = project_ns.sources + [project.github_link] %}
               {% endif %}
               {% if project.url %}
-                {% set project_sources = project_sources + [project.url] %}
+                {% set project_ns.sources = project_ns.sources + [project.url] %}
               {% endif %}
-              {% for raw_url in project_sources %}
+              {% for raw_url in project_ns.sources %}
                 {% if raw_url %}
                   {% set project_url = raw_url if raw_url.startswith(('http://', 'https://')) else 'https://' ~ raw_url %}
                   {% if ('|' ~ project_url ~ '|') not in project_state.seen %}
