@@ -839,6 +839,7 @@
             dropzoneLabel.textContent = "Click to choose a PDF";
             errorDiv.style.display = "none";
             loadingDiv.style.display = "none";
+            dropzone.style.display = "flex";
             footer.style.display = "flex";
             submitBtn.disabled = true;
             dropzone.style.borderColor = "rgba(16,185,129,0.4)";
@@ -906,6 +907,7 @@
         submitBtn.addEventListener("click", async () => {
             if (!selectedFile) return;
             errorDiv.style.display = "none";
+            dropzone.style.display = "none";
             loadingDiv.style.display = "block";
             footer.style.display = "none";
             submitBtn.disabled = true;
@@ -940,6 +942,7 @@
                 document.getElementById("sections-container").scrollIntoView({ behavior: "smooth", block: "start" });
             } catch (error) {
                 loadingDiv.style.display = "none";
+                dropzone.style.display = "flex";
                 footer.style.display = "flex";
                 submitBtn.disabled = false;
                 errorDiv.textContent = error.message || "Import failed. Please try again.";
