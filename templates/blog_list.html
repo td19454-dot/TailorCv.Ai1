@@ -97,14 +97,6 @@
     <section class="blog-grid" aria-label="Blog posts">
         {# The featured card above already shows posts[0], so drop it here. #}
         {% for post in (posts[1:] if show_featured else posts) %}
-        {% if loop.index == 7 %}
-        <a class="blog-card blog-card-cta" href="/solutions">
-            <span class="blog-card-cta-flag">Free &middot; No account needed</span>
-            <span class="blog-card-cta-title">How does your resume actually score?</span>
-            <span class="blog-card-cta-text">Scan it against any job description and see the exact keywords you are missing.</span>
-            <span class="blog-card-cta-btn">Check my ATS score</span>
-        </a>
-        {% endif %}
         <article class="blog-card">
             <a href="/blog/{{ post.slug }}" class="blog-cover-wrap">
                 {% if post.image %}
