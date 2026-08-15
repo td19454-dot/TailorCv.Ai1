@@ -1426,12 +1426,19 @@ def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:
 
     This checks two sources independently and blends them:
       - the `skills` array (force-injected, ~100% after tailoring by design)
-      - bullet/summary text — experience bullets, project bullets, and the
-        summary — never force-injected, so bounded by what the resume's own
-        content actually supports.
+      - evidence text — summary, experience bullets, project bullets, plus
+        certifications, achievements, extracurriculars, and publications
+        (mirroring the sections _split_resume_skills_section() treats as
+        evidence for the base-resume "before" score) — never force-injected,
+        so bounded by what the resume's own content actually supports. These
+        sections are carried through the tailoring prompt unchanged (see the
+        JSON schema above), so a skill named only in, say, a certification
+        title still counts as evidence here the same way it did before
+        tailoring, instead of silently dropping out and making the after
+        score look worse than the before score for no real reason.
 
     Averaging the two means a resume can't reach 100% on the skills section
-    alone; the bullets have to genuinely back it up too."""
+    alone; the evidence text has to genuinely back it up too."""
     jd_skills = _extract_hard_skills_from_jd(jd_string)
     total = len(jd_skills)
     if not total:
@@ -1447,6 +1454,26 @@ def compute_skill_match_score_structured(parsed: dict, jd_string: str) -> dict:
     for proj in (data.get("projects") or []):
         if isinstance(proj, dict):
             bullet_parts.extend(str(b) for b in (proj.get("bullets") or []))
+    for cert in (data.get("certifications") or []):
+        if isinstance(cert, dict):
+            bullet_parts.append(str(cert.get("name") or ""))
+            bullet_parts.append(str(cert.get("issuer") or ""))
+        else:
+            bullet_parts.append(str(cert))
+    bullet_parts.extend(str(a) for a in (data.get("achievements") or []) if a)
+    for extra in (data.get("extracurriculars") or []):
+        if isinstance(extra, dict):
+            bullet_parts.append(str(extra.get("role") or ""))
+            bullet_parts.append(str(extra.get("organization") or ""))
+            bullet_parts.extend(str(b) for b in (extra.get("bullets") or []))
+        else:
+            bullet_parts.append(str(extra))
+    for pub in (data.get("publications") or []):
+        if isinstance(pub, dict):
+            bullet_parts.append(str(pub.get("title") or ""))
+            bullet_parts.append(str(pub.get("publisher") or ""))
+        else:
+            bullet_parts.append(str(pub))
     bullets_text = " ".join(bullet_parts)
 
     matched: list[str] = []
