@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, OPT, CPT, International Students, Resume Writing]
 category: Resume Writing
-image: public/blog-images/opt-cpt-resume-guide.webp
+image: public/blog-images/opt-cpt-resume-guide.png
 slug: opt-cpt-resume-guide
 keywords: opt resume, cpt resume, f1 student resume usa, opt job search, international student resume usa
 ---

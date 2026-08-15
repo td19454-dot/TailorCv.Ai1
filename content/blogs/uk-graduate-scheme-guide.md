@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Graduate Scheme, Early Career, Assessment Centre, Job Search 2026]
 category: Career Advice
-image: public/blog-images/uk-graduate-scheme-guide.webp
+image: public/blog-images/uk-graduate-scheme-guide.png
 slug: uk-graduate-scheme-guide
 keywords: uk graduate scheme, graduate jobs uk, assessment centre uk, graduate scheme application, milkround graduate jobs
 ---

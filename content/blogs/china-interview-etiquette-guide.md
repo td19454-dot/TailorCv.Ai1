@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Interview Preparation, Business Etiquette, International Careers, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/china-interview-etiquette-guide.webp
+image: public/blog-images/china-interview-etiquette-guide.png
 slug: china-interview-etiquette-guide
 keywords: china interview etiquette, job interview in china, chinese interview questions, interview tips china, business etiquette china
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Resume Keywords, ATS Optimization, Job Search 2026, International Careers]
 category: ATS Optimization
-image: public/blog-images/best-resume-keywords-china.webp
+image: public/blog-images/best-resume-keywords-china.png
 slug: best-resume-keywords-china
 keywords: resume keywords china, china job keywords, chinese resume keywords, ats keywords china, recruiter search terms china
 ---

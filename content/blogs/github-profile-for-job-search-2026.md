@@ -5,7 +5,7 @@ date: 2026-08-11
 author: TailorCV Team
 tags: [GitHub Profile, Developer Portfolio, Job Search, Technical Resume, Software Engineer 2026]
 category: Portfolio
-image: public/blog-images/github-profile-for-job-search-2026.webp
+image: public/blog-images/github-profile-for-job-search-2026.png
 slug: github-profile-for-job-search-2026
 keywords: github profile for job search, optimize github profile, github profile readme, github portfolio for recruiters, developer github profile 2026
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, HR Interview, Freshers, Interview Questions, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/campus-placement-hr-interview-questions.webp
+image: public/blog-images/campus-placement-hr-interview-questions.png
 slug: campus-placement-hr-interview-questions
 keywords: hr interview questions campus placement, hr round questions freshers, tell me about yourself fresher, hr interview answers placement
 ---

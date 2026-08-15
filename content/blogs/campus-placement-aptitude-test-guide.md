@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Aptitude Test, Freshers, Quantitative Aptitude, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/campus-placement-aptitude-test-guide.webp
+image: public/blog-images/campus-placement-aptitude-test-guide.png
 slug: campus-placement-aptitude-test-guide
 keywords: campus placement aptitude test, aptitude preparation for placements, quantitative aptitude placement, logical reasoning placement, aptitude questions freshers
 ---

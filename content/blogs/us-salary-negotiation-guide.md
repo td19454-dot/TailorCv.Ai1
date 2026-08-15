@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, Salary Negotiation, Job Offer, Career Advice, Compensation]
 category: Career Advice
-image: public/blog-images/us-salary-negotiation-guide.webp
+image: public/blog-images/us-salary-negotiation-guide.png
 slug: us-salary-negotiation-guide
 keywords: us salary negotiation, negotiate job offer usa, salary expectations usa, total compensation negotiation, how to negotiate salary america
 ---

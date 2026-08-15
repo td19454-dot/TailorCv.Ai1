@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, Tech Interview, Software Engineering, Interview Preparation, System Design]
 category: Interview Preparation
-image: public/blog-images/us-tech-interview-process-guide.webp
+image: public/blog-images/us-tech-interview-process-guide.png
 slug: us-tech-interview-process-guide
 keywords: us tech interview process, software engineer interview usa, onsite loop interview, system design interview, faang interview process
 ---
