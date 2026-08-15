@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Resume Screening, Freshers, Shortlisting, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/how-to-get-shortlisted-for-campus-placement.webp
+image: public/blog-images/how-to-get-shortlisted-for-campus-placement.png
 slug: how-to-get-shortlisted-for-campus-placement
 keywords: how to get shortlisted campus placement, resume shortlisting placement, placement eligibility criteria, campus placement resume screening
 ---

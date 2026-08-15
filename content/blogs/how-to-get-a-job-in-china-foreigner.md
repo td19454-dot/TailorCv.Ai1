@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Working Abroad, Expat Career, Job Search 2026, International Careers]
 category: Job Search
-image: public/blog-images/how-to-get-a-job-in-china-foreigner.webp
+image: public/blog-images/how-to-get-a-job-in-china-foreigner.png
 slug: how-to-get-a-job-in-china-foreigner
 keywords: how to get a job in china, jobs in china for foreigners, working in china as expat, china job search guide, foreign worker china
 ---

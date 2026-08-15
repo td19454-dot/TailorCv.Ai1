@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Group Discussion, Freshers, Communication Skills, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/campus-placement-group-discussion-tips.webp
+image: public/blog-images/campus-placement-group-discussion-tips.png
 slug: campus-placement-group-discussion-tips
 keywords: group discussion tips, gd topics for placement, how to crack group discussion, group discussion for freshers, gd preparation
 ---

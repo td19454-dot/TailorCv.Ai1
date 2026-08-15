@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Internship, PPO, Freshers, Career Advice]
 category: Career Advice
-image: public/blog-images/internship-to-ppo-conversion-guide.webp
+image: public/blog-images/internship-to-ppo-conversion-guide.png
 slug: internship-to-ppo-conversion-guide
 keywords: ppo conversion internship, pre placement offer, how to get ppo, internship to full time conversion, summer internship offer
 ---

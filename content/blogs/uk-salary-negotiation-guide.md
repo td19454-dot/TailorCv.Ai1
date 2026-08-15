@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Salary Negotiation, Career Advice, Job Offer, Job Search 2026]
 category: Career Advice
-image: public/blog-images/uk-salary-negotiation-guide.webp
+image: public/blog-images/uk-salary-negotiation-guide.png
 slug: uk-salary-negotiation-guide
 keywords: uk salary negotiation, negotiate salary uk, salary expectations uk, uk job offer negotiation, how much to ask for uk
 ---

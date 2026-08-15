@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Career Planning, Freshers, Engineering Students, Job Search 2026]
 category: Career Advice
-image: public/blog-images/campus-placement-preparation-timeline.webp
+image: public/blog-images/campus-placement-preparation-timeline.png
 slug: campus-placement-preparation-timeline
 keywords: campus placement preparation, placement timeline, how to prepare for placements, campus placement plan, placement preparation for freshers
 ---
