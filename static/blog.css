@@ -2318,18 +2318,60 @@ header.navbar {
   letter-spacing: 0;
 }
 
-/* "Common Mistakes" written as bold lead-in + prose reads as a wall. Give each
-   point its own line and a divider so it scans like a list. */
-.blog-detail-page .post-content .callout-mistake > p {
-  margin: 0;
-  padding: 14px 0;
-  border-top: 1px solid #fbe3e3;
+/* "Common Mistakes" written as bold lead-in + prose. Stacked full-width rows
+   made a tall, sparse column - eight mistakes ran most of a screen. Lay the
+   points out as a two-up card grid instead: same content, roughly half the
+   height, and each point reads as its own item rather than a divider list. */
+/* Scoped off .mistake-grid-item: those cards are themselves .callout-mistake
+   (see blog.js), and gridding them would split a single mistake's own body
+   into columns. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  padding: 22px 22px 22px;
+  align-items: start;
 }
-.blog-detail-page .post-content .callout-mistake > p:first-of-type { border-top: 0; }
-.blog-detail-page .post-content .callout-mistake > p > strong:first-child {
+/* the heading, and the exploded-list grid, keep the full width */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head,
+.blog-detail-page .post-content .callout-mistake > .mistake-grid,
+.blog-detail-page .post-content .callout-mistake > ol,
+.blog-detail-page .post-content .callout-mistake > ul {
+  grid-column: 1 / -1;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head {
+  margin-bottom: 2px;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p {
+  margin: 0;
+  padding: 13px 15px;
+  border: 1px solid #f6dede;
+  border-left: 3px solid #ef4444;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p > strong:first-child {
   display: block;
   margin-bottom: 3px;
   color: #b42318;
+  font-size: 0.99rem;
+}
+/* a trailing note that is not a "**Label.** body" item spans the row as plain
+   prose. If :has() is unsupported the note just renders as one more card,
+   which is why this sits last rather than being relied on. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:not(:has(> strong:first-child)) {
+  grid-column: 1 / -1;
+  border: 0;
+  background: transparent;
+  padding: 4px 2px 0;
+}
+@media (max-width: 760px) {
+  .blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px 16px;
+  }
 }
 
 /* ---- Copy-ready template blocks ---- */
