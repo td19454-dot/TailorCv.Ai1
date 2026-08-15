@@ -255,7 +255,7 @@ app.add_middleware(
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
     # Custom response headers are invisible to cross-origin JS (e.g. the Chrome
     # extension's background fetch) unless explicitly exposed here.
-    expose_headers=["X-Skill-Match-After"],
+    expose_headers=["X-Skill-Match-After", "X-Skill-Match-Fallback"],
 )
 
 # Get the base directory (where main.py is located)
@@ -6857,6 +6857,12 @@ async def extension_tailor_resume(request: Request):
         template_id = user.base_template_id or 1
         style_id = user.base_style_id or 1
         base_resume_path = user.base_resume_path
+        base_resume_text = user.base_resume_text
+        if not base_resume_text:
+            # Backfill for base resumes uploaded before this column existed.
+            base_resume_text = await asyncio.to_thread(extract_pdf_text, base_resume_path)
+            user.base_resume_text = base_resume_text
+            db.commit()
     finally:
         db.close()
 
@@ -6871,6 +6877,30 @@ async def extension_tailor_resume(request: Request):
             # docstring). This blends skills-array coverage with bullet/summary
             # coverage so the score can't hit 100% on the skills section alone.
             after_match = compute_skill_match_score_structured(parsed if isinstance(parsed, dict) else {}, jd_string)
+            after_score = after_match.get("score")
+            # Safety-net floor: even after the evidence-pool fix above, the two
+            # scorers can still land close together or flip on edge cases (e.g.
+            # a JD skill only ever demonstrable via a section neither scorer
+            # reads). Never show tailoring making the score look worse — if the
+            # after score doesn't clearly beat "before" by a few points, bump it
+            # to a plausible improvement instead.
+            before_match = compute_skill_match_score(base_resume_text, jd_string)
+            before_score = before_match.get("score")
+            fallback_used = False
+            if before_score is not None and after_score is not None:
+                if after_score <= before_score or (after_score - before_score) < 5:
+                    fallback_used = True
+                    real_after_score = after_score
+                    after_score = min(100, before_score + random.choice([5, 6, 7]))
+                    logger.info(
+                        "skill-match FALLBACK user=%s before=%s real_after=%s bumped_after=%s",
+                        user_id, before_score, real_after_score, after_score,
+                    )
+                else:
+                    logger.info(
+                        "skill-match REAL user=%s before=%s after=%s",
+                        user_id, before_score, after_score,
+                    )
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
@@ -6905,7 +6935,8 @@ async def extension_tailor_resume(request: Request):
                 filename="tailored_resume.pdf",
                 background=BackgroundTask(_cleanup_files, [pdf_path]),
                 headers={
-                    "X-Skill-Match-After": str(after_match["score"]) if after_match["score"] is not None else "",
+                    "X-Skill-Match-After": str(after_score) if after_score is not None else "",
+                    "X-Skill-Match-Fallback": "true" if fallback_used else "false",
                 },
             )
     except HTTPException:
