@@ -2422,6 +2422,12 @@ Use the Current Date supplied in the user message for every future-date check.
 Never use a training cutoff or an assumed year. A date in or before the current
 month is not in the future.
 
+An end date written as "Present", "Current", "Now", or "Ongoing" is not a date
+to evaluate — it means the role is still active as of the Current Date supplied.
+Never fail an entry, or cite it in an explanation, as being "in the future"
+because its end date is "Present" (or an equivalent word). Only a specific
+month/year that is later than the Current Date counts as a future date.
+
 Fail if:
 
 * dates are missing
@@ -2923,6 +2929,9 @@ _MONTH_YEAR_RE = re.compile(
     r'\b(' + '|'.join(_MONTH_NUMBERS) + r')\s+(20\d{2})\b',
     re.IGNORECASE,
 )
+# An open-ended end date ("Present"/"Current"/"Now"/"Ongoing") is never itself
+# a future date — see _apply_false_future_repair below.
+_PRESENT_TOKEN_RE = re.compile(r'\b(present|current(?:ly)?|ongoing|now)\b', re.IGNORECASE)
 
 
 def _apply_false_future_repair(
@@ -2930,7 +2939,9 @@ def _apply_false_future_repair(
 ) -> bool:
     """Flip a failed pass/explanation check to passed when the *only* stated
     reason is a resume date being "in the future" that is actually already
-    past (the model miscounts months relative to the supplied Current Date).
+    past (the model miscounts months relative to the supplied Current Date),
+    or the "future" date is really an open-ended "Present"/"Current"/"Ongoing"
+    end date that isn't a date to compare at all.
     Returns True if the check was repaired.
     """
     if not isinstance(check, dict) or bool_score(check.get("passed")):
@@ -2945,7 +2956,8 @@ def _apply_false_future_repair(
         (int(year), _MONTH_NUMBERS[month.lower()])
         for month, year in _MONTH_YEAR_RE.findall(explanation)
     ]
-    if not cited_dates:
+    mentions_present = bool(_PRESENT_TOKEN_RE.search(explanation))
+    if not cited_dates and not mentions_present:
         return False
 
     current_month = (current_date.year, current_date.month)
@@ -2957,6 +2969,10 @@ def _apply_false_future_repair(
 
     check["passed"] = "true"
     check["explanation"] = (
+        f"The cited dates are not in the future as of "
+        f"{current_date.strftime('%B %Y')} "
+        f"(an end date of \"Present\" is not a future date)."
+        if mentions_present else
         f"The cited dates are not in the future as of "
         f"{current_date.strftime('%B %Y')}."
     )
