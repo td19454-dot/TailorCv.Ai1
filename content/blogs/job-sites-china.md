@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Job Boards, Job Search 2026, Online Applications, International Careers]
 category: Job Search
-image: public/blog-images/job-sites-china.webp
+image: public/blog-images/job-sites-china.png
 slug: job-sites-china
 keywords: job sites china, boss zhipin, 51job, zhaopin, job boards china for foreigners
 ---

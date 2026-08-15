@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Coding Round, DSA, Freshers, Software Engineering]
 category: Interview Preparation
-image: public/blog-images/campus-placement-coding-round-guide.webp
+image: public/blog-images/campus-placement-coding-round-guide.png
 slug: campus-placement-coding-round-guide
 keywords: campus placement coding round, dsa for placements, coding questions for placements, online coding test freshers, placement coding preparation
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, H1B Visa, Visa Sponsorship, International Careers, Job Search 2026]
 category: Career Advice
-image: public/blog-images/h1b-visa-job-search-guide.webp
+image: public/blog-images/h1b-visa-job-search-guide.png
 slug: h1b-visa-job-search-guide
 keywords: h1b visa job search, h1b sponsorship companies, h1b lottery, cap exempt h1b, find h1b sponsor employers
 ---

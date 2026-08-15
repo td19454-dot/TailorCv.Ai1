@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Non CSE, Core Branch, Resume Writing, Engineering Students]
 category: Resume Writing
-image: public/blog-images/resume-for-campus-placement-non-cse.webp
+image: public/blog-images/resume-for-campus-placement-non-cse.png
 slug: resume-for-campus-placement-non-cse
 keywords: resume for non cse students, core branch placement resume, mechanical engineering resume placement, civil engineering resume fresher
 ---

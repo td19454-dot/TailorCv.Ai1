@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Resume Keywords, ATS Optimization, CV Writing, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/best-resume-keywords-uk.webp
+image: public/blog-images/best-resume-keywords-uk.png
 slug: best-resume-keywords-uk
 keywords: uk cv keywords, resume keywords uk, ats keywords uk, cv keywords for recruiters, british cv terminology
 ---

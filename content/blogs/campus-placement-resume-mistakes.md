@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Resume Mistakes, Freshers, Resume Writing, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/campus-placement-resume-mistakes.webp
+image: public/blog-images/campus-placement-resume-mistakes.png
 slug: campus-placement-resume-mistakes
 keywords: campus placement resume mistakes, fresher resume errors, placement resume tips, common resume mistakes students
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, CV Format, Resume Writing, International Careers, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/uk-cv-format-guide-2026.webp
+image: public/blog-images/uk-cv-format-guide-2026.png
 slug: uk-cv-format-guide-2026
 keywords: uk cv format, british cv template, cv format uk 2026, how to write a cv uk, uk resume format
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Skilled Worker Visa, Work Permit, Relocation, International Careers]
 category: Career Advice
-image: public/blog-images/uk-skilled-worker-visa-guide.webp
+image: public/blog-images/uk-skilled-worker-visa-guide.png
 slug: uk-skilled-worker-visa-guide
 keywords: uk skilled worker visa, uk visa sponsorship jobs, certificate of sponsorship, uk work visa 2026, tier 2 visa uk
 ---
