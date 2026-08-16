@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, LMIA, Work Permit, Immigration, International Careers]
 category: Career Advice
-image: public/blog-images/lmia-job-search-guide.png
+image: public/blog-images/lmia-job-search-guide.webp
 slug: lmia-job-search-guide
 keywords: lmia jobs canada, lmia sponsorship, labour market impact assessment, lmia exempt jobs, canada work permit employer
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, Shukatsu, Graduate Recruitment, International Students, Job Search 2026]
 category: Career Advice
-image: public/blog-images/japan-job-hunting-timeline-shukatsu.png
+image: public/blog-images/japan-job-hunting-timeline-shukatsu.webp
 slug: japan-job-hunting-timeline-shukatsu
 keywords: shukatsu, japan job hunting timeline, japanese graduate recruitment, naitei, new graduate jobs japan
 ---

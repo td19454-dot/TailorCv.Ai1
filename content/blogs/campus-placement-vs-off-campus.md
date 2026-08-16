@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Off Campus, Freshers, Job Search Strategy, Comparisons]
 category: Comparisons
-image: public/blog-images/campus-placement-vs-off-campus.png
+image: public/blog-images/campus-placement-vs-off-campus.webp
 slug: campus-placement-vs-off-campus
 keywords: campus placement vs off campus, off campus jobs freshers, on campus vs off campus placement, which is better campus or off campus
 ---

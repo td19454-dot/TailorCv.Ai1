@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, ESL Teaching, JET Programme, Resume Writing, International Careers]
 category: Resume Writing
-image: public/blog-images/english-teaching-jobs-japan-resume.png
+image: public/blog-images/english-teaching-jobs-japan-resume.webp
 slug: english-teaching-jobs-japan-resume
 keywords: teaching english in japan, jet programme, alt jobs japan, eikaiwa jobs, english teacher resume japan
 ---

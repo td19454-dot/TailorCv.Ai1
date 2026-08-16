@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [New Job, Onboarding, Career Advice, Workplace, Professional Development]
 category: Career Advice
-image: public/blog-images/first-90-days-new-job.png
+image: public/blog-images/first-90-days-new-job.webp
 slug: first-90-days-new-job
 keywords: first 90 days new job, 30 60 90 day plan, starting a new job, onboarding tips, new job first week
 ---

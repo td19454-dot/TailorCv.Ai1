@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Tech Careers, City Comparison, Relocation, Job Search 2026]
 category: Comparisons
-image: public/blog-images/shanghai-vs-shenzhen-tech-jobs.png
+image: public/blog-images/shanghai-vs-shenzhen-tech-jobs.webp
 slug: shanghai-vs-shenzhen-tech-jobs
 keywords: shanghai vs shenzhen jobs, tech jobs shanghai, tech jobs shenzhen, best city china tech career, working in shenzhen vs shanghai
 ---

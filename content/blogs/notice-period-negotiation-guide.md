@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Notice Period, Resignation, Career Advice, Job Change, Negotiation]
 category: Career Advice
-image: public/blog-images/notice-period-negotiation-guide.png
+image: public/blog-images/notice-period-negotiation-guide.webp
 slug: notice-period-negotiation-guide
 keywords: notice period negotiation, reduce notice period, leave job early, buyout notice period, garden leave
 ---

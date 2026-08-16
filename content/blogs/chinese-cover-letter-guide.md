@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Cover Letters, International Careers, Job Application, Job Search 2026]
 category: Cover Letters
-image: public/blog-images/chinese-cover-letter-guide.png
+image: public/blog-images/chinese-cover-letter-guide.webp
 slug: chinese-cover-letter-guide
 keywords: chinese cover letter, cover letter for china jobs, qiuzhixin, cover letter china template, china job application letter
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, Shokumu Keirekisho, Resume Writing, International Careers, Job Application]
 category: Resume Writing
-image: public/blog-images/shokumu-keirekisho-guide.png
+image: public/blog-images/shokumu-keirekisho-guide.webp
 slug: shokumu-keirekisho-guide
 keywords: shokumu keirekisho, japanese career history, shokumukeirekisho format, japan cv, work history document japan
 ---

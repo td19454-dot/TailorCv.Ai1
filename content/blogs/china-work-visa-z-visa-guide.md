@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Work Visa, Z Visa, Work Permit, Relocation]
 category: Career Advice
-image: public/blog-images/china-work-visa-z-visa-guide.png
+image: public/blog-images/china-work-visa-z-visa-guide.webp
 slug: china-work-visa-z-visa-guide
 keywords: china work visa, z visa china, china work permit, work permit notification china, china visa documents
 ---

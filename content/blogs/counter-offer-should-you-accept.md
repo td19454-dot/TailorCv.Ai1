@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Counter Offer, Career Advice, Job Change, Negotiation, Workplace]
 category: Career Advice
-image: public/blog-images/counter-offer-should-you-accept.png
+image: public/blog-images/counter-offer-should-you-accept.webp
 slug: counter-offer-should-you-accept
 keywords: should i accept counter offer, counter offer job, employer matched offer, counteroffer advice, staying after resigning
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Language Skills, Expat Career, International Careers, Job Search 2026]
 category: Career Advice
-image: public/blog-images/working-in-china-without-mandarin.png
+image: public/blog-images/working-in-china-without-mandarin.webp
 slug: working-in-china-without-mandarin
 keywords: working in china without mandarin, jobs in china no chinese, english speaking jobs china, china jobs for foreigners no chinese
 ---

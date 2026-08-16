@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Job Boards, Job Search 2026, Online Applications, Recruitment Agencies]
 category: Job Search
-image: public/blog-images/job-sites-uk.png
+image: public/blog-images/job-sites-uk.webp
 slug: job-sites-uk
 keywords: best job sites uk, uk job boards, reed totaljobs cv-library, uk job search websites, visa sponsorship jobs uk
 ---

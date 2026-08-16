@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, ESL Teaching, TEFL, Resume Writing, International Careers]
 category: Resume Writing
-image: public/blog-images/teaching-english-in-china-resume.png
+image: public/blog-images/teaching-english-in-china-resume.webp
 slug: teaching-english-in-china-resume
 keywords: teaching english in china, esl resume china, tefl jobs china, english teacher resume china, teach in china requirements
 ---

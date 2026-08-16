@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, Job Boards, Job Search 2026, Newcomers, Online Applications]
 category: Job Search
-image: public/blog-images/job-sites-canada.png
+image: public/blog-images/job-sites-canada.webp
 slug: job-sites-canada
 keywords: best job sites canada, canada job bank, job boards canada, find jobs canada newcomer, canadian job search websites
 ---
