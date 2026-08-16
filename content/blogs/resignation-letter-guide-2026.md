@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Resignation, Career Advice, Job Change, Workplace, Templates]
 category: Career Advice
-image: public/blog-images/resignation-letter-guide-2026.png
+image: public/blog-images/resignation-letter-guide-2026.webp
 slug: resignation-letter-guide-2026
 keywords: resignation letter, how to resign, resignation letter template, two weeks notice letter, quitting job professionally
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [China Jobs, Resume Format, International Resume, Jianli, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/chinese-resume-format-guide-2026.png
+image: public/blog-images/chinese-resume-format-guide-2026.webp
 slug: chinese-resume-format-guide-2026
 keywords: chinese resume format, resume for jobs in china, jianli format, china cv template, bilingual resume china
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, IT Careers, Software Engineering, International Careers, Job Search 2026]
 category: Job Search
-image: public/blog-images/it-jobs-in-japan-foreigner.png
+image: public/blog-images/it-jobs-in-japan-foreigner.webp
 slug: it-jobs-in-japan-foreigner
 keywords: it jobs in japan for foreigners, software engineer jobs japan, tech jobs tokyo, japan developer salary, working in japan as engineer
 ---

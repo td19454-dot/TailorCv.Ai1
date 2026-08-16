@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Communication Skills, Freshers, Interview Preparation, Soft Skills]
 category: Interview Preparation
-image: public/blog-images/campus-placement-communication-skills.png
+image: public/blog-images/campus-placement-communication-skills.webp
 slug: campus-placement-communication-skills
 keywords: communication skills for placement, how to improve english for interview, communication skills freshers, spoken english for placements
 ---

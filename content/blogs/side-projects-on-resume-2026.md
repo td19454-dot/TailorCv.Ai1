@@ -5,7 +5,7 @@ date: 2026-08-11
 author: TailorCV Team
 tags: [Side Projects, Resume Writing, Portfolio, Career Change, Job Search 2026]
 category: Resume Writing
-image: public/blog-images/side-projects-on-resume-2026.png
+image: public/blog-images/side-projects-on-resume-2026.webp
 slug: side-projects-on-resume-2026
 keywords: side projects on resume, personal projects resume, should i put side projects on resume, resume projects section, portfolio projects 2026
 ---

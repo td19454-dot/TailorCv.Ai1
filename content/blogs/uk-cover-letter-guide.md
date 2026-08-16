@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Cover Letters, Job Application, International Careers, Job Search 2026]
 category: Cover Letters
-image: public/blog-images/uk-cover-letter-guide.png
+image: public/blog-images/uk-cover-letter-guide.webp
 slug: uk-cover-letter-guide
 keywords: uk cover letter, cover letter format uk, british cover letter template, covering letter uk, cover letter examples uk
 ---

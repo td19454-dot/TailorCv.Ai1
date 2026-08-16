@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Working Abroad, Visa Sponsorship, International Careers, Job Search 2026]
 category: Job Search
-image: public/blog-images/how-to-get-a-job-in-uk-foreigner.png
+image: public/blog-images/how-to-get-a-job-in-uk-foreigner.webp
 slug: how-to-get-a-job-in-uk-foreigner
 keywords: how to get a job in uk, jobs in uk for foreigners, uk visa sponsorship jobs, working in uk as foreigner, uk job search from abroad
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, Express Entry, Immigration, CRS Score, International Careers]
 category: Career Advice
-image: public/blog-images/canada-express-entry-job-offer.png
+image: public/blog-images/canada-express-entry-job-offer.webp
 slug: canada-express-entry-job-offer
 keywords: express entry job offer, arranged employment canada, crs score job offer, lmia express entry, canada pr job offer
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, Work Visa, Certificate of Eligibility, Relocation, International Careers]
 category: Career Advice
-image: public/blog-images/japan-work-visa-guide.png
+image: public/blog-images/japan-work-visa-guide.webp
 slug: japan-work-visa-guide
 keywords: japan work visa, certificate of eligibility japan, japan visa status of residence, engineer specialist humanities visa, highly skilled professional japan
 ---

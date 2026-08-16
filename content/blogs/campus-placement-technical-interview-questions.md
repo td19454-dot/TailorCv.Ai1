@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Technical Interview, Freshers, Computer Science, Interview Questions]
 category: Interview Preparation
-image: public/blog-images/campus-placement-technical-interview-questions.png
+image: public/blog-images/campus-placement-technical-interview-questions.webp
 slug: campus-placement-technical-interview-questions
 keywords: technical interview questions campus placement, oop interview questions freshers, dbms interview questions placement, os interview questions placement
 ---

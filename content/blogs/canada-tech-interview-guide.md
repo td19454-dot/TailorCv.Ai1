@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, Tech Interview, Software Engineering, Interview Preparation, Newcomers]
 category: Interview Preparation
-image: public/blog-images/canada-tech-interview-guide.png
+image: public/blog-images/canada-tech-interview-guide.webp
 slug: canada-tech-interview-guide
 keywords: canada tech interview, software engineer interview canada, tech interview toronto, canadian interview process, behavioural interview canada
 ---
