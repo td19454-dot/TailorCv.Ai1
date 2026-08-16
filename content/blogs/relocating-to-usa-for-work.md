@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, Relocation, Expat Life, International Careers, Career Advice]
 category: Career Advice
-image: public/blog-images/relocating-to-usa-for-work.png
+image: public/blog-images/relocating-to-usa-for-work.webp
 slug: relocating-to-usa-for-work
 keywords: relocating to usa for work, moving to america for job, us relocation checklist, expat life usa, relocation package usa
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, Resume Keywords, ATS Optimization, Resume Writing, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/best-resume-keywords-usa.png
+image: public/blog-images/best-resume-keywords-usa.webp
 slug: best-resume-keywords-usa
 keywords: resume keywords usa, ats keywords american resume, us resume keywords, what keywords do recruiters search, resume keywords 2026
 ---

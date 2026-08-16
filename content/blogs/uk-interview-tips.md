@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Interview Preparation, Competency Interview, International Careers, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/uk-interview-tips.png
+image: public/blog-images/uk-interview-tips.webp
 slug: uk-interview-tips
 keywords: uk interview tips, competency based interview uk, british interview questions, interview in uk, star method uk
 ---

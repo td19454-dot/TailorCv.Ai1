@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, Salary Negotiation, Job Offer, Newcomers, Career Advice]
 category: Career Advice
-image: public/blog-images/canada-salary-negotiation-guide.png
+image: public/blog-images/canada-salary-negotiation-guide.webp
 slug: canada-salary-negotiation-guide
 keywords: canada salary negotiation, negotiate salary canada, salary expectations canada, canadian job offer, pay transparency canada
 ---

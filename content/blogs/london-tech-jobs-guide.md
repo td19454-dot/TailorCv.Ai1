@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [UK Jobs, Tech Careers, London, Software Engineering, Job Search 2026]
 category: Job Search
-image: public/blog-images/london-tech-jobs-guide.png
+image: public/blog-images/london-tech-jobs-guide.webp
 slug: london-tech-jobs-guide
 keywords: london tech jobs, software engineer jobs london, tech careers uk, london developer salary, fintech jobs london
 ---

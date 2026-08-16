@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Final Year Project, Freshers, Projects, Engineering Students]
 category: Career Advice
-image: public/blog-images/final-year-project-for-placement.png
+image: public/blog-images/final-year-project-for-placement.webp
 slug: final-year-project-for-placement
 keywords: final year project for placement, best projects for placement, major project ideas engineering, project for resume freshers
 ---

@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Campus Placement, Off Campus, Freshers, Career Advice, Job Search 2026]
 category: Career Advice
-image: public/blog-images/not-placed-in-campus-what-next.png
+image: public/blog-images/not-placed-in-campus-what-next.webp
 slug: not-placed-in-campus-what-next
 keywords: not placed in campus placement, what to do if not placed, off campus jobs for freshers, unplaced student jobs, job after campus placement failure
 ---

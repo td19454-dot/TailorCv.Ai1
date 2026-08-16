@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Japan Jobs, Salary Negotiation, Job Offer, International Careers, Career Advice]
 category: Career Advice
-image: public/blog-images/japan-salary-negotiation-guide.png
+image: public/blog-images/japan-salary-negotiation-guide.webp
 slug: japan-salary-negotiation-guide
 keywords: japan salary negotiation, negotiate salary japan, japanese job offer, nenshu japan, salary expectations japan
 ---

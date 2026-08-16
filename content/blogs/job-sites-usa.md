@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [USA Jobs, Job Boards, Job Search 2026, Online Applications, LinkedIn]
 category: Job Search
-image: public/blog-images/job-sites-usa.png
+image: public/blog-images/job-sites-usa.webp
 slug: job-sites-usa
 keywords: best job sites usa, us job boards, linkedin indeed glassdoor, visa sponsorship job sites, where to find jobs america
 ---

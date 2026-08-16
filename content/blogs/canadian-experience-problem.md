@@ -5,7 +5,7 @@ date: 2026-08-12
 author: TailorCV Team
 tags: [Canada Jobs, Newcomers, Job Search 2026, Immigration, Career Advice]
 category: Job Search
-image: public/blog-images/canadian-experience-problem.png
+image: public/blog-images/canadian-experience-problem.webp
 slug: canadian-experience-problem
 keywords: canadian experience problem, no canadian experience, newcomer jobs canada, get first job in canada, survival job canada
 ---
