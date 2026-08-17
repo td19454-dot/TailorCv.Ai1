@@ -2131,6 +2131,60 @@ def _restore_is_header_echo(candidate: str, header_values: list) -> bool:
     return False
 
 
+def _entry_original_bullets(cands, entry: dict, entries: list, id_fields) -> list:
+    """The original resume lines under `entry` that are genuinely bullets.
+
+    Extracted so restore_dropped_bullets and compute_resume_diff agree on what
+    counts as an original bullet — otherwise the change report would claim a
+    header row or a stack line was "dropped" content the restorer had already
+    (correctly) refused to bring back.
+    """
+    cands = [c for c in (cands or []) if str(c).strip()]
+    if not cands:
+        return []
+    # Drop candidates that are really this entry's own header row (role,
+    # company, location) — e.g. "Data Analyst Research Intern Kolkata".
+    header_values = [
+        str(entry.get(k, "")).strip()
+        for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
+    ]
+    header_values = [h for h in header_values if h]
+    # ...and any OTHER entry's header too. Templates that put the entry
+    # name in a narrow gutter wrap it across lines ("Myntra E-" /
+    # "commerce"), and those fragments sit inside the previous entry's
+    # line range, so the first project absorbed the next projects'
+    # titles and bullets as its own.
+    for other in entries:
+        if other is entry:
+            continue
+        header_values.extend(
+            str(other.get(k, "")).strip()
+            for k in ("company", "title", "role", "organization", "name")
+            if str(other.get(k, "")).strip()
+        )
+    cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
+    # A stack row ("html,css,javascript") or a link caption row is never
+    # a bullet, whichever entry it sits under.
+    cands = [
+        c for c in cands
+        if not _looks_like_stack_line(c)
+        and not _RESTORE_LINK_LABEL_ROW_RE.fullmatch(str(c).strip())
+    ]
+    # Another entry's name leaking in mid-line, e.g. "Customer Python,
+    # PowerBI, SQL, Excel" - a wrapped title glued to a stack row.
+    other_names = {
+        _normalize_key(str(o.get(f, "")))
+        for o in entries if o is not entry
+        for f in id_fields if str(o.get(f, "")).strip()
+    }
+    other_names.discard("")
+    cands = [
+        c for c in cands
+        if not any(n and _normalize_key(c).startswith(n[:12]) for n in other_names)
+    ]
+    return cands
+
+
 def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
     """Append any original bullet whose content the optimizer dropped, back onto
     the exact entry it came from. Safe against sub-section exchange and against
@@ -2153,49 +2207,7 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
             identifiers.append(max(vals, key=len) if vals else "")
         orig = _original_entry_candidates(section_lines, heading_section, identifiers)
         for e, ident in zip(entries, identifiers):
-            cands = orig.get(ident)
-            if not cands:
-                continue
-            # Drop candidates that are really this entry's own header row (role,
-            # company, location) — e.g. "Data Analyst Research Intern Kolkata".
-            header_values = [
-                str(e.get(k, "")).strip()
-                for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
-            ]
-            header_values = [h for h in header_values if h]
-            # ...and any OTHER entry's header too. Templates that put the entry
-            # name in a narrow gutter wrap it across lines ("Myntra E-" /
-            # "commerce"), and those fragments sit inside the previous entry's
-            # line range, so the first project absorbed the next projects'
-            # titles and bullets as its own.
-            for other in entries:
-                if other is e:
-                    continue
-                header_values.extend(
-                    str(other.get(k, "")).strip()
-                    for k in ("company", "title", "role", "organization", "name")
-                    if str(other.get(k, "")).strip()
-                )
-            cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
-            # A stack row ("html,css,javascript") or a link caption row is never
-            # a bullet, whichever entry it sits under.
-            cands = [
-                c for c in cands
-                if not _looks_like_stack_line(c)
-                and not _RESTORE_LINK_LABEL_ROW_RE.fullmatch(str(c).strip())
-            ]
-            # Another entry's name leaking in mid-line, e.g. "Customer Python,
-            # PowerBI, SQL, Excel" - a wrapped title glued to a stack row.
-            other_names = {
-                _normalize_key(str(o.get(f, "")))
-                for o in entries if o is not e
-                for f in id_fields if str(o.get(f, "")).strip()
-            }
-            other_names.discard("")
-            cands = [
-                c for c in cands
-                if not any(n and _normalize_key(c).startswith(n[:12]) for n in other_names)
-            ]
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
@@ -2215,6 +2227,92 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
             if added:
                 e["bullets"] = ai_bullets
     return parsed
+
+
+# Two bullets count as the same content when this much of the original's
+# vocabulary survives into the rewrite. Same threshold restore_dropped_bullets
+# uses to decide a bullet is still present, so the two agree by construction.
+_DIFF_MATCH_RATIO = 0.4
+
+
+def compute_resume_diff(parsed: dict, resume_string: str) -> dict:
+    """Classify every optimized bullet against the candidate's original resume.
+
+    The whole anti-fabrication layer (restore_dropped_bullets, the evidence gate
+    in inject_jd_hard_skills, the fabrication grader) is invisible to the person
+    whose resume it is — they upload a document and get a different one back.
+    This makes it inspectable: for each bullet, did we keep it, reword it, or is
+    it new? A rewritten bullet carries the original so the two can sit together.
+
+    Returns {"entries": [...], "summary": {...}} and never raises — a change
+    report failing must not fail an optimization that already succeeded.
+    """
+    empty = {"entries": [], "summary": {"kept": 0, "rewritten": 0, "added": 0, "total": 0}}
+    if not isinstance(parsed, dict) or not str(resume_string or "").strip():
+        return empty
+    try:
+        section_lines = _restore_section_lines(resume_string)
+        plan = (
+            ("experience", "experience", ("company", "title")),
+            ("projects", "projects", ("name",)),
+            ("extracurricular", "extracurriculars", ("role", "organization")),
+        )
+        out_entries = []
+        counts = {"kept": 0, "rewritten": 0, "added": 0}
+        for heading_section, parsed_key, id_fields in plan:
+            entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+            if not entries:
+                continue
+            identifiers = []
+            for e in entries:
+                vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+                identifiers.append(max(vals, key=len) if vals else "")
+            orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+            for e, ident in zip(entries, identifiers):
+                originals = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+                # Pre-tokenise once; a resume with many entries otherwise
+                # re-tokenises the same originals for every bullet.
+                orig_pairs = [(o, _restore_tokens(o)) for o in originals]
+                orig_norm = {_normalize_key(o): o for o in originals}
+                used = set()
+                rows = []
+                for b in (e.get("bullets") or []):
+                    text = str(b).strip()
+                    if not text:
+                        continue
+                    nk = _normalize_key(text)
+                    if nk and nk in orig_norm:
+                        rows.append({"text": text, "status": "kept", "original": None})
+                        counts["kept"] += 1
+                        used.add(orig_norm[nk])
+                        continue
+                    btoks = _restore_tokens(text)
+                    best, best_ratio = None, 0.0
+                    if btoks:
+                        for o, otoks in orig_pairs:
+                            if o in used or not otoks:
+                                continue
+                            ratio = len(otoks & btoks) / len(otoks)
+                            if ratio > best_ratio:
+                                best, best_ratio = o, ratio
+                    if best is not None and best_ratio >= _DIFF_MATCH_RATIO:
+                        rows.append({"text": text, "status": "rewritten", "original": best})
+                        counts["rewritten"] += 1
+                        used.add(best)
+                    else:
+                        rows.append({"text": text, "status": "added", "original": None})
+                        counts["added"] += 1
+                if rows:
+                    label = next(
+                        (str(e.get(f)).strip() for f in id_fields if str(e.get(f, "")).strip()),
+                        "",
+                    )
+                    out_entries.append({"section": parsed_key, "name": label, "bullets": rows})
+        counts["total"] = counts["kept"] + counts["rewritten"] + counts["added"]
+        return {"entries": out_entries, "summary": counts}
+    except Exception:
+        logger.exception("compute_resume_diff failed — returning empty change report")
+        return empty
 
 
 def _restore_tokens(text: str) -> set[str]:
@@ -10580,6 +10678,11 @@ async def _optimize_resume_core(
             "Rewrite introduced facts absent from the original resume: %s",
             parsed["factcheck"]["findings"][:8],
         )
+
+    # Change report: what we kept, reworded, or added, per bullet. Computed last
+    # so it describes what the candidate actually receives, after every
+    # restoration and injection has run. Rendering ignores this key.
+    parsed["change_report"] = compute_resume_diff(parsed, resume_string)
     return parsed
 
 
