@@ -293,6 +293,84 @@ def test_achievements_do_not_leak_into_projects():
     assert "leetcode" not in joined, bullets
 
 
+# ── compute_resume_diff ──────────────────────────────────────────────────────
+# The change report shares _entry_original_bullets with the restorer, so it must
+# agree about what an original bullet is. Otherwise it offers a stack row or a
+# header echo back to the user as "You wrote:" content — which the restorer had
+# already correctly refused to reinstate.
+
+
+def test_diff_classifies_kept_rewritten_and_added():
+    resume = "\n".join([
+        "PROJECTS",
+        "Sales Dashboard",
+        "Built a dashboard in Excel for the sales team to track monthly numbers.",
+        "Presented findings to the regional manager each month.",
+    ])
+    parsed = {"projects": [{"name": "Sales Dashboard", "bullets": [
+        "Built an interactive Power BI dashboard tracking monthly sales KPIs, cutting prep from 4 hours to 20 minutes.",
+        "Presented findings to the regional manager each month.",
+        "Automated ingestion with Python, removing manual preprocessing.",
+    ]}]}
+    d = main.compute_resume_diff(parsed, resume)
+    rows = d["entries"][0]["bullets"]
+    assert [r["status"] for r in rows] == ["rewritten", "kept", "added"], rows
+    assert (rows[0]["original"] or "").startswith("Built a dashboard in Excel"), rows[0]
+    assert rows[1]["original"] is None, rows[1]
+    assert d["summary"] == {"kept": 1, "rewritten": 1, "added": 1, "total": 3}, d["summary"]
+
+
+def test_diff_never_offers_a_stack_row_as_the_original():
+    # "Python, PowerBI, SQL, Excel" is a tech list, not a bullet.
+    resume = "\n".join([
+        "PROJECTS",
+        "Customer Behaviour Analytics",
+        "Python, PowerBI, SQL, Excel",
+        "Segmented 40k customers into five cohorts by purchase frequency.",
+    ])
+    parsed = {"projects": [{"name": "Customer Behaviour Analytics", "bullets": [
+        "Segmented 40,000 customers into five behavioural cohorts using RFM analysis.",
+    ]}]}
+    d = main.compute_resume_diff(parsed, resume)
+    row = d["entries"][0]["bullets"][0]
+    assert "PowerBI" not in (row["original"] or ""), row
+
+
+def test_diff_matches_each_original_at_most_once():
+    # Two similar rewrites must not both claim the same source line.
+    resume = "\n".join([
+        "EXPERIENCE",
+        "Data Analyst",
+        "Built weekly sales reports for the leadership team.",
+    ])
+    parsed = {"experience": [{"title": "Data Analyst", "bullets": [
+        "Built weekly sales reports for the leadership team using SQL.",
+        "Built weekly sales dashboards for the leadership team in Tableau.",
+    ]}]}
+    d = main.compute_resume_diff(parsed, resume)
+    rows = d["entries"][0]["bullets"]
+    claimed = [r["original"] for r in rows if r["original"]]
+    assert len(claimed) == len(set(claimed)), rows
+
+
+def test_diff_is_safe_on_junk_input():
+    for parsed, resume in (
+        (None, "PROJECTS\nx"),
+        ({}, ""),
+        ({"projects": None}, "PROJECTS\nx"),
+        ({"projects": [None, "str"]}, "PROJECTS\nx"),
+    ):
+        d = main.compute_resume_diff(parsed, resume)
+        assert d["entries"] == [] and d["summary"]["total"] == 0, (parsed, d)
+
+
+def test_diff_totals_are_internally_consistent():
+    resume = "PROJECTS\nThing\nDid a thing well and carefully."
+    parsed = {"projects": [{"name": "Thing", "bullets": ["a", "b", "c", "d"]}]}
+    s = main.compute_resume_diff(parsed, resume)["summary"]
+    assert s["kept"] + s["rewritten"] + s["added"] == s["total"] == 4, s
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]

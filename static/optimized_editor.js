@@ -1591,6 +1591,121 @@ body {
         { label: "Rose",          hex: "#be123c" },
     ];
 
+    /* ─────────────────────────────────────────────────────────────────────────
+       CHANGE REPORT
+       The whole anti-fabrication layer runs server-side and is invisible to the
+       person whose resume it is - they get a different document back and have to
+       take our word that nothing was invented. This shows the receipts: per
+       bullet, did we keep it, reword it, or add it, and what the original said.
+    ───────────────────────────────────────────────────────────────────────── */
+    function injectChangeReportStyles() {
+        if (document.getElementById("tc-changes-style")) return;
+        const st = document.createElement("style");
+        st.id = "tc-changes-style";
+        st.textContent = `
+        #tc-changes-container { font-size: .82rem; }
+        .tc-chg-summary { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+        .tc-chg-stat {
+            padding:3px 8px; border-radius:999px; font-weight:600; font-size:.72rem;
+            border:1px solid transparent; white-space:nowrap;
+        }
+        .tc-chg-stat.kept      { background:#eef6ee; color:#256029; border-color:#cfe6d0; }
+        .tc-chg-stat.rewritten { background:#eef2fb; color:#1e3a8a; border-color:#d3ddf5; }
+        .tc-chg-stat.added     { background:#fff6e8; color:#8a5300; border-color:#f2dfc0; }
+        .tc-chg-toggle {
+            width:100%; padding:7px 10px; border-radius:8px; cursor:pointer;
+            border:1px solid #d6dced; background:#fff; color:#1f2b45;
+            font-weight:600; font-size:.8rem;
+        }
+        .tc-chg-toggle:hover { background:#f6f8fd; }
+        .tc-chg-body { margin-top:9px; max-height:340px; overflow-y:auto; }
+        .tc-chg-entry { margin-bottom:11px; }
+        .tc-chg-entry h4 {
+            margin:0 0 5px; font-size:.76rem; font-weight:700; color:#5b6580;
+            text-transform:uppercase; letter-spacing:.03em;
+        }
+        .tc-chg-row {
+            padding:6px 8px; border-radius:7px; margin-bottom:5px;
+            border-left:3px solid #cbd5e1; background:#fafbfd; line-height:1.45;
+        }
+        .tc-chg-row.kept      { border-left-color:#4a9c58; }
+        .tc-chg-row.rewritten { border-left-color:#3b6fd4; }
+        .tc-chg-row.added     { border-left-color:#d99a2b; }
+        .tc-chg-tag {
+            display:inline-block; font-size:.65rem; font-weight:700; letter-spacing:.04em;
+            text-transform:uppercase; margin-bottom:3px; color:#6b7280;
+        }
+        .tc-chg-was {
+            margin-top:5px; padding-top:5px; border-top:1px dashed #dde3ee;
+            color:#7b8496; font-size:.78rem;
+        }
+        .tc-chg-was b { color:#5b6580; font-weight:600; }
+        .tc-chg-note { margin:8px 0 0; color:#6b7280; font-size:.74rem; line-height:1.5; }
+        `;
+        document.head.appendChild(st);
+    }
+
+    function buildChangeReport(payload) {
+        const section = document.getElementById("tc-changes-section");
+        const host    = document.getElementById("tc-changes-container");
+        if (!section || !host) return;
+
+        const report  = payload && payload.resume_data && payload.resume_data.change_report;
+        const entries = (report && Array.isArray(report.entries)) ? report.entries : [];
+        const sum     = (report && report.summary) || {};
+        // Nothing to show for older payloads, or a resume whose sections carry
+        // no bullets at all. Leave the section hidden rather than render an
+        // empty card.
+        if (!entries.length || !sum.total) { section.hidden = true; return; }
+
+        injectChangeReportStyles();
+        section.hidden = false;
+
+        const esc = (s) => String(s == null ? "" : s)
+            .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        const LABEL = { kept: "Kept as written", rewritten: "Reworded", added: "Added" };
+
+        const stats = [];
+        if (sum.kept)      stats.push(`<span class="tc-chg-stat kept">${sum.kept} kept</span>`);
+        if (sum.rewritten) stats.push(`<span class="tc-chg-stat rewritten">${sum.rewritten} reworded</span>`);
+        if (sum.added)     stats.push(`<span class="tc-chg-stat added">${sum.added} added</span>`);
+
+        const body = entries.map(en => {
+            const rows = (en.bullets || []).map(b => {
+                const was = b.original
+                    ? `<div class="tc-chg-was"><b>You wrote:</b> ${esc(b.original)}</div>`
+                    : "";
+                return `<div class="tc-chg-row ${esc(b.status)}">
+                            <span class="tc-chg-tag">${LABEL[b.status] || esc(b.status)}</span>
+                            <div>${esc(b.text)}</div>${was}
+                        </div>`;
+            }).join("");
+            return `<div class="tc-chg-entry">
+                        <h4>${esc(en.name || en.section)}</h4>${rows}
+                    </div>`;
+        }).join("");
+
+        host.innerHTML = `
+            <div class="tc-chg-summary">${stats.join("")}</div>
+            <button type="button" class="tc-chg-toggle" aria-expanded="false">Show line-by-line</button>
+            <div class="tc-chg-body" hidden>${body}
+                <p class="tc-chg-note">
+                    Every line above came from your resume unless marked
+                    <b>Added</b> — and added lines only ever restate evidence
+                    already in it.
+                </p>
+            </div>`;
+
+        const btn  = host.querySelector(".tc-chg-toggle");
+        const list = host.querySelector(".tc-chg-body");
+        btn.addEventListener("click", () => {
+            const open = !list.hidden;
+            list.hidden = open;
+            btn.setAttribute("aria-expanded", String(!open));
+            btn.textContent = open ? "Show line-by-line" : "Hide line-by-line";
+        });
+    }
+
     function buildAccentPanel() {
         const container = document.getElementById("tc-accent-panel-container");
         if (!container) return;
@@ -2173,6 +2288,7 @@ body {
             setStatus("Tip: Click inside the resume to edit text live.");
 
             buildAccentPanel();
+            buildChangeReport(getPayload() || payload);
             applyFreeUserProtection(frame.contentDocument);
             applyQuotaExhaustedLock(frame.contentDocument);
 

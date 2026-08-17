@@ -74,6 +74,15 @@
                         <div id="tc-accent-panel-container"></div>
                     </section>
 
+                    <!-- What changed. buildChangeReport() fills this from
+                         resume_data.change_report; the whole section stays hidden
+                         when there is no report (older payloads, or a resume with
+                         no bullet sections). -->
+                    <section class="editor-controls" id="tc-changes-section" hidden>
+                        <div class="control-title">What changed</div>
+                        <div id="tc-changes-container"></div>
+                    </section>
+
                 </div><!-- /.mobile-controls-panel -->
 
                 <!-- Always-visible strip: page info + download.  Fixed at bottom on mobile. -->
