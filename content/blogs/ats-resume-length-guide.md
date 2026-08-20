@@ -28,6 +28,28 @@ Check how your resume parses at whatever length it is — the [free ATS score ch
 
 ---
 
+## Length by market, at a glance
+
+| Market | Expected length | Notes |
+|---|---|---|
+| **US, early career** | 1 page | The strictest convention anywhere |
+| **US, 8+ years** | 1–2 pages | Two is normal and unremarkable |
+| **US federal / USAJOBS** | 3–5+ pages | Brevity gets you rated ineligible |
+| **UK, most roles** | 2 pages | One page reads as thin from an experienced candidate |
+| **UK, graduate** | 1–2 pages | Two is acceptable with placements and projects |
+| **Canada** | 1–2 pages | Close to US convention |
+| **Japan (rirekisho)** | Fixed form | Standard template, length not your choice |
+| **Japan (shokumu keirekisho)** | 2–4 pages | Detail is expected |
+| **India, campus placement** | 1 page | Two signals padding |
+| **India, experienced** | 2 pages | Three is common but rarely helps |
+| **Germany / Netherlands** | 2 pages | Often with a structured cover sheet |
+| **Academic CV** | Unlimited | Full publication and grant lists |
+| **Consulting / banking** | 1 page, strictly | Enforced convention regardless of seniority |
+
+**The single most common error** in this whole area is not choosing the wrong number within a convention. It is applying one market's convention to another market's application.
+
+---
+
 ## The ATS does not care
 
 **No mainstream applicant tracking system rejects or downranks a resume for being two pages.** It parses the text it is given.
@@ -37,6 +59,8 @@ Check how your resume parses at whatever length it is — the [free ATS score ch
 **So the question is not "what will the system accept"** but "what will the reader expect, and what do I need to prove my claims".
 
 The broader misconceptions are covered in [ATS myths debunked](https://thetailorcv.com/blog/ats-myths-debunked).
+
+**Where the myth came from:** early parsing systems did sometimes truncate long documents, and the advice hardened into a rule that outlived the technology. What persists is the human preference, which is real but market-specific.
 
 ---
 
@@ -60,6 +84,27 @@ The broader misconceptions are covered in [ATS myths debunked](https://thetailor
 
 ---
 
+## Length by experience, within a convention
+
+Once you know your market, seniority sets the number.
+
+| Your situation | US | UK |
+|---|---|---|
+| **Student, no internships** | 1 page | 1 page |
+| **Graduate with placements** | 1 page | 1–2 pages |
+| **2–5 years** | 1 page | 2 pages |
+| **5–10 years** | 1–2 pages | 2 pages |
+| **10–20 years** | 2 pages | 2 pages |
+| **20+ years** | 2 pages | 2–3 pages |
+| **Executive** | 2 pages | 2–3 pages |
+| **Contractor, many short engagements** | 2 pages, grouped | 2 pages, grouped |
+
+**The contractor row deserves a note.** Fifteen six-month engagements do not need fifteen full entries. Group them under one heading with the client names and a combined set of achievements, and the page count solves itself.
+
+**Very long careers do not need proportional length.** After twenty years, the first ten are context, not evidence. One line each is enough.
+
+---
+
 ## Two pages done properly beats one page squeezed
 
 The most common self-inflicted damage in this area.
@@ -71,6 +116,20 @@ The most common self-inflicted damage in this area.
 **If your content genuinely needs two pages, use two.** If it does not, one is better.
 
 **Never sacrifice readability for page count.** Nobody has ever been rejected for using two well-spaced pages; plenty of people have been skipped over for an unreadable one.
+
+### The formatting floor
+
+Below these values, compression becomes visible:
+
+| Setting | Comfortable | Acceptable floor | Visibly squeezed |
+|---|---|---|---|
+| **Body font size** | 11pt | 10pt | 9pt or below |
+| **Margins** | 2cm / 0.8in | 1.5cm / 0.6in | Under 1.25cm / 0.5in |
+| **Line spacing** | 1.15 | 1.0 | Below 1.0 |
+| **Space between roles** | 10–12pt | 6pt | 0pt |
+| **Bullet length** | 1–2 lines | 2 lines | 3+ lines |
+
+**If hitting one page requires breaking two or more of these floors**, you have a two-page resume and should use two pages.
 
 ---
 
@@ -97,6 +156,22 @@ When you do need to cut, there is an order.
 
 **The principle:** cut what does not earn its space, not the evidence that proves your claims. The [campus placement resume mistakes](https://thetailorcv.com/blog/campus-placement-resume-mistakes) guide covers the legacy sections that consume the most room for the least benefit.
 
+### How much space each cut actually buys
+
+| Cut | Typical space recovered | Cost to you |
+|---|---|---|
+| **Declaration block and signature** | 3–4 lines | None |
+| **"References available on request"** | 1–2 lines | None |
+| **Generic objective statement** | 3–4 lines | None |
+| **Full coursework list** | 4–6 lines | Almost none |
+| **Photo and personal details** | 5–8 lines | None outside markets that expect them |
+| **Hobbies** | 2–3 lines | Minor, unless genuinely distinctive |
+| **Roles older than 15 years, compressed** | 8–15 lines | Low — they are context, not evidence |
+| **Trimming bullets from 5 to 3 per role** | 6–10 lines | Moderate — keep the strongest |
+| **Deleting a quantified achievement** | 1–2 lines | High — never do this first |
+
+**Work down that table and stop when you fit.** In most cases the first five rows alone recover most of a page without removing anything a reader would have valued.
+
 ---
 
 ## What matters more than length
@@ -108,6 +183,18 @@ When you do need to cut, there is an order.
 **Scannability.** Clear headings, short bullets, adequate white space. A reader scanning for ten seconds should find your current role, your key skills and one impressive number.
 
 **Whether it parses.** A perfectly-lengthed resume that extracts as scrambled text is worth nothing — see [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide).
+
+### What belongs in the top third
+
+| Element | Space it deserves |
+|---|---|
+| **Name and contact line** | 2–3 lines, no more |
+| **Specific summary, or nothing** | 2–3 lines |
+| **Current or most recent role** | Fully, with your best bullets |
+| **One quantified result** | Visible without scrolling |
+| **Key skills, if the role is technical** | One grouped line |
+
+**What does not belong there:** a photo, a mission statement, a skills matrix with rating bars, or anything that costs vertical space without carrying evidence.
 
 ---
 
@@ -129,6 +216,10 @@ When you do need to cut, there is an order.
 
 **Treating the resume as a complete career archive.** Relevance beats completeness, and tailoring is what earns space back.
 
+**Giving every contract engagement a full entry.** Group short engagements under one heading and the page count solves itself.
+
+**Spending the top third on a photo or a mission statement.** That space decides whether anything below it is read.
+
 ---
 
 ## Frequently Asked Questions
@@ -149,6 +240,10 @@ With substantial experience, yes. For a candidate with two or three years, one p
 
 Do not. Compression is immediately visible and produces a worse document than a comfortable two pages.
 
+### What is the smallest font I can reasonably use?
+
+10pt is the practical floor for body text. At 9pt and below the compression is obvious and the document becomes tiring to read.
+
 ### What should I cut first?
 
 Old roles, generic objective statements, "references available on request", coursework lists, hobbies, and personal details not required in your market.
@@ -156,6 +251,14 @@ Old roles, generic objective statements, "references available on request", cour
 ### What should I never cut?
 
 Quantified achievements, recent relevant experience, and the skills the job posting actually names.
+
+### How do I handle twenty years of experience?
+
+Give the last ten to fifteen years full treatment and compress everything older to one line each. Early roles are context rather than evidence.
+
+### What if I have many short contract engagements?
+
+Group them under a single heading with client names and combined achievements rather than giving each one a full entry.
 
 ### What matters more than length?
 

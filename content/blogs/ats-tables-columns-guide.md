@@ -45,6 +45,34 @@ Your name, your skills and your experience are all present, and none of it means
 
 **The critical part:** your document still looks perfect. You have no indication anything went wrong.
 
+### What the reader sees versus what the system sees
+
+| On your screen | After extraction |
+|---|---|
+| A clean sidebar listing Python, SQL, Tableau | Skill names wedged between job title fragments |
+| "Senior Data Analyst, Acme Corp, 2023-2026" | Title and dates split across separate lines |
+| A bullet about reducing stockouts by 18% | The sentence broken in half by column text |
+| Contact details neatly grouped in the sidebar | Email and phone scattered or missing |
+| An organised, professional document | An unusable record in the database |
+
+---
+
+## Layout risk, ranked
+
+| Layout | Risk | What typically fails |
+|---|---|---|
+| **Single column, standard headings** | None | Nothing |
+| **Single column with a short two-up skills line** | Low | Occasionally merges a few terms |
+| **Header band with contact details** | Moderate | Contact details dropped entirely |
+| **Narrow sidebar, one section only** | High | That section interleaves |
+| **Full-height sidebar (skills + contact)** | Severe | Contact details and skills both corrupt |
+| **True two-column, equal width** | Severe | Whole document interleaves |
+| **Layout table wrapping the page** | Severe | Cell order lost, sections scattered |
+| **Nested tables** | Severe | Unpredictable, frequently total loss |
+| **Text boxes for sections** | High | Boxes skipped entirely, content vanishes |
+
+**Read this as a spectrum rather than a binary.** The risk rises with how much of the page depends on horizontal position to be understood.
+
 ---
 
 ## The sidebar resume
@@ -56,6 +84,12 @@ A narrow left column carrying your photo, contact details, skills and languages,
 **Why it is particularly bad:** the sidebar frequently holds your contact details. If extraction scrambles or drops it, a recruiter has your experience and no way to reach you.
 
 **It is also where photos and icons cluster**, which introduces the separate problem of text rendered as graphics — see [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
+
+### Why these templates are everywhere
+
+They are designed by graphic designers optimising for how a page looks in a portfolio, not for how it survives text extraction. A template marketed as modern, clean or even "ATS-friendly" is making a visual claim, not a tested technical one.
+
+**Treat the label as a claim to verify.** Download it, fill it in, export it, and run the select-and-paste test below. If it passes, keep it. Plenty do not.
 
 ---
 
@@ -71,6 +105,19 @@ Tables cause a related but distinct problem.
 
 **What to use instead:** ordinary paragraphs and bullet lists. Everything a layout table does on a resume can be done with normal text flow and spacing.
 
+### The skills-rating table, specifically
+
+This is worth its own warning because it is so common.
+
+| What you designed | What often extracts |
+|---|---|
+| Python ●●●●○ | Python Java SQL Excel ●●●●○ ●●●○○ ●●●●● ●●○○○ |
+| Java ●●●○○ | (ratings detached from the skills entirely) |
+| SQL ●●●●● | |
+| Excel ●●○○○ | |
+
+**Beyond the parsing problem**, self-assigned proficiency ratings carry little weight with reviewers — four dots next to Python is your opinion, not evidence. A bullet showing what you built with Python does more work and cannot be scrambled.
+
 ---
 
 ## How to check
@@ -84,6 +131,17 @@ You cannot tell by looking. Three ways to actually verify:
 **3. Check the field mapping specifically.** Did your phone number extract? Your job titles? Your dates? Missing fields point directly at the layout element that swallowed them.
 
 **Do this once per template.** If you change resume design, check again.
+
+### Reading the result
+
+| What you see in the pasted text | Diagnosis |
+|---|---|
+| Clean, in the order you wrote it | Layout is safe |
+| Skills mixed into job descriptions | Two-column interleaving |
+| Contact details missing entirely | Header, footer or sidebar loss |
+| Whole sections absent | Text boxes or text-as-image |
+| Dates separated from their roles | Table or column structure lost |
+| Nothing pastes at all | No text layer — see [the file format guide](https://thetailorcv.com/blog/ats-file-format-guide) |
 
 ---
 
@@ -103,6 +161,21 @@ You cannot tell by looking. Three ways to actually verify:
 
 **What you lose:** slightly less content per page. **What you gain:** a document that survives extraction. For a resume, that trade is not close.
 
+### Getting visual interest without columns
+
+The usual objection to single column is that it looks plain. It does not have to.
+
+| Instead of | Use |
+|---|---|
+| A coloured sidebar | A coloured heading rule or section underline |
+| Two-column skills | One line of comma-separated skills, grouped by type |
+| A table of contact details | One centred line under your name |
+| Icons for phone and email | The words, which are searchable anyway |
+| A rating-bar graphic | A bullet showing what you built |
+| Boxed callouts | Bold lead-ins at the start of a bullet |
+
+Every option on the right survives extraction intact, and several read better on paper than the version they replace.
+
 ---
 
 ## When two columns are acceptable
@@ -116,6 +189,8 @@ Narrow cases, and they require verification.
 **A short skills line** rendered as two columns of a few words is lower risk than a full-height sidebar.
 
 **The general rule stands:** if you cannot verify it, do not risk it. The cost of being invisible is total, and the benefit of the layout is aesthetic.
+
+**One practical compromise** for design roles: keep a single-column version for applications submitted through a portal, and a designed version to attach or link when you are emailing a human directly. The content is identical; only the presentation differs, and each version goes where it works.
 
 ---
 
@@ -136,6 +211,10 @@ Narrow cases, and they require verification.
 **Prioritising content density over readability.** Fitting more on a page is worthless if the page cannot be read by the system.
 
 **Trusting a template because it is marketed as ATS-friendly.** Verify it yourself rather than taking the claim on faith.
+
+**Using text boxes to position sections.** They are frequently skipped whole, so entire sections vanish silently.
+
+**Assuming a plain single column has to look boring.** Heading rules, bold lead-ins and good spacing do the same visual work safely.
 
 ---
 
@@ -165,9 +244,21 @@ Yes. Bullets, bold and italics are all safe. The problems come from tables, text
 
 Not automatically. Verify by extracting the text yourself rather than trusting the description.
 
+### Are skill rating bars worth keeping?
+
+No. They scramble on extraction and carry little weight anyway, since a self-assigned rating is an opinion rather than evidence.
+
+### Can I keep a designed version for some applications?
+
+Yes. Use a single-column version for portal submissions and a designed version when emailing a human directly. Same content, different presentation.
+
+### Does a single-column resume have to look plain?
+
+No. Heading rules, bold lead-ins, grouped skills lines and generous spacing give you visual structure without any positional risk.
+
 ### What if I need more space?
 
-Cut content or reduce margins rather than adding a column. A shorter readable resume beats a denser unreadable one.
+Cut content or reduce margins rather than adding a column. A shorter readable resume beats a denser unreadable one — see [the resume length guide](https://thetailorcv.com/blog/ats-resume-length-guide).
 
 ---
 
