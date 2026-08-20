@@ -28,21 +28,6 @@ The honest version of what parsing does to your file — the [free ATS score che
 
 ---
 
-## The myths at a glance
-
-| Claim you have heard | Verdict | What is actually true |
-|---|---|---|
-| **The ATS auto-rejects most resumes** | Mostly false | It parses and stores. Recruiters filter, and knockout questions exclude |
-| **White text keywords beat the system** | False, harmful | Parsers read all text regardless of colour; recruiters see it |
-| **There is an official ATS score** | False | No universal number employers act on. Tools give diagnostics |
-| **Strip all formatting** | False | Bullets and bold are fine; tables and columns are the problem |
-| **You need a resume per ATS vendor** | False | Vary content per job, not per system |
-| **PDFs cannot be read** | Largely false | Modern parsers handle PDF. Image-based PDFs fail totally |
-| **More keywords is always better** | False past a point | Unsupported lists are visible to humans and invite hard questions |
-| **75% of resumes never reach a human** | Unsupported | A widely repeated statistic with no reliable source |
-
----
-
 ## Myth 1: The ATS rejects your resume automatically
 
 **Mostly false.**
@@ -174,16 +159,6 @@ Modern parsers handle PDF fine, and PDF preserves your layout, which is why it i
 
 **Send Word when asked.** Some recruitment agencies genuinely prefer it because they reformat onto their own template.
 
-| Format | Use it when | Risk |
-|---|---|---|
-| **PDF (real text)** | Default for almost every application | None, provided text is selectable |
-| **PDF (image-based)** | Never | Total failure — parses as empty |
-| **.docx** | An agency or form asks for it | Layout and font shifts between machines |
-| **.txt** | Only if a form demands plain text | Parses fine, reads terribly |
-| **.pages / .odt** | Never for applications | Frequently cannot be opened |
-| **Image or screenshot** | Never | No extractable text, unprofessional |
-| **Google Docs link** | Never | Permission and sign-in failures |
-
 ---
 
 ## Myth 7: More keywords is better
@@ -194,15 +169,7 @@ Keywords matter for being found in a recruiter's search. But a skills section li
 
 **The workable rule:** include a term if you have genuinely used the thing, and make sure the significant ones also appear in an experience bullet attached to a result — see [best resume keywords to beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
-### The credibility test
-
-Before a term stays on your resume, it should pass all three:
-
-| Test | Question | If it fails |
-|---|---|---|
-| **Truth** | Have you actually used this? | Remove it |
-| **Evidence** | Does an experience bullet show it? | Move it into a bullet or remove it |
-| **Defence** | Could you answer ten minutes of questions? | Downgrade to "familiar with" or remove |
+**A term earns its place if you can answer ten minutes of questions on it.** If you cannot, either move it to a separate "familiar with" line or take it off, because a recruiter who spots one bluffed skill starts doubting the rest of the list.
 
 ---
 
