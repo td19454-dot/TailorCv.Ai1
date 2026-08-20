@@ -56,6 +56,19 @@ Before anything, make sure the resume linking to it works — the [free ATS scor
 
 **Application hosting platforms.** Only necessary if your portfolio genuinely needs a backend. Most do not, and this is where the sleeping problem below usually appears.
 
+### Choosing between them
+
+| If you are | Use | Because |
+|---|---|---|
+| **A student with a static site** | GitHub Pages or static hosting | Free, no sleeping, and the repo is already there |
+| **A developer with a built React/Vue app** | Static hosting | Handles the build step, free HTTPS and CDN |
+| **Not a developer at all** | A site builder | An afternoon rather than a fortnight, and nobody checks |
+| **In HR, finance or operations** | A PDF | Attachable, printable, leave-behind at interview |
+| **A designer or photographer** | Own site plus a field platform | Site for control, platform for discovery |
+| **Building a project with a real backend** | Static site for the portfolio, dynamic only for the demo | Keeps the sleeping problem off your main page |
+
+**The pattern:** put the portfolio itself somewhere that cannot sleep, whatever your individual demos need.
+
 ---
 
 ## The sleeping deployment problem
@@ -72,6 +85,7 @@ The single most common practical failure, and worth its own section.
 
 - **Host the portfolio itself statically**, even if individual demo projects are dynamic
 - **If a demo must be dynamic**, consider a paid tier for the duration of your job search — it is a small cost against the opportunity
+- **Warn the reviewer** if you cannot avoid it: "Live demo (free hosting — first load takes ~30s)". A reviewer who knows why they are waiting will wait. One who does not, will not.
 - **Test it cold.** Do not visit your own site for a day, then load it from a phone and time it
 
 This is the same failure discussed in [portfolio common mistakes](https://thetailorcv.com/blog/portfolio-common-mistakes), and it is worth checking during any active search.
@@ -86,9 +100,20 @@ This is the same failure discussed in [portfolio common mistakes](https://thetai
 
 **Choose it sensibly.** Your name if available, otherwise your name plus your field. Avoid numbers, hyphens where possible, and anything you would have to spell out on a phone call.
 
-**Point it at your hosting.** All the platforms above document this, and it is a DNS record rather than a technical project.
+| Domain | Verdict |
+|---|---|
+| `ananyasharma.com` | Ideal |
+| `ananyasharma.dev` | Ideal for engineers |
+| `ananyasharmadesign.com` | Good if your name is taken |
+| `ananya-sharma-2026.com` | The year dates it, the hyphens need spelling out |
+| `ananyas-portfolio.netlify.app` | Free, and reads like it |
+| `thecodewizard.xyz` | You will regret this in three years |
+
+**Point it at your hosting.** All the platforms above document this, and it is a DNS record rather than a technical project. Allow up to a day for it to take effect, so do not buy it the night before you send applications.
 
 **Enable HTTPS**, which is generally automatic once the domain is connected. Verify it in a browser rather than assuming.
+
+**Set a calendar reminder for the renewal.** An expired domain during a job search means every link on every resume you have already sent is dead. Auto-renew if the registrar offers it.
 
 **Set up email forwarding** from the domain if you want a professional address — many registrars include it.
 
@@ -114,7 +139,11 @@ The time you would spend building infrastructure is better spent on case studies
 
 **Not testing the site cold.** Visiting your own portfolio daily hides exactly the problem you need to detect.
 
+**Not warning about a slow demo.** A reviewer who is told the first load takes thirty seconds will wait; one who is not, leaves.
+
 **Skipping a custom domain.** It costs very little annually and materially changes how the link reads on a resume.
+
+**Letting the domain expire mid-search.** Every link on every resume already sent goes dead at once.
 
 **Not verifying HTTPS.** A browser security warning is an immediate credibility problem.
 
@@ -142,6 +171,10 @@ Not strictly, but it costs very little annually and makes a disproportionate dif
 
 Free tiers on some application hosting platforms spin down after inactivity, so the first request takes twenty to thirty seconds. Reviewers assume the site is broken and leave.
 
+### What if I cannot avoid a slow demo?
+
+Label the link with the expected wait. A reviewer who knows why the page is blank will give it thirty seconds; one who does not will assume it is broken.
+
 ### Is it bad to use a site builder?
 
 No. Nobody assesses how your portfolio was built, including for developer roles. What matters is the work you present.
@@ -149,6 +182,10 @@ No. Nobody assesses how your portfolio was built, including for developer roles.
 ### Do I need a backend?
 
 Almost certainly not. Most portfolios are static sites, which is why free static hosting is genuinely sufficient.
+
+### How long does a custom domain take to work?
+
+Up to about a day for DNS to propagate, so buy it before you need it rather than the night before you start applying.
 
 ### Should I use a portfolio platform instead of my own site?
 
@@ -164,8 +201,8 @@ The resume is what gets people to your site. [Check your ATS score free](https:/
 
 ## Make This Practical
 
-Host the portfolio itself as a static site, whatever your individual demo projects need. That removes the sleeping deployment problem entirely, gives you free HTTPS and CDN delivery, and is sufficient for almost every portfolio ever built.
+Host the portfolio itself as a static site, whatever your individual demo projects need. That removes the sleeping deployment problem from the page reviewers actually land on, gives you free HTTPS and CDN delivery, and is sufficient for almost every portfolio ever built.
 
-Then buy a custom domain in your own name. It costs very little per year and changes how the URL reads on a resume more than any design decision will — then verify HTTPS actually works rather than assuming it.
+Then buy a custom domain in your own name, set it to auto-renew, and buy it before you need it rather than the night before you apply. It costs very little per year, changes how the URL reads more than any design decision will, and an expiry mid-search kills the link on every resume you have already sent.
 
 Finally, test cold before you send the link anywhere. Leave the site alone for a day, open it on a phone using mobile data while logged out, and time the load — because a reviewer waiting thirty seconds for a sleeping deployment simply leaves, and you never find out it happened.
