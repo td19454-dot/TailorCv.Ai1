@@ -48,6 +48,23 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 
 **Page replacement** — FIFO, LRU, optimal — and **Belady's anomaly**, which is a favourite because it is counterintuitive.
 
+### Deadlock, answered properly
+
+This is the highest-frequency question in the whole topic, so it is worth having a complete answer rather than four memorised words.
+
+| Condition | What it means | How you break it |
+|---|---|---|
+| **Mutual exclusion** | A resource can be held by only one process | Make resources shareable where possible (read-only data) |
+| **Hold and wait** | A process holds one resource while waiting for another | Require all resources to be requested at once, up front |
+| **No preemption** | A resource cannot be forcibly taken back | Allow the OS to preempt and roll back |
+| **Circular wait** | A cycle of processes each waiting on the next | Impose a global ordering — always acquire lock A before lock B |
+
+**All four must hold simultaneously for deadlock to occur**, which is why breaking any one prevents it. That sentence is the part that scores, because it explains why the table matters instead of just listing it.
+
+**The follow-up is almost always "which one would you break in practice".** Circular wait, by ordering your locks — it is the cheapest to implement and does not require the OS to support preemption or force processes to declare everything in advance.
+
+**Then connect it to something real if you can:** "I hit this in a project where two threads locked a user row and an order row in different orders. Fixing it meant always locking the user first."
+
 ---
 
 ## DBMS — what recurs
@@ -68,11 +85,50 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 
 **DELETE vs TRUNCATE vs DROP.** DELETE removes rows and can be rolled back and filtered; TRUNCATE removes all rows faster with less logging; DROP removes the table itself.
 
-**Joins.** Inner, left, right, full outer — be able to draw the result of each on two small tables.
+**Joins.** Inner, left, right, full outer — be able to draw the result of each on two small tables. Worked examples are in [the campus placement SQL questions guide](https://thetailorcv.com/blog/campus-placement-sql-questions).
 
 **Transactions and deadlocks in databases.**
 
 **SQL vs NoSQL** — and when you would choose each.
+
+---
+
+## Normalisation, worked on an actual table
+
+This is the exercise you will be handed. Definitions will not get you through it.
+
+**The messy table you are given:**
+
+| student_id | student_name | course_ids | instructor | instructor_phone |
+|---|---|---|---|---|
+| 101 | Aarav | CS101, CS102 | Dr Menon | 98xxxx1234 |
+| 102 | Priya | CS101 | Dr Menon | 98xxxx1234 |
+| 103 | Rohan | CS103 | Dr Iyer | 98xxxx5678 |
+
+**Step 1 — 1NF: no repeating groups.** `course_ids` holds two values in one cell. Split it so each row holds a single value.
+
+| student_id | student_name | course_id | instructor | instructor_phone |
+|---|---|---|---|---|
+| 101 | Aarav | CS101 | Dr Menon | 98xxxx1234 |
+| 101 | Aarav | CS102 | Dr Menon | 98xxxx1234 |
+| 102 | Priya | CS101 | Dr Menon | 98xxxx1234 |
+
+**Step 2 — 2NF: no partial dependency.** The key is now (student_id, course_id). But `student_name` depends only on `student_id`, not on the whole key. Split it out.
+
+- **Students** — student_id, student_name
+- **Enrolments** — student_id, course_id
+- **Courses** — course_id, instructor, instructor_phone
+
+**Step 3 — 3NF: no transitive dependency.** In Courses, `instructor_phone` depends on `instructor`, which depends on `course_id`. The phone number is transitively dependent, so pull instructors out.
+
+- **Students** — student_id, student_name
+- **Enrolments** — student_id, course_id
+- **Courses** — course_id, instructor_id
+- **Instructors** — instructor_id, instructor_name, instructor_phone
+
+**Say the reason out loud at each step**, because that is what is being marked. "1NF because the course column held multiple values. 2NF because the student name depended on part of the key. 3NF because the phone number depended on the instructor rather than the course."
+
+**The payoff is worth stating too:** Dr Menon's phone number now exists in exactly one row, so changing it is one update rather than three — and there is no way for the three copies to disagree.
 
 ---
 
@@ -120,6 +176,10 @@ Focus instead on the recurring list above, which covers the overwhelming majorit
 
 **Memorising normalisation definitions without practising.** You will be handed a table and asked to normalise it, not asked to recite the forms.
 
+**Normalising without saying why at each step.** The reason is what is being marked, not the final set of tables.
+
+**Listing the four deadlock conditions without saying they must all hold.** That sentence is what turns a memorised list into an explanation.
+
 **Giving definitions with no example.** It is the floor, not an answer, and the follow-up exposes it immediately.
 
 **Confusing WHERE and HAVING.** It is asked specifically because it distinguishes understanding from recall.
@@ -146,9 +206,17 @@ Consistently, at most companies, and frequently more reliably than complex DSA. 
 
 Deadlock — specifically the four necessary conditions and how prevention works by breaking one of them.
 
+### Which deadlock condition would I break in practice?
+
+Circular wait, by imposing a global lock ordering. It is the cheapest to implement and needs no OS support for preemption.
+
 ### What is the most failed DBMS topic?
 
 Normalisation. Students memorise the normal forms and then cannot normalise an actual table, which is what interviewers ask them to do.
+
+### How do I practise normalisation properly?
+
+Take a table with a multi-value column and a transitive dependency, work it to 3NF on paper, and say the reason for each step out loud. The reason is what is marked.
 
 ### Do I need to write SQL by hand?
 
@@ -172,8 +240,8 @@ Preparation only matters if your resume gets you the interview. [Check your ATS 
 
 ## Make This Practical
 
-Practise normalisation on actual tables rather than memorising the forms. Take a messy table with repeating groups and partial dependencies and work it to 3NF on paper — that is the exercise you will be handed, and reciting definitions is what fails.
+Work the normalisation example above on paper, from the messy table to the four final tables, saying the reason for each step out loud. That is the exact exercise you will be handed, and the reason at each step is what is being marked — not the tables you end up with.
 
-Then attach an example to every concept, ideally from your own project. "We hit this when two users could book the same slot" beats any textbook answer, survives follow-up questions, and usually ends the questioning on that topic satisfied.
+Then build a proper deadlock answer: the four conditions, the sentence that all four must hold simultaneously, and circular wait as the one you would break in practice by ordering your locks. It is the most reliable question in the topic and most students give four words where a complete answer takes thirty seconds.
 
-Finally, prioritise rather than revising everything. Deadlock and its four conditions, process versus thread, scheduling trade-offs, normalisation, indexes and their write cost, ACID, joins and the WHERE-versus-HAVING distinction cover the overwhelming majority of what campus interviews actually ask.
+Finally, attach an example to every concept, ideally from your own project. "Two users could book the same slot because I checked availability and then inserted" beats any textbook definition, survives the follow-up, and usually ends the questioning on that topic satisfied.

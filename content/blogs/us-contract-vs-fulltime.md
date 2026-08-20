@@ -28,7 +28,7 @@ Whichever you pursue, the resume is the same starting point — check it with th
 
 ## What actually differs
 
-| | Full-time (W2) | Contract |
+| What differs | Full-time (W2) | Contract |
 |---|---|---|
 | Hiring speed | 4-8 weeks | Days to 2 weeks |
 | Headline pay | Salary | Higher hourly rate |

@@ -30,7 +30,7 @@ Start with the one that gates everything — run your resume through the [free A
 
 ## The core difference
 
-| | Resume | Portfolio |
+| What differs | Resume | Portfolio |
 |---|---|---|
 | Purpose | Pass screening | Prove the claims |
 | Read by | Parsers first, recruiters second | Hiring managers and peers |
