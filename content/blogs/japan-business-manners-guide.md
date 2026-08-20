@@ -40,6 +40,21 @@ If you are still applying, check your documents work — the [free ATS score che
 
 **Practical version:** update more often than feels necessary, flag problems early rather than solving them silently, and check before deciding anything with wider impact. This single habit affects how competent you are perceived to be more than your actual output does.
 
+### The same week, handled two ways
+
+The gap is easiest to see in a concrete situation. You are three days into a five-day task and you discover the API you were told to use is deprecated.
+
+| | The instinct from a Western workplace | What horenso expects |
+|---|---|---|
+| **Day 3, on discovering it** | Investigate quietly, find an alternative | Message your manager the same day: "The API is deprecated. I'm looking at two options and will confirm tomorrow" |
+| **Day 4, choosing an approach** | Pick the better option and proceed | Confirm the choice briefly before building: "I'm going with B unless you see a problem" |
+| **Day 5, delivering** | Present the finished work and the solved problem | Deliver, and note what changed and why |
+| **How it lands** | "Why am I only hearing about this now?" | "Good — thanks for flagging it early" |
+
+**The left column produces a better story and a worse outcome.** The work is identical. What differs is that in the right column nobody was surprised, and the manager had the chance to redirect on day three if they wanted to.
+
+**The rule of thumb:** if someone would be uncomfortable learning about it later than they could have, tell them now. Over-reporting is barely noticed; under-reporting is the thing that gets remembered.
+
 ---
 
 ## Keigo
@@ -56,6 +71,27 @@ Business Japanese — the honorific and humble forms — is a separate skill fro
 
 **Nobody expects native-level keigo from a foreigner**, but visible effort is noticed and appreciated. See [the JLPT for jobs guide](https://thetailorcv.com/blog/japan-jlpt-for-jobs-guide).
 
+### The phrases that cover most of your week
+
+Learn these as fixed blocks rather than deriving them. They handle the large majority of routine workplace exchanges.
+
+| Situation | Phrase | Rough meaning |
+|---|---|---|
+| **Opening an email to a colleague** | お疲れ様です | Standard workplace greeting, no direct equivalent |
+| **Opening an email to a client** | いつもお世話になっております | "Thank you for your continued support" |
+| **Closing an email** | よろしくお願いいたします | Covers "thanks in advance", "regards", and more |
+| **Accepting a task** | 承知いたしました | "Understood" — humble, correct to a superior |
+| **Arriving late or interrupting** | 失礼いたします | "Excuse me" |
+| **Apologising properly** | 申し訳ございません | Stronger and more formal than すみません |
+| **Leaving before others** | お先に失礼します | "Excuse me for leaving first" |
+| **Someone else leaving** | お疲れ様でした | Said to them as they go |
+| **Asking for something** | 恐れ入りますが… | "I'm sorry to trouble you, but…" |
+| **Thanking for help received** | ありがとうございました | Past form — for something already done |
+
+**Two notes that catch people out.** 了解しました is common among peers but too casual to a superior — use 承知いたしました. And すみません is fine for small things but not for an actual mistake, where 申し訳ございません is expected.
+
+**Save the email phrases as a template** on day one. Everyone does this, including Japanese colleagues, and reusing set constructions is correct rather than lazy.
+
 ---
 
 ## Meetings and punctuality
@@ -67,6 +103,22 @@ Business Japanese — the honorific and humble forms — is a separate skill fro
 **Meetings frequently confirm decisions** rather than making them. Much of the actual deciding happens beforehand in informal consultation — *nemawashi*. If you want a proposal accepted, discussing it with key people before the meeting is far more effective than arguing well during it.
 
 **Silence is not disagreement.** Space in conversation is normal, and filling every pause is a common foreign habit that reads as impatience.
+
+### Nemawashi, concretely
+
+The word means "digging around the roots" — preparing ground before transplanting a tree. In practice it means securing agreement one conversation at a time, before the meeting where the decision is formally made.
+
+**How to actually do it,** for a proposal you want approved:
+
+1. **Talk to your direct manager first**, informally. Not a presentation — "I've been thinking about X, does that seem worth pursuing?"
+2. **Then the people it affects most**, individually. Ask what problems they see. Their objections raised privately are fixable; raised in the meeting they are a public disagreement.
+3. **Adjust the proposal** to address what they said, and tell them you did. This is the step that converts them from neutral to supportive.
+4. **Then circulate anything written**, ahead of the meeting rather than in it.
+5. **The meeting confirms** what is already broadly agreed.
+
+**Why arguing well in the meeting fails.** Proposing something new in the room puts everyone present in the position of reacting publicly without preparation, which is precisely the discomfort the whole convention exists to avoid. A well-argued surprise proposal frequently gets a polite non-answer and quietly dies.
+
+**This is the single most useful thing to understand about getting anything done in a Japanese organisation**, and it is invisible from the outside — from a foreign professional's perspective, decisions appear to happen in meetings, because that is where they are announced.
 
 ---
 
@@ -118,9 +170,13 @@ This matters most in client meetings and first introductions rather than interna
 
 **Using casual Japanese with seniors or clients.** It reads as carelessness rather than as a language gap, which is why keigo matters more than general fluency.
 
+**Using 了解しました to a superior.** Fine among peers, too casual upward — 承知いたしました is the correct form.
+
 **Arriving exactly on time.** Five to ten minutes early is the convention, and arriving on the hour is effectively late.
 
-**Trying to win a decision during the meeting.** Much of the deciding happens beforehand through informal consultation, so persuading people in advance is far more effective.
+**Trying to win a decision during the meeting.** Much of the deciding happens beforehand, and a surprise proposal puts everyone present in an uncomfortable position.
+
+**Skipping nemawashi because it feels like politicking.** It is how objections get raised privately where they can be fixed rather than publicly where they cannot.
 
 **Filling every silence.** Pauses are normal and rushing to fill them reads as impatience.
 
@@ -136,25 +192,33 @@ This matters most in client meetings and first introductions rather than interna
 
 Report, inform, consult — the convention of proactively updating colleagues, flagging issues early and consulting before decisions with wider impact. It is the workplace habit foreign professionals most often underestimate.
 
+### How much should I report?
+
+More often than feels necessary. If someone would be uncomfortable hearing about it later than they could have, tell them now — over-reporting is barely noticed and under-reporting is remembered.
+
 ### Do I need perfect keigo?
 
 No. Learn the standard set phrases, default to polite forms, and ask a colleague to check important emails early on. Visible effort is appreciated.
+
+### Which phrases should I learn first?
+
+お疲れ様です, いつもお世話になっております, よろしくお願いいたします, 承知いたしました and 申し訳ございません cover most of a normal working week.
 
 ### How early should I arrive?
 
 Five to ten minutes before a meeting. Arriving exactly on time is effectively arriving late by local convention.
 
-### Is business card etiquette really that important?
+### What is nemawashi and how do I do it?
 
-The basics matter in client meetings and first introductions — both hands, read it, place it on the table rather than pocketing it. Internally it matters less.
+Securing agreement through individual conversations before the meeting. Speak to your manager, then to those affected, adjust the proposal based on what they say, circulate it in advance, and let the meeting confirm it.
+
+### Why did my well-argued proposal get a polite non-answer?
+
+Almost certainly because it was raised for the first time in the meeting. New proposals in the room force people to react publicly without preparation, which is what nemawashi exists to prevent.
 
 ### Do I have to attend after-work drinking?
 
 Expectations have relaxed considerably. Attending occasionally builds relationships, but declining is unremarkable now and declining alcohol while attending is entirely normal.
-
-### What is nemawashi?
-
-Informal consultation before a meeting to build agreement. Meetings frequently confirm decisions rather than making them, so persuading people beforehand is more effective than arguing during.
 
 ### Will colleagues be offended if I get things wrong?
 
@@ -166,8 +230,8 @@ Check your application documents. [Check your ATS score free](https://www.thetai
 
 ## Make This Practical
 
-Adopt horenso deliberately from your first week — report progress before being asked, flag problems while they are still small, and consult before deciding anything that affects other people. It is the single habit that most determines how competent Japanese colleagues consider you, and working independently to present polished results actively works against you here.
+Adopt horenso from your first week by applying one test: if someone would be uncomfortable learning about this later than they could have, tell them now. Flag the deprecated API on day three rather than presenting the solved problem on day five — the work is identical and only one version leaves your manager unsurprised.
 
-Then learn the set phrases rather than the whole system. A relatively small number of keigo constructions cover most meetings, emails and calls, so save templates and default to polite forms universally until you know the workplace.
+Then save the ten set phrases as an email template on day one. お疲れ様です, いつもお世話になっております, よろしくお願いいたします and 承知いたしました cover most of a working week, and reusing fixed constructions is what Japanese colleagues do too.
 
-Finally, redirect your effort from ritual to substance. Bowing angles and card ceremony matter far less than arriving early, responding promptly, copying the right people, and building agreement before meetings rather than during them.
+Finally, learn nemawashi and use it before anything you actually want approved. Talk to your manager informally, then to the people affected individually, adjust for what they tell you, and circulate the proposal in advance — because a well-argued surprise in the meeting room usually gets a polite non-answer and quietly dies.
