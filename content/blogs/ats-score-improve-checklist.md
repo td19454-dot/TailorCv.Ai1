@@ -42,18 +42,7 @@ Nothing below this matters until these are true.
 
 **☐ Standard section headings.** Experience, Education, Skills, Projects. Not "My Journey" or "Where I've Been" — a parser categorises by matching these words.
 
-**☐ Extraction verified.** Select all, copy, paste into Notepad. Read it.
-
-### What the paste test tells you
-
-| What you see | What is wrong | Fix |
-|---|---|---|
-| Clean text in the right order | Nothing | Move to Level 2 |
-| Skills mixed into job descriptions | Two-column interleaving | Single column |
-| No phone or email anywhere | They were in the header | Move into the body |
-| Whole sections missing | Text boxes or text-as-image | Rebuild as normal text |
-| Dates detached from job titles | Table structure lost | Remove the table |
-| Blank | No text layer | Re-export, do not scan |
+**☐ Extraction verified.** Select all, copy, paste into Notepad. Read it. If your skills are tangled into your job titles, or your phone number is nowhere, you have found the problem — and no keyword work would ever have fixed it.
 
 Details on layout failures are in [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide), and on file types in [the file format guide](https://thetailorcv.com/blog/ats-file-format-guide).
 

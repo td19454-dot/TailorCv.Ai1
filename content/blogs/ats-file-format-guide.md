@@ -155,19 +155,6 @@ Format is rarely the problem; structure inside the file usually is.
 
 **Unusual section headings.** "My Journey" instead of "Experience" prevents categorisation.
 
-### Ranked by how much damage each does
-
-| Problem | Damage | Typical symptom |
-|---|---|---|
-| **No text layer** | Total | Empty record, no fields at all |
-| **Contact details in header** | Severe | Experience parses, no way to reach you |
-| **Two-column layout** | Severe | Skills interleaved with job titles |
-| **Text inside images** | High | Whole sections silently missing |
-| **Layout tables** | High | Related information scattered |
-| **Icons instead of labels** | Moderate | Fields present but unlabelled |
-| **Non-standard headings** | Moderate | Sections uncategorised |
-| **Text boxes** | Moderate | Individual blocks skipped |
-
 The full list is in [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and the broader misconceptions in [ATS myths debunked](https://thetailorcv.com/blog/ats-myths-debunked).
 
 ---
