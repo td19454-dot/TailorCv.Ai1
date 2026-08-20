@@ -52,6 +52,26 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 **Bonus is grade-linked too**, and bonus is a substantial share of Japanese annual income, so grade compounds through the whole package.
 
+### Why one grade matters more than it looks
+
+Grade placement is not a one-year decision. It sets the base your entire progression compounds from, and bonus multiplies it.
+
+Take two candidates with identical experience, one placed a grade higher:
+
+| | Placed at grade 4 | Placed at grade 5 |
+|---|---|---|
+| **Base salary** | Lower band | Roughly 10–15% higher band |
+| **Bonus** | Months of *that* base | Months of the higher base |
+| **Next promotion** | From grade 4 | From grade 5 — permanently a step ahead |
+| **Five years on** | Grade 6 or 7 | Grade 7 or 8 |
+| **Retirement allowance** | Calculated from a lower track | Calculated from a higher one |
+
+**The bonus line is the one people miss.** Japanese annual compensation frequently includes bonus equivalent to several months of base salary, so a percentage difference in base is multiplied rather than added — and it applies every year.
+
+**This is why the grade conversation is worth more than the salary conversation.** A one-off increase in starting salary, if you could even get one, is a single year's benefit. A higher grade changes the base every raise, every bonus and every promotion is calculated from.
+
+**What actually moves grade placement:** documented years in the specific function, a professional qualification the company recognises, direct management experience, and Japanese language level. Present those explicitly rather than assuming HR will infer them from your shokumu keirekisho.
+
 ---
 
 ## Reading a company's position
@@ -67,6 +87,23 @@ Ask directly. These are reasonable questions and the answers are revealing.
 **Signals a company has moved away from strict nenko:** published performance criteria, mid-career hires in senior roles, foreign managers, a role-based rather than person-based grade system.
 
 **Signals it has not:** everyone senior joined as a new graduate, promotion timelines quoted in years rather than achievements, vagueness about how external experience is credited.
+
+### Reading the answers you get
+
+The words matter less than the shape of the answer. These are the patterns worth recognising.
+
+| What they say | What it usually means |
+|---|---|
+| "Mid-career hires are assessed individually against the grade criteria" | A real structure exists and external experience counts for something |
+| "It depends on the person" — with no criteria named | Tenure is doing the work and nobody wants to say so |
+| "Promotion is typically after three to five years at this grade" | Time-based progression, largely intact |
+| "Promotion depends on meeting the criteria for the next grade" | Performance-based, at least on paper — ask to see the criteria |
+| "We have several foreign employees" — all in junior or specialist roles | Likely a ceiling, unstated |
+| "Our head of X joined mid-career from another company" | Genuine mobility, a strong signal |
+| Vagueness about bonus months | Either it has been poor recently or it is discretionary |
+| A written grade table shared without hesitation | The most reassuring answer available |
+
+**Ask the bonus question specifically as "how many months has it actually paid over the last three years"** rather than what it can pay. The stated maximum and the recent reality are frequently different numbers, and bonus is too large a share of Japanese annual income to leave vague.
 
 ---
 
@@ -94,17 +131,23 @@ Nenko is usually presented as pure disadvantage, which is incomplete.
 
 **For a long career at one company**, the model eventually works in your favour rather than against it. The disadvantage falls on people who join mid-career and leave again.
 
+**The honest way to weigh it:** nenko penalises mobility and rewards staying. If you expect to move again in three years, a domestic employer operating it is the worst structure for you and gaishikei is the better fit. If you intend to build a long career in Japan at one company, the training investment and security are real benefits that performance-based employers frequently do not offer.
+
 ---
 
 ## Common Mistakes
 
 **Negotiating salary instead of grade.** Pay follows from grade at most domestic employers, so the salary conversation frequently has no room while the grade conversation does.
 
+**Treating grade as a first-year decision.** It sets the base every future raise, bonus and promotion is calculated from.
+
 **Assuming external experience maps directly.** Companies vary widely in how generously they credit years earned elsewhere, and many credit them partially.
+
+**Not presenting the things that move grade placement.** Function-specific years, recognised qualifications, management experience and language level should be stated explicitly rather than left to be inferred.
 
 **Not asking how mid-career hires are placed.** It is a reasonable question and the answer tells you what your first five years will look like.
 
-**Ignoring the bonus link.** Bonus is a large share of Japanese annual income and is grade-linked, so grade compounds through the whole package.
+**Asking what bonus can pay rather than what it has paid.** The maximum and the recent reality are frequently different numbers.
 
 **Assuming nenko is gone because articles say so.** It is weakening at very different speeds across companies, and plenty still operate it substantially.
 
@@ -130,21 +173,29 @@ Yes, though weakening at very different rates between companies. Many domestic e
 
 You are placed into a grade structure, and companies vary in how much external experience they credit. Progression may be slower than you expect in the early years.
 
+### Why does grade matter more than starting salary?
+
+Because bonus is calculated from base and every future raise starts from that grade. A one-off salary increase is a single year; a higher grade compounds through your whole tenure.
+
+### What actually moves my grade placement?
+
+Documented years in the specific function, qualifications the company recognises, direct management experience, and Japanese level. State them explicitly rather than assuming HR will infer them.
+
 ### Can I negotiate salary at a Japanese company?
 
 Less than in Western markets, because pay follows from grade. The productive conversation is about grade placement rather than salary itself.
+
+### What should I ask about bonus?
+
+How many months it has actually paid over the last three years, not what it can pay. The stated maximum and recent reality frequently differ.
 
 ### Does it apply at foreign companies?
 
 Largely not. Gaishikei generally follow their parent company's performance-based model, as do most modern startups.
 
-### How do I tell whether a company still operates it?
-
-Ask how mid-career hires are placed, whether promotion has defined performance criteria, and whether foreign employees hold senior grades. The answers are revealing.
-
 ### Is there any advantage to it?
 
-Yes — extensive training investment, predictable progression, and higher job security. The disadvantage concentrates on people who join mid-career.
+Yes — extensive training investment, predictable progression, and higher job security. It penalises mobility and rewards staying, so it suits a long career at one company.
 
 ---
 
@@ -152,8 +203,8 @@ Check your application documents. [Check your ATS score free](https://www.thetai
 
 ## Make This Practical
 
-Negotiate the grade, not the salary. At most Japanese domestic employers pay follows from grade placement, so asking what grade you are being placed at and what would justify a higher one addresses the mechanism that sets your compensation for years — while a direct salary request frequently meets a genuine no.
+Negotiate the grade, not the salary. At most Japanese domestic employers pay follows from grade placement, and grade is not a first-year decision — it is the base that every future raise, every bonus and every promotion is calculated from. Present the things that actually move it: function-specific years, recognised qualifications, management experience and your Japanese level.
 
-Then read the company before you join. Ask how mid-career hires are placed, whether promotion has defined performance criteria, how long people spend at each grade, and whether foreign employees hold senior positions. That last answer reveals ceilings nobody will state outright.
+Then read the answers rather than just asking the questions. "It depends on the person" with no criteria named means tenure is doing the work; a written grade table shared without hesitation is the most reassuring response available. And ask how many months bonus has actually paid over three years, not what it can pay.
 
-Finally, match your expectations to the segment. Gaishikei and startups largely operate outside this system with faster, performance-based progression; established domestic firms offer slower advancement alongside genuine training investment and security. Both are legitimate — just know which one you are joining.
+Finally, match the structure to your own plans. Nenko penalises mobility and rewards staying, so if you expect to move again in three years a domestic employer operating it is the worst fit and gaishikei is the better one — but if you intend a long career at one company, the training investment and security are genuine.

@@ -63,6 +63,23 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 **Career capital in Japan.** Long gaishikei-only experience can read as less relevant to domestic employers later, if you ever want to move that direction.
 
+### Judging restructuring risk before you join
+
+Not every gaishikei carries the same exposure. These questions separate a Japan office that is structurally safe from one that exists at the mercy of a quarterly review elsewhere.
+
+| Ask | Lower risk | Higher risk |
+|---|---|---|
+| **Does Japan generate revenue or just serve HQ?** | Sales and clients here | Back-office or support function |
+| **How long has the office existed?** | Decades, through downturns | Opened in the last few years |
+| **Does the Japan head report locally or overseas?** | Regional autonomy | Direct line to a cost centre abroad |
+| **Has the office restructured before?** | Never, or once long ago | Twice in five years |
+| **Is Japan strategically named in company communications?** | Yes, a growth market | Not mentioned |
+| **How large is the Japan office?** | Hundreds, with real functions | A dozen people |
+
+**The first row matters most.** An office that sells into the Japanese market has a reason to exist independent of headquarters' mood; a support or development centre placed here for convenience can be moved to a cheaper location by a decision nobody in Japan participates in.
+
+**This is not a reason to avoid gaishikei** — it is a reason to know which kind you are joining, and to keep your network and Japanese progressing while you are there.
+
 ---
 
 ## Domestic Japanese companies in detail
@@ -99,11 +116,28 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 **A note on hiring processes:** gaishikei recruit in a way that resembles international norms — CVs, interviews, mid-career hiring year-round. Domestic companies weight the shukatsu cycle for new graduates and treat mid-career hiring differently — see [the Japan job change tenshoku guide](https://thetailorcv.com/blog/japan-job-change-tenshoku-guide).
 
+### By situation
+
+| Your situation | Where to look first | Why |
+|---|---|---|
+| **N3 or below, arriving now** | Gaishikei, English-operating startups | Domestic firms will not screen you in |
+| **N2, five years' experience** | Both — compare specific offers | Genuinely open on either side |
+| **N1, want to stay permanently** | Domestic | Long-term standing and network compound |
+| **Strong engineer, uncertain about staying** | Gaishikei | Pay now, portable experience, easy exit |
+| **Manufacturing, automotive, gaming** | Domestic | The leading firms in these fields are Japanese |
+| **Finance, pharma, consulting** | Gaishikei | Deepest foreign presence and highest pay |
+| **Family here, need stability** | Domestic, or a well-established gaishikei | Restructuring risk matters more with dependants |
+| **Early career, want training** | Domestic | Structured development gaishikei rarely match |
+
+**The row that surprises people is the fourth.** A strong engineer unsure about staying long term is better served by gaishikei even at N2 or above, because the experience stays portable and leaving is straightforward — whereas the value of domestic experience is largely realised by staying.
+
 ---
 
 ## Common Mistakes
 
 **Choosing gaishikei purely on salary.** Restructuring risk is real, and a Japan office can be closed by a decision taken entirely overseas.
+
+**Not checking whether the Japan office generates revenue.** A support function placed here for convenience can be moved somewhere cheaper; a sales office serving Japanese clients cannot.
 
 **Assuming domestic means lifetime security for you.** Those norms developed around new graduates hired for life, and a mid-career foreign hire sits outside that implicit arrangement.
 
@@ -114,6 +148,8 @@ Before applying, check your documents work — the [free ATS score checker](http
 **Ignoring the tenure effect on pay.** The seniority system is weakening but still disadvantages mid-career joiners at many domestic firms.
 
 **Staying gaishikei-only while planning a long Japanese career.** Domestic employers may read it as less relevant experience later.
+
+**Letting your Japanese stall at a gaishikei.** The English-operating environment removes the pressure to improve, which quietly closes the domestic option later.
 
 **Expecting gaishikei to feel foreign throughout.** Local practice still shapes a great deal, particularly in HR and client work.
 
@@ -135,6 +171,10 @@ Generally yes, and more directly tied to individual performance rather than tenu
 
 Frequently yes. Many roles operate in English, which makes them the realistic segment for candidates below N2.
 
+### How do I judge a gaishikei's stability?
+
+Ask whether the Japan office generates revenue or supports headquarters, how long it has existed, whether it has restructured before, and whether the Japan head has regional autonomy.
+
 ### Are Japanese companies really more secure?
 
 Structurally and culturally yes, with layoffs comparatively rare. But those norms grew around graduates hired for life, so a mid-career foreign hire should not assume identical protection.
@@ -142,6 +182,10 @@ Structurally and culturally yes, with layoffs comparatively rare. But those norm
 ### Which is better for a long-term career in Japan?
 
 Domestic experience generally builds stronger long-term standing if you intend to stay, provided your Japanese supports it. Many people start gaishikei and move later.
+
+### I am a strong engineer but unsure about staying. Which?
+
+Gaishikei, even at N2 or above. The experience stays portable and leaving is straightforward, while the value of domestic experience is mostly realised by staying.
 
 ### Is promotion really slower at Japanese companies?
 
@@ -157,8 +201,8 @@ Check your application documents. [Check your ATS score free](https://www.thetai
 
 ## Make This Practical
 
-Let your Japanese level make the first cut. Below N2, gaishikei and English-operating startups are your realistic market, and applying broadly to domestic companies wastes months. At N2 or above, both segments are genuinely open and the decision becomes about what you want.
+Let your Japanese level make the first cut. Below N2, gaishikei and English-operating startups are your realistic market, and applying broadly to domestic companies wastes months. At N2 or above, both segments are genuinely open and the decision becomes about what you actually want.
 
-Then weigh the risk each carries honestly. Gaishikei pay more and can be closed by a decision made overseas; domestic firms are more secure but the seniority effect disadvantages mid-career joiners and the lifetime employment reputation does not extend to you as fully as it appears.
+Then judge restructuring risk properly rather than treating gaishikei as one category. Ask whether the Japan office sells into the Japanese market or exists to support headquarters, how long it has been here, and whether the Japan head has real autonomy — a revenue-generating office has a reason to exist that a support centre does not.
 
-Finally, consider the sequence rather than the choice. Starting at a gaishikei while your Japanese develops, then moving to a domestic employer if you decide to stay long term, uses each for what it is genuinely good at — and it is the path many foreign professionals in Japan actually take.
+Finally, if you do start at a gaishikei, keep your Japanese moving. The English-operating environment removes the pressure to improve, and letting it stall is what quietly closes the domestic option two or three years later — which is precisely when many people decide they want to stay.
