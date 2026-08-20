@@ -28,6 +28,26 @@ Check what a parser actually extracts from your file — the [free ATS score che
 
 ---
 
+## Every format, and what it does to you
+
+| Format | Verdict | Layout preserved | Text extractable | Use when |
+|---|---|---|---|---|
+| **PDF with real text** | Best default | Yes, exactly | Yes | Almost every application |
+| **PDF, image-based** | Total failure | Yes | **No** | Never |
+| **.docx** | Fine when asked | Mostly, can shift | Yes | Agency or form requests it |
+| **.doc (legacy)** | Avoid | Unreliable | Usually | Only if explicitly required |
+| **.txt** | Parses, reads badly | None | Yes | Only if a form demands it |
+| **.rtf** | Avoid | Poor | Yes | Never in practice |
+| **.pages** | Avoid | N/A | Often cannot open | Never |
+| **.odt** | Avoid | N/A | Often cannot open | Never |
+| **.jpg / .png** | Total failure | Yes | **No** | Never |
+| **Google Docs link** | Avoid | N/A | Blocked by permissions | Never |
+| **.zip archive** | Avoid | N/A | Requires manual work | Never |
+
+**Read the first two rows together.** The same extension can be perfect or catastrophic depending on whether the file contains a text layer, which is why "should I send a PDF" is the wrong question and "does my PDF have selectable text" is the right one.
+
+---
+
 ## PDF, as the default
 
 **Use PDF unless told otherwise.**
@@ -37,6 +57,17 @@ Check what a parser actually extracts from your file — the [free ATS score che
 **The old advice that PDFs are unreadable** dates from systems that are no longer in general use. It persists in articles that have not been updated.
 
 **One requirement:** the PDF must contain real text.
+
+### Why PDF beats Word in practice
+
+| Concern | PDF | .docx |
+|---|---|---|
+| **Layout on the recipient's machine** | Identical to yours | Can reflow and shift |
+| **Font substitution** | Fonts embedded | Substitutes if not installed |
+| **Accidental edits** | Not easily changed | Anyone can alter it |
+| **Page breaks** | Fixed | Can move, splitting sections |
+| **Parsing reliability** | High with a text layer | High |
+| **Agency reformatting** | Harder for them | Easy, which is why they ask |
 
 ---
 
@@ -56,6 +87,18 @@ Check what a parser actually extracts from your file — the [free ATS score che
 
 **Do this once for every version of your resume.** It is the single highest-value check in this whole area.
 
+### Diagnosing what you actually have
+
+| What happens when you try to select text | What you have | What to do |
+|---|---|---|
+| Text highlights normally, pastes as text | Real text PDF | You are fine |
+| Nothing highlights, cursor draws a box | Image-based PDF | Re-export from the source file |
+| Highlights but pastes as gibberish | Font encoding problem | Change font, re-export |
+| Some sections select, others do not | Mixed — parts are images | Find and replace the graphic sections |
+| Pastes scrambled and interleaved | Multi-column layout issue | See the tables and columns guide |
+
+The last row is a different problem from format entirely, and it is covered in [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide).
+
 ---
 
 ## When to send Word
@@ -65,6 +108,16 @@ Check what a parser actually extracts from your file — the [free ATS score che
 **When the application form specifies it.** Some portals accept only certain types.
 
 **The trade-off with Word:** layout can shift between versions and machines, and fonts substitute if the recipient lacks yours. Stick to common fonts if you are sending `.docx`.
+
+### If you must send Word, protect yourself
+
+| Risk | Mitigation |
+|---|---|
+| **Font substitution** | Use Arial, Calibri, Georgia or Times only |
+| **Layout reflow** | Avoid text boxes, floating images and tight spacing |
+| **Page breaks moving** | Insert deliberate breaks rather than relying on flow |
+| **Someone editing it** | Keep your own master copy as the reference |
+| **Version incompatibility** | Save as `.docx`, never `.doc` |
 
 ---
 
@@ -79,6 +132,8 @@ Check what a parser actually extracts from your file — the [free ATS score che
 **Google Docs share links.** Some require sign-in, some have permission issues, and the recruiter will not troubleshoot it. Export and attach a file.
 
 **Compressed archives.** Do not make anyone unzip your application.
+
+**The pattern behind all of these** is the same: anything that adds a step, a permission check, or an install requirement between the recruiter and your content costs you the application. Nobody troubleshoots a file for a candidate they have not met.
 
 ---
 
@@ -100,6 +155,19 @@ Format is rarely the problem; structure inside the file usually is.
 
 **Unusual section headings.** "My Journey" instead of "Experience" prevents categorisation.
 
+### Ranked by how much damage each does
+
+| Problem | Damage | Typical symptom |
+|---|---|---|
+| **No text layer** | Total | Empty record, no fields at all |
+| **Contact details in header** | Severe | Experience parses, no way to reach you |
+| **Two-column layout** | Severe | Skills interleaved with job titles |
+| **Text inside images** | High | Whole sections silently missing |
+| **Layout tables** | High | Related information scattered |
+| **Icons instead of labels** | Moderate | Fields present but unlabelled |
+| **Non-standard headings** | Moderate | Sections uncategorised |
+| **Text boxes** | Moderate | Individual blocks skipped |
+
 The full list is in [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and the broader misconceptions in [ATS myths debunked](https://thetailorcv.com/blog/ats-myths-debunked).
 
 ---
@@ -120,6 +188,19 @@ Small, and it matters twice.
 
 **Add the role if you like** — `Ananya_Sharma_Backend_Engineer.pdf` — but avoid spaces and special characters.
 
+| File name | Verdict |
+|---|---|
+| `Ananya_Sharma_Resume.pdf` | Ideal |
+| `Ananya_Sharma_Backend_Engineer.pdf` | Ideal when targeting a role |
+| `AnanyaSharmaCV.pdf` | Acceptable |
+| `Resume.pdf` | Unfindable among forty others |
+| `resume final final2 updated.pdf` | Reads as careless |
+| `CV (1).pdf` | Reads as careless |
+| `my resume - copy@2026!.pdf` | Special characters risk portal rejection |
+| `Resume_for_Google.pdf` | Fatal if sent to another company |
+
+That last row is worth pausing on. Sending a file named for one employer to a different one is a small mistake with a large cost, and it happens most often to candidates applying in volume.
+
 ---
 
 ## Version control for yourself
@@ -131,6 +212,17 @@ Small, and it matters twice.
 **Keep the source file**, not only the exported PDF. Editing a PDF later is considerably harder than re-exporting.
 
 **Re-run the select-text check** after any export, particularly if you changed tools.
+
+### A simple system that works
+
+| Folder or file | Purpose |
+|---|---|
+| `Master_Resume.docx` | Everything you have ever done, unabridged |
+| `Sent/` | A dated copy of every version you actually submitted |
+| `Sent/2026-08-20_Acme_BackendEngineer.pdf` | What you sent, to whom, when |
+| Source file kept alongside each export | Lets you edit rather than rebuild |
+
+**Why the `Sent/` folder earns its place:** when an interviewer references a bullet six weeks later, you can see exactly which version they read. Tailoring per role means the resume in their hand is not the one on your desktop — see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
 
 ---
 
@@ -151,6 +243,10 @@ Small, and it matters twice.
 **Assuming format is the problem when structure is.** Tables, text boxes and multi-column layouts break parsing regardless of file type.
 
 **Sending the wrong tailored version.** Clear working-file naming prevents an entirely avoidable error.
+
+**Leaving another employer's name in the file name.** A small slip that ends an application immediately when spotted.
+
+**Keeping only the exported PDF.** Editing a PDF later is far harder than re-exporting from the source you no longer have.
 
 ---
 
@@ -179,6 +275,18 @@ Better not to. Permission settings and sign-in requirements cause failures that 
 ### Does the file name matter?
 
 Yes. It affects perception before the file is opened, and it determines whether a recruiter can find your resume again in their downloads.
+
+### What if my text pastes as gibberish rather than nothing?
+
+That is usually a font encoding problem. Switch to a standard font like Arial or Calibri and re-export.
+
+### Is .doc as safe as .docx?
+
+No. Use `.docx`. The legacy `.doc` format is less reliably handled and offers no advantage.
+
+### Should I password-protect or lock my PDF?
+
+No. Restrictions can prevent text extraction entirely, which produces the same outcome as an image-based file.
 
 ### What breaks parsing more than file format?
 

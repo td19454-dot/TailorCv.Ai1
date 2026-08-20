@@ -18,9 +18,9 @@ keywords: improve ats score, resume checklist ats, how to increase ats score, re
 - A score is a diagnostic prompt, not a grade an employer sees.
 - Once the mechanics are right, the remaining work is evidence, which persuades the human who decides.
 
-Improving how a resume performs against screening is largely mechanical, and there is a correct order. People usually start with keywords, which is the second thing that matters, and skip structure, which is the first.
+Most people improving a resume start with keywords. That is the second thing that matters. The first is whether the file can be read at all, and if it cannot, no amount of keyword work does anything.
 
-This checklist runs in order of impact. Work down it rather than picking items at random.
+This checklist runs in that order. Work down it. Each level assumes the one above it is already true.
 
 Start by seeing what a parser extracts from your current file — the [free ATS score checker](https://www.thetailorcv.com/solutions).
 
@@ -30,99 +30,184 @@ Start by seeing what a parser extracts from your current file — the [free ATS 
 
 Nothing below this matters until these are true.
 
-**☐ The PDF has selectable text.** Open it, select the text, copy it. If nothing selects, it is an image and every application you have sent was effectively blank — see [the ATS file format guide](https://thetailorcv.com/blog/ats-file-format-guide).
+**☐ The PDF has selectable text.** Open it, drag your cursor across a line. If nothing highlights, it is an image — every application you sent with it arrived blank. Re-export from the original document rather than scanning or screenshotting.
 
-**☐ Single column layout.** No sidebars, no two-column designs — see [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide).
+**☐ Single column layout.** Two columns get read across, not down. Your skills sidebar interleaves into your job history and the result is unreadable.
 
-**☐ No tables used for layout**, and no text boxes.
+**☐ No tables holding your layout together**, and no text boxes. Text boxes are frequently skipped whole, so a section can vanish silently.
 
-**☐ No text inside images or graphics.** Icons replacing the words "Email" or "Phone" leave those fields unlabelled.
+**☐ Contact details in the body, not the header.** Header and footer content is commonly dropped. This is how a recruiter ends up with your full work history and no phone number.
 
-**☐ Contact details in the body**, not in a header or footer, which are commonly dropped.
+**☐ No text living inside an image.** An icon where the word "Email" should be leaves that field unlabelled.
 
-**☐ Standard section headings** — Experience, Education, Skills, Projects. Not "My Journey".
+**☐ Standard section headings.** Experience, Education, Skills, Projects. Not "My Journey" or "Where I've Been" — a parser categorises by matching these words.
 
-**☐ Extraction verified.** Select all, paste into a plain text editor, and read it. If it is scrambled, so is what the parser sees.
+**☐ Extraction verified.** Select all, copy, paste into Notepad. Read it.
+
+### What the paste test tells you
+
+| What you see | What is wrong | Fix |
+|---|---|---|
+| Clean text in the right order | Nothing | Move to Level 2 |
+| Skills mixed into job descriptions | Two-column interleaving | Single column |
+| No phone or email anywhere | They were in the header | Move into the body |
+| Whole sections missing | Text boxes or text-as-image | Rebuild as normal text |
+| Dates detached from job titles | Table structure lost | Remove the table |
+| Blank | No text layer | Re-export, do not scan |
+
+Details on layout failures are in [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide), and on file types in [the file format guide](https://thetailorcv.com/blog/ats-file-format-guide).
 
 ---
 
 ## Level 2: Make yourself findable
 
-**☐ Standard market job titles.** The highest-impact keyword change available. A recruiter searching "Software Engineer" will not find "Code Ninja". Put any internal title in brackets alongside.
+Recruiters find candidates by typing words into a search box. If your resume does not contain the word they type, you do not exist.
 
-**☐ Specific named skills, not categories.** "AWS" is searchable; "cloud technologies" is not.
+**☐ Standard market job titles.** This is the highest-impact change on the whole list.
 
-**☐ Acronyms spelled out once.** "Search Engine Optimization (SEO)" matches both searches.
+| What your company called you | What a recruiter searches | Put on your resume |
+|---|---|---|
+| Code Ninja | Software Engineer | Software Engineer |
+| Growth Hacker | Marketing Manager | Digital Marketing Manager |
+| Customer Happiness Hero | Customer Success | Customer Success Associate |
+| Member of Technical Staff | Software Engineer | Software Engineer (Member of Technical Staff) |
+| Analyst II | Data Analyst | Data Analyst |
+| Associate Consultant | Business Analyst | Business Analyst / Associate Consultant |
 
-**☐ Terms taken from the actual posting**, where genuinely true of you — see [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) and [best resume keywords to beat ATS](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
+Keep the internal title in brackets if HR verification matters. The searchable term goes first.
 
-**☐ Location stated.** Search is heavily location-filtered, so give a city and note if you would relocate.
+**☐ Named tools, not categories.** Recruiters search for the tool.
 
-**☐ Work authorisation stated**, if relevant. Recruiters filter on it early and silence is resolved unfavourably.
+| Do not write | Write |
+|---|---|
+| Cloud technologies | AWS (EC2, S3, Lambda) |
+| Programming languages | Python, Java, SQL |
+| Data visualisation tools | Tableau, Power BI |
+| Microsoft Office | Excel (pivot tables, VLOOKUP), PowerPoint |
+| Version control | Git, GitHub |
+| Databases | PostgreSQL, MongoDB |
 
-**☐ Correct spelling convention** for the market — organise or organize, consistently.
+**☐ Acronyms written both ways, once.** "Search Engine Optimization (SEO)" matches a search for either. Same for CI/CD, ETL, CRM, KPI.
+
+**☐ Terms taken from the actual posting**, where genuinely true of you. If the posting says "stakeholder management" and you wrote "worked with clients", change your phrasing. See [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job).
+
+**☐ Your city on the resume.** Recruiter searches are location-filtered hard. Add "open to relocation" if you are.
+
+**☐ Work authorisation stated** if there is any ambiguity. Recruiters filter on this early, and silence gets resolved against you.
+
+**☐ Spelling convention matched to the market.** "Organised" in the UK, "organized" in the US. Pick one and be consistent — a search for one will not always return the other.
 
 ---
 
 ## Level 3: Make the keywords credible
 
-**☐ Every significant skill appears in an experience bullet**, not only in a skills list. A skills block nothing supports is a recognisable pattern to a human reviewer.
+A skills list nothing supports is obvious to a human reviewer, and every word on it is a question you can be asked.
 
-**☐ No skill you cannot defend.** Every term is a potential interview question.
+**☐ Every significant skill appears in an experience bullet.** Not just in the skills block.
 
-**☐ No hidden or white text.** It does not work, it is visible in the extracted text, and it ends applications when found — see [ATS myths debunked](https://thetailorcv.com/blog/ats-myths-debunked).
+Weak — the skill is claimed but never shown:
 
-**☐ Skills grouped so they scan**, rather than run into a paragraph.
+> **Skills:** Python, SQL, Tableau, AWS
+> **Data Analyst, Acme** — Responsible for reporting and analysis.
+
+Strong — the same skills, now evidenced:
+
+> **Skills:** Python, SQL, Tableau, AWS
+> **Data Analyst, Acme**
+> - Built a Python forecasting model that cut stockouts 18% across 40 stores
+> - Rewrote the weekly SQL reporting pipeline, dropping runtime from 4 hours to 20 minutes
+> - Replaced manual Excel reports with a Tableau dashboard used daily by 12 people
+
+The skills list did not change. The credibility did.
+
+**☐ Nothing you could not defend for ten minutes.** If "Kubernetes" is on there because you watched a course, either take it off or move it to a clearly separate line: "Familiar with: Kubernetes, Docker."
+
+**☐ No hidden or white text.** Parsers extract text regardless of colour, recruiters can see the extracted version, and applications get ended over this. It is a decade-old trick that never worked — see [ATS myths debunked](https://thetailorcv.com/blog/ats-myths-debunked).
+
+**☐ Skills grouped so a person can scan them.** A 40-word run-on line is not read. Group them:
+
+> **Languages:** Python, SQL, JavaScript
+> **Data:** Pandas, PostgreSQL, dbt
+> **Visualisation:** Tableau, Power BI
 
 ---
 
 ## Level 4: Make it convince the human
 
-Once the mechanics are right, a person decides, and this is where the remaining work sits.
+The mechanics only get you read. This is the part that gets you interviewed.
 
-**☐ Achievements, not duties.** "Responsible for reporting" becomes "Cut monthly close from nine days to four."
+**☐ Achievements, not duties.** The single most common weakness on student and early-career resumes.
 
-**☐ A number in most bullets.** Percentages, time, volume, cost, headcount — see [how to quantify achievements on your resume](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
+| Duty (weak) | Achievement (strong) |
+|---|---|
+| Responsible for monthly reporting | Cut monthly close from 9 days to 4 by automating three reports |
+| Worked on the company website | Rebuilt the checkout page; conversion rose from 2.1% to 3.4% |
+| Helped organise college fest | Ran a 12-person team and a ₹4L budget for a 2,000-attendee fest |
+| Did data entry | Cleaned 14,000 customer records, cutting duplicate outreach 30% |
+| Member of coding club | Taught weekly Python sessions to 25 first-year students |
+| Assisted with social media | Grew Instagram from 800 to 5,400 followers in 6 months |
 
-**☐ Strongest evidence in the top third of page one.** This decides whether the rest is read.
+**☐ A number in most bullets.** If you do not have a business metric, you still have a number.
 
-**☐ A summary that says something specific**, or no summary at all. Generic objective statements are the most-skipped lines on any resume.
+- **Scale:** how many users, records, stores, students, tickets
+- **Time:** how long it took before, how long after
+- **Money:** budget managed, cost saved, revenue touched
+- **Frequency:** daily, weekly, per sprint
+- **Team:** how many people, how many stakeholders
 
-**☐ Reverse chronological order** within each section.
+"Reduced report generation time from 4 hours to 20 minutes" needs no revenue figure to be convincing. More on this in [how to quantify achievements on your resume](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
 
-**☐ Context for unfamiliar employers.** One clause naming the industry and rough size.
+**☐ Strongest evidence in the top third of page one.** That space decides whether the rest is read. It should not contain a photo, a mission statement, or a skills matrix with rating bars.
 
-**☐ Appropriate length for the market** — see [the ATS resume length guide](https://thetailorcv.com/blog/ats-resume-length-guide).
+**☐ A summary that says something specific, or no summary.**
+
+Weak, and skipped by every reader:
+
+> Hardworking and motivated individual seeking a challenging role in a reputed organisation where I can utilise my skills and grow with the company.
+
+Strong:
+
+> Data analyst with 2 years in retail analytics. Built forecasting models in Python and SQL that cut stockouts 18%. Looking for an analytics role in e-commerce.
+
+The second one names the field, the tools, a result and the target. The first could belong to anyone.
+
+**☐ Reverse chronological order** in every section. Most recent first, always.
+
+**☐ One line of context for employers nobody knows.** "Series A fintech, 60 people" tells a reader more than the company name alone.
+
+**☐ Length appropriate to your market.** One page for Indian campus placements and US early career, two for the UK — see [the ATS resume length guide](https://thetailorcv.com/blog/ats-resume-length-guide).
 
 ---
 
-## Level 5: The details that quietly cost you
+## Level 5: The small things that quietly cost you
 
-**☐ File named properly** — `Firstname_Lastname_Resume.pdf`.
+**☐ File named `Firstname_Lastname_Resume.pdf`.** Not `resume final final2.pdf`, and never a name containing a different company.
 
-**☐ Professional email address.**
+**☐ A professional email address.** Your college address is fine. `cool_guy_9999@` is not.
 
-**☐ Every link works in the exported PDF**, not just in the editor. Test them — this is where portfolio and GitHub links most often break.
+**☐ Every link tested in the exported PDF**, not in the editor. GitHub and portfolio links break at export more often than people expect. Open the exported file and click each one.
 
-**☐ No typos.** On a document you controlled entirely, they read as carelessness.
+**☐ No typos.** On a one-page document you controlled entirely, they read as carelessness rather than bad luck.
 
-**☐ Consistent formatting** — same date format, same tense, same bullet style throughout.
+**☐ Consistent formatting.** One date format throughout, past tense for past roles, present for current, the same bullet character everywhere.
 
-**☐ Dates as month and year**, matching what employment verification will confirm — see [the US background check guide](https://thetailorcv.com/blog/us-background-check-guide).
+**☐ Dates as month and year** — "Jun 2024 – Aug 2025" — matching what employment verification will confirm.
 
-**☐ No unrequired personal details** — photo, date of birth, marital status — unless your market expects them.
+**☐ No photo, date of birth or marital status** unless your market expects them. Standard on Indian and Japanese formats, not on US or UK ones.
+
+**☐ No declaration block or signature line.** Common on Indian templates, read by nobody, costs four lines.
 
 ---
 
-## How to use a score
+## How to actually use a score
 
-**It is a diagnostic, not a grade.** No employer sees a score. What a checker gives you is an indication of parsing quality and keyword coverage against a specific posting.
+**It is a diagnostic, not a grade.** No employer sees a number. What a checker gives you is an estimate of parsing quality and keyword coverage against one specific posting.
 
-**Use it to find gaps, then decide.** If it flags a missing skill you genuinely have, add it. If it flags one you do not have, leave it out — adding it creates an interview question you cannot answer.
+**Use it to find gaps, then decide for yourself.** If it flags a skill you genuinely have but forgot to list, add it. If it flags one you do not have, leave it out — adding it buys you a screening pass and an interview you cannot survive.
 
-**Re-check after structural changes**, particularly if you changed template.
+**Re-check after any structural change**, particularly a template change.
 
-**Do not chase a number.** A resume optimised purely to score well frequently reads worse to the human who actually decides.
+**Do not chase the number.** A resume tuned purely to score well often reads worse to the person who actually decides.
 
 ---
 
@@ -130,19 +215,23 @@ Once the mechanics are right, a person decides, and this is where the remaining 
 
 **Starting with keywords instead of structure.** An unparseable resume cannot be rescued by better wording, and this is the most common ordering error.
 
-**Never verifying extraction.** Selecting all and pasting into a text editor takes thirty seconds and reveals the failures that matter most.
+**Never running the paste test.** Thirty seconds, and it catches the failures that make everything else pointless.
 
-**Using creative job titles.** They make you invisible to the database searches that surface candidates.
+**Using creative job titles.** "Growth Hacker" is invisible to a recruiter searching "Marketing Manager".
 
-**Listing skill categories rather than named tools.** Matching is close to exact, so "cloud technologies" returns nothing.
+**Writing skill categories instead of tool names.** Matching is close to exact, so "cloud technologies" returns nothing.
 
-**Keeping a skills block nothing supports.** Human reviewers recognise it, and each term is an interview question.
+**Keeping a skills block nothing supports.** Reviewers recognise it instantly, and every term invites a question.
 
-**Adding keywords you cannot defend to raise a score.** It trades a screening gain for an interview failure.
+**Adding a skill you cannot defend to raise a score.** You trade a screening pass for a failed interview.
 
-**Not testing links in the exported PDF.** Editor previews frequently work where the export does not.
+**Listing duties instead of achievements.** "Responsible for reporting" tells a reader nothing about whether you were good at it.
 
-**Chasing a score rather than persuading a reader.** Once the mechanics are correct, evidence is what does the remaining work.
+**Not testing links in the exported file.** They work in the editor and break in the PDF constantly.
+
+**Keeping a generic objective statement.** It is the most-skipped block on any resume and costs four lines of your best space.
+
+**Chasing a score instead of persuading a reader.** Once the mechanics work, evidence does the remaining work.
 
 ---
 
@@ -150,23 +239,35 @@ Once the mechanics are right, a person decides, and this is where the remaining 
 
 ### What should I fix first?
 
-Structure. Confirm the PDF has selectable text and that a single-column layout extracts cleanly, because nothing else matters until it does.
+Structure. Confirm the PDF has selectable text and that a single-column layout pastes cleanly, because nothing else matters until it does.
 
 ### What is the highest-impact keyword change?
 
-Using standard market job titles. Creative or internal titles make you invisible to recruiter searches regardless of how strong the rest is.
+Using standard market job titles. A creative or internal title makes you unfindable regardless of how strong the rest of the resume is.
 
 ### Should I add keywords I do not have?
 
-No. Every listed skill is a potential interview question, and a screening gain that produces an interview failure is not a gain.
+No. Every listed skill is a possible interview question, and a screening pass that leads to a failed interview is not a gain.
 
 ### Does an employer see my ATS score?
 
-No. Scoring tools are diagnostics estimating parsing quality and keyword coverage — no universal score is passed to employers.
+No. Scoring tools are diagnostics that estimate parsing quality and keyword coverage. No universal score is passed to employers.
 
 ### How do I check my resume parses?
 
-Select all the text in the PDF, copy, paste into a plain text editor, and read it. That approximates what a parser receives.
+Select all the text in the PDF, copy it, paste into Notepad, and read the result. That is roughly what a parser receives.
+
+### I am a student with no work experience. What do I put in bullets?
+
+Projects, coursework you actually built something in, club responsibilities, volunteering and part-time work. Apply the same rule — say what you did and attach a number.
+
+### How many skills should I list?
+
+Enough to cover what is genuinely true and relevant to the posting. If a skill has no supporting bullet and you could not discuss it for ten minutes, it is costing you more than it earns.
+
+### Should I put my percentage or CGPA?
+
+If it is strong and you are early career, yes. If it is weak, lead with projects and let the degree line stand on its own.
 
 ### How often should I re-check?
 
@@ -174,7 +275,7 @@ After any structural change, especially a template change, and periodically duri
 
 ### What matters once the mechanics are right?
 
-Evidence. Achievement bullets with numbers, strongest material in the top third of page one, and relevance to the specific role.
+Evidence. Achievement bullets with numbers, your strongest material in the top third of page one, and genuine relevance to the specific role.
 
 ---
 
@@ -182,8 +283,8 @@ Run your resume through and see which level needs work. [Check your ATS score fr
 
 ## Make This Practical
 
-Work the levels in order rather than picking items at random. Confirm your PDF has selectable text and that a single-column layout extracts cleanly before touching a single keyword — an unreadable resume cannot be improved by better wording.
+Do the paste test first, before anything else. Select all the text in your resume PDF, copy it into Notepad and read what comes out. If your skills are tangled into your job titles, or your phone number is missing, you have found a problem that no keyword work would ever have fixed.
 
-Then fix findability with the highest-impact change available: replace any creative or internal job title with the standard market term, and name specific tools rather than categories throughout.
+Then spend twenty minutes on titles and tool names. Replace every creative or internal job title with the term a recruiter would actually type, and swap every skill category for the specific tools underneath it. These two changes do more for findability than everything else on this list combined.
 
-Finally, make every keyword credible and every bullet persuasive. Move significant skills into experience bullets with results attached, remove anything you could not defend in an interview, and put your strongest quantified evidence in the top third of page one — because once the mechanics work, a human decides.
+Finally, go through your bullets and put a number in as many as you can. You do not need revenue figures — how many users, how many records, how many hours it used to take. That is the part that persuades the person who decides whether to call you.
