@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Co-op, Students, Early Career, Work Permit]
 category: Career Advice
-image: public/blog-images/canada-co-op-student-guide.png
+image: public/blog-images/canada-co-op-student-guide.webp
 slug: canada-co-op-student-guide
 keywords: co-op canada, co-op work permit, student work term, waterloo co-op, canadian internship students
 ---

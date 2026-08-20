@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [ATS Optimization, Resume Writing, Job Search 2026, Myths, Career Advice]
 category: ATS Optimization
-image: public/blog-images/ats-myths-debunked.png
+image: public/blog-images/ats-myths-debunked.webp
 slug: ats-myths-debunked
 keywords: ats myths, do ats reject resumes, white text ats trick, ats score truth, applicant tracking system facts
 ---

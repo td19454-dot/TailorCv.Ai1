@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Job Search 2026, Career Planning, Interview Process, Offer]
 category: Job Search
-image: public/blog-images/us-job-search-timeline.png
+image: public/blog-images/us-job-search-timeline.webp
 slug: us-job-search-timeline
 keywords: us job search timeline, how long does job search take, interview process length, job offer timeline usa
 ---

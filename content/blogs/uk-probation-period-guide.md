@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Probation, Employment Rights, New Job, Career Advice]
 category: Career Advice
-image: public/blog-images/uk-probation-period-guide.png
+image: public/blog-images/uk-probation-period-guide.webp
 slug: uk-probation-period-guide
 keywords: probation period uk, failing probation, probation notice period, uk employment rights, extended probation
 ---

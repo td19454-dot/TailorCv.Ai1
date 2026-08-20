@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Puzzles, Logical Reasoning, Interview Preparation, Freshers]
 category: Interview Preparation
-image: public/blog-images/campus-placement-puzzles-guide.png
+image: public/blog-images/campus-placement-puzzles-guide.webp
 slug: campus-placement-puzzles-guide
 keywords: placement puzzles, logical puzzles interview, bulb switch puzzle, weighing puzzle, brain teaser interview
 ---

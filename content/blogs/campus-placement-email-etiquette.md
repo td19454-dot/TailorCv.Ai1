@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Email, Communication, Freshers, Templates]
 category: Career Advice
-image: public/blog-images/campus-placement-email-etiquette.png
+image: public/blog-images/campus-placement-email-etiquette.webp
 slug: campus-placement-email-etiquette
 keywords: placement email format, email to hr for job, follow up email after interview, email etiquette students
 ---

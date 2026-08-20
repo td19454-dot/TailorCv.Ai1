@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Edinburgh, Scotland, Fintech, Data Science]
 category: Job Search
-image: public/blog-images/edinburgh-tech-jobs-guide.png
+image: public/blog-images/edinburgh-tech-jobs-guide.webp
 slug: edinburgh-tech-jobs-guide
 keywords: edinburgh tech jobs, scotland software jobs, fintech edinburgh, scottish income tax, asset management scotland
 ---

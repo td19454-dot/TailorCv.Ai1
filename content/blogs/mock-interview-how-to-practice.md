@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Mock Interview, Interview Preparation, Practice, Career Advice, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/mock-interview-how-to-practice.png
+image: public/blog-images/mock-interview-how-to-practice.webp
 slug: mock-interview-how-to-practice
 keywords: mock interview practice, how to do mock interviews, interview practice partner, practice interview questions
 ---

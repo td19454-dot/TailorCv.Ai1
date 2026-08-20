@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Montreal, Quebec, French, AI Research]
 category: Job Search
-image: public/blog-images/montreal-jobs-french-guide.png
+image: public/blog-images/montreal-jobs-french-guide.webp
 slug: montreal-jobs-french-guide
 keywords: montreal jobs, quebec french requirement, ai jobs montreal, gaming jobs canada, quebec immigration
 ---

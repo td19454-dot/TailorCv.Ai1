@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, System Design, Technical Interview, Freshers, Product Companies]
 category: Interview Preparation
-image: public/blog-images/campus-placement-system-design-basics.png
+image: public/blog-images/campus-placement-system-design-basics.webp
 slug: campus-placement-system-design-basics
 keywords: system design for freshers, low level design interview, campus system design, hld lld basics
 ---

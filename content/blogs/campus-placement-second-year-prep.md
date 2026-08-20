@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Second Year, Early Preparation, Students, Career Planning]
 category: Career Advice
-image: public/blog-images/campus-placement-second-year-prep.png
+image: public/blog-images/campus-placement-second-year-prep.webp
 slug: campus-placement-second-year-prep
 keywords: second year placement preparation, early placement prep, what to do in 2nd year engineering, internship second year
 ---

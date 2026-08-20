@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Finance Careers, Investment Banking, London, ACA CFA]
 category: Job Search
-image: public/blog-images/uk-finance-jobs-city-guide.png
+image: public/blog-images/uk-finance-jobs-city-guide.webp
 slug: uk-finance-jobs-city-guide
 keywords: uk finance jobs, city of london careers, spring week banking, aca vs cfa, canary wharf jobs
 ---

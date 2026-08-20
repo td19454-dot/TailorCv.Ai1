@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Bridging Programs, Newcomers, Licensing, Career Advice]
 category: Career Advice
-image: public/blog-images/canada-bridging-programs-guide.png
+image: public/blog-images/canada-bridging-programs-guide.webp
 slug: canada-bridging-programs-guide
 keywords: bridging program canada, internationally trained professionals, newcomer employment program, canadian experience program
 ---

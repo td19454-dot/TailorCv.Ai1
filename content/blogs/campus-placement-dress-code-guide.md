@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Interview Preparation, Freshers, Presentation, Career Advice]
 category: Interview Preparation
-image: public/blog-images/campus-placement-dress-code-guide.png
+image: public/blog-images/campus-placement-dress-code-guide.webp
 slug: campus-placement-dress-code-guide
 keywords: placement dress code, what to wear interview freshers, formal dress campus placement, video interview appearance
 ---

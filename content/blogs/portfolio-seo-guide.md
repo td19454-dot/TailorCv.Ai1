@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, SEO, Personal Branding, Job Search 2026, Career Advice]
 category: Portfolio
-image: public/blog-images/portfolio-seo-guide.png
+image: public/blog-images/portfolio-seo-guide.webp
 slug: portfolio-seo-guide
 keywords: portfolio seo, rank for your own name, personal website seo, get found by recruiters
 ---

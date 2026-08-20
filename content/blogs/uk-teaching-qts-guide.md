@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Teaching, QTS, Education Careers, Career Change]
 category: Career Advice
-image: public/blog-images/uk-teaching-qts-guide.png
+image: public/blog-images/uk-teaching-qts-guide.webp
 slug: uk-teaching-qts-guide
 keywords: qts uk, how to become a teacher uk, school direct salaried, pgce vs qts, overseas teacher qts
 ---

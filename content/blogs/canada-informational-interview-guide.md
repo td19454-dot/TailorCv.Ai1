@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Networking, Newcomers, Informational Interview, Job Search 2026]
 category: Job Search
-image: public/blog-images/canada-informational-interview-guide.png
+image: public/blog-images/canada-informational-interview-guide.webp
 slug: canada-informational-interview-guide
 keywords: informational interview canada, coffee chat networking, newcomer networking canada, how to ask for informational interview
 ---

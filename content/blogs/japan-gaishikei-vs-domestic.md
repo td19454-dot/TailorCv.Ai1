@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Gaishikei, Career Advice, Comparisons, International Careers]
 category: Comparisons
-image: public/blog-images/japan-gaishikei-vs-domestic.png
+image: public/blog-images/japan-gaishikei-vs-domestic.webp
 slug: japan-gaishikei-vs-domestic
 keywords: gaishikei japan, foreign company japan, japanese company culture, working for japanese company, japan job comparison
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Civil Service, Public Sector, Job Application, Government]
 category: Job Search
-image: public/blog-images/uk-civil-service-application-guide.png
+image: public/blog-images/uk-civil-service-application-guide.webp
 slug: uk-civil-service-application-guide
 keywords: civil service jobs, success profiles behaviours, civil service grades, hmrc dwp jobs, behaviour statement examples
 ---

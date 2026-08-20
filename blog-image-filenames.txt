@@ -1,7 +1,1 @@
-campus-placement-document-checklist.png
-campus-placement-dress-code-guide.png
-campus-placement-dsa-roadmap.png
-campus-placement-email-etiquette.png
-campus-placement-mock-test-guide.png
-campus-placement-second-year-prep.png
-campus-placement-system-design-basics.png
+

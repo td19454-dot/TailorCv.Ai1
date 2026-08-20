@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Toronto, Tech Careers, Fintech, Relocation]
 category: Job Search
-image: public/blog-images/toronto-tech-jobs-guide.png
+image: public/blog-images/toronto-tech-jobs-guide.webp
 slug: toronto-tech-jobs-guide
 keywords: toronto tech jobs, canada software engineer salary, fintech toronto, gta jobs, bay street careers
 ---

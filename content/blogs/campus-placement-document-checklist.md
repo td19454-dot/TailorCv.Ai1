@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Documents, Freshers, Preparation, Job Offer]
 category: Career Advice
-image: public/blog-images/campus-placement-document-checklist.png
+image: public/blog-images/campus-placement-document-checklist.webp
 slug: campus-placement-document-checklist
 keywords: campus placement documents, placement checklist, documents for job offer india, marksheet verification
 ---

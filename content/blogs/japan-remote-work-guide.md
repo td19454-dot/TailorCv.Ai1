@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Remote Work, Hybrid, Workplace Culture, International Careers]
 category: Job Search
-image: public/blog-images/japan-remote-work-guide.png
+image: public/blog-images/japan-remote-work-guide.webp
 slug: japan-remote-work-guide
 keywords: remote work japan, telework japan, hybrid work japanese company, working remotely from japan
 ---

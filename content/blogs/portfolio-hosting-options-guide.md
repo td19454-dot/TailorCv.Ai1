@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, Hosting, Domains, Web, Job Search 2026]
 category: Portfolio
-image: public/blog-images/portfolio-hosting-options-guide.png
+image: public/blog-images/portfolio-hosting-options-guide.webp
 slug: portfolio-hosting-options-guide
 keywords: portfolio hosting, github pages vs netlify, custom domain portfolio, free portfolio hosting, where to host portfolio
 ---

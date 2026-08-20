@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, NHS, Healthcare, Public Sector, Job Application]
 category: Job Search
-image: public/blog-images/uk-nhs-jobs-guide.png
+image: public/blog-images/uk-nhs-jobs-guide.webp
 slug: uk-nhs-jobs-guide
 keywords: nhs jobs, nhs application supporting statement, agenda for change bands, nhs band 5 6, working for the nhs
 ---

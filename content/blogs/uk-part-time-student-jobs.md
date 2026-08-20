@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Students, Part Time Work, Student Visa, Early Career]
 category: Career Advice
-image: public/blog-images/uk-part-time-student-jobs.png
+image: public/blog-images/uk-part-time-student-jobs.webp
 slug: uk-part-time-student-jobs
 keywords: part time jobs students uk, student visa work hours, term time work rules, university jobs uk, student cv
 ---

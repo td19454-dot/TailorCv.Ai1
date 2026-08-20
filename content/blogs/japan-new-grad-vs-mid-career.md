@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Shinsotsu, Mid Career, Hiring, Career Advice]
 category: Comparisons
-image: public/blog-images/japan-new-grad-vs-mid-career.png
+image: public/blog-images/japan-new-grad-vs-mid-career.webp
 slug: japan-new-grad-vs-mid-career
 keywords: shinsotsu vs chuto saiyo, new graduate hiring japan, mid career hiring japan, japan recruitment system
 ---

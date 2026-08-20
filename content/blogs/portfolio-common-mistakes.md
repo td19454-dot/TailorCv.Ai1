@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, Common Mistakes, Job Search 2026, Career Advice, Web]
 category: Portfolio
-image: public/blog-images/portfolio-common-mistakes.png
+image: public/blog-images/portfolio-common-mistakes.webp
 slug: portfolio-common-mistakes
 keywords: portfolio mistakes, portfolio not getting interviews, bad portfolio examples, portfolio review
 ---

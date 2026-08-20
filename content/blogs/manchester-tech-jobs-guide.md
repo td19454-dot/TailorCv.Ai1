@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Manchester, Tech Careers, Relocation, North West]
 category: Job Search
-image: public/blog-images/manchester-tech-jobs-guide.png
+image: public/blog-images/manchester-tech-jobs-guide.webp
 slug: manchester-tech-jobs-guide
 keywords: manchester tech jobs, media city jobs, manchester software engineer salary, tech jobs north west
 ---

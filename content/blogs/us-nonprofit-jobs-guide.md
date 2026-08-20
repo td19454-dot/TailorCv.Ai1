@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Nonprofit, Career Change, Job Search 2026, Mission Driven]
 category: Job Search
-image: public/blog-images/us-nonprofit-jobs-guide.png
+image: public/blog-images/us-nonprofit-jobs-guide.webp
 slug: us-nonprofit-jobs-guide
 keywords: nonprofit jobs usa, ngo careers america, nonprofit salary, mission driven careers, foundation jobs
 ---

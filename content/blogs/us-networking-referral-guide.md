@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Networking, Referrals, Job Search 2026, LinkedIn]
 category: Job Search
-image: public/blog-images/us-networking-referral-guide.png
+image: public/blog-images/us-networking-referral-guide.webp
 slug: us-networking-referral-guide
 keywords: how to get a referral, employee referral usa, networking for jobs, linkedin cold message, informational interview
 ---

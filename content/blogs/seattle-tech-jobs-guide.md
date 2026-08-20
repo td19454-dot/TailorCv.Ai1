@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Seattle, Tech Careers, Compensation, Relocation]
 category: Job Search
-image: public/blog-images/seattle-tech-jobs-guide.png
+image: public/blog-images/seattle-tech-jobs-guide.webp
 slug: seattle-tech-jobs-guide
 keywords: seattle tech jobs, amazon microsoft jobs, washington no income tax, seattle software engineer salary
 ---

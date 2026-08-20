@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, References, Job Offer, Employment Rights, Career Advice]
 category: Career Advice
-image: public/blog-images/uk-reference-request-guide.png
+image: public/blog-images/uk-reference-request-guide.webp
 slug: uk-reference-request-guide
 keywords: uk job reference, factual reference, bad reference uk, referee choice, reference request employer
 ---

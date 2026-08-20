@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Healthcare, Nursing, Licensing, Newcomers]
 category: Job Search
-image: public/blog-images/canada-healthcare-jobs-guide.png
+image: public/blog-images/canada-healthcare-jobs-guide.webp
 slug: canada-healthcare-jobs-guide
 keywords: healthcare jobs canada, nursing jobs canada, internationally educated nurse, health authority jobs, canada medical careers
 ---

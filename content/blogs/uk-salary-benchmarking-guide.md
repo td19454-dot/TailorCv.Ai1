@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Salary, Negotiation, Career Advice, Compensation]
 category: Career Advice
-image: public/blog-images/uk-salary-benchmarking-guide.png
+image: public/blog-images/uk-salary-benchmarking-guide.webp
 slug: uk-salary-benchmarking-guide
 keywords: uk salary benchmarking, how much should i be paid uk, london weighting, salary guide uk, pay research
 ---

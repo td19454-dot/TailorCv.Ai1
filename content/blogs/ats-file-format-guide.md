@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [ATS Optimization, Resume Writing, File Format, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/ats-file-format-guide.png
+image: public/blog-images/ats-file-format-guide.webp
 slug: ats-file-format-guide
 keywords: resume pdf or word, ats file format, image based pdf resume, resume file name, docx vs pdf
 ---

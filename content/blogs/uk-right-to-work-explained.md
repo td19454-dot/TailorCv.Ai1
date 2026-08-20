@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Right to Work, Visa Sponsorship, Job Application, International Careers]
 category: Career Advice
-image: public/blog-images/uk-right-to-work-explained.png
+image: public/blog-images/uk-right-to-work-explained.webp
 slug: uk-right-to-work-explained
 keywords: right to work uk, share code employer, uk work eligibility, do i need sponsorship uk, settled status
 ---

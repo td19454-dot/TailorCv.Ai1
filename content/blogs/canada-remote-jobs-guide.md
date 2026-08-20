@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Remote Work, Hybrid, Job Search 2026, Newcomers]
 category: Job Search
-image: public/blog-images/canada-remote-jobs-guide.png
+image: public/blog-images/canada-remote-jobs-guide.webp
 slug: canada-remote-jobs-guide
 keywords: canada remote jobs, work from home canada, remote job province restriction, geo adjusted pay canada
 ---

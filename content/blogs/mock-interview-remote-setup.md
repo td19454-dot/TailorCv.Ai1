@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Mock Interview, Remote Interview, Video Interview, Interview Preparation]
 category: Interview Preparation
-image: public/blog-images/mock-interview-remote-setup.png
+image: public/blog-images/mock-interview-remote-setup.webp
 slug: mock-interview-remote-setup
 keywords: video interview setup, remote interview tips, webcam lighting interview, online interview background
 ---
