@@ -28,6 +28,30 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 ---
 
+## The same answer, told badly and told well
+
+Before the list, here is what most of these errors look like together. Both versions describe the same real work.
+
+### Weak answer
+
+> So basically in my final year we had this project where the college wanted a system for the library because the existing one was really old, it was from like 2015 I think, and there were four of us in the group and initially we were going to use PHP but then we decided on Django because we thought it would be better, and we had some issues with the database at first, and then we also had exams in the middle so it got delayed a bit, but eventually we got it working and the librarian was happy with it and I think it's still being used, so yeah it improved things a lot for them.
+
+**What went wrong:** two minutes of context, "we" throughout, no individual contribution, no number, and the result is "improved things a lot."
+
+### Strong answer
+
+> Our college library was tracking 8,000 books on a 2015 system where issuing a book took about four minutes of manual entry. Four of us rebuilt it in Django over a semester.
+>
+> I owned the database design and the issue-return flow. The main problem I had to solve was that two librarians could issue the same copy at once, so I added a row-level lock on the copy record and a status field that had to be checked inside the same transaction.
+>
+> Issuing a book went from about four minutes to under thirty seconds. It has been running for a year and a half now, and the librarian told us duplicate-issue complaints stopped completely.
+
+**What changed:** context in two sentences, "I" for the part that was actually his, a specific technical decision he can be questioned on, and two real numbers. Same project, same student.
+
+Nothing was invented in the second version. The information was always there — it was buried.
+
+---
+
 ## 1. Rambling
 
 **What it looks like:** the answer runs four minutes, wanders through background, and the interviewer has stopped tracking it.
@@ -52,6 +76,8 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **This single change moves scores more than any other on this list.**
 
+**If it feels like boasting:** the sentence "the team did X, I did Y" is not a claim of superiority. It is the only way the interviewer can score you, and leaving it out does not read as modest — it reads as though you did nothing specific.
+
 ---
 
 ## 3. No numbers
@@ -61,6 +87,23 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 **Why it matters:** an interviewer cannot weigh an unquantified claim, and every candidate says their work improved things.
 
 **The fix:** end every story with a measured outcome — time, percentage, volume, cost, headcount. If you genuinely have no metric, use a concrete before-and-after state: "Before, nobody knew which reports were stale. After, every dashboard showed its refresh time." See [how to quantify achievements on your resume](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
+
+### Where to find a number when you have no work experience
+
+Students assume they have nothing to measure. They usually have several things and have never counted them.
+
+| Your situation | The number nobody thinks to count |
+|---|---|
+| **College project** | Rows of data, users, records handled, how long the manual version took |
+| **Coding club / teaching** | How many students attended, how many sessions, over how many weeks |
+| **Fest or event organising** | Budget managed, attendees, vendors coordinated, team size |
+| **Internship** | Tickets closed, reports automated, hours saved per week |
+| **Part-time job** | Customers per shift, transactions handled, error rate |
+| **Freelance work** | Clients, deliverables, turnaround time |
+| **Hackathon** | Team size, hours, where you placed out of how many teams |
+| **Open source** | Pull requests merged, stars, issues resolved |
+
+**Go and count it before your next interview.** Log into the repository and check the commit count. Ask the club secretary how many people attended. It takes twenty minutes and it changes every story you tell.
 
 ---
 
@@ -92,7 +135,22 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **Why it matters:** interviewers hear it constantly and it reads as evasion, which is worse than the weakness would have been.
 
-**The fix:** name a real one and what you did about it. "I used to go deep on one part of a problem and lose track of time. I now timebox and check whether it is still the right thing to work on."
+**The fix:** name a real one and what you did about it.
+
+### Weaknesses you can actually use
+
+The structure is always the same: the real habit, the cost it had, and the specific thing you changed.
+
+| A real weakness | Said properly |
+|---|---|
+| **Perfectionism on one detail** | "I used to go deep on one part and lose track of time. I now timebox and check whether it is still the right thing to work on." |
+| **Not asking for help early** | "I would spend a full day stuck rather than ask. I now give myself an hour, then go to someone." |
+| **Weak at public speaking** | "Presenting made me rush. I joined the college tech-talk group and now present our sprint demo." |
+| **Poor at saying no** | "I took on everything and delivered some of it late. I now check my current load before agreeing." |
+| **Bad at documentation** | "I shipped without writing anything down and my teammate could not pick it up. I now write the README before I call it done." |
+| **Impatient with slow processes** | "I skipped review steps to move faster and it caused a rollback. I follow the process now even when it feels slow." |
+
+**The rule:** it must be a genuine weakness with a genuine cost, and the fix must be something you actually did — not something you intend to do.
 
 ---
 
@@ -104,6 +162,8 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **The fix:** prepare one real failure with your own contribution to it named, and what changed afterwards.
 
+**A student-scale failure is fine.** A project that missed its deadline because you underestimated the database work, a group assignment where you did not check in with a teammate until it was too late, a hackathon build that broke during the demo. Interviewers are not expecting you to have lost a company money. They are checking whether you can look at your own work honestly.
+
 ---
 
 ## 8. Not asking anything at the end
@@ -112,7 +172,20 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **Why it matters:** it is consistently read as disinterest, and it is the easiest possible thing to prepare.
 
-**The fix:** have four questions ready, ask two or three. What success looks like in the first year, why the role is open, what the team's biggest challenge is.
+**The fix:** have four questions ready, ask two or three.
+
+### Questions worth asking, and what the answer tells you
+
+| Ask this | What you learn |
+|---|---|
+| "What does success look like in this role after six months?" | Whether they have thought about the role at all |
+| "Why is this position open?" | Growth, or someone left — and how they talk about it |
+| "What is the biggest challenge the team is facing right now?" | The real state of things, if they answer honestly |
+| "How does the team handle code review / feedback?" | Whether juniors get supported or thrown in |
+| "What does a typical week look like?" | Meeting load, on-call, actual work time |
+| "How do people here learn things they do not know yet?" | Whether training is real or aspirational |
+
+**Avoid** asking about salary, leave, or working hours in a first round — those come once they want you. And do not ask something the job posting already answers, because it shows you did not read it.
 
 ---
 
@@ -134,6 +207,8 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **The fix:** narrate. "I'm thinking about whether to approach this from the data side or the process side — the data side seems more tractable because..." Interviewers give hints to candidates who are visibly reasoning and cannot help someone sitting quietly.
 
+**If you genuinely do not know**, say so and say what you would do about it: "I have not used Redis in production. I know it is an in-memory store used for caching — if I needed it, I would start with the eviction policy and how it behaves when the cache is cold." That scores far better than guessing, and interviewers can tell the difference.
+
 ---
 
 ## Fixing them
@@ -154,6 +229,8 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 
 **Ending stories without a number.** Unquantified claims cannot be weighed against other candidates.
 
+**Assuming a student project has nothing to count.** Users, records, hours saved and team size are all there, uncounted.
+
 **Answering a question you prepared rather than the one asked.** Pausing two seconds and repeating it back prevents it.
 
 **Spending the answer on context.** Interviewers score the action, so two sentences of situation is the ceiling.
@@ -161,6 +238,8 @@ Before the interviews, make sure your resume gets you there — the [free ATS sc
 **Offering a disguised weakness.** It reads as evasion and scores worse than a real one would.
 
 **Asking no questions at the end.** Consistently read as disinterest and trivially avoidable.
+
+**Asking something the job posting already answered.** It shows you did not read it.
 
 **Thinking in silence.** Narrate instead, because interviewers help candidates who are visibly reasoning.
 
@@ -176,9 +255,13 @@ Rambling. It is a structure problem rather than a knowledge problem, and it is f
 
 The interviewer is scoring you individually. Collaborative phrasing makes it impossible to identify what you actually contributed.
 
+### Does saying "I" sound arrogant?
+
+No. "The team did X, I did Y" is a factual split, and it is the only way an interviewer can score you. Leaving it out reads as having done nothing specific rather than as modesty.
+
 ### What if I have no numbers for a story?
 
-Use a concrete before-and-after state. A clear change in situation is far better than claiming something improved.
+Count something you never thought to count — users, records, attendees, hours the manual version took. If there is genuinely nothing, use a concrete before-and-after state instead.
 
 ### How do I stop answering the wrong question?
 
@@ -188,9 +271,17 @@ Pause for two seconds after the question and repeat it back if unsure. Most wron
 
 No — it is the expected answer. Disguised strengths are recognised instantly and score as evasion.
 
+### What failure should I use if I am still a student?
+
+A missed project deadline, a group assignment you did not check in on, a demo that broke. Interviewers are testing self-awareness, not the size of the disaster.
+
 ### Should I really ask questions at the end?
 
 Yes. Not asking is consistently read as disinterest, and preparing four takes ten minutes.
+
+### What do I do if I genuinely do not know the answer?
+
+Say so, then say what you do know and how you would approach finding out. That scores well above guessing, and interviewers can tell the difference easily.
 
 ### What do I do when I get stuck?
 
@@ -204,6 +295,6 @@ Fixing these matters only if your resume gets you the interview. [Check your ATS
 
 Record two answers today and check them against three things only — did you say "we" where you meant "I", did the answer end with a number, and did the point arrive within the first thirty seconds. Those three account for most of what separates a strong interview from a weak one.
 
-Then fix one habit at a time rather than all of them. Pick whichever was worst on the recording, practise until it improves, and only then move to the next — simultaneous correction reliably fixes nothing.
+Then go and count something. Open the repository and check the commit count, ask how many people came to the sessions you ran, work out how long the manual version of your project actually took. Twenty minutes of counting changes every story you tell.
 
-Finally, prepare the two things that are trivially avoidable and consistently missed: one genuine weakness with the fix you applied, and four questions to ask at the end. Both take ten minutes and both are scored.
+Finally, prepare the two things that are trivially avoidable and consistently missed: one genuine weakness with the fix you actually applied, and four questions to ask at the end. Both take ten minutes and both are scored.
