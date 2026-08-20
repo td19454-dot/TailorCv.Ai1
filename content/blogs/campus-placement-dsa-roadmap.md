@@ -76,6 +76,31 @@ Contests and mock tests under real time pressure. This is a separate skill from 
 
 ---
 
+## The patterns, and the signal that tells you which one
+
+This is the part that converts effort into results. Almost every campus problem is one of these, and each has a giveaway in the question wording.
+
+| Pattern | The signal in the question | Typical problems |
+|---|---|---|
+| **Two pointers** | Sorted array, pair or triplet, "without extra space" | Two sum on sorted, remove duplicates, container with most water |
+| **Sliding window** | "Contiguous subarray", "substring", fixed size k | Max sum subarray of size k, longest substring without repeats |
+| **Hash map frequency** | "Count", "duplicate", "appears exactly", "anagram" | First non-repeating char, group anagrams, two sum |
+| **Binary search** | Sorted input, or "minimum/maximum value such that" | Search rotated array, koko eating bananas, sqrt |
+| **Prefix sum** | Repeated range-sum queries, "subarray sums to k" | Subarray sum equals k, running sum |
+| **Fast and slow pointers** | Linked list, "cycle", "middle" | Detect cycle, find middle, palindrome linked list |
+| **Monotonic stack** | "Next greater", "previous smaller", histogram | Next greater element, largest rectangle, daily temperatures |
+| **Recursion / backtracking** | "All possible", "generate every", "combinations" | Subsets, permutations, N-queens, word search |
+| **Tree DFS** | "Path", "depth", "root to leaf" | Max depth, path sum, diameter, LCA |
+| **Tree BFS** | "Level", "shortest in an unweighted structure" | Level order traversal, minimum depth, right side view |
+| **Graph BFS/DFS** | Grid, "islands", "connected", "reach" | Number of islands, rotting oranges, course schedule |
+| **DP** | "Maximum/minimum ways", overlapping choices | Climbing stairs, house robber, coin change, LCS |
+
+**How to use this table.** When you hit an unfamiliar problem, do not look for the solution — look for the signal. "Longest substring with at most k distinct characters" contains the word substring, so it is a sliding window before you have thought about anything else.
+
+**That recognition step is the entire interview skill.** Nobody expects you to have seen the exact problem. They expect you to place it within thirty seconds.
+
+---
+
 ## What to skip
 
 Explicitly, because time spent here is time not spent on what actually appears:
@@ -100,6 +125,19 @@ A small number of top product companies go further, but for the overwhelming maj
 
 **A reasonable weekly rhythm:** 8-10 new problems, 3-4 revisions, one timed session.
 
+### What a pattern log line looks like
+
+Four columns in a spreadsheet. Two minutes per problem, and it is the highest-value thing in this guide after the pattern table.
+
+| Problem | Pattern | Got it? | Note to myself |
+|---|---|---|---|
+| Longest substring without repeating | Sliding window + hash set | After 25 min | Forgot to move left pointer past the duplicate, not just by one |
+| Koko eating bananas | Binary search on answer | No, saw solution | Did not realise you can binary search a value, not an index |
+| Number of islands | Grid DFS | Yes, 12 min | Mark visited in place to avoid an extra grid |
+| Coin change | DP bottom-up | After 40 min | Set unreachable to a large value, not zero |
+
+**The "note to myself" column is the one that matters.** In a month you will not remember why you got it wrong, and that sentence is what makes the re-solve worth doing. Sort the sheet by pattern before revision week and the gaps become obvious.
+
 ---
 
 ## Adjusting by target
@@ -109,6 +147,19 @@ A small number of top product companies go further, but for the overwhelming maj
 **Product companies** ask medium difficulty with optimal complexity expected, and graphs and DP appear more often.
 
 **If you are starting late**, prioritise arrays, strings, hashing and binary search. They cover a disproportionate share of easy and easy-medium questions.
+
+### If you have four weeks, not four months
+
+Not ideal, and still workable. Cut the syllabus rather than skimming all of it.
+
+| Week | Focus | Target |
+|---|---|---|
+| **1** | Arrays, two pointers, sliding window, prefix sum | 30 problems, all easy to easy-medium |
+| **2** | Strings and hashing | 25 problems, plus re-solve week 1 failures |
+| **3** | Binary search, linked lists, stacks | 25 problems, plus one timed mock |
+| **4** | Recursion, basic trees, revision only | 15 new, everything else re-solves and two timed mocks |
+
+**Deliberately absent:** DP and graphs. With four weeks you are better served by being reliable on arrays, strings and hashing than shaky across everything — and those three carry most of the easy-medium band where campus questions live.
 
 The full round mechanics are in [the campus placement coding round guide](https://thetailorcv.com/blog/campus-placement-coding-round-guide).
 
@@ -120,7 +171,11 @@ The full round mechanics are in [the campus placement coding round guide](https:
 
 **Counting problems instead of logging patterns.** The count is not the skill; recognising which pattern a new problem belongs to is.
 
+**Looking for the solution rather than the signal.** The interview skill is placing an unfamiliar problem in thirty seconds, not having seen it before.
+
 **Never revising.** Patterns fade, and students routinely forget material they solved two months earlier.
+
+**Logging that you got it wrong without logging why.** In a month the re-solve teaches you nothing without that sentence.
 
 **Studying advanced topics that do not appear.** Segment trees and max flow are time taken from arrays and hashing.
 
@@ -144,6 +199,10 @@ The full round mechanics are in [the campus placement coding round guide](https:
 
 Arrays, strings, hashing and binary search carry the largest share of campus questions. Trees, recursion and basic DP follow.
 
+### How do I know which pattern a new problem uses?
+
+Read for the signal words. "Substring" or "contiguous" means sliding window; "sorted" plus "pair" means two pointers; "next greater" means monotonic stack.
+
 ### Which language should I use?
 
 Whichever you know best. C++ for its standard library and speed, Java widely accepted, Python fine for most campus rounds though slower on tight limits.
@@ -158,11 +217,11 @@ Roughly four months of consistent work at 8-10 new problems and a few revisions 
 
 ### How do I make patterns stick?
 
-Log the pattern for every problem you solve, and re-solve wrong answers after a week and again after a month.
+Log the pattern and the specific reason you got it wrong, then re-solve after a week and again after a month. The reason is what makes the re-solve useful.
 
 ### What if placements are next month?
 
-Prioritise arrays, strings, hashing and binary search, do timed mocks immediately, and target companies that weight aptitude more heavily than DSA depth.
+Follow the four-week plan — arrays, strings, hashing, binary search and basic trees only. Skip DP and graphs entirely; reliability on the easy-medium band beats shakiness everywhere.
 
 ---
 
@@ -170,8 +229,8 @@ DSA only matters if your resume gets you into the drive. [Check your ATS score f
 
 ## Make This Practical
 
-Follow the order rather than solving randomly. Arrays and strings first because they carry the largest share of questions, then hashing and binary search, then recursion and trees, then basic DP and graphs. Early effort in that sequence pays fastest.
+Follow the order rather than solving randomly. Arrays and strings first because they carry the largest share of questions, then hashing and binary search, then recursion and trees, then basic DP and graphs.
 
-Then change what you track. Log the pattern for every problem — two pointers, sliding window, monotonic stack — instead of counting problems solved. Recognising shapes is the skill; the count is not.
+Then start a pattern log today — four columns, two minutes per problem, and one of them is why you got it wrong in your own words. Sort it by pattern before a revision week and your actual gaps become obvious in a way that a solved-problem count never shows you.
 
-Finally, build revision into the week. Eight to ten new problems, three to four re-solves of things you previously got wrong, and one timed session — because patterns fade without spaced repetition, and time pressure is a separate skill from knowing the answer.
+Finally, train the recognition step rather than the solution. When you open an unfamiliar problem, spend thirty seconds finding the signal — "substring" means sliding window, "sorted plus pair" means two pointers — before you write anything. That thirty seconds is what the interview is actually testing.
