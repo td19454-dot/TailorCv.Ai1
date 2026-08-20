@@ -34,6 +34,24 @@ Before applying to anything, make sure your resume works — the [free ATS score
 
 **The arithmetic matters here.** A student averaging 6.0 through first and second year needs sustained 8.0+ across the remaining semesters to reach 7.5. That is difficult. The same student acting in second year rather than fourth has a far easier path.
 
+### What recovery actually requires
+
+Assume eight semesters weighted equally. This is what it takes to reach a 7.5 CGPA from where you are now.
+
+| Current CGPA | After semester | Needed average in every remaining semester | Realistic? |
+|---|---|---|---|
+| 6.0 | 4 (end of 2nd year) | 9.0 | Very hard, but possible |
+| 6.0 | 6 (end of 3rd year) | 10.0 | No |
+| 6.5 | 4 | 8.5 | Hard, achievable |
+| 6.5 | 6 | 9.5 | Effectively no |
+| 7.0 | 4 | 8.0 | Achievable |
+| 7.0 | 6 | 8.5 | Hard but possible |
+| 7.2 | 6 | 8.1 | Achievable |
+
+**Look down the "realistic" column.** The same starting CGPA moves from possible to impossible between end of second year and end of third year — and nothing about the student changed, only the number of semesters left to average over.
+
+**This is the entire argument for acting now.** A 6.5 student in second year has a hard but real path to 7.5. The same student two years later does not, and no amount of effort in final year changes the arithmetic.
+
 **Clear backlogs immediately.** Many companies filter on current backlogs and some on backlog history. A paper carried forward is a filter you may not clear later — see [the campus placement backlog guide](https://thetailorcv.com/blog/campus-placement-backlog-guide) and [the low CGPA guide](https://thetailorcv.com/blog/campus-placement-low-cgpa-guide).
 
 ---
@@ -108,17 +126,39 @@ The behavioural questions this feeds are in [campus placement HR interview quest
 
 ---
 
+## What this looks like in a normal week
+
+The plan above sounds like a lot until it is laid against an actual timetable. It is roughly six hours a week, most of it in slots you already waste.
+
+| When | What | Time |
+|---|---|---|
+| **Weekday mornings, before class** | Aptitude — one topic, 15 questions | 30 min × 5 |
+| **Two weekday evenings** | DSA — one problem, properly, with the pattern logged | 45 min × 2 |
+| **Saturday** | Project work — one small feature or one bug | 2–3 hrs |
+| **Sunday, 20 minutes** | Re-solve one DSA problem you previously got wrong | 20 min |
+| **Once a month** | Push everything to GitHub, update the README | 30 min |
+
+**That is about six hours a week**, and it does not require dropping anything you currently do. Compare it to what the same student does in semester seven: eight hours a day for a month, panicking, with a CGPA that is now fixed and a GitHub account created three weeks ago.
+
+**The point is not that six hours is a lot.** It is that six hours a week for eighteen months is roughly 470 hours, and there is no way to compress 470 hours into the month before placements — which is precisely why so few people arrive prepared.
+
+**If you can only do one thing from that table**, do the first row. Aptitude eliminates more candidates than anything else and is the most responsive to daily repetition.
+
+---
+
 ## Common Mistakes
 
 **Assuming second year is too early.** Everything companies screen on is built before final year, which makes this the only time it is genuinely changeable.
 
-**Letting CGPA drift.** It is cumulative, and recovering from a weak start requires sustained high performance that gets harder each semester.
+**Letting CGPA drift.** It is cumulative, and a 6.5 that is recoverable at the end of second year is effectively fixed by the end of third.
 
 **Carrying backlogs forward.** They become eligibility filters you cannot clear once the season begins.
 
 **Cramming aptitude later instead of daily practice now.** Pattern recognition builds through spaced repetition and cannot be replicated by intensity in the final month.
 
 **Collecting tutorial projects instead of building one real thing.** Six clones interview worse than one deployed project with real users.
+
+**Creating a GitHub account in final year.** An eighteen-month commit history and an account with three commits are read very differently.
 
 **Wasting the summer after second year.** It is the highest-value internship window and applications open months ahead.
 
@@ -133,6 +173,14 @@ The behavioural questions this feeds are in [campus placement HR interview quest
 ### Is second year too early to prepare for placements?
 
 No — it is the ideal time. CGPA is still recoverable, projects have time to mature, and aptitude ability builds through months of practice rather than weeks.
+
+### How much can I realistically raise my CGPA?
+
+From 6.5 at the end of second year, reaching 7.5 needs about 8.5 every remaining semester — hard but real. From the same 6.5 at the end of third year it needs 9.5, which effectively is not happening.
+
+### How many hours a week does this take?
+
+About six — thirty minutes of aptitude on weekday mornings, two DSA problems, and a few hours on your project at the weekend. It is the consistency over eighteen months that cannot be compressed later.
 
 ### What is the single most useful habit?
 
@@ -164,8 +212,8 @@ Build the resume early too. [Check your ATS score free](https://www.thetailorcv.
 
 ## Make This Practical
 
-Start thirty minutes of daily aptitude practice this week and protect your CGPA deliberately. Those two things are the highest-leverage actions available to you, and both become substantially harder or impossible to fix later — aptitude because it needs months of spaced repetition, CGPA because it is cumulative.
+Look at the CGPA recovery table and find your row. If you are at 6.5 now, reaching 7.5 needs about 8.5 every remaining semester — difficult but real. Wait two years and the same target needs 9.5, which is not happening. Nothing about you will have changed; only the number of semesters left to average over.
 
-Then start one real project on a problem you actually have, deploy it, and let it run for eighteen months. The bugs and constraints you hit over that period become the "hardest part" answer that carries technical interviews, and a project started in final year cannot produce them.
+Then put the weekly plan into your actual timetable this week — thirty minutes of aptitude before class on weekdays, two DSA problems in the evening, a few hours on one real project at the weekend. Six hours a week for eighteen months is around 470 hours, and there is no way to compress that into the month before placements.
 
-Finally, apply for a summer internship after second year, take a role with real responsibility in a club, and decide by year end whether you are targeting service-based or product-based companies — because that decision determines where your next two years of preparation should go.
+Finally, apply for a summer internship after second year, take a role with real responsibility rather than joining a club, and put every project on GitHub as you build it — because an eighteen-month commit history and an account created three weeks before your interview are read very differently.
