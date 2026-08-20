@@ -184,17 +184,7 @@ When you do need to cut, there is an order.
 
 **Whether it parses.** A perfectly-lengthed resume that extracts as scrambled text is worth nothing — see [the ATS tables and columns guide](https://thetailorcv.com/blog/ats-tables-columns-guide).
 
-### What belongs in the top third
-
-| Element | Space it deserves |
-|---|---|
-| **Name and contact line** | 2–3 lines, no more |
-| **Specific summary, or nothing** | 2–3 lines |
-| **Current or most recent role** | Fully, with your best bullets |
-| **One quantified result** | Visible without scrolling |
-| **Key skills, if the role is technical** | One grouped line |
-
-**What does not belong there:** a photo, a mission statement, a skills matrix with rating bars, or anything that costs vertical space without carrying evidence.
+**What does not belong in that top third:** a photo, a mission statement, a skills matrix with rating bars, or anything else that costs vertical space without carrying evidence.
 
 ---
 

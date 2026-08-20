@@ -45,16 +45,6 @@ Your name, your skills and your experience are all present, and none of it means
 
 **The critical part:** your document still looks perfect. You have no indication anything went wrong.
 
-### What the reader sees versus what the system sees
-
-| On your screen | After extraction |
-|---|---|
-| A clean sidebar listing Python, SQL, Tableau | Skill names wedged between job title fragments |
-| "Senior Data Analyst, Acme Corp, 2023-2026" | Title and dates split across separate lines |
-| A bullet about reducing stockouts by 18% | The sentence broken in half by column text |
-| Contact details neatly grouped in the sidebar | Email and phone scattered or missing |
-| An organised, professional document | An unusable record in the database |
-
 ---
 
 ## Layout risk, ranked
@@ -130,18 +120,7 @@ You cannot tell by looking. Three ways to actually verify:
 
 **3. Check the field mapping specifically.** Did your phone number extract? Your job titles? Your dates? Missing fields point directly at the layout element that swallowed them.
 
-**Do this once per template.** If you change resume design, check again.
-
-### Reading the result
-
-| What you see in the pasted text | Diagnosis |
-|---|---|
-| Clean, in the order you wrote it | Layout is safe |
-| Skills mixed into job descriptions | Two-column interleaving |
-| Contact details missing entirely | Header, footer or sidebar loss |
-| Whole sections absent | Text boxes or text-as-image |
-| Dates separated from their roles | Table or column structure lost |
-| Nothing pastes at all | No text layer — see [the file format guide](https://thetailorcv.com/blog/ats-file-format-guide) |
+**Do this once per template.** If you change resume design, check again. If nothing pastes at all, the problem is a missing text layer rather than your layout — see [the file format guide](https://thetailorcv.com/blog/ats-file-format-guide).
 
 ---
 
