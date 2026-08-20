@@ -88,6 +88,30 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 
 ---
 
+## One puzzle, solved out loud
+
+The method matters more than the answer, so here is what a scoring response actually sounds like. The puzzle is the nine balls.
+
+> **Candidate:** So — nine balls, one is heavier than the other eight, which are all identical. I have a balance scale, and I need to find the heavy one in two weighings. Can I assume the scale only tells me which side is heavier, not the actual weights?
+>
+> **Interviewer:** Correct.
+>
+> **Candidate:** Right. My first instinct is to split them in half, but nine is odd, and more importantly a balance gives me three outcomes, not two — left heavy, right heavy, or balanced. If I only split into two groups I am throwing away one of those outcomes. So three groups of three feels better.
+>
+> Let me try a smaller version to check. Three balls, one weighing. I put one on each side. If one side drops, that is the ball. If they balance, it is the one I left out. So three balls take one weighing.
+>
+> That generalises. Nine balls: weigh three against three. If one side drops, the heavy ball is in that group of three. If they balance, it is in the group I set aside. Either way I am down to three balls after one weighing, and I already showed three balls take one more. Two weighings total.
+>
+> Checking it against the constraints — two weighings, balance scale only, works regardless of which group it lands in. That holds.
+
+**What scored there, in order:** restating the problem, asking a clarifying question, rejecting the obvious approach *with a reason*, trying a smaller case, generalising from it, and checking against the constraints at the end.
+
+**What did not happen:** two minutes of silence followed by "three groups of three".
+
+**The candidate who already knew the answer** and said "divide into three groups of three" in four seconds scores *worse* than this, because none of the reasoning was visible. If you know it, say so and offer to walk through the logic anyway.
+
+---
+
 ## The method
 
 **1. Restate the problem.** Confirms you understood it and buys thinking time.
@@ -103,6 +127,20 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 **6. Check the answer** against the constraints before declaring it.
 
 **If you already know the puzzle**, say so: *"I've seen this one — should I walk through the reasoning, or would you prefer a different problem?"* Interviewers respect it, and pretending to derive a memorised answer is transparent and damaging if caught.
+
+### What to say when you are stuck
+
+Being stuck is expected. Freezing is what costs you. Have these ready.
+
+| Instead of silence | Say |
+|---|---|
+| (thinking with no sound) | "Let me think about a smaller version of this first" |
+| "I don't know" | "I can see two approaches — can I talk through why I'm unsure about both?" |
+| (starting over silently) | "That direction isn't working because X, so let me try Y" |
+| "Is it 4?" | "I think it's 4, and here's the reasoning — can I check it against the constraints?" |
+| (waiting for a hint) | "I'm stuck on how to handle the case where they balance. Any nudge?" |
+
+**Asking for a nudge is allowed and is not a failure.** What is scored is whether you had located *where* you were stuck. "I'm stuck on the balanced case" shows you have understood the structure; "I don't know" shows nothing.
 
 ---
 
@@ -122,11 +160,15 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 
 **Sitting silently while thinking.** The interviewer cannot score reasoning they cannot hear, and this is the most common failure by a wide margin.
 
+**Answering instantly because you knew it.** A four-second correct answer with no visible reasoning scores worse than a slower one that showed the route.
+
 **Jumping to an answer without stating assumptions.** Most puzzles are deliberately underspecified, and asking is part of the assessment.
 
 **Not trying a smaller case when stuck.** Solving three balls before nine usually reveals the structure of the whole solution.
 
 **Pretending to derive a puzzle you already know.** It is transparent, and saying you have seen it costs you nothing.
+
+**Saying "I don't know" instead of naming where you are stuck.** "I'm stuck on the balanced case" shows structure; "I don't know" shows nothing.
 
 **Ignoring hints.** They are offered deliberately, and missing one scores worse than needing one.
 
@@ -154,15 +196,19 @@ Learn the underlying patterns instead. Six or seven structures cover most questi
 
 ### What if I already know the puzzle?
 
-Say so. Offer to walk through the reasoning or take a different question. Pretending to derive a memorised answer is transparent.
+Say so. Offer to walk through the reasoning or take a different question. Answering instantly from memory actually scores worse, because no reasoning was visible.
 
 ### What if I get stuck?
 
-Try a smaller case, state where your reasoning breaks down, or ask a clarifying question. Interviewers give hints to candidates who are visibly reasoning.
+Name where you are stuck rather than saying you do not know, try a smaller case, and ask for a nudge if you need one. Interviewers give hints to candidates who are visibly reasoning.
 
 ### Is it bad to need a hint?
 
 No. Missing one that has been offered is far worse than needing one.
+
+### Is it acceptable to ask for a hint directly?
+
+Yes, provided you can say which part you are stuck on. That sentence demonstrates you have understood the structure of the problem.
 
 ### How much time should I spend on puzzles?
 
@@ -174,8 +220,8 @@ Preparation matters only if your resume gets you the interview. [Check your ATS 
 
 ## Make This Practical
 
-Practise out loud, with another person listening. Silence while thinking is the single most common failure in puzzle rounds, and solving quietly at a desk builds precisely the wrong habit for a question type where the reasoning is the answer.
+Take the nine-balls transcript above and say it out loud, to another person, at normal speaking pace. That is what a scoring answer sounds like — restate, clarify, reject the obvious approach with a reason, try a smaller case, generalise, check. Solving quietly at a desk trains precisely the wrong habit.
 
-Then learn the six or seven underlying patterns — three-way division for weighing, forbidden states for crossing, second channels for switch problems, explicit enumeration for probability — rather than memorising individual puzzles. Structure recognition transfers; memorisation does not.
+Then prepare the stuck phrases, because that is where most rounds are lost. "Let me try a smaller version", "that direction isn't working because X", and "I'm stuck on the balanced case — any nudge?" all keep you scoring while you think. Silence and "I don't know" score nothing.
 
-Finally, adopt one method and use it every time: restate, ask what you may assume, try a smaller case, narrate your reasoning, then check the answer against the constraints. And find out from your placement cell whether your target companies use puzzles at all, because for many they deserve far less time than aptitude and DSA.
+Finally, learn the six or seven structures rather than memorising puzzles, and ask your placement cell whether your target companies use them at all — for many, this deserves far less of your time than aptitude and DSA.

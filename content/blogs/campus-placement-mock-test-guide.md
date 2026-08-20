@@ -84,6 +84,19 @@ This is where the improvement actually happens, and it takes longer than the tes
 
 **Keep an error log.** One line per mistake with its category. Reviewing your own recurring errors is worth more than another hundred fresh questions.
 
+### The four causes, and what each one tells you to do this week
+
+| Cause | What it looks like | The fix | What does NOT fix it |
+|---|---|---|---|
+| **Concept gap** | You had no method at all | Study that specific topic | More mocks |
+| **Calculation error** | Right method, wrong arithmetic | 10 min daily mental maths — tables to 20, squares to 30, common fractions | Studying the topic again |
+| **Misread** | You solved a slightly different question | Underline what is asked before solving | Anything to do with speed |
+| **Timeout** | You knew it, the clock ran out | Practise the skip decision | Studying the topic |
+
+**Read the last column carefully.** Three of the four causes are made worse by the standard student response, which is to go back and revise the chapter. If your errors are mostly arithmetic slips and timeouts, another week of theory changes nothing at all.
+
+**Count your categories after each mock.** A student with 12 wrong answers split as 2 concept, 6 calculation, 1 misread, 3 timeout does not have a knowledge problem — they have an arithmetic-speed problem, and ten minutes of mental maths a day will move their score further than another chapter will.
+
 ---
 
 ## When to do them
@@ -102,6 +115,22 @@ The full sequencing is in [the campus placement preparation timeline](https://th
 
 ---
 
+## The three-pass method inside the test
+
+Most students go question 1 to question 30 in order and run out of time with easy questions unattempted at the end. Do this instead.
+
+**Pass 1 — take the free marks.** Go through the whole section and solve only what you can do quickly and confidently. Mark anything that looks like more than about ninety seconds and move on without starting it.
+
+**Pass 2 — the marked ones.** Come back and work through what you flagged, hardest last. You now know exactly how much time you have per question rather than guessing.
+
+**Pass 3 — guess and check.** Fill in anything still blank if there is no negative marking, and re-check any answer where you doubted yourself.
+
+**Why this beats going in order.** Question 4 being hard costs you question 27, which you could have solved in forty seconds. Difficulty is not distributed evenly through a paper, and going in order means the hardest question in the section decides how much of the rest you ever see.
+
+**The ten-second rule that makes it work:** if you cannot see the route to an answer within about ten seconds, mark it and move. Not "I will try for one more minute" — mark it and move. That decision, made thirty times in a paper, is worth more than any single topic you could revise.
+
+---
+
 ## Company-specific practice
 
 **Ask your placement cell what specific companies asked.** Many maintain records of test patterns from previous years, and this is the most underused resource on campus.
@@ -110,7 +139,19 @@ The full sequencing is in [the campus placement preparation timeline](https://th
 
 **Match your practice to the pattern.** Preparing for a heavy quantitative test when your target company weights logical reasoning is wasted effort.
 
-**Know the negative marking rule before the day**, because it completely changes your guessing strategy — see [the campus placement coding round guide](https://thetailorcv.com/blog/campus-placement-coding-round-guide) for the equivalent in coding rounds.
+**Know the negative marking rule before the day**, because it completely changes your guessing strategy.
+
+| Marking scheme | What to do with a question you cannot solve |
+|---|---|
+| **No negative marking** | Always guess. A blank scores the same as a wrong answer |
+| **−0.25 per wrong** | Guess if you have eliminated two options, otherwise leave it |
+| **−1 per wrong** | Only answer if you are genuinely confident |
+| **Adaptive test** | Answer everything; skipping is usually not permitted anyway |
+| **Sectional cut-offs** | Guess in your weak section — a blank cannot clear a cut-off |
+
+**Find this out before the day, not during it.** Students routinely leave twelve questions blank in a test with no negative marking, which is simply free marks discarded.
+
+See [the campus placement coding round guide](https://thetailorcv.com/blog/campus-placement-coding-round-guide) for the equivalent strategy in coding rounds.
 
 ---
 
@@ -118,7 +159,11 @@ The full sequencing is in [the campus placement preparation timeline](https://th
 
 **Doing mocks without analysing them.** The analysis is where improvement happens, and it takes longer than the test itself.
 
-**Treating every wrong answer as a concept gap.** Calculation slips, misreadings and timeouts need entirely different fixes.
+**Treating every wrong answer as a concept gap.** Calculation slips, misreadings and timeouts need entirely different fixes, and revising the chapter fixes none of them.
+
+**Attempting questions in order.** One hard question early costs you several easy ones at the end.
+
+**Not knowing the negative marking rule.** Blanks in a test with no penalty are free marks thrown away.
 
 **Pausing or looking things up mid-test.** It measures nothing and trains nothing.
 
@@ -148,6 +193,18 @@ Around two to three months out, after topic-wise accuracy is reasonable. Before 
 
 The analysis. Categorising each wrong answer as a concept gap, calculation error, misreading or timeout is what turns a score into an improvement plan.
 
+### My score is not improving even though I keep studying. Why?
+
+Probably because your errors are not concept gaps. Count the four categories after your next mock — if arithmetic slips and timeouts dominate, more theory will not help.
+
+### In what order should I attempt questions?
+
+Three passes — take the quick ones first, return to what you flagged, then guess and re-check. Going in order lets one hard early question cost you several easy later ones.
+
+### Should I guess?
+
+Depends on the marking scheme. With no negative marking, always. With −0.25, guess after eliminating two options. With −1, only when confident.
+
 ### Should I use a calculator while practising?
 
 No. Most placement tests do not permit one, so practising with it builds a habit you cannot use on the day.
@@ -170,8 +227,8 @@ Mocks matter only if your resume gets you into the drive. [Check your ATS score 
 
 ## Make This Practical
 
-Run mocks as actual simulations — full length, strictly timed, no calculator, phone in another room, nothing looked up mid-test. A paused mock trains nothing, and the conditions are the point.
+After your next mock, count your wrong answers in four buckets — concept gap, calculation error, misread, timeout — and look at which one dominates. If it is not concept gaps, then revising the chapter is the wrong response, and that single realisation is worth more than another week of theory.
 
-Then spend longer on the analysis than on the test. Categorise every wrong answer as a concept gap, a calculation error, a misreading or a timeout, because those four need entirely different responses and treating them all as "study more" only fixes the first.
+Then change how you move through the paper. Three passes: take everything quick first, return to what you flagged, then guess and re-check. And apply the ten-second rule ruthlessly — if you cannot see the route to an answer in ten seconds, mark it and move rather than giving it one more minute.
 
-Finally, aim your practice at what you will actually face. Ask your placement cell and your seniors for the specific test pattern of your target companies — section composition, timing, negative marking — and match your mocks to it rather than practising generically.
+Finally, find out the marking scheme and the section pattern for your target companies from your placement cell and your seniors before the day. Leaving questions blank in a test with no negative marking is free marks discarded, and students do it every year.
