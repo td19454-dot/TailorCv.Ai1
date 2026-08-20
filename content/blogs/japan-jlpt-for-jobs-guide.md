@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, JLPT, Japanese Language, International Careers, Career Advice]
 category: Career Advice
-image: public/blog-images/japan-jlpt-for-jobs-guide.png
+image: public/blog-images/japan-jlpt-for-jobs-guide.webp
 slug: japan-jlpt-for-jobs-guide
 keywords: jlpt n2 jobs, jlpt level for work japan, n1 vs n2, japanese language test employment
 ---

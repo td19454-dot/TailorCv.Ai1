@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Job Bank, Newcomers, Job Search 2026, NOC Codes]
 category: Job Search
-image: public/blog-images/canada-job-bank-guide.png
+image: public/blog-images/canada-job-bank-guide.webp
 slug: canada-job-bank-guide
 keywords: canada job bank, noc code lookup, job outlook canada, government job board canada, wage data canada
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Startup Visa, Entrepreneurship, Immigration, Business]
 category: Career Advice
-image: public/blog-images/canada-startup-visa-guide.png
+image: public/blog-images/canada-startup-visa-guide.webp
 slug: canada-startup-visa-guide
 keywords: canada startup visa, suv program, designated organization canada, entrepreneur immigration canada
 ---

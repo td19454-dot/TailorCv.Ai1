@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, Case Study, Career Advice, Job Search 2026, Writing]
 category: Portfolio
-image: public/blog-images/portfolio-case-study-writing.png
+image: public/blog-images/portfolio-case-study-writing.webp
 slug: portfolio-case-study-writing
 keywords: portfolio case study, how to write case study portfolio, ux case study structure, project write up
 ---

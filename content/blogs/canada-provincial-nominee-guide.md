@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, PNP, Express Entry, Immigration, Provincial Nominee]
 category: Career Advice
-image: public/blog-images/canada-provincial-nominee-guide.png
+image: public/blog-images/canada-provincial-nominee-guide.webp
 slug: canada-provincial-nominee-guide
 keywords: provincial nominee program, pnp canada, ontario oinp, bc pnp, express entry nomination
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, References, Job Offer, Newcomers, Hiring Process]
 category: Career Advice
-image: public/blog-images/canada-reference-check-guide.png
+image: public/blog-images/canada-reference-check-guide.webp
 slug: canada-reference-check-guide
 keywords: reference check canada, canadian references newcomer, job reference overseas, employment verification canada
 ---

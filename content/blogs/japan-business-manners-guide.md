@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Business Etiquette, Workplace Culture, Keigo, International Careers]
 category: Career Advice
-image: public/blog-images/japan-business-manners-guide.png
+image: public/blog-images/japan-business-manners-guide.webp
 slug: japan-business-manners-guide
 keywords: japanese business manners, keigo workplace, meishi exchange, japanese office etiquette, working in japan culture
 ---

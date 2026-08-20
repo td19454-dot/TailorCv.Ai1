@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Nenko, Compensation, Career Advice, Workplace Culture]
 category: Career Advice
-image: public/blog-images/japan-nenkou-seniority-explained.png
+image: public/blog-images/japan-nenkou-seniority-explained.webp
 slug: japan-nenkou-seniority-explained
 keywords: nenko joretsu, seniority system japan, japanese pay structure, promotion in japan, japanese company grades
 ---

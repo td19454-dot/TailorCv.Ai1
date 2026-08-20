@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Chicago, Midwest, Tech Careers, Relocation]
 category: Job Search
-image: public/blog-images/chicago-jobs-guide.png
+image: public/blog-images/chicago-jobs-guide.webp
 slug: chicago-jobs-guide
 keywords: chicago jobs, chicago tech jobs, trading firms chicago, midwest tech salary, cost of living chicago
 ---

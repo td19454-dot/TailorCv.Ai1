@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, New York, Tech Careers, Fintech, Compensation]
 category: Job Search
-image: public/blog-images/new-york-tech-jobs-guide.png
+image: public/blog-images/new-york-tech-jobs-guide.webp
 slug: new-york-tech-jobs-guide
 keywords: new york tech jobs, nyc software engineer salary, fintech jobs nyc, wall street tech
 ---

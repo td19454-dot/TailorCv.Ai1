@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Graduate Visa, International Students, Visa Sponsorship, Early Career]
 category: Career Advice
-image: public/blog-images/uk-graduate-visa-guide.png
+image: public/blog-images/uk-graduate-visa-guide.webp
 slug: uk-graduate-visa-guide
 keywords: uk graduate visa, post study work uk, graduate route visa, switching to skilled worker, international student uk jobs
 ---

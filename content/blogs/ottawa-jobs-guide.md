@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Ottawa, Public Service, Bilingual, Tech Careers]
 category: Job Search
-image: public/blog-images/ottawa-jobs-guide.png
+image: public/blog-images/ottawa-jobs-guide.webp
 slug: ottawa-jobs-guide
 keywords: ottawa jobs, federal public service canada, bilingual jobs canada, ottawa tech sector, government of canada careers
 ---

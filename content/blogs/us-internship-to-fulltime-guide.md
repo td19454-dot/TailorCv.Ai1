@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Internship, Return Offer, Early Career, Career Advice]
 category: Career Advice
-image: public/blog-images/us-internship-to-fulltime-guide.png
+image: public/blog-images/us-internship-to-fulltime-guide.webp
 slug: us-internship-to-fulltime-guide
 keywords: return offer internship, internship to full time usa, summer internship conversion, new grad hiring usa
 ---

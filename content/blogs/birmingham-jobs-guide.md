@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Birmingham, Midlands, Professional Services, Relocation]
 category: Job Search
-image: public/blog-images/birmingham-jobs-guide.png
+image: public/blog-images/birmingham-jobs-guide.webp
 slug: birmingham-jobs-guide
 keywords: birmingham jobs, midlands careers, professional services birmingham, hs2 jobs, birmingham tech
 ---

@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Behavioral Interview, STAR Method, Interview Preparation, Career Advice]
 category: Interview Preparation
-image: public/blog-images/us-behavioral-interview-star-guide.png
+image: public/blog-images/us-behavioral-interview-star-guide.webp
 slug: us-behavioral-interview-star-guide
 keywords: star method interview, behavioral interview questions usa, tell me about a time, competency interview us
 ---

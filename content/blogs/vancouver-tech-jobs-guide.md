@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Vancouver, British Columbia, Tech Careers, Gaming]
 category: Job Search
-image: public/blog-images/vancouver-tech-jobs-guide.png
+image: public/blog-images/vancouver-tech-jobs-guide.webp
 slug: vancouver-tech-jobs-guide
 keywords: vancouver tech jobs, bc software engineer salary, vfx jobs vancouver, gaming jobs canada, vancouver housing cost
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, SQL, DBMS, Technical Interview, Freshers]
 category: Interview Preparation
-image: public/blog-images/campus-placement-sql-questions.png
+image: public/blog-images/campus-placement-sql-questions.webp
 slug: campus-placement-sql-questions
 keywords: sql interview questions freshers, second highest salary query, sql placement questions, joins interview
 ---

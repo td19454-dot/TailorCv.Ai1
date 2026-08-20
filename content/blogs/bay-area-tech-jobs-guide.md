@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Bay Area, San Francisco, Tech Careers, Compensation]
 category: Job Search
-image: public/blog-images/bay-area-tech-jobs-guide.png
+image: public/blog-images/bay-area-tech-jobs-guide.webp
 slug: bay-area-tech-jobs-guide
 keywords: bay area tech jobs, san francisco software engineer salary, silicon valley jobs, sf cost of living
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Recruitment Agencies, Job Search 2026, Recruiters, Career Advice]
 category: Job Search
-image: public/blog-images/uk-recruitment-agencies-guide.png
+image: public/blog-images/uk-recruitment-agencies-guide.webp
 slug: uk-recruitment-agencies-guide
 keywords: uk recruitment agencies, working with recruiters uk, contingency recruitment, agency cv format, recruiter tips
 ---

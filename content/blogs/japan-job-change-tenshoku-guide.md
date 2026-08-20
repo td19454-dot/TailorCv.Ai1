@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Tenshoku, Job Change, Career Advice, International Careers]
 category: Career Advice
-image: public/blog-images/japan-job-change-tenshoku-guide.png
+image: public/blog-images/japan-job-change-tenshoku-guide.webp
 slug: japan-job-change-tenshoku-guide
 keywords: tenshoku japan, changing jobs japan, japan recruitment agent, japan resignation, mid career hiring japan
 ---

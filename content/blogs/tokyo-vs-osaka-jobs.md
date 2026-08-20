@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Tokyo, Osaka, Relocation, Comparisons]
 category: Comparisons
-image: public/blog-images/tokyo-vs-osaka-jobs.png
+image: public/blog-images/tokyo-vs-osaka-jobs.webp
 slug: tokyo-vs-osaka-jobs
 keywords: tokyo vs osaka, working in osaka, kansai jobs, japan city comparison, cost of living japan
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Salary, Negotiation, Newcomers, Compensation]
 category: Career Advice
-image: public/blog-images/canada-salary-benchmarking-guide.png
+image: public/blog-images/canada-salary-benchmarking-guide.webp
 slug: canada-salary-benchmarking-guide
 keywords: canada salary research, job bank wages, pay transparency canada, canadian salary by province, newcomer salary
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Remote Work, Flexible Working, Hybrid, Job Search 2026]
 category: Job Search
-image: public/blog-images/uk-remote-jobs-guide.png
+image: public/blog-images/uk-remote-jobs-guide.webp
 slug: uk-remote-jobs-guide
 keywords: uk remote jobs, flexible working request uk, hybrid working uk, work from home jobs uk, remote job boards uk
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Leeds, Yorkshire, Finance, Health Data]
 category: Job Search
-image: public/blog-images/leeds-jobs-guide.png
+image: public/blog-images/leeds-jobs-guide.webp
 slug: leeds-jobs-guide
 keywords: leeds jobs, leeds tech jobs, financial services leeds, nhs digital leeds, yorkshire careers
 ---

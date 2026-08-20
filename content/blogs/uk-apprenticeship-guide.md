@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Apprenticeships, Retraining, Career Change, Early Career]
 category: Career Advice
-image: public/blog-images/uk-apprenticeship-guide.png
+image: public/blog-images/uk-apprenticeship-guide.webp
 slug: uk-apprenticeship-guide
 keywords: degree apprenticeship uk, apprenticeship for adults, apprenticeship levy, career change apprenticeship, level 6 apprenticeship
 ---

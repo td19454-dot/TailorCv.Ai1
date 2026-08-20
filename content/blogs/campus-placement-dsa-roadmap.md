@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, DSA, Coding Interview, Freshers, Preparation]
 category: Interview Preparation
-image: public/blog-images/campus-placement-dsa-roadmap.png
+image: public/blog-images/campus-placement-dsa-roadmap.webp
 slug: campus-placement-dsa-roadmap
 keywords: dsa roadmap placements, data structures for placement, coding preparation plan, dsa topics campus
 ---

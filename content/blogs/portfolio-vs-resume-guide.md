@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, Resume Writing, Job Search 2026, Career Advice, Comparisons]
 category: Portfolio
-image: public/blog-images/portfolio-vs-resume-guide.png
+image: public/blog-images/portfolio-vs-resume-guide.webp
 slug: portfolio-vs-resume-guide
 keywords: portfolio vs resume, do i need a portfolio, resume or portfolio, portfolio for job application
 ---

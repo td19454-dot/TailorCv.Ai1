@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, French, Bilingual, Immigration, Express Entry]
 category: Career Advice
-image: public/blog-images/canada-french-language-advantage.png
+image: public/blog-images/canada-french-language-advantage.webp
 slug: canada-french-language-advantage
 keywords: french canada immigration, francophone express entry, tef tcf test, bilingual jobs canada, french crs points
 ---
