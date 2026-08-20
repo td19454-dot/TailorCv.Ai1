@@ -42,6 +42,23 @@ Start with the document that gets people to your portfolio at all — the [free 
 
 **Requiring login to view.** If a reviewer must create an account, they will not.
 
+### The failures you cannot see from your own laptop
+
+Every one of these looks fine to you and broken to a reviewer, which is exactly why they survive so long.
+
+| What breaks | Why you never notice | How to catch it |
+|---|---|---|
+| **Project needs your login** | You are permanently signed in | Open in a private window |
+| **Repo is set to private** | You can see it; nobody else can | Log out and open the link |
+| **Free tier has spun down** | You visited it recently, so it was warm | Check after not touching it for a week |
+| **Images take 20 seconds** | Your machine cached them | Private window, mobile data, not wifi |
+| **Layout breaks under 400px** | You only ever view it at desktop width | Open it on your actual phone |
+| **Local API the site calls** | It runs on your machine | Open it on your phone, not your laptop |
+| **Custom domain expired** | You have the old URL bookmarked | Type the URL on your resume, character by character |
+| **Link works but resume PDF's does not** | You test the site, not the document | Click the link inside the exported PDF |
+
+**The last row is the one that catches most people.** The portfolio is fine. The link on the resume was never clickable, or points at a typo of the real address.
+
 ---
 
 ## Things that waste the reviewer's time
@@ -92,21 +109,23 @@ Start with the document that gets people to your portfolio at all — the [free 
 
 ## The audit
 
-Do this once and it catches almost everything.
+Do this once and it catches almost everything. Twenty minutes.
 
-**Open your portfolio on a phone**, on mobile data, in a browser where you are not logged in.
+**1. Open your portfolio on your phone**, on mobile data rather than wifi, in a private browsing window. This single step catches the login, private-repo, caching, spun-down and mobile-layout failures at once.
 
-**Time how long the homepage takes to load.**
+**2. Count the seconds** until the homepage is readable. Over five, find the largest image and shrink it.
 
-**Click every link**, including project links and any GitHub repository.
+**3. Click every link** — every project, every repository, every demo, plus the contact links. From that same private window.
 
-**Ask someone outside your field to look for two minutes**, then ask them what you do and which project was strongest. If they cannot answer, the structure is wrong rather than the work.
+**4. Open your resume PDF and click the portfolio link inside it.** Not the site, the link in the document. This is the most commonly broken thing in the entire chain.
 
-**Check every number** against your resume.
+**5. Send it to someone outside your field** and ask two questions after two minutes: what do I do, and which project was strongest? If they cannot answer, the problem is structure rather than work.
 
-**Read it for typos** on a different day from when you wrote it.
+**6. Check every number** against what your resume claims. They must match exactly.
 
-**Confirm your contact details are correct** and easy to find.
+**7. Read it for typos on a different day** from the one you wrote it on.
+
+**8. Confirm your contact details** are correct, current, and findable without scrolling.
 
 ---
 
@@ -114,7 +133,11 @@ Do this once and it catches almost everything.
 
 **Linking something that does not work.** A dead link or a sleeping deployment is worse than no link, because the reviewer checked at your invitation.
 
+**Only ever testing while logged in.** Private repos and login-gated projects look perfect to you and are invisible to everyone else.
+
 **Ignoring mobile.** A substantial share of reviewers open portfolio links on a phone, and a broken layout eliminates you before content is read.
+
+**Never clicking the link inside the resume PDF.** The site can be perfect while the link that points to it was never clickable.
 
 **Showing output without reasoning.** It proves the work exists but not that you made decisions, which is what is being assessed.
 
@@ -135,6 +158,14 @@ Do this once and it catches almost everything.
 ### What is the single worst portfolio mistake?
 
 A broken link or a deployment that does not load. It is worse than having no portfolio, because you invited the reviewer to check and the check failed.
+
+### Why does my portfolio work for me but not for reviewers?
+
+Usually a login, a private repository, or browser cache. Open it in a private window on mobile data and the difference is immediate.
+
+### My free hosting keeps sleeping. Does that matter?
+
+Yes. A thirty-second cold start loses the reviewer before anything loads. Keep it warm during an active search, or move to hosting that does not sleep.
 
 ### How many projects should I include?
 
@@ -166,8 +197,8 @@ The resume is what gets people to your portfolio. [Check your ATS score free](ht
 
 ## Make This Practical
 
-Audit the mechanics before touching the content. Open your portfolio on a phone, on mobile data, logged out — then click every single link including repositories, and time the homepage load. A dead link is the worst failure available to you and the easiest to miss.
+Open your portfolio right now on your phone, on mobile data, in a private browsing window. That one step catches the private repository, the login wall, the cached images, the sleeping deployment and the broken mobile layout simultaneously — and every one of those looks perfect from your own laptop.
 
-Then cut rather than add. Remove everything except your two or three strongest pieces, because reviewers rarely go past the second and weak entries actively bury the good ones.
+Then open your resume PDF and click the portfolio link inside the document itself. Not the site. The link. It is the most commonly broken thing in the whole chain and almost nobody checks it, because testing the website feels like testing the link.
 
-Finally, add the reasoning that most portfolios lack. For each remaining piece, state the constraint you worked within, what you considered, what you personally owned, the measured outcome, and one thing you would do differently — then check every number matches your resume exactly.
+Finally, cut rather than add. Keep your two or three strongest pieces and delete the rest, then for each survivor state the constraint you worked within, what you personally owned, the measured outcome and one thing you would do differently — and make every number match your resume exactly.

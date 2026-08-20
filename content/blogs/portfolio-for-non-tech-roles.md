@@ -81,6 +81,32 @@ The structure is the same as any case study — problem, constraint, options, de
 
 ---
 
+## What one page actually looks like
+
+The abstraction is the hard part, so here is a complete example. This is one page of an HR portfolio, written by someone with two years of experience — not a director.
+
+> **Cutting new-hire onboarding from 3 weeks to 8 days**
+>
+> **The problem.** New joiners were taking about three weeks to become independently productive. Managers were repeating the same explanations, and two people in six months resigned within their probation period, both citing feeling unsupported in their exit conversations.
+>
+> **The constraint.** No budget for an onboarding platform, and I could not add work to managers who were already the bottleneck.
+>
+> **What I looked at first.** I asked the last eight joiners what they had needed and could not find. Six of the eight named the same three things: who to ask about IT access, where the leave policy actually lived, and what their first month was supposed to look like.
+>
+> **What I considered.** A formal buddy system, a written handbook, or a structured 30-day checklist owned by the joiner rather than the manager. The buddy system needed manager time I did not have. A handbook was what we already had, unread.
+>
+> **What I did.** Built a 30-day checklist the new joiner owns, with three scheduled check-ins at day 3, day 10 and day 30. Wrote one page answering the three questions everyone asked. Moved IT access requests to the week before the start date rather than day one.
+>
+> **Outcome.** Time to independent productivity dropped from about 3 weeks to 8 days across the next 11 hires. No probation-period resignations in the following year. Manager time on onboarding went down, not up.
+>
+> **What I would do differently.** I should have asked the joiners before designing anything. I spent the first week building a handbook nobody wanted, because I assumed the problem was missing information rather than not knowing who to ask.
+
+**Look at what that page does.** It names a real constraint, shows a decision between three options, has numbers on both sides of the change, and ends with an honest admission. None of it required a big budget or a senior title, and it took an afternoon to write.
+
+**Two of those pages is the entire portfolio.**
+
+---
+
 ## Handling confidentiality
 
 The objection most people raise, and it is manageable.
@@ -125,6 +151,8 @@ The objection most people raise, and it is manageable.
 
 **Mention it in a cover letter** where one is expected.
 
+**Print one copy** if you are interviewing in person. Handing over a page at the moment the question is asked is a different experience from promising to send something later.
+
 ---
 
 ## Common Mistakes
@@ -144,6 +172,8 @@ The objection most people raise, and it is manageable.
 **Making it eight pages.** Two to four, one case study per page or two.
 
 **Waiting until you have something impressive.** A modest, well-documented improvement beats an undocumented significant one.
+
+**Assuming you need seniority to have one.** The onboarding example above came from two years of experience and no budget.
 
 ---
 
@@ -165,6 +195,10 @@ No. A well-made PDF of two to four pages is entirely acceptable and often more u
 
 The problem, the constraint, what you considered, what you did, and the measurable outcome — the same structure as any case study.
 
+### I am only two years in. Do I have anything worth writing up?
+
+Almost certainly. The strongest examples are small process changes with clear before-and-after numbers, not large programmes with big budgets.
+
 ### When should I share it?
 
 At interview stage or as a follow-up, not attached to every application. The resume is what gets screened.
@@ -183,8 +217,8 @@ The resume still gets you the interview. [Check your ATS score free](https://www
 
 ## Make This Practical
 
-Pick two things you improved at work and write them up as a page each — the problem, the constraint you worked within, what you considered, what you did, and the measurable before-and-after. That document is the whole portfolio, and it takes an afternoon.
+Pick two things you improved at work and write each one up as a single page, following the shape of the onboarding example above — the problem, the constraint, what you considered, what you did, the numbers on both sides, and one honest thing you would do differently. That document is the whole portfolio, and it takes an afternoon.
 
-Then solve the confidentiality problem rather than accepting it as a blocker. Generalise the employer, use relative figures instead of absolute ones, describe the shape of the problem rather than the data, and ask your employer whether a sanitised version is acceptable.
+Then solve the confidentiality problem rather than treating it as a blocker. Generalise the employer, use relative figures instead of absolute ones, describe the shape of the problem rather than the data, and ask whether a sanitised version is acceptable — it usually is.
 
-Finally, use it at the right moment. Do not attach it to applications, where the resume does the screening — bring it to interviews so that "tell me about a process you improved" has a documented answer you can walk through and leave behind.
+Finally, use it at the right moment. Do not attach it to applications, where the resume does the screening. Bring it to the interview, and when "tell me about a process you improved" arrives, hand over the page instead of describing something from memory.
