@@ -43,6 +43,25 @@ Before any of it, make sure the resume you attach works — the [free ATS score 
 
 **Attachments.** PDF, named properly — `Ananya_Sharma_Resume.pdf`. Mention the attachment in the body.
 
+### The phrases to stop using
+
+These are standard in Indian student email and read badly to recruiters at product companies and multinationals. None of them are wrong in a grammatical sense; they simply mark the sender as inexperienced.
+
+| Instead of | Write |
+|---|---|
+| Respected Sir/Madam | Dear Ms Rao / Dear Hiring Team |
+| I am writing this mail to inform you that | I'm applying for the Backend Developer role |
+| Kindly do the needful | Could you let me know whether… |
+| Please find attached herewith | My resume is attached |
+| I would be highly obliged if you could | I'd welcome the chance to… |
+| Awaiting your positive response | Thank you for your time |
+| It would be a great honour to work | I'm interested in the role because… |
+| Thanking you in anticipation | Thank you |
+| Myself Ananya Sharma | I'm Ananya Sharma, a final-year… |
+| Sir, I want job | (delete and start again) |
+
+**Why this matters more than it should.** A recruiter reading forty student emails uses whatever signals are available. Two or three of these phrases in the first line places you in a category before your evidence is read — and the replacements are shorter, which also helps.
+
 ---
 
 ## Length and structure
@@ -125,6 +144,24 @@ Send within a day. Short.
 > Thank you,
 > Ananya Sharma
 
+### Asking to reschedule an interview
+
+Rare, awkward, and handled badly by most students. Give a reason in one clause, offer alternatives, and do not over-apologise.
+
+> Subject: Request to reschedule — Backend Developer interview, 14 October
+>
+> Dear Ms Rao,
+>
+> I'm scheduled to interview on 14 October at 11am. Unfortunately that clashes with a university examination I cannot move.
+>
+> Would any of these work instead — 15 October after 2pm, 16 October morning, or 17 October any time? I'm happy to fit around whatever suits the panel.
+>
+> Apologies for the inconvenience, and thank you for accommodating it.
+>
+> Ananya Sharma
+
+**The three specific slots are the whole trick.** "Could we reschedule?" hands the recruiter work; three options they can accept in one word does not. Ask as soon as you know, never the night before, and never for a reason that sounds optional.
+
 ### Declining an offer
 
 Do it properly — the industry is smaller than it looks.
@@ -164,6 +201,8 @@ Do it properly — the industry is smaller than it looks.
 
 **Using an unprofessional email address.** It is judged before the message is read, and creating a new one takes two minutes.
 
+**Opening with "Respected Sir/Madam" or "Myself Ananya".** It places you in a category before your evidence is read.
+
 **Vague subject lines.** "Regarding job" gets skipped in an inbox recruiters scan rather than read.
 
 **Burying the ask.** Recruiters read on mobile, so a paragraph of introduction before the point means the point is never reached.
@@ -173,6 +212,8 @@ Do it properly — the industry is smaller than it looks.
 **Forgetting to change the company name.** A recycled email naming the wrong employer is the most damaging small error in placement correspondence.
 
 **Following up more than once.** It converts a neutral non-reply into an active decision not to engage.
+
+**Asking to reschedule without offering slots.** It hands the recruiter work and frequently gets no reply.
 
 **Sending a generic thank-you.** Referencing something specific from the conversation is what distinguishes it from a template.
 
@@ -194,9 +235,17 @@ Under 150 words, with the ask in the first two lines. Recruiters read on mobile 
 
 Avoid it. It reads as dated and impersonal at most modern employers. Use the person's name if you have it, or "Dear Hiring Team".
 
+### What about "kindly do the needful" and "please find attached herewith"?
+
+Both mark you as inexperienced. "Could you let me know whether…" and "My resume is attached" say the same thing in fewer words.
+
 ### How many times should I follow up?
 
 Once, after a week or the stated timeline. Repeated follow-ups make non-response an active decision.
+
+### How do I ask to reschedule an interview?
+
+As early as possible, with a one-clause reason and three specific alternative slots. Offering options rather than asking a question is what gets it accepted.
 
 ### Is a thank-you email after an interview worth sending?
 
@@ -216,8 +265,8 @@ Make sure the resume you attach clears screening. [Check your ATS score free](ht
 
 ## Make This Practical
 
-Create a professional email address today if yours is not already one, and use it for everything placement-related. It is judged before anyone reads your message and takes two minutes to fix.
+Create a professional email address today if yours is not already one, then go through the phrase table and delete "Respected Sir/Madam", "kindly do the needful" and "please find attached herewith" from whatever draft you are currently sending. Both fixes take minutes and both are judged before your evidence is read.
 
-Then restructure how you write. Put the ask in the first two lines, keep the whole message under 150 words, give one or two pieces of concrete evidence, and close with a clear action — because recruiters scan on mobile and a paragraph of introduction means the point is never reached.
+Then restructure how you write. The ask in the first two lines, the whole message under 150 words, one or two pieces of concrete evidence, and a clear closing action — because recruiters scan on mobile and a paragraph of introduction means the point is never reached.
 
-Finally, save the five templates above and adapt them rather than writing from scratch each time. Change the company name every single time, follow up exactly once, send a thank-you within a day referencing something specific, and decline offers graciously — the industry is small enough that all of it is remembered.
+Finally, save the six templates and adapt them rather than writing from scratch. Change the company name every single time, follow up exactly once, offer three specific slots if you ever need to reschedule, and send a thank-you within a day that references something they actually said.
