@@ -50,16 +50,22 @@ This is where applications fail.
 
 **Your work must relate to your degree subject, or to documented professional experience.**
 
-**Examples that work cleanly:**
+### Which pairings clear, and which get questioned
 
-- Computer science degree → software engineer
-- Economics degree → marketing analyst
-- Any degree → translation work using your native language, under International Services
+| Your degree | The job | Outcome |
+|---|---|---|
+| Computer science | Software engineer | Clean — the textbook case |
+| Economics | Marketing analyst | Clean |
+| Engineering (any) | Data analyst | Clean |
+| Any degree | Translator, your native language | Clean, under International Services |
+| Business / commerce | Sales planning, HR | Clean |
+| History | Software engineer, no coding background | Questioned — needs documented experience |
+| Fine arts | Software engineer | Questioned |
+| Mechanical engineering | General sales, no technical element | Questioned — the job is the problem, not the degree |
+| Any degree | Restaurant floor staff, factory line | Refused — outside the status entirely |
+| Bootcamp only, no degree | Software engineer | Needs 10 years' documented experience |
 
-**Examples that raise questions:**
-
-- History degree → software engineer, with no professional programming background
-- Engineering degree → general sales role with no technical element
+**Read the last three rows together.** Two different things can go wrong: your background may not match the job, or the *job itself* may fall outside the status no matter what you studied. A mechanical engineer applying for a role with no specialist content fails for the second reason, and no amount of documentation fixes it.
 
 **How to resolve a mismatch:**
 
@@ -80,6 +86,22 @@ This is where applications fail.
 **On arrival**, you receive a residence card at the airport, then register your address at your municipal office within 14 days and enrol in health insurance and pension.
 
 The full sequence, including the Highly Skilled Professional route, is in [the Japan work visa guide](https://thetailorcv.com/blog/japan-work-visa-guide).
+
+### The timeline, and who does what
+
+| Stage | Who acts | Typical time | What can delay it |
+|---|---|---|---|
+| **Offer and contract** | You and employer | — | — |
+| **Gathering your documents** | You | 2–6 weeks | Employment certificates from old employers |
+| **CoE application** | Employer, in Japan | 1–3 months | Queries about the matching rule |
+| **CoE posted to you** | Employer | 1–2 weeks | International post |
+| **Visa application** | You, at embassy | Under a week usually | Embassy appointment availability |
+| **Travel and landing** | You | — | Residence card issued at the airport |
+| **Address registration** | You, at city hall | **Within 14 days** | Missing this has consequences |
+
+**Realistically, plan for three to five months** from signed offer to starting work. Employers hiring from abroad know this; candidates frequently do not, and resign from a current job far too early.
+
+**The step you control is the second row.** Certificates of employment from former employers are the most common cause of delay, and the one part of the process nobody can chase but you.
 
 ---
 
@@ -105,6 +127,23 @@ Your employer handles company-side paperwork. You typically provide passport, ph
 
 **Which means:** write your shokumu keirekisho with the same dates and duties your reference letters will state — see [the shokumu keirekisho guide](https://thetailorcv.com/blog/shokumu-keirekisho-guide) and [the rirekisho guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
 
+### What a certificate of employment needs to say
+
+This is the single most important document in an experience-based application, and former employers routinely issue something too vague to be useful.
+
+**It must state:**
+
+- **Exact dates** of employment, start and end, month and year
+- **Your job title**
+- **A description of your actual duties**, specific enough to establish the specialist content
+- **The company's letterhead, stamp or seal, and a contact**
+
+**What is not enough:** "Ananya Sharma worked at our company from 2020 to 2024." That confirms employment and nothing about whether the work relates to your intended role in Japan.
+
+**What works:** "Ananya Sharma was employed as a Backend Developer from March 2020 to August 2024, developing and maintaining server-side applications in Python and PostgreSQL, including database design and API development."
+
+**Ask former employers for this specific wording**, in writing, and ask early. HR departments abroad have no reason to prioritise it, three weeks is a normal wait, and if your case rests on documented experience rather than a matching degree, this document *is* your case.
+
 ---
 
 ## Common Mistakes
@@ -113,13 +152,17 @@ Your employer handles company-side paperwork. You typically provide passport, ph
 
 **Ignoring the degree-matching rule.** Work must relate to your degree subject or documented experience, and mismatches are the leading cause of refusal.
 
+**Assuming the problem is always your degree.** A role with no specialist content falls outside the status regardless of what you studied.
+
 **Not documenting experience when the degree does not match.** Ten years of relevant professional experience can substitute in the main categories, three for translation work — but only with certificates of employment to prove it.
 
 **Requesting employment certificates late.** Former employers abroad are slow, and these are what make an experience-based application work.
 
-**Inconsistent dates across documents.** Immigration reads resume, certificates and contract together, and discrepancies trigger queries.
+**Accepting a vague employment certificate.** "Worked here from 2020 to 2024" proves employment, not that the work was specialist.
 
-**Assuming the status covers any job.** Manual, service and simple repetitive work fall outside it, and this is enforced.
+**Resigning from your current job too early.** Three to five months from offer to start is normal when hiring from abroad.
+
+**Inconsistent dates across documents.** Immigration reads resume, certificates and contract together, and discrepancies trigger queries.
 
 **Changing to work outside the category without checking.** Moving between software roles is fine; moving into sales or teaching may require a status change.
 
@@ -141,13 +184,17 @@ Usually, in a field related to the work. Alternatively, ten years of documented 
 
 Document relevant professional experience with certificates of employment from former employers, and ensure the job description foregrounds the specialist content of the role.
 
+### What should a certificate of employment actually contain?
+
+Exact dates, your job title, a specific description of your duties, and the company's letterhead and stamp. A letter confirming only that you worked there does not establish the specialist content.
+
+### How long does the whole process take?
+
+Plan for three to five months from signed offer to starting work — one to three months for the Certificate of Eligibility, plus document gathering before it and the visa step after.
+
 ### Can I change jobs on this status?
 
 Yes, within the same category of work, with notification to immigration within 14 days. Moving outside the category may require a change of status.
-
-### How long does the process take?
-
-The Certificate of Eligibility typically takes one to three months; the visa application afterwards is usually quick because the assessment has already been done.
 
 ### Can I work part-time in a restaurant on this status?
 
@@ -163,8 +210,8 @@ Check your application documents before submitting. [Check your ATS score free](
 
 ## Make This Practical
 
-Check the matching rule against your own situation before applying anywhere. If your degree subject and your intended work do not line up, the application will turn on documented professional experience — and that means requesting certificates of employment from former employers now, because they are slow and they are the evidence the whole case rests on.
+Check your own pairing against the matching table before anything else, and be clear about which of the two failure modes could apply — your background not matching the job, or the job itself having too little specialist content to qualify at all. The second one cannot be fixed with documentation.
 
-Then keep every document consistent. Immigration reads your resume, your employment certificates and your contract together, so write your shokumu keirekisho with exactly the dates and duties your former employers will confirm.
+Then request certificates of employment from every relevant former employer this week, with the specific wording spelled out: exact dates, job title, and a description of duties detailed enough to show the specialist content. If your case rests on experience rather than a matching degree, that document is your case, and HR departments abroad take weeks.
 
-Finally, use the flexibility the status gives you. It covers a field of work rather than one employer, so changing jobs within your category is straightforward — just notify immigration within 14 days, and if a new role sits near the boundary of your category, request a certificate of authorised employment before accepting rather than after.
+Finally, plan for three to five months from signed offer to first day, and do not resign from anything early. Register your address within 14 days of landing, and if a future move sits near the edge of your category, get a certificate of authorised employment before accepting rather than after.
