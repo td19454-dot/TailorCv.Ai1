@@ -60,6 +60,25 @@ Start with the document everything else supports — run your resume through the
 
 ---
 
+## What takes time to obtain — start these first
+
+Most of the checklist is photocopying. These five are the ones with a waiting period, and every year students discover them during a two-day application window.
+
+| Document | Typical wait | Where to start | When to do it |
+|---|---|---|---|
+| **PAN card** | 2–3 weeks | Online application, then verification | Now, if you do not have one |
+| **Passport** | 4–8 weeks incl. police verification | Passport Seva appointment | Now, if any target role involves travel |
+| **CGPA→% conversion certificate** | Few days to 2 weeks | Your examination or academic section | Start of final year |
+| **Bonafide certificate** | 2–7 days | Department or administrative office | Start of final year, get two copies |
+| **Name correction on any document** | Weeks to months | Depends on the document | Immediately, if there is a mismatch |
+| **Duplicate 10th/12th marksheet** | 2–6 weeks | Your school board | Now, if the original is lost |
+
+**The last two rows are the ones that genuinely end applications.** A name spelled differently on your Aadhaar and your marksheet is not something you can resolve in the forty-eight hours before a drive, and a lost tenth marksheet takes weeks to replace through a board.
+
+**Check your name on every document this week.** Aadhaar, PAN, tenth marksheet, twelfth marksheet, degree records. If any two disagree — an initial expanded on one, a surname spelled differently, a middle name present on one and absent on another — start the correction now.
+
+---
+
 ## Professional documents
 
 **Your resume**, in PDF, named properly — `Firstname_Lastname_Resume.pdf`. Keep two or three versions for different company types — see [how to get shortlisted for campus placement](https://thetailorcv.com/blog/how-to-get-shortlisted-for-campus-placement).
@@ -85,6 +104,19 @@ Start with the document everything else supports — run your resume through the
 **Physical:** a single file with photocopies of everything, plus originals kept separately and safely. Bring the file to every drive.
 
 **Naming matters more than it sounds.** Uploading `IMG_20260812_094533.jpg` to an application portal looks careless, and some portals reject unclear filenames.
+
+### Keep a compressed copy of everything
+
+Application portals routinely cap uploads at 500KB or 1MB per file, and a phone scan of a marksheet is frequently 4MB. Discovering this with twenty minutes left on a form is a genuinely common way to lose an application.
+
+**Keep two versions of every scan** in the same folder:
+
+- `10th_Marksheet.pdf` — full quality, for printing and verification
+- `10th_Marksheet_small.pdf` — compressed under 500KB, for portals
+
+**Also keep your photograph in three sizes:** a high-resolution original, one under 200KB for forms, and a printed set in passport and stamp size. Forms specify dimensions and file size separately, and the combination catches people out.
+
+**Test one upload before the season.** Take any portal that accepts a document and confirm your compressed files actually go through.
 
 ---
 
@@ -121,7 +153,11 @@ A short pre-drive routine that prevents most problems:
 
 **Not having tenth and twelfth marksheets.** Many companies screen on them and students frequently leave them at home.
 
+**Discovering a name mismatch during a drive.** Corrections take weeks to months and cannot be done inside an application window.
+
 **No CGPA-to-percentage conversion certificate.** Companies specify percentages while institutions report CGPA, and the formula varies by university.
+
+**Only having full-size scans.** Portals cap uploads at 500KB or 1MB and a phone scan is frequently several times that.
 
 **Photographs of documents instead of scans.** Angled, shadowed images look careless and some portals reject them.
 
@@ -129,9 +165,7 @@ A short pre-drive routine that prevents most problems:
 
 **Rounding your CGPA upward.** It is checked against marksheets at verification, and the discrepancy reads as dishonesty rather than approximation.
 
-**Name spelled differently across documents.** It causes genuine delays at offer and joining stage.
-
-**No PAN card.** It is needed at joining and applying takes time.
+**No PAN card.** It is needed at joining and applying takes two to three weeks.
 
 **Assembling documents after a drive is announced.** Notice periods are frequently a day or two, which is not enough.
 
@@ -143,6 +177,10 @@ A short pre-drive routine that prevents most problems:
 
 All semester marksheets, tenth and twelfth marksheets, photo ID, a formal photograph and your resume. Many companies also want a CGPA-to-percentage conversion certificate.
 
+### Which ones should I start on first?
+
+Anything with a waiting period — PAN card, passport, conversion certificate, and any name correction. The rest is photocopying and can be done in an afternoon.
+
 ### Do I need tenth and twelfth marksheets?
 
 Frequently yes — a meaningful number of companies screen on those marks, and students routinely do not have them available.
@@ -151,9 +189,13 @@ Frequently yes — a meaningful number of companies screen on those marks, and s
 
 An institutional document stating the official conversion formula, since companies specify percentage criteria while universities report CGPA and formulas differ.
 
+### My uploads keep failing on the portal. Why?
+
+Almost always file size. Portals commonly cap at 500KB or 1MB while a phone scan is several megabytes. Keep a compressed copy of every document alongside the full-quality one.
+
 ### What kind of photograph do I need?
 
-Formal — plain background, formal clothing, neutral expression, recent. Have digital, passport size and stamp size copies.
+Formal — plain background, formal clothing, neutral expression, recent. Have a high-resolution version, one under 200KB, and printed passport and stamp sizes.
 
 ### Should I carry physical documents to drives?
 
@@ -161,11 +203,11 @@ Yes, in a single file with photocopies. Some rounds verify on the spot, and havi
 
 ### What if my name is spelled differently on two documents?
 
-Get it corrected before placement season if possible. Discrepancies cause real delays at offer and joining stage.
+Start the correction immediately. It takes weeks to months, and it causes real delays at offer and joining stage if left.
 
 ### When should I get a PAN card?
 
-Now, if you do not have one. It is required at joining and the application takes time you will not have during the season.
+Now, if you do not have one. It is required at joining and the application takes two to three weeks you will not have during the season.
 
 ---
 
@@ -173,8 +215,8 @@ Your resume is the document all of this supports. [Check your ATS score free](ht
 
 ## Make This Practical
 
-Spend one afternoon before the season assembling everything into a single cloud folder with clear filenames, plus one physical file with photocopies. Scans rather than photographs, compressed versions for portals with size limits, and both passport and stamp size photographs.
+Check your name on your Aadhaar, PAN, tenth marksheet, twelfth marksheet and degree records this week, and confirm they match exactly — same spelling, same initials expanded or not, same middle name present or absent. A mismatch takes weeks to months to correct and cannot be resolved inside a two-day application window, which is where students usually find it.
 
-Then check consistency across documents rather than assuming. Your name spelled identically, date of birth matching, and CGPA stated exactly as your marksheets show it — never rounded up, because verification at offer stage is precisely where that becomes a problem.
+Then start the slow items now rather than in October: PAN card if you lack one, passport if any target role involves travel, and the CGPA-to-percentage conversion certificate from your examination section. Everything else on this list is photocopying and takes an afternoon.
 
-Finally, close the two gaps students discover too late: get a CGPA-to-percentage conversion certificate from your institution, and apply for a PAN card now if you do not have one. Both take time you will not have when a drive is announced with two days' notice.
+Finally, scan everything twice — full quality for printing and verification, plus a compressed copy under 500KB for portals that cap uploads. Discovering the file size limit with twenty minutes left on a form is an entirely avoidable way to lose an application you had already earned.
