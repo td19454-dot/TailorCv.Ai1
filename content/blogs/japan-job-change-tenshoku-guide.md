@@ -40,6 +40,22 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 **Timeline:** typically one to three months from first contact to offer, faster at foreign-owned companies.
 
+### Working with an agent, practically
+
+Agents are paid by the employer on placement, which shapes their incentives in ways worth understanding rather than resenting.
+
+**Register with two or three, not eight.** Each will present you to their own client list, and overlapping submissions to the same employer creates confusion about who represents you — which occasionally disqualifies candidates entirely.
+
+**Tell each agent which companies you have already applied to directly.** Duplicate submissions are the most common avoidable problem here.
+
+**Be specific about what you want.** "Anything in tech" gets you presented to everything and matched to nothing. Salary range, location, industry, whether you need an English-operating environment — say all of it in the first conversation.
+
+**Expect them to edit your shokumu keirekisho.** This is normal, they know the format their clients expect, and their edits are usually worth accepting.
+
+**They negotiate for you, so tell them your real number.** An agent who does not know your floor cannot protect it, and unlike negotiating directly, this carries none of the cultural awkwardness.
+
+**A good agent tells you when you are not a fit.** One who presents you to everything regardless is optimising for volume rather than placement.
+
 ---
 
 ## The documents
@@ -72,6 +88,25 @@ Asked in essentially every process, and weighted more heavily than in most marke
 
 **If you have changed jobs frequently**, address it before you are asked. Japanese employers view a pattern of short tenures more critically than Western ones, so a narrative connecting the moves — a consistent direction, deepening specialism — matters. Silence invites the least generous interpretation.
 
+### Turning the real reason into a usable one
+
+Most people leave for a reason they cannot state directly. The answer is not to invent one, but to name the forward-looking half of the same truth.
+
+| The real reason | What to say instead |
+|---|---|
+| **Bad manager** | "I'm looking for an environment with more direct technical mentorship" |
+| **Underpaid** | "I'm looking for a role that matches the scope I've grown into" |
+| **No promotion in five years** | "I want a path toward technical leadership, which isn't available where I am" |
+| **Excessive overtime** | "I'm looking for a team where delivery is planned rather than absorbed by hours" |
+| **Company is failing** | "The direction of the business has changed and my specialism is no longer central to it" |
+| **Bored, work is repetitive** | "The platform is mature and the problems I find interesting there are largely solved" |
+| **Wanted to leave Tokyo** | "I'm relocating to Osaka for personal reasons and looking for the right role there" |
+| **Made redundant** | State it plainly, with the business reason. This is not held against you |
+
+**The pattern in the right column:** every one describes what you are moving toward rather than what you are escaping, and none of them is a lie. That distinction is the whole technique.
+
+**Redundancy is the exception** — say it directly. Attempting to disguise it creates a gap in your history that gets asked about anyway, and business restructuring is understood.
+
 ---
 
 ## The visa steps foreign workers miss
@@ -100,6 +135,20 @@ Three things, and people get caught by all of them.
 
 **Do not resign before the new offer is confirmed in writing**, including any conditions.
 
+### The counter-offer
+
+Expect one. Japanese employers frequently respond to a resignation with a raise, a title, or a promise about your next assignment — and accepting is usually a mistake.
+
+**Why it is offered:** replacing you is expensive and slow, and the immediate cost of retaining you is lower than the cost of a search.
+
+**Why it rarely works:** the reason you were leaving is generally not the thing being fixed. A raise does not change a manager, a mature platform or a missing promotion path — and the reasons in the table above are almost never solved by money.
+
+**What also changes:** you have now signalled that you were prepared to leave. That is remembered in ways that affect future assignments and promotion decisions, more so in a market where long-term commitment carries weight.
+
+**Decline politely and hold the line.** "I'm grateful, and I've thought about this carefully — my decision is about the direction I want my work to take rather than the terms." Then thank them and continue with the handover.
+
+**The one case where it merits thought:** if the counter-offer genuinely addresses your actual reason — a real move to the team you wanted, in writing, with a start date — rather than adding money to the situation you were leaving.
+
 ---
 
 ## Common Mistakes
@@ -108,17 +157,21 @@ Three things, and people get caught by all of them.
 
 **Giving money as the stated reason.** It lands poorly even where it is the truth; a forward-looking reason about the work performs far better.
 
+**Registering with eight agents.** Overlapping submissions to the same employer create confusion about representation and occasionally disqualify you.
+
+**Not telling your agent where you have already applied directly.** Duplicate submissions are the most common avoidable problem in the process.
+
 **Not addressing a pattern of short tenures.** Japanese employers weight it more critically than Western ones, and silence invites the least generous reading.
 
 **Sending a Western resume.** Applications expect a rirekisho and shokumu keirekisho, and the latter is what actually gets you interviewed.
+
+**Accepting a counter-offer.** It rarely fixes the actual reason, and having signalled you would leave is remembered.
 
 **Changing jobs without checking your status covers the new role.** Moving outside your category may require a change of status, and a certificate of authorised employment resolves it in advance.
 
 **Missing the 14-day immigration notifications.** They are legal obligations and missing them causes problems at renewal.
 
 **Changing jobs immediately before a visa renewal.** A very short tenure at the new employer complicates the assessment.
-
-**Resigning abruptly.** Convention frequently expects one to three months regardless of statutory minimums, and reputation travels in this market.
 
 ---
 
@@ -132,13 +185,25 @@ Yes — mid-career hiring is a mature market with its own agencies and platforms
 
 Generally yes. Agents carry a large share of mid-career hiring, and bilingual agencies know which employers hire foreign professionals. They also negotiate salary on your behalf.
 
+### How many agents should I register with?
+
+Two or three. More creates duplicate submissions to the same employers, which causes confusion about who represents you.
+
 ### What do I send instead of a resume?
 
 A rirekisho and a shokumu keirekisho. The latter is free-format and is what hiring managers actually read.
 
 ### How should I answer "why are you leaving"?
 
-With a forward-looking reason about the work you want to do next. Avoid criticising your employer and avoid citing money as the primary reason.
+With a forward-looking reason about the work you want to do next. Almost every real reason has a forward-looking half that is true and sayable.
+
+### What if I was made redundant?
+
+Say so plainly, with the business reason. Disguising it creates a gap that gets asked about anyway, and restructuring is understood.
+
+### Should I accept a counter-offer?
+
+Usually not. It rarely addresses why you were leaving, and having shown you were willing to go affects how you are viewed afterwards.
 
 ### Do I need to tell immigration when I change jobs?
 
@@ -160,6 +225,6 @@ Check your application documents. [Check your ATS score free](https://www.thetai
 
 Confirm your status covers the new role before you accept anything. Request a certificate of authorised employment from immigration if the job sits anywhere near the boundary of your category — it converts a risk into a document, and it is far easier to do before resigning than after.
 
-Then prepare the question that decides mid-career interviews here. Write a forward-looking answer to "why are you leaving" that names what you want to build next, never criticises your current employer, and — if your history shows short tenures — supplies the narrative connecting them before anyone has to ask.
+Then write your answer to "why are you leaving" by taking your real reason and stating its forward-looking half. Underpaid becomes matching the scope you have grown into; a bad manager becomes wanting direct technical mentorship. Neither is a lie, and neither gives an interviewer a reason to wonder what you will say about them.
 
-Finally, handle the mechanics properly. Use a bilingual agent to manage the process and the salary conversation, submit a rirekisho and shokumu keirekisho rather than a Western resume, notify immigration within 14 days of both dates, and avoid changing jobs immediately before a visa renewal.
+Finally, handle the mechanics properly. Register with two or three agents rather than eight, tell them your real salary floor so they can protect it, expect a counter-offer and plan to decline it, and notify immigration within 14 days of both your leaving and joining dates.
