@@ -58,6 +58,25 @@ Before the interview, make sure your resume got you there — the [free ATS scor
 
 ---
 
+## Fixing a habit by removing its object
+
+Most nervous habits need an object. Take the object away and the habit has nowhere to go, which works far better than deciding to stop.
+
+| The habit | What to do before you sit down |
+|---|---|
+| **Clicking a pen** | Do not hold one. If you need to write, use a pencil or a non-click pen |
+| **Fiddling with your phone** | In your bag, not your pocket, not the table |
+| **Twisting a ring or watch** | Take it off before you walk in |
+| **Playing with your hair** | Tie it back |
+| **Picking at your sleeve or cuff** | Wear something without loose cuffs |
+| **Jiggling your leg** | Both feet flat on the floor — it is physically harder to bounce |
+| **Fidgeting with a water bottle label** | Pour into a glass, or leave the bottle out of reach |
+| **Tapping the table** | Hands resting in your lap between gestures |
+
+**This is the whole trick.** Willpower fails under stress; an empty hand does not.
+
+---
+
 ## The realistic version
 
 **Sit reasonably upright** — leaning back reads as disengaged, hunching forward reads as tense. Comfortable and alert.
@@ -86,6 +105,16 @@ Different priorities, because the frame changes what is visible.
 
 **Posture below the shoulders is invisible**, so the effort belongs in framing and lighting rather than in how you sit.
 
+### The camera-eye-contact problem, and the cheap fix
+
+Everyone knows they should look at the camera. Almost nobody can, because a human face on screen pulls your eyes to it automatically.
+
+**The fix that actually works:** drag the interviewer's video window to the top of your screen, directly under your webcam. Then shrink it. Your eyes now sit within a few degrees of the lens, and looking at their face and looking at the camera become nearly the same thing.
+
+**Turn off your own self-view** once the call starts, or at least move it away from the lens. Watching yourself is the single biggest cause of drifting eye contact, and you do not need it after the first thirty seconds.
+
+**If you use notes**, put them in a text file directly beneath the webcam rather than on paper beside you. Glancing down at a desk is obvious; glancing at the top of your screen is not.
+
 ---
 
 ## Nerves
@@ -101,6 +130,18 @@ Body language problems are usually nerves, so treating the nerves is more effect
 **Accept some nervousness.** Interviewers expect it and largely discount it. Trying to appear completely relaxed usually produces something stranger than mild visible nerves.
 
 **Nerves fade once you are talking about something you know**, which is another argument for a well-prepared introduction.
+
+### The first ninety seconds
+
+Nerves peak at the start and drop sharply once you are speaking about something familiar. So make the opening the part you have rehearsed most.
+
+**Have your first answer ready.** "Tell me about yourself" opens most interviews. If that runs smoothly, the rest of the interview happens to a calmer person.
+
+**Speak your first two sentences deliberately slowly.** Nerves speed you up, and consciously slowing the opening resets your pace for everything after it.
+
+**Do not apologise for being nervous.** It draws attention to something the interviewer was discounting anyway.
+
+**If your voice shakes**, pause and take one breath rather than pushing through. A one-second pause is invisible; a wobbling sentence is not.
 
 ---
 
@@ -126,9 +167,13 @@ You cannot fix what you have not seen.
 
 **Looking at the screen rather than the camera on video.** It appears as looking down for the whole interview.
 
+**Leaving your self-view on.** Watching yourself is the biggest single cause of drifting eye contact on a call.
+
 **Sitting in the dark on a video call.** An unlit face removes your expression entirely, which is most of your nonverbal communication.
 
 **Filling every pause with "um".** A brief silence reads as considered; verbal filler reads as uncertain.
+
+**Apologising for being nervous.** It draws attention to something that was being discounted.
 
 **Attempting power poses or deliberate mirroring.** Neither is assessed, and forcing them creates visible discomfort that is.
 
@@ -150,13 +195,25 @@ Natural contact while speaking and listening, without staring. In a panel, addre
 
 Whatever they naturally do while you speak. Remove pens and phones so there is nothing to fidget with, and keep hands away from your face.
 
+### How do I actually look at the camera on a video call?
+
+Move the interviewer's window directly under your webcam and shrink it, then turn off your self-view. Their face and the lens end up in nearly the same place.
+
 ### Do interviewers notice nervousness?
 
 Yes, and they largely discount it. Attempting to appear completely relaxed usually reads stranger than mild visible nerves.
 
+### Should I mention that I am nervous?
+
+No. It draws attention to something the interviewer was already discounting. Pause, breathe, and carry on.
+
 ### What matters most on video?
 
 Looking at the camera rather than the screen, and having your face properly lit. Posture below the shoulders is not even visible.
+
+### Can I keep notes on a video interview?
+
+Yes, in a text file directly beneath your webcam. Glancing at the top of your screen is invisible; looking down at a desk is not.
 
 ### How do I find my own nervous habits?
 
@@ -174,6 +231,6 @@ Body language matters only once your resume gets you the interview. [Check your 
 
 Record yourself answering two questions and watch it back. Your own nervous habits are invisible from the inside and immediately obvious on playback, and this is the only reliable way to find them.
 
-Then fix the mechanical things rather than the abstract ones. Put the pen down and the phone away so there is nothing to fidget with, deliberately slow your speaking pace, and — on video — look at the camera rather than the screen and make sure your face is lit.
+Then remove the objects rather than relying on willpower. Take the ring off, tie your hair back, leave the pen alone and put the phone in your bag — a habit with nothing to grip usually stops on its own, which is more than can be said for deciding to stop.
 
-Finally, redirect the effort. Energy and clear structure affect how you are received far more than posture does, so treat the underlying nerves by preparing your six stories properly rather than by managing symptoms during the interview itself.
+Finally, fix the two things that dominate a video round: drag the interviewer's window directly under your webcam and turn off your self-view so your eyes stay near the lens, and get a light on your face. Both take one minute and both do more than any amount of posture correction.

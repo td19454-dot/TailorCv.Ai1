@@ -64,6 +64,25 @@ Before the interviews, make sure your resume is doing its job — the [free ATS 
 
 **Ask promptly** — within a day or two of the outcome — and ask once.
 
+### A message you can send today
+
+If you have just been rejected and want something usable, this is roughly the shape that works. Short, specific, and easy to reply to in one line.
+
+> Hi [Name],
+>
+> Thanks for letting me know, and for the time your team spent with me.
+>
+> One quick question if you have a moment: the round I felt least sure about was the SQL exercise. Was that where the gap was, or was it more about the depth of my reporting experience?
+>
+> Either way I appreciated the process, and I would be glad to be considered if something similar opens up.
+>
+> Best,
+> [You]
+
+**Why this gets answered when a general request does not:** it offers two specific options, so replying costs one word rather than a paragraph. It also gives them an honest exit if the real answer is neither.
+
+**Do not:** argue with the decision, list your qualifications again, ask who got the role, or send a second message when the first is not answered.
+
 ---
 
 ## Who actually gives feedback
@@ -78,6 +97,8 @@ Before the interviews, make sure your resume is doing its job — the [free ATS 
 
 **Your university placement cell**, which frequently receives round-wise outcome data from campus recruiters even when individual feedback is not shared — see [how to get shortlisted for campus placement](https://thetailorcv.com/blog/how-to-get-shortlisted-for-campus-placement).
 
+**Your seniors who were placed at that company.** For campus recruitment specifically, this is the most underused source available. Someone a year or two ahead of you who cleared the same process knows the round structure, the kind of questions asked, and often what the panel cares about. That is not feedback on your interview, but it is better than feedback — it arrives before you sit the interview rather than after.
+
 ---
 
 ## Interpreting what you get
@@ -91,6 +112,22 @@ Before the interviews, make sure your resume is doing its job — the [free ATS 
 **"You weren't quite the right fit."** The least useful, and worth one gentle follow-up: "Was that about the team's working style, or more about the technical scope?"
 
 **Silence.** Not a judgement. Most rejections are silent, and the volume involved makes it administrative rather than personal.
+
+### What each answer should change
+
+The point of feedback is a decision about what to do next. Most answers map onto one.
+
+| What they said | What to actually do |
+|---|---|
+| **"More experience"** | Nothing about your interviewing. Target roles one level down, or wait |
+| **"More depth in [skill]"** | Build it, and get one project you can discuss. This is the actionable one |
+| **"Very close decision"** | Stay in contact. Message the recruiter in three months |
+| **"Not the right fit"** | Ask once whether it was style or scope. If no answer, ignore it |
+| **"Concerns about the gap on your CV"** | Prepare a two-sentence answer for it before the next interview |
+| **"We paused the role"** | Genuinely not about you. Ask to be told when it reopens |
+| **Silence** | Self-assess and move on. Do not extrapolate |
+
+**The distinction that matters:** feedback about a skill is a task. Feedback about experience or timing is not a task, and treating it as one wastes weeks.
 
 ---
 
@@ -114,6 +151,21 @@ The feedback you can guarantee, and most people skip it.
 
 **It is immediate.** No waiting for a reply that will not come.
 
+### Keep it in one file
+
+A single document, one section per interview, written within an hour of finishing. It takes ten minutes and compounds.
+
+> **Company, role, date, round**
+> **Questions asked** — listed exactly, including follow-ups
+> **Went well** — which answers landed
+> **Went badly** — where you hesitated, rambled, or blanked
+> **Caught unprepared by** — the question you had not considered
+> **What I would say next time** — written out properly, not as a note
+
+**The last line is the one that does the work.** Writing the better answer while the question is fresh means you have it ready when it comes up again, and it will come up again.
+
+**After five interviews, read the whole file in one sitting.** The pattern is usually obvious and usually not what you expected — most people find it is the same two questions, not a general weakness.
+
 Combine it with recorded practice on the weak areas — see [how to practise mock interviews](https://thetailorcv.com/blog/mock-interview-how-to-practice) and [mock interview common errors](https://thetailorcv.com/blog/mock-interview-common-errors).
 
 ---
@@ -128,6 +180,8 @@ Where you can actually demand it.
 
 **Ask what they would have asked next** — that reveals where your answer left an obvious gap.
 
+**Give them something to score rather than something to judge.** "Was that good?" gets a kind answer. "How long was that answer, and when did the result arrive?" gets a number, and a number is hard to soften.
+
 ---
 
 ## Common Mistakes
@@ -140,9 +194,13 @@ Where you can actually demand it.
 
 **Pushing after a non-answer.** One gentle follow-up is fine; repeated requests damage a relationship you may need later.
 
+**Arguing with the decision in your reply.** It closes the door on the referral or the next opening.
+
 **Not writing down the questions afterwards.** They repeat across companies and years, and this is the only feedback you can guarantee.
 
-**Dismissing "more experience" as an excuse.** It is frequently literal, and treating it as code leads you to fix the wrong thing.
+**Treating "more experience" as a task.** It is frequently literal and not something you can fix this month, so acting on it wastes weeks.
+
+**Never asking seniors who cleared the same process.** For campus roles this arrives before the interview, which beats feedback after it.
 
 **Asking a practice partner who will not be critical.** Encouragement teaches nothing, and politeness is the main failure in peer practice.
 
@@ -158,7 +216,7 @@ Mainly legal caution — specific comments could theoretically support a discrim
 
 ### How should I ask for feedback?
 
-With a specific question about one area rather than a general request. Narrow questions are easier to answer honestly and get real replies more often.
+With a specific question about one area rather than a general request. Offering two options makes it answerable in a single word, which is why it gets answered.
 
 ### Who is most likely to give useful feedback?
 
@@ -168,13 +226,21 @@ Recruitment consultants, by a wide margin. They receive candid client feedback a
 
 Usually literally true rather than a euphemism. Taking it at face value is generally correct.
 
+### Which feedback should actually change what I do?
+
+Feedback about a specific skill is a task worth acting on. Feedback about experience or timing is not something you can fix quickly, and treating it as a task wastes weeks.
+
 ### What if I get no response at all?
 
 Normal, and not a judgement. Most rejections are silent. Fall back on self-assessment and keep applying.
 
 ### How do I self-assess after an interview?
 
-Write down every question asked, which answers went well, where you hesitated, and what you wish you had said — immediately, before the detail fades.
+Write down every question asked, which answers went well, where you hesitated, and what you wish you had said — immediately, before the detail fades. Then write the better answer out in full.
+
+### Where can students get feedback if employers will not give it?
+
+From seniors who cleared the same process. For campus recruitment they know the rounds and the question style, and it reaches you before the interview rather than after.
 
 ### How many times should I follow up?
 
@@ -186,8 +252,8 @@ Feedback helps, but the resume is what gets you interviewed at all. [Check your 
 
 ## Make This Practical
 
-Write down every question you were asked immediately after each interview, along with where you hesitated and what you wish you had said. Questions repeat across companies and years, so by your fourth interview you are preparing from real data rather than a generic list — and this is the only feedback guaranteed to arrive.
+Write down every question you were asked immediately after each interview, in one file you keep adding to, along with where you hesitated and the better answer written out in full. Questions repeat across companies and years, so by your fourth interview you are preparing from real data — and this is the only feedback guaranteed to arrive.
 
-Then ask employers properly when you do ask. A narrow question about one specific area gets a real answer far more often than a general request, and asking your recruitment consultant gets you candid client feedback that would never reach you directly.
+Then ask employers properly when you do ask. Offer two specific options rather than a general request, so replying costs them one word instead of a paragraph, and always ask your recruitment consultant, who receives candid client feedback that would never reach you directly.
 
-Finally, take what you receive at face value. "Someone with more experience" is usually literal, "a close decision" is usually genuine and worth staying in contact over, and silence is administrative rather than personal — none of it is a reason to pause applying while you wait.
+Finally, sort what you receive into tasks and non-tasks. A named missing skill is something to go and build; "more experience" or "a close decision" is not, and spending weeks trying to fix it is the most common way good feedback gets wasted.
