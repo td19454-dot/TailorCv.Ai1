@@ -40,6 +40,20 @@ Whatever your position, your resume has to work — run it through the [free ATS
 
 **Read the criteria carefully rather than assuming.** The difference between these four determines which companies you can approach, and students routinely self-eliminate from postings they were actually eligible for — see [how to get shortlisted for campus placement](https://thetailorcv.com/blog/how-to-get-shortlisted-for-campus-placement).
 
+### What each wording means for you
+
+| The criteria says | You have 1 active backlog | You cleared 2 in year 2 | You have 3 active |
+|---|---|---|---|
+| **No current backlogs** | Not eligible | **Eligible** | Not eligible |
+| **No history of backlogs** | Not eligible | Not eligible | Not eligible |
+| **Maximum 2 backlogs** | **Eligible** | **Eligible** | Not eligible |
+| **Cleared by date of joining** | **Eligible**, if you can clear it | **Eligible** | **Eligible**, if realistic |
+| **No criteria stated** | Usually fine | Usually fine | Ask the TPO |
+
+**The second column is the important one.** A single active backlog still leaves you eligible for two of the five categories — and students with one paper pending routinely stop applying altogether, which loses them companies they qualified for.
+
+**Note the second row.** "No history" is the only filter that clearing does not fix, which is why it is worth identifying those companies early and spending no further time on them.
+
 ---
 
 ## Clearing them: timing is everything
@@ -57,6 +71,20 @@ Whatever your position, your resume has to work — run it through the [free ATS
 **Do not carry backlogs into semester 7 if it is avoidable.** Everything else in the placement season becomes harder while you are simultaneously trying to clear papers.
 
 **If a backlog will remain during the season**, focus your applications on companies with the more forgiving criteria, and on off-campus routes.
+
+### Write your actual position down
+
+Most students carry a vague sense of "I have some backlogs" rather than the specifics, and the vagueness itself costs opportunities — you cannot plan around a number you have not checked.
+
+| Paper | Semester | Attempts used | Next supplementary | Before placement season? |
+|---|---|---|---|---|
+| Data Structures | 4 | 1 | November | Yes — top priority |
+| Discrete Maths | 3 | 2 | November | Yes — top priority |
+| Thermodynamics | 5 | 1 | March | No — schedule around it |
+
+**Fill this in from your actual academic record this week**, not from memory. Two things usually come out of it: a paper you had forgotten was still open, and the realisation that the hardest paper is not the urgent one.
+
+**The last column decides everything.** Sort by it, and put your revision hours into the rows marked yes regardless of which subject you find harder.
 
 ---
 
@@ -93,6 +121,16 @@ If you have cleared them, or if any remain, you will be asked. The way you answe
 
 **Keep it under thirty seconds** and move to what you have built since.
 
+### If one is still active
+
+Harder, and there is a version that works. Do not hide it and do not lead with an apology.
+
+> I have one paper still open — Thermodynamics from fifth semester. My supplementary is in March and I have already cleared the two from fourth semester on the first attempt after them. I checked the criteria before applying and I understand the offer would be conditional on clearing it, which I am expecting to do before the joining date.
+
+**What this does.** It states the fact immediately, shows the two you already cleared as evidence of trajectory, and demonstrates that you read the eligibility criteria rather than applying blindly — which quietly answers the "is this person careless" question underneath the backlog question.
+
+**Never say "it should be fine" or "it's basically cleared".** A pending paper is pending. Confidence about something not yet done reads as exactly the attitude that produced the backlog.
+
 ---
 
 ## If backlogs remain during placements
@@ -113,6 +151,8 @@ If you have cleared them, or if any remain, you will be asked. The way you answe
 
 **Assuming every filter is zero-tolerance.** Criteria vary between "none current", "none ever", "maximum two" and "cleared by joining" — students self-eliminate from postings they were eligible for.
 
+**Not knowing your exact position.** Vagueness about which papers and which exam dates makes planning impossible and costs opportunities directly.
+
 **Clearing after the placement season.** Eligibility is assessed at application, so timing the clearance before the season begins is worth more than anything else.
 
 **Prioritising by difficulty rather than exam date.** The paper examined before placements matters more than the one you find harder.
@@ -120,6 +160,8 @@ If you have cleared them, or if any remain, you will be asked. The way you answe
 **Not asking the department about options.** Additional attempts, remedial support and scheduling flexibility frequently exist without being advertised.
 
 **Claiming you have no backlogs when you do.** Marksheets are verified at offer stage, and this is the one unrecoverable mistake in this whole area.
+
+**Saying a pending paper is "basically cleared".** It reads as exactly the attitude that produced the backlog.
 
 **Blaming faculty or evaluation.** It confirms exactly the concern the interviewer had.
 
@@ -139,6 +181,10 @@ Frequently. Many companies require no current backlogs, and some require no back
 
 Much smaller than an active one. Some companies filter on history, but most care about your current position, and a cleared backlog with an upward trend is defensible.
 
+### I have one active backlog. Should I stop applying?
+
+No. One active paper still leaves you eligible for companies allowing a maximum number and those requiring clearance only by joining, plus every off-campus route.
+
 ### Should I mention backlogs if not asked?
 
 You do not need to volunteer them, but never deny them if asked — marksheets are verified at offer stage.
@@ -151,9 +197,13 @@ Yes, through companies whose criteria allow it, off-campus applications, hiring 
 
 The papers whose supplementary exams fall before the placement season, regardless of which you find harder. Eligibility is assessed at application.
 
-### How do I explain backlogs in an interview?
+### What does "no history of backlogs" mean for me?
 
-Briefly and factually — what happened, what changed, and what you have built since. Keep it under thirty seconds and never blame the college.
+That clearing will not help — the record persists. Identify those companies early and spend your time elsewhere.
+
+### How do I explain a backlog that is still open?
+
+State it immediately, give the exam date, point to any you have already cleared since, and confirm you understand the offer would be conditional. Never say it is "basically cleared".
 
 ### Do off-campus employers care about backlogs?
 
@@ -165,8 +215,8 @@ Your resume still has to clear screening. [Check your ATS score free](https://ww
 
 ## Make This Practical
 
-Find out your exact position this week — which papers, how many attempts remain, and when each supplementary exam falls. Then prioritise by exam date rather than difficulty, because eligibility is assessed when you apply and a paper cleared after the season has not helped you.
+Fill in the table above from your actual academic record this week — every open paper, attempts used, and the date of the next supplementary. Two things usually fall out of it: a paper you had forgotten was still open, and the fact that your hardest subject is not your most urgent one.
 
-Then read company criteria properly instead of assuming zero tolerance. The difference between "no current backlogs", "maximum two" and "cleared by joining" determines which of them you can approach, and students routinely rule themselves out of postings they qualified for.
+Then sort by exam date rather than difficulty and put your hours into whatever is examined before the placement season, because eligibility is checked when you apply and a paper cleared in March did not help you in November.
 
-Finally, prepare the answer and build the counterweight. Write a thirty-second explanation covering what happened, what changed and what you have built since — and never deny a backlog you have, because marksheets are checked at offer stage and that is the one mistake with no recovery.
+Finally, read the criteria properly rather than assuming zero tolerance, and prepare a thirty-second answer. If a paper is still open, say so plainly with the exam date and what you have already cleared since — and never deny a backlog you have, because marksheets are checked at offer stage and that is the one mistake with no recovery.
