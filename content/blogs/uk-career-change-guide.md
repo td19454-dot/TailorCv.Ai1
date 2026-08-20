@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Career Change, Retraining, CV Writing, Career Advice]
 category: Career Advice
-image: public/blog-images/uk-career-change-guide.png
+image: public/blog-images/uk-career-change-guide.webp
 slug: uk-career-change-guide
 keywords: career change uk, switching careers, retraining uk, transferable skills cv, changing industry
 ---

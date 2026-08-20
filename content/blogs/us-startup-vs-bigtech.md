@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Startups, Big Tech, Career Advice, Compensation]
 category: Comparisons
-image: public/blog-images/us-startup-vs-bigtech.png
+image: public/blog-images/us-startup-vs-bigtech.webp
 slug: us-startup-vs-bigtech
 keywords: startup vs big tech, should i join a startup, startup equity explained, faang vs startup
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Credential Assessment, ECA, Newcomers, Immigration]
 category: Career Advice
-image: public/blog-images/canada-credential-assessment-guide.png
+image: public/blog-images/canada-credential-assessment-guide.webp
 slug: canada-credential-assessment-guide
 keywords: eca canada, educational credential assessment, wes canada, foreign degree recognition, credential evaluation
 ---

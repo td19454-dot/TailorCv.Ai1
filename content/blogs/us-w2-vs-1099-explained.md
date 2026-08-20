@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Contracting, W2, 1099, Compensation]
 category: Career Advice
-image: public/blog-images/us-w2-vs-1099-explained.png
+image: public/blog-images/us-w2-vs-1099-explained.webp
 slug: us-w2-vs-1099-explained
 keywords: w2 vs 1099, 1099 contractor taxes, corp to corp, contract vs fulltime usa, self employment tax
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Low CGPA, Freshers, Job Search Strategy, Career Advice]
 category: Career Advice
-image: public/blog-images/campus-placement-low-cgpa-guide.png
+image: public/blog-images/campus-placement-low-cgpa-guide.webp
 slug: campus-placement-low-cgpa-guide
 keywords: low cgpa placement, cgpa cutoff jobs, placement without good grades, off campus low cgpa
 ---

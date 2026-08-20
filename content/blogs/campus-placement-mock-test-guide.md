@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Mock Tests, Aptitude, Preparation, Freshers]
 category: Interview Preparation
-image: public/blog-images/campus-placement-mock-test-guide.png
+image: public/blog-images/campus-placement-mock-test-guide.webp
 slug: campus-placement-mock-test-guide
 keywords: mock test placement, aptitude mock practice, online test preparation campus, mock test analysis
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Startups, Equity, Career Advice, International Careers]
 category: Job Search
-image: public/blog-images/japan-startup-jobs-guide.png
+image: public/blog-images/japan-startup-jobs-guide.webp
 slug: japan-startup-jobs-guide
 keywords: japan startup jobs, tokyo startup scene, stock options japan, japanese startup equity, working at japanese startup
 ---

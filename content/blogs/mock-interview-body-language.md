@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Mock Interview, Body Language, Interview Preparation, Communication]
 category: Interview Preparation
-image: public/blog-images/mock-interview-body-language.png
+image: public/blog-images/mock-interview-body-language.webp
 slug: mock-interview-body-language
 keywords: interview body language, nonverbal communication interview, eye contact interview, nervous habits interview
 ---

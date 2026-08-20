@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Work Permit, Immigration, PGWP, Newcomers]
 category: Career Advice
-image: public/blog-images/canada-work-permit-types-guide.png
+image: public/blog-images/canada-work-permit-types-guide.webp
 slug: canada-work-permit-types-guide
 keywords: canada work permit types, open work permit, pgwp, spousal open work permit, lmia exempt
 ---

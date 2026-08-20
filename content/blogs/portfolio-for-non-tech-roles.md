@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Portfolio, Career Advice, HR, Operations, Job Search 2026]
 category: Portfolio
-image: public/blog-images/portfolio-for-non-tech-roles.png
+image: public/blog-images/portfolio-for-non-tech-roles.webp
 slug: portfolio-for-non-tech-roles
 keywords: portfolio for non technical roles, hr portfolio, marketing portfolio, operations case study, finance portfolio
 ---

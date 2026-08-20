@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [ATS Optimization, Resume Writing, Checklist, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/ats-score-improve-checklist.png
+image: public/blog-images/ats-score-improve-checklist.webp
 slug: ats-score-improve-checklist
 keywords: improve ats score, resume checklist ats, how to increase ats score, resume optimization checklist
 ---

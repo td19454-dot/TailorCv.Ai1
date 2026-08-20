@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Mock Interview, Interview Preparation, Common Mistakes, Career Advice]
 category: Interview Preparation
-image: public/blog-images/mock-interview-common-errors.png
+image: public/blog-images/mock-interview-common-errors.webp
 slug: mock-interview-common-errors
 keywords: interview mistakes, why i fail interviews, rambling in interviews, interview answer structure
 ---

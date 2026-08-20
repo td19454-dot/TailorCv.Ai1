@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Healthcare, Nursing, Licensure, Career Advice]
 category: Job Search
-image: public/blog-images/us-healthcare-jobs-guide.png
+image: public/blog-images/us-healthcare-jobs-guide.webp
 slug: us-healthcare-jobs-guide
 keywords: us healthcare jobs, hospital jobs usa, nursing jobs america, health tech careers, credentialing
 ---

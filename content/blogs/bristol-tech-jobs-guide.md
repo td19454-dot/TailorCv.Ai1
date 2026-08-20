@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Bristol, South West, Semiconductors, Aerospace]
 category: Job Search
-image: public/blog-images/bristol-tech-jobs-guide.png
+image: public/blog-images/bristol-tech-jobs-guide.webp
 slug: bristol-tech-jobs-guide
 keywords: bristol tech jobs, semiconductor jobs uk, aerospace jobs bristol, south west tech careers
 ---

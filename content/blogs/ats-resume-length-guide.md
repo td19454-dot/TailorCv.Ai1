@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [ATS Optimization, Resume Length, Resume Writing, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/ats-resume-length-guide.png
+image: public/blog-images/ats-resume-length-guide.webp
 slug: ats-resume-length-guide
 keywords: resume length ats, one page or two page resume, how long should a resume be, cv length by country
 ---

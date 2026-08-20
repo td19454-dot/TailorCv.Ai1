@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Backlogs, Freshers, Eligibility, Career Advice]
 category: Career Advice
-image: public/blog-images/campus-placement-backlog-guide.png
+image: public/blog-images/campus-placement-backlog-guide.webp
 slug: campus-placement-backlog-guide
 keywords: backlog placement eligibility, current backlog jobs, history of backlogs, clear backlog before placement
 ---

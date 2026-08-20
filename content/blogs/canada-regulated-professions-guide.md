@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Licensing, Regulated Professions, Newcomers, Career Advice]
 category: Career Advice
-image: public/blog-images/canada-regulated-professions-guide.png
+image: public/blog-images/canada-regulated-professions-guide.webp
 slug: canada-regulated-professions-guide
 keywords: regulated professions canada, peng licence, nursing licence canada, cpa canada foreign, bridging program
 ---

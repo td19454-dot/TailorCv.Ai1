@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Contracting, Career Advice, Compensation, Job Search 2026]
 category: Comparisons
-image: public/blog-images/us-contract-vs-fulltime.png
+image: public/blog-images/us-contract-vs-fulltime.webp
 slug: us-contract-vs-fulltime
 keywords: contract vs full time job, should i take a contract role, contract to hire, contracting career usa
 ---

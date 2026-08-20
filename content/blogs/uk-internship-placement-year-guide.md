@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Placement Year, Internships, Students, Early Career]
 category: Career Advice
-image: public/blog-images/uk-internship-placement-year-guide.png
+image: public/blog-images/uk-internship-placement-year-guide.webp
 slug: uk-internship-placement-year-guide
 keywords: placement year uk, sandwich year, summer internship uk, industrial placement, graduate scheme conversion
 ---

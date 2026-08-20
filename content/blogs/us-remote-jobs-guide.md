@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Remote Work, Job Search 2026, Hybrid, Career Advice]
 category: Job Search
-image: public/blog-images/us-remote-jobs-guide.png
+image: public/blog-images/us-remote-jobs-guide.webp
 slug: us-remote-jobs-guide
 keywords: us remote jobs, remote software jobs usa, geo adjusted pay, work from anywhere jobs, remote interview tips
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Austin, Texas, Tech Careers, Relocation]
 category: Job Search
-image: public/blog-images/austin-tech-jobs-guide.png
+image: public/blog-images/austin-tech-jobs-guide.webp
 slug: austin-tech-jobs-guide
 keywords: austin tech jobs, texas no income tax, austin software engineer salary, moving to austin for work
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Licensure, Regulated Professions, Relocation, Career Advice]
 category: Career Advice
-image: public/blog-images/us-state-licensure-guide.png
+image: public/blog-images/us-state-licensure-guide.webp
 slug: us-state-licensure-guide
 keywords: state licensure usa, license reciprocity, nursing compact, pe license, cpa requirements
 ---

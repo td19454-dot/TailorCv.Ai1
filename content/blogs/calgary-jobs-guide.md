@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Calgary, Alberta, Energy, Relocation]
 category: Job Search
-image: public/blog-images/calgary-jobs-guide.png
+image: public/blog-images/calgary-jobs-guide.webp
 slug: calgary-jobs-guide
 keywords: calgary jobs, alberta tech jobs, energy sector careers, no provincial sales tax alberta, moving to calgary
 ---

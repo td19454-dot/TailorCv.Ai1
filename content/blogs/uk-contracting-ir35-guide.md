@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Contracting, IR35, Day Rate, Career Advice]
 category: Career Advice
-image: public/blog-images/uk-contracting-ir35-guide.png
+image: public/blog-images/uk-contracting-ir35-guide.webp
 slug: uk-contracting-ir35-guide
 keywords: ir35 explained, inside vs outside ir35, umbrella company uk, contractor day rate, limited company contracting
 ---

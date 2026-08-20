@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Relocation, Job Offer, Negotiation, Career Advice]
 category: Career Advice
-image: public/blog-images/us-relocation-package-guide.png
+image: public/blog-images/us-relocation-package-guide.webp
 slug: us-relocation-package-guide
 keywords: relocation package usa, relocation assistance negotiation, lump sum relocation tax, repayment agreement
 ---

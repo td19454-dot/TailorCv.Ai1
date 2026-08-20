@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [ATS Optimization, Resume Writing, Formatting, Job Search 2026]
 category: ATS Optimization
-image: public/blog-images/ats-tables-columns-guide.png
+image: public/blog-images/ats-tables-columns-guide.webp
 slug: ats-tables-columns-guide
 keywords: two column resume ats, tables in resume, resume layout parsing, sidebar resume problem
 ---

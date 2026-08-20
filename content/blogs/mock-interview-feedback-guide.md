@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Mock Interview, Feedback, Interview Preparation, Career Advice, Job Search 2026]
 category: Interview Preparation
-image: public/blog-images/mock-interview-feedback-guide.png
+image: public/blog-images/mock-interview-feedback-guide.webp
 slug: mock-interview-feedback-guide
 keywords: interview feedback request, how to ask for feedback after rejection, interview rejection feedback, self assessment interview
 ---

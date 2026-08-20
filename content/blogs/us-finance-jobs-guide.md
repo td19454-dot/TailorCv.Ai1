@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [USA Jobs, Finance Careers, Investment Banking, Trading, CFA]
 category: Job Search
-image: public/blog-images/us-finance-jobs-guide.png
+image: public/blog-images/us-finance-jobs-guide.webp
 slug: us-finance-jobs-guide
 keywords: us finance jobs, investment banking recruiting, trading jobs usa, cfa charter, corporate finance careers
 ---

@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [UK Jobs, Charity Sector, Third Sector, Career Change, Job Search 2026]
 category: Job Search
-image: public/blog-images/uk-charity-sector-jobs.png
+image: public/blog-images/uk-charity-sector-jobs.webp
 slug: uk-charity-sector-jobs
 keywords: charity jobs uk, third sector careers, ngo jobs uk, charity salary, working for a charity
 ---

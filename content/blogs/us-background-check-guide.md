@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Background Check, Job Offer, Hiring Process, Career Advice]
 category: Career Advice
-image: public/blog-images/us-background-check-guide.png
+image: public/blog-images/us-background-check-guide.webp
 slug: us-background-check-guide
 keywords: background check usa, employment verification, fcra rights, pre employment screening, resume discrepancy
 ---

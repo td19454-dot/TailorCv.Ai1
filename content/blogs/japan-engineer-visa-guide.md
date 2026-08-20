@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Japan Jobs, Engineer Visa, Work Visa, Immigration, International Careers]
 category: Career Advice
-image: public/blog-images/japan-engineer-visa-guide.png
+image: public/blog-images/japan-engineer-visa-guide.webp
 slug: japan-engineer-visa-guide
 keywords: engineer specialist humanities visa, japan work visa engineer, gijinkoku visa, japan visa degree requirement
 ---

@@ -5,7 +5,7 @@ date: 2026-08-19
 author: TailorCV Team
 tags: [USA Jobs, Federal Jobs, USAJOBS, Government Careers, Resume Writing]
 category: Job Search
-image: public/blog-images/us-federal-jobs-usajobs-guide.png
+image: public/blog-images/us-federal-jobs-usajobs-guide.webp
 slug: us-federal-jobs-usajobs-guide
 keywords: usajobs guide, federal resume format, government jobs usa, federal hiring process, gs pay scale
 ---

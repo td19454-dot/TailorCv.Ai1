@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Campus Placement, Operating Systems, DBMS, Technical Interview, Freshers]
 category: Interview Preparation
-image: public/blog-images/campus-placement-os-dbms-notes.png
+image: public/blog-images/campus-placement-os-dbms-notes.webp
 slug: campus-placement-os-dbms-notes
 keywords: os dbms interview questions, operating system placement, dbms interview freshers, deadlock normalization
 ---

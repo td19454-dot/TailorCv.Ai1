@@ -5,7 +5,7 @@ date: 2026-08-20
 author: TailorCV Team
 tags: [Canada Jobs, Skilled Trades, Red Seal, Apprenticeship, Newcomers]
 category: Job Search
-image: public/blog-images/canada-trades-jobs-guide.png
+image: public/blog-images/canada-trades-jobs-guide.webp
 slug: canada-trades-jobs-guide
 keywords: red seal canada, skilled trades jobs canada, apprenticeship canada, trade certification, journeyperson
 ---
