@@ -82,6 +82,41 @@ Naming a genuine misstep reads as engineering maturity. Presenting a project as 
 
 ---
 
+## A student project written both ways
+
+The structure above sounds heavy for a college project. It is not. Here is the same work, first as most students write it, then as a case study.
+
+### Weak version
+
+> **Library Management System**
+> A web application built using Django and PostgreSQL for managing library books. Features include user authentication, book issue and return, search functionality, and an admin dashboard. Technologies used: Python, Django, PostgreSQL, Bootstrap, HTML, CSS.
+>
+> [screenshot] [screenshot] [GitHub link]
+
+This is a feature list. There is nothing here a reviewer can ask about, and it describes a project any of two hundred applicants could have built.
+
+### Strong version
+
+> **Library Management System** — cut book issuing from ~4 minutes to under 30 seconds for a 8,000-title college library. Django, PostgreSQL. Team of 4; I owned the data model and the issue-return flow.
+>
+> **The problem.** The library ran on a 2015 system where issuing a book meant typing the title, the student ID and the date into three separate screens. During the first week of a semester the queue reached the corridor.
+>
+> **The constraint.** One semester, four students who all had classes, and the librarians could not stop working while we replaced it — so it had to run alongside the old system until the last week.
+>
+> **The problem that was actually hard.** Two librarians on two terminals could issue the same physical copy at once. The availability check and the record write were separate steps, so both checks passed before either write landed.
+>
+> **What I considered.** Optimistic locking with a version column; a queue in front of the issue endpoint; or a row-level lock with the status check moved inside the transaction.
+>
+> **What I chose and why.** The row-level lock. A queue was overkill for two terminals, and optimistic locking would have shown a retry error to a librarian with a student standing in front of them — a bad outcome for a non-technical user under time pressure.
+>
+> **Outcome.** Issuing went from about four minutes to under thirty seconds. Duplicate-issue complaints stopped entirely. It has been running eighteen months.
+>
+> **What I would do differently.** I built the search before watching anyone use the system. When I finally sat with a librarian, she searched by author far more than by title, and I had optimised the wrong index.
+
+**Same project. Same student. Same code.** The second version gives an interviewer five things to ask about, and every answer is one this student can give.
+
+---
+
 ## Length and depth
 
 **Scannable in ninety seconds, readable in five minutes.** Assume nobody reads end to end.
@@ -124,6 +159,8 @@ A real constraint, and workable.
 
 **Showing output with no reasoning.** A gallery proves you can produce work; it does not show you made decisions, which is what is assessed.
 
+**Listing technologies instead of describing decisions.** A stack list is on two hundred other portfolios and gives a reviewer nothing to ask about.
+
 **Omitting the options you rejected.** Choosing between alternatives is the judgement being tested, and skipping it removes the substance.
 
 **Being vague about your role on team projects.** Reviewers assume the least when contribution is unclear.
@@ -149,6 +186,14 @@ A project page shows the output. A case study shows the problem, the alternative
 ### How long should a case study be?
 
 Scannable in ninety seconds and readable in five minutes, with headings so a skimmer can find the outcome and the decisions.
+
+### Is this overkill for a college project?
+
+No. The structure is what turns a feature list every applicant could have written into something an interviewer can ask five questions about.
+
+### What if my project was in a team of four?
+
+Say exactly what you owned. "I owned the data model and the issue-return flow" is more credible than describing the whole project in "we".
 
 ### How many should I have?
 
@@ -176,8 +221,8 @@ Make sure the resume linking to your portfolio works. [Check your ATS score free
 
 ## Make This Practical
 
-Rewrite your strongest project using the seven-part structure — summary line, context and constraint, your role, options considered, what you did, outcome with numbers, and what you would do differently. That single rewrite converts a gallery entry into evidence of judgement.
+Take your strongest project and rewrite it in the seven-part structure — summary line, context and constraint, your role, options considered, what you did, outcome with numbers, and what you would do differently. If it currently reads as a list of technologies, that single rewrite is the difference between a page a reviewer skims and one they ask you about.
 
-Then add the two sections almost everyone omits. Name the alternatives you rejected and why, and name a genuine misstep with what you changed afterwards — those two sections do more for your credibility than any amount of visual polish.
+Then add the two sections almost everyone omits. Name the alternatives you rejected and why you rejected them, and name a genuine misstep with what you changed afterwards. On a student project the misstep is usually easy to find — something you built before watching anyone use it.
 
-Finally, curate rather than accumulate. Two or three deep case studies with the strongest first beat eight thin ones, because reviewers rarely read past the second — and make every number consistent with what your resume claims.
+Finally, curate rather than accumulate. Two or three deep case studies with the strongest first beat eight thin ones, because reviewers rarely read past the second — and keep every number consistent with what your resume claims.

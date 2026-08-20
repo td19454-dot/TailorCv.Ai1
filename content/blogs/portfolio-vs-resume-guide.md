@@ -72,6 +72,28 @@ Start with the one that gates everything — run your resume through the [free A
 
 ---
 
+## The same project, in both places
+
+This is the part people get wrong. The resume states the outcome; the portfolio explains how it happened. Neither repeats the other.
+
+**On the resume — one line, because that is all the space there is:**
+
+> Rebuilt the college library issue-return system in Django; issuing a book went from ~4 minutes to under 30 seconds for 8,000 titles.
+
+**In the portfolio — the reasoning the resume had no room for:**
+
+> **The problem.** Two librarians could issue the same physical copy at the same time. The old system checked availability and wrote the record as two separate steps, so the check could pass twice before either write landed.
+>
+> **What I considered.** Optimistic locking with a version column, a queue in front of the issue endpoint, or a row-level lock inside the transaction.
+>
+> **What I chose and why.** A row-level lock on the copy record with the status check moved inside the same transaction. The queue was overkill for two concurrent librarians, and optimistic locking would have shown a retry error to a person standing at a desk with a student waiting.
+>
+> **What happened.** Duplicate-issue complaints stopped completely. Eighteen months on, it is still running.
+
+**Notice what the portfolio version adds:** the alternatives, the reason one was picked, and a constraint that came from the real world rather than from the code. That is what a reviewer cannot get from a resume bullet, and it is what makes them want to talk to you.
+
+---
+
 ## Who needs a portfolio
 
 **Essential:** designers, front-end developers, writers, photographers, videographers, architects, illustrators — anyone whose output is visual or textual.
@@ -83,6 +105,24 @@ Start with the one that gates everything — run your resume through the [free A
 **Rarely needed:** highly regulated roles where credentials and licensure dominate, and some traditional sectors.
 
 **Nobody skips the resume.** Even where a portfolio is essential, employers still want the resume — application systems require it, HR processes require it, and the portfolio comes afterwards.
+
+---
+
+## What a student with no jobs yet should put in one
+
+The common objection is having nothing to show. Almost every student has two or three of these:
+
+| Source | What makes it portfolio-worthy |
+|---|---|
+| **Final year project** | You made real design decisions and hit real constraints |
+| **A course assignment you took further** | Say what the assignment required, then what you added and why |
+| **Something you built for yourself** | A script that solved your own problem shows initiative better than a tutorial |
+| **A hackathon build** | Time pressure forced trade-offs — those trade-offs are the story |
+| **A club or fest system** | Real users, real deadline, real complaints when it broke |
+| **Freelance or a friend's business** | An actual client with actual requirements |
+| **An open source contribution** | Someone else's codebase, someone else's review |
+
+**What does not work:** a tutorial project rebuilt step by step with no changes, five to-do apps, or a project you cannot explain a single decision inside. One properly explained project beats six listed ones, every time.
 
 ---
 
@@ -112,6 +152,8 @@ Start with the one that gates everything — run your resume through the [free A
 
 **Showing screenshots without reasoning.** Output proves something exists; the decisions behind it prove you made them.
 
+**Filling a portfolio with tutorial rebuilds.** A project with no decisions of your own in it gives a reviewer nothing to ask about.
+
 **Linking only the homepage.** If your resume names a project, link that project directly rather than making the reviewer hunt.
 
 **Inconsistent numbers between the two.** A discrepancy in a headline metric undermines confidence in everything else.
@@ -138,6 +180,14 @@ No. It must parse cleanly through applicant tracking systems, so keep it plain a
 
 Reasoning. The problem, the options you considered, what you chose and why, and what happened — the resume only has room for the outcome.
 
+### I am a student with no work experience. What do I put in it?
+
+Your final year project, an assignment you took further, something you built for yourself, or a hackathon build. What matters is that you made decisions inside it and can explain them.
+
+### Do tutorial projects count?
+
+Only if you changed something and can say why. A tutorial rebuilt step by step gives a reviewer nothing to ask you about.
+
 ### Do non-technical roles need portfolios?
 
 Not expected, but a case study of a process you improved differentiates you precisely because so few people in those fields have one.
@@ -158,6 +208,6 @@ The resume is what gets you to the portfolio. [Check your ATS score free](https:
 
 Keep the two documents optimised for their actual constraints. The resume must parse cleanly through automated screening, so it stays plain; the portfolio is read by a human who chose to look, so that is where design and depth belong.
 
-Then make the join work. Put the portfolio link on your resume's contact line, link individual projects directly where your resume names them, and — critically — test every link in the exported PDF rather than the editor, because that is where most of them break.
+Then write one project up properly, in the four-part shape above — the problem, what you considered, what you chose and why, what happened. The "what you considered" part is the one students skip and the one reviewers actually want, because it is the only evidence that a decision was made rather than a tutorial followed.
 
-Finally, use the portfolio for what a resume cannot hold. Two or three case studies showing the problem, the options, your decision and the outcome prove the claims your resume makes — and keep the numbers identical across both, because a discrepancy in one metric undermines confidence in all of them.
+Finally, make the join work. Put the link on your resume's contact line, link individual projects directly where your resume names them, keep the numbers identical across both, and test every link in the exported PDF rather than the editor — because that is where most of them break.
