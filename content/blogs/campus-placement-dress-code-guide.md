@@ -69,6 +69,26 @@ Before the drive, make sure your resume clears screening — the [free ATS score
 
 ---
 
+## How formal, by company type
+
+Campus drives are more conservative than the same company's office would be, so the floor is higher than you might expect. When in doubt, dress for the row above yours.
+
+| Drive type | Men | Women | Tie / blazer |
+|---|---|---|---|
+| **Bank, financial services** | Shirt, trousers, blazer | Formal trousers/saree, blazer | Tie expected, blazer expected |
+| **Consulting** | Shirt, trousers, blazer | Formal, blazer | Tie usually, blazer expected |
+| **Service-based IT (TCS, Infosys-type)** | Shirt and trousers, tucked in | Formal shirt/trousers, saree or salwar | Tie optional, blazer not needed |
+| **Product company** | Shirt and trousers | Formal shirt/trousers, salwar | Neither needed |
+| **Startup** | Shirt and trousers | Formal shirt/trousers, salwar | Neither needed |
+| **Core engineering / PSU** | Shirt and trousers | Formal, conservative | Tie optional |
+| **Video round, any of the above** | As above, waist up | As above, waist up | Blazer helps on camera |
+
+**Notice there is no "casual" row.** Even at a startup drive, a formal shirt and trousers is the correct answer on campus — the interviewer may be in a t-shirt, and that does not extend to you.
+
+**If you own exactly one formal outfit**, it should be a plain light shirt with dark trousers. That single combination is correct in every row of the table.
+
+---
+
 ## What to avoid
 
 **Jeans**, in any colour, at a formal drive.
@@ -105,7 +125,23 @@ Increasingly common, and students frequently treat them casually.
 
 **Camera at eye level**, not on a desk looking up.
 
-**Check the whole setup the day before**, not five minutes prior — the same discipline as in [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026).
+**Check the whole setup the day before**, not five minutes prior — the same discipline as in [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026), with the full camera and audio detail in [the remote interview setup guide](https://thetailorcv.com/blog/mock-interview-remote-setup).
+
+---
+
+## Doing this on a small budget
+
+Nothing above requires spending much, and students frequently assume otherwise.
+
+**What you actually need:** two plain light formal shirts, one pair of dark formal trousers, one belt, one pair of closed black shoes. That is the complete list, and it covers every drive in the table above.
+
+**Where the money is best spent:** the shoes, because they have to survive eight hours on campus, and one alteration to get the shirt shoulders and trouser length right. A tailored fit on an inexpensive shirt reads better than an expensive shirt that does not fit.
+
+**What you can skip:** a suit, a second pair of shoes, more than one belt, and anything branded. A blazer is worth borrowing rather than buying unless you are targeting banking or consulting.
+
+**Borrowing is completely normal**, and every batch does it. If you borrow a blazer, try it on a week ahead — sleeve length is the giveaway, and it is the one thing that makes borrowed clothing look borrowed.
+
+**Ironing costs nothing and is noticed more than anything else on this page.** A pressed inexpensive shirt beats an unpressed good one every time.
 
 ---
 
@@ -127,7 +163,11 @@ Increasingly common, and students frequently treat them casually.
 
 **Underdressing because the company seems casual.** Campus drives are conservative environments regardless of the employer's internal culture, and it is noticed immediately.
 
+**Assuming a startup drive means startup clothing.** The interviewer may be in a t-shirt; that does not extend to you.
+
 **Buying a suit the night before.** Poor fit and visible discomfort undermine the point of wearing it.
+
+**Borrowing a blazer without trying it on.** Sleeve length is the giveaway, and a week's notice fixes it.
 
 **New shoes on the day.** You may be on campus for eight hours, and pain is distracting in ways you will not attribute to the shoes.
 
@@ -149,13 +189,21 @@ Increasingly common, and students frequently treat them casually.
 
 Formal — a plain light shirt with dark formal trousers and closed polished shoes for men; a formal shirt with trousers, or a plain saree or salwar kameez, for women.
 
+### What if the company is a startup?
+
+Still formal. Campus drives are more conservative than the same company's office, and there is no drive type where casual clothing is the right answer.
+
 ### Do I need a tie?
 
 Optional at most drives, expected at banks and some consulting firms. Bring one if unsure and observe what others are wearing.
 
 ### Is a blazer necessary?
 
-Not usually, though it helps at final rounds and in formal sectors like banking and consulting.
+Not usually, though it helps at final rounds and in formal sectors like banking and consulting. Borrowing one is entirely normal.
+
+### What is the minimum I need to buy?
+
+Two plain light shirts, one pair of dark formal trousers, a belt and closed black shoes. That covers every type of campus drive.
 
 ### What about video interviews?
 
@@ -181,6 +229,6 @@ Appearance gets you a fair hearing; the resume gets you the room. [Check your AT
 
 Prepare two complete formal outfits before the season begins, including shoes you have already broken in. Drives are announced with a day or two of notice, they cluster together, and discovering a problem on the morning is entirely avoidable.
 
-Then aim to be unremarkable rather than impressive. A well-fitted plain shirt in a light colour with dark trousers, ironed, with polished closed shoes, means nothing about your appearance competes with your answers — which is the entire objective.
+Then check the table for the kind of companies visiting your campus and dress for the row above yours if unsure. There is no row where casual is correct — a startup interviewer in a t-shirt does not mean the same applies to you — and if you own one formal outfit, a plain light shirt with dark trousers is right everywhere.
 
-Finally, treat video rounds with the same seriousness. Formal from the waist up, solid colours rather than patterns, avoid pure white, plain tidy background, light in front of you rather than behind, and camera at eye level — checked the day before rather than five minutes prior.
+Finally, spend nothing you do not need to. Two shirts, one pair of trousers, a belt and black shoes covers the whole season; borrow a blazer rather than buying one and try it on a week ahead; and iron everything, because that is noticed more reliably than anything else on this page.
