@@ -99,12 +99,18 @@ Tables cause a related but distinct problem.
 
 This is worth its own warning because it is so common.
 
-| What you designed | What often extracts |
-|---|---|
-| Python ●●●●○ | Python Java SQL Excel ●●●●○ ●●●○○ ●●●●● ●●○○○ |
-| Java ●●●○○ | (ratings detached from the skills entirely) |
-| SQL ●●●●● | |
-| Excel ●●○○○ | |
+**What you designed** — four neat rows, each skill beside its rating:
+
+> Python ●●●●○
+> Java ●●●○○
+> SQL ●●●●●
+> Excel ●●○○○
+
+**What frequently extracts** — the column of names, then the column of dots, with nothing connecting them:
+
+> Python Java SQL Excel ●●●●○ ●●●○○ ●●●●● ●●○○○
+
+Every rating is now attached to the wrong skill, or to none. A reviewer reading the parsed version sees a list of words followed by a row of symbols.
 
 **Beyond the parsing problem**, self-assigned proficiency ratings carry little weight with reviewers — four dots next to Python is your opinion, not evidence. A bullet showing what you built with Python does more work and cannot be scrambled.
 

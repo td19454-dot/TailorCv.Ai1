@@ -52,6 +52,25 @@ While you prepare, make sure your resume clears screening — the [free ATS scor
 
 The OOP grounding is covered in [campus placement technical interview questions](https://thetailorcv.com/blog/campus-placement-technical-interview-questions).
 
+### The interesting case in each common question
+
+Students spend their preparation listing entities, which is the easy half. This is the half that decides the round.
+
+| Question | The interesting case | What they want to hear |
+|---|---|---|
+| **Parking lot** | Two cars assigned the same spot | Lock or atomically mark the spot when allocating, not after |
+| **Elevator** | Which lift answers a call on floor 7 | A scoring rule — direction of travel, current load, distance |
+| **Vending machine** | Payment succeeds, dispensing fails | State machine with a refund path, not a linear flow |
+| **Library system** | Two members borrow the last copy | Lock the copy row inside the transaction |
+| **Movie booking** | Two users select the same seat | Temporary hold with a timeout, then confirm |
+| **Splitwise** | Settling debts across three people | Net the balances rather than storing every transaction |
+| **Rate limiter** | Requests exactly on the window boundary | Sliding window over fixed window, and say why |
+| **Card game** | Shuffling and dealing fairly | Fisher-Yates, and dealing from a single source of truth |
+
+**The pattern across all of them is concurrency or state.** If you cannot see the interesting case in a question, ask yourself what breaks when two people do the same thing at the same time — that is almost always it.
+
+**Say it unprompted.** "Before I go further, the part I think matters most here is what happens when two users select the same seat" is the single strongest thing you can say in an LLD round, because it demonstrates you found the difficulty rather than waiting to be led to it.
+
 ---
 
 ## High-level design: the structure
@@ -69,6 +88,21 @@ If you get an HLD question, follow this sequence rather than drawing first.
 **5. Go deeper where prompted.** The interviewer will steer you.
 
 **6. Discuss trade-offs.** This is the highest-scoring part — SQL versus NoSQL and why, what the cache costs in staleness, what happens when a component fails.
+
+### The questions to ask before you draw anything
+
+Have these ready. Asking four of them takes ninety seconds and changes how the rest of the round goes.
+
+| Ask | Why it changes the design |
+|---|---|
+| "Roughly how many users are we designing for?" | A thousand and ten million are different systems |
+| "Is this read-heavy or write-heavy?" | Decides whether a cache is the first thing you add |
+| "Does it need to be real-time, or is a delay acceptable?" | Decides whether a queue solves it |
+| "How long does the data need to be kept?" | Changes storage and archival entirely |
+| "Do we need it to work across regions?" | Otherwise do not mention geo-distribution at all |
+| "Is any of this money or safety critical?" | Decides how much consistency you trade for speed |
+
+**Ask, then say what you concluded from the answer.** "If it is read-heavy at that scale, I would put a cache in front of the database" makes the question part of your reasoning rather than a delaying tactic.
 
 ---
 
@@ -110,13 +144,17 @@ That answer demonstrates requirements thinking, a real constraint, a decision an
 
 **Drawing a diagram before asking anything.** Clarifying requirements and scale is part of the assessment, and skipping it is the classic failure.
 
+**Listing entities and stopping there.** That is the easy half of an LLD question; the concurrency or state problem underneath it is what is being marked.
+
+**Waiting to be led to the difficulty.** Naming the interesting case unprompted is the strongest single move available in a design round.
+
 **Studying senior-level system design material.** It is pitched far above what freshers are asked and creates anxiety without improving your answer.
 
 **Forcing design patterns in.** Naming Singleton or Factory where they add nothing is a recognisable attempt to sound advanced.
 
-**Missing the interesting case.** Every LLD question has one — spot allocation, concurrent booking, tiered pricing — and that is where the marks are.
-
 **Naming a database without justifying it.** "I'd use MongoDB" scores nothing; explaining why the access pattern suits it scores well.
+
+**Asking clarifying questions and then ignoring the answers.** State what each answer changed, or the questions read as a stalling tactic.
 
 **Ignoring trade-offs.** Every choice has a cost, and stating it unprompted is the highest-scoring habit in a design round.
 
@@ -136,6 +174,10 @@ At product companies, frequently — usually low-level design of classes for a p
 
 LLD is class and object design within an application. HLD is the architecture of a system — servers, databases, caches. Freshers are asked LLD far more often.
 
+### How do I find the "interesting case" in an LLD question?
+
+Ask what breaks when two people do the same thing simultaneously. Two cars in one spot, two users on one seat, two members borrowing the last copy — it is almost always concurrency or state.
+
 ### How deep do I need to go?
 
 Not far. Interviewers assess reasoning, clarifying questions and trade-off awareness rather than production-grade architecture.
@@ -143,6 +185,10 @@ Not far. Interviewers assess reasoning, clarifying questions and trade-off aware
 ### Where should I start in an HLD question?
 
 Requirements and rough scale, always. Drawing components before establishing what the system must do is the most common mistake.
+
+### What should I ask before designing?
+
+Scale, read-heavy or write-heavy, real-time or not, retention, regions, and whether anything is money-critical. Then say what each answer changed about your approach.
 
 ### Should I mention design patterns?
 
@@ -162,8 +208,8 @@ Design rounds only matter if your resume gets you there. [Check your ATS score f
 
 ## Make This Practical
 
-Practise low-level design first, since it is what freshers are actually asked. Take a parking lot, a library and an elevator, identify the entities and relationships, and work out the interesting case in each — allocation, collision, pricing — because that is where the marks sit.
+Take the eight LLD questions above and, for each one, write down only the interesting case — not the entity list. Two cars in one spot, two users on one seat, payment taken and nothing dispensed. Listing entities is the half everyone prepares; the concurrency problem underneath is the half that decides the round.
 
-Then learn one structure for high-level questions and never deviate from it: requirements, rough scale, API, components, depth where prompted, trade-offs. Starting with a diagram is the single most common failure, and asking clarifying questions is itself being assessed.
+Then memorise six clarifying questions for HLD and, crucially, practise saying what each answer changed. "If it is read-heavy at that scale, I would put a cache in front of the database" turns a question into reasoning; asking and then ignoring the answer reads as stalling.
 
-Finally, prepare your own project as design material. Write out one real decision you made — why that database, how you handled a collision, what you traded away — because a genuine decision you can defend under four follow-up questions beats any memorised architecture.
+Finally, write out one real decision from your own project — why that database, how you handled a collision, what you traded away. A decision you genuinely made and can defend through four follow-ups beats any architecture you memorised from a senior-level guide.

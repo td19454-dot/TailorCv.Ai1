@@ -28,7 +28,7 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 ## The core differences
 
-| | Gaishikei | Domestic Japanese |
+| What differs | Gaishikei | Domestic Japanese |
 |---|---|---|
 | Working language | Frequently English | Japanese, usually N2+ |
 | Pay | Generally higher | Lower, more tenure-linked |
