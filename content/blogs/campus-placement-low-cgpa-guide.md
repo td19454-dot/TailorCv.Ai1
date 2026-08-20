@@ -43,6 +43,20 @@ Start with the document every application depends on — run your resume through
 - Off-campus hiring challenges run by large employers
 - Anything where you enter through a referral rather than an application filter
 
+### Where the filter exists, and where it does not
+
+| Route in | Is CGPA a hard filter? | What actually decides |
+|---|---|---|
+| **On-campus drive** | Yes, automatic and absolute | The portal, before a human sees you |
+| **Off-campus portal application** | Sometimes, often not | Resume screening by a recruiter |
+| **Off-campus hiring challenge** | Rarely | Your score on the test |
+| **Referral from an employee** | Usually bypassed | The referrer's word plus your interview |
+| **Startup application** | Almost never | What you have built |
+| **LinkedIn recruiter outreach** | No | Your profile and projects |
+| **Open source into a job** | No | Your contributions |
+
+**Read the second column top to bottom.** The filter is real in exactly one row and negotiable or absent in the rest — which is the entire strategic point of this guide. Most students spend their whole final year fighting the one row where they cannot win.
+
 ---
 
 ## The strategy that works
@@ -75,6 +89,24 @@ Your CGPA is fixed. Your evidence is not.
 
 **Leave CGPA off the resume** where it is below typical cutoffs and not explicitly requested. It is not dishonest — you are not obliged to volunteer every number — and it keeps the reader on your projects. Include it where a form or posting requires it.
 
+### What is worth your remaining months
+
+If you have two semesters left, these are not equal. Ranked by what actually moves a low-CGPA application.
+
+| What you could do | Impact | Why |
+|---|---|---|
+| **Deploy one project real people use** | Very high | Third-party evidence a transcript cannot contradict |
+| **Get any internship, even unpaid or remote** | Very high | Validation from someone who is not your college |
+| **Clear every backlog before placement season** | Very high | Often a harder filter than CGPA itself |
+| **Get strong at aptitude** | High | Tested directly, and it is where many drives cut first |
+| **Reach a reliable easy-medium DSA level** | High | Also tested directly rather than inferred |
+| **Build 3-4 seniors into real referral contacts** | High | Bypasses the filter entirely |
+| **Raise CGPA in the last two semesters** | Medium | Moves the number slowly, but an upward trend is a real answer |
+| **Collect online course certificates** | Low | Nobody verifies them and everybody has them |
+| **Add more half-finished GitHub repos** | Low | Reviewers open them, which makes this actively negative |
+
+**The bottom two rows are where anxious students spend most of their time**, because certificates feel like progress and are much easier than shipping something someone uses.
+
 ---
 
 ## Answering the question
@@ -96,6 +128,16 @@ You will be asked. Prepare for it rather than improvising.
 
 **Mention the upward trend if you have one.** A rising SGPA across semesters is a genuine argument and interviewers respond to it.
 
+### If you do not have an upward trend
+
+Not everyone does, and the honest version still works better than deflection.
+
+> My CGPA is 6.4 and it has been fairly flat. I spent most of my time on things outside the syllabus — the deployment work and the two projects on my resume — and in hindsight I should have managed both rather than choosing. What I can say is that the practical side is where I am genuinely strong, and the library system is running with about 200 users a week if you would like to go through it.
+
+**Why this still lands.** It does not manufacture a story that is not true, it names the trade-off honestly, it accepts the cost, and it moves immediately to evidence. Interviewers are checking self-awareness far more than they are checking the number, and a candidate who can say "I chose badly and here is what I built instead" is more convincing than one reciting a semester-by-semester defence.
+
+**Keep it under thirty seconds either way.** The longer this answer runs, the more it sounds like something you are anxious about.
+
 ---
 
 ## Common Mistakes
@@ -108,11 +150,15 @@ You will be asked. Prepare for it rather than improvising.
 
 **Not using referrals.** A referral bypasses the filter that would otherwise remove you before anyone reads your application.
 
-**Building certificates instead of projects.** A deployed project with real users demonstrates what a transcript denies; a certificate does not.
+**Collecting certificates instead of shipping something.** Nobody verifies them, everybody has them, and they feel like progress while producing none.
+
+**Leaving backlogs uncleared.** For many companies this is a harder filter than CGPA and it is one you can still act on.
 
 **Volunteering a low CGPA on the resume.** Where it is below cutoffs and not requested, leaving it off keeps the reader on your evidence.
 
 **Improvising the CGPA answer in interviews.** It is asked reliably enough to prepare properly.
+
+**Talking about it for two minutes.** Length signals anxiety; thirty seconds and a move to evidence does not.
 
 **Blaming the college or evaluation.** It reads worse than the marks themselves and confirms the concern the interviewer had.
 
@@ -136,6 +182,14 @@ If it is below typical cutoffs and not explicitly requested, leaving it off is r
 
 One deployed project with real users, plus an internship if possible. Both are third-party evidence that a transcript cannot provide.
 
+### I have two semesters left. What should I prioritise?
+
+Deploy one real project, get any internship, and clear every backlog. Those three move a low-CGPA application further than anything else available to you.
+
+### Do certificates help?
+
+Very little. Nobody verifies them and every applicant has them. The same hours spent shipping one working project change the conversation entirely.
+
 ### Do startups care about CGPA?
 
 Rarely. They hire on demonstrable ability, which is why they are a strong target for candidates with weak academics and real skills.
@@ -143,6 +197,10 @@ Rarely. They hire on demonstrable ability, which is why they are a strong target
 ### How do I answer the CGPA question in an interview?
 
 Briefly and honestly — what happened, what changed, and what the evidence is now. Mention an upward trend if you have one, and never blame the college.
+
+### What if my CGPA never improved?
+
+Say so plainly, name the trade-off you made, accept the cost, and move to what you built. Self-awareness is what is being assessed, not a recovery story.
 
 ### Does CGPA matter after the first job?
 
@@ -154,8 +212,8 @@ Your resume has to clear screening either way. [Check your ATS score free](https
 
 ## Make This Practical
 
-Get the eligibility criteria from your TPO this week and split your target list in two — companies you can sit for, and everything else. Then stop spending time on the second group and run off-campus applications in parallel from the start rather than after campus season disappoints you.
+Get the eligibility criteria from your TPO this week and split your target list in two — companies you can sit for, and everything else. The CGPA filter is absolute in exactly one route and negotiable or absent in every other, so stop spending your year fighting the one place you cannot win and run off-campus applications in parallel from the start.
 
-Then build the one thing that outweighs the number. A deployed project with real users and a live link does more for a low-CGPA candidate than any certificate, because it is evidence a transcript cannot contradict — and it gives interviewers something concrete to talk about instead of your marks.
+Then pick from the top of the priority list, not the bottom. Deploy one project real people use, get any internship at all, and clear every backlog before the season starts — and stop collecting certificates, which feel like progress precisely because they are easier than shipping something.
 
-Finally, prepare the answer. Write out what happened, what changed and what the evidence is now, keep it under thirty seconds, mention an upward trend if you have one, and never blame the college — the way you handle the question matters more than the number behind it.
+Finally, write the answer and time it. Thirty seconds, covering what happened, what changed and what the evidence is now — and if there is no upward trend, say that honestly and move to what you built instead. Interviewers are testing self-awareness, not the number.
