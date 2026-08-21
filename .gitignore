@@ -197,3 +197,10 @@ project_links_debug.txt
 # Real resumes dropped in for testing - personal data, never commit.
 resume_lab/*.pdf
 resume_lab/jd.txt
+
+# Raw screen recordings. Only the compressed, web-ready static/videos/demo.mp4
+# (and its poster) belong in the repo — a raw capture is hundreds of MB and git
+# keeps it in history forever, which Render re-pulls on every deploy.
+static/videos/demoo.mp4
+static/videos/*.raw.mp4
+static/videos/raw/
