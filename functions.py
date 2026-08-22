@@ -1353,6 +1353,26 @@ _GENERIC_SKILL_STOPWORDS: set[str] = {
 }
 
 
+# Real product names that are still NOT professional skills. They pass every
+# other test here — proper nouns, genuinely present in the resume — so the
+# evidence gate lets them through, and a Technical Skills line came back reading
+# "Razorpay, Polar, LeetCode, ChatGPT, Gemini".
+#
+# Two kinds:
+#   - practice and course platforms. Solving problems on LeetCode is not a skill
+#     a recruiter can screen for; the certification belongs under Certifications.
+#   - consumer AI assistants. "ChatGPT" as a listed skill reads as padding. The
+#     underlying capability (LLM evaluation, prompt engineering) is the skill,
+#     and that survives because it is a separate entry.
+_NON_SKILL_PRODUCTS: set[str] = {
+    "leetcode", "hackerrank", "codeforces", "codechef", "geeksforgeeks",
+    "hackerearth", "codewars", "topcoder", "coursera", "udemy", "udacity",
+    "edx", "datacamp", "kaggle learn",
+    "chatgpt", "chat gpt", "gemini", "google gemini", "bard", "copilot",
+    "github copilot", "claude", "perplexity",
+}
+
+
 def _strip_skill_qualifiers(value: str) -> str:
     """Remove requirement prose around a possible atomic skill."""
     cleaned = str(value or "").strip().strip("\"'.,:;-")
@@ -1372,6 +1392,11 @@ def _is_atomic_hard_skill(value: str) -> bool:
         return False
 
     normalized = re.sub(r"\s+", " ", skill).lower()
+    # Checked BEFORE the known-keyword allowlist: some of these are real,
+    # recognised product names, and the point is that being real is not the same
+    # as being a skill worth listing.
+    if normalized in _NON_SKILL_PRODUCTS:
+        return False
     if normalized in _HARD_SKILL_KEYWORDS_LOWER:
         return True
     if any(
