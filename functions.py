@@ -641,7 +641,87 @@ load_dotenv(dotenv_path=BASE_DIR / ".env")
 
 # OPTIMIZATION: Reuse a single OpenAI client instance instead of creating new ones
 _openai_client = None
-MOCK_INTERVIEW_MODEL = "gpt-4o-mini"
+# The model for every feature EXCEPT the resume tailoring rewrite: cover
+# letters, mock interviews, interview questions, LinkedIn parsing, resume
+# extraction. These are ordinary generation tasks where gpt-4o-mini is both
+# cheaper and faster, and no measurement suggested they need more.
+# The tailoring call is the exception — see OPTIMIZER_MODEL below.
+AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
+MOCK_INTERVIEW_MODEL = AI_MODEL
+
+
+_REASONING_MODEL_PREFIXES = ("gpt-5", "o1", "o3", "o4")
+
+
+def _is_reasoning_model(model: str) -> bool:
+    return str(model or "").startswith(_REASONING_MODEL_PREFIXES)
+
+
+def _adapt_call_params(kwargs: dict) -> dict:
+    """Rewrite request parameters into the ones the target model family accepts.
+
+    The gpt-5 / o-series models are reasoning models and REJECT the parameters
+    the gpt-4 family requires — these are hard 400s, not degraded responses:
+      - `max_tokens` is refused; the equivalent is `max_completion_tokens`.
+      - `temperature` accepts only the default 1; any other value is refused.
+      - `reasoning_effort` is theirs alone, and it is the speed/cost dial. At the
+        default the tailoring call took ~65s and burned ~2,800 billed reasoning
+        tokens; at "low" it is ~18s.
+
+    Applied here, at the client, rather than at each of the ten call sites: this
+    codebase calls chat.completions.create from nine places with different
+    parameter sets, and a single missed one is a 500 on a live feature. Doing it
+    centrally also means any call added later is correct by default.
+    """
+    if not _is_reasoning_model(kwargs.get("model")):
+        return kwargs
+
+    out = dict(kwargs)
+    if "max_tokens" in out:
+        out["max_completion_tokens"] = out.pop("max_tokens")
+    # Only the default temperature is accepted, so drop whatever was asked for
+    # rather than 400. Callers use it to trade determinism against variety; on a
+    # reasoning model that dial is `reasoning_effort` instead.
+    out.pop("temperature", None)
+    out.pop("top_p", None)
+    if "reasoning_effort" not in out:
+        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
+        if effort in {"minimal", "low", "medium", "high"}:
+            out["reasoning_effort"] = effort
+    return out
+
+
+class _AdaptingCompletions:
+    """chat.completions proxy that runs every create() through _adapt_call_params."""
+
+    def __init__(self, inner):
+        self._inner = inner
+
+    async def create(self, **kwargs):
+        return await self._inner.create(**_adapt_call_params(kwargs))
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
+
+
+class _AdaptingChat:
+    def __init__(self, inner):
+        self._inner = inner
+        self.completions = _AdaptingCompletions(inner.completions)
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
+
+
+class _AdaptingClient:
+    """AsyncOpenAI wrapper. Everything except chat.completions passes straight through."""
+
+    def __init__(self, inner):
+        self._inner = inner
+        self.chat = _AdaptingChat(inner.chat)
+
+    def __getattr__(self, name):
+        return getattr(self._inner, name)
 
 
 async def _build_openai_client():
@@ -652,11 +732,11 @@ async def _build_openai_client():
             raise RuntimeError(
                 "OPENAI_API_KEY is not set. Add it to your .env file before using ATS analysis or resume optimization."
             )
-        _openai_client = AsyncOpenAI(
+        _openai_client = _AdaptingClient(AsyncOpenAI(
             api_key=api_key,
             timeout=120.0,
             max_retries=3
-        )
+        ))
     return _openai_client
 
 
@@ -925,19 +1005,32 @@ Job Description:
 {_escape_braces(jd_string)}
 
 """
-# The model that does the tailoring rewrite itself.
+# The model that does the tailoring rewrite itself. Rewrite quality IS the
+# product here, so this one call is chosen on measurement rather than on price.
+# Every other LLM call in the app stays on gpt-4o-mini.
 #
-# This ran on gpt-4o-mini at temperature 0, which is the most copy-prone setting
-# available: a small model at the most-probable-token setting, handed a prompt
-# dense with "preserve every detail", takes the safest path and echoes the input
-# back with a verb swapped. Measured against a real resume it dropped a detail on
-# roughly a third of bullets, and the fact-guard then had to restore the
-# candidate's own sentence — so a third of the resume came back unrewritten.
+# Measured end-to-end on a real resume + JD. "reverts" is how often
+# enforce_bullet_facts had to discard the model's rewrite because it dropped a
+# fact, so lower means more of the resume ships genuinely rewritten; "weak
+# verbs" counts bullets still opening with a banned learning verb ("Studied",
+# "Acquired") that the prompt forbids:
 #
-# Rewrite quality IS the product here, so this one call gets a stronger model and
-# enough temperature to actually restructure a sentence. Every other LLM call in
-# the app is unchanged. Overridable from .env for cost tuning.
-OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-4o-mini")
+#   gpt-4o-mini @ 0      ~17s   32% reverts   2 weak verbs   $1.95 / 1000
+#   gpt-4o-mini @ 0.35   ~17s   14% reverts   2 weak verbs   $1.97 / 1000
+#   gpt-4o     @ 0.35    ~10s   27% reverts   1 weak verb   $32.56 / 1000
+#   gpt-5-mini (low)     ~18s   14% reverts   0 weak verbs   $6.37 / 1000  <- chosen
+#   gpt-5-mini (medium)  ~34s    5% reverts   0 weak verbs  $11.86 / 1000
+#
+# gpt-5-mini at low effort is the pick: same speed and revert rate as the
+# cheapest option, but it is the only model that reliably stops writing "Studied
+# the process" where the prompt asks for "Mapped the process" — a failure prompt
+# rules alone never fixed. medium halves the reverts again but doubles the wall
+# clock, which is too slow for the Chrome extension, where someone is watching a
+# spinner on a job page. gpt-4o was 16x the cost and measurably worse.
+#
+# Both settings are .env-overridable: OPTIMIZER_MODEL=gpt-4o-mini drops the cost
+# back to ~$2/1000, OPTIMIZER_REASONING_EFFORT=medium buys the 5% revert rate.
+OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-5-mini")
 try:
     OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
 except ValueError:
@@ -953,11 +1046,42 @@ except ValueError:
     # the same generic 500, so there was nothing to act on.
     reraise=True,
 )
-async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperature: float = 0) -> str:
+def _completion_params(model: str, temperature: float) -> dict:
+    """Per-model-family call parameters for the tailoring request.
+
+    The gpt-5 family are reasoning models and reject the parameters the gpt-4
+    family requires:
+      - `max_tokens` is refused outright; they want `max_completion_tokens`.
+      - `temperature` accepts only the default 1 — 0.35 returns a 400.
+      - `reasoning_effort` is theirs alone, and it matters: at the default the
+        tailoring call took ~65s and burned ~2,800 billed reasoning tokens
+        before writing anything, which is far too slow for the Chrome extension
+        where the user is watching a spinner on a job page.
+    Sending the wrong set is a hard 400, not a degraded response, so this is
+    chosen by family rather than left to the caller.
+    """
+    if str(model or "").startswith(("gpt-5", "o1", "o3", "o4")):
+        params = {
+            "max_completion_tokens": 16384,
+            "seed": _ATS_SEED,
+        }
+        effort = os.getenv("OPTIMIZER_REASONING_EFFORT", "low").strip().lower()
+        if effort in {"minimal", "low", "medium", "high"}:
+            params["reasoning_effort"] = effort
+        return params
+    return {
+        "temperature": temperature,
+        "seed": _ATS_SEED,  # same resume + same job -> same rewrite
+        "max_tokens": 16384,  # avoids truncating long resumes
+    }
+
+
+async def get_resume_response(prompt: str, model: str = AI_MODEL, temperature: float = 0) -> str:
     """
     Async OpenAI call for resume optimization with retries.
     """
     client = await _build_openai_client()
+    call_params = _completion_params(model, temperature)
     try:
         response = await client.chat.completions.create(
             model=model,
@@ -966,9 +1090,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                 {'role': 'system', "content": 'Expert resume writer and reviewer'},
                 {'role': 'user', 'content': prompt}
             ],
-            temperature=temperature,
-            seed=_ATS_SEED,  # same resume + same job -> same rewrite
-            max_tokens=16384,  # gpt-4o-mini max output; avoids truncating long resumes
+            **call_params,
         )
         choice = response.choices[0] if response.choices else None
         content = choice.message.content if choice else ""
@@ -999,9 +1121,7 @@ async def get_resume_response(prompt: str, model: str = "gpt-4o-mini", temperatu
                             "remaining JSON so the two parts concatenate into one valid object."
                         )},
                     ],
-                    temperature=temperature,
-                    seed=_ATS_SEED,
-                    max_tokens=16384,
+                    **call_params,
                 )
             except Exception:
                 break
@@ -3170,7 +3290,7 @@ async def ats_scoring(resume_string, jd_string):
     # Change 2: stream=True — collect chunks as they arrive instead of one big buffer
     try:
         stream = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=AI_MODEL,
             response_format={"type": "json_object"},
             messages=[
                 {"role": "system", "content": _ATS_SYSTEM_PROMPT},
@@ -4071,7 +4191,7 @@ Job Description:
         try:
             # Bound output so each call stays fast (~160 tokens/question is plenty).
             resp = await client.chat.completions.create(
-                model="gpt-4o-mini",
+                model=AI_MODEL,
                 response_format={"type": "json_object"},
                 messages=[{"role": "user", "content": _build_prompt(name, count, want_meta)}],
                 temperature=0.4,
@@ -4159,7 +4279,7 @@ Return ONLY valid JSON with this exact schema:
     client = await _build_openai_client()
     try:
         response = await client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=AI_MODEL,
             response_format={"type": "json_object"},
             messages=[{"role": "user", "content": prompt}],
             temperature=0.2,
@@ -4300,7 +4420,7 @@ async def agent_chat_reply(
     page_path: str = "/",
     is_logged_in: bool = False,
     blog_catalog: str = "",
-    model: str = "gpt-4o-mini",
+    model: str = AI_MODEL,
 ) -> str:
     """One assistant turn for the site-wide 'Tailor' agent."""
     client = await _build_openai_client()
