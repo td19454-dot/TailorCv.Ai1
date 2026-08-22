@@ -35,6 +35,8 @@ from functions import (
     compute_deterministic_ats_score_breakdown,
     create_prompt,
     get_resume_response,
+    OPTIMIZER_MODEL,
+    OPTIMIZER_TEMPERATURE,
     extract_links,
     inject_links,
     inject_jd_hard_skills,
@@ -10678,7 +10680,9 @@ async def _optimize_resume_core(
 
     if forwarded_ats is not None:
         try:
-            response_string = await get_resume_response(prompt)
+            response_string = await get_resume_response(
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+            )
         except Exception as exc:
             logger.exception("AI generation failed")
             raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
@@ -10688,7 +10692,9 @@ async def _optimize_resume_core(
         # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
         try:
             response_string, ats_result = await asyncio.gather(
-                get_resume_response(prompt),
+                get_resume_response(
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                ),
                 ats_scoring(ats_resume_string, jd_string),
                 return_exceptions=True,
             )
