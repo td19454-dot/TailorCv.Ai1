@@ -204,3 +204,7 @@ resume_lab/jd.txt
 static/videos/demoo.mp4
 static/videos/*.raw.mp4
 static/videos/raw/
+
+# Any .env variant — backups and per-environment copies hold live API
+# keys, and a plain `.env` rule does not cover `.env.bak`/`.env.local`.
+.env*

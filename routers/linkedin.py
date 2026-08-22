@@ -306,9 +306,14 @@ def _extract_json_block(raw: str) -> str:
 
 
 async def _parse_cv_with_openai(api_key: str, raw_text: str) -> dict:
-    client = AsyncOpenAI(api_key=api_key)
+    # Shares the app's single model constant, and goes through functions'
+    # client so reasoning-model parameters are translated (gpt-5 rejects
+    # max_tokens). Imported lazily to keep this router import-light.
+    from functions import AI_MODEL, _build_openai_client
+
+    client = await _build_openai_client()
     response = await client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=AI_MODEL,
         max_tokens=3500,
         response_format={"type": "json_object"},
         messages=[

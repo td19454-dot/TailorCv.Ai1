@@ -35,6 +35,7 @@ from functions import (
     compute_deterministic_ats_score_breakdown,
     create_prompt,
     get_resume_response,
+    AI_MODEL,
     OPTIMIZER_MODEL,
     OPTIMIZER_TEMPERATURE,
     extract_links,
@@ -671,8 +672,11 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    "ai_optimizations": 3,
-    "cover_letters": 3,
+    # Lowered from 3 when the whole app moved to gpt-5-mini, which costs ~3x
+    # more per call than gpt-4o-mini. The download popup reads this number
+    # rather than hardcoding it, so the copy follows automatically.
+    "ai_optimizations": 2,
+    "cover_letters": 2,
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
@@ -3835,7 +3839,7 @@ INPUT:
 \"\"\"
 """
     try:
-        ai_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.0)
+        ai_response = await get_resume_response(prompt, model=AI_MODEL, temperature=0.0)
         strict_parsed = parse_ai_json_response(ai_response)
         if not isinstance(strict_parsed, dict):
             return None
@@ -6748,7 +6752,7 @@ async def generate_cover_letter(request: Request):
     prompt = _build_cover_letter_prompt(resume_text, job_description, tone)
 
     try:
-        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -6854,7 +6858,7 @@ async def extension_cover_letter(request: Request):
     prompt = _build_cover_letter_prompt(resume_text[:8000], jd_string[:6000], tone)
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -7497,7 +7501,7 @@ async def extension_apply_answers(request: Request):
     prompt = _build_apply_answers_prompt(resume_text[:8000], jd_string[:6000], role, company, questions)
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.2)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.2)
         parsed = parse_ai_json_response(raw)
         raw_answers = parsed.get("answers") if isinstance(parsed, dict) else None
         if not isinstance(raw_answers, list):
@@ -8009,7 +8013,7 @@ async def generate_personality_card(request: Request):
     # Run GPT outside DB session to avoid holding a connection during AI latency
     try:
         prompt = _build_personality_card_prompt(resume_data)
-        raw_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.7)
+        raw_response = await get_resume_response(prompt, model=AI_MODEL, temperature=0.7)
         card_data = json.loads(raw_response)
     except (json.JSONDecodeError, TypeError):
         logger.error("Personality card GPT returned non-JSON")
@@ -8603,7 +8607,7 @@ async def _enrich_portfolio_copy(data: dict) -> dict:
     }
     try:
         prompt = _build_portfolio_ai_prompt(data)
-        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.6)
+        raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.6)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             return fallback
@@ -10857,12 +10861,24 @@ async def _optimize_resume_core(
                 parsed.setdefault("skills", []).append(skill)
                 existing.add(skill.strip().lower())
 
-    # The gaps shown to the user are the ATS analysis's own `missing` list,
-    # used verbatim. inject_jd_hard_skills still decides what gets WRITTEN into
-    # the resume via its evidence check - that stays strict - but what the user
-    # is TOLD is missing must be the same list the score page showed them.
-    if jd_hard_skills is not None:
-        parsed["skill_gaps"] = ats_missing_hard
+    # What the user is TOLD is missing should match the score page, so the ATS
+    # analysis's own `missing` list leads. But it must not REPLACE the list
+    # outright: inject_jd_hard_skills has just decided what it actually withheld
+    # from the resume, and anything it held back has to be offered or the
+    # candidate is never asked about a skill that is genuinely absent. Replacing
+    # the list meant a shorter (or empty) ATS list silently swallowed those, and
+    # the editor then had nothing to ask about at all.
+    #
+    # On the extension (auto_add_skills=True) nothing is withheld and there is
+    # no UI to ask through, so the list stays empty rather than being refilled.
+    if auto_add_skills:
+        parsed["skill_gaps"] = []
+    elif jd_hard_skills is not None:
+        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
+        seen = {s.strip().lower() for s in ats_missing_hard}
+        parsed["skill_gaps"] = list(ats_missing_hard) + [
+            s for s in withheld if s.strip().lower() not in seen
+        ]
 
     # Soft skills the rewrite failed to express go into the summary, not the
     # skills array (Rule01b). Handled automatically rather than asked about:
