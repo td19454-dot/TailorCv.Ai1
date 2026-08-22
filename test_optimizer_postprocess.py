@@ -273,19 +273,20 @@ def test_sanitize_missing_sections_ok():
 # interview, so it is reported as a gap instead.
 # --------------------------------------------------------------------------- #
 def test_unevidenced_jd_skill_becomes_a_gap_not_a_skill():
-    resume = "Backend engineer. Built REST APIs in Python on AWS."
-    jd = "Required: Python, Kubernetes, Terraform."
-    out = inject_jd_hard_skills({"skills": ["Python"]}, jd, resume)
+    with confirm_first():
+        resume = "Backend engineer. Built REST APIs in Python on AWS."
+        jd = "Required: Python, Kubernetes, Terraform."
+        out = inject_jd_hard_skills({"skills": ["Python"]}, jd, resume)
 
-    lowered = [s.lower() for s in out["skills"]]
-    gaps = [s.lower() for s in out["skill_gaps"]]
+        lowered = [s.lower() for s in out["skills"]]
+        gaps = [s.lower() for s in out["skill_gaps"]]
 
-    assert "python" in lowered, out["skills"]
-    # Never claimed on the resume -> must not appear in skills.
-    assert "kubernetes" not in lowered, out["skills"]
-    assert "terraform" not in lowered, out["skills"]
-    # ...but the candidate is told about them.
-    assert "kubernetes" in gaps and "terraform" in gaps, out["skill_gaps"]
+        assert "python" in lowered, out["skills"]
+        # Never claimed on the resume -> must not appear in skills.
+        assert "kubernetes" not in lowered, out["skills"]
+        assert "terraform" not in lowered, out["skills"]
+        # ...but the candidate is told about them.
+        assert "kubernetes" in gaps and "terraform" in gaps, out["skill_gaps"]
 
 
 def test_evidenced_jd_skill_is_promoted_into_skills():
@@ -299,45 +300,114 @@ def test_evidenced_jd_skill_is_promoted_into_skills():
     assert out["skill_gaps"] == [], out["skill_gaps"]
 
 
+class confirm_first:
+    """No-op kept so the gated tests below read clearly.
+
+    The skills policy is now chosen per surface by the `auto_add` argument, not
+    by a global switch: the website asks the candidate to confirm an unevidenced
+    JD skill, the Chrome extension adds it outright. inject_jd_hard_skills
+    defaults to the website behaviour, so these tests need no override — they
+    pin the evidence gate, which is what stops the MODEL slipping unbacked
+    claims into the skills array on the site.
+    """
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *exc):
+        return False
+
+
+def test_website_and_extension_differ_only_in_skills_policy():
+    """One engine, two skill policies — the contract between the surfaces.
+
+    Website: an unevidenced JD skill is withheld and offered as a gap, so the
+    candidate confirms it. Extension: it goes straight on, because the sidebar
+    has no way to ask. Same inputs, same everything else.
+    """
+    # jd_skills is supplied explicitly so this pins the POLICY, not the JD
+    # extractor's vocabulary (which does not currently recognise "SAP").
+    data = {"skills": ["Python"]}
+    jd = "Required: Python, Tableau, SAP."
+    resume = "Backend engineer. Built APIs in Python."
+    wanted = ["Python", "Tableau", "SAP"]
+
+    site = inject_jd_hard_skills(dict(data), jd, resume, jd_skills=wanted, auto_add=False)
+    ext = inject_jd_hard_skills(dict(data), jd, resume, jd_skills=wanted, auto_add=True)
+
+    site_skills = {s.lower() for s in site["skills"]}
+    ext_skills = {s.lower() for s in ext["skills"]}
+
+    # Evidenced skills reach both.
+    assert "python" in site_skills and "python" in ext_skills
+
+    # Website withholds and asks.
+    assert "tableau" not in site_skills, site["skills"]
+    assert {g.lower() for g in site["skill_gaps"]} == {"tableau", "sap"}, site["skill_gaps"]
+
+    # Extension adds and reports.
+    assert {"tableau", "sap"}.issubset(ext_skills), ext["skills"]
+    assert ext["skill_gaps"] == [], ext["skill_gaps"]
+    assert {s.lower() for s in ext["skills_added_from_jd"]} == {"tableau", "sap"}
+
+
+def test_extension_policy_adds_every_jd_skill():
+    """auto_add=True (Chrome extension): no confirmation step, nothing held back."""
+    out = inject_jd_hard_skills(
+        {"skills": ["Python"]},
+        "Required: SQL, Power BI, Tableau, SAP.",
+        "Skills: Python, SQL",
+        jd_skills=["SQL", "Power BI", "Tableau", "SAP"],
+        auto_add=True,
+    )
+    lowered = {s.lower() for s in out["skills"]}
+    for skill in ("sql", "power bi", "tableau", "sap"):
+        assert skill in lowered, f"{skill} missing from {out['skills']}"
+    assert out["skill_gaps"] == [], "nothing should be left to ask the user"
+
+
 def test_no_resume_text_means_every_jd_skill_is_a_gap():
-    # Fail closed: with nothing to check against we must not invent claims.
-    out = inject_jd_hard_skills({"skills": []}, "Required: Kubernetes, Terraform.")
-    assert out["skills"] == [], out["skills"]
-    assert len(out["skill_gaps"]) == 2, out["skill_gaps"]
+    with confirm_first():
+        # Fail closed: with nothing to check against we must not invent claims.
+        out = inject_jd_hard_skills({"skills": []}, "Required: Kubernetes, Terraform.")
+        assert out["skills"] == [], out["skills"]
+        assert len(out["skill_gaps"]) == 2, out["skill_gaps"]
 
 
 def test_model_claimed_unevidenced_jd_skill_is_stripped():
-    # Regression: the gating loop used to `continue` when a JD skill was already
-    # in the model's skills array, so a skill the model invented was neither
-    # evidence-checked nor reported. The candidate shipped a claim they could not
-    # defend AND was never told about it. Caught by evals/run_eval.py, where
-    # gpt-4o-mini put "Power BI" on a resume with no Power BI anywhere.
-    resume = "Analyst. Built dashboards in Excel and wrote SQL against PostgreSQL."
-    jd = "Required: SQL, Power BI, Tableau."
-    out = inject_jd_hard_skills({"skills": ["SQL", "Power BI", "Tableau"]}, jd, resume)
+    with confirm_first():
+        # Regression: the gating loop used to `continue` when a JD skill was already
+        # in the model's skills array, so a skill the model invented was neither
+        # evidence-checked nor reported. The candidate shipped a claim they could not
+        # defend AND was never told about it. Caught by evals/run_eval.py, where
+        # gpt-4o-mini put "Power BI" on a resume with no Power BI anywhere.
+        resume = "Analyst. Built dashboards in Excel and wrote SQL against PostgreSQL."
+        jd = "Required: SQL, Power BI, Tableau."
+        out = inject_jd_hard_skills({"skills": ["SQL", "Power BI", "Tableau"]}, jd, resume)
 
-    lowered = [s.lower() for s in out["skills"]]
-    gaps = [s.lower() for s in out["skill_gaps"]]
+        lowered = [s.lower() for s in out["skills"]]
+        gaps = [s.lower() for s in out["skill_gaps"]]
 
-    assert "sql" in lowered, out["skills"]
-    # The model asserted these; the resume evidences neither -> stripped.
-    assert "power bi" not in lowered, out["skills"]
-    assert "tableau" not in lowered, out["skills"]
-    # ...and the candidate is told, instead of being silently credited.
-    assert "power bi" in gaps and "tableau" in gaps, out["skill_gaps"]
+        assert "sql" in lowered, out["skills"]
+        # The model asserted these; the resume evidences neither -> stripped.
+        assert "power bi" not in lowered, out["skills"]
+        assert "tableau" not in lowered, out["skills"]
+        # ...and the candidate is told, instead of being silently credited.
+        assert "power bi" in gaps and "tableau" in gaps, out["skill_gaps"]
 
 
 def test_model_claimed_skill_survives_when_resume_evidences_it():
-    # The strip must not fire on a genuine claim: same shape as above, but the
-    # resume actually names Power BI.
-    resume = "Analyst. Published Power BI dashboards for regional leadership."
-    jd = "Required: Power BI, Tableau."
-    out = inject_jd_hard_skills({"skills": ["Power BI", "Tableau"]}, jd, resume)
+    with confirm_first():
+        # The strip must not fire on a genuine claim: same shape as above, but the
+        # resume actually names Power BI.
+        resume = "Analyst. Published Power BI dashboards for regional leadership."
+        jd = "Required: Power BI, Tableau."
+        out = inject_jd_hard_skills({"skills": ["Power BI", "Tableau"]}, jd, resume)
 
-    lowered = [s.lower() for s in out["skills"]]
-    assert "power bi" in lowered, out["skills"]
-    assert "tableau" not in lowered, out["skills"]
-    assert [s.lower() for s in out["skill_gaps"]] == ["tableau"], out["skill_gaps"]
+        lowered = [s.lower() for s in out["skills"]]
+        assert "power bi" in lowered, out["skills"]
+        assert "tableau" not in lowered, out["skills"]
+        assert [s.lower() for s in out["skill_gaps"]] == ["tableau"], out["skill_gaps"]
 
 
 def test_no_resume_text_leaves_model_skills_alone():
@@ -622,17 +692,18 @@ def test_factcheck_no_original_text_is_a_no_op():
 
 
 def test_short_skill_names_are_not_matched_as_substrings():
-    """"R" must not match "recommendation", "Go" must not match "Google"."""
-    resume = "Engineer at Google. Built Django services and React dashboards."
-    jd = "Required: R, Go, React."
-    out = inject_jd_hard_skills({"skills": []}, jd, resume)
+    with confirm_first():
+        """"R" must not match "recommendation", "Go" must not match "Google"."""
+        resume = "Engineer at Google. Built Django services and React dashboards."
+        jd = "Required: R, Go, React."
+        out = inject_jd_hard_skills({"skills": []}, jd, resume)
 
-    lowered = [s.lower() for s in out["skills"]]
-    gaps = [s.lower() for s in out["skill_gaps"]]
+        lowered = [s.lower() for s in out["skills"]]
+        gaps = [s.lower() for s in out["skill_gaps"]]
 
-    assert "react" in lowered, out["skills"]
-    assert "r" not in lowered and "go" not in lowered, out["skills"]
-    assert "r" in gaps and "go" in gaps, out["skill_gaps"]
+        assert "react" in lowered, out["skills"]
+        assert "r" not in lowered and "go" not in lowered, out["skills"]
+        assert "r" in gaps and "go" in gaps, out["skill_gaps"]
 
 
 # --------------------------------------------------------------------------- #
