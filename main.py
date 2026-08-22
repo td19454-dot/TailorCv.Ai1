@@ -2119,6 +2119,34 @@ def normalize_list_of_strings(items):
 #      never duplicated.
 _RESTORE_MARKERS = "•‣◦⁃∙*·▪●❖✧»>–—-"
 
+# Verbs a resume bullet opens with. Used to tell a NEW bullet from the wrapped
+# tail of the one above when the PDF lost the bullet glyph: a tail continues a
+# sentence ("UI using HTML...", "Lever, Workday), cutting...") while a bullet
+# starts an action. Deliberately includes the weak and passive-learning verbs
+# the prompt bans ("Worked", "Gained", "Studied") — those still START bullets on
+# an unoptimized resume, which is exactly the input being parsed here.
+_BULLET_ACTION_VERBS = {
+    "achieved", "analysed", "analyzed", "architected", "assisted", "authored",
+    "automated", "benchmarked", "built", "collaborated", "compiled", "conducted",
+    "consolidated", "coordinated", "created", "cut", "debugged", "decreased",
+    "delivered", "deployed", "designed", "developed", "diagnosed", "documented",
+    "drove", "eliminated", "engineered", "enhanced", "established", "evaluated",
+    "executed", "expanded", "facilitated", "gained", "generated", "grew",
+    "handled", "helped", "identified", "implemented", "improved", "increased",
+    "influenced", "initiated", "instrumented", "integrated", "introduced",
+    "launched", "led", "leveraged", "maintained", "managed", "mapped",
+    "mentored", "migrated", "modelled", "modeled", "monitored", "negotiated",
+    "operated", "optimised", "optimized", "orchestrated", "organised",
+    "organized", "outlined", "overhauled", "owned", "participated", "partnered",
+    "performed", "pioneered", "planned", "prepared", "presented", "produced",
+    "programmed", "provided", "ran", "rebuilt", "reduced", "refactored",
+    "researched", "resolved", "responsible", "restructured", "reviewed",
+    "revamped", "scaled", "secured", "set", "shipped", "simplified", "solved",
+    "spearheaded", "standardised", "standardized", "streamlined", "studied",
+    "supported", "tested", "tracked", "trained", "transformed", "translated",
+    "troubleshot", "validated", "worked", "wrote",
+}
+
 
 def _restore_tokens(text: str) -> set:
     return set(re.findall(r"[a-z0-9]+", str(text or "").lower()))
@@ -2238,6 +2266,15 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
 
         cands = []
         seen_marker = False
+        # The widest line in this entry's range approximates the page's text
+        # column. A line at (or near) that width was wrapped by the PDF, not
+        # ended by the writer — that is what identifies a continuation.
+        entry_max_len = max(
+            (len(section_lines[i][0].rstrip()) for i in range(start + 1, end)),
+            default=0,
+        )
+        prev_len = 0
+        prev_raw = ""
         for i in range(start + 1, end):
             line = section_lines[i][0]
             # Hard boundary: a new entry title. Titles in virtually every template
@@ -2275,24 +2312,54 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             # handling." is eight words with two commas, which reads as a
             # technology row and used to end collection mid-entry, costing that
             # entry every bullet after it.
-            # The bullet MARKER is the reliable signal, where the PDF kept one:
-            # every real bullet carries one and no wrapped tail does. Judging by
-            # capitalisation alone missed tails that begin with an acronym —
-            # "UI using HTML, CSS, and JavaScript." reads as a technology row and
-            # ended collection one bullet into the entry. Fall back to
-            # capitalisation only for resumes whose markers did not survive
-            # extraction, so a marker-less layout cannot collapse into one bullet.
+            # Is this line the TAIL of the bullet above, or a bullet of its own?
+            #
+            # Two signals, and BOTH are required, because either alone merges
+            # real bullets together:
+            #   1. No bullet marker. A marker always starts a new bullet.
+            #   2. The previous physical line ran to the margin. That is what a
+            #      PDF wrap looks like — the text had nowhere else to go. A line
+            #      that stopped short ended its bullet, whether or not it has a
+            #      full stop.
+            #
+            # Sentence punctuation is NOT usable here: plenty of resumes write
+            # bullets with no trailing period at all. Relying on it merged an
+            # entire entry — four separate bullets became one paragraph reading
+            # "...over product data Built RESTful APIs... Designed normalized
+            # PostgreSQL schemas... Integrated backend with frontend...".
             has_marker = stripped[:1] in _RESTORE_MARKERS
             if has_marker:
                 seen_marker = True
-            looks_like_continuation = (
-                (not has_marker) if seen_marker else (not clean_peek[:1].isupper())
+            prev_wrapped = prev_len >= max(40, int(entry_max_len * 0.85))
+            # Width alone is not enough: when every bullet in an entry is about
+            # the same length, each one looks like a wrap of the one above and
+            # the whole entry collapses into a single paragraph. So the line must
+            # ALSO read as a continuation — it starts soft (lower case, a digit,
+            # an opening bracket), or the line above stopped mid-clause.
+            starts_soft = not clean_peek[:1].isupper()
+            prev_mid_clause = (
+                prev_raw.rstrip().endswith((",", "-", "–", "/", "&", "+"))
+                or prev_raw.count("(") > prev_raw.count(")")
             )
+            # What actually separates a new bullet from a wrapped tail is the
+            # OPENING WORD. Resume bullets begin with an action verb — that is
+            # what every resume guide asks for and what this prompt enforces —
+            # and a wrapped tail never does:
+            #     "Built RESTful APIs using FastAPI..."      <- new bullet
+            #     "Designed normalized PostgreSQL schemas"   <- new bullet
+            #     "UI using HTML, CSS, and JavaScript."      <- tail of the line above
+            #     "Lever, Workday), cutting per-application" <- tail
+            #     "(3,116 individuals) generate the highest" <- tail
+            # Width and punctuation both failed here: bullets written without
+            # full stops merged into one paragraph, and bullets of similar length
+            # each looked like a wrap of the one before it.
+            first_word = re.sub(r"[^A-Za-z]", "", clean_peek.split(" ", 1)[0]).lower()
+            starts_new_sentence = first_word in _BULLET_ACTION_VERBS
             is_tail = bool(
                 cands
                 and clean_peek
-                and looks_like_continuation
-                and not cands[-1].rstrip().endswith((".", "!", "?", ":", ";"))
+                and not has_marker
+                and (starts_soft or not starts_new_sentence)
             )
 
             # Hard boundary: the line is (or begins) another entry's title. A
@@ -2332,6 +2399,9 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             #     "Lever, Workday), cutting per-application tailoring from ~10..."
             #     "SMTP, and one-click portfolio publishing to Netlify."
             # Both are the tail of the line above, and both reached a real resume.
+            # Track the line just consumed, so the next iteration can tell a
+            # wrapped line from one that simply ended.
+            prev_len, prev_raw = len(stripped), stripped
             if is_tail:
                 cands[-1] = f"{cands[-1].rstrip()} {clean}"
                 continue
