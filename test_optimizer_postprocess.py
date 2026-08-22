@@ -19,6 +19,7 @@ from functions import (
     _balance_parentheses,
     _clean_inline_text,
     _extract_hard_skills_from_jd,
+    _is_atomic_hard_skill,
     _repair_false_future_chronology,
     factcheck_against_original,
     inject_jd_hard_skills,
@@ -316,6 +317,37 @@ class confirm_first:
 
     def __exit__(self, *exc):
         return False
+
+
+def test_practice_platforms_and_chat_assistants_are_not_skills():
+    """Real product names that are still not screenable skills.
+
+    These pass every other check — proper nouns, genuinely present in the
+    resume — so the evidence gate let them through and a Technical Skills line
+    came back reading "Razorpay, Polar, LeetCode, ChatGPT, Gemini".
+    """
+    for junk in ("LeetCode", "HackerRank", "Codeforces", "ChatGPT", "Gemini",
+                 "GitHub Copilot", "Coursera"):
+        assert not _is_atomic_hard_skill(junk), f"{junk} accepted as a skill"
+
+    # The underlying capability is still a skill, and so is ordinary tooling.
+    for real in ("Python", "Power BI", "PostgreSQL", "Playwright", "Sentry",
+                 "PostHog", "Prompt Engineering"):
+        assert _is_atomic_hard_skill(real), f"{real} wrongly rejected"
+
+
+def test_junk_products_never_reach_the_skills_array():
+    out = inject_jd_hard_skills(
+        {"skills": ["Python", "LeetCode", "ChatGPT", "Gemini", "Power BI"]},
+        "Data Analyst. Requires Python, Power BI.",
+        "Solved problems on LeetCode. Evaluated ChatGPT and Gemini output. Built Power BI dashboards in Python.",
+        jd_skills=["Python", "Power BI"],
+        auto_add=False,
+    )
+    shipped = {s.lower() for s in out["skills"]}
+    for junk in ("leetcode", "chatgpt", "gemini"):
+        assert junk not in shipped, out["skills"]
+    assert {"python", "power bi"}.issubset(shipped), out["skills"]
 
 
 def test_model_invented_skill_is_stripped_even_when_the_jd_extractor_missed_it():
