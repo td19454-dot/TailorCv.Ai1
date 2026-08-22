@@ -477,6 +477,80 @@ def test_genuine_rewrite_is_not_mistaken_for_truncation():
     assert out[0] == good, f"good rewrite was reverted: {out}"
 
 
+# --------------------------------------------------------------------------- #
+# Bullet boundaries when the PDF loses the bullet glyph.
+#
+# A new bullet opens with an action verb; a wrapped tail never does. Punctuation
+# and line width were both tried and both failed: plenty of resumes write bullets
+# with no trailing full stop (which glued a whole entry into one paragraph), and
+# bullets of similar length each look like a wrap of the one above.
+# --------------------------------------------------------------------------- #
+
+_NO_PERIODS_SOURCE = "\n".join([
+    "PROJECTS",
+    "Inventory Management System | FastAPI, PostgreSQL GitHub",
+    "- Developed a scalable inventory management system with full CRUD operations and "
+    "multi-field search over product data",
+    "Built RESTful APIs using FastAPI with asynchronous processing and automatic OpenAPI "
+    "documentation",
+    "Designed normalized PostgreSQL schemas to ensure data integrity and optimize query "
+    "performance",
+    "Integrated backend with frontend via Jinja2 templates and managed database interactions "
+    "using SQLAlchemy / psycopg2",
+])
+
+_WRAPPED_TAILS_SOURCE = "\n".join([
+    "PROJECTS",
+    "Tailorcv.com",
+    "- Shipped a Chrome extension that tailors resumes directly on job postings across 15 job "
+    "boards (LinkedIn, Indeed, Naukri, Greenhouse,",
+    "Lever, Workday), cutting per-application tailoring from ~10 minutes to under 60 seconds",
+    "- Developed an interactive Power BI dashboard to visualize customer segments, revealing "
+    "that Loyal customers",
+    "(3,116 individuals) generate the highest revenue",
+])
+
+
+def _project_bullets(source, name):
+    section_lines = main._restore_section_lines(source)
+    orig = main._original_entry_candidates(section_lines, "projects", [name])
+    entry = {"name": name, "bullets": ["x"]}
+    return main._entry_original_bullets(orig.get(name), entry, [entry], ("name",))
+
+
+def test_bullets_without_full_stops_are_not_merged():
+    """Four bullets, none ending in a period, must stay four.
+
+    They were fused into one paragraph reading "...over product data Built RESTful
+    APIs... Designed normalized PostgreSQL schemas... Integrated backend..." and
+    that reached a real resume.
+    """
+    out = _project_bullets(_NO_PERIODS_SOURCE, "Inventory Management System")
+    assert len(out) == 4, f"bullets merged: {out}"
+    assert any(b.startswith("Built RESTful") for b in out), out
+    assert any(b.startswith("Designed normalized") for b in out), out
+    assert any(b.startswith("Integrated backend") for b in out), out
+
+
+def test_wrapped_tails_still_rejoin():
+    """The opposite failure: a tail must not survive as a bullet of its own."""
+    out = _project_bullets(_WRAPPED_TAILS_SOURCE, "Tailorcv.com")
+    assert len(out) == 2, f"tails split into separate bullets: {out}"
+    joined = " ".join(out)
+    assert "Lever, Workday)" in joined and "Workday), cutting" in joined, out
+    assert "(3,116 individuals) generate" in joined, out
+    for b in out:
+        assert not b.startswith(("Lever,", "(3,116")), f"fragment shipped: {b}"
+
+
+def test_action_verb_opening_starts_a_new_bullet():
+    for verb in ("Built", "Designed", "Integrated", "Developed", "Shipped"):
+        assert verb.lower() in main._BULLET_ACTION_VERBS, verb
+    # ...and these open continuations, not bullets.
+    for word in ("ui", "lever", "usage", "publications"):
+        assert word not in main._BULLET_ACTION_VERBS, word
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]
