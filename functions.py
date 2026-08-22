@@ -691,8 +691,12 @@ def create_prompt(resume_string,jd_string):
     return f"""
 Your objective is to generate a professional, compelling resume content according to the provided job description, maximizing interview chances by integrating best practices in content quality, keyword optimization, measurable achievements, and proper formatting.
 
-Rewrite the content resume to better match the job description and return in json.
-Only improve wording and keyword alignment
+Rewrite the resume's CONTENT so it reads as though it were written for this specific job, and return it as JSON.
+
+There are TWO ways to fail this task and they are equally bad:
+  FAILURE A — deleting information. Compressing a detailed bullet into a shorter, cleaner one strips out the exact keywords the resume is scored on.
+  FAILURE B — returning the bullet unchanged. Handing back the candidate's own sentence, or changing a word or two, means they paid for a tailored resume and received the one they uploaded.
+Avoiding A by committing B is NOT a safe choice — it is just the other failure. The task is to do both: keep every fact AND genuinely rewrite the sentence around it.
 
 IMPORTANT:
 You are NOT formatting a resume.
@@ -703,6 +707,19 @@ You must preserve factual details already present in the resume such as dates, C
 - Include EVERY section that exists in the original resume (summary, experience, projects, education, skills, certifications, publications, achievements, extracurriculars, etc.).
 - Include EVERY entry/sub-section. If the resume has 5 experiences, 8 projects, and 20 certifications, the output MUST contain ALL 5 experiences, ALL 8 projects, and ALL 20 certifications — same count, none merged, summarized away, or omitted.
 - Keep EVERY bullet point of every entry. Do not drop bullets to save space.
+- Keep EVERYTHING INSIDE each bullet too. Keeping the right NUMBER of bullets while quietly deleting what is in them is the same loss, and it is the most damaging thing you can do here: the deleted parts are precisely the keywords the resume is being scored on. Carry ALL of the following from the original bullet into your version:
+  * every named technology, tool, library, platform, or product — e.g. "Pandas", "Playwright", "SMTP", "Netlify", "WMS", "DOM manipulation";
+  * every number and quantity, the secondary ones as well as the headline one — e.g. "30+ countries", "3,116 individuals", "3.5% higher", "50% of Hat purchases", "22 weighted checks", "10-metric rubric";
+  * every enumerated list, with its items intact — "15 job boards (LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday)" must keep all six names, NOT become "job boards"; "covering correctness, reasoning, code quality, and task completion" must keep all four dimensions, NOT become "a comprehensive rubric";
+  * every distinction drawn between named things — "Razorpay for domestic customers and Polar for international" must keep both names AND what separates them; "integrating Razorpay and Polar" has thrown the point away.
+  Rewriting means saying the SAME information in better words — a sharper verb, a tighter structure, the job description's vocabulary. It never means saying LESS. A bullet is space-constrained, so aim for about two printed lines, but that is guidance and it NEVER outranks this rule: where the original bullet is long and packed with specifics, your version is expected to be just as long.
+
+  WORK IN THIS ORDER for every single bullet — preservation FIRST, rewriting SECOND:
+    Step 1 — Before writing anything, list to yourself (internally, never in the output) every concrete item in the original bullet: each technology, each number, each item of each list, each named entity, and the outcome it reports.
+    Step 2 — Now write the improved bullet, carrying EVERY item from that list into it.
+    Step 3 — Check your bullet against your list. If even one item is missing, the bullet is wrong: rewrite it again until all of them are present. A shorter, cleaner sentence that lost an item is NOT an improvement, it is a downgrade.
+    Step 4 — Now check the opposite: is your sentence ACTUALLY DIFFERENT from the original? If it is the same sentence with a word swapped, you have not done the job. Restructure it — lead with the strongest fact, replace the verb with a specific one, and use the job description's vocabulary for the same work. Copying the original through is a failure, not a safe answer.
+  Never skip Step 1 to save effort, and never use Steps 1-3 as an excuse to skip Step 4. Every bullet must come back both COMPLETE and REWRITTEN.
 - Never truncate the output. Return the COMPLETE JSON for the entire resume, however long it is. Length is not a reason to omit content.
 - Preserve EVERY link (project, GitHub, Live/demo, LinkedIn, certification, publication, portfolio, company) on the exact entry it belongs to.
 
@@ -761,7 +778,13 @@ Replace generic phrases with specific examples that showcase expertise and succe
 Focus on selling professional experience, skills, and results, not merely summarizing past roles.
 
 Additional Instructions:
-Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
+Keyword Optimize and be specific for EVERY section that contains bullets — Professional Summary, Experience, Projects, Skills, Education, AND extracurriculars / leadership / positions of responsibility / volunteering — to reflect relevance to the job.
+
+### EXTRACURRICULAR, LEADERSHIP AND VOLUNTEERING BULLETS (MANDATORY)
+These are bullets like any other and they must be REWRITTEN, not copied through. They were being left almost untouched while the rest of the resume was tailored, which makes the section read as an afterthought — and it is often the only place on a junior resume that evidences leadership, ownership, communication and stakeholder work, exactly the soft skills the job description asks for.
+- Apply the same treatment as experience bullets: open with a strong, specific action verb, say what was actually organised, led or built, and end on the outcome it produced.
+- Frame the activity in terms the job description would recognise. Running an event IS stakeholder coordination and project delivery; mentoring juniors IS knowledge transfer; managing a club budget IS ownership of resources. Name it that way when the resume supports it — but never claim a responsibility the original does not describe.
+- The preservation rule above applies here in full: every number (attendee counts, funds raised, team sizes, editions), every named organisation or event, and every listed item must survive into your version.
 Use concise bullet points, each starting with a strong action verb.
 Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
 If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
