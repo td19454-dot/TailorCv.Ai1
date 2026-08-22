@@ -293,6 +293,190 @@ def test_achievements_do_not_leak_into_projects():
     assert "leetcode" not in joined, bullets
 
 
+# --------------------------------------------------------------------------- #
+# Fact enforcement: preserve first, rewrite second. Enforced in code, because
+# the model obeys the prompt on a good run and silently does not on a bad one.
+# --------------------------------------------------------------------------- #
+
+_FACTS_SOURCE = "\n".join([
+    "EXPERIENCE",
+    "Outlier - Python Engineer",
+    "- Analyzed AI-generated Python code fixes across 50+ GitHub repositories, evaluating "
+    "frontier LLM performance using a 10-metric rubric covering correctness, reasoning, "
+    "code quality, and task completion.",
+    "",
+    "PROJECTS",
+    "Tailorcv.com",
+    "- Shipped a Chrome extension that tailors resumes across 15 job boards (LinkedIn, "
+    "Indeed, Naukri, Greenhouse, Lever, Workday), cutting tailoring from ~10 minutes to "
+    "under 60 seconds; automated using Playwright.",
+])
+
+
+def test_comma_rich_bullet_is_not_read_as_a_stack_row():
+    """A dense bullet full of commas is not a technology list.
+
+    A stack row is a hard boundary while collecting an entry's original bullets,
+    so misreading a comma-heavy bullet as one stopped the scan at the entry's
+    first bullet and left every bullet protection inert.
+    """
+    bullet = ("Shipped a Chrome extension that tailors resumes across 15 job boards "
+              "(LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday), cutting to 60 seconds.")
+    assert not main._looks_like_stack_line(bullet), "dense bullet misread as a stack row"
+    assert main._looks_like_stack_line("Python, PowerBI, SQL, Excel"), "real stack row missed"
+
+
+def test_rewrite_that_drops_named_tools_is_reverted():
+    parsed = {"projects": [{"name": "Tailorcv.com", "bullets": [
+        "Launched a Chrome extension for resume tailoring on job boards, cutting "
+        "preparation from ~10 minutes to under 60 seconds."]}]}
+    out = main.enforce_bullet_facts(parsed, _FACTS_SOURCE)["projects"][0]["bullets"]
+    assert "Playwright" in out[0], f"named tool not recovered: {out}"
+    assert "Naukri" in out[0], f"enumerated item not recovered: {out}"
+
+
+def test_rewrite_that_drops_an_enumeration_is_reverted():
+    parsed = {"experience": [{"company": "Outlier", "title": "Python Engineer", "bullets": [
+        "Evaluated AI-generated Python code fixes over 50+ GitHub repositories using a "
+        "comprehensive evaluation rubric."]}]}
+    out = main.enforce_bullet_facts(parsed, _FACTS_SOURCE)["experience"][0]["bullets"]
+    assert "task completion" in out[0], f"lost enumeration not recovered: {out}"
+
+
+def test_faithful_rewrite_is_left_alone():
+    """The guard exists to stop data loss, not to undo tailoring."""
+    faithful = ("Engineered a Chrome extension automating resume tailoring across 15 job "
+                "boards (LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday), validated "
+                "with Playwright and cutting per-application effort from ~10 minutes to "
+                "under 60 seconds.")
+    parsed = {"projects": [{"name": "Tailorcv.com", "bullets": [faithful]}]}
+    out = main.enforce_bullet_facts(parsed, _FACTS_SOURCE)["projects"][0]["bullets"]
+    assert out[0] == faithful, f"faithful rewrite was reverted: {out}"
+
+
+def test_opening_verb_is_not_treated_as_a_fact():
+    """Otherwise changing "Shipped" to "Engineered" would count as data loss."""
+    facts = main._bullet_facts("Shipped a Chrome extension using Playwright")
+    assert "shipped" not in facts, facts
+    assert {"chrome", "playwright"}.issubset(facts), facts
+
+
+# --------------------------------------------------------------------------- #
+# PDF line-wrapping. A bullet that wraps arrives as two lines; the tail is under
+# the word floor and was discarded, leaving the bullet truncated mid-sentence
+# ("...quantitative methods for 10+"). Worse, a tail that happens to START with a
+# section word ("publications and 20+ oral presentations.") was read as a section
+# HEADING, which ended the section and lost every bullet after it.
+# --------------------------------------------------------------------------- #
+
+_WRAPPED_SOURCE = "\n".join([
+    "EXPERIENCE",
+    "Jadavpur University, Department of Computer Science",
+    "Data Research Assistant",
+    "Jan 2025 - Oct 2025",
+    "- Engaged in end-to-end data collection processes using qualitative and quantitative methods for 10+",
+    "research projects.",
+    "- Analyzed quantitative data with a 7-man research team and presented results through 30 written",
+    "publications and 20+ oral presentations.",
+    "- Assisted in developing 10+ new papers that the department released to the public in 2025.",
+])
+_WRAPPED_IDENT = "Jadavpur University, Department of Computer Science"
+
+
+def _wrapped_candidates():
+    section_lines = main._restore_section_lines(_WRAPPED_SOURCE)
+    orig = main._original_entry_candidates(section_lines, "experience", [_WRAPPED_IDENT])
+    entry = {"company": _WRAPPED_IDENT, "title": "Data Research Assistant", "bullets": ["x"]}
+    return main._entry_original_bullets(
+        orig.get(_WRAPPED_IDENT), entry, [entry], ("company", "title")
+    )
+
+
+def test_wrapped_bullet_tail_is_rejoined():
+    cands = _wrapped_candidates()
+    assert any(c.endswith("for 10+ research projects.") for c in cands), cands
+
+
+def test_section_word_in_a_wrapped_tail_is_not_a_heading():
+    """"publications and 20+ oral presentations." is a sentence, not a heading."""
+    assert main._heading_key("publications and 20+ oral presentations.") is None
+    # ...and the bullets after it survive in the entry.
+    cands = _wrapped_candidates()
+    assert len(cands) == 3, f"bullets lost after the wrapped tail: {cands}"
+    assert any("new papers" in c for c in cands), cands
+
+
+def test_real_headings_still_detected():
+    for text, expected in (
+        ("PROJECTS", "projects"),
+        ("Technical Skills and Interests", "skills"),
+        ("Skills & Interests", "skills"),
+        ("Professional Experience & Projects", "experience"),
+        ("Experience:", "experience"),
+    ):
+        assert main._heading_key(text) == expected, f"{text!r} -> {main._heading_key(text)}"
+
+
+# --------------------------------------------------------------------------- #
+# Rewrite vs deletion: a vague original shares almost no words with a good
+# rewrite of it, so word overlap alone read the rewrite as a deletion and
+# appended the weak original underneath it.
+# --------------------------------------------------------------------------- #
+
+_VAGUE_SOURCE = "\n".join([
+    "EXPERIENCE",
+    "Acme Corp - Operations Analyst",
+    "- Worked on monthly reporting and helped the sales team with their data needs.",
+    "- Responsible for cleaning customer records and fixing errors.",
+])
+
+
+def _vague_out(bullets):
+    parsed = {"experience": [{"company": "Acme Corp", "title": "Operations Analyst",
+                              "bullets": list(bullets)}]}
+    return main.restore_dropped_bullets(parsed, _VAGUE_SOURCE)["experience"][0]["bullets"]
+
+
+def test_heavy_rewrite_of_vague_bullets_is_not_duplicated():
+    out = _vague_out([
+        "Automated recurring executive reporting, eliminating manual consolidation for the revenue organisation.",
+        "Standardised client master records, removing duplicate and malformed entries at source.",
+    ])
+    assert len(out) == 2, f"weak originals restored under their rewrites: {out}"
+
+
+def test_one_dropped_bullet_restores_exactly_one():
+    """Restoring the dropped bullet must not also re-add the surviving one's original."""
+    out = _vague_out(["Automated recurring executive reporting for the revenue organisation."])
+    assert len(out) == 2, f"expected 1 restore, got {len(out)}: {out}"
+    assert any("cleaning customer records" in b for b in out), out
+
+
+def test_truncated_bullet_is_repaired():
+    """A rewrite that is a prefix of the original is the original cut short.
+
+    When a bullet wraps in the PDF the model sees two lines and sometimes copies
+    only the first, ending mid-thought at "...methods for 10+". The fact check
+    cannot see it: every number and proper noun is still present and the missing
+    tail is ordinary lower-case words.
+    """
+    truncated = ("Engaged in end-to-end data collection processes using qualitative and "
+                 "quantitative methods for 10+")
+    parsed = {"experience": [{"company": _WRAPPED_IDENT, "title": "Data Research Assistant",
+                              "bullets": [truncated]}]}
+    out = main.enforce_bullet_facts(parsed, _WRAPPED_SOURCE)["experience"][0]["bullets"]
+    assert out[0].endswith("research projects."), f"still truncated: {out}"
+
+
+def test_genuine_rewrite_is_not_mistaken_for_truncation():
+    good = ("Drove end-to-end data collection across 10+ research projects, applying both "
+            "qualitative and quantitative methods.")
+    parsed = {"experience": [{"company": _WRAPPED_IDENT, "title": "Data Research Assistant",
+                              "bullets": [good]}]}
+    out = main.enforce_bullet_facts(parsed, _WRAPPED_SOURCE)["experience"][0]["bullets"]
+    assert out[0] == good, f"good rewrite was reverted: {out}"
+
+
 def main_runner() -> int:
     tests = [v for k, v in sorted(globals().items())
              if k.startswith("test_") and callable(v)]

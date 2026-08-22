@@ -8,7 +8,7 @@ import random
 import re
 import resend
 from secrets import token_hex, token_urlsafe
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import uuid
 
 import pdfplumber
@@ -602,9 +602,60 @@ def mark_guest_ats_used(request: Request, db: Session) -> None:
 
 # ── Subscription / freemium gating ───────────────────────────────────────────
 
+def _as_naive_utc(value):
+    """Coerce a stored pro_until into a naive UTC datetime, or None.
+
+    The column is not the same shape everywhere it is read from. SQLite gets it
+    as TEXT (see _ensure_user_columns), a Postgres column that is or ever was
+    `timestamptz` yields an AWARE datetime, and both of those blow up when
+    compared against the naive datetime.utcnow():
+
+        TypeError: can't compare offset-naive and offset-aware datetimes
+        TypeError: '>' not supported between instances of 'str' and 'datetime'
+
+    That exception does not read as "not Pro" - it 500s the request. The
+    download gate treats any non-OK response as refusal, so a PAYING Pro user
+    whose row is perfectly correct in the database gets shown the upgrade popup
+    and cannot download their resume.
+    """
+    if value is None:
+        return None
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        if text.endswith("Z"):
+            text = text[:-1] + "+00:00"
+        try:
+            value = datetime.fromisoformat(text)
+        except ValueError:
+            try:
+                value = datetime.strptime(text[:19], "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                logger.warning("Unparseable pro_until value: %r", value)
+                return None
+    if not isinstance(value, datetime):
+        return None
+    if value.tzinfo is not None:
+        value = value.astimezone(timezone.utc).replace(tzinfo=None)
+    return value
+
+
 def is_pro(user) -> bool:
-    """Return True iff the user currently has an active Pro subscription."""
-    return bool(user and user.pro_until and user.pro_until > datetime.utcnow())
+    """Return True iff the user currently has an active Pro subscription.
+
+    Never raises: a failure to read the date must not be able to deny access to
+    someone who has paid.
+    """
+    if not user:
+        return False
+    try:
+        until = _as_naive_utc(getattr(user, "pro_until", None))
+    except Exception:
+        logger.exception("pro_until could not be interpreted for user %s",
+                         getattr(user, "id", "?"))
+        return False
+    return bool(until and until > datetime.utcnow())
 
 
 FREE_LIMITS: dict[str, int] = {
@@ -689,6 +740,28 @@ def quota_exhausted(db: Session, user, field: str) -> bool:
         or 0
     )
     return used >= limit
+
+
+def lifetime_usage(db: Session, user, field: str) -> int:
+    """How many of *field* this user has used, summed across all months.
+
+    Same lifetime sum quota_exhausted() gates on, exposed on its own so the
+    upgrade prompt can state the real number instead of a hardcoded one.
+    """
+    from sqlalchemy import func as _func
+
+    if not user:
+        return 0
+    try:
+        return int(
+            db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar()
+            or 0
+        )
+    except Exception:
+        logger.exception("Could not read %s usage for user %s", field, getattr(user, "id", "?"))
+        return 0
 
 
 def refund_quota(db: Session, user_id: int, field: str) -> None:
@@ -1065,6 +1138,19 @@ def _heading_key(text: str) -> str | None:
         key = _normalize_key(lead.group(1))
         if key in _SECTION_HEADING_KEYS:
             return _SECTION_HEADING_KEYS[key]
+
+    # A heading is a label, not a sentence. Without this, a bullet that WRAPS in
+    # the PDF and whose tail happens to begin with a section word ends the
+    # section on the spot:
+    #     "...presented results through 30 written"
+    #     "publications and 20+ oral presentations."
+    # That second line was read as the PUBLICATIONS heading, so the rest of the
+    # job's bullets were tagged as a different section and disappeared from the
+    # entry entirely - and the bullet above it stayed truncated at "30 written".
+    # Sentence-ending punctuation and digits never appear in a real heading, and
+    # the glued-heading case above has already returned by this point.
+    if raw.endswith((".", "!", "?")) or any(ch.isdigit() for ch in raw):
+        return None
 
     words = raw.split()
     if not words or len(words) > 5:
@@ -2104,9 +2190,27 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             if _restore_is_meta_line(line):
                 continue
             clean = line.strip().lstrip(_RESTORE_MARKERS + " ").strip()
-            if len(clean.split()) >= 3:
-                cands.append(clean)
-        result[ident] = cands
+            if not clean:
+                continue
+            # A bullet that WRAPS in the PDF arrives as two lines:
+            #   "...using qualitative and quantitative methods for 10+"
+            #   "research projects."
+            # Treated separately, the tail is under the 3-word floor and is
+            # thrown away, leaving the bullet permanently truncated at the line
+            # break - which is exactly how "...for 10+" reached a rendered
+            # resume. Rejoin the tail onto its own sentence.
+            #
+            # Both conditions are required and together they are conservative: a
+            # NEW bullet opens with a capitalised action verb and the line before
+            # it ends its sentence, so a genuine bullet is never absorbed into
+            # its predecessor even when the bullet glyph was lost in extraction.
+            if cands and clean[:1].islower() and not cands[-1].rstrip().endswith((".", "!", "?", ":", ";")):
+                cands[-1] = f"{cands[-1].rstrip()} {clean}"
+                continue
+            cands.append(clean)
+        # The floor is applied AFTER rejoining, so a legitimate short tail has
+        # already been merged into the sentence it belongs to.
+        result[ident] = [c for c in cands if len(c.split()) >= 3]
     return result
 
 
@@ -2211,19 +2315,50 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+
+            # A REWRITTEN bullet is not a DROPPED bullet, and word overlap cannot
+            # tell them apart. A vague original carries almost no distinctive
+            # words, so a good rewrite of it shares almost none:
+            #   "Worked on monthly reporting and helped the sales team"
+            #   -> "Automated recurring executive reporting, eliminating manual
+            #       consolidation for the revenue organisation"
+            # Judged on words alone that reads as deleted, and the weak original
+            # was appended underneath its own rewrite, doubling the entry. The
+            # COUNT is the reliable signal: once the optimizer has returned at
+            # least as many bullets as the entry started with, every original has
+            # a counterpart. enforce_bullet_facts then guarantees each of those
+            # counterparts actually kept the original's facts.
+            if len(ai_bullets) >= len(cands):
+                continue
+
             ai_tokens = set()
             for b in ai_bullets:
                 ai_tokens |= _restore_tokens(b)
-            added = False
+
+            # Restore only as many as are genuinely missing. Bringing back every
+            # low-overlap candidate also brought back the ORIGINAL of a bullet
+            # that had merely been rewritten, so recovering one dropped bullet
+            # could add two. Least-represented candidates go first: those are the
+            # ones with no counterpart in the output.
+            missing_count = len(cands) - len(ai_bullets)
+            scored = []
             for c in cands:
                 ct = _restore_tokens(c)
-                if not ct:
-                    continue
-                shared = len(ct & ai_tokens) / len(ct)
-                if shared < 0.4:  # most of this content is absent -> it was dropped
+                if ct:
+                    scored.append((len(ct & ai_tokens) / len(ct), c))
+            scored.sort(key=lambda pair: pair[0])
+
+            added = 0
+            for _, c in scored:
+                if added >= missing_count:
+                    break
+                ct = _restore_tokens(c)
+                # Re-scored against what has already gone back, so two near
+                # identical originals cannot both be restored.
+                if len(ct & ai_tokens) / len(ct) < 0.4:  # content absent -> dropped
                     ai_bullets.append(c)
                     ai_tokens |= ct
-                    added = True
+                    added += 1
             if added:
                 e["bullets"] = ai_bullets
     return parsed
@@ -2244,6 +2379,17 @@ def _looks_like_stack_line(text: str) -> bool:
     t = str(text or "").strip()
     if not t:
         return True
+    # A stack row is a SHORT list of tool names. Length has to be checked before
+    # the comma test below, which fires on any line containing two commas - and a
+    # densely written bullet contains plenty:
+    #   "...across 15 job boards (LinkedIn, Indeed, Naukri, Greenhouse, Lever,
+    #    Workday), cutting per-application tailoring from ~10 minutes..."
+    # A stack row is a hard boundary while collecting an entry's original
+    # bullets, so treating that sentence as one stopped the scan at the entry's
+    # FIRST bullet and returned nothing. On any resume written with commas, the
+    # bullet protections were silently inert.
+    if len(t.split()) > 12:
+        return False
     if t.count(",") >= 2:
         return True
     parts = [p.strip() for p in re.split(r"[,/|]", t) if p.strip()]
@@ -2273,6 +2419,114 @@ _RESTORE_LINK_LABEL_ROW_RE = re.compile(
     r"repo(?:sitory)?|link|website|site|preview|play\s*store|app\s*store|video|paper|docs?))*\s*",
     re.IGNORECASE,
 )
+
+
+def _bullet_facts(text: str) -> set:
+    """The concrete facts a rewrite is not allowed to drop.
+
+    Numbers and proper nouns are what a bullet is actually worth: "15 job boards
+    (LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday)" carries seven of
+    them and "a Chrome extension for job boards" carries one. Ordinary words are
+    deliberately excluded - tailoring is allowed to replace those, and treating
+    them as facts would flag every genuine rewrite.
+    """
+    raw = str(text or "")
+    out = {m.group(0).lower().rstrip(".,;") for m in re.finditer(r"\d[\d,.]*\+?%?", raw)}
+    for m in re.finditer(r"(?<![.\w])([A-Za-z][A-Za-z0-9+#.\-]*)", raw):
+        word = m.group(1)
+        # A bullet's opening word is capitalised by convention, not because it
+        # names anything: "Built", "Shipped", "Integrated" are not facts.
+        if len(word) < 2 or not raw[:m.start()].strip():
+            continue
+        if word[0].isupper() or word.isupper():
+            out.add(word.lower().rstrip(".,;"))
+    out.discard("")
+    return out
+
+
+def enforce_bullet_facts(parsed: dict, resume_string: str) -> dict:
+    """Put the candidate's own sentence back when a rewrite dropped its facts.
+
+    The prompt tells the model to preserve every detail before rewriting, and on
+    a good run it does. But an instruction is not a guarantee and the failure is
+    silent: the bullet count stays right, the sentence reads cleanly, and the
+    named tools, the secondary metrics and the enumerated lists are simply gone.
+    One real run lost "15 job boards (LinkedIn, Indeed, Naukri, Greenhouse,
+    Lever, Workday)", "automated end-to-end using Playwright", "3,116
+    individuals" and "50% of Hat purchases" in a single pass.
+
+    So the rule is enforced here in code rather than trusted to the model: a
+    polished sentence that has lost the evidence is worth less to the candidate
+    than the sentence they wrote themselves, and when the two conflict the facts
+    win.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+    section_lines = _restore_section_lines(resume_string)
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+        for e, ident in zip(entries, identifiers):
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+            if not cands:
+                continue
+            ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+            if not ai_bullets:
+                continue
+            used: set = set()
+            for original in cands:
+                want = _bullet_facts(original)
+                if not want:
+                    continue  # nothing concrete to protect
+                # The rewrite may sit at any index, so match on content rather
+                # than position.
+                best_i, best_score = -1, -1
+                for i, ai in enumerate(ai_bullets):
+                    if i in used:
+                        continue
+                    score = len(want & _bullet_facts(ai)) + len(
+                        _restore_tokens(original) & _restore_tokens(ai)
+                    )
+                    if score > best_score:
+                        best_i, best_score = i, score
+                if best_i < 0:
+                    continue
+                used.add(best_i)
+                rewrite = ai_bullets[best_i]
+
+                # A TRUNCATED bullet. When a bullet wraps in the PDF the model is
+                # shown two lines and sometimes copies only the first, returning a
+                # sentence that stops mid-thought:
+                #     "...using qualitative and quantitative methods for 10+"
+                # The fact check cannot see this - the missing tail ("research
+                # projects.") is ordinary lower-case words, and every number and
+                # proper noun is still present - so the broken sentence shipped.
+                # A rewrite that is a literal prefix of the original is not a
+                # rewrite at all, it is the original cut short.
+                def _norm(s: str) -> str:
+                    return " ".join(str(s).split()).rstrip(".").lower()
+
+                n_rewrite, n_original = _norm(rewrite), _norm(original)
+                truncated = (
+                    n_original.startswith(n_rewrite)
+                    and len(n_rewrite) < len(n_original)
+                )
+
+                if truncated or (want - _bullet_facts(rewrite)):
+                    ai_bullets[best_i] = original
+            e["bullets"] = ai_bullets
+    return parsed
 
 
 def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
@@ -5921,6 +6175,7 @@ async def optimized_editor_page(request: Request):
         quota_exhausted_flag = (
             (not user_is_pro) and bool(user) and quota_exhausted(db, user, "ai_optimizations")
         )
+        downloads_used = 0 if user_is_pro else lifetime_usage(db, user, "ai_optimizations")
     finally:
         db.close()
     return templates.TemplateResponse(
@@ -5930,6 +6185,11 @@ async def optimized_editor_page(request: Request):
             "request": request,
             "is_pro": user_is_pro,
             "quota_exhausted_flag": quota_exhausted_flag,
+            # The upgrade prompt states how many downloads the user has actually
+            # had; it used to hardcode "3 resumes", which read as wrong to anyone
+            # who had used a different number.
+            "downloads_used": downloads_used,
+            "free_download_limit": FREE_LIMITS.get("ai_optimizations", 3),
             "region": _get_region(request),
         },
     )
@@ -10289,6 +10549,12 @@ async def _optimize_resume_core(
     # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
     # entry's links, which then leak into neighbouring sections.
     parsed = restore_dropped_entries(parsed, resume_string)
+
+    # A bullet can also be hollowed out from the inside: the entry survives, the
+    # count is right, and the rewrite has quietly dropped the tools, figures and
+    # lists that made it worth reading. Preserve first, rewrite second - and
+    # enforce it here rather than trusting the model to have obeyed.
+    parsed = enforce_bullet_facts(parsed, resume_string)
 
     # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
     # The AI response already contains the optimized data - no need to re-extract original data

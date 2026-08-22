@@ -900,6 +900,23 @@ body {
     /* ─────────────────────────────────────────────────────────────────────────
        PRO UPGRADE POPUP (shown when free download quota exhausted)
     ───────────────────────────────────────────────────────────────────────── */
+    /* The line under the heading. This used to read "You've downloaded 3
+       resumes" no matter what the user had actually done — wrong for anyone who
+       had used one, two, or a different free allowance entirely. The real count
+       is rendered into the page by the server; fall back to the free limit only
+       when it is genuinely unavailable, and never claim a count of zero. */
+    function proDownloadSubline() {
+        var used = parseInt(window.DOWNLOADS_USED, 10);
+        var limit = parseInt(window.FREE_DOWNLOAD_LIMIT, 10);
+        if (!isFinite(used) || used < 0) used = isFinite(limit) ? limit : 0;
+        if (used < 1) {
+            return "You're out of free downloads. Keep tailoring to land your " +
+                   "<strong>next job</strong>.";
+        }
+        return "You've downloaded <strong>" + used + " resume" + (used === 1 ? "" : "s") +
+               "</strong>. Keep tailoring to land your <strong>next job</strong>.";
+    }
+
     function showProDownloadPopup(opts) {
         opts = opts || {};
         const targetDoc = opts.doc || document;
@@ -1062,8 +1079,7 @@ body {
 
                 '<div class="tcv-pro-dl-lock-wrap"><div class="tcv-pro-dl-lock">🔒</div></div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve downloaded <strong>3 resumes</strong>. Keep tailoring ' +
-                'to land your <strong>next job</strong>.</p>' +
+                '<p class="tcv-pro-dl-sub">' + proDownloadSubline() + '</p>' +
 
                 '<div class="tcv-pro-dl-stats">' +
                     '<div class="tcv-pro-dl-stat"><b>10,000+</b><span>resumes optimized by job seekers</span></div>' +
@@ -1758,7 +1774,55 @@ body {
         doc._tailorcvQuotaLocked = true;
 
         showProDownloadPopup({ doc: doc, closable: false });
+
+        // window.IS_PRO is stamped into the HTML when the page is rendered and
+        // never changes again. But the user upgrades FROM this very popup, so by
+        // the time the payment clears, the flag on this page is stale — and the
+        // lock is deliberately not closable. A user who has just paid is left
+        // staring at an "upgrade to Pro" wall over their own resume, with Pro
+        // active in the database. Ask the server what it thinks now.
+        refreshProStatus();
     }
+
+    /* Re-check Pro against the server and lift the lock if the user has upgraded.
+       Runs after the lock mounts and whenever the tab regains focus, which is
+       exactly when someone returns from completing a payment. */
+    var _proRefreshInFlight = false;
+    async function refreshProStatus() {
+        if (window.IS_PRO === true || _proRefreshInFlight) return;
+        _proRefreshInFlight = true;
+        try {
+            const res = await fetch("/api/auth/me", { cache: "no-store" });
+            if (!res.ok) return;
+            const data = await res.json();
+            if (!data || data.is_pro !== true) return;
+
+            window.IS_PRO = true;
+            window.QUOTA_EXHAUSTED = false;
+            // Tear the lock down wherever it was mounted. The popup mounts either
+            // on the page or inside the resume iframe (opts.doc), always as
+            // #tcv-pro-dl-overlay, so both have to be cleared.
+            [document, (typeof frame !== "undefined" && frame) ? frame.contentDocument : null]
+                .forEach(function (doc) {
+                    if (!doc) return;
+                    const overlay = doc.getElementById("tcv-pro-dl-overlay");
+                    if (overlay) overlay.remove();
+                    // Clear the guards so nothing re-locks a resume this user has
+                    // now paid for.
+                    doc._tailorcvQuotaLocked = false;
+                });
+        } catch (e) {
+            /* offline or blocked — leave the lock exactly as it was */
+        } finally {
+            _proRefreshInFlight = false;
+        }
+    }
+
+    // Returning to the tab after paying in another window is the common case.
+    document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) refreshProStatus();
+    });
+    window.addEventListener("focus", refreshProStatus);
 
     /* ─────────────────────────────────────────────────────────────────────────
        INIT

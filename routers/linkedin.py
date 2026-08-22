@@ -28,8 +28,12 @@ def _enforce_linkedin_quota(request: Request):
         user = db.query(User).filter_by(id=user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        # Pro check — bypass quota
-        if user.pro_until and user.pro_until > datetime.utcnow():
+        # Pro check — bypass quota. Goes through main.is_pro rather than
+        # comparing pro_until directly: a stored value that is a string or is
+        # timezone-aware raises on a raw ">", which 500s the request instead of
+        # answering it, and a paying user is then refused.
+        from main import is_pro as _is_pro
+        if _is_pro(user):
             return
         # Beta rollout: only gate users in BILLING_BETA_USER_IDS
         _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
