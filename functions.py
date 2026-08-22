@@ -925,6 +925,25 @@ Job Description:
 {_escape_braces(jd_string)}
 
 """
+# The model that does the tailoring rewrite itself.
+#
+# This ran on gpt-4o-mini at temperature 0, which is the most copy-prone setting
+# available: a small model at the most-probable-token setting, handed a prompt
+# dense with "preserve every detail", takes the safest path and echoes the input
+# back with a verb swapped. Measured against a real resume it dropped a detail on
+# roughly a third of bullets, and the fact-guard then had to restore the
+# candidate's own sentence — so a third of the resume came back unrewritten.
+#
+# Rewrite quality IS the product here, so this one call gets a stronger model and
+# enough temperature to actually restructure a sentence. Every other LLM call in
+# the app is unchanged. Overridable from .env for cost tuning.
+OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-4o")
+try:
+    OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
+except ValueError:
+    OPTIMIZER_TEMPERATURE = 0.35
+
+
 @retry(
     stop=stop_after_attempt(5),
     wait=wait_exponential(multiplier=1, min=4, max=60),
