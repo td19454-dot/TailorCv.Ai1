@@ -1,0 +1,131 @@
+---
+title: The H-1B Lottery for New Grads - Odds, Timing and What to Do Instead
+description: How the H-1B cap and lottery actually work for international students, why the STEM extension changes your odds so much, and the cap-exempt employers most graduates never consider.
+date: 2026-08-22
+author: TailorCV Team
+tags: [USA Jobs, International Students, Visa, New Grad, Campus Placement]
+category: Career Advice
+image: public/blog-images/usa-h1b-lottery-new-grads.png
+slug: usa-h1b-lottery-new-grads
+keywords: h1b lottery explained, h1b cap new grads, h1b odds, cap exempt employers, masters cap h1b, h1b registration timeline
+---
+
+## Key Takeaways
+
+- The H-1B cap is 65,000 general plus 20,000 reserved for US master's degrees or higher, and registration happens once a year in March.
+- It is a lottery, not a merit ranking. A stronger candidate does not have better odds within the same pool.
+- A US master's degree gets two chances at selection rather than one, which meaningfully changes the arithmetic.
+- Cap-exempt employers — universities, affiliated non-profits and some research organisations — can file at any time with no lottery at all.
+- Three years of STEM OPT means up to three lottery attempts. One year of standard OPT usually means one.
+
+## How the cap actually works
+
+Each fiscal year the H-1B programme has **65,000 visas in the general pool**, plus **20,000 reserved** for people holding a US master's degree or higher.
+
+Registration runs in **March**. Employers submit an electronic registration for each candidate. If more registrations arrive than there are visas — which has been the case for years — USCIS runs a random selection. Selected registrations may then file a full petition, and approved workers start on **1 October**, the beginning of the federal fiscal year.
+
+Two things follow immediately:
+
+**The gap between registration and start is roughly seven months.** You register in March and, if selected, start in October. Your work authorisation has to cover that gap, which is where OPT does the heavy lifting.
+
+**Selection is random.** Not by GPA, not by salary, not by how much the employer wants you. Within a pool, everyone has the same odds. This is worth internalising because a lot of anxiety goes into trying to "improve your chances" in ways that do not exist.
+
+## The master's advantage, explained properly
+
+If you hold a US master's degree or higher, you are entered into **both** pools.
+
+The mechanics: all registrations go into the general 65,000 selection first. Registrations with an advanced US degree that were *not* selected then go into the 20,000 advanced-degree selection. So an advanced-degree holder gets two draws; everyone else gets one.
+
+This is why the master's route is so common among international students who intend to stay. It is not that a master's makes you a better candidate in the employer's eyes — it is that it roughly improves your selection odds in a system where the selection is otherwise random.
+
+Note the requirement is a **US** degree. A master's earned abroad does not qualify for the advanced-degree pool.
+
+## Why STEM OPT is the real lever
+
+Because registration happens once a year, the number of times you can enter is decided by how long your work authorisation lasts.
+
+- **Standard OPT, 12 months.** Realistically one registration. If you graduate in May and start OPT in July, you get the following March. If you are not selected, your authorisation is running out.
+- **STEM OPT, 36 months total.** Three March windows. Three independent draws.
+
+Three attempts versus one is a categorically different position. This is why [checking whether your programme is STEM-designated](/blog/usa-opt-cpt-explained-students) matters more than almost any other administrative decision you make as an international student.
+
+The compounding effect also matters to employers. A company weighing whether to hire you knows that with 36 months of runway they have three shots before the problem becomes urgent. With 12 months they have one, and then a hiring decision to unwind.
+
+## Cap-exempt employers: the option most students miss
+
+Not every H-1B is subject to the cap. **Cap-exempt** employers can file at any time of year, with no lottery.
+
+The main categories:
+
+- **Institutions of higher education** — universities and colleges
+- **Non-profits affiliated with or related to** a university
+- **Non-profit research organisations and government research organisations**
+
+This covers far more employers than students assume. University hospitals and medical centres, affiliated research institutes, some large non-profits and many academic-adjacent organisations qualify.
+
+Practical consequences:
+
+- There is no March deadline. An offer in July can be filed in July.
+- There is no lottery. If you qualify and the petition is approved, you have the visa.
+- Pay is often lower than private industry, and this is the honest trade-off.
+
+There is also a concurrent-employment route: someone holding a cap-exempt H-1B can sometimes work for a cap-subject employer simultaneously, though this is complex and needs proper legal advice.
+
+For a graduate facing a second failed lottery, cap-exempt employers are frequently the difference between staying and leaving. They are worth researching *before* you are desperate.
+
+## What this means for your job search
+
+**Prioritise employers who have done this before.** A company with an established immigration process is dramatically easier than one where you are the first case. Ask directly whether they have sponsored H-1B previously.
+
+**Know that timing is fixed.** March registration is not negotiable, so an offer accepted in April means waiting nearly a year for the next window. If you are choosing between offers and one employer can register you this March, that has real value.
+
+**Do not lead with visa status in applications.** Your resume should carry evidence of your work, not your immigration status. Sponsorship comes up during the process and should be handled [when the question is asked](/blog/usa-visa-sponsorship-question-interview), not pre-emptively in a document that is being machine-screened.
+
+**Apply early and broadly.** Because sponsorship narrows your employer pool, you need more applications in flight than a domestic classmate, and earlier — the [autumn recruiting window](/blog/usa-campus-recruiting-timeline) is where the structured roles are. Tailoring each application still matters; volume without targeting produces the same rejection at scale, and a [tailored resume](/blog/how-to-tailor-resume-for-every-job) is what gets past the first screen.
+
+## Realistic alternatives if the lottery does not go your way
+
+This is worth planning before March rather than after.
+
+- **Cap-exempt employment**, as above.
+- **A second or third lottery attempt** if STEM OPT gives you the runway.
+- **Transfer to another status** — some graduates move to further study, though this should be a considered decision and not a reflex.
+- **Work for the same employer abroad.** Multinationals sometimes place graduates in another office, which can later support an L-1 transfer after qualifying employment.
+- **Other countries.** Canada, the UK and Singapore all have graduate routes that are considerably less lottery-dependent, and plenty of people build strong careers via that path.
+
+None of these are consolation prizes. They are ordinary routes that a large number of people take.
+
+## Common Mistakes
+
+- **Assuming a strong profile improves lottery odds.** It does not. Selection is random within the pool.
+- **Not verifying STEM eligibility early.** The extension is what buys extra attempts, and it is checked by CIP code, not by how technical the subject sounds.
+- **Ignoring cap-exempt employers entirely.** No lottery and no fixed deadline is a significant structural advantage most students never explore.
+- **Waiting for an employer to raise sponsorship.** By the time it surfaces at offer stage, you have already spent weeks on a process that may not be viable.
+- **Choosing an offer without asking about their sponsorship history.** "Do you sponsor?" and "have you actually done it, and how recently?" are different questions.
+- **Treating a failed lottery as the end.** It is a common outcome with several ordinary routes out of it.
+
+## Frequently Asked Questions
+
+### What are my actual odds in the H-1B lottery?
+
+They vary year to year with registration volume and are not fixed. What is reliable: an advanced US degree gets two draws instead of one, and more years of work authorisation means more attempts. Both are within your control in a way the odds themselves are not.
+
+### Does my employer's size or prestige affect selection?
+
+No. Selection is random. A large employer may have a more practised legal process, which affects the petition quality after selection, but not the draw itself.
+
+### Can I be registered by more than one employer?
+
+Yes, if the offers are genuine. Multiple registrations from unrelated employers are permitted. Duplicate registrations by related entities for the same person are not, and are policed.
+
+### What happens if I am not selected?
+
+Your OPT continues if it has time left, and you can try again the following March if your authorisation covers it. If it does not, options include cap-exempt employers, further study, or moving to another country's graduate route.
+
+### Is a US master's worth doing purely for the lottery odds?
+
+It genuinely improves selection odds and gives another OPT period, so the effect is real. Whether it justifies the cost and time is a personal calculation, and it is worth being honest that this is the main reason many students do it.
+
+### Do I need STEM OPT to get an H-1B?
+
+No — you can be selected during standard OPT. STEM OPT does not change your odds in any single lottery; it changes how many lotteries you can enter before running out of authorisation.
