@@ -474,6 +474,10 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
     if "plan_provider" not in cols:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
+    # Skills the candidate personally confirmed. TEXT on both dialects: it holds a
+    # JSON list, not a value the database ever needs to interpret.
+    if "confirmed_skills" not in cols:
+        to_add.append("ADD COLUMN confirmed_skills TEXT")
     if "razorpay_subscription_id" not in cols:
         to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
     # One shared Netlify "live site" per user (reused across portfolios to save credits).
@@ -740,6 +744,60 @@ def quota_exhausted(db: Session, user, field: str) -> bool:
         or 0
     )
     return used >= limit
+
+
+def get_confirmed_skills(user) -> list[str]:
+    """Skills this candidate has personally confirmed they have, newest last.
+
+    Never raises: a malformed value must not be able to break tailoring.
+    """
+    raw = getattr(user, "confirmed_skills", None)
+    if not raw:
+        return []
+    try:
+        data = json.loads(raw)
+    except (TypeError, ValueError):
+        logger.warning("Unparseable confirmed_skills for user %s", getattr(user, "id", "?"))
+        return []
+    if not isinstance(data, list):
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in data:
+        text = str(item or "").strip()
+        key = text.lower()
+        if text and key not in seen:
+            seen.add(key)
+            out.append(text)
+    return out
+
+
+def add_confirmed_skills_to_user(db: Session, user, skills) -> list[str]:
+    """Merge *skills* into the user's confirmed list and persist. Returns the new list.
+
+    The candidate is the trust source here, not the model: these are skills they
+    ticked when shown their gaps. Storing them is what makes the answer outlive
+    the editing session it was given in.
+    """
+    if not user:
+        return []
+    current = get_confirmed_skills(user)
+    seen = {s.lower() for s in current}
+    for raw in skills or []:
+        text = _clean_inline_text(raw)
+        key = text.lower()
+        if text and key not in seen and _is_atomic_hard_skill(text):
+            seen.add(key)
+            current.append(text)
+    # Bounded so a scripted client cannot grow the row without limit.
+    current = current[-200:]
+    try:
+        user.confirmed_skills = json.dumps(current)
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("Could not persist confirmed skills for user %s", getattr(user, "id", "?"))
+    return current
 
 
 def lifetime_usage(db: Session, user, field: str) -> int:
@@ -6178,7 +6236,7 @@ async def optimized_editor_page(request: Request):
         downloads_used = 0 if user_is_pro else lifetime_usage(db, user, "ai_optimizations")
     finally:
         db.close()
-    return templates.TemplateResponse(
+    response = templates.TemplateResponse(
         request,
         "optimized_editor.html",
         {
@@ -6193,6 +6251,18 @@ async def optimized_editor_page(request: Request):
             "region": _get_region(request),
         },
     )
+    # This page bakes the user's Pro and quota state into its HTML, so a cached
+    # copy is a copy of who they USED to be. The upgrade CTA is a same-tab link,
+    # meaning the path a paying user takes is: paywall -> /pricing -> pay -> Back.
+    # A cached or back-forward-cached page brings the pre-payment paywall back
+    # with it, locking someone out of the resume they just paid for. no-store
+    # forces a real request on the way back, and also opts the page out of the
+    # back-forward cache in Chrome and Firefox, which is the behaviour we want
+    # here even though it costs a re-render.
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
 @app.get("/modify-cv", response_class=HTMLResponse)
@@ -7130,6 +7200,9 @@ async def extension_tailor_resume(request: Request):
         style_id = user.base_style_id or 1
         base_resume_path = user.base_resume_path
         base_resume_text = user.base_resume_text
+        # There is no "tick the skills you have" step in the extension, so
+        # without this the extension can never include a confirmed skill.
+        user_confirmed_skills = get_confirmed_skills(user)
         if not base_resume_text:
             # Backfill for base resumes uploaded before this column existed.
             base_resume_text = await asyncio.to_thread(extract_pdf_text, base_resume_path)
@@ -7141,7 +7214,9 @@ async def extension_tailor_resume(request: Request):
     pdf_path = None
     try:
         async with request_semaphore:
-            parsed = await _optimize_resume_core(base_resume_path, jd_string)
+            parsed = await _optimize_resume_core(
+                base_resume_path, jd_string, confirmed_skills=user_confirmed_skills
+            )
             # Structured scorer, not the flat-text one /api/extension/skill-match uses
             # for the base resume: a flat match on the tailored output would count the
             # guaranteed skills-array injection the same as a skill actually evidenced
@@ -10464,7 +10539,10 @@ def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
 
 
 async def _optimize_resume_core(
-    file_path: str, jd_string: str, ats_payload: str | None = None
+    file_path: str,
+    jd_string: str,
+    ats_payload: str | None = None,
+    confirmed_skills: list[str] | None = None,
 ) -> dict:
     """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
     resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
@@ -10654,7 +10732,28 @@ async def _optimize_resume_core(
     # resume_string is the ORIGINAL uploaded text - it is what decides whether a
     # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
     # ATS analysis's verdict on which skills the job actually requires.
-    parsed = inject_jd_hard_skills(parsed, jd_string, resume_string, jd_skills=jd_hard_skills)
+    # Skills the candidate has personally confirmed count as evidence. The
+    # evidence gate exists to stop the MODEL inventing credentials, and it must
+    # stay strict about that — but a skill the person told us they have is not
+    # the model inventing anything, and refusing it means the Chrome extension
+    # re-tailors from the base resume and drops every skill they ever ticked.
+    # Appending them to the evidence text reuses the same _contains_skill check
+    # rather than opening a second, looser path into the skills array.
+    skill_evidence = resume_string
+    if confirmed_skills:
+        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
+
+    parsed = inject_jd_hard_skills(parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills)
+
+    # A confirmed skill the JD never mentions still belongs on the resume: the
+    # candidate said they have it, and dropping it would silently undo their
+    # answer on the next tailor.
+    if confirmed_skills:
+        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
+        for skill in confirmed_skills:
+            if skill.strip().lower() not in existing:
+                parsed.setdefault("skills", []).append(skill)
+                existing.add(skill.strip().lower())
 
     # The gaps shown to the user are the ATS analysis's own `missing` list,
     # used verbatim. inject_jd_hard_skills still decides what gets WRITTEN into
@@ -10982,8 +11081,19 @@ async def upload_resume(
             content = await file.read()
             f.write(content)
 
+        # Same on the website: a skill the candidate confirmed in an earlier
+        # session must not vanish the next time they tailor.
+        _db = get_db()
+        try:
+            _user = _db.query(User).filter_by(id=user_id).first()
+            web_confirmed_skills = get_confirmed_skills(_user)
+        finally:
+            _db.close()
+
         async with request_semaphore:
-            parsed = await _optimize_resume_core(file_path, jd_string, ats_payload)
+            parsed = await _optimize_resume_core(
+                file_path, jd_string, ats_payload, confirmed_skills=web_confirmed_skills
+            )
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
 
             # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
@@ -11193,6 +11303,23 @@ async def add_confirmed_skills(request: Request):
         )
 
     resume_data["skills"] = skills
+
+    # Remember the answer. Without this it lived only in this editing session, so
+    # the next tailor - and every Chrome extension run, which has no confirm step
+    # at all - started again from "the resume does not evidence this" and dropped
+    # the skill the candidate had just told us they have.
+    _sk_db = get_db()
+    try:
+        _sk_user = _sk_db.query(User).filter_by(id=request.session.get("user_id")).first()
+        if _sk_user:
+            add_confirmed_skills_to_user(_sk_db, _sk_user, added)
+    except Exception:
+        # Persisting is a convenience for future runs; never fail the request the
+        # user is actually waiting on because of it.
+        logger.exception("Could not persist confirmed skills")
+    finally:
+        _sk_db.close()
+
     added_lower = {s.lower() for s in added}
     resume_data["skill_gaps"] = [
         g for g in (resume_data.get("skill_gaps") or [])

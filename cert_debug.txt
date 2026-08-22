@@ -1,7 +1,13 @@
 === CERT NAMES (from AI) ===
+  - LeetCode SQL 50 Badge
+  - Internship Trainee Certificate
 
-=== CERT SECTION LINKS (reading order) [0] ===
+=== CERT SECTION LINKS (reading order) [2] ===
+  - https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view?usp=sharing
+  - https://pdflink.to/4d942525/
 
 === FINAL cert.url PER ENTRY ===
+  - LeetCode SQL 50 Badge  ->  https://drive.google.com/file/d/1
+  - Internship Trainee Certificate  ->  https://certificate-link.com
 
 === READING-ORDER FILL ASSIGNED [0] ===
