@@ -1818,11 +1818,26 @@ body {
         }
     }
 
-    // Returning to the tab after paying in another window is the common case.
+    // Returning to the tab after paying in another window.
     document.addEventListener("visibilitychange", function () {
         if (!document.hidden) refreshProStatus();
     });
     window.addEventListener("focus", refreshProStatus);
+
+    // The upgrade CTA is a same-tab link to /pricing, so the actual path a paying
+    // user takes is: locked page -> /pricing -> pay -> BACK BUTTON. That restores
+    // this page from the back-forward cache with the ORIGINAL IS_PRO=false still
+    // in it, and no script re-runs — bfcache restores do not re-execute the page,
+    // and focus/visibilitychange are not guaranteed to fire either. `pageshow`
+    // with persisted=true is the one event that does, so it is the only thing
+    // standing between a user who has just paid and a paywall over her own
+    // resume. Also covers a plain reload from cache.
+    window.addEventListener("pageshow", function (evt) {
+        if (evt && evt.persisted) {
+            // Values baked into the restored HTML are from before the payment.
+            refreshProStatus();
+        }
+    });
 
     /* ─────────────────────────────────────────────────────────────────────────
        INIT
