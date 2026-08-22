@@ -318,6 +318,44 @@ class confirm_first:
         return False
 
 
+def test_model_invented_skill_is_stripped_even_when_the_jd_extractor_missed_it():
+    """The evidence gate must cover EVERY claim, not just JD-listed ones.
+
+    Only `required_skills` was checked, so a skill the model invented that the
+    extractor did not recognise shipped unchallenged — a real resume came back
+    listing TorchServe, TF Serving and Dask, none of which appeared anywhere in
+    the candidate's document. The extractor demonstrably misses things (it does
+    not recognise "SAP"), so "it wasn't in the JD list" is no protection.
+    """
+    out = inject_jd_hard_skills(
+        {"skills": ["Python", "Playwright", "TorchServe", "Dask", "TF Serving"]},
+        "ML Engineer. Requires Python, SQL.",          # JD names none of them
+        "Built with Python and Playwright.",            # resume evidences neither
+        jd_skills=["Python", "SQL"],
+        auto_add=False,
+    )
+    shipped = {s.lower() for s in out["skills"]}
+    for invented in ("torchserve", "dask", "tf serving"):
+        assert invented not in shipped, f"unbacked claim shipped: {out['skills']}"
+    # Real skills survive.
+    assert {"python", "playwright"}.issubset(shipped), out["skills"]
+    # ...and the stripped ones are offered, not silently binned.
+    gaps = {g.lower() for g in out["skill_gaps"]}
+    assert {"torchserve", "dask", "tf serving"}.issubset(gaps), out["skill_gaps"]
+
+
+def test_extension_keeps_unbacked_claims():
+    """auto_add=True has no dialog to ask through, so nothing is stripped."""
+    out = inject_jd_hard_skills(
+        {"skills": ["Python", "TorchServe"]},
+        "ML Engineer. Requires Python.",
+        "Built with Python.",
+        jd_skills=["Python"],
+        auto_add=True,
+    )
+    assert "TorchServe" in out["skills"], out["skills"]
+
+
 def test_website_and_extension_differ_only_in_skills_policy():
     """One engine, two skill policies — the contract between the surfaces.
 
