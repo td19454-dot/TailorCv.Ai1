@@ -728,6 +728,23 @@ You must preserve factual details already present in the resume such as dates, C
 - No explanations, no markdown, no extra text
 
 Guidelines to Follow:
+
+### Rule 00: THE PROFESSIONAL SUMMARY (MANDATORY — IT IS THE MOST-READ LINE ON THE RESUME)
+The `summary` is the first thing a recruiter reads and it is where a generic resume gives itself away. A summary that would fit any candidate applying to any job has FAILED, however well written it is. Write it LAST, after the bullets are done, so it can draw on what the tailored resume actually shows.
+
+It MUST:
+- Open by naming the candidate as the role THIS job is hiring for, at the seniority the resume genuinely supports, echoing the job description's own title wording. If the JD says "Data Analyst", do not write "Software Developer". If the resume evidences a total years-of-experience figure, lead with it.
+- Name 3-5 of the job description's HIGHEST-PRIORITY hard skills that the resume genuinely evidences, in the job description's own wording. These must be the JD's headline requirements, not whichever technologies were easiest to mention.
+- Carry ONE concrete proof point lifted from the resume: a metric, a scale, a named system, or a shipped outcome. If the resume has no numbers anywhere, use its most specific named achievement. Never invent one.
+- Name the domain the job sits in when the resume supports it (fintech, healthcare, e-commerce, semiconductors, logistics).
+- Be 2-3 sentences with no first-person pronouns, and contain no sentence that could be lifted onto a stranger's resume unchanged.
+
+BANNED — these are the exact phrases that make a summary read as filler, and they are what this prompt keeps producing: "Detail-oriented", "Results-driven", "Proven ability", "Proven track record", "Adept at", "Skilled in", "Passionate about", "Strong analytical skills", "problem-solving skills", "Seeking a challenging role", "Dynamic professional", "Excellent communication skills", "Self-motivated", "wide range of", "various technologies", "Strong background in", "Experienced professional with". Do not open with any of them. State what was built, in which stack, to what effect.
+
+BAD  : "Detail-oriented Data Analyst with strong analytical skills. Proven ability to transform data into insights. Adept at collaborating with cross-functional teams."
+GOOD : "Data Analyst with 1.5 years turning transactional data into commercial decisions in Python, SQL and Power BI. Cleaned and modelled 3,900 transaction records to surface that 'Loyal' customers drive the highest revenue, and shipped the Power BI dashboards category managers use weekly."
+The difference is not the vocabulary — it is that every clause in the GOOD version could only have been written about THIS candidate.
+
 1)Keyword and Skill Optimization:
 Rule01: EVIDENCED SKILLS ONLY — The `skills` array MUST contain every hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that the job description names AND the candidate's resume actually evidences anywhere — in a bullet, a project, a summary line, or an existing skills list. Use the job description's exact wording for those (if the resume says "Postgres" and the JD says "PostgreSQL", output "PostgreSQL"), because the filter matches language, not meaning.
 
@@ -762,6 +779,21 @@ Step C — SOFT skills, in the bullets:
    - If the resume gives NO factual basis for a JD soft skill (no team, no stakeholders, no mentoring anywhere), do NOT manufacture one. Reflect it in the `summary` as an approach instead, or leave it out. An invented collaboration is a lie that gets caught in the interview.
 
 The hard rule underneath all of Step B and C: rewriting means expressing the SAME facts in the job description's vocabulary. You may re-word, re-frame, re-order and sharpen. You may NOT add work, people, tools, scale or outcomes that are not in the original resume.
+
+### Rule 1d: EXPERIENCE AND PROJECT BULLETS MUST BE REBUILT, NOT ECHOED (MANDATORY)
+Preserving every fact is only half the job. Handing the facts back in the candidate's original sentence means they uploaded a resume and received the same resume — the most common way this task is failed, and invisible unless you compare the two side by side. For EVERY entry in `experience` AND `projects`:
+
+- Rebuild the sentence into the shape: strong action verb → what was actually built or changed → the technology it was built with → the outcome it produced. The original bullet is your source of FACTS, not a sentence to lightly edit.
+- Open every bullet with a different, specific action verb. Never reuse an opener twice inside one entry.
+  BANNED openers, weak: "Worked on", "Responsible for", "Helped with", "Involved in", "Assisted in", "Participated in", "Tasked with".
+  BANNED openers, passive-learning — these describe what the candidate ABSORBED rather than what they PRODUCED, and they make real work sound like observation: "Gained", "Acquired", "Studied", "Learned", "Observed", "Exposed to", "Familiarised with", "Engaged in".
+  Even for an internship, write what was DONE: "Mapped the end-to-end paint manufacturing process across production planning, raw material handling and quality control" says the same thing as "Gained hands-on exposure to..." and says it as work.
+  PREFER: Built, Designed, Engineered, Automated, Migrated, Instrumented, Refactored, Shipped, Scaled, Consolidated, Benchmarked, Integrated, Diagnosed, Mapped, Modelled, Cut, Eliminated.
+- LEAD with the strongest element. If the bullet has a metric, the metric belongs early, not buried at the end of a subordinate clause.
+- REORDER bullets within each entry so the one most relevant to THIS job description comes first. Recruiters read the top bullet of every role and skim the rest.
+- Keep the SAME NUMBER of bullets per entry as the original. Rewrite them in place; never merge two into one, never split one into two — a later step matches your bullets back against the original resume, and changing the count corrupts that match.
+
+Before returning, compare each rewritten bullet against its original one final time and confirm BOTH: every fact is still present, AND the sentence is genuinely restructured rather than lightly edited. If only the first is true, you have not finished.
 
 Rule 2:Incorporate Measurable Metrics:
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
@@ -1374,6 +1406,7 @@ def inject_jd_hard_skills(
     jd_string: str,
     resume_text: str = "",
     jd_skills: list[str] | None = None,
+    auto_add: bool = False,
 ) -> dict:
     """
     Post-process the skills array.
@@ -1385,6 +1418,18 @@ def inject_jd_hard_skills(
 
     `resume_text` is the raw text of the uploaded resume. When it is omitted no
     JD skill can be evidenced, so every unmatched JD skill becomes a gap.
+
+    `auto_add` selects the SKILLS POLICY, and is the only thing that differs
+    between the website and the Chrome extension — the optimization engine
+    itself is shared:
+      False (website)   — a JD skill the resume does not evidence is withheld and
+                          reported on `data["skill_gaps"]`, so the candidate is
+                          shown it and ticks it only if they genuinely have it.
+      True  (extension) — every JD hard skill is written straight onto the
+                          resume and `skill_gaps` comes back empty, because the
+                          sidebar has no way to ask and the whole point there is
+                          one click from a job posting. What got added is
+                          reported on `data["skills_added_from_jd"]`.
 
     `jd_skills` overrides which skills the job description is considered to
     require. Callers pass the ATS analysis's own skill list so the optimizer and
@@ -1421,6 +1466,8 @@ def inject_jd_hard_skills(
     # can be shown what this job wants and decide for themselves.
     resume_evidence = str(resume_text or "")
     skill_gaps: list[str] = []
+    # Skills written onto the resume purely because the job asked for them.
+    auto_added: list[str] = []
 
     if jd_skills is None:
         required_skills = _extract_hard_skills_from_jd(jd_string)
@@ -1451,6 +1498,26 @@ def inject_jd_hard_skills(
                 cleaned_skills.append(skill)
             continue
 
+        if auto_add:
+            # Extension policy: put every skill the job asks for straight onto the
+            # resume, with no "do you actually have this?" step. There is no UI in
+            # the sidebar to ask through, and the point of the extension is one
+            # click on a job posting.
+            #
+            # The website does the opposite (auto_add=False): unevidenced skills
+            # come back as `skill_gaps` and the candidate ticks the ones they
+            # really have. Same optimization engine either way — this is the only
+            # place the two surfaces are allowed to differ.
+            if key not in seen_lower:
+                seen_lower.add(key)
+                cleaned_skills.append(skill)
+                # Recorded so the UI can say what it did. With gaps always empty
+                # there is nothing left to ASK about, but the user should still
+                # see which skills this job caused to be added.
+                if not resume_evidence or not _contains_skill(resume_evidence, skill):
+                    auto_added.append(skill)
+            continue
+
         if claimed_by_model:
             # The model asserted a JD skill the resume does not evidence. This
             # used to be skipped as already-present, which meant the unbacked
@@ -1471,6 +1538,7 @@ def inject_jd_hard_skills(
 
     data["skills"] = cleaned_skills
     data["skill_gaps"] = skill_gaps
+    data["skills_added_from_jd"] = auto_added
 
     return data
 

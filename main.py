@@ -8,6 +8,7 @@ import random
 import re
 import resend
 from secrets import token_hex, token_urlsafe
+from urllib.parse import quote
 from datetime import datetime, timedelta, timezone
 import uuid
 
@@ -255,7 +256,12 @@ app.add_middleware(
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
     # Custom response headers are invisible to cross-origin JS (e.g. the Chrome
     # extension's background fetch) unless explicitly exposed here.
-    expose_headers=["X-Skill-Match-After", "X-Skill-Match-Fallback"],
+    # A header the extension cannot READ is the same as one never sent, so every
+    # addition to the tailor response has to be listed here too.
+    expose_headers=[
+        "X-Skill-Match-After", "X-Skill-Match-Fallback",
+        "X-Skill-Gaps", "X-Skills-Added",
+    ],
 )
 
 # Get the base directory (where main.py is located)
@@ -2225,29 +2231,84 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
         ]
 
         cands = []
+        seen_marker = False
         for i in range(start + 1, end):
             line = section_lines[i][0]
             # Hard boundary: a new entry title. Titles in virtually every template
             # carry a "|" stack/role separator while bullets never do — stopping
             # here prevents capturing a following entry the optimizer may have
             # dropped (which would otherwise be restored onto the wrong entry).
+            # This entry's OWN link row - "Live Demo | GitHub". Not a title, not
+            # a stack row, not a bullet. It has to be skipped before EITHER
+            # boundary test below, because it trips both: it carries a pipe, and
+            # it also reads as a short comma/pipe-separated list of known terms.
+            # Whichever fired first stopped collection at the line directly under
+            # the title, so every project with a link row collected ZERO bullets
+            # and had no protection at all - on a real resume Tailorcv.com and
+            # the Myntra clone got nothing, while the one project without a link
+            # row kept all four bullets and all its detail. That is exactly why
+            # words went missing from some entries and not others.
+            if _RESTORE_LINK_LABEL_ROW_RE.fullmatch(line.strip()):
+                continue
+            stripped = line.strip()
+            # Layout debris. PDF extraction can strand a separator on a line of
+            # its own — the Myntra clone's link row came out as "|" then
+            # "Live Demo GitHub" on the next line. A lone pipe carries a pipe, so
+            # the title test below fired on it and ended collection before the
+            # entry's first bullet. Nothing without a letter or a digit in it can
+            # be a title.
+            if stripped and not re.search(r"[A-Za-z0-9]", stripped):
+                continue
             if "|" in line and not _restore_is_meta_line(line):
                 break
+
+            clean_peek = stripped.lstrip(_RESTORE_MARKERS + " ").strip()
+            # Is this the TAIL of the bullet above rather than a line of its own?
+            # Decided BEFORE the boundary tests below, because a wrapped tail can
+            # trip them: "usage quotas, plan gating, and subscription lifecycle
+            # handling." is eight words with two commas, which reads as a
+            # technology row and used to end collection mid-entry, costing that
+            # entry every bullet after it.
+            # The bullet MARKER is the reliable signal, where the PDF kept one:
+            # every real bullet carries one and no wrapped tail does. Judging by
+            # capitalisation alone missed tails that begin with an acronym —
+            # "UI using HTML, CSS, and JavaScript." reads as a technology row and
+            # ended collection one bullet into the entry. Fall back to
+            # capitalisation only for resumes whose markers did not survive
+            # extraction, so a marker-less layout cannot collapse into one bullet.
+            has_marker = stripped[:1] in _RESTORE_MARKERS
+            if has_marker:
+                seen_marker = True
+            looks_like_continuation = (
+                (not has_marker) if seen_marker else (not clean_peek[:1].isupper())
+            )
+            is_tail = bool(
+                cands
+                and clean_peek
+                and looks_like_continuation
+                and not cands[-1].rstrip().endswith((".", "!", "?", ":", ";"))
+            )
+
             # Hard boundary: the line is (or begins) another entry's title. A
             # prefix match catches the wrapped case, where only the first
             # fragment of the next title appears on its own line.
             lnorm = _normalize_key(line)
-            if lnorm and len(lnorm) >= 4 and any(
+            if not is_tail and lnorm and len(lnorm) >= 4 and any(
                 k.startswith(lnorm) or lnorm.startswith(k) for k in other_keys
             ):
                 break
-            # Hard boundary: a technology row sits directly under a title, so
-            # reaching one means the next entry has already started.
-            if _looks_like_stack_line(line.strip()):
+            if not is_tail and _looks_like_stack_line(stripped):
+                # A technology row BEFORE any bullet has been collected is this
+                # entry's own stack, printed under its title ("html,css,javascript"
+                # under the Myntra clone). Breaking there cost that entry every
+                # bullet it had. Only once bullets have been seen does a stack row
+                # mean the next entry has started.
+                if not cands:
+                    continue
                 break
             if _restore_is_meta_line(line):
                 continue
-            clean = line.strip().lstrip(_RESTORE_MARKERS + " ").strip()
+            clean = clean_peek
             if not clean:
                 continue
             # A bullet that WRAPS in the PDF arrives as two lines:
@@ -2258,11 +2319,14 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             # break - which is exactly how "...for 10+" reached a rendered
             # resume. Rejoin the tail onto its own sentence.
             #
-            # Both conditions are required and together they are conservative: a
-            # NEW bullet opens with a capitalised action verb and the line before
-            # it ends its sentence, so a genuine bullet is never absorbed into
-            # its predecessor even when the bullet glyph was lost in extraction.
-            if cands and clean[:1].islower() and not cands[-1].rstrip().endswith((".", "!", "?", ":", ";")):
+            # `is_tail` above is the decision - it knows about bullet markers,
+            # which capitalisation alone does not. Re-testing capitalisation here
+            # undid it for every tail that happens to begin with a proper noun or
+            # an acronym, and those fragments then shipped as bullets of their own:
+            #     "Lever, Workday), cutting per-application tailoring from ~10..."
+            #     "SMTP, and one-click portfolio publishing to Netlify."
+            # Both are the tail of the line above, and both reached a real resume.
+            if is_tail:
                 cands[-1] = f"{cands[-1].rstrip()} {clean}"
                 continue
             cands.append(clean)
@@ -7214,8 +7278,12 @@ async def extension_tailor_resume(request: Request):
     pdf_path = None
     try:
         async with request_semaphore:
+            # Extension: no confirm step exists in the sidebar, so every JD
+            # skill goes on directly. The website below does the opposite.
             parsed = await _optimize_resume_core(
-                base_resume_path, jd_string, confirmed_skills=user_confirmed_skills
+                base_resume_path, jd_string,
+                confirmed_skills=user_confirmed_skills,
+                auto_add_skills=True,
             )
             # Structured scorer, not the flat-text one /api/extension/skill-match uses
             # for the base resume: a flat match on the tailored output would count the
@@ -7276,6 +7344,28 @@ async def extension_tailor_resume(request: Request):
             finally:
                 db.close()
 
+            # The gaps the optimizer found were being computed and then dropped on
+            # the floor here. On the website the user is shown them and can tick
+            # the ones they actually have; an extension user never learned that
+            # the job asked for anything they were missing. Sent back so the
+            # sidebar can tell them, capped and URL-encoded because a response
+            # header must stay short and ASCII-safe.
+            # With AUTO_ADD_JD_SKILLS on there are no gaps left to report - every
+            # JD skill goes straight onto the resume - so the sidebar states what
+            # was ADDED instead. Falls back to the gap list if the confirm-first
+            # behaviour is switched back on.
+            gap_header = ""
+            added_header = ""
+            try:
+                added = [s for s in ((parsed or {}).get("skills_added_from_jd") or []) if s]
+                if added:
+                    added_header = quote(", ".join(added[:10]), safe="")
+                gaps = promptable_skill_gaps((parsed or {}).get("skill_gaps"))
+                if gaps:
+                    gap_header = quote(", ".join(gaps[:10]), safe="")
+            except Exception:
+                logger.exception("Could not build the skill headers")
+
             return FileResponse(
                 pdf_path,
                 media_type="application/pdf",
@@ -7284,6 +7374,8 @@ async def extension_tailor_resume(request: Request):
                 headers={
                     "X-Skill-Match-After": str(after_score) if after_score is not None else "",
                     "X-Skill-Match-Fallback": "true" if fallback_used else "false",
+                    "X-Skill-Gaps": gap_header,
+                    "X-Skills-Added": added_header,
                 },
             )
     except HTTPException:
@@ -10543,6 +10635,7 @@ async def _optimize_resume_core(
     jd_string: str,
     ats_payload: str | None = None,
     confirmed_skills: list[str] | None = None,
+    auto_add_skills: bool = False,
 ) -> dict:
     """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
     resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
@@ -10743,7 +10836,10 @@ async def _optimize_resume_core(
     if confirmed_skills:
         skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
 
-    parsed = inject_jd_hard_skills(parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills)
+    parsed = inject_jd_hard_skills(
+        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
+        auto_add=auto_add_skills,
+    )
 
     # A confirmed skill the JD never mentions still belongs on the resume: the
     # candidate said they have it, and dropping it would silently undo their
@@ -11091,8 +11187,12 @@ async def upload_resume(
             _db.close()
 
         async with request_semaphore:
+            # Website: unevidenced JD skills stay as gaps so the editor can
+            # ask the candidate to tick the ones they actually have.
             parsed = await _optimize_resume_core(
-                file_path, jd_string, ats_payload, confirmed_skills=web_confirmed_skills
+                file_path, jd_string, ats_payload,
+                confirmed_skills=web_confirmed_skills,
+                auto_add_skills=False,
             )
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
 

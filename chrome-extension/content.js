@@ -1004,6 +1004,59 @@
     scoreCard.classList.add('tcv-visible');
   }
 
+  /* Skills this job asked for that the resume evidences nowhere.
+     The optimizer refuses to write these in — claiming a tool the candidate has
+     never touched clears the filter and then collapses in the interview. But it
+     is information the candidate needs: some of these they genuinely have and
+     simply never wrote down. The website lets them tick those; the extension
+     used to discard the list entirely, so they never even knew. */
+  function showSkillPanel(added, gaps) {
+    const host = document.getElementById('tcv-skill-gaps');
+    if (host) host.remove();
+
+    // Which list to show depends on the server's policy. By default every skill
+    // the job asks for is written straight onto the resume, so there is nothing
+    // to ASK about — but the user should still see what changed. If the site is
+    // switched back to confirm-first, `gaps` is what comes through instead.
+    const showingAdded = Array.isArray(added) && added.length > 0;
+    const skills = showingAdded ? added : (Array.isArray(gaps) ? gaps : []);
+    if (!skills.length) return;
+
+    const box = document.createElement('div');
+    box.id = 'tcv-skill-gaps';
+    box.className = 'tcv-skill-gaps';
+
+    const title = document.createElement('div');
+    title.className = 'tcv-skill-gaps-title';
+    title.textContent = showingAdded
+      ? `Added ${skills.length} skill${skills.length === 1 ? '' : 's'} from this job`
+      : 'This job also asks for';
+    box.appendChild(title);
+
+    const list = document.createElement('div');
+    list.className = 'tcv-skill-gaps-pills';
+    skills.slice(0, 8).forEach(function (skill) {
+      const pill = document.createElement('span');
+      pill.className = 'tcv-skill-gap-pill';
+      pill.textContent = skill;          // textContent, never innerHTML
+      list.appendChild(pill);
+    });
+    box.appendChild(list);
+
+    const note = document.createElement('div');
+    note.className = 'tcv-skill-gaps-note';
+    note.textContent = showingAdded
+      ? 'Matched to this posting and added to your resume. Remove any you would ' +
+        'rather not be asked about in the interview.'
+      : 'Not added — your resume does not show these. If you do have any, add them ' +
+        'once on thetailorcv.com and every future tailor will include them.';
+    box.appendChild(note);
+
+    if (scoreCard && scoreCard.parentNode) {
+      scoreCard.parentNode.insertBefore(box, scoreCard.nextSibling);
+    }
+  }
+
   async function runCoverLetter(job, label) {
     if (tcvBusy || !job) return;
     tcvBusy = true;
@@ -1104,7 +1157,15 @@
       globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
       const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
       showSuccessTick(job.beforeScore, after);
-      track('tailor_downloaded', { before_score: job.beforeScore, after_score: after });
+      const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
+      const gaps  = (res.data && Array.isArray(res.data.skillGaps))  ? res.data.skillGaps  : [];
+      showSkillPanel(added, gaps);
+      track('tailor_downloaded', {
+        before_score: job.beforeScore,
+        after_score: after,
+        skills_added_count: added.length,
+        skill_gap_count: gaps.length,
+      });
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
