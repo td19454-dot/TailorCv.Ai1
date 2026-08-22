@@ -937,7 +937,7 @@ Job Description:
 # Rewrite quality IS the product here, so this one call gets a stronger model and
 # enough temperature to actually restructure a sentence. Every other LLM call in
 # the app is unchanged. Overridable from .env for cost tuning.
-OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-4o")
+OPTIMIZER_MODEL = os.getenv("OPTIMIZER_MODEL", "gpt-4o-mini")
 try:
     OPTIMIZER_TEMPERATURE = float(os.getenv("OPTIMIZER_TEMPERATURE", "0.35"))
 except ValueError:
