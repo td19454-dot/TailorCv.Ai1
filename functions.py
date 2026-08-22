@@ -1585,12 +1585,34 @@ def inject_jd_hard_skills(
     if not isinstance(skills, list):
         return data
 
+    # Needed by the model-claim check below as well as the JD loop further down.
+    resume_evidence = str(resume_text or "")
+
     cleaned_skills: list[str] = []
     seen_lower: set[str] = set()
+    unevidenced_claims: list[str] = []
     for raw_skill in skills:
         skill = _clean_inline_text(raw_skill)
         key = skill.lower()
         if not _is_atomic_hard_skill(skill) or key in seen_lower:
+            continue
+        # Everything the MODEL claimed has to be backed by the resume, not just
+        # the skills the JD extractor happened to recognise.
+        #
+        # The loop below only ever inspects `required_skills`, so a skill the
+        # model invented that the extractor missed was never checked and shipped
+        # unchallenged. The extractor does miss things - it does not recognise
+        # "SAP" - and a real resume came back listing TorchServe, TF Serving and
+        # Dask, none of which appeared anywhere in the candidate's document.
+        # That is the exact claim this function exists to prevent: a keyword the
+        # person has never touched clears the filter and then collapses in the
+        # interview.
+        #
+        # auto_add (the Chrome extension) deliberately skips this: there is no
+        # dialog to ask through there, and adding everything is the chosen
+        # behaviour for that surface.
+        if resume_evidence and not auto_add and not _contains_skill(resume_evidence, skill):
+            unevidenced_claims.append(skill)
             continue
         seen_lower.add(key)
         cleaned_skills.append(skill)
@@ -1603,7 +1625,6 @@ def inject_jd_hard_skills(
     #
     # Skills with no evidence are returned separately as `skill_gaps` so the user
     # can be shown what this job wants and decide for themselves.
-    resume_evidence = str(resume_text or "")
     skill_gaps: list[str] = []
     # Skills written onto the resume purely because the job asked for them.
     auto_added: list[str] = []
@@ -1674,6 +1695,16 @@ def inject_jd_hard_skills(
             seen_lower.discard(key)
 
         skill_gaps.append(skill)
+
+    # Claims stripped above are offered back as gaps rather than silently binned:
+    # some of them the candidate genuinely has and simply never wrote down, and
+    # the editor's dialog is where they say so.
+    if unevidenced_claims:
+        already = {g.strip().lower() for g in skill_gaps}
+        for skill in unevidenced_claims:
+            if skill.strip().lower() not in already:
+                already.add(skill.strip().lower())
+                skill_gaps.append(skill)
 
     data["skills"] = cleaned_skills
     data["skill_gaps"] = skill_gaps
