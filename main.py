@@ -10835,15 +10835,19 @@ async def _optimize_resume_core(
     # resume_string is the ORIGINAL uploaded text - it is what decides whether a
     # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
     # ATS analysis's verdict on which skills the job actually requires.
-    # Skills the candidate has personally confirmed count as evidence. The
-    # evidence gate exists to stop the MODEL inventing credentials, and it must
-    # stay strict about that — but a skill the person told us they have is not
-    # the model inventing anything, and refusing it means the Chrome extension
-    # re-tailors from the base resume and drops every skill they ever ticked.
-    # Appending them to the evidence text reuses the same _contains_skill check
-    # rather than opening a second, looser path into the skills array.
+    # Previously-confirmed skills apply ONLY where the user cannot be asked -
+    # i.e. the Chrome extension, which re-tailors from the stored base resume
+    # with no dialog and would otherwise drop every skill they ever ticked.
+    #
+    # On the website they are deliberately NOT applied. Reusing an old answer
+    # there means the skill is added silently and, because it also counts as
+    # evidence, the matching JD requirement stops being reported as a gap - so
+    # the dialog has nothing to ask about and never appears. The website asks
+    # every time; that is the whole point of the page.
+    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+
     skill_evidence = resume_string
-    if confirmed_skills:
+    if apply_confirmed:
         skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
 
     parsed = inject_jd_hard_skills(
@@ -10851,10 +10855,9 @@ async def _optimize_resume_core(
         auto_add=auto_add_skills,
     )
 
-    # A confirmed skill the JD never mentions still belongs on the resume: the
-    # candidate said they have it, and dropping it would silently undo their
-    # answer on the next tailor.
-    if confirmed_skills:
+    # A confirmed skill the JD never mentions still belongs on the resume — but
+    # again only on the surface that cannot ask.
+    if apply_confirmed:
         existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
         for skill in confirmed_skills:
             if skill.strip().lower() not in existing:
