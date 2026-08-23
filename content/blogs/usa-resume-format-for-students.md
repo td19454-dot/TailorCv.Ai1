@@ -118,6 +118,74 @@ The most common edits when converting a European, Indian or East Asian resume fo
 
 For international students, none of this touches [work authorisation](/blog/usa-opt-cpt-explained-students) — visa status does not belong on the resume at all. It comes up later in the process, and putting it on the document takes space from evidence while volunteering information the screen does not need.
 
+## Writing bullets that survive a six-second read
+
+Recruiters do not read student resumes, they scan them. The realistic attention on a first pass is a few seconds, and what survives that pass is the first half of each bullet.
+
+Three properties separate bullets that work from bullets that do not.
+
+**The outcome comes early.** Compare "Worked with a team of four to build a Python script that automated report generation, reducing manual work by six hours weekly" with "Cut six hours of weekly manual reporting by automating it in Python, working with a team of four." Identical facts. The second front-loads the thing a recruiter cares about, and it survives being cut off halfway.
+
+**The verb is specific.** "Worked on", "helped with", "was responsible for" and "assisted in" describe proximity to work rather than work itself. Built, designed, automated, migrated, diagnosed, cut, shipped and consolidated describe what you actually did.
+
+**A number appears where one honestly exists.** Not invented, found. Students consistently underestimate how many numbers their work contains: how many users, how many records, how many hours, how many people, how much faster, how many times a week. If you genuinely have none, a specific named outcome works instead.
+
+The test to apply to each bullet: could someone else in your class have written this exact sentence? If the answer is yes, it is describing a category of work rather than your work.
+
+## What to do when the page is too full
+
+The one-page constraint forces decisions, and students usually make them badly, shrinking margins and font size until the page is technically full and practically unreadable.
+
+Cut in this order:
+
+**Anything before university.** School achievements, unless genuinely exceptional and recent.
+
+**Coursework lists.** A recruiter assumes a computer science graduate took data structures. The line buys nothing.
+
+**Skills nobody screens for.** Microsoft Office, email, "communication". These occupy space and signal padding.
+
+**Duplicate evidence.** Three bullets on the same project doing similar things. Keep the strongest.
+
+**The objective statement**, if you still have one. It is a sentence explaining that you would like a job, addressed to someone reading your job application.
+
+What to protect: projects with outcomes, internships, anything with a number, and anything the posting explicitly asks for.
+
+If it still does not fit, the honest answer is usually that two projects are described at length where one strong one and one line would serve better.
+
+## Formatting that survives the parser
+
+Design and parseability pull against each other, and students routinely pick the wrong side because the resume they can see looks better than the one the machine reads.
+
+Safe: single column, standard section headings, a common font, plain bullet characters, consistent date formats, and contact details in the body of the document rather than in the header.
+
+Unsafe: two columns, sidebars, tables, text boxes, icons in place of labels, headers and footers containing anything important, graphics representing skill levels, and any template that arranges content visually rather than sequentially.
+
+The five-second check: open your PDF, select all, copy, and paste into a plain text file. That is approximately what the parser sees. If your job titles have merged with your skills list, or your phone number has vanished, the layout is the problem rather than the wording. A [free ATS check](/ats-analysis) does the same job more thoroughly.
+
+## Projects, written properly
+
+For a student with no full-time experience, projects carry the resume. Most students write them in a way that wastes the opportunity.
+
+The common failure is describing what the project *is* rather than what you *did and found*:
+
+Weak: "Built a movie recommendation system using Python and collaborative filtering."
+
+That tells a reader the category of thing you made and nothing else. Every applicant with the same coursework has the same line.
+
+Better: "Built a recommendation engine over 100k MovieLens ratings; switching from user-based to item-based collaborative filtering cut cold-start error by roughly a third and dropped inference time under 200ms."
+
+Same project. The second version demonstrates that you measured something, made a decision, and understood the trade-off. That is what a technical interviewer wants to talk about, and it gives them an obvious opening question.
+
+Three questions to interrogate each project bullet with:
+
+**What decision did you make?** Every real project involves a choice between approaches. Naming yours shows judgement rather than instruction-following.
+
+**What did you measure?** Scale, accuracy, latency, cost, time saved. Numbers you actually observed, not invented.
+
+**What broke, and what did you do?** The debugging story is frequently the most interesting thing about a student project and it is almost never written down.
+
+A final point that matters more than the wording: **the project should exist and run.** A link a hiring manager can open in thirty seconds is worth more than any sentence describing it. If it cannot be deployed, a short README with screenshots and a clear explanation of the problem does most of the same work.
+
 ## Common Mistakes
 
 - **Keeping the photo.** The single most damaging carry-over from non-US formats.
@@ -127,6 +195,68 @@ For international students, none of this touches [work authorisation](/blog/usa-
 - **Contact details in the header.** Frequently stripped by parsers, leaving no way to reach you.
 - **Including references or "available on request".** Assumed, and wastes space you need.
 - **One resume for every application.** The screen matches language against the posting, and a generic document matches nothing specifically. [Tailoring per role](/blog/how-to-tailor-resume-for-every-job) is where the interview rate actually moves.
+
+## The sections, in the order that works
+
+For a student or recent graduate, the ordering is close to fixed, and deviating from it usually costs you.
+
+**Contact details.** Name, phone, email, city, and a link that works. A GitHub or portfolio URL where relevant. Not a full postal address, not a photo, not a date of birth.
+
+**Education.** Near the top while you are a student, because it is your primary credential and the thing a campus recruiter is filtering on. Institution, degree, graduation date, and GPA if it helps you.
+
+**Experience or Projects, whichever is stronger.** This is the one real judgement call. If you have internships, they lead. If you have no relevant employment but have built things, projects lead. Putting a retail job above a substantial technical project because employment "counts more" is a common and costly instinct.
+
+**Skills.** Concrete and named. Languages, frameworks, tools, platforms. Not "problem solving", not proficiency bars, not a wall of every technology you have ever opened.
+
+**Anything else, briefly.** Leadership, awards, publications, relevant activities. One or two lines, not a section each.
+
+Education moves below experience once you have a couple of years of full-time work. Until then it stays high.
+
+## Adapting the same content per application
+
+You cannot write a fresh resume for forty postings, and you should not send the same one to all of them. The workable compromise is a stable base with two deliberately variable parts.
+
+**The skills line reorders.** Whatever the posting names first should appear first, provided you genuinely have it. This costs thirty seconds and it is the single highest-return edit.
+
+**Two or three bullets get rephrased** into the posting's vocabulary. If the role says "data pipelines" and your bullet says "ETL process", change the words, not the facts. If it says "PostgreSQL" and you wrote "Postgres", match it.
+
+Everything else stays fixed. That makes a genuinely tailored application a ten-minute job rather than an hour, which is the difference between tailoring forty applications and tailoring four.
+
+What this is not is inventing skills to match the posting. The words change; the facts do not. Claiming something the resume cannot evidence fails at the interview, which is a worse outcome than not being shortlisted.
+
+## Common situations and how to handle them
+
+**You changed major.** Nobody cares. List the degree you are completing. There is no need to explain the earlier one unless it produced relevant coursework or projects worth including.
+
+**You have a gap.** For a student this is rarely questioned. If it was a year out, working, caring for family, or dealing with illness, a one-line entry is enough. Silence invites more curiosity than a brief factual line does.
+
+**Your GPA is low.** Omit it. This is unremarkable and covered in detail in [GPA requirements](/blog/usa-gpa-requirements-employers). Use the space for evidence instead.
+
+**Your experience is all unrelated.** Retail, hospitality and campus jobs still demonstrate reliability, customer handling and working under pressure. Keep them brief, one line each, and let projects carry the relevance.
+
+**You have too much for one page.** Cut, do not shrink. Margins below about half an inch and fonts below ten point are visible signals of over-stuffing.
+
+**You are applying across two different fields.** Two resumes. Trying to serve both from one document produces one that serves neither, and the screen is matching against a specific posting.
+
+**Your name is frequently mispronounced or you use a different name professionally.**
+
+Use whichever name you want to be called, consistently across the resume, your email and LinkedIn. Consistency matters more than which one you choose.
+
+**You are an international student.** Keep visa status off the document entirely. It is not a credential, it takes space from evidence, and it is [answered in conversation](/blog/usa-visa-sponsorship-question-interview) when asked.
+
+## Submission details that quietly matter
+
+The document is finished. These are the things that go wrong afterwards.
+
+**Always PDF.** A document file reflows on the reader's machine, and a resume that was one page on yours becomes one and a half on theirs. The only exception is when the application explicitly requires another format.
+
+**Name the file as a person.** `Priya_Sharma_Resume.pdf`, not `resume_final_v4_USE_THIS.pdf`. Recruiters save these into folders, and the filename is what they see for months.
+
+**Check the PDF's own text layer.** Some design tools export text as outlines or in an order that extracts wrongly. Open your PDF, select all, copy, and paste into a plain text file. What you see there is roughly what the parser sees — and if the columns interleave or the dates land in the wrong place, that is a real problem that is invisible when you look at the page. Running an [ATS check](/ats-analysis) does the same job more thoroughly.
+
+**Do not password-protect it**, and do not add a digital signature. Both break automated processing at some employers.
+
+**Keep one master version and tailor from it.** Version sprawl is how the wrong resume gets sent, and sending a document tailored to a different company is a rejection with no appeal.
 
 ## Frequently Asked Questions
 

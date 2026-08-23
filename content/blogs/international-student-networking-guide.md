@@ -88,11 +88,63 @@ And accept that most messages go unanswered. A 10-20% reply rate on well-targete
 
 ## Why this matters more for you
 
-Referrals do something specific: they get your application read by a human rather than filtered by software.
+Networking is useful for everyone and it is doing a different, larger job for an international student, which is worth understanding because it changes who you contact and what you ask for.
 
-That is worth more to an international student, because your profile is more likely to be unfamiliar to a screener — an institution they do not recognise, a grading system they cannot interpret, a work-authorisation flag. A human reading your evidence is a better outcome for you than an automated match, which is exactly what a referral buys.
+**You are replacing missing context.** A domestic classmate carries institutional shorthand — employers know their school, recognise their previous employer, understand their references. Your degree may be from an institution the recruiter cannot place, your previous internship at a company they have never heard of. A person who will vouch for you supplies the context your resume cannot.
 
-It also compounds. The first job is the hardest, and after it you have colleagues, references and a local track record. The network you build now is the one that makes the second and third moves straightforward.
+**You are correcting an assumption.** Many employers assume any international candidate brings a paperwork burden, and in several cases — a Canadian [open work permit](/blog/canada-pgwp-for-new-grads), a US student on curricular training — that assumption is simply wrong. An assumption held silently cannot be corrected, and a conversation is where it surfaces.
+
+**You are finding out who can actually hire you.** Whether an employer sponsors, whether they are [enrolled in the schemes your status requires](/blog/usa-stem-opt-employer-requirements), whether they have done it before. This information is patchy in public sources and reliable from a person inside.
+
+**You are building the local reference.** The single most valuable thing an international student can acquire — someone in this country who will speak for you. It is what an internship produces, and where an internship is not available, deliberate relationship-building is the substitute.
+
+**And the base rate is against you on cold applications.** A smaller pool of employers can hire you, so the same interview volume requires more applications. A referral is the highest-leverage correction available, and it is why this is not an optional extra for international candidates the way it can be for domestic ones.
+
+## The conversations that matter most
+
+Three specific conversations do disproportionate work for an international student, and each has a different shape.
+
+**The alum who was in your position.** The highest-value conversation available to you. Someone from your programme, one to three years ahead, now working locally.
+
+What to ask: how they found the role, whether the employer had hired international students before, what the authorisation conversation was like, and what they would do differently. That last question produces the most useful answer and almost nobody asks it.
+
+What not to do: ask them to refer you in the first message. Ask for the conversation, then follow up.
+
+**The person inside a target employer.** Someone who can tell you whether the employer actually hires people with your status, which is patchy information in public sources and reliable from inside.
+
+What to ask: what the team works on, what the hiring process looks like now, and — plainly — whether the company has hired international graduates. That last one is a factual question and it is entirely normal to ask.
+
+**Your professor or research supervisor.** Frequently the best-connected person you know and almost never asked. An introduction from someone who has seen your work carries far more weight than any cold message.
+
+What to ask: whether they know anyone working in the area you want to enter, and whether they would be willing to make an introduction. Say what you are looking for specifically, so they can match it.
+
+**Across all three:** you are asking for information and an introduction, not for a job. The distinction sounds like etiquette and it is actually mechanical — people can give information easily and cannot give jobs, so asking for the thing they can provide is what gets a reply.
+
+## Three a day, from your first term
+
+If everything here reduces to one habit, it is this.
+
+**Three messages a day.** Fifteen minutes. To alumni from your programme, to people who recently joined a target employer, to anyone with a specific shared connection.
+
+**Asking for a conversation, never a referral.** People can give fifteen minutes easily; they cannot give jobs, and asking for the thing they can provide is what gets a reply.
+
+**From your first term, not your final one.** This is the whole difference. Outreach begun early compounds — one conversation produces two introductions, an introduction produces an internship, an internship produces the local reference that resolves every doubt an employer has about you. Outreach begun in your final autumn produces cold messages sent under visible pressure at the same moment everyone else is sending them.
+
+Ninety contacts over a term, at a ten to twenty percent reply rate, is roughly a dozen real conversations. That is a network. It is fifteen minutes a day, it is the least urgent item on your list every single day, and for an international student it is the activity that most reliably determines whether you have options at the end.
+
+## What to do after a conversation
+
+The follow-up is where a pleasant chat becomes a relationship, and it is where most students stop.
+
+**Send the thank-you within a day**, referencing one specific thing they said. Not "thanks for your time" — the actual point that landed.
+
+**Do the thing they suggested.** If they recommended reading something, talking to someone, or looking at a particular team, do it within the week and tell them you did. This single behaviour is what turns one contact into three, because people introduce you to others once they see you act on what they said.
+
+**Connect properly on a professional network** with a one-line reminder of the conversation.
+
+**Update them when something changes.** Applied to their company, got an interview, took a role. Two sentences. People like knowing their advice went somewhere.
+
+**Do not disappear and reappear only when you need something.** The reason to send the small updates is that they make the later ask a continuation rather than a cold approach.
 
 ## Common Mistakes
 
@@ -102,6 +154,70 @@ It also compounds. The first job is the hardest, and after it you have colleague
 - **Never contacting professors.** Frequently well connected and genuinely willing.
 - **Not following up after a good conversation.** Where most promising contacts quietly end.
 - **Assuming your home country's formality norms apply.** Usually leads to under-asking.
+
+## Where to actually meet people
+
+The instruction to "build a network" is useless without a list of places. These are ranked by yield for an international student.
+
+**Alumni from your own programme, one to four years ahead.** The highest-yield group by a wide margin, and the reason is specific: they were in your exact position recently, they know which employers hired someone with their status, and the shared programme is a legitimate reason to write. Find them through your university's alumni directory filtered by employer or location.
+
+**Alumni from your home country now working locally.** A second shared basis, and often a strong one. People who made the same move are unusually willing to help someone doing it after them.
+
+**Your own professors and supervisors.** Frequently well connected in their field, and almost never asked. A professor who knows your work can make an introduction that no cold message matches.
+
+**Campus employer events.** Attended by fewer students than you would think, and the ratio of students to company representatives is much better than at a large public fair. The [career fair approach](/blog/usa-career-fair-strategy) applies, with the specific addition that these are where you can ask about sponsorship in person.
+
+**Professional associations and meetups in your field.** Local chapters, technical meetups, industry groups. These are where you meet people who are not being asked for jobs by fifty students, which changes the conversation entirely.
+
+**Student societies for your field.** Running an event brings you into contact with speakers and sponsors as an organiser rather than as an attendee, which is a considerably better position.
+
+**Your international student office.** They know which employers have hired students with your status, and they are asked far less often than career services.
+
+**Online communities.** Field-specific forums, professional networks, open-source projects. Lower yield per contact and unlimited in supply, and contributing something visible is what converts them from strangers to contacts.
+
+**What all of these have in common:** they produce conversations rather than applications. The [outreach mechanics](/blog/usa-cold-email-networking-students) — ask for information first, never a referral in a first message, follow up within a day — apply identically. The difference for you is only that the stakes are higher and the timeline is tighter, which is an argument for starting in your first term rather than your final one.
+
+## Overcoming the specific difficulties
+
+Three obstacles come up repeatedly for international students, and each has a practical answer.
+
+**"My English isn't good enough for this."** Almost always overstated. What matters in these conversations is being specific and prepared, not being fluent. Writing your message down and editing it removes most of the problem; for calls, having your three questions written in front of you does the same. Nobody is assessing your accent, and people who moved countries themselves are frequently the most patient audience you will find.
+
+**"It feels like using people."** The most common blocker, and it rests on a misunderstanding of what you are asking for. A fifteen-minute conversation about someone's job is not an imposition — most people enjoy being asked about their work, particularly by someone from their own programme. And referral bonuses mean that helping you is frequently in their interest too. What would be using people is asking a stranger for a referral in a first message, which is exactly what this approach avoids.
+
+**"I don't know anyone."** Everyone starts here. The alumni directory is a list of people who share your institution and have no idea you exist yet, and that shared institution is a completely legitimate basis for a message. Three messages a day for a month is ninety contacts, and a ten to twenty percent reply rate produces a dozen conversations — which is a network.
+
+**A fourth, less often named:** the fear that being international is a disadvantage you should not draw attention to. In several cases the opposite is true — a [Canadian open permit](/blog/canada-pgwp-for-new-grads) removes an employer objection they assumed existed, and a [US student on curricular training](/blog/usa-visa-sponsorship-question-interview) requires nothing from them at all. Silence lets a wrong assumption stand. One plain sentence corrects it.
+
+## Starting early, and why it decides the outcome
+
+The single largest difference between international students who place well and those who struggle is not ability. It is when they started.
+
+**Outreach in your first term produces conversations in your second**, referrals in your penultimate year, and an internship that resolves the employer's doubts before your graduate applications. Outreach begun in your final autumn produces cold messages sent under visible pressure, at exactly the moment when everyone else is also asking.
+
+**The compounding is the point.** One good conversation produces an introduction to two more. Ninety contacts over a year is not ninety times the value of one — it is a network in which somebody knows about a role before it is posted.
+
+**And the timeline is tighter for you than for a domestic classmate.**
+
+Authorisation deadlines, a smaller pool of employers who can hire you, and processes that take longer because a question has to be answered. All three argue for starting earlier than feels necessary.
+
+Three messages a day, from your first term. It is fifteen minutes, it is the least urgent thing on your list every single day, and it is the activity that most reliably determines whether you have options at the end.
+
+## Keeping it going after you land
+
+The network built during a search is abandoned the moment an offer arrives, which wastes most of what it produced.
+
+**Tell everyone who helped.** One line to every person who gave you fifteen minutes: what you took, and that their input mattered. Twenty minutes of work, and it converts a series of transactions into relationships people remember.
+
+**Stay in touch twice a year with the ones you connected with.**
+
+A short note when something reminds you of them. This is what makes someone reachable in three years when you want to move — and for an international professional, the ability to move employers without starting cold is worth a great deal.
+
+**Answer the students who message you.** Within a year, people in your position will write to you the way you wrote to others. Replying costs fifteen minutes and it is the mechanism that keeps the whole system working for the people behind you.
+
+**Keep the list.** Names, employers, how you met, what you discussed. In five years you will not remember, and an unplaceable contact is not a contact.
+
+**And keep building it during the job.** The colleague who leaves for another company, the person you worked with on a cross-team project — these are the contacts that matter for your second job, and they are built by being useful at work rather than by any deliberate networking activity.
 
 ## Frequently Asked Questions
 

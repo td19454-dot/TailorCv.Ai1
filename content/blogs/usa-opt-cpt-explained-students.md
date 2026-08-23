@@ -88,6 +88,66 @@ Requirements that differ from standard OPT:
 
 The STEM list is specific and based on the CIP code of your programme, not on whether the subject sounds technical. Some business analytics and economics programmes qualify; some computer-adjacent programmes do not. Ask your DSO for your programme's CIP code and check it against the current list rather than assuming.
 
+## A worked timeline
+
+Abstract rules are hard to plan against, so here is the shape of a typical year for a spring graduate. Your own dates will differ — this is the structure, not a template to copy.
+
+**January.** You are in your final semester. OPT applications can be filed up to 90 days before your programme end date, so this is roughly when your window opens. Gather documents now: passport, I-20, previous authorisation records, photos.
+
+**February.** File. Filing early is the single most useful thing in this list, because processing times are unpredictable and your intended start date is not. An approved authorisation you have not begun using costs you nothing; a pending one on your start date costs you a job.
+
+**May.** You graduate. Your OPT has not necessarily been approved yet, and you cannot work until it is.
+
+**June or July.** Approval arrives with a start date on the card. **That date is when your unemployment clock begins**, not graduation day, and not the day you started looking.
+
+**September or October.** If you have not started a job, you are approaching 90 accumulated days. This is the pinch point, and it lands precisely when autumn recruiting is filling roles for the *following* year rather than for immediate start.
+
+**Following March.** The [H-1B registration window](/blog/usa-h1b-lottery-new-grads). Whether you reach it with authorisation remaining is decided by everything above.
+
+The lesson embedded in that timeline: the search has to begin in your penultimate year, not after graduation. By the time your OPT card arrives you should already be working or deep in a process.
+
+## Reporting obligations people forget
+
+OPT is not a permit you receive and then ignore. There are ongoing obligations, and failing them can end your status even while you are employed.
+
+**Report your employer.** Name, address, start date, and how the work relates to your degree. This is done through the student portal or via your DSO, depending on your school.
+
+**Report changes.** A new employer, a change of address, a change in your role — these need updating, usually within a short window.
+
+**Report periods of unemployment.** So the days can be counted correctly.
+
+**Keep your own records regardless.** Offer letters, pay stubs, job descriptions, dates. Your school's records are not a substitute, and years later — when applying for something that requires your employment history — reconstructing it is genuinely difficult.
+
+Students most often fall down on the change reports. Moving apartment feels unrelated to immigration status. It is not.
+
+## Travel, and why it is riskier than it looks
+
+Leaving the country during OPT carries different risk depending on where you are in the process.
+
+**Before your OPT is approved.** Highest risk. Travelling while the application is pending can create serious complications, and in some circumstances the application can be treated as abandoned.
+
+**Approved, but no job yet.** Risky. Re-entry generally expects evidence of employment, and arriving without it invites difficult questions.
+
+**Approved and employed.** The most straightforward case, but you still need the right documents: valid passport, valid visa stamp, your EAD card, your I-20 with a recent travel endorsement, and an employment letter.
+
+The travel signature on your I-20 expires. Getting it renewed before you book is a five-minute task that prevents a very expensive problem.
+
+None of this means you cannot travel. It means the sequencing matters, and the decision should be made with your DSO rather than based on what a friend did last year.
+
+## What happens if the 90 days run out
+
+Worth understanding before you are near it, because the options narrow as the clock advances.
+
+**Part-time or unpaid work in your field counts** if it meets the hour threshold and genuinely relates to your degree. Documented volunteer or research work can preserve status where a paid role has not materialised.
+
+**Returning to study** changes your status and stops the clock, though it is a significant decision to make under time pressure rather than a convenient reset.
+
+**A shorter-term or contract role** in your field counts the same as a permanent one for this purpose.
+
+**Leaving and returning later** is a real option that people treat as a failure. Work experience abroad is portable, and several people who build US careers do so on a second attempt.
+
+The mistake is waiting until day 85 to consider any of this. At day 60, all of these are live options. At day 89, most are not.
+
 ## How this shapes your job search
 
 The rules are not just paperwork — they change what strategy works.
@@ -102,6 +162,58 @@ The rules are not just paperwork — they change what strategy works.
 
 Your resume should not mention visa status — it is not relevant to the screen and takes space from your work. Focus that space on evidence, and make sure the document parses cleanly, since [ATS rejection](/blog/how-to-check-ats-score-free) removes you before any human considers sponsorship at all.
 
+## Explaining your status to an employer
+
+Most hiring managers do not know what OPT is. Recruiters at large employers usually do; a hiring manager at a fifty-person company frequently does not, and will assume any international candidate means expense and legal risk.
+
+That assumption is wrong for OPT and you should correct it early, in plain terms:
+
+> "I'm authorised to work now on OPT — it's a federal work permit tied to my degree, not to an employer. There's no sponsorship, no petition and no cost on your side. It runs through August 2028, and after that I'd need sponsorship."
+
+Three facts, no jargon, and it removes an objection that was never real. Candidates who leave it unsaid lose to domestic applicants for a reason that does not exist.
+
+Two refinements worth knowing:
+
+**Do not use the word "visa" for OPT.** It sounds like a petition the employer must file. Say "work permit" or "work authorisation."
+
+**Separate now from later.** Employers conflate "authorised now" with "will need sponsorship eventually." Answering both explicitly, in one sentence, prevents the confusion that kills applications.
+
+If the extension matters to you, the employer requirements are a separate and more demanding conversation — E-Verify enrolment and a training plan, covered in [STEM OPT employer requirements](/blog/usa-stem-opt-employer-requirements).
+
+## Paperwork errors that cost weeks
+
+The application itself is where avoidable delays happen. The common failures:
+
+**Filing outside the window.** Too early is rejected outright; too late can cost eligibility entirely.
+
+**Photos that do not meet specification.** Rejected applications over photo formatting are more common than they should be.
+
+**Requesting a start date you have not thought about.** You choose your requested start date, and it sets your unemployment clock. Choosing one too early means burning days before you are realistically going to be working.
+
+**An I-20 that has not been updated for the OPT recommendation.**
+
+Your DSO must recommend the OPT in the system and issue a new I-20 before you file.
+
+**Signature and date errors.** Trivial, common, and they restart the clock.
+
+**Not tracking the case afterwards.** Requests for evidence arrive by post and have deadlines. Missing one is fatal in a way that responding to one is not.
+
+None of this is difficult. All of it is time-sensitive, and the cost of an error is measured in weeks you do not have.
+
+## CPT during your degree: getting the sequencing right
+
+Because CPT is authorised by your school rather than by USCIS, it feels administratively light, and students treat it casually. The sequencing decisions you make here constrain everything afterwards.
+
+**Do the internship in the summer of your penultimate year.** That is when structured programmes run, when conversion to a graduate offer is possible, and when a full-time CPT term is short enough not to threaten your OPT.
+
+**Prefer part-time CPT during term.** It does not count toward the twelve-month threshold at all, so a part-time research or industry role across two academic years costs you nothing in OPT eligibility.
+
+**Count before you accept a second full-time term.** Two full summers is usually fine. A summer plus a full-time year-long placement is where people cross the line without noticing.
+
+**Get the authorisation before you start.** Working before CPT is approved is unauthorised employment, and the consequences are severe and not discretionary. A verbal go-ahead from an employer is not authorisation.
+
+One practical detail people miss: CPT is employer-specific and often role-specific. If the internship changes substantially — a different team, a different manager, a different scope — check whether the authorisation still covers it rather than assuming.
+
 ## Common Mistakes
 
 - **Accumulating 12 months of full-time CPT.** It destroys OPT eligibility, and students often discover this after the fact.
@@ -110,6 +222,20 @@ Your resume should not mention visa status — it is not relevant to the screen 
 - **Assuming your degree is STEM.** Verify the CIP code rather than guessing from the subject name.
 - **Not confirming E-Verify enrolment before relying on a STEM extension.** A job offer from a non-enrolled employer cannot support the extension.
 - **Taking immigration advice from other students.** Rules change and individual cases vary. Your DSO is the authority; forums are not.
+
+## A note on advice quality
+
+Immigration rules are the area where bad advice circulates most freely, because everyone has been through some version of it and each version was true at the time.
+
+Three sources worth weighting differently:
+
+**Your DSO.** Authoritative for your specific case, and the only person who can see your actual record. Their advice supersedes anything here.
+
+**Government publications.** Authoritative on the rules, and current. Slower to read than a forum post and correct, which is the trade.
+
+**Other students and online forums.** Useful for the experience of the process, such as how long something took or which employer was helpful. Unreliable on the rules themselves, because the rules changed and nobody updated the post.
+
+The pattern to watch for is confident specificity from someone with no reason to be confident. "You definitely cannot do that" and "everyone does this, it is fine" are both worth verifying before you act on them.
 
 ## Frequently Asked Questions
 
@@ -132,6 +258,26 @@ It is possible on standard post-completion OPT if the work relates to your field
 ### When exactly should I apply for OPT?
 
 As early as the rules allow — up to 90 days before your programme end date. Processing times vary and there is no benefit to waiting. An approved authorisation you have not started using is far better than a pending one on your intended start date.
+
+### Can I work for more than one employer on OPT?
+
+Generally yes on standard post-completion OPT, provided each role relates to your field and you report each one. This matters for the unemployment clock — two part-time roles that together exceed the hour threshold can keep you compliant while you look for something permanent. STEM OPT is more restrictive, since it requires an E-Verify employer and a training plan for the qualifying employment.
+
+### What counts as "related to my field of study"?
+
+The standard is looser than students fear but not unlimited. The work should draw on what your degree taught you, and you should be able to explain the connection in a sentence. A computer science graduate doing data engineering is obviously fine. The same graduate working in unrelated retail management is not. If you are genuinely unsure, document your reasoning at the time rather than trying to reconstruct it later.
+
+### Does an unpaid internship count as employment?
+
+It can, if it genuinely relates to your field and meets the hour threshold, and if the arrangement is lawful in other respects. Document it carefully — the hours, the work, the supervisor — because the burden of demonstrating it falls on you.
+
+### What if my employer goes out of business?
+
+Your OPT does not end, because it is not tied to that employer. Report the change, and your unemployment days resume accruing from the end of the job. This is precisely why the open nature of OPT matters, and why it differs from employer-sponsored status where losing the job is a status problem.
+
+### Should I apply for OPT even if I have a job lined up?
+
+Yes, and early. The offer does not authorise you to work; the OPT does. Students with signed offers have lost start dates because they filed late and the card had not arrived.
 
 ### Does travelling abroad affect OPT?
 

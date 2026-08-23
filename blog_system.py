@@ -98,6 +98,11 @@ class BlogPost:
     # touched in bulk. Empty string means "show nothing".
     updated_iso: str = ""
     updated_display: str = ""
+    # Opt-in override for the embedded template gallery. blog_template_showcase()
+    # otherwise infers the gallery from slug/title/tags, which cannot work for a
+    # post whose subject is unrelated to resumes ("usa-day-one-cpt-risks") but
+    # which should still show one. Values: "portfolio", "resume", "none".
+    showcase: str = ""
 
 
 class BlogService:
@@ -430,6 +435,7 @@ class BlogService:
             lastmod_iso=lastmod_iso,
             updated_iso=updated_date.strftime("%Y-%m-%d") if updated_date else "",
             updated_display=updated_date.strftime("%b %d, %Y") if updated_date else "",
+            showcase=str(frontmatter.get("showcase", "") or "").strip().lower(),
         )
 
     @staticmethod
