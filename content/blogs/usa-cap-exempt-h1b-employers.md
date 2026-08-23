@@ -35,7 +35,7 @@ Four categories, and the boundaries matter because the exemption is a legal char
 
 **Non-profit entities related to or affiliated with an institution of higher education.**
 
-This is the category people miss. Teaching hospitals, university-affiliated research institutes, foundations and similar organisations may qualify through their affiliation. The affiliation has to be genuine and documented, and where it exists the range of roles is broad.
+This is the category people miss. [Teaching](/blog/japan-jet-programme-and-teaching-jobs) hospitals, university-affiliated research institutes, foundations and similar organisations may qualify through their affiliation. The affiliation has to be genuine and documented, and where it exists the range of roles is broad.
 
 **Non-profit research organisations.** Organisations primarily engaged in basic or applied research.
 
@@ -115,7 +115,7 @@ Because "university job" makes most graduates picture a lecturer, the actual bre
 
 **Research and technical staff.** Research assistants, research associates, laboratory managers, bioinformaticians, statisticians and data analysts. These are the closest equivalent to a graduate technical role and they exist in volume at any research-heavy institution.
 
-**Software and IT.** Universities run substantial technology operations — student systems, research computing, clinical systems, networks, security. These are real engineering jobs and they are almost invisible to students who only look at technology companies.
+**Software and IT.** Universities run substantial technology operations — student systems, research computing, clinical systems, networks, security. These are real engineering jobs and they are almost invisible to students who only look at [technology companies](/blog/japan-tech-jobs-for-foreign-graduates).
 
 **Data and analytics.** Institutional research, enrolment analytics, clinical data, public health data. Growing quickly, and frequently short of good candidates.
 

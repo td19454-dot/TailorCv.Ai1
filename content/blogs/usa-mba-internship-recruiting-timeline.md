@@ -35,7 +35,7 @@ showcase: portfolio
 
 **Through the spring.** Off-cycle and smaller-employer hiring, which is real and less contested.
 
-**The summer.** The internship, which for most industries is the actual hiring decision.
+**The summer.** The [internship](/blog/japan-internships-for-international-students), which for most industries is the actual hiring decision.
 
 **Second year, autumn.** Full-time recruiting for those without a return offer, and a smaller pool.
 

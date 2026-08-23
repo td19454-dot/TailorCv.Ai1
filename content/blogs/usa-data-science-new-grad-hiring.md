@@ -161,7 +161,7 @@ Ranked by how often it happens, from the interviewers' side.
 
 **No sense of the business.** Being asked what metric matters for a product and having no view. The technical work is only valuable if it points at a decision, and candidates who never connect the two read as technicians rather than analysts.
 
-**Portfolio projects that prove nothing.** A model on a clean, famous dataset demonstrates that you can follow a tutorial. Reviewers have seen it hundreds of times.
+**Portfolio [projects](/blog/fresher-resume-projects-that-get-interviews) that prove nothing.** A model on a clean, famous dataset demonstrates that you can follow a tutorial. Reviewers have seen it hundreds of times.
 
 **Ignoring uncertainty.** Presenting a result as fact when it is correlational, or quoting a figure to four decimals from a noisy sample. Naming the limitation is what makes the rest believable.
 
@@ -210,7 +210,7 @@ Assessed directly at many companies, rehearsed by almost nobody, and it decides 
 
 **Week 12: communication and mocks.** Explain your project's finding to a non-technical person. Do two full mock loops.
 
-**Throughout:** read each posting before preparing for it, because [the three jobs behind the title](/blog/usa-data-science-new-grad-hiring) test different things and preparing for the wrong one is the most expensive error in this field.
+**Throughout:** read each posting before preparing for it, because the three jobs behind the title test different things and preparing for the wrong one is the most expensive error in this field.
 
 ## The project, worked through
 

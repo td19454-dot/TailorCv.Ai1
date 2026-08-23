@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## The 401(k), plainly
 
-A retirement savings account offered through many US employers, into which you can contribute a portion of your salary before tax, and which many employers match up to a certain percentage.
+A retirement savings account offered through many US employers, into which you can contribute a portion of your [salary](/blog/japan-salary-expectations-new-grad) before tax, and which many employers match up to a certain percentage.
 
 **The match is the part that matters most immediately.** A common structure is the employer contributing a percentage of your salary for every percentage you contribute yourself, up to some cap. If you do not contribute at least enough to capture the full match, you are declining part of your own compensation — the employer's contribution is contingent on yours.
 
@@ -187,7 +187,7 @@ Contributions come out before income tax is calculated, so contributing reduces 
 Once a year at open enrollment is sufficient for most people early in a career, plus any time your circumstances change materially.
 ### Is it worth asking about benefits during interviews?
 
-Wait until an offer is close or in hand. Asking detailed benefits questions in a first interview reads as focused on the package rather than the work; asking them at offer stage is entirely expected and is when you actually need the answers.
+Wait until an offer is close or in hand. Asking detailed benefits questions in a first [interview](/blog/japan-mensetsu-interview-questions-guide) reads as focused on the package rather than the work; asking them at offer stage is entirely expected and is when you actually need the answers.
 
 ### What if I do not understand my options at all?
 

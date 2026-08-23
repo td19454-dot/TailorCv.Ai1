@@ -23,7 +23,7 @@ showcase: resume
 
 Federal hiring for early-career candidates is more structured than most students realise, and the structure is worth knowing because applying outside it is harder.
 
-**Internship programmes for current students.** Paid positions for people enrolled in a qualifying programme, running during the academic year or over the summer. These are the main pipeline, and many convert to permanent positions on completion of the programme and the degree.
+**[Internship](/blog/japan-internships-for-international-students) programmes for current students.** Paid positions for people enrolled in a qualifying programme, running during the academic year or over the summer. These are the main pipeline, and many convert to permanent positions on completion of the programme and the degree.
 
 **Recent graduate programmes.** Entry-level developmental positions for people who completed a qualifying degree within a defined recent window — generally two years, with a longer window for those who served in the military. These carry structured training and mentoring, and successful participants can be converted to permanent roles.
 

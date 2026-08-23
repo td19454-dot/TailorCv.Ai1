@@ -23,7 +23,7 @@ showcase: portfolio
 
 Set aside the stereotypes and the differences reduce to a handful of structural facts.
 
-**Scope of your work.** At a large employer you own a well-defined slice of something bigger, with clear boundaries and an established process for nearly everything. At a startup the boundaries are drawn by what you pick up, and a great deal is undefined because nobody has done it yet.
+**Scope of your work.** At a large employer you own a well-defined slice of something bigger, with clear boundaries and an established process for nearly everything. At a [startup](/blog/japan-startup-jobs-for-graduates) the boundaries are drawn by what you pick up, and a great deal is undefined because nobody has done it yet.
 
 **How much you are taught.** Large employers have onboarding, documented systems, code review culture, and senior people whose job partly involves developing juniors. Startups vary enormously — some have an excellent engineer who will teach you a great deal, and some have five people all firefighting, in which case you will learn by failing in public.
 
@@ -212,7 +212,7 @@ Everything else is downstream. Salary differences at graduate level are real and
 
 What compounds is what you learn and who you learn it from, and both are properties of the specific team you would join — the manager, the person who would review your work, whether anyone there has the time and inclination to develop a junior.
 
-So ask the [team questions](/blog/usa-startup-vs-big-tech-new-grad), listen to the quality of the answers, and take the offer where someone clearly wants to build you into something. If your status depends on sponsorship, that constraint comes first and narrows the field before this question applies — but within the field that remains, the answer is the same.
+So ask the team questions, listen to the quality of the answers, and take the offer where someone clearly wants to build you into something. If your status depends on sponsorship, that constraint comes first and narrows the field before this question applies — but within the field that remains, the answer is the same.
 
 ## Frequently Asked Questions
 

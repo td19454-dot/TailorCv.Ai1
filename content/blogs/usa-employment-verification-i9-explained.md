@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## What the I-9 actually is
 
-A form every employer in the US is legally required to have every new employee complete, confirming identity and authorization to work. It applies universally — a US citizen born and raised in the country completes exactly the same form as an international employee on a work visa. This is worth stating plainly, because international students sometimes experience the process with more anxiety than it warrants, assuming it is somehow targeted at their situation specifically. It is not; it is a standard step for every hire, everywhere.
+A form every employer in the US is legally required to have every new employee complete, confirming identity and authorization to work. It applies universally — a US citizen born and raised in the country completes exactly the same form as an international employee on a [work visa](/blog/japan-work-visa-for-graduates). This is worth stating plainly, because international students sometimes experience the process with more anxiety than it warrants, assuming it is somehow targeted at their situation specifically. It is not; it is a standard step for every hire, everywhere.
 
 **The timeline is strict.** Section one, which you complete, is generally required by your first day of work. Section two, where your employer examines your documents, must be completed within three business days of your start date. This is a hard deadline with real consequences if missed, which is why preparation matters.
 
@@ -157,9 +157,9 @@ The I-9 is one of several forms in your first days, and knowing what else is com
 
 **Emergency contact and personal details.**
 
-**Confidentiality, IP assignment and policy acknowledgements.** Worth actually reading, particularly any clause about work you do outside the job if you maintain side projects.
+**Confidentiality, IP assignment and policy acknowledgements.** Worth actually reading, particularly any clause about work you do outside the job if you maintain side [projects](/blog/fresher-resume-projects-that-get-interviews).
 
-**A background check authorization** at many employers, which is separate from the I-9 and verifies employment history, education and sometimes more. Everything you claimed should survive it, which is why [accuracy on the resume](/blog/usa-gpa-requirements-employers) matters at exactly this moment.
+**A [background check](/blog/usa-background-check-what-employers-see) authorization** at many employers, which is separate from the I-9 and verifies employment history, education and sometimes more. Everything you claimed should survive it, which is why [accuracy on the resume](/blog/usa-gpa-requirements-employers) matters at exactly this moment.
 
 **Keep a copy of everything you sign**, in a folder you control rather than only in an employer system you may lose access to.
 

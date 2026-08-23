@@ -25,7 +25,7 @@ You cannot teach in a public school without state certification, and understandi
 
 **It is state-by-state.** Requirements, examinations and routes differ, and a licence in one state does not automatically transfer — though many states have reciprocity arrangements that shorten the process. Decide roughly where you want to be before you begin, because the sequence depends on it.
 
-**The traditional route** is an education degree with supervised student teaching. If you already have one, you are most of the way there.
+**The traditional route** is an education degree with supervised student [teaching](/blog/japan-jet-programme-and-teaching-jobs). If you already have one, you are most of the way there.
 
 **The alternative route** exists in every state and is what most people in this position use. You hold a bachelor's degree in a subject, you enter a programme that certifies you while you teach, and you complete coursework and assessments alongside a paid teaching job. Programme names and structures vary; the shape is consistent.
 
@@ -45,7 +45,7 @@ This matters more than anything else on the page, because a shortage subject cha
 
 **Special education.** The largest and most durable shortage in the country, and it carries additional certification requirements.
 
-**Bilingual education and English as a second language.** Strong demand, and a second language is a direct qualification rather than a nice-to-have.
+**Bilingual education and [English](/blog/japan-english-speaking-jobs-guide) as a second language.** Strong demand, and a second language is a direct qualification rather than a nice-to-have.
 
 **Career and technical education.** Industry experience frequently substitutes for a traditional teaching background.
 
@@ -91,7 +91,7 @@ Teaching in a classroom is one of several ways into education, and the others re
 
 **Education technology.** Companies building learning platforms, assessment tools and school systems, hiring engineers, designers, product managers and content specialists.
 
-**Curriculum and instructional design.** Developing materials and courses, for publishers, technology companies and universities.
+**Curriculum and instructional design.** Developing materials and courses, for publishers, [technology companies](/blog/japan-tech-jobs-for-foreign-graduates) and universities.
 
 **Education non-profits and policy organisations.** Research, programme delivery, advocacy. Frequently [cap-exempt research organisations](/blog/usa-cap-exempt-h1b-employers).
 
@@ -135,7 +135,7 @@ The route most people in this position use, and it is less daunting once the seq
 
 **Convert to a full licence.** Then maintain it with continuing education.
 
-**The financial shape.** You earn a teacher's salary throughout, and programme costs vary widely — some districts cover them entirely in shortage areas. Ask about cost and reimbursement before choosing a provider.
+**The financial shape.** You earn a teacher's [salary](/blog/japan-salary-expectations-new-grad) throughout, and programme costs vary widely — some districts cover them entirely in shortage areas. Ask about cost and reimbursement before choosing a provider.
 
 ## What principals are actually hiring for
 
@@ -187,7 +187,7 @@ The school matters more than the district and the district matters more than the
 
 **Ask what the school is working on.** A principal with a clear answer is running the school; one who describes everything as fine is not.
 
-**And be honest about the community.** Teaching in a high-need school is demanding and rewarding, and it requires you to actually want to be there. Principals detect the difference between commitment and charity within one interview, and they hire for the first.
+**And be honest about the community.** Teaching in a high-need school is demanding and rewarding, and it requires you to actually want to be there. Principals detect the difference between commitment and charity within one [interview](/blog/japan-mensetsu-interview-questions-guide), and they hire for the first.
 
 ## One thing to do first
 
