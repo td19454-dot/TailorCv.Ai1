@@ -3356,3 +3356,178 @@ header.navbar {
 .blog-detail-page .post-content .post-author-card a.post-author-link:hover {
   text-decoration: underline;
 }
+
+/* ─── Article readability on phones ───────────────────────────────────────
+   The article body was set once at 1.17rem with no mobile override, so a
+   phone rendered desktop-sized type inside a column narrowed by 28px of side
+   padding. Readable on a laptop, cramped and small on a handset.
+
+   Mobile reading wants LARGER type than desktop, not smaller: the screen is
+   closer to the eye but the measure is a third of the width, so the same size
+   reads as denser. Bumping the body up and pulling the side padding in gives
+   the line a usable character count instead of squeezing it. */
+@media (max-width: 680px) {
+  .blog-detail-page .post-content {
+    font-size: 1.28rem;      /* ~20.5px — comfortable phone reading size */
+    line-height: 1.72;
+    padding: 26px 18px 40px; /* was clamp(28px,6vw,96px) — reclaim side space */
+    letter-spacing: 0.002em;
+  }
+
+  .blog-detail-page .post-content p,
+  .blog-detail-page .post-content li {
+    font-size: inherit;
+  }
+
+  /* Lists were indented for a desktop measure; on a phone that indent is a
+     meaningful share of the line. */
+  .blog-detail-page .post-content ul,
+  .blog-detail-page .post-content ol {
+    padding-left: 1.15rem;
+  }
+
+  .blog-detail-page .post-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Headings keep their hierarchy but stop dwarfing the body at this width. */
+  .blog-detail-page .post-content h2 {
+    font-size: 1.72rem;
+    line-height: 1.24;
+    margin-top: 34px;
+  }
+
+  .blog-detail-page .post-content h3 {
+    font-size: 1.34rem;
+    line-height: 1.3;
+    margin-top: 26px;
+  }
+
+  /* Tables are the one element that cannot simply reflow — let them scroll
+     rather than shrinking the whole page to fit. */
+  .blog-detail-page .post-content table {
+    font-size: 1rem;
+  }
+  .blog-detail-page .post-content .table-wrap,
+  .blog-detail-page .post-content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Very small handsets: keep the gain but avoid over-large headings. */
+@media (max-width: 400px) {
+  .blog-detail-page .post-content {
+    font-size: 1.22rem;
+    padding: 22px 15px 36px;
+  }
+  .blog-detail-page .post-content h2 { font-size: 1.56rem; }
+  .blog-detail-page .post-content h3 { font-size: 1.26rem; }
+}
+
+/* ─── Common Mistakes: flat list, not nested boxes ────────────────────────
+   The mistakes section was a red card containing a red card per mistake. Two
+   levels of border and tint around every point made a short list look heavy,
+   and the box-in-box read as a UI component rather than as part of the
+   article.
+
+   Keep what was doing the work — the numbering, the red heading, the icon —
+   and drop the chrome. Each mistake becomes a numbered entry separated by a
+   hairline rule, which is lighter to read and matches the prose around it.
+   Overrides the rules above rather than editing them, so the callout system
+   used by the other section types is untouched. */
+
+/* outer wrapper: no card */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 34px 0;
+}
+
+/* section heading keeps the red + icon, gains a rule to anchor the block */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head {
+  margin: 0 0 6px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f3d3d0;
+}
+
+.blog-detail-page .post-content .mistake-grid {
+  display: block;
+}
+
+/* each mistake: a plain numbered entry */
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item {
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #eef1f6;
+  background: transparent;
+  border-radius: 0;
+  padding: 14px 0 12px;
+  margin: 0;
+}
+
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item > .callout-head {
+  margin: 0 0 4px;
+  padding: 0;
+  border: 0;
+  gap: 8px;
+}
+
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item .callout-ico svg {
+  width: 18px;
+  height: 18px;
+}
+
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item > .callout-head h3 {
+  font-size: 1.04rem !important;
+  line-height: 1.35;
+}
+
+.blog-detail-page .post-content .callout-mistake.mistake-grid-item > p {
+  margin: 0;
+  padding: 0 0 0 26px;   /* aligns body under the title, clear of the icon */
+  border: 0;
+  background: transparent;
+}
+
+/* posts that write mistakes as "**Label.** body" paragraphs instead of a
+   list get the same flat treatment rather than a grid of white tiles */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p {
+  margin: 0;
+  padding: 13px 0 12px;
+  border: 0;
+  border-bottom: 1px solid #eef1f6;
+  border-radius: 0;
+  background: transparent;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:last-child {
+  border-bottom: 0;
+}
+
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p > strong:first-child {
+  display: block;
+  margin-bottom: 3px;
+  color: #b42318;
+  font-size: 1.04rem;
+}
+
+@media (max-width: 680px) {
+  .blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
+    padding: 0;
+  }
+  .blog-detail-page .post-content .callout-mistake.mistake-grid-item > p {
+    padding-left: 0;
+  }
+}

@@ -94,6 +94,76 @@ What to do:
 
 **Decide honestly whether to keep looking.** Continuing to recruit with an offer in hand is a strong position, but only if the deadline allows it. Ask for an extension if you need one — it is a normal request and is sometimes granted.
 
+## The midpoint conversation
+
+The single highest-return thing you can do during an internship takes ten minutes and most interns never do it.
+
+Around the halfway mark, ask your manager directly:
+
+> "I would like to convert to a full-time offer at the end of this. What would you need to see from me in the second half for that to be realistic?"
+
+That question does three things at once. It states your intention, which managers cannot act on if they do not know it. It surfaces concerns while there is still time to address them. And it signals the kind of directness that most managers value in someone they are considering hiring.
+
+The answers you get are usually specific and actionable: take more ownership, ask fewer questions you could answer yourself, communicate status without being chased, finish the thing you started rather than starting another.
+
+Compare that with the alternative, which is finding out in the exit interview that there was a concern you could have fixed in week six.
+
+If the answer is vague, ask a more specific version: "Is there anything I am doing that would give you pause?" A manager who genuinely has no concerns will say so, and that is useful information too.
+
+## What managers are actually assessing
+
+Interns often assume they are being judged on technical output. They are being judged on what you would be like as a colleague for three years, and technical output is only one input.
+
+The things that carry disproportionate weight:
+
+**Do you need the same thing explained twice?** Being told once is normal. Being told four times is a pattern, and it is the fastest way to lose a return offer without knowing why.
+
+**Do you say when you are stuck?** Going quiet for three days and then revealing you were blocked on day one is the failure mode that damages trust most.
+
+**Can you take feedback without becoming defensive?** This is watched deliberately, and visibly incorporating a correction is one of the strongest signals available to you.
+
+**Do you finish things?** An intern who ships one complete, modest piece of work is remembered better than one who has three impressive things nearly done.
+
+**Do people enjoy working with you?** Unquantifiable, decisive, and largely a function of being reliable and pleasant rather than brilliant.
+
+## When the offer does not come
+
+Sometimes there is no offer despite a good internship, and the reason is usually structural rather than personal.
+
+**Headcount.** If the team has no graduate seat next year, strong performance does not create one. This is by far the most common reason and it has nothing to do with you.
+
+**Timing.** Budget decisions for the following year are sometimes made after the internship ends.
+
+**Fit with a specific team** rather than with the company. Worth asking whether another team is hiring, because the answer is sometimes yes.
+
+What to do about it:
+
+**Ask directly why.** At the exit conversation, ask whether the decision was about performance or about headcount. Managers usually answer this honestly, and the answer determines whether you should change something or simply keep looking.
+
+**Ask for a reference.** A manager who could not hire you will frequently vouch for you, and a reference from a recognisable employer is worth a great deal in the [autumn cycle](/blog/usa-campus-recruiting-timeline).
+
+**Ask to stay in touch.** Headcount changes. Interns are re-approached more often than people expect.
+
+**Use the experience properly.** Ten weeks of real work is the strongest item on a graduate resume regardless of whether it converted, and it needs to be written up as outcomes rather than duties.
+
+## Deciding whether to take the return offer
+
+The return offer arriving is not the end of the decision. Many students accept immediately out of relief, and some of them should not have.
+
+Questions worth answering before you sign:
+
+**Would you take this job if it were not the easy option?** Relief is a poor reason to commit two years. If the work bored you for ten weeks, it will not become interesting because the offer is convenient.
+
+**Did you see the actual job?** Interns are sometimes given a curated project that is unrepresentative of the day-to-day work. Ask what a full-time person on the team spends their week doing.
+
+**Is the team the same one you would join?** Some programmes convert you into a different function entirely. Ask specifically.
+
+**How long is the deadline, and can it be extended?** Return offers frequently arrive with early deadlines that expire before autumn recruiting concludes. Asking for an extension is normal and often granted — the mechanics are the same as any [new grad negotiation](/blog/usa-offer-negotiation-new-grad).
+
+**What would you be giving up?** If the deadline forces you out of the market before you have interviewed elsewhere, that has a real cost even when the offer is good.
+
+An offer in hand is genuinely valuable, and the risk of over-optimising is real. But accepting on day one because the relief is enormous is a decision made by your nervous system rather than by you.
+
 ## Common Mistakes
 
 - **Treating the internship as a test to pass silently.** Not asking for feedback until the final review means finding out too late to act.
@@ -102,6 +172,68 @@ What to do:
 - **Waiting for the offer before continuing to network.** The people you meet during the internship are a network whether or not you return.
 - **Accepting an exploding deadline without asking for time.** Requesting an extension is normal and is often granted.
 - **Reading a no as a verdict on your ability.** Headcount decisions are made well above your manager's head and frequently have nothing to do with you.
+
+## Making your work visible without self-promoting
+
+Interns often do good work that nobody notices, then wonder why the return offer went elsewhere. The manager deciding your offer may have seen very little of what you actually did.
+
+Visibility is not self-promotion. It is making the work legible to people who are busy.
+
+**Send a short weekly summary.** Three or four lines to your manager: what you finished, what is in progress, what is blocked. This takes five minutes and it means that at the end of the summer your manager has a record rather than an impression.
+
+**Demo what you build.** If your team has a regular meeting, ask to show something once. Ten minutes of a working thing does more than a month of quiet progress.
+
+**Write things down where others can find them.** A short document explaining what you built and how it works outlives you and gets read by people you never met.
+
+**Ask for feedback in a way that produces a record.** "Is this the level of detail you wanted?" after your first deliverable both improves the work and signals that you want to be corrected.
+
+The intern who does all four is remembered as reliable and communicative, which are precisely the traits a manager is trying to predict when deciding whether to hire someone for three years.
+
+## The last two weeks
+
+The end of an internship is frequently mishandled, and it is disproportionately what people remember.
+
+**Finish something.** Do not start a new piece of work in the final fortnight. Close what is open, and leave it in a state someone else can pick up.
+
+**Write a handover.** What you built, where it lives, what is unfinished, what you would do next. This is the single most professional thing an intern can leave behind, and it is rare enough to be memorable.
+
+**Thank people specifically.** Not a group message. A short note to the three or four people who actually helped you, naming what they did.
+
+**Ask the direct question.** Whether an offer is coming, and if not, why. Managers answer this honestly when asked plainly at the end.
+
+**Collect what you will need later.** Your manager's contact details, a LinkedIn connection, and permission to use them as a reference. People change jobs, and reaching someone two years later is much harder without this.
+
+## The deadline is negotiable, and here is how to move it
+
+Return offers routinely arrive in August with a deadline in early September — before autumn recruiting has produced a single competing offer. This is deliberate, it is normal, and it is more movable than most students believe.
+
+**Ask early, not on the deadline.** The week you receive the offer, not the week it expires. Late requests read as indecision; early ones read as planning.
+
+**Ask a person, not the portal.** Your manager or the recruiter who handled your internship, not the automated acceptance link.
+
+**Give a reason that is not "I want to see what else is out there"**, even though that is the reason. Something true and neutral works:
+
+> "Thank you — I'm genuinely glad to have this. My university's recruiting cycle runs through mid-October and I'd committed to a couple of processes before this came through. Would it be possible to have until the 20th? I want to give you a decision I'm certain about rather than a fast one."
+
+**Ask once, accept the answer.** If the answer is no, it is usually a genuine constraint — headcount planning, cohort start dates — rather than pressure.
+
+**If they will not move it, decide on the information you have.**
+
+An offer in hand from an employer who already knows you is worth a great deal, and holding out for a hypothetical better one is a decision people regret more often than the reverse. The [offer negotiation guide](/blog/usa-offer-negotiation-new-grad) covers what else is movable — start date and signing bonus usually are, even at employers where base pay is fixed across the cohort.
+
+**Do not accept and keep interviewing.** Reneging on an accepted offer is more damaging than most students realise: employers talk, universities sometimes intervene, and the industry is smaller than it looks.
+
+## If the offer does not come
+
+Worth planning for while the internship is still running, rather than in September.
+
+**Ask why, once, plainly.** "Is there anything I could have done differently?" asked of a manager you got on with usually produces an honest answer, and it is frequently about headcount rather than performance.
+
+**Get the reference secured before you leave.** Ask directly whether they would be a reference, and get a personal email address rather than a corporate one. People leave, and a corporate address stops working.
+
+**Keep the relationship.** A manager who could not hire you this year may be able to next year, or may move somewhere that can. A short update message six months later is worth sending.
+
+**Start the autumn cycle immediately.** An internship without a return offer is still the strongest credential most graduate applicants have, and it makes the autumn round meaningfully easier than it would otherwise have been.
 
 ## Frequently Asked Questions
 

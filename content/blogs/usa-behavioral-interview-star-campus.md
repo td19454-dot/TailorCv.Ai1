@@ -119,6 +119,82 @@ A real failure, with a real consequence, followed by a specific change, is far s
 
 Match your stories to the employer. Research what they say they value and lead with the story that demonstrates it — [researching the company properly](/blog/how-to-research-company-before-interview) turns a generic answer into a targeted one.
 
+## Where answers actually fail
+
+Almost every weak behavioural answer fails in the same three places, and none of them is the place candidates worry about.
+
+**The Result is missing.** By far the most common. The candidate describes a situation in detail, explains what they did at length, and then stops — leaving the interviewer to guess whether it worked. "And we finished the project" is not a result. What changed, by how much, compared to what.
+
+Weak: *"So we reorganised how we were splitting the work and it went a lot better after that."*
+
+Strong: *"We went from missing two of the first three internal deadlines to hitting every one after that, and we submitted two days early instead of the night before."*
+
+**The Situation eats the answer.** Ninety seconds of background before anything happens. The interviewer needs two sentences of context, not the history of the club. A useful discipline: if you have not said what *you* did within thirty seconds, you are still in the Situation.
+
+**"We" throughout.** The interviewer is scoring you, and cannot score a team. Use "we" for context and "I" for your contribution, and check that at least half your sentences are things you personally did.
+
+The fix for all three is mechanical. Write your six stories out, then mark each sentence as context, contribution or outcome. If contribution and outcome together are less than half, rewrite.
+
+## Where students find material
+
+The recurring objection is having nothing to talk about. Nearly always false — what is actually missing is permission to treat ordinary experience as valid.
+
+**Group projects.** The richest single source, because they contain genuine conflict, deadline pressure, uneven contribution and real decisions. Almost every competency can be answered from one good capstone.
+
+**Part-time and campus work.** Retail, food service, tutoring, library desk, lab assistant. These contain difficult customers, unreasonable pressure, being relied upon, and covering for people who did not turn up. Students omit them as unimpressive; interviewers read them as evidence of reliability under conditions students rarely face otherwise.
+
+**Societies and clubs.** Particularly anything you ran, organised or budgeted. A society treasurer who overspent and fixed it has a better failure story than most candidates produce.
+
+**Sport and performance.** Teams, coaching, sustained training. Long-duration commitment is exactly what "tell me about persistence" is asking for.
+
+**Teaching, tutoring and mentoring.** Explaining something to someone who did not understand it is directly relevant to nearly every graduate job.
+
+**Family responsibility.** Caring for a relative, translating for parents, managing a household alongside study. Entirely legitimate material, used carefully and without oversharing.
+
+**Anything you built or ran.** A project, a small business, a channel, an event. Real decisions, real consequences.
+
+What does not work as material: hypotheticals, things you observed rather than did, and stories from before secondary school. Everything else is fair.
+
+## Practising so it survives contact
+
+The gap between a written story and a delivered one is larger than candidates expect, and it closes with a specific kind of practice.
+
+**Say them aloud, alone, once each.** You will discover that the thing that read cleanly takes four minutes to say and loses its thread in the middle. This is the cheapest possible improvement and most people skip it.
+
+**Record one and watch it.** Unpleasant, and it is where you find out that you say "basically" thirty times, or that your best story has no ending.
+
+**Practise with follow-ups.** Have someone ask "what specifically did they say?" and "what would you do differently?" after each answer. Stories that survive two layers of probing are ready; ones that dissolve are not, and the fix is nearly always to use a truer story rather than a more impressive one.
+
+**Do not memorise word for word.** Memorised answers sound memorised — flat, over-smooth, and impossible to adapt when the question is phrased slightly differently. Learn the beats, not the script.
+
+**Time yourself.** Two minutes is the target. Under one usually means the specifics are missing; over three usually means the Situation ran long.
+
+## Two answers to the same question, compared
+
+The gap between a weak and a strong behavioural answer is easier to see than to describe. Same candidate, same event, same question.
+
+**Question:** "Tell me about a time you had to deal with an unexpected problem."
+
+**Weak:**
+
+> "During my internship I was working on a data pipeline and partway through we discovered there was an issue with the data quality. It was a challenge because it affected the whole project timeline. I worked closely with my team and my manager to come up with a solution, and we were able to resolve it and deliver the project. It taught me the importance of being adaptable and communicating effectively under pressure."
+
+Read it again and notice how little is actually said. What issue? What did *you* do? What was the solution? Delivered on time or late? The closing sentence is two abstractions doing the work that evidence should do.
+
+**Strong:**
+
+> "Six weeks into my internship I found that about a fifth of the records in our main table had timestamps in two different timezones, because two upstream services had been writing to it since a migration eighteen months earlier. Nobody had noticed because the reports aggregated by month.
+>
+> I did three things. I wrote a query to size the problem so we knew whether it mattered — it did, about 40,000 rows. I checked with the analytics team whether any published number depended on it, which two did. And I flagged it to my manager the same afternoon rather than trying to fix it quietly first, which was the part I nearly got wrong.
+>
+> We backfilled with a normalisation script I wrote and added a check at ingestion so it could not recur. The two affected reports were corrected before quarter end.
+>
+> What I would do differently is check the assumption earlier. I had spent two weeks building on that table without ever looking at the raw values, because I assumed the schema meant what it said."
+
+Roughly two minutes. Specific numbers, a clear personal contribution, an outcome, a named near-mistake, and a genuine reflection. Every sentence is something the interviewer can write down.
+
+Notice what the strong version does *not* do: claim sole credit, describe the candidate's qualities, or end on a platitude. The evidence carries it.
+
 ## Common Mistakes
 
 - **No result.** The most common failure. The story ends without saying what changed.
@@ -128,6 +204,64 @@ Match your stories to the employer. Research what they say they value and lead w
 - **One story reused verbatim across questions.** Interviewers compare notes and notice.
 - **Dismissing student experience.** A part-time job contains more usable material than most students think.
 - **Not preparing follow-ups.** The probe is where prepared answers usually fall apart.
+
+## The questions, and what each is really testing
+
+Preparing for these ten covers the great majority of US campus behavioural interviews.
+
+| Question | What it is actually assessing |
+|---|---|
+| Tell me about yourself | Whether you can be concise and relevant. Ninety seconds, ending at why you are here. |
+| Why this company? | Whether you researched. Specificity is the whole answer. |
+| Tell me about a time you worked in a team | Collaboration, and whether you can describe your own part honestly |
+| Tell me about a conflict | Whether you can present the other person's view as reasonable |
+| Tell me about a failure | Self-awareness. Disguised strengths score zero. |
+| A time you led something | Initiative, not job title. Leading without authority counts. |
+| A time you had to learn quickly | The literal daily requirement of a graduate job |
+| A time you handled pressure or competing deadlines | Prioritisation, and whether you have a method |
+| Something you are proud of | What you value, and whether you can say why |
+| Do you have questions for us? | Interest. Having none is a real negative. |
+
+Two notes. **The failure question is the highest-variance one** — a genuine answer with a real consequence and a changed behaviour afterwards separates candidates more than any other single response, and the disguised-strength version ("I care too much") is transparent to everyone who has run interviews.
+
+**"Tell me about yourself" is not an invitation to recite your resume.**
+
+The interviewer has it. What they want is a ninety-second narrative that ends at why you are sitting in this particular interview.
+
+## Six stories, mapped
+
+Building one story per question produces ten shallow stories. Building six good ones, each usable several ways, produces better answers with less work.
+
+| Story | Answers |
+|---|---|
+| A group project that went wrong | Teamwork, conflict, pressure, failure, learning |
+| Something you built or ran | Initiative, leadership, pride, learning quickly |
+| A part-time or campus job situation | Pressure, difficult people, reliability, customer focus |
+| A deadline or resource crunch | Prioritisation, pressure, teamwork |
+| A time you got difficult feedback | Self-awareness, coachability, growth |
+| Something you stuck with for a long time | Persistence, motivation, values |
+
+For each, write down three details you could produce under probing — a name, a number, a date. That row is the one candidates skip and the one that decides whether the story holds up when the interviewer asks a second question.
+
+The same six, with adjusted emphasis, also serve [Canadian](/blog/canada-new-grad-interview-preparation), [UK](/blog/uk-competency-questions-guide) and [Singapore](/blog/singapore-interview-etiquette-guide) interviews. Building them once is genuinely reusable work.
+
+## Handling the questions you dread
+
+Three that reliably unsettle candidates, and what actually works.
+
+**"What is your greatest weakness?"**
+
+The instinct is to name a strength in disguise, and every interviewer has heard it. What works is a real, bounded weakness plus what you do about it: *"I am slow to ask for help — I will spend three hours on something rather than ten minutes asking. On my last project I started setting a timer, and if I am stuck past thirty minutes I ask. It has been a real improvement and I still have to enforce it deliberately."* Real, specific, and shows a system rather than an apology.
+
+**"Why should we hire you?"**
+
+Not an invitation to list adjectives. Answer with fit: the two or three things the role clearly needs, and your evidence for each. *"The posting emphasises data pipelines and working with non-technical stakeholders. I have built a pipeline that ran in production for four months, and I spent a year tutoring, which is mostly explaining technical things to people who do not want a technical answer."*
+
+**"Where do you see yourself in five years?"**
+
+Nobody expects accuracy, and "in your company" is a non-answer. What reads well is a direction with a reason and an acknowledgement of uncertainty: *"I want to be deep enough in one area that people come to me with questions about it. I do not yet know whether that area is infrastructure or data, which is honestly part of why this role appeals — it touches both."*
+
+The pattern across all three: answer the actual question, give evidence, and do not perform certainty you do not have. Interviewers are unusually good at detecting the difference between a considered answer and a rehearsed deflection.
 
 ## Frequently Asked Questions
 
