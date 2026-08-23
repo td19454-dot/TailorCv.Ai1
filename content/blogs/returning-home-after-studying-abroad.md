@@ -40,7 +40,7 @@ Worth being precise, because the answer varies enormously by employer and knowin
 
 **Where the institution is unknown.** A good university with no local recognition provides no shorthand, which pushes all the weight onto your evidence.
 
-**At employers who suspect you will leave again.** Some read a foreign degree as a sign that you are using them as a stopgap. The [return question](/blog/returning-home-after-studying-abroad) is where you address this, and addressing it plainly works.
+**At employers who suspect you will leave again.** Some read a foreign degree as a sign that you are using them as a stopgap. The return question is where you address this, and addressing it plainly works.
 
 **The practical consequence:** sort your target employers into these two groups before you apply. For the first group, the degree is worth foregrounding. For the second, lead entirely with evidence and treat the degree as context — and where regulated qualification is required, start that process immediately rather than applying for roles you are not yet eligible to hold.
 

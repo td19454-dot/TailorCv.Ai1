@@ -93,7 +93,7 @@ The question that decides whether this is viable for you, and the answer is more
 
 ## Applying well
 
-**Apply to the internship programmes early.** Autumn and early winter for the following summer, which catches students who expect a spring deadline.
+**Apply to the [internship](/blog/japan-internships-for-international-students) programmes early.** Autumn and early winter for the following summer, which catches students who expect a spring deadline.
 
 **Write for a scientific reader.** These [applications](/blog/usa-handshake-linkedin-job-search) frequently want a statement of research interest, and it should describe what you have actually done and what you want to work on, specifically. A generic enthusiasm statement performs badly with reviewers who are working scientists.
 
@@ -202,7 +202,7 @@ Useful framing, because the labs sit between the two and people evaluate them ag
 
 **Against an industry technical role.** Lower pay, particularly in software and data. Much longer project horizons. Better job security and more predictable hours. Far more freedom to publish. Less product pressure and less commercial urgency, which is either relief or frustration depending on your temperament.
 
-**Against an academic postdoc.** Generally better paid and considerably more stable, with real budgets and equipment. Less freedom to set your own research direction, since lab work is programme-driven and funded against goals. Fewer teaching obligations. Staff positions are permanent in a way academic soft-money posts are not, which matters a great deal to anyone who has watched a postdoc chain.
+**Against an academic postdoc.** Generally better paid and considerably more stable, with real budgets and equipment. Less freedom to set your own research direction, since lab work is programme-driven and funded against goals. Fewer [teaching](/blog/japan-jet-programme-and-teaching-jobs) obligations. Staff positions are permanent in a way academic soft-money posts are not, which matters a great deal to anyone who has watched a postdoc chain.
 
 **Against a PhD, for a bachelor's graduate.** A postbaccalaureate appointment is a much cheaper way to find out whether you want a research career, and it strengthens a PhD application substantially if you decide you do.
 

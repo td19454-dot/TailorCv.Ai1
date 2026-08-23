@@ -155,7 +155,7 @@ The same student, two approaches, to make the timing argument concrete.
 
 **The difference is not ability.** It is roughly six hours of work done in June and July, before either student set foot on campus.
 
-That is the entire argument of this page compressed into one comparison — and it is why the [checklist for the summer before](/blog/usa-community-college-transfer-career-strategy) matters more than anything you do after arriving.
+That is the entire argument of this page compressed into one comparison — and it is why the checklist for the summer before matters more than anything you do after arriving.
 
 ## Common Mistakes
 

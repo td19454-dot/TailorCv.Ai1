@@ -151,7 +151,7 @@ An angle nobody considers at graduate level and which shapes your options at twe
 
 **Leaving a startup.** Highly variable, and dependent almost entirely on whether the thing you built worked and whether you can describe your part in it.
 
-**The general point:** the employer type shapes what kind of story you have at the two-year mark, and both types can produce a good one or a bad one. What produces a good one is the same in every case — owning something identifiable, and being able to say what changed because you did it. That is a property of the specific role, not of the category, which is why the [seven questions](/blog/singapore-mnc-vs-local-employers) about the actual job matter more than the choice of employer type.
+**The general point:** the employer type shapes what kind of story you have at the two-year mark, and both types can produce a good one or a bad one. What produces a good one is the same in every case — owning something identifiable, and being able to say what changed because you did it. That is a property of the specific role, not of the category, which is why the seven questions about the actual job matter more than the choice of employer type.
 
 ## Common Mistakes
 

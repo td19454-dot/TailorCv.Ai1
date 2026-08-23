@@ -44,7 +44,7 @@ For the science, education, business and athletics category, a petition generall
 
 Meeting three is the threshold to be considered, and it is not the end of the analysis — an adjudicator then assesses the evidence as a whole to decide whether it demonstrates the level of acclaim the category requires.
 
-**The practical reading of that list**, for someone finishing a degree: publications, peer review, and original contributions are the three that a [research-active graduate](/blog/usa-national-labs-and-research-jobs) is most likely to reach. Awards and press are less common. Critical capacity and high salary generally come later.
+**The practical reading of that list**, for someone finishing a degree: publications, peer review, and original contributions are the three that a [research-active graduate](/blog/usa-national-labs-and-research-jobs) is most likely to reach. Awards and press are less common. Critical capacity and high [salary](/blog/japan-salary-expectations-new-grad) generally come later.
 
 ## Who it is genuinely realistic for
 
