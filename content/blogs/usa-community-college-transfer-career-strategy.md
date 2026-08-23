@@ -113,6 +113,50 @@ Transfer students have two alumni networks, two careers offices and two sets of 
 
 **And tell both careers offices you are a transfer.** Some run specific support, some know which employers actively recruit transfers, and none of it is advertised.
 
+## What recruiters actually see
+
+Worth demystifying, because transfer students routinely imagine a screening process that is more elaborate and more judgemental than what actually happens.
+
+**The applicant tracking system sees fields, not a story.** Graduation date, degree, major, GPA if included, and the text of your experience. It does not see "spent two years at a community college first" as a category — it sees your degree institution and your dates.
+
+**A human, if one reads it, sees the same thing you would.** A clean, well-organised resume with real evidence. Recruiters who have hired thousands of students are not scanning for institutional pedigree at this stage; they are scanning for whether the person can do the job, which is exactly what your projects and work history demonstrate.
+
+**Where it could come up is in conversation**, and even then it is rare and never adversarial when it does. "Tell me about your path" is a genuine, curious question, not a challenge, and a calm one-sentence answer closes it completely.
+
+**The one place it can matter mechanically** is a small number of programmes with an explicit continuous-enrolment requirement, which is unusual and worth checking for your specific target rather than assuming it applies broadly.
+
+**The overall picture:** the imagined obstacle is much larger than the real one, and the actual constraint — the compressed timeline — is entirely solvable by starting early, which is the one thing within full control from day one.
+
+## The tracker adjustment for transfer students
+
+The [general application tracker](/blog/usa-handshake-linkedin-job-search) works for everyone, and transfer students should add two columns most guides do not mention.
+
+**Pipeline source.** Whether an application came through your new institution's careers portal, an employer's general site, your community college's remaining connections, or a personal referral. This tells you after a few weeks which channel is actually converting for you specifically, which matters more when your channels are less established than a continuing student's.
+
+**Days since transfer.** A simple counter helps you see whether your application rate is keeping pace with the compressed calendar, since it is easy to lose a sense of urgency once term begins and the workload of a new campus takes over.
+
+**Review it weekly, not daily.** The same discipline that prevents any student from over-reading short-term noise applies here, and it matters more for a transfer student because the season is shorter and every week carries more relative weight.
+
+## One thing to do first
+
+If the compressed timeline feels overwhelming, the highest-return action is a single email, sent the day you accept your transfer place.
+
+**Write to the careers office at your incoming institution.** Say you are transferring in, name your programme and graduation year, and ask three things: which employers recruit from this programme, when the main deadlines fall, and whether you can access the careers portal before your official start date.
+
+That one message typically produces a target list, a calendar, and portal access weeks before you arrive — which converts your first four weeks on campus from orientation into applications. Almost no transfer student sends it, and it is the cheapest possible way to recover most of the timing disadvantage this whole page describes.
+
+## Two paths, compared
+
+The same student, two approaches, to make the timing argument concrete.
+
+**Student A** transfers in August as a junior. They spend September settling in, find the careers office in late October, discover the autumn deadlines have largely passed, apply to a handful of things in November, hear nothing, and conclude in December that they missed the year. They spend spring semester focused on coursework and start looking again the following autumn as a senior, competing for full-time roles without an internship behind them.
+
+**Student B** transfers the same August. In June they emailed the careers office, got the employer list and the deadline calendar, and applied to eight internships citing their incoming institution. In July they joined the professional society and messaged five students in the programme. Week one of term they attended the careers fair with a finished resume. By November they had two interviews; by February, a summer internship. That internship converts to a graduate offer the following autumn.
+
+**The difference is not ability.** It is roughly six hours of work done in June and July, before either student set foot on campus.
+
+That is the entire argument of this page compressed into one comparison — and it is why the [checklist for the summer before](/blog/usa-community-college-transfer-career-strategy) matters more than anything you do after arriving.
+
 ## Common Mistakes
 
 - **Waiting until you arrive to start.** The decisive weeks begin immediately and the preparation belongs to the preceding summer.
@@ -140,6 +184,61 @@ Worth knowing, because the framing of catching up obscures the fact that several
 
 **The practical instruction:** build a target list weighted toward local, mid-sized and federal employers alongside the recognisable names. The ratio of applicants to seats is dramatically better, and the [mid-market argument](/blog/usa-startup-vs-big-tech-new-grad) applies with particular force to anyone on a compressed timeline.
 
+## A checklist for the summer before you transfer
+
+Twelve tasks, none longer than an evening, done before your new term begins.
+
+- **Finalise the resume**, ordered new institution first, community college beneath it, no explanation of the transfer
+- **Confirm your work history is described with outcomes**, not just duties
+- **Run an [ATS check](/ats-analysis)** to confirm it parses cleanly
+- **Email the new careers office** asking which employers recruit from your programme and when deadlines fall
+- **Check whether you can access the careers portal before your official start date**
+- **Join the professional society for your field**, even before you have a student ID
+- **Build a list of thirty target employers**, mixing recognisable names with local and mid-sized ones
+- **Apply to any internship whose deadline falls before term starts**, citing your incoming institution
+- **Message five current students in your new programme** and ask what recruiting looked like for them
+- **Message two former community college classmates** to compare notes and keep the relationship live
+- **Identify one professor at the new institution whose research interests you**, ready to approach in week two
+- **Set a weekly recruiting time block** for the autumn before the term itself creates its own competing schedule
+
+Do this and the first four weeks of term — the ones that decide the year — arrive with a plan already running rather than a blank page.
+
+### Will a gap between the associate and bachelor's degree hurt me?
+
+No, provided you can account for it in one sentence — working, saving, caring for family, or simply the ordinary timeline of a part-time transfer path. A recruiter reading a resume with continuous relevant activity across the gap does not treat it as a problem.
+
+### Should I list my associate degree's GPA?
+
+Follow the [same convention as any GPA](/blog/usa-gpa-requirements-employers) — include it if it is strong, omit it if it is not, and let your evidence carry the weight either way.
+
+### Is it worth transferring to a less prestigious four-year school with a stronger internship pipeline?
+
+Frequently yes. The [target-school effect](/blog/usa-non-target-school-strategy) is about access to channels, not about the name on the degree, and a programme with genuine employer relationships in your field usually beats a more recognisable name with none.
+### What if I am transferring in my final year rather than as a junior?
+
+The timeline compresses further, and the same principles apply with more urgency. Start the summer before, contact the careers office immediately, and weight your effort toward direct applications and outreach over campus channels, since you will have almost no time inside the traditional recruiting calendar at the new institution.
+
+### Do employers ever prefer transfer students?
+
+Some genuinely do, for the same reason [community college teaching experience reads well in healthcare hiring](/blog/usa-nursing-and-healthcare-new-grad-jobs) — a demonstrated path through cost or circumstance signals persistence, and interviewers who ask about it are usually looking for exactly that story rather than a weakness to probe.
+
+### Should I mention financial or family reasons for starting at community college?
+
+Only if it comes up naturally and briefly. It is a completely normal and increasingly common path, and treating it as something to justify at length gives it more weight in the conversation than the interviewer was assigning to it.
+### How do I compete with students who had two internships already?
+
+By having something they do not: real work history, a demonstrated ability to manage competing demands, and usually a clearer reason for being there. Lead with evidence of what you built and what you were relied on for, rather than trying to match internship count. The [evidence-over-pedigree argument](/blog/usa-non-target-school-strategy) applies directly.
+
+### Is it worth doing a fifth year to get another recruiting cycle?
+
+Occasionally, if it also gets you a meaningful credential or a co-op placement. Doing it purely to access one more autumn cycle is usually an expensive way to buy something that [spring recruiting](/blog/usa-second-round-spring-recruiting) and a strong first job would provide anyway.
+### Should I retake courses to raise my GPA before applying?
+
+Almost never worth it purely for applications. The time is better spent building a project or securing relevant work, both of which change what your application can claim rather than adjusting a number most employers [do not screen on anyway](/blog/usa-gpa-requirements-employers).
+
+### Do I put my community college on LinkedIn?
+
+Yes, listed as education alongside your degree institution. It is a completed part of your record and omitting it creates an unexplained gap that is more noticeable than the entry itself.
 ## Frequently Asked Questions
 
 ### Do employers care that I started at a community college?

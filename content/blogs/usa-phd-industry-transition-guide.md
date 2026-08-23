@@ -249,6 +249,13 @@ Two questions every transitioning researcher has and rarely asks out loud.
 
 **And weigh the whole package.** Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
 
+### Do I put "Dr" or "PhD" on my resume?
+
+List the degree in the education section. Using the title in your name line is unusual outside academia, medicine and some research contexts, and it can read as a signal you have not adjusted to the new setting. Let the qualification appear where it belongs.
+
+### Should I apply to roles asking for fewer years of experience than my PhD took?
+
+Yes. Entry requirements are guidelines, and many employers map a doctorate to a mid-level position anyway. Applying is free and the levelling conversation happens later.
 ## Frequently Asked Questions
 
 ### Will I have to start at entry level?
