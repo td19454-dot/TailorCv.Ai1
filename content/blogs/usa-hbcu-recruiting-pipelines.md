@@ -133,7 +133,7 @@ Worth saying plainly, because these programmes are presented as unambiguously go
 
 **A pipeline at a company doing work you find dull** is a fast route into a job you will want to leave in eighteen months. The access is genuine; it does not change whether you would enjoy the role.
 
-**A programme with a service commitment** — some scholarship arrangements carry an expectation of employment for a defined period — is a real obligation worth reading fully before signing, exactly as with any [bonded arrangement](/blog/singapore-scholarship-bond-careers-guide).
+**A programme with a service commitment** — some scholarship arrangements carry an expectation of employment for a defined period — is a real obligation worth reading fully before signing, exactly as with any [bonded arrangement](/blog/global-rotational-graduate-programmes).
 
 **A location you would not choose** is a legitimate reason to decline. Two years somewhere you are unhappy is a real cost, and pipelines rarely offer much flexibility on office.
 

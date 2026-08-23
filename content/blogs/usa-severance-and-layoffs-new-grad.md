@@ -47,7 +47,7 @@ showcase: portfolio
 
 ## What is actually in a severance package
 
-**Severance pay**, commonly calculated by tenure, which for a recent graduate is usually modest. It may be a lump sum or continued salary for a period.
+**Severance pay**, commonly calculated by tenure, which for a recent graduate is usually modest. It may be a lump sum or continued [salary](/blog/japan-salary-expectations-new-grad) for a period.
 
 **Health coverage.** Understand exactly when your employer coverage ends and what continuation options exist. There is usually a mechanism to continue coverage at your own cost, and there are alternatives worth comparing, since the continuation option is frequently expensive.
 
@@ -69,13 +69,13 @@ This section outranks everything above if it applies to you.
 
 **On post-graduation training**, unemployment days are limited and counted. Know exactly how many you have and from when, in writing.
 
-**On an employer-sponsored work visa**, there is generally a limited discretionary period to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week.
+**On an employer-sponsored [work visa](/blog/japan-work-visa-for-graduates)**, there is generally a limited discretionary period to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week.
 
 **Ask your employer about the termination date specifically.** Sometimes an employer will extend a formal termination date, or count severance as continued employment, in a way that materially changes your position. This is worth asking about explicitly.
 
 **Prioritise employers who can move quickly** and who have done this before. The [eligibility questions](/blog/usa-stem-opt-employer-requirements) that matter in any search matter more when you have weeks rather than months.
 
-**Consider all the routes.** [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) can file at any time without a lottery, which is a genuine advantage under time pressure.
+**Consider all the routes.** [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) can file at any time without a [lottery](/blog/usa-h1b-lottery-new-grads), which is a genuine advantage under time pressure.
 
 ## Restarting the search
 
@@ -87,7 +87,7 @@ This section outranks everything above if it applies to you.
 
 **Go where hiring is continuous.** [Mid-sized employers and companies that hire on need](/blog/usa-startup-vs-big-tech-new-grad) rather than on a calendar, and the [spring wave](/blog/usa-second-round-spring-recruiting) if the timing lands there.
 
-**Update the resume with what you actually did.** Even a short tenure produced something. Describe outcomes, and confirm the document [still parses](/ats-analysis).
+**Update the [resume](/ats-analysis) with what you actually did.** Even a short tenure produced something. Describe outcomes, and confirm the document [still parses](/ats-analysis).
 
 **Explaining it in interviews:** one sentence, factual, no edge.
 

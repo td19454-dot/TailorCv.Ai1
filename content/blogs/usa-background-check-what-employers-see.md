@@ -49,7 +49,7 @@ This is the part new graduates misunderstand, and it is the single most conseque
 
 **Each of these feels harmless and none of them are.** The [GPA point](/blog/usa-gpa-requirements-employers) is the classic example — 3.48 stated as 3.5 is a discrepancy on a report, and offers have been withdrawn over exactly that.
 
-**The rule is simple:** everything on your resume should survive someone else describing the same facts independently. State dates as your records state them, degrees as your transcript states them, and titles as your employer's HR system states them.
+**The rule is simple:** everything on your [resume](/ats-analysis) should survive someone else describing the same facts independently. State dates as your records state them, degrees as your transcript states them, and titles as your employer's HR system states them.
 
 ## Contingent offers, and what they mean for you
 

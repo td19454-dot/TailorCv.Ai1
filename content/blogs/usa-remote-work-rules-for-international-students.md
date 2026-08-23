@@ -25,7 +25,7 @@ showcase: portfolio
 
 This sounds obvious and it is routinely misunderstood, usually in the direction of assuming remote work is somehow informal or outside the system. It is not. A remote role for a US employer, performed while you are in the US, is employment in every sense that matters, and it requires exactly the same authorization an in-person role would.
 
-**The corollary catches people out too.** Unpaid remote work, freelance projects, contract work, and "just helping out" a company are all still work. The absence of a formal office, and sometimes the absence of payment, does not remove the requirement.
+**The corollary catches people out too.** Unpaid remote work, freelance [projects](/blog/fresher-resume-projects-that-get-interviews), contract work, and "just helping out" a company are all still work. The absence of a formal office, and sometimes the absence of payment, does not remove the requirement.
 
 ## Remote work inside the US
 

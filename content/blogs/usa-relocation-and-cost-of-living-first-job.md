@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## Why the headline number misleads
 
-Two graduates, same field, same experience. One is offered a higher salary in an expensive city; the other a lower salary somewhere cheaper. Comparing the two numbers directly is the most common financial mistake new graduates make, because the number that matters is what remains after housing and taxes, not what arrives before them.
+Two graduates, same field, same experience. One is offered a higher [salary](/blog/japan-salary-expectations-new-grad) in an expensive city; the other a lower salary somewhere cheaper. Comparing the two numbers directly is the most common financial mistake new graduates make, because the number that matters is what remains after housing and taxes, not what arrives before them.
 
 **Housing is the dominant variable.** In the most expensive metropolitan areas, rent for a modest one-bedroom or a shared arrangement can consume a third to half of take-home pay. In many mid-sized cities, the same quality of housing costs a fraction of that. This single line item frequently outweighs the entire salary difference between two offers.
 
