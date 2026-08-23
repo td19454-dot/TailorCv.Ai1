@@ -26,7 +26,9 @@ Registration runs in **March**. Employers submit an electronic registration for 
 
 Two things follow immediately:
 
-**The gap between registration and start is roughly seven months.** You register in March and, if selected, start in October. Your work authorisation has to cover that gap, which is where OPT does the heavy lifting.
+**The gap between registration and start is roughly seven months.**
+
+You register in March and, if selected, start in October. Your work authorisation has to cover that gap, which is where OPT does the heavy lifting.
 
 **Selection is random.** Not by GPA, not by salary, not by how much the employer wants you. Within a pool, everyone has the same odds. This is worth internalising because a lot of anxiety goes into trying to "improve your chances" in ways that do not exist.
 
@@ -73,6 +75,48 @@ There is also a concurrent-employment route: someone holding a cap-exempt H-1B c
 
 For a graduate facing a second failed lottery, cap-exempt employers are frequently the difference between staying and leaving. They are worth researching *before* you are desperate.
 
+## What happens after you are selected
+
+Selection is not the visa. It is permission for your employer to file a petition, and the process afterwards has its own failure modes worth understanding.
+
+**The petition.** Your employer's lawyers prepare it — the role, the salary, why it qualifies as a specialty occupation, your qualifications. This is real work and real legal cost, borne by the employer.
+
+**The prevailing wage determination.** The salary must meet or exceed the official wage level for that occupation in that location. This occasionally forces a salary adjustment, and it is one reason employers sometimes decline to file for lower-paid roles.
+
+**Requests for evidence.** The agency may come back asking for more, commonly on whether the role genuinely requires a degree in your specific field. A well-prepared petition anticipates this; a rushed one invites it. Responding takes time and legal fees, and it is a normal part of the process rather than a sign of trouble.
+
+**The start date.** Approved petitions generally take effect on 1 October. Your existing authorisation has to cover the gap between selection in March and that date — which for many graduates means a specific provision that extends work authorisation for those with pending or approved petitions. Confirm the current rules rather than assuming continuity.
+
+The practical implication for you: an employer who has done this before moves faster and makes fewer mistakes. Asking "have you filed H-1B petitions recently, and who handles them?" tells you more than asking whether they sponsor.
+
+## Other routes worth knowing about
+
+The lottery dominates the conversation, but it is not the only category, and some graduates qualify for something better without realising.
+
+**Country-specific categories.** Certain nationalities have dedicated routes with separate, often undersubscribed quotas — an arrangement that exists for a handful of countries under trade agreements. If you hold one of those nationalities, the practical difference is enormous: no lottery, and often a faster process. It is worth checking whether your citizenship opens a category before assuming the general cap applies to you.
+
+**Intracompany transfer.** If you work for a multinational abroad for a qualifying period, transferring to a US office is a separate route with no annual cap. This is why a graduate job at a multinational's overseas office is a genuine strategy rather than a consolation prize.
+
+**Extraordinary ability categories.** A high bar, but not as unreachable as the name suggests for people with genuine publications, patents, awards or press. Rarely relevant straight out of an undergraduate degree; occasionally relevant for research-heavy graduates.
+
+**Cap-exempt employers**, covered above, which remain the most overlooked option.
+
+You are not expected to know which applies to you. You are expected to ask an immigration lawyer once rather than assuming the lottery is the only door — a single consultation is cheap relative to a year of your life.
+
+## Planning around March
+
+Because registration is annual, your calendar has one fixed point and everything else arranges around it.
+
+**Autumn before.** Be employed, or deep in a process, with an employer who will register you. This is why the [recruiting timeline](/blog/usa-campus-recruiting-timeline) matters so much for international students: an offer accepted in April misses that March entirely.
+
+**January and February.** Confirm with your employer that they intend to register you. Do not assume. Ask explicitly, in writing, and ask who is handling it.
+
+**March.** Registration. Nothing for you to do but confirm your details are correct.
+
+**Late March.** Results. If selected, the petition process begins. If not, you have eleven months to change your position before the next window — which is enough time to move to a cap-exempt employer, or to a company more willing to file.
+
+**The rest of the year.** If you were not selected and your authorisation is finite, this is when to explore the alternatives rather than waiting and hoping.
+
 ## What this means for your job search
 
 **Prioritise employers who have done this before.** A company with an established immigration process is dramatically easier than one where you are the first case. Ask directly whether they have sponsored H-1B previously.
@@ -95,6 +139,66 @@ This is worth planning before March rather than after.
 
 None of these are consolation prizes. They are ordinary routes that a large number of people take.
 
+## Choosing an employer with the lottery in mind
+
+If you intend to stay, the sponsorship question should influence which offers you pursue, not as the only factor but as a real one alongside salary and team.
+
+Questions worth asking before you accept:
+
+**"Have you filed H-1B petitions in the last two years, and roughly how many?"**
+
+A company that files regularly has counsel, process and precedent. A company that has never filed is being asked to build all three for you.
+
+**"Who handles immigration, in-house or outside counsel?"**
+
+Either is fine. Neither, at a company that says it sponsors, is a warning.
+
+**"Would you register me in the first March after I join?"**
+
+Some employers wait a year. That silently costs you an attempt, which for a graduate on standard OPT may be the only one you get.
+
+**"Do you cover the legal fees?"**
+
+Most reputable employers do. Being asked to pay is a signal about how the company treats the process.
+
+**"Is the role classified in a way that supports the petition?"**
+
+A job title that does not obviously require a degree in your field invites a request for evidence. Worth raising gently before the offer is finalised.
+
+None of these are rude questions. They are the questions an employer with a functioning process expects, and the answers tell you as much about the company as about the paperwork.
+
+## If you are not selected
+
+Being unselected is the usual outcome rather than the exceptional one, and having a plan before March removes most of the panic.
+
+**Check your remaining runway first.** How many months of authorisation are left, and does that reach another March? If it does, you have a second attempt and the immediate task is simply to keep working.
+
+**Move toward a cap-exempt employer** if it does not. Universities, affiliated non-profits and research organisations file year-round with no lottery. Pay is often lower and the certainty is often worth it.
+
+**Ask about an overseas placement.** Multinationals sometimes move graduates to another office, which can later support an intracompany transfer. That turns a rejection into a two-year detour rather than an ending.
+
+**Consider another market seriously.** Canada, the UK and Singapore all offer graduate routes that do not depend on a lottery, and work experience in any of them is portable. The [four-country comparison](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) sets out what each actually offers.
+
+**Do not make the decision at day 85.** Every one of these options is easier to arrange with three months of runway than with three weeks.
+
+## The employer's side of the decision
+
+Understanding what sponsorship costs an employer explains most of the behaviour you will encounter, including refusals that feel arbitrary.
+
+Filing a petition involves legal fees, government fees, a prevailing wage determination, and staff time from HR and often from the hiring manager. The employer carries all of it, and carries it again for renewals and for a green card process later if you stay.
+
+Against that, they are hiring a graduate whose productivity in year one is limited by definition. The arithmetic is easier for a senior specialist than for an entry-level hire, which is why sponsorship is more common at higher levels.
+
+Three things follow that are useful to know:
+
+**Scarcity changes the calculation.** Where a company genuinely struggles to hire a skill, the cost of sponsorship is small against the cost of an unfilled role. This is why technical and specialist positions sponsor more readily than general graduate programmes.
+
+**Precedent lowers the cost.** The tenth petition is far cheaper in effort than the first. An employer who files routinely has templates, counsel and a process; one who has never filed is being asked to build all of that for a single hire.
+
+**Timing matters to them too.** An employer weighing a March registration is committing before they have seen you work. An intern who converts is a known quantity, which is one more reason the [internship route](/blog/usa-internship-return-offer-conversion) is the strongest path for international students.
+
+None of this means you should be apologetic. It means you should be able to hold the conversation from their side of the table, which is what separates a candidate who seems like a risk from one who seems like a professional.
+
 ## Common Mistakes
 
 - **Assuming a strong profile improves lottery odds.** It does not. Selection is random within the pool.
@@ -103,6 +207,34 @@ None of these are consolation prizes. They are ordinary routes that a large numb
 - **Waiting for an employer to raise sponsorship.** By the time it surfaces at offer stage, you have already spent weeks on a process that may not be viable.
 - **Choosing an offer without asking about their sponsorship history.** "Do you sponsor?" and "have you actually done it, and how recently?" are different questions.
 - **Treating a failed lottery as the end.** It is a common outcome with several ordinary routes out of it.
+
+## What the lottery does to your decision-making
+
+The randomness has a psychological cost that is worth naming, because it distorts choices in predictable ways.
+
+**It encourages over-optimising the controllable.** Students spend enormous energy on things that do not affect selection odds, because the thing that does affect them cannot be influenced. Perfecting a resume is useful for getting hired; it does nothing for the draw.
+
+**It encourages fatalism.** The opposite error. Because the lottery is random, some people conclude the whole enterprise is random, and stop doing the work that genuinely compounds: the STEM extension, the employer choice, the cap-exempt option, the second and third attempts.
+
+The accurate framing is that you control the number of draws you enter and the quality of the petition once selected, and you control neither the draw itself nor the odds within it. That is a smaller surface than people want and larger than they fear.
+
+Practically: make the decisions that add attempts, then stop thinking about March until March.
+
+## Green cards, briefly, because it changes the timeline
+
+Most graduates think about the H-1B as the destination. For anyone intending to stay long term it is a waypoint, and the next step affects decisions you make now.
+
+The H-1B is a temporary status with a maximum duration. Permanent residence is a separate, much longer process that the employer usually initiates, and which can take years depending on your country of birth. Applicants from countries with high demand face substantially longer waits than others for the same category.
+
+Two implications for a graduate:
+
+**Ask whether the employer sponsors permanent residence, not just H-1B.**
+
+Some sponsor the temporary status and decline the permanent process, which leaves you renewing indefinitely and unable to change employers easily. "Do you support green card applications, and at what point in someone's tenure?" is a fair question at offer stage.
+
+**Your country of birth matters more than your citizenship.** Backlogs are allocated by country of birth, and for some applicants the wait is long enough to make the whole calculation different. This is worth understanding early rather than discovering at year four.
+
+None of this should stop you taking a good job. It should inform whether you treat the US as a five-year plan or a twenty-year one, and that changes which offers are worth taking.
 
 ## Frequently Asked Questions
 

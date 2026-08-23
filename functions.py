@@ -2302,6 +2302,327 @@ def bool_score(value):
     return str(value).lower() == "true"
 
 
+# ---------------------------------------------------------------------------
+# Fused-word repair
+#
+# pdfplumber decides where one word ends and the next begins from the gap
+# between glyphs. Its default x_tolerance is 3 *points*, an absolute figure, so
+# on a resume set in a tight 9-10pt face the inter-word gap falls under the
+# threshold and the two words come out welded: "progresstracking",
+# "maintaininglearnerrecords", "Supportedschoolactivities".
+#
+# That is not a cosmetic problem. A welded token:
+#   1. can never match a JD keyword ("progress tracking"), so the ATS match
+#      rate is scored against text the candidate did not actually write; and
+#   2. is reported to the user as a spelling mistake, which is the bug this
+#      block exists to kill. The prompt already tells the model to ignore
+#      extraction artifacts (see SPELLING RULES) and the model ignores that
+#      instruction often enough that a prompt is not a fix.
+#
+# So the split is done here, deterministically, where it cannot be argued with.
+# ---------------------------------------------------------------------------
+
+# Vocabulary used to decide whether a long token is really several words. It is
+# deliberately a *curated* list rather than a full dictionary: every entry here
+# makes a split more likely, and a wrong split corrupts the resume text. Common
+# English plus the vocabulary resumes actually use covers the observed cases
+# without risking rare-word false positives.
+_SPLIT_VOCAB = frozenset("""
+a an and are as at be been but by for from had has have her his how i if in into is it
+its of on or our out over so than that the their then there these they this to under up
+was we were what when where which while who will with would you your
+ability able about above accurate achieve achieved achievement across action active
+activities activity actual add added additional address adhere administration advanced
+advertising advice advise agile aid all allocate analyse analysis analyst analytical
+analytics analyze annual applicant application applied apply approach appropriate
+approval approve architecture area assess assessment asset assign assist assistant
+assurance attend attendance audit automate automated automation available award aware
+awareness back backend balance bank based basic behaviour benchmark benefit best better
+board book brand budget build building built business calendar campaign candidate
+capability capacity care career case cash centre certification certified chain change
+channel chart check child children claim class classroom clean clear client clinical
+close cloud coach coaching code collaborate collaboration collect collection college
+communicate communication community company compare complete completed completion
+complex compliance component comprehensive computer concept concern condition conduct
+conducted conference confidence configuration confirm connect consent consistent
+consulting consumer contact content continuous contract contribute control convert
+coordinate coordination core corporate correct cost course coverage create created
+creation creative credit criteria critical cross culture curriculum custom customer
+cycle daily dashboard data database day deadline deal decision dedicated deep defect
+define delivered delivery demand department deploy deployment design designed detail
+detailed develop developed developer development device diagnostic digital direct
+director discussion display distribution district document documentation domain drive
+driven due duty dynamic early education effective efficiency efficient effort electronic
+element email employee employer employment enable end energy engage engagement engine
+engineer engineering english enhance ensure ensured ensuring enterprise entry
+environment equipment error escalate establish evaluate evaluation event every evidence
+exam example excel excellent exceed execute execution executive exercise existing
+expand experience expert expertise external facilitate facility factor faculty fault
+feature feedback field file final finance financial first fix flow focus follow food
+forecast form format foundation framework free frequent front full function functional
+fund gap gather general generate global goal good govern government grade graduate
+grant group grow growth guest guidance guide handle hardware health help high hire
+history hospital hour house human identify image impact implement implementation
+improve improved improvement inbound incident include increase individual industry
+information infrastructure initiative innovation input inquiry insight inspection
+install institute instruction insurance integrate integration intelligence interface
+internal international internship interview inventory investment invoice issue item
+job join journal junior key knowledge lab language large launch law lead leader
+leadership learn learner learning lecture legal lesson level leverage library licence
+license life line link liquid list live load loan local location log logic logistics
+long loss machine main maintain maintained maintenance major manage managed management
+manager manual manufacturing map market marketing material math matter measure media
+medical meet meeting member memory mentor mentoring message method metric middle migrate
+migration milestone mobile model module money monitor monitoring month monthly motivate
+multiple national native need negotiate network new news node note number nurse object
+objective observation office officer online operation operational operations
+opportunity optimisation optimise optimization optimize option order organisation
+organise organization organize outcome outreach output outreach overall oversee
+oversight owner ownership package page paper parent part participant participate
+partner party pass patient pattern payment payroll people per perform performance period
+person personal phase phone physical pilot pipeline place plan planning platform play
+point policy portal portfolio position positive post power practice preparation prepare
+present presentation press prevent previous price primary print prior priority private
+problem procedure process processing procurement produce product production
+professional profile program programme programming progress project promote proposal
+protection protocol provide provided provider public publish purchase quality quarter
+query question quick rate ratio reach read ready real record recording records recover
+recruit recruitment reduce reduced reduction reference regional register regular
+regulation relation relationship release relevant reliability reliable remote report
+reporting request require requirement research reservation resolve resolution resource
+response responsibility responsible restaurant result retail retention return revenue
+review revise risk role room root round route routine run safety sale sales sample
+scale schedule scheduling scheme school science scope score screen script search second
+section sector secure security select senior sensor series server service session set
+setting share sharing shift ship shop short show side sign significant similar simple
+single site size skill small smooth social software solution solve source space special
+specialist specification specific speed spend staff stage stakeholder standard start
+state statement station statistics status step stock storage store strategic strategy
+stream strength strong structure student study style subject submit success successful
+summary supervise supervision supervisor supplier supply support supported supporting
+survey sustain system table take talent target task teach teacher teaching team
+technical technique technology telephone template term test testing text theory third
+time tool top total track tracking traffic train trainer training transaction transfer
+transformation transition translate transport travel treatment trend trial trouble
+troubleshoot turn tutor type unit update upgrade usage use user utility validate
+validation value variety vendor verify version video view virtual vision visit visual
+voice volume volunteer warehouse waste web website week weekly welfare well work worker
+workflow working workshop world write writing written year yearly
+""".split())
+
+# Suffixes stripped when a segment is not in the vocabulary as written. Ordered
+# longest first so "-ations" is tried before "-s".
+_SPLIT_SUFFIXES = ("ations", "ities", "ingly", "ation", "ments", "ences", "ances",
+                   "ings", "ment", "ness", "ence", "ance", "ible", "able", "ies",
+                   "ing", "ers", "est", "ely", "ed", "es", "er", "ly", "al", "s")
+
+# Below this length a token is not worth suspecting. Measured against the 12+
+# character tokens in a corpus of real resumes: at 13 the guards below take the
+# false-positive count to zero, and it is low enough to catch the short fusions
+# ("parentconsent", "learnerrecords") that a 16-character floor let through.
+_FUSE_MIN_LEN = 13
+
+# Real single words that the segmenter would otherwise take apart, because
+# their halves happen to be words too. "-ability" and "-ibility" are handled by
+# rule below; these are the leftovers that need naming individually.
+_NEVER_SPLIT = frozenset("""
+extracurricular extracurriculars shortlisting shortlisted streamlining streamlined
+notwithstanding nevertheless understanding undertaking underperforming overperforming
+troubleshooting troubleshoot breakthrough workmanship craftsmanship apprenticeship
+scholarship partnership relationship membership internship leadership entrepreneurship
+stakeholder stakeholders whiteboard dashboard onboarding offboarding storytelling
+timekeeping bookkeeping housekeeping recordkeeping safeguarding fundraising
+groundbreaking forthcoming outstanding overarching throughput turnaround
+""".split())
+
+# A word ending in -ability / -ibility is a real noun built on the stem before
+# it ("maintainability", "sustainability", "transferability"), not the two words
+# "maintain" and "ability" fused. This single rule was the whole false-positive
+# set in the corpus test.
+_ABILITY_SUFFIXES = ("ability", "ibility")
+
+# A segment shorter than this is not accepted as a word on its own. Without it,
+# "management" happily splits into "man"+"age"+"men"+"t"-style nonsense.
+_SEGMENT_MIN_LEN = 3
+
+
+def _vocab_has(word: str) -> bool:
+    """True if `word` is in the split vocabulary, allowing regular inflections."""
+    w = word.lower()
+    if w in _SPLIT_VOCAB:
+        return True
+    for suffix in _SPLIT_SUFFIXES:
+        if len(w) > len(suffix) + 2 and w.endswith(suffix):
+            stem = w[: -len(suffix)]
+            if stem in _SPLIT_VOCAB:
+                return True
+            # "supplies" -> "suppli" -> "supply"; "running" -> "runn" -> "run"
+            if stem.endswith("i") and stem[:-1] + "y" in _SPLIT_VOCAB:
+                return True
+            if stem + "e" in _SPLIT_VOCAB:
+                return True
+            if len(stem) > 2 and stem[-1] == stem[-2] and stem[:-1] in _SPLIT_VOCAB:
+                return True
+    return False
+
+
+def split_fused_word(token: str):
+    """Split a run-together token into its words, or return None.
+
+    Returns the list of parts only when the WHOLE token is consumed by two or
+    more vocabulary words. Partial matches return None on purpose: a token that
+    is mostly a real word plus a stray fragment is far more likely to be a real
+    word than an extraction artifact, and splitting it would damage the text.
+
+    Longest-first dynamic programming, so "supporting" is preferred over
+    "support" + "ing" and the greedy short-prefix traps are avoided.
+    """
+    word = str(token or "")
+    if not word.isalpha() or len(word) < _SEGMENT_MIN_LEN * 2:
+        return None
+
+    lowered = word.lower()
+    # A token that is itself a word is never a fusion, however neatly its
+    # halves happen to segment.
+    if lowered in _NEVER_SPLIT or _vocab_has(lowered):
+        return None
+    for suffix in _ABILITY_SUFFIXES:
+        if lowered.endswith(suffix) and _vocab_has(lowered[: -len(suffix)]):
+            return None
+    n = len(lowered)
+    # best[i] = list of parts covering lowered[i:], or None if uncoverable.
+    best: list = [None] * (n + 1)
+    best[n] = []
+    for start in range(n - 1, -1, -1):
+        # Longest segment first - fewer, longer words is nearly always the
+        # right reading of a fused token.
+        for end in range(n, start + _SEGMENT_MIN_LEN - 1, -1):
+            if best[end] is None:
+                continue
+            segment = lowered[start:end]
+            if len(segment) < _SEGMENT_MIN_LEN:
+                continue
+            if _vocab_has(segment):
+                best[start] = [word[start:end]] + best[end]
+                break
+    parts = best[0]
+    if not parts or len(parts) < 2:
+        return None
+    return parts
+
+
+def looks_like_fused_word(token: str) -> bool:
+    """True if `token` is long enough to suspect and splits cleanly into words."""
+    return len(str(token or "")) >= _FUSE_MIN_LEN and split_fused_word(token) is not None
+
+
+_ALPHA_RUN_RE = re.compile(r"[A-Za-z]+")
+
+
+def count_fused_words(text: str) -> int:
+    """How many run-together tokens a block of extracted text contains.
+
+    Used to choose between two extractions of the same PDF - lower is better.
+    """
+    return sum(
+        1 for match in _ALPHA_RUN_RE.finditer(str(text or ""))
+        if looks_like_fused_word(match.group(0))
+    )
+
+
+def repair_fused_words(text: str) -> str:
+    """Insert the spaces PDF extraction dropped.
+
+    Only touches tokens that clear `_FUSE_MIN_LEN` and split cleanly, so
+    correctly-extracted text passes through unchanged. Capitalisation of the
+    first part is preserved; the rest is lowercased, since a fused token's
+    interior capitals are not meaningful.
+    """
+    def replace(match):
+        token = match.group(0)
+        if not looks_like_fused_word(token):
+            return token
+        parts = split_fused_word(token)
+        if not parts:
+            return token
+        head, *rest = parts
+        return " ".join([head] + [p.lower() for p in rest])
+
+    return _ALPHA_RUN_RE.sub(replace, str(text or ""))
+
+
+# Words the model quotes back inside its spelling explanation, e.g.
+#   The word 'progresstracking' should be 'progress tracking'.
+_QUOTED_WORD_RE = re.compile(r"['\"‘’“”]([A-Za-z][A-Za-z\-']{2,})['\"‘’“”]")
+
+# One "The word 'x' should be 'y'." claim, so a single artifact claim can be
+# removed without disturbing the sentences around it.
+_SPELLING_CLAIM_RE = re.compile(
+    r"[^.]*?['\"‘’“”][A-Za-z][A-Za-z\-']{2,}['\"‘’“”][^.]*\.\s*"
+)
+
+
+def _claim_is_artifact(claim: str) -> bool:
+    """True if every word this sentence calls misspelled is a fused token."""
+    quoted = _QUOTED_WORD_RE.findall(claim)
+    if not quoted:
+        return False
+    # The first quoted word is the alleged misspelling; later ones are the
+    # model's suggested correction and must not be judged.
+    alleged = quoted[0].replace("-", "")
+    return looks_like_fused_word(alleged)
+
+
+def scrub_extraction_artifacts_from_spelling(parsed):
+    """Drop spelling findings that are really PDF extraction artifacts.
+
+    The prompt asks the model not to raise these and it raises them anyway -
+    users were shown "The word 'progresstracking' should be 'progress
+    tracking'" for a resume that had the space all along. This removes each
+    such claim, and when nothing genuine is left, marks the check passed.
+
+    Mutates and returns `parsed`.
+    """
+    if not isinstance(parsed, dict):
+        return parsed
+    section = parsed.get("spelling_and_grammar")
+    if not isinstance(section, dict):
+        return parsed
+    spelling = section.get("spelling")
+    if not isinstance(spelling, dict):
+        return parsed
+
+    explanation = str(spelling.get("explanation") or "")
+    if not explanation.strip():
+        return parsed
+
+    claims = _SPELLING_CLAIM_RE.findall(explanation)
+    if not claims:
+        # No per-word claims to pick apart. If the only words it quotes are
+        # artifacts, the whole finding is one.
+        quoted = _QUOTED_WORD_RE.findall(explanation)
+        if quoted and all(looks_like_fused_word(w.replace("-", "")) for w in quoted):
+            spelling["passed"] = "true"
+            spelling["explanation"] = ""
+            spelling["action"] = ""
+        return parsed
+
+    kept = [c for c in claims if not _claim_is_artifact(c)]
+    if len(kept) == len(claims):
+        return parsed  # nothing was an artifact
+
+    remainder = "".join(kept).strip()
+    if remainder:
+        spelling["explanation"] = remainder
+    else:
+        # Every claim was an extraction artifact, so there is no spelling
+        # problem to report and the check must not fail the resume for one.
+        spelling["passed"] = "true"
+        spelling["explanation"] = ""
+        spelling["action"] = ""
+    return parsed
+
+
 def compute_deterministic_ats_score_breakdown(parsed, resume_text: str = ""):
 
     score = 0.0

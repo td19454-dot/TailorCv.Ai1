@@ -33,6 +33,9 @@ from database import Base, SessionLocal, engine
 from functions import (
     ats_scoring,
     compute_deterministic_ats_score_breakdown,
+    count_fused_words,
+    repair_fused_words,
+    scrub_extraction_artifacts_from_spelling,
     create_prompt,
     get_resume_response,
     AI_MODEL,
@@ -9788,7 +9791,15 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     if "mock interview" in subject or "mock-interview" in subject:
         return None
 
-    if "portfolio" in subject:
+    # An explicit `showcase:` in frontmatter overrides the inference below. The
+    # heuristic reads slug/title/tags, so a post whose subject is unrelated to
+    # resumes - a visa guide, a hiring-process guide - has no way to opt in even
+    # where the gallery is genuinely useful to that reader. "none" suppresses it.
+    forced = (getattr(post, "showcase", "") or "").strip().lower()
+    if forced == "none":
+        return None
+
+    if forced == "portfolio" or (not forced and "portfolio" in subject):
         # Themes withdrawn from the blog gallery (still available in the app).
         _blog_hidden_themes = {"particle"}
         themes = [(slug, PORTFOLIO_THEMES.get(slug, slug).split("—")[0].split("-")[0].strip(), media)
@@ -9813,7 +9824,7 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     # Extension posts DO get a template: the extension's output is a tailored
     # resume, so showing what that resume can look like is on-topic.
     off_topic = ("cover letter", "cover-letter", "interview", "linkedin")
-    if not is_resume_topic or any(t in subject for t in off_topic):
+    if forced != "resume" and (not is_resume_topic or any(t in subject for t in off_topic)):
         return None
 
     by_name = {name: (img, name) for img, name in _BLOG_TEMPLATE_POOL}
@@ -11670,8 +11681,49 @@ def _extract_linkedin_url_from_pdf(pdf_path: str) -> str:
 
 
 def _extract_pdf_text_for_ats(path: str) -> str:
+    """Extract the resume text the ATS pass is scored against.
+
+    This used a bare page.extract_text(), which takes pdfplumber's default
+    x_tolerance of 3 *points*. That figure is absolute, so on a resume set in a
+    tight 9-10pt face the gap between two words falls under it and they come
+    out welded - "progresstracking", "maintaininglearnerrecords". The optimizer
+    path never showed this because extract_pdf_text() above passes
+    x_tolerance=1; only the scoring path was affected, which is exactly where
+    users saw correctly-spelled resumes reported as misspelled.
+
+    Fixed on three levels, because none of them is reliable alone:
+
+      1. x_tolerance_ratio scales the threshold with font size, which is the
+         right unit for the measurement - a 3pt gap means something different
+         at 9pt and at 20pt.
+      2. Both extractions are run and the one with fewer fused tokens wins.
+         A tighter tolerance can over-split a wide-tracked font, so this is not
+         a change that is safe to make unconditionally; measuring is.
+      3. repair_fused_words() splits whatever still came through welded.
+
+    Both /get-ats-score and the optimizer call this function, so the two flows
+    stay byte-for-byte identical - see _ats_resume_text_for for why that
+    matters.
+    """
     with pdfplumber.open(path) as pdf:
-        return "\n".join(page.extract_text() or "" for page in pdf.pages)
+        pages = list(pdf.pages)
+        default_text = "\n".join(p.extract_text() or "" for p in pages)
+        try:
+            scaled_text = "\n".join(
+                p.extract_text(x_tolerance_ratio=0.12) or "" for p in pages
+            )
+        except TypeError:
+            # Older pdfplumber without the ratio parameter.
+            scaled_text = ""
+
+    text = default_text
+    if scaled_text.strip():
+        # Only prefer the scaled read when it actually recovers spaces. Equal
+        # counts keep the default, which is the better-tested path.
+        if count_fused_words(scaled_text) < count_fused_words(default_text):
+            text = scaled_text
+
+    return repair_fused_words(text)
 
 
 _PORTFOLIO_HOST_RE = re.compile(
@@ -11737,6 +11789,9 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
             ats_score = await ats_scoring(resume_string, jd_string)
 
         result = parse_ai_json_response(ats_score)
+        # The model raises PDF-extraction artifacts as spelling errors despite
+        # the prompt forbidding it; strip them before the user ever sees them.
+        result = scrub_extraction_artifacts_from_spelling(result)
 
         if is_two_col:
             fmt = result.setdefault("formatting", {})
