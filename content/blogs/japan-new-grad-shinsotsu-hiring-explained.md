@@ -33,15 +33,15 @@ showcase: none
 
 ## What this means practically
 
-**Your degree subject matters less than you would expect** for many companies, particularly in generalist tracks. Companies recruiting for potential are frequently open to graduates of any discipline, which is a genuine difference from markets where the degree gates the role.
+Your degree subject matters less than you would expect for many companies, particularly in generalist tracks. Companies recruiting for potential are frequently open to graduates of any discipline, which is a genuine difference from markets where the degree gates the role.
 
-**You are being assessed as a person, over a long process.** Consistency across rounds, how you present yourself, and whether you seem like someone who will fit and stay are weighted heavily. This is why the process runs so many rounds.
+You are being assessed as a person, over a long process. Consistency across rounds, how you present yourself, and whether you seem like someone who will fit and stay are weighted heavily. This is why the process runs so many rounds.
 
-**Self-analysis is a formal step.** Japanese job hunting includes an expected process of reflecting on your own history, motivations and character, and being able to articulate them coherently. This is not optional preamble — it underpins the written applications and the interviews.
+Self-analysis is a formal step. Japanese job hunting includes an expected process of reflecting on your own history, motivations and character, and being able to articulate them coherently. This is not optional preamble — it underpins the written applications and the interviews.
 
-**The calendar is largely fixed and shared.** Most students in a cohort go through the same stages at roughly the same time, which is very different from the staggered, employer-specific timelines of many other markets. The [detailed timeline](/blog/japan-job-hunting-shukatsu-timeline) is worth understanding before anything else.
+The calendar is largely fixed and shared. Most students in a cohort go through the same stages at roughly the same time, which is very different from the staggered, employer-specific timelines of many other markets. The [detailed timeline](/blog/japan-job-hunting-shukatsu-timeline) is worth understanding before anything else.
 
-**Specialist and technology hiring is changing this.** A growing number of companies, particularly in technology and at foreign-affiliated firms, hire for specific roles on more flexible timelines — see [technology hiring for foreign graduates](/blog/japan-tech-jobs-for-foreign-graduates).
+Specialist and technology hiring is changing this. A growing number of companies, particularly in technology and at foreign-affiliated firms, hire for specific roles on more flexible timelines — see [technology hiring for foreign graduates](/blog/japan-tech-jobs-for-foreign-graduates).
 
 ## Where foreign graduates fit
 
@@ -61,11 +61,11 @@ showcase: none
 
 Understanding why this system exists, not only what it requires, makes the whole calendar considerably easier to navigate.
 
-**A single, largely synchronised annual hiring cycle for new graduates has been the dominant model at large Japanese employers for decades**, this is genuinely different from the rolling, year-round hiring common in many other major economies, and it produces a distinctive set of behaviours worth understanding rather than fighting against.
+A single, largely synchronised annual hiring cycle for new graduates has been the dominant model at large Japanese employers for decades, this is genuinely different from the rolling, year-round hiring common in many other major economies, and it produces a distinctive set of behaviours worth understanding rather than fighting against.
 
-**Nearly the entire eligible graduating cohort enters the process at the same time**, applies to a similar set of large, well-known employers, and receives informal offers on a broadly similar timeline, this synchronisation is deliberate and long-standing, reflecting an employment model that traditionally emphasised long-term development within a single company over lateral, experience-based hiring.
+Nearly the entire eligible graduating cohort enters the process at the same time, applies to a similar set of large, well-known employers, and receives informal offers on a broadly similar timeline, this synchronisation is deliberate and long-standing, reflecting an employment model that traditionally emphasised long-term development within a single company over lateral, experience-based hiring.
 
-**The system has evolved over recent years, with somewhat more flexibility introduced for mid-year and rolling hiring at some employers**, particularly at foreign multinationals and some newer domestic companies, worth understanding that the traditional synchronised model, while still dominant at many large traditional employers, is no longer the only path.
+The system has evolved over recent years, with somewhat more flexibility introduced for mid-year and rolling hiring at some employers, particularly at foreign multinationals and some newer domestic companies, worth understanding that the traditional synchronised model, while still dominant at many large traditional employers, is no longer the only path.
 
 ## What makes this different from Western hiring
 
@@ -86,11 +86,11 @@ Understanding why this system exists, not only what it requires, makes the whole
 
 ## International students and the shinsotsu system
 
-**International students studying at Japanese universities generally participate in the same system as domestic students**, though language ability, covered separately, is a real and significant factor in how competitive you are within it.
+International students studying at Japanese universities generally participate in the same system as domestic students, though language ability, covered separately, is a real and significant factor in how competitive you are within it.
 
-**Foreign multinationals operating in Japan sometimes run a somewhat different, more flexible process**, closer to hiring convention in their home markets, worth understanding this distinction when deciding where to focus your effort, since the preparation and expectations genuinely differ between a traditional large domestic employer and an international company's Japan office.
+Foreign multinationals operating in Japan sometimes run a somewhat different, more flexible process, closer to hiring convention in their home markets, worth understanding this distinction when deciding where to focus your effort, since the preparation and expectations genuinely differ between a traditional large domestic employer and an international company's Japan office.
 
-**If your Japanese language ability is not yet at a professional working level, this meaningfully narrows which employers within this system are realistically viable**, the [language requirements guide](/blog/japan-japanese-language-requirements-jobs) covers this in more depth, worth reading alongside this article to calibrate your realistic target list honestly.
+If your Japanese language ability is not yet at a professional working level, this meaningfully narrows which employers within this system are realistically viable, the [language requirements guide](/blog/japan-japanese-language-requirements-jobs) covers this in more depth, worth reading alongside this article to calibrate your realistic target list honestly.
 
 ### Is the entire Japanese job market really this synchronised?
 
@@ -113,11 +113,11 @@ Considerably earlier than the formal timeline suggests, information sessions and
 
 ## The rhythm of a typical year within this system
 
-**Understanding the broad shape of a year makes the whole process considerably less overwhelming.** Information sessions and preparatory research generally begin well before formal applications, followed by a concentrated period of entry sheet submissions, aptitude testing, and multiple interview rounds, culminating in informal offers extended over a defined window before the eventual formal start of employment.
+Understanding the broad shape of a year makes the whole process considerably less overwhelming. Information sessions and preparatory research generally begin well before formal applications, followed by a concentrated period of entry sheet submissions, aptitude testing, and multiple interview rounds, culminating in informal offers extended over a defined window before the eventual formal start of employment.
 
-**This rhythm repeats broadly each year across the traditional system**, and while specific dates shift somewhat year to year and company to company, understanding the general shape lets you plan your own preparation realistically rather than reacting to each stage as it arrives.
+This rhythm repeats broadly each year across the traditional system, and while specific dates shift somewhat year to year and company to company, understanding the general shape lets you plan your own preparation realistically rather than reacting to each stage as it arrives.
 
-**International students in particular benefit from mapping this rhythm against their own academic calendar early**, since coursework, examinations and language study all need to fit around a hiring process that follows its own largely fixed annual pattern, rather than adjusting to accommodate any individual student's academic schedule.
+International students in particular benefit from mapping this rhythm against their own academic calendar early, since coursework, examinations and language study all need to fit around a hiring process that follows its own largely fixed annual pattern, rather than adjusting to accommodate any individual student's academic schedule.
 
 ## Comparing this system to hiring conventions elsewhere
 
@@ -125,7 +125,7 @@ Considerably earlier than the formal timeline suggests, information sessions and
 
 **The traditional emphasis on hiring for potential rather than narrow prior experience genuinely benefits candidates without a directly matching background**, a graduate whose degree does not map precisely onto a specific role is not automatically disadvantaged the way they might be in a system that screens heavily on demonstrated prior experience in the exact function, worth understanding this as a genuine structural advantage of the system for career changers and those from less conventional academic paths.
 
-**Understanding both the advantages and genuine constraints of this system honestly, rather than assuming it simply mirrors hiring conventions you may be more familiar with from elsewhere, is what actually lets you navigate it effectively.**
+**Understanding both the advantages and genuine constraints of this system honestly**, rather than assuming it simply mirrors hiring conventions you may be more familiar with from elsewhere, is what actually lets you navigate it effectively.
 
 ## Frequently Asked Questions
 

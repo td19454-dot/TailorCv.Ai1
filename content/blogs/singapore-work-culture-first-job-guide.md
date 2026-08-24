@@ -27,25 +27,25 @@ showcase: none
 
 ## Hierarchy and seniority
 
-**Seniority and hierarchy are generally respected more visibly here than in some flatter Western workplace cultures**, this does not mean junior staff are expected to be silent or cannot contribute substantively, it means the manner of contribution, respectful, appropriately deferential in tone even while being substantively clear and confident, matters somewhat more here than in a workplace where junior staff are expected to challenge senior colleagues with less regard for hierarchy.
+Seniority and hierarchy are generally respected more visibly here than in some flatter Western workplace cultures, this does not mean junior staff are expected to be silent or cannot contribute substantively, it means the manner of contribution, respectful, appropriately deferential in tone even while being substantively clear and confident, matters somewhat more here than in a workplace where junior staff are expected to challenge senior colleagues with less regard for hierarchy.
 
-**Address senior colleagues appropriately**, and observe how your specific team and manager operate before assuming a single universal pattern applies, workplace culture genuinely varies by specific company and even by team within a company.
+Address senior colleagues appropriately, and observe how your specific team and manager operate before assuming a single universal pattern applies, workplace culture genuinely varies by specific company and even by team within a company.
 
 ## Punctuality, genuinely
 
-**Arriving on time, or with genuine margin ahead of scheduled meetings, is the baseline expectation in daily work here, not only at the interview stage.**
+**Arriving on time**, or with genuine margin ahead of scheduled meetings, is the baseline expectation in daily work here, not only at the interview stage.
 
 **This extends to meeting deadlines and commitments generally**, reliability on stated commitments is valued highly, and consistently meeting them is one of the most straightforward ways to build a strong early reputation.
 
 ## Working hours, honestly
 
-**This varies considerably by sector and by specific employer**, some sectors and companies genuinely expect longer hours as a norm, others operate closer to standard hours with less expectation of regular extension, worth asking directly during the interview process what typical hours actually look like, rather than assuming based on general reputation.
+This varies considerably by sector and by specific employer, some sectors and companies genuinely expect longer hours as a norm, others operate closer to standard hours with less expectation of regular extension, worth asking directly during the interview process what typical hours actually look like, rather than assuming based on general reputation.
 
-**Ask current or recent employees directly, if you can**, a genuine first-hand account through an alumni connection or a professional contact gives a considerably more accurate picture than what any recruiting material presents.
+Ask current or recent employees directly, if you can, a genuine first-hand account through an alumni connection or a professional contact gives a considerably more accurate picture than what any recruiting material presents.
 
 ## Building relationships deliberately
 
-**This takes genuine, deliberate effort here as it does anywhere, and it is worth investing in specifically rather than assuming relationships form automatically through simply doing the work.**
+**This takes genuine**, deliberate effort here as it does anywhere, and it is worth investing in specifically rather than assuming relationships form automatically through simply doing the work.
 
 **Team meals and informal social occasions are a genuine part of workplace relationship-building**, worth participating in when invited, even if this requires some adjustment if it is not your natural instinct.
 
@@ -53,11 +53,11 @@ showcase: none
 
 ## The first few months
 
-**Expect a genuine adjustment period, exactly as with any new role in an unfamiliar environment**, this is normal rather than a sign that anything is wrong, and it typically eases considerably within the first few months as you learn the specific norms of your particular team and company.
+Expect a genuine adjustment period, exactly as with any new role in an unfamiliar environment, this is normal rather than a sign that anything is wrong, and it typically eases considerably within the first few months as you learn the specific norms of your particular team and company.
 
-**Ask questions early rather than assuming**, this is generally well received when done respectfully, particularly in the first weeks when it is expected and understood that you are still learning.
+Ask questions early rather than assuming, this is generally well received when done respectfully, particularly in the first weeks when it is expected and understood that you are still learning.
 
-**Observe before assuming a general rule applies universally**, workplace culture varies genuinely by specific company and team, what is true at one Singapore employer is not automatically true at another.
+Observe before assuming a general rule applies universally, workplace culture varies genuinely by specific company and team, what is true at one Singapore employer is not automatically true at another.
 
 ## Common Mistakes
 

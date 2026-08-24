@@ -31,13 +31,13 @@ showcase: none
 
 ## The real cost comparison
 
-**This is the arithmetic most graduates never do.** A London salary that looks higher on the offer letter frequently produces a lower real income than a regional offer, once housing is properly counted.
+This is the arithmetic most graduates never do. A London salary that looks higher on the offer letter frequently produces a lower real income than a regional offer, once housing is properly counted.
 
-**Housing is the dominant variable**, exactly as in [any city comparison](/blog/usa-relocation-and-cost-of-living-first-job). London rent for a comparable standard of living is substantially higher than in most regional cities, often by a larger margin than the salary premium itself.
+Housing is the dominant variable, exactly as in [any city comparison](/blog/usa-relocation-and-cost-of-living-first-job). London rent for a comparable standard of living is substantially higher than in most regional cities, often by a larger margin than the salary premium itself.
 
-**Build the real comparison properly.** Take the net salary for each offer, subtract twelve months of realistic rent for somewhere you would actually live in each city, and compare what remains, the same method that applies to any location decision.
+Build the real comparison properly. Take the net salary for each offer, subtract twelve months of realistic rent for somewhere you would actually live in each city, and compare what remains, the same method that applies to any location decision.
 
-**The result surprises most people.** A regional offer with a lower headline salary frequently leaves more disposable income at the end of the month than the London equivalent.
+The result surprises most people. A regional offer with a lower headline salary frequently leaves more disposable income at the end of the month than the London equivalent.
 
 ## Why competition is lower
 
@@ -49,15 +49,15 @@ showcase: none
 
 ## Building a regional-inclusive search
 
-**Add regional offices of your target employers to your list**, not only their London office, many large firms recruit into both.
+Add regional offices of your target employers to your list, not only their London office, many large firms recruit into both.
 
-**Search specifically for genuinely regional and city-specific employers**, which never appear if you search only for nationally recognisable names.
+Search specifically for genuinely regional and city-specific employers, which never appear if you search only for nationally recognisable names.
 
-**Check whether a milkround or careers fair visits your target regional cities**, many do, in addition to the London-centric events, and they are consistently less crowded.
+Check whether a milkround or careers fair visits your target regional cities, many do, in addition to the London-centric events, and they are consistently less crowded.
 
-**Ask alumni working outside London** what the market is actually like in their city, a fifteen-minute conversation tells you more than any general guide.
+Ask alumni working outside London what the market is actually like in their city, a fifteen-minute conversation tells you more than any general guide.
 
-**Do not assume career progression requires London eventually.** Many careers, including senior ones, are built entirely in regional markets, and internal transfer to London later remains available if you want it.
+Do not assume career progression requires London eventually. Many careers, including senior ones, are built entirely in regional markets, and internal transfer to London later remains available if you want it.
 
 ## Researching a specific regional city properly before committing
 
@@ -76,9 +76,9 @@ showcase: none
 
 ## Adjusting your search strategy for a regional target
 
-**Regional employers are less likely to run large, highly visible national recruitment campaigns**, worth searching more directly and specifically for regional-specific opportunities, rather than assuming the same channels that surface London-based roles will surface an equivalent regional opportunity.
+Regional employers are less likely to run large, highly visible national recruitment campaigns, worth searching more directly and specifically for regional-specific opportunities, rather than assuming the same channels that surface London-based roles will surface an equivalent regional opportunity.
 
-**Local university career services in target regional cities, even ones you did not attend, sometimes maintain useful regional employer relationships and job boards worth checking, alongside your own institution's resources.**
+Local university career services in target regional cities, even ones you did not attend, sometimes maintain useful regional employer relationships and job boards worth checking, alongside your own institution's resources.
 
 ## Frequently Asked Questions
 

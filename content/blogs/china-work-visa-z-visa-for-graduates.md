@@ -25,17 +25,19 @@ showcase: none
 
 **The employer sponsors and drives the process.** You cannot independently apply for a work permit without an employer initiating it, which means, as with [any employer-controlled route](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), your options are shaped by which employers are willing and able to sponsor.
 
-**Work permits are categorised**, broadly reflecting the applicant's qualifications, experience and the nature of the role, with different categories carrying different requirements and, in some cases, different point-based assessment criteria.
+**Work permits are sorted into three named categories — A, B, and C** — [covered in full detail in the points system guide](/blog/china-foreign-graduate-work-permit-points), broadly reflecting the applicant's qualifications, experience and the nature of the role. Category B (professional talent) is where most graduate hires land, and its standard criteria are exactly where the experience requirement below becomes relevant.
+
+**The actual application sequence has a specific order worth understanding.** Your employer first applies for and receives a Notification Letter of Foreigner's Work Permit on your behalf; you use that letter to apply for the Z visa at a Chinese embassy or consulate before travelling; after arrival, the work permit itself is finalised and you apply for the residence permit that lets you stay and work continuously without needing to re-enter on a fresh visa. Each step depends on the one before it completing correctly, which is why document delays early in the process cascade into delays throughout.
 
 ## The experience requirement, and why it matters to graduates
 
-**A standard requirement under the general work permit route is a minimum period of prior relevant work experience**, commonly cited as around two years, which a recent graduate with no prior full-time employment does not, by definition, meet.
+A standard requirement under the general work permit route is a minimum period of prior relevant work experience, commonly cited as around two years, which a recent graduate with no prior full-time employment does not, by definition, meet.
 
-**This is the single most important structural fact for a graduate to understand before assuming a standard route is available.** It is genuinely different from many Western graduate work authorisation routes, which are specifically designed for people with no prior experience.
+This is the single most important structural fact for a graduate to understand before assuming a standard route is available. It is genuinely different from many Western graduate work authorisation routes, which are specifically designed for people with no prior experience.
 
-**Exceptions exist, and they matter considerably.** Graduates from certain Chinese universities, particularly for roles taken shortly after graduation, can access routes that do not require the standard prior experience threshold. The specific criteria, which universities and programmes qualify, and the conditions attached, are set nationally and are worth verifying directly and currently rather than relying on a general description, since this is exactly the kind of detail that changes and where outdated information is genuinely costly.
+Exceptions exist, and they matter considerably. Graduates from certain Chinese universities, particularly for roles taken shortly after graduation, can access routes that do not require the standard prior experience threshold. The specific criteria, which universities and programmes qualify, and the conditions attached, are set nationally and are worth verifying directly and currently rather than relying on a general description, since this is exactly the kind of detail that changes and where outdated information is genuinely costly.
 
-**Shortage occupations and specific talent categories** may also carry different treatment, again varying by category and worth checking specifically against your own qualifications and target role.
+Shortage occupations and specific talent categories may also carry different treatment, again varying by category and worth checking specifically against your own qualifications and target role.
 
 ## What this means for your job search
 
@@ -49,9 +51,9 @@ showcase: none
 
 ## Points-based and category-specific assessment
 
-**Some work permit categories use a points-based framework**, assessing factors including salary, qualifications, age and other criteria, broadly analogous in spirit to points-based systems used elsewhere, though the specific mechanics and thresholds are distinct and worth reviewing directly for your category.
+Some work permit categories use a points-based framework, assessing factors including salary, qualifications, age and other criteria, broadly analogous in spirit to points-based systems used elsewhere, though the specific mechanics and thresholds are distinct and worth reviewing directly for your category.
 
-**Higher categories generally carry more favourable treatment and fewer restrictions**, while lower categories may carry more limitations, understanding which category a specific role and your own profile would fall into is worth clarifying with a prospective employer or an immigration advisor before assuming eligibility.
+Higher categories generally carry more favourable treatment and fewer restrictions, while lower categories may carry more limitations, understanding which category a specific role and your own profile would fall into is worth clarifying with a prospective employer or an immigration advisor before assuming eligibility.
 
 ## Practical steps
 
@@ -72,9 +74,9 @@ showcase: none
 
 ## Understanding the broader visa category landscape
 
-**Beyond the standard general work permit route, other specific categories exist for particular circumstances**, including routes for individuals recognised for a specific high level of skill or achievement, worth researching whether any specific category beyond the general route might apply more favourably to your own particular background, rather than assuming only the standard route exists.
+Beyond the standard general work permit route, other specific categories exist for particular circumstances, including routes for individuals recognised for a specific high level of skill or achievement, worth researching whether any specific category beyond the general route might apply more favourably to your own particular background, rather than assuming only the standard route exists.
 
-**If your circumstances are genuinely unusual or complex, a specific consultation with a qualified immigration advisor, rather than relying solely on general published guidance, is worth the investment**, this is precisely the kind of situation where a general article, including this one, cannot substitute for advice tailored to your own specific facts.
+If your circumstances are genuinely unusual or complex, a specific consultation with a qualified immigration advisor, rather than relying solely on general published guidance, is worth the investment, this is precisely the kind of situation where a general article, including this one, cannot substitute for advice tailored to your own specific facts.
 
 ## Practical steps before accepting an offer
 
@@ -91,6 +93,10 @@ Generally the standard route requires prior work experience, commonly around two
 ### Does the employer or I apply for the work permit?
 
 The employer sponsors and drives the application. You cannot independently apply without an employer initiating the process.
+
+### What's the actual sequence of documents I'll deal with?
+
+Your employer secures a Notification Letter of Foreigner's Work Permit first; you use that to apply for the Z visa before travelling; after you arrive, the work permit is finalised and you apply for the residence permit that covers your ongoing stay. Delays early in this chain push everything after it back.
 
 ### Do these rules apply the same way everywhere in China?
 

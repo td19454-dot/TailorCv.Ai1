@@ -47,7 +47,7 @@ Canadian Experience Class and most Express Entry pathways only count TEER 0-3 as
 
 Two new grads can both call themselves "associate" and be in completely different positions here — one at TEER 1 building a case for permanent residence, the other at TEER 4 building none, regardless of which job pays more or looks better on paper day to day.
 
-**A few more common new-grad roles, spanning both sides of the line:** administrative assistants (NOC 13110, TEER 2) and paralegal and related occupations (NOC 42203, TEER 2) both qualify; general office support workers (NOC 14100, TEER 4) and customer service representatives in most contexts (NOC 64409, TEER 4) generally don't. The pattern worth internalizing: roles built around applying specialized knowledge, judgment, or defined technical skill tend to land TEER 0-3; roles built around following established procedures with minimal independent judgment tend to land TEER 4-5, regardless of how the job title dresses it up.
+A few more common new-grad roles, spanning both sides of the line: administrative assistants (NOC 13110, TEER 2) and paralegal and related occupations (NOC 42203, TEER 2) both qualify; general office support workers (NOC 14100, TEER 4) and customer service representatives in most contexts (NOC 64409, TEER 4) generally don't. The pattern worth internalizing: roles built around applying specialized knowledge, judgment, or defined technical skill tend to land TEER 0-3; roles built around following established procedures with minimal independent judgment tend to land TEER 4-5, regardless of how the job title dresses it up.
 
 ## How to check your own offer in five minutes
 
@@ -58,7 +58,7 @@ Two new grads can both call themselves "associate" and be in completely differen
 
 ## Negotiating title vs. duties
 
-**If the actual duties genuinely match a TEER 0-3 code but the employer's job title obscures that — "coordinator" instead of "analyst," for instance — asking for a title that more accurately reflects the real duties is reasonable.** Employers with any experience hiring international graduates generally understand exactly why you're asking and will adjust it without friction, since the substance of the role isn't changing, only its label. Keep the original job posting or offer letter describing your actual duties regardless — it's the evidence you'd point to later if a classification is ever questioned.
+If the actual duties genuinely match a TEER 0-3 code but the employer's job title obscures that — "coordinator" instead of "analyst," for instance — asking for a title that more accurately reflects the real duties is reasonable. Employers with any experience hiring international graduates generally understand exactly why you're asking and will adjust it without friction, since the substance of the role isn't changing, only its label. Keep the original job posting or offer letter describing your actual duties regardless — it's the evidence you'd point to later if a classification is ever questioned.
 
 ## Provincial programs sometimes weight this differently
 

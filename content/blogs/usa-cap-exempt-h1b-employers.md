@@ -31,17 +31,17 @@ That is a structural difference, and it is startling how few graduates know the 
 
 Four categories, and the boundaries matter because the exemption is a legal characteristic of the employer rather than a policy choice.
 
-**Institutions of higher education.** Colleges and universities meeting the statutory definition. This is the largest and clearest category, and universities employ far more than faculty — research staff, data analysts, engineers, IT, clinicians, administrators, librarians, financial and grants professionals.
+Institutions of higher education. Colleges and universities meeting the statutory definition. This is the largest and clearest category, and universities employ far more than faculty — research staff, data analysts, engineers, IT, clinicians, administrators, librarians, financial and grants professionals.
 
-**Non-profit entities related to or affiliated with an institution of higher education.**
+Non-profit entities related to or affiliated with an institution of higher education.
 
 This is the category people miss. [Teaching](/blog/japan-jet-programme-and-teaching-jobs) hospitals, university-affiliated research institutes, foundations and similar organisations may qualify through their affiliation. The affiliation has to be genuine and documented, and where it exists the range of roles is broad.
 
-**Non-profit research organisations.** Organisations primarily engaged in basic or applied research.
+Non-profit research organisations. Organisations primarily engaged in basic or applied research.
 
-**Government research organisations.** Federal, and in some circumstances state, entities engaged in research.
+Government research organisations. Federal, and in some circumstances state, entities engaged in research.
 
-**What does not qualify:** ordinary private companies, however prestigious; most non-profits without a qualifying research purpose or educational affiliation; and start-ups, regardless of what they do.
+What does not qualify: ordinary private companies, however prestigious; most non-profits without a qualifying research purpose or educational affiliation; and start-ups, regardless of what they do.
 
 ## The practical advantages
 
@@ -59,15 +59,15 @@ This is the category people miss. [Teaching](/blog/japan-jet-programme-and-teach
 
 This is not a loophole and it carries real trade-offs.
 
-**The exemption attaches to the employer.** If you later move to an ordinary private company, that employer generally has to go through the cap — meaning the lottery — unless an exemption applies to them too. Your cap-exempt years do not carry over as a personal entitlement.
+The exemption attaches to the employer. If you later move to an ordinary private company, that employer generally has to go through the cap — meaning the lottery — unless an exemption applies to them too. Your cap-exempt years do not carry over as a personal entitlement.
 
-**Compensation is usually lower.** University and non-profit salaries are generally below private-sector equivalents, particularly in technology and finance. This is the main reason people discount the route, and it is a real cost.
+Compensation is usually lower. University and non-profit salaries are generally below private-sector equivalents, particularly in technology and finance. This is the main reason people discount the route, and it is a real cost.
 
-**The hiring process is slower and more bureaucratic.** Posting requirements, committee processes, and timelines measured in months. Plan accordingly.
+The hiring process is slower and more bureaucratic. Posting requirements, committee processes, and timelines measured in months. Plan accordingly.
 
-**Not every role at a qualifying employer is straightforward.** The petition still has to establish that the position is a specialty occupation and that you are qualified for it.
+Not every role at a qualifying employer is straightforward. The petition still has to establish that the position is a specialty occupation and that you are qualified for it.
 
-**Affiliation is a legal question.** Whether a particular non-profit qualifies through its relationship with a university is a determination requiring evidence, and organisations differ in whether they have established it. Do not assume; ask.
+Affiliation is a legal question. Whether a particular non-profit qualifies through its relationship with a university is a determination requiring evidence, and organisations differ in whether they have established it. Do not assume; ask.
 
 ## How to find these employers
 
@@ -113,21 +113,21 @@ If you are an international graduate and you intend to stay, the practical move 
 
 Because "university job" makes most graduates picture a lecturer, the actual breadth of the category is worth spelling out. Universities and academic medical centres are large, complex organisations and they employ almost every function a company does.
 
-**Research and technical staff.** Research assistants, research associates, laboratory managers, bioinformaticians, statisticians and data analysts. These are the closest equivalent to a graduate technical role and they exist in volume at any research-heavy institution.
+Research and technical staff. Research assistants, research associates, laboratory managers, bioinformaticians, statisticians and data analysts. These are the closest equivalent to a graduate technical role and they exist in volume at any research-heavy institution.
 
-**Software and IT.** Universities run substantial technology operations — student systems, research computing, clinical systems, networks, security. These are real engineering jobs and they are almost invisible to students who only look at [technology companies](/blog/japan-tech-jobs-for-foreign-graduates).
+Software and IT. Universities run substantial technology operations — student systems, research computing, clinical systems, networks, security. These are real engineering jobs and they are almost invisible to students who only look at [technology companies](/blog/japan-tech-jobs-for-foreign-graduates).
 
-**Data and analytics.** Institutional research, enrolment analytics, clinical data, public health data. Growing quickly, and frequently short of good candidates.
+Data and analytics. Institutional research, enrolment analytics, clinical data, public health data. Growing quickly, and frequently short of good candidates.
 
-**Clinical research.** Coordinators, associates and managers at academic medical centres. Substantial hiring, structured progression, and a common entry point for life sciences graduates.
+Clinical research. Coordinators, associates and managers at academic medical centres. Substantial hiring, structured progression, and a common entry point for life sciences graduates.
 
-**Engineering and facilities.** Large campuses employ civil, mechanical and electrical engineers, plus project managers running capital work.
+Engineering and facilities. Large campuses employ civil, mechanical and electrical engineers, plus project managers running capital work.
 
-**Finance, grants and administration.** Research grant administration in particular is a specialised, well-paid function that most graduates have never heard of and that institutions consistently struggle to fill.
+Finance, grants and administration. Research grant administration in particular is a specialised, well-paid function that most graduates have never heard of and that institutions consistently struggle to fill.
 
-**Library and information science, instructional design, communications, and international student services** — all professional roles requiring degrees.
+Library and information science, instructional design, communications, and international student services — all professional roles requiring degrees.
 
-**The practical instruction:** search a university's career page by function rather than by the word "research", and search the affiliated hospital separately, because it is frequently a distinct employer with its own postings and its own — usually also exempt — status.
+The practical instruction: search a university's career page by function rather than by the word "research", and search the affiliated hospital separately, because it is frequently a distinct employer with its own postings and its own — usually also exempt — status.
 
 ## Building the parallel list
 
@@ -149,17 +149,17 @@ Because this is a distinct segment rather than a fallback, it deserves its own l
 
 The conversation runs differently from a corporate one, and knowing the shape of it saves time.
 
-**Ask HR, not the hiring manager.** At most universities, immigration is handled by a central office that does this constantly. A department head may genuinely not know whether a role is cap-exempt; the international employment office will answer in a sentence.
+Ask HR, not the hiring manager. At most universities, immigration is handled by a central office that does this constantly. A department head may genuinely not know whether a role is cap-exempt; the international employment office will answer in a sentence.
 
-**Ask early and plainly.** "Is this position cap-exempt for H-1B purposes, and has the department sponsored before?" Both are ordinary questions in this sector and neither is awkward.
+Ask early and plainly. "Is this position cap-exempt for H-1B purposes, and has the department sponsored before?" Both are ordinary questions in this sector and neither is awkward.
 
-**Expect a slower, more procedural answer.** Universities have committees, posting requirements and defined processes. Timelines are longer than corporate hiring and the process is more predictable — you are unlikely to be ghosted, and you are unlikely to hear quickly.
+Expect a slower, more procedural answer. Universities have committees, posting requirements and defined processes. Timelines are longer than corporate hiring and the process is more predictable — you are unlikely to be ghosted, and you are unlikely to hear quickly.
 
-**Understand the salary constraint.** The petition requires payment at or above the prevailing wage for the role and location. University salary bands are compressed, and occasionally a role's band sits below the required wage, which blocks the petition. It is rare and it happens, and asking about it is not rude.
+Understand the salary constraint. The petition requires payment at or above the prevailing wage for the role and location. University salary bands are compressed, and occasionally a role's band sits below the required wage, which blocks the petition. It is rare and it happens, and asking about it is not rude.
 
-**Ask about the timeline relative to your authorisation.** If your current status expires in five months and the university's process takes four, that is worth knowing in week one rather than week twelve.
+Ask about the timeline relative to your authorisation. If your current status expires in five months and the university's process takes four, that is worth knowing in week one rather than week twelve.
 
-**And ask what happens after.** Some institutions support permanent residence applications for staff and some do not. If you intend to stay long term, that is a materially important answer and it is rarely volunteered.
+And ask what happens after. Some institutions support permanent residence applications for staff and some do not. If you intend to stay long term, that is a materially important answer and it is rarely volunteered.
 
 ## Common Mistakes
 
@@ -190,17 +190,17 @@ Cap-exempt removes the lottery. It does not remove the petition, and the require
 
 It is worth naming the reasons, because each of them is a bias rather than a real obstacle, and recognising them is most of what it takes to act.
 
-**Nobody mentions it.** Career services talk about employers who come to campus. Peers talk about the companies everyone has heard of. The category simply does not come up, so students do not know to look.
+Nobody mentions it. Career services talk about employers who come to campus. Peers talk about the companies everyone has heard of. The category simply does not come up, so students do not know to look.
 
-**The salary comparison is visible and the risk comparison is not.** A lower number is concrete and immediate. A lottery you might not clear is abstract until it happens. People discount the second and over-weight the first, and then find themselves unselected in March with no plan.
+The salary comparison is visible and the risk comparison is not. A lower number is concrete and immediate. A lottery you might not clear is abstract until it happens. People discount the second and over-weight the first, and then find themselves unselected in March with no plan.
 
-**"University job" sounds like academia.** It reads as a step off the career track rather than as a technical role with a research group, which is what a great many of these positions are.
+"University job" sounds like academia. It reads as a step off the career track rather than as a technical role with a research group, which is what a great many of these positions are.
 
-**The applications look unfamiliar.** Longer forms, cover letters that get read, references early. It is a different genre and it feels like more work.
+The applications look unfamiliar. Longer forms, cover letters that get read, references early. It is a different genre and it feels like more work.
 
-**And it feels like settling.** This is the real one. Choosing an employer partly for its immigration characteristics feels like optimising for the wrong thing.
+And it feels like settling. This is the real one. Choosing an employer partly for its immigration characteristics feels like optimising for the wrong thing.
 
-**The honest counter:** if your intention is to build a career in the US, the route that does not depend on a random draw is not settling — it is the one that lets everything else you do actually compound. Two years at a research institute that can sponsor beats two years of excellent work at an employer where a number decides whether you stay.
+The honest counter: if your intention is to build a career in the US, the route that does not depend on a random draw is not settling — it is the one that lets everything else you do actually compound. Two years at a research institute that can sponsor beats two years of excellent work at an employer where a number decides whether you stay.
 
 ## A worked comparison
 

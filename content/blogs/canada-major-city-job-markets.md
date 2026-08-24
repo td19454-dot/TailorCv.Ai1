@@ -43,7 +43,7 @@ Historically anchored in energy (Suncor, Cenovus, and the broader oil and gas se
 
 Considerably lower cost of living than the three largest cities, and correspondingly less contested for graduates in relevant fields — worth checking directly whether your target sector has a genuine presence here rather than assuming these cities offer only energy-sector work.
 
-**Edmonton specifically has real, distinct depth in AI research** through the Alberta Machine Intelligence Institute (Amii), affiliated with the University of Alberta and home to reinforcement-learning research associated with Rich Sutton, one of the field's most cited researchers — a genuine research cluster that doesn't get the attention Toronto or Montreal's AI scenes do, worth knowing about specifically if machine learning research is your target rather than assuming Edmonton is purely an energy-sector city.
+Edmonton specifically has real, distinct depth in AI research through the Alberta Machine Intelligence Institute (Amii), affiliated with the University of Alberta and home to reinforcement-learning research associated with Rich Sutton, one of the field's most cited researchers — a genuine research cluster that doesn't get the attention Toronto or Montreal's AI scenes do, worth knowing about specifically if machine learning research is your target rather than assuming Edmonton is purely an energy-sector city.
 
 ## Ottawa
 
@@ -57,7 +57,7 @@ Punches well above its size in technology specifically, driven by the University
 
 Other smaller cities host genuine, smaller-scale opportunity in specific sectors — worth researching directly where your target industry has a real presence rather than assuming opportunity only exists in the handful of largest centres.
 
-**Halifax anchors a smaller but real Atlantic Canada tech and ocean-technology cluster**, benefiting from Dalhousie University's research strength and a meaningfully lower cost of living than any of the major central-Canada centres, worth considering if you're open to a smaller market with genuine, if less dense, opportunity. **The "Golden Horseshoe"** — the densely populated corridor stretching from the Niagara region through Hamilton and the Greater Toronto Area to Oshawa — is worth knowing as a term, since job searches and cost-of-living comparisons genuinely aimed at "the Toronto area" often actually mean this broader region, where nearby cities like Hamilton offer meaningfully lower housing costs with a commutable distance to Toronto's job market.
+Halifax anchors a smaller but real Atlantic Canada tech and ocean-technology cluster, benefiting from Dalhousie University's research strength and a meaningfully lower cost of living than any of the major central-Canada centres, worth considering if you're open to a smaller market with genuine, if less dense, opportunity. **The "Golden Horseshoe"** — the densely populated corridor stretching from the Niagara region through Hamilton and the Greater Toronto Area to Oshawa — is worth knowing as a term, since job searches and cost-of-living comparisons genuinely aimed at "the Toronto area" often actually mean this broader region, where nearby cities like Hamilton offer meaningfully lower housing costs with a commutable distance to Toronto's job market.
 
 ## Building the real comparison
 
@@ -67,7 +67,7 @@ Other smaller cities host genuine, smaller-scale opportunity in specific sectors
 
 ## Immigration considerations by location
 
-**Provincial nominee programs and specific immigration streams vary by province**, [covered in the provincial nominee guide](/blog/canada-provincial-nominee-programs-graduates), worth researching whether your target city's province offers a stream well matched to your profile if long-term status is a genuine priority.
+Provincial nominee programs and specific immigration streams vary by province, [covered in the provincial nominee guide](/blog/canada-provincial-nominee-programs-graduates), worth researching whether your target city's province offers a stream well matched to your profile if long-term status is a genuine priority.
 
 ## Common Mistakes
 

@@ -39,15 +39,15 @@ showcase: none
 
 ## The graduate management scheme
 
-**A structured programme** with specialisms across management, finance, human resources, health analysis, policy and digital.
+A structured programme with specialisms across management, finance, human resources, health analysis, policy and digital.
 
-**Placements plus formal study.** Participants typically rotate through placements while working toward a professional qualification relevant to their specialism.
+Placements plus formal study. Participants typically rotate through placements while working toward a professional qualification relevant to their specialism.
 
-**Selection is multi-stage** — application, online tests, and an assessment centre. The [psychometric](/blog/uk-psychometric-tests-guide) and [assessment centre](/blog/uk-assessment-centre-guide) preparation applies directly.
+Selection is multi-stage — application, online tests, and an assessment centre. The [psychometric](/blog/uk-psychometric-tests-guide) and [assessment centre](/blog/uk-assessment-centre-guide) preparation applies directly.
 
-**Assessed against published values.** The NHS sets out the values it recruits for, and applications and interviews are structured around them. As with the [civil service framework](/blog/uk-civil-service-fast-stream-guide), publishing the criteria makes preparation unusually targeted — build [evidence examples](/blog/uk-competency-questions-guide) mapped to each value.
+Assessed against published values. The NHS sets out the values it recruits for, and applications and interviews are structured around them. As with the [civil service framework](/blog/uk-civil-service-fast-stream-guide), publishing the criteria makes preparation unusually targeted — build [evidence examples](/blog/uk-competency-questions-guide) mapped to each value.
 
-**It is competitive.** Application volumes are high relative to places, so it should be one of several applications rather than the whole plan.
+It is competitive. Application volumes are high relative to places, so it should be one of several applications rather than the whole plan.
 
 ## The route most students miss
 
@@ -63,13 +63,13 @@ showcase: none
 
 ## For international graduates
 
-**Trusts frequently hold sponsor licences**, which is a genuine advantage. Many are experienced at employing international staff and have established processes.
+Trusts frequently hold sponsor licences, which is a genuine advantage. Many are experienced at employing international staff and have established processes.
 
-**Check the register and ask directly**, as with [any employer](/blog/uk-skilled-worker-visa-for-graduates).
+Check the register and ask directly, as with [any employer](/blog/uk-skilled-worker-visa-for-graduates).
 
-**Non-clinical roles avoid the professional registration question** entirely, which is the main obstacle for internationally-qualified clinical staff.
+Non-clinical roles avoid the professional registration question entirely, which is the main obstacle for internationally-qualified clinical staff.
 
-**The [Graduate route](/blog/uk-graduate-visa-route-explained) works here as anywhere** — you can take an NHS role without sponsorship initially and switch later, provided the role qualifies.
+The [Graduate route](/blog/uk-graduate-visa-route-explained) works here as anywhere — you can take an NHS role without sponsorship initially and switch later, provided the role qualifies.
 
 ## Understanding the scale of what you would actually be joining
 
@@ -88,9 +88,9 @@ showcase: none
 
 ## Understanding career progression within this sector specifically
 
-**Progression pathways are often more formally structured here than in much of the private sector**, with defined pay bands and, for many roles, a clear route toward recognised professional qualifications, worth researching the specific progression structure for your target function directly, since this varies meaningfully between clinical-support, management, analytical and technical roles.
+Progression pathways are often more formally structured here than in much of the private sector, with defined pay bands and, for many roles, a clear route toward recognised professional qualifications, worth researching the specific progression structure for your target function directly, since this varies meaningfully between clinical-support, management, analytical and technical roles.
 
-**Movement between trusts, and between different functions within the broader NHS structure, is common and generally well regarded**, rather than viewed negatively the way frequent employer changes might be in some other sectors, worth understanding this as a genuine feature of building a long-term NHS career rather than an unusual pattern.
+Movement between trusts, and between different functions within the broader NHS structure, is common and generally well regarded, rather than viewed negatively the way frequent employer changes might be in some other sectors, worth understanding this as a genuine feature of building a long-term NHS career rather than an unusual pattern.
 
 ## Frequently Asked Questions
 

@@ -27,9 +27,9 @@ showcase: portfolio
 
 ## The local register matters
 
-**Messages and conversations here generally land better when specific and measured, rather than effusive, exactly [the same register that works well in interviews locally](/blog/singapore-interview-etiquette-guide)**, a message describing exactly what you built or did, and asking a genuine, specific question, outperforms one filled with superlatives about how excited or passionate you are.
+Messages and conversations here generally land better when specific and measured, rather than effusive, exactly [the same register that works well in interviews locally](/blog/singapore-interview-etiquette-guide), a message describing exactly what you built or did, and asking a genuine, specific question, outperforms one filled with superlatives about how excited or passionate you are.
 
-**Directness is welcomed rather than considered impolite.** A clear, specific ask, stated plainly, generally lands better than an overly indirect or padded message.
+Directness is welcomed rather than considered impolite. A clear, specific ask, stated plainly, generally lands better than an overly indirect or padded message.
 
 ## Who to actually contact
 
@@ -41,13 +41,13 @@ showcase: portfolio
 
 ## Where to find people
 
-**University alumni directories, filtered by employer or location, remain the most direct route.**
+University alumni directories, filtered by employer or location, remain the most direct route.
 
-**Professional networking platforms, searched by school and current employer**, the same channel that works internationally.
+Professional networking platforms, searched by school and current employer, the same channel that works internationally.
 
-**Industry events and career fairs**, [attended properly rather than passively](/blog/singapore-campus-recruiting-guide), are a genuine opportunity to meet people directly rather than only online.
+Industry events and career fairs, [attended properly rather than passively](/blog/singapore-campus-recruiting-guide), are a genuine opportunity to meet people directly rather than only online.
 
-**Your own existing network**, classmates, former colleagues from any prior internship, and people you already know who have since moved to Singapore or to your target sector.
+Your own existing network, classmates, former colleagues from any prior internship, and people you already know who have since moved to Singapore or to your target sector.
 
 ## What to actually write
 
@@ -57,9 +57,9 @@ showcase: portfolio
 
 ## Starting early
 
-**The students who build genuinely useful networks are consistently the ones who start well before they need anything specific**, three messages a week from early in your studies, rather than a burst of urgent outreach immediately before a deadline, produces a fundamentally different quality of relationship, one built on genuine interest rather than visible need.
+The students who build genuinely useful networks are consistently the ones who start well before they need anything specific, three messages a week from early in your studies, rather than a burst of urgent outreach immediately before a deadline, produces a fundamentally different quality of relationship, one built on genuine interest rather than visible need.
 
-**This compounds.** A good early conversation frequently leads to an introduction to someone else, and a network built this way over time becomes genuinely useful in a way that last-minute outreach rarely achieves.
+This compounds. A good early conversation frequently leads to an introduction to someone else, and a network built this way over time becomes genuinely useful in a way that last-minute outreach rarely achieves.
 
 ## Common Mistakes
 

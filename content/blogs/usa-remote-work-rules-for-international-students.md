@@ -29,13 +29,13 @@ This sounds obvious and it is routinely misunderstood, usually in the direction 
 
 ## Remote work inside the US
 
-**On curricular training during your studies.** The training must be an integral part of your curriculum and authorized by your school. A remote placement can satisfy this — the location is not the issue — but the authorization must be in place before you begin, exactly as it would for an in-person role. The [mechanics of curricular and post-graduation training](/blog/usa-opt-cpt-explained-students) apply identically.
+On curricular training during your studies. The training must be an integral part of your curriculum and authorized by your school. A remote placement can satisfy this — the location is not the issue — but the authorization must be in place before you begin, exactly as it would for an in-person role. The [mechanics of curricular and post-graduation training](/blog/usa-opt-cpt-explained-students) apply identically.
 
-**On post-graduation training.** The role must relate to your field of study, and that requirement does not change because the work is remote. Reporting requirements also continue: your employer's name and address, your job title and the start date all need to be kept current with your school regardless of where you physically work.
+On post-graduation training. The role must relate to your field of study, and that requirement does not change because the work is remote. Reporting requirements also continue: your employer's name and address, your job title and the start date all need to be kept current with your school regardless of where you physically work.
 
-**On the STEM extension.** The additional requirements — the employer being enrolled in the federal verification system, and a signed training plan — apply to remote roles just as they do to in-person ones, with no reduced standard for a distributed team. A fully remote employer is not exempt, which is why the [employer eligibility questions](/blog/usa-stem-opt-employer-requirements) matter as much for a remote job as any other.
+On the STEM extension. The additional requirements — the employer being enrolled in the federal verification system, and a signed training plan — apply to remote roles just as they do to in-person ones, with no reduced standard for a distributed team. A fully remote employer is not exempt, which is why the [employer eligibility questions](/blog/usa-stem-opt-employer-requirements) matter as much for a remote job as any other.
 
-**A practical wrinkle worth knowing.** Some reporting fields expect a physical employer address. For a distributed company with no office near you, ask your international office how they want this recorded rather than improvising, because inconsistency in these records is exactly what creates problems later.
+A practical wrinkle worth knowing. Some reporting fields expect a physical employer address. For a distributed company with no office near you, ask your international office how they want this recorded rather than improvising, because inconsistency in these records is exactly what creates problems later.
 
 ## Working remotely from outside the US
 
@@ -53,19 +53,19 @@ A genuinely different question, and one where general advice is least reliable.
 
 ## Questions worth asking before accepting
 
-**"Is this role fully remote, hybrid, or remote-with-travel?"** Determines what you are actually agreeing to.
+"Is this role fully remote, hybrid, or remote-with-travel?" Determines what you are actually agreeing to.
 
-**"Where is the company legally established, and where would I be on payroll?"** Central to whether an arrangement works at all, and often the question that surfaces whether an Employer of Record would even be necessary.
+"Where is the company legally established, and where would I be on payroll?" Central to whether an arrangement works at all, and often the question that surfaces whether an Employer of Record would even be necessary.
 
-**"Is the company enrolled in E-Verify?"** Relevant if you are relying on the [STEM extension](/blog/usa-stem-opt-employer-requirements), and it applies to remote roles.
+"Is the company enrolled in E-Verify?" Relevant if you are relying on the [STEM extension](/blog/usa-stem-opt-employer-requirements), and it applies to remote roles.
 
-**"Would you use an Employer of Record if I needed to work from outside the US temporarily?"** A specific, answerable question rather than a vague "would remote from abroad be okay" — naming the EOR option (Deel, Remote.com, and Papaya Global are the best-known providers) signals you understand the actual mechanism a company would need, and gives them something concrete to check with their own HR or legal team rather than defaulting to a reflexive no.
+"Would you use an Employer of Record if I needed to work from outside the US temporarily?" A specific, answerable question rather than a vague "would remote from abroad be okay" — naming the EOR option (Deel, Remote.com, and Papaya Global are the best-known providers) signals you understand the actual mechanism a company would need, and gives them something concrete to check with their own HR or legal team rather than defaulting to a reflexive no.
 
-**"Has the company employed international students on training authorization before?"** A yes means a process exists; a no means you may be explaining the requirements yourself.
+"Has the company employed international students on training authorization before?" A yes means a process exists; a no means you may be explaining the requirements yourself.
 
-**"What address would be recorded as the worksite?"** Practical, and it prevents a reporting problem later.
+"What address would be recorded as the worksite?" Practical, and it prevents a reporting problem later.
 
-**"Would the company support remote work from outside the US, even temporarily?"** Ask before assuming, because many cannot, and discovering this after accepting is a real problem.
+"Would the company support remote work from outside the US, even temporarily?" Ask before assuming, because many cannot, and discovering this after accepting is a real problem.
 
 ## Common Mistakes
 

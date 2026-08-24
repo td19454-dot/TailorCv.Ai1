@@ -31,15 +31,15 @@ Most international graduates focus entirely on the [H-1B lottery](/blog/usa-h1b-
 
 ## The stages, in outline
 
-**A labour market test — called PERM (Program Electronic Review Management)**, the Department of Labor's labor certification process. For most employment-based categories, the employer must first test the US labour market for the role through a defined, documented recruitment process, demonstrating that no qualified, willing US worker is available. This stage has its own requirements and timelines, generally takes many months even when uncontested, and is done by the employer's immigration counsel.
+A labour market test — called PERM (Program Electronic Review Management), the Department of Labor's labor certification process. For most employment-based categories, the employer must first test the US labour market for the role through a defined, documented recruitment process, demonstrating that no qualified, willing US worker is available. This stage has its own requirements and timelines, generally takes many months even when uncontested, and is done by the employer's immigration counsel.
 
-**An immigrant petition.** The employer petitions on your behalf, establishing that the role qualifies under the relevant category and that you meet its requirements.
+An immigrant petition. The employer petitions on your behalf, establishing that the role qualifies under the relevant category and that you meet its requirements.
 
-**Waiting for a visa number**, if your category and country of birth are backlogged. This is the stage that can take years, and it is entirely outside anyone's control.
+Waiting for a visa number, if your category and country of birth are backlogged. This is the stage that can take years, and it is entirely outside anyone's control.
 
-**Adjustment of status or consular processing**, the final stage where permanent residence is actually granted, depending on whether you're already inside the US or applying from abroad.
+Adjustment of status or consular processing, the final stage where permanent residence is actually granted, depending on whether you're already inside the US or applying from abroad.
 
-**Throughout, you generally need to maintain valid non-immigrant status**, which is why the [work visa](/blog/usa-h1b-lottery-new-grads) and the permanent residence process run in parallel rather than sequentially.
+Throughout, you generally need to maintain valid non-immigrant status, which is why the [work visa](/blog/usa-h1b-lottery-new-grads) and the permanent residence process run in parallel rather than sequentially.
 
 ## The categories that matter for graduates
 
@@ -55,19 +55,19 @@ Most international graduates focus entirely on the [H-1B lottery](/blog/usa-h1b-
 
 ## The country-of-birth issue
 
-**This is the single largest variable and it is entirely outside your control.**
+This is the single largest variable and it is entirely outside your control.
 
-**Allocation is by country of birth**, not by citizenship, and not by where you studied or currently live. Someone born in a heavily-demanded country faces the queue for that country regardless of what passport they hold.
+Allocation is by country of birth, not by citizenship, and not by where you studied or currently live. Someone born in a heavily-demanded country faces the queue for that country regardless of what passport they hold.
 
-**Per-country limits mean high-demand countries develop substantial backlogs.** In practice, this affects applicants born in **India** most severely, with **China** also facing a substantial, though generally shorter, backlog — a structural consequence of a small number of countries producing a very large share of employment-based applicants against a fixed per-country ceiling. For applicants born in these two countries specifically, the wait between petition approval and permanent residence in the EB-2 or EB-3 categories can run into many years, in some cases longer than a decade.
+Per-country limits mean high-demand countries develop substantial backlogs. In practice, this affects applicants born in **India** most severely, with **China** also facing a substantial, though generally shorter, backlog — a structural consequence of a small number of countries producing a very large share of employment-based applicants against a fixed per-country ceiling. For applicants born in these two countries specifically, the wait between petition approval and permanent residence in the EB-2 or EB-3 categories can run into many years, in some cases longer than a decade.
 
-**For applicants born in most other countries, the wait is far shorter**, often close to the processing time of the stages themselves rather than a separate multi-year queue on top of them.
+For applicants born in most other countries, the wait is far shorter, often close to the processing time of the stages themselves rather than a separate multi-year queue on top of them.
 
-**The State Department's monthly Visa Bulletin is the actual document that tracks this** — it publishes the priority dates currently being processed for each category and country combination, and it's the single source worth checking directly (rather than a general estimate) to see where a specific case actually stands relative to the current queue.
+The State Department's monthly Visa Bulletin is the actual document that tracks this — it publishes the priority dates currently being processed for each category and country combination, and it's the single source worth checking directly (rather than a general estimate) to see where a specific case actually stands relative to the current queue.
 
-**What this means practically.** Two colleagues doing identical work, sponsored on the same day by the same employer, can face waits differing by a decade purely because of where they were born. This is not a reflection on either of them and it is a structural feature of the system.
+What this means practically. Two colleagues doing identical work, sponsored on the same day by the same employer, can face waits differing by a decade purely because of where they were born. This is not a reflection on either of them and it is a structural feature of the system.
 
-**Which is why understanding your own position early, based on your specific country of birth, matters far more here than in most other planning decisions you'll make about your career.** If you face a long backlog, it changes the calculation on almost everything — whether to stay, whether to prioritise employers who start the process immediately, whether to consider [other countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) where the graduate route leads somewhere on a predictable timeline.
+Which is why understanding your own position early, based on your specific country of birth, matters far more here than in most other planning decisions you'll make about your career. If you face a long backlog, it changes the calculation on almost everything — whether to stay, whether to prioritise employers who start the process immediately, whether to consider [other countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) where the graduate route leads somewhere on a predictable timeline.
 
 ## Questions to ask an employer
 

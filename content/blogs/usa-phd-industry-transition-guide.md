@@ -41,21 +41,21 @@ Start here, because most PhDs undersell themselves by describing their subject r
 
 The single most common practical obstacle, and it is mechanical.
 
-**Length: one or two pages.** An academic CV is a complete record; a resume is an argument. Everything that does not support the argument comes out. This feels like erasure and it is the convention — the [format expectations](/blog/usa-resume-format-for-students) are genuinely different documents.
+Length: one or two pages. An academic CV is a complete record; a resume is an argument. Everything that does not support the argument comes out. This feels like erasure and it is the convention — the [format expectations](/blog/usa-resume-format-for-students) are genuinely different documents.
 
-**Lead with experience, not education.** Your PhD is experience. List it as a role — "Doctoral Researcher, [Lab], [University]" — with bullets describing what you did and what resulted.
+Lead with experience, not education. Your PhD is experience. List it as a role — "Doctoral Researcher, [Lab], [University]" — with bullets describing what you did and what resulted.
 
-**Describe outcomes, not methods.** Not "employed a variational autoencoder to model..." but "built a model that cut manual review of experimental images by 80%, now used by three groups in the department."
+Describe outcomes, not methods. Not "employed a variational autoencoder to model..." but "built a model that cut manual review of experimental images by 80%, now used by three groups in the department."
 
-**Translate the vocabulary.** Your subfield's terms mean nothing to a recruiter or to the software screening you first. Say pipeline, dataset, model, automation, analysis. Run an [ATS check](/ats-analysis) to confirm the document extracts cleanly and speaks to the posting.
+Translate the vocabulary. Your subfield's terms mean nothing to a recruiter or to the software screening you first. Say pipeline, dataset, model, automation, analysis. Run an [ATS check](/ats-analysis) to confirm the document extracts cleanly and speaks to the posting.
 
-**Compress publications.** A line saying "6 peer-reviewed publications, 200+ citations" plus a link, rather than three pages of entries. Keep the full CV separately for the roles that want it.
+Compress publications. A line saying "6 peer-reviewed publications, 200+ citations" plus a link, rather than three pages of entries. Keep the full CV separately for the roles that want it.
 
-**Name the tools.** Languages, frameworks, instruments, statistical methods. These are the keywords that get matched.
+Name the tools. Languages, frameworks, instruments, statistical methods. These are the keywords that get matched.
 
-**Include teaching, mentoring, grant writing and committee work** as management, communication and stakeholder experience — which is what they are.
+Include teaching, mentoring, grant writing and committee work as management, communication and stakeholder experience — which is what they are.
 
-**Quantify wherever honest.** Datasets in gigabytes, samples processed, students supervised, funding secured, speed-ups achieved.
+Quantify wherever honest. Datasets in gigabytes, samples processed, students supervised, funding secured, speed-ups achieved.
 
 ## The interviews are different
 
@@ -73,21 +73,21 @@ The single most common practical obstacle, and it is mechanical.
 
 ## Where PhDs are genuinely wanted
 
-**Industrial research labs.** The closest analogue, with publication cultures and long horizons.
+Industrial research labs. The closest analogue, with publication cultures and long horizons.
 
-**Machine learning and applied science roles.** Frequently require or strongly prefer a doctorate, and the research training is directly relevant.
+Machine learning and applied science roles. Frequently require or strongly prefer a doctorate, and the research training is directly relevant.
 
-**Quantitative finance.** [Research seats](/blog/usa-quant-trading-campus-recruiting) at funds and trading firms hire heavily from physics, mathematics and statistics doctorates.
+Quantitative finance. [Research seats](/blog/usa-quant-trading-campus-recruiting) at funds and trading firms hire heavily from physics, mathematics and statistics doctorates.
 
-**Biotechnology and pharmaceuticals.** Discovery, translational research, computational biology, clinical development.
+Biotechnology and pharmaceuticals. Discovery, translational research, computational biology, clinical development.
 
-**Data science.** Particularly experimentation and causal inference roles, where statistical judgement matters more than engineering throughput — see the [role distinctions](/blog/usa-data-science-new-grad-hiring).
+Data science. Particularly experimentation and causal inference roles, where statistical judgement matters more than engineering throughput — see the [role distinctions](/blog/usa-data-science-new-grad-hiring).
 
-**National laboratories.** Between academia and industry, and [frequently cap-exempt](/blog/usa-national-labs-and-research-jobs) for immigration purposes.
+National laboratories. Between academia and industry, and [frequently cap-exempt](/blog/usa-national-labs-and-research-jobs) for immigration purposes.
 
-**Consulting.** Several firms run dedicated advanced-degree entry routes with their own timeline.
+Consulting. Several firms run dedicated advanced-degree entry routes with their own timeline.
 
-**Technical product management, developer relations, scientific software, policy and science communication.** All value the training in ways that are not obvious from the job title.
+Technical product management, developer relations, scientific software, policy and science communication. All value the training in ways that are not obvious from the job title.
 
 ## Building the bridge before you leave
 
@@ -107,19 +107,19 @@ The single most common practical obstacle, and it is mechanical.
 
 The translation problem is easiest to see concretely. Same work, two descriptions.
 
-**As written on an academic CV:**
+As written on an academic CV:
 
 > "Developed a semi-supervised graph neural network architecture incorporating attention mechanisms for the classification of protein-protein interaction networks, achieving state-of-the-art performance on three benchmark datasets (Chen et al., Nature Methods, 2025)."
 
 A hiring manager outside computational biology reads this and learns nothing they can act on. The screening software matches almost none of it against a job posting.
 
-**As written on an industry resume:**
+As written on an industry resume:
 
 > "Built a machine learning system that classifies protein interaction networks, improving accuracy over the previous best method on three public benchmarks. Published in a leading journal. Packaged it as a Python library now used by four research groups, with documentation and tests."
 
 Same work. What changed: the outcome leads, the jargon is gone, the tools are named, and the last sentence — the part an academic CV would omit entirely as unimportant — is the sentence a hiring manager cares most about, because it is evidence that something you made was used by someone else.
 
-**The general rule:** for every line, ask what changed because you did this, and who benefited. If the answer is only "the field advanced", find the operational version — faster, cheaper, automated, adopted, reused.
+The general rule: for every line, ask what changed because you did this, and who benefited. If the answer is only "the field advanced", find the operational version — faster, cheaper, automated, adopted, reused.
 
 ## Where to look, by discipline
 
@@ -145,19 +145,19 @@ The translation is easier when you know which industries actively want your spec
 
 Since one artefact used by someone else outperforms three papers, it is worth being specific about what counts.
 
-**A package or library others install.** Your analysis methods, cleaned up, documented, tested and published. Adoption numbers are evidence and the packaging itself demonstrates the engineering practice industry cares about.
+A package or library others install. Your analysis methods, cleaned up, documented, tested and published. Adoption numbers are evidence and the packaging itself demonstrates the engineering practice industry cares about.
 
-**A tool another group uses.** A dashboard, a pipeline, an internal service. Small is fine — "used weekly by the three other groups in the department" is a real claim.
+A tool another group uses. A dashboard, a pipeline, an internal service. Small is fine — "used weekly by the three other groups in the department" is a real claim.
 
-**A reproducible analysis.** Data, code and results, runnable end to end by a stranger. Rarer than it should be, and it signals rigour and engineering competence simultaneously.
+A reproducible analysis. Data, code and results, runnable end to end by a stranger. Rarer than it should be, and it signals rigour and engineering competence simultaneously.
 
-**Something outside your field entirely.** A side project on a problem you found interesting demonstrates range and initiative, and it gives an interviewer something to talk about that is not your thesis.
+Something outside your field entirely. A side project on a problem you found interesting demonstrates range and initiative, and it gives an interviewer something to talk about that is not your thesis.
 
-**A contribution to an established open-source project.** Merged pull requests to a project people use are unambiguous evidence of working to someone else's standard.
+A contribution to an established open-source project. Merged pull requests to a project people use are unambiguous evidence of working to someone else's standard.
 
-**What does not convince.** A notebook accompanying a paper, unmaintained and undocumented. A repository with no README. Anything nobody but you has ever run.
+What does not convince. A notebook accompanying a paper, unmaintained and undocumented. A repository with no README. Anything nobody but you has ever run.
 
-**The test to apply:** could a stranger use this without asking you a question? If yes, it is evidence. If no, it is a research artefact, which is a different thing and belongs on the academic CV instead.
+The test to apply: could a stranger use this without asking you a question? If yes, it is evidence. If no, it is a research artefact, which is a different thing and belongs on the academic CV instead.
 
 ## Timeline for the final year
 
@@ -190,17 +190,17 @@ Because industry hiring runs year-round on short timelines, the transition can b
 
 The adjustment is real and it is predictable, so it is worth naming.
 
-**The pace is faster and the standard is lower.** Work ships at eighty percent correct because the cost of another month exceeds the value of the last twenty percent. Academics find this genuinely uncomfortable and it is the single largest adjustment.
+The pace is faster and the standard is lower. Work ships at eighty percent correct because the cost of another month exceeds the value of the last twenty percent. Academics find this genuinely uncomfortable and it is the single largest adjustment.
 
-**Your depth is rarely the point.** You were the world expert in something narrow; now you are one contributor to something broad. People who need this identity find the transition harder than people who wanted a change.
+Your depth is rarely the point. You were the world expert in something narrow; now you are one contributor to something broad. People who need this identity find the transition harder than people who wanted a change.
 
-**Collaboration is constant.** Research is often solitary; industry work is not. Meetings, reviews, handovers and shared ownership are the norm rather than an interruption.
+Collaboration is constant. Research is often solitary; industry work is not. Meetings, reviews, handovers and shared ownership are the norm rather than an interruption.
 
-**Decisions get made without full information, quickly, by someone else.** Learning to disagree once, clearly, and then commit is a skill worth building early.
+Decisions get made without full information, quickly, by someone else. Learning to disagree once, clearly, and then commit is a skill worth building early.
 
-**You will be junior again.** Frustrating after years of expertise, and it passes quickly because the underlying capability is real.
+You will be junior again. Frustrating after years of expertise, and it passes quickly because the underlying capability is real.
 
-**What helps.** Ask what "good enough" means for a given piece of work, explicitly. Ship something small in the first month. Find the person who explains how things actually get decided. And [treat the first ninety days](/blog/usa-first-90-days-new-grad) as a period for learning the system rather than for demonstrating expertise — the expertise will be obvious soon enough.
+What helps. Ask what "good enough" means for a given piece of work, explicitly. Ship something small in the first month. Find the person who explains how things actually get decided. And [treat the first ninety days](/blog/usa-first-90-days-new-grad) as a period for learning the system rather than for demonstrating expertise — the expertise will be obvious soon enough.
 
 ## Talking to people who left
 
@@ -239,15 +239,15 @@ By not competing on that axis. Target roles where the research training is the q
 
 Two questions every transitioning researcher has and rarely asks out loud.
 
-**You are usually not starting at the bottom.** Many employers map a doctorate to a level above the bachelor's entry point in research, data and applied science roles — commonly the equivalent of two to four years of experience. In pure software engineering the mapping is weaker, because the relevant experience is shipping rather than researching.
+You are usually not starting at the bottom. Many employers map a doctorate to a level above the bachelor's entry point in research, data and applied science roles — commonly the equivalent of two to four years of experience. In pure software engineering the mapping is weaker, because the relevant experience is shipping rather than researching.
 
-**Ask the recruiter directly.** "How does the company level candidates with a PhD for this role?" is a normal question and the answer varies enough to be worth knowing before you invest in a process.
+Ask the recruiter directly. "How does the company level candidates with a PhD for this role?" is a normal question and the answer varies enough to be worth knowing before you invest in a process.
 
-**The pay increase is usually substantial.** Moving from a stipend or a postdoc salary to an industry offer is frequently a multiple rather than a percentage, and it can be disorienting. Do not let the size of the number substitute for evaluating the work.
+The pay increase is usually substantial. Moving from a stipend or a postdoc salary to an industry offer is frequently a multiple rather than a percentage, and it can be disorienting. Do not let the size of the number substitute for evaluating the work.
 
-**Negotiate the same way anyone does.** Signing bonus, start date and level are the movable parts; base is often banded. The [negotiation principles](/blog/usa-offer-negotiation-new-grad) apply, and a competing offer is the only reliable leverage.
+Negotiate the same way anyone does. Signing bonus, start date and level are the movable parts; base is often banded. The [negotiation principles](/blog/usa-offer-negotiation-new-grad) apply, and a competing offer is the only reliable leverage.
 
-**And weigh the whole package.** Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
+And weigh the whole package. Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
 
 ### Do I put "Dr" or "PhD" on my resume?
 

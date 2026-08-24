@@ -35,17 +35,17 @@ showcase: resume
 
 ## Structure that works
 
-**One page. Three or four short paragraphs.** Longer is not better and is frequently skimmed.
+One page. Three or four short paragraphs. Longer is not better and is frequently skimmed.
 
-**Address a named person** where you can find one. A wrong name is worse than "Dear Sir or Madam", so only use one you have actually verified.
+Address a named person where you can find one. A wrong name is worse than "Dear Sir or Madam", so only use one you have actually verified.
 
-**Open with something concrete**, not with an announcement that you are applying. The reader knows why the letter exists.
+Open with something concrete, not with an announcement that you are applying. The reader knows why the letter exists.
 
-**Second paragraph: your strongest evidence**, with the context a CV cannot hold. What you did, what was hard, what changed.
+Second paragraph: your strongest evidence, with the context a CV cannot hold. What you did, what was hard, what changed.
 
-**Third paragraph: why this employer.** The paragraph that decides it, covered below.
+Third paragraph: why this employer. The paragraph that decides it, covered below.
 
-**Close plainly.** Availability, thanks, nothing elaborate.
+Close plainly. Availability, thanks, nothing elaborate.
 
 ## The paragraph that decides it
 
@@ -67,17 +67,17 @@ showcase: resume
 
 ## Practical points
 
-**Match the CV.** Same font, same header, consistent dates. They are read together — the [CV conventions](/blog/uk-cv-format-for-students) apply to both.
+Match the CV. Same font, same header, consistent dates. They are read together — the [CV conventions](/blog/uk-cv-format-for-students) apply to both.
 
-**Do not restate the CV in prose.** The letter's job is to add what the CV cannot hold, not to summarise it.
+Do not restate the CV in prose. The letter's job is to add what the CV cannot hold, not to summarise it.
 
-**Mention your availability** if it is relevant.
+Mention your availability if it is relevant.
 
-**Do not raise visa status unprompted.** If sponsorship is relevant, it belongs in a conversation rather than in an opening letter — the [Graduate route](/blog/uk-graduate-visa-route-explained) means many graduates need no sponsorship initially anyway.
+Do not raise visa status unprompted. If sponsorship is relevant, it belongs in a conversation rather than in an opening letter — the [Graduate route](/blog/uk-graduate-visa-route-explained) means many graduates need no sponsorship initially anyway.
 
-**Export as PDF**, named with your own name.
+Export as PDF, named with your own name.
 
-**Proofread properly.** A typo in a one-page document that is explicitly a writing sample is costly.
+Proofread properly. A typo in a one-page document that is explicitly a writing sample is costly.
 
 ## Common structural errors beyond the content itself
 
@@ -96,9 +96,9 @@ showcase: resume
 
 ## Adjusting length and depth for different application types
 
-**A speculative application to an employer with no advertised vacancy generally warrants a somewhat longer, more thorough letter than an application against a specific stated posting**, since you are doing more work to explain why they should consider you at all, absent a specific role description to respond to directly.
+A speculative application to an employer with no advertised vacancy generally warrants a somewhat longer, more thorough letter than an application against a specific stated posting, since you are doing more work to explain why they should consider you at all, absent a specific role description to respond to directly.
 
-**An application through a referral can generally be somewhat shorter**, since the referral itself has already done some of the work of establishing your credibility, the letter's job here shifts toward giving the reader useful context for a name they will recognise, rather than establishing your case from nothing.
+An application through a referral can generally be somewhat shorter, since the referral itself has already done some of the work of establishing your credibility, the letter's job here shifts toward giving the reader useful context for a name they will recognise, rather than establishing your case from nothing.
 
 ## Frequently Asked Questions
 

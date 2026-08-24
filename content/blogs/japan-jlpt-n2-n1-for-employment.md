@@ -31,15 +31,15 @@ showcase: none
 
 ## What each level actually gets you
 
-**N2: the threshold for consideration.** Many job postings for Japanese-language roles state N2 as a minimum. It signals you can function, and it frequently leaves an employer wanting to test how well in [interview](/blog/japan-mensetsu-interview-questions-guide).
+N2: the threshold for consideration. Many job postings for Japanese-language roles state N2 as a minimum. It signals you can function, and it frequently leaves an employer wanting to test how well in [interview](/blog/japan-mensetsu-interview-questions-guide).
 
-**N2 works well for:** technical and engineering roles where the work itself is the focus, positions at companies used to working with foreign staff, roles in international divisions, and companies actively hiring internationally.
+N2 works well for: technical and engineering roles where the work itself is the focus, positions at companies used to working with foreign staff, roles in international divisions, and companies actively hiring internationally.
 
-**N1: the level that stops the conversation being about language.** For the conventional generalist track at traditional Japanese companies, for client-facing roles, and for anything communication-heavy, N1 is frequently what employers expect.
+N1: the level that stops the conversation being about language. For the conventional generalist track at traditional Japanese companies, for client-facing roles, and for anything communication-heavy, N1 is frequently what employers expect.
 
-**N1 also matters for status.** Language ability contributes to the points-based assessment used for [highly skilled professional status](/blog/japan-work-visa-for-graduates), where a higher certified level adds points toward the threshold that brings longer periods of stay and a faster route toward permanent residence.
+N1 also matters for status. Language ability contributes to the points-based assessment used for [highly skilled professional status](/blog/japan-work-visa-for-graduates), where a higher certified level adds points toward the threshold that brings longer periods of stay and a faster route toward permanent residence.
 
-**Neither guarantees anything.** The interview reveals what you can actually do, and a candidate with N1 who cannot hold a meeting will be found out immediately.
+Neither guarantees anything. The interview reveals what you can actually do, and a candidate with N1 who cannot hold a meeting will be found out immediately.
 
 ## The gap the test does not measure
 
@@ -51,15 +51,15 @@ showcase: none
 
 ## Practical planning
 
-**Take it early enough to have the result.** The test runs on a limited schedule and results take time. A certificate you will receive after the application deadline does not help you, which matters given the [fixed shūkatsu calendar](/blog/japan-job-hunting-shukatsu-timeline).
+Take it early enough to have the result. The test runs on a limited schedule and results take time. A certificate you will receive after the application deadline does not help you, which matters given the [fixed shūkatsu calendar](/blog/japan-job-hunting-shukatsu-timeline).
 
-**State your level clearly on both documents.** On the [rirekisho](/blog/japan-resume-rirekisho-guide) in the qualifications section, and on the [work history document](/blog/japan-shokumu-keirekisho-guide) in the skills section.
+State your level clearly on both documents. On the [rirekisho](/blog/japan-resume-rirekisho-guide) in the qualifications section, and on the [work history document](/blog/japan-shokumu-keirekisho-guide) in the skills section.
 
-**If you are between levels**, state what you hold and note that you are studying toward the next. Honest and forward-looking beats vague.
+If you are between levels, state what you hold and note that you are studying toward the next. Honest and forward-looking beats vague.
 
-**If you are targeting N1 for status points**, factor the timing into your plan well ahead, since the assessment happens at application time.
+If you are targeting N1 for status points, factor the timing into your plan well ahead, since the assessment happens at application time.
 
-**Do not stop at the certificate.** The gap between certified comprehension and confident business communication is where the actual work is, and closing it is what changes outcomes.
+Do not stop at the certificate. The gap between certified comprehension and confident business communication is where the actual work is, and closing it is what changes outcomes.
 
 ## What each realistic target level means in practice
 
@@ -71,9 +71,9 @@ showcase: none
 
 ## Matching your level to a realistic target role
 
-**For most professional roles at domestic Japanese employers, the higher of the two commonly cited target levels is generally the realistic baseline expectation**, roles below this bar exist and represent a smaller share of the professional market.
+For most professional roles at domestic Japanese employers, the higher of the two commonly cited target levels is generally the realistic baseline expectation, roles below this bar exist and represent a smaller share of the professional market.
 
-**Honestly assess where you currently stand against your specific target role's genuine requirement, rather than against a generic sense of "good enough" Japanese.**
+Honestly assess where you currently stand against your specific target role's genuine requirement, rather than against a generic sense of "good enough" Japanese.
 
 ## Presenting your level effectively
 
@@ -83,9 +83,9 @@ showcase: none
 
 ## Retesting and keeping your certification current
 
-**If your certified level was achieved some years ago and your genuine current ability has since improved, consider retesting before it becomes a liability in an application**, an outdated lower certification undersells your actual current ability to an employer relying on this test as a benchmark.
+If your certified level was achieved some years ago and your genuine current ability has since improved, consider retesting before it becomes a liability in an application, an outdated lower certification undersells your actual current ability to an employer relying on this test as a benchmark.
 
-**Build toward the specific level your realistic target roles actually require, rather than studying generally without a defined target**, this focused approach produces faster, more directly useful progress than open-ended general study.
+Build toward the specific level your realistic target roles actually require, rather than studying generally without a defined target, this focused approach produces faster, more directly useful progress than open-ended general study.
 
 ## Common Mistakes
 

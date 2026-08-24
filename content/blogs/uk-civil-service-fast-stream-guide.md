@@ -31,17 +31,17 @@ showcase: none
 
 ## The selection process
 
-**A long, multi-stage sequence** running over months.
+A long, multi-stage sequence running over months.
 
-**Online application**, with eligibility screening.
+Online application, with eligibility screening.
 
-**Online tests.** Typically a sequence covering behavioural and situational judgement, verbal and numerical reasoning. These are early filters and are taken at home. The [psychometric preparation](/blog/uk-psychometric-tests-guide) applies directly — practise under time pressure, because speed is the binding constraint rather than difficulty.
+Online tests. Typically a sequence covering behavioural and situational judgement, verbal and numerical reasoning. These are early filters and are taken at home. The [psychometric preparation](/blog/uk-psychometric-tests-guide) applies directly — practise under time pressure, because speed is the binding constraint rather than difficulty.
 
-**A video interview**, recorded rather than live, following the [standard format](/blog/uk-video-interview-hirevue-guide). Front-load your answers, keep to time, and record yourself once beforehand.
+A video interview, recorded rather than live, following the [standard format](/blog/uk-video-interview-hirevue-guide). Front-load your answers, keep to time, and record yourself once beforehand.
 
-**A final assessment centre.** Exercises which have historically included a written exercise, a group or leadership exercise, and an interview, assessed against the published framework. The [assessment centre mechanics](/blog/uk-assessment-centre-guide) transfer closely.
+A final assessment centre. Exercises which have historically included a written exercise, a group or leadership exercise, and an interview, assessed against the published framework. The [assessment centre mechanics](/blog/uk-assessment-centre-guide) transfer closely.
 
-**Scheme-specific assessment** for specialist streams, testing the relevant technical capability.
+Scheme-specific assessment for specialist streams, testing the relevant technical capability.
 
 ## The framework is published
 
@@ -55,15 +55,15 @@ showcase: none
 
 ## Eligibility and requirements
 
-**Nationality requirements apply**, and they vary by scheme. Some schemes are open more broadly; others, particularly those involving security or diplomatic work, have stricter requirements.
+Nationality requirements apply, and they vary by scheme. Some schemes are open more broadly; others, particularly those involving security or diplomatic work, have stricter requirements.
 
-**Residency requirements** apply for roles requiring security clearance, typically requiring a period of continuous UK residence.
+Residency requirements apply for roles requiring security clearance, typically requiring a period of continuous UK residence.
 
-**Security clearance** is required for many roles and the process takes time.
+Security clearance is required for many roles and the process takes time.
 
-**Degree requirements** vary. Generalist schemes are frequently open across disciplines; specialist schemes require relevant qualifications.
+Degree requirements vary. Generalist schemes are frequently open across disciplines; specialist schemes require relevant qualifications.
 
-**Check the specific scheme's criteria before investing time.** They are published, they are specific, and they are not negotiable.
+Check the specific scheme's criteria before investing time. They are published, they are specific, and they are not negotiable.
 
 ## Applying well
 
@@ -83,9 +83,9 @@ showcase: none
 
 ## Building the evidence file over an extended timeline
 
-**Because this process runs over several months and is assessed against a published framework, begin building specific evidence for each behaviour well before the application itself opens**, rather than attempting to recall relevant examples under time pressure once the process has already begun.
+Because this process runs over several months and is assessed against a published framework, begin building specific evidence for each behaviour well before the application itself opens, rather than attempting to recall relevant examples under time pressure once the process has already begun.
 
-**Keep a running document of situations from your academic, work and extracurricular experience mapped against each published behaviour**, updating it as new relevant experiences occur, this produces a considerably richer and more specific evidence base than trying to generate examples retrospectively when the application window opens.
+Keep a running document of situations from your academic, work and extracurricular experience mapped against each published behaviour, updating it as new relevant experiences occur, this produces a considerably richer and more specific evidence base than trying to generate examples retrospectively when the application window opens.
 
 ## Common Mistakes
 

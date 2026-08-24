@@ -37,15 +37,15 @@ showcase: portfolio
 
 ## What is assessed
 
-**Coding tests.** Online assessments early in the process, typically algorithmic and timed. Speed under pressure is the binding constraint rather than difficulty — practise with a clock running.
+Coding tests. Online assessments early in the process, typically algorithmic and timed. Speed under pressure is the binding constraint rather than difficulty — practise with a clock running.
 
-**Technical interviews.** Data structures, algorithms, and reasoning aloud while solving. The [preparation](/blog/usa-technical-interview-newgrad-prep) transfers almost entirely, since question banks are effectively international.
+Technical interviews. Data structures, algorithms, and reasoning aloud while solving. The [preparation](/blog/usa-technical-interview-newgrad-prep) transfers almost entirely, since question banks are effectively international.
 
-**Project discussion.** Frequently the most important round for a graduate. What you built, why you made the choices you did, what broke, what you would change. This is where a real project pays off and where coursework alone cannot.
+Project discussion. Frequently the most important round for a graduate. What you built, why you made the choices you did, what broke, what you would change. This is where a real project pays off and where coursework alone cannot.
 
-**Behavioural and competency questions**, particularly at larger and more traditional employers, drawing on the [same evidence bank](/blog/uk-competency-questions-guide) as any UK application.
+Behavioural and competency questions, particularly at larger and more traditional employers, drawing on the [same evidence bank](/blog/uk-competency-questions-guide) as any UK application.
 
-**System design, lightly.** Rarely a serious round for graduates, and frequently a conversation about how your own project would handle more load.
+System design, lightly. Rarely a serious round for graduates, and frequently a conversation about how your own project would handle more load.
 
 ## What makes a graduate competitive
 
@@ -61,11 +61,11 @@ showcase: portfolio
 
 ## Geography
 
-**Technology is the most distributed UK graduate sector.** London dominates by volume, and Manchester, Edinburgh, Bristol, Cambridge, Leeds, Glasgow, Birmingham and Newcastle all have genuine technology employment.
+Technology is the most distributed UK graduate sector. London dominates by volume, and Manchester, Edinburgh, Bristol, Cambridge, Leeds, Glasgow, Birmingham and Newcastle all have genuine technology employment.
 
-**Which matters financially.** A salary difference between London and a regional city is frequently smaller in real terms than it appears once housing is counted — the [regional argument](/blog/uk-regional-jobs-outside-london) covers the arithmetic, and the [general cost-of-living principle](/blog/usa-relocation-and-cost-of-living-first-job) applies identically.
+Which matters financially. A salary difference between London and a regional city is frequently smaller in real terms than it appears once housing is counted — the [regional argument](/blog/uk-regional-jobs-outside-london) covers the arithmetic, and the [general cost-of-living principle](/blog/usa-relocation-and-cost-of-living-first-job) applies identically.
 
-**Remote and hybrid roles** widen this further, though fully remote graduate roles are less common than mid-career ones because of the mentoring involved.
+Remote and hybrid roles widen this further, though fully remote graduate roles are less common than mid-career ones because of the mentoring involved.
 
 ## For international graduates
 
@@ -79,9 +79,9 @@ showcase: portfolio
 
 ## Preparing your own portfolio properly
 
-**Deploy your strongest project somewhere reachable with a live URL, and write documentation that leads with what it does and why, rather than opening with installation instructions**, exactly [the standard that separates a convincing project from a forgotten repository](/blog/fresher-resume-projects-that-get-interviews) anywhere technical hiring happens.
+Deploy your strongest project somewhere reachable with a live URL, and write documentation that leads with what it does and why, rather than opening with installation instructions, exactly [the standard that separates a convincing project from a forgotten repository](/blog/fresher-resume-projects-that-get-interviews) anywhere technical hiring happens.
 
-**Be ready to discuss specific trade-offs and decisions within your own project in real depth**, this is what the technical interview genuinely probes, a project you can only describe superficially, however impressive it looks on the surface, performs worse under real questioning than a simpler project you genuinely understand end to end.
+Be ready to discuss specific trade-offs and decisions within your own project in real depth, this is what the technical interview genuinely probes, a project you can only describe superficially, however impressive it looks on the surface, performs worse under real questioning than a simpler project you genuinely understand end to end.
 
 ## Common Mistakes
 

@@ -29,9 +29,9 @@ showcase: none
 
 ## Is a bond a bad deal?
 
-**Not automatically, and this is worth stating clearly.** A bonded scholarship can be an excellent deal, particularly where it provides substantial funding, guaranteed employment on graduation removing genuine job search uncertainty, and a real, structured career path with an organisation you would genuinely want to work for regardless.
+Not automatically, and this is worth stating clearly. A bonded scholarship can be an excellent deal, particularly where it provides substantial funding, guaranteed employment on graduation removing genuine job search uncertainty, and a real, structured career path with an organisation you would genuinely want to work for regardless.
 
-**The decision should be made deliberately, weighing the actual terms against your own genuine priorities**, rather than either accepting reflexively because the funding is attractive, or declining reflexively because the idea of a bond sounds restrictive.
+The decision should be made deliberately, weighing the actual terms against your own genuine priorities, rather than either accepting reflexively because the funding is attractive, or declining reflexively because the idea of a bond sounds restrictive.
 
 ## What to actually read before signing
 
@@ -41,15 +41,15 @@ showcase: none
 
 **Whether the role you would be placed in after graduation is guaranteed to be specific, or whether placement is at the organisation's discretion within a general area**, this affects how much certainty the scholarship actually provides about your future day-to-day work.
 
-**Any provisions for further study, transfer, or a change in circumstances during the bond period.**
+**Any provisions for further study**, transfer, or a change in circumstances during the bond period.
 
 ## Weighing a bonded scholarship against an unbonded path
 
-**Compare the whole picture, not just the immediate financial support.** A bonded scholarship removes genuine job search uncertainty and often provides substantial funding, an unbonded path preserves complete flexibility but requires you to fund your education and navigate the job search independently.
+Compare the whole picture, not just the immediate financial support. A bonded scholarship removes genuine job search uncertainty and often provides substantial funding, an unbonded path preserves complete flexibility but requires you to fund your education and navigate the job search independently.
 
-**Consider whether the organisation is one you would genuinely want to work for even without the bond attached**, if the honest answer is yes, the bond is a considerably smaller constraint in practice than if you are accepting primarily for the funding while feeling ambivalent about the actual employer.
+Consider whether the organisation is one you would genuinely want to work for even without the bond attached, if the honest answer is yes, the bond is a considerably smaller constraint in practice than if you are accepting primarily for the funding while feeling ambivalent about the actual employer.
 
-**Consider your own tolerance for a defined, multi-year commitment early in your career**, against the genuine value of the certainty and funding on offer, this is a legitimate personal trade-off rather than one with a single universally correct answer.
+Consider your own tolerance for a defined, multi-year commitment early in your career, against the genuine value of the certainty and funding on offer, this is a legitimate personal trade-off rather than one with a single universally correct answer.
 
 ## If you are already bonded and reconsidering
 

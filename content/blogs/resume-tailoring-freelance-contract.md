@@ -127,7 +127,7 @@ These signals directly address the contract employer's biggest risk: paying for 
 
 If you have a history of 3-12 month contracts, a simple label helps:
 
-**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles, 2021-Present**
+**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles**, 2021-Present
 
 List clients below, with dates and key deliverables.
 This is standard and professional for contract professionals.

@@ -21,7 +21,7 @@ showcase: none
 
 ## Why this varies so much
 
-**There is no single answer to "do I need Chinese to work in China", because the honest answer depends entirely on the specific employer and role**, treating the question as having one universal answer is the most common source of wasted job search effort in this market.
+**There is no single, universal answer to "do I need Chinese to work in China," because the honest answer depends entirely on the specific employer and role**, treating the question as having one universal answer is the most common source of wasted job search effort in this market.
 
 **Domestic employers, including [state-owned enterprises](/blog/china-state-owned-enterprise-jobs) and most private Chinese companies, generally operate primarily or entirely in Mandarin**, both the recruiting and interview process and the daily working environment, this is the default assumption for this category and a real, not nominal, requirement.
 
@@ -31,13 +31,13 @@ showcase: none
 
 ## Assessing what a role actually needs
 
-**Read the posting for explicit language requirements**, increasingly common for postings to state a required level directly, and where stated, this is a real filter rather than a formality.
+Read the posting for explicit language requirements, increasingly common for postings to state a required level directly, and where stated, this is a real filter rather than a formality.
 
-**Ask directly rather than assuming**, a short, direct question to a recruiter about the team's actual working language, and what proportion of daily work happens in Mandarin versus English, produces far more reliable information than inferring from the company's general profile.
+Ask directly rather than assuming, a short, direct question to a recruiter about the team's actual working language, and what proportion of daily work happens in Mandarin versus English, produces far more reliable information than inferring from the company's general profile.
 
-**Distinguish between interview language and working language**, some employers interview in English but expect meaningful Mandarin ability for the actual role, others do the reverse, clarify both separately rather than assuming they match.
+Distinguish between interview language and working language, some employers interview in English but expect meaningful Mandarin ability for the actual role, others do the reverse, clarify both separately rather than assuming they match.
 
-**Talk to someone currently in a similar role if you can**, through an alumni network or a professional contact, this single conversation frequently reveals the actual daily language reality far more accurately than any official description.
+Talk to someone currently in a similar role if you can, through an alumni network or a professional contact, this single conversation frequently reveals the actual daily language reality far more accurately than any official description.
 
 ## Business Mandarin versus conversational fluency
 
@@ -45,17 +45,17 @@ showcase: none
 
 **If your target role requires professional Mandarin, assess this specifically**, not just your general conversational comfort, professional or business Mandarin study, distinct from general language courses, is worth pursuing if you are targeting roles at domestic employers or Mandarin-primary teams.
 
-**Certification level provides a useful, if imperfect, benchmark**, the [HSK level guide](/blog/china-hsk-levels-for-employment) covers how specific certification levels map to realistic job requirements, worth reading alongside this article if you are trying to gauge where you currently stand relative to a specific role's needs.
+**Certification level provides a useful, if imperfect, benchmark**, the [HSK level guide](/blog/china-hsk-levels-for-employment) covers how specific certification levels map to realistic job requirements, worth reading alongside this article if you are trying to gauge where you currently stand relative to a specific role's needs. Note that HSK (Hanyu Shuiping Kaoshi) is specifically the test built for non-native learners — a separate test, PSC (普通话水平测试, Putonghua Proficiency Test), certifies standard Mandarin pronunciation and is aimed mainly at native or near-native speakers entering professions like teaching or broadcasting. If a job posting mentions a language certification requirement, checking which of the two it actually means avoids you preparing for, or citing, the wrong credential entirely.
 
 ## Roles genuinely accessible with limited Mandarin
 
-**Certain technical and research roles at multinational companies**, particularly where the immediate team operates in English and the work itself is not primarily client or public facing in Mandarin.
+Certain technical and research roles at multinational companies, particularly where the immediate team operates in English and the work itself is not primarily client or public facing in Mandarin.
 
-**Some [teaching positions](/blog/china-english-teaching-jobs-guide)**, particularly at international schools, where English is the primary working language of the role itself, though basic Mandarin still meaningfully improves daily life and professional integration.
+Some [teaching positions](/blog/china-english-teaching-jobs-guide), particularly at international schools, where English is the primary working language of the role itself, though basic Mandarin still meaningfully improves daily life and professional integration.
 
-**Regional coordination or specific global-facing roles** at some multinational companies, where the function is explicitly to bridge between a China operation and an international headquarters.
+Regional coordination or specific global-facing roles at some multinational companies, where the function is explicitly to bridge between a China operation and an international headquarters.
 
-**These roles exist and are genuinely accessible, and they represent a real minority of the overall market**, worth being honest with yourself that the bulk of the domestic job market, including the [large state-owned enterprise sector](/blog/china-state-owned-enterprise-jobs) and most domestic private companies, remains substantially closed without meaningful Mandarin ability.
+These roles exist and are genuinely accessible, and they represent a real minority of the overall market, worth being honest with yourself that the bulk of the domestic job market, including the [large state-owned enterprise sector](/blog/china-state-owned-enterprise-jobs) and most domestic private companies, remains substantially closed without meaningful Mandarin ability.
 
 ## Building the language ability if you need it
 
@@ -67,9 +67,9 @@ showcase: none
 
 ## Testing your assumptions before committing significant effort
 
-**Rather than assuming a general sense of "I would need much better Mandarin" and either giving up on the domestic market entirely or delaying your search indefinitely to study, get specific, direct information first**, contact a small number of real recruiters or HR contacts at genuinely representative target employers and ask directly what level their specific roles actually require, this concrete information is worth more than any general assumption formed without checking.
+Rather than assuming a general sense of "I would need much better Mandarin" and either giving up on the domestic market entirely or delaying your search indefinitely to study, get specific, direct information first, contact a small number of real recruiters or HR contacts at genuinely representative target employers and ask directly what level their specific roles actually require, this concrete information is worth more than any general assumption formed without checking.
 
-**Consider whether a hybrid strategy, targeting the accessible minority of roles now while building language ability deliberately over time toward the larger domestic market, better serves your situation than an all-or-nothing approach**, this lets you gain real local work experience and income while continuing to build toward broader long-term options.
+Consider whether a hybrid strategy, targeting the accessible minority of roles now while building language ability deliberately over time toward the larger domestic market, better serves your situation than an all-or-nothing approach, this lets you gain real local work experience and income while continuing to build toward broader long-term options.
 
 ## The specific vocabulary that matters most for a job search itself
 
@@ -109,3 +109,7 @@ No, this varies considerably by company and even by specific team, worth checkin
 ### Should I mention my language level on my resume?
 
 Yes, clearly and honestly, stated alongside any relevant certification level, the [resume format guide](/blog/china-resume-format-guide) and [HSK levels guide](/blog/china-hsk-levels-for-employment) cover how to present this effectively.
+
+### What's the difference between HSK and PSC?
+
+HSK is the standard test for non-native Mandarin learners and the one most job postings and international candidates mean by "Chinese proficiency test." PSC (Putonghua Proficiency Test) certifies standard pronunciation and is aimed mainly at native or near-native speakers in professions like teaching or broadcasting — check which one a specific posting actually means before assuming.

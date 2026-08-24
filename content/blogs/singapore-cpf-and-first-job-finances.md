@@ -31,11 +31,11 @@ showcase: none
 
 ## Income tax, and how it differs from other systems
 
-**Singapore's income tax rates are generally lower than in many comparable developed economies**, this is a genuine and often cited feature of the local system, worth factoring into any [broader real-income comparison against opportunities in other countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore).
+Singapore's income tax rates are generally lower than in many comparable developed economies, this is a genuine and often cited feature of the local system, worth factoring into any [broader real-income comparison against opportunities in other countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore).
 
-**Tax is generally not deducted automatically from each monthly payslip in the way it is in some other countries' payroll systems**, instead, you generally file and pay based on your income for the preceding year, this means understanding your obligation and budgeting for it is a genuinely different discipline from a system where deductions happen automatically throughout the year, worth setting aside funds proactively for this rather than assuming your monthly take-home figure already accounts for it.
+Tax is generally not deducted automatically from each monthly payslip in the way it is in some other countries' payroll systems, instead, you generally file and pay based on your income for the preceding year, this means understanding your obligation and budgeting for it is a genuinely different discipline from a system where deductions happen automatically throughout the year, worth setting aside funds proactively for this rather than assuming your monthly take-home figure already accounts for it.
 
-**IRAS (the Inland Revenue Authority of Singapore) is the tax authority you'll deal with directly.** Your employer reports your income to IRAS, and you file your own return through the myTax Portal, typically in March for the preceding calendar year's income — a genuinely different rhythm from a system with monthly withholding, so mark the filing window in your calendar rather than assuming a reminder will find you.
+IRAS (the Inland Revenue Authority of Singapore) is the tax authority you'll deal with directly. Your employer reports your income to IRAS, and you file your own return through the myTax Portal, typically in March for the preceding calendar year's income — a genuinely different rhythm from a system with monthly withholding, so mark the filing window in your calendar rather than assuming a reminder will find you.
 
 ## What to check on your first payslip
 
@@ -49,11 +49,11 @@ showcase: none
 
 ## Building a realistic first-job budget
 
-**Set aside funds proactively for your annual income tax obligation, rather than assuming your monthly take-home figure already fully accounts for it**, given the system's different structure from countries with automatic monthly withholding.
+Set aside funds proactively for your annual income tax obligation, rather than assuming your monthly take-home figure already fully accounts for it, given the system's different structure from countries with automatic monthly withholding.
 
-**If you are a foreign pass holder, remember you are not accumulating CPF savings the way a citizen or permanent resident colleague is**, worth considering your own independent savings and retirement planning with this in mind, rather than assuming an equivalent structure exists for you automatically.
+If you are a foreign pass holder, remember you are not accumulating CPF savings the way a citizen or permanent resident colleague is, worth considering your own independent savings and retirement planning with this in mind, rather than assuming an equivalent structure exists for you automatically.
 
-**Housing, transport and general living costs vary considerably depending on your specific arrangement**, build a realistic budget based on actual current costs for how you intend to live, rather than a general assumption.
+Housing, transport and general living costs vary considerably depending on your specific arrangement, build a realistic budget based on actual current costs for how you intend to live, rather than a general assumption.
 
 ## Common Mistakes
 

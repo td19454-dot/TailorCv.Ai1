@@ -31,13 +31,13 @@ For a foreign graduate, language ability is the constraint that shapes the whole
 
 ## What the levels mean in practice
 
-**Conversational.** You can manage daily life, hold social conversations and handle routine situations. Genuinely useful and generally not sufficient for a Japanese-language workplace.
+Conversational. You can manage daily life, hold social conversations and handle routine situations. Genuinely useful and generally not sufficient for a Japanese-language workplace.
 
-**Business level.** Reading and writing formal documents and emails, participating in meetings, handling the layered politeness register that Japanese business communication requires, and managing nuance under pressure. This is a substantially higher bar than conversational fluency and it is what "business Japanese" means when an employer states it.
+Business level. Reading and writing formal documents and emails, participating in meetings, handling the layered politeness register that Japanese business communication requires, and managing nuance under pressure. This is a substantially higher bar than conversational fluency and it is what "business Japanese" means when an employer states it.
 
-**Native or near-native.** Expected for some client-facing, legal, and communications-heavy roles.
+Native or near-native. Expected for some client-facing, legal, and communications-heavy roles.
 
-**The gap that catches people out.** Someone comfortable in daily conversation frequently discovers that a business meeting, a formal email chain and a keigo-heavy client interaction are a different skill entirely. This gap is real and it is the reason a self-assessment based on social fluency misleads.
+The gap that catches people out. Someone comfortable in daily conversation frequently discovers that a business meeting, a formal email chain and a keigo-heavy client interaction are a different skill entirely. This gap is real and it is the reason a self-assessment based on social fluency misleads.
 
 ## How the requirement varies by employer
 
@@ -57,15 +57,15 @@ For a foreign graduate, language ability is the constraint that shapes the whole
 
 ## Qualifications and what they signal
 
-**The [JLPT](/blog/japan-jlpt-n2-n1-for-employment) is the standard reference point.** Employers state levels in job postings and it is the shorthand the market uses. The [level guide](/blog/japan-jlpt-n2-n1-for-employment) covers what each level means for employment specifically.
+The [JLPT](/blog/japan-jlpt-n2-n1-for-employment) is the standard reference point. Employers state levels in job postings and it is the shorthand the market uses. The [level guide](/blog/japan-jlpt-n2-n1-for-employment) covers what each level means for employment specifically.
 
-**A certificate is a signal, not the skill itself.** The test does not assess speaking, which means a certificate and workplace communication ability can diverge in either direction. Employers know this, which is why interviews test the reality.
+A certificate is a signal, not the skill itself. The test does not assess speaking, which means a certificate and workplace communication ability can diverge in either direction. Employers know this, which is why interviews test the reality.
 
-**Business Japanese qualifications** exist separately and are more directly relevant to workplace communication for some employers.
+Business Japanese qualifications exist separately and are more directly relevant to workplace communication for some employers.
 
-**List your level prominently.** For a foreign applicant it is frequently the single most consequential line on your [rirekisho](/blog/japan-resume-rirekisho-guide) and your [work history document](/blog/japan-shokumu-keirekisho-guide).
+List your level prominently. For a foreign applicant it is frequently the single most consequential line on your [rirekisho](/blog/japan-resume-rirekisho-guide) and your [work history document](/blog/japan-shokumu-keirekisho-guide).
 
-**Do not overstate it.** The first interview reveals your actual level immediately, and a mismatch between your stated qualification and your demonstrated ability damages credibility more than a lower honest level would.
+Do not overstate it. The first interview reveals your actual level immediately, and a mismatch between your stated qualification and your demonstrated ability damages credibility more than a lower honest level would.
 
 ## Improving it deliberately
 
@@ -81,11 +81,11 @@ For a foreign graduate, language ability is the constraint that shapes the whole
 
 ## Assessing what a specific role genuinely requires
 
-**Read the posting for any explicitly stated language requirement**, increasingly common at many employers, and where stated, this is a real and meaningful filter rather than a formality.
+Read the posting for any explicitly stated language requirement, increasingly common at many employers, and where stated, this is a real and meaningful filter rather than a formality.
 
-**Distinguish between the language required for the interview process itself and the language genuinely required for the actual daily work**, these sometimes differ, some employers interview partly in English while expecting meaningful working proficiency for the actual role, worth clarifying both separately rather than assuming they match.
+Distinguish between the language required for the interview process itself and the language genuinely required for the actual daily work, these sometimes differ, some employers interview partly in English while expecting meaningful working proficiency for the actual role, worth clarifying both separately rather than assuming they match.
 
-**Ask a recruiter directly what proportion of daily work genuinely happens in Japanese versus English for a specific team**, rather than inferring this from a company's general international reputation, which is frequently an unreliable predictor of any specific team's actual working language, exactly [the same caution that applies when assessing language requirements in any market](/blog/china-mandarin-requirements-for-jobs).
+Ask a recruiter directly what proportion of daily work genuinely happens in Japanese versus English for a specific team, rather than inferring this from a company's general international reputation, which is frequently an unreliable predictor of any specific team's actual working language, exactly [the same caution that applies when assessing language requirements in any market](/blog/china-mandarin-requirements-for-jobs).
 
 ## Business Japanese versus general conversational ability
 
@@ -95,9 +95,9 @@ For a foreign graduate, language ability is the constraint that shapes the whole
 
 ## Building the ability if you genuinely need it
 
-**This is a real, multi-year investment for most learners starting from a limited base, worth planning deliberately rather than assuming it can be built quickly if a specific opportunity requires it**, exactly [the same honest planning that any significant language investment requires](/blog/china-mandarin-requirements-for-jobs) in any market where meaningful fluency genuinely gates access to the majority of the job market.
+This is a real, multi-year investment for most learners starting from a limited base, worth planning deliberately rather than assuming it can be built quickly if a specific opportunity requires it, exactly [the same honest planning that any significant language investment requires](/blog/china-mandarin-requirements-for-jobs) in any market where meaningful fluency genuinely gates access to the majority of the job market.
 
-**Study or work directly in a Japanese-language environment accelerates progress considerably beyond classroom study alone**, if this is genuinely feasible within your timeline, it is worth prioritising over extended classroom-only study.
+Study or work directly in a Japanese-language environment accelerates progress considerably beyond classroom study alone, if this is genuinely feasible within your timeline, it is worth prioritising over extended classroom-only study.
 
 ## Common Mistakes
 

@@ -33,13 +33,13 @@ showcase: none
 
 ## Where they sit in the cycle
 
-**Summer of the penultimate year** is the main season, with applications opening in the [spring](/blog/usa-second-round-spring-recruiting) before.
+Summer of the penultimate year is the main season, with applications opening in the [spring](/blog/usa-second-round-spring-recruiting) before.
 
-**Autumn and winter programmes** follow, extending the opportunity into the year.
+Autumn and winter programmes follow, extending the opportunity into the year.
 
-**They precede the main selection period**, and participation frequently feeds into it — some companies invite internship participants to subsequent stages, and the familiarity itself matters.
+They precede the main selection period, and participation frequently feeds into it — some companies invite internship participants to subsequent stages, and the familiarity itself matters.
 
-**Which makes the timing consequential.** A student who discovers internships in their final year has missed the stage designed to precede the main round. The [timeline guide](/blog/japan-job-hunting-shukatsu-timeline) sets out the full sequence.
+Which makes the timing consequential. A student who discovers internships in their final year has missed the stage designed to precede the main round. The [timeline guide](/blog/japan-job-hunting-shukatsu-timeline) sets out the full sequence.
 
 ## Longer and more substantive options
 
@@ -57,15 +57,15 @@ showcase: none
 
 ## For international students
 
-**If you are studying in Japan**, you have access to the campus channels and the conventional cycle, and the main constraint is language for many programmes.
+If you are studying in Japan, you have access to the campus channels and the conventional cycle, and the main constraint is language for many programmes.
 
-**If you are studying overseas**, this is harder. Some programmes accept overseas applicants and some specifically target international students, and the practical obstacles — travel, accommodation, timing against a different academic calendar — are real.
+If you are studying overseas, this is harder. Some programmes accept overseas applicants and some specifically target international students, and the practical obstacles — travel, accommodation, timing against a different academic calendar — are real.
 
-**Check the status requirement.** Students in Japan on a student status generally need permission to engage in activities outside the scope of their status for paid work, and unpaid short programmes may sit differently. Confirm with your institution rather than assuming, since this is exactly the kind of detail where guessing is unsafe.
+Check the status requirement. Students in Japan on a student status generally need permission to engage in activities outside the scope of their status for paid work, and unpaid short programmes may sit differently. Confirm with your institution rather than assuming, since this is exactly the kind of detail where guessing is unsafe.
 
-**Applying from overseas for a paid internship** may require a specific status arrangement, which the host organisation would need to support.
+Applying from overseas for a paid internship may require a specific status arrangement, which the host organisation would need to support.
 
-**Language expectations vary as they do everywhere** — traditional companies generally conduct these in Japanese, while [English-operating employers](/blog/japan-english-speaking-jobs-guide) do not.
+Language expectations vary as they do everywhere — traditional companies generally conduct these in Japanese, while [English-operating employers](/blog/japan-english-speaking-jobs-guide) do not.
 
 ## Making it count
 
@@ -81,11 +81,11 @@ showcase: none
 
 ## Why an internship matters so much here specifically
 
-**An internship resolves two genuine doubts an employer has about an unfamiliar foreign candidate**, whether you can genuinely do the work, and whether the practical logistics of employing you, including the [work visa process](/blog/japan-work-visa-for-graduates), are manageable, exactly [the same two doubts an internship resolves for international students in any market](/blog/international-student-internship-strategy).
+An internship resolves two genuine doubts an employer has about an unfamiliar foreign candidate, whether you can genuinely do the work, and whether the practical logistics of employing you, including the [work visa process](/blog/japan-work-visa-for-graduates), are manageable, exactly [the same two doubts an internship resolves for international students in any market](/blog/international-student-internship-strategy).
 
-**Some internship programmes at large employers are genuinely connected to the [broader shinsotsu hiring pipeline](/blog/japan-new-grad-shinsotsu-hiring-explained)**, worth understanding whether a specific internship programme feeds into eventual graduate hiring, since this materially affects how strategically important a specific application is.
+Some internship programmes at large employers are genuinely connected to the [broader shinsotsu hiring pipeline](/blog/japan-new-grad-shinsotsu-hiring-explained), worth understanding whether a specific internship programme feeds into eventual graduate hiring, since this materially affects how strategically important a specific application is.
 
-**Short-term internship programmes, sometimes just a few days, are common alongside longer summer placements**, this differs somewhat from the longer internship convention in some other countries, worth understanding the specific format and expectations of any programme you apply to.
+Short-term internship programmes, sometimes just a few days, are common alongside longer summer placements, this differs somewhat from the longer internship convention in some other countries, worth understanding the specific format and expectations of any programme you apply to.
 
 ## Applying as an international student specifically
 
@@ -95,9 +95,9 @@ showcase: none
 
 ## Making the most of a short-format internship
 
-**Where a programme is genuinely brief, a few days rather than a full summer, prepare thoroughly in advance so you can contribute meaningfully within the limited time available**, research the specific company beforehand rather than arriving to learn about it from scratch during the programme itself.
+Where a programme is genuinely brief, a few days rather than a full summer, prepare thoroughly in advance so you can contribute meaningfully within the limited time available, research the specific company beforehand rather than arriving to learn about it from scratch during the programme itself.
 
-**Follow up genuinely afterward with anyone you connected with during the programme**, exactly the [same follow-up discipline that converts a good conversation into a lasting professional relationship anywhere](/blog/usa-cold-email-networking-students), a brief internship can still produce a genuinely useful ongoing contact if handled well afterward.
+Follow up genuinely afterward with anyone you connected with during the programme, exactly the [same follow-up discipline that converts a good conversation into a lasting professional relationship anywhere](/blog/usa-cold-email-networking-students), a brief internship can still produce a genuinely useful ongoing contact if handled well afterward.
 
 ## Common Mistakes
 

@@ -29,7 +29,7 @@ showcase: portfolio
 
 **Montreal has real depth, particularly in artificial intelligence research and gaming**, alongside a broader technology sector, and benefits from a somewhat different cost of living profile than Toronto or Vancouver.
 
-**Ottawa and Calgary each have meaningful, if smaller, technology employment, often connected to government, telecommunications or energy-adjacent technology work respectively.**
+**Ottawa and Calgary each have meaningful**, if smaller, technology employment, often connected to government, telecommunications or energy-adjacent technology work respectively.
 
 **The practical implication**, similar to the broader principle covered in the [major city job markets guide](/blog/canada-major-city-job-markets), is that limiting a search to a single assumed hub misses a genuinely substantial share of the actual opportunity.
 
@@ -37,15 +37,15 @@ showcase: portfolio
 
 ## What the hiring process looks like
 
-**Technical interviews closely mirror US convention**, algorithmic coding problems, often under time pressure, assessed on both correctness and communication while solving, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers almost entirely, since the underlying question banks and format are broadly international at this point.
+Technical interviews closely mirror US convention, algorithmic coding problems, often under time pressure, assessed on both correctness and communication while solving, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers almost entirely, since the underlying question banks and format are broadly international at this point.
 
-**Behavioural rounds follow the [collaborative framing that Canadian interviews generally reward](/blog/canada-new-grad-interview-preparation)**, crediting the team appropriately while still clearly articulating your own specific contribution.
+Behavioural rounds follow the [collaborative framing that Canadian interviews generally reward](/blog/canada-new-grad-interview-preparation), crediting the team appropriately while still clearly articulating your own specific contribution.
 
-**Take-home assignments and project-based assessments** appear at some employers, particularly smaller and mid-sized companies, alongside or instead of a purely live coding round.
+Take-home assignments and project-based assessments appear at some employers, particularly smaller and mid-sized companies, alongside or instead of a purely live coding round.
 
-**A real project you built yourself remains the strongest single credential a graduate can bring**, exactly the [same principle that holds in every technology market](/blog/fresher-resume-projects-that-get-interviews), something deployed and reachable, with a clear account of what was difficult about it, outweighs a longer list of completed coursework.
+A real project you built yourself remains the strongest single credential a graduate can bring, exactly the [same principle that holds in every technology market](/blog/fresher-resume-projects-that-get-interviews), something deployed and reachable, with a clear account of what was difficult about it, outweighs a longer list of completed coursework.
 
-**Waterloo's co-op program specifically feeds directly into this hiring pipeline.** Students in a co-op sequence rotate through several work terms during their degree rather than doing a single internship, which means by graduation a Waterloo co-op student typically has several rounds of real industry experience and interview practice behind them — a structural advantage worth understanding if you're evaluating where to study, and worth mentioning explicitly on your own resume if you came through a similar co-op sequence elsewhere, since it signals repeated, validated industry experience rather than a single internship.
+Waterloo's co-op program specifically feeds directly into this hiring pipeline. Students in a co-op sequence rotate through several work terms during their degree rather than doing a single internship, which means by graduation a Waterloo co-op student typically has several rounds of real industry experience and interview practice behind them — a structural advantage worth understanding if you're evaluating where to study, and worth mentioning explicitly on your own resume if you came through a similar co-op sequence elsewhere, since it signals repeated, validated industry experience rather than a single internship.
 
 ## The immigration advantage, specifically for this sector
 
@@ -57,11 +57,11 @@ showcase: portfolio
 
 ## Compensation, realistically
 
-**Base compensation at Canadian technology employers generally sits below top-tier US technology company compensation**, this is a real and widely understood gap, worth being honest about rather than assuming direct parity.
+Base compensation at Canadian technology employers generally sits below top-tier US technology company compensation, this is a real and widely understood gap, worth being honest about rather than assuming direct parity.
 
-**Against genuine Canadian cost of living, particularly outside the most expensive neighbourhoods of Toronto and Vancouver, the real, disposable outcome remains strong for most graduates**, the same [real-cost comparison discipline that applies to any location decision](/blog/usa-relocation-and-cost-of-living-first-job) is worth applying here rather than comparing headline salary figures across countries directly.
+Against genuine Canadian cost of living, particularly outside the most expensive neighbourhoods of Toronto and Vancouver, the real, disposable outcome remains strong for most graduates, the same [real-cost comparison discipline that applies to any location decision](/blog/usa-relocation-and-cost-of-living-first-job) is worth applying here rather than comparing headline salary figures across countries directly.
 
-**Mid-sized companies and the technology divisions of traditional employers, particularly the major banks, frequently offer competitive compensation with meaningfully less competition for the role than a well-known technology-first employer**, this segment is consistently underexplored by graduates who default to applying only at companies with strong general technology brand recognition.
+Mid-sized companies and the technology divisions of traditional employers, particularly the major banks, frequently offer competitive compensation with meaningfully less competition for the role than a well-known technology-first employer, this segment is consistently underexplored by graduates who default to applying only at companies with strong general technology brand recognition.
 
 ## Building a search that covers the real market
 
@@ -71,7 +71,7 @@ showcase: portfolio
 
 **Consider hubs beyond the city you default to assuming is the only real option.** Waterloo, Montreal, Ottawa and Calgary each offer genuine opportunity with different character and cost of living.
 
-**Build one strong project, and confirm your resume [parses cleanly](/ats-analysis) and matches the language of each specific posting.**
+**Build one strong project**, and confirm your resume [parses cleanly](/ats-analysis) and matches the language of each specific posting.
 
 ## Common Mistakes
 

@@ -27,15 +27,15 @@ showcase: none
 
 ## Housing
 
-**Research realistic current housing options and costs before arriving**, rather than deciding once you are already there under time pressure, actual current listings for the type of housing and area you are considering give a far more accurate picture than a general reputation about cost.
+Research realistic current housing options and costs before arriving, rather than deciding once you are already there under time pressure, actual current listings for the type of housing and area you are considering give a far more accurate picture than a general reputation about cost.
 
-**Consider temporary accommodation for your first few weeks**, rather than committing to a long-term lease immediately upon arrival, this gives you time to actually see different areas and understand your commute and daily life before making a longer-term commitment.
+Consider temporary accommodation for your first few weeks, rather than committing to a long-term lease immediately upon arrival, this gives you time to actually see different areas and understand your commute and daily life before making a longer-term commitment.
 
-**Understand the typical lease terms and deposit requirements** for the type of housing you are considering, these vary and are worth understanding clearly before you are under pressure to sign something quickly.
+Understand the typical lease terms and deposit requirements for the type of housing you are considering, these vary and are worth understanding clearly before you are under pressure to sign something quickly.
 
 ## The practical sequence
 
-**Some administrative tasks depend on others being completed first, understanding the general sequence in advance saves real time and frustration.**
+**Some administrative tasks depend on others being completed first**, understanding the general sequence in advance saves real time and frustration.
 
 **A local phone number is generally an early and useful step**, since it is often needed for various other registrations and verifications that follow.
 
@@ -45,11 +45,11 @@ showcase: none
 
 ## Budgeting for the transition
 
-**There is often a gap between your arrival and your first full paycheck**, plan to fund yourself for this period, a specific number of weeks depending on your employer's payroll cycle, without relying on income that has not yet arrived.
+There is often a gap between your arrival and your first full paycheck, plan to fund yourself for this period, a specific number of weeks depending on your employer's payroll cycle, without relying on income that has not yet arrived.
 
-**Housing deposits and initial setup costs can be substantial**, several weeks or months of rent as a deposit is common in many housing arrangements, payable before you move in and generally before your first paycheck.
+Housing deposits and initial setup costs can be substantial, several weeks or months of rent as a deposit is common in many housing arrangements, payable before you move in and generally before your first paycheck.
 
-**Build a realistic buffer, several weeks of full living costs available before you travel**, rather than assuming your first salary will cover the transition period, this is the same discipline worth applying to [any international relocation for a first job](/blog/first-job-abroad-practical-checklist).
+Build a realistic buffer, several weeks of full living costs available before you travel, rather than assuming your first salary will cover the transition period, this is the same discipline worth applying to [any international relocation for a first job](/blog/first-job-abroad-practical-checklist).
 
 ## Building a local network
 
@@ -59,9 +59,9 @@ showcase: none
 
 ## What to keep organised from day one
 
-**Your pass documentation, employment contract, and any correspondence related to your work authorisation**, keep these organised and accessible, you will likely need to reference them again for various administrative purposes.
+Your pass documentation, employment contract, and any correspondence related to your work authorisation, keep these organised and accessible, you will likely need to reference them again for various administrative purposes.
 
-**Your first payslip and financial records**, check these carefully in your first month, exactly the [same discipline worth applying to any first payslip in a new country](/blog/canada-first-job-taxes-and-benefits), and keep them organised for your own records.
+Your first payslip and financial records, check these carefully in your first month, exactly the [same discipline worth applying to any first payslip in a new country](/blog/canada-first-job-taxes-and-benefits), and keep them organised for your own records.
 
 ## Common Mistakes
 

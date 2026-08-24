@@ -37,15 +37,15 @@ showcase: none
 
 ## What "English-speaking role" actually means in practice
 
-**Genuinely English-only roles exist and are the minority.** Even at English-operating employers, some Japanese is frequently useful for internal coordination, administration and daily working life.
+Genuinely English-only roles exist and are the minority. Even at English-operating employers, some Japanese is frequently useful for internal coordination, administration and daily working life.
 
-**More common is English as the working language with Japanese as an advantage.** Meetings and documentation in English, with Japanese helping in ways that make you more effective and more promotable.
+More common is English as the working language with Japanese as an advantage. Meetings and documentation in English, with Japanese helping in ways that make you more effective and more promotable.
 
-**Client-facing work usually requires Japanese**, even at foreign-affiliated companies, because the clients are Japanese.
+Client-facing work usually requires Japanese, even at foreign-affiliated companies, because the clients are Japanese.
 
-**Internal progression frequently favours bilingual staff.** People who remain English-only sometimes find their trajectory limited relative to colleagues who developed the language, which is worth knowing at the point you decide how much effort to invest.
+Internal progression frequently favours bilingual staff. People who remain English-only sometimes find their trajectory limited relative to colleagues who developed the language, which is worth knowing at the point you decide how much effort to invest.
 
-**The honest framing:** English gets you in at specific employers. Japanese determines how far you go and how many options remain open to you over time.
+The honest framing: English gets you in at specific employers. Japanese determines how far you go and how many options remain open to you over time.
 
 ## Where these jobs are geographically
 
@@ -61,17 +61,17 @@ showcase: none
 
 ## Finding these roles
 
-**Bilingual and international job boards** specialising in the Japan market are the main channel and are where these roles concentrate.
+Bilingual and international job boards specialising in the Japan market are the main channel and are where these roles concentrate.
 
-**Foreign chambers of commerce** in Japan run job boards and networking events.
+Foreign chambers of commerce in Japan run job boards and networking events.
 
-**Direct applications to foreign-affiliated companies' Japan careers pages.**
+Direct applications to foreign-affiliated companies' Japan careers pages.
 
-**University career services**, if you are studying in Japan, which frequently know which employers recruit internationally.
+University career services, if you are studying in Japan, which frequently know which employers recruit internationally.
 
-**Professional communities and meetups**, which are active in Tokyo particularly and are a genuine channel — the [outreach approach](/blog/usa-cold-email-networking-students) works here as anywhere.
+Professional communities and meetups, which are active in Tokyo particularly and are a genuine channel — the [outreach approach](/blog/usa-cold-email-networking-students) works here as anywhere.
 
-**Recruitment agencies specialising in bilingual placement**, which are a more significant channel in Japan than in many markets.
+Recruitment agencies specialising in bilingual placement, which are a more significant channel in Japan than in many markets.
 
 ## Being realistic about it
 
@@ -85,13 +85,13 @@ showcase: none
 
 ## Realistically assessing which employers genuinely fit this description
 
-**International companies with a substantial Japan presence** are the most reliable category, particularly on teams explicitly organised to serve international clients or coordinate with a global headquarters, worth researching the specific team's actual daily working language directly rather than relying on the company's general reputation, exactly [the same caution that applies to any language requirement assessment](/blog/japan-japanese-language-requirements-jobs).
+International companies with a substantial Japan presence are the most reliable category, particularly on teams explicitly organised to serve international clients or coordinate with a global headquarters, worth researching the specific team's actual daily working language directly rather than relying on the company's general reputation, exactly [the same caution that applies to any language requirement assessment](/blog/japan-japanese-language-requirements-jobs).
 
-**English teaching roles**, [covered in the dedicated JET programme and teaching guide](/blog/japan-jet-programme-and-teaching-jobs), represent a distinct and genuinely accessible category where English is the core requirement of the role itself.
+English teaching roles, [covered in the dedicated JET programme and teaching guide](/blog/japan-jet-programme-and-teaching-jobs), represent a distinct and genuinely accessible category where English is the core requirement of the role itself.
 
-**Some technology companies, particularly startups with international founders or significant international investment**, sometimes operate substantially in English, worth researching specific companies directly.
+Some technology companies, particularly startups with international founders or significant international investment, sometimes operate substantially in English, worth researching specific companies directly.
 
-**Roles explicitly focused on international business, trade or tourism** sometimes place less weight on Japanese fluency, given the nature of the work itself.
+Roles explicitly focused on international business, trade or tourism sometimes place less weight on Japanese fluency, given the nature of the work itself.
 
 ## What to verify before committing to a job search built around this assumption
 
@@ -103,9 +103,9 @@ showcase: none
 
 ## Realistic expectations for career progression in this category
 
-**Roles in this category, while genuinely accessible without advanced Japanese, may offer somewhat different career progression paths than roles fully integrated within the traditional domestic employment system**, worth understanding this honestly as part of your longer-term career planning, rather than assuming identical progression regardless of which category of employer you join.
+Roles in this category, while genuinely accessible without advanced Japanese, may offer somewhat different career progression paths than roles fully integrated within the traditional domestic employment system, worth understanding this honestly as part of your longer-term career planning, rather than assuming identical progression regardless of which category of employer you join.
 
-**Building at least conversational Japanese over time, even in a role that does not strictly require it, genuinely widens your future options within the broader Japanese job market**, worth investing in this incrementally even while working in an English-primary role.
+Building at least conversational Japanese over time, even in a role that does not strictly require it, genuinely widens your future options within the broader Japanese job market, worth investing in this incrementally even while working in an English-primary role.
 
 ## Common Mistakes
 
@@ -133,7 +133,7 @@ A significant and genuinely accessible one, though not the only route, internati
 Research international companies' Japan operations directly, check job platforms that specifically cater to English-speaking candidates in Japan, and ask directly about a specific team's actual working language during any application process.
 ## Weighing this route against building Japanese ability instead
 
-**Consider honestly whether pursuing an English-primary role now, while building Japanese ability over time, or investing more heavily upfront in language study before entering the broader market, better fits your own circumstances and timeline.**
+**Consider honestly whether pursuing an English-primary role now**, while building Japanese ability over time, or investing more heavily upfront in language study before entering the broader market, better fits your own circumstances and timeline.
 
 **Neither approach is universally correct**, an English-primary role provides immediate entry and income while you build language ability at a sustainable pace, while upfront language investment opens the considerably larger domestic market sooner, worth choosing deliberately based on your own genuine priorities and financial situation rather than defaulting to either without consideration.
 

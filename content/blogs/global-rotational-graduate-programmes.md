@@ -144,7 +144,7 @@ Counter-intuitive. If your final rotation is in your target team and it goes bad
 
 **Prefer teams with headcount pressure.** A team that is growing needs people and will fight for you at placement. A team that is stable and fully staffed will like you and be unable to take you. This information is not published, but managers will tell you if you ask what their headcount looks like next year.
 
-**Avoid the rotation everyone in your cohort wants, if you can get equivalent learning elsewhere.**
+**Avoid the rotation everyone in your cohort wants**, if you can get equivalent learning elsewhere.
 
 Competing with eight peers for the attention of one manager is a worse deal than being the only associate a different manager has.
 
@@ -164,7 +164,7 @@ Not to impress them — to ask what they do, what is annoying about it, and what
 
 They know how everything really works and are usually delighted to be asked.
 
-**Write down every acronym you do not understand, and look them up in one batch on Friday.**
+**Write down every acronym you do not understand**, and look them up in one batch on Friday.
 
 Interrupting to ask each time is fine early and tiresome by week three.
 
@@ -206,7 +206,7 @@ The unforced error is treating these as forms. They are read, they are scored, a
 
 The offer conversation is the last point at which you have leverage and the employer is motivated to answer. Most candidates ask about culture. These are more useful.
 
-**"What proportion of last year's cohort was placed into a permanent role, and where did the rest go?"**
+**"What proportion of last year's cohort was placed into a permanent role**, and where did the rest go?"
 
 The single most informative question. A confident specific number is a good sign; vagueness is worth noticing.
 

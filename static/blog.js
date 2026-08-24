@@ -1077,6 +1077,48 @@
     list.remove();
   });
 
+  /* A third shape the corpus uses just as often as the list: "## Common
+     Mistakes" written as a run of "**Bold lead.** prose" paragraphs with no
+     <ul>/<ol> at all - the pass above only looks for a list, so these boxes
+     were left as one undifferentiated card instead of individually numbered
+     ones. Same treatment, paragraphs instead of list items. */
+  content.querySelectorAll(".callout-mistake").forEach((box) => {
+    if (box.classList.contains("mistake-grid-item")) return;
+    if (box.querySelector(":scope > ol, :scope > ul")) return;
+    const paras = Array.from(box.children).filter((n) => n.tagName === "P");
+    if (paras.length < 2) return;
+    const allLead = paras.every((p) => {
+      const lead = p.firstElementChild;
+      return lead && /^(STRONG|B)$/.test(lead.tagName) && p.firstChild === lead;
+    });
+    if (!allLead) return;
+
+    const grid = document.createElement("div");
+    grid.className = "mistake-grid";
+    paras[0].before(grid);
+
+    paras.forEach((p, i) => {
+      const card = document.createElement("section");
+      card.className = "callout-box callout-mistake mistake-grid-item";
+      const head = document.createElement("div");
+      head.className = "callout-head";
+      head.innerHTML = '<span class="callout-ico">' + ICON.mistake + "</span>";
+      const h3 = document.createElement("h3");
+
+      const lead = p.firstElementChild;
+      let title = "Mistake " + (i + 1) + ": " + (lead.textContent || "").replace(/[,:;.\s]*$/, "");
+      lead.remove();
+      if (p.firstChild && p.firstChild.nodeType === Node.TEXT_NODE) {
+        p.firstChild.textContent = p.firstChild.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
+      }
+      h3.textContent = title;
+      head.appendChild(h3);
+      card.appendChild(head);
+      card.appendChild(p);
+      grid.appendChild(card);
+    });
+  });
+
   /* "Before (generic resume)" / "After (Matched Resume)" followed by a code
      block. These are the strongest proof in the article but rendered as two
      identical grey boxes, so the contrast was invisible. Pair the label with
@@ -1305,9 +1347,11 @@ const tcxLeadRuns = () => {
     if (!isLead(kids[i])) { i++; continue; }
     let j = i;
     while (j < kids.length && isLead(kids[j])) j++;
-    // 2, not the original 3: most H2 sections in this corpus run exactly two
-    // bold-lead paragraphs, and those were falling through as plain,
-    // unboxed text - the far more common case, not the exception.
+    // 2: almost every paragraph in this corpus opens with a bold lead, so
+    // there is no threshold that boxes only a rare few sections - accepted
+    // as the final call that most 2+-paragraph sections become boxed cards,
+    // consistently, rather than some being boxed and others left as plain
+    // half-styled text depending on whether they happened to hit 3.
     if (j - i >= 2) {
       const run = document.createElement("div");
       run.className = "lead-run";

@@ -160,7 +160,7 @@ The most misunderstood test, because candidates try to guess what sounds impress
 
 **Patterns that generally score badly:** doing nothing and hoping; going straight to a senior person over your manager's head; acting unilaterally on incomplete information; and any response that avoids the difficulty entirely.
 
-**Answer as your best professional self, not your actual self and not a fictional hero.**
+**Answer as your best professional self**, not your actual self and not a fictional hero.
 
 Candidates who try to game these usually score worse, because the scoring is derived from real behavioural data rather than from what sounds good.
 

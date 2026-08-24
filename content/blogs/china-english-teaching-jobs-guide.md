@@ -21,9 +21,11 @@ showcase: none
 
 ## The legal requirements
 
-**A bachelor's degree is generally required**, from a recognised institution, this is a firm eligibility threshold for the standard work permit route rather than a preference.
+**A bachelor's degree is generally required**, from a recognised institution, in any field, this is a firm eligibility threshold for the standard work permit route rather than a preference or a rule that gets waived for a genuinely strong candidate.
 
-**A recognised teaching certification is increasingly expected**, and in some cases required, alongside the degree, this has become a more consistent requirement over recent years than it once was, worth obtaining before applying if you do not already hold one.
+**A recognised teaching certification is increasingly expected**, and in some cases required, alongside the degree — **TEFL (Teaching English as a Foreign Language) certification specifically** is the standard credential in this sector, and has become a formal work-permit requirement at many schools rather than just a preference, worth obtaining before applying if you do not already hold one; a 120-hour course is the commonly cited baseline most schools reference.
+
+**Work permits for English teaching roles have historically been restricted to citizens of a defined list of countries** — commonly the US, UK, Canada, Australia, New Zealand, Ireland, and South Africa, treated as the countries where English is the primary official language for this specific purpose. This is a real, structural eligibility filter distinct from the general work permit categories, worth confirming directly and currently if your citizenship isn't on the commonly-cited list, since this specific rule is genuinely restrictive rather than a general guideline.
 
 **Prior teaching or relevant work experience** is sometimes required or strongly preferred, similar in principle to the general experience threshold discussed in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates), though specific requirements for teaching roles can differ from other work permit categories.
 
@@ -33,13 +35,13 @@ showcase: none
 
 ## Vetting the employer carefully
 
-**This is the single most important practical step in this entire process.** Employer quality in this sector varies enormously, from well-established international schools and reputable training centres with clear contracts and proper sponsorship, to less reputable operators who may promise sponsorship they cannot or will not properly deliver.
+This is the single most important practical step in this entire process, worth taking more seriously than any other part of your search. Employer quality in this sector varies enormously, from well-established international schools and reputable training centres with clear contracts and proper sponsorship, to less reputable operators who may promise sponsorship they cannot or will not properly deliver.
 
-**Ask directly and specifically about the sponsorship process**, whether the school has sponsored foreign teachers before, and ask to speak with a current or recent foreign teacher at the school if at all possible, a direct conversation with someone who has actually worked there is worth more than any promotional material.
+Ask directly and specifically about the sponsorship process, whether the school has sponsored foreign teachers before, and ask to speak with a current or recent foreign teacher at the school if at all possible, a direct conversation with someone who has actually worked there is worth more than any promotional material.
 
-**Research the school independently**, checking for its actual registration and any publicly available information about its standing, rather than relying solely on what a recruiter or the school itself presents.
+Research the school independently, checking for its actual registration and any publicly available information about its standing, rather than relying solely on what a recruiter or the school itself presents.
 
-**Be cautious of arrangements that seem to bypass proper work permit sponsorship entirely**, working without proper authorisation carries real risk to you personally, exactly the same caution that applies to [any unclear work authorisation arrangement](/blog/usa-day-one-cpt-risks) anywhere.
+Be cautious of arrangements that seem to bypass proper work permit sponsorship entirely, working without proper authorisation carries real risk to you personally, exactly the same caution that applies to [any unclear work authorisation arrangement](/blog/usa-day-one-cpt-risks) anywhere.
 
 ## Where the roles actually are
 
@@ -53,17 +55,17 @@ showcase: none
 
 ## What the contract should cover
 
-**Salary, and whether it is genuinely competitive for the specific city tier**, compare against [what a realistic salary actually looks like](/blog/china-graduate-salary-expectations) for the location rather than assuming a headline figure represents good value everywhere.
+Salary, and whether it is genuinely competitive for the specific city tier, compare against [what a realistic salary actually looks like](/blog/china-graduate-salary-expectations) for the location rather than assuming a headline figure represents good value everywhere.
 
-**Housing arrangement**, some employers provide housing or a housing allowance, understand exactly what is offered and its real value.
+Housing arrangement, some employers provide housing or a housing allowance, understand exactly what is offered and its real value.
 
-**Working hours and actual teaching load**, distinct from total contracted hours, which sometimes include preparation and administrative time not always made clear upfront.
+Working hours and actual teaching load, distinct from total contracted hours, which sometimes include preparation and administrative time not always made clear upfront.
 
-**Flight allowance or reimbursement**, and any conditions attached to it.
+Flight allowance or reimbursement, and any conditions attached to it.
 
-**Contract length and any penalty for early termination**, read this carefully before signing.
+Contract length and any penalty for early termination, read this carefully before signing.
 
-**Health insurance provision**, and what it actually covers.
+Health insurance provision, and what it actually covers.
 
 ## Common Mistakes
 
@@ -82,15 +84,19 @@ showcase: none
 
 ## Financial planning specific to this role type
 
-**Understand exactly how your compensation compares to genuine local cost of living for the specific city you would be working in**, rather than a general national assumption, since costs and typical teaching salaries both vary considerably between major cities and smaller ones.
+Understand exactly how your compensation compares to genuine local cost of living for the specific city you would be working in, rather than a general national assumption, since costs and typical teaching salaries both vary considerably between major cities and smaller ones.
 
-**Clarify tax treatment and any social insurance contributions specific to your situation as a foreign employee before accepting an offer**, these details affect your actual take-home compensation meaningfully and are worth understanding precisely rather than discovering only once you have already started the role.
+Clarify tax treatment and any social insurance contributions specific to your situation as a foreign employee before accepting an offer, these details affect your actual take-home compensation meaningfully and are worth understanding precisely rather than discovering only once you have already started the role.
 
 ## Frequently Asked Questions
 
 ### Do I need a teaching certification to teach English in China?
 
-Increasingly expected, and in some cases required, alongside a bachelor's degree. Obtaining one before applying meaningfully widens the roles available to you.
+Increasingly expected, and in some cases required, alongside a bachelor's degree — TEFL certification specifically, commonly a 120-hour course, is the standard credential. Obtaining one before applying meaningfully widens the roles available to you.
+
+### Does my citizenship affect whether I can get a work permit to teach English?
+
+Yes, genuinely — eligibility has historically been restricted to citizens of a specific list of countries (commonly the US, UK, Canada, Australia, New Zealand, Ireland, and South Africa). If your citizenship isn't on the commonly-cited list, verify current specific eligibility directly before building a search plan around this route.
 
 ### Is it safe to work without a proper visa if a school offers to arrange it informally?
 

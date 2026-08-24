@@ -37,15 +37,15 @@ showcase: none
 
 ## Support specifically for international students
 
-**Many institutions run this separately** from the main career service, and students frequently do not know it exists.
+Many institutions run this separately from the main career service, and students frequently do not know it exists.
 
-**What it typically covers.** Guidance on the [work visa process](/blog/japan-work-visa-for-graduates) and the status change from student to employee. Lists of employers who have hired international graduates. Japanese-language document support. Sometimes dedicated advisers who understand both the recruiting system and the immigration side.
+What it typically covers. Guidance on the [work visa process](/blog/japan-work-visa-for-graduates) and the status change from student to employee. Lists of employers who have hired international graduates. Japanese-language document support. Sometimes dedicated advisers who understand both the recruiting system and the immigration side.
 
-**The question worth asking first:** which employers have hired international graduates from this university recently. The answer is a target list of companies with a demonstrated willingness, which is worth more than any general advice.
+The question worth asking first: which employers have hired international graduates from this university recently. The answer is a target list of companies with a demonstrated willingness, which is worth more than any general advice.
 
-**Ask about the job-hunting extension.** Graduates of Japanese universities who have not secured employment may be able to extend their stay to continue searching, subject to institutional support. This provision is genuinely useful and many students never hear of it — the [visa guide](/blog/japan-work-visa-for-graduates) covers the mechanics, and your institution is the authority on your own eligibility.
+Ask about the job-hunting extension. Graduates of Japanese universities who have not secured employment may be able to extend their stay to continue searching, subject to institutional support. This provision is genuinely useful and many students never hear of it — the [visa guide](/blog/japan-work-visa-for-graduates) covers the mechanics, and your institution is the authority on your own eligibility.
 
-**Ask about language support.** Some institutions run business Japanese classes aimed specifically at job hunting, which addresses exactly the gap between conversational and business ability that the [language requirements guide](/blog/japan-japanese-language-requirements-jobs) describes.
+Ask about language support. Some institutions run business Japanese classes aimed specifically at job hunting, which addresses exactly the gap between conversational and business ability that the [language requirements guide](/blog/japan-japanese-language-requirements-jobs) describes.
 
 ## When to go
 
@@ -59,21 +59,21 @@ showcase: none
 
 ## Using it well
 
-**Book a proper appointment** rather than dropping in, and bring specific questions.
+Book a proper appointment rather than dropping in, and bring specific questions.
 
-**Ask for the alumni employment data** by programme, not the institution-wide figures.
+Ask for the alumni employment data by programme, not the institution-wide figures.
 
-**Ask which employers have hired international graduates**, if that applies to you.
+Ask which employers have hired international graduates, if that applies to you.
 
-**Get your documents reviewed early**, before you need them for a deadline.
+Get your documents reviewed early, before you need them for a deadline.
 
-**Book mock interviews before your first real one**, not after.
+Book mock interviews before your first real one, not after.
 
-**Ask which on-campus sessions are worth attending.** Advisers know which companies are genuinely recruiting from your programme and which are running a branding exercise.
+Ask which on-campus sessions are worth attending. Advisers know which companies are genuinely recruiting from your programme and which are running a branding exercise.
 
-**Ask about the second new graduate route** if you are already past the standard cycle, since some employers recruit recent graduates outside it.
+Ask about the second new graduate route if you are already past the standard cycle, since some employers recruit recent graduates outside it.
 
-**And ask what you have not thought to ask.** An adviser who has run hundreds of students through this system knows the failure modes, and a direct question about what typically goes wrong for students like you produces unusually useful answers.
+And ask what you have not thought to ask. An adviser who has run hundreds of students through this system knows the failure modes, and a direct question about what typically goes wrong for students like you produces unusually useful answers.
 
 ## What they cannot do
 
@@ -89,11 +89,11 @@ showcase: none
 
 ## What these offices actually provide
 
-**Structured guidance specifically on the [broader shinsotsu hiring process](/blog/japan-new-grad-shinsotsu-hiring-explained)**, including how to prepare application documents like the [rirekisho](/blog/japan-resume-rirekisho-guide) and [shokumu keirekisho](/blog/japan-shokumu-keirekisho-guide) properly, worth using this guidance seriously, since these offices are specifically experienced with the local system's particular conventions.
+Structured guidance specifically on the [broader shinsotsu hiring process](/blog/japan-new-grad-shinsotsu-hiring-explained), including how to prepare application documents like the [rirekisho](/blog/japan-resume-rirekisho-guide) and [shokumu keirekisho](/blog/japan-shokumu-keirekisho-guide) properly, worth using this guidance seriously, since these offices are specifically experienced with the local system's particular conventions.
 
-**Direct relationships with specific employers**, some career centres maintain established connections with companies who have hired from that institution previously, worth asking directly which employers have a track record with your specific university.
+Direct relationships with specific employers, some career centres maintain established connections with companies who have hired from that institution previously, worth asking directly which employers have a track record with your specific university.
 
-**Mock interview practice**, genuinely valuable given the [distinct local interview conventions](/blog/japan-mensetsu-interview-questions-guide), worth using this resource actively rather than assuming general interview skills transfer without adjustment.
+Mock interview practice, genuinely valuable given the [distinct local interview conventions](/blog/japan-mensetsu-interview-questions-guide), worth using this resource actively rather than assuming general interview skills transfer without adjustment.
 
 ## For international students specifically
 
@@ -103,9 +103,9 @@ showcase: none
 
 ## Building a productive relationship with your career centre over time
 
-**Visit early in your studies, not only when you are ready to begin actively applying**, understanding what resources and relationships exist well in advance lets you plan your own preparation, including any language study, around realistic timelines.
+Visit early in your studies, not only when you are ready to begin actively applying, understanding what resources and relationships exist well in advance lets you plan your own preparation, including any language study, around realistic timelines.
 
-**Return regularly rather than treating a single visit as sufficient**, staff genuinely get to know students who engage consistently, and this familiarity can translate into more specific, useful guidance and introductions over time.
+Return regularly rather than treating a single visit as sufficient, staff genuinely get to know students who engage consistently, and this familiarity can translate into more specific, useful guidance and introductions over time.
 
 ## Common Mistakes
 

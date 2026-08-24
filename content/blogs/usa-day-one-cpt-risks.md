@@ -31,11 +31,11 @@ The mechanism is not exotic and the regulation does contemplate an exception to 
 
 Three features of the typical day-one arrangement invite attention, and understanding them tells you what you would have to defend.
 
-**The work looks like employment rather than curriculum.** In an ordinary CPT placement, the connection to coursework is visible — a co-op module, a supervised project, credit awarded against defined outcomes. In some day-one programmes the student works full-time at a job they already had, attends class occasionally or remotely, and the academic content is thin. That gap between the stated integration and the observable reality is exactly what an adjudicator looks for.
+The work looks like employment rather than curriculum. In an ordinary CPT placement, the connection to coursework is visible — a co-op module, a supervised project, credit awarded against defined outcomes. In some day-one programmes the student works full-time at a job they already had, attends class occasionally or remotely, and the academic content is thin. That gap between the stated integration and the observable reality is exactly what an adjudicator looks for.
 
-**Attendance patterns.** Programmes where students live and work hundreds of miles from campus and attend in concentrated weekend blocks are common in this space. This is not automatically improper, and it is a pattern that has been examined.
+Attendance patterns. Programmes where students live and work hundreds of miles from campus and attend in concentrated weekend blocks are common in this space. This is not automatically improper, and it is a pattern that has been examined.
 
-**The population.** Programmes drawing overwhelmingly from students who need continued work authorisation, rather than from applicants attracted by the academic content, look like an immigration product rather than an education.
+The population. Programmes drawing overwhelmingly from students who need continued work authorisation, rather than from applicants attracted by the academic content, look like an immigration product rather than an education.
 
 None of this means every day-one programme is a problem. It means the arrangement sits in a category that receives disproportionate examination, and that the examination happens later — at a change of status, at a consular [interview](/blog/usa-behavioral-interview-star-campus) when you travel, at a petition, sometimes years afterwards.
 
@@ -57,7 +57,7 @@ The asymmetry is the thing to hold on to: the institution collects tuition regar
 
 Set the legality question aside entirely, because there is a second consequence that applies even to arrangements nobody ever challenges.
 
-**Twelve months or more of full-time CPT eliminates your eligibility for OPT.**
+Twelve months or more of full-time CPT eliminates your eligibility for OPT.
 
 Not reduces it — eliminates it.
 
@@ -65,7 +65,7 @@ Part-time CPT does not carry the same effect. Full-time CPT under twelve months 
 
 Students discover this at exactly the wrong moment. They complete the programme, go to apply for OPT, and are told they have none. By then it is not recoverable.
 
-**Count carefully, and count in advance.** Track the months, know whether each authorisation is full-time or part-time, and confirm your position with your international office in writing before accepting an additional term.
+Count carefully, and count in advance. Track the months, know whether each authorisation is full-time or part-time, and confirm your position with your international office in writing before accepting an additional term.
 
 ## Why people do it anyway
 
@@ -83,31 +83,31 @@ These are real pressures and they are why the market for such programmes exists.
 
 If you are considering one of these programmes, these questions separate a genuine graduate programme with an integrated practical component from something that is not.
 
-**"How many credit hours is the practical component, and how is it assessed?"**
+"How many credit hours is the practical component, and how is it assessed?"
 
 A real curricular element has defined outcomes, a supervisor, deliverables and a grade. "You submit a reflection at the end of term" is thin.
 
-**"What proportion of students are enrolled primarily for the work authorisation?"**
+"What proportion of students are enrolled primarily for the work authorisation?"
 
 You will not get an honest answer, and how the question is handled tells you something.
 
-**"Is the degree accredited, and by whom?"**
+"Is the degree accredited, and by whom?"
 
 Check the accreditor independently rather than accepting a name.
 
-**"What happens to my status if the programme loses certification?"**
+"What happens to my status if the programme loses certification?"
 
 Institutions have lost the ability to enrol international students, and the students enrolled at the time bore the consequences.
 
-**"Can I see the CPT authorisation policy in writing?"**
+"Can I see the CPT authorisation policy in writing?"
 
 A programme confident in its arrangement documents it.
 
-**"How many of your graduates went on to have petitions approved?"**
+"How many of your graduates went on to have petitions approved?"
 
 Vagueness here is informative.
 
-**And the question to ask someone else entirely:** an immigration attorney, about your specific facts. This is the single most important line in this article. A school authorising CPT is not giving you a legal opinion on whether your arrangement will withstand examination — the designated school official's role is to administer the programme, not to defend your case later.
+And the question to ask someone else entirely: an immigration attorney, about your specific facts. This is the single most important line in this article. A school authorising CPT is not giving you a legal opinion on whether your arrangement will withstand examination — the designated school official's role is to administer the programme, not to defend your case later.
 
 ## Safer alternatives, considered honestly
 
@@ -127,17 +127,17 @@ Most people arrive at day-one CPT after concluding they have no other option. Fr
 
 ## What to do if you are already in one
 
-**Do not panic, and do not stop attending.** Withdrawing abruptly creates its own status problem.
+Do not panic, and do not stop attending. Withdrawing abruptly creates its own status problem.
 
-**Get an independent legal opinion on your specific facts.** Not a forum, not the school, not a classmate. An attorney who reviews your documents and your history.
+Get an independent legal opinion on your specific facts. Not a forum, not the school, not a classmate. An attorney who reviews your documents and your history.
 
-**Assemble your record now.** Every CPT authorisation with dates and whether it was full-time or part-time. Every I-20. Transcripts. Course syllabi showing the practical component. Employment letters. Evidence of attendance. If your arrangement is ever examined, contemporaneous documentation is what you will need, and it is far harder to assemble later.
+Assemble your record now. Every CPT authorisation with dates and whether it was full-time or part-time. Every I-20. Transcripts. Course syllabi showing the practical component. Employment letters. Evidence of attendance. If your arrangement is ever examined, contemporaneous documentation is what you will need, and it is far harder to assemble later.
 
-**Count your full-time CPT months** and work out where you stand on OPT eligibility.
+Count your full-time CPT months and work out where you stand on OPT eligibility.
 
-**Attend genuinely.** Whatever the programme's design, your own compliance with its requirements is within your control and it is the part you would be asked about.
+Attend genuinely. Whatever the programme's design, your own compliance with its requirements is within your control and it is the part you would be asked about.
 
-**And plan the exit.** Day-one CPT is at best a bridge. Have a view on what it bridges to — a cap-exempt employer, a different category, a lottery cycle — rather than renewing indefinitely.
+And plan the exit. Day-one CPT is at best a bridge. Have a view on what it bridges to — a cap-exempt employer, a different category, a lottery cycle — rather than renewing indefinitely.
 
 ## How adjudicators actually look at this
 
@@ -159,11 +159,11 @@ The general principle worth holding: your ability to explain your own history la
 
 The same decision looks very different depending on the facts around it, so it helps to see both.
 
-**Where the risk is lower.** A student finishing a bachelor's degree enrols in a genuinely accredited master's programme with a substantial taught component, attends in person, and takes a part-time curricular placement in the second half of the programme that is assessed for credit by a faculty supervisor. The employment follows the enrolment. Part-time CPT means no accumulation toward the twelve-month OPT bar. This is close to ordinary CPT and it is not what people mean by day-one CPT at all.
+Where the risk is lower. A student finishing a bachelor's degree enrols in a genuinely accredited master's programme with a substantial taught component, attends in person, and takes a part-time curricular placement in the second half of the programme that is assessed for credit by a faculty supervisor. The employment follows the enrolment. Part-time CPT means no accumulation toward the twelve-month OPT bar. This is close to ordinary CPT and it is not what people mean by day-one CPT at all.
 
-**Where the risk is high.** Someone whose OPT is ending and who was not selected in the lottery enrols in a programme they found through an immigration forum, at an institution whose enrolment is overwhelmingly students in the same position. They continue full-time at the job they already had, attend occasional weekend or remote sessions several states away, and take full-time CPT continuously. Twelve months in, their OPT eligibility is gone. The employment preceded the enrolment. The academic content is thin enough that they would struggle to describe it.
+Where the risk is high. Someone whose OPT is ending and who was not selected in the lottery enrols in a programme they found through an immigration forum, at an institution whose enrolment is overwhelmingly students in the same position. They continue full-time at the job they already had, attend occasional weekend or remote sessions several states away, and take full-time CPT continuously. Twelve months in, their OPT eligibility is gone. The employment preceded the enrolment. The academic content is thin enough that they would struggle to describe it.
 
-**The distinction is not the label.** Both might be described as CPT; only one would be comfortable to explain to a consular officer three years later. What separates them is whether the education is real, whether the work follows from the curriculum rather than the reverse, and whether the arrangement has an end.
+The distinction is not the label. Both might be described as CPT; only one would be comfortable to explain to a consular officer three years later. What separates them is whether the education is real, whether the work follows from the curriculum rather than the reverse, and whether the arrangement has an end.
 
 If you are considering something closer to the second sketch, that is exactly the point at which an hour with an immigration attorney is worth far more than any article — including this one — because the facts that matter are yours.
 

@@ -27,15 +27,15 @@ showcase: none
 
 ## Understanding your payslip
 
-**Federal income tax is deducted automatically from every payslip**, calculated based on your income level and any information you have provided about your specific tax situation. Federal tax runs on progressive brackets — the lowest bracket rate has held at 15% for years, rising through higher brackets as income increases, with the exact dollar thresholds adjusted annually for inflation. **The TD1 form is what actually tells your employer how much to withhold** — the Canadian equivalent of the US W-4 — where you declare your personal tax credit amount; most new employees simply claim the basic personal amount and move on, but it's worth actually reading the form once rather than signing it blind, since claiming it incorrectly can mean over- or under-withholding all year.
+Federal income tax is deducted automatically from every payslip, calculated based on your income level and any information you have provided about your specific tax situation. Federal tax runs on progressive brackets — the lowest bracket rate has held at 15% for years, rising through higher brackets as income increases, with the exact dollar thresholds adjusted annually for inflation. **The TD1 form is what actually tells your employer how much to withhold** — the Canadian equivalent of the US W-4 — where you declare your personal tax credit amount; most new employees simply claim the basic personal amount and move on, but it's worth actually reading the form once rather than signing it blind, since claiming it incorrectly can mean over- or under-withholding all year.
 
-**Provincial income tax is deducted separately, in addition to federal tax**, and provincial tax rates differ by province, this is a genuine and sometimes underappreciated variable when [comparing job offers in different provinces](/blog/canada-major-city-job-markets), since take-home pay for an identical gross salary can differ meaningfully depending on the province.
+Provincial income tax is deducted separately, in addition to federal tax, and provincial tax rates differ by province, this is a genuine and sometimes underappreciated variable when [comparing job offers in different provinces](/blog/canada-major-city-job-markets), since take-home pay for an identical gross salary can differ meaningfully depending on the province.
 
-**Canada Pension Plan (CPP) contributions** are deducted at a set percentage of your pensionable earnings up to an annual maximum (the Year's Maximum Pensionable Earnings, or YMPE) — plus a second, smaller "CPP2" contribution on a further tier of earnings above that, added in 2024. Both the percentage and the earnings thresholds are set annually by the CRA and published on canada.ca; check the current year's numbers there rather than assuming last year's figures still apply.
+Canada Pension Plan (CPP) contributions are deducted at a set percentage of your pensionable earnings up to an annual maximum (the Year's Maximum Pensionable Earnings, or YMPE) — plus a second, smaller "CPP2" contribution on a further tier of earnings above that, added in 2024. Both the percentage and the earnings thresholds are set annually by the CRA and published on canada.ca; check the current year's numbers there rather than assuming last year's figures still apply.
 
-**Employment Insurance (EI) contributions** are deducted at their own set percentage, up to their own separate annual maximum insurable earnings figure — again published annually by the CRA — funding temporary income support (job loss, parental leave, and similar) rather than retirement.
+Employment Insurance (EI) contributions are deducted at their own set percentage, up to their own separate annual maximum insurable earnings figure — again published annually by the CRA — funding temporary income support (job loss, parental leave, and similar) rather than retirement.
 
-**Net pay is what actually lands in your account**, the figure that matters for your actual budget, rather than the gross salary figure quoted in your offer, which is the number budgeting mistakes most commonly get built around.
+Net pay is what actually lands in your account, the figure that matters for your actual budget, rather than the gross salary figure quoted in your offer, which is the number budgeting mistakes most commonly get built around.
 
 ## Workplace pensions and benefits
 
@@ -47,11 +47,11 @@ showcase: none
 
 ## Filing your taxes
 
-**Canada operates on an annual tax filing system, generally due each spring for the preceding calendar year**, even though tax is deducted automatically from each payslip throughout the year, filing an annual return is still required, and it reconciles your actual tax owed against what was already deducted, sometimes resulting in a refund and sometimes in additional tax owed.
+Canada operates on an annual tax filing system, generally due each spring for the preceding calendar year, even though tax is deducted automatically from each payslip throughout the year, filing an annual return is still required, and it reconciles your actual tax owed against what was already deducted, sometimes resulting in a refund and sometimes in additional tax owed.
 
-**Keep your pay records and any relevant tax documents organised throughout the year**, rather than scrambling to reconstruct them the following spring, this is the same [record-keeping discipline that pays off in any regulated employment context](/blog/first-job-abroad-practical-checklist).
+Keep your pay records and any relevant tax documents organised throughout the year, rather than scrambling to reconstruct them the following spring, this is the same [record-keeping discipline that pays off in any regulated employment context](/blog/first-job-abroad-practical-checklist).
 
-**Your employer issues a T4 slip** (Statement of Remuneration Paid) by the end of February each year, summarizing your total income and deductions — this is the single document you actually need to file, the Canadian equivalent of a W-2. Filing itself is done through **NETFILE**, the CRA's electronic filing system, using either paid software like TurboTax or a free option like Wealthsimple Tax for a straightforward first return. More complex situations — specific international student or work permit circumstances, income from outside Canada — may benefit from professional advice for at least the first filing.
+Your employer issues a T4 slip (Statement of Remuneration Paid) by the end of February each year, summarizing your total income and deductions — this is the single document you actually need to file, the Canadian equivalent of a W-2. Filing itself is done through **NETFILE**, the CRA's electronic filing system, using either paid software like TurboTax or a free option like Wealthsimple Tax for a straightforward first return. More complex situations — specific international student or work permit circumstances, income from outside Canada — may benefit from professional advice for at least the first filing.
 
 ## What to check on your first payslip
 
@@ -59,9 +59,9 @@ showcase: none
 
 **That federal and provincial tax deductions look reasonable relative to your income level**, if something looks clearly wrong, raise it with your employer's payroll team promptly.
 
-**Whether pension or benefit enrolment has been processed correctly, and at what contribution level.**
+**Whether pension or benefit enrolment has been processed correctly**, and at what contribution level.
 
-**Any one-time items, such as a signing bonus, have been processed correctly and with the expected tax treatment.**
+**Any one-time items**, such as a signing bonus, have been processed correctly and with the expected tax treatment.
 
 **Raising a discrepancy in month one is a quick administrative fix**, the same error discovered months later, after it has compounded across several payslips, is a considerably longer process to correct.
 

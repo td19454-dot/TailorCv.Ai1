@@ -35,13 +35,13 @@ showcase: none
 
 ## Tax codes, and the emergency code problem
 
-**Your tax code tells your employer how much of your pay is tax-free.** A standard code applies to most people with one job and no unusual circumstances.
+Your tax code tells your employer how much of your pay is tax-free. A standard code applies to most people with one job and no unusual circumstances.
 
-**New employees are sometimes placed on an emergency tax code**, particularly if your employer has not yet received your full details from a previous employer or you have not provided a starter checklist. This can mean paying more tax than necessary in your first few payslips.
+New employees are sometimes placed on an emergency tax code, particularly if your employer has not yet received your full details from a previous employer or you have not provided a starter checklist. This can mean paying more tax than necessary in your first few payslips.
 
-**This is usually corrected automatically once your full details are processed**, and any overpayment is refunded through your pay, but it is worth checking rather than assuming it will sort itself out silently.
+This is usually corrected automatically once your full details are processed, and any overpayment is refunded through your pay, but it is worth checking rather than assuming it will sort itself out silently.
 
-**Check your tax code on your first payslip.** If something looks wrong or you are unsure, ask your employer's payroll team directly, a five-minute question in month one prevents months of overpayment.
+Check your tax code on your first payslip. If something looks wrong or you are unsure, ask your employer's payroll team directly, a five-minute question in month one prevents months of overpayment.
 
 ## Workplace pensions, and why opting out costs more than it looks
 
@@ -55,11 +55,11 @@ showcase: none
 
 ## Student loan repayments
 
-**Repayments are calculated automatically through the payroll system** once your income crosses the applicable repayment threshold for your loan plan, and the deduction appears as a separate line on your payslip.
+Repayments are calculated automatically through the payroll system once your income crosses the applicable repayment threshold for your loan plan, and the deduction appears as a separate line on your payslip.
 
-**You do not need to do anything to start repaying**, it happens automatically based on the information HMRC holds, though it is worth confirming your employer has the correct plan type on file, since an incorrect one can lead to over or under-deduction.
+You do not need to do anything to start repaying, it happens automatically based on the information HMRC holds, though it is worth confirming your employer has the correct plan type on file, since an incorrect one can lead to over or under-deduction.
 
-**The repayment is calculated as a percentage of income above the threshold**, not a fixed amount, so it moves with your salary rather than staying constant.
+The repayment is calculated as a percentage of income above the threshold, not a fixed amount, so it moves with your salary rather than staying constant.
 
 ## What to actually check in month one
 
@@ -77,9 +77,9 @@ showcase: none
 
 ## Understanding your specific tax code fully
 
-**Your tax code is not a single universal figure, it reflects your specific personal allowance and any adjustments relevant to your particular circumstances**, worth understanding what your specific code actually means rather than treating it as an opaque number, official guidance explains how to interpret a given code, and it is worth spending ten minutes on this in your first month.
+Your tax code is not a single universal figure, it reflects your specific personal allowance and any adjustments relevant to your particular circumstances, worth understanding what your specific code actually means rather than treating it as an opaque number, official guidance explains how to interpret a given code, and it is worth spending ten minutes on this in your first month.
 
-**If you have income from more than one source, including a second job or freelance work alongside your main employment, understand how this affects your overall tax position**, since your personal allowance is generally split or allocated across sources in a specific way that is worth understanding rather than assuming.
+If you have income from more than one source, including a second job or freelance work alongside your main employment, understand how this affects your overall tax position, since your personal allowance is generally split or allocated across sources in a specific way that is worth understanding rather than assuming.
 
 ## Common Mistakes
 

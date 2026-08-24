@@ -35,17 +35,17 @@ showcase: none
 
 ## Preparing for them
 
-**Practice is the whole strategy**, and it works because the difficulty is format and speed rather than knowledge.
+Practice is the whole strategy, and it works because the difficulty is format and speed rather than knowledge.
 
-**Practice books are standard.** Japanese students work through them extensively — this is normal, expected preparation, and it is the standard you are measured against.
+Practice books are standard. Japanese students work through them extensively — this is normal, expected preparation, and it is the standard you are measured against.
 
-**Practise under time pressure from the start.** Untimed practice builds accuracy, and accuracy is not what is being tested. The [same principle applies to psychometric testing anywhere](/blog/uk-psychometric-tests-guide), and it is the single most common preparation error.
+Practise under time pressure from the start. Untimed practice builds accuracy, and accuracy is not what is being tested. The [same principle applies to psychometric testing anywhere](/blog/uk-psychometric-tests-guide), and it is the single most common preparation error.
 
-**Learn the recurring question types.** Both sections use a limited set of patterns, and recognising a pattern instantly is most of the speed advantage.
+Learn the recurring question types. Both sections use a limited set of patterns, and recognising a pattern instantly is most of the speed advantage.
 
-**For foreign candidates, the language section carries an additional load.** You are reading and reasoning in a second language under time pressure, which is genuinely harder. This is an argument for more practice, not for skipping it.
+For foreign candidates, the language section carries an additional load. You are reading and reasoning in a second language under time pressure, which is genuinely harder. This is an argument for more practice, not for skipping it.
 
-**Answer the personality section honestly and consistently.** Inconsistent patterns are detectable and reflect worse than an ordinary profile would.
+Answer the personality section honestly and consistently. Inconsistent patterns are detectable and reflect worse than an ordinary profile would.
 
 ## Group discussions
 
@@ -63,11 +63,11 @@ showcase: none
 
 ## The group interview format, specifically
 
-**Several candidates are assessed together, either in a group discussion exercise or answering questions in sequence within the group**, this is a genuinely distinct format from an individual one-to-one interview, worth practising specifically rather than assuming individual interview skills transfer directly.
+Several candidates are assessed together, either in a group discussion exercise or answering questions in sequence within the group, this is a genuinely distinct format from an individual one-to-one interview, worth practising specifically rather than assuming individual interview skills transfer directly.
 
-**What is actually being assessed is how you behave within a group**, whether you contribute genuinely, listen and build on what others say, and handle disagreement constructively, dominating the conversation is not the goal, similar in principle to [group interview assessment in other markets that use this format](/blog/china-campus-interview-questions-guide), though the specific register expected here leans toward the measured, collaborative style discussed in the [broader interview guide](/blog/japan-mensetsu-interview-questions-guide).
+What is actually being assessed is how you behave within a group, whether you contribute genuinely, listen and build on what others say, and handle disagreement constructively, dominating the conversation is not the goal, similar in principle to [group interview assessment in other markets that use this format](/blog/china-campus-interview-questions-guide), though the specific register expected here leans toward the measured, collaborative style discussed in the [broader interview guide](/blog/japan-mensetsu-interview-questions-guide).
 
-**Practise this format specifically with friends beforehand**, the first attempt at a genuinely unfamiliar format is rarely a candidate's best performance.
+Practise this format specifically with friends beforehand, the first attempt at a genuinely unfamiliar format is rarely a candidate's best performance.
 
 ## Aptitude and written testing
 
@@ -79,9 +79,9 @@ showcase: none
 
 ## Building a sustainable testing preparation routine
 
-**Set aside consistent, regular practice time for aptitude testing across several weeks, rather than cramming immediately before your first real test**, similar to [the same sustained preparation discipline that works for any timed aptitude assessment](/blog/uk-psychometric-tests-guide), consistent shorter sessions generally outperform occasional long ones.
+Set aside consistent, regular practice time for aptitude testing across several weeks, rather than cramming immediately before your first real test, similar to [the same sustained preparation discipline that works for any timed aptitude assessment](/blog/uk-psychometric-tests-guide), consistent shorter sessions generally outperform occasional long ones.
 
-**Review your specific errors carefully after each practice set**, most candidates' mistakes cluster into a small number of recurring types, identifying and correcting these specifically is more efficient than repeating generic practice indefinitely.
+Review your specific errors carefully after each practice set, most candidates' mistakes cluster into a small number of recurring types, identifying and correcting these specifically is more efficient than repeating generic practice indefinitely.
 
 ## Common Mistakes
 
