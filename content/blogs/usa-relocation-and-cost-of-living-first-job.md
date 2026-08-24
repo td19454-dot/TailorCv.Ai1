@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-relocation-and-cost-of-living-first-job.png
 slug: usa-relocation-and-cost-of-living-first-job
 keywords: cost of living comparison us cities, relocating for first job, salary vs cost of living new grad, moving for a job budget, first apartment new grad
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

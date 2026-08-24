@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-cv-format-for-students.png
 slug: uk-cv-format-for-students
 keywords: uk cv format, cv template graduate uk, uk cv vs us resume, graduate cv examples uk, personal statement cv uk
-showcase: portfolio
+showcase: resume
 ---
 
 ## Key Takeaways
@@ -63,6 +63,12 @@ showcase: portfolio
 
 **Export as PDF**, named with your own name rather than "CV final v3".
 
+## Adapting a CV across multiple international applications
+
+**If you are applying to employers in both the UK and other countries simultaneously, maintain a single master document containing your full evidence, then generate a properly adapted version for each specific market**, exactly the [same master-document approach that works efficiently across any multi-country search](/blog/international-student-resume-differences-by-country), rather than attempting to write a single universal document that awkwardly compromises between genuinely different conventions.
+
+**The specific differences between UK and other markets are small individually and meaningful in combination**, length, the presence or absence of a photograph, whether classification is expected, referee conventions, getting several of these wrong simultaneously reads as unfamiliarity with the specific market rather than as a single minor oversight.
+
 ## Common Mistakes
 
 - **Submitting a one-page US-style resume.** Reads as thin against a two-page norm.
@@ -71,6 +77,12 @@ showcase: portfolio
 - **Listing duties instead of outcomes.** The most common weakness in graduate CVs.
 - **Sending the same document everywhere.** The screen compares against a specific posting.
 - **Not checking it parses.** A document that extracts badly fails silently in every application.
+
+## Ordering sections for maximum impact
+
+**Place your strongest, most relevant evidence as early in the document as reasonably possible**, given that reviewers often spend very limited time on an initial scan, a strong project or piece of work experience buried on the second page after a lengthy education section may never actually be seen properly.
+
+**Consider whether education or experience should lead, based on your own specific strengths**, a candidate with a strong, directly relevant internship may benefit from leading with experience, while a candidate whose strongest evidence is academic or project-based may benefit from a more traditional education-first ordering, there is no single universally correct sequence, worth choosing deliberately based on what best represents you.
 
 ## Frequently Asked Questions
 

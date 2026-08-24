@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/japan-resume-rirekisho-guide.png
 slug: japan-resume-rirekisho-guide
 keywords: rirekisho format, japanese resume template, how to write rirekisho, japan job application documents, japanese cv format
-showcase: portfolio
+showcase: resume
 ---
 
 ## Key Takeaways
@@ -75,16 +75,62 @@ showcase: portfolio
 
 **Keep a master copy.** You will complete this repeatedly, and having your dates, readings and standard phrasings settled once saves considerable time.
 
+## Filling out each specific section properly
+
+**The photograph** should be a proper, formal photograph taken specifically for this purpose, not a casual photo, meeting the specific standard dimensions and presentation this document requires, this is a genuinely important detail and worth having done properly rather than treating casually.
+
+**Personal details** are recorded with specific attention to accuracy and completeness, including sections that would be considered unusual to include on a resume in some other countries, this reflects the local convention for this specific document type rather than an unusual or invasive request from any individual employer.
+
+**Education and work history** are recorded in a specific chronological format this document requires, follow the standard structure precisely rather than adapting it to a format you may be more familiar with from another country.
+
+**The motivation and self-promotion sections**, where included, require genuine, specific content, generic statements are noticed and reflect poorly, exactly [the same principle that applies to written applications everywhere](/blog/uk-cover-letter-guide-graduates), applied within this document's specific local convention and structure.
+
+## Handwritten versus digital versions
+
+**Some employers and situations still expect a handwritten version of this document**, reflecting a traditional convention around this specific document type, while digital submission has become more common and accepted at many employers, worth checking the specific expectation for each application rather than assuming one format is universally acceptable.
+
+**If a handwritten version is expected, take genuine care with the presentation**, this document's neatness and care are themselves considered part of what is being assessed, not merely the content.
+
+## Common formatting pitfalls specific to this document
+
+**Leaving sections blank rather than writing a clear indication that a section does not apply**, an unexplained gap reads as an oversight, worth completing every section deliberately even where the honest answer is brief.
+
+**Using casual or overly informal language in the motivation section**, this document generally expects a measured, formal register throughout, consistent with the [broader formal presentation expected in Japanese interviews and applications](/blog/japan-mensetsu-interview-questions-guide).
+
+**Submitting a document with visible corrections or an untidy presentation**, particularly relevant for a handwritten version, where care in presentation is itself part of what is being assessed.
+
+## A final review before submitting
+
+**Read through the entire completed document once more specifically checking for consistency**, dates that align correctly across sections, information that matches what you present elsewhere in your application, and no contradictions between this document and any accompanying materials.
+
+**Have someone genuinely familiar with the local convention review it if possible**, a career centre advisor, a mentor, or a friend experienced with this specific process, a second set of eyes familiar with the format catches issues you may not notice in your own document after extended work on it.
+
+**Keep a copy of exactly what you submitted for each specific application**, useful for your own reference during subsequent interview stages when you may be asked about details from the document itself.
+
 ## Common Mistakes
 
 - **Submitting a Western-style resume instead.** The most visible signal of unfamiliarity with the market.
-- **Omitting the photograph.** Conventionally expected and its absence is noticed.
-- **Inconsistent date formats.** Mixing calendar systems within one document.
+- **Omitting the photograph, or using a casual one rather than the proper formal standard.** Conventionally expected and its absence or informality is noticed.
+- **Writing generic motivation statements rather than content specific to each individual company.**
+- **Inconsistent date formats**, mixing calendar systems within one document.
 - **Leaving gaps in the chronology.** The history is expected to be continuous.
 - **Using correction fluid on a handwritten form.** Convention is to start again.
+- **Assuming a digital version is always acceptable without checking the specific employer's expectation.**
 - **Treating the motivation section as filler.** It is the one part of the form where you can genuinely differentiate.
 
 ## Frequently Asked Questions
+
+### Is this document the same as a resume from another country?
+
+Related in general purpose, distinct in specific structure and convention, worth learning the actual standard format for this specific document type rather than adapting a document built for a different country's convention.
+
+### Do I need a professionally taken photograph?
+
+Generally yes, a proper, formal photograph meeting the specific standard this document requires, worth having this done properly rather than using a casual photo.
+
+### How does this differ from the other application document, the shokumu keirekisho?
+
+Covered in the [separate guide to that document](/blog/japan-shokumu-keirekisho-guide), the two generally serve somewhat different purposes and are often submitted together.
 
 ### Do I have to handwrite it?
 

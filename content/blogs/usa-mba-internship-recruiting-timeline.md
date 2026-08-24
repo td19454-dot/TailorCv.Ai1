@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/usa-mba-internship-recruiting-timeline.png
 slug: usa-mba-internship-recruiting-timeline
 keywords: mba internship recruiting timeline, mba summer internship, consulting mba recruiting, mba career fair, mba networking treks
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

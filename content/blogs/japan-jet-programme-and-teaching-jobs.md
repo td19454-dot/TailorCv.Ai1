@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/japan-jet-programme-and-teaching-jobs.png
 slug: japan-jet-programme-and-teaching-jobs
 keywords: jet programme application, teaching english in japan, alt jobs japan, eikaiwa jobs, international school jobs japan
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -21,9 +21,9 @@ showcase: portfolio
 
 ## The main routes
 
-**The government-run placement programme.** Places foreign graduates in schools and local government offices across Japan, including many rural areas. Structured, with reliable pay, support and a defined contract term. Applications open roughly a year before placement, and the process is long — application, [interview](/blog/japan-mensetsu-interview-questions-guide), and placement decisions made centrally rather than by you. Placement location is generally not your choice, which is the main trade-off and, for many participants, the most interesting part.
+**The government-run placement programme — the JET Programme (Japan Exchange and Teaching Programme)**, jointly run by three Japanese government bodies (MEXT, the Ministry of Foreign Affairs, and CLAIR, the Council of Local Authorities for International Relations). It places foreign graduates as ALTs (Assistant Language Teachers), and in smaller numbers as CIRs (Coordinators for International Relations) and SEAs (Sports Exchange Advisors), in schools and local government offices across Japan, including many rural areas. Structured, with reliable pay, support and a defined contract term (typically one year, renewable up to five). Applications open roughly a year before placement, and the process is long — application, [interview](/blog/japan-mensetsu-interview-questions-guide), and placement decisions made centrally rather than by you. Placement location is generally not your choice, which is the main trade-off and, for many participants, the most interesting part.
 
-**Private language schools.** Commercial conversation schools employing teachers for adult and children's classes. Hiring is year-round, the process is faster, and quality varies enormously between employers. Evening and weekend work is common since students attend outside their own working hours. Pay is generally modest and the work is genuinely teaching-intensive.
+**Private language schools — known collectively as *eikaiwa* (英会話, literally "English conversation")** — are commercial conversation schools employing teachers for adult and children's classes. Hiring is year-round, the process is faster, and quality varies enormously between individual eikaiwa chains and branches, so research the specific employer rather than the category. Evening and weekend work is common since students attend outside their own working hours. Pay is generally modest and the work is genuinely teaching-intensive.
 
 **Direct hire by schools or boards of education.** Working directly rather than through a programme or dispatch company, frequently with better pay and conditions than dispatch arrangements. Harder to find and generally requiring you to already be in Japan with a network.
 
@@ -65,6 +65,20 @@ showcase: portfolio
 
 **Building a professional network while teaching matters too.** The [English-conducted market](/blog/japan-english-speaking-jobs-guide) is the most common destination, and it is easier to enter with contacts than cold.
 
+## How the JET Programme specifically works
+
+**A well-established, government-affiliated programme placing foreign nationals in teaching and, in some positions, international relations roles at schools and local government offices across Japan**, this is a structured, genuinely well-organised route with defined application timelines and support structures, distinct from independently arranged teaching positions.
+
+**Placements can be in a wide range of locations, including many outside the largest cities**, worth being genuinely open to this if you apply, since location assignment is generally not something you can control precisely in advance.
+
+**The application process runs on its own annual cycle with defined stages**, worth researching current specific timelines and requirements directly, since this is exactly the kind of detail set by the programme's own administration and reviewed periodically.
+
+## Independent teaching positions outside this programme
+
+**Private language schools, international schools, and other independently arranged teaching positions also exist as a genuine alternative route**, requirements and quality vary considerably by specific employer, worth vetting any specific school's legitimacy and sponsorship experience carefully, similar to [the same careful vetting that matters in any independent teaching arrangement internationally](/blog/china-english-teaching-jobs-guide).
+
+**International schools generally offer the most structured working conditions among independent options**, often requiring a recognised teaching qualification and sometimes prior classroom experience.
+
 ## Common Mistakes
 
 - **Applying to the government programme late.** The cycle runs roughly a year before placement.
@@ -73,6 +87,33 @@ showcase: portfolio
 - **Treating it as a long-term career by default.** It is an entry route for most people entering through language instruction.
 - **Not studying Japanese during the placement.** The single biggest determinant of what comes next.
 - **Confusing international school teaching with language teaching.** Different requirements, different careers.
+
+### What is the JET Programme exactly?
+
+A well-established, government-affiliated programme placing foreign nationals in teaching and related roles across Japan, offering structured application timelines and organised support.
+
+### Can I choose where I am placed under this programme?
+
+Generally not precisely, placements span a wide range of locations including many outside the largest cities, worth being genuinely open to this when applying.
+
+### Are there teaching jobs in Japan outside this programme?
+
+Yes, private language schools and international schools offer independent routes, worth vetting a specific school's legitimacy and sponsorship experience carefully before accepting an offer.
+
+### Do I need a teaching qualification?
+
+Requirements vary by programme and employer, international schools generally expect a recognised qualification, other positions vary, worth checking the specific requirement for your target role directly.
+## Life beyond the role itself
+
+**Placements under structured programmes, particularly in smaller communities, can offer a genuinely rich cultural experience alongside the teaching role itself**, worth approaching with genuine openness rather than viewing the specific placement location purely as a limitation.
+
+**Build a support network with other participants and local contacts early**, particularly valuable if placed somewhere with a smaller international community, this meaningfully smooths the broader adjustment beyond the workplace itself.
+
+## Deciding between the structured programme and independent options
+
+**Consider your own priorities around structure, support and placement certainty against the flexibility, and generally somewhat less structured support, of independently arranged positions.**
+
+**The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.**
 
 ## Frequently Asked Questions
 

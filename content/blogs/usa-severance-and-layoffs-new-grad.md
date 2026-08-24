@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-severance-and-layoffs-new-grad.png
 slug: usa-severance-and-layoffs-new-grad
 keywords: laid off new grad, severance package explained, layoff international student opt, unemployment benefits new grad, what to do after layoff
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## Why it happens and what it means
 
-**It is nearly always about the business.** Headcount reductions follow budget decisions, reorganisations, funding changes or a market shift. The selection is frequently by team, by function or by start date rather than by individual performance, which is why entire graduate cohorts are sometimes affected at once.
+**It is nearly always about the business.** Headcount reductions follow budget decisions, reorganisations, funding changes or a market shift. The selection is frequently by team, by function or by start date rather than by individual performance, which is why entire graduate cohorts are sometimes affected at once. At larger employers doing mass layoffs, the WARN Act (Worker Adjustment and Retraining Notification Act) requires advance written notice — generally 60 days — before a qualifying mass layoff or plant closing; if you're affected by a large-scale reduction at a sizeable company and got no notice at all, that's worth asking about specifically.
 
 **"Last in, first out" is a real pattern.** Recent hires are cheaper to release, have accrued fewer commitments, and have had less time to become load-bearing. Being recent is not a judgement.
 
@@ -49,7 +49,7 @@ showcase: portfolio
 
 **Severance pay**, commonly calculated by tenure, which for a recent graduate is usually modest. It may be a lump sum or continued [salary](/blog/japan-salary-expectations-new-grad) for a period.
 
-**Health coverage.** Understand exactly when your employer coverage ends and what continuation options exist. There is usually a mechanism to continue coverage at your own cost, and there are alternatives worth comparing, since the continuation option is frequently expensive.
+**Health coverage.** Understand exactly when your employer coverage ends and what continuation options exist. **COBRA (the federal law that gives you the right to continue your exact employer plan)** is the mechanism most people mean when they say this — it lets you keep the same coverage, generally for up to 18 months, but you pay the full premium yourself, including the portion your employer previously covered, which routinely makes it considerably more expensive per month than it was as an employee. Compare it directly against a marketplace plan before defaulting to it; COBRA is a real right worth knowing by name, not automatically the best option.
 
 **Unused paid time off.** Whether it is paid out depends on the employer and the state. Check rather than assuming.
 
@@ -67,9 +67,9 @@ This section outranks everything above if it applies to you.
 
 **Speak to an immigration attorney within days.** Not weeks. Your permitted time and your options depend on your specific status and there are deadlines that close.
 
-**On post-graduation training**, unemployment days are limited and counted. Know exactly how many you have and from when, in writing.
+**On post-graduation training**, unemployment days are limited and counted: standard OPT allows up to 90 days of unemployment total, and the STEM OPT extension allows up to 150 days total across the full period (the original 90 plus an additional 60 during the extension). Know exactly how many you've already used and how many remain, in writing, since this is tracked and losing status by exceeding it is one of the most serious, avoidable failures in this whole situation.
 
-**On an employer-sponsored [work visa](/blog/japan-work-visa-for-graduates)**, there is generally a limited discretionary period to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week.
+**On an employer-sponsored [work visa](/blog/japan-work-visa-for-graduates)**, there is a discretionary grace period — generally up to 60 days — to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week, not after you've had time to process what happened.
 
 **Ask your employer about the termination date specifically.** Sometimes an employer will extend a formal termination date, or count severance as continued employment, in a way that materially changes your position. This is worth asking about explicitly.
 

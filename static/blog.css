@@ -3427,107 +3427,38 @@ header.navbar {
   .blog-detail-page .post-content h3 { font-size: 1.26rem; }
 }
 
-/* ─── Common Mistakes: flat list, not nested boxes ────────────────────────
-   The mistakes section was a red card containing a red card per mistake. Two
-   levels of border and tint around every point made a short list look heavy,
-   and the box-in-box read as a UI component rather than as part of the
-   article.
+/* ─── Every mistake gets its own card ──────────────────────────────────────
+   Reverted per feedback: the flat hairline-list treatment (above, superseded)
+   read as too plain. Every mistake - whether auto-split from a list into its
+   own .mistake-grid-item, or written as a standalone "**Label:** body" pair -
+   goes back to the original bordered .callout-box card: white background,
+   rounded corners, a red top accent, the icon, and the bold label as its own
+   line above the body. This block only fills in the couple of cases the base
+   rules above (~L2320) don't fully cover; it does not flatten anything. */
 
-   Keep what was doing the work — the numbering, the red heading, the icon —
-   and drop the chrome. Each mistake becomes a numbered entry separated by a
-   hairline rule, which is lighter to read and matches the prose around it.
-   Overrides the rules above rather than editing them, so the callout system
-   used by the other section types is untouched. */
-
-/* outer wrapper: no card */
-.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
-  display: block;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  margin: 34px 0;
-}
-
-/* section heading keeps the red + icon, gains a rule to anchor the block */
-.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > .callout-head {
+/* a **Label:** paragraph followed by its own body paragraph (rather than
+   "**Label:** body" run into one paragraph) should still read as one card:
+   the label paragraph supplies the heading, the next paragraph is the body,
+   both wrapped together. */
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) {
   margin: 0 0 6px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #f3d3d0;
-}
-
-.blog-detail-page .post-content .mistake-grid {
-  display: block;
-}
-
-/* each mistake: a plain numbered entry */
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item {
-  display: block;
-  border: 0;
-  border-bottom: 1px solid #eef1f6;
-  background: transparent;
-  border-radius: 0;
-  padding: 14px 0 12px;
-  margin: 0;
-}
-
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item:last-child {
+  padding: 13px 15px 0;
+  border: 1px solid #f6dede;
   border-bottom: 0;
-  padding-bottom: 0;
+  border-left: 3px solid #ef4444;
+  border-radius: 8px 8px 0 0;
+  background: #ffffff;
 }
-
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item > .callout-head {
-  margin: 0 0 4px;
-  padding: 0;
-  border: 0;
-  gap: 8px;
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) + p {
+  margin: -6px 0 0;
+  padding: 0 15px 13px;
+  border: 1px solid #f6dede;
+  border-top: 0;
+  border-left: 3px solid #ef4444;
+  border-radius: 0 0 8px 8px;
+  background: #ffffff;
 }
-
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item .callout-ico svg {
-  width: 18px;
-  height: 18px;
-}
-
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item > .callout-head h3 {
-  font-size: 1.04rem !important;
-  line-height: 1.35;
-}
-
-.blog-detail-page .post-content .callout-mistake.mistake-grid-item > p {
-  margin: 0;
-  padding: 0 0 0 26px;   /* aligns body under the title, clear of the icon */
-  border: 0;
-  background: transparent;
-}
-
-/* posts that write mistakes as "**Label.** body" paragraphs instead of a
-   list get the same flat treatment rather than a grid of white tiles */
-.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p {
-  margin: 0;
-  padding: 13px 0 12px;
-  border: 0;
-  border-bottom: 1px solid #eef1f6;
-  border-radius: 0;
-  background: transparent;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:last-child {
-  border-bottom: 0;
-}
-
-.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p > strong:first-child {
-  display: block;
-  margin-bottom: 3px;
+.blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) > p:has(> strong:only-child) > strong {
   color: #b42318;
   font-size: 1.04rem;
-}
-
-@media (max-width: 680px) {
-  .blog-detail-page .post-content .callout-mistake:not(.mistake-grid-item) {
-    padding: 0;
-  }
-  .blog-detail-page .post-content .callout-mistake.mistake-grid-item > p {
-    padding-left: 0;
-  }
 }
