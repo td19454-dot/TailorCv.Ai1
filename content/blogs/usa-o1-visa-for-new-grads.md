@@ -80,17 +80,12 @@ Keep a file. Every acceptance, every invitation, every citation count, every men
 
 ## What the process involves
 
-**An employer or agent petitions.** Like the H-1B, you cannot self-petition an O-1. What you can have is an agent — which gives flexibility for people who work with multiple organisations, and is a common arrangement in some fields.
-
-**A consultation from a peer group or expert.** The petition generally requires an advisory opinion, typically from a relevant professional body or expert, addressing the nature of the work and your qualifications.
-
-**Evidence, assembled properly.** This is the bulk of the work: the documentary record for each criterion, letters from experts, and a coherent argument tying it together. A well-prepared petition is a substantial document.
-
-**Timelines.** No filing season, so it can be filed when the job exists. Processing times vary and expedited processing is generally available for a fee.
-
-**Duration and extension.** Granted for an initial period tied to the work, and extendable, which makes it viable as a long-term arrangement rather than a stopgap.
-
-**Cost.** Meaningfully more expensive than an H-1B in legal fees, because the evidentiary work is substantial. Employers who are unfamiliar with the category sometimes balk at this, which is a real practical obstacle.
+1. **An employer or agent petitions.** Like the H-1B, you cannot self-petition an O-1. What you can have is an agent — which gives flexibility for people who work with multiple organisations, and is a common arrangement in some fields.
+2. **A consultation from a peer group or expert.** The petition generally requires an advisory opinion, typically from a relevant professional body or expert, addressing the nature of the work and your qualifications.
+3. **Evidence, assembled properly.** This is the bulk of the work: the documentary record for each criterion, letters from experts, and a coherent argument tying it together. A well-prepared petition is a substantial document.
+4. **Timelines.** No filing season, so it can be filed when the job exists. Processing times vary and expedited processing is generally available for a fee.
+5. **Duration and extension.** Granted for an initial period tied to the work, and extendable, which makes it viable as a long-term arrangement rather than a stopgap.
+6. **Cost.** Meaningfully more expensive than an H-1B in legal fees, because the evidentiary work is substantial. Employers who are unfamiliar with the category sometimes balk at this, which is a real practical obstacle.
 
 ## Compared with the alternatives
 

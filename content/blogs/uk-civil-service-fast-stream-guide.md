@@ -67,19 +67,13 @@ Check the specific scheme's criteria before investing time. They are published, 
 
 ## Applying well
 
-**Choose the scheme deliberately.** Read what the work actually is rather than choosing on prestige.
-
-**Apply early in the window.** The process is long and starting late compresses everything.
-
-**Practise the online tests before you take them.** They are an early filter and they are trainable.
-
-**Map your evidence to the published behaviours** rather than writing generic answers.
-
-**Be honest in the strengths assessment.** Constructing a profile you think they want produces inconsistency, which is detectable.
-
-**Prepare for the group exercise properly.** Assessment is against criteria rather than by ranking, so helping the group costs nothing and dominating is marked down.
-
-**Run other applications in parallel.** The process takes months and a single-track autumn is a risk regardless of how strong a candidate you are.
+1. **Choose the scheme deliberately.** Read what the work actually is rather than choosing on prestige.
+2. **Apply early in the window.** The process is long and starting late compresses everything.
+3. **Practise the online tests before you take them.** They are an early filter and they are trainable.
+4. **Map your evidence to the published behaviours** rather than writing generic answers.
+5. **Be honest in the strengths assessment.** Constructing a profile you think they want produces inconsistency, which is detectable.
+6. **Prepare for the group exercise properly.** Assessment is against criteria rather than by ranking, so helping the group costs nothing and dominating is marked down.
+7. **Run other applications in parallel.** The process takes months and a single-track autumn is a risk regardless of how strong a candidate you are.
 
 ## Building the evidence file over an extended timeline
 
@@ -91,14 +85,14 @@ Keep a running document of situations from your academic, work and extracurricul
 
 - **Applying to the wrong scheme.** They differ substantially in requirements and content.
 - **Not reading the published framework.** It is effectively the marking scheme and it is public.
-- **Treating the online tests as a formality.** They are an early filter and they remove a large share of applicants.
+- **Treating the online tests.** As a formality. They are an early filter and they remove a large share of applicants.
 - **Gaming the strengths assessment.** Inconsistency is visible and honesty performs better.
 - **Ignoring nationality and residency requirements.** Published, specific and not negotiable.
 - **Making it your only application.** The timeline is long and the competition substantial.
 
 ## What happens after successfully joining the programme
 
-**Understand that the programme itself is a multi-year structured development experience, not simply an extended interview process**, rotations across different departments and functions, alongside formal training toward a recognised qualification in many streams, form a genuine long-term career investment on both sides.
+**Understand that the programme itself is a multi-year structured development experience**, not simply an extended interview process, rotations across different departments and functions, alongside formal training toward a recognised qualification in many streams, form a genuine long-term career investment on both sides.
 
 **Ask current or recent participants directly what the actual day-to-day experience is like**, beyond the formal programme description, a genuine first-hand account reveals considerably more about pace, culture and specific placement patterns than official programme materials alone.
 

@@ -80,9 +80,9 @@ The specific differences between UK and other markets are small individually and
 
 ## Ordering sections for maximum impact
 
-**Place your strongest, most relevant evidence as early in the document as reasonably possible**, given that reviewers often spend very limited time on an initial scan, a strong project or piece of work experience buried on the second page after a lengthy education section may never actually be seen properly.
+**Place your strongest**, most relevant evidence as early in the document as reasonably possible, given that reviewers often spend very limited time on an initial scan, a strong project or piece of work experience buried on the second page after a lengthy education section may never actually be seen properly.
 
-**Consider whether education or experience should lead, based on your own specific strengths**, a candidate with a strong, directly relevant internship may benefit from leading with experience, while a candidate whose strongest evidence is academic or project-based may benefit from a more traditional education-first ordering, there is no single universally correct sequence, worth choosing deliberately based on what best represents you.
+**Consider whether education or experience should lead**, based on your own specific strengths, a candidate with a strong, directly relevant internship may benefit from leading with experience, while a candidate whose strongest evidence is academic or project-based may benefit from a more traditional education-first ordering, there is no single universally correct sequence, worth choosing deliberately based on what best represents you.
 
 ## Frequently Asked Questions
 

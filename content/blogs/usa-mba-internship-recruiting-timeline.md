@@ -177,15 +177,6 @@ Commit provisionally by week one and revisit at week six. That is enough time to
 
 And pick a genuine second choice with a later calendar. Consulting plus technology, or banking plus industry, works because the timelines barely overlap. Two early-calendar industries do not.
 
-## Common Mistakes
-
-- **Treating term one as settling in.** It is the recruiting season for the industries with the earliest calendars.
-- **Keeping options open too long.** Undecided by week eight means having networked for nothing.
-- **Starting case practice in December.** The people you are competing with started in July.
-- **Skipping presentations and treks.** At several firms attendance is tracked and referenced.
-- **Not asking about sponsorship early.** Policies vary and the answer is available in one question.
-- **Assuming the second-year full-time round is a safety net.** It is a much smaller pool, because most seats are filled by converted interns.
-
 ## Career switchers, specifically
 
 The group for whom the calendar is hardest, and the group most likely to succeed at it with enough lead time.
@@ -236,6 +227,16 @@ Business school career services are better resourced than most and are used unev
 
 **And treat their resume review as one input.** They will fix the format and the conventions; they cannot [tailor it to each posting](/blog/how-to-tailor-resume-for-every-job), which is where the interview rate actually moves.
 
+## Common Mistakes
+
+- **Treating term one as settling in.** It is the recruiting season for the industries with the earliest calendars.
+- **Keeping options open too long.** Undecided by week eight means having networked for nothing.
+- **Starting case practice in December.** The people you are competing with started in July.
+- **Skipping presentations and treks.** At several firms attendance is tracked and referenced.
+- **Not asking about sponsorship early.** Policies vary and the answer is available in one question.
+- **Assuming the second-year full-time round is a safety net.** It is a much smaller pool, because most seats are filled by converted interns.
+
+## Frequently Asked Questions
 ### How much does the pre-MBA background matter?
 
 For consulting and general management, much less than candidates fear — those processes are designed to assess trained capability rather than prior industry. For specialist finance and senior technical roles, considerably more.
@@ -247,6 +248,7 @@ A short course in a target skill is useful; the more valuable use of that summer
 ### Is on-campus recruiting the only route?
 
 No, and treating it that way is the common error. Off-cycle roles, smaller employers and self-arranged internships together account for a meaningful share of summer placements, and they run on their own timetable through the spring.
+
 ### How many applications is normal?
 
 For consulting and banking, fifteen to twenty-five firms is typical, and the preparation is shared across them. For technology and industry, a similar number with more variation in the process. Volume matters less here than at undergraduate level because networking and fit carry more weight.
@@ -258,7 +260,6 @@ For consulting and banking, attend the ones for firms you are seriously targetin
 ### What if my target industry does not recruit on campus?
 
 Then you run it as an off-cycle search: direct applications, alumni outreach and a longer timeline. Private equity, venture capital, smaller firms and most non-profits work this way, and career services can usually point you at alumni in them.
-## Frequently Asked Questions
 
 ### When should I really start preparing?
 
@@ -283,3 +284,4 @@ For consulting and banking, effectively yes. For technology and much of industry
 ### What about smaller employers and off-cycle roles?
 
 Real, less contested, and largely ignored by students focused on the on-campus calendar. Worth running as a parallel track from the spring onward.
+

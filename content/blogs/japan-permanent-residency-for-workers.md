@@ -21,9 +21,13 @@ showcase: none
 
 ## The two routes
 
-**The conventional route** requires ten years of continuous residence in Japan under valid status, generally including at least five years holding a working-status visa, with a stable livelihood and a record of meeting your obligations throughout. This is the standard path, and it's genuinely a decade-long commitment.
+| Route | Residence required | What qualifies you |
+|---|---|---|
+| Conventional | **10 years** continuous residence, generally including 5+ years on a working-status visa | A stable livelihood and a record of meeting your obligations throughout |
+| Highly skilled professional — 70 points | **3 years** | Scoring 70 on the 高度人材 (*kōdo jinzai*) points table |
+| Highly skilled professional — 80 points | **1 year** | Scoring 80 on the same table |
 
-**The points-based highly skilled professional (高度人材, *kōdo jinzai*) system** is the faster alternative, and the difference in timeline is substantial: score 70 points on the assessment table and the required residence period drops to 3 years; score 80 points and it drops to just 1 year. The table scores academic qualifications, professional career, annual salary, age, research achievements and [Japanese language ability](/blog/japan-japanese-language-requirements-jobs), among other factors, and most new graduates entering strong technical or specialist roles are closer to these thresholds than they'd assume — worth actually running the numbers on the official points calculator early rather than assuming the 10-year route is your only option.
+The points table scores academic qualifications, professional career, annual salary, age, research achievements and [Japanese language ability](/blog/japan-japanese-language-requirements-jobs), among other factors. Most new graduates entering strong technical or specialist roles are closer to these thresholds than they'd assume — worth actually running the numbers on the official points calculator early rather than assuming the 10-year route is your only option.
 
 **Why this matters for graduates.** Someone entering on the [standard working status](/blog/japan-work-visa-for-graduates) who later qualifies under the points system can reach permanent residence considerably sooner than the conventional timeline allows. Worth understanding early, because several of the point categories are things you can deliberately influence.
 
@@ -91,11 +95,21 @@ Japanese language ability, and genuine integration into the local community and 
 
 ## Practical steps to build toward this over time
 
-**Keep organised documentation of your employment history, including your [work visa status and renewals](/blog/japan-work-visa-for-graduates)**, throughout your career, exactly the [same record-keeping discipline that matters for any long-term status process](/blog/first-job-abroad-practical-checklist), reconstructing this later is considerably harder than maintaining it as you go.
+1. **Keep organised documentation of your employment history, including your [work visa status and renewals](/blog/japan-work-visa-for-graduates)**, throughout your career, exactly the [same record-keeping discipline that matters for any long-term status process](/blog/first-job-abroad-practical-checklist), reconstructing this later is considerably harder than maintaining it as you go.
+2. **Understand that this is a genuine long-term consideration**, worth factoring into decisions about employer stability and career trajectory from your first job, rather than a decision to think about only after many years.
+3. **Verify current specific eligibility criteria directly with the relevant Japanese immigration authority before making significant career decisions based on where you expect to stand**, this is exactly the kind of process where policy is reviewed periodically and outdated general information is a genuine risk.
 
-**Understand that this is a genuine long-term consideration**, worth factoring into decisions about employer stability and career trajectory from your first job, rather than a decision to think about only after many years.
+## Understanding this as a genuine long-term project
 
-**Verify current specific eligibility criteria directly with the relevant Japanese immigration authority before making significant career decisions based on where you expect to stand**, this is exactly the kind of process where policy is reviewed periodically and outdated general information is a genuine risk.
+Treat this as a multi-year undertaking from early in your career, factoring genuine employer and career stability into decisions from your first job, rather than a decision to consider only after several years have already passed, this is the same [long-term planning discipline that matters for permanent status in any country](/blog/canada-express-entry-for-new-grads).
+
+Reassess your own position periodically against current published criteria, rather than assuming your understanding from several years ago remains accurate, since this is genuinely the kind of policy area reviewed and adjusted over time.
+
+## What to do while you wait to become eligible
+
+**Use the years before you are eligible to apply deliberately**, building the strongest possible profile across employment stability, language ability and community integration, rather than treating this as passive waiting time.
+
+**Periodically review current official eligibility criteria**, since this is genuinely the kind of policy area that is reviewed and can change, an assumption formed several years ago may no longer accurately reflect current requirements by the time you are actually ready to apply.
 
 ## Common Mistakes
 
@@ -106,6 +120,7 @@ Japanese language ability, and genuine integration into the local community and 
 - **Not keeping documentation.** Certificates are difficult to reconstruct years later.
 - **Relying on outdated figures.** Thresholds are revised; check the official source.
 
+## Frequently Asked Questions
 ### How long do I need to work in Japan before applying for permanent residency?
 
 Generally a meaningful period of continuous residence is required, the specific length can vary by category and circumstances, verify current specific criteria directly with the relevant authority.
@@ -121,19 +136,6 @@ Language ability and genuine community integration are recognised factors, thoug
 ### Where do I get current, accurate information on eligibility?
 
 The relevant Japanese immigration authority publishes current official guidance, worth checking directly rather than relying on general or outdated summaries.
-## Understanding this as a genuine long-term project
-
-Treat this as a multi-year undertaking from early in your career, factoring genuine employer and career stability into decisions from your first job, rather than a decision to consider only after several years have already passed, this is the same [long-term planning discipline that matters for permanent status in any country](/blog/canada-express-entry-for-new-grads).
-
-Reassess your own position periodically against current published criteria, rather than assuming your understanding from several years ago remains accurate, since this is genuinely the kind of policy area reviewed and adjusted over time.
-
-## What to do while you wait to become eligible
-
-**Use the years before you are eligible to apply deliberately**, building the strongest possible profile across employment stability, language ability and community integration, rather than treating this as passive waiting time.
-
-**Periodically review current official eligibility criteria, since this is genuinely the kind of policy area that is reviewed and can change**, an assumption formed several years ago may no longer accurately reflect current requirements by the time you are actually ready to apply.
-
-## Frequently Asked Questions
 
 ### How long does the conventional route take?
 
@@ -158,3 +160,4 @@ Permitted, and continuity of appropriate status matters. Moving to work that doe
 ### Is naturalisation an alternative?
 
 It is a separate process resulting in Japanese citizenship, and Japan does not generally permit dual nationality for adults — which most foreign workers weigh heavily.
+

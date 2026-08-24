@@ -61,7 +61,7 @@ Halifax anchors a smaller but real Atlantic Canada tech and ocean-technology clu
 
 ## Building the real comparison
 
-**Take the net salary for each city and offer you are comparing, subtract a realistic estimate of housing and living costs using actual current data for the specific city and neighbourhood, and compare what genuinely remains**, this is the comparison that actually matters, rather than the raw headline salary figures.
+**Take the net salary for each city and offer you are comparing**, subtract a realistic estimate of housing and living costs using actual current data for the specific city and neighbourhood, and compare what genuinely remains, this is the comparison that actually matters, rather than the raw headline salary figures.
 
 **The result frequently favours a smaller or mid-sized city over Toronto or Vancouver once this is properly accounted for**, worth running the real numbers before assuming the largest, most expensive cities automatically represent the strongest outcome.
 
@@ -71,12 +71,12 @@ Provincial nominee programs and specific immigration streams vary by province, [
 
 ## Common Mistakes
 
-- **Defaulting to Toronto as the only serious option without researching where your specific sector actually has strength elsewhere.**
-- **Comparing salaries across cities without adjusting for genuinely substantial differences in real cost of living.**
+- **Defaulting to Toronto as the only serious option.** Without researching where your specific sector actually has strength elsewhere.
+- **Comparing salaries across cities.** Without adjusting for genuinely substantial differences in real cost of living.
 - **Overlooking Waterloo, smaller centres and mid-sized cities that offer genuine, less contested opportunity in specific sectors.**
-- **Not considering provincial immigration stream differences when choosing where to settle, if this matters to your longer-term plans.**
+- **Not considering provincial immigration stream differences.** When choosing where to settle. If this matters to your longer-term plans.
 - **Assuming Vancouver housing costs are comparable to other Canadian cities.** They are frequently among the highest in the country.
-- **Choosing a city purely on general reputation rather than matching it deliberately to your specific target sector.**
+- **Choosing a city purely on general reputation.** Rather than matching it deliberately to your specific target sector.
 
 ## Frequently Asked Questions
 

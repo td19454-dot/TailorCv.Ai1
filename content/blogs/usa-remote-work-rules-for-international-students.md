@@ -21,7 +21,7 @@ showcase: none
 
 ## The principle that governs everything
 
-**Authorization is about you, not about the desk you happen to be sitting at.** Whether you may work depends on your immigration status and the specific permission attached to it. It does not depend on whether the work is performed in an office, at home, or in a library.
+**Authorization is about you**, not about the desk you happen to be sitting at. Whether you may work depends on your immigration status and the specific permission attached to it. It does not depend on whether the work is performed in an office, at home, or in a library.
 
 This sounds obvious and it is routinely misunderstood, usually in the direction of assuming remote work is somehow informal or outside the system. It is not. A remote role for a US employer, performed while you are in the US, is employment in every sense that matters, and it requires exactly the same authorization an in-person role would.
 
@@ -73,8 +73,8 @@ A genuinely different question, and one where general advice is least reliable.
 - **Treating unpaid or freelance remote work as not-work.** It is work, and it requires authorization.
 - **Starting before authorization is in place.** The most serious error, and it is not made less serious by the role being remote.
 - **Neglecting reporting obligations.** Employer details must stay current for a remote role exactly as for an in-person one.
-- **Assuming you can simply work from abroad for a while.** It depends on the employer's legal ability, local law, and your own status.
-- **Reasoning from a forum post instead of asking your international office.** The rules are specific and the consequences of getting them wrong are disproportionate.
+- **Assuming you can simply work from abroad.** For a while. It depends on the employer's legal ability, local law, and your own status.
+- **Reasoning from a forum post.** Instead of asking your international office. The rules are specific and the consequences of getting them wrong are disproportionate.
 
 ## Frequently Asked Questions
 

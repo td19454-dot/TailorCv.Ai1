@@ -39,7 +39,7 @@ Build a researched range rather than a single point figure, particularly useful 
 
 ## Building the real comparison between offers
 
-**Take the net salary for each offer, subtract a realistic estimate of housing and living costs for the specific city, using actual current data rather than a general reputation about which cities are expensive**, exactly the discipline covered for [any city comparison](/blog/usa-relocation-and-cost-of-living-first-job), and compare what genuinely remains.
+**Take the net salary for each offer**, subtract a realistic estimate of housing and living costs for the specific city, using actual current data rather than a general reputation about which cities are expensive, exactly the discipline covered for [any city comparison](/blog/usa-relocation-and-cost-of-living-first-job), and compare what genuinely remains.
 
 **The result frequently surprises graduates comparing a Toronto or Vancouver offer against one in a smaller city**, a lower headline salary in a more affordable city can produce a stronger real, disposable outcome than a higher salary in an expensive one.
 
@@ -59,7 +59,7 @@ Relocation assistance is worth asking about explicitly if the role requires movi
 
 ## Comparing the whole package
 
-**Benefits, including health coverage, and retirement contributions, matter considerably and are frequently underweighted by graduates comparing offers on salary alone.** Most private employers offer an RRSP (Registered Retirement Savings Plan) with an employer match — commonly somewhere in the 3-6% of salary range, though this varies by employer — rather than a traditional pension; ask specifically what the match percentage is and whether it's immediate or vests over time. Public sector roles and many Crown corporations instead offer a defined-benefit pension, a structurally different and often more valuable long-term benefit that a straight salary comparison misses entirely.
+**Benefits, including health coverage**, and retirement contributions, matter considerably and are frequently underweighted by graduates comparing offers on salary alone. Most private employers offer an RRSP (Registered Retirement Savings Plan) with an employer match — commonly somewhere in the 3-6% of salary range, though this varies by employer — rather than a traditional pension; ask specifically what the match percentage is and whether it's immediate or vests over time. Public sector roles and many Crown corporations instead offer a defined-benefit pension, a structurally different and often more valuable long-term benefit that a straight salary comparison misses entirely.
 
 **Ask specifically what a typical bonus actually was for someone at your level last year**, rather than relying on a stated target figure alone, the two frequently differ meaningfully.
 
@@ -67,10 +67,10 @@ Relocation assistance is worth asking about explicitly if the role requires movi
 
 ## Common Mistakes
 
-- **Comparing offers on headline salary alone without adjusting for the specific city's genuine cost of living.**
+- **Comparing offers on headline salary alone.** Without adjusting for the specific city's genuine cost of living.
 - **Assuming a national average salary figure meaningfully represents your specific sector and city.**
 - **Trying to negotiate a fixed cohort rate at a structured graduate program.** Rarely productive.
-- **Ignoring benefits and pension provisions when comparing offers.** A genuine and often substantial part of total compensation.
+- **Ignoring benefits and pension provisions.** When comparing offers. A genuine and often substantial part of total compensation.
 - **Not checking whether a published salary range exists directly on the posting.** Increasingly common and genuinely useful.
 - **Assuming Toronto or Vancouver pay always represents the better real outcome.** The real comparison is frequently closer than the raw figures suggest.
 

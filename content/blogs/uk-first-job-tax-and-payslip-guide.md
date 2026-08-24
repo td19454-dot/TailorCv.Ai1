@@ -84,7 +84,7 @@ If you have income from more than one source, including a second job or freelanc
 ## Common Mistakes
 
 - **Not checking the first payslip at all.** The single easiest way to catch an emergency tax code or a pension enrolment issue early.
-- **Opting out of the workplace pension without understanding the employer match forfeited.** Comparable to walking away from free compensation.
+- **Opting out of the workplace pension.** Without understanding the employer match forfeited. Comparable to walking away from free compensation.
 - **Assuming an emergency tax code will sort itself out with no need to check.** It usually does, and confirming it is happening costs nothing.
 - **Not confirming the correct student loan plan is on file.** An incorrect plan type can mean over or under-deduction.
 - **Ignoring a discrepancy between contracted salary and gross pay shown.** Worth raising immediately rather than assuming it will be corrected later.

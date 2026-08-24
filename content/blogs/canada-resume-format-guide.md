@@ -62,12 +62,12 @@ A specific note on GPA formatting. Canadian universities don't all use the same 
 
 ## Common Mistakes
 
-- **Running a US resume template through a default US spell-checker**, silently converting "colour" to "color" and "centre" to "center" without you noticing.
-- **Using "college" the American way** when the institution was actually a Canadian university, or vice versa — the words carry different meaning here.
-- **Applying to a federal posting without directly addressing each listed merit criterion**, relying on the resume alone to imply you meet them.
-- **Self-reporting "fluent" or "conversational" French for a bilingual federal role** without knowing your actual Second Language Evaluation standing, when the role requires it.
-- **Sending the same generic document to every posting** instead of matching the language of each specific listing.
-- **Skipping an ATS check** before sending out applications and finding out about a formatting problem only after weeks of silence.
+- **Running a US resume template through a default US spell-checker.** Silently converting "colour" to "color" and "centre" to "center" without you noticing.
+- **Using "college" the American way.** When the institution was actually a Canadian university, or vice versa — the words carry different meaning here.
+- **Applying to a federal posting.** Without directly addressing each listed merit criterion. Relying on the resume alone to imply you meet them.
+- **Self-reporting "fluent" or "conversational" French.** For a bilingual federal role. Without knowing your actual Second Language Evaluation standing, when the role requires it.
+- **Sending the same generic document to every posting.** Instead of matching the language of each specific listing.
+- **Skipping an ATS check.** Before sending out applications and finding out about a formatting problem only after weeks of silence.
 
 ## Frequently Asked Questions
 

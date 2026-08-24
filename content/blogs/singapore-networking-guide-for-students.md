@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## The underlying mechanics transfer directly
 
-**Effective networking follows broadly the same principles everywhere, and Singapore is no exception**, ask for a short conversation rather than a job or a referral in a first message, be specific about who you are and why you are reaching out, and follow up genuinely afterward, exactly the [same approach that works in any market](/blog/usa-cold-email-networking-students).
+**Effective networking follows broadly the same principles everywhere**, and Singapore is no exception, ask for a short conversation rather than a job or a referral in a first message, be specific about who you are and why you are reaching out, and follow up genuinely afterward, exactly the [same approach that works in any market](/blog/usa-cold-email-networking-students).
 
 **A referral meaningfully improves your odds of being read at any employer of size here**, the underlying mechanism, an application routed to a person rather than filtered automatically, operates identically regardless of country.
 
@@ -33,7 +33,7 @@ Directness is welcomed rather than considered impolite. A clear, specific ask, s
 
 ## Who to actually contact
 
-**Alumni from your specific institution, particularly those one to three years ahead of you and now working in Singapore, remain the highest-yield group**, they remember the process clearly, they are not yet too senior to respond, and the shared institutional connection gives you a legitimate, specific reason to reach out.
+**Alumni from your specific institution**, particularly those one to three years ahead of you and now working in Singapore, remain the highest-yield group, they remember the process clearly, they are not yet too senior to respond, and the shared institutional connection gives you a legitimate, specific reason to reach out.
 
 **People who recently joined a target employer** are often still enthusiastic about the move and, at many companies, within a period where referring a candidate carries a real incentive for them.
 
@@ -51,7 +51,7 @@ Your own existing network, classmates, former colleagues from any prior internsh
 
 ## What to actually write
 
-**A short message, specific about who you are and why you are reaching out, asking for a brief conversation rather than a job directly**, referencing something specific, a shared institution, a specific piece of their work, or a genuine question about their role, rather than a generic template.
+**A short message, specific about who you are and why you are reaching out**, asking for a brief conversation rather than a job directly, referencing something specific, a shared institution, a specific piece of their work, or a genuine question about their role, rather than a generic template.
 
 **Keep it brief.** A message that respects the other person's time, and is easy to say yes to, converts considerably better than a long one.
 
@@ -65,10 +65,10 @@ This compounds. A good early conversation frequently leads to an introduction to
 
 - **Asking for a referral or a job in the first message.** Ask for a short conversation instead, exactly as in any market.
 - **Using an effusive, superlative-heavy register that reads poorly against the local measured, specific norm.**
-- **Only reaching out when a deadline is imminent, rather than starting early and building genuine relationships over time.**
-- **Not following up genuinely after a good conversation.**
-- **Sending a long, generic message rather than a short, specific one.**
-- **Overlooking your own institution's alumni as the highest-yield contact group.**
+- **Only reaching out when a deadline is imminent.** Rather than starting early and building genuine relationships over time.
+- **Not following up genuinely.** After a good conversation.
+- **Sending a long, generic message.** Rather than a short, specific one.
+- **Overlooking your own institution's alumni.** As the highest-yield contact group.
 
 ## Frequently Asked Questions
 

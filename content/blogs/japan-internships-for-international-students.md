@@ -99,6 +99,12 @@ Where a programme is genuinely brief, a few days rather than a full summer, prep
 
 Follow up genuinely afterward with anyone you connected with during the programme, exactly the [same follow-up discipline that converts a good conversation into a lasting professional relationship anywhere](/blog/usa-cold-email-networking-students), a brief internship can still produce a genuinely useful ongoing contact if handled well afterward.
 
+## Following up properly after the programme ends
+
+**Send a genuine, specific thank-you message to your supervisor and any colleagues who were particularly helpful shortly after the programme concludes**, referencing something specific from your time there rather than a generic message, this is well received and helps the relationship genuinely continue beyond the internship itself.
+
+**Ask directly whether staying in touch would be welcome**, and whether there might be future opportunities, even where immediate conversion is not available, this keeps a door open that a silent departure would close.
+
 ## Common Mistakes
 
 - **Expecting Western-length internships.** Many are days rather than months.
@@ -108,6 +114,7 @@ Follow up genuinely afterward with anyone you connected with during the programm
 - **Treating it as work experience only.** The information and the relationship are the actual value.
 - **Not following up afterwards.** The step that converts a visit into a relationship.
 
+## Frequently Asked Questions
 ### Do internships in Japan lead to full-time offers?
 
 At some employers, particularly where the programme is genuinely connected to the broader graduate hiring pipeline, yes, worth understanding this connection for any specific programme you apply to.
@@ -123,13 +130,6 @@ Depends on the specific employer and programme, some are more accessible to inte
 ### Where should I look for internship opportunities?
 
 Your university's international office or career centre, which may maintain specific employer relationships, alongside direct research of target companies' own internship programmes.
-## Following up properly after the programme ends
-
-**Send a genuine, specific thank-you message to your supervisor and any colleagues who were particularly helpful shortly after the programme concludes**, referencing something specific from your time there rather than a generic message, this is well received and helps the relationship genuinely continue beyond the internship itself.
-
-**Ask directly whether staying in touch would be welcome, and whether there might be future opportunities**, even where immediate conversion is not available, this keeps a door open that a silent departure would close.
-
-## Frequently Asked Questions
 
 ### How long are Japanese internships?
 
@@ -154,3 +154,4 @@ For programmes at traditional Japanese companies, generally yes. English-operati
 ### What if I missed the internship stage entirely?
 
 You can still apply in the main round, and [technology and year-round employers](/blog/japan-tech-jobs-for-foreign-graduates) are much less affected by having missed it.
+

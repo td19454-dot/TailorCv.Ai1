@@ -25,7 +25,7 @@ showcase: none
 
 **It generally does not apply to foreigners working in Singapore on a work pass**, this is a genuinely important structural fact, meaning two people earning an identical nominal salary, one a citizen or permanent resident and one a foreign pass holder, actually experience meaningfully different take-home pay and total compensation structures.
 
-**If you are a foreign pass holder, your take-home pay is generally a larger share of your nominal salary than an equivalent citizen or permanent resident colleague**, since you are not contributing to CPF, though you also do not receive the employer contribution that a citizen or permanent resident colleague accumulates as part of their own long-term retirement and housing savings.
+**If you are a foreign pass holder**, your take-home pay is generally a larger share of your nominal salary than an equivalent citizen or permanent resident colleague, since you are not contributing to CPF, though you also do not receive the employer contribution that a citizen or permanent resident colleague accumulates as part of their own long-term retirement and housing savings.
 
 **This is worth understanding clearly when comparing your own offer or take-home pay against a colleague's**, an apparent difference is not necessarily an error or unfairness, it frequently reflects this genuine structural distinction based on residency status.
 
@@ -39,13 +39,10 @@ IRAS (the Inland Revenue Authority of Singapore) is the tax authority you'll dea
 
 ## What to check on your first payslip
 
-**Gross salary matches your contract.**
-
-**Whether CPF contributions are being deducted, and whether this matches your actual status**, citizen and permanent resident employees should see this reflected, foreign pass holders generally should not, if something looks inconsistent with your actual status, raise it with your employer's HR team promptly.
-
-**Any other standard deductions or contributions specific to your employer's benefit structure.**
-
-**That the net figure landing in your account matches your own expectation based on understanding the above**, rather than assuming any discrepancy is automatically an error, understanding the underlying structure first prevents unnecessary confusion or a misplaced query.
+1. **Gross salary matches your contract.**
+2. **Whether CPF contributions are being deducted**, and whether this matches your actual status, citizen and permanent resident employees should see this reflected, foreign pass holders generally should not, if something looks inconsistent with your actual status, raise it with your employer's HR team promptly.
+3. **Any other standard deductions or contributions specific to your employer's benefit structure.**
+4. **That the net figure landing in your account matches your own expectation based on understanding the above**, rather than assuming any discrepancy is automatically an error, understanding the underlying structure first prevents unnecessary confusion or a misplaced query.
 
 ## Building a realistic first-job budget
 
@@ -57,12 +54,12 @@ Housing, transport and general living costs vary considerably depending on your 
 
 ## Common Mistakes
 
-- **Assuming CPF applies to you as a foreign pass holder, when it generally does not.**
+- **Assuming CPF applies to you.** As a foreign pass holder. When it generally does not.
 - **Not understanding why your take-home pay differs from a citizen or permanent resident colleague on an identical nominal salary.** A genuine structural distinction, not an error.
-- **Assuming income tax is deducted automatically each month, when the system generally works differently.**
+- **Assuming income tax is deducted automatically each month.** When the system generally works differently.
 - **Not setting aside funds proactively for an annual tax obligation.**
 - **Not checking the first payslip carefully to confirm deductions match your actual status.**
-- **Building a budget based on assumptions imported from a different country's system, rather than the specific local structure.**
+- **Building a budget based on assumptions imported from a different country's system.** Rather than the specific local structure.
 
 ## Frequently Asked Questions
 

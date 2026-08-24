@@ -23,7 +23,7 @@ showcase: resume
 
 **Larger structured employers with formal graduate and [co-op programs](/blog/canada-university-career-services-guide) frequently expect a cover letter as a defined part of the application package**, worth treating this as a required component with the same seriousness as the resume itself in these contexts.
 
-**Smaller and mid-sized employers, where a person reads the full application, often value a specific, well-written letter genuinely**, similar to the pattern seen in [many other markets](/blog/uk-cover-letter-guide-graduates), a real letter can meaningfully change the outcome here.
+**Smaller and mid-sized employers**, where a person reads the full application, often value a specific, well-written letter genuinely, similar to the pattern seen in [many other markets](/blog/uk-cover-letter-guide-graduates), a real letter can meaningfully change the outcome here.
 
 **Government and public sector applications** frequently expect or explicitly request one — and for federal roles specifically, this often takes a distinct form: rather than (or alongside) a traditional cover letter, you may be asked for a written response addressing each listed merit criterion directly, closer to a structured statement of qualifications than a conventional narrative letter. Read the specific posting carefully to see which format is actually requested before defaulting to the private-sector structure covered below.
 
@@ -49,7 +49,7 @@ A brief, plain close, availability and thanks, nothing elaborate.
 
 **What works: something specific.** A particular business line, product, or team and a genuine reason it interests you. Something recent, a result, an initiative, a change in direction, and what you make of it. A genuine conversation with someone at the company, if you have had one, which is the strongest version and directly connects to the [networking effort](/blog/usa-cold-email-networking-students) that feeds good applications everywhere.
 
-**The test remains simple: if a competitor's name could be substituted into the paragraph without anything else changing, it has failed to do its job.** Compare:
+**The test remains simple: if a competitor's name could be substituted into the paragraph without anything else changing**, it has failed to do its job. Compare:
 
 - *Fails the test*: "I am excited about the opportunity to join [Company], a leader in the industry known for its innovative culture and commitment to excellence." Swap in any competitor's name and nothing else needs to change — that's the tell.
 - *Passes the test*: "Your team's recent shift to an in-house recommendation engine, rather than the licensed system most competitors still run, is the kind of problem I want to be working on — I built something similar for a class project and hit the exact latency wall your engineering blog post described." Specific, sourced from something real about the company, and unusable for any other employer without a full rewrite.
@@ -74,11 +74,11 @@ Where the co-op posting itself is thin on detail — common for a first work ter
 
 ## Common Mistakes
 
-- **A generic "why this employer" paragraph that could apply to any competitor.** The most common and most costly weakness.
+- **A generic "why this employer" paragraph.** That could apply to any competitor. The most common and most costly weakness.
 - **Restating the resume rather than adding genuinely new content.**
 - **Running longer than one page.** Rarely helps and is frequently skimmed.
-- **Guessing an incorrect name rather than using a general salutation.**
-- **Sending the same letter to every co-op application without adjusting for the specific role and team.**
+- **Guessing an incorrect name.** Rather than using a general salutation.
+- **Sending the same letter to every co-op application.** Without adjusting for the specific role and team.
 - **Not proofreading a document that is explicitly a writing sample.**
 
 ## Frequently Asked Questions

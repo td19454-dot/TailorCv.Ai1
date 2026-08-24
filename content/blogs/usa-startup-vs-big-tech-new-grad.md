@@ -115,11 +115,11 @@ A reasonable allocation for a technical graduate: a third of applications to lar
 
 Whichever side you are looking at, these tell you more than the recruiting material does. Ask them of your prospective manager rather than of a recruiter.
 
-**"What did the last person in this role work on, and where are they now?"** Promoted internally, moved teams, left — each answer says something different about how the team develops people.
+**"What did the last person in this role work on**, and where are they now?" Promoted internally, moved teams, left — each answer says something different about how the team develops people.
 
 **"Who would review my work in the first six months?"** Ask for a name. This is the single most predictive question for a first job and the answer is either a person or a shrug.
 
-**"What does a normal week look like — how much is meetings, how much is building?"** Concrete, and it exposes a role that is not what the title suggests.
+**"What does a normal week look like — how much is meetings**, how much is building?" Concrete, and it exposes a role that is not what the title suggests.
 
 **"What is the on-call expectation for someone at my level?"** Frequently omitted from the description and materially affects your life.
 

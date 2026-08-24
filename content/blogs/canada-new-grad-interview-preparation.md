@@ -247,14 +247,6 @@ Asked far more here than in most markets, because a great deal of good hiring ha
 
 Common, and it is not a box-tick. Answer it with an actual situation and an actual difficulty, not a statement of values.
 
-**"What are your salary expectations?"**
-
-Increasingly answerable from the posting itself, since several provinces now require ranges to be published. Check before the interview. Where a range is given, naming a figure in its upper half with a brief reason is entirely normal.
-
-**"Do you have questions for us?"**
-
-Weighted more heavily here than candidates expect, and having none reads as indifference. Three questions, one of them about the actual day-to-day work.
-
 ## Frequently Asked Questions
 
 ### How formal are Canadian interviews?

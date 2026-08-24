@@ -79,7 +79,7 @@ Verify current rules before relying on them. Route lengths, thresholds and requi
 
 ## Common Mistakes
 
-- **Treating it as an end rather than a window.** It does not lead to settlement by itself.
+- **Treating it as an end.** Rather than a window. It does not lead to settlement by itself.
 - **Spending it in non-sponsorable work.** The most common way the period is wasted.
 - **Not checking the sponsor register.** Public, searchable, and it determines whether an employer can keep you.
 - **Applying too late.** You must apply from inside the UK while student permission remains valid.

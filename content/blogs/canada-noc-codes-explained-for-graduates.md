@@ -34,7 +34,7 @@ showcase: none
 
 Canadian Experience Class and most Express Entry pathways only count TEER 0-3 as qualifying skilled work experience. TEER 4 and 5 roles don't count toward those pathways at all, however many hours you log or however demanding the day-to-day work actually is.
 
-**If you're researching this and find older articles or forum posts talking about "Skill Level A" or "Skill Level B" instead of TEER, that's not a different system — it's the old one.** NOC 2021 replaced the previous Skill Type/Skill Level structure (Skill Type 0, then Skill Levels A through D) with the current TEER 0-5 scale. The underlying logic is similar, but the codes themselves also changed in that update, so a 2019 forum post citing a specific NOC code for your occupation may be citing a code that no longer exists under the current system — always check the current NOC 2021 code directly rather than trusting an older reference.
+**If you're researching this and find older articles or forum posts talking about "Skill Level A" or "Skill Level B" instead of TEER**, that's not a different system — it's the old one. NOC 2021 replaced the previous Skill Type/Skill Level structure (Skill Type 0, then Skill Levels A through D) with the current TEER 0-5 scale. The underlying logic is similar, but the codes themselves also changed in that update, so a 2019 forum post citing a specific NOC code for your occupation may be citing a code that no longer exists under the current system — always check the current NOC 2021 code directly rather than trusting an older reference.
 
 ## Real examples, so this isn't abstract
 
@@ -68,11 +68,11 @@ If the actual duties genuinely match a TEER 0-3 code but the employer's job titl
 
 ## Common Mistakes
 
-- **Judging a role by its title instead of looking up the actual NOC code for its duties.** Titles are inconsistent between employers; the code isn't.
+- **Judging a role by its title.** Instead of looking up the actual NOC code for its duties. Titles are inconsistent between employers; the code isn't.
 - **Assuming a TEER 4 or 5 role will eventually count if you hold it long enough.** It won't, for CEC/Express Entry purposes, regardless of duration.
 - **Assuming salary or how demanding a role feels tells you its TEER level.** Neither is a reliable indicator — check the code.
-- **Not checking before accepting an offer**, when a five-minute lookup at noc.esdc.gc.ca would have caught it.
-- **Not keeping the original posting or offer letter describing actual duties**, making it harder to substantiate the role's classification later.
+- **Not checking before accepting an offer.** When a five-minute lookup at noc.esdc.gc.ca would have caught it.
+- **Not keeping the original posting or offer letter describing actual duties.** Making it harder to substantiate the role's classification later.
 - **Ignoring a relevant provincial occupation list that might value the role differently than the federal system does.**
 
 ## Frequently Asked Questions

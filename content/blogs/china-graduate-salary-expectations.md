@@ -21,7 +21,7 @@ showcase: none
 
 ## Why city tier dominates the comparison
 
-**This is the variable that matters most, and it is the one graduates most consistently underweight when comparing two offers side by side.** A headline salary figure means something quite different in a major first-tier city than in a lower-tier one, primarily because housing and general cost of living differ so substantially between them.
+**This is the variable that matters most**, and it is the one graduates most consistently underweight when comparing two offers side by side. A headline salary figure means something quite different in a major first-tier city than in a lower-tier one, primarily because housing and general cost of living differ so substantially between them.
 
 **Major first-tier cities generally offer the highest salaries and also carry the highest cost of living**, particularly housing, this is a familiar pattern that repeats in [nearly every market globally](/blog/usa-relocation-and-cost-of-living-first-job), the specific magnitude here is considerable and worth taking seriously rather than assuming a higher number automatically means a better real outcome once you've actually run the full comparison.
 
@@ -57,7 +57,7 @@ Check what a specific posting states, where a figure is given, increasingly comm
 
 ## Negotiating
 
-**At major structured graduate programmes, particularly at large domestic and multinational employers, base pay is often set at a fixed rate across the entire cohort**, similar to the pattern seen in [structured graduate schemes elsewhere](/blog/uk-graduate-salary-expectations), individually negotiating this specific figure is rarely productive.
+**At major structured graduate programmes**, particularly at large domestic and multinational employers, base pay is often set at a fixed rate across the entire cohort, similar to the pattern seen in [structured graduate schemes elsewhere](/blog/uk-graduate-salary-expectations), individually negotiating this specific figure is rarely productive.
 
 **What is sometimes more flexible**, start date, and occasionally signing arrangements at some employers, worth asking about specifically rather than assuming nothing is negotiable.
 
@@ -77,12 +77,12 @@ Adjust any general figure you find for the specific combination of sector, city 
 
 ## Common Mistakes
 
-- **Comparing offers on headline salary without adjusting for the specific city's real cost of living.** The single most common and costly error in this comparison.
+- **Comparing offers on headline salary.** Without adjusting for the specific city's real cost of living. The single most common and costly error in this comparison.
 - **Assuming a national average salary figure applies meaningfully to your specific city and sector.**
-- **Ignoring annual bonus and benefits when comparing two offers.** Total compensation, not base salary alone, is the figure that matters.
+- **Ignoring annual bonus and benefits.** When comparing two offers. Total compensation, not base salary alone, is the figure that matters.
 - **Not asking what a typical bonus actually was, relying instead on a stated target figure.** The two frequently differ.
 - **Trying to negotiate a fixed cohort rate at a structured graduate programme.** Rarely successful and rarely the productive use of the conversation.
-- **Not researching a realistic sector and city-specific figure before an offer conversation.** A vague expectation is a weak position.
+- **Not researching a realistic sector and city-specific figure.** Before an offer conversation. A vague expectation is a weak position.
 
 ## Frequently Asked Questions
 

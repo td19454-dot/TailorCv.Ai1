@@ -175,15 +175,6 @@ Startups. Hiring on need, always.
 
 The reframe worth taking from this: a student in April has not missed the market. They have missed one visible slice of it and still have access to most of the economy, which is a very different situation from the one the autumn calendar implies.
 
-## Common Mistakes
-
-- **Concluding in December that the year is over.** The single most costly assumption a graduating student can make.
-- **Relying on career fairs that no longer exist at this point in the year.** Direct applications and outreach carry more weight in spring.
-- **Leaving the resume unchanged since autumn.** Add anything built over the winter.
-- **Narrowing the search instead of widening it.** Fewer autumn options is an argument for more spring applications, not fewer.
-- **Treating spring roles as inferior.** Conversion and quality are comparable at many employers; the pool is simply smaller.
-- **Moving slowly once a process starts.** Spring timelines can be compressed and candidates who delay lose roles to those who do not.
-
 ## The psychology of a second season
 
 Worth addressing directly, because the practical advice above only works if you are still functioning well enough to execute it.
@@ -200,6 +191,16 @@ Worth addressing directly, because the practical advice above only works if you 
 
 **And keep the timescale in proportion.** This is a few months of a working life that will run four decades. First jobs are frequently not the intended one, [lateral moves at the two-year mark](/blog/usa-startup-vs-big-tech-new-grad) are how a great many people reach the employers who filtered them out as graduates, and the spring season is a genuine channel rather than a consolation prize.
 
+## Common Mistakes
+
+- **Concluding in December that the year is over.** The single most costly assumption a graduating student can make.
+- **Relying on career fairs that no longer exist at this point in the year.** Direct applications and outreach carry more weight in spring.
+- **Leaving the resume unchanged since autumn.** Add anything built over the winter.
+- **Narrowing the search instead of widening it.** Fewer autumn options is an argument for more spring applications, not fewer.
+- **Treating spring roles as inferior.** Conversion and quality are comparable at many employers; the pool is simply smaller.
+- **Moving slowly once a process starts.** Spring timelines can be compressed and candidates who delay lose roles to those who do not.
+
+## Frequently Asked Questions
 ### Do employers view spring applicants as leftovers?
 
 Generally no. Recruiters filling a spring requisition are filling a live vacancy and care about whether you can do the job, not about which month you applied. The perception that spring candidates are weaker is held far more by students than by the people hiring them.
@@ -211,10 +212,10 @@ Not unprompted, and there is no need to volunteer it. If you are reapplying to t
 ### Is it worth applying to a role starting sooner than I can begin?
 
 Say your availability plainly and let the employer decide. Spring roles frequently want someone soon, and a candidate who is honest about a June start is better than one who obscures it and creates a problem later.
+
 ### How long should I keep searching after graduation?
 
 As long as it takes, and treat it as a continuous process rather than one with a deadline. A meaningful number of graduates find their first role in the months after commencement, and there is no cliff at which the market closes to you.
-## Frequently Asked Questions
 
 ### Is a spring internship or job worse than an autumn one?
 
@@ -239,3 +240,4 @@ Keep going. The search does not stop at commencement, and a meaningful number of
 ### Is it too late to start now if I have not applied anywhere yet?
 
 No. Spring is precisely the season built for exactly this situation, and starting properly now — resume fixed, target list built, outreach running — puts you in a genuinely live channel rather than a closed one.
+

@@ -83,15 +83,11 @@ Graduate school shifts your cycle by the length of the programme and gives you a
 
 ## What actually happens at each stage
 
-**Company information sessions**, running for a substantial period before formal applications open, attending these is genuinely part of building your own understanding of specific companies and, in many cases, part of how companies build their eventual applicant pool, treating them as optional or purely promotional is a mistake many international students make.
-
-**Entry sheet submission**, a detailed written application, often including several substantial essay-style responses about your background, motivations and specific interest in the company, these are read and scored, and a generic response reused across many companies is noticed and scored poorly, exactly the same principle that applies to [written applications everywhere](/blog/uk-cover-letter-guide-graduates), applied within a considerably more formal and detailed local convention.
-
-**Aptitude and written testing**, covered separately, a standard early filtering stage at most large employers.
-
-**Multiple interview rounds**, generally increasing in seniority of interviewer as you progress, culminating in a final round that frequently involves senior leadership.
-
-**The informal offer**, extended before any formal, official offer, carrying real social weight within this system as discussed in the [broader shinsotsu system guide](/blog/japan-new-grad-shinsotsu-hiring-explained).
+1. **Company information sessions**, running for a substantial period before formal applications open, attending these is genuinely part of building your own understanding of specific companies and, in many cases, part of how companies build their eventual applicant pool, treating them as optional or purely promotional is a mistake many international students make.
+2. **Entry sheet submission**, a detailed written application, often including several substantial essay-style responses about your background, motivations and specific interest in the company, these are read and scored, and a generic response reused across many companies is noticed and scored poorly, exactly the same principle that applies to [written applications everywhere](/blog/uk-cover-letter-guide-graduates), applied within a considerably more formal and detailed local convention.
+3. **Aptitude and written testing**, covered separately, a standard early filtering stage at most large employers.
+4. **Multiple interview rounds**, generally increasing in seniority of interviewer as you progress, culminating in a final round that frequently involves senior leadership.
+5. **The informal offer**, extended before any formal, official offer, carrying real social weight within this system as discussed in the [broader shinsotsu system guide](/blog/japan-new-grad-shinsotsu-hiring-explained).
 
 ## Building your own calendar around this
 
@@ -105,9 +101,25 @@ Practise aptitude and written tests specifically, covered in the [group intervie
 
 **This process runs for a genuinely extended period and demands sustained effort alongside your studies**, similar to [the sustained effort structured graduate recruiting requires in other intensive markets](/blog/uk-milkround-and-careers-fairs), pacing yourself deliberately across the full cycle, rather than front-loading all your energy into the earliest weeks, produces better outcomes over the whole process.
 
-**Build a realistic weekly routine covering information sessions, entry sheet preparation and interview practice**, rather than treating the whole timeline as a single undifferentiated block of activity, structure genuinely helps manage what is otherwise an overwhelming volume of parallel processes.
+**Build a realistic weekly routine covering information sessions**, entry sheet preparation and interview practice, rather than treating the whole timeline as a single undifferentiated block of activity, structure genuinely helps manage what is otherwise an overwhelming volume of parallel processes.
 
 **Take care of your own wellbeing across a genuinely demanding period**, the sustained intensity of this system, combined with the real social weight attached to its various stages, makes this a genuinely stressful period for many students, worth building in deliberate breaks rather than running continuously at full intensity throughout.
+
+## Adjusting your approach if you started late
+
+If you find yourself starting this process later than the typical timeline suggests is ideal, this is recoverable, though it requires a genuinely more concentrated effort in a shorter window.
+
+Prioritise the companies and industries where you have the strongest genuine fit first, rather than attempting to cover the same breadth a student who started earlier managed across a longer period, focused depth on fewer targets often outperforms thin coverage across many when time is genuinely constrained.
+
+Some companies and industries run supplementary hiring rounds later in the cycle, or maintain more flexible, rolling processes throughout the year, particularly true of international companies and some newer domestic firms, worth researching these specifically if your own timeline does not align with the earliest and most competitive window.
+
+## Managing multiple parallel processes without losing track
+
+**Given the volume of companies many students engage with simultaneously across this extended timeline**, a genuinely organised system for tracking where you stand with each is essential, not optional.
+
+**Record the specific stage**, key dates, and any particular details discussed for every company you are engaging with, a simple spreadsheet works well, this becomes genuinely important as the number of parallel processes grows, since confusing details between companies during a later interview stage reflects poorly and is entirely avoidable with basic organisation.
+
+**Review your own tracker regularly rather than only when a specific deadline is imminent**, a weekly review habit catches upcoming deadlines and lets you allocate your preparation time deliberately across your active processes, rather than reacting to whichever deadline happens to be most urgent at any given moment.
 
 ## Common Mistakes
 
@@ -118,6 +130,7 @@ Practise aptitude and written tests specifically, covered in the [group intervie
 - **Applying a foreign country's calendar.** The Japanese cycle runs more than a year ahead of the start date.
 - **Not registering on job-hunting platforms early.** Much of the information flow runs through them.
 
+## Frequently Asked Questions
 ### When should international students start preparing?
 
 Well before the formal timeline, attending information sessions and building language ability, where needed, takes real lead time that is worth starting a year or more in advance where possible.
@@ -133,23 +146,6 @@ Some companies run supplementary or later hiring rounds, and foreign multination
 ### How many companies should I realistically target?
 
 Enough to build a genuine, well-researched target list rather than a small handful, while still being able to prepare specific, high-quality entry sheet responses for each, quality of preparation per company matters considerably here.
-## Adjusting your approach if you started late
-
-If you find yourself starting this process later than the typical timeline suggests is ideal, this is recoverable, though it requires a genuinely more concentrated effort in a shorter window.
-
-Prioritise the companies and industries where you have the strongest genuine fit first, rather than attempting to cover the same breadth a student who started earlier managed across a longer period, focused depth on fewer targets often outperforms thin coverage across many when time is genuinely constrained.
-
-Some companies and industries run supplementary hiring rounds later in the cycle, or maintain more flexible, rolling processes throughout the year, particularly true of international companies and some newer domestic firms, worth researching these specifically if your own timeline does not align with the earliest and most competitive window.
-
-## Managing multiple parallel processes without losing track
-
-**Given the volume of companies many students engage with simultaneously across this extended timeline**, a genuinely organised system for tracking where you stand with each is essential, not optional.
-
-**Record the specific stage, key dates, and any particular details discussed for every company you are engaging with**, a simple spreadsheet works well, this becomes genuinely important as the number of parallel processes grows, since confusing details between companies during a later interview stage reflects poorly and is entirely avoidable with basic organisation.
-
-**Review your own tracker regularly rather than only when a specific deadline is imminent**, a weekly review habit catches upcoming deadlines and lets you allocate your preparation time deliberately across your active processes, rather than reacting to whichever deadline happens to be most urgent at any given moment.
-
-## Frequently Asked Questions
 
 ### When should I actually start?
 
@@ -174,3 +170,4 @@ It is harder because so much of the process is in-person, and some companies run
 ### What if I want a specialist technical role?
 
 Those increasingly recruit year-round on more flexible timelines — see [technology hiring](/blog/japan-tech-jobs-for-foreign-graduates).
+

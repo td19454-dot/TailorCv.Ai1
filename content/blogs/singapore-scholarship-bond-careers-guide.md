@@ -35,11 +35,11 @@ The decision should be made deliberately, weighing the actual terms against your
 
 ## What to actually read before signing
 
-**The exact bond period, and what specifically counts toward fulfilling it**, some structures allow certain types of leave or secondment to count, others do not, worth understanding the specific mechanics rather than assuming a general definition applies.
+**The exact bond period**, and what specifically counts toward fulfilling it, some structures allow certain types of leave or secondment to count, others do not, worth understanding the specific mechanics rather than assuming a general definition applies.
 
 **What happens if you want to leave before the bond is fulfilled.** This is the single most important section to understand fully, most bonds carry a financial penalty for early departure, often calculated on a pro-rated basis reflecting the remaining period, understand the actual formula and the realistic financial consequence, rather than a vague general sense that "there is a penalty."
 
-**Whether the role you would be placed in after graduation is guaranteed to be specific, or whether placement is at the organisation's discretion within a general area**, this affects how much certainty the scholarship actually provides about your future day-to-day work.
+**Whether the role you would be placed in after graduation is guaranteed to be specific**, or whether placement is at the organisation's discretion within a general area, this affects how much certainty the scholarship actually provides about your future day-to-day work.
 
 **Any provisions for further study**, transfer, or a change in circumstances during the bond period.
 
@@ -61,10 +61,10 @@ Consider your own tolerance for a defined, multi-year commitment early in your c
 
 ## Common Mistakes
 
-- **Accepting a bonded scholarship purely for the funding without genuinely wanting to work for the organisation.**
-- **Not reading the specific early-departure terms carefully before signing.** The single most important section to understand fully.
+- **Accepting a bonded scholarship purely for the funding.** Without genuinely wanting to work for the organisation.
+- **Not reading the specific early-departure terms carefully.** Before signing. The single most important section to understand fully.
 - **Assuming all scholarship bonds work identically.** Terms vary considerably between government, statutory board and corporate scholarships.
-- **Declining a bonded scholarship reflexively without weighing the genuine benefits against the commitment.**
+- **Declining a bonded scholarship reflexively.** Without weighing the genuine benefits against the commitment.
 - **Not understanding whether your eventual placement role is guaranteed or discretionary.**
 - **Leaving a bond without first understanding the actual financial consequence and speaking honestly with the organisation.**
 

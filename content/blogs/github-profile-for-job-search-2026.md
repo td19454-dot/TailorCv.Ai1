@@ -172,11 +172,11 @@ None of this matters if the resume never clears the filter. Run it through the [
 
 Spend an hour on this before your next application:
 
-- **Archive dead repositories.** Coursework and abandoned experiments do not need deleting - archiving greys them out and signals they are historical.
-- **Remove secrets.** Scan for committed `.env` files, API keys, and credentials. A leaked key in your history is a genuine red flag to any security-conscious team.
-- **Fix the broken builds.** A pinned repository with a failing CI badge undermines the work.
-- **Add a licence.** A repository without one is legally ambiguous, and experienced reviewers notice.
-- **Update the bio and location.** An outdated role in your bio contradicts your resume.
+- [ ] **Archive dead repositories.** Coursework and abandoned experiments do not need deleting - archiving greys them out and signals they are historical.
+- [ ] **Remove secrets.** Scan for committed `.env` files, API keys, and credentials. A leaked key in your history is a genuine red flag to any security-conscious team.
+- [ ] **Fix the broken builds.** A pinned repository with a failing CI badge undermines the work.
+- [ ] **Add a licence.** A repository without one is legally ambiguous, and experienced reviewers notice.
+- [ ] **Update the bio and location.** An outdated role in your bio contradicts your resume.
 
 ---
 

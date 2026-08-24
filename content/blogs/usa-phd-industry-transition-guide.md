@@ -91,17 +91,12 @@ Technical product management, developer relations, scientific software, policy a
 
 ## Building the bridge before you leave
 
-**Ship something someone else uses.** A tool, a package, a dashboard adopted by another group. One artefact used by people outside your lab does more for an industry application than three papers.
-
-**Do an internship if your programme allows it.** The single strongest signal, and many doctoral students do not realise it is possible.
-
-**Learn the engineering practices.** Version control, testing, code review, reproducibility. Research code is frequently written by people who never learned these, and the gap is visible in interviews.
-
-**Present to non-specialists deliberately.** Departmental outreach, industry seminars, anything that forces you to drop the jargon.
-
-**Start conversations a year out.** Talk to people who left, especially from your own department. They know the translation and they are usually glad to help — the [outreach approach](/blog/usa-cold-email-networking-students) works unusually well here because academics reply to specific questions.
-
-**And do not wait for the writing-up to finish.** Industry applications run year-round with short timelines, so applying while you write is normal rather than premature.
+1. **Ship something someone else uses.** A tool, a package, a dashboard adopted by another group. One artefact used by people outside your lab does more for an industry application than three papers.
+2. **Do an internship if your programme allows it.** The single strongest signal, and many doctoral students do not realise it is possible.
+3. **Learn the engineering practices.** Version control, testing, code review, reproducibility. Research code is frequently written by people who never learned these, and the gap is visible in interviews.
+4. **Present to non-specialists deliberately.** Departmental outreach, industry seminars, anything that forces you to drop the jargon.
+5. **Start conversations a year out.** Talk to people who left, especially from your own department. They know the translation and they are usually glad to help — the [outreach approach](/blog/usa-cold-email-networking-students) works unusually well here because academics reply to specific questions.
+6. **And do not wait for the writing-up to finish.** Industry applications run year-round with short timelines, so applying while you write is normal rather than premature.
 
 ## A before-and-after resume line
 
@@ -177,15 +172,6 @@ Because industry hiring runs year-round on short timelines, the transition can b
 
 **For international candidates:** confirm your authorisation timeline early, look hard at [cap-exempt employers](/blog/usa-cap-exempt-h1b-employers), and assess whether your record supports an [O-1](/blog/usa-o1-visa-for-new-grads). All three are decisions that want lead time.
 
-## Common Mistakes
-
-- **Sending an academic CV.** Six pages of publications is not what an industry screen reads.
-- **Describing methods instead of outcomes.** Nobody outside your field knows what the method is.
-- **Skipping behavioural preparation.** The round PhDs most reliably lose, because academic hiring never tested it.
-- **Assuming technical interviews will reflect your expertise.** They test a standardised bar that needs its own practice.
-- **Answering "why leave academia" with grievance.** Understandable, and it costs offers.
-- **Waiting until the thesis is submitted.** Industry timelines are weeks, not an annual cycle.
-
 ## The first six months in industry
 
 The adjustment is real and it is predictable, so it is worth naming.
@@ -220,6 +206,30 @@ The highest-return activity in this transition, and academics are unusually good
 
 **And be honest in these conversations.** People who left academia are usually candid about the trade-offs, including the ones they regret. That candour is worth far more than any general article, including this one.
 
+## Salary and level, realistically
+
+Two questions every transitioning researcher has and rarely asks out loud.
+
+You are usually not starting at the bottom. Many employers map a doctorate to a level above the bachelor's entry point in research, data and applied science roles — commonly the equivalent of two to four years of experience. In pure software engineering the mapping is weaker, because the relevant experience is shipping rather than researching.
+
+Ask the recruiter directly. "How does the company level candidates with a PhD for this role?" is a normal question and the answer varies enough to be worth knowing before you invest in a process.
+
+The pay increase is usually substantial. Moving from a stipend or a postdoc salary to an industry offer is frequently a multiple rather than a percentage, and it can be disorienting. Do not let the size of the number substitute for evaluating the work.
+
+Negotiate the same way anyone does. Signing bonus, start date and level are the movable parts; base is often banded. The [negotiation principles](/blog/usa-offer-negotiation-new-grad) apply, and a competing offer is the only reliable leverage.
+
+And weigh the whole package. Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
+
+## Common Mistakes
+
+- **Sending an academic CV.** Six pages of publications is not what an industry screen reads.
+- **Describing methods instead of outcomes.** Nobody outside your field knows what the method is.
+- **Skipping behavioural preparation.** The round PhDs most reliably lose, because academic hiring never tested it.
+- **Assuming technical interviews will reflect your expertise.** They test a standardised bar that needs its own practice.
+- **Answering "why leave academia" with grievance.** Understandable, and it costs offers.
+- **Waiting until the thesis is submitted.** Industry timelines are weeks, not an annual cycle.
+
+## Frequently Asked Questions
 ### Do I need to finish the PhD?
 
 Usually it is worth finishing if you are close, because leaving late costs the credential without saving much time. Leaving early is a reasonable decision when the programme is not going to conclude well, and industry treats it far less harshly than academia does — describe the years as research experience and move on.
@@ -235,19 +245,6 @@ No. The transition happens at every stage, and additional research experience is
 ### How do I compete against people with industry experience?
 
 By not competing on that axis. Target roles where the research training is the qualification — applied science, research engineering, experimentation, quantitative work — rather than roles where you would be a slower version of someone with three years of shipping behind them.
-## Salary and level, realistically
-
-Two questions every transitioning researcher has and rarely asks out loud.
-
-You are usually not starting at the bottom. Many employers map a doctorate to a level above the bachelor's entry point in research, data and applied science roles — commonly the equivalent of two to four years of experience. In pure software engineering the mapping is weaker, because the relevant experience is shipping rather than researching.
-
-Ask the recruiter directly. "How does the company level candidates with a PhD for this role?" is a normal question and the answer varies enough to be worth knowing before you invest in a process.
-
-The pay increase is usually substantial. Moving from a stipend or a postdoc salary to an industry offer is frequently a multiple rather than a percentage, and it can be disorienting. Do not let the size of the number substitute for evaluating the work.
-
-Negotiate the same way anyone does. Signing bonus, start date and level are the movable parts; base is often banded. The [negotiation principles](/blog/usa-offer-negotiation-new-grad) apply, and a competing offer is the only reliable leverage.
-
-And weigh the whole package. Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
 
 ### Do I put "Dr" or "PhD" on my resume?
 
@@ -256,7 +253,6 @@ List the degree in the education section. Using the title in your name line is u
 ### Should I apply to roles asking for fewer years of experience than my PhD took?
 
 Yes. Entry requirements are guidelines, and many employers map a doctorate to a mid-level position anyway. Applying is free and the levelling conversation happens later.
-## Frequently Asked Questions
 
 ### Will I have to start at entry level?
 
@@ -281,3 +277,4 @@ Worth assessing seriously if you are an international candidate with publication
 ### How long does the transition take?
 
 Typically three to six months of active searching once the resume and the stories are right. The translation work is what takes the time, and doing it before you start applying shortens everything after.
+

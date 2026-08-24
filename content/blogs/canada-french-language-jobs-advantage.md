@@ -21,15 +21,15 @@ showcase: none
 
 ## Where French genuinely matters
 
-**Quebec's job market operates substantially in French, and this is backed by real, specific legislation, not merely informal custom or general politeness.** The Charter of the French Language (Bill 101), significantly updated by Bill 96 in recent years, requires businesses of a certain size (generally 25 or more employees, a threshold lowered from the previous 50 under Bill 96) to ensure French is the normal and habitual language of work — meaning internal communications, job postings, and often software and tools used in the workplace must be available in French. This is why "meaningful French proficiency" in Quebec isn't just cultural advice, it's frequently a genuine operational requirement built into how a Quebec employer of any real size is legally required to function.
+**Quebec's job market operates substantially in French**, and this is backed by real, specific legislation, not merely informal custom or general politeness. The Charter of the French Language (Bill 101), significantly updated by Bill 96 in recent years, requires businesses of a certain size (generally 25 or more employees, a threshold lowered from the previous 50 under Bill 96) to ensure French is the normal and habitual language of work — meaning internal communications, job postings, and often software and tools used in the workplace must be available in French. This is why "meaningful French proficiency" in Quebec isn't just cultural advice, it's frequently a genuine operational requirement built into how a Quebec employer of any real size is legally required to function.
 
 **New Brunswick is Canada's only officially bilingual province**, with a substantial Francophone population (largely Acadian) concentrated particularly in the north and east of the province — a genuinely distinct labour market from the rest of English Canada, worth researching specifically if bilingual work outside Quebec interests you.
 
 **The federal government designates a substantial number of positions as bilingual**, requiring demonstrated proficiency in both English and French, [genuine bilingual candidates access a meaningfully wider range of federal roles](/blog/canada-government-jobs-for-students) than English-only candidates, this is a real and often underappreciated advantage for anyone targeting federal public service specifically.
 
-**Parts of other provinces, particularly regions with significant Francophone communities, offer additional opportunity for bilingual candidates**, though this varies considerably by specific region and is worth researching directly for your target location — a general national average tells you almost nothing useful about a specific city or region's actual demand for bilingual skills, so treat any broad national figure as a starting point for further research, not a conclusion in itself.
+**Parts of other provinces**, particularly regions with significant Francophone communities, offer additional opportunity for bilingual candidates, though this varies considerably by specific region and is worth researching directly for your target location — a general national average tells you almost nothing useful about a specific city or region's actual demand for bilingual skills, so treat any broad national figure as a starting point for further research, not a conclusion in itself.
 
-**Certain sectors and specific employers, particularly those operating nationally or with significant Quebec operations, genuinely value bilingual candidates even outside Quebec itself**, since serving customers or coordinating with colleagues across both language markets is a genuine operational need for a company doing business coast to coast.
+**Certain sectors and specific employers**, particularly those operating nationally or with significant Quebec operations, genuinely value bilingual candidates even outside Quebec itself, since serving customers or coordinating with colleagues across both language markets is a genuine operational need for a company doing business coast to coast.
 
 ## The immigration angle
 
@@ -39,7 +39,7 @@ If you already have some French ability, or find language learning comes relativ
 
 ## Being honest about the actual value
 
-**Outside Quebec, federal bilingual positions, and specific Francophone-community-adjacent opportunities, French does not carry uniform value across the entire Canadian job market**, a graduate targeting a purely English-language technology role in a city with limited Francophone presence gains considerably less direct career value from French than one targeting federal government work or roles connected to Quebec.
+**Outside Quebec, federal bilingual positions**, and specific Francophone-community-adjacent opportunities, French does not carry uniform value across the entire Canadian job market, a graduate targeting a purely English-language technology role in a city with limited Francophone presence gains considerably less direct career value from French than one targeting federal government work or roles connected to Quebec.
 
 **Assess this honestly against your own specific target career and location**, rather than assuming French is a universally valuable investment for any Canadian career path.
 
@@ -57,7 +57,7 @@ Formal certification of your French proficiency level provides a credible, verif
 
 **Research the specific bilingual requirement level for federal positions you are targeting.** The Public Service rates second-language ability separately across three skills — reading comprehension, written expression, and oral proficiency — each scored A, B, C, or E (exempt), with a rating like "BBB" meaning level B in all three. Many bilingual-imperative entry roles set BBB as the bar; check the exact profile listed on the specific posting rather than assuming. **TEF Canada or TCF Canada** are the standardized tests used to certify French proficiency for both public service staffing and immigration purposes — worth knowing which one a specific process actually requires before you book a test.
 
-**If targeting Quebec specifically, assess your French proficiency honestly against the genuine day-to-day requirement of working in a substantially French-language environment**, rather than assuming a moderate conversational level is sufficient for full professional participation there.
+**If targeting Quebec specifically**, assess your French proficiency honestly against the genuine day-to-day requirement of working in a substantially French-language environment, rather than assuming a moderate conversational level is sufficient for full professional participation there.
 
 **Consider whether a period of study or work specifically in a French-speaking environment fits realistically into your timeline**, if building meaningfully stronger French ability is a genuine goal.
 
@@ -65,10 +65,10 @@ Formal certification of your French proficiency level provides a credible, verif
 
 - **Assuming French carries uniform value across the entire Canadian job market.** Value varies enormously by province, sector and specific role.
 - **Underestimating the genuine time investment required to build professional-level French ability from a limited base.**
-- **Not researching the specific bilingual requirement level for a target federal role before assuming your current ability is sufficient.**
-- **Overlooking the immigration dimension of French proficiency, where it may meaningfully improve your position within certain specific pathways.**
+- **Not researching the specific bilingual requirement level.** For a target federal role before assuming your current ability is sufficient.
+- **Overlooking the immigration dimension of French proficiency.** Where it may meaningfully improve your position within certain specific pathways.
 - **Assuming general conversational French is equivalent to the professional register a specific target role may actually require.**
-- **Not pursuing formal certification once genuinely proficient, when a certified level provides a more credible, verifiable signal than a self-described claim.**
+- **Not pursuing formal certification once genuinely proficient.** When a certified level provides a more credible, verifiable signal than a self-described claim.
 
 ## Frequently Asked Questions
 

@@ -39,13 +39,10 @@ Compensation is generally competitive at entry level and below top-tier private 
 
 ## The selection process
 
-**Applications open through the standard recruiting seasons**, often with published eligibility criteria stated clearly, including sometimes specific degree requirements, examination results, or other stated thresholds.
-
-**Written examinations are common**, testing general knowledge, logical reasoning, sometimes specific professional or technical content depending on the role, this is a distinctive feature relative to many private-sector processes and worth preparing for specifically. These exams often follow a recognisable format across organisations — general aptitude sections resembling the civil-service style examinations used elsewhere in the public sector, plus role-specific content for technical or professional positions — so practice materials aimed broadly at "SOE recruitment exams" rather than one specific employer are often genuinely transferable preparation.
-
-**Interviews follow**, often panel-based, assessing both competency and fit against the organisation's stated values and requirements.
-
-**The overall process is generally formal and criteria-driven**, worth reading published requirements carefully and preparing specifically against them, rather than assuming a generic graduate application approach transfers directly.
+1. **Applications open through the standard recruiting seasons**, often with published eligibility criteria stated clearly, including sometimes specific degree requirements, examination results, or other stated thresholds.
+2. **Written examinations are common**, testing general knowledge, logical reasoning, sometimes specific professional or technical content depending on the role, this is a distinctive feature relative to many private-sector processes and worth preparing for specifically. These exams often follow a recognisable format across organisations — general aptitude sections resembling the civil-service style examinations used elsewhere in the public sector, plus role-specific content for technical or professional positions — so practice materials aimed broadly at "SOE recruitment exams" rather than one specific employer are often genuinely transferable preparation.
+3. **Interviews follow**, often panel-based, assessing both competency and fit against the organisation's stated values and requirements.
+4. **The overall process is generally formal and criteria-driven**, worth reading published requirements carefully and preparing specifically against them, rather than assuming a generic graduate application approach transfers directly.
 
 ## Eligibility considerations
 
@@ -75,7 +72,7 @@ Timed practice under realistic conditions matters more than untimed review, exac
 
 ## Common Mistakes
 
-- **Overlooking the sector entirely in favour of a small number of internationally recognised private employers.** A major and often less contested source of quality graduate employment.
+- **Overlooking the sector entirely.** In favour of a small number of internationally recognised private employers. A major and often less contested source of quality graduate employment.
 - **Assuming a generic application approach transfers directly.** The process is often more formal and criteria-driven than at many private employers.
 - **Not preparing for written examinations specifically.** A distinctive and common feature of this sector's selection process.
 - **Assuming eligibility without checking a specific posting's stated requirements.** Criteria vary genuinely by organisation and role.

@@ -431,15 +431,15 @@ Better [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-d
 
 Use this checklist before submitting your resume.
 
-- Use standard headings
-- Match [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords
-- Include measurable achievements
-- Keep formatting simple
-- Use reverse chronological order
-- Add relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- Optimize your summary section
-- Use concise [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
-- Remove irrelevant information
+- [ ] Use standard headings
+- [ ] Match [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords
+- [ ] Include measurable achievements
+- [ ] Keep formatting simple
+- [ ] Use reverse chronological order
+- [ ] Add relevant [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+- [ ] Optimize your summary section
+- [ ] Use concise [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
+- [ ] Remove irrelevant information
 
 ---
 

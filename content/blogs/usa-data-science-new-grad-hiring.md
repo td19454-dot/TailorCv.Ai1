@@ -169,15 +169,6 @@ Ranked by how often it happens, from the interviewers' side.
 
 **The fix for all six** is unglamorous and specific: daily SQL, three models understood deeply, one self-sourced messy project with an honest limitations section, and one rehearsal of explaining your finding to a non-specialist. That is a two-month plan and it moves most candidates from screened-out to competitive.
 
-## Common Mistakes
-
-- **Preparing for the wrong role.** Analytics, ML engineering and research have different loops; read the posting.
-- **Under-practising SQL.** The single most tested skill and the most neglected.
-- **A portfolio of clean-dataset notebooks.** Indistinguishable from everyone else's.
-- **Reciting model names.** Depth on a few beats breadth across many, and knowing when not to model beats both.
-- **Ignoring the communication round.** It is assessed and it decides close calls.
-- **Dismissing analyst titles.** More numerous, less contested, and closer to decisions than the title implies.
-
 ## Explaining results to non-technical people
 
 Assessed directly at many companies, rehearsed by almost nobody, and it decides close calls.
@@ -232,6 +223,16 @@ Make it reachable. A rendered page, a small dashboard, a notebook that displays 
 
 Then be ready to be interrogated on it. Every decision you made is a question an interviewer can ask, and having real answers is exactly why a self-sourced project beats a tutorial.
 
+## Common Mistakes
+
+- **Preparing for the wrong role.** Analytics, ML engineering and research have different loops; read the posting.
+- **Under-practising SQL.** The single most tested skill and the most neglected.
+- **A portfolio of clean-dataset notebooks.** Indistinguishable from everyone else's.
+- **Reciting model names.** Depth on a few beats breadth across many, and knowing when not to model beats both.
+- **Ignoring the communication round.** It is assessed and it decides close calls.
+- **Dismissing analyst titles.** More numerous, less contested, and closer to decisions than the title implies.
+
+## Frequently Asked Questions
 ### Should I do a bootcamp or a master's?
 
 Neither is required. A master's helps for research-leaning roles and for international students who want the extra time in-market. A bootcamp adds little that a strong self-sourced project does not, and reviewers weight the project higher.
@@ -243,7 +244,6 @@ More than students expect. Understanding the business the data describes is what
 ### What if I only get analyst interviews?
 
 Take them. Analytics work builds SQL fluency, experiment literacy and stakeholder communication faster than many junior data science roles, and the internal move afterwards is routine.
-## Frequently Asked Questions
 
 ### Do I need a master's degree?
 
@@ -268,3 +268,4 @@ Take the analyst role if it is at a company with real data and real decisions. Y
 ### What about international students?
 
 The same [employer eligibility questions](/blog/usa-stem-opt-employer-requirements) apply. Note that quantitative degrees are frequently STEM-designated, which matters for the extension — confirm your own programme's classification rather than assuming.
+

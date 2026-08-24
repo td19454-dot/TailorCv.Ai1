@@ -23,7 +23,7 @@ showcase: none
 
 **Singapore has developed a genuine and growing startup ecosystem**, spanning technology, fintech, e-commerce and a range of other sectors, supported by government initiatives and a concentration of regional venture capital activity, this is not a marginal or purely speculative segment of the job market, real companies with genuine funding and traction operate here.
 
-**Working at a startup offers a genuinely different experience from a larger, more structured employer**, broader early responsibility, direct exposure to how a business actually operates, and the ability to see the connection between your work and the company's outcomes far more directly than at a large organisation, similar to [the trade-off seen at startups in any major market](/blog/usa-startup-vs-big-tech-new-grad).
+**Working at a startup offers a genuinely different experience from a larger**, more structured employer, broader early responsibility, direct exposure to how a business actually operates, and the ability to see the connection between your work and the company's outcomes far more directly than at a large organisation, similar to [the trade-off seen at startups in any major market](/blog/usa-startup-vs-big-tech-new-grad).
 
 ## The pass and sponsorship question, specifically for startups
 
@@ -62,11 +62,11 @@ Compare the guaranteed cash compensation directly against other offers, and trea
 ## Common Mistakes
 
 - **Assuming any startup can sponsor an Employment Pass as readily as a large, established employer.** The framework makes this structurally harder for very small employers.
-- **Not asking directly and early about a specific startup's experience with pass sponsorship.**
-- **Treating equity as guaranteed compensation rather than genuine, uncertain upside.**
+- **Not asking directly and early.** About a specific startup's experience with pass sponsorship.
+- **Treating equity as guaranteed compensation.** Rather than genuine, uncertain upside.
 - **Not researching a specific startup's funding position and genuine stability before accepting an offer.**
 - **Comparing a startup offer to an established employer's offer without accounting for the meaningfully different risk profile.**
-- **Assuming the startup route is universally better or worse than an established employer, rather than genuinely suited to different priorities.**
+- **Assuming the startup route is universally better or worse than an established employer.** Rather than genuinely suited to different priorities.
 
 ## Frequently Asked Questions
 

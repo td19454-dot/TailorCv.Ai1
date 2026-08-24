@@ -173,15 +173,6 @@ Product management is a job done entirely through other people, so the behaviour
 
 **Build the six stories once** using the [story bank approach](/blog/usa-behavioral-interview-star-campus), and make sure at least three of them centre on persuading people rather than on building things. That emphasis is what product interviewers are listening for and what most technically-minded candidates get wrong.
 
-## Common Mistakes
-
-- **Listing features instead of prioritising.** The whole question is whether you can choose.
-- **Skipping the user.** Starting from a solution rather than from whose problem it solves.
-- **Reciting frameworks.** Interviewers hear them constantly and they signal preparation rather than judgement.
-- **Assuming engineering converts automatically.** It converts when you deliberately do product-adjacent work, not by default.
-- **Applying only to named APM programmes.** They are the smallest and most contested route into the function.
-- **Having no product opinions.** It is obvious within two minutes and it cannot be faked.
-
 ## What the first year is like
 
 Useful for deciding whether you want it, because the day-to-day surprises people who imagined a strategic role.
@@ -200,17 +191,12 @@ What makes it worth it, for people it suits: you sit at the point where decision
 
 ## Preparing in six weeks
 
-**Weeks 1–2: product sense.** Two practice questions a day, aloud, using the clarify-narrow-prioritise-measure structure. Use products you genuinely use. Record one and listen back — you will hear yourself listing features instead of choosing.
-
-**Week 3: metrics and analytics.** Learn the primary-supporting-guardrail structure. Practise the "usage dropped, why?" diagnostic until the sequence — is it real, segment, hypothesise, prioritise — is automatic.
-
-**Week 4: behavioural.** Build six stories, weighted toward influence, disagreement and being wrong.
-
-**Week 5: the evidence.** Ship something small, or write two sharp product analyses. This is what your application links to and what the "tell me about something you built" question rests on.
-
-**Week 6: mocks.** With a partner, full loops, with interruptions. Product interviews are conversational and a rehearsed monologue collapses the moment someone pushes back.
-
-**Throughout:** use products deliberately and form opinions. Notice a decision, work out what the team was probably optimising for, decide whether you agree. Fifteen minutes a week, and it is the thing interviewers detect instantly and cannot be crammed.
+1. **Weeks 1–2: product sense.** Two practice questions a day, aloud, using the clarify-narrow-prioritise-measure structure. Use products you genuinely use. Record one and listen back — you will hear yourself listing features instead of choosing.
+2. **Week 3: metrics and analytics.** Learn the primary-supporting-guardrail structure. Practise the "usage dropped, why?" diagnostic until the sequence — is it real, segment, hypothesise, prioritise — is automatic.
+3. **Week 4: behavioural.** Build six stories, weighted toward influence, disagreement and being wrong.
+4. **Week 5: the evidence.** Ship something small, or write two sharp product analyses. This is what your application links to and what the "tell me about something you built" question rests on.
+5. **Week 6: mocks.** With a partner, full loops, with interruptions. Product interviews are conversational and a rehearsed monologue collapses the moment someone pushes back.
+6. **Throughout:** use products deliberately and form opinions. Notice a decision, work out what the team was probably optimising for, decide whether you agree. Fifteen minutes a week, and it is the thing interviewers detect instantly and cannot be crammed.
 
 ## One thing to do this week
 
@@ -222,6 +208,16 @@ That single exercise does four things at once. It builds the muscle the product 
 
 Do it four times and you have a [portfolio](/portfolio). Almost no APM applicant has one.
 
+## Common Mistakes
+
+- **Listing features instead of prioritising.** The whole question is whether you can choose.
+- **Skipping the user.** Starting from a solution rather than from whose problem it solves.
+- **Reciting frameworks.** Interviewers hear them constantly and they signal preparation rather than judgement.
+- **Assuming engineering converts automatically.** It converts when you deliberately do product-adjacent work, not by default.
+- **Applying only to named APM programmes.** They are the smallest and most contested route into the function.
+- **Having no product opinions.** It is obvious within two minutes and it cannot be faked.
+
+## Frequently Asked Questions
 ### Do I need a technical background to be credible with engineers?
 
 You need enough to understand what is expensive and what is cheap, and to ask sensible questions. Product managers from non-technical backgrounds do this well by being honest about the gap and asking engineers to explain trade-offs rather than pretending to know.
@@ -229,7 +225,6 @@ You need enough to understand what is expensive and what is cheap, and to ask se
 ### How many APM programmes should I apply to?
 
 All of them you would genuinely accept, which is usually between six and twelve, plus a wider set of associate product roles at mid-sized companies. The named programmes alone are too small a pool to be a plan.
-## Frequently Asked Questions
 
 ### Do I need a computer science degree?
 
@@ -254,3 +249,4 @@ Not for APM programmes, which are aimed at recent graduates. MBA recruiting is a
 ### What if I get rejected everywhere?
 
 Take an adjacent role — engineering, analytics, support — at a company with products you find interesting, do product-adjacent work deliberately, and move internally in eighteen months. This is how the majority of product managers actually got there.
+

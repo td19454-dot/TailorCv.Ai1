@@ -21,7 +21,7 @@ showcase: none
 
 ## Why the internship matters so much
 
-**At many major domestic and multinational employers in China, the intern class genuinely feeds a substantial share of the eventual full-time graduate intake**, the same structural pattern that holds in most large graduate markets, an employer who has already observed your actual work for a defined period converts you with far more confidence than one relying solely on an interview process.
+**At many major domestic and multinational employers in China**, the intern class genuinely feeds a substantial share of the eventual full-time graduate intake, the same structural pattern that holds in most large graduate markets, an employer who has already observed your actual work for a defined period converts you with far more confidence than one relying solely on an interview process.
 
 **It also resolves the two things an employer is genuinely uncertain about with an unfamiliar foreign candidate**, whether you can actually do the work, and whether the practical logistics of employing you, including authorisation, are manageable, exactly [the same two doubts an internship resolves anywhere](/blog/international-student-internship-strategy).
 
@@ -51,7 +51,7 @@ University career centres and partnership programmes sometimes maintain specific
 
 ## Making the most of the internship itself
 
-**Ask about conversion to a full-time role at the midpoint, not only at the end**, exactly the [same timing principle that applies to internships anywhere](/blog/usa-internship-return-offer-conversion), asking early leaves you time to act on what you learn, asking only in your final week does not.
+**Ask about conversion to a full-time role at the midpoint**, not only at the end, exactly the [same timing principle that applies to internships anywhere](/blog/usa-internship-return-offer-conversion), asking early leaves you time to act on what you learn, asking only in your final week does not.
 
 **Make your work visible to more than your immediate supervisor**, present findings, contribute in team settings where your language ability allows, being genuinely known within the team improves your odds meaningfully beyond simply doing competent work quietly.
 
@@ -67,16 +67,16 @@ Research each specific target's actual internship structure before applying, som
 
 ## Making the internship period itself count
 
-**Ask for specific, substantive feedback partway through, rather than only at the very end**, this mirrors [the same midpoint-check discipline that improves outcomes in internships everywhere](/blog/international-student-internship-strategy), asking early enough to genuinely act on what you learn distinguishes candidates who convert from those who do not.
+**Ask for specific**, substantive feedback partway through, rather than only at the very end, this mirrors [the same midpoint-check discipline that improves outcomes in internships everywhere](/blog/international-student-internship-strategy), asking early enough to genuinely act on what you learn distinguishes candidates who convert from those who do not.
 
-**Document your specific contributions and outcomes as you go, rather than attempting to reconstruct them from memory once the internship concludes**, this record becomes genuinely valuable both for your own future applications and, where relevant, for future work authorisation processes that may ask you to account for your history.
+**Document your specific contributions and outcomes as you go**, rather than attempting to reconstruct them from memory once the internship concludes, this record becomes genuinely valuable both for your own future applications and, where relevant, for future work authorisation processes that may ask you to account for your history.
 
 ## Common Mistakes
 
 - **Beginning an internship without confirming proper authorisation is in place.** Carries genuine personal risk.
 - **Applying too late, after well-known programmes' application windows have already closed.** These frequently open earlier than expected relative to the internship start date.
 - **Not asking directly about conversion to a full-time role until the internship is nearly over.** Asking earlier leaves time to act on the answer.
-- **Doing competent work quietly without making it visible to the wider team.** Visibility materially affects conversion odds.
+- **Doing competent work quietly.** Without making it visible to the wider team. Visibility materially affects conversion odds.
 - **Not keeping records of the internship for future reference.** Details are harder to reconstruct later than to record at the time.
 - **Assuming internship authorisation works identically to standard full-time employment authorisation.** The specific requirements differ and are worth confirming directly.
 

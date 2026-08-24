@@ -43,11 +43,11 @@ Shortage occupations and specific talent categories may also carry different tre
 
 **Ask an employer directly and early whether they have sponsored work permits for recent graduates specifically**, rather than assuming general sponsorship willingness translates into eligibility for someone in your position. An employer experienced with senior foreign hires may have no experience with the graduate exception route.
 
-**If you studied at a Chinese university, investigate whether your specific institution and programme qualify for a graduate exception route**, since this can be the difference between a viable and an unviable path immediately after graduation.
+**If you studied at a Chinese university**, investigate whether your specific institution and programme qualify for a graduate exception route, since this can be the difference between a viable and an unviable path immediately after graduation.
 
 **If you studied abroad and are seeking to enter China as a graduate returnee**, the standard experience requirement is a genuine and common obstacle, worth understanding clearly before building a search plan around employers who may not be able to sponsor you at all.
 
-**Consider whether an internship, a shorter-term arrangement, or study in China first**, changes your position relative to any graduate-specific exception, since eligibility criteria are frequently tied to the specifics of where and how you studied.
+**Consider whether an internship**, a shorter-term arrangement, or study in China first, changes your position relative to any graduate-specific exception, since eligibility criteria are frequently tied to the specifics of where and how you studied.
 
 ## Points-based and category-specific assessment
 
@@ -57,11 +57,9 @@ Higher categories generally carry more favourable treatment and fewer restrictio
 
 ## Practical steps
 
-**Confirm the employer's willingness and experience with your specific situation early**, exactly the same discipline that applies to [any employer-controlled visa route](/blog/usa-stem-opt-employer-requirements) globally, asking the direct question early saves months of misdirected applications.
-
-**Gather your academic and identity documents in advance**, since the application process typically requires authenticated copies of degree certificates and other records, and authentication can itself take time.
-
-**Verify current requirements directly with the relevant authority or a qualified immigration advisor**, rather than relying on this or any general article, since specific thresholds, exceptions and processes are set by policy that is reviewed and adjusted periodically.
+1. **Confirm the employer's willingness and experience with your specific situation early**, exactly the same discipline that applies to [any employer-controlled visa route](/blog/usa-stem-opt-employer-requirements) globally, asking the direct question early saves months of misdirected applications.
+2. **Gather your academic and identity documents in advance**, since the application process typically requires authenticated copies of degree certificates and other records, and authentication can itself take time.
+3. **Verify current requirements directly with the relevant authority or a qualified immigration advisor**, rather than relying on this or any general article, since specific thresholds, exceptions and processes are set by policy that is reviewed and adjusted periodically.
 
 ## Common Mistakes
 
@@ -80,9 +78,9 @@ If your circumstances are genuinely unusual or complex, a specific consultation 
 
 ## Practical steps before accepting an offer
 
-**Confirm in writing exactly what documentation your prospective employer will need from you, and the realistic timeline they expect for the application process**, rather than assuming a standard timeline applies uniformly, since actual processing experience genuinely varies by employer, region and individual case specifics.
+**Confirm in writing exactly what documentation your prospective employer will need from you**, and the realistic timeline they expect for the application process, rather than assuming a standard timeline applies uniformly, since actual processing experience genuinely varies by employer, region and individual case specifics.
 
-**Understand what your status and rights are during any gap between your current authorisation ending and a new one being granted, if you are transitioning between roles or categories**, this is a genuinely important detail worth clarifying explicitly rather than assuming continuous coverage, since gaps in authorisation carry real consequences.
+**Understand what your status and rights are during any gap between your current authorisation ending and a new one being granted**, if you are transitioning between roles or categories, this is a genuinely important detail worth clarifying explicitly rather than assuming continuous coverage, since gaps in authorisation carry real consequences.
 
 ## Frequently Asked Questions
 

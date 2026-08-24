@@ -23,13 +23,13 @@ showcase: none
 
 **Healthcare regulation in Canada operates provincially, not nationally** — the College of Nurses of Ontario (CNO), the BC College of Nurses and Midwives (BCCNM), and the Ordre des infirmières et infirmiers du Québec (OIIQ) are examples of the province-specific bodies governing licensure, each with its own distinct registration process and fee structure. This is meaningfully different from a single national system, and it directly shapes your timeline, since you cannot practise clinically until you hold the relevant provincial licence.
 
-**For nursing specifically, Canada uses the NCLEX-RN (the same exam used in the US) as its national licensure exam**, administered through your provincial regulatory body — the exam itself is standardized, but registration, fees, and the surrounding process are still handled provincially.
+**For nursing specifically**, Canada uses the NCLEX-RN (the same exam used in the US) as its national licensure exam, administered through your provincial regulatory body — the exam itself is standardized, but registration, fees, and the surrounding process are still handled provincially.
 
-**Your effective start date as a clinical professional is set by the licensure process, not simply by your graduation date**, plan backwards from an intended start date accordingly, beginning the licensure application process as early as your program allows, rather than assuming it will be quick to complete after graduating. Treat this the same way you'd treat any hard external deadline in your final year of study — mark the earliest possible application date on your own calendar and act on it, rather than treating licensure as something to think about only once your degree is actually finished.
+**Your effective start date as a clinical professional is set by the licensure process**, not simply by your graduation date, plan backwards from an intended start date accordingly, beginning the licensure application process as early as your program allows, rather than assuming it will be quick to complete after graduating. Treat this the same way you'd treat any hard external deadline in your final year of study — mark the earliest possible application date on your own calendar and act on it, rather than treating licensure as something to think about only once your degree is actually finished.
 
-**If you intend to work in a different province from where you studied, or think you might move later, check that province's specific licensure requirements and any recognition arrangements with your home province early**, this varies and is worth understanding well before you need to act on it. There is a real legal mechanism that helps here: the Canadian Free Trade Agreement (CFTA) includes a labour mobility chapter requiring provinces to recognize a worker's certification from another province for regulated occupations, nursing among them — in practice this generally means a nurse licensed in good standing in one province can register in another without redoing the full initial licensure process, though registration fees and some administrative steps still apply, and it's worth confirming the specific process with the destination province's regulator rather than assuming full automatic transfer.
+**If you intend to work in a different province from where you studied**, or think you might move later, check that province's specific licensure requirements and any recognition arrangements with your home province early, this varies and is worth understanding well before you need to act on it. There is a real legal mechanism that helps here: the Canadian Free Trade Agreement (CFTA) includes a labour mobility chapter requiring provinces to recognize a worker's certification from another province for regulated occupations, nursing among them — in practice this generally means a nurse licensed in good standing in one province can register in another without redoing the full initial licensure process, though registration fees and some administrative steps still apply, and it's worth confirming the specific process with the destination province's regulator rather than assuming full automatic transfer.
 
-**Provincial health system structure also varies, which affects who you'd actually apply to.** Alberta runs a single province-wide health authority (Alberta Health Services), while Ontario and British Columbia operate through multiple regional authorities (Ontario Health's regional structure; BC's Fraser Health, Vancouver Coastal Health, and others) — worth knowing which structure your target province uses, since it changes whether you're searching one province-wide careers page or several regional ones.
+**Provincial health system structure also varies**, which affects who you'd actually apply to. Alberta runs a single province-wide health authority (Alberta Health Services), while Ontario and British Columbia operate through multiple regional authorities (Ontario Health's regional structure; BC's Fraser Health, Vancouver Coastal Health, and others) — worth knowing which structure your target province uses, since it changes whether you're searching one province-wide careers page or several regional ones.
 
 ## New graduate transition programs
 
@@ -39,9 +39,9 @@ Ask specifically about the structure of any transition program when considering 
 
 ## Internationally educated professionals
 
-**If you trained outside Canada and intend to practise clinically here, credential recognition is a separate, often lengthy process distinct from general immigration considerations.** For nursing specifically, the National Nursing Assessment Service (NNAS) is the body that conducts the initial credential assessment used by regulatory bodies across most provinces — a single application to NNAS, rather than a separate one to each province, which then feeds into the specific provincial regulator's own registration process, additional exams, and any supervised-practice requirements.
+**If you trained outside Canada and intend to practise clinically here**, credential recognition is a separate, often lengthy process distinct from general immigration considerations. For nursing specifically, the National Nursing Assessment Service (NNAS) is the body that conducts the initial credential assessment used by regulatory bodies across most provinces — a single application to NNAS, rather than a separate one to each province, which then feeds into the specific provincial regulator's own registration process, additional exams, and any supervised-practice requirements.
 
-**Begin this inquiry early, ideally well before you plan to actually practise**, the specific process and timeline vary considerably by profession and by province, verify current specific requirements directly with the relevant provincial regulatory body rather than relying on a general summary.
+**Begin this inquiry early**, ideally well before you plan to actually practise, the specific process and timeline vary considerably by profession and by province, verify current specific requirements directly with the relevant provincial regulatory body rather than relying on a general summary.
 
 ## The non-clinical side, consistently overlooked
 
@@ -61,20 +61,18 @@ A concrete example of the scale involved: Canada Health Infoway, a federally-fun
 
 ## Applying well
 
-**For clinical roles, confirm exactly what your licensure timeline requires and begin the process early**, and ask specifically about transition program structure when evaluating offers.
-
-**For non-clinical roles, apply directly to hospital and health authority career pages**, which post continuously across many functions rather than only during a defined recruiting season, and are frequently overlooked by graduates who never think to look.
-
-**Confirm your resume [parses cleanly](/ats-analysis) and is tailored to the specific posting**, exactly the same discipline that applies to any application anywhere.
+1. **For clinical roles**, confirm exactly what your licensure timeline requires and begin the process early, and ask specifically about transition program structure when evaluating offers.
+2. **For non-clinical roles**, apply directly to hospital and health authority career pages, which post continuously across many functions rather than only during a defined recruiting season, and are frequently overlooked by graduates who never think to look.
+3. **Confirm your resume [parses cleanly](/ats-analysis) and is tailored to the specific posting**, exactly the same discipline that applies to any application anywhere.
 
 ## Common Mistakes
 
-- **Assuming clinical licensure will be quick to arrange after graduation, rather than beginning the process early.**
-- **Not checking a target province's specific requirements before assuming your home province's licence transfers easily.**
-- **Assuming healthcare employment only exists in clinical roles, and overlooking substantial non-clinical opportunity.**
+- **Assuming clinical licensure will be quick to arrange.** After graduation. Rather than beginning the process early.
+- **Not checking a target province's specific requirements.** Before assuming your home province's licence transfers easily.
+- **Assuming healthcare employment only exists in clinical roles.** And overlooking substantial non-clinical opportunity.
 - **Internationally trained professionals not beginning credential recognition inquiries early enough.**
-- **Accepting a first clinical role without asking about the specific structure and quality of the transition program.**
-- **Not searching hospital and health authority career pages directly for non-clinical roles, which are advertised continuously rather than seasonally.**
+- **Accepting a first clinical role.** Without asking about the specific structure and quality of the transition program.
+- **Not searching hospital and health authority career pages directly for non-clinical roles.** Which are advertised continuously rather than seasonally.
 
 ## Frequently Asked Questions
 

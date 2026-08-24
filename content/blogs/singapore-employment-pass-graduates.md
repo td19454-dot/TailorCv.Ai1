@@ -234,13 +234,13 @@ Candidates sometimes respond to this by adding credentials. It is the wrong leve
 
 Half an hour, before you send a single application, and it changes where the whole season goes.
 
-- **Read the current Ministry of Manpower guidance** on qualifying salary and the points assessment. Not a summary — the source.
-- **Write down your own position in one sentence**, with the pass type and your understanding of the threshold that applies to a fresh graduate.
-- **Build the target list with a sponsorship column.** Large multinationals, regional headquarters, banks, and organisations that hire internationally as routine.
-- **Mark the small firms and startups separately.** Not excluded — just understood as lower-probability, so you spend applications there deliberately rather than by accident.
-- **Check whether your field appears on any shortage list**, since it materially changes the calculation.
-- **Draft the one-sentence answer** for the recruiter call and say it until it is boring.
-- **Note your exact availability date**, because it gets asked in the first conversation.
+- [ ] **Read the current Ministry of Manpower guidance** on qualifying salary and the points assessment. Not a summary — the source.
+- [ ] **Write down your own position in one sentence**, with the pass type and your understanding of the threshold that applies to a fresh graduate.
+- [ ] **Build the target list with a sponsorship column.** Large multinationals, regional headquarters, banks, and organisations that hire internationally as routine.
+- [ ] **Mark the small firms and startups separately.** Not excluded — just understood as lower-probability, so you spend applications there deliberately rather than by accident.
+- [ ] **Check whether your field appears on any shortage list**, since it materially changes the calculation.
+- [ ] **Draft the one-sentence answer** for the recruiter call and say it until it is boring.
+- [ ] **Note your exact availability date**, because it gets asked in the first conversation.
 
 The purpose of all of it is a single thing: to stop you spending an autumn applying to employers who were never going to be able to hire you, which is how most candidates in this position lose a cycle.
 

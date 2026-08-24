@@ -21,19 +21,19 @@ showcase: portfolio
 
 ## Where the industry actually is
 
-**Toronto is the largest single hub, with a genuinely deep and broad technology sector**, spanning startups, established technology companies, and the substantial engineering organisations run by the major banks headquartered there — a combination few other Canadian cities can match in breadth.
+**Toronto is the largest single hub**, with a genuinely deep and broad technology sector, spanning startups, established technology companies, and the substantial engineering organisations run by the major banks headquartered there — a combination few other Canadian cities can match in breadth.
 
 **Vancouver has a strong, distinct technology scene**, with particular strength in gaming and interactive media alongside broader software, and a genuinely different cost-of-living and lifestyle profile from Toronto that some graduates weigh heavily in their own decision.
 
 **Waterloo and the surrounding region punches well above its size**, driven substantially by its university's strong reputation in computer science and engineering, producing a genuinely concentrated local talent and startup ecosystem that regularly outpaces cities several times its population in tech-sector density.
 
-**Montreal has real depth, particularly in artificial intelligence research and gaming**, alongside a broader technology sector, and benefits from a somewhat different cost of living profile than Toronto or Vancouver.
+**Montreal has real depth**, particularly in artificial intelligence research and gaming, alongside a broader technology sector, and benefits from a somewhat different cost of living profile than Toronto or Vancouver.
 
 **Ottawa and Calgary each have meaningful**, if smaller, technology employment, often connected to government, telecommunications or energy-adjacent technology work respectively.
 
 **The practical implication**, similar to the broader principle covered in the [major city job markets guide](/blog/canada-major-city-job-markets), is that limiting a search to a single assumed hub misses a genuinely substantial share of the actual opportunity.
 
-**Beyond the multinational names everyone already knows, Canada has produced its own genuinely large homegrown tech companies worth targeting directly.** Shopify (Ottawa) is the most visible, but Wealthsimple (fintech, Toronto), Lightspeed and Coveo (Montreal), and ApplyBoard (Waterloo) are all real, substantial employers with active graduate hiring — researching Canadian-founded companies specifically, not just the Canadian offices of US giants, uncovers roles with meaningfully less applicant volume than the most recognizable multinational names attract.
+**Beyond the multinational names everyone already knows**, Canada has produced its own genuinely large homegrown tech companies worth targeting directly. Shopify (Ottawa) is the most visible, but Wealthsimple (fintech, Toronto), Lightspeed and Coveo (Montreal), and ApplyBoard (Waterloo) are all real, substantial employers with active graduate hiring — researching Canadian-founded companies specifically, not just the Canadian offices of US giants, uncovers roles with meaningfully less applicant volume than the most recognizable multinational names attract.
 
 ## What the hiring process looks like
 
@@ -67,7 +67,7 @@ Mid-sized companies and the technology divisions of traditional employers, parti
 
 **Add mid-sized and less internationally famous companies to your target list**, not only the handful of most recognisable names, this segment offers genuine opportunity with a considerably better applicant-to-seat ratio.
 
-**Check the technology divisions of banks, insurers and other traditional employers**, [substantial engineering organisations exist within these companies](/blog/canada-banking-graduate-programs) — RBC runs its own dedicated AI research institute (Borealis AI), publishing real research and hiring for it directly, a concrete example of the kind of technical depth hiding inside a "bank" job posting that graduates focused only on technology-branded employers routinely skip past.
+**Check the technology divisions of banks**, insurers and other traditional employers, [substantial engineering organisations exist within these companies](/blog/canada-banking-graduate-programs) — RBC runs its own dedicated AI research institute (Borealis AI), publishing real research and hiring for it directly, a concrete example of the kind of technical depth hiding inside a "bank" job posting that graduates focused only on technology-branded employers routinely skip past.
 
 **Consider hubs beyond the city you default to assuming is the only real option.** Waterloo, Montreal, Ottawa and Calgary each offer genuine opportunity with different character and cost of living.
 
@@ -75,12 +75,12 @@ Mid-sized companies and the technology divisions of traditional employers, parti
 
 ## Common Mistakes
 
-- **Assuming Toronto is the only real hub and overlooking Vancouver, Waterloo, Montreal and other genuine centres.**
+- **Assuming Toronto is the only real hub and overlooking Vancouver.** Waterloo, Montreal and other genuine centres.
 - **Not preparing specifically for algorithmic technical interviews, assuming Canadian hiring differs substantially from US convention.** It largely does not.
 - **Overlooking bank and traditional-employer technology divisions.** Substantial engineering organisations that are consistently underexplored.
-- **Comparing compensation to top-tier US figures without adjusting for genuine cost of living differences.**
-- **Not leveraging the open work permit as a genuine advantage when targeting smaller companies that have never sponsored before.**
-- **Sending an untailored resume rather than matching the specific language of each posting.**
+- **Comparing compensation to top-tier US figures.** Without adjusting for genuine cost of living differences.
+- **Not leveraging the open work permit.** As a genuine advantage when targeting smaller companies that have never sponsored before.
+- **Sending an untailored resume.** Rather than matching the specific language of each posting.
 
 ## Frequently Asked Questions
 

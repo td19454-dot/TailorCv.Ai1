@@ -127,9 +127,9 @@ Research market pay and use [how to negotiate a salary offer](https://thetailorc
 
 Your interior designer [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **software and specialty** [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Shows projects with scope, budget, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) outcomes.
-- Links a polished [portfolio website](https://www.thetailorcv.com/portfolio).
-- Stays clean, [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **software and specialty** [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- [ ] Shows projects with scope, budget, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) outcomes.
+- [ ] Links a polished [portfolio website](https://www.thetailorcv.com/portfolio).
+- [ ] Stays clean, [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Keep the [resume](https://www.thetailorcv.com/modify-cv) clean, let the [portfolio](https://www.thetailorcv.com/portfolio) shine, and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) every application. Start in the resume builder and score it with the free ATS checker.

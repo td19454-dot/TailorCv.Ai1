@@ -21,7 +21,7 @@ showcase: none
 
 ## Confirming your work authorisation before you travel
 
-**Understand exactly which pass applies to your specific situation, and confirm your employer has initiated or completed the necessary application process before you plan your travel**, covered in detail in the [Employment Pass guide](/blog/singapore-employment-pass-graduates), this is the single most important thing to have clarity on before committing to specific travel dates.
+**Understand exactly which pass applies to your specific situation**, and confirm your employer has initiated or completed the necessary application process before you plan your travel, covered in detail in the [Employment Pass guide](/blog/singapore-employment-pass-graduates), this is the single most important thing to have clarity on before committing to specific travel dates.
 
 **Gather any required documentation your employer has requested well in advance**, educational certificates and other records sometimes require authentication, which can take real time, factor this into your planning rather than assuming it can be arranged quickly at the last moment.
 
@@ -35,13 +35,10 @@ Understand the typical lease terms and deposit requirements for the type of hous
 
 ## The practical sequence
 
-**Some administrative tasks depend on others being completed first**, understanding the general sequence in advance saves real time and frustration.
-
-**A local phone number is generally an early and useful step**, since it is often needed for various other registrations and verifications that follow.
-
-**Opening a local bank account** typically requires certain documentation, understand what your employer or a specific bank requires in advance where possible.
-
-**Registering any required local address or residency-related administrative steps**, specific to your particular pass type, worth confirming the exact requirements with your employer's HR team or the relevant authority directly.
+1. **Some administrative tasks depend on others being completed first**, understanding the general sequence in advance saves real time and frustration.
+2. **A local phone number is generally an early and useful step**, since it is often needed for various other registrations and verifications that follow.
+3. **Opening a local bank account** typically requires certain documentation, understand what your employer or a specific bank requires in advance where possible.
+4. **Registering any required local address or residency-related administrative steps**, specific to your particular pass type, worth confirming the exact requirements with your employer's HR team or the relevant authority directly.
 
 ## Budgeting for the transition
 
@@ -66,11 +63,11 @@ Your first payslip and financial records, check these carefully in your first mo
 ## Common Mistakes
 
 - **Not confirming work pass application status and required documentation well before planning travel dates.**
-- **Committing to long-term housing immediately upon arrival, before seeing different areas and understanding your actual commute.**
-- **Underestimating the gap between arrival and first full paycheck, and not budgeting a genuine buffer for it.**
-- **Not understanding the general sequence of administrative tasks, some of which depend on others being completed first.**
-- **Waiting until arrival to reconnect with existing contacts, rather than reaching out before you travel.**
-- **Not keeping employment and pass documentation organised from the outset.**
+- **Committing to long-term housing immediately upon arrival.** Before seeing different areas and understanding your actual commute.
+- **Underestimating the gap between arrival and first full paycheck.** And not budgeting a genuine buffer for it.
+- **Not understanding the general sequence of administrative tasks.** Some of which depend on others being completed first.
+- **Waiting until arrival to reconnect with existing contacts.** Rather than reaching out before you travel.
+- **Not keeping employment and pass documentation organised.** From the outset.
 
 ## Frequently Asked Questions
 

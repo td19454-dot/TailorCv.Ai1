@@ -77,13 +77,10 @@ Get advice for anything genuinely serious. A criminal record with employment imp
 
 ## Preparing before it happens
 
-**Check your own records first.** Confirm your exact employment dates with previous employers, your degree conferral date with your institution, and your GPA to the precision on your transcript. Fix your resume to match before you apply anywhere.
-
-**Keep documentation.** Offer letters, transcripts, certificates, and anything establishing dates. The same [record-keeping habit](/blog/first-job-abroad-practical-checklist) that pays off throughout a career pays off here specifically.
-
-**Tell your references they may be contacted.** A surprised reference is a poor reference, and giving them your resume and the role description costs nothing.
-
-**For international candidates**, expect education verification to take longer, and note that this process runs alongside — and separately from — the [employment eligibility paperwork](/blog/usa-employment-verification-i9-explained) your employer must complete.
+1. **Check your own records first.** Confirm your exact employment dates with previous employers, your degree conferral date with your institution, and your GPA to the precision on your transcript. Fix your resume to match before you apply anywhere.
+2. **Keep documentation.** Offer letters, transcripts, certificates, and anything establishing dates. The same [record-keeping habit](/blog/first-job-abroad-practical-checklist) that pays off throughout a career pays off here specifically.
+3. **Tell your references they may be contacted.** A surprised reference is a poor reference, and giving them your resume and the role description costs nothing.
+4. **For international candidates**, expect education verification to take longer, and note that this process runs alongside — and separately from — the [employment eligibility paperwork](/blog/usa-employment-verification-i9-explained) your employer must complete.
 
 ## Common Mistakes
 

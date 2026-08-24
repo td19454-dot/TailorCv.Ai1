@@ -41,7 +41,7 @@ Your realistic pool of accessible employers narrows or widens substantially base
 
 ## Work culture, honestly
 
-**Working hours at many Chinese technology companies run longer than at comparable Western employers, and this has a specific, widely-known name: "996"** — a 9am-to-9pm, six-days-a-week schedule that became a genuinely public, widely-debated topic in the sector in recent years, with some companies scaling it back publicly in response to that scrutiny while others continue similar patterns less openly. This is a genuine and widely discussed characteristic of parts of the sector rather than an exaggeration, and it varies meaningfully by company and team, but it is worth asking about directly and honestly during the interview process — using the term "996" specifically when you ask signals you've done real research and tends to get a more candid answer than a vague question about "work-life balance."
+**Working hours at many Chinese technology companies run longer than at comparable Western employers**, and this has a specific, widely-known name: "996" — a 9am-to-9pm, six-days-a-week schedule that became a genuinely public, widely-debated topic in the sector in recent years, with some companies scaling it back publicly in response to that scrutiny while others continue similar patterns less openly. This is a genuine and widely discussed characteristic of parts of the sector rather than an exaggeration, and it varies meaningfully by company and team, but it is worth asking about directly and honestly during the interview process — using the term "996" specifically when you ask signals you've done real research and tends to get a more candid answer than a vague question about "work-life balance."
 
 **Ask current or recent employees directly** about typical hours and pace, rather than relying solely on what a recruiter presents, a short conversation through your university's alumni network or a professional contact gives a far more accurate picture than the recruiting material.
 
@@ -58,17 +58,17 @@ Ask specifically what a typical bonus was for someone at your level last year, r
 ## Common Mistakes
 
 - **Applying without understanding the two-season recruiting calendar.** Missing the autumn window at a major employer is a significant lost opportunity.
-- **Underpreparing for algorithmic technical interviews on the assumption the process differs substantially from international norms.** It largely does not for engineering roles.
-- **Assuming Mandarin fluency is optional at domestic employers without checking the specific role.** Usually a real requirement.
-- **Accepting an offer without asking honestly about working hours and pace.** A genuine and material factor worth investigating directly.
+- **Underpreparing for algorithmic technical interviews.** On the assumption the process differs substantially from international norms. It largely does not for engineering roles.
+- **Assuming Mandarin fluency is optional at domestic employers.** Without checking the specific role. Usually a real requirement.
+- **Accepting an offer without asking honestly.** About working hours and pace. A genuine and material factor worth investigating directly.
 - **Comparing offers on base salary alone.** Bonus structure often represents a substantial share of total compensation.
-- **Not asking current employees about the actual working culture on a specific team.** Recruiting material and lived experience frequently differ.
+- **Not asking current employees.** About the actual working culture on a specific team. Recruiting material and lived experience frequently differ.
 
 ## Preparing a portfolio that resonates with this market specifically
 
-**A deployed, working project remains the strongest single credential for a technical graduate here as much as anywhere**, worth ensuring any project documentation is accessible in the appropriate language for the specific employer you are targeting, alongside the underlying technical substance itself.
+**A deployed, working project remains the strongest single credential**, for a technical graduate here as much as anywhere, worth ensuring any project documentation is accessible in the appropriate language for the specific employer you are targeting, alongside the underlying technical substance itself.
 
-**Contributing to open-source projects with genuine adoption, or building something used by real people even at small scale, demonstrates exactly the practical capability these companies' technical interviews are designed to probe**, this transfers directly regardless of which specific companies you ultimately target.
+**Contributing to open-source projects**, or building something real people actually use, even at small scale, demonstrates exactly the practical capability these companies' technical interviews are designed to probe, and this transfers directly regardless of which specific companies you ultimately target.
 
 ## Networking within this specific market
 

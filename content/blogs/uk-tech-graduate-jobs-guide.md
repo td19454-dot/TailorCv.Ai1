@@ -96,7 +96,7 @@ Be ready to discuss specific trade-offs and decisions within your own project in
 
 **A [placement year](/blog/uk-internship-placement-year-guide) taken during your degree, where available, is one of the strongest possible credentials for graduate technology hiring**, worth genuinely considering this route if your degree structure permits it, since it converts at meaningfully higher rates than direct graduate applications with no prior industry experience.
 
-**If a placement year is not available or you have already completed your degree without one, a strong self-built project and any shorter internship experience can substitute effectively**, the underlying evidence an employer is looking for, can you actually build things and reason about trade-offs, matters more than the specific credential that demonstrates it.
+**If a placement year is not available or you have already completed your degree without one**, a strong self-built project and any shorter internship experience can substitute effectively, the underlying evidence an employer is looking for, can you actually build things and reason about trade-offs, matters more than the specific credential that demonstrates it.
 
 ## Frequently Asked Questions
 

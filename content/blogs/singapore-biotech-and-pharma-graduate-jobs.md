@@ -23,7 +23,7 @@ showcase: none
 
 **Singapore has invested substantially over roughly two decades in developing a biomedical sciences and pharmaceutical manufacturing cluster**, this was a deliberate national economic strategy rather than an organic accident, and it has produced a genuine, substantial industry rather than a marginal presence.
 
-**Major global pharmaceutical and biotechnology companies operate significant manufacturing facilities and, in some cases, research operations here**, alongside a genuine ecosystem of local public research institutes conducting biomedical research across a range of therapeutic areas.
+**Major global pharmaceutical and biotechnology companies operate significant manufacturing facilities and**, in some cases, research operations here, alongside a genuine ecosystem of local public research institutes conducting biomedical research across a range of therapeutic areas.
 
 ## The range of roles, beyond laboratory research
 
@@ -45,7 +45,7 @@ Research roles, at both company research operations and the local public researc
 
 **For laboratory research and specific technical manufacturing roles**, a relevant scientific or engineering degree is generally expected.
 
-**For quality, regulatory, data, and commercial functions, the requirement is considerably more flexible**, strong analytical skills, attention to detail, and genuine interest in the sector often matter more than the specific degree discipline, worth not ruling this sector out simply because your degree is not directly in the life sciences.
+**For quality, regulatory**, data, and commercial functions, the requirement is considerably more flexible, strong analytical skills, attention to detail, and genuine interest in the sector often matter more than the specific degree discipline, worth not ruling this sector out simply because your degree is not directly in the life sciences.
 
 ## Where the opportunities are
 
@@ -59,22 +59,19 @@ Contract research and manufacturing organisations, a growing segment providing s
 
 ## Applying well
 
-**For research and technical roles**, a strong academic record in the relevant discipline, and any research or laboratory experience, matters considerably.
-
-**For regulatory, quality and commercial roles, demonstrate genuine understanding of what the function actually involves**, rather than a generic scientific interest, research the specific regulatory or quality challenges relevant to the sector.
-
-**Understand the specific company's actual operations here**, whether manufacturing, research, or regional commercial, since these are genuinely different roles requiring different framing in an application.
-
-**Confirm your resume [parses cleanly](/ats-analysis) and matches the specific posting's language**, exactly the discipline that applies to any application in any sector.
+1. **For research and technical roles**, a strong academic record in the relevant discipline, and any research or laboratory experience, matters considerably.
+2. **For regulatory, quality and commercial roles**, demonstrate genuine understanding of what the function actually involves, rather than a generic scientific interest, research the specific regulatory or quality challenges relevant to the sector.
+3. **Understand the specific company's actual operations here**, whether manufacturing, research, or regional commercial, since these are genuinely different roles requiring different framing in an application.
+4. **Confirm your resume [parses cleanly](/ats-analysis) and matches the specific posting's language**, exactly the discipline that applies to any application in any sector.
 
 ## Common Mistakes
 
 - **Assuming this sector only employs laboratory researchers.** Manufacturing, quality, regulatory, data and commercial functions all hire graduates in genuine numbers.
-- **Ruling out the sector entirely without a life sciences degree.** Several functions welcome candidates from a broader range of backgrounds.
-- **Not researching a specific company's actual operations here before applying.** Manufacturing, research and commercial roles require different framing.
+- **Ruling out the sector entirely.** Without a life sciences degree. Several functions welcome candidates from a broader range of backgrounds.
+- **Not researching a specific company's actual operations here.** Before applying. Manufacturing, research and commercial roles require different framing.
 - **Underestimating regulatory affairs as a genuine, specialised career path.** A real and often overlooked function.
 - **Not understanding the sector's deliberate strategic development in Singapore specifically.** Useful context for demonstrating genuine engagement.
-- **Applying with a generic scientific interest rather than specific understanding of the function you are targeting.**
+- **Applying with a generic scientific interest.** Rather than specific understanding of the function you are targeting.
 
 ## Frequently Asked Questions
 

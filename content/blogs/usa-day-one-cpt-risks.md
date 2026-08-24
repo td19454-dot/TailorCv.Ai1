@@ -167,15 +167,6 @@ The distinction is not the label. Both might be described as CPT; only one would
 
 If you are considering something closer to the second sketch, that is exactly the point at which an hour with an immigration attorney is worth far more than any article — including this one — because the facts that matter are yours.
 
-## Common Mistakes
-
-- **Treating the school's authorisation as a legal opinion.** It is an administrative act, and the risk stays with you.
-- **Accumulating twelve months of full-time CPT.** It destroys OPT eligibility, and students find out when it is too late to change.
-- **Not keeping documentation.** If the arrangement is questioned years later, contemporaneous records are what you would need.
-- **Relying on forum advice.** Situations differ, rules change, and confident posts are frequently wrong about someone else's facts.
-- **Choosing it before exhausting alternatives.** Cap-exempt employers, other categories and other countries are routinely overlooked.
-- **Travelling without advice.** A consular interview is where an unexamined arrangement most often gets examined, and you are outside the country when it happens.
-
 ## Deciding, with clear eyes
 
 If you are weighing this, the honest way to frame it is as a risk trade rather than as a yes or no.
@@ -207,6 +198,16 @@ If you take nothing else operational from this page, keep these. They are cheap 
 
 Save it outside any account the institution controls. Schools lose certification, systems get replaced, and a portal you cannot log into is not a record.
 
+## Common Mistakes
+
+- **Treating the school's authorisation.** As a legal opinion. It is an administrative act, and the risk stays with you.
+- **Accumulating twelve months of full-time CPT.** It destroys OPT eligibility, and students find out when it is too late to change.
+- **Not keeping documentation.** If the arrangement is questioned years later, contemporaneous records are what you would need.
+- **Relying on forum advice.** Situations differ, rules change, and confident posts are frequently wrong about someone else's facts.
+- **Choosing it before exhausting alternatives.** Cap-exempt employers, other categories and other countries are routinely overlooked.
+- **Travelling without advice.** A consular interview is where an unexamined arrangement most often gets examined, and you are outside the country when it happens.
+
+## Frequently Asked Questions
 ### Does using day-one CPT mean I can never get a green card?
 
 No. It means an arrangement in your history may attract questions during a residence application, which asks you to account for how you maintained status throughout. Many people have used CPT without difficulty. The risk is real, case-specific, and the reason to keep documentation and to take advice on your own facts rather than to assume either the best or the worst.
@@ -222,7 +223,6 @@ Not materially. The scrutiny attaches to the academic arrangement and to how you
 ### What if I have already crossed twelve months of full-time CPT?
 
 Your OPT eligibility is gone and that cannot be reversed. What remains is planning around it: [cap-exempt employers](/blog/usa-cap-exempt-h1b-employers), the [O-1](/blog/usa-o1-visa-for-new-grads) if you have a genuine record, an employer willing to run the lottery while you remain in status some other way, or a [different country](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore). Get advice quickly, because the options narrow with time.
-## Frequently Asked Questions
 
 ### Is day-one CPT illegal?
 
@@ -247,3 +247,4 @@ Answer questions about your authorisation accurately if asked, using the [same b
 ### What if my school says it is completely fine?
 
 Get a second opinion from an attorney who is not connected to the institution. The school has an enrolment interest, its role is administrative rather than advisory, and it does not carry any of the downside if an arrangement is later questioned.
+

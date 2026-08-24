@@ -99,17 +99,30 @@ Work culture and expectations at startups often differ meaningfully from the tra
 
 **Smaller companies may have less established experience with the [work visa sponsorship process](/blog/japan-work-visa-for-graduates) than large, established employers**, ask directly and early about a specific startup's experience and genuine capacity to support this process.
 
-**Compensation at startups sometimes includes equity, alongside a base salary that may be somewhat lower than an equivalent role at a large traditional employer**, treat any equity component as genuinely uncertain upside rather than guaranteed compensation, comparing guaranteed cash compensation directly is the more reliable comparison.
+**Compensation at startups sometimes includes equity**, alongside a base salary that may be somewhat lower than an equivalent role at a large traditional employer, treat any equity component as genuinely uncertain upside rather than guaranteed compensation, comparing guaranteed cash compensation directly is the more reliable comparison.
+
+## Assessing a specific startup's genuine stability
+
+Ask directly about funding runway and recent fundraising history, exactly [the same direct questions worth asking any startup anywhere](/blog/singapore-startup-jobs-for-graduates), founders genuinely experienced with hiring generally answer honestly, and evasiveness itself is informative.
+
+Research who has invested and whether the company has visible customers or genuine traction, rather than relying solely on what is presented during the interview process itself.
+
+## Weighing a startup role against the traditional employment path
+
+**A startup role generally offers a genuinely different trajectory from the structured**, longer-term progression within the traditional large-employer system, worth being honest with yourself about which environment genuinely suits your own working style and risk tolerance, rather than choosing based purely on immediate compensation or general excitement about the sector.
+
+**Ask specifically what happens to employees if the company's funding situation changes significantly**, a direct, honest answer from the founders is itself informative, and understanding this in advance is worth more than discovering it only if circumstances actually change later.
 
 ## Common Mistakes
 
 - **Not establishing visa capability first.** The constraint that determines whether anything else matters.
 - **Valuing equity as compensation.** It is an option on an uncertain outcome.
-- **Joining the earliest-stage company as a foreign graduate.** Status tied to a fragile employer is a real risk.
+- **Joining the earliest-stage company.** As a foreign graduate. Status tied to a fragile employer is a real risk.
 - **Assuming all startups operate in English.** Many do not; ask.
 - **Expecting structured training.** Learning happens by doing, and only if someone is there to teach.
 - **Not assessing the company.** Funding, runway and team experience matter more when your status depends on them.
 
+## Frequently Asked Questions
 ### Is Japan's startup scene as developed as in other countries?
 
 Growing substantially though still smaller relative to the overall economy than in some other major markets, worth researching specific sector strengths directly rather than assuming an identical landscape elsewhere.
@@ -125,19 +138,6 @@ Often yes, sometimes more flexible in some respects, though still genuinely dema
 ### Should I take equity seriously as part of a compensation offer?
 
 Treat it as genuinely uncertain upside rather than guaranteed compensation, compare the guaranteed cash component directly against other offers.
-## Assessing a specific startup's genuine stability
-
-Ask directly about funding runway and recent fundraising history, exactly [the same direct questions worth asking any startup anywhere](/blog/singapore-startup-jobs-for-graduates), founders genuinely experienced with hiring generally answer honestly, and evasiveness itself is informative.
-
-Research who has invested and whether the company has visible customers or genuine traction, rather than relying solely on what is presented during the interview process itself.
-
-## Weighing a startup role against the traditional employment path
-
-**A startup role generally offers a genuinely different trajectory from the structured, longer-term progression within the traditional large-employer system**, worth being honest with yourself about which environment genuinely suits your own working style and risk tolerance, rather than choosing based purely on immediate compensation or general excitement about the sector.
-
-**Ask specifically what happens to employees if the company's funding situation changes significantly**, a direct, honest answer from the founders is itself informative, and understanding this in advance is worth more than discovering it only if circumstances actually change later.
-
-## Frequently Asked Questions
 
 ### Do Japanese startups hire foreign graduates?
 
@@ -162,3 +162,4 @@ Some local governments operate startup visa arrangements intended to support for
 ### Should I choose a startup over a large employer as a first job?
 
 The [general trade-off](/blog/usa-startup-vs-big-tech-new-grad) applies, with the added consideration that your visa status depends on the employer's stability and administrative capability.
+

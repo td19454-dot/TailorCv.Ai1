@@ -227,13 +227,13 @@ An optional field with two specific sentences is a small free advantage. An opti
 
 Five minutes, and it catches the errors that are otherwise permanent.
 
-- **The company name is correct everywhere**, including the third paragraph you adapted from another application. This is the most common and most fatal copy-paste error.
-- **The role title matches the posting exactly**, not your shorthand for it.
-- **Dates are consistent** between the resume, the form and the letter.
-- **Your availability date appears** somewhere the reader will find it.
-- **The file is a PDF, named with your name**, and it opens.
-- **You have saved a copy** of everything you submitted.
-- **Nothing in the letter restates the resume** — read it once asking only that question.
+- [ ] **The company name is correct everywhere**, including the third paragraph you adapted from another application. This is the most common and most fatal copy-paste error.
+- [ ] **The role title matches the posting exactly**, not your shorthand for it.
+- [ ] **Dates are consistent** between the resume, the form and the letter.
+- [ ] **Your availability date appears** somewhere the reader will find it.
+- [ ] **The file is a PDF, named with your name**, and it opens.
+- [ ] **You have saved a copy** of everything you submitted.
+- [ ] **Nothing in the letter restates the resume** — read it once asking only that question.
 
 ## The one habit that matters most
 

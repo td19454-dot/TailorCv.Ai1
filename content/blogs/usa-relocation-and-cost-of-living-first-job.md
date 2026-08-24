@@ -25,7 +25,7 @@ Two graduates, same field, same experience. One is offered a higher [salary](/bl
 
 **Housing is the dominant variable.** In the most expensive metropolitan areas, rent for a modest one-bedroom or a shared arrangement can consume a third to half of take-home pay. In many mid-sized cities, the same quality of housing costs a fraction of that. This single line item frequently outweighs the entire salary difference between two offers.
 
-**State income tax is the second variable, and it is invisible on an offer letter.** Several states have no state income tax at all; others charge over ten percent on income at graduate salary levels. A salary that looks ten percent higher in one state can be entirely absorbed by tax in another.
+**State income tax is the second variable**, and it is invisible on an offer letter. Several states have no state income tax at all; others charge over ten percent on income at graduate salary levels. A salary that looks ten percent higher in one state can be entirely absorbed by tax in another.
 
 **Everything else moves less, and still moves.** Transport, food, insurance and general living costs vary between cities, generally by a smaller margin than housing but still enough to matter over a year.
 
@@ -150,26 +150,6 @@ A counterweight to everything above, because it is possible to over-apply this r
 
 **The point of the arithmetic** is to make the financial dimension visible so it can be weighed properly — not to let it override the question of where you will actually learn the most. Do the calculation, then decide with all of it in view.
 
-## Common Mistakes
-
-- **Comparing gross salaries directly.** Tax and housing routinely change which offer is actually better.
-- **Using a city-wide rent average instead of real listings for where you would live.** Averages understate what a new graduate typically pays.
-- **Not asking what relocation support actually includes.** The gap between a generous and a token package is a real cost.
-- **Underestimating the gap before the first paycheck.** Combined with a deposit, it is a predictable cash crunch that catches people every year.
-- **Not checking the first payslip.** Withholding errors are common and easily fixed early, harder to unwind later.
-- **Choosing the highest number without checking the real total.** The headline salary is the least informative figure in the comparison.
-
-### Should I choose a city based on cost of living alone?
-
-No — it is one major input, not the only one. Career density in your field, whether your industry actually operates at scale in a given city, family proximity and simple personal preference all matter. The point of the exercise is to make the financial dimension visible, not to let it override everything else.
-
-### How do I estimate rent accurately before I have visited?
-
-Search current listings directly for the specific neighbourhoods and housing type you would consider, rather than relying on remembered reputation or a single average figure, which blends very different areas together and misleads more often than it helps.
-
-### What if two offers are close after the real comparison?
-
-Then the financial decision is genuinely close, and it is reasonable to weight the other factors — the team, the work, growth potential, personal preference for the city — more heavily, since the money alone does not clearly favour one option.
 ## If you cannot afford the move upfront
 
 A real situation and rarely discussed, so it is worth naming the options honestly.
@@ -186,6 +166,28 @@ Look at whether the role permits a later physical move, where some remote work i
 
 And factor this into the offer comparison honestly. A slightly lower offer in a city you can actually afford to move to is a better outcome than a higher one that requires debt to reach. This is a legitimate input into the decision rather than an admission of anything.
 
+## Common Mistakes
+
+- **Comparing gross salaries directly.** Tax and housing routinely change which offer is actually better.
+- **Using a city-wide rent average.** Instead of real listings for where you would live. Averages understate what a new graduate typically pays.
+- **Not asking what relocation support actually includes.** The gap between a generous and a token package is a real cost.
+- **Underestimating the gap before the first paycheck.** Combined with a deposit, it is a predictable cash crunch that catches people every year.
+- **Not checking the first payslip.** Withholding errors are common and easily fixed early, harder to unwind later.
+- **Choosing the highest number.** Without checking the real total. The headline salary is the least informative figure in the comparison.
+
+## Frequently Asked Questions
+### Should I choose a city based on cost of living alone?
+
+No — it is one major input, not the only one. Career density in your field, whether your industry actually operates at scale in a given city, family proximity and simple personal preference all matter. The point of the exercise is to make the financial dimension visible, not to let it override everything else.
+
+### How do I estimate rent accurately before I have visited?
+
+Search current listings directly for the specific neighbourhoods and housing type you would consider, rather than relying on remembered reputation or a single average figure, which blends very different areas together and misleads more often than it helps.
+
+### What if two offers are close after the real comparison?
+
+Then the financial decision is genuinely close, and it is reasonable to weight the other factors — the team, the work, growth potential, personal preference for the city — more heavily, since the money alone does not clearly favour one option.
+
 ### Should I move before or after I have secured housing?
 
 Move into temporary accommodation first and secure permanent housing from the ground. Signing a year-long lease from another city is the most common expensive mistake in this process, and two to four weeks of temporary housing costs far less than a year in the wrong place.
@@ -201,10 +203,10 @@ It is a legitimate strategy and it depends on whether your field has genuine car
 ### Do employers ever pay for a house-hunting trip?
 
 Some do, particularly for more senior roles, and it is worth asking about as part of the relocation conversation. It is rarely offered unprompted.
+
 ### Should I tell an employer that cost of living is affecting my decision?
 
 You can, framed factually. "I'm weighing the two offers against living costs in each city, and I wanted to ask whether there's flexibility on relocation support" is a reasonable and common conversation, and it is more likely to move relocation than base pay.
-## Frequently Asked Questions
 
 ### How much more expensive are the priciest cities really?
 
@@ -229,3 +231,4 @@ Two to three months of total living costs is a realistic minimum once a deposit,
 ### Is it worth negotiating relocation as part of the offer?
 
 Yes, and it is one of the [easier things to ask for](/blog/usa-offer-negotiation-new-grad) since it is a one-time cost rather than an ongoing salary commitment, which makes employers more willing to move on it than on base pay.
+

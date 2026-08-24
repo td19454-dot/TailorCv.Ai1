@@ -75,7 +75,7 @@ Commercial awareness is assessed, though generally less heavily than in [law](/b
 
 ## Choosing between the qualification routes with your specific goals in mind
 
-**If you are genuinely unsure whether you want a long-term practice career or eventually intend to move into industry finance, discuss this openly with prospective employers during the application process**, most firms have real experience advising candidates who are weighing exactly this choice, and their perspective on how each route has served people with similar goals is genuinely useful.
+**If you are genuinely unsure whether you want a long-term practice career or eventually intend to move into industry finance**, discuss this openly with prospective employers during the application process, most firms have real experience advising candidates who are weighing exactly this choice, and their perspective on how each route has served people with similar goals is genuinely useful.
 
 **Research not just the immediate training contract but what people who completed a specific firm's programme several years ago are now doing**, professional networking platforms make this genuinely researchable, a firm whose alumni have gone on to strong, varied careers signals something real about the quality of training received.
 

@@ -83,7 +83,7 @@ Proofread properly. A typo in a one-page document that is explicitly a writing s
 
 **Using an inconsistent format from your CV**, different fonts, header styles or date formats between the two documents reads as careless, since they are generally reviewed together as a single application package.
 
-**Ending with an overly casual or, conversely, an excessively formal sign-off relative to the rest of the letter's tone**, aim for consistency in register throughout the entire document, a measured, professional tone maintained end to end reads considerably better than a mismatch between an informal body and a stiffly formal closing, or the reverse.
+**Ending with an overly casual or**, conversely, an excessively formal sign-off relative to the rest of the letter's tone, aim for consistency in register throughout the entire document, a measured, professional tone maintained end to end reads considerably better than a mismatch between an informal body and a stiffly formal closing, or the reverse.
 
 ## Common Mistakes
 
