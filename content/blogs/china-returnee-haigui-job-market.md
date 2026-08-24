@@ -21,11 +21,13 @@ showcase: none
 
 ## Why the advantage has narrowed
 
-**A foreign degree once carried a more automatic premium in the domestic Chinese job market than it generally does today**, this is a genuine and significant shift worth understanding honestly before building a job search around outdated assumptions.
+**海归 (*haigui*, literally "sea turtle," a homophone-based nickname for returning overseas graduates) once carried a more automatic premium in the domestic Chinese job market than it generally does today**, this is a genuine and significant shift worth understanding honestly before building a job search around outdated assumptions. The term itself is worth knowing — it's how this candidate pool is referred to constantly in Chinese recruiting conversations, job platform filters, and informal discussion, and recognizing it helps you understand how employers are actually categorising and comparing you against other returning candidates.
 
 **The pool of graduates returning after studying abroad has grown substantially over recent years**, which has meant employers see far more of this profile than in the past, and have correspondingly developed more differentiated, evidence-based ways of evaluating it rather than treating "studied abroad" as a single undifferentiated positive signal.
 
 **This does not mean a foreign degree carries no value**, it means the value now depends considerably more on the specifics, the institution's actual standing, the relevance of the field of study, and critically, what you can demonstrate you actually did and learned, rather than the fact of having studied abroad alone.
+
+**Government and city-level talent programmes still exist specifically to attract high-calibre returnees**, and are worth researching if your background is genuinely strong — national and provincial "talent introduction" schemes (historically including programmes referred to under names like the Thousand Talents Plan for more senior researchers, alongside numerous city-specific graduate talent subsidy schemes) offer benefits ranging from cash subsidies to expedited hukou settlement for qualifying returnees. These are generally aimed at a narrower, more accomplished slice of the returnee pool than the general graduate market, but worth checking your eligibility directly rather than assuming they don't apply to you.
 
 ## What employers now actually evaluate
 
@@ -85,6 +87,10 @@ showcase: none
 ### Is a foreign degree still valuable in the Chinese job market?
 
 Yes, genuinely, though the automatic premium it once carried has narrowed as the pool of returning graduates has grown, specific demonstrable skills and experience now matter considerably more alongside the credential itself.
+
+### What does "haigui" mean, and should I use the term myself?
+
+海归 (haigui) is the common term for returning overseas graduates, a homophone-based nickname meaning "sea turtle." You'll see it used constantly in job platform filters and recruiting conversations — worth recognising even if you don't need to use it actively yourself.
 
 ### When should I start my domestic job search if I am studying abroad?
 

@@ -31,7 +31,7 @@ showcase: none
 
 ## Why major cities restrict it more tightly
 
-**The largest and most desirable first-tier cities generally operate stricter, points-based systems for obtaining local settlement status**, reflecting genuine capacity and planning considerations at that scale, meeting the threshold typically requires a combination of factors including education level, professional qualifications, and sometimes years of local contribution.
+**The largest and most desirable first-tier cities generally operate stricter, points-based systems for obtaining local settlement status**, reflecting genuine capacity and planning considerations at that scale, meeting the threshold typically requires a combination of factors including education level, professional qualifications, and sometimes years of local contribution. Beijing and Shanghai are the two most-discussed examples — Shanghai in particular has run a points calculation covering age, education, salary, and social insurance contribution history, with graduates of a defined set of top domestic universities historically receiving especially favourable treatment; Beijing's own system runs on broadly similar logic with its own specific weighting. Both are reviewed and adjusted periodically, so treat any specific numeric threshold you find online as a starting point for research, not a number to plan a multi-year decision around without verifying it's current.
 
 **Smaller and lower-tier cities frequently operate considerably more open systems**, and many actively compete to attract skilled graduates specifically, sometimes offering direct settlement pathways, financial incentives, or genuinely simplified processes as part of a deliberate strategy to attract young talent, this is a real and sometimes underappreciated factor when [comparing a first-tier city offer against a lower-tier one](/blog/china-graduate-salary-expectations).
 
@@ -87,6 +87,10 @@ Yes, entirely normally and very commonly, it specifically affects certain practi
 ### Do all cities have the same settlement requirements?
 
 No, major first-tier cities generally operate stricter, points-based systems, while many smaller and lower-tier cities operate considerably more open systems and actively compete to attract graduates.
+
+### Do Beijing and Shanghai run the same system?
+
+No — both run their own points-based calculations with distinct specific factors and weightings, though the broad logic (education, contribution history, and similar factors) is comparable. Check each city's current specific criteria directly rather than assuming one city's system tells you about the other's.
 
 ### Is there a specific pathway for recent graduates?
 

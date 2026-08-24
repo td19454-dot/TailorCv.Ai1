@@ -41,7 +41,7 @@ showcase: none
 
 **Base salary is the headline figure and often not the whole story.** Annual bonus, at many employers, particularly in [technology](/blog/china-tech-company-hiring-guide) and finance, forms a genuine and sometimes substantial share of total annual compensation, comparing offers on base salary alone can meaningfully mislead.
 
-**Social insurance and housing fund contributions**, a standard component of formal employment, represent real value beyond the cash salary figure, worth understanding what a specific employer's contribution actually amounts to.
+**五险一金 (*wǔ xiǎn yī jīn*, "five insurances and one fund")** is the standard term for this component, worth knowing by name since it appears constantly in job postings and offer discussions — it covers pension, medical, unemployment, work-injury, and maternity insurance, plus the housing provident fund, all funded by mandatory employer (and partial employee) contributions calculated as a percentage of your salary base. This represents real value beyond the cash salary figure, and the specific contribution base and rate an employer uses can genuinely differ — some employers contribute based on your actual full salary, others on a lower statutory minimum base, which meaningfully changes what you actually receive despite an identical headline salary.
 
 **Housing-related benefits**, some employers, particularly larger ones or those in specific sectors, offer housing allowances or subsidies, particularly relevant given how significant housing cost is to the overall real-income picture in major cities.
 
