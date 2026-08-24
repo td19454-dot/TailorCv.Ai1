@@ -59,14 +59,16 @@ If you are a foreign graduate planning to build a longer-term career in a specif
 
 **This is a long-term consideration**, not an urgent one for most new graduates in their first year, though understanding the landscape early means you can make a more informed decision about where to build a career if settlement status matters to your longer-term plans.
 
+> **Tip:** Check your target city's graduate-specific settlement pathway, not just its general points system. The graduate route is frequently far more accessible, and many applicants never discover it exists.
+
 ## Common Mistakes
 
-- **Assuming settlement status will be straightforward to sort out later.** Without checking the specific current criteria for your target city in advance.
-- **Not considering a lower-tier city's settlement incentives.** As a genuine factor when comparing offers. Treating it as a minor detail rather than a real practical consideration.
-- **Confusing the domestic household registration system with the separate framework that applies to foreign nationals.** Related in spirit and distinct in mechanics.
-- **Relying on outdated information.** About a specific city's criteria. When these are reviewed and adjusted periodically by local policy.
-- **Assuming registration status prevents you from living and working in a city without it.** It does not, it specifically affects certain practical matters described above.
-- **Not researching a graduate-specific settlement pathway.** Which is often meaningfully more accessible than the general system.
+- **Assuming settlement sorts itself out.** Assuming settlement status will be straightforward to sort out later without checking the specific current criteria for your target city in advance.
+- **Not considering a lower-tier city's settlement incentives.** Treating it as a minor detail rather than a real practical consideration.
+- **Confusing hukou with the foreigner system.** Confusing the domestic household registration system with the separate framework that applies to foreign nationals. Related in spirit and distinct in mechanics.
+- **Relying on outdated information.** Relying on outdated information about a specific city's criteria when these are reviewed and adjusted periodically by local policy.
+- **Thinking no hukou means no job.** Assuming registration status prevents you from living and working in a city without it. It does not, it specifically affects certain practical matters described above.
+- **Not researching a graduate-specific settlement pathway.** Not researching a graduate-specific settlement pathway which is often meaningfully more accessible than the general system.
 
 ## Verifying your understanding with the specific city authority directly
 
@@ -77,6 +79,19 @@ If you are uncertain about your own eligibility under a specific graduate pathwa
 ## Planning realistically around a multi-year process
 
 Understand that meeting a points threshold or accumulating qualifying time is generally a multi-year undertaking, not something resolved quickly, worth building this into your broader career planning from an early stage if long-term settlement in a specific city is a genuine priority for you.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Tier-One City Job Markets in China - Where Graduates Actually Go](/blog/china-tier-one-city-job-markets)
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

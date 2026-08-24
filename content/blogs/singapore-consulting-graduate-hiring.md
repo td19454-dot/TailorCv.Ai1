@@ -57,14 +57,29 @@ Regional offices of firms based elsewhere, and the strategy or advisory division
 4. **Prepare fit and behavioural examples in the [measured**, evidence-based register](/blog/singapore-interview-etiquette-guide) that lands well locally.
 5. **Apply to boutique and specialist firms alongside the largest global names**, deliberately widening your target list beyond the most recognisable few.
 
+> **Tip:** Do at least 15 live case interviews with a partner before your first real one. Reading case books alone does not build the thinking-out-loud habit the interview actually tests.
+
 ## Common Mistakes
 
 - **Applying only to the largest.** Most globally recognised firms and overlooking substantial, less contested boutique options.
-- **Using memorised frameworks in cases.** Rather than structure built specifically from the actual prompt. Heard and scored poorly.
-- **Building only Singapore-specific commercial awareness.** Rather than the broader regional picture that most work here actually involves.
-- **Not practising live cases with a partner extensively.** Solo case study alone builds a different, less useful skill.
-- **Giving generic answers about wanting to work in consulting broadly.** Rather than specific reasons tied to a firm's actual regional practice.
-- **Underestimating how much the fit interview matters here.** Assessed with real weight alongside the case.
+- **Using memorised frameworks in cases.** Heard and scored poorly.
+- **Building only Singapore-specific commercial awareness.** Building only Singapore-specific commercial awareness rather than the broader regional picture that most work here actually involves.
+- **Not practising cases out loud.** Not practising live cases with a partner extensively. Solo case study alone builds a different, less useful skill.
+- **A generic “why consulting”.** Giving generic answers about wanting to work in consulting broadly rather than specific reasons tied to a firm's actual regional practice.
+- **Underestimating the fit interview.** Underestimating how much the fit interview matters here. Assessed with real weight alongside the case.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+- [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

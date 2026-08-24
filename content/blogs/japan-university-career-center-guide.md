@@ -106,14 +106,29 @@ Return regularly rather than treating a single visit as sufficient, staff genuin
 
 **Prepare specific questions before each appointment**, rather than arriving with an open-ended general request for help, this lets you extract considerably more value from a limited time slot, since staff can address your specific situation directly rather than starting from general advice.
 
+> **Tip:** Go in the spring of your penultimate year, not your final autumn. By the final autumn the structural advantages the office offers are already gone, and you are chasing the calendar rather than using it.
+
 ## Common Mistakes
 
-- **Arriving in the final year.** The system is built around engagement from the penultimate spring.
+- **Arriving in the final year.** Arriving in the final year the system is built around engagement from the penultimate spring.
 - **Not asking about international student support specifically.** It frequently exists as a separate service.
 - **Skipping document review.** Formal Japanese convention is exactly what an adviser can fix quickly.
 - **Not asking for alumni employment data.** It converts a vague search into a target list.
 - **Assuming the main service covers immigration.** Usually a separate function.
 - **Using it as the only channel.** It is one of several, alongside direct applications and outreach.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Are university career centres actually useful for the Japanese job hunting process?

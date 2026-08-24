@@ -60,14 +60,47 @@ Contact details (name, phone, professional email, city and province — no full 
 
 A specific note on GPA formatting. Canadian universities don't all use the same scale — some report on a 4.0 or 4.3 scale, others on a 9.0 scale, and some report a percentage average instead of a GPA at all. Stating a bare number like "3.7" without the scale it's measured on is genuinely ambiguous to a reader who doesn't know your specific institution's convention; write it as "3.7/4.0" or "8.2/9.0" explicitly, the same discipline that matters on any resume crossing between different grading conventions.
 
+## Do's and Don'ts
+
+### Do
+
+- Use Canadian spelling — colour, centre, labour — and set your word processor's language accordingly
+- State plainly whether you attended a college or a university, since the words differ here
+- Keep it to one to two pages with outcomes, not duties
+- Address every listed merit criterion directly on a federal application
+- Note your open work permit in one line if it helps the employer
+
+### Don't
+
+- Run a US template through a default US spell-checker
+- Use "college" loosely the American way
+- Pad to two pages when one focused page says more
+- Rely on your resume alone to imply you meet federal criteria
+- Self-report "fluent" French without knowing your SLE rating
+
+> **Tip:** Set your word processor's language to English (Canada), not just English, before your final read-through. It is two clicks and it is the only thing that reliably catches "color" where you meant "colour" — a US spell-checker will silently undo Canadian spelling every time you edit.
+
 ## Common Mistakes
 
-- **Running a US resume template through a default US spell-checker.** Silently converting "colour" to "color" and "centre" to "center" without you noticing.
-- **Using "college" the American way.** When the institution was actually a Canadian university, or vice versa — the words carry different meaning here.
-- **Applying to a federal posting.** Without directly addressing each listed merit criterion. Relying on the resume alone to imply you meet them.
-- **Self-reporting "fluent" or "conversational" French.** For a bilingual federal role. Without knowing your actual Second Language Evaluation standing, when the role requires it.
-- **Sending the same generic document to every posting.** Instead of matching the language of each specific listing.
-- **Skipping an ATS check.** Before sending out applications and finding out about a formatting problem only after weeks of silence.
+- **US spell-checker on a Canadian resume.** Running a US resume template through a default US spell-checker. Silently converting "colour" to "color" and "centre" to "center" without you noticing.
+- **Using "college" the American way.** Using "college" the American way when the institution was actually a Canadian university, or vice versa — the words carry different meaning here.
+- **Applying to a federal posting.** Relying on the resume alone to imply you meet them.
+- **Self-reporting "fluent" or "conversational" French.** Self-reporting "fluent" or "conversational" French for a bilingual federal role without knowing your actual Second Language Evaluation standing, when the role requires it.
+- **One generic document for every posting.** Sending the same generic document to every posting instead of matching the language of each specific listing.
+- **Skipping an ATS check.** Skipping an ATS check before sending out applications and finding out about a formatting problem only after weeks of silence.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

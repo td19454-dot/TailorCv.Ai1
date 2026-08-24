@@ -59,14 +59,29 @@ Compare the guaranteed cash compensation directly against other offers, and trea
 
 **Graduates who need the certainty of sponsorship support**, or who value the more structured mentorship and training generally available at [larger, more established employers](/blog/singapore-mnc-vs-local-employers), may find that path better suited to their specific situation.
 
+> **Tip:** Ask directly whether the startup has successfully obtained an Employment Pass for a foreign hire before. EP approval is harder for small, young companies, and a firm answer here is worth more than any assurance about growth.
+
 ## Common Mistakes
 
-- **Assuming any startup can sponsor an Employment Pass as readily as a large, established employer.** The framework makes this structurally harder for very small employers.
-- **Not asking directly and early.** About a specific startup's experience with pass sponsorship.
-- **Treating equity as guaranteed compensation.** Rather than genuine, uncertain upside.
-- **Not researching a specific startup's funding position and genuine stability before accepting an offer.**
-- **Comparing a startup offer to an established employer's offer without accounting for the meaningfully different risk profile.**
-- **Assuming the startup route is universally better or worse than an established employer.** Rather than genuinely suited to different priorities.
+- **Assuming any startup can sponsor.** The framework makes this structurally harder for very small employers.
+- **Not asking directly and early.** Not asking directly and early about a specific startup's experience with pass sponsorship.
+- **Treating equity as guaranteed compensation.** Treating equity as guaranteed compensation rather than genuine, uncertain upside.
+- **Not checking the funding position.** Not researching a specific startup's funding position and genuine stability before accepting an offer.
+- **Comparing offers on salary alone.** Comparing offers on salary alone a startup offer and an established employer's offer carry meaningfully different risk profiles, so the headline number is not the whole comparison.
+- **Treating startups as always better or worse.** Assuming the startup route is universally better or worse than an established employer rather than genuinely suited to different priorities.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

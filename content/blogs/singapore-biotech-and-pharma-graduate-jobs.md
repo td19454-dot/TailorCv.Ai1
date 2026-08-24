@@ -64,14 +64,29 @@ Contract research and manufacturing organisations, a growing segment providing s
 3. **Understand the specific company's actual operations here**, whether manufacturing, research, or regional commercial, since these are genuinely different roles requiring different framing in an application.
 4. **Confirm your resume [parses cleanly](/ats-analysis) and matches the specific posting's language**, exactly the discipline that applies to any application in any sector.
 
+> **Tip:** Research Tuas Biomedical Park specifically. Most of the sector's manufacturing footprint sits there, and knowing which companies actually operate on the ground separates a real application from a generic one.
+
 ## Common Mistakes
 
 - **Assuming this sector only employs laboratory researchers.** Manufacturing, quality, regulatory, data and commercial functions all hire graduates in genuine numbers.
-- **Ruling out the sector entirely.** Without a life sciences degree. Several functions welcome candidates from a broader range of backgrounds.
-- **Not researching a specific company's actual operations here.** Before applying. Manufacturing, research and commercial roles require different framing.
-- **Underestimating regulatory affairs as a genuine, specialised career path.** A real and often overlooked function.
-- **Not understanding the sector's deliberate strategic development in Singapore specifically.** Useful context for demonstrating genuine engagement.
-- **Applying with a generic scientific interest.** Rather than specific understanding of the function you are targeting.
+- **Ruling out the sector entirely.** Several functions welcome candidates from a broader range of backgrounds.
+- **Not researching local operations.** Not researching a specific company's actual operations here before applying. Manufacturing, research and commercial roles require different framing.
+- **Overlooking regulatory affairs.** Underestimating regulatory affairs as a genuine, specialised career path. A real and often overlooked function.
+- **Missing the sector's strategic context.** Not understanding the sector's deliberate strategic development in Singapore specifically. Useful context for demonstrating genuine engagement.
+- **Applying with a generic scientific interest.** Applying with a generic scientific interest rather than specific understanding of the function you are targeting.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+- [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -77,9 +77,11 @@ Because thresholds have moved upward over recent years, a role that might have q
 
 Occupation-specific going rates, where they exceed the general threshold, reflect the specific market rate research conducted for that occupation, worth checking both the general figure and the specific occupational rate for your target role, since the higher of the two generally applies.
 
+> **Tip:** Check the employer holds a valid sponsor licence on the Home Office register before investing in an application. The register is public, and an employer without one cannot sponsor you regardless of intent.
+
 ## Common Mistakes
 
-- **Not checking the sponsor register.** Before applying. Public, searchable, and it determines whether an employer can keep you.
+- **Not checking the sponsor register.** Public, searchable, and it determines whether an employer can keep you.
 - **Assuming a licence means willingness.** Many licensed employers sponsor selectively.
 - **Taking a role below the skill threshold.** It will not convert regardless of performance.
 - **Relying on remembered salary figures.** Thresholds have been revised repeatedly.
@@ -91,6 +93,19 @@ Occupation-specific going rates, where they exceed the general threshold, reflec
 **Once you have identified an employer holding a sponsor licence who is willing to consider sponsoring you**, work with them directly to confirm the specific occupation code and salary that would apply to your role, this is a collaborative conversation, employers experienced with this process generally understand exactly what information you need and why.
 
 **If the role as initially described does not clearly meet the requirements**, but the underlying work genuinely would, raise this directly and constructively, asking whether the job description or title could be adjusted to accurately reflect duties that do qualify, is a reasonable request rather than an unusual one, provided the underlying substance of the role genuinely supports it.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [The UK Graduate Route - What It Gives You and What Comes Next](/blog/uk-graduate-visa-route-explained)
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

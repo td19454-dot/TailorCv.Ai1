@@ -113,14 +113,29 @@ Research who has invested and whether the company has visible customers or genui
 
 **Ask specifically what happens to employees if the company's funding situation changes significantly**, a direct, honest answer from the founders is itself informative, and understanding this in advance is worth more than discovering it only if circumstances actually change later.
 
+> **Tip:** Check whether the company appears on METI's J-Startup list before applying. It is a government-vetted signal of genuine growth potential, and it costs you one search to check.
+
 ## Common Mistakes
 
-- **Not establishing visa capability first.** The constraint that determines whether anything else matters.
+- **Not establishing visa capability first.** Not establishing visa capability first the constraint that determines whether anything else matters.
 - **Valuing equity as compensation.** It is an option on an uncertain outcome.
-- **Joining the earliest-stage company.** As a foreign graduate. Status tied to a fragile employer is a real risk.
+- **Joining the earliest-stage company.** Status tied to a fragile employer is a real risk.
 - **Assuming all startups operate in English.** Many do not; ask.
 - **Expecting structured training.** Learning happens by doing, and only if someone is there to teach.
 - **Not assessing the company.** Funding, runway and team experience matter more when your status depends on them.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Is Japan's startup scene as developed as in other countries?

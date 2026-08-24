@@ -175,6 +175,8 @@ The honest test. Ask yourself how you would feel about spending three months get
 
 And note the exit is open. Federal experience is well regarded by contractors, regulated industries, policy organisations and consultancies. A first job here does not commit you to a career here, which lowers the stakes of trying it considerably.
 
+> **Tip:** Address every listed qualification explicitly in your USAJOBS application, using the posting's own words. Federal resumes are scored against those criteria literally, which is why they run far longer than private-sector ones.
+
 ## Common Mistakes
 
 - **Sending a one-page private-sector resume.** It will not evidence the specialised experience the announcement requires, and you will not be rated qualified.
@@ -229,6 +231,19 @@ Benefits compound. Retirement contributions, health coverage and leave are stron
 **A tentative offer is conditional.** It precedes the background investigation and, where required, clearance. Do not decline other offers on the strength of it, and do not resign anything.
 
 **Ask for the timeline in writing.** Federal HR will tell you what stage you are at and roughly how long the next one takes. That information is what lets you keep the rest of your search running sensibly in parallel.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

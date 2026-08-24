@@ -81,20 +81,35 @@ Because this process runs over several months and is assessed against a publishe
 
 Keep a running document of situations from your academic, work and extracurricular experience mapped against each published behaviour, updating it as new relevant experiences occur, this produces a considerably richer and more specific evidence base than trying to generate examples retrospectively when the application window opens.
 
+> **Tip:** Practise the online tests before the real attempt; the Fast Stream's early stages are heavily test-driven and largely trainable. Most candidates who fail there were untrained rather than unsuitable.
+
 ## Common Mistakes
 
 - **Applying to the wrong scheme.** They differ substantially in requirements and content.
 - **Not reading the published framework.** It is effectively the marking scheme and it is public.
-- **Treating the online tests.** As a formality. They are an early filter and they remove a large share of applicants.
+- **Treating the online tests.** They are an early filter and they remove a large share of applicants.
 - **Gaming the strengths assessment.** Inconsistency is visible and honesty performs better.
 - **Ignoring nationality and residency requirements.** Published, specific and not negotiable.
-- **Making it your only application.** The timeline is long and the competition substantial.
+- **Making it your only application.** Making it your only application the timeline is long and the competition substantial.
 
 ## What happens after successfully joining the programme
 
 **Understand that the programme itself is a multi-year structured development experience**, not simply an extended interview process, rotations across different departments and functions, alongside formal training toward a recognised qualification in many streams, form a genuine long-term career investment on both sides.
 
 **Ask current or recent participants directly what the actual day-to-day experience is like**, beyond the formal programme description, a genuine first-hand account reveals considerably more about pace, culture and specific placement patterns than official programme materials alone.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+- [UK Graduate Salary Expectations - What to Actually Expect](/blog/uk-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

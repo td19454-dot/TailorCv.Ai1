@@ -105,14 +105,29 @@ Follow up genuinely afterward with anyone you connected with during the programm
 
 **Ask directly whether staying in touch would be welcome**, and whether there might be future opportunities, even where immediate conversion is not available, this keeps a door open that a silent departure would close.
 
+> **Tip:** Read the posting to tell which kind of internship it is. A single date and language about 会社理解 (company understanding) means an information session; specific deliverables and a project scope mean real work experience.
+
 ## Common Mistakes
 
 - **Expecting Western-length internships.** Many are days rather than months.
 - **Dismissing short programmes as pointless.** They are the relationship-building stage of the system.
 - **Applying too late.** Applications open well before the summer, following the conventional calendar.
 - **Not checking status permissions.** Paid work on a student status generally requires permission.
-- **Treating it as work experience only.** The information and the relationship are the actual value.
-- **Not following up afterwards.** The step that converts a visit into a relationship.
+- **Treating it as work experience only.** Treating it as work experience only the information and the relationship are the actual value.
+- **Not following up afterwards.** Not following up afterwards the step that converts a visit into a relationship.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+- [Shūkatsu - The Japanese Job Hunting Timeline](/blog/japan-job-hunting-shukatsu-timeline)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Do internships in Japan lead to full-time offers?

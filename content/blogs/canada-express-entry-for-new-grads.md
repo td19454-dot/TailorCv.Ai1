@@ -65,14 +65,29 @@ Run your own score on IRCC's official CRS calculator (searchable directly on can
 
 **"My overall language grade is what matters."** CRS scores each of the four bands (reading, writing, listening, speaking) separately and takes the lowest-scoring band as a real constraint — a high overall average with one weak band still caps your points.
 
+> **Tip:** Run your CRS score twice — once as you are today, and once assuming a CLB 9 language result. The gap between those two numbers is usually larger than a full extra year of work experience, and it tells you immediately whether a retest is worth booking.
+
 ## Common Mistakes
 
-- **Not checking a job's NOC category.** Before accepting it. When the difference between a qualifying and non-qualifying role is the entire Canadian-work-experience factor.
-- **Treating an overall language "pass" as sufficient.** Without checking the individual band scores CRS actually uses.
-- **Not retesting a weak language score.** When it's typically the highest-return, lowest-effort action available.
-- **Assuming a historical draw cutoff still applies.** Instead of checking IRCC's current draw-history page before applying.
-- **Treating provincial nomination as a last resort.** When its 600 points make it worth pursuing in parallel from the start.
-- **Waiting until close to applying to run the CRS calculator.** Losing years where language and job-category decisions could have shaped a stronger score.
+- **Not checking a job's NOC category.** Not checking a job's NOC category before accepting it when the difference between a qualifying and non-qualifying role is the entire Canadian-work-experience factor.
+- **Trusting the overall band score.** Treating an overall language "pass" as sufficient without checking the individual band scores CRS actually uses.
+- **Not retesting a weak language score.** Not retesting a weak language score when it's typically the highest-return, lowest-effort action available.
+- **Planning around an old cutoff.** Assuming a historical draw cutoff still applies instead of checking IRCC's current draw-history page before applying.
+- **Treating PNP as a fallback.** Treating provincial nomination as a last resort when its 600 points make it worth pursuing in parallel from the start.
+- **Running the CRS calculator too late.** Waiting until close to applying to run the CRS calculator. Losing years where language and job-category decisions could have shaped a stronger score.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+- [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

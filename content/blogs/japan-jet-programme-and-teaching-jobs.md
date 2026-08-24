@@ -91,14 +91,29 @@ Consider your own priorities around structure, support and placement certainty a
 
 The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.
 
+> **Tip:** Apply to JET a full year before you intend to start — the cycle runs roughly 12 months from application to placement. Missing it means waiting an entire year for the next intake.
+
 ## Common Mistakes
 
-- **Applying to the government programme late.** The cycle runs roughly a year before placement.
-- **Assuming you choose your location on the government programme.** Placement is centrally decided.
+- **Applying to the government programme late.** Applying to the government programme late the cycle runs roughly a year before placement.
+- **Assuming you pick your placement.** Assuming you choose your location on the government programme. Placement is centrally decided.
 - **Not researching private employers.** Quality varies enormously and reputation is checkable.
-- **Treating it as a long-term career by default.** It is an entry route for most people entering through language instruction.
-- **Not studying Japanese during the placement.** The single biggest determinant of what comes next.
+- **Treating JET as a career.** Treating it as a long-term career by default. It is an entry route for most people entering through language instruction.
+- **Not studying Japanese during the placement.** Not studying Japanese during the placement the single biggest determinant of what comes next.
 - **Confusing international school teaching with language teaching.** Different requirements, different careers.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+- [Shūkatsu - The Japanese Job Hunting Timeline](/blog/japan-job-hunting-shukatsu-timeline)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### What is the JET Programme exactly?

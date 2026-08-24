@@ -63,14 +63,29 @@ Which means the applicant-to-seat ratio in supply chain and logistics is conside
 2. **Highlight any relevant analytical or technical skills**, quantitative coursework, or projects involving optimisation or data analysis, even where your degree is not directly supply chain focused, these skills transfer directly and are genuinely valued.
 3. **Understand the basic economics of global trade and shipping**, at a level an interested, informed outsider would have, this demonstrates genuine engagement with the sector rather than a generic application.
 
+> **Tip:** Learn the basic economics of one trade lane before interviewing. Demonstrating you understand how cost, time and risk trade off against each other separates you immediately from generic applicants.
+
 ## Common Mistakes
 
-- **Assuming supply chain work means physical warehouse operations alone.** The actual range spans analytics, technology, procurement and regional coordination.
-- **Overlooking the sector entirely.** In favour of the most visible finance, consulting and technology employers. A less contested and genuinely substantial alternative.
-- **Not researching a specific company's actual regional supply chain footprint before applying.**
-- **Underselling relevant quantitative or analytical skills from an unrelated degree.** These transfer directly and are genuinely valued.
-- **Assuming the work lacks genuine regional or international exposure.** Often the opposite, given Singapore's hub role.
-- **Applying generically rather than demonstrating genuine understanding of the sector's basic economics.**
+- **Assuming it is all warehouses.** Assuming supply chain work means physical warehouse operations alone. The actual range spans analytics, technology, procurement and regional coordination.
+- **Overlooking the sector entirely.** A less contested and genuinely substantial alternative.
+- **Not researching the regional footprint.** Not researching a specific company's actual regional supply chain footprint before applying.
+- **Underselling your analytical skills.** Underselling relevant quantitative or analytical skills from an unrelated degree. These transfer directly and are genuinely valued.
+- **Assuming there is no regional exposure.** Assuming the work lacks genuine regional or international exposure. Often the opposite, given Singapore's hub role.
+- **Applying without sector understanding.** Applying generically rather than demonstrating genuine understanding of the sector's basic economics.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Scholarship Bonds in Singapore - What to Understand Before Signing](/blog/singapore-scholarship-bond-careers-guide)
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -107,14 +107,29 @@ International students in particular benefit from mapping this rhythm against th
 
 **Understanding both the advantages and genuine constraints of this system honestly**, rather than assuming it simply mirrors hiring conventions you may be more familiar with from elsewhere, is what actually lets you navigate it effectively.
 
+> **Tip:** If you graduated more than a year ago, search specifically for 第二新卒 (daini shinsotsu) roles. It is a recognised category for recent graduates outside the standard cycle, and many candidates never learn it exists.
+
 ## Common Mistakes
 
-- **Applying Western job-search habits.** The system has its own conventions and ignoring them reads as unprepared.
-- **Underestimating the language requirement.** For generalist tracks at traditional companies it is usually decisive.
-- **Missing the calendar.** The cycle is fixed and shared; entering late means entering a different market.
+- **Applying Western job-search habits.** Applying Western job-search habits the system has its own conventions and ignoring them reads as unprepared.
+- **Underestimating the language requirement.** Underestimating the language requirement for generalist tracks at traditional companies it is usually decisive.
+- **Missing the calendar.** Missing the calendar the cycle is fixed and shared; entering late means entering a different market.
 - **Expecting to choose your role.** Many companies assign your department after you join.
 - **Treating self-analysis as a formality.** It underpins the written applications and the interviews.
-- **Assuming your degree subject determines your options.** For generalist tracks it frequently does not.
+- **Assuming your degree subject determines your options.** Assuming your degree subject determines your options for generalist tracks it frequently does not.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Sōgō Shōsha - Japan's Trading Companies and Graduate Hiring](/blog/japan-trading-companies-sogo-shosha-hiring)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Is the entire Japanese job market really this synchronised?

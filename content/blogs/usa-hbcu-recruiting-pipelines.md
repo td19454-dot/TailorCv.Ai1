@@ -191,14 +191,29 @@ Throughout. Build one substantial project, keep the [resume parsing cleanly](/at
 
 The pattern worth noticing: the programmes with the deepest employer investment recruit earliest, which means the students who benefit most are the ones who found out in first year that they existed at all.
 
+> **Tip:** Ask your career centre which employers have dedicated HBCU partnerships. These are separate, smaller pipelines with materially better odds than the general campus process.
+
 ## Common Mistakes
 
-- **Not asking the careers office what exists.** The single highest-value question and the one most students skip.
-- **Assuming general campus recruiting is the whole picture.** Named pipelines often run through a separate, less contested channel.
+- **Not asking the careers office what exists.** Not asking the careers office what exists the single highest-value question and the one most students skip.
+- **Assuming general recruiting is everything.** Assuming general campus recruiting is the whole picture. Named pipelines often run through a separate, less contested channel.
 - **Starting the search in junior year.** Several scholarship-and-pipeline programmes open in the first or second year.
-- **Treating the pipeline as the whole application.** The interview bar is generally unchanged; access is not the same as an offer.
-- **Under-using an assigned mentor.** A resource most candidates never fully exploit.
+- **Treating the pipeline as the whole application.** Treating the pipeline as the whole application the interview bar is generally unchanged; access is not the same as an offer.
+- **Under-using an assigned mentor.** Under-using an assigned mentor a resource most candidates never fully exploit.
 - **Skipping the multi-campus events.** Concentrated employer attendance in one place, and often less contested than individual big-city fairs.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [MBA Internship Recruiting Timeline in the US](/blog/usa-mba-internship-recruiting-timeline)
+- [Quant and Trading Campus Recruiting in the US - How the Process Runs](/blog/usa-quant-trading-campus-recruiting)
+- [Spring Recruiting in the US - The Season Most Students Ignore](/blog/usa-second-round-spring-recruiting)
+- [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Are these programmes only at large companies?

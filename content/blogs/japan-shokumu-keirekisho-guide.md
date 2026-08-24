@@ -99,14 +99,29 @@ Update the master version as you gain new relevant experience, rather than recon
 
 **Frame any transition or gap in terms of what you did with the time and what you learned**, rather than simply noting an absence, this converts a potential concern into a genuine point of interest for an employer reading the document.
 
+> **Tip:** Keep one comprehensive master version privately and generate a shorter, tailored version per application. Rebuilding this document from memory each time is where most of the wasted effort in a Japanese job search goes.
+
 ## Common Mistakes
 
-- **Describing responsibilities rather than results.** The most common weakness and the easiest to fix.
+- **Describing responsibilities rather than results.** Describing responsibilities rather than results the most common weakness and the easiest to fix.
 - **Never distinguishing your contribution from the team's.** Leaves the reader unable to assess you.
-- **Submitting only a rirekisho.** For many roles the work history document carries the substance.
+- **Submitting only a rirekisho.** Submitting only a rirekisho for many roles the work history document carries the substance.
 - **Reusing the self-promotion section unchanged.** It is the one part that should be written per company.
 - **Writing it as a narrative.** Structured and scannable beats prose.
 - **Assuming new graduates cannot write one.** Internships, research, projects and activities all populate it.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -153,14 +153,16 @@ Open a folder. Put in it every acceptance email you can still find, every review
 
 That is thirty minutes today and it is the difference between having a case in three years and having a memory of one. Almost everyone who fails to build an O-1 record did the work and did not keep the evidence.
 
+> **Tip:** Start collecting evidence — publications, press, awards, membership — years before you file. The O-1 is an evidence case, and it cannot be assembled retroactively in a few weeks.
+
 ## Common Mistakes
 
-- **Assuming you need to be famous.** The standard is evidentiary, and a productive researcher can meet several criteria in the ordinary course of their work.
+- **Assuming you need to be famous.** Assuming you need to be famous the standard is evidentiary, and a productive researcher can meet several criteria in the ordinary course of their work.
 - **Starting six weeks before an authorisation expires.** Cases are accumulated over years and manufactured evidence is visible.
 - **Not keeping records.** Citation counts, review invitations and acceptances are the evidence, and reconstructing them later is incomplete.
-- **Declining peer review invitations.** A criterion handed to you, refused because it felt like unpaid work.
-- **Relying on internal university prizes.** The recognition needs to be external and competitive.
-- **Assuming an employer will know what this is.** Many have never filed one, and the legal cost is higher than an H-1B. Raise it early with evidence you have a case.
+- **Declining peer review invitations.** Declining peer review invitations a criterion handed to you, refused because it felt like unpaid work.
+- **Relying on internal university prizes.** Relying on internal university prizes the recognition needs to be external and competitive.
+- **Assuming employers know the O-1.** Assuming an employer will know what this is. Many have never filed one, and the legal cost is higher than an H-1B. Raise it early with evidence you have a case.
 
 ## A five-year plan, if you want one
 
@@ -207,6 +209,19 @@ For most graduates reading this, the honest conclusion is that the record is not
 **Run the other routes in parallel.** [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) require no such record, the lottery runs annually regardless, and the [comparison of countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) may point somewhere else entirely. Building toward an O-1 should never be your only plan, because it may not arrive in time.
 
 **And do not manufacture.** Predatory journals, invented awards and reciprocal citation arrangements are recognisable to adjudicators and to anyone in your field. A thin genuine record is recoverable; a padded one damages your professional reputation as well as your petition.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

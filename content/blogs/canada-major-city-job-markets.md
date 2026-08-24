@@ -69,14 +69,29 @@ Halifax anchors a smaller but real Atlantic Canada tech and ocean-technology clu
 
 Provincial nominee programs and specific immigration streams vary by province, [covered in the provincial nominee guide](/blog/canada-provincial-nominee-programs-graduates), worth researching whether your target city's province offers a stream well matched to your profile if long-term status is a genuine priority.
 
+> **Tip:** Before comparing two city offers, pull actual current listings on rentals.ca for the specific neighbourhood you would realistically live in. City-level reputation lags the market by years; a specific postal code does not.
+
 ## Common Mistakes
 
-- **Defaulting to Toronto as the only serious option.** Without researching where your specific sector actually has strength elsewhere.
-- **Comparing salaries across cities.** Without adjusting for genuinely substantial differences in real cost of living.
-- **Overlooking Waterloo, smaller centres and mid-sized cities that offer genuine, less contested opportunity in specific sectors.**
-- **Not considering provincial immigration stream differences.** When choosing where to settle. If this matters to your longer-term plans.
-- **Assuming Vancouver housing costs are comparable to other Canadian cities.** They are frequently among the highest in the country.
-- **Choosing a city purely on general reputation.** Rather than matching it deliberately to your specific target sector.
+- **Defaulting to Toronto.** Defaulting to Toronto as the only serious option without researching where your specific sector actually has strength elsewhere.
+- **Comparing salaries across cities.** Comparing salaries across cities without adjusting for genuinely substantial differences in real cost of living.
+- **Overlooking smaller centres.** Overlooking Waterloo, smaller centres and mid-sized cities that offer genuine, less contested opportunity in specific sectors.
+- **Not considering provincial immigration stream differences.** If this matters to your longer-term plans.
+- **Underestimating Vancouver housing.** Assuming Vancouver housing costs are comparable to other Canadian cities. They are frequently among the highest in the country.
+- **Choosing a city on reputation.** Choosing a city purely on general reputation rather than matching it deliberately to your specific target sector.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

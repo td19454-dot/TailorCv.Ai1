@@ -67,14 +67,16 @@ Contract length and any penalty for early termination, read this carefully befor
 
 Health insurance provision, and what it actually covers.
 
+> **Tip:** Ask to speak with a foreign teacher currently at the school before accepting anything. One ten-minute conversation reveals more about an employer's legitimacy than any amount of promotional material.
+
 ## Common Mistakes
 
-- **Not verifying a school's legitimacy and sponsorship track record before accepting an offer.** The single most important practical safeguard in this sector.
-- **Working without proper work permit sponsorship, or accepting vague assurances about visa status.** Carries real personal risk.
-- **Not obtaining a recognised teaching certification.** Before applying, where you do not already hold one. Materially limits eligibility and role quality.
-- **Comparing salary figures without adjusting.** For the specific city's cost of living. A number that looks strong in one tier may be weak in another.
-- **Not reading the contract carefully for housing, hours and termination terms.** Details that matter considerably day to day.
-- **Treating every school in this sector as equivalent.** Genuine and significant variation in quality and legitimacy exists.
+- **Not vetting the school.** Not verifying a school's legitimacy and sponsorship track record before accepting an offer. The single most important practical safeguard in this sector.
+- **Accepting vague visa assurances.** Working without proper work permit sponsorship, or accepting vague assurances about visa status. Carries real personal risk.
+- **Not obtaining a recognised teaching certification.** Materially limits eligibility and role quality.
+- **Comparing salary figures without adjusting.** A number that looks strong in one tier may be weak in another.
+- **Not reading the contract.** Carefully for housing, hours and termination terms. Details that matter considerably day to day.
+- **Treating every school as equivalent.** Treating every school in this sector as equivalent. Genuine and significant variation in quality and legitimacy exists.
 
 ## Understanding contract renewal and longer-term prospects
 
@@ -87,6 +89,19 @@ Health insurance provision, and what it actually covers.
 Understand exactly how your compensation compares to genuine local cost of living for the specific city you would be working in, rather than a general national assumption, since costs and typical teaching salaries both vary considerably between major cities and smaller ones.
 
 Clarify tax treatment and any social insurance contributions specific to your situation as a foreign employee before accepting an offer, these details affect your actual take-home compensation meaningfully and are worth understanding precisely rather than discovering only once you have already started the role.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

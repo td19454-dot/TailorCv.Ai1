@@ -198,14 +198,29 @@ If you take nothing else operational from this page, keep these. They are cheap 
 
 Save it outside any account the institution controls. Schools lose certification, systems get replaced, and a portal you cannot log into is not a record.
 
+> **Tip:** Consult an independent immigration attorney — not the school offering the programme — before enrolling in any day-one CPT arrangement. The school has an obvious interest; an attorney does not.
+
 ## Common Mistakes
 
-- **Treating the school's authorisation.** As a legal opinion. It is an administrative act, and the risk stays with you.
+- **Treating the school's authorisation.** It is an administrative act, and the risk stays with you.
 - **Accumulating twelve months of full-time CPT.** It destroys OPT eligibility, and students find out when it is too late to change.
 - **Not keeping documentation.** If the arrangement is questioned years later, contemporaneous records are what you would need.
 - **Relying on forum advice.** Situations differ, rules change, and confident posts are frequently wrong about someone else's facts.
 - **Choosing it before exhausting alternatives.** Cap-exempt employers, other categories and other countries are routinely overlooked.
-- **Travelling without advice.** A consular interview is where an unexamined arrangement most often gets examined, and you are outside the country when it happens.
+- **Travelling without advice.** Travelling without advice a consular interview is where an unexamined arrangement most often gets examined, and you are outside the country when it happens.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Does using day-one CPT mean I can never get a green card?

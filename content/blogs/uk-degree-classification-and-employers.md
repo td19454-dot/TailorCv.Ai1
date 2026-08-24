@@ -55,20 +55,35 @@ This is worth internalising early. Spending a final year purely trying to lift a
 
 **If your classification is strong**, let it speak for itself rather than dwelling on it excessively in written applications, the space is generally better used demonstrating specific evidence of your skills and experience, which is what most employers, even those with a stated threshold, ultimately assess you on beyond that initial screen.
 
+> **Tip:** Check each employer's current stated policy rather than assuming a 2:1 bar. A growing number have dropped the requirement outright, and that information is published on their own site.
+
 ## Common Mistakes
 
-- **Assuming every employer h.** As a hard classification cutoff. Many have moved to contextual or skills-based assessment.
-- **Not checking a specific employer's current stated policy.** The picture varies and has changed substantially in recent years.
-- **Over-explaining a modest classification unprompted.** A brief, factual sentence if asked is sufficient.
-- **Neglecting evidence in favour of chasing a marginal grade improvement.** Projects and experience usually do more work in an interview.
-- **Ruling out large employers entirely.** Based on an outdated assumption. Worth checking rather than assuming.
-- **Not using a referral to route around an automated filter.** The most reliable practical workaround where one genuinely exists.
+- **Assuming every employer h.** Many have moved to contextual or skills-based assessment.
+- **Not checking the current policy.** Not checking a specific employer's current stated policy. The picture varies and has changed substantially in recent years.
+- **Over-explaining a modest classification unprompted.** Over-explaining a modest classification unprompted a brief, factual sentence if asked is sufficient.
+- **Chasing a marginal grade.** Projects and experience usually do more work in an interview.
+- **Ruling out large employers entirely.** Worth checking rather than assuming.
+- **Not using a referral.** To route around an automated filter. The most reliable practical workaround where one genuinely exists.
 
 ## Understanding how classification interacts with other academic factors
 
 Some employers consider your overall academic trajectory, including whether your performance improved over your degree, alongside the final headline classification itself, worth mentioning a genuine upward trend if directly relevant and asked about, rather than assuming only the final number matters.
 
 Specific module performance directly relevant to a target role can sometimes be worth highlighting separately, particularly where your overall classification does not fully reflect strength in that specific area, a strong result in a directly relevant module is a genuine, specific data point an employer can weigh alongside your overall classification.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+- [UK Graduate Salary Expectations - What to Actually Expect](/blog/uk-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

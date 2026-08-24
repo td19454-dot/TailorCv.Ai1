@@ -75,14 +75,29 @@ Consider whether a hybrid strategy, targeting the accessible minority of roles n
 
 Beyond general conversational and professional ability, the specific vocabulary and phrasing used in job postings, application forms and interview questions in this market forms its own distinct, learnable subset, worth studying real job postings and common interview question formats specifically, even before your broader general ability reaches your ultimate target level, this targeted preparation lets you navigate the application process itself more confidently even while your overall fluency continues developing.
 
+> **Tip:** Ask a recruiter directly what proportion of the team's daily work happens in Mandarin versus English. It is a far more useful question than "is Chinese required", and it gets a specific answer rather than a diplomatic one.
+
 ## Common Mistakes
 
-- **Assuming a single blanket answer to whether Mandarin is required, without checking the specific employer and role.** The single most common error in this area.
-- **Relying on a company's general international reputation to infer a specific team's actual working language.** Frequently unreliable, ask directly.
-- **Confusing conversational fluency with the professional Mandarin a specific role genuinely requires.** Different skills, worth assessing separately.
-- **Not asking directly about the interview language versus the actual daily working language.** These sometimes differ within the same role.
-- **Assuming Mandarin can be meaningfully improved in a final semester before applying.** A genuine multi-year skill, plan realistically.
-- **Ruling out the entire China job market.** Due to limited Mandarin. Rather than identifying the genuine subset of roles that remain accessible.
+- **Assuming one answer on Mandarin.** Assuming a single blanket answer to whether Mandarin is required, without checking the specific employer and role. The single most common error in this area.
+- **Judging language by company brand.** Relying on a company's general international reputation to infer a specific team's actual working language. Frequently unreliable, ask directly.
+- **Confusing conversational with professional.** Confusing conversational fluency with the professional Mandarin a specific role genuinely requires. Different skills, worth assessing separately.
+- **Not separating interview from daily language.** Not asking directly about the interview language versus the actual daily working language. These sometimes differ within the same role.
+- **Cramming Mandarin in a final semester.** Assuming Mandarin can be meaningfully improved in a final semester before applying. A genuine multi-year skill, plan realistically.
+- **Ruling out the entire China job market.** Ruling out the entire China job market due to limited Mandarin rather than identifying the genuine subset of roles that remain accessible.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

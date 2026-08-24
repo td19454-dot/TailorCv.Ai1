@@ -107,16 +107,49 @@ Have someone genuinely familiar with the local convention review it if possible,
 
 Keep a copy of exactly what you submitted for each specific application, useful for your own reference during subsequent interview stages when you may be asked about details from the document itself.
 
+## Do's and Don'ts
+
+### Do
+
+- Use the standard form and fill every field
+- Get the photograph taken properly at a studio
+- Keep date formats consistent throughout
+- Write the motivation section fresh for each company
+- Start again on a fresh sheet if you make an error
+
+### Don't
+
+- Substitute a Western-style resume
+- Use a casual or cropped photo
+- Mix calendar systems within one document
+- Treat the motivation section as filler
+- Use correction fluid on a handwritten form
+
+> **Tip:** Get the photograph taken at a proper photo studio, not a booth or a phone. It sits at the top of a standardised form where every other field looks identical, which makes it one of the few things a reader actually notices.
+
 ## Common Mistakes
 
-- **Submitting a Western-style resume instead.** The most visible signal of unfamiliarity with the market.
-- **Omitting the photograph, or using a casual one.** Rather than the proper formal standard. Conventionally expected and its absence or informality is noticed.
-- **Writing generic motivation statements.** Rather than content specific to each individual company.
+- **Submitting a Western-style resume instead.** Submitting a Western-style resume instead the most visible signal of unfamiliarity with the market.
+- **A missing or casual photo.** Omitting the photograph, or using a casual one rather than the proper formal standard. Conventionally expected and its absence or informality is noticed.
+- **Writing generic motivation statements.** Writing generic motivation statements rather than content specific to each individual company.
 - **Inconsistent date formats.** Mixing calendar systems within one document.
-- **Leaving gaps in the chronology.** The history is expected to be continuous.
+- **Leaving gaps in the chronology.** Leaving gaps in the chronology the history is expected to be continuous.
 - **Using correction fluid on a handwritten form.** Convention is to start again.
-- **Assuming a digital version is always acceptable.** Without checking the specific employer's expectation.
+- **Assuming a digital version is always acceptable.** Assuming a digital version is always acceptable without checking the specific employer's expectation.
 - **Treating the motivation section as filler.** It is the one part of the form where you can genuinely differentiate.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

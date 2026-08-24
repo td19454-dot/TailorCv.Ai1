@@ -95,14 +95,29 @@ Consider all the routes. [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employe
 
 That is the entire answer. Interviewers have heard it many times and it reflects nothing on you unless you make it sound like it does.
 
+> **Tip:** If you are on a visa, speak to an immigration attorney within days, not weeks. The grace period is short and the options narrow quickly once it starts running.
+
 ## Common Mistakes
 
 - **Signing the severance agreement immediately.** You are generally entitled to review time; use it.
 - **Not asking whether terms are negotiable.** Occasionally they are and almost nobody asks.
 - **Delaying the search to process it.** Understandable and costly, particularly under a status clock.
-- **Going quiet on your network out of embarrassment.** The single most damaging response and the least warranted.
-- **For international employees, not getting advice immediately.** The deadlines are short and the options narrow quickly.
-- **Sounding aggrieved in interviews.** The facts are neutral; only the delivery makes them a problem.
+- **Going quiet out of embarrassment.** Going quiet on your network out of embarrassment. The single most damaging response and the least warranted.
+- **For international employees, not getting advice immediately.** For international employees, not getting advice immediately the deadlines are short and the options narrow quickly.
+- **Sounding aggrieved in interviews.** Sounding aggrieved in interviews the facts are neutral; only the delivery makes them a problem.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -82,14 +82,47 @@ Get advice for anything genuinely serious. A criminal record with employment imp
 3. **Tell your references they may be contacted.** A surprised reference is a poor reference, and giving them your resume and the role description costs nothing.
 4. **For international candidates**, expect education verification to take longer, and note that this process runs alongside — and separately from — the [employment eligibility paperwork](/blog/usa-employment-verification-i9-explained) your employer must complete.
 
+## Do's and Don'ts
+
+### Do
+
+- Confirm your exact dates and GPA against your own records
+- State your degree exactly as your transcript states it
+- Warn your references before they are contacted
+- Disclose anything complicated yourself, briefly
+- Keep your offer letters and transcripts filed
+
+### Don't
+
+- Round a GPA upward
+- Stretch employment dates to close a gap
+- Let a reference be surprised by the call
+- Wait for a check to surface something you could have explained
+- Decline other offers while yours is still contingent
+
+> **Tip:** Confirm your exact employment dates and GPA against your own records before you apply anywhere. Discrepancies, not discoveries, are what cost people offers at this stage.
+
 ## Common Mistakes
 
-- **Rounding a GPA upward.** The most common discrepancy and it is entirely self-inflicted.
+- **Rounding a GPA upward.** Rounding a GPA upward the most common discrepancy and it is entirely self-inflicted.
 - **Stretching employment dates to close a gap.** Gaps are unremarkable; inaccurate dates are not.
-- **Declining other offers on a contingent one.** A contingent offer is not yet a job.
-- **Elevating a job title beyond what HR recorded.** Verification services check against the official record, not your description.
-- **Not warning references.** A surprised referee reads as a lukewarm one.
+- **Declining other offers on a contingent one.** Declining other offers on a contingent one a contingent offer is not yet a job.
+- **Inflating your job title.** Elevating a job title beyond what HR recorded. Verification services check against the official record, not your description.
+- **Not warning references.** Not warning references a surprised referee reads as a lukewarm one.
 - **Assuming a check searches for secrets.** It mostly verifies what you supplied, which is why accuracy matters more than history.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

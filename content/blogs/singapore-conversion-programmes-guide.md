@@ -63,14 +63,29 @@ A local reference from a real, substantive work experience is genuinely valuable
 
 Keep your own records of dates, your specific role and responsibilities, and any concrete outcomes, useful for future applications and, for foreign candidates, potentially relevant to future pass applications that ask you to account for your work history.
 
+> **Tip:** Say plainly, at the midpoint of the internship, that you want a full-time offer. Managers routinely assume a quiet intern is not interested, and the sentence costs nothing.
+
 ## Common Mistakes
 
-- **Only asking about conversion at the very end of the internship.** Leaving no time to act on the answer.
-- **Doing genuinely good work quietly.** Without making it visible to more than your immediate supervisor.
-- **Never stating explicitly that you want a full-time offer.** And assuming this is somehow understood.
-- **Not securing a reference and personal contact.** Before leaving. Regardless of whether conversion happens.
+- **Asking about conversion too late.** Only asking about conversion at the very end of the internship. Leaving no time to act on the answer.
+- **Doing genuinely good work quietly.** Doing genuinely good work quietly without making it visible to more than your immediate supervisor.
+- **Never saying you want the offer.** Never stating explicitly that you want a full-time offer and assuming this is somehow understood.
+- **Not securing a reference and personal contact.** Regardless of whether conversion happens.
 - **Not understanding that headcount and pass eligibility.** Not only performance, genuinely affect conversion outcomes.
-- **Not keeping records of the specific work done during the internship for future reference.**
+- **Not recording what you did.** Not keeping records of the specific work done during the internship for future reference.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+- [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

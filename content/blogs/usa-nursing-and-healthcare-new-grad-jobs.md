@@ -143,14 +143,16 @@ Clinical research organisations and pharmaceutical companies. Trial coordination
 
 Why this matters. A new graduate fixed on a named academic hospital in a major city is competing in the most contested corner of an enormous market. Widening the definition of a healthcare employer transforms the odds, and several of these routes convert back into hospital roles later if you want them.
 
+> **Tip:** Apply to nurse residency programmes specifically, not just open positions. The structured first-year support is the difference between a manageable first year and a brutal one.
+
 ## Common Mistakes
 
 - **Applying on the corporate autumn calendar.** Healthcare hires year-round and residencies run on their own intakes.
 - **Starting licensure paperwork late.** It is the binding constraint on your start date and it cannot be rushed at the end.
-- **Refusing to be flexible on unit or location.** The single biggest determinant of a new graduate nurse's options.
-- **Ignoring the non-clinical side.** A large, thinly contested market open to graduates of any discipline.
+- **Refusing to flex on unit or location.** Refusing to be flexible on unit or location. The single biggest determinant of a new graduate nurse's options.
+- **Ignoring the non-clinical side.** Ignoring the non-clinical side a large, thinly contested market open to graduates of any discipline.
 - **Answering scenario questions without escalation.** Describing independent heroics scores badly; knowing when to call someone scores well.
-- **Overlooking academic medical centres if you need sponsorship.** Many are cap-exempt, which removes the lottery entirely.
+- **Overlooking academic medical centres.** Many are cap-exempt, which removes the lottery entirely.
 
 ## The non-clinical roles, in detail
 
@@ -231,6 +233,19 @@ Tuition support. Many systems fund further qualifications, which is a real finan
 Commitment terms. Whether a sign-on bonus or residency carries a repayment obligation, and for how long.
 
 Then compare the totals rather than the base, the same discipline that applies to [any offer](/blog/usa-offer-negotiation-new-grad). A hospital paying slightly less with better ratios and a longer orientation is usually the better first year, and the first year is what determines whether you stay in the profession.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -157,11 +157,13 @@ Candidates treat the sector as one employer. It is not, and the differences chan
 
 **The practical instruction:** build a list of fifteen to twenty firms rather than the four everyone names. The assessment style is similar enough that preparation transfers completely, so each additional application costs almost nothing and the smaller firms have far better ratios.
 
+> **Tip:** Practise mental maths and probability under time pressure, out loud. The first round is usually a speed test, and being right slowly is scored the same as being wrong.
+
 ## Common Mistakes
 
-- **Applying in the final autumn.** The main pipeline runs a year earlier through internship conversion.
+- **Applying in the final autumn.** Applying in the final autumn the main pipeline runs a year earlier through internship conversion.
 - **Preparing for the wrong role.** Trader, researcher and developer assessments differ substantially.
-- **Neglecting mental arithmetic.** The most trainable assessed skill and the most commonly skipped.
+- **Neglecting mental arithmetic.** Neglecting mental arithmetic the most trainable assessed skill and the most commonly skipped.
 - **Solving silently.** Reasoning aloud is scored, and silence scores nothing.
 - **Treating rejection as a verdict.** Intakes are tiny and the base rate is overwhelming.
 - **Having no parallel track.** Preparation overlaps substantially with ordinary technical interviews; running both costs little.
@@ -237,6 +239,19 @@ The behavioural conventions here differ from ordinary graduate interviews in way
 **Be precise in language.** This industry is unusually intolerant of vague phrasing. Say what you mean, and if you are approximating, say that you are.
 
 **And treat being wrong as normal.** Everyone is wrong frequently in this work. What is assessed is whether being wrong disrupts your next decision.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [HBCU Recruiting Pipelines in the US - What Actually Exists](/blog/usa-hbcu-recruiting-pipelines)
+- [MBA Internship Recruiting Timeline in the US](/blog/usa-mba-internship-recruiting-timeline)
+- [Spring Recruiting in the US - The Season Most Students Ignore](/blog/usa-second-round-spring-recruiting)
+- [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

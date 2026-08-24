@@ -75,14 +75,29 @@ Track exactly where you stand with each employer across both the autumn and, whe
 
 Revisit your list between the two seasons, adding employers you missed in autumn and removing those where the outcome is already clear, treating spring as a genuinely separate, deliberate campaign rather than an afterthought produces meaningfully better results than simply reapplying to the same autumn list without adjustment.
 
+> **Tip:** Search using the Chinese terms — 秋招 for autumn and 春招 for spring — rather than English translations. Every platform, deadline list and student discussion uses those words, and searching in English surfaces almost none of it.
+
 ## Common Mistakes
 
-- **Assuming a single annual recruiting season, as in many Western markets.** China runs two distinct structured seasons with different characteristics.
-- **Starting preparation in the autumn term itself.** Applications frequently open before the term has properly begun.
-- **Treating spring as a lesser repeat of autumn.** A genuinely different pool and, for some roles, a genuinely different opportunity.
-- **Submitting a generic resume against automated screening at scale.** Language matching the posting matters more here than almost anywhere.
-- **Underestimating group interview formats.** A genuinely different skill from individual interviewing, worth practising specifically.
-- **Applying to only one season.** When eligible for both. A meaningful improvement in odds is available by running both.
+- **Assuming one recruiting season.** Assuming a single annual recruiting season, as in many Western markets. China runs two distinct structured seasons with different characteristics.
+- **Starting prep in the autumn term.** Starting preparation in the autumn term itself. Applications frequently open before the term has properly begun.
+- **Treating spring as a lesser autumn.** Treating spring as a lesser repeat of autumn. A genuinely different pool and, for some roles, a genuinely different opportunity.
+- **A generic resume at scale.** Submitting a generic resume against automated screening at scale. Language matching the posting matters more here than almost anywhere.
+- **Underestimating group interview formats.** Underestimating group interview formats a genuinely different skill from individual interviewing, worth practising specifically.
+- **Applying to only one season.** A meaningful improvement in odds is available by running both.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

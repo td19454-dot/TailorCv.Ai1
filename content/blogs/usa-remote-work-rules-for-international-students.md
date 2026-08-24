@@ -67,14 +67,29 @@ A genuinely different question, and one where general advice is least reliable.
 
 "Would the company support remote work from outside the US, even temporarily?" Ask before assuming, because many cannot, and discovering this after accepting is a real problem.
 
+> **Tip:** Confirm authorisation before your first day of remote work, exactly as you would for an office role. Remote does not make the work informal, and starting early is the most serious avoidable error here.
+
 ## Common Mistakes
 
 - **Assuming remote means unregulated.** Authorization requirements are identical regardless of where the work happens.
-- **Treating unpaid or freelance remote work as not-work.** It is work, and it requires authorization.
-- **Starting before authorization is in place.** The most serious error, and it is not made less serious by the role being remote.
+- **Treating unpaid work as not-work.** Treating unpaid or freelance remote work as not-work. It is work, and it requires authorization.
+- **Starting before authorization is in place.** Starting before authorization is in place the most serious error, and it is not made less serious by the role being remote.
 - **Neglecting reporting obligations.** Employer details must stay current for a remote role exactly as for an in-person one.
-- **Assuming you can simply work from abroad.** For a while. It depends on the employer's legal ability, local law, and your own status.
-- **Reasoning from a forum post.** Instead of asking your international office. The rules are specific and the consequences of getting them wrong are disproportionate.
+- **Assuming you can simply work from abroad.** It depends on the employer's legal ability, local law, and your own status.
+- **Reasoning from a forum post.** The rules are specific and the consequences of getting them wrong are disproportionate.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Teaching Jobs in the US for International Graduates](/blog/usa-teaching-jobs-for-international-graduates)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

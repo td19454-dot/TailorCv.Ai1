@@ -109,14 +109,29 @@ Continue building relationships deliberately well beyond your initial settling-i
 
 Seek feedback proactively from your manager rather than waiting for a formal review cycle, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
 
+> **Tip:** Expect not to know your exact role on day one. Assignment after joining is normal in the conventional system, and reading it as disorganisation rather than design is the fastest way to start off frustrated.
+
 ## Common Mistakes
 
-- **Raising new ideas first in a meeting.** The consensus-building happens before it.
+- **Raising new ideas first in a meeting.** Raising new ideas first in a meeting the consensus-building happens before it.
 - **Using the wrong politeness register.** Basic competence rather than optional courtesy.
 - **Assuming the long-hours stereotype universally.** It varies and it has changed.
 - **Not reporting upward often enough.** Read as insufficient diligence rather than independence.
-- **Expecting to know your role on day one.** Assignment frequently follows training.
+- **Expecting a defined role on day one.** Expecting to know your role on day one. Assignment frequently follows training.
 - **Treating the adjustment as a personal failing.** It is universal and temporary.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Work Visas in Japan for New Graduates](/blog/japan-work-visa-for-graduates)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Is Japanese workplace culture really as hierarchical as its reputation suggests?

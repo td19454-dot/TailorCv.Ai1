@@ -87,20 +87,53 @@ Notice how busy a specific stand is and calibrate your approach accordingly, a s
 
 Watch for signals that a recruiter is winding down a conversation, and end it gracefully rather than continuing to talk past the natural close, recruiters remember candidates who read social cues well, this is itself a small signal about how you would operate in a professional workplace setting.
 
+## Do's and Don'ts
+
+### Do
+
+- Apply online before you attend
+- Research a shortlist of employers first
+- Go alone
+- Ask something specific enough that the answer is useful
+- Get a name and follow up within a day
+
+### Don't
+
+- Turn up and browse with no preparation
+- Collect brochures from every stand
+- Stand in a group with friends
+- Ask what the company does
+- Leave without any way to follow up
+
+> **Tip:** Go alone and apply online before you attend. Standing in a group of friends is the single most common way students waste a careers fair.
+
 ## Common Mistakes
 
 - **Not applying online before the fair.** Most large employers use it to meet candidates already in their system.
 - **Visiting forty stands.** Ten to fifteen deliberate conversations beats a bag of merchandise.
 - **Waiting until December to apply.** Rolling review means early applications meet a smaller pile.
 - **Skipping presentations and skills sessions.** Better value and far less contested than the fair.
-- **Not getting a name.** Without one there is no follow-up, and the follow-up is what converts.
-- **Going with friends and standing in a group.** Recruiters cannot tell you apart.
+- **Not getting a name.** Not getting a name without one there is no follow-up, and the follow-up is what converts.
+- **Standing in a group with friends.** Going with friends and standing in a group. Recruiters cannot tell you apart.
 
 ## Making the fair worthwhile even without your target employers present
 
 **If your specific target employers are not attending your institution's fair**, use the event to practise your pitch and gather general intelligence about the recruiting landscape rather than skipping it entirely, conversations with employers outside your primary targets still build genuine interview and networking skill, transferable to your actual target applications.
 
 **Ask attending employers**, even ones outside your immediate interest, whether they know of hiring happening at companies you are specifically targeting, industry professionals often have broader networks and awareness than a general search would surface.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

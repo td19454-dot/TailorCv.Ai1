@@ -71,13 +71,28 @@ Common, and the response is strategic rather than simply working harder.
 
 **And take an adjacent first role if that is what is available.** Two years at a mid-sized employer makes you a lateral candidate at organisations that would not have looked at you as a graduate, which is how a great many people actually get there — the path into a top-tier employer for someone who missed both structured rounds is very often lateral hiring two or three years later, not a repeat attempt at the new-graduate process itself.
 
+> **Tip:** Treat the penultimate-year summer round as the main event, not the full-time round. At the most structured employers the graduate class is largely filled before full-time recruiting even opens.
+
 ## Common Mistakes
 
-- **Treating the full-time round as an equal second chance.** At many employers it is a much smaller pool.
-- **Not applying to summer internships in the penultimate year.** The decisive round for the most structured employers.
+- **Treating full-time as an equal shot.** Treating the full-time round as an equal second chance. At many employers it is a much smaller pool.
+- **Skipping penultimate-year internships.** Not applying to summer internships in the penultimate year. The decisive round for the most structured employers.
 - **Applying only to employers with heavy conversion.** Their remaining seats are the most contested in the market.
-- **Waiting for the autumn full-time round.** After a quiet summer round. The spring and mid-sized channels are open much earlier.
-- **Assuming an internship else.** Where does not help. Any relevant internship materially improves a full-time application, including at a different employer.
+- **Waiting for the autumn full-time round.** The spring and mid-sized channels are open much earlier.
+- **Assuming an internship else.** Any relevant internship materially improves a full-time application, including at a different employer.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [HBCU Recruiting Pipelines in the US - What Actually Exists](/blog/usa-hbcu-recruiting-pipelines)
+- [MBA Internship Recruiting Timeline in the US](/blog/usa-mba-internship-recruiting-timeline)
+- [Quant and Trading Campus Recruiting in the US - How the Process Runs](/blog/usa-quant-trading-campus-recruiting)
+- [Spring Recruiting in the US - The Season Most Students Ignore](/blog/usa-second-round-spring-recruiting)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -251,14 +251,29 @@ Benefits are generally strong — health coverage and a pension scheme — and t
 
 And cost of living dominates. A higher schedule in an expensive metropolitan area can be worse in real terms than a lower one an hour away. Compare against rent for somewhere you would actually live, exactly as with [any relocation decision](/blog/usa-relocation-and-cost-of-living-first-job).
 
+> **Tip:** Check your target state's specific certification and visa sponsorship rules before applying. Teaching is licensed state by state, and requirements differ enough that a national answer is useless.
+
 ## Common Mistakes
 
 - **Assuming you need an education degree.** Every state has an alternative route, and shortage subjects have the shortest.
 - **Ignoring which state.** Certification is state-specific and the sequence depends on where you are aiming.
 - **Starting certification late.** It is the binding constraint on when you can be hired.
-- **Applying on the corporate autumn calendar.** The season is spring to summer.
+- **Applying on the corporate autumn calendar.** Applying on the corporate autumn calendar the season is spring to summer.
 - **Not asking about sponsorship early.** District capacity varies enormously and the answer is knowable in one question.
 - **Overlooking the non-teaching sector.** Higher education and education technology hire graduates without certification, and universities are frequently cap-exempt.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Remote Work Rules for International Students in the US](/blog/usa-remote-work-rules-for-international-students)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Can I teach at university level instead?
