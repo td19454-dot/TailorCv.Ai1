@@ -23,9 +23,9 @@ showcase: none
 
 **Sector is a major factor, and probably the single largest one.** Technology and finance generally sit above the broader graduate median, particularly at larger, well-known employers within [these sectors](/blog/canada-tech-jobs-for-graduates), retail, non-profit and some public sector roles generally sit below it, though [public sector total compensation including benefits](/blog/canada-government-jobs-for-students) often narrows this gap considerably.
 
-**City matters, and the real comparison is more complex than the headline figure suggests.** Toronto and Vancouver salaries are generally higher than in most other Canadian cities, and cost of living, particularly housing, is correspondingly and substantially higher, the [major city job markets guide](/blog/canada-major-city-job-markets) covers how this plays out across the country in more depth.
+**City matters, and the real comparison is more complex than the headline figure suggests.** Toronto and Vancouver salaries are generally higher than in most other Canadian cities, and cost of living, particularly housing, is correspondingly and substantially higher, the [major city job markets guide](/blog/canada-major-city-job-markets) covers how this plays out across the country in more depth, including specific smaller cities where a lower headline salary can still translate into a stronger real financial position.
 
-**Employer size and structure within a sector also matters.** The largest, most recognisable employers often pay at or near the top of a sector's range, smaller and mid-sized employers in the same sector often pay somewhat less with materially lower competition for the role.
+**Employer size and structure within a sector also matters.** The largest, most recognisable employers often pay at or near the top of a sector's range, smaller and mid-sized employers in the same sector often pay somewhat less with materially lower competition for the role — a real trade-off worth weighing deliberately rather than defaulting to the highest headline number without considering how contested that specific seat actually is.
 
 ## Researching a realistic figure
 

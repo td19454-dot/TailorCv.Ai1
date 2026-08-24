@@ -49,7 +49,7 @@ showcase: none
 
 **Video or phone interview**, followed by an assessment centre or in-person interview round for many structured programs, involving case exercises, group work and individual interviews. Assessment centres in particular reward preparation that's specific to the format — practicing a group case exercise with peers beforehand, timing yourself on a written case, and rehearsing how you'd present a recommendation clearly under time pressure all transfer directly, since the exercises themselves are usually a variation on a small number of well-established formats rather than something genuinely novel each time.
 
-**For technology roles specifically, expect a technical interview process closely following [standard software engineering interview convention](/blog/usa-technical-interview-newgrad-prep)**, algorithmic problem solving and system discussion, rather than the case-and-fit format used for front-office roles.
+**For technology roles specifically, expect a technical interview process closely following [standard software engineering interview convention](/blog/usa-technical-interview-newgrad-prep)**, algorithmic problem solving and system discussion, rather than the case-and-fit format used for front-office roles. This distinction matters practically: preparing coding-interview practice for a technology-track application and case-interview practice for a front-office one, rather than one generic preparation plan for "the bank," is what separates candidates who walk in ready from those caught off guard by a format they didn't expect.
 
 ## Work authorization
 

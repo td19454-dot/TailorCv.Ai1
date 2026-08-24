@@ -13,7 +13,7 @@ showcase: none
 
 ## Key Takeaways
 
-- French proficiency is a genuine and often underweighted advantage in the Canadian job market, particularly for federal government roles and positions in Quebec and parts of other provinces.
+- French proficiency is a genuine and often underweighted advantage in the Canadian job market, particularly for federal government roles and positions in Quebec, New Brunswick, and parts of other provinces.
 - The federal government specifically designates many positions as bilingual, and genuine bilingual candidates access a meaningfully wider range of these roles.
 - French ability can add meaningful points within certain immigration pathways, worth understanding if permanent residence is a longer-term goal.
 - The value of French varies enormously by province and sector, worth assessing honestly against your specific target career rather than assuming uniform value nationally.
@@ -21,13 +21,13 @@ showcase: none
 
 ## Where French genuinely matters
 
-**Quebec's job market operates substantially in French, and this is backed by real, specific legislation, not just custom.** The Charter of the French Language (Bill 101), significantly updated by Bill 96 in recent years, requires businesses of a certain size (generally 25 or more employees, a threshold lowered from the previous 50 under Bill 96) to ensure French is the normal and habitual language of work — meaning internal communications, job postings, and often software and tools used in the workplace must be available in French. This is why "meaningful French proficiency" in Quebec isn't just cultural advice, it's frequently a genuine operational requirement built into how a Quebec employer of any real size is legally required to function.
+**Quebec's job market operates substantially in French, and this is backed by real, specific legislation, not merely informal custom or general politeness.** The Charter of the French Language (Bill 101), significantly updated by Bill 96 in recent years, requires businesses of a certain size (generally 25 or more employees, a threshold lowered from the previous 50 under Bill 96) to ensure French is the normal and habitual language of work — meaning internal communications, job postings, and often software and tools used in the workplace must be available in French. This is why "meaningful French proficiency" in Quebec isn't just cultural advice, it's frequently a genuine operational requirement built into how a Quebec employer of any real size is legally required to function.
 
 **New Brunswick is Canada's only officially bilingual province**, with a substantial Francophone population (largely Acadian) concentrated particularly in the north and east of the province — a genuinely distinct labour market from the rest of English Canada, worth researching specifically if bilingual work outside Quebec interests you.
 
 **The federal government designates a substantial number of positions as bilingual**, requiring demonstrated proficiency in both English and French, [genuine bilingual candidates access a meaningfully wider range of federal roles](/blog/canada-government-jobs-for-students) than English-only candidates, this is a real and often underappreciated advantage for anyone targeting federal public service specifically.
 
-**Parts of other provinces, particularly regions with significant Francophone communities, offer additional opportunity for bilingual candidates**, though this varies considerably by specific region and is worth researching directly for your target location.
+**Parts of other provinces, particularly regions with significant Francophone communities, offer additional opportunity for bilingual candidates**, though this varies considerably by specific region and is worth researching directly for your target location — a general national average tells you almost nothing useful about a specific city or region's actual demand for bilingual skills, so treat any broad national figure as a starting point for further research, not a conclusion in itself.
 
 **Certain sectors and specific employers, particularly those operating nationally or with significant Quebec operations, genuinely value bilingual candidates even outside Quebec itself**, since serving customers or coordinating with colleagues across both language markets is a genuine operational need for a company doing business coast to coast.
 
