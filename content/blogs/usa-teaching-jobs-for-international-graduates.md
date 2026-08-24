@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/usa-teaching-jobs-for-international-graduates.png
 slug: usa-teaching-jobs-for-international-graduates
 keywords: teaching jobs usa international, alternative teacher certification, teach in america visa, esl teaching jobs usa, j1 teacher exchange
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

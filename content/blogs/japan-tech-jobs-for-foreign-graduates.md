@@ -35,7 +35,7 @@ The [conventional graduate system](/blog/japan-new-grad-shinsotsu-hiring-explain
 
 ## The employer groups
 
-**Japanese technology companies with international teams.** A growing number operate engineering in English or bilingually, hire internationally as routine, and have established processes for foreign staff. Frequently the best combination of scale, stability and accessibility.
+**Japanese technology companies with international teams.** A growing number operate engineering in English or bilingually, hire internationally as routine, and have established processes for foreign staff. Frequently the best combination of scale, stability and accessibility. **Rakuten is the most concrete example of this** — the company famously mandated "Englishnization," making English the official in-house working language across the company starting in 2010, a policy still frequently cited as the reason its engineering org is unusually accessible to non-Japanese-speaking hires. **Mercari, LINE, and SmartNews** are other well-known names worth researching directly for their specific current language policy and international hiring track record, rather than assuming every large Japanese tech brand operates the same way.
 
 **Foreign technology companies with Japan offices.** Operating in English by default, following their home market's hiring conventions and timelines, and generally straightforward for a foreign candidate. Covered further in the [English-speaking jobs guide](/blog/japan-english-speaking-jobs-guide).
 
@@ -75,6 +75,26 @@ The [conventional graduate system](/blog/japan-new-grad-shinsotsu-hiring-explain
 
 **A specific reason for Japan.** Asked of every foreign candidate, and a vague answer reads poorly. A genuine reason — the industry, the language, family ties, an intention to build a career there — is entirely sufficient.
 
+## Where the accessible roles genuinely are
+
+**International technology companies with a genuine Japan presence** frequently offer roles more accessible to candidates without advanced Japanese ability, particularly on teams operating primarily in English, worth researching the specific team's actual working language directly rather than assuming based on the company's general international profile, exactly [the same caution that applies to assessing language requirements at any international company](/blog/japan-japanese-language-requirements-jobs).
+
+**Domestic Japanese technology companies vary considerably**, some larger ones with genuine international operations have specific teams or divisions more accessible to non-Japanese speakers, though the default assumption for most domestic technology employers remains that meaningful Japanese ability is genuinely required.
+
+**Startups with international founders or investors** sometimes operate with English as a working language, worth researching specific companies directly.
+
+## What the technical interview process looks like
+
+**Algorithmic coding assessment and technical interviews at internationally-oriented companies closely follow international convention**, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers substantially, since underlying question formats are broadly international.
+
+**Domestic companies may incorporate elements of the [broader shinsotsu hiring process](/blog/japan-new-grad-shinsotsu-hiring-explained)**, including aptitude testing and multiple structured interview rounds, alongside technical assessment, worth understanding which type of process a specific employer runs before preparing.
+
+## Building a portfolio that works here
+
+**A real, deployed project remains the strongest single credential a technical graduate can bring, regardless of country**, exactly [the same principle that holds in every major technology market](/blog/fresher-resume-projects-that-get-interviews), something you built and can discuss in depth outweighs a longer list of completed coursework considerably.
+
+**For roles at internationally-oriented companies, presenting this work in English with clear, specific documentation is generally the safer default**, for roles at domestic companies where Japanese ability is genuinely expected, consider whether a Japanese-language version of your portfolio materials strengthens your application.
+
 ## Common Mistakes
 
 - **Assuming the conventional cycle applies.** Much of technology hires year-round.
@@ -83,6 +103,27 @@ The [conventional graduate system](/blog/japan-new-grad-shinsotsu-hiring-explain
 - **Not identifying the employer type.** Process, language and timeline all follow from it.
 - **Overstating language ability.** It surfaces immediately in interview.
 - **Having no answer to why Japan.** Asked universally and easy to prepare.
+
+### Do I need advanced Japanese to work in tech in Japan?
+
+Depends genuinely on the specific employer and team, some roles at international companies remain accessible with limited Japanese, most domestic technology employers generally expect meaningful ability, research the specific team's actual working language directly.
+
+### Are technical interviews similar to those in other countries?
+
+At internationally-oriented companies, largely yes, standard algorithmic interview preparation transfers substantially, domestic companies may incorporate additional elements from the broader local hiring process.
+
+### Is Tokyo the only city with real tech opportunity?
+
+The largest concentration is generally in Tokyo, though opportunity exists elsewhere, worth researching your specific target sector's actual footprint rather than assuming a single city holds all opportunity.
+
+### Should I target international or domestic tech companies?
+
+Depends on your language ability and career goals, international companies are generally more accessible without advanced Japanese, domestic companies offer a different, often longer-term career path within Japan's traditional employment structure.
+## Building a network within the local tech community
+
+**Attend technology meetups and community events, both those conducted in English and, as your ability develops, those conducted in Japanese**, this is a genuinely useful way to learn about specific companies' actual working environments beyond what any official recruiting material presents.
+
+**Connect with other foreign engineers already working in Japan**, their direct, first-hand experience navigating this specific job market is considerably more useful than general secondhand advice, and most are genuinely willing to share what they learned going through the same process themselves.
 
 ## Frequently Asked Questions
 

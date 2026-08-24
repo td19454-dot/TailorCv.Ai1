@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/usa-second-round-spring-recruiting.png
 slug: usa-second-round-spring-recruiting
 keywords: spring recruiting, off cycle internship, second round graduate hiring, spring job search students, off cycle full time offer
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

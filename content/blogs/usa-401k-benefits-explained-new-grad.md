@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-401k-benefits-explained-new-grad.png
 slug: usa-401k-benefits-explained-new-grad
 keywords: 401k explained new grad, employer match retirement, new job benefits enrollment, health insurance new grad, hsa fsa explained
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

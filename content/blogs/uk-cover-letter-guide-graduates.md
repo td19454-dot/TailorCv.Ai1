@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-cover-letter-guide-graduates.png
 slug: uk-cover-letter-guide-graduates
 keywords: uk cover letter graduate, covering letter format uk, why this company answer, graduate scheme cover letter, uk application letter
-showcase: portfolio
+showcase: resume
 ---
 
 ## Key Takeaways
@@ -79,6 +79,12 @@ showcase: portfolio
 
 **Proofread properly.** A typo in a one-page document that is explicitly a writing sample is costly.
 
+## Common structural errors beyond the content itself
+
+**Using an inconsistent format from your CV**, different fonts, header styles or date formats between the two documents reads as careless, since they are generally reviewed together as a single application package.
+
+**Ending with an overly casual or, conversely, an excessively formal sign-off relative to the rest of the letter's tone**, aim for consistency in register throughout the entire document, a measured, professional tone maintained end to end reads considerably better than a mismatch between an informal body and a stiffly formal closing, or the reverse.
+
 ## Common Mistakes
 
 - **A generic "why this employer" paragraph.** The most common cause of early rejection.
@@ -87,6 +93,12 @@ showcase: portfolio
 - **Guessing a name.** A wrong name is worse than a general salutation.
 - **Neglecting the form's written questions for large schemes.** They are the letter, and they are scored.
 - **Reusing the letter unchanged.** The evidence can be reused; the reasoning cannot.
+
+## Adjusting length and depth for different application types
+
+**A speculative application to an employer with no advertised vacancy generally warrants a somewhat longer, more thorough letter than an application against a specific stated posting**, since you are doing more work to explain why they should consider you at all, absent a specific role description to respond to directly.
+
+**An application through a referral can generally be somewhat shorter**, since the referral itself has already done some of the work of establishing your credibility, the letter's job here shifts toward giving the reader useful context for a name they will recognise, rather than establishing your case from nothing.
 
 ## Frequently Asked Questions
 

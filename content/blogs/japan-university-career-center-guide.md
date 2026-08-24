@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/japan-university-career-center-guide.png
 slug: japan-university-career-center-guide
 keywords: japan university career center, kyaria senta, japanese university job support, international student career support japan, campus recruiting japan
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -87,6 +87,26 @@ showcase: portfolio
 
 **And they cannot replace your own network.** Alumni introductions are a starting point; what converts them is [what you do afterwards](/blog/usa-cold-email-networking-students).
 
+## What these offices actually provide
+
+**Structured guidance specifically on the [broader shinsotsu hiring process](/blog/japan-new-grad-shinsotsu-hiring-explained)**, including how to prepare application documents like the [rirekisho](/blog/japan-resume-rirekisho-guide) and [shokumu keirekisho](/blog/japan-shokumu-keirekisho-guide) properly, worth using this guidance seriously, since these offices are specifically experienced with the local system's particular conventions.
+
+**Direct relationships with specific employers**, some career centres maintain established connections with companies who have hired from that institution previously, worth asking directly which employers have a track record with your specific university.
+
+**Mock interview practice**, genuinely valuable given the [distinct local interview conventions](/blog/japan-mensetsu-interview-questions-guide), worth using this resource actively rather than assuming general interview skills transfer without adjustment.
+
+## For international students specifically
+
+**Ask directly whether the office has specific experience and resources for international students**, some institutions have dedicated support for this population, understanding what genuinely exists at your specific institution matters more than a general assumption about what career centres typically offer.
+
+**Ask specifically which employers at your institution have a track record of hiring international students**, this is genuinely useful, targeted information that a general search will not surface as easily.
+
+## Building a productive relationship with your career centre over time
+
+**Visit early in your studies, not only when you are ready to begin actively applying**, understanding what resources and relationships exist well in advance lets you plan your own preparation, including any language study, around realistic timelines.
+
+**Return regularly rather than treating a single visit as sufficient**, staff genuinely get to know students who engage consistently, and this familiarity can translate into more specific, useful guidance and introductions over time.
+
 ## Common Mistakes
 
 - **Arriving in the final year.** The system is built around engagement from the penultimate spring.
@@ -95,6 +115,27 @@ showcase: portfolio
 - **Not asking for alumni employment data.** It converts a vague search into a target list.
 - **Assuming the main service covers immigration.** Usually a separate function.
 - **Using it as the only channel.** It is one of several, alongside direct applications and outreach.
+
+### Are university career centres actually useful for the Japanese job hunting process?
+
+Yes, genuinely, they are specifically experienced with local conventions around application documents and interview format, worth using this resource actively rather than navigating the process entirely independently.
+
+### Do career centres have specific support for international students?
+
+Varies by institution, worth asking directly whether dedicated support and resources exist for your specific situation.
+
+### Should I use the mock interview service?
+
+Yes, genuinely valuable given how distinct local interview conventions are from what many international students may be more familiar with.
+
+### How do I find out which employers have a relationship with my specific university?
+
+Ask the career centre directly, this is genuinely useful information that is not easily surfaced through a general independent search.
+## Making the most of limited appointment availability
+
+**Book appointments early, particularly during the busiest periods of the hiring cycle when demand for career centre time is highest**, waiting until the last moment often means limited or no availability precisely when you most need guidance.
+
+**Prepare specific questions before each appointment, rather than arriving with an open-ended general request for help**, this lets you extract considerably more value from a limited time slot, since staff can address your specific situation directly rather than starting from general advice.
 
 ## Frequently Asked Questions
 

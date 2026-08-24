@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-accountancy-graduate-routes.png
 slug: uk-accountancy-graduate-routes
 keywords: accountancy graduate scheme uk, aca acca cima difference, big four graduate jobs, audit graduate scheme, accounting training contract
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -73,6 +73,12 @@ showcase: portfolio
 
 **Commercial awareness** is assessed, though generally less heavily than in [law](/blog/uk-law-training-contract-guide) or investment banking.
 
+## Choosing between the qualification routes with your specific goals in mind
+
+**If you are genuinely unsure whether you want a long-term practice career or eventually intend to move into industry finance, discuss this openly with prospective employers during the application process**, most firms have real experience advising candidates who are weighing exactly this choice, and their perspective on how each route has served people with similar goals is genuinely useful.
+
+**Research not just the immediate training contract but what people who completed a specific firm's programme several years ago are now doing**, professional networking platforms make this genuinely researchable, a firm whose alumni have gone on to strong, varied careers signals something real about the quality of training received.
+
 ## Common Mistakes
 
 - **Assuming you need an accounting degree.** Firms recruit across disciplines deliberately.
@@ -81,6 +87,12 @@ showcase: portfolio
 - **Underestimating the examination load.** Working and studying simultaneously is genuinely demanding.
 - **Neglecting the online tests.** An early filter, and trainable.
 - **Applying late.** Autumn deadlines with rolling review at many firms.
+
+## Balancing study and work during the training contract
+
+**The combination of full-time work and professional examination study is genuinely demanding, worth building realistic expectations about this before starting rather than being caught off guard partway through.**
+
+**Ask current trainees directly how they actually structure their study time around work commitments**, and what support the specific firm provides beyond the formal study leave allocation, this practical detail varies meaningfully between firms and matters considerably to your actual day-to-day experience during the contract.
 
 ## Frequently Asked Questions
 

@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-milkround-and-careers-fairs.png
 slug: uk-milkround-and-careers-fairs
 keywords: uk milkround, university careers fair uk, graduate recruitment events, campus recruitment uk, careers fair tips uk
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -81,6 +81,12 @@ showcase: portfolio
 
 **One follow-up, then stop.** This is the step that converts, and it is skipped by most of the room, which is exactly why it works.
 
+## Reading the room at each specific stand
+
+**Notice how busy a specific stand is and calibrate your approach accordingly**, a stand with a long queue is not the moment for an extended conversation, a brief, well-prepared opening and a clear ask for a follow-up route is more effective than trying to have a full discussion while others wait.
+
+**Watch for signals that a recruiter is winding down a conversation, and end it gracefully rather than continuing to talk past the natural close**, recruiters remember candidates who read social cues well, this is itself a small signal about how you would operate in a professional workplace setting.
+
 ## Common Mistakes
 
 - **Not applying online before the fair.** Most large employers use it to meet candidates already in their system.
@@ -89,6 +95,12 @@ showcase: portfolio
 - **Skipping presentations and skills sessions.** Better value and far less contested than the fair.
 - **Not getting a name.** Without one there is no follow-up, and the follow-up is what converts.
 - **Going with friends and standing in a group.** Recruiters cannot tell you apart.
+
+## Making the fair worthwhile even without your target employers present
+
+**If your specific target employers are not attending your institution's fair, use the event to practise your pitch and gather general intelligence about the recruiting landscape rather than skipping it entirely**, conversations with employers outside your primary targets still build genuine interview and networking skill, transferable to your actual target applications.
+
+**Ask attending employers, even ones outside your immediate interest, whether they know of hiring happening at companies you are specifically targeting**, industry professionals often have broader networks and awareness than a general search would surface.
 
 ## Frequently Asked Questions
 

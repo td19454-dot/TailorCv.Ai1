@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-background-check-what-employers-see.png
 slug: usa-background-check-what-employers-see
 keywords: background check new job, employment verification usa, education verification, pre employment screening, offer contingent background check
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -23,17 +23,17 @@ showcase: portfolio
 
 **Identity.** That you are who you say you are, usually via identification documents and a social security number trace.
 
-**Employment history.** Employer names, job titles and dates. Frequently confirmed through the previous employer's HR or a third-party verification service. Note what is generally *not* included: most former employers confirm dates and title only, as a matter of policy, rather than discussing performance.
+**Employment history.** Employer names, job titles and dates. Frequently confirmed through the previous employer's HR or a third-party verification service — HireRight, Sterling, and Checkr are among the largest and most commonly used by employers, and their reports are what you're entitled to receive a copy of under the FCRA if an adverse decision is being considered. Note what is generally *not* included: most former employers confirm dates and title only, as a matter of policy, rather than discussing performance.
 
 **Education.** Institution, degree, dates, and sometimes GPA. Verified directly with the institution or through a clearinghouse service.
 
-**Criminal records**, where legally permitted. Rules vary considerably by state and by role, and some jurisdictions restrict when this can be asked or considered.
+**Criminal records**, where legally permitted. Rules vary considerably by state and by role. Many states and cities have adopted "Ban the Box" laws, which restrict employers from asking about criminal history on an initial application and require the question to wait until later in the process (often after a conditional offer) — worth knowing this term exists, since it's the actual legal framework behind why some applications simply don't ask the question at all.
 
-**Credit history**, only for a narrow set of roles — typically those involving financial responsibility — and restricted in several states.
+**Credit history**, only for a narrow set of roles — typically those involving financial responsibility, like handling money directly or having signing authority. Several states, including California, Colorado, and Illinois, restrict or largely prohibit employment credit checks outright except for a defined list of qualifying roles, so a request for credit history on a role that doesn't obviously involve financial responsibility is worth asking about directly rather than assuming it's standard practice everywhere.
 
-**Professional licences**, for regulated roles, confirmed with the issuing body.
+**Professional licences**, for regulated roles, confirmed directly with the issuing state board or licensing body rather than taken on your word.
 
-**References**, where the employer chooses to contact them, which is a separate exercise from the formal check.
+**References**, where the employer chooses to contact them, which is a separate exercise from the formal check and generally not something a screening vendor handles on the employer's behalf.
 
 **What is generally not part of a standard check:** your social media, your personal life, your reasons for leaving a previous job, or anything the employer would need separate consent and a specific reason to examine.
 
@@ -69,7 +69,7 @@ This is the part new graduates misunderstand, and it is the single most conseque
 
 **Keep the explanation short.** One or two sentences, no defensiveness, no elaborate narrative. Long explanations invite scrutiny that a brief factual one closes.
 
-**Know your rights.** You are generally entitled to be told a check is being conducted, to give consent, and — if an adverse decision is being considered based on the report — to receive a copy and have an opportunity to dispute inaccurate information before a final decision is made.
+**Know your rights — they come from a specific federal law.** The Fair Credit Reporting Act (FCRA) is what actually grants the protections described here: you must be told a background check is being conducted and give written consent before it happens, and if the employer is considering an adverse decision based on the report, they must give you a copy of it and a real opportunity to dispute inaccurate information before making a final decision — not after. Knowing the law's name matters practically: if an employer skips these steps, that's a real, specifically named legal violation you can point to, not just an unfair-feeling process.
 
 **Errors do happen.** Records are mismatched, names are confused, dates are recorded wrong. If a report contains something you know to be incorrect, say so promptly and provide documentation.
 
@@ -119,3 +119,7 @@ Not as part of a standard formal background check. Some hiring managers look inf
 ### What if the report contains an error?
 
 You generally have the right to receive a copy and dispute inaccurate information before a final adverse decision. Raise it promptly with documentation.
+
+### What law actually gives me these rights?
+
+The Fair Credit Reporting Act (FCRA) — it's the federal law requiring consent before a check, disclosure of the report, and a real chance to dispute errors before an adverse decision is finalized. Worth knowing the name if you ever need to point to it directly.

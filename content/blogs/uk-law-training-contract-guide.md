@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-law-training-contract-guide.png
 slug: uk-law-training-contract-guide
 keywords: training contract application, sqe route explained, vacation scheme law, qualifying as a solicitor uk, law firm graduate recruitment
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -83,6 +83,12 @@ showcase: portfolio
 
 **Check your [CV](/blog/uk-cv-format-for-students) parses and [tailor each application](/blog/how-to-tailor-resume-for-every-job).**
 
+## Handling the long gap between application and start date
+
+**Given how far in advance training contract applications open relative to the eventual start date, plan realistically for what you will do in the intervening period**, further study, other relevant work experience, or simply completing your degree properly, this gap is normal and expected rather than something to feel anxious about.
+
+**Some firms offer a bridging arrangement or scholarship covering the period between accepting an offer and beginning the contract, particularly relevant if your qualifying route involves further study first**, worth understanding exactly what your specific firm offers during this period.
+
 ## Common Mistakes
 
 - **Discovering the timeline too late.** Applications open around two years ahead.
@@ -91,6 +97,12 @@ showcase: portfolio
 - **Generic "why this firm" answers.** The deciding question at every stage.
 - **Applying only to the best-known firms.** Regional and mid-market practices are less contested and frequently excellent.
 - **Treating a non-law degree as a problem.** Firms recruit non-law graduates deliberately.
+
+## Choosing between practice areas once you begin
+
+**Many training contracts include rotations across different practice areas before you specialise**, use this period deliberately to genuinely explore rather than assuming you already know which area suits you best based on limited prior exposure.
+
+**Ask qualified solicitors in different practice areas directly about their actual day-to-day work and what they find both rewarding and genuinely difficult about their specific specialism**, this produces a considerably more accurate picture than general assumptions about what a particular practice area involves.
 
 ## Frequently Asked Questions
 
