@@ -113,14 +113,29 @@ Building at least conversational Japanese over time, even in a role that does no
 
 **Neither approach is universally correct**, an English-primary role provides immediate entry and income while you build language ability at a sustainable pace, while upfront language investment opens the considerably larger domestic market sooner, worth choosing deliberately based on your own genuine priorities and financial situation rather than defaulting to either without consideration.
 
+> **Tip:** Search the bilingual boards by name — Daijob, CareerCross, Japan Dev, TokyoDev — rather than general job sites. English-operating roles concentrate there, and a generic search buries them under thousands of Japanese-language listings.
+
 ## Common Mistakes
 
 - **Assuming no English-conducted market exists.** It does, and it is substantial in specific segments.
-- **Assuming it is as large.** As the whole economy. It is concentrated and it is a subset.
-- **Expecting no Japanese to be needed at all.** Some is frequently useful even in English-operating roles.
-- **Looking only in Tokyo.** Without knowing that is where it concentrates. Or expecting the same density elsewhere.
+- **Assuming it is as large.** It is concentrated and it is a subset.
+- **Expecting zero Japanese.** Expecting no Japanese to be needed at all. Some is frequently useful even in English-operating roles.
+- **Looking only in Tokyo.** Looking only in Tokyo without knowing that is where it concentrates or expecting the same density elsewhere.
 - **Treating English-only as a permanent strategy.** Progression frequently favours bilingual staff.
-- **Not using the bilingual job boards and agencies.** They are the main channel for this market specifically.
+- **Skipping bilingual job boards.** Not using the bilingual job boards and agencies. They are the main channel for this market specifically.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+- [Shūkatsu - The Japanese Job Hunting Timeline](/blog/japan-job-hunting-shukatsu-timeline)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Are there really jobs in Japan where I do not need Japanese at all?

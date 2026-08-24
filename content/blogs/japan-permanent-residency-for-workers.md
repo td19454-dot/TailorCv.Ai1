@@ -111,6 +111,8 @@ Reassess your own position periodically against current published criteria, rath
 
 **Periodically review current official eligibility criteria**, since this is genuinely the kind of policy area that is reviewed and can change, an assumption formed several years ago may no longer accurately reflect current requirements by the time you are actually ready to apply.
 
+> **Tip:** Run the 高度人材 points calculator now, not in year eight. If you score 70 the residence requirement drops from 10 years to 3, and most people who qualify had no idea they were close.
+
 ## Common Mistakes
 
 - **Not knowing the points route exists.** Substantially faster for those who qualify.
@@ -119,6 +121,19 @@ Reassess your own position periodically against current published criteria, rath
 - **Confusing permanent residence with citizenship.** Different processes, different consequences.
 - **Not keeping documentation.** Certificates are difficult to reconstruct years later.
 - **Relying on outdated figures.** Thresholds are revised; check the official source.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### How long do I need to work in Japan before applying for permanent residency?

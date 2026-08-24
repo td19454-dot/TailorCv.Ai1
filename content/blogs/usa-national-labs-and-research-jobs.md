@@ -171,12 +171,14 @@ Why it is worth taking seriously either way. Some of the best-resourced technica
 
 A reasonable approach: visit before accepting if you can, ask current staff what people do outside work, and ask specifically what happens to partners looking for employment. Labs are used to that question and the good ones have answers.
 
+> **Tip:** Email a specific researcher whose work you have actually read, rather than applying only through the portal. Lab hiring runs on individual principal investigators far more than on central recruiting.
+
 ## Common Mistakes
 
 - **Assuming they only hire physicists.** Software, data, engineering and technical operations roles vastly outnumber the stereotype.
 - **Assuming citizenship is always required.** Many open-science positions have no such requirement and labs employ many foreign nationals.
-- **Not asking about cap-exempt status.** For an international graduate this can be the single most valuable fact about the employer.
-- **Applying in spring for a summer internship.** The programmes generally open in autumn or early winter.
+- **Not asking about cap-exempt status.** Not asking about cap-exempt status for an international graduate this can be the single most valuable fact about the employer.
+- **Applying in spring for a summer internship.** Applying in spring for a summer internship the programmes generally open in autumn or early winter.
 - **Sending a generic application.** Naming the division, the facility or the researcher changes the outcome materially.
 - **Ignoring location too quickly.** Some of the best-resourced technical work in the country happens in places graduates dismiss without looking.
 
@@ -234,6 +236,19 @@ And on the thing people underweight: for an international graduate, the possibil
 - [ ] Confirm what any foreign national access process involves and how long it takes
 - [ ] Ask about relocation, since many labs are outside major cities
 - [ ] Compare the total package rather than the base, since benefits and stability are a real part of the value
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

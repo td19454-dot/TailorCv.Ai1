@@ -220,14 +220,29 @@ Negotiate the same way anyone does. Signing bonus, start date and level are the 
 
 And weigh the whole package. Equity vesting, benefits, and — if you are on a work authorisation clock — whether the employer can support your longer-term status, which is worth more than a salary difference.
 
+> **Tip:** Rewrite your CV as a two-page resume framed around problems solved, not publications listed. Industry reviewers read for capability, and a publication list does not communicate it.
+
 ## Common Mistakes
 
 - **Sending an academic CV.** Six pages of publications is not what an industry screen reads.
 - **Describing methods instead of outcomes.** Nobody outside your field knows what the method is.
-- **Skipping behavioural preparation.** The round PhDs most reliably lose, because academic hiring never tested it.
+- **Skipping behavioural preparation.** Skipping behavioural preparation the round PhDs most reliably lose, because academic hiring never tested it.
 - **Assuming technical interviews will reflect your expertise.** They test a standardised bar that needs its own practice.
 - **Answering "why leave academia" with grievance.** Understandable, and it costs offers.
 - **Waiting until the thesis is submitted.** Industry timelines are weeks, not an annual cycle.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Do I need to finish the PhD?

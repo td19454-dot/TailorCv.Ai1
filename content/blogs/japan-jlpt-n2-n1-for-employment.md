@@ -93,14 +93,29 @@ Build toward the specific level your realistic target roles actually require, ra
 
 **If you are between two certified levels in your actual preparation**, consider whether sitting the higher one, even with some genuine risk of a lower initial pass, positions you better than a comfortable pass at the lower one, this depends on your specific timeline and how much a marginal difference in level would genuinely affect the specific roles you are targeting.
 
+> **Tip:** Check the test date against your application deadlines before booking. JLPT runs twice a year and results take about two months, so a certificate arriving after the deadline does you no good at all.
+
 ## Common Mistakes
 
 - **Assuming the certificate demonstrates speaking ability.** It does not test it, and interviews do.
-- **Taking the test too late to have results in time.** The schedule is limited and results are not immediate.
+- **Testing too late.** Taking the test too late to have results in time. The schedule is limited and results are not immediate.
 - **Stopping study once certified.** Business register is a separate skill from the tested material.
 - **Assuming N2 closes all traditional companies.** It is frequently sufficient for technical roles and at internationally-minded employers.
 - **Assuming N1 opens everything.** It removes the language question; everything else about the application still applies.
-- **Not practising speaking under pressure.** The gap the test leaves is exactly where candidates fail.
+- **Not practising speaking under pressure.** Not practising speaking under pressure the gap the test leaves is exactly where candidates fail.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [Shūkatsu - The Japanese Job Hunting Timeline](/blog/japan-job-hunting-shukatsu-timeline)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### What level do I actually need for a typical professional job?

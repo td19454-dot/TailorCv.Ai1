@@ -59,14 +59,29 @@ Consider your own tolerance for a defined, multi-year commitment early in your c
 
 **Understand any financial consequence fully before making a final decision**, and factor this realistically into your planning rather than discovering it only once you have already acted.
 
+> **Tip:** Ask specifically whether your eventual placement role is guaranteed or discretionary before signing. That single distinction shapes the entire bond period, and it is rarely volunteered.
+
 ## Common Mistakes
 
-- **Accepting a bonded scholarship purely for the funding.** Without genuinely wanting to work for the organisation.
-- **Not reading the specific early-departure terms carefully.** Before signing. The single most important section to understand fully.
+- **Taking a bond for the money alone.** Accepting a bonded scholarship purely for the funding without genuinely wanting to work for the organisation.
+- **Not reading the specific early-departure terms carefully.** The single most important section to understand fully.
 - **Assuming all scholarship bonds work identically.** Terms vary considerably between government, statutory board and corporate scholarships.
-- **Declining a bonded scholarship reflexively.** Without weighing the genuine benefits against the commitment.
-- **Not understanding whether your eventual placement role is guaranteed or discretionary.**
-- **Leaving a bond without first understanding the actual financial consequence and speaking honestly with the organisation.**
+- **Declining a bonded scholarship reflexively.** Declining a bonded scholarship reflexively without weighing the genuine benefits against the commitment.
+- **Assuming your placement is guaranteed.** Not understanding whether your eventual placement role is guaranteed or discretionary.
+- **Breaking a bond blind.** Leaving a bond without first understanding the actual financial consequence and speaking honestly with the organisation.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Supply Chain and Logistics Careers for Graduates in Singapore](/blog/singapore-supply-chain-logistics-careers)
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

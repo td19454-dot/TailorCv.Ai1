@@ -74,14 +74,29 @@ Talk to people who have actually made the specific move you are considering, som
 
 Recognise that your first city choice does not have to be permanent, movement between major Chinese cities at the two to three year mark is common and generally well regarded, worth treating your first choice as a genuinely good decision for where you are now rather than a decision that locks in your entire career geography.
 
+> **Tip:** Match the city to your sector before anything else: Shanghai for finance, Beijing for tech and policy, Shenzhen for hardware, Guangzhou for trade. Picking the most famous city rather than the right one is the most common and most costly error here.
+
 ## Common Mistakes
 
-- **Choosing a city based on general national reputation.** Rather than where your specific target sector actually concentrates.
-- **Comparing salary figures across cities.** Without adjusting for genuinely different real costs of living. Even among first-tier cities themselves.
-- **Overlooking second-tier cities entirely.** Despite consistently lower competition relative to genuine opportunity quality.
-- **Not considering long-term settlement implications.** When they genuinely matter to your plans.
-- **Deciding purely on financial grounds.** Without weighing genuine personal lifestyle preference.
-- **Assuming a single city is universally "the" hub for every sector.** Rather than researching where your specific target industry actually operates.
+- **Choosing a city on reputation.** Choosing a city based on general national reputation rather than where your specific target sector actually concentrates.
+- **Comparing salary figures across cities.** Even among first-tier cities themselves.
+- **Overlooking second-tier cities entirely.** Overlooking second-tier cities entirely despite consistently lower competition relative to genuine opportunity quality.
+- **Not considering long-term settlement implications.** Not considering long-term settlement implications when they genuinely matter to your plans.
+- **Deciding purely on financial grounds.** Deciding purely on financial grounds without weighing genuine personal lifestyle preference.
+- **Assuming one city suits every sector.** Assuming a single city is universally "the" hub for every sector rather than researching where your specific target industry actually operates.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

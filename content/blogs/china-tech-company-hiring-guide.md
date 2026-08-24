@@ -55,14 +55,16 @@ Stock or equity-based compensation appears at some companies, particularly large
 
 Ask specifically what a typical bonus was for someone at your level last year, rather than relying on a stated target figure, the two frequently differ.
 
+> **Tip:** Ask about 996 by name during interviews. Naming it signals you have done real research, and it reliably produces a more candid answer than a general question about work-life balance.
+
 ## Common Mistakes
 
 - **Applying without understanding the two-season recruiting calendar.** Missing the autumn window at a major employer is a significant lost opportunity.
-- **Underpreparing for algorithmic technical interviews.** On the assumption the process differs substantially from international norms. It largely does not for engineering roles.
-- **Assuming Mandarin fluency is optional at domestic employers.** Without checking the specific role. Usually a real requirement.
-- **Accepting an offer without asking honestly.** About working hours and pace. A genuine and material factor worth investigating directly.
+- **Underpreparing for algorithmic technical interviews.** It largely does not for engineering roles.
+- **Assuming Mandarin is optional.** Assuming Mandarin fluency is optional at domestic employers without checking the specific role. Usually a real requirement.
+- **Accepting an offer without asking honestly.** A genuine and material factor worth investigating directly.
 - **Comparing offers on base salary alone.** Bonus structure often represents a substantial share of total compensation.
-- **Not asking current employees.** About the actual working culture on a specific team. Recruiting material and lived experience frequently differ.
+- **Not asking current employees.** Recruiting material and lived experience frequently differ.
 
 ## Preparing a portfolio that resonates with this market specifically
 
@@ -75,6 +77,19 @@ Ask specifically what a typical bonus was for someone at your level last year, r
 Alumni from your own institution now working at target companies remain a genuinely high-value contact group here as in any market, particularly valuable given the language and cultural specificity of navigating this particular hiring landscape, someone who has already gone through the exact same process recently offers insight a general guide cannot fully replicate.
 
 Technology community events and meetups, where accessible to you given your language ability, provide genuine opportunities to meet people at target companies directly, worth attending even a few of these if genuinely feasible, rather than relying purely on formal application channels.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

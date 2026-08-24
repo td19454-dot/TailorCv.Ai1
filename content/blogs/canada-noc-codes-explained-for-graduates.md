@@ -66,14 +66,29 @@ If the actual duties genuinely match a TEER 0-3 code but the employer's job titl
 
 **One more wrinkle worth knowing: NOC codes are used for more than immigration.** Employers, Statistics Canada, and labour market reports all use the same classification system, which means the code assigned to your role also shows up in wage surveys, LMIA applications (for employer-sponsored work permits), and various government labour market reports. If you ever want to research realistic salary ranges or demand levels for a specific occupation, searching by its NOC code rather than its informal job title gets you considerably more precise, comparable data than a generic job-title search would.
 
+> **Tip:** Ask the employer for the NOC code they will report *before* you sign, not after. It is a normal HR question, it takes them a minute to answer, and it is the single fact that determines whether the next year of your life counts toward permanent residence.
+
 ## Common Mistakes
 
-- **Judging a role by its title.** Instead of looking up the actual NOC code for its duties. Titles are inconsistent between employers; the code isn't.
-- **Assuming a TEER 4 or 5 role will eventually count if you hold it long enough.** It won't, for CEC/Express Entry purposes, regardless of duration.
-- **Assuming salary or how demanding a role feels tells you its TEER level.** Neither is a reliable indicator — check the code.
-- **Not checking before accepting an offer.** When a five-minute lookup at noc.esdc.gc.ca would have caught it.
-- **Not keeping the original posting or offer letter describing actual duties.** Making it harder to substantiate the role's classification later.
-- **Ignoring a relevant provincial occupation list that might value the role differently than the federal system does.**
+- **Judging a role by its title.** Titles are inconsistent between employers; the code isn't.
+- **Waiting for TEER 4 to count.** Waiting for a TEER 4 role to count. Assuming a TEER 4 or 5 role will eventually count if you hold it long enough. It won't, for CEC/Express Entry purposes, regardless of duration.
+- **Judging TEER by salary.** Assuming salary or how demanding a role feels tells you its TEER level. Neither is a reliable indicator — check the code.
+- **Not checking before accepting an offer.** Not checking before accepting an offer when a five-minute lookup at noc.esdc.gc.ca would have caught it.
+- **Not keeping the original posting.** Or offer letter describing actual duties. Making it harder to substantiate the role's classification later.
+- **Ignoring provincial occupation lists.** Ignoring a relevant provincial occupation list that might value the role differently than the federal system does.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

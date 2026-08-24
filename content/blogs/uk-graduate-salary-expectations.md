@@ -65,20 +65,35 @@ Factor the real cost of the city into any comparison between two offers in diffe
 
 **Adjust any general sector figure for the specific size and type of employer you are targeting**, a well-known large employer in a given sector often pays differently from a smaller specialist firm in the same broad sector, a single sector-wide average blends both together in a way that can mislead for either extreme.
 
+> **Tip:** Look up the specific scheme's published salary rather than a national graduate average. Most large UK schemes publish the figure, and the average blends sectors that have nothing to do with each other.
+
 ## Common Mistakes
 
-- **Comparing your offer to a single national average.** Sector variation is larger than the headline figure suggests.
-- **Comparing London and regional pay.** Without adjusting for cost of living. The real gap is often much smaller than the salary gap alone.
-- **Trying to negotiate a structured scheme's fixed cohort rate.** Rarely works and rarely worth the effort.
+- **Comparing to a national average.** Comparing your offer to a single national average. Sector variation is larger than the headline figure suggests.
+- **Comparing London and regional pay.** The real gap is often much smaller than the salary gap alone.
+- **Negotiating a fixed cohort rate.** Trying to negotiate a structured scheme's fixed cohort rate. Rarely works and rarely worth the effort.
 - **Ignoring the wider package.** Pension, bonus and benefits are a real part of total compensation.
-- **Not researching before the conversation.** A vague answer to "what are you expecting" is a weak position.
-- **Assuming the recruiter can move on base pay.** When they cannot. Ask about what is genuinely flexible instead.
+- **Not researching before the conversation.** Not researching before the conversation a vague answer to "what are you expecting" is a weak position.
+- **Assuming base pay is negotiable.** Assuming the recruiter can move on base pay when they cannot. Ask about what is genuinely flexible instead.
 
 ## Understanding how pay progresses beyond the starting figure
 
 Ask directly during the interview process what realistic salary progression looks like over the first several years, rather than focusing purely on the starting figure, a modest starting salary with genuinely strong, structured progression can outperform a higher starting figure with a flatter subsequent trajectory.
 
 Research typical progression timelines for your specific sector, some sectors have well-understood, fairly standard progression milestones, others are considerably more variable and individually negotiated, understanding which category your target sector falls into helps calibrate realistic expectations.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Graduate Salary Expectations](/blog/canada-salary-expectations-new-grad)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [Graduate Salary Expectations in Japan](/blog/japan-salary-expectations-new-grad)
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

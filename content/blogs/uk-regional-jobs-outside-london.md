@@ -65,20 +65,35 @@ Do not assume career progression requires London eventually. Many careers, inclu
 
 **Visit if genuinely possible before making a final decision**, or at minimum speak with people currently working there in your target field, a first-hand account of what daily life and the local professional community actually feel like is worth considerably more than research alone.
 
+> **Tip:** Run the real comparison: take each salary, subtract actual rent for the specific city, and compare what remains. Regional roles frequently win that calculation outright.
+
 ## Common Mistakes
 
-- **Applying only in London by default.** Without deciding it deliberately. The most common and least examined choice graduates make.
-- **Comparing salaries without comparing real cost of living.** The headline number misleads more often than it helps.
-- **Assuming regional roles are lesser versions of London ones.** Frequently the same substance, sometimes with earlier responsibility.
-- **Not asking about location preference at structured schemes.** Some genuinely allow input if you ask early.
-- **Ignoring genuinely regional employers entirely.** A market that never appears in a London-centric search.
-- **Assuming a regional start closes off London later.** Internal transfer remains a normal route if you want it eventually.
+- **Applying only in London by default.** The most common and least examined choice graduates make.
+- **Comparing salary, not cost of living.** Comparing salaries without comparing real cost of living. The headline number misleads more often than it helps.
+- **Assuming regional means lesser.** Assuming regional roles are lesser versions of London ones. Frequently the same substance, sometimes with earlier responsibility.
+- **Not stating a location preference.** Not asking about location preference at structured schemes. Some genuinely allow input if you ask early.
+- **Ignoring genuinely regional employers entirely.** Ignoring genuinely regional employers entirely a market that never appears in a London-centric search.
+- **Assuming a regional start traps you.** Assuming a regional start closes off London later. Internal transfer remains a normal route if you want it eventually.
 
 ## Adjusting your search strategy for a regional target
 
 Regional employers are less likely to run large, highly visible national recruitment campaigns, worth searching more directly and specifically for regional-specific opportunities, rather than assuming the same channels that surface London-based roles will surface an equivalent regional opportunity.
 
 Local university career services in target regional cities, even ones you did not attend, sometimes maintain useful regional employer relationships and job boards worth checking, alongside your own institution's resources.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

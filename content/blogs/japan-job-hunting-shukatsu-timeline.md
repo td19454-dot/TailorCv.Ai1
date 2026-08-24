@@ -121,14 +121,29 @@ Some companies and industries run supplementary hiring rounds later in the cycle
 
 **Review your own tracker regularly rather than only when a specific deadline is imminent**, a weekly review habit catches upcoming deadlines and lets you allocate your preparation time deliberately across your active processes, rather than reacting to whichever deadline happens to be most urgent at any given moment.
 
+> **Tip:** Build a spreadsheet of every target company's specific dates before the season opens. Shūkatsu punishes disorganisation more than almost any other hiring system — the calendar is the whole game.
+
 ## Common Mistakes
 
-- **Starting in the final year.** The main selection period is largely over by then for the conventional cycle.
+- **Starting in the final year.** Starting in the final year the main selection period is largely over by then for the conventional cycle.
 - **Skipping summer internships.** They function as relationship-building and early screening rather than as work experience.
 - **Neglecting aptitude test practice.** Widely used, heavily practised for by other candidates, and entirely trainable.
 - **Treating self-analysis as optional.** It underpins the entry sheets and the interviews.
-- **Applying a foreign country's calendar.** The Japanese cycle runs more than a year ahead of the start date.
+- **Applying a foreign country's calendar.** Applying a foreign country's calendar the Japanese cycle runs more than a year ahead of the start date.
 - **Not registering on job-hunting platforms early.** Much of the information flow runs through them.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### When should international students start preparing?

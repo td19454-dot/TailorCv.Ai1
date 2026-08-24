@@ -105,14 +105,29 @@ Consider consulting a qualified immigration specialist for a complex or refused 
 
 Keep your employer informed throughout any difficulty, since they are a party to the application and may have their own channels or experience that can help resolve a specific issue.
 
+> **Tip:** Ask whether your degree field matches the work you would actually do. The status of residence is granted on that relationship, and a mismatch is the most common reason a graduate application runs into trouble.
+
 ## Common Mistakes
 
-- **Assuming you can get the status.** Before an offer. The employer sponsors it; the job comes first.
-- **Ignoring the degree-to-role relationship.** The most common source of difficulty in an otherwise straightforward application.
+- **Assuming you can get the status.** The employer sponsors it; the job comes first.
+- **Ignoring the degree-to-role relationship.** Ignoring the degree-to-role relationship the most common source of difficulty in an otherwise straightforward application.
 - **Leaving the status change too late.** Processing takes time and you cannot start qualifying work before approval.
 - **Not knowing about the job-hunting extension.** It exists specifically for graduates still searching and many never hear of it.
 - **Relying on outdated information.** Rules change; check the official source for anything decision-critical.
-- **Not asking the employer whether they have done this before.** A company with a process is a materially easier path than one improvising.
+- **Not asking about their track record.** Not asking the employer whether they have done this before. A company with a process is a materially easier path than one improvising.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Your First Job in Japan - What the Workplace Is Actually Like](/blog/japan-work-culture-first-job-guide)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Does my job need to relate directly to what I studied?

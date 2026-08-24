@@ -79,13 +79,15 @@ Commercial awareness is assessed, though generally less heavily than in [law](/b
 
 **Research not just the immediate training contract but what people who completed a specific firm's programme several years ago are now doing**, professional networking platforms make this genuinely researchable, a firm whose alumni have gone on to strong, varied careers signals something real about the quality of training received.
 
+> **Tip:** Pick the qualification before the employer — ACA, ACCA and CIMA lead to genuinely different careers. The training contract you sign locks you into one of them for three years.
+
 ## Common Mistakes
 
 - **Assuming you need an accounting degree.** Firms recruit across disciplines deliberately.
 - **Applying only to the largest firms.** Mid-tier and regional practices offer the same qualification with far less competition.
 - **Not understanding which qualification suits your goal.** Practice and industry routes differ.
 - **Underestimating the examination load.** Working and studying simultaneously is genuinely demanding.
-- **Neglecting the online tests.** An early filter, and trainable.
+- **Neglecting the online tests.** Neglecting the online tests an early filter, and trainable.
 - **Applying late.** Autumn deadlines with rolling review at many firms.
 
 ## Balancing study and work during the training contract
@@ -93,6 +95,19 @@ Commercial awareness is assessed, though generally less heavily than in [law](/b
 The combination of full-time work and professional examination study is genuinely demanding, worth building realistic expectations about this before starting rather than being caught off guard partway through.
 
 Ask current trainees directly how they actually structure their study time around work commitments, and what support the specific firm provides beyond the formal study leave allocation, this practical detail varies meaningfully between firms and matters considerably to your actual day-to-day experience during the contract.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Teacher Training Routes for Graduates](/blog/uk-teacher-training-routes-guide)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

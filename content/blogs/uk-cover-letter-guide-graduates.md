@@ -85,20 +85,35 @@ Proofread properly. A typo in a one-page document that is explicitly a writing s
 
 **Ending with an overly casual or**, conversely, an excessively formal sign-off relative to the rest of the letter's tone, aim for consistency in register throughout the entire document, a measured, professional tone maintained end to end reads considerably better than a mismatch between an informal body and a stiffly formal closing, or the reverse.
 
+> **Tip:** For a large scheme, treat the application form's written questions as the real cover letter. That is what gets scored — a separate attached letter frequently is not read at all.
+
 ## Common Mistakes
 
-- **A generic "why this employer" paragraph.** The most common cause of early rejection.
+- **A generic "why this employer" paragraph.** A generic "why this employer" paragraph the most common cause of early rejection.
 - **Restating the CV.** Wastes the one chance to add something.
 - **Running to two pages.** One page, and shorter is usually better.
-- **Guessing a name.** A wrong name is worse than a general salutation.
-- **Neglecting the form's written questions for large schemes.** They are the letter, and they are scored.
-- **Reusing the letter unchanged.** The evidence can be reused; the reasoning cannot.
+- **Guessing a name.** Guessing a name a wrong name is worse than a general salutation.
+- **Neglecting the written questions.** Neglecting the form's written questions for large schemes. They are the letter, and they are scored.
+- **Reusing the letter unchanged.** Reusing the letter unchanged the evidence can be reused; the reasoning cannot.
 
 ## Adjusting length and depth for different application types
 
 A speculative application to an employer with no advertised vacancy generally warrants a somewhat longer, more thorough letter than an application against a specific stated posting, since you are doing more work to explain why they should consider you at all, absent a specific role description to respond to directly.
 
 An application through a referral can generally be somewhat shorter, since the referral itself has already done some of the work of establishing your credibility, the letter's job here shifts toward giving the reader useful context for a name they will recognise, rather than establishing your case from nothing.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

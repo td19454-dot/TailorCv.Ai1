@@ -83,14 +83,29 @@ Which is why understanding your own position early, based on your specific count
 
 **These are all normal offer-stage questions.** Asking them signals planning rather than presumption, and the answers materially change which offer is better for you.
 
+> **Tip:** Ask at offer stage whether the employer sponsors permanent residence and when they typically start. Many employers who happily sponsor an H-1B never file a green card at all.
+
 ## Common Mistakes
 
-- **Assuming work visa sponsorship implies permanent residence sponsorship.** They are separate decisions and separate commitments.
-- **Not asking at offer stage.** The answer changes which job is actually better for your situation.
+- **Assuming a visa means a green card.** Assuming work visa sponsorship implies permanent residence sponsorship. They are separate decisions and separate commitments.
+- **Not asking at offer stage.** Not asking at offer stage the answer changes which job is actually better for your situation.
 - **Not knowing your country-of-birth position.** It is the largest variable and it is knowable in advance.
 - **Assuming the category follows your degree.** It generally follows what the role requires.
-- **Changing jobs at the wrong moment.** Without advice. Some transitions are straightforward and some jeopardise a pending case.
+- **Changing jobs at the wrong moment.** Some transitions are straightforward and some jeopardise a pending case.
 - **Relying on general timelines from forums.** Backlogs move, categories differ, and the specifics of your case matter.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [MBA Internship Recruiting Timeline in the US](/blog/usa-mba-internship-recruiting-timeline)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

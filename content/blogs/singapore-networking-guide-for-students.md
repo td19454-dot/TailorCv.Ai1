@@ -61,14 +61,47 @@ The students who build genuinely useful networks are consistently the ones who s
 
 This compounds. A good early conversation frequently leads to an introduction to someone else, and a network built this way over time becomes genuinely useful in a way that last-minute outreach rarely achieves.
 
+## Do's and Don'ts
+
+### Do
+
+- Ask for fifteen minutes of perspective
+- Keep the register measured and specific
+- Follow up within a day, referencing something discussed
+- Reach out well before you need anything
+- Say plainly what you are exploring
+
+### Don't
+
+- Ask for a referral or a job in a first message
+- Open with effusive, superlative-heavy praise
+- Leave a good conversation without a follow-up
+- Surface only when a deadline is imminent
+- Send the same message to twenty people
+
+> **Tip:** Ask for fifteen minutes of someone's perspective, never for a referral, in a first message. The referral follows naturally from a good conversation and almost never from a direct request.
+
 ## Common Mistakes
 
-- **Asking for a referral or a job in the first message.** Ask for a short conversation instead, exactly as in any market.
-- **Using an effusive, superlative-heavy register that reads poorly against the local measured, specific norm.**
-- **Only reaching out when a deadline is imminent.** Rather than starting early and building genuine relationships over time.
-- **Not following up genuinely.** After a good conversation.
-- **Sending a long, generic message.** Rather than a short, specific one.
-- **Overlooking your own institution's alumni.** As the highest-yield contact group.
+- **Asking for a job upfront.** Asking for a referral or a job in the first message. Ask for a short conversation instead, exactly as in any market.
+- **An over-effusive register.** Using an effusive, superlative-heavy register that reads poorly against the local measured, specific norm.
+- **Reaching out only when desperate.** Only reaching out when a deadline is imminent rather than starting early and building genuine relationships over time.
+- **Not following up genuinely.** Not following up genuinely after a good conversation.
+- **Sending a long, generic message.** Sending a long, generic message rather than a short, specific one.
+- **Overlooking your own institution's alumni.** Overlooking your own institution's alumni as the highest-yield contact group.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

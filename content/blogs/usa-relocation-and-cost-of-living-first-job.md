@@ -166,14 +166,29 @@ Look at whether the role permits a later physical move, where some remote work i
 
 And factor this into the offer comparison honestly. A slightly lower offer in a city you can actually afford to move to is a better outcome than a higher one that requires debt to reach. This is a legitimate input into the decision rather than an admission of anything.
 
+> **Tip:** Subtract actual rent for a specific neighbourhood from each offer before comparing. City-level cost-of-living indexes hide differences large enough to reverse which offer is better.
+
 ## Common Mistakes
 
 - **Comparing gross salaries directly.** Tax and housing routinely change which offer is actually better.
-- **Using a city-wide rent average.** Instead of real listings for where you would live. Averages understate what a new graduate typically pays.
-- **Not asking what relocation support actually includes.** The gap between a generous and a token package is a real cost.
+- **Using a city-wide rent average.** Averages understate what a new graduate typically pays.
+- **Not asking what relocation support actually includes.** Not asking what relocation support actually includes the gap between a generous and a token package is a real cost.
 - **Underestimating the gap before the first paycheck.** Combined with a deposit, it is a predictable cash crunch that catches people every year.
 - **Not checking the first payslip.** Withholding errors are common and easily fixed early, harder to unwind later.
-- **Choosing the highest number.** Without checking the real total. The headline salary is the least informative figure in the comparison.
+- **Choosing the highest number.** The headline salary is the least informative figure in the comparison.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Should I choose a city based on cost of living alone?

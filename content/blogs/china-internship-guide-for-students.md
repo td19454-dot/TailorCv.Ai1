@@ -71,14 +71,29 @@ Research each specific target's actual internship structure before applying, som
 
 **Document your specific contributions and outcomes as you go**, rather than attempting to reconstruct them from memory once the internship concludes, this record becomes genuinely valuable both for your own future applications and, where relevant, for future work authorisation processes that may ask you to account for your history.
 
+> **Tip:** If you are applying from outside China, ask the employer exactly which authorisation route they use for foreign interns. A vague "we'll sort it out" is a genuine warning sign — the standard Z visa is built for employment, not internships.
+
 ## Common Mistakes
 
-- **Beginning an internship without confirming proper authorisation is in place.** Carries genuine personal risk.
-- **Applying too late, after well-known programmes' application windows have already closed.** These frequently open earlier than expected relative to the internship start date.
-- **Not asking directly about conversion to a full-time role until the internship is nearly over.** Asking earlier leaves time to act on the answer.
-- **Doing competent work quietly.** Without making it visible to the wider team. Visibility materially affects conversion odds.
-- **Not keeping records of the internship for future reference.** Details are harder to reconstruct later than to record at the time.
-- **Assuming internship authorisation works identically to standard full-time employment authorisation.** The specific requirements differ and are worth confirming directly.
+- **Starting without authorisation.** Beginning an internship without confirming proper authorisation is in place. Carries genuine personal risk.
+- **Applying after the window closed.** Applying too late, after well-known programmes' application windows have already closed. These frequently open earlier than expected relative to the internship start date.
+- **Asking about conversion too late.** Not asking directly about conversion to a full-time role until the internship is nearly over. Asking earlier leaves time to act on the answer.
+- **Doing competent work quietly.** Visibility materially affects conversion odds.
+- **Not keeping records.** Of the internship for future reference. Details are harder to reconstruct later than to record at the time.
+- **Assuming intern and work permits match.** Assuming internship authorisation works identically to standard full-time employment authorisation. The specific requirements differ and are worth confirming directly.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

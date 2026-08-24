@@ -73,14 +73,16 @@ Consult a qualified immigration advisor for your specific situation if the pictu
 
 Verify current specific point thresholds and category criteria directly with the relevant authority, rather than relying on this or any general article, since these are exactly the kind of detail set and adjusted by policy over time.
 
+> **Tip:** Ask which category — A, B, or C — the employer expects your role to fall under, and ask before you accept. Category B carries the prior-experience requirement that stops most recent graduates, and finding that out after signing is far too late.
+
 ## Common Mistakes
 
-- **Assuming a single, simple threshold applies universally.** Rather than understanding the categorisation and. Where relevant, points-based system genuinely in place.
-- **Not asking a prospective employer directly.** About their specific experience sponsoring foreign staff in a situation similar to yours.
-- **Relying on outdated or general information.** About specific point thresholds and category criteria. These are set and reviewed by policy.
+- **Assuming a single, simple threshold applies universally.** Assuming a single, simple threshold applies universally rather than understanding the categorisation and where relevant, points-based system genuinely in place.
+- **Not asking a prospective employer directly.** Not asking a prospective employer directly about their specific experience sponsoring foreign staff in a situation similar to yours.
+- **Relying on outdated or general information.** These are set and reviewed by policy.
 - **Underestimating document authentication timelines.** Frequently longer than expected.
-- **Not considering how a higher salary or qualification level might improve your position within a points-based assessment when comparing two offers.**
-- **Not consulting a qualified immigration advisor.** For a genuinely unclear or complex individual situation.
+- **Ignoring how an offer affects your points.** Not considering how a higher salary or qualification level might improve your position within a points-based assessment when comparing two offers.
+- **Not consulting a qualified immigration advisor.** Not consulting a qualified immigration advisor for a genuinely unclear or complex individual situation.
 
 ## Getting a clearer, more specific answer for your own situation
 
@@ -91,6 +93,19 @@ Verify current specific point thresholds and category criteria directly with the
 ## Keeping your understanding current over time
 
 If you are planning your career around this system over a multi-year horizon, revisit your understanding of the current criteria periodically rather than relying on a single point-in-time assessment, this is genuinely the kind of policy area reviewed and adjusted over time, and an assumption formed several years ago may not accurately reflect current requirements.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [The Z Visa and Work Permit for Graduates in China](/blog/china-work-visa-z-visa-for-graduates)
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

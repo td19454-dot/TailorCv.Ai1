@@ -223,14 +223,29 @@ Make it reachable. A rendered page, a small dashboard, a notebook that displays 
 
 Then be ready to be interrogated on it. Every decision you made is a question an interviewer can ask, and having real answers is exactly why a self-sourced project beats a tutorial.
 
+> **Tip:** Build one end-to-end project with real, messy data rather than three clean-dataset notebooks. The interview conversation is almost always about the messy parts.
+
 ## Common Mistakes
 
 - **Preparing for the wrong role.** Analytics, ML engineering and research have different loops; read the posting.
-- **Under-practising SQL.** The single most tested skill and the most neglected.
+- **Under-practising SQL.** Under-practising SQL the single most tested skill and the most neglected.
 - **A portfolio of clean-dataset notebooks.** Indistinguishable from everyone else's.
 - **Reciting model names.** Depth on a few beats breadth across many, and knowing when not to model beats both.
 - **Ignoring the communication round.** It is assessed and it decides close calls.
 - **Dismissing analyst titles.** More numerous, less contested, and closer to decisions than the title implies.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Should I do a bootcamp or a master's?

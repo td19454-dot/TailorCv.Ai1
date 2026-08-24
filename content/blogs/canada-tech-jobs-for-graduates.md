@@ -73,14 +73,29 @@ Mid-sized companies and the technology divisions of traditional employers, parti
 
 **Build one strong project**, and confirm your resume [parses cleanly](/ats-analysis) and matches the language of each specific posting.
 
+> **Tip:** Search for Canadian-founded companies by name — Shopify, Wealthsimple, Lightspeed, Coveo, ApplyBoard — rather than only the Canadian offices of US giants. Same calibre of work, a fraction of the applicant volume.
+
 ## Common Mistakes
 
-- **Assuming Toronto is the only real hub and overlooking Vancouver.** Waterloo, Montreal and other genuine centres.
-- **Not preparing specifically for algorithmic technical interviews, assuming Canadian hiring differs substantially from US convention.** It largely does not.
+- **Assuming Toronto is the only hub.** Assuming Toronto is the only real hub and overlooking Vancouver. Waterloo, Montreal and other genuine centres.
+- **Underpreparing for algorithmic interviews.** Not preparing specifically for algorithmic technical interviews, assuming Canadian hiring differs substantially from US convention. It largely does not.
 - **Overlooking bank and traditional-employer technology divisions.** Substantial engineering organisations that are consistently underexplored.
-- **Comparing compensation to top-tier US figures.** Without adjusting for genuine cost of living differences.
-- **Not leveraging the open work permit.** As a genuine advantage when targeting smaller companies that have never sponsored before.
-- **Sending an untailored resume.** Rather than matching the specific language of each posting.
+- **Comparing compensation to top-tier US figures.** Comparing compensation to top-tier US figures without adjusting for genuine cost of living differences.
+- **Not leveraging the open work permit.** Not leveraging the open work permit as a genuine advantage when targeting smaller companies that have never sponsored before.
+- **Sending an untailored resume.** Sending an untailored resume rather than matching the specific language of each posting.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

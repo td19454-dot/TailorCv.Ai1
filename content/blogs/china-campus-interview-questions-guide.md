@@ -58,14 +58,34 @@ Punctuality is taken seriously, arriving with real margin before the scheduled t
 3. **Prepare for a written examination if applying to a [state-owned enterprise](/blog/china-state-owned-enterprise-jobs) or other employer known to use one**, using available practice materials.
 4. **Build genuine, specific examples of your own experience**, the same underlying [competency-based preparation](/blog/uk-competency-questions-guide) that serves any structured interview process, adapted to the more formal register expected here.
 
+## Do's and Don'ts
+
+### Do
+
+- Practise the 无领导小组讨论 format with friends first
+- Build on what others say in a group discussion
+- Prepare for the written examination as its own stage
+- Dress formally when unsure
+- Have a specific, researched reason for this employer
+
+### Don't
+
+- Walk into a group discussion having never tried the format
+- Treat the discussion as something to win
+- Assume interview prep covers the written test
+- Read the dress code as casual because the sector is modern
+- Give generic enthusiasm as your "why this company"
+
+> **Tip:** Search 无领导小组讨论 (leaderless group discussion) to find the practice scenarios domestic candidates actually rehearse with. Practising the format once before the real thing matters more here than almost any other preparation.
+
 ## Common Mistakes
 
-- **Treating the group interview as an opportunity to dominate the conversation.** Genuine contribution and collaborative behaviour is what is actually assessed.
-- **Giving a generic answer to why this company.** That could apply to any competitor. Noticed and read poorly.
-- **Not preparing for a written examination at employers known to use one.** A standard, expected stage rather than an informal add-on.
-- **Underestimating formality expectations, particularly at larger or more traditional employers.** Casual presentation can genuinely read as underprepared.
-- **Arriving exactly on time.** Rather than with real margin. Punctuality expectations here favour arriving well ahead.
-- **Having no considered answer to direct questions.** About long-term commitment. Taken more seriously here than a similar question in some other markets.
+- **Dominating the group discussion.** Treating the group interview as an opportunity to dominate the conversation. Genuine contribution and collaborative behaviour is what is actually assessed.
+- **A generic “why this company”.** Giving a generic answer to why this company that could apply to any competitor. Noticed and read poorly.
+- **Skipping written exam prep.** Not preparing for a written examination at employers known to use one. A standard, expected stage rather than an informal add-on.
+- **Underestimating formality.** Expectations, particularly at larger or more traditional employers. Casual presentation can genuinely read as underprepared.
+- **Arriving exactly on time.** Punctuality expectations here favour arriving well ahead.
+- **No answer on long-term commitment.** Having no considered answer to direct questions about long-term commitment. Taken more seriously here than a similar question in some other markets.
 
 ## Practising the format properly before the real interview
 
@@ -76,6 +96,19 @@ Practise responding to direct questions about long-term commitment with a genuin
 ## Understanding what senior interviewers are specifically looking for
 
 In later, more senior interview rounds, expect questions probing genuine depth of understanding about the specific role and organisation, beyond what an earlier general screening round would ask, prepare accordingly with more detailed, specific research the further you progress through a given company's process.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

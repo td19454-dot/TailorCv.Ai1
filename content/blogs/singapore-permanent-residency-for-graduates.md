@@ -55,14 +55,29 @@ Gather and retain documentation of your employment history, salary progression a
 
 Verify current specific eligibility criteria and any published guidance directly with the relevant Singapore authority before applying, this is genuinely the kind of process where policy is reviewed periodically, and relying on outdated general information is a real risk.
 
+> **Tip:** Search ICA's site for the PTS Scheme by name rather than "Singapore PR". The generic search surfaces outdated third-party guides; the scheme name takes you to the actual current criteria.
+
 ## Common Mistakes
 
-- **Assuming holding an Employment Pass automatically leads to permanent residency after a fixed period.** These are distinct statuses assessed separately.
-- **Not factoring long-term residency goals into decisions.** About which employer and role to take at the outset.
-- **Frequently changing employers without regard to how this affects the stability picture an application draws on.**
-- **Not keeping organised records of employment history and salary progression over time.**
-- **Relying on outdated general information.** Rather than verifying current specific criteria directly.
-- **Assuming the process is purely formulaic.** When it is generally assessed holistically across several factors.
+- **Assuming a pass becomes PR automatically.** Holding an Employment Pass does not lead to permanent residency after a fixed period — these are distinct statuses, assessed separately.
+- **Ignoring residency goals when choosing a job.** Long-term residency plans should factor into which employer and role you take at the outset, not just the immediate salary.
+- **Job-hopping without thinking about stability.** Frequently changing employers weakens the stability picture a PR application draws on, so weigh a move against that record.
+- **Losing your own paper trail.** Employment history and salary progression are far harder to reconstruct years later than to file as you go.
+- **Relying on outdated general information.** Criteria are reviewed periodically — verify current specifics directly with ICA rather than trusting a summary.
+- **Assuming the process is purely formulaic.** It is assessed holistically across several factors, so no single number guarantees an outcome.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

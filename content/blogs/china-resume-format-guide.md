@@ -71,14 +71,47 @@ Where you are applying to domestic employers, submitting the document in the app
 
 For applications to multinational companies, check whether an English version, a local-language version, or both are expected, this varies genuinely by employer and even by specific role, and getting this wrong by submitting the wrong language entirely can itself be read as a signal of unfamiliarity with the specific market or company.
 
+## Do's and Don'ts
+
+### Do
+
+- Include a properly taken formal photograph
+- Format the document on A4
+- Write a specific, concrete 自我评价 self-evaluation
+- Keep separate versions for domestic and multinational employers
+- State your language level with any certification
+
+### Don't
+
+- Send a Western-format resume with no photo to a domestic employer
+- Export on US Letter and hope the margins hold
+- Write a vague self-evaluation full of general claims
+- Use one identical document for every employer type
+- Claim fluency you cannot demonstrate in interview
+
+> **Tip:** Set your document to A4, not US Letter, before exporting. A Letter-sized file shows wrong margins or crops on local office software, and it is the kind of detail that reads as carelessness before anyone assesses your experience.
+
 ## Common Mistakes
 
-- **Submitting a Western-format resume with no photograph to a domestic Chinese employer expecting local convention.** Reads as unfamiliarity with the market.
+- **A Western-format resume with no photo.** Reads as unfamiliarity with the market.
 - **Omitting personal details that local convention expects.** Out of habit from a different market's norms.
-- **Assuming multinationals and domestic employers want the identical format.** They frequently differ, worth checking per employer.
-- **Sending a self-evaluation section that is vague.** Rather than specific. A brief, concrete version is expected where included.
-- **Not checking the document parses cleanly through automated screening.** A real risk given the scale of applicant volume.
-- **Using a single generic document for every application.** Rather than tailoring language to each posting.
+- **One format for every employer type.** Assuming multinationals and domestic employers want the identical format. They frequently differ, worth checking per employer.
+- **Sending a self-evaluation section that is vague.** A brief, concrete version is expected where included.
+- **Not checking it parses.** Not checking the document parses cleanly through automated screening. A real risk given the scale of applicant volume.
+- **One generic document for everything.** Using a single generic document for every application rather than tailoring language to each posting.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

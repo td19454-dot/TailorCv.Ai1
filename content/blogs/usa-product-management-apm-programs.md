@@ -208,14 +208,29 @@ That single exercise does four things at once. It builds the muscle the product 
 
 Do it four times and you have a [portfolio](/portfolio). Almost no APM applicant has one.
 
+> **Tip:** Ship something real, however small, before applying. APM programmes are heavily oversubscribed and a live product you built is the most legible differentiator available.
+
 ## Common Mistakes
 
-- **Listing features instead of prioritising.** The whole question is whether you can choose.
+- **Listing features instead of prioritising.** Listing features instead of prioritising the whole question is whether you can choose.
 - **Skipping the user.** Starting from a solution rather than from whose problem it solves.
 - **Reciting frameworks.** Interviewers hear them constantly and they signal preparation rather than judgement.
 - **Assuming engineering converts automatically.** It converts when you deliberately do product-adjacent work, not by default.
 - **Applying only to named APM programmes.** They are the smallest and most contested route into the function.
 - **Having no product opinions.** It is obvious within two minutes and it cannot be faked.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Do I need a technical background to be credible with engineers?

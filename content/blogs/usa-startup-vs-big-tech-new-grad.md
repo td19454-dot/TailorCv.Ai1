@@ -151,13 +151,33 @@ Reluctance to let you talk to an engineer without a founder present. Ask for a c
 
 None of these are disqualifying on their own. Several together, with an evasive answer on runway, is enough to decline — and declining is a legitimate outcome, not rudeness.
 
+## Do's and Don'ts
+
+### Do
+
+- Ask directly how many months of runway the company has
+- Ask who your manager would be and how long they have been there
+- Compare guaranteed cash, treating equity as uncertain upside
+- Confirm sponsorship capability before investing in the process
+- Judge the specific team, not the category
+
+### Don't
+
+- Read fundraising headlines as evidence of stability
+- Assume a title means the same thing it would at a large employer
+- Count equity as part of the core comparison
+- Assume a small company can sponsor as readily as a large one
+- Decide on the strength of "startup" or "big tech" as labels
+
+> **Tip:** Ask a startup directly how many months of runway it has. It is a normal question for a candidate to ask, and a vague answer is itself the answer.
+
 ## Common Mistakes
 
 - **Valuing private equity as cash.** It is an option with unknowable odds; compare the salary.
-- **Choosing on prestige.** The logo matters for two years and the quality of your manager matters for twenty.
-- **Not asking about sponsorship early.** For an international candidate this can invalidate the whole comparison.
+- **Choosing on prestige.** Choosing on prestige the logo matters for two years and the quality of your manager matters for twenty.
+- **Not asking about sponsorship early.** Not asking about sponsorship early for an international candidate this can invalidate the whole comparison.
 - **Assuming a startup means faster learning.** It means faster consequences, which is only learning if someone is there to teach you.
-- **Ignoring mid-sized employers.** The best trade for most graduates and the least contested.
+- **Ignoring mid-sized employers.** Ignoring mid-sized employers the best trade for most graduates and the least contested.
 - **Believing you must choose once.** Moving between them at two years is normal, and both directions are well trodden.
 
 ## What the first two years actually give you
@@ -213,6 +233,19 @@ Everything else is downstream. Salary differences at graduate level are real and
 What compounds is what you learn and who you learn it from, and both are properties of the specific team you would join — the manager, the person who would review your work, whether anyone there has the time and inclination to develop a junior.
 
 So ask the team questions, listen to the quality of the answers, and take the offer where someone clearly wants to build you into something. If your status depends on sponsorship, that constraint comes first and narrows the field before this question applies — but within the field that remains, the answer is the same.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

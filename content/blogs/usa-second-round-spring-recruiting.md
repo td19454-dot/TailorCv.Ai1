@@ -191,14 +191,29 @@ Worth addressing directly, because the practical advice above only works if you 
 
 **And keep the timescale in proportion.** This is a few months of a working life that will run four decades. First jobs are frequently not the intended one, [lateral moves at the two-year mark](/blog/usa-startup-vs-big-tech-new-grad) are how a great many people reach the employers who filtered them out as graduates, and the spring season is a genuine channel rather than a consolation prize.
 
+> **Tip:** Do not write the year off in December. A genuine second wave runs in spring, and the candidates who assume otherwise stop applying right before it opens.
+
 ## Common Mistakes
 
-- **Concluding in December that the year is over.** The single most costly assumption a graduating student can make.
-- **Relying on career fairs that no longer exist at this point in the year.** Direct applications and outreach carry more weight in spring.
+- **Writing off the year in December.** Concluding in December that the year is over. The single most costly assumption a graduating student can make.
+- **Waiting for career fairs.** Relying on career fairs that no longer exist at this point in the year. Direct applications and outreach carry more weight in spring.
 - **Leaving the resume unchanged since autumn.** Add anything built over the winter.
 - **Narrowing the search instead of widening it.** Fewer autumn options is an argument for more spring applications, not fewer.
 - **Treating spring roles as inferior.** Conversion and quality are comparable at many employers; the pool is simply smaller.
 - **Moving slowly once a process starts.** Spring timelines can be compressed and candidates who delay lose roles to those who do not.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [HBCU Recruiting Pipelines in the US - What Actually Exists](/blog/usa-hbcu-recruiting-pipelines)
+- [MBA Internship Recruiting Timeline in the US](/blog/usa-mba-internship-recruiting-timeline)
+- [Quant and Trading Campus Recruiting in the US - How the Process Runs](/blog/usa-quant-trading-campus-recruiting)
+- [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Do employers view spring applicants as leftovers?

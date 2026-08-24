@@ -75,14 +75,29 @@ Adjust any general figure you find for the specific combination of sector, city 
 
 **Where genuine flexibility exists**, typically at smaller or less structured employers, a specific, researched figure presented with a clear reason is a considerably stronger position than a vague request for more without justification.
 
+> **Tip:** Ask what contribution base an employer uses for 五险一金. Two offers with identical headline salaries can differ meaningfully in real value depending on whether contributions are calculated on your full salary or a lower statutory minimum.
+
 ## Common Mistakes
 
-- **Comparing offers on headline salary.** Without adjusting for the specific city's real cost of living. The single most common and costly error in this comparison.
-- **Assuming a national average salary figure applies meaningfully to your specific city and sector.**
-- **Ignoring annual bonus and benefits.** When comparing two offers. Total compensation, not base salary alone, is the figure that matters.
-- **Not asking what a typical bonus actually was, relying instead on a stated target figure.** The two frequently differ.
-- **Trying to negotiate a fixed cohort rate at a structured graduate programme.** Rarely successful and rarely the productive use of the conversation.
-- **Not researching a realistic sector and city-specific figure.** Before an offer conversation. A vague expectation is a weak position.
+- **Comparing offers on headline salary.** The single most common and costly error in this comparison.
+- **Trusting a national average.** Assuming a national average salary figure applies meaningfully to your specific city and sector.
+- **Ignoring annual bonus and benefits.** Total compensation, not base salary alone, is the figure that matters.
+- **Trusting the target bonus figure.** Not asking what a typical bonus actually was, relying instead on a stated target figure. The two frequently differ.
+- **Negotiating a fixed cohort rate.** Trying to negotiate a fixed cohort rate at a structured graduate programme. Rarely successful and rarely the productive use of the conversation.
+- **Walking in without a researched figure.** Not researching a realistic sector and city-specific figure before an offer conversation. A vague expectation is a weak position.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

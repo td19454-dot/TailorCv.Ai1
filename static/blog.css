@@ -3544,3 +3544,123 @@ header.navbar {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+
+/* ─── Mistake cards: match the article's reading typography ───────────────
+   The card body was 1rem Inter while the surrounding article is serif at
+   1.1875rem, so the cards read as UI chrome dropped into the page rather
+   than part of it. Body text takes the serif face; the caption stays
+   sans-serif and slightly larger so it still reads as a label above it.
+   Also softens the heavy red top rule to a left accent, which stops a run
+   of cards looking like a stack of red lines. */
+.blog-detail-page .post-content .mistake-grid-item p,
+.blog-detail-page .post-content .mistake-grid-item li {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: #26303f;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head h3 {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.14rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em;
+}
+.blog-detail-page .post-content .mistake-grid .mistake-grid-item {
+  border: 1px solid #f3d6d6;
+  border-top: 1px solid #f3d6d6;
+  border-left: 4px solid #ef4444;
+  border-radius: 10px;
+  background: #fffcfc;
+  padding: 18px 22px;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head {
+  margin-bottom: 6px;
+}
+
+/* ─── One typeface for the whole article ─────────────────────────────────
+   Headings, Key Takeaways and the FAQ were on the sans display/UI stack
+   while the reading text was serif, so the page read as three different
+   documents stitched together. Everything now uses the serif reading face;
+   headings keep their own weight and size, so the hierarchy is unchanged -
+   only the letterforms match. */
+.blog-detail-page .post-content h2,
+.blog-detail-page .post-content h3,
+.blog-detail-page .post-content h4,
+.blog-detail-page .post-content .key-takeaways-box,
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .key-takeaways-box h2,
+.blog-detail-page .post-content .key-takeaways-box h3,
+.blog-detail-page .post-content .faq-box,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li,
+.blog-detail-page .post-content .faq-box > h2,
+.blog-detail-page .post-content .faq-item h3 {
+  font-family: var(--tcx-serif) !important;
+}
+
+/* Keep the headings' own weight/size after the family swap - a serif at the
+   same numeric weight reads lighter than the sans it replaced, so nudge up. */
+.blog-detail-page .post-content h2 { font-weight: 700; letter-spacing: -0.015em; }
+.blog-detail-page .post-content h3 { font-weight: 700; letter-spacing: -0.01em; }
+.blog-detail-page .post-content .faq-box > h2 { font-weight: 700; }
+.blog-detail-page .post-content .faq-item h3 { font-weight: 700; }
+.blog-detail-page .post-content .key-takeaways-box p,
+.blog-detail-page .post-content .key-takeaways-box li,
+.blog-detail-page .post-content .faq-box p,
+.blog-detail-page .post-content .faq-box li {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+/* ─── Remaining card types onto the serif face ───────────────────────────
+   point-card, step-card, callout boxes, do/don't columns, bottom-line and
+   before/after panels were still on the sans UI stack, so a card dropped
+   mid-article read in a different typeface from the paragraph above it.
+   These all carry article prose, so they take the reading face.
+   Genuine UI widgets (the ATS scanner, CTA strips, the rating bar) are
+   deliberately excluded - they are interface, not article text. */
+.blog-detail-page .post-content .point-card p,
+.blog-detail-page .post-content .point-card li,
+.blog-detail-page .post-content .step-card p,
+.blog-detail-page .post-content .step-card li,
+.blog-detail-page .post-content .callout-box p,
+.blog-detail-page .post-content .callout-box li,
+.blog-detail-page .post-content .dd-grid p,
+.blog-detail-page .post-content .dd-grid li,
+.blog-detail-page .post-content .row-lines p,
+.blog-detail-page .post-content .article-bottomline p,
+.blog-detail-page .post-content .article-bottomline li,
+.blog-detail-page .post-content .ba-split p,
+.blog-detail-page .post-content .tpl-block p,
+.blog-detail-page .post-content .lead-run > .lead-item,
+.blog-detail-page .post-content .lead-list > li {
+  font-family: var(--tcx-serif) !important;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+
+/* Card headings and the small bold labels keep their own weight, on the same
+   serif face, so a card still has a clear label without changing typeface. */
+.blog-detail-page .post-content .point-card h3,
+.blog-detail-page .post-content .step-card .step-card-head,
+.blog-detail-page .post-content .dd-grid h3,
+.blog-detail-page .post-content .callout-head h2,
+.blog-detail-page .post-content .callout-head h3 {
+  font-family: var(--tcx-serif) !important;
+  font-weight: 700 !important;
+}
+
+/* Tables carry article content, not interface, so they take the reading face
+   like every other block. The header row keeps its weight on the same face. */
+.blog-detail-page .post-content table,
+.blog-detail-page .post-content table p,
+.blog-detail-page .post-content th,
+.blog-detail-page .post-content td,
+.blog-detail-page .post-content td li,
+.blog-detail-page .post-content .table-wrap table {
+  font-family: var(--tcx-serif) !important;
+}
+.blog-detail-page .post-content th {
+  font-weight: 700;
+}

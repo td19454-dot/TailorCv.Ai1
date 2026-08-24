@@ -63,14 +63,29 @@ For technology roles specifically, expect a technical interview process closely 
 
 The Big Five are generally strong on the total-package side, not just base pay. Most offer an RRSP matching program alongside base salary — [structurally the same mechanism covered in the general compensation guide](/blog/canada-salary-expectations-new-grad) — and many structured graduate roles include a performance bonus component from the first year, even at the graduate level, worth asking specifically what a typical first-year bonus has actually been for someone at your level rather than relying on a stated target figure alone.
 
+> **Tip:** Search each bank's careers site for its *named* programs rather than "graduate program". The named streams are where the structured technology and rotational roles sit, and a generic search rarely surfaces them.
+
 ## Common Mistakes
 
-- **Applying only to front-office roles and overlooking substantial technology and risk divisions.** Genuinely less contested relative to the quality and scale of the work.
-- **Not applying early enough within the autumn recruiting window.**
-- **Assuming sponsorship willingness is uniform across a bank.** Rather than varying meaningfully by function.
-- **Not preparing specifically for the different interview formats used across front-office.** Technology and risk roles.
-- **Comparing compensation on base salary alone.** Without accounting for the total package including benefits.
-- **Overlooking co-op placements as a genuine pathway into full-time roles.**
+- **Front-office tunnel vision.** Applying only to front-office roles and overlooking substantial technology and risk divisions. Genuinely less contested relative to the quality and scale of the work.
+- **Applying too late.** Not applying early enough within the autumn recruiting window.
+- **Assuming uniform sponsorship.** Assuming sponsorship willingness is uniform across a bank rather than varying meaningfully by function.
+- **One-size-fits-all interview prep.** Not preparing specifically for the different interview formats used across front-office. Technology and risk roles.
+- **Comparing compensation on base salary alone.** Comparing compensation on base salary alone without accounting for the total package including benefits.
+- **Overlooking co-op placements.** Overlooking co-op placements as a genuine pathway into full-time roles.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Provincial Nominee Programs for Canadian Graduates](/blog/canada-provincial-nominee-programs-graduates)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

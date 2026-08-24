@@ -79,20 +79,35 @@ Given how far in advance training contract applications open relative to the eve
 
 Some firms offer a bridging arrangement or scholarship covering the period between accepting an offer and beginning the contract, particularly relevant if your qualifying route involves further study first, worth understanding exactly what your specific firm offers during this period.
 
+> **Tip:** Apply two years ahead of when you want to start. The training contract timeline runs further in advance than almost any other UK graduate route, and final-year applicants are already late.
+
 ## Common Mistakes
 
 - **Discovering the timeline too late.** Applications open around two years ahead.
-- **Skipping vacation schemes.** The primary pipeline at many firms.
+- **Skipping vacation schemes.** Skipping vacation schemes the primary pipeline at many firms.
 - **Thin commercial awareness.** Heavily assessed and where most candidates are weakest.
-- **Generic "why this firm" answers.** The deciding question at every stage.
+- **Generic "why this firm" answers.** Generic "why this firm" answers the deciding question at every stage.
 - **Applying only to the best-known firms.** Regional and mid-market practices are less contested and frequently excellent.
-- **Treating a non-law degree.** As a problem. Firms recruit non-law graduates deliberately.
+- **Treating a non-law degree.** Firms recruit non-law graduates deliberately.
 
 ## Choosing between practice areas once you begin
 
 **Many training contracts include rotations across different practice areas before you specialise**, use this period deliberately to genuinely explore rather than assuming you already know which area suits you best based on limited prior exposure.
 
 **Ask qualified solicitors in different practice areas directly about their actual day-to-day work and what they find both rewarding and genuinely difficult about their specific specialism**, this produces a considerably more accurate picture than general assumptions about what a particular practice area involves.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Teacher Training Routes for Graduates](/blog/uk-teacher-training-routes-guide)
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

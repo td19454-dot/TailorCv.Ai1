@@ -81,20 +81,35 @@ Your tax code is not a single universal figure, it reflects your specific person
 
 If you have income from more than one source, including a second job or freelance work alongside your main employment, understand how this affects your overall tax position, since your personal allowance is generally split or allocated across sources in a specific way that is worth understanding rather than assuming.
 
+> **Tip:** Check your tax code on your first payslip. An emergency code (often ending in W1, M1 or X) means you are overpaying, and it does not always correct itself without a call to HMRC.
+
 ## Common Mistakes
 
-- **Not checking the first payslip at all.** The single easiest way to catch an emergency tax code or a pension enrolment issue early.
-- **Opting out of the workplace pension.** Without understanding the employer match forfeited. Comparable to walking away from free compensation.
-- **Assuming an emergency tax code will sort itself out with no need to check.** It usually does, and confirming it is happening costs nothing.
-- **Not confirming the correct student loan plan is on file.** An incorrect plan type can mean over or under-deduction.
-- **Ignoring a discrepancy between contracted salary and gross pay shown.** Worth raising immediately rather than assuming it will be corrected later.
-- **Waiting months to ask payroll a question that takes five minutes to resolve in month one.**
+- **Not checking the first payslip at all.** Not checking the first payslip at all the single easiest way to catch an emergency tax code or a pension enrolment issue early.
+- **Opting out of the workplace pension.** Comparable to walking away from free compensation.
+- **Ignoring an emergency tax code.** Assuming an emergency tax code will sort itself out with no need to check. It usually does, and confirming it is happening costs nothing.
+- **The wrong student loan plan.** Not confirming the correct student loan plan is on file. An incorrect plan type can mean over or under-deduction.
+- **Ignoring a pay discrepancy.** Ignoring a discrepancy between contracted salary and gross pay shown. Worth raising immediately rather than assuming it will be corrected later.
+- **Sitting on a payroll question.** Waiting months to ask payroll a question that takes five minutes to resolve in month one.
 
 ## Planning around your first full tax year
 
 **Understand that your first partial tax year in a new job may not fully reflect your ongoing annual position**, particularly if you started partway through the tax year, worth being aware that your situation may adjust somewhat as you move into your first complete year of employment.
 
 **Keep basic financial records from the start of your employment**, payslips, your employment contract, and any correspondence about tax code changes, this is genuinely useful both for your own understanding and for any future situation where you need to reference your employment and tax history.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [UK Graduate Salary Expectations - What to Actually Expect](/blog/uk-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

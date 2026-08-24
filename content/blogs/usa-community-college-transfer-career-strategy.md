@@ -194,14 +194,29 @@ Twelve tasks, none longer than an evening, done before your new term begins.
 
 Do this and the first four weeks of term — the ones that decide the year — arrive with a plan already running rather than a blank page.
 
+> **Tip:** Start applying for internships in your first year after transferring, not your second. Transfer students arrive with a compressed runway, and the recruiting calendar does not adjust for it.
+
 ## Common Mistakes
 
-- **Waiting until you arrive to start.** The decisive weeks begin immediately and the preparation belongs to the preceding summer.
-- **Omitting work experience.** A job held through full-time study is evidence, not filler.
+- **Waiting until you arrive to start.** Waiting until you arrive to start the decisive weeks begin immediately and the preparation belongs to the preceding summer.
+- **Omitting work experience.** Omitting work experience a job held through full-time study is evidence, not filler.
 - **Explaining the transfer on the resume.** Nobody asked, and raising it creates a question.
 - **Assuming the pipelines are closed.** Many employers recruit juniors directly and never asked where you spent freshman year.
 - **Networking only within your new cohort.** Community college classmates, former colleagues and faculty from both institutions are all live contacts.
 - **Treating the autumn as the only season.** Spring hiring is real and less contested.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Will a gap between the associate and bachelor's degree hurt me?

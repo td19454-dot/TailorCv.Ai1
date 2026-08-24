@@ -83,13 +83,15 @@ Deploy your strongest project somewhere reachable with a live URL, and write doc
 
 Be ready to discuss specific trade-offs and decisions within your own project in real depth, this is what the technical interview genuinely probes, a project you can only describe superficially, however impressive it looks on the surface, performs worse under real questioning than a simpler project you genuinely understand end to end.
 
+> **Tip:** Look beyond London to Manchester, Edinburgh, Bristol and Cambridge. Each has a genuine tech cluster with materially lower competition and cost of living than the capital.
+
 ## Common Mistakes
 
-- **Applying only to named graduate schemes.** The largest segment hires year-round and is far less contested.
-- **No project evidence.** The strongest credential and the most commonly missing.
+- **Applying only to named graduate schemes.** Applying only to named graduate schemes the largest segment hires year-round and is far less contested.
+- **No project evidence.** No project evidence the strongest credential and the most commonly missing.
 - **Practising coding untimed.** Speed under pressure is what is actually tested.
 - **Ignoring financial services and government technology.** Substantial, technically real, and overlooked.
-- **Not checking the sponsor register.** For international candidates, the filter that determines everything else.
+- **Not checking the sponsor register.** Not checking the sponsor register for international candidates, the filter that determines everything else.
 - **Assuming London is the only market.** Technology is the most distributed sector in UK graduate hiring.
 
 ## Weighing a placement year against direct graduate recruitment
@@ -97,6 +99,19 @@ Be ready to discuss specific trade-offs and decisions within your own project in
 **A [placement year](/blog/uk-internship-placement-year-guide) taken during your degree, where available, is one of the strongest possible credentials for graduate technology hiring**, worth genuinely considering this route if your degree structure permits it, since it converts at meaningfully higher rates than direct graduate applications with no prior industry experience.
 
 **If a placement year is not available or you have already completed your degree without one**, a strong self-built project and any shorter internship experience can substitute effectively, the underlying evidence an employer is looking for, can you actually build things and reason about trade-offs, matters more than the specific credential that demonstrates it.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -59,14 +59,47 @@ Ask questions early rather than assuming, this is generally well received when d
 
 Observe before assuming a general rule applies universally, workplace culture varies genuinely by specific company and team, what is true at one Singapore employer is not automatically true at another.
 
+## Do's and Don'ts
+
+### Do
+
+- Match the local register: specific, measured, evidence-based
+- Arrive on time or early, consistently
+- Ask questions early, while it is expected
+- Join team meals and social occasions when invited
+- Observe your specific team before assuming a general rule
+
+### Don't
+
+- Import an effusive communication style and assume it lands
+- Treat punctuality as flexible once you have settled in
+- Stay quiet to avoid looking inexperienced
+- Skip every social occasion
+- Assume one description of "Singapore work culture" fits every employer
+
+> **Tip:** Match the local register: specific and measured, not effusive. The communication style that reads as enthusiastic elsewhere can read as unserious here, and adjusting early smooths the first months considerably.
+
 ## Common Mistakes
 
 - **Communicating with the enthusiastic.** Superlative-heavy register that works in some other markets, rather than adapting to the local measured, specific norm.
-- **Assuming hierarchy means junior staff cannot contribute substantively.** It affects the manner of contribution more than whether contribution is welcomed.
-- **Treating punctuality as flexible in daily work.** When it is a genuine baseline expectation.
-- **Assuming a single working-hours pattern applies universally across all sectors and employers.** Rather than asking directly.
-- **Not investing deliberate effort in building relationships with colleagues.** Assuming this happens automatically.
-- **Applying a single general rule.** About workplace culture without accounting for genuine variation between specific companies and teams.
+- **Assuming hierarchy silences juniors.** Assuming hierarchy means junior staff cannot contribute substantively. It affects the manner of contribution more than whether contribution is welcomed.
+- **Treating punctuality as flexible in daily work.** Treating punctuality as flexible in daily work when it is a genuine baseline expectation.
+- **Assuming uniform working hours.** Assuming a single working-hours pattern applies universally across all sectors and employers rather than asking directly.
+- **Leaving relationships to chance.** Not investing deliberate effort in building relationships with colleagues. Assuming this happens automatically.
+- **Applying a single general rule.** Applying a single general rule about workplace culture without accounting for genuine variation between specific companies and teams.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Your First Job in Japan - What the Workplace Is Actually Like](/blog/japan-work-culture-first-job-guide)
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

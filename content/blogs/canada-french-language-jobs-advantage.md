@@ -61,14 +61,29 @@ Formal certification of your French proficiency level provides a credible, verif
 
 **Consider whether a period of study or work specifically in a French-speaking environment fits realistically into your timeline**, if building meaningfully stronger French ability is a genuine goal.
 
+> **Tip:** If you want federal bilingual roles, find out the exact profile the posting requires (a rating like BBB) before booking any test. Many candidates prepare for the wrong level entirely because they never checked which of the three skills the role actually demands.
+
 ## Common Mistakes
 
-- **Assuming French carries uniform value across the entire Canadian job market.** Value varies enormously by province, sector and specific role.
-- **Underestimating the genuine time investment required to build professional-level French ability from a limited base.**
-- **Not researching the specific bilingual requirement level.** For a target federal role before assuming your current ability is sufficient.
-- **Overlooking the immigration dimension of French proficiency.** Where it may meaningfully improve your position within certain specific pathways.
-- **Assuming general conversational French is equivalent to the professional register a specific target role may actually require.**
-- **Not pursuing formal certification once genuinely proficient.** When a certified level provides a more credible, verifiable signal than a self-described claim.
+- **Assuming French pays off everywhere.** Assuming French carries uniform value across the entire Canadian job market. Value varies enormously by province, sector and specific role.
+- **Underestimating the time to fluency.** Underestimating the genuine time investment required to build professional-level French ability from a limited base.
+- **Not checking the required level.** Not researching the specific bilingual requirement level. For a target federal role before assuming your current ability is sufficient.
+- **Missing the immigration angle.** Overlooking the immigration dimension of French proficiency where it may meaningfully improve your position within certain specific pathways.
+- **Confusing conversational with professional French.** Assuming general conversational French is equivalent to the professional register a specific target role may actually require.
+- **Skipping formal certification.** Not pursuing formal certification once genuinely proficient when a certified level provides a more credible, verifiable signal than a self-described claim.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+- [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 
