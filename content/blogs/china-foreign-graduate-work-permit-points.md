@@ -21,7 +21,11 @@ showcase: none
 
 ## The categorisation system
 
-**Work permits for foreign nationals in China are broadly categorised, reflecting the qualifications and experience of the applicant along with the nature of the role**, this categorisation matters beyond simple eligibility, since different categories carry meaningfully different requirements and, in some cases, different treatment regarding processing and future flexibility.
+**Work permits for foreign nationals in China are sorted into three named categories — A, B, and C** — under the unified Foreigner's Work Permit system administered nationally (built on the earlier "foreign expert" and standard work permit systems merged in 2017). This categorisation matters beyond simple eligibility, since different categories carry meaningfully different requirements and, in some cases, different treatment regarding processing and future flexibility:
+
+- **Category A ("foreign high-end talent")** — the most favourable tier, generally for applicants meeting a high points threshold (commonly referenced around 85 points on the standard assessment) or qualifying through recognised talent programmes directly. Category A applicants are often exempted from requirements that bind lower categories, including in some cases the standard prior-experience threshold.
+- **Category B ("foreign professional talent")** — the tier most graduate hires actually fall into, typically requiring a bachelor's degree and a defined period of relevant prior work experience — this experience requirement is exactly the obstacle that trips up recent graduates, [covered in the work visa guide](/blog/china-work-visa-z-visa-for-graduates), though some cities pilot exceptions for outstanding recent graduates without the full experience history.
+- **Category C ("foreign ordinary personnel")** — for lower-skill and seasonal roles, generally quota-controlled and considerably more restricted, not the relevant category for most graduate professional hiring.
 
 **Higher categories are generally associated with more established, senior or specifically valued qualifications**, potentially including exemption from certain standard requirements, such as the general prior work experience threshold that presents a real obstacle for many recent graduates, covered in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates).
 
@@ -44,6 +48,8 @@ showcase: none
 **Specific in-demand skills or fields, and in some cases the reputation tier of your educational institution**, may also factor into certain assessments.
 
 **The specific points thresholds and exact weightings are set by policy and reviewed periodically**, this is genuinely not the kind of detail to rely on a general article for, verify current, specific criteria directly with the relevant authority or a qualified immigration advisor before making any decision based on where you expect to fall.
+
+**Applications run through a national online system** — the Foreigner's Work Permit Service System (外国人来华工作管理服务系统) — where your employer submits the sponsoring application and you're assessed against the current published points table. Knowing this system's existence by name is useful mainly so you can ask your employer directly "have you submitted through the national work permit system before," a concrete question that tests real experience rather than a general assurance.
 
 ## Why this matters for your job search
 
@@ -86,7 +92,7 @@ showcase: none
 
 ### What is the difference between the work permit categories?
 
-They broadly reflect an applicant's qualifications, experience and the nature of the role, with different categories carrying different requirements and, in some cases, different treatment or exemptions, verify current specific distinctions directly.
+Category A (high-end talent) carries the most favourable treatment and can exempt applicants from requirements like the standard prior-experience threshold; Category B (professional talent) is where most graduate hires land, typically requiring a bachelor's degree plus relevant experience; Category C (ordinary personnel) is for lower-skill, quota-controlled roles. Verify current specific distinctions directly, since exact thresholds are reviewed periodically.
 
 ### Does a points-based system apply to every applicant?
 

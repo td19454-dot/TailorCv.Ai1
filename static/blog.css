@@ -2484,29 +2484,39 @@ header.navbar {
 }
 
 /* ---- Bold-lead paragraph runs ----
-   Three or more consecutive "**Label.** prose" paragraphs. Each becomes its
-   own light card so the labels the author already wrote read as distinct
-   points instead of one grey wall. */
+   Two or more consecutive "**Label.** prose" paragraphs. Each becomes its
+   own card so the labels the author already wrote read as distinct points
+   instead of one grey wall. Reuses the .step-card blue-gradient palette
+   (light -> medium -> a bit deeper, cycling every 3 items) instead of a flat
+   purple accent, so this matches the blue box style already established
+   elsewhere on the site. */
 .blog-detail-page .post-content .lead-run {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   max-width: 1000px;
   margin: 24px 0;
 }
 .blog-detail-page .post-content .lead-run > .lead-item {
   margin: 0;
   padding: 16px 22px;
-  border: 1px solid #e6e9f2;
-  border-left: 4px solid #5B42F3;
-  border-radius: 10px;
-  background: #fbfbff;
+  border: 1px solid #c8dcf6;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #eef6ff 0%, #e6f1ff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item:nth-child(3n+2) {
+  border-color: #b9d3f4;
+  background: linear-gradient(180deg, #e1efff 0%, #d8eaff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item:nth-child(3n) {
+  border-color: #a9c8f0;
+  background: linear-gradient(180deg, #cfe3ff 0%, #b9d7ff 100%);
 }
 .blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
 .blog-detail-page .post-content .lead-run > .lead-item > b:first-child {
   display: block;
   margin-bottom: 5px;
-  color: #4c34e0;
+  color: #0f3d82;
   font-weight: 700;
 }
 @media (max-width: 640px) {
@@ -3475,5 +3485,5 @@ header.navbar {
 .blog-detail-page .post-content h2:not(:first-of-type) {
   margin-top: 48px !important;
   padding-top: 32px !important;
-  border-top: 1px solid #e5eaf1 !important;
+  border-top: 1px solid rgba(15, 33, 51, 0.08) !important;
 }

@@ -21,7 +21,7 @@ showcase: none
 
 ## The scale of the sector
 
-**State-owned enterprises operate across nearly every major industry**, banking and finance, energy and utilities, telecommunications, transportation and infrastructure, and heavy industry, among many others, collectively representing an enormous share of formal employment and graduate hiring nationally.
+**State-owned enterprises operate across nearly every major industry**, banking and finance, energy and utilities, telecommunications, transportation and infrastructure, and heavy industry, among many others, collectively representing an enormous share of formal employment and graduate hiring nationally. In banking, the "Big Four" state banks — Industrial and Commercial Bank of China (ICBC), China Construction Bank, Agricultural Bank of China, and Bank of China — run some of the largest graduate intakes in the country. In energy, State Grid, Sinopec, PetroChina, and CNOOC (China National Offshore Oil Corporation) anchor the sector; in telecommunications, China Mobile, China Unicom, and China Telecom are the three dominant carriers, each running substantial graduate programmes. Researching these organisations by name, rather than treating "state-owned enterprise" as one undifferentiated category, is where a real, targeted search actually starts.
 
 **Several of these organisations are among the largest employers of any kind in the country**, with graduate intakes running into the tens of thousands annually across their combined operations, the scale here is genuinely different from equivalent sectors in many Western markets.
 
@@ -41,7 +41,7 @@ showcase: none
 
 **Applications open through the standard recruiting seasons**, often with published eligibility criteria stated clearly, including sometimes specific degree requirements, examination results, or other stated thresholds.
 
-**Written examinations are common**, testing general knowledge, logical reasoning, sometimes specific professional or technical content depending on the role, this is a distinctive feature relative to many private-sector processes and worth preparing for specifically.
+**Written examinations are common**, testing general knowledge, logical reasoning, sometimes specific professional or technical content depending on the role, this is a distinctive feature relative to many private-sector processes and worth preparing for specifically. These exams often follow a recognisable format across organisations — general aptitude sections resembling the civil-service style examinations used elsewhere in the public sector, plus role-specific content for technical or professional positions — so practice materials aimed broadly at "SOE recruitment exams" rather than one specific employer are often genuinely transferable preparation.
 
 **Interviews follow**, often panel-based, assessing both competency and fit against the organisation's stated values and requirements.
 
@@ -107,3 +107,7 @@ Generally more formal, with published criteria and often written examinations as
 ### Can international students apply?
 
 Varies by organisation and role, with some positions carrying specific citizenship or residency requirements, check the specific posting's stated criteria directly.
+
+### Which specific organisations should I research first?
+
+The "Big Four" state banks (ICBC, China Construction Bank, Agricultural Bank of China, Bank of China) in finance, State Grid, Sinopec, PetroChina, and CNOOC in energy, and China Mobile, China Unicom, and China Telecom in telecommunications are the names with the largest, most established graduate programmes worth starting your research with by name.

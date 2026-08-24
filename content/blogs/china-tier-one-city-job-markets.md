@@ -23,11 +23,14 @@ showcase: none
 
 **Each major city has a genuinely distinct economic character, rather than being an interchangeable node in a single national job market**, choosing where to build a career deliberately, based on where your target sector actually concentrates, produces a materially better outcome than defaulting to whichever city has the strongest general reputation.
 
-**Financial services and multinational headquarters concentrate heavily in certain cities**, if this is your target sector, the depth of the specific market in a financial hub outweighs a more general reputation elsewhere.
+**The "Big Four" — Beijing, Shanghai, Guangzhou, and Shenzhen — each have a genuinely distinct character worth understanding individually rather than treating as interchangeable "first-tier" options:**
 
-**Technology and internet companies concentrate distinctly, and not always in the same city as finance**, worth researching where your specific target companies and sector genuinely cluster rather than assuming.
+- **Shanghai** is China's financial centre — the Lujiazui district houses the Shanghai Stock Exchange and a dense concentration of domestic and multinational finance, alongside a strong multinational corporate headquarters presence and consumer/retail sector strength.
+- **Beijing** anchors technology and internet at a policy-adjacent scale, alongside being the seat of national government and a major hub for media, education, and research institutions — the two functions (tech and policy) sit closer together here than in most other cities.
+- **Shenzhen** is China's hardware and electronics manufacturing ecosystem made real — often described as "China's Silicon Valley," it hosts a dense cluster of technology and hardware companies alongside the manufacturing supply chain that makes rapid hardware prototyping and production genuinely feasible here in a way it isn't elsewhere.
+- **Guangzhou** carries deep strength in trade and manufacturing-adjacent commerce, historically anchored by the Canton Fair, China's oldest and largest trade fair, alongside a growing services and technology presence of its own.
 
-**Manufacturing, hardware and specific industrial sectors have their own distinct geographic centres**, again worth matching your target industry to where it actually operates at scale, rather than a general assumption about which city is "the" tech or business hub.
+Matching your target industry to where it actually operates at scale, rather than defaulting to whichever of the four has the strongest general national reputation, is what actually improves your outcome.
 
 ## The cost of living factor
 
@@ -37,7 +40,7 @@ showcase: none
 
 ## Second-tier cities as a genuine alternative
 
-**A number of second-tier cities have grown considerably as genuine employment centres in their own right**, no longer simply smaller versions of the first-tier cities, several now host substantial operations for major domestic and international employers across technology, manufacturing and services.
+**A number of second-tier cities have grown considerably as genuine employment centres in their own right**, no longer simply smaller versions of the first-tier cities, several now host substantial operations for major domestic and international employers across technology, manufacturing and services. **Hangzhou is the clearest example** — Alibaba's headquarters and a broader e-commerce and technology cluster have grown around it, genuinely rivaling parts of the first-tier city technology scene rather than trailing it as a distant second choice. **Chengdu, Nanjing, Suzhou, and Wuhan** have each developed real strength in specific sectors (Chengdu in technology and gaming, Suzhou in manufacturing and life sciences adjacent to Shanghai, Wuhan in education-linked technology and optics) worth researching individually rather than treating "second-tier" as a single undifferentiated category.
 
 **Competition for roles in these cities is consistently lower relative to opportunity quality**, because student attention concentrates heavily on the handful of most nationally recognised first-tier cities, exactly [the same pattern that repeats in graduate markets globally](/blog/uk-regional-jobs-outside-london), the second-tier city market is genuinely less crowded relative to what it actually offers.
 
@@ -88,7 +91,11 @@ There is no single answer, it depends entirely on your target sector, since diff
 
 ### Are second-tier cities worth considering seriously?
 
-Yes, genuinely. Several have grown into real employment centres with lower competition relative to opportunity and meaningfully lower cost of living than the largest first-tier cities.
+Yes, genuinely. Hangzhou (anchored by Alibaba and a real technology cluster) is the clearest example, alongside Chengdu, Nanjing, Suzhou, and Wuhan, each with their own sector strengths, lower competition relative to opportunity, and meaningfully lower cost of living than the largest first-tier cities.
+
+### What makes the "Big Four" cities different from each other?
+
+Shanghai leads in finance, Beijing in technology alongside policy and research, Shenzhen in hardware and electronics manufacturing, and Guangzhou in trade and manufacturing-adjacent commerce. Matching your sector to the right one matters more than picking the most nationally famous name.
 
 ### How much does cost of living really differ between the major cities?
 
