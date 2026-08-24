@@ -13,7 +13,7 @@ showcase: none
 
 ## Key Takeaways
 
-- The federal government and each province operate structured student and graduate entry programs, collectively a very large source of graduate employment.
+- The federal government and each province operate structured student and graduate entry programs — FSWEP, PSR, and RPL federally, plus each province's own equivalents — collectively a very large source of graduate employment.
 - Application and hiring processes are generally more formal and criteria-driven than in much of the private sector.
 - Citizenship requirements apply to many, though not all, government positions, worth checking eligibility for a specific role directly.
 - Structured programs and general postings both exist as routes in, and the general postings are consistently less contested.
@@ -37,7 +37,7 @@ showcase: none
 
 **Written assessments and structured interviews are common**, sometimes assessed against a defined competency framework, similar to the [structured, criteria-driven interviewing seen in other public sector contexts](/blog/canada-new-grad-interview-preparation), preparing genuine, specific examples mapped to any published criteria is worth doing deliberately. Where a competency is listed by name in a posting — "judgement," "communication," "results orientation," and similar — preparing one concrete, specific example you can speak to for each named competency in advance is considerably more effective than improvising a response to a competency-based question in the moment.
 
-**Timelines are often longer than private-sector processes**, worth factoring this into your broader job search planning rather than assuming a government process will move as quickly as a private-sector one.
+**Timelines are often longer than private-sector processes**, worth factoring this into your broader job search planning rather than assuming a government process will move as quickly as a private-sector one — running a government application in parallel with private-sector applications, rather than waiting to hear back before starting others, is the practical way to avoid a long silent period with nothing else in motion.
 
 ## Citizenship and eligibility
 

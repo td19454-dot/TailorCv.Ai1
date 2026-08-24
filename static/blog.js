@@ -1062,10 +1062,10 @@
       const lead = firstP.querySelector(":scope > strong:first-child, :scope > b:first-child");
       let title = "Mistake " + (i + 1);
       if (lead && firstP.firstChild === lead) {
-        title += ": " + (lead.textContent || "").replace(/:\s*$/, "");
+        title += ": " + (lead.textContent || "").replace(/[,:;.\s]*$/, "");
         lead.remove();
         if (firstP.firstChild && firstP.firstChild.nodeType === Node.TEXT_NODE) {
-          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^\s*:\s*/, "");
+          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
         }
       }
       h3.textContent = title;
@@ -1278,8 +1278,15 @@ const tcxLeadRuns = () => {
     ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
     ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, .lead-run";
 
-  // A lead paragraph is "<strong>Short label.</strong> then real prose" - not a
-  // fully bolded line, and not a long bolded sentence acting as a heading.
+  // A lead paragraph is "<strong>Label.</strong> then real prose" - not a
+  // fully bolded line, and not a bold span so long it's really the whole
+  // paragraph rather than a lead-in. 200 (not the original 80) because this
+  // corpus commonly bolds a full claim sentence - "Formal coursework,
+  // combined with sustained immersion where possible, produces faster and
+  // more durable progress than either alone." runs ~130 chars - and that
+  // pattern should still get boxed as long as real prose follows it; the
+  // rest.length > 20 check below is what actually rules out a bold line
+  // with nothing meaningful after it.
   const isLead = (p) => {
     if (p.tagName !== "P") return false;
     if (p.closest(BOXED)) return false;
@@ -1287,7 +1294,7 @@ const tcxLeadRuns = () => {
     const lead = p.firstElementChild;
     if (!lead || !/^(STRONG|B)$/.test(lead.tagName) || p.firstChild !== lead) return false;
     const label = (lead.textContent || "").trim();
-    if (!label || label.length > 80) return false;
+    if (!label || label.length > 200) return false;
     const rest = (p.textContent || "").slice(label.length).trim();
     return rest.length > 20;
   };
@@ -1298,13 +1305,26 @@ const tcxLeadRuns = () => {
     if (!isLead(kids[i])) { i++; continue; }
     let j = i;
     while (j < kids.length && isLead(kids[j])) j++;
-    if (j - i >= 3) {
+    // 2, not the original 3: most H2 sections in this corpus run exactly two
+    // bold-lead paragraphs, and those were falling through as plain,
+    // unboxed text - the far more common case, not the exception.
+    if (j - i >= 2) {
       const run = document.createElement("div");
       run.className = "lead-run";
       kids[i].before(run);
       for (let k = i; k < j; k++) {
-        kids[k].classList.add("lead-item");
-        run.appendChild(kids[k]);
+        const p = kids[k];
+        p.classList.add("lead-item");
+        // CSS renders the lead <strong> as its own block line, so whatever
+        // follows it (typically ", " or ": " left over from "**Label**, rest")
+        // becomes the start of the next visual line. Strip that leftover
+        // punctuation so the body doesn't open with a dangling comma/colon.
+        const lead = p.firstElementChild;
+        const after = lead && lead.nextSibling;
+        if (after && after.nodeType === Node.TEXT_NODE) {
+          after.textContent = after.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
+        }
+        run.appendChild(p);
       }
     }
     i = j;

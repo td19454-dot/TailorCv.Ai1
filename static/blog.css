@@ -3462,3 +3462,18 @@ header.navbar {
   color: #b42318;
   font-size: 1.04rem;
 }
+
+/* ─── H2 section-divider gap, forced ──────────────────────────────────────
+   Reported bug: a section H2 was rendering flush against the thin top
+   rule above it, with no visible gap. Several earlier rules already set
+   margin-top/padding-top on h2 (some scoped to ">h2" direct children only),
+   and depending on which one a given post's DOM structure actually matches,
+   the gap could come out far smaller than intended or collapse entirely.
+   This is the last word on it: !important so no earlier or future rule can
+   zero it out again, and a plain descendant selector (not ">") so it applies
+   whether or not the heading is a direct child of .post-content. */
+.blog-detail-page .post-content h2:not(:first-of-type) {
+  margin-top: 48px !important;
+  padding-top: 32px !important;
+  border-top: 1px solid #e5eaf1 !important;
+}

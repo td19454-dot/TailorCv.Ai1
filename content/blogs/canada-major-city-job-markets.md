@@ -27,7 +27,7 @@ Housing is among the most expensive in Canada; check current rental and purchase
 
 ## Vancouver
 
-A distinct gaming and interactive-media cluster (EA has a long-standing Vancouver studio presence, alongside numerous smaller independent studios), plus a growing presence from Amazon, Microsoft, and Salesforce running Vancouver engineering offices. The province's broader resource economy (forestry, mining) sits alongside this, though it's less relevant to most new-grad tech and professional hiring.
+A distinct gaming and interactive-media cluster (EA has a long-standing Vancouver studio presence, alongside numerous smaller independent studios), plus a growing presence from Amazon, Microsoft, and Salesforce running genuine engineering offices in Vancouver rather than purely sales or support functions. The province's broader resource economy (forestry, mining) sits alongside this, though it's less relevant to most new-grad tech and professional hiring.
 
 Housing costs frequently rank at or above Toronto's — check current figures directly rather than assuming; the two cities trade places depending on the specific comparison year and neighbourhood, which is exactly why a stale reputation from a few years ago is a poor substitute for checking current listings before making a decision based on it.
 
