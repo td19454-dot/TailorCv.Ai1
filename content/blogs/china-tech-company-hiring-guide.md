@@ -21,9 +21,9 @@ showcase: portfolio
 
 ## The hiring process
 
-**Applications run through the standard [autumn and spring recruiting seasons](/blog/china-campus-recruiting-qiuzhao-explained)**, with major technology employers among the largest hirers in each cycle, application volumes for well-known companies are enormous, and applying early within the season window is a genuine practical advantage.
+**Applications run through the standard [autumn and spring recruiting seasons](/blog/china-campus-recruiting-qiuzhao-explained)**, with major technology employers among the largest hirers in each cycle, application volumes for well-known companies are enormous, and applying early within the season window is a genuine practical advantage. **Tencent, Alibaba, ByteDance, Huawei, Baidu, and Xiaomi** are the names that dominate graduate recruiting conversations specifically, each running large, well-structured graduate programmes, alongside major platform companies like Meituan and Pinduoduo — researching each company's specific graduate programme name and current recruiting timeline directly, rather than treating "Chinese tech company" as one undifferentiated target, is worth doing early.
 
-**Online technical assessments** typically follow the initial application, commonly algorithmic coding problems under time pressure, closely mirroring the format used by major technology employers internationally, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers substantially, since question patterns and the underlying skills tested are broadly similar worldwide.
+**Online technical assessments** typically follow the initial application, commonly algorithmic coding problems under time pressure, closely mirroring the format used by major technology employers internationally, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers substantially, since question patterns and the underlying skills tested are broadly similar worldwide. **Boss直聘 (Boss Zhipin)** is the dominant general recruiting platform in the domestic market, with a distinctive direct-chat-with-hiring-manager feature rather than a purely resume-submission model; **拉勾网 (Lagou)** is a tech-specific platform worth knowing alongside it. Both are worth having an account on if you're seriously targeting domestic employers, since a meaningful share of roles are posted there before or instead of a company's own careers page.
 
 **Multiple technical interview rounds** follow, assessing data structures, algorithms and problem solving, often with increasing seniority of interviewer at each stage, narrating your reasoning aloud while solving matters here exactly as it does anywhere, silence during a technical round is read as a lack of process regardless of whether the final answer is correct.
 
@@ -41,7 +41,7 @@ showcase: portfolio
 
 ## Work culture, honestly
 
-**Working hours at many Chinese technology companies run longer than at comparable Western employers**, this is a genuine and widely discussed characteristic of the sector rather than an exaggeration, and it varies by company and team, but it is worth asking about directly and honestly during the interview process rather than discovering it after accepting an offer.
+**Working hours at many Chinese technology companies run longer than at comparable Western employers, and this has a specific, widely-known name: "996"** — a 9am-to-9pm, six-days-a-week schedule that became a genuinely public, widely-debated topic in the sector in recent years, with some companies scaling it back publicly in response to that scrutiny while others continue similar patterns less openly. This is a genuine and widely discussed characteristic of parts of the sector rather than an exaggeration, and it varies meaningfully by company and team, but it is worth asking about directly and honestly during the interview process — using the term "996" specifically when you ask signals you've done real research and tends to get a more candid answer than a vague question about "work-life balance."
 
 **Ask current or recent employees directly** about typical hours and pace, rather than relying solely on what a recruiter presents, a short conversation through your university's alumni network or a professional contact gives a far more accurate picture than the recruiting material.
 
@@ -101,3 +101,11 @@ Within the [autumn or spring recruiting season windows](/blog/china-campus-recru
 ### Are international students competitive for these roles?
 
 Yes, particularly with strong technical preparation, though language ability and the specific employer's stance on hiring foreign nationals both matter and are worth confirming early.
+
+### What does "996" actually mean, and should I ask about it directly?
+
+9am to 9pm, six days a week — a widely known shorthand for long working hours at parts of the sector. Asking about it directly and by name during interviews signals genuine research and tends to get a more candid answer than a vague work-life-balance question.
+
+### What platforms should I use to search for roles at domestic companies?
+
+Boss直聘 (Boss Zhipin) is the dominant general platform, with a direct-chat-with-hiring-manager model; 拉勾网 (Lagou) is a tech-specific alternative. Both are worth an account on alongside checking company career pages directly.
