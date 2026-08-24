@@ -27,27 +27,27 @@ showcase: none
 
 ## The case interview, and why preparation transfers
 
-**Case interview format here closely mirrors international convention**, a business problem presented, structured thinking demonstrated aloud, arithmetic performed under time pressure with the approach stated before calculating, this is essentially the same format used at major consulting firms internationally, and preparation done for [case interviews anywhere](/blog/usa-consulting-case-interview-campus) transfers substantially.
+Case interview format here closely mirrors international convention, a business problem presented, structured thinking demonstrated aloud, arithmetic performed under time pressure with the approach stated before calculating, this is essentially the same format used at major consulting firms internationally, and preparation done for [case interviews anywhere](/blog/usa-consulting-case-interview-campus) transfers substantially.
 
-**Memorised frameworks are heard and score poorly here exactly as they do internationally**, structure built specifically from the actual case prompt, rather than a generic framework announced and imposed regardless of fit, is what distinguishes strong candidates.
+Memorised frameworks are heard and score poorly here exactly as they do internationally, structure built specifically from the actual case prompt, rather than a generic framework announced and imposed regardless of fit, is what distinguishes strong candidates.
 
-**The fit or behavioural component follows the [region's generally measured, evidence-based register](/blog/singapore-interview-etiquette-guide)**, specific evidence rather than confident self-description is what lands well here.
+The fit or behavioural component follows the [region's generally measured, evidence-based register](/blog/singapore-interview-etiquette-guide), specific evidence rather than confident self-description is what lands well here.
 
 ## Building regional commercial awareness
 
-**This is worth taking seriously and building deliberately, since Singapore-based consulting work frequently involves genuinely regional client problems, spanning multiple Southeast Asian markets rather than a single domestic economy.**
+**This is worth taking seriously and building deliberately**, since Singapore-based consulting work frequently involves genuinely regional client problems, spanning multiple Southeast Asian markets rather than a single domestic economy.
 
 **Follow business news relevant to the broader Southeast Asian region, not solely Singapore itself**, over several weeks, forming actual views on what you read, exactly the [same deliberate approach that builds commercial awareness in any consulting or banking process](/blog/singapore-banking-graduate-programmes).
 
-**Being able to discuss a specific regional business trend, and connect it to a firm's actual practice areas, distinguishes candidates considerably more here than a generic, undifferentiated interest in consulting.**
+**Being able to discuss a specific regional business trend**, and connect it to a firm's actual practice areas, distinguishes candidates considerably more here than a generic, undifferentiated interest in consulting.
 
 ## Where the less contested opportunities are
 
-**The most globally recognised firms attract the largest volume of applications**, similar to [the pattern seen at the most visible employer in any sector](/blog/singapore-banking-graduate-programmes), a small number of the most recognisable names draw disproportionate applicant attention.
+The most globally recognised firms attract the largest volume of applications, similar to [the pattern seen at the most visible employer in any sector](/blog/singapore-banking-graduate-programmes), a small number of the most recognisable names draw disproportionate applicant attention.
 
-**Boutique and specialist consulting firms, focused on specific industries or types of work, offer genuinely substantial and interesting projects with considerably less competition**, worth researching directly rather than applying only to the handful of most globally recognised names.
+Boutique and specialist consulting firms, focused on specific industries or types of work, offer genuinely substantial and interesting projects with considerably less competition, worth researching directly rather than applying only to the handful of most globally recognised names.
 
-**Regional offices of firms based elsewhere, and the strategy or advisory divisions of larger professional services firms, offer further genuine and often overlooked routes into consulting work.**
+Regional offices of firms based elsewhere, and the strategy or advisory divisions of larger professional services firms, offer further genuine and often overlooked routes into consulting work.
 
 ## Applying well
 
@@ -57,7 +57,7 @@ showcase: none
 
 **Build genuine regional commercial awareness over several weeks**, rather than cramming immediately before an interview.
 
-**Prepare fit and behavioural examples in the [measured, evidence-based register](/blog/singapore-interview-etiquette-guide) that lands well locally.**
+**Prepare fit and behavioural examples in the [measured**, evidence-based register](/blog/singapore-interview-etiquette-guide) that lands well locally.
 
 **Apply to boutique and specialist firms alongside the largest global names**, deliberately widening your target list beyond the most recognisable few.
 

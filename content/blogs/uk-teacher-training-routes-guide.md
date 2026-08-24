@@ -35,17 +35,17 @@ showcase: none
 
 ## Funding and shortage subjects
 
-**This is the variable that matters most financially.**
+This is the variable that matters most financially.
 
-**Bursaries and scholarships** are available for training in certain subjects, and the amounts differ substantially by subject and by year. Physics, mathematics, chemistry, computing and modern languages have typically attracted the strongest support, reflecting persistent shortages.
+Bursaries and scholarships are available for training in certain subjects, and the amounts differ substantially by subject and by year. Physics, mathematics, chemistry, computing and modern languages have typically attracted the strongest support, reflecting persistent shortages.
 
-**Subjects with less shortage attract less or no funding**, which is a genuine financial consideration when choosing what to train in.
+Subjects with less shortage attract less or no funding, which is a genuine financial consideration when choosing what to train in.
 
-**Salaried routes remove the fee question entirely**, since you are employed rather than studying.
+Salaried routes remove the fee question entirely, since you are employed rather than studying.
 
-**Student finance** is available for fee-paying routes.
+Student finance is available for fee-paying routes.
 
-**Figures change every year.** Check the current cycle's funding rather than relying on remembered numbers, since this is exactly the kind of detail that goes stale.
+Figures change every year. Check the current cycle's funding rather than relying on remembered numbers, since this is exactly the kind of detail that goes stale.
 
 ## Requirements
 
@@ -59,15 +59,15 @@ showcase: none
 
 ## Applying
 
-**Applications run through a centralised system** with its own cycle, opening in the autumn for training beginning the following September.
+Applications run through a centralised system with its own cycle, opening in the autumn for training beginning the following September.
 
-**Apply early.** Popular subjects and providers fill, and applications are considered as they arrive rather than after a deadline.
+Apply early. Popular subjects and providers fill, and applications are considered as they arrive rather than after a deadline.
 
-**Get school experience first.** It strengthens the application and, more usefully, tells you whether you actually want this.
+Get school experience first. It strengthens the application and, more usefully, tells you whether you actually want this.
 
-**Write the personal statement about teaching, not about yourself.** Why this subject, why this age group, what you have seen in classrooms, and what you understand about the difficulty. Generic enthusiasm about wanting to make a difference is what everyone writes.
+Write the personal statement about teaching, not about yourself. Why this subject, why this age group, what you have seen in classrooms, and what you understand about the difficulty. Generic enthusiasm about wanting to make a difference is what everyone writes.
 
-**Apply to more than one provider**, and consider both university-led and school-led routes.
+Apply to more than one provider, and consider both university-led and school-led routes.
 
 ## What the first years are like
 
@@ -81,9 +81,9 @@ showcase: none
 
 ## Understanding the realistic timeline from application to classroom
 
-**Factor in the full timeline from application through training to your first year as a fully qualified teacher when planning**, this is a genuinely multi-year commitment, worth entering with realistic expectations about the sequence rather than only focusing on the immediate application stage.
+Factor in the full timeline from application through training to your first year as a fully qualified teacher when planning, this is a genuinely multi-year commitment, worth entering with realistic expectations about the sequence rather than only focusing on the immediate application stage.
 
-**If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents**, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
+If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
 
 ## Common Mistakes
 

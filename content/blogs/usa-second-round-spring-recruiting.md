@@ -37,11 +37,11 @@ Autumn recruiting is loud, visible and finite. Career fairs, structured programm
 
 The mechanism is simple and it is the whole argument for paying attention to this season.
 
-**Most students have stopped looking.** By January, a large share of the graduating class has either accepted an autumn offer or concluded, incorrectly, that the process has ended for the year. Application volume to spring postings is measurably lower than to equivalent fall postings.
+Most students have stopped looking. By January, a large share of the graduating class has either accepted an autumn offer or concluded, incorrectly, that the process has ended for the year. Application volume to spring postings is measurably lower than to equivalent fall postings.
 
-**Applicant quality is not lower.** The students still searching in spring include people who were simply late to start, people whose target industry recruits later by nature, and people who declined an autumn offer for a good reason. This is not a weaker pool; it is a smaller one.
+Applicant quality is not lower. The students still searching in spring include people who were simply late to start, people whose target industry recruits later by nature, and people who declined an autumn offer for a good reason. This is not a weaker pool; it is a smaller one.
 
-**Recruiters notice persistence.** A candidate applying in March with energy and a clear reason for their timing reads differently from one applying in October as part of the herd. Several recruiters describe spring candidates as, on average, more focused, precisely because they were not swept along by a season.
+Recruiters notice persistence. A candidate applying in March with energy and a clear reason for their timing reads differently from one applying in October as part of the herd. Several recruiters describe spring candidates as, on average, more focused, precisely because they were not swept along by a season.
 
 ## Where spring roles actually are
 
@@ -61,17 +61,17 @@ The mechanism is simple and it is the whole argument for paying attention to thi
 
 The fundamentals do not change; the emphasis does.
 
-**Fewer career fairs, more direct outreach.** Spring campus events are thinner. Compensate with weekly career-page checks and active messaging rather than waiting for employers to come to you.
+Fewer career fairs, more direct outreach. Spring campus events are thinner. Compensate with weekly career-page checks and active messaging rather than waiting for employers to come to you.
 
-**Explain your timeline in one honest sentence, if asked.** "I was focused on a specific target in the fall that did not work out, and I'm applying more broadly now" is a complete and unremarkable answer. Nobody expects an elaborate justification.
+Explain your timeline in one honest sentence, if asked. "I was focused on a specific target in the fall that did not work out, and I'm applying more broadly now" is a complete and unremarkable answer. Nobody expects an elaborate justification.
 
-**Keep the resume current.** If you built anything over the winter — a project, a certification, additional coursework — add it. A document unchanged since September signals a season of inactivity even if that is not true.
+Keep the resume current. If you built anything over the winter — a project, a certification, additional coursework — add it. A document unchanged since September signals a season of inactivity even if that is not true.
 
-**Confirm it still [parses cleanly](/ats-analysis).** The screen is the same in every season.
+Confirm it still [parses cleanly](/ats-analysis). The screen is the same in every season.
 
-**Widen the geography and the employer tier.** Spring is a good time to add [mid-sized companies](/blog/usa-startup-vs-big-tech-new-grad) and locations you had not considered, because your options have narrowed relative to autumn and broadening the search restores volume.
+Widen the geography and the employer tier. Spring is a good time to add [mid-sized companies](/blog/usa-startup-vs-big-tech-new-grad) and locations you had not considered, because your options have narrowed relative to autumn and broadening the search restores volume.
 
-**Move fast once something starts.** Spring processes, particularly for roles with a summer start already approaching, often move faster than autumn ones. Be ready to interview on short notice.
+Move fast once something starts. Spring processes, particularly for roles with a summer start already approaching, often move faster than autumn ones. Be ready to interview on short notice.
 
 ## Who this matters most for
 
@@ -89,19 +89,19 @@ The fundamentals do not change; the emphasis does.
 
 For anyone starting the search in January rather than September, this is a workable sequence.
 
-**January.** Rebuild the resume with anything from the autumn — coursework, a project, a certification — added. Confirm it [parses cleanly](/ats-analysis). Build a target list of thirty employers weighted toward mid-sized companies and organisations that hire year-round.
+January. Rebuild the resume with anything from the autumn — coursework, a project, a certification — added. Confirm it [parses cleanly](/ats-analysis). Build a target list of thirty employers weighted toward mid-sized companies and organisations that hire year-round.
 
-**Early February.** Begin weekly career-page checks across the whole list. Start outreach — three messages a day to alumni and recent joiners, using the [same mechanics](/blog/usa-cold-email-networking-students) that work in any season.
+Early February. Begin weekly career-page checks across the whole list. Start outreach — three messages a day to alumni and recent joiners, using the [same mechanics](/blog/usa-cold-email-networking-students) that work in any season.
 
-**Mid to late February.** Applications at volume. Continue outreach in parallel rather than pausing it once applications go out.
+Mid to late February. Applications at volume. Continue outreach in parallel rather than pausing it once applications go out.
 
-**March.** Interviews for the earliest spring roles. Keep applying — a promising interview process is not a reason to stop the pipeline behind it.
+March. Interviews for the earliest spring roles. Keep applying — a promising interview process is not a reason to stop the pipeline behind it.
 
-**April.** A second smaller wave often appears here as summer-start roles get finalised. Widen geography if the search has been narrow.
+April. A second smaller wave often appears here as summer-start roles get finalised. Widen geography if the search has been narrow.
 
-**May.** Decisions and offers for roles with a summer or early-autumn start. If nothing has landed, this is not unusual — continue into the months immediately following graduation rather than treating commencement as a deadline.
+May. Decisions and offers for roles with a summer or early-autumn start. If nothing has landed, this is not unusual — continue into the months immediately following graduation rather than treating commencement as a deadline.
 
-**Throughout:** track everything in one place, review the funnel every few weeks rather than daily, and remember that the pool of active candidates is genuinely smaller in spring, which is the entire reason this season is worth running properly rather than apologetically.
+Throughout: track everything in one place, review the funnel every few weeks rather than daily, and remember that the pool of active candidates is genuinely smaller in spring, which is the entire reason this season is worth running properly rather than apologetically.
 
 ## What to build over the winter
 
@@ -123,21 +123,21 @@ The months between the autumn cycle ending and the spring wave opening are the m
 
 Since the channel mix shifts, it is worth being specific about where to look rather than repeating that campus events are thinner.
 
-**Company career pages, checked weekly.** The primary channel in spring by a wide margin. Build a list of thirty employers and work through it every Monday — most weeks nothing has changed and the weeks something has are the ones that matter.
+Company career pages, checked weekly. The primary channel in spring by a wide margin. Build a list of thirty employers and work through it every Monday — most weeks nothing has changed and the weeks something has are the ones that matter.
 
-**Employers you already applied to in autumn.** Some reopen requisitions after under-filling or losing candidates. It costs nothing to check and the process is already familiar to you.
+Employers you already applied to in autumn. Some reopen requisitions after under-filling or losing candidates. It costs nothing to check and the process is already familiar to you.
 
-**Referrals.** Unaffected by season, because the mechanism is a person routing your application past a filter. Three messages a day, using the [outreach approach](/blog/usa-cold-email-networking-students).
+Referrals. Unaffected by season, because the mechanism is a person routing your application past a filter. Three messages a day, using the [outreach approach](/blog/usa-cold-email-networking-students).
 
-**Mid-sized and local employers**, which never ran an autumn calendar at all and are simply hiring as normal.
+Mid-sized and local employers, which never ran an autumn calendar at all and are simply hiring as normal.
 
-**University job boards**, which continue posting through spring even after the campus events wind down.
+University job boards, which continue posting through spring even after the campus events wind down.
 
-**Government and public sector roles**, running on their own long timelines entirely independent of the campus cycle — see the [federal guide](/blog/usa-federal-government-jobs-for-students).
+Government and public sector roles, running on their own long timelines entirely independent of the campus cycle — see the [federal guide](/blog/usa-federal-government-jobs-for-students).
 
-**Professional society job boards** in your field, which are consistently under-used by students and carry roles that never reach general boards.
+Professional society job boards in your field, which are consistently under-used by students and carry roles that never reach general boards.
 
-**And roles with immediate starts.** Spring produces more of these than autumn does, because the vacancy is real and current rather than a cohort seat months away. If you can start soon, say so — it is a genuine advantage in this season and a non-factor in the autumn one.
+And roles with immediate starts. Spring produces more of these than autumn does, because the vacancy is real and current rather than a cohort seat months away. If you can start soon, say so — it is a genuine advantage in this season and a non-factor in the autumn one.
 
 ## Reapplying to employers who rejected you
 
@@ -159,21 +159,21 @@ A specific spring situation that comes up constantly and that students handle ba
 
 Worth naming explicitly, because "spring recruiting" implies a second round of the same process when a large part of it is really a different market that was always open.
 
-**Small and mid-sized companies.** The majority of US employers. They have no graduate programme, no campus presence, and no calendar — a role appears when someone leaves or the work grows. The [mid-market argument](/blog/usa-startup-vs-big-tech-new-grad) applies with particular force in spring, because these employers are unaffected by the season's rhythm entirely.
+Small and mid-sized companies. The majority of US employers. They have no graduate programme, no campus presence, and no calendar — a role appears when someone leaves or the work grows. The [mid-market argument](/blog/usa-startup-vs-big-tech-new-grad) applies with particular force in spring, because these employers are unaffected by the season's rhythm entirely.
 
-**Healthcare systems.** [Hiring continuously](/blog/usa-nursing-and-healthcare-new-grad-jobs) rather than in cohorts, with residency intakes on their own schedule.
+Healthcare systems. [Hiring continuously](/blog/usa-nursing-and-healthcare-new-grad-jobs) rather than in cohorts, with residency intakes on their own schedule.
 
-**Government at every level.** Federal, state and local, running on [long timelines independent of any campus cycle](/blog/usa-federal-government-jobs-for-students).
+Government at every level. Federal, state and local, running on [long timelines independent of any campus cycle](/blog/usa-federal-government-jobs-for-students).
 
-**Education.** School districts recruit in [spring for an autumn start](/blog/usa-teaching-jobs-for-international-graduates), which is the opposite of the corporate calendar.
+Education. School districts recruit in [spring for an autumn start](/blog/usa-teaching-jobs-for-international-graduates), which is the opposite of the corporate calendar.
 
-**Universities and research institutions.** Posting year-round, and frequently [cap-exempt](/blog/usa-cap-exempt-h1b-employers) if that matters to you.
+Universities and research institutions. Posting year-round, and frequently [cap-exempt](/blog/usa-cap-exempt-h1b-employers) if that matters to you.
 
-**Non-profits.** Frequently hiring only weeks before a start date, because funding decisions arrive late.
+Non-profits. Frequently hiring only weeks before a start date, because funding decisions arrive late.
 
-**Startups.** Hiring on need, always.
+Startups. Hiring on need, always.
 
-**The reframe worth taking from this:** a student in April has not missed the market. They have missed one visible slice of it and still have access to most of the economy, which is a very different situation from the one the autumn calendar implies.
+The reframe worth taking from this: a student in April has not missed the market. They have missed one visible slice of it and still have access to most of the economy, which is a very different situation from the one the autumn calendar implies.
 
 ## Common Mistakes
 

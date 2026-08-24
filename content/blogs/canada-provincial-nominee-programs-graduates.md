@@ -31,9 +31,9 @@ Most provincial streams require a valid job offer from an employer in that provi
 - **Nova Scotia's International Graduate stream** (under the Nova Scotia Nominee Program) similarly doesn't require a job offer for eligible graduates of a Nova Scotia institution in a program tied to an in-demand field.
 - Several other provinces (Manitoba's International Education stream, Saskatchewan's International Skilled Worker – Student category) have their own graduate pathways, but check current requirements directly — some tracks within these do still require an offer or a period of post-graduation work first.
 
-**If avoiding the job-offer bottleneck matters to you, this is worth factoring into where you choose to study, not just where you look for work afterward.**
+If avoiding the job-offer bottleneck matters to you, this is worth factoring into where you choose to study, not just where you look for work afterward.
 
-**British Columbia runs a notable exception on the job-offer side for one specific sector.** The BC PNP Tech program designates a defined list of eligible tech occupations for expedited processing under the province's Skilled Worker stream — a job offer is still required, but the processing itself moves faster than the standard stream, and the occupation list is worth checking directly if you're in software, IT, or a related technical field targeting BC specifically.
+British Columbia runs a notable exception on the job-offer side for one specific sector. The BC PNP Tech program designates a defined list of eligible tech occupations for expedited processing under the province's Skilled Worker stream — a job offer is still required, but the processing itself moves faster than the standard stream, and the occupation list is worth checking directly if you're in software, IT, or a related technical field targeting BC specifically.
 
 ## Why the province where you studied usually locks you in
 
@@ -55,7 +55,7 @@ Processing times vary by province and by stream, and can run from a few months t
 
 ## Choosing a province: fit the field, not just the fastest stream
 
-**Cross-reference a province's in-demand occupation list against your actual field before choosing based on stream accessibility alone** — a fast, low-competition stream in a province with little activity in your sector is a weaker choice than a slightly more competitive stream in a place where [your industry actually concentrates](/blog/canada-major-city-job-markets). Some provincial streams also carry a residency commitment — a stated expectation that you'll live and work in that province for a period after nomination — worth reading the specific terms before applying, not after.
+Cross-reference a province's in-demand occupation list against your actual field before choosing based on stream accessibility alone — a fast, low-competition stream in a province with little activity in your sector is a weaker choice than a slightly more competitive stream in a place where [your industry actually concentrates](/blog/canada-major-city-job-markets). Some provincial streams also carry a residency commitment — a stated expectation that you'll live and work in that province for a period after nomination — worth reading the specific terms before applying, not after.
 
 ## Common Mistakes
 

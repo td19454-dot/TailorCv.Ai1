@@ -31,15 +31,15 @@ Several large employers, particularly in technology, finance and consulting, run
 
 ## Where the pipelines concentrate
 
-**Technology.** Several major technology employers run explicit HBCU-focused engineering and technical scholarship programmes, frequently starting as early as the first or second year, with summer programming built in from the start rather than added later.
+Technology. Several major technology employers run explicit HBCU-focused engineering and technical scholarship programmes, frequently starting as early as the first or second year, with summer programming built in from the start rather than added later.
 
-**Finance.** Banks and asset managers run structured analyst pipelines with HBCU-specific components, often paired with named scholarships and a defined summer internship track feeding a full-time offer.
+Finance. Banks and asset managers run structured analyst pipelines with HBCU-specific components, often paired with named scholarships and a defined summer internship track feeding a full-time offer.
 
-**Consulting.** Several firms run HBCU-specific recruiting events and sometimes fast-tracked interview processes.
+Consulting. Several firms run HBCU-specific recruiting events and sometimes fast-tracked interview processes.
 
-**Corporate and government-adjacent employers.** Utilities, defence contractors and large industrials frequently maintain relationships that are less visible nationally and very active locally.
+Corporate and government-adjacent employers. Utilities, defence contractors and large industrials frequently maintain relationships that are less visible nationally and very active locally.
 
-**What this means for targeting.** If your field is one of these, checking whether your specific employer target has a named HBCU programme is worth the search — the application often runs through a different, less contested portal than the general one, even at the same company.
+What this means for targeting. If your field is one of these, checking whether your specific employer target has a named HBCU programme is worth the search — the application often runs through a different, less contested portal than the general one, even at the same company.
 
 ## Career fairs and multi-campus events
 
@@ -57,13 +57,13 @@ Structured events specifically serving HBCU students are a genuine hiring channe
 
 A category worth understanding separately from ordinary financial aid, because many of these programmes include structured career placement as a core feature rather than an afterthought.
 
-**What they typically include.** Funding, a summer internship track running across multiple years rather than a single placement, mentorship from company employees, and — at the strongest programmes — an expectation of a full-time offer on graduation, contingent on performance.
+What they typically include. Funding, a summer internship track running across multiple years rather than a single placement, mentorship from company employees, and — at the strongest programmes — an expectation of a full-time offer on graduation, contingent on performance.
 
-**When they open.** Often earlier than general internship recruiting, sometimes as early as the first or second year of study, because the employer is investing in a multi-year relationship rather than filling a single summer role.
+When they open. Often earlier than general internship recruiting, sometimes as early as the first or second year of study, because the employer is investing in a multi-year relationship rather than filling a single summer role.
 
-**Why this matters for timing.** A student who waits until junior year to start engaging with career services may have missed a scholarship-and-pipeline programme that opened in freshman year. The [general timing lesson](/blog/usa-second-round-spring-recruiting) about starting earlier than feels necessary applies with particular force here.
+Why this matters for timing. A student who waits until junior year to start engaging with career services may have missed a scholarship-and-pipeline programme that opened in freshman year. The [general timing lesson](/blog/usa-second-round-spring-recruiting) about starting earlier than feels necessary applies with particular force here.
 
-**How to find them.** The careers office again, plus direct searches of major employers' diversity and inclusion or HBCU-specific programme pages, plus the professional societies in your field, which frequently administer or co-sponsor these funds.
+How to find them. The careers office again, plus direct searches of major employers' diversity and inclusion or HBCU-specific programme pages, plus the professional societies in your field, which frequently administer or co-sponsor these funds.
 
 ## Applying well, on top of the pipeline
 
@@ -85,17 +85,17 @@ The pipeline gets you access. What happens after is the same as anywhere else.
 
 The mentorship and alumni access that come with these pipelines are frequently under-used, and the difference between using them well and using them badly is specific.
 
-**Come with a real question, not a general request.** "What does the first six months on your team actually look like?" produces a useful answer. "Any advice?" does not.
+Come with a real question, not a general request. "What does the first six months on your team actually look like?" produces a useful answer. "Any advice?" does not.
 
-**Ask about the interview process specifically.** Someone who went through the same pipeline recently knows exactly what to expect, and that information is not published anywhere.
+Ask about the interview process specifically. Someone who went through the same pipeline recently knows exactly what to expect, and that information is not published anywhere.
 
-**Ask what they wish they had asked at your stage.** This single question routinely surfaces the most useful advice of the conversation.
+Ask what they wish they had asked at your stage. This single question routinely surfaces the most useful advice of the conversation.
 
-**Follow up after any interview you have**, whether it went well or not. A mentor who hears nothing until you need something again is a resource being wasted.
+Follow up after any interview you have, whether it went well or not. A mentor who hears nothing until you need something again is a resource being wasted.
 
-**Say thank you specifically**, referencing what helped. It is a small thing and it is the reason people keep making time for students.
+Say thank you specifically, referencing what helped. It is a small thing and it is the reason people keep making time for students.
 
-**And use more than one connection.** A single mentor gives one perspective; three conversations across the same employer give you a much more reliable picture of the actual role and team.
+And use more than one connection. A single mentor gives one perspective; three conversations across the same employer give you a much more reliable picture of the actual role and team.
 
 ## Applying to multiple pipelines at once
 
@@ -115,17 +115,17 @@ Students sometimes assume they must choose one employer relationship to focus on
 
 Access gets you a conversation. The conversation itself is the same assessment every candidate faces, and preparing for it deliberately is where the pipeline advantage converts into an offer.
 
-**For technical roles, the loop is standard.** Online assessment, phone screen, then a full technical round covering data structures, algorithms and problem solving out loud. The [preparation plan](/blog/usa-technical-interview-newgrad-prep) applies without modification — depth on arrays, strings, hash maps, trees and graphs, practised under a timer and solved while narrating.
+For technical roles, the loop is standard. Online assessment, phone screen, then a full technical round covering data structures, algorithms and problem solving out loud. The [preparation plan](/blog/usa-technical-interview-newgrad-prep) applies without modification — depth on arrays, strings, hash maps, trees and graphs, practised under a timer and solved while narrating.
 
-**For finance roles, expect technicals plus a heavy fit component.** Accounting fundamentals, valuation basics, and a genuinely good answer to why this firm — the [superday structure](/blog/usa-finance-superday-guide) is the same regardless of which channel brought you in.
+For finance roles, expect technicals plus a heavy fit component. Accounting fundamentals, valuation basics, and a genuinely good answer to why this firm — the [superday structure](/blog/usa-finance-superday-guide) is the same regardless of which channel brought you in.
 
-**For consulting, the case interview is the whole assessment.** Twenty to thirty live cases with a partner is the realistic preparation volume, and the [case approach](/blog/usa-consulting-case-interview-campus) covers what separates candidates.
+For consulting, the case interview is the whole assessment. Twenty to thirty live cases with a partner is the realistic preparation volume, and the [case approach](/blog/usa-consulting-case-interview-campus) covers what separates candidates.
 
-**For every one of them, build the behavioural stories.** Six of them, covering teamwork, conflict, failure, leading without authority, learning fast, and something you are proud of. The [story bank method](/blog/usa-behavioral-interview-star-campus) is the efficient way to do it, and it serves every interview you will face rather than just one.
+For every one of them, build the behavioural stories. Six of them, covering teamwork, conflict, failure, leading without authority, learning fast, and something you are proud of. The [story bank method](/blog/usa-behavioral-interview-star-campus) is the efficient way to do it, and it serves every interview you will face rather than just one.
 
-**Use your mentor for the specific version.** Someone inside the company who went through the same process recently knows what the rounds actually look like this year, which is information no general guide can give you.
+Use your mentor for the specific version. Someone inside the company who went through the same process recently knows what the rounds actually look like this year, which is information no general guide can give you.
 
-**And do not assume the pipeline lowers the bar.** In nearly every case it changes how you are found, not how you are evaluated. Candidates who prepare on the assumption that access equals an offer are the ones who are surprised.
+And do not assume the pipeline lowers the bar. In nearly every case it changes how you are found, not how you are evaluated. Candidates who prepare on the assumption that access equals an offer are the ones who are surprised.
 
 ## When the pipeline is not the right fit
 
@@ -145,17 +145,17 @@ Worth saying plainly, because these programmes are presented as unambiguously go
 
 Everything specific to these pipelines sits on top of the fundamentals, and candidates who lean entirely on the pipeline and neglect the basics underperform candidates who do both.
 
-**The resume still has to survive the screen.** Every employer of size parses your document before a human reads it, whichever channel you came through. An [ATS check](/ats-analysis) is a one-time job that removes an entire category of silent failure.
+The resume still has to survive the screen. Every employer of size parses your document before a human reads it, whichever channel you came through. An [ATS check](/ats-analysis) is a one-time job that removes an entire category of silent failure.
 
-**It still has to match each posting.** [Tailoring the language](/blog/how-to-tailor-resume-for-every-job) to the specific role moves your interview rate more than any single other change, and a pipeline application is not exempt from it.
+It still has to match each posting. [Tailoring the language](/blog/how-to-tailor-resume-for-every-job) to the specific role moves your interview rate more than any single other change, and a pipeline application is not exempt from it.
 
-**Evidence still carries entry-level applications.** One substantial project that exists and runs outweighs a longer list of coursework, in exactly the way it does for [any technical candidate](/blog/fresher-resume-projects-that-get-interviews).
+Evidence still carries entry-level applications. One substantial project that exists and runs outweighs a longer list of coursework, in exactly the way it does for [any technical candidate](/blog/fresher-resume-projects-that-get-interviews).
 
-**Applying early still matters.** Some requisitions cap applications within days of opening, and checking [career pages weekly](/blog/usa-handshake-linkedin-job-search) during the season is the highest-return routine available.
+Applying early still matters. Some requisitions cap applications within days of opening, and checking [career pages weekly](/blog/usa-handshake-linkedin-job-search) during the season is the highest-return routine available.
 
-**Referrals still work.** Alumni from your institution at your target employer are worth contacting regardless of whether a formal programme exists.
+Referrals still work. Alumni from your institution at your target employer are worth contacting regardless of whether a formal programme exists.
 
-**And the [spring wave](/blog/usa-second-round-spring-recruiting) is still there** if the autumn produces nothing, which it does for a large share of strong candidates every year.
+And the [spring wave](/blog/usa-second-round-spring-recruiting) is still there if the autumn produces nothing, which it does for a large share of strong candidates every year.
 
 The pipeline changes how you are found. Everything after that is the same job everyone else is doing, and doing it well is what converts access into an offer.
 
@@ -188,15 +188,15 @@ A practical approach to identifying which employers actually have a meaningful r
 
 The pipelines reward starting early, so it helps to see what is available at each stage rather than assuming everything happens in junior year.
 
-**First year.** Find out what exists — the careers office conversation, the scholarship programmes that open this early, and the professional society chapters on campus. Several multi-year employer programmes recruit first-years specifically, and almost nobody applies to them because students assume recruiting starts later.
+First year. Find out what exists — the careers office conversation, the scholarship programmes that open this early, and the professional society chapters on campus. Several multi-year employer programmes recruit first-years specifically, and almost nobody applies to them because students assume recruiting starts later.
 
-**Second year.** Apply to sophomore-focused programmes and insight events, which are frequently the entry point to a junior internship rather than a standalone experience. Attend the career fair even with a thin resume — recruiters remember returning faces.
+Second year. Apply to sophomore-focused programmes and insight events, which are frequently the entry point to a junior internship rather than a standalone experience. Attend the career fair even with a thin resume — recruiters remember returning faces.
 
-**Third year.** The main internship recruiting year, and the one that feeds graduate offers. Apply through both the pipeline channel and the general one where possible.
+Third year. The main internship recruiting year, and the one that feeds graduate offers. Apply through both the pipeline channel and the general one where possible.
 
-**Fourth year.** Full-time recruiting, with a return offer if the internship converted, plus the [spring wave](/blog/usa-second-round-spring-recruiting) if it did not.
+Fourth year. Full-time recruiting, with a return offer if the internship converted, plus the [spring wave](/blog/usa-second-round-spring-recruiting) if it did not.
 
-**Throughout.** Build one substantial project, keep the [resume parsing cleanly](/ats-analysis), and treat the alumni network as a standing resource rather than something to activate when you need a job.
+Throughout. Build one substantial project, keep the [resume parsing cleanly](/ats-analysis), and treat the alumni network as a standing resource rather than something to activate when you need a job.
 
 The pattern worth noticing: the programmes with the deepest employer investment recruit earliest, which means the students who benefit most are the ones who found out in first year that they existed at all.
 

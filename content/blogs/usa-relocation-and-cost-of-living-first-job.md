@@ -31,15 +31,15 @@ Two graduates, same field, same experience. One is offered a higher [salary](/bl
 
 ## How to actually compare two offers
 
-**Step one: find real rent for somewhere you would live**, not a city-wide average. Averages blend luxury towers with distant suburbs, and neither reflects what a new graduate typically rents. Search actual listings in the neighbourhoods you would realistically consider.
+Step one: find real rent for somewhere you would live, not a city-wide average. Averages blend luxury towers with distant suburbs, and neither reflects what a new graduate typically rents. Search actual listings in the neighbourhoods you would realistically consider.
 
-**Step two: calculate state and local tax properly.** A rough net-pay estimate at the salary level in question, for each city, gives you the real comparable figure rather than the gross one on the offer letter.
+Step two: calculate state and local tax properly. A rough net-pay estimate at the salary level in question, for each city, gives you the real comparable figure rather than the gross one on the offer letter.
 
-**Step three: build the annual total.** Net salary, minus twelve months of realistic rent, minus a rough estimate of the rest of living costs, gives you what is actually left over — savings, discretionary spending, whatever matters to you.
+Step three: build the annual total. Net salary, minus twelve months of realistic rent, minus a rough estimate of the rest of living costs, gives you what is actually left over — savings, discretionary spending, whatever matters to you.
 
-**Step four: compare that number, not the gross salary.** This is the entire exercise, and it routinely reverses which offer looks better. A [structured comparison of the whole package](/blog/usa-offer-negotiation-new-grad) — not just base pay — applies with particular force when the two roles are in different cities.
+Step four: compare that number, not the gross salary. This is the entire exercise, and it routinely reverses which offer looks better. A [structured comparison of the whole package](/blog/usa-offer-negotiation-new-grad) — not just base pay — applies with particular force when the two roles are in different cities.
 
-**A worked example, in shape rather than in specific figures.** Offer A: higher gross salary, in a high-tax state, with rent consuming a large share of take-home pay. Offer B: lower gross salary, in a no-income-tax state, with rent consuming a much smaller share. Once tax and housing are factored in, B frequently produces more disposable income despite the lower headline number — and this pattern repeats often enough that it is worth checking every time rather than assuming the bigger number wins.
+A worked example, in shape rather than in specific figures. Offer A: higher gross salary, in a high-tax state, with rent consuming a large share of take-home pay. Offer B: lower gross salary, in a no-income-tax state, with rent consuming a much smaller share. Once tax and housing are factored in, B frequently produces more disposable income despite the lower headline number — and this pattern repeats often enough that it is worth checking every time rather than assuming the bigger number wins.
 
 ## What relocation support actually covers
 
@@ -62,15 +62,15 @@ Ask specifically, because "we offer relocation support" can mean almost anything
 
 The period between accepting an offer and receiving a stable income is where new graduates most often run into trouble, and it is entirely predictable if you plan for it.
 
-**There is usually a gap before your first paycheck.** Payroll cycles mean your first payment can land four to six weeks after you start, sometimes longer depending on the employer's schedule.
+There is usually a gap before your first paycheck. Payroll cycles mean your first payment can land four to six weeks after you start, sometimes longer depending on the employer's schedule.
 
-**A rental deposit is often large and due upfront.** Several weeks or months of rent, plus a broker or application fee in some markets, all payable before you move in — and typically before that first paycheck arrives.
+A rental deposit is often large and due upfront. Several weeks or months of rent, plus a broker or application fee in some markets, all payable before you move in — and typically before that first paycheck arrives.
 
-**Setup costs accumulate quickly.** Furniture, kitchen basics, utility deposits, a transport pass, and the ordinary things you owned at home and now do not.
+Setup costs accumulate quickly. Furniture, kitchen basics, utility deposits, a transport pass, and the ordinary things you owned at home and now do not.
 
-**A realistic buffer is two to three months of total living costs**, saved before you move. This figure sounds conservative until you add a deposit, a payroll delay and setup costs landing in the same six weeks, at which point it is closer to the minimum than a cushion.
+A realistic buffer is two to three months of total living costs, saved before you move. This figure sounds conservative until you add a deposit, a payroll delay and setup costs landing in the same six weeks, at which point it is closer to the minimum than a cushion.
 
-**Check your first payslip carefully.** New employees are sometimes placed on an incorrect default withholding rate initially, which is corrected once your details are processed — but only if you notice and flag it. Catching an error in the first month is a quick fix; catching it eight months later is a much longer process.
+Check your first payslip carefully. New employees are sometimes placed on an incorrect default withholding rate initially, which is corrected once your details are processed — but only if you notice and flag it. Catching an error in the first month is a quick fix; catching it eight months later is a much longer process.
 
 ## Choosing the city, not just the offer
 
@@ -86,19 +86,19 @@ The period between accepting an offer and receiving a stable income is where new
 
 A repeatable checklist for comparing any two cities, since the process matters more than any single figure that could go stale.
 
-**Real rent for a specific type of housing** — a studio or shared two-bedroom, whichever matches your plan — in two or three neighbourhoods you would actually consider, found on current listing sites rather than remembered from a general reputation.
+Real rent for a specific type of housing — a studio or shared two-bedroom, whichever matches your plan — in two or three neighbourhoods you would actually consider, found on current listing sites rather than remembered from a general reputation.
 
-**State income tax rate** at your expected salary level, plus any local or city tax that applies on top of it.
+State income tax rate at your expected salary level, plus any local or city tax that applies on top of it.
 
-**Take-home pay after tax**, roughly calculated, for each city.
+Take-home pay after tax, roughly calculated, for each city.
 
-**Monthly cost after rent**: transport, groceries, a modest entertainment budget, insurance if not employer-provided.
+Monthly cost after rent: transport, groceries, a modest entertainment budget, insurance if not employer-provided.
 
-**One-time moving costs**: a deposit, a flight or fuel, a moving service or a rental van, and setup essentials.
+One-time moving costs: a deposit, a flight or fuel, a moving service or a rental van, and setup essentials.
 
-**Relocation support offered**, netted against the one-time costs above.
+Relocation support offered, netted against the one-time costs above.
 
-**The number that decides it**: take-home pay, minus twelve months of rent, minus twelve months of the rest, plus relocation support, minus one-time moving costs. Compare that single figure between offers rather than any of the inputs individually.
+The number that decides it: take-home pay, minus twelve months of rent, minus twelve months of the rest, plus relocation support, minus one-time moving costs. Compare that single figure between offers rather than any of the inputs individually.
 
 This takes about an hour per city and it is the single highest-value hour available when comparing offers in different locations — far more informative than the headline salary difference that most graduates fixate on.
 
@@ -124,17 +124,17 @@ The practical problem behind the arithmetic, and the one most graduates handle b
 
 The financial planning is one half. Actually settling is the other, and it is where people underestimate the cost in energy rather than money.
 
-**Expect to be bad at ordinary life for a while.** Not knowing where anything is, which route to take, or how a local system works is disorienting for people used to being competent — and it is universal and temporary.
+Expect to be bad at ordinary life for a while. Not knowing where anything is, which route to take, or how a local system works is disorienting for people used to being competent — and it is universal and temporary.
 
-**Build one routine early.** A gym, a class, a regular thing on a weeknight. It creates the structure that makes a new city feel inhabited rather than endured.
+Build one routine early. A gym, a class, a regular thing on a weeknight. It creates the structure that makes a new city feel inhabited rather than endured.
 
-**Say yes to colleagues initially.** Work is the only ready-made social structure you have on arrival, and the people who decline everything for the first two months frequently find it much harder afterwards.
+Say yes to colleagues initially. Work is the only ready-made social structure you have on arrival, and the people who decline everything for the first two months frequently find it much harder afterwards.
 
-**Do not fly home every weekend.** Understandable, expensive, and it prevents the new place from becoming home.
+Do not fly home every weekend. Understandable, expensive, and it prevents the new place from becoming home.
 
-**Give it six months before judging.** Nearly everyone hates a new city somewhere around week six, and most of them are glad they stayed.
+Give it six months before judging. Nearly everyone hates a new city somewhere around week six, and most of them are glad they stayed.
 
-**And factor the cost of visits into the budget.** Trips home are a real recurring expense that graduates routinely leave out of the arithmetic entirely, and over a year they can rival a meaningful chunk of the salary difference the whole comparison was about.
+And factor the cost of visits into the budget. Trips home are a real recurring expense that graduates routinely leave out of the arithmetic entirely, and over a year they can rival a meaningful chunk of the salary difference the whole comparison was about.
 
 ## The mistake of optimising too hard
 
@@ -174,17 +174,17 @@ Then the financial decision is genuinely close, and it is reasonable to weight t
 
 A real situation and rarely discussed, so it is worth naming the options honestly.
 
-**Ask the employer directly.** Relocation support, an advance on a signing bonus, or upfront rather than reimbursed payment are all things employers sometimes accommodate when asked plainly. Framed as a practical question rather than a complaint, this is a normal conversation.
+Ask the employer directly. Relocation support, an advance on a signing bonus, or upfront rather than reimbursed payment are all things employers sometimes accommodate when asked plainly. Framed as a practical question rather than a complaint, this is a normal conversation.
 
-**Ask about temporary housing.** Even two or three weeks provided by the employer removes the largest single upfront cost — the deposit — from your first fortnight.
+Ask about temporary housing. Even two or three weeks provided by the employer removes the largest single upfront cost — the deposit — from your first fortnight.
 
-**Negotiate the start date.** A few extra weeks before starting can be the difference between arriving with a buffer and arriving without one, and start date is [one of the most negotiable parts of an offer](/blog/usa-offer-negotiation-new-grad).
+Negotiate the start date. A few extra weeks before starting can be the difference between arriving with a buffer and arriving without one, and start date is [one of the most negotiable parts of an offer](/blog/usa-offer-negotiation-new-grad).
 
-**Consider a shared arrangement initially.** Cheaper deposit, lower rent, and it can be a one-year decision rather than a permanent one.
+Consider a shared arrangement initially. Cheaper deposit, lower rent, and it can be a one-year decision rather than a permanent one.
 
-**Look at whether the role permits a later physical move**, where some remote work is possible at the start.
+Look at whether the role permits a later physical move, where some remote work is possible at the start.
 
-**And factor this into the offer comparison honestly.** A slightly lower offer in a city you can actually afford to move to is a better outcome than a higher one that requires debt to reach. This is a legitimate input into the decision rather than an admission of anything.
+And factor this into the offer comparison honestly. A slightly lower offer in a city you can actually afford to move to is a better outcome than a higher one that requires debt to reach. This is a legitimate input into the decision rather than an admission of anything.
 
 ### Should I move before or after I have secured housing?
 

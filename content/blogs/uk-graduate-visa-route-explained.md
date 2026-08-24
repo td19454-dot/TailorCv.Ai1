@@ -31,15 +31,15 @@ showcase: none
 
 ## Eligibility and applying
 
-**You must have completed an eligible course** at a licensed higher education provider with a track record of compliance, and the institution must have reported your successful completion.
+You must have completed an eligible course at a licensed higher education provider with a track record of compliance, and the institution must have reported your successful completion.
 
-**You apply from inside the UK**, while you still hold valid student permission.
+You apply from inside the UK, while you still hold valid student permission.
 
-**Apply after your course completion has been reported** and before your student permission expires. The timing of these two things is the practical constraint, and your institution's international office is the authority on when your completion is reported.
+Apply after your course completion has been reported and before your student permission expires. The timing of these two things is the practical constraint, and your institution's international office is the authority on when your completion is reported.
 
-**There is a fee and an immigration health surcharge**, and the surcharge for the full period is a substantial upfront cost that graduates routinely under-budget for.
+There is a fee and an immigration health surcharge, and the surcharge for the full period is a substantial upfront cost that graduates routinely under-budget for.
 
-**Dependants** who were already on your student visa can generally apply, subject to conditions.
+Dependants who were already on your student visa can generally apply, subject to conditions.
 
 ## The transition that actually matters
 
@@ -55,19 +55,19 @@ showcase: none
 
 ## Using the period well
 
-**Treat month one as the start of the clock.** The period is shorter than it feels, and job searches take time.
+Treat month one as the start of the clock. The period is shorter than it feels, and job searches take time.
 
-**Check the sponsor register before applying anywhere** you would want to stay with. An employer without a licence can employ you now and cannot keep you afterwards.
+Check the sponsor register before applying anywhere you would want to stay with. An employer without a licence can employ you now and cannot keep you afterwards.
 
-**Ask directly whether they sponsor.** Holding a licence and being willing to use it are different things, and the question is entirely normal.
+Ask directly whether they sponsor. Holding a licence and being willing to use it are different things, and the question is entirely normal.
 
-**Target roles that clear the thresholds.** A role that is genuinely below the skill level will not convert regardless of how well you perform.
+Target roles that clear the thresholds. A role that is genuinely below the skill level will not convert regardless of how well you perform.
 
-**Build the evidence anyway.** A [strong CV](/blog/uk-cv-format-for-students) that survives screening and a track record in a relevant role are what make you worth sponsoring.
+Build the evidence anyway. A [strong CV](/blog/uk-cv-format-for-students) that survives screening and a track record in a relevant role are what make you worth sponsoring.
 
-**Do not treat any job as good enough for now.** Work that does not lead to a sponsorable position uses time you cannot recover.
+Do not treat any job as good enough for now. Work that does not lead to a sponsorable position uses time you cannot recover.
 
-**Verify current rules before relying on them.** Route lengths, thresholds and requirements have all changed in recent years, and the Home Office guidance is the authoritative source rather than any article.
+Verify current rules before relying on them. Route lengths, thresholds and requirements have all changed in recent years, and the Home Office guidance is the authoritative source rather than any article.
 
 ## Understanding what "unsponsored" actually means in practice
 
@@ -88,11 +88,11 @@ showcase: none
 
 ## Planning realistically around the fixed, non-renewable window
 
-**Because this route is generally granted once and does not renew, treat the entire period as a single, continuous planning window from the moment it begins, rather than assuming you can simply apply again later if the first attempt to transition does not work out.**
+Because this route is generally granted once and does not renew, treat the entire period as a single, continuous planning window from the moment it begins, rather than assuming you can simply apply again later if the first attempt to transition does not work out.
 
-**Build a rough internal timeline for yourself within the broader period**, an early phase focused on exploring options and building experience broadly, followed by a later phase focused specifically on securing a role that will genuinely support the transition onto a sponsored route, rather than treating the whole window as undifferentiated time.
+Build a rough internal timeline for yourself within the broader period, an early phase focused on exploring options and building experience broadly, followed by a later phase focused specifically on securing a role that will genuinely support the transition onto a sponsored route, rather than treating the whole window as undifferentiated time.
 
-**If you reach the midpoint of your available time without a clear path toward a sponsorable role, treat this as a genuine signal to adjust your approach**, rather than continuing the same strategy and hoping the remaining time resolves itself, this might mean widening your target employer list, seeking more direct outreach and networking, or reconsidering which roles you are realistically targeting.
+If you reach the midpoint of your available time without a clear path toward a sponsorable role, treat this as a genuine signal to adjust your approach, rather than continuing the same strategy and hoping the remaining time resolves itself, this might mean widening your target employer list, seeking more direct outreach and networking, or reconsidering which roles you are realistically targeting.
 
 ## Frequently Asked Questions
 

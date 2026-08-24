@@ -37,19 +37,19 @@ showcase: resume
 
 ## Structure that works
 
-**A short personal statement or profile**, three or four lines, saying what you do and what you are looking for. Optional and useful when it is specific rather than generic.
+A short personal statement or profile, three or four lines, saying what you do and what you are looking for. Optional and useful when it is specific rather than generic.
 
-**Education**, with your degree, institution, dates and classification. Include relevant modules or a dissertation title where they support the application.
+Education, with your degree, institution, dates and classification. Include relevant modules or a dissertation title where they support the application.
 
-**Work experience**, reverse chronological, with outcomes rather than duties. Include part-time and vacation work — a job held through university demonstrates reliability and UK employers read it that way.
+Work experience, reverse chronological, with outcomes rather than duties. Include part-time and vacation work — a job held through university demonstrates reliability and UK employers read it that way.
 
-**Projects**, particularly for technical roles, where [something that exists and runs](/blog/fresher-resume-projects-that-get-interviews) outweighs a longer list of coursework.
+Projects, particularly for technical roles, where [something that exists and runs](/blog/fresher-resume-projects-that-get-interviews) outweighs a longer list of coursework.
 
-**Skills**, specific and honest.
+Skills, specific and honest.
 
-**Positions of responsibility, societies and volunteering.** Weighted more in UK graduate recruitment than in some markets, because [competency frameworks](/blog/uk-competency-questions-guide) draw evidence from exactly this material.
+Positions of responsibility, societies and volunteering. Weighted more in UK graduate recruitment than in some markets, because [competency frameworks](/blog/uk-competency-questions-guide) draw evidence from exactly this material.
 
-**Interests**, briefly, if genuine and specific. A line, not a paragraph.
+Interests, briefly, if genuine and specific. A line, not a paragraph.
 
 ## Writing the content
 
@@ -65,9 +65,9 @@ showcase: resume
 
 ## Adapting a CV across multiple international applications
 
-**If you are applying to employers in both the UK and other countries simultaneously, maintain a single master document containing your full evidence, then generate a properly adapted version for each specific market**, exactly the [same master-document approach that works efficiently across any multi-country search](/blog/international-student-resume-differences-by-country), rather than attempting to write a single universal document that awkwardly compromises between genuinely different conventions.
+If you are applying to employers in both the UK and other countries simultaneously, maintain a single master document containing your full evidence, then generate a properly adapted version for each specific market, exactly the [same master-document approach that works efficiently across any multi-country search](/blog/international-student-resume-differences-by-country), rather than attempting to write a single universal document that awkwardly compromises between genuinely different conventions.
 
-**The specific differences between UK and other markets are small individually and meaningful in combination**, length, the presence or absence of a photograph, whether classification is expected, referee conventions, getting several of these wrong simultaneously reads as unfamiliarity with the specific market rather than as a single minor oversight.
+The specific differences between UK and other markets are small individually and meaningful in combination, length, the presence or absence of a photograph, whether classification is expected, referee conventions, getting several of these wrong simultaneously reads as unfamiliarity with the specific market rather than as a single minor oversight.
 
 ## Common Mistakes
 

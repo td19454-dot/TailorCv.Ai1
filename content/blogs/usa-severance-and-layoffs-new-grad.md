@@ -31,19 +31,19 @@ showcase: none
 
 ## The first week
 
-**Get everything in writing.** The termination date, the severance terms, when health coverage ends, and what happens to any unvested equity or repayable bonus.
+Get everything in writing. The termination date, the severance terms, when health coverage ends, and what happens to any unvested equity or repayable bonus.
 
-**Do not sign immediately.** Severance agreements typically ask you to release claims in exchange for payment, and you are generally entitled to a review period. Read what you are signing, and if the amounts are significant or the terms unusual, having someone qualified look at it is money well spent.
+Do not sign immediately. Severance agreements typically ask you to release claims in exchange for payment, and you are generally entitled to a review period. Read what you are signing, and if the amounts are significant or the terms unusual, having someone qualified look at it is money well spent.
 
-**Ask whether the terms are negotiable.** Sometimes they are — an extra few weeks, extended health coverage, or a later termination date. Asking once, politely, costs nothing and occasionally works.
+Ask whether the terms are negotiable. Sometimes they are — an extra few weeks, extended health coverage, or a later termination date. Asking once, politely, costs nothing and occasionally works.
 
-**Ask for a reference in writing** while people still remember you and while the relationship is warm. A manager who was sorry to lose you will usually provide one, and it is much harder to obtain six months later.
+Ask for a reference in writing while people still remember you and while the relationship is warm. A manager who was sorry to lose you will usually provide one, and it is much harder to obtain six months later.
 
-**Get personal contact details** for your manager and close colleagues, since corporate addresses stop working on your last day.
+Get personal contact details for your manager and close colleagues, since corporate addresses stop working on your last day.
 
-**Download your own records** — payslips, offer letter, performance reviews, and anything documenting what you worked on. Access ends abruptly.
+Download your own records — payslips, offer letter, performance reviews, and anything documenting what you worked on. Access ends abruptly.
 
-**Ask about internal redeployment.** Sometimes another team has headcount, and this is occasionally offered only to people who ask.
+Ask about internal redeployment. Sometimes another team has headcount, and this is occasionally offered only to people who ask.
 
 ## What is actually in a severance package
 
@@ -65,17 +65,17 @@ showcase: none
 
 This section outranks everything above if it applies to you.
 
-**Speak to an immigration attorney within days.** Not weeks. Your permitted time and your options depend on your specific status and there are deadlines that close.
+Speak to an immigration attorney within days. Not weeks. Your permitted time and your options depend on your specific status and there are deadlines that close.
 
-**On post-graduation training**, unemployment days are limited and counted: standard OPT allows up to 90 days of unemployment total, and the STEM OPT extension allows up to 150 days total across the full period (the original 90 plus an additional 60 during the extension). Know exactly how many you've already used and how many remain, in writing, since this is tracked and losing status by exceeding it is one of the most serious, avoidable failures in this whole situation.
+On post-graduation training, unemployment days are limited and counted: standard OPT allows up to 90 days of unemployment total, and the STEM OPT extension allows up to 150 days total across the full period (the original 90 plus an additional 60 during the extension). Know exactly how many you've already used and how many remain, in writing, since this is tracked and losing status by exceeding it is one of the most serious, avoidable failures in this whole situation.
 
-**On an employer-sponsored [work visa](/blog/japan-work-visa-for-graduates)**, there is a discretionary grace period — generally up to 60 days — to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week, not after you've had time to process what happened.
+On an employer-sponsored [work visa](/blog/japan-work-visa-for-graduates), there is a discretionary grace period — generally up to 60 days — to find a new sponsoring employer, change status, or depart. That period is short relative to how long a job search takes, which is why the search has to start the same week, not after you've had time to process what happened.
 
-**Ask your employer about the termination date specifically.** Sometimes an employer will extend a formal termination date, or count severance as continued employment, in a way that materially changes your position. This is worth asking about explicitly.
+Ask your employer about the termination date specifically. Sometimes an employer will extend a formal termination date, or count severance as continued employment, in a way that materially changes your position. This is worth asking about explicitly.
 
-**Prioritise employers who can move quickly** and who have done this before. The [eligibility questions](/blog/usa-stem-opt-employer-requirements) that matter in any search matter more when you have weeks rather than months.
+Prioritise employers who can move quickly and who have done this before. The [eligibility questions](/blog/usa-stem-opt-employer-requirements) that matter in any search matter more when you have weeks rather than months.
 
-**Consider all the routes.** [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) can file at any time without a [lottery](/blog/usa-h1b-lottery-new-grads), which is a genuine advantage under time pressure.
+Consider all the routes. [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) can file at any time without a [lottery](/blog/usa-h1b-lottery-new-grads), which is a genuine advantage under time pressure.
 
 ## Restarting the search
 

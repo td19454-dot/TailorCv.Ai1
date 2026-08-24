@@ -35,13 +35,13 @@ The terms get used loosely, and they are different jobs with different processes
 
 Earlier than almost anything else on the [campus calendar](/blog/usa-campus-recruiting-timeline).
 
-**Internship [applications](/blog/usa-handshake-linkedin-job-search) frequently open in the spring or summer of the preceding year**, more than twelve months before the internship starts. Some firms recruit on a rolling basis and close when they have filled.
+Internship [applications](/blog/usa-handshake-linkedin-job-search) frequently open in the spring or summer of the preceding year, more than twelve months before the internship starts. Some firms recruit on a rolling basis and close when they have filled.
 
-**Full-time hiring is heavily fed by [internship conversion](/blog/usa-internship-return-offer-conversion).** At many firms the summer intern class is the primary source of graduate hires, which means the decisive application is made a year and a half before you would start.
+Full-time hiring is heavily fed by [internship conversion](/blog/usa-internship-return-offer-conversion). At many firms the summer intern class is the primary source of graduate hires, which means the decisive application is made a year and a half before you would start.
 
-**Processes move very fast once started.** Some firms compress the entire sequence into two or three weeks, and offers frequently arrive with short deadlines.
+Processes move very fast once started. Some firms compress the entire sequence into two or three weeks, and offers frequently arrive with short deadlines.
 
-**The practical consequence.** If this is a target, you need to be ready in the spring of your penultimate year — not the autumn of your final one, by which point the main pipeline has closed. This is the single most common way capable candidates miss out.
+The practical consequence. If this is a target, you need to be ready in the spring of your penultimate year — not the autumn of your final one, by which point the main pipeline has closed. This is the single most common way capable candidates miss out.
 
 ## What the process assesses
 
@@ -63,17 +63,17 @@ Unusually transparent, which is good news for anyone willing to prepare.
 
 ## Preparing properly
 
-**Train mental arithmetic separately and daily.** Fifteen minutes a day for two months moves most people substantially. This is the highest-return preparation available because it is pure practice and it is directly tested.
+Train mental arithmetic separately and daily. Fifteen minutes a day for two months moves most people substantially. This is the highest-return preparation available because it is pure practice and it is directly tested.
 
-**Work through undergraduate probability properly.** Expected value, conditional probability, distributions, and the standard puzzle patterns. Fluency matters more than breadth.
+Work through undergraduate probability properly. Expected value, conditional probability, distributions, and the standard puzzle patterns. Fluency matters more than breadth.
 
-**Practise thinking aloud.** Every [interview](/blog/usa-behavioral-interview-star-campus) here assesses reasoning. Solving silently and stating an answer scores badly even when the answer is right.
+Practise thinking aloud. Every [interview](/blog/usa-behavioral-interview-star-campus) here assesses reasoning. Solving silently and stating an answer scores badly even when the answer is right.
 
-**Practise being wrong well.** Interviewers will push back, sometimes when you are correct. Updating on a good argument scores well; capitulating to pressure when you are right scores badly; defending an indefensible position scores worst. This is deliberately tested and it is worth rehearsing.
+Practise being wrong well. Interviewers will push back, sometimes when you are correct. Updating on a good argument scores well; capitulating to pressure when you are right scores badly; defending an indefensible position scores worst. This is deliberately tested and it is worth rehearsing.
 
-**Do market-making games with a partner.** The format is unfamiliar and the first attempt is always poor. Doing five with a friend makes the real one your sixth.
+Do market-making games with a partner. The format is unfamiliar and the first attempt is always poor. Doing five with a friend makes the real one your sixth.
 
-**Know [your own resume](/ats-analysis) technically.** Any project you list will be probed to depth.
+Know [your own resume](/ats-analysis) technically. Any project you list will be probed to depth.
 
 ## Being realistic
 
@@ -89,21 +89,21 @@ Unusually transparent, which is good news for anyone willing to prepare.
 
 The most directly assessed and most reliably neglected skill. Two months of daily practice moves nearly everyone substantially, and the drills are specific.
 
-**Two-digit multiplication.** 37 × 48, quickly, without writing. Learn the decomposition tricks — 37 × 48 as 37 × 50 minus 37 × 2 — until they are automatic rather than deliberate.
+Two-digit multiplication. 37 × 48, quickly, without writing. Learn the decomposition tricks — 37 × 48 as 37 × 50 minus 37 × 2 — until they are automatic rather than deliberate.
 
-**Fractions to decimals.** Know the common ones cold: sevenths, ninths, elevenths, sixteenths. Interviewers use them constantly because they separate people who have practised from people who have not.
+Fractions to decimals. Know the common ones cold: sevenths, ninths, elevenths, sixteenths. Interviewers use them constantly because they separate people who have practised from people who have not.
 
-**Percentages both ways.** 17% of 240, and 41 as a percentage of 65. Estimation is acceptable and expected; state that you are estimating.
+Percentages both ways. 17% of 240, and 41 as a percentage of 65. Estimation is acceptable and expected; state that you are estimating.
 
-**Powers and roots.** Squares to about thirty, cubes to about fifteen, and rough square roots by interpolation.
+Powers and roots. Squares to about thirty, cubes to about fifteen, and rough square roots by interpolation.
 
-**Compounding.** 1.05 to the fourth power, approximately, without a calculator.
+Compounding. 1.05 to the fourth power, approximately, without a calculator.
 
-**Expected value on the fly.** Given a payoff structure, compute the fair price in seconds.
+Expected value on the fly. Given a payoff structure, compute the fair price in seconds.
 
-**How to practise.** Fifteen minutes a day, timed, with a mix. Use a drill app or generate problems yourself. The point is speed under a clock, not accuracy at leisure — practising untimed builds the wrong skill, exactly as it does for [psychometric tests](/blog/uk-psychometric-tests-guide).
+How to practise. Fifteen minutes a day, timed, with a mix. Use a drill app or generate problems yourself. The point is speed under a clock, not accuracy at leisure — practising untimed builds the wrong skill, exactly as it does for [psychometric tests](/blog/uk-psychometric-tests-guide).
 
-**Track your times.** You should see a measurable improvement over eight weeks, and seeing it is what sustains the habit.
+Track your times. You should see a measurable improvement over eight weeks, and seeing it is what sustains the habit.
 
 ## Probability, at the level actually asked
 
@@ -129,17 +129,17 @@ The mathematics is undergraduate and the fluency required is higher than most co
 
 Worth knowing before you spend a year preparing, because the job is narrower than the compensation suggests and it suits a specific temperament.
 
-**Trading.** Market hours dominate your day, and they are early. Intense during the session, quieter after the close. You are measured constantly and precisely, which some people find clarifying and others find corrosive. You will be wrong frequently and publicly, and the ability to be wrong without it damaging your next decision is the actual job requirement.
+Trading. Market hours dominate your day, and they are early. Intense during the session, quieter after the close. You are measured constantly and precisely, which some people find clarifying and others find corrosive. You will be wrong frequently and publicly, and the ability to be wrong without it damaging your next decision is the actual job requirement.
 
-**Research.** Closer to academic work with a commercial deadline. Long stretches of analysis, most ideas fail, and the feedback is slower than in trading but still unambiguous.
+Research. Closer to academic work with a commercial deadline. Long stretches of analysis, most ideas fail, and the feedback is slower than in trading but still unambiguous.
 
-**Development.** Software engineering with unusual constraints — correctness matters absolutely, latency matters enormously, and the systems are complex. The closest of the three to an ordinary engineering job, with more pressure.
+Development. Software engineering with unusual constraints — correctness matters absolutely, latency matters enormously, and the systems are complex. The closest of the three to an ordinary engineering job, with more pressure.
 
-**Across all three.** Small teams, flat structures, and very little tolerance for imprecision in conversation. Hours are long but generally more contained than in [investment banking](/blog/usa-finance-superday-guide). Compensation is high and variable, and job security is lower than the salary implies — performance is measurable, so underperformance is visible.
+Across all three. Small teams, flat structures, and very little tolerance for imprecision in conversation. Hours are long but generally more contained than in [investment banking](/blog/usa-finance-superday-guide). Compensation is high and variable, and job security is lower than the salary implies — performance is measurable, so underperformance is visible.
 
-**Who thrives.** People who genuinely enjoy problems with definite answers, who are competitive without needing to be right, and who can separate a bad outcome from a bad decision.
+Who thrives. People who genuinely enjoy problems with definite answers, who are competitive without needing to be right, and who can separate a bad outcome from a bad decision.
 
-**Who does not.** People who need to see the human consequence of their work, who want breadth, or who find continuous measurement stressful rather than motivating.
+Who does not. People who need to see the human consequence of their work, who want breadth, or who find continuous measurement stressful rather than motivating.
 
 ## The firms, and how they differ
 
@@ -170,17 +170,17 @@ Candidates treat the sector as one employer. It is not, and the differences chan
 
 The most distinctive part of trader interviews and the one candidates have never encountered before.
 
-**The format.** The interviewer names something uncertain — the number of a certain object in the room, a statistic, the outcome of a dice game — and asks you to make a market: quote a price you would buy at and a price you would sell at. They then trade against you and reveal information as you go.
+The format. The interviewer names something uncertain — the number of a certain object in the room, a statistic, the outcome of a dice game — and asks you to make a market: quote a price you would buy at and a price you would sell at. They then trade against you and reveal information as you go.
 
-**What is assessed.** Whether your midpoint is a sensible estimate. Whether your spread reflects your uncertainty — wide when you know little, tighter when you know more. Whether you update correctly when the interviewer trades against you. And whether you stay composed when you discover you were wrong.
+What is assessed. Whether your midpoint is a sensible estimate. Whether your spread reflects your uncertainty — wide when you know little, tighter when you know more. Whether you update correctly when the interviewer trades against you. And whether you stay composed when you discover you were wrong.
 
-**The key insight most candidates miss.** If someone buys at your offer, that is information: they think it is worth more than you quoted. A trader adjusts upward. A candidate who leaves their market unchanged after being hit repeatedly is signalling that they do not understand what just happened.
+The key insight most candidates miss. If someone buys at your offer, that is information: they think it is worth more than you quoted. A trader adjusts upward. A candidate who leaves their market unchanged after being hit repeatedly is signalling that they do not understand what just happened.
 
-**A worked shape.** Asked to price the total number of legs in the building. You reason aloud: roughly forty people, mostly two legs, plus chairs at four each, maybe sixty chairs. Estimate around 320. You quote 280 at 360 — a wide spread, because your estimate is rough. The interviewer buys at 360. You revise: perhaps you undercounted chairs. You requote higher.
+A worked shape. Asked to price the total number of legs in the building. You reason aloud: roughly forty people, mostly two legs, plus chairs at four each, maybe sixty chairs. Estimate around 320. You quote 280 at 360 — a wide spread, because your estimate is rough. The interviewer buys at 360. You revise: perhaps you undercounted chairs. You requote higher.
 
-**How to practise.** With a partner, twenty minutes at a time. The first three attempts are always poor and the improvement after five is dramatic, which is exactly why doing them before the interview matters.
+How to practise. With a partner, twenty minutes at a time. The first three attempts are always poor and the improvement after five is dramatic, which is exactly why doing them before the interview matters.
 
-**And expect to be pushed.** Interviewers deliberately trade against you when you are right, to see whether you fold. Holding a position you can justify — while genuinely updating when the argument is good — is the behaviour being tested.
+And expect to be pushed. Interviewers deliberately trade against you when you are right, to see whether you fold. Holding a position you can justify — while genuinely updating when the argument is good — is the behaviour being tested.
 
 ## Getting in from outside the usual schools
 
@@ -202,21 +202,21 @@ Firms recruit heavily at a small set of institutions with strong mathematical pr
 
 Enough to be genuinely competitive if you start early. Roughly an hour a day.
 
-**Weeks 1–3: arithmetic foundations.** Fifteen minutes daily on timed mental arithmetic, plus forty minutes on undergraduate probability from a standard text. No puzzles yet — build the fluency the puzzles assume.
+Weeks 1–3: arithmetic foundations. Fifteen minutes daily on timed mental arithmetic, plus forty minutes on undergraduate probability from a standard text. No puzzles yet — build the fluency the puzzles assume.
 
-**Weeks 4–6: probability patterns.** Work through a puzzle collection, solving aloud with a stated setup before computing. Keep the daily arithmetic running; it is the base skill and it decays.
+Weeks 4–6: probability patterns. Work through a puzzle collection, solving aloud with a stated setup before computing. Keep the daily arithmetic running; it is the base skill and it decays.
 
-**Weeks 7–8: timed conditions.** Full mock online assessments under a real clock. This is where most candidates discover that they can do the mathematics and not at the required speed, which is a training problem rather than an ability problem.
+Weeks 7–8: timed conditions. Full mock online assessments under a real clock. This is where most candidates discover that they can do the mathematics and not at the required speed, which is a training problem rather than an ability problem.
 
-**Weeks 9–10: market making and games.** With a partner, twenty minutes at a time. Take turns being the interviewer. This is unfamiliar and it improves faster than anything else on the list.
+Weeks 9–10: market making and games. With a partner, twenty minutes at a time. Take turns being the interviewer. This is unfamiliar and it improves faster than anything else on the list.
 
-**Week 11: coding**, weighted to whether you are targeting developer or research roles. The [standard technical preparation](/blog/usa-technical-interview-newgrad-prep) applies at a higher bar.
+Week 11: coding, weighted to whether you are targeting developer or research roles. The [standard technical preparation](/blog/usa-technical-interview-newgrad-prep) applies at a higher bar.
 
-**Week 12: consolidate and rehearse.** Mock interviews end to end, and practise being pushed back on when you are right.
+Week 12: consolidate and rehearse. Mock interviews end to end, and practise being pushed back on when you are right.
 
-**Throughout:** know your own resume technically, because anything on it will be probed to depth.
+Throughout: know your own resume technically, because anything on it will be probed to depth.
 
-**And start this in your penultimate spring**, not your final autumn. The internship pipeline is where the graduate seats come from, and by the time most students begin, that round has already closed.
+And start this in your penultimate spring, not your final autumn. The internship pipeline is where the graduate seats come from, and by the time most students begin, that round has already closed.
 
 ## Handling the interview itself
 

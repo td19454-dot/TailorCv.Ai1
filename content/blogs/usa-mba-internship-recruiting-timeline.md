@@ -45,11 +45,11 @@ The uncomfortable structural fact: **the most consequential period of a two-year
 
 Three consequences follow.
 
-**Deciding your target industry early is worth more than deciding it well.** A student still weighing three industries in week eight has missed the networking for all three. It is better to commit provisionally, do the work, and adjust than to keep options open until the doors close.
+Deciding your target industry early is worth more than deciding it well. A student still weighing three industries in week eight has missed the networking for all three. It is better to commit provisionally, do the work, and adjust than to keep options open until the doors close.
 
-**Preparation belongs to the summer before.** Case practice, technical refreshers and a working resume should exist before you arrive. Students who plan to start in October are competing with people who started in July.
+Preparation belongs to the summer before. Case practice, technical refreshers and a working resume should exist before you arrive. Students who plan to start in October are competing with people who started in July.
 
-**Career switchers need longer.** If you are moving industry and function simultaneously, the story takes longer to build and the evidence takes longer to assemble. Start earliest of anyone.
+Career switchers need longer. If you are moving industry and function simultaneously, the story takes longer to build and the evidence takes longer to assemble. Start earliest of anyone.
 
 ## Networking, which is assessed
 
@@ -67,15 +67,15 @@ The part that most surprises people arriving from industries where recruiting is
 
 ## Preparing for the assessments
 
-**Consulting.** Case interviews, and the preparation is substantial — twenty to thirty live cases with a partner is a normal figure. Start in the summer before term, not in December. The [case approach](/blog/usa-consulting-case-interview-campus) applies directly, with a higher bar for structure and commercial judgement at MBA level.
+Consulting. Case interviews, and the preparation is substantial — twenty to thirty live cases with a partner is a normal figure. Start in the summer before term, not in December. The [case approach](/blog/usa-consulting-case-interview-campus) applies directly, with a higher bar for structure and commercial judgement at MBA level.
 
-**Banking.** Technical questions on accounting and valuation, plus a heavy fit component and a demanding networking expectation. The [superday format](/blog/usa-finance-superday-guide) is the same at MBA level.
+Banking. Technical questions on accounting and valuation, plus a heavy fit component and a demanding networking expectation. The [superday format](/blog/usa-finance-superday-guide) is the same at MBA level.
 
-**Technology and product.** Product sense, analytics, and behavioural interviews. Less networking-dependent and more assessment-driven, and the [product interview structure](/blog/usa-product-management-apm-programs) transfers.
+Technology and product. Product sense, analytics, and behavioural interviews. Less networking-dependent and more assessment-driven, and the [product interview structure](/blog/usa-product-management-apm-programs) transfers.
 
-**General management and rotational programmes.** Behavioural interviews against competency frameworks, sometimes assessment centres. The [rotational trade-offs](/blog/global-rotational-graduate-programmes) are worth understanding before you commit.
+General management and rotational programmes. Behavioural interviews against competency frameworks, sometimes assessment centres. The [rotational trade-offs](/blog/global-rotational-graduate-programmes) are worth understanding before you commit.
 
-**Across all of them.** Your resume is screened first, at volume — confirm it survives extraction with an [ATS check](/ats-analysis) and that it speaks to each posting.
+Across all of them. Your resume is screened first, at volume — confirm it survives extraction with an [ATS check](/ats-analysis) and that it speaks to each posting.
 
 ## For international students
 
@@ -89,25 +89,25 @@ The part that most surprises people arriving from industries where recruiting is
 
 ## A month-by-month plan
 
-**The summer before.** Decide a provisional target industry. Build the resume. Start case or technical practice. Reach out to five alumni in that industry and ask what they wish they had known. This month alone puts you ahead of most of your cohort.
+The summer before. Decide a provisional target industry. Build the resume. Start case or technical practice. Reach out to five alumni in that industry and ask what they wish they had known. This month alone puts you ahead of most of your cohort.
 
-**August, pre-term.** Attend anything career services runs before classes. Join the professional club for your target industry and read what it sends.
+August, pre-term. Attend anything career services runs before classes. Join the professional club for your target industry and read what it sends.
 
-**September, weeks one to four.** Company presentations. Submit to the resume book before it closes. Begin coffee chats — aim for three a week and record every one.
+September, weeks one to four. Company presentations. Submit to the resume book before it closes. Begin coffee chats — aim for three a week and record every one.
 
-**October, weeks five to eight.** Treks. Continue coffee chats. Case practice moves to live sessions with a partner, twice weekly. Draft the applications.
+October, weeks five to eight. Treks. Continue coffee chats. Case practice moves to live sessions with a partner, twice weekly. Draft the applications.
 
-**November, weeks nine to twelve.** Applications close for the earliest industries. Case volume peaks. Behavioural stories written and rehearsed.
+November, weeks nine to twelve. Applications close for the earliest industries. Case volume peaks. Behavioural stories written and rehearsed.
 
-**December.** Interview preparation intensifies over the break. Do not stop — the January round is compressed and unforgiving.
+December. Interview preparation intensifies over the break. Do not stop — the January round is compressed and unforgiving.
 
-**January to February.** Consulting and banking interviews. Simultaneously, applications for technology and industry roles, which recruit later.
+January to February. Consulting and banking interviews. Simultaneously, applications for technology and industry roles, which recruit later.
 
-**March to April.** Technology, industry and general management interviews. Off-cycle and smaller employers, which are real and less contested.
+March to April. Technology, industry and general management interviews. Off-cycle and smaller employers, which are real and less contested.
 
-**May to August.** The internship, which is the actual hiring decision. Treat the midpoint conversation as fixed — the [return-offer mechanics](/blog/usa-internship-return-offer-conversion) apply at MBA level too.
+May to August. The internship, which is the actual hiring decision. Treat the midpoint conversation as fixed — the [return-offer mechanics](/blog/usa-internship-return-offer-conversion) apply at MBA level too.
 
-**Second-year autumn.** Full-time recruiting if needed, against a smaller pool.
+Second-year autumn. Full-time recruiting if needed, against a smaller pool.
 
 ## Industry by industry
 
@@ -135,15 +135,15 @@ Because the calendars differ so much, treating "MBA recruiting" as one process i
 
 Framing it correctly changes how you behave during it, and most students treat it as a ten-week assessment when it is really three things at once.
 
-**It is the hiring decision.** At most firms in the main recruiting industries, conversion is the primary route to a full-time offer and the second-year pool is small. Behave accordingly from week one.
+It is the hiring decision. At most firms in the main recruiting industries, conversion is the primary route to a full-time offer and the second-year pool is small. Behave accordingly from week one.
 
-**It is your test of the industry.** Ten weeks inside consulting or banking tells you whether you can stand the hours and the work. A meaningful number of interns discover they cannot, and finding that out before signing two years is worth the whole summer.
+It is your test of the industry. Ten weeks inside consulting or banking tells you whether you can stand the hours and the work. A meaningful number of interns discover they cannot, and finding that out before signing two years is worth the whole summer.
 
-**It is a network.** The people in your intern class are in the industry for the next decade, and the team you work with are references and contacts regardless of whether you return.
+It is a network. The people in your intern class are in the industry for the next decade, and the team you work with are references and contacts regardless of whether you return.
 
-**What to do during it:** ask about conversion at the midpoint rather than the end, say explicitly that you want the return offer, make your work visible to more than your immediate supervisor, and secure references with personal email addresses before you leave. The [conversion mechanics](/blog/usa-internship-return-offer-conversion) apply directly at MBA level.
+What to do during it: ask about conversion at the midpoint rather than the end, say explicitly that you want the return offer, make your work visible to more than your immediate supervisor, and secure references with personal email addresses before you leave. The [conversion mechanics](/blog/usa-internship-return-offer-conversion) apply directly at MBA level.
 
-**And take the offer seriously when it arrives.** Return offers frequently carry early deadlines that expire before the autumn round has begun, which is a decision worth thinking about in June rather than in September.
+And take the offer seriously when it arrives. Return offers frequently carry early deadlines that expire before the autumn round has begun, which is a decision worth thinking about in June rather than in September.
 
 ## Managing the workload
 
@@ -165,17 +165,17 @@ The genuine difficulty of the first year is that recruiting is a full-time job r
 
 Since deciding early is worth more than deciding perfectly, here is how to do it in the summer before term rather than in November.
 
-**Start from constraints, not preferences.** Hours you can sustain, cities you would live in, whether you need sponsorship, and how much financial risk you can carry. These eliminate more options faster than interest does.
+Start from constraints, not preferences. Hours you can sustain, cities you would live in, whether you need sponsorship, and how much financial risk you can carry. These eliminate more options faster than interest does.
 
-**Then look at what you actually did before.** The industries where your background is an asset rather than a story to overcome are the ones with the highest conversion. A career switch is entirely possible and it costs more effort, so choose it deliberately rather than by drift.
+Then look at what you actually did before. The industries where your background is an asset rather than a story to overcome are the ones with the highest conversion. A career switch is entirely possible and it costs more effort, so choose it deliberately rather than by drift.
 
-**Talk to six people, two in each of three industries.** Ask what a Tuesday looks like and what they would warn someone about. Twelve conversations over a summer settles most people's direction.
+Talk to six people, two in each of three industries. Ask what a Tuesday looks like and what they would warn someone about. Twelve conversations over a summer settles most people's direction.
 
-**Test the daily reality, not the outcome.** Everyone wants the seniority the industry leads to; the question is whether you can stand the work that gets you there for four years.
+Test the daily reality, not the outcome. Everyone wants the seniority the industry leads to; the question is whether you can stand the work that gets you there for four years.
 
-**Commit provisionally by week one and revisit at week six.** That is enough time to attend the presentations and start the networking without locking yourself in, and it beats the common alternative of keeping three options open until all three have closed.
+Commit provisionally by week one and revisit at week six. That is enough time to attend the presentations and start the networking without locking yourself in, and it beats the common alternative of keeping three options open until all three have closed.
 
-**And pick a genuine second choice with a later calendar.** Consulting plus technology, or banking plus industry, works because the timelines barely overlap. Two early-calendar industries do not.
+And pick a genuine second choice with a later calendar. Consulting plus technology, or banking plus industry, works because the timelines barely overlap. Two early-calendar industries do not.
 
 ## Common Mistakes
 
@@ -206,17 +206,17 @@ The group for whom the calendar is hardest, and the group most likely to succeed
 
 Common enough to plan for, and much more recoverable than it feels in February.
 
-**Off-cycle hiring is real.** Firms lose candidates to other offers, headcount gets approved late, and roles open in March and April that did not exist in November.
+Off-cycle hiring is real. Firms lose candidates to other offers, headcount gets approved late, and roles open in March and April that did not exist in November.
 
-**Smaller employers recruit later and less formally.** Mid-market consulting, regional firms, growth-stage companies and family businesses hire on need rather than on a calendar, and they attract a fraction of the applications.
+Smaller employers recruit later and less formally. Mid-market consulting, regional firms, growth-stage companies and family businesses hire on need rather than on a calendar, and they attract a fraction of the applications.
 
-**Consider a self-arranged internship.** Approaching a company directly with a defined project is unusual, it works more often than people expect, and it produces exactly the experience the summer was meant to give you.
+Consider a self-arranged internship. Approaching a company directly with a defined project is unusual, it works more often than people expect, and it produces exactly the experience the summer was meant to give you.
 
-**Use the alumni network properly.** This is what it is for, and a second-year student asking specifically for help is a normal and well-received request.
+Use the alumni network properly. This is what it is for, and a second-year student asking specifically for help is a normal and well-received request.
 
-**Do not spend the summer doing nothing.** Any relevant work — a project, a part-time engagement, a start-up, meaningful volunteer work with a defined output — is far better than a gap you have to explain in the second-year round.
+Do not spend the summer doing nothing. Any relevant work — a project, a part-time engagement, a start-up, meaningful volunteer work with a defined output — is far better than a gap you have to explain in the second-year round.
 
-**And revisit the target.** Sometimes the message of a failed round is that the industry was a poor fit for your background rather than that you executed badly. Being honest about which one it was, in February, is worth more than another twenty applications into the same wall — the [funnel diagnosis](/blog/placement-season-rejection-resilience) applies here as much as at undergraduate level.
+And revisit the target. Sometimes the message of a failed round is that the industry was a poor fit for your background rather than that you executed badly. Being honest about which one it was, in February, is worth more than another twenty applications into the same wall — the [funnel diagnosis](/blog/placement-season-rejection-resilience) applies here as much as at undergraduate level.
 
 ## Using career services well
 

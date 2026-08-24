@@ -44,7 +44,7 @@ For the science, education, business and athletics category, a petition generall
 
 Meeting three is the threshold to be considered, and it is not the end of the analysis — an adjudicator then assesses the evidence as a whole to decide whether it demonstrates the level of acclaim the category requires.
 
-**The practical reading of that list**, for someone finishing a degree: publications, peer review, and original contributions are the three that a [research-active graduate](/blog/usa-national-labs-and-research-jobs) is most likely to reach. Awards and press are less common. Critical capacity and high [salary](/blog/japan-salary-expectations-new-grad) generally come later.
+The practical reading of that list, for someone finishing a degree: publications, peer review, and original contributions are the three that a [research-active graduate](/blog/usa-national-labs-and-research-jobs) is most likely to reach. Awards and press are less common. Critical capacity and high [salary](/blog/japan-salary-expectations-new-grad) generally come later.
 
 ## Who it is genuinely realistic for
 
@@ -64,19 +64,19 @@ Meeting three is the threshold to be considered, and it is not the end of the an
 
 The most useful thing in this article, and the reason to read it in your first year rather than your last: **an O-1 case is accumulated, not assembled.** People who succeed did things over several years that happened to generate evidence. People who fail try to manufacture it in the six weeks before an authorisation expires, and it is visible.
 
-**Publish, and keep publishing.** Journal articles, conference papers, and preprints where your field uses them. Authorship is one of the clearest criteria and it is the one most directly within a researcher's control.
+Publish, and keep publishing. Journal articles, conference papers, and preprints where your field uses them. Authorship is one of the clearest criteria and it is the one most directly within a researcher's control.
 
-**Say yes to peer review.** Reviewing for a journal or a conference is documentary evidence of judging the work of others, it is a normal part of academic life, and graduate students are asked more often than they accept. Keep the invitation emails — they are the evidence.
+Say yes to peer review. Reviewing for a journal or a conference is documentary evidence of judging the work of others, it is a normal part of academic life, and graduate students are asked more often than they accept. Keep the invitation emails — they are the evidence.
 
-**Serve on programme committees, judge student competitions, review grant [applications](/blog/usa-handshake-linkedin-job-search)** where the opportunity exists. Same criterion, more evidence.
+Serve on programme committees, judge student competitions, review grant [applications](/blog/usa-handshake-linkedin-job-search) where the opportunity exists. Same criterion, more evidence.
 
-**Enter competitions with external judging.** A win is an award; being shortlisted is sometimes useful too.
+Enter competitions with external judging. A win is an award; being shortlisted is sometimes useful too.
 
-**Build a public professional record.** Talks at recognised conferences, a substantial open-source contribution, work that gets written about by someone independent.
+Build a public professional record. Talks at recognised conferences, a substantial open-source contribution, work that gets written about by someone independent.
 
-**Cultivate relationships with established people in your field.** Letters from recognised experts who can speak specifically about the significance of your work carry real weight, and they cannot be obtained from people who do not know you. This is a years-long thing, not a favour you ask in a crisis.
+Cultivate relationships with established people in your field. Letters from recognised experts who can speak specifically about the significance of your work carry real weight, and they cannot be obtained from people who do not know you. This is a years-long thing, not a favour you ask in a crisis.
 
-**Keep a file.** Every acceptance, every invitation, every citation count, every mention. Reconstructing this later is miserable and incomplete.
+Keep a file. Every acceptance, every invitation, every citation count, every mention. Reconstructing this later is miserable and incomplete.
 
 ## What the process involves
 
@@ -94,13 +94,13 @@ The most useful thing in this article, and the reason to read it in your first y
 
 ## Compared with the alternatives
 
-**Against the H-1B.** No lottery is the decisive advantage. The H-1B has a lower evidentiary bar and a much higher process risk; the O-1 inverts both. For someone who qualifies, the O-1 is generally the better route, and for someone who does not, it is not an option at all.
+Against the H-1B. No lottery is the decisive advantage. The H-1B has a lower evidentiary bar and a much higher process risk; the O-1 inverts both. For someone who qualifies, the O-1 is generally the better route, and for someone who does not, it is not an option at all.
 
-**Against cap-exempt employment.** [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) also avoid the lottery and require no extraordinary evidence — only that the employer qualifies. For most research-track graduates this is the more accessible route, and the two overlap heavily in population: the same person building an O-1 case is frequently working at a university that could sponsor them cap-exempt anyway.
+Against cap-exempt employment. [Cap-exempt employers](/blog/usa-cap-exempt-h1b-employers) also avoid the lottery and require no extraordinary evidence — only that the employer qualifies. For most research-track graduates this is the more accessible route, and the two overlap heavily in population: the same person building an O-1 case is frequently working at a university that could sponsor them cap-exempt anyway.
 
-**Against leaving.** The [comparison of graduate routes](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) is worth reading honestly. Countries where the graduate holds an open permit ask nothing like this standard, and for many people that is simply a better deal than accumulating an extraordinary-ability record.
+Against leaving. The [comparison of graduate routes](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) is worth reading honestly. Countries where the graduate holds an open permit ask nothing like this standard, and for many people that is simply a better deal than accumulating an extraordinary-ability record.
 
-**Against day-one CPT.** Not comparable. One is a recognised category decided on merit; the [other is a scrutinised bridge](/blog/usa-day-one-cpt-risks) that carries risk and resolves nothing.
+Against day-one CPT. Not comparable. One is a recognised category decided on merit; the [other is a scrutinised bridge](/blog/usa-day-one-cpt-risks) that carries risk and resolves nothing.
 
 ## What a case looks like in practice
 
@@ -118,15 +118,15 @@ That meets authorship, judging, and original contribution comfortably, with an a
 
 The category applies across science, education, business and athletics, and the practical odds differ enormously by field because the evidence is easier to generate in some than others.
 
-**More realistic.** Academic research of any discipline, where publication, citation and peer review are the ordinary currency of the work. Machine learning and computational fields, where conference publication is fast and citation accrues quickly. Medicine and public health research. Fields with active competitive award structures.
+More realistic. Academic research of any discipline, where publication, citation and peer review are the ordinary currency of the work. Machine learning and computational fields, where conference publication is fast and citation accrues quickly. Medicine and public health research. Fields with active competitive award structures.
 
-**Sometimes realistic.** Software engineering outside research, where a case usually rests on a significant open-source project with demonstrable adoption, conference speaking, and technical writing with a real audience. This is achievable and it takes deliberate effort over years rather than being a byproduct of the job.
+Sometimes realistic. Software engineering outside research, where a case usually rests on a significant open-source project with demonstrable adoption, conference speaking, and technical writing with a real audience. This is achievable and it takes deliberate effort over years rather than being a byproduct of the job.
 
-**Harder.** Business and management roles, where the criteria lean on high salary, critical capacity at a distinguished organisation and press coverage — all of which arrive later in a career than a graduate has reached. Design and creative work sits in a separate category with its own standard.
+Harder. Business and management roles, where the criteria lean on high salary, critical capacity at a distinguished organisation and press coverage — all of which arrive later in a career than a graduate has reached. Design and creative work sits in a separate category with its own standard.
 
-**Rarely realistic for a new graduate.** Fields with no publication culture, no external awards and no public professional record. If your work is entirely internal to an employer and produces nothing an outsider can point to, the evidence does not exist to be assembled.
+Rarely realistic for a new graduate. Fields with no publication culture, no external awards and no public professional record. If your work is entirely internal to an employer and produces nothing an outsider can point to, the evidence does not exist to be assembled.
 
-**The diagnostic question:** what, specifically, could a stranger in your field look up that would tell them your work matters? If the honest answer is nothing, the category is not currently available to you — and identifying that early is useful, because it directs your effort toward routes that are.
+The diagnostic question: what, specifically, could a stranger in your field look up that would tell them your work matters? If the honest answer is nothing, the category is not currently available to you — and identifying that early is useful, because it directs your effort toward routes that are.
 
 ## The evidence file
 
@@ -189,17 +189,17 @@ For someone early enough to act on it, this is roughly what deliberately buildin
 
 Not optional for this category, and worth understanding what the engagement involves.
 
-**Get an assessment before you commit.** Most immigration attorneys will review your record and give a candid view of whether a petition is viable. That conversation is worth paying for, because it prevents an expensive filing on a case that was never strong.
+Get an assessment before you commit. Most immigration attorneys will review your record and give a candid view of whether a petition is viable. That conversation is worth paying for, because it prevents an expensive filing on a case that was never strong.
 
-**Expect to do substantial work yourself.** The attorney frames the argument; you supply the evidence, chase the letters, gather the citation data and describe your own contributions. Candidates who expect to hand over a CV and receive a petition are surprised.
+Expect to do substantial work yourself. The attorney frames the argument; you supply the evidence, chase the letters, gather the citation data and describe your own contributions. Candidates who expect to hand over a CV and receive a petition are surprised.
 
-**Letters take the longest.** Independent experts are busy, and a good letter is specific about your contribution and why it mattered. Approach people early, give them a clear picture of what is needed, and accept that some will decline.
+Letters take the longest. Independent experts are busy, and a good letter is specific about your contribution and why it mattered. Approach people early, give them a clear picture of what is needed, and accept that some will decline.
 
-**Costs are meaningfully higher than an H-1B.** The evidentiary work is the reason. Confirm whether the employer will pay, because some will and it is not always offered.
+Costs are meaningfully higher than an H-1B. The evidentiary work is the reason. Confirm whether the employer will pay, because some will and it is not always offered.
 
-**Ask about the response process.** Petitions in this category attract requests for further evidence more often than routine filings. An attorney who explains how that is handled up front is setting realistic expectations rather than being pessimistic.
+Ask about the response process. Petitions in this category attract requests for further evidence more often than routine filings. An attorney who explains how that is handled up front is setting realistic expectations rather than being pessimistic.
 
-**And choose someone who does these regularly.** This is a specialised category, and experience with it shows in how the argument is constructed.
+And choose someone who does these regularly. This is a specialised category, and experience with it shows in how the argument is constructed.
 
 ## If the answer is not yet
 

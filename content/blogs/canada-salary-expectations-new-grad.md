@@ -29,13 +29,13 @@ showcase: none
 
 ## Researching a realistic figure
 
-**Check the salary or salary range stated directly on the specific posting where one is given.** This isn't just a courtesy some employers extend — it's a legal requirement in a growing number of provinces. British Columbia's Pay Transparency Act has required salary ranges on postings since November 2023; Ontario's own Pay Transparency Act came into force January 1, 2026. If you're applying in either province and a posting doesn't show a range, that's worth noticing, not just accepting.
+Check the salary or salary range stated directly on the specific posting where one is given. This isn't just a courtesy some employers extend — it's a legal requirement in a growing number of provinces. British Columbia's Pay Transparency Act has required salary ranges on postings since November 2023; Ontario's own Pay Transparency Act came into force January 1, 2026. If you're applying in either province and a posting doesn't show a range, that's worth noticing, not just accepting.
 
-**Talk to people currently doing a comparable role**, through your university's alumni network or a professional contact, a genuine current conversation gives a more accurate picture than any general survey.
+Talk to people currently doing a comparable role, through your university's alumni network or a professional contact, a genuine current conversation gives a more accurate picture than any general survey.
 
-**Cross-reference against named salary-data platforms rather than relying on memory or a single source.** Glassdoor and LinkedIn Salary both carry self-reported Canadian figures searchable by role, company, and city; Levels.fyi specifically covers technology compensation with unusually granular, verified-leaning data for major tech employers. Treat any single data point as anecdotal, but a consistent pattern across several of these sources for the same role and city is a reasonably reliable range to anchor your own expectations against.
+Cross-reference against named salary-data platforms rather than relying on memory or a single source. Glassdoor and LinkedIn Salary both carry self-reported Canadian figures searchable by role, company, and city; Levels.fyi specifically covers technology compensation with unusually granular, verified-leaning data for major tech employers. Treat any single data point as anecdotal, but a consistent pattern across several of these sources for the same role and city is a reasonably reliable range to anchor your own expectations against.
 
-**Build a researched range rather than a single point figure**, particularly useful when a published range is not available and you need to state an expectation yourself.
+Build a researched range rather than a single point figure, particularly useful when a published range is not available and you need to state an expectation yourself.
 
 ## Building the real comparison between offers
 
@@ -47,23 +47,23 @@ showcase: none
 
 ## What is actually negotiable
 
-**Structured graduate program base pay is generally fixed across the entire cohort**, similar to [the pattern seen in structured programs internationally](/blog/uk-graduate-salary-expectations), individually negotiating this specific figure is rarely productive and rarely worth the effort spent.
+Structured graduate program base pay is generally fixed across the entire cohort, similar to [the pattern seen in structured programs internationally](/blog/uk-graduate-salary-expectations), individually negotiating this specific figure is rarely productive and rarely worth the effort spent.
 
-**Start date is often genuinely flexible**, worth raising if it matters to your situation.
+Start date is often genuinely flexible, worth raising if it matters to your situation.
 
-**A signing bonus, where one is offered, is sometimes more flexible than base pay**, since it represents a one-time cost rather than an ongoing commitment.
+A signing bonus, where one is offered, is sometimes more flexible than base pay, since it represents a one-time cost rather than an ongoing commitment.
 
-**A genuinely competing offer from a comparable employer remains the most reliable lever for moving a base figure at employers where individual negotiation is otherwise possible.**
+A genuinely competing offer from a comparable employer remains the most reliable lever for moving a base figure at employers where individual negotiation is otherwise possible.
 
-**Relocation assistance is worth asking about explicitly if the role requires moving cities**, particularly to Toronto or Vancouver — some employers offer a one-time relocation stipend or covered moving costs even when base salary itself isn't negotiable, and this is a real, separate line item worth asking about rather than assuming it's baked into the salary figure already discussed.
+Relocation assistance is worth asking about explicitly if the role requires moving cities, particularly to Toronto or Vancouver — some employers offer a one-time relocation stipend or covered moving costs even when base salary itself isn't negotiable, and this is a real, separate line item worth asking about rather than assuming it's baked into the salary figure already discussed.
 
 ## Comparing the whole package
 
 **Benefits, including health coverage, and retirement contributions, matter considerably and are frequently underweighted by graduates comparing offers on salary alone.** Most private employers offer an RRSP (Registered Retirement Savings Plan) with an employer match — commonly somewhere in the 3-6% of salary range, though this varies by employer — rather than a traditional pension; ask specifically what the match percentage is and whether it's immediate or vests over time. Public sector roles and many Crown corporations instead offer a defined-benefit pension, a structurally different and often more valuable long-term benefit that a straight salary comparison misses entirely.
 
-**Ask specifically what a typical bonus actually was for someone at your level last year, rather than relying on a stated target figure alone, the two frequently differ meaningfully.**
+**Ask specifically what a typical bonus actually was for someone at your level last year**, rather than relying on a stated target figure alone, the two frequently differ meaningfully.
 
-**Public sector and larger established private employers often offer stronger benefits and pension provisions than smaller private companies, worth factoring this into any real comparison, similar to the [total-package principle that applies to any offer comparison anywhere](/blog/usa-offer-negotiation-new-grad).**
+**Public sector and larger established private employers often offer stronger benefits and pension provisions than smaller private companies**, worth factoring this into any real comparison, similar to the [total-package principle that applies to any offer comparison anywhere](/blog/usa-offer-negotiation-new-grad).
 
 ## Common Mistakes
 

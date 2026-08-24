@@ -37,15 +37,15 @@ It is worth being precise, because transfer students often worry about the wrong
 
 The single most useful thing on this page. Almost everything below can begin in the spring and summer before you set foot on the new campus.
 
-**Apply for internships in the spring before transferring.** Many summer internship applications for the following year open before your transfer term begins. You can apply as a student of your incoming institution once you have accepted a place — check with both schools, and most employers care about your graduation year rather than your current campus.
+Apply for internships in the spring before transferring. Many summer internship applications for the following year open before your transfer term begins. You can apply as a student of your incoming institution once you have accepted a place — check with both schools, and most employers care about your graduation year rather than your current campus.
 
-**Contact the new careers office in the summer.** Ask which employers recruit from your programme, when the deadlines fall, and whether transfer students can access the portal early. They generally can and generally do not know to ask.
+Contact the new careers office in the summer. Ask which employers recruit from your programme, when the deadlines fall, and whether transfer students can access the portal early. They generally can and generally do not know to ask.
 
-**Join the professional societies for your field before term starts.** Many accept members over the summer, and the recruiting-relevant activity begins in week one.
+Join the professional societies for your field before term starts. Many accept members over the summer, and the recruiting-relevant activity begins in week one.
 
-**Reach out to five students in your new programme.** Ask what recruiting looked like for them and what they wish they had known. Fifteen minutes each, and it compresses a year of orientation into a fortnight.
+Reach out to five students in your new programme. Ask what recruiting looked like for them and what they wish they had known. Fifteen minutes each, and it compresses a year of orientation into a fortnight.
 
-**Fix the resume over the summer.** It should be in its final format, [parsing cleanly](/ats-analysis), before the term starts — because from week one you will be applying rather than preparing.
+Fix the resume over the summer. It should be in its final format, [parsing cleanly](/ats-analysis), before the term starts — because from week one you will be applying rather than preparing.
 
 ## What to put on the resume
 
@@ -65,21 +65,21 @@ Transfer students consistently undersell exactly the material that differentiate
 
 ## The compressed timeline, month by month
 
-**The spring before transferring.** Resume finalised. Applications open for the following summer's internships at the earliest employers — apply. Contact the new careers office.
+The spring before transferring. Resume finalised. Applications open for the following summer's internships at the earliest employers — apply. Contact the new careers office.
 
-**The summer before.** Societies joined. Five conversations with students in your new programme. Target list of thirty employers built.
+The summer before. Societies joined. Five conversations with students in your new programme. Target list of thirty employers built.
 
-**Junior autumn, weeks one to four.** This is your critical window and it coincides with settling in. Careers fair, employer presentations, applications for the earliest industries. Applying in these weeks is worth more than anything else you do this year.
+Junior autumn, weeks one to four. This is your critical window and it coincides with settling in. Careers fair, employer presentations, applications for the earliest industries. Applying in these weeks is worth more than anything else you do this year.
 
-**Junior autumn to winter.** Interviews for summer internships. Keep applying while interviewing.
+Junior autumn to winter. Interviews for summer internships. Keep applying while interviewing.
 
-**Junior spring.** The second wave, which is real and less contested. Also: if the autumn produced nothing, this is when smaller employers hire.
+Junior spring. The second wave, which is real and less contested. Also: if the autumn produced nothing, this is when smaller employers hire.
 
-**Junior summer.** The internship, which is the primary route to a graduate offer at most large employers.
+Junior summer. The internship, which is the primary route to a graduate offer at most large employers.
 
-**Senior autumn.** Graduate recruiting, with a return offer if the internship converted.
+Senior autumn. Graduate recruiting, with a return offer if the internship converted.
 
-**The uncomfortable truth in that sequence:** your first four weeks on a new campus are the most consequential weeks of your recruiting life, and you will spend them lost. Doing the preparation in the preceding summer is what makes them survivable.
+The uncomfortable truth in that sequence: your first four weeks on a new campus are the most consequential weeks of your recruiting life, and you will spend them lost. Doing the preparation in the preceding summer is what makes them survivable.
 
 ## If you missed the internship cycle
 
@@ -101,17 +101,17 @@ Common, and recoverable — it just requires the alternatives to be run delibera
 
 Transfer students have two alumni networks, two careers offices and two sets of faculty, and most use neither properly.
 
-**Your community college careers office still works for you.** Many maintain relationships with local employers, and local employers hire year-round on need rather than on a campus calendar. Ask what they have.
+Your community college careers office still works for you. Many maintain relationships with local employers, and local employers hire year-round on need rather than on a campus calendar. Ask what they have.
 
-**Community college faculty know local industry.** Instructors frequently come from the professions they teach and have current contacts. A recommendation from someone who taught you in a class of twenty carries more specificity than one from a lecturer who taught you in a hall of three hundred.
+Community college faculty know local industry. Instructors frequently come from the professions they teach and have current contacts. A recommendation from someone who taught you in a class of twenty carries more specificity than one from a lecturer who taught you in a hall of three hundred.
 
-**Former classmates are a real network.** People from your community college cohort are entering the workforce now, at exactly the employers who hire on need. They are the easiest cold outreach you will ever do because the shared institution is genuine.
+Former classmates are a real network. People from your community college cohort are entering the workforce now, at exactly the employers who hire on need. They are the easiest cold outreach you will ever do because the shared institution is genuine.
 
-**Your new institution's alumni network is the bigger one.** Use the [alumni search approach](/blog/usa-handshake-linkedin-job-search) filtered by employer, and prioritise people one to four years out.
+Your new institution's alumni network is the bigger one. Use the [alumni search approach](/blog/usa-handshake-linkedin-job-search) filtered by employer, and prioritise people one to four years out.
 
-**Faculty at the new institution take longer to reach.** Office hours from week two, a specific question about their work, and an ask about research opportunities. Research with a professor is one of the fastest substitutes for a missed internship cycle.
+Faculty at the new institution take longer to reach. Office hours from week two, a specific question about their work, and an ask about research opportunities. Research with a professor is one of the fastest substitutes for a missed internship cycle.
 
-**And tell both careers offices you are a transfer.** Some run specific support, some know which employers actively recruit transfers, and none of it is advertised.
+And tell both careers offices you are a transfer. Some run specific support, some know which employers actively recruit transfers, and none of it is advertised.
 
 ## What recruiters actually see
 
@@ -131,11 +131,11 @@ Worth demystifying, because transfer students routinely imagine a screening proc
 
 The [general application tracker](/blog/usa-handshake-linkedin-job-search) works for everyone, and transfer students should add two columns most guides do not mention.
 
-**Pipeline source.** Whether an application came through your new institution's careers portal, an employer's general site, your community college's remaining connections, or a personal referral. This tells you after a few weeks which channel is actually converting for you specifically, which matters more when your channels are less established than a continuing student's.
+Pipeline source. Whether an application came through your new institution's careers portal, an employer's general site, your community college's remaining connections, or a personal referral. This tells you after a few weeks which channel is actually converting for you specifically, which matters more when your channels are less established than a continuing student's.
 
-**Days since transfer.** A simple counter helps you see whether your application rate is keeping pace with the compressed calendar, since it is easy to lose a sense of urgency once term begins and the workload of a new campus takes over.
+Days since transfer. A simple counter helps you see whether your application rate is keeping pace with the compressed calendar, since it is easy to lose a sense of urgency once term begins and the workload of a new campus takes over.
 
-**Review it weekly, not daily.** The same discipline that prevents any student from over-reading short-term noise applies here, and it matters more for a transfer student because the season is shorter and every week carries more relative weight.
+Review it weekly, not daily. The same discipline that prevents any student from over-reading short-term noise applies here, and it matters more for a transfer student because the season is shorter and every week carries more relative weight.
 
 ## One thing to do first
 
@@ -149,11 +149,11 @@ That one message typically produces a target list, a calendar, and portal access
 
 The same student, two approaches, to make the timing argument concrete.
 
-**Student A** transfers in August as a junior. They spend September settling in, find the careers office in late October, discover the autumn deadlines have largely passed, apply to a handful of things in November, hear nothing, and conclude in December that they missed the year. They spend spring semester focused on coursework and start looking again the following autumn as a senior, competing for full-time roles without an internship behind them.
+Student A transfers in August as a junior. They spend September settling in, find the careers office in late October, discover the autumn deadlines have largely passed, apply to a handful of things in November, hear nothing, and conclude in December that they missed the year. They spend spring semester focused on coursework and start looking again the following autumn as a senior, competing for full-time roles without an internship behind them.
 
-**Student B** transfers the same August. In June they emailed the careers office, got the employer list and the deadline calendar, and applied to eight internships citing their incoming institution. In July they joined the professional society and messaged five students in the programme. Week one of term they attended the careers fair with a finished resume. By November they had two interviews; by February, a summer internship. That internship converts to a graduate offer the following autumn.
+Student B transfers the same August. In June they emailed the careers office, got the employer list and the deadline calendar, and applied to eight internships citing their incoming institution. In July they joined the professional society and messaged five students in the programme. Week one of term they attended the careers fair with a finished resume. By November they had two interviews; by February, a summer internship. That internship converts to a graduate offer the following autumn.
 
-**The difference is not ability.** It is roughly six hours of work done in June and July, before either student set foot on campus.
+The difference is not ability. It is roughly six hours of work done in June and July, before either student set foot on campus.
 
 That is the entire argument of this page compressed into one comparison — and it is why the checklist for the summer before matters more than anything you do after arriving.
 

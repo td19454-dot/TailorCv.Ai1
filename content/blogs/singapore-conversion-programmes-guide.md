@@ -27,13 +27,13 @@ showcase: none
 
 ## What conversion actually depends on
 
-**Performance is necessary and it is genuinely only one of several factors, and understanding the others changes how you interpret the process.**
+Performance is necessary and it is genuinely only one of several factors, and understanding the others changes how you interpret the process.
 
-**Headcount availability** at the time your internship concludes, entirely outside your control, a team with no open graduate position simply cannot convert the best intern they have ever had, regardless of performance.
+Headcount availability at the time your internship concludes, entirely outside your control, a team with no open graduate position simply cannot convert the best intern they have ever had, regardless of performance.
 
-**Pass eligibility**, if you are a foreign student, whether the specific employer can support the [Employment Pass requirements](/blog/singapore-employment-pass-graduates) for a full-time role is a separate and sometimes harder question than whether they could host you as an intern under lighter arrangements, worth understanding this distinction clearly.
+Pass eligibility, if you are a foreign student, whether the specific employer can support the [Employment Pass requirements](/blog/singapore-employment-pass-graduates) for a full-time role is a separate and sometimes harder question than whether they could host you as an intern under lighter arrangements, worth understanding this distinction clearly.
 
-**Your actual work, and critically, how visible it was**, an intern who did genuinely excellent work that only their immediate supervisor ever saw converts considerably less reliably than one whose work was visible to several people within the team.
+Your actual work, and critically, how visible it was, an intern who did genuinely excellent work that only their immediate supervisor ever saw converts considerably less reliably than one whose work was visible to several people within the team.
 
 ## Asking about conversion, and when
 
@@ -43,13 +43,13 @@ showcase: none
 
 ## Making your work visible
 
-**Present findings where you can, even informally, rather than only reporting quietly to your immediate supervisor.**
+Present findings where you can, even informally, rather than only reporting quietly to your immediate supervisor.
 
-**Contribute in team meetings and discussions**, within the bounds of what your role and confidence level genuinely allow.
+Contribute in team meetings and discussions, within the bounds of what your role and confidence level genuinely allow.
 
-**Ask your supervisor directly how your work is being communicated upward and across the team**, and whether there is anything you could do to make your specific contribution more visible to the people who will ultimately be involved in a conversion decision.
+Ask your supervisor directly how your work is being communicated upward and across the team, and whether there is anything you could do to make your specific contribution more visible to the people who will ultimately be involved in a conversion decision.
 
-**This is not about self-promotion for its own sake**, it is about ensuring the people who will decide have accurate, specific information about what you actually did, rather than relying on a vague general impression.
+This is not about self-promotion for its own sake, it is about ensuring the people who will decide have accurate, specific information about what you actually did, rather than relying on a vague general impression.
 
 ## Say explicitly that you want it
 
@@ -57,11 +57,11 @@ showcase: none
 
 ## Securing the reference regardless
 
-**Whether or not conversion ultimately happens, ask directly whether your supervisor would be willing to serve as a reference, and get a personal contact rather than relying solely on a corporate one that may become unreachable if they later leave the company.**
+Whether or not conversion ultimately happens, ask directly whether your supervisor would be willing to serve as a reference, and get a personal contact rather than relying solely on a corporate one that may become unreachable if they later leave the company.
 
-**A local reference from a real, substantive work experience is genuinely valuable for any subsequent application in this market**, [precisely the credential that resolves the two doubts an unfamiliar employer generally has](/blog/international-student-internship-strategy) about a candidate, whether they can do the work, and whether the practical logistics of hiring them are manageable.
+A local reference from a real, substantive work experience is genuinely valuable for any subsequent application in this market, [precisely the credential that resolves the two doubts an unfamiliar employer generally has](/blog/international-student-internship-strategy) about a candidate, whether they can do the work, and whether the practical logistics of hiring them are manageable.
 
-**Keep your own records of dates, your specific role and responsibilities, and any concrete outcomes**, useful for future applications and, for foreign candidates, potentially relevant to future pass applications that ask you to account for your work history.
+Keep your own records of dates, your specific role and responsibilities, and any concrete outcomes, useful for future applications and, for foreign candidates, potentially relevant to future pass applications that ask you to account for your work history.
 
 ## Common Mistakes
 

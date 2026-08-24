@@ -31,13 +31,13 @@ showcase: none
 
 ## Researching a realistic figure
 
-**Read published graduate salary surveys for your sector**, which give you a genuine median and a range rather than a single headline number that blends every industry together.
+Read published graduate salary surveys for your sector, which give you a genuine median and a range rather than a single headline number that blends every industry together.
 
-**Check the salary stated on the specific posting**, where one is given, increasingly common and the most reliable single data point available to you.
+Check the salary stated on the specific posting, where one is given, increasingly common and the most reliable single data point available to you.
 
-**Ask people doing the actual role.** A short conversation with someone one or two years into a similar job, found through your university alumni network, gives you a far more accurate picture than any survey.
+Ask people doing the actual role. A short conversation with someone one or two years into a similar job, found through your university alumni network, gives you a far more accurate picture than any survey.
 
-**Build a range, not a point figure.** "Based on what I have seen for graduate analyst roles in this sector, I am expecting somewhere around X" is a stronger and more defensible position than a single number.
+Build a range, not a point figure. "Based on what I have seen for graduate analyst roles in this sector, I am expecting somewhere around X" is a stronger and more defensible position than a single number.
 
 ## What is actually negotiable
 
@@ -53,11 +53,11 @@ showcase: none
 
 ## Comparing the whole package
 
-**Base salary is the headline and not the whole story.** Pension contributions, private healthcare, a season ticket loan, professional qualification funding and bonus structure all add real value that a bare salary comparison misses entirely.
+Base salary is the headline and not the whole story. Pension contributions, private healthcare, a season ticket loan, professional qualification funding and bonus structure all add real value that a bare salary comparison misses entirely.
 
-**Ask what a typical bonus actually was last year**, not what the target figure is, the two are frequently different.
+Ask what a typical bonus actually was last year, not what the target figure is, the two are frequently different.
 
-**Factor the real cost of the city** into any comparison between two offers in different locations, using the [same approach that applies anywhere](/blog/usa-relocation-and-cost-of-living-first-job), real rent for somewhere you would actually live, not a headline average.
+Factor the real cost of the city into any comparison between two offers in different locations, using the [same approach that applies anywhere](/blog/usa-relocation-and-cost-of-living-first-job), real rent for somewhere you would actually live, not a headline average.
 
 ## Building your own realistic figure properly
 
@@ -76,9 +76,9 @@ showcase: none
 
 ## Understanding how pay progresses beyond the starting figure
 
-**Ask directly during the interview process what realistic salary progression looks like over the first several years**, rather than focusing purely on the starting figure, a modest starting salary with genuinely strong, structured progression can outperform a higher starting figure with a flatter subsequent trajectory.
+Ask directly during the interview process what realistic salary progression looks like over the first several years, rather than focusing purely on the starting figure, a modest starting salary with genuinely strong, structured progression can outperform a higher starting figure with a flatter subsequent trajectory.
 
-**Research typical progression timelines for your specific sector**, some sectors have well-understood, fairly standard progression milestones, others are considerably more variable and individually negotiated, understanding which category your target sector falls into helps calibrate realistic expectations.
+Research typical progression timelines for your specific sector, some sectors have well-understood, fairly standard progression milestones, others are considerably more variable and individually negotiated, understanding which category your target sector falls into helps calibrate realistic expectations.
 
 ## Frequently Asked Questions
 

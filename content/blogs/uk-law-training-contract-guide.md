@@ -33,15 +33,15 @@ showcase: none
 
 ## The qualification route
 
-**The route to qualifying as a solicitor now runs through a centralised assessment**, replacing the previous training course model. In outline, it involves passing centralised examinations and completing a period of qualifying work experience, alongside meeting character and suitability requirements.
+The route to qualifying as a solicitor now runs through a centralised assessment, replacing the previous training course model. In outline, it involves passing centralised examinations and completing a period of qualifying work experience, alongside meeting character and suitability requirements.
 
-**Qualifying work experience is broader than a traditional training contract.** It can be gained across more than one organisation and in a wider range of settings, which has opened routes that did not previously exist.
+Qualifying work experience is broader than a traditional training contract. It can be gained across more than one organisation and in a wider range of settings, which has opened routes that did not previously exist.
 
-**Firms differ in how they structure this.** Many still recruit for a defined training contract and fund the preparation courses; others use the flexibility differently. Understanding what a specific firm offers matters more than the general framework.
+Firms differ in how they structure this. Many still recruit for a defined training contract and fund the preparation courses; others use the flexibility differently. Understanding what a specific firm offers matters more than the general framework.
 
-**Funding varies.** Many firms cover course fees and provide a maintenance grant during study, which is a substantial financial consideration and worth asking about explicitly.
+Funding varies. Many firms cover course fees and provide a maintenance grant during study, which is a substantial financial consideration and worth asking about explicitly.
 
-**Verify the current requirements** with the regulator rather than relying on any summary, since this area has changed recently and continues to evolve.
+Verify the current requirements with the regulator rather than relying on any summary, since this area has changed recently and continues to evolve.
 
 ## Non-law graduates
 
@@ -55,17 +55,17 @@ showcase: none
 
 ## What firms actually assess
 
-**Academic record.** Degree classification and frequently A-level results, applied as a filter at many firms. The [classification guide](/blog/uk-degree-classification-and-employers) covers how this works in practice.
+Academic record. Degree classification and frequently A-level results, applied as a filter at many firms. The [classification guide](/blog/uk-degree-classification-and-employers) covers how this works in practice.
 
-**Commercial awareness.** The most heavily weighted and most consistently under-prepared area. Firms want to know you understand that a law firm is a business and that clients are businesses with commercial problems. Following a few sectors properly, forming views and being able to discuss them is what separates candidates — the [four-week approach](/blog/singapore-banking-graduate-programmes) to building this applies directly.
+Commercial awareness. The most heavily weighted and most consistently under-prepared area. Firms want to know you understand that a law firm is a business and that clients are businesses with commercial problems. Following a few sectors properly, forming views and being able to discuss them is what separates candidates — the [four-week approach](/blog/singapore-banking-graduate-programmes) to building this applies directly.
 
-**Why law, why commercial law, why this firm.** Three separate questions, each needing a real answer. The firm question is the deciding one and it requires genuine research — practice areas, recent work, something specific.
+Why law, why commercial law, why this firm. Three separate questions, each needing a real answer. The firm question is the deciding one and it requires genuine research — practice areas, recent work, something specific.
 
-**Written application quality.** Applications are read and the writing is assessed, since the job is substantially writing.
+Written application quality. Applications are read and the writing is assessed, since the job is substantially writing.
 
-**Assessment centres** with written exercises, group work, case studies and interviews. The [assessment centre mechanics](/blog/uk-assessment-centre-guide) apply directly.
+Assessment centres with written exercises, group work, case studies and interviews. The [assessment centre mechanics](/blog/uk-assessment-centre-guide) apply directly.
 
-**Psychometric and situational judgement tests** at many firms — the [preparation](/blog/uk-psychometric-tests-guide) transfers.
+Psychometric and situational judgement tests at many firms — the [preparation](/blog/uk-psychometric-tests-guide) transfers.
 
 ## Applying well
 
@@ -85,9 +85,9 @@ showcase: none
 
 ## Handling the long gap between application and start date
 
-**Given how far in advance training contract applications open relative to the eventual start date, plan realistically for what you will do in the intervening period**, further study, other relevant work experience, or simply completing your degree properly, this gap is normal and expected rather than something to feel anxious about.
+Given how far in advance training contract applications open relative to the eventual start date, plan realistically for what you will do in the intervening period, further study, other relevant work experience, or simply completing your degree properly, this gap is normal and expected rather than something to feel anxious about.
 
-**Some firms offer a bridging arrangement or scholarship covering the period between accepting an offer and beginning the contract, particularly relevant if your qualifying route involves further study first**, worth understanding exactly what your specific firm offers during this period.
+Some firms offer a bridging arrangement or scholarship covering the period between accepting an offer and beginning the contract, particularly relevant if your qualifying route involves further study first, worth understanding exactly what your specific firm offers during this period.
 
 ## Common Mistakes
 

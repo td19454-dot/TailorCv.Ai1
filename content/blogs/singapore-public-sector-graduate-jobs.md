@@ -178,7 +178,7 @@ Useful for deciding whether you would like it, and almost never described.
 
 **You will spend real time on stakeholder coordination.** Getting three departments to agree is often the actual task, and the technical or analytical part is the easy half. People who came expecting to be judged purely on analysis find this frustrating; people who understood it in advance find it interesting.
 
-**Decisions take longer than you think reasonable, and usually for a reason you were not told.**
+**Decisions take longer than you think reasonable**, and usually for a reason you were not told.
 
 The habit worth building early is asking *why* the process exists rather than assuming it is inertia. Sometimes it is inertia. Often it is a consequence nobody wants to repeat.
 

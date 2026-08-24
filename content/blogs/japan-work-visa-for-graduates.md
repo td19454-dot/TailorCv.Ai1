@@ -33,11 +33,11 @@ showcase: none
 
 ## Two different paths
 
-**If you are already in Japan on a student status**, you apply to change your status of residence from student to the working category, once you have an offer. This is generally done in the months before you start work, and timing matters because the process takes time and you cannot begin work in the new category before it is approved.
+If you are already in Japan on a student status, you apply to change your status of residence from student to the working category, once you have an offer. This is generally done in the months before you start work, and timing matters because the process takes time and you cannot begin work in the new category before it is approved.
 
-**If you are applying from overseas**, your employer typically first obtains a certificate confirming you meet the requirements, which you then use to apply for the visa at a Japanese diplomatic mission in your country. This route takes longer and requires more coordination with the employer.
+If you are applying from overseas, your employer typically first obtains a certificate confirming you meet the requirements, which you then use to apply for the visa at a Japanese diplomatic mission in your country. This route takes longer and requires more coordination with the employer.
 
-**Either way, the sequence is: offer first, status second.** You cannot secure the status speculatively and then look for work.
+Either way, the sequence is: offer first, status second. You cannot secure the status speculatively and then look for work.
 
 ## The job-hunting extension
 
@@ -51,13 +51,13 @@ A genuinely useful provision that many graduates do not know exists.
 
 ## Other routes worth knowing
 
-**The highly skilled professional system** uses a points-based assessment covering education, career history, salary, age and [Japanese language](/blog/japan-japanese-language-requirements-jobs) ability among other factors. Meeting the threshold brings advantages including longer periods of stay and a faster route toward permanent residence. Worth assessing if you have an advanced degree, strong language ability or a high salary — the [permanent residency guide](/blog/japan-permanent-residency-for-workers) covers how this connects to longer-term status.
+The highly skilled professional system uses a points-based assessment covering education, career history, salary, age and [Japanese language](/blog/japan-japanese-language-requirements-jobs) ability among other factors. Meeting the threshold brings advantages including longer periods of stay and a faster route toward permanent residence. Worth assessing if you have an advanced degree, strong language ability or a high salary — the [permanent residency guide](/blog/japan-permanent-residency-for-workers) covers how this connects to longer-term status.
 
-**Working holiday arrangements** exist with a number of countries, allowing young people to work in Japan for a limited period. Conditions and eligibility depend on the specific bilateral arrangement.
+Working holiday arrangements exist with a number of countries, allowing young people to work in Japan for a limited period. Conditions and eligibility depend on the specific bilateral arrangement.
 
-**Teaching-specific routes** apply to some instruction roles, covered in the [teaching guide](/blog/japan-jet-programme-and-teaching-jobs).
+Teaching-specific routes apply to some instruction roles, covered in the [teaching guide](/blog/japan-jet-programme-and-teaching-jobs).
 
-**Intra-company transfer** applies if you already work for a company with a Japanese entity.
+Intra-company transfer applies if you already work for a company with a Japanese entity.
 
 ## Practical points
 
@@ -73,11 +73,11 @@ A genuinely useful provision that many graduates do not know exists.
 
 ## The application process in more detail
 
-**The employer generally files the application on your behalf**, similar to [employer-driven work authorisation processes in many countries](/blog/china-work-visa-z-visa-for-graduates), you cannot independently apply without an employer's sponsorship, meaning your options are shaped by which employers are willing and experienced with this process.
+The employer generally files the application on your behalf, similar to [employer-driven work authorisation processes in many countries](/blog/china-work-visa-z-visa-for-graduates), you cannot independently apply without an employer's sponsorship, meaning your options are shaped by which employers are willing and experienced with this process.
 
-**A key requirement is that your intended work genuinely relates to your field of study or relevant professional background**, this is a real substantive requirement, not a formality, worth understanding clearly before assuming any job offer automatically qualifies regardless of the connection between your degree and the actual role.
+A key requirement is that your intended work genuinely relates to your field of study or relevant professional background, this is a real substantive requirement, not a formality, worth understanding clearly before assuming any job offer automatically qualifies regardless of the connection between your degree and the actual role.
 
-**Processing generally takes real time**, factor this into your planning around a start date, and confirm with your employer what the realistic timeline looks like for your specific situation.
+Processing generally takes real time, factor this into your planning around a start date, and confirm with your employer what the realistic timeline looks like for your specific situation.
 
 ## Choosing employers with genuine sponsorship experience
 
@@ -87,9 +87,9 @@ A genuinely useful provision that many graduates do not know exists.
 
 ## Renewal and longer-term status
 
-**This work visa category generally requires periodic renewal**, tied to your continued employment in a genuinely qualifying role, understand what this means practically for your ongoing status and what happens if your role or employer changes.
+This work visa category generally requires periodic renewal, tied to your continued employment in a genuinely qualifying role, understand what this means practically for your ongoing status and what happens if your role or employer changes.
 
-**Longer-term permanent residency is a separate, further process**, generally requiring a substantial period of continuous qualifying residence, worth understanding this as a distinct longer-term consideration from the initial work visa itself, similar to how [permanent residency is a separate question from an initial work pass in other countries](/blog/singapore-permanent-residency-for-graduates).
+Longer-term permanent residency is a separate, further process, generally requiring a substantial period of continuous qualifying residence, worth understanding this as a distinct longer-term consideration from the initial work visa itself, similar to how [permanent residency is a separate question from an initial work pass in other countries](/blog/singapore-permanent-residency-for-graduates).
 
 ## Common Mistakes
 
@@ -125,11 +125,11 @@ It can, over a longer timeframe requiring substantial continuous qualifying resi
 
 ## What to do if your application faces difficulty
 
-**If an initial application is refused or faces genuine difficulty, understand the specific reason given rather than assuming a general explanation**, the specific documented reason determines whether a revised application, additional documentation, or a genuinely different approach is the appropriate next step.
+If an initial application is refused or faces genuine difficulty, understand the specific reason given rather than assuming a general explanation, the specific documented reason determines whether a revised application, additional documentation, or a genuinely different approach is the appropriate next step.
 
-**Consider consulting a qualified immigration specialist for a complex or refused case**, rather than attempting to navigate a difficult situation entirely independently, particularly where the stakes involve your ability to remain and work in the country.
+Consider consulting a qualified immigration specialist for a complex or refused case, rather than attempting to navigate a difficult situation entirely independently, particularly where the stakes involve your ability to remain and work in the country.
 
-**Keep your employer informed throughout any difficulty**, since they are a party to the application and may have their own channels or experience that can help resolve a specific issue.
+Keep your employer informed throughout any difficulty, since they are a party to the application and may have their own channels or experience that can help resolve a specific issue.
 
 ## Frequently Asked Questions
 

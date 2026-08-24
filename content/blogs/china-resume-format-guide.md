@@ -21,27 +21,27 @@ showcase: resume
 
 ## What is expected on the document
 
-**A photograph is standard practice**, differing from US, UK and Canadian convention and aligning with expectations in parts of continental Europe and Asia more broadly, the [country-by-country comparison](/blog/international-student-resume-differences-by-country) sets out how sharply this varies globally, and an applicant moving between markets needs separate versions accordingly.
+**A photograph is standard practice, worth taking seriously rather than treating as an afterthought**, differing from US, UK and Canadian convention and aligning with expectations in parts of continental Europe and Asia more broadly, the [country-by-country comparison](/blog/international-student-resume-differences-by-country) sets out how sharply this varies globally, and an applicant moving between markets needs separate versions accordingly.
 
-**Personal details commonly included** extend beyond what US or UK convention expects, frequently covering things like date of birth, and sometimes marital status or other details depending on the employer and role, this reflects local hiring convention rather than anything unusual about a specific employer's request.
+**Personal details commonly included** extend beyond what US or UK convention expects, frequently covering things like date of birth, and sometimes marital status, political affiliation status, or other details depending on the employer and role — the last of these specifically relevant for certain state-owned enterprise and government-adjacent applications — this reflects local hiring convention rather than anything unusual about a specific employer's request.
 
-**Contact details, education and work experience** follow a broadly familiar structure, with education often given prominent placement, including specific detail on your university, major and results, more consistently emphasised than in some Western markets.
+**Contact details, education and work experience** follow a broadly familiar structure, with education often given prominent placement, including specific detail on your university, major and results, more consistently emphasised than in some Western markets. The document itself is universally referred to as a 简历 (*jiǎnlì*) — worth knowing the term since it's what every job platform, application form, and recruiter conversation actually calls it, rather than a borrowed English word.
 
 **Length runs to roughly one to two pages** for a graduate applicant, similar in spirit to broader international convention, avoid running significantly longer regardless of how much material you have.
 
 ## Structure that works
 
-**Personal details and photograph at the top**, following local convention.
+Personal details and photograph at the top, following local convention.
 
-**Education**, with institution, degree, major, dates and results stated clearly, this section frequently carries more weight in initial screening than in some Western markets, particularly for graduate roles at large domestic employers.
+Education, with institution, degree, major, dates and results stated clearly, this section frequently carries more weight in initial screening than in some Western markets, particularly for graduate roles at large domestic employers.
 
-**Work and internship experience**, in reverse chronological order, with outcomes described specifically rather than duties listed generically, the same underlying principle that improves any resume anywhere, specific and quantified beats vague and generic.
+Work and internship experience, in reverse chronological order, with outcomes described specifically rather than duties listed generically, the same underlying principle that improves any resume anywhere, specific and quantified beats vague and generic.
 
-**Language ability**, stated clearly with any relevant certification level, particularly relevant if applying to a mix of domestic and multinational employers where language requirements differ, the [language requirements guide](/blog/china-mandarin-requirements-for-jobs) and [HSK level guide](/blog/china-hsk-levels-for-employment) cover this in detail.
+Language ability, stated clearly with any relevant certification level, particularly relevant if applying to a mix of domestic and multinational employers where language requirements differ, the [language requirements guide](/blog/china-mandarin-requirements-for-jobs) and [HSK level guide](/blog/china-hsk-levels-for-employment) cover this in detail.
 
-**Skills and any relevant certifications.**
+Skills and any relevant certifications.
 
-**Self-evaluation or a brief personal summary**, a short section some domestic employers expect, stating your strengths and career direction concisely, this differs from Western convention where a lengthy self-summary is often discouraged, here a brief, specific version is commonly expected rather than optional.
+Self-evaluation or a brief personal summary (自我评价), a short section some domestic employers expect, stating your strengths and career direction concisely, this differs from Western convention where a lengthy self-summary is often discouraged, here a brief, specific version is commonly expected rather than optional — three or four sentences covering your core strengths and what you're specifically seeking, written with the same concrete, evidence-based standard as the rest of the document rather than generic self-praise.
 
 ## Multinationals versus domestic employers
 
@@ -53,9 +53,9 @@ showcase: resume
 
 ## Screening at scale
 
-**Large domestic employers and the major multinationals operating in China both screen at enormous volume**, given the scale of [China's campus recruiting seasons](/blog/china-campus-recruiting-qiuzhao-explained), automated systems filtering resumes before a human reviews them is standard practice, exactly the dynamic that makes [tailoring language to the posting](/blog/how-to-tailor-resume-for-every-job) important everywhere, operating here at a larger scale than in most markets.
+Large domestic employers and the major multinationals operating in China both screen at enormous volume, given the scale of [China's campus recruiting seasons](/blog/china-campus-recruiting-qiuzhao-explained), automated systems filtering resumes before a human reviews them is standard practice, exactly the dynamic that makes [tailoring language to the posting](/blog/how-to-tailor-resume-for-every-job) important everywhere, operating here at a larger scale than in most markets.
 
-**A document that does not extract cleanly**, due to complex formatting, graphics, or unusual layout choices, fails at this stage regardless of the quality of your actual experience, running an [ATS check](/ats-analysis) before submitting is worth the few minutes it takes.
+A document that does not extract cleanly, due to complex formatting, graphics, or unusual layout choices, fails at this stage regardless of the quality of your actual experience, running an [ATS check](/ats-analysis) before submitting is worth the few minutes it takes.
 
 ## Getting the photograph right specifically
 
@@ -63,11 +63,13 @@ showcase: resume
 
 **Follow standard proportions and presentation conventions for this specific document type**, an incorrectly sized or informally styled photograph is noticed immediately and reflects on your overall attention to detail before a reader has assessed anything else about your actual qualifications.
 
+**Format the document on A4 paper, not US Letter.** As with several other Asian markets, A4 is the default paper size assumption here — a document formatted for Letter size can show awkward margins or crop unexpectedly when printed or rendered by local office software. If you're adapting a resume built originally for a US application, checking and correcting the page size is an easy, easy-to-miss step.
+
 ## Language on the document itself
 
-**Where you are applying to domestic employers, submitting the document in the appropriate language, generally the local language rather than English, is expected at most companies**, unless a posting specifically indicates otherwise, worth confirming this for the specific employer rather than defaulting to whichever language you find more comfortable to write in.
+Where you are applying to domestic employers, submitting the document in the appropriate language, generally the local language rather than English, is expected at most companies, unless a posting specifically indicates otherwise, worth confirming this for the specific employer rather than defaulting to whichever language you find more comfortable to write in.
 
-**For applications to multinational companies, check whether an English version, a local-language version, or both are expected**, this varies genuinely by employer and even by specific role, and getting this wrong by submitting the wrong language entirely can itself be read as a signal of unfamiliarity with the specific market or company.
+For applications to multinational companies, check whether an English version, a local-language version, or both are expected, this varies genuinely by employer and even by specific role, and getting this wrong by submitting the wrong language entirely can itself be read as a signal of unfamiliarity with the specific market or company.
 
 ## Common Mistakes
 
@@ -103,3 +105,11 @@ Generally yes, maintaining a single master record of your experience and generat
 ### Does automated screening really matter here?
 
 Yes, given the volume of applications at major employers during [recruiting seasons](/blog/china-campus-recruiting-qiuzhao-explained), a document that parses cleanly and matches the posting's language is a genuine factor in whether it is ever seen by a person.
+
+### What paper size should the document use?
+
+A4, not US Letter. If you're adapting a resume originally built for a US application, check and correct the page size — a Letter-formatted document can show awkward margins or crop unexpectedly on local office software.
+
+### What is "自我评价" and how long should it be?
+
+The self-evaluation section — three or four concrete sentences on your core strengths and career direction, written with the same specific, evidence-based standard as the rest of the resume rather than generic self-praise.

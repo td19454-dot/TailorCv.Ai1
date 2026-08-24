@@ -33,9 +33,9 @@ showcase: none
 
 ## New graduate transition programs
 
-**Many provinces and health authorities run structured transition-to-practice programs for new graduate nurses and other clinical professionals**, combining supervised practice with formal support, similar in spirit to [structured new graduate residency programs seen in other healthcare systems](/blog/usa-nursing-and-healthcare-new-grad-jobs), these exist specifically because the transition from student to independent practitioner is genuinely difficult, and a program with real structured support meaningfully improves your first year.
+Many provinces and health authorities run structured transition-to-practice programs for new graduate nurses and other clinical professionals, combining supervised practice with formal support, similar in spirit to [structured new graduate residency programs seen in other healthcare systems](/blog/usa-nursing-and-healthcare-new-grad-jobs), these exist specifically because the transition from student to independent practitioner is genuinely difficult, and a program with real structured support meaningfully improves your first year.
 
-**Ask specifically about the structure of any transition program when considering an offer**, ratios, mentorship structure, and support beyond the formal orientation period all matter considerably to your actual day-to-day experience. A program with a genuinely low new-graduate-to-mentor ratio and a defined, multi-month structured support period is a materially different first-year experience from one that hands you a brief orientation checklist and expects independent practice within weeks — worth asking current staff directly, not just relying on the recruiting material's own description of the program.
+Ask specifically about the structure of any transition program when considering an offer, ratios, mentorship structure, and support beyond the formal orientation period all matter considerably to your actual day-to-day experience. A program with a genuinely low new-graduate-to-mentor ratio and a defined, multi-month structured support period is a materially different first-year experience from one that hands you a brief orientation checklist and expects independent practice within weeks — worth asking current staff directly, not just relying on the recruiting material's own description of the program.
 
 ## Internationally educated professionals
 
@@ -45,19 +45,19 @@ showcase: none
 
 ## The non-clinical side, consistently overlooked
 
-**This is the part of Canadian healthcare employment most relevant to graduates from disciplines other than nursing or medicine, and it is genuinely substantial.**
+This is the part of Canadian healthcare employment most relevant to graduates from disciplines other than nursing or medicine, and it is genuinely substantial.
 
-**Healthcare analytics and data roles**, working with clinical and operational data, similar to the [pattern seen broadly in healthcare data work internationally](/blog/usa-nursing-and-healthcare-new-grad-jobs), real analytical work with genuine impact, and consistently short of qualified candidates.
+Healthcare analytics and data roles, working with clinical and operational data, similar to the [pattern seen broadly in healthcare data work internationally](/blog/usa-nursing-and-healthcare-new-grad-jobs), real analytical work with genuine impact, and consistently short of qualified candidates.
 
-**Health information technology**, supporting the electronic systems used across hospitals and health authorities, a substantial and growing employment area.
+Health information technology, supporting the electronic systems used across hospitals and health authorities, a substantial and growing employment area.
 
-**Healthcare administration and operations**, managing the operational side of hospitals and health authorities, genuine responsibility available relatively early in a career.
+Healthcare administration and operations, managing the operational side of hospitals and health authorities, genuine responsibility available relatively early in a career.
 
-**Health policy and research roles**, at government health ministries, research institutes and universities, drawing on a wide range of academic backgrounds.
+Health policy and research roles, at government health ministries, research institutes and universities, drawing on a wide range of academic backgrounds.
 
-**None of these require a clinical qualification**, and they are consistently under-explored by graduates who associate healthcare employment purely with clinical roles.
+None of these require a clinical qualification, and they are consistently under-explored by graduates who associate healthcare employment purely with clinical roles.
 
-**A concrete example of the scale involved: Canada Health Infoway**, a federally-funded organization dedicated to digital health infrastructure, alongside the health-information technology teams inside every major hospital network and health authority, represent a genuinely large employment category built entirely around technology, data, and systems work in a healthcare context — worth researching directly if you have a computer science, data, or health informatics background and had never considered healthcare as a sector for that skill set.
+A concrete example of the scale involved: Canada Health Infoway, a federally-funded organization dedicated to digital health infrastructure, alongside the health-information technology teams inside every major hospital network and health authority, represent a genuinely large employment category built entirely around technology, data, and systems work in a healthcare context — worth researching directly if you have a computer science, data, or health informatics background and had never considered healthcare as a sector for that skill set.
 
 ## Applying well
 

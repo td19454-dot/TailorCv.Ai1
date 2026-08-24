@@ -35,13 +35,13 @@ showcase: none
 
 ## What each is actually like
 
-**The government programme** offers the most support and the least control. You may be placed anywhere, including a small town with few other foreign residents. Many participants describe this as the most valuable part of the experience; others find the isolation difficult. The support structure, the community of other participants, and the stability are the strongest features.
+The government programme offers the most support and the least control. You may be placed anywhere, including a small town with few other foreign residents. Many participants describe this as the most valuable part of the experience; others find the isolation difficult. The support structure, the community of other participants, and the stability are the strongest features.
 
-**Language schools** offer location choice and less stability. You know where you will live, and the working hours are unsociable and the teaching load can be heavy.
+Language schools offer location choice and less stability. You know where you will live, and the working hours are unsociable and the teaching load can be heavy.
 
-**Direct hire and dispatch in schools** places you as an assistant alongside a Japanese teacher, which means less autonomy than leading your own classes and a gentler start.
+Direct hire and dispatch in schools places you as an assistant alongside a Japanese teacher, which means less autonomy than leading your own classes and a gentler start.
 
-**International schools** are genuine teaching careers with corresponding requirements, and they are not an entry route for someone without a qualification.
+International schools are genuine teaching careers with corresponding requirements, and they are not an entry route for someone without a qualification.
 
 ## Visa and requirements
 
@@ -57,13 +57,13 @@ showcase: none
 
 ## Where it leads
 
-**This is the honest part.** Teaching is an excellent way into Japan and a limited long-term career for most people who enter through language instruction.
+This is the honest part. Teaching is an excellent way into Japan and a limited long-term career for most people who enter through language instruction.
 
-**Common next steps:** moving into corporate work using the Japanese acquired during the teaching years, moving into international school teaching with a qualification obtained meanwhile, moving into translation, localisation or content work, or moving into recruitment and business roles serving the foreign community.
+Common next steps: moving into corporate work using the Japanese acquired during the teaching years, moving into international school teaching with a qualification obtained meanwhile, moving into translation, localisation or content work, or moving into recruitment and business roles serving the foreign community.
 
-**Which argues for treating the first year deliberately.** People who study Japanese seriously during a teaching placement have substantially more options afterwards than those who do not, and the placement itself provides both time and immersion.
+Which argues for treating the first year deliberately. People who study Japanese seriously during a teaching placement have substantially more options afterwards than those who do not, and the placement itself provides both time and immersion.
 
-**Building a professional network while teaching matters too.** The [English-conducted market](/blog/japan-english-speaking-jobs-guide) is the most common destination, and it is easier to enter with contacts than cold.
+Building a professional network while teaching matters too. The [English-conducted market](/blog/japan-english-speaking-jobs-guide) is the most common destination, and it is easier to enter with contacts than cold.
 
 ## How the JET Programme specifically works
 
@@ -75,9 +75,9 @@ showcase: none
 
 ## Independent teaching positions outside this programme
 
-**Private language schools, international schools, and other independently arranged teaching positions also exist as a genuine alternative route**, requirements and quality vary considerably by specific employer, worth vetting any specific school's legitimacy and sponsorship experience carefully, similar to [the same careful vetting that matters in any independent teaching arrangement internationally](/blog/china-english-teaching-jobs-guide).
+Private language schools, international schools, and other independently arranged teaching positions also exist as a genuine alternative route, requirements and quality vary considerably by specific employer, worth vetting any specific school's legitimacy and sponsorship experience carefully, similar to [the same careful vetting that matters in any independent teaching arrangement internationally](/blog/china-english-teaching-jobs-guide).
 
-**International schools generally offer the most structured working conditions among independent options**, often requiring a recognised teaching qualification and sometimes prior classroom experience.
+International schools generally offer the most structured working conditions among independent options, often requiring a recognised teaching qualification and sometimes prior classroom experience.
 
 ## Common Mistakes
 
@@ -111,9 +111,9 @@ Requirements vary by programme and employer, international schools generally exp
 
 ## Deciding between the structured programme and independent options
 
-**Consider your own priorities around structure, support and placement certainty against the flexibility, and generally somewhat less structured support, of independently arranged positions.**
+Consider your own priorities around structure, support and placement certainty against the flexibility, and generally somewhat less structured support, of independently arranged positions.
 
-**The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.**
+The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.
 
 ## Frequently Asked Questions
 

@@ -41,17 +41,17 @@ You cannot teach in a public school without state certification, and understandi
 
 This matters more than anything else on the page, because a shortage subject changes both your odds and the support available.
 
-**Mathematics and the sciences.** Persistent nationwide shortages, particularly physics and chemistry. A graduate with a mathematics or science degree is genuinely in demand.
+Mathematics and the sciences. Persistent nationwide shortages, particularly physics and chemistry. A graduate with a mathematics or science degree is genuinely in demand.
 
-**Special education.** The largest and most durable shortage in the country, and it carries additional certification requirements.
+Special education. The largest and most durable shortage in the country, and it carries additional certification requirements.
 
-**Bilingual education and [English](/blog/japan-english-speaking-jobs-guide) as a second language.** Strong demand, and a second language is a direct qualification rather than a nice-to-have.
+Bilingual education and [English](/blog/japan-english-speaking-jobs-guide) as a second language. Strong demand, and a second language is a direct qualification rather than a nice-to-have.
 
-**Career and technical education.** Industry experience frequently substitutes for a traditional teaching background.
+Career and technical education. Industry experience frequently substitutes for a traditional teaching background.
 
-**Rural and high-need urban districts.** Location matters as much as subject. Districts that struggle to recruit offer faster routes, more support and sometimes financial incentives.
+Rural and high-need urban districts. Location matters as much as subject. Districts that struggle to recruit offer faster routes, more support and sometimes financial incentives.
 
-**Why shortage areas matter to you.** Districts hiring into a shortage are more willing to sponsor an alternative certification candidate, more likely to help with the process, and in some cases more willing to engage with work authorisation questions. If your degree is in a shortage subject, lead with it.
+Why shortage areas matter to you. Districts hiring into a shortage are more willing to sponsor an alternative certification candidate, more likely to help with the process, and in some cases more willing to engage with work authorisation questions. If your degree is in a shortage subject, lead with it.
 
 ## Work authorisation, honestly
 
@@ -73,15 +73,15 @@ The part that determines whether the public school route is viable for you.
 
 Completely unlike corporate recruiting, and applying on the wrong calendar is the common error.
 
-**Spring is the main season.** Districts learn their staffing needs as the school year ends, and most hiring for an autumn start happens between March and July.
+Spring is the main season. Districts learn their staffing needs as the school year ends, and most hiring for an autumn start happens between March and July.
 
-**August is late but not hopeless.** Late resignations create vacancies right up to the start of term, and candidates who are ready to move quickly do well in this window.
+August is late but not hopeless. Late resignations create vacancies right up to the start of term, and candidates who are ready to move quickly do well in this window.
 
-**A smaller winter cycle** exists for mid-year vacancies starting in January.
+A smaller winter cycle exists for mid-year vacancies starting in January.
 
-**Certification timing is the constraint.** Districts hire candidates who are certified or clearly on track. Begin the paperwork months before you intend to apply.
+Certification timing is the constraint. Districts hire candidates who are certified or clearly on track. Begin the paperwork months before you intend to apply.
 
-**Job fairs matter here.** District and regional teacher recruitment fairs are a genuine hiring channel — some districts make offers on the day — which is unusual and worth exploiting. The [career fair approach](/blog/usa-career-fair-strategy) applies, adapted: bring copies of your resume and your certification status in writing.
+Job fairs matter here. District and regional teacher recruitment fairs are a genuine hiring channel — some districts make offers on the day — which is unusual and worth exploiting. The [career fair approach](/blog/usa-career-fair-strategy) applies, adapted: bring copies of your resume and your certification status in writing.
 
 ## The wider education sector
 
@@ -101,19 +101,19 @@ Teaching in a classroom is one of several ways into education, and the others re
 
 ## Applying well
 
-**Lead with your subject.** For shortage subjects, the degree is the credential and it should be the first thing a reader sees.
+Lead with your subject. For shortage subjects, the degree is the credential and it should be the first thing a reader sees.
 
-**State your certification status precisely.** "Enrolled in [state] alternative certification, expected completion June, subject test passed" tells a principal everything. Vagueness here stalls applications.
+State your certification status precisely. "Enrolled in [state] alternative certification, expected completion June, subject test passed" tells a principal everything. Vagueness here stalls applications.
 
-**Get classroom experience however you can.** Substitute teaching, tutoring, coaching, teaching assistant work, summer programmes. Districts want evidence you have stood in front of a class and are not romanticising it.
+Get classroom experience however you can. Substitute teaching, tutoring, coaching, teaching assistant work, summer programmes. Districts want evidence you have stood in front of a class and are not romanticising it.
 
-**References from anyone who saw you teach** carry more weight than academic references.
+References from anyone who saw you teach carry more weight than academic references.
 
-**Expect a demonstration lesson.** Many schools ask you to teach a short lesson to real students as part of the process. Prepare it properly, plan for it to go wrong, and show how you adapt — that is what is being assessed.
+Expect a demonstration lesson. Many schools ask you to teach a short lesson to real students as part of the process. Prepare it properly, plan for it to go wrong, and show how you adapt — that is what is being assessed.
 
-**Apply to the district, and to individual schools.** Districts run central applications and principals frequently have significant discretion. Both channels matter.
+Apply to the district, and to individual schools. Districts run central applications and principals frequently have significant discretion. Both channels matter.
 
-**Check the resume parses.** District systems are large and automated; an [ATS check](/ats-analysis) is worth the minute.
+Check the resume parses. District systems are large and automated; an [ATS check](/ats-analysis) is worth the minute.
 
 ## Alternative certification, step by step
 
@@ -141,17 +141,17 @@ The route most people in this position use, and it is less daunting once the seq
 
 Useful because it is different from what candidates emphasise.
 
-**Classroom management above subject knowledge.** A principal assumes a mathematics graduate knows mathematics. What they cannot assume is that you can hold the attention of thirty fourteen-year-olds on a Friday afternoon. Every question about a difficult class is really about this.
+Classroom management above subject knowledge. A principal assumes a mathematics graduate knows mathematics. What they cannot assume is that you can hold the attention of thirty fourteen-year-olds on a Friday afternoon. Every question about a difficult class is really about this.
 
-**Whether you will still be here in three years.** Turnover is expensive and disruptive. Signals of durability — an explicit reason for this school, a connection to the area, realism about the difficulty — matter more than enthusiasm.
+Whether you will still be here in three years. Turnover is expensive and disruptive. Signals of durability — an explicit reason for this school, a connection to the area, realism about the difficulty — matter more than enthusiasm.
 
-**Coachability.** New teachers are bad at first, universally. What distinguishes them is whether feedback changes their practice, so a story about being observed, told something uncomfortable and adjusting is unusually valuable.
+Coachability. New teachers are bad at first, universally. What distinguishes them is whether feedback changes their practice, so a story about being observed, told something uncomfortable and adjusting is unusually valuable.
 
-**Fit with the specific community.** A school serving a particular population wants to know you understand it and are not arriving to rescue anyone. Condescension in this answer ends applications.
+Fit with the specific community. A school serving a particular population wants to know you understand it and are not arriving to rescue anyone. Condescension in this answer ends applications.
 
-**Whether you can do the extra.** Coaching, clubs, after-school support. Small schools especially need teachers who cover more than the timetable.
+Whether you can do the extra. Coaching, clubs, after-school support. Small schools especially need teachers who cover more than the timetable.
 
-**What matters less than candidates think:** your degree classification, your own school results, and elaborate lesson-planning theory. Principals hire people who can run a room and will stay.
+What matters less than candidates think: your degree classification, your own school results, and elaborate lesson-planning theory. Principals hire people who can run a room and will stay.
 
 ## Substitute teaching as a route in
 
@@ -175,19 +175,19 @@ Under-used, and it solves several problems at once for someone without classroom
 
 The school matters more than the district and the district matters more than the state, and candidates usually research these in the opposite order.
 
-**Visit if you can.** A walk through a building during the school day tells you more than any brochure. Are corridors calm between lessons? Do adults greet students by name? Is there work on the walls?
+Visit if you can. A walk through a building during the school day tells you more than any brochure. Are corridors calm between lessons? Do adults greet students by name? Is there work on the walls?
 
-**Ask about turnover.** How many teachers left last year, and how many were in their first three years. High early-career turnover means the support is not there.
+Ask about turnover. How many teachers left last year, and how many were in their first three years. High early-career turnover means the support is not there.
 
-**Ask what induction looks like.** A named mentor with protected time, or a handbook and good luck.
+Ask what induction looks like. A named mentor with protected time, or a handbook and good luck.
 
-**Ask about behaviour policy.** Not whether one exists — whether it is applied consistently, and what happens when you send a student out. Inconsistency here is the single largest driver of new-teacher attrition.
+Ask about behaviour policy. Not whether one exists — whether it is applied consistently, and what happens when you send a student out. Inconsistency here is the single largest driver of new-teacher attrition.
 
-**Ask about planning time.** How many free periods, and whether they are genuinely protected or routinely consumed by cover.
+Ask about planning time. How many free periods, and whether they are genuinely protected or routinely consumed by cover.
 
-**Ask what the school is working on.** A principal with a clear answer is running the school; one who describes everything as fine is not.
+Ask what the school is working on. A principal with a clear answer is running the school; one who describes everything as fine is not.
 
-**And be honest about the community.** Teaching in a high-need school is demanding and rewarding, and it requires you to actually want to be there. Principals detect the difference between commitment and charity within one [interview](/blog/japan-mensetsu-interview-questions-guide), and they hire for the first.
+And be honest about the community. Teaching in a high-need school is demanding and rewarding, and it requires you to actually want to be there. Principals detect the difference between commitment and charity within one [interview](/blog/japan-mensetsu-interview-questions-guide), and they hire for the first.
 
 ## One thing to do first
 
@@ -212,19 +212,19 @@ Then book the subject examination. It is the step with the longest lead time and
 
 Most schools ask for one, and candidates prepare the content and neglect what is actually assessed.
 
-**What they are watching.** Whether students engage. Whether you notice when they do not. How you handle a wrong answer, a disruption or a question you cannot answer. Whether you check for understanding or simply deliver.
+What they are watching. Whether students engage. Whether you notice when they do not. How you handle a wrong answer, a disruption or a question you cannot answer. Whether you check for understanding or simply deliver.
 
-**Plan for it to go wrong.** The technology will fail, the timing will slip, or a student will derail it. Adapting visibly and calmly scores higher than a lesson that runs perfectly to plan, because the panel knows which of those you will need daily.
+Plan for it to go wrong. The technology will fail, the timing will slip, or a student will derail it. Adapting visibly and calmly scores higher than a lesson that runs perfectly to plan, because the panel knows which of those you will need daily.
 
-**Check for understanding out loud.** Ask a question, wait, and respond to what you hear. Teaching at students rather than with them is the most common failure in a demonstration lesson.
+Check for understanding out loud. Ask a question, wait, and respond to what you hear. Teaching at students rather than with them is the most common failure in a demonstration lesson.
 
-**Learn a few names in the first minute.** Ask, use them. Panels notice immediately.
+Learn a few names in the first minute. Ask, use them. Panels notice immediately.
 
-**Keep the content modest and the interaction high.** Trying to cover too much is the second most common failure.
+Keep the content modest and the interaction high. Trying to cover too much is the second most common failure.
 
-**Have a plan for a wrong answer.** "Tell me how you got there" is almost always the right response and it demonstrates instructional instinct better than a correction.
+Have a plan for a wrong answer. "Tell me how you got there" is almost always the right response and it demonstrates instructional instinct better than a correction.
 
-**Ask for the details in advance.** Year group, ability range, topic, length, and whether you may bring materials. Schools answer, and the ones that do not have told you something.
+Ask for the details in advance. Year group, ability range, topic, length, and whether you may bring materials. Schools answer, and the ones that do not have told you something.
 
 ## The realistic first year
 
@@ -246,19 +246,19 @@ Worth knowing before committing, because teaching is unusually hard at the start
 
 Worth being concrete, because teacher pay is widely discussed and rarely explained.
 
-**Districts publish salary schedules.** Pay is set by a grid: years of service on one axis, qualification level on the other. There is no negotiation and no ambiguity — you can look up exactly what you would earn in year one and in year ten before you apply.
+Districts publish salary schedules. Pay is set by a grid: years of service on one axis, qualification level on the other. There is no negotiation and no ambiguity — you can look up exactly what you would earn in year one and in year ten before you apply.
 
-**Prior experience may transfer.** Some districts credit teaching experience elsewhere, including abroad, moving you along the grid. Ask, because it is not always volunteered.
+Prior experience may transfer. Some districts credit teaching experience elsewhere, including abroad, moving you along the grid. Ask, because it is not always volunteered.
 
-**A master's degree moves you up a column** permanently, which is why many teachers pursue one and why tuition support matters.
+A master's degree moves you up a column permanently, which is why many teachers pursue one and why tuition support matters.
 
-**Variation between districts is large.** Neighbouring districts can differ substantially for the same job, and the higher-paying one is not always the harder one to work in. Compare the actual schedules.
+Variation between districts is large. Neighbouring districts can differ substantially for the same job, and the higher-paying one is not always the harder one to work in. Compare the actual schedules.
 
-**Extra duties pay extra.** Coaching, clubs, summer school, additional certifications in shortage areas.
+Extra duties pay extra. Coaching, clubs, summer school, additional certifications in shortage areas.
 
-**Benefits are generally strong** — health coverage and a pension scheme — and they are a meaningful part of the package that a salary comparison misses.
+Benefits are generally strong — health coverage and a pension scheme — and they are a meaningful part of the package that a salary comparison misses.
 
-**And cost of living dominates.** A higher schedule in an expensive metropolitan area can be worse in real terms than a lower one an hour away. Compare against rent for somewhere you would actually live, exactly as with [any relocation decision](/blog/usa-relocation-and-cost-of-living-first-job).
+And cost of living dominates. A higher schedule in an expensive metropolitan area can be worse in real terms than a lower one an hour away. Compare against rent for somewhere you would actually live, exactly as with [any relocation decision](/blog/usa-relocation-and-cost-of-living-first-job).
 
 ### Can I teach at university level instead?
 

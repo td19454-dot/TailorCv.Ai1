@@ -48,7 +48,7 @@ The name is three categories in one:
 
 This is where applications fail.
 
-**Your work must relate to your degree subject, or to documented professional experience.**
+**Your work must relate to your degree subject**, or to documented professional experience.
 
 ### Which pairings clear, and which get questioned
 

@@ -21,27 +21,27 @@ showcase: none
 
 ## The two seasons
 
-**Autumn recruiting is the primary and largest hiring season**, running from late summer through the autumn, aimed at students graduating the following summer. This is where most large employers, particularly major technology firms, state-owned enterprises and multinationals, fill the bulk of their graduate headcount.
+**Autumn recruiting — 秋招 (*qiūzhāo*)** — is the primary and largest hiring season, running from late summer through the autumn, aimed at students graduating the following summer. This is where most large employers, particularly major technology firms, state-owned enterprises and multinationals, fill the bulk of their graduate headcount. Knowing the term "qiuzhao" matters practically: it's how the season is referenced on every job platform, in every piece of Chinese-language recruiting advice, and in casual conversation with other job-hunters — search for it directly rather than a generic English translation.
 
-**Spring recruiting is a genuinely separate, smaller season**, running in the first few months of the calendar year, aimed partly at students who missed or were unsuccessful in autumn, partly at remaining vacancies, and partly at a slightly different pool of graduating students whose final results are only available by that point.
+**Spring recruiting — 春招 (*chūnzhāo*)** — is a genuinely separate, smaller season, running in the first few months of the calendar year, aimed partly at students who missed or were unsuccessful in qiuzhao, partly at remaining vacancies, and partly at a slightly different pool of graduating students whose final results are only available by that point.
 
-**Why both matter.** Treating spring as simply a lesser repeat of autumn misunderstands it, some employers genuinely prefer spring candidates for specific roles, and the applicant volume is typically lower, which changes the odds for a candidate applying then.
+**Why both matter.** Treating spring as simply a lesser repeat of autumn misunderstands it, some employers genuinely prefer spring candidates for specific roles, and the applicant volume is typically lower, which changes the odds for a candidate applying then rather than waiting an entire additional year for the next autumn cycle.
 
-**The scale is enormous relative to most Western markets.** Application volumes for major employers routinely run into the hundreds of thousands nationally, which shapes the entire process, heavy automated screening, multiple rounds, and a premium on applying early within each season's window.
+**The scale is enormous relative to most Western markets.** Application volumes for major employers routinely run into the hundreds of thousands nationally, which shapes the entire process, heavy automated screening, multiple rounds, and a premium on applying early within each season's window. This scale is worth internalising honestly before your first application — a process built to handle this volume rewards clean, specific, well-matched applications considerably more than a smaller-scale market would, since there's simply less room for a generic document to get a second look.
 
 ## What the process looks like
 
-**Applications open online**, typically through the employer's own career site or a small number of dominant recruiting platforms, and close on a defined schedule within the season.
+Applications open online, typically through the employer's own career site or a small number of dominant recruiting platforms — 前程无忧 (51job), 智联招聘 (Zhaopin), and Boss直聘 (Boss Zhipin) are among the largest general platforms carrying graduate postings alongside company-specific channels — and close on a defined schedule within the season.
 
-**Automated screening is heavy**, given the volume. A resume that does not clearly match the stated requirements, in the language the posting uses, is unlikely to survive the initial pass, the same underlying dynamic as [any large-scale application system](/blog/how-to-tailor-resume-for-every-job), operating at greater scale.
+Automated screening is heavy, given the volume. A resume that does not clearly match the stated requirements, in the language the posting uses, is unlikely to survive the initial pass, the same underlying dynamic as [any large-scale application system](/blog/how-to-tailor-resume-for-every-job), operating at greater scale.
 
-**Written tests follow**, commonly covering logical reasoning, numerical ability, general knowledge and sometimes role-specific technical content, administered online under time pressure.
+Written tests follow, commonly covering logical reasoning, numerical ability, general knowledge and sometimes role-specific technical content, administered online under time pressure.
 
-**Multiple interview rounds** typically follow, moving from an initial screen through to a panel or senior interview, with the number of rounds varying by employer and role level.
+Multiple interview rounds typically follow, moving from an initial screen through to a panel or senior interview, with the number of rounds varying by employer and role level.
 
-**Group interviews and group discussions** appear more commonly in Chinese graduate recruiting than in many Western markets, assessing how you interact and contribute within a group rather than solely on individual answers, worth practising specifically since the format is genuinely different from a one-to-one interview.
+Group interviews and group discussions appear more commonly in Chinese graduate recruiting than in many Western markets, assessing how you interact and contribute within a group rather than solely on individual answers, worth practising specifically since the format is genuinely different from a one-to-one interview.
 
-**Offers can come with defined response deadlines**, and large employers manage this at scale, so understanding your own timeline and other applications in progress matters.
+Offers can come with defined response deadlines, and large employers manage this at scale, so understanding your own timeline and other applications in progress matters.
 
 ## Timing, and why it catches people out
 
@@ -53,13 +53,13 @@ showcase: none
 
 ## For international students and returnees
 
-**Both major employer categories, multinationals and major domestic firms, run structured recruiting through these same two seasons**, though multinationals sometimes run parallel or slightly offset schedules for specific programmes.
+Both major employer categories, multinationals and major domestic firms, run structured recruiting through these same two seasons, though multinationals sometimes run parallel or slightly offset schedules for specific programmes.
 
-**Chinese language ability materially affects which channel is realistic for you**, covered separately, and worth assessing honestly before committing time to applications that assume native fluency.
+Chinese language ability materially affects which channel is realistic for you, covered separately, and worth assessing honestly before committing time to applications that assume native fluency.
 
-**Returnees, students who studied abroad and are seeking to work in China**, form a distinct and substantial applicant category with [their own dynamics](/blog/china-returnee-haigui-job-market), worth reading if this describes your situation.
+Returnees, students who studied abroad and are seeking to work in China, form a distinct and substantial applicant category with [their own dynamics](/blog/china-returnee-haigui-job-market), worth reading if this describes your situation.
 
-**Applying to both seasons, where your graduation timing allows, genuinely improves your odds**, rather than concentrating everything into one attempt.
+Applying to both seasons, where your graduation timing allows, genuinely improves your odds, rather than concentrating everything into one attempt.
 
 ## What each stage of the process actually assesses
 
@@ -71,11 +71,11 @@ showcase: none
 
 ## Preparing a target list across both seasons
 
-**Build your target employer list well before either recruiting season opens**, rather than reacting to postings as they appear, given the scale and speed at which large employers move through their applicant pools, having your list, your tailored application materials, and your research ready in advance meaningfully improves your odds against a process that rewards early, well-prepared applicants.
+Build your target employer list well before either recruiting season opens, rather than reacting to postings as they appear, given the scale and speed at which large employers move through their applicant pools, having your list, your tailored application materials, and your research ready in advance meaningfully improves your odds against a process that rewards early, well-prepared applicants.
 
-**Track exactly where you stand with each employer across both the autumn and, where relevant, spring seasons**, the volume of parallel applications many candidates manage within this system makes basic organisational discipline genuinely important, losing track of a specific employer's stage or deadline is an entirely avoidable and needlessly costly mistake.
+Track exactly where you stand with each employer across both the autumn and, where relevant, spring seasons, the volume of parallel applications many candidates manage within this system makes basic organisational discipline genuinely important, losing track of a specific employer's stage or deadline is an entirely avoidable and needlessly costly mistake.
 
-**Revisit your list between the two seasons, adding employers you missed in autumn and removing those where the outcome is already clear**, treating spring as a genuinely separate, deliberate campaign rather than an afterthought produces meaningfully better results than simply reapplying to the same autumn list without adjustment.
+Revisit your list between the two seasons, adding employers you missed in autumn and removing those where the outcome is already clear, treating spring as a genuinely separate, deliberate campaign rather than an afterthought produces meaningfully better results than simply reapplying to the same autumn list without adjustment.
 
 ## Common Mistakes
 
@@ -91,6 +91,10 @@ showcase: none
 ### When does autumn recruiting actually start?
 
 Typically late summer, often earlier than students accustomed to a single Western autumn cycle expect, with applications for many large employers opening well before the academic term begins.
+
+### What do "qiuzhao" and "chunzhao" actually mean?
+
+秋招 (qiūzhāo) is autumn recruiting, the larger primary season; 春招 (chūnzhāo) is spring recruiting, the smaller secondary season. Both terms are worth knowing since they're how the seasons are referenced everywhere in Chinese-language job platforms and recruiting discussion.
 
 ### Is spring recruiting worth pursuing if I missed autumn?
 

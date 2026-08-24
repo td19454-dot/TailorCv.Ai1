@@ -148,7 +148,7 @@ Names, not categories. Then check whether those employers hire people who need w
 
 In the US, whether it is STEM-classified. In Canada, whether the programme and institution are permit-eligible. These are verifiable facts, not opinions, and they change your outcome more than the curriculum does.
 
-**"Does the programme include a placement, co-op or internship component, and is it required or optional?"**
+**"Does the programme include a placement**, co-op or internship component, and is it required or optional?"
 
 A built-in placement is the single most valuable structural feature a course can have for an international student.
 

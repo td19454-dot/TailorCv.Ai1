@@ -31,13 +31,13 @@ showcase: none
 
 ## The new entrant provisions
 
-**Worth knowing because it changes the arithmetic considerably.**
+Worth knowing because it changes the arithmetic considerably.
 
 Reduced salary thresholds can apply to those classed as new entrants, which includes recent graduates and people early in a career, subject to conditions. Where they apply, roles that would otherwise be out of reach become viable.
 
-**The reduction is time-limited.** New entrant status does not last indefinitely, and the salary needs to rise to the standard threshold when you extend beyond that period. Understanding this at the point you accept a role prevents an unpleasant discovery at extension.
+The reduction is time-limited. New entrant status does not last indefinitely, and the salary needs to rise to the standard threshold when you extend beyond that period. Understanding this at the point you accept a role prevents an unpleasant discovery at extension.
 
-**Ask the employer whether they are applying new entrant rates**, since it affects both what they can offer and what happens at renewal.
+Ask the employer whether they are applying new entrant rates, since it affects both what they can offer and what happens at renewal.
 
 ## Checking employers before you apply
 
@@ -53,13 +53,13 @@ Reduced salary thresholds can apply to those classed as new entrants, which incl
 
 ## Switching from the Graduate route
 
-**You can switch from inside the UK**, without leaving, once you have a qualifying job with a licensed sponsor.
+You can switch from inside the UK, without leaving, once you have a qualifying job with a licensed sponsor.
 
-**Timing matters.** Apply before your Graduate permission expires, and allow for processing.
+Timing matters. Apply before your Graduate permission expires, and allow for processing.
 
-**This is the transition the Graduate route exists to enable**, and the graduates who manage it well are the ones who targeted sponsorable roles from early in the period rather than treating the search as something to begin later.
+This is the transition the Graduate route exists to enable, and the graduates who manage it well are the ones who targeted sponsorable roles from early in the period rather than treating the search as something to begin later.
 
-**Time on the Skilled Worker route can count toward settlement**, which is the substantive difference from the Graduate route and the reason the switch matters beyond simply continuing to work.
+Time on the Skilled Worker route can count toward settlement, which is the substantive difference from the Graduate route and the reason the switch matters beyond simply continuing to work.
 
 ## Practical planning
 
@@ -75,11 +75,11 @@ Reduced salary thresholds can apply to those classed as new entrants, which incl
 
 ## What the salary threshold actually protects against, and why it moves
 
-**The threshold exists as a policy mechanism to ensure sponsored roles genuinely meet a substantive skill and compensation bar, rather than being used to bring in labour at rates below what the role would command in the open market**, understanding the underlying logic helps explain why the specific figures are reviewed and adjusted periodically rather than fixed permanently.
+The threshold exists as a policy mechanism to ensure sponsored roles genuinely meet a substantive skill and compensation bar, rather than being used to bring in labour at rates below what the role would command in the open market, understanding the underlying logic helps explain why the specific figures are reviewed and adjusted periodically rather than fixed permanently.
 
-**Because thresholds have moved upward over recent years, a role that might have qualified under an older, lower figure may no longer clear the bar under current requirements**, this is precisely why relying on a remembered figure from even a year or two ago is genuinely unsafe, always verify the current specific threshold against official guidance before making a decision that depends on it.
+Because thresholds have moved upward over recent years, a role that might have qualified under an older, lower figure may no longer clear the bar under current requirements, this is precisely why relying on a remembered figure from even a year or two ago is genuinely unsafe, always verify the current specific threshold against official guidance before making a decision that depends on it.
 
-**Occupation-specific going rates, where they exceed the general threshold, reflect the specific market rate research conducted for that occupation**, worth checking both the general figure and the specific occupational rate for your target role, since the higher of the two generally applies.
+Occupation-specific going rates, where they exceed the general threshold, reflect the specific market rate research conducted for that occupation, worth checking both the general figure and the specific occupational rate for your target role, since the higher of the two generally applies.
 
 ## Common Mistakes
 

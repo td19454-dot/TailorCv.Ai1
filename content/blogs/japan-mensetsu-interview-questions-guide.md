@@ -31,19 +31,19 @@ The structure that works: what the situation was, what problem you faced, what y
 
 ## Other questions to expect
 
-**"Why this industry?"** Asked alongside why this company, and requiring a separate answer.
+"Why this industry?" Asked alongside why this company, and requiring a separate answer.
 
-**"What are your strengths and weaknesses?"** The weakness should be real, with what you do about it. A disguised strength reads as evasion here as anywhere.
+"What are your strengths and weaknesses?" The weakness should be real, with what you do about it. A disguised strength reads as evasion here as anywhere.
 
-**"Tell us about a failure."** Assessing self-awareness and resilience. Real failure, honest reflection, changed behaviour.
+"Tell us about a failure." Assessing self-awareness and resilience. Real failure, honest reflection, changed behaviour.
 
-**"How do you work in a team?"** Frequently probed, since collaborative capability is weighted heavily.
+"How do you work in a team?" Frequently probed, since collaborative capability is weighted heavily.
 
-**"What do you want to do at our company?"** Complicated by the fact that many companies [assign roles after joining](/blog/japan-new-grad-shinsotsu-hiring-explained). A good answer expresses a direction and an openness to where the company places you, rather than a rigid demand.
+"What do you want to do at our company?" Complicated by the fact that many companies [assign roles after joining](/blog/japan-new-grad-shinsotsu-hiring-explained). A good answer expresses a direction and an openness to where the company places you, rather than a rigid demand.
 
-**"Where do you see yourself in ten years?"** Longer horizon than in many markets, reflecting the long-term employment model.
+"Where do you see yourself in ten years?" Longer horizon than in many markets, reflecting the long-term employment model.
 
-**"Do you have any questions for us?"** Always have some, and make them about the work and the company rather than conditions.
+"Do you have any questions for us?" Always have some, and make them about the work and the company rather than conditions.
 
 ## What is actually being assessed
 
@@ -59,15 +59,15 @@ The structure that works: what the situation was, what problem you faced, what y
 
 ## Register and delivery
 
-**Modest, structured, specific.** Confidence conveyed through evidence rather than through assertion. The over-selling that works in some markets reads poorly here — closer to the [measured register expected in Singapore](/blog/singapore-interview-etiquette-guide) than to US convention.
+Modest, structured, specific. Confidence conveyed through evidence rather than through assertion. The over-selling that works in some markets reads poorly here — closer to the [measured register expected in Singapore](/blog/singapore-interview-etiquette-guide) than to US convention.
 
-**Formal language throughout.** Business Japanese, appropriate politeness levels, and conventional interview phrasing. For foreign candidates this is frequently harder than the content itself, which is why [mock interviews in Japanese](/blog/japan-japanese-language-requirements-jobs) are the highest-return preparation available.
+Formal language throughout. Business Japanese, appropriate politeness levels, and conventional interview phrasing. For foreign candidates this is frequently harder than the content itself, which is why [mock interviews in Japanese](/blog/japan-japanese-language-requirements-jobs) are the highest-return preparation available.
 
-**Concise.** Aim for around a minute per answer unless invited to expand.
+Concise. Aim for around a minute per answer unless invited to expand.
 
-**Prepared but not recited.** Memorised answers sound memorised and collapse when the question is phrased differently.
+Prepared but not recited. Memorised answers sound memorised and collapse when the question is phrased differently.
 
-**Punctuality and presentation are taken seriously.** Arrive early, dress conservatively, and follow the conventions around greetings and entering the room, which are more formalised than in many markets.
+Punctuality and presentation are taken seriously. Arrive early, dress conservatively, and follow the conventions around greetings and entering the room, which are more formalised than in many markets.
 
 ## The questions that recur, and what they are actually testing
 
@@ -79,9 +79,9 @@ The structure that works: what the situation was, what problem you faced, what y
 
 ## Register and presentation expectations
 
-**Formal, measured presentation and appropriate politeness toward interviewers, particularly more senior ones, are genuinely valued and expected**, arriving well ahead of the scheduled time, and maintaining a respectful, composed manner throughout, matters considerably here.
+Formal, measured presentation and appropriate politeness toward interviewers, particularly more senior ones, are genuinely valued and expected, arriving well ahead of the scheduled time, and maintaining a respectful, composed manner throughout, matters considerably here.
 
-**Confident, substantive answers are still expected within this formal register**, this is not passivity, it is a specific manner of confident presentation that differs from a more casual or assertive style that might read well in some other markets.
+Confident, substantive answers are still expected within this formal register, this is not passivity, it is a specific manner of confident presentation that differs from a more casual or assertive style that might read well in some other markets.
 
 ## Practising properly before the real interview
 
@@ -115,9 +115,9 @@ Yes, covered in more depth in the [group interview and aptitude testing guide](/
 Honestly and with genuine thought, this is asked more directly here than in some other markets and a vague or dismissive answer is noticed.
 ## Handling a question you are not prepared for
 
-**If asked something you have not specifically prepared for, take a brief, composed moment before answering rather than rushing into a response**, a short pause to genuinely think is well received within the measured, formal register expected here, considerably better than an unprepared or rambling answer delivered too quickly.
+If asked something you have not specifically prepared for, take a brief, composed moment before answering rather than rushing into a response, a short pause to genuinely think is well received within the measured, formal register expected here, considerably better than an unprepared or rambling answer delivered too quickly.
 
-**If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent**, this is understood and accepted rather than viewed negatively.
+If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent, this is understood and accepted rather than viewed negatively.
 
 ## Frequently Asked Questions
 
