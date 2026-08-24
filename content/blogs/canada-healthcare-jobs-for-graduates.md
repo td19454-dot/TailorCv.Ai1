@@ -13,7 +13,7 @@ showcase: none
 
 ## Key Takeaways
 
-- Clinical healthcare roles in Canada are governed by provincial regulatory bodies and licensure processes, distinct from the general campus recruiting calendar.
+- Clinical healthcare roles in Canada are governed by provincial regulatory bodies and licensure processes (CNO, BCCNM, OIIQ, and their equivalents), distinct from the general campus recruiting calendar.
 - Licensure is province-specific, and moving between provinces later sometimes requires additional steps, worth checking early if flexibility matters to you.
 - The non-clinical side of healthcare, administration, analytics, technology and operations, hires graduates from any discipline and is consistently overlooked.
 - Internationally educated healthcare professionals face a separate and often lengthy credential recognition process, worth beginning inquiries early.
@@ -25,7 +25,7 @@ showcase: none
 
 **For nursing specifically, Canada uses the NCLEX-RN (the same exam used in the US) as its national licensure exam**, administered through your provincial regulatory body — the exam itself is standardized, but registration, fees, and the surrounding process are still handled provincially.
 
-**Your effective start date as a clinical professional is set by the licensure process, not simply by your graduation date**, plan backwards from an intended start date accordingly, beginning the licensure application process as early as your program allows, rather than assuming it will be quick to complete after graduating.
+**Your effective start date as a clinical professional is set by the licensure process, not simply by your graduation date**, plan backwards from an intended start date accordingly, beginning the licensure application process as early as your program allows, rather than assuming it will be quick to complete after graduating. Treat this the same way you'd treat any hard external deadline in your final year of study — mark the earliest possible application date on your own calendar and act on it, rather than treating licensure as something to think about only once your degree is actually finished.
 
 **If you intend to work in a different province from where you studied, or think you might move later, check that province's specific licensure requirements and any recognition arrangements with your home province early**, this varies and is worth understanding well before you need to act on it. There is a real legal mechanism that helps here: the Canadian Free Trade Agreement (CFTA) includes a labour mobility chapter requiring provinces to recognize a worker's certification from another province for regulated occupations, nursing among them — in practice this generally means a nurse licensed in good standing in one province can register in another without redoing the full initial licensure process, though registration fees and some administrative steps still apply, and it's worth confirming the specific process with the destination province's regulator rather than assuming full automatic transfer.
 

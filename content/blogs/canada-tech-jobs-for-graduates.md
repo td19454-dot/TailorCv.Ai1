@@ -23,9 +23,9 @@ showcase: portfolio
 
 **Toronto is the largest single hub, with a genuinely deep and broad technology sector**, spanning startups, established technology companies, and the substantial engineering organisations run by the major banks headquartered there — a combination few other Canadian cities can match in breadth.
 
-**Vancouver has a strong, distinct technology scene**, with particular strength in gaming and interactive media alongside broader software.
+**Vancouver has a strong, distinct technology scene**, with particular strength in gaming and interactive media alongside broader software, and a genuinely different cost-of-living and lifestyle profile from Toronto that some graduates weigh heavily in their own decision.
 
-**Waterloo and the surrounding region punches well above its size**, driven substantially by its university's strong reputation in computer science and engineering, producing a genuinely concentrated local talent and startup ecosystem.
+**Waterloo and the surrounding region punches well above its size**, driven substantially by its university's strong reputation in computer science and engineering, producing a genuinely concentrated local talent and startup ecosystem that regularly outpaces cities several times its population in tech-sector density.
 
 **Montreal has real depth, particularly in artificial intelligence research and gaming**, alongside a broader technology sector, and benefits from a somewhat different cost of living profile than Toronto or Vancouver.
 
