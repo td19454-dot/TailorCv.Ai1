@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/japan-group-interview-and-spi-tests.png
 slug: japan-group-interview-and-spi-tests
 keywords: spi test japan, group discussion japanese interview, japan aptitude test preparation, gd japanese recruitment, webtest japan job hunting
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -21,7 +21,7 @@ showcase: portfolio
 
 ## The aptitude tests
 
-**What they are.** Standardised assessments used widely in Japanese graduate recruiting, typically combining a language section, a numerical reasoning section and a personality inventory. Several test families exist and formats vary, with the general shape consistent.
+**What they are.** Standardised assessments used widely in Japanese graduate recruiting, typically combining a language section, a numerical reasoning section and a personality inventory. **The SPI (by Recruit Management Solutions) is by far the most widely used test family** — knowing this matters practically because SPI-specific practice books and prep apps are the standard resource Japanese students use, and searching for SPI preparation directly gets you the highest-yield material. **Tamatebako and other SHL Japan tests** are the next most common alternative, particularly at certain large corporations, with a somewhat different question style worth recognizing so you're not caught off guard mid-test. **The Uchida-Kraepelin test** — a distinctive continuous-addition exercise assessing concentration and work pace over time — still appears at some more traditional employers and is worth knowing exists, since its format (add single-digit numbers in a row, repeatedly, for an extended period) looks nothing like the other tests and can otherwise be genuinely disorienting to encounter unprepared.
 
 **Where they sit.** Usually early, after the written application and before interviews. At high-volume employers this is a genuine mechanical filter — fail it and no human reads what you wrote.
 
@@ -61,6 +61,28 @@ showcase: portfolio
 
 **For foreign candidates**, the challenge is participating fluently in a fast Japanese discussion. Practising in a group beforehand is worth considerably more than reading about it.
 
+## The group interview format, specifically
+
+**Several candidates are assessed together, either in a group discussion exercise or answering questions in sequence within the group**, this is a genuinely distinct format from an individual one-to-one interview, worth practising specifically rather than assuming individual interview skills transfer directly.
+
+**What is actually being assessed is how you behave within a group**, whether you contribute genuinely, listen and build on what others say, and handle disagreement constructively, dominating the conversation is not the goal, similar in principle to [group interview assessment in other markets that use this format](/blog/china-campus-interview-questions-guide), though the specific register expected here leans toward the measured, collaborative style discussed in the [broader interview guide](/blog/japan-mensetsu-interview-questions-guide).
+
+**Practise this format specifically with friends beforehand**, the first attempt at a genuinely unfamiliar format is rarely a candidate's best performance.
+
+## Aptitude and written testing
+
+**A standard written test covering verbal reasoning, numerical ability and sometimes general knowledge or personality assessment** is a common early stage at many large employers, this functions as a genuine early filter, similar in principle to [aptitude testing used broadly in structured graduate hiring internationally](/blog/uk-psychometric-tests-guide).
+
+**This is trainable through dedicated practice**, practice materials for this specific test format are widely available, worth investing real preparation time here since it is one of the more directly improvable stages of the overall process.
+
+**Speed under time pressure is generally the binding constraint, rather than the underlying difficulty of the material itself**, practising under a genuine timer, rather than untimed, builds the actually relevant skill.
+
+## Building a sustainable testing preparation routine
+
+**Set aside consistent, regular practice time for aptitude testing across several weeks, rather than cramming immediately before your first real test**, similar to [the same sustained preparation discipline that works for any timed aptitude assessment](/blog/uk-psychometric-tests-guide), consistent shorter sessions generally outperform occasional long ones.
+
+**Review your specific errors carefully after each practice set**, most candidates' mistakes cluster into a small number of recurring types, identifying and correcting these specifically is more efficient than repeating generic practice indefinitely.
+
 ## Common Mistakes
 
 - **Not practising the aptitude tests.** Japanese students prepare extensively and it is the standard you are measured against.
@@ -69,6 +91,27 @@ showcase: portfolio
 - **Trying to win the group discussion.** It assesses collaboration, not debate.
 - **Staying silent in the group discussion.** An assessor cannot score what you did not contribute.
 - **Underestimating the language load as a foreign candidate.** It is genuinely harder and it is trainable.
+
+### How is a group interview different from a normal interview?
+
+You are assessed alongside other candidates simultaneously, the focus is on how you contribute and interact within the group, rather than solely on individual answers, worth practising this specific format deliberately.
+
+### Is the aptitude test hard to pass?
+
+The underlying material is generally not advanced, the genuine difficulty is speed under time pressure, dedicated timed practice meaningfully improves most candidates' results.
+
+### Should I try to dominate the group interview to stand out?
+
+No, this generally reads poorly, genuine contribution and collaborative behaviour is what is actually being assessed, not dominance.
+
+### How do I prepare for the aptitude test specifically?
+
+Use available practice materials and, critically, practise under a genuine timer rather than untimed, since speed is generally the binding constraint rather than the underlying difficulty.
+## What happens if you do not pass the aptitude test
+
+**Some companies allow a retake after a defined period, others do not for that specific application cycle**, worth checking the specific policy where stated, and using any interval productively to genuinely improve your speed and accuracy through further practice.
+
+**A single company's test result does not affect your standing with a different company**, each employer's process is independent, worth continuing to apply broadly rather than treating one disappointing result as representative of your overall prospects.
 
 ## Frequently Asked Questions
 

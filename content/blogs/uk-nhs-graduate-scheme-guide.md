@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-nhs-graduate-scheme-guide.png
 slug: uk-nhs-graduate-scheme-guide
 keywords: nhs graduate scheme, nhs management training scheme, nhs non clinical jobs, healthcare management uk graduate, nhs careers graduates
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -71,6 +71,12 @@ showcase: portfolio
 
 **The [Graduate route](/blog/uk-graduate-visa-route-explained) works here as anywhere** — you can take an NHS role without sponsorship initially and switch later, provided the role qualifies.
 
+## Understanding the scale of what you would actually be joining
+
+**A single NHS trust can employ many thousands of people across dozens of distinct functions**, worth understanding that "working for the NHS" describes a genuinely enormous range of possible day-to-day realities, from a small community trust to a major teaching hospital serving a huge population, researching the specific trust and department matters as much as researching the sector broadly.
+
+**Ask specifically about the size and structure of the team you would actually join**, rather than assuming a single generic NHS working experience, a large national organisation contains genuinely distinct local cultures and working environments depending on the specific trust and department.
+
 ## Common Mistakes
 
 - **Assuming the NHS only hires clinical staff.** A large share of the workforce is non-clinical.
@@ -79,6 +85,12 @@ showcase: portfolio
 - **Overlooking trusts outside major cities.** Roles are genuinely distributed and less competitive.
 - **Assuming a health-related degree is needed.** Graduate schemes are open across disciplines.
 - **Neglecting the online tests.** An early filter and entirely trainable.
+
+## Understanding career progression within this sector specifically
+
+**Progression pathways are often more formally structured here than in much of the private sector**, with defined pay bands and, for many roles, a clear route toward recognised professional qualifications, worth researching the specific progression structure for your target function directly, since this varies meaningfully between clinical-support, management, analytical and technical roles.
+
+**Movement between trusts, and between different functions within the broader NHS structure, is common and generally well regarded**, rather than viewed negatively the way frequent employer changes might be in some other sectors, worth understanding this as a genuine feature of building a long-term NHS career rather than an unusual pattern.
 
 ## Frequently Asked Questions
 

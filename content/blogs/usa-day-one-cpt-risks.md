@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-day-one-cpt-risks.png
 slug: usa-day-one-cpt-risks
 keywords: day one cpt, day 1 cpt risk, cpt from first semester, cpt opt eligibility, curricular practical training
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

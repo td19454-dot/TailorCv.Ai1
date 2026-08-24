@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-cap-exempt-h1b-employers.png
 slug: usa-cap-exempt-h1b-employers
 keywords: cap exempt h1b, h1b without lottery, university h1b sponsorship, nonprofit h1b, cap exempt employers list
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

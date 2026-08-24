@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/japan-mensetsu-interview-questions-guide.png
 slug: japan-mensetsu-interview-questions-guide
 keywords: japanese interview questions, mensetsu preparation, gakuchika explained, japan job interview tips, why our company japanese interview
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -21,13 +21,13 @@ showcase: portfolio
 
 ## The three questions that dominate
 
-**"Tell us about yourself."** Not a recitation of your [resume](/ats-analysis). Expected is a coherent account of who you are, drawn from your self-analysis, delivered concisely. Roughly a minute, ending at why you are sitting in this interview.
+**"Tell us about yourself" (自己PR, *jiko PR* — literally "self-PR").** Not a recitation of your [resume](/ats-analysis). Expected is a coherent account of who you are, drawn from your self-analysis, delivered concisely. Roughly a minute, ending at why you are sitting in this interview. Knowing the term *jiko PR* matters practically — it's what appears on the application form itself as a labeled field, so your written answer and your spoken answer need to be consistent, not two different stories.
 
-**"What did you put the most effort into as a student?"** The single most characteristic question in Japanese graduate interviews. It asks for something you committed to seriously — a club, a research project, part-time work, a competition, an activity you sustained. What is assessed is not the achievement's scale but your commitment, what you learned, how you handled difficulty, and what it reveals about your character.
+**"What did you put the most effort into as a student?" — universally referred to as ガクチカ (*gakuchika*, a contraction of "gakusei jidai ni chikara wo ireta koto").** This is the single most characteristic question in Japanese graduate interviews, and knowing the term matters because it's how the question gets referenced in every prep guide, career-center session, and casual conversation with other job-hunters — if a senpai or advisor asks "what's your gakuchika," this is what they mean. It asks for something you committed to seriously — a club, a research project, part-time work, a competition, an activity you sustained. What is assessed is not the achievement's scale but your commitment, what you learned, how you handled difficulty, and what it reveals about your character.
 
 The structure that works: what the situation was, what problem you faced, what you specifically did, what resulted, and what you took from it. Concrete throughout, and honest about the difficulty — an account with no obstacle in it is less convincing, not more.
 
-**"Why our company?"** The deciding question, here as in every market. Generic answers about reputation and stability fail. What works is something specific — a business area, a product, something you learned at an information session, a conversation with an employee, a genuine contrast with a competitor. This is why attending [company information sessions](/blog/japan-job-hunting-shukatsu-timeline) matters beyond the information itself.
+**"Why our company?" (志望動機, *shibou douki* — "motivation for application").** The deciding question, here as in every market, and like jiko PR, it's a labeled field on the application form itself, not just a spoken question — write it before the interview, don't improvise it there for the first time. Generic answers about reputation and stability fail. What works is something specific — a business area, a product, something you learned at an information session, a conversation with an employee, a genuine contrast with a competitor. This is why attending [company information sessions](/blog/japan-job-hunting-shukatsu-timeline) matters beyond the information itself.
 
 ## Other questions to expect
 
@@ -69,6 +69,26 @@ The structure that works: what the situation was, what problem you faced, what y
 
 **Punctuality and presentation are taken seriously.** Arrive early, dress conservatively, and follow the conventions around greetings and entering the room, which are more formalised than in many markets.
 
+## The questions that recur, and what they are actually testing
+
+**"Why did you choose our company specifically, rather than a comparable competitor?"** A genuinely important question here, requiring a specific, researched answer connected to the company's actual business or a particular aspect of the role, rather than general praise applicable to any similar employer, exactly [the same principle that decides outcomes in structured interviews internationally](/blog/uk-competency-questions-guide).
+
+**Questions about your long-term commitment and career intentions** are asked more directly here than in some other markets, reflecting the traditional expectation of longer-term employment within the local system, a vague or dismissive answer is noticed, worth having a genuine, considered response prepared.
+
+**Questions probing your understanding of teamwork and your ability to work within a group or organisational structure** appear consistently, reflecting a genuine cultural emphasis on collaborative, harmonious working relationships.
+
+## Register and presentation expectations
+
+**Formal, measured presentation and appropriate politeness toward interviewers, particularly more senior ones, are genuinely valued and expected**, arriving well ahead of the scheduled time, and maintaining a respectful, composed manner throughout, matters considerably here.
+
+**Confident, substantive answers are still expected within this formal register**, this is not passivity, it is a specific manner of confident presentation that differs from a more casual or assertive style that might read well in some other markets.
+
+## Practising properly before the real interview
+
+**Use your university's career centre mock interview service if available**, [covered in more depth in the career centre guide](/blog/japan-university-career-center-guide), this is genuinely valuable given how distinct local interview conventions are.
+
+**Practise with a native Japanese speaker if your interviews will be conducted in Japanese**, beyond language correction, this helps you internalise the appropriate register and formality expected, which differs meaningfully from casual conversational Japanese.
+
 ## Common Mistakes
 
 - **Inconsistency across rounds.** Interviewers compare notes and a changing story is damaging.
@@ -77,6 +97,27 @@ The structure that works: what the situation was, what problem you faced, what y
 - **Over-selling.** The register is modest and evidence-led.
 - **Demanding a specific role.** Many companies assign after joining; rigidity reads as poor fit.
 - **Reciting memorised answers.** They sound memorised and break under rephrasing.
+
+### How formal should I be in a Japanese job interview?
+
+Generally quite formal, in both dress and manner, with genuine politeness toward interviewers, particularly more senior ones, this is the expected register here.
+
+### What is the most important question to prepare for?
+
+A specific, genuine answer to why this particular company, rather than a comparable competitor, this is weighted heavily and a generic answer is noticed.
+
+### Are group interviews common?
+
+Yes, covered in more depth in the [group interview and aptitude testing guide](/blog/japan-group-interview-and-spi-tests), a genuinely distinct format worth preparing for specifically.
+
+### How should I answer questions about long-term career plans?
+
+Honestly and with genuine thought, this is asked more directly here than in some other markets and a vague or dismissive answer is noticed.
+## Handling a question you are not prepared for
+
+**If asked something you have not specifically prepared for, take a brief, composed moment before answering rather than rushing into a response**, a short pause to genuinely think is well received within the measured, formal register expected here, considerably better than an unprepared or rambling answer delivered too quickly.
+
+**If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent**, this is understood and accepted rather than viewed negatively.
 
 ## Frequently Asked Questions
 

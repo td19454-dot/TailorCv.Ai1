@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-employment-verification-i9-explained.png
 slug: usa-employment-verification-i9-explained
 keywords: i9 form explained, employment eligibility verification, e-verify new employee, work authorization documents usa, new hire paperwork
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

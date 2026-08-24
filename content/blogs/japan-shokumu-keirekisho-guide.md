@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/japan-shokumu-keirekisho-guide.png
 slug: japan-shokumu-keirekisho-guide
 keywords: shokumu keirekisho, japanese work history document, japan career resume, how to write shokumu keirekisho, japan job application format
-showcase: portfolio
+showcase: resume
 ---
 
 ## Key Takeaways
@@ -26,6 +26,8 @@ showcase: portfolio
 **More flexible in format.** Common conventions exist and you have real latitude in how you organise and present the content. This is where the differentiation the standardised form does not permit actually happens.
 
 **Traditionally a mid-career document**, since it presumes work history. New graduates increasingly submit one anyway, populated with internships, research, projects and substantial extracurricular work.
+
+**Where you'll actually submit it.** Most new graduates encounter this document through Japan's dominant graduate recruiting platforms — **Rikunabi and Mynavi** are the two largest, each running their own application flow where a shokumu keirekisho (or a platform-native equivalent field) gets uploaded alongside the rirekisho. Some platforms provide their own template with defined fields rather than a free-form document; check whether your target employer's application flow expects the standard free-form format or the platform's own structured version before you start writing, since the two aren't identical.
 
 **Read carefully.** For roles where specific capability matters — technology, engineering, specialist positions — this document frequently carries more weight than the form.
 
@@ -57,6 +59,8 @@ showcase: portfolio
 
 **Length.** Typically one to two pages for a new graduate; longer for experienced candidates with more to describe.
 
+**Paper size and format, if submitting a printed or PDF version.** A4 is the standard, not US Letter — a document formatted for Letter size will show awkward margins or get cropped when printed on Japanese office equipment, which defaults to A4 throughout. If you built your master resume for a US application and are adapting it for a Japanese one, checking and fixing the page size is a small, easy-to-miss step worth doing deliberately rather than assuming your existing template already accounts for it.
+
 **Tailor the self-promotion section per company.** The factual sections stay stable; the argument for why you suit this employer should be written fresh.
 
 ## For new graduates with little work history
@@ -73,6 +77,28 @@ showcase: portfolio
 
 **Study abroad or language achievement**, especially where relevant to an international role.
 
+## Writing content that actually stands out
+
+**Quantify your accomplishments specifically wherever genuinely possible**, exactly the [same outcomes-over-duties principle that improves any application document](/blog/canada-resume-format-guide), applied within this document's own conventions, a specific number or concrete result is considerably stronger than a general description of responsibilities.
+
+**Organise by relevant experience, not necessarily strict chronology**, this document generally allows more flexibility in structure than the companion rirekisho document, worth using this flexibility to genuinely highlight your most relevant experience for each specific application rather than defaulting to a rigid chronological list regardless of relevance.
+
+**Tailor the specific content and emphasis to each individual application**, a document reused identically across many applications is a missed opportunity, exactly [the same tailoring principle that improves the interview rate anywhere](/blog/how-to-tailor-resume-for-every-job), worth applying deliberately here.
+
+**For a new graduate with limited formal work history, internships, substantial projects, and relevant coursework can genuinely fill this document meaningfully**, worth including these with the same specificity and genuine detail you would give to formal employment.
+
+## Keeping the document useful across a job search
+
+**Maintain a comprehensive master version privately covering everything you have done, then generate a tailored, more selective version for each specific application**, exactly the same [master-document approach that works efficiently for any international job search involving several distinct applications](/blog/international-student-resume-differences-by-country), this saves considerable time across a job search involving many companies without sacrificing the specificity that makes each individual submission genuinely effective.
+
+**Update the master version as you gain new relevant experience**, rather than reconstructing your history from memory each time you need to apply somewhere new, this is a small habit that pays off considerably over a multi-month job search.
+
+## Handling employment gaps or unconventional paths honestly
+
+**If your background includes a gap, a change of field, or an unconventional path, address this honestly and briefly rather than attempting to obscure it**, a short, factual explanation is generally received far better than an omission that later becomes an awkward discovery during the interview process.
+
+**Frame any transition or gap in terms of what you did with the time and what you learned**, rather than simply noting an absence, this converts a potential concern into a genuine point of interest for an employer reading the document.
+
 ## Common Mistakes
 
 - **Describing responsibilities rather than results.** The most common weakness and the easiest to fix.
@@ -83,6 +109,22 @@ showcase: portfolio
 - **Assuming new graduates cannot write one.** Internships, research, projects and activities all populate it.
 
 ## Frequently Asked Questions
+
+### Do I need this document if I have little formal work experience as a new graduate?
+
+Yes, worth completing it thoughtfully using internships, substantial projects and relevant coursework, described with genuine specificity, rather than assuming this document is only relevant for experienced candidates.
+
+### How is this different from the rirekisho?
+
+The rirekisho follows a more rigid, standardised personal-details format, this document generally allows more flexibility to genuinely highlight and organise relevant experience, the two are often submitted together as complementary parts of an application.
+
+### Should I use the same version for every application?
+
+No, tailoring the specific content and emphasis to each individual employer and role meaningfully improves the outcome, exactly as with any application document.
+
+### How long should this document be?
+
+Generally kept reasonably concise and focused on genuinely relevant content, rather than an exhaustive account of everything you have ever done.
 
 ### Do new graduates need one?
 

@@ -8,7 +8,7 @@ category: Job Search
 image: public/blog-images/uk-teacher-training-routes-guide.png
 slug: uk-teacher-training-routes-guide
 keywords: teacher training uk routes, pgce vs school direct, qualified teacher status, teaching bursary uk, becoming a teacher graduate
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -79,6 +79,12 @@ showcase: portfolio
 
 **Pay follows published scales**, which makes it unusually transparent — you can see exactly what you would earn now and in five years.
 
+## Understanding the realistic timeline from application to classroom
+
+**Factor in the full timeline from application through training to your first year as a fully qualified teacher when planning**, this is a genuinely multi-year commitment, worth entering with realistic expectations about the sequence rather than only focusing on the immediate application stage.
+
+**If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents**, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
+
 ## Common Mistakes
 
 - **Not getting school experience before applying.** It strengthens the application and tells you whether you want the job.
@@ -87,6 +93,12 @@ showcase: portfolio
 - **A personal statement about yourself rather than about teaching.** The most common weakness.
 - **Assuming all routes are equivalent for you.** They differ in cost, structure and experience even though the qualification is the same.
 - **Not asking about induction support at interview.** It largely determines your first year.
+
+## Making the most of school experience before applying
+
+**Treat any pre-application school experience as a genuine, serious opportunity to learn, not simply a box to tick for your application**, ask the teachers you observe genuine, specific questions about their approach and the real challenges of the role, this both strengthens your eventual application and helps you make a genuinely informed decision about whether this career suits you.
+
+**Seek experience across more than one school if possible, ideally with some variation in the type of setting**, different schools can have meaningfully different cultures and challenges, and broader exposure gives you a more complete, realistic picture before committing to a specific training route.
 
 ## Frequently Asked Questions
 

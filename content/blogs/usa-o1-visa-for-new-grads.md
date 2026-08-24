@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/usa-o1-visa-for-new-grads.png
 slug: usa-o1-visa-for-new-grads
 keywords: o1 visa new grad, o1 visa requirements, o1 vs h1b, extraordinary ability visa, o1 visa evidence criteria
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways

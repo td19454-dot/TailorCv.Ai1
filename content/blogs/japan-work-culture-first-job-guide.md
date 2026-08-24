@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/japan-work-culture-first-job-guide.png
 slug: japan-work-culture-first-job-guide
 keywords: japanese work culture, first job in japan, japan office etiquette, working hours japan, japanese company hierarchy
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -79,6 +79,24 @@ showcase: portfolio
 
 **Keep your own records** — payslips, tax certificates, contributions — from the first month. They matter for [permanent residence](/blog/japan-permanent-residency-for-workers) later and are difficult to reconstruct.
 
+## Hierarchy and the structure of communication
+
+**Respect for seniority and organisational hierarchy is generally more visibly expressed here than in some flatter workplace cultures elsewhere**, this does not mean junior employees cannot contribute substantively, it affects the manner of contribution, appropriately respectful and measured, even while being genuinely clear and useful.
+
+**Consensus-building and group harmony are genuinely valued in decision-making processes**, decisions may take longer to reach than in a more individually-driven system, worth understanding this as a genuine cultural feature rather than inefficiency, and adapting your own expectations around pace accordingly.
+
+## Working hours and expectations
+
+**This genuinely varies by specific company, though a strong traditional expectation of substantial time commitment persists at many established employers**, worth asking directly during the interview process what typical hours actually look like, rather than assuming based on general reputation alone.
+
+**Newer companies and those with international influence sometimes operate with somewhat different expectations around hours**, worth researching a specific employer's actual practice directly rather than assuming a single universal pattern.
+
+## Building relationships with colleagues
+
+**Informal social occasions genuinely matter for workplace relationship-building here**, worth participating when invited, even if this requires some personal adjustment.
+
+**Learning basic workplace etiquette and communication norms specifically, beyond general language ability, meaningfully smooths your integration**, worth actively observing and asking questions respectfully in your first months.
+
 ## Common Mistakes
 
 - **Raising new ideas first in a meeting.** The consensus-building happens before it.
@@ -87,6 +105,33 @@ showcase: portfolio
 - **Not reporting upward often enough.** Read as insufficient diligence rather than independence.
 - **Expecting to know your role on day one.** Assignment frequently follows training.
 - **Treating the adjustment as a personal failing.** It is universal and temporary.
+
+### Is Japanese workplace culture really as hierarchical as its reputation suggests?
+
+Genuinely more hierarchically structured in communication style than some flatter cultures elsewhere, though this affects the manner of contribution rather than whether junior staff can contribute substantively.
+
+### Are working hours really long at every Japanese company?
+
+Varies considerably by specific employer, a strong traditional expectation persists at many established companies, while newer or more internationally influenced companies sometimes differ, worth asking directly.
+
+### How important are after-work social occasions?
+
+Genuinely valued for workplace relationship-building, worth participating when invited even if this requires some personal adjustment.
+
+### How long does it typically take to adjust to the workplace culture?
+
+Varies by individual and specific workplace, expect a genuine adjustment period in the first several months as you learn your specific team's particular norms and expectations.
+## The genuine adjustment period, and what helps
+
+**Ask questions early and often in your first months, rather than assuming you should already understand unwritten norms**, this is generally well received when done respectfully, particularly while you are still genuinely new and expected to be learning.
+
+**Find one experienced colleague willing to explain the informal, unwritten aspects of how your specific team actually operates**, beyond the formal onboarding process, this kind of relationship is genuinely valuable and worth actively seeking out in your first weeks.
+
+## What genuinely helps beyond the first few months
+
+**Continue building relationships deliberately well beyond your initial settling-in period**, workplace culture and your own standing within it continue to develop over your first year and beyond, not only in the first weeks.
+
+**Seek feedback proactively from your manager rather than waiting for a formal review cycle**, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
 
 ## Frequently Asked Questions
 

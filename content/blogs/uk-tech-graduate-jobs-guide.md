@@ -77,6 +77,12 @@ showcase: portfolio
 
 **Target roles that clear the skill and salary thresholds**, since a role below them will not convert regardless of performance.
 
+## Preparing your own portfolio properly
+
+**Deploy your strongest project somewhere reachable with a live URL, and write documentation that leads with what it does and why, rather than opening with installation instructions**, exactly [the standard that separates a convincing project from a forgotten repository](/blog/fresher-resume-projects-that-get-interviews) anywhere technical hiring happens.
+
+**Be ready to discuss specific trade-offs and decisions within your own project in real depth**, this is what the technical interview genuinely probes, a project you can only describe superficially, however impressive it looks on the surface, performs worse under real questioning than a simpler project you genuinely understand end to end.
+
 ## Common Mistakes
 
 - **Applying only to named graduate schemes.** The largest segment hires year-round and is far less contested.
@@ -85,6 +91,12 @@ showcase: portfolio
 - **Ignoring financial services and government technology.** Substantial, technically real, and overlooked.
 - **Not checking the sponsor register.** For international candidates, the filter that determines everything else.
 - **Assuming London is the only market.** Technology is the most distributed sector in UK graduate hiring.
+
+## Weighing a placement year against direct graduate recruitment
+
+**A [placement year](/blog/uk-internship-placement-year-guide) taken during your degree, where available, is one of the strongest possible credentials for graduate technology hiring**, worth genuinely considering this route if your degree structure permits it, since it converts at meaningfully higher rates than direct graduate applications with no prior industry experience.
+
+**If a placement year is not available or you have already completed your degree without one, a strong self-built project and any shorter internship experience can substitute effectively**, the underlying evidence an employer is looking for, can you actually build things and reason about trade-offs, matters more than the specific credential that demonstrates it.
 
 ## Frequently Asked Questions
 

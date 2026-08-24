@@ -8,7 +8,7 @@ category: Career Advice
 image: public/blog-images/uk-skilled-worker-visa-for-graduates.png
 slug: uk-skilled-worker-visa-for-graduates
 keywords: uk skilled worker visa, tier 2 visa graduate, sponsor licence uk, skilled worker salary threshold, switching to skilled worker visa
-showcase: portfolio
+showcase: none
 ---
 
 ## Key Takeaways
@@ -73,6 +73,14 @@ Reduced salary thresholds can apply to those classed as new entrants, which incl
 
 **Verify current thresholds and requirements officially.** These have changed repeatedly and the Home Office guidance is the authority, not any summary.
 
+## What the salary threshold actually protects against, and why it moves
+
+**The threshold exists as a policy mechanism to ensure sponsored roles genuinely meet a substantive skill and compensation bar, rather than being used to bring in labour at rates below what the role would command in the open market**, understanding the underlying logic helps explain why the specific figures are reviewed and adjusted periodically rather than fixed permanently.
+
+**Because thresholds have moved upward over recent years, a role that might have qualified under an older, lower figure may no longer clear the bar under current requirements**, this is precisely why relying on a remembered figure from even a year or two ago is genuinely unsafe, always verify the current specific threshold against official guidance before making a decision that depends on it.
+
+**Occupation-specific going rates, where they exceed the general threshold, reflect the specific market rate research conducted for that occupation**, worth checking both the general figure and the specific occupational rate for your target role, since the higher of the two generally applies.
+
 ## Common Mistakes
 
 - **Not checking the sponsor register before applying.** Public, searchable, and it determines whether an employer can keep you.
@@ -81,6 +89,12 @@ Reduced salary thresholds can apply to those classed as new entrants, which incl
 - **Relying on remembered salary figures.** Thresholds have been revised repeatedly.
 - **Not asking about new entrant rates.** They materially change what is viable and they are time-limited.
 - **Leaving the switch too late.** Apply before Graduate permission expires and allow for processing.
+
+## Building your case with a specific target employer
+
+**Once you have identified an employer holding a sponsor licence who is willing to consider sponsoring you, work with them directly to confirm the specific occupation code and salary that would apply to your role**, this is a collaborative conversation, employers experienced with this process generally understand exactly what information you need and why.
+
+**If the role as initially described does not clearly meet the requirements, but the underlying work genuinely would, raise this directly and constructively**, asking whether the job description or title could be adjusted to accurately reflect duties that do qualify, is a reasonable request rather than an unusual one, provided the underlying substance of the role genuinely supports it.
 
 ## Frequently Asked Questions
 
