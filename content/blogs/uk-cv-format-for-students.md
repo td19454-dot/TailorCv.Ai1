@@ -69,20 +69,53 @@ If you are applying to employers in both the UK and other countries simultaneous
 
 The specific differences between UK and other markets are small individually and meaningful in combination, length, the presence or absence of a photograph, whether classification is expected, referee conventions, getting several of these wrong simultaneously reads as unfamiliarity with the specific market rather than as a single minor oversight.
 
+## Do's and Don'ts
+
+### Do
+
+- Keep it to one page
+- Put a 2:1 or First where it is immediately visible
+- Lead bullets with outcomes and numbers
+- Tailor the wording to each posting
+- Check it parses cleanly before applying anywhere
+
+### Don't
+
+- Run to two pages as a student
+- Bury your classification below the fold
+- List duties copied from the job description
+- Send one identical CV everywhere
+- Add a photo, date of birth or marital status
+
+> **Tip:** Keep it to one page and lead with a 2:1 or First if you have one. UK graduate screening still filters heavily on classification, and burying it below the fold works against you.
+
 ## Common Mistakes
 
 - **Submitting a one-page US-style resume.** Reads as thin against a two-page norm.
 - **Including a photograph.** Not UK convention.
 - **Omitting your classification.** Frequently filtered on, and its absence is noticed.
-- **Listing duties instead of outcomes.** The most common weakness in graduate CVs.
-- **Sending the same document everywhere.** The screen compares against a specific posting.
-- **Not checking it parses.** A document that extracts badly fails silently in every application.
+- **Listing duties instead of outcomes.** Listing duties instead of outcomes the most common weakness in graduate CVs.
+- **Sending the same document everywhere.** Sending the same document everywhere the screen compares against a specific posting.
+- **Not checking it parses.** Not checking it parses a document that extracts badly fails silently in every application.
 
 ## Ordering sections for maximum impact
 
 **Place your strongest**, most relevant evidence as early in the document as reasonably possible, given that reviewers often spend very limited time on an initial scan, a strong project or piece of work experience buried on the second page after a lengthy education section may never actually be seen properly.
 
 **Consider whether education or experience should lead**, based on your own specific strengths, a candidate with a strong, directly relevant internship may benefit from leading with experience, while a candidate whose strongest evidence is academic or project-based may benefit from a more traditional education-first ordering, there is no single universally correct sequence, worth choosing deliberately based on what best represents you.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+- [UK Graduate Salary Expectations - What to Actually Expect](/blog/uk-graduate-salary-expectations)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -89,14 +89,29 @@ Review your specific errors carefully after each practice set, most candidates' 
 
 **A single company's test result does not affect your standing with a different company**, each employer's process is independent, worth continuing to apply broadly rather than treating one disappointing result as representative of your overall prospects.
 
+> **Tip:** Buy one SPI practice book and work through it under a timer. The difficulty is speed, not content — candidates who fail this stage almost always ran out of time rather than not knowing the material.
+
 ## Common Mistakes
 
 - **Not practising the aptitude tests.** Japanese students prepare extensively and it is the standard you are measured against.
 - **Practising untimed.** Speed under pressure is the actual test.
 - **Answering the personality section strategically.** Inconsistency is visible and reflects poorly.
 - **Trying to win the group discussion.** It assesses collaboration, not debate.
-- **Staying silent in the group discussion.** An assessor cannot score what you did not contribute.
-- **Underestimating the language load.** As a foreign candidate. It is genuinely harder and it is trainable.
+- **Staying silent in the group discussion.** Staying silent in the group discussion an assessor cannot score what you did not contribute.
+- **Underestimating the language load.** It is genuinely harder and it is trainable.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Japanese Interview Questions - What Mensetsu Actually Tests](/blog/japan-mensetsu-interview-questions-guide)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### How is a group interview different from a normal interview?

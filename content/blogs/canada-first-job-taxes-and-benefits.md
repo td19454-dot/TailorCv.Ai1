@@ -61,14 +61,29 @@ Your employer issues a T4 slip (Statement of Remuneration Paid) by the end of Fe
 4. **Any one-time items**, such as a signing bonus, have been processed correctly and with the expected tax treatment.
 5. **Raising a discrepancy in month one is a quick administrative fix**, the same error discovered months later, after it has compounded across several payslips, is a considerably longer process to correct.
 
+> **Tip:** Read the TD1 form rather than signing it blind on day one. Claiming the wrong personal amount means you either over-withhold all year or owe money in the spring, and correcting it later is far more annoying than reading one page now.
+
 ## Common Mistakes
 
-- **Not applying for a Social Insurance Number promptly.** If you do not already have one. Required to be paid legally and to set up payroll correctly.
-- **Not checking the first payslip carefully.** The easiest opportunity to catch an error while it is simple to fix.
-- **Declining to enrol in a workplace pension.** With an employer match without understanding what is being forfeited.
-- **Assuming provincial tax rates are the same everywhere.** They differ genuinely by province and affect real take-home pay.
-- **Not keeping pay and tax records organised.** Throughout the year. Then scrambling the following spring.
-- **Assuming automatic payroll deductions mean no annual filing is required.** An annual return is still generally required to reconcile the year.
+- **Delaying your SIN application.** Not applying for a Social Insurance Number promptly if you do not already have one. Required to be paid legally and to set up payroll correctly.
+- **Not checking the first payslip carefully.** Not checking the first payslip carefully the easiest opportunity to catch an error while it is simple to fix.
+- **Skipping the employer match.** Declining to enrol in a workplace pension with an employer match without understanding what is being forfeited.
+- **Assuming tax is uniform.** Assuming provincial tax rates are the same everywhere. They differ genuinely by province and affect real take-home pay.
+- **Disorganised tax records.** Not keeping pay and tax records organised throughout the year. Then scrambling the following spring.
+- **Assuming deductions replace filing.** Assuming automatic payroll deductions mean no annual filing is required. An annual return is still generally required to reconcile the year.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+- [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

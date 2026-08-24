@@ -85,12 +85,14 @@ Factor in the full timeline from application through training to your first year
 
 If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
 
+> **Tip:** Compare the funding before the route. A salaried route pays you while you train; a fee-paying route costs you a year's fees — the qualification at the end is identical.
+
 ## Common Mistakes
 
 - **Not getting school experience before applying.** It strengthens the application and tells you whether you want the job.
-- **Choosing a route without understanding the funding difference.** Shortage subjects and salaried routes change the finances substantially.
+- **Ignoring the funding difference.** Choosing a route without understanding the funding difference. Shortage subjects and salaried routes change the finances substantially.
 - **Applying late.** Popular providers and subjects fill on a rolling basis.
-- **A personal statement about yourself.** Rather than about teaching. The most common weakness.
+- **A personal statement about yourself.** The most common weakness.
 - **Assuming all routes are equivalent for you.** They differ in cost, structure and experience even though the qualification is the same.
 - **Not asking about induction support at interview.** It largely determines your first year.
 
@@ -99,6 +101,19 @@ If considering a career change into teaching from a different field, be honest w
 **Treat any pre-application school experience as a genuine**, serious opportunity to learn, not simply a box to tick for your application, ask the teachers you observe genuine, specific questions about their approach and the real challenges of the role, this both strengthens your eventual application and helps you make a genuinely informed decision about whether this career suits you.
 
 **Seek experience across more than one school if possible**, ideally with some variation in the type of setting, different schools can have meaningfully different cultures and challenges, and broader exposure gives you a more complete, realistic picture before committing to a specific training route.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [UK Training Contracts - How Qualifying as a Solicitor Actually Works](/blog/uk-law-training-contract-guide)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

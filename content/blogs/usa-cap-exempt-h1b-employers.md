@@ -161,14 +161,16 @@ Ask about the timeline relative to your authorisation. If your current status ex
 
 And ask what happens after. Some institutions support permanent residence applications for staff and some do not. If you intend to stay long term, that is a materially important answer and it is rarely volunteered.
 
+> **Tip:** Search universities, teaching hospitals and affiliated non-profits directly — they can file at any time without the lottery. This is the single largest structural advantage available to an international graduate.
+
 ## Common Mistakes
 
 - **Not knowing the category exists.** By far the most common, and it costs people the whole option.
-- **Assuming every non-profit qualifies.** The exemption is specific, and most non-profits do not meet it.
-- **Assuming a cap-exempt employer means permanent exemption.** The exemption is the employer's, and moving to a capped employer usually means the lottery.
+- **Assuming every non-profit qualifies.** Assuming every non-profit qualifies the exemption is specific, and most non-profits do not meet it.
+- **Assuming a cap-exempt employer means permanent exemption.** Assuming a cap-exempt employer means permanent exemption the exemption is the employer's, and moving to a capped employer usually means the lottery.
 - **Only looking at faculty roles.** Universities and academic medical centres employ engineers, analysts, IT staff and administrators in far larger numbers.
 - **Applying with a corporate-style resume.** Academic and non-profit applications frequently expect more written material and earlier references.
-- **Arranging concurrent employment without advice.** A technical area where errors have real consequences.
+- **Arranging concurrent employment without advice.** Arranging concurrent employment without advice a technical area where errors have real consequences.
 
 ## What the petition still has to establish
 
@@ -213,6 +215,19 @@ Two graduates, same degree, same ability, different channel. This is the arithme
 **The point is not that B made the better choice.** It depends on the person, the work and how much the salary difference matters to them. The point is that A is running an excellent career through a random filter, and a great many people in A's position never knew that B's option existed.
 
 **The practical version:** you do not have to choose. Apply to both, and if the lottery does not come through, the cap-exempt applications you sent in parallel are the reason you still have options in April.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

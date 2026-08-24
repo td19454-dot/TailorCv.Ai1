@@ -52,14 +52,29 @@ If you are a foreign pass holder, remember you are not accumulating CPF savings 
 
 Housing, transport and general living costs vary considerably depending on your specific arrangement, build a realistic budget based on actual current costs for how you intend to live, rather than a general assumption.
 
+> **Tip:** If you are on a work pass, set aside money for your IRAS bill from your first paycheque. Tax is not deducted monthly here, and the March filing catches people who budgeted as though it was.
+
 ## Common Mistakes
 
-- **Assuming CPF applies to you.** As a foreign pass holder. When it generally does not.
-- **Not understanding why your take-home pay differs from a citizen or permanent resident colleague on an identical nominal salary.** A genuine structural distinction, not an error.
-- **Assuming income tax is deducted automatically each month.** When the system generally works differently.
-- **Not setting aside funds proactively for an annual tax obligation.**
-- **Not checking the first payslip carefully to confirm deductions match your actual status.**
-- **Building a budget based on assumptions imported from a different country's system.** Rather than the specific local structure.
+- **Assuming CPF applies to you.** Assuming CPF applies to you as a foreign pass holder when it generally does not.
+- **Comparing take-home with a PR colleague.** Not understanding why your take-home pay differs from a citizen or permanent resident colleague on an identical nominal salary. A genuine structural distinction, not an error.
+- **Assuming tax is auto-deducted.** Assuming income tax is deducted automatically each month when the system generally works differently.
+- **Not saving for the tax bill.** Not setting aside funds proactively for an annual tax obligation.
+- **Not checking the first payslip.** Carefully to confirm deductions match your actual status.
+- **Budgeting on another country's rules.** Building a budget based on assumptions imported from a different country's system rather than the specific local structure.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Work Culture in Your First Singapore Job - What to Actually Expect](/blog/singapore-work-culture-first-job-guide)
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

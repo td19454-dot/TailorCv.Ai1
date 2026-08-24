@@ -149,14 +149,29 @@ A [background check](/blog/usa-background-check-what-employers-see) authorizatio
 
 Keep a copy of everything you sign, in a folder you control rather than only in an employer system you may lose access to.
 
+> **Tip:** Gather your I-9 documents before your start date. The form must be completed within three business days of starting, and scrambling for original documents in week one is entirely avoidable.
+
 ## Common Mistakes
 
 - **Assuming the I-9 is specific to non-citizens.** It applies to every employee, universally, with no exception.
 - **Bringing photocopies instead of originals.** Photocopies are not accepted in the standard process.
-- **Not checking document expiration dates in advance.** An expired document discovered on day one causes an entirely avoidable delay.
+- **Not checking document expiration dates in advance.** Not checking document expiration dates in advance an expired document discovered on day one causes an entirely avoidable delay.
 - **Confusing E-Verify with the I-9 itself.** They are related but distinct, and not every employer uses the former.
-- **Ignoring a name mismatch across documents.** A common, fixable issue that becomes a bigger problem if raised for the first time on your start date.
-- **Waiting until the first day to think.** About any of this. Every part of this process can and should be prepared for in advance.
+- **Ignoring a name mismatch across documents.** Ignoring a name mismatch across documents a common, fixable issue that becomes a bigger problem if raised for the first time on your start date.
+- **Waiting until the first day to think.** Every part of this process can and should be prepared for in advance.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### What if I am starting before my authorization document arrives?

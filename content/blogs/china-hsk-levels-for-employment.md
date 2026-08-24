@@ -79,14 +79,29 @@ Retesting to demonstrate progress is normal and expected, a certificate showing 
 
 Do not let examination-specific preparation become disconnected from genuinely useful communicative ability, some learners over-focus narrowly on test-taking technique at the expense of the broader practical fluency that will actually matter once you are working, worth balancing structured test preparation with genuine, varied language use, including conversation practice and exposure to authentic, non-test material.
 
+> **Tip:** Check whether a posting means the classic HSK 1-6 scale or the newer nine-level HSK 3.0 standard before you book a test. The two are not numbered equivalently, and preparing for the wrong one is an expensive mistake.
+
 ## Common Mistakes
 
-- **Assuming any HSK certification, regardless of level, is sufficient for a professional role at a domestic employer.** Most professional roles realistically require an upper-intermediate level or above.
-- **Relying on a self-described general fluency claim.** Instead of a certified level where one is available. A certified level is a more credible, verifiable data point to an employer.
-- **Confusing a strong certified reading and listening level with equally strong spoken fluency.** The test does not directly assess spoken ability in the way an interview would.
-- **Not retesting to reflect genuine current ability.** When an old. Lower-level certificate no longer represents your real level.
-- **Studying generally without targeting the specific level your realistic target roles actually require.**
-- **Assuming every role requires the highest certified level.** When many professional roles realistically require somewhat less.
+- **Assuming any HSK level will do.** Assuming any HSK certification, regardless of level, is sufficient for a professional role at a domestic employer. Most professional roles realistically require an upper-intermediate level or above.
+- **Relying on a self-described general fluency claim.** A certified level is a more credible, verifiable data point to an employer.
+- **Confusing certification with speaking.** Confusing a strong certified reading and listening level with equally strong spoken fluency. The test does not directly assess spoken ability in the way an interview would.
+- **Not retesting to reflect genuine current ability.** Lower-level certificate no longer represents your real level.
+- **Studying without a target level.** Studying generally without targeting the specific level your realistic target roles actually require.
+- **Assuming every role needs HSK 6.** Assuming every role requires the highest certified level when many professional roles realistically require somewhat less.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

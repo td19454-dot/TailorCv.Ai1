@@ -93,14 +93,29 @@ Seek out any opportunity to demonstrate genuine international experience or cros
 
 Read the specific company's own published materials on their strategic priorities and recent major initiatives, rather than relying on general reputation, being able to discuss a specific recent development demonstrates the genuine, active interest these highly competitive employers are looking for.
 
+> **Tip:** Do OB/OG visits before you write a single entry sheet. At sōgō shōsha these conversations are expected, and the specific detail you gather is exactly what makes a "why this company" answer credible.
+
 ## Common Mistakes
 
 - **Applying without understanding the business model.** It is genuinely unusual and a vague answer is immediately visible.
 - **Not having a specific area of interest.** "Anything" reads as no research.
-- **Underestimating the language requirement.** The work is relationship-driven and conducted in Japanese.
+- **Underestimating the language requirement.** Underestimating the language requirement the work is relationship-driven and conducted in Japanese.
 - **Treating overseas assignment as optional.** It is a core part of the career path.
 - **Missing the internship stage.** It functions as early relationship-building in this system.
 - **No commercial awareness.** Assessed directly and frequently thin in candidates.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Japan's New Graduate Hiring System Explained](/blog/japan-new-grad-shinsotsu-hiring-explained)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### What kind of work do these companies actually involve?

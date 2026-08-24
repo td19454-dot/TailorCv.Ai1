@@ -72,14 +72,47 @@ Where the co-op posting itself is thin on detail — common for a first work ter
 
 **Export as a PDF**, named clearly with your own name.
 
+## Do's and Don'ts
+
+### Do
+
+- Write the "why this employer" paragraph fresh for every application
+- Open with something specific about the company's actual work
+- Match the formatting to your resume
+- Keep it to one page, three or four short paragraphs
+- Address a named person where you can find one
+
+### Don't
+
+- Reuse a paragraph that would survive swapping in a competitor's name
+- Open with "I am writing to apply for"
+- Restate what the resume already says
+- Run past one page in the hope it reads as thorough
+- Guess at a name rather than using "Dear Hiring Manager"
+
+> **Tip:** Write the "why this employer" paragraph last, and test it by swapping in a competitor's name. If the paragraph still makes sense, it is not specific enough to be worth including.
+
 ## Common Mistakes
 
-- **A generic "why this employer" paragraph.** That could apply to any competitor. The most common and most costly weakness.
-- **Restating the resume rather than adding genuinely new content.**
+- **A generic "why this employer" paragraph.** The most common and most costly weakness.
+- **Restating the resume.** Restating the resume rather than adding genuinely new content.
 - **Running longer than one page.** Rarely helps and is frequently skimmed.
-- **Guessing an incorrect name.** Rather than using a general salutation.
-- **Sending the same letter to every co-op application.** Without adjusting for the specific role and team.
-- **Not proofreading a document that is explicitly a writing sample.**
+- **Guessing an incorrect name.** Guessing an incorrect name rather than using a general salutation.
+- **One letter for every application.** Sending the same letter to every co-op application without adjusting for the specific role and team.
+- **Not proofreading.** Not proofreading a document that is explicitly a writing sample.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+- [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

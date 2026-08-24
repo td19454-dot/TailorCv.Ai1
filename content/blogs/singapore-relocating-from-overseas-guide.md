@@ -60,14 +60,29 @@ Your pass documentation, employment contract, and any correspondence related to 
 
 Your first payslip and financial records, check these carefully in your first month, exactly the [same discipline worth applying to any first payslip in a new country](/blog/canada-first-job-taxes-and-benefits), and keep them organised for your own records.
 
+> **Tip:** Get a local phone number in your first week. A surprising number of subsequent registrations depend on it, and the whole admin sequence stalls without one.
+
 ## Common Mistakes
 
-- **Not confirming work pass application status and required documentation well before planning travel dates.**
-- **Committing to long-term housing immediately upon arrival.** Before seeing different areas and understanding your actual commute.
-- **Underestimating the gap between arrival and first full paycheck.** And not budgeting a genuine buffer for it.
-- **Not understanding the general sequence of administrative tasks.** Some of which depend on others being completed first.
-- **Waiting until arrival to reconnect with existing contacts.** Rather than reaching out before you travel.
+- **Booking travel before the pass is confirmed.** Not confirming work pass application status and required documentation well before planning travel dates.
+- **Committing to long-term housing immediately upon arrival.** Committing to long-term housing immediately upon arrival before seeing different areas and understanding your actual commute.
+- **Underestimating the pay gap.** Underestimating the gap between arrival and first full paycheck and not budgeting a genuine buffer for it.
+- **Ignoring the admin sequence.** Not understanding the general sequence of administrative tasks. Some of which depend on others being completed first.
+- **Reconnecting only after you land.** Waiting until arrival to reconnect with existing contacts rather than reaching out before you travel.
 - **Not keeping employment and pass documentation organised.** From the outset.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

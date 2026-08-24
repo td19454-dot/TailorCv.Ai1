@@ -65,14 +65,29 @@ Crown corporations — CBC/Radio-Canada, Canada Post, VIA Rail, the Bank of Cana
 
 **Benefits, including pension provisions, are often genuinely strong**, worth factoring into any comparison against a private-sector offer using [total compensation rather than base salary alone](/blog/canada-salary-expectations-new-grad).
 
+> **Tip:** Search jobs.gc.ca by classification code (CS for IT, EC for economics and social science, PM for program administration) rather than by keyword. Generic keyword searches miss most of what is actually open.
+
 ## Common Mistakes
 
-- **Applying only to the most visible flagship structured programs and overlooking substantial general postings.** Considerably less contested relative to genuine opportunity.
-- **Not checking a specific posting's citizenship requirement.** Before applying. Requirements vary genuinely by role.
-- **Assuming the sector is uniformly slow-paced or uninteresting.** Genuine variation exists across functions and specific roles.
-- **Comparing compensation on base salary alone.** Without factoring in benefits and pension provisions.
+- **Chasing only flagship programs.** Applying only to the most visible flagship structured programs and overlooking substantial general postings. Considerably less contested relative to genuine opportunity.
+- **Not checking citizenship requirements.** Not checking a specific posting's citizenship requirement before applying. Requirements vary genuinely by role.
+- **Assuming the whole sector is slow.** Assuming the sector is uniformly slow-paced or uninteresting. Genuine variation exists across functions and specific roles.
+- **Comparing compensation on base salary alone.** Comparing compensation on base salary alone without factoring in benefits and pension provisions.
 - **Not preparing specific.** Structured examples mapped to any published assessment criteria.
-- **Underestimating how much longer government hiring timelines often run compared to private-sector processes.**
+- **Underestimating government timelines.** Underestimating how much longer government hiring timelines often run compared to private-sector processes.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

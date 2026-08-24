@@ -161,14 +161,29 @@ Tuition or development support, if further study is part of your plan, can be wo
 
 Then add the difference to the salary comparison, alongside the [cost-of-living adjustment](/blog/usa-relocation-and-cost-of-living-first-job) if the roles are in different cities. The combination of those two exercises frequently reverses which offer looked better on the letter, which is exactly why both are worth the hour they take.
 
+> **Tip:** Contribute at least enough to capture the full employer match from your first paycheque. It is the only guaranteed return you will get on money, and the months you skip cannot be recovered later.
+
 ## Common Mistakes
 
 - **Not enrolling in the 401(k) at all.** Declining free money is the single most common and costly early-career mistake.
 - **Contributing less than the full match.** Any employer match not captured is compensation left unclaimed.
 - **Not checking the vesting schedule.** It determines what leaving in year one or two actually costs you in forfeited match.
-- **Choosing a health plan.** Without thinking about your actual usage. The lower-premium option is not automatically better; it depends on the trade-off that fits your situation.
+- **Choosing a health plan.** The lower-premium option is not automatically better; it depends on the trade-off that fits your situation.
 - **Missing the enrollment window.** These are often short and the consequence of missing one is waiting a full year.
 - **Under-using paid time off out of anxiety.** Sustainable performance beats visible sacrifice, and burnout is a real cost to both you and the employer.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+- [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### What if my employer offers no retirement plan at all?

@@ -55,14 +55,29 @@ Genuinely active in the Singapore market, particularly for specific specialised 
 
 **Confirm your resume [parses cleanly](/ats-analysis) regardless of which channel you apply through**, since automated screening operates similarly across most large employers regardless of the specific application source.
 
+> **Tip:** Set a fixed weekly slot to check MyCareersFuture and your target companies' own pages. Roles here move quickly, and a routine beats an occasional burst of searching.
+
 ## Common Mistakes
 
-- **Relying on a single job search channel.** Rather than combining several.
-- **Overlooking the national jobs portal.** As a genuinely significant local channel.
-- **Not checking university career portal listings.** Which often carry roles with less competition.
-- **Using professional networking platforms only for applications.** Rather than for research and outreach. Where they add the most value.
-- **Checking channels once rather than establishing a regular, ongoing routine.**
-- **Not building a specific target list of employers and checking their career pages directly.**
+- **Relying on a single job search channel.** Relying on a single job search channel rather than combining several.
+- **Overlooking the national jobs portal.** Overlooking the national jobs portal as a genuinely significant local channel.
+- **Not checking university career portal listings.** Not checking university career portal listings which often carry roles with less competition.
+- **Using professional networking platforms only for applications.** Using professional networking platforms only for applications rather than for research and outreach where they add the most value.
+- **Checking once, not routinely.** Checking channels once rather than establishing a regular, ongoing routine.
+- **No target employer list.** Not building a specific target list of employers and checking their career pages directly.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Biotech and Pharmaceutical Graduate Jobs in Singapore](/blog/singapore-biotech-and-pharma-graduate-jobs)
+- [Management Consulting Graduate Hiring in Singapore](/blog/singapore-consulting-graduate-hiring)
+- [Internship-to-Full-Time Conversion Programmes in Singapore](/blog/singapore-conversion-programmes-guide)
+- [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
+- [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
+- [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

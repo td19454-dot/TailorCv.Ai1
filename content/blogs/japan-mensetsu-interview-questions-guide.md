@@ -95,14 +95,47 @@ If asked something you have not specifically prepared for, take a brief, compose
 
 If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent, this is understood and accepted rather than viewed negatively.
 
+## Do's and Don'ts
+
+### Do
+
+- Prepare your ガクチカ once, properly, and reuse the structure
+- Give a specific reason for this company, not the industry
+- Include a real obstacle in your story
+- Have an honest answer about long-term plans
+- Arrive with clear margin before the scheduled time
+
+### Don't
+
+- Improvise the self-PR or motivation answers on the day
+- Praise the company in terms that fit any competitor
+- Tell a story where nothing went wrong
+- Dismiss the commitment question as a formality
+- Arrive exactly on time
+
+> **Tip:** Write your ガクチカ (gakuchika) once, properly, then reuse the structure. It appears in nearly every interview and on most entry sheets, so one well-built answer does an enormous amount of work.
+
 ## Common Mistakes
 
 - **Inconsistency across rounds.** Interviewers compare notes and a changing story is damaging.
-- **Generic answers to why this company.** The most common cause of rejection at every stage.
+- **Generic answers to why this company.** Generic answers to why this company the most common cause of rejection at every stage.
 - **Skipping self-analysis.** It underpins every answer and its absence is audible.
-- **Over-selling.** The register is modest and evidence-led.
+- **Over-selling.** Over-selling the register is modest and evidence-led.
 - **Demanding a specific role.** Many companies assign after joining; rigidity reads as poor fit.
 - **Reciting memorised answers.** They sound memorised and break under rephrasing.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### How formal should I be in a Japanese job interview?

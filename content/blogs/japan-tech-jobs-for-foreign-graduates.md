@@ -96,14 +96,29 @@ Attend technology meetups and community events, both those conducted in English 
 
 Connect with other foreign engineers already working in Japan, their direct, first-hand experience navigating this specific job market is considerably more useful than general secondhand advice, and most are genuinely willing to share what they learned going through the same process themselves.
 
+> **Tip:** Identify which of the five employer groups a company belongs to before applying. The process, the language expectation and the timeline all follow from that single fact, and applying without knowing it wastes applications.
+
 ## Common Mistakes
 
 - **Assuming the conventional cycle applies.** Much of technology hires year-round.
 - **Assuming Japanese is always required.** English-operating teams exist in meaningful numbers.
-- **Applying without technical evidence.** The most legible credential in this sector and the one most often missing.
+- **Applying without technical evidence.** Applying without technical evidence the most legible credential in this sector and the one most often missing.
 - **Not identifying the employer type.** Process, language and timeline all follow from it.
 - **Overstating language ability.** It surfaces immediately in interview.
 - **Having no answer to why Japan.** Asked universally and easy to prepare.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

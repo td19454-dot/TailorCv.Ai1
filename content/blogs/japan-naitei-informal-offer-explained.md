@@ -95,14 +95,29 @@ Some companies organise periodic events or maintain contact with their incoming 
 
 Use this period productively, continuing any relevant language study, completing your studies properly, and in some cases beginning informal preparation the company suggests, rather than treating it as entirely disconnected from your eventual start.
 
+> **Tip:** Decide before the 内定式 (naitei-shiki) ceremony, usually held on October 1st. Attending is generally read as acceptance, so treat that date — not the written contract — as your real deadline.
+
 ## Common Mistakes
 
-- **Treating it as non-binding.** Because it is informal. The social weight is the operative constraint.
+- **Treating it as non-binding.** The social weight is the operative constraint.
 - **Accepting while intending to keep searching.** Contrary to convention and damaging when discovered.
 - **Declining late or by email.** Early and direct is the expectation.
 - **Not understanding your university's involvement.** Institutional relationships can be affected.
 - **Ignoring the long gap before starting.** Visa, relocation and logistics need planning.
 - **Accepting without certainty.** Reversal is costly in a way that is easy to underestimate.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Is this informal offer legally binding?

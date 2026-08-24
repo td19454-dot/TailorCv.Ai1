@@ -77,10 +77,12 @@ Verify current rules before relying on them. Route lengths, thresholds and requi
 
 **Because of this, your job search during this period can be genuinely broader than a search constrained by sponsorship availability**, worth applying to smaller employers, startups and organisations you might otherwise assume could not consider an international candidate, since none of the usual sponsorship barriers apply during this specific window.
 
+> **Tip:** Apply for the Graduate Route before your student visa expires — you must be in the UK and still hold valid student status. Letting it lapse first closes the route entirely.
+
 ## Common Mistakes
 
-- **Treating it as an end.** Rather than a window. It does not lead to settlement by itself.
-- **Spending it in non-sponsorable work.** The most common way the period is wasted.
+- **Treating it as an end.** It does not lead to settlement by itself.
+- **Spending it in non-sponsorable work.** Spending it in non-sponsorable work the most common way the period is wasted.
 - **Not checking the sponsor register.** Public, searchable, and it determines whether an employer can keep you.
 - **Applying too late.** You must apply from inside the UK while student permission remains valid.
 - **Under-budgeting the health surcharge.** Payable upfront for the full period.
@@ -93,6 +95,19 @@ Because this route is generally granted once and does not renew, treat the entir
 Build a rough internal timeline for yourself within the broader period, an early phase focused on exploring options and building experience broadly, followed by a later phase focused specifically on securing a role that will genuinely support the transition onto a sponsored route, rather than treating the whole window as undifferentiated time.
 
 If you reach the midpoint of your available time without a clear path toward a sponsorable role, treat this as a genuine signal to adjust your approach, rather than continuing the same strategy and hoping the remaining time resolves itself, this might mean widening your target employer list, seeking more direct outreach and networking, or reconsidering which roles you are realistically targeting.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [The UK Skilled Worker Visa for Graduates](/blog/uk-skilled-worker-visa-for-graduates)
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -101,14 +101,29 @@ Ask specifically about the realistic timeline for salary progression at each emp
 
 **Speak directly with people already working in comparable roles**, through your university's career centre connections or any professional contacts you have built, a genuine current conversation reveals details a published figure alone cannot, including how bonuses and allowances actually work in practice at a specific employer.
 
+> **Tip:** Multiply monthly figures by 12 and add the bonus months separately before comparing to any overseas offer. Japanese salaries are quoted monthly, and comparing that to an annual figure elsewhere understates the offer badly.
+
 ## Common Mistakes
 
-- **Comparing monthly Japanese figures to annual figures elsewhere.** The most common arithmetic error.
-- **Ignoring the bonus.** A structural component that materially changes the total.
+- **Comparing monthly to annual.** Comparing monthly Japanese figures to annual figures elsewhere. The most common arithmetic error.
+- **Ignoring the bonus.** Ignoring the bonus a structural component that materially changes the total.
 - **Overlooking allowances.** Housing support in particular can be worth a great deal.
 - **Attempting to negotiate at a traditional employer.** Reads as unfamiliarity with the system.
 - **Assuming performance drives early progression.** At traditional employers it is frequently more structured.
-- **Not asking how the bonus is actually determined.** Guaranteed and performance-linked portions differ.
+- **Not asking how bonus works.** Not asking how the bonus is actually determined. Guaranteed and performance-linked portions differ.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Is base salary the whole compensation picture?

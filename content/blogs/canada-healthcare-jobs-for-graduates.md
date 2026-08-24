@@ -65,14 +65,29 @@ A concrete example of the scale involved: Canada Health Infoway, a federally-fun
 2. **For non-clinical roles**, apply directly to hospital and health authority career pages, which post continuously across many functions rather than only during a defined recruiting season, and are frequently overlooked by graduates who never think to look.
 3. **Confirm your resume [parses cleanly](/ats-analysis) and is tailored to the specific posting**, exactly the same discipline that applies to any application anywhere.
 
+> **Tip:** Start your provincial licensure application the term before you graduate, not after. Your start date is set by the regulator's processing time, not your convocation date, and that gap is where new graduates lose months.
+
 ## Common Mistakes
 
-- **Assuming clinical licensure will be quick to arrange.** After graduation. Rather than beginning the process early.
-- **Not checking a target province's specific requirements.** Before assuming your home province's licence transfers easily.
-- **Assuming healthcare employment only exists in clinical roles.** And overlooking substantial non-clinical opportunity.
-- **Internationally trained professionals not beginning credential recognition inquiries early enough.**
-- **Accepting a first clinical role.** Without asking about the specific structure and quality of the transition program.
-- **Not searching hospital and health authority career pages directly for non-clinical roles.** Which are advertised continuously rather than seasonally.
+- **Assuming licensure is quick.** Assuming clinical licensure will be quick to arrange after graduation rather than beginning the process early.
+- **Not checking the target province.** Not checking a target province's specific requirements before assuming your home province's licence transfers easily.
+- **Assuming healthcare means clinical.** Assuming healthcare employment only exists in clinical roles and overlooking substantial non-clinical opportunity.
+- **Starting credential recognition late.** Internationally trained professionals not beginning credential recognition inquiries early enough.
+- **Accepting a first clinical role.** Accepting a first clinical role without asking about the specific structure and quality of the transition program.
+- **Not searching health authority pages.** Not searching hospital and health authority career pages directly for non-clinical roles which are advertised continuously rather than seasonally.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

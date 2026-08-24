@@ -57,14 +57,29 @@ Processing times vary by province and by stream, and can run from a few months t
 
 Cross-reference a province's in-demand occupation list against your actual field before choosing based on stream accessibility alone — a fast, low-competition stream in a province with little activity in your sector is a weaker choice than a slightly more competitive stream in a place where [your industry actually concentrates](/blog/canada-major-city-job-markets). Some provincial streams also carry a residency commitment — a stated expectation that you'll live and work in that province for a period after nomination — worth reading the specific terms before applying, not after.
 
+> **Tip:** Before you commit to a province, search that province's own immigration site for its current in-demand occupation list and check your NOC code against it directly. A stream that looks open in a general guide can be paused, and the province's own page is the only source that reflects that today.
+
 ## Common Mistakes
 
-- **Assuming every province's graduate stream requires a job offer.** And ruling out PNPs entirely before checking whether Ontario's or Nova Scotia's no-offer-required streams fit your situation.
-- **Studying in one province while planning to immigrate through another province's graduate stream.** Most require the degree to be from an institution in that specific province.
-- **Not checking a stream's current status.** Before building a plan around it. Provinces pause, adjust, and rename streams, and a program description from a year ago can be stale.
-- **Missing the connection between a work permit's expiry date and PNP processing time.** And ending up without legal status mid-application.
-- **Choosing a province purely for stream accessibility.** Without checking whether your field has real opportunity there.
-- **Not reading a stream's residency commitment.** Before accepting a nomination.
+- **Assuming every stream needs an offer.** Assuming every province's graduate stream requires a job offer and ruling out PNPs entirely before checking whether Ontario's or Nova Scotia's no-offer-required streams fit your situation.
+- **Studying in the wrong province.** Studying in one province while planning to immigrate through another province's graduate stream. Most require the degree to be from an institution in that specific province.
+- **Not checking a stream's current status.** Provinces pause, adjust, and rename streams, and a program description from a year ago can be stale.
+- **Permit expiry vs processing time.** Missing the connection between a work permit's expiry date and PNP processing time and ending up without legal status mid-application.
+- **Choosing a province for the stream alone.** Choosing a province purely for stream accessibility without checking whether your field has real opportunity there.
+- **Not reading a stream's residency commitment.** Not reading a stream's residency commitment before accepting a nomination.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

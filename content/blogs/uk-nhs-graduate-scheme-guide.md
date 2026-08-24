@@ -77,20 +77,35 @@ The [Graduate route](/blog/uk-graduate-visa-route-explained) works here as anywh
 
 **Ask specifically about the size and structure of the team you would actually join**, rather than assuming a single generic NHS working experience, a large national organisation contains genuinely distinct local cultures and working environments depending on the specific trust and department.
 
+> **Tip:** Check the NHS Graduate Management Training Scheme's specific specialism entries before applying — Finance, HR, Policy and General Management run as genuinely different tracks with different competition levels.
+
 ## Common Mistakes
 
-- **Assuming the NHS only hires clinical staff.** A large share of the workforce is non-clinical.
+- **Assuming the NHS only hires clinical staff.** Assuming the NHS only hires clinical staff a large share of the workforce is non-clinical.
 - **Applying only to the named graduate scheme.** Direct entry roles are more numerous and less contested.
 - **Not reading the published values.** They structure the application and the interview.
 - **Overlooking trusts outside major cities.** Roles are genuinely distributed and less competitive.
 - **Assuming a health-related degree is needed.** Graduate schemes are open across disciplines.
-- **Neglecting the online tests.** An early filter and entirely trainable.
+- **Neglecting the online tests.** Neglecting the online tests an early filter and entirely trainable.
 
 ## Understanding career progression within this sector specifically
 
 Progression pathways are often more formally structured here than in much of the private sector, with defined pay bands and, for many roles, a clear route toward recognised professional qualifications, worth researching the specific progression structure for your target function directly, since this varies meaningfully between clinical-support, management, analytical and technical roles.
 
 Movement between trusts, and between different functions within the broader NHS structure, is common and generally well regarded, rather than viewed negatively the way frequent employer changes might be in some other sectors, worth understanding this as a genuine feature of building a long-term NHS career rather than an unusual pattern.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [UK Accountancy Graduate Routes - Qualifications and Employers](/blog/uk-accountancy-graduate-routes)
+- [The UK Civil Service Fast Stream - What the Process Involves](/blog/uk-civil-service-fast-stream-guide)
+- [UK Cover Letters for Graduates - When They Matter and What to Write](/blog/uk-cover-letter-guide-graduates)
+- [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
+- [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
+- [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

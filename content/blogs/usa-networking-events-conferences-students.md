@@ -75,14 +75,29 @@ Industry-specific trade events, which are excellent for non-technology fields an
 
 What to skip: generic networking events with no employer presence, and anything charging students a substantial fee without a clear programme.
 
+> **Tip:** Apply for conference travel funding months before the event, and ask your own department too. Both sources are routinely underused, and both close long before the conference itself.
+
 ## Common Mistakes
 
-- **Not knowing these events exist.** The main reason the channel stays under-used.
+- **Not knowing these events exist.** Not knowing these events exist the main reason the channel stays under-used.
 - **Assuming the cost is prohibitive.** Student rates, volunteer places and travel grants make most events affordable if you plan early.
-- **Attending without preparing.** A conference career fair rewards the same preparation a campus fair does.
-- **Only visiting booths.** The talks and the receptions are where the differentiating conversations happen.
-- **Not following up.** The single step that converts a conversation into a process, skipped by most attendees.
-- **Leaving it too late to apply for funding.** Travel grant deadlines are typically months before the event.
+- **Attending without preparing.** Attending without preparing a conference career fair rewards the same preparation a campus fair does.
+- **Only visiting booths.** Only visiting booths the talks and the receptions are where the differentiating conversations happen.
+- **Not following up.** Not following up the single step that converts a conversation into a process, skipped by most attendees.
+- **Applying for funding too late.** Leaving it too late to apply for funding. Travel grant deadlines are typically months before the event.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Cap-Exempt H-1B Employers - The Route Around the Lottery](/blog/usa-cap-exempt-h1b-employers)
+- [Community College Transfer Students - Building a Career Strategy That Works](/blog/usa-community-college-transfer-career-strategy)
+- [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
+- [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

@@ -73,14 +73,29 @@ Where possible, build or maintain some connection to the domestic market while y
 
 **Demonstrate current, specific awareness of the domestic market and industry context during interviews, rather than relying on knowledge that may have been current when you left several years earlier**, this is precisely the gap [covered in the section on rebuilding market awareness](/blog/china-returnee-haigui-job-market), and it is directly tested through the kinds of questions interviewers ask.
 
+> **Tip:** Apply from abroad before you return, not after. Domestic recruiting runs on fixed seasons, and returning graduates routinely land home just after the window they needed has closed.
+
 ## Common Mistakes
 
-- **Assuming the foreign degree alone carries the same premium it may once have carried in the domestic market.** The pool of returning graduates has grown, narrowing this advantage.
-- **Waiting until physically returning to China to begin the domestic job search.** Frequently means missing the primary recruiting season.
-- **Not actively rebuilding a weakened domestic network.** Before it is urgently needed.
-- **Carrying forward salary expectations calibrated to a different country's economic context.**
-- **Assuming general time abroad automatically demonstrates current understanding of the domestic market.** Worth actively addressing rather than assuming.
-- **Not articulating specifically what skills and experience you actually gained.** Relying instead on the institution's name alone.
+- **Assuming the degree still carries a premium.** Assuming the foreign degree alone carries the same premium it may once have carried in the domestic market. The pool of returning graduates has grown, narrowing this advantage.
+- **Waiting until you land to apply.** Waiting until physically returning to China to begin the domestic job search. Frequently means missing the primary recruiting season.
+- **Not actively rebuilding a weakened domestic network.** Not actively rebuilding a weakened domestic network before it is urgently needed.
+- **Imported salary expectations.** Carrying forward salary expectations calibrated to a different country's economic context.
+- **Assuming time abroad proves market awareness.** Assuming general time abroad automatically demonstrates current understanding of the domestic market. Worth actively addressing rather than assuming.
+- **Leaning on the institution's name.** Not articulating specifically what skills and experience you actually gained. Relying instead on the institution's name alone.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

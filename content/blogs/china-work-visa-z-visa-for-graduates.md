@@ -61,14 +61,16 @@ Higher categories generally carry more favourable treatment and fewer restrictio
 2. **Gather your academic and identity documents in advance**, since the application process typically requires authenticated copies of degree certificates and other records, and authentication can itself take time.
 3. **Verify current requirements directly with the relevant authority or a qualified immigration advisor**, rather than relying on this or any general article, since specific thresholds, exceptions and processes are set by policy that is reviewed and adjusted periodically.
 
+> **Tip:** Ask a prospective employer one specific question: "Have you obtained a Notification Letter of Foreigner's Work Permit for a recent graduate before?" An employer who has done it will answer immediately; one who has not will be vague, and that vagueness is the single most useful signal you will get.
+
 ## Common Mistakes
 
-- **Assuming a standard general work permit route is automatically available to a recent graduate.** The prior experience requirement is a real and common barrier.
-- **Not checking whether your specific Chinese university and programme qualify for a graduate exception.** This can be the deciding factor for a fresh graduate.
-- **Assuming an employer's general willingness to sponsor translates into experience with the graduate-specific route.** Ask directly.
+- **Assuming the standard route is open.** Assuming a standard general work permit route is automatically available to a recent graduate. The prior experience requirement is a real and common barrier.
+- **Not checking your graduate exception.** Not checking whether your specific Chinese university and programme qualify for a graduate exception. This can be the deciding factor for a fresh graduate.
+- **Assuming sponsorship experience transfers.** Assuming an employer's general willingness to sponsor translates into experience with the graduate-specific route. Ask directly.
 - **Underestimating document authentication timelines.** Often longer than expected and worth starting early.
-- **Relying on outdated or general online summaries for specific thresholds.** Rules are set and adjusted by policy and deserve direct, current verification.
-- **Not exploring whether category or points-based factors change your position.** Worth clarifying rather than assuming a single standard applies.
+- **Relying on outdated summaries.** Relying on outdated or general online summaries for specific thresholds. Rules are set and adjusted by policy and deserve direct, current verification.
+- **Not checking your category.** Not exploring whether category or points-based factors change your position. Worth clarifying rather than assuming a single standard applies.
 
 ## Understanding the broader visa category landscape
 
@@ -81,6 +83,19 @@ If your circumstances are genuinely unusual or complex, a specific consultation 
 **Confirm in writing exactly what documentation your prospective employer will need from you**, and the realistic timeline they expect for the application process, rather than assuming a standard timeline applies uniformly, since actual processing experience genuinely varies by employer, region and individual case specifics.
 
 **Understand what your status and rights are during any gap between your current authorisation ending and a new one being granted**, if you are transitioning between roles or categories, this is a genuinely important detail worth clarifying explicitly rather than assuming continuous coverage, since gaps in authorisation carry real consequences.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

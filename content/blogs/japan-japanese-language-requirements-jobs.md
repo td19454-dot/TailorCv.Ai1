@@ -105,14 +105,29 @@ Study or work directly in a Japanese-language environment accelerates progress c
 
 **Track your progress against this specific target periodically**, through practice tests or certification attempts, rather than relying solely on a general subjective sense of improvement, concrete measurement lets you adjust your study approach if progress is genuinely slower than your timeline requires.
 
+> **Tip:** Ask what proportion of daily work happens in Japanese versus English, rather than asking whether Japanese is required. The first question gets a specific answer; the second gets a diplomatic one.
+
 ## Common Mistakes
 
 - **Assuming conversational fluency is enough.** Business Japanese is a distinct and higher bar.
 - **Overstating your level on applications.** It surfaces in the first interview.
-- **Assuming no Japanese means no Japan.** A substantial English-conducted market exists.
-- **Not asking employers directly what language the role operates in.** The answer varies enormously and is available for the asking.
+- **Assuming no Japanese means no Japan.** Assuming no Japanese means no Japan a substantial English-conducted market exists.
+- **Not asking the working language.** Not asking employers directly what language the role operates in. The answer varies enormously and is available for the asking.
 - **Studying generally rather than for business register.** Different skill, different practice.
 - **Leaving language study until the final year.** It improves over years, not weeks.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [English-Speaking Jobs in Japan - Where They Actually Are](/blog/japan-english-speaking-jobs-guide)
+- [Group Discussions and Aptitude Tests in Japanese Recruiting](/blog/japan-group-interview-and-spi-tests)
+- [Internships in Japan for International Students](/blog/japan-internships-for-international-students)
+- [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
+- [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+- [Shūkatsu - The Japanese Job Hunting Timeline](/blog/japan-job-hunting-shukatsu-timeline)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### Can I get a good job in Japan with no Japanese ability at all?

@@ -227,14 +227,29 @@ Business school career services are better resourced than most and are used unev
 
 **And treat their resume review as one input.** They will fix the format and the conventions; they cannot [tailor it to each posting](/blog/how-to-tailor-resume-for-every-job), which is where the interview rate actually moves.
 
+> **Tip:** Start company research before term one begins. MBA recruiting moves faster than almost anyone expects, and the students who do well arrived with a target list already built.
+
 ## Common Mistakes
 
 - **Treating term one as settling in.** It is the recruiting season for the industries with the earliest calendars.
 - **Keeping options open too long.** Undecided by week eight means having networked for nothing.
-- **Starting case practice in December.** The people you are competing with started in July.
+- **Starting case practice in December.** Starting case practice in December the people you are competing with started in July.
 - **Skipping presentations and treks.** At several firms attendance is tracked and referenced.
 - **Not asking about sponsorship early.** Policies vary and the answer is available in one question.
-- **Assuming the second-year full-time round is a safety net.** It is a much smaller pool, because most seats are filled by converted interns.
+- **Treating the full-time round as backup.** Assuming the second-year full-time round is a safety net. It is a much smaller pool, because most seats are filled by converted interns.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Employment-Based Green Cards - The Timeline New Graduates Should Understand](/blog/usa-green-card-eb2-eb3-timeline)
+- [HBCU Recruiting Pipelines in the US - What Actually Exists](/blog/usa-hbcu-recruiting-pipelines)
+- [Quant and Trading Campus Recruiting in the US - How the Process Runs](/blog/usa-quant-trading-campus-recruiting)
+- [Spring Recruiting in the US - The Season Most Students Ignore](/blog/usa-second-round-spring-recruiting)
+- [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
+- [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 ### How much does the pre-MBA background matter?

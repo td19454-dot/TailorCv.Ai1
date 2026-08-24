@@ -65,14 +65,29 @@ Relocation assistance is worth asking about explicitly if the role requires movi
 
 **Public sector and larger established private employers often offer stronger benefits and pension provisions than smaller private companies**, worth factoring this into any real comparison, similar to the [total-package principle that applies to any offer comparison anywhere](/blog/usa-offer-negotiation-new-grad).
 
+> **Tip:** If you are applying in BC or Ontario and a posting shows no salary range, that is worth noticing — both provinces now require one. Its absence tells you something about how carefully that employer follows hiring rules.
+
 ## Common Mistakes
 
-- **Comparing offers on headline salary alone.** Without adjusting for the specific city's genuine cost of living.
-- **Assuming a national average salary figure meaningfully represents your specific sector and city.**
-- **Trying to negotiate a fixed cohort rate at a structured graduate program.** Rarely productive.
-- **Ignoring benefits and pension provisions.** When comparing offers. A genuine and often substantial part of total compensation.
-- **Not checking whether a published salary range exists directly on the posting.** Increasingly common and genuinely useful.
-- **Assuming Toronto or Vancouver pay always represents the better real outcome.** The real comparison is frequently closer than the raw figures suggest.
+- **Comparing offers on headline salary alone.** Comparing offers on headline salary alone without adjusting for the specific city's genuine cost of living.
+- **Trusting a national average.** Assuming a national average salary figure meaningfully represents your specific sector and city.
+- **Negotiating a fixed cohort rate.** Trying to negotiate a fixed cohort rate at a structured graduate program. Rarely productive.
+- **Ignoring benefits and pension provisions.** A genuine and often substantial part of total compensation.
+- **Missing a published salary range.** Not checking whether a published salary range exists directly on the posting. Increasingly common and genuinely useful.
+- **Assuming big-city pay wins.** Assuming Toronto or Vancouver pay always represents the better real outcome. The real comparison is frequently closer than the raw figures suggest.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [Canadian Bank Graduate Programs](/blog/canada-banking-graduate-programs)
+- [Canadian Cover Letters - When They Matter and How to Write One](/blog/canada-cover-letter-guide)
+- [Express Entry for New Grads - How the Points System Actually Works](/blog/canada-express-entry-for-new-grads)
+- [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
+- [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
+- [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 

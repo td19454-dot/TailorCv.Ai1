@@ -70,14 +70,29 @@ Timed practice under realistic conditions matters more than untimed review, exac
 
 **Speak with current or recent employees of your specific target organisation where possible**, a genuine first-hand account of daily working life, pace and progression reveals considerably more than general assumptions about this broad employer category.
 
+> **Tip:** Prepare for the written examination as a distinct stage, not an afterthought. Practice materials aimed broadly at SOE recruitment exams transfer well across organisations, and this stage filters more candidates than the interview does.
+
 ## Common Mistakes
 
-- **Overlooking the sector entirely.** In favour of a small number of internationally recognised private employers. A major and often less contested source of quality graduate employment.
-- **Assuming a generic application approach transfers directly.** The process is often more formal and criteria-driven than at many private employers.
-- **Not preparing for written examinations specifically.** A distinctive and common feature of this sector's selection process.
-- **Assuming eligibility without checking a specific posting's stated requirements.** Criteria vary genuinely by organisation and role.
+- **Overlooking the sector entirely.** A major and often less contested source of quality graduate employment.
+- **Assuming a generic application approach transfers directly.** Assuming a generic application approach transfers directly the process is often more formal and criteria-driven than at many private employers.
+- **Not preparing for written examinations specifically.** Not preparing for written examinations specifically a distinctive and common feature of this sector's selection process.
+- **Assuming you are eligible.** Assuming eligibility without checking a specific posting's stated requirements. Criteria vary genuinely by organisation and role.
 - **Comparing compensation on base salary alone.** Total package, including benefits, is often stronger than a bare salary figure suggests.
-- **Choosing the sector without honestly weighing the pace and working style trade-off.** A genuine difference from much of the private sector, worth considering deliberately.
+- **Ignoring the pace trade-off.** Choosing the sector without honestly weighing the pace and working style trade-off. A genuine difference from much of the private sector, worth considering deliberately.
+
+## Related Guides
+
+Keep building on this with the related guides in this series:
+
+- [China Campus Interview Questions - What Is Actually Asked](/blog/china-campus-interview-questions-guide)
+- [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
+- [Teaching English in China - A Realistic Guide for Graduates](/blog/china-english-teaching-jobs-guide)
+- [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
+- [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
+- [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+
+You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
 ## Frequently Asked Questions
 
