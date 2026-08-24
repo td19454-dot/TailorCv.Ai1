@@ -53,20 +53,20 @@ If you are a foreign graduate planning to build a longer-term career in a specif
 
 **This is worth factoring into your decision deliberately rather than discovering the practical implications later**, once they have become more consequential.
 
-**If long-term settlement in a specific major city is a genuine priority, research that city's specific current graduate settlement pathway before accepting an offer there**, rather than assuming settlement will be straightforward once you are already established, since criteria and points requirements are set by policy and are worth understanding in advance.
+**If long-term settlement in a specific major city is a genuine priority**, research that city's specific current graduate settlement pathway before accepting an offer there, rather than assuming settlement will be straightforward once you are already established, since criteria and points requirements are set by policy and are worth understanding in advance.
 
-**If a lower-tier city is genuinely offering a settlement pathway or incentive as part of its recruitment strategy, weigh this seriously as a real factor alongside salary and career considerations**, not merely as a minor administrative detail, since it can materially affect your practical life over the following years.
+**If a lower-tier city is genuinely offering a settlement pathway or incentive as part of its recruitment strategy**, weigh this seriously as a real factor alongside salary and career considerations, not merely as a minor administrative detail, since it can materially affect your practical life over the following years.
 
-**This is a long-term consideration, not an urgent one for most new graduates in their first year**, though understanding the landscape early means you can make a more informed decision about where to build a career if settlement status matters to your longer-term plans.
+**This is a long-term consideration**, not an urgent one for most new graduates in their first year, though understanding the landscape early means you can make a more informed decision about where to build a career if settlement status matters to your longer-term plans.
 
 ## Common Mistakes
 
-- **Assuming settlement status will be straightforward to sort out later, without checking the specific current criteria for your target city in advance.**
-- **Not considering a lower-tier city's settlement incentives as a genuine factor when comparing offers, treating it as a minor detail rather than a real practical consideration.**
+- **Assuming settlement status will be straightforward to sort out later.** Without checking the specific current criteria for your target city in advance.
+- **Not considering a lower-tier city's settlement incentives.** As a genuine factor when comparing offers. Treating it as a minor detail rather than a real practical consideration.
 - **Confusing the domestic household registration system with the separate framework that applies to foreign nationals.** Related in spirit and distinct in mechanics.
-- **Relying on outdated information about a specific city's criteria, when these are reviewed and adjusted periodically by local policy.**
+- **Relying on outdated information.** About a specific city's criteria. When these are reviewed and adjusted periodically by local policy.
 - **Assuming registration status prevents you from living and working in a city without it.** It does not, it specifically affects certain practical matters described above.
-- **Not researching a graduate-specific settlement pathway, which is often meaningfully more accessible than the general system.**
+- **Not researching a graduate-specific settlement pathway.** Which is often meaningfully more accessible than the general system.
 
 ## Verifying your understanding with the specific city authority directly
 
@@ -76,7 +76,7 @@ If you are uncertain about your own eligibility under a specific graduate pathwa
 
 ## Planning realistically around a multi-year process
 
-**Understand that meeting a points threshold or accumulating qualifying time is generally a multi-year undertaking**, not something resolved quickly, worth building this into your broader career planning from an early stage if long-term settlement in a specific city is a genuine priority for you.
+Understand that meeting a points threshold or accumulating qualifying time is generally a multi-year undertaking, not something resolved quickly, worth building this into your broader career planning from an early stage if long-term settlement in a specific city is a genuine priority for you.
 
 ## Frequently Asked Questions
 

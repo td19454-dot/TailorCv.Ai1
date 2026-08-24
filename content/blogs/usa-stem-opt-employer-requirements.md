@@ -201,14 +201,14 @@ Enrolment says the mechanism exists. A record of actually filing petitions says 
 
 One page, done in a single sitting before applications open, and it removes most of the guesswork from the season.
 
-- **Confirm your degree's designation** and get the code in writing from your international office. Do not rely on assuming a technical-sounding degree qualifies.
-- **Write down your exact authorisation dates**, current and projected.
-- **Build the target list** — thirty to forty employers, with a column for enrolment status.
-- **Check enrolment for each** against the public list. An afternoon.
-- **Mark which have a filing history**, since that is the stronger signal.
-- **Draft your one-sentence answer** for the recruiter screen and say it aloud until it is boring.
-- **Save a one-page summary of the training plan requirements** to send to a willing but unfamiliar employer.
-- **Set calendar reminders** for reporting dates once you are employed.
+- [ ] **Confirm your degree's designation** and get the code in writing from your international office. Do not rely on assuming a technical-sounding degree qualifies.
+- [ ] **Write down your exact authorisation dates**, current and projected.
+- [ ] **Build the target list** — thirty to forty employers, with a column for enrolment status.
+- [ ] **Check enrolment for each** against the public list. An afternoon.
+- [ ] **Mark which have a filing history**, since that is the stronger signal.
+- [ ] **Draft your one-sentence answer** for the recruiter screen and say it aloud until it is boring.
+- [ ] **Save a one-page summary of the training plan requirements** to send to a willing but unfamiliar employer.
+- [ ] **Set calendar reminders** for reporting dates once you are employed.
 
 None of it is difficult. All of it is much harder to do in January, in parallel with interviews, than in September with nothing else happening.
 

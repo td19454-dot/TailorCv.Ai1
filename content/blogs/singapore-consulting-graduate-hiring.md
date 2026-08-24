@@ -37,7 +37,7 @@ The fit or behavioural component follows the [region's generally measured, evide
 
 **This is worth taking seriously and building deliberately**, since Singapore-based consulting work frequently involves genuinely regional client problems, spanning multiple Southeast Asian markets rather than a single domestic economy.
 
-**Follow business news relevant to the broader Southeast Asian region, not solely Singapore itself**, over several weeks, forming actual views on what you read, exactly the [same deliberate approach that builds commercial awareness in any consulting or banking process](/blog/singapore-banking-graduate-programmes).
+**Follow business news relevant to the broader Southeast Asian region**, not solely Singapore itself, over several weeks, forming actual views on what you read, exactly the [same deliberate approach that builds commercial awareness in any consulting or banking process](/blog/singapore-banking-graduate-programmes).
 
 **Being able to discuss a specific regional business trend**, and connect it to a firm's actual practice areas, distinguishes candidates considerably more here than a generic, undifferentiated interest in consulting.
 
@@ -51,23 +51,19 @@ Regional offices of firms based elsewhere, and the strategy or advisory division
 
 ## Applying well
 
-**Research the specific firm's regional practice areas and recent work**, generic answers about wanting to work in consulting broadly are noticed and score poorly.
-
-**Practise live cases with a partner extensively**, twenty to thirty is a reasonable target, following the [same discipline that applies to case preparation anywhere](/blog/usa-consulting-case-interview-campus).
-
-**Build genuine regional commercial awareness over several weeks**, rather than cramming immediately before an interview.
-
-**Prepare fit and behavioural examples in the [measured**, evidence-based register](/blog/singapore-interview-etiquette-guide) that lands well locally.
-
-**Apply to boutique and specialist firms alongside the largest global names**, deliberately widening your target list beyond the most recognisable few.
+1. **Research the specific firm's regional practice areas and recent work**, generic answers about wanting to work in consulting broadly are noticed and score poorly.
+2. **Practise live cases with a partner extensively**, twenty to thirty is a reasonable target, following the [same discipline that applies to case preparation anywhere](/blog/usa-consulting-case-interview-campus).
+3. **Build genuine regional commercial awareness over several weeks**, rather than cramming immediately before an interview.
+4. **Prepare fit and behavioural examples in the [measured**, evidence-based register](/blog/singapore-interview-etiquette-guide) that lands well locally.
+5. **Apply to boutique and specialist firms alongside the largest global names**, deliberately widening your target list beyond the most recognisable few.
 
 ## Common Mistakes
 
-- **Applying only to the largest, most globally recognised firms and overlooking substantial, less contested boutique options.**
-- **Using memorised frameworks in cases rather than structure built specifically from the actual prompt.** Heard and scored poorly.
-- **Building only Singapore-specific commercial awareness rather than the broader regional picture that most work here actually involves.**
+- **Applying only to the largest.** Most globally recognised firms and overlooking substantial, less contested boutique options.
+- **Using memorised frameworks in cases.** Rather than structure built specifically from the actual prompt. Heard and scored poorly.
+- **Building only Singapore-specific commercial awareness.** Rather than the broader regional picture that most work here actually involves.
 - **Not practising live cases with a partner extensively.** Solo case study alone builds a different, less useful skill.
-- **Giving generic answers about wanting to work in consulting broadly, rather than specific reasons tied to a firm's actual regional practice.**
+- **Giving generic answers about wanting to work in consulting broadly.** Rather than specific reasons tied to a firm's actual regional practice.
 - **Underestimating how much the fit interview matters here.** Assessed with real weight alongside the case.
 
 ## Frequently Asked Questions

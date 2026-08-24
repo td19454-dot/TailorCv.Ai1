@@ -71,16 +71,16 @@ Health insurance provision, and what it actually covers.
 
 - **Not verifying a school's legitimacy and sponsorship track record before accepting an offer.** The single most important practical safeguard in this sector.
 - **Working without proper work permit sponsorship, or accepting vague assurances about visa status.** Carries real personal risk.
-- **Not obtaining a recognised teaching certification before applying, where you do not already hold one.** Materially limits eligibility and role quality.
-- **Comparing salary figures without adjusting for the specific city's cost of living.** A number that looks strong in one tier may be weak in another.
+- **Not obtaining a recognised teaching certification.** Before applying, where you do not already hold one. Materially limits eligibility and role quality.
+- **Comparing salary figures without adjusting.** For the specific city's cost of living. A number that looks strong in one tier may be weak in another.
 - **Not reading the contract carefully for housing, hours and termination terms.** Details that matter considerably day to day.
 - **Treating every school in this sector as equivalent.** Genuine and significant variation in quality and legitimacy exists.
 
 ## Understanding contract renewal and longer-term prospects
 
-**If you intend to teach for more than a single contract term, ask specifically during your initial hiring process about the school's typical renewal pattern and any pathway toward increased responsibility or compensation over time**, rather than only focusing on the immediate first-year terms.
+**If you intend to teach for more than a single contract term**, ask specifically during your initial hiring process about the school's typical renewal pattern and any pathway toward increased responsibility or compensation over time, rather than only focusing on the immediate first-year terms.
 
-**Build genuine relationships with colleagues and, where the school culture supports it, engage with the local community beyond your immediate workplace**, this both enriches the overall experience and, practically, builds a network that becomes useful if you decide to seek a different position or a different city later in your time in this sector.
+**Build genuine relationships with colleagues and**, where the school culture supports it, engage with the local community beyond your immediate workplace, this both enriches the overall experience and, practically, builds a network that becomes useful if you decide to seek a different position or a different city later in your time in this sector.
 
 ## Financial planning specific to this role type
 

@@ -27,7 +27,7 @@ Most international graduates focus entirely on the [H-1B lottery](/blog/usa-h1b-
 
 **Your employer controls it.** They decide whether to start, when to start, and they bear the cost and the administrative burden.
 
-**Which means the question "does this employer sponsor permanent residence, and at what point?" belongs in your offer conversation**, not in a conversation you have in year four. Some employers begin the process in an employee's first year; others wait several years; others do not do it at all while happily renewing a work visa indefinitely.
+**Which means the question "does this employer sponsor permanent residence**, and at what point?" belongs in your offer conversation, not in a conversation you have in year four. Some employers begin the process in an employee's first year; others wait several years; others do not do it at all while happily renewing a work visa indefinitely.
 
 ## The stages, in outline
 
@@ -77,7 +77,7 @@ Which is why understanding your own position early, based on your specific count
 
 **"Who bears the cost?"** Employers generally cover the required costs of certain stages; practices on others vary.
 
-**"Has the company done this recently, and for people in roles like mine?"** A track record means a process exists.
+**"Has the company done this recently**, and for people in roles like mine?" A track record means a process exists.
 
 **"What happens if I change roles internally?"** A material change in the job can affect a pending case.
 
@@ -89,7 +89,7 @@ Which is why understanding your own position early, based on your specific count
 - **Not asking at offer stage.** The answer changes which job is actually better for your situation.
 - **Not knowing your country-of-birth position.** It is the largest variable and it is knowable in advance.
 - **Assuming the category follows your degree.** It generally follows what the role requires.
-- **Changing jobs at the wrong moment without advice.** Some transitions are straightforward and some jeopardise a pending case.
+- **Changing jobs at the wrong moment.** Without advice. Some transitions are straightforward and some jeopardise a pending case.
 - **Relying on general timelines from forums.** Backlogs move, categories differ, and the specifics of your case matter.
 
 ## Frequently Asked Questions

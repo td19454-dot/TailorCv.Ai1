@@ -33,7 +33,7 @@ The HSK is structured as six numbered levels under the long-standing standard sc
 
 A newer nine-level "HSK 3.0" standard has also been introduced, restructuring the scale into three bands (Elementary, Intermediate, Advanced); check which version a specific employer or programme references, since the two aren't numbered the same way.
 
-**The test specifically assesses reading, listening and, at the appropriate levels, writing ability**, it does not directly test spoken fluency in the way a conversational interview would, which means someone can hold a strong certified level and still have a speaking ability that lags behind, or occasionally the reverse, worth being honest about this distinction when presenting your ability to an employer.
+**The test specifically assesses reading**, listening and, at the appropriate levels, writing ability, it does not directly test spoken fluency in the way a conversational interview would, which means someone can hold a strong certified level and still have a speaking ability that lags behind, or occasionally the reverse, worth being honest about this distinction when presenting your ability to an employer.
 
 **Lower levels represent basic survival-level ability**, useful for daily life and simple interactions but generally insufficient for professional work in a Mandarin-primary environment, regardless of how confident it might feel in casual conversation.
 
@@ -41,7 +41,7 @@ A newer nine-level "HSK 3.0" standard has also been introduced, restructuring th
 
 **Upper levels represent the range most professional roles genuinely need**, comfortable handling of complex material, professional documents and nuanced conversation, this is the realistic target for anyone seriously pursuing a career at a domestic Chinese employer or in a Mandarin-primary role.
 
-**The highest level represents genuinely advanced, near-native academic and professional fluency**, relevant for the most demanding roles, particularly those involving formal writing, negotiation or high-level professional communication in Mandarin.
+**The highest level represents genuinely advanced**, near-native academic and professional fluency, relevant for the most demanding roles, particularly those involving formal writing, negotiation or high-level professional communication in Mandarin.
 
 ## Matching your level to realistic job requirements
 
@@ -57,9 +57,9 @@ Honestly assessing where you currently stand against a specific target role's re
 
 **State your certified level clearly and specifically on your resume**, following the format conventions covered in the [resume format guide](/blog/china-resume-format-guide), a certified level is a far more credible and verifiable data point to an employer than a general self-description of fluency.
 
-**If your certified level lags behind your actual spoken ability, or the reverse, address this honestly in an interview if asked**, rather than letting either the certificate or a vague claim stand alone as the whole picture, employers who rely on this test as a screening threshold appreciate a candidate who can speak to the gap accurately.
+**If your certified level lags behind your actual spoken ability**, or the reverse, address this honestly in an interview if asked, rather than letting either the certificate or a vague claim stand alone as the whole picture, employers who rely on this test as a screening threshold appreciate a candidate who can speak to the gap accurately.
 
-**If you do not yet hold a certification but believe your ability meets a target level, consider sitting the test before applying**, particularly for roles where a specific level is stated as a requirement, since an unverified claim is a materially weaker credential than a certified one in a market where this test is the widely recognised standard benchmark.
+**If you do not yet hold a certification but believe your ability meets a target level**, consider sitting the test before applying, particularly for roles where a specific level is stated as a requirement, since an unverified claim is a materially weaker credential than a certified one in a market where this test is the widely recognised standard benchmark.
 
 ## Building toward a target level
 
@@ -82,11 +82,11 @@ Do not let examination-specific preparation become disconnected from genuinely u
 ## Common Mistakes
 
 - **Assuming any HSK certification, regardless of level, is sufficient for a professional role at a domestic employer.** Most professional roles realistically require an upper-intermediate level or above.
-- **Relying on a self-described general fluency claim instead of a certified level where one is available.** A certified level is a more credible, verifiable data point to an employer.
+- **Relying on a self-described general fluency claim.** Instead of a certified level where one is available. A certified level is a more credible, verifiable data point to an employer.
 - **Confusing a strong certified reading and listening level with equally strong spoken fluency.** The test does not directly assess spoken ability in the way an interview would.
-- **Not retesting to reflect genuine current ability when an old, lower-level certificate no longer represents your real level.**
+- **Not retesting to reflect genuine current ability.** When an old. Lower-level certificate no longer represents your real level.
 - **Studying generally without targeting the specific level your realistic target roles actually require.**
-- **Assuming every role requires the highest certified level, when many professional roles realistically require somewhat less.**
+- **Assuming every role requires the highest certified level.** When many professional roles realistically require somewhat less.
 
 ## Frequently Asked Questions
 

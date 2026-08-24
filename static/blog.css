@@ -2499,11 +2499,14 @@ header.navbar {
   margin: 24px 0;
 }
 .blog-detail-page .post-content .lead-run > .lead-item {
-  margin: 0;
+  margin: 0 0 14px !important;
   padding: 16px 22px;
   border: 1px solid #c8dcf6;
   border-radius: 8px;
   background: linear-gradient(180deg, #eef6ff 0%, #e6f1ff 100%);
+}
+.blog-detail-page .post-content .lead-run > .lead-item:last-child {
+  margin-bottom: 0 !important;
 }
 .blog-detail-page .post-content .lead-run > .lead-item:nth-child(3n+2) {
   border-color: #b9d3f4;
@@ -2520,6 +2523,24 @@ header.navbar {
   color: #0f3d82;
   font-weight: 700;
 }
+/* Body text inside a lead card is reading text like any other paragraph, so
+   it takes the article's serif face and size. It was previously forced to
+   1rem Inter, which made the cards read as UI chrome sitting inside an
+   article rather than as part of the article itself. The bold caption stays
+   sans-serif so it still reads as a label. */
+.blog-detail-page .post-content .lead-run > .lead-item {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
 @media (max-width: 640px) {
   .blog-detail-page .post-content .lead-run > .lead-item { padding: 14px 16px; }
 }
@@ -2606,6 +2627,23 @@ header.navbar {
   color: #4c34e0;
 }
 .blog-detail-page .post-content .lead-list > li > p:last-child { margin-bottom: 0; }
+
+/* Same reasoning as the lead cards: the body of a numbered point is reading
+   text, so it uses the article's serif face and size instead of 1rem Inter.
+   The bold lead stays sans-serif so it still reads as a label. */
+.blog-detail-page .post-content .lead-list > li {
+  font-family: var(--tcx-serif);
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > b:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  font-family: Inter, "Segoe UI", sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
 @media (max-width: 640px) {
   .blog-detail-page .post-content .lead-list > li { padding: 10px 14px 10px 38px; }
   .blog-detail-page .post-content ol.lead-list > li { padding-left: 52px; }
@@ -2803,9 +2841,7 @@ header.navbar {
 .blog-detail-page .post-content .tpl-block p,
 .blog-detail-page .post-content .tpl-block li,
 .blog-detail-page .post-content .ba-split p,
-.blog-detail-page .post-content .lead-list > li,
 .blog-detail-page .post-content .point-card p,
-.blog-detail-page .post-content .lead-run p,
 .blog-detail-page .post-content .row-lines p,
 .blog-detail-page .post-content .article-bottomline p,
 .blog-detail-page .post-content .article-bottomline li,
@@ -3487,4 +3523,24 @@ header.navbar {
   margin-top: 48px !important;
   padding-top: 32px !important;
   border-top: 1px solid rgba(15, 33, 51, 0.08) !important;
+}
+
+/* ─── Intro lines: marker-pen highlight ───────────────────────────────────
+   A short line ending in a colon that introduces the group directly beneath
+   it. The gradient stops at 58% so the colour sits behind the lower half of
+   the text like a highlighter stroke rather than filling a solid block, and
+   box-decoration-break keeps the stroke continuous if the line wraps. */
+.blog-detail-page .post-content p.intro-line {
+  display: block;
+  margin: 26px 0 14px;
+  font-weight: 600;
+  color: #1f2937;
+}
+.blog-detail-page .post-content p.intro-line > span.intro-mark {
+  display: inline;
+  padding: 0 2px;
+  background-image: linear-gradient(transparent 58%, #fdea9b 58%, #fdea9b 94%, transparent 94%);
+  background-repeat: no-repeat;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }

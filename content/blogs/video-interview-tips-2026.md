@@ -59,14 +59,14 @@ The scorecard at the end is the useful bit - an honest score plus specific feedb
 
 Run this in the half hour before the call so nothing technical surprises you.
 
-- **Restart your computer** an hour before, so no lingering process hogs bandwidth or your camera.
-- **Close every other app**, especially anything syncing or streaming.
-- **Open the meeting link early** and confirm camera and mic in the platform's settings.
-- **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
-- **Have water within reach**, off-camera, for the inevitable dry mouth.
-- **Put your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
-- **Tell housemates** you are in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and post a note on the door.
-- **Do a final light check** — is your face lit from the front and clearly visible?
+- [ ] **Restart your computer** an hour before, so no lingering process hogs bandwidth or your camera.
+- [ ] **Close every other app**, especially anything syncing or streaming.
+- [ ] **Open the meeting link early** and confirm camera and mic in the platform's settings.
+- [ ] **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
+- [ ] **Have water within reach**, off-camera, for the inevitable dry mouth.
+- [ ] **Put your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
+- [ ] **Tell housemates** you are in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and post a note on the door.
+- [ ] **Do a final light check** — is your face lit from the front and clearly visible?
 
 ## Body Language on Camera
 

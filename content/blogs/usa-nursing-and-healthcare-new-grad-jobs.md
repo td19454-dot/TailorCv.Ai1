@@ -77,19 +77,13 @@ Why it stays under-applied-to. Students associate hospitals with clinical work a
 
 ## Applying well
 
-**Apply directly on hospital [career pages](/blog/usa-handshake-linkedin-job-search).** Health systems run their own portals and most roles never appear anywhere else.
-
-**Apply to the health system, not just the flagship hospital.** Large systems include community hospitals, clinics, outpatient centres and administrative offices, all posting separately and with very different competition.
-
-**Widen geographically.** The gradient between a desirable urban academic centre and a community hospital ninety minutes away is enormous, and the second frequently offers more responsibility sooner.
-
-**Use clinical references properly.** For clinical roles, a preceptor who will speak specifically about your practice is worth more than anything else in your application. Ask before you list them and give them your [resume](/ats-analysis).
-
-**Expect structured, panel-style interviews**, especially in larger systems and academic centres. Scored questions against defined criteria — the [panel approach](/blog/canada-new-grad-interview-preparation) applies directly.
-
-**Expect scenario questions.** For clinical roles, how you would handle a deteriorating patient, a disagreement with a colleague, or a safety concern. Answer with a structure, and always include escalation — the correct answer nearly always involves telling someone, and candidates who describe handling everything alone score badly.
-
-**Check the resume parses.** Health systems use large applicant tracking systems, and an [ATS check](/ats-analysis) is worth the minute it takes.
+1. **Apply directly on hospital [career pages](/blog/usa-handshake-linkedin-job-search).** Health systems run their own portals and most roles never appear anywhere else.
+2. **Apply to the health system, not just the flagship hospital.** Large systems include community hospitals, clinics, outpatient centres and administrative offices, all posting separately and with very different competition.
+3. **Widen geographically.** The gradient between a desirable urban academic centre and a community hospital ninety minutes away is enormous, and the second frequently offers more responsibility sooner.
+4. **Use clinical references properly.** For clinical roles, a preceptor who will speak specifically about your practice is worth more than anything else in your application. Ask before you list them and give them your [resume](/ats-analysis).
+5. **Expect structured, panel-style interviews**, especially in larger systems and academic centres. Scored questions against defined criteria — the [panel approach](/blog/canada-new-grad-interview-preparation) applies directly.
+6. **Expect scenario questions.** For clinical roles, how you would handle a deteriorating patient, a disagreement with a colleague, or a safety concern. Answer with a structure, and always include escalation — the correct answer nearly always involves telling someone, and candidates who describe handling everything alone score badly.
+7. **Check the resume parses.** Health systems use large applicant tracking systems, and an [ATS check](/ats-analysis) is worth the minute it takes.
 
 ## The interview, and what hospitals are listening for
 

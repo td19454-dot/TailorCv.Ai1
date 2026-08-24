@@ -91,15 +91,30 @@ This work visa category generally requires periodic renewal, tied to your contin
 
 Longer-term permanent residency is a separate, further process, generally requiring a substantial period of continuous qualifying residence, worth understanding this as a distinct longer-term consideration from the initial work visa itself, similar to how [permanent residency is a separate question from an initial work pass in other countries](/blog/singapore-permanent-residency-for-graduates).
 
+## Preparing your own documentation in advance
+
+1. **Gather educational certificates**, transcripts and any relevant qualification documents well before your employer needs them, authentication of foreign documents can genuinely take real time, and starting this process only once formally requested by an employer risks delaying your intended start date unnecessarily.
+2. **Keep a clear, organised record of your own visa history from the outset**, including exact dates and any renewal correspondence, exactly [the same discipline that matters for any international work authorisation](/blog/first-job-abroad-practical-checklist), this becomes genuinely important if you later change employers or apply for a status upgrade.
+3. **If you are uncertain whether your specific intended role genuinely satisfies the field-of-study connection this category requires**, raise this directly and honestly with your prospective employer before accepting an offer, rather than discovering a problem during the formal application process itself.
+
+## What to do if your application faces difficulty
+
+If an initial application is refused or faces genuine difficulty, understand the specific reason given rather than assuming a general explanation, the specific documented reason determines whether a revised application, additional documentation, or a genuinely different approach is the appropriate next step.
+
+Consider consulting a qualified immigration specialist for a complex or refused case, rather than attempting to navigate a difficult situation entirely independently, particularly where the stakes involve your ability to remain and work in the country.
+
+Keep your employer informed throughout any difficulty, since they are a party to the application and may have their own channels or experience that can help resolve a specific issue.
+
 ## Common Mistakes
 
-- **Assuming you can get the status before an offer.** The employer sponsors it; the job comes first.
+- **Assuming you can get the status.** Before an offer. The employer sponsors it; the job comes first.
 - **Ignoring the degree-to-role relationship.** The most common source of difficulty in an otherwise straightforward application.
 - **Leaving the status change too late.** Processing takes time and you cannot start qualifying work before approval.
 - **Not knowing about the job-hunting extension.** It exists specifically for graduates still searching and many never hear of it.
 - **Relying on outdated information.** Rules change; check the official source for anything decision-critical.
 - **Not asking the employer whether they have done this before.** A company with a process is a materially easier path than one improvising.
 
+## Frequently Asked Questions
 ### Does my job need to relate directly to what I studied?
 
 Generally yes, a genuine connection between your field of study or relevant background and the actual work is a real requirement, not a formality, worth confirming this connection is clear before assuming any offer automatically qualifies.
@@ -115,23 +130,6 @@ Generally requires notification and, depending on the specifics, potentially a n
 ### Does this visa lead to permanent residency eventually?
 
 It can, over a longer timeframe requiring substantial continuous qualifying residence, a separate and further process from the initial work visa itself.
-## Preparing your own documentation in advance
-
-**Gather educational certificates, transcripts and any relevant qualification documents well before your employer needs them**, authentication of foreign documents can genuinely take real time, and starting this process only once formally requested by an employer risks delaying your intended start date unnecessarily.
-
-**Keep a clear, organised record of your own visa history from the outset**, including exact dates and any renewal correspondence, exactly [the same discipline that matters for any international work authorisation](/blog/first-job-abroad-practical-checklist), this becomes genuinely important if you later change employers or apply for a status upgrade.
-
-**If you are uncertain whether your specific intended role genuinely satisfies the field-of-study connection this category requires, raise this directly and honestly with your prospective employer before accepting an offer**, rather than discovering a problem during the formal application process itself.
-
-## What to do if your application faces difficulty
-
-If an initial application is refused or faces genuine difficulty, understand the specific reason given rather than assuming a general explanation, the specific documented reason determines whether a revised application, additional documentation, or a genuinely different approach is the appropriate next step.
-
-Consider consulting a qualified immigration specialist for a complex or refused case, rather than attempting to navigate a difficult situation entirely independently, particularly where the stakes involve your ability to remain and work in the country.
-
-Keep your employer informed throughout any difficulty, since they are a party to the application and may have their own channels or experience that can help resolve a specific issue.
-
-## Frequently Asked Questions
 
 ### Can I look for work in Japan before having a visa?
 
@@ -156,3 +154,4 @@ A points-based system offering advantages including longer stays and a faster pa
 ### Do I need Japanese language ability for the visa itself?
 
 Not as a formal requirement for the main working status, though it affects the highly skilled points assessment and, far more importantly, [which jobs you can actually get](/blog/japan-japanese-language-requirements-jobs).
+

@@ -27,17 +27,17 @@ Before applying, analyze the [job description](https://thetailorcv.com/blog/job-
 
 Review:
 
-- Exact job title
-- Must-have skills
-- Nice-to-have skills
-- Tools and platforms
-- Years of experience
-- Industry keywords
-- Business outcomes
-- Certifications
-- Soft skills repeated more than once
-- Location or work model
-- Application instructions
+- [ ] Exact job title
+- [ ] Must-have skills
+- [ ] Nice-to-have skills
+- [ ] Tools and platforms
+- [ ] Years of experience
+- [ ] Industry keywords
+- [ ] Business outcomes
+- [ ] Certifications
+- [ ] Soft skills repeated more than once
+- [ ] Location or work model
+- [ ] Application instructions
 
 Anything repeated is likely important.
 

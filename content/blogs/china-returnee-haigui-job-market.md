@@ -43,7 +43,7 @@ Understanding of the current domestic market and industry context matters, and i
 
 **This is one of the most common and entirely avoidable mistakes returning graduates make.** Domestic recruiting runs on the [structured national two-season cycle](/blog/china-campus-recruiting-qiuzhao-explained), and a mismatch between your own graduation and return timeline and this calendar can mean missing the primary hiring windows entirely.
 
-**Applying before you physically return, if your programme and timeline allow it, is frequently the right approach**, exactly as [applying before an international move is generally the right approach anywhere](/blog/returning-home-after-studying-abroad), waiting until you have already returned to begin the search often means missing the season that has already opened.
+**Applying before you physically return**, if your programme and timeline allow it, is frequently the right approach, exactly as [applying before an international move is generally the right approach anywhere](/blog/returning-home-after-studying-abroad), waiting until you have already returned to begin the search often means missing the season that has already opened.
 
 **Interview remotely where employers permit it**, this is increasingly normal and accepted, and clearly stating your return date in applications removes ambiguity for the employer.
 
@@ -57,7 +57,7 @@ Your alumni network from the institution you studied at abroad, specifically tho
 
 ## Salary expectations, recalibrated
 
-**Your intuition about compensation, calibrated to the country where you studied, is very likely miscalibrated for the domestic market you are returning to**, this is worth actively correcting through research rather than carrying forward an expectation formed in a different economic context, exactly the [same recalibration challenge that affects any returning graduate globally](/blog/returning-home-after-studying-abroad).
+**Your intuition about compensation**, calibrated to the country where you studied, is very likely miscalibrated for the domestic market you are returning to, this is worth actively correcting through research rather than carrying forward an expectation formed in a different economic context, exactly the [same recalibration challenge that affects any returning graduate globally](/blog/returning-home-after-studying-abroad).
 
 **Research current, realistic domestic salary figures for your specific target sector and city directly**, the [graduate salary guide](/blog/china-graduate-salary-expectations) sets out how to build a realistic figure, rather than assuming your foreign degree commands a substantial automatic premium.
 
@@ -69,7 +69,7 @@ Where possible, build or maintain some connection to the domestic market while y
 
 ## Handling the interview stage as a returning candidate specifically
 
-**Be prepared to address directly and confidently why you are choosing to return now, and why to this specific market rather than continuing your career where you studied**, a genuine, considered answer here matters, employers are aware this is a real decision point for returning candidates and a thoughtful response is well received.
+**Be prepared to address directly and confidently why you are choosing to return now**, and why to this specific market rather than continuing your career where you studied, a genuine, considered answer here matters, employers are aware this is a real decision point for returning candidates and a thoughtful response is well received.
 
 **Demonstrate current, specific awareness of the domestic market and industry context during interviews, rather than relying on knowledge that may have been current when you left several years earlier**, this is precisely the gap [covered in the section on rebuilding market awareness](/blog/china-returnee-haigui-job-market), and it is directly tested through the kinds of questions interviewers ask.
 
@@ -77,10 +77,10 @@ Where possible, build or maintain some connection to the domestic market while y
 
 - **Assuming the foreign degree alone carries the same premium it may once have carried in the domestic market.** The pool of returning graduates has grown, narrowing this advantage.
 - **Waiting until physically returning to China to begin the domestic job search.** Frequently means missing the primary recruiting season.
-- **Not actively rebuilding a weakened domestic network before it is urgently needed.**
+- **Not actively rebuilding a weakened domestic network.** Before it is urgently needed.
 - **Carrying forward salary expectations calibrated to a different country's economic context.**
 - **Assuming general time abroad automatically demonstrates current understanding of the domestic market.** Worth actively addressing rather than assuming.
-- **Not articulating specifically what skills and experience you actually gained, relying instead on the institution's name alone.**
+- **Not articulating specifically what skills and experience you actually gained.** Relying instead on the institution's name alone.
 
 ## Frequently Asked Questions
 

@@ -148,10 +148,10 @@ When the posting asks for one, yes — a tailored [cover letter](https://www.the
 
 Your dental hygienist [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **RDH licensure** and certifications.
-- Names the exact clinical procedures and software from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
-- Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) patient impact.
-- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
-- Reads cleanly after a final pass with the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying).
+- [ ] Leads with **RDH licensure** and certifications.
+- [ ] Names the exact clinical procedures and software from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
+- [ ] Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) patient impact.
+- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
+- [ ] Reads cleanly after a final pass with the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying).
 
 Do those things and your clinical skill will finally be seen by the hiring dentist instead of getting filtered out by software. Start in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) it to every practice you apply to.

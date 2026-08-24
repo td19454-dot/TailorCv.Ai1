@@ -41,9 +41,9 @@ Timelines are often longer than private-sector processes, worth factoring this i
 
 ## Citizenship and eligibility
 
-**Many government positions, particularly those involving policy work or requiring security clearance, require Canadian citizenship**, this is a real and common requirement, worth checking directly for any specific posting rather than assuming broad eligibility.
+**Many government positions**, particularly those involving policy work or requiring security clearance, require Canadian citizenship, this is a real and common requirement, worth checking directly for any specific posting rather than assuming broad eligibility.
 
-**Some positions, particularly certain technical, research or specialist roles, may be open more broadly**, though this varies by role and by the specific level of clearance or sensitivity involved, check the specific posting's stated eligibility criteria rather than assuming based on the general reputation of the sector.
+**Some positions, particularly certain technical**, research or specialist roles, may be open more broadly, though this varies by role and by the specific level of clearance or sensitivity involved, check the specific posting's stated eligibility criteria rather than assuming based on the general reputation of the sector.
 
 **For international graduates on the [post-graduation work permit](/blog/canada-pgwp-for-new-grads), the open nature of the permit does not override a specific position's citizenship requirement where one exists**, worth understanding this distinction, since holding valid work authorization generally and meeting a specific role's citizenship requirement are two separate questions.
 
@@ -68,10 +68,10 @@ Crown corporations — CBC/Radio-Canada, Canada Post, VIA Rail, the Bank of Cana
 ## Common Mistakes
 
 - **Applying only to the most visible flagship structured programs and overlooking substantial general postings.** Considerably less contested relative to genuine opportunity.
-- **Not checking a specific posting's citizenship requirement before applying.** Requirements vary genuinely by role.
+- **Not checking a specific posting's citizenship requirement.** Before applying. Requirements vary genuinely by role.
 - **Assuming the sector is uniformly slow-paced or uninteresting.** Genuine variation exists across functions and specific roles.
-- **Comparing compensation on base salary alone without factoring in benefits and pension provisions.**
-- **Not preparing specific, structured examples mapped to any published assessment criteria.**
+- **Comparing compensation on base salary alone.** Without factoring in benefits and pension provisions.
+- **Not preparing specific.** Structured examples mapped to any published assessment criteria.
 - **Underestimating how much longer government hiring timelines often run compared to private-sector processes.**
 
 ## Frequently Asked Questions

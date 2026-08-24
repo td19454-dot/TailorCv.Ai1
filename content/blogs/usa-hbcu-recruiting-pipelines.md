@@ -159,15 +159,6 @@ And the [spring wave](/blog/usa-second-round-spring-recruiting) is still there i
 
 The pipeline changes how you are found. Everything after that is the same job everyone else is doing, and doing it well is what converts access into an offer.
 
-## Common Mistakes
-
-- **Not asking the careers office what exists.** The single highest-value question and the one most students skip.
-- **Assuming general campus recruiting is the whole picture.** Named pipelines often run through a separate, less contested channel.
-- **Starting the search in junior year.** Several scholarship-and-pipeline programmes open in the first or second year.
-- **Treating the pipeline as the whole application.** The interview bar is generally unchanged; access is not the same as an offer.
-- **Under-using an assigned mentor.** A resource most candidates never fully exploit.
-- **Skipping the multi-campus events.** Concentrated employer attendance in one place, and often less contested than individual big-city fairs.
-
 ## Building the target list
 
 A practical approach to identifying which employers actually have a meaningful relationship with your specific institution, since "there is a pipeline somewhere" is not actionable on its own.
@@ -200,6 +191,16 @@ Throughout. Build one substantial project, keep the [resume parsing cleanly](/at
 
 The pattern worth noticing: the programmes with the deepest employer investment recruit earliest, which means the students who benefit most are the ones who found out in first year that they existed at all.
 
+## Common Mistakes
+
+- **Not asking the careers office what exists.** The single highest-value question and the one most students skip.
+- **Assuming general campus recruiting is the whole picture.** Named pipelines often run through a separate, less contested channel.
+- **Starting the search in junior year.** Several scholarship-and-pipeline programmes open in the first or second year.
+- **Treating the pipeline as the whole application.** The interview bar is generally unchanged; access is not the same as an offer.
+- **Under-using an assigned mentor.** A resource most candidates never fully exploit.
+- **Skipping the multi-campus events.** Concentrated employer attendance in one place, and often less contested than individual big-city fairs.
+
+## Frequently Asked Questions
 ### Are these programmes only at large companies?
 
 The named, funded ones concentrate at large employers with the budget for multi-year pipelines. Smaller and mid-sized employers rarely run formal programmes and frequently recruit from HBCUs through ordinary channels, which is why running a general application track alongside the pipeline track matters.
@@ -215,10 +216,10 @@ Then the standard playbook applies — [referrals](/blog/usa-cold-email-networki
 ### Should I apply to a pipeline if I am unsure about the industry?
 
 Applying costs little and an early-stage programme is frequently a good way to find out whether the industry suits you before committing a graduate year to it.
+
 ### Is it worth attending a career fair at another institution?
 
 Where multi-campus or consortium events exist, yes — they concentrate employers in one place at a scale a single campus cannot match, and travelling for one is frequently worth it. Check what your careers office knows about regional and national events, not just your own.
-## Frequently Asked Questions
 
 ### How do I find out what pipelines exist at my school?
 
@@ -243,3 +244,4 @@ Direct outreach and application still work. Search individual employers' HBCU-sp
 ### Do these pipelines help with graduate school too?
 
 Some do — several employer and professional-society programmes include funding or placement support for graduate study alongside the career track, particularly in engineering and the sciences.
+

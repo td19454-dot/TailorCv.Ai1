@@ -85,7 +85,7 @@ Housing and commuting allowances are common at many employers, and can represent
 
 ## City and cost of living
 
-**Tokyo salaries are generally higher, and Tokyo cost of living, particularly housing, is correspondingly higher too**, the real comparison against opportunities in other Japanese cities requires the same [genuine cost-of-living adjustment that applies to any city comparison globally](/blog/usa-relocation-and-cost-of-living-first-job), rather than comparing headline salary figures alone.
+**Tokyo salaries are generally higher**, and Tokyo cost of living, particularly housing, is correspondingly higher too, the real comparison against opportunities in other Japanese cities requires the same [genuine cost-of-living adjustment that applies to any city comparison globally](/blog/usa-relocation-and-cost-of-living-first-job), rather than comparing headline salary figures alone.
 
 **Progression within the traditional employment system is often structured and predictable**, though generally slower in the early years than in some more merit-accelerated systems elsewhere, worth understanding this as a longer-term trajectory rather than expecting rapid early salary growth in the traditional system specifically.
 
@@ -94,6 +94,12 @@ Housing and commuting allowances are common at many employers, and can represent
 A traditional large employer's offer often looks different in structure from an international company's or a startup's offer, comparing them requires understanding the full package in each case, not just the base monthly figure, exactly [the same total-compensation discipline that applies to comparing any two structurally different offers](/blog/usa-offer-negotiation-new-grad).
 
 Ask specifically about the realistic timeline for salary progression at each employer you are considering, rather than assuming similar trajectories across genuinely different employment structures.
+
+## Researching realistic figures before an offer conversation
+
+**Consult published graduate salary data specific to your target industry and city where available**, rather than relying on general impressions or figures from a single source, sector-specific data gives a considerably more accurate baseline than a general national average.
+
+**Speak directly with people already working in comparable roles**, through your university's career centre connections or any professional contacts you have built, a genuine current conversation reveals details a published figure alone cannot, including how bonuses and allowances actually work in practice at a specific employer.
 
 ## Common Mistakes
 
@@ -104,6 +110,7 @@ Ask specifically about the realistic timeline for salary progression at each emp
 - **Assuming performance drives early progression.** At traditional employers it is frequently more structured.
 - **Not asking how the bonus is actually determined.** Guaranteed and performance-linked portions differ.
 
+## Frequently Asked Questions
 ### Is base salary the whole compensation picture?
 
 No, bonus payments, often twice yearly, and various allowances including housing and commuting support can represent a genuinely meaningful portion of total real compensation, worth understanding the full package rather than the base figure alone.
@@ -119,13 +126,6 @@ Generally more gradual and structured than in some more merit-accelerated system
 ### Can I negotiate my starting salary?
 
 At many large, traditional employers following structured cohort hiring, base pay is often set at a fixed rate across the entire graduate intake, similar to structured programs in other countries, individually negotiating this specific figure is rarely productive.
-## Researching realistic figures before an offer conversation
-
-**Consult published graduate salary data specific to your target industry and city where available**, rather than relying on general impressions or figures from a single source, sector-specific data gives a considerably more accurate baseline than a general national average.
-
-**Speak directly with people already working in comparable roles**, through your university's career centre connections or any professional contacts you have built, a genuine current conversation reveals details a published figure alone cannot, including how bonuses and allowances actually work in practice at a specific employer.
-
-## Frequently Asked Questions
 
 ### Can I negotiate my starting salary?
 
@@ -150,3 +150,4 @@ At most employers, the same standardised bands apply to the same track. Where yo
 ### What about housing?
 
 Company accommodation or housing allowances are common at larger employers and are a significant differentiator, particularly in Tokyo. Ask about it explicitly.
+

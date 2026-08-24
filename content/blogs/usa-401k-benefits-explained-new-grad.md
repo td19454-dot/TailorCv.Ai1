@@ -143,15 +143,6 @@ New graduates skip this constantly, usually with the intention of sorting it out
 
 Ten minutes, week one.
 
-## Common Mistakes
-
-- **Not enrolling in the 401(k) at all.** Declining free money is the single most common and costly early-career mistake.
-- **Contributing less than the full match.** Any employer match not captured is compensation left unclaimed.
-- **Not checking the vesting schedule.** It determines what leaving in year one or two actually costs you in forfeited match.
-- **Choosing a health plan without thinking about your actual usage.** The lower-premium option is not automatically better; it depends on the trade-off that fits your situation.
-- **Missing the enrollment window.** These are often short and the consequence of missing one is waiting a full year.
-- **Under-using paid time off out of anxiety.** Sustainable performance beats visible sacrifice, and burnout is a real cost to both you and the employer.
-
 ## Comparing benefits between two offers
 
 Since benefits are real compensation, here is how to actually put a number on the difference rather than treating it as a vague tiebreaker.
@@ -170,6 +161,16 @@ Tuition or development support, if further study is part of your plan, can be wo
 
 Then add the difference to the salary comparison, alongside the [cost-of-living adjustment](/blog/usa-relocation-and-cost-of-living-first-job) if the roles are in different cities. The combination of those two exercises frequently reverses which offer looked better on the letter, which is exactly why both are worth the hour they take.
 
+## Common Mistakes
+
+- **Not enrolling in the 401(k) at all.** Declining free money is the single most common and costly early-career mistake.
+- **Contributing less than the full match.** Any employer match not captured is compensation left unclaimed.
+- **Not checking the vesting schedule.** It determines what leaving in year one or two actually costs you in forfeited match.
+- **Choosing a health plan.** Without thinking about your actual usage. The lower-premium option is not automatically better; it depends on the trade-off that fits your situation.
+- **Missing the enrollment window.** These are often short and the consequence of missing one is waiting a full year.
+- **Under-using paid time off out of anxiety.** Sustainable performance beats visible sacrifice, and burnout is a real cost to both you and the employer.
+
+## Frequently Asked Questions
 ### What if my employer offers no retirement plan at all?
 
 Some smaller employers do not. Individual retirement accounts exist independently of an employer and can be opened directly, so the absence of a workplace plan is not a reason to save nothing — it simply means the free money from a match is not available, which is worth counting against the offer.
@@ -185,6 +186,7 @@ Contributions come out before income tax is calculated, so contributing reduces 
 ### How often should I review my choices?
 
 Once a year at open enrollment is sufficient for most people early in a career, plus any time your circumstances change materially.
+
 ### Is it worth asking about benefits during interviews?
 
 Wait until an offer is close or in hand. Asking detailed benefits questions in a first [interview](/blog/japan-mensetsu-interview-questions-guide) reads as focused on the package rather than the work; asking them at offer stage is entirely expected and is when you actually need the answers.
@@ -192,7 +194,6 @@ Wait until an offer is close or in hand. Asking detailed benefits questions in a
 ### What if I do not understand my options at all?
 
 Ask HR to walk you through them, and say plainly that this is your first US role. This is a completely normal request, they answer it regularly, and a fifteen-minute conversation is far better than defaulting into choices you did not understand.
-## Frequently Asked Questions
 
 ### How much should I contribute to my 401(k) as a new graduate?
 
@@ -217,3 +218,4 @@ Generally only during a defined annual open enrollment period, or after a qualif
 ### Should benefits affect which job offer I accept?
 
 They are a real part of total compensation and worth weighing alongside salary, particularly when two offers are otherwise close. A strong match and immediate health coverage can be worth more over a year than a modest salary difference.
+

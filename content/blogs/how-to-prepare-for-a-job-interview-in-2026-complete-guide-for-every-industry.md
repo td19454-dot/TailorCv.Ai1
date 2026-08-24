@@ -274,15 +274,15 @@ Keep it short, specific, and professional.
 
 Before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), make sure you have:
 
-- Reviewed the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- Researched the company
-- Practiced your introduction
-- Prepared [STAR stories](https://thetailorcv.com/blog/star-method-interview-answers-guide)
-- Reviewed your resume
-- Tested your technology
-- Chosen your outfit
-- Prepared questions
-- Planned your [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
+- [ ] Reviewed the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [ ] Researched the company
+- [ ] Practiced your introduction
+- [ ] Prepared [STAR stories](https://thetailorcv.com/blog/star-method-interview-answers-guide)
+- [ ] Reviewed your resume
+- [ ] Tested your technology
+- [ ] Chosen your outfit
+- [ ] Prepared questions
+- [ ] Planned your [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview)
 
 ## Final Thoughts
 [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation is not about memorizing perfect answers. It is about knowing your value and communicating it clearly.

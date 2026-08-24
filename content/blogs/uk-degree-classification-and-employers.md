@@ -37,15 +37,11 @@ Many employers have publicly dropped a fixed classification requirement in recen
 
 ## What to do if your classification is not strong
 
-**Check the specific employer's actual current policy rather than assuming a blanket rule applies.** Many have moved away from a strict cutoff, and the honest answer varies by employer and even by scheme within the same organisation.
-
-**Lead with evidence.** A strong project, meaningful work experience, or a demonstrable skill outweighs classification at any employer using contextual or skills-based assessment, and increasingly at employers who still ask for it as one input among several.
-
-**Explain briefly if it comes up, without over-explaining.** A steady upward trend, relevant work experience gained alongside study, or a genuine personal circumstance are all reasonable to mention in one sentence if directly asked, and none require an extended justification.
-
-**Target smaller and mid-sized employers deliberately**, where a person reads the whole application and classification is one input rather than an automated gate, the [regional and mid-tier employer argument](/blog/uk-accountancy-graduate-routes) applies to this exact situation.
-
-**Use a referral where you can.** A referred application at most employers routes to a person rather than through the automated filter, which is the most reliable way around a classification-based screen specifically.
+1. **Check the specific employer's actual current policy rather than assuming a blanket rule applies.** Many have moved away from a strict cutoff, and the honest answer varies by employer and even by scheme within the same organisation.
+2. **Lead with evidence.** A strong project, meaningful work experience, or a demonstrable skill outweighs classification at any employer using contextual or skills-based assessment, and increasingly at employers who still ask for it as one input among several.
+3. **Explain briefly if it comes up, without over-explaining.** A steady upward trend, relevant work experience gained alongside study, or a genuine personal circumstance are all reasonable to mention in one sentence if directly asked, and none require an extended justification.
+4. **Target smaller and mid-sized employers deliberately**, where a person reads the whole application and classification is one input rather than an automated gate, the [regional and mid-tier employer argument](/blog/uk-accountancy-graduate-routes) applies to this exact situation.
+5. **Use a referral where you can.** A referred application at most employers routes to a person rather than through the automated filter, which is the most reliable way around a classification-based screen specifically.
 
 ## What actually decides the interview, once you are past the screen
 
@@ -55,17 +51,17 @@ This is worth internalising early. Spending a final year purely trying to lift a
 
 ## Communicating your classification confidently regardless of the outcome
 
-**Whatever your specific classification, present it plainly and factually on your application rather than either over-emphasising a strong result or seeming apologetic about a more modest one**, confident, matter-of-fact presentation reads better in either case than an emotional framing of the number itself.
+**Whatever your specific classification**, present it plainly and factually on your application rather than either over-emphasising a strong result or seeming apologetic about a more modest one, confident, matter-of-fact presentation reads better in either case than an emotional framing of the number itself.
 
-**If your classification is strong, let it speak for itself rather than dwelling on it excessively in written applications**, the space is generally better used demonstrating specific evidence of your skills and experience, which is what most employers, even those with a stated threshold, ultimately assess you on beyond that initial screen.
+**If your classification is strong**, let it speak for itself rather than dwelling on it excessively in written applications, the space is generally better used demonstrating specific evidence of your skills and experience, which is what most employers, even those with a stated threshold, ultimately assess you on beyond that initial screen.
 
 ## Common Mistakes
 
-- **Assuming every employer has a hard classification cutoff.** Many have moved to contextual or skills-based assessment.
+- **Assuming every employer h.** As a hard classification cutoff. Many have moved to contextual or skills-based assessment.
 - **Not checking a specific employer's current stated policy.** The picture varies and has changed substantially in recent years.
 - **Over-explaining a modest classification unprompted.** A brief, factual sentence if asked is sufficient.
 - **Neglecting evidence in favour of chasing a marginal grade improvement.** Projects and experience usually do more work in an interview.
-- **Ruling out large employers entirely based on an outdated assumption.** Worth checking rather than assuming.
+- **Ruling out large employers entirely.** Based on an outdated assumption. Worth checking rather than assuming.
 - **Not using a referral to route around an automated filter.** The most reliable practical workaround where one genuinely exists.
 
 ## Understanding how classification interacts with other academic factors

@@ -199,15 +199,6 @@ An hour there tells you which route applies to your degree, which examinations y
 
 Then book the subject examination. It is the step with the longest lead time and the one that most often delays people by a whole hiring season.
 
-## Common Mistakes
-
-- **Assuming you need an education degree.** Every state has an alternative route, and shortage subjects have the shortest.
-- **Ignoring which state.** Certification is state-specific and the sequence depends on where you are aiming.
-- **Starting certification late.** It is the binding constraint on when you can be hired.
-- **Applying on the corporate autumn calendar.** The season is spring to summer.
-- **Not asking about sponsorship early.** District capacity varies enormously and the answer is knowable in one question.
-- **Overlooking the non-teaching sector.** Higher education and education technology hire graduates without certification, and universities are frequently cap-exempt.
-
 ## The demonstration lesson
 
 Most schools ask for one, and candidates prepare the content and neglect what is actually assessed.
@@ -260,6 +251,16 @@ Benefits are generally strong — health coverage and a pension scheme — and t
 
 And cost of living dominates. A higher schedule in an expensive metropolitan area can be worse in real terms than a lower one an hour away. Compare against rent for somewhere you would actually live, exactly as with [any relocation decision](/blog/usa-relocation-and-cost-of-living-first-job).
 
+## Common Mistakes
+
+- **Assuming you need an education degree.** Every state has an alternative route, and shortage subjects have the shortest.
+- **Ignoring which state.** Certification is state-specific and the sequence depends on where you are aiming.
+- **Starting certification late.** It is the binding constraint on when you can be hired.
+- **Applying on the corporate autumn calendar.** The season is spring to summer.
+- **Not asking about sponsorship early.** District capacity varies enormously and the answer is knowable in one question.
+- **Overlooking the non-teaching sector.** Higher education and education technology hire graduates without certification, and universities are frequently cap-exempt.
+
+## Frequently Asked Questions
 ### Can I teach at university level instead?
 
 Adjunct and lecturer positions require a master's or doctorate rather than school certification, and universities are frequently [cap-exempt](/blog/usa-cap-exempt-h1b-employers), which makes them a materially easier route for international candidates. Adjunct work is often part-time and insecure; full-time teaching-track positions exist and are competitive.
@@ -271,7 +272,6 @@ Some states allow certification in a related area, and career and technical educ
 ### Do charter schools hire differently?
 
 Frequently yes — more flexible on certification, faster hiring, and more variable in working conditions. Ask the same questions about turnover, induction and behaviour policy that you would ask any school.
-## Frequently Asked Questions
 
 ### Can I teach without an education degree?
 
@@ -296,3 +296,4 @@ Frequently, in that certification requirements are more flexible and subject exp
 ### What if I want education but not the classroom?
 
 Higher education administration, education technology, curriculum design, policy and assessment all hire graduates without certification, and universities in particular are frequently cap-exempt for immigration purposes.
+

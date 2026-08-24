@@ -73,9 +73,9 @@ In many regions, background checks are governed by law — you often must give c
 
 To sail through your background check:
 
-- Confirm your [resume](https://www.thetailorcv.com/modify-cv) **dates, titles, and credentials are accurate**.
-- **Prep your references** so they respond fast.
-- **Gather your documents** in advance.
-- **Address any past issue honestly**, using the [gap](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) and interview guides.
+- [ ] Confirm your [resume](https://www.thetailorcv.com/modify-cv) **dates, titles, and credentials are accurate**.
+- [ ] **Prep your references** so they respond fast.
+- [ ] **Gather your documents** in advance.
+- [ ] **Address any past issue honestly**, using the [gap](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) and interview guides.
 
 Handle it calmly and it's simply the last confirming step before you start. Keep your whole application accurate from the beginning by building your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv) and scoring it with the [ATS checker](https://www.thetailorcv.com/solutions).

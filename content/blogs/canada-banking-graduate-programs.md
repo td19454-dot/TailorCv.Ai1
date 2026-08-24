@@ -21,7 +21,7 @@ showcase: none
 
 ## The scale of the sector
 
-**The "Big Five" — RBC, TD, Scotiabank, BMO, and CIBC — are among the largest employers in the country**, each running structured graduate intakes across retail and commercial banking, corporate and investment banking, risk management, operations, technology and increasingly data and analytics. National Bank of Canada rounds out a "Big Six" reference some sources use, smaller in scale but running its own comparable graduate hiring.
+**The "Big Five" — RBC**, TD, Scotiabank, BMO, and CIBC — are among the largest employers in the country, each running structured graduate intakes across retail and commercial banking, corporate and investment banking, risk management, operations, technology and increasingly data and analytics. National Bank of Canada rounds out a "Big Six" reference some sources use, smaller in scale but running its own comparable graduate hiring.
 
 **Because decisions are made domestically and the banks are headquartered in Canada**, the structure and progression paths are well developed, with defined graduate schemes and a genuine internal career ladder.
 
@@ -41,7 +41,7 @@ Several banks have also built distinct digital and innovation units with their o
 
 **Structured graduate program applications generally open in the autumn, aligned with the [broader Canadian recruiting calendar](/blog/canada-campus-recruiting-timeline)**, though worth remembering that Canada's overall graduate market is less rigidly calendar-bound than markets like US banking specifically, some roles, particularly technology and specialist positions, are filled on a more rolling basis throughout the year.
 
-**Co-op placements at the banks, where available, frequently feed directly into full-time graduate hiring**, similar to the [conversion pattern seen broadly](/blog/canada-university-career-services-guide), worth treating a co-op application with the same seriousness as the eventual full-time decision it can influence. Technology-specific co-op placements in particular are a genuine way into named programs like RBC's Amplify or a bank's other internal innovation units, since these teams often prefer hiring from a pool of candidates they've already worked with directly.
+**Co-op placements at the banks**, where available, frequently feed directly into full-time graduate hiring, similar to the [conversion pattern seen broadly](/blog/canada-university-career-services-guide), worth treating a co-op application with the same seriousness as the eventual full-time decision it can influence. Technology-specific co-op placements in particular are a genuine way into named programs like RBC's Amplify or a bank's other internal innovation units, since these teams often prefer hiring from a pool of candidates they've already worked with directly.
 
 ## The selection process
 
@@ -67,9 +67,9 @@ The Big Five are generally strong on the total-package side, not just base pay. 
 
 - **Applying only to front-office roles and overlooking substantial technology and risk divisions.** Genuinely less contested relative to the quality and scale of the work.
 - **Not applying early enough within the autumn recruiting window.**
-- **Assuming sponsorship willingness is uniform across a bank rather than varying meaningfully by function.**
-- **Not preparing specifically for the different interview formats used across front-office, technology and risk roles.**
-- **Comparing compensation on base salary alone, without accounting for the total package including benefits.**
+- **Assuming sponsorship willingness is uniform across a bank.** Rather than varying meaningfully by function.
+- **Not preparing specifically for the different interview formats used across front-office.** Technology and risk roles.
+- **Comparing compensation on base salary alone.** Without accounting for the total package including benefits.
 - **Overlooking co-op placements as a genuine pathway into full-time roles.**
 
 ## Frequently Asked Questions

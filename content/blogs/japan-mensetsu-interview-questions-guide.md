@@ -71,7 +71,7 @@ Punctuality and presentation are taken seriously. Arrive early, dress conservati
 
 ## The questions that recur, and what they are actually testing
 
-**"Why did you choose our company specifically, rather than a comparable competitor?"** A genuinely important question here, requiring a specific, researched answer connected to the company's actual business or a particular aspect of the role, rather than general praise applicable to any similar employer, exactly [the same principle that decides outcomes in structured interviews internationally](/blog/uk-competency-questions-guide).
+**"Why did you choose our company specifically**, rather than a comparable competitor?" A genuinely important question here, requiring a specific, researched answer connected to the company's actual business or a particular aspect of the role, rather than general praise applicable to any similar employer, exactly [the same principle that decides outcomes in structured interviews internationally](/blog/uk-competency-questions-guide).
 
 **Questions about your long-term commitment and career intentions** are asked more directly here than in some other markets, reflecting the traditional expectation of longer-term employment within the local system, a vague or dismissive answer is noticed, worth having a genuine, considered response prepared.
 
@@ -89,6 +89,12 @@ Confident, substantive answers are still expected within this formal register, t
 
 **Practise with a native Japanese speaker if your interviews will be conducted in Japanese**, beyond language correction, this helps you internalise the appropriate register and formality expected, which differs meaningfully from casual conversational Japanese.
 
+## Handling a question you are not prepared for
+
+If asked something you have not specifically prepared for, take a brief, composed moment before answering rather than rushing into a response, a short pause to genuinely think is well received within the measured, formal register expected here, considerably better than an unprepared or rambling answer delivered too quickly.
+
+If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent, this is understood and accepted rather than viewed negatively.
+
 ## Common Mistakes
 
 - **Inconsistency across rounds.** Interviewers compare notes and a changing story is damaging.
@@ -98,6 +104,7 @@ Confident, substantive answers are still expected within this formal register, t
 - **Demanding a specific role.** Many companies assign after joining; rigidity reads as poor fit.
 - **Reciting memorised answers.** They sound memorised and break under rephrasing.
 
+## Frequently Asked Questions
 ### How formal should I be in a Japanese job interview?
 
 Generally quite formal, in both dress and manner, with genuine politeness toward interviewers, particularly more senior ones, this is the expected register here.
@@ -113,13 +120,6 @@ Yes, covered in more depth in the [group interview and aptitude testing guide](/
 ### How should I answer questions about long-term career plans?
 
 Honestly and with genuine thought, this is asked more directly here than in some other markets and a vague or dismissive answer is noticed.
-## Handling a question you are not prepared for
-
-If asked something you have not specifically prepared for, take a brief, composed moment before answering rather than rushing into a response, a short pause to genuinely think is well received within the measured, formal register expected here, considerably better than an unprepared or rambling answer delivered too quickly.
-
-If you genuinely do not understand a question, particularly relevant if interviewing partly in your non-native language, ask for clarification politely rather than guessing at the intent, this is understood and accepted rather than viewed negatively.
-
-## Frequently Asked Questions
 
 ### How many interview rounds are there?
 
@@ -144,3 +144,4 @@ Not in early rounds. It is generally addressed later in the process or at offer 
 ### How do I prepare if I am not a native speaker?
 
 Mock interviews in Japanese, repeatedly. The gap between reading ability and speaking under pressure is where foreign candidates actually struggle, and it closes only with practice.
+

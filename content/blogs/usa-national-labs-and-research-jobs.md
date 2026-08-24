@@ -213,27 +213,27 @@ And on the thing people underweight: for an international graduate, the possibil
 ## A short application checklist
 
 **Before you apply**
-- Identify four or five labs whose work genuinely overlaps your field
-- Read two recent papers from the group you are targeting
-- Check the posting for citizenship and clearance requirements
-- Ask whether the employer is cap-exempt, if that matters to you
-- Prepare a CV rather than a one-page resume, with publications and technical skills
+- [ ] Identify four or five labs whose work genuinely overlaps your field
+- [ ] Read two recent papers from the group you are targeting
+- [ ] Check the posting for citizenship and clearance requirements
+- [ ] Ask whether the employer is cap-exempt, if that matters to you
+- [ ] Prepare a CV rather than a one-page resume, with publications and technical skills
 
 **In the application**
-- Name the division, facility or paper, and connect it to your own work
-- Describe methods and scale specifically, not in general terms
-- Be honest about what you have not done
-- List references early — academic-style processes ask sooner than corporate ones
+- [ ] Name the division, facility or paper, and connect it to your own work
+- [ ] Describe methods and scale specifically, not in general terms
+- [ ] Be honest about what you have not done
+- [ ] List references early — academic-style processes ask sooner than corporate ones
 
 **In parallel**
-- Email one researcher in the group with a specific question about their work
-- Ask your own professors whether they know anyone there
-- Keep other applications running, because the timeline is long
+- [ ] Email one researcher in the group with a specific question about their work
+- [ ] Ask your own professors whether they know anyone there
+- [ ] Keep other applications running, because the timeline is long
 
 **After an offer**
-- Confirm what any foreign national access process involves and how long it takes
-- Ask about relocation, since many labs are outside major cities
-- Compare the total package rather than the base, since benefits and stability are a real part of the value
+- [ ] Confirm what any foreign national access process involves and how long it takes
+- [ ] Ask about relocation, since many labs are outside major cities
+- [ ] Compare the total package rather than the base, since benefits and stability are a real part of the value
 
 ## Frequently Asked Questions
 

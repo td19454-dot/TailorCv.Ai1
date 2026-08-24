@@ -45,7 +45,7 @@ The accepted English tests are IELTS General Training and CELPIP-General — not
 
 ## Why your first job's NOC category is the whole game
 
-**Canadian work experience only adds points if it falls under TEER 0, 1, 2, or 3 in the National Occupational Classification** — [covered in full with real examples in the NOC guide](/blog/canada-noc-codes-explained-for-graduates). A retail or food-service role, however many hours you work, adds zero to this factor because it sits outside that band. Before accepting an offer on your [post-graduation work permit](/blog/canada-pgwp-for-new-grads), check the actual NOC code the employer will report for the role — ask HR directly if the job posting doesn't state it — because this determines whether the year you're about to spend counts toward your score at all.
+Canadian work experience only adds points if it falls under TEER 0, 1, 2, or 3 in the National Occupational Classification — [covered in full with real examples in the NOC guide](/blog/canada-noc-codes-explained-for-graduates). A retail or food-service role, however many hours you work, adds zero to this factor because it sits outside that band. Before accepting an offer on your [post-graduation work permit](/blog/canada-pgwp-for-new-grads), check the actual NOC code the employer will report for the role — ask HR directly if the job posting doesn't state it — because this determines whether the year you're about to spend counts toward your score at all.
 
 ## Draws move — plan around a range, not a number
 
@@ -53,7 +53,7 @@ The score needed for an invitation is set by whoever ranks lowest among the cand
 
 ## Provincial nomination as an active strategy, not a backup
 
-**[Provincial nominee programs](/blog/canada-provincial-nominee-programs-graduates) add 600 points outright**, which puts a nominated candidate above essentially every general-draw cutoff on record. If your field, your province of study, or your work experience lines up with a specific province's in-demand occupation list, applying to that stream in parallel with building your federal profile is usually a faster path than waiting on federal draws alone.
+[Provincial nominee programs](/blog/canada-provincial-nominee-programs-graduates) add 600 points outright, which puts a nominated candidate above essentially every general-draw cutoff on record. If your field, your province of study, or your work experience lines up with a specific province's in-demand occupation list, applying to that stream in parallel with building your federal profile is usually a faster path than waiting on federal draws alone.
 
 ## Building your profile over your first two years
 
@@ -67,12 +67,12 @@ Run your own score on IRCC's official CRS calculator (searchable directly on can
 
 ## Common Mistakes
 
-- **Not checking a job's NOC category before accepting it**, when the difference between a qualifying and non-qualifying role is the entire Canadian-work-experience factor.
-- **Treating an overall language "pass" as sufficient**, without checking the individual band scores CRS actually uses.
-- **Not retesting a weak language score**, when it's typically the highest-return, lowest-effort action available.
-- **Assuming a historical draw cutoff still applies**, instead of checking IRCC's current draw-history page before applying.
-- **Treating provincial nomination as a last resort**, when its 600 points make it worth pursuing in parallel from the start.
-- **Waiting until close to applying to run the CRS calculator**, losing years where language and job-category decisions could have shaped a stronger score.
+- **Not checking a job's NOC category.** Before accepting it. When the difference between a qualifying and non-qualifying role is the entire Canadian-work-experience factor.
+- **Treating an overall language "pass" as sufficient.** Without checking the individual band scores CRS actually uses.
+- **Not retesting a weak language score.** When it's typically the highest-return, lowest-effort action available.
+- **Assuming a historical draw cutoff still applies.** Instead of checking IRCC's current draw-history page before applying.
+- **Treating provincial nomination as a last resort.** When its 600 points make it worth pursuing in parallel from the start.
+- **Waiting until close to applying to run the CRS calculator.** Losing years where language and job-category decisions could have shaped a stronger score.
 
 ## Frequently Asked Questions
 

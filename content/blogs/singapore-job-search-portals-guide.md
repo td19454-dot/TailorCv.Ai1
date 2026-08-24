@@ -33,7 +33,7 @@ On-campus recruiting events, career fairs and structured campus channels, [atten
 
 ## Company career pages directly
 
-**The most authoritative and often earliest source for a specific employer's own openings**, roles frequently appear here before they are cross-posted anywhere else, worth building a list of thirty or so target employers and checking their career pages directly and regularly, rather than relying solely on aggregated listings elsewhere.
+The most authoritative and often earliest source for a specific employer's own openings, roles frequently appear here before they are cross-posted anywhere else, worth building a list of thirty or so target employers and checking their career pages directly and regularly, rather than relying solely on aggregated listings elsewhere.
 
 ## Professional networking platforms
 
@@ -41,7 +41,7 @@ Genuinely useful here as elsewhere, though primarily for research and outreach r
 
 ## International and regional job boards
 
-**Some roles, particularly at multinational employers hiring for regional positions based in Singapore, are posted on broader international or regional job platforms rather than solely on local channels**, worth checking these specifically if you are targeting a multinational's regional headquarters function.
+Some roles, particularly at multinational employers hiring for regional positions based in Singapore, are posted on broader international or regional job platforms rather than solely on local channels, worth checking these specifically if you are targeting a multinational's regional headquarters function.
 
 ## Recruitment agencies
 
@@ -57,10 +57,10 @@ Genuinely active in the Singapore market, particularly for specific specialised 
 
 ## Common Mistakes
 
-- **Relying on a single job search channel rather than combining several.**
-- **Overlooking the national jobs portal as a genuinely significant local channel.**
-- **Not checking university career portal listings, which often carry roles with less competition.**
-- **Using professional networking platforms only for applications rather than for research and outreach, where they add the most value.**
+- **Relying on a single job search channel.** Rather than combining several.
+- **Overlooking the national jobs portal.** As a genuinely significant local channel.
+- **Not checking university career portal listings.** Which often carry roles with less competition.
+- **Using professional networking platforms only for applications.** Rather than for research and outreach. Where they add the most value.
 - **Checking channels once rather than establishing a regular, ongoing routine.**
 - **Not building a specific target list of employers and checking their career pages directly.**
 

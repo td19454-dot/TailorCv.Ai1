@@ -92,9 +92,9 @@ This isn't a one-time task. Run the checklist every time you apply, because each
 
 Your [resume](https://www.thetailorcv.com/modify-cv) is ready to submit when it:
 
-- Uses a **clean, single-column, [ATS-friendly](https://www.thetailorcv.com/templates)** format.
-- Leads with a **matching job title** and mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Backs every role with a [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) result.
-- Is [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist), correctly sized, and **passes the [ATS score checker](https://www.thetailorcv.com/solutions)**.
+- [ ] Uses a **clean, single-column, [ATS-friendly](https://www.thetailorcv.com/templates)** format.
+- [ ] Leads with a **matching job title** and mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- [ ] Backs every role with a [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) result.
+- [ ] Is [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist), correctly sized, and **passes the [ATS score checker](https://www.thetailorcv.com/solutions)**.
 
 Run it through the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and you'll clear the software that filters out most applicants.
