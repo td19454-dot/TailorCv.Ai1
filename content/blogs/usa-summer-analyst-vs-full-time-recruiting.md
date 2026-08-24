@@ -31,15 +31,15 @@ showcase: none
 
 ## How much this varies by industry
 
-**Banking and consulting: most extreme.** The summer analyst class is the graduate class in all but name at many firms, and the full-time round can be very small. Missing the summer round here is genuinely costly, and the [MBA version](/blog/usa-mba-internship-recruiting-timeline) follows the same logic.
+Banking and consulting: most extreme. The summer analyst class is the graduate class in all but name at many firms, and the full-time round can be very small. Missing the summer round here is genuinely costly, and the [MBA version](/blog/usa-mba-internship-recruiting-timeline) follows the same logic.
 
-**Large technology employers: significant but softer.** Conversion matters and [requisitions reopen through the year](/blog/usa-big-tech-new-grad-hiring), which means the full-time round is a real channel rather than a remainder.
+Large technology employers: significant but softer. Conversion matters and [requisitions reopen through the year](/blog/usa-big-tech-new-grad-hiring), which means the full-time round is a real channel rather than a remainder.
 
-**Mid-sized and smaller companies: much weaker.** Many do not run internship programmes at all and hire graduates directly on need, filling roles as they open rather than through a defined summer-to-full-time pipeline, which is why [this segment matters so much](/blog/usa-startup-vs-big-tech-new-grad) for anyone without an internship behind them.
+Mid-sized and smaller companies: much weaker. Many do not run internship programmes at all and hire graduates directly on need, filling roles as they open rather than through a defined summer-to-full-time pipeline, which is why [this segment matters so much](/blog/usa-startup-vs-big-tech-new-grad) for anyone without an internship behind them.
 
-**Healthcare, education, government: largely separate.** These run on [their own calendars](/blog/usa-federal-government-jobs-for-students) with different structures entirely.
+Healthcare, education, government: largely separate. These run on [their own calendars](/blog/usa-federal-government-jobs-for-students) with different structures entirely.
 
-**The planning consequence:** if your target is banking or consulting, treat the penultimate-year summer round as the main event. If your target is broader, the full-time round remains genuinely viable.
+The planning consequence: if your target is banking or consulting, treat the penultimate-year summer round as the main event. If your target is broader, the full-time round remains genuinely viable.
 
 ## "Off-cycle" hiring, the channel most students never search for
 
@@ -51,9 +51,9 @@ showcase: none
 
 ## The sophomore programs that push the timeline even earlier
 
-**At the most contested employers, the real competition starts before junior year — through named sophomore and freshman programs** that function as an early pipeline into the summer analyst class itself. Goldman Sachs' Possibilities Summit, JPMorgan's Winning Women and Launching Leaders programs, and Morgan Stanley's Strategy Lab are well-known examples — early-exposure programs, often but not exclusively aimed at students from specific backgrounds, that give participants a materially easier path into the following year's actual internship round.
+At the most contested employers, the real competition starts before junior year — through named sophomore and freshman programs that function as an early pipeline into the summer analyst class itself. Goldman Sachs' Possibilities Summit, JPMorgan's Winning Women and Launching Leaders programs, and Morgan Stanley's Strategy Lab are well-known examples — early-exposure programs, often but not exclusively aimed at students from specific backgrounds, that give participants a materially easier path into the following year's actual internship round.
 
-**The practical implication for a first- or second-year student reading this: these exist, they're searchable by name on each firm's own campus recruiting page, and applying to them is a legitimate way to compress the multi-year timeline this whole article describes.** A student who lands one of these in sophomore year effectively secures a version of the "internship round matters most" advantage a full cycle earlier than a peer who only starts engaging with recruiting in junior year.
+The practical implication for a first- or second-year student reading this: these exist, they're searchable by name on each firm's own campus recruiting page, and applying to them is a legitimate way to compress the multi-year timeline this whole article describes. A student who lands one of these in sophomore year effectively secures a version of the "internship round matters most" advantage a full cycle earlier than a peer who only starts engaging with recruiting in junior year.
 
 ## If you are in the full-time round without an internship
 

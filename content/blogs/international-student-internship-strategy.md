@@ -203,7 +203,7 @@ It happens, and it is more recoverable than it feels in week five.
 
 **If there is no work, say so.** Interns frequently sit idle because their manager got busy, and then blame themselves. "I have capacity — is there something I can pick up?" solves it more often than not.
 
-**If the conversion is clearly not happening, use the remaining weeks differently.**
+**If the conversion is clearly not happening**, use the remaining weeks differently.
 
 Build the relationships, get the reference, finish something you can describe in an interview. An internship that does not convert still produces the local reference that changes your graduate applications, and that was always the larger prize.
 

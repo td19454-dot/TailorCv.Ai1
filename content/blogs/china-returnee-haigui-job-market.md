@@ -31,13 +31,13 @@ showcase: none
 
 ## What employers now actually evaluate
 
-**Specific, demonstrable skills and experience carry more weight than the general credential**, a concrete project, relevant internship experience, or a demonstrable skill gained abroad speaks considerably more clearly to an employer than the institution's name alone, similar to the broader principle that [evidence outperforms credential](/blog/fresher-resume-projects-that-get-interviews) in most graduate hiring globally.
+Specific, demonstrable skills and experience carry more weight than the general credential, a concrete project, relevant internship experience, or a demonstrable skill gained abroad speaks considerably more clearly to an employer than the institution's name alone, similar to the broader principle that [evidence outperforms credential](/blog/fresher-resume-projects-that-get-interviews) in most graduate hiring globally.
 
-**Field relevance to the target role matters more than general institutional prestige.** A degree closely aligned with your target industry, from a solidly regarded but less globally famous institution, frequently outperforms a prestigious but less relevant degree in the eyes of an employer assessing fit for a specific role.
+Field relevance to the target role matters more than general institutional prestige. A degree closely aligned with your target industry, from a solidly regarded but less globally famous institution, frequently outperforms a prestigious but less relevant degree in the eyes of an employer assessing fit for a specific role.
 
-**Language ability, both Mandarin for domestic professional communication and English or another language relevant to the role, is assessed directly rather than assumed from your study history.**
+Language ability, both Mandarin for domestic professional communication and English or another language relevant to the role, is assessed directly rather than assumed from your study history.
 
-**Understanding of the current domestic market and industry context matters, and is sometimes genuinely weaker in a returning graduate who has been away for several years**, this is worth actively addressing rather than assuming your time abroad alone demonstrates sufficient current market awareness.
+Understanding of the current domestic market and industry context matters, and is sometimes genuinely weaker in a returning graduate who has been away for several years, this is worth actively addressing rather than assuming your time abroad alone demonstrates sufficient current market awareness.
 
 ## Timing your return properly
 
@@ -49,11 +49,11 @@ showcase: none
 
 ## Rebuilding your domestic network
 
-**Years spent abroad genuinely weaken domestic professional and personal networks**, contacts move, change roles, and simply lose day-to-day connection, this is not a personal failing, it is a predictable consequence of distance and time, and it is worth addressing deliberately rather than assuming your pre-departure network remains as strong and current as it was.
+Years spent abroad genuinely weaken domestic professional and personal networks, contacts move, change roles, and simply lose day-to-day connection, this is not a personal failing, it is a predictable consequence of distance and time, and it is worth addressing deliberately rather than assuming your pre-departure network remains as strong and current as it was.
 
-**Reconnect with domestic contacts before you need something from them**, a genuine, no-agenda message reopening a relationship months before you need a specific favour or introduction lands considerably better than a cold request the week you return.
+Reconnect with domestic contacts before you need something from them, a genuine, no-agenda message reopening a relationship months before you need a specific favour or introduction lands considerably better than a cold request the week you return.
 
-**Your alumni network from the institution you studied at abroad, specifically those who have also returned to China, is a genuinely useful and underused resource**, people who have navigated the exact same transition recently have directly relevant, current knowledge that a domestic-only contact does not.
+Your alumni network from the institution you studied at abroad, specifically those who have also returned to China, is a genuinely useful and underused resource, people who have navigated the exact same transition recently have directly relevant, current knowledge that a domestic-only contact does not.
 
 ## Salary expectations, recalibrated
 
@@ -63,9 +63,9 @@ showcase: none
 
 ## Preparing your specific evidence properly before applying
 
-**Translate your specific accomplishments abroad into terms a domestic employer can immediately evaluate**, rather than assuming the institution's international reputation alone carries the necessary weight, exactly [the same translation discipline that helps any candidate whose credentials come from an unfamiliar system](/blog/international-student-resume-differences-by-country), a specific project, a specific outcome, a specific skill demonstrated concretely, all outperform a general assertion about having studied at a well-regarded foreign institution.
+Translate your specific accomplishments abroad into terms a domestic employer can immediately evaluate, rather than assuming the institution's international reputation alone carries the necessary weight, exactly [the same translation discipline that helps any candidate whose credentials come from an unfamiliar system](/blog/international-student-resume-differences-by-country), a specific project, a specific outcome, a specific skill demonstrated concretely, all outperform a general assertion about having studied at a well-regarded foreign institution.
 
-**Where possible, build or maintain some connection to the domestic market while you are still abroad**, a remote internship, a research collaboration with a domestic organisation, or active participation in relevant professional communities, any of these produce genuine evidence of current market engagement that a purely academic record abroad does not.
+Where possible, build or maintain some connection to the domestic market while you are still abroad, a remote internship, a research collaboration with a domestic organisation, or active participation in relevant professional communities, any of these produce genuine evidence of current market engagement that a purely academic record abroad does not.
 
 ## Handling the interview stage as a returning candidate specifically
 

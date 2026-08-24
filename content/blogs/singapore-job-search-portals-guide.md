@@ -27,9 +27,9 @@ showcase: none
 
 ## University career portals
 
-**Your own institution's career portal carries roles specifically targeted at students from that university, or from local institutions more broadly**, employers posting here have deliberately chosen to reach this specific pool, meaning competition is often genuinely lower than for an identical role posted more broadly, worth checking this channel actively rather than only relying on general job boards.
+Your own institution's career portal carries roles specifically targeted at students from that university, or from local institutions more broadly, employers posting here have deliberately chosen to reach this specific pool, meaning competition is often genuinely lower than for an identical role posted more broadly, worth checking this channel actively rather than only relying on general job boards.
 
-**On-campus recruiting events, career fairs and structured campus channels, [attended properly](/blog/singapore-campus-recruiting-guide), remain a genuine and often underused route, particularly for structured graduate programmes.**
+On-campus recruiting events, career fairs and structured campus channels, [attended properly](/blog/singapore-campus-recruiting-guide), remain a genuine and often underused route, particularly for structured graduate programmes.
 
 ## Company career pages directly
 
@@ -37,7 +37,7 @@ showcase: none
 
 ## Professional networking platforms
 
-**Genuinely useful here as elsewhere, though primarily for research and outreach rather than as the primary application channel**, finding alumni, researching a specific team, and identifying people to reach out to for [an informational conversation](/blog/singapore-networking-guide-for-students) is where this channel adds the most value, rather than relying on it as your main source of applications.
+Genuinely useful here as elsewhere, though primarily for research and outreach rather than as the primary application channel, finding alumni, researching a specific team, and identifying people to reach out to for [an informational conversation](/blog/singapore-networking-guide-for-students) is where this channel adds the most value, rather than relying on it as your main source of applications.
 
 ## International and regional job boards
 
@@ -45,7 +45,7 @@ showcase: none
 
 ## Recruitment agencies
 
-**Genuinely active in the Singapore market, particularly for specific specialised or senior roles**, worth registering with a reputable agency relevant to your field as one additional channel, though this generally supplements rather than replaces direct applications for most graduate-level roles.
+Genuinely active in the Singapore market, particularly for specific specialised or senior roles, worth registering with a reputable agency relevant to your field as one additional channel, though this generally supplements rather than replaces direct applications for most graduate-level roles.
 
 ## Building a search that covers the real market
 

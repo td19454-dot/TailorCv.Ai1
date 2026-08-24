@@ -31,17 +31,17 @@ showcase: none
 
 ## Preparing properly
 
-**Get the attendee list in advance** and cut it to ten to fifteen employers you would genuinely work for. Walking every aisle collecting merchandise produces nothing.
+Get the attendee list in advance and cut it to ten to fifteen employers you would genuinely work for. Walking every aisle collecting merchandise produces nothing.
 
-**Apply online before the fair** where applications are open. "I applied for your technology scheme last week" is a far stronger opening than "how do I apply?", and most large employers use the fair to meet people already in their system.
+Apply online before the fair where applications are open. "I applied for your technology scheme last week" is a far stronger opening than "how do I apply?", and most large employers use the fair to meet people already in their system.
 
-**Research three specifics per must-speak employer** — a business line, something recent, a scheme structure. This is what makes your [cover letter paragraph](/blog/uk-cover-letter-guide-graduates) and your "why this firm" answer credible later.
+Research three specifics per must-speak employer — a business line, something recent, a scheme structure. This is what makes your [cover letter paragraph](/blog/uk-cover-letter-guide-graduates) and your "why this firm" answer credible later.
 
-**Check who sponsors**, if that applies to you. Whether an employer holds a [sponsor licence](/blog/uk-skilled-worker-visa-for-graduates) is public information and it determines whether they could keep you after the [Graduate route](/blog/uk-graduate-visa-route-explained) expires.
+Check who sponsors, if that applies to you. Whether an employer holds a [sponsor licence](/blog/uk-skilled-worker-visa-for-graduates) is public information and it determines whether they could keep you after the [Graduate route](/blog/uk-graduate-visa-route-explained) expires.
 
-**Print copies of your CV** and expect them to be scanned rather than read — confirm it [parses cleanly](/ats-analysis) first.
+Print copies of your CV and expect them to be scanned rather than read — confirm it [parses cleanly](/ats-analysis) first.
 
-**Prepare a thirty-second opening**: name and course, the scheme you applied to, one concrete thing you have done, one specific question about their work.
+Prepare a thirty-second opening: name and course, the scheme you applied to, one concrete thing you have done, one specific question about their work.
 
 ## On the day
 
@@ -59,15 +59,15 @@ showcase: none
 
 ## The events students skip
 
-**Employer presentations.** Deeper than a fair conversation, attended by far fewer students, and frequently including current graduates who will answer honestly.
+Employer presentations. Deeper than a fair conversation, attended by far fewer students, and frequently including current graduates who will answer honestly.
 
-**Skills sessions and workshops.** Case study practice, [psychometric test](/blog/uk-psychometric-tests-guide) preparation, [assessment centre](/blog/uk-assessment-centre-guide) briefings — run by the employers who use them, which is as close to seeing the marking scheme as you will get.
+Skills sessions and workshops. Case study practice, [psychometric test](/blog/uk-psychometric-tests-guide) preparation, [assessment centre](/blog/uk-assessment-centre-guide) briefings — run by the employers who use them, which is as close to seeing the marking scheme as you will get.
 
-**Insight days and office visits.** Small groups, genuine access.
+Insight days and office visits. Small groups, genuine access.
 
-**Society-hosted employer events.** Your subject or professional society frequently hosts employers directly, with a fraction of the attendance of a main fair.
+Society-hosted employer events. Your subject or professional society frequently hosts employers directly, with a fraction of the attendance of a main fair.
 
-**These are consistently better value than the fair itself**, and consistently less attended, which is the whole argument for going to them.
+These are consistently better value than the fair itself, and consistently less attended, which is the whole argument for going to them.
 
 ## The follow-up
 
@@ -83,9 +83,9 @@ showcase: none
 
 ## Reading the room at each specific stand
 
-**Notice how busy a specific stand is and calibrate your approach accordingly**, a stand with a long queue is not the moment for an extended conversation, a brief, well-prepared opening and a clear ask for a follow-up route is more effective than trying to have a full discussion while others wait.
+Notice how busy a specific stand is and calibrate your approach accordingly, a stand with a long queue is not the moment for an extended conversation, a brief, well-prepared opening and a clear ask for a follow-up route is more effective than trying to have a full discussion while others wait.
 
-**Watch for signals that a recruiter is winding down a conversation, and end it gracefully rather than continuing to talk past the natural close**, recruiters remember candidates who read social cues well, this is itself a small signal about how you would operate in a professional workplace setting.
+Watch for signals that a recruiter is winding down a conversation, and end it gracefully rather than continuing to talk past the natural close, recruiters remember candidates who read social cues well, this is itself a small signal about how you would operate in a professional workplace setting.
 
 ## Common Mistakes
 

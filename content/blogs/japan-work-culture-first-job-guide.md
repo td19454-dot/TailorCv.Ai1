@@ -31,15 +31,15 @@ showcase: none
 
 ## Hierarchy and communication
 
-**Seniority is visible in the language itself.** Japanese has grammatical politeness levels, and using the right register with the right person is basic professional competence rather than optional courtesy. This is the practical reason [business Japanese](/blog/japan-japanese-language-requirements-jobs) is a distinct skill from conversational ability.
+Seniority is visible in the language itself. Japanese has grammatical politeness levels, and using the right register with the right person is basic professional competence rather than optional courtesy. This is the practical reason [business Japanese](/blog/japan-japanese-language-requirements-jobs) is a distinct skill from conversational ability.
 
-**Deference is expected and it is not silence.** Junior staff contribute; the manner differs — proposing rather than asserting, checking rather than announcing.
+Deference is expected and it is not silence. Junior staff contribute; the manner differs — proposing rather than asserting, checking rather than announcing.
 
-**Consensus-building happens before the meeting.** Decisions are frequently discussed informally with the relevant people in advance, so the meeting confirms what has already been agreed. A foreign employee raising a new idea for the first time in a meeting may find it lands poorly — not because the idea is weak but because the process was skipped.
+Consensus-building happens before the meeting. Decisions are frequently discussed informally with the relevant people in advance, so the meeting confirms what has already been agreed. A foreign employee raising a new idea for the first time in a meeting may find it lands poorly — not because the idea is weak but because the process was skipped.
 
-**Which means the informal conversation is where influence happens.** Understanding this early is one of the most useful adjustments a foreign employee can make.
+Which means the informal conversation is where influence happens. Understanding this early is one of the most useful adjustments a foreign employee can make.
 
-**Reporting upward frequently is expected** more than in many Western workplaces. Keeping your supervisor informed of progress, problems and small decisions reads as diligence rather than as needing supervision.
+Reporting upward frequently is expected more than in many Western workplaces. Keeping your supervisor informed of progress, problems and small decisions reads as diligence rather than as needing supervision.
 
 ## Hours and the reality behind the stereotype
 
@@ -55,17 +55,17 @@ showcase: none
 
 ## The first year, realistically
 
-**You will be treated as new.** The cohort model makes your first year explicitly a learning year, with less expectation of immediate contribution than in markets where graduates are hired to do a defined job from week one.
+You will be treated as new. The cohort model makes your first year explicitly a learning year, with less expectation of immediate contribution than in markets where graduates are hired to do a defined job from week one.
 
-**Progression is frequently structured** rather than sharply performance-differentiated in early years at traditional employers, which the [salary structure](/blog/japan-salary-expectations-new-grad) reflects.
+Progression is frequently structured rather than sharply performance-differentiated in early years at traditional employers, which the [salary structure](/blog/japan-salary-expectations-new-grad) reflects.
 
-**Ask questions early.** The same principle that applies in [any first job](/blog/usa-first-90-days-new-grad) — questions in month one are free, the same question in month six is not.
+Ask questions early. The same principle that applies in [any first job](/blog/usa-first-90-days-new-grad) — questions in month one are free, the same question in month six is not.
 
-**Write things down.** Systems, names, conventions, and the informal rules nobody states aloud.
+Write things down. Systems, names, conventions, and the informal rules nobody states aloud.
 
-**Find someone slightly senior to ask.** A colleague a few years ahead who will explain what is actually going on is worth a great deal, and a cohort system usually provides several.
+Find someone slightly senior to ask. A colleague a few years ahead who will explain what is actually going on is worth a great deal, and a cohort system usually provides several.
 
-**Expect the adjustment to be tiring.** Language fatigue, unfamiliar conventions and being junior again are genuinely draining. It passes, and knowing it is coming removes most of the sting.
+Expect the adjustment to be tiring. Language fatigue, unfamiliar conventions and being junior again are genuinely draining. It passes, and knowing it is coming removes most of the sting.
 
 ## For foreign employees specifically
 
@@ -81,9 +81,9 @@ showcase: none
 
 ## Hierarchy and the structure of communication
 
-**Respect for seniority and organisational hierarchy is generally more visibly expressed here than in some flatter workplace cultures elsewhere**, this does not mean junior employees cannot contribute substantively, it affects the manner of contribution, appropriately respectful and measured, even while being genuinely clear and useful.
+Respect for seniority and organisational hierarchy is generally more visibly expressed here than in some flatter workplace cultures elsewhere, this does not mean junior employees cannot contribute substantively, it affects the manner of contribution, appropriately respectful and measured, even while being genuinely clear and useful.
 
-**Consensus-building and group harmony are genuinely valued in decision-making processes**, decisions may take longer to reach than in a more individually-driven system, worth understanding this as a genuine cultural feature rather than inefficiency, and adapting your own expectations around pace accordingly.
+Consensus-building and group harmony are genuinely valued in decision-making processes, decisions may take longer to reach than in a more individually-driven system, worth understanding this as a genuine cultural feature rather than inefficiency, and adapting your own expectations around pace accordingly.
 
 ## Working hours and expectations
 
@@ -93,9 +93,9 @@ showcase: none
 
 ## Building relationships with colleagues
 
-**Informal social occasions genuinely matter for workplace relationship-building here**, worth participating when invited, even if this requires some personal adjustment.
+Informal social occasions genuinely matter for workplace relationship-building here, worth participating when invited, even if this requires some personal adjustment.
 
-**Learning basic workplace etiquette and communication norms specifically, beyond general language ability, meaningfully smooths your integration**, worth actively observing and asking questions respectfully in your first months.
+Learning basic workplace etiquette and communication norms specifically, beyond general language ability, meaningfully smooths your integration, worth actively observing and asking questions respectfully in your first months.
 
 ## Common Mistakes
 
@@ -129,9 +129,9 @@ Varies by individual and specific workplace, expect a genuine adjustment period 
 
 ## What genuinely helps beyond the first few months
 
-**Continue building relationships deliberately well beyond your initial settling-in period**, workplace culture and your own standing within it continue to develop over your first year and beyond, not only in the first weeks.
+Continue building relationships deliberately well beyond your initial settling-in period, workplace culture and your own standing within it continue to develop over your first year and beyond, not only in the first weeks.
 
-**Seek feedback proactively from your manager rather than waiting for a formal review cycle**, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
+Seek feedback proactively from your manager rather than waiting for a formal review cycle, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
 
 ## Frequently Asked Questions
 

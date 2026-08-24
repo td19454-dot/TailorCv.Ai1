@@ -37,15 +37,15 @@ A retirement savings account offered through many US employers, into which you c
 
 Most US employers of size offer a choice between a small number of health plans, and the choice involves a genuine trade-off rather than one obviously correct answer.
 
-**Lower premium, higher out-of-pocket plans.** You pay less from every paycheck and more when you actually use care — a higher deductible before coverage kicks in, and higher costs per visit. These suit people who are generally healthy and want to minimise the certain monthly cost.
+Lower premium, higher out-of-pocket plans. You pay less from every paycheck and more when you actually use care — a higher deductible before coverage kicks in, and higher costs per visit. These suit people who are generally healthy and want to minimise the certain monthly cost.
 
-**Higher premium, lower out-of-pocket plans.** More from every paycheck, less when you use care. These suit people who expect to use healthcare more, have an ongoing condition, or simply prefer predictability over optimising for the average case.
+Higher premium, lower out-of-pocket plans. More from every paycheck, less when you use care. These suit people who expect to use healthcare more, have an ongoing condition, or simply prefer predictability over optimising for the average case.
 
-**A health savings or flexible spending account** is frequently paired with the lower-premium option, letting you set aside pre-tax money for medical costs. These often have specific rules about whether unused funds carry over to the next year, so understand which type you have before assuming flexibility.
+A health savings or flexible spending account is frequently paired with the lower-premium option, letting you set aside pre-tax money for medical costs. These often have specific rules about whether unused funds carry over to the next year, so understand which type you have before assuming flexibility.
 
-**When coverage actually starts matters.** Some employers begin coverage on your first day; others impose a waiting period of a month or more. If there is a gap, you need a plan for it — this is exactly the kind of detail that gets missed in the excitement of a new job and then causes a real problem if something happens during the gap.
+When coverage actually starts matters. Some employers begin coverage on your first day; others impose a waiting period of a month or more. If there is a gap, you need a plan for it — this is exactly the kind of detail that gets missed in the excitement of a new job and then causes a real problem if something happens during the gap.
 
-**How to actually choose.** If you rarely see a doctor and want to minimise monthly cost, the lower-premium option is often sensible. If you have an ongoing health need or simply prefer certainty, the higher-premium option is often worth it. There is rarely a wrong answer, only a mismatch between the plan and your actual situation.
+How to actually choose. If you rarely see a doctor and want to minimise monthly cost, the lower-premium option is often sensible. If you have an ongoing health need or simply prefer certainty, the higher-premium option is often worth it. There is rarely a wrong answer, only a mismatch between the plan and your actual situation.
 
 ## Paid time off, and using it properly
 
@@ -59,13 +59,13 @@ Most US employers of size offer a choice between a small number of health plans,
 
 ## What else is worth checking
 
-**Enrollment windows are usually short.** Many benefits can only be selected during a defined period when you start, and again during an annual open enrollment period later in the year. Missing the initial window can mean defaulting to a basic plan or waiting months for the next chance, so treat the enrollment paperwork as genuinely time-sensitive rather than something to get to eventually.
+Enrollment windows are usually short. Many benefits can only be selected during a defined period when you start, and again during an annual open enrollment period later in the year. Missing the initial window can mean defaulting to a basic plan or waiting months for the next chance, so treat the enrollment paperwork as genuinely time-sensitive rather than something to get to eventually.
 
-**Life and disability insurance** are frequently offered at low or no cost through the employer, and worth understanding even briefly, since they are cheap and easy to overlook entirely.
+Life and disability insurance are frequently offered at low or no cost through the employer, and worth understanding even briefly, since they are cheap and easy to overlook entirely.
 
-**Tuition or professional development support**, where offered, is worth asking about explicitly if further study or certification is part of your plan — it is rarely advertised prominently and often exists.
+Tuition or professional development support, where offered, is worth asking about explicitly if further study or certification is part of your plan — it is rarely advertised prominently and often exists.
 
-**Employee assistance programmes**, offering confidential support for a range of personal and professional issues, exist at many employers and go almost entirely unused by new graduates who do not know they are there.
+Employee assistance programmes, offering confidential support for a range of personal and professional issues, exist at many employers and go almost entirely unused by new graduates who do not know they are there.
 
 ## Why this belongs in your offer comparison
 
@@ -79,19 +79,19 @@ Most US employers of size offer a choice between a small number of health plans,
 
 Concrete tasks, in order, so nothing falls through the enrollment window.
 
-**Read the benefits enrollment email or packet fully**, even though it is long and unglamorous — this is where deadlines and options are stated precisely.
+Read the benefits enrollment email or packet fully, even though it is long and unglamorous — this is where deadlines and options are stated precisely.
 
-**Enroll in the 401(k) immediately** and set your contribution to at least the level that captures the full employer match. Do this in week one rather than "when things settle down" — settling down rarely happens on schedule and missed months of match are gone permanently.
+Enroll in the 401(k) immediately and set your contribution to at least the level that captures the full employer match. Do this in week one rather than "when things settle down" — settling down rarely happens on schedule and missed months of match are gone permanently.
 
-**Choose a health plan deliberately**, based on your actual expected usage rather than defaulting to whichever option is listed first.
+Choose a health plan deliberately, based on your actual expected usage rather than defaulting to whichever option is listed first.
 
-**Note the date your health coverage actually starts**, and if there is a gap from your start date, plan for it.
+Note the date your health coverage actually starts, and if there is a gap from your start date, plan for it.
 
-**Check whether you need to actively elect anything**, since some benefits default to a basic option if you take no action, which is not always what you would have chosen.
+Check whether you need to actively elect anything, since some benefits default to a basic option if you take no action, which is not always what you would have chosen.
 
-**Set a calendar reminder for open enrollment** later in the year, since this is your other chance to adjust choices and it is easy to miss amid a busy autumn.
+Set a calendar reminder for open enrollment later in the year, since this is your other chance to adjust choices and it is easy to miss amid a busy autumn.
 
-**Ask HR directly about anything unclear.** This is precisely what they are there for, and a five-minute question in week one is far better than discovering a gap in coverage or a missed match months later.
+Ask HR directly about anything unclear. This is precisely what they are there for, and a five-minute question in week one is far better than discovering a gap in coverage or a missed match months later.
 
 ## What changes when you leave
 
@@ -115,19 +115,19 @@ Useful to understand before you need it, since a first job is [frequently not a 
 
 Short, specific, and each one prevents a common and avoidable cost.
 
-**"What is the match structure, and what is the vesting schedule?"** The two facts that determine how much of this benefit you actually receive.
+"What is the match structure, and what is the vesting schedule?" The two facts that determine how much of this benefit you actually receive.
 
-**"When does my health coverage begin?"** If there is a gap from your start date, you need to know now rather than when something happens.
+"When does my health coverage begin?" If there is a gap from your start date, you need to know now rather than when something happens.
 
-**"What is the deadline for benefits enrollment, and what happens if I miss it?"** Enrollment windows are short and the default option is not always the right one.
+"What is the deadline for benefits enrollment, and what happens if I miss it?" Enrollment windows are short and the default option is not always the right one.
 
-**"Does paid time off accrue or is it granted upfront, and does it carry over?"** Changes how you should plan the year.
+"Does paid time off accrue or is it granted upfront, and does it carry over?" Changes how you should plan the year.
 
-**"Is there tuition or professional development support?"** Frequently exists, rarely advertised, and worth real money if further study is in your plan.
+"Is there tuition or professional development support?" Frequently exists, rarely advertised, and worth real money if further study is in your plan.
 
-**"Is there an employee assistance programme?"** Confidential support that almost no new graduate knows about.
+"Is there an employee assistance programme?" Confidential support that almost no new graduate knows about.
 
-**"Are there any other benefits I should be aware of?"** An open question that routinely surfaces something — commuter support, equipment allowances, discounts — that was not in the packet.
+"Are there any other benefits I should be aware of?" An open question that routinely surfaces something — commuter support, equipment allowances, discounts — that was not in the packet.
 
 Ten minutes with someone whose job is to answer exactly these questions, and it prevents most of the mistakes on this page.
 
@@ -156,19 +156,19 @@ Ten minutes, week one.
 
 Since benefits are real compensation, here is how to actually put a number on the difference rather than treating it as a vague tiebreaker.
 
-**The match, annualised.** If one employer matches a meaningful percentage of your salary and the other offers nothing, that difference is straightforwardly part of your annual compensation and belongs in the comparison at face value.
+The match, annualised. If one employer matches a meaningful percentage of your salary and the other offers nothing, that difference is straightforwardly part of your annual compensation and belongs in the comparison at face value.
 
-**The vesting schedule.** An employer with an excellent match that vests over several years is offering less than the headline suggests if you expect to move in two — worth weighting accordingly rather than ignoring.
+The vesting schedule. An employer with an excellent match that vests over several years is offering less than the headline suggests if you expect to move in two — worth weighting accordingly rather than ignoring.
 
-**Health premium difference, annualised.** Take the monthly premium for the plan you would actually choose at each employer, multiply by twelve, and compare. This is frequently a larger number than graduates expect.
+Health premium difference, annualised. Take the monthly premium for the plan you would actually choose at each employer, multiply by twelve, and compare. This is frequently a larger number than graduates expect.
 
-**Coverage start date.** A gap of a month or more has a real cost, either in purchased interim cover or in risk carried.
+Coverage start date. A gap of a month or more has a real cost, either in purchased interim cover or in risk carried.
 
-**Time off, valued honestly.** More days is genuinely worth something, though only if the culture actually permits taking them — worth asking about separately.
+Time off, valued honestly. More days is genuinely worth something, though only if the culture actually permits taking them — worth asking about separately.
 
-**Tuition or development support**, if further study is part of your plan, can be worth a substantial amount and is rarely advertised.
+Tuition or development support, if further study is part of your plan, can be worth a substantial amount and is rarely advertised.
 
-**Then add the difference to the salary comparison**, alongside the [cost-of-living adjustment](/blog/usa-relocation-and-cost-of-living-first-job) if the roles are in different cities. The combination of those two exercises frequently reverses which offer looked better on the letter, which is exactly why both are worth the hour they take.
+Then add the difference to the salary comparison, alongside the [cost-of-living adjustment](/blog/usa-relocation-and-cost-of-living-first-job) if the roles are in different cities. The combination of those two exercises frequently reverses which offer looked better on the letter, which is exactly why both are worth the hour they take.
 
 ### What if my employer offers no retirement plan at all?
 

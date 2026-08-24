@@ -31,19 +31,19 @@ showcase: resume
 
 ## What the form contains
 
-**Personal details.** Name, date of birth, address, contact details. Furigana readings are typically required alongside names.
+Personal details. Name, date of birth, address, contact details. Furigana readings are typically required alongside names.
 
-**A photograph.** Conventionally expected, in a specific size, taken in business attire against a plain background. Photo booths producing compliant images are common in Japan. This is a genuine convention rather than an optional flourish.
+A photograph. Conventionally expected, in a specific size, taken in business attire against a plain background. Photo booths producing compliant images are common in Japan. This is a genuine convention rather than an optional flourish.
 
-**Education history.** Listed chronologically, typically from a defined point in your schooling onward, with entry and graduation entries.
+Education history. Listed chronologically, typically from a defined point in your schooling onward, with entry and graduation entries.
 
-**Employment history.** Chronological, with entry and departure entries for each employer.
+Employment history. Chronological, with entry and departure entries for each employer.
 
-**Licences and qualifications.** Listed with dates obtained. Language qualifications such as [JLPT levels](/blog/japan-jlpt-n2-n1-for-employment) belong here and matter considerably for foreign applicants.
+Licences and qualifications. Listed with dates obtained. Language qualifications such as [JLPT levels](/blog/japan-jlpt-n2-n1-for-employment) belong here and matter considerably for foreign applicants.
 
-**Motivation for applying.** A free-text section, and the main place where you can actually differentiate yourself on the form itself.
+Motivation for applying. A free-text section, and the main place where you can actually differentiate yourself on the form itself.
 
-**Personal requests or notes.** Conventionally used for preferences about location or conditions, and frequently left with a standard phrase indicating you defer to the company.
+Personal requests or notes. Conventionally used for preferences about location or conditions, and frequently left with a standard phrase indicating you defer to the company.
 
 ## The conventions that matter
 
@@ -63,17 +63,17 @@ showcase: resume
 
 ## For foreign applicants specifically
 
-**Submit a rirekisho, not a Western resume**, when applying to Japanese companies through Japanese channels. Submitting the wrong document type is the clearest possible signal that you have not researched the market.
+Submit a rirekisho, not a Western resume, when applying to Japanese companies through Japanese channels. Submitting the wrong document type is the clearest possible signal that you have not researched the market.
 
-**Foreign-affiliated companies frequently accept Western formats**, and some prefer them. Check what the specific employer expects — the [English-conducted job market](/blog/japan-english-speaking-jobs-guide) generally follows different conventions.
+Foreign-affiliated companies frequently accept Western formats, and some prefer them. Check what the specific employer expects — the [English-conducted job market](/blog/japan-english-speaking-jobs-guide) generally follows different conventions.
 
-**Your language qualification belongs prominently in the qualifications section.** For foreign applicants it is frequently the single most consequential line on the form.
+Your language qualification belongs prominently in the qualifications section. For foreign applicants it is frequently the single most consequential line on the form.
 
-**Get a native speaker to check it** if you are writing in Japanese. Set phrases and formal register are conventional and errors are conspicuous.
+Get a native speaker to check it if you are writing in Japanese. Set phrases and formal register are conventional and errors are conspicuous.
 
-**Explain overseas education clearly.** Institution names unfamiliar to a Japanese reader benefit from a brief clarification of what the qualification is equivalent to.
+Explain overseas education clearly. Institution names unfamiliar to a Japanese reader benefit from a brief clarification of what the qualification is equivalent to.
 
-**Keep a master copy.** You will complete this repeatedly, and having your dates, readings and standard phrasings settled once saves considerable time.
+Keep a master copy. You will complete this repeatedly, and having your dates, readings and standard phrasings settled once saves considerable time.
 
 ## Filling out each specific section properly
 
@@ -87,9 +87,9 @@ showcase: resume
 
 ## Handwritten versus digital versions
 
-**Some employers and situations still expect a handwritten version of this document**, reflecting a traditional convention around this specific document type, while digital submission has become more common and accepted at many employers, worth checking the specific expectation for each application rather than assuming one format is universally acceptable.
+Some employers and situations still expect a handwritten version of this document, reflecting a traditional convention around this specific document type, while digital submission has become more common and accepted at many employers, worth checking the specific expectation for each application rather than assuming one format is universally acceptable.
 
-**If a handwritten version is expected, take genuine care with the presentation**, this document's neatness and care are themselves considered part of what is being assessed, not merely the content.
+If a handwritten version is expected, take genuine care with the presentation, this document's neatness and care are themselves considered part of what is being assessed, not merely the content.
 
 ## Common formatting pitfalls specific to this document
 
@@ -101,11 +101,11 @@ showcase: resume
 
 ## A final review before submitting
 
-**Read through the entire completed document once more specifically checking for consistency**, dates that align correctly across sections, information that matches what you present elsewhere in your application, and no contradictions between this document and any accompanying materials.
+Read through the entire completed document once more specifically checking for consistency, dates that align correctly across sections, information that matches what you present elsewhere in your application, and no contradictions between this document and any accompanying materials.
 
-**Have someone genuinely familiar with the local convention review it if possible**, a career centre advisor, a mentor, or a friend experienced with this specific process, a second set of eyes familiar with the format catches issues you may not notice in your own document after extended work on it.
+Have someone genuinely familiar with the local convention review it if possible, a career centre advisor, a mentor, or a friend experienced with this specific process, a second set of eyes familiar with the format catches issues you may not notice in your own document after extended work on it.
 
-**Keep a copy of exactly what you submitted for each specific application**, useful for your own reference during subsequent interview stages when you may be asked about details from the document itself.
+Keep a copy of exactly what you submitted for each specific application, useful for your own reference during subsequent interview stages when you may be asked about details from the document itself.
 
 ## Common Mistakes
 

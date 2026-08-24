@@ -33,17 +33,17 @@ showcase: none
 
 ## The acceptance process
 
-**A period of holding multiple offers is normal.** Candidates progress through several companies simultaneously and may receive more than one informal offer.
+A period of holding multiple offers is normal. Candidates progress through several companies simultaneously and may receive more than one informal offer.
 
-**Companies apply pressure to commit.** Once an offer is issued, companies frequently want confirmation, and some run events and communications specifically to keep successful candidates engaged and discourage them from continuing to search.
+Companies apply pressure to commit. Once an offer is issued, companies frequently want confirmation, and some run events and communications specifically to keep successful candidates engaged and discourage them from continuing to search.
 
 **A formal acceptance ceremony — 内定式 (*naitei-shiki*)** — traditionally takes place in the autumn (commonly October 1st), marking your commitment. Attending is generally understood as accepting, which is why the date matters practically: it's often treated as the real deadline for making up your mind, well before any written contract follows.
 
 **Rescission does happen, rarely — 内定取消 (*naitei torikeshi*).** Companies can and occasionally do withdraw an informal offer, typically citing serious cause (company financial distress, a candidate failing to graduate, or misconduct discovered after the offer). It's uncommon enough to be newsworthy when it happens at scale, and Japanese courts have in some cases found an unjustified rescission to constitute a breach of an implied employment contract — worth knowing the term exists so you recognize it if a company ever raises the possibility, rather than assuming it's an empty threat with no real precedent either way.
 
-**After acceptance, the expectation is that your search ends.** Continuing to [interview](/blog/japan-mensetsu-interview-questions-guide) elsewhere after accepting is viewed considerably more negatively than in markets where candidates routinely keep options open.
+After acceptance, the expectation is that your search ends. Continuing to [interview](/blog/japan-mensetsu-interview-questions-guide) elsewhere after accepting is viewed considerably more negatively than in markets where candidates routinely keep options open.
 
-**Pre-employment contact continues.** Companies typically maintain contact through the months before April with events, correspondence and sometimes training, which is part of building the cohort relationship.
+Pre-employment contact continues. Companies typically maintain contact through the months before April with events, correspondence and sometimes training, which is part of building the cohort relationship.
 
 ## Declining, and what it costs
 
@@ -61,15 +61,15 @@ showcase: none
 
 ## For foreign candidates specifically
 
-**Understand the commitment before accepting.** The social weight is heavier than the legal status suggests, and this is exactly the kind of convention that is invisible unless someone explains it.
+Understand the commitment before accepting. The social weight is heavier than the legal status suggests, and this is exactly the kind of convention that is invisible unless someone explains it.
 
-**Your visa depends on it.** The [work visa application](/blog/japan-work-visa-for-graduates) follows from having an offer, and the timeline runs from your acceptance toward an April start. Changing employers late complicates this materially.
+Your visa depends on it. The [work visa application](/blog/japan-work-visa-for-graduates) follows from having an offer, and the timeline runs from your acceptance toward an April start. Changing employers late complicates this materially.
 
-**The gap before starting is long.** Months between acceptance and beginning work, during which you may still be studying. Plan the practical logistics — status change, accommodation, relocation — well ahead rather than in the final weeks.
+The gap before starting is long. Months between acceptance and beginning work, during which you may still be studying. Plan the practical logistics — status change, accommodation, relocation — well ahead rather than in the final weeks.
 
-**Ask about pre-employment expectations.** Some companies run training, events or correspondence during the gap, and knowing what is expected of you avoids appearing disengaged.
+Ask about pre-employment expectations. Some companies run training, events or correspondence during the gap, and knowing what is expected of you avoids appearing disengaged.
 
-**If you are also considering other countries**, resolve that before accepting rather than after. Holding a Japanese informal offer while continuing to pursue opportunities elsewhere sits badly with the convention.
+If you are also considering other countries, resolve that before accepting rather than after. Holding a Japanese informal offer while continuing to pursue opportunities elsewhere sits badly with the convention.
 
 ## Why this stage carries such real weight
 
@@ -79,15 +79,15 @@ showcase: none
 
 ## What happens between the informal and formal offer
 
-**A period generally exists between this informal offer and the eventual formal, official start of employment**, during which some employers maintain periodic contact or organise informal events with the incoming cohort, understand what your specific employer expects during this period.
+A period generally exists between this informal offer and the eventual formal, official start of employment, during which some employers maintain periodic contact or organise informal events with the incoming cohort, understand what your specific employer expects during this period.
 
-**If your circumstances genuinely change during this period**, a serious personal or academic issue, for instance, communicate honestly and promptly with the employer rather than simply disappearing, this is understood to happen occasionally and is handled far better through honest communication than through silence.
+If your circumstances genuinely change during this period, a serious personal or academic issue, for instance, communicate honestly and promptly with the employer rather than simply disappearing, this is understood to happen occasionally and is handled far better through honest communication than through silence.
 
 ## Deciding before you are actually offered
 
 **Think through in advance what would make you comfortable accepting an informal offer from a specific company**, rather than deciding in the moment under the genuine social pressure this stage can carry, having clarity beforehand about your own priorities makes the actual decision considerably easier when it arrives.
 
-**If you are genuinely still deciding between multiple companies at this stage, communicate honestly about your timeline where possible, rather than accepting prematurely simply to end the uncertainty.**
+**If you are genuinely still deciding between multiple companies at this stage**, communicate honestly about your timeline where possible, rather than accepting prematurely simply to end the uncertainty.
 
 ## Common Mistakes
 
@@ -115,9 +115,9 @@ Communicate honestly and promptly with the employer rather than going silent, th
 Generally at a later point closer to the actual start of employment, understand your specific employer's own timeline and any expectations during the intervening period.
 ## Understanding what happens between acceptance and your actual start
 
-**Some companies organise periodic events or maintain contact with their incoming cohort during the period between this informal offer and the actual formal start of employment**, understand what your specific employer expects and plans during this period, since expectations genuinely vary by company.
+Some companies organise periodic events or maintain contact with their incoming cohort during the period between this informal offer and the actual formal start of employment, understand what your specific employer expects and plans during this period, since expectations genuinely vary by company.
 
-**Use this period productively**, continuing any relevant language study, completing your studies properly, and in some cases beginning informal preparation the company suggests, rather than treating it as entirely disconnected from your eventual start.
+Use this period productively, continuing any relevant language study, completing your studies properly, and in some cases beginning informal preparation the company suggests, rather than treating it as entirely disconnected from your eventual start.
 
 ## Frequently Asked Questions
 

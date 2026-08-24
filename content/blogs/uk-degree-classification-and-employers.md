@@ -29,11 +29,11 @@ showcase: none
 
 ## The trend away from rigid filters
 
-**A substantial and ongoing shift across UK graduate recruitment** has moved away from a hard classification threshold and toward contextual recruitment, skills-based assessment, and looking at academic performance relative to circumstance rather than as an absolute cutoff.
+A substantial and ongoing shift across UK graduate recruitment has moved away from a hard classification threshold and toward contextual recruitment, skills-based assessment, and looking at academic performance relative to circumstance rather than as an absolute cutoff.
 
-**Contextual data** is increasingly used at some employers, considering the school you attended, whether you were the first in your family to attend university, and other circumstances alongside your results, rather than the classification in isolation.
+Contextual data is increasingly used at some employers, considering the school you attended, whether you were the first in your family to attend university, and other circumstances alongside your results, rather than the classification in isolation.
 
-**Many employers have publicly dropped a fixed classification requirement** in recent years, in favour of assessing the whole application. This does not mean classification is irrelevant everywhere, it means the picture is more varied than a single blanket rule suggests, and it is genuinely worth checking a specific employer's current stated policy rather than assuming.
+Many employers have publicly dropped a fixed classification requirement in recent years, in favour of assessing the whole application. This does not mean classification is irrelevant everywhere, it means the picture is more varied than a single blanket rule suggests, and it is genuinely worth checking a specific employer's current stated policy rather than assuming.
 
 ## What to do if your classification is not strong
 
@@ -49,9 +49,9 @@ showcase: none
 
 ## What actually decides the interview, once you are past the screen
 
-**Once you have cleared any classification filter, the classification itself rarely comes up again.** What decides the outcome from that point is the same as for every other candidate: evidence in your [CV](/blog/uk-cv-format-for-students), a genuine answer to why this employer, and how you perform in [competency questions](/blog/uk-competency-questions-guide) and any [assessment centre](/blog/uk-assessment-centre-guide) exercises.
+Once you have cleared any classification filter, the classification itself rarely comes up again. What decides the outcome from that point is the same as for every other candidate: evidence in your [CV](/blog/uk-cv-format-for-students), a genuine answer to why this employer, and how you perform in [competency questions](/blog/uk-competency-questions-guide) and any [assessment centre](/blog/uk-assessment-centre-guide) exercises.
 
-**This is worth internalising early.** Spending a final year purely trying to lift a classification by a fraction, at the cost of the evidence and preparation that actually decides an interview, is frequently the wrong allocation of effort for a student who is realistically not going to move up a full class.
+This is worth internalising early. Spending a final year purely trying to lift a classification by a fraction, at the cost of the evidence and preparation that actually decides an interview, is frequently the wrong allocation of effort for a student who is realistically not going to move up a full class.
 
 ## Communicating your classification confidently regardless of the outcome
 
@@ -70,9 +70,9 @@ showcase: none
 
 ## Understanding how classification interacts with other academic factors
 
-**Some employers consider your overall academic trajectory, including whether your performance improved over your degree, alongside the final headline classification itself**, worth mentioning a genuine upward trend if directly relevant and asked about, rather than assuming only the final number matters.
+Some employers consider your overall academic trajectory, including whether your performance improved over your degree, alongside the final headline classification itself, worth mentioning a genuine upward trend if directly relevant and asked about, rather than assuming only the final number matters.
 
-**Specific module performance directly relevant to a target role can sometimes be worth highlighting separately, particularly where your overall classification does not fully reflect strength in that specific area**, a strong result in a directly relevant module is a genuine, specific data point an employer can weigh alongside your overall classification.
+Specific module performance directly relevant to a target role can sometimes be worth highlighting separately, particularly where your overall classification does not fully reflect strength in that specific area, a strong result in a directly relevant module is a genuine, specific data point an employer can weigh alongside your overall classification.
 
 ## Frequently Asked Questions
 

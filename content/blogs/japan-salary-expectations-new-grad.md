@@ -31,13 +31,13 @@ showcase: none
 
 ## Standardisation and negotiation
 
-**Entry salaries are frequently uniform across the cohort.** In the [conventional graduate system](/blog/japan-new-grad-shinsotsu-hiring-explained), everyone entering in the same year at the same company on the same track frequently receives the same starting salary, regardless of university, degree subject or [interview](/blog/japan-mensetsu-interview-questions-guide) performance.
+Entry salaries are frequently uniform across the cohort. In the [conventional graduate system](/blog/japan-new-grad-shinsotsu-hiring-explained), everyone entering in the same year at the same company on the same track frequently receives the same starting salary, regardless of university, degree subject or [interview](/blog/japan-mensetsu-interview-questions-guide) performance.
 
-**Which makes negotiation largely absent at graduate entry.** This is a genuine structural difference from markets where [asking about the signing bonus or start date is routine](/blog/usa-offer-negotiation-new-grad). Attempting to negotiate a standardised graduate salary at a traditional Japanese employer reads as unfamiliarity with the system rather than as assertiveness.
+Which makes negotiation largely absent at graduate entry. This is a genuine structural difference from markets where [asking about the signing bonus or start date is routine](/blog/usa-offer-negotiation-new-grad). Attempting to negotiate a standardised graduate salary at a traditional Japanese employer reads as unfamiliarity with the system rather than as assertiveness.
 
-**Where negotiation does exist.** Foreign-affiliated companies frequently follow their home market's conventions. Specialist and technical roles hired outside the graduate cycle are more negotiable. Mid-career hiring is negotiated normally.
+Where negotiation does exist. Foreign-affiliated companies frequently follow their home market's conventions. Specialist and technical roles hired outside the graduate cycle are more negotiable. Mid-career hiring is negotiated normally.
 
-**Degree level affects the band.** Master's graduates typically start on a different, higher band than bachelor's graduates, and this is usually a published structural difference rather than an individual negotiation.
+Degree level affects the band. Master's graduates typically start on a different, higher band than bachelor's graduates, and this is usually a published structural difference rather than an individual negotiation.
 
 ## What varies between employers
 
@@ -53,13 +53,13 @@ showcase: none
 
 ## Progression
 
-**Early-career progression is frequently structured** rather than sharply performance-differentiated, particularly at traditional employers operating a long-term employment model. Increases follow a schedule influenced by tenure as much as by individual results in the first years.
+Early-career progression is frequently structured rather than sharply performance-differentiated, particularly at traditional employers operating a long-term employment model. Increases follow a schedule influenced by tenure as much as by individual results in the first years.
 
-**This is changing** at many companies, with more performance-linked structures becoming common, and the pace of change varies enormously by employer.
+This is changing at many companies, with more performance-linked structures becoming common, and the pace of change varies enormously by employer.
 
-**Which affects how you should weigh a first offer.** At a traditional employer, the starting salary tells you less about your trajectory than the company's overall structure and the [career path](/blog/japan-work-culture-first-job-guide) does. At a foreign-affiliated or technology employer, the conventions are closer to what you may be used to.
+Which affects how you should weigh a first offer. At a traditional employer, the starting salary tells you less about your trajectory than the company's overall structure and the [career path](/blog/japan-work-culture-first-job-guide) does. At a foreign-affiliated or technology employer, the conventions are closer to what you may be used to.
 
-**For foreign employees**, worth asking how progression works in practice and whether it differs for non-Japanese staff, which is a fair question and one where the answer varies.
+For foreign employees, worth asking how progression works in practice and whether it differs for non-Japanese staff, which is a fair question and one where the answer varies.
 
 ## For foreign candidates
 
@@ -77,11 +77,11 @@ showcase: none
 
 ## Understanding the total compensation structure
 
-**Base monthly salary is generally quoted as the headline figure**, and total annual compensation typically includes additional bonus payments, often twice yearly, tied to company and sometimes individual performance, comparing offers on the monthly base figure alone can meaningfully understate the actual total, similar to the [importance of understanding total compensation structure in other markets](/blog/china-graduate-salary-expectations).
+Base monthly salary is generally quoted as the headline figure, and total annual compensation typically includes additional bonus payments, often twice yearly, tied to company and sometimes individual performance, comparing offers on the monthly base figure alone can meaningfully understate the actual total, similar to the [importance of understanding total compensation structure in other markets](/blog/china-graduate-salary-expectations).
 
-**Ask specifically what a typical total annual bonus actually was for someone at your level in a recent year**, rather than relying solely on a stated base figure.
+Ask specifically what a typical total annual bonus actually was for someone at your level in a recent year, rather than relying solely on a stated base figure.
 
-**Housing and commuting allowances are common at many employers**, and can represent a genuinely meaningful portion of total real compensation, particularly given the cost of housing in major cities, worth understanding what a specific offer actually includes beyond the base salary figure.
+Housing and commuting allowances are common at many employers, and can represent a genuinely meaningful portion of total real compensation, particularly given the cost of housing in major cities, worth understanding what a specific offer actually includes beyond the base salary figure.
 
 ## City and cost of living
 
@@ -91,9 +91,9 @@ showcase: none
 
 ## Comparing offers properly across employer types
 
-**A traditional large employer's offer often looks different in structure from an international company's or a startup's offer, comparing them requires understanding the full package in each case, not just the base monthly figure**, exactly [the same total-compensation discipline that applies to comparing any two structurally different offers](/blog/usa-offer-negotiation-new-grad).
+A traditional large employer's offer often looks different in structure from an international company's or a startup's offer, comparing them requires understanding the full package in each case, not just the base monthly figure, exactly [the same total-compensation discipline that applies to comparing any two structurally different offers](/blog/usa-offer-negotiation-new-grad).
 
-**Ask specifically about the realistic timeline for salary progression at each employer you are considering**, rather than assuming similar trajectories across genuinely different employment structures.
+Ask specifically about the realistic timeline for salary progression at each employer you are considering, rather than assuming similar trajectories across genuinely different employment structures.
 
 ## Common Mistakes
 

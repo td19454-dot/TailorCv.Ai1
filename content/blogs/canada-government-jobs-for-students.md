@@ -33,11 +33,11 @@ showcase: none
 
 ## The selection process
 
-**Applications for structured programs and specific postings generally follow a formal, published process**, with defined eligibility criteria and assessment stages, worth reading the specific requirements for a posting carefully before applying, since government hiring is generally more criteria-driven than much of the private sector.
+Applications for structured programs and specific postings generally follow a formal, published process, with defined eligibility criteria and assessment stages, worth reading the specific requirements for a posting carefully before applying, since government hiring is generally more criteria-driven than much of the private sector.
 
-**Written assessments and structured interviews are common**, sometimes assessed against a defined competency framework, similar to the [structured, criteria-driven interviewing seen in other public sector contexts](/blog/canada-new-grad-interview-preparation), preparing genuine, specific examples mapped to any published criteria is worth doing deliberately. Where a competency is listed by name in a posting — "judgement," "communication," "results orientation," and similar — preparing one concrete, specific example you can speak to for each named competency in advance is considerably more effective than improvising a response to a competency-based question in the moment.
+Written assessments and structured interviews are common, sometimes assessed against a defined competency framework, similar to the [structured, criteria-driven interviewing seen in other public sector contexts](/blog/canada-new-grad-interview-preparation), preparing genuine, specific examples mapped to any published criteria is worth doing deliberately. Where a competency is listed by name in a posting — "judgement," "communication," "results orientation," and similar — preparing one concrete, specific example you can speak to for each named competency in advance is considerably more effective than improvising a response to a competency-based question in the moment.
 
-**Timelines are often longer than private-sector processes**, worth factoring this into your broader job search planning rather than assuming a government process will move as quickly as a private-sector one — running a government application in parallel with private-sector applications, rather than waiting to hear back before starting others, is the practical way to avoid a long silent period with nothing else in motion.
+Timelines are often longer than private-sector processes, worth factoring this into your broader job search planning rather than assuming a government process will move as quickly as a private-sector one — running a government application in parallel with private-sector applications, rather than waiting to hear back before starting others, is the practical way to avoid a long silent period with nothing else in motion.
 
 ## Citizenship and eligibility
 
@@ -49,13 +49,13 @@ showcase: none
 
 ## Where the less contested opportunities are
 
-**Structured flagship programs at the most visible level of government attract significant application volume**, similar to [the pattern seen at the most recognisable employer in any sector](/blog/singapore-public-sector-graduate-jobs), a small number of prestigious, well-known programs draw disproportionate attention.
+Structured flagship programs at the most visible level of government attract significant application volume, similar to [the pattern seen at the most recognisable employer in any sector](/blog/singapore-public-sector-graduate-jobs), a small number of prestigious, well-known programs draw disproportionate attention.
 
-**General postings, at both federal and provincial level, for specific technical, analytical and program delivery roles are considerably less contested relative to genuine opportunity quality**, worth searching these directly rather than applying only to the most visible structured programs.
+General postings, at both federal and provincial level, for specific technical, analytical and program delivery roles are considerably less contested relative to genuine opportunity quality, worth searching these directly rather than applying only to the most visible structured programs.
 
-**Provincial and municipal government positions**, often less visible nationally than federal ones, offer a genuine and often less competitive route into public sector work. Each province runs its own equivalent portal and classification system — Ontario Public Service's careers site, BC Public Service's, and so on — worth searching directly rather than assuming provincial jobs are aggregated somewhere alongside federal ones; they generally aren't, and treating a provincial search as a separate exercise from a federal one is what actually surfaces this opportunity.
+Provincial and municipal government positions, often less visible nationally than federal ones, offer a genuine and often less competitive route into public sector work. Each province runs its own equivalent portal and classification system — Ontario Public Service's careers site, BC Public Service's, and so on — worth searching directly rather than assuming provincial jobs are aggregated somewhere alongside federal ones; they generally aren't, and treating a provincial search as a separate exercise from a federal one is what actually surfaces this opportunity.
 
-**Crown corporations** — CBC/Radio-Canada, Canada Post, VIA Rail, the Bank of Canada, Canada Mortgage and Housing Corporation (CMHC) — operate with real independence from direct government structure while remaining publicly owned, hire on their own timelines separate from the FSWEP/PSR cycles, and are a genuinely substantial, often-overlooked category worth searching directly on their individual careers pages rather than only through jobs.gc.ca.
+Crown corporations — CBC/Radio-Canada, Canada Post, VIA Rail, the Bank of Canada, Canada Mortgage and Housing Corporation (CMHC) — operate with real independence from direct government structure while remaining publicly owned, hire on their own timelines separate from the FSWEP/PSR cycles, and are a genuinely substantial, often-overlooked category worth searching directly on their individual careers pages rather than only through jobs.gc.ca.
 
 ## What the work is actually like
 

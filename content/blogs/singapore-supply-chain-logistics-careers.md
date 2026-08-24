@@ -27,17 +27,17 @@ showcase: none
 
 ## The range of roles beyond physical logistics
 
-**This is worth understanding clearly, since students often assume supply chain work means warehouse and physical operations roles alone, when the actual range is considerably broader.**
+This is worth understanding clearly, since students often assume supply chain work means warehouse and physical operations roles alone, when the actual range is considerably broader.
 
-**Supply chain planning and analytics**, forecasting demand, optimising inventory, and increasingly applying genuine data science and analytical methods to logistics problems, similar in spirit to [analytical roles seen across other sectors](/blog/usa-data-science-new-grad-hiring), real technical work with genuine business impact.
+Supply chain planning and analytics, forecasting demand, optimising inventory, and increasingly applying genuine data science and analytical methods to logistics problems, similar in spirit to [analytical roles seen across other sectors](/blog/usa-data-science-new-grad-hiring), real technical work with genuine business impact.
 
-**Procurement and sourcing**, managing supplier relationships and negotiating contracts across complex, often genuinely international supply networks.
+Procurement and sourcing, managing supplier relationships and negotiating contracts across complex, often genuinely international supply networks.
 
-**Trade and logistics technology**, building and implementing the systems that coordinate shipping, tracking and warehouse management at scale.
+Trade and logistics technology, building and implementing the systems that coordinate shipping, tracking and warehouse management at scale.
 
-**Regional operations and coordination roles**, managing supply chains that genuinely span multiple Southeast Asian and broader Asian markets from a Singapore base, offering real regional exposure early in a career.
+Regional operations and coordination roles, managing supply chains that genuinely span multiple Southeast Asian and broader Asian markets from a Singapore base, offering real regional exposure early in a career.
 
-**Trade finance and risk**, at banks and specialist financial institutions, supporting the financial side of global trade flows.
+Trade finance and risk, at banks and specialist financial institutions, supporting the financial side of global trade flows.
 
 ## Where the graduate opportunities are
 
@@ -53,9 +53,9 @@ showcase: none
 
 ## Why this stays underexplored
 
-**Student attention concentrates heavily on finance, consulting and technology**, exactly the [pattern that repeats across graduate markets everywhere](/blog/singapore-public-sector-graduate-jobs), sectors with the strongest brand recognition among peers attract disproportionate application volume relative to their actual size or the quality of work available.
+Student attention concentrates heavily on finance, consulting and technology, exactly the [pattern that repeats across graduate markets everywhere](/blog/singapore-public-sector-graduate-jobs), sectors with the strongest brand recognition among peers attract disproportionate application volume relative to their actual size or the quality of work available.
 
-**Which means the applicant-to-seat ratio in supply chain and logistics is considerably more favourable than in the most visible sectors**, despite comparable or in some cases superior genuine substance and regional exposure in the work itself.
+Which means the applicant-to-seat ratio in supply chain and logistics is considerably more favourable than in the most visible sectors, despite comparable or in some cases superior genuine substance and regional exposure in the work itself.
 
 ## Applying well
 

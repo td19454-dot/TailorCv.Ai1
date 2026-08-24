@@ -29,21 +29,21 @@ showcase: none
 
 ## What the points assessment rewards
 
-**Academic qualifications.** Higher degrees score more, and a master's or doctorate is a meaningful advantage.
+Academic qualifications. Higher degrees score more, and a master's or doctorate is a meaningful advantage.
 
-**Professional career.** Years of relevant experience.
+Professional career. Years of relevant experience.
 
-**Annual salary.** Higher compensation scores more, and it interacts with age — the same salary is worth more at a younger age.
+Annual salary. Higher compensation scores more, and it interacts with age — the same salary is worth more at a younger age.
 
-**Age.** Younger applicants score better, which can favour people who move to Japan early in a career.
+Age. Younger applicants score better, which can favour people who move to Japan early in a career.
 
-**Japanese language ability.** Certified proficiency contributes points, which is one of several reasons the [JLPT levels](/blog/japan-jlpt-n2-n1-for-employment) matter beyond simply getting hired.
+Japanese language ability. Certified proficiency contributes points, which is one of several reasons the [JLPT levels](/blog/japan-jlpt-n2-n1-for-employment) matter beyond simply getting hired.
 
-**Research achievements** where applicable — publications, patents, grants.
+Research achievements where applicable — publications, patents, grants.
 
-**Graduation from a Japanese university** carries additional points, a genuine advantage for international students who studied there.
+Graduation from a Japanese university carries additional points, a genuine advantage for international students who studied there.
 
-**The practical read:** if permanent residence is a long-term goal, the things that improve your position are largely the things that improve your career anyway — a higher qualification, better language ability, a stronger salary.
+The practical read: if permanent residence is a long-term goal, the things that improve your position are largely the things that improve your career anyway — a higher qualification, better language ability, a stronger salary.
 
 ## What is actually assessed
 
@@ -63,11 +63,11 @@ showcase: none
 
 ## Permanent residence versus naturalisation
 
-**Permanent residence** allows you to live and work in Japan indefinitely without status renewal and without restriction on the type of work, while retaining your existing nationality.
+Permanent residence allows you to live and work in Japan indefinitely without status renewal and without restriction on the type of work, while retaining your existing nationality.
 
-**Naturalisation** means acquiring Japanese citizenship — a separate process, handled by a different authority, with different requirements. Japan does not generally permit dual nationality for adults, which is a significant consideration.
+Naturalisation means acquiring Japanese citizenship — a separate process, handled by a different authority, with different requirements. Japan does not generally permit dual nationality for adults, which is a significant consideration.
 
-**Most foreign workers pursue permanent residence**, since it provides the practical freedoms without the nationality question.
+Most foreign workers pursue permanent residence, since it provides the practical freedoms without the nationality question.
 
 ## Planning around it
 
@@ -83,11 +83,11 @@ showcase: none
 
 ## What genuinely strengthens an application over time
 
-**A stable employment history, ideally with demonstrated career progression at a genuine, established employer, reflects positively**, similar to [the same holistic assessment approach used in other countries' longer-term residency systems](/blog/singapore-permanent-residency-for-graduates), this is one reason choosing a stable employer thoughtfully at the outset has consequences beyond the immediate job itself.
+A stable employment history, ideally with demonstrated career progression at a genuine, established employer, reflects positively, similar to [the same holistic assessment approach used in other countries' longer-term residency systems](/blog/singapore-permanent-residency-for-graduates), this is one reason choosing a stable employer thoughtfully at the outset has consequences beyond the immediate job itself.
 
-**Continuous, genuine residence over a meaningful period is generally a real requirement**, though the specific length can vary depending on your particular category and circumstances, worth verifying current specific criteria directly rather than relying on a general assumption.
+Continuous, genuine residence over a meaningful period is generally a real requirement, though the specific length can vary depending on your particular category and circumstances, worth verifying current specific criteria directly rather than relying on a general assumption.
 
-**Japanese language ability, and genuine integration into the local community and workplace, are recognised factors within a holistic assessment.**
+Japanese language ability, and genuine integration into the local community and workplace, are recognised factors within a holistic assessment.
 
 ## Practical steps to build toward this over time
 
@@ -123,13 +123,13 @@ Language ability and genuine community integration are recognised factors, thoug
 The relevant Japanese immigration authority publishes current official guidance, worth checking directly rather than relying on general or outdated summaries.
 ## Understanding this as a genuine long-term project
 
-**Treat this as a multi-year undertaking from early in your career, factoring genuine employer and career stability into decisions from your first job**, rather than a decision to consider only after several years have already passed, this is the same [long-term planning discipline that matters for permanent status in any country](/blog/canada-express-entry-for-new-grads).
+Treat this as a multi-year undertaking from early in your career, factoring genuine employer and career stability into decisions from your first job, rather than a decision to consider only after several years have already passed, this is the same [long-term planning discipline that matters for permanent status in any country](/blog/canada-express-entry-for-new-grads).
 
-**Reassess your own position periodically against current published criteria, rather than assuming your understanding from several years ago remains accurate**, since this is genuinely the kind of policy area reviewed and adjusted over time.
+Reassess your own position periodically against current published criteria, rather than assuming your understanding from several years ago remains accurate, since this is genuinely the kind of policy area reviewed and adjusted over time.
 
 ## What to do while you wait to become eligible
 
-**Use the years before you are eligible to apply deliberately, building the strongest possible profile across employment stability, language ability and community integration, rather than treating this as passive waiting time.**
+**Use the years before you are eligible to apply deliberately**, building the strongest possible profile across employment stability, language ability and community integration, rather than treating this as passive waiting time.
 
 **Periodically review current official eligibility criteria, since this is genuinely the kind of policy area that is reviewed and can change**, an assumption formed several years ago may no longer accurately reflect current requirements by the time you are actually ready to apply.
 

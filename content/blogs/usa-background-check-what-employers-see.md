@@ -41,15 +41,15 @@ showcase: none
 
 This is the part new graduates misunderstand, and it is the single most consequential point on the page.
 
-**A verification service compares what you said against what the record says.** It does not evaluate whether you are a good person. Its output is a list of matches and mismatches.
+A verification service compares what you said against what the record says. It does not evaluate whether you are a good person. Its output is a list of matches and mismatches.
 
-**A mismatch triggers a review.** Not automatically a rejection, and it moves your file from routine to examined, and it invites a question you would rather not have been asked.
+A mismatch triggers a review. Not automatically a rejection, and it moves your file from routine to examined, and it invites a question you would rather not have been asked.
 
-**The common mismatches are all avoidable.** A GPA rounded upward. Employment dates stretched by a couple of months to close a gap. A degree described as completed when a final requirement is outstanding. A job title elevated slightly beyond what HR has on record.
+The common mismatches are all avoidable. A GPA rounded upward. Employment dates stretched by a couple of months to close a gap. A degree described as completed when a final requirement is outstanding. A job title elevated slightly beyond what HR has on record.
 
-**Each of these feels harmless and none of them are.** The [GPA point](/blog/usa-gpa-requirements-employers) is the classic example — 3.48 stated as 3.5 is a discrepancy on a report, and offers have been withdrawn over exactly that.
+Each of these feels harmless and none of them are. The [GPA point](/blog/usa-gpa-requirements-employers) is the classic example — 3.48 stated as 3.5 is a discrepancy on a report, and offers have been withdrawn over exactly that.
 
-**The rule is simple:** everything on your [resume](/ats-analysis) should survive someone else describing the same facts independently. State dates as your records state them, degrees as your transcript states them, and titles as your employer's HR system states them.
+The rule is simple: everything on your [resume](/ats-analysis) should survive someone else describing the same facts independently. State dates as your records state them, degrees as your transcript states them, and titles as your employer's HR system states them.
 
 ## Contingent offers, and what they mean for you
 
@@ -65,15 +65,15 @@ This is the part new graduates misunderstand, and it is the single most conseque
 
 ## If something in your history is complicated
 
-**Disclose proactively where it is relevant.** A gap, a course you did not complete, a job you left in unusual circumstances, or a criminal record where the role and jurisdiction make it relevant. Explaining it yourself, briefly and factually, is always better than it surfacing without context.
+Disclose proactively where it is relevant. A gap, a course you did not complete, a job you left in unusual circumstances, or a criminal record where the role and jurisdiction make it relevant. Explaining it yourself, briefly and factually, is always better than it surfacing without context.
 
-**Keep the explanation short.** One or two sentences, no defensiveness, no elaborate narrative. Long explanations invite scrutiny that a brief factual one closes.
+Keep the explanation short. One or two sentences, no defensiveness, no elaborate narrative. Long explanations invite scrutiny that a brief factual one closes.
 
-**Know your rights — they come from a specific federal law.** The Fair Credit Reporting Act (FCRA) is what actually grants the protections described here: you must be told a background check is being conducted and give written consent before it happens, and if the employer is considering an adverse decision based on the report, they must give you a copy of it and a real opportunity to dispute inaccurate information before making a final decision — not after. Knowing the law's name matters practically: if an employer skips these steps, that's a real, specifically named legal violation you can point to, not just an unfair-feeling process.
+Know your rights — they come from a specific federal law. The Fair Credit Reporting Act (FCRA) is what actually grants the protections described here: you must be told a background check is being conducted and give written consent before it happens, and if the employer is considering an adverse decision based on the report, they must give you a copy of it and a real opportunity to dispute inaccurate information before making a final decision — not after. Knowing the law's name matters practically: if an employer skips these steps, that's a real, specifically named legal violation you can point to, not just an unfair-feeling process.
 
-**Errors do happen.** Records are mismatched, names are confused, dates are recorded wrong. If a report contains something you know to be incorrect, say so promptly and provide documentation.
+Errors do happen. Records are mismatched, names are confused, dates are recorded wrong. If a report contains something you know to be incorrect, say so promptly and provide documentation.
 
-**Get advice for anything genuinely serious.** A criminal record with employment implications is a situation where specific advice about your jurisdiction and your circumstances is worth far more than any general article.
+Get advice for anything genuinely serious. A criminal record with employment implications is a situation where specific advice about your jurisdiction and your circumstances is worth far more than any general article.
 
 ## Preparing before it happens
 

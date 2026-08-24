@@ -21,11 +21,21 @@ showcase: none
 
 ## What the levels actually represent
 
-**The HSK is structured as a series of levels**, each representing a defined and tested level of vocabulary knowledge and comprehension ability, moving from basic beginner competency at the lower levels through to genuinely advanced, near-native academic and professional capability at the highest level.
+The HSK is structured as six numbered levels under the long-standing standard scale, each representing a defined and tested level of vocabulary knowledge and comprehension ability:
+
+| Level | Vocabulary (approx.) | What it represents | Realistic for professional work? |
+|---|---|---|---|
+| HSK 1-2 | 150-300 words | Basic beginner competency | No |
+| HSK 3 | ~600 words | Functional daily-life ability | Not usually |
+| HSK 4 | ~1,200 words | Comfortable handling of everyday professional topics | Realistic floor for functional professional work |
+| HSK 5 | ~2,500 words | Complex material, nuanced conversation | Yes, for most professional roles |
+| HSK 6 | 5,000+ words | Near-native academic and professional fluency | Required for formal writing, negotiation, high-level communication |
+
+A newer nine-level "HSK 3.0" standard has also been introduced, restructuring the scale into three bands (Elementary, Intermediate, Advanced); check which version a specific employer or programme references, since the two aren't numbered the same way.
 
 **The test specifically assesses reading, listening and, at the appropriate levels, writing ability**, it does not directly test spoken fluency in the way a conversational interview would, which means someone can hold a strong certified level and still have a speaking ability that lags behind, or occasionally the reverse, worth being honest about this distinction when presenting your ability to an employer.
 
-**Lower levels represent basic survival-level ability**, useful for daily life and simple interactions but generally insufficient for professional work in a Mandarin-primary environment.
+**Lower levels represent basic survival-level ability**, useful for daily life and simple interactions but generally insufficient for professional work in a Mandarin-primary environment, regardless of how confident it might feel in casual conversation.
 
 **Middle levels represent genuinely functional, conversational ability**, adequate for many social and some basic workplace situations, though still often below what a demanding professional role at a domestic employer would realistically require.
 
@@ -35,13 +45,13 @@ showcase: none
 
 ## Matching your level to realistic job requirements
 
-**For most professional roles at domestic Chinese employers**, an upper-intermediate to advanced level is generally the realistic baseline expectation, roles below this bar do exist but represent a smaller share of the professional market.
+For most professional roles at domestic Chinese employers, HSK 4-5 is generally the realistic baseline expectation, roles below this bar do exist but represent a smaller share of the professional market.
 
-**For roles specifically requiring formal writing or high-level negotiation in Mandarin**, the highest certified levels are frequently a genuine and stated requirement.
+For roles specifically requiring formal writing or high-level negotiation in Mandarin, HSK 6 is frequently a genuine and stated requirement.
 
-**For [teaching English positions](/blog/china-english-teaching-jobs-guide) and some specific technical or research roles at multinational companies**, a lower or even no certified level may be genuinely sufficient, since the role itself does not primarily operate in Mandarin, worth confirming this specifically against the [broader language requirements picture](/blog/china-mandarin-requirements-for-jobs) for your target role type.
+For [teaching English positions](/blog/china-english-teaching-jobs-guide) and some specific technical or research roles at multinational companies, a lower or even no certified level may be genuinely sufficient, since the role itself does not primarily operate in Mandarin, worth confirming this specifically against the [broader language requirements picture](/blog/china-mandarin-requirements-for-jobs) for your target role type.
 
-**Honestly assessing where you currently stand against a specific target role's realistic requirement, rather than against a generic sense of "good Mandarin", is the practical exercise that actually matters here.**
+Honestly assessing where you currently stand against a specific target role's realistic requirement, rather than against a generic sense of "good Mandarin", is the practical exercise that actually matters here.
 
 ## Presenting your level on applications
 
@@ -53,11 +63,11 @@ showcase: none
 
 ## Building toward a target level
 
-**Formal coursework, combined with sustained immersion where possible, produces faster and more durable progress than either alone**, studying or working in China directly accelerates this considerably beyond what classroom study alone typically achieves.
+Formal coursework, combined with sustained immersion where possible, produces faster and more durable progress than either alone, studying or working in China directly accelerates this considerably beyond what classroom study alone typically achieves.
 
-**Target the specific level relevant to your career goal deliberately**, rather than studying generally and hoping proficiency naturally arrives at the right point, know which level your realistic target roles actually require and structure your study toward it specifically.
+Target the specific level relevant to your career goal deliberately, rather than studying generally and hoping proficiency naturally arrives at the right point, know which level your realistic target roles actually require and structure your study toward it specifically.
 
-**Retesting to demonstrate progress is normal and expected**, a certificate showing a lower level from several years ago, alongside genuine current higher ability, is worth updating through a retest before it becomes a liability in an application.
+Retesting to demonstrate progress is normal and expected, a certificate showing a lower level from several years ago, alongside genuine current higher ability, is worth updating through a retest before it becomes a liability in an application.
 
 ## Preparing for the examination itself
 
@@ -67,7 +77,7 @@ showcase: none
 
 ## Balancing test preparation against genuine communicative ability
 
-**Do not let examination-specific preparation become disconnected from genuinely useful communicative ability**, some learners over-focus narrowly on test-taking technique at the expense of the broader practical fluency that will actually matter once you are working, worth balancing structured test preparation with genuine, varied language use, including conversation practice and exposure to authentic, non-test material.
+Do not let examination-specific preparation become disconnected from genuinely useful communicative ability, some learners over-focus narrowly on test-taking technique at the expense of the broader practical fluency that will actually matter once you are working, worth balancing structured test preparation with genuine, varied language use, including conversation practice and exposure to authentic, non-test material.
 
 ## Common Mistakes
 
@@ -82,7 +92,11 @@ showcase: none
 
 ### What level do I need for a typical professional job in China?
 
-For most professional roles at domestic employers, an upper-intermediate to advanced level is generally the realistic baseline, though this varies by role and industry.
+HSK 4-5 is generally the realistic baseline for most professional roles at domestic employers, with HSK 6 expected for roles involving formal writing or high-level negotiation, though this varies by role and industry.
+
+### What's the difference between the old HSK scale and "HSK 3.0"?
+
+The long-standing scale runs HSK 1 through 6; the newer HSK 3.0 standard restructures this into nine levels across three bands. The two aren't numbered equivalently, so check which version a specific employer or programme is actually referencing before assuming your certified level translates directly.
 
 ### Does the test measure speaking ability?
 

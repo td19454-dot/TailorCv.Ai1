@@ -29,31 +29,31 @@ showcase: none
 
 ## What generally strengthens an application
 
-**A stable employment history, ideally with demonstrated career progression, at a genuine, established employer** reflects positively, this is one reason [choosing an employer thoughtfully at the outset](/blog/singapore-mnc-vs-local-employers), rather than simply taking any offer, has consequences beyond the immediate job itself.
+A stable employment history, ideally with demonstrated career progression, at a genuine, established employer reflects positively, this is one reason [choosing an employer thoughtfully at the outset](/blog/singapore-mnc-vs-local-employers), rather than simply taking any offer, has consequences beyond the immediate job itself.
 
-**Higher-skilled roles and stronger salary levels generally reflect positively**, similar in spirit to the qualifying salary structure that already governs the [Employment Pass itself](/blog/singapore-employment-pass-graduates).
+Higher-skilled roles and stronger salary levels generally reflect positively, similar in spirit to the qualifying salary structure that already governs the [Employment Pass itself](/blog/singapore-employment-pass-graduates).
 
-**Genuine integration factors**, including community involvement and, for some applicants, family ties, are recognised as part of a holistic assessment.
+Genuine integration factors, including community involvement and, for some applicants, family ties, are recognised as part of a holistic assessment.
 
-**Having a Singaporean spouse or Singaporean-born children** is separately and specifically recognised within certain application pathways, worth understanding if this applies to your own circumstances.
+Having a Singaporean spouse or Singaporean-born children is separately and specifically recognised within certain application pathways, worth understanding if this applies to your own circumstances.
 
-**A degree from a Singapore institution, and having built career and personal ties locally over time, are generally understood to reflect positively as part of a genuine integration picture**, though specific weighting is not published as a fixed formula.
+A degree from a Singapore institution, and having built career and personal ties locally over time, are generally understood to reflect positively as part of a genuine integration picture, though specific weighting is not published as a fixed formula.
 
 ## Why this should shape decisions from your first job
 
-**If long-term residency in Singapore is a genuine goal, the employer and role you choose at the outset is worth weighing with this in mind, not only against the immediate salary and role itself.**
+**If long-term residency in Singapore is a genuine goal**, the employer and role you choose at the outset is worth weighing with this in mind, not only against the immediate salary and role itself.
 
-**A stable position at an established employer, ideally with a track record of supporting employees through the full arc from [Employment Pass to longer-term status](/blog/singapore-employment-pass-graduates), builds a stronger foundation than a series of shorter, less stable roles, even where the immediate compensation of the latter might appear more attractive.**
+**A stable position at an established employer**, ideally with a track record of supporting employees through the full arc from [Employment Pass to longer-term status](/blog/singapore-employment-pass-graduates), builds a stronger foundation than a series of shorter, less stable roles, even where the immediate compensation of the latter might appear more attractive.
 
 **This does not mean taking a role you dislike purely for this reason**, it means factoring genuine stability and a considered career trajectory into your decision-making alongside the immediate opportunity, exactly as you would [factor immigration considerations into any first job decision internationally](/blog/canada-noc-codes-explained-for-graduates).
 
 ## Applying: practical considerations
 
-**There is no fixed minimum period of residence stated as a strict guaranteed threshold**, though a meaningful period of stable employment and residence is consistently understood as relevant to how an application is assessed.
+There is no fixed minimum period of residence stated as a strict guaranteed threshold, though a meaningful period of stable employment and residence is consistently understood as relevant to how an application is assessed.
 
-**Gather and retain documentation of your employment history, salary progression and any relevant qualifications throughout your career**, exactly the same [record-keeping discipline that matters for any long-term status process](/blog/first-job-abroad-practical-checklist), reconstructing this later is considerably harder than maintaining it as you go.
+Gather and retain documentation of your employment history, salary progression and any relevant qualifications throughout your career, exactly the same [record-keeping discipline that matters for any long-term status process](/blog/first-job-abroad-practical-checklist), reconstructing this later is considerably harder than maintaining it as you go.
 
-**Verify current specific eligibility criteria and any published guidance directly with the relevant Singapore authority before applying**, this is genuinely the kind of process where policy is reviewed periodically, and relying on outdated general information is a real risk.
+Verify current specific eligibility criteria and any published guidance directly with the relevant Singapore authority before applying, this is genuinely the kind of process where policy is reviewed periodically, and relying on outdated general information is a real risk.
 
 ## Common Mistakes
 

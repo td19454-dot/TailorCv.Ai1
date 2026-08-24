@@ -25,19 +25,19 @@ showcase: portfolio
 
 **Online technical assessments** typically follow the initial application, commonly algorithmic coding problems under time pressure, closely mirroring the format used by major technology employers internationally, the [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) transfers substantially, since question patterns and the underlying skills tested are broadly similar worldwide. **Boss直聘 (Boss Zhipin)** is the dominant general recruiting platform in the domestic market, with a distinctive direct-chat-with-hiring-manager feature rather than a purely resume-submission model; **拉勾网 (Lagou)** is a tech-specific platform worth knowing alongside it. Both are worth having an account on if you're seriously targeting domestic employers, since a meaningful share of roles are posted there before or instead of a company's own careers page.
 
-**Multiple technical interview rounds** follow, assessing data structures, algorithms and problem solving, often with increasing seniority of interviewer at each stage, narrating your reasoning aloud while solving matters here exactly as it does anywhere, silence during a technical round is read as a lack of process regardless of whether the final answer is correct.
+**Multiple technical interview rounds** follow, assessing data structures, algorithms and problem solving in real depth, often with increasing seniority of interviewer at each stage, narrating your reasoning aloud while solving matters here exactly as it does anywhere, silence during a technical round is read as a lack of process regardless of whether the final answer is correct.
 
-**A final round with more senior staff or management** typically assesses fit and sometimes system design, particularly for more experienced hires, less emphasized for fresh graduates than for lateral hires.
+**A final round with more senior staff or management** typically assesses genuine fit and sometimes system design, particularly for more experienced hires, less emphasized for fresh graduates than for lateral hires.
 
 ## Language, and who it is accessible to
 
-**Domestic technology companies generally expect Mandarin fluency**, for both the interview process and the working environment, this is the default assumption and a real screening factor for these employers specifically.
+Domestic technology companies generally expect Mandarin fluency, for both the interview process and the working environment, this is the default assumption and a real screening factor for these employers specifically.
 
-**Some larger domestic companies with international operations or specific teams** occasionally have roles more accessible to non-Mandarin speakers, though this is the exception rather than the rule, and worth confirming directly rather than assuming.
+Some larger domestic companies with international operations or specific teams occasionally have roles more accessible to non-Mandarin speakers, though this is the exception rather than the rule, and worth confirming directly rather than assuming.
 
-**International technology companies with a China presence** vary considerably, some teams operate primarily in English, others require Mandarin for effective collaboration with local colleagues and users, checking the specific team's actual working language, not just the company's general policy, is worth doing directly with a recruiter or through a contact on the team.
+International technology companies with a China presence vary considerably, some teams operate primarily in English, others require Mandarin for effective collaboration with local colleagues and users, checking the specific team's actual working language, not just the company's general policy, is worth doing directly with a recruiter or through a contact on the team.
 
-**Your realistic pool of accessible employers narrows or widens substantially based on your actual language ability**, honestly assessed, the [language requirements guide](/blog/china-mandarin-requirements-for-jobs) and the [HSK levels guide](/blog/china-hsk-levels-for-employment) cover how to evaluate and demonstrate this properly.
+Your realistic pool of accessible employers narrows or widens substantially based on your actual language ability, honestly assessed, the [language requirements guide](/blog/china-mandarin-requirements-for-jobs) and the [HSK levels guide](/blog/china-hsk-levels-for-employment) cover how to evaluate and demonstrate this properly.
 
 ## Work culture, honestly
 
@@ -49,11 +49,11 @@ showcase: portfolio
 
 ## Compensation structure
 
-**Base salary is often only part of total compensation**, with annual bonus, sometimes tied significantly to company or individual performance, forming a substantial portion of total pay at many technology employers, comparing offers on base salary alone can be genuinely misleading.
+Base salary is often only part of total compensation, with annual bonus, sometimes tied significantly to company or individual performance, forming a substantial portion of total pay at many technology employers, comparing offers on base salary alone can be genuinely misleading.
 
-**Stock or equity-based compensation** appears at some companies, particularly larger and publicly listed ones, understanding vesting terms and the realistic expected value, rather than the headline number, matters exactly as it does when [evaluating any equity component of an offer](/blog/usa-startup-vs-big-tech-new-grad).
+Stock or equity-based compensation appears at some companies, particularly larger and publicly listed ones, understanding vesting terms and the realistic expected value, rather than the headline number, matters exactly as it does when [evaluating any equity component of an offer](/blog/usa-startup-vs-big-tech-new-grad).
 
-**Ask specifically what a typical bonus was for someone at your level last year**, rather than relying on a stated target figure, the two frequently differ.
+Ask specifically what a typical bonus was for someone at your level last year, rather than relying on a stated target figure, the two frequently differ.
 
 ## Common Mistakes
 
@@ -72,9 +72,9 @@ showcase: portfolio
 
 ## Networking within this specific market
 
-**Alumni from your own institution now working at target companies remain a genuinely high-value contact group here as in any market**, particularly valuable given the language and cultural specificity of navigating this particular hiring landscape, someone who has already gone through the exact same process recently offers insight a general guide cannot fully replicate.
+Alumni from your own institution now working at target companies remain a genuinely high-value contact group here as in any market, particularly valuable given the language and cultural specificity of navigating this particular hiring landscape, someone who has already gone through the exact same process recently offers insight a general guide cannot fully replicate.
 
-**Technology community events and meetups, where accessible to you given your language ability, provide genuine opportunities to meet people at target companies directly**, worth attending even a few of these if genuinely feasible, rather than relying purely on formal application channels.
+Technology community events and meetups, where accessible to you given your language ability, provide genuine opportunities to meet people at target companies directly, worth attending even a few of these if genuinely feasible, rather than relying purely on formal application channels.
 
 ## Frequently Asked Questions
 

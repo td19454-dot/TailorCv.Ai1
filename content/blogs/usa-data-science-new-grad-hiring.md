@@ -35,19 +35,19 @@ Reading a posting properly is the first skill, because preparing for the wrong o
 
 ## What is actually tested
 
-**SQL, more than anything else.** Joins, aggregation, window functions, and the ability to write a correct query against an unfamiliar schema while talking. This is the highest-frequency technical screen in the whole field and it is the one candidates most often under-practise because it feels less impressive than modelling.
+SQL, more than anything else. Joins, aggregation, window functions, and the ability to write a correct query against an unfamiliar schema while talking. This is the highest-frequency technical screen in the whole field and it is the one candidates most often under-practise because it feels less impressive than modelling.
 
-**Applied statistics.** Hypothesis testing, confidence intervals, p-values and what they actually mean, sample size, and the classic traps — multiple comparisons, survivorship, selection effects. Interviewers probe understanding rather than formulas.
+Applied statistics. Hypothesis testing, confidence intervals, p-values and what they actually mean, sample size, and the classic traps — multiple comparisons, survivorship, selection effects. Interviewers probe understanding rather than formulas.
 
-**Experiment design.** How would you test this change? What is the unit of randomisation, what is the metric, what could confound it, when would you stop? Standard at any company with a product, and frequently the round that decides.
+Experiment design. How would you test this change? What is the unit of randomisation, what is the metric, what could confound it, when would you stop? Standard at any company with a product, and frequently the round that decides.
 
-**A case or product question.** "Engagement dropped eight percent — how would you investigate?" Structure matters more than the answer: segment, form hypotheses, say what data would distinguish them, and prioritise.
+A case or product question. "Engagement dropped eight percent — how would you investigate?" Structure matters more than the answer: segment, form hypotheses, say what data would distinguish them, and prioritise.
 
-**Coding.** Python or R, data manipulation, sometimes standard algorithms. Heavier for ML engineering roles.
+Coding. Python or R, data manipulation, sometimes standard algorithms. Heavier for ML engineering roles.
 
-**Machine learning fundamentals.** Bias and variance, overfitting, cross-validation, why a model might work in testing and fail in production. Depth of understanding beats breadth of algorithm names — being able to explain when you would not use a complex model is worth more than listing ten.
+Machine learning fundamentals. Bias and variance, overfitting, cross-validation, why a model might work in testing and fail in production. Depth of understanding beats breadth of algorithm names — being able to explain when you would not use a complex model is worth more than listing ten.
 
-**Communication.** Explaining a result to a non-technical stakeholder is assessed directly at many companies, and it is the skill that most separates candidates in the final round.
+Communication. Explaining a result to a non-technical stakeholder is assessed directly at many companies, and it is the skill that most separates candidates in the final round.
 
 ## Building a portfolio that works
 
@@ -69,17 +69,17 @@ Most student data portfolios are near-identical and therefore worthless as a dif
 
 ## Preparing efficiently
 
-**SQL first, and daily.** Twenty minutes a day for six weeks on window functions and multi-table joins moves most candidates from a weak screen to a strong one. This is the highest-return preparation in the field.
+SQL first, and daily. Twenty minutes a day for six weeks on window functions and multi-table joins moves most candidates from a weak screen to a strong one. This is the highest-return preparation in the field.
 
-**Then experiment design and statistics.** Work through the standard traps until you can explain each one to a non-statistician, because that is the actual test.
+Then experiment design and statistics. Work through the standard traps until you can explain each one to a non-statistician, because that is the actual test.
 
-**Then a case structure.** Practise the "metric dropped, why?" question aloud with a partner. Segment, hypothesise, test, prioritise.
+Then a case structure. Practise the "metric dropped, why?" question aloud with a partner. Segment, hypothesise, test, prioritise.
 
-**Then coding**, weighted to how ML-engineering your target roles are.
+Then coding, weighted to how ML-engineering your target roles are.
 
-**Practise explaining a result to a non-technical listener.** Genuinely practise it, aloud, to an actual person. It is assessed and almost nobody rehearses it.
+Practise explaining a result to a non-technical listener. Genuinely practise it, aloud, to an actual person. It is assessed and almost nobody rehearses it.
 
-**And read the posting before preparing.** Two weeks on deep learning for a role that will test window functions is a common and entirely avoidable misallocation.
+And read the posting before preparing. Two weeks on deep learning for a role that will test window functions is a common and entirely avoidable misallocation.
 
 ## Where the accessible roles are
 
@@ -97,21 +97,21 @@ Most student data portfolios are near-identical and therefore worthless as a dif
 
 Since this is the highest-frequency screen in the field, it is worth being specific about what appears.
 
-**Joins, including the awkward ones.** Inner, left, and the cases where a left join plus a null check is the correct expression of "things that do not have a match". Self-joins. Joining on more than one key.
+Joins, including the awkward ones. Inner, left, and the cases where a left join plus a null check is the correct expression of "things that do not have a match". Self-joins. Joining on more than one key.
 
-**Aggregation with conditions.** Grouping, having, and conditional aggregation — counting only the rows meeting a condition inside a single pass.
+Aggregation with conditions. Grouping, having, and conditional aggregation — counting only the rows meeting a condition inside a single pass.
 
-**Window functions.** The dividing line between candidates. Running totals, rank and dense rank, lag and lead, and partitioned aggregates. If you know one advanced thing, know these.
+Window functions. The dividing line between candidates. Running totals, rank and dense rank, lag and lead, and partitioned aggregates. If you know one advanced thing, know these.
 
-**Date handling.** Truncating to a period, computing differences, handling months of different lengths. Every real question involves dates.
+Date handling. Truncating to a period, computing differences, handling months of different lengths. Every real question involves dates.
 
-**Cohort and retention queries.** Given users and events, compute how many users active in week one were still active in week four. This exact question appears constantly because it exercises joins, dates and windows together.
+Cohort and retention queries. Given users and events, compute how many users active in week one were still active in week four. This exact question appears constantly because it exercises joins, dates and windows together.
 
-**Deduplication.** Given rows with duplicates, keep the most recent per key. A one-line window function and a common stumbling point.
+Deduplication. Given rows with duplicates, keep the most recent per key. A one-line window function and a common stumbling point.
 
-**How to practise.** Against a schema you have not seen, on a clock, writing out loud. The screen is usually shared and narrated — being able to say "I'll start by getting one row per user per day, then join back" before writing is what is actually assessed.
+How to practise. Against a schema you have not seen, on a clock, writing out loud. The screen is usually shared and narrated — being able to say "I'll start by getting one row per user per day, then join back" before writing is what is actually assessed.
 
-**And check your own query.** Say what you expect the output shape to be, then verify it. Interviewers notice, and it is the same instinct that makes someone good at the job.
+And check your own query. Say what you expect the output shape to be, then verify it. Interviewers notice, and it is the same instinct that makes someone good at the job.
 
 ## Experiment design, at interview depth
 
@@ -137,19 +137,19 @@ The round that most reliably separates candidates at product companies, and it i
 
 Since preparing for the wrong role is the most expensive error in this field, here is how to tell them apart in thirty seconds.
 
-**Signals it is analytics.** SQL named first. Words like dashboard, stakeholder, reporting, business, insight. Metrics and experimentation. Named tools for visualisation. A business team in the reporting line.
+Signals it is analytics. SQL named first. Words like dashboard, stakeholder, reporting, business, insight. Metrics and experimentation. Named tools for visualisation. A business team in the reporting line.
 
-**Signals it is product data science.** Experimentation, causal inference, metric design, A/B testing. Sits with a product team. Statistics emphasised over engineering.
+Signals it is product data science. Experimentation, causal inference, metric design, A/B testing. Sits with a product team. Statistics emphasised over engineering.
 
-**Signals it is machine learning engineering.** Pipelines, deployment, serving, latency, scale, monitoring. Named infrastructure tools. Software engineering practices mentioned — testing, version control, CI. Reports into engineering.
+Signals it is machine learning engineering. Pipelines, deployment, serving, latency, scale, monitoring. Named infrastructure tools. Software engineering practices mentioned — testing, version control, CI. Reports into engineering.
 
-**Signals it is research.** Publications, novel methods, PhD preferred, named research areas, conference names.
+Signals it is research. Publications, novel methods, PhD preferred, named research areas, conference names.
 
-**Signals nobody has thought about it.** Every one of the above in a single posting, plus a request for five years of experience in a graduate role. This usually means a small company where you would do all of it, which can be an excellent first job — just go in knowing that.
+Signals nobody has thought about it. Every one of the above in a single posting, plus a request for five years of experience in a graduate role. This usually means a small company where you would do all of it, which can be an excellent first job — just go in knowing that.
 
-**What to do with the signal.** Prepare the corresponding block from the plan above and skip the others. A candidate who spent six weeks on deep learning and then faced four window-function questions has not been unlucky; they read the posting too quickly.
+What to do with the signal. Prepare the corresponding block from the plan above and skip the others. A candidate who spent six weeks on deep learning and then faced four window-function questions has not been unlucky; they read the posting too quickly.
 
-**And ask the recruiter directly.** "What does the interview loop look like, and what should I focus on?" is a completely normal question and most recruiters answer it honestly, because they want candidates to pass.
+And ask the recruiter directly. "What does the interview loop look like, and what should I focus on?" is a completely normal question and most recruiters answer it honestly, because they want candidates to pass.
 
 ## Where entry-level candidates actually lose
 
@@ -182,19 +182,19 @@ Ranked by how often it happens, from the interviewers' side.
 
 Assessed directly at many companies, rehearsed by almost nobody, and it decides close calls.
 
-**The structure that works.** Lead with the answer, not the method. "Users who complete onboarding in one session are about twice as likely to still be here in a month" — then, if asked, how you know.
+The structure that works. Lead with the answer, not the method. "Users who complete onboarding in one session are about twice as likely to still be here in a month" — then, if asked, how you know.
 
-**Quantify without precision theatre.** "Roughly twice" is more useful to a decision-maker than "1.94×". Precision beyond what the decision needs signals inexperience.
+Quantify without precision theatre. "Roughly twice" is more useful to a decision-maker than "1.94×". Precision beyond what the decision needs signals inexperience.
 
-**Name the uncertainty in plain words.** "This is correlational — I can't tell you that finishing onboarding causes retention, only that they go together. To separate those we'd need to run a test." That sentence does more for your credibility than any model.
+Name the uncertainty in plain words. "This is correlational — I can't tell you that finishing onboarding causes retention, only that they go together. To separate those we'd need to run a test." That sentence does more for your credibility than any model.
 
-**Say what you would do next.** A result with no recommended action is an unfinished piece of work.
+Say what you would do next. A result with no recommended action is an unfinished piece of work.
 
-**Drop the vocabulary.** No p-values, no confidence intervals, no model names unless asked. If you cannot say it without jargon, you have not finished understanding it.
+Drop the vocabulary. No p-values, no confidence intervals, no model names unless asked. If you cannot say it without jargon, you have not finished understanding it.
 
-**Practise on a real person.** Take a finding from your own project and explain it to a friend outside your field. If they can repeat it back accurately, you are ready. If they nod politely, you are not.
+Practise on a real person. Take a finding from your own project and explain it to a friend outside your field. If they can repeat it back accurately, you are ready. If they nod politely, you are not.
 
-**Why it matters more than it seems.** At entry level, most data work is only valuable if it changes a decision, and it can only change a decision if a non-specialist understands and believes it. Companies know this, which is why the round exists.
+Why it matters more than it seems. At entry level, most data work is only valuable if it changes a decision, and it can only change a decision if a non-specialist understands and believes it. Companies know this, which is why the round exists.
 
 ## A twelve-week preparation plan
 
@@ -216,21 +216,21 @@ Assessed directly at many companies, rehearsed by almost nobody, and it decides 
 
 Since one good project outperforms a portfolio of notebooks, here is what a strong one looks like end to end.
 
-**Pick a question a person would ask.** Not "predict housing prices" — something like "which bus routes in my city are least reliable, and does it correlate with the neighbourhoods they serve?"
+Pick a question a person would ask. Not "predict housing prices" — something like "which bus routes in my city are least reliable, and does it correlate with the neighbourhoods they serve?"
 
-**Get the data yourself.** A public API, a scrape, an open records request. It will be messy, inconsistent and incomplete, and that is the point — those problems are the job.
+Get the data yourself. A public API, a scrape, an open records request. It will be messy, inconsistent and incomplete, and that is the point — those problems are the job.
 
-**Document the cleaning decisions.** Which records you dropped and why, how you handled missing values, what you did about duplicates and format changes. This section is what an experienced reviewer reads most carefully, because it shows judgement rather than mechanics.
+Document the cleaning decisions. Which records you dropped and why, how you handled missing values, what you did about duplicates and format changes. This section is what an experienced reviewer reads most carefully, because it shows judgement rather than mechanics.
 
-**Answer the question simply first.** A well-constructed descriptive analysis with clear visualisation frequently beats a model. If you do model, say what your baseline was and why the model beats it.
+Answer the question simply first. A well-constructed descriptive analysis with clear visualisation frequently beats a model. If you do model, say what your baseline was and why the model beats it.
 
-**Be honest about limits.** What confounds this, what you cannot conclude, where the data is unreliable. A project that names its own weaknesses reads as far more competent than one claiming certainty.
+Be honest about limits. What confounds this, what you cannot conclude, where the data is unreliable. A project that names its own weaknesses reads as far more competent than one claiming certainty.
 
-**Write the README finding-first.** One paragraph: what you found, why it matters, how confident you are. Installation instructions go at the bottom, if at all.
+Write the README finding-first. One paragraph: what you found, why it matters, how confident you are. Installation instructions go at the bottom, if at all.
 
-**Make it reachable.** A rendered page, a small dashboard, a notebook that displays properly on the web. Nobody will clone your repository.
+Make it reachable. A rendered page, a small dashboard, a notebook that displays properly on the web. Nobody will clone your repository.
 
-**Then be ready to be interrogated on it.** Every decision you made is a question an interviewer can ask, and having real answers is exactly why a self-sourced project beats a tutorial.
+Then be ready to be interrogated on it. Every decision you made is a question an interviewer can ask, and having real answers is exactly why a self-sourced project beats a tutorial.
 
 ### Should I do a bootcamp or a master's?
 

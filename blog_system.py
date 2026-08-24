@@ -401,7 +401,13 @@ class BlogService:
         if updated_date is not None and updated_date <= parsed_date:
             updated_date = None
 
-        md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"])
+        # guess_lang=False: an untagged ``` block (a plain-text resume example,
+        # a schedule, anything not actually code) was getting run through
+        # Pygments' language guesser, which tokenized ordinary English words
+        # as if they were syntax - "and", "at", "by" bolded and colored at
+        # random. Only explicitly tagged blocks (```python etc.) get highlighted now.
+        md = markdown.Markdown(extensions=["extra", "toc", "fenced_code", "codehilite", "tables", "sane_lists"],
+                                extension_configs={"codehilite": {"guess_lang": False}})
         content_html = md.convert(body)
         content_html = self._normalize_content_images(content_html)
         content_html = self._render_task_lists(content_html)

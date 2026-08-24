@@ -37,17 +37,17 @@ Set aside the stereotypes and the differences reduce to a handful of structural 
 
 ## Compensation, honestly
 
-**Base salary.** Big tech generally pays more at entry, sometimes substantially. Well-funded late-stage startups compete; early-stage ones usually cannot.
+Base salary. Big tech generally pays more at entry, sometimes substantially. Well-funded late-stage startups compete; early-stage ones usually cannot.
 
-**Equity at a public company** is worth roughly what it says, subject to vesting and price movement. You can value it.
+Equity at a public company is worth roughly what it says, subject to vesting and price movement. You can value it.
 
-**Equity at a private company** is not compensation in any usable sense. It is an option on an outcome you cannot assess, with a strike price, a vesting schedule, a cliff, dilution ahead of it, liquidation preferences you will not see, and possibly a tax bill on exercise. It may be worth a great deal. It is worth zero far more often, and a graduate is in no position to price it.
+Equity at a private company is not compensation in any usable sense. It is an option on an outcome you cannot assess, with a strike price, a vesting schedule, a cliff, dilution ahead of it, liquidation preferences you will not see, and possibly a tax bill on exercise. It may be worth a great deal. It is worth zero far more often, and a graduate is in no position to price it.
 
-**The practical rule.** Compare the cash. Treat private equity as a bonus you did not pay for, not as part of the offer. If a startup's argument for a lower salary is the equity, understand you are being asked to take a pay cut in exchange for a lottery ticket whose odds nobody will show you.
+The practical rule. Compare the cash. Treat private equity as a bonus you did not pay for, not as part of the offer. If a startup's argument for a lower salary is the equity, understand you are being asked to take a pay cut in exchange for a lottery ticket whose odds nobody will show you.
 
-**Questions worth asking** if equity matters to you: how many shares in total are outstanding, what was the last preferred price, what is the strike, what is the vesting and cliff, and how long do you have to exercise after leaving. An employer who will not answer the first two is telling you something.
+Questions worth asking if equity matters to you: how many shares in total are outstanding, what was the last preferred price, what is the strike, what is the vesting and cliff, and how long do you have to exercise after leaving. An employer who will not answer the first two is telling you something.
 
-**Benefits.** Big tech benefits are generally better and more reliable. Small companies vary, and health coverage in particular is worth checking rather than assuming.
+Benefits. Big tech benefits are generally better and more reliable. Small companies vary, and health coverage in particular is worth checking rather than assuming.
 
 ## The sponsorship question, which frequently decides it
 
@@ -67,11 +67,11 @@ For international graduates, this section matters more than everything above.
 
 ## Which one suits you
 
-**A large employer suits you if:** you want to be taught properly in your first two years; you value a legible credential; you need sponsorship; you would rather build depth than range; or you want predictable compensation while you work out what you like.
+A large employer suits you if: you want to be taught properly in your first two years; you value a legible credential; you need sponsorship; you would rather build depth than range; or you want predictable compensation while you work out what you like.
 
-**A startup suits you if:** you already have some idea what you want to do; you learn well without structure; you want range and responsibility early; you can tolerate genuine uncertainty about the company's survival; and you do not need sponsorship.
+A startup suits you if: you already have some idea what you want to do; you learn well without structure; you want range and responsibility early; you can tolerate genuine uncertainty about the company's survival; and you do not need sponsorship.
 
-**The neglected middle.** Mid-sized companies — a few hundred to a few thousand people, past survival risk, not yet bureaucratic — frequently combine the better half of both: real ownership, actual mentorship, stable compensation, and an ability to sponsor. They are also far less contested, because students apply to the names they recognise. This segment is the most under-exploited part of the graduate market and it deserves a third of your [applications](/blog/usa-handshake-linkedin-job-search).
+The neglected middle. Mid-sized companies — a few hundred to a few thousand people, past survival risk, not yet bureaucratic — frequently combine the better half of both: real ownership, actual mentorship, stable compensation, and an ability to sponsor. They are also far less contested, because students apply to the names they recognise. This segment is the most under-exploited part of the graduate market and it deserves a third of your [applications](/blog/usa-handshake-linkedin-job-search).
 
 ## Judging a startup before you join
 
@@ -99,17 +99,17 @@ A startup offer is a bet on a specific company, and most graduates have no frame
 
 The comparison is presented as binary and the best answer for most graduates is neither pole. It deserves more than a passing mention.
 
-**What counts.** Roughly two hundred to a few thousand people. Past survival risk, with real revenue and real customers. Not yet large enough to have the layers, the process and the narrow role definitions of a major employer.
+What counts. Roughly two hundred to a few thousand people. Past survival risk, with real revenue and real customers. Not yet large enough to have the layers, the process and the narrow role definitions of a major employer.
 
-**What you get that big tech does not give you.** Genuine ownership early — you can be the person responsible for a real system in your first year rather than your fourth. Visibility to people who make decisions. A shorter path between doing something and seeing it matter.
+What you get that big tech does not give you. Genuine ownership early — you can be the person responsible for a real system in your first year rather than your fourth. Visibility to people who make decisions. A shorter path between doing something and seeing it matter.
 
-**What you get that a startup does not give you.** Someone senior to learn from, because these companies have accumulated experienced engineers. A functioning process — code review, testing, deployment — that someone built before you arrived. Compensation that is real cash rather than a claim on an uncertain future. And, critically for international candidates, the administrative capacity to sponsor.
+What you get that a startup does not give you. Someone senior to learn from, because these companies have accumulated experienced engineers. A functioning process — code review, testing, deployment — that someone built before you arrived. Compensation that is real cash rather than a claim on an uncertain future. And, critically for international candidates, the administrative capacity to sponsor.
 
-**Why it stays under-applied-to.** Students apply to companies they have heard of, and by definition they have not heard of these. The [non-target strategy point](/blog/usa-non-target-school-strategy) applies in reverse — the segment with the least competition is the one with the least brand recognition, and that is exactly why the ratio of applicants to seats is favourable.
+Why it stays under-applied-to. Students apply to companies they have heard of, and by definition they have not heard of these. The [non-target strategy point](/blog/usa-non-target-school-strategy) applies in reverse — the segment with the least competition is the one with the least brand recognition, and that is exactly why the ratio of applicants to seats is favourable.
 
-**How to find them.** They rarely visit campuses. Look at who is hiring in your city, who has raised a substantial later-stage round, who supplies the industry you are interested in, and who the engineers you admire on professional networks have moved to. Then apply through their own [career pages](/blog/usa-handshake-linkedin-job-search) and [find someone to refer you](/blog/usa-cold-email-networking-students).
+How to find them. They rarely visit campuses. Look at who is hiring in your city, who has raised a substantial later-stage round, who supplies the industry you are interested in, and who the engineers you admire on professional networks have moved to. Then apply through their own [career pages](/blog/usa-handshake-linkedin-job-search) and [find someone to refer you](/blog/usa-cold-email-networking-students).
 
-**A reasonable allocation** for a technical graduate: a third of applications to large employers, a third to mid-sized companies, a third to a mix of startups and [cap-exempt research employers](/blog/usa-cap-exempt-h1b-employers) if immigration matters to you. That spread has a much better expected outcome than forty applications to the twelve most recognisable names.
+A reasonable allocation for a technical graduate: a third of applications to large employers, a third to mid-sized companies, a third to a mix of startups and [cap-exempt research employers](/blog/usa-cap-exempt-h1b-employers) if immigration matters to you. That spread has a much better expected outcome than forty applications to the twelve most recognisable names.
 
 ## Questions that reveal the real job
 
@@ -135,21 +135,21 @@ None of these are aggressive, all of them are normal at offer stage, and the pat
 
 Not to make you paranoid, but because a graduate has the least information and the most to lose from a company failing in month eight.
 
-**Evasion about runway.** Founders discuss this openly with candidates they want. "We're well capitalised" without a number, twice, is an answer.
+Evasion about runway. Founders discuss this openly with candidates they want. "We're well capitalised" without a number, twice, is an answer.
 
-**Senior people leaving recently.** One departure is normal. Three engineers and a head of something in six months is a pattern, and it is visible on professional networks.
+Senior people leaving recently. One departure is normal. Three engineers and a head of something in six months is a pattern, and it is visible on professional networks.
 
-**A long gap since the last raise** without a clear reason. Companies raise roughly every eighteen to twenty-four months at early stage; a much longer gap means either profitability, which they will tell you about proudly, or difficulty, which they will not.
+A long gap since the last raise without a clear reason. Companies raise roughly every eighteen to twenty-four months at early stage; a much longer gap means either profitability, which they will tell you about proudly, or difficulty, which they will not.
 
-**No customers you can name.** Ask who uses it. A company with real customers names them or explains why it cannot.
+No customers you can name. Ask who uses it. A company with real customers names them or explains why it cannot.
 
-**Constant pivoting.** Two pivots in eighteen months means the team is still searching, which is normal at seed stage and worrying at Series B.
+Constant pivoting. Two pivots in eighteen months means the team is still searching, which is normal at seed stage and worrying at Series B.
 
-**Hiring aggressively for sales while engineering stalls**, or the reverse. Imbalance usually reflects a problem someone is trying to fix with headcount.
+Hiring aggressively for sales while engineering stalls, or the reverse. Imbalance usually reflects a problem someone is trying to fix with headcount.
 
-**Reluctance to let you talk to an engineer without a founder present.** Ask for a conversation with someone at your level, alone. A healthy company arranges it happily.
+Reluctance to let you talk to an engineer without a founder present. Ask for a conversation with someone at your level, alone. A healthy company arranges it happily.
 
-**None of these are disqualifying on their own.** Several together, with an evasive answer on runway, is enough to decline — and declining is a legitimate outcome, not rudeness.
+None of these are disqualifying on their own. Several together, with an evasive answer on runway, is enough to decline — and declining is a legitimate outcome, not rudeness.
 
 ## Common Mistakes
 
@@ -176,13 +176,13 @@ The clearest way to compare is by what you can say at the end.
 
 ## Moving between them
 
-**Big tech to startup** is straightforward and common. Startups value the process knowledge and the reassurance that you have seen things done properly. Expect the adjustment to be the absence of support functions you took for granted.
+Big tech to startup is straightforward and common. Startups value the process knowledge and the reassurance that you have seen things done properly. Expect the adjustment to be the absence of support functions you took for granted.
 
-**Startup to big tech** is also common, with one caveat: large employers interview on standardised technical loops, and a startup engineer who has been shipping rather than practising algorithms needs to prepare deliberately. The [technical interview preparation](/blog/usa-technical-interview-newgrad-prep) is a separate exercise from being good at your job, and this is the main thing that trips people up.
+Startup to big tech is also common, with one caveat: large employers interview on standardised technical loops, and a startup engineer who has been shipping rather than practising algorithms needs to prepare deliberately. The [technical interview preparation](/blog/usa-technical-interview-newgrad-prep) is a separate exercise from being good at your job, and this is the main thing that trips people up.
 
-**Either to a mid-sized company** is the easiest move of all, and it is where a great many people settle after seeing both extremes.
+Either to a mid-sized company is the easiest move of all, and it is where a great many people settle after seeing both extremes.
 
-**The practical reassurance:** almost nobody's first job is their defining one, both directions are well trodden, and the cost of choosing "wrong" is roughly the time it takes to move. That is much lower than the weight most graduates put on the decision.
+The practical reassurance: almost nobody's first job is their defining one, both directions are well trodden, and the cost of choosing "wrong" is roughly the time it takes to move. That is much lower than the weight most graduates put on the decision.
 
 ## Reading the offer letter carefully
 
@@ -206,7 +206,7 @@ Whichever you choose, the document contains details that change the value materi
 
 If you are holding two offers and going in circles, the question is not which company is better. It is:
 
-**Which of these two teams will teach me more in twenty-four months?**
+Which of these two teams will teach me more in twenty-four months?
 
 Everything else is downstream. Salary differences at graduate level are real and small against the difference between two years of being developed and two years of being used. Prestige matters for the first two job applications and then stops. Equity at a private company is unknowable. Perks are noise.
 

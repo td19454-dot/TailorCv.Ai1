@@ -33,15 +33,15 @@ showcase: none
 
 ## Why they are so contested
 
-**Prestige.** Consistently among the most desired employers for Japanese graduates.
+Prestige. Consistently among the most desired employers for Japanese graduates.
 
-**Compensation.** Among the highest graduate packages in Japan, with the [bonus structure](/blog/japan-salary-expectations-new-grad) contributing substantially.
+Compensation. Among the highest graduate packages in Japan, with the [bonus structure](/blog/japan-salary-expectations-new-grad) contributing substantially.
 
-**Global scope.** Overseas assignment is a standard part of the career path rather than an occasional possibility, which is a genuine attraction for anyone wanting international work built into the job. Be aware of the concept of *tanshin funin* — a posting taken without relocating one's family, historically common in Japanese corporate culture for assignments seen as short-term or in locations considered unsuitable for dependents — worth asking directly during recruiting how a specific company's overseas rotations typically handle this, rather than assuming every posting comes with full family relocation support.
+Global scope. Overseas assignment is a standard part of the career path rather than an occasional possibility, which is a genuine attraction for anyone wanting international work built into the job. Be aware of the concept of *tanshin funin* — a posting taken without relocating one's family, historically common in Japanese corporate culture for assignments seen as short-term or in locations considered unsuitable for dependents — worth asking directly during recruiting how a specific company's overseas rotations typically handle this, rather than assuming every posting comes with full family relocation support.
 
-**Breadth of experience.** Exposure across industries and functions that few employers can match.
+Breadth of experience. Exposure across industries and functions that few employers can match.
 
-**The consequence:** application volumes are very high, selection is long and rigorous, and the bar on communication and character assessment is set accordingly.
+The consequence: application volumes are very high, selection is long and rigorous, and the bar on communication and character assessment is set accordingly.
 
 ## The recruiting process
 
@@ -61,17 +61,17 @@ showcase: none
 
 ## For foreign graduates
 
-**They do hire foreign graduates**, particularly those educated in Japan, and the bar is high.
+They do hire foreign graduates, particularly those educated in Japan, and the bar is high.
 
-**Language expectations are generally substantial.** The work is relationship-driven and conducted largely in Japanese, which means business-level ability is typically expected — see the [language requirements guide](/blog/japan-japanese-language-requirements-jobs).
+Language expectations are generally substantial. The work is relationship-driven and conducted largely in Japanese, which means business-level ability is typically expected — see the [language requirements guide](/blog/japan-japanese-language-requirements-jobs).
 
-**Your international background can be a genuine asset**, particularly language ability in a market the company operates in, cultural knowledge of a region, or experience that maps to their business.
+Your international background can be a genuine asset, particularly language ability in a market the company operates in, cultural knowledge of a region, or experience that maps to their business.
 
-**Be specific about which business area interests you** and why, drawing on their actual operations rather than the general idea of trading.
+Be specific about which business area interests you and why, drawing on their actual operations rather than the general idea of trading.
 
-**Expect overseas assignment to be discussed**, and be honest about your willingness. Being posted abroad is part of the deal rather than a perk you opt into.
+Expect overseas assignment to be discussed, and be honest about your willingness. Being posted abroad is part of the deal rather than a perk you opt into.
 
-**Visa sponsorship is routine** at this scale — the [work visa](/blog/japan-work-visa-for-graduates) is applied for by the employer.
+Visa sponsorship is routine at this scale — the [work visa](/blog/japan-work-visa-for-graduates) is applied for by the employer.
 
 ## What these companies actually do
 
@@ -81,11 +81,11 @@ showcase: none
 
 ## What makes hiring here distinctive
 
-**The selection process generally follows the [broader shinsotsu system](/blog/japan-new-grad-shinsotsu-hiring-explained)**, though with particularly intense competition given the sector's prestige, worth preparing especially thoroughly if this is a genuine target.
+The selection process generally follows the [broader shinsotsu system](/blog/japan-new-grad-shinsotsu-hiring-explained), though with particularly intense competition given the sector's prestige, worth preparing especially thoroughly if this is a genuine target.
 
-**Genuine, deep commercial curiosity and a real interest in global business and international affairs are heavily assessed**, worth demonstrating specific, substantive knowledge rather than general enthusiasm.
+Genuine, deep commercial curiosity and a real interest in global business and international affairs are heavily assessed, worth demonstrating specific, substantive knowledge rather than general enthusiasm.
 
-**International assignment is a genuine and common feature of a career at these companies**, worth being honestly prepared for and interested in genuine international relocation as part of a longer career trajectory.
+International assignment is a genuine and common feature of a career at these companies, worth being honestly prepared for and interested in genuine international relocation as part of a longer career trajectory.
 
 ## Common Mistakes
 
@@ -119,9 +119,9 @@ Genuine, substantive commercial curiosity and real interest in global business a
 
 ## Building the specific evidence these employers look for
 
-**Seek out any opportunity to demonstrate genuine international experience or cross-cultural competence before applying**, study abroad, international internships, or substantial engagement with international communities all provide concrete material for the specific questions this sector's selection process tends to emphasise.
+Seek out any opportunity to demonstrate genuine international experience or cross-cultural competence before applying, study abroad, international internships, or substantial engagement with international communities all provide concrete material for the specific questions this sector's selection process tends to emphasise.
 
-**Read the specific company's own published materials on their strategic priorities and recent major initiatives**, rather than relying on general reputation, being able to discuss a specific recent development demonstrates the genuine, active interest these highly competitive employers are looking for.
+Read the specific company's own published materials on their strategic priorities and recent major initiatives, rather than relying on general reputation, being able to discuss a specific recent development demonstrates the genuine, active interest these highly competitive employers are looking for.
 
 ## Frequently Asked Questions
 

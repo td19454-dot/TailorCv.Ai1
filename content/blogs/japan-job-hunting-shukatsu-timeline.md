@@ -43,19 +43,19 @@ The conventional pattern runs roughly like this, though individual companies inc
 
 ## What each stage actually requires
 
-**Self-analysis.** A formal expected step. Reflecting on your history, motivations, strengths and values, and being able to articulate them consistently. This underpins everything written and spoken later, and students who skip it produce applications that read as generic.
+Self-analysis. A formal expected step. Reflecting on your history, motivations, strengths and values, and being able to articulate them consistently. This underpins everything written and spoken later, and students who skip it produce applications that read as generic.
 
-**Industry and company research.** Attending information sessions, understanding the sector, and being able to explain specifically why this company. The same principle that decides applications everywhere applies here with more weight, because the process has more opportunities to test it.
+Industry and company research. Attending information sessions, understanding the sector, and being able to explain specifically why this company. The same principle that decides applications everywhere applies here with more weight, because the process has more opportunities to test it.
 
-**Entry sheets.** Written applications with substantial free-response questions about your motivation, your self-analysis and your reasons for applying. These are read carefully and are a genuine screening stage.
+Entry sheets. Written applications with substantial free-response questions about your motivation, your self-analysis and your reasons for applying. These are read carefully and are a genuine screening stage.
 
-**Aptitude tests.** Standardised testing covering language, numerical reasoning and personality assessment. Widely used and practised for extensively — the [testing guide](/blog/japan-group-interview-and-spi-tests) covers the formats.
+Aptitude tests. Standardised testing covering language, numerical reasoning and personality assessment. Widely used and practised for extensively — the [testing guide](/blog/japan-group-interview-and-spi-tests) covers the formats.
 
-**Group discussions.** Candidates discuss a topic while assessors observe. Assessed on how you work with others rather than on winning the argument.
+Group discussions. Candidates discuss a topic while assessors observe. Assessed on how you work with others rather than on winning the argument.
 
-**Multiple interview rounds.** Frequently three or more, progressing from junior staff to senior management, with consistency across rounds mattering considerably.
+Multiple interview rounds. Frequently three or more, progressing from junior staff to senior management, with consistency across rounds mattering considerably.
 
-**The final interview**, typically with senior management, often as much about character and commitment as capability.
+The final interview, typically with senior management, often as much about character and commitment as capability.
 
 ## Where foreign students go wrong on timing
 
@@ -71,15 +71,15 @@ The conventional pattern runs roughly like this, though individual companies inc
 
 ## If you are outside the standard cycle
 
-**Companies increasingly recruit year-round**, particularly in technology, at foreign-affiliated firms and for specialist roles. This is a genuine and growing alternative to the synchronised system.
+Companies increasingly recruit year-round, particularly in technology, at foreign-affiliated firms and for specialist roles. This is a genuine and growing alternative to the synchronised system.
 
-**Second new graduate hiring** exists for people who graduated recently but did not enter through the standard cycle, or who left a first job early.
+Second new graduate hiring exists for people who graduated recently but did not enter through the standard cycle, or who left a first job early.
 
-**Mid-career hiring** is structured entirely differently and generally expects relevant experience.
+Mid-career hiring is structured entirely differently and generally expects relevant experience.
 
-**Foreign-affiliated companies** frequently run on their own timelines, closer to the conventions of their home markets, and are often more accessible in [English](/blog/japan-english-speaking-jobs-guide).
+Foreign-affiliated companies frequently run on their own timelines, closer to the conventions of their home markets, and are often more accessible in [English](/blog/japan-english-speaking-jobs-guide).
 
-**Graduate school** shifts your cycle by the length of the programme and gives you another pass at the standard system.
+Graduate school shifts your cycle by the length of the programme and gives you another pass at the standard system.
 
 ## What actually happens at each stage
 
@@ -95,11 +95,11 @@ The conventional pattern runs roughly like this, though individual companies inc
 
 ## Building your own calendar around this
 
-**Start attending information sessions and building your target company list well before the formal application window opens**, this preparatory period is genuinely part of the process, not idle time before things properly begin.
+Start attending information sessions and building your target company list well before the formal application window opens, this preparatory period is genuinely part of the process, not idle time before things properly begin.
 
-**Prepare your entry sheet responses with real specificity for each company**, generic responses are noticed, the same discipline that improves [any written application anywhere](/blog/uk-cover-letter-guide-graduates) applies here, with a considerably higher bar for depth and specificity than a brief Western cover letter.
+Prepare your entry sheet responses with real specificity for each company, generic responses are noticed, the same discipline that improves [any written application anywhere](/blog/uk-cover-letter-guide-graduates) applies here, with a considerably higher bar for depth and specificity than a brief Western cover letter.
 
-**Practise aptitude and written tests specifically**, covered in the [group interview and testing guide](/blog/japan-group-interview-and-spi-tests), these are trainable and a real early filter.
+Practise aptitude and written tests specifically, covered in the [group interview and testing guide](/blog/japan-group-interview-and-spi-tests), these are trainable and a real early filter.
 
 ## Managing the workload across a full cycle
 
@@ -135,15 +135,15 @@ Some companies run supplementary or later hiring rounds, and foreign multination
 Enough to build a genuine, well-researched target list rather than a small handful, while still being able to prepare specific, high-quality entry sheet responses for each, quality of preparation per company matters considerably here.
 ## Adjusting your approach if you started late
 
-**If you find yourself starting this process later than the typical timeline suggests is ideal, this is recoverable, though it requires a genuinely more concentrated effort in a shorter window.**
+If you find yourself starting this process later than the typical timeline suggests is ideal, this is recoverable, though it requires a genuinely more concentrated effort in a shorter window.
 
-**Prioritise the companies and industries where you have the strongest genuine fit first**, rather than attempting to cover the same breadth a student who started earlier managed across a longer period, focused depth on fewer targets often outperforms thin coverage across many when time is genuinely constrained.
+Prioritise the companies and industries where you have the strongest genuine fit first, rather than attempting to cover the same breadth a student who started earlier managed across a longer period, focused depth on fewer targets often outperforms thin coverage across many when time is genuinely constrained.
 
-**Some companies and industries run supplementary hiring rounds later in the cycle**, or maintain more flexible, rolling processes throughout the year, particularly true of international companies and some newer domestic firms, worth researching these specifically if your own timeline does not align with the earliest and most competitive window.
+Some companies and industries run supplementary hiring rounds later in the cycle, or maintain more flexible, rolling processes throughout the year, particularly true of international companies and some newer domestic firms, worth researching these specifically if your own timeline does not align with the earliest and most competitive window.
 
 ## Managing multiple parallel processes without losing track
 
-**Given the volume of companies many students engage with simultaneously across this extended timeline, a genuinely organised system for tracking where you stand with each is essential, not optional.**
+**Given the volume of companies many students engage with simultaneously across this extended timeline**, a genuinely organised system for tracking where you stand with each is essential, not optional.
 
 **Record the specific stage, key dates, and any particular details discussed for every company you are engaging with**, a simple spreadsheet works well, this becomes genuinely important as the number of parallel processes grows, since confusing details between companies during a later interview stage reflects poorly and is entirely avoidable with basic organisation.
 

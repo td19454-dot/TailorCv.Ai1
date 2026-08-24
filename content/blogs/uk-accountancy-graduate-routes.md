@@ -33,17 +33,17 @@ showcase: none
 
 ## The employers
 
-**The largest professional services firms.** The most visible, with structured graduate schemes across audit, tax, consulting and advisory. Large intakes, strong training, and high application volumes.
+The largest professional services firms. The most visible, with structured graduate schemes across audit, tax, consulting and advisory. Large intakes, strong training, and high application volumes.
 
-**Mid-tier firms.** Substantial national and international firms with comparable qualifications and training, materially less competition, and frequently earlier client responsibility.
+Mid-tier firms. Substantial national and international firms with comparable qualifications and training, materially less competition, and frequently earlier client responsibility.
 
-**Regional and independent practices.** Smaller intakes, broader early exposure across clients, and a genuinely different working pattern. Consistently overlooked and consistently viable — the [regional argument](/blog/uk-regional-jobs-outside-london) applies directly.
+Regional and independent practices. Smaller intakes, broader early exposure across clients, and a genuinely different working pattern. Consistently overlooked and consistently viable — the [regional argument](/blog/uk-regional-jobs-outside-london) applies directly.
 
-**Industry finance schemes.** Graduate programmes inside businesses, frequently sponsoring the management accounting route.
+Industry finance schemes. Graduate programmes inside businesses, frequently sponsoring the management accounting route.
 
-**The public sector.** Government, the NHS and local authorities run finance graduate schemes with sponsored qualification.
+The public sector. Government, the NHS and local authorities run finance graduate schemes with sponsored qualification.
 
-**The practical instruction:** apply across tiers rather than only to the best-known names. The qualification is the same and the ratio of applicants to places is dramatically better outside the largest firms.
+The practical instruction: apply across tiers rather than only to the best-known names. The qualification is the same and the ratio of applicants to places is dramatically better outside the largest firms.
 
 ## What the training contract involves
 
@@ -59,19 +59,19 @@ showcase: none
 
 ## Selection
 
-**Application, tests, then assessment centre** at most employers.
+Application, tests, then assessment centre at most employers.
 
-**Psychometric and situational judgement tests** are standard — the [preparation](/blog/uk-psychometric-tests-guide) applies, and practising under time pressure is what actually moves scores.
+Psychometric and situational judgement tests are standard — the [preparation](/blog/uk-psychometric-tests-guide) applies, and practising under time pressure is what actually moves scores.
 
-**Video interviews** at many firms, following the [standard format](/blog/uk-video-interview-hirevue-guide).
+Video interviews at many firms, following the [standard format](/blog/uk-video-interview-hirevue-guide).
 
-**Assessment centres** with case work, group exercises and interviews — the [mechanics](/blog/uk-assessment-centre-guide) transfer directly.
+Assessment centres with case work, group exercises and interviews — the [mechanics](/blog/uk-assessment-centre-guide) transfer directly.
 
-**Competency and strengths questions** throughout, drawing on the same [evidence bank](/blog/uk-competency-questions-guide) that serves any UK graduate application.
+Competency and strengths questions throughout, drawing on the same [evidence bank](/blog/uk-competency-questions-guide) that serves any UK graduate application.
 
-**Academic requirements** vary by firm and frequently include degree classification and sometimes prior results — see the [classification guide](/blog/uk-degree-classification-and-employers).
+Academic requirements vary by firm and frequently include degree classification and sometimes prior results — see the [classification guide](/blog/uk-degree-classification-and-employers).
 
-**Commercial awareness** is assessed, though generally less heavily than in [law](/blog/uk-law-training-contract-guide) or investment banking.
+Commercial awareness is assessed, though generally less heavily than in [law](/blog/uk-law-training-contract-guide) or investment banking.
 
 ## Choosing between the qualification routes with your specific goals in mind
 
@@ -90,9 +90,9 @@ showcase: none
 
 ## Balancing study and work during the training contract
 
-**The combination of full-time work and professional examination study is genuinely demanding, worth building realistic expectations about this before starting rather than being caught off guard partway through.**
+The combination of full-time work and professional examination study is genuinely demanding, worth building realistic expectations about this before starting rather than being caught off guard partway through.
 
-**Ask current trainees directly how they actually structure their study time around work commitments**, and what support the specific firm provides beyond the formal study leave allocation, this practical detail varies meaningfully between firms and matters considerably to your actual day-to-day experience during the contract.
+Ask current trainees directly how they actually structure their study time around work commitments, and what support the specific firm provides beyond the formal study leave allocation, this practical detail varies meaningfully between firms and matters considerably to your actual day-to-day experience during the contract.
 
 ## Frequently Asked Questions
 

@@ -31,15 +31,15 @@ A form every employer in the US is legally required to have every new employee c
 
 The form organizes acceptable documents into lists, and you need to present either one document from a specific list that establishes both identity and work authorization together, or one document from each of two other lists — one establishing identity, one establishing work authorization separately.
 
-**The single-document route** is generally the simplest where it applies, because it satisfies both requirements with one item rather than requiring you to locate two separate documents.
+The single-document route is generally the simplest where it applies, because it satisfies both requirements with one item rather than requiring you to locate two separate documents.
 
-**The two-document route** requires one item proving who you are and a separate item proving your authorization to work, and the combination has to be from the correct lists.
+The two-document route requires one item proving who you are and a separate item proving your authorization to work, and the combination has to be from the correct lists.
 
-**Photocopies are not accepted.** Original documents, or in specific limited cases a certified copy, are required — this catches people who assume a scan or a copy will do, and it does not.
+Photocopies are not accepted. Original documents, or in specific limited cases a certified copy, are required — this catches people who assume a scan or a copy will do, and it does not.
 
-**Expired documents are generally not accepted**, with narrow exceptions. Check expiration dates on anything you plan to present well before your start date, not the morning of.
+Expired documents are generally not accepted, with narrow exceptions. Check expiration dates on anything you plan to present well before your start date, not the morning of.
 
-**What this means practically:** identify exactly which documents you will present before your first day, confirm they are current, and have the originals physically with you or ready to bring in during your first few days. This alone eliminates nearly all the risk in the process.
+What this means practically: identify exactly which documents you will present before your first day, confirm they are current, and have the originals physically with you or ready to bring in during your first few days. This alone eliminates nearly all the risk in the process.
 
 ## For international employees specifically
 
@@ -55,11 +55,11 @@ The form organizes acceptable documents into lists, and you need to present eith
 
 A related but separate system, worth understanding because it is frequently confused with the I-9 itself.
 
-**The I-9 is a form every employer must complete for every hire.** E-Verify is an additional, separate system some employers use to electronically confirm the information against government records. Not every employer uses it — participation varies, and some states or types of employers are required to use it while others are not.
+The I-9 is a form every employer must complete for every hire. E-Verify is an additional, separate system some employers use to electronically confirm the information against government records. Not every employer uses it — participation varies, and some states or types of employers are required to use it while others are not.
 
-**Why this matters for you.** Whether an employer is enrolled in E-Verify is directly relevant if you are relying on certain [work authorization extensions](/blog/usa-stem-opt-employer-requirements), where enrollment is one of the specific requirements. This is worth confirming with a prospective employer before accepting an offer if it applies to your situation, rather than assuming and discovering otherwise after you start.
+Why this matters for you. Whether an employer is enrolled in E-Verify is directly relevant if you are relying on certain [work authorization extensions](/blog/usa-stem-opt-employer-requirements), where enrollment is one of the specific requirements. This is worth confirming with a prospective employer before accepting an offer if it applies to your situation, rather than assuming and discovering otherwise after you start.
 
-**It does not make the process harder for you personally** if the documents you present are genuine and current — it simply means the employer's verification step includes an additional electronic check rather than relying on visual document review alone.
+It does not make the process harder for you personally if the documents you present are genuine and current — it simply means the employer's verification step includes an additional electronic check rather than relying on visual document review alone.
 
 ## Preparing before your start date
 
@@ -79,15 +79,15 @@ A related but separate system, worth understanding because it is frequently conf
 
 Understanding the other side removes most of the anxiety from this process.
 
-**Your employer has a legal obligation, and it is theirs rather than yours.** They must examine your documents, record specific details, and retain the form for a defined period. The formality is compliance with a legal requirement, not scepticism about you personally.
+Your employer has a legal obligation, and it is theirs rather than yours. They must examine your documents, record specific details, and retain the form for a defined period. The formality is compliance with a legal requirement, not scepticism about you personally.
 
-**They are required to accept any valid document from the official list.** An employer cannot demand a specific document, or insist on more documentation than the form requires, or treat employees differently based on citizenship or national origin. If something feels wrong in how the process is being conducted, that instinct is worth taking seriously.
+They are required to accept any valid document from the official list. An employer cannot demand a specific document, or insist on more documentation than the form requires, or treat employees differently based on citizenship or national origin. If something feels wrong in how the process is being conducted, that instinct is worth taking seriously.
 
-**They are not immigration experts.** The person completing the form is usually an HR generalist following a checklist. If your situation is unusual, explaining it clearly and calmly, with the relevant document in hand, works far better than assuming they will recognise your category from a description.
+They are not immigration experts. The person completing the form is usually an HR generalist following a checklist. If your situation is unusual, explaining it clearly and calmly, with the relevant document in hand, works far better than assuming they will recognise your category from a description.
 
-**Errors get corrected rather than concealed.** If something is filled in wrong, the correct response is to fix it properly with a note, which HR teams do routinely.
+Errors get corrected rather than concealed. If something is filled in wrong, the correct response is to fix it properly with a note, which HR teams do routinely.
 
-**Nothing about this determines your employment on its own.** Presenting valid documents within the window completes the process, and it is genuinely routine — hundreds of thousands of people complete this form every week without incident.
+Nothing about this determines your employment on its own. Presenting valid documents within the window completes the process, and it is genuinely routine — hundreds of thousands of people complete this form every week without incident.
 
 ## A pre-start checklist
 
@@ -110,15 +110,15 @@ None of this is difficult. All of it is much harder to do in a rush during your 
 
 Worth being direct about, because the process is genuinely routine for most people and genuinely consequential for a smaller group.
 
-**For a US citizen with a current passport or standard identification**, this is fifteen minutes of paperwork and nothing more. The advice in this article amounts to: bring the originals.
+For a US citizen with a current passport or standard identification, this is fifteen minutes of paperwork and nothing more. The advice in this article amounts to: bring the originals.
 
-**For an international employee**, the stakes are higher. Your ability to work depends on a document with an expiration date, your employer's willingness to support future authorization depends on questions worth [asking before you accept](/blog/usa-stem-opt-employer-requirements), and errors in this paperwork can compound into problems in applications years later.
+For an international employee, the stakes are higher. Your ability to work depends on a document with an expiration date, your employer's willingness to support future authorization depends on questions worth [asking before you accept](/blog/usa-stem-opt-employer-requirements), and errors in this paperwork can compound into problems in applications years later.
 
-**For someone whose authorization is transitioning** — moving between categories, awaiting a document, or approaching an expiration — this is the moment where an unclear situation becomes visible. Getting advice from your international office before your start date, rather than improvising at the HR desk, is the difference between a routine form and a genuine problem.
+For someone whose authorization is transitioning — moving between categories, awaiting a document, or approaching an expiration — this is the moment where an unclear situation becomes visible. Getting advice from your international office before your start date, rather than improvising at the HR desk, is the difference between a routine form and a genuine problem.
 
-**For anyone whose documents show inconsistent details**, this is where it surfaces, and it is much easier to resolve in advance than under a three-day deadline.
+For anyone whose documents show inconsistent details, this is where it surfaces, and it is much easier to resolve in advance than under a three-day deadline.
 
-**The practical takeaway:** if you are in the first group, prepare lightly and move on. If you are in any of the others, treat this as one of the specific administrative items worth handling deliberately before your first day, alongside the [broader documentation discipline](/blog/first-job-abroad-practical-checklist) that pays off repeatedly over an international career.
+The practical takeaway: if you are in the first group, prepare lightly and move on. If you are in any of the others, treat this as one of the specific administrative items worth handling deliberately before your first day, alongside the [broader documentation discipline](/blog/first-job-abroad-practical-checklist) that pays off repeatedly over an international career.
 
 ## Keeping your own copies
 
@@ -149,19 +149,19 @@ A small habit with disproportionate value later, and one almost nobody establish
 
 The I-9 is one of several forms in your first days, and knowing what else is coming prevents a scramble.
 
-**Tax withholding forms.** You will complete a form determining how much tax is withheld from each paycheck. Filling this in carelessly produces an incorrect withholding all year, which either overcharges you or leaves you with an unexpected bill. Take the ten minutes to complete it thoughtfully.
+Tax withholding forms. You will complete a form determining how much tax is withheld from each paycheck. Filling this in carelessly produces an incorrect withholding all year, which either overcharges you or leaves you with an unexpected bill. Take the ten minutes to complete it thoughtfully.
 
-**Direct deposit authorization.** Your bank details for payroll. This requires an account, which for someone who has just relocated may not exist yet — one more reason the [order of operations after a move](/blog/usa-relocation-and-cost-of-living-first-job) matters.
+Direct deposit authorization. Your bank details for payroll. This requires an account, which for someone who has just relocated may not exist yet — one more reason the [order of operations after a move](/blog/usa-relocation-and-cost-of-living-first-job) matters.
 
-**Benefits enrollment.** Time-limited, and covered in full in the [benefits guide](/blog/usa-401k-benefits-explained-new-grad). Do not defer it.
+Benefits enrollment. Time-limited, and covered in full in the [benefits guide](/blog/usa-401k-benefits-explained-new-grad). Do not defer it.
 
-**Emergency contact and personal details.**
+Emergency contact and personal details.
 
-**Confidentiality, IP assignment and policy acknowledgements.** Worth actually reading, particularly any clause about work you do outside the job if you maintain side [projects](/blog/fresher-resume-projects-that-get-interviews).
+Confidentiality, IP assignment and policy acknowledgements. Worth actually reading, particularly any clause about work you do outside the job if you maintain side [projects](/blog/fresher-resume-projects-that-get-interviews).
 
-**A [background check](/blog/usa-background-check-what-employers-see) authorization** at many employers, which is separate from the I-9 and verifies employment history, education and sometimes more. Everything you claimed should survive it, which is why [accuracy on the resume](/blog/usa-gpa-requirements-employers) matters at exactly this moment.
+A [background check](/blog/usa-background-check-what-employers-see) authorization at many employers, which is separate from the I-9 and verifies employment history, education and sometimes more. Everything you claimed should survive it, which is why [accuracy on the resume](/blog/usa-gpa-requirements-employers) matters at exactly this moment.
 
-**Keep a copy of everything you sign**, in a folder you control rather than only in an employer system you may lose access to.
+Keep a copy of everything you sign, in a folder you control rather than only in an employer system you may lose access to.
 
 ### What if I am starting before my authorization document arrives?
 

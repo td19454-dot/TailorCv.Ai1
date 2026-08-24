@@ -35,17 +35,17 @@ They exist because product management is difficult to hire for at entry level. T
 
 The interviews are unusual and prepared candidates outperform unprepared ones dramatically, because the format is unfamiliar.
 
-**Product sense.** The core round. "How would you improve [product]?" or "Design a product for [user group]." What is assessed: whether you start from a user and a problem rather than from a feature; whether you can structure your thinking visibly; whether you prioritise rather than listing everything; and whether you can say why one option beats another.
+Product sense. The core round. "How would you improve [product]?" or "Design a product for [user group]." What is assessed: whether you start from a user and a problem rather than from a feature; whether you can structure your thinking visibly; whether you prioritise rather than listing everything; and whether you can say why one option beats another.
 
-**Analytical and metrics questions.** "What metric would you use for this feature?" "Usage dropped fifteen percent last week — what happened?" These test whether you can reason about measurement and diagnose from data rather than guess.
+Analytical and metrics questions. "What metric would you use for this feature?" "Usage dropped fifteen percent last week — what happened?" These test whether you can reason about measurement and diagnose from data rather than guess.
 
-**Estimation.** Market sizing and back-of-envelope work, assessed on reasoning and stated assumptions rather than the number.
+Estimation. Market sizing and back-of-envelope work, assessed on reasoning and stated assumptions rather than the number.
 
-**Technical literacy.** Not coding, usually. Whether you can talk to engineers credibly, understand trade-offs, and not propose things that are obviously impossible.
+Technical literacy. Not coding, usually. Whether you can talk to engineers credibly, understand trade-offs, and not propose things that are obviously impossible.
 
-**Behavioural.** Influence without authority, handling disagreement, and dealing with ambiguity — the actual daily requirements of the job. The [story bank approach](/blog/usa-behavioral-interview-star-campus) applies.
+Behavioural. Influence without authority, handling disagreement, and dealing with ambiguity — the actual daily requirements of the job. The [story bank approach](/blog/usa-behavioral-interview-star-campus) applies.
 
-**Written exercises**, at some firms. Product managers write constantly, and a clear one-page argument is genuinely differentiating.
+Written exercises, at some firms. Product managers write constantly, and a clear one-page argument is genuinely differentiating.
 
 ## How to answer a product sense question
 
@@ -73,17 +73,17 @@ Fifteen minutes, narrated aloud, with the interviewer interrupting. Practise it 
 
 The objection is always that you cannot get product experience without a product role. That is not what the assessment measures.
 
-**[Ship something](/portfolio).** A tool, an app, a site — anything with real users, even ten of them. What matters is not the engineering; it is that you made decisions about what to build and can explain them. "I removed the signup screen because eight of my first twelve users dropped there" is exactly the reasoning the [interview](/blog/usa-behavioral-interview-star-campus) tests.
+[Ship something](/portfolio). A tool, an app, a site — anything with real users, even ten of them. What matters is not the engineering; it is that you made decisions about what to build and can explain them. "I removed the signup screen because eight of my first twelve users dropped there" is exactly the reasoning the [interview](/blog/usa-behavioral-interview-star-campus) tests.
 
-**Write about products.** A short, sharp analysis of a product decision — what the company probably wanted, what the trade-off was, what you would have done — demonstrates the skill directly and gives you something to link.
+Write about products. A short, sharp analysis of a product decision — what the company probably wanted, what the trade-off was, what you would have done — demonstrates the skill directly and gives you something to link.
 
-**Run something with users and constraints.** A society, an event, a campus service. Prioritising with limited resources and unhappy stakeholders is the job.
+Run something with users and constraints. A society, an event, a campus service. Prioritising with limited resources and unhappy stakeholders is the job.
 
-**Do analytics or support work.** Both are excellent product preparation and both are far easier to get. Support in particular gives you unmatched exposure to what users actually struggle with.
+Do analytics or support work. Both are excellent product preparation and both are far easier to get. Support in particular gives you unmatched exposure to what users actually struggle with.
 
-**Talk to users of something you did not build**, then write up what you learned. Almost no applicant does this, and it is directly relevant.
+Talk to users of something you did not build, then write up what you learned. Almost no applicant does this, and it is directly relevant.
 
-**And use products deliberately.** Notice decisions, ask why they were made, form opinions. Interviewers can tell within two minutes whether someone thinks about products or has only read about product management.
+And use products deliberately. Notice decisions, ask why they were made, form opinions. Interviewers can tell within two minutes whether someone thinks about products or has only read about product management.
 
 ## The alternative routes, which are larger
 
@@ -105,9 +105,9 @@ The practical advice: apply to APM programmes because they are excellent if you 
 
 Structure is easier to use with an example. The question: *"How would you improve a food delivery app for people who order alone?"*
 
-**A weak answer** begins immediately: "I'd add a smaller portion option, better recommendations, maybe a loyalty programme for frequent solo orders, and improved packaging..." — a list, no user, no priority, no reasoning.
+A weak answer begins immediately: "I'd add a smaller portion option, better recommendations, maybe a loyalty programme for frequent solo orders, and improved packaging..." — a list, no user, no priority, no reasoning.
 
-**A stronger answer:**
+A stronger answer:
 
 > "First, what are we optimising for — more orders from existing solo users, or attracting new ones? I'll assume retention of existing solo users unless you'd rather I took acquisition.
 >
@@ -123,7 +123,7 @@ Structure is easier to use with an example. The question: *"How would you improv
 >
 > What I'd want to know before committing is what share of abandoned baskets among solo users cite the fee, because that would tell me whether I've picked the right problem."
 
-**Why it works:** it clarifies, narrows twice, names concrete frictions, prioritises with an explicit reason, proposes options with trade-offs, commits to one, defines success and failure, and ends by naming its own uncertainty. That is the whole rubric.
+Why it works: it clarifies, narrows twice, names concrete frictions, prioritises with an explicit reason, proposes options with trade-offs, commits to one, defines success and failure, and ends by naming its own uncertainty. That is the whole rubric.
 
 ## The analytical and metrics rounds
 
@@ -143,19 +143,19 @@ Underprepared relative to product sense, and at data-driven companies they carry
 
 The written application matters more here than in most technical hiring, because product management is a writing job and the reviewers know it.
 
-**Answer "why product" with something specific.** Not that you like working with people and enjoy technology. A moment where you made a decision about what to build and why — even a small one — is what distinguishes an answer.
+Answer "why product" with something specific. Not that you like working with people and enjoy technology. A moment where you made a decision about what to build and why — even a small one — is what distinguishes an answer.
 
-**Show a product opinion.** Many applications ask for your favourite product and what you would change. This is the whole application in one question. Pick something you use genuinely, name a specific decision it made, and say what you would do differently and why. Vague praise fails; a considered criticism of something you clearly use succeeds.
+Show a product opinion. Many applications ask for your favourite product and what you would change. This is the whole application in one question. Pick something you use genuinely, name a specific decision it made, and say what you would do differently and why. Vague praise fails; a considered criticism of something you clearly use succeeds.
 
-**Write clearly.** Short sentences, a point per paragraph, the conclusion first. Reviewers are explicitly assessing whether you can write, because most of the job is written.
+Write clearly. Short sentences, a point per paragraph, the conclusion first. Reviewers are explicitly assessing whether you can write, because most of the job is written.
 
-**Link to something you shipped.** Even small. The link does more than the description.
+Link to something you shipped. Even small. The link does more than the description.
 
-**Do not use frameworks in written answers.** They read as recited, exactly as they do in [consulting cases](/blog/usa-consulting-case-interview-campus).
+Do not use frameworks in written answers. They read as recited, exactly as they do in [consulting cases](/blog/usa-consulting-case-interview-campus).
 
-**Apply broadly across the function**, not only to the named programmes. Associate product roles at mid-sized companies are numerous, less contested, and frequently give you more responsibility sooner than a rotation does.
+Apply broadly across the function, not only to the named programmes. Associate product roles at mid-sized companies are numerous, less contested, and frequently give you more responsibility sooner than a rotation does.
 
-**And get a referral if you can.** Intakes this small mean the screen is brutal, and [an internal referral](/blog/usa-cold-email-networking-students) is the difference between being read and being counted.
+And get a referral if you can. Intakes this small mean the screen is brutal, and [an internal referral](/blog/usa-cold-email-networking-students) is the difference between being read and being counted.
 
 ## Behavioural rounds, which decide close calls
 
@@ -186,17 +186,17 @@ Product management is a job done entirely through other people, so the behaviour
 
 Useful for deciding whether you want it, because the day-to-day surprises people who imagined a strategic role.
 
-**Most of your time is communication.** Talking to engineers, designers, analysts, support and sales. Writing documents. Running meetings. Very little of the week looks like deciding.
+Most of your time is communication. Talking to engineers, designers, analysts, support and sales. Writing documents. Running meetings. Very little of the week looks like deciding.
 
-**You have no authority.** Nobody reports to you and you cannot instruct anyone. Everything happens because you persuaded people, which is why the behavioural round tests influence without authority so heavily.
+You have no authority. Nobody reports to you and you cannot instruct anyone. Everything happens because you persuaded people, which is why the behavioural round tests influence without authority so heavily.
 
-**You will be wrong in public.** Features you championed will underperform, and the data will say so. Owning that quickly is the difference between being trusted and not.
+You will be wrong in public. Features you championed will underperform, and the data will say so. Owning that quickly is the difference between being trusted and not.
 
-**A lot of it is unglamorous.** Chasing decisions, clarifying requirements, resolving disagreements about scope, writing the same explanation four times for different audiences.
+A lot of it is unglamorous. Chasing decisions, clarifying requirements, resolving disagreements about scope, writing the same explanation four times for different audiences.
 
-**The rotations are genuinely different.** A consumer surface and an internal platform are different jobs, and the [rotational trade-off](/blog/global-rotational-graduate-programmes) applies — breadth at the cost of depth, and placement decided partly by business need rather than by your preference.
+The rotations are genuinely different. A consumer surface and an internal platform are different jobs, and the [rotational trade-off](/blog/global-rotational-graduate-programmes) applies — breadth at the cost of depth, and placement decided partly by business need rather than by your preference.
 
-**What makes it worth it**, for people it suits: you sit at the point where decisions get made, you see the whole system rather than one component, and the work compounds into a genuinely broad understanding of how products and businesses fit together.
+What makes it worth it, for people it suits: you sit at the point where decisions get made, you see the whole system rather than one component, and the work compounds into a genuinely broad understanding of how products and businesses fit together.
 
 ## Preparing in six weeks
 
@@ -216,7 +216,7 @@ Useful for deciding whether you want it, because the day-to-day surprises people
 
 If product management interests you and you have no experience, the highest-return action is not reading about frameworks.
 
-**Pick a product you use daily and write 400 words about one decision it made.** What were they probably optimising for. What trade-off did they accept. Who is worse off because of it. What would you have done instead, and how would you know if you were right.
+Pick a product you use daily and write 400 words about one decision it made. What were they probably optimising for. What trade-off did they accept. Who is worse off because of it. What would you have done instead, and how would you know if you were right.
 
 That single exercise does four things at once. It builds the muscle the product sense interview tests. It produces something you can link to in an application. It gives you a specific answer to "tell me about a product you admire and what you would change". And it tells you honestly whether you enjoy this kind of thinking — which is worth finding out before you spend a season on it.
 

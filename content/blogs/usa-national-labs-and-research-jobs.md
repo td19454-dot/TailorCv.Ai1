@@ -31,21 +31,21 @@ Their scale is not widely appreciated by students. Individually these are organi
 
 The stereotype is a physics PhD. The reality is much broader.
 
-**Software engineers and computational scientists.** Scientific computing, simulation, data pipelines, visualisation, high-performance computing. These are real software jobs on unusually interesting problems, and the labs struggle to compete with industry for candidates, which works in your favour.
+Software engineers and computational scientists. Scientific computing, simulation, data pipelines, visualisation, high-performance computing. These are real software jobs on unusually interesting problems, and the labs struggle to compete with industry for candidates, which works in your favour.
 
-**Data scientists and statisticians.** Enormous experimental datasets and genuine analytical difficulty.
+Data scientists and statisticians. Enormous experimental datasets and genuine analytical difficulty.
 
-**Engineers of every discipline.** Mechanical, electrical, civil, nuclear, materials, systems. Instrument design, facility operation, capital projects.
+Engineers of every discipline. Mechanical, electrical, civil, nuclear, materials, systems. Instrument design, facility operation, capital projects.
 
-**Technicians and operators.** Skilled roles supporting experimental facilities, frequently open at associate and bachelor's level.
+Technicians and operators. Skilled roles supporting experimental facilities, frequently open at associate and bachelor's level.
 
-**Postdoctoral researchers**, which is the traditional route and only one of several.
+Postdoctoral researchers, which is the traditional route and only one of several.
 
-**Cybersecurity, IT and networking.** Significant functions given what the labs hold.
+Cybersecurity, IT and networking. Significant functions given what the labs hold.
 
-**Project management, procurement, finance, communications and safety.** Large organisations need all of it.
+Project management, procurement, finance, communications and safety. Large organisations need all of it.
 
-**The point for a job-seeking graduate:** search the [careers page](/blog/usa-handshake-linkedin-job-search) by function rather than by discipline. A computer science graduate scanning for "physicist" concludes there is nothing there, when the same lab has thirty open software roles.
+The point for a job-seeking graduate: search the [careers page](/blog/usa-handshake-linkedin-job-search) by function rather than by discipline. A computer science graduate scanning for "physicist" concludes there is nothing there, when the same lab has thirty open software roles.
 
 ## The entry routes
 
@@ -65,17 +65,17 @@ The stereotype is a physics PhD. The reality is much broader.
 
 The question that decides whether this is viable for you, and the answer is more encouraging than for direct federal employment.
 
-**Some positions require citizenship.** Particularly at defence-oriented labs, in nuclear work, and anywhere involving classified material. These are stated explicitly on the posting.
+Some positions require citizenship. Particularly at defence-oriented labs, in nuclear work, and anywhere involving classified material. These are stated explicitly on the posting.
 
-**Many positions do not.** Open scientific research — energy, climate, biology, basic physics, much of computing — frequently has no citizenship requirement, and the labs employ substantial numbers of foreign nationals.
+Many positions do not. Open scientific research — energy, climate, biology, basic physics, much of computing — frequently has no citizenship requirement, and the labs employ substantial numbers of foreign nationals.
 
-**Clearance takes time where required.** Months, sometimes much longer, and the posting will say.
+Clearance takes time where required. Months, sometimes much longer, and the posting will say.
 
-**Foreign national access has its own process.** Even for unclassified work, labs have procedures for approving access by non-citizens, which can add lead time. Ask about it early rather than discovering it after an offer.
+Foreign national access has its own process. Even for unclassified work, labs have procedures for approving access by non-citizens, which can add lead time. Ask about it early rather than discovering it after an offer.
 
-**Some labs are cap-exempt.** This is the genuinely valuable part. Labs operated by universities, and organisations qualifying as non-profit or governmental research organisations, may be able to sponsor H-1B outside the annual cap — no lottery, no filing season. The [cap-exempt guide](/blog/usa-cap-exempt-h1b-employers) explains the mechanism, and it makes the labs one of the most useful segments an international graduate can look at.
+Some labs are cap-exempt. This is the genuinely valuable part. Labs operated by universities, and organisations qualifying as non-profit or governmental research organisations, may be able to sponsor H-1B outside the annual cap — no lottery, no filing season. The [cap-exempt guide](/blog/usa-cap-exempt-h1b-employers) explains the mechanism, and it makes the labs one of the most useful segments an international graduate can look at.
 
-**Ask two questions in the first conversation:** does this position require citizenship, and is this employer cap-exempt for H-1B purposes. Both have short factual answers and both determine whether the application is worth making.
+Ask two questions in the first conversation: does this position require citizenship, and is this employer cap-exempt for H-1B purposes. Both have short factual answers and both determine whether the application is worth making.
 
 ## What the work is like
 
@@ -93,17 +93,17 @@ The question that decides whether this is viable for you, and the answer is more
 
 ## Applying well
 
-**Apply to the [internship](/blog/japan-internships-for-international-students) programmes early.** Autumn and early winter for the following summer, which catches students who expect a spring deadline.
+Apply to the [internship](/blog/japan-internships-for-international-students) programmes early. Autumn and early winter for the following summer, which catches students who expect a spring deadline.
 
-**Write for a scientific reader.** These [applications](/blog/usa-handshake-linkedin-job-search) frequently want a statement of research interest, and it should describe what you have actually done and what you want to work on, specifically. A generic enthusiasm statement performs badly with reviewers who are working scientists.
+Write for a scientific reader. These [applications](/blog/usa-handshake-linkedin-job-search) frequently want a statement of research interest, and it should describe what you have actually done and what you want to work on, specifically. A generic enthusiasm statement performs badly with reviewers who are working scientists.
 
-**Name the group or facility.** Labs are collections of divisions with distinct programmes. An application naming a specific group and explaining why reads completely differently from one addressed to the lab in general.
+Name the group or facility. Labs are collections of divisions with distinct programmes. An application naming a specific group and explaining why reads completely differently from one addressed to the lab in general.
 
-**Contact researchers directly.** This works better here than in almost any other sector. Scientists respond to specific, informed questions about their work, they are rarely contacted by students seeking staff roles, and an internal advocate matters. Your own professors are frequently one connection away — ask them.
+Contact researchers directly. This works better here than in almost any other sector. Scientists respond to specific, informed questions about their work, they are rarely contacted by students seeking staff roles, and an internal advocate matters. Your own professors are frequently one connection away — ask them.
 
-**Have references ready early.** Academic-style applications ask for them sooner than corporate ones.
+Have references ready early. Academic-style applications ask for them sooner than corporate ones.
 
-**Expect a longer process.** Weeks to months, plus any clearance or foreign national access processing. Keep other applications running in parallel.
+Expect a longer process. Weeks to months, plus any clearance or foreign national access processing. Keep other applications running in parallel.
 
 ## Contacting researchers directly
 
@@ -127,17 +127,17 @@ This works better at national labs than in almost any other sector, and it is th
 
 Under-known, and one of the most useful options available to a bachelor's graduate who is unsure about a PhD.
 
-**What it is.** A one or two year paid research appointment at a lab for someone who has recently completed a bachelor's degree, working in a research group on real projects.
+What it is. A one or two year paid research appointment at a lab for someone who has recently completed a bachelor's degree, working in a research group on real projects.
 
-**Why it is valuable.** It answers a question that is otherwise expensive to answer. A PhD is five or six years and people commit to it on very little information about whether they enjoy research. A postbac gives you a year inside a real group, doing real work, before making that decision.
+Why it is valuable. It answers a question that is otherwise expensive to answer. A PhD is five or six years and people commit to it on very little information about whether they enjoy research. A postbac gives you a year inside a real group, doing real work, before making that decision.
 
-**What it leads to.** Three common outcomes, all reasonable: into a PhD with a much stronger application and a clear research direction; into a permanent technical staff position at the lab; or into industry with a year of genuine research experience and a publication or two.
+What it leads to. Three common outcomes, all reasonable: into a PhD with a much stronger application and a clear research direction; into a permanent technical staff position at the lab; or into industry with a year of genuine research experience and a publication or two.
 
-**Who it suits.** Anyone finishing a science or engineering bachelor's who is interested in research and not certain, and anyone whose undergraduate institution had limited research opportunities.
+Who it suits. Anyone finishing a science or engineering bachelor's who is interested in research and not certain, and anyone whose undergraduate institution had limited research opportunities.
 
-**How to apply.** These are advertised both centrally through agency programmes and directly by labs, and direct contact with a group is frequently how they get filled. The [outreach approach](/blog/usa-cold-email-networking-students) applies, adapted to a scientific audience as above.
+How to apply. These are advertised both centrally through agency programmes and directly by labs, and direct contact with a group is frequently how they get filled. The [outreach approach](/blog/usa-cold-email-networking-students) applies, adapted to a scientific audience as above.
 
-**One caution.** It is a term appointment, not a permanent job, so plan the next step from the start rather than in the final months.
+One caution. It is a term appointment, not a permanent job, so plan the next step from the start rather than in the final months.
 
 ## What the labs pay attention to
 
@@ -161,15 +161,15 @@ Applications here are read by working scientists and engineers rather than by ge
 
 Location is the factor that decides most people's answer here, and it deserves a clear look rather than a quick dismissal.
 
-**Many labs are deliberately remote.** Large facilities need space, isolation, or specific geography. Some sit in small towns hours from a major city.
+Many labs are deliberately remote. Large facilities need space, isolation, or specific geography. Some sit in small towns hours from a major city.
 
-**Some are in or near large metropolitan areas**, attached to universities or in established research corridors.
+Some are in or near large metropolitan areas, attached to universities or in established research corridors.
 
-**What remote actually means in practice.** Housing is dramatically cheaper, commutes are short, and the lab is frequently the centre of a genuine scientific community with colleagues who are also your neighbours. It also means a smaller job market for a partner, fewer options if you leave the lab, and a social life built largely around the same institution.
+What remote actually means in practice. Housing is dramatically cheaper, commutes are short, and the lab is frequently the centre of a genuine scientific community with colleagues who are also your neighbours. It also means a smaller job market for a partner, fewer options if you leave the lab, and a social life built largely around the same institution.
 
-**Why it is worth taking seriously either way.** Some of the best-resourced technical work in the country happens in places graduates rule out without looking. Equally, taking a role in a location you will be unhappy in is a bad trade regardless of the work — and people do it, then leave within eighteen months.
+Why it is worth taking seriously either way. Some of the best-resourced technical work in the country happens in places graduates rule out without looking. Equally, taking a role in a location you will be unhappy in is a bad trade regardless of the work — and people do it, then leave within eighteen months.
 
-**A reasonable approach:** visit before accepting if you can, ask current staff what people do outside work, and ask specifically what happens to partners looking for employment. Labs are used to that question and the good ones have answers.
+A reasonable approach: visit before accepting if you can, ask current staff what people do outside work, and ask specifically what happens to partners looking for employment. Labs are used to that question and the good ones have answers.
 
 ## Common Mistakes
 
@@ -200,15 +200,15 @@ They differ more than their common description suggests, and the differences sho
 
 Useful framing, because the labs sit between the two and people evaluate them against the wrong benchmark.
 
-**Against an industry technical role.** Lower pay, particularly in software and data. Much longer project horizons. Better job security and more predictable hours. Far more freedom to publish. Less product pressure and less commercial urgency, which is either relief or frustration depending on your temperament.
+Against an industry technical role. Lower pay, particularly in software and data. Much longer project horizons. Better job security and more predictable hours. Far more freedom to publish. Less product pressure and less commercial urgency, which is either relief or frustration depending on your temperament.
 
-**Against an academic postdoc.** Generally better paid and considerably more stable, with real budgets and equipment. Less freedom to set your own research direction, since lab work is programme-driven and funded against goals. Fewer [teaching](/blog/japan-jet-programme-and-teaching-jobs) obligations. Staff positions are permanent in a way academic soft-money posts are not, which matters a great deal to anyone who has watched a postdoc chain.
+Against an academic postdoc. Generally better paid and considerably more stable, with real budgets and equipment. Less freedom to set your own research direction, since lab work is programme-driven and funded against goals. Fewer [teaching](/blog/japan-jet-programme-and-teaching-jobs) obligations. Staff positions are permanent in a way academic soft-money posts are not, which matters a great deal to anyone who has watched a postdoc chain.
 
-**Against a PhD, for a bachelor's graduate.** A postbaccalaureate appointment is a much cheaper way to find out whether you want a research career, and it strengthens a PhD application substantially if you decide you do.
+Against a PhD, for a bachelor's graduate. A postbaccalaureate appointment is a much cheaper way to find out whether you want a research career, and it strengthens a PhD application substantially if you decide you do.
 
-**On career optionality.** Lab experience travels well into industry, particularly in specialised technical areas, and into academia. What it does not do is put you on a fast commercial track — someone who wants to be a senior engineer at a major technology company in five years is choosing the slower path.
+On career optionality. Lab experience travels well into industry, particularly in specialised technical areas, and into academia. What it does not do is put you on a fast commercial track — someone who wants to be a senior engineer at a major technology company in five years is choosing the slower path.
 
-**And on the thing people underweight:** for an international graduate, the possibility of [cap-exempt sponsorship](/blog/usa-cap-exempt-h1b-employers) can outweigh every other line in this comparison, because it converts an uncertain future into a plannable one.
+And on the thing people underweight: for an international graduate, the possibility of [cap-exempt sponsorship](/blog/usa-cap-exempt-h1b-employers) can outweigh every other line in this comparison, because it converts an uncertain future into a plannable one.
 
 ## A short application checklist
 

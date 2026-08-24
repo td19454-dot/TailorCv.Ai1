@@ -23,7 +23,7 @@ showcase: none
 
 **Each major city has a genuinely distinct economic character, rather than being an interchangeable node in a single national job market**, choosing where to build a career deliberately, based on where your target sector actually concentrates, produces a materially better outcome than defaulting to whichever city has the strongest general reputation.
 
-**The "Big Four" — Beijing, Shanghai, Guangzhou, and Shenzhen — each have a genuinely distinct character worth understanding individually rather than treating as interchangeable "first-tier" options:**
+**The "Big Four" — Beijing**, Shanghai, Guangzhou, and Shenzhen — each have a genuinely distinct character worth understanding individually rather than treating as interchangeable "first-tier" options:
 
 - **Shanghai** is China's financial centre — the Lujiazui district houses the Shanghai Stock Exchange and a dense concentration of domestic and multinational finance, alongside a strong multinational corporate headquarters presence and consumer/retail sector strength.
 - **Beijing** anchors technology and internet at a policy-adjacent scale, alongside being the seat of national government and a major hub for media, education, and research institutions — the two functions (tech and policy) sit closer together here than in most other cities.
@@ -34,9 +34,9 @@ Matching your target industry to where it actually operates at scale, rather tha
 
 ## The cost of living factor
 
-**Real cost of living, particularly housing, differs substantially even among the major first-tier cities themselves**, not only between first-tier and lower-tier cities, comparing headline salary figures across cities without adjusting for this specific variation is a common and costly error, exactly the discipline covered in the [salary expectations guide](/blog/china-graduate-salary-expectations).
+Real cost of living, particularly housing, differs substantially even among the major first-tier cities themselves, not only between first-tier and lower-tier cities, comparing headline salary figures across cities without adjusting for this specific variation is a common and costly error, exactly the discipline covered in the [salary expectations guide](/blog/china-graduate-salary-expectations).
 
-**Build the real comparison using actual current housing costs for the specific city and neighbourhood you would realistically live in**, rather than a general reputation about which city is expensive, reputations lag actual market movement and specific neighbourhood variation within a single city can be substantial.
+Build the real comparison using actual current housing costs for the specific city and neighbourhood you would realistically live in, rather than a general reputation about which city is expensive, reputations lag actual market movement and specific neighbourhood variation within a single city can be substantial.
 
 ## Second-tier cities as a genuine alternative
 
@@ -48,9 +48,9 @@ Matching your target industry to where it actually operates at scale, rather tha
 
 ## Settlement and long-term considerations
 
-**Long-term residency and settlement status considerations, covered in detail in the [hukou and city settlement guide](/blog/china-hukou-and-city-settlement-graduates), vary meaningfully by city, with major first-tier cities generally operating stricter systems than smaller cities, several of which actively compete for graduate talent through more accessible pathways.**
+Long-term residency and settlement status considerations, covered in detail in the [hukou and city settlement guide](/blog/china-hukou-and-city-settlement-graduates), vary meaningfully by city, with major first-tier cities generally operating stricter systems than smaller cities, several of which actively compete for graduate talent through more accessible pathways.
 
-**This is worth weighing alongside the immediate job opportunity if long-term settlement in a specific city is a genuine priority for you**, rather than deciding purely on the basis of the current job offer without considering where you actually want to build a longer-term life.
+This is worth weighing alongside the immediate job opportunity if long-term settlement in a specific city is a genuine priority for you, rather than deciding purely on the basis of the current job offer without considering where you actually want to build a longer-term life.
 
 ## Making the decision deliberately
 
@@ -66,9 +66,9 @@ Matching your target industry to where it actually operates at scale, rather tha
 
 ## Weighing the genuine trade-offs of each city honestly
 
-**Each major city carries its own specific trade-offs beyond simply cost of living and sector strength**, pace of life, climate, distance from family, and the specific character of the local professional and social community all matter genuinely, worth weighing these alongside the purely financial and career calculations rather than treating the decision as a pure spreadsheet exercise.
+Each major city carries its own specific trade-offs beyond simply cost of living and sector strength, pace of life, climate, distance from family, and the specific character of the local professional and social community all matter genuinely, worth weighing these alongside the purely financial and career calculations rather than treating the decision as a pure spreadsheet exercise.
 
-**Talk to people who have actually made the specific move you are considering**, someone who moved from your home region to your target city, ideally in a similar field, can speak honestly to adjustments you would not anticipate from research alone.
+Talk to people who have actually made the specific move you are considering, someone who moved from your home region to your target city, ideally in a similar field, can speak honestly to adjustments you would not anticipate from research alone.
 
 ## Building flexibility into your early career plan
 

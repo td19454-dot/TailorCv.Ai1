@@ -244,7 +244,7 @@ Great experience and keywords - in a two-column template.
 Content disappears.
 Fix: Switch to a [single-column ATS template](https://www.thetailorcv.com/templates).
 
-**Pattern 3: Strong experience, no [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) check**
+**Pattern 3: Strong experience**, no [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) check
 A genuinely qualified candidate who never verified their match score.
 Filtered out before a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) sees their name.
 Fix: Check your score at [TailorCV](https://www.thetailorcv.com/solutions) before every application.

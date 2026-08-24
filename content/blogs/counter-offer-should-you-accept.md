@@ -73,7 +73,7 @@ Ask directly:
 - What is the timeline for the promotion being discussed?
 - Who would I report to?
 
-**If the answer to most of these is "we will work that out", the counter-offer is money plus reassurance.**
+**If the answer to most of these is "we will work that out"**, the counter-offer is money plus reassurance.
 
 ### Would this have happened anyway?
 

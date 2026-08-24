@@ -33,19 +33,19 @@ showcase: portfolio
 
 ## Getting there affordably
 
-**Join the professional society for your field as a student member.** Student rates are usually a small fraction of professional membership and frequently include discounted conference registration, access to a members-only job board, and local chapter events.
+Join the professional society for your field as a student member. Student rates are usually a small fraction of professional membership and frequently include discounted conference registration, access to a members-only job board, and local chapter events.
 
-**Apply for travel grants and scholarships early.** Many conferences and societies fund student attendance specifically, and these programmes are frequently undersubscribed. Deadlines are usually months before the event. The Grace Hopper Celebration's scholarship program, for example, is well known for covering registration, hotel, and a meaningful portion of travel costs for accepted applicants — the application itself is a short form, not a competitive essay contest, and it opens far enough in advance that "I found out too late" is rarely the real barrier, missing the deadline usually is.
+Apply for travel grants and scholarships early. Many conferences and societies fund student attendance specifically, and these programmes are frequently undersubscribed. Deadlines are usually months before the event. The Grace Hopper Celebration's scholarship program, for example, is well known for covering registration, hotel, and a meaningful portion of travel costs for accepted applicants — the application itself is a short form, not a competitive essay contest, and it opens far enough in advance that "I found out too late" is rarely the real barrier, missing the deadline usually is.
 
-**Ask your department directly about conference travel funding**, separate from what the conference itself offers. Many universities maintain a small, specifically-earmarked travel fund for students presenting or attending a professional conference, administered by a department or the graduate school, that goes underused simply because few undergraduates think to ask about it — a five-minute email to your advisor or department office is worth sending before assuming external funding is your only option.
+Ask your department directly about conference travel funding, separate from what the conference itself offers. Many universities maintain a small, specifically-earmarked travel fund for students presenting or attending a professional conference, administered by a department or the graduate school, that goes underused simply because few undergraduates think to ask about it — a five-minute email to your advisor or department office is worth sending before assuming external funding is your only option.
 
-**Volunteer.** A great many conferences waive or heavily discount registration for student volunteers who work a few shifts. You also meet the organisers, which is a network in itself.
+Volunteer. A great many conferences waive or heavily discount registration for student volunteers who work a few shifts. You also meet the organisers, which is a network in itself.
 
-**Submit something.** A poster, a workshop paper, a lightning talk. Presenters often receive reduced registration, and having something to present transforms the conversations you have — people come to you.
+Submit something. A poster, a workshop paper, a lightning talk. Presenters often receive reduced registration, and having something to present transforms the conversations you have — people come to you.
 
-**Check for student-specific programming.** Larger conferences frequently run dedicated student tracks, mentoring sessions and career workshops, usually listed separately in the program from the main technical sessions and worth reviewing before you arrive.
+Check for student-specific programming. Larger conferences frequently run dedicated student tracks, mentoring sessions and career workshops, usually listed separately in the program from the main technical sessions and worth reviewing before you arrive.
 
-**Look for regional and local events.** Not everything requires flying across the country. Local chapter meetings, regional conferences and single-day symposia are cheap, frequent and much less contested.
+Look for regional and local events. Not everything requires flying across the country. Local chapter meetings, regional conferences and single-day symposia are cheap, frequent and much less contested.
 
 ## What to actually do there
 
@@ -63,17 +63,17 @@ showcase: portfolio
 
 ## Which events are worth it
 
-**The major annual conference in your field.** Every discipline has one or two — computing has several run by the ACM and IEEE (specific sub-fields have their own, like NeurIPS for machine learning or SIGGRAPH for computer graphics), mechanical engineering has ASME's annual congress, chemical engineering has AIChE's, and most other disciplines have a comparably established professional-society flagship event. Their career fairs are frequently the largest single concentration of relevant employers you will encounter, and naming the specific one for your field — rather than searching generically — is usually one search away once you know which society to look for.
+The major annual conference in your field. Every discipline has one or two — computing has several run by the ACM and IEEE (specific sub-fields have their own, like NeurIPS for machine learning or SIGGRAPH for computer graphics), mechanical engineering has ASME's annual congress, chemical engineering has AIChE's, and most other disciplines have a comparably established professional-society flagship event. Their career fairs are frequently the largest single concentration of relevant employers you will encounter, and naming the specific one for your field — rather than searching generically — is usually one search away once you know which society to look for.
 
-**Diversity-focused conferences in technology and engineering.** The **Grace Hopper Celebration** (women in computing, run by AnitaB.org) and the **Tapia Celebration of Diversity in Computing** are the two largest in software specifically, each drawing career fairs with hundreds of employers and tens of thousands of attendees. **NSBE** (National Society of Black Engineers) and **SHPE** (Society of Hispanic Professional Engineers) run comparably large annual conventions across engineering broadly, not just software. All four are worth checking directly for eligibility and student registration rates even if you don't immediately think of yourself as their target audience — many are more broadly welcoming than their name alone suggests, and they are among the most productive recruiting events available to students who attend.
+Diversity-focused conferences in technology and engineering. The **Grace Hopper Celebration** (women in computing, run by AnitaB.org) and the **Tapia Celebration of Diversity in Computing** are the two largest in software specifically, each drawing career fairs with hundreds of employers and tens of thousands of attendees. **NSBE** (National Society of Black Engineers) and **SHPE** (Society of Hispanic Professional Engineers) run comparably large annual conventions across engineering broadly, not just software. All four are worth checking directly for eligibility and student registration rates even if you don't immediately think of yourself as their target audience — many are more broadly welcoming than their name alone suggests, and they are among the most productive recruiting events available to students who attend.
 
-**Regional professional society meetings.** Cheap, frequent, and often attended by local employers who never visit campuses.
+Regional professional society meetings. Cheap, frequent, and often attended by local employers who never visit campuses.
 
-**Research conferences**, if you are pursuing a research career — this is where [national laboratories](/blog/usa-national-labs-and-research-jobs) and industrial research groups recruit, and the [PhD transition](/blog/usa-phd-industry-transition-guide) frequently runs through exactly these events.
+Research conferences, if you are pursuing a research career — this is where [national laboratories](/blog/usa-national-labs-and-research-jobs) and industrial research groups recruit, and the [PhD transition](/blog/usa-phd-industry-transition-guide) frequently runs through exactly these events.
 
-**Industry-specific trade events**, which are excellent for non-technology fields and almost never mentioned in campus career advice.
+Industry-specific trade events, which are excellent for non-technology fields and almost never mentioned in campus career advice.
 
-**What to skip:** generic networking events with no employer presence, and anything charging students a substantial fee without a clear programme.
+What to skip: generic networking events with no employer presence, and anything charging students a substantial fee without a clear programme.
 
 ## Common Mistakes
 

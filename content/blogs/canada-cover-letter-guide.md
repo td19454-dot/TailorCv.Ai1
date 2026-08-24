@@ -31,17 +31,17 @@ showcase: resume
 
 ## Structure that works
 
-**One page, three to four short paragraphs.** Longer is not more persuasive and is frequently skimmed rather than read in full, particularly once a reader has already gone through several dozen similar applications that same day.
+One page, three to four short paragraphs. Longer is not more persuasive and is frequently skimmed rather than read in full, particularly once a reader has already gone through several dozen similar applications that same day.
 
-**Address a specific named person where you can identify one**, a general salutation is acceptable and preferable to guessing incorrectly — "Dear Hiring Manager" is the standard, current fallback; "To Whom It May Concern" reads as noticeably dated and is worth dropping from your template entirely.
+Address a specific named person where you can identify one, a general salutation is acceptable and preferable to guessing incorrectly — "Dear Hiring Manager" is the standard, current fallback; "To Whom It May Concern" reads as noticeably dated and is worth dropping from your template entirely.
 
-**Open with something concrete**, not an announcement that you are applying, the reader already knows why the letter exists. Compare: "I am writing to apply for the Marketing Coordinator position at [Company]" tells the reader nothing they didn't already know from the subject line. "Your Q3 campaign redesign cut customer acquisition cost by double digits according to your team's own case study — that kind of measurable, iterative approach to marketing is exactly what I want to be part of" opens with something real and specific instead, and does the "why this employer" work from the very first sentence rather than saving it for later.
+Open with something concrete, not an announcement that you are applying, the reader already knows why the letter exists. Compare: "I am writing to apply for the Marketing Coordinator position at [Company]" tells the reader nothing they didn't already know from the subject line. "Your Q3 campaign redesign cut customer acquisition cost by double digits according to your team's own case study — that kind of measurable, iterative approach to marketing is exactly what I want to be part of" opens with something real and specific instead, and does the "why this employer" work from the very first sentence rather than saving it for later.
 
-**A paragraph with your strongest specific evidence**, adding context a resume bullet cannot hold, what you did, what was difficult about it, what changed as a result. This is different work from your resume, not a repeat of it — a resume bullet states an outcome in one line; this paragraph is where you get to explain the actual difficulty, the decision you made under pressure, or the thing you learned that a single line of a resume bullet has no room to hold.
+A paragraph with your strongest specific evidence, adding context a resume bullet cannot hold, what you did, what was difficult about it, what changed as a result. This is different work from your resume, not a repeat of it — a resume bullet states an outcome in one line; this paragraph is where you get to explain the actual difficulty, the decision you made under pressure, or the thing you learned that a single line of a resume bullet has no room to hold.
 
-**The paragraph explaining why this specific employer**, covered in detail below, this is the paragraph that actually decides the outcome.
+The paragraph explaining why this specific employer, covered in detail below, this is the paragraph that actually decides the outcome.
 
-**A brief, plain close**, availability and thanks, nothing elaborate.
+A brief, plain close, availability and thanks, nothing elaborate.
 
 ## The paragraph that decides it
 
@@ -56,11 +56,11 @@ showcase: resume
 
 ## For co-op and internship applications specifically
 
-**Co-op cycles, covered in the [university career services guide](/blog/canada-university-career-services-guide), frequently expect a cover letter as a standard part of the application through the portal system**, worth treating this with the same care as any other structured application, since the volume of applications through these systems means a generic letter is particularly likely to be skimmed and dismissed.
+Co-op cycles, covered in the [university career services guide](/blog/canada-university-career-services-guide), frequently expect a cover letter as a standard part of the application through the portal system, worth treating this with the same care as any other structured application, since the volume of applications through these systems means a generic letter is particularly likely to be skimmed and dismissed.
 
-**Reference the specific work term and role explicitly**, and connect your interest to the specific team or project where the posting provides enough detail to do so genuinely — "Winter 2027 Software Developer Co-op, Platform team" is worth stating plainly near the top, since co-op portals often route your application to the specific hiring manager for that exact posting, and a letter that could apply to any of the company's several concurrent co-op postings signals you didn't read closely enough to notice which one you were actually applying to.
+Reference the specific work term and role explicitly, and connect your interest to the specific team or project where the posting provides enough detail to do so genuinely — "Winter 2027 Software Developer Co-op, Platform team" is worth stating plainly near the top, since co-op portals often route your application to the specific hiring manager for that exact posting, and a letter that could apply to any of the company's several concurrent co-op postings signals you didn't read closely enough to notice which one you were actually applying to.
 
-**Where the co-op posting itself is thin on detail** — common for a first work term, when the specific project isn't finalized yet — pull specificity from the company's recent public activity instead: a product launch, an engineering blog post, a conference talk by someone on the team. The "why this employer" test still applies; you're just sourcing the specific detail from a different place when the posting itself doesn't give you one.
+Where the co-op posting itself is thin on detail — common for a first work term, when the specific project isn't finalized yet — pull specificity from the company's recent public activity instead: a product launch, an engineering blog post, a conference talk by someone on the team. The "why this employer" test still applies; you're just sourcing the specific detail from a different place when the posting itself doesn't give you one.
 
 ## Practical points
 

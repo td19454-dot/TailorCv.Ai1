@@ -39,15 +39,15 @@ The central portal for federal vacancies is where nearly all of this is advertis
 
 This determines whether the sector is open to you at all, so it belongs early rather than buried.
 
-**Most federal positions require US citizenship.** This is the general rule and it is why the sector does not appear in most international students' plans.
+Most federal positions require US citizenship. This is the general rule and it is why the sector does not appear in most international students' plans.
 
-**There are exceptions.** Some agencies can hire non-citizens for specific positions where no qualified citizen is available, and certain roles — often specialised technical or language positions — are open more broadly. These are a minority and they do exist.
+There are exceptions. Some agencies can hire non-citizens for specific positions where no qualified citizen is available, and certain roles — often specialised technical or language positions — are open more broadly. These are a minority and they do exist.
 
-**Federal contractors are a different question.** Companies contracting to the government are private employers, and their citizenship requirements depend on the contract. Many contracts require citizenship or clearance; many do not. This is a substantially larger employment market than direct federal hiring and it is worth investigating separately.
+Federal contractors are a different question. Companies contracting to the government are private employers, and their citizenship requirements depend on the contract. Many contracts require citizenship or clearance; many do not. This is a substantially larger employment market than direct federal hiring and it is worth investigating separately.
 
-**National laboratories and federally funded research centres** operate under their own arrangements, and some are [cap-exempt for immigration purposes](/blog/usa-cap-exempt-h1b-employers) — a genuinely useful route covered in the [national labs guide](/blog/usa-national-labs-and-research-jobs).
+National laboratories and federally funded research centres operate under their own arrangements, and some are [cap-exempt for immigration purposes](/blog/usa-cap-exempt-h1b-employers) — a genuinely useful route covered in the [national labs guide](/blog/usa-national-labs-and-research-jobs).
 
-**The practical instruction:** read each announcement's eligibility section before investing time. It states the requirement explicitly, and it is the first thing to check rather than the last.
+The practical instruction: read each announcement's eligibility section before investing time. It states the requirement explicitly, and it is the first thing to check rather than the last.
 
 ## The federal resume is a different document
 
@@ -69,17 +69,17 @@ The single most common reason capable candidates are screened out, and it is ent
 
 The most common reason candidates drop out is not rejection. It is that they took another offer while waiting.
 
-**Announcements are open for a defined and often short window.** Some close within days, some when a cap on [applications](/blog/usa-handshake-linkedin-job-search) is reached. Checking regularly matters more than in most markets.
+Announcements are open for a defined and often short window. Some close within days, some when a cap on [applications](/blog/usa-handshake-linkedin-job-search) is reached. Checking regularly matters more than in most markets.
 
-**Referral takes weeks.** Your application is rated, and qualified candidates are referred to the hiring manager in a list.
+Referral takes weeks. Your application is rated, and qualified candidates are referred to the hiring manager in a list.
 
-**Interviews may be months after applying.** Panel interviews are standard, frequently with structured scored questions — the [panel format](/blog/canada-new-grad-interview-preparation) is similar to public sector hiring elsewhere.
+Interviews may be months after applying. Panel interviews are standard, frequently with structured scored questions — the [panel format](/blog/canada-new-grad-interview-preparation) is similar to public sector hiring elsewhere.
 
-**Offers are tentative until conditions are met.** A tentative offer precedes background investigation, and a final offer follows it.
+Offers are tentative until conditions are met. A tentative offer precedes background investigation, and a final offer follows it.
 
-**Security clearance, where required, can take many months.** Sometimes more than a year for higher levels. Positions requiring clearance may allow you to start in a limited capacity or may not.
+Security clearance, where required, can take many months. Sometimes more than a year for higher levels. Positions requiring clearance may allow you to start in a limited capacity or may not.
 
-**What to do about it:** apply early and to several announcements, keep applying elsewhere while you wait, and never decline other options on the strength of a tentative offer. Treat the federal process as a long parallel track rather than as something to organise your autumn around.
+What to do about it: apply early and to several announcements, keep applying elsewhere while you wait, and never decline other options on the strength of a tentative offer. Treat the federal process as a long parallel track rather than as something to organise your autumn around.
 
 ## What the work is actually like
 
@@ -99,17 +99,17 @@ The most common reason candidates drop out is not rejection. It is that they too
 
 ## Applying well
 
-**Search by series, not just by title.** Federal jobs are classified into occupational series, and searching by the series relevant to your field surfaces roles whose titles you would never have guessed.
+Search by series, not just by title. Federal jobs are classified into occupational series, and searching by the series relevant to your field surfaces roles whose titles you would never have guessed.
 
-**Set up saved searches with alerts** on the central portal. Announcements open and close quickly and there is no equivalent of a recruiting season to organise around.
+Set up saved searches with alerts on the central portal. Announcements open and close quickly and there is no equivalent of a recruiting season to organise around.
 
-**Apply to several announcements.** Rating and [referral](/blog/usa-cold-email-networking-students) introduce variance, and strong candidates are frequently not referred on a particular announcement for reasons unrelated to quality.
+Apply to several announcements. Rating and [referral](/blog/usa-cold-email-networking-students) introduce variance, and strong candidates are frequently not referred on a particular announcement for reasons unrelated to quality.
 
-**Include everything relevant, including unpaid work.** Volunteer work, campus roles and academic projects count as experience and can be credited if described properly with hours.
+Include everything relevant, including unpaid work. Volunteer work, campus roles and academic projects count as experience and can be credited if described properly with hours.
 
-**Prepare for a structured panel.** Scored questions against defined criteria, several interviewers marking independently. Structure your answers visibly and keep them to about two minutes — the [competency approach](/blog/uk-competency-questions-guide) transfers directly.
+Prepare for a structured panel. Scored questions against defined criteria, several interviewers marking independently. Structure your answers visibly and keep them to about two minutes — the [competency approach](/blog/uk-competency-questions-guide) transfers directly.
 
-**Be honest about clearance.** If a position requires it, the investigation examines your history in detail. Undisclosed issues are far more damaging than disclosed ones.
+Be honest about clearance. If a position requires it, the investigation examines your history in detail. Undisclosed issues are far more damaging than disclosed ones.
 
 ## Reading a vacancy announcement
 
@@ -135,17 +135,17 @@ Federal announcements are long and structured, and candidates lose out by skimmi
 
 Most candidates search by job title, find little, and conclude there is nothing for them. The system does not work that way.
 
-**Search by occupational series.** Federal roles are classified into numbered series by function. Find the series that matches your field and search on it — this surfaces roles whose titles are bureaucratic and would never occur to you.
+Search by occupational series. Federal roles are classified into numbered series by function. Find the series that matches your field and search on it — this surfaces roles whose titles are bureaucratic and would never occur to you.
 
-**Search by grade.** Entry-level graduate roles cluster in a predictable band. Filtering by grade removes the senior positions that dominate keyword results.
+Search by grade. Entry-level graduate roles cluster in a predictable band. Filtering by grade removes the senior positions that dominate keyword results.
 
-**Filter by hiring path.** The system lets you filter to announcements open to students, recent graduates, or the general public. Applying to an announcement you are not eligible for is wasted effort, and the filter prevents it.
+Filter by hiring path. The system lets you filter to announcements open to students, recent graduates, or the general public. Applying to an announcement you are not eligible for is wasted effort, and the filter prevents it.
 
-**Save searches and enable alerts.** Announcements open and close on no fixed calendar, sometimes within days, and there is no recruiting season to organise around. Alerts are the only realistic way to keep up.
+Save searches and enable alerts. Announcements open and close on no fixed calendar, sometimes within days, and there is no recruiting season to organise around. Alerts are the only realistic way to keep up.
 
-**Search agency sites directly too.** Some fellowships and agency-specific schemes are advertised on the agency's own pages and not only centrally.
+Search agency sites directly too. Some fellowships and agency-specific schemes are advertised on the agency's own pages and not only centrally.
 
-**Look at location filters honestly.** A large share of federal work is outside the capital, in regional offices, laboratories and field stations, and those postings are consistently less contested.
+Look at location filters honestly. A large share of federal work is outside the capital, in regional offices, laboratories and field stations, and those postings are consistently less contested.
 
 ## The questionnaire, handled properly
 
@@ -167,13 +167,13 @@ The self-assessment questionnaire attached to most announcements decides your ra
 
 Worth being honest about, because federal work is a poor fit for some people and an excellent one for others, and the difference is temperament rather than ability.
 
-**It suits you if:** you want to work on something at national scale early; you value stability and predictable progression; you can tolerate process as the price of consequence; you want strong benefits and defined hours; or you are drawn to a mission that is not commercial.
+It suits you if: you want to work on something at national scale early; you value stability and predictable progression; you can tolerate process as the price of consequence; you want strong benefits and defined hours; or you are drawn to a mission that is not commercial.
 
-**It suits you poorly if:** you need to see the results of your work within weeks; you find review and documentation demoralising rather than tedious; you want compensation to track performance closely; or you want to move quickly between roles and employers.
+It suits you poorly if: you need to see the results of your work within weeks; you find review and documentation demoralising rather than tedious; you want compensation to track performance closely; or you want to move quickly between roles and employers.
 
-**The honest test.** Ask yourself how you would feel about spending three months getting a change approved that you knew was right on day one — and then having it affect a few million people. Some people find that trade obviously worthwhile and others find it unbearable, and both answers are legitimate.
+The honest test. Ask yourself how you would feel about spending three months getting a change approved that you knew was right on day one — and then having it affect a few million people. Some people find that trade obviously worthwhile and others find it unbearable, and both answers are legitimate.
 
-**And note the exit is open.** Federal experience is well regarded by contractors, regulated industries, policy organisations and consultancies. A first job here does not commit you to a career here, which lowers the stakes of trying it considerably.
+And note the exit is open. Federal experience is well regarded by contractors, regulated industries, policy organisations and consultancies. A first job here does not commit you to a career here, which lowers the stakes of trying it considerably.
 
 ## Common Mistakes
 
@@ -204,17 +204,17 @@ Worth a section of its own, because for many candidates — including most inter
 
 Useful for deciding whether the trade is one you want.
 
-**Structured progression.** Entry-level developmental positions carry defined promotion steps, frequently with automatic advancement through the first grades subject to satisfactory performance. That predictability is unusual and it is genuinely valuable early in a career.
+Structured progression. Entry-level developmental positions carry defined promotion steps, frequently with automatic advancement through the first grades subject to satisfactory performance. That predictability is unusual and it is genuinely valuable early in a career.
 
-**Training is a real budget line.** Formal training, conference attendance and further study support are more available than at most private employers, and tuition assistance is common.
+Training is a real budget line. Formal training, conference attendance and further study support are more available than at most private employers, and tuition assistance is common.
 
-**The work is broad early.** Graduates are often given responsibility for a defined piece of a large programme quickly, because the programmes are large and the teams are stretched.
+The work is broad early. Graduates are often given responsibility for a defined piece of a large programme quickly, because the programmes are large and the teams are stretched.
 
-**You will spend real time on process.** Documentation, review, clearance of decisions, coordination between offices. This is the price of the scale, and it is the thing people either accept or leave over.
+You will spend real time on process. Documentation, review, clearance of decisions, coordination between offices. This is the price of the scale, and it is the thing people either accept or leave over.
 
-**Mobility is a feature.** Moving between agencies is routine, and federal experience is well regarded afterwards by contractors, regulated industries and policy organisations. A first federal job is not a closed door.
+Mobility is a feature. Moving between agencies is routine, and federal experience is well regarded afterwards by contractors, regulated industries and policy organisations. A first federal job is not a closed door.
 
-**Benefits compound.** Retirement contributions, health coverage and leave are strong, and they are worth more relative to a private offer than the headline salary comparison suggests. When comparing, build the total package rather than the base — the same discipline that applies to [any offer comparison](/blog/usa-offer-negotiation-new-grad).
+Benefits compound. Retirement contributions, health coverage and leave are strong, and they are worth more relative to a private offer than the headline salary comparison suggests. When comparing, build the total package rather than the base — the same discipline that applies to [any offer comparison](/blog/usa-offer-negotiation-new-grad).
 
 ## The interview, and what follows
 

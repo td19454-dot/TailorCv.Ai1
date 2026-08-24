@@ -33,17 +33,17 @@ showcase: resume
 
 ## How to structure it
 
-**A summary at the top.** A few lines stating who you are professionally and what you do well. The reader's first impression, and worth writing last.
+A summary at the top. A few lines stating who you are professionally and what you do well. The reader's first impression, and worth writing last.
 
-**Work history in reverse chronological order** for experienced candidates, or a projects-and-experience section for new graduates.
+Work history in reverse chronological order for experienced candidates, or a projects-and-experience section for new graduates.
 
-**For each entry:** the organisation, the period, your role, what the team or project was, what you specifically did, and what resulted.
+For each entry: the organisation, the period, your role, what the team or project was, what you specifically did, and what resulted.
 
-**A skills section.** Technical skills, tools, languages, and your [Japanese level](/blog/japan-jlpt-n2-n1-for-employment) stated plainly.
+A skills section. Technical skills, tools, languages, and your [Japanese level](/blog/japan-jlpt-n2-n1-for-employment) stated plainly.
 
-**Qualifications and certifications.**
+Qualifications and certifications.
 
-**Self-promotion section.** A conventional closing section where you make the case for yourself, connecting your experience to what this employer needs.
+Self-promotion section. A conventional closing section where you make the case for yourself, connecting your experience to what this employer needs.
 
 ## Writing it well
 
@@ -65,17 +65,17 @@ showcase: resume
 
 ## For new graduates with little work history
 
-**Internships**, described properly with what you actually did rather than what the programme was.
+Internships, described properly with what you actually did rather than what the programme was.
 
-**Research and thesis work.** Particularly valuable for technical roles — describe the problem, your approach, the methods and the outcome.
+Research and thesis work. Particularly valuable for technical roles — describe the problem, your approach, the methods and the outcome.
 
-**Projects.** Anything you built, ran or organised. Something with real users, however few, outperforms coursework — the [project standard](/blog/fresher-resume-projects-that-get-interviews) applies here as anywhere.
+Projects. Anything you built, ran or organised. Something with real users, however few, outperforms coursework — the [project standard](/blog/fresher-resume-projects-that-get-interviews) applies here as anywhere.
 
-**Part-time work**, described in terms of responsibility, reliability and what you learned rather than as filler.
+Part-time work, described in terms of responsibility, reliability and what you learned rather than as filler.
 
-**Substantial extracurricular activity.** Club leadership, event organisation, competitions — treated seriously in Japanese hiring as evidence of character and commitment.
+Substantial extracurricular activity. Club leadership, event organisation, competitions — treated seriously in Japanese hiring as evidence of character and commitment.
 
-**Study abroad or language achievement**, especially where relevant to an international role.
+Study abroad or language achievement, especially where relevant to an international role.
 
 ## Writing content that actually stands out
 
@@ -89,9 +89,9 @@ showcase: resume
 
 ## Keeping the document useful across a job search
 
-**Maintain a comprehensive master version privately covering everything you have done, then generate a tailored, more selective version for each specific application**, exactly the same [master-document approach that works efficiently for any international job search involving several distinct applications](/blog/international-student-resume-differences-by-country), this saves considerable time across a job search involving many companies without sacrificing the specificity that makes each individual submission genuinely effective.
+Maintain a comprehensive master version privately covering everything you have done, then generate a tailored, more selective version for each specific application, exactly the same [master-document approach that works efficiently for any international job search involving several distinct applications](/blog/international-student-resume-differences-by-country), this saves considerable time across a job search involving many companies without sacrificing the specificity that makes each individual submission genuinely effective.
 
-**Update the master version as you gain new relevant experience**, rather than reconstructing your history from memory each time you need to apply somewhere new, this is a small habit that pays off considerably over a multi-month job search.
+Update the master version as you gain new relevant experience, rather than reconstructing your history from memory each time you need to apply somewhere new, this is a small habit that pays off considerably over a multi-month job search.
 
 ## Handling employment gaps or unconventional paths honestly
 

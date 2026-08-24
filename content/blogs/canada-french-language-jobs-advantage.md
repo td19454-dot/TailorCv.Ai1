@@ -33,25 +33,25 @@ showcase: none
 
 ## The immigration angle
 
-**French language ability can meaningfully improve your position within certain immigration pathways**, alongside the [English language component that generally carries the largest weight](/blog/canada-express-entry-for-new-grads) within the general federal points system, some specific streams and provincial programs place particular emphasis on French proficiency, reflecting a genuine national policy interest in supporting Francophone immigration outside Quebec specifically.
+French language ability can meaningfully improve your position within certain immigration pathways, alongside the [English language component that generally carries the largest weight](/blog/canada-express-entry-for-new-grads) within the general federal points system, some specific streams and provincial programs place particular emphasis on French proficiency, reflecting a genuine national policy interest in supporting Francophone immigration outside Quebec specifically.
 
-**If you already have some French ability, or find language learning comes relatively naturally to you, this is worth investing in deliberately with an eye toward both the direct job market advantage and this immigration dimension.** The two reinforce each other in a way that makes the investment more attractive than looking at either benefit alone would suggest — a stronger French score can widen your realistic employer list within Canada while simultaneously improving your position in certain immigration streams, a genuine two-for-one that a purely job-market or purely immigration lens would each undersell on its own.
+If you already have some French ability, or find language learning comes relatively naturally to you, this is worth investing in deliberately with an eye toward both the direct job market advantage and this immigration dimension. The two reinforce each other in a way that makes the investment more attractive than looking at either benefit alone would suggest — a stronger French score can widen your realistic employer list within Canada while simultaneously improving your position in certain immigration streams, a genuine two-for-one that a purely job-market or purely immigration lens would each undersell on its own.
 
 ## Being honest about the actual value
 
 **Outside Quebec, federal bilingual positions, and specific Francophone-community-adjacent opportunities, French does not carry uniform value across the entire Canadian job market**, a graduate targeting a purely English-language technology role in a city with limited Francophone presence gains considerably less direct career value from French than one targeting federal government work or roles connected to Quebec.
 
-**Assess this honestly against your own specific target career and location, rather than assuming French is a universally valuable investment for any Canadian career path.**
+**Assess this honestly against your own specific target career and location**, rather than assuming French is a universally valuable investment for any Canadian career path.
 
 ## Building genuine professional French
 
-**This is a genuine, multi-year undertaking for most learners starting from a limited base, not something realistically acquired in a final semester before graduating**, plan deliberately if this is a genuine priority, similar to the honest planning that [any significant language investment requires](/blog/china-mandarin-requirements-for-jobs) in any market.
+This is a genuine, multi-year undertaking for most learners starting from a limited base, not something realistically acquired in a final semester before graduating, plan deliberately if this is a genuine priority, similar to the honest planning that [any significant language investment requires](/blog/china-mandarin-requirements-for-jobs) in any market.
 
-**Immersion, through study or work in a French-speaking environment, accelerates progress considerably beyond classroom study alone.** Federal government employees themselves have access to a real, structured resource worth knowing about even before you're employed there: the public service runs its own language training programs for staff working toward a bilingual position's required profile, which is one reason some candidates deliberately target a non-bilingual federal role first, then work toward a bilingual-imperative position later using employer-supported training rather than funding immersion independently from the outset.
+Immersion, through study or work in a French-speaking environment, accelerates progress considerably beyond classroom study alone. Federal government employees themselves have access to a real, structured resource worth knowing about even before you're employed there: the public service runs its own language training programs for staff working toward a bilingual position's required profile, which is one reason some candidates deliberately target a non-bilingual federal role first, then work toward a bilingual-imperative position later using employer-supported training rather than funding immersion independently from the outset.
 
-**Professional and workplace-specific French differs meaningfully from general conversational ability**, if your target roles require professional-level French specifically, assess and build toward that specific register rather than general conversational comfort alone.
+Professional and workplace-specific French differs meaningfully from general conversational ability, if your target roles require professional-level French specifically, assess and build toward that specific register rather than general conversational comfort alone.
 
-**Formal certification of your French proficiency level provides a credible, verifiable benchmark for employers and for immigration purposes**, worth pursuing if you have reached a genuinely strong level, since a certified level is generally a more reliable signal than a self-described claim.
+Formal certification of your French proficiency level provides a credible, verifiable benchmark for employers and for immigration purposes, worth pursuing if you have reached a genuinely strong level, since a certified level is generally a more reliable signal than a self-described claim.
 
 ## Practical steps if you are pursuing this
 
@@ -59,7 +59,7 @@ showcase: none
 
 **If targeting Quebec specifically, assess your French proficiency honestly against the genuine day-to-day requirement of working in a substantially French-language environment**, rather than assuming a moderate conversational level is sufficient for full professional participation there.
 
-**Consider whether a period of study or work specifically in a French-speaking environment fits realistically into your timeline, if building meaningfully stronger French ability is a genuine goal.**
+**Consider whether a period of study or work specifically in a French-speaking environment fits realistically into your timeline**, if building meaningfully stronger French ability is a genuine goal.
 
 ## Common Mistakes
 
