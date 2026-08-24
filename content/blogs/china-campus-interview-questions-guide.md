@@ -53,22 +53,19 @@ Punctuality is taken seriously, arriving with real margin before the scheduled t
 
 ## Preparing properly
 
-**Build specific, genuine answers to why this company and why this role**, researched and particular to the actual employer, this single area of preparation matters more here than almost any other.
-
-**Practise the group discussion format specifically**, with friends if possible, this is a distinct skill from individual interviewing and benefits meaningfully from deliberate practice.
-
-**Prepare for a written examination if applying to a [state-owned enterprise](/blog/china-state-owned-enterprise-jobs) or other employer known to use one**, using available practice materials.
-
-**Build genuine, specific examples of your own experience**, the same underlying [competency-based preparation](/blog/uk-competency-questions-guide) that serves any structured interview process, adapted to the more formal register expected here.
+1. **Build specific, genuine answers to why this company and why this role**, researched and particular to the actual employer, this single area of preparation matters more here than almost any other.
+2. **Practise the group discussion format specifically**, with friends if possible, this is a distinct skill from individual interviewing and benefits meaningfully from deliberate practice.
+3. **Prepare for a written examination if applying to a [state-owned enterprise](/blog/china-state-owned-enterprise-jobs) or other employer known to use one**, using available practice materials.
+4. **Build genuine, specific examples of your own experience**, the same underlying [competency-based preparation](/blog/uk-competency-questions-guide) that serves any structured interview process, adapted to the more formal register expected here.
 
 ## Common Mistakes
 
 - **Treating the group interview as an opportunity to dominate the conversation.** Genuine contribution and collaborative behaviour is what is actually assessed.
-- **Giving a generic answer to why this company that could apply to any competitor.** Noticed and read poorly.
+- **Giving a generic answer to why this company.** That could apply to any competitor. Noticed and read poorly.
 - **Not preparing for a written examination at employers known to use one.** A standard, expected stage rather than an informal add-on.
 - **Underestimating formality expectations, particularly at larger or more traditional employers.** Casual presentation can genuinely read as underprepared.
-- **Arriving exactly on time rather than with real margin.** Punctuality expectations here favour arriving well ahead.
-- **Having no considered answer to direct questions about long-term commitment.** Taken more seriously here than a similar question in some other markets.
+- **Arriving exactly on time.** Rather than with real margin. Punctuality expectations here favour arriving well ahead.
+- **Having no considered answer to direct questions.** About long-term commitment. Taken more seriously here than a similar question in some other markets.
 
 ## Practising the format properly before the real interview
 
@@ -78,7 +75,7 @@ Practise responding to direct questions about long-term commitment with a genuin
 
 ## Understanding what senior interviewers are specifically looking for
 
-**In later, more senior interview rounds, expect questions probing genuine depth of understanding about the specific role and organisation, beyond what an earlier general screening round would ask**, prepare accordingly with more detailed, specific research the further you progress through a given company's process.
+In later, more senior interview rounds, expect questions probing genuine depth of understanding about the specific role and organisation, beyond what an earlier general screening round would ask, prepare accordingly with more detailed, specific research the further you progress through a given company's process.
 
 ## Frequently Asked Questions
 

@@ -143,12 +143,12 @@ The goal is a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) that lo
 
 Before you send a no-experience resume, run it through these checks:
 
-- Does every project and job bullet describe a **result**, not just a duty?
-- Do your **skills mirror the posting's** exact terms?
-- Is there **at least one concrete, ownable thing** you built or led?
-- Have you **cut every generic soft-skill claim** in favor of showing it in a bullet?
-- Is it **one clean page** that parses cleanly?
-- Have you **tailored it** to this specific role, not sent the same file everywhere?
+- [ ] Does every project and job bullet describe a **result**, not just a duty?
+- [ ] Do your **skills mirror the posting's** exact terms?
+- [ ] Is there **at least one concrete, ownable thing** you built or led?
+- [ ] Have you **cut every generic soft-skill claim** in favor of showing it in a bullet?
+- [ ] Is it **one clean page** that parses cleanly?
+- [ ] Have you **tailored it** to this specific role, not sent the same file everywhere?
 
 If you are starting from a blank page, the [resume builder](https://thetailorcv.com/modify-cv) gives you an [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) structure to fill in, and a quick [ATS score](https://thetailorcv.com/solutions) against the posting shows whether the keywords it wants are actually present before you apply. For a career starter, that final check is the difference between disappearing into the pile and landing the first interview.
 

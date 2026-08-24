@@ -73,16 +73,7 @@ The system has evolved over recent years, with somewhat more flexibility introdu
 
 **A very large number of company information sessions and events happen before formal applications even open**, attendance at these is genuinely part of how companies build their eventual applicant pool and how students narrow their own choices, this is a distinct and substantial phase worth taking seriously rather than treating as optional promotional material.
 
-**The informal offer, extended well before an official start date, carries real social and psychological weight within this system**, accepting one is generally understood as a serious commitment, and the practice of continuing to interview elsewhere after accepting one, while not unheard of, is viewed considerably more seriously here than simply continuing a search after accepting an offer in many other job markets.
-
-## Common Mistakes
-
-- **Applying Western job-search habits.** The system has its own conventions and ignoring them reads as unprepared.
-- **Underestimating the language requirement.** For generalist tracks at traditional companies it is usually decisive.
-- **Missing the calendar.** The cycle is fixed and shared; entering late means entering a different market.
-- **Expecting to choose your role.** Many companies assign your department after you join.
-- **Treating self-analysis as a formality.** It underpins the written applications and the interviews.
-- **Assuming your degree subject determines your options.** For generalist tracks it frequently does not.
+**The informal offer**, extended well before an official start date, carries real social and psychological weight within this system, accepting one is generally understood as a serious commitment, and the practice of continuing to interview elsewhere after accepting one, while not unheard of, is viewed considerably more seriously here than simply continuing a search after accepting an offer in many other job markets.
 
 ## International students and the shinsotsu system
 
@@ -92,24 +83,13 @@ Foreign multinationals operating in Japan sometimes run a somewhat different, mo
 
 If your Japanese language ability is not yet at a professional working level, this meaningfully narrows which employers within this system are realistically viable, the [language requirements guide](/blog/japan-japanese-language-requirements-jobs) covers this in more depth, worth reading alongside this article to calibrate your realistic target list honestly.
 
-### Is the entire Japanese job market really this synchronised?
-
-Large traditional employers largely follow this synchronised model, though flexibility has increased over recent years, and foreign multinationals and some newer domestic companies often run somewhat different, more flexible timelines.
-
-### Do I have to accept the first informal offer I receive?
-
-No, though withdrawing after accepting is viewed more seriously here than in some other job markets, worth being genuinely decided before accepting rather than treating it as a placeholder while you continue looking.
-
-### How early should international students start preparing?
-
-Considerably earlier than the formal timeline suggests, information sessions and early relationship-building with target companies begin well before formal applications open, and language preparation, if needed, takes real time to build.
 ## Building your own strategy within this system
 
 **Start attending information sessions and researching target companies well before the formal application window opens**, this preparatory phase is genuinely part of the process rather than idle time, students who begin engaging early build a considerably stronger foundation than those who wait for formal applications to open.
 
-**Decide honestly whether the traditional synchronised system, or the more flexible route offered by some foreign multinationals and newer domestic companies, better fits your own circumstances and language ability**, rather than defaulting to one without genuinely weighing both, the [broader visa and language considerations](/blog/japan-work-visa-for-graduates) covered elsewhere in this series affect which route is realistically more accessible to you specifically.
+**Decide honestly whether the traditional synchronised system**, or the more flexible route offered by some foreign multinationals and newer domestic companies, better fits your own circumstances and language ability, rather than defaulting to one without genuinely weighing both, the [broader visa and language considerations](/blog/japan-work-visa-for-graduates) covered elsewhere in this series affect which route is realistically more accessible to you specifically.
 
-**Keep a genuine, organised record of every company you engage with, every information session attended, and every stage of each application**, the volume of parallel processes within this system is considerable, and losing track of where you stand with a specific employer is a genuinely avoidable and costly mistake.
+**Keep a genuine, organised record of every company you engage with**, every information session attended, and every stage of each application, the volume of parallel processes within this system is considerable, and losing track of where you stand with a specific employer is a genuinely avoidable and costly mistake.
 
 ## The rhythm of a typical year within this system
 
@@ -121,13 +101,33 @@ International students in particular benefit from mapping this rhythm against th
 
 ## Comparing this system to hiring conventions elsewhere
 
-**Coming from an educational or professional background shaped by rolling, experience-based hiring, the synchronised nature of this system can initially feel restrictive**, worth reframing this genuinely as a different set of trade-offs rather than a strictly worse system, the predictability and structure it offers, everyone moving through a broadly similar process on a broadly similar timeline, has real advantages that a more individualised, rolling system does not provide.
+**Coming from an educational or professional background shaped by rolling**, experience-based hiring, the synchronised nature of this system can initially feel restrictive, worth reframing this genuinely as a different set of trade-offs rather than a strictly worse system, the predictability and structure it offers, everyone moving through a broadly similar process on a broadly similar timeline, has real advantages that a more individualised, rolling system does not provide.
 
 **The traditional emphasis on hiring for potential rather than narrow prior experience genuinely benefits candidates without a directly matching background**, a graduate whose degree does not map precisely onto a specific role is not automatically disadvantaged the way they might be in a system that screens heavily on demonstrated prior experience in the exact function, worth understanding this as a genuine structural advantage of the system for career changers and those from less conventional academic paths.
 
 **Understanding both the advantages and genuine constraints of this system honestly**, rather than assuming it simply mirrors hiring conventions you may be more familiar with from elsewhere, is what actually lets you navigate it effectively.
 
+## Common Mistakes
+
+- **Applying Western job-search habits.** The system has its own conventions and ignoring them reads as unprepared.
+- **Underestimating the language requirement.** For generalist tracks at traditional companies it is usually decisive.
+- **Missing the calendar.** The cycle is fixed and shared; entering late means entering a different market.
+- **Expecting to choose your role.** Many companies assign your department after you join.
+- **Treating self-analysis as a formality.** It underpins the written applications and the interviews.
+- **Assuming your degree subject determines your options.** For generalist tracks it frequently does not.
+
 ## Frequently Asked Questions
+### Is the entire Japanese job market really this synchronised?
+
+Large traditional employers largely follow this synchronised model, though flexibility has increased over recent years, and foreign multinationals and some newer domestic companies often run somewhat different, more flexible timelines.
+
+### Do I have to accept the first informal offer I receive?
+
+No, though withdrawing after accepting is viewed more seriously here than in some other job markets, worth being genuinely decided before accepting rather than treating it as a placeholder while you continue looking.
+
+### How early should international students start preparing?
+
+Considerably earlier than the formal timeline suggests, information sessions and early relationship-building with target companies begin well before formal applications open, and language preparation, if needed, takes real time to build.
 
 ### Can foreigners join the shinsotsu system?
 
@@ -152,3 +152,4 @@ The cycle runs over roughly a year with fixed conventional stages — the [timel
 ### Is this system changing?
 
 Yes, gradually. Specialist hiring, year-round recruitment and more flexible career paths are increasingly common, particularly in technology and at foreign-affiliated companies.
+

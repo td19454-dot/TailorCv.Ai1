@@ -45,7 +45,7 @@ Build a range, not a point figure. "Based on what I have seen for graduate analy
 
 **Start date is often flexible**, and it is the easiest thing to ask for and the least often asked.
 
-**A signing bonus, where one exists, is sometimes more flexible than base pay**, because it is a one-off cost rather than an ongoing commitment.
+**A signing bonus, where one exists**, is sometimes more flexible than base pay, because it is a one-off cost rather than an ongoing commitment.
 
 **Location, at employers with multiple offices, is worth raising early** rather than after placement decisions are made.
 
@@ -68,11 +68,11 @@ Factor the real cost of the city into any comparison between two offers in diffe
 ## Common Mistakes
 
 - **Comparing your offer to a single national average.** Sector variation is larger than the headline figure suggests.
-- **Comparing London and regional pay without adjusting for cost of living.** The real gap is often much smaller than the salary gap alone.
+- **Comparing London and regional pay.** Without adjusting for cost of living. The real gap is often much smaller than the salary gap alone.
 - **Trying to negotiate a structured scheme's fixed cohort rate.** Rarely works and rarely worth the effort.
 - **Ignoring the wider package.** Pension, bonus and benefits are a real part of total compensation.
 - **Not researching before the conversation.** A vague answer to "what are you expecting" is a weak position.
-- **Assuming the recruiter can move on base pay when they cannot.** Ask about what is genuinely flexible instead.
+- **Assuming the recruiter can move on base pay.** When they cannot. Ask about what is genuinely flexible instead.
 
 ## Understanding how pay progresses beyond the starting figure
 

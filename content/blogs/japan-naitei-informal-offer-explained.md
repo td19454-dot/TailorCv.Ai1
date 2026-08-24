@@ -73,9 +73,9 @@ If you are also considering other countries, resolve that before accepting rathe
 
 ## Why this stage carries such real weight
 
-**Accepting this informal offer is generally understood within the local system as a genuine, serious commitment**, this reflects the traditional employment structure and cultural expectations around this system, discussed in more depth in the [broader shinsotsu system guide](/blog/japan-new-grad-shinsotsu-hiring-explained), continuing to actively interview elsewhere after accepting is viewed considerably more seriously here than simply continuing a search after accepting an offer might be treated in some other job markets.
+**Accepting this informal offer is generally understood within the local system as a genuine**, serious commitment, this reflects the traditional employment structure and cultural expectations around this system, discussed in more depth in the [broader shinsotsu system guide](/blog/japan-new-grad-shinsotsu-hiring-explained), continuing to actively interview elsewhere after accepting is viewed considerably more seriously here than simply continuing a search after accepting an offer might be treated in some other job markets.
 
-**Withdrawing from an accepted informal offer, while not unheard of, carries genuine social and reputational consequences within this system**, worth being genuinely decided before accepting rather than treating it as a flexible placeholder.
+**Withdrawing from an accepted informal offer**, while not unheard of, carries genuine social and reputational consequences within this system, worth being genuinely decided before accepting rather than treating it as a flexible placeholder.
 
 ## What happens between the informal and formal offer
 
@@ -89,15 +89,22 @@ If your circumstances genuinely change during this period, a serious personal or
 
 **If you are genuinely still deciding between multiple companies at this stage**, communicate honestly about your timeline where possible, rather than accepting prematurely simply to end the uncertainty.
 
+## Understanding what happens between acceptance and your actual start
+
+Some companies organise periodic events or maintain contact with their incoming cohort during the period between this informal offer and the actual formal start of employment, understand what your specific employer expects and plans during this period, since expectations genuinely vary by company.
+
+Use this period productively, continuing any relevant language study, completing your studies properly, and in some cases beginning informal preparation the company suggests, rather than treating it as entirely disconnected from your eventual start.
+
 ## Common Mistakes
 
-- **Treating it as non-binding because it is informal.** The social weight is the operative constraint.
+- **Treating it as non-binding.** Because it is informal. The social weight is the operative constraint.
 - **Accepting while intending to keep searching.** Contrary to convention and damaging when discovered.
 - **Declining late or by email.** Early and direct is the expectation.
 - **Not understanding your university's involvement.** Institutional relationships can be affected.
 - **Ignoring the long gap before starting.** Visa, relocation and logistics need planning.
 - **Accepting without certainty.** Reversal is costly in a way that is easy to underestimate.
 
+## Frequently Asked Questions
 ### Is this informal offer legally binding?
 
 Generally understood as carrying real social and practical weight, though the specific formal legal status can vary, treat it as a genuine, serious commitment regardless of its precise formal legal characterisation.
@@ -113,13 +120,6 @@ Communicate honestly and promptly with the employer rather than going silent, th
 ### When does this become a formal, official offer?
 
 Generally at a later point closer to the actual start of employment, understand your specific employer's own timeline and any expectations during the intervening period.
-## Understanding what happens between acceptance and your actual start
-
-Some companies organise periodic events or maintain contact with their incoming cohort during the period between this informal offer and the actual formal start of employment, understand what your specific employer expects and plans during this period, since expectations genuinely vary by company.
-
-Use this period productively, continuing any relevant language study, completing your studies properly, and in some cases beginning informal preparation the company suggests, rather than treating it as entirely disconnected from your eventual start.
-
-## Frequently Asked Questions
 
 ### Is a naitei legally binding?
 
@@ -144,3 +144,4 @@ The formal employment agreement typically comes later, closer to your start date
 ### What if the company withdraws the offer?
 
 Rare, and it does happen in unusual circumstances. If it occurs, speak to your university's career centre promptly, since institutions frequently have channels for exactly this situation.
+

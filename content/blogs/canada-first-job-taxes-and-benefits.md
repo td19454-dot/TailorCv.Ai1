@@ -39,9 +39,9 @@ Net pay is what actually lands in your account, the figure that matters for your
 
 ## Workplace pensions and benefits
 
-**Many employers offer a workplace pension or retirement savings plan, often with an employer contribution matching a portion of what you contribute yourself**, similar in principle to [employer-matched retirement contributions common in many countries](/blog/usa-401k-benefits-explained-new-grad), an employer match represents a genuine and immediate return that is difficult to match through any other financial decision, worth enrolling to capture at minimum the full available match where one is offered.
+**Many employers offer a workplace pension or retirement savings plan**, often with an employer contribution matching a portion of what you contribute yourself, similar in principle to [employer-matched retirement contributions common in many countries](/blog/usa-401k-benefits-explained-new-grad), an employer match represents a genuine and immediate return that is difficult to match through any other financial decision, worth enrolling to capture at minimum the full available match where one is offered.
 
-**Health and dental benefits, where offered, often supplement provincial health coverage**, which itself varies somewhat by province in what it covers, understanding what your specific employer's benefit plan adds on top of provincial coverage is worth doing in your first weeks. Every province runs its own health insurance plan (Ontario Health Insurance Plan / OHIP, the BC Medical Services Plan, and equivalents elsewhere), and moving provinces sometimes involves a waiting period before coverage under the new province's plan begins — worth checking directly if you're relocating for a new job, so you're not left with a coverage gap in the first months.
+**Health and dental benefits**, where offered, often supplement provincial health coverage, which itself varies somewhat by province in what it covers, understanding what your specific employer's benefit plan adds on top of provincial coverage is worth doing in your first weeks. Every province runs its own health insurance plan (Ontario Health Insurance Plan / OHIP, the BC Medical Services Plan, and equivalents elsewhere), and moving provinces sometimes involves a waiting period before coverage under the new province's plan begins — worth checking directly if you're relocating for a new job, so you're not left with a coverage gap in the first months.
 
 **Enrolment periods for some benefits are time-limited**, similar to enrolment windows in other markets, worth completing any required enrolment paperwork promptly rather than assuming you can complete it whenever convenient.
 
@@ -55,23 +55,19 @@ Your employer issues a T4 slip (Statement of Remuneration Paid) by the end of Fe
 
 ## What to check on your first payslip
 
-**That your gross pay matches your contracted salary.**
-
-**That federal and provincial tax deductions look reasonable relative to your income level**, if something looks clearly wrong, raise it with your employer's payroll team promptly.
-
-**Whether pension or benefit enrolment has been processed correctly**, and at what contribution level.
-
-**Any one-time items**, such as a signing bonus, have been processed correctly and with the expected tax treatment.
-
-**Raising a discrepancy in month one is a quick administrative fix**, the same error discovered months later, after it has compounded across several payslips, is a considerably longer process to correct.
+1. **That your gross pay matches your contracted salary.**
+2. **That federal and provincial tax deductions look reasonable relative to your income level**, if something looks clearly wrong, raise it with your employer's payroll team promptly.
+3. **Whether pension or benefit enrolment has been processed correctly**, and at what contribution level.
+4. **Any one-time items**, such as a signing bonus, have been processed correctly and with the expected tax treatment.
+5. **Raising a discrepancy in month one is a quick administrative fix**, the same error discovered months later, after it has compounded across several payslips, is a considerably longer process to correct.
 
 ## Common Mistakes
 
-- **Not applying for a Social Insurance Number promptly if you do not already have one.** Required to be paid legally and to set up payroll correctly.
+- **Not applying for a Social Insurance Number promptly.** If you do not already have one. Required to be paid legally and to set up payroll correctly.
 - **Not checking the first payslip carefully.** The easiest opportunity to catch an error while it is simple to fix.
-- **Declining to enrol in a workplace pension with an employer match without understanding what is being forfeited.**
+- **Declining to enrol in a workplace pension.** With an employer match without understanding what is being forfeited.
 - **Assuming provincial tax rates are the same everywhere.** They differ genuinely by province and affect real take-home pay.
-- **Not keeping pay and tax records organised throughout the year, then scrambling the following spring.**
+- **Not keeping pay and tax records organised.** Throughout the year. Then scrambling the following spring.
 - **Assuming automatic payroll deductions mean no annual filing is required.** An annual return is still generally required to reconcile the year.
 
 ## Frequently Asked Questions

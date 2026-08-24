@@ -97,7 +97,7 @@ Roles explicitly focused on international business, trade or tourism sometimes p
 
 **Ask directly what proportion of daily work genuinely happens in English versus Japanese for the specific team you would join**, rather than inferring this from a company's general marketing or international brand.
 
-**Understand that even in a genuinely English-primary role, daily life in Japan outside work will still substantially benefit from at least basic Japanese ability**, worth building this over time even if your specific job does not strictly require it, since it materially improves your broader experience living in the country.
+**Understand that even in a genuinely English-primary role**, daily life in Japan outside work will still substantially benefit from at least basic Japanese ability, worth building this over time even if your specific job does not strictly require it, since it materially improves your broader experience living in the country.
 
 **Recognise that this category represents a genuine minority of the overall Japanese job market**, worth being realistic about the size of the accessible pool rather than assuming it represents the whole market.
 
@@ -107,15 +107,22 @@ Roles in this category, while genuinely accessible without advanced Japanese, ma
 
 Building at least conversational Japanese over time, even in a role that does not strictly require it, genuinely widens your future options within the broader Japanese job market, worth investing in this incrementally even while working in an English-primary role.
 
+## Weighing this route against building Japanese ability instead
+
+**Consider honestly whether pursuing an English-primary role now**, while building Japanese ability over time, or investing more heavily upfront in language study before entering the broader market, better fits your own circumstances and timeline.
+
+**Neither approach is universally correct**, an English-primary role provides immediate entry and income while you build language ability at a sustainable pace, while upfront language investment opens the considerably larger domestic market sooner, worth choosing deliberately based on your own genuine priorities and financial situation rather than defaulting to either without consideration.
+
 ## Common Mistakes
 
 - **Assuming no English-conducted market exists.** It does, and it is substantial in specific segments.
-- **Assuming it is as large as the whole economy.** It is concentrated and it is a subset.
+- **Assuming it is as large.** As the whole economy. It is concentrated and it is a subset.
 - **Expecting no Japanese to be needed at all.** Some is frequently useful even in English-operating roles.
-- **Looking only in Tokyo without knowing that is where it concentrates**, or expecting the same density elsewhere.
+- **Looking only in Tokyo.** Without knowing that is where it concentrates. Or expecting the same density elsewhere.
 - **Treating English-only as a permanent strategy.** Progression frequently favours bilingual staff.
 - **Not using the bilingual job boards and agencies.** They are the main channel for this market specifically.
 
+## Frequently Asked Questions
 ### Are there really jobs in Japan where I do not need Japanese at all?
 
 Yes, a genuine though limited category, mostly at international companies with English-primary teams and in specific roles like teaching, worth researching the specific employer and team directly rather than assuming broadly.
@@ -131,13 +138,6 @@ A significant and genuinely accessible one, though not the only route, internati
 ### How do I find these specific roles?
 
 Research international companies' Japan operations directly, check job platforms that specifically cater to English-speaking candidates in Japan, and ask directly about a specific team's actual working language during any application process.
-## Weighing this route against building Japanese ability instead
-
-**Consider honestly whether pursuing an English-primary role now**, while building Japanese ability over time, or investing more heavily upfront in language study before entering the broader market, better fits your own circumstances and timeline.
-
-**Neither approach is universally correct**, an English-primary role provides immediate entry and income while you build language ability at a sustainable pace, while upfront language investment opens the considerably larger domestic market sooner, worth choosing deliberately based on your own genuine priorities and financial situation rather than defaulting to either without consideration.
-
-## Frequently Asked Questions
 
 ### How many jobs in Japan are genuinely English-only?
 
@@ -162,3 +162,4 @@ Frequently not — many run on their home market's conventions and hire year-rou
 ### Should I learn Japanese before applying?
 
 You do not need to wait, and starting is worthwhile regardless. Apply where your current level fits while continuing to study.
+

@@ -25,7 +25,7 @@ showcase: none
 
 **Conversion is the point.** The internship functions as an extended assessment, and employers extend return offers to the interns they want. The proportion converted varies by employer and by year, but publicly reported figures give a sense of scale: investment banks have commonly reported conversion rates in the 80-95% range in strong hiring years, and large technology employers have commonly reported figures somewhere in the 50-75% range — both numbers move meaningfully with the broader hiring environment year to year, so treat them as an indication of the general pattern rather than a specific promise for any given year or employer.
 
-**The full-time round then fills what is left, and the arithmetic is worth making concrete.** Take a bank running a 200-person structured graduate class, filled roughly 85% by converted interns — that leaves around 30 seats recruited externally, competed for by every candidate at every target school who didn't intern there that summer. That's the actual size of the "full-time round" pool at a firm like this, and it's a considerably smaller and more contested number than the headline graduate-class size suggests.
+**The full-time round then fills what is left**, and the arithmetic is worth making concrete. Take a bank running a 200-person structured graduate class, filled roughly 85% by converted interns — that leaves around 30 seats recruited externally, competed for by every candidate at every target school who didn't intern there that summer. That's the actual size of the "full-time round" pool at a firm like this, and it's a considerably smaller and more contested number than the headline graduate-class size suggests.
 
 **Which means the two rounds are not equivalent.** Students frequently plan as though the full-time round is a fresh, equally-sized opportunity. It is generally neither.
 
@@ -43,7 +43,7 @@ The planning consequence: if your target is banking or consulting, treat the pen
 
 ## "Off-cycle" hiring, the channel most students never search for
 
-**Off-cycle hiring refers to roles filled outside the structured, calendar-driven recruiting rounds** — a team that lost someone unexpectedly, a business unit that got budget approval mid-year, a role that simply didn't get filled in the structured round. These postings rarely appear on the same career-fair circuit or campus recruiting portal as the structured programs, and they're filled on a rolling basis rather than a fixed decision date.
+**Off-cycle hiring refers to roles filled outside the structured**, calendar-driven recruiting rounds — a team that lost someone unexpectedly, a business unit that got budget approval mid-year, a role that simply didn't get filled in the structured round. These postings rarely appear on the same career-fair circuit or campus recruiting portal as the structured programs, and they're filled on a rolling basis rather than a fixed decision date.
 
 **This matters specifically for students who missed both the internship round and the main full-time round.** Off-cycle roles are less visible by design — they're not marketed as a "class" the way structured hiring is — which means they reward direct outreach considerably more than they reward browsing job boards. Searching a target company's careers page directly, rather than relying on the campus recruiting calendar to surface every opening, is the practical way to find these.
 
@@ -76,8 +76,8 @@ Common, and the response is strategic rather than simply working harder.
 - **Treating the full-time round as an equal second chance.** At many employers it is a much smaller pool.
 - **Not applying to summer internships in the penultimate year.** The decisive round for the most structured employers.
 - **Applying only to employers with heavy conversion.** Their remaining seats are the most contested in the market.
-- **Waiting for the autumn full-time round after a quiet summer round.** The spring and mid-sized channels are open much earlier.
-- **Assuming an internship elsewhere does not help.** Any relevant internship materially improves a full-time application, including at a different employer.
+- **Waiting for the autumn full-time round.** After a quiet summer round. The spring and mid-sized channels are open much earlier.
+- **Assuming an internship else.** Where does not help. Any relevant internship materially improves a full-time application, including at a different employer.
 
 ## Frequently Asked Questions
 

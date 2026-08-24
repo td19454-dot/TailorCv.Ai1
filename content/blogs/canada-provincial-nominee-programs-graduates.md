@@ -59,12 +59,12 @@ Cross-reference a province's in-demand occupation list against your actual field
 
 ## Common Mistakes
 
-- **Assuming every province's graduate stream requires a job offer**, and ruling out PNPs entirely before checking whether Ontario's or Nova Scotia's no-offer-required streams fit your situation.
-- **Studying in one province while planning to immigrate through another province's graduate stream** — most require the degree to be from an institution in that specific province.
-- **Not checking a stream's current status before building a plan around it** — provinces pause, adjust, and rename streams, and a program description from a year ago can be stale.
-- **Missing the connection between a work permit's expiry date and PNP processing time**, and ending up without legal status mid-application.
-- **Choosing a province purely for stream accessibility without checking whether your field has real opportunity there.**
-- **Not reading a stream's residency commitment before accepting a nomination.**
+- **Assuming every province's graduate stream requires a job offer.** And ruling out PNPs entirely before checking whether Ontario's or Nova Scotia's no-offer-required streams fit your situation.
+- **Studying in one province while planning to immigrate through another province's graduate stream.** Most require the degree to be from an institution in that specific province.
+- **Not checking a stream's current status.** Before building a plan around it. Provinces pause, adjust, and rename streams, and a program description from a year ago can be stale.
+- **Missing the connection between a work permit's expiry date and PNP processing time.** And ending up without legal status mid-application.
+- **Choosing a province purely for stream accessibility.** Without checking whether your field has real opportunity there.
+- **Not reading a stream's residency commitment.** Before accepting a nomination.
 
 ## Frequently Asked Questions
 

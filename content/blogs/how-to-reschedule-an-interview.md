@@ -76,9 +76,9 @@ You can rehearse this before the real thing. The interviewer reads your resume f
 
 To reschedule without losing ground:
 
-- **Reach out as early as possible**, in writing (and by call if it's imminent).
-- Give a **brief, honest reason**.
-- **Offer two or three specific alternatives**.
-- **Reconfirm** the new time and prepare thoroughly with a [mock interview](https://www.thetailorcv.com/mock-interview).
+- [ ] **Reach out as early as possible**, in writing (and by call if it's imminent).
+- [ ] Give a **brief, honest reason**.
+- [ ] **Offer two or three specific alternatives**.
+- [ ] **Reconfirm** the new time and prepare thoroughly with a [mock interview](https://www.thetailorcv.com/mock-interview).
 
 Handle it this way and a scheduling hiccup won't cost you the role — it may even show the kind of professionalism that gets offers. Keep the rest of your process sharp with a tailored [resume](https://www.thetailorcv.com/modify-cv) and the [ATS checker](https://www.thetailorcv.com/solutions).

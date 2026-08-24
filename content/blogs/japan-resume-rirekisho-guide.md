@@ -110,12 +110,12 @@ Keep a copy of exactly what you submitted for each specific application, useful 
 ## Common Mistakes
 
 - **Submitting a Western-style resume instead.** The most visible signal of unfamiliarity with the market.
-- **Omitting the photograph, or using a casual one rather than the proper formal standard.** Conventionally expected and its absence or informality is noticed.
-- **Writing generic motivation statements rather than content specific to each individual company.**
-- **Inconsistent date formats**, mixing calendar systems within one document.
+- **Omitting the photograph, or using a casual one.** Rather than the proper formal standard. Conventionally expected and its absence or informality is noticed.
+- **Writing generic motivation statements.** Rather than content specific to each individual company.
+- **Inconsistent date formats.** Mixing calendar systems within one document.
 - **Leaving gaps in the chronology.** The history is expected to be continuous.
 - **Using correction fluid on a handwritten form.** Convention is to start again.
-- **Assuming a digital version is always acceptable without checking the specific employer's expectation.**
+- **Assuming a digital version is always acceptable.** Without checking the specific employer's expectation.
 - **Treating the motivation section as filler.** It is the one part of the form where you can genuinely differentiate.
 
 ## Frequently Asked Questions

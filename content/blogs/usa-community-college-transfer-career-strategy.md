@@ -157,15 +157,6 @@ The difference is not ability. It is roughly six hours of work done in June and 
 
 That is the entire argument of this page compressed into one comparison — and it is why the checklist for the summer before matters more than anything you do after arriving.
 
-## Common Mistakes
-
-- **Waiting until you arrive to start.** The decisive weeks begin immediately and the preparation belongs to the preceding summer.
-- **Omitting work experience.** A job held through full-time study is evidence, not filler.
-- **Explaining the transfer on the resume.** Nobody asked, and raising it creates a question.
-- **Assuming the pipelines are closed.** Many employers recruit juniors directly and never asked where you spent freshman year.
-- **Networking only within your new cohort.** Community college classmates, former colleagues and faculty from both institutions are all live contacts.
-- **Treating the autumn as the only season.** Spring hiring is real and less contested.
-
 ## Where transfer students are actively wanted
 
 Worth knowing, because the framing of catching up obscures the fact that several employers specifically seek this profile.
@@ -188,21 +179,31 @@ Worth knowing, because the framing of catching up obscures the fact that several
 
 Twelve tasks, none longer than an evening, done before your new term begins.
 
-- **Finalise the resume**, ordered new institution first, community college beneath it, no explanation of the transfer
-- **Confirm your work history is described with outcomes**, not just duties
-- **Run an [ATS check](/ats-analysis)** to confirm it parses cleanly
-- **Email the new careers office** asking which employers recruit from your programme and when deadlines fall
-- **Check whether you can access the careers portal before your official start date**
-- **Join the professional society for your field**, even before you have a student ID
-- **Build a list of thirty target employers**, mixing recognisable names with local and mid-sized ones
-- **Apply to any internship whose deadline falls before term starts**, citing your incoming institution
-- **Message five current students in your new programme** and ask what recruiting looked like for them
-- **Message two former community college classmates** to compare notes and keep the relationship live
-- **Identify one professor at the new institution whose research interests you**, ready to approach in week two
-- **Set a weekly recruiting time block** for the autumn before the term itself creates its own competing schedule
+- [ ] **Finalise the resume**, ordered new institution first, community college beneath it, no explanation of the transfer
+- [ ] **Confirm your work history is described with outcomes**, not just duties
+- [ ] **Run an [ATS check](/ats-analysis)** to confirm it parses cleanly
+- [ ] **Email the new careers office** asking which employers recruit from your programme and when deadlines fall
+- [ ] **Check whether you can access the careers portal before your official start date**
+- [ ] **Join the professional society for your field**, even before you have a student ID
+- [ ] **Build a list of thirty target employers**, mixing recognisable names with local and mid-sized ones
+- [ ] **Apply to any internship whose deadline falls before term starts**, citing your incoming institution
+- [ ] **Message five current students in your new programme** and ask what recruiting looked like for them
+- [ ] **Message two former community college classmates** to compare notes and keep the relationship live
+- [ ] **Identify one professor at the new institution whose research interests you**, ready to approach in week two
+- [ ] **Set a weekly recruiting time block** for the autumn before the term itself creates its own competing schedule
 
 Do this and the first four weeks of term — the ones that decide the year — arrive with a plan already running rather than a blank page.
 
+## Common Mistakes
+
+- **Waiting until you arrive to start.** The decisive weeks begin immediately and the preparation belongs to the preceding summer.
+- **Omitting work experience.** A job held through full-time study is evidence, not filler.
+- **Explaining the transfer on the resume.** Nobody asked, and raising it creates a question.
+- **Assuming the pipelines are closed.** Many employers recruit juniors directly and never asked where you spent freshman year.
+- **Networking only within your new cohort.** Community college classmates, former colleagues and faculty from both institutions are all live contacts.
+- **Treating the autumn as the only season.** Spring hiring is real and less contested.
+
+## Frequently Asked Questions
 ### Will a gap between the associate and bachelor's degree hurt me?
 
 No, provided you can account for it in one sentence — working, saving, caring for family, or simply the ordinary timeline of a part-time transfer path. A recruiter reading a resume with continuous relevant activity across the gap does not treat it as a problem.
@@ -214,6 +215,7 @@ Follow the [same convention as any GPA](/blog/usa-gpa-requirements-employers) �
 ### Is it worth transferring to a less prestigious four-year school with a stronger internship pipeline?
 
 Frequently yes. The [target-school effect](/blog/usa-non-target-school-strategy) is about access to channels, not about the name on the degree, and a programme with genuine employer relationships in your field usually beats a more recognisable name with none.
+
 ### What if I am transferring in my final year rather than as a junior?
 
 The timeline compresses further, and the same principles apply with more urgency. Start the summer before, contact the careers office immediately, and weight your effort toward direct applications and outreach over campus channels, since you will have almost no time inside the traditional recruiting calendar at the new institution.
@@ -225,6 +227,7 @@ Some genuinely do, for the same reason [community college teaching experience re
 ### Should I mention financial or family reasons for starting at community college?
 
 Only if it comes up naturally and briefly. It is a completely normal and increasingly common path, and treating it as something to justify at length gives it more weight in the conversation than the interviewer was assigning to it.
+
 ### How do I compete with students who had two internships already?
 
 By having something they do not: real work history, a demonstrated ability to manage competing demands, and usually a clearer reason for being there. Lead with evidence of what you built and what you were relied on for, rather than trying to match internship count. The [evidence-over-pedigree argument](/blog/usa-non-target-school-strategy) applies directly.
@@ -232,6 +235,7 @@ By having something they do not: real work history, a demonstrated ability to ma
 ### Is it worth doing a fifth year to get another recruiting cycle?
 
 Occasionally, if it also gets you a meaningful credential or a co-op placement. Doing it purely to access one more autumn cycle is usually an expensive way to buy something that [spring recruiting](/blog/usa-second-round-spring-recruiting) and a strong first job would provide anyway.
+
 ### Should I retake courses to raise my GPA before applying?
 
 Almost never worth it purely for applications. The time is better spent building a project or securing relevant work, both of which change what your application can claim rather than adjusting a number most employers [do not screen on anyway](/blog/usa-gpa-requirements-employers).
@@ -239,7 +243,6 @@ Almost never worth it purely for applications. The time is better spent building
 ### Do I put my community college on LinkedIn?
 
 Yes, listed as education alongside your degree institution. It is a completed part of your record and omitting it creates an unexplained gap that is more noticeable than the entry itself.
-## Frequently Asked Questions
 
 ### Do employers care that I started at a community college?
 
@@ -264,3 +267,4 @@ Then run the [non-target playbook](/blog/usa-non-target-school-strategy): referr
 ### How do I catch up on networking?
 
 Alumni from both institutions, faculty at both, and former colleagues. Three messages a day from the summer onward closes the gap faster than most people expect — the [outreach mechanics](/blog/usa-cold-email-networking-students) are the whole method.
+

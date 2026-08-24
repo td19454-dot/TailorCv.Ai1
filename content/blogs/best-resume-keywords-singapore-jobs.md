@@ -43,7 +43,10 @@ So keywords aren't decoration. A [generic resume](/blog/tailored-vs-generic-resu
 
 You don't guess Singapore keywords — you extract them from the postings you're targeting.
 
-**1. Read 5–10 real job descriptions** for your target role in Singapore. **2. Note the terms that repeat** across them — the recurring skills, tools, and phrases are the ones the ATS and recruiters weigh. **3. Cross-check against your genuine experience** — you only claim what you can back up. **4. Mirror the exact wording** — if postings say "data visualisation" not "data viz", use theirs.
+1. **Read 5–10 real job descriptions** for your target role in Singapore.
+2. **Note the terms that repeat** across them — the recurring skills, tools, and phrases are the ones the ATS and recruiters weigh.
+3. **Cross-check against your genuine experience** — you only claim what you can back up.
+4. **Mirror the exact wording** — if postings say "data visualisation" not "data viz", use theirs.
 
 This is faster and more accurate than any generic keyword list, because it's specific to *your* roles. A [free ATS score](/blog/how-to-check-ats-score-free) against a specific posting — the way [the ATS reads your resume](/blog/ats-resume-checker-how-it-works) — automates the extraction — it shows the exact keywords you're missing for that job, which is the difference between an [ATS score and a resume score](/blog/ats-score-vs-resume-score).
 

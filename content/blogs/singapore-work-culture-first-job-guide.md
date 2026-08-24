@@ -23,7 +23,7 @@ showcase: none
 
 **The [measured, evidence-based communication style that characterises local interviews](/blog/singapore-interview-etiquette-guide) is not simply an interview performance, it reflects a genuine broader workplace communication norm here.**
 
-**Colleagues generally communicate directly and specifically, without excessive hedging, and without the effusive enthusiasm that characterises some other workplace cultures**, adjusting your own communication style to match this, stating things plainly and backing claims with specifics rather than superlatives, helps you integrate more smoothly and be taken seriously more quickly.
+**Colleagues generally communicate directly and specifically**, without excessive hedging, and without the effusive enthusiasm that characterises some other workplace cultures, adjusting your own communication style to match this, stating things plainly and backing claims with specifics rather than superlatives, helps you integrate more smoothly and be taken seriously more quickly.
 
 ## Hierarchy and seniority
 
@@ -61,12 +61,12 @@ Observe before assuming a general rule applies universally, workplace culture va
 
 ## Common Mistakes
 
-- **Communicating with the enthusiastic, superlative-heavy register that works in some other markets, rather than adapting to the local measured, specific norm.**
+- **Communicating with the enthusiastic.** Superlative-heavy register that works in some other markets, rather than adapting to the local measured, specific norm.
 - **Assuming hierarchy means junior staff cannot contribute substantively.** It affects the manner of contribution more than whether contribution is welcomed.
-- **Treating punctuality as flexible in daily work, when it is a genuine baseline expectation.**
-- **Assuming a single working-hours pattern applies universally across all sectors and employers, rather than asking directly.**
-- **Not investing deliberate effort in building relationships with colleagues, assuming this happens automatically.**
-- **Applying a single general rule about workplace culture without accounting for genuine variation between specific companies and teams.**
+- **Treating punctuality as flexible in daily work.** When it is a genuine baseline expectation.
+- **Assuming a single working-hours pattern applies universally across all sectors and employers.** Rather than asking directly.
+- **Not investing deliberate effort in building relationships with colleagues.** Assuming this happens automatically.
+- **Applying a single general rule.** About workplace culture without accounting for genuine variation between specific companies and teams.
 
 ## Frequently Asked Questions
 

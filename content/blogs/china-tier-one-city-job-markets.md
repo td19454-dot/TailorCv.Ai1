@@ -21,7 +21,7 @@ showcase: none
 
 ## Why the choice should follow the sector
 
-**Each major city has a genuinely distinct economic character, rather than being an interchangeable node in a single national job market**, choosing where to build a career deliberately, based on where your target sector actually concentrates, produces a materially better outcome than defaulting to whichever city has the strongest general reputation.
+**Each major city has a genuinely distinct economic character**, rather than being an interchangeable node in a single national job market, choosing where to build a career deliberately, based on where your target sector actually concentrates, produces a materially better outcome than defaulting to whichever city has the strongest general reputation.
 
 **The "Big Four" — Beijing**, Shanghai, Guangzhou, and Shenzhen — each have a genuinely distinct character worth understanding individually rather than treating as interchangeable "first-tier" options:
 
@@ -72,16 +72,16 @@ Talk to people who have actually made the specific move you are considering, som
 
 ## Building flexibility into your early career plan
 
-**Recognise that your first city choice does not have to be permanent**, movement between major Chinese cities at the two to three year mark is common and generally well regarded, worth treating your first choice as a genuinely good decision for where you are now rather than a decision that locks in your entire career geography.
+Recognise that your first city choice does not have to be permanent, movement between major Chinese cities at the two to three year mark is common and generally well regarded, worth treating your first choice as a genuinely good decision for where you are now rather than a decision that locks in your entire career geography.
 
 ## Common Mistakes
 
-- **Choosing a city based on general national reputation rather than where your specific target sector actually concentrates.**
-- **Comparing salary figures across cities without adjusting for genuinely different real costs of living, even among first-tier cities themselves.**
-- **Overlooking second-tier cities entirely, despite consistently lower competition relative to genuine opportunity quality.**
-- **Not considering long-term settlement implications when they genuinely matter to your plans.**
-- **Deciding purely on financial grounds without weighing genuine personal lifestyle preference.**
-- **Assuming a single city is universally "the" hub for every sector, rather than researching where your specific target industry actually operates.**
+- **Choosing a city based on general national reputation.** Rather than where your specific target sector actually concentrates.
+- **Comparing salary figures across cities.** Without adjusting for genuinely different real costs of living. Even among first-tier cities themselves.
+- **Overlooking second-tier cities entirely.** Despite consistently lower competition relative to genuine opportunity quality.
+- **Not considering long-term settlement implications.** When they genuinely matter to your plans.
+- **Deciding purely on financial grounds.** Without weighing genuine personal lifestyle preference.
+- **Assuming a single city is universally "the" hub for every sector.** Rather than researching where your specific target industry actually operates.
 
 ## Frequently Asked Questions
 

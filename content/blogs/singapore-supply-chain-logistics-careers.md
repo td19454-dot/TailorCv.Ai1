@@ -23,7 +23,7 @@ showcase: none
 
 **Singapore's position as one of the world's busiest ports and a major global trade and logistics hub means the supply chain sector here is not a secondary or niche industry**, it is a core part of the economy, employing very substantial numbers of people across shipping, freight, warehousing, trade finance and the broader logistics ecosystem that supports regional and global trade flows.
 
-**Major shipping lines, logistics companies, freight forwarders and trading houses maintain significant regional operations here**, alongside the regional headquarters of manufacturers and retailers who manage complex Southeast Asian and broader Asian supply chains from a Singapore base.
+**Major shipping lines**, logistics companies, freight forwarders and trading houses maintain significant regional operations here, alongside the regional headquarters of manufacturers and retailers who manage complex Southeast Asian and broader Asian supply chains from a Singapore base.
 
 ## The range of roles beyond physical logistics
 
@@ -59,16 +59,14 @@ Which means the applicant-to-seat ratio in supply chain and logistics is conside
 
 ## Applying well
 
-**Research the specific company's actual supply chain footprint and regional operations**, generic interest in logistics reads poorly against a specific, informed answer about a company's actual network and challenges.
-
-**Highlight any relevant analytical or technical skills, quantitative coursework, or projects involving optimisation or data analysis**, even where your degree is not directly supply chain focused, these skills transfer directly and are genuinely valued.
-
-**Understand the basic economics of global trade and shipping**, at a level an interested, informed outsider would have, this demonstrates genuine engagement with the sector rather than a generic application.
+1. **Research the specific company's actual supply chain footprint and regional operations**, generic interest in logistics reads poorly against a specific, informed answer about a company's actual network and challenges.
+2. **Highlight any relevant analytical or technical skills**, quantitative coursework, or projects involving optimisation or data analysis, even where your degree is not directly supply chain focused, these skills transfer directly and are genuinely valued.
+3. **Understand the basic economics of global trade and shipping**, at a level an interested, informed outsider would have, this demonstrates genuine engagement with the sector rather than a generic application.
 
 ## Common Mistakes
 
 - **Assuming supply chain work means physical warehouse operations alone.** The actual range spans analytics, technology, procurement and regional coordination.
-- **Overlooking the sector entirely in favour of the most visible finance, consulting and technology employers.** A less contested and genuinely substantial alternative.
+- **Overlooking the sector entirely.** In favour of the most visible finance, consulting and technology employers. A less contested and genuinely substantial alternative.
 - **Not researching a specific company's actual regional supply chain footprint before applying.**
 - **Underselling relevant quantitative or analytical skills from an unrelated degree.** These transfer directly and are genuinely valued.
 - **Assuming the work lacks genuine regional or international exposure.** Often the opposite, given Singapore's hub role.

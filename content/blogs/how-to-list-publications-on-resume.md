@@ -100,9 +100,9 @@ Feature the publications most relevant to each application. [Tailor your resume]
 
 Your publications section is ready when it:
 
-- Is **relevant** to the role and appropriately sized.
-- Uses a **consistent citation style**, newest first, with your name **bolded**.
-- Links to a fuller list where helpful (e.g., a [portfolio](https://www.thetailorcv.com/portfolio) or scholar profile).
-- Stays **clean and [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)** and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Is **relevant** to the role and appropriately sized.
+- [ ] Uses a **consistent citation style**, newest first, with your name **bolded**.
+- [ ] Links to a fuller list where helpful (e.g., a [portfolio](https://www.thetailorcv.com/portfolio) or scholar profile).
+- [ ] Stays **clean and [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)** and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Build a polished [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and let your published work prove your authority.

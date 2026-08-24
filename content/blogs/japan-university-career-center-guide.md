@@ -59,21 +59,14 @@ Ask about language support. Some institutions run business Japanese classes aime
 
 ## Using it well
 
-Book a proper appointment rather than dropping in, and bring specific questions.
-
-Ask for the alumni employment data by programme, not the institution-wide figures.
-
-Ask which employers have hired international graduates, if that applies to you.
-
-Get your documents reviewed early, before you need them for a deadline.
-
-Book mock interviews before your first real one, not after.
-
-Ask which on-campus sessions are worth attending. Advisers know which companies are genuinely recruiting from your programme and which are running a branding exercise.
-
-Ask about the second new graduate route if you are already past the standard cycle, since some employers recruit recent graduates outside it.
-
-And ask what you have not thought to ask. An adviser who has run hundreds of students through this system knows the failure modes, and a direct question about what typically goes wrong for students like you produces unusually useful answers.
+1. Book a proper appointment rather than dropping in, and bring specific questions.
+2. Ask for the alumni employment data by programme, not the institution-wide figures.
+3. Ask which employers have hired international graduates, if that applies to you.
+4. Get your documents reviewed early, before you need them for a deadline.
+5. Book mock interviews before your first real one, not after.
+6. Ask which on-campus sessions are worth attending — advisers know which companies are genuinely recruiting from your programme and which are running a branding exercise.
+7. Ask about the second new graduate route if you are already past the standard cycle, since some employers recruit recent graduates outside it.
+8. Ask what you have not thought to ask. An adviser who has run hundreds of students through this system knows the failure modes, and a direct question about what typically goes wrong for students like you produces unusually useful answers.
 
 ## What they cannot do
 
@@ -107,6 +100,12 @@ Visit early in your studies, not only when you are ready to begin actively apply
 
 Return regularly rather than treating a single visit as sufficient, staff genuinely get to know students who engage consistently, and this familiarity can translate into more specific, useful guidance and introductions over time.
 
+## Making the most of limited appointment availability
+
+**Book appointments early**, particularly during the busiest periods of the hiring cycle when demand for career centre time is highest, waiting until the last moment often means limited or no availability precisely when you most need guidance.
+
+**Prepare specific questions before each appointment**, rather than arriving with an open-ended general request for help, this lets you extract considerably more value from a limited time slot, since staff can address your specific situation directly rather than starting from general advice.
+
 ## Common Mistakes
 
 - **Arriving in the final year.** The system is built around engagement from the penultimate spring.
@@ -116,6 +115,7 @@ Return regularly rather than treating a single visit as sufficient, staff genuin
 - **Assuming the main service covers immigration.** Usually a separate function.
 - **Using it as the only channel.** It is one of several, alongside direct applications and outreach.
 
+## Frequently Asked Questions
 ### Are university career centres actually useful for the Japanese job hunting process?
 
 Yes, genuinely, they are specifically experienced with local conventions around application documents and interview format, worth using this resource actively rather than navigating the process entirely independently.
@@ -131,13 +131,6 @@ Yes, genuinely valuable given how distinct local interview conventions are from 
 ### How do I find out which employers have a relationship with my specific university?
 
 Ask the career centre directly, this is genuinely useful information that is not easily surfaced through a general independent search.
-## Making the most of limited appointment availability
-
-**Book appointments early, particularly during the busiest periods of the hiring cycle when demand for career centre time is highest**, waiting until the last moment often means limited or no availability precisely when you most need guidance.
-
-**Prepare specific questions before each appointment, rather than arriving with an open-ended general request for help**, this lets you extract considerably more value from a limited time slot, since staff can address your specific situation directly rather than starting from general advice.
-
-## Frequently Asked Questions
 
 ### When should I first visit?
 
@@ -162,3 +155,4 @@ Ask them which employers hire in English and which have hired international grad
 ### Is it worth using if I want to work outside Japan?
 
 Less directly, and they may still know which employers offer overseas placement, particularly [trading companies](/blog/japan-trading-companies-sogo-shosha-hiring) where international assignment is standard.
+

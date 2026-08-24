@@ -21,7 +21,7 @@ showcase: none
 
 ## Why this varies so much
 
-**There is no single, universal answer to "do I need Chinese to work in China," because the honest answer depends entirely on the specific employer and role**, treating the question as having one universal answer is the most common source of wasted job search effort in this market.
+**There is no single**, universal answer to "do I need Chinese to work in China," because the honest answer depends entirely on the specific employer and role, treating the question as having one universal answer is the most common source of wasted job search effort in this market.
 
 **Domestic employers, including [state-owned enterprises](/blog/china-state-owned-enterprise-jobs) and most private Chinese companies, generally operate primarily or entirely in Mandarin**, both the recruiting and interview process and the daily working environment, this is the default assumption for this category and a real, not nominal, requirement.
 
@@ -43,7 +43,7 @@ Talk to someone currently in a similar role if you can, through an alumni networ
 
 **Conversational fluency and professional working ability are genuinely different skills**, someone who can navigate daily life comfortably in Mandarin may still lack the specific vocabulary and register needed for business writing, formal meetings, or technical documentation in a specific field.
 
-**If your target role requires professional Mandarin, assess this specifically**, not just your general conversational comfort, professional or business Mandarin study, distinct from general language courses, is worth pursuing if you are targeting roles at domestic employers or Mandarin-primary teams.
+**If your target role requires professional Mandarin**, assess this specifically, not just your general conversational comfort, professional or business Mandarin study, distinct from general language courses, is worth pursuing if you are targeting roles at domestic employers or Mandarin-primary teams.
 
 **Certification level provides a useful, if imperfect, benchmark**, the [HSK level guide](/blog/china-hsk-levels-for-employment) covers how specific certification levels map to realistic job requirements, worth reading alongside this article if you are trying to gauge where you currently stand relative to a specific role's needs. Note that HSK (Hanyu Shuiping Kaoshi) is specifically the test built for non-native learners — a separate test, PSC (普通话水平测试, Putonghua Proficiency Test), certifies standard Mandarin pronunciation and is aimed mainly at native or near-native speakers entering professions like teaching or broadcasting. If a job posting mentions a language certification requirement, checking which of the two it actually means avoids you preparing for, or citing, the wrong credential entirely.
 
@@ -59,7 +59,7 @@ These roles exist and are genuinely accessible, and they represent a real minori
 
 ## Building the language ability if you need it
 
-**If your target roles require Mandarin you do not yet have, this is a multi-year investment rather than something to acquire in a final semester**, plan accordingly and honestly, exactly the same realistic planning that any [structural constraint on a job search](/blog/usa-stem-opt-employer-requirements) deserves.
+**If your target roles require Mandarin you do not yet have**, this is a multi-year investment rather than something to acquire in a final semester, plan accordingly and honestly, exactly the same realistic planning that any [structural constraint on a job search](/blog/usa-stem-opt-employer-requirements) deserves.
 
 **Studying or working in China itself accelerates this considerably**, an academic year or a defined work placement produces a meaningfully different outcome than classroom study alone.
 
@@ -73,7 +73,7 @@ Consider whether a hybrid strategy, targeting the accessible minority of roles n
 
 ## The specific vocabulary that matters most for a job search itself
 
-**Beyond general conversational and professional ability, the specific vocabulary and phrasing used in job postings, application forms and interview questions in this market forms its own distinct, learnable subset**, worth studying real job postings and common interview question formats specifically, even before your broader general ability reaches your ultimate target level, this targeted preparation lets you navigate the application process itself more confidently even while your overall fluency continues developing.
+Beyond general conversational and professional ability, the specific vocabulary and phrasing used in job postings, application forms and interview questions in this market forms its own distinct, learnable subset, worth studying real job postings and common interview question formats specifically, even before your broader general ability reaches your ultimate target level, this targeted preparation lets you navigate the application process itself more confidently even while your overall fluency continues developing.
 
 ## Common Mistakes
 
@@ -82,7 +82,7 @@ Consider whether a hybrid strategy, targeting the accessible minority of roles n
 - **Confusing conversational fluency with the professional Mandarin a specific role genuinely requires.** Different skills, worth assessing separately.
 - **Not asking directly about the interview language versus the actual daily working language.** These sometimes differ within the same role.
 - **Assuming Mandarin can be meaningfully improved in a final semester before applying.** A genuine multi-year skill, plan realistically.
-- **Ruling out the entire China job market due to limited Mandarin, rather than identifying the genuine subset of roles that remain accessible.**
+- **Ruling out the entire China job market.** Due to limited Mandarin. Rather than identifying the genuine subset of roles that remain accessible.
 
 ## Frequently Asked Questions
 

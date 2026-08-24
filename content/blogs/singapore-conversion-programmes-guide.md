@@ -21,9 +21,9 @@ showcase: none
 
 ## Why the internship is often the decisive application
 
-**At many large employers in Singapore, a substantial share of the eventual full-time graduate intake is filled by converted interns**, this is a structural feature worth understanding clearly, since it means the internship application, made a year or more before you would actually start full-time work, is frequently the more consequential one, the [same pattern that holds broadly across many major graduate markets](/blog/international-student-internship-strategy).
+**At many large employers in Singapore**, a substantial share of the eventual full-time graduate intake is filled by converted interns, this is a structural feature worth understanding clearly, since it means the internship application, made a year or more before you would actually start full-time work, is frequently the more consequential one, the [same pattern that holds broadly across many major graduate markets](/blog/international-student-internship-strategy).
 
-**Following this logic through, the ten to twelve weeks of a summer internship function less as a discrete work experience and more as an extended, real-world interview**, worth approaching it with that understanding from the first day.
+**Following this logic through**, the ten to twelve weeks of a summer internship function less as a discrete work experience and more as an extended, real-world interview, worth approaching it with that understanding from the first day.
 
 ## What conversion actually depends on
 
@@ -53,7 +53,7 @@ This is not about self-promotion for its own sake, it is about ensuring the peop
 
 ## Say explicitly that you want it
 
-**Employers convert people who have asked**, a meaningful number of interns never state this plainly and assume it is somehow understood, saying directly to a senior person on the team that you would like to be considered for a full-time role, if this is genuinely true, is a simple, low-cost action that a surprising number of otherwise strong interns never take.
+Employers convert people who have asked, a meaningful number of interns never state this plainly and assume it is somehow understood, saying directly to a senior person on the team that you would like to be considered for a full-time role, if this is genuinely true, is a simple, low-cost action that a surprising number of otherwise strong interns never take.
 
 ## Securing the reference regardless
 
@@ -65,11 +65,11 @@ Keep your own records of dates, your specific role and responsibilities, and any
 
 ## Common Mistakes
 
-- **Only asking about conversion at the very end of the internship, leaving no time to act on the answer.**
-- **Doing genuinely good work quietly, without making it visible to more than your immediate supervisor.**
-- **Never stating explicitly that you want a full-time offer, and assuming this is somehow understood.**
-- **Not securing a reference and personal contact before leaving, regardless of whether conversion happens.**
-- **Not understanding that headcount and pass eligibility, not only performance, genuinely affect conversion outcomes.**
+- **Only asking about conversion at the very end of the internship.** Leaving no time to act on the answer.
+- **Doing genuinely good work quietly.** Without making it visible to more than your immediate supervisor.
+- **Never stating explicitly that you want a full-time offer.** And assuming this is somehow understood.
+- **Not securing a reference and personal contact.** Before leaving. Regardless of whether conversion happens.
+- **Not understanding that headcount and pass eligibility.** Not only performance, genuinely affect conversion outcomes.
 - **Not keeping records of the specific work done during the internship for future reference.**
 
 ## Frequently Asked Questions

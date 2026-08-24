@@ -21,15 +21,11 @@ showcase: none
 
 ## The timeline
 
-**This is the part that catches people out.** Applications for training contracts commonly open around two years before the contract start date. A student applying in their final year is frequently applying for a contract beginning two years after graduation.
-
-**Vacation schemes come first.** Week-long or fortnight-long placements, typically in the penultimate year, and at many firms the primary route into a training contract. Applications for these open in the autumn of the preceding year.
-
-**Which means the decisive applications happen early**, and the pattern repeats the [US summer-analyst logic](/blog/usa-summer-analyst-vs-full-time-recruiting) — the internship round is the real hiring decision and the direct round is what remains.
-
-**Deadlines cluster** in the autumn and again in the winter, with many firms reviewing on a rolling basis, so early submission meets a smaller pile.
-
-**Some firms recruit later or on a rolling basis year-round**, particularly smaller and regional practices, which is a genuine route for anyone outside the main cycle.
+1. **This is the part that catches people out.** Applications for training contracts commonly open around two years before the contract start date. A student applying in their final year is frequently applying for a contract beginning two years after graduation.
+2. **Vacation schemes come first.** Week-long or fortnight-long placements, typically in the penultimate year, and at many firms the primary route into a training contract. Applications for these open in the autumn of the preceding year.
+3. **Which means the decisive applications happen early**, and the pattern repeats the [US summer-analyst logic](/blog/usa-summer-analyst-vs-full-time-recruiting) — the internship round is the real hiring decision and the direct round is what remains.
+4. **Deadlines cluster** in the autumn and again in the winter, with many firms reviewing on a rolling basis, so early submission meets a smaller pile.
+5. **Some firms recruit later or on a rolling basis year-round**, particularly smaller and regional practices, which is a genuine route for anyone outside the main cycle.
 
 ## The qualification route
 
@@ -69,19 +65,13 @@ Psychometric and situational judgement tests at many firms — the [preparation]
 
 ## Applying well
 
-**Start in your penultimate year** at the latest, targeting vacation schemes.
-
-**Research firms properly.** They differ enormously in practice areas, size, culture and client base, and "why this firm" answers that could apply to any firm fail.
-
-**Attend open days and law fairs.** They give you the specifics that make an application credible — the [milkround approach](/blog/uk-milkround-and-careers-fairs) applies.
-
-**Build commercial awareness deliberately** over months rather than cramming it.
-
-**Get work experience of any kind.** Vacation schemes, informal placements, pro bono work, court visits, or work in any commercial setting that demonstrates you understand business.
-
-**Apply widely across firm types.** City firms, national firms, regional practices and in-house routes all exist, and the smaller and regional options are considerably less contested.
-
-**Check your [CV](/blog/uk-cv-format-for-students) parses and [tailor each application](/blog/how-to-tailor-resume-for-every-job).**
+1. **Start in your penultimate year** at the latest, targeting vacation schemes.
+2. **Research firms properly.** They differ enormously in practice areas, size, culture and client base, and "why this firm" answers that could apply to any firm fail.
+3. **Attend open days and law fairs.** They give you the specifics that make an application credible — the [milkround approach](/blog/uk-milkround-and-careers-fairs) applies.
+4. **Build commercial awareness deliberately** over months rather than cramming it.
+5. **Get work experience of any kind.** Vacation schemes, informal placements, pro bono work, court visits, or work in any commercial setting that demonstrates you understand business.
+6. **Apply widely across firm types.** City firms, national firms, regional practices and in-house routes all exist, and the smaller and regional options are considerably less contested.
+7. **Check your [CV](/blog/uk-cv-format-for-students) parses and [tailor each application](/blog/how-to-tailor-resume-for-every-job).**
 
 ## Handling the long gap between application and start date
 
@@ -96,7 +86,7 @@ Some firms offer a bridging arrangement or scholarship covering the period betwe
 - **Thin commercial awareness.** Heavily assessed and where most candidates are weakest.
 - **Generic "why this firm" answers.** The deciding question at every stage.
 - **Applying only to the best-known firms.** Regional and mid-market practices are less contested and frequently excellent.
-- **Treating a non-law degree as a problem.** Firms recruit non-law graduates deliberately.
+- **Treating a non-law degree.** As a problem. Firms recruit non-law graduates deliberately.
 
 ## Choosing between practice areas once you begin
 

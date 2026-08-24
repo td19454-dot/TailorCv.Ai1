@@ -87,7 +87,7 @@ Consensus-building and group harmony are genuinely valued in decision-making pro
 
 ## Working hours and expectations
 
-**This genuinely varies by specific company, though a strong traditional expectation of substantial time commitment persists at many established employers**, worth asking directly during the interview process what typical hours actually look like, rather than assuming based on general reputation alone.
+**This genuinely varies by specific company**, though a strong traditional expectation of substantial time commitment persists at many established employers, worth asking directly during the interview process what typical hours actually look like, rather than assuming based on general reputation alone.
 
 **Newer companies and those with international influence sometimes operate with somewhat different expectations around hours**, worth researching a specific employer's actual practice directly rather than assuming a single universal pattern.
 
@@ -96,6 +96,18 @@ Consensus-building and group harmony are genuinely valued in decision-making pro
 Informal social occasions genuinely matter for workplace relationship-building here, worth participating when invited, even if this requires some personal adjustment.
 
 Learning basic workplace etiquette and communication norms specifically, beyond general language ability, meaningfully smooths your integration, worth actively observing and asking questions respectfully in your first months.
+
+## The genuine adjustment period, and what helps
+
+**Ask questions early and often in your first months**, rather than assuming you should already understand unwritten norms, this is generally well received when done respectfully, particularly while you are still genuinely new and expected to be learning.
+
+**Find one experienced colleague willing to explain the informal**, unwritten aspects of how your specific team actually operates, beyond the formal onboarding process, this kind of relationship is genuinely valuable and worth actively seeking out in your first weeks.
+
+## What genuinely helps beyond the first few months
+
+Continue building relationships deliberately well beyond your initial settling-in period, workplace culture and your own standing within it continue to develop over your first year and beyond, not only in the first weeks.
+
+Seek feedback proactively from your manager rather than waiting for a formal review cycle, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
 
 ## Common Mistakes
 
@@ -106,6 +118,7 @@ Learning basic workplace etiquette and communication norms specifically, beyond 
 - **Expecting to know your role on day one.** Assignment frequently follows training.
 - **Treating the adjustment as a personal failing.** It is universal and temporary.
 
+## Frequently Asked Questions
 ### Is Japanese workplace culture really as hierarchical as its reputation suggests?
 
 Genuinely more hierarchically structured in communication style than some flatter cultures elsewhere, though this affects the manner of contribution rather than whether junior staff can contribute substantively.
@@ -121,19 +134,6 @@ Genuinely valued for workplace relationship-building, worth participating when i
 ### How long does it typically take to adjust to the workplace culture?
 
 Varies by individual and specific workplace, expect a genuine adjustment period in the first several months as you learn your specific team's particular norms and expectations.
-## The genuine adjustment period, and what helps
-
-**Ask questions early and often in your first months, rather than assuming you should already understand unwritten norms**, this is generally well received when done respectfully, particularly while you are still genuinely new and expected to be learning.
-
-**Find one experienced colleague willing to explain the informal, unwritten aspects of how your specific team actually operates**, beyond the formal onboarding process, this kind of relationship is genuinely valuable and worth actively seeking out in your first weeks.
-
-## What genuinely helps beyond the first few months
-
-Continue building relationships deliberately well beyond your initial settling-in period, workplace culture and your own standing within it continue to develop over your first year and beyond, not only in the first weeks.
-
-Seek feedback proactively from your manager rather than waiting for a formal review cycle, a direct, respectful question about how you are doing and what you could improve is generally well received and demonstrates exactly the kind of genuine engagement that is valued within this workplace culture.
-
-## Frequently Asked Questions
 
 ### How long is initial training?
 
@@ -158,3 +158,4 @@ Less obligatory than the stereotype suggests at most modern employers, and still
 ### Will my Japanese improve?
 
 Substantially, given the immersion — and deliberate study alongside it is what converts workplace fluency into the [certified level](/blog/japan-jlpt-n2-n1-for-employment) that affects your longer-term options.
+

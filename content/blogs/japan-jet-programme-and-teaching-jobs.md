@@ -69,7 +69,7 @@ Building a professional network while teaching matters too. The [English-conduct
 
 **A well-established, government-affiliated programme placing foreign nationals in teaching and, in some positions, international relations roles at schools and local government offices across Japan**, this is a structured, genuinely well-organised route with defined application timelines and support structures, distinct from independently arranged teaching positions.
 
-**Placements can be in a wide range of locations, including many outside the largest cities**, worth being genuinely open to this if you apply, since location assignment is generally not something you can control precisely in advance.
+**Placements can be in a wide range of locations**, including many outside the largest cities, worth being genuinely open to this if you apply, since location assignment is generally not something you can control precisely in advance.
 
 **The application process runs on its own annual cycle with defined stages**, worth researching current specific timelines and requirements directly, since this is exactly the kind of detail set by the programme's own administration and reviewed periodically.
 
@@ -78,6 +78,18 @@ Building a professional network while teaching matters too. The [English-conduct
 Private language schools, international schools, and other independently arranged teaching positions also exist as a genuine alternative route, requirements and quality vary considerably by specific employer, worth vetting any specific school's legitimacy and sponsorship experience carefully, similar to [the same careful vetting that matters in any independent teaching arrangement internationally](/blog/china-english-teaching-jobs-guide).
 
 International schools generally offer the most structured working conditions among independent options, often requiring a recognised teaching qualification and sometimes prior classroom experience.
+
+## Life beyond the role itself
+
+**Placements under structured programmes**, particularly in smaller communities, can offer a genuinely rich cultural experience alongside the teaching role itself, worth approaching with genuine openness rather than viewing the specific placement location purely as a limitation.
+
+**Build a support network with other participants and local contacts early**, particularly valuable if placed somewhere with a smaller international community, this meaningfully smooths the broader adjustment beyond the workplace itself.
+
+## Deciding between the structured programme and independent options
+
+Consider your own priorities around structure, support and placement certainty against the flexibility, and generally somewhat less structured support, of independently arranged positions.
+
+The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.
 
 ## Common Mistakes
 
@@ -88,6 +100,7 @@ International schools generally offer the most structured working conditions amo
 - **Not studying Japanese during the placement.** The single biggest determinant of what comes next.
 - **Confusing international school teaching with language teaching.** Different requirements, different careers.
 
+## Frequently Asked Questions
 ### What is the JET Programme exactly?
 
 A well-established, government-affiliated programme placing foreign nationals in teaching and related roles across Japan, offering structured application timelines and organised support.
@@ -103,19 +116,6 @@ Yes, private language schools and international schools offer independent routes
 ### Do I need a teaching qualification?
 
 Requirements vary by programme and employer, international schools generally expect a recognised qualification, other positions vary, worth checking the specific requirement for your target role directly.
-## Life beyond the role itself
-
-**Placements under structured programmes, particularly in smaller communities, can offer a genuinely rich cultural experience alongside the teaching role itself**, worth approaching with genuine openness rather than viewing the specific placement location purely as a limitation.
-
-**Build a support network with other participants and local contacts early**, particularly valuable if placed somewhere with a smaller international community, this meaningfully smooths the broader adjustment beyond the workplace itself.
-
-## Deciding between the structured programme and independent options
-
-Consider your own priorities around structure, support and placement certainty against the flexibility, and generally somewhat less structured support, of independently arranged positions.
-
-The structured programme offers organised application support, defined placement processes and an established community of participants, at the cost of less control over your specific placement location, while independent positions offer more choice over location and specific school, at the cost of needing to vet legitimacy and negotiate terms yourself.
-
-## Frequently Asked Questions
 
 ### Do I need a teaching qualification?
 
@@ -140,3 +140,4 @@ Yes, commonly — into corporate roles, translation, recruitment or internationa
 ### Is it a good way to decide whether I want to live in Japan?
 
 It is one of the best available, since it is a defined term with support, and it lets you find out before committing to a longer path.
+

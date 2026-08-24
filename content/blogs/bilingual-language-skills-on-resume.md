@@ -94,9 +94,9 @@ If a role weights languages heavily, back up your claim with evidence. Certifica
 
 Your language skills are ready on your [resume](https://www.thetailorcv.com/modify-cv) when they:
 
-- Use **recognized proficiency levels** (or CEFR/ILR).
-- Are placed where the role's importance dictates.
-- Are **honest** and defensible in an interview.
-- Connect to [impact](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) where they helped, and stay [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
+- [ ] Use **recognized proficiency levels** (or CEFR/ILR).
+- [ ] Are placed where the role's importance dictates.
+- [ ] Are **honest** and defensible in an interview.
+- [ ] Connect to [impact](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) where they helped, and stay [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 Build a clean [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and let your languages work as the genuine advantage they are.

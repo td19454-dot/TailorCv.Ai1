@@ -90,15 +90,15 @@ If considering a career change into teaching from a different field, be honest w
 - **Not getting school experience before applying.** It strengthens the application and tells you whether you want the job.
 - **Choosing a route without understanding the funding difference.** Shortage subjects and salaried routes change the finances substantially.
 - **Applying late.** Popular providers and subjects fill on a rolling basis.
-- **A personal statement about yourself rather than about teaching.** The most common weakness.
+- **A personal statement about yourself.** Rather than about teaching. The most common weakness.
 - **Assuming all routes are equivalent for you.** They differ in cost, structure and experience even though the qualification is the same.
 - **Not asking about induction support at interview.** It largely determines your first year.
 
 ## Making the most of school experience before applying
 
-**Treat any pre-application school experience as a genuine, serious opportunity to learn, not simply a box to tick for your application**, ask the teachers you observe genuine, specific questions about their approach and the real challenges of the role, this both strengthens your eventual application and helps you make a genuinely informed decision about whether this career suits you.
+**Treat any pre-application school experience as a genuine**, serious opportunity to learn, not simply a box to tick for your application, ask the teachers you observe genuine, specific questions about their approach and the real challenges of the role, this both strengthens your eventual application and helps you make a genuinely informed decision about whether this career suits you.
 
-**Seek experience across more than one school if possible, ideally with some variation in the type of setting**, different schools can have meaningfully different cultures and challenges, and broader exposure gives you a more complete, realistic picture before committing to a specific training route.
+**Seek experience across more than one school if possible**, ideally with some variation in the type of setting, different schools can have meaningfully different cultures and challenges, and broader exposure gives you a more complete, realistic picture before committing to a specific training route.
 
 ## Frequently Asked Questions
 

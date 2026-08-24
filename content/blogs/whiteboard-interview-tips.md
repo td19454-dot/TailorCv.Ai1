@@ -70,10 +70,10 @@ You can rehearse this before the real thing. The interviewer reads your resume f
 
 Walk in ready to:
 
-- **Think out loud** the entire time.
-- **Structure first** — restate, clarify, example, approach, implement.
-- **Start simple**, then optimize.
-- **Manage space, time, and nerves** with your process as anchor.
-- **Show progress** even on unfamiliar problems.
+- [ ] **Think out loud** the entire time.
+- [ ] **Structure first** — restate, clarify, example, approach, implement.
+- [ ] **Start simple**, then optimize.
+- [ ] **Manage space, time, and nerves** with your process as anchor.
+- [ ] **Show progress** even on unfamiliar problems.
 
 Do those and you'll turn a stressful format into a showcase of how you think. Round out your process with a tailored [resume](https://www.thetailorcv.com/modify-cv), the [ATS checker](https://www.thetailorcv.com/solutions), and a [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) afterward.

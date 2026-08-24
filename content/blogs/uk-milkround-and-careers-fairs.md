@@ -98,9 +98,9 @@ Watch for signals that a recruiter is winding down a conversation, and end it gr
 
 ## Making the fair worthwhile even without your target employers present
 
-**If your specific target employers are not attending your institution's fair, use the event to practise your pitch and gather general intelligence about the recruiting landscape rather than skipping it entirely**, conversations with employers outside your primary targets still build genuine interview and networking skill, transferable to your actual target applications.
+**If your specific target employers are not attending your institution's fair**, use the event to practise your pitch and gather general intelligence about the recruiting landscape rather than skipping it entirely, conversations with employers outside your primary targets still build genuine interview and networking skill, transferable to your actual target applications.
 
-**Ask attending employers, even ones outside your immediate interest, whether they know of hiring happening at companies you are specifically targeting**, industry professionals often have broader networks and awareness than a general search would surface.
+**Ask attending employers**, even ones outside your immediate interest, whether they know of hiring happening at companies you are specifically targeting, industry professionals often have broader networks and awareness than a general search would surface.
 
 ## Frequently Asked Questions
 

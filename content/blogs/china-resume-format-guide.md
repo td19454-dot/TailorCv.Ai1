@@ -21,7 +21,7 @@ showcase: resume
 
 ## What is expected on the document
 
-**A photograph is standard practice, worth taking seriously rather than treating as an afterthought**, differing from US, UK and Canadian convention and aligning with expectations in parts of continental Europe and Asia more broadly, the [country-by-country comparison](/blog/international-student-resume-differences-by-country) sets out how sharply this varies globally, and an applicant moving between markets needs separate versions accordingly.
+**A photograph is standard practice**, worth taking seriously rather than treating as an afterthought, differing from US, UK and Canadian convention and aligning with expectations in parts of continental Europe and Asia more broadly, the [country-by-country comparison](/blog/international-student-resume-differences-by-country) sets out how sharply this varies globally, and an applicant moving between markets needs separate versions accordingly.
 
 **Personal details commonly included** extend beyond what US or UK convention expects, frequently covering things like date of birth, and sometimes marital status, political affiliation status, or other details depending on the employer and role — the last of these specifically relevant for certain state-owned enterprise and government-adjacent applications — this reflects local hiring convention rather than anything unusual about a specific employer's request.
 
@@ -47,7 +47,7 @@ Self-evaluation or a brief personal summary (自我评价), a short section some
 
 **Multinational companies operating in China frequently expect a format closer to Western convention**, sometimes without a photograph or with it optional, and placing less emphasis on some personal details, though this varies genuinely by company and even by specific hiring manager, worth checking the posting or asking directly rather than assuming.
 
-**Domestic Chinese employers, particularly larger and more traditional ones, generally expect the fuller local convention**, including the photograph and personal details described above, deviating from this can read as unfamiliarity with the market rather than as a deliberate or acceptable choice.
+**Domestic Chinese employers**, particularly larger and more traditional ones, generally expect the fuller local convention, including the photograph and personal details described above, deviating from this can read as unfamiliarity with the market rather than as a deliberate or acceptable choice.
 
 **The practical approach for anyone applying across both categories** is maintaining two versions, similar to the master-document approach that works for [any international job search](/blog/international-student-resume-differences-by-country), generating a market-appropriate version from a single underlying record of your experience.
 
@@ -59,7 +59,7 @@ A document that does not extract cleanly, due to complex formatting, graphics, o
 
 ## Getting the photograph right specifically
 
-**A properly taken, formal photograph specifically for this purpose is worth genuine investment, rather than reusing a casual photo from another context**, this differs meaningfully from a snapshot suitable for a personal social media profile, professional photography services specifically for this purpose are widely available and worth the modest cost given how visible and immediately assessed this element is.
+**A properly taken**, formal photograph specifically for this purpose is worth genuine investment, rather than reusing a casual photo from another context, this differs meaningfully from a snapshot suitable for a personal social media profile, professional photography services specifically for this purpose are widely available and worth the modest cost given how visible and immediately assessed this element is.
 
 **Follow standard proportions and presentation conventions for this specific document type**, an incorrectly sized or informally styled photograph is noticed immediately and reflects on your overall attention to detail before a reader has assessed anything else about your actual qualifications.
 
@@ -74,11 +74,11 @@ For applications to multinational companies, check whether an English version, a
 ## Common Mistakes
 
 - **Submitting a Western-format resume with no photograph to a domestic Chinese employer expecting local convention.** Reads as unfamiliarity with the market.
-- **Omitting personal details that local convention expects, out of habit from a different market's norms.**
+- **Omitting personal details that local convention expects.** Out of habit from a different market's norms.
 - **Assuming multinationals and domestic employers want the identical format.** They frequently differ, worth checking per employer.
-- **Sending a self-evaluation section that is vague rather than specific.** A brief, concrete version is expected where included.
+- **Sending a self-evaluation section that is vague.** Rather than specific. A brief, concrete version is expected where included.
 - **Not checking the document parses cleanly through automated screening.** A real risk given the scale of applicant volume.
-- **Using a single generic document for every application rather than tailoring language to each posting.**
+- **Using a single generic document for every application.** Rather than tailoring language to each posting.
 
 ## Frequently Asked Questions
 

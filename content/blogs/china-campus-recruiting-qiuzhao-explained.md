@@ -63,11 +63,9 @@ Applying to both seasons, where your graduation timing allows, genuinely improve
 
 ## What each stage of the process actually assesses
 
-**The initial application screen, given the sheer volume, is heavily automated and matches your submitted document against the specific language of the posting**, exactly the same underlying mechanism that operates at scale in [any large graduate recruitment system](/blog/how-to-tailor-resume-for-every-job), a document that does not extract cleanly or does not use the vocabulary the posting itself uses is filtered before any human ever reviews it, regardless of the genuine strength of your underlying background.
-
-**Written tests, where used, generally assess general aptitude and sometimes role-specific knowledge under real time pressure**, this stage is genuinely trainable through dedicated practice, worth investing real preparation time here since it represents one of the more directly improvable stages of the whole process.
-
-**Interview rounds increase in seniority and specificity as you progress**, early rounds often assess general fit and basic competency, later rounds probe considerably more deeply into your specific motivations, your understanding of the company and role, and in many cases your actual technical or functional capability for the position.
+1. **The initial application screen**, given the sheer volume, is heavily automated and matches your submitted document against the specific language of the posting, exactly the same underlying mechanism that operates at scale in [any large graduate recruitment system](/blog/how-to-tailor-resume-for-every-job), a document that does not extract cleanly or does not use the vocabulary the posting itself uses is filtered before any human ever reviews it, regardless of the genuine strength of your underlying background.
+2. **Written tests, where used**, generally assess general aptitude and sometimes role-specific knowledge under real time pressure, this stage is genuinely trainable through dedicated practice, worth investing real preparation time here since it represents one of the more directly improvable stages of the whole process.
+3. **Interview rounds increase in seniority and specificity as you progress**, early rounds often assess general fit and basic competency, later rounds probe considerably more deeply into your specific motivations, your understanding of the company and role, and in many cases your actual technical or functional capability for the position.
 
 ## Preparing a target list across both seasons
 
@@ -84,7 +82,7 @@ Revisit your list between the two seasons, adding employers you missed in autumn
 - **Treating spring as a lesser repeat of autumn.** A genuinely different pool and, for some roles, a genuinely different opportunity.
 - **Submitting a generic resume against automated screening at scale.** Language matching the posting matters more here than almost anywhere.
 - **Underestimating group interview formats.** A genuinely different skill from individual interviewing, worth practising specifically.
-- **Applying to only one season when eligible for both.** A meaningful improvement in odds is available by running both.
+- **Applying to only one season.** When eligible for both. A meaningful improvement in odds is available by running both.
 
 ## Frequently Asked Questions
 

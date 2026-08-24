@@ -161,34 +161,34 @@ Two things to read out of this. The US and Canada columns are almost identical, 
 Fifteen minutes per market, once you have a master document containing all your evidence.
 
 **Applying to the US or Canada:**
-- Remove the photograph, date of birth, nationality, marital status, gender
-- Remove any visa or work authorisation line
-- Cut to one page
-- Include GPA only if above roughly 3.0
-- City and state or province only, no full address
-- No referees listed
-- Confirm it [parses cleanly](/ats-analysis)
+- [ ] Remove the photograph, date of birth, nationality, marital status, gender
+- [ ] Remove any visa or work authorisation line
+- [ ] Cut to one page
+- [ ] Include GPA only if above roughly 3.0
+- [ ] City and state or province only, no full address
+- [ ] No referees listed
+- [ ] Confirm it [parses cleanly](/ats-analysis)
 
 **Applying to the UK:**
-- Remove photograph, date of birth, nationality, marital status
-- Two pages
-- State your degree classification
-- Include A-level or equivalent results for graduate schemes
-- Referees omitted or "available on request"
+- [ ] Remove photograph, date of birth, nationality, marital status
+- [ ] Two pages
+- [ ] State your degree classification
+- [ ] Include A-level or equivalent results for graduate schemes
+- [ ] Referees omitted or "available on request"
 
 **Applying to Singapore:**
-- Photograph optional, generally omit unless asked
-- State nationality and work pass status plainly — expected here
-- One to two pages
-- State classification or GPA
-- Include your availability date
+- [ ] Photograph optional, generally omit unless asked
+- [ ] State nationality and work pass status plainly — expected here
+- [ ] One to two pages
+- [ ] State classification or GPA
+- [ ] Include your availability date
 
 **In every case:**
-- Lead with evidence, not with education, unless you have no experience at all
-- Outcomes rather than duties
+- [ ] Lead with evidence, not with education, unless you have no experience at all
+- [ ] Outcomes rather than duties
 - [Match the language of the specific posting](/blog/how-to-tailor-resume-for-every-job)
-- Export as PDF, named with your own name
-- Open the PDF, select all, copy, paste into a plain text file, and read what comes out
+- [ ] Export as PDF, named with your own name
+- [ ] Open the PDF, select all, copy, paste into a plain text file, and read what comes out
 
 That last step is the one nobody does and it catches the failure mode that costs the most — a document that looks correct on the page and extracts as scrambled text. It applies in every market equally, and it takes thirty seconds.
 

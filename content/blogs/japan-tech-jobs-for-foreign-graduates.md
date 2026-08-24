@@ -49,17 +49,12 @@ The practical instruction: identify which group an employer belongs to before ap
 
 ## What the process looks like
 
-**Applications year-round** at many employers, through their own career pages rather than through the graduate recruiting platforms.
-
-**Technical screening**, frequently a coding assessment or take-home exercise.
-
-**Technical interviews** covering algorithms, systems and your own past work. The preparation transfers substantially from [international technical interviewing](/blog/usa-technical-interview-newgrad-prep), since the question types are broadly similar.
-
-**A discussion of your projects in depth.** Frequently the most important round for a graduate, because it is where demonstrated capability becomes visible.
-
-**Cultural and team fit conversations**, which at Japanese employers carry real weight and assess whether you will work well within the team over time.
-
-**Offer and [visa sponsorship](/blog/japan-work-visa-for-graduates)**, applied for by the employer once you accept.
+1. **Applications year-round** at many employers, through their own career pages rather than through the graduate recruiting platforms.
+2. **Technical screening**, frequently a coding assessment or take-home exercise.
+3. **Technical interviews** covering algorithms, systems and your own past work. The preparation transfers substantially from [international technical interviewing](/blog/usa-technical-interview-newgrad-prep), since the question types are broadly similar.
+4. **A discussion of your projects in depth.** Frequently the most important round for a graduate, because it is where demonstrated capability becomes visible.
+5. **Cultural and team fit conversations**, which at Japanese employers carry real weight and assess whether you will work well within the team over time.
+6. **Offer and [visa sponsorship](/blog/japan-work-visa-for-graduates)**, applied for by the employer once you accept.
 
 ## What actually makes a graduate competitive
 
@@ -91,9 +86,15 @@ Domestic companies may incorporate elements of the [broader shinsotsu hiring pro
 
 ## Building a portfolio that works here
 
-**A real, deployed project remains the strongest single credential a technical graduate can bring, regardless of country**, exactly [the same principle that holds in every major technology market](/blog/fresher-resume-projects-that-get-interviews), something you built and can discuss in depth outweighs a longer list of completed coursework considerably.
+**A real, deployed project remains the strongest single credential a technical graduate can bring**, regardless of country, exactly [the same principle that holds in every major technology market](/blog/fresher-resume-projects-that-get-interviews), something you built and can discuss in depth outweighs a longer list of completed coursework considerably.
 
-**For roles at internationally-oriented companies, presenting this work in English with clear, specific documentation is generally the safer default**, for roles at domestic companies where Japanese ability is genuinely expected, consider whether a Japanese-language version of your portfolio materials strengthens your application.
+**For roles at internationally-oriented companies**, presenting this work in English with clear, specific documentation is generally the safer default, for roles at domestic companies where Japanese ability is genuinely expected, consider whether a Japanese-language version of your portfolio materials strengthens your application.
+
+## Building a network within the local tech community
+
+Attend technology meetups and community events, both those conducted in English and, as your ability develops, those conducted in Japanese, this is a genuinely useful way to learn about specific companies' actual working environments beyond what any official recruiting material presents.
+
+Connect with other foreign engineers already working in Japan, their direct, first-hand experience navigating this specific job market is considerably more useful than general secondhand advice, and most are genuinely willing to share what they learned going through the same process themselves.
 
 ## Common Mistakes
 
@@ -103,6 +104,8 @@ Domestic companies may incorporate elements of the [broader shinsotsu hiring pro
 - **Not identifying the employer type.** Process, language and timeline all follow from it.
 - **Overstating language ability.** It surfaces immediately in interview.
 - **Having no answer to why Japan.** Asked universally and easy to prepare.
+
+## Frequently Asked Questions
 
 ### Do I need advanced Japanese to work in tech in Japan?
 
@@ -119,13 +122,6 @@ The largest concentration is generally in Tokyo, though opportunity exists elsew
 ### Should I target international or domestic tech companies?
 
 Depends on your language ability and career goals, international companies are generally more accessible without advanced Japanese, domestic companies offer a different, often longer-term career path within Japan's traditional employment structure.
-## Building a network within the local tech community
-
-Attend technology meetups and community events, both those conducted in English and, as your ability develops, those conducted in Japanese, this is a genuinely useful way to learn about specific companies' actual working environments beyond what any official recruiting material presents.
-
-Connect with other foreign engineers already working in Japan, their direct, first-hand experience navigating this specific job market is considerably more useful than general secondhand advice, and most are genuinely willing to share what they learned going through the same process themselves.
-
-## Frequently Asked Questions
 
 ### Can I get a technology job in Japan without Japanese?
 

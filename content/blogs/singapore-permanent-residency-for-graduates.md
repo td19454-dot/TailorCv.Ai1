@@ -58,11 +58,11 @@ Verify current specific eligibility criteria and any published guidance directly
 ## Common Mistakes
 
 - **Assuming holding an Employment Pass automatically leads to permanent residency after a fixed period.** These are distinct statuses assessed separately.
-- **Not factoring long-term residency goals into decisions about which employer and role to take at the outset.**
+- **Not factoring long-term residency goals into decisions.** About which employer and role to take at the outset.
 - **Frequently changing employers without regard to how this affects the stability picture an application draws on.**
 - **Not keeping organised records of employment history and salary progression over time.**
-- **Relying on outdated general information rather than verifying current specific criteria directly.**
-- **Assuming the process is purely formulaic when it is generally assessed holistically across several factors.**
+- **Relying on outdated general information.** Rather than verifying current specific criteria directly.
+- **Assuming the process is purely formulaic.** When it is generally assessed holistically across several factors.
 
 ## Frequently Asked Questions
 

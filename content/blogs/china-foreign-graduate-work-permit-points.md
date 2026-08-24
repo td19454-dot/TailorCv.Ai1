@@ -31,7 +31,7 @@ Work permits for foreign nationals in China are sorted into three named categori
 
 Some cities pilot exceptions to Category B's experience requirement for outstanding recent graduates without a full work history — worth checking directly rather than assuming the standard rule is absolute everywhere.
 
-**Higher categories are generally associated with more established, senior or specifically valued qualifications**, potentially including exemption from certain standard requirements, such as the general prior work experience threshold that presents a real obstacle for many recent graduates, covered in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates).
+**Higher categories are generally associated with more established**, senior or specifically valued qualifications, potentially including exemption from certain standard requirements, such as the general prior work experience threshold that presents a real obstacle for many recent graduates, covered in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates).
 
 **Lower categories generally apply to roles requiring less specialised qualification**, and may carry more restrictions or a more standard, less flexible process.
 
@@ -61,7 +61,7 @@ Applications run through a national online system — the Foreigner's Work Permi
 
 **If you fall into a lower category with more restrictive requirements**, and particularly if you are a recent graduate without the standard prior experience threshold, understanding which specific exceptions or graduate-focused pathways might apply to your situation, again covered in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates), matters considerably for whether a specific opportunity is actually viable for you.
 
-**A higher offered salary, a higher degree level, and other factors within the points framework can meaningfully improve your position**, worth understanding this if you are weighing between two offers that differ in these respects, beyond simply comparing take-home pay.
+**A higher offered salary**, a higher degree level, and other factors within the points framework can meaningfully improve your position, worth understanding this if you are weighing between two offers that differ in these respects, beyond simply comparing take-home pay.
 
 ## Practical steps
 
@@ -75,18 +75,18 @@ Verify current specific point thresholds and category criteria directly with the
 
 ## Common Mistakes
 
-- **Assuming a single, simple threshold applies universally rather than understanding the categorisation and, where relevant, points-based system genuinely in place.**
-- **Not asking a prospective employer directly about their specific experience sponsoring foreign staff in a situation similar to yours.**
-- **Relying on outdated or general information about specific point thresholds and category criteria.** These are set and reviewed by policy.
+- **Assuming a single, simple threshold applies universally.** Rather than understanding the categorisation and. Where relevant, points-based system genuinely in place.
+- **Not asking a prospective employer directly.** About their specific experience sponsoring foreign staff in a situation similar to yours.
+- **Relying on outdated or general information.** About specific point thresholds and category criteria. These are set and reviewed by policy.
 - **Underestimating document authentication timelines.** Frequently longer than expected.
 - **Not considering how a higher salary or qualification level might improve your position within a points-based assessment when comparing two offers.**
-- **Not consulting a qualified immigration advisor for a genuinely unclear or complex individual situation.**
+- **Not consulting a qualified immigration advisor.** For a genuinely unclear or complex individual situation.
 
 ## Getting a clearer, more specific answer for your own situation
 
 **A general article**, including this one, can explain the structure of how these systems typically work, it cannot tell you precisely where you personally would fall, since this depends on the specific, current combination of factors applied to your individual case.
 
-**Consulting a qualified immigration advisor who can review your specific qualifications, the specific role and salary on offer, and the current point thresholds in force is worth the investment for a decision this consequential**, particularly where you are weighing between multiple offers that might place you in genuinely different categories.
+**Consulting a qualified immigration advisor who can review your specific qualifications**, the specific role and salary on offer, and the current point thresholds in force is worth the investment for a decision this consequential, particularly where you are weighing between multiple offers that might place you in genuinely different categories.
 
 ## Keeping your understanding current over time
 

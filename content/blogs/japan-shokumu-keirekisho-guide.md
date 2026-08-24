@@ -85,7 +85,7 @@ Study abroad or language achievement, especially where relevant to an internatio
 
 **Tailor the specific content and emphasis to each individual application**, a document reused identically across many applications is a missed opportunity, exactly [the same tailoring principle that improves the interview rate anywhere](/blog/how-to-tailor-resume-for-every-job), worth applying deliberately here.
 
-**For a new graduate with limited formal work history, internships, substantial projects, and relevant coursework can genuinely fill this document meaningfully**, worth including these with the same specificity and genuine detail you would give to formal employment.
+**For a new graduate with limited formal work history**, internships, substantial projects, and relevant coursework can genuinely fill this document meaningfully, worth including these with the same specificity and genuine detail you would give to formal employment.
 
 ## Keeping the document useful across a job search
 
@@ -95,7 +95,7 @@ Update the master version as you gain new relevant experience, rather than recon
 
 ## Handling employment gaps or unconventional paths honestly
 
-**If your background includes a gap, a change of field, or an unconventional path, address this honestly and briefly rather than attempting to obscure it**, a short, factual explanation is generally received far better than an omission that later becomes an awkward discovery during the interview process.
+**If your background includes a gap**, a change of field, or an unconventional path, address this honestly and briefly rather than attempting to obscure it, a short, factual explanation is generally received far better than an omission that later becomes an awkward discovery during the interview process.
 
 **Frame any transition or gap in terms of what you did with the time and what you learned**, rather than simply noting an absence, this converts a potential concern into a genuine point of interest for an employer reading the document.
 

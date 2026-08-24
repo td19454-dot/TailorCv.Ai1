@@ -41,15 +41,11 @@ Ask the employer whether they are applying new entrant rates, since it affects b
 
 ## Checking employers before you apply
 
-**The sponsor register is public and searchable.** This is the single most useful practical fact in this article. Before spending time on an application, you can check whether the employer holds a licence at all.
-
-**Being on the register is necessary and not sufficient.** A licence means they can sponsor; it does not mean they will for your role. Many licensed employers sponsor selectively.
-
-**So ask directly, early.** "Does this role come with sponsorship under the Skilled Worker route?" is a normal question and it saves months. The [same principle applies everywhere](/blog/usa-stem-opt-employer-requirements) — employer eligibility is knowable in advance and filtering on it early is what prevents a wasted season.
-
-**Smaller employers are less likely to hold a licence.** Obtaining one takes time and administrative effort, and many small companies have never needed to. Some will apply for one for a candidate they want; most will not.
-
-**Larger employers, universities, the NHS and the public sector** are more likely to hold licences and to have established processes — which is one reason the [NHS graduate schemes](/blog/uk-nhs-graduate-scheme-guide) and university roles are worth looking at if sponsorship matters to you.
+1. **The sponsor register is public and searchable.** This is the single most useful practical fact in this article. Before spending time on an application, you can check whether the employer holds a licence at all.
+2. **Being on the register is necessary and not sufficient.** A licence means they can sponsor; it does not mean they will for your role. Many licensed employers sponsor selectively.
+3. **So ask directly, early.** "Does this role come with sponsorship under the Skilled Worker route?" is a normal question and it saves months. The [same principle applies everywhere](/blog/usa-stem-opt-employer-requirements) — employer eligibility is knowable in advance and filtering on it early is what prevents a wasted season.
+4. **Smaller employers are less likely to hold a licence.** Obtaining one takes time and administrative effort, and many small companies have never needed to. Some will apply for one for a candidate they want; most will not.
+5. **Larger employers, universities, the NHS and the public sector** are more likely to hold licences and to have established processes — which is one reason the [NHS graduate schemes](/blog/uk-nhs-graduate-scheme-guide) and university roles are worth looking at if sponsorship matters to you.
 
 ## Switching from the Graduate route
 
@@ -83,7 +79,7 @@ Occupation-specific going rates, where they exceed the general threshold, reflec
 
 ## Common Mistakes
 
-- **Not checking the sponsor register before applying.** Public, searchable, and it determines whether an employer can keep you.
+- **Not checking the sponsor register.** Before applying. Public, searchable, and it determines whether an employer can keep you.
 - **Assuming a licence means willingness.** Many licensed employers sponsor selectively.
 - **Taking a role below the skill threshold.** It will not convert regardless of performance.
 - **Relying on remembered salary figures.** Thresholds have been revised repeatedly.
@@ -92,9 +88,9 @@ Occupation-specific going rates, where they exceed the general threshold, reflec
 
 ## Building your case with a specific target employer
 
-**Once you have identified an employer holding a sponsor licence who is willing to consider sponsoring you, work with them directly to confirm the specific occupation code and salary that would apply to your role**, this is a collaborative conversation, employers experienced with this process generally understand exactly what information you need and why.
+**Once you have identified an employer holding a sponsor licence who is willing to consider sponsoring you**, work with them directly to confirm the specific occupation code and salary that would apply to your role, this is a collaborative conversation, employers experienced with this process generally understand exactly what information you need and why.
 
-**If the role as initially described does not clearly meet the requirements, but the underlying work genuinely would, raise this directly and constructively**, asking whether the job description or title could be adjusted to accurately reflect duties that do qualify, is a reasonable request rather than an unusual one, provided the underlying substance of the role genuinely supports it.
+**If the role as initially described does not clearly meet the requirements**, but the underlying work genuinely would, raise this directly and constructively, asking whether the job description or title could be adjusted to accurately reflect duties that do qualify, is a reasonable request rather than an unusual one, provided the underlying substance of the role genuinely supports it.
 
 ## Frequently Asked Questions
 

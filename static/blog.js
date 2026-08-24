@@ -1062,10 +1062,10 @@
       const lead = firstP.querySelector(":scope > strong:first-child, :scope > b:first-child");
       let title = "Mistake " + (i + 1);
       if (lead && firstP.firstChild === lead) {
-        title += ": " + (lead.textContent || "").replace(/[,:;.\s]*$/, "");
+        title += ": " + (lead.textContent || "").replace(/[,:;.\u2014\u2013\-\s]*$/, "");
         lead.remove();
         if (firstP.firstChild && firstP.firstChild.nodeType === Node.TEXT_NODE) {
-          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
+          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
         }
       }
       h3.textContent = title;
@@ -1106,10 +1106,10 @@
       const h3 = document.createElement("h3");
 
       const lead = p.firstElementChild;
-      let title = "Mistake " + (i + 1) + ": " + (lead.textContent || "").replace(/[,:;.\s]*$/, "");
+      let title = "Mistake " + (i + 1) + ": " + (lead.textContent || "").replace(/[,:;.\u2014\u2013\-\s]*$/, "");
       lead.remove();
       if (p.firstChild && p.firstChild.nodeType === Node.TEXT_NODE) {
-        p.firstChild.textContent = p.firstChild.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
+        p.firstChild.textContent = p.firstChild.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
       }
       h3.textContent = title;
       head.appendChild(h3);
@@ -1366,7 +1366,7 @@ const tcxLeadRuns = () => {
         const lead = p.firstElementChild;
         const after = lead && lead.nextSibling;
         if (after && after.nodeType === Node.TEXT_NODE) {
-          after.textContent = after.textContent.replace(/^[,:;.\s]+/, " ").replace(/^ /, "");
+          after.textContent = after.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
         }
         run.appendChild(p);
       }
@@ -1834,4 +1834,45 @@ if (document.readyState === "loading") {
   }, 0));
 } else {
   setTimeout(() => { tcxMobileReading(); tcxShareCopy(); }, 0);
+}
+
+/* A lead-in line that introduces the group directly beneath it ("Three
+   questions to interrogate each project bullet with:") is doing real work but
+   renders as an ordinary paragraph, so the connection to the cards below it is
+   invisible. Mark it so it can be highlighted like a marker-pen line.
+   Restyling only: nothing is added, removed or reworded. */
+const tcxIntroLines = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+
+  const GROUP = "UL,OL,TABLE,DIV,SECTION";
+  const GROUP_CLASS = ".lead-run,.lead-list,.mistake-grid,.point-run,.row-lines,.dash-list-wrap,.table-wrap";
+
+  Array.from(content.querySelectorAll("p")).forEach((p) => {
+    if (p.closest(".faq-box,.key-takeaways-box,.callout-box,.step-card,.blog-ats,.blog-tpl,.end-cta,.lead-run,.point-run")) return;
+    const text = (p.textContent || "").trim();
+    // a short line that ends in a colon - an introduction, not a paragraph
+    if (!/:$/.test(text)) return;
+    if (text.length > 120 || text.split(/\s+/).length < 3) return;
+    // must actually introduce something structured
+    let next = p.nextElementSibling;
+    if (!next) return;
+    const tagOk = GROUP.split(",").indexOf(next.tagName) !== -1;
+    const classOk = next.matches && next.matches(GROUP_CLASS);
+    if (!tagOk && !classOk) return;
+    if (p.querySelector(".intro-mark")) return;
+    // Wrap the text in an inline span: a block-level background would stretch
+    // the highlight to the full column width instead of hugging the words.
+    const mark = document.createElement("span");
+    mark.className = "intro-mark";
+    while (p.firstChild) mark.appendChild(p.firstChild);
+    p.appendChild(mark);
+    p.classList.add("intro-line");
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxIntroLines, 30));
+} else {
+  setTimeout(tcxIntroLines, 30);
 }

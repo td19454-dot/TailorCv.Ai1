@@ -61,13 +61,13 @@ Do not assume career progression requires London eventually. Many careers, inclu
 
 ## Researching a specific regional city properly before committing
 
-**Spend real time researching the specific character of a regional city's employer base, rather than relying on a general national reputation for that city's economy**, a city with genuine strength in one sector can be a weak choice for a different one, matching your specific target sector to the specific city's actual strength matters more than the city's general prestige.
+**Spend real time researching the specific character of a regional city's employer base**, rather than relying on a general national reputation for that city's economy, a city with genuine strength in one sector can be a weak choice for a different one, matching your specific target sector to the specific city's actual strength matters more than the city's general prestige.
 
-**Visit if genuinely possible before making a final decision, or at minimum speak with people currently working there in your target field**, a first-hand account of what daily life and the local professional community actually feel like is worth considerably more than research alone.
+**Visit if genuinely possible before making a final decision**, or at minimum speak with people currently working there in your target field, a first-hand account of what daily life and the local professional community actually feel like is worth considerably more than research alone.
 
 ## Common Mistakes
 
-- **Applying only in London by default, without deciding it deliberately.** The most common and least examined choice graduates make.
+- **Applying only in London by default.** Without deciding it deliberately. The most common and least examined choice graduates make.
 - **Comparing salaries without comparing real cost of living.** The headline number misleads more often than it helps.
 - **Assuming regional roles are lesser versions of London ones.** Frequently the same substance, sometimes with earlier responsibility.
 - **Not asking about location preference at structured schemes.** Some genuinely allow input if you ask early.

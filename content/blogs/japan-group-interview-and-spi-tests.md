@@ -71,17 +71,23 @@ Practise this format specifically with friends beforehand, the first attempt at 
 
 ## Aptitude and written testing
 
-**A standard written test covering verbal reasoning, numerical ability and sometimes general knowledge or personality assessment** is a common early stage at many large employers, this functions as a genuine early filter, similar in principle to [aptitude testing used broadly in structured graduate hiring internationally](/blog/uk-psychometric-tests-guide).
+**A standard written test covering verbal reasoning**, numerical ability and sometimes general knowledge or personality assessment is a common early stage at many large employers, this functions as a genuine early filter, similar in principle to [aptitude testing used broadly in structured graduate hiring internationally](/blog/uk-psychometric-tests-guide).
 
 **This is trainable through dedicated practice**, practice materials for this specific test format are widely available, worth investing real preparation time here since it is one of the more directly improvable stages of the overall process.
 
-**Speed under time pressure is generally the binding constraint, rather than the underlying difficulty of the material itself**, practising under a genuine timer, rather than untimed, builds the actually relevant skill.
+**Speed under time pressure is generally the binding constraint**, rather than the underlying difficulty of the material itself, practising under a genuine timer, rather than untimed, builds the actually relevant skill.
 
 ## Building a sustainable testing preparation routine
 
 Set aside consistent, regular practice time for aptitude testing across several weeks, rather than cramming immediately before your first real test, similar to [the same sustained preparation discipline that works for any timed aptitude assessment](/blog/uk-psychometric-tests-guide), consistent shorter sessions generally outperform occasional long ones.
 
 Review your specific errors carefully after each practice set, most candidates' mistakes cluster into a small number of recurring types, identifying and correcting these specifically is more efficient than repeating generic practice indefinitely.
+
+## What happens if you do not pass the aptitude test
+
+**Some companies allow a retake after a defined period**, others do not for that specific application cycle, worth checking the specific policy where stated, and using any interval productively to genuinely improve your speed and accuracy through further practice.
+
+**A single company's test result does not affect your standing with a different company**, each employer's process is independent, worth continuing to apply broadly rather than treating one disappointing result as representative of your overall prospects.
 
 ## Common Mistakes
 
@@ -90,8 +96,9 @@ Review your specific errors carefully after each practice set, most candidates' 
 - **Answering the personality section strategically.** Inconsistency is visible and reflects poorly.
 - **Trying to win the group discussion.** It assesses collaboration, not debate.
 - **Staying silent in the group discussion.** An assessor cannot score what you did not contribute.
-- **Underestimating the language load as a foreign candidate.** It is genuinely harder and it is trainable.
+- **Underestimating the language load.** As a foreign candidate. It is genuinely harder and it is trainable.
 
+## Frequently Asked Questions
 ### How is a group interview different from a normal interview?
 
 You are assessed alongside other candidates simultaneously, the focus is on how you contribute and interact within the group, rather than solely on individual answers, worth practising this specific format deliberately.
@@ -107,13 +114,6 @@ No, this generally reads poorly, genuine contribution and collaborative behaviou
 ### How do I prepare for the aptitude test specifically?
 
 Use available practice materials and, critically, practise under a genuine timer rather than untimed, since speed is generally the binding constraint rather than the underlying difficulty.
-## What happens if you do not pass the aptitude test
-
-**Some companies allow a retake after a defined period, others do not for that specific application cycle**, worth checking the specific policy where stated, and using any interval productively to genuinely improve your speed and accuracy through further practice.
-
-**A single company's test result does not affect your standing with a different company**, each employer's process is independent, worth continuing to apply broadly rather than treating one disappointing result as representative of your overall prospects.
-
-## Frequently Asked Questions
 
 ### How much practice do the aptitude tests need?
 
@@ -138,3 +138,4 @@ Widely used in conventional graduate recruiting, and less so at [technology comp
 ### Does the personality test have right answers?
 
 No, and it does have consistency. Answer honestly rather than constructing a profile you think they want.
+

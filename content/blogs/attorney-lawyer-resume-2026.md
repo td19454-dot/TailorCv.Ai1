@@ -146,10 +146,10 @@ Critical. In law, a typo signals carelessness with filings. [Proofread](https://
 
 Your attorney [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **bar admissions** and a clear practice area.
-- Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), confidentiality-safe results.
-- Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) with consistent formatting.
-- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **bar admissions** and a clear practice area.
+- [ ] Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- [ ] Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), confidentiality-safe results.
+- [ ] Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) with consistent formatting.
+- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 In law, precision wins. Build your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every firm you apply to.

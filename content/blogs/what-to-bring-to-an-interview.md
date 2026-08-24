@@ -81,8 +81,8 @@ Arriving prepared is the best antidote to nerves, but a little anxiety is normal
 
 Bring, in short:
 
-- **In person:** resume copies, notepad, question list, [portfolio](https://www.thetailorcv.com/portfolio) if relevant, directions, and ID.
-- **Virtual:** tested tech, resume on-screen, backup contact, notes, and water.
-- **Always:** rehearsed stories, [company research](https://thetailorcv.com/blog/how-to-research-company-before-interview), and a plan to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
+- [ ] **In person:** resume copies, notepad, question list, [portfolio](https://www.thetailorcv.com/portfolio) if relevant, directions, and ID.
+- [ ] **Virtual:** tested tech, resume on-screen, backup contact, notes, and water.
+- [ ] **Always:** rehearsed stories, [company research](https://thetailorcv.com/blog/how-to-research-company-before-interview), and a plan to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview).
 
 Show up with these and you'll radiate the calm, prepared confidence that gets offers. Keep the rest of your process just as sharp: a tailored [resume](https://www.thetailorcv.com/modify-cv) scored with the [ATS checker](https://www.thetailorcv.com/solutions) and a strong [cover letter](https://www.thetailorcv.com/cover-letter).
