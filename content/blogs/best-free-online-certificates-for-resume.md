@@ -98,6 +98,7 @@ Before applying, many job seekers now optimize resumes according to specific job
 ### 1. Google Digital Marketing & E-commerce Certificate
 
 **Best for:**
+
 - Marketing jobs
 - Freelancers
 - Small business roles
@@ -116,6 +117,7 @@ Even entry-level candidates can use this certification to strengthen resumes sig
 ### 2. HubSpot Content Marketing Certification
 
 **Best for:**
+
 - Writers
 - Bloggers
 - Marketing interns
@@ -135,6 +137,7 @@ If you're trying to improve your personal branding or freelance opportunities, t
 ### 3. IBM Data Science Fundamentals
 
 **Best for:**
+
 - Data analysts
 - Tech beginners
 - STEM students
@@ -142,6 +145,7 @@ If you're trying to improve your personal branding or freelance opportunities, t
 Data-related jobs continue growing rapidly in 2026. IBM's beginner-friendly courses help candidates demonstrate analytical thinking skills.
 
 Topics include:
+
 - Python basics
 - Data visualization
 - [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) fundamentals
@@ -151,6 +155,7 @@ Topics include:
 ### 4. Harvard CS50 Introduction to Computer Science
 
 **Best for:**
+
 - Software development
 - IT jobs
 - Computer science students
@@ -166,6 +171,7 @@ Recruiters often recognize the Harvard name immediately.
 ### 5. Google Analytics Certification
 
 **Best for:**
+
 - SEO specialists
 - Digital marketers
 - Website managers
@@ -173,6 +179,7 @@ Recruiters often recognize the Harvard name immediately.
 This certification proves you understand website traffic analysis and [digital performance tracking](https://thetailorcv.com/blog/technical-interview-preparation-guide).
 
 It's especially useful for:
+
 - Marketing internships
 - Freelance SEO work
 - E-commerce positions
@@ -182,11 +189,13 @@ It's especially useful for:
 ### 6. LinkedIn Learning Certifications
 
 **Best for:**
+
 - General professional development
 - [Soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)
 - Office productivity
 
 Popular courses include:
+
 - Excel
 - Leadership
 - Communication
@@ -199,6 +208,7 @@ Popular courses include:
 ### 7. Microsoft Excel Certification
 
 **Best for:**
+
 - Finance roles
 - Business operations
 - Administrative jobs
@@ -215,18 +225,21 @@ If you're building your first resume, this guide may help:
 ### 8. Coursera Free Certificates
 
 **Best for:**
+
 - Professional specialization
 - Career switching
 
 Many Coursera courses offer financial aid or free access.
 
 Popular providers include:
+
 - Yale
 - Stanford
 - Google
 - Meta
 
 Some highly valuable topics include:
+
 - AI
 - UX Design
 - [cybersecurity](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
@@ -237,6 +250,7 @@ Some highly valuable topics include:
 ### 9. Meta Social Media Marketing Certification
 
 **Best for:**
+
 - Social media jobs
 - Freelancers
 - Content creators
@@ -244,6 +258,7 @@ Some highly valuable topics include:
 Meta [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) are increasingly recognized by digital-first companies.
 
 You'll learn:
+
 - Ad campaigns
 - Social strategy
 - Audience targeting
@@ -254,6 +269,7 @@ You'll learn:
 ### 10. AWS Cloud Practitioner Essentials
 
 **Best for:**
+
 - Cloud computing
 - IT support
 - Tech beginners
@@ -267,6 +283,7 @@ Even beginners can gain foundational knowledge that strengthens resumes consider
 ### 11. freeCodeCamp Certifications
 
 **Best for:**
+
 - Web developers
 - Front-end developers
 - Coding beginners
@@ -274,6 +291,7 @@ Even beginners can gain foundational knowledge that strengthens resumes consider
 freeCodeCamp certifications are highly respected because they involve practical coding [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 Topics include:
+
 - HTML
 - CSS
 - JavaScript
@@ -285,6 +303,7 @@ Topics include:
 ### 12. Canva Design School Certifications
 
 **Best for:**
+
 - Content creators
 - Marketing assistants
 - Freelancers
@@ -298,6 +317,7 @@ This works especially well for social media-focused resumes.
 ### 13. Google AI Essentials
 
 **Best for:**
+
 - AI beginners
 - Office professionals
 - Students
@@ -311,6 +331,7 @@ This certification helps candidates show adaptability and future-ready skills.
 ### 14. PMI Project Management Basics
 
 **Best for:**
+
 - Business roles
 - Team leaders
 - Operations jobs
@@ -322,6 +343,7 @@ Project management certifications show organization and leadership potential, ev
 ### 15. Salesforce Trailhead Certifications
 
 **Best for:**
+
 - CRM roles
 - Sales operations
 - Business technology
@@ -344,6 +366,7 @@ Example:
 
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+
 - Google [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) Certificate - Google
 - HubSpot Content Marketing Certification - HubSpot Academy
 - Excel Skills for Business - Coursera

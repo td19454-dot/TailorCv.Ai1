@@ -41,12 +41,14 @@ Use the [TailorCV resume optimizer](https://www.thetailorcv.com/solutions) to ma
 Resume matching is the process of aligning your resume content to the requirements of a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 It includes:
+
 - Using the same keywords the employer uses
 - Highlighting the skills and experience the role demands
 - Structuring your resume to reflect the job's priorities
 - Removing content that is not relevant to the role
 
 When your resume matches the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) closely, two things happen:
+
 1. The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) gives it a higher score
 2. The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) sees a strong fit immediately
 
@@ -91,6 +93,7 @@ Content goes to the wrong fields or disappears entirely.
 
 The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compares your parsed resume against the job description.
 It looks for:
+
 - Exact keyword matches
 - Related terms and synonyms
 - Skills and tools
@@ -212,6 +215,7 @@ If your score is below 60%, revisit your keyword gaps.
 Here is a real example for a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) role at a SaaS company.
 
 **[job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) key requirements:**
+
 - SQL, Python
 - Dashboard creation (Tableau or Power BI)
 - Cross-functional stakeholder reporting
@@ -331,6 +335,7 @@ TailorCV automates the process:
 The result: a matched, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-optimized resume in minutes, not hours.
 
 Features include:
+
 - Real-time [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match score
 - Keyword gap analysis
 - AI-powered bullet point rewriting
@@ -346,6 +351,7 @@ Try it free at [thetailorcv.com/solutions](https://www.thetailorcv.com/solutions
 A match score tells you, as a percentage, how well your resume aligns with a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 A score of:
+
 - 80%+ = strong match, likely to pass [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - 65-79% = moderate match, may pass with tweaks
 - Below 65% = weak match, significant gaps

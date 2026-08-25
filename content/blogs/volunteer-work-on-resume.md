@@ -73,6 +73,7 @@ If your volunteer work involved professional-level responsibilities and is direc
 > - Mentored 3 junior volunteers on front-end development practices
 
 **When to use this approach:**
+
 - Significant time commitment (6+ months)
 - Real responsibilities and measurable outcomes
 - Directly relevant to the target role
@@ -83,6 +84,7 @@ If your volunteer work involved professional-level responsibilities and is direc
 If you have paid work experience that carries the main section and also have notable volunteer work, add a separate "Volunteer Experience" section after your main Experience and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) sections.
 
 **When to use this approach:**
+
 - You have solid paid work experience but meaningful volunteer history
 - The volunteer work uses different skills than your paid work
 - You have multiple volunteer roles worth mentioning

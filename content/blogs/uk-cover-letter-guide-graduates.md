@@ -85,6 +85,57 @@ Proofread properly. A typo in a one-page document that is explicitly a writing s
 
 **Ending with an overly casual or**, conversely, an excessively formal sign-off relative to the rest of the letter's tone, aim for consistency in register throughout the entire document, a measured, professional tone maintained end to end reads considerably better than a mismatch between an informal body and a stiffly formal closing, or the reverse.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Keeping the letter and CV visually consistent matters when a reader opens both together.
+
+## Where the letter actually gets read
+
+Not every UK application reads a cover letter, and knowing which is which saves a great deal of wasted effort.
+
+| Application type | Does the letter get read? | What to do |
+|---|---|---|
+| Large scheme with an online form | Rarely as a separate document | Treat the form's written questions as the real letter |
+| Smaller employer or direct email | Almost always | Write a genuine, specific one page |
+| Recruitment agency | Sometimes, skimmed | Keep it short and lead with role fit |
+| Speculative approach | It is the entire application | Make the specific reason for this employer the centre of it |
+
+The written questions on a scheme's application form are scored against defined criteria, usually with a word limit. That word limit is the tell: a question with a 250-word box is being marked, not skimmed.
+
+## Do's and Don'ts
+
+### Do
+
+- Treat the form's written questions as the graded item
+- Use the full word count when one is given
+- Name something specific and recent about the employer
+- Mirror the language of the advert
+- Keep a separate letter to one page
+
+### Don't
+
+- Attach a generic letter and assume it is read
+- Leave half a word count unused
+- Praise the employer in terms that fit any competitor
+- Restate your CV in prose
+- Send the same letter to every scheme
+
+## Scenarios: three applications, three approaches
+
+### Scenario 1: A large scheme with a 250-word question box
+
+That box is the cover letter and it is scored. Use the full count, answer the question asked, and do not attach a separate letter hoping it gets read.
+
+### Scenario 2: A 40-person company advertising by email
+
+A real one-page letter changes the outcome here, because a person reads the whole application. Name something specific about what they do.
+
+### Scenario 3: A speculative approach with no advertised role
+
+The letter is the entire application. Lead with what you noticed about them and what you could contribute, not with your availability.
+
 > **Tip:** For a large scheme, treat the application form's written questions as the real cover letter. That is what gets scored — a separate attached letter frequently is not read at all.
 
 ## Common Mistakes

@@ -104,10 +104,12 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 ### Scenario 1: Marketing Coordinator
 
 **Job Description Highlights:**
+
 - Required: Experience with social media management, SEO, and content creation.
 - Preferred: Familiarity with Google Analytics and PPC campaigns.
 
 **Resume Adaptation:**
+
 - **Highlight Relevant Experience:** In your professional experience section, include bullet points that showcase your social media campaigns and SEO projects. Use specific metrics (e.g., “Increased organic traffic by 30% through targeted SEO strategies”).
 - **Education and Certifications:** If you have taken courses or received certifications in Google Analytics, list these in your education section.
 - **Keywords:** Use terms like "social media management" and "SEO" prominently in your summary and skills sections to align with the job description.
@@ -115,10 +117,12 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 ### Scenario 2: Software Engineer
 
 **Job Description Highlights:**
+
 - Required: Proficiency in Java and Python, experience with Agile methodologies.
 - Preferred: Knowledge of cloud computing platforms.
 
 **Resume Adaptation:**
+
 - **Technical Skills Section:** Ensure Java and Python are listed at the top of your technical skills. If you have experience with cloud platforms, mention specific technologies like AWS or Azure.
 - **Project Descriptions:** In your project descriptions, elaborate on your role in Agile teams. Use phrases such as "Participated in sprint planning and daily stand-ups" to reflect your familiarity with Agile methodology.
 - **Certifications:** If you have relevant certifications in cloud computing, include them in a dedicated section to draw attention.
@@ -126,10 +130,12 @@ Understanding how to tailor your resume for a Greenhouse ATS can be greatly enha
 ### Scenario 3: Customer Support Specialist
 
 **Job Description Highlights:**
+
 - Required: Strong communication skills, experience with CRM software.
 - Preferred: Bilingual and previous experience in a remote work setting.
 
 **Resume Adaptation:**
+
 - **Soft Skills Emphasis:** In your summary, mention your strong communication skills explicitly. For example, “Bilingual professional with exceptional communication abilities.”
 - **CRM Experience:** Clearly state your experience with CRM tools like Salesforce or Zendesk in your work history.
 - **Remote Work Experience:** If applicable, highlight past roles that were remote. Use phrasing like "Successfully managed customer inquiries while working remotely" to showcase your adaptability.

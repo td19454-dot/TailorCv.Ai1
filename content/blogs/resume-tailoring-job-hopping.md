@@ -75,6 +75,7 @@ One of the most effective techniques is simply adding a reason to each short rol
 You can do this in parentheses after the company name or dates.
 
 Examples:
+
 - "January 2022 - August 2022 *(company-wide layoff - reduced from 120 to 30 employees)*"
 - "March 2023 - September 2023 *(6-month contract engagement - project completed)*"
 - "June 2021 - February 2022 *(acquired by [Company], role eliminated post-acquisition)*"
@@ -84,6 +85,7 @@ The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) does n
 You have pre-answered the question.
 
 Valid one-line context reasons that work:
+
 - Layoff
 - Company acquisition / restructuring
 - Contract / project-based role
@@ -180,6 +182,7 @@ You do not have to include everything.
 If you had a role that lasted 2 months before a mutual agreement to part, and it adds nothing to your narrative, omit it.
 
 Rules for what to omit:
+
 - Any role under 3 months with no material achievement
 - Early-career roles that are no longer relevant (10+ years ago)
 - Roles that contradict your current career direction
@@ -196,6 +199,7 @@ Each company entry competes for keyword space.
 A resume with 6 companies in the same space often has keyword repetition across sections, which can actually lower semantic match scores.
 
 For your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) optimization:
+
 - Put the most relevant keywords in your summary and most recent role's bullets (highest weight)
 - Do not repeat the same keywords across every role - vary them
 - Check your overall match score before applying

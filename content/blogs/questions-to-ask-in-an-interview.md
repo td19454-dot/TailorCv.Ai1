@@ -32,6 +32,7 @@ Prepare these alongside your interview answers using the [behavioral interview g
 ## Why the Questions You Ask Matter
 
 Your questions:
+
 - Demonstrate genuine interest and preparation
 - Show you think carefully about the role and company
 - Help you assess whether this is the right opportunity

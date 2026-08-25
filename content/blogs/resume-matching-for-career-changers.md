@@ -42,6 +42,7 @@ When you apply within the same field, your terminology matches naturally.
 When you change fields, the language gap is the problem.
 
 You might:
+
 - Have all the required skills but describe them in your old industry's language
 - Have adjacent experience that qualifies you but is not immediately obvious
 - Lack 1-2 specific tools that the JD requires
@@ -82,6 +83,7 @@ The JD tells you exactly what they call the work you already do.
 Identify which of your past experiences directly transfers.
 
 Use this framework:
+
 1. List your top 10 career accomplishments
 2. For each, identify: what skill it demonstrates, what scale it shows, what result it achieved
 3. Map each accomplishment to a requirement in the target JD
@@ -109,6 +111,7 @@ Then bridge them:
 Your summary is where you make the pivotal argument: "Here is why my background is an asset in this new role."
 
 **Structure for career changers:**
+
 - 1 line: Target role title + years of relevant experience
 - 1 line: Transferable skills in the new industry's language
 - 1 line: Why the [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) is a logical progression (optional, brief)
@@ -122,6 +125,7 @@ After:
 > "Corporate Learning & Development professional with 8 years of curriculum design and facilitation experience. Skilled in instructional design, adult learning methodologies, and training program delivery for diverse audiences. Background in K-12 [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) provides a differentiated perspective on performance improvement and knowledge retention."
 
 The after version:
+
 - Uses L&D terminology (instructional design, adult learning, training delivery)
 - Frames the teaching background as an advantage
 - Does not hide the [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) - it contextualizes it
@@ -219,6 +223,7 @@ When changing careers, a [cover letter](https://thetailorcv.com/blog/cover-lette
 It gives you space to explain the why.
 
 Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) should:
+
 - Acknowledge the [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) directly
 - Show why it is a logical progression (not an impulse)
 - Highlight 2-3 transferable experiences that prove readiness

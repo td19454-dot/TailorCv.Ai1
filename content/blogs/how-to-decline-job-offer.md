@@ -42,6 +42,7 @@ Decline as soon as you have made your decision. Do not leave the company waiting
 ## How to Decline Professionally
 
 A good decline includes:
+
 1. Genuine thanks for the offer and their time
 2. A clear, polite statement that you are declining
 3. A brief, gracious reason (optional, kept positive)
@@ -115,6 +116,7 @@ Kind regards,
 ## Should You Share Your Reason?
 
 You are not obligated to share why you are declining. If you choose to:
+
 - Keep it positive and brief
 - "Accepted a role that better aligns with my goals" is enough
 - Avoid criticizing the company, role, or compensation
@@ -127,6 +129,7 @@ If you are declining due to a low offer, consider negotiating first using the [s
 ## Keeping the Door Open
 
 The professional world is small. The company you decline today could be:
+
 - A future employer
 - A client or partner
 - Connected to people in your network

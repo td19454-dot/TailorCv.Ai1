@@ -115,6 +115,7 @@ This is the detail almost everyone gets wrong. Your file name is the first thing
 **[FirstName-LastName-Resume.pdf]**
 
 Examples:
+
 - `John-Smith-Resume.pdf`
 - `Priya-Mehta-Resume.pdf`
 - `James-OBrien-Resume.pdf`
@@ -124,6 +125,7 @@ Examples:
 **[FirstName-LastName-Role-Resume.pdf]**
 
 Examples:
+
 - `Sarah-Johnson-Product-Manager-Resume.pdf`
 - `Daniel-Lee-Data-Scientist-Resume.pdf`
 
@@ -151,6 +153,7 @@ If you tailor your resume for different roles (which you should - read [how to t
 **Master resume**: `John-Smith-Resume-Master.pdf` - full version, never submitted directly
 
 **Tailored versions**:
+
 - `John-Smith-Software-Engineer-Resume.pdf`
 - `John-Smith-Data-Scientist-Resume.pdf`
 

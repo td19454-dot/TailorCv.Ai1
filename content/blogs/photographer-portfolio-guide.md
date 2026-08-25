@@ -109,6 +109,7 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 
 ### Future-Proofing Your Portfolio
 As technology and trends evolve, consider these strategies to keep your portfolio relevant:
+
 - **Incorporate Video**: Short behind-the-scenes clips or slide shows can engage visitors. Check out the [Video Editor and Videographer Portfolio Guide](https://thetailorcv.com/blog/video-editor-portfolio-guide) for more ideas.
 - **Utilize AI Tools**: Explore options like [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) to simplify the creation process.
 - **Stay Informed**: Follow industry trends to adapt your portfolio to changing client expectations. 

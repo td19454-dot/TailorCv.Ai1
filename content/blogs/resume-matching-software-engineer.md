@@ -55,6 +55,7 @@ But they do not clearly show which stack you are deepest in - and whether it mat
 ## How ATS Systems Read Software Engineering Resumes
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems at tech companies parse your resume for:
+
 - Exact programming language names (Python, Java, Go, Rust, etc.)
 - Framework and library names (React, Django, Spring Boot, TensorFlow, etc.)
 - Cloud platform names and services (AWS, GCP, Azure - and specific services like EC2, S3, Lambda)
@@ -92,6 +93,7 @@ These are the keywords you need to match.
 Your primary programming language must match the JD.
 
 If the JD requires Python and Go, and you have Python but not Go:
+
 - Feature Python prominently everywhere
 - Do not misrepresent Go exposure you do not have
 - If you have minimal Go exposure, "exposure to Go" is honest
@@ -116,6 +118,7 @@ Recruiters and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-d
 ### Step 4: Show System Design at Your Level
 
 Senior SWE roles almost always look for:
+
 - Microservices / distributed systems
 - API design (REST, GraphQL, gRPC)
 - Scalability and performance
@@ -132,17 +135,20 @@ That is a concrete, keyword-rich, result-backed bullet that matches senior SWE J
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiters screen for seniority implicitly.
 
 For senior roles, your resume must show:
+
 - Technical leadership ("Led", "Architected", "Designed", "Mentored")
 - Cross-functional collaboration ("Collaborated with product", "Partnered with ML team")
 - Scale indicators (requests/day, users, revenue, team size)
 - Ownership language ("Owned the backend", "Responsible for the platform reliability")
 
 For mid-level roles, match:
+
 - Feature ownership
 - Independent delivery
 - Review-ready code quality
 
 For junior roles, match:
+
 - Tool names (exact match)
 - Project and implementation language
 - Learning agility signals
@@ -187,10 +193,12 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 **JD Requirements:** Python, Django, PostgreSQL, REST APIs, AWS, microservices, Agile
 
 **Before:**
+
 - Worked on backend development for various internal tools
 - Collaborated with team to ship features
 
 **After:**
+
 - Built RESTful APIs using Python and Django to power customer-facing features, supporting 100K+ monthly active users
 - Designed and maintained PostgreSQL schemas for multi-tenant SaaS architecture, optimizing query performance by 35%
 - Collaborated with product and frontend teams in 2-week Agile sprints to deliver 6 major feature releases in Q3-Q4
@@ -204,6 +212,7 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 ### FAANG / Big Tech
 
 Focus on:
+
 - Scale (millions of users, billions of events)
 - [system design](https://thetailorcv.com/blog/system-design-interview-guide) depth (distributed systems, latency, fault tolerance)
 - Ownership breadth (full service lifecycle)
@@ -214,6 +223,7 @@ Read [FAANG software engineer resume guide](https://thetailorcv.com/blog/softwar
 ### Startups
 
 Focus on:
+
 - Speed and breadth ("shipped X in Y weeks")
 - Product ownership ("built from 0 to 1")
 - Wearing multiple hats (frontend, backend, [DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026) exposure)
@@ -222,6 +232,7 @@ Focus on:
 ### Enterprise / Corporate
 
 Focus on:
+
 - System integration (enterprise tools, ERP, legacy)
 - Security and compliance (SOC2, GDPR, SOX)
 - Stakeholder management (cross-team coordination, executive reporting)
@@ -232,6 +243,7 @@ Focus on:
 ## Checking Your SWE Resume ATS Score
 
 Before applying to any SWE role:
+
 1. Paste the job description into [TailorCV's ATS checker](https://www.thetailorcv.com/solutions)
 2. Upload your resume
 3. Review your match score and keyword gaps

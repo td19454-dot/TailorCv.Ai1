@@ -81,6 +81,50 @@ Because this process runs over several months and is assessed against a publishe
 
 Keep a running document of situations from your academic, work and extracurricular experience mapped against each published behaviour, updating it as new relevant experiences occur, this produces a considerably richer and more specific evidence base than trying to generate examples retrospectively when the application window opens.
 
+## What the assessment stages actually test
+
+The Fast Stream runs one of the most structured graduate processes in the UK, and almost all of it is trainable.
+
+| Stage | What it is | How to prepare |
+|---|---|---|
+| Online tests | Behavioural and situational judgement, then work-based scenarios | Practise the published example tests until the format is automatic |
+| Video interview | Recorded answers against the published behaviours | Rehearse aloud, to time, on camera |
+| Assessment centre | A written exercise, group work and an interview | Practise a timed written brief — the exercise candidates prepare least |
+
+The Civil Service assesses against **Success Profiles**, a published framework covering Behaviours, Strengths, Experience, Ability and Technical skills. The behaviours being tested are named on the advert, which means you can prepare one specific example for each rather than guessing.
+
+## Do's and Don'ts
+
+### Do
+
+- Read the Success Profiles behaviours named on the advert
+- Prepare one concrete example per named behaviour
+- Practise the online tests before your real attempt
+- Rank your scheme preferences honestly
+- Give a specific answer on why public service
+
+### Don't
+
+- Walk into the online tests untrained
+- Prepare generic teamwork stories
+- Ignore the written exercise until the day
+- Rank schemes by prestige rather than fit
+- Assume a strong degree carries the process
+
+## Scenarios: which scheme fits
+
+### Scenario 1: You have a technical or data degree
+
+The digital, data and technology schemes want exactly that background, and they are less oversubscribed than the generalist stream most applicants default to.
+
+### Scenario 2: You want policy work specifically
+
+Say so in your preferences rather than ranking by prestige. The generalist scheme is the most contested route in the whole process.
+
+### Scenario 3: You failed the online tests last year
+
+They are trainable and you can reapply. Candidates who fail here have almost always never practised the format, not lacked the ability.
+
 > **Tip:** Practise the online tests before the real attempt; the Fast Stream's early stages are heavily test-driven and largely trainable. Most candidates who fail there were untrained rather than unsuitable.
 
 ## Common Mistakes

@@ -65,6 +65,51 @@ Factor the real cost of the city into any comparison between two offers in diffe
 
 **Adjust any general sector figure for the specific size and type of employer you are targeting**, a well-known large employer in a given sector often pays differently from a smaller specialist firm in the same broad sector, a single sector-wide average blends both together in a way that can mislead for either extreme.
 
+## What the number actually depends on
+
+UK graduate pay varies more by sector and location than by how well you negotiate, which is why research beats technique here.
+
+| Factor | How much it moves the figure |
+|---|---|
+| Sector | The largest single variable — law, banking and tech sit well above the graduate median |
+| London vs regional | A London figure carries a weighting that regional roles do not, and rent absorbs much of it |
+| Scheme vs direct hire | Schemes publish a fixed cohort rate; direct hires are more variable |
+| Employer size | Large schemes pay to a published band; smaller employers negotiate individually |
+
+Most large UK schemes publish the salary on the advert, which makes it the single most reliable data point available — more so than any national average, which blends sectors that have nothing to do with each other.
+
+## Do's and Don'ts
+
+### Do
+
+- Look up the specific scheme's published figure
+- Compare a London offer against real rent, not the headline
+- Ask about the review point and progression in year two
+- Ask what a typical bonus actually paid last year
+- Give a researched range if asked for expectations
+
+### Don't
+
+- Quote a national graduate average as your benchmark
+- Try to negotiate a fixed cohort rate
+- Assume the recruiter can move base pay on a scheme
+- Ignore pension contribution when comparing
+- Take a London figure at face value
+
+## Scenarios: comparing two offers
+
+### Scenario 1: London scheme against a regional one
+
+Subtract real rent for a specific postcode from each. The regional figure frequently leaves more disposable income despite the smaller headline.
+
+### Scenario 2: A scheme against a smaller direct hire
+
+The scheme's rate is fixed but its progression is published; the smaller employer may pay less now and negotiate individually later.
+
+### Scenario 3: You are asked for expectations before an offer
+
+Give a researched range with a reason, drawn from the published figures for comparable schemes rather than a national average.
+
 > **Tip:** Look up the specific scheme's published salary rather than a national graduate average. Most large UK schemes publish the figure, and the average blends sectors that have nothing to do with each other.
 
 ## Common Mistakes

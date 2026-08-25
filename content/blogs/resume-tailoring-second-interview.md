@@ -45,6 +45,7 @@ When you go into a first interview, you have a [job description](https://thetail
 You are working with educated guesses about what the team really needs.
 
 When you come out of a first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), you have something much more valuable:
+
 - Firsthand knowledge of what the hiring manager actually cares about
 - The questions they asked (which reveal their priorities)
 - The problems they mentioned that the role needs to solve
@@ -63,6 +64,7 @@ The strategic candidate takes 30 minutes to analyze what they learned - and uses
 In most cases: **no, not formally.**
 
 You do not email the recruiter a revised resume after a first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) unless:
+
 - They specifically ask for an updated version
 - The role has changed scope significantly and you want to clarify your fit
 - Your first resume had an error you discovered afterward
@@ -72,6 +74,7 @@ Submitting an unsolicited "updated resume" mid-process can feel awkward or signa
 **What you should do instead:**
 
 Use the updated knowledge to:
+
 1. Prepare your [interview answers](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) with sharper, more tailored examples
 2. Write a better thank-you note that references specific conversation topics
 3. Prepare for the second [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)'s likely deeper focus areas
@@ -89,6 +92,7 @@ Some [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview
 If you know you are walking into a panel [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) or executive interviews where your resume will be physically handed out or shared again, it is worth creating a **refined version** for that stage.
 
 This version:
+
 - Reflects everything you learned from the first round
 - Emphasizes the specific skills and experiences the first interviewer focused on
 - Has your strongest, most relevant [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) front and center
@@ -107,6 +111,7 @@ Do this within an hour.
 Memory fades fast.
 
 Write down:
+
 - Every question you were asked (and your answer)
 - Topics that generated visible excitement or engagement from the interviewer
 - Problems or challenges the interviewer mentioned
@@ -161,6 +166,7 @@ For the behavioral component specifically, review [behavioral interview question
 Between rounds, your thank-you note is the closest thing to a resume update you should actually send.
 
 A strategic thank-you note:
+
 - Is sent within 24 hours of the first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - References specific topics from the conversation
 - Reinforces your strongest relevant experience point
@@ -174,6 +180,7 @@ A strategic thank-you note:
 > "Thank you for the conversation yesterday. The way you described the challenge of rebuilding trust in the data pipeline after the platform migration really resonated - I went through almost exactly that at [Previous Company], where we had to rebuild credibility with 6 internal stakeholder teams after a similar transition. I'd love to bring that experience to your team. Looking forward to next steps."
 
 The second version:
+
 - Shows you were listening
 - Reinforces a directly relevant experience
 - Makes the interviewer remember you for the right reason
@@ -203,6 +210,7 @@ The optimized resume renders live beside the controls, so you see the page count
 
 Your resume becomes less central as you move through rounds.
 What replaces it:
+
 - Case studies or presentations (prepare these if you are in consulting, product, or strategy)
 - Technical assessments (for engineering roles)
 - Executive interviews (focus on strategic thinking, leadership philosophy, big-picture vision)

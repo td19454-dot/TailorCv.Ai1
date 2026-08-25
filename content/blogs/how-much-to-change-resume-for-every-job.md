@@ -51,6 +51,7 @@ See [how to write a resume headline](https://thetailorcv.com/blog/how-to-write-r
 ### 2. Your Professional Summary (3-4 Sentences)
 
 Your summary should reflect *this specific role*, not your career in general. Swap in:
+
 - The job title
 - 2-3 skills that are prioritized in the posting
 - The key outcome the employer is hiring for
@@ -108,6 +109,7 @@ Rewriting your entire experience section for every job is a trap. It adds hours 
 ## The "Same Industry, Different Company" Rule
 
 When roles are in the same industry and similar in level, very little needs to change. A [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) applying to three different analytics roles needs to change:
+
 - Headline: match each exact title
 - Summary: swap in company-relevant language (startup vs. enterprise, B2B vs. B2C)
 - Skills: surface whatever tools each posting emphasizes

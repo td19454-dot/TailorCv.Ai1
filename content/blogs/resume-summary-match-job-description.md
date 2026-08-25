@@ -86,6 +86,7 @@ No mission statements.
 > "Data Engineer with 5+ years building Python-based ETL pipelines and distributed data systems on AWS. Deep experience with Apache Spark, Redshift, and Airflow in FinTech environments processing $2B+ in daily transaction data. Strong background in data modeling and cross-team stakeholder delivery."
 
 The matched version:
+
 - Uses the exact job title from the JD
 - Includes Python, Spark, ETL (direct JD keywords)
 - Adds FinTech context (relevant to the company)
@@ -109,6 +110,7 @@ This immediate title alignment is one of the strongest [ATS](https://thetailorcv
 ### Step 2: Extract Top 3-5 Keywords from the JD
 
 From the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), find:
+
 - The top technical skills listed under "Required"
 - The most repeated term in the responsibilities
 - The industry context (SaaS, FinTech, healthcare, etc.)
@@ -123,6 +125,7 @@ Read [job description keyword extraction guide](https://thetailorcv.com/blog/job
 First line = title + experience level + main domain
 
 Examples:
+
 - "Full Stack Engineer with 4 years building React and Node.js applications for B2B SaaS platforms."
 - "Senior [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) with 6 years of SQL and Python-based analytics in healthcare and insurance."
 - "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026) with 8 years leading cross-functional roadmap delivery for growth-stage startups."
@@ -144,6 +147,7 @@ Third line = one specific result or distinctive value
 - "Managed $1.2M marketing budget with 3.4x average ROAS across digital channels."
 
 If you do not have a result yet (entry-level), use a relevant project or context:
+
 - "Completed AWS Solutions Architect certification and led 3 capstone [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in cloud migration."
 
 ### Step 6: Read It Back Against the JD
@@ -151,6 +155,7 @@ If you do not have a result yet (entry-level), use a relevant project or context
 After writing, compare your summary to the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 Ask:
+
 - Does the job title appear in the first line?
 - Do at least 3 JD keywords appear?
 - Is the industry or company context reflected?
@@ -235,6 +240,7 @@ Every word should earn its place.
 > "Marketing Operations Manager with 5 years driving lifecycle marketing and lead scoring strategies for B2B SaaS companies. Expert in HubSpot and Salesforce integrations for campaign operations and marketing automation workflows. Built lead nurture programs that improved SQL conversion by 34% and reduced CAC by 18%."
 
 The after version is:
+
 - Title-matched
 - Keyword-rich (HubSpot, Salesforce, marketing automation, lifecycle marketing, lead scoring, campaign operations - all directly from the JD)
 - Result-backed
@@ -295,6 +301,7 @@ Generic does not work.
 Tailored does.
 
 The formula:
+
 1. Lead with the exact target job title
 2. Include 3-5 JD keywords in the first two sentences
 3. Close with a specific result or distinguishing context

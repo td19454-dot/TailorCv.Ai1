@@ -55,6 +55,37 @@ This is worth internalising early. Spending a final year purely trying to lift a
 
 **If your classification is strong**, let it speak for itself rather than dwelling on it excessively in written applications, the space is generally better used demonstrating specific evidence of your skills and experience, which is what most employers, even those with a stated threshold, ultimately assess you on beyond that initial screen.
 
+## How the classification bar is actually applied
+
+The 2:1 requirement is real at many employers and is being dropped at others, which makes checking each employer's current policy worth more than any general rule.
+
+| Classification | Typical treatment |
+|---|---|
+| First | Opens everything, including the most selective schemes |
+| 2:1 | The conventional bar for large graduate schemes |
+| 2:2 | Closed at some schemes, open at a growing number; evidence matters more |
+| Third or Pass | Route through smaller employers, experience and referrals rather than schemes |
+
+A number of large employers now use **contextual recruitment**, which weighs your results against the circumstances they were achieved in, and some have removed the academic bar entirely. Both are published policies, so they are checkable rather than something to guess at.
+
+## Do's and Don'ts
+
+### Do
+
+- Check each employer's current stated policy
+- Apply where the bar has been removed
+- Lead with evidence — projects, placements, results
+- Use referrals to route around automated filters
+- Report genuine mitigating circumstances through the proper channel
+
+### Don't
+
+- Assume every scheme still requires a 2:1
+- Rule yourself out without checking
+- Chase a marginal grade over building evidence
+- Hide your classification and hope
+- Treat a 2:2 as the end of the graduate market
+
 > **Tip:** Check each employer's current stated policy rather than assuming a 2:1 bar. A growing number have dropped the requirement outright, and that information is published on their own site.
 
 ## Common Mistakes

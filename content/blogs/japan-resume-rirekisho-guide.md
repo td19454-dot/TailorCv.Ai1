@@ -125,6 +125,12 @@ Keep a copy of exactly what you submitted for each specific application, useful 
 - Treat the motivation section as filler
 - Use correction fluid on a handwritten form
 
+### Your resume after optimization
+
+![Choosing a resume template in TailorCV, with several ATS-safe layouts shown side by side](public/blog-images/choose-resume-template.webp)
+
+Templates here are for the Western-style resume used by foreign-affiliated employers — the rirekisho itself follows its own standardised form.
+
 > **Tip:** Get the photograph taken at a proper photo studio, not a booth or a phone. It sits at the top of a standardised form where every other field looks identical, which makes it one of the few things a reader actually notices.
 
 ## Common Mistakes

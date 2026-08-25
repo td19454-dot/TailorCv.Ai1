@@ -57,6 +57,7 @@ Your existing domain knowledge is an asset. A nurse moving into health-tech prod
 ## Step 1: Choose Your Target Role
 
 Pick based on:
+
 - Your existing strengths (analytical, creative, communication, technical aptitude)
 - The accessibility of the role
 - Your available time to learn
@@ -92,6 +93,7 @@ For designers: build case studies.
 ### Get a Certification (Where It Helps)
 
 Some entry-level transitions benefit from recognized [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
+
 - Google Data Analytics Certificate (for [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026))
 - AWS Cloud Practitioner (for cloud)
 - Google UX Design Certificate (for UX)
@@ -118,11 +120,13 @@ The challenge: your work history is in a different field. The solution: emphasiz
 ### Reframing Transferable Skills
 
 A teacher's experience becomes:
+
 - "Managed and prioritized 5 simultaneous classes" -> project and time management
 - "Analyzed student performance data to adjust teaching" -> data analysis
 - "Presented to parents and administrators" -> stakeholder communication
 
 A finance professional's experience becomes:
+
 - "Built financial models in Excel" -> analytical and data skills
 - "Automated reporting processes" -> process improvement and technical aptitude
 

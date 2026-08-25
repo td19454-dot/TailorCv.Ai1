@@ -81,6 +81,7 @@ This is the most crucial section of your resume. List your work experience in re
 **Marketing Intern**  
 ABC Marketing Agency, Los Angeles, CA  
 June 2025 – August 2025  
+
 - Developed and executed social media campaigns, increasing engagement by 30% over three months.
 - Assisted in the creation of marketing materials that contributed to a 15% rise in client inquiries.
 

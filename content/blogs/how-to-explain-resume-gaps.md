@@ -155,6 +155,7 @@ The three-part formula:
 "I took 10 months off after a difficult year professionally and personally. I used the time to recharge, complete my AWS Solutions Architect certification, and work on two personal software [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). I am now fully ready to commit to a new role and I'm excited about this opportunity in particular because [specific reason]."
 
 Avoid:
+
 - Sounding apologetic or defensive
 - Giving excessive personal detail
 - Badmouthing your former employer

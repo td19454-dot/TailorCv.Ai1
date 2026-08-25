@@ -81,6 +81,20 @@ Your tax code is not a single universal figure, it reflects your specific person
 
 If you have income from more than one source, including a second job or freelance work alongside your main employment, understand how this affects your overall tax position, since your personal allowance is generally split or allocated across sources in a specific way that is worth understanding rather than assuming.
 
+## Scenarios: checking your first payslip
+
+### Scenario 1: Your tax code ends in W1, M1 or X
+
+That is an emergency code and you are probably overpaying. It sometimes corrects itself; often it needs a call to HMRC or your payroll team.
+
+### Scenario 2: Your gross pay does not match your contract
+
+Raise it in month one. A discrepancy caught immediately is an administrative fix; the same error found in month six has compounded across five payslips.
+
+### Scenario 3: No student loan deduction is showing
+
+Check which plan you are on and that payroll has it. Missing deductions build a balance you will owe later rather than money you get to keep.
+
 > **Tip:** Check your tax code on your first payslip. An emergency code (often ending in W1, M1 or X) means you are overpaying, and it does not always correct itself without a call to HMRC.
 
 ## Common Mistakes

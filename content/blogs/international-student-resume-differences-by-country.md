@@ -161,6 +161,7 @@ Two things to read out of this. The US and Canada columns are almost identical, 
 Fifteen minutes per market, once you have a master document containing all your evidence.
 
 **Applying to the US or Canada:**
+
 - [ ] Remove the photograph, date of birth, nationality, marital status, gender
 - [ ] Remove any visa or work authorisation line
 - [ ] Cut to one page
@@ -170,6 +171,7 @@ Fifteen minutes per market, once you have a master document containing all your 
 - [ ] Confirm it [parses cleanly](/ats-analysis)
 
 **Applying to the UK:**
+
 - [ ] Remove photograph, date of birth, nationality, marital status
 - [ ] Two pages
 - [ ] State your degree classification
@@ -177,6 +179,7 @@ Fifteen minutes per market, once you have a master document containing all your 
 - [ ] Referees omitted or "available on request"
 
 **Applying to Singapore:**
+
 - [ ] Photograph optional, generally omit unless asked
 - [ ] State nationality and work pass status plainly — expected here
 - [ ] One to two pages
@@ -184,6 +187,7 @@ Fifteen minutes per market, once you have a master document containing all your 
 - [ ] Include your availability date
 
 **In every case:**
+
 - [ ] Lead with evidence, not with education, unless you have no experience at all
 - [ ] Outcomes rather than duties
 - [Match the language of the specific posting](/blog/how-to-tailor-resume-for-every-job)

@@ -44,6 +44,7 @@ The solution: demonstrate [soft skills](https://thetailorcv.com/blog/soft-skills
 Don't write: "Excellent communication skills."
 
 Show it:
+
 - "Presented quarterly product roadmap to C-suite executives and 40+ stakeholders, securing approval for a $2M engineering investment."
 - "Translated complex technical requirements into clear documentation that reduced onboarding time for new engineers from 3 weeks to 1 week."
 
@@ -52,6 +53,7 @@ Show it:
 Don't write: "Strong leadership skills."
 
 Show it:
+
 - "Led a cross-functional team of 9 engineers and designers to deliver a product launch 2 weeks ahead of schedule."
 - "Mentored 4 junior developers, 2 of whom were promoted within 12 months."
 
@@ -60,6 +62,7 @@ Show it:
 Don't write: "Team player."
 
 Show it:
+
 - "Collaborated with product, design, and data teams to ship 12 features in a quarter through structured weekly cross-functional syncs."
 - "Partnered with the sales team to redesign the demo environment, contributing to a 15% increase in close rate."
 
@@ -68,6 +71,7 @@ Show it:
 Don't write: "Strong problem-solving abilities."
 
 Show it:
+
 - "Diagnosed and resolved a recurring production outage by identifying a database connection leak, reducing downtime incidents from 4 per month to zero."
 - "Identified the root cause of a 12% cart abandonment increase through funnel analysis and implemented a fix that recovered $48K in monthly revenue."
 
@@ -76,6 +80,7 @@ Show it:
 Don't write: "Highly adaptable."
 
 Show it:
+
 - "Adapted to a mid-project tech stack change from Angular to React, self-learning the new framework and delivering the migration within the original timeline."
 
 ### Time Management / Prioritization
@@ -83,6 +88,7 @@ Show it:
 Don't write: "Excellent time management."
 
 Show it:
+
 - "Managed 3 concurrent client [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with competing deadlines, delivering all on time by implementing a structured prioritization framework."
 
 ### Conflict Resolution
@@ -90,6 +96,7 @@ Show it:
 Don't write: "Good at resolving conflicts."
 
 Show it:
+
 - "Mediated a disagreement between engineering and product teams over scope, facilitating a compromise that kept the release on schedule."
 
 ### Attention to Detail
@@ -97,6 +104,7 @@ Show it:
 Don't write: "Detail-oriented."
 
 Show it:
+
 - "Maintained 99.8% data accuracy across 600+ monthly transactions through a systematic verification process."
 
 ---
@@ -116,6 +124,7 @@ Show it:
 Some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do scan for soft skill keywords if the job description emphasizes them. If the job description repeatedly mentions "stakeholder management" or "cross-functional collaboration," include those exact phrases - but always with evidence.
 
 Common soft skill keywords in job descriptions:
+
 - Stakeholder management
 - Cross-functional collaboration
 - Communication

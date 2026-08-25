@@ -62,6 +62,7 @@ Not every project needs to be a corporate assignment. [freshers](https://thetail
 These are [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) completed during your degree or diploma program.
 
 Examples:
+
 - Final-year engineering [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Research papers
 - Case studies
@@ -77,6 +78,7 @@ Academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-f
 Personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are one of the best ways to show initiative.
 
 Examples:
+
 - [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) websites
 - Mobile apps
 - Blogging websites
@@ -93,6 +95,7 @@ Personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-f
 Even a short internship project adds credibility to your resume.
 
 Examples:
+
 - Social media marketing campaigns
 - Website redesign [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Sales tracking systems
@@ -107,6 +110,7 @@ If you have internship experience, prioritize those [projects](https://thetailor
 Volunteer [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are underrated but extremely useful.
 
 Examples:
+
 - NGO website development
 - Event management
 - Content writing
@@ -162,9 +166,11 @@ This is the resume after tailoring - the content is already matched, and these c
 Use a clear and professional title.
 
  Good Example:
+
 - E-Commerce Website Using React
 
  Bad Example:
+
 - College Project
 
 ---
@@ -174,6 +180,7 @@ Use a clear and professional title.
 Mention tools, technologies, or software involved.
 
 Examples:
+
 - Python
 - Java
 - Excel
@@ -191,6 +198,7 @@ This helps recruiters quickly identify your technical skills.
 Clearly mention your contribution.
 
 Examples:
+
 - Developed frontend design
 - Managed database integration
 - Led a 4-member team
@@ -205,6 +213,7 @@ Avoid vague descriptions.
 Whenever possible, include measurable outcomes.
 
 Examples:
+
 - Reduced loading time by 40%
 - Increased user engagement by 25%
 - Analyzed data from 5,000 customer responses
@@ -342,6 +351,7 @@ If you're in tech, include project repositories or live demos.
 Tailor [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) according to job requirements.
 
 For example:
+
 - Data analysis [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for analytics roles
 - UI/UX [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for design jobs
 - Marketing campaigns for [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) roles
@@ -353,6 +363,7 @@ For example:
 Recruiters value collaboration skills.
 
 Mention:
+
 - Team size
 - Leadership roles
 - Cross-functional coordination
@@ -374,6 +385,7 @@ To optimize your project section:
 You can check your ATS compatibility using [The Tailor CV ATS Score Checker](https://www.thetailorcv.com/solutions).
 
 For deeper guidance, read:
+
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
 
@@ -384,6 +396,7 @@ For deeper guidance, read:
 Your resume design also matters.
 
 A good fresher [resume template](https://thetailorcv.com/blog/how-to-choose-resume-template) should be:
+
 - [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 - Clean and readable
 - Professionally formatted
@@ -403,6 +416,7 @@ You can also build resumes from scratch using [The Tailor CV Resume Builder](htt
 Recruiters don't expect perfection from [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes).
 
 They mainly evaluate:
+
 - Relevance
 - Practical understanding
 - Problem-solving approach
@@ -414,6 +428,7 @@ Even small [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume
 That's why preparing for interviews is equally important. Tools like [The Tailor CV Interview Preparation](https://thetailorcv.com/interview-prep) and [Mock Interview Practice](https://thetailorcv.com/mock-interview) can help freshers answer project-related interview questions confidently.
 
 You may also find these helpful:
+
 - [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - [Why Am I Not Getting Interviews?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
@@ -500,6 +515,7 @@ Learning **how to add projects in resume for [freshers](https://thetailorcv.com/
 Whether it's an academic assignment, personal project, internship task, or freelance work, presenting it properly can significantly improve your chances of getting shortlisted.
 
 Focus on:
+
 - Relevance
 - Clear formatting
 - Measurable achievements

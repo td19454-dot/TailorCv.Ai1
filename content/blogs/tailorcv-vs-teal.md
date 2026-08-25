@@ -175,6 +175,7 @@ If we were not building TailorCV, and someone asked us for a free job tracker, w
 ## So Who Should Pick Which?
 
 **Pick Teal if:**
+
 - You are drowning in applications and need one organised board
 - You want the best free plan available and may never pay
 - You want to bookmark roles you have not applied to yet
@@ -182,6 +183,7 @@ If we were not building TailorCV, and someone asked us for a free job tracker, w
 - Your resume already performs well
 
 **Pick TailorCV if:**
+
 - You are applying and hearing nothing back
 - You want the resume rewritten per job, not just filed
 - You want unlimited free ATS scores to find out if the resume is even the problem

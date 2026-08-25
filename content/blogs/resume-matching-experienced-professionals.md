@@ -167,6 +167,7 @@ Update and recheck.
 ## Handling the "Overqualified" Perception
 
 If you are applying for a role below your current seniority:
+
 - Remove or compress your most senior titles from the summary
 - Focus bullets on execution, not leadership scope
 - Address the career move briefly in your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) or summary

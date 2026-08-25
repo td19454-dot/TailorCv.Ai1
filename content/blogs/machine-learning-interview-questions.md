@@ -49,6 +49,7 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 ## Category 1: ML Fundamentals
 
 **Common questions:**
+
 - What is the bias-variance tradeoff?
 - Explain the difference between supervised, unsupervised, and reinforcement learning.
 - What is overfitting, and how do you prevent it?
@@ -65,6 +66,7 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 ## Category 2: Statistics & Probability
 
 **Common questions:**
+
 - Explain p-values and statistical significance in plain terms.
 - What is the Central Limit Theorem, and why does it matter?
 - What's the difference between correlation and causation?
@@ -80,6 +82,7 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 ## Category 3: Model Evaluation & Tradeoffs
 
 **Common questions:**
+
 - How do you choose between precision and recall for a given problem?
 - What is ROC-AUC, and when is it misleading?
 - How do you evaluate a regression model versus a classification model?
@@ -95,6 +98,7 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 ## Category 4: Applied & Case-Study Questions
 
 **Common questions:**
+
 - How would you build a recommendation system for [a specific product]?
 - How would you detect fraudulent transactions in real time?
 - A model's performance has degraded in production — how do you debug it?
@@ -110,6 +114,7 @@ Treating these as one undifferentiated "ML [interview](https://thetailorcv.com/b
 ## Category 5: Behavioral & Communication Questions
 
 **Common questions:**
+
 - Tell me about a time you had to explain a technical result to a non-technical stakeholder.
 - Describe a project where your model didn't perform as expected — what did you do?
 - Tell me about a time you disagreed with a teammate on model approach.

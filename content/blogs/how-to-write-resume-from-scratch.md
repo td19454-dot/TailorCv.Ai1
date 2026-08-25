@@ -58,6 +58,7 @@ Read [chronological vs functional resume](https://thetailorcv.com/blog/chronolog
 ## Step 2: Write Your Contact Section
 
 Add at the top:
+
 - Name (large, bold)
 - Professional email
 - Phone number
@@ -105,6 +106,7 @@ Use the exact wording from the job description wherever possible - this helps AT
 ## Step 5: Write Your Work Experience
 
 For each role:
+
 1. **Header**: Job Title | Company | City | Month Year - Month Year (or Present)
 2. **Bullets**: 3-6 achievement-based bullets per role
 
@@ -113,6 +115,7 @@ For each role:
 > "Reduced infrastructure costs by 35% by migrating 60% of workloads to AWS Spot Instances."
 
 Rules:
+
 - Use past tense for previous roles, present tense for current role
 - Start every bullet with a different, strong action verb
 - [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) wherever possible
@@ -124,6 +127,7 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 ## Step 6: Add Your Education
 
 For each degree:
+
 - Degree type and field (Bachelor of Science, Computer Science)
 - Institution
 - Graduation year (or expected year)
@@ -164,6 +168,7 @@ Tailoring takes 20-30 minutes per application and increases your ATS score and c
 ## Step 9: Format and Polish
 
 Now clean up the formatting:
+
 - Consistent margins (0.75-1 inch)
 - Single-column layout
 - One font family throughout
@@ -178,6 +183,7 @@ Read [resume margins, spacing and layout](https://thetailorcv.com/blog/resume-ma
 ## Step 10: Proofread
 
 Read the entire resume out loud. Check every:
+
 - Spelling
 - Grammar
 - Date (are start/end dates accurate?)
@@ -191,6 +197,7 @@ Use the full [resume proofreading checklist](https://thetailorcv.com/blog/resume
 ## Step 11: Test Your ATS Score
 
 Before submitting, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). This tells you:
+
 - Your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match score for the role
 - Which keywords are missing
 - Formatting issues that could cause [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing errors

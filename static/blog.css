@@ -3664,3 +3664,67 @@ header.navbar {
 .blog-detail-page .post-content th {
   font-weight: 700;
 }
+
+/* ─── Links: weight 600, not 500 ─────────────────────────────────────────
+   Source Serif 4 is loaded at weights 400, 600 and 700 only. Links were set
+   to font-weight 500, which the family cannot supply, so the browser
+   substituted a synthesised or fallback face - which is why link text read
+   as a different typeface from the sentence around it. 600 is loaded, so
+   the link now stays in the same serif as its paragraph. */
+.blog-detail-page .post-content p a,
+.blog-detail-page .post-content li a,
+.blog-detail-page .post-content td a,
+.blog-detail-page .post-content .lead-run a,
+.blog-detail-page .post-content .lead-list a,
+.blog-detail-page .post-content .point-card a,
+.blog-detail-page .post-content .callout-box a,
+.blog-detail-page .post-content .faq-box a,
+.blog-detail-page .post-content .key-takeaways-box a {
+  font-family: inherit;
+  font-weight: 600;
+}
+
+/* ─── Card headings sized to sit above the body text ─────────────────────
+   Body text in these cards is 1.1875rem; the headings were 1.02-1.16rem, so
+   the label read as smaller than the prose beneath it. */
+.blog-detail-page .post-content .point-run > .point-card > h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .lead-run > .lead-item > strong:first-child,
+.blog-detail-page .post-content .lead-run > .lead-item > b:first-child,
+.blog-detail-page .post-content .lead-list > li > strong:first-of-type,
+.blog-detail-page .post-content .lead-list > li > p:first-child > strong:first-of-type {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.blog-detail-page .post-content .mistake-grid-item .callout-head h3 {
+  font-size: 1.28rem !important;
+}
+
+/* ─── Card containers, not just their <p> children ───────────────────────
+   Markdown renders a tight list item as inline content with no <p> wrapper,
+   so when blog.js moves an <li>'s children into a mistake card the
+   description ends up as a bare text node on the section itself. Rules
+   targeting ".callout-box p" therefore never matched it and it kept the
+   inherited sans face. Set the family on the containers as well. */
+.blog-detail-page .post-content .mistake-grid-item,
+.blog-detail-page .post-content .callout-box,
+.blog-detail-page .post-content .point-card,
+.blog-detail-page .post-content .dd-col,
+.blog-detail-page .post-content .step-card,
+.blog-detail-page .post-content .lead-item,
+.blog-detail-page .post-content .faq-item {
+  font-family: var(--tcx-serif) !important;
+  font-size: 1.1875rem;
+  line-height: 1.6;
+}
+/* Icons and the small uppercase eyebrow labels stay on the UI stack. */
+.blog-detail-page .post-content .callout-ico,
+.blog-detail-page .post-content .dd-ico,
+.blog-detail-page .post-content .step-card-num {
+  font-family: Inter, "Segoe UI", sans-serif !important;
+  font-size: initial;
+}
