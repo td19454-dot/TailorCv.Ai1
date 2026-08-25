@@ -46,15 +46,15 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
     </style>
-    <link rel="stylesheet" href="/static/blog.css?v=94">
+    <link rel="stylesheet" href="/static/blog.css?v=97">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 </head>
-<body>
+<body class="blog-list-page">
     {% include "_nav.html" %}
 <main class="blog-main">
     <section class="blog-listing-head">
-        <h1>TailorCV Blog</h1>
+        <h1>TailorCV <span class="head-accent">Blogs and Guides</span></h1>
         <p>Actionable guides to improve ATS score, resume quality, and job search outcomes.</p>
         <form class="blog-search" method="get" action="/blog">
             <input type="search" name="q" value="{{ q }}" placeholder="Search guides, ATS tips, and examples">
