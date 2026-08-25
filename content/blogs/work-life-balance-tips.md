@@ -30,6 +30,7 @@ A sustainable career also means making smart career moves. When you are ready fo
 ## Why Work-Life Balance Matters
 
 Poor work-life balance leads to:
+
 - Burnout (emotional exhaustion, cynicism, reduced performance)
 - Health problems (stress, sleep issues, weakened immunity)
 - Damaged relationships
@@ -136,6 +137,7 @@ A good manager wants sustainable performance, not burnout. If your workload is u
 ## Choose Employers With Good Culture
 
 Work-life balance is partly individual habits and partly company culture. When job searching, evaluate:
+
 - Glassdoor reviews mentioning work-life balance and burnout
 - PTO policies and whether people actually use them
 - After-hours communication norms

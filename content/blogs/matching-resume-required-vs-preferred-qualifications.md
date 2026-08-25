@@ -117,19 +117,23 @@ When you're faced with a job description, it can be challenging to determine how
 
 
 **Scenario 1: Marketing Manager Position**
+
 - **Required Qualifications:** 5 years of experience in digital marketing, proficiency in Google Analytics.
 - **Preferred Qualifications:** Familiarity with SEO best practices, experience managing a team.
 
 *Approach:*
+
 - Highlight your 5 years of digital marketing experience prominently at the top of your resume.
 - Mention your proficiency in Google Analytics in the skills section.
 - In your experience section, include specific projects where your SEO knowledge contributed to success, even if it’s not a requirement. This shows you can meet the preferred qualifications, enhancing your candidacy.
 
 **Scenario 2: Software Developer Role**
+
 - **Required Qualifications:** Proficiency in Python, experience with RESTful APIs.
 - **Preferred Qualifications:** Knowledge of cloud services (AWS, Azure), experience in Agile methodology.
 
 *Approach:*
+
 - List Python proficiency first and provide examples of projects where you utilized RESTful APIs.
 - If you have experience with cloud services, mention it in a separate section titled "Additional Skills," ensuring it stands out without overshadowing the required qualifications.
 

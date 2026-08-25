@@ -97,6 +97,7 @@ Two-column layouts, text boxes, tables for section content, icons, graphics, and
 Resumes without quantified achievements score lower in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and perform poorly with recruiters. Numbers provide evidence, scale, and context - all three of which a generic resume lacks.
 
 If you don't have clear metrics, estimate:
+
 - Team size ("led a 5-person team")
 - Time saved ("reduced manual process from 3 hours to 20 minutes")
 - Volume ("managed $200K quarterly budget")

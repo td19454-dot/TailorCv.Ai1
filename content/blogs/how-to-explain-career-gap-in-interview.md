@@ -157,11 +157,11 @@ Imagine you took a year off to care for a family member. Your narrative could be
 
 Having a checklist can help you stay focused and confident when discussing your career gap. Here’s a mini checklist to guide you:
 
-- **Be Honest**: Prepare to discuss the reason without over-explaining.
-- **Focus on Skills**: Highlight any skills or experiences gained during the gap that are relevant to the position.
-- **Reinforce Your Commitment**: Emphasize your eagerness to return to the workforce and contribute to the company.
-- **Prepare Questions**: Anticipate potential follow-up questions and prepare thoughtful responses.
-- **Stay Positive**: Maintain an optimistic tone throughout your explanation.
+- [ ] **Be Honest**: Prepare to discuss the reason without over-explaining.
+- [ ] **Focus on Skills**: Highlight any skills or experiences gained during the gap that are relevant to the position.
+- [ ] **Reinforce Your Commitment**: Emphasize your eagerness to return to the workforce and contribute to the company.
+- [ ] **Prepare Questions**: Anticipate potential follow-up questions and prepare thoughtful responses.
+- [ ] **Stay Positive**: Maintain an optimistic tone throughout your explanation.
 
 ## Do's and Don'ts When Explaining a Career Gap
 

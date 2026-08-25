@@ -70,6 +70,7 @@ They cannot check [your LinkedIn profile](https://thetailorcv.com/blog/linkedin-
 If your resume does not demonstrate that you meet the qualification - even if you clearly do - you can be disqualified on paper.
 
 Every role you list needs:
+
 - Exact start and end dates (month and year)
 - Hours worked per week
 - Salary or grade level
@@ -107,6 +108,7 @@ Go to [USAJOBS.gov](https://www.usajobs.gov), create an account, and build your 
 ### 1. Contact Information
 
 Include:
+
 - Full legal name
 - Address (city, state, ZIP minimum)
 - Phone number
@@ -129,6 +131,7 @@ Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-r
 This section must be exhaustive.
 
 For every role:
+
 - **Job title** (exact title, not a simplified version)
 - **Employer name and location**
 - **Start and end dates** - Month/Year format (e.g., June 2019 - March 2022)
@@ -146,6 +149,7 @@ When writing your accomplishment bullets, follow the same principles as any stro
 ### 4. Education
 
 Include:
+
 - Institution name and location
 - Degree name (full title, not abbreviation)
 - Major and minor
@@ -175,6 +179,7 @@ A KSA prompt: "Skill in written communication to produce clear and accurate repo
 "In my role as Program Analyst at the Department of Defense (2020-2023), I authored 40+ quarterly progress reports submitted to the Office of the Secretary of Defense. Each report synthesized data from 6 operational units into a concise executive brief used by the Assistant Secretary for Acquisition to inform budget allocation decisions totaling $120M annually. Reports required strict adherence to DoD writing guidelines and were reviewed for accuracy by three layers of leadership before final submission."
 
 KSA responses should:
+
 - Be specific, not general
 - Include the CCAR format (Context, Challenge, Action, Result) where applicable
 - Use measurable outcomes
@@ -186,6 +191,7 @@ KSA responses should:
 Federal agencies - especially defense, health, and regulatory agencies - value formal credentials.
 
 List:
+
 - Professional [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) (PMP, CPA, security clearances, etc.)
 - Relevant training courses (federal training like OPM courses counts)
 - Security clearance level and status (active clearances are highly valuable)
@@ -199,6 +205,7 @@ These sections matter more in federal applications than private-sector ones.
 
 Federal evaluators look at the whole person.
 Include:
+
 - [Volunteer work](https://thetailorcv.com/blog/volunteer-work-on-resume) with civic or government organizations
 - Publications or technical papers
 - [Awards and achievements](https://thetailorcv.com/blog/awards-achievements-on-resume) (especially any government-specific awards)

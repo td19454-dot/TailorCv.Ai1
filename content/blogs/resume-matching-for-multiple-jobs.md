@@ -36,12 +36,14 @@ You do not need a different resume for every job.
 You need one strong base resume and a system for adapting it efficiently.
 
 **The Base Resume:**
+
 - Your full, honest work history
 - Your complete skills list
 - Your strongest [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
 - Clean [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible formatting
 
 **The Variant Resume:**
+
 - Summary rewritten for the target role
 - [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) reordered and trimmed to match the JD
 - Top 2-3 bullets rewritten with JD language
@@ -58,6 +60,7 @@ And it produces a more targeted result than sending the base.
 ### Step 1: Build Your Master Resume
 
 Create a master document that contains:
+
 - All your work experience (every role, every bullet)
 - Your complete skills list (every tool, language, methodology you know)
 - All [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and credentials
@@ -74,6 +77,7 @@ Identify clusters of jobs you are targeting.
 Most job seekers have 2-3 clusters:
 
 **Example clusters:**
+
 - Cluster A: [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) roles at tech/SaaS companies
 - Cluster B: Business Intelligence roles at enterprise companies
 - Cluster C: Analytics Engineer roles (more technical)
@@ -84,6 +88,7 @@ You need one [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-
 ### Step 3: Create a Template Variant for Each Cluster
 
 For each cluster:
+
 1. Take a representative JD from that cluster
 2. Extract the top keywords
 3. Build a variant resume from your master: write the summary, trim the skills, reorder bullets
@@ -94,6 +99,7 @@ This variant is now your starting point for every application in that cluster.
 ### Step 4: For Each Application, Make Minor Adjustments
 
 When applying to a specific job in Cluster A:
+
 1. Start from the Cluster A variant
 2. Compare the specific JD to the variant
 3. Look for 3-5 additional keywords to add
@@ -152,6 +158,7 @@ When you create variants, name them clearly:
 `[Your Name] Resume - [Role Cluster] - [Month Year]`
 
 **Examples:**
+
 - `Sarah Chen Resume - [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) SaaS - Jun 2026`
 - `Sarah Chen Resume - Analytics Engineer - Jun 2026`
 - `Sarah Chen Resume - Business Intelligence Enterprise - Jun 2026`
@@ -167,11 +174,13 @@ Rebuild variants every 2-3 months or when you start a new [job search](https://t
 ## When to Create a New Variant vs. Adjusting an Existing One
 
 **Use an existing variant when:**
+
 - The new JD overlaps 80%+ with your existing variant's keywords
 - The role type, seniority level, and industry are the same
 - Only 2-3 keywords differ
 
 **Create a new variant when:**
+
 - The new JD requires a substantially different skill set
 - The seniority level is significantly different
 - The industry brings in a new set of domain terms

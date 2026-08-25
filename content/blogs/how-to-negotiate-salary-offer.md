@@ -68,6 +68,7 @@ Sources to use:
 - **Industry surveys** - Many professional associations publish annual salary benchmarks
 
 Build a range from at least 3 sources. Look at:
+
 - Your title and level (junior, mid, senior)
 - Your city or metro area (cost of living matters)
 - Company size (startup vs. enterprise)

@@ -176,6 +176,7 @@ One addition for internal resumes: if there are company-specific [projects](http
 > "Operations Analyst with 2 years at [Company] leading the logistics dashboard rebuild that reduced reporting lag by 4 days. Seeking to bring that cross-functional project ownership into a Senior Ops role, with a focus on scaling the new warehouse automation workflows launching in Q3."
 
 The after version:
+
 - Mentions a real internal project the hiring team knows
 - Shows clear ownership
 - Signals genuine understanding of what the new role requires
@@ -222,11 +223,13 @@ It happens.
 An internal candidate gets passed over for an external hire.
 
 The professional response:
+
 - Ask for a debrief with the hiring manager
 - Be direct about what you need to build toward the next opportunity
 - Do not take it personally in public - even if it stings
 
 The useful response:
+
 - Identify the specific gap (skills? visibility? framing?)
 - Build a plan to address it
 - Apply again in 6-12 months with a stronger case

@@ -1062,10 +1062,10 @@
       const lead = firstP.querySelector(":scope > strong:first-child, :scope > b:first-child");
       let title = "Mistake " + (i + 1);
       if (lead && firstP.firstChild === lead) {
-        title += ": " + (lead.textContent || "").replace(/:\s*$/, "");
+        title += ": " + (lead.textContent || "").replace(/[,:;.\u2014\u2013\-\s]*$/, "");
         lead.remove();
         if (firstP.firstChild && firstP.firstChild.nodeType === Node.TEXT_NODE) {
-          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^\s*:\s*/, "");
+          firstP.firstChild.textContent = firstP.firstChild.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
         }
       }
       h3.textContent = title;
@@ -1075,6 +1075,48 @@
       grid.appendChild(card);
     });
     list.remove();
+  });
+
+  /* A third shape the corpus uses just as often as the list: "## Common
+     Mistakes" written as a run of "**Bold lead.** prose" paragraphs with no
+     <ul>/<ol> at all - the pass above only looks for a list, so these boxes
+     were left as one undifferentiated card instead of individually numbered
+     ones. Same treatment, paragraphs instead of list items. */
+  content.querySelectorAll(".callout-mistake").forEach((box) => {
+    if (box.classList.contains("mistake-grid-item")) return;
+    if (box.querySelector(":scope > ol, :scope > ul")) return;
+    const paras = Array.from(box.children).filter((n) => n.tagName === "P");
+    if (paras.length < 2) return;
+    const allLead = paras.every((p) => {
+      const lead = p.firstElementChild;
+      return lead && /^(STRONG|B)$/.test(lead.tagName) && p.firstChild === lead;
+    });
+    if (!allLead) return;
+
+    const grid = document.createElement("div");
+    grid.className = "mistake-grid";
+    paras[0].before(grid);
+
+    paras.forEach((p, i) => {
+      const card = document.createElement("section");
+      card.className = "callout-box callout-mistake mistake-grid-item";
+      const head = document.createElement("div");
+      head.className = "callout-head";
+      head.innerHTML = '<span class="callout-ico">' + ICON.mistake + "</span>";
+      const h3 = document.createElement("h3");
+
+      const lead = p.firstElementChild;
+      let title = "Mistake " + (i + 1) + ": " + (lead.textContent || "").replace(/[,:;.\u2014\u2013\-\s]*$/, "");
+      lead.remove();
+      if (p.firstChild && p.firstChild.nodeType === Node.TEXT_NODE) {
+        p.firstChild.textContent = p.firstChild.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
+      }
+      h3.textContent = title;
+      head.appendChild(h3);
+      card.appendChild(head);
+      card.appendChild(p);
+      grid.appendChild(card);
+    });
   });
 
   /* "Before (generic resume)" / "After (Matched Resume)" followed by a code
@@ -1278,8 +1320,15 @@ const tcxLeadRuns = () => {
     ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
     ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, .lead-run";
 
-  // A lead paragraph is "<strong>Short label.</strong> then real prose" - not a
-  // fully bolded line, and not a long bolded sentence acting as a heading.
+  // A lead paragraph is "<strong>Label.</strong> then real prose" - not a
+  // fully bolded line, and not a bold span so long it's really the whole
+  // paragraph rather than a lead-in. 200 (not the original 80) because this
+  // corpus commonly bolds a full claim sentence - "Formal coursework,
+  // combined with sustained immersion where possible, produces faster and
+  // more durable progress than either alone." runs ~130 chars - and that
+  // pattern should still get boxed as long as real prose follows it; the
+  // rest.length > 20 check below is what actually rules out a bold line
+  // with nothing meaningful after it.
   const isLead = (p) => {
     if (p.tagName !== "P") return false;
     if (p.closest(BOXED)) return false;
@@ -1287,7 +1336,7 @@ const tcxLeadRuns = () => {
     const lead = p.firstElementChild;
     if (!lead || !/^(STRONG|B)$/.test(lead.tagName) || p.firstChild !== lead) return false;
     const label = (lead.textContent || "").trim();
-    if (!label || label.length > 80) return false;
+    if (!label || label.length > 200) return false;
     const rest = (p.textContent || "").slice(label.length).trim();
     return rest.length > 20;
   };
@@ -1298,13 +1347,28 @@ const tcxLeadRuns = () => {
     if (!isLead(kids[i])) { i++; continue; }
     let j = i;
     while (j < kids.length && isLead(kids[j])) j++;
-    if (j - i >= 3) {
+    // 2: almost every paragraph in this corpus opens with a bold lead, so
+    // there is no threshold that boxes only a rare few sections - accepted
+    // as the final call that most 2+-paragraph sections become boxed cards,
+    // consistently, rather than some being boxed and others left as plain
+    // half-styled text depending on whether they happened to hit 3.
+    if (j - i >= 2) {
       const run = document.createElement("div");
       run.className = "lead-run";
       kids[i].before(run);
       for (let k = i; k < j; k++) {
-        kids[k].classList.add("lead-item");
-        run.appendChild(kids[k]);
+        const p = kids[k];
+        p.classList.add("lead-item");
+        // CSS renders the lead <strong> as its own block line, so whatever
+        // follows it (typically ", " or ": " left over from "**Label**, rest")
+        // becomes the start of the next visual line. Strip that leftover
+        // punctuation so the body doesn't open with a dangling comma/colon.
+        const lead = p.firstElementChild;
+        const after = lead && lead.nextSibling;
+        if (after && after.nodeType === Node.TEXT_NODE) {
+          after.textContent = after.textContent.replace(/^[,:;.\u2014\u2013\-\s]+/, " ").replace(/^ /, "");
+        }
+        run.appendChild(p);
       }
     }
     i = j;
@@ -1770,4 +1834,125 @@ if (document.readyState === "loading") {
   }, 0));
 } else {
   setTimeout(() => { tcxMobileReading(); tcxShareCopy(); }, 0);
+}
+
+/* A lead-in line that introduces the group directly beneath it ("Three
+   questions to interrogate each project bullet with:") is doing real work but
+   renders as an ordinary paragraph, so the connection to the cards below it is
+   invisible. Mark it so it can be highlighted like a marker-pen line.
+   Restyling only: nothing is added, removed or reworded. */
+const tcxIntroLines = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+
+  const GROUP = "UL,OL,TABLE,DIV,SECTION";
+  const GROUP_CLASS = ".lead-run,.lead-list,.mistake-grid,.point-run,.row-lines,.dash-list-wrap,.table-wrap";
+
+  Array.from(content.querySelectorAll("p")).forEach((p) => {
+    if (p.closest(".faq-box,.key-takeaways-box,.callout-box,.step-card,.blog-ats,.blog-tpl,.end-cta,.lead-run,.point-run")) return;
+    const text = (p.textContent || "").trim();
+    // a short line that ends in a colon - an introduction, not a paragraph
+    if (!/:$/.test(text)) return;
+    if (text.length > 120 || text.split(/\s+/).length < 3) return;
+    // must actually introduce something structured
+    let next = p.nextElementSibling;
+    if (!next) return;
+    const tagOk = GROUP.split(",").indexOf(next.tagName) !== -1;
+    const classOk = next.matches && next.matches(GROUP_CLASS);
+    if (!tagOk && !classOk) return;
+    if (p.querySelector(".intro-mark")) return;
+    // Wrap the text in an inline span: a block-level background would stretch
+    // the highlight to the full column width instead of hugging the words.
+    const mark = document.createElement("span");
+    mark.className = "intro-mark";
+    while (p.firstChild) mark.appendChild(p.firstChild);
+    p.appendChild(mark);
+    p.classList.add("intro-line");
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxIntroLines, 30));
+} else {
+  setTimeout(tcxIntroLines, 30);
+}
+
+/* A standalone bold-only paragraph acting as a label ("**\"What are your
+   salary expectations?\"**") followed by its explanation renders as two loose
+   paragraphs, so the label reads as stray bold text rather than the heading it
+   is. Where several such pairs run together, give each pair the same card
+   treatment an "### heading + prose" run already gets. Pure restyle: the
+   bold text becomes the card's heading, nothing is reworded. */
+const tcxLabelCards = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const BOXED =
+    ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
+    ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, " +
+    ".lead-run, .point-run, .row-lines";
+
+  const isLabel = (el) => {
+    if (!el || el.tagName !== "P" || el.closest(BOXED)) return false;
+    const kids = Array.from(el.childNodes).filter(
+      (n) => n.nodeType !== Node.TEXT_NODE || n.textContent.trim()
+    );
+    if (kids.length !== 1) return false;
+    const only = kids[0];
+    if (!only.tagName || !/^(STRONG|B)$/.test(only.tagName)) return false;
+    const txt = (el.textContent || "").trim();
+    return txt.length >= 3 && txt.length <= 110;
+  };
+  const isBody = (el) =>
+    el && el.tagName === "P" && !el.closest(BOXED) && !isLabel(el) &&
+    !el.querySelector("img") && (el.textContent || "").trim().length > 25;
+
+  const kids = Array.from(content.children);
+  const unit = (i) => {
+    if (!isLabel(kids[i])) return null;
+    const body = [];
+    let j = i + 1;
+    while (j < kids.length && isBody(kids[j]) && body.length < 2) {
+      body.push(kids[j]);
+      j++;
+    }
+    if (!body.length) return null;
+    return { end: j, label: kids[i], body: body };
+  };
+
+  let i = 0;
+  while (i < kids.length) {
+    const units = [];
+    let j = i;
+    for (;;) {
+      const u = unit(j);
+      if (!u) break;
+      units.push(u);
+      j = u.end;
+    }
+    // two or more in a row - a single pair reads fine as plain prose
+    if (units.length >= 2) {
+      const run = document.createElement("div");
+      run.className = "point-run";
+      units[0].label.before(run);
+      units.forEach((u) => {
+        const card = document.createElement("section");
+        card.className = "point-card";
+        const h = document.createElement("h3");
+        h.textContent = (u.label.textContent || "").trim();
+        card.appendChild(h);
+        u.label.remove();
+        u.body.forEach((p) => card.appendChild(p));
+        run.appendChild(card);
+      });
+      i = j;
+    } else {
+      i = units.length ? j : i + 1;
+    }
+  }
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxLabelCards, 10));
+} else {
+  setTimeout(tcxLabelCards, 10);
 }

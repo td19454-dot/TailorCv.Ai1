@@ -14,6 +14,7 @@
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         :root { --bg:#070f24; --panel:#0c1733; --panel-2:#0a1430; --border:rgba(99,130,200,.18); --muted:#9fb0cc; --accent:#3392ff; --ink:#e2ecff; }
+        html, body { overflow-x: hidden; }
         body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; padding-top: 76px; }
         a { text-decoration: none !important; }
 
@@ -2126,15 +2127,15 @@ Nice to have:
                 background: "rgba(3,17,41,0.95)", border: "1.5px solid rgba(74,222,128,0.45)",
                 borderRadius: "10px", color: "#4ade80", fontSize: "13px", fontWeight: "600",
                 padding: "8px 13px", cursor: "pointer", transition: "border-color .2s,box-shadow .2s",
-                whiteSpace: "nowrap", minWidth: "210px",
+                whiteSpace: "nowrap", minWidth: "min(210px, 100%)",
             });
 
             // Build dropdown panel
             const panel = document.createElement("div");
             panel.id = "jd-picker-panel";
             Object.assign(panel.style, {
-                display: "none", position: "absolute", right: "0", top: "calc(100% + 6px)",
-                minWidth: "240px", maxHeight: "380px", overflowY: "auto",
+                display: "none", position: "absolute", right: "0", left: "auto", top: "calc(100% + 6px)",
+                width: "min(240px, calc(100vw - 40px))", maxHeight: "380px", overflowY: "auto",
                 background: "rgba(4,16,44,0.98)", border: "1px solid rgba(74,222,128,0.28)",
                 borderRadius: "14px", boxShadow: "0 24px 56px rgba(0,0,0,0.6)",
                 backdropFilter: "blur(24px)", zIndex: "300", padding: "6px 0",

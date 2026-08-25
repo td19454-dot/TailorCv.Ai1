@@ -80,6 +80,7 @@ It requires reordering, renaming, and trimming them to match the JD.
 
 Start with the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 Find every skill listed in:
+
 - Required qualifications
 - Preferred qualifications
 - Responsibilities (tools mentioned inline)
@@ -94,6 +95,7 @@ Read [job description keyword extraction guide](https://thetailorcv.com/blog/job
 Compare your existing skills list to the JD's required skills.
 
 Mark each required skill as:
+
 - **Present** - exact match in your current section
 - **Implied** - you have the skill but used a different name
 - **Missing** - genuine gap or simply not listed
@@ -112,6 +114,7 @@ Exact matches score higher than implied matches.
 If a skill is on the JD and you have it but never listed it, add it now.
 
 Common reasons skills go unlisted:
+
 - Assumed it was obvious
 - Used briefly, felt unqualified to list
 - Different name used in your industry
@@ -126,6 +129,7 @@ Put the highest-priority JD skills first.
 Recruiters and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems give more weight to skills that appear early.
 
 Order your skills:
+
 1. Required technical skills (from the top of the JD requirements)
 2. Required tools and platforms
 3. Required [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)
@@ -242,6 +246,7 @@ Human reviewers care about [soft skills](https://thetailorcv.com/blog/soft-skill
 Your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) needs both.
 
 **Rule of thumb:**
+
 - 70% hard skills (tools, technologies, technical domains)
 - 30% [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) (cross-functional, leadership, communication)
 
@@ -275,6 +280,7 @@ Focus on what matters for this specific role.
 Building a tailored [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) manually for every job takes time.
 
 TailorCV automates it:
+
 1. Paste the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Upload your resume
 3. Get an instant list of skills you are missing
@@ -348,6 +354,7 @@ Stop listing the same skills on every resume.
 Start treating it like a dynamic tool - one that changes with every job you apply for.
 
 The process is simple:
+
 1. Extract required skills from the JD
 2. Audit your current list
 3. Fix implied language to use exact JD terms

@@ -80,9 +80,9 @@ Once your [resume](https://www.thetailorcv.com/modify-cv) lands an interview, a 
 
 Your first [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Opens with a clear **objective**.
-- Turns school, volunteering, and odd jobs into **skill-focused** bullets.
-- Is **honest**, one page, and [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
-- Uses a [clean template](https://www.thetailorcv.com/templates) and passes the [ATS check](https://www.thetailorcv.com/solutions) for online applications.
+- [ ] Opens with a clear **objective**.
+- [ ] Turns school, volunteering, and odd jobs into **skill-focused** bullets.
+- [ ] Is **honest**, one page, and [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
+- [ ] Uses a [clean template](https://www.thetailorcv.com/templates) and passes the [ATS check](https://www.thetailorcv.com/solutions) for online applications.
 
 Everyone starts somewhere. Build your first [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), and you'll have a clean, confident page ready for that first job.

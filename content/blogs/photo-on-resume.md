@@ -68,6 +68,7 @@ Many US and UK recruiters explicitly state they prefer resumes without photos. I
 In countries where photos are expected and culturally normal, including a professional headshot is part of the standard application package. Not including one may actually make your resume look incomplete.
 
 **Countries where photos are commonly expected:**
+
 - Germany: Historically expected, though this is evolving among international companies
 - South Korea: Common, especially for large corporations (chaebols)
 - Japan: Expected for most applications

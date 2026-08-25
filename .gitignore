@@ -187,3 +187,24 @@ candidate_data.json
 
 # Local extension signing key (keeps the unpacked dev extension ID stable) — never commit
 .secrets/
+
+# Eval harness: results are regenerated, and fixtures/private/ holds real
+# candidate resumes (personal data) that must never be committed.
+evals/results/
+evals/fixtures/private/
+project_links_debug.txt
+
+# Real resumes dropped in for testing - personal data, never commit.
+resume_lab/*.pdf
+resume_lab/jd.txt
+
+# Raw screen recordings. Only the compressed, web-ready static/videos/demo.mp4
+# (and its poster) belong in the repo — a raw capture is hundreds of MB and git
+# keeps it in history forever, which Render re-pulls on every deploy.
+static/videos/demoo.mp4
+static/videos/*.raw.mp4
+static/videos/raw/
+
+# Any .env variant — backups and per-environment copies hold live API
+# keys, and a plain `.env` rule does not cover `.env.bak`/`.env.local`.
+.env*

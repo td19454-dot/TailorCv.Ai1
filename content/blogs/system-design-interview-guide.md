@@ -37,12 +37,14 @@ Never start designing immediately. Ask questions:
 **Non-functional requirements:** How many users? How much data? Read-heavy or write-heavy? Latency requirements? Availability requirements?
 
 Example for a URL shortener:
+
 - Functional: shorten a URL, redirect to original, custom aliases, analytics
 - Non-functional: 100M URLs/day, read:write ratio of 100:1, low-latency redirects
 
 ### Step 2: Estimate Scale (3 minutes)
 
 Do back-of-envelope calculations:
+
 - Requests per second (RPS)
 - Storage requirements
 - Bandwidth
@@ -53,18 +55,21 @@ This shows the interviewer you think about scale concretely.
 ### Step 3: Define the API (3 minutes)
 
 Sketch the core API endpoints:
+
 - POST /shorten {long_url} -> {short_url}
 - GET /{short_code} -> 302 redirect
 
 ### Step 4: High-Level Design (10 minutes)
 
 Draw the major components:
+
 - Client -> Load Balancer -> Application Servers -> Database
 - Add caching, CDN, message queues as needed
 
 ### Step 5: Deep Dive (10 minutes)
 
 Go deep on the most interesting components:
+
 - Database schema and choice (SQL vs NoSQL)
 - How to generate unique short codes
 - Caching strategy
@@ -126,6 +131,7 @@ Kafka, RabbitMQ, SQS - decouple services, handle async processing, smooth traffi
 **Scale:** 100M writes/day ≈ 1,160 writes/sec. Reads at 100:1 ≈ 116K reads/sec.
 
 **API:**
+
 - POST /shorten -> returns short code
 - GET /{code} -> 302 redirect
 
@@ -144,6 +150,7 @@ Kafka, RabbitMQ, SQS - decouple services, handle async processing, smooth traffi
 **Requirements:** 1-on-1 messaging, group chat, online status, message delivery receipts, 500M users.
 
 **Key components:**
+
 - WebSocket connections for real-time messaging
 - Message queue for delivery
 - Database for message persistence (Cassandra for write-heavy, time-series messages)

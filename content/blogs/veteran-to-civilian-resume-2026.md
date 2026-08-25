@@ -156,10 +156,10 @@ Absolutely. Leading people, managing assets, and making decisions under pressure
 
 Before you apply, make sure your veteran [resume](https://www.thetailorcv.com/modify-cv):
 
-- Uses **civilian language** with zero unexplained acronyms.
-- Leads with a translated [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and a clear target title.
-- Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
-- Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) keywords.
-- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Uses **civilian language** with zero unexplained acronyms.
+- [ ] Leads with a translated [summary](https://thetailorcv.com/blog/how-to-write-resume-summary) and a clear target title.
+- [ ] Backs every role with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
+- [ ] Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) keywords.
+- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Your service already proved you can lead, adapt, and deliver under pressure. The only job left is translating that into language the civilian market — and the [ATS](https://thetailorcv.com/blog/ats-score-guide) — understands. Start with the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), build a matching cover letter, and tailor it to every role you want.

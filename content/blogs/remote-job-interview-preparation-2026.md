@@ -193,11 +193,13 @@ Understanding common pitfalls can significantly enhance your preparation. Here a
 ### Do’s and Don’ts:
 
 **Do**:
+
 - **Test Your Technology**: Ensure your internet connection, camera, and microphone work flawlessly before the interview.
 - **Dress Professionally**: Wear what you would if attending an in-person interview. Professional attire can boost your confidence.
 - **Use a Neutral Background**: Make sure your background is tidy and free from distractions. A clean, neutral wall works best.
 
 **Don’t**:
+
 - **Multitask**: Avoid the temptation to check your phone or emails during the interview. This shows disrespect to the interviewer.
 - **Overlook Time Zones**: Confirm the interview time and time zone. Being late can create a negative impression.
 - **Neglect Eye Contact**: Look directly into the camera while speaking to create a sense of connection, rather than staring at the screen.

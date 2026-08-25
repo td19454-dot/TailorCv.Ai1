@@ -308,6 +308,24 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           const afterScoreHeader = res.headers.get('X-Skill-Match-After');
           const afterScore = afterScoreHeader ? parseInt(afterScoreHeader, 10) : null;
 
+          // Skills this job asked for that the resume shows no evidence of. The
+          // website shows these so the candidate can tick the ones they really
+          // have; without this the extension silently dropped them and the user
+          // never knew the job wanted something they might well be able to claim.
+          const readSkillHeader = (name) => {
+            try {
+              const raw = res.headers.get(name);
+              if (!raw) return [];
+              return decodeURIComponent(raw).split(',').map(s => s.trim()).filter(Boolean);
+            } catch (_) {
+              return [];   // a malformed header must never break the download
+            }
+          };
+          // Skills this job caused to be added to the resume. Gaps only appear
+          // when the confirm-first behaviour is switched back on server-side.
+          const skillsAdded = readSkillHeader('X-Skills-Added');
+          const skillGaps = readSkillHeader('X-Skill-Gaps');
+
           const buffer = await res.arrayBuffer();
           // Service workers have no DOM (no URL.createObjectURL), so build a data URL.
           const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
@@ -316,7 +334,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             filename: 'tailored_resume.pdf',
             saveAs: false,
           });
-          sendResponse({ data: { success: true, afterScore } });
+          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps } });
         } catch (e) {
           sendResponse({ error: e.message });
         }

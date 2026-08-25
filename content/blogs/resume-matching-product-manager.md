@@ -51,28 +51,33 @@ Your PM resume needs to pass both screens.
 
 ### Layer 1: Product Type Keywords
 What kind of product is this?
+
 - B2B SaaS, B2C, marketplace, platform, mobile, enterprise, developer tools, API
 
 Match your background to the product type. If you are applying to a B2B SaaS role, your bullets should reference "enterprise customers," "trial-to-paid conversion," "product-led growth," and "SaaS metrics" - not just "product features."
 
 ### Layer 2: Methodology Keywords
 How do they work?
+
 - Agile, Scrum, Kanban, sprint planning, product discovery, design thinking
 - OKRs, KPIs, metrics-driven roadmap
 - Jobs-to-be-done, user research, usability testing
 
 ### Layer 3: Stakeholder Keywords
 Who do they work with?
+
 - Engineering, design, data, marketing, sales, customer success
 - "Cross-functional teams," "executive stakeholders," "customer advisory board"
 
 ### Layer 4: Business Keywords
 What do they measure?
+
 - ARR, MRR, churn, NPS, DAU/MAU, conversion rate, LTV, CAC, time-to-value
 - Revenue, cost reduction, market share, retention, activation
 
 ### Layer 5: Tools Keywords
 What do they use?
+
 - Jira, Linear, Asana, Confluence, Notion
 - Mixpanel, Amplitude, Pendo, Heap
 - Figma, Miro, UserTesting
@@ -85,6 +90,7 @@ What do they use?
 ### Step 1: Categorize the JD
 
 Before extracting keywords, categorize:
+
 - **Product type:** B2B SaaS / B2C / platform / mobile / enterprise
 - **Seniority:** IC PM / Senior PM / Principal PM / Group PM
 - **Focus:** Growth / Monetization / Platform / Core / Partnerships
@@ -103,6 +109,7 @@ Read [job description keyword extraction guide](https://thetailorcv.com/blog/job
 ### Step 3: Rewrite Your Summary for This PM Role
 
 Your summary should reflect:
+
 - The product type (B2B SaaS, consumer, etc.)
 - The stage of company (startup, growth, enterprise)
 - Your primary PM strength (growth / platform / 0-to-1)
@@ -119,6 +126,7 @@ Read [how to match your resume summary to a job description](https://thetailorcv
 ### Step 4: Match Bullets to PM Outcomes
 
 PM bullets should show:
+
 - What you owned (product area, feature, metric)
 - How you led it (cross-functionally, with data, with user research)
 - What happened (the result - metric, revenue, engagement, efficiency)

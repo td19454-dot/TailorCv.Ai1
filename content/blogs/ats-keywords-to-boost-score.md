@@ -143,6 +143,7 @@ To illustrate how to effectively integrate keywords, let’s consider a job list
 
 ### Identifying Keywords
 From the job description, the keywords include:
+
 - Digital Marketing Manager
 - SEO (Search Engine Optimization)
 - SEM (Search Engine Marketing)

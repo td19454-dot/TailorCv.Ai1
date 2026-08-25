@@ -74,11 +74,13 @@ Their **annual plan is $71.40/year ($5.95/month)**, which is genuinely reasonabl
 ## Round 1: Pricing
 
 **Zety (2026):**
+
 - **Free:** build and edit with all templates — **.txt download only**
 - **Pro trial:** $1.95 for 14 days, then **$25.95 every 4 weeks** (~$337/year)
 - **Annual:** **$71.40/year** (~$5.95/month)
 
 **TailorCV (2026):**
+
 - **Free:** unlimited ATS scores, everywhere — real PDF downloads
 - **Pro:** **$59.99/year** ($4.99/week or $7.99/month for shorter commitments)
 

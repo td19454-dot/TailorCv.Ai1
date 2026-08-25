@@ -47,6 +47,7 @@ The result: highly qualified candidates with strong track records become invisib
 The most widespread [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) mistake among experienced professionals is submitting a resume that was last substantially updated years ago. The resume may list your most recent role, but the underlying structure, format, and keyword choices reflect the hiring landscape from a previous era.
 
 **What happens:**
+
 - Terminology that was current in 2019 no longer matches 2026 job descriptions
 - Old resume templates use formats [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems now handle poorly
 - Skills from older roles appear before more relevant current skills
@@ -62,6 +63,7 @@ Run your refreshed resume through the [TailorCV ATS score checker](https://www.t
 The conventional assumption that more experience equals a better resume actively hurts [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) performance. A 5-page resume with roles going back to 1998 dilutes keyword density, slows parser processing, and buries your most relevant recent experience under outdated content.
 
 **What happens:**
+
 - Your total word count is very high relative to relevant keyword count
 - The percentage of words that are relevant keywords is lower, reducing your relevance score
 - Older role titles and technologies may actually hurt your match score for modern roles
@@ -83,6 +85,7 @@ Experienced candidates often submit a master resume and assume their career hist
 A generic resume from a 20-year professional scores lower than a tailored resume from a 5-year professional who precisely matched the job description keywords. The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) does not know your reputation. It reads text.
 
 **The fix:** Tailor every application. For experienced professionals, tailoring means:
+
 - Rewriting your summary for each target role
 - Reordering your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) to put the most relevant experience first
 - Updating your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to match the specific job requirements
@@ -192,6 +195,7 @@ Some experienced professionals are pivoting - from engineering management back t
 **What happens:** An experienced operations executive applying for a Chief of Staff role has a keyword mismatch because "operations management" and "executive support" are different keyword sets in most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) configurations.
 
 **The fix:** Address the transition explicitly in your summary and in your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026):
+
 1. Write a summary that directly connects your background to the target role and its specific language
 2. Identify the keyword overlap between your experience and the target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 3. Add a "Transferable Skills" or "Relevant Expertise" section that bridges the gap with the job's vocabulary

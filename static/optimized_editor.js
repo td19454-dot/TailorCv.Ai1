@@ -45,6 +45,9 @@
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
     let allTemplates             = [];
+    // The frame's load handler re-runs on every srcdoc swap, including the one
+    // that applies confirmed skills, so the prompt is shown at most once.
+    let hasShownSkillGapPrompt   = false;
 
     /* ─────────────────────────────────────────────────────────────────────────
        HELPERS – STATUS / BADGE
@@ -91,11 +94,32 @@
        EDITING OVERLAY
     ───────────────────────────────────────────────────────────────────────── */
     function addEditingOverlay(html) {
+        // The preview body is contentEditable so the resume can be typed into.
+        // A side effect is that browsers stop FOLLOWING links inside it - a click
+        // just drops the caret - so the links looked broken even though the
+        // exported PDF carries them correctly. The handler below restores plain
+        // click-to-open, and alt+click still places the caret for editing the
+        // label text.
         const script = `<script>
 document.addEventListener("DOMContentLoaded", function () {
   document.body.contentEditable = "true";
   document.body.spellcheck      = false;
   document.body.style.outline   = "none";
+
+  var style = document.createElement("style");
+  style.textContent = "a[href]{cursor:pointer;}";
+  document.head.appendChild(style);
+
+  document.addEventListener("click", function (e) {
+    if (e.altKey || e.defaultPrevented) return;
+    var el = e.target;
+    while (el && el.nodeName !== "A") el = el.parentElement;
+    if (!el) return;
+    var href = el.getAttribute("href") || "";
+    if (!href || href.charAt(0) === "#") return;
+    e.preventDefault();
+    window.open(href, "_blank", "noopener,noreferrer");
+  });
 });
 <\/script>`;
         return html.includes("</body>")
@@ -876,6 +900,23 @@ body {
     /* ─────────────────────────────────────────────────────────────────────────
        PRO UPGRADE POPUP (shown when free download quota exhausted)
     ───────────────────────────────────────────────────────────────────────── */
+    /* The line under the heading. This used to read "You've downloaded 3
+       resumes" no matter what the user had actually done — wrong for anyone who
+       had used one, two, or a different free allowance entirely. The real count
+       is rendered into the page by the server; fall back to the free limit only
+       when it is genuinely unavailable, and never claim a count of zero. */
+    function proDownloadSubline() {
+        var used = parseInt(window.DOWNLOADS_USED, 10);
+        var limit = parseInt(window.FREE_DOWNLOAD_LIMIT, 10);
+        if (!isFinite(used) || used < 0) used = isFinite(limit) ? limit : 0;
+        if (used < 1) {
+            return "You're out of free downloads. Keep tailoring to land your " +
+                   "<strong>next job</strong>.";
+        }
+        return "You've downloaded <strong>" + used + " resume" + (used === 1 ? "" : "s") +
+               "</strong>. Keep tailoring to land your <strong>next job</strong>.";
+    }
+
     function showProDownloadPopup(opts) {
         opts = opts || {};
         const targetDoc = opts.doc || document;
@@ -1038,8 +1079,7 @@ body {
 
                 '<div class="tcv-pro-dl-lock-wrap"><div class="tcv-pro-dl-lock">🔒</div></div>' +
                 '<h2 class="tcv-pro-dl-title">Your resume is ready!</h2>' +
-                '<p class="tcv-pro-dl-sub">You\'ve downloaded <strong>3 resumes</strong>. Keep tailoring ' +
-                'to land your <strong>next job</strong>.</p>' +
+                '<p class="tcv-pro-dl-sub">' + proDownloadSubline() + '</p>' +
 
                 '<div class="tcv-pro-dl-stats">' +
                     '<div class="tcv-pro-dl-stat"><b>10,000+</b><span>resumes optimized by job seekers</span></div>' +
@@ -1734,11 +1774,459 @@ body {
         doc._tailorcvQuotaLocked = true;
 
         showProDownloadPopup({ doc: doc, closable: false });
+
+        // window.IS_PRO is stamped into the HTML when the page is rendered and
+        // never changes again. But the user upgrades FROM this very popup, so by
+        // the time the payment clears, the flag on this page is stale — and the
+        // lock is deliberately not closable. A user who has just paid is left
+        // staring at an "upgrade to Pro" wall over their own resume, with Pro
+        // active in the database. Ask the server what it thinks now.
+        refreshProStatus();
     }
+
+    /* Re-check Pro against the server and lift the lock if the user has upgraded.
+       Runs after the lock mounts and whenever the tab regains focus, which is
+       exactly when someone returns from completing a payment. */
+    var _proRefreshInFlight = false;
+    async function refreshProStatus() {
+        if (window.IS_PRO === true || _proRefreshInFlight) return;
+        _proRefreshInFlight = true;
+        try {
+            const res = await fetch("/api/auth/me", { cache: "no-store" });
+            if (!res.ok) return;
+            const data = await res.json();
+            if (!data || data.is_pro !== true) return;
+
+            window.IS_PRO = true;
+            window.QUOTA_EXHAUSTED = false;
+            // Tear the lock down wherever it was mounted. The popup mounts either
+            // on the page or inside the resume iframe (opts.doc), always as
+            // #tcv-pro-dl-overlay, so both have to be cleared.
+            [document, (typeof frame !== "undefined" && frame) ? frame.contentDocument : null]
+                .forEach(function (doc) {
+                    if (!doc) return;
+                    const overlay = doc.getElementById("tcv-pro-dl-overlay");
+                    if (overlay) overlay.remove();
+                    // Clear the guards so nothing re-locks a resume this user has
+                    // now paid for.
+                    doc._tailorcvQuotaLocked = false;
+                });
+        } catch (e) {
+            /* offline or blocked — leave the lock exactly as it was */
+        } finally {
+            _proRefreshInFlight = false;
+        }
+    }
+
+    // Returning to the tab after paying in another window.
+    document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) refreshProStatus();
+    });
+    window.addEventListener("focus", refreshProStatus);
+
+    // The upgrade CTA is a same-tab link to /pricing, so the actual path a paying
+    // user takes is: locked page -> /pricing -> pay -> BACK BUTTON. That restores
+    // this page from the back-forward cache with the ORIGINAL IS_PRO=false still
+    // in it, and no script re-runs — bfcache restores do not re-execute the page,
+    // and focus/visibilitychange are not guaranteed to fire either. `pageshow`
+    // with persisted=true is the one event that does, so it is the only thing
+    // standing between a user who has just paid and a paywall over her own
+    // resume. Also covers a plain reload from cache.
+    window.addEventListener("pageshow", function (evt) {
+        if (evt && evt.persisted) {
+            // Values baked into the restored HTML are from before the payment.
+            refreshProStatus();
+        }
+    });
 
     /* ─────────────────────────────────────────────────────────────────────────
        INIT
     ───────────────────────────────────────────────────────────────────────── */
+    /* ─────────────────────────────────────────────────────────────────────────
+       MISSING SKILLS — tick what you actually have
+
+       The optimizer only writes a JD skill into the resume when the uploaded
+       resume evidences it; everything else is reported as a gap. That keeps the
+       AI from inventing credentials, but it also hides skills the candidate
+       genuinely has and simply never wrote down. This box is where they say so.
+
+       Nothing is pre-ticked, and the copy makes clear they are vouching for the
+       skill — a tick is the candidate's own claim, not ours.
+    ───────────────────────────────────────────────────────────────────────── */
+    function savePayload(patch) {
+        try {
+            const current = getPayload() || {};
+            sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ ...current, ...patch }));
+        } catch (e) {}
+    }
+
+    function injectSkillGapStyles() {
+        if (document.getElementById("tc-gap-styles")) return;
+        const st = document.createElement("style");
+        st.id = "tc-gap-styles";
+        st.textContent = `
+#tc-gap-overlay {
+    position: fixed; inset: 0; z-index: 99998;
+    display: flex; align-items: center; justify-content: center;
+}
+.tc-gap-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(8,15,40,0.62);
+    backdrop-filter: blur(6px);
+    animation: tc-bgin 0.3s ease both;
+}
+.tc-gap-modal {
+    position: relative; z-index: 2; overflow: hidden;
+    background: linear-gradient(170deg, #f6f9ff 0%, #ffffff 42%);
+    border: 1px solid #c7d7f5;
+    border-radius: 18px;
+    padding: 1.9rem 2.1rem 1.6rem;
+    width: min(720px, 94vw);
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 26px 70px rgba(15,32,80,0.30), 0 2px 8px rgba(15,32,80,0.10);
+    animation: tc-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    -webkit-font-smoothing: antialiased;
+}
+/* Accent bar - the colour that makes the card read as ours, not a browser dialog. */
+.tc-gap-modal::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+    background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
+}
+.tc-gap-modal h2 {
+    margin: 0 0 0.28rem;
+    color: #0b1220; font-size: 0.98rem; font-weight: 500; letter-spacing: -0.01em;
+}
+.tc-gap-modal h2 em { font-style: normal; font-weight: 600; color: #1d4ed8; }
+.tc-gap-sub {
+    margin: 0 0 1.15rem;
+    color: #44506b; font-size: 0.78rem; font-weight: 400; line-height: 1.55;
+}
+.tc-gap-toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 0.75rem; margin-bottom: 0.85rem;
+    border-top: 1px solid #dbe5f7; padding-top: 0.95rem;
+}
+.tc-gap-count {
+    color: #1e3a8a; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.01em;
+    background: #e4ecfd; border: 1px solid #c7d7f5;
+    padding: 0.3rem 0.75rem; border-radius: 999px;
+}
+/* Deliberately the largest control in the header: ticking 15 pills one by one
+   is the slow path, so the shortcut has to be the thing the eye lands on. */
+.tc-gap-selectall {
+    background: #fff; border: 1.5px solid #1d4ed8;
+    padding: 0.5rem 1.25rem; border-radius: 999px;
+    color: #1d4ed8; font-size: 0.9rem; font-weight: 500;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(29,78,216,0.16);
+    transition: all 0.18s ease;
+}
+.tc-gap-selectall:hover {
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    border-color: transparent; color: #fff;
+    box-shadow: 0 5px 16px rgba(29,78,216,0.36);
+    transform: translateY(-1px);
+}
+.tc-gap-selectall:focus { outline: none; }
+.tc-gap-selectall:focus-visible { outline: none; box-shadow: 0 0 0 4px rgba(29,78,216,0.26); }
+.tc-gap-btn:focus { outline: none; }
+.tc-gap-btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.30); }
+.tc-gap-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+.tc-gap-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #fff;
+    border: 1px solid #c3d1ea;
+    border-radius: 999px;
+    padding: 0.4rem 0.85rem 0.4rem 0.55rem;
+    color: #24324e; font-size: 0.76rem; font-weight: 400;
+    cursor: pointer; transition: all 0.16s ease;
+}
+.tc-gap-pill:focus { outline: none; }
+.tc-gap-pill:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(29,78,216,0.22); }
+.tc-gap-pill:hover {
+    border-color: #1d4ed8; background: #f0f5ff; color: #0b1220;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(29,78,216,0.14);
+}
+.tc-gap-pill .tc-gap-tick {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 1px solid #9db3d8; background: #fff;
+    font-size: 9px; line-height: 1; color: transparent;
+    transition: all 0.16s ease;
+}
+/* Selected reads as a solid brand-coloured chip - unmistakable at a glance. */
+.tc-gap-pill[aria-pressed="true"] {
+    background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+    border-color: transparent;
+    color: #fff; font-weight: 400;
+    box-shadow: 0 4px 12px rgba(29,78,216,0.34);
+}
+.tc-gap-pill[aria-pressed="true"]:hover { transform: translateY(-1px); }
+.tc-gap-pill[aria-pressed="true"] .tc-gap-tick {
+    background: #fff; border-color: #fff; color: #1d4ed8;
+}
+.tc-gap-actions {
+    display: flex; justify-content: flex-end; align-items: center;
+    gap: 0.5rem; flex-wrap: wrap;
+}
+.tc-gap-btn {
+    border-radius: 9px; padding: 0.48rem 1rem;
+    font-size: 0.78rem; font-weight: 400; cursor: pointer;
+    transition: all 0.18s; border: 1px solid transparent;
+}
+.tc-gap-skip { background: #fff; border-color: #c3d1ea; color: #24324e; }
+.tc-gap-skip:hover { border-color: #9db3d8; background: #f0f5ff; color: #0b1220; }
+.tc-gap-add {
+    background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+    color: #fff; box-shadow: 0 5px 16px rgba(29,78,216,0.38);
+}
+.tc-gap-add:hover:not(:disabled) { filter: brightness(1.08); box-shadow: 0 7px 20px rgba(29,78,216,0.46); }
+.tc-gap-add:disabled {
+    background: #dbe3f2; color: #8496b8; cursor: not-allowed; box-shadow: none;
+}
+@media (max-width: 480px) {
+    .tc-gap-actions { flex-direction: column-reverse; }
+    .tc-gap-btn { width: 100%; }
+}
+`;
+        document.head.appendChild(st);
+    }
+
+    function showSkillGapPrompt(payload) {
+        // Never offer a skill the resume already lists. The stored gap list can
+        // outlive the add that satisfied it - a template switch or a reload
+        // rewrites the payload while keeping the old gaps - and the box then
+        // showed 15 pills that were already on the resume, so ticking them
+        // correctly did nothing and read as broken.
+        const present = new Set(
+            ((payload && payload.resume_data && payload.resume_data.skills) || [])
+                .map(s => String(s || "").trim().toLowerCase())
+                .filter(Boolean)
+        );
+        const gaps = (Array.isArray(payload?.promptable_skill_gaps)
+            ? payload.promptable_skill_gaps
+            : []
+        ).map(s => String(s || "").trim())
+         .filter(s => s && !present.has(s.toLowerCase()));
+        if (!gaps.length) return;
+        if (document.getElementById("tc-gap-overlay")) return;
+        // Answered already. The in-memory guard alone is not enough: switching
+        // template re-runs the editor from scratch while the stored payload still
+        // lists the same gaps, so the box came back after the user had dealt with
+        // it. Persisting the decision keeps it dismissed for this resume.
+        if (payload && payload.skill_prompt_answered) return;
+
+        injectSkillGapStyles();
+
+        const selected = new Set();
+
+        const overlay = document.createElement("div");
+        overlay.id = "tc-gap-overlay";
+        overlay.innerHTML = `
+            <div class="tc-gap-backdrop"></div>
+            <div class="tc-gap-modal" role="dialog" aria-modal="true" aria-labelledby="tc-gap-title">
+                <h2 id="tc-gap-title">This job asks for <em>${gaps.length}</em> skill${gaps.length === 1 ? "" : "s"} your resume doesn't show</h2>
+                <p class="tc-gap-sub">
+                    Tick the ones you genuinely have and could defend in an interview —
+                    we'll add them to your resume. Leave the rest untouched.
+                </p>
+                <div class="tc-gap-toolbar">
+                    <span class="tc-gap-count"></span>
+                    <button type="button" class="tc-gap-selectall">Select all</button>
+                </div>
+                <div class="tc-gap-pills"></div>
+                <div class="tc-gap-actions">
+                    <button type="button" class="tc-gap-btn tc-gap-skip">Not now</button>
+                    <button type="button" class="tc-gap-btn tc-gap-add" disabled>Add to resume</button>
+                </div>
+            </div>`;
+
+        const pillWrap  = overlay.querySelector(".tc-gap-pills");
+        const addBtn    = overlay.querySelector(".tc-gap-add");
+        const skipBtn   = overlay.querySelector(".tc-gap-skip");
+        const countEl   = overlay.querySelector(".tc-gap-count");
+        const selectAll = overlay.querySelector(".tc-gap-selectall");
+        const pillEls   = [];
+
+        function refreshAddBtn() {
+            addBtn.disabled = selected.size === 0;
+            addBtn.textContent = selected.size
+                ? `Add ${selected.size} skill${selected.size === 1 ? "" : "s"}`
+                : "Add to resume";
+            countEl.textContent = `${selected.size} of ${gaps.length} selected`;
+            // Once everything is ticked the same control clears it, so a
+            // mis-click on "Select all" is one click to undo.
+            selectAll.textContent = selected.size === gaps.length ? "Clear all" : "Select all";
+        }
+
+        /* Ticks (or unticks) every pill. Deliberately fills the boxes rather
+           than submitting: the user still sees exactly what is about to be
+           claimed and can untick anything before pressing add. */
+        function setAll(on) {
+            pillEls.forEach(({ skill, el }) => {
+                el.setAttribute("aria-pressed", on ? "true" : "false");
+                if (on) selected.add(skill); else selected.delete(skill);
+            });
+            refreshAddBtn();
+        }
+
+        gaps.forEach(skill => {
+            const pill = document.createElement("button");
+            pill.type = "button";
+            pill.className = "tc-gap-pill";
+            pill.setAttribute("aria-pressed", "false");
+            // textContent for the label so a skill like "C++" or any odd JD
+            // wording can never be parsed as markup.
+            const tick = document.createElement("span");
+            tick.className = "tc-gap-tick";
+            tick.textContent = "✓";
+            const label = document.createElement("span");
+            label.textContent = skill;
+            pill.append(tick, label);
+
+            pill.addEventListener("click", () => {
+                const on = pill.getAttribute("aria-pressed") === "true";
+                pill.setAttribute("aria-pressed", on ? "false" : "true");
+                if (on) selected.delete(skill); else selected.add(skill);
+                refreshAddBtn();
+            });
+            pillEls.push({ skill, el: pill });
+            pillWrap.appendChild(pill);
+        });
+
+        selectAll.addEventListener("click", () => setAll(selected.size !== gaps.length));
+        refreshAddBtn();
+
+        function close() {
+            overlay.remove();
+            // Remember across template switches and reloads, not just this render.
+            savePayload({ skill_prompt_answered: true });
+        }
+
+        skipBtn.addEventListener("click", close);
+        overlay.querySelector(".tc-gap-backdrop").addEventListener("click", close);
+        document.addEventListener("keydown", function onEsc(e) {
+            if (e.key === "Escape" && document.getElementById("tc-gap-overlay")) {
+                close();
+                document.removeEventListener("keydown", onEsc);
+            }
+        });
+
+        addBtn.addEventListener("click", async () => {
+            if (!selected.size) return;
+            const original = addBtn.textContent;
+            addBtn.disabled = true;
+            addBtn.textContent = "Adding…";
+
+            let jd = "";
+            try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
+            const current = getPayload() || payload || {};
+
+            try {
+                // This route is not in EXEMPT_PATHS, so the double-submit CSRF
+                // token is required or the middleware answers 403.
+                const csrfToken = (document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/) || [])[1] || "";
+                const res = await fetch("/api/resume/add-confirmed-skills", {
+                    method:  "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": csrfToken,
+                        "X-Requested-With": "XMLHttpRequest",
+                    },
+                    body:    JSON.stringify({
+                        // Read the payload NOW, not when the box was opened. A
+                        // template switch rewrites it while the box is up, and
+                        // sending the stale copy meant posting resume_data that
+                        // no longer matched what is on screen.
+                        resume_data: current.resume_data || null,
+                        skills:      Array.from(selected),
+                        jd_string:   jd,
+                        template_id: Number(current.template_id || 1),
+                        style_id:    Number(current.style_id || 1),
+                    }),
+                });
+                if (res.status === 401) {
+                    window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
+                    return;
+                }
+                if (!res.ok) {
+                    // Surface what the server actually said. Replacing it with
+                    // "Request failed" meant every cause - no resume_data, a
+                    // skill no longer listed, a render error - reached the user
+                    // as the same unactionable "Update failed".
+                    let detail = "";
+                    try {
+                        const body = await res.json();
+                        detail = (body && (body.detail || body.error)) || "";
+                    } catch (e) {}
+                    throw new Error(detail || `Request failed (${res.status})`);
+                }
+
+                const data = await res.json();
+
+                // Nothing to do: everything ticked is already on the resume
+                // (a second click, or a click after switching template). The
+                // server returns no HTML in that case - there is nothing to
+                // re-render, and it is not an error.
+                if (data && data.success && (!data.added || !data.added.length)) {
+                    savePayload({ skill_prompt_answered: true });
+                    close();
+                    if (typeof showToast === "function") {
+                        showToast("Those skills are already on your resume.", "info", "Nothing to add");
+                    }
+                    return;
+                }
+
+                if (!data || !data.html) throw new Error("No resume returned");
+
+                // Persist first, so a refresh keeps the added skills.
+                savePayload({
+                    html: data.html,
+                    resume_data: data.resume_data,
+                    promptable_skill_gaps: data.promptable_skill_gaps || [],
+                    skill_prompt_answered: true,
+                });
+
+                // Re-render the preview. captureBaseFonts/captureBaseLineSpacing
+                // stamp data-base-font and data-base-lh onto the nodes of the
+                // document they measure, and both are one-shot guarded. A fresh
+                // srcdoc has none of those attributes, so leaving the flags set
+                // means the A+/A-/S+/S- controls silently stop doing anything.
+                // Same reset the template switcher does on its re-render.
+                //
+                // currentZoom, currentLineSpacing and currentAccentColor are
+                // deliberately kept: the load handler's applyWordStylePreview()
+                // re-applies them once the new document has been re-measured, so
+                // the user's adjustments survive adding a skill.
+                baseFontsCaptured        = false;
+                baseLineSpacingsCaptured = false;
+
+                currentHtml = addEditingOverlay(data.html);
+                frame.srcdoc = currentHtml;
+
+                close();
+                const added = (data.added || []).join(", ");
+                if (typeof showToast === "function") {
+                    showToast(`Added ${added} to your resume.`, "success", "Skills updated");
+                } else {
+                    setStatus(`Added ${added} to your resume.`);
+                }
+            } catch (e) {
+                addBtn.disabled = false;
+                addBtn.textContent = original;
+                const why = (e && e.message) ? String(e.message) : "Please try again.";
+                if (typeof showToast === "function") {
+                    showToast(why, "error", "Could not add skills");
+                } else {
+                    setStatus("Could not add skills: " + why);
+                }
+            }
+        });
+
+        document.body.appendChild(overlay);
+    }
+
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
@@ -1769,6 +2257,13 @@ body {
 
             if (payload.source === "modify-cv") {
                 setStatus("Tip: adjust size, spacing, and colour, then download your resume.");
+            }
+
+            // Ask about missing skills once the resume is on screen, so the
+            // person can see what they are adding it to.
+            if (!hasShownSkillGapPrompt) {
+                hasShownSkillGapPrompt = true;
+                setTimeout(() => showSkillGapPrompt(getPayload() || payload), 600);
             }
 
             if (AUTO_DOWNLOAD_ON_OPEN && !hasAutoDownloaded) {

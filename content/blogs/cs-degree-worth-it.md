@@ -69,6 +69,7 @@ This demand fueled one of the largest hiring booms in modern history.
 At the same time, technology careers gained massive cultural visibility.
 
 Platforms like YouTube, TikTok, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and X (formerly Twitter) amplified stories of:
+
 - six-figure graduate salaries
 - [remote work flexibility](https://thetailorcv.com/blog/remote-job-search-guide)
 - startup acquisitions
@@ -92,6 +93,7 @@ The issue emerged when an enormous number of people pursued the exact same caree
 Universities expanded computer science departments aggressively to meet growing demand. Coding bootcamps marketed software engineering as accessible to virtually anyone willing to learn basic programming skills.
 
 Meanwhile, social media continuously reinforced the idea that:
+
 - coding guaranteed high salaries
 - tech jobs offered effortless work-life balance
 - software engineering provided exceptional long-term security
@@ -99,6 +101,7 @@ Meanwhile, social media continuously reinforced the idea that:
 As a result, the talent pipeline expanded rapidly.
 
 The modern entry-level market is now flooded with candidates who often possess extremely similar profiles:
+
 - comparable coursework
 - identical [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) projects
 - similar [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
@@ -122,6 +125,7 @@ However, AI is not the sole reason the market has become more difficult.
 Oversupply is a major factor.
 
 For years, software engineering was marketed as:
+
 - highly paid
 - flexible
 - future-proof
@@ -135,6 +139,7 @@ Eventually, supply begins to exceed demand - especially at the entry level.
 This pattern is not unique to technology.
 
 Historically, similar trends occurred during:
+
 - the dot-com boom
 - finance industry expansion
 - law school surges
@@ -153,6 +158,7 @@ But entry into the field is no longer easy.
 The post-2022 economic correction fundamentally changed hiring behavior across the technology sector.
 
 After years of aggressive expansion, many companies shifted their priorities toward:
+
 - operational efficiency
 - smaller engineering teams
 - profitability
@@ -160,6 +166,7 @@ After years of aggressive expansion, many companies shifted their priorities tow
 - AI-assisted productivity
 
 Simultaneously:
+
 - hiring freezes increased
 - layoffs reduced available roles
 - internship programs became more selective
@@ -172,6 +179,7 @@ A graduate applying for a remote software engineering role is no longer competin
 They are competing globally.
 
 Developers from:
+
 - India
 - Eastern Europe
 - Southeast Asia
@@ -189,6 +197,7 @@ This globalization of technical hiring has substantially increased competition, 
 Artificial intelligence is undeniably changing software engineering.
 
 Tools such as:
+
 - ChatGPT
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Copilot
 - Cursor
@@ -203,6 +212,7 @@ However, AI primarily affects repetitive and low-complexity development work.
 Strong engineers remain highly valuable because software engineering involves far more than writing syntax.
 
 Companies increasingly prioritize professionals who can:
+
 - solve ambiguous problems
 - design scalable systems
 - understand architecture
@@ -222,6 +232,7 @@ It is increasing the value of highly capable engineers while reducing reliance o
 ## The Industry Is Separating Builders From Passive Participants
 
 One of the most significant shifts occurring in software engineering today is the growing separation between:
+
 - individuals genuinely interested in engineering
 - individuals who entered primarily for financial reasons
 
@@ -230,6 +241,7 @@ During periods of rapid hiring, this distinction mattered less.
 Today, it matters considerably more.
 
 Developers who consistently stand out typically demonstrate:
+
 - technical curiosity
 - strong portfolios
 - practical problem-solving ability
@@ -251,6 +263,7 @@ However, it is increasingly viewed as a foundation rather than a guarantee.
 One reason the current market feels emotionally difficult is because social media significantly distorted expectations around technology careers.
 
 For years, online content emphasized:
+
 - extremely high compensation
 - luxurious work environments
 - remote work freedom
@@ -258,6 +271,7 @@ For years, online content emphasized:
 - rapid wealth creation
 
 Far less attention was given to:
+
 - failed interviews
 - layoffs
 - burnout
@@ -285,18 +299,21 @@ In highly competitive markets, resumes are often filtered through Applicant Trac
 This makes [resume optimization](https://thetailorcv.com/blog/resume-optimization-guide) increasingly important.
 
 Platforms like:
+
 - [ATS Resume Solutions](https://www.thetailorcv.com/solutions)
 - [Resume Templates](https://www.thetailorcv.com/templates)
 
 ...help candidates improve [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility, align resumes with job descriptions, and strengthen overall presentation.
 
 Many applicants unknowingly weaken their chances through:
+
 - generic resumes
 - poor formatting
 - weak project descriptions
 - insufficient keyword optimization
 
 Additional resources that can help include:
+
 - [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
 - [Resume Mistakes Every Fresher Makes](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
@@ -307,6 +324,7 @@ Additional resources that can help include:
 ## Why Degrees Alone No Longer Guarantee Success
 
 A computer science degree still teaches highly valuable fundamentals:
+
 - algorithms
 - systems thinking
 - software architecture
@@ -315,6 +333,7 @@ A computer science degree still teaches highly valuable fundamentals:
 But employers increasingly prioritize demonstrated capability over credentials alone.
 
 Candidates who possess:
+
 - strong portfolios
 - practical experience
 - open source contributions
@@ -327,6 +346,7 @@ Candidates who possess:
 The internet fundamentally changed professional credentialing.
 
 Today, developers can publicly demonstrate competence through:
+
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)
 - technical blogs
 - side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
@@ -342,6 +362,7 @@ This creates both opportunity and pressure for modern students.
 Software engineering is not disappearing.
 
 Technology itself continues accelerating across industries such as:
+
 - artificial intelligence
 - [cybersecurity](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - robotics
@@ -353,11 +374,13 @@ Technology itself continues accelerating across industries such as:
 Demand for [strong engineers](https://thetailorcv.com/blog/ai-proof-jobs-2026) will continue.
 
 However, the profession is becoming:
+
 - more competitive
 - more specialized
 - more performance-driven
 
 Future success will increasingly favor engineers who:
+
 - continuously learn
 - adapt quickly
 - use AI effectively
@@ -374,6 +397,7 @@ And mature industries naturally become more selective.
 ## Who Should Still Pursue Computer Science?
 
 Computer science remains an outstanding field for individuals who are:
+
 - intellectually curious
 - technically creative
 - passionate about building systems
@@ -383,6 +407,7 @@ Computer science remains an outstanding field for individuals who are:
 However, pursuing CS purely because it appears financially attractive is becoming increasingly risky.
 
 The strongest motivations for entering software engineering are:
+
 - genuine curiosity
 - interest in technology
 - enjoyment of problem-solving
@@ -401,6 +426,7 @@ Instead of panicking about the market, students should focus on adaptation.
 Generic tutorial [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are no longer sufficient.
 
 Develop [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that:
+
 - solve real problems
 - demonstrate technical depth
 - showcase product thinking
@@ -428,6 +454,7 @@ Strong communication increasingly differentiates high-performing engineers.
 Resume quality can significantly influence [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) opportunities.
 
 Useful resources include:
+
 - [ATS Resume Solutions](https://www.thetailorcv.com/solutions)
 - [Modify CV](https://thetailorcv.com/modify-cv)
 - [First-Time Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
@@ -440,6 +467,7 @@ Useful resources include:
 Modern hiring processes are increasingly selective.
 
 [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation platforms such as:
+
 - [Interview Prep](https://thetailorcv.com/interview-prep)
 - [Mock Interview](https://thetailorcv.com/mock-interview)
 
@@ -450,6 +478,7 @@ Modern hiring processes are increasingly selective.
 ### Contribute to Open Source
 
 Open source contributions demonstrate:
+
 - initiative
 - collaboration
 - engineering maturity
@@ -473,6 +502,7 @@ It is evolving.
 For years, the technology industry experienced extraordinary growth, unusually high hiring demand, and unrealistic public expectations fueled by startup culture and social media.
 
 Now the market is becoming:
+
 - more competitive
 - more selective
 - more skill-oriented

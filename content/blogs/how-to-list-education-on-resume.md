@@ -30,6 +30,7 @@ Before finalizing, run your resume through the [ATS score checker](https://www.t
 ## What to Include in the Education Section
 
 Core elements:
+
 - Degree type and major (e.g., Bachelor of Technology in Computer Science)
 - Institution name
 - Location (city, or city and country)
@@ -97,6 +98,7 @@ If your overall GPA is mediocre but your major GPA is strong, you can list the m
 ## Relevant Coursework - When to Include
 
 Include [relevant coursework](https://thetailorcv.com/blog/volunteer-work-on-resume) if:
+
 - You are a student or recent graduate
 - The coursework is directly relevant to the target role
 - You need to demonstrate knowledge in areas where you lack work experience
@@ -169,6 +171,7 @@ List legitimate online degrees and bootcamps like any other [education](https://
 ### High School
 
 Only include high school if:
+
 - You are currently in high school or a recent high school graduate with no college
 - The high school is exceptionally prestigious and relevant
 

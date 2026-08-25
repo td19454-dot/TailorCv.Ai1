@@ -56,11 +56,13 @@ Some decorative, script, or unusual fonts do not render correctly in [ATS](https
 ### Acceptable But Not Ideal
 
 **Times New Roman**
+
 - Still readable and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-safe
 - Often associated with academic papers rather than modern resumes
 - Use Garamond or Georgia instead for a more contemporary feel
 
 **Verdana**
+
 - Very readable but takes more horizontal space than other fonts
 - Works but may make your resume feel wide
 
@@ -99,6 +101,7 @@ Do not go below 10pt to squeeze content onto one page. It signals poor editing j
 Multiple fonts on a single resume look cluttered and amateur. Instead, use font weight (bold), size, and italics to create hierarchy within one font.
 
 **Example hierarchy using Calibri:**
+
 - Name: Calibri Bold 20pt
 - Section headers: Calibri Bold 12pt
 - Job title: Calibri Bold 11pt

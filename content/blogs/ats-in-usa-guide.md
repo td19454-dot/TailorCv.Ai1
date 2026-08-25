@@ -62,9 +62,11 @@ To beat the ATS and improve your chances of landing a job, follow these guidelin
 **Example**:
 
 Instead of saying:
+
 - "Responsible for managing a team."
 
 Say:
+
 - "Led a team of 5 to achieve a 20% increase in project efficiency over six months."
 
 ### 4. Tailor Your Resume for Each Job

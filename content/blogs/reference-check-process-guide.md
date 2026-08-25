@@ -71,9 +71,9 @@ It's completely normal not to want your current employer contacted before you've
 
 To make your references work for you:
 
-- Choose **former managers and colleagues** who'll speak specifically and positively.
-- **Always ask first** and confirm they'll give a *strong* reference.
-- **Prep them** with the role, your target strengths, and your [resume](https://www.thetailorcv.com/modify-cv).
-- **Share references only when asked**, then **thank them** and share the outcome.
+- [ ] Choose **former managers and colleagues** who'll speak specifically and positively.
+- [ ] **Always ask first** and confirm they'll give a *strong* reference.
+- [ ] **Prep them** with the role, your target strengths, and your [resume](https://www.thetailorcv.com/modify-cv).
+- [ ] **Share references only when asked**, then **thank them** and share the outcome.
 
 Do this and your references become one more reason to hire you, not a wildcard. Keep the rest of your process just as sharp — a tailored [resume](https://www.thetailorcv.com/modify-cv), the [ATS checker](https://www.thetailorcv.com/solutions), and a prompt [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) after each interview.

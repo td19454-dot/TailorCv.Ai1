@@ -62,10 +62,10 @@ Occasionally a "take-home" is really unpaid work in disguise — a full feature,
 
 Before you submit, confirm you've:
 
-- **Clarified the brief** and understood what "done" means.
-- **Scoped to the time given** — strong but bounded, not over-engineered.
-- **Explained your thinking** — assumptions, trade-offs, and next steps.
-- **Polished the presentation** — clean, structured, [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
-- **Prepared for the follow-up** with a [mock interview](https://www.thetailorcv.com/mock-interview).
+- [ ] **Clarified the brief** and understood what "done" means.
+- [ ] **Scoped to the time given** — strong but bounded, not over-engineered.
+- [ ] **Explained your thinking** — assumptions, trade-offs, and next steps.
+- [ ] **Polished the presentation** — clean, structured, [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
+- [ ] **Prepared for the follow-up** with a [mock interview](https://www.thetailorcv.com/mock-interview).
 
 Nail those and your take-home becomes a genuine advantage. Keep the rest of your process just as sharp: a tailored [resume](https://www.thetailorcv.com/modify-cv) scored with the [ATS checker](https://www.thetailorcv.com/solutions), a strong [cover letter](https://www.thetailorcv.com/cover-letter), and a prompt thank-you email after the review.

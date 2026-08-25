@@ -85,6 +85,7 @@ The gap between generic marketing language and JD-specific marketing language is
 ### Step 1: Identify the Marketing Function
 
 Is this a:
+
 - Channel specialist role (SEO Manager, Paid Social Manager, Email Marketing Manager)?
 - Generalist role (Marketing Manager, Growth Marketer)?
 - Strategic role (VP Marketing, Director of Demand Generation)?
@@ -149,11 +150,13 @@ Target 75%+ for competitive marketing roles.
 **JD Keywords:** HubSpot, marketing automation, lifecycle email, MQL, SQL, ABM, demand generation, conversion rate optimization, Google Analytics, cross-functional
 
 **Before:**
+
 - Managed email campaigns and social media
 - Worked with the sales team on lead generation
 - Analyzed website performance
 
 **After:**
+
 - Built and managed lifecycle email nurture sequences in HubSpot, converting MQLs to SQLs at 28% - 12 points above company average
 - Coordinated ABM programs with sales for 50 named accounts, contributing to $800K in influenced pipeline per quarter
 - Managed Google Analytics 4 implementation and built conversion funnel dashboards for cross-functional marketing and product teams

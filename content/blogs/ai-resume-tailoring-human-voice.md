@@ -108,6 +108,7 @@ The fix is to give AI real information to work with.
 Before generating anything, prepare your input document.
 
 Your input should include:
+
 - Your actual job title at each company
 - The real metrics and results from each role (revenue, user numbers, time saved, percentage improvements)
 - The actual tools and systems you used
@@ -127,6 +128,7 @@ The more specific your input, the more specific - and human - the AI output.
 The highest-value AI use in [resume tailoring](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) is keyword analysis, not content generation.
 
 Use AI to:
+
 - Identify the top 10-15 keywords in the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - Check your current resume for those keywords
 - Flag gaps and suggest where to add them
@@ -141,6 +143,7 @@ It shows you which required keywords are missing and scores your [ATS match](htt
 Treat AI output as a first draft that needs your editing - not a finished product.
 
 After AI generates [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) or a summary, go through each sentence and ask:
+
 - Does this sound like how I would describe my own work?
 - Is this specific enough, or could it be from anyone's resume?
 - Does it include a real metric or specific outcome?
@@ -176,6 +179,7 @@ One of the most powerful AI uses is as a reviewer, not a writer.
 
 Write your resume yourself.
 Then use AI to check:
+
 - Does this match the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords? (gap analysis)
 - Are there [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) that could be stronger?
 - Is my summary relevant to this specific role?

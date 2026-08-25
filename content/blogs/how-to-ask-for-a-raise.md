@@ -63,6 +63,7 @@ Optimising runs against the specific job description you paste in, not in the ab
 ### Your Accomplishments
 
 Document specific achievements since your last raise:
+
 - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) delivered and their business impact
 - Revenue generated or costs saved
 - Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
@@ -74,6 +75,7 @@ Document specific achievements since your last raise:
 ### Market Data
 
 Research what your role pays in your market:
+
 - Levels.fyi (tech), Glassdoor, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Salary, PayScale
 - Filter by your title, location, experience, and company size
 - If you are below market, this is powerful evidence
@@ -81,6 +83,7 @@ Research what your role pays in your market:
 ### Your Value Growth
 
 Show that you are doing more than when you were hired or last raised:
+
 - Expanded scope
 - Higher complexity work
 - Mentoring or leadership responsibilities

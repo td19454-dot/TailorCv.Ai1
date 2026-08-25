@@ -30,6 +30,7 @@ You earned this final round with strong earlier performance - keep it up with th
 ## What's Different About the Final Round
 
 The final round typically:
+
 - Involves senior leaders, executives, or a panel
 - Focuses more on fit, judgment, and strategic thinking than basic skills
 - Assesses how you would perform at the next level
@@ -56,6 +57,7 @@ You should now know the company even better than in earlier rounds. Understand t
 ### Prepare for Senior-Level Conversations
 
 Final rounds often involve executives who think strategically. Be ready to discuss:
+
 - The bigger picture and industry trends
 - How you would approach the role's biggest challenges
 - Your long-term vision and goals
@@ -68,6 +70,7 @@ You have strong STAR stories from earlier rounds. Polish your best ones and prep
 ### Prepare Thoughtful Questions
 
 Final-round questions should be more strategic and senior:
+
 - "What are the biggest challenges facing the team/company this year?"
 - "How do you see this role evolving over the next two years?"
 - "What does success look like for this team in 12 months?"
@@ -91,6 +94,7 @@ Final rounds are often panels with multiple interviewers.
 ## Handling Executive Conversations
 
 When interviewing with executives:
+
 - Think strategically, not just tactically
 - Be concise - executives value clarity and brevity
 - Show business understanding, not just role-specific knowledge
@@ -102,6 +106,7 @@ When interviewing with executives:
 ## Demonstrating Culture Fit
 
 Final rounds heavily weigh culture and values fit:
+
 - Show genuine alignment with the company's values (which you researched)
 - Demonstrate the [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) that matter: collaboration, communication, adaptability
 - Be authentic - forced fit is detectable
@@ -137,6 +142,7 @@ A powerful closing question: "Is there anything about my background or our conve
 ## If You Receive the Offer
 
 Congratulations - now negotiate well:
+
 - Do not accept on the spot; take time to evaluate
 - Negotiate using the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - Get the final offer in writing
@@ -147,6 +153,7 @@ Congratulations - now negotiate well:
 ## If You Don't Get the Offer
 
 Final-round rejections are the hardest because you were so close. But:
+
 - You were qualified - often the decision is marginal
 - Request specific feedback (more likely to be shared at final round)
 - Stay gracious - read the [how to handle job rejection guide](https://thetailorcv.com/blog/how-to-handle-job-rejection)

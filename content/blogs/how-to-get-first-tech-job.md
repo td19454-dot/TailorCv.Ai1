@@ -65,11 +65,13 @@ What makes a strong project:
 | **Data Analytics:** | Sales performance dashboard in Power BI or Tableau · Customer segmentation analysis · Financial expense tracker with charts |
 
 **[DevOps](https://thetailorcv.com/blog/devops-engineer-resume-2026)/Cloud:**
+
 - Multi-environment AWS infrastructure with Terraform
 - CI/CD pipeline with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions
 - Kubernetes cluster with monitoring
 
 **Android/iOS:**
+
 - Habit tracker with notifications
 - Budget app with charts
 - Recipe manager with offline sync
@@ -150,19 +152,23 @@ Track everything in a spreadsheet: company, role, date applied, status, next ste
 First tech jobs require clearing 2-4 [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) rounds:
 
 **DSA / Coding Round** - LeetCode, HackerRank
+
 - Practice 50-100 problems (focus on arrays, strings, linked lists, trees, graphs, DP basics)
 - Easy: 30 problems. Medium: 50+ problems. Hard: a few for stretch.
 - LeetCode company tags for your target companies are valuable
 
 **[system design](https://thetailorcv.com/blog/system-design-interview-guide) (for mid-senior; rarely for freshers)**
+
 - Understand the basics: databases, caching, load balancers, APIs, CDN, message queues
 
 **Project Discussion**
+
 - Be able to explain every line of your resume [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Why did you choose this stack? What went wrong and how did you fix it?
 - What would you do differently?
 
 **Behavioral Round**
+
 - Use [STAR method](https://thetailorcv.com/blog/star-method-interview-guide) for every behavioral question
 - Read the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers)
 
