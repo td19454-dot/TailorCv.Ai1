@@ -32,12 +32,14 @@ Before reaching out, make sure your resume is ready. Use the [TailorCV ATS score
 Yes - but only when done correctly.
 
 What works:
+
 - Short messages (under 100 words)
 - Personalized reference to the specific role or company
 - Clear context about who you are and why you are relevant
 - A single, easy ask
 
 What fails:
+
 - Long emails asking for job referrals immediately
 - Generic copy-paste messages
 - Desperate or apologetic tone
@@ -119,6 +121,7 @@ For emails (not [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-
 - [University] Alum - Exploring [Role] at [Company]
 
 Avoid:
+
 - "Just following up" (too vague)
 - "I am interested in any opportunity" (no specificity)
 - "URGENT: Job Application" (desperate)

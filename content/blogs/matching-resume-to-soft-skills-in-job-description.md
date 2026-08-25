@@ -120,6 +120,7 @@ To illustrate how to effectively match soft skills with job descriptions, consid
 **Job Description Snippet:** "We are looking for a candidate who demonstrates strong communication skills and the ability to collaborate with cross-functional teams."
 
 **Resume Application:**
+
 - **Soft Skill Identified:** Communication
 - **Proving the Skill:** Instead of merely stating "excellent communication skills," provide a bullet point in your experience section like:
   - "Developed and presented weekly marketing reports to stakeholders, facilitating informed decision-making and enhancing team collaboration."
@@ -128,6 +129,7 @@ To illustrate how to effectively match soft skills with job descriptions, consid
 **Job Description Snippet:** "Candidates should exhibit problem-solving abilities and adaptability in a fast-paced environment."
 
 **Resume Application:**
+
 - **Soft Skill Identified:** Problem Solving
 - **Proving the Skill:** Rather than just listing "problem-solving," you could write:
   - "Resolved critical software bugs under tight deadlines, improving application stability by 30% and adapting solutions for diverse user needs."

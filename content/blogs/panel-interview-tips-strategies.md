@@ -69,6 +69,7 @@ Run sessions on the [AI mock interview tool](https://thetailorcv.com/mock-interv
 ### Address the whole panel, then focus on the asker
 
 When answering:
+
 1. Make brief eye contact with everyone when you start
 2. Focus on the person who asked the question
 3. Glance at others during key points to include them

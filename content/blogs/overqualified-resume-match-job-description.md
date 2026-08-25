@@ -48,6 +48,7 @@ Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to chec
 But they do compare your experience signals to the job's requirements.
 
 Mismatches that can hurt your score:
+
 - Your most recent title is significantly more senior than the target role
 - Your years of experience far exceed the maximum mentioned in the JD
 - Your skills list includes senior-level tools and responsibilities not referenced in the JD
@@ -107,6 +108,7 @@ You do not need to list every role.
 Especially older senior roles that are far above the target level.
 
 **Options:**
+
 - Remove roles older than 10-12 years
 - De-emphasize scope/scale in roles that signal overqualification
 - Focus [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) on the activities that match the JD - not on leadership scope or P&L ownership
@@ -139,6 +141,7 @@ Not in detail.
 Just enough to prevent the employer's concern from escalating.
 
 One phrase works:
+
 - "Returning to hands-on individual contributor work after team leadership role."
 - "Seeking focused technical depth after cross-functional leadership experience."
 - "Pursuing a deliberate focus on [new area] after 10 years in [old area]."
@@ -162,6 +165,7 @@ Sometimes the gap is too wide.
 A former C-suite executive applying for an entry-level role will face legitimate scrutiny.
 
 In these cases:
+
 - Your [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) is critical (explain the career shift clearly and persuasively)
 - Your [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation matters (have a clear, confident answer for "why this role?")
 - Consider whether the role is actually the right move (are you genuinely interested or desperate?)
@@ -238,6 +242,7 @@ You have the skills.
 The question is whether the employer believes you want this role.
 
 Your resume's job is to:
+
 1. Match the JD's language at the right seniority level
 2. Lead with what they need, not with your most impressive title
 3. Signal genuine interest through focused framing

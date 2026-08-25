@@ -132,9 +132,9 @@ Practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interv
 
 Your paralegal [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **certification and practice area**.
-- Names legal software and skills from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
-- Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), reliability-focused results.
-- Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) and passes the ATS score checker.
+- [ ] Leads with **certification and practice area**.
+- [ ] Names legal software and skills from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
+- [ ] Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), reliability-focused results.
+- [ ] Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) and passes the ATS score checker.
 
 Build a precise [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every firm.

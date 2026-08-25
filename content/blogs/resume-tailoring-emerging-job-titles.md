@@ -24,6 +24,7 @@ Two years ago, a handful of companies listed it.
 Today, it is a category on major job boards - and it pays six figures.
 
 The same is true for:
+
 - AI Engineer
 - [machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) Engineer (with LLM focus)
 - GenAI [product manager](https://thetailorcv.com/blog/product-manager-resume-2026)
@@ -69,6 +70,7 @@ Go to [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search
 Search for every variant of the role title.
 
 For "Prompt Engineer," search:
+
 - Prompt Engineer
 - Prompt Designer
 - LLM Engineer
@@ -81,6 +83,7 @@ Read every [job description](https://thetailorcv.com/blog/job-description-keywor
 Identify the skills, tools, and responsibilities that appear across most of them - these are the emerging standards.
 
 For AI/prompt engineering roles in 2026, you will likely find:
+
 - Python (almost universal)
 - LLM frameworks: LangChain, LlamaIndex, OpenAI API, Anthropic API
 - Prompt design and evaluation
@@ -99,6 +102,7 @@ Search for people with the emerging title you are targeting.
 Look at their "About" sections, their listed skills, their previous experience.
 
 This tells you:
+
 - What backgrounds people actually come from (often software engineering, data science, NLP research, or surprisingly, writing and content)
 - What skills they emphasize on their profiles
 - How they describe their day-to-day work
@@ -110,6 +114,7 @@ This is your real-world benchmark - people who already have the job you want.
 For emerging roles, company-specific context matters more than standard role expectations.
 
 Before applying:
+
 - Check the company's engineering blog (most tech companies have one)
 - Look at recent tech talks or conference presentations by the team
 - Check [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) for open-source contributions or tools the team has built
@@ -158,6 +163,7 @@ For a deeper framework on this kind of bridging, see the [career change resume g
 For emerging roles, personal and side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) often carry more weight than prior job titles.
 
 If you have:
+
 - Built a RAG pipeline as a side project
 - Fine-tuned a model on a custom dataset
 - Built a GPT-powered tool that is live and used
@@ -175,6 +181,7 @@ For emerging roles, what you have built matters more than where you worked. Pair
 "AI Engineer" at Anthropic means something very different from "AI Engineer" at a retail analytics company.
 
 After researching the company's tech stack and approach, use their specific language:
+
 - If they use LangChain - mention LangChain explicitly
 - If they use RAG architectures - mention RAG
 - If they focus on evaluation frameworks - mention evals
@@ -242,6 +249,7 @@ Emerging roles are easier to get into before they become mainstream.
 
 
 When a field is new:
+
 - There are fewer "perfect" candidates
 - Hiring managers are more open to adjacent backgrounds
 - Showing curiosity and initiative carries disproportionate weight

@@ -127,10 +127,12 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 ### Example 1: Marketing Manager Position
 
 **Job Description Highlights:**
+
 - Required: 5+ years in digital marketing, proficiency in SEO and SEM, experience with Google Analytics.
 - Preferred: Familiarity with CRM tools, content management systems, and social media strategy.
 
 **Matching Strategy:**
+
 1. **Keywords:** Ensure your resume includes terms like "digital marketing," "SEO," "SEM," and "Google Analytics." Highlight these skills in your professional experience section.
 2. **Accomplishments:** Quantify your achievements. For instance, "Increased organic traffic by 30% through targeted SEO strategies" demonstrates your proficiency and aligns with the required qualifications.
 3. **Preferred Qualifications:** While not mandatory, mention your experience with CRM tools and content management systems. This can be included in a separate section titled “Additional Skills” or during your job responsibilities.
@@ -138,10 +140,12 @@ To better understand how to tailor your resume for Workday, let’s look at a co
 ### Example 2: Software Engineer Role
 
 **Job Description Highlights:**
+
 - Required: Proficient in Python and Java, understanding of cloud technologies.
 - Preferred: Experience with Agile methodologies, knowledge of DevOps practices.
 
 **Matching Strategy:**
+
 1. **Technical Skills Section:** Clearly list Python and Java under your technical skills. Use bullet points for clarity.
 2. **Project Descriptions:** Include specific projects where you utilized cloud technologies. For example, "Developed a cloud-based application using Python and deployed it on AWS."
 3. **Agile and DevOps:** Even if these are preferred qualifications, mention any experience you have with Agile methodologies, such as "Worked in a Scrum team to deliver software updates bi-weekly."

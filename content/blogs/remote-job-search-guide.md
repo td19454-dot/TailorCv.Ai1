@@ -114,6 +114,7 @@ Remote roles value engineers who can scope work, estimate accurately, and delive
 4. Sort by "Most recent" to apply early
 
 Also check:
+
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s "Open to Work" preferences - set "Remote" as your preferred work location
 - Your connections at remote-first companies (Automattic, GitLab, Zapier, Buffer, Basecamp, Stripe, Shopify, etc.)
 

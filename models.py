@@ -14,6 +14,14 @@ class User(Base):
     email = Column(String(255), unique=True, index=True, nullable=False)
     hashed_password = Column("password", String(255), nullable=False)
     pro_until = Column(DateTime, nullable=True)                        # Pro iff pro_until > utcnow()
+    # JSON list of skills the candidate personally confirmed they have when shown
+    # their gaps. The tailoring prompt refuses to claim a skill the uploaded
+    # resume does not evidence, which is correct for the MODEL - but the person
+    # is a different source of truth, and their answer used to live only in the
+    # editing session. The Chrome extension re-tailors from the stored base
+    # resume with no confirm step, so every extension run silently dropped every
+    # skill they had ever ticked. Persisted here so it survives both.
+    confirmed_skills = Column(Text, nullable=True)
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)

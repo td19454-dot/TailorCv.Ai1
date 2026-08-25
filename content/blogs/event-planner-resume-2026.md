@@ -149,9 +149,9 @@ Research market pay and use [how to negotiate a salary offer](https://thetailorc
 
 Your event planner [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **events delivered**, budgets, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
-- Names the tools and skills from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
-- Shows composure under pressure with a real example.
-- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
+- [ ] Leads with **events delivered**, budgets, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
+- [ ] Names the tools and skills from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
+- [ ] Shows composure under pressure with a real example.
+- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
 
 Plan a flawless [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every employer.

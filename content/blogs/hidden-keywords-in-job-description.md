@@ -117,12 +117,14 @@ This is where the real tailoring advantage lives.
 Job descriptions often reveal the team's current pain points - sometimes explicitly, sometimes through implication.
 
 "We are looking for someone to help us scale our data infrastructure as we prepare for Series B" tells you:
+
 - The team is currently under-scaled
 - There is a fundraising event on the horizon
 - Speed and growth-readiness are the real criteria
 - Keywords to add: scale, infrastructure, growth-stage, high-availability, distributed systems
 
 "We need someone who can bring structure to our analytics function" tells you:
+
 - There is currently no structure
 - Your ability to build processes from scratch is what they actually need
 - Keywords: process-building, analytics frameworks, documentation, stakeholder alignment, governance
@@ -179,6 +181,7 @@ What kind of person succeeds in this environment?
 What language signals what values the team holds?
 
 After all three passes, write down:
+
 1. The top 5 explicit required keywords
 2. The top 3 priority signals (what is repeated and emphasized)
 3. The one-sentence problem statement ("they need someone to...")
@@ -197,6 +200,7 @@ Now tailor your [resume](https://thetailorcv.com/blog/resume-tailoring-startup-v
 Data engineering, pipelines, scalable architecture.
 
 **What the subtext tells you:**
+
 - The current state is broken ("fragile")
 - They want reliability, not just functionality
 - "Trust" in data is the emotional priority

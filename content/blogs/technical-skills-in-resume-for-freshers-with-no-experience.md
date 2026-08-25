@@ -109,6 +109,7 @@ If you want to understand how ATS systems evaluate resumes, read our complete [A
 [ATS score guide](https://thetailorcv.com/blog/ats-score-guide)
 
 You can also learn more about [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems from:
+
 - [ATS Resume Guide (Indeed)](https://www.indeed.com/career-advice/resumes-cover-letters/ats-resume)
 - [ATS Resume Tips (Jobscan)](https://www.jobscan.co/blog/ats-resume/)
 
@@ -315,6 +316,7 @@ Data analysis skills are highly valuable across industries.
 - Commerce students
 
 You can also explore:
+
 - [Power BI](https://powerbi.microsoft.com/)
 - [Tableau Public](https://public.tableau.com/)
 
@@ -345,6 +347,7 @@ AI skills are among the most in-demand resume skills for [freshers](https://thet
 - Data science students
 
 Useful learning resources:
+
 - [TensorFlow](https://www.tensorflow.org/)
 - [Scikit-learn](https://scikit-learn.org/)
 
@@ -373,6 +376,7 @@ Cloud computing knowledge is becoming essential even for beginners.
 - Systems engineers
 
 Official cloud platforms:
+
 - [Amazon Web Services (AWS)](https://aws.amazon.com/)
 - [Microsoft Azure](https://azure.microsoft.com/)
 - [Google Cloud](https://cloud.google.com/)
@@ -467,6 +471,7 @@ Visual communication skills are highly valuable in 2026.
 - Marketing students
 
 Useful tools:
+
 - [Figma](https://www.figma.com/)
 - [Canva](https://www.canva.com/)
 
@@ -498,6 +503,7 @@ Useful tools:
 - Content creators
 
 Helpful platforms:
+
 - [Google Analytics](https://analytics.google.com/)
 - [Ahrefs](https://ahrefs.com/)
 - [SEMrush](https://www.semrush.com/)
@@ -543,6 +549,7 @@ Helpful platforms:
 - Mobile app developers
 
 Official resources:
+
 - [Android Developers](https://developer.android.com/)
 - [Flutter](https://flutter.dev/)
 
@@ -732,6 +739,7 @@ Use:
 Always tailor resumes according to the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 You can use AI [resume optimization](https://thetailorcv.com/blog/resume-optimization-guide) tools like:
+
 - [The Tailor CV Solutions](https://www.thetailorcv.com/solutions)
 
 ---

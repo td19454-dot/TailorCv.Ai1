@@ -1,0 +1,32 @@
+{
+  "name": "midlevel_backend",
+  "notes": "Mid-level backend engineer against a senior payments JD. Tests preservation at scale (3 jobs, 2 projects, 2 certs, 1 publication, ~13 bullets) since dropping entries is this pipeline's worst failure mode. The resume is already strong and metric-dense, so a rewrite has little room to add value honestly - a model that 'improves' it a lot is probably inventing. Note CI/CD is deliberately excluded from unevidenced_jd_skills: the resume demonstrates it in substance (Jenkins to GitHub Actions, build time 14 to 6 min) but literal matching scores it missing, which is a known limitation of _contains_skill rather than a model failure.",
+
+  "expected_counts": {
+    "experience": 3,
+    "projects": 2,
+    "education": 1,
+    "certifications": 2,
+    "publications": 1
+  },
+
+  "expected_entry_names": [
+    "paystack",
+    "kobo360",
+    "andela",
+    "ledgerlite",
+    "cost",
+    "university of lagos",
+    "solutions architect",
+    "ckad",
+    "idempotency"
+  ],
+
+  "unevidenced_jd_skills": [
+    "gRPC",
+    "Terraform",
+    "Prometheus",
+    "Grafana",
+    "Kafka"
+  ]
+}

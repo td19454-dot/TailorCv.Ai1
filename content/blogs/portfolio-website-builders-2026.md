@@ -38,6 +38,7 @@ You upload the resume you already have and the sections fill themselves in - bas
 
 ### Key Features for Developers
 When choosing a portfolio website builder, developers should consider:
+
 - **Version Control Integration**: Tools like GitHub Pages seamlessly integrate with your version control system.
 - **Customizability**: Platforms such as Vercel and Netlify allow for extensive customization, enabling you to build unique projects that stand out.
 - **Performance**: Fast load times are crucial; Cloudflare Pages offers a global CDN to ensure your portfolio is quick and responsive.
@@ -54,6 +55,7 @@ When choosing a portfolio website builder, developers should consider:
 
 ### Key Features for Designers
 When selecting a portfolio builder, creatives should look for:
+
 - **Visual Customization**: Framer and Webflow offer extensive design options that allow you to create stunning visuals.
 - **Responsive Design**: Ensure your portfolio looks good on all devices; most platforms now offer mobile-friendly templates.
 - **Integration with Creative Tools**: Adobe Portfolio is a natural choice if you are already using the Creative Cloud suite.
@@ -69,6 +71,7 @@ When selecting a portfolio builder, creatives should look for:
 
 ### Why No-Code Builders?
 No-code platforms are perfect for those in any field who may not have technical skills but still want to create a professional portfolio. They offer:
+
 - **Ease of Use**: No coding knowledge is required, making it accessible for anyone.
 - **Templates**: High-quality templates streamline the design process, allowing you to focus on content.
 - **Custom Domain Options**: Many no-code platforms allow you to connect a custom domain, enhancing your professional image ([How to Put Your Portfolio on a Custom Domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide)).

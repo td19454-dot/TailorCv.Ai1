@@ -128,9 +128,9 @@ Practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interv
 
 Your Salesforce developer [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **certifications** and the technical stack.
-- Quantifies **org scale and impact** with [numbers](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
-- Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Stays [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **certifications** and the technical stack.
+- [ ] Quantifies **org scale and impact** with [numbers](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
+- [ ] Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- [ ] Stays [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Build a cert-forward [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every role.

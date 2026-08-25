@@ -77,6 +77,7 @@ Employers appreciate quantifiable results. Instead of vague descriptors, use dat
 ### Customize Your Resume Format
 
 Ensure your resume follows US norms, such as:
+
 - One page for early-career candidates.
 - No photos or personal details like age or marital status.
 - Clear sections with headings and a professional font.
@@ -86,12 +87,14 @@ For more detailed guidance, refer to our [US Resume Format Guide (2026)](https:/
 ### Leverage Technology
 
 Utilize tools to enhance your resume:
+
 - Use our [Free ATS Score Checker](https://www.thetailorcv.com/solutions) to see how well your resume performs against Applicant Tracking Systems.
 - Explore our [Resume Templates](https://www.thetailorcv.com/templates) to find a design that suits your industry.
 
 ### Show Off Your Skills
 
 In fields like technology or healthcare, consider including a skills section that highlights both hard and soft skills. For instance:
+
 - **Technical Skills**: Python, SQL, AWS
 - **Soft Skills**: Communication, Teamwork, Problem-Solving
 

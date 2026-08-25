@@ -101,6 +101,7 @@ This sounds obvious but happens more often than people realize. An old email add
 **What happens:** The recruiter wants to move forward, tries to contact you, and cannot reach you. Your application dies at the final step after clearing all the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) filters correctly.
 
 **The fix:** Before every job application, verify:
+
 - Email address is active and monitored
 - Phone number is your current number
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL matches your actual live profile
@@ -135,6 +136,7 @@ If your official job title is something creative or company-specific - "Customer
 **What happens:** Recruiters searching for "Customer Success Manager" or "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang)" do not find you because your title does not match their search terms, even though the role was identical.
 
 **The fix:** Add the industry-standard equivalent in parentheses next to your actual title:
+
 - "Customer Happiness Engineer (Customer Success Manager)"
 - "Technical Evangelist (Developer Relations Engineer)"
 
@@ -166,6 +168,7 @@ This is a [keyword density](https://thetailorcv.com/blog/resume-keyword-density-
 **What happens:** Your [keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) is diluted. "Was responsible for the management of cross-functional project teams" has lower [keyword density](https://thetailorcv.com/blog/resume-keyword-density-guide) than "Led cross-functional project teams" - and the passive version uses more words to say less.
 
 **The fix:** Start every bullet with a strong action verb:
+
 - "Managed" not "Was responsible for managing"
 - "Built" not "Was involved in building"
 - "Led" not "Helped to lead"

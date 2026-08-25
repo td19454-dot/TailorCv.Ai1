@@ -97,6 +97,7 @@ Formatting gets you parsed correctly. Keywords get you ranked highly.
 ### Match the exact phrasing
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword matching is often literal. If the job says:
+
 - "customer relationship management (CRM)" - use both the full phrase and acronym
 - "search engine optimization (SEO)" - use both
 - "project management" - use this exact phrase, not just "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)"

@@ -62,6 +62,7 @@ A career change requires more than an update - it may require a full reframe of 
 ### Early Career (0-3 Years)
 
 **Priority updates:**
+
 - Add each new internship, part-time role, or project immediately
 - Keep the [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) section current - your most recent work is your most impressive
 - Add new [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and courses as they are completed
@@ -69,6 +70,7 @@ A career change requires more than an update - it may require a full reframe of 
 - Upgrade [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) as you accumulate results
 
 **What to remove:**
+
 - High school activities (once you have 1+ years of college or work experience)
 - Early part-time jobs once you have relevant experience
 - Generic "teamwork and communication" skill lines without supporting evidence
@@ -78,6 +80,7 @@ Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-r
 ### Mid-Career (3-10 Years)
 
 **Priority updates:**
+
 - Rewrite bullets at least annually - replace weak bullets with better quantified achievements
 - Update your professional summary to reflect current seniority and direction
 - Add leadership experience as it develops
@@ -85,6 +88,7 @@ Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-r
 - Refresh your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to remove outdated tools
 
 **What to remove:**
+
 - Academic awards older than 5 years (keep only the most impressive)
 - Early-career roles that no longer strengthen your narrative
 - Skills from tools you no longer use
@@ -92,6 +96,7 @@ Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-r
 ### Senior Level (10+ Years)
 
 **Priority updates:**
+
 - Update leadership scope (team size, budget, revenue impact)
 - Add board positions, advisory roles, industry talks, publications
 - Move to two pages if you have not already - and fill them with substance
@@ -99,6 +104,7 @@ Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-r
 - Update your summary to reflect executive-level framing
 
 **What to remove:**
+
 - Roles older than 15 years (unless they establish a career-defining credential)
 - Graduate-level academic details (GPA, coursework)
 - Any entry-level skill claims that are now assumed
@@ -112,6 +118,7 @@ Read the [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-l
 The most efficient approach to resume management is maintaining a **master resume** - a complete, unabridged document that contains every role, achievement, skill, certification, and award from your entire career.
 
 **The master resume:**
+
 - Is never submitted directly (it is too long)
 - Is your raw material for every tailored application
 - Makes quarterly and annual updates easy - you are only adding to one file
@@ -159,6 +166,7 @@ Run it through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions)
 ## Quick Update Checklist
 
 When doing a resume update:
+
 - [ ] Is the most recent role/project added?
 - [ ] Are all dates accurate?
 - [ ] Are the skills still relevant to target roles?

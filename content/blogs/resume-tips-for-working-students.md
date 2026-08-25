@@ -68,9 +68,9 @@ Once your [resume](https://www.thetailorcv.com/modify-cv) lands an interview, a 
 
 Your [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **what you've done** — jobs, projects, and campus roles — as [skill-focused](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets.
-- Puts **education near the top** with a clear structure.
-- Turns ordinary roles into **quantified achievements**.
-- Is **one page**, [tailored](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), and passes the [ATS check](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **what you've done** — jobs, projects, and campus roles — as [skill-focused](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets.
+- [ ] Puts **education near the top** with a clear structure.
+- [ ] Turns ordinary roles into **quantified achievements**.
+- [ ] Is **one page**, [tailored](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), and passes the [ATS check](https://www.thetailorcv.com/solutions).
 
 Balancing work and study is hard-won proof you can handle a real job. Build your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [ATS checker](https://www.thetailorcv.com/solutions), and let your effort show.

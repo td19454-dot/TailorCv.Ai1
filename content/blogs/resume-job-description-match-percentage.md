@@ -38,6 +38,7 @@ Check your current match score for free using the [TailorCV ATS checker](https:/
 A match percentage is a numerical score that indicates how closely your resume aligns with a specific [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 It is calculated by comparing:
+
 - Keywords in your resume vs. keywords in the JD
 - Skills listed in your resume vs. skills required in the JD
 - Your job titles vs. the target role
@@ -73,6 +74,7 @@ For highly competitive roles (FAANG, top consulting firms, popular startups), ai
 How many of the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)'s keywords appear in your resume?
 
 Keywords include:
+
 - Technical skills and tools
 - [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and qualifications
 - Industry-specific terminology
@@ -128,6 +130,7 @@ The simplest way is to use an automated tool.
 It calculates your match percentage and shows you exactly which keywords are missing.
 
 You can also do a rough manual calculation:
+
 1. List all keywords in the JD (aim for 20-30)
 2. Count how many appear in your resume
 3. Divide: (keywords found / total keywords) × 100
@@ -204,6 +207,7 @@ Here is what typically separates a 65% from an 85% match:
 | Job title | Different from target | Same or very similar to target |
 
 Going from 65% to 85% typically requires:
+
 - 30-45 minutes of focused editing
 - Or 5-10 minutes with [TailorCV](https://www.thetailorcv.com/solutions)
 
@@ -214,6 +218,7 @@ Going from 65% to 85% typically requires:
 A 100% keyword match is technically achievable but not always desirable.
 
 Why?
+
 - Copying the JD verbatim is detectable by modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems
 - It reads poorly to human reviewers
 - It makes your resume look unnatural
@@ -230,6 +235,7 @@ Both matter. But match score matters first.
 Without an adequate match score, a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) never sees your qualifications.
 
 The hierarchy is:
+
 1. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match score (gate to human review)
 2. [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) visual scan (gate to deeper review)
 3. Your actual qualifications (gate to [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry))

@@ -54,11 +54,13 @@ During and immediately after your MBA, [education](https://thetailorcv.com/blog/
 
 Master of Business Administration (MBA), [Concentration]
 [Business School Name] | Expected 2027
+
 - GMAT: 730 (if strong) | Relevant: Finance Club VP, Consulting Club
 - Scholarships, honors, or leadership roles
 
 Bachelor of [Degree]
 [University] | 2019
+
 - GPA, honors, relevant activities
 
 ---
@@ -102,6 +104,7 @@ MBA recruiters value leadership beyond work. Include:
 - Significant extracurricular achievements
 
 Example:
+
 - Vice President, Consulting Club | [Business School] - Organized 8 firm [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) events for 200+ students
 - Finalist, [University] National Case Competition (top 5 of 120 teams)
 
@@ -131,6 +134,7 @@ PROFESSIONAL EXPERIENCE
 
 Operations Manager
 Manufacturing Company | 2021-2025 (Pre-MBA)
+
 - Led a 40-person operations team across 2 facilities, managing a $25M annual budget.
 - Implemented a lean manufacturing initiative that reduced defect rate from 4.2% to 0.9% and saved $3.4M annually.
 - Promoted from Operations Analyst to Manager in 2 years for consistently exceeding efficiency targets.
@@ -138,6 +142,7 @@ Manufacturing Company | 2021-2025 (Pre-MBA)
 
 Operations Analyst
 Same Company | 2019-2021
+
 - Analyzed production data to identify $1.2M in cost-saving opportunities, 3 of which were implemented.
 - Built reporting dashboards adopted by senior leadership for weekly operations reviews.
 

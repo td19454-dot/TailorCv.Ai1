@@ -214,6 +214,7 @@ For lesser-known markets, search "[Country] CV format" or consult in-country HR 
 
 Do not try to adapt your US resume line by line.
 Build a country-specific base version that follows the local conventions:
+
 - Adjust length
 - Add or remove photo
 - Add or remove personal details

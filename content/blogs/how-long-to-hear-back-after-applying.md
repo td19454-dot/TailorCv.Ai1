@@ -24,7 +24,7 @@ The waiting is one of the most corrosive parts of a job search, largely because 
 
 ## The Realistic Timeline
 
-**One to two weeks is normal. Two to four weeks is common. Beyond four weeks usually means no, though not always.**
+**One to two weeks is normal. Two to four weeks is common. Beyond four weeks usually means no**, though not always.
 
 Roughly:
 

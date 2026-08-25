@@ -44,11 +44,13 @@ And most candidates miss them.
 If you apply to a remote role with a standard resume, you may match the role requirements but fail the remote-competency screen.
 
 **Standard JD requirements:**
+
 - Technical skills (Python, SQL, Figma, etc.)
 - Experience level
 - Industry background
 
 **Additional remote JD requirements:**
+
 - Async communication skills
 - Self-management and autonomy
 - Proficiency with [remote tools](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) (Slack, Zoom, Notion, Jira, etc.)
@@ -126,6 +128,7 @@ Project Management: Asana, Trello, Linear
 If you have worked remotely before - even partially - make it explicit.
 
 In your work experience:
+
 - Add "(Remote)" after the company name and location
 - Or add it in parentheses: "TechCorp - Austin, TX (Fully Remote)"
 
@@ -146,6 +149,7 @@ Your [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-poi
 **Write:** "Self-directed sprint delivery in a fully async environment, using Notion for task tracking and Loom for async stakeholder updates."
 
 Every remote bullet should show:
+
 - The remote tool you used
 - The async or distributed context
 - The outcome
@@ -233,6 +237,7 @@ Read the "About" section and look up the company's [remote culture](https://thet
 Before applying to any remote role, run your resume through [TailorCV's ATS checker](https://www.thetailorcv.com/solutions).
 
 It will show you:
+
 - Your overall match score for the specific JD
 - Which remote-specific and role-specific keywords you are missing
 - How to improve your score before applying
@@ -296,6 +301,7 @@ Match the role requirements.
 And match the remote competency signals: async tools, self-management, documentation habits, and distributed team experience.
 
 Steps:
+
 1. Extract role + remote keywords from the JD
 2. Add remote tools to your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 3. Mark past remote experience explicitly

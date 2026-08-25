@@ -85,6 +85,7 @@ Put your licenses and [certifications](https://thetailorcv.com/blog/how-to-list-
 Why: A [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) hiring an RN for a critical care unit will check your nursing license and BLS/ACLS certifications before reading anything else. If these are buried at the bottom, you have already created friction.
 
 Include:
+
 - State license(s) and number(s)
 - License expiration date
 - Active [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) with renewal dates (BLS, ACLS, PALS, NRP, TNCC, etc.)
@@ -145,6 +146,7 @@ Clinical resumes are often listed as pure responsibility statements.
 This is a missed opportunity.
 
 [Quantify wherever possible](https://thetailorcv.com/blog/how-to-quantify-resume-achievements):
+
 - Patient-to-nurse ratios
 - Volume of patients (census numbers, admission rates)
 - Outcomes contributed to (reduced HAPU rates, improved sepsis bundle compliance, reduced CAUTI incidence)
@@ -219,6 +221,7 @@ Healthcare systems - especially large hospital networks and health systems - use
 
 
 These systems:
+
 - Filter by licensure status before anything else in some cases
 - Match on specialty terminology and EMR platforms
 - Filter by geographic location and shift availability
@@ -242,6 +245,7 @@ The tool flags both formatting issues that cause parsing failures and [missing k
 "Triaged and provided bedside care for 40-60 patients per shift in a Level II Trauma ED, including sepsis protocol initiation, stroke alert activation, and trauma team support; maintained compliance with door-to-physician time metrics averaging 18 minutes against a 30-minute target."
 
 The "After" version:
+
 - Gives volume (40-60 patients)
 - Names the setting specifically (Level II Trauma ED)
 - Lists specific clinical competencies

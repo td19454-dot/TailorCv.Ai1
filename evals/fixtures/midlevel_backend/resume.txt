@@ -1,0 +1,49 @@
+DANIEL OKAFOR
+Lagos, Nigeria | daniel.okafor@example.com | +234 802 111 4477
+linkedin.com/in/danielokafor | github.com/dokafor | danielokafor.dev
+
+SUMMARY
+Backend engineer with 4 years of experience building and maintaining production APIs for fintech and logistics products.
+
+EXPERIENCE
+Backend Engineer
+Paystack Rails (contract), Lagos | Mar 2023 - Present
+- Built and maintained 12 REST endpoints in Python and FastAPI serving an average of 2.3 million requests per day.
+- Reduced p95 checkout latency from 840ms to 310ms by adding Redis caching and removing three N+1 queries.
+- Migrated the transactions table to partitioned PostgreSQL, cutting the nightly reconciliation job from 52 minutes to 9 minutes.
+- Worked on the on-call rotation and wrote 7 runbooks for recurring payment-gateway incidents.
+- Mentored 2 junior engineers through their first production deployments.
+
+Software Engineer
+Kobo360, Lagos | Jul 2021 - Feb 2023
+- Developed a shipment-tracking service in Django handling 40,000 daily status updates from driver mobile clients.
+- Implemented an idempotency layer that eliminated duplicate freight charges affecting roughly 0.4% of trips.
+- Helped migrate the deployment pipeline from Jenkins to GitHub Actions, reducing average build time from 14 to 6 minutes.
+- Participated in weekly architecture reviews with the platform team.
+
+Junior Developer
+Andela Talent Network, Remote | Jan 2021 - Jun 2021
+- Assisted in maintaining a Node.js internal tooling service used by 30 engineers.
+- Wrote integration tests raising coverage on the billing module from 41% to 78%.
+
+PROJECTS
+Ledgerlite | github.com/dokafor/ledgerlite
+- Built a double-entry accounting library in Python with 96% test coverage, published to PyPI with 1,400 downloads.
+
+Kubernetes Cost Reporter | github.com/dokafor/k8s-cost
+- Created a Go CLI that reads Kubernetes resource requests and reports per-namespace monthly cost estimates against AWS pricing.
+
+EDUCATION
+B.Sc. Computer Science
+University of Lagos | 2016 - 2020
+Second Class Upper (3.6/5.0)
+
+SKILLS
+Python, FastAPI, Django, Go, Node.js, PostgreSQL, Redis, Docker, Kubernetes, AWS, GitHub Actions, Jenkins, Git, REST APIs, pytest
+
+CERTIFICATIONS
+AWS Certified Solutions Architect - Associate, Amazon Web Services, 2023
+Certified Kubernetes Application Developer (CKAD), Linux Foundation, 2022
+
+PUBLICATIONS
+Okafor, D. "Idempotency Patterns for Payment Retries", Lagos Backend Meetup Proceedings, 2023

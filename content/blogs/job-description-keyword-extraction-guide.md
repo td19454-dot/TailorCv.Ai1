@@ -136,16 +136,19 @@ Not all extracted keywords are equal.
 Sort them by priority:
 
 **Tier 1 - Critical (must be in your resume if you have the skill)**
+
 - Required hard skills
 - Required [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Job title / role keywords
 
 **Tier 2 - Important (should be in your resume)**
+
 - Required tools
 - Repeated keywords
 - Key responsibilities language
 
 **Tier 3 - Helpful (add if genuine)**
+
 - Preferred skills
 - [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume)
 - Culture/work style terms
@@ -172,6 +175,7 @@ This mapping ensures you do not just add keywords to your skills list - you embe
 ### Tech / Engineering Roles
 
 Focus on:
+
 - Programming languages and frameworks
 - Cloud platforms (AWS, GCP, Azure)
 - Development practices (CI/CD, TDD, Agile)
@@ -181,6 +185,7 @@ Focus on:
 ### Data Roles
 
 Focus on:
+
 - Query and scripting languages (SQL, Python, R)
 - Visualization tools (Tableau, Power BI, Looker)
 - Database types (PostgreSQL, BigQuery, Snowflake)
@@ -190,6 +195,7 @@ Focus on:
 ### Marketing Roles
 
 Focus on:
+
 - Channel-specific keywords (SEO, PPC, email, content, social)
 - Platforms (HubSpot, Marketo, Google Ads, Meta Ads)
 - Metrics (CAC, LTV, conversion rate, ROAS)
@@ -198,6 +204,7 @@ Focus on:
 ### Finance / Accounting Roles
 
 Focus on:
+
 - Technical skills (financial modeling, DCF, Excel)
 - Compliance terms (GAAP, IFRS, SOX, FASB)
 - Systems (SAP, Oracle, NetSuite)
@@ -264,6 +271,7 @@ Extracting keywords is only step one.
 The second step is using them correctly in your resume.
 
 Rules for keyword usage:
+
 - Add to [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) for instant keyword credit
 - Embed in [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) with context (tool + action + result)
 - Include in professional summary for top-of-resume visibility
@@ -331,6 +339,7 @@ Stop using generic keywords.
 Start reading job descriptions like a strategist and extracting the exact words employers use.
 
 The process:
+
 1. Read the full JD for context
 2. Highlight keywords by category
 3. Build a keyword list with priority tiers

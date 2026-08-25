@@ -47,6 +47,7 @@ The order matters. Hiring managers and [ATS](https://thetailorcv.com/blog/what-i
 Your name and contact details sit at the top of your resume. This section seems obvious, but it is frequently done wrong.
 
 **Include:**
+
 - Full name (larger font - 16-20pt)
 - Professional email address
 - Phone number
@@ -56,6 +57,7 @@ Your name and contact details sit at the top of your resume. This section seems 
 - [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) URL (for creative/design roles)
 
 **Exclude:**
+
 - Full street address (security and space waste)
 - Date of birth
 - Marital status or gender
@@ -78,6 +80,7 @@ A good summary answers: Who are you? What do you do? What is your biggest streng
 Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for templates and examples by experience level. For those with no experience, see [resume summary with no experience](https://thetailorcv.com/blog/resume-summary-with-no-experience).
 
 **Avoid:**
+
 - Generic phrases like "hardworking team player"
 - Objectives ("Seeking a position where I can grow...")
 - Buzzwords with no substance
@@ -89,6 +92,7 @@ Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-r
 The skills section is one of the most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-critical parts of your resume. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems scan here for keyword matches against the job description.
 
 **How to structure it:**
+
 - Group skills by category (Languages, Tools, Platforms, [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume))
 - Use the exact terminology from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - Keep it concise - 15-25 skills is typical
@@ -107,6 +111,7 @@ Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-
 The work experience section is the heart of your resume. This is where you demonstrate what you have actually done and what impact it had.
 
 **Structure each role as:**
+
 - Job title | Company | Location | Dates (month/year - month/year)
 - 3-6 [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) per role
 - Each bullet: action verb + what you did + quantified result
@@ -115,6 +120,7 @@ The work experience section is the heart of your resume. This is where you demon
 > "Reduced database query time by 60% by implementing Redis caching, improving page load speed for 200,000 daily active users."
 
 Key rules:
+
 - Start every bullet with a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - Quantify wherever possible - read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - List roles in reverse chronological order (most recent first)
@@ -129,6 +135,7 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 The education section lists your academic degrees. For recent graduates and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), it carries more weight. For experienced professionals, it is brief.
 
 **Include:**
+
 - Degree and field of study
 - Institution name
 - Graduation year (or expected year)
@@ -137,6 +144,7 @@ The education section lists your academic degrees. For recent graduates and [fre
 - Academic honors (cum laude, dean's list)
 
 **Exclude:**
+
 - High school (once you have a degree)
 - GPA older than 3-4 years
 - Irrelevant or failed coursework
@@ -150,6 +158,7 @@ Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-lis
 For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), career changers, and software engineers, a projects section can be the most important optional section. It demonstrates practical skill even without formal work experience.
 
 **Include for each project:**
+
 - Project name and brief description
 - Technologies and tools used
 - Your specific contribution
@@ -165,6 +174,7 @@ Read [how to add projects to your resume](https://thetailorcv.com/blog/how-to-ad
 Certifications from recognized providers add credibility and [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score). They matter most in tech, finance, project management, and healthcare.
 
 List:
+
 - Certification name
 - Issuing organization
 - Date (month/year)

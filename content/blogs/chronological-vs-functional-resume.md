@@ -34,6 +34,7 @@ Whichever format you choose, run your resume through the [ATS score checker](htt
 Lists your work experience from most recent to oldest. The standard, expected format that [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems handle best.
 
 Structure:
+
 - Contact info
 - Summary
 - Skills
@@ -45,6 +46,7 @@ Structure:
 Organizes your resume around skill categories rather than chronological work history. Work history is minimized or relegated to the bottom.
 
 Structure:
+
 - Contact info
 - Summary
 - Skills grouped by category with achievements
@@ -56,6 +58,7 @@ Structure:
 Combines a strong [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) with a chronological work history. Leads with skills/qualifications, then provides full chronological experience.
 
 Structure:
+
 - Contact info
 - Summary
 - Skills / core competencies
@@ -67,6 +70,7 @@ Structure:
 ## Reverse Chronological - When to Use (Most People)
 
 Use reverse chronological if you have:
+
 - A consistent work history
 - Relevant experience in your field
 - Career progression you want to highlight

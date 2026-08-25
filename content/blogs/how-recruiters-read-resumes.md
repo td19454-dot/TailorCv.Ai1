@@ -34,6 +34,7 @@ TheLadders' eye-tracking study - one of the most widely cited in recruiting - fo
 **The F-pattern**: Recruiters scan across the top, then down the left side, then across at key points that catch their eye. Most of a resume's right side is never read on the first pass.
 
 **What they look at first (in order):**
+
 1. Your name
 2. Current job title and company
 3. Previous job title and company
@@ -54,6 +55,7 @@ A resume passes the 10-second test if the [recruiter](https://thetailorcv.com/bl
 - **Whether you match** - role relevance at a glance
 
 A resume fails the test when:
+
 - The name/title area is cluttered or hard to find
 - Job titles are buried in wall-of-text descriptions
 - Companies are not prominent

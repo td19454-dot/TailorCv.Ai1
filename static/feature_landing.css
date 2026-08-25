@@ -281,8 +281,21 @@
 .solx-car-dots { display:flex; justify-content:center; gap:8px; margin-top:26px; }
 .solx-car-dot { width:8px; height:8px; padding:0; border:0; border-radius:999px; background:rgba(255,255,255,.22); cursor:pointer; transition:background .2s ease, width .2s ease; }
 .solx-car-dot.on { background:#4f9bff; width:24px; }
-@media (max-width:900px){ .solx-car-item { flex-basis:calc((100% - 22px) / 2); } .solx-car-prev{ left:-8px; } .solx-car-next{ right:-8px; } }
-@media (max-width:620px){ .solx-car-item { flex-basis:86%; } }
+/* These must out-specify `.solx-carousel.big .solx-car-item` (3 classes).
+   Media queries add no specificity, so the bare `.solx-car-item` selector these
+   rules used to carry lost to the .big rule and the portfolio gallery kept
+   showing 2.5 cards on a phone - each card ~70px tall, with the "View live
+   demo" gradient covering the whole preview. */
+@media (max-width:900px){
+  .solx-carousel .solx-car-item, .solx-carousel.big .solx-car-item { flex-basis:calc((100% - 22px) / 2); }
+  .solx-car-prev{ left:-8px; } .solx-car-next{ right:-8px; }
+}
+@media (max-width:620px){
+  .solx-carousel .solx-car-item, .solx-carousel.big .solx-car-item { flex-basis:86%; }
+  /* On one-up cards the overlay no longer needs to compete for room, but keep
+     it compact so it frames the screenshot rather than covering it. */
+  .solx-car-demo { padding:10px 10px 8px; font-size:.82rem; }
+}
 @media (prefers-reduced-motion: reduce){ .solx-car-track { scroll-behavior:auto; } .solx-car-item:hover .solx-car-shot { transform:none; } }
 
 /* ---- company logo row (monochrome white on dark) ---- */

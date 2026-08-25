@@ -89,6 +89,7 @@ If you list "Machine Learning," "Kubernetes," or "SAP" because you watched a You
 ### 11. Hobbies and interests (most of the time)
 
 Reading, traveling, cooking, music - these are universal and say nothing. Remove them unless:
+
 - The hobby is directly relevant to the role (e.g., coding side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for a tech role)
 - The hobby shows unusual achievement (e.g., national-level athlete)
 - The company culture explicitly values personality fit and you have strong unique interests

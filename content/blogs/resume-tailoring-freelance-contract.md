@@ -45,6 +45,7 @@ This guide breaks down what each wants - and how to [tailor your resume](https:/
 ## The Core Difference: Contract vs. Permanent Hiring Logic
 
 **Contract hiring managers** want to see:
+
 - Proven ability to deliver in short timeframes
 - Specific skills and tools that match the project scope
 - History of successful client engagements
@@ -52,6 +53,7 @@ This guide breaks down what each wants - and how to [tailor your resume](https:/
 - No red flags around commitment or professionalism
 
 **Permanent hiring managers** want to see:
+
 - Long-term commitment potential
 - Cultural alignment and team fit
 - Growth trajectory over time
@@ -87,6 +89,7 @@ Structure your freelance experience around [projects](https://thetailorcv.com/bl
 > Led UX research and design for 8 client [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) across fintech, healthtech, and e-commerce, delivering mobile app redesigns, onboarding flow improvements, and design systems."
 
 Then list specific [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) as bullets:
+
 - Redesigned onboarding flow for fintech app (15k users) - reduced drop-off from 68% to 31% in 6 weeks
 - Built design system from scratch for Series A healthcare platform - cut design-to-dev handoff time by 40%
 - Led UX audit for e-commerce client - surfaced 12 conversion blockers, implemented fixes generating $190k in additional revenue
@@ -102,6 +105,7 @@ They need someone who can do X, Y, and Z - immediately, without training.
 Tailor your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) to mirror the contract's exact requirements.
 
 If the contract asks for:
+
 - React Native
 - Figma
 - User testing
@@ -117,6 +121,7 @@ A high [ATS keyword match](https://thetailorcv.com/blog/ats-score-guide) is even
 Contract employers are paying premium rates for someone who hits the ground running.
 
 Include signals that show you onboard fast:
+
 - "Delivered first sprint results within week one"
 - "Ramped up on client tech stack in 3 days, shipped first feature in 8"
 - "Joined mid-project and restored team velocity within two weeks"
@@ -127,7 +132,7 @@ These signals directly address the contract employer's biggest risk: paying for 
 
 If you have a history of 3-12 month contracts, a simple label helps:
 
-**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles, 2021-Present**
+**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles**, 2021-Present
 
 List clients below, with dates and key deliverables.
 This is standard and professional for contract professionals.
@@ -140,6 +145,7 @@ It eliminates the "job hopping" misread. For more on this, read [resume tailorin
 This is where it gets nuanced.
 
 Permanent hiring managers may look at 3 years of freelance and wonder:
+
 - Can this person commit to a team for the long term?
 - Do they know how to take direction from a manager?
 - Will they leave as soon as something more interesting comes up?
@@ -167,6 +173,7 @@ The second version shows agency and a clear decision - not desperation.
 Permanent employers worry that freelancers do not know how to work within teams.
 
 Counter this with evidence:
+
 - Mention team sizes and cross-functional collaborations
 - Reference working within client teams (not just delivering to them)
 - Highlight any experience with team processes: standups, sprints, retrospectives
@@ -226,6 +233,7 @@ For each bullet, follow the [resume bullet points formula](https://thetailorcv.c
 ## The Rates and Availability Question (Contract Roles)
 
 For contract applications, be prepared - not necessarily on your resume, but in your initial outreach - to share:
+
 - Your hourly or daily rate (or range)
 - Your availability date
 - Whether you are open to on-site, hybrid, or remote arrangements - read [resume tailoring for remote vs hybrid vs on-site](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) to tailor your language accordingly

@@ -277,16 +277,16 @@ If you are a fresher, add coursework. If you have experience, keep [education](h
 
 Before applying, make sure your resume has:
 
-- One clean column
-- Standard section headings
-- Clear job titles
-- Exact technologies from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- Metrics in at least 50% of experience bullets
-- Projects with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) links
-- No spelling errors
-- No tables, text boxes, or heavy graphics
-- No long paragraphs
-- No exaggerated skill claims
+- [ ] One clean column
+- [ ] Standard section headings
+- [ ] Clear job titles
+- [ ] Exact technologies from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [ ] Metrics in at least 50% of experience bullets
+- [ ] Projects with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) links
+- [ ] No spelling errors
+- [ ] No tables, text boxes, or heavy graphics
+- [ ] No long paragraphs
+- [ ] No exaggerated skill claims
 
 Also check whether your resume matches the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). A backend role, frontend role, ML infrastructure role, Android role, and security engineering role should not receive the same resume.
 
@@ -335,12 +335,14 @@ Testing:
 
 EXPERIENCE
 Job Title | Company | Dates
+
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 
 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 Project Name | Stack | Link
+
 - Action + technical detail + result.
 - Action + technical detail + result.
 

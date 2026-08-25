@@ -215,6 +215,7 @@ Use this checklist to ensure your GitHub portfolio is in top shape:
 Imagine you are a recent graduate applying for a data analyst position. You send your resume and GitHub link to a recruiter. 
 
 **Scenario Analysis**:
+
 - If your GitHub showcases a project that uses data visualization libraries and includes a thorough README with examples, the recruiter is likely to be impressed.
 - However, if your GitHub is cluttered with unrelated projects and lacks documentation, the recruiter may overlook your application despite your strong resume. 
 

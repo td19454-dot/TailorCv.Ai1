@@ -72,6 +72,7 @@ The bet is simple: knowing you are missing eleven keywords is not the hard part.
 ## Round 1: Pricing — Look at the Actual Numbers
 
 **Jobscan (2026):**
+
 - **Free:** 5 scans per month (permanent, not a trial)
 - **Premium:** **$49.95/month** — unlimited scans
 - **Premium+:** **$89.95/month**
@@ -79,6 +80,7 @@ The bet is simple: knowing you are missing eleven keywords is not the hard part.
 - **Annual:** $299.40/year (~$24.95/month)
 
 **TailorCV (2026):**
+
 - **Free:** unlimited ATS scores, everywhere
 - **Pro:** **$59.99/year** ($4.99/week or $7.99/month for shorter commitments)
 

@@ -54,11 +54,13 @@ Getting your keywords wrong, missing them, or including them in the wrong way di
 The most common keyword error is using a synonym for the exact term the employer used in their job description. Candidates assume the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) understands context. Many do not - they match exact strings.
 
 **The problem:**
+
 - [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) says "customer relationship management (CRM)"
 - Your resume says "client database management"
 - No match registered, even though you did the same work
 
 **More examples of synonym traps:**
+
 - "Team leadership" vs "people management"
 - "Online advertising" vs "[digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026)"
 - "Content creation" vs "copywriting"
@@ -75,6 +77,7 @@ The most common keyword error is using a synonym for the exact term the employer
 **The problem:** Different recruiter searches and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) configurations use both the acronym and the full form. If you only write one, you miss searches for the other.
 
 **Common pairs to include:**
+
 - Search Engine Optimization (SEO)
 - Customer Relationship Management (CRM)
 - Applicant Tracking System ([ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it))
@@ -96,6 +99,7 @@ Keyword stuffing means forcing keywords into your resume unnaturally - repeating
 Or a hidden keyword block in white text at the bottom of the page.
 
 **Why it backfires:**
+
 - Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems use semantic analysis that detects unnatural keyword density
 - Recruiters who do read your resume recognize stuffing immediately
 - Flagged applications get rejected or blacklisted
@@ -111,6 +115,7 @@ Generic resumes fail [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and
 **The problem:** Your standard resume includes "software development" but the target job emphasizes "full-stack engineering." Your [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) ranks lower than a tailored one even when you are more qualified.
 
 **The fix:** Tailor your keywords to each application. Take 15 minutes per job to:
+
 1. Identify the top 5-10 keywords in the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Check which ones your resume already includes
 3. Add the genuinely applicable [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) to your [skills section](https://thetailorcv.com/blog/resume-keyword-map-template) and bullets
@@ -153,6 +158,7 @@ Including skills on your resume that you cannot actually discuss in an [intervie
 Most candidates focus entirely on hard skill keywords and neglect the soft skill keywords that many job descriptions explicitly require. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems increasingly evaluate soft skill keywords when they appear in job description requirements.
 
 **Common soft skill keywords that appear in job descriptions:**
+
 - Cross-functional collaboration
 - Stakeholder communication
 - Team leadership
