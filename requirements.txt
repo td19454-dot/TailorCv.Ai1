@@ -37,6 +37,7 @@ markdown>=3.5.0
 # gradio
 httpx>=0.27.0
 resend
+boto3>=1.34.0
 #Analytics
 posthog
 
