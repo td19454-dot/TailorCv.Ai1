@@ -85,6 +85,51 @@ Factor in the full timeline from application through training to your first year
 
 If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
 
+## The routes, and the funding difference
+
+All routes lead to qualified teacher status; what differs is how you train and whether you pay or are paid.
+
+| Route | Structure | Money |
+|---|---|---|
+| University-led (PGCE) | University study plus school placements | You pay fees; bursaries in shortage subjects |
+| School-led, fee-funded | Based in a school, academic input alongside | You pay fees; bursaries available |
+| Salaried routes | Employed by a school, paid as an unqualified teacher | You are paid; no fees |
+| Assessment-only | For those with substantial existing experience | Lowest cost, narrow eligibility |
+
+Bursaries are set by subject and revised each year — physics, maths, chemistry and computing have carried the largest awards, while other subjects carry little or none. Check the current year's figures directly rather than relying on a previous cohort's numbers.
+
+## Do's and Don'ts
+
+### Do
+
+- Compare funding before comparing routes
+- Check this year's bursary for your subject
+- Consider salaried routes if funding a year is hard
+- Ask where placements will actually be
+- Check requirements for the UK nation you will teach in
+
+### Don't
+
+- Assume all routes cost the same
+- Rely on last year's bursary figures
+- Pick a route without visiting a school
+- Assume English requirements apply in Scotland
+- Ignore school-led routes that often lead to a job there
+
+## Scenarios: which route to pick
+
+### Scenario 1: You cannot fund a year without income
+
+A salaried route pays you while you train. The qualification at the end is identical to the fee-paying routes.
+
+### Scenario 2: You teach a shortage subject
+
+Check this year's bursary before choosing. Physics, maths, chemistry and computing have carried awards large enough to change the decision entirely.
+
+### Scenario 3: You already have classroom experience
+
+Assessment-only may formalise what you can already do without a full training year. Eligibility is narrow but worth checking.
+
 > **Tip:** Compare the funding before the route. A salaried route pays you while you train; a fee-paying route costs you a year's fees — the qualification at the end is identical.
 
 ## Common Mistakes

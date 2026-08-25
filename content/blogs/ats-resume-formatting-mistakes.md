@@ -119,6 +119,7 @@ Custom fonts - thin geometric fonts, handwritten styles, highly stylized typefac
 **What happens:** Your work experience may get filed as an unknown field. Your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) might not register as skills at all.
 
 **The fix:** Use standard, conventional headings:
+
 - **Work Experience** (not "Career Highlights" or "My Journey")
 - **Skills** (not "Competencies" or "What I Know")
 - **[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)** (not "Academic Background")

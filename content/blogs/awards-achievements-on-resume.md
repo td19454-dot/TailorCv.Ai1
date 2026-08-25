@@ -29,6 +29,7 @@ Before adding achievements, run your resume through the [TailorCV ATS checker](h
 Awards and achievements serve a purpose that job duties alone cannot: they provide independent validation of your performance. When a third party (your company, a university, an industry association, a competition) recognizes you above your peers, it signals something that a self-reported bullet point cannot.
 
 Used well, awards add:
+
 - **Credibility**: External recognition validates your accomplishments
 - **Differentiation**: Awards make you memorable in a competitive pool
 - **Specificity**: Named awards are concrete evidence, not vague claims
@@ -56,6 +57,7 @@ If the award is tied to a specific role or educational institution, integrate it
 ### Option 2: A Dedicated Achievements/Awards Section
 
 Create a separate "Awards & Achievements" or "Honors" section when:
+
 - You have 3 or more notable awards
 - The awards are from multiple roles and don't fit neatly in one section
 - The awards are particularly prestigious and deserve prominence
@@ -63,6 +65,7 @@ Create a separate "Awards & Achievements" or "Honors" section when:
 **Example section:**
 
 **Awards & Achievements**
+
 - Forbes 30 Under 30 - Technology, 2025
 - Winner, Y Combinator Startup Hackathon 2024 (out of 400+ teams)
 - ACM Programming Contest Regional Champion, 2022
@@ -106,6 +109,7 @@ If your most impressive award is a headline-worthy credential (Forbes 30 Under 3
 ## How to Frame Awards for Maximum Impact
 
 An award listed without context is weaker than it could be. Add context that shows:
+
 1. **What the award was for**
 2. **How selective it was** (how many candidates, what the competition was)
 3. **What you did to earn it**
@@ -124,6 +128,7 @@ An award listed without context is weaker than it could be. Add context that sho
 
 ### Recent Graduates and Freshers
 Academic awards carry significant weight. List them prominently:
+
 - Scholarships (especially named scholarships)
 - Academic rank/GPA honors
 - Research prizes or thesis awards
@@ -178,6 +183,7 @@ Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes 
 ## ATS and Awards
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not specifically look for an "Awards" section but will scan your achievement text for keywords. Ensure:
+
 - Award names use recognizable terms ("Dean's List," "hackathon," "scholarship")
 - Associated accomplishments include industry-relevant keywords
 - The section has a clear standard heading: "Awards," "Achievements," or "Honors"

@@ -37,6 +37,7 @@ These skills appear across almost every industry and role type:
 Working with AI tools (ChatGPT, Claude, Copilot, Gemini) to automate tasks, write code, generate content, analyze data, and improve workflows is now a baseline professional expectation across many roles.
 
 What to add:
+
 - AI prompt engineering
 - Working with LLMs (large language models)
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Copilot (for developers)
@@ -47,6 +48,7 @@ What to add:
 Even non-data roles now require the ability to read dashboards, interpret A/B test results, and make data-informed decisions.
 
 What to add:
+
 - SQL (basic querying for non-tech roles)
 - Google Analytics / GA4
 - Excel / Google Sheets (advanced)
@@ -81,6 +83,7 @@ Highest demand in 2026:
 ### Data Science and ML
 
 Highest demand:
+
 - **LLM fine-tuning and RAG** - retrieval-augmented generation is now a core applied ML skill
 - **MLOps** - MLflow, Kubeflow, production deployment
 - **Python with Polars** - faster than Pandas, gaining adoption fast
@@ -91,6 +94,7 @@ Highest demand:
 ### Cloud and DevOps
 
 Highest demand:
+
 - **Kubernetes and GitOps** - ArgoCD, Flux
 - **Terraform / Pulumi** - IaC is non-negotiable
 
@@ -104,6 +108,7 @@ Highest demand:
 ### Cybersecurity
 
 Highest demand:
+
 - **Cloud security** - AWS GuardDuty, Security Hub, GCP SCC
 - **Zero trust architecture**
 - **SIEM and SOAR** - Splunk, Sentinel, Chronicle

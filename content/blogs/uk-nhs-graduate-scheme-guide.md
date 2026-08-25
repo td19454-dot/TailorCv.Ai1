@@ -77,6 +77,52 @@ The [Graduate route](/blog/uk-graduate-visa-route-explained) works here as anywh
 
 **Ask specifically about the size and structure of the team you would actually join**, rather than assuming a single generic NHS working experience, a large national organisation contains genuinely distinct local cultures and working environments depending on the specific trust and department.
 
+## The specialisms, which are separate competitions
+
+The NHS Graduate Management Training Scheme is one programme with several distinct entry routes, and they do not compete against each other.
+
+| Specialism | What the work is |
+|---|---|
+| General Management | Operational leadership across services and departments |
+| Finance | NHS financial management, usually with a funded CIMA or ACCA route |
+| Human Resources | Workforce planning and organisational development, with a CIPD route |
+| Health Informatics | Data, digital systems and information management |
+| Health Analysis | Analytical work informing service and policy decisions |
+
+Applications are typically to one specialism, so choosing the right one matters more than general enthusiasm for the NHS. Most specialisms include a funded professional qualification, which is a substantial part of the scheme's value and worth weighing against a private-sector starting salary.
+
+## Do's and Don'ts
+
+### Do
+
+- Pick the specialism that matches your actual skills
+- Count the funded qualification in your comparison
+- Prepare for the online tests specifically
+- Show you understand NHS structure and pressures
+- Be genuinely flexible about location
+
+### Don't
+
+- Apply on general enthusiasm for healthcare
+- Assume all specialisms want the same profile
+- Skip test practice
+- Talk about the NHS only in values terms
+- Rule out regions you have not considered
+
+## Scenarios: picking your specialism
+
+### Scenario 1: You have a finance or numerate degree
+
+Apply to Finance. The funded CIMA or ACCA route is a substantial part of the package and the competition differs from General Management.
+
+### Scenario 2: You have a data or computing background
+
+Health Informatics and Health Analysis want that profile specifically, and both are less crowded than the general stream.
+
+### Scenario 3: You are drawn to the NHS but have a humanities degree
+
+General Management and HR are the realistic routes. Show you understand how trusts actually operate, not just that you value the NHS.
+
 > **Tip:** Check the NHS Graduate Management Training Scheme's specific specialism entries before applying — Finance, HR, Policy and General Management run as genuinely different tracks with different competition levels.
 
 ## Common Mistakes

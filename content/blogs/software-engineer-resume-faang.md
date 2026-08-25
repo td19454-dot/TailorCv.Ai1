@@ -335,12 +335,14 @@ Testing:
 
 EXPERIENCE
 Job Title | Company | Dates
+
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 
 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 Project Name | Stack | Link
+
 - Action + technical detail + result.
 - Action + technical detail + result.
 

@@ -44,10 +44,12 @@ If your resume says "developed software applications" but the job and [recruiter
 
 ### 1. Hard Skills
 Specific, teachable abilities and tools:
+
 - Python, SQL, AWS, Excel, SolidWorks, Salesforce, Figma
 
 ### 2. Job Titles
 The roles you have held and the role you want:
+
 - Software Engineer, [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026), Product Manager
 
 ### 3. Certifications
@@ -55,6 +57,7 @@ The roles you have held and the role you want:
 
 ### 4. Industry Terms
 Domain-specific vocabulary:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), MEDDICC, HAZOP, GAAP, MTM, SLO
 
 ### 5. Action and Competency Keywords
@@ -67,6 +70,7 @@ Domain-specific vocabulary:
 ### Step 1: Read the Job Description Carefully
 
 The [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is your primary keyword source. Read it 2-3 times and highlight:
+
 - Every hard skill and tool mentioned
 - Required qualifications and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Repeated words and phrases (repetition signals importance)
@@ -79,6 +83,7 @@ Look at 5-10 job postings for the same role across different companies. Keywords
 ### Step 3: Note Exact Phrasing and Variations
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) matching can be literal. Include both:
+
 - Full terms and acronyms: "Search Engine Optimization (SEO)"
 - Variations: "project management" and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)"
 

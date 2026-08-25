@@ -76,6 +76,7 @@ List your work experience in reverse chronological order. Include:
 **Software Engineer**  
 XYZ Tech Solutions, San Francisco, CA  
 June 2021 - Present  
+
 - Developed and implemented a customer feedback system that improved user satisfaction ratings by 20% within six months.
 - Collaborated with cross-functional teams to streamline project workflows, reducing project delivery time by 15%.
 

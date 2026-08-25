@@ -30,6 +30,7 @@ A GD is one stage of a larger process. Make sure your resume gets you there with
 ## What Evaluators Look For in a GD
 
 GD evaluators assess:
+
 - Communication skills (clarity, articulation, listening)
 - Leadership and initiative
 - Content quality and knowledge
@@ -63,6 +64,7 @@ Topics with clear for/against positions. Example: "Should social media be regula
 Initiating a GD well makes a strong impression - but only if you have something substantial to say. A weak opening hurts more than staying quiet.
 
 Strong opening approach:
+
 1. Briefly define or frame the topic
 2. State the key dimensions to discuss
 3. Offer your initial perspective

@@ -96,6 +96,7 @@ Video interviews amplify some signals and hide others. Read [virtual interview t
 - Clean, neutral background
 
 **Checklist for Video Setup:**
+
 - Check your camera angle to ensure it captures your face clearly.
 - Position a light source in front of you to avoid shadows.
 - Choose a tidy, uncluttered background to minimize distractions.
@@ -179,6 +180,7 @@ You can rehearse this before the real thing. The interviewer reads your resume f
 
 
 **Checklist for Dress Rehearsal:**
+
 - Choose your interview outfit in advance.
 - Set up your interview space (in-person or virtual).
 - Practice your answers and body language in front of a mirror or camera.

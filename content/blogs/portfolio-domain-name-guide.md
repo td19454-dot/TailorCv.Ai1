@@ -29,6 +29,7 @@ Your domain is your personal brand's address - the thing you say out loud in int
 
 ### Creative Alternatives
 If your name is common or already taken, consider these creative alternatives:
+
 - **Add a Middle Initial**: yournamej.com
 - **Include Your Profession**: yournamewriter.com or yournamephotography.com
 - **Use Action Words**: createwithyourname.com or designbyyourname.com
@@ -91,12 +92,14 @@ You upload the resume you already have and the sections fill themselves in - bas
 
 ## Examples of Effective Domain Names
 Here are some examples of effective domain names that illustrate the points made above:
+
 - **SarahSmith.com**: Simple, professional, and memorable.
 - **JohnDoeDesigns.com**: Clearly indicates what John does while keeping his name.
 - **EmilyWrites.com**: Uses an action word to signify her profession.
 
 ## SEO Considerations for Your Domain
 Choosing the right domain name can also impact your SEO. Here are some tips to optimize your domain for search engines:
+
 - **Use Keywords**: If relevant, include a keyword that describes your services (e.g., yournamephotography.com).
 - **Keep It Short**: Shorter domains are easier to remember and share.
 - **Avoid Numbers and Hyphens**: These can confuse users and affect SEO negatively.
@@ -105,12 +108,14 @@ Choosing the right domain name can also impact your SEO. Here are some tips to o
 
 ## How to Promote Your Domain
 Once you’ve secured your domain, it’s crucial to promote it effectively. Here are some strategies:
+
 - **Link from Your Social Media Profiles**: Ensure your portfolio link is in your bios.
 - **Networking Events**: Share your domain verbally when meeting new contacts.
 - **Email Signature**: Include your domain in your email signature for professional correspondence.
 
 ## Measuring Success
 To understand how well your domain is performing:
+
 - **Use Google Analytics**: Track visitor numbers and behavior on your site.
 - **Check Domain Authority**: Use tools like Moz or Ahrefs to see how your domain ranks.
 - **Monitor Backlinks**: Keep an eye on who is linking to your portfolio.

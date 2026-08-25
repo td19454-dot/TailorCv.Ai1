@@ -228,21 +228,25 @@ Students assume performance decides it. Performance is necessary and it is one o
 ## A short checklist
 
 **A year before the summer you want:**
+
 - [ ] Confirm with your institution what work authorisation is available to you and from when
 - [ ] Build a list of twenty-five employers across multinationals, banks, statutory boards and regional platforms
 - [ ] Fix the resume to [local conventions](/blog/singapore-resume-format-guide-2026) and confirm it [parses](/ats-analysis)
 - [ ] Start outreach — three messages a week to alumni and recent joiners
 
 **October to December:**
+
 - [ ] Apply. Early, because review is frequently rolling
 - [ ] Write the "why this organisation" paragraph fresh each time
 - [ ] State your exact availability dates and pass position
 
 **January to March:**
+
 - [ ] Assessments, interviews, and the second wave of smaller employers
 - [ ] Keep applying while interviewing
 
 **During the internship:**
+
 - [ ] Ask about conversion and pass eligibility at the midpoint, not the end
 - [ ] Say explicitly that you want a return offer
 - [ ] Make your work visible to more than one person

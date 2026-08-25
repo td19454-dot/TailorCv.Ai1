@@ -90,6 +90,12 @@ Where the co-op posting itself is thin on detail — common for a first work ter
 - Run past one page in the hope it reads as thorough
 - Guess at a name rather than using "Dear Hiring Manager"
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Matching your letter's font and header to your resume is easier when both come out of the same editor.
+
 > **Tip:** Write the "why this employer" paragraph last, and test it by swapping in a competitor's name. If the paragraph still makes sense, it is not specific enough to be worth including.
 
 ## Common Mistakes

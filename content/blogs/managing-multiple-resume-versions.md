@@ -29,6 +29,7 @@ But here is the problem nobody talks about:
 
 After two weeks of tailoring, you have six different resume files.
 They are named things like:
+
 - Resume_Final.pdf
 - Resume_Final_v2.docx
 - Resume_Google_Updated.pdf
@@ -59,6 +60,7 @@ Each tailoring adds relevant keywords, adjusts emphasis, and mirrors the [job de
 But tailoring is useless if you lose track of what you have built.
 
 A good resume management system means:
+
 - You always know which version you sent to which company
 - You can update one version without breaking others
 - You can reuse strong tailoring work instead of redoing it
@@ -76,6 +78,7 @@ Your master resume is not a document you send.
 It is a complete record of everything you have ever done that could go on a resume.
 
 Include:
+
 - Every job, with full dates and all [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) (including the ones too long for a one-page resume)
 - Every skill you have, including ones you rarely lead with
 - Every certification, course, or training program
@@ -102,11 +105,13 @@ Use this format:
 **[Name]_[Role]_[Company]_[Date].pdf**
 
 Examples:
+
 - `JaneDoe_ProductManager_Stripe_Jun2026.pdf`
 - `JaneDoe_DataAnalyst_Generic_Jun2026.pdf`
 - `JaneDoe_MarketingLead_HubSpot_Jun2026.pdf`
 
 Rules:
+
 1. Always include your name (for when recruiters save it to their own files)
 2. Include the target role, not the company you worked at
 3. Include the target company name (or "Generic" if it is a reusable version)
@@ -175,6 +180,7 @@ You need a smart set of base versions.
 
 **Version 1: The Role-Type Resume**
 Create one polished, [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) per role category you are applying for.
+
 - "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Backend" base version
 - "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026)" base version
 - "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)" base version
@@ -228,6 +234,7 @@ TailorCV does the heavy editing.
 **Update (overwrite):** Never. Always save a new version.
 
 **Create a new dated version when:**
+
 - You add a new job, project, or certification to your master
 - You change your summary significantly
 - You move into a new phase of your [job search](https://thetailorcv.com/blog/why-your-resume-gets-no-responses) (different role type, different industry)

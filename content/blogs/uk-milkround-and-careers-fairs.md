@@ -105,6 +105,20 @@ Watch for signals that a recruiter is winding down a conversation, and end it gr
 - Ask what the company does
 - Leave without any way to follow up
 
+## Scenarios: making the day count
+
+### Scenario 1: You have two hours and forty employers
+
+Pick six, apply to them online beforehand, and have one specific question each. Six real conversations beat forty brochures.
+
+### Scenario 2: The employer you want has a queue
+
+Join it, and use the wait to check something recent about them. Leaving because it is busy is the most common self-inflicted loss of the day.
+
+### Scenario 3: You collected five business cards
+
+Email all five the next morning, each referencing something you actually discussed. The follow-up is the part almost nobody does.
+
 > **Tip:** Go alone and apply online before you attend. Standing in a group of friends is the single most common way students waste a careers fair.
 
 ## Common Mistakes

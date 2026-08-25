@@ -49,6 +49,7 @@ In 2026, the summary is preferred for almost everyone. Use an objective only if 
 [Role/Title] with [X years] of experience in [domain/specialization]. [Most impressive achievement or core strength with a metric]. Skilled in [3-4 key skills]. [Optional: what you're targeting].
 
 The keys:
+
 - Lead with your professional identity
 - Include at least one quantified achievement or differentiator
 - Pack in role-relevant keywords (for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it))

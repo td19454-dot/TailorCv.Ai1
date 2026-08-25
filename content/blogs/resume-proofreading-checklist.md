@@ -136,6 +136,7 @@ Run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/s
 ## Bonus: The Read-Out-Loud Test
 
 After completing the checklist, read your entire resume out loud. You will catch:
+
 - Awkward phrasing that reads poorly
 - Missing words your eye skipped over silently
 - Repeated phrases across bullets
@@ -150,6 +151,7 @@ This takes 3-5 minutes and consistently catches things written review misses.
 ## The "Recruiter Scan" Test
 
 Set a 10-second timer and look at your resume:
+
 - Can you immediately see your name?
 - Can you identify your most recent role and company?
 - Can you spot 1-2 impressive achievements?

@@ -25,11 +25,13 @@ Before you write a line of content, you have to decide on structure: one scrolli
 **Best for:** early-career candidates, generalists, and anyone with 3-5 projects that do not need deep individual write-ups.
 
 **Pros:**
+
 - Fast to scan - a recruiter sees everything in one scroll
 - Simple to build and maintain
 - Works well on mobile with minimal navigation
 
 **Cons:**
+
 - Limited room for deep case studies - each project usually gets a short blurb, not a full narrative
 - Can feel cramped once you have more than 4-5 strong projects
 - Harder to target different audiences (e.g., a recruiter vs. a technical interviewer) with different depth levels
@@ -38,11 +40,13 @@ Before you write a line of content, you have to decide on structure: one scrolli
 **Best for:** designers and developers with detailed case studies, senior professionals with a large body of work, or anyone using [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)-style deep dives.
 
 **Pros:**
+
 - Each project gets its own page with full context (Problem -> Process -> Solution -> Outcome)
 - Easier to organize by category (case studies, writing samples, code repos) for different audiences
 - Scales better as your body of work grows over a multi-year career
 
 **Cons:**
+
 - Takes longer to build and keep updated
 - Risk of losing a recruiter's attention if navigation is unclear or projects are buried too many clicks deep
 - Requires more discipline to keep every sub-page current

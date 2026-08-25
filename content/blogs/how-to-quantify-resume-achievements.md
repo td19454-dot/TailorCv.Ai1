@@ -93,6 +93,7 @@ Ask yourself:
 - What percentage of the goal was achieved?
 
 If you genuinely do not have a number, use an approximation:
+
 - "approximately 50K records"
 - "estimated 6 hours per week saved"
 - "supported a team of about 12"
@@ -190,21 +191,27 @@ An honest approximation is better than no number.
 Take a vague bullet and transform it:
 
 Before:
+
 - Improved website performance
 
 After:
+
 - Improved Lighthouse performance score from 42 to 91 by implementing lazy loading, code splitting, and critical CSS inlining, reducing bounce rate by 18%.
 
 Before:
+
 - Led a data analysis project
 
 After:
+
 - Analyzed 80K customer records in Python and SQL to identify high-churn cohorts, leading to a retention campaign that saved $120K in annual recurring revenue.
 
 Before:
+
 - Managed social media accounts
 
 After:
+
 - Grew [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) follower count from 4K to 22K in 8 months through a daily content strategy, generating 3 inbound enterprise leads per month.
 
 ---

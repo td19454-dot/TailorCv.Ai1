@@ -116,6 +116,7 @@ Have references prepared and ready before you begin applying. Do not wait until 
 Always ask permission before listing anyone as a reference. A reference who is surprised by a call gives a weak or awkward endorsement.
 
 **When asking:**
+
 - Give them context on the role(s) you are applying for
 - Share your updated resume so they can speak to your current positioning
 - Ask if they are comfortable speaking positively on your behalf
@@ -128,6 +129,7 @@ Always ask permission before listing anyone as a reference. A reference who is s
 ## What Makes a Strong Reference
 
 A strong reference can:
+
 - Speak specifically to your work (not vague praise)
 - Recall concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), achievements, or examples
 - Confirm your technical and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) with direct evidence
@@ -136,6 +138,7 @@ A strong reference can:
 A weak reference gives generic answers: "She was great. Very hard-working. I'd recommend her." Without specifics, this does little to move your candidacy forward.
 
 Brief your references before they receive a call:
+
 - What role you are applying for
 - What the employer is most likely to ask about
 - One or two key stories they could reference about your work
@@ -145,6 +148,7 @@ Brief your references before they receive a call:
 ## The "References Available Upon Request" Line: Remove It
 
 If your resume currently includes this line, delete it. It:
+
 - Wastes valuable resume space
 - Is assumed by all employers
 - Makes your resume look dated
@@ -158,6 +162,7 @@ Replace that space with a strong bullet point, certification, or achievement. Re
 ## Reference Checks in the Hiring Process
 
 Reference checks typically happen:
+
 1. **After the final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - When the employer is deciding between top candidates
 2. **Before an official offer is extended** - As part of background verification
 3. **Occasionally before a final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - For senior or sensitive roles
@@ -169,6 +174,7 @@ Reference checks are a formality in some industries and a critical decision fact
 ## What Employers Ask References
 
 Common reference check questions:
+
 - How long did you work with this person and in what capacity?
 - What were their greatest strengths?
 - What were their areas for improvement?

@@ -130,6 +130,7 @@ Management Consulting Firm | Mar 2022 - Present
 ## Education on a Consulting Resume
 
 For management consulting (especially top firms), [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) is weighted heavily:
+
 - List your degree, institution, and GPA (if strong)
 - Include academic honors, scholarships, and relevant achievements
 - MBA from a target school is a significant credential

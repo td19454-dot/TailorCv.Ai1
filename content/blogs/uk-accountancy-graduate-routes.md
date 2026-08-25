@@ -79,6 +79,50 @@ Commercial awareness is assessed, though generally less heavily than in [law](/b
 
 **Research not just the immediate training contract but what people who completed a specific firm's programme several years ago are now doing**, professional networking platforms make this genuinely researchable, a firm whose alumni have gone on to strong, varied careers signals something real about the quality of training received.
 
+## Which qualification actually suits you
+
+The three main qualifications lead to genuinely different careers, and the training contract you sign commits you to one of them for roughly three years.
+
+| Qualification | Body | Typically leads to |
+|---|---|---|
+| **ACA** | ICAEW | Audit and practice, especially the large firms; the traditional route into corporate finance and advisory |
+| **ACCA** | ACCA | Broad and portable, strong internationally; common in industry and smaller practices |
+| **CIMA** | CIMA | Management accounting inside businesses rather than practice — budgeting, costing, commercial finance |
+
+The exams are hard and each body publishes its pass rates, so check them rather than assuming they are a formality. Most trainees sit exams alongside a full-time job, which is the part people consistently underestimate: study leave is a real term in your contract and worth comparing between offers in writing.
+
+## Do's and Don'ts
+
+### Do
+
+- Choose the qualification first, then the employer
+- Compare study leave and exam-resit policy between offers, in writing
+- Apply to mid-tier and regional firms, not only the Big Four
+- Ask what work you actually do in year one
+- Check the published pass rates for the exams you will sit
+
+### Don't
+
+- Assume all three qualifications open the same doors
+- Treat the exams as a formality alongside the job
+- Apply only to the four most famous names
+- Accept vague answers about study support
+- Rule out a firm because it is not in London
+
+## Scenarios: choosing your route
+
+### Scenario 1: You want to work in industry, not practice
+
+CIMA is built for exactly this — management accounting inside a business rather than auditing other people's. Applying to a Big Four ACA contract because it is the famous route puts you three years into the wrong qualification.
+
+### Scenario 2: You are not sure yet
+
+ACA or ACCA keep more doors open, and practice gives you exposure to many businesses quickly. Decide the qualification on where you want to be at 27, not on which brochure looked best at a careers fair.
+
+### Scenario 3: You did not get a Big Four offer
+
+Mid-tier and regional firms train the same qualifications, often with earlier client responsibility and better study support. The letters after your name are identical.
+
 > **Tip:** Pick the qualification before the employer — ACA, ACCA and CIMA lead to genuinely different careers. The training contract you sign locks you into one of them for three years.
 
 ## Common Mistakes

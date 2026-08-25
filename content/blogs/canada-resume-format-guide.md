@@ -60,6 +60,12 @@ Contact details (name, phone, professional email, city and province — no full 
 
 A specific note on GPA formatting. Canadian universities don't all use the same scale — some report on a 4.0 or 4.3 scale, others on a 9.0 scale, and some report a percentage average instead of a GPA at all. Stating a bare number like "3.7" without the scale it's measured on is genuinely ambiguous to a reader who doesn't know your specific institution's convention; write it as "3.7/4.0" or "8.2/9.0" explicitly, the same discipline that matters on any resume crossing between different grading conventions.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing, accent colour and template are all adjustable, with a live page counter — useful when a Canadian resume needs to stay within one to two pages.
+
 ## Do's and Don'ts
 
 ### Do

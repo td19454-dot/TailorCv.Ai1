@@ -83,6 +83,52 @@ Deploy your strongest project somewhere reachable with a live URL, and write doc
 
 Be ready to discuss specific trade-offs and decisions within your own project in real depth, this is what the technical interview genuinely probes, a project you can only describe superficially, however impressive it looks on the surface, performs worse under real questioning than a simpler project you genuinely understand end to end.
 
+## Where UK tech hiring actually happens
+
+London dominates by volume, but several other cities host genuine clusters with materially less competition.
+
+| City | What is there |
+|---|---|
+| London | The largest concentration — fintech, scale-ups, every major firm's UK office |
+| Cambridge | Deep tech, semiconductors, life sciences computing |
+| Manchester | A large and growing tech sector, plus major employers' northern hubs |
+| Edinburgh | Fintech, data science, a strong university pipeline |
+| Bristol | Semiconductors, aerospace software, robotics |
+
+Technical interviews in the UK follow international convention closely — algorithmic problems, a system discussion for some roles, and a behavioural round — so standard preparation transfers almost entirely.
+
+## Do's and Don'ts
+
+### Do
+
+- Apply beyond London to the regional clusters
+- Build one deployed project you can discuss in depth
+- Prepare for algorithmic interviews as you would anywhere
+- Check whether an employer holds a sponsor licence, if you need one
+- Apply early in the autumn scheme window
+
+### Don't
+
+- Assume London is the only real market
+- List coursework where a real project would go
+- Underprepare assuming UK interviews are softer
+- Leave sponsorship questions until offer stage
+- Miss the autumn window and wait a year
+
+## Scenarios: where to apply
+
+### Scenario 1: You want the highest volume of openings
+
+London, and apply early in the autumn window. Volume is real but so is the competition.
+
+### Scenario 2: You want less competition for similar work
+
+Manchester, Edinburgh, Bristol or Cambridge. Each has a genuine cluster and a materially smaller applicant pool per role.
+
+### Scenario 3: You need visa sponsorship
+
+Filter for employers on the sponsor register first. It removes most of the wasted applications before you write any of them.
+
 > **Tip:** Look beyond London to Manchester, Edinburgh, Bristol and Cambridge. Each has a genuine tech cluster with materially lower competition and cost of living than the capital.
 
 ## Common Mistakes

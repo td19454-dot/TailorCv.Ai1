@@ -41,6 +41,7 @@ Use [TailorCV's resume optimizer](https://www.thetailorcv.com/solutions) to find
 When you have work experience, matching is about translating professional history into [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) language.
 
 When you have no work experience, matching is about organizing everything else you have done:
+
 - Academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Coursework and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - Internships (even unpaid or brief)
@@ -81,6 +82,7 @@ Highlight every skill, tool, and qualification.
 Build a list.
 
 Separate:
+
 - Must-have keywords (required skills)
 - Nice-to-have keywords (preferred skills)
 
@@ -91,6 +93,7 @@ Read [job description keyword extraction guide](https://thetailorcv.com/blog/job
 This is the core of entry-level matching.
 
 For each keyword, ask:
+
 - "Did I use this tool in class?"
 - "Did I do this activity in a project?"
 - "Did I demonstrate this skill in a competition, club, or volunteer role?"
@@ -165,6 +168,7 @@ So do recruiters.
 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are your primary experience evidence.
 
 For each relevant project, include:
+
 - Project title (use JD-relevant language in the title)
 - Tools and skills used (match JD keywords exactly)
 - What you built or achieved
@@ -173,6 +177,7 @@ For each relevant project, include:
 **Example for a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) Role:**
 
 **Project: E-Commerce Sales Analysis Dashboard**
+
 - Queried and cleaned a 50,000-row sales dataset using Python (Pandas) and SQL
 - Built interactive Tableau dashboard to visualize revenue trends and customer segmentation
 - Presented findings to 15-person audience, identifying 3 product categories with highest growth potential
@@ -184,6 +189,7 @@ This project section contains: Python, Pandas, SQL, Tableau, data visualization,
 If your keyword coverage is low for a specific skill, a certification is the fastest fix.
 
 Many top [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) are free or low-cost and take 4-20 hours to complete:
+
 - Google Analytics (free)
 - Google Project Management Certificate (Coursera, auditable free)
 - AWS Cloud Practitioner (paid exam, free prep)
@@ -196,6 +202,7 @@ Read [best free online certificates for resume](https://thetailorcv.com/blog/bes
 ### Step 7: Write a Summary That Sells Your Potential
 
 Without work experience, your summary must emphasize:
+
 - Your academic background and relevant skills
 - Your energy and readiness
 - 1-2 specific things that make you a strong fit for this role
@@ -298,6 +305,7 @@ It means you need to be more intentional about where you find your evidence and 
 Describe them in [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) language and they become keyword matches.
 
 Steps:
+
 1. Extract keywords from the JD
 2. Map each keyword to something you have done
 3. Rewrite your experience in JD language

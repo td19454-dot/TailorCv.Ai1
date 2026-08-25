@@ -65,6 +65,53 @@ Do not assume career progression requires London eventually. Many careers, inclu
 
 **Visit if genuinely possible before making a final decision**, or at minimum speak with people currently working there in your target field, a first-hand account of what daily life and the local professional community actually feel like is worth considerably more than research alone.
 
+## Where the regional markets actually are
+
+Several UK cities host genuine sector clusters rather than smaller versions of London.
+
+| City | Sector strength |
+|---|---|
+| Manchester | Media (MediaCityUK), tech, professional services |
+| Edinburgh and Glasgow | Financial services, asset management, tech |
+| Bristol | Aerospace, engineering, tech, creative |
+| Leeds | Financial and legal services, health digital |
+| Birmingham | Professional services, advanced manufacturing |
+| Cambridge and Oxford | Life sciences, deep tech, research spinouts |
+
+The comparison that matters is the one after rent. A regional salary that looks lower on the advert frequently leaves more disposable income than a London figure once housing is subtracted — worth calculating with real listings rather than assuming.
+
+## Do's and Don'ts
+
+### Do
+
+- Subtract real rent before comparing two offers
+- Research the specific cluster for your sector
+- State a location preference on scheme applications
+- Consider regional offices of national employers
+- Treat a regional start as a career, not a stepping stone
+
+### Don't
+
+- Compare headline salaries across cities
+- Assume regional roles are lesser versions
+- Ignore cities where your sector is strongest
+- Assume a regional start closes off London later
+- Apply only within the M25
+
+## Scenarios: running the real comparison
+
+### Scenario 1: A London offer and a Manchester offer
+
+Take both salaries, subtract actual rent for a specific area in each, and compare what is left. That is the only comparison that means anything.
+
+### Scenario 2: A scheme that lets you state a preference
+
+State it. Schemes allocate by preference and business need, and candidates who leave it blank get allocated by need alone.
+
+### Scenario 3: You worry a regional start traps you
+
+It does not. Moving to London two or three years in with real experience is a common and well-trodden path.
+
 > **Tip:** Run the real comparison: take each salary, subtract actual rent for the specific city, and compare what remains. Regional roles frequently win that calculation outright.
 
 ## Common Mistakes

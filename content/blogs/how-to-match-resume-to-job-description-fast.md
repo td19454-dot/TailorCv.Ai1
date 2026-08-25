@@ -40,6 +40,7 @@ Thorough tailoring takes 30-45 minutes.
 But 80% of your [ATS score](https://thetailorcv.com/blog/ats-score-guide) improvement comes from 20% of the changes.
 
 The highest-impact changes are:
+
 1. Summary rewrite (3 minutes)
 2. [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) update (3 minutes)
 3. Top 2-3 bullet point rewrites (4 minutes)
@@ -57,6 +58,7 @@ Then apply.
 
 Do not read the whole JD.
 Scan for:
+
 - The [job title](https://thetailorcv.com/blog/what-recruiters-look-for-resume-job-match)
 - The top 3 required skills
 - Tools mentioned in the first half of the JD
@@ -96,6 +98,7 @@ Look at the JD's required skills.
 Compare to your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026).
 
 Make two changes:
+
 1. Add any JD required skills that are missing (if genuine)
 2. Move the most JD-relevant skills to the top of your list
 
@@ -107,6 +110,7 @@ Read [how to match your resume skills section to any job description](https://th
 
 Find the 2 [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) in your most recent role that are most relevant to this JD.
 Rewrite them to:
+
 - Use JD language (replace synonyms with exact JD phrases)
 - Add a result if missing
 - Add a tool or keyword from the JD if accurate
@@ -127,6 +131,7 @@ That is significant match improvement.
 After your [10-minute edit](https://thetailorcv.com/blog/resume-match-score-callback-rate-data-study), do a quick keyword scan.
 
 Ask:
+
 - Is the job title in my summary? /✗
 - Are the top 3 required skills in my resume? /✗
 - Are those skills in both my summary/bullets AND my [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)? /✗
@@ -143,6 +148,7 @@ It takes 60 seconds and gives you an exact percentage.
 The 10-minute system works best when your [base resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise) is already clean and well-structured.
 
 A good [base resume](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise):
+
 - Has a clear, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible single-column format
 - Has a modular structure (summary -> skills -> experience -> [education](https://thetailorcv.com/blog/how-to-list-education-on-resume))
 - Has [strong, results-focused bullets](https://thetailorcv.com/blog/resume-tailoring-underqualified) that only need keyword tweaks
@@ -188,11 +194,13 @@ That is a strong 10-minute match for a [data analyst](https://thetailorcv.com/bl
 ## When 10 Minutes Is Not Enough
 
 The 10-minute system works well for:
+
 - Roles you are a strong fit for
 - Jobs in your current or adjacent field
 - Applications where you already have a relevant base resume
 
 It is not enough for:
+
 - Career changes (need deeper translation work)
 - Roles you are significantly underqualified for
 - Applications where you are missing many required skills

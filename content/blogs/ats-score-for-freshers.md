@@ -82,6 +82,7 @@ Treat academic and personal [projects](https://thetailorcv.com/blog/how-to-add-p
 Include technical skills, tools, and a few relevant [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) that appear in the posting.
 
 **Checklist for Skills Section:**
+
 - List at least 8-10 relevant skills.
 - Include both hard skills (e.g., programming languages) and soft skills (e.g., communication).
 - Ensure skills match those in the job description.
@@ -91,6 +92,7 @@ Include technical skills, tools, and a few relevant [soft skills](https://thetai
 Free and low-cost certifications add keywords and credibility. See [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). 
 
 **Examples of Useful Certifications:**
+
 - Google Analytics for beginners
 - HubSpot Content Marketing
 - Microsoft Excel Basics
@@ -100,6 +102,7 @@ Free and low-cost certifications add keywords and credibility. See [best free on
 A short summary naming the role and your top skills boosts keyword relevance. See [how to write a resume summary with no experience](https://thetailorcv.com/blog/resume-summary-with-no-experience). 
 
 **Template for Resume Summary:**
+
 - "Motivated [Your Degree] graduate seeking an entry-level [Job Title] position. Proficient in [Skill 1], [Skill 2], and [Skill 3]."
 
 ### 7. Scan and Refine
@@ -131,10 +134,12 @@ More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/res
 "Recent Computer Science graduate with a passion for software development and a proven track record of project delivery. Skilled in Python, Java, and team collaboration."
 
 **Projects:**
+
 - **E-commerce Website:** Developed an e-commerce website using Django, resulting in a 50% increase in user engagement during testing.
 - **Data Analysis Project:** Analyzed data sets using Pandas and Matplotlib; presented findings to a panel, receiving high praise for clarity.
 
 **Certifications:** 
+
 - Google Digital Garage - Fundamentals of Digital Marketing
 
 ### Example 2: John Smith, Marketing Graduate
@@ -143,10 +148,12 @@ More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/res
 "Enthusiastic Marketing graduate seeking an entry-level role to apply skills in content creation and market research. Experienced in social media strategies and data analysis."
 
 **Projects:**
+
 - **Social Media Campaign:** Created and executed a social media campaign for a student organization, boosting engagement by 200%.
 - **Market Research Study:** Conducted a market research project that provided actionable insights for a local startup.
 
 **Certifications:**
+
 - HubSpot Inbound Marketing Certification
 
 ---
@@ -164,6 +171,7 @@ More on this in [resume mistakes freshers make](https://thetailorcv.com/blog/res
 In today's fast-paced job market, continuous learning is key. Consider enrolling in online courses or attending workshops to enhance your skills. This not only boosts your resume but also keeps you competitive.
 
 **Resources for Learning:**
+
 - Coursera
 - edX
 - Udemy

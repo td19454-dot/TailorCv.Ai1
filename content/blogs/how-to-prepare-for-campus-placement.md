@@ -30,6 +30,7 @@ Start with a [strong resume](https://thetailorcv.com/blog/resume-for-campus-plac
 ## The Campus Placement Process
 
 Typical stages:
+
 1. **Resume screening** - Companies shortlist based on resume and eligibility criteria
 2. **Aptitude test** - Quantitative, logical, verbal, sometimes technical MCQs
 3. **Coding round** - Programming problems (for tech roles)
@@ -51,6 +52,7 @@ Prepare for each stage specifically.
 ## Stage 1: Build a Strong Resume
 
 Your resume is the first filter. For [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), it should emphasize:
+
 - A clear summary
 - Strong projects (most important for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes))
 - Technical skills organized by category
@@ -112,6 +114,7 @@ Read the [coding interview preparation guide](https://thetailorcv.com/blog/codin
 ## Stage 4: Prepare for Group Discussion
 
 If your target companies use GD rounds:
+
 - Stay updated on current affairs and business topics
 - Practice structuring arguments
 - Learn to contribute substantially without dominating
@@ -124,6 +127,7 @@ Read the dedicated [group discussion tips guide](https://thetailorcv.com/blog/gr
 ## Stage 5: Prepare for Technical Interviews
 
 Technical interviews assess:
+
 - Core CS fundamentals (DSA, OOP, DBMS, OS, networks)
 - Your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (be ready to explain every detail)
 - Problem-solving and coding
@@ -142,6 +146,7 @@ If you cannot explain a project in your resume, remove it. Read the [technical i
 ## Stage 6: Prepare for HR Interviews
 
 HR rounds assess fit, communication, and motivation. Common questions:
+
 - "Tell me about yourself" - read the [tell me about yourself guide](https://thetailorcv.com/blog/how-to-answer-tell-me-about-yourself)
 - "Why do you want to join our company?"
 - "What are your strengths and weaknesses?"

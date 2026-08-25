@@ -77,6 +77,20 @@ Because thresholds have moved upward over recent years, a role that might have q
 
 Occupation-specific going rates, where they exceed the general threshold, reflect the specific market rate research conducted for that occupation, worth checking both the general figure and the specific occupational rate for your target role, since the higher of the two generally applies.
 
+## Scenarios: checking before you invest
+
+### Scenario 1: An employer says they will 'look into sponsorship'
+
+Check the public register of licensed sponsors yourself. An employer without a licence cannot sponsor you regardless of intent.
+
+### Scenario 2: You have an offer below the salary threshold
+
+Thresholds vary by occupation code and there are reduced rates for new entrants. Check the specific code before assuming it fails.
+
+### Scenario 3: You are on the Graduate Route already
+
+You can switch to Skilled Worker from inside the UK once you have a sponsored offer, which is usually simpler than leaving and reapplying.
+
 > **Tip:** Check the employer holds a valid sponsor licence on the Home Office register before investing in an application. The register is public, and an employer without one cannot sponsor you regardless of intent.
 
 ## Common Mistakes

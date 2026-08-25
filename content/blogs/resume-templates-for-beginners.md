@@ -171,6 +171,7 @@ Even the best template won't help unless your content is strong. Here's how begi
 ### Start With a Strong Career Objective
 
 Your objective should clearly explain:
+
 - Who you are
 - Your career goals
 - What value you offer
@@ -279,6 +280,7 @@ Recruiters prefer concise resumes.
 ### 3. Adding Irrelevant Information
 
 Avoid including:
+
 - Personal hobbies unrelated to work
 - Irrelevant school achievements
 - Unnecessary personal details
@@ -313,6 +315,7 @@ For a deeper understanding, read:
 
 ### Use Professional Fonts
 Choose fonts like:
+
 - Arial
 - Calibri
 - Helvetica
@@ -351,6 +354,7 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 
 
 An [ATS-friendly resume](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly):
+
 - Uses proper headings
 - Includes job-related keywords
 - Avoids graphics
@@ -407,6 +411,7 @@ One page is ideal for beginners with limited experience.
 ### 5. What should I include if I have no work experience?
 
 Include:
+
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Skills
 - [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
@@ -447,6 +452,7 @@ Before the interview, make sure the resume that earned the call is still aligned
 Creating your first resume may seem difficult, but choosing the right **resume templates for beginners with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)** can make the process much easier.
 
 Remember:
+
 - Keep formatting simple
 - Focus on skills and [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Use [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) layouts
@@ -456,6 +462,7 @@ Remember:
 A professional resume doesn't require years of experience - it requires smart presentation.
 
 If you want ready-made [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) templates, resume optimization tools, interview preparation help, or mock interview practice, explore:
+
 - [The Tailor CV Templates](https://www.thetailorcv.com/templates)
 - [Interview Preparation Tool](https://thetailorcv.com/interview-prep)
 - [Mock Interview Practice](https://thetailorcv.com/mock-interview)

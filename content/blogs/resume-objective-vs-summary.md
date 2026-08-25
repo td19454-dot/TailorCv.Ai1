@@ -70,6 +70,7 @@ This is the resume after tailoring - the content is already matched, and these c
 ### Use a Summary (Almost Always)
 
 If you have any relevant experience - including internships, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), or academic work - use a summary. This includes:
+
 - Experienced professionals (any level)
 - Recent graduates with relevant [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or internships
 - Career changers who want to frame their transferable skills
@@ -123,6 +124,7 @@ The difference: your objective includes credentials that make you relevant, not 
 ## Summary vs Objective: ATS Considerations
 
 Both a summary and an objective sit in the same position at the top of your resume. From an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) perspective, the summary is significantly better because:
+
 - It naturally includes job title keywords ("[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)," "product manager," "marketing specialist")
 - It includes skill keywords ("Python," "SQL," "HubSpot")
 - It contains accomplishment language that signals quality
@@ -152,6 +154,7 @@ An objective rarely includes keywords beyond the job title. Run your resume summ
 Between the objective and summary, there is a third option: the **[resume headline](https://thetailorcv.com/blog/how-to-write-resume-headline)** - a single bold line under your name that states your professional identity.
 
 **Examples:**
+
 - Senior Backend Engineer | Python & AWS | Distributed Systems
 - [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) Manager | SEO/SEM | Growth Strategy
 - Certified [project manager](https://thetailorcv.com/blog/project-manager-resume-2026) (PMP) | Agile | Healthcare IT

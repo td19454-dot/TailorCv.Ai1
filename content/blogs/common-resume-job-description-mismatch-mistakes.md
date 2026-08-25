@@ -170,6 +170,7 @@ No [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) appeal.
 
 **The Fix:**
 Rewrite each bullet with:
+
 - Specific action (from JD language)
 - Tool or context (JD-mentioned)
 - Result (quantified where possible)

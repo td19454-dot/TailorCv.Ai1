@@ -139,6 +139,7 @@ Optimising runs against the specific job description you paste in, not in the ab
 
 
 Consistency matters across:
+
 - Your message and positioning
 - Your visual identity (photo, colors, style)
 - Your posting cadence
@@ -149,6 +150,7 @@ Consistency matters across:
 ## Measuring Your Personal Brand
 
 Signs your personal brand is working:
+
 - Inbound opportunities (recruiters, clients, collaborations) reaching out to you
 - Growing, engaged audience
 - People referencing or sharing your content

@@ -98,6 +98,7 @@ Not a generic paragraph about your "passion for leadership."
 Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for the foundational framework - then elevate it to executive level.
 
 An executive summary that answers:
+
 - What is your leadership identity? (transformational, operational, revenue, turnaround, growth)
 - At what scale have you operated? (team size, budget, company revenue stage)
 - What are your two or three signature achievements?
@@ -131,6 +132,7 @@ Lead with scale and result.
 End with context and method.
 
 [Quantify your achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) aggressively at this level:
+
 - Revenue impact (grew revenue by X, reduced churn by X%)
 - Team scale (led 120-person organization, built from 8 to 45 engineers)
 - Budget ownership (managed $18M annual technology budget)
@@ -142,6 +144,7 @@ End with context and method.
 At the C-suite level, one of the most valuable signals is that you have operated at board level.
 
 If you have:
+
 - Presented to a board of directors
 - Worked directly with investors during fundraising
 - Participated in an M&A process
@@ -180,6 +183,7 @@ Executive roles are often accompanied by a position brief or specification docum
 
 This document is more valuable than a standard [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 It contains:
+
 - The specific business challenges the role must address
 - The current state of the function being hired for
 - What has not been working
@@ -211,6 +215,7 @@ The keywords at executive level are different - "P&L ownership," "organizational
 ## What to Leave Off an Executive Resume
 
 **Remove:**
+
 - Early-career roles (anything more than 20 years ago is typically irrelevant)
 - Responsibilities that are below your current level (you do not list "attended team standups")
 - Adjectives that are not backed by evidence ("dynamic," "passionate," "innovative")
@@ -220,6 +225,7 @@ The keywords at executive level are different - "P&L ownership," "organizational
 
 
 **Reduce:**
+
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) detail for established executives (institution + degree is usually sufficient)
 - Older [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that are outdated or no longer material
 

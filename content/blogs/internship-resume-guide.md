@@ -70,6 +70,7 @@ Bengaluru, India | rohit@email.com | +91 XXXXX XXXXX
 [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search).com/in/rohitmalhotra | github.com/rohitmalhotra
 
 Do not include:
+
 - Full home address
 - Date of birth
 - Photo (unless specifically required in your country)
@@ -105,6 +106,7 @@ CGPA: 8.7/10
 Relevant Coursework: Data Structures, Algorithms, DBMS, Operating Systems, Computer Networks, Web Development
 
 Add:
+
 - CGPA / GPA if it is 7.5+ out of 10 or 3.0+ out of 4.0
 - Relevant coursework for technical roles
 - Year of graduation
@@ -149,6 +151,7 @@ Tools: Bloomberg (academic access), FactSet (if available)
 Format each project as:
 
 Project Name | Tools/Technologies Used | [[GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)/Live Link]
+
 - What problem you solved
 - What you built / how you built it
 - What the result or impact was
@@ -156,18 +159,21 @@ Project Name | Tools/Technologies Used | [[GitHub](https://thetailorcv.com/blog/
 ### Strong Project Examples
 
 **E-commerce Backend API | Python, FastAPI, PostgreSQL, Docker, JWT**
+
 - Built a REST API for an e-commerce platform supporting user auth, product catalog, cart, and order management.
 - Designed PostgreSQL schema with 8 tables and relational constraints for orders, users, products, and inventory.
 - Implemented JWT-based authentication with role-based access for customers and admins.
 - Containerized with Docker and documented with Swagger - 92% test coverage with PyTest.
 
 **Customer Churn Prediction | Python, scikit-learn, pandas, Jupyter**
+
 - Cleaned and analyzed a 75K-record telecom customer dataset with pandas.
 - Built and compared 3 classification models (logistic regression, random forest, XGBoost) - XGBoost achieved best AUC of 0.86.
 - Created a confusion matrix, ROC curve, and feature importance analysis to interpret results.
 - Presented findings as a slide deck with recommendations for targeting high-risk customer segments.
 
 **Financial DCF Model | Excel, VBA**
+
 - Built a discounted cash flow model for a mid-cap FMCG company using 5-year historical data and 10-year projection.
 - Added sensitivity analysis for discount rate, terminal growth rate, and revenue CAGR assumptions.
 - Created a one-page executive summary dashboard with valuation range and key assumptions.
@@ -177,6 +183,7 @@ Project Name | Tools/Technologies Used | [[GitHub](https://thetailorcv.com/blog/
 ## Achievements and Awards
 
 Add:
+
 - Academic prizes or scholarship
 - Hackathon placements
 - Competition wins
@@ -214,10 +221,12 @@ Google Data Analytics Professional Certificate | Coursera | 2026
 Even if your experience is limited, use [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume) and be specific:
 
 Weak:
+
 - Helped with data analysis
 - Worked on a project
 
 Strong:
+
 - Analyzed 50K retail transaction records using Python and pandas to identify seasonal purchase patterns, presented findings in a PowerPoint report to 3 professors.
 - Built a full-stack web application using React and Node.js for a personal budgeting project with 120+ regular users from a college friend group.
 
