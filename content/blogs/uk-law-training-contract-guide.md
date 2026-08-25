@@ -79,6 +79,52 @@ Given how far in advance training contract applications open relative to the eve
 
 Some firms offer a bridging arrangement or scholarship covering the period between accepting an offer and beginning the contract, particularly relevant if your qualifying route involves further study first, worth understanding exactly what your specific firm offers during this period.
 
+## The timeline, which runs further ahead than any other route
+
+Law has the longest lead time of any UK graduate route, and applying "in final year" is already late at most firms.
+
+| When | What happens |
+|---|---|
+| First or second year | Open days and first-year schemes, genuinely worth applying to |
+| Penultimate year | Vacation schemes — the main recruiting channel |
+| Penultimate or final year | Direct training contract applications |
+| After the offer | SQE preparation, usually funded by the firm |
+| Two years later | The training contract itself begins |
+
+The **SQE** (Solicitors Qualifying Examination) replaced the LPC as the route to qualification, and most firms offering a training contract fund it along with a maintenance grant during study. Whether they do, and how much, is a legitimate question at offer stage.
+
+## Do's and Don'ts
+
+### Do
+
+- Apply to vacation schemes in your penultimate year
+- Ask what the firm funds for SQE preparation
+- Research the firm's actual practice areas
+- Apply to regional and mid-sized firms
+- Keep a spreadsheet of deadlines
+
+### Don't
+
+- Start applying in final year and expect the main route
+- Assume every firm funds the SQE identically
+- Write "I am interested in commercial law" without specifics
+- Apply only to the largest City firms
+- Miss a vacation scheme deadline by days
+
+## Scenarios: where you are in the timeline
+
+### Scenario 1: You are in your first year
+
+Apply to open days and first-year schemes now. They are less contested and they feed directly into vacation scheme offers.
+
+### Scenario 2: You are in your penultimate year
+
+This is the main window. Vacation scheme applications are the primary route into a training contract at most firms.
+
+### Scenario 3: You are graduating and have not applied
+
+You are not out of the market, but you are applying directly for contracts starting two years out. Regional and mid-sized firms are the realistic focus.
+
 > **Tip:** Apply two years ahead of when you want to start. The training contract timeline runs further in advance than almost any other UK graduate route, and final-year applicants are already late.
 
 ## Common Mistakes

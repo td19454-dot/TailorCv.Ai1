@@ -41,6 +41,7 @@ When in doubt, shorter is better. A tight one-page resume almost always beats a 
 ## One Page Resume - When to Use
 
 Use a one-page resume if you have:
+
 - Less than 10 years of experience
 - Early to mid-career roles
 - A focused career without extensive specialized history
@@ -58,6 +59,7 @@ Almost all candidates with under a decade of experience should use one page. Rec
 ## Two Page Resume - When It's Acceptable
 
 A two-page resume is appropriate if you have:
+
 - 10+ years of relevant experience
 - Multiple roles with substantial, distinct accomplishments
 - Senior or leadership positions with broad scope
@@ -125,6 +127,7 @@ Do not pad with fluff. An honest, focused half-page is better than a page filled
 ## Font, Margins, and Spacing for Length Control
 
 To fit content cleanly:
+
 - Font size: 10-12pt for body, 14-16pt for your name
 - Margins: 0.5-0.75 inch
 - Line spacing: 1.0-1.15

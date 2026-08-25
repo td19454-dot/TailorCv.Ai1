@@ -99,6 +99,12 @@ Update the master version as you gain new relevant experience, rather than recon
 
 **Frame any transition or gap in terms of what you did with the time and what you learned**, rather than simply noting an absence, this converts a potential concern into a genuine point of interest for an employer reading the document.
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+The work history document is where you have real formatting latitude, unlike the rirekisho — spacing and length are yours to control.
+
 > **Tip:** Keep one comprehensive master version privately and generate a shorter, tailored version per application. Rebuilding this document from memory each time is where most of the wasted effort in a Japanese job search goes.
 
 ## Common Mistakes

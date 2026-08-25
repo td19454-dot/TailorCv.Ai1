@@ -190,22 +190,26 @@ The tool parses your resume the way an ATS would before it changes anything, so 
 ### Scenario 1: Applying for a Data Analyst Position
 
 **Job Description Highlights:**
+
 - Proficiency in SQL and Python
 - Experience with data visualization tools
 - Strong analytical skills
 
 **Tailoring Actions:**
+
 - **Professional Summary:** “Data Analyst with over 5 years of experience in SQL and Python, specializing in data visualization and analytics.”
 - **Experience Section:** Focus on previous roles where you utilized SQL and Python, quantifying your contributions (e.g., “Developed a data visualization dashboard that improved decision-making speed by 25%”).
 
 ### Scenario 2: Transitioning to a Marketing Role
 
 **Job Description Highlights:**
+
 - Strong understanding of digital marketing strategies
 - Experience in social media management
 - Excellent communication skills
 
 **Tailoring Actions:**
+
 - **Professional Summary:** “Dynamic professional with a robust background in digital marketing and social media management, committed to driving brand engagement.”
 - **Experience Section:** Include any marketing-related tasks from previous jobs, even if they weren’t your primary role, and emphasize communication skills in your accomplishments.
 

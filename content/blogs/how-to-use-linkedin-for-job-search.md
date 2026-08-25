@@ -37,6 +37,7 @@ Weak headline: [software engineer](https://thetailorcv.com/blog/software-enginee
 Strong headline: Backend Engineer | Python, Node.js, AWS | Building Scalable APIs | Open to Opportunities
 
 Include:
+
 - Your role type
 - 2-3 key skills recruiters search for
 - "Open to Opportunities" if you are actively job searching
@@ -48,6 +49,7 @@ Use a clear, professional photo with a clean background. Profiles with photos re
 ### 3. About / Summary Section
 
 Write 3-5 paragraphs that explain:
+
 - What you do and what you are great at
 - What kinds of problems you have solved
 - What you are looking for next
@@ -74,6 +76,7 @@ Ask 3-5 former colleagues to endorse your top skills. Return the favor.
 ### 6. Open to Work Setting
 
 Enable "Open to Work" in your profile settings. You can choose to make it visible to:
+
 - **Everyone** - A green "#OpenToWork" frame appears on your photo. More visibility, but current employer can see it.
 - **Recruiters only** - Hidden from most users but visible to [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Recruiter subscribers. Better for stealth job searching.
 
@@ -88,6 +91,7 @@ Fill in the job preferences - role types, locations, experience level, and work 
 Go to [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) Jobs, search for your target role and location, and click "Set alert." [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) will email you when new jobs matching your criteria are posted.
 
 For active searches, set alerts for:
+
 - Your target job title
 - Variations (e.g., "Backend Engineer," "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Backend," "API Developer")
 - Location variations (city, remote)
@@ -107,6 +111,7 @@ When viewing a job posting, look at which companies are "also hiring" - these su
 ### Research Before Applying
 
 Click on the "Company" tab of the job posting. Review:
+
 - Company size and growth (headcount trend)
 - Recent news or posts
 - Employee reviews and Glassdoor rating
@@ -119,6 +124,7 @@ Click on the "Company" tab of the job posting. Review:
 ### Connect Strategically
 
 Do not spray connection requests to everyone. Connect with:
+
 - Former colleagues and classmates
 - People at companies you want to work at
 - Recruiters who post about roles in your field
@@ -138,6 +144,7 @@ Post your own content - project write-ups, career lessons, technical insights. E
 ### Use LinkedIn Alumni Tool
 
 Go to your university's [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) page -> click "Alumni." Filter by:
+
 - Company (filter by your target employers)
 - Job function
 - Graduation year (closer to yours = more likely to reply)

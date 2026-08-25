@@ -70,6 +70,7 @@ Remote work runs on written communication.
 Companies that operate across time zones need people who can communicate clearly without real-time collaboration.
 
 Include signals like:
+
 - "Produced weekly async status updates consumed by a distributed 12-person team across 4 time zones"
 - "Authored technical documentation that reduced onboarding time for new engineers from 3 weeks to 5 days"
 - "Managed stakeholder reporting across US, India, and EU teams via async written briefs"
@@ -84,6 +85,7 @@ Every [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-poi
 **Relevant tools for distributed work**
 Remote teams run on specific tools.
 List the ones you have actually used in your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description):
+
 - Communication: Slack, Zoom, Teams
 - Project management: Jira, Asana, Linear, Notion, Trello
 - Documentation: Confluence, Notion, Google Docs
@@ -114,6 +116,7 @@ They want presence, energy, collaboration, and culture contribution.
 
 **Physical presence and team culture signals**
 Mention activities that require or benefit from physical co-location:
+
 - Mentoring junior team members in person
 - Running in-person workshops, brainstorming sessions, or whiteboarding
 - Office-based client relationships
@@ -136,11 +139,13 @@ Hybrid is the most ambiguous of the three.
 It usually means 2-3 days in office per week - but companies define it differently.
 
 For hybrid roles, you need to show:
+
 - Comfort with both independent work and team collaboration
 - Flexibility and adaptability
 - Strong communication in both async and in-person contexts
 
 Your resume should include examples from both modes:
+
 - "Managed project roadmap independently, with weekly in-person stakeholder reviews"
 - "Coordinated a cross-timezone team while maintaining on-site collaboration with local engineering team"
 

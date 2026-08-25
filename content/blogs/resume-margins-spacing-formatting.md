@@ -66,12 +66,14 @@ Add 2-4pt of space after a section header before the first item under it. This c
 ## White Space: The Underrated Element
 
 White space is the empty space on your resume. Used correctly, it:
+
 - Makes the document easier to scan
 - Prevents the overwhelmed feeling of a wall-of-text resume
 - Creates visual separation between sections
 - Signals organization and professionalism
 
 **White space rules:**
+
 - Never fill every inch of white space just to look "full"
 - Let [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) breathe - do not stack 8+ bullets without visual breaks
 - Use consistent spacing between every section
@@ -86,6 +88,7 @@ A clean, well-spaced one-page resume is vastly preferable to a cramped two-page 
 ### Single Column: Strongly Recommended
 
 A single-column layout is:
+
 - **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible**: [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) reads left to right, top to bottom. Single column parses reliably.
 - **Recruiter-preferred**: The natural [scan pattern recruiters use](https://thetailorcv.com/blog/how-recruiters-read-resumes) is a top-to-bottom F-shape - single column supports this perfectly.
 - **Printer-friendly**: No alignment issues across pages
@@ -93,6 +96,7 @@ A single-column layout is:
 ### Two Column: Avoid for Most Uses
 
 Two-column resumes look visually appealing but have serious drawbacks:
+
 - **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) failure**: Many [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems read two-column resumes incorrectly, mixing content from both columns, losing information, or scrambling your experience data
 - **Scan issues**: The right column is often skipped in the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s first scan
 - **Mobile readability**: Two columns are difficult to read on phones
@@ -129,6 +133,7 @@ Never mix indentation styles or spacing patterns within the same section.
 The biggest formatting mistake is inconsistency. Small inconsistencies signal carelessness to recruiters and can confuse [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing.
 
 **Dates:** Use the same format throughout.
+
 - Correct: "Jan 2021 - Mar 2023" or "January 2021 - March 2023" or "01/2021 - 03/2023"
 - Wrong: mixing formats in the same document
 

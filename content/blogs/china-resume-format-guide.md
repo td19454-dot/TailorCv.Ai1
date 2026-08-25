@@ -89,6 +89,12 @@ For applications to multinational companies, check whether an English version, a
 - Use one identical document for every employer type
 - Claim fluency you cannot demonstrate in interview
 
+### Your resume after optimization
+
+![Choosing a resume template in TailorCV, with several ATS-safe layouts shown side by side](public/blog-images/choose-resume-template.webp)
+
+Templates differ in how much space they give a photo and a self-evaluation section, both of which a domestic Chinese employer expects.
+
 > **Tip:** Set your document to A4, not US Letter, before exporting. A Letter-sized file shows wrong margins or crops on local office software, and it is the kind of detail that reads as carelessness before anyone assesses your experience.
 
 ## Common Mistakes

@@ -75,11 +75,13 @@ Around that loop sit the things you need immediately after: a [matching cover le
 Let us just put the real numbers side by side.
 
 **Careerflow (2026):**
+
 - **Free:** $0 — 1 resume, 10 tracked jobs
 - **Premium:** **$23.99/month** — about **$288/year** (or ~$172.99 billed annually)
 - **Premium Plus:** **$44.99/month** — about **$540/year** (or ~$299.99 billed annually)
 
 **TailorCV (2026):**
+
 - **Free:** unlimited ATS scores, everywhere
 - **Pro:** **$59.99/year** ($4.99/week or $7.99/month if you prefer short commitments)
 
@@ -192,6 +194,7 @@ You can [read more about the extension here](/extension). Careerflow's autofill 
 ## So Who Should Pick Which?
 
 **Pick Careerflow if:**
+
 - Your LinkedIn profile is your weak point and recruiters are not finding you
 - Application autofill would save you real time and frustration
 - You want personal branding help — LinkedIn posts, presence, visibility
@@ -199,6 +202,7 @@ You can [read more about the extension here](/extension). Careerflow's autofill 
 - The USD pricing genuinely is not a factor for you
 
 **Pick TailorCV if:**
+
 - You are applying and hearing nothing back, and you need to know why
 - You want the resume actually rewritten for each job, not a checklist to action yourself
 - You want unlimited free ATS scores rather than one free resume

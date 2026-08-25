@@ -39,6 +39,7 @@ Check your data analyst resume match score with [TailorCV's ATS checker](https:/
 ## Why Data Analyst Resume Matching Is Nuanced
 
 Generic [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) resumes fail because:
+
 1. They list tools without context ("SQL, Python, Tableau")
 2. They describe activities without business impact ("analyzed data to support decisions")
 3. They do not reflect the specific analytics domain the company operates in
@@ -89,6 +90,7 @@ Then include both layers of keywords.
 What type of analytics does this role do?
 
 Read the JD and answer:
+
 - What business questions does this analyst answer?
 - Which stakeholders do they serve?
 - Which tools are required?
@@ -106,6 +108,7 @@ List them separately.
 ### Step 3: Audit Your Resume Against Both Lists
 
 For each keyword:
+
 - Present in resume? (use exact JD language)
 - Present but wrong language? (fix synonym)
 - Missing but genuine? (add it)
@@ -145,11 +148,13 @@ Target 75%+ for mid-level [data analyst](https://thetailorcv.com/blog/data-analy
 **JD Keywords:** SQL, Python, dbt, BigQuery, Looker, A/B testing, product funnel analysis, retention analytics, cross-functional collaboration, stakeholder reporting
 
 **Before:**
+
 - Worked with databases to analyze user behavior
 - Created reports for business teams
 - Helped the product team make data-driven decisions
 
 **After:**
+
 - Queried 500M+ user event records in BigQuery using SQL and Python to surface product funnel drop-off insights, directly informing 3 feature prioritization decisions
 - Built Looker dashboards for DAU, retention, and activation metrics consumed by product, engineering, and growth teams weekly
 - Designed and analyzed 8 A/B tests in Python to evaluate new onboarding flows, achieving a 17% improvement in D7 retention

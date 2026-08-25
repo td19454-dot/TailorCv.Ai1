@@ -186,12 +186,14 @@ To illustrate how to approach a case interview, let’s consider a hypothetical 
 
 ### Step 1: Clarifying Questions
 Before diving into analysis, ask clarifying questions to understand the context better:
+
 - What specific product categories are experiencing declines?
 - Are there any recent changes in marketing strategies?
 - How does the company’s pricing compare to competitors?
 
 ### Step 2: Structuring Your Analysis
 Utilize a framework like the 4Ps (Product, Price, Place, Promotion) to structure your approach:
+
 - **Product:** Analyze whether product quality or variety has changed.
 - **Price:** Consider if pricing is competitive and if discounts or promotions are being effectively utilized.
 - **Place:** Evaluate if distribution channels have been impacted or if online sales are lagging.
@@ -199,12 +201,14 @@ Utilize a framework like the 4Ps (Product, Price, Place, Promotion) to structure
 
 ### Step 3: Data Interpretation
 Based on the information gathered, identify key data points:
+
 - Sales trends over the past year
 - Customer feedback and satisfaction ratings
 - Competitor analysis
 
 ### Step 4: Formulating Solutions
 Propose actionable solutions based on your analysis:
+
 - Introduce new product lines based on market demand.
 - Revise pricing strategies to enhance competitiveness.
 - Increase online marketing efforts to drive traffic.
@@ -244,6 +248,7 @@ A tech firm is launching a new gadget. What factors should they consider to ensu
 ## Enhancing Your Case Interview Skills with Resources
 
 To further refine your case interview skills, consider leveraging various resources:
+
 - Utilize the [mock interview](https://www.thetailorcv.com/mock-interview) platform for practice.
 - Access [ATS checker](https://www.thetailorcv.com/solutions) to ensure your resume aligns with job descriptions.
 - Explore [cover letter](https://www.thetailorcv.com/cover-letter) templates to complement your applications.

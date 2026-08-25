@@ -87,6 +87,26 @@ The specific differences between UK and other markets are small individually and
 - Send one identical CV everywhere
 - Add a photo, date of birth or marital status
 
+### Your resume after optimization
+
+![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
+
+Font size, spacing and template controls with a live page counter — which is what keeps a UK graduate CV to the single page convention expects.
+
+## Scenarios: what to cut
+
+### Scenario 1: You have a placement year and three part-time jobs
+
+Keep the placement in full, compress the part-time roles into one line each, and cut anything that does not show a transferable outcome.
+
+### Scenario 2: You have no work experience at all
+
+Lead with a substantial project or society role described with outcomes. A committee position run properly reads better than a padded list of modules.
+
+### Scenario 3: You are applying to both tech and consulting
+
+Two versions, not one hybrid. The skills section and the ordering change; the underlying content does not.
+
 > **Tip:** Keep it to one page and lead with a 2:1 or First if you have one. UK graduate screening still filters heavily on classification, and burying it below the fold works against you.
 
 ## Common Mistakes

@@ -94,6 +94,7 @@ They are scanning for the top 3-5 must-have skills.
 Can they find them in the first half of your resume in 6 seconds?
 
 **What to do:** Put your most JD-critical skills:
+
 - In your professional summary (top of resume)
 - In your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) (early in the resume)
 - In your first 2 bullets in your most recent role
@@ -156,11 +157,13 @@ Resumes that pass the 6-second scan get a second, longer look.
 The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) now spends 20-30 seconds reading more carefully.
 
 In that time, they are answering:
+
 - "Is this person a legitimate fit or just keyword-matching?"
 - "What is their most impressive accomplishment?"
 - "What would I ask them in an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)?"
 
 **What to do:**
+
 - Ensure your top accomplishment is visible, specific, and relevant to this role
 - Write at least one bullet that would make a recruiter want to ask a [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) question
 - Make your summary read like a pitch, not a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)

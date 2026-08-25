@@ -57,6 +57,7 @@ They filter the dashboard first.
 Your uploaded resume only gets opened if you make it past that initial summary screen.
 
 This means:
+
 - Your **[LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)** matters as much as your resume for Easy Apply
 - Your **title and skills** need to match the JD immediately
 - Your **match percentage** on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) affects visibility
@@ -117,6 +118,7 @@ No - it is not necessary for every single Easy Apply you send.
 Use this strategy:
 
 **Tier your applications:**
+
 - **Priority roles** (dream companies, great fit): Full tailoring + [ATS score check](https://thetailorcv.com/blog/ats-score-guide) + updated uploaded resume
 - **Good fit roles**: Upload a role-type base version (e.g., your "[product manager](https://thetailorcv.com/blog/product-manager-resume-2026)" base)
 - **Exploratory/volume applications**: Use your best general version, accept lower return
@@ -138,6 +140,7 @@ Check [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-l
 ### Match the Exact Job Title
 
 If the posting says "Senior [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026)," use that exact phrase in:
+
 - Your most recent role title (if it is accurate or close)
 - Your [professional summary](https://thetailorcv.com/blog/how-to-write-resume-summary) ("Senior Data Analyst with 5 years...")
 - Your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) header if relevant
@@ -164,6 +167,7 @@ Everything else is supporting evidence.
 Complex [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) cause parsing failures that break your profile sync.
 
 **Avoid:**
+
 - Tables inside your resume body
 - Multi-column layouts
 - Text boxes
@@ -178,6 +182,7 @@ Use clean, single-column formatting.
 ## Part 4: The Screening Questions - Where Most Apply Applications Lose
 
 Many Easy Apply roles include screening questions:
+
 - Years of experience in [skill]
 - Are you authorized to work in [country]?
 - Do you have [specific certification]?
@@ -188,6 +193,7 @@ These questions are filters.
 Wrong answers (or inconsistent answers) disqualify you before your resume is seen.
 
 **Rules:**
+
 - Answer honestly - inconsistency between your application and resume flags you immediately
 - For "years of experience" questions, use conservative-honest numbers (count only real, direct experience)
 - For salary questions: if you have done market research (use Levels.fyi, Glassdoor), give a realistic range
@@ -199,11 +205,13 @@ Read [how to negotiate a salary offer](https://thetailorcv.com/blog/how-to-negot
 ## Part 5: The Volume Strategy - When to Use Easy Apply at Scale
 
 Easy Apply at scale makes sense when:
+
 - You are in an early discovery phase and want to see what responses you get
 - The roles are similar enough that one base version of your resume covers most of them
 - You are applying to many small companies where [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is lighter
 
 Easy Apply at scale does NOT work well when:
+
 - You are targeting specific companies you genuinely want (these deserve full tailoring)
 - The roles require specialized qualifications (your [generic resume](https://thetailorcv.com/blog/how-ats-detects-generic-resume) will not match)
 - You are in a highly competitive field where every application needs to be strong
@@ -247,6 +255,7 @@ Also read [how to follow up after an interview](https://thetailorcv.com/blog/how
 ## The Easy Apply Optimization Checklist
 
 Before clicking Apply:
+
 - [ ] My uploaded resume is tailored for this role (or at minimum, this role type)
 - [ ] My LinkedIn headline includes relevant keywords for this type of role
 - [ ] My skills section includes the top skills from the job description
@@ -255,6 +264,7 @@ Before clicking Apply:
 - [ ] I have checked my [ATS keyword match score](https://thetailorcv.com/blog/improve-resume-job-match-score) for priority roles
 
 After clicking Apply:
+
 - [ ] Added the application to my tracker with resume version noted
 - [ ] Considered a follow-up message to the hiring manager for priority roles
 - [ ] Set a reminder to follow up in 7-10 days if no response
@@ -319,6 +329,7 @@ It is also one of the fastest ways to waste your time if you use it wrong.
 
 The candidates who win through Easy Apply are not the ones clicking fastest.
 They are the ones who:
+
 - Keep their [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) and uploaded resume relevant and current
 - Tailor for the roles they genuinely want
 - [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) like professionals

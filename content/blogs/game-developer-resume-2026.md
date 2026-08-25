@@ -131,6 +131,7 @@ Mobile Game Studio | Mar 2022 - Present
 ## Game Developer Portfolio Tips
 
 Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is critical. Include:
+
 - Playable builds (itch.io, Steam, WebGL, or downloadable)
 - Gameplay videos or trailers
 - Code samples ([GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)) showing clean architecture

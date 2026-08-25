@@ -50,6 +50,7 @@ This guide shows you how to fix it.
 When you apply to a role, the recruiter almost always looks at your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide).
 
 It is their way of:
+
 - Verifying the resume is accurate
 - Getting a fuller picture of who you are
 - Checking your network and mutual connections
@@ -82,6 +83,7 @@ The same areas of expertise.
 The same career direction.
 
 Where they differ:
+
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) can be longer and more narrative
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) includes sections your resume does not (recommendations, featured projects, volunteer work, publications)
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) can be slightly less tailored, since it serves multiple audiences
@@ -121,6 +123,7 @@ The [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) i
 The [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) summary can be slightly broader - but not contradictory.
 
 A [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) summary should:
+
 - Reflect your current career direction (not your last direction)
 - Use keywords from the types of roles you are targeting
 - Include 1-2 of your most significant career accomplishments
@@ -138,6 +141,7 @@ Dates must match.
 Titles must match (or be close - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) does not require the same precision as a formal resume).
 
 Inconsistencies that raise flags:
+
 - A role on your resume that is not on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - Dates that differ by more than one month
 - A title on your resume that is significantly different from what [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) shows
@@ -246,6 +250,7 @@ Or both Senior Engineer and Engineering Manager roles.
 [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) can only show one thing.
 
 In this case:
+
 - Set your [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) to reflect your primary target role type (the one you most want)
 - For secondary role types, rely more heavily on your [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) to carry the match
 - Consider whether pursuing two very different role types simultaneously is diluting your search

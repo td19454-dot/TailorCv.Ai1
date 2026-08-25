@@ -1876,3 +1876,83 @@ if (document.readyState === "loading") {
 } else {
   setTimeout(tcxIntroLines, 30);
 }
+
+/* A standalone bold-only paragraph acting as a label ("**\"What are your
+   salary expectations?\"**") followed by its explanation renders as two loose
+   paragraphs, so the label reads as stray bold text rather than the heading it
+   is. Where several such pairs run together, give each pair the same card
+   treatment an "### heading + prose" run already gets. Pure restyle: the
+   bold text becomes the card's heading, nothing is reworded. */
+const tcxLabelCards = () => {
+  const content = document.querySelector(".post-content");
+  if (!content) return;
+  const BOXED =
+    ".faq-box, .key-takeaways-box, .article-bottomline, .blog-ats, .blog-tpl, .tpl-block, " +
+    ".end-cta, .article-cta-strip, .blog-rate, .callout-box, .step-card, .dd-grid, .ba-block, " +
+    ".lead-run, .point-run, .row-lines";
+
+  const isLabel = (el) => {
+    if (!el || el.tagName !== "P" || el.closest(BOXED)) return false;
+    const kids = Array.from(el.childNodes).filter(
+      (n) => n.nodeType !== Node.TEXT_NODE || n.textContent.trim()
+    );
+    if (kids.length !== 1) return false;
+    const only = kids[0];
+    if (!only.tagName || !/^(STRONG|B)$/.test(only.tagName)) return false;
+    const txt = (el.textContent || "").trim();
+    return txt.length >= 3 && txt.length <= 110;
+  };
+  const isBody = (el) =>
+    el && el.tagName === "P" && !el.closest(BOXED) && !isLabel(el) &&
+    !el.querySelector("img") && (el.textContent || "").trim().length > 25;
+
+  const kids = Array.from(content.children);
+  const unit = (i) => {
+    if (!isLabel(kids[i])) return null;
+    const body = [];
+    let j = i + 1;
+    while (j < kids.length && isBody(kids[j]) && body.length < 2) {
+      body.push(kids[j]);
+      j++;
+    }
+    if (!body.length) return null;
+    return { end: j, label: kids[i], body: body };
+  };
+
+  let i = 0;
+  while (i < kids.length) {
+    const units = [];
+    let j = i;
+    for (;;) {
+      const u = unit(j);
+      if (!u) break;
+      units.push(u);
+      j = u.end;
+    }
+    // two or more in a row - a single pair reads fine as plain prose
+    if (units.length >= 2) {
+      const run = document.createElement("div");
+      run.className = "point-run";
+      units[0].label.before(run);
+      units.forEach((u) => {
+        const card = document.createElement("section");
+        card.className = "point-card";
+        const h = document.createElement("h3");
+        h.textContent = (u.label.textContent || "").trim();
+        card.appendChild(h);
+        u.label.remove();
+        u.body.forEach((p) => card.appendChild(p));
+        run.appendChild(card);
+      });
+      i = j;
+    } else {
+      i = units.length ? j : i + 1;
+    }
+  }
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxLabelCards, 10));
+} else {
+  setTimeout(tcxLabelCards, 10);
+}

@@ -34,6 +34,7 @@ Do not use nicknames unless they are the name you exclusively use professionally
 
 ### 2. Professional Email Address
 Your email is the most-used contact method in hiring. Rules:
+
 - Use a professional address: **firstname.lastname@gmail.com** or **firstlast@gmail.com**
 - Avoid unprofessional addresses: **partytime99@**, **coolkid2003@**, **gamerguy@**
 - Avoid old institutional addresses you no longer monitor (university address after graduation)
@@ -47,6 +48,7 @@ Your email is the most-used contact method in hiring. Rules:
 
 ### 4. City and State/Province (Not Full Address)
 In 2026, listing your full street address on a resume is outdated and unnecessary:
+
 - It takes up space
 - It raises privacy and security concerns
 - Employers don't need it until an offer stage
@@ -64,6 +66,7 @@ Ensure your LinkedIn profile is consistent with your resume - different job date
 
 ### 6. GitHub (For Technical Roles)
 For software engineers, data scientists, DevOps, and other technical roles, a [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) link is expected and valuable. Only include it if:
+
 - Your profile is active and public
 - Your repositories are clean, documented, and representative of your skills
 

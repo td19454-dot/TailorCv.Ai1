@@ -36,12 +36,14 @@ Before the next application, make sure your [resume](https://thetailorcv.com/blo
 You applied, never heard back, or received an automated "We've decided to move forward with other candidates" email.
 
 What it likely means:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keyword mismatch - your resume did not match the job description well enough
 - Too many applicants - companies receive hundreds of applications for single roles
 - Experience gap - you were under or over-qualified
 - Role was filled internally or cancelled
 
 What to do:
+
 - Run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) against that specific job description
 - Check the job posting for keywords your resume missed
 - Add any missing certifications or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that would address experience gaps
@@ -51,12 +53,14 @@ What to do:
 You had a 15-30 minute [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) call and did not advance.
 
 What it likely means:
+
 - Compensation expectations mismatch
 - Communication or clarity issues in the phone screen
 - Red flag from a specific question (unclear about role, poor research on company)
 - You were not specific enough about your experience
 
 What to do:
+
 - Reflect on questions you struggled with - were you too vague? Too salary-focused too early?
 - Prepare a tighter "Tell me about yourself" answer
 - Research the company more thoroughly before your next phone screen
@@ -66,12 +70,14 @@ What to do:
 You completed a coding test, [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide), or case study and did not advance.
 
 What it likely means:
+
 - DSA gaps - unfamiliar problem patterns
 - Incorrect solution without catching your own errors
 - Poor problem-solving communication (not thinking aloud)
 - [system design](https://thetailorcv.com/blog/system-design-interview-guide) gaps for senior roles
 
 What to do:
+
 - Practice LeetCode consistently - aim for 3-5 problems per week minimum
 - Practice talking through your logic with the [mock interview tool](https://thetailorcv.com/mock-interview)
 - Review problems you could not solve and understand the pattern
@@ -82,6 +88,7 @@ What to do:
 You made it to the final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and received a rejection after.
 
 What it likely means:
+
 - Another candidate was marginally better fit for this specific team
 - Culture or values misalignment observed
 - Compensation gap discovered late
@@ -90,6 +97,7 @@ What it likely means:
 This rejection is the hardest and the most random. At the final round, you have already proven ability. The decision is often marginal.
 
 What to do:
+
 - Request feedback - in final rounds, companies are more likely to share it
 - Reflect on whether anything felt off during the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - Do not over-interpret it - a final round rejection usually means you were qualified, just not the winner of that particular competition
@@ -105,6 +113,7 @@ Most rejection emails are generic automated messages. But when a real person rea
 "Thank you for letting me know. I genuinely enjoyed the process and learning more about [Company] and the role. I have a lot of respect for what the team is building. If a relevant position opens up in the future, I would welcome the chance to reconnect."
 
 This response:
+
 - Is professional and gracious
 - Leaves the door open for future opportunities
 - Takes less than 30 seconds to read

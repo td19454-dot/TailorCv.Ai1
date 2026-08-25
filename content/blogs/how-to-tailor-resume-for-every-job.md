@@ -33,6 +33,7 @@ This is not about lying.
 This is about matching your story to the role you want.
 
 You will learn:
+
 - what [resume tailoring](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job) really means
 - how to extract [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) keywords
 - how to rewrite your summary, skills, and [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
@@ -110,6 +111,7 @@ Read it carefully.
 Every line matters.
 
 Pay attention to:
+
 - required skills
 - preferred qualifications
 - responsibilities
@@ -139,6 +141,7 @@ This is not word salad.
 This is the language [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) uses.
 
 List these keywords:
+
 - titles and role names
 - technical skills
 - industry terms
@@ -146,6 +149,7 @@ List these keywords:
 - metrics and outcomes
 
 For example:
+
 - "customer success" vs "client success"
 - "full stack developer" vs "backend engineer"
 - "SEO optimization" vs "search optimization"
@@ -174,6 +178,7 @@ If the JD says "drive customer retention", use the same phrase.
 If the JD says "lead analytics initiatives", do the same.
 
 This does two things:
+
 - it improves [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match
 - it makes your resume read like a fit for the role
 
@@ -190,6 +195,7 @@ Your summary is the first thing recruiters read.
 It should be tailored first.
 
 Your summary should include:
+
 - your title
 - the job title you are applying for
 - your top qualifications
@@ -213,12 +219,14 @@ Use the list of must-have keywords.
 Place the most relevant skills first.
 
 If the job requires:
+
 - AWS
 - Terraform
 - Kubernetes
 - CI/CD
 
 Then your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) should look like:
+
 - AWS
 - Terraform
 - Kubernetes
@@ -243,18 +251,22 @@ Put the strongest, most relevant bullets first.
 If the job asks for "customer-facing analytics tools", make sure you have a bullet about that near the top.
 
 Rewrite bullets to include:
+
 - context
 - action
 - result
 - keyword
 
 Before:
+
 - Built a reporting dashboard for the operations team
 
 After:
+
 - Built a reporting dashboard using Python and Flask to improve operations visibility and reduce reporting time by 30%
 
 If the job requires "process automation", add:
+
 - Automated weekly reconciliation workflows with Python and Airflow, reducing manual effort by 40%
 
 Do not include every job detail.
@@ -275,6 +287,7 @@ Use tools to identify [missing keywords](https://thetailorcv.com/blog/hidden-key
 A strong [ATS score](https://thetailorcv.com/blog/ats-score-guide) means your resume is visible to recruiters.
 
 If the score is low:
+
 - add [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
 - simplify sections
 - remove unusual formatting
@@ -312,6 +325,7 @@ After: Designed and built REST APIs with Python and Flask to support new product
 ```
 
 The after version:
+
 - uses the exact words from the job posting
 - shows [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - focuses on what the employer wants
@@ -359,6 +373,7 @@ You still own the final version.
 But the tool does the heavy editing.
 
 This is especially useful when:
+
 - applying to multiple roles in the same week
 - shifting between industries
 - trying to match different seniority levels

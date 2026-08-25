@@ -54,6 +54,7 @@ They know the perfect candidate is not applying.
 They are hiring the best available candidate who can grow into the role.
 
 If you can demonstrate:
+
 - Core skill match (even at 70%)
 - A clear ability to learn the rest
 - Motivation and genuine fit
@@ -75,6 +76,7 @@ Apply when you meet **at least 60-70% of the required qualifications** and:
 - The role is one level above your current position (a stretch, not a leap of faith)
 
 Do not apply when:
+
 - The missing requirements are regulatory (you cannot practice law without a bar license)
 - The technical skill gap is foundational and would take years to close
 - More than half the core requirements are genuinely missing
@@ -103,6 +105,7 @@ Create a simple side-by-side comparison.
 | Cross-functional campaign management | Yes - multiple examples |
 
 This map tells you:
+
 - Where you are strong (lead with these)
 - Where you are close (frame as developing)
 - What to honestly omit (do not fabricate)
@@ -202,6 +205,7 @@ When you are underqualified, a strong [cover letter](https://thetailorcv.com/blo
 
 
 Use it to:
+
 - Acknowledge the stretch directly (without apologizing)
 - Show genuine enthusiasm for the company and role
 - Highlight two or three specific ways your background is uniquely relevant

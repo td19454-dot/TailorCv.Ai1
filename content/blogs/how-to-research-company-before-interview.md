@@ -82,6 +82,7 @@ Research the specific team, not just the company.
 Re-read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) carefully, multiple times.
 
 Extract:
+
 - What specific problems does this role solve?
 - Which skills are listed first? (These are usually most important)
 - What does "success" look like in this role? (Often stated in the JD)

@@ -77,6 +77,20 @@ Verify current rules before relying on them. Route lengths, thresholds and requi
 
 **Because of this, your job search during this period can be genuinely broader than a search constrained by sponsorship availability**, worth applying to smaller employers, startups and organisations you might otherwise assume could not consider an international candidate, since none of the usual sponsorship barriers apply during this specific window.
 
+## Scenarios: timing the switch
+
+### Scenario 1: You are still on a student visa and about to graduate
+
+Apply for the Graduate Route while you are in the UK and your student visa is still valid. Letting it lapse first closes the route entirely.
+
+### Scenario 2: You have a job offer already
+
+Compare the Graduate Route against going straight onto a Skilled Worker visa — an employer with a sponsor licence may prefer to sponsor immediately.
+
+### Scenario 3: Your Graduate Route is running out
+
+Start the sponsorship conversation months before expiry, not weeks. Sponsored applications take time an expiring visa does not give you.
+
 > **Tip:** Apply for the Graduate Route before your student visa expires — you must be in the UK and still hold valid student status. Letting it lapse first closes the route entirely.
 
 ## Common Mistakes

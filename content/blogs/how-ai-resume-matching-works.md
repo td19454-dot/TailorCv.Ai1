@@ -49,6 +49,7 @@ Workarounds were simple: stuff the right keywords and pass.
 ### Modern AI ATS (2019-Present)
 
 Modern systems use:
+
 - **Natural Language Processing (NLP)** - understands context, not just keywords
 - **Semantic matching** - connects "client acquisition" with "business development"
 - **[machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) ranking** - learns what successful hires looked like and ranks similar candidates higher
@@ -67,6 +68,7 @@ Context matters as much as the keyword itself.
 
 When you upload your resume, the AI first parses it into structured data.
 It extracts:
+
 - Name, contact information
 - Work experience (title, company, dates, responsibilities)
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) (degree, institution, graduation year)
@@ -83,6 +85,7 @@ Read [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-
 
 Simultaneously, the AI analyzes the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 It identifies:
+
 - Required skills (with higher weights assigned)
 - Preferred skills
 - Experience level signals
@@ -111,6 +114,7 @@ Modern matching goes beyond exact keywords:
 The AI generates a composite match score.
 
 Factors in the score:
+
 - Keyword coverage (30-40%)
 - Skills alignment (20-25%)
 - Experience relevance and depth (15-20%)
@@ -123,6 +127,7 @@ Most recruiters only review the top 10-20% of applicants.
 ### Step 5: Recruiter Interface
 
 The [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) sees a ranked list with:
+
 - Match score percentage
 - Highlighted matching skills
 - Experience summary
@@ -208,6 +213,7 @@ AI evaluates context, not just keyword presence.
 **Low context:** Skills: Python, SQL, Tableau
 
 **High context:**
+
 - Built Python and SQL data pipelines processing 3M daily events
 - Created Tableau dashboards used by executive stakeholders to track product KPIs
 
@@ -233,6 +239,7 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 Now that AI screens resumes, it makes sense to use AI to build them.
 
 Tools like TailorCV use AI to:
+
 1. Read and analyze the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Compare it to your existing resume
 3. Identify keyword gaps and match weaknesses

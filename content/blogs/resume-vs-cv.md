@@ -44,6 +44,7 @@ Before you send either, check your document against the job with the [TailorCV A
 A resume is a concise, targeted document - typically one to two pages - that highlights your most relevant experience, skills, and achievements for a specific job application. You tailor it for each role. You cut anything irrelevant.
 
 Resumes are the standard document for:
+
 - Industry jobs (tech, finance, marketing, operations, sales)
 - Corporate and private-sector roles
 - Applications in the US, Canada, and Australia
@@ -57,6 +58,7 @@ Read [what is a resume and why it matters](https://thetailorcv.com/blog/what-is-
 A CV (curriculum vitae, Latin for "course of life") is a comprehensive professional document that records your complete academic and professional history. It grows over your career and is rarely shortened or cut. Everything stays in.
 
 CVs are standard for:
+
 - Academic positions (faculty, lecturer, researcher)
 - Research grants and fellowships
 - Medical residencies and clinical roles
@@ -64,6 +66,7 @@ CVs are standard for:
 - Graduate school applications
 
 A CV typically includes:
+
 - Full employment history
 - All publications (journal articles, books, chapters)
 - Conference presentations
@@ -148,6 +151,7 @@ When in doubt, check what is standard in the industry and location. A two-page t
 
 
 If you are applying to industry roles:
+
 - Use a resume, not a CV
 - Use an [ATS-friendly template](https://www.thetailorcv.com/templates)
 - Check your score with the [ATS checker](https://www.thetailorcv.com/solutions)

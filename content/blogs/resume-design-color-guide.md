@@ -32,6 +32,7 @@ Start with an [ATS-friendly template](https://www.thetailorcv.com/templates) tha
 A beautifully designed resume that fails [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) is worthless. A plain but well-written, keyword-optimized resume that passes [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and earns a 30-second read from a recruiter will always outperform it.
 
 Design is secondary to:
+
 1. Keywords and [ATS score](https://thetailorcv.com/blog/ats-score-guide)
 2. Quantified achievements
 3. Clean, scannable structure
@@ -48,12 +49,14 @@ Design is an enhancement, not a substitute. Read [how recruiters read resumes in
 A completely black-and-white resume is professional in every industry. But a subtle use of color - primarily for section headers or your name - can improve visual hierarchy and make key sections easier to find during the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes)'s scan.
 
 **Color use that works:**
+
 - A single accent color for section headings
 - Your name in a deep navy, dark teal, or charcoal
 - Thin horizontal rules in a muted accent color
 - Subtle color in a header bar (very light background or colored name block)
 
 **Color use that backfires:**
+
 - Bright, loud colors (red, orange, yellow, hot pink)
 - Multiple accent colors throughout
 - Colored body text (beyond a single accent)
@@ -146,6 +149,7 @@ Background colors behind your experience sections can make text difficult to rea
 ## The ATS Design Test
 
 No matter how visually impressive your resume looks, it must pass [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). The safest design choices:
+
 - Single column
 - No tables or text boxes
 - No graphics, skill charts, or icons embedded as images

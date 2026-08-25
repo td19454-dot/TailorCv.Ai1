@@ -30,6 +30,7 @@ Before the phone screen, make sure your resume got you here for the right reason
 ## What Is the Purpose of a Phone Interview?
 
 The phone screen typically aims to:
+
 - Verify your basic qualifications and interest
 - Confirm logistics (location, availability, work authorization, notice period)
 - Discuss salary expectations
@@ -137,6 +138,7 @@ Recruiters screen out candidates who seem disinterested. Convey genuine enthusia
 ## How to Close a Phone Interview
 
 At the end:
+
 - Ask your prepared questions
 - Express genuine interest: "This sounds like a great fit, and I'm very interested in moving forward."
 - Ask about next steps: "What are the next steps in the process?"

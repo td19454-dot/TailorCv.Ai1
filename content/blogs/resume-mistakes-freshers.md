@@ -33,6 +33,7 @@ That means even talented candidates get rejected because of simple resume mistak
 If you've been wondering why your applications are not getting responses, this guide will help you understand the biggest resume mistakes every fresher makes and how to fix them effectively.
 
 You'll also learn:
+
 - How [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems work in 2026
 - What recruiters actually look for
 - How to improve resume visibility
@@ -44,6 +45,7 @@ You'll also learn:
 The modern hiring process is heavily driven by automation.
 
 Most companies use:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) software
 - AI resume screening
 - Keyword-matching systems
@@ -56,6 +58,7 @@ This is why [resume optimization](https://thetailorcv.com/blog/resume-optimizati
 ### What Happens During ATS Screening
 
 An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system scans resumes for:
+
 - Keywords
 - Skills
 - Experience relevance
@@ -98,6 +101,7 @@ Sending the same [generic resume](https://thetailorcv.com/blog/how-ats-detects-g
 "Computer Science graduate skilled in Java, SQL, and REST APIs seeking an entry-level [backend developer](https://thetailorcv.com/blog/backend-developer-resume-2026) role."
 
 The second example:
+
 - Includes relevant keywords
 - Matches the job role
 - Improves [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
@@ -151,6 +155,7 @@ Recruiters dislike generic statements because they provide no value.
 "B.Tech Computer Science fresher with hands-on experience in Python, React, and SQL through academic [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and internships."
 
 This version:
+
 - Includes technical keywords
 - Shows direction
 - Improves [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) confidence
@@ -169,6 +174,7 @@ This version:
 - Full home address
 
 Recruiters care more about:
+
 - Skills
 - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
@@ -182,6 +188,7 @@ Keep your resume focused and professional.
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems rely heavily on keyword matching.
 
 If a job posting mentions:
+
 - Python
 - React
 - SQL
@@ -225,6 +232,7 @@ Recruiters want proof.
 "Led a 4-member team project to build an attendance management system using Python and MySQL."
 
 This demonstrates:
+
 - Leadership
 - Technical ability
 - Teamwork
@@ -249,6 +257,7 @@ Unfortunately, many candidates describe [projects](https://thetailorcv.com/blog/
 "Developed a responsive e-commerce website using HTML, CSS, JavaScript, and Bootstrap with mobile optimization and user authentication features."
 
 The second version sounds:
+
 - More professional
 - More detailed
 - More credible
@@ -260,6 +269,7 @@ For additional guidance, read:
 ## Using Too Many Buzzwords
 
 Recruiters are tired of seeing words like:
+
 - Hardworking
 - Dedicated
 - Passionate
@@ -345,6 +355,7 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 
 
 This is especially important for:
+
 - Software engineering
 - Data science
 - Cloud computing
@@ -352,6 +363,7 @@ This is especially important for:
 - [cybersecurity](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 
 A properly optimized technical [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) improves:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) matching
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) visibility
 - Searchability
@@ -362,6 +374,7 @@ You can learn more here:
 ## What Recruiters Actually Want in a Fresher Resume
 
 Recruiters focus on:
+
 - Relevant skills
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 - Practical [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
@@ -402,10 +415,12 @@ Before applying to any role, review this checklist.
 ### Use Strong Action Verbs
 
 Replace weak phrases like:
+
 - Worked on
 - Helped with
 
 With:
+
 - Developed
 - Implemented
 - Automated
@@ -415,6 +430,7 @@ With:
 ### Add Numbers Wherever Possible
 
 Examples:
+
 - "Improved page speed by 25%"
 - "Analyzed 5,000+ rows of data"
 - "Reduced loading time by 30%"
@@ -424,6 +440,7 @@ Metrics improve credibility significantly.
 ### Tailor Your Resume for Every Job
 
 This improves:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores
 - Keyword relevance
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) engagement
@@ -438,10 +455,12 @@ A strong resume gets interviews.
 Strong [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) performance gets job offers.
 
 [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) can improve preparation using:
+
 - [Interview Preparation Resources](https://thetailorcv.com/interview-prep)
 - [Mock Interview Practice](https://thetailorcv.com/mock-interview)
 
 These tools help candidates:
+
 - Practice common [interview questions](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
 - Build confidence
 - Improve communication
@@ -484,6 +503,7 @@ You can also analyze your [ATS score](https://thetailorcv.com/blog/ats-score-gui
 AI-powered hiring systems are becoming smarter.
 
 Modern screening tools now analyze:
+
 - Context relevance
 - Skill alignment
 - Resume readability
@@ -491,6 +511,7 @@ Modern screening tools now analyze:
 - Semantic keyword matching
 
 That means resumes must sound:
+
 - Human
 - Clear
 - Specific
@@ -503,6 +524,7 @@ Generic resumes perform poorly in modern hiring systems.
 Yes - when used properly.
 
 AI resume tools can help:
+
 - Improve [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
 - Suggest [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
 - Optimize wording
@@ -525,6 +547,7 @@ Using the same generic resume for every application is the biggest mistake. Tail
 ### How do I make my resume ATS-friendly?
 
 Use:
+
 - Simple formatting
 - Relevant keywords
 - Clear headings
@@ -540,6 +563,7 @@ Avoid graphics and complex layouts.
 ### Do recruiters care about resume design?
 
 Recruiters care more about:
+
 - Skills
 - Relevance
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) compatibility
@@ -555,6 +579,7 @@ Yes. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-f
 ### Can ATS systems reject resumes automatically?
 
 Yes. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems can automatically rank resumes lower if they:
+
 - Lack keywords
 - Use poor formatting
 - Have parsing issues
@@ -589,12 +614,14 @@ The job market in 2026 is more competitive than ever.
 But most [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) still make simple resume mistakes that reduce their chances of getting interviews.
 
 The good news is that fixing these mistakes can dramatically improve:
+
 - [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scores
 - [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) visibility
 - Resume quality
 - [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) opportunities
 
 Focus on:
+
 - [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) formatting
 - Relevant keywords
 - Strong project descriptions

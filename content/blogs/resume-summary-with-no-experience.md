@@ -37,6 +37,7 @@ It is not a long paragraph.
 It should be a quick snapshot of your most relevant skills, training, and goals.
 
 A strong [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) answers:
+
 - Who are you?
 - What can you do?
 - Why should we [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) you?
@@ -54,6 +55,7 @@ Some believe the summary is optional.
 Some think they must wait until they have work experience.
 
 When a [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) sees no summary, they often think:
+
 - The applicant did not care enough to write one
 - The resume is generic
 - The candidate does not know how to sell themselves

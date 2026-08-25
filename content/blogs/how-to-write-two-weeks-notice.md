@@ -30,6 +30,7 @@ This complements the broader [how to quit your job professionally guide](https:/
 ## What Is a Two Weeks Notice?
 
 A two weeks notice is:
+
 - A formal, written resignation notification
 - Given to your manager (and often HR)
 - Stating your intent to resign and your last working day
@@ -50,6 +51,7 @@ Read the [resignation conversation guide](https://thetailorcv.com/blog/how-to-qu
 ## What to Include in a Two Weeks Notice
 
 A professional two weeks notice includes:
+
 1. The date
 2. A clear statement of resignation
 3. Your last working day

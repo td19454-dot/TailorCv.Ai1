@@ -26,6 +26,7 @@ keywords: how to list certifications on resume, certifications on resume 2026, w
 ## Why Certifications Matter
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
+
 - Prove specific skills and knowledge
 - Serve as [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score) (many jobs require specific certs)
 - Differentiate you from candidates without them
@@ -55,6 +56,7 @@ If you have just one certification, you can include it within or right after you
 ### Option 4: After Your Name (For Critical Credentials)
 
 For credentials that are part of your professional identity, add them after your name:
+
 - "Jane Smith, CPA"
 - "John Doe, PMP"
 - "Priya Sharma, RN, BSN"
@@ -68,6 +70,7 @@ Standard format:
 Certification Name | Issuing Organization | Year (and expiration if applicable)
 
 Examples:
+
 - AWS Certified Solutions Architect - Associate | Amazon Web Services | 2025
 - Project Management Professional (PMP) | PMI | 2024
 - Google Data Analytics Professional Certificate | Coursera | 2026
@@ -76,11 +79,13 @@ Examples:
 ### Include Expiration Dates When Relevant
 
 For [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that expire (BLS, ACLS, some IT certs), include the validity:
+
 - Basic Life Support (BLS) | American Heart Association | Valid through 2027
 
 ### Include In-Progress Certifications
 
 If you are studying for a certification, you can list it as in progress:
+
 - AWS Certified Solutions Architect - Professional | In progress, expected 2026
 - CFA Level 2 Candidate | June 2026
 
@@ -148,6 +153,7 @@ Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-r
 ### Example for a Cloud Engineer
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+
 - AWS Certified Solutions Architect - Professional | AWS | 2025
 - HashiCorp Certified: Terraform Associate | HashiCorp | 2025
 - Certified Kubernetes Administrator (CKA) | CNCF | 2024
@@ -155,6 +161,7 @@ Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-r
 ### Example for a Nurse
 
 LICENSURE & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+
 - Registered Nurse (RN) | State Board of Nursing | Active, valid through 2027
 - Basic Life Support (BLS) | AHA | Valid through 2026
 - Advanced Cardiac Life Support (ACLS) | AHA | Valid through 2026
@@ -163,6 +170,7 @@ LICENSURE & [certifications](https://thetailorcv.com/blog/how-to-list-certificat
 ### Example for a Project Manager
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
+
 - Project Management Professional (PMP) | PMI | 2024
 - Certified ScrumMaster (CSM) | Scrum Alliance | 2023
 

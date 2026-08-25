@@ -61,6 +61,7 @@ AI can draft a [resume summary](https://thetailorcv.com/blog/how-to-write-resume
 ### 1. Inventing Your Achievements
 
 AI does not know your real accomplishments. If you let it invent metrics or experiences, you risk:
+
 - Lying on your resume (which is discovered in interviews and background checks)
 - Generic, non-specific claims that recruiters see through
 
@@ -144,6 +145,7 @@ Do not use AI to generate one [generic resume](https://thetailorcv.com/blog/how-
 ## Is It "Cheating" to Use AI?
 
 No. Using AI to improve your writing is no different from using spellcheck, a thesaurus, or asking a friend to review your resume. What matters is:
+
 - The facts are true and yours
 - The final resume authentically represents you
 - You can discuss everything on it in an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)

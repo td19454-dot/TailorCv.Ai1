@@ -150,6 +150,7 @@ This is the resume after tailoring - the content is already matched, and these c
 6. Outcome - what improved?
 
 Strong case study outcomes to mention:
+
 - Task completion rate increase
 - Error rate decrease
 - Time-on-task reduction
