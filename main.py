@@ -8,7 +8,8 @@ import random
 import re
 import resend
 from secrets import token_hex, token_urlsafe
-from datetime import datetime, timedelta
+from urllib.parse import quote
+from datetime import datetime, timedelta, timezone
 import uuid
 
 import pdfplumber
@@ -32,15 +33,24 @@ from database import Base, SessionLocal, engine
 from functions import (
     ats_scoring,
     compute_deterministic_ats_score_breakdown,
+    count_fused_words,
+    repair_fused_words,
+    scrub_extraction_artifacts_from_spelling,
     create_prompt,
     get_resume_response,
+    AI_MODEL,
+    OPTIMIZER_MODEL,
+    OPTIMIZER_TEMPERATURE,
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    promptable_skill_gaps,
+    weave_soft_skills_into_summary,
     compute_skill_match_score,
     compute_skill_match_score_structured,
     sanitize_resume_data,
     factcheck_against_original,
+    _clean_inline_text,
     _is_atomic_hard_skill,
     map_demo_links,
     extract_project_links,
@@ -68,7 +78,7 @@ from routers.feedback import router as feedback_router
 from routers.marketing import router as marketing_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
-from blog_system import BlogService, codehilite_css, xml_escape
+from blog_system import BlogService, canonical_filter_label, codehilite_css, xml_escape
 
 
 from starlette.middleware.sessions import SessionMiddleware
@@ -254,7 +264,12 @@ app.add_middleware(
     allow_headers=["*", "X-CSRFToken", "X-Requested-With"],
     # Custom response headers are invisible to cross-origin JS (e.g. the Chrome
     # extension's background fetch) unless explicitly exposed here.
-    expose_headers=["X-Skill-Match-After", "X-Skill-Match-Fallback"],
+    # A header the extension cannot READ is the same as one never sent, so every
+    # addition to the tailor response has to be listed here too.
+    expose_headers=[
+        "X-Skill-Match-After", "X-Skill-Match-Fallback",
+        "X-Skill-Gaps", "X-Skills-Added",
+    ],
 )
 
 # Get the base directory (where main.py is located)
@@ -474,6 +489,10 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN pro_until TIMESTAMP" if is_pg else "ADD COLUMN pro_until TEXT")
     if "plan_provider" not in cols:
         to_add.append("ADD COLUMN plan_provider VARCHAR(20)" if is_pg else "ADD COLUMN plan_provider TEXT")
+    # Skills the candidate personally confirmed. TEXT on both dialects: it holds a
+    # JSON list, not a value the database ever needs to interpret.
+    if "confirmed_skills" not in cols:
+        to_add.append("ADD COLUMN confirmed_skills TEXT")
     if "razorpay_subscription_id" not in cols:
         to_add.append("ADD COLUMN razorpay_subscription_id VARCHAR(100)" if is_pg else "ADD COLUMN razorpay_subscription_id TEXT")
     # One shared Netlify "live site" per user (reused across portfolios to save credits).
@@ -608,14 +627,68 @@ def mark_guest_ats_used(request: Request, db: Session) -> None:
 
 # ── Subscription / freemium gating ───────────────────────────────────────────
 
+def _as_naive_utc(value):
+    """Coerce a stored pro_until into a naive UTC datetime, or None.
+
+    The column is not the same shape everywhere it is read from. SQLite gets it
+    as TEXT (see _ensure_user_columns), a Postgres column that is or ever was
+    `timestamptz` yields an AWARE datetime, and both of those blow up when
+    compared against the naive datetime.utcnow():
+
+        TypeError: can't compare offset-naive and offset-aware datetimes
+        TypeError: '>' not supported between instances of 'str' and 'datetime'
+
+    That exception does not read as "not Pro" - it 500s the request. The
+    download gate treats any non-OK response as refusal, so a PAYING Pro user
+    whose row is perfectly correct in the database gets shown the upgrade popup
+    and cannot download their resume.
+    """
+    if value is None:
+        return None
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return None
+        if text.endswith("Z"):
+            text = text[:-1] + "+00:00"
+        try:
+            value = datetime.fromisoformat(text)
+        except ValueError:
+            try:
+                value = datetime.strptime(text[:19], "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                logger.warning("Unparseable pro_until value: %r", value)
+                return None
+    if not isinstance(value, datetime):
+        return None
+    if value.tzinfo is not None:
+        value = value.astimezone(timezone.utc).replace(tzinfo=None)
+    return value
+
+
 def is_pro(user) -> bool:
-    """Return True iff the user currently has an active Pro subscription."""
-    return bool(user and user.pro_until and user.pro_until > datetime.utcnow())
+    """Return True iff the user currently has an active Pro subscription.
+
+    Never raises: a failure to read the date must not be able to deny access to
+    someone who has paid.
+    """
+    if not user:
+        return False
+    try:
+        until = _as_naive_utc(getattr(user, "pro_until", None))
+    except Exception:
+        logger.exception("pro_until could not be interpreted for user %s",
+                         getattr(user, "id", "?"))
+        return False
+    return bool(until and until > datetime.utcnow())
 
 
 FREE_LIMITS: dict[str, int] = {
-    "ai_optimizations": 3,
-    "cover_letters": 3,
+    # Lowered from 3 when the whole app moved to gpt-5-mini, which costs ~3x
+    # more per call than gpt-4o-mini. The download popup reads this number
+    # rather than hardcoding it, so the copy follows automatically.
+    "ai_optimizations": 2,
+    "cover_letters": 2,
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
@@ -695,6 +768,82 @@ def quota_exhausted(db: Session, user, field: str) -> bool:
         or 0
     )
     return used >= limit
+
+
+def get_confirmed_skills(user) -> list[str]:
+    """Skills this candidate has personally confirmed they have, newest last.
+
+    Never raises: a malformed value must not be able to break tailoring.
+    """
+    raw = getattr(user, "confirmed_skills", None)
+    if not raw:
+        return []
+    try:
+        data = json.loads(raw)
+    except (TypeError, ValueError):
+        logger.warning("Unparseable confirmed_skills for user %s", getattr(user, "id", "?"))
+        return []
+    if not isinstance(data, list):
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in data:
+        text = str(item or "").strip()
+        key = text.lower()
+        if text and key not in seen:
+            seen.add(key)
+            out.append(text)
+    return out
+
+
+def add_confirmed_skills_to_user(db: Session, user, skills) -> list[str]:
+    """Merge *skills* into the user's confirmed list and persist. Returns the new list.
+
+    The candidate is the trust source here, not the model: these are skills they
+    ticked when shown their gaps. Storing them is what makes the answer outlive
+    the editing session it was given in.
+    """
+    if not user:
+        return []
+    current = get_confirmed_skills(user)
+    seen = {s.lower() for s in current}
+    for raw in skills or []:
+        text = _clean_inline_text(raw)
+        key = text.lower()
+        if text and key not in seen and _is_atomic_hard_skill(text):
+            seen.add(key)
+            current.append(text)
+    # Bounded so a scripted client cannot grow the row without limit.
+    current = current[-200:]
+    try:
+        user.confirmed_skills = json.dumps(current)
+        db.commit()
+    except Exception:
+        db.rollback()
+        logger.exception("Could not persist confirmed skills for user %s", getattr(user, "id", "?"))
+    return current
+
+
+def lifetime_usage(db: Session, user, field: str) -> int:
+    """How many of *field* this user has used, summed across all months.
+
+    Same lifetime sum quota_exhausted() gates on, exposed on its own so the
+    upgrade prompt can state the real number instead of a hardcoded one.
+    """
+    from sqlalchemy import func as _func
+
+    if not user:
+        return 0
+    try:
+        return int(
+            db.query(_func.coalesce(_func.sum(getattr(UsageRecord, field)), 0))
+            .filter(UsageRecord.user_id == user.id)
+            .scalar()
+            or 0
+        )
+    except Exception:
+        logger.exception("Could not read %s usage for user %s", field, getattr(user, "id", "?"))
+        return 0
 
 
 def refund_quota(db: Session, user_id: int, field: str) -> None:
@@ -912,6 +1061,58 @@ def is_production_environment() -> bool:
     return os.getenv("ENVIRONMENT", "development").lower() == "production"
 
 
+def _column_split_x(words: list, page_width: float) -> float | None:
+    """The x of the gutter on a two-column page, or None if it reads as one column.
+
+    Sidebar templates put unrelated content side by side. Grouping words by
+    vertical position alone then merges across the gutter, producing lines like
+    "EXPERIENCE CONTACT" and "EDUCATION - MySQL" - two columns' worth of text on
+    one line. Everything downstream reads that: the section tagger never sees a
+    PROJECTS heading, and the model is handed interleaved nonsense as the
+    candidate's resume.
+
+    Deliberately strict. Splitting a single-column resume would be far worse
+    than not splitting a two-column one, so it requires a genuinely empty
+    vertical band near the middle with substantial text on both sides.
+    """
+    if not words or not page_width:
+        return None
+
+    # Candidate gutters: scan the middle of the page for an x with no word
+    # crossing it. Edges are ignored - a margin is not a gutter.
+    lo, hi = page_width * 0.25, page_width * 0.75
+    spans = [(float(w["x0"]), float(w["x1"])) for w in words]
+
+    # A handful of crossings is tolerated. Requiring a perfectly empty band let a
+    # single full-width element - a header rule, a name spanning the page - veto
+    # the split on a page that is plainly two columns, and the columns then
+    # interleaved word by word.
+    tolerance = max(2, int(len(spans) * 0.01))
+
+    best_x, best_score = None, None
+    x = lo
+    while x <= hi:
+        crossings = sum(1 for a, b in spans if a < x < b)
+        if crossings <= tolerance:
+            left = max((b for a, b in spans if b <= x), default=0.0)
+            right = min((a for a, b in spans if a >= x), default=page_width)
+            # Prefer few crossings first, then the widest clear band.
+            score = (crossings, -(right - left))
+            if best_score is None or score < best_score:
+                best_score, best_x = score, x
+        x += 2.0
+
+    if best_x is None:
+        return None
+
+    left_count = sum(1 for a, _b in spans if a < best_x)
+    right_count = len(spans) - left_count
+    # Both sides must carry real content, otherwise it is a margin or an indent.
+    if min(left_count, right_count) < max(12, len(spans) * 0.12):
+        return None
+    return best_x
+
+
 def extract_pdf_text(path: str) -> str:
     text_parts = []
     with pdfplumber.open(path) as pdf:
@@ -920,14 +1121,25 @@ def extract_pdf_text(path: str) -> str:
             if not words:
                 text_parts.append(page.extract_text() or "")
                 continue
-            # Group words into lines by vertical position (4pt bucket) then sort left-to-right
-            lines: dict[int, list] = {}
-            for word in words:
-                bucket = round(word["top"] / 4) * 4
-                lines.setdefault(bucket, []).append(word)
-            for bucket_key in sorted(lines):
-                line_words = sorted(lines[bucket_key], key=lambda w: w["x0"])
-                text_parts.append(" ".join(w["text"] for w in line_words))
+
+            def emit(group: list) -> None:
+                """Group words into lines by vertical position, left to right."""
+                lines: dict[int, list] = {}
+                for word in group:
+                    bucket = round(word["top"] / 4) * 4
+                    lines.setdefault(bucket, []).append(word)
+                for bucket_key in sorted(lines):
+                    line_words = sorted(lines[bucket_key], key=lambda w: w["x0"])
+                    text_parts.append(" ".join(w["text"] for w in line_words))
+
+            split_x = _column_split_x(words, float(page.width or 0))
+            if split_x is None:
+                emit(words)
+            else:
+                # Each column read top to bottom in turn, which is how a person
+                # reads the page and how the sections actually run.
+                emit([w for w in words if float(w["x0"]) < split_x])
+                emit([w for w in words if float(w["x0"]) >= split_x])
     return "\n".join(text_parts)
 
 
@@ -957,9 +1169,100 @@ _SECTION_HEADING_KEYS = {
 }
 
 
-def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str]]:
-    """Return ordered (page_idx, top, section_name) for every detected section heading."""
-    headings: list[tuple[int, float, str]] = []
+# Horizontal gap that means "different column" rather than "same line". Sidebar
+# templates put an unrelated heading at the same height as body text, and words
+# were grouped by vertical position alone - so "Skills" from the sidebar merged
+# with "Projects" from the main column into one line that matched neither, and
+# both headings disappeared from detection.
+_COLUMN_GAP = 40.0
+
+
+# Words that only qualify a section name and never identify one on their own.
+# Deliberately a closed list: anything broader would let a project or job title
+# ending in a section word be read as a heading.
+_HEADING_QUALIFIERS = {
+    "core", "key", "relevant", "additional", "other", "notable", "selected",
+    "major", "personal", "academic", "professional", "technical", "primary",
+    "main", "top", "career", "my", "important", "significant", "recent",
+}
+
+
+def _heading_key(text: str) -> str | None:
+    """The canonical section a heading names, or None.
+
+    Resumes decorate headings - "Technical Skills and Interests", "Skills &
+    Interests", "Professional Experience & Projects" - and an exact lookup missed
+    every one of them. A missed heading is not cosmetic: the section boundary
+    never moves, so the whole Skills block stayed tagged as Experience and its
+    lines were restored as bullets on the last job.
+
+    Matches the longest leading run of words that names a section, so the
+    decoration is ignored while the section is still identified.
+
+    Decoration also comes FIRST - "Core Achievements", "Key Achievements",
+    "Relevant Experience". Those were missed too, and the consequence was the
+    same in reverse: the achievements block stayed tagged as `projects` and its
+    lines were restored as bullets on the last project. So a leading qualifier
+    is stripped as well, but only from a fixed list, so an ordinary line that
+    happens to end in a section word ("Machine Learning Projects" as a PROJECT
+    title) is not mistaken for a heading.
+    """
+    raw = str(text or "").strip()
+
+    # A two-column page whose gutter is not empty enough to split cleanly leaves
+    # the heading glued to content from the other column:
+    #     "PROJECTS - Core Member - E-cell Club (May 2024 - jan 2026)"
+    # The heading is still right there at the start, followed by a bullet marker.
+    # Without this the PROJECTS heading is missed entirely and the whole section
+    # is tagged as whatever came before it.
+    lead = re.match(r"^([A-Za-z][A-Za-z&/ ]{2,28}?)\s*[•‣▪◦●·|]\s+\S", raw)
+    if lead:
+        key = _normalize_key(lead.group(1))
+        if key in _SECTION_HEADING_KEYS:
+            return _SECTION_HEADING_KEYS[key]
+
+    # A heading is a label, not a sentence. Without this, a bullet that WRAPS in
+    # the PDF and whose tail happens to begin with a section word ends the
+    # section on the spot:
+    #     "...presented results through 30 written"
+    #     "publications and 20+ oral presentations."
+    # That second line was read as the PUBLICATIONS heading, so the rest of the
+    # job's bullets were tagged as a different section and disappeared from the
+    # entry entirely - and the bullet above it stayed truncated at "30 written".
+    # Sentence-ending punctuation and digits never appear in a real heading, and
+    # the glued-heading case above has already returned by this point.
+    if raw.endswith((".", "!", "?")) or any(ch.isdigit() for ch in raw):
+        return None
+
+    words = raw.split()
+    if not words or len(words) > 5:
+        return None
+    for take in range(len(words), 0, -1):
+        key = _normalize_key(" ".join(words[:take]))
+        if key in _SECTION_HEADING_KEYS:
+            return _SECTION_HEADING_KEYS[key]
+
+    # Strip leading qualifiers, then re-test what remains.
+    start = 0
+    while start < len(words) - 1 and _normalize_key(words[start]) in _HEADING_QUALIFIERS:
+        start += 1
+    if start:
+        for take in range(len(words), start, -1):
+            key = _normalize_key(" ".join(words[start:take]))
+            if key in _SECTION_HEADING_KEYS:
+                return _SECTION_HEADING_KEYS[key]
+    return None
+
+
+def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str, float]]:
+    """Return ordered (page_idx, top, section_name, x0) for every section heading.
+
+    x0 is what makes two-column resumes work: without it a heading in the left
+    sidebar appears to govern everything below it on the page, including the
+    right column, so a project's links were attributed to whatever sidebar
+    section happened to sit above them.
+    """
+    headings: list[tuple[int, float, str, float]] = []
     try:
         with pdfplumber.open(pdf_path) as pdf:
             for page_idx, page in enumerate(pdf.pages):
@@ -970,35 +1273,110 @@ def _detect_section_headings(pdf_path: str) -> list[tuple[int, float, str]]:
                     if not t:
                         continue
                     top = float(w.get("top", 0.0))
+                    x0 = float(w.get("x0", 0.0))
+                    x1 = float(w.get("x1", x0))
                     placed = False
                     for ln in lines:
-                        if abs(top - ln["top"]) <= 2.5:
+                        # Same row AND horizontally adjacent - a wide gap means the
+                        # words belong to different columns.
+                        if abs(top - ln["top"]) <= 2.5 and x0 <= ln["x1"] + _COLUMN_GAP:
                             ln["text"] = (ln["text"] + " " + t).strip()
                             ln["top"] = min(ln["top"], top)
+                            ln["x0"] = min(ln["x0"], x0)
+                            ln["x1"] = max(ln["x1"], x1)
                             placed = True
                             break
                     if not placed:
-                        lines.append({"text": t, "top": top})
+                        lines.append({"text": t, "top": top, "x0": x0, "x1": x1})
                 for ln in lines:
-                    nk = _normalize_key(ln["text"])
-                    if nk in _SECTION_HEADING_KEYS and len(ln["text"].split()) <= 4:
-                        headings.append((page_idx, float(ln["top"]), _SECTION_HEADING_KEYS[nk]))
+                    nk = _heading_key(ln["text"])
+                    if nk:
+                        headings.append((
+                            page_idx, float(ln["top"]), nk, float(ln["x0"]),
+                        ))
     except Exception:
         return []
     headings.sort(key=lambda h: (h[0], h[1]))
     return headings
 
 
-def _section_of(headings: list[tuple[int, float, str]], page_idx: int, top: float) -> str | None:
-    """Which section a (page, top) position belongs to. None = header/contact region
-    (above the first content heading)."""
+def _column_starts(headings, page_idx: int) -> list[float]:
+    """Left edges of the columns a page's headings fall into."""
+    cols: list[float] = []
+    for hx in sorted(h[3] for h in headings if h[0] == page_idx and len(h) > 3):
+        if not cols or hx - cols[-1] > _COLUMN_GAP:
+            cols.append(hx)
+    return cols
+
+
+def _column_start_for(x: float, cols: list[float]) -> float:
+    """The column a horizontal position sits in."""
+    chosen = cols[0]
+    for c in cols:
+        if x >= c - 20.0:
+            chosen = c
+    return chosen
+
+
+def _section_of(headings, page_idx: int, top: float, x: float | None = None) -> str | None:
+    """Which section a position belongs to. None = header/contact region.
+
+    Pass `x` on multi-column resumes: only headings in the same column are
+    allowed to claim the position. Without it a sidebar heading swallows the
+    main column, which is how a project's GitHub link ended up on a
+    certification. Single-column pages are unaffected - the filter only engages
+    when a page genuinely has more than one column of headings.
+    """
+    scoped = headings
+    if x is not None:
+        cols = _column_starts(headings, page_idx)
+        if len(cols) > 1:
+            mine = _column_start_for(float(x), cols)
+            scoped = [
+                h for h in headings
+                if h[0] != page_idx
+                or (len(h) > 3 and _column_start_for(h[3], cols) == mine)
+            ]
     current = None
-    for (hp, ht, name) in headings:
-        if (hp, ht) <= (page_idx, top):
-            current = name
+    for h in scoped:
+        if (h[0], h[1]) <= (page_idx, top):
+            current = h[2]
         else:
             break
     return current
+
+
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+# Words a project title may open with that identify nothing on their own.
+_WEAK_TITLE_LEADS = {
+    "the", "a", "an", "my", "our", "project", "ai", "ml", "web", "app",
+    "application", "system", "tool", "platform", "end", "full", "smart",
+}
+
+
+def _title_tokens(text: str) -> set[str]:
+    """The identifying words of a title, minus filler shared by every project."""
+    return {
+        token for token in _TOKEN_RE.findall(str(text or "").lower())
+        if len(token) > 2 and token not in _WEAK_TITLE_LEADS
+    }
+
+
+def _first_significant_token(text: str) -> str:
+    """The first word of a title that actually identifies it.
+
+    Used to pair a rewritten project name back to its row in the source PDF.
+    Leading filler ("The", "AI", "Smart") is skipped because it is shared by
+    unrelated projects and would pair them with the wrong links.
+    """
+    for token in _TOKEN_RE.findall(str(text or "").lower()):
+        if len(token) > 2 and token not in _WEAK_TITLE_LEADS:
+            return token
+    return ""
+
+
+_LAST_PROJECT_TITLE_POSITIONS: list = []
+_LAST_LINK_DECISIONS: list = []
 
 
 def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], section: str = "projects") -> dict[str, list[tuple[str, str]]]:
@@ -1035,6 +1413,42 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             # word matching a long project title (a common cause of link bleed).
             if k in nn and len(k) >= max(4, int(0.5 * len(nn))):
                 return norm_to_name[nn]
+
+        # Tertiary: the optimizer REWRITES project titles, so the stored name is
+        # often the PDF's title plus extra words ("TailorCV.ai" becomes
+        # "TailorCV.ai - AI Resume Optimizer"). Both checks above need one string
+        # inside the other, so a rename made the project match nothing - and every
+        # link then piled onto whichever project still matched, i.e. links landed
+        # on the WRONG project rather than merely going missing.
+        #
+        # A project title leads with its distinctive word, and that word survives
+        # rewriting, so fall back to comparing first tokens. Only used when
+        # exactly one project claims that token, so two projects starting with
+        # the same word ("Resume Parser" / "Resume Builder") stay ambiguous and
+        # are left to the positional logic rather than guessed at.
+        line_first = _first_significant_token(line_text)
+        if line_first:
+            owners = [n for n in names if _first_significant_token(n) == line_first]
+            if len(owners) == 1:
+                return owners[0]
+
+        # Quaternary: a heavier rewrite can also REORDER the title ("Youtube
+        # Sentiment Analysis" -> "Sentiment Analysis on YouTube Comments"), which
+        # moves the leading word and defeats the check above. Fall back to how
+        # much of the project's own vocabulary appears on the line. The winner
+        # must be a clear winner - tied scores mean we cannot tell the projects
+        # apart, and a wrong link is worse than a missing one.
+        line_tokens = _title_tokens(line_text)
+        if line_tokens:
+            scored = []
+            for n in names:
+                tokens = _title_tokens(n)
+                if tokens:
+                    scored.append((len(tokens & line_tokens) / len(tokens), n))
+            scored.sort(key=lambda pair: pair[0], reverse=True)
+            if scored and scored[0][0] >= 0.34:
+                if len(scored) == 1 or scored[0][0] > scored[1][0]:
+                    return scored[0][1]
         return None
 
     # Build line boxes using pdfplumber so we can locate nearby text for each link annotation.
@@ -1110,8 +1524,26 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             mp = best_match(ln["text"])
             if mp:
                 return mp, d
-        # 3) Last resort: nearest project-name line anywhere on the page (closest center).
-        #    Global URL dedup downstream still guarantees no link appears twice.
+        # 3) Fall back to the nearest project title ABOVE the link, however far.
+        #    Not the nearest in absolute distance: plenty of resumes put the link
+        #    row at the END of a project block, after its bullets. Such a row sits
+        #    a line above the NEXT project's title and many lines below its own,
+        #    so "closest" handed every link to the following project - Tailorcv's
+        #    Link/GitHub landed on Myntra while Tailorcv showed none.
+        #
+        #    A link belongs to the block it sits inside, and blocks start at a
+        #    title, so the owner is the last title that precedes it.
+        above = [
+            ln for ln in candidates
+            if float(ln["bottom"]) <= bottom + SAME_LINE_TOL and best_match(ln["text"])
+        ]
+        if above:
+            ln = max(above, key=lambda l: float(l["top"]))
+            return best_match(ln["text"]), abs(
+                ((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center
+            )
+
+        # 4) Nothing above it at all (a link before the first title): nearest wins.
         all_scored = sorted(
             candidates,
             key=lambda ln: abs(((float(ln["top"]) + float(ln["bottom"])) / 2.0) - center),
@@ -1131,7 +1563,52 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
     # certification link being pulled into a project). Only enforced when a Projects
     # heading is actually detected, so resumes without clear headings still work.
     headings = _detect_section_headings(pdf_path)
-    enforce_section = any(name == section for (_p, _t, name) in headings)
+    enforce_section = any(h[2] == section for h in headings)
+
+    # Where each project's TITLE physically sits. A PDF stores a link as a
+    # rectangle and a URL - nothing tells us which project owns it, and the
+    # name-based matching above only works when a project name happens to sit
+    # near the link. Resumes routinely put links on their own row ("Live Demo |
+    # GitHub" under the title), in a sidebar, or behind an icon, and those links
+    # used to be discarded. Positions let us answer it the way a reader does:
+    # the link belongs to the title directly above it.
+    title_positions: list[tuple[int, float, str]] = []  # (page, top, project)
+    seen_titles: set[str] = set()
+
+    def _scan_titles(bounded: bool) -> None:
+        for page_idx, lines in line_boxes.items():
+            for ln in lines:
+                owner = best_match(ln["text"])
+                if not owner or owner in seen_titles:
+                    continue
+                if bounded and enforce_section and _section_of(
+                    headings, page_idx, float(ln["top"]), float(ln.get("x0", 0.0))
+                ) != section:
+                    continue
+                seen_titles.add(owner)
+                title_positions.append((page_idx, float(ln["top"]), owner))
+
+    # Prefer titles that sit inside the Projects section.
+    _scan_titles(bounded=True)
+    # Then look again WITHOUT that restriction for any project still unplaced.
+    # Section bounds come from detected headings, and a heading can be missed or
+    # mis-placed on a decorated or multi-column resume - the last project's title
+    # was being rejected that way, so its link fell to the previous project and
+    # that project rendered three links while this one rendered none. A title we
+    # can name is better evidence than a section boundary we inferred.
+    if len(seen_titles) < len(names):
+        _scan_titles(bounded=False)
+
+    title_positions.sort(key=lambda t: (t[0], t[1]))
+    # Exposed for project_links_debug.txt. When a link lands on the wrong
+    # project it is because a title was not located, and this is the only way to
+    # see that from a real run.
+    global _LAST_PROJECT_TITLE_POSITIONS, _LAST_LINK_DECISIONS
+    _LAST_PROJECT_TITLE_POSITIONS = list(title_positions)
+    _LAST_LINK_DECISIONS = []
+
+    # Links we could not attribute by text. Parked rather than dropped.
+    unplaced: list[dict] = []
 
     for page_idx, page in enumerate(reader.pages):
         annots = page.get("/Annots") or []
@@ -1181,18 +1658,74 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
             bottom = page_height - y0
 
             # Reject links that don't live in the Projects section.
-            if enforce_section and _section_of(headings, page_idx, top) != section:
-                continue
-
-            matched_project, dist = match_project(top, bottom, candidates)
-            if not matched_project:
-                continue
+            #
+            # Section bounds are INFERRED from detected headings, and a decorated
+            # or multi-column resume can put a heading where it does not belong -
+            # which then discards a real project link. So before rejecting, ask a
+            # more direct question: is this link still inside a project's block?
+            # It is, if the nearest project title above it is BELOW the nearest
+            # non-project heading above it. A genuine certification link fails
+            # that test (its heading is nearer), so the guard against
+            # cross-section leaks still holds.
+            if enforce_section and _section_of(headings, page_idx, top, x0) != section:
+                # Compared as (page, top) pairs. Comparing bare vertical
+                # positions treats "far down page 0" as below "near the top of
+                # page 1", which let certification links on a later page look
+                # like they sat inside the last project.
+                here = (page_idx, top)
+                nearest_title = max(
+                    ((p, t) for (p, t, _n) in title_positions if (p, t) <= here),
+                    default=None,
+                )
+                nearest_other_heading = max(
+                    ((h[0], h[1]) for h in headings
+                     if h[2] != section and (h[0], h[1]) <= here),
+                    default=None,
+                )
+                inside_a_project_block = (
+                    nearest_title is not None
+                    and (nearest_other_heading is None or nearest_title > nearest_other_heading)
+                )
+                if not inside_a_project_block:
+                    continue
 
             label = "GitHub" if "github.com" in lowered_uri else "Link"
+            matched_project, dist = match_project(top, bottom, candidates)
+            # Where the link physically sits and who claimed it. Title positions
+            # alone were not enough: every title was located and links STILL went
+            # to the wrong project, which means the link's own coordinates are
+            # the missing half of the picture.
+            _LAST_LINK_DECISIONS.append({
+                "uri": uri, "page": page_idx, "top": round(top, 1),
+                "x0": round(x0, 1), "matched": matched_project, "dist": round(dist, 1),
+            })
+            if not matched_project:
+                # Park it. Dropping the link here is what made a whole project
+                # lose its links whenever the layout put them somewhere the text
+                # matcher could not read.
+                unplaced.append({"uri": uri, "label": label, "page": page_idx, "top": top})
+                continue
+
             prev = best_for_uri.get(uri)
             # Keep the closest (most confident) project for each unique URL.
             if prev is None or dist < prev[1]:
                 best_for_uri[uri] = (matched_project, dist, label)
+
+    # Place the parked links by position: the owner is the nearest project title
+    # at or above the link. This is how a person reads the page, and it does not
+    # care whether the link sits beside the title, on its own row underneath, in
+    # a sidebar, or behind an icon.
+    for item in unplaced:
+        if item["uri"] in best_for_uri:
+            continue  # already attributed with better evidence elsewhere
+        owner = None
+        for page_idx, top, project in title_positions:
+            if (page_idx, top) <= (item["page"], item["top"]):
+                owner = project
+            else:
+                break
+        if owner:
+            best_for_uri[item["uri"]] = (owner, 1e6, item["label"])
 
     result: dict[str, list[tuple[str, str]]] = {}
     for uri, (project, _dist, label) in best_for_uri.items():
@@ -1200,6 +1733,16 @@ def extract_project_links_from_pdf(pdf_path: str, project_names: list[str], sect
         pair = (label, uri)
         if pair not in result[project]:
             result[project].append(pair)
+
+    # Layer 3 - reading-order safety net. If a project still has nothing and
+    # links are still spare, hand them out in document order, the same trick the
+    # certifications path already uses. Only runs when it is unambiguous: one
+    # empty project and one spare link. Guessing between several would risk
+    # putting a link on the WRONG project, which is worse than a missing one.
+    leftovers = [i for i in unplaced if i["uri"] not in best_for_uri]
+    empty = [n for n in names if not result.get(n)]
+    if len(empty) == 1 and len(leftovers) == 1:
+        result.setdefault(empty[0], []).append((leftovers[0]["label"], leftovers[0]["uri"]))
 
     return result
 
@@ -1259,7 +1802,7 @@ def extract_contact_links_from_pdf(pdf_path: str) -> dict[str, str]:
                     if rect and len(rect) >= 4:
                         try:
                             top = page_height - float(rect[3])
-                            if _section_of(headings, page_idx, top) not in header_ok:
+                            if _section_of(headings, page_idx, top, float(rect[0])) not in header_ok:
                                 continue
                         except Exception:
                             pass
@@ -1411,7 +1954,7 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
     if not names:
         return {}
     headings = _detect_section_headings(pdf_path) if section else []
-    enforce_section = bool(section) and any(nm == section for (_p, _t, nm) in headings)
+    enforce_section = bool(section) and any(h[2] == section for h in headings)
     norm_to_name = {_normalize_key(n): n for n in names}
     norm_names = sorted((k for k in norm_to_name if k), key=len, reverse=True)
 
@@ -1476,7 +2019,7 @@ def extract_named_item_links_from_pdf(pdf_path: str, names: list[str], section: 
                 r_bot = page_height - ry0
                 r_xa, r_xb = min(rx0, rx1), max(rx0, rx1)
                 # Reject links outside the target section (prevents cross-section exchange).
-                if enforce_section and _section_of(headings, page_idx, r_top) != section:
+                if enforce_section and _section_of(headings, page_idx, r_top, r_x0) != section:
                     continue
                 # Words overlapping the link rectangle (the anchor text = the item name).
                 seg = [
@@ -1588,6 +2131,34 @@ def normalize_list_of_strings(items):
 #      never duplicated.
 _RESTORE_MARKERS = "•‣◦⁃∙*·▪●❖✧»>–—-"
 
+# Verbs a resume bullet opens with. Used to tell a NEW bullet from the wrapped
+# tail of the one above when the PDF lost the bullet glyph: a tail continues a
+# sentence ("UI using HTML...", "Lever, Workday), cutting...") while a bullet
+# starts an action. Deliberately includes the weak and passive-learning verbs
+# the prompt bans ("Worked", "Gained", "Studied") — those still START bullets on
+# an unoptimized resume, which is exactly the input being parsed here.
+_BULLET_ACTION_VERBS = {
+    "achieved", "analysed", "analyzed", "architected", "assisted", "authored",
+    "automated", "benchmarked", "built", "collaborated", "compiled", "conducted",
+    "consolidated", "coordinated", "created", "cut", "debugged", "decreased",
+    "delivered", "deployed", "designed", "developed", "diagnosed", "documented",
+    "drove", "eliminated", "engineered", "enhanced", "established", "evaluated",
+    "executed", "expanded", "facilitated", "gained", "generated", "grew",
+    "handled", "helped", "identified", "implemented", "improved", "increased",
+    "influenced", "initiated", "instrumented", "integrated", "introduced",
+    "launched", "led", "leveraged", "maintained", "managed", "mapped",
+    "mentored", "migrated", "modelled", "modeled", "monitored", "negotiated",
+    "operated", "optimised", "optimized", "orchestrated", "organised",
+    "organized", "outlined", "overhauled", "owned", "participated", "partnered",
+    "performed", "pioneered", "planned", "prepared", "presented", "produced",
+    "programmed", "provided", "ran", "rebuilt", "reduced", "refactored",
+    "researched", "resolved", "responsible", "restructured", "reviewed",
+    "revamped", "scaled", "secured", "set", "shipped", "simplified", "solved",
+    "spearheaded", "standardised", "standardized", "streamlined", "studied",
+    "supported", "tested", "tracked", "trained", "transformed", "translated",
+    "troubleshot", "validated", "worked", "wrote",
+}
+
 
 def _restore_tokens(text: str) -> set:
     return set(re.findall(r"[a-z0-9]+", str(text or "").lower()))
@@ -1606,8 +2177,13 @@ _RESTORE_DATE = (
 # Open-ended range words: "Present", "Current", "Currently", "Now", "Ongoing",
 # "Till Date", "To Date", etc. (a range like "12/2024 - Currently").
 _RESTORE_OPEN_END = r"(?:present|current(?:ly)?|ongoing|now|(?:to|till)\s*(?:date|now|present))"
+# Range separators. A dash was the only form recognised, so a leaked header row
+# written with a word - "Outlier May 2026 to June 2026" - was not detected as
+# meta and got restored as a bullet on the PREVIOUS entry.
+_RESTORE_RANGE_SEP = r"(?:\s*[-–—]\s*|\s+(?:to|until|through|thru)\s+)"
 _RESTORE_DATE_RANGE = (
-    _RESTORE_DATE + r"\s*[-–—]\s*(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r")"
+    _RESTORE_DATE + _RESTORE_RANGE_SEP +
+    r"(?:" + _RESTORE_DATE + r"|" + _RESTORE_OPEN_END + r"|date)"
 )
 
 
@@ -1653,9 +2229,9 @@ def _restore_section_lines(resume_string: str) -> list:
     cur = None
     for raw in str(resume_string or "").splitlines():
         line = raw.rstrip()
-        nk = _normalize_key(line)
-        if nk in _SECTION_HEADING_KEYS and len(line.split()) <= 4:
-            cur = _SECTION_HEADING_KEYS[nk]
+        nk = _heading_key(line)
+        if nk:
+            cur = nk
             continue
         out.append((line, cur))
     return out
@@ -1688,21 +2264,163 @@ def _original_entry_candidates(section_lines: list, section: str, identifiers: l
             if k > start:
                 end = k
                 break
+        # Every OTHER entry's title, so this entry's range can be closed the
+        # moment the next one begins - even when that title was never located.
+        # `end` above is the next title we FOUND; a title split across lines by a
+        # narrow gutter ("Myntra E-" / "commerce") is never found, so without
+        # this the range ran to the end of the section and the first entry
+        # swallowed every following entry's bullets.
+        own_key = _normalize_key(ident)
+        other_keys = [
+            k for k in (_normalize_key(x) for x in identifiers if x)
+            if k and len(k) >= 4 and k != own_key
+        ]
+
         cands = []
+        seen_marker = False
+        # The widest line in this entry's range approximates the page's text
+        # column. A line at (or near) that width was wrapped by the PDF, not
+        # ended by the writer — that is what identifies a continuation.
+        entry_max_len = max(
+            (len(section_lines[i][0].rstrip()) for i in range(start + 1, end)),
+            default=0,
+        )
+        prev_len = 0
+        prev_raw = ""
         for i in range(start + 1, end):
             line = section_lines[i][0]
             # Hard boundary: a new entry title. Titles in virtually every template
             # carry a "|" stack/role separator while bullets never do — stopping
             # here prevents capturing a following entry the optimizer may have
             # dropped (which would otherwise be restored onto the wrong entry).
+            # This entry's OWN link row - "Live Demo | GitHub". Not a title, not
+            # a stack row, not a bullet. It has to be skipped before EITHER
+            # boundary test below, because it trips both: it carries a pipe, and
+            # it also reads as a short comma/pipe-separated list of known terms.
+            # Whichever fired first stopped collection at the line directly under
+            # the title, so every project with a link row collected ZERO bullets
+            # and had no protection at all - on a real resume Tailorcv.com and
+            # the Myntra clone got nothing, while the one project without a link
+            # row kept all four bullets and all its detail. That is exactly why
+            # words went missing from some entries and not others.
+            if _RESTORE_LINK_LABEL_ROW_RE.fullmatch(line.strip()):
+                continue
+            stripped = line.strip()
+            # Layout debris. PDF extraction can strand a separator on a line of
+            # its own — the Myntra clone's link row came out as "|" then
+            # "Live Demo GitHub" on the next line. A lone pipe carries a pipe, so
+            # the title test below fired on it and ended collection before the
+            # entry's first bullet. Nothing without a letter or a digit in it can
+            # be a title.
+            if stripped and not re.search(r"[A-Za-z0-9]", stripped):
+                continue
             if "|" in line and not _restore_is_meta_line(line):
+                break
+
+            clean_peek = stripped.lstrip(_RESTORE_MARKERS + " ").strip()
+            # Is this the TAIL of the bullet above rather than a line of its own?
+            # Decided BEFORE the boundary tests below, because a wrapped tail can
+            # trip them: "usage quotas, plan gating, and subscription lifecycle
+            # handling." is eight words with two commas, which reads as a
+            # technology row and used to end collection mid-entry, costing that
+            # entry every bullet after it.
+            # Is this line the TAIL of the bullet above, or a bullet of its own?
+            #
+            # Two signals, and BOTH are required, because either alone merges
+            # real bullets together:
+            #   1. No bullet marker. A marker always starts a new bullet.
+            #   2. The previous physical line ran to the margin. That is what a
+            #      PDF wrap looks like — the text had nowhere else to go. A line
+            #      that stopped short ended its bullet, whether or not it has a
+            #      full stop.
+            #
+            # Sentence punctuation is NOT usable here: plenty of resumes write
+            # bullets with no trailing period at all. Relying on it merged an
+            # entire entry — four separate bullets became one paragraph reading
+            # "...over product data Built RESTful APIs... Designed normalized
+            # PostgreSQL schemas... Integrated backend with frontend...".
+            has_marker = stripped[:1] in _RESTORE_MARKERS
+            if has_marker:
+                seen_marker = True
+            prev_wrapped = prev_len >= max(40, int(entry_max_len * 0.85))
+            # Width alone is not enough: when every bullet in an entry is about
+            # the same length, each one looks like a wrap of the one above and
+            # the whole entry collapses into a single paragraph. So the line must
+            # ALSO read as a continuation — it starts soft (lower case, a digit,
+            # an opening bracket), or the line above stopped mid-clause.
+            starts_soft = not clean_peek[:1].isupper()
+            prev_mid_clause = (
+                prev_raw.rstrip().endswith((",", "-", "–", "/", "&", "+"))
+                or prev_raw.count("(") > prev_raw.count(")")
+            )
+            # What actually separates a new bullet from a wrapped tail is the
+            # OPENING WORD. Resume bullets begin with an action verb — that is
+            # what every resume guide asks for and what this prompt enforces —
+            # and a wrapped tail never does:
+            #     "Built RESTful APIs using FastAPI..."      <- new bullet
+            #     "Designed normalized PostgreSQL schemas"   <- new bullet
+            #     "UI using HTML, CSS, and JavaScript."      <- tail of the line above
+            #     "Lever, Workday), cutting per-application" <- tail
+            #     "(3,116 individuals) generate the highest" <- tail
+            # Width and punctuation both failed here: bullets written without
+            # full stops merged into one paragraph, and bullets of similar length
+            # each looked like a wrap of the one before it.
+            first_word = re.sub(r"[^A-Za-z]", "", clean_peek.split(" ", 1)[0]).lower()
+            starts_new_sentence = first_word in _BULLET_ACTION_VERBS
+            is_tail = bool(
+                cands
+                and clean_peek
+                and not has_marker
+                and (starts_soft or not starts_new_sentence)
+            )
+
+            # Hard boundary: the line is (or begins) another entry's title. A
+            # prefix match catches the wrapped case, where only the first
+            # fragment of the next title appears on its own line.
+            lnorm = _normalize_key(line)
+            if not is_tail and lnorm and len(lnorm) >= 4 and any(
+                k.startswith(lnorm) or lnorm.startswith(k) for k in other_keys
+            ):
+                break
+            if not is_tail and _looks_like_stack_line(stripped):
+                # A technology row BEFORE any bullet has been collected is this
+                # entry's own stack, printed under its title ("html,css,javascript"
+                # under the Myntra clone). Breaking there cost that entry every
+                # bullet it had. Only once bullets have been seen does a stack row
+                # mean the next entry has started.
+                if not cands:
+                    continue
                 break
             if _restore_is_meta_line(line):
                 continue
-            clean = line.strip().lstrip(_RESTORE_MARKERS + " ").strip()
-            if len(clean.split()) >= 3:
-                cands.append(clean)
-        result[ident] = cands
+            clean = clean_peek
+            if not clean:
+                continue
+            # A bullet that WRAPS in the PDF arrives as two lines:
+            #   "...using qualitative and quantitative methods for 10+"
+            #   "research projects."
+            # Treated separately, the tail is under the 3-word floor and is
+            # thrown away, leaving the bullet permanently truncated at the line
+            # break - which is exactly how "...for 10+" reached a rendered
+            # resume. Rejoin the tail onto its own sentence.
+            #
+            # `is_tail` above is the decision - it knows about bullet markers,
+            # which capitalisation alone does not. Re-testing capitalisation here
+            # undid it for every tail that happens to begin with a proper noun or
+            # an acronym, and those fragments then shipped as bullets of their own:
+            #     "Lever, Workday), cutting per-application tailoring from ~10..."
+            #     "SMTP, and one-click portfolio publishing to Netlify."
+            # Both are the tail of the line above, and both reached a real resume.
+            # Track the line just consumed, so the next iteration can tell a
+            # wrapped line from one that simply ended.
+            prev_len, prev_raw = len(stripped), stripped
+            if is_tail:
+                cands[-1] = f"{cands[-1].rstrip()} {clean}"
+                continue
+            cands.append(clean)
+        # The floor is applied AFTER rejoining, so a legitimate short tail has
+        # already been merged into the sentence it belongs to.
+        result[ident] = [c for c in cands if len(c.split()) >= 3]
     return result
 
 
@@ -1727,6 +2445,60 @@ def _restore_is_header_echo(candidate: str, header_values: list) -> bool:
     return False
 
 
+def _entry_original_bullets(cands, entry: dict, entries: list, id_fields) -> list:
+    """The original resume lines under `entry` that are genuinely bullets.
+
+    Extracted so the restorer and its callers agree on what
+    counts as an original bullet — otherwise the change report would claim a
+    header row or a stack line was "dropped" content the restorer had already
+    (correctly) refused to bring back.
+    """
+    cands = [c for c in (cands or []) if str(c).strip()]
+    if not cands:
+        return []
+    # Drop candidates that are really this entry's own header row (role,
+    # company, location) — e.g. "Data Analyst Research Intern Kolkata".
+    header_values = [
+        str(entry.get(k, "")).strip()
+        for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
+    ]
+    header_values = [h for h in header_values if h]
+    # ...and any OTHER entry's header too. Templates that put the entry
+    # name in a narrow gutter wrap it across lines ("Myntra E-" /
+    # "commerce"), and those fragments sit inside the previous entry's
+    # line range, so the first project absorbed the next projects'
+    # titles and bullets as its own.
+    for other in entries:
+        if other is entry:
+            continue
+        header_values.extend(
+            str(other.get(k, "")).strip()
+            for k in ("company", "title", "role", "organization", "name")
+            if str(other.get(k, "")).strip()
+        )
+    cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
+    # A stack row ("html,css,javascript") or a link caption row is never
+    # a bullet, whichever entry it sits under.
+    cands = [
+        c for c in cands
+        if not _looks_like_stack_line(c)
+        and not _RESTORE_LINK_LABEL_ROW_RE.fullmatch(str(c).strip())
+    ]
+    # Another entry's name leaking in mid-line, e.g. "Customer Python,
+    # PowerBI, SQL, Excel" - a wrapped title glued to a stack row.
+    other_names = {
+        _normalize_key(str(o.get(f, "")))
+        for o in entries if o is not entry
+        for f in id_fields if str(o.get(f, "")).strip()
+    }
+    other_names.discard("")
+    cands = [
+        c for c in cands
+        if not any(n and _normalize_key(c).startswith(n[:12]) for n in other_names)
+    ]
+    return cands
+
+
 def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
     """Append any original bullet whose content the optimizer dropped, back onto
     the exact entry it came from. Safe against sub-section exchange and against
@@ -1749,35 +2521,336 @@ def restore_dropped_bullets(parsed: dict, resume_string: str) -> dict:
             identifiers.append(max(vals, key=len) if vals else "")
         orig = _original_entry_candidates(section_lines, heading_section, identifiers)
         for e, ident in zip(entries, identifiers):
-            cands = orig.get(ident)
-            if not cands:
-                continue
-            # Drop candidates that are really this entry's own header row (role,
-            # company, location) — e.g. "Data Analyst Research Intern Kolkata".
-            header_values = [
-                str(e.get(k, "")).strip()
-                for k in ("company", "title", "role", "organization", "name", "location", "place", "city")
-            ]
-            header_values = [h for h in header_values if h]
-            cands = [c for c in cands if not _restore_is_header_echo(c, header_values)]
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
             if not cands:
                 continue
             ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+
+            # A REWRITTEN bullet is not a DROPPED bullet, and word overlap cannot
+            # tell them apart. A vague original carries almost no distinctive
+            # words, so a good rewrite of it shares almost none:
+            #   "Worked on monthly reporting and helped the sales team"
+            #   -> "Automated recurring executive reporting, eliminating manual
+            #       consolidation for the revenue organisation"
+            # Judged on words alone that reads as deleted, and the weak original
+            # was appended underneath its own rewrite, doubling the entry. The
+            # COUNT is the reliable signal: once the optimizer has returned at
+            # least as many bullets as the entry started with, every original has
+            # a counterpart. enforce_bullet_facts then guarantees each of those
+            # counterparts actually kept the original's facts.
+            if len(ai_bullets) >= len(cands):
+                continue
+
             ai_tokens = set()
             for b in ai_bullets:
                 ai_tokens |= _restore_tokens(b)
-            added = False
+
+            # Restore only as many as are genuinely missing. Bringing back every
+            # low-overlap candidate also brought back the ORIGINAL of a bullet
+            # that had merely been rewritten, so recovering one dropped bullet
+            # could add two. Least-represented candidates go first: those are the
+            # ones with no counterpart in the output.
+            missing_count = len(cands) - len(ai_bullets)
+            scored = []
             for c in cands:
                 ct = _restore_tokens(c)
-                if not ct:
-                    continue
-                shared = len(ct & ai_tokens) / len(ct)
-                if shared < 0.4:  # most of this content is absent -> it was dropped
+                if ct:
+                    scored.append((len(ct & ai_tokens) / len(ct), c))
+            scored.sort(key=lambda pair: pair[0])
+
+            added = 0
+            for _, c in scored:
+                if added >= missing_count:
+                    break
+                ct = _restore_tokens(c)
+                # Re-scored against what has already gone back, so two near
+                # identical originals cannot both be restored.
+                if len(ct & ai_tokens) / len(ct) < 0.4:  # content absent -> dropped
                     ai_bullets.append(c)
                     ai_tokens |= ct
-                    added = True
+                    added += 1
             if added:
                 e["bullets"] = ai_bullets
+    return parsed
+
+
+def _restore_tokens(text: str) -> set[str]:
+    """Content words of a bullet, for comparing what is already on the resume."""
+    return {t for t in re.findall(r"[a-z0-9]+", str(text or "").lower()) if len(t) > 3}
+
+
+def _looks_like_stack_line(text: str) -> bool:
+    """Whether a row is a technology list rather than a project name.
+
+    Resumes put the stack on its own row under the title ("Python, PowerBI, SQL,
+    Excel"). Restoring that as a project produced an entry named after the tech
+    list carrying a copy of the real project's bullets.
+    """
+    t = str(text or "").strip()
+    if not t:
+        return True
+    # A stack row is a SHORT list of tool names. Length has to be checked before
+    # the comma test below, which fires on any line containing two commas - and a
+    # densely written bullet contains plenty:
+    #   "...across 15 job boards (LinkedIn, Indeed, Naukri, Greenhouse, Lever,
+    #    Workday), cutting per-application tailoring from ~10 minutes..."
+    # A stack row is a hard boundary while collecting an entry's original
+    # bullets, so treating that sentence as one stopped the scan at the entry's
+    # FIRST bullet and returned nothing. On any resume written with commas, the
+    # bullet protections were silently inert.
+    if len(t.split()) > 12:
+        return False
+    if t.count(",") >= 2:
+        return True
+    parts = [p.strip() for p in re.split(r"[,/|]", t) if p.strip()]
+    if len(parts) >= 2 and all(len(p.split()) <= 2 for p in parts):
+        known = sum(1 for p in parts if _is_atomic_hard_skill(p))
+        if known >= max(2, len(parts) - 1):
+            return True
+    return False
+
+
+# A date left on the end of a title row once the stack has been split off
+# ("Customer Behaviour Analytics January 2026").
+_RESTORE_TRAILING_DATE_RE = re.compile(
+    r"\s*(?:" + _RESTORE_DATE_RANGE + r"|" + _RESTORE_DATE + r")\s*$",
+    re.IGNORECASE,
+)
+
+
+# A row made only of link captions - "Live Demo | GitHub", "Demo · Source".
+_RESTORE_LINK_LABEL_ROW_RE = re.compile(
+    r"\s*(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|repo(?:sitory)?|link|website|"
+    r"site|preview|play\s*store|app\s*store|video|paper|docs?)"
+    # Separator may be punctuation OR just whitespace: the pipe in
+    # "Live Demo | GitHub" does not always survive text extraction, and the
+    # bare "Live Demo GitHub" that remains was taken for a project title.
+    r"(?:(?:\s*[|/,·•–—-]\s*|\s+)(?:live\s*demo|demo|github|gitlab|source(?:\s*code)?|"
+    r"repo(?:sitory)?|link|website|site|preview|play\s*store|app\s*store|video|paper|docs?))*\s*",
+    re.IGNORECASE,
+)
+
+
+def _bullet_facts(text: str) -> set:
+    """The concrete facts a rewrite is not allowed to drop.
+
+    Numbers and proper nouns are what a bullet is actually worth: "15 job boards
+    (LinkedIn, Indeed, Naukri, Greenhouse, Lever, Workday)" carries seven of
+    them and "a Chrome extension for job boards" carries one. Ordinary words are
+    deliberately excluded - tailoring is allowed to replace those, and treating
+    them as facts would flag every genuine rewrite.
+    """
+    raw = str(text or "")
+    out = {m.group(0).lower().rstrip(".,;") for m in re.finditer(r"\d[\d,.]*\+?%?", raw)}
+    for m in re.finditer(r"(?<![.\w])([A-Za-z][A-Za-z0-9+#.\-]*)", raw):
+        word = m.group(1)
+        # A bullet's opening word is capitalised by convention, not because it
+        # names anything: "Built", "Shipped", "Integrated" are not facts.
+        if len(word) < 2 or not raw[:m.start()].strip():
+            continue
+        if word[0].isupper() or word.isupper():
+            out.add(word.lower().rstrip(".,;"))
+    out.discard("")
+    return out
+
+
+def enforce_bullet_facts(parsed: dict, resume_string: str) -> dict:
+    """Put the candidate's own sentence back when a rewrite dropped its facts.
+
+    The prompt tells the model to preserve every detail before rewriting, and on
+    a good run it does. But an instruction is not a guarantee and the failure is
+    silent: the bullet count stays right, the sentence reads cleanly, and the
+    named tools, the secondary metrics and the enumerated lists are simply gone.
+    One real run lost "15 job boards (LinkedIn, Indeed, Naukri, Greenhouse,
+    Lever, Workday)", "automated end-to-end using Playwright", "3,116
+    individuals" and "50% of Hat purchases" in a single pass.
+
+    So the rule is enforced here in code rather than trusted to the model: a
+    polished sentence that has lost the evidence is worth less to the candidate
+    than the sentence they wrote themselves, and when the two conflict the facts
+    win.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+    section_lines = _restore_section_lines(resume_string)
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+        for e, ident in zip(entries, identifiers):
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+            if not cands:
+                continue
+            ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+            if not ai_bullets:
+                continue
+            used: set = set()
+            for original in cands:
+                want = _bullet_facts(original)
+                if not want:
+                    continue  # nothing concrete to protect
+                # The rewrite may sit at any index, so match on content rather
+                # than position.
+                best_i, best_score = -1, -1
+                for i, ai in enumerate(ai_bullets):
+                    if i in used:
+                        continue
+                    score = len(want & _bullet_facts(ai)) + len(
+                        _restore_tokens(original) & _restore_tokens(ai)
+                    )
+                    if score > best_score:
+                        best_i, best_score = i, score
+                if best_i < 0:
+                    continue
+                used.add(best_i)
+                rewrite = ai_bullets[best_i]
+
+                # A TRUNCATED bullet. When a bullet wraps in the PDF the model is
+                # shown two lines and sometimes copies only the first, returning a
+                # sentence that stops mid-thought:
+                #     "...using qualitative and quantitative methods for 10+"
+                # The fact check cannot see this - the missing tail ("research
+                # projects.") is ordinary lower-case words, and every number and
+                # proper noun is still present - so the broken sentence shipped.
+                # A rewrite that is a literal prefix of the original is not a
+                # rewrite at all, it is the original cut short.
+                def _norm(s: str) -> str:
+                    return " ".join(str(s).split()).rstrip(".").lower()
+
+                n_rewrite, n_original = _norm(rewrite), _norm(original)
+                truncated = (
+                    n_original.startswith(n_rewrite)
+                    and len(n_rewrite) < len(n_original)
+                )
+
+                if truncated or (want - _bullet_facts(rewrite)):
+                    ai_bullets[best_i] = original
+            e["bullets"] = ai_bullets
+    return parsed
+
+
+def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
+    """Put back a whole PROJECT the optimizer omitted.
+
+    restore_dropped_bullets recovers bullets onto entries that survived, but
+    nothing noticed when an entire entry vanished. On a long resume the model
+    silently returned two projects out of three, and the damage compounds: the
+    missing project's links have no owner left, so the positional and
+    reading-order fills hand them to whatever section is nearest - which is how
+    a project's GitHub ended up on a certification and a stray "Link" on a
+    school.
+
+    Only titles that clearly head an entry are restored, and only when the
+    original has real bullets under them, so prose is never promoted into a
+    fake project.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+
+    projects = parsed.get("projects")
+    if not isinstance(projects, list):
+        return parsed
+
+    section_lines = _restore_section_lines(resume_string)
+    idx = [i for i, (_l, s) in enumerate(section_lines) if s == "projects"]
+    if not idx:
+        return parsed
+    lo, hi = idx[0], idx[-1] + 1
+
+    have = {_normalize_key(str(p.get("name") or "")) for p in projects if isinstance(p, dict)}
+    have.discard("")
+
+    # Walk the original Projects block, collecting each title and its bullets.
+    found: list[tuple[str, list[str]]] = []
+    current: tuple[str, list[str]] | None = None
+    for i in range(lo, hi):
+        line = str(section_lines[i][0] or "").strip()
+        if not line:
+            continue
+        is_bullet = bool(re.match(r"^\s*[•‣▪◦●·*\-–—]", section_lines[i][0]))
+        if is_bullet:
+            if current:
+                text = re.sub(r"^\s*[•‣▪◦●·*\-–—]+\s*", "", line).strip()
+                if len(text) > 25:
+                    current[1].append(text)
+            continue
+        if len(line) > 90:
+            continue
+        # NOT skipped for being a "meta" line. _restore_is_meta_line is designed
+        # to spot entry-HEADER rows so they never become bullets - and an entry
+        # header is exactly what a title is. Skipping them here meant a project
+        # whose title row carries a date ("Myntra E-commerce Website Clone mar
+        # 2025") could never be restored. Bare dates are still excluded, because
+        # nothing survives once the date is stripped below.
+        #
+        # A row that only names links ("Live Demo | GitHub") sits BETWEEN the
+        # title and its bullets. Treating it as a title stole the bullets and
+        # left the real project looking empty, so it was never restored.
+        if _RESTORE_LINK_LABEL_ROW_RE.fullmatch(line):
+            continue
+        # A title row: short, not a sentence. Strip the stack/date that resumes
+        # put after the name, whichever separator they use ("Name - stack date",
+        # "Name | stack", "Name — stack"). Spaces are required around the plain
+        # hyphen so a hyphenated title ("End-to-End Pipeline") stays intact.
+        title = re.split(r"\s+[|/·—–-]\s+", line)[0].strip()
+        title = _RESTORE_TRAILING_DATE_RE.sub("", title).strip(" ,;|-–—")
+        if len(title) < 3 or title.endswith((".", ":")):
+            continue
+        current = (title, [])
+        found.append(current)
+
+    # Bullets already in the output. A candidate whose content is ALREADY on the
+    # resume is not a dropped project - it is a line we mis-read as a title
+    # (a subtitle row like "Python, PowerBI, SQL, Excel", or a link row). This
+    # is the strongest guard: without it, restoration invented projects and
+    # duplicated another project's bullets underneath them.
+    existing_bullets = set()
+    for entry in projects:
+        if isinstance(entry, dict):
+            for b in (entry.get("bullets") or []):
+                existing_bullets |= _restore_tokens(str(b))
+
+    # Subtitles of entries that survived - never restore one as a project.
+    existing_subtitles = {
+        _normalize_key(str(e.get("subtitle") or ""))
+        for e in projects if isinstance(e, dict)
+    }
+    existing_subtitles.discard("")
+
+    restored = 0
+    for title, bullets in found:
+        key = _normalize_key(title)
+        if not key or key in have or key in existing_subtitles:
+            continue
+        # Require real content, so a stray line never becomes a project.
+        if len(bullets) < 1:
+            continue
+        if _looks_like_stack_line(title):
+            continue
+        # Content already present under another entry -> not a dropped project.
+        cand = set()
+        for b in bullets:
+            cand |= _restore_tokens(b)
+        if cand and len(cand & existing_bullets) / len(cand) > 0.5:
+            continue
+        have.add(key)
+        existing_bullets |= cand
+        projects.append({"name": title, "bullets": bullets[:8]})
+        restored += 1
+
+    if restored:
+        logger.warning("Restored %d project(s) the optimizer dropped: %s",
+                       restored, [t for t, _b in found if _normalize_key(t) in have])
     return parsed
 
 
@@ -2848,7 +3921,7 @@ INPUT:
 \"\"\"
 """
     try:
-        ai_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.0)
+        ai_response = await get_resume_response(prompt, model=AI_MODEL, temperature=0.0)
         strict_parsed = parse_ai_json_response(ai_response)
         if not isinstance(strict_parsed, dict):
             return None
@@ -2925,6 +3998,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "Cloud & DevOps": [],
         "Networking & Protocols": [],
         "Security & SIEM": [],
+        "Methodologies & Practices": [],
         "Other Technical Skills": [],
     }
 
@@ -2994,7 +4068,33 @@ def group_skills(skills: list[str]) -> list[str]:
         "power bi", "powerbi", "tableau",
         "excel", "jira", "confluence",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
-        "pytest", "jest", "selenium", "cuda", "jupyter"
+        "pytest", "jest", "selenium", "cuda", "jupyter",
+        # BI / analytics
+        "looker", "looker studio", "qlik", "qlikview", "qlik sense",
+        "quicksight", "google data studio", "data studio", "alteryx",
+        "google analytics", "advanced excel", "google sheets", "powerpoint",
+        # Diagramming / modelling
+        "visio", "microsoft visio", "lucidchart", "draw.io", "drawio",
+        "miro", "figma", "balsamiq",
+        # Enterprise platforms (ERP / CRM / ITSM)
+        "sap", "salesforce", "servicenow", "hubspot", "workday",
+        "sharepoint", "erp", "erp systems", "crm",
+        # Project / work tracking
+        "ms project", "microsoft project", "asana", "trello", "notion"
+    }
+    # Ways of working and analysis artefacts. These are legitimate resume
+    # skills - a business analyst lists Agile, BPMN and user stories - but they
+    # are not tools, so grouping them under "Tools & Platforms" reads wrong.
+    methodology_terms = {
+        "agile", "waterfall", "scrum", "kanban", "safe", "lean", "six sigma",
+        "bpmn", "uml", "sdlc", "rup",
+        "user stories", "user story", "use cases", "use case",
+        "brd", "brds", "business requirements document",
+        "frd", "srs", "user acceptance testing", "uat",
+        "wireframes", "wireframing", "prototyping", "mockups",
+        "requirements gathering", "requirement gathering", "gap analysis",
+        "process mapping", "process modelling", "process modeling",
+        "process flow", "data modelling", "data modeling",
     }
     cloud_devops_terms = {
         "aws", "amazon web services", "azure", "gcp",
@@ -3073,6 +4173,8 @@ def group_skills(skills: list[str]) -> list[str]:
             return "AI/ML"
         if item_norm in framework_terms:
             return "Frameworks/Libraries"
+        if item_norm in methodology_terms:
+            return "Methodologies & Practices"
         return "uncategorized"
 
     for skill in skills:
@@ -3169,10 +4271,24 @@ def group_skills(skills: list[str]) -> list[str]:
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
                   "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
-                  "Other Technical Skills"):
+                  "Methodologies & Practices", "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result
+
+
+def _link_identity(href: str) -> str:
+    """A URL's identity for de-duplication.
+
+    The same target reaches us spelled differently from different recovery paths
+    - with and without a trailing slash, with or without "www." - so exact-string
+    de-duplication let one link render twice. A project showed
+    "Link | GitHub | Live Demo | GitHub", all four pointing at two places.
+    """
+    v = str(href or "").strip().lower()
+    v = re.sub(r"^https?://", "", v)
+    v = re.sub(r"^www\.", "", v)
+    return v.rstrip("/")
 
 
 def collect_project_links(project: dict) -> list[dict]:
@@ -3220,8 +4336,8 @@ def collect_project_links(project: dict) -> list[dict]:
             continue
         href = normalize_url(value)
         visible_label = _normalize_visible_label(label, href)
-        key = (label, href)
-        if key in seen:
+        key = _link_identity(href)
+        if not key or key in seen:
             continue
         seen.add(key)
         links.append({
@@ -3240,8 +4356,8 @@ def collect_project_links(project: dict) -> list[dict]:
                     continue
                 href = normalize_url(value)
                 visible_label = _normalize_visible_label(label, href)
-                key = (label, href)
-                if key in seen:
+                key = _link_identity(href)
+                if not key or key in seen:
                     continue
                 seen.add(key)
                 links.append({
@@ -3499,6 +4615,14 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
     # Cross-project dedup: a URL must never appear under more than one project, and
     # cap per-project links — the AI sometimes dumps every resume link onto a single
     # project (e.g. the last one), producing "GitHub | Link | Link | Link ..." rows.
+    #
+    # This is a guard against the AI guessing wrong, so it must NOT apply to links a
+    # person typed in themselves. In the /modify-cv builder the user fills a Live URL
+    # and GitHub URL per project, and reusing one URL across several projects is a
+    # legitimate thing to do — a shared demo site, or one profile link. Deduping
+    # those silently blanked every project after the first, which read as "the
+    # builder ignores the links I entered".
+    author_is_user = bool(parsed.get("user_authored_links"))
     seen_project_hrefs: set[str] = set()
     MAX_PROJECT_LINKS = 4
     for project in parsed.get("projects", []) or []:
@@ -3509,7 +4633,9 @@ def build_resume_context(parsed: dict, jd_string: str = "") -> dict:
         _seen_here: set[str] = set()
         for _l in links:
             _h = str(_l.get("href", "")).strip().lower()
-            if not _h or _h in _seen_here or _h in seen_project_hrefs:
+            if not _h or _h in _seen_here:
+                continue
+            if not author_is_user and _h in seen_project_hrefs:
                 continue
             _seen_here.add(_h)
             _filtered.append(_l)
@@ -5259,18 +6385,36 @@ async def optimized_editor_page(request: Request):
         quota_exhausted_flag = (
             (not user_is_pro) and bool(user) and quota_exhausted(db, user, "ai_optimizations")
         )
+        downloads_used = 0 if user_is_pro else lifetime_usage(db, user, "ai_optimizations")
     finally:
         db.close()
-    return templates.TemplateResponse(
+    response = templates.TemplateResponse(
         request,
         "optimized_editor.html",
         {
             "request": request,
             "is_pro": user_is_pro,
             "quota_exhausted_flag": quota_exhausted_flag,
+            # The upgrade prompt states how many downloads the user has actually
+            # had; it used to hardcode "3 resumes", which read as wrong to anyone
+            # who had used a different number.
+            "downloads_used": downloads_used,
+            "free_download_limit": FREE_LIMITS.get("ai_optimizations", 3),
             "region": _get_region(request),
         },
     )
+    # This page bakes the user's Pro and quota state into its HTML, so a cached
+    # copy is a copy of who they USED to be. The upgrade CTA is a same-tab link,
+    # meaning the path a paying user takes is: paywall -> /pricing -> pay -> Back.
+    # A cached or back-forward-cached page brings the pre-payment paywall back
+    # with it, locking someone out of the resume they just paid for. no-store
+    # forces a real request on the way back, and also opts the page out of the
+    # back-forward cache in Chrome and Firefox, which is the behaviour we want
+    # here even though it costs a re-render.
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
 
 
 @app.get("/modify-cv", response_class=HTMLResponse)
@@ -5690,7 +6834,7 @@ async def generate_cover_letter(request: Request):
     prompt = _build_cover_letter_prompt(resume_text, job_description, tone)
 
     try:
-        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -5796,7 +6940,7 @@ async def extension_cover_letter(request: Request):
     prompt = _build_cover_letter_prompt(resume_text[:8000], jd_string[:6000], tone)
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.4)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             parsed = {}
@@ -6208,6 +7352,9 @@ async def extension_tailor_resume(request: Request):
         style_id = user.base_style_id or 1
         base_resume_path = user.base_resume_path
         base_resume_text = user.base_resume_text
+        # There is no "tick the skills you have" step in the extension, so
+        # without this the extension can never include a confirmed skill.
+        user_confirmed_skills = get_confirmed_skills(user)
         if not base_resume_text:
             # Backfill for base resumes uploaded before this column existed.
             base_resume_text = await asyncio.to_thread(extract_pdf_text, base_resume_path)
@@ -6219,7 +7366,13 @@ async def extension_tailor_resume(request: Request):
     pdf_path = None
     try:
         async with request_semaphore:
-            parsed = await _optimize_resume_core(base_resume_path, jd_string)
+            # Extension: no confirm step exists in the sidebar, so every JD
+            # skill goes on directly. The website below does the opposite.
+            parsed = await _optimize_resume_core(
+                base_resume_path, jd_string,
+                confirmed_skills=user_confirmed_skills,
+                auto_add_skills=True,
+            )
             # Structured scorer, not the flat-text one /api/extension/skill-match uses
             # for the base resume: a flat match on the tailored output would count the
             # guaranteed skills-array injection the same as a skill actually evidenced
@@ -6279,6 +7432,28 @@ async def extension_tailor_resume(request: Request):
             finally:
                 db.close()
 
+            # The gaps the optimizer found were being computed and then dropped on
+            # the floor here. On the website the user is shown them and can tick
+            # the ones they actually have; an extension user never learned that
+            # the job asked for anything they were missing. Sent back so the
+            # sidebar can tell them, capped and URL-encoded because a response
+            # header must stay short and ASCII-safe.
+            # With AUTO_ADD_JD_SKILLS on there are no gaps left to report - every
+            # JD skill goes straight onto the resume - so the sidebar states what
+            # was ADDED instead. Falls back to the gap list if the confirm-first
+            # behaviour is switched back on.
+            gap_header = ""
+            added_header = ""
+            try:
+                added = [s for s in ((parsed or {}).get("skills_added_from_jd") or []) if s]
+                if added:
+                    added_header = quote(", ".join(added[:10]), safe="")
+                gaps = promptable_skill_gaps((parsed or {}).get("skill_gaps"))
+                if gaps:
+                    gap_header = quote(", ".join(gaps[:10]), safe="")
+            except Exception:
+                logger.exception("Could not build the skill headers")
+
             return FileResponse(
                 pdf_path,
                 media_type="application/pdf",
@@ -6287,6 +7462,8 @@ async def extension_tailor_resume(request: Request):
                 headers={
                     "X-Skill-Match-After": str(after_score) if after_score is not None else "",
                     "X-Skill-Match-Fallback": "true" if fallback_used else "false",
+                    "X-Skill-Gaps": gap_header,
+                    "X-Skills-Added": added_header,
                 },
             )
     except HTTPException:
@@ -6406,7 +7583,7 @@ async def extension_apply_answers(request: Request):
     prompt = _build_apply_answers_prompt(resume_text[:8000], jd_string[:6000], role, company, questions)
     try:
         async with request_semaphore:
-            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.2)
+            raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.2)
         parsed = parse_ai_json_response(raw)
         raw_answers = parsed.get("answers") if isinstance(parsed, dict) else None
         if not isinstance(raw_answers, list):
@@ -6918,7 +8095,7 @@ async def generate_personality_card(request: Request):
     # Run GPT outside DB session to avoid holding a connection during AI latency
     try:
         prompt = _build_personality_card_prompt(resume_data)
-        raw_response = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.7)
+        raw_response = await get_resume_response(prompt, model=AI_MODEL, temperature=0.7)
         card_data = json.loads(raw_response)
     except (json.JSONDecodeError, TypeError):
         logger.error("Personality card GPT returned non-JSON")
@@ -7512,7 +8689,7 @@ async def _enrich_portfolio_copy(data: dict) -> dict:
     }
     try:
         prompt = _build_portfolio_ai_prompt(data)
-        raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.6)
+        raw = await get_resume_response(prompt, model=AI_MODEL, temperature=0.6)
         parsed = parse_ai_json_response(raw)
         if not isinstance(parsed, dict):
             return fallback
@@ -8421,8 +9598,8 @@ async def blog_listing_page(
             "page": results["page"],
             "total_pages": results["total_pages"],
             "q": q,
-            "selected_tag": tag,
-            "selected_category": category,
+            "selected_tag": canonical_filter_label(tag),
+            "selected_category": canonical_filter_label(category),
             "tags": filters["tags"],
             "top_tags": filters["top_tags"],
             "categories": filters["categories"],
@@ -8623,7 +9800,15 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     if "mock interview" in subject or "mock-interview" in subject:
         return None
 
-    if "portfolio" in subject:
+    # An explicit `showcase:` in frontmatter overrides the inference below. The
+    # heuristic reads slug/title/tags, so a post whose subject is unrelated to
+    # resumes - a visa guide, a hiring-process guide - has no way to opt in even
+    # where the gallery is genuinely useful to that reader. "none" suppresses it.
+    forced = (getattr(post, "showcase", "") or "").strip().lower()
+    if forced == "none":
+        return None
+
+    if forced == "portfolio" or (not forced and "portfolio" in subject):
         # Themes withdrawn from the blog gallery (still available in the app).
         _blog_hidden_themes = {"particle"}
         themes = [(slug, PORTFOLIO_THEMES.get(slug, slug).split("—")[0].split("-")[0].strip(), media)
@@ -8648,7 +9833,7 @@ def blog_template_showcase(post, limit: int = 1) -> dict | None:
     # Extension posts DO get a template: the extension's output is a tailored
     # resume, so showing what that resume can look like is on-topic.
     off_topic = ("cover letter", "cover-letter", "interview", "linkedin")
-    if not is_resume_topic or any(t in subject for t in off_topic):
+    if forced != "resume" and (not is_resume_topic or any(t in subject for t in off_topic)):
         return None
 
     by_name = {name: (img, name) for img, name in _BLOG_TEMPLATE_POOL}
@@ -9377,35 +10562,270 @@ async def reset_password(request: Request):
         db.close()
 
 
-async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
+def _usable_ats_payload(ats_payload: str | None):
+    """Validate a client-forwarded ATS analysis before trusting it.
+
+    The client sends back the analysis the user was shown so the optimizer can
+    reuse it instead of scoring again. It arrives from the browser, so it is
+    checked rather than trusted: anything without a hard-skills block is
+    discarded and the caller scores the resume itself. Nothing here can forge a
+    skill onto a resume - inject_jd_hard_skills still evidence-checks every
+    entry against the uploaded text - so a bad payload costs an LLM call, not
+    correctness.
+    """
+    if not ats_payload:
+        return None
+
+    try:
+        parsed = json.loads(ats_payload) if isinstance(ats_payload, str) else ats_payload
+    except (ValueError, TypeError):
+        logger.warning("Forwarded ATS payload was not valid JSON; scoring instead.")
+        return None
+
+    if not isinstance(parsed, dict):
+        return None
+
+    hard = (parsed.get("skills") or {}).get("hard_skills")
+    if not isinstance(hard, dict) or not (hard.get("matched") or hard.get("missing")):
+        logger.warning("Forwarded ATS payload had no hard-skills block; scoring instead.")
+        return None
+
+    return parsed
+
+
+def _ats_resume_text_for(pdf_text: str, linkedin_url: str | None) -> str:
+    """Build the exact resume text ats_scoring() is fed.
+
+    This must match between /get-score and the optimizer BYTE FOR BYTE, and the
+    reason is not tidiness. The two flows used different extractors -
+    extract_pdf_text for tailoring, _extract_pdf_text_for_ats for scoring - which
+    differ only in whitespace around the PDF's icon glyphs (" +91..." vs
+    "+91..."). That was enough to:
+
+      1. miss the _ATS_SCORE_CACHE, since the cache key hashes the resume text,
+         so the same resume scored twice cost two LLM calls; and
+      2. hand the model two different documents, which made it return two
+         different missing-skill lists. The score page showed 13 missing hard
+         skills while the optimizer showed 5, for the same resume and the same
+         job description.
+
+    Keeping the construction in one function is what stops those two call sites
+    drifting apart again.
+    """
+    text = str(pdf_text or "")
+    if linkedin_url:
+        text += f"\nLinkedIn: {linkedin_url}"
+    return text
+
+
+def _jd_skills_from_ats_result(ats_result) -> tuple[list[str] | None, list[str], list[str]]:
+    """Pull the JD's skills out of an ats_scoring() response.
+
+    Returns (hard_skills, missing_hard_skills, missing_soft_skills).
+
+    `missing_hard_skills` is the ATS analysis's own verdict and is what the user
+    is shown as gaps, verbatim. Re-deriving the matched/missing split with the
+    regex evidence check would reintroduce exactly the disagreement this is
+    meant to end: the analysis can count "Power BI" as matched from context the
+    literal matcher cannot see, and the two screens would differ again.
+
+    For HARD skills both `matched` and `missing` are taken: together they are the
+    ATS analysis's full picture of what this job asks for. inject_jd_hard_skills()
+    then decides which are evidenced, so the split is recomputed against the
+    resume rather than trusted - what we adopt from the ATS pass is WHICH SKILLS
+    COUNT, which is the part the regex extractor gets wrong.
+
+    For SOFT skills only `missing` is taken, because those are handled by
+    rephrasing the summary rather than by an evidence check.
+
+    hard_skills is None when the payload is unusable, so the caller falls back to
+    the regex extractor instead of ending up with an empty requirement list
+    (which would silently report zero gaps).
+    """
+    try:
+        parsed = parse_ai_json_response(ats_result) if isinstance(ats_result, str) else ats_result
+    except Exception:
+        logger.warning("Could not parse ATS result for JD skills; using regex extraction.")
+        return None, [], []
+
+    if not isinstance(parsed, dict):
+        return None, [], []
+
+    skills_block = parsed.get("skills") or {}
+    hard = skills_block.get("hard_skills") or {}
+    soft = skills_block.get("soft_skills") or {}
+
+    def _clean(values) -> list[str]:
+        out: list[str] = []
+        seen: set[str] = set()
+        for value in (values or []):
+            text = str(value or "").strip()
+            if text and text.lower() not in seen:
+                seen.add(text.lower())
+                out.append(text)
+        return out
+
+    hard_matched = _clean(hard.get("matched")) if isinstance(hard, dict) else []
+    hard_missing = _clean(hard.get("missing")) if isinstance(hard, dict) else []
+    soft_missing = _clean(soft.get("missing")) if isinstance(soft, dict) else []
+
+    hard_skills = hard_matched + [s for s in hard_missing if s.lower() not in {m.lower() for m in hard_matched}]
+
+    return (hard_skills or None), hard_missing, soft_missing
+
+
+def _ai_failure_detail(exc: BaseException) -> str:
+    """A message that says what actually went wrong with an AI call.
+
+    Every failure used to read "AI generation failed. Please try again." - the
+    same words whether the key was rejected, the account was out of credit, or
+    the request was merely rate-limited. The first two are not worth retrying
+    and need someone to act; the third clears on its own. _normalize_openai_error
+    already produces a specific message, so use it rather than discarding it.
+    """
+    # tenacity wraps the cause when it gives up; unwrap to the real one.
+    cause = getattr(exc, "last_attempt", None)
+    if cause is not None:
+        try:
+            exc = cause.exception() or exc
+        except Exception:
+            pass
+    text = str(exc or "")
+    low = text.lower()
+    if "quota" in low or "insufficient_quota" in low or "billing" in low:
+        return "The AI account is out of credit. Add billing, then try again."
+    if ("invalid_api_key" in low or "unauthorized" in low
+            or ("api_key" in low or "api key" in low) and "invalid" in low):
+        return "The AI API key is not valid. Check the server configuration."
+    if "rate limit" in low or "429" in low or "timeout" in low or "timed out" in low:
+        return "The AI service is busy right now. Please try again in a moment."
+    return "AI generation failed. Please try again."
+
+
+def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
+    """Every clickable URL in the PDF, wherever it sits.
+
+    The safety net for URL invention: a link the candidate really has appears
+    somewhere in their own document, so this is the full set of URLs they can
+    legitimately claim.
+    """
+    urls: set[str] = set()
+    try:
+        from pypdf import PdfReader
+        for page in PdfReader(pdf_path).pages:
+            for ref in (page.get("/Annots") or []):
+                try:
+                    obj = ref.get_object()
+                except Exception:
+                    continue
+                uri = (obj.get("/A") or {}).get("/URI")
+                if uri:
+                    urls.add(str(uri).strip())
+    except Exception:
+        return urls
+    return urls
+
+
+async def _optimize_resume_core(
+    file_path: str,
+    jd_string: str,
+    ats_payload: str | None = None,
+    confirmed_skills: list[str] | None = None,
+    auto_add_skills: bool = False,
+) -> dict:
     """Runs the AI tailoring pass plus PDF-annotation link-recovery on an uploaded
     resume PDF, returning the optimized resume dict. Shared by /get-optimised-resume
     and the extension's /api/extension/tailor-resume, which differ only in where the
-    source PDF comes from (fresh upload vs. a user's stored base resume)."""
+    source PDF comes from (fresh upload vs. a user's stored base resume).
+
+    `ats_payload` is the ATS analysis the user has already been shown, forwarded
+    by the client. When present it is used verbatim and no second scoring call is
+    made. This is the only way to guarantee the editor's missing-skill list
+    matches the score page: two separate LLM calls do not reliably agree even on
+    identical input, which is how the score page came to list 13 missing hard
+    skills while the editor listed 5 for the same resume and job."""
     resume_string = await asyncio.to_thread(extract_pdf_text, file_path)
     normalized_resume_string = normalize_links(resume_string)
 
-    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially
+    # OPTIMIZATION: Run all link extractions in parallel instead of sequentially.
+    # The last two rebuild the exact resume text /get-score feeds ats_scoring;
+    # see _ats_resume_text_for below for why that has to match byte for byte.
     link_tasks = [
         asyncio.to_thread(extract_project_links, normalized_resume_string),
         asyncio.to_thread(extract_publication_links, normalized_resume_string),
         asyncio.to_thread(map_project_demo_links, normalized_resume_string),
         asyncio.to_thread(extract_project_link_map, normalized_resume_string),
+        asyncio.to_thread(_extract_pdf_text_for_ats, file_path),
+        asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
     ]
-    extracted_links, extracted_pub_links, mapped_links, project_link_map = await asyncio.gather(*link_tasks)
+    (
+        extracted_links, extracted_pub_links, mapped_links, project_link_map,
+        ats_pdf_text, ats_linkedin_url,
+    ) = await asyncio.gather(*link_tasks)
+
+    ats_resume_string = _ats_resume_text_for(ats_pdf_text, ats_linkedin_url)
 
     prompt = create_prompt(resume_string, jd_string)
-    try:
-        response_string = await get_resume_response(prompt)
-    except Exception as e:
-        logger.exception("AI generation failed")
-        raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+
+    # Prefer the analysis the user was already shown. Re-scoring would be a
+    # second LLM call whose answer can differ from the first, and the user has
+    # no way to tell which is right - they just see two screens disagreeing.
+    forwarded_ats = _usable_ats_payload(ats_payload)
+
+    if forwarded_ats is not None:
+        try:
+            response_string = await get_resume_response(
+                prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+        ats_result = forwarded_ats
+    else:
+        # No analysis to reuse (optimized without scoring first). Score it here,
+        # CONCURRENTLY with the rewrite so wall-clock cost is close to zero.
+        try:
+            response_string, ats_result = await asyncio.gather(
+                get_resume_response(
+                    prompt, model=OPTIMIZER_MODEL, temperature=OPTIMIZER_TEMPERATURE
+                ),
+                ats_scoring(ats_resume_string, jd_string),
+                return_exceptions=True,
+            )
+        except Exception as exc:
+            logger.exception("AI generation failed")
+            raise HTTPException(status_code=500, detail=_ai_failure_detail(exc))
+
+    if isinstance(response_string, BaseException):
+        logger.exception("AI generation failed", exc_info=response_string)
+        raise HTTPException(status_code=500, detail=_ai_failure_detail(response_string))
+
+    # A failed ATS pass must never break tailoring. Falling back to None makes
+    # inject_jd_hard_skills use its own regex extractor, which is what shipped
+    # before this call existed.
+    jd_hard_skills = None
+    ats_missing_hard: list[str] = []
+    missing_soft_skills: list[str] = []
+    if isinstance(ats_result, BaseException):
+        logger.warning("ATS skill list unavailable; falling back to regex JD extraction.", exc_info=ats_result)
+    else:
+        jd_hard_skills, ats_missing_hard, missing_soft_skills = _jd_skills_from_ats_result(ats_result)
 
     parsed = parse_ai_json_response(response_string)
 
     # Recover any bullet point the optimizer silently dropped/merged on a
     # long resume, restoring it onto the exact entry it came from.
     parsed = restore_dropped_bullets(parsed, resume_string)
+
+    # A dropped ENTRY is worse than a dropped bullet, and it also orphans that
+    # entry's links, which then leak into neighbouring sections.
+    parsed = restore_dropped_entries(parsed, resume_string)
+
+    # A bullet can also be hollowed out from the inside: the entry survives, the
+    # count is right, and the rewrite has quietly dropped the tools, figures and
+    # lists that made it worth reading. Preserve first, rewrite second - and
+    # enforce it here rather than trusting the model to have obeyed.
+    parsed = enforce_bullet_facts(parsed, resume_string)
 
     # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
     # The AI response already contains the optimized data - no need to re-extract original data
@@ -9448,10 +10868,115 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
                     merged_pub.append(u)
             extracted_pub_links = merged_pub
 
-    parsed = inject_links(parsed, effective_map, mapped_links, extracted_pub_links)
+    # Every URL the uploaded resume actually contains - annotation layer, text
+    # layer and the per-project maps. inject_links discards any project URL that
+    # is not in here, because the model rewrites URLs the way it rewrites prose.
+    known_urls = set()
+    for pairs in (effective_map or {}).values():
+        for _label, u in pairs:
+            known_urls.add(u)
+    for _name, u in (mapped_links or []):
+        known_urls.add(u)
+    known_urls.update(extracted_links or [])
+    known_urls.update(extracted_pub_links or [])
+    known_urls.update(_all_pdf_annotation_urls(file_path))
+
+    parsed = inject_links(
+        parsed, effective_map, mapped_links, extracted_pub_links, known_urls=known_urls
+    )
+
+    # Diagnostics for per-project link recovery, mirroring cert_debug.txt. Every
+    # stage of this path passes when reproduced offline, so the difference has to
+    # be in what the live AI returns - most likely the project NAMES, which are
+    # what the annotation matcher keys on. Recording them turns the next report
+    # into an answer instead of another round of guessing.
+    try:
+        import json as _json
+        with open(os.path.join(BASE_DIR, "project_links_debug.txt"), "w", encoding="utf-8") as _pf:
+            _pf.write("=== PROJECT NAMES FROM AI ===\n")
+            for _n in project_names or []:
+                _pf.write(f"  {_n!r}\n")
+            _pf.write("\n=== ANNOTATION MAP (pdf) ===\n")
+            _pf.write(_json.dumps(pdf_project_link_map if project_names else {}, indent=1) + "\n")
+            _pf.write("\n=== TITLE POSITIONS FOUND IN PDF ===\n")
+            _located = set()
+            for _pg, _tp, _nm in (_LAST_PROJECT_TITLE_POSITIONS or []):
+                _located.add(_nm)
+                _pf.write(f"  page{_pg} top={_tp:.1f}  {_nm!r}\n")
+            _pf.write(f"  NOT LOCATED: {[n for n in (project_names or []) if n not in _located]}\n")
+            _pf.write("\n=== LINK POSITIONS AND DECISIONS ===\n")
+            for _d in (_LAST_LINK_DECISIONS or []):
+                _pf.write(
+                    f"  page{_d['page']} top={_d['top']:>7} x0={_d['x0']:>6}"
+                    f" -> {_d['matched']!r} (dist {_d['dist']})  {_d['uri']}\n"
+                )
+            _pf.write("\n=== TEXT MAP ===\n")
+            _pf.write(_json.dumps(project_link_map or {}, indent=1) + "\n")
+            _pf.write("\n=== EFFECTIVE MAP ===\n")
+            _pf.write(_json.dumps(effective_map or {}, indent=1) + "\n")
+            _pf.write("\n=== AFTER inject_links ===\n")
+            for _p in (parsed.get("projects") or []):
+                if isinstance(_p, dict):
+                    _pf.write(f"  {_p.get('name')!r}\n")
+                    _pf.write(f"     links={_json.dumps(_p.get('links') or [])}\n")
+                    _pf.write(f"     github_link={_p.get('github_link')!r} url={_p.get('url')!r}\n")
+    except Exception:
+        pass
     # resume_string is the ORIGINAL uploaded text - it is what decides whether a
-    # JD skill is evidenced or becomes a declared gap.
-    parsed = inject_jd_hard_skills(parsed, jd_string, resume_string)
+    # JD skill is evidenced or becomes a declared gap. jd_hard_skills carries the
+    # ATS analysis's verdict on which skills the job actually requires.
+    # Previously-confirmed skills apply ONLY where the user cannot be asked -
+    # i.e. the Chrome extension, which re-tailors from the stored base resume
+    # with no dialog and would otherwise drop every skill they ever ticked.
+    #
+    # On the website they are deliberately NOT applied. Reusing an old answer
+    # there means the skill is added silently and, because it also counts as
+    # evidence, the matching JD requirement stops being reported as a gap - so
+    # the dialog has nothing to ask about and never appears. The website asks
+    # every time; that is the whole point of the page.
+    apply_confirmed = bool(confirmed_skills) and auto_add_skills
+
+    skill_evidence = resume_string
+    if apply_confirmed:
+        skill_evidence = f"{resume_string}\nConfirmed skills: {', '.join(confirmed_skills)}"
+
+    parsed = inject_jd_hard_skills(
+        parsed, jd_string, skill_evidence, jd_skills=jd_hard_skills,
+        auto_add=auto_add_skills,
+    )
+
+    # A confirmed skill the JD never mentions still belongs on the resume — but
+    # again only on the surface that cannot ask.
+    if apply_confirmed:
+        existing = {str(s).strip().lower() for s in (parsed.get("skills") or [])}
+        for skill in confirmed_skills:
+            if skill.strip().lower() not in existing:
+                parsed.setdefault("skills", []).append(skill)
+                existing.add(skill.strip().lower())
+
+    # What the user is TOLD is missing should match the score page, so the ATS
+    # analysis's own `missing` list leads. But it must not REPLACE the list
+    # outright: inject_jd_hard_skills has just decided what it actually withheld
+    # from the resume, and anything it held back has to be offered or the
+    # candidate is never asked about a skill that is genuinely absent. Replacing
+    # the list meant a shorter (or empty) ATS list silently swallowed those, and
+    # the editor then had nothing to ask about at all.
+    #
+    # On the extension (auto_add_skills=True) nothing is withheld and there is
+    # no UI to ask through, so the list stays empty rather than being refilled.
+    if auto_add_skills:
+        parsed["skill_gaps"] = []
+    elif jd_hard_skills is not None:
+        withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
+        seen = {s.strip().lower() for s in ats_missing_hard}
+        parsed["skill_gaps"] = list(ats_missing_hard) + [
+            s for s in withheld if s.strip().lower() not in seen
+        ]
+
+    # Soft skills the rewrite failed to express go into the summary, not the
+    # skills array (Rule01b). Handled automatically rather than asked about:
+    # unlike "do you know Tableau?", this is presentation, not a credential.
+    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills)
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
@@ -9643,6 +11168,7 @@ async def _optimize_resume_core(file_path: str, jd_string: str) -> dict:
             "Rewrite introduced facts absent from the original resume: %s",
             parsed["factcheck"]["findings"][:8],
         )
+
     return parsed
 
 
@@ -9744,6 +11270,7 @@ async def upload_resume(
     template_id: int | None = Form(1),
     style_id: int | None = Form(1),
     editor_mode: str | None = Form(None),
+    ats_payload: str | None = Form(None),
 ):
     """Upload a resume PDF file and JD with selected template and style"""
     if jd_string is None:
@@ -9765,8 +11292,23 @@ async def upload_resume(
             content = await file.read()
             f.write(content)
 
+        # Same on the website: a skill the candidate confirmed in an earlier
+        # session must not vanish the next time they tailor.
+        _db = get_db()
+        try:
+            _user = _db.query(User).filter_by(id=user_id).first()
+            web_confirmed_skills = get_confirmed_skills(_user)
+        finally:
+            _db.close()
+
         async with request_semaphore:
-            parsed = await _optimize_resume_core(file_path, jd_string)
+            # Website: unevidenced JD skills stay as gaps so the editor can
+            # ask the candidate to tick the ones they actually have.
+            parsed = await _optimize_resume_core(
+                file_path, jd_string, ats_payload,
+                confirmed_skills=web_confirmed_skills,
+                auto_add_skills=False,
+            )
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
 
             # NOTE: we intentionally do NOT auto-save here. Saving to My Resumes
@@ -9783,7 +11325,14 @@ async def upload_resume(
                     "success": True,
                     "html": html_content,
                     "template_id": template_id,
+                    "style_id": style_id,
                     "resume_data": parsed if isinstance(parsed, dict) else None,
+                    # Gaps fit to show a person. The raw skill_gaps list carries
+                    # extractor noise ("another cloud data warehouse"), so the
+                    # filtering happens here rather than in the browser.
+                    "promptable_skill_gaps": promptable_skill_gaps(
+                        (parsed or {}).get("skill_gaps") if isinstance(parsed, dict) else []
+                    ),
                     "candidate_name": (
                         str((parsed or {}).get("name") or "").strip()[:255]
                         if isinstance(parsed, dict) else None
@@ -9824,6 +11373,190 @@ async def upload_resume(
             os.remove(file_path)
         if pdf_path and os.path.exists(pdf_path) and not isinstance(response, FileResponse):
             os.remove(pdf_path)
+
+
+def _fallback_skill_is_acceptable(raw) -> bool:
+    """Whether a ticked skill may be added when resume_data carries no gaps list.
+
+    The normal gate is "it was one of the gaps we offered". When that list is
+    missing we still must not let a payload write arbitrary prose into someone's
+    resume, so this applies the same filter the pills are built from plus a hard
+    word limit - real skill names are short ("ERP systems", "user stories"),
+    while injected sentences are not.
+    """
+    text = str(raw or "").strip()
+    if not text or len(text) > 40 or len(text.split()) > 3:
+        return False
+    # Skill names are words and a little punctuation ("C++", "CI/CD",
+    # "Node.js", "R&D"). Anything else is not a skill.
+    if not re.fullmatch(r"[A-Za-z0-9 .+#/&()'-]+", text):
+        return False
+    return bool(promptable_skill_gaps([text]))
+
+
+@app.post("/api/resume/add-confirmed-skills", include_in_schema=False)
+async def add_confirmed_skills(request: Request):
+    """Add skills the candidate has personally confirmed they have.
+
+    The tailoring pipeline is deliberately strict: inject_jd_hard_skills() only
+    lets a JD skill into the resume when the uploaded text evidences it, and
+    strips anything the model claimed without backing. That stops the MODEL from
+    inventing credentials, and it must stay strict.
+
+    But it also means a skill the candidate genuinely has and simply never wrote
+    down is unreachable. This endpoint is the other door: the candidate is shown
+    the gaps and ticks the ones that are true. The trust source is different (the
+    person, not the model), so it lives here rather than by loosening the gate.
+
+    Only skills currently listed in the payload's own `skill_gaps` can be added.
+    That keeps this from becoming a general "write anything into my resume" hole
+    and means a user can only confirm something we actually asked them about.
+    """
+    require_logged_in(request)
+
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid JSON body")
+
+    resume_data = body.get("resume_data")
+    if not isinstance(resume_data, dict):
+        # Seen when the editor was opened from a payload that carries only HTML
+        # (a saved resume, or a flow that never stored the parsed dict).
+        logger.warning(
+            "add-confirmed-skills rejected: resume_data missing (got %s)", type(resume_data).__name__
+        )
+        raise HTTPException(status_code=400, detail="resume_data is required")
+
+    requested = body.get("skills")
+    if not isinstance(requested, list) or not requested:
+        logger.warning("add-confirmed-skills rejected: skills list empty or malformed (%r)", requested)
+        raise HTTPException(status_code=400, detail="skills must be a non-empty list")
+
+    jd_string = str(body.get("jd_string") or "")
+    try:
+        template_id = int(body.get("template_id") or 1)
+        style_id = int(body.get("style_id") or 1)
+    except (TypeError, ValueError):
+        raise HTTPException(status_code=400, detail="template_id and style_id must be numbers")
+
+    # Only what we offered. Matching on the raw skill_gaps rather than the
+    # filtered display list keeps this tolerant of the filter changing later.
+    offered = {
+        str(g).strip().lower(): str(g).strip()
+        for g in (resume_data.get("skill_gaps") or [])
+        if str(g or "").strip()
+    }
+
+    skills = resume_data.get("skills")
+    if not isinstance(skills, list):
+        skills = []
+    existing = {str(s).strip().lower() for s in skills if str(s or "").strip()}
+
+    # skill_gaps is the list the pills were built from, so normally every ticked
+    # skill is in it. It can go missing when the editor is working from a payload
+    # that lost the field (a saved resume, an older session, a re-render that
+    # rebuilt resume_data). Rejecting everything then makes the box look broken
+    # while showing pills the user just ticked. The gate exists to stop a forged
+    # payload writing arbitrary text into a resume, and _is_atomic_hard_skill
+    # already provides that, so fall back to it rather than refusing outright.
+    gate_is_open = not offered
+
+    added: list[str] = []
+    rejected: list[str] = []
+    already: list[str] = []
+    for raw in requested:
+        key = str(raw or "").strip().lower()
+        if not key:
+            continue
+        if key not in offered:
+            if gate_is_open and _fallback_skill_is_acceptable(raw):
+                offered[key] = _clean_inline_text(raw)
+            else:
+                rejected.append(str(raw))
+                continue
+        if key in existing:
+            already.append(str(raw).strip())
+            continue
+        # Use the wording from skill_gaps (which follows the JD's own casing),
+        # not whatever the client echoed back.
+        canonical = _clean_inline_text(offered[key])
+        if not canonical:
+            continue
+        skills.append(canonical)
+        existing.add(key)
+        added.append(canonical)
+
+    if not added and already and not rejected:
+        # Everything asked for is already on the resume. Clicking add a second
+        # time - after a first successful add, or after switching template - used
+        # to answer 400, which surfaced as "Update failed" even though the resume
+        # already said exactly what the user wanted. Nothing to do is success.
+        logger.info("add-confirmed-skills: %d skill(s) already present, nothing to add", len(already))
+        return JSONResponse({
+            "success": True,
+            "added": [],
+            "already_present": already,
+            "rejected": [],
+            "html": None,
+            "resume_data": resume_data,
+            "promptable_skill_gaps": promptable_skill_gaps(resume_data.get("skill_gaps")),
+        })
+
+    if not added:
+        logger.warning(
+            "add-confirmed-skills rejected: none of %r matched skill_gaps %r "
+            "(already in skills: %r, gaps present: %s)",
+            requested, list(offered.values()), sorted(existing), not gate_is_open,
+        )
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "Those skills are no longer listed as gaps for this resume - "
+                "they may already have been added."
+            ),
+        )
+
+    resume_data["skills"] = skills
+
+    # Remember the answer. Without this it lived only in this editing session, so
+    # the next tailor - and every Chrome extension run, which has no confirm step
+    # at all - started again from "the resume does not evidence this" and dropped
+    # the skill the candidate had just told us they have.
+    _sk_db = get_db()
+    try:
+        _sk_user = _sk_db.query(User).filter_by(id=request.session.get("user_id")).first()
+        if _sk_user:
+            add_confirmed_skills_to_user(_sk_db, _sk_user, added)
+    except Exception:
+        # Persisting is a convenience for future runs; never fail the request the
+        # user is actually waiting on because of it.
+        logger.exception("Could not persist confirmed skills")
+    finally:
+        _sk_db.close()
+
+    added_lower = {s.lower() for s in added}
+    resume_data["skill_gaps"] = [
+        g for g in (resume_data.get("skill_gaps") or [])
+        if str(g).strip().lower() not in added_lower
+    ]
+
+    try:
+        html_content, _ = _render_resume_html(resume_data, jd_string, template_id, style_id)
+    except HTTPException:
+        raise
+    except Exception:
+        logger.exception("Re-render after confirming skills failed")
+        raise HTTPException(status_code=500, detail="Could not update the resume. Please try again.")
+
+    return JSONResponse({
+        "success": True,
+        "added": added,
+        "rejected": rejected,
+        "html": html_content,
+        "resume_data": resume_data,
+        "promptable_skill_gaps": promptable_skill_gaps(resume_data.get("skill_gaps")),
+    })
 
 
 @app.post("/api/download-html-pdf")
@@ -9957,8 +11690,49 @@ def _extract_linkedin_url_from_pdf(pdf_path: str) -> str:
 
 
 def _extract_pdf_text_for_ats(path: str) -> str:
+    """Extract the resume text the ATS pass is scored against.
+
+    This used a bare page.extract_text(), which takes pdfplumber's default
+    x_tolerance of 3 *points*. That figure is absolute, so on a resume set in a
+    tight 9-10pt face the gap between two words falls under it and they come
+    out welded - "progresstracking", "maintaininglearnerrecords". The optimizer
+    path never showed this because extract_pdf_text() above passes
+    x_tolerance=1; only the scoring path was affected, which is exactly where
+    users saw correctly-spelled resumes reported as misspelled.
+
+    Fixed on three levels, because none of them is reliable alone:
+
+      1. x_tolerance_ratio scales the threshold with font size, which is the
+         right unit for the measurement - a 3pt gap means something different
+         at 9pt and at 20pt.
+      2. Both extractions are run and the one with fewer fused tokens wins.
+         A tighter tolerance can over-split a wide-tracked font, so this is not
+         a change that is safe to make unconditionally; measuring is.
+      3. repair_fused_words() splits whatever still came through welded.
+
+    Both /get-ats-score and the optimizer call this function, so the two flows
+    stay byte-for-byte identical - see _ats_resume_text_for for why that
+    matters.
+    """
     with pdfplumber.open(path) as pdf:
-        return "\n".join(page.extract_text() or "" for page in pdf.pages)
+        pages = list(pdf.pages)
+        default_text = "\n".join(p.extract_text() or "" for p in pages)
+        try:
+            scaled_text = "\n".join(
+                p.extract_text(x_tolerance_ratio=0.12) or "" for p in pages
+            )
+        except TypeError:
+            # Older pdfplumber without the ratio parameter.
+            scaled_text = ""
+
+    text = default_text
+    if scaled_text.strip():
+        # Only prefer the scaled read when it actually recovers spaces. Equal
+        # counts keep the default, which is the better-tested path.
+        if count_fused_words(scaled_text) < count_fused_words(default_text):
+            text = scaled_text
+
+    return repair_fused_words(text)
 
 
 _PORTFOLIO_HOST_RE = re.compile(
@@ -10018,11 +11792,15 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
                 asyncio.to_thread(_extract_linkedin_url_from_pdf, file_path),
                 asyncio.to_thread(_detect_two_column_layout, file_path),
             )
-            if linkedin_url:
-                resume_string += f"\nLinkedIn: {linkedin_url}"
+            # Shared with the optimizer so both flows hash to the same cache key
+            # and get the same verdict - see _ats_resume_text_for.
+            resume_string = _ats_resume_text_for(resume_string, linkedin_url)
             ats_score = await ats_scoring(resume_string, jd_string)
 
         result = parse_ai_json_response(ats_score)
+        # The model raises PDF-extraction artifacts as spelling errors despite
+        # the prompt forbidding it; strip them before the user ever sees them.
+        result = scrub_extraction_artifacts_from_spelling(result)
 
         if is_two_col:
             fmt = result.setdefault("formatting", {})
@@ -10623,6 +12401,10 @@ def _editor_cv_data_to_resume_parsed(cv_data: dict) -> dict:
 
 def _render_custom_cv_html(template_id: int, cv_data: dict) -> str:
     parsed = _editor_cv_data_to_resume_parsed(cv_data)
+    # Everything here was typed by the person in the /modify-cv builder, so their
+    # links are taken at face value - including the same URL on more than one
+    # project. See the cross-project dedup in build_resume_context.
+    parsed["user_authored_links"] = True
     html_output, _ = _render_resume_html(parsed, "", int(template_id or 1), 1)
     return html_output
 

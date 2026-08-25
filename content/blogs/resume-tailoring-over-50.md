@@ -48,6 +48,7 @@ But to give you a real, practical strategy to [tailor your resume](https://theta
 Age bias rarely announces itself.
 
 Instead, it disguises itself as:
+
 - "Not a culture fit"
 - "Looking for someone with a fresher perspective"
 - "Overqualified for this position"
@@ -57,6 +58,7 @@ Instead, it disguises itself as:
 The signals that trigger bias - often before anyone consciously decides anything:
 
 **On the resume:**
+
 - Graduation year from a college that clearly dates you
 - A 30-year career history with roles going back to the early 1990s
 - Outdated technologies that are no longer in use
@@ -66,6 +68,7 @@ The signals that trigger bias - often before anyone consciously decides anything
 - Listing all jobs, including entry-level roles from 25 years ago
 
 **In [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):**
+
 - Low keyword match on modern tools (Slack, Notion, cloud platforms, Agile)
 - Missing terms that have emerged as standard in the last 5-8 years
 - Outdated [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) with no newer ones
@@ -87,6 +90,7 @@ Limit your work history to the past 10-15 years.
 If you had an earlier role that is relevant to the specific job, include it in a brief "Earlier Career" section with no dates:
 
 **Earlier Career (Selected)**
+
 - Marketing Director, [Company], managed $5M brand budget during product repositioning
 - Regional Sales Manager, [Company], built the Midwest territory from $0 to $8M ARR
 
@@ -117,6 +121,7 @@ If you have delivered results in a remote or hybrid environment - say so.
 Review [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to make sure your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) reflects current standards.
 
 If you have genuinely not used modern tools, now is a good time to:
+
 - Complete a short online certification (Google Analytics, AWS Cloud Practitioner, Scrum certification)
 - Learn and use the most common tools in your industry
 - List any recent learning explicitly: "Currently completing [Certification]"
@@ -132,6 +137,7 @@ The Objective Statement - "Seeking a challenging position where I can utilize my
 Understanding the [difference between resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) is critical here. Replace it immediately with a powerful professional summary.
 
 Your summary should:
+
 - Use present tense and modern language
 - Lead with your most relevant and recent accomplishments
 - Include 2-3 keywords from the target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
@@ -179,6 +185,7 @@ The optimized resume renders live beside the controls, so you see the page count
 
 
 **Replace:**
+
 - Two-column layouts that some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot parse
 - Serif fonts like Times New Roman or Courier
 - Fully justified text alignment
@@ -187,6 +194,7 @@ The optimized resume renders live beside the controls, so you see the page count
 - Bold use of your full address
 
 **Use:**
+
 - Clean, single-column [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) format
 - Modern sans-serif fonts (Calibri, Arial, Aptos)
 - Left-aligned text
@@ -207,6 +215,7 @@ An AOL or Hotmail address signals a digital era that ended two decades ago.
 Create a professional Gmail address if you have not already.
 
 Your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) should be:
+
 - Complete with a current, professional photo
 - Updated with your recent roles and key accomplishments
 - Active - even occasional engagement shows you are current
@@ -230,6 +239,7 @@ Upload your resume.
 See exactly which modern keywords are missing - and where to add them naturally.
 
 Common modern keywords that experienced professionals often miss:
+
 - Agile, Scrum, sprint planning
 - Data-driven, KPI-led, OKR
 - Cloud, SaaS, digital transformation

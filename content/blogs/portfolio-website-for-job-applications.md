@@ -162,13 +162,13 @@ If you've had a portfolio link on your resume for a while with no interview upti
 
 Before you attach a portfolio link to your next application, run through this fast:
 
-- Link works and points to the current version of the site
-- URL is short, readable, and uses your own domain if possible
-- Homepage shows your name, role, and strongest project without scrolling
-- At least one full case study follows the problem-role-process-result structure
-- Resume link and contact method are visible on the homepage
-- Site loads quickly and displays correctly on mobile
-- Featured projects are relevant to the specific job you're applying to, not just your best work overall
+- [ ] Link works and points to the current version of the site
+- [ ] URL is short, readable, and uses your own domain if possible
+- [ ] Homepage shows your name, role, and strongest project without scrolling
+- [ ] At least one full case study follows the problem-role-process-result structure
+- [ ] Resume link and contact method are visible on the homepage
+- [ ] Site loads quickly and displays correctly on mobile
+- [ ] Featured projects are relevant to the specific job you're applying to, not just your best work overall
 
 For a more complete version of this process, see [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying).
 

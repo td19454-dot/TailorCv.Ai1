@@ -102,6 +102,7 @@ Understanding job scams is crucial, but seeing real-life scenarios can help soli
 You receive an email from a company claiming to be a Fortune 500 firm offering you a managerial position with a salary that’s significantly higher than industry standards. The catch? They request that you pay for a background check or training materials upfront. 
 
 **Red Flags:**
+
 - Unsolicited job offer with no prior application.
 - Request for payment before employment.
 - Salary that seems excessively high compared to your experience.
@@ -110,6 +111,7 @@ You receive an email from a company claiming to be a Fortune 500 firm offering y
 A recruiter reaches out on LinkedIn, expressing interest in your profile and offering a job that matches your skills perfectly. However, the message contains numerous grammatical errors and asks you to click a link to view the job description.
 
 **Red Flags:**
+
 - Poor language and spelling mistakes.
 - Request to click on an unknown link.
 - Lack of a professional company email address.
@@ -118,6 +120,7 @@ A recruiter reaches out on LinkedIn, expressing interest in your profile and off
 You find a job posting online with minimal details about the role and responsibilities. It emphasizes immediate hiring and encourages applicants to apply quickly. The application process involves filling out a form that asks for sensitive personal information, like your Social Security number.
 
 **Red Flags:**
+
 - Vague job descriptions with no specifics.
 - Urgency to apply without proper vetting.
 - Requests for personal information early in the process.

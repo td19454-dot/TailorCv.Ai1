@@ -27,16 +27,16 @@ Mock interviews only help if you review them properly. The goal is not to sound 
 
 After each [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai), review:
 
-- Did I answer the question directly?
-- Did I use a clear structure?
-- Did I give a [real example](https://thetailorcv.com/blog/interview-story-bank-star-method)?
-- Did I include a result?
-- Did I speak too fast?
-- Did I ramble?
-- Did I explain technical work clearly?
-- Did I connect my answer to the role?
-- Did I ask [thoughtful questions](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview)?
-- Did I sound confident without exaggerating?
+- [ ] Did I answer the question directly?
+- [ ] Did I use a clear structure?
+- [ ] Did I give a [real example](https://thetailorcv.com/blog/interview-story-bank-star-method)?
+- [ ] Did I include a result?
+- [ ] Did I speak too fast?
+- [ ] Did I ramble?
+- [ ] Did I explain technical work clearly?
+- [ ] Did I connect my answer to the role?
+- [ ] Did I ask [thoughtful questions](https://thetailorcv.com/blog/how-to-answer-greatest-weakness-interview)?
+- [ ] Did I sound confident without exaggerating?
 
 ---
 

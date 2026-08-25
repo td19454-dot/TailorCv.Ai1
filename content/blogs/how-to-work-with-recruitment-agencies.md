@@ -57,9 +57,9 @@ Agencies are one channel, not your whole strategy. Keep applying directly, [netw
 
 To get recruiters working for you:
 
-- **Choose specialists** in your field, not generalists.
-- Be **clear, responsive, and honest** about what you want.
-- Give them a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that's [ATS-ready](https://www.thetailorcv.com/solutions).
-- **Nurture the relationship** and run **other channels** in parallel.
+- [ ] **Choose specialists** in your field, not generalists.
+- [ ] Be **clear, responsive, and honest** about what you want.
+- [ ] Give them a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that's [ATS-ready](https://www.thetailorcv.com/solutions).
+- [ ] **Nurture the relationship** and run **other channels** in parallel.
 
 Work with agencies this way and they become a powerful accelerant. Start with a standout [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), scored with the [ATS checker](https://www.thetailorcv.com/solutions), so every recruiter has something great to sell.

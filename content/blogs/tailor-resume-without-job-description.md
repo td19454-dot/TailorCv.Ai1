@@ -53,6 +53,7 @@ Without one, you are working from signals - indirect information about what the 
 The good news: you usually have more signal than you think.
 
 You have:
+
 - The company's existing job postings (even for different roles)
 - [LinkedIn profiles](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) of current employees in similar roles
 - The company's website, product, and mission language
@@ -79,6 +80,7 @@ The [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-
 Your referral contact is your most valuable source.
 
 Ask them:
+
 - What is the team actually working on right now?
 - What is the hiring manager's biggest pain point?
 - What did they say they were looking for?
@@ -92,6 +94,7 @@ This conversation gives you more useful information than most job descriptions.
 [Use LinkedIn for your job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) strategically here.
 Look at people on that team.
 What do their profiles show?
+
 - What skills and tools appear frequently?
 - What past employers have team members come from?
 - What titles do they use?
@@ -138,6 +141,7 @@ Before reaching out, think about your [personal brand](https://thetailorcv.com/b
 ### Research First, Write Second
 
 Before you send a single line, research the company and person deeply:
+
 - What has the company published recently? (blog posts, press releases, product launches)
 - What is the person's role and focus area?
 - What problems are they probably trying to solve?
@@ -184,6 +188,7 @@ No specifics.
 ### Use the Company Website as Your JD Substitute
 
 Read the company's:
+
 - About page (mission, values, priorities)
 - Product pages (what they build, who it is for)
 - Blog (what they write about reveals what they think matters)
@@ -202,6 +207,7 @@ Even if this posting is vague, there may be previous postings for this type of r
 Search "[Company name] [role type]" with [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s job search, set the time filter to past year.
 
 Old postings tell you:
+
 - What skills they typically require
 - What the actual title usually is
 - What they call their teams

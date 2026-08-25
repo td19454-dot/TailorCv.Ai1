@@ -82,6 +82,7 @@ Stuffing keywords into a wall of repeated text often produces a *lower* score th
 Keyword stuffing is obvious immediately.
 
 Signs that trigger suspicion:
+
 - The same phrase repeated in multiple bullets without variation
 - A [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) 40 items long with no structure
 - A summary that is a list of keywords masquerading as sentences
@@ -101,6 +102,7 @@ That is the worst outcome: passing [ATS](https://thetailorcv.com/blog/what-is-an
 High-priority keywords are the ones that appear in the "Required" or "Responsibilities" section of the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) - the ones the employer clearly cannot do without.
 
 These should appear:
+
 - Once in your professional summary
 - Once or twice in your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - Once or twice in your work experience bullets (in context, with results)
@@ -115,6 +117,7 @@ Vary naturally: "[machine learning](https://thetailorcv.com/blog/machine-learnin
 These appear in the "Preferred" section or are mentioned once in the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 These should appear:
+
 - Once in your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) or experience bullets
 - Not in the summary unless particularly relevant
 
@@ -125,6 +128,7 @@ These should appear:
 Skills mentioned once in passing or listed under "nice to have."
 
 These should appear:
+
 - Once in your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) if you genuinely have them
 
 **Total appearances: 1 time**
@@ -156,6 +160,7 @@ The [skills section matched to the job description](https://thetailorcv.com/blog
 This is the only section where a list format is appropriate.
 
 Rules for the [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026):
+
 - List actual skills, not phrases ("Python" not "Python programming language skills")
 - Group logically (Technical Skills, Analytics Tools, [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume))
 - Limit to 12-18 items max
@@ -171,6 +176,7 @@ Read the [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-gu
 This is where keyword context is most important - and most often done wrong.
 
 A keyword in a [bullet point](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) should:
+
 - Appear in a sentence that describes a real action and outcome
 - Not be forced in where it does not naturally belong
 - Be the specific word or phrase the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses

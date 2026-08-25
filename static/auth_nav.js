@@ -23,6 +23,11 @@
         // richer popup — skip the generic modal for that endpoint.
         var url = typeof input === "string" ? input : (input && input.url) || "";
         if (url.indexOf("checkout-download") !== -1) return response;
+        // Just came back from a completed checkout: the payment is done and the
+        // webhook may still be in flight, so a 402 here means "not applied YET",
+        // not "you need to pay". Telling someone they are out of free uses
+        // seconds after they paid is the worst moment to be wrong.
+        if (_justUpgraded()) return response;
         response.clone().json().then(function (body) {
           if (body && body.error === "upgrade_required") {
             showUpgradeModal(body.feature);
@@ -33,6 +38,32 @@
     });
   };
 })();
+
+/* Did this page load arrive straight from a completed checkout?
+
+   /billing/polar/return waits for the webhook and then sends the buyer here
+   with upgrade=success or upgrade=pending. Either way the money is taken, so
+   for a short grace period after landing we must not accuse them of being out
+   of free uses — the grant is applied by a webhook we do not control the timing
+   of. The window is deliberately short: it suppresses a wrong paywall, it does
+   not hand out access, because every real gate is still enforced server-side. */
+var _UPGRADE_GRACE_MS = 90 * 1000;
+function _justUpgraded() {
+  try {
+    var flag = sessionStorage.getItem("tcvUpgradeAt");
+    if (!flag) {
+      var q = new URLSearchParams(window.location.search).get("upgrade");
+      if (q !== "success" && q !== "pending") return false;
+      sessionStorage.setItem("tcvUpgradeAt", String(Date.now()));
+      return true;
+    }
+    if (Date.now() - parseInt(flag, 10) < _UPGRADE_GRACE_MS) return true;
+    sessionStorage.removeItem("tcvUpgradeAt");
+    return false;
+  } catch (e) {
+    return false;   // storage blocked — behave exactly as before
+  }
+}
 
 // ── Upgrade paywall modal ──────────────────────────────────────────────────
 var _upgradeModalOpen = false;
@@ -180,7 +211,16 @@ function showUpgradeModal(feature) {
 // paywall modal instead of silently landing on /pricing.
 (function () {
   var feature = new URLSearchParams(window.location.search).get("upgrade");
-  if (feature) showUpgradeModal(feature);
+  // ?upgrade= carries a FEATURE name here, but the payment providers use the
+  // same parameter to report an OUTCOME — the Polar success URL is
+  // "?upgrade=success". That is truthy, so it opened the paywall for a feature
+  // called "success", which matches nothing and fell through to the generic
+  // "You've used your 1 free use" copy. The result: everyone who completed a
+  // payment was told to upgrade, on the dashboard, seconds after paying.
+  var OUTCOMES = ["success", "pending", "cancel", "cancelled", "canceled", "failed", "true", "1"];
+  if (feature && OUTCOMES.indexOf(String(feature).toLowerCase()) === -1) {
+    showUpgradeModal(feature);
+  }
 })();
 
 (function () {

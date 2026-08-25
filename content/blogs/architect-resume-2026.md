@@ -160,9 +160,9 @@ Use a single-column text [resume](https://www.thetailorcv.com/blog/how-to-make-r
 
 Your architect [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **license status** and software [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- Shows projects with scope, role, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
-- Links a strong [portfolio website](https://www.thetailorcv.com/portfolio).
-- Stays [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **license status** and software [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- [ ] Shows projects with scope, role, and [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results.
+- [ ] Links a strong [portfolio website](https://www.thetailorcv.com/portfolio).
+- [ ] Stays [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Keep the [resume](https://www.thetailorcv.com/modify-cv) clean, let the [portfolio](https://www.thetailorcv.com/portfolio) shine, and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) every application. Start in the resume builder and score it with the free ATS checker.

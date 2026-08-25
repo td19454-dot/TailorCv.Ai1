@@ -139,9 +139,9 @@ Cabin crew can grow into purser, cabin manager, and training or recruitment role
 
 Your flight attendant [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **customer service and safety**.
-- Lists your **languages** with honest [proficiency](https://thetailorcv.com/blog/bilingual-language-skills-on-resume).
-- Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) service results.
-- Is polished, one page, and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Leads with **customer service and safety**.
+- [ ] Lists your **languages** with honest [proficiency](https://thetailorcv.com/blog/bilingual-language-skills-on-resume).
+- [ ] Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) service results.
+- [ ] Is polished, one page, and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Build a first-class [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every airline.

@@ -67,6 +67,7 @@ This section should detail your work history in reverse chronological order. Foc
 **Software Developer**  
 XYZ Corporation, San Francisco, CA  
 June 2021 - Present  
+
 - Developed and implemented a new feature that increased user engagement by 40%, resulting in a 15% boost in revenue.
 - Collaborated with a team of 5 to design a mobile app that achieved 4.8 stars on the App Store.
 

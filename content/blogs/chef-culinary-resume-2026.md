@@ -156,9 +156,9 @@ For a concept you love, yes — a tailored [cover letter](https://www.thetailorc
 
 Your chef [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Leads with **cuisine and level**.
-- Shows kitchen scale, leadership, and cost control with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets.
-- Lists ServSafe and station [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
-- Stays one page, [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and passes the ATS score checker.
+- [ ] Leads with **cuisine and level**.
+- [ ] Shows kitchen scale, leadership, and cost control with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) bullets.
+- [ ] Lists ServSafe and station [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
+- [ ] Stays one page, [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and passes the ATS score checker.
 
 Cook up a strong [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every kitchen you apply to.

@@ -186,13 +186,13 @@ Good PM project ideas include: habit trackers, community tools, browser extensio
 
 Before applying, make sure your resume has:
 
-- Product names, not just company names
-- Metrics in at least 60% of experience bullets
-- Cross-functional collaboration language (engineering, design, data, legal, marketing)
-- PRD, roadmap, or discovery methodology mentioned
-- Tools from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
-- No jargon without proof
-- One clean summary tied to the target role
+- [ ] Product names, not just company names
+- [ ] Metrics in at least 60% of experience bullets
+- [ ] Cross-functional collaboration language (engineering, design, data, legal, marketing)
+- [ ] PRD, roadmap, or discovery methodology mentioned
+- [ ] Tools from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
+- [ ] No jargon without proof
+- [ ] One clean summary tied to the target role
 - [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) or case study link if you have one
 
 ---

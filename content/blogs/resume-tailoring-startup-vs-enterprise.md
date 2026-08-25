@@ -93,6 +93,7 @@ Startup founders and hiring managers want to see that you can *do*, not just *ov
 ### 2. Use Startup Language
 
 Certain words resonate at startups:
+
 - "built from scratch"
 - "0 to 1"
 - "shipped"
@@ -136,6 +137,7 @@ Check [ideal resume length guidance](https://thetailorcv.com/blog/ideal-resume-l
 Enterprise companies want evidence that you can work within large, complex structures. Avoid the [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) that get enterprise applications rejected before they reach a person.
 
 Your bullets should show:
+
 - Scale of teams or systems you worked with
 - Process improvements and methodologies
 - Cross-departmental collaboration
@@ -194,6 +196,7 @@ You should not rewrite your resume from scratch every time.
 Instead, build a master resume with everything - all roles, all bullets, all skills, all [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
 Then create two tailored versions:
+
 - **Startup version** - tighter, impact-first, broader skills, scrappier tone
 - **Enterprise version** - structured, process-focused, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-optimized, credential-forward
 

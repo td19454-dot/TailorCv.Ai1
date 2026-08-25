@@ -38,11 +38,13 @@ To get promoted to senior, you must already be operating like a senior. To get p
 ## Step 1: Understand the Requirements for the Next Level
 
 Most companies have a leveling framework or competency matrix. If yours does:
+
 - Get a copy and study it
 - Identify the gaps between your current performance and the next level
 - Build a plan to close those gaps
 
 If your company has no formal framework:
+
 - Ask your manager directly: "What would I need to demonstrate to be promoted to [next level]?"
 - Observe what people at the next level do differently
 - Look at the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) for the next-level role
@@ -84,6 +86,7 @@ Visibility is not bragging - it is making your real contributions known so they 
 A mentor advises you. A sponsor advocates for you when you are not in the room - and promotion decisions happen in rooms you are not in.
 
 To build sponsorship:
+
 - Deliver consistently for senior leaders
 - Make your manager's job easier (managers sponsor people who make them look good)
 - Build genuine relationships with leaders beyond your direct manager
@@ -102,6 +105,7 @@ Do not wait silently hoping to be noticed. Express your ambition clearly.
 "I'm really enjoying my work and I'm ambitious about growing here. I'd like to work toward a promotion to [next level]. Can we talk about what I'd need to demonstrate and what the timeline might look like?"
 
 This does three things:
+
 1. Signals your ambition (managers can't advocate for goals they don't know about)
 2. Gets you a concrete roadmap
 3. Starts the clock on the process

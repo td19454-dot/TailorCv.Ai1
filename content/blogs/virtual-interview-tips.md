@@ -72,6 +72,7 @@ Before your virtual interview, make sure your resume is strong. Use the [TailorC
 Test the specific platform the company is using before the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry). Do not wait until the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) starts to download Zoom or Teams.
 
 Checklist:
+
 - Download and install the platform
 - Create an account if required
 - Test your camera and microphone in the platform's settings
@@ -118,6 +119,7 @@ Virtual calls flatten emotional expression. Smile slightly more than you natural
 Dress professionally from the waist up at minimum. If you stand up during the [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) for any reason, you do not want to be caught in pyjamas. Dress fully as you would for an in-person [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 Avoid:
+
 - Bright white or bright red (bad on camera)
 - Small patterns or checks (creates visual interference on video)
 - Noisy jewelry (bracelets that clank on the desk during typing)

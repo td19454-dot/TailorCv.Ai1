@@ -73,6 +73,7 @@ So the uncomfortable truth is this: **the more distinctive the resume looks, the
 ## Round 1: Pricing
 
 **Enhancv (2026):**
+
 - **Free:** 7-day trial, no card — 12 section items, **Enhancv branding on downloads**
 - **Pro Weekly:** $24.99 (a 7-day trial that auto-renews)
 - **Pro Monthly:** **$19.99/month** (~$240/year)
@@ -80,6 +81,7 @@ So the uncomfortable truth is this: **the more distinctive the resume looks, the
 - **Pro Semi-annual:** $79.94 every 6 months (~$13.33/month, ~$160/year)
 
 **TailorCV (2026):**
+
 - **Free:** unlimited ATS scores, forever, no card, no branding
 - **Pro:** **$59.99/year** ($4.99/week or $7.99/month for shorter commitments)
 

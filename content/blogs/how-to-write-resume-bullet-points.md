@@ -31,6 +31,7 @@ Before polishing your bullets, make sure your overall resume scores well with th
 Bullet points are the primary content recruiters read in the work experience section - the section that carries the most weight in the hiring decision. They are also what [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems scan for keyword matches.
 
 A strong bullet does three things:
+
 1. Shows what you did (action)
 2. Shows how you did it (method or skill)
 3. Shows the impact (result, often quantified)

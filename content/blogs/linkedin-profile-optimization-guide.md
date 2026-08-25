@@ -46,6 +46,7 @@ Avoid: sunglasses, group photos, wedding photos, holiday photos, or photos from 
 The banner (the rectangle behind your profile photo) is one of the most overlooked profile elements.
 
 Use it to communicate:
+
 - Your professional identity (e.g., "Backend Engineer | Python | AWS")
 - Your [personal brand](https://thetailorcv.com/blog/personal-branding-for-professionals) (e.g., a subtle tech or design background image)
 - A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) call-to-action (e.g., "[portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio): yourname.dev")
@@ -184,6 +185,7 @@ Optimizing runs in visible stages against the specific job description you paste
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) field of study
 
 To rank for "Senior Backend Engineer" searches:
+
 - Include "backend engineer" or "[backend developer](https://thetailorcv.com/blog/backend-developer-resume-2026)" in your headline and summary
 - List your [specific technologies](https://thetailorcv.com/blog/business-analyst-portfolio-guide) (Python, Node.js, PostgreSQL) in skills
 - Use the job title "Backend Engineer" (not a creative internal title) in your experience

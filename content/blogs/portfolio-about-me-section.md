@@ -35,6 +35,7 @@ The About Me section is where a visitor decides whether to trust you - and most 
 
 ### 1. Identify Your Core Message
 Before you start writing, take a moment to reflect on what you want to convey. Ask yourself:
+
 - What is my professional identity?
 - What unique value do I bring to my field?
 - What kind of opportunities am I seeking?
@@ -45,6 +46,7 @@ Before you start writing, take a moment to reflect on what you want to convey. A
 Your first line is crucial. It should grab attention while succinctly summarizing who you are and what you do. 
 
 **Tips:**
+
 - Use clear, straightforward language.
 - Avoid jargon unless it's commonly understood in your industry.
 
@@ -54,6 +56,7 @@ Your first line is crucial. It should grab attention while succinctly summarizin
 Once you've introduced yourself, back it up with proof. This could be a notable achievement, a project you're proud of, or a specialty that sets you apart.
 
 **Examples of Proof:**
+
 - Metrics (e.g., "increased website traffic by 50% in six months").
 - Awards or recognitions (e.g., "awarded Best New Designer 2023").
 - Specific skills (e.g., "expert in Adobe Creative Suite").
@@ -122,6 +125,7 @@ To continuously improve your About Me section, consider using analytics tools to
 
 ### Checklist for Your About Me Section
 Before finalizing your About Me section, make sure to check off the following:
+
 - [ ] Is it concise (3-5 sentences)?
 - [ ] Does it include a strong opening line?
 - [ ] Is there proof of my skills and achievements?

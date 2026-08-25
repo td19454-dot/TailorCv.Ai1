@@ -32,6 +32,7 @@ Networking complements your applications. Make sure your [resume](https://www.th
 ## Why Networking Works Better Than Applying
 
 When you apply online, you compete with hundreds of applicants and must first pass the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it). When someone refers you, you:
+
 - Bypass much of the initial filtering
 - Get a credibility boost from the referrer
 - Are far more likely to get an [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)
@@ -67,6 +68,7 @@ You can be an excellent networker as an introvert by focusing on depth, written 
 The biggest [networking](https://thetailorcv.com/blog/networking-tips-for-job-search) mistake is reaching out only when you need something. Effective networkers build relationships before they need them and lead with generosity.
 
 Ways to give value:
+
 - Share useful articles or resources
 - Make introductions between people who should know each other
 - Offer help or expertise

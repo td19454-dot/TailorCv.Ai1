@@ -32,6 +32,7 @@ Browse and start with [TailorCV's ATS-friendly templates](https://www.thetailorc
 A bad template is not just an aesthetic problem - it is a functional one.
 
 Many popular resume templates on design sites (Canva, Behance, Etsy) use:
+
 - Two-column layouts that confuse [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - Tables for structure that collapse in [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - Text boxes that [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot read
@@ -48,6 +49,7 @@ Read [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-fo
 
 ### 1. ATS Compatibility (Most Important)
 The template must:
+
 - Use a single-column layout (or a combination format where the second column is only for contact/skills, not work experience)
 - Avoid tables, text boxes, and graphics for core content
 - Use standard section names: Experience, Education, Skills, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
@@ -73,6 +75,7 @@ A template designed for one page that you stretch to two looks weak. A template 
 
 ### 4. Industry Alignment
 Some template styles communicate industry fit:
+
 - **Finance/Law/Consulting**: Clean, traditional, minimal color
 - **Tech/Engineering**: Clean, modern, slightly bold - no excessive flair
 - **Marketing/Design**: Can tolerate more design - but still needs to be [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-compatible

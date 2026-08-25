@@ -45,6 +45,7 @@ The most common tech resume mistake is a long, undifferentiated list of technolo
 > Python, Java, C++, SQL, JavaScript, React, Node.js, Docker, Kubernetes, AWS, GCP, Azure, Redis, MongoDB, PostgreSQL, Kafka, Spark, Airflow, FastAPI, Flask, Django, TensorFlow, PyTorch, scikit-learn
 
 This looks impressive on screen. But without context, the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot determine:
+
 - Which skills are strong vs. barely touched
 - Which skills are relevant to this specific job
 - How recently each tool was used
@@ -69,6 +70,7 @@ Then prove the most important skills in your experience bullets with real result
 Tech is full of acronyms. Not all [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems recognize both the acronym and the spelled-out version as equivalent matches.
 
 **Common tech acronym mistakes:**
+
 - "K8s" instead of "Kubernetes"
 - "ML" instead of "[machine learning](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)"
 - "CI/CD" without spelling out "continuous integration and continuous deployment"
@@ -124,6 +126,7 @@ Tech professionals accumulate tools over the years. A [software engineer](https:
 **What happens:** Outdated technologies dilute your keyword relevance. If you list 40 technologies and 25 are not relevant to the target job, your signal-to-noise ratio drops. The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) and recruiter both see a scattered, unfocused skill set.
 
 **The fix:** Curate your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) for each application. List only:
+
 - Technologies you can discuss confidently in a [technical interview](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 - Technologies that appear in the target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - Current, in-demand tools relevant to the specific role
@@ -137,6 +140,7 @@ Trim to 15-20 focused, relevant skills per application.
 As technical roles get more senior, job descriptions increasingly require leadership, communication, and cross-functional collaboration keywords. Tech candidates often ignore these, assuming technical skills are all that matter for any technical role.
 
 **Common overlooked soft skill keywords for senior tech roles:**
+
 - Engineering leadership
 - Technical mentorship
 - Cross-functional collaboration
@@ -171,6 +175,7 @@ Many experienced tech professionals skip the resume summary. They believe their 
 **What happens:** Your resume starts with work experience. Your primary role keywords are buried several lines down. The [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) gets a weaker initial relevance signal compared to a resume with a keyword-dense opening summary.
 
 **The fix:** Write a 3-4 sentence technical summary that includes:
+
 - Your title and years of experience
 - The 2-3 most important technical skills for the target role
 - A key achievement or scope metric

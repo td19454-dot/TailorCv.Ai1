@@ -145,9 +145,9 @@ Research market pay and use [how to negotiate a salary offer](https://thetailorc
 
 Your retail manager [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- Reads like a **P&L** with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) sales, shrink, and team results.
-- Names the systems and KPIs from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
-- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
-- Leads every role with results, not duties.
+- [ ] Reads like a **P&L** with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) sales, shrink, and team results.
+- [ ] Names the systems and KPIs from the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
+- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the ATS score checker.
+- [ ] Leads every role with results, not duties.
 
 Build a results-driven [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every retailer.

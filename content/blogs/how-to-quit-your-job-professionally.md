@@ -31,6 +31,7 @@ Before you quit, make sure your next step is secure. If you are [job searching](
 The golden rule: do not resign until you have a signed offer letter in hand (if you are moving to a [new job](https://thetailorcv.com/blog/negotiating-multiple-job-offers)). Verbal offers fall through. Get it in writing before you give notice.
 
 If you are quitting without a [job lined up](https://thetailorcv.com/blog/recession-proof-jobs-2026), make sure you have:
+
 - Financial runway (ideally 6+ months of expenses)
 - A clear plan for what's next
 - Health insurance continuity if applicable
@@ -42,6 +43,7 @@ If you are quitting without a [job lined up](https://thetailorcv.com/blog/recess
 Your direct manager should hear it from you first - before colleagues, before HR, before it leaks. Schedule a private meeting (in person or a video call for remote roles).
 
 Do not:
+
 - Announce your resignation to colleagues before telling your manager
 - Resign over text, Slack, or a casual mention
 - Let your manager hear it secondhand
@@ -57,6 +59,7 @@ Keep it brief, positive, and clear. You do not need to over-explain or justify.
 "Thank you for meeting with me. I wanted to let you know that I've decided to resign from my position. My last day will be [date], giving [notice period] notice. I've really valued my time here and what I've learned, and I want to make this transition as smooth as possible."
 
 Key points:
+
 - Be clear and direct (do not be vague or wishy-washy)
 - State your last day
 - Express genuine appreciation
@@ -65,6 +68,7 @@ Key points:
 ### What If They Ask Why?
 
 You can be honest but diplomatic:
+
 - "I've found an opportunity that aligns better with my long-term goals."
 - "I'm looking for a new challenge in [area]."
 
@@ -106,6 +110,7 @@ Your notice period is your last impression. Make it a good one.
 - Be gracious and helpful
 
 Standard notice periods:
+
 - Most professional roles: 2 weeks to 1 month
 - Senior roles: 1-3 months
 - Some countries/contracts: specific legal notice periods (check your contract)
@@ -119,6 +124,7 @@ Honor your contractual notice period unless there are exceptional circumstances.
 When you resign, your employer may make a counteroffer - more money, a promotion, or new responsibilities to keep you.
 
 Before accepting a counteroffer, consider:
+
 - Why did it take resigning to get this offer? (If they valued you, why not before?)
 - Will the underlying reasons you wanted to leave actually change?
 - Studies suggest a majority of people who accept counteroffers leave within 12 months anyway
@@ -131,6 +137,7 @@ Counteroffers are often about the cost and disruption of replacing you, not a ge
 ## Step 6: Conduct a Graceful Exit
 
 In your final days:
+
 - Say genuine goodbyes to colleagues
 - Thank people who helped you
 - Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before you lose access

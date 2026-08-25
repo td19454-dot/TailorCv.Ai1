@@ -64,9 +64,9 @@ Assessments are one step, not the whole process. While you prepare, keep your [r
 
 To walk in ready:
 
-- **Identify the test types** the role uses and practice each.
-- **Do timed practice** to master the format and pacing.
-- **Manage time ruthlessly** — flag and move on, never leave blanks (if unpenalized).
-- **Answer SJTs professionally** and **personality tests honestly and consistently**.
+- [ ] **Identify the test types** the role uses and practice each.
+- [ ] **Do timed practice** to master the format and pacing.
+- [ ] **Manage time ruthlessly** — flag and move on, never leave blanks (if unpenalized).
+- [ ] **Answer SJTs professionally** and **personality tests honestly and consistently**.
 
 Prepare this way and coachable tests become a strength rather than a hurdle. Keep the whole process strong with a tailored [resume](https://www.thetailorcv.com/modify-cv), the [ATS checker](https://www.thetailorcv.com/solutions), and a [free AI mock interview](https://www.thetailorcv.com/mock-interview) for the rounds that follow.

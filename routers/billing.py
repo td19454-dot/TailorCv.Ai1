@@ -12,16 +12,18 @@ safe to deploy before payment keys are configured.
 Webhook endpoints are CSRF-exempt (added to EXEMPT_PATHS in main.py).
 """
 
+import asyncio
 import hashlib
 import hmac
 import json
 import logging
 import os
+import time
 import uuid
 from datetime import datetime, timedelta
 
 from fastapi import APIRouter, HTTPException, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
 
@@ -390,7 +392,12 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
             )
 
         app_base = os.getenv("APP_BASE_URL", "").rstrip("/")
-        success_url = f"{app_base}/dashboard?upgrade=success"
+        # Land on our own route, not straight on the dashboard. Polar sends the
+        # buyer back the instant payment completes, but Pro is granted by the
+        # WEBHOOK, which arrives on its own schedule. Going directly to
+        # /dashboard therefore renders a paying customer as a free user and
+        # throws the upgrade paywall in their face seconds after they paid.
+        success_url = f"{app_base}/billing/polar/return"
 
         from polar_sdk.models import CheckoutCreate
         checkout = polar.checkouts.create(
@@ -409,6 +416,54 @@ async def polar_checkout(body: PolarCheckoutRequest, request: Request):
         return {"checkout_url": checkout.url}
     finally:
         db.close()
+
+
+@router.get("/billing/polar/return")
+async def polar_return(request: Request):
+    """Where Polar sends the buyer after a successful payment.
+
+    Bridges the gap between "payment finished" and "webhook applied it". The
+    redirect is instant; the webhook is not, and landing on the dashboard in
+    between shows the person a paywall for the thing they just bought.
+
+    So wait here — briefly — for the grant to appear, then continue. Nothing is
+    granted in this route: doing that as well as the webhook would extend the
+    same purchase twice and hand out fourteen days for a seven-day pass. This
+    only WAITS, which is safe to run any number of times.
+    """
+    from database import SessionLocal
+    from models import User
+    from main import is_pro
+
+    user_id = request.session.get("user_id")
+    if not user_id:
+        # Session lost during checkout — let the login flow take over.
+        return RedirectResponse("/login?next=/dashboard", status_code=303)
+
+    deadline = time.monotonic() + 10.0
+    granted = False
+    while True:
+        db: Session = SessionLocal()
+        try:
+            user = db.query(User).filter_by(id=user_id).first()
+            granted = bool(user) and is_pro(user)
+        finally:
+            db.close()
+        if granted or time.monotonic() >= deadline:
+            break
+        await asyncio.sleep(0.5)
+
+    if not granted:
+        logger.warning(
+            "Polar return: Pro still not active for user %s after waiting; "
+            "webhook is late or failed.", user_id,
+        )
+    # `pending` tells the dashboard to keep waiting quietly rather than tell a
+    # paying customer they are out of free uses.
+    return RedirectResponse(
+        f"/dashboard?upgrade={'success' if granted else 'pending'}",
+        status_code=303,
+    )
 
 
 @router.post("/api/billing/polar/cancel")

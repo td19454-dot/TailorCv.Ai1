@@ -24,6 +24,7 @@ Writing your **first time resume with [no experience](https://thetailorcv.com/bl
 You can make the process easier with [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience), examples for a [resume summary with no experience](https://thetailorcv.com/blog/resume-summary-with-no-experience), and the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 Whether you are:
+
 - A college student
 - A recent graduate
 - A fresher applying for your first job
@@ -88,6 +89,7 @@ This is the resume after tailoring - the content is already matched, and these c
 ### Functional Resume Format
 
 This format focuses on:
+
 - Skills
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - Achievements
@@ -97,6 +99,7 @@ instead of work experience.
 ### Combination Resume Format
 
 This blends:
+
 - Skills
 - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - Internships
@@ -167,6 +170,7 @@ For a **resume for freshers with [no experience](https://thetailorcv.com/blog/fi
 University of Delhi - 2026
 
 Relevant Coursework:
+
 - Marketing
 - Finance
 - Business Analytics
@@ -180,6 +184,7 @@ Skills are essential for a **first time resume with [no experience](https://thet
 ### Hard Skills
 
 Examples:
+
 - Microsoft Excel
 - Canva
 - SEO
@@ -189,6 +194,7 @@ Examples:
 ### Soft Skills
 
 Examples:
+
 - Communication
 - Teamwork
 - Leadership
@@ -269,6 +275,7 @@ can improve your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 ### 1. Using an Unprofessional Email
 
 Avoid:
+
 - coolboy123@email.com
 - princessqueen@email.com
 
@@ -295,6 +302,7 @@ Messy resumes reduce readability.
 A strong template can dramatically improve your resume presentation.
 
 Good resume templates should:
+
 - Be [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder)
 - Have clean formatting
 - Highlight important sections clearly
@@ -304,6 +312,7 @@ Explore professional resume templates here:
 [Templates](https://www.thetailorcv.com/templates)
 
 These templates are ideal for:
+
 - [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
 - College students
 - First-time job seekers
@@ -321,6 +330,7 @@ At [TailorCV.ai](https://www.thetailorcv.com), you can access:
 - Beginner-focused layouts
 
 Whether you are building a:
+
 - First time resume with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - Resume for freshers with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - Resume with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) college student profile
@@ -387,6 +397,7 @@ After the resume is ready, strengthen the rest of the application. Draft a targe
 Creating a **first time resume with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)** is all about presenting your strengths effectively.
 
 By highlighting:
+
 - Skills
 - [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)

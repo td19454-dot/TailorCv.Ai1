@@ -31,6 +31,7 @@ They change the design.
 None of those are the right move.
 
 Improving your match score requires three things:
+
 1. Knowing which specific keywords you are missing
 2. Adding them naturally and contextually
 3. Verifying the improvement before applying
@@ -47,6 +48,7 @@ Before improving, measure.
 
 Run your current resume against the specific JD using [TailorCV's ATS score checker](https://www.thetailorcv.com/solutions).
 You will see:
+
 - Your current match percentage
 - Which keywords are present
 - Which keywords are missing
@@ -66,6 +68,7 @@ Your professional summary is in the highest-weight section of your resume.
 Keywords here count more than the same keywords buried in older roles.
 
 **Action steps:**
+
 1. Identify the target job title and top 3-4 required skills
 2. Rewrite your summary to include them in the first two sentences
 3. Add one specific, relevant result in the third sentence
@@ -84,6 +87,7 @@ Your skills section is directly parsed by [ATS](https://thetailorcv.com/blog/wha
 Matching JD skills here gives immediate, direct keyword credit.
 
 **Action steps:**
+
 1. List all required and preferred skills from the JD
 2. Add every one you genuinely have to your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 3. Use the exact JD phrasing (not synonyms)
@@ -130,6 +134,7 @@ Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-d
 Keywords embedded in meaningful sentences score higher than the same keywords in a flat list.
 
 **Action steps:**
+
 1. Identify your top 2-3 [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description)
 2. Find the 2-3 most relevant [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) in your experience
 3. Rewrite those bullets to naturally include the [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-description) with context and results
@@ -151,6 +156,7 @@ Keywords added in context: Jira, Agile, sprint planning, cross-functional, proje
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not always equate "ML" with "Machine Learning" or "SEO" with "Search Engine Optimization."
 
 **Action steps:**
+
 - Review your resume for all technical acronyms
 - Include the full term the first time: "Search Engine Optimization (SEO)"
 - Or use the acronym the JD uses consistently throughout
@@ -168,6 +174,7 @@ If your resume uses two-column layouts, tables, text boxes, or graphics, your co
 Your actual keywords may be present but invisible to the scanner.
 
 **Action steps:**
+
 1. Convert to a single-column layout
 2. Remove all tables, text boxes, and graphics
 3. Move any contact information from headers/footers to the main body
@@ -187,6 +194,7 @@ If the JD mentions [certifications](https://thetailorcv.com/blog/how-to-list-cer
 Each listed certification that matches a JD requirement adds keyword credit.
 
 **Action steps:**
+
 1. Read the JD for any [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) mentioned
 2. Check if you have them - if yes, add them to a dedicated [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) section
 3. Use the full official certification name
@@ -205,6 +213,7 @@ Read [best free online certificates for resume](https://thetailorcv.com/blog/bes
 Relevant content earlier = higher weight.
 
 **Action steps:**
+
 1. In each work experience entry, move the most JD-relevant bullet to the top
 2. Move irrelevant bullets to the bottom
 3. Remove bullets that have no relevance to this role
@@ -221,6 +230,7 @@ While [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-de
 More importantly, results make your resume compelling to human reviewers who see your resume after it passes [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it).
 
 **Action steps:**
+
 1. Identify your 5 strongest [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
 2. Add a metric to any that lack one: %, $, users, time, team size, frequency
 3. Ensure the result is real and verifiable
@@ -237,6 +247,7 @@ After making improvements, re-check your score.
 Do not stop at one round of edits.
 
 **Action steps:**
+
 1. Make all changes from strategies 1-9
 2. Re-run through [TailorCV's ATS checker](https://www.thetailorcv.com/solutions)
 3. Check your new score

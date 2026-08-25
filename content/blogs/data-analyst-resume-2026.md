@@ -365,12 +365,14 @@ Business Tools:
 
 EXPERIENCE
 Job Title | Company | Dates
+
 - Analyzed [data/process] using [tool] to improve [metric/result].
 - Built [dashboard/report/model] for [stakeholders] tracking [KPIs].
 - Automated [workflow] reducing [time/errors/cost].
 
 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 Project Name | Tools
+
 - Cleaned and analyzed [dataset] to answer [business question].
 - Built [dashboard/report] showing [KPIs].
 - Recommended [action] based on [insight].

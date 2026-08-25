@@ -173,11 +173,11 @@ Length is another place this mistake shows up - a longer document is not automat
 
 If you only take one thing from this comparison, use this short checklist before picking a tool:
 
-- Are most of your applications going through an online portal or job board? Prioritize ATS-safe export and keyword matching over visual variety.
-- Do you plan to apply to more than a handful of roles? Prioritize a tool that lets you save and duplicate tailored versions quickly.
-- Is your work history short and your target roles similar to each other? A simpler CV maker with a clean template may be all you need.
-- Have you already applied broadly with little response? Treat that as a signal to check parsing and keyword match before assuming your experience is the problem, using the [free ATS score checker](https://www.thetailorcv.com/solutions).
-- Do you need proof of work alongside the document itself, such as for design, development, or data roles? Pair your resume with a [portfolio builder](https://www.thetailorcv.com/portfolio) rather than trying to cram everything into the resume format.
+- [ ] Are most of your applications going through an online portal or job board? Prioritize ATS-safe export and keyword matching over visual variety.
+- [ ] Do you plan to apply to more than a handful of roles? Prioritize a tool that lets you save and duplicate tailored versions quickly.
+- [ ] Is your work history short and your target roles similar to each other? A simpler CV maker with a clean template may be all you need.
+- [ ] Have you already applied broadly with little response? Treat that as a signal to check parsing and keyword match before assuming your experience is the problem, using the [free ATS score checker](https://www.thetailorcv.com/solutions).
+- [ ] Do you need proof of work alongside the document itself, such as for design, development, or data roles? Pair your resume with a [portfolio builder](https://www.thetailorcv.com/portfolio) rather than trying to cram everything into the resume format.
 
 ## Make This Practical
 
