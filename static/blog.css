@@ -3728,3 +3728,132 @@ header.navbar {
   font-family: Inter, "Segoe UI", sans-serif !important;
   font-size: initial;
 }
+
+/* ─── Card links must not underline on hover ─────────────────────────────
+   A global "a:hover { text-decoration: underline }" applies to the whole
+   featured/blog card, because the entire card is wrapped in one anchor - so
+   hovering underlined the title AND the description together, which is what
+   made the listing look messy. Cards signal hover with lift and border, not
+   with underlined body text. */
+.blog-featured,
+.blog-featured:hover,
+.blog-featured *,
+.blog-featured:hover *,
+.blog-card a,
+.blog-card a:hover,
+.blog-cover-wrap,
+.blog-cover-wrap:hover,
+.blog-card-body h2 a,
+.blog-card-body h2 a:hover {
+  text-decoration: none;
+}
+/* The card title still needs a hover affordance - colour, not an underline. */
+.blog-featured:hover .blog-featured-title {
+  color: #ffffff;
+}
+.blog-card-body h2 a:hover {
+  color: #cfe0ff;
+}
+
+/* ─── Sidebar and CTA copy onto the serif face ───────────────────────────
+   The table of contents and the CTA banners were left on the sans UI stack,
+   so the rail and the promo blocks read in a different typeface from the
+   article beside them. Their prose now matches; buttons keep the sans face,
+   since a button label is a control rather than reading text. */
+.blog-detail-page .toc h2,
+.blog-detail-page .toc a,
+.blog-detail-page .toc-cta-title,
+.blog-detail-page .toc-cta-text,
+.blog-detail-page .article-cta-strip,
+.blog-detail-page .article-cta-strip p,
+.blog-detail-page .article-cta-strip strong,
+.blog-detail-page .post-content .end-cta,
+.blog-detail-page .post-content .end-cta p,
+.blog-detail-page .post-content .end-cta strong,
+.blog-detail-page .post-content .article-cta-strip p,
+.blog-detail-page .post-content .article-cta-strip strong {
+  font-family: var(--tcx-serif) !important;
+}
+/* Buttons stay on the UI stack. */
+.toc-cta-btn,
+.toc-cta-btn .tcx-btn-label,
+.blog-detail-page .post-content .end-cta-btn,
+.blog-detail-page .post-content .end-cta-btn .tcx-btn-label,
+.blog-detail-page .hero-cta-btn,
+.blog-detail-page .hero-cta-btn .tcx-btn-label {
+  font-family: Inter, "Segoe UI", sans-serif !important;
+}
+
+/* ─── CTA card: make the click target actually pull the eye ──────────────
+   The card already faded in and floated, but it sat visually static once on
+   screen, so it read as decoration rather than something to click. Adds a
+   slowly drifting gradient, a light sweep that crosses the card every few
+   seconds, a breathing glow on the button, and a stronger hover response.
+   All of it sits inside prefers-reduced-motion: no-preference. */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* 1. The surface drifts, so the card is never completely still. */
+  @keyframes tcxCtaSurface {
+    0%   { background-position: 0% 50%, 0% 50%; }
+    50%  { background-position: 100% 50%, 100% 50%; }
+    100% { background-position: 0% 50%, 0% 50%; }
+  }
+  .blog-detail-page .article-cta-strip,
+  .blog-detail-page .post-content .end-cta {
+    background-size: 180% 180%, 180% 180%;
+    animation: tcxCtaSurface 18s ease-in-out infinite;
+  }
+
+  /* 2. A light sweep crosses the card periodically. The card already has
+        overflow:hidden, so the sweep is clipped to its rounded corners. */
+  .blog-detail-page .article-cta-strip,
+  .blog-detail-page .post-content .end-cta { position: relative; }
+  .blog-detail-page .article-cta-strip::before,
+  .blog-detail-page .post-content .end-cta::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -40%;
+    width: 28%;
+    height: 220%;
+    pointer-events: none;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, .16) 45%,
+      rgba(255, 255, 255, .28) 50%,
+      rgba(255, 255, 255, .16) 55%,
+      rgba(255, 255, 255, 0) 100%);
+    transform: rotate(8deg);
+    animation: tcxCtaSweep 6.5s ease-in-out infinite;
+  }
+  @keyframes tcxCtaSweep {
+    0%, 62%  { left: -40%; opacity: 0; }
+    66%      { opacity: 1; }
+    92%      { left: 115%; opacity: 0; }
+    100%     { left: 115%; opacity: 0; }
+  }
+
+  /* 3. The button breathes, so the eye lands on the actual click target. */
+  @keyframes tcxCtaBtnPulse {
+    0%, 100% { box-shadow: 0 8px 20px rgba(35, 45, 140, .38), 0 0 0 0 rgba(255, 255, 255, .30); }
+    50%      { box-shadow: 0 12px 26px rgba(35, 45, 140, .48), 0 0 0 8px rgba(255, 255, 255, 0); }
+  }
+  .blog-detail-page .post-content .end-cta-btn,
+  .blog-detail-page .article-cta-strip .end-cta-btn {
+    animation: tcxCtaBtnPulse 2.8s ease-in-out infinite;
+  }
+  .blog-detail-page .article-cta-strip:hover .end-cta-btn,
+  .blog-detail-page .post-content .end-cta:hover .end-cta-btn {
+    animation-play-state: paused;
+    transform: translateY(-1px) scale(1.03);
+  }
+
+  /* 4. A firmer hover on the card itself than the previous 3px nudge. */
+  .blog-detail-page .article-cta-strip.tcx-cta-in:hover,
+  .blog-detail-page .post-content .end-cta.tcx-cta-in:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, .45);
+    box-shadow: 0 30px 60px rgba(58, 74, 180, .45);
+  }
+}
