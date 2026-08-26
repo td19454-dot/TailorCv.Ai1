@@ -23,7 +23,7 @@ showcase: none
 
 Write it, memorise it, and deliver it without flinching.
 
-**If you need no [sponsorship](/blog/resume-for-h1b-visa-sponsorship)**, say so plainly and early: *"I hold full working rights under the [Graduate](/blog/first-resume-for-gen-z-2026) Route until March 2028, so there is no sponsorship required and I can start immediately."*
+**If you need no sponsorship**, say so plainly and early: *"I hold full working rights under the [Graduate](/blog/first-resume-for-gen-z-2026) Route until March 2028, so there is no sponsorship required and I can start immediately."*
 
 **If you hold a time-limited open permission**, be specific and forward-looking: *"I'm on an [orientation year](/blog/netherlands-orientation-year-zoekjaar) permit, which means no sponsorship is needed now, and when it converts I qualify for the reduced salary threshold — so the process later is simpler and cheaper than a standard hire."*
 

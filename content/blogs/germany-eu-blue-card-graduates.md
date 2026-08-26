@@ -27,13 +27,13 @@ Three conditions have to be met together:
 
 1. **A recognised university degree**, or one assessed as comparable to a German qualification.
 2. **A binding job offer or employment contract** in a role that matches your qualification.
-3. **A gross annual salary meeting the [threshold](/blog/resume-for-h1b-visa-sponsorship)** for your category.
+3. **A gross annual salary meeting the threshold** for your category.
 
 That third condition is where [applications](/blog/how-many-jobs-should-you-apply-to-per-day) actually succeed or fail, and it is the one worth understanding in detail before you accept any offer.
 
 ## The two salary thresholds
 
-Germany operates a general threshold and a lower one for [shortage occupations](/blog/in-demand-jobs-usa-2026).
+Germany operates a general threshold and a lower one for shortage occupations.
 
 | Category | Threshold | Which fields |
 |---|---|---|

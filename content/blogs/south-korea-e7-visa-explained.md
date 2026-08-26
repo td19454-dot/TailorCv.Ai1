@@ -21,7 +21,7 @@ showcase: none
 
 ## How E-7 actually works
 
-The E-7 is not a general [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore). It is a permission to perform a specific occupation, and Korea maintains a detailed list of occupation codes it covers.
+The E-7 is not a general work permit. It is a permission to perform a specific occupation, and Korea maintains a detailed list of occupation codes it covers.
 
 **Three things must match.** Your academic qualification, your work experience, and the duties in the [job description](/blog/job-description-analysis-checklist) all have to correspond to the same occupation code. A computer science [graduate](/blog/first-resume-for-gen-z-2026) hired as a "[marketing](/blog/resume-matching-marketing) specialist" has a problem, even with a willing [employer](/blog/how-recruiters-spot-generic-resumes) and a real job.
 

@@ -37,7 +37,7 @@ Korea's economy is dominated by a small number of very large conglomerates along
 
 ## The visa question, in outline
 
-Everything about your job search is shaped by which [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) you can realistically obtain. The [E-7 guide](/blog/south-korea-e7-visa-explained) covers this properly; the short version matters here.
+Everything about your job search is shaped by which visa you can realistically obtain. The [E-7 guide](/blog/south-korea-e7-visa-explained) covers this properly; the short version matters here.
 
 **E-7 (Foreign National of Special Ability)** is the main professional work visa. It is tied to a specific occupation code, and your [degree](/blog/how-to-list-education-on-resume), your [experience](/blog/resume-matching-experienced-professionals) and the [job description](/blog/job-description-analysis-checklist) all have to align with it.
 

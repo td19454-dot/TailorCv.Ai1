@@ -44,7 +44,7 @@ This is the single most useful reframing for anyone arriving from a large econom
 | **Dunedin** | University research, health sciences, and a small technology scene |
 | **Tauranga** | Horticulture, logistics and the port economy |
 
-**Wellington's public sector is a genuine graduate employer** with structured intakes, and it is under-considered by international candidates who assume government roles are closed to them. Many are open to residents and some to work-[visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) holders.
+**Wellington's public sector is a genuine graduate employer** with structured intakes, and it is under-considered by international candidates who assume government roles are closed to them. Many are open to residents and some to work-visa holders.
 
 **Christchurch's engineering base is real**, built partly around post-earthquake reconstruction and increasingly around aerospace and agricultural technology.
 

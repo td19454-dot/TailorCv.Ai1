@@ -21,11 +21,11 @@ showcase: none
 
 ## Get a TFN before anything else
 
-A **Tax File Number** is your personal identifier with the Australian Taxation Office (ATO). You apply through the ATO, and [international students](/blog/international-student-resume-differences-by-country) and [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) holders can generally apply online once they have arrived.
+A **Tax File Number** is your personal identifier with the Australian Taxation Office (ATO). You apply through the ATO, and [international students](/blog/international-student-resume-differences-by-country) and visa holders can generally apply online once they have arrived.
 
 **Without a TFN you are taxed at the highest marginal rate** on every dollar, regardless of how little you earn. The money is recoverable when you lodge a return, but you are effectively lending it to the government interest-free for up to a year.
 
-Your [employer](/blog/how-recruiters-spot-generic-resumes) will give you a **Tax File Number Declaration** to complete when you start. This is where you provide your TFN and answer the tax-free [threshold](/blog/resume-for-h1b-visa-sponsorship) question below.
+Your [employer](/blog/how-recruiters-spot-generic-resumes) will give you a **Tax File Number Declaration** to complete when you start. This is where you provide your TFN and answer the tax-free threshold question below.
 
 ## The tax-free threshold, and the trap
 
