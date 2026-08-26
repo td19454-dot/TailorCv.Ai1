@@ -106,7 +106,7 @@ Your notice period is your last impression. Make it a good one.
 - Continue working diligently - do not check out mentally
 - Document your work and processes for your successor
 - Offer to train your replacement or hand over to colleagues
-- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Be gracious and helpful
 
 Standard notice periods:

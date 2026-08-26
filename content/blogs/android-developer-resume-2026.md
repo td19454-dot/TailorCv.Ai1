@@ -22,7 +22,7 @@ An Android developer resume in 2026 needs to prove that you can build polished, 
 
 The mobile job market is highly competitive because Android is one of the most popular platforms globally. Your resume needs to show app quality, scale, and technical depth beyond just listing tools.
 
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for structuring your skills section. If you are also considering iOS development, read the iOS developer resume guide.
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) and compare it against the job description. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for structuring your skills section. If you are also considering iOS development, read the iOS developer resume guide.
 
 ---
 
@@ -32,7 +32,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with Play Store links where available)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) (with Play Store links where available)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -175,7 +175,7 @@ If you have apps on the Play Store, link to them. Download counts, ratings, and 
 
 ### Mistake 2: Still using Java-only on resume
 
-Kotlin has been the recommended language since 2017. If your resume only shows Java, add Kotlin [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+Kotlin has been the recommended language since 2017. If your resume only shows Java, add Kotlin [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ### Mistake 3: No architecture pattern mentioned
 
@@ -202,6 +202,7 @@ Unit tests (JUnit + MockK) and UI tests (Espresso or Compose UI tests) should be
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Salesforce Developer Resume Guide 2026](https://thetailorcv.com/blog/salesforce-developer-resume-2026)
 
 ## Make This Practical
 

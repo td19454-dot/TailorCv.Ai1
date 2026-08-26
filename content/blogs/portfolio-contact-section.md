@@ -42,7 +42,7 @@ You can have a brilliant portfolio and still lose opportunities if the contact p
 To ensure your contact section is effective, keep it simple. Focus on essential information only. A cluttered contact section can deter potential employers, so aim for a clean, user-friendly design.
 
 ## Placement Matters
-Put a contact CTA in the nav, repeat it right after your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (when interest peaks), and dedicate a clean contact section at the bottom. Never make a hiring manager hunt.
+Put a contact CTA in the nav, repeat it right after your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) (when interest peaks), and dedicate a clean contact section at the bottom. Never make a hiring manager hunt.
 
 ### Effective Navigation Tips
 - **Sticky Header**: Use a sticky header for your navigation bar that includes a contact link, ensuring it’s always accessible.
@@ -129,7 +129,7 @@ Optional. Email and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-
 
 ### Where should the contact CTA go?
 
-In the nav, after your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), and in a dedicated footer section - repetition converts. Consider linking to your [portfolio](https://www.thetailorcv.com/portfolio) for a comprehensive view of your work. Additionally, you might want to explore our [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for more insights on creating an effective portfolio.
+In the nav, after your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), and in a dedicated footer section - repetition converts. Consider linking to your [portfolio](https://www.thetailorcv.com/portfolio) for a comprehensive view of your work. Additionally, you might want to explore our [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) for more insights on creating an effective portfolio.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.

@@ -244,6 +244,7 @@ Keep building on this with the related guides in this series:
 - [Working in Greece as an International Graduate](/blog/greece-jobs-for-international-graduates)
 - [Malta Jobs for International Graduates](/blog/malta-jobs-for-international-graduates)
 - [Working in Portugal as an International Graduate](/blog/portugal-jobs-for-international-graduates)
+- [US Nonprofit Jobs Guide 2026 - Careers, Pay, and the Sector's Realities](/blog/us-nonprofit-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

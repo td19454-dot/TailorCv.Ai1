@@ -53,7 +53,7 @@ Even in a "non-numeric" job, these five categories almost always hide a metric:
 
 ## When You Genuinely Have No Numbers
 
-Estimate honestly with a range or a scale word: "roughly 30 clients," "a mid-six-figure budget," "the largest [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on the team." If you truly cannot quantify, quantify the *scope*: team size, audience size, or the number of stakeholders you coordinated.
+Estimate honestly with a range or a scale word: "roughly 30 clients," "a mid-six-figure budget," "the largest [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) on the team." If you truly cannot quantify, quantify the *scope*: team size, audience size, or the number of stakeholders you coordinated.
 
 ## The Metrics-Finding Worksheet
 
@@ -89,7 +89,7 @@ Notice the pattern in every pair: the "before" describes *activity*, the "after"
 
 A number buried at the end of a long sentence loses its punch. Front-load it. Compare:
 
-- Weak: "Worked on a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to reduce customer churn, which ended up dropping by about 15% over the year."
+- Weak: "Worked on a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) to reduce customer churn, which ended up dropping by about 15% over the year."
 - Strong: "Cut customer churn 15% in one year by launching a proactive outreach program for at-risk accounts."
 
 Lead with the strong verb, land the number early, and end with the "how." The [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume) at the front and the metric near it do the heavy lifting in the half-second a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) spends on the line.
@@ -106,7 +106,7 @@ Lead with the strong verb, land the number early, and end with the "how." The [a
 
 ## How This Interacts With the ATS
 
-Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) rather than a bare [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the keyword ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.
+Numbers do double duty. To a human, they are proof. To an [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works), they sit inside real, keyword-rich bullets that the parser reads as genuine [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) rather than a bare [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) list. A bullet like "Automated invoice reconciliation in Python, cutting processing time 40%" carries the keyword ("Python"), the context, and the metric all at once — which is exactly the kind of line that scores well and survives the scan.
 
 ## Estimating Honestly When You Have No Hard Data
 
@@ -115,7 +115,7 @@ Many real achievements were never formally measured, and that is fine — you ca
 - **Reconstruct from what you know.** If you handled "most" support tickets on a two-person team that saw about 500 a week, "~250 tickets weekly" is a fair estimate.
 - **Use ranges and qualifiers.** "Roughly 30 clients," "a mid-six-figure budget," "cut turnaround by about a third." These read as honest, not vague.
 - **Quantify scope instead of outcome.** If you cannot measure impact, measure size: team of 8, audience of 5,000, 12 stakeholders, three regions.
-- **Anchor to a comparison.** "The largest [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on the team," "our fastest onboarding to date." These convey scale without a precise figure.
+- **Anchor to a comparison.** "The largest [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) on the team," "our fastest onboarding to date." These convey scale without a precise figure.
 
 An interviewer can tell the difference between a thoughtful estimate and a fabricated statistic. The first shows you think in terms of impact; the second collapses the moment they probe it.
 
@@ -152,7 +152,7 @@ No. Aim for a number in your top two or three bullets per role. A [resume](https
 Indirectly. "Mentored 4 junior designers, two of whom were promoted within a year" proves leadership with a number without claiming "great mentor."
 
 ### What if my results were a team effort?
-Claim your real contribution honestly. "Contributed to a team that grew revenue 30%" is fine; so is "Owned the analytics workstream of a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that grew revenue 30%." Do not claim the whole outcome as solely yours, but do not erase yourself either.
+Claim your real contribution honestly. "Contributed to a team that grew revenue 30%" is fine; so is "Owned the analytics workstream of a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that grew revenue 30%." Do not claim the whole outcome as solely yours, but do not erase yourself either.
 
 ### Should I use exact numbers or rounded ones?
 Round sensibly. "Cut costs by about 20%" is more credible than "by 19.7%" unless you genuinely have precise data. Precision implies measurement; only claim it if you measured it.

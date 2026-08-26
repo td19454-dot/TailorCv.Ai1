@@ -187,6 +187,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [Career Change Portfolio](https://thetailorcv.com/blog/career-change-portfolio)
 - [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 

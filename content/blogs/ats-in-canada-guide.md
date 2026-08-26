@@ -201,6 +201,7 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [What Is a Good ATS Score? Benchmarks and Targets for 2026](https://thetailorcv.com/blog/what-is-a-good-ats-score)
 - [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
+- [Canada Startup Visa Guide 2026 - Permanent Residence Through Entrepreneurship](https://thetailorcv.com/blog/canada-startup-visa-guide)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

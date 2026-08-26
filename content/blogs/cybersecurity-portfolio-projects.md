@@ -176,7 +176,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

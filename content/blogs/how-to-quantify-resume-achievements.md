@@ -19,7 +19,7 @@ keywords: how to quantify resume achievements, resume metrics, resume numbers ex
 - Honest approximations can be used when exact numbers are unavailable, as they still provide valuable context to your achievements.
 
 
-The single biggest difference between a forgettable resume and one that earns interviews is quantification. Recruiters read hundreds of resumes that all say "improved performance," "led a team," and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)." The candidates who advance are the ones who say "improved page load time from 4.8s to 1.1s," "led a team of 7 engineers," and "delivered a project 3 weeks ahead of schedule."
+The single biggest difference between a forgettable resume and one that earns interviews is quantification. Recruiters read hundreds of resumes that all say "improved performance," "led a team," and "managed [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)." The candidates who advance are the ones who say "improved page load time from 4.8s to 1.1s," "led a team of 7 engineers," and "delivered a project 3 weeks ahead of schedule."
 
 
 This guide shows you exactly how to [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) your achievements - even when you think you have no numbers - across every major role type.
@@ -88,7 +88,7 @@ Ask yourself:
 - How many hours per week did my automation save?
 - How much did the metric improve before and after my change?
 - How much data was in the database I managed?
-- How many clients, accounts, or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) did I support?
+- How many clients, accounts, or [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) did I support?
 - How long did the project take? Was it on time?
 - What percentage of the goal was achieved?
 
@@ -238,8 +238,8 @@ Once your bullets are strong, run your full resume through the [TailorCV ATS sco
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Chronological vs Functional Resume in 2026 - Which Format to Use](https://thetailorcv.com/blog/chronological-vs-functional-resume)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [MBA Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/mba-resume-2026)

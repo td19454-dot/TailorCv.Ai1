@@ -58,7 +58,7 @@ Management Consultant with 5 years of experience advising Fortune 500 clients on
 
 ### Example for IT / Tech Consultant
 
-Technology Consultant with 4 years of experience leading digital transformation and systems implementation [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
+Technology Consultant with 4 years of experience leading digital transformation and systems implementation [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for enterprise clients. Delivered 8 ERP and cloud migration engagements on time and within budget. Skilled in requirements analysis, solution design, and change management.
 
 ---
 
@@ -176,6 +176,7 @@ Consulting resumes are judged partly on communication and structure. A cluttered
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Journalist Resume Guide 2026](https://thetailorcv.com/blog/journalist-resume-2026)
 
 ## Make This Practical
 

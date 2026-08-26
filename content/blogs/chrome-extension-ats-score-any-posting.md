@@ -201,6 +201,8 @@ Keep building on this with the related guides in this series:
 - [Applying on Indeed Faster](/blog/chrome-extension-apply-on-indeed-guide)
 - [Free ATS Checkers Versus Paid Tools](/blog/ats-score-checker-vs-paid-tools)
 - [What the Extension Can and Cannot See](/blog/chrome-extension-privacy-and-permissions)
+- [The Best Free Chrome Extension to Beat the ATS (2026)](/blog/best-free-chrome-extension-to-beat-ats)
+- [How to Check Your ATS Score on Any Job Posting (2026)](/blog/check-ats-score-on-any-job-posting)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

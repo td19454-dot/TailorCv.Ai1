@@ -154,7 +154,7 @@ None. The [builder](https://www.thetailorcv.com/portfolio) generates and hosts t
 
 ### How long does it really take?
 
-About five minutes to publish, another 20 to polish [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), About Me, and contact.
+About five minutes to publish, another 20 to polish [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), About Me, and contact.
 
 ### Will it look generic?
 
@@ -177,6 +177,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume)
+- [Relocating to Singapore for Your First Job - A Practical Guide](https://thetailorcv.com/blog/singapore-relocating-from-overseas-guide)
 
 ## Make This Practical
 

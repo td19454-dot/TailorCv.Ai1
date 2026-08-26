@@ -105,7 +105,7 @@ Dear [Manager's Name],
 
 After careful consideration, I have decided to resign from my position as [Job Title] at [Company]. My last working day will be [date].
 
-These past [time period] have been incredibly valuable to my growth, and I am genuinely grateful for the mentorship and opportunities I have received from you and the team. I am fully committed to making this transition as seamless as possible and will ensure my [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and responsibilities are properly handed over.
+These past [time period] have been incredibly valuable to my growth, and I am genuinely grateful for the mentorship and opportunities I have received from you and the team. I am fully committed to making this transition as seamless as possible and will ensure my [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and responsibilities are properly handed over.
 
 Thank you for everything.
 
@@ -148,7 +148,7 @@ Your two weeks notice may be kept in your personnel file and could be seen by fu
 - Continue working diligently - your final impression matters
 - Document your work and processes for whoever takes over
 - Offer to train your replacement
-- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Complete or responsibly transition your [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Stay positive and professional with colleagues
 - Connect with valuable contacts on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) before losing access
 

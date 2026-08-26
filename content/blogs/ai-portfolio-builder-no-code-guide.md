@@ -164,6 +164,7 @@ You do not need to code a site or spend a weekend wrestling with a website build
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Portfolio SEO Guide 2026 - Getting Found by Recruiters](https://thetailorcv.com/blog/portfolio-seo-guide)
 
 ## Make This Practical
 

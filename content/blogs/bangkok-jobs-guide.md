@@ -261,6 +261,7 @@ Keep building on this with the related guides in this series:
 - [Thailand's Digital Nomad and LTR Visas](/blog/thailand-digital-nomad-and-ltr-visa)
 - [English Teaching Jobs in Thailand](/blog/thailand-english-teaching-jobs)
 - [Southeast Asian Job Markets Compared](/blog/southeast-asia-jobs-compared)
+- [Birmingham Jobs Guide 2026 - The Midlands' Professional Centre](/blog/birmingham-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

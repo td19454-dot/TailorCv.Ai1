@@ -33,7 +33,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary with a key result
 3. Skills by channel
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or campaigns
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or campaigns
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ### Your resume after optimization
@@ -191,6 +191,7 @@ In 2026, GA4, GA4 reports, and Google Ads Performance Max are standard. If your 
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Resume Tips for Working Students](https://thetailorcv.com/blog/resume-tips-for-working-students)
 
 ## Make This Practical
 

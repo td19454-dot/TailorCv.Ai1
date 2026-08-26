@@ -14,7 +14,7 @@ keywords: cover letter no experience, entry level cover letter, cover letter for
 
 - With no [work history](https://thetailorcv.com/blog/reverse-chronological-vs-functional-resume), the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) is where you turn potential into a story.
 - Lead with genuine enthusiasm and a specific reason you want *this* role.
-- Use [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), coursework, and transferable experiences as your evidence.
+- Use [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), coursework, and transferable experiences as your evidence.
 - Keep it to three short paragraphs; a wall of text hides your best points.
 
 ## Why the Cover Letter Matters More With No Experience
@@ -32,7 +32,7 @@ When your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is light on
 A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
 
 
-**Paragraph 2 — the proof.** Use a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), class, or activity as evidence you can do the work. Describe what you built and the result, exactly as you would a job.
+**Paragraph 2 — the proof.** Use a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), class, or activity as evidence you can do the work. Describe what you built and the result, exactly as you would a job.
 
 **Paragraph 3 — the close.** Reaffirm interest, show you understand what the role needs, and invite a conversation.
 
@@ -64,11 +64,11 @@ Part-time jobs count. Retail teaches customer handling and composure under press
 
 Almost every career starter has more material than they think. Any of these becomes the "proof" paragraph of your letter:
 
-- **A course [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** you built, especially the capstone.
+- **A course [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)** you built, especially the capstone.
 - **A hackathon or competition** you entered, even if you did not win.
 - **Volunteering** — an event you organized, a cause you helped.
 - **A club or society role** — treasurer, organizer, captain.
-- **A side [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** — an app, a blog, a small business, a design you made.
+- **A side [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)** — an app, a blog, a small business, a design you made.
 - **A part-time job** — reframed around the transferable trait it proves.
 
 Pick the one most relevant to the role, and describe it the way you would describe real work: what you did, and what resulted. One concrete story beats three paragraphs of "I am eager and hardworking."
@@ -77,7 +77,7 @@ Pick the one most relevant to the role, and describe it the way you would descri
 
 The mistake beginners make is *asserting* traits: "I have excellent communication [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026)." The fix is to *show* them with a specific moment.
 
-- Instead of "I'm a great team player," write: "When our group [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) stalled two days before the deadline, I split the remaining work into clear owners and we shipped on time."
+- Instead of "I'm a great team player," write: "When our group [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) stalled two days before the deadline, I split the remaining work into clear owners and we shipped on time."
 - Instead of "I learn quickly," write: "I taught myself enough SQL over a weekend to build the reporting feature our club needed."
 
 The specific moment proves the trait far more convincingly than the adjective, and it gives the interviewer something real to ask you about.
@@ -93,7 +93,7 @@ The specific moment proves the trait far more convincingly than the adjective, a
 
 ## Tailor It to Each Role
 
-Your biggest advantage as a beginner is effort — and most beginners send the same generic letter everywhere. Change the specifics for each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application): the reason you want *this* company, the [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) most relevant to *this* role, the [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) *this* posting names. A tailored letter from a career starter often beats a generic one from a more experienced candidate, because it signals exactly the initiative employers are betting on.
+Your biggest advantage as a beginner is effort — and most beginners send the same generic letter everywhere. Change the specifics for each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application): the reason you want *this* company, the [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) most relevant to *this* role, the [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) *this* posting names. A tailored letter from a career starter often beats a generic one from a more experienced candidate, because it signals exactly the initiative employers are betting on.
 
 ## A Complete Worked Example
 
@@ -114,7 +114,7 @@ Notice there is not a single marketing *job* on this [candidate](https://thetail
 
 ## Researching the Company for a Specific Hook
 
-The difference between a forgettable letter and a memorable one is usually one specific, true detail about the company. With [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) to lean on, this specificity matters even more — it proves initiative. Spend ten minutes before you write:
+The difference between a forgettable letter and a memorable one is usually one specific, true detail about the company. With [no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) to lean on, this specificity matters even more — it proves initiative. Spend ten minutes before you write:
 
 - Read the company's most recent blog post, product update, or announcement.
 - Try their product or service if you can, and note one honest reaction.
@@ -136,7 +136,7 @@ Do not apologize for it or dwell on it. Acknowledge you are early-career once, t
 Half a page, three short paragraphs. Brevity keeps your strongest points visible.
 
 ### Can I use AI to write it?
-Use it for a first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), then rewrite the specifics in your own voice — the [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), the reason you applied, the detail only you know.
+Use it for a first draft from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), then rewrite the specifics in your own voice — the [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), the reason you applied, the detail only you know.
 
 ### Do I even need a cover letter for an entry-level job?
 When you have little [work history](https://thetailorcv.com/blog/reverse-chronological-vs-functional-resume), yes — it is where you turn potential into a story a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) cannot tell. If an [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) makes it optional, include one anyway; it is often the tiebreaker between similar junior candidates.
@@ -145,10 +145,10 @@ When you have little [work history](https://thetailorcv.com/blog/reverse-chronol
 Try to find the [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) or [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) on [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) first. If you genuinely cannot, "Dear [Hiring Manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)" is acceptable — but avoid the dated "To Whom It May Concern."
 
 ### How is a cover letter different from my resume?
-The [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is a structured list of [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) and evidence; the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) is a short, first-person story that explains who you are, why you want the role, and what a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) taught you. Same facts, different job.
+The [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is a structured list of [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) and evidence; the [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) is a short, first-person story that explains who you are, why you want the role, and what a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) taught you. Same facts, different job.
 
 ### Should I mention my GPA or grades in the cover letter?
-Only if they are strong and relevant, and even then a brief mention is enough — the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is the place for grades. The letter is better spent on a specific [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), your genuine interest, and what you bring beyond a number.
+Only if they are strong and relevant, and even then a brief mention is enough — the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) is the place for grades. The letter is better spent on a specific [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), your genuine interest, and what you bring beyond a number.
 
 ### What if I'm applying to a field unrelated to my degree?
 Lead with transferable [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) and genuine motivation. Explain, briefly and positively, why you are drawn to this field, and prove capability with any relevant project, course, or self-taught [skill](https://thetailorcv.com/blog/resume-skills-section-guide-2026). A career-curious [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) with a clear reason and real initiative is compelling, degree match or not.
@@ -163,4 +163,4 @@ The biggest obstacle for career starters is not writing ability — it is the be
 
 ## Putting It All Together
 
-With little work history, the cover letter is your most powerful document — it is where drive, fit, and a real project can outweigh a thin resume. Open with a specific reason you want the role, prove your ability with one concrete story instead of asserting traits, keep it to three tight paragraphs, and tailor it to each company. Do that and you compete not as "the candidate with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)," but as the one who clearly wants it most and has already started building.
+With little work history, the cover letter is your most powerful document — it is where drive, fit, and a real project can outweigh a thin resume. Open with a specific reason you want the role, prove your ability with one concrete story instead of asserting traits, keep it to three tight paragraphs, and tailor it to each company. Do that and you compete not as "the candidate with [no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)," but as the one who clearly wants it most and has already started building.

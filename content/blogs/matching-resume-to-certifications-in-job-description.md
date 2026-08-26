@@ -71,7 +71,7 @@ Read [resume tailoring for underqualified candidates](https://thetailorcv.com/bl
 If a certification keeps appearing across postings you want to apply to, it is worth prioritizing:
 
 - Check if a compressed or online certification path exists for a faster completion timeline
-- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) for lower-cost or free alternatives that can still strengthen your resume
+- Look at [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) for lower-cost or free alternatives that can still strengthen your resume
 - Once earned or in progress, update your resume immediately using [how to list certifications on your resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ---
@@ -187,7 +187,7 @@ Track which certifications repeatedly appear across job descriptions in your tar
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [Required vs Preferred Qualifications](https://thetailorcv.com/blog/matching-resume-required-vs-preferred-qualifications)
 - [How to List Certifications on Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 - [Resume Tailoring for Underqualified Candidates](https://thetailorcv.com/blog/resume-tailoring-underqualified)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 - [Resume Matching for Security-Clearance and Government-Contractor Job Descriptions](https://thetailorcv.com/blog/matching-resume-security-clearance-jobs)

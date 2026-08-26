@@ -150,6 +150,7 @@ Keep building on this with the related guides in this series:
 - [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
 - [Degree Classification and UK Employers - How Much It Actually Matters](/blog/uk-degree-classification-and-employers)
 - [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
+- [UK Reference Request Guide 2026 - What Employers Can and Cannot Say](/blog/uk-reference-request-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

@@ -19,7 +19,7 @@ keywords: skills to add to resume 2026, in-demand skills 2026, top resume skills
 - Utilizing an ATS score checker and an ATS-friendly template is crucial for optimizing your resume to match job descriptions.
 
 
-Adding the right skills to your resume in 2026 is not about listing every tool you have ever opened. It is about matching your genuine expertise to what employers are currently searching for - and making sure you can prove each skill with experience or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+Adding the right skills to your resume in 2026 is not about listing every tool you have ever opened. It is about matching your genuine expertise to what employers are currently searching for - and making sure you can prove each skill with experience or [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 The job market in 2026 has clear skill demand patterns. AI and automation tools are embedded in every industry. Cloud, data, and cybersecurity remain at peak demand in tech. Healthcare and education are digitizing fast. Business roles increasingly require data fluency alongside traditional [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume).
 
@@ -220,7 +220,7 @@ Saying "currently learning Python" on your resume is weak. Saying "built 3 Pytho
 
 ## Related Guides
 
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [Soft Skills for Resume](https://thetailorcv.com/blog/soft-skills-for-resume)

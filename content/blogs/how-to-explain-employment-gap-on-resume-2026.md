@@ -24,12 +24,12 @@ keywords: employment gap resume, how to explain gap in resume, career break resu
 ## Where to Put the Explanation
 
 - **Short gap (under a year):** Switch to year-only dates (`2024 – 2025` instead of `Mar 2024 – Jan 2025`). Many short gaps vanish entirely.
-- **Long gap (12+ months):** Add a short dated entry in your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section so the timeline has no blank space.
+- **Long gap (12+ months):** Add a short dated entry in your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) section so the timeline has no blank space.
 - **[Cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work):** One sentence, forward-looking, never defensive.
 
 ## Wording That Works
 
-Add a real, dated line to the [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section for a long break:
+Add a real, dated line to the [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) section for a long break:
 
 > **Career Break — Full-Time Caregiver** (2024 – 2025)
 > Managed household logistics and part-time freelance design work; completed Google UX certification.
@@ -46,7 +46,7 @@ For **health or personal reasons**, you owe no medical detail:
 
 ## Fill the Gap Retroactively
 
-If the break is still recent, you can add genuine, verifiable activity: freelance work, a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026), open-source contributions, volunteering, or a course. One real line of [upskilling](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) turns "did nothing" into "stayed sharp."
+If the break is still recent, you can add genuine, verifiable activity: freelance work, a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), open-source contributions, volunteering, or a course. One real line of [upskilling](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) turns "did nothing" into "stayed sharp."
 
 ## What Not to Do
 
@@ -83,11 +83,11 @@ You owe no medical detail, ever. "I took a planned break for health reasons and 
 
 ### The Study or Reskilling Break
 
-This is arguably the strongest gap of all, because it shows initiative. Frame it as an investment: "Completed a full-time data analytics bootcamp" or "Earned AWS Solutions Architect [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026) while studying full time." A study gap is not a hole; it is a credential.
+This is arguably the strongest gap of all, because it shows initiative. Frame it as an investment: "Completed a full-time data analytics bootcamp" or "Earned AWS Solutions Architect [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume) while studying full time." A study gap is not a hole; it is a credential.
 
 ### The "I Was Just Job Searching" Gap
 
-The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026). Even a modest, real project converts "unemployed and searching" into "kept building while looking."
+The hardest one, because there is no external cause and no obvious activity. The fix is to create activity retroactively and going forward: take on a freelance [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), contribute to open source, volunteer your [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) for a nonprofit, or complete a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume). Even a modest, real project converts "unemployed and searching" into "kept building while looking."
 
 ## How to Talk About the Gap in an Interview
 
@@ -188,7 +188,7 @@ If your gap lines up with a widely understood downturn or mass layoff period, a 
 No. [Applicant tracking systems](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) screen for [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats), titles, and parseable structure — not for continuity of employment. A gap only becomes visible when a human reads the parsed timeline, which is why clean formatting and calm framing matter more than the gap's existence.
 
 ### Is a "Career Break" entry seen as padding my resume?
-Not when it is honest and specific. A dated entry with a real title and one line of genuine activity reads as accounting for your time, not inflating your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience). What reads as padding is a vague entry with no substance behind it.
+Not when it is honest and specific. A dated entry with a real title and one line of genuine activity reads as accounting for your time, not inflating your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). What reads as padding is a vague entry with no substance behind it.
 
 ### How do I handle multiple gaps?
 Address the most recent and longest gap directly, since that is what a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) focuses on. Older, shorter gaps from several jobs ago rarely come up. If you have a pattern of short gaps, year-only dates often smooth the whole timeline at once.

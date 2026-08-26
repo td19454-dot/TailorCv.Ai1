@@ -182,6 +182,7 @@ Keep building on this with the related guides in this series:
 - [US Data Science New Grad Hiring - The Roles, the Loop and the Preparation](/blog/usa-data-science-new-grad-hiring)
 - [Day-One CPT - What It Is and Why It Carries Real Risk](/blog/usa-day-one-cpt-risks)
 - [The I-9 and Employment Verification - What New Graduates Need to Know](/blog/usa-employment-verification-i9-explained)
+- [Layoffs and Severance for New Graduates in the US](/blog/usa-severance-and-layoffs-new-grad)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

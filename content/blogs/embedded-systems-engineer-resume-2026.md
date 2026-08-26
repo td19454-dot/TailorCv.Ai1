@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -57,7 +57,7 @@ Embedded Systems Engineer with 5 years of experience developing firmware for IoT
 
 ### Example for Entry-Level Embedded Engineer
 
-Embedded Systems Engineer with strong embedded C and microcontroller skills. Built 4 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including an STM32-based sensor node and an ESP32 IoT device. Familiar with FreeRTOS, I2C/SPI/UART, and bare-metal programming. Seeking a junior embedded firmware role.
+Embedded Systems Engineer with strong embedded C and microcontroller skills. Built 4 [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) including an STM32-based sensor node and an ESP32 IoT device. Familiar with FreeRTOS, I2C/SPI/UART, and bare-metal programming. Seeking a junior embedded firmware role.
 
 ---
 
@@ -188,6 +188,7 @@ Embedded is hardware-software integration. Show that you understand and work wit
 - [DevOps Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
 - [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Veteran to Civilian Resume Guide 2026](https://thetailorcv.com/blog/veteran-to-civilian-resume-2026)
 
 ## Make This Practical
 

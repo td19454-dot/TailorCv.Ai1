@@ -228,6 +228,7 @@ Keep building on this with the related guides in this series:
 - [Technology Jobs in Bangalore and Hyderabad](/blog/bangalore-hyderabad-tech-jobs)
 - [Resume Format for India](/blog/india-resume-format-guide)
 - [Salary Negotiation for Indian Freshers](/blog/india-salary-negotiation-freshers)
+- [Service-Based vs Product-Based Companies 2026 - Which Should You Target?](/blog/service-based-vs-product-based-companies)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

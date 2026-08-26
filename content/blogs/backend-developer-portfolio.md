@@ -44,7 +44,7 @@ Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/b
 
 ## Prove Production Readiness
 
-This is what separates hobby [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) from hireable ones:
+This is what separates hobby [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) from hireable ones:
 
 - **Unit and integration tests** plus CI: Use tools like Jest, Mocha, or JUnit to demonstrate your testing process.
 - **Auth**, input validation, rate limiting, and error handling: Detail how you handle security and user input.
@@ -151,6 +151,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
 - [DevOps Engineer Resume 2026](https://thetailorcv.com/blog/devops-engineer-resume-2026)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Portfolio SEO Guide 2026 - Getting Found by Recruiters](https://thetailorcv.com/blog/portfolio-seo-guide)
 
 ## Make This Practical
 

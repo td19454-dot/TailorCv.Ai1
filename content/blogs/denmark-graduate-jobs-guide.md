@@ -209,6 +209,7 @@ Keep building on this with the related guides in this series:
 - [Finding a Job in the Netherlands as an International Graduate](/blog/netherlands-jobs-international-graduates)
 - [Graduate Jobs in Germany](/blog/germany-graduate-jobs-guide)
 - [A Practical Checklist for Your First Job Abroad](/blog/first-job-abroad-practical-checklist)
+- [UK Technology Graduate Jobs - Where They Are and What Is Assessed](/blog/uk-tech-graduate-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

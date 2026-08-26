@@ -40,7 +40,7 @@ If you are still shaping the overall resume, the [resume optimization guide](htt
 
 A traditional resume usually highlights a clear progression within one field. A [career change](https://thetailorcv.com/blog/career-change-to-tech-guide) resume needs to build a bridge between your past and your target role.
 
-That bridge is made of transferable skills, relevant achievements, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), certifications, keywords, and a clear professional summary.
+That bridge is made of transferable skills, relevant achievements, [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), certifications, keywords, and a clear professional summary.
 
 ### Your Old Titles May Not Tell the Full Story
 
@@ -154,7 +154,7 @@ Strong summary:
 
 ### What to Include
 
-Mention your previous background, target field, transferable strengths, and relevant tools or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Keep it to three or four lines.
+Mention your previous background, target field, transferable strengths, and relevant tools or [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Keep it to three or four lines.
 
 ## Build a Targeted Skills Section
 
@@ -200,23 +200,23 @@ Before:
 
 After:
 
-"Managed calendars, meeting agendas, follow-ups, and documentation for cross-functional [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) involving leadership and external partners."
+"Managed calendars, meeting agendas, follow-ups, and documentation for cross-functional [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) involving leadership and external partners."
 
 ## Add Projects and Certifications
 
-[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and certifications help prove commitment to your new field. They also give you relevant keywords and talking points.
+[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and certifications help prove commitment to your new field. They also give you relevant keywords and talking points.
 
 ### Projects That Help Career Changers
 
 If you want a data role, build a dashboard. If you want marketing, create a campaign plan. If you want UX, conduct a small research study. If you want project management, document a project plan with timeline, risks, and deliverables.
 
-This guide on [adding projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) is useful even if you are not a fresher, because the same proof-first approach works for career changers.
+This guide on [adding projects to your resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) is useful even if you are not a fresher, because the same proof-first approach works for career changers.
 
 ### Certifications Should Support Your Target
 
 Choose certifications that employers recognize and that match the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not collect random certificates just to fill space.
 
-If you need affordable options, review the list of [free online certificates for resumes](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
+If you need affordable options, review the list of [free online certificates for resumes](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
 
 ## Optimize for ATS in the New Field
 
@@ -271,7 +271,7 @@ You can practice that answer with the [mock interview tool](https://thetailorcv.
 
 Use this structure:
 
-"In my previous role, I enjoyed [transferable work]. Over time, I became more interested in [new field]. I have built relevant skills through [[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), certifications, experience], and this role is a strong fit because [specific connection]."
+"In my previous role, I enjoyed [transferable work]. Over time, I became more interested in [new field]. I have built relevant skills through [[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), certifications, experience], and this role is a strong fit because [specific connection]."
 
 ### Avoid Negative Explanations
 
@@ -309,8 +309,8 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 ## Related Guides
 
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
-- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [Top Skills to Add to Your Resume](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
@@ -325,6 +325,7 @@ When you are ready to apply, build the supporting pieces around the resume. Use 
 - [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [How to Match Your Resume Skills Section to Any Job Description in 2026](https://thetailorcv.com/blog/resume-skills-match-job-description)
+- [Event Planner Resume Guide 2026](https://thetailorcv.com/blog/event-planner-resume-2026)
 
 
 ## Comparison of Career Change Resume Approaches

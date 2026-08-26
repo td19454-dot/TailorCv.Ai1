@@ -289,6 +289,7 @@ Avoid referencing things the first interviewer told you in confidence or that se
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [How to Handle Job Rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection)
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [Campus Placement Preparation in Second Year 2026 - The Highest-Leverage Time](https://thetailorcv.com/blog/campus-placement-second-year-prep)
 
 ---
 

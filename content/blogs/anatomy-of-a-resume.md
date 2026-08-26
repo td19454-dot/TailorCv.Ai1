@@ -36,7 +36,7 @@ A well-structured resume follows this order:
 3. Skills
 4. Work Experience
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-6. Optional Sections ([projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), Certifications, Awards, Volunteer Work)
+6. Optional Sections ([projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), Certifications, Awards, Volunteer Work)
 
 The order matters. Hiring managers and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems expect the most important and relevant information first.
 
@@ -102,7 +102,7 @@ The skills section is one of the most [ATS](https://thetailorcv.com/blog/what-is
 > **Tools:** Git, Docker, Kubernetes  
 > **Platforms:** AWS, GCP, Azure  
 
-Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and [technical skills for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for categorized skill lists by role.
+Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and [technical skills for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for categorized skill lists by role.
 
 ---
 
@@ -132,7 +132,7 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 
 ## Section 5: Education
 
-The education section lists your academic degrees. For recent graduates and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), it carries more weight. For experienced professionals, it is brief.
+The education section lists your academic degrees. For recent graduates and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), it carries more weight. For experienced professionals, it is brief.
 
 **Include:**
 
@@ -140,7 +140,7 @@ The education section lists your academic degrees. For recent graduates and [fre
 - Institution name
 - Graduation year (or expected year)
 - GPA (only if 3.5/4.0 or higher, and only within 3 years of graduation)
-- Relevant coursework (for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) with limited experience)
+- Relevant coursework (for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) with limited experience)
 - Academic honors (cum laude, dean's list)
 
 **Exclude:**
@@ -155,7 +155,7 @@ Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-lis
 
 ## Section 6: Projects (Optional but Often Critical)
 
-For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), career changers, and software engineers, a projects section can be the most important optional section. It demonstrates practical skill even without formal work experience.
+For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), career changers, and software engineers, a projects section can be the most important optional section. It demonstrates practical skill even without formal work experience.
 
 **Include for each project:**
 
@@ -165,7 +165,7 @@ For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fres
 - Measurable outcome or impact
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) or demo link (if public)
 
-Read [how to add projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for complete guidance with examples.
+Read [how to add projects to your resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for complete guidance with examples.
 
 ---
 
@@ -179,7 +179,7 @@ List:
 - Issuing organization
 - Date (month/year)
 
-Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
+Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
 
 ---
 
@@ -241,10 +241,11 @@ Read [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume
 - [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to Add Projects to Your Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [How to Add Projects to Your Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
+- [Architect Resume Guide 2026](https://thetailorcv.com/blog/architect-resume-2026)
 
 ---
 

@@ -212,6 +212,7 @@ Keep building on this with the related guides in this series:
 - [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
 - [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
 - [US Background Checks - What Employers Actually See](/blog/usa-background-check-what-employers-see)
+- [Campus Placement Preparation in Second Year 2026 - The Highest-Leverage Time](/blog/campus-placement-second-year-prep)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

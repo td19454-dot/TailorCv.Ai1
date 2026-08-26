@@ -61,7 +61,7 @@ For most candidates, use this structure:
 2. Summary or target headline
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) or achievements
 
@@ -123,7 +123,7 @@ CS Fundamentals: Data Structures, Algorithms, [system design](https://thetailorc
 
 Do not add every tool you have touched once. A FAANG resume is stronger when it shows depth.
 
-For a broader skills list, use the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) and then keep only the skills that match your target software engineering job description.
+For a broader skills list, use the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) and then keep only the skills that match your target software engineering job description.
 
 ---
 
@@ -215,7 +215,7 @@ This works because it shows stack, scope, scale, reliability, collaboration, and
 
 ## Project Section for FAANG Software Engineer Resumes
 
-Projects matter a lot for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), students, and career switchers. A strong project section can prove practical engineering ability even without big-company experience.
+Projects matter a lot for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), students, and career switchers. A strong project section can prove practical engineering ability even without big-company experience.
 
 Include:
 
@@ -248,9 +248,9 @@ Good FAANG-style project ideas:
 - Recommendation system
 - Compiler or interpreter project
 
-For more project help, read [how to add projects in resume for freshers](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+For more project help, read [how to add projects in resume for freshers](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
-If you are applying with little or no full-time experience, combine this FAANG resume structure with the [first-time resume guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) so your projects, skills, and education section do more of the heavy lifting.
+If you are applying with little or no full-time experience, combine this FAANG resume structure with the [first-time resume guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) so your projects, skills, and education section do more of the heavy lifting.
 
 ---
 
@@ -340,7 +340,7 @@ Job Title | Company | Dates
 - Action + technical work + scale + result.
 - Action + technical work + scale + result.
 
-[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 Project Name | Stack | Link
 
 - Action + technical detail + result.

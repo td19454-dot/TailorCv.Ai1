@@ -166,6 +166,7 @@ Keep building your US job search with these related TailorCV guides:
 - [Cover Letter for a Career Change - Template and Examples That Get Interviews](https://thetailorcv.com/blog/cover-letter-for-career-change)
 - [Cover Letter for an Internal Job Application - Template and Tips](https://thetailorcv.com/blog/cover-letter-for-internal-job-application)
 - [Cover Letter for Remote Jobs - What Hiring Managers Actually Want to See](https://thetailorcv.com/blog/cover-letter-for-remote-jobs)
+- [US Nonprofit Jobs Guide 2026 - Careers, Pay, and the Sector's Realities](https://thetailorcv.com/blog/us-nonprofit-jobs-guide)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

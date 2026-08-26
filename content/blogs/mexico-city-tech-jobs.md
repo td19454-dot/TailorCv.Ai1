@@ -285,6 +285,8 @@ Keep building on this with the related guides in this series:
 - [Nearshoring Careers in Mexico](/blog/mexico-nearshoring-careers)
 - [The Mexican Curriculum Vitae Format](/blog/mexico-curriculum-vitae-format)
 - [Technology Jobs in Sao Paulo](/blog/sao-paulo-tech-jobs)
+- [Bay Area Tech Jobs Guide 2026 - Market, Pay, and Cost of Living](/blog/bay-area-tech-jobs-guide)
+- [Seattle Tech Jobs Guide 2026 - Market, Pay, and No State Income Tax](/blog/seattle-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

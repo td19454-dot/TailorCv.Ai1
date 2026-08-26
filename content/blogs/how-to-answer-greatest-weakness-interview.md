@@ -94,7 +94,7 @@ See more pitfalls in [common interview mistakes](https://thetailorcv.com/blog/co
 
 ## Weakness Questions for Freshers
 
-[freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) can discuss:
+[freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) can discuss:
 
 ### See it in action: a resume-based mock interview
 
@@ -103,7 +103,7 @@ See more pitfalls in [common interview mistakes](https://thetailorcv.com/blog/co
 Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
 
 
-- Limited professional experience (offset with [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and internships)
+- Limited professional experience (offset with [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and internships)
 - Over-researching before acting (show you are learning to decide faster)
 - Difficulty with [technical communication](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 

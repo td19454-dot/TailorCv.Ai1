@@ -95,13 +95,13 @@ Read the room. A cover letter to a formal financial institution should open with
 - "I have opened your app almost every morning for two years — applying to help build it feels overdue."
 - "Your [job posting](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) describes a retention problem I spent all of last year solving; here is what I learned."
 - "I do not usually apply to roles this senior, but the specific work you described is exactly what I want to be doing for the next five years."
-- "Three of my last four side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) were attempts to build something like what your team ships — so I would rather build the real thing."
+- "Three of my last four side [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) were attempts to build something like what your team ships — so I would rather build the real thing."
 - "The line in your posting about 'engineers who write' is why I am applying; I believe the two [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) are the same skill."
 - "I switched careers into data because of a problem that looks a lot like the one your Analytics role owns."
 - "A former colleague described your engineering culture to me two years ago, and I have quietly wanted to work here since."
 - "I read your entire documentation site before applying — partly to prepare, mostly because it was genuinely good."
 - "Your product solved a problem I had been complaining about for a year; now I want to help solve it for everyone else."
-- "I am early in my career, but I have shipped more side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) than some people ship jobs, and your role is exactly where I want to point that energy."
+- "I am early in my career, but I have shipped more side [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) than some people ship jobs, and your role is exactly where I want to point that energy."
 
 Adapt, never copy — the power is in the specific truth you attach to the pattern.
 

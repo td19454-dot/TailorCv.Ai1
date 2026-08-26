@@ -237,6 +237,7 @@ Keep building on this with the related guides in this series:
 - [Spanish Work Visas and the Digital Nomad Route](/blog/spain-work-visa-and-digital-nomad)
 - [Portugal's D7 and D8 Visas Explained](/blog/portugal-d7-d8-visa-guide)
 - [The EU Blue Card for Graduates](/blog/germany-eu-blue-card-graduates)
+- [Canada Startup Visa Guide 2026 - Permanent Residence Through Entrepreneurship](/blog/canada-startup-visa-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

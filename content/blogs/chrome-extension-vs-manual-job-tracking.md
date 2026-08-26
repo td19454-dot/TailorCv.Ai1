@@ -210,6 +210,7 @@ Keep building on this with the related guides in this series:
 - [Getting an ATS Score on Any Job Posting](/blog/chrome-extension-ats-score-any-posting)
 - [Applying on Indeed Faster](/blog/chrome-extension-apply-on-indeed-guide)
 - [What the Extension Can and Cannot See](/blog/chrome-extension-privacy-and-permissions)
+- [The Best Chrome Extension for Students Job Hunting (2026)](/blog/best-chrome-extension-for-students-job-hunting)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

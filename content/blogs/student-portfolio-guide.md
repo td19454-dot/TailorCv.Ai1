@@ -22,10 +22,10 @@ keywords: student portfolio, college portfolio, portfolio for internship, underg
 A portfolio is a student's single biggest edge, because most of your peers will not bother to build one. Start now and you graduate with **proof**, not just a degree and a GPA. Here is the playbook. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
 
 ## What to Include
-- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** with outcomes
+- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)** with outcomes
 - Any **internship** or part-time work (even small contributions)
-- **Hackathon** [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and competition results
-- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- **Hackathon** [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and competition results
+- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 
 ## Reframe Coursework as Projects
 A class assignment becomes a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) project the moment you add a problem statement, your specific role, and a result - then deploy it or publish the code/notebook. This single move turns a transcript into evidence.
@@ -49,7 +49,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ## Common Mistakes
 - Waiting until final year to start
-- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - No deployed/published proof
 - See more in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 

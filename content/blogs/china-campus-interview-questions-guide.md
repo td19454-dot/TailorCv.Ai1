@@ -107,6 +107,8 @@ Keep building on this with the related guides in this series:
 - [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
 - [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
 - [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+- [Machine Learning Interview Questions and Answers (2026 Guide)](/blog/machine-learning-interview-questions)
+- [Campus Placement Mock Test Guide 2026 - How to Practise Properly](/blog/campus-placement-mock-test-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

@@ -290,6 +290,7 @@ Keep building on this with the related guides in this series:
 - [Technology Jobs in Manila and Cebu](/blog/manila-cebu-tech-jobs)
 - [Indonesia Work Permits and the KITAS](/blog/indonesia-work-permit-kitas)
 - [Thailand Work Permits and Visas](/blog/thailand-work-permit-and-visa)
+- [Japan Work Visa Guide 2026 - Status of Residence, CoE, and the Process](/blog/japan-work-visa-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

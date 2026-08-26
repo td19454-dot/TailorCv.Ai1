@@ -115,7 +115,7 @@ Why it works: specific role, quantified achievements, relevant keywords, clear d
 "Mechanical Engineer with 6 years in automotive component design. Reduced part cost by 31% through DFM optimization. Skilled in SolidWorks, CATIA, FEA, and GD&T."
 
 ### Project Manager
-"Project Manager with 7 years delivering enterprise IT [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Delivered 22 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) at 91% on-time and 95% on-budget rates. PMP and CSM certified."
+"Project Manager with 7 years delivering enterprise IT [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Delivered 22 [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) at 91% on-time and 95% on-budget rates. PMP and CSM certified."
 
 ### Accountant
 "Senior Accountant with 6 years in financial reporting and month-end close. Reduced close cycle from 8 to 5 days with zero material audit findings. CPA certified with strong GAAP knowledge."
@@ -133,7 +133,7 @@ Why it works: specific role, quantified achievements, relevant keywords, clear d
 "Customer Support Specialist with 5 years in SaaS. Maintained 96% CSAT across 1,400+ monthly tickets and reduced first response time from 9 hours to 2.1 hours. Skilled in Zendesk and de-escalation."
 
 ### Career Changer
-"Former financial analyst transitioning to data analytics, combining 4 years of business analysis experience with new SQL, Python, and Power BI skills. Built 3 analytics [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and Google Data Analytics certified."
+"Former financial analyst transitioning to data analytics, combining 4 years of business analysis experience with new SQL, Python, and Power BI skills. Built 3 analytics [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and Google Data Analytics certified."
 
 ---
 
@@ -182,8 +182,8 @@ A 6-line paragraph is not a summary. Keep it to 2-4 lines.
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [How to Write a Resume with AI in 2026 - Smart Use Without the Risks](https://thetailorcv.com/blog/how-to-write-resume-with-ai)
 - [How to Match Your Resume Summary to a Job Description in 2026](https://thetailorcv.com/blog/resume-summary-match-job-description)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)

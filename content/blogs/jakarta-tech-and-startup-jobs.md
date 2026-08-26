@@ -263,6 +263,8 @@ Keep building on this with the related guides in this series:
 - [Bali Remote Work and Visas](/blog/bali-remote-work-and-visas)
 - [Technology Jobs in Ho Chi Minh City and Hanoi](/blog/ho-chi-minh-hanoi-tech-jobs)
 - [Southeast Asian Job Markets Compared](/blog/southeast-asia-jobs-compared)
+- [Bristol Tech Jobs Guide 2026 - Semiconductors, Aerospace, and Startups](/blog/bristol-tech-jobs-guide)
+- [Seattle Tech Jobs Guide 2026 - Market, Pay, and No State Income Tax](/blog/seattle-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

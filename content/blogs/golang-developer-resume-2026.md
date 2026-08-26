@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -53,11 +53,11 @@ Go Developer with X years of experience building [microservices / APIs / infrast
 
 ### Example for Experienced Go Developer
 
-Go Developer with 5 years of experience building high-throughput microservices and cloud-native systems. Designed gRPC services handling 5M+ daily requests with p99 latency under 30ms. Strong in goroutines, channels, concurrency patterns, Kubernetes, and distributed systems. Contributed to 2 open-source Go [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+Go Developer with 5 years of experience building high-throughput microservices and cloud-native systems. Designed gRPC services handling 5M+ daily requests with p99 latency under 30ms. Strong in goroutines, channels, concurrency patterns, Kubernetes, and distributed systems. Contributed to 2 open-source Go [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ### Example for Entry-Level Go Developer
 
-Go Developer with strong Go fundamentals and backend skills. Built 4 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including a REST API, a CLI tool, and a concurrent web scraper. Familiar with goroutines, channels, Gin, PostgreSQL, and Docker. Seeking a junior backend role focused on Go.
+Go Developer with strong Go fundamentals and backend skills. Built 4 [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) including a REST API, a CLI tool, and a concurrent web scraper. Familiar with goroutines, channels, Gin, PostgreSQL, and Docker. Seeking a junior backend role focused on Go.
 
 ---
 

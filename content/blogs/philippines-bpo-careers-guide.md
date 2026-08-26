@@ -63,7 +63,7 @@ A real consideration that deserves direct treatment.
 
 The progression that exists and how to use it.
 
-**Agent to team leader to operations manager** is the standard voice-side path and it is genuinely achievable.
+**Agent to team leader to [operations manager](/blog/operations-manager-resume-2026)** is the standard voice-side path and it is genuinely achievable.
 
 **Specialising into quality, training, workforce management or process improvement** opens roles that pay better and carry more transferable skill.
 

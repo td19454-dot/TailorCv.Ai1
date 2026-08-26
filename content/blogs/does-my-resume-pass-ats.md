@@ -212,6 +212,7 @@ It is risky. Many parsers misread columns, so a single-column layout is safer. S
 - [ATS Score vs Resume Score - What's the Difference? (2026)](https://thetailorcv.com/blog/ats-score-vs-resume-score)
 - [ATS Score for Freshers - How to Pass With No Experience (2026)](https://thetailorcv.com/blog/ats-score-for-freshers)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [Resume Tips for Working Students](https://thetailorcv.com/blog/resume-tips-for-working-students)
 
 ---
 

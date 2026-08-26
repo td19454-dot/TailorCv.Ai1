@@ -231,6 +231,7 @@ Yes, if both are genuine interests. But use separate resume versions - do not su
 - [Resume Matching with No Experience - How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
 - [How to Match Your Resume to a Product Manager Job Description in 2026](https://thetailorcv.com/blog/resume-matching-product-manager)
 - [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
+- [How to Skill-Match Your Resume Against Any Job in Seconds (2026)](https://thetailorcv.com/blog/skill-match-resume-against-any-job)
 
 ---
 

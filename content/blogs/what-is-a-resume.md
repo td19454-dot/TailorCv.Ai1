@@ -124,7 +124,7 @@ Font size, spacing, accent colour and template are all adjustable, with a live p
 3. **Skills** - Key technical and professional skills
 4. **Work experience** - Roles with achievement-based bullets
 5. **[education](https://thetailorcv.com/blog/how-to-list-education-on-resume)** - Degrees, institutions, dates
-6. **Optional sections** - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), certifications, awards, volunteer work
+6. **Optional sections** - [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), certifications, awards, volunteer work
 
 Read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume) for a complete breakdown of every section.
 

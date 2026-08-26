@@ -94,7 +94,7 @@ Some companies now use automated reference-checking platforms that email your re
 
 ## A Reference Strategy for Every Stage of Your Career
 
-**Early career.** You may not have former [managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) yet. Professors who supervised a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), [internship](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) mentors, a part-time job supervisor, or a client from freelance work all make legitimate references. Choose the person who saw you actually *do* something, not just the most senior name you can find.
+**Early career.** You may not have former [managers](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) yet. Professors who supervised a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), [internship](https://thetailorcv.com/blog/resume-for-internship-with-no-experience) mentors, a part-time job supervisor, or a client from freelance work all make legitimate references. Choose the person who saw you actually *do* something, not just the most senior name you can find.
 
 **Mid career.** Aim for a mix: a former direct [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), a senior peer, and ideally someone who can speak to a specific, relevant strength. Avoid using your current [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) unless you are comfortable with your [job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) being known — most employers understand and will accept "available once we're further along."
 
@@ -114,7 +114,7 @@ A reference relationship is not a one-time transaction. The people who vouch for
 Fill it in there — that is a request. The rule is only about not volunteering references on the [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) itself.
 
 ### Can I use a peer or a client as a reference?
-Yes, if a [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) reference is not available. A client who can speak to your delivery, or a senior peer who led [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with you, both work well.
+Yes, if a [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) reference is not available. A client who can speak to your delivery, or a senior peer who led [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) with you, both work well.
 
 ### How many references should I prepare?
 Three is the standard ask. Line up three to four so you have a backup if someone is unreachable.
@@ -138,7 +138,7 @@ That is exactly why you choose and brief references carefully. Only list people 
 Less formally, but reputation matters even more — your future [manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) can simply ask around internally. The same principle applies: do consistently good work and maintain good relationships, because in an internal move, everyone is effectively a reference.
 
 ### Can I use a professor as a reference?
-Yes, especially early in your career or as a recent graduate. A professor who supervised a substantial [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or capstone can speak credibly to your ability, work ethic, and how you handle challenges. Choose one who knew your work closely, not just a name from a large lecture, and brief them like any other reference.
+Yes, especially early in your career or as a recent graduate. A professor who supervised a substantial [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or capstone can speak credibly to your ability, work ethic, and how you handle challenges. Choose one who knew your work closely, not just a name from a large lecture, and brief them like any other reference.
 
 ## What Recruiters Notice About Your References
 

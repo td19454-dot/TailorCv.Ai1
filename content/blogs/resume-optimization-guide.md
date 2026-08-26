@@ -580,7 +580,7 @@ Platforms like [TailorCV.ai](https://www.thetailorcv.com) are specifically desig
 
 Most [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resumes should be:
 
-- 1 page for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- 1 page for students and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers)
 - 1-2 pages for experienced professionals
 
 Focus more on relevance and keyword optimization than length.
@@ -602,13 +602,13 @@ You can quickly optimize resume keywords using [TailorCV.ai](https://www.thetail
 ## Related Guides
 
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Career Change Resume](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)

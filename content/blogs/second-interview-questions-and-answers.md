@@ -61,7 +61,7 @@ Beyond the staples above, second rounds often probe these areas. Have a real, sp
 **"What's your biggest weakness — and what are you doing about it?"**
 Name a genuine, non-fatal weakness and, more importantly, the concrete steps you are taking. The growth story matters more than the flaw.
 
-**"Tell me about a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that failed."**
+**"Tell me about a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that failed."**
 They want ownership and learning, not a humblebrag disguised as a failure. Describe a real setback, your role in it, and exactly what you changed afterward.
 
 **"How do you prioritize when everything is urgent?"**
@@ -154,7 +154,7 @@ By the second round, the questions you ask carry as much weight as the answers y
 
 ## Reading the Signals That You're Doing Well
 
-Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) often give off signals about how you are being received, and learning to read them helps you calibrate in real time. Positive signs include interviewers spending more time selling you on the role, introducing you to additional team members on the spot, discussing specifics like start dates or logistics, and asking when you would be available. When an interviewer shifts from probing your qualifications to describing what your first [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) would be, they are picturing you in the seat — a strong buying signal. Less encouraging signs include a rushed, checkbox-style [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) or a lack of engagement with your answers. None of these are definitive, and you should give your best regardless, but noticing them helps you decide where to lean in — if they are clearly interested, it is a good moment to express your genuine enthusiasm and ask about next steps directly.
+Second [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) often give off signals about how you are being received, and learning to read them helps you calibrate in real time. Positive signs include interviewers spending more time selling you on the role, introducing you to additional team members on the spot, discussing specifics like start dates or logistics, and asking when you would be available. When an interviewer shifts from probing your qualifications to describing what your first [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) would be, they are picturing you in the seat — a strong buying signal. Less encouraging signs include a rushed, checkbox-style [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) or a lack of engagement with your answers. None of these are definitive, and you should give your best regardless, but noticing them helps you decide where to lean in — if they are clearly interested, it is a good moment to express your genuine enthusiasm and ask about next steps directly.
 
 ## Putting It All Together
 

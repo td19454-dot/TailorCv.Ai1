@@ -114,7 +114,7 @@ Ask your manager directly at the 30-day mark:
 
 > Is there anything I should be doing differently?
 
-Most managers will answer honestly if asked directly, and early correction is far cheaper than discovering a problem at your first formal review - see [performance review preparation](https://thetailorcv.com/blog/performance-review-preparation-guide).
+Most managers will answer honestly if asked directly, and early correction is far cheaper than discovering a problem at your first formal review - see [performance review preparation](https://thetailorcv.com/blog/how-to-get-a-promotion).
 
 ---
 
@@ -218,4 +218,4 @@ Ask your manager in week one what a successful 30, 60, and 90 days looks like fr
 
 Then spend the first month understanding rather than improving. Book short conversations with everyone you will work with, ending each by asking who else you should talk to, and resist the urge to explain how your previous employer did things - note what seems wrong and wait until you know the history.
 
-Finally, deliver one small visible thing by the end of month one, ask for feedback at 30 days, and take clear ownership of something by month three. If you are onboarding remotely, over-schedule the introductions and send a short weekly update, because the context that arrives passively in an office has to be actively pursued from home. When your first formal review comes, prepare for it with [performance review preparation](https://thetailorcv.com/blog/performance-review-preparation-guide).
+Finally, deliver one small visible thing by the end of month one, ask for feedback at 30 days, and take clear ownership of something by month three. If you are onboarding remotely, over-schedule the introductions and send a short weekly update, because the context that arrives passively in an office has to be actively pursued from home. When your first formal review comes, prepare for it with [performance review preparation](https://thetailorcv.com/blog/how-to-get-a-promotion).

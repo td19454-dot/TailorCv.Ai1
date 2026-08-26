@@ -169,7 +169,7 @@ Crafting a compelling cover letter for remote jobs requires a focused approach t
 
 ### Do I need remote work experience to apply for a remote job?
 
-No - [freelance work](https://thetailorcv.com/blog/cover-letter-no-work-experience), self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) if you're early career. You can also refer to our [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide) for more insights.
+No - [freelance work](https://thetailorcv.com/blog/cover-letter-no-work-experience), self-directed projects, or even coursework completed independently can demonstrate the same qualities. Frame it honestly using [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) if you're early career. You can also refer to our [remote job search guide](https://thetailorcv.com/blog/remote-job-search-guide) for more insights.
 
 ### Should I mention my home office setup?
 

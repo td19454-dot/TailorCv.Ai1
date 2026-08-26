@@ -19,7 +19,7 @@ keywords: AI mock interview from resume, mock interview practice online, resume 
 - Practicing with resume-derived questions helps you articulate your experiences effectively during real interviews.
 
 
-AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice from your resume is more useful than generic interview questions because it asks about your actual projects, skills, and experience. That makes the practice closer to a real interview, and it surfaces the exact spots where your own story falls apart under questioning. A generic question bank cannot do that, because it has never seen your [resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+AI [mock interview](https://thetailorcv.com/blog/mock-interview-practice-online-free-ai) practice from your resume is more useful than generic interview questions because it asks about your actual projects, skills, and experience. That makes the practice closer to a real interview, and it surfaces the exact spots where your own story falls apart under questioning. A generic question bank cannot do that, because it has never seen your [resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 Try the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) and read the [AI Mock Interview Complete Guide](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) for the full practice workflow. This post focuses specifically on how [resume-driven question generation](https://thetailorcv.com/blog/technical-interview-preparation-guide) works and how to use it well.
 
@@ -56,7 +56,7 @@ This is the core difference from generic practice: the question already assumes 
 
 Interviewers almost always work from your resume in front of them. They usually ask about:
 
-- [Projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) listed on your resume, in the order they appear
+- [Projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) listed on your resume, in the order they appear
 - Tools and technologies you claim to know
 - The impact numbers in your bullets
 - Career decisions, gaps, or transitions visible on the page
@@ -105,7 +105,7 @@ None of these show up in a generic mock interview, because generic questions don
 Before starting a resume-based mock interview session, review your resume and mark:
 
 - Your 3 strongest achievements
-- 2 difficult [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) worth deep explanation
+- 2 difficult [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) worth deep explanation
 - 1 failure or setback you can discuss honestly
 - 1 leadership example, even if informal
 - 1 teamwork or conflict example

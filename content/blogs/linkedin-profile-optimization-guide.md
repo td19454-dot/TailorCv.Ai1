@@ -98,7 +98,7 @@ Structure:
 "Most recently, I led the backend redesign of a payment reconciliation service at FinTech Corp - reducing nightly batch processing time from 4 hours to 28 minutes, handling 1.8M daily transactions."
 
 **Paragraph 3 - What you are looking for:**
-"I'm currently exploring senior backend and platform engineering roles at product companies or scale-ups working on interesting [technical challenges](https://thetailorcv.com/blog/why-am-i-not-getting-interviews)."
+"I'm currently exploring senior backend and platform engineering roles at product companies or scale-ups working on interesting [technical challenges](https://thetailorcv.com/blog/why-getting-rejected)."
 
 **CTA:**
 "Feel free to reach out: [email] or connect here."

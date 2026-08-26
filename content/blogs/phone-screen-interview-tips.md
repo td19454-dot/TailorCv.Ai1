@@ -89,7 +89,7 @@ A [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter)
 1. **Genuine interest.** Do you actually want *this* role, or are you applying to everything? A specific [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) to "why this job" checks this box.
 2. **Compensation fit.** Are your expectations in the company's range? This is why they raise [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) early — to avoid investing in a [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) they cannot afford.
 3. **Basic qualification and logistics.** Eligibility, location or time zone, availability, notice period. Boring but disqualifying if there is a mismatch.
-4. **Communication.** Can you explain your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
+4. **Communication.** Can you explain your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) clearly and warmly? On a call with no visuals, your voice and clarity are the entire impression.
 
 Everything else in the call is secondary. If you clear those four, you almost always advance.
 
@@ -101,13 +101,13 @@ A phone screen is a two-way read. Pay attention to what the [recruiter](https://
 
 The screen is not just a filter to survive; it is your chance to actively advance. Three moves make a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) want to push you forward:
 
-- **Match your language to the posting.** When you describe your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) in the exact terms the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses, the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can easily "sell" you to the hiring manager.
+- **Match your language to the posting.** When you describe your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) in the exact terms the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) uses, the [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) can easily "sell" you to the hiring manager.
 - **Show low-friction enthusiasm.** [Recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) are also assessing whether you will accept an offer. Genuine, specific interest makes you a safer bet to advance.
 - **Ask about the process.** "What do the next rounds look like?" signals you are serious and helps you prepare. It also subtly moves the conversation toward next steps.
 
 ## A Sample Phone Screen, Start to Finish
 
-A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), "why are you interested in this role," a couple of logistics and [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), your questions, and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" answer, and your salary range until they are smooth, keep your resume and notes in front of you, and have two questions ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single mock interview run-through the day before makes the real thing feel routine.
+A typical 25-minute screen follows a predictable arc: a warm opener and small talk, "tell me about yourself," a walk through your recent [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), "why are you interested in this role," a couple of logistics and [salary](https://thetailorcv.com/blog/how-to-negotiate-a-job-offer-email) [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), your questions, and a wrap-up on next steps. Because it is so predictable, you can prepare nearly all of it in advance. Rehearse your 60-second intro, your "why this role" answer, and your salary range until they are smooth, keep your resume and notes in front of you, and have two questions ready. Do that and the call stops being a nerve-wracking gate and becomes a conversation you are steering. A single mock interview run-through the day before makes the real thing feel routine.
 
 ## Frequently Asked Questions
 
@@ -144,7 +144,7 @@ Even well-qualified candidates trip on the phone screen, almost always for avoid
 
 - **Taking the call somewhere noisy.** A crackly line or background chatter undercuts everything you say. If your quiet space falls through, ask to reschedule rather than push through a bad connection.
 - **Rambling on "tell me about yourself."** Without a prepared 60-second arc, this opener sprawls and sets a scattered tone. Script it.
-- **Sounding low-energy.** On audio, your voice is the entire impression. Stand up, smile, and [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more warmth than feels natural.
+- **Sounding low-energy.** On audio, your voice is the entire impression. Stand up, smile, and [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) a little more warmth than feels natural.
 - **Dodging the salary question.** Total evasion frustrates recruiters and can stall you. Give a researched range framed as flexible.
 - **Not knowing which role you applied for.** If you are applying widely, keep notes so you are never caught flat when they name the company.
 - **Having no questions.** "No, I think you covered everything" reads as disinterest. Always have two ready.

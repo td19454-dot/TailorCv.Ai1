@@ -263,6 +263,8 @@ Keep building on this with the related guides in this series:
 - [Philippines Work Visas Explained](/blog/philippines-work-visa-guide)
 - [Technology and Startup Jobs in Jakarta](/blog/jakarta-tech-and-startup-jobs)
 - [Southeast Asian Job Markets Compared](/blog/southeast-asia-jobs-compared)
+- [Bay Area Tech Jobs Guide 2026 - Market, Pay, and Cost of Living](/blog/bay-area-tech-jobs-guide)
+- [Seattle Tech Jobs Guide 2026 - Market, Pay, and No State Income Tax](/blog/seattle-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

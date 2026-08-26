@@ -61,7 +61,7 @@ The fastest-growing alternative and increasingly a first choice rather than a fa
 | **GCCs** | Own portals, campus and off-campus | Strong, above services |
 | **IT services** | Mass campus drives, aptitude tests | Standardised, modest |
 
-**The [interview preparation](/blog/mock-interview-for-sponsorship-roles) differs.** Global product companies and Indian product companies both run algorithmic and system design interviews. GCCs vary — some mirror their parent's global process, others are closer to a conventional [technical interview](/blog/coding-interview-preparation-guide). Services companies test aptitude and basics.
+**The [interview preparation](/blog/mock-interview-for-sponsorship-roles) differs.** Global product companies and Indian product companies both run algorithmic and [system design](/blog/system-design-interview-guide) interviews. GCCs vary — some mirror their parent's global process, others are closer to a conventional [technical interview](/blog/coding-interview-preparation-guide). Services companies test aptitude and basics.
 
 **[Referrals](/blog/networking-messages-for-referrals) matter substantially** at product companies and startups, and less at services [recruiters](/blog/how-recruiters-read-resumes) where the process is standardised.
 
@@ -119,7 +119,7 @@ Practical mechanics for these two cities.
 
 **Referrals**, which carry disproportionate weight and are worth cultivating deliberately.
 
-**Campus placement** for those still studying, which remains the single most structured entry route.
+**[Campus placement](/blog/campus-placement-resume-mistakes)** for those still studying, which remains the single most structured entry route.
 
 **Run your [CV](/blog/resume-optimization-guide) through an [ATS check](/ats-analysis)** since Naukri and every large employer screen at volume.
 
@@ -243,6 +243,9 @@ Keep building on this with the related guides in this series:
 - [Global Capability Centres in India](/blog/india-global-capability-centres-jobs)
 - [IT Services versus Product Companies](/blog/india-it-services-vs-product-companies)
 - [Salary Negotiation for Indian Freshers](/blog/india-salary-negotiation-freshers)
+- [London Tech Jobs Guide 2026 - Market, Salaries, Hiring Process, and How to Get In](/blog/london-tech-jobs-guide)
+- [Toronto Tech Jobs Guide 2026 - Canada's Largest Market](/blog/toronto-tech-jobs-guide)
+- [UK Technology Graduate Jobs - Where They Are and What Is Assessed](/blog/uk-tech-graduate-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

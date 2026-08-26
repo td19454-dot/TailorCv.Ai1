@@ -201,7 +201,7 @@ Each listed certification that matches a JD requirement adds keyword credit.
 
 If you do not have a relevant certification but it is listed as "preferred":
 Consider completing a free or low-cost certification.
-Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
+Read [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
 
 ---
 
@@ -329,6 +329,7 @@ Technically yes, but not recommended. Matching 100% of keywords perfectly often 
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - [How AI Resume Matching Works - And How to Use It to Your Advantage in 2026](https://thetailorcv.com/blog/how-ai-resume-matching-works)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
+- [How to Skill-Match Your Resume Against Any Job in Seconds (2026)](https://thetailorcv.com/blog/skill-match-resume-against-any-job)
 
 ---
 

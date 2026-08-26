@@ -57,7 +57,7 @@ You cannot give a specific [answer](https://thetailorcv.com/blog/ai-mock-intervi
 2. **The company's recent blog or changelog.** A launch, a decision, or a point of view you genuinely find interesting.
 3. **Recent news or funding.** A new market, a milestone, a strategic shift.
 4. **The product itself.** If you can try it, one honest observation from real use is the strongest hook of all.
-5. **Your interviewers' public work.** A talk, an article, a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) — something that tells you what the team values.
+5. **Your interviewers' public work.** A talk, an article, a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) — something that tells you what the team values.
 
 Turn any one of these into a sentence, and your [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) instantly separates you from every [candidate](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) who said "you're a leader in the industry."
 
@@ -133,7 +133,7 @@ You need both, but substance carries more weight. Genuine energy is attractive, 
 "Why do you want this job?" is about your motivation and fit — what draws *you* to the role. "Why should we hire you?" is about your value — what *you* bring to them. Prepare them as a pair: one points at the company, the other at your contribution, and together they tell a consistent story.
 
 ### What if the interviewer seems unconvinced by my answer?
-Add a specific, concrete detail. Vague answers get lukewarm reactions; naming an actual [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), value, or problem you would work on usually shifts the energy. If you sense doubt, it is a signal to get more specific, not more enthusiastic.
+Add a specific, concrete detail. Vague answers get lukewarm reactions; naming an actual [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), value, or problem you would work on usually shifts the energy. If you sense doubt, it is a signal to get more specific, not more enthusiastic.
 
 ## Putting It All Together
 

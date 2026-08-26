@@ -101,7 +101,7 @@ Your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [LinkedIn](h
 The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
 
 
-- **Put your key [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in your headline, About section, and [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)** — naturally, in real sentences.
+- **Put your key [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in your headline, About section, and [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)** — naturally, in real sentences.
 - **Use the exact terms [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search**, not clever synonyms. "Product Manager," not "Product Ninja."
 - **Fill the [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the tools and abilities you want to be found for, and get a few endorsements.
 - **Set your headline to your target role**, not just your current title, if you are actively looking.
@@ -110,7 +110,7 @@ The goal is simple: when a [recruiter](https://thetailorcv.com/blog/how-to-write
 
 ## Turn Your Profile Into a Portfolio
 
-For many roles, especially creative and technical ones, proof beats description. Link to real work: a GitHub, a design [portfolio](https://thetailorcv.com/portfolio), published writing, or a live [portfolio website](https://thetailorcv.com/portfolio) that turns your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) into a shareable page. A profile that says "I build things" and then shows the things is far more persuasive than one that only tells.
+For many roles, especially creative and technical ones, proof beats description. Link to real work: a GitHub, a design [portfolio](https://thetailorcv.com/portfolio), published writing, or a live [portfolio website](https://thetailorcv.com/portfolio) that turns your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) into a shareable page. A profile that says "I build things" and then shows the things is far more persuasive than one that only tells.
 
 ## Common LinkedIn About Mistakes
 
@@ -123,7 +123,7 @@ For many roles, especially creative and technical ones, proof beats description.
 
 ## Writing the All-Important First Two Lines
 
-[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) truncates your About section after roughly two lines, hiding the rest behind a "see more" that most people never click. That makes your opening lines the entire game — they have to be interesting enough to earn the click. The weakest openers restate your job title ("I am a marketing professional with X years of [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)"); the strongest lead with a hook that makes a reader curious. Try opening with a bold claim about your work ("I turn content nobody reads into content that ranks"), a surprising origin ("I spent five years teaching algebra, which turns out to be perfect training for UX"), or a specific point of view ("I believe reliability is a feature, not a chore"). Whatever you choose, front-load the single most compelling thing about you. If someone read only those two lines, would they want to know more? If not, rewrite until they would.
+[LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) truncates your About section after roughly two lines, hiding the rest behind a "see more" that most people never click. That makes your opening lines the entire game — they have to be interesting enough to earn the click. The weakest openers restate your job title ("I am a marketing professional with X years of [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)"); the strongest lead with a hook that makes a reader curious. Try opening with a bold claim about your work ("I turn content nobody reads into content that ranks"), a surprising origin ("I spent five years teaching algebra, which turns out to be perfect training for UX"), or a specific point of view ("I believe reliability is a feature, not a chore"). Whatever you choose, front-load the single most compelling thing about you. If someone read only those two lines, would they want to know more? If not, rewrite until they would.
 
 ## Matching Your Headline to Your Goal
 
@@ -131,7 +131,7 @@ Your headline is the most-seen text you own on [LinkedIn](https://thetailorcv.co
 
 ## Keeping the Profile Alive
 
-A [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile is not a set-and-forget document; the algorithm and [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) both favor active, current profiles. Refresh your headline and About section whenever your focus shifts or you finish a notable [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Post occasionally about what you are building or learning — it keeps you visible in your network's feed and quietly demonstrates competence. Add new skills as you gain them, and keep your experience current and consistent with your resume, since recruiters cross-check the two. A profile that shows recent activity signals momentum; one frozen for three years signals the opposite. You do not need to become an influencer — just to look like someone who is present and moving.
+A [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) profile is not a set-and-forget document; the algorithm and [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) both favor active, current profiles. Refresh your headline and About section whenever your focus shifts or you finish a notable [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Post occasionally about what you are building or learning — it keeps you visible in your network's feed and quietly demonstrates competence. Add new skills as you gain them, and keep your experience current and consistent with your resume, since recruiters cross-check the two. A profile that shows recent activity signals momentum; one frozen for three years signals the opposite. You do not need to become an influencer — just to look like someone who is present and moving.
 
 ## Frequently Asked Questions
 
@@ -148,7 +148,7 @@ Yes. Recruiters search by [skill](https://thetailorcv.com/blog/resume-skills-sec
 If you are actively looking, yes — a clear closing line ("Open to senior backend roles") plus LinkedIn's "Open to Work" setting helps [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) find you. If you are employed and discreet, use the recruiter-only visibility option instead.
 
 ### How often should I update my LinkedIn?
-Refresh your headline and About section whenever your focus shifts or you complete a notable [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). An actively maintained profile ranks better in search and signals momentum to anyone who lands on it.
+Refresh your headline and About section whenever your focus shifts or you complete a notable [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). An actively maintained profile ranks better in search and signals momentum to anyone who lands on it.
 
 ### Can I use AI to write my LinkedIn About section?
 Use it for a first draft, then rewrite it in your own voice. The hook and the specific details — your real numbers, your genuine reasons — are what make it work, and those have to be yours.
@@ -157,7 +157,7 @@ Use it for a first draft, then rewrite it in your own voice. The hook and the sp
 Yes. Same facts, different voice: the [resume summary](https://thetailorcv.com/blog/resume-summary-examples-2026) is tight, formal, and tailored per [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application); the LinkedIn About is longer, warmer, and written in the first person for a human browsing your profile. Adapt the story, do not copy-paste it.
 
 ### How do I write an About section if I'm a student with little experience?
-Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), and a clear line about what you are looking for beats an empty or generic section every time.
+Lead with what you are building and learning rather than a job history. A hook about your genuine interest, one or two real [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), and a clear line about what you are looking for beats an empty or generic section every time.
 
 ### Do hashtags or emojis help in the About section?
 Used sparingly, a single emoji or a couple of relevant terms can add personality and scannability, but do not overdo it. Clarity and specificity matter far more than decoration; a wall of emojis or hashtags reads as noise.
