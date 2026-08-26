@@ -290,6 +290,7 @@ Yes. Paste any remote job description into [TailorCV](https://www.thetailorcv.co
 - [How to Match Your Resume to a Product Manager Job Description in 2026](https://thetailorcv.com/blog/resume-matching-product-manager)
 - [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
 - [Resume Matching for Career Changers - How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
+- [How to Match Your Resume to a Job Description Automatically (2026)](https://thetailorcv.com/blog/match-resume-to-job-description-automatically)
 
 ---
 

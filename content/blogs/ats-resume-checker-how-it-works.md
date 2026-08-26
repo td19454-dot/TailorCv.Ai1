@@ -205,6 +205,7 @@ Every time you apply to a new job, because the score is calculated against that 
 - [ATS Score Guide for 2026](https://thetailorcv.com/blog/ats-score-guide)
 - [ATS Keywords - How to Find and Add Them to Boost Your Score (2026)](https://thetailorcv.com/blog/ats-keywords-to-boost-score)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
+- [Attorney & Lawyer Resume Guide 2026](https://thetailorcv.com/blog/attorney-lawyer-resume-2026)
 
 ---
 

@@ -173,6 +173,7 @@ Keep building on this with the related guides in this series:
 - [The Opportunity Card (Chancenkarte) Explained](/blog/germany-opportunity-card-chancenkarte)
 - [The German Lebenslauf - CV Format for International Graduates](/blog/germany-lebenslauf-cv-format)
 - [Technical Interview Preparation for New Graduates](/blog/usa-technical-interview-newgrad-prep)
+- [Vancouver Tech Jobs Guide 2026 - Market, Pay, and the Housing Problem](/blog/vancouver-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

@@ -96,6 +96,7 @@ Keep building on this with the related guides in this series:
 - [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
 - [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
 - [Hukou and City Settlement for Graduates in China - What It Means](/blog/china-hukou-and-city-settlement-graduates)
+- [Internships in China - How to Find and Use Them Properly](/blog/china-internship-guide-for-students)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

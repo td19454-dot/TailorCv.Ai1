@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. Education and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
 ### Your resume after optimization
@@ -57,7 +57,7 @@ Java Developer with 5 years of experience building microservices and high-throug
 
 ### Example for Entry-Level Java Developer
 
-Java Developer with strong core Java, Spring Boot, and SQL skills. Built 4 backend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including REST APIs, a JWT authentication service, and a microservice with PostgreSQL. Familiar with Hibernate, Maven, JUnit, and Docker. Seeking a junior Java backend role.
+Java Developer with strong core Java, Spring Boot, and SQL skills. Built 4 backend [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) including REST APIs, a JWT authentication service, and a microservice with PostgreSQL. Familiar with Hibernate, Maven, JUnit, and Docker. Seeking a junior Java backend role.
 
 ---
 
@@ -135,7 +135,7 @@ FinTech Company | Feb 2022 - Present
 
 ### Mistake 1: Core Java only, no Spring
 
-In 2026, enterprise Java means Spring Boot. A Java resume without Spring experience is limited. Build Spring Boot [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+In 2026, enterprise Java means Spring Boot. A Java resume without Spring experience is limited. Build Spring Boot [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ### Mistake 2: No microservices or system design
 

@@ -189,7 +189,7 @@ If formatting is the problem, choose one of the [ATS-friendly resume templates](
 
 You can also use the [ATS score checker](https://www.thetailorcv.com/solutions) before applying to see how closely your resume matches the job description.
 
-If you are starting with little experience, the guide on [writing a resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) explains how to show projects, certifications, and transferable skills in an ATS-friendly way.
+If you are starting with little experience, the guide on [writing a resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) explains how to show projects, certifications, and transferable skills in an ATS-friendly way.
 
 ## ATS Score Myths
 
@@ -244,7 +244,7 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Cover Letter Guide](https://thetailorcv.com/blog/cover-letter-guide-2026)
@@ -257,6 +257,8 @@ After the technical cleanup, improve relevance. Use [Resume Matching With Job De
 - [10 ATS Resume Formatting Mistakes That Get You Rejected Before a Human Reads Your Resume](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
 - [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 - [How to Check Your ATS Score for Free (2026 Guide)](https://thetailorcv.com/blog/how-to-check-ats-score-free)
+- [How to Check Your ATS Score on Any Job Posting (2026)](https://thetailorcv.com/blog/check-ats-score-on-any-job-posting)
+- [The Best Email Subject Line for a Job Application](https://thetailorcv.com/blog/email-subject-line-for-job-application)
 
 
 ## Comparison of Weak vs. Strong ATS-Friendly Resumes
@@ -287,4 +289,4 @@ To avoid a low ATS score, steer clear of using complex formatting, graphics, or 
 You can determine if your resume is ATS-friendly by running it through an [ATS score checker](https://www.thetailorcv.com/solutions) to see how well it performs against the job requirements. Additionally, ensure your resume follows standard formatting practices and includes relevant keywords from the job description to improve your chances of passing the initial screening.
 
 ### Why am I not getting interviews despite having the right qualifications?
-Even with the right qualifications, if your resume is not optimized for ATS, it may not reach human recruiters. Many qualified candidates are overlooked due to poor resume formatting or a lack of relevant keywords. To understand more about this issue, read our blog post on [why am I not getting interviews for jobs I'm qualified for?](https://thetailorcv.com/blog/why-am-i-not-getting-interviews).
+Even with the right qualifications, if your resume is not optimized for ATS, it may not reach human recruiters. Many qualified candidates are overlooked due to poor resume formatting or a lack of relevant keywords. To understand more about this issue, read our blog post on [why am I not getting interviews for jobs I'm qualified for?](https://thetailorcv.com/blog/why-getting-rejected).

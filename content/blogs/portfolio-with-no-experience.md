@@ -41,7 +41,7 @@ Designers, writers, and marketers can complete realistic industry briefs and pre
 - Marketers: plan a full campaign with goals, channels, and projected metrics
 
 ## Step 3: Do Strategic Free or Low-Cost Work
-One or two free [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for a nonprofit or a small local business gives you **real outcomes and testimonials**. Cap the scope so it does not become unpaid labor, and always get permission to show the work.
+One or two free [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for a nonprofit or a small local business gives you **real outcomes and testimonials**. Cap the scope so it does not become unpaid labor, and always get permission to show the work.
 
 ## Step 4: Contribute and Collaborate
 - Fix a small open-source bug (a merged PR is gold) - see [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
@@ -170,13 +170,13 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide)
 - [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects)
-- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Projects on a Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
-- [Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Resume With No Experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
 
 ## Make This Practical

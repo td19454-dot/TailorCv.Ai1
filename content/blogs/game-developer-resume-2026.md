@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience / shipped titles
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with playable links)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) (with playable links)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -49,7 +49,7 @@ One page for most. A [portfolio](https://thetailorcv.com/blog/how-to-build-profe
 
 Formula:
 
-Game Developer with X years of experience building [game type] in [Unity/Unreal]. Shipped [titles or [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)]. Specialized in [gameplay / graphics / multiplayer / tools].
+Game Developer with X years of experience building [game type] in [Unity/Unreal]. Shipped [titles or [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)]. Specialized in [gameplay / graphics / multiplayer / tools].
 
 ### Example for Experienced Game Developer
 
@@ -135,7 +135,7 @@ Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfoli
 - Playable builds (itch.io, Steam, WebGL, or downloadable)
 - Gameplay videos or trailers
 - Code samples ([GitHub](https://thetailorcv.com/blog/github-portfolio-optimization)) showing clean architecture
-- Description of your specific contributions on team [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Description of your specific contributions on team [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Technical breakdowns of interesting systems you built
 
 
@@ -181,6 +181,7 @@ On shipped titles, specify exactly what systems you built, not just "worked on t
 - [Go (Golang) Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/golang-developer-resume-2026)
 - [iOS Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/ios-developer-resume-2026)
 - [Java Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/java-developer-resume-2026)
+- [WordPress Developer Resume 2026 - Skills, Keywords, and Portfolio Tips](https://thetailorcv.com/blog/wordpress-developer-resume-2026)
 
 ## Make This Practical
 

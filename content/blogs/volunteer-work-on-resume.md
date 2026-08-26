@@ -19,7 +19,7 @@ keywords: volunteer work on resume, how to add volunteer experience, volunteer r
 - Alternatively, a separate "Volunteer Experience" section can be created if there is substantial volunteer history alongside solid paid work experience.
 
 
-Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) and career changers - can directly substitute for paid experience.
+Volunteer experience is one of the most underused assets on a resume. Many candidates either omit it entirely or bury it at the bottom of the page where no one sees it. Done right, volunteer work demonstrates skills, fills gaps, shows character, and - for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) and career changers - can directly substitute for paid experience.
 
 This guide tells you exactly when to include volunteer work, where to put it, and how to write it so it adds real value.
 
@@ -44,7 +44,7 @@ Employers care about volunteer experience for three reasons:
 ### Fresh Graduates and Candidates With No Work Experience
 If you have limited paid experience, volunteer work can provide the experience section you would otherwise be missing. A student who volunteered as a web developer for a nonprofit organization has genuine, demonstrable technical experience.
 
-Read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for related guidance.
+Read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for related guidance.
 
 ### Career Changers
 If you are transitioning to a new field and lack formal paid experience in it, volunteer work in the target field is the fastest way to build legitimate credentials. A finance professional transitioning to UX design who volunteers for a nonprofit redesigning their website has real UX project experience to reference.
@@ -185,7 +185,7 @@ Include technical skills used in volunteer work in your skills section - ATS wil
 
 ## Related Guides
 
-- [Resume With No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [Resume With No Experience Guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Career Change Resume Guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026)

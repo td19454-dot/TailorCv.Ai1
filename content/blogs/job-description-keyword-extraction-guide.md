@@ -326,7 +326,7 @@ Yes, especially for technical roles. AI-based tools like TailorCV identify keywo
 - [How to Use LinkedIn for Job Search in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [What is an ATS Score and Why Does It Decide Your Job Application Before Any Human Reads It](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 - [How to Get Your First Tech Job in 2026 - Complete Guide for Freshers](https://thetailorcv.com/blog/how-to-get-first-tech-job)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 
 ---
 

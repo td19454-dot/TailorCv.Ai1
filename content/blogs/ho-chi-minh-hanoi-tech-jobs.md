@@ -259,6 +259,9 @@ Keep building on this with the related guides in this series:
 - [Manufacturing Careers in Vietnam](/blog/vietnam-manufacturing-careers)
 - [English Teaching Jobs in Vietnam](/blog/vietnam-english-teaching-jobs)
 - [Southeast Asian Job Markets Compared](/blog/southeast-asia-jobs-compared)
+- [Edinburgh Tech Jobs Guide 2026 - Fintech, Data, and Asset Management](/blog/edinburgh-tech-jobs-guide)
+- [Tech Jobs in Canada: How to Write a Resume That Gets Interviews](/blog/tech-jobs-in-canada-resume)
+- [Vancouver Tech Jobs Guide 2026 - Market, Pay, and the Housing Problem](/blog/vancouver-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

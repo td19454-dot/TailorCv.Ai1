@@ -52,7 +52,7 @@ The template must:
 
 - Use a single-column layout (or a combination format where the second column is only for contact/skills, not work experience)
 - Avoid tables, text boxes, and graphics for core content
-- Use standard section names: Experience, Education, Skills, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Use standard section names: Experience, Education, Skills, [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Use standard fonts: Calibri, Arial, Georgia, Garamond, Cambria
 - Export cleanly to PDF without scrambling the text
 
@@ -62,7 +62,7 @@ Test any template you use by running the exported PDF through the [TailorCV ATS 
 
 | Section | What goes in it |
 |---|---|
-| **No experience / fresher** | Template should lead with Education and Projects, not experience. Read [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience) |
+| **No experience / fresher** | Template should lead with Education and Projects, not experience. Read [resume templates for beginners](https://thetailorcv.com/blog/resume-templates-for-beginners) |
 | **Early career (1-5 years)** | Experience prominent, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) brief, skills section |
 | **Mid to senior (5+ years)** | Experience drives the resume; [education](https://thetailorcv.com/blog/how-to-list-education-on-resume) minimal; skills strategic |
 | **Career changer** | Combination template with [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) before experience |
@@ -165,7 +165,7 @@ Read [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-wr
 
 ## Related Guides
 
-- [Resume Templates for Beginners](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [Resume Templates for Beginners](https://thetailorcv.com/blog/resume-templates-for-beginners)
 - [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes)
 - [Resume Design and Color Guide](https://thetailorcv.com/blog/resume-design-color-guide)
 - [Best Resume Fonts for 2026](https://thetailorcv.com/blog/resume-fonts-guide)

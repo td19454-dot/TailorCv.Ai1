@@ -64,7 +64,7 @@ A career change requires more than an update - it may require a full reframe of 
 **Priority updates:**
 
 - Add each new internship, part-time role, or project immediately
-- Keep the [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) section current - your most recent work is your most impressive
+- Keep the [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) section current - your most recent work is your most impressive
 - Add new [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and courses as they are completed
 - Update GPA mention once 2 years past graduation (consider removing)
 - Upgrade [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) as you accumulate results
@@ -75,7 +75,7 @@ A career change requires more than an update - it may require a full reframe of 
 - Early part-time jobs once you have relevant experience
 - Generic "teamwork and communication" skill lines without supporting evidence
 
-Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide).
+Read [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide).
 
 ### Mid-Career (3-10 Years)
 

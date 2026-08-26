@@ -37,7 +37,7 @@ Create a repository named exactly your username and add a README. It renders at 
 
 - A one-line bio and your specialty
 - Your tech stack (badges are fine, kept tasteful)
-- 3-4 featured [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with links
+- 3-4 featured [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) with links
 - Links to your **live [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)** and **resume**
 - How to contact you
 
@@ -124,7 +124,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 ## Pro Tips
 - Archive or hide abandoned junk repos so your good work stands out.
 - Add topics to repos so they are searchable.
-- Star and follow [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you admire - it signals technical taste.
+- Star and follow [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) you admire - it signals technical taste.
 
 ### What optimizing actually does to your resume
 

@@ -25,7 +25,7 @@ Companies hiring interns know they are not getting 5 years of experience. They a
 
 This guide walks you through every section of an internship resume - from format to skills to projects to [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) - with examples for tech, business, marketing, engineering, finance, and more.
 
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) - many companies use ATS systems even for intern applications. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) designed for students and freshers. If you have zero experience in any form, read the [first resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) first.
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) - many companies use ATS systems even for intern applications. Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates) designed for students and freshers. If you have zero experience in any form, read the [first resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) first.
 
 ---
 
@@ -44,9 +44,9 @@ Best structure for an [internship resume](https://thetailorcv.com/blog/internshi
 
 1. Header
 2. Objective or summary
-3. Education (put this first if [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience))
+3. Education (put this first if [no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026))
 4. Skills
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or coursework
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or coursework
 6. Work or volunteer experience (if any)
 7. Achievements and awards
 8. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
@@ -84,11 +84,11 @@ For internship resumes, a 2-3 sentence objective works better than a full summar
 
 Formula:
 
-[Year] [Degree] student at [University] with a strong foundation in [relevant skills or domain]. Completed [[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or coursework] related to [target internship area]. Seeking a [role] internship to [apply skills / contribute to / learn more about X].
+[Year] [Degree] student at [University] with a strong foundation in [relevant skills or domain]. Completed [[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or coursework] related to [target internship area]. Seeking a [role] internship to [apply skills / contribute to / learn more about X].
 
 ### Example for Software Engineering Internship
 
-Second-year Computer Science student at VIT University with strong skills in Python, Java, and React. Built 3 web applications and 2 machine learning [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) using real datasets. Seeking a software engineering internship to contribute to backend or full stack development at a product company.
+Second-year Computer Science student at VIT University with strong skills in Python, Java, and React. Built 3 web applications and 2 machine learning [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) using real datasets. Seeking a software engineering internship to contribute to backend or full stack development at a product company.
 
 ### Example for Finance Internship
 
@@ -146,7 +146,7 @@ Tools: Bloomberg (academic access), FactSet (if available)
 
 ## Projects Section - The Most Important Part for Freshers
 
-[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) are your proof. One strong project can open more doors than 10 generic bullets.
+[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) are your proof. One strong project can open more doors than 10 generic bullets.
 
 Format each project as:
 
@@ -236,7 +236,7 @@ Strong:
 
 ### Mistake 1: Listing responsibilities without specifics
 
-"Participated in team [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" - which team, what project, what was your role?
+"Participated in team [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" - which team, what project, what was your role?
 
 ### Mistake 2: No projects at all
 
@@ -244,7 +244,7 @@ A resume with only coursework and no projects is the weakest possible [internshi
 
 ### Mistake 3: Very low CGPA with no explanation
 
-If your grades are low but you have exceptional [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or achievements, those should be prominent. If grades are low and there are no [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), build some.
+If your grades are low but you have exceptional [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or achievements, those should be prominent. If grades are low and there are no [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), build some.
 
 ### Mistake 4: Too long
 
@@ -263,10 +263,10 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 
 ## Related Guides
 
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [200 Best Action Verbs for Resume](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Get Your First Tech Job](https://thetailorcv.com/blog/how-to-get-first-tech-job)

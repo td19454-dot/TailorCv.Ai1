@@ -84,13 +84,13 @@ If you list "Machine Learning," "Kubernetes," or "SAP" because you watched a You
 
 ### 10. Generic personality traits
 
-"Team player," "hard worker," "fast learner," "detail-oriented," "passionate" - these are claims without evidence. Everyone says this. Show teamwork through a collaboration example. Show fast learning through a specific case. Show passion through [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Remove the traits and replace with proof.
+"Team player," "hard worker," "fast learner," "detail-oriented," "passionate" - these are claims without evidence. Everyone says this. Show teamwork through a collaboration example. Show fast learning through a specific case. Show passion through [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Remove the traits and replace with proof.
 
 ### 11. Hobbies and interests (most of the time)
 
 Reading, traveling, cooking, music - these are universal and say nothing. Remove them unless:
 
-- The hobby is directly relevant to the role (e.g., coding side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for a tech role)
+- The hobby is directly relevant to the role (e.g., coding side [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for a tech role)
 - The hobby shows unusual achievement (e.g., national-level athlete)
 - The company culture explicitly values personality fit and you have strong unique interests
 
@@ -194,7 +194,7 @@ Before sending your next application:
 - [20 Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid)
 - [How to Explain Resume Gaps](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [Ideal Resume Length](https://thetailorcv.com/blog/ideal-resume-length-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [Why Your Resume Never Gets a Response - 12 Hidden ATS Mistakes Killing Your Job Search in 2026](https://thetailorcv.com/blog/hidden-ats-mistakes-job-search)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)

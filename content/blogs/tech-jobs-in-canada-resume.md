@@ -143,7 +143,7 @@ Creating a standout resume can feel overwhelming. Follow this step-by-step guide
 
 4. **List Relevant Experience**: For each position, include your job title, the company name, dates of employment, and bullet points detailing your contributions. Focus on accomplishments and the impact of your work.
 
-5. **Highlight Technical Skills**: Create a dedicated section for technical skills relevant to the job. Be specific about programming languages, tools, and technologies you’ve mastered. For freshers, check out our guide on [35 Powerful Technical Skills in Resume for Freshers With No Experience](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide).
+5. **Highlight Technical Skills**: Create a dedicated section for technical skills relevant to the job. Be specific about programming languages, tools, and technologies you’ve mastered. For freshers, check out our guide on [35 Powerful Technical Skills in Resume for Freshers With No Experience](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience).
 
 6. **Include Education and Certifications**: List your degrees, institutions, and graduation dates. If you have relevant certifications, include those as well, as they can set you apart from other candidates.
 
@@ -175,9 +175,9 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [How to Write a Cover Letter for Canadian Jobs (With Structure)](https://thetailorcv.com/blog/cover-letter-for-canadian-jobs)
 - [How to Get a Job in Canada in 2026: A Step-by-Step Guide](https://thetailorcv.com/blog/how-to-get-a-job-in-canada)
 - [How to Write a Resume Summary With No Experience (10 Real Examples for 2026)](https://thetailorcv.com/blog/resume-summary-with-no-experience)
-- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
-- [Resume Mistakes Every Fresher Makes (And How to Fix Them in 2026)](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes)
+- [How to Add Projects in Resume for Freshers: 10 Smart Tips to Impress Recruiters](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
+- [Resume Mistakes Every Fresher Makes (And How to Fix Them in 2026)](https://thetailorcv.com/blog/resume-mistakes-freshers)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

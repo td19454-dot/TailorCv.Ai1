@@ -105,7 +105,7 @@ Yes - internal roles at large companies often go through [ATS](https://thetailor
 
 You have an advantage here.
 You know the actual language the team uses.
-You know what [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) they call priorities.
+You know what [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) they call priorities.
 You know which metrics the hiring manager tracks every week.
 
 Use that insider knowledge in your resume language.
@@ -163,7 +163,7 @@ Your internal resume should follow the same [anatomy of a strong resume](https:/
 3. **Work experience** - company roles with quantified results; lead with most relevant bullets
 4. **Education & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)** - same as any application
 
-One addition for internal resumes: if there are company-specific [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
+One addition for internal resumes: if there are company-specific [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), initiatives, or milestones you led or contributed to, name them explicitly. External candidates cannot do this.
 
 ---
 
@@ -272,6 +272,7 @@ You have insider knowledge of the company, culture, and needs. That is a real ad
 - [Tailored vs Generic Resume](https://thetailorcv.com/blog/tailored-vs-generic-resume)
 - [Resume Matching with Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
 - [How to Negotiate a Salary Offer](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [The Best Email Subject Line for a Job Application](https://thetailorcv.com/blog/email-subject-line-for-job-application)
 
 ---
 

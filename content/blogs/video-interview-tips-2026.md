@@ -70,7 +70,7 @@ Run this in the half hour before the call so nothing technical surprises you.
 
 ## Body Language on Camera
 
-Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
+Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
 
 
 ## Your Answers Still Matter Most
@@ -148,4 +148,4 @@ The [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-20
 
 ## Putting It All Together
 
-A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.
+A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.

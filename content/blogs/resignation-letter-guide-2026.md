@@ -166,7 +166,7 @@ The negotiation around your leaving date is covered in [notice period negotiatio
 
 **You are leaving because of a genuine problem** - harassment, discrimination, or something serious. Keep the resignation letter neutral and address the substance separately through HR or professional advice. Mixing the two weakens both.
 
-**You have no new job lined up.** Resigning without one is a legitimate choice in some circumstances, though it weakens your position in the next search. If you do, prepare an explanation for the gap - see [career gap explanation](https://thetailorcv.com/blog/career-gap-explanation-guide).
+**You have no new job lined up.** Resigning without one is a legitimate choice in some circumstances, though it weakens your position in the next search. If you do, prepare an explanation for the gap - see [career gap explanation](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview).
 
 **You are on a work visa.** Resigning can affect your immigration status, sometimes seriously. Confirm the position before resigning, not after.
 

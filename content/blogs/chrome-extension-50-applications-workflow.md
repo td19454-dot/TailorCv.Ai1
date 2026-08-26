@@ -215,6 +215,7 @@ Keep building on this with the related guides in this series:
 - [Extension Versus Manual Job Tracking](/blog/chrome-extension-vs-manual-job-tracking)
 - [Applying on Indeed Faster](/blog/chrome-extension-apply-on-indeed-guide)
 - [Tailoring Your Resume on LinkedIn](/blog/chrome-extension-tailor-resume-on-linkedin)
+- [The Best Chrome Extension for Students Job Hunting (2026)](/blog/best-chrome-extension-for-students-job-hunting)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

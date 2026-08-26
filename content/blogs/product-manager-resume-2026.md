@@ -37,7 +37,7 @@ Best structure:
 2. Summary
 3. Skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or product launches
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or product launches
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -69,7 +69,7 @@ Formula:
 
 ### Example for Entry-Level or APM
 
-Aspiring Product Manager with a background in software engineering and user research. Built and shipped two side [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with 800+ active users. Skilled in Figma, Jira, Mixpanel, SQL, and product documentation. Seeking an Associate PM or rotational PM role in consumer or SaaS products.
+Aspiring Product Manager with a background in software engineering and user research. Built and shipped two side [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) with 800+ active users. Skilled in Figma, Jira, Mixpanel, SQL, and product documentation. Seeking an Associate PM or rotational PM role in consumer or SaaS products.
 
 Do not write "looking for an opportunity to leverage my skills in a dynamic organization." That phrase tells recruiters nothing.
 
@@ -234,7 +234,8 @@ Every PM resume uses "passionate, collaborative, data-driven." Show it with actu
 - [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to Match Your Resume to a Product Manager Job Description in 2026](https://thetailorcv.com/blog/resume-matching-product-manager)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
+- [Product Designer Resume Guide 2026](https://thetailorcv.com/blog/product-designer-resume-2026)
 
 ## Make This Practical
 

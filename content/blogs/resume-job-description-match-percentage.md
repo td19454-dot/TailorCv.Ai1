@@ -320,6 +320,7 @@ Add [missing keywords](https://thetailorcv.com/blog/hidden-keywords-in-job-descr
 - [How to Match Your Resume to a Job Description in Under 10 Minutes (2026 Guide)](https://thetailorcv.com/blog/how-to-match-resume-to-job-description-fast)
 - [How to Increase Your ATS Score From 50 to 90 (2026)](https://thetailorcv.com/blog/how-to-increase-ats-score)
 - [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
+- [How to Skill-Match Your Resume Against Any Job in Seconds (2026)](https://thetailorcv.com/blog/skill-match-resume-against-any-job)
 
 ---
 

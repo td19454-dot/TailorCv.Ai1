@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization

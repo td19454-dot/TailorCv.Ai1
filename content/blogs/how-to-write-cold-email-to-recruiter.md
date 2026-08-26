@@ -184,6 +184,7 @@ If you misspell someone's name in the opening line, the email is over.
 - [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Quit Your Job Professionally in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
+- [Campus Placement Email Etiquette 2026 - Templates That Get Replies](https://thetailorcv.com/blog/campus-placement-email-etiquette)
 
 ## Make This Practical
 

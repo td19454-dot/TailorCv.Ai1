@@ -85,7 +85,7 @@ Use a predictable, reverse-chronological order:
 2. Professional summary
 3. Skills
 4. Work experience
-5. [Projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [Projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [Education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [Certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 

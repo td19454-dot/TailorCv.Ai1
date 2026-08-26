@@ -172,6 +172,7 @@ The best HR professionals connect people metrics to business outcomes. Show how 
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
 - [Business Analyst Resume](https://thetailorcv.com/blog/business-analyst-resume-2026)
 - [Chemical Engineer Resume](https://thetailorcv.com/blog/chemical-engineer-resume-2026)
+- [Retail Manager Resume Guide 2026](https://thetailorcv.com/blog/retail-manager-resume-2026)
 
 ## Make This Practical
 

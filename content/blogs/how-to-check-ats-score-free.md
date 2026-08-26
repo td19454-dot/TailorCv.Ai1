@@ -161,6 +161,7 @@ No tool can guarantee an [interview](https://thetailorcv.com/blog/how-to-prepare
 - [ATS Resume Checker - How It Works and How to Pass (2026)](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)
 - [ATS Score vs Resume Score - What's the Difference? (2026)](https://thetailorcv.com/blog/ats-score-vs-resume-score)
 - [Does My Resume Pass ATS? A 12-Point Checklist (2026)](https://thetailorcv.com/blog/does-my-resume-pass-ats)
+- [How to Check Your ATS Score on Any Job Posting (2026)](https://thetailorcv.com/blog/check-ats-score-on-any-job-posting)
 
 ---
 

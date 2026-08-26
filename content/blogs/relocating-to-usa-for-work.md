@@ -147,7 +147,7 @@ A US salary figure is not comparable across cities or to your home country witho
 
 **Vacation is often not fully used.** Taking your full allocation is normal and reasonable, whatever the local culture suggests.
 
-**Direct communication** is the norm, and self-promotion is expected rather than immodest. Candidates from more reserved cultures often undersell themselves - this applies in performance reviews as much as interviews. See [performance review preparation](https://thetailorcv.com/blog/performance-review-preparation-guide) and [the first 90 days in a new job](https://thetailorcv.com/blog/first-90-days-new-job).
+**Direct communication** is the norm, and self-promotion is expected rather than immodest. Candidates from more reserved cultures often undersell themselves - this applies in performance reviews as much as interviews. See [performance review preparation](https://thetailorcv.com/blog/how-to-get-a-promotion) and [the first 90 days in a new job](https://thetailorcv.com/blog/first-90-days-new-job).
 
 **Networking is explicit and normal.** Reaching out to strangers professionally is unremarkable in the US and often expected.
 

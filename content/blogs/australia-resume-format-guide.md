@@ -191,6 +191,7 @@ Keep building on this with the related guides in this series:
 - [Technology Jobs in Sydney and Melbourne](/blog/australia-tech-jobs-sydney-melbourne)
 - [Your First Australian Job - Tax and Superannuation](/blog/australia-first-job-tax-and-super)
 - [Resume Format Differences by Country](/blog/international-student-resume-differences-by-country)
+- [Chef & Culinary Resume Guide 2026](/blog/chef-culinary-resume-2026)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

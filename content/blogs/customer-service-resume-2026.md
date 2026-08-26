@@ -171,6 +171,7 @@ In 2026, [customer service](https://thetailorcv.com/blog/customer-service-resume
 - [Cybersecurity Engineer Resume](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Paralegal Resume Guide 2026](https://thetailorcv.com/blog/paralegal-resume-2026)
 
 ## Make This Practical
 

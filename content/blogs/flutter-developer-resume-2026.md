@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with store links)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) (with store links)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -186,6 +186,7 @@ Senior Flutter roles often need platform channel and native plugin experience. S
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Salesforce Developer Resume Guide 2026](https://thetailorcv.com/blog/salesforce-developer-resume-2026)
 
 ## Make This Practical
 
@@ -213,4 +214,4 @@ The summary section should briefly outline your experience and skills relevant t
 Yes, looking at examples from other developer resumes can be highly beneficial. You can adapt formats and phrases that resonate with your experience. For instance, if you’re also considering native development, check our [Android Developer Resume 2026](https://thetailorcv.com/blog/android-developer-resume-2026) or [iOS Developer Resume 2026](https://thetailorcv.com/blog/ios-developer-resume-2026) for inspiration on how to present your skills and experiences in a compelling way.
 
 ### How do I highlight my projects effectively on my Flutter developer resume?  
-When listing your projects, include specific details such as the technologies used, your role in the project, and measurable outcomes like download numbers or user ratings. Make sure to provide links to the apps in the app stores. This not only showcases your practical skills but also gives potential employers a tangible view of your work. For more tips on presenting projects, see our guide on [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+When listing your projects, include specific details such as the technologies used, your role in the project, and measurable outcomes like download numbers or user ratings. Make sure to provide links to the apps in the app stores. This not only showcases your practical skills but also gives potential employers a tangible view of your work. For more tips on presenting projects, see our guide on [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).

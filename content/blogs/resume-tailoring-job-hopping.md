@@ -61,7 +61,7 @@ Even in the worst case, there is almost always a presentable version of the stor
 Hiring managers who worry about job hoppers are actually worried about:
 
 1. **Wasted investment** - "Will we train and onboard this person only to have them leave in 6 months?"
-2. **Reliability** - "Can we count on this person to see through hard [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)?"
+2. **Reliability** - "Can we count on this person to see through hard [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)?"
 3. **Fit issues** - "Is there a pattern of not meshing with teams or managers?"
 
 Your resume and [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) strategy need to address all three concerns - explicitly or implicitly.
@@ -141,7 +141,7 @@ If every role on your resume has a strong "here is what I accomplished" bullet a
 
 **Weak (draws attention to short tenure):**
 > "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) at [Company], January - October 2022.
-> Contributed to backend development [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)."
+> Contributed to backend development [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)."
 
 **Strong (leads with impact):**
 > "[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) at [Company], January - October 2022 *(contract)*

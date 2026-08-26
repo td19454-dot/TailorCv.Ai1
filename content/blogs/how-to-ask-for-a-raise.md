@@ -64,7 +64,7 @@ Optimising runs against the specific job description you paste in, not in the ab
 
 Document specific achievements since your last raise:
 
-- [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) delivered and their business impact
+- [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) delivered and their business impact
 - Revenue generated or costs saved
 - Process improvements with [measurable results](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - Additional responsibilities you have taken on

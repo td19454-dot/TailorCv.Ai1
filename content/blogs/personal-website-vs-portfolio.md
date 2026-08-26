@@ -21,7 +21,7 @@ keywords: Portfolio Guide, Career Advice, Job Search
 People use "personal website" and "portfolio" interchangeably, but they serve slightly different goals - and knowing the difference helps you build the right thing instead of over- or under-investing. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio vs Resume](https://thetailorcv.com/blog/portfolio-website-vs-resume).
 
 ## What a Portfolio Is
-A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
+A focused showcase of your **work** - [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), case studies, and outcomes - built to win jobs or clients. The work is the star; everything else is supporting cast.
 
 ### Key Elements of a Strong Portfolio
 

@@ -628,14 +628,14 @@ The [ATS score checker](https://www.thetailorcv.com/solutions) from The Tailor C
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Use LinkedIn for Job Search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [Android Developer Resume](https://thetailorcv.com/blog/android-developer-resume-2026)
 - [Backend Developer Resume](https://thetailorcv.com/blog/backend-developer-resume-2026)
-- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
+- [15 Best Free Online Certificates That Actually Look Good on a Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
 
 ## Make This Practical
 

@@ -69,7 +69,7 @@ Consider leading with a strong skills section near the top of your resume, direc
 
 ### Step 4: Include Projects and Non-Traditional Experience Prominently
 
-If your strongest evidence for a required skill comes from a personal project, freelance work, or coursework rather than a formal job, include it clearly rather than omitting it for looking "less official." Read [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for how to present this effectively.
+If your strongest evidence for a required skill comes from a personal project, freelance work, or coursework rather than a formal job, include it clearly rather than omitting it for looking "less official." Read [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for how to present this effectively.
 
 ### Step 5: Check Your Match Score
 
@@ -226,7 +226,7 @@ Use the [TailorCV ATS score checker](/solutions) to see how well your resume dem
 - [How to Match Your Resume to an AI-Generated Job Description](https://thetailorcv.com/blog/matching-resume-ai-generated-job-descriptions)
 - [Highest Paying Jobs Without a Degree 2026](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026)
 - [Chronological vs Functional Resume](https://thetailorcv.com/blog/chronological-vs-functional-resume)
-- [Projects in Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Projects in Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [Job Description Analysis Checklist](https://thetailorcv.com/blog/job-description-analysis-checklist)
 - [Skills to Add to Resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [ATS Score Guide 2026](https://thetailorcv.com/blog/ats-score-guide)

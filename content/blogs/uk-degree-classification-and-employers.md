@@ -113,6 +113,7 @@ Keep building on this with the related guides in this series:
 - [The UK CV Format for Students and Graduates](/blog/uk-cv-format-for-students)
 - [Understanding Your First UK Payslip and Tax](/blog/uk-first-job-tax-and-payslip-guide)
 - [UK Graduate Salary Expectations - What to Actually Expect](/blog/uk-graduate-salary-expectations)
+- [The CS Degree Bubble Is Real - Why Computer Science Feels Oversaturated in 2026](/blog/cs-degree-worth-it)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

@@ -156,6 +156,7 @@ Multiple follow-ups in quick succession or demanding a decision pressures the em
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
 - [System Design Interview Guide 2026 - Framework and Examples](https://thetailorcv.com/blog/system-design-interview-guide)
+- [How to Reschedule an Interview (Without Losing the Offer)](https://thetailorcv.com/blog/how-to-reschedule-an-interview)
 
 ## Make This Practical
 

@@ -33,7 +33,7 @@ Whether or not you have a degree, the fastest way to prove fit for these roles i
 - **Portfolio-based hiring** lets candidates prove ability directly instead of relying on credentials - see [how to build a professional portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 - **Remote work** widened the talent pool, pushing companies to focus on demonstrated output over pedigree.
 
-If you're weighing whether a degree is worth pursuing at all, see [is a CS degree worth it](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026) for a broader look at credentials versus skills in tech specifically.
+If you're weighing whether a degree is worth pursuing at all, see [is a CS degree worth it](https://thetailorcv.com/blog/cs-degree-worth-it) for a broader look at credentials versus skills in tech specifically.
 
 ---
 
@@ -54,7 +54,7 @@ If you're weighing whether a degree is worth pursuing at all, see [is a CS degre
 ## How to Compete Without a Degree
 
 1. **Build proof, not just claims.** A [portfolio](https://www.thetailorcv.com/portfolio) with real projects does more work than a bullet point saying "self-taught."
-2. **Get certified where it matters.** Industry certifications can directly offset a missing degree line - see [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
+2. **Get certified where it matters.** Industry certifications can directly offset a missing degree line - see [best free online certificates for your resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
 3. **Lead with skills, not education.** Structure your resume so your [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and projects come before a thin education section - see how to list education on a resume for how to frame it without drawing unnecessary attention.
 4. **Tailor aggressively to each posting.** Use the [free ATS score checker](https://www.thetailorcv.com/solutions) to confirm your resume reads as qualified before you apply.
 

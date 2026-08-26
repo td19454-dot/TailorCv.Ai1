@@ -201,6 +201,7 @@ Generic questions at the final round signal weak engagement. Ask strategic, seni
 - [System Design Interview Guide](https://thetailorcv.com/blog/system-design-interview-guide)
 - [Technical Interview Preparation Guide 2026 - Complete Roadmap](https://thetailorcv.com/blog/technical-interview-preparation-guide)
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [How to Reschedule an Interview (Without Losing the Offer)](https://thetailorcv.com/blog/how-to-reschedule-an-interview)
 
 ## Make This Practical
 

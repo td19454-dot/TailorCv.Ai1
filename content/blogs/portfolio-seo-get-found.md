@@ -166,6 +166,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
+- [Portfolio SEO Guide 2026 - Getting Found by Recruiters](https://thetailorcv.com/blog/portfolio-seo-guide)
 
 ## Make This Practical
 

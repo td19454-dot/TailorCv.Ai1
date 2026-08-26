@@ -57,9 +57,9 @@ If the tool only rewrites everything into generic phrases, it is not helping eno
 
 ## Where AI Helps Most
 
-The biggest win is resume-job matching. Paste the [job description](https://thetailorcv.com/blog/why-am-i-not-getting-interviews) into the [ATS score checker](/solutions) and check whether your [resume](https://thetailorcv.com/blog/how-to-choose-resume-template) clearly matches the role. Then use AI to improve only the weak sections: headline, summary, skills, and 3-5 bullets.
+The biggest win is resume-job matching. Paste the [job description](https://thetailorcv.com/blog/why-getting-rejected) into the [ATS score checker](/solutions) and check whether your [resume](https://thetailorcv.com/blog/how-to-choose-resume-template) clearly matches the role. Then use AI to improve only the weak sections: headline, summary, skills, and 3-5 bullets.
 
-AI is also useful for [mock interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Use your real resume and ask for questions based on your actual [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not generic questions for the job title.
+AI is also useful for [mock interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). Use your real resume and ask for questions based on your actual [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), not generic questions for the job title.
 
 ---
 
@@ -195,7 +195,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

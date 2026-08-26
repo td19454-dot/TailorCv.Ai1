@@ -191,6 +191,7 @@ This leaves a positive final impression. Companies sometimes come back to runner
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 - [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
 - [How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
+- [What to Bring to a Job Interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview)
 
 ## Make This Practical
 

@@ -33,7 +33,7 @@ Test your resume against the job description with the [ATS score checker](https:
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -139,7 +139,7 @@ EdTech Startup | Apr 2023 - Present
 
 ## Full Stack Project Ideas
 
-Strong full stack [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) to add to your resume:
+Strong full stack [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) to add to your resume:
 
 
 
@@ -163,7 +163,7 @@ Job Board Application | React, Node.js, Express, PostgreSQL, JWT, AWS S3
 - Added search, filter, and pagination for 500+ job listings with full-text PostgreSQL search.
 - Deployed to AWS EC2 with [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) Actions CI/CD and Nginx reverse proxy.
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for project formatting help.
+Read [how to add projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for project formatting help.
 
 ---
 
@@ -202,6 +202,7 @@ Senior full stack roles expect engineers who test their code and automate deploy
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [WordPress Developer Resume 2026 - Skills, Keywords, and Portfolio Tips](https://thetailorcv.com/blog/wordpress-developer-resume-2026)
 
 ## Make This Practical
 

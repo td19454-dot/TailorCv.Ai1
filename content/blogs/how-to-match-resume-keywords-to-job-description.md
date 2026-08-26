@@ -364,6 +364,7 @@ Keywords that appear in the job title, required qualifications section, or that 
 - [ATS Keyword Mistakes That Are Costing You Interviews (And How to Fix Them in 2026)](https://thetailorcv.com/blog/ats-keyword-mistakes)
 - [How AI Resume Matching Works - And How to Use It to Your Advantage in 2026](https://thetailorcv.com/blog/how-ai-resume-matching-works)
 - [Resume to Job Description Match Percentage - What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
+- [How to Match Your Resume to a Job Description Automatically (2026)](https://thetailorcv.com/blog/match-resume-to-job-description-automatically)
 
 ---
 

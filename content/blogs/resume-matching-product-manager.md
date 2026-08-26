@@ -253,6 +253,7 @@ One page for 0-5 years. Two pages for 5+ years or if you have significant, varie
 - [Resume Matching for Career Changers - How to Bridge the Gap in 2026](https://thetailorcv.com/blog/resume-matching-for-career-changers)
 - [Resume Matching with No Experience - How to Match a Job Description When You're Starting Out (2026)](https://thetailorcv.com/blog/resume-matching-no-experience)
 - [How to Match Your Resume to a Software Engineering Job Description in 2026](https://thetailorcv.com/blog/resume-matching-software-engineer)
+- [Product Designer Resume Guide 2026](https://thetailorcv.com/blog/product-designer-resume-2026)
 
 ---
 

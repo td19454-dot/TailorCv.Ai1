@@ -189,6 +189,7 @@ Keep building on this with the related guides in this series:
 - [The Skilled Visa Points System for Graduates](/blog/australia-skilled-visa-points-graduates)
 - [Your First Australian Job - Tax and Superannuation](/blog/australia-first-job-tax-and-super)
 - [Technical Interview Preparation for New Graduates](/blog/usa-technical-interview-newgrad-prep)
+- [UK Technology Graduate Jobs - Where They Are and What Is Assessed](/blog/uk-tech-graduate-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

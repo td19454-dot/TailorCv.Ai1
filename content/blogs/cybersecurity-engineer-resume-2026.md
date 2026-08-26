@@ -33,7 +33,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or CTF highlights
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or CTF highlights
 6. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 7. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
@@ -194,6 +194,7 @@ A CompTIA Security+ alone does not differentiate you in 2026. Add CTF platforms 
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 - [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Paralegal Resume Guide 2026](https://thetailorcv.com/blog/paralegal-resume-2026)
 
 ## Make This Practical
 

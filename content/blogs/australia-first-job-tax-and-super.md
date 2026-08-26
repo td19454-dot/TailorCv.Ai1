@@ -171,6 +171,7 @@ Keep building on this with the related guides in this series:
 - [The Skilled Visa Points System for Graduates](/blog/australia-skilled-visa-points-graduates)
 - [Technology Jobs in Sydney and Melbourne](/blog/australia-tech-jobs-sydney-melbourne)
 - [A Practical Checklist for Your First Job Abroad](/blog/first-job-abroad-practical-checklist)
+- [Autofill vs Auto-Tailor: What Job Search Extensions Actually Do (2026)](/blog/autofill-vs-auto-tailor-job-extensions)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

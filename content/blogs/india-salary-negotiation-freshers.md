@@ -235,6 +235,8 @@ Keep building on this with the related guides in this series:
 - [Global Capability Centres in India](/blog/india-global-capability-centres-jobs)
 - [Technology Jobs in Bangalore and Hyderabad](/blog/bangalore-hyderabad-tech-jobs)
 - [Resume Format for India](/blog/india-resume-format-guide)
+- [Canada Salary Negotiation Guide 2026 - How to Negotiate a Canadian Offer](/blog/canada-salary-negotiation-guide)
+- [Japan Salary Negotiation Guide 2026 - How to Ask Without Causing Offence](/blog/japan-salary-negotiation-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

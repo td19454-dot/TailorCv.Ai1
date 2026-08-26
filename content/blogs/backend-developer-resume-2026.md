@@ -31,7 +31,7 @@ Before applying, compare your resume with the job description using the [ATS sco
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -136,7 +136,7 @@ Logistics Platform | Jun 2023 - Present
 
 ## Backend Project Ideas
 
-Strong backend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
+Strong backend [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews):
 
 
 
@@ -196,6 +196,7 @@ Senior backend roles expect tested code. Add a line about unit tests, integratio
 - [Machine Learning Engineer Resume](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026)
 - [React Developer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/react-developer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Salesforce Developer Resume Guide 2026](https://thetailorcv.com/blog/salesforce-developer-resume-2026)
 
 ## Make This Practical
 

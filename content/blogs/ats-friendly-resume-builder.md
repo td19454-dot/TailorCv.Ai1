@@ -28,7 +28,7 @@ This guide explains what actually makes a resume [ATS](https://thetailorcv.com/b
 An **[ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly resume** is one that software can read cleanly and match accurately to a job description. The content matters, but so does the structure. A resume is [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) friendly when it has:
 
 - **A single-column layout** that parses top to bottom without scrambling.
-- **Standard section headings** like Experience, Education, Skills, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+- **Standard section headings** like Experience, Education, Skills, and [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 - **Plain text contact details** - no contact info hidden in headers, footers, or images.
 - **Relevant keywords** that mirror the language of the job posting.
 - **Simple, common fonts** and no text boxes, tables, or graphics that confuse parsers.
@@ -61,7 +61,7 @@ You edit one section at a time - personal info, education, experience, projects,
 
 
 1. **Start from an ATS-safe structure.** Use [free ATS friendly resume templates](https://thetailorcv.com/templates) - including the popular Jake's Resume layout - instead of a decorative design.
-2. **Add clear, standard sections.** Contact, Summary, Skills, Experience, [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), Education.
+2. **Add clear, standard sections.** Contact, Summary, Skills, Experience, [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), Education.
 3. **Mirror the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).** Pull the exact skills and terms from the posting and weave them in naturally.
 4. **Write strong [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).** Lead with an action verb and include a measurable result wherever possible.
 5. **[quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) everything you can.** "Reduced load time by 40%" beats "improved performance."

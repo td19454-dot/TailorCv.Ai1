@@ -100,6 +100,7 @@ Keep building on this with the related guides in this series:
 - [CPF and Managing Your Finances in Your First Singapore Job](/blog/singapore-cpf-and-first-job-finances)
 - [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
 - [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+- [Conferences and Professional Events for US Students](/blog/usa-networking-events-conferences-students)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

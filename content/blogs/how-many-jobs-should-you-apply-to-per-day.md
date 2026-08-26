@@ -107,7 +107,7 @@ Your target number isn't fixed for the whole search - there are legitimate signa
 - You've been searching for 3-4 weeks with a genuinely tailored process and are getting some interviews, but need a larger pipeline to convert more offers
 - Your timeline has become more urgent - a lease ending, savings running low, a hard deadline from a visa or relocation situation
 - You've built enough efficiency in your process (per the systems above) that more applications no longer means less tailoring per application
-- You're targeting a high-volume field where more open roles exist and lighter tailoring is genuinely appropriate, as covered in [resume for candidates with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- You're targeting a high-volume field where more open roles exist and lighter tailoring is genuinely appropriate, as covered in [resume for candidates with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 
 **Reasons to slow down and diagnose instead:**
 

@@ -82,6 +82,7 @@ Keep building on this with the related guides in this series:
 - [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
 - [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
 - [Healthcare Jobs for Graduates in Canada - Clinical and Non-Clinical Routes](/blog/canada-healthcare-jobs-for-graduates)
+- [The Best Email Subject Line for a Job Application](/blog/email-subject-line-for-job-application)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

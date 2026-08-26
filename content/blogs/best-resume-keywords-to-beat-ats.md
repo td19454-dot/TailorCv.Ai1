@@ -202,6 +202,7 @@ Check your [ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) wi
 - [How to Tailor a Resume in 5 Minutes](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes)
 - [Does My Resume Pass ATS? A 12-Point Checklist](https://thetailorcv.com/blog/does-my-resume-pass-ats)
 - [Resume Matching With Job Description - Complete Guide](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide)
+- [The Best Free Chrome Extension to Beat the ATS (2026)](https://thetailorcv.com/blog/best-free-chrome-extension-to-beat-ats)
 
 ---
 

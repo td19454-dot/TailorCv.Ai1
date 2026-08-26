@@ -33,7 +33,7 @@ Before applying, use the [ATS score checker](https://www.thetailorcv.com/solutio
 2. Summary
 3. Skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or case studies (if freelance or entry-level)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or case studies (if freelance or entry-level)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -196,6 +196,7 @@ In product design roles, thinking process and business impact matter as much as 
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Content Writer Resume](https://thetailorcv.com/blog/content-writer-resume-2026)
 - [Marketing Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/marketing-manager-resume-2026)
+- [Interior Designer Resume Guide 2026](https://thetailorcv.com/blog/interior-designer-resume-2026)
 
 ## Make This Practical
 

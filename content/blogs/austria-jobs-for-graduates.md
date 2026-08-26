@@ -218,6 +218,7 @@ Keep building on this with the related guides in this series:
 - [Graduate Jobs in Germany](/blog/germany-graduate-jobs-guide)
 - [Graduate Jobs in Switzerland](/blog/switzerland-jobs-for-graduates)
 - [The EU Blue Card for Graduates](/blog/germany-eu-blue-card-graduates)
+- [Birmingham Jobs Guide 2026 - The Midlands' Professional Centre](/blog/birmingham-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

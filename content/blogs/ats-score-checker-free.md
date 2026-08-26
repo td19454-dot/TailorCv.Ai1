@@ -79,7 +79,7 @@ Once you know your score, improving it is straightforward when you focus on the 
 
 - **Match keywords to the job description.** Mirror the exact skills and terms the posting uses. A tool that [tailors your resume to each job](https://thetailorcv.com/solutions) makes this fast.
 - **Use a clean, single-column layout.** Fancy multi-column designs and text boxes often break ATS parsing. Start from [free ATS friendly resume templates](https://thetailorcv.com/templates) instead of building from scratch.
-- **Label your sections clearly.** Use standard headings like Experience, Education, Skills, and [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+- **Label your sections clearly.** Use standard headings like Experience, Education, Skills, and [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 - **Quantify your impact.** Numbers (percentages, dollar amounts, user counts) strengthen both [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) scoring and recruiter appeal.
 - **Lead bullets with [action verbs](https://thetailorcv.com/blog/best-action-verbs-for-resume).** "Built," "Led," "Improved," and "Launched" read better to both software and humans.
 - **Keep contact details simple.** Plain text email and phone, no images or headers that the parser may skip.

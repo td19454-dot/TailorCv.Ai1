@@ -28,7 +28,7 @@ Before you finalize it, run it through the [free ATS score checker](https://www.
 ## What Actually Matters on a First Resume
 
 - **Clarity over length** - one clean page beats two padded ones every time. See [ideal resume length guide](https://thetailorcv.com/blog/ideal-resume-length-guide).
-- **Projects and coursework** in place of formal jobs - see [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- **Projects and coursework** in place of formal jobs - see [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - **A tight skills section** listing tools and platforms you're actually comfortable with, not aspirational ones - see [skills to add to resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - **A short, specific summary** instead of a vague objective - see [resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary)
 - **An ATS-friendly format** that survives automated screening on your first try - see [ATS-friendly resume builder](https://thetailorcv.com/blog/ats-friendly-resume-builder)
@@ -194,7 +194,7 @@ Yes, almost always - one page is standard for entry-level resumes. See the [idea
 
 ### What if I have literally no work experience at all?
 
-Lean fully on projects, coursework, and extracurriculars - see [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [technical skills for freshers](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Every section can still work; you're just filling "Experience" with a different mix of material.
+Lean fully on projects, coursework, and extracurriculars - see [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [technical skills for freshers](https://thetailorcv.com/blog/skills-to-add-to-resume-2026). Every section can still work; you're just filling "Experience" with a different mix of material.
 
 ### Do I need a cover letter too?
 

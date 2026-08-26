@@ -201,6 +201,7 @@ Keep building on this with the related guides in this series:
 - [Getting an ATS Score on Any Job Posting](/blog/chrome-extension-ats-score-any-posting)
 - [What the Extension Can and Cannot See](/blog/chrome-extension-privacy-and-permissions)
 - [Fifty Applications Without Losing Your Mind](/blog/chrome-extension-50-applications-workflow)
+- [Resume Extension vs Manual Tailoring: What You Actually Save (2026)](/blog/resume-extension-vs-manual-tailoring)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

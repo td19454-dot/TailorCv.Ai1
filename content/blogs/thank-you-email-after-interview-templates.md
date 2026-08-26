@@ -70,7 +70,7 @@ Keep it short and confident, and confirm timeline:
 
 The difference between a note that helps and one that is instantly forgotten is **specificity**. A generic "thank you for your time, I'm very interested" could have been sent to any company for any role, and it reads that way. The three ingredients that make a thank-you land:
 
-1. **A real callback to the conversation.** [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something specific you discussed — a [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) they mentioned, a challenge the team is facing, a point you connected on. This proves you were present and engaged, not running through a script.
+1. **A real callback to the conversation.** [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something specific you discussed — a [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) they mentioned, a challenge the team is facing, a point you connected on. This proves you were present and engaged, not running through a script.
 2. **A forward-looking line.** Show you are already imagining yourself in the role: "I keep thinking about the onboarding problem you described — I would love to dig into it."
 3. **Brevity.** Four to six sentences. A long note is a chore to read and dilutes the one or two points that matter.
 

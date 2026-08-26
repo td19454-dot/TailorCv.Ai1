@@ -116,6 +116,7 @@ Keep building on this with the related guides in this series:
 - [The Points System for Foreign Graduate Work Permits in China](/blog/china-foreign-graduate-work-permit-points)
 - [Graduate Salary Expectations in China - A Realistic Guide](/blog/china-graduate-salary-expectations)
 - [HSK Levels and What They Actually Mean for Employment in China](/blog/china-hsk-levels-for-employment)
+- [Flight Attendant Resume Guide 2026](/blog/flight-attendant-resume-2026)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

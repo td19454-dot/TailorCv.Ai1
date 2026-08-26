@@ -250,6 +250,8 @@ Keep building on this with the related guides in this series:
 - [Summer Analyst or Full-Time - Which US Recruiting Round Actually Matters](/blog/usa-summer-analyst-vs-full-time-recruiting)
 - [China Campus Recruiting - How the Autumn and Spring Cycles Work](/blog/china-campus-recruiting-qiuzhao-explained)
 - [401(k) and Benefits Explained for New Graduates](/blog/usa-401k-benefits-explained-new-grad)
+- [Campus Placement Mock Test Guide 2026 - How to Practise Properly](/blog/campus-placement-mock-test-guide)
+- [Campus Placement Puzzles Guide 2026 - The Logic Questions and How to Solve Them](/blog/campus-placement-puzzles-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
