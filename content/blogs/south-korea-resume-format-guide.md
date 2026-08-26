@@ -16,14 +16,14 @@ showcase: none
 - The Korean resume is the **이력서 (ireryeokseo)** — a structured, often tabular document with a photo and personal details.
 - It is normally accompanied by the **자기소개서 (jagi sogaeseo)**, a self-introduction essay with no direct Western equivalent.
 - **A photo is standard**, as are date of birth and often other personal details, which differs sharply from UK and US convention.
-- **[Multinationals](/blog/japan-gaishikei-vs-domestic) and Coupang accept Western-style resumes**; domestic employers generally expect the Korean format.
+- **Multinationals and Coupang accept Western-style resumes**; domestic employers generally expect the Korean format.
 - **TOPIK level belongs on the document** — it is a concrete, verifiable credential that Korean employers understand immediately.
 
 ## Two documents, not one
 
-The most important structural fact: a Korean application normally consists of two separate documents with diffe[rent](/blog/canada-major-city-job-markets) jobs.
+The most important structural fact: a Korean [application](/blog/how-many-jobs-should-you-apply-to-per-day) normally consists of two separate [documents](/blog/campus-placement-document-checklist) with different jobs.
 
-**The 이력서 (ireryeokseo)** is the factual record — who you are, what you studied, where you worked, what [certifications](/blog/how-to-list-certifications-on-resume) you hold. It is frequently laid out as a table, and many Korean companies provide their own template that you fill in rather than a document you design.
+**The 이력서 (ireryeokseo)** is the factual record — who you are, what you studied, where you worked, what [certifications](/blog/how-to-list-certifications-on-resume) you hold. It is frequently laid out as a table, and many Korean companies provide their own [template](/blog/how-to-choose-resume-template) that you fill in rather than a document you design.
 
 **The 자기소개서 (jagi sogaeseo)** is the self-introduction. It is a written narrative, often answering set prompts, covering your background, motivation, character and ambitions. It is substantially longer than a Western [cover letter](/blog/cover-letter-generator-by-country) and it is genuinely read.
 
@@ -69,7 +69,7 @@ Not every employer expects the Korean format.
 
 **Coupang** operates substantially in English with internationally recognisable hiring.
 
-**[Startups](/blog/japan-startup-jobs-guide), particularly in Pangyo,** vary — many are entirely comfortable with a Western resume.
+**Startups, particularly in Pangyo,** vary — many are entirely comfortable with a Western resume.
 
 **Global recruitment tracks at the chaebol** frequently use their own English-language forms.
 
@@ -79,7 +79,7 @@ Not every employer expects the Korean format.
 
 Beyond the resume itself, Korean applications and visa processes require paperwork that takes time to obtain.
 
-**[Apostille](/blog/canada-credential-assessment-guide)d degree certificate.** Korea is party to the Apostille Convention, so a degree from a member country needs an apostille rather than full consular legalisation. Obtain it in the country that issued the degree.
+**Apostilled degree certificate.** Korea is party to the Apostille Convention, so a degree from a member country needs an apostille rather than full consular legalisation. Obtain it in the country that issued the degree.
 
 **Official transcripts**, sometimes sealed and sent directly by the institution.
 
@@ -145,7 +145,7 @@ The documents improve with the same material, used better.
 
 **Keep a running record of achievements.** Korean applications ask for specific examples repeatedly, and reconstructing them under a character limit at midnight is how weak answers happen.
 
-**Track your TOPIK progress and put it on everything.** Each level is a concrete, verifiable credential that Korean employers read instantly, and it also scores in the [points-based](/blog/canada-express-entry-for-new-grads) residence route.
+**Track your TOPIK progress and put it on everything.** Each level is a concrete, verifiable credential that Korean employers read instantly, and it also scores in the points-based residence route.
 
 **Collect certifications deliberately.** Korea values formal credentials more than most Western markets, and a relevant certification is a cheaper differentiator here than almost anywhere else.
 

@@ -13,21 +13,21 @@ showcase: none
 
 ## Key Takeaways
 
-- The extension calculates a **skill-match score** between your base resume and the [job description](/blog/job-description-analysis-checklist) on screen, instantly.
+- The extension calculates a **skill-match score** between your base resume and the job description on screen, instantly.
 - It is **deterministic — no AI call** — which means it is fast, free of your quota, and it can refire on every job you scroll to.
 - The score's most useful function is not filtering jobs. It is showing you **where your resume is understating you**.
-- A full **[ATS analysis](/ats-analysis)** on the site gives the deeper breakdown when you want it.
+- A full **ATS analysis** on the site gives the deeper breakdown when you want it.
 - **One analysis per session.** The score you see is the score used downstream, so the numbers never disagree with each other.
 
 ## What the score is measuring
 
-The skill match compares the text of your base resume against the text of the job description and reports how well they correspond.
+The skill match compares the text of your base [resume](/blog/resume-optimization-guide) against the text of the [job description](/blog/job-description-analysis-checklist) and reports how well they correspond.
 
 **It is text matching, not judgement.** No language model is involved. It is regex and comparison work, which is exactly why it can run every time you open a new posting without cost or delay.
 
-**That is a feature, not a limitation.** [Automated screening](/blog/ats-resume-checker-how-it-works) at most employers is also literal text matching. A system that mimics what the real filter does is more useful for this purpose than one that forms a c[lever](/blog/lever-ats-resume-guide) opinion the real filter would never share.
+**That is a feature, not a limitation.** [Automated screening](/blog/ats-resume-checker-how-it-works) at most [employers](/blog/how-recruiters-spot-generic-resumes) is also literal text matching. A system that mimics what the real filter does is more useful for this purpose than one that forms a clever opinion the real filter would never share.
 
-**It looks at the job's own vocabulary.** If the posting says "Power BI" and your resume says "business intelligence reporting", a human sees the same thing and a [parse](/blog/ats-resume-parser-friendly-format)r does not. The score surfaces that gap.
+**It looks at the job's own vocabulary.** If the posting says "Power BI" and your resume says "business intelligence reporting", a human sees the same thing and a [parser](/blog/ats-resume-parser-friendly-format) does not. The score surfaces that gap.
 
 ## The insight people miss
 
@@ -135,7 +135,7 @@ Beyond a single application, the number becomes data.
 
 **Notice score without response.** High match and no reply repeatedly usually means [level mismatch](/blog/resume-tailoring-underqualified), timing, or roles that were never really open — none of which more keywords will fix.
 
-**And stop looking at it once you are interviewing.** At that point the document has done its job and the number is no longer the thing to [opt](/blog/opt-cpt-resume-guide)imise.
+**And stop looking at it once you are interviewing.** At that point the document has done its job and the number is no longer the thing to optimise.
 
 ## Mini checklist
 

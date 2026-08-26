@@ -13,25 +13,25 @@ showcase: none
 
 ## Key Takeaways
 
-- Ireland is the **European base for an unusual concentration of US [multinationals](/blog/japan-gaishikei-vs-domestic)** — technology, pharmaceutical, [medical device](/blog/resume-tailoring-healthcare) and financial services — which makes the graduate market disproportionately international.
+- Ireland is the **European base for an unusual concentration of US multinationals** — technology, pharmaceutical, medical device and financial services — which makes the graduate market disproportionately international.
 - **Dublin dominates by volume**, but Cork, Galway and Limerick have genuine specialisms and far less competition.
-- **[Graduate programmes](/blog/global-rotational-graduate-programmes) run on an autumn milkround**, with applications opening early in the academic year for the following summer.
-- **EU/EEA and Swiss citizens need no permission to work.** Everyone else needs a permit or the [Third Level Graduate Scheme](/blog/ireland-third-level-graduate-scheme).
+- **Graduate programmes run on an autumn milkround**, with applications opening early in the academic year for the following summer.
+- **EU/EEA and Swiss citizens need no permission to work.** Everyone else needs a permit or the Third Level Graduate Scheme.
 - **English is the working language**, which removes the single largest barrier that exists in most continental European markets.
 
 ## Why Ireland punches above its size
 
-Ireland's economy has a shape that is unusual for a country of its population, and it is worth understanding because it determines where the graduate jobs are.
+Ireland's economy has a shape that is unusual for a country of its population, and it is worth understanding because it determines where the [graduate](/blog/first-resume-for-gen-z-2026) jobs are.
 
-**American multinationals base their European operations here.** Google, Meta, Microsoft, Apple, Amazon, Salesforce, Stripe, Intel, LinkedIn and a long list besides run substantial EMEA operations from Ireland. These are not sales offices — many are genuine engineering, operations and [finance](/blog/resume-matching-insurance-jobs) centres serving all of Europe.
+**American multinationals base their European operations here.** Google, Meta, Microsoft, Apple, Amazon, Salesforce, Stripe, Intel, [LinkedIn](/blog/linkedin-profile-optimization-guide) and a long list besides run substantial EMEA operations from Ireland. These are not sales offices — many are genuine engineering, operations and [finance](/blog/resume-matching-insurance-jobs) centres serving all of Europe.
 
-**Pharmaceutical and medical device manufacturing is enormous.** Pfizer, Johnson & Johnson, Boston Scientific, Medtronic, Stryker and Regeneron all have major Irish operations, concentrated around Cork, Galway and Limerick rather than Dublin.
+**Pharmaceutical and [medical device](/blog/resume-tailoring-healthcare) manufacturing is enormous.** Pfizer, Johnson & Johnson, Boston Scientific, Medtronic, Stryker and Regeneron all have major Irish operations, concentrated around Cork, Galway and Limerick rather than Dublin.
 
 **Financial services** cluster in Dublin's IFSC — funds administration, insurance, aviation leasing (Ireland is the global centre for aircraft leasing, which surprises people) and increasingly post-Brexit European operations of London firms.
 
 **Home-grown companies matter too.** Stripe was founded by Irish brothers, and Intercom, Workhuman and a substantial indigenous technology sector sit alongside the multinationals.
 
-The consequence for a graduate: a small country with an outsized number of graduate programmes, and workplaces where being international is the norm rather than the exception.
+The consequence for a graduate: a small country with an outsized number of [graduate programmes](/blog/global-rotational-graduate-programmes), and workplaces where being international is the norm rather than the exception.
 
 ## The cities, and what each is for
 
@@ -49,7 +49,7 @@ The consequence for a graduate: a small country with an outsized number of gradu
 
 Ireland runs a recognisable milkround, and missing it costs a year.
 
-**Applications open early in the academic year** — typically from September and October — for programmes starting the following summer or autumn.
+**[Applications](/blog/how-many-jobs-should-you-apply-to-per-day) open early in the academic year** — typically from September and October — for programmes starting the following summer or autumn.
 
 **Professional services move first.** The Big Four accountancy firms, the major law firms and the large [consultancies](/blog/case-interview-preparation-guide-2026) recruit earliest and close earliest.
 
@@ -63,9 +63,9 @@ Ireland runs a recognisable milkround, and missing it costs a year.
 
 **EU, EEA and Swiss citizens** can live and work in Ireland with no permission required at all. This is the simplest position in this entire guide and it is worth stating plainly, because a large share of the applicants who worry about permits do not need one.
 
-**Non-EEA graduates of Irish institutions** can apply for the [Third Level Graduate Scheme](/blog/ireland-third-level-graduate-scheme), which grants a period of unrestricted work permission after graduating.
+**Non-EEA graduates of Irish institutions** can apply for the Third Level Graduate Scheme, which grants a period of unrestricted work permission after graduating.
 
-**Everyone else** needs an employment permit, most commonly a [Critical Skills](/blog/in-demand-jobs-canada-2026) Employment Permit for roles on the critical skills list, or a General Employment Permit otherwise. The Critical Skills route is considerably more favourable and the occupations list is published by the Department of Enterprise.
+**Everyone else** needs an employment permit, most commonly a Critical [Skills](/blog/resume-skills-match-job-description) Employment Permit for roles on the critical skills list, or a General Employment Permit otherwise. The Critical Skills route is considerably more favourable and the occupations list is published by the Department of Enterprise.
 
 **Note the UK is separate.** Irish and British citizens have reciprocal rights under the Common Travel Area, which is independent of EU membership and survived Brexit intact.
 
@@ -77,7 +77,7 @@ Irish graduate salaries are competitive by European standards, particularly at t
 
 **Rates are usually fixed for a cohort.** As with most structured programmes, the figure is published and applies to everyone in the intake. [Negotiation](/blog/how-to-negotiate-salary-offer) is for direct-entry roles, not for a graduate scheme.
 
-**Dublin [rent](/blog/canada-major-city-job-markets) is the constraint.** Housing supply in Dublin has been severely limited for years, competition for rentals is intense, and a substantial share of a graduate salary goes on accommodation. This is the single most important number to research before accepting an offer, and averages are misleading — look at actual listings for the areas you would realistically live in.
+**Dublin rent is the constraint.** Housing supply in Dublin has been severely limited for years, competition for rentals is intense, and a substantial share of a graduate salary goes on accommodation. This is the single most important number to research before accepting an offer, and averages are misleading — look at actual listings for the areas you would realistically live in.
 
 **Cork, Galway and Limerick are materially cheaper**, which is a further argument for matching your sector to the right city rather than defaulting to the capital.
 
@@ -136,7 +136,7 @@ Six things that block everything else if you leave them, roughly in the order th
 - [ ] gradireland searched alongside company career pages
 - [ ] Cork, Galway and Limerick considered for the right sector
 - [ ] Critical Skills list checked if you need a permit
-- [ ] CV in [UK-style convention](/blog/uk-cv-format-guide-2026), two pages
+- [ ] CV in UK-style convention, two pages
 - [ ] Applications submitted well before advertised deadlines
 - [ ] PPS number planned for on arrival
 - [ ] Dublin housing budget researched honestly

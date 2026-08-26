@@ -13,19 +13,19 @@ showcase: none
 
 ## Key Takeaways
 
-- There is **no universal resume template**. Photo, length, personal details and [section order](/blog/resume-section-order-guide) all vary by market, and getting them wrong signals unfamiliarity.
+- There is **no universal resume template**. Photo, length, personal details and section order all vary by market, and getting them wrong signals unfamiliarity.
 - **Photo markets**: Germany, Switzerland, much of the Gulf, South Korea, and traditionally France. **No-photo markets**: UK, Ireland, US, Canada, Australia, New Zealand.
-- **Length**: [one page](/blog/ats-resume-length-guide) in France and the US, two in most of Europe and the Gulf, two to three in New Zealand.
-- **Whatever the market, the template must [parse](/blog/ats-resume-parser-friendly-format).** Single column, standard headings, selectable text.
+- **Length**: one page in France and the US, two in most of Europe and the Gulf, two to three in New Zealand.
+- **Whatever the market, the template must parse.** Single column, standard headings, selectable text.
 - TailorCV offers **22 templates across 4 style variants**, so you can hold one base resume and render it appropriately per market.
 
 ## The four things that vary
 
 Almost every national difference reduces to one of four decisions.
 
-**Photo or no photo.** In the UK, Ireland, US, Canada, Australia and New Zealand, including one is at best neutral and at worst a signal you did not check. In Germany, Switzerland, South Korea and much of the Gulf, omitting one is conspicuous. In France and the Netherlands it is [opt](/blog/opt-cpt-resume-guide)ional and trending toward omission at large employers.
+**Photo or no photo.** In the UK, Ireland, US, Canada, Australia and New Zealand, including one is at best neutral and at worst a signal you did not check. In Germany, Switzerland, South Korea and much of the Gulf, omitting one is conspicuous. In France and the Netherlands it is optional and trending toward omission at large [employers](/blog/how-recruiters-spot-generic-resumes).
 
-**Personal details.** Date of birth, nationality, marital status and visa status appear routinely in Germany, Switzerland, the Gulf and Korea, and are deliberately excluded in the UK, US, Canada, Australia and New Zealand for anti-discrimination reasons.
+**Personal details.** Date of birth, nationality, marital status and [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) status appear routinely in Germany, Switzerland, the Gulf and Korea, and are deliberately excluded in the UK, US, Canada, Australia and New Zealand for anti-discrimination reasons.
 
 **Length.** One page in France and the US. Two in Germany, the Netherlands, Ireland, the UK, Switzerland and the Gulf. Two to three in New Zealand. Longer academic CVs are a separate category everywhere.
 

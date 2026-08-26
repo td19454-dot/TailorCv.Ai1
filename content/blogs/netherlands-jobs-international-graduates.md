@@ -14,10 +14,10 @@ showcase: none
 ## Key Takeaways
 
 - Amsterdam has an unusually high concentration of **English-language roles** — many teams operate entirely in English and Dutch is not required.
-- The **IND recognised [sponsor register](/blog/resume-for-h1b-visa-sponsorship)** is a public list of every employer permitted to sponsor, and it is the single best job-search tool an international candidate has.
-- **[Housing](/blog/canada-major-city-job-markets) is the real constraint.** Amsterdam rental supply is severely limited and it shapes every decision about where you work.
+- The **IND recognised sponsor register** is a public list of every employer permitted to sponsor, and it is the single best job-search tool an international candidate has.
+- **Housing is the real constraint.** Amsterdam rental supply is severely limited and it shapes every decision about where you work.
 - The **Randstad** — Amsterdam, Rotterdam, The Hague, Utrecht — functions as one connected job market, and Eindhoven is a serious technology centre in its own right.
-- The **[30% ruling](/blog/netherlands-30-percent-ruling-explained)**, a [tax](/blog/canada-first-job-taxes-and-benefits) advantage for qualifying incoming employees, materially changes take-home pay for those who qualify.
+- The **30% ruling**, a tax advantage for qualifying incoming employees, materially changes take-home pay for those who qualify.
 
 ## Why Amsterdam works for internationals
 
@@ -29,7 +29,7 @@ Amsterdam has an unusual profile among European capitals: a large share of its p
 
 **Media, [marketing](/blog/resume-matching-marketing) and creative** work concentrates in Amsterdam, including the European operations of global agencies.
 
-**[Consultancy](/blog/case-interview-preparation-guide-2026) and professional services** are strong across the Randstad, hiring graduates through structured intakes.
+**[Consultancy](/blog/case-interview-preparation-guide-2026) and professional services** are strong across the Randstad, hiring [graduates](/blog/first-resume-for-gen-z-2026) through structured intakes.
 
 ## The recognised sponsor register
 
@@ -37,7 +37,7 @@ If you take one practical thing from this guide, take this.
 
 The IND publishes a **public register of recognised sponsors** — every organisation approved to sponsor highly skilled migrants. It is searchable, free, and updated.
 
-**Why it matters.** An employer on that register has already done the paperwork, already understands the process, and has already decided that hiring internationally is something they do. An employer not on it has to start from nothing, which most will not do for a graduate.
+**Why it matters.** An [employer](/blog/how-recruiters-spot-generic-resumes) on that register has already done the [paperwork](/blog/campus-placement-document-checklist), already understands the process, and has already decided that hiring internationally is something they do. An employer not on it has to start from nothing, which most will not do for a graduate.
 
 **How to use it.** Filter the register by location and sector, build a target list, and research those companies directly rather than scrolling [job boards](/blog/best-job-search-websites-2026). It inverts the usual search: instead of finding a job and hoping they sponsor, you start from employers who definitely can.
 
@@ -59,7 +59,7 @@ This is not a side issue. In Amsterdam it frequently determines whether a job is
 
 A tax facility worth understanding before you [negotiate](/blog/how-to-negotiate-salary-offer).
 
-The **30% ruling** allows qualifying employees recruited from abroad to receive a portion of their salary as a tax-free allowance, on the basis that international hires face additional costs. The percentage, the duration and the qualifying conditions have all been adjusted by legislation in recent years, so check the current position with the Belastingdienst or your employer.
+The **[30% ruling](/blog/netherlands-30-percent-ruling-explained)** allows qualifying employees recruited from abroad to receive a portion of their salary as a tax-free allowance, on the basis that international hires face additional costs. The percentage, the duration and the qualifying conditions have all been adjusted by legislation in recent years, so check the current position with the Belastingdienst or your employer.
 
 **It is applied for by the employer**, jointly with you, and there are conditions including a minimum salary and a requirement about where you lived before starting.
 
@@ -189,7 +189,7 @@ You can also [check your resume's ATS score for free](/ats-analysis), [generate 
 
 ### Can I work in Amsterdam without speaking Dutch?
 
-For a large share of roles, yes. Many international companies and technology teams operate entirely in English. Client-facing, [public sector](/blog/canada-government-jobs-for-students) and traditional Dutch employers usually require Dutch.
+For a large share of roles, yes. Many international companies and technology teams operate entirely in English. Client-facing, public sector and traditional Dutch employers usually require Dutch.
 
 ### What is the recognised sponsor register?
 

@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Post Study Work Visa** lets [graduates](/blog/first-resume-for-gen-z-2026) of New Zealand institutions stay and work **for any [employer](/blog/how-recruiters-spot-generic-resumes)**, with no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required.
-- **Duration depends on your qualification level and, for some qualifications, what you studied** — postgraduate awards get longer, and some non-[degree](/blog/how-to-list-education-on-resume) qualifications only qualify if they lead to a Green List occupation.
+- The **Post Study Work Visa** lets graduates of New Zealand institutions stay and work **for any employer**, with no sponsorship required.
+- **Duration depends on your qualification level and, for some qualifications, what you studied** — postgraduate awards get longer, and some non-degree qualifications only qualify if they lead to a Green List occupation.
 - The usual next step is the **Accredited Employer Work Visa (AEWV)**, which requires an accredited employer, a job check, and a qualifying role.
 - The **Green List** provides **straight to residence** and **work to residence** pathways for occupations in genuine shortage.
-- **Studying outside Auckland** has at times carried additional advantages; check the cur[rent](/blog/canada-major-city-job-markets) settings with Immigration New Zealand rather than assuming.
+- **Studying outside Auckland** has at times carried additional advantages; check the current settings with Immigration New Zealand rather than assuming.
 
 ## What the visa gives you
 
-The Post Study Work Visa is New Zealand's post-graduation route, and its defining feature is the same as Ireland's and the Netherlands': **it is not tied to an employer**.
+The Post Study Work Visa is New Zealand's post-graduation route, and its defining feature is the same as Ireland's and the Netherlands': **it is not tied to an [employer](/blog/how-recruiters-spot-generic-resumes)**.
 
 **You can work for anyone.** Full time, part time, contract, self-employed. No employer has to apply for anything, pay anything, or wait for anything.
 
@@ -41,7 +41,7 @@ The Post Study Work Visa is New Zealand's post-graduation route, and its definin
 
 **Health and character requirements**, as with any New Zealand visa.
 
-**For some qualifications, a Green List connection.** Certain non-degree qualifications only lead to a post-study work visa where the study relates to an occupation on the Green List, which is why the list matters when you are choosing what to study, not only when you are looking for work.
+**For some qualifications, a Green List connection.** Certain non-[degree](/blog/how-to-list-education-on-resume) qualifications only lead to a post-study work visa where the study relates to an occupation on the Green List, which is why the list matters when you are choosing what to study, not only when you are looking for work.
 
 ## The Accredited Employer Work Visa
 
@@ -51,7 +51,7 @@ The route after the post-study visa, and it introduces a constraint worth unders
 
 **Accreditation is the important one for your search.** Only accredited employers can hire on this visa, which means — exactly as with the Dutch sponsor register — you can identify in advance which employers are worth approaching if you will need this route.
 
-**Median wage thresholds have applied** to various parts of the system and have been adjusted repeatedly. Check the current settings.
+**Median wage [thresholds](/blog/resume-for-h1b-visa-sponsorship) have applied** to various parts of the system and have been adjusted repeatedly. Check the current settings.
 
 **Time limits apply** to how long you can hold the visa before moving toward residence or leaving, depending on the role and pay level.
 
@@ -65,7 +65,7 @@ This is where a study-to-residence plan actually lands.
 
 **Sector agreements** exist for some industries with their own arrangements.
 
-**The Skilled Migrant Category** is the general [points-based](/blog/canada-express-entry-for-new-grads) residence route, revised into a simpler six-point system based on qualifications, income and occupational registration.
+**The Skilled Migrant Category** is the general [points](/blog/aptitude-psychometric-test-tips)-based residence route, revised into a simpler six-point system based on qualifications, income and occupational registration.
 
 **The list changes.** Occupations move on and off it as shortages shift. Consulting Immigration New Zealand directly is not pedantry here; it is the difference between a plan that works and one that does not.
 
@@ -73,11 +73,11 @@ This is where a study-to-residence plan actually lands.
 
 The visa is a countdown and the sequence inside it decides the outcome.
 
-**First, get into the right occupation.** If your Green List pathway is Tier 2 work-to-residence, the qualifying period only runs while you are employed in that occupation. A general graduate job that pays the rent but sits outside your occupation is a month that does not count.
+**First, get into the right occupation.** If your Green List pathway is Tier 2 work-to-residence, the qualifying period only runs while you are employed in that occupation. A general [graduate](/blog/first-resume-for-gen-z-2026) job that pays the rent but sits outside your occupation is a month that does not count.
 
 **Second, get to an accredited employer.** Even a good role at a non-accredited employer cannot convert into an AEWV. Check accreditation before you accept, not after.
 
-**Third, [document](/blog/campus-placement-document-checklist) everything.** Employment agreements, [payslip](/blog/canada-salary-expectations-new-grad)s, position descriptions and evidence that your role matches the occupation you are claiming. Residence applications are evidence-based and reconstructing two years of employment from memory is unpleasant.
+**Third, [document](/blog/campus-placement-document-checklist) everything.** Employment agreements, payslips, position descriptions and evidence that your role matches the occupation you are claiming. Residence applications are evidence-based and reconstructing two years of employment from memory is unpleasant.
 
 **Fourth, watch the wage thresholds.** Various parts of the system have been tied to median wage figures that are adjusted periodically. A role that qualifies today may sit below a revised threshold later.
 
@@ -87,13 +87,13 @@ The visa is a countdown and the sequence inside it decides the outcome.
 
 The administrative sequence, briefly.
 
-**Get an IRD number.** New Zealand's [tax](/blog/canada-first-job-taxes-and-benefits) identifier — without one you are taxed at a no-declaration rate that is considerably higher.
+**Get an IRD number.** New Zealand's tax identifier — without one you are taxed at a no-declaration rate that is considerably higher.
 
 **Choose a tax code** on starting work, which tells your employer how much PAYE to deduct. Getting this wrong is a common and easily fixed problem.
 
 **Open a New Zealand [bank account](/blog/first-job-abroad-practical-checklist).** Most employers pay into a local account, and several other things depend on it.
 
-**Enrol in KiwiSaver** unless you have a specific reason not to — the employer contribution and the government contribution are money you do not get by [opt](/blog/opt-cpt-resume-guide)ing out.
+**Enrol in KiwiSaver** unless you have a specific reason not to — the employer [contribution](/blog/how-to-negotiate-salary-offer) and the government contribution are money you do not get by opting out.
 
 **Understand your ACC cover.** The Accident Compensation Corporation provides universal no-fault injury cover funded partly by a levy on your earnings, and it applies from the day you arrive.
 
@@ -117,7 +117,7 @@ Worth knowing before you plan around it.
 
 **Partner work rights** depend on your visa and its conditions. Post-study work visa holders and AEWV holders have different partner provisions, and they have been adjusted.
 
-**Dependent children's education.** Children of some work visa holders are treated as domestic students for school fees; others are not. This is a substantial financial difference and it depends on your specific visa and pay level.
+**Dependent children's education.** Children of some work visa holders are treated as domestic students for school [fees](/blog/best-free-online-certificates-for-resume); others are not. This is a substantial financial difference and it depends on your specific visa and pay level.
 
 **Residence changes everything** for a family, which is why the residence timeline matters more with dependants than without.
 

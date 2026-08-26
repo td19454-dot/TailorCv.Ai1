@@ -16,14 +16,14 @@ showcase: none
 - **Amsterdam** concentrates payments, platforms and international technology headquarters; **Eindhoven** is the deep-tech and semiconductor centre; **Delft** and **Enschede** are engineering hubs around their technical universities.
 - Dutch technology companies hire in English almost universally, which makes the market unusually accessible.
 - **ASML in Eindhoven** anchors one of the most strategically significant technology supply chains in the world, and it hires at scale.
-- Salaries sit below US and Swiss levels and are broadly competitive within Europe; **the [30% ruling](/blog/netherlands-30-percent-ruling-explained)** changes the net picture significantly for those who qualify.
+- Salaries sit below US and Swiss levels and are broadly competitive within Europe; **the 30% ruling** changes the net picture significantly for those who qualify.
 - The **IND recognised sponsor register** tells you immediately which of these companies can hire you.
 
 ## Amsterdam: payments, platforms, headquarters
 
 Amsterdam's technology scene has a distinct centre of gravity.
 
-**Payments and fintech.** Adyen is one of Europe's most significant payments companies and grew entirely in Amsterdam. Mollie, Bunq and a wide ecosystem of payments, banking and financial infrastructure companies sit around it.
+**Payments and fintech.** Adyen is one of Europe's most significant payments companies and grew entirely in Amsterdam. Mollie, Bunq and a wide ecosystem of payments, [banking](/blog/resume-matching-insurance-jobs) and financial infrastructure companies sit around it.
 
 **Marketplaces and platforms.** Booking.com is one of the largest technology employers in the country. Uber, Netflix, Elastic, Databricks and many others run European operations from the city.
 
@@ -35,7 +35,7 @@ Amsterdam's technology scene has a distinct centre of gravity.
 
 Eindhoven is the Netherlands' most underrated destination for engineers, and for hardware, physics and systems people it is arguably the best in Europe.
 
-**ASML** builds the lithography machines that essentially the entire advanced semiconductor industry depends on. It is a genuinely extraordinary engineering environment — [opt](/blog/opt-cpt-resume-guide)ics, precision mechanics, control systems, enormous software complexity — and it hires internationally at very large scale.
+**ASML** builds the lithography machines that essentially the entire advanced semiconductor industry depends on. It is a genuinely extraordinary engineering environment — optics, precision mechanics, control systems, enormous software complexity — and it hires internationally at very large scale.
 
 **Philips** retains substantial health-technology research and engineering in the region.
 
@@ -136,7 +136,7 @@ A few cultural specifics that show up quickly.
 - [ ] Take-home format prepared for
 - [ ] Salary expectation number decided before the recruiter call
 - [ ] 30% ruling eligibility asked about
-- [ ] CV in [Dutch convention](/blog/netherlands-cv-format-guide) and ATS-clean
+- [ ] CV in Dutch convention and ATS-clean
 - [ ] Direct-to-company applications prioritised over boards
 
 ## Scenarios

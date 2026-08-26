@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- Australian [graduate programs](/blog/global-rotational-graduate-programmes) run on a **fixed annual cycle**: applications open around **February–March** for roles starting the following **February**, meaning you apply roughly a year ahead.
+- Australian graduate programs run on a **fixed annual cycle**: applications open around **February–March** for roles starting the following **February**, meaning you apply roughly a year ahead.
 - The market is dominated by a recognisable set of employers — the **Big Four banks**, the **Big 4 professional services firms**, the **Australian Public Service**, and the large miners and telcos.
 - **Video interviews and psychometric testing** are near-universal early stages, and both are trainable.
-- Many programs require **Australian citizenship or [permanent residency](/blog/canada-provincial-nominee-guide)**, particularly in government and defence — check before investing time.
+- Many programs require **Australian citizenship or permanent residency**, particularly in government and defence — check before investing time.
 - **Vacation (summer) clerkships** in your penultimate year are the strongest conversion route, exactly as internships are elsewhere.
 
 ## The calendar, which is the whole game
@@ -32,17 +32,17 @@ If you take one thing from this page, take the dates.
 | **Nov – Feb** | Summer vacation clerkships run |
 | **Feb (next year)** | Graduate programs actually commence |
 
-The consequence: **a student graduating in November 2027 is applying in early 2027**, well over a year before starting. Australian universities' academic year runs February to November, which is why the whole cycle sits where it does — and why students from northern-hemisphere systems consistently arrive at it late.
+The consequence: **a student graduating in November 2027 is applying in early 2027**, well over a year before starting. Australian [universities](/blog/how-to-list-education-on-resume)' academic year runs February to November, which is why the whole cycle sits where it does — and why students from northern-hemisphere systems consistently arrive at it late.
 
-Missing the window does not mean waiting for nothing. Off-cycle and direct-entry hiring runs year-round at mid-sized employers, and some programs have a mid-year intake. But the main structured route is a once-a-year event.
+Missing the window does not mean waiting for nothing. Off-cycle and direct-entry hiring runs year-round at mid-sized [employers](/blog/how-recruiters-spot-generic-resumes), and some programs have a mid-year intake. But the main structured route is a once-a-year event.
 
 ## Who actually runs graduate programs
 
 **The Big Four banks** — Commonwealth Bank, Westpac, NAB and ANZ — run large, structured programs across technology, risk, retail [banking](/blog/resume-matching-insurance-jobs), institutional banking and data.
 
-**The Big 4 professional services firms** — Deloitte, PwC, EY and KPMG — hire at scale into audit, [tax](/blog/canada-first-job-taxes-and-benefits), [consulting](/blog/case-interview-preparation-guide-2026) and technology, and run the clerkship-to-graduate pipeline most visibly.
+**The Big 4 professional services firms** — Deloitte, PwC, EY and KPMG — hire at scale into audit, tax, [consulting](/blog/case-interview-preparation-guide-2026) and technology, and run the clerkship-to-[graduate](/blog/first-resume-for-gen-z-2026) pipeline most visibly.
 
-**The Australian Public Service (APS)** runs graduate programs across departments, plus specialist streams. Most require Australian citizenship.
+**The Australian Public Service (APS)** runs [graduate programs](/blog/global-rotational-graduate-programmes) across departments, plus specialist streams. Most require Australian citizenship.
 
 **Resources and energy** — BHP, Rio Tinto, Woodside and Fortescue — hire engineers, geologists and technical graduates, frequently with fly-in fly-out (FIFO) rosters for site-based roles.
 
@@ -52,7 +52,7 @@ Missing the window does not mean waiting for nothing. Off-cycle and direct-entry
 
 ## The selection process
 
-1. **Online application** — CV, academic transcript, and usually short written responses.
+1. **Online application** — CV, academic [transcript](/blog/campus-placement-document-checklist), and usually short written responses.
 2. **Psychometric testing** — numerical, verbal and abstract reasoning. Trainable, and the stage that filters the most people.
 3. **Video interview** — recorded answers to set questions, no interviewer present. Rehearse to time, on camera.
 4. **Assessment centre** — group exercise, case study, and individual interviews, either in person or virtual.
@@ -66,7 +66,7 @@ Missing the window does not mean waiting for nothing. Off-cycle and direct-entry
 This is the gate worth checking before anything else.
 
 - **Australian Public Service and defence-related roles** generally require **Australian citizenship**, without exception.
-- **Some private graduate programs** require citizenship or permanent residency, particularly where [security clearance](/blog/matching-resume-security-clearance-jobs) or regulated [licensing](/blog/canada-regulated-professions-guide) is involved.
+- **Some private graduate programs** require citizenship or permanent residency, particularly where [security clearance](/blog/matching-resume-security-clearance-jobs) or regulated licensing is involved.
 - **Many private employers accept** candidates on a [Temporary Graduate visa (subclass 485)](/blog/australia-skilled-visa-points-graduates), but not all will sponsor beyond it.
 
 Read the eligibility line on the advert before you write anything. Australian graduate adverts state this clearly, and applying to a citizenship-restricted program on a student visa wastes an application you cannot get back.
@@ -86,7 +86,7 @@ Australia's graduate market concentrates heavily, and knowing where your sector 
 
 **Canberra is the case people miss.** If you want policy, regulation, intelligence or public administration, essentially the entire market is there, and it recruits on its own APS calendar rather than the private-sector one.
 
-**Perth and the resources sector** work diffe[rent](/blog/canada-major-city-job-markets)ly again. Many technical roles are FIFO — fly-in fly-out — where you work a roster on site and fly home between swings. It pays well and it is a genuine lifestyle decision rather than a detail.
+**Perth and the resources sector** work differently again. Many technical roles are FIFO — fly-in fly-out — where you work a roster on site and fly home between swings. It pays well and it is a genuine lifestyle decision rather than a detail.
 
 ## Salary and what actually varies
 
@@ -104,7 +104,7 @@ Two structural facts shape the whole search.
 
 **Work rights during study.** Student visa holders have a cap on working hours during teaching periods, with more allowance during breaks. Employers know this and it is normal — state your position plainly rather than leaving it ambiguous.
 
-**The 485 visa is the bridge.** The Temporary Graduate visa lets you work full time after graduating, and its duration depends on your qualification level and in some cases where you studied. Regional study can attract additional time. It is the window in which you convert a graduate role into a longer-term position, so [understand the points system](/blog/australia-skilled-visa-points-graduates) before you pick your first job rather than afterwards.
+**The 485 visa is the bridge.** The Temporary Graduate visa lets you work full time after graduating, and its duration depends on your qualification level and in some cases where you studied. Regional study can attract additional time. It is the window in which you convert a graduate role into a longer-term position, so understand the points system before you pick your first job rather than afterwards.
 
 **Say your work rights in one line on the application.** "Full working rights under a Temporary Graduate visa (485) until [date]" removes the largest unspoken question an employer has, and vagueness here costs more applications than any formatting choice.
 
@@ -144,7 +144,7 @@ You are not out of the market. Target off-cycle and direct-entry hiring at mid-s
 
 ### Scenario 3: You are an international student on a student visa
 
-Filter for programs that do not require citizenship or PR before applying. Then plan the [485 visa](/blog/australia-skilled-visa-points-graduates) as your bridge, and raise your work rights early rather than at offer stage.
+Filter for programs that do not require citizenship or PR before applying. Then plan the 485 visa as your bridge, and raise your work rights early rather than at offer stage.
 
 > **Tip:** Practise the video interview properly — [record yourself](/blog/how-to-practice-interviews-at-home) answering three standard questions, watch it back, and do it again. It is the stage with the widest gap between how easy it looks and how people actually perform, and it costs an evening to fix.
 

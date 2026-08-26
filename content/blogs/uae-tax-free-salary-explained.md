@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- The UAE levies **no personal income [tax](/blog/canada-first-job-taxes-and-benefits)**, so [gross pay](/blog/canada-salary-expectations-new-grad) and take-home pay are effectively the same figure — the single largest difference from a Western offer.
-- Salaries are quoted as a **[package](/blog/canada-salary-negotiation-guide)**: basic salary plus [housing](/blog/canada-major-city-job-markets), transport and other allowances, and the split matters as much as the total.
+- The UAE levies **no personal income tax**, so gross pay and take-home pay are effectively the same figure — the single largest difference from a Western offer.
+- Salaries are quoted as a **package**: basic salary plus housing, transport and other allowances, and the split matters as much as the total.
 - **End-of-service gratuity** accrues per year of service and is calculated on **basic salary only** — a package weighted toward allowances reduces it.
-- **There is no state [pension](/blog/first-90-days-new-job) for expatriates**, so retirement saving is entirely your responsibility.
+- **There is no state pension for expatriates**, so retirement saving is entirely your responsibility.
 - **Corporate tax and VAT exist**; the absence of personal income tax does not mean the absence of all taxation.
 
 ## What "tax-free" actually covers
@@ -25,13 +25,13 @@ The claim is real but it is narrower than the phrase suggests.
 
 **No personal income tax.** Salary, [bonus](/blog/how-to-negotiate-a-job-offer-email) and most employment income are not subject to income tax for individuals. Your gross and your net are, for practical purposes, the same number.
 
-**No social security contributions for expatriates.** The UAE pension and social insurance system applies to UAE and GCC nationals. Expatriate employees do not contribute and do not accrue a state pension.
+**No social security contributions for expatriates.** The UAE [pension](/blog/first-90-days-new-job) and social insurance system applies to UAE and GCC nationals. Expatriate employees do not contribute and do not accrue a state pension.
 
 **But VAT exists** at a standard rate on most goods and services.
 
-**Corporate tax exists** for businesses above a [threshold](/blog/resume-for-h1b-visa-sponsorship), which matters if you freelance or run a company rather than being employed.
+**Corporate tax exists** for businesses above a [threshold](/blog/international-resume-tailoring-guide), which matters if you freelance or run a company rather than being employed.
 
-**Municipality and housing fees** are levied on rented property in some emirates, typically added to utility bills, and they are a real recurring cost.
+**Municipality and [housing](/blog/remote-job-search-guide) [fees](/blog/best-free-online-certificates-for-resume)** are levied on rented property in some emirates, typically added to utility bills, and they are a real recurring cost.
 
 **And your home country may still tax you.** This is the largest omission in most discussions of Gulf salaries. Tax residency rules differ by country — some tax citizens on worldwide income regardless of residence, others require you to formally break residency. Check your own position before assuming the money is untouched.
 
@@ -69,7 +69,7 @@ The component people ignore and then discover.
 
 Do this properly and the answer is usually clear; do it badly and it is misleading in either direction.
 
-**Compare net to net.** Take your Western offer's actual take-home after income tax and social contributions. Compare that to the UAE package total, which is essentially net already.
+**[Compare net to net](/blog/how-to-negotiate-salary-offer).** Take your Western offer's actual take-home after income tax and social contributions. Compare that to the UAE package total, which is essentially net already.
 
 **Then subtract the costs that differ.**
 
@@ -80,7 +80,7 @@ Do this properly and the answer is usually clear; do it badly and it is misleadi
 
 **Add what you gain**: gratuity accrual, annual flights, and the absence of income tax on any bonus.
 
-**And weigh the intangibles honestly.** A UAE role is normally a fixed period in a life rather than a permanent [settlement](/blog/canada-provincial-nominee-guide), because residency is tied to employment and there is no general path to citizenship. That is not a criticism — it is a different kind of decision, and it deserves to be made deliberately.
+**And weigh the intangibles honestly.** A UAE role is normally a fixed period in a life rather than a permanent [settlement](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), because residency is tied to employment and there is no general path to citizenship. That is not a criticism — it is a different kind of decision, and it deserves to be made deliberately.
 
 ## Saving, and the thing nobody plans for
 
@@ -112,9 +112,9 @@ The conventions differ enough from Western practice to be worth stating.
 
 **Ask about the medical insurance tier**, the flight allowance, and whether the employer participates in a savings scheme. None of these are unusual questions.
 
-**Get everything in the offer letter.** Verbal assurances about allowances, flights or reviews are worth what they are written on. In a market where your residency depends on the employment relationship, [document](/blog/campus-placement-document-checklist)ation matters more, not less.
+**Get everything in the offer letter.** Verbal assurances about allowances, flights or reviews are worth what they are written on. In a market where your residency depends on the employment relationship, documentation matters more, not less.
 
-**And check the notice and non-compete clauses** before you sign. They are enforceable, they affect your ability to move within the market, and they are much easier to negotiate before signing than after.
+**And check the notice and [non-compete clauses](/blog/notice-period-negotiation-guide)** before you sign. They are enforceable, they affect your ability to move within the market, and they are much easier to negotiate before signing than after.
 
 ## Leaving, and what happens to your money
 
@@ -122,7 +122,7 @@ The exit is a financial event and it deserves planning before it arrives.
 
 **Your gratuity is paid on final settlement**, along with any accrued leave and outstanding salary. Check the calculation against your own arithmetic rather than accepting it.
 
-**Bank accounts close when residency ends.** UAE banks generally require a valid residence [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), and closing an account with an outstanding credit card or loan balance is not [opt](/blog/opt-cpt-resume-guide)ional — it must be settled. Plan the sequence: settle debts, transfer funds, then cancel the visa.
+**Bank accounts close when residency ends.** UAE banks generally require a valid residence visa, and closing an account with an outstanding credit card or loan balance is not optional — it must be settled. Plan the sequence: settle debts, transfer funds, then cancel the visa.
 
 **Debt is taken seriously in the UAE**, and leaving with unpaid obligations has consequences that follow you. Clearing a credit card before departure is not optional advice.
 

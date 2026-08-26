@@ -13,27 +13,27 @@ showcase: none
 
 ## Key Takeaways
 
-- An international applicant's biggest disadvantage is **unfamiliarity** — unknown [university](/blog/how-to-list-education-on-resume), unknown [employers](/blog/how-recruiters-spot-generic-resumes), unverifiable [references](/blog/resume-references-guide). A portfolio replaces trust with evidence.
-- A working page a reviewer can **open in five seconds** outperforms a [repository](/blog/github-profile-for-job-search-2026) they have to clone or a description they have to believe.
-- It also solves the **link problem**: one URL on your [CV](/blog/resume-optimization-guide), in your email signature, on your [LinkedIn](/blog/linkedin-profile-optimization-guide), everywhere.
-- TailorCV can **generate a [portfolio](/blog/portfolio-from-resume-minutes) from your resume** and publish it at a shareable address, with a choice of themes.
+- An international applicant's biggest disadvantage is **unfamiliarity** — unknown university, unknown employers, unverifiable references. A portfolio replaces trust with evidence.
+- A working page a reviewer can **open in five seconds** outperforms a repository they have to clone or a description they have to believe.
+- It also solves the **link problem**: one URL on your CV, in your email signature, on your LinkedIn, everywhere.
+- TailorCV can **generate a portfolio from your resume** and publish it at a shareable address, with a choice of themes.
 - **Publishing requires an account**; building and previewing does not.
 
 ## The unfamiliarity problem
 
 This is the specific disadvantage international candidates carry, and it is rarely named directly.
 
-**Your university is unknown.** A recruiter in [Dublin](/blog/ireland-tech-jobs-dublin) or Berlin may have no calibration for an institution that is genuinely excellent in its own country. They cannot tell whether your degree is competitive or ordinary.
+**Your [university](/blog/how-to-list-education-on-resume) is unknown.** A [recruiter](/blog/how-recruiters-read-resumes) in [Dublin](/blog/ireland-tech-jobs-dublin) or Berlin may have no calibration for an institution that is genuinely excellent in its own country. They cannot tell whether your degree is competitive or ordinary.
 
-**Your employers are unknown.** "Senior Analyst at a 4,000-person firm" means something to people at home and nothing abroad.
+**Your [employers](/blog/how-recruiters-spot-generic-resumes) are unknown.** "Senior Analyst at a 4,000-person firm" means something to people at home and nothing abroad.
 
-**Your references are unverifiable.** A referee in another country, another time zone, another language is a call most recruiters will not make.
+**Your [references](/blog/resume-references-guide) are unverifiable.** A referee in another country, another time zone, another language is a call most recruiters will not make.
 
 **Your grading system is unfamiliar.** A first, a 3.8, a 1.3, an 8.5 out of 10 — these do not translate cleanly, and a reader who has to work it out often does not.
 
-**The consequence:** everything on your CV requires the reader to extend trust they have no basis for. A candidate from a local university with local employers requires none of that.
+**The consequence:** everything on your [CV](/blog/resume-optimization-guide) requires the reader to extend trust they have no basis for. A candidate from a local university with local employers requires none of that.
 
-**A portfolio inverts it.** Work someone can look at needs no calibration. A working application, a written analysis, a designed interface, a documented project — the reader evaluates the thing directly, and their unfamiliarity with your background stops mattering.
+**A [portfolio](/blog/portfolio-from-resume-minutes) inverts it.** Work someone can look at needs no calibration. A working [application](/blog/how-many-jobs-should-you-apply-to-per-day), a written analysis, a designed interface, a documented project — the reader evaluates the thing directly, and their unfamiliarity with your background stops mattering.
 
 ## What belongs on it
 
@@ -41,9 +41,9 @@ Not everything. Three or four genuinely good pieces beat twelve mediocre ones.
 
 **Projects with the problem stated.** Not "built a web app" but what problem, what constraint, what you chose and why. The reasoning is what demonstrates capability; the artefact alone does not.
 
-**[Something that runs](/blog/portfolio-website-for-job-applications).** A live demo, a deployed page, an interactive notebook. The single biggest advantage of a portfolio over a repository is that nobody has to clone anything.
+**[Something that runs](/blog/portfolio-website-for-job-applications).** A live demo, a deployed page, an interactive notebook. The single biggest advantage of a portfolio over a [repository](/blog/github-profile-for-job-search-2026) is that nobody has to clone anything.
 
-**Your thesis or major project, described as work.** This is usually the most substantial thing a graduate has done and it is usually described in one line on a CV.
+**Your thesis or major project, described as work.** This is usually the most substantial thing a [graduate](/blog/first-resume-for-gen-z-2026) has done and it is usually described in one line on a CV.
 
 **Writing.** Even one clear piece of writing about a technical decision demonstrates communication in a way no [bullet point](/blog/how-to-write-resume-bullet-points) does.
 
@@ -55,13 +55,13 @@ Not everything. Three or four genuinely good pieces beat twelve mediocre ones.
 
 The obstacle is almost never willingness; it is that building a site is a project and you are already busy applying.
 
-**TailorCV generates a portfolio from your resume.** You upload the resume you already have, the system extracts your experience, projects, skills and education, and produces a portfolio site from it.
+**TailorCV generates a portfolio from your resume.** You upload the resume you already have, the system extracts your experience, projects, [skills](/blog/resume-skills-match-job-description) and education, and produces a portfolio site from it.
 
 **There are eighteen themes** ranging from clean and conventional to distinctly technical — terminal, editor, magazine, brutalist and others — so it does not look like a template everyone else used.
 
 **It publishes at a shareable address**, so you have a URL to put on your CV immediately.
 
-**[Opt](/blog/opt-cpt-resume-guide)ional deployment** to your own hosting is available if you want it on your own domain.
+**Optional deployment** to your own hosting is available if you want it on your own domain.
 
 **Building and previewing is open; publishing requires an account.** That is the only gate.
 
@@ -91,7 +91,7 @@ A stale portfolio is worse than none, because it dates you precisely.
 
 **Add one project per term or per quarter.** Not everything — one thing you are actually proud of.
 
-**Remove old work.** The project from three years ago that you would now do diffe[rent](/blog/canada-major-city-job-markets)ly is not evidence of growth to a stranger; it is just your weakest piece.
+**Remove old work.** The project from three years ago that you would now do differently is not evidence of growth to a stranger; it is just your weakest piece.
 
 **Update the about section** when your situation changes, especially your work authorisation and what you are looking for.
 
@@ -113,7 +113,7 @@ This is the part people skip and it is the part that does the work.
 
 **Say what happened.** Users, accuracy, time saved, what broke. Including what did not work is more credible, not less.
 
-**Then list the stack**, briefly, at the end. It matters for [keyword match](/blog/best-resume-keywords-to-beat-ats)ing and it is the least interesting part for a human.
+**Then list the stack**, briefly, at the end. It matters for keyword matching and it is the least interesting part for a human.
 
 **Four paragraphs is plenty.** A reader deciding whether to interview you will give each project about ninety seconds.
 

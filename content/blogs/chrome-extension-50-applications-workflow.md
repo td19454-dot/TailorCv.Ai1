@@ -13,29 +13,29 @@ showcase: none
 
 ## Key Takeaways
 
-- Volume without a system produces **generic [applications](/blog/how-many-jobs-should-you-apply-to-per-day) and [burnout](/blog/job-search-burnout)**, which is why most high-volume searches fail.
+- Volume without a system produces **generic applications and burnout**, which is why most high-volume searches fail.
 - Split your targets into **tiers**: a small number of jobs you genuinely want, a larger number that are good fits, and a volume tier.
-- **Automate the [document](/blog/campus-placement-document-checklist) work, batch the research, and protect the tier-one applications** from both.
-- The extension makes per-posting [tailoring](/blog/how-to-tailor-resume-for-every-job) cost roughly one click, which is what makes volume compatible with quality.
+- **Automate the document work, batch the research, and protect the tier-one applications** from both.
+- The extension makes per-posting tailoring cost roughly one click, which is what makes volume compatible with quality.
 - **Track everything**, because the follow-up you forget is a real application you wasted.
 
 ## Why volume alone fails
 
 The standard advice is "apply to more jobs". It is not wrong, and it is incomplete.
 
-**More generic applications is worse than fewer tailored ones.** [Automated screening](/blog/ats-resume-checker-how-it-works) filters generic documents, so doubling the number of them mostly doubles the [rejections](/blog/how-to-handle-job-rejection).
+**More generic [applications](/blog/how-many-jobs-should-you-apply-to-per-day) is worse than fewer tailored ones.** [Automated screening](/blog/ats-resume-checker-how-it-works) filters generic [documents](/blog/campus-placement-document-checklist), so doubling the number of them mostly doubles the [rejections](/blog/how-to-handle-job-rejection).
 
-**Volume without a system produces burnout.** Applying is emotionally expensive, and doing it in an unstructured way — a few applications whenever you feel able — turns a search into a low-grade dread that lasts months.
+**Volume without a system produces [burnout](/blog/job-search-burnout).** Applying is emotionally expensive, and doing it in an unstructured way — a few applications whenever you feel able — turns a search into a low-grade dread that lasts months.
 
-**And it destroys your record.** Fifty applications made ad hoc means fifty jobs you cannot remember when a [recruiter call](/blog/phone-screen-interview-tips)s about one.
+**And it destroys your record.** Fifty applications made ad hoc means fifty jobs you cannot remember when a [recruiter](/blog/how-recruiters-read-resumes) calls about one.
 
 **The fix is structure, not effort.** A repeatable weekly system with clear tiers uses less energy and produces better results than the same number of applications made chaotically.
 
 ## The three tiers
 
-Sort every job you find into one of three buckets. They get diffe[rent](/blog/canada-major-city-job-markets) amounts of your attention on purpose.
+Sort every job you find into one of three buckets. They get different amounts of your attention on purpose.
 
-**Tier one — jobs you genuinely want.** Perhaps three to five a week. These get the full treatment: [read the company](/blog/how-to-research-company-before-interview) properly, generate the tailored [resume](/blog/resume-optimization-guide) and [cover letter](/blog/cover-letter-generator-by-country), then rewrite the letter in your own voice, find someone at the company on [LinkedIn](/blog/linkedin-profile-optimization-guide), and follow up personally. Forty minutes each.
+**Tier one — jobs you genuinely want.** Perhaps three to five a week. These get the full treatment: [read the company](/blog/how-to-research-company-before-interview) properly, generate the [tailored](/blog/how-to-tailor-resume-for-every-job) [resume](/blog/resume-optimization-guide) and [cover letter](/blog/cover-letter-generator-by-country), then rewrite the letter in your own voice, find someone at the company on [LinkedIn](/blog/linkedin-profile-optimization-guide), and follow up personally. Forty minutes each.
 
 **Tier two — good fits you would be happy with.** Perhaps fifteen a week. Generate, read, light edit, send. Five minutes each.
 
@@ -65,7 +65,7 @@ The distinction is the whole point of the system.
 
 **Batch the research.** Company research done in one sitting for ten companies is faster than ten separate context switches.
 
-**Protect the judgement.** Whether to apply, whether the role is right, what to say in a tier-one cover letter, and who to reach out to — these are yours, and they are the things that actually differentiate you.
+**Protect the judgement.** Whether to apply, whether the role is right, what to say in a tier-one [cover letter](/blog/cover-letter-guide-2026), and who to reach out to — these are yours, and they are the things that actually differentiate you.
 
 **Protect your energy.** The candidate still applying in month four with a working system beats the one who did eighty applications in two weeks and stopped.
 

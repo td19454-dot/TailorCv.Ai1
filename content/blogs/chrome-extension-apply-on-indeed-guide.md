@@ -15,21 +15,21 @@ showcase: none
 
 - Indeed carries enormous volume, which makes **per-posting tailoring both more valuable and more expensive** in time — exactly the trade-off the extension removes.
 - The extension runs on **Indeed job pages** and adds a panel directly to the posting.
-- One click rewrites your base resume against that specific description and downloads an **[ATS-ready](/blog/how-to-make-resume-ats-friendly) PDF**.
-- It also supports **[Greenhouse](/blog/greenhouse-ats-resume-tips), [Lever](/blog/lever-ats-resume-guide), Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound and Naukri** — which matters because Indeed frequently hands you off to one of those.
+- One click rewrites your base resume against that specific description and downloads an **ATS-ready PDF**.
+- It also supports **Greenhouse, Lever, Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound and Naukri** — which matters because Indeed frequently hands you off to one of those.
 - **Any other job page** works too, via the toolbar icon.
 
 ## Why Indeed specifically is worth optimising
 
 Indeed's scale is the point and the problem.
 
-**More postings means more applications.** People apply to considerably more roles through Indeed than through a curated board, which multiplies whatever per-application cost you are carrying.
+**More postings means more [applications](/blog/how-many-jobs-should-you-apply-to-per-day).** People apply to considerably more roles through Indeed than through a curated board, which multiplies whatever per-application cost you are carrying.
 
-**[Automated screening](/blog/ats-resume-checker-how-it-works) is near-universal** at the employers advertising there, which means [generic resumes](/blog/how-ats-detects-generic-resume) are filtered at a higher rate than on smaller, more relationship-driven boards.
+**[Automated screening](/blog/ats-resume-checker-how-it-works) is near-universal** at the [employers](/blog/how-recruiters-spot-generic-resumes) advertising there, which means [generic resumes](/blog/how-ats-detects-generic-resume) are filtered at a higher rate than on smaller, more relationship-driven boards.
 
-**The two facts together** produce the classic bad outcome: high volume, generic documents, and a response rate that makes people conclude the market is broken when the real problem is that forty identical resumes were sent to forty diffe[rent](/blog/canada-major-city-job-markets) jobs.
+**The two facts together** produce the classic bad outcome: high volume, generic [documents](/blog/campus-placement-document-checklist), and a response rate that makes people conclude the market is broken when the real problem is that forty identical [resumes](/blog/resume-optimization-guide) were sent to forty different jobs.
 
-**Cheap tailoring inverts it.** If tailoring costs one click, high volume becomes an advantage rather than a reason to give up on quality.
+**Cheap [tailoring](/blog/how-to-tailor-resume-for-every-job) inverts it.** If tailoring costs one click, high volume becomes an advantage rather than a reason to give up on quality.
 
 ## How it works on Indeed
 
@@ -77,7 +77,7 @@ The extension handles the document; these habits handle the rest.
 
 **Apply early.** Response rates fall sharply with posting age on volume boards, and being in the first day or two of applicants matters more than most people assume.
 
-**Track what you send.** The My Resumes page does this automatically, which turns out to matter when a [recruiter call](/blog/phone-screen-interview-tips)s about a role you applied to three weeks ago.
+**Track what you send.** The My Resumes page does this automatically, which turns out to matter when a recruiter calls about a role you applied to three weeks ago.
 
 ## Reading an Indeed posting properly
 
@@ -170,7 +170,7 @@ The extension works there too. Tailor on the destination page if you did not on 
 
 ### Scenario 3: You found a job on a company career page instead
 
-Click the toolbar icon. [Opt](/blog/opt-cpt-resume-guide)ional host permissions mean the extension works on any job page you open it on, not only the boards it runs on automatically.
+Click the toolbar icon. Optional host permissions mean the extension works on any job page you open it on, not only the boards it runs on automatically.
 
 > **Tip:** Apply early. On high-volume boards, response rates fall noticeably as a posting ages, and being in the first wave of applicants is worth more than almost anything else you can control.
 

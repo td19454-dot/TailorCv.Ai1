@@ -13,23 +13,23 @@ showcase: none
 
 ## Key Takeaways
 
-- UAE CVs are **[two pages](/blog/ats-resume-length-guide)**, and include details that would be omitted in the UK or US — **photo, nationality, and visa status**.
+- UAE CVs are **two pages**, and include details that would be omitted in the UK or US — **photo, nationality, and visa status**.
 - **State your visa status explicitly.** Employment visa, visit visa, spouse-sponsored, Golden Visa — recruiters screen on it immediately.
 - **Nationality is conventional here** and is genuinely used in screening, which is a difference from Western markets that candidates should simply know about.
-- **[Quantify](/blog/how-to-quantify-resume-achievements) everything.** The market is competitive and volume-driven, and concrete numbers separate applications quickly.
-- Include **[notice period](/blog/notice-period-negotiation-guide) and availability** — Gulf recruiters ask early because start dates matter for visa processing.
+- **Quantify everything.** The market is competitive and volume-driven, and concrete numbers separate applications quickly.
+- Include **notice period and availability** — Gulf recruiters ask early because start dates matter for visa processing.
 
 ## The shape of a UAE CV
 
-Two pages, clean, [reverse chronological](/blog/chronological-vs-functional-resume), and more informationally complete than a Western CV.
+[Two pages](/blog/ats-resume-length-guide), clean, [reverse chronological](/blog/chronological-vs-functional-resume), and more informationally complete than a Western CV.
 
-**[Contact details](/blog/resume-contact-section):** name, UAE phone number if you have one, email, LinkedIn, and current location. A local number matters — it signals you are here or seriously committed to being.
+**[Contact details](/blog/resume-contact-section):** name, UAE phone number if you have one, email, [LinkedIn](/blog/linkedin-profile-optimization-guide), and current location. A local number matters — it signals you are here or seriously committed to being.
 
 **A photo is conventional.** A plain professional headshot, top corner. This is standard practice across the Gulf and its absence is noticed.
 
-**Personal details** that would be unusual elsewhere: **nationality**, and often date of birth and marital status. Nationality in particular is used in screening — for visa cost, for language coverage, and for market familiarity.
+**Personal details** that would be unusual elsewhere: **nationality**, and often date of birth and marital status. Nationality in particular is used in screening — for [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) cost, for language coverage, and for market familiarity.
 
-**Visa status is the most important line on the document.** More on this below.
+**Visa status is the most important line on the [document](/blog/campus-placement-document-checklist).** More on this below.
 
 **[Professional summary](/blog/how-to-write-resume-summary)** of three or four lines, specific and quantified.
 
@@ -45,7 +45,7 @@ Two pages, clean, [reverse chronological](/blog/chronological-vs-functional-resu
 
 This is the single highest-value sentence you can write on a UAE CV.
 
-**Why it matters.** Sponsoring an employment visa costs the employer money and time. A candidate who already holds transferable status, or who needs no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) at all, is materially cheaper to hire.
+**Why it matters.** Sponsoring an employment visa costs the employer money and time. A candidate who already holds transferable status, or who needs no sponsorship at all, is materially cheaper to hire.
 
 **Write your actual position plainly:**
 
@@ -87,7 +87,7 @@ Dubai recruiters handle unusual application volumes, and structure is what survi
 
 **Use a skills block.** A short, scannable list of tools, systems and standards. It reads quickly and it matches literally against [automated screening](/blog/ats-resume-checker-how-it-works).
 
-**Keep formatting conservative.** Single column, standard headings, no text inside graphics. [Designed CV](/blog/resume-design-color-guide)s [parse](/blog/ats-resume-parser-friendly-format) into nonsense and in a volume market a parsing failure is simply a rejection.
+**Keep formatting conservative.** Single column, standard headings, no text inside graphics. Designed CVs [parse](/blog/ats-resume-parser-friendly-format) into nonsense and in a volume market a parsing failure is simply a rejection.
 
 **Reverse chronological, always.** Functional CVs raise suspicion here as they do in most markets.
 
@@ -103,7 +103,7 @@ Three adjustments that a Western CV rarely makes.
 
 **Reflect the advert's exact wording.** If a posting names IFRS, or a specific ERP module, or a particular safety standard, use that exact term where it is true of you. One [ATS check](/ats-analysis) confirms the document parses and matches before you send it anywhere.
 
-**Include a cover note even when [opt](/blog/opt-cpt-resume-guide)ional.** A short, specific message that names the company and connects your experience to the role separates you from the majority who attach a CV and nothing else. A [tailored cover letter](/cover-letter) built against the actual posting is a fast way to do this properly.
+**Include a cover note even when optional.** A short, specific message that names the company and connects your experience to the role separates you from the majority who attach a CV and nothing else. A [tailored cover letter](/cover-letter) built against the actual posting is a fast way to do this properly.
 
 ## What to leave off
 

@@ -13,17 +13,17 @@ showcase: resume
 
 ## Key Takeaways
 
-- The German CV is called a **Lebenslauf**, and the standard form is *tabellarisch* — a tabular, reverse-[chronological](/blog/chronological-vs-functional-resume) layout rather than the prose-and-bullets style used in the US and UK.
+- The German CV is called a **Lebenslauf**, and the standard form is *tabellarisch* — a tabular, reverse-chronological layout rather than the prose-and-bullets style used in the US and UK.
 - A **photograph is still conventional** at most German employers, unlike UK, US, Canadian and Australian practice where it is actively discouraged.
-- German applications are usually a **complete package** (Bewerbungsmappe): [cover letter](/blog/cover-letter-generator-by-country), Lebenslauf, and scanned certificates — not a CV on its own.
-- [Two pages](/blog/ats-resume-length-guide) is normal and accepted, and gaps in your timeline are expected to be explained rather than hidden.
+- German applications are usually a **complete package** (Bewerbungsmappe): cover letter, Lebenslauf, and scanned certificates — not a CV on its own.
+- Two pages is normal and accepted, and gaps in your timeline are expected to be explained rather than hidden.
 - Your degree may need formal recognition; the **anabin** database is where you check how a foreign qualification is classified before you apply anywhere.
 
 ## What a Lebenslauf actually is
 
-The word translates as "course of life", and the document lives up to it more literally than an English-language CV does. Where a US resume is a [marketing](/blog/resume-matching-marketing) document that selects the most relevant highlights, a Lebenslauf is closer to a complete, verifiable record presented in a fixed layout.
+The word translates as "course of life", and the [document](/blog/campus-placement-document-checklist) lives up to it more literally than an English-language [CV](/blog/resume-optimization-guide) does. Where a US resume is a [marketing](/blog/resume-matching-marketing) document that selects the most relevant highlights, a Lebenslauf is closer to a complete, verifiable record presented in a fixed layout.
 
-The standard form is the **tabellarischer Lebenslauf** — a two-column tabular layout with dates on the left and detail on the right, running in reverse chronological order. It is not a design exercise. German recruiters expect a predictable structure and read it quickly because every candidate's document is laid out the same way.
+The standard form is the **tabellarischer Lebenslauf** — a two-column tabular layout with dates on the left and detail on the right, running in [reverse chronological](/blog/chronological-vs-functional-resume) order. It is not a design exercise. German [recruiters](/blog/how-recruiters-read-resumes) expect a predictable structure and read it quickly because every candidate's document is laid out the same way.
 
 That predictability is the point, and it is where most international applicants go wrong: they submit a beautifully designed one-page resume that signals unfamiliarity with local convention before a single line is read.
 
@@ -39,7 +39,7 @@ That predictability is the point, and it is where most international applicants 
 | **Signature** | Place, date and signature at the foot | Not used |
 | **Attachments** | Scanned certificates included | References "on request" |
 
-The photograph is the difference that surprises people most. Germany has anti-discrimination legislation (the AGG) and some large employers have moved to anonymous applications, so a CV without a photo will not be rejected outright. But at the majority of employers it remains conventional, and a professionally taken photo is a normal cost of applying.
+The photograph is the difference that surprises people most. Germany has anti-discrimination legislation (the AGG) and some large [employers](/blog/how-recruiters-spot-generic-resumes) have moved to anonymous applications, so a CV without a photo will not be rejected outright. But at the majority of employers it remains conventional, and a professionally taken photo is a normal cost of applying.
 
 The signature at the bottom is the second surprise. Adding the place, the date and your signature is standard practice and signals that the document is a formal declaration rather than a marketing sheet.
 
@@ -61,13 +61,13 @@ Before you invest time applying, check how your qualification is classified.
 
 **anabin** is the official database maintained by the German authorities that records how foreign qualifications and institutions are assessed. Looking your own university and degree up there takes a few minutes and tells you whether your qualification is recognised as equivalent — which matters both for employers and for visa routes like the [EU Blue Card](/blog/germany-eu-blue-card-graduates).
 
-For [regulated professions](/blog/canada-regulated-professions-guide) — medicine, law, teaching, some [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a formal legal requirement rather than a helpful signal, and the process is separate and considerably longer. Start it early if it applies to you.
+For regulated professions — medicine, law, teaching, some [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a formal legal requirement rather than a helpful signal, and the process is separate and considerably longer. Start it early if it applies to you.
 
 ## Language, honestly
 
 German [language ability](/blog/bilingual-language-skills-on-resume) determines the shape of your job search more than any other single factor.
 
-Berlin's [startup](/blog/japan-startup-jobs-guide) and technology scene has a genuine English-operating segment, and international companies with German offices frequently run in English. Outside those, most employers expect German, and many roles that do not strictly require it in the work still expect it socially and administratively.
+Berlin's startup and technology scene has a genuine English-operating segment, and international companies with German offices frequently run in English. Outside those, most employers expect German, and many roles that do not strictly require it in the work still expect it socially and administratively.
 
 [Certification](/blog/how-to-list-certifications-on-resume) is worth having. The **Goethe-Zertifikat** and **TestDaF** are the recognised benchmarks, and stating a certified level — B2, C1 — is more credible to a German employer than a self-described claim. B2 is broadly the level at which a German-language professional environment becomes workable; C1 is where it stops being a limiting factor.
 
@@ -83,7 +83,7 @@ Berlin's [startup](/blog/japan-startup-jobs-guide) and technology scene has a ge
 
 **Weiterbildung / Zertifikate.** Courses and certifications, where relevant.
 
-**Interessen.** [Opt](/blog/opt-cpt-resume-guide)ional, and more conventional in Germany than in the US. Keep it short and avoid the generic.
+**Interessen.** Optional, and more conventional in Germany than in the US. Keep it short and avoid the generic.
 
 ## The grade conversion problem
 
@@ -98,7 +98,7 @@ A German reader knows exactly what a 1.7 means. They do not necessarily know wha
 | 2.6 – 3.5 | Satisfactory — a lower second (2:2) or a mid GPA |
 | 3.6 – 4.0 | Sufficient — a pass |
 
-State your grade in your own system, then add a short pa[rent](/blog/canada-major-city-job-markets)hetical showing where it sits. "First Class Honours (equivalent to approx. 1.3 in the German scale)" removes the ambiguity in one line. Where your university issues a formal transcript supplement with a conversion, attach it.
+State your grade in your own system, then add a short parenthetical showing where it sits. "First Class Honours (equivalent to approx. 1.3 in the German scale)" removes the ambiguity in one line. Where your university issues a formal transcript supplement with a conversion, attach it.
 
 ## Where the applications actually go
 

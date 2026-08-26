@@ -13,21 +13,21 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Third Level [Graduate Scheme](/blog/global-rotational-graduate-programmes)** lets non-EEA graduates of Irish institutions stay in Ireland and work **without an employer permit**, on immigration permission known as **Stamp 1G**.
+- The **Third Level Graduate Scheme** lets non-EEA graduates of Irish institutions stay in Ireland and work **without an employer permit**, on immigration permission known as **Stamp 1G**.
 - The **duration depends on your award level** — a longer period for postgraduate awards than for a bachelor's degree.
-- **Stamp 1G permits full-time employment with any employer**, which removes the [sponsorship](/blog/resume-for-h1b-visa-sponsorship) obstacle entirely for its duration.
-- The intended destination is an **employment permit** — usually a [Critical Skills](/blog/in-demand-jobs-canada-2026) Employment Permit, which is substantially more favourable than the general route.
+- **Stamp 1G permits full-time employment with any employer**, which removes the sponsorship obstacle entirely for its duration.
+- The intended destination is an **employment permit** — usually a Critical Skills Employment Permit, which is substantially more favourable than the general route.
 - **The scheme is not renewable indefinitely**, and there is a cap on total time you can hold this permission.
 
 ## What the scheme actually gives you
 
-The Third Level Graduate Scheme is Ireland's [post-study work route](/blog/best-countries-international-graduates-2026). If you completed an eligible award at an Irish higher education institution, you can apply to remain in Ireland to look for and take up employment.
+The Third Level [Graduate](/blog/first-resume-for-gen-z-2026) Scheme is Ireland's [post-study work route](/blog/best-countries-international-graduates-2026). If you completed an eligible award at an Irish higher education institution, you can apply to remain in Ireland to look for and take up employment.
 
-The permission is recorded as **Stamp 1G**, and its defining feature is that it is **not tied to an employer**. You do not need a [job offer](/blog/how-to-negotiate-a-job-offer-email) to get it, you do not need anyone to sponsor you, and you can change jobs during it without any immigration process.
+The permission is recorded as **Stamp 1G**, and its defining feature is that it is **not tied to an [employer](/blog/how-recruiters-spot-generic-resumes)**. You do not need a [job offer](/blog/how-to-negotiate-a-job-offer-email) to get it, you do not need anyone to sponsor you, and you can change jobs during it without any immigration process.
 
 For an employer, that means hiring you carries no permit cost, no delay and no risk — exactly the objection that stops most European employers hiring an international graduate.
 
-**Duration is tiered by award.** Holders of a bachelor's-level award get a shorter period; holders of postgraduate awards at master's level and above get longer. The cur[rent](/blog/canada-major-city-job-markets) durations are published by the Department of Justice and by Irish Immigration Service Delivery, and they are the figures to rely on rather than anything secondhand.
+**Duration is tiered by award.** Holders of a bachelor's-level award get a shorter period; holders of postgraduate awards at master's level and above get longer. The current durations are published by the Department of Justice and by Irish Immigration Service Delivery, and they are the figures to rely on rather than anything secondhand.
 
 ## Eligibility, in plain terms
 
@@ -43,11 +43,11 @@ For an employer, that means hiring you carries no permit cost, no delay and no r
 
 The scheme is a window, and the window closes. Use it in phases.
 
-**Early months — get employed.** Any relevant role beats holding out for the perfect one, because Irish work experience and an Irish [reference](/blog/resume-references-guide) change how every subsequent application reads. And a role that is not Critical Skills eligible today can become the experience that qualifies you tomorrow.
+**Early months — get employed.** Any relevant role beats holding out for the perfect one, because Irish work [experience](/blog/resume-matching-experienced-professionals) and an Irish [reference](/blog/resume-references-guide) change how every subsequent [application](/blog/how-many-jobs-should-you-apply-to-per-day) reads. And a role that is not Critical [Skills](/blog/resume-skills-match-job-description) eligible today can become the experience that qualifies you tomorrow.
 
 **Middle months — target Critical Skills occupations.** The Critical Skills Employment Permit is the favourable route, and it is available for occupations on a published list. Check that list against your own field early, because it shapes which jobs are worth pursuing.
 
-**Later months — convert.** An employment permit application takes [processing time](/blog/how-long-to-hear-back-after-applying) on top of the employer's internal decision. Leaving it to the last weeks of your Stamp 1G is how people end up leaving the country over a paperwork timeline.
+**Later months — convert.** An employment permit application takes [processing time](/blog/how-long-to-hear-back-after-applying) on top of the employer's internal decision. Leaving it to the last weeks of your Stamp 1G is how people end up leaving the country over a [paperwork](/blog/campus-placement-document-checklist) timeline.
 
 **Say it out loud in applications.** "I hold Stamp 1G permission and can work for any employer without a permit until [date]" is one line that removes an entire category of employer hesitation.
 
@@ -69,13 +69,13 @@ The difference between these two is significant enough to shape your job search.
 
 The scheme removes the immigration obstacle, and the remaining obstacle is that many employers do not know that.
 
-**Explain it in one sentence, unprompted.** "I hold Stamp 1G, which means I can work full time for any employer with no permit and no application on your side, until [date]." Put it on the CV, put it in the [cover letter](/blog/cover-letter-generator-by-country), and say it in the [recruiter screen](/blog/phone-screen-interview-tips).
+**Explain it in one sentence, unprompted.** "I hold Stamp 1G, which means I can work full time for any employer with no permit and no application on your side, until [date]." Put it on the [CV](/blog/resume-optimization-guide), put it in the [cover letter](/blog/cover-letter-generator-by-country), and say it in the [recruiter screen](/blog/phone-screen-interview-tips).
 
 **Anticipate the follow-up.** The next question is always what happens afterwards. Have the answer ready: an employment permit, ideally Critical Skills if your occupation is listed, applied for by the employer with your support, well before the permission ends.
 
 **Know what the employer actually has to do.** For Stamp 1G, nothing. For the later permit, an application and a fee, which for a Critical Skills role does not require advertising the job first. Being able to describe that accurately makes you look like a low-risk hire rather than a complication.
 
-**Smaller employers need more reassurance.** A [multinational](/blog/japan-gaishikei-vs-domestic)'s HR function does this weekly. A twenty-person company may never have done it, and the difference between them saying yes and no is often just whether someone explained the process clearly.
+**Smaller employers need more reassurance.** A multinational's HR function does this weekly. A twenty-person company may never have done it, and the difference between them saying yes and no is often just whether someone explained the process clearly.
 
 ## Beyond the permit: longer-term status
 
@@ -93,9 +93,9 @@ Worth understanding early, because it affects which jobs are worth taking.
 
 The permission is only half of it; the administration around it decides how smoothly the year runs.
 
-**Register with immigration on time.** Non-EEA residents must complete immigration registration and hold a valid Irish [Residence Permit](/blog/canada-work-permit-types-guide) card. Appointments are booked in advance and they are not always available at short notice.
+**Register with immigration on time.** Non-EEA residents must complete immigration registration and hold a valid Irish Residence Permit card. Appointments are booked in advance and they are not always available at short notice.
 
-**Keep your PPS number and Revenue registration current.** Changing employer means registering the new employment with Revenue, or you land on emergency [tax](/blog/canada-first-job-taxes-and-benefits) at exactly the moment you were expecting a first payslip.
+**Keep your PPS number and Revenue registration current.** Changing employer means registering the new employment with Revenue, or you land on emergency tax at exactly the moment you were expecting a first payslip.
 
 **Keep documentation of every job.** Contracts, payslips and reference letters. An employment permit application later will want evidence of your employment history, and reconstructing it from memory is unpleasant.
 
@@ -107,7 +107,7 @@ The permission is only half of it; the administration around it decides how smoo
 
 Useful context for anyone choosing between countries or explaining the scheme to an employer.
 
-**Against the [UK Graduate Route](/blog/how-to-get-a-job-in-uk-foreigner).** Both are open and unsponsored. The significant difference is downstream: time on the UK Graduate Route generally does not count toward [settlement](/blog/canada-provincial-nominee-guide), whereas Irish residence on Stamp 1G and a subsequent permit does count toward long-term status.
+**Against the UK Graduate Route.** Both are open and unsponsored. The significant difference is downstream: time on the UK Graduate Route generally does not count toward settlement, whereas Irish residence on Stamp 1G and a subsequent permit does count toward long-term status.
 
 **Against the Dutch orientation year.** Both are open with no employer sponsorship. The Netherlands additionally offers its route to graduates of certain highly-ranked foreign universities; Ireland's is for graduates of Irish institutions only.
 

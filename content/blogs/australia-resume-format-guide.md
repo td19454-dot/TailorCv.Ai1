@@ -14,7 +14,7 @@ showcase: resume
 ## Key Takeaways
 
 - Australian resumes commonly run **two to three pages** — longer than the US one-page convention and closer to a UK CV.
-- **[Referees](/blog/resume-references-guide) are usually listed by name** on the document, or offered explicitly, unlike the US "available on request" habit.
+- **Referees are usually listed by name** on the document, or offered explicitly, unlike the US "available on request" habit.
 - **No photo, no date of birth, no marital status** — Australia follows UK and US practice here, not European.
 - **Australian spelling** follows British forms: organis**e**, analys**e**, centr**e**, labour, programme for a scheme.
 - Government applications frequently require responses to **selection criteria**, which is a separate written task from the resume itself.
@@ -65,7 +65,7 @@ Word limits are usually stated and they are real. A criterion with a 250-word li
 Australian resumes follow a recognisable order, and deviating from it without reason makes a reader work harder than they will.
 
 1. **Contact details** — name, phone in Australian format, professional email, and city plus state (Melbourne, VIC). No full street address.
-2. **[Professional summary](/blog/how-to-write-resume-summary)** — three or four lines, specific. [Opt](/blog/opt-cpt-resume-guide)ional but useful when it says something real rather than listing adjectives.
+2. **[Professional summary](/blog/how-to-write-resume-summary)** — three or four lines, specific. Optional but useful when it says something real rather than listing adjectives.
 3. **[Key skills](/blog/resume-skills-section-guide-2026)** — a short scannable block, particularly useful for technical roles and for [automated screening](/blog/ats-resume-checker-how-it-works).
 4. **Employment history** — [reverse chronological](/blog/chronological-vs-functional-resume), with employer, location, title, dates, and [outcomes rather than duties](/blog/how-to-quantify-resume-achievements).
 5. **Education** — degree, institution, completion date, and any notable results.

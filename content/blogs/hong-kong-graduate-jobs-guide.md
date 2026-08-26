@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- Hong Kong is a **regional headquarters city** — [finance](/blog/resume-matching-insurance-jobs), law, professional services, trade and logistics dominate, and much of the work covers Asia rather than the territory itself.
+- Hong Kong is a **regional headquarters city** — finance, law, professional services, trade and logistics dominate, and much of the work covers Asia rather than the territory itself.
 - **English is a working language** across the professional sector, which makes it unusually accessible for an Asian market.
-- The **IANG visa** gives non-local graduates of Hong Kong institutions an open work permission with no employer [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required.
-- **Salaries are high and [taxes](/blog/canada-first-job-taxes-and-benefits) are low**, with a simple salaries tax at modest effective rates.
-- **[Housing](/blog/canada-major-city-job-markets) costs are among the highest in the world**, and they dominate a graduate's finances more than in almost any other city.
+- The **IANG visa** gives non-local graduates of Hong Kong institutions an open work permission with no employer sponsorship required.
+- **Salaries are high and taxes are low**, with a simple salaries tax at modest effective rates.
+- **Housing costs are among the highest in the world**, and they dominate a graduate's finances more than in almost any other city.
 
 ## The shape of the market
 
 Hong Kong's economy is narrow, deep and internationally oriented.
 
-**Banking and finance dominate.** HSBC, Standard Chartered, the global investment banks, asset managers, private equity and a very large insurance sector. [Graduate programmes](/blog/global-rotational-graduate-programmes) here are competitive and structured.
+**[Banking](/blog/resume-matching-insurance-jobs) and finance dominate.** HSBC, Standard Chartered, the global investment banks, asset managers, private equity and a very large insurance sector. [Graduate programmes](/blog/global-rotational-graduate-programmes) here are competitive and structured.
 
 **Law and professional services.** The magic circle and major American firms all maintain substantial Hong Kong offices, alongside the Big Four accountancy firms with large regional practices.
 
@@ -39,11 +39,11 @@ Hong Kong's economy is narrow, deep and internationally oriented.
 
 For anyone who studied in Hong Kong, this is the single most important thing to know.
 
-**Immigration Arrangements for Non-local Graduates (IANG)** allows non-local graduates of Hong Kong institutions to stay and work, with **no employer sponsorship required and no restriction on the type of work**.
+**Immigration Arrangements for Non-local [Graduates](/blog/first-resume-for-gen-z-2026) (IANG)** allows non-local graduates of Hong Kong institutions to stay and work, with **no [employer](/blog/how-recruiters-spot-generic-resumes) sponsorship required and no restriction on the type of work**.
 
 **You do not need a [job offer](/blog/how-to-negotiate-a-job-offer-email)** to apply if you are within the eligible period after graduating.
 
-**Returning graduates** who have left Hong Kong can also apply under the arrangement, subject to holding a job offer, which is a route many people do not realise exists years after finishing their degree.
+**Returning graduates** who have left Hong Kong can also apply under the arrangement, subject to holding a job offer, which is a route many people do not realise exists years after finishing their [degree](/blog/how-to-list-education-on-resume).
 
 **It is extendable**, and continuous residence contributes toward eventual permanent residency, which in Hong Kong is achieved after a qualifying period of ordinary residence.
 
@@ -87,7 +87,7 @@ Fast, formal, and more demanding than the region's reputation for balance sugges
 
 **English is the professional working language** in most international firms, with Cantonese in social settings and internal conversation, and Mandarin increasingly relevant for mainland-facing work.
 
-**Regional travel is common.** Many roles cover Asia-Pacific, and being on a plane to [Singapore](/blog/how-to-get-a-job-in-singapore), [Tokyo](/blog/how-to-get-a-job-in-japan-foreigner) or Shanghai several times a quarter is unremarkable.
+**Regional travel is common.** Many roles cover Asia-Pacific, and being on a plane to Singapore, Tokyo or Shanghai several times a quarter is unremarkable.
 
 **Networks matter and the city is small.** Professional circles overlap heavily, reputations travel quickly, and the same people appear across firms over a career.
 
