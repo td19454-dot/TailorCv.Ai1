@@ -125,6 +125,22 @@ You will read a lot of generated text. Here is how to do it fast without doing i
 
 **And stop editing at good enough for tier two and three.** Perfect documents sent to fifteen roles you are lukewarm about is effort in the wrong place.
 
+## Quota, tiers and using them sensibly
+
+Practical notes on limits.
+
+**The skill match costs nothing.** It is deterministic and uses no AI, so check it as often as you like — including on every job you scroll past.
+
+**Tailored resumes and cover letters draw on your quota.** Free accounts include a limited number; Pro removes the cap.
+
+**Which means the sensible order is:** check the match first, decide whether to apply, then generate. Generating for jobs you then decide against is the main way people waste a free tier.
+
+**Deterministic autofill costs nothing either.** Your apply profile fills structured fields without any AI call, so a complete profile is free efficiency.
+
+**Only genuinely open questions consume quota**, and only for the questions that actually needed writing.
+
+**If you are on the free tier**, spend it on tier one and tier two applications and use the match score to filter harder before generating.
+
 ## Mini checklist
 
 - [ ] Base resume uploaded at thetailorcv.com/extension
@@ -233,3 +249,10 @@ Contact details, work authorisation stated plainly, notice period, links, educat
 ### How do I edit generated text quickly?
 
 Read the first and last sentence of each answer, fix anything factually off always, fix the voice only on jobs you care about, and stop at good enough for lower-tier applications.
+### Does checking the skill match use my quota?
+
+No. It is deterministic and uses no AI at all, so you can check it on every job you look at.
+
+### What actually consumes quota?
+
+Tailored resumes, cover letters, and answers to genuinely open-ended form questions. Structured autofill from your apply profile is free.

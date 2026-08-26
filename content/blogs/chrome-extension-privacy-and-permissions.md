@@ -113,6 +113,22 @@ Beyond browser permissions, a few things worth knowing about anything that handl
 
 **And whether you can leave.** Remove the extension from Chrome; manage or delete account data from the website. Both are ordinary operations, not support tickets.
 
+## Verifying it yourself
+
+You do not have to take any of this on trust, and here is how to check.
+
+**Read the Chrome Web Store listing's permission justifications.** Each permission has a stated purpose that the developer had to submit and that Google reviews.
+
+**Open the extension's details page in Chrome.** `chrome://extensions` shows exactly which sites it can access, and whether that access is on all sites or a specific list.
+
+**Watch the network.** Open developer tools on a job page, click to tailor, and look at what request goes out. You will see the job text going to TailorCV and nothing else.
+
+**Check the site access setting.** Chrome lets you restrict any extension to "on click" rather than automatic, which is a reasonable choice if you prefer explicit control.
+
+**Read the privacy policy's extension section**, which addresses this specifically rather than generally.
+
+**And review it again in six months.** Extensions update, and permissions can change between versions. A periodic look at `chrome://extensions` for everything you have installed is a good habit generally, not just here.
+
 ## Mini checklist
 
 - [ ] Permission list reviewed on the Chrome Web Store page
@@ -219,3 +235,10 @@ The job title, company and description from the page you have open. Your resume 
 ### Does the tool invent skills to raise a match score?
 
 No, and this is deliberate. Fabricated matches create interviews you cannot survive, so the pipeline is explicitly built not to claim skills your resume does not evidence.
+### How can I verify what the extension does?
+
+Read the permission justifications on the Web Store listing, check `chrome://extensions` for its actual site access, and watch the network request in developer tools when you click to tailor.
+
+### Can I restrict when it runs?
+
+Yes. Chrome lets you set any extension to run on click rather than automatically, which is a reasonable choice if you prefer explicit control.

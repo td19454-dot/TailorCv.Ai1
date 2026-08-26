@@ -135,6 +135,18 @@ The extension only helps if opening it becomes automatic.
 
 **Do the first three of a session slowly.** Getting into rhythm matters more than the first three being fast, and rushing at the start of a block usually means a mistake you notice at application seven.
 
+## Common questions about volume applying
+
+Three things people worry about, answered plainly.
+
+**"Does applying to a lot of jobs look bad?"** Employers cannot see your other applications. The only place volume shows is if you apply repeatedly to the same company for unrelated roles, which does get noticed.
+
+**"Is a tailored resume dishonest if a machine wrote the draft?"** No, provided it is true. The facts are yours, the material is yours, and you read and approved it. A resume you wrote from scratch and a resume you edited from a draft are the same document to a reader — what matters is whether it is accurate.
+
+**"Should I use the same resume if two jobs are nearly identical?"** Generate separately. Near-identical postings still use different vocabulary, and the matching is literal.
+
+**And one worth adding:** applying to a role you are underqualified for is not free. It costs the recruiter time and it costs you nothing visible, but consistently applying far above your level at one company is remembered.
+
 ## Mini checklist
 
 - [ ] Extension installed and base resume set

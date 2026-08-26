@@ -129,6 +129,22 @@ Automatic logging is not the answer to everything, and there are cases where a m
 
 **The working split:** the system holds applications and documents; a single simple file holds people, pipelines, numbers and reflections. Neither replaces the other, and trying to make one do both is why the elaborate spreadsheet always dies.
 
+## Reading your own search after three months
+
+The data only pays off if you sit down with it.
+
+**Count the funnel.** Applications, responses, first interviews, later stages, offers. Each ratio tells you about a different gate, and the one that drops off hardest is where your effort belongs.
+
+**Look for a source that is wasting you.** It is common to find that one board produced a quarter of your applications and none of your responses.
+
+**Look for a role type that responded.** Frequently it is adjacent to what you were targeting rather than the thing itself, and the data shows it before intuition does.
+
+**Check your timing.** If most responses came from applications made within a day of posting, your sourcing cadence matters more than your document.
+
+**Compare before and after your changes.** Whatever you altered in week five — the resume, the targeting, the cover letters — the data tells you whether it worked. Without a record, three months of effort teaches you nothing you can act on.
+
+**Then change one thing.** Not everything at once, because then the next three months are equally uninterpretable.
+
 ## Mini checklist
 
 - [ ] Extension installed and logged in
