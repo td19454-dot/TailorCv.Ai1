@@ -66,7 +66,7 @@ Usually lighter than a full internship process, but not trivial:
 
 - **Application form** with motivational questions
 - **Psychometric tests** — numerical, situational judgement, sometimes gamified. The same formats used later, so [preparing now](/blog/uk-psychometric-tests-guide) pays off twice.
-- **Video interview**, often one-way and recorded
+- **[Video interview](/blog/video-interview-tips-2026)**, often one-way and recorded
 - Occasionally a short assessment centre
 
 Because you are a first-year with little experience, the assessment weights motivation and potential more heavily than track record. The written questions matter disproportionately.

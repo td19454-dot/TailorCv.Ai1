@@ -88,7 +88,7 @@ And accept that most messages go unanswered. A 10-20% reply rate on well-targete
 
 ## Why this matters more for you
 
-Networking is useful for everyone and it is doing a different, larger job for an international student, which is worth understanding because it changes who you contact and what you ask for.
+Networking is useful for everyone and it is doing a different, larger job for an [international student](/blog/international-student-jobs-canada), which is worth understanding because it changes who you contact and what you ask for.
 
 **You are replacing missing context.** A domestic classmate carries institutional shorthand — employers know their school, recognise their previous employer, understand their references. Your degree may be from an institution the recruiter cannot place, your previous internship at a company they have never heard of. A person who will vouch for you supplies the context your resume cannot.
 
@@ -96,7 +96,7 @@ Networking is useful for everyone and it is doing a different, larger job for an
 
 **You are finding out who can actually hire you.** Whether an employer sponsors, whether they are [enrolled in the schemes your status requires](/blog/usa-stem-opt-employer-requirements), whether they have done it before. This information is patchy in public sources and reliable from a person inside.
 
-**You are building the local reference.** The single most valuable thing an international student can acquire — someone in this country who will speak for you. It is what an internship produces, and where an internship is not available, deliberate relationship-building is the substitute.
+**You are building the local reference.** The single most valuable thing an [international student](/blog/international-student-resume-differences-by-country) can acquire — someone in this country who will speak for you. It is what an internship produces, and where an internship is not available, deliberate relationship-building is the substitute.
 
 **And the base rate is against you on cold applications.** A smaller pool of employers can hire you, so the same interview volume requires more applications. A referral is the highest-leverage correction available, and it is why this is not an optional extra for international candidates the way it can be for domestic ones.
 

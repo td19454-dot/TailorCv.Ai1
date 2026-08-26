@@ -25,7 +25,7 @@ The United States funds a network of national laboratories and federally funded 
 
 Their scale is not widely appreciated by students. Individually these are organisations of thousands of people. Collectively they operate some of the largest scientific instruments in the world — supercomputers, particle accelerators, light sources, fusion experiments, telescope arrays — and they employ the engineers, software developers, data scientists, technicians and administrators required to run them, not only physicists.
 
-**The operating structure matters for hiring.** Many labs are government-owned and contractor-operated: the facility belongs to a federal agency and a university, a consortium or a company manages it under contract. That means your employer is frequently not the federal government, which changes the citizenship rules, the hiring process and sometimes your immigration options in your favour.
+**The operating structure matters for hiring.** Many labs are government-owned and contractor-operated: the facility belongs to a federal agency and a university, a consortium or a company manages it under contract. That means your employer is frequently not the [federal government](/blog/federal-government-resume-guide), which changes the citizenship rules, the hiring process and sometimes your immigration options in your favour.
 
 ## Who they hire
 

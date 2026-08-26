@@ -20,7 +20,7 @@ keywords: graduate psychometric tests, numerical reasoning test, situational jud
 
 ## Where tests sit in the process
 
-For most UK graduate schemes the sequence is: online application form, then tests, then video interview, then [assessment centre](/blog/uk-assessment-centre-guide).
+For most UK graduate schemes the sequence is: online application form, then tests, then [video interview](/blog/video-interview-tips-2026), then [assessment centre](/blog/uk-assessment-centre-guide).
 
 The tests are automated and often the largest single cut in the process. A large share of applicants are removed here, before any person has read a word of the application they spent an hour on.
 

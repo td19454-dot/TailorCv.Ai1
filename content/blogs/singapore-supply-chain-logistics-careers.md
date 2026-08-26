@@ -107,7 +107,7 @@ Generally yes, relative to the genuine scale and quality of opportunity, since s
 
 ### Does this sector offer regional exposure?
 
-Yes, genuinely, given Singapore's role coordinating trade and logistics activity across Southeast Asia and beyond.
+Yes, genuinely, given Singapore's role coordinating trade and logistics activity across [Southeast Asia](/blog/southeast-asia-jobs-compared) and beyond.
 
 ### What should I highlight in my application if my degree is unrelated?
 

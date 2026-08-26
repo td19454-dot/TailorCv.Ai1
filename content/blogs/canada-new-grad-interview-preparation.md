@@ -131,7 +131,7 @@ Three things make Canadian behavioural answers land:
 
 This is the single most under-used advantage available to international graduates in Canada, and most candidates leave it unmentioned until it is too late.
 
-Employers hear "international student" and assume a sponsorship burden — a petition, a lawyer, a cost, a risk of the hire not being able to start. For a graduate holding a post-graduation work permit, none of that is true. It is an open permit: you can work for any employer, in any role, with no filing required from them at all.
+Employers hear "[international student](/blog/international-student-jobs-canada)" and assume a sponsorship burden — a petition, a lawyer, a cost, a risk of the hire not being able to start. For a graduate holding a post-graduation work permit, none of that is true. It is an open permit: you can work for any employer, in any role, with no filing required from them at all.
 
 Employers frequently do not know this. Recruiters at smaller organisations especially may not have encountered it, and their default assumption is the American model.
 

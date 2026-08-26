@@ -163,7 +163,7 @@ Rejections here are uninformative by design, which leaves candidates guessing at
 
 **Rejected after the online assessment.** A speed problem, nearly always. Candidates who fail these can usually solve the problems given longer. Timed practice fixes it; more untimed practice does not.
 
-**Rejected after the phone screen.** Either the solution did not come together, or it did and you never said anything while producing it. If you solved it and still failed, communication is the near-certain cause.
+**Rejected after the [phone screen](/blog/phone-screen-interview-tips).** Either the solution did not come together, or it did and you never said anything while producing it. If you solved it and still failed, communication is the near-certain cause.
 
 **Rejected after the loop.** The hardest to diagnose, because the committee weighs several written reports. Frequently one weak round among four strong ones. Sometimes the behavioural round, which candidates discount. Occasionally the bar simply being high that cycle.
 
@@ -222,7 +222,7 @@ Useful if you are deciding where to spend a finite autumn.
 
 **Offer mechanics.** Technology offers are levelled with fixed bands and a team-matching step. Banking offers arrive with early exploding deadlines and a defined class start. Consulting sits between.
 
-**Preparation transfer.** Almost none. Case interview preparation does not help you in a coding loop, and algorithm practice does nothing for a [superday](/blog/usa-finance-superday-guide). This is the practical reason to choose a primary track early rather than hedging across all three — hedging tends to produce three under-prepared campaigns rather than one strong one.
+**Preparation transfer.** Almost none. [Case interview preparation](/blog/case-interview-preparation-guide-2026) does not help you in a coding loop, and algorithm practice does nothing for a [superday](/blog/usa-finance-superday-guide). This is the practical reason to choose a primary track early rather than hedging across all three — hedging tends to produce three under-prepared campaigns rather than one strong one.
 
 ## One thing to take away
 

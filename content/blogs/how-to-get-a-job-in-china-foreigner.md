@@ -108,7 +108,7 @@ Name your target city on your resume and in your outreach. "Open to anywhere in 
 
 It depends entirely on the role.
 
-**Little to none:** English teaching, some multinational roles, certain trade and export positions where your value is the foreign-market side.
+**Little to none:** [English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume), some multinational roles, certain trade and export positions where your value is the foreign-market side.
 
 **Working proficiency:** most domestic companies, anything client-facing locally, most technical roles at Chinese firms.
 

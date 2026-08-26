@@ -43,7 +43,7 @@ What this means practically: identify exactly which documents you will present b
 
 ## For international employees specifically
 
-**Your work authorization document is central**, and its specific type depends on your status — different categories of employment authorization are documented differently, and the relevant one for you should be confirmed with your international student office or immigration advisor before you assume you know which applies.
+**Your work authorization document is central**, and its specific type depends on your status — different categories of employment authorization are documented differently, and the relevant one for you should be confirmed with your [international student](/blog/international-student-jobs-canada) office or immigration advisor before you assume you know which applies.
 
 **Bring the actual document, not a description of your status.** "I am authorized to work under my training period" is not something an employer's HR team can verify without seeing the specific document itself.
 

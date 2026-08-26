@@ -39,7 +39,7 @@ If you want the widest range of opportunities in Japan — especially as a forei
 
 - **Technology / IT:** strong demand for software engineers, data specialists, and IT professionals — often with English-friendly environments and global teams.
 - **Finance and consulting:** global banks, asset managers, and consultancies hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and specialist professionals.
-- **English teaching:** a reliable entry route — language schools, the JET Programme, and international schools.
+- **[English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume):** a reliable entry route — language schools, the JET Programme, and international schools.
 - **International business, sales, and marketing:** global firms need people who bridge cultures and markets.
 - **Tourism, hospitality, and translation:** roles valuing foreign language skills.
 
@@ -60,7 +60,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 Match your documents to the employer:
 
 - **Global/English-language roles** (the bulk of foreigner-friendly jobs in Tokyo): a strong Western-style, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume. See [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
-- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
+- **Traditional Japanese companies:** a *rirekisho* + *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
 
 Tailor every application with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 

@@ -49,7 +49,7 @@ Because sponsorship is an effort for employers, your job is to make your value �
 ## Which Sectors Hire Foreigners in Japan?
 
 - **Technology / IT:** strong and growing demand for software engineers, data specialists, and IT professionals — often with English-friendly environments.
-- **English teaching:** a well-established route (language schools, the JET Programme, universities); typically requires a degree, and native/fluent English.
+- **[English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume):** a well-established route (language schools, the JET Programme, universities); typically requires a degree, and native/fluent English.
 - **Finance and international business:** global firms in Tokyo hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and specialist professionals.
 - **Engineering and manufacturing:** Japan's industrial base recruits skilled engineers.
 - **Tourism, hospitality, and translation:** roles that value foreign language skills and international perspective.
@@ -70,7 +70,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 
 Your approach depends on the employer:
 
-- **Traditional Japanese companies** expect Japanese-format documents — the *rirekisho* and *shokumu-keirekisho*. See our [Japanese resume (rirekisho) guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
+- **Traditional Japanese companies** expect Japanese-format documents — the *rirekisho* and *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*. See our [Japanese resume (rirekisho) guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
 - **Global companies and English-language roles** usually accept a strong Western-style resume; many use applicant tracking systems — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 
 Build a polished English resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions). For a format comparison, read [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).

@@ -118,7 +118,7 @@ TailorCV starts from the posting. Paste it with your resume, get a [free ATS mat
 
 **TailorCV wins.**
 
-Zety markets ATS-friendly templates, and that claim is fair as far as it goes — their layouts do not generally break parsers, which is more than can be said for a lot of designer resume templates.
+Zety markets [ATS-friendly](/blog/ats-friendly-resume-singapore) templates, and that claim is fair as far as it goes — their layouts do not generally break parsers, which is more than can be said for a lot of designer resume templates.
 
 But "ATS-friendly formatting" and "ATS match score" are completely different things, and the marketing in this industry blurs them constantly. A template being parseable means the software can *read* your resume. It says nothing about whether your resume *matches* the job. You can have a perfectly parseable resume that scores 45% against the posting and gets rejected in forty seconds.
 

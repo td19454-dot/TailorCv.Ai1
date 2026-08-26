@@ -47,7 +47,7 @@ Reporting upward frequently is expected more than in many Western workplaces. Ke
 
 **Reform has been real.** Limits on overtime and greater attention to working practices have shifted things at many employers, unevenly.
 
-**What to actually ask.** Not whether the company has good work-life balance, which produces a predictable answer, but what time people typically leave, whether taking leave is straightforward, and what happened the last time someone had a deadline conflict.
+**What to actually ask.** Not whether the company has good [work-life balance](/blog/work-life-balance-tips), which produces a predictable answer, but what time people typically leave, whether taking leave is straightforward, and what happened the last time someone had a deadline conflict.
 
 **Paid leave is frequently under-taken.** The entitlement exists; cultural pressure not to use it fully persists at some employers and is changing at others.
 

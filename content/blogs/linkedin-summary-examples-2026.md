@@ -54,11 +54,11 @@ keywords: linkedin summary examples, linkedin about section, linkedin profile su
 
 ## Don't Forget the Headline
 
-Your headline appears everywhere — in search, comments, and messages. Make it specific: "Backend Engineer | Python & Go | Payments & Reliability" beats the default "Software Engineer at [Company]." It is prime [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) real estate.
+Your headline appears everywhere — in search, comments, and messages. Make it specific: "Backend Engineer | Python & Go | Payments & Reliability" beats the default "[Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) at [Company]." It is prime [keyword](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) real estate.
 
 ## More About-Section Examples
 
-**Data Analyst**
+**[Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)**
 > I find the story hiding in the spreadsheet.
 >
 > For three years I've turned messy operational data into decisions — most recently a churn model that helped cut monthly churn from 6% to 4%. SQL and Python are my tools; clear recommendations for non-technical teams are the point.
@@ -79,7 +79,7 @@ Your headline appears everywhere — in search, comments, and messages. Make it 
 >
 > Open to junior engineering roles — always happy to chat.
 
-**Sales Professional**
+**[Sales Professional](https://thetailorcv.com/blog/sales-professional-portfolio-guide)**
 > I'm at my best in long, complex deals that everyone else has given up on.
 >
 > Beat quota in five of my last six quarters and closed $1.4M in new business last year. Consultative by nature, relentless about follow-through.
@@ -102,7 +102,7 @@ The tool parses your resume the way an ATS would before it changes anything, so 
 
 
 - **Put your key [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) in your headline, About section, and [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)** — naturally, in real sentences.
-- **Use the exact terms [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search**, not clever synonyms. "Product Manager," not "Product Ninja."
+- **Use the exact terms [recruiters](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) search**, not clever synonyms. "[Product Manager](https://thetailorcv.com/blog/product-manager-portfolio-guide)," not "Product Ninja."
 - **Fill the [Skills section](https://thetailorcv.com/blog/resume-skills-section-guide-2026)** with the tools and abilities you want to be found for, and get a few endorsements.
 - **Set your headline to your target role**, not just your current title, if you are actively looking.
 

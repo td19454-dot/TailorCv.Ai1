@@ -32,7 +32,7 @@ Length is tied to the length of your programme, up to a maximum. Shorter program
 
 Eligibility depends on the institution, the programme, and — following changes in recent years — in some cases the field of study. Requirements have been revised more than once recently, and rules that applied to a student who started three years before you may not apply to you.
 
-Because of that, this article deliberately gives no specific durations or lists. **Check IRCC's current published requirements, and confirm with your institution's international student advisor.** Advice from a graduate who went through it two years ago is not reliable on this point.
+Because of that, this article deliberately gives no specific durations or lists. **Check IRCC's current published requirements, and confirm with your institution's [international student](/blog/international-student-jobs-canada) advisor.** Advice from a graduate who went through it two years ago is not reliable on this point.
 
 Two things that are stable enough to plan around:
 
@@ -210,7 +210,7 @@ Rules here have changed repeatedly, which means most of what circulates — incl
 
 **The official immigration guidance is the only authority.** It is public, free, and updated when rules change. Read the eligibility page for your own situation rather than a summary of it.
 
-**Your institution's international student office** is the second source, and the better one for questions about your specific programme's eligibility, because they know what has been designated and what has not.
+**Your institution's [international student](/blog/international-student-resume-differences-by-country) office** is the second source, and the better one for questions about your specific programme's eligibility, because they know what has been designated and what has not.
 
 **A regulated immigration consultant or lawyer** for anything unusual — a change of status, a gap in study, a programme whose eligibility is genuinely unclear, or a decision with a large financial consequence.
 

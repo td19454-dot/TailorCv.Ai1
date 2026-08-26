@@ -29,7 +29,7 @@ All three matter. Role-only sounds like you would take the same job anywhere; co
 
 ## Example Answers
 
-**Software engineer:**
+**[Software engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation):**
 > "The role is squarely on the backend reliability work I want to go deeper in. And I've followed how your team writes publicly about incident response — that culture of learning from failure instead of hiding it is rare, and it's exactly where I do my best work."
 
 **Marketer:**

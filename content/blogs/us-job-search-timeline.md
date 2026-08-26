@@ -110,7 +110,7 @@ US hiring has a rhythm, and fighting it wastes energy.
 
 ## Timelines that differ
 
-**Federal government** — two to six months, sometimes longer with a security clearance. A separate track with its own rules; see [the US federal jobs and USAJOBS guide](https://thetailorcv.com/blog/us-federal-jobs-usajobs-guide).
+**[Federal government](https://thetailorcv.com/blog/federal-government-resume-guide)** — two to six months, sometimes longer with a security clearance. A separate track with its own rules; see [the US federal jobs and USAJOBS guide](https://thetailorcv.com/blog/us-federal-jobs-usajobs-guide).
 
 **Startups** — often much faster, one to three weeks, because the decision-makers are in the room.
 

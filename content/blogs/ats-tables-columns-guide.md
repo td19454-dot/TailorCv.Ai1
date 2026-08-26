@@ -77,7 +77,7 @@ A narrow left column carrying your photo, contact details, skills and languages,
 
 ### Why these templates are everywhere
 
-They are designed by graphic designers optimising for how a page looks in a portfolio, not for how it survives text extraction. A template marketed as modern, clean or even "ATS-friendly" is making a visual claim, not a tested technical one.
+They are designed by graphic designers optimising for how a page looks in a portfolio, not for how it survives text extraction. A template marketed as modern, clean or even "[ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore)" is making a visual claim, not a tested technical one.
 
 **Treat the label as a claim to verify.** Download it, fill it in, export it, and run the select-and-paste test below. If it passes, keep it. Plenty do not.
 

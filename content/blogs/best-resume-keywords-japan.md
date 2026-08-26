@@ -57,7 +57,7 @@ Use these as prompts — always match them to the specific job and your real exp
 
 - Programming languages and frameworks (e.g. Python, Java, JavaScript, React) as relevant
 - Cloud (AWS, Azure, GCP), DevOps, CI/CD
-- Data analysis, SQL, machine learning
+- Data analysis, SQL, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
 - Agile, Scrum, software development lifecycle
 
 ### Finance and Business
@@ -82,7 +82,7 @@ Use these as prompts — always match them to the specific job and your real exp
 ### Sales, Marketing, and International Business
 
 - Business development, account management
-- Digital marketing, SEO, CRM (e.g. Salesforce)
+- [Digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), SEO, CRM (e.g. Salesforce)
 - Market research, localisation
 
 ## Soft-Skill and Culture Keywords
@@ -141,6 +141,6 @@ Yes — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) ba
 
 ## Final Thoughts
 
-The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), and keep the format ATS-friendly.
+The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), and keep the format [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore).
 
 Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), and let the [resume optimizer](https://thetailorcv.com/solutions) show you exactly which keywords each Japanese job is looking for. The right words, used honestly, get you found — and get you interviews.

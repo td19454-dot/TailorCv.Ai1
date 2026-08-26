@@ -61,7 +61,7 @@ Grouping does two things: it helps a human find what they are looking for, and i
 
 The right skills section looks different across fields. A few patterns:
 
-**Software Engineer** — heavily technical: languages, frameworks, databases, cloud, tooling. This is one of the few roles where the skills section is genuinely load-bearing and often sits near the top.
+**[Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation)** — heavily technical: languages, frameworks, databases, cloud, tooling. This is one of the few roles where the skills section is genuinely load-bearing and often sits near the top.
 
 **Marketer** — a mix of platforms and named methods: Google Analytics, HubSpot, SEO, SEMrush, A/B testing, email automation. Avoid vague terms like "digital marketing" in favor of the specific tools.
 

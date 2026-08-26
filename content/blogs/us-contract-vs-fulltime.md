@@ -97,7 +97,7 @@ The conversion dynamics mirror internship conversion, and the same behaviours ma
 
 A real concern, and mostly a solvable one.
 
-**Label every contract role explicitly.** "Senior Data Engineer (contract, 8 months)" tells the reader the tenure was by design. Unlabelled, three eight-month roles look like someone who cannot hold a job.
+**Label every contract role explicitly.** "Senior [Data Engineer](https://thetailorcv.com/blog/data-engineer-resume-2026) (contract, 8 months)" tells the reader the tenure was by design. Unlabelled, three eight-month roles look like someone who cannot hold a job.
 
 **Name the client where you can.** "via [Agency] at [Client]" is clearer than the agency name alone, which reveals nothing about the work.
 

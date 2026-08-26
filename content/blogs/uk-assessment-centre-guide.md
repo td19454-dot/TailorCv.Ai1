@@ -96,7 +96,7 @@ Time yourself. Overrunning is scored badly and is entirely avoidable. Expect que
 
 ## The interview
 
-Usually competency-based: "tell me about a time when..." with heavy probing.
+Usually [competency-based](/blog/competency-based-interview-questions-guide): "tell me about a time when..." with heavy probing.
 
 UK competency interviews go deeper than a single answer. Expect three or four follow-ups on the same story — what was your specific role, why that approach, what would you do differently, how did you know it worked. A story that holds up for ninety seconds and collapses on the second probe is a common failure.
 

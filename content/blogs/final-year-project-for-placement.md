@@ -72,7 +72,7 @@ Free hosting tiers are adequate for this. One caveat: services that sleep after 
 
 ### It has a real constraint you solved
 
-This is what produces your "hardest part" answer, which is the most valuable thing you can bring to an interview.
+This is what produces your "hardest part" answer, which is the most valuable thing you can [bring to an interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview).
 
 Good constraints: concurrent access causing conflicts, data that arrives messy, an API rate limit, a query that got slow as data grew, a cost ceiling, an offline requirement.
 
@@ -104,7 +104,7 @@ Rule of thumb: pick something you could build a working version of in three week
 
 ### Topics to be careful with
 
-**Machine learning and AI projects** are popular and frequently backfire. If your project is "sentiment analysis using a pre-trained model", expect questions about why that model, how it was evaluated, what the confusion matrix showed, and how you handled class imbalance. If you cannot answer, the project actively damages you. Build ML only if you genuinely understand what you did.
+**[Machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions) and AI projects** are popular and frequently backfire. If your project is "sentiment analysis using a pre-trained model", expect questions about why that model, how it was evaluated, what the confusion matrix showed, and how you handled class imbalance. If you cannot answer, the project actively damages you. Build ML only if you genuinely understand what you did.
 
 **Blockchain, and whatever is currently fashionable.** Same problem, amplified - the buzzword attracts questions from interviewers who want to see whether you understand it or are following a trend.
 

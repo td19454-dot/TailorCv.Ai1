@@ -70,7 +70,7 @@ Address the hiring manager by name if possible. If you cannot find the name, use
 
 Start with a strong opening statement that grabs attention. Mention the position you’re applying for and how you found out about it. Here’s an example:
 
-"I am excited to apply for the Marketing Coordinator position at ABC Company, as advertised on your careers page. With a background in digital marketing and a passion for innovative campaigns, I am eager to contribute to your team."
+"I am excited to apply for the Marketing Coordinator position at ABC Company, as advertised on your careers page. With a background in [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) and a passion for innovative campaigns, I am eager to contribute to your team."
 
 ### 4. Body Paragraphs
 

@@ -113,7 +113,7 @@ That meets authorship, judging, and original contribution comfortably, with an a
 
 The category applies across science, education, business and athletics, and the practical odds differ enormously by field because the evidence is easier to generate in some than others.
 
-More realistic. Academic research of any discipline, where publication, citation and peer review are the ordinary currency of the work. Machine learning and computational fields, where conference publication is fast and citation accrues quickly. Medicine and public health research. Fields with active competitive award structures.
+More realistic. Academic research of any discipline, where publication, citation and peer review are the ordinary currency of the work. [Machine learning](/blog/machine-learning-interview-questions) and computational fields, where conference publication is fast and citation accrues quickly. Medicine and public health research. Fields with active competitive award structures.
 
 Sometimes realistic. Software engineering outside research, where a case usually rests on a significant open-source project with demonstrable adoption, conference speaking, and technical writing with a real audience. This is achievable and it takes deliberate effort over years rather than being a byproduct of the job.
 

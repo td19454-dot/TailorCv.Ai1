@@ -83,7 +83,7 @@ Apply to more than one provider, and consider both university-led and school-led
 
 Factor in the full timeline from application through training to your first year as a fully qualified teacher when planning, this is a genuinely multi-year commitment, worth entering with realistic expectations about the sequence rather than only focusing on the immediate application stage.
 
-If considering a career change into teaching from a different field, be honest with yourself about the adjustment this represents, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
+If considering a [career change](/blog/career-change-portfolio) into teaching from a different field, be honest with yourself about the adjustment this represents, both financially during the training period, particularly for fee-paying routes, and in terms of the genuinely different skill set classroom teaching demands compared to many other professions.
 
 ## The routes, and the funding difference
 

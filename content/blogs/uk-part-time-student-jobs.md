@@ -176,7 +176,7 @@ Building a graduate CV? [Check your ATS score free](https://www.thetailorcv.com/
 
 ## Make This Practical
 
-Check your own visa conditions first if you are an international student, tell your employer your hour limit in writing, and keep payslips and rotas. Breaching the limit is an immigration matter that can affect your Graduate visa switch later, and it is entirely avoidable.
+Check your own visa conditions first if you are an [international student](https://thetailorcv.com/blog/international-student-jobs-canada), tell your employer your hour limit in writing, and keep payslips and rotas. Breaching the limit is an immigration matter that can affect your Graduate visa switch later, and it is entirely avoidable.
 
 Then look at your own university before anywhere else. Ambassador work, IT support, lab demonstrating and research assistant roles pay well, work around your timetable, and carry far more weight on a graduate CV than equivalent off-campus hours.
 

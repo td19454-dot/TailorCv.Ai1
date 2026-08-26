@@ -150,7 +150,7 @@ In the US, whether it is STEM-classified. In Canada, whether the programme and i
 
 **"Does the programme include a placement**, co-op or internship component, and is it required or optional?"
 
-A built-in placement is the single most valuable structural feature a course can have for an international student.
+A built-in placement is the single most valuable structural feature a course can have for an [international student](/blog/international-student-jobs-canada).
 
 **"Do employers come to campus, and which ones?"**
 

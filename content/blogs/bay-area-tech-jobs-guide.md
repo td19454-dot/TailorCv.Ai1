@@ -28,7 +28,7 @@ Before applying anywhere, check your resume parses — the [free ATS score check
 
 ## What actually hires
 
-**AI and machine learning.** The concentration here is genuinely unmatched — foundation model labs, applied AI startups, and AI teams inside every large company. If you work in this area, the Bay Area has more roles than the rest of the US combined.
+**AI and [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions).** The concentration here is genuinely unmatched — foundation model labs, applied AI startups, and AI teams inside every large company. If you work in this area, the Bay Area has more roles than the rest of the US combined.
 
 **Infrastructure and developer tools.** Cloud, observability, databases, security, CI/CD. A deep market with well-funded companies.
 

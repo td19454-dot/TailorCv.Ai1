@@ -48,7 +48,7 @@ Ensure your contact information is clear and formatted correctly. Include:
 A compelling professional summary should be at the top of your resume. This 2-3 sentence overview should highlight your most relevant experiences, skills, and what you bring to a potential employer. Tailor this section for each job application to align with the job description.
 
 **Example**:  
-“Detail-oriented software engineer with 3 years of experience in developing scalable web applications. Proven track record of increasing system efficiency by 30% and enhancing user experience through innovative solutions.”
+“Detail-oriented [software engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) with 3 years of experience in developing scalable web applications. Proven track record of increasing system efficiency by 30% and enhancing user experience through innovative solutions.”
 
 ### 3. Skills Section
 
@@ -86,7 +86,7 @@ Include any relevant certifications or professional development courses. You may
 
 ## Making Your Resume ATS-Friendly
 
-To ensure your resume is ATS-friendly, follow these guidelines:
+To ensure your resume is [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore), follow these guidelines:
 
 - **Use Standard Headings**: Stick to conventional headings like “Experience,” “Education,” and “Skills” to help the ATS parse your information correctly.
 - **Keywords**: Incorporate keywords from the job description throughout your resume.

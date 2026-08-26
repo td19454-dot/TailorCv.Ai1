@@ -159,7 +159,7 @@ Where it sits against neighbouring options.
 
 **Against Portugal, Spain and the European options.** Those offer EU access and a path toward settlement; Thailand offers lower costs and better weather without a settlement path.
 
-**The summary:** Thailand now has among the clearer legal frameworks for remote workers in Southeast Asia, which is a meaningful change from a few years ago when the whole community operated in a grey area.
+**The summary:** Thailand now has among the clearer legal frameworks for remote workers in [Southeast Asia](/blog/southeast-asia-jobs-compared), which is a meaningful change from a few years ago when the whole community operated in a grey area.
 
 ## Who each route suits
 

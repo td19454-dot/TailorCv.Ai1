@@ -100,7 +100,7 @@ In the **US, Canada, and UK**, do not include a photo. It invites conscious or u
 Some European and Asian countries do expect a photo - follow the convention for the country and role you are applying to.
 
 ### Social Media (Unless Relevant)
-Do not include personal Instagram, Twitter/X, Facebook, or TikTok unless your social media is your professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (e.g., you are a social media manager showcasing your own work).
+Do not include personal Instagram, Twitter/X, Facebook, or TikTok unless your social media is your professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (e.g., you are a [social media manager](https://thetailorcv.com/blog/social-media-manager-portfolio) showcasing your own work).
 
 ### Unprofessional or Outdated Emails
 As mentioned above - if your email address includes a birth year, a nickname, or anything unprofessional, create a new one.

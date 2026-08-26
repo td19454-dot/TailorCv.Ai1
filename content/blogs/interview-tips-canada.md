@@ -253,7 +253,7 @@ Following up well is a small habit that quietly sets Canadian candidates apart. 
 
 ## Your Interview Is One Stage of a Strong Application
 
-A great interview is the payoff of a well-built application, and it connects to everything around it. Keep every part sharp: the resume that got you here (see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and [best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada)), a tailored [Canadian cover letter](https://thetailorcv.com/blog/canadian-cover-letter-guide), and an optimised LinkedIn profile so recruiters keep finding you. Much of Canadian hiring runs on networking and referrals, so the interviews you land often come through connections. If you're targeting the biggest market, see how to find a job in Toronto, and newcomers should pair this with how to get a job in Canada as a newcomer. Preparing your documents and your STAR answers together — telling one consistent, strong story — is what turns applications into offers.
+A great interview is the payoff of a well-built application, and it connects to everything around it. Keep every part sharp: the resume that got you here (see the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and [best resume keywords for Canadian jobs](https://thetailorcv.com/blog/best-resume-keywords-canada)), a tailored [Canadian cover letter](https://thetailorcv.com/blog/canadian-cover-letter-guide), and an optimised LinkedIn profile so recruiters keep finding you. Much of Canadian hiring runs on networking and referrals, so the interviews you land often come through connections. If you're targeting the biggest market, see [how to find a job in Toronto](https://thetailorcv.com/blog/how-to-find-a-job-in-toronto), and newcomers should pair this with [how to get a job in Canada](https://thetailorcv.com/blog/how-to-get-a-job-in-canada) as a newcomer. Preparing your documents and your STAR answers together — telling one consistent, strong story — is what turns applications into offers.
 
 ## Frequently Asked Questions
 
@@ -275,7 +275,7 @@ Five or six, each showcasing a different strength — leadership, teamwork, conf
 **How do I answer "why are you leaving your current job"?**
 Stay positive and forward-looking — frame it as seeking growth, a new challenge, or better alignment with your goals. Never badmouth your current or former employer.
 
-**How do I handle salary negotiation in Canada?**
+**How do I handle [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) in Canada?**
 Research the realistic Canadian range for your role, industry, and city first. Let the employer name a figure where possible, consider the whole package (base, bonus, benefits, RRSP matching, vacation), and counter politely and once with a justified number. Get the final offer in writing.
 
 **How do I calm interview nerves?**

@@ -148,7 +148,7 @@ Clearly and specifically, stating any relevant certification level, the [JLPT le
 
 ### Can I work in Japan without speaking Japanese?
 
-Yes, in specific segments — foreign-affiliated companies, some technology firms, English teaching, and certain specialist roles. It closes the conventional generalist track at traditional Japanese companies.
+Yes, in specific segments — foreign-affiliated companies, some technology firms, [English teaching](/blog/english-teaching-jobs-japan-resume), and certain specialist roles. It closes the conventional generalist track at traditional Japanese companies.
 
 ### What level do most employers ask for?
 

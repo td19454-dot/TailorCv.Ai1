@@ -127,7 +127,7 @@ I hope this message finds you well. I am excited to submit my application for th
 
 Throughout my tenure, I have honed skills in [relevant skills], particularly through [specific project or initiative that relates to the new role]. This experience has fueled my passion for [target role's core focus], and I am eager to leverage my insights and expertise to contribute effectively to your team.
 
-I am particularly drawn to this opportunity because [specific reason related to the new role, e.g., "I believe my background in digital marketing aligns perfectly with the goals of the new team"]. My familiarity with [Company]’s operations and culture positions me uniquely to add value from day one.
+I am particularly drawn to this opportunity because [specific reason related to the new role, e.g., "I believe my background in [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) aligns perfectly with the goals of the new team"]. My familiarity with [Company]’s operations and culture positions me uniquely to add value from day one.
 
 Thank you for considering my application. I look forward to the possibility of discussing how I can contribute to the continued success of [Company].
 

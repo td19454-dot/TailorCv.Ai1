@@ -46,7 +46,7 @@ Before the differences, note how much overlaps — because it means adapting is 
 - **No photo or personal details:** neither Canadian nor US resumes include a photo, age, marital status, or (in the US) SSN / (in Canada) SIN.
 - **Achievement-focused:** both prioritise [quantified results](https://thetailorcv.com/blog/awards-achievements-on-resume) over duty lists.
 - **Reverse-chronological work history.**
-- **ATS-friendly formatting:** single column, standard headings, text-based PDF, keyword-matched.
+- **[ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore) formatting:** single column, standard headings, text-based PDF, keyword-matched.
 - **A dedicated skills section.**
 
 So a strong resume in one country is 90% of the way to a strong resume in the other. The remaining 10% is what this guide covers.
@@ -108,7 +108,7 @@ The two markets treat cover letters similarly, but with subtle differences in ex
 
 ## Key Difference 6: References and Additional Sections
 
-Both countries typically expect you to omit references from the resume itself (a separate list is provided on request), and neither expects the line "references available upon request." Volunteer experience, however, tends to carry a little more weight on a Canadian resume, where community involvement is genuinely valued — and for newcomers it doubles as a source of local experience and references. In both markets, additional sections (certifications, projects, professional affiliations) should earn their place by strengthening your case for the specific role.
+Both countries typically expect you to omit references from the resume itself (a separate list is provided on request), and neither expects the line "references available upon request." Volunteer experience, however, tends to carry a little more weight on a [Canadian resume](https://thetailorcv.com/blog/canadian-resume-format-guide-2026), where community involvement is genuinely valued — and for newcomers it doubles as a source of local experience and references. In both markets, additional sections (certifications, projects, professional affiliations) should earn their place by strengthening your case for the specific role.
 
 ## A Deeper Look at Spelling Differences
 

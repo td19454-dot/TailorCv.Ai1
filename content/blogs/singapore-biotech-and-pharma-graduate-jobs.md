@@ -37,7 +37,7 @@ Regulatory affairs, navigating the approval and compliance requirements for phar
 
 Data science and biostatistics, applied to clinical trial data, real-world evidence and research, [similar in substance to data roles across other sectors](/blog/usa-data-science-new-grad-hiring) but applied to genuinely consequential health-related problems.
 
-Commercial and regional headquarters functions, many pharmaceutical and biotech companies run regional commercial operations from Singapore, covering marketing, market access and business functions across Southeast Asia and beyond.
+Commercial and regional headquarters functions, many pharmaceutical and biotech companies run regional commercial operations from Singapore, covering marketing, market access and business functions across [Southeast Asia](/blog/southeast-asia-jobs-compared) and beyond.
 
 Research roles, at both company research operations and the local public research institute ecosystem, for graduates specifically pursuing a research career path.
 

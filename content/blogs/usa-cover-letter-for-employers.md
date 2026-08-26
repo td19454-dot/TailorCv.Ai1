@@ -30,7 +30,7 @@ Where cover letters genuinely still count:
 - **Non-profits and mission-driven organisations**, where motivation is a real screening criterion
 - **Government and public sector**, which often have formal requirements
 - **Academia and research**, where a statement of interest is standard
-- **Anyone with a story the resume cannot tell** — a career change, a gap, an unusual path, a relocation
+- **Anyone with a story the resume cannot tell** — a [career change](/blog/career-change-portfolio), a gap, an unusual path, a relocation
 
 ## When "optional" means write one
 

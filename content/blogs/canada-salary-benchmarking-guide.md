@@ -85,7 +85,7 @@ Larger than people expect, and they run in both directions.
 
 > (Provincial salary − provincial housing − provincial tax) for each option
 
-That calculation frequently favours somewhere other than the highest-paying city. See [the Toronto tech jobs guide](https://thetailorcv.com/blog/toronto-tech-jobs-guide), [the Calgary jobs guide](https://thetailorcv.com/blog/calgary-jobs-guide) and [the Ottawa jobs guide](https://thetailorcv.com/blog/ottawa-jobs-guide).
+That calculation frequently favours somewhere other than the [highest-paying](https://thetailorcv.com/blog/highest-paying-jobs-without-a-degree-2026) city. See [the Toronto tech jobs guide](https://thetailorcv.com/blog/toronto-tech-jobs-guide), [the Calgary jobs guide](https://thetailorcv.com/blog/calgary-jobs-guide) and [the Ottawa jobs guide](https://thetailorcv.com/blog/ottawa-jobs-guide).
 
 ---
 

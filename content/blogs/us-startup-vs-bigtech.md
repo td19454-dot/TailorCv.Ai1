@@ -82,7 +82,7 @@ The cost is slower autonomy and more process between you and shipping.
 
 ## Interviewing differs
 
-**Big tech:** structured, standardised, four to eight weeks, algorithmic coding and system design, formally scored behavioral rounds. Prepare accordingly — see [the US tech interview process guide](https://thetailorcv.com/blog/us-tech-interview-process-guide) and [the STAR guide](https://thetailorcv.com/blog/us-behavioral-interview-star-guide).
+**Big tech:** structured, standardised, four to eight weeks, algorithmic coding and [system design](https://thetailorcv.com/blog/system-design-interview-guide), formally scored behavioral rounds. Prepare accordingly — see [the US tech interview process guide](https://thetailorcv.com/blog/us-tech-interview-process-guide) and [the STAR guide](https://thetailorcv.com/blog/us-behavioral-interview-star-guide).
 
 **Startups:** faster, sometimes days, and far more variable. Often a practical exercise or a conversation about your actual work rather than algorithm puzzles. Founder involvement is common, and fit matters more.
 
