@@ -135,6 +135,20 @@ What the system actually looks like in practice.
 
 **Total: roughly eight hours, thirty-plus applications, two done to a standard you would defend.** That is a sustainable month, and a sustainable month beats a spectacular fortnight.
 
+## Adjusting the system to your situation
+
+The template above assumes a full-time search. Most people are not in that position.
+
+**If you are studying full time**, halve everything. One sourcing session, one application block, one tier-one application a week. The rhythm matters more than the volume, and consistency over three months beats intensity over three weeks.
+
+**If you are working full time**, protect two evenings and one weekend morning. Do tier-one work at the weekend when you have attention, and volume applying on an evening when you do not.
+
+**If you are on a visa clock**, front-load. The tier structure still applies, but the ratio shifts toward volume early so you have responses coming back while you are still working the good applications.
+
+**If you have been searching for months**, cut volume and raise quality. Long searches usually degrade into tier three only, and reversing that — five genuinely good applications a week and nothing else — frequently breaks the pattern.
+
+**And whatever your situation, write the schedule down.** A system in your head is not a system; it is an intention that competes with everything else in your week.
+
 ## Mini checklist
 
 - [ ] Extension installed and base resume set

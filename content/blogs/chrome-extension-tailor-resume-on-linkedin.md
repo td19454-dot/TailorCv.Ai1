@@ -119,6 +119,24 @@ Three habits that separate people who get value from this from people who instal
 
 **Check the My Resumes page before any call.** Knowing exactly which version a company received turns an awkward call into a prepared one, and it takes ten seconds.
 
+## What happens between the click and the PDF
+
+Worth understanding, because it explains why the output behaves the way it does.
+
+**The job text is extracted** from the page — title, company, description.
+
+**Your base resume is parsed** from the file in your account, including its annotation layer. That last detail matters: URLs in a PDF are frequently invisible in extracted text and live only in the annotations, which is why link recovery reads both.
+
+**The rewrite happens** against the job description, with explicit instructions not to claim any skill the resume shows no evidence for.
+
+**Then the recovery steps run.** Bullets the model silently dropped are restored. Whole entries it lost are restored. This exists because language models reliably lose content on long resumes, and losing your actual work is the worst possible failure.
+
+**Job-description skills you genuinely have are surfaced**, links are re-injected, and the whole thing is sanitised.
+
+**It renders to your chosen template** and becomes a PDF.
+
+**Why this matters to you:** the pipeline is built around not losing your content and not inventing new content. Those two constraints are why it is a usable draft rather than something you have to fact-check line by line.
+
 ## Mini checklist
 
 - [ ] Extension installed from the Chrome Web Store

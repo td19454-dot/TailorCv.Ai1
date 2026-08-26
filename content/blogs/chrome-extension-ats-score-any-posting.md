@@ -123,6 +123,20 @@ The unglamorous half of any ATS score.
 
 **Name the file with your name in it**, which matters to the human at the other end rather than the machine.
 
+## Using the score across a whole search
+
+Beyond a single application, the number becomes data.
+
+**Record it alongside outcomes.** Over thirty applications you will see whether higher-scoring applications actually correlate with responses in your market. Sometimes they strongly do; sometimes the bottleneck is elsewhere entirely, and knowing which is worth more than the individual numbers.
+
+**Watch it move after a resume rewrite.** If you improve the base document, scores across all your target postings should rise together. If they do not, the rewrite did not do what you thought.
+
+**Compare across sectors.** Consistently higher scores in one sector than another is a signal about where your background actually fits, and it is often not where you assumed.
+
+**Notice score without response.** High match and no reply repeatedly usually means level mismatch, timing, or roles that were never really open — none of which more keywords will fix.
+
+**And stop looking at it once you are interviewing.** At that point the document has done its job and the number is no longer the thing to optimise.
+
 ## Mini checklist
 
 - [ ] Base resume uploaded and current
