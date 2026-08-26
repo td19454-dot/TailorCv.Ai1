@@ -2854,6 +2854,93 @@ def restore_dropped_entries(parsed: dict, resume_string: str) -> dict:
     return parsed
 
 
+def _change_similarity(a: str, b: str) -> float:
+    """Jaccard token overlap — the same metric restore_dropped_bullets already
+    uses to decide what counts as the same content."""
+    ta, tb = _restore_tokens(a), _restore_tokens(b)
+    if not ta or not tb:
+        return 0.0
+    return len(ta & tb) / len(ta | tb)
+
+
+def compute_resume_changes(parsed: dict, resume_string: str) -> dict:
+    """Bullet- and summary-level diff between the AI's final output and what the
+    candidate actually wrote, for the "See what changed" view. Reuses the same
+    original-text matching restore_dropped_bullets uses, so the two agree on
+    what counts as "the same" bullet (see _entry_original_bullets's docstring)."""
+    if not isinstance(parsed, dict) or not resume_string:
+        return {}
+    section_lines = _restore_section_lines(resume_string)
+
+    # _heading_key already recognizes "summary"/"profile"/"objective" headings,
+    # so the original summary block is just the lines tagged "summary" — no new
+    # section-detection needed.
+    original_summary = " ".join(
+        l for l, s in section_lines if s == "summary" and l.strip()
+    ).strip()
+    final_summary = str(parsed.get("summary") or "").strip()
+    summary_change = None
+    if final_summary:
+        sim = _change_similarity(original_summary, final_summary)
+        summary_change = {
+            "before": original_summary or None,
+            "after": final_summary,
+            "status": "new" if not original_summary else ("unchanged" if sim > 0.9 else "reworded"),
+        }
+
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    entries_out = []
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+        for e, ident in zip(entries, identifiers):
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+            ai_bullets = [str(b).strip() for b in (e.get("bullets") or []) if str(b).strip()]
+            if not ai_bullets and not cands:
+                continue
+            bullets_out: list[dict] = []
+            used: set[int] = set()
+            for ai in ai_bullets:
+                best_i, best_score = -1, 0.0
+                for i, c in enumerate(cands):
+                    if i in used:
+                        continue
+                    score = _change_similarity(ai, c)
+                    if score > best_score:
+                        best_i, best_score = i, score
+                if best_i >= 0 and best_score >= 0.2:
+                    used.add(best_i)
+                    status = "unchanged" if best_score > 0.9 else "reworded"
+                    bullets_out.append({"status": status, "before": cands[best_i], "after": ai})
+                else:
+                    bullets_out.append({"status": "new", "before": None, "after": ai})
+            removed = [c for i, c in enumerate(cands) if i not in used]
+            if bullets_out or removed:
+                entries_out.append({
+                    "section": heading_section,
+                    "label": ident,
+                    "bullets": bullets_out,
+                    "removed": removed,
+                })
+
+    return {
+        "summary": summary_change,
+        "skills_added": [s for s in (parsed.get("skills_added_from_jd") or []) if s],
+        "skill_gaps": promptable_skill_gaps(parsed.get("skill_gaps")),
+        "entries": entries_out,
+    }
+
+
 def normalize_contact_link(value: str, service: str) -> str:
     value = str(value or "").strip()
     if not value:
@@ -7442,30 +7529,33 @@ async def extension_tailor_resume(request: Request):
             # JD skill goes straight onto the resume - so the sidebar states what
             # was ADDED instead. Falls back to the gap list if the confirm-first
             # behaviour is switched back on.
-            gap_header = ""
-            added_header = ""
+            added: list = []
+            gaps: list = []
             try:
                 added = [s for s in ((parsed or {}).get("skills_added_from_jd") or []) if s]
-                if added:
-                    added_header = quote(", ".join(added[:10]), safe="")
                 gaps = promptable_skill_gaps((parsed or {}).get("skill_gaps"))
-                if gaps:
-                    gap_header = quote(", ".join(gaps[:10]), safe="")
             except Exception:
-                logger.exception("Could not build the skill headers")
+                logger.exception("Could not build the skill lists")
 
-            return FileResponse(
-                pdf_path,
-                media_type="application/pdf",
-                filename="tailored_resume.pdf",
-                background=BackgroundTask(_cleanup_files, [pdf_path]),
-                headers={
-                    "X-Skill-Match-After": str(after_score) if after_score is not None else "",
-                    "X-Skill-Match-Fallback": "true" if fallback_used else "false",
-                    "X-Skill-Gaps": gap_header,
-                    "X-Skills-Added": added_header,
-                },
-            )
+            # Returned as JSON (not a raw FileResponse) so the "See what changed"
+            # diff and the skill lists can travel alongside the PDF — a response
+            # header cannot carry bullet-level before/after text. background.js
+            # already builds a data: URL from a base64 PDF for the download.
+            with open(pdf_path, "rb") as f:
+                pdf_bytes = f.read()
+            os.remove(pdf_path)
+            pdf_path = None  # already cleaned up — skip the except-block cleanup below
+
+            return JSONResponse({
+                "success": True,
+                "pdf_base64": base64.b64encode(pdf_bytes).decode("ascii"),
+                "filename": "tailored_resume.pdf",
+                "skill_match_after": after_score,
+                "skill_match_fallback": fallback_used,
+                "skills_added": added,
+                "skill_gaps": gaps,
+                "changes": (parsed or {}).get("changes") or {},
+            })
     except HTTPException:
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
@@ -11168,6 +11258,10 @@ async def _optimize_resume_core(
             "Rewrite introduced facts absent from the original resume: %s",
             parsed["factcheck"]["findings"][:8],
         )
+
+    # "See what changed" data for the editor and the extension — computed last
+    # so it reflects the exact bullets/summary that actually ship.
+    parsed["changes"] = compute_resume_changes(parsed, resume_string)
 
     return parsed
 
