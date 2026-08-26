@@ -46,11 +46,12 @@
             box-shadow: 0 10px 24px rgba(30, 64, 175, 0.3);
         }
     </style>
-    <link rel="stylesheet" href="/static/blog.css?v=97">
+    <link rel="stylesheet" href="/static/blog.css?v=108">
     <link rel="icon" type="image/png" href="/static/favicon.png">
     {% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
 </head>
 <body class="blog-list-page">
+<canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 <main class="blog-main">
     <section class="blog-listing-head">
@@ -74,29 +75,9 @@
         </div>
     </section>
 
-    {% if show_featured and posts %}
-    {% set feat = posts[0] %}
-    <a class="blog-featured" href="/blog/{{ feat.slug }}">
-        {% if feat.image %}
-        <span class="blog-featured-media">
-            <img src="{{ feat.image }}" alt="{{ feat.title }}" loading="eager" decoding="async" fetchpriority="high">
-        </span>
-        {% endif %}
-        <span class="blog-featured-body">
-            <span class="blog-featured-flag">Latest guide</span>
-            <span class="blog-featured-title">{{ feat.title }}</span>
-            {% if feat.description %}<span class="blog-featured-desc">{{ feat.description }}</span>{% endif %}
-            <span class="blog-featured-meta">
-                {% if feat.category %}<span class="blog-featured-cat">{{ feat.category }}</span>{% endif %}
-                {{ feat.date_display }} &middot; {{ feat.read_time }} min read
-            </span>
-        </span>
-    </a>
-    {% endif %}
-
     <section class="blog-grid" aria-label="Blog posts">
-        {# The featured card above already shows posts[0], so drop it here. #}
-        {% for post in (posts[1:] if show_featured else posts) %}
+        {# The featured hero card was removed, so every post shows in the grid. #}
+        {% for post in posts %}
         <article class="blog-card">
             <a href="/blog/{{ post.slug }}" class="blog-cover-wrap">
                 {% if post.image %}
@@ -185,6 +166,52 @@
   });
 
   setTimeout(function () { cards.forEach(function (c) { c.classList.add('tcx-in'); }); }, 2500);
+})();
+</script>
+<script>
+/* Same animated wave field the rest of the site uses (index, dashboard,
+   solutions and 16 other pages). The blog pages were the only ones without
+   it, which is why they looked flat next to everything else. */
+(function () {
+  const canvas = document.getElementById('wave-canvas');
+  if (!canvas) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const waves = [
+    { amp: 100, freq: 0.0016, speed: 0.00035, color: [59, 130, 246], yf: 0.38, alpha: 0.14 },
+    { amp:  80, freq: 0.0022, speed: 0.00028, color: [79, 70, 229],  yf: 0.50, alpha: 0.11 },
+    { amp:  90, freq: 0.0014, speed: 0.00042, color: [99, 102, 241], yf: 0.60, alpha: 0.10 },
+    { amp:  60, freq: 0.0026, speed: 0.00050, color: [37, 99, 235],  yf: 0.44, alpha: 0.09 },
+    { amp:  65, freq: 0.0012, speed: 0.00022, color: [124, 58, 237], yf: 0.70, alpha: 0.09 },
+    { amp:  40, freq: 0.0030, speed: 0.00055, color: [6, 182, 212],  yf: 0.54, alpha: 0.07 },
+  ];
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now();
+    waves.forEach(function (wv) {
+      ctx.beginPath();
+      for (let x = 0; x <= W; x += 2) {
+        const y = H * wv.yf
+          + Math.sin(x * wv.freq + t * wv.speed) * wv.amp
+          + Math.sin(x * wv.freq * 1.8 + t * wv.speed * 0.55) * wv.amp * 0.45
+          + Math.sin(x * wv.freq * 0.6 + t * wv.speed * 1.3) * wv.amp * 0.25;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath();
+      const r = wv.color[0], g = wv.color[1], b = wv.color[2];
+      const gr = ctx.createLinearGradient(0, H * wv.yf - wv.amp, 0, H);
+      gr.addColorStop(0,   'rgba(' + r + ',' + g + ',' + b + ',' + wv.alpha + ')');
+      gr.addColorStop(0.5, 'rgba(' + r + ',' + g + ',' + b + ',' + (wv.alpha * 0.4) + ')');
+      gr.addColorStop(1,   'rgba(' + r + ',' + g + ',' + b + ',0)');
+      ctx.fillStyle = gr; ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
 })();
 </script>
 </body>
