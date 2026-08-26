@@ -148,7 +148,7 @@ That answer demonstrates requirements thinking, a real constraint, a decision an
 
 **Waiting to be led to the difficulty.** Naming the interesting case unprompted is the strongest single move available in a design round.
 
-**Studying senior-level system design material.** It is pitched far above what freshers are asked and creates anxiety without improving your answer.
+**Studying senior-level [system design](https://thetailorcv.com/blog/system-design-interview-guide) material.** It is pitched far above what freshers are asked and creates anxiety without improving your answer.
 
 **Forcing design patterns in.** Naming Singleton or Factory where they add nothing is a recognisable attempt to sound advanced.
 

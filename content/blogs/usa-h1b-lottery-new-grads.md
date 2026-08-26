@@ -49,7 +49,7 @@ Because registration happens once a year, the number of times you can enter is d
 - **Standard OPT, 12 months.** Realistically one registration. If you graduate in May and start OPT in July, you get the following March. If you are not selected, your authorisation is running out.
 - **STEM OPT, 36 months total.** Three March windows. Three independent draws.
 
-Three attempts versus one is a categorically different position. This is why [checking whether your programme is STEM-designated](/blog/usa-opt-cpt-explained-students) matters more than almost any other administrative decision you make as an international student.
+Three attempts versus one is a categorically different position. This is why [checking whether your programme is STEM-designated](/blog/usa-opt-cpt-explained-students) matters more than almost any other administrative decision you make as an [international student](/blog/international-student-jobs-canada).
 
 The compounding effect also matters to employers. A company weighing whether to hire you knows that with 36 months of runway they have three shots before the problem becomes urgent. With 12 months they have one, and then a hiring decision to unwind.
 

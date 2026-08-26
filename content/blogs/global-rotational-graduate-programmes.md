@@ -48,7 +48,7 @@ Where they run: banks, large multinationals, consumer goods companies, insurers,
 
 **Control.** Placement is not entirely yours to choose.
 
-For a specialist — someone who knows they want to be a software engineer, a quant, a research scientist — a rotational programme is usually the wrong shape. The [direct technical route](/blog/usa-big-tech-new-grad-hiring) builds depth faster and levels you sooner.
+For a specialist — someone who knows they want to be a [software engineer](/blog/software-engineer-interview-preparation), a quant, a research scientist — a rotational programme is usually the wrong shape. The [direct technical route](/blog/usa-big-tech-new-grad-hiring) builds depth faster and levels you sooner.
 
 ## How final placement actually works
 

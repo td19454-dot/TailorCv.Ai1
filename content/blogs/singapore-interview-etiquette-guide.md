@@ -242,7 +242,7 @@ A few conventions that are obvious to people who grew up here and invisible to e
 
 **Seniority is acknowledged without deference.** Address the senior person appropriately, and still answer their question directly rather than hedging. Excessive deference reads as lacking confidence.
 
-**Ask about the team, not about perks.** Questions about work-life balance and leave are legitimate and land better later in the process than in a first interview.
+**Ask about the team, not about perks.** Questions about [work-life balance](/blog/work-life-balance-tips) and leave are legitimate and land better later in the process than in a first interview.
 
 **And follow the interviewer's lead on register.** Some are warm and conversational, some are formal and brisk. Matching them is more effective than arriving with one fixed manner.
 

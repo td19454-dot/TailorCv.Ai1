@@ -187,7 +187,7 @@ Toronto is competitive, so keep a steady rhythm and realistic expectations:
 
 - **Weeks 1–2:** Build your Canadian-style, ATS-ready resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), optimise your LinkedIn, and draft a base cover letter. Research and list 20–30 target employers.
 - **Weeks 2–6:** Apply consistently — quality over quantity — tailoring each application with the [resume optimizer](https://thetailorcv.com/solutions). Network actively: attend events, do informational interviews, and reach out to people at target companies. Track everything.
-- **Weeks 4–10:** Attend screens, assessments, and behavioural interviews. Prepare intensively with [interview prep](https://thetailorcv.com/interview-prep) and the AI mock interview, and follow up politely.
+- **Weeks 4–10:** Attend screens, assessments, and behavioural interviews. Prepare intensively with [interview prep](https://thetailorcv.com/interview-prep) and the [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume), and follow up politely.
 
 Depending on your field and experience, expect a focused search to take a few months. The candidates who succeed treat it as a disciplined routine, combining tailored applications with genuine networking rather than relying on either alone.
 

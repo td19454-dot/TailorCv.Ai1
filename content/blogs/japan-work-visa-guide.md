@@ -34,7 +34,7 @@ If you are still job hunting, start with [how to get a job in Japan as a foreign
 
 **Engineer / Specialist in Humanities / International Services.** The catch-all for most foreign professionals - software engineers, marketers, designers, translators, consultants, and business roles. Typically requires a bachelor's degree in a related field, or a substantial number of years of relevant professional experience in lieu of one.
 
-The important constraint: the work must relate to your degree or experience. An economics graduate hired as a software engineer can face questions, though a strong professional track record usually resolves it.
+The important constraint: the work must relate to your degree or experience. An economics graduate hired as a [software engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) can face questions, though a strong professional track record usually resolves it.
 
 **Highly Skilled Professional.** A points-based category awarding points for education, professional experience, annual salary, age, Japanese language ability, and other factors. Clearing the threshold brings real benefits - a longer initial period of stay, permission for a spouse to work, the ability to bring parents in certain circumstances, and a substantially accelerated path to permanent residency.
 
@@ -170,7 +170,7 @@ The visa follows the job offer, so the application has to work first. [Check you
 
 ## Make This Practical
 
-Calculate your Highly Skilled Professional points before anything else, even if you assume you will not qualify. The benefits are large enough - spouse work rights and a much shorter path to permanent residency - that it is worth knowing whether a JLPT qualification or a salary negotiation would push you over the threshold.
+Calculate your Highly Skilled Professional points before anything else, even if you assume you will not qualify. The benefits are large enough - spouse work rights and a much shorter path to permanent residency - that it is worth knowing whether a JLPT qualification or a [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) would push you over the threshold.
 
 Then prepare the documents that take longest. Request certificates of employment from previous employers now if you are qualifying on experience, and make sure your resume, contracts, and certificates state identical dates, since immigration reads them together.
 

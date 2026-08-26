@@ -58,7 +58,7 @@ Most of these tests are time-pressured by design — they measure accuracy under
 
 ## Keep the rest of your search moving
 
-Assessments are one step, not the whole process. While you prepare, keep your [resume](https://www.thetailorcv.com/modify-cv) sharp and [ATS-scored](https://www.thetailorcv.com/solutions), keep applying, and keep prepping interviews. If tests make you anxious, the [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) and how to practice interviews at home guides help you stay calm. Treat each assessment as practice for the next.
+Assessments are one step, not the whole process. While you prepare, keep your [resume](https://www.thetailorcv.com/modify-cv) sharp and [ATS-scored](https://www.thetailorcv.com/solutions), keep applying, and keep prepping interviews. If tests make you anxious, the [interview anxiety tips](https://thetailorcv.com/blog/interview-anxiety-nervousness-tips) and [how to practice interviews at home](https://thetailorcv.com/blog/how-to-practice-interviews-at-home) guides help you stay calm. Treat each assessment as practice for the next.
 
 ## Aptitude test checklist
 

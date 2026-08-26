@@ -37,7 +37,7 @@ Online application, with eligibility screening.
 
 Online tests. Typically a sequence covering behavioural and situational judgement, verbal and numerical reasoning. These are early filters and are taken at home. The [psychometric preparation](/blog/uk-psychometric-tests-guide) applies directly — practise under time pressure, because speed is the binding constraint rather than difficulty.
 
-A video interview, recorded rather than live, following the [standard format](/blog/uk-video-interview-hirevue-guide). Front-load your answers, keep to time, and record yourself once beforehand.
+A [video interview](/blog/video-interview-tips-2026), recorded rather than live, following the [standard format](/blog/uk-video-interview-hirevue-guide). Front-load your answers, keep to time, and record yourself once beforehand.
 
 A final assessment centre. Exercises which have historically included a written exercise, a group or leadership exercise, and an interview, assessed against the published framework. The [assessment centre mechanics](/blog/uk-assessment-centre-guide) transfer closely.
 

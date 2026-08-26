@@ -179,7 +179,7 @@ Four sentences. Send it to everyone from your search — people you spoke to, re
 
 A rescinded offer is an income problem for a domestic classmate and two problems for you, and the second one is the more urgent.
 
-**Speak to your international student adviser within days.** Not weeks. Your authorisation is frequently tied to employment or to a timeline with defined limits, and there are usually options — but they are time-bound and some of them close.
+**Speak to your [international student](/blog/international-student-jobs-canada) adviser within days.** Not weeks. Your authorisation is frequently tied to employment or to a timeline with defined limits, and there are usually options — but they are time-bound and some of them close.
 
 **Recalculate your dates.** Unemployment allowances during a post-graduation training period are limited and counted. Know exactly how many days you have and from when, in writing, from your adviser rather than from a forum.
 

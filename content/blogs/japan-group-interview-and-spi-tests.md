@@ -63,7 +63,7 @@ Answer the personality section honestly and consistently. Inconsistent patterns 
 
 ## The group interview format, specifically
 
-Several candidates are assessed together, either in a group discussion exercise or answering questions in sequence within the group, this is a genuinely distinct format from an individual one-to-one interview, worth practising specifically rather than assuming individual interview skills transfer directly.
+Several candidates are assessed together, either in a [group discussion](/blog/group-discussion-tips) exercise or answering questions in sequence within the group, this is a genuinely distinct format from an individual one-to-one interview, worth practising specifically rather than assuming individual interview skills transfer directly.
 
 What is actually being assessed is how you behave within a group, whether you contribute genuinely, listen and build on what others say, and handle disagreement constructively, dominating the conversation is not the goal, similar in principle to [group interview assessment in other markets that use this format](/blog/china-campus-interview-questions-guide), though the specific register expected here leans toward the measured, collaborative style discussed in the [broader interview guide](/blog/japan-mensetsu-interview-questions-guide).
 

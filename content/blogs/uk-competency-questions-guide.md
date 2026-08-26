@@ -143,7 +143,7 @@ The lesson is not that candidate B is a better storyteller. It is that candidate
 
 ## Building the story bank properly
 
-Six stories, built once, carry you through the application form, the video interview and the assessment centre. This is the highest-return preparation available in UK graduate recruitment, and it takes an afternoon.
+Six stories, built once, carry you through the application form, the [video interview](/blog/video-interview-tips-2026) and the assessment centre. This is the highest-return preparation available in UK graduate recruitment, and it takes an afternoon.
 
 Cover these six situations:
 

@@ -126,7 +126,7 @@ Examples:
 
 Examples:
 
-- `Sarah-Johnson-Product-Manager-Resume.pdf`
+- `Sarah-Johnson-[Product-Manager](https://thetailorcv.com/blog/product-manager-portfolio-guide)-Resume.pdf`
 - `Daniel-Lee-Data-Scientist-Resume.pdf`
 
 This is useful if you are tailoring resumes per role and want to keep track of versions.

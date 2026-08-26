@@ -277,7 +277,7 @@ An interview rarely stands alone — it's the payoff of a well-built application
 **How should I introduce myself in a Malaysian interview?**
 With a concise 60–90 second professional summary: who you are, a key strength with evidence, and why you're excited about the role — not your full life history.
 
-**What should I wear to an interview in Malaysia?**
+**What should I [wear to an interview](https://thetailorcv.com/blog/what-to-wear-to-an-interview) in Malaysia?**
 Formal business attire for corporate and MNC roles; smart casual (leaning formal) for tech and startups. Dress one notch above the daily dress code.
 
 **Are online assessments common in Malaysia?**
@@ -302,4 +302,4 @@ Prepare thoroughly and rehearse out loud, arrive early, breathe and slow down, u
 
 A great Malaysian interview combines substance and courtesy: well-structured, results-based answers; genuine research; professional etiquette; and calm confidence. Prepare your stories, anticipate the questions, dress the part, and — above all — practise out loud.
 
-Generate your likely questions with [interview prep](https://thetailorcv.com/interview-prep), rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview), and make sure the resume that got you here is as strong as it can be — see [how to get a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia) and how to write a resume for Malaysia jobs. Walk in prepared, and the offer follows.
+Generate your likely questions with [interview prep](https://thetailorcv.com/interview-prep), rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview), and make sure the resume that got you here is as strong as it can be — see [how to get a job in Malaysia](https://thetailorcv.com/blog/how-to-get-a-job-in-malaysia) and [how to write](https://thetailorcv.com/blog/how-to-write-resume-with-ai) a resume for Malaysia jobs. Walk in prepared, and the offer follows.

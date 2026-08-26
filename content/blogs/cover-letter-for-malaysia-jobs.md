@@ -122,9 +122,9 @@ Kuala Lumpur | +60 12-987 6543 | arjun.menon@email.com
 
 Dear Mr Rahman,
 
-I am applying for the Senior Software Engineer position at TechCo. With five years'
+I am applying for the Senior [Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) position at TechCo. With five years'
 experience building scalable backend systems for fintech products in the Klang Valley,
-I am excited by your mission to modernise digital payments in Southeast Asia.
+I am excited by your mission to modernise digital payments in [Southeast Asia](https://thetailorcv.com/blog/southeast-asia-jobs-compared).
 
 At my current role I led the migration of a monolith to microservices, cutting
 average API latency by 40% and supporting a 3x increase in transaction volume. I work
@@ -154,7 +154,7 @@ Write every letter as if the reader is busy and slightly skeptical — because t
 
 Cover letters are especially valuable when your resume raises a question the recruiter will otherwise answer with a guess. Two common situations:
 
-**Career change.** If you are moving into a new field, the cover letter is where you connect the dots that your resume can't. Acknowledge the switch briefly and confidently, then focus on transferable skills and any steps you've taken to bridge the gap (a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), a side project, relevant coursework). Frame the move as a deliberate, well-reasoned decision, not a retreat. For example: "After three years in operations, I've deliberately built data-analysis skills — completing a Google Data Analytics certificate and rebuilding my team's reporting in Power BI — and I'm now seeking to move fully into analytics."
+**[Career change](https://thetailorcv.com/blog/career-change-portfolio).** If you are moving into a new field, the cover letter is where you connect the dots that your resume can't. Acknowledge the switch briefly and confidently, then focus on transferable skills and any steps you've taken to bridge the gap (a [certification](https://thetailorcv.com/blog/best-free-online-certificates-for-resume), a side project, relevant coursework). Frame the move as a deliberate, well-reasoned decision, not a retreat. For example: "After three years in operations, I've deliberately built data-analysis skills — completing a Google Data Analytics certificate and rebuilding my team's reporting in Power BI — and I'm now seeking to move fully into analytics."
 
 **Employment gap.** If you have a gap — for study, caregiving, health, or a difficult job market — a short, matter-of-fact sentence defuses it far better than silence. Note what you did to stay sharp (freelancing, upskilling, volunteering) and pivot quickly back to your value. You do not owe a detailed explanation; you owe reassurance and a forward focus.
 
@@ -210,7 +210,7 @@ Subang Jaya, Selangor | +60 13-222 3344 | weijie.lim@email.com
 
 Dear Ms Chong,
 
-I am writing to apply for the Data Analyst role at InsightCo. After four years in
+I am writing to apply for the [Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide) role at InsightCo. After four years in
 retail operations, I have deliberately transitioned into analytics — completing the
 Google Data Analytics certificate and rebuilding my store's weekly reporting in
 Power BI, which cut manual reporting time by six hours a week.
@@ -250,7 +250,7 @@ The mechanics matter more than people think:
 The whole flow sits on one screen - resume and job description on the left, the finished letter on the right - so you are editing rather than starting from blank.
 
 
-- **When applying by email**, you have a choice: put a short version in the email body and attach the full letter, or make the email body itself your cover letter. Either works — just don't leave the email blank with a bare attachment. Use a clear subject line ("Application for Digital Marketing Executive – Nur Aisyah").
+- **When applying by email**, you have a choice: put a short version in the email body and attach the full letter, or make the email body itself your cover letter. Either works — just don't leave the email blank with a bare attachment. Use a clear subject line ("Application for [Digital Marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) Executive – Nur Aisyah").
 - **When a portal has a cover-letter field**, paste a clean, well-formatted version; check that line breaks survive.
 - **When attaching**, send a PDF (so formatting holds) named professionally, e.g. "NurAisyah_CoverLetter_DigitalMarketing.pdf".
 - **Match your resume's look** — same font and header — so the two documents read as one polished application.

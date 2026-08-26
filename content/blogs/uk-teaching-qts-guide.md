@@ -48,7 +48,7 @@ The distinction that causes most confusion.
 
 **School-led training.** Training based primarily in a school, with a university partner for the academic element. Comes in fee-paying and salaried varieties.
 
-**Salaried routes.** You are employed by a school as an unqualified teacher and train on the job. **You earn a salary and pay no course fees.** This is the route that makes teaching viable as a career change for people who cannot afford a year without income — see [the UK career change guide](https://thetailorcv.com/blog/uk-career-change-guide).
+**Salaried routes.** You are employed by a school as an unqualified teacher and train on the job. **You earn a salary and pay no course fees.** This is the route that makes teaching viable as a [career change](https://thetailorcv.com/blog/career-change-portfolio) for people who cannot afford a year without income — see [the UK career change guide](https://thetailorcv.com/blog/uk-career-change-guide).
 
 **Teaching apprenticeships.** A degree apprenticeship route into teaching, employer-funded — see [the UK apprenticeship guide](https://thetailorcv.com/blog/uk-apprenticeship-guide).
 

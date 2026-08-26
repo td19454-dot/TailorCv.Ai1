@@ -71,7 +71,7 @@ Global firms and English-friendly employers post roles directly on their own sit
 
 ## Category 5: English Teaching Routes
 
-If you're targeting English teaching, there are dedicated channels:
+If you're targeting [English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume), there are dedicated channels:
 
 - **The JET Programme** — a well-known government-affiliated route placing assistant language teachers.
 - **Language school (eikaiwa) chains and independent schools.**
@@ -95,7 +95,7 @@ A warm introduction can carry real weight — see the networking tips woven thro
 
 ## How to Use These Channels Effectively
 
-1. **Prepare your application first.** Match the format to the employer — a strong ATS-friendly English resume for global roles (see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan)), or a rirekisho for traditional firms (see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide)). Build it with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
+1. **Prepare your application first.** Match the format to the employer — a strong [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore) English resume for global roles (see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan)), or a rirekisho for traditional firms (see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide)). Build it with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 2. **Use multiple channels** — job sites, LinkedIn, and agencies together.
 3. **Tailor every application** to the specific role with the [resume optimizer](https://thetailorcv.com/solutions).
 4. **Add a cover letter** where expected — see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide).

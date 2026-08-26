@@ -116,7 +116,7 @@ When engaging in mock interview practice, it's important to be aware of common p
 
 ## Step-by-Step Guide to Conducting a Mock Interview with AI
 
-1. **Select a Platform**: Choose an AI mock interview platform that suits your needs. Look for features like question variety, feedback mechanisms, and user-friendliness. A good starting point is our [Free AI Mock Interview Practice Online - Get Real Feedback in 2026](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
+1. **Select a Platform**: Choose an [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume) platform that suits your needs. Look for features like question variety, feedback mechanisms, and user-friendliness. A good starting point is our [Free AI Mock Interview Practice Online - Get Real Feedback in 2026](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
 
 2. **Set Your Goals**: Before starting, outline what you want to achieve. Are you focused on behavioral questions, technical skills, or overall presentation? Having clear objectives will help you stay focused during practice.
 

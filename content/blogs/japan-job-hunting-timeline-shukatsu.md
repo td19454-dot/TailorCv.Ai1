@@ -178,7 +178,7 @@ Make sure your documents are ready before the cycle starts. [Check your ATS scor
 
 ## Make This Practical
 
-Work backwards from your graduation date and mark the summer internship window, because that is the real start of shukatsu rather than the March application opening. If you are an international student arriving for a two-year programme, this means beginning in your first year rather than your final one.
+Work backwards from your graduation date and mark the summer internship window, because that is the real start of shukatsu rather than the March application opening. If you are an [international student](https://thetailorcv.com/blog/international-student-jobs-canada) arriving for a two-year programme, this means beginning in your first year rather than your final one.
 
 Then do the self-analysis properly, however soft it feels. Your motivation answers, self-PR, and gakuchika story all draw on the same material, and students who skip this step write entry sheets that read as interchangeable - which is exactly what gets them screened out.
 

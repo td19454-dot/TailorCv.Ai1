@@ -206,7 +206,7 @@ The second one names the field, the tools, a result and the target. The first co
 
 **Never running the paste test.** Thirty seconds, and it catches the failures that make everything else pointless.
 
-**Using creative job titles.** "Growth Hacker" is invisible to a recruiter searching "Marketing Manager".
+**Using creative job titles.** "Growth Hacker" is invisible to a recruiter searching "[Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026)".
 
 **Writing skill categories instead of tool names.** Matching is close to exact, so "cloud technologies" returns nothing.
 

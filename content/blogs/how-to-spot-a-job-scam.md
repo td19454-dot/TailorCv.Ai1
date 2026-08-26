@@ -191,7 +191,7 @@ Remote postings are targeted more often simply because there's no in-person veri
 
 ### Is it a scam if they want a video interview?
 
-No - a real video interview is actually a good sign. Be cautious of the opposite: a process that avoids video entirely and stays only in text chat. If you do get a real interview, prepare properly with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
+No - a real [video interview](https://thetailorcv.com/blog/video-interview-tips-2026) is actually a good sign. Be cautious of the opposite: a process that avoids video entirely and stays only in text chat. If you do get a real interview, prepare properly with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ### Can a scam happen even on legitimate job boards?
 

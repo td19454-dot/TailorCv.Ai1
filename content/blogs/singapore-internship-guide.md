@@ -30,7 +30,7 @@ For international students the effect is stronger still, because an internship r
 
 This trips people up because the rules differ by situation.
 
-**Students at a Singapore institution.** Whether you may work, and under what conditions, depends on your institution and the type of work. Some students may undertake industrial attachments that form part of their course. Do not assume your Student's Pass permits general employment — confirm with your institution's international student office before accepting anything.
+**Students at a Singapore institution.** Whether you may work, and under what conditions, depends on your institution and the type of work. Some students may undertake industrial attachments that form part of their course. Do not assume your Student's Pass permits general employment — confirm with your institution's [international student](/blog/international-student-jobs-canada) office before accepting anything.
 
 **Students at overseas institutions interning in Singapore.** There is a training-specific pass route for foreign students undertaking practical training in Singapore, typically requiring that the training relates to your studies and is of limited duration. The employer applies.
 
@@ -58,7 +58,7 @@ Missing the first does not end the search; it changes it. The same pattern holds
 
 **Startups.** The ecosystem is real and hires on demand. Less pay, less structure, more responsibility, and pass sponsorship is less reliable.
 
-**Regional roles.** Because Singapore is a hub, many internships cover Southeast Asia rather than Singapore alone. These are frequently less contested than domestic-only equivalents.
+**Regional roles.** Because Singapore is a hub, many internships cover [Southeast Asia](/blog/southeast-asia-jobs-compared) rather than Singapore alone. These are frequently less contested than domestic-only equivalents.
 
 ## What conversion depends on
 
@@ -74,7 +74,7 @@ The single most useful thing you can do is ask, around the midpoint: *"What woul
 
 ## For overseas-educated students
 
-A local internship is the single strongest credential you can carry into a Singapore graduate search, and getting one from outside is harder in specific, addressable ways.
+A local internship is the single strongest credential you can carry into a [Singapore graduate](/blog/singapore-graduate-salary-expectations) search, and getting one from outside is harder in specific, addressable ways.
 
 **Why it matters so much.** It resolves both of the employer's doubts at once — whether you can do the work, and whether the paperwork is manageable — before the full-time decision. It also produces the local reference that an overseas degree cannot supply. For a candidate whose institution a Singaporean recruiter does not recognise, that reference is the context your resume is missing.
 

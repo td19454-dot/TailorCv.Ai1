@@ -34,9 +34,9 @@ Every role has a **function** — what you do — and a **sector** — where you
 
 **Changing sector, keeping function.** A finance manager in retail moving to a finance manager in healthcare. Comparatively straightforward: your core skill is proven and only the domain is new.
 
-**Changing function, keeping sector.** An operations manager in a hospital moving into hospital data analysis. Also workable, because your domain knowledge is real and valued.
+**Changing function, keeping sector.** An [operations manager](https://thetailorcv.com/blog/operations-manager-resume-2026) in a hospital moving into hospital data analysis. Also workable, because your domain knowledge is real and valued.
 
-**Changing both.** A retail operations manager becoming a healthcare data analyst. Hard, and usually needs an intermediate step.
+**Changing both.** A retail operations manager becoming a healthcare [data analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide). Hard, and usually needs an intermediate step.
 
 **The practical implication:** identify which single variable you are changing. If the honest answer is both, find the intermediate role that changes one, do it for a year or two, then change the other. That is the mechanism behind most career changes that work.
 
@@ -69,7 +69,7 @@ Every role has a **function** — what you do — and a **sector** — where you
 
 **Rarely worth paying for when:**
 
-- It promises a career change on the strength of a certificate alone
+- It promises a [career change](https://thetailorcv.com/blog/career-change-portfolio) on the strength of a certificate alone
 - The provider's evidence for outcomes is testimonials rather than data
 - The sector actually hires on demonstrable work rather than credentials — which is true of most technology roles, where a portfolio does more than a certificate
 

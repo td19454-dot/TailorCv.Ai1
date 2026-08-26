@@ -25,7 +25,7 @@ Use the [AI cover letter generator](https://www.thetailorcv.com/cover-letter) af
 
 ## Why the Job Description Changes Everything
 
-A job title tells an AI generator almost nothing. "Marketing Manager" could mean brand strategy at a 500-person company or solo-founder growth hacking at a 5-person startup. The generator has no choice but to fall back on generic phrasing, because it does not know what this employer actually wants.
+A job title tells an AI generator almost nothing. "[Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026)" could mean brand strategy at a 500-person company or solo-founder growth hacking at a 5-person startup. The generator has no choice but to fall back on generic phrasing, because it does not know what this employer actually wants.
 
 A full job description is a different kind of input entirely. It contains:
 

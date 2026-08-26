@@ -29,7 +29,7 @@ showcase: none
 
 **Dispatch companies.** Employing teachers and placing them in schools. Convenient and generally lower paid than direct hire, with the dispatch company taking a margin.
 
-**International schools.** Teaching a full curriculum to a mostly international student body. Requires a genuine teaching qualification and usually experience, pays substantially more, and is a real career rather than an entry route.
+**International schools.** Teaching a full curriculum to a mostly [international student](/blog/international-student-jobs-canada) body. Requires a genuine teaching qualification and usually experience, pays substantially more, and is a real career rather than an entry route.
 
 **University positions.** Language instruction or subject teaching at tertiary level, typically requiring at least a master's degree.
 
@@ -138,7 +138,7 @@ Generally not for language teaching roles, where a bachelor's degree in any subj
 
 ### Do I need to speak Japanese?
 
-Usually not to be hired for English teaching. It matters considerably for daily life, particularly outside cities, and for your options afterwards.
+Usually not to be hired for [English teaching](/blog/english-teaching-jobs-japan-resume). It matters considerably for daily life, particularly outside cities, and for your options afterwards.
 
 ### Can I choose where I live on the government programme?
 

@@ -91,7 +91,7 @@ Short-term internship programmes, sometimes just a few days, are common alongsid
 
 **Language ability genuinely affects which internship programmes are realistically accessible**, exactly [the same consideration that applies to full-time roles](/blog/japan-japanese-language-requirements-jobs), worth being honest about your current level when selecting which programmes to target.
 
-**Your university's international office or career centre may maintain specific relationships with employers seeking international student interns**, worth checking directly, this can be a genuinely useful and less contested channel than a fully open application.
+**Your university's international office or career centre may maintain specific relationships with employers seeking [international student](/blog/international-student-resume-differences-by-country) interns**, worth checking directly, this can be a genuinely useful and less contested channel than a fully open application.
 
 ## Making the most of a short-format internship
 

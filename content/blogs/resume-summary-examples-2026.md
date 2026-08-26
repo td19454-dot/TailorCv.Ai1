@@ -53,10 +53,10 @@ Skip "hardworking team player." Every line should be something only *you* could 
 
 The formula flexes across every field. Here are more you can adapt — always swapping in your real numbers and the target posting's language.
 
-**Data Analyst**
+**[Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)**
 > Data analyst who turns messy operational data into decisions, most recently building a churn model that helped cut monthly churn from 6% to 4%. Fluent in SQL, Python, and Tableau, and happiest translating analysis into plain-language recommendations for non-technical teams.
 
-**UX / Product Designer**
+**UX / [Product Designer](https://thetailorcv.com/blog/product-designer-resume-2026)**
 > Product designer with 4 years shipping consumer mobile features, including a checkout redesign that lifted conversion 11%. I pair fast prototyping with real user research, and I care as much about the edge cases as the happy path.
 
 **Sales Representative**
@@ -111,7 +111,7 @@ Place the summary at the very top, directly under your contact details, so it is
 
 The single biggest upgrade to a [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) summary is not better wording — it is a fresh version for each [application](https://thetailorcv.com/blog/how-to-follow-up-after-job-application). A summary that name-drops the exact role title and mirrors the posting's language reads as written *for this job*, because it was. That is also what an [ATS score](https://thetailorcv.com/solutions) rewards: the closer your summary's terms match the posting, the higher your relevance.
 
-You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) to the most relevant one, and mirror two or three [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the job description and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the resume builder gives you a clean, ATS-friendly structure to drop your summary into.
+You do not have to rewrite it from scratch each time. Keep one strong base summary, then adjust the role title, swap the lead [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) to the most relevant one, and mirror two or three [keywords](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats) from the posting. If you use the [TailorCV resume optimizer](https://thetailorcv.com/optimize), it reads the job description and rewrites your summary and bullets to match the exact role — turning a generic profile into a targeted one in a couple of minutes. And if you are starting from scratch, the resume builder gives you a clean, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore) structure to drop your summary into.
 
 ## Before and After: Weak Summary to Strong
 

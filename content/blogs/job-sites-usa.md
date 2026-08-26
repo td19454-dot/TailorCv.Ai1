@@ -120,7 +120,7 @@ A reasonable allocation: half your effort on applications, half on getting a per
 
 Uploading a resume puts it in a searchable database, and recruiters search that structure.
 
-**Standard job titles.** A recruiter searching "Software Engineer" will not find "Code Wizard" - see [the best resume keywords for the USA](https://thetailorcv.com/blog/best-resume-keywords-usa).
+**Standard job titles.** A recruiter searching "[Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation)" will not find "Code Wizard" - see [the best resume keywords for the USA](https://thetailorcv.com/blog/best-resume-keywords-usa).
 
 **Named skills, not categories.** Matching is close to exact.
 

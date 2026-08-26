@@ -150,7 +150,7 @@ This round is genuinely harder for some students, and pretending otherwise does 
 
 ## Which Companies Use GDs
 
-Not every company runs a group discussion.
+Not every company runs a [group discussion](https://thetailorcv.com/blog/group-discussion-tips).
 
 **Service-based IT companies** use them frequently, particularly for client-facing roles where communication is a genuine job requirement - see [service-based vs product-based companies](https://thetailorcv.com/blog/service-based-vs-product-based-companies).
 

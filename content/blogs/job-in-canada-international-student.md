@@ -36,7 +36,7 @@ Canada generally allows eligible international students to work part-time during
 ### Types of Student Work
 
 - **On-campus jobs:** libraries, labs, admin, food services, research assistant roles — convenient and student-friendly.
-- **Off-campus part-time:** retail, hospitality, tutoring, and customer service build Canadian experience and references.
+- **Off-campus part-time:** retail, hospitality, tutoring, and [customer service](https://thetailorcv.com/blog/customer-service-resume-2026) build Canadian experience and references.
 - **Co-op and internships:** if your program includes a co-op, you'll need a co-op work permit; these placements are the single best way to gain relevant, career-track Canadian experience.
 
 Even a modest part-time or campus role gives you Canadian references, local workplace familiarity, and network — all of which strengthen your graduate job search.
@@ -84,7 +84,7 @@ Your campus is one of your biggest advantages:
 
 - **Career centre:** resume reviews, [job boards](https://thetailorcv.com/blog/best-job-search-websites-2026), workshops, and employer connections.
 - **Co-op office:** placement support and employer relationships.
-- **International student office:** guidance on work permits and rules.
+- **[International student](https://thetailorcv.com/blog/international-student-resume-differences-by-country) office:** guidance on work permits and rules.
 - **Alumni network:** graduates in your field who can offer advice and referrals.
 
 These resources are included in your tuition — use them fully.
@@ -102,7 +102,7 @@ By graduation, a strong network can be the difference between a long search and 
 
 ## Presenting Yourself the Canadian Way
 
-As an international student, adapting your application to Canadian norms is essential from your very first part-time job:
+As an [international student](https://thetailorcv.com/blog/international-student-jobs-canada), adapting your application to Canadian norms is essential from your very first part-time job:
 
 - **Use a Canadian-style resume** — no photo or personal details, concise, achievement-focused, and ATS-friendly. See the [Canadian resume guide](https://thetailorcv.com/blog/canadian-resume-guide) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
 - **Translate coursework and projects into experience.** With limited work history, your final-year projects, group work, and academic achievements become resume material — described with achievement bullets.

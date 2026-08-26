@@ -39,7 +39,7 @@ For professional roles, government positions, and competitive openings, a strong
 
 ## What a Cover Letter Adds That a Resume Can't
 
-It's worth being clear on *why* the cover letter matters, because that shapes how you write it. Your resume is a structured list of what you've done; your cover letter is where you connect the dots, add context, and make your case in your own voice. It can explain a career change or a relocation, translate international experience into Canadian relevance, convey genuine enthusiasm for a specific organisation, and demonstrate the written communication that Canadian employers prize. Where a resume answers "what have you done," the cover letter answers "why you, why here, and why now." Used well, it turns a qualified applicant into a memorable one — which is exactly why, for professional, government, and competitive roles, a strong cover letter is a real advantage rather than a formality.
+It's worth being clear on *why* the cover letter matters, because that shapes how you write it. Your resume is a structured list of what you've done; your cover letter is where you connect the dots, add context, and make your case in your own voice. It can explain a [career change](https://thetailorcv.com/blog/career-change-portfolio) or a relocation, translate international experience into Canadian relevance, convey genuine enthusiasm for a specific organisation, and demonstrate the written communication that Canadian employers prize. Where a resume answers "what have you done," the cover letter answers "why you, why here, and why now." Used well, it turns a qualified applicant into a memorable one — which is exactly why, for professional, government, and competitive roles, a strong cover letter is a real advantage rather than a formality.
 
 ## The Right Structure
 
@@ -119,7 +119,7 @@ Toronto — I'm eager to bring my delivery track record to a respected Canadian 
 
 In my previous role, I coordinated cross-functional teams across 12 software projects,
 delivering them 8% under budget and improving on-time delivery by streamlining sprint
-planning. I'm a Certified Scrum Master, and my Bachelor's has been assessed by WES for
+planning. I'm a Certified [Scrum Master](https://thetailorcv.com/blog/scrum-master-resume-2026), and my Bachelor's has been assessed by WES for
 Canadian equivalency. I'm confident these skills transfer directly to your team's needs.
 
 I would welcome the chance to discuss how I can contribute to BuildRight's projects.
@@ -202,7 +202,7 @@ Dear Ms. Patel,
 
 I'm excited to apply for the Marketing Assistant position at BrightPath. As a
 final-year Business student at the University of Ottawa with a summer internship in
-digital marketing, I'm eager to bring my energy and skills to your team.
+[digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), I'm eager to bring my energy and skills to your team.
 
 During my internship, I helped grow a client's Instagram engagement by 40% and
 supported a campaign that generated over 500 new leads. My coursework in analytics
@@ -229,7 +229,7 @@ Notice how a candidate with limited experience leads with enthusiasm, translates
 
 ## How to Send Your Cover Letter
 
-- **By email:** either put a short version in the body and attach the full letter, or make the email body your cover letter — never send a blank email with a bare attachment. Use a clear subject line ("Application for Financial Analyst – Priya Sharma").
+- **By email:** either put a short version in the body and attach the full letter, or make the email body your cover letter — never send a blank email with a bare attachment. Use a clear subject line ("Application for [Financial Analyst](https://thetailorcv.com/blog/financial-analyst-resume-2026) – Priya Sharma").
 - **Through a portal:** paste a clean version into the cover-letter field, checking that line breaks survive.
 - **When attaching:** send a PDF named professionally (e.g. "PriyaSharma_CoverLetter.pdf").
 - **Match your resume's look** so the two documents read as one polished application.

@@ -30,7 +30,7 @@ Before applying, check your resume parses — the [free ATS score checker](https
 
 ## What hires
 
-**Artificial intelligence and machine learning.** Montreal is one of the world's genuine AI research centres, anchored by internationally recognised research institutes and university groups, with corporate research labs and a commercial layer around them. For anyone in machine learning research or applied AI, this is a first-tier global location.
+**Artificial intelligence and [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions).** Montreal is one of the world's genuine AI research centres, anchored by internationally recognised research institutes and university groups, with corporate research labs and a commercial layer around them. For anyone in machine learning research or applied AI, this is a first-tier global location.
 
 **Video games.** The largest games production cluster in Canada and one of the largest anywhere, supported by provincial tax credits. Studios of every size, covering engineering, art, design and production.
 
@@ -75,7 +75,7 @@ State your level concretely on your resume rather than vaguely — see [the Cana
 
 Important and frequently missed.
 
-**Quebec administers its own economic immigration selection**, separate from federal Express Entry. Candidates are selected under Quebec's own programs, receive a Quebec Selection Certificate, and then apply to the federal government for permanent residence.
+**Quebec administers its own economic immigration selection**, separate from federal Express Entry. Candidates are selected under Quebec's own programs, receive a Quebec Selection Certificate, and then apply to the [federal government](https://thetailorcv.com/blog/federal-government-resume-guide) for permanent residence.
 
 **Which means:**
 

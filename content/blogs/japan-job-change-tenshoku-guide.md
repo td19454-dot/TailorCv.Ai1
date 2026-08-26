@@ -32,7 +32,7 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 **Recruitment agents dominate.** Far more than in the US or UK, mid-career hiring in Japan runs through agents. Bilingual agencies serving the foreign professional market are particularly useful, because they know which employers actually hire non-Japanese candidates.
 
-**What agents do here:** present you to clients, coordinate the process, and — importantly — **handle salary negotiation on your behalf**. That last point is a genuine advantage in a culture where negotiating directly can read as pushy, as [the Japan salary negotiation guide](https://thetailorcv.com/blog/japan-salary-negotiation-guide) covers.
+**What agents do here:** present you to clients, coordinate the process, and — importantly — **handle [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) on your behalf**. That last point is a genuine advantage in a culture where negotiating directly can read as pushy, as [the Japan salary negotiation guide](https://thetailorcv.com/blog/japan-salary-negotiation-guide) covers.
 
 **Direct applications** are possible through job platforms and company sites, though agents carry a large share of the mid-career market.
 

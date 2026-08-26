@@ -64,6 +64,6 @@ This is the resume after tailoring - the content is already matched, and these c
 - **Add real signal** — relevance, culture fit, or transferable skill.
 - Are **specific**, not generic ("marathon runner," not "fitness").
 - Don't **crowd out** stronger experience or [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026).
-- Keep the [resume](https://www.thetailorcv.com/modify-cv) [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passing the ATS score checker.
+- Keep the [resume](https://www.thetailorcv.com/modify-cv) [ATS-safe](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and passing the [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free).
 
 Build a focused [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and only add hobbies if they make your case stronger.

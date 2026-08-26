@@ -59,7 +59,7 @@ Having the shape pre-loaded means the 30 seconds is spent choosing which story t
 
 The setup is the avoidable half. This is the half that decides the score.
 
-**Research the employer's competencies first.** Most UK employers publish what they assess, and the video interview questions map to it almost directly. This is the marking scheme available in advance, and most candidates never look at it. The [competency guide](/blog/uk-competency-questions-guide) covers how to find it.
+**Research the employer's competencies first.** Most UK employers publish what they assess, and the [video interview](/blog/video-interview-tips-2026) questions map to it almost directly. This is the marking scheme available in advance, and most candidates never look at it. The [competency guide](/blog/uk-competency-questions-guide) covers how to find it.
 
 **Prepare the six standard stories** — a team disagreement, a failure, leading without authority, a deadline problem, learning something fast, something you are proud of. Compressed to ninety seconds each.
 

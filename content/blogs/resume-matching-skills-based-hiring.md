@@ -31,7 +31,7 @@ Paste any skills-based job description into the [TailorCV resume optimizer](/sol
 
 Traditional job descriptions often lead with a target job title and years-of-experience requirement, then list skills as supporting detail. Skills-based postings flip this:
 
-- They frequently list specific, granular competencies instead of, or in addition to, a target title ("proficiency in SQL and data visualization" instead of "must have worked as a Data Analyst")
+- They frequently list specific, granular competencies instead of, or in addition to, a target title ("proficiency in SQL and data visualization" instead of "must have worked as a [Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)")
 - They de-emphasize or omit degree requirements entirely, sometimes stating "no degree required" explicitly
 - They may list skills without specifying how they should have been gained (work experience, projects, self-taught, bootcamp, certification)
 - They often include practical assessment steps (skills tests, work samples, project-based interviews) as part of the hiring process itself

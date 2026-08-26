@@ -159,7 +159,7 @@ If the generator keeps giving you output that misses the mark, the fix is almost
 
 ## Where Bullet Quality Meets ATS Keywords
 
-Strong, specific bullets tend to naturally include the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keywords a job description is looking for, because those keywords are usually tools, methods, and role terms - the exact things a well-fed generator includes. A data analyst bullet that names SQL, dashboards, and stakeholder reporting checks both boxes: it reads well to a human and matches machine parsing.
+Strong, specific bullets tend to naturally include the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) keywords a job description is looking for, because those keywords are usually tools, methods, and role terms - the exact things a well-fed generator includes. A [data analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide) bullet that names SQL, dashboards, and stakeholder reporting checks both boxes: it reads well to a human and matches machine parsing.
 
 Do not chase keywords at the expense of honesty, though. If you use a generator to rewrite bullets for a specific job posting, compare the draft against the actual posting using [How to Match Resume Keywords to Job Description](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) so you add relevant terms you can back up, not just terms lifted from the listing. See also [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide) for how keyword placement affects parsing.
 

@@ -27,7 +27,7 @@ Your LinkedIn profile serves as a digital resume and often acts as the first imp
 
 ### Professional Headline
 
-- **Be Specific**: Instead of a generic title, include your desired position and key skills. For example, “Aspiring Software Engineer | Python & Java Enthusiast” is better than just “Software Engineer.”
+- **Be Specific**: Instead of a generic title, include your desired position and key skills. For example, “Aspiring [Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) | Python & Java Enthusiast” is better than just “Software Engineer.”
 - **Include Keywords**: Use industry-specific keywords that recruiters might search for. This helps in appearing in relevant searches.
 
 ### Summary Section
@@ -180,7 +180,7 @@ To maximize your effectiveness on LinkedIn, keep these do's and don'ts in mind:
 
 Imagine you’re a software developer looking for a job in the US. Here’s how to apply the principles discussed:
 
-1. **Profile Optimization**: Update your LinkedIn profile with a strong headline like "Full-Stack Developer | React & Node.js Expert." Write a summary that highlights your passion for coding and your unique projects.
+1. **Profile Optimization**: Update your LinkedIn profile with a strong headline like "[Full-Stack Developer](https://thetailorcv.com/blog/full-stack-developer-resume-2026) | React & Node.js Expert." Write a summary that highlights your passion for coding and your unique projects.
 
 2. **Networking**: Connect with recruiters who specialize in tech placements. Personalize your requests by mentioning a recent post they made about industry trends.
 

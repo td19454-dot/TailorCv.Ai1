@@ -194,4 +194,4 @@ Filter first. Pull the licensed sponsor register, narrow it to your sector and t
 
 Then rebuild the CV to UK convention using the [UK CV format guide](https://thetailorcv.com/blog/uk-cv-format-guide-2026) - photo and date of birth removed, two pages, tailored personal statement, right-to-work status stated in one clause, and a context line for any employer a British recruiter would not recognise.
 
-Finally, work the channels properly. Register with three or four specialist agencies, optimise LinkedIn for inbound contact, run your CV through the [free ATS score checker](https://www.thetailorcv.com/solutions), and prepare for competency-based interviews using [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).
+Finally, work the channels properly. Register with three or four specialist agencies, optimise LinkedIn for inbound contact, run your CV through the [free ATS score checker](https://www.thetailorcv.com/solutions), and prepare for [competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide) interviews using [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).

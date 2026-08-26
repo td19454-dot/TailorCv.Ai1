@@ -65,7 +65,7 @@ This is where applications fail.
 | Any degree | Restaurant floor staff, factory line | Refused — outside the status entirely |
 | Bootcamp only, no degree | Software engineer | Needs 10 years' documented experience |
 
-**Read the last three rows together.** Two different things can go wrong: your background may not match the job, or the *job itself* may fall outside the status no matter what you studied. A mechanical engineer applying for a role with no specialist content fails for the second reason, and no amount of documentation fixes it.
+**Read the last three rows together.** Two different things can go wrong: your background may not match the job, or the *job itself* may fall outside the status no matter what you studied. A [mechanical engineer](https://thetailorcv.com/blog/mechanical-engineer-resume-2026) applying for a role with no specialist content fails for the second reason, and no amount of documentation fixes it.
 
 **How to resolve a mismatch:**
 
@@ -111,7 +111,7 @@ A genuine advantage over employer-tied visas elsewhere.
 
 **The status covers a category of activity, not one employer.** Moving from one software engineering role to another generally requires no new status — though you must notify immigration within 14 days of the change.
 
-**Where care is needed:** moving to work outside the category. A software engineer becoming a sales manager, or moving into teaching, may need a change of status. Confirm before resigning.
+**Where care is needed:** moving to work outside the category. A [software engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) becoming a sales manager, or moving into teaching, may need a change of status. Confirm before resigning.
 
 **A certificate of authorised employment** can be requested from immigration confirming your intended new role falls within your current status. Worth obtaining before accepting an offer if there is any doubt — it converts uncertainty into a document.
 
@@ -140,7 +140,7 @@ This is the single most important document in an experience-based application, a
 
 **What is not enough:** "Ananya Sharma worked at our company from 2020 to 2024." That confirms employment and nothing about whether the work relates to your intended role in Japan.
 
-**What works:** "Ananya Sharma was employed as a Backend Developer from March 2020 to August 2024, developing and maintaining server-side applications in Python and PostgreSQL, including database design and API development."
+**What works:** "Ananya Sharma was employed as a [Backend Developer](https://thetailorcv.com/blog/backend-developer-portfolio) from March 2020 to August 2024, developing and maintaining server-side applications in Python and PostgreSQL, including database design and API development."
 
 **Ask former employers for this specific wording**, in writing, and ask early. HR departments abroad have no reason to prioritise it, three weeks is a normal wait, and if your case rests on documented experience rather than a matching degree, this document *is* your case.
 

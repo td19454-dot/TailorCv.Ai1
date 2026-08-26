@@ -61,7 +61,7 @@ Bonds and commitments. Some residencies and sign-on bonuses carry a commitment p
 
 This is the part relevant to graduates from every other discipline, and it is a large employment market that students simply do not know exists.
 
-Healthcare analytics. Clinical quality data, population health, operational analytics, and increasingly machine learning applied to care. Substantial hiring, real data problems, and far less competition than consumer technology — worth reading alongside the [data science guide](/blog/usa-data-science-new-grad-hiring).
+Healthcare analytics. Clinical quality data, population health, operational analytics, and increasingly [machine learning](/blog/machine-learning-interview-questions) applied to care. Substantial hiring, real data problems, and far less competition than consumer technology — worth reading alongside the [data science guide](/blog/usa-data-science-new-grad-hiring).
 
 Health information technology. Electronic health record systems are enormous software deployments, and hospitals employ analysts, implementers, integration engineers and support staff in volume. Vendor certification in a major record system is a genuinely valuable and fast-acquired credential.
 
@@ -158,7 +158,7 @@ Why this matters. A new graduate fixed on a named academic hospital in a major c
 
 Because this is the part open to graduates of any discipline, it deserves specifics rather than a list.
 
-**Clinical data analyst.** Works with electronic health record data on quality measures, outcomes and operational performance. Requires SQL and analytical judgement rather than a clinical degree. The domain takes months to learn and is genuinely interesting, and demand consistently outstrips supply — the [data role distinctions](/blog/usa-data-science-new-grad-hiring) apply here as anywhere.
+**Clinical [data analyst](/blog/data-analyst-portfolio-guide).** Works with electronic health record data on quality measures, outcomes and operational performance. Requires SQL and analytical judgement rather than a clinical degree. The domain takes months to learn and is genuinely interesting, and demand consistently outstrips supply — the [data role distinctions](/blog/usa-data-science-new-grad-hiring) apply here as anywhere.
 
 **Electronic health record analyst.** Configures and supports the record system clinicians use all day. Vendor certification is the credential, it is usually paid for by the employer, and it is portable across every health system in the country. One of the most reliable non-clinical entry routes there is.
 

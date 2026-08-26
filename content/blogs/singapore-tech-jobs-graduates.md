@@ -22,7 +22,7 @@ keywords: singapore tech jobs, software engineer singapore graduate, tech hiring
 
 **Regional headquarters of multinationals.** Singapore hosts a large number of Asia-Pacific headquarters, and many run structured graduate technology programmes. These are the closest equivalent to big tech campus hiring elsewhere: standardised processes, defined levels, established immigration functions.
 
-**Local and regional technology companies.** Platforms and consumer companies built in Southeast Asia. Faster-moving, less structured, often more interesting work earlier, with compensation that varies widely.
+**Local and regional technology companies.** Platforms and consumer companies built in [Southeast Asia](/blog/southeast-asia-jobs-compared). Faster-moving, less structured, often more interesting work earlier, with compensation that varies widely.
 
 **Banks and financial institutions.** The most underrated group. The local banks employ large engineering organisations and hire graduates in volume, with structured programmes and genuine technical work. Students chasing product companies routinely ignore them.
 
@@ -34,7 +34,7 @@ Technology hiring in Singapore has converged on international practice more than
 
 1. Application and resume screen
 2. Online assessment — timed coding problems
-3. Technical phone or video interview
+3. Technical phone or [video interview](/blog/video-interview-tips-2026)
 4. Onsite or virtual loop — two to four rounds
 5. Hiring manager conversation and offer
 
@@ -88,7 +88,7 @@ What fails people here is not difficulty. It is time. Candidates who can solve t
 
 The other quiet failure is edge cases. Hidden test suites include empty inputs, single elements, duplicates and maximum-size inputs. A solution that is correct on the example and crashes on an empty array scores zero, not partial credit. Spending the last three minutes checking boundaries is worth more than starting a second problem you will not finish.
 
-**The technical phone screen.** One problem, forty-five minutes, with a human watching. The difference from the online assessment is that here *how you think is being scored*, not only whether you arrive.
+**The technical [phone screen](/blog/phone-screen-interview-tips).** One problem, forty-five minutes, with a human watching. The difference from the online assessment is that here *how you think is being scored*, not only whether you arrive.
 
 The failure mode is silence. A candidate who solves it in twenty silent minutes scores worse than one who narrates a slightly slower path. Say what you are considering, say why you are rejecting an approach, state your complexity before you are asked. If you are stuck, say what you are stuck on — interviewers are permitted to help, and most want to.
 

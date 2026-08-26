@@ -173,7 +173,7 @@ Check your resume before applying to work terms. [Check your ATS score free](htt
 
 ## Make This Practical
 
-Apply for the co-op work permit as soon as you are eligible if you are an international student. A study permit alone does not authorise work terms, processing takes time, and this is the most common avoidable delay.
+Apply for the co-op work permit as soon as you are eligible if you are an [international student](https://thetailorcv.com/blog/international-student-jobs-canada). A study permit alone does not authorise work terms, processing takes time, and this is the most common avoidable delay.
 
 Then treat the first round as the one that matters. Apply broadly, prepare properly for interviews that are as rigorous as graduate hiring, and rank honestly — the first work term is the hardest by design, and everything afterwards gets easier once you have one completed.
 

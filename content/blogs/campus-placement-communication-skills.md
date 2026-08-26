@@ -190,7 +190,7 @@ It can help with confidence and provides a practice group, but only if it involv
 
 ### Is it worse to say nothing or to say something imperfect?
 
-Saying nothing is worse, in every round. Silence in a group discussion is usually an automatic elimination, and one-word answers in interviews leave the interviewer with nothing to assess.
+Saying nothing is worse, in every round. Silence in a [group discussion](https://thetailorcv.com/blog/group-discussion-tips) is usually an automatic elimination, and one-word answers in interviews leave the interviewer with nothing to assess.
 
 ---
 

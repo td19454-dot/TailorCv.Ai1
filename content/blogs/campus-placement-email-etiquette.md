@@ -34,7 +34,7 @@ Before any of it, make sure the resume you attach works — the [free ATS score 
 
 **Subject line.** Specific and informative. Recruiters scan inboxes.
 
-- Good: `Application for Software Engineer Role — Ananya Sharma, NIT Trichy`
+- Good: `Application for [Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) Role — Ananya Sharma, NIT Trichy`
 - Bad: `Job`, `Regarding job`, `Hi sir`
 
 **Greeting.** "Dear Ms Sharma" if you know the name, "Dear Hiring Team" if you do not. **Avoid "Respected Sir/Madam"** — it is common in Indian student email and reads as dated and impersonal to most recruiters, particularly at product companies and multinationals.

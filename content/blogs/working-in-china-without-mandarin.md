@@ -42,7 +42,7 @@ The largest category, and the one where not speaking Mandarin is genuinely not a
 
 ### Roles where the foreign market is the job
 
-Export sales, international business development, sourcing and quality control for foreign buyers, and content or marketing aimed at English-speaking markets. Here your lack of Chinese is close to irrelevant, because the value you add points outward.
+Export sales, international business development, sourcing and quality control for foreign buyers, and content or marketing aimed at [English-speaking](https://thetailorcv.com/blog/english-speaking-jobs-across-europe) markets. Here your lack of Chinese is close to irrelevant, because the value you add points outward.
 
 This category is consistently underrated by job seekers and consistently hiring.
 
@@ -144,7 +144,7 @@ If Mandarin is not your strength, the resume has to make the case on other groun
 
 ### Can I really get a job in China with no Chinese at all?
 
-Yes, in specific categories - English teaching, multinationals, roles oriented toward foreign markets, and scarce specialist skills. Outside those, it is difficult, and applying broadly to domestic listings produces very low response rates.
+Yes, in specific categories - [English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume), multinationals, roles oriented toward foreign markets, and scarce specialist skills. Outside those, it is difficult, and applying broadly to domestic listings produces very low response rates.
 
 ### How much Mandarin do I actually need for a professional role?
 

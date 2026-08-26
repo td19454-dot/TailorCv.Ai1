@@ -85,7 +85,7 @@ Co-op placements sometimes have constraints, and knowing them early changes your
 
 **"Who advises on the post-graduation work permit?"**
 
-Career services and the international student office are usually separate. The [PGWP](/blog/canada-pgwp-for-new-grads) is the international office's territory, and getting the timing wrong is expensive.
+Career services and the [international student](/blog/international-student-jobs-canada) office are usually separate. The [PGWP](/blog/canada-pgwp-for-new-grads) is the international office's territory, and getting the timing wrong is expensive.
 
 One thing worth doing yourself: many employers do not realise the PGWP is an open permit requiring no sponsorship. Saying so in your first conversation with a recruiter removes an objection that does not exist.
 
@@ -243,7 +243,7 @@ The highest-value question available to you in that building. The answer produce
 
 Many Canadian employers, particularly smaller ones, assume any international candidate carries a sponsorship burden. A [one-sentence correction](/blog/canada-new-grad-interview-preparation) changes outcomes, and you need to be able to deliver it confidently.
 
-**Use them for Canadian resume conventions.** Small national differences — what to include, what to leave off, how to present overseas education and experience — are exactly what an adviser who reads these daily can fix quickly.
+**Use them for [Canadian resume](/blog/canadian-resume-format-guide-2026) conventions.** Small national differences — what to include, what to leave off, how to present overseas education and experience — are exactly what an adviser who reads these daily can fix quickly.
 
 **Ask about employers outside the largest cities.** Regional employers are frequently more open, less contested, and better positioned for provincial immigration streams. Career services often know which ones actively recruit international graduates.
 

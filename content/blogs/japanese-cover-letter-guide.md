@@ -25,7 +25,7 @@ This guide explains how to write a cover letter for jobs in Japan in 2026: when 
 
 ## Do You Need a Cover Letter in Japan?
 
-- **Traditional Japanese companies:** typically rely on the *rirekisho* + *shokumu-keirekisho*. Your motivation is expressed in the rirekisho's *shibō dōki* section rather than a separate cover letter — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
+- **Traditional Japanese companies:** typically rely on the *rirekisho* + *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*. Your motivation is expressed in the rirekisho's *shibō dōki* section rather than a separate cover letter — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
 - **Global companies, tech firms, startups, international roles:** frequently expect (or welcome) a Western-style English cover letter alongside your resume.
 
 If a posting requests a cover letter, always include one. If it's optional at a global employer, a strong letter is usually worth it. For the wider picture, see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner).
@@ -125,7 +125,7 @@ If relevant, note your **JLPT** and **TOEIC** levels — trusted, concrete signa
 ## Pair It With a Strong Application
 
 - Match your resume format to the employer — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
-- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the AI mock interview.
+- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume).
 - Find the right roles via the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 
 ## Frequently Asked Questions

@@ -51,7 +51,7 @@ Canada operates on an annual tax filing system, generally due each spring for th
 
 Keep your pay records and any relevant tax documents organised throughout the year, rather than scrambling to reconstruct them the following spring, this is the same [record-keeping discipline that pays off in any regulated employment context](/blog/first-job-abroad-practical-checklist).
 
-Your employer issues a T4 slip (Statement of Remuneration Paid) by the end of February each year, summarizing your total income and deductions — this is the single document you actually need to file, the Canadian equivalent of a W-2. Filing itself is done through **NETFILE**, the CRA's electronic filing system, using either paid software like TurboTax or a free option like Wealthsimple Tax for a straightforward first return. More complex situations — specific international student or work permit circumstances, income from outside Canada — may benefit from professional advice for at least the first filing.
+Your employer issues a T4 slip (Statement of Remuneration Paid) by the end of February each year, summarizing your total income and deductions — this is the single document you actually need to file, the Canadian equivalent of a W-2. Filing itself is done through **NETFILE**, the CRA's electronic filing system, using either paid software like TurboTax or a free option like Wealthsimple Tax for a straightforward first return. More complex situations — specific [international student](/blog/international-student-jobs-canada) or work permit circumstances, income from outside Canada — may benefit from professional advice for at least the first filing.
 
 ## What to check on your first payslip
 
@@ -110,7 +110,7 @@ That gross pay matches your contract, that tax deductions look reasonable, and t
 
 ### Where do I get help with my first tax filing if my situation is complex?
 
-Standard filing software handles straightforward situations well, professional advice is worth considering for more complex circumstances, including specific international student or work permit situations, particularly for your first filing.
+Standard filing software handles straightforward situations well, professional advice is worth considering for more complex circumstances, including specific [international student](/blog/international-student-resume-differences-by-country) or work permit situations, particularly for your first filing.
 
 ### What is the TD1 form and do I need to fill it out?
 

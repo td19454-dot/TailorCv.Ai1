@@ -43,7 +43,7 @@ Historically anchored in energy (Suncor, Cenovus, and the broader oil and gas se
 
 Considerably lower cost of living than the three largest cities, and correspondingly less contested for graduates in relevant fields — worth checking directly whether your target sector has a genuine presence here rather than assuming these cities offer only energy-sector work.
 
-Edmonton specifically has real, distinct depth in AI research through the Alberta Machine Intelligence Institute (Amii), affiliated with the University of Alberta and home to reinforcement-learning research associated with Rich Sutton, one of the field's most cited researchers — a genuine research cluster that doesn't get the attention Toronto or Montreal's AI scenes do, worth knowing about specifically if machine learning research is your target rather than assuming Edmonton is purely an energy-sector city.
+Edmonton specifically has real, distinct depth in AI research through the Alberta Machine Intelligence Institute (Amii), affiliated with the University of Alberta and home to reinforcement-learning research associated with Rich Sutton, one of the field's most cited researchers — a genuine research cluster that doesn't get the attention Toronto or Montreal's AI scenes do, worth knowing about specifically if [machine learning](/blog/machine-learning-interview-questions) research is your target rather than assuming Edmonton is purely an energy-sector city.
 
 ## Ottawa
 

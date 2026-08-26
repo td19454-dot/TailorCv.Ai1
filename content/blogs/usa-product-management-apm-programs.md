@@ -65,7 +65,7 @@ The most common failure is jumping to features. A structure that works:
 
 **Name the risk.** What could go wrong, who might be worse off.
 
-**And say what you would want to know.** A product manager who acknowledges the limits of their information reads as senior; one who is certain reads as junior.
+**And say what you would want to know.** A [product manager](/blog/product-manager-portfolio-guide) who acknowledges the limits of their information reads as senior; one who is certain reads as junior.
 
 Fifteen minutes, narrated aloud, with the interviewer interrupting. Practise it with a partner using real products you use.
 

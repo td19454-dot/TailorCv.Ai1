@@ -116,9 +116,9 @@ TailorCV's [resume optimizer](/solutions) reads the job description, separates r
 When you're faced with a job description, it can be challenging to determine how to present your qualifications effectively. Here are a few scenarios to illustrate how you can prioritize your qualifications based on the required and preferred distinctions.
 
 
-**Scenario 1: Marketing Manager Position**
+**Scenario 1: [Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026) Position**
 
-- **Required Qualifications:** 5 years of experience in digital marketing, proficiency in Google Analytics.
+- **Required Qualifications:** 5 years of experience in [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), proficiency in Google Analytics.
 - **Preferred Qualifications:** Familiarity with SEO best practices, experience managing a team.
 
 *Approach:*

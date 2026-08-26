@@ -25,7 +25,7 @@ showcase: none
 
 **New Brunswick is Canada's only officially bilingual province**, with a substantial Francophone population (largely Acadian) concentrated particularly in the north and east of the province — a genuinely distinct labour market from the rest of English Canada, worth researching specifically if bilingual work outside Quebec interests you.
 
-**The federal government designates a substantial number of positions as bilingual**, requiring demonstrated proficiency in both English and French, [genuine bilingual candidates access a meaningfully wider range of federal roles](/blog/canada-government-jobs-for-students) than English-only candidates, this is a real and often underappreciated advantage for anyone targeting federal public service specifically.
+**The [federal government](/blog/federal-government-resume-guide) designates a substantial number of positions as bilingual**, requiring demonstrated proficiency in both English and French, [genuine bilingual candidates access a meaningfully wider range of federal roles](/blog/canada-government-jobs-for-students) than English-only candidates, this is a real and often underappreciated advantage for anyone targeting federal public service specifically.
 
 **Parts of other provinces**, particularly regions with significant Francophone communities, offer additional opportunity for bilingual candidates, though this varies considerably by specific region and is worth researching directly for your target location — a general national average tells you almost nothing useful about a specific city or region's actual demand for bilingual skills, so treat any broad national figure as a starting point for further research, not a conclusion in itself.
 

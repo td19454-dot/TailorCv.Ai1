@@ -78,7 +78,7 @@ The letter's job is to explain what the CV lists. If a hiring manager could dele
 
 **Quantify.** The same discipline as the CV, covered in [how to quantify achievements on your resume](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume).
 
-**Explain anything the CV cannot.** A career change, a gap, a relocation, a sideways move. This is the right place for it, in one sentence without apology - see [how to explain an employment gap](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) and, for a change of field, [career change cover letter](https://thetailorcv.com/blog/cover-letter-for-career-change).
+**Explain anything the CV cannot.** A [career change](https://thetailorcv.com/blog/career-change-portfolio), a gap, a relocation, a sideways move. This is the right place for it, in one sentence without apology - see [how to explain an employment gap](https://thetailorcv.com/blog/how-to-explain-employment-gap-on-resume-2026) and, for a change of field, [career change cover letter](https://thetailorcv.com/blog/cover-letter-for-career-change).
 
 **Say something specific about the organisation.** Not "a leader in the industry" - something you could only write about them.
 
@@ -196,7 +196,7 @@ Follow the instructions in the advert. If there are none, attaching a PDF and in
 
 ### Do I need a cover letter for an online application form?
 
-Usually not if the form has its own supporting-statement fields - but the same principles apply to those fields, and public sector forms in particular expect competency-based written answers.
+Usually not if the form has its own supporting-statement fields - but the same principles apply to those fields, and public sector forms in particular expect [competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide) written answers.
 
 ### Should I mention salary expectations?
 

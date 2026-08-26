@@ -175,7 +175,7 @@ The right approach can lead to a fulfilling career and a mutually beneficial rel
 ## Common Mistakes to Avoid During Negotiation
 
 - **Focusing Solely on Salary**  
-  Many candidates make the mistake of concentrating only on the salary figure. Remember to consider other elements like benefits, work-life balance, and career advancement opportunities. For tips on how to express your salary expectations, see [How to Answer Salary Expectations Without Underselling Yourself](https://thetailorcv.com/blog/salary-expectation-answer-guide).
+  Many candidates make the mistake of concentrating only on the salary figure. Remember to consider other elements like benefits, [work-life balance](https://thetailorcv.com/blog/work-life-balance-tips), and career advancement opportunities. For tips on how to express your salary expectations, see [How to Answer Salary Expectations Without Underselling Yourself](https://thetailorcv.com/blog/salary-expectation-answer-guide).
 
 - **Being Unprepared for Counteroffers**  
   When negotiating, expect the employer to counter your request. If you haven’t prepared for this, you may accept an offer that falls short of your needs. Always have a minimum acceptable offer in mind.

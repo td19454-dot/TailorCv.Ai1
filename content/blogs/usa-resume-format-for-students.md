@@ -242,7 +242,7 @@ What this is not is inventing skills to match the posting. The words change; the
 
 Use whichever name you want to be called, consistently across the resume, your email and LinkedIn. Consistency matters more than which one you choose.
 
-**You are an international student.** Keep visa status off the document entirely. It is not a credential, it takes space from evidence, and it is [answered in conversation](/blog/usa-visa-sponsorship-question-interview) when asked.
+**You are an [international student](/blog/international-student-jobs-canada).** Keep visa status off the document entirely. It is not a credential, it takes space from evidence, and it is [answered in conversation](/blog/usa-visa-sponsorship-question-interview) when asked.
 
 ## Submission details that quietly matter
 

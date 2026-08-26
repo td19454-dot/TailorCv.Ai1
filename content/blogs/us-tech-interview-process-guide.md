@@ -32,9 +32,9 @@ Before any of it, your resume has to survive screening - run it through the [fre
 
 **1. Recruiter screen (20-30 minutes).** Background, motivation, timeline, compensation expectations, and work authorisation. Non-technical, but it is a real filter.
 
-**2. Technical phone screen (45-60 minutes).** Usually one or two coding problems in a shared editor, sometimes with a brief discussion of your experience.
+**2. Technical [phone screen](https://thetailorcv.com/blog/phone-screen-interview-tips) (45-60 minutes).** Usually one or two coding problems in a shared editor, sometimes with a brief discussion of your experience.
 
-**3. Onsite loop (4-6 hours).** Historically in person, now frequently virtual. Four to six back-to-back sessions: two or three coding, one system design, one or two behavioral, sometimes a domain-specific round.
+**3. Onsite loop (4-6 hours).** Historically in person, now frequently virtual. Four to six back-to-back sessions: two or three coding, one [system design](https://thetailorcv.com/blog/system-design-interview-guide), one or two behavioral, sometimes a domain-specific round.
 
 **4. Debrief and decision.** Interviewers submit written feedback and a hiring committee or manager decides.
 

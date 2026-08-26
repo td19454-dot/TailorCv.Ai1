@@ -40,7 +40,7 @@ LinkedIn deserves special emphasis in the Canadian job search for a few reasons.
 
 ## How Recruiters Search LinkedIn
 
-Recruiters filter by keywords, titles, skills, location, and industry. To appear, your profile must contain the terms they search — the same principle as beating the ATS on your resume. If a recruiter searches "financial analyst Toronto" and your profile lacks those words, you won't surface. That makes keyword optimisation the foundation.
+Recruiters filter by keywords, titles, skills, location, and industry. To appear, your profile must contain the terms they search — the same principle as beating the ATS on your resume. If a recruiter searches "[financial analyst](https://thetailorcv.com/blog/financial-analyst-resume-2026) Toronto" and your profile lacks those words, you won't surface. That makes keyword optimisation the foundation.
 
 ## Your Profile Is a Living Resume
 

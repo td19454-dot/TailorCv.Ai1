@@ -34,7 +34,7 @@ For professional, MNC, and tech roles, LinkedIn is often the first place recruit
 
 ## How Recruiters Search LinkedIn
 
-Recruiters use LinkedIn's search and Recruiter tools to filter by keywords, job titles, skills, location, and industry. To appear in their results, your profile must contain the terms they search for — the same principle as beating the ATS on your resume. If a recruiter searches "digital marketing executive Kuala Lumpur" and your profile doesn't contain those words, you won't surface.
+Recruiters use LinkedIn's search and Recruiter tools to filter by keywords, job titles, skills, location, and industry. To appear in their results, your profile must contain the terms they search for — the same principle as beating the ATS on your resume. If a recruiter searches "[digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) executive Kuala Lumpur" and your profile doesn't contain those words, you won't surface.
 
 That makes keyword optimisation the foundation of everything below.
 

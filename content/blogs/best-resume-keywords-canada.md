@@ -86,7 +86,7 @@ Use only those you can back up, and prefer the specific over the generic.
 - Frameworks/tools: React, Node.js, .NET, Angular, Docker, Kubernetes
 - Cloud: AWS, Azure, Google Cloud
 - Practices: Agile, Scrum, CI/CD, DevOps, REST APIs, microservices
-- Data: data analysis, SQL, Power BI, Tableau, machine learning
+- Data: data analysis, SQL, Power BI, Tableau, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
 
 For tech and creative roles, a portfolio adds proof — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 

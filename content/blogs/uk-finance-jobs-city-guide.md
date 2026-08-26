@@ -78,7 +78,7 @@ This is the part that catches people out, and it is worth knowing in first year.
 
 ## Applications and interviews
 
-**Competency-based, structured, and scored.** UK finance applications ask you to evidence named competencies or firm values, and interviews follow the same structure. Answer in STAR with the emphasis on your own actions — see [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).
+**[Competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide), structured, and scored.** UK finance applications ask you to evidence named competencies or firm values, and interviews follow the same structure. Answer in STAR with the emphasis on your own actions — see [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).
 
 **Numerical and situational judgement tests** are standard at the application stage, and they are practisable. Candidates who do twenty practice questions before the real thing consistently outperform those who do none.
 

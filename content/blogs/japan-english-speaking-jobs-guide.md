@@ -87,7 +87,7 @@ Recruitment agencies specialising in bilingual placement, which are a more signi
 
 International companies with a substantial Japan presence are the most reliable category, particularly on teams explicitly organised to serve international clients or coordinate with a global headquarters, worth researching the specific team's actual daily working language directly rather than relying on the company's general reputation, exactly [the same caution that applies to any language requirement assessment](/blog/japan-japanese-language-requirements-jobs).
 
-English teaching roles, [covered in the dedicated JET programme and teaching guide](/blog/japan-jet-programme-and-teaching-jobs), represent a distinct and genuinely accessible category where English is the core requirement of the role itself.
+[English teaching](/blog/english-teaching-jobs-japan-resume) roles, [covered in the dedicated JET programme and teaching guide](/blog/japan-jet-programme-and-teaching-jobs), represent a distinct and genuinely accessible category where English is the core requirement of the role itself.
 
 Some technology companies, particularly startups with international founders or significant international investment, sometimes operate substantially in English, worth researching specific companies directly.
 
@@ -152,7 +152,7 @@ A significant and genuinely accessible one, though not the only route, internati
 
 ### How do I find these specific roles?
 
-Research international companies' Japan operations directly, check job platforms that specifically cater to English-speaking candidates in Japan, and ask directly about a specific team's actual working language during any application process.
+Research international companies' Japan operations directly, check job platforms that specifically cater to [English-speaking](/blog/english-speaking-jobs-across-europe) candidates in Japan, and ask directly about a specific team's actual working language during any application process.
 
 ### How many jobs in Japan are genuinely English-only?
 

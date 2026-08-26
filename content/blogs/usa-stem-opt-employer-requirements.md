@@ -118,7 +118,7 @@ Two failure modes, and they are opposite. Some candidates never ask and discover
 
 Because employer eligibility is binary and knowable in advance, it should shape the shape of your search rather than being a filter you apply at the end.
 
-**Front-load the list building.** Before the autumn cycle opens, spend an afternoon producing a list of thirty to forty target employers with enrolment status checked. This is dull and it is the single most valuable planning task available to an international student.
+**Front-load the list building.** Before the autumn cycle opens, spend an afternoon producing a list of thirty to forty target employers with enrolment status checked. This is dull and it is the single most valuable planning task available to an [international student](/blog/international-student-jobs-canada).
 
 **Weight toward larger employers, without excluding smaller ones.**
 
@@ -154,7 +154,7 @@ Ten minutes a quarter. The alternative is discovering a gap in your record at th
 
 Worth stating plainly, because students treat it as a detail and it is closer to a constraint on the entire plan.
 
-A domestic classmate applying to two hundred employers has two hundred realistic options. An international student applying to the same two hundred has however many are enrolled — and the proportion varies enormously by sector, company size and state.
+A domestic classmate applying to two hundred employers has two hundred realistic options. An [international student](/blog/international-student-resume-differences-by-country) applying to the same two hundred has however many are enrolled — and the proportion varies enormously by sector, company size and state.
 
 That has three consequences. **Your application volume needs to be higher** to reach the same number of interviews, which is arithmetic rather than pessimism. **Your list needs building earlier**, because filtering takes an afternoon you will not have in December. And **your sector choices are narrower than you think** — some industries are almost entirely enrolled, others barely at all, and knowing which is which before you commit a semester to one is worth the hour it takes to find out.
 

@@ -42,7 +42,7 @@ Be precise about your own status, because vagueness in interviews reads as not k
 
 **The critical point:** during OPT you are authorised to work without employer sponsorship. The employer files nothing and pays nothing for your work authorisation. Many recruiters do not fully understand this, which is why stating it clearly is your job.
 
-**A note on accuracy:** rules, timelines, and eligibility change. Confirm everything with your school's international student office and official USCIS guidance rather than relying on any summary.
+**A note on accuracy:** rules, timelines, and eligibility change. Confirm everything with your school's [international student](https://thetailorcv.com/blog/international-student-jobs-canada) office and official USCIS guidance rather than relying on any summary.
 
 ---
 
@@ -199,7 +199,7 @@ CPT authorises work that is an integral part of your curriculum, typically durin
 
 ### How long does STEM OPT last?
 
-The STEM extension adds a further period beyond the initial OPT for eligible degrees where the employer is enrolled in E-Verify, giving substantially longer overall. Confirm current durations and eligibility with your international student office.
+The STEM extension adds a further period beyond the initial OPT for eligible degrees where the employer is enrolled in E-Verify, giving substantially longer overall. Confirm current durations and eligibility with your [international student](https://thetailorcv.com/blog/international-student-resume-differences-by-country) office.
 
 ### When should I start applying for jobs?
 

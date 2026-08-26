@@ -51,7 +51,7 @@ Treat recruiters as long-term relationships, not one-off transactions. Keep in t
 
 ## Don't rely on agencies alone
 
-Agencies are one channel, not your whole strategy. Keep applying directly, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), using [job boards](https://thetailorcv.com/blog/best-job-search-websites-2026), and sending [cold emails to hiring managers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in parallel. The candidates who land roles fastest run several channels at once, as how to apply to jobs faster and how to find a job fast explain. Recruiters accelerate your search; they don't replace it.
+Agencies are one channel, not your whole strategy. Keep applying directly, [networking](https://thetailorcv.com/blog/networking-tips-for-job-search), using [job boards](https://thetailorcv.com/blog/best-job-search-websites-2026), and sending [cold emails to hiring managers](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) in parallel. The candidates who land roles fastest run several channels at once, as [how to apply to jobs faster](https://thetailorcv.com/blog/how-to-apply-to-jobs-faster) and [how to find a job fast](https://thetailorcv.com/blog/how-to-find-a-job-fast) explain. Recruiters accelerate your search; they don't replace it.
 
 ## Recruitment agency checklist
 

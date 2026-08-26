@@ -51,7 +51,7 @@ Understanding this explains every specific difference below.
 
 ### Work History Detail
 
-- **Rirekisho:** a concise [chronological](https://thetailorcv.com/blog/chronological-vs-functional-resume) listing; detailed accomplishments go in the separate ***shokumu-keirekisho*** (work-history document).
+- **Rirekisho:** a concise [chronological](https://thetailorcv.com/blog/chronological-vs-functional-resume) listing; detailed accomplishments go in the separate ***[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*** (work-history document).
 - **Western resume:** the resume itself carries detailed achievement bullets.
 
 ### Tone and Differentiation
@@ -82,7 +82,7 @@ Use a Western-style resume when applying to:
 - **Tech firms, startups, and international teams** that hire in English.
 - **English-language roles** generally.
 
-These employers value a clear, achievement-focused, ATS-friendly resume. This is the route many foreigners take — see [working in Japan without Japanese](https://thetailorcv.com/blog/working-in-japan-without-japanese) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
+These employers value a clear, achievement-focused, [ATS-friendly resume](https://thetailorcv.com/blog/ats-friendly-resume-singapore). This is the route many foreigners take — see [working in Japan without Japanese](https://thetailorcv.com/blog/working-in-japan-without-japanese) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 
 ## How Foreigners Should Decide
 

@@ -48,7 +48,7 @@ Before anything, make sure the resume linking to it works — the [free ATS scor
 
 **GitHub Pages.** Free, tied to your repository, supports custom domains. Simple and dependable, with fewer features than dedicated hosting platforms but entirely sufficient for a static portfolio. A natural pairing if your GitHub is already part of your application — see [how to optimise your GitHub profile](https://thetailorcv.com/blog/github-profile-for-job-search-2026).
 
-**Site builders and no-code platforms.** Entirely legitimate. If you are not a developer, or you are a developer who would rather spend the time on case studies than on CSS, a builder gets you a good-looking responsive site quickly. Costs a monthly fee for a custom domain and removing platform branding.
+**Site builders and no-code platforms.** Entirely legitimate. If you are not a developer, or you are a developer who would rather spend the time on case studies than on CSS, a builder gets you a good-looking responsive site quickly. Costs a monthly fee for a [custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) and removing platform branding.
 
 **Portfolio-specific platforms.** Field-specific communities for designers, photographers and writers. Useful for discovery within those fields, and worth having alongside your own site rather than instead of it.
 

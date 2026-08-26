@@ -34,7 +34,7 @@ If you take a US resume template and run it through a default US spell-checker, 
 
 ## "College" doesn't mean what it means in the US
 
-In Canadian usage, a **college** is a distinct institution type — typically a community or technical college awarding diplomas and certificates — separate from a **university**, which awards degrees. An American reader defaults to using "college" loosely for any post-secondary institution, including a four-year university. On a Canadian resume, naming the correct institution type isn't pedantry; it tells the reader something real about your credential (diploma vs. degree) that "college" alone, used the American way, would obscure.
+In Canadian usage, a **college** is a distinct institution type — typically a community or technical college awarding diplomas and certificates — separate from a **university**, which awards degrees. An American reader defaults to using "college" loosely for any post-secondary institution, including a four-year university. On a [Canadian resume](/blog/canadian-resume-guide), naming the correct institution type isn't pedantry; it tells the reader something real about your credential (diploma vs. degree) that "college" alone, used the American way, would obscure.
 
 A further wrinkle: some institutions blur the line deliberately. A number of larger colleges (Seneca, Humber, and others) now offer their own applied degree programs alongside traditional diplomas, and some universities run affiliated college-style applied programs. Where your specific credential sits — diploma, applied degree, or traditional degree — is what actually matters to a reader, more than which broad institution type issued it; state the credential type explicitly on your resume rather than relying on the institution's name alone to convey it.
 
@@ -44,11 +44,11 @@ Applying through **jobs.gc.ca** (the Government of Canada's job site) doesn't wo
 
 **Bilingual positions carry a formal language requirement**, assessed through the Public Service's Second Language Evaluation — separate ratings for reading comprehension, written expression, and oral proficiency, each on its own scale. A posting listing a bilingual requirement expects you to know or find out your current standing on that evaluation, not just self-report "fluent" or "conversational" the way you might on a private-sector resume.
 
-**Don't confuse jobs.gc.ca with the Canada Job Bank (jobbank.gc.ca).** They're different sites serving different purposes — jobs.gc.ca is specifically for federal public service positions and runs the merit-criteria process described above; the Job Bank is a general national employment portal covering private-sector and other public postings across the whole country, with a much more conventional application process. Searching only one when your target role is actually posted on the other is a common, easily-avoided mistake.
+**Don't confuse jobs.gc.ca with the [Canada Job Bank](/blog/canada-job-bank-guide) (jobbank.gc.ca).** They're different sites serving different purposes — jobs.gc.ca is specifically for federal public service positions and runs the merit-criteria process described above; the Job Bank is a general national employment portal covering private-sector and other public postings across the whole country, with a much more conventional application process. Searching only one when your target role is actually posted on the other is a common, easily-avoided mistake.
 
 ## What's genuinely the same as US convention
 
-Length: one to two pages for a graduate applicant, regardless of accumulated experience — a new grad with genuinely limited work history is better served by one focused page than stretching to two with padded descriptions; length should follow from actual content, not the other way around. **No photo, no date of birth, no marital status** — matching [US and UK convention](/blog/international-student-resume-differences-by-country), and worth actively removing if you're adapting a resume originally built for a market where these details are conventional. **Outcomes over duties**: "resolved an average of forty customer enquiries daily, maintaining a satisfaction rating above ninety percent" beats "responsible for customer service," the same principle that improves a resume anywhere. **Reverse chronological structure**, with projects given real weight when work history is thin.
+Length: one to two pages for a graduate applicant, regardless of accumulated experience — a new grad with genuinely limited work history is better served by one focused page than stretching to two with padded descriptions; length should follow from actual content, not the other way around. **No photo, no date of birth, no marital status** — matching [US and UK convention](/blog/international-student-resume-differences-by-country), and worth actively removing if you're adapting a resume originally built for a market where these details are conventional. **Outcomes over duties**: "resolved an average of forty customer enquiries daily, maintaining a satisfaction rating above ninety percent" beats "responsible for [customer service](/blog/customer-service-resume-2026)," the same principle that improves a resume anywhere. **Reverse chronological structure**, with projects given real weight when work history is thin.
 
 ## Mentioning your work permit status
 
@@ -64,7 +64,7 @@ A specific note on GPA formatting. Canadian universities don't all use the same 
 
 ![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
 
-Font size, spacing, accent colour and template are all adjustable, with a live page counter — useful when a Canadian resume needs to stay within one to two pages.
+Font size, spacing, accent colour and template are all adjustable, with a live page counter — useful when a [Canadian resume](/blog/canadian-resume-format-guide-2026) needs to stay within one to two pages.
 
 ## Do's and Don'ts
 

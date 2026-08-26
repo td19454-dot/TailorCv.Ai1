@@ -48,7 +48,7 @@ Your resume should start with your contact information at the top. Include:
 
 A brief summary or objective statement can set the tone of your resume. Tailor this section to reflect your career aspirations and what you bring to the table. Here’s an example:
 
-**Objective**: "Detail-oriented marketing graduate with a passion for digital marketing and a proven track record in social media campaigns. Seeking to leverage skills in a dynamic marketing role at XYZ Company."
+**Objective**: "Detail-oriented marketing graduate with a passion for [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) and a proven track record in social media campaigns. Seeking to leverage skills in a dynamic marketing role at XYZ Company."
 
 ### 3. Education
 
@@ -240,4 +240,4 @@ References are typically provided upon request, so you can simply state "Referen
 
 ### What is a good ATS score?
 
-A good ATS score is typically 80% or higher. You can check your score using our [ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets industry standards.
+A [good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) is typically 80% or higher. You can check your score using our [ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets industry standards.

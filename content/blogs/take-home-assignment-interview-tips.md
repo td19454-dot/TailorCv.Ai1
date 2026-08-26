@@ -45,7 +45,7 @@ Clean formatting, a clear structure, and zero typos make your work easy to evalu
 
 ## Prepare for the follow-up discussion
 
-Many assignments lead to a review conversation where you walk through your solution. Be ready to defend your choices, explain what you'd improve, and respond to challenges calmly — this is often where the offer is decided. Rehearse talking through your work out loud with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and review the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) if it's an engineering role or the [case interview guide](https://thetailorcv.com/blog/case-interview-preparation-guide-2026) for consulting-style tasks. Product designers should also review the product designer resume guide, since design take-homes are common.
+Many assignments lead to a review conversation where you walk through your solution. Be ready to defend your choices, explain what you'd improve, and respond to challenges calmly — this is often where the offer is decided. Rehearse talking through your work out loud with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and review the [technical interview guide](https://thetailorcv.com/blog/technical-interview-preparation-guide) if it's an engineering role or the [case interview guide](https://thetailorcv.com/blog/case-interview-preparation-guide-2026) for consulting-style tasks. Product designers should also review the [product designer resume](https://thetailorcv.com/blog/product-designer-resume-2026) guide, since design take-homes are common.
 
 ### See it in action: a resume-based mock interview
 
@@ -68,4 +68,4 @@ Before you submit, confirm you've:
 - [ ] **Polished the presentation** — clean, structured, [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist).
 - [ ] **Prepared for the follow-up** with a [mock interview](https://www.thetailorcv.com/mock-interview).
 
-Nail those and your take-home becomes a genuine advantage. Keep the rest of your process just as sharp: a tailored [resume](https://www.thetailorcv.com/modify-cv) scored with the [ATS checker](https://www.thetailorcv.com/solutions), a strong [cover letter](https://www.thetailorcv.com/cover-letter), and a prompt thank-you email after the review.
+Nail those and your take-home becomes a genuine advantage. Keep the rest of your process just as sharp: a tailored [resume](https://www.thetailorcv.com/modify-cv) scored with the [ATS checker](https://www.thetailorcv.com/solutions), a strong [cover letter](https://www.thetailorcv.com/cover-letter), and a prompt [thank-you email after](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) the review.

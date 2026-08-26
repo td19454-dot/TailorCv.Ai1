@@ -35,7 +35,7 @@ Based on various labor market analyses, the following professions are expected t
    - **Software Developers**
    - **Data Scientists**
    - **Cybersecurity Specialists**
-   - **AI/Machine Learning Engineers**
+   - **AI/[Machine Learning](https://thetailorcv.com/blog/machine-learning-interview-questions) Engineers**
 
 3. **Green Jobs**
    - **Renewable Energy Technicians**

@@ -203,7 +203,7 @@ Optimising for the ATS is a process, and the candidates who improve fastest trea
 
 ## Beyond the ATS: Winning the Human Stage
 
-Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our Malaysia interview tips and a realistic AI mock interview.
+Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our Malaysia interview tips and a realistic [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume).
 
 ## Formatting Details That Quietly Break Parsers
 
@@ -220,7 +220,7 @@ The safest test remains simple: open your PDF, select all the text, and copy it 
 
 ## The Future of ATS: AI-Powered Screening
 
-Applicant tracking is evolving, and Malaysian employers — especially large MNCs and banks — are increasingly layering AI on top of traditional keyword matching. Newer systems attempt to understand *meaning*, not just exact strings: recognising that "managed a team" and "led five direct reports" describe similar things, or inferring seniority and domain from context. Some pipelines now include AI-assisted ranking, video-interview analysis, and skills inference.
+Applicant tracking is evolving, and Malaysian employers — especially large MNCs and banks — are increasingly layering AI on top of traditional keyword matching. Newer systems attempt to understand *meaning*, not just exact strings: recognising that "managed a team" and "led five direct reports" describe similar things, or inferring seniority and domain from context. Some pipelines now include AI-assisted ranking, [video-interview](https://thetailorcv.com/blog/video-interview-tips-2026) analysis, and skills inference.
 
 What does this mean for you as a candidate?
 

@@ -73,7 +73,7 @@ List your work experience in reverse chronological order. Include:
 
 **Example:**
 
-**Software Engineer**  
+**[Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation)**  
 XYZ Tech Solutions, San Francisco, CA  
 June 2021 - Present  
 
@@ -96,7 +96,7 @@ Many U.S. companies use ATS to filter resumes before they reach hiring managers.
 
 - **Simple Formatting**: Avoid complex layouts, graphics, or unusual fonts. Stick to a standard format that ATS can easily read.
 
-- **Free ATS Score Checker**: Use tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate how well your resume aligns with the job description.
+- **Free [ATS Score Checker](https://thetailorcv.com/blog/ats-score-checker-free)**: Use tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate how well your resume aligns with the job description.
 
 ## Highlight Work Authorization
 

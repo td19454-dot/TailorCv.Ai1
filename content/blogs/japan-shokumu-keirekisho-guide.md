@@ -21,7 +21,7 @@ showcase: resume
 
 ## What it is for
 
-**Detail, where the rirekisho gives structure.** The [rirekisho](/blog/japan-resume-rirekisho-guide) records that you worked somewhere between two dates. The shokumu keirekisho explains what you actually did there — the [projects](/blog/fresher-resume-projects-that-get-interviews), your role, the results, the skills you used.
+**Detail, where the rirekisho gives structure.** The [rirekisho](/blog/japan-resume-rirekisho-guide) records that you worked somewhere between two dates. The [shokumu keirekisho](/blog/shokumu-keirekisho-guide) explains what you actually did there — the [projects](/blog/fresher-resume-projects-that-get-interviews), your role, the results, the skills you used.
 
 **More flexible in format.** Common conventions exist and you have real latitude in how you organise and present the content. This is where the differentiation the standardised form does not permit actually happens.
 
