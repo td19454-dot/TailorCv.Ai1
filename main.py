@@ -9577,7 +9577,7 @@ async def blog_listing_page(
     category: str = "",
     page: int = 1,
 ):
-    results = blog_service.search_posts(query=q, tag=tag, category=category, page=page, per_page=18)
+    results = blog_service.search_posts(query=q, tag=tag, category=category, page=page, per_page=20)
     filters = blog_service.list_filters()
     canonical_url = build_absolute_url("/blog")
     return templates.TemplateResponse(
