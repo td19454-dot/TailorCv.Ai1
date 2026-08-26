@@ -2354,8 +2354,8 @@ body {
     text-transform: uppercase; padding: 0.1rem 0.45rem; border-radius: 5px; margin-right: 0.4rem;
     vertical-align: middle;
 }
-.tc-chg-tag.new       { background: #dbeafe; color: #1d4ed8; }
-.tc-chg-tag.reworded  { background: #fef3e0; color: #92600a; }
+.tc-chg-tag.new       { background: #d1fae5; color: #0b1220; }
+.tc-chg-tag.reworded  { background: #d1fae5; color: #0b1220; }
 .tc-chg-tag.unchanged { background: #e2e8f0; color: #475569; }
 .tc-chg-removed-title { font-size: 0.7rem; font-weight: 700; color: #b91c1c; margin-top: 0.5rem; }
 .tc-chg-removed { font-size: 0.76rem; color: #b91c1c; text-decoration: line-through; margin: 0.2rem 0; }
@@ -2469,7 +2469,8 @@ body {
                         afterLine.appendChild(renderDiffLine(afterParts, "tc-chg-add"));
                         row.append(beforeLine, afterLine);
                     } else {
-                        const afterLine = document.createElement("span");
+                        const afterLine = document.createElement("div");
+                        afterLine.className = "tc-chg-after-line";
                         afterLine.textContent = b.after;
                         row.appendChild(afterLine);
                     }
