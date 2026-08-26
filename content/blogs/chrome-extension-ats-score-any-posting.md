@@ -61,6 +61,68 @@ When you want more than a score, the site's full [ATS analysis](/ats-analysis) g
 
 **The full analysis is free and unlimited for logged-in users.** Guests get one free scan.
 
+## Turning a low score into a better resume
+
+A practical sequence rather than general advice.
+
+**Collect four postings** for jobs you would genuinely be good at and would genuinely take.
+
+**List the terms they share.** Tools, systems, methods, standards, certifications. Terms appearing in three or four of them are what your target market actually asks for.
+
+**Mark each one honestly.** Have done it. Have touched it. Have never used it.
+
+**For "have done it" terms missing from your resume — add them.** This is the largest and easiest gain available to most graduates, and it is entirely legitimate because it is true.
+
+**For "have touched it" — find the honest phrasing.** "Used X in a university project to do Y" is accurate and it matches. Vagueness helps nobody.
+
+**For "never used it" — that is your learning list.** Not a resume edit. Pick the one or two that appear most often and go and learn them.
+
+**Then re-run the score.** You should see it move on all four postings at once, which is the point — you fixed the document, not one application.
+
+## The limits of any score
+
+Worth stating plainly so the number does not become the goal.
+
+**It measures document-to-posting correspondence.** Not whether you can do the job, not whether the team would like you, not whether the role is worth having.
+
+**A high score does not mean an interview.** Timing, competition, whether the requisition is real, and whether your experience level fits all sit outside it.
+
+**A low score does not mean rejection.** Referrals, unusual backgrounds and genuinely distinctive experience all beat keyword correspondence regularly.
+
+**And no score replaces reading the posting.** The most expensive applications are the well-matched ones sent to jobs the candidate did not want and would not have enjoyed.
+
+## What automated screening actually does
+
+Understanding the thing being modelled makes the score more useful.
+
+**It parses your document first.** Before any matching, the system extracts text and tries to identify sections — contact details, experience, education, skills. A document that parses badly fails here regardless of content, which is why formatting matters so much.
+
+**Then it matches against the requisition.** Usually literal terms drawn from the job description or from criteria the recruiter configured.
+
+**Then it ranks or filters.** Depending on configuration, candidates are scored and ranked for a human to review, or filtered out below a threshold.
+
+**Knock-out questions exist too.** Work authorisation, minimum qualification, location — answered in the form rather than the resume, and frequently decisive on their own.
+
+**What it does not do** is understand you. It does not infer that "containerised deployments" means Docker, or that your degree title is equivalent to the one in the posting. That inference is your job, done by writing the terms explicitly where they are true.
+
+## Formatting for parsers
+
+The unglamorous half of any ATS score.
+
+**Single column.** Two-column layouts interleave text when extracted and produce sentences that mean nothing.
+
+**Standard section headings.** Experience, Education, Skills. A creatively named section may not be recognised as a section at all.
+
+**No text inside images.** It is invisible to a parser, and any contact detail rendered as a graphic is a contact detail the system does not have.
+
+**Simple bullets and standard fonts.** Decorative glyphs sometimes extract as junk characters.
+
+**Dates in a consistent format**, so the parser can build a chronology.
+
+**Export as PDF** unless asked for Word, and check that you can select the text in the exported file. If you cannot select it, neither can the parser.
+
+**Name the file with your name in it**, which matters to the human at the other end rather than the machine.
+
 ## Mini checklist
 
 - [ ] Base resume uploaded and current
@@ -153,3 +215,17 @@ Yes — it gives a detailed breakdown of matched and missing skills and how the 
 ### Why does the score not get recalculated later?
 
 Deliberately. Two separate scorings of identical input disagree, and reusing one analysis means every screen shows you consistent numbers.
+### How do I turn a low score into a better resume?
+
+Collect four postings for jobs you would genuinely take, list the terms they share, mark each honestly, add the ones you have actually done, phrase the partial ones accurately, and treat the rest as a learning list.
+
+### Does a high score mean I will get an interview?
+
+No. It measures document-to-posting correspondence only. Timing, competition, whether the requisition is real, and level fit all sit outside it.
+### What does an ATS actually do with my resume?
+
+It parses the text into sections, matches terms against the requisition, then ranks or filters. Knock-out questions on work authorisation and location are often decisive on their own.
+
+### What formatting breaks a parser?
+
+Two-column layouts, creatively named sections, text inside images, decorative bullet glyphs and inconsistent dates. If you cannot select the text in your exported PDF, neither can the parser.

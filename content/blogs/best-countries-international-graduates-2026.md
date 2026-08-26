@@ -124,6 +124,22 @@ The sequence of decisions matters as much as which country you pick.
 
 **And whenever policy changes.** Every route in this guide has been amended recently. A plan made three years ago should be re-checked before it is executed.
 
+## What to do with this if you are still studying
+
+Concrete actions rather than a ranking to admire.
+
+**Find out your own institution's status.** Some routes — the Dutch orientation year, Hong Kong's Top Talent Pass — depend on university rankings. Check whether yours falls inside the current bands, because the answer changes which countries are open to you.
+
+**Diarise your post-study deadline now.** Every open route has a window that runs from your results date. Put it in a calendar in your final year rather than discovering it after your ceremony.
+
+**Get your documents ready early.** Apostilles, certified translations, sealed transcripts and background checks all come from your home country, and every one of them is easier to obtain before you move than after.
+
+**Build one deployed thing.** Whatever your field, a piece of work someone can open and evaluate — a [portfolio site](/portfolio), a repository, a published paper — travels across every border in this guide.
+
+**Check your base resume parses.** Automated screening is the one constant in every market here. Run an [ATS check](/ats-analysis) once and remove the whole category of silent rejection.
+
+**And learn the language of wherever you are going.** It is the difference between working in a country and living in one, and every long-term international says the same thing about it.
+
 ## Mini checklist
 
 - [ ] Passport position established first

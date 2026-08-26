@@ -65,6 +65,66 @@ Three limits, each on purpose.
 
 **It does not replace judgement about fit.** Making applications cheap makes it tempting to apply to everything. Cheap applications to jobs you do not want are still wasted applications, and a recruiter who reads a mismatched application remembers it.
 
+## Writing better open-ended answers
+
+The generated answers are a strong draft. Here is how to make them yours in a minute.
+
+**Replace one generic sentence with one specific fact.** "I am drawn to your mission" becomes "I have used your API in a side project and the documentation is the reason I would rather build on it than the alternatives." Specificity is the whole game.
+
+**Cut the throat-clearing.** Opening phrases like "I am writing to express my strong interest in" consume characters you are short of anyway. Start with the substance.
+
+**Respect the limit but do not pad to it.** A 300-character limit is a maximum, not a target. A tight 180-character answer reads better than a padded 299.
+
+**Answer the actual question.** "Describe a time you handled conflicting priorities" wants a specific situation, not a general philosophy about prioritisation. If the draft is general, replace it with something that happened.
+
+**Keep a small bank of your own stories.** Four or five real situations with concrete outcomes, written once, cover the large majority of behavioural prompts you will ever be asked in a form or an interview.
+
+## Where the workflow fits in a real search
+
+The tooling is one part of something larger.
+
+**Before applying:** the skill match tells you whether the posting and your resume correspond, and whether your resume is understating you.
+
+**During:** the resume, letter and form answers are generated, read, edited and submitted by you.
+
+**After:** the application is logged and the tailored resume saved, so the record exists without you maintaining it.
+
+**Alongside all of it:** the things no tool does. Reaching out to someone at the company, preparing for an interview, deciding whether you actually want the job, and following up when nobody replies.
+
+**The honest framing:** the extension removes the mechanical cost of applying. It does not remove the search. What it buys you is the time and energy to spend on the parts that actually differentiate you.
+
+## Setting up the apply profile properly
+
+An hour here is repaid across every application you will make. What to put in it.
+
+**Contact details** exactly as you want them on official records — full legal name where forms ask for it, a phone number with country code, and a professional email address.
+
+**Work authorisation.** State it plainly in the terms your target market uses. "Full working rights, no sponsorship required" or the specific visa and its expiry. This is the field that most often decides whether an application is read.
+
+**Notice period and availability.** A specific answer — "available immediately" or "four weeks' notice" — rather than a vague one.
+
+**Links.** LinkedIn, a [portfolio site](/portfolio), a repository. One working link that someone can open beats three that need explanation.
+
+**Education**, with institution, qualification, dates and grades in the format forms usually request.
+
+**Standard disclosures.** Whatever your market's forms routinely ask — right to work, willingness to relocate, driving licence where relevant.
+
+**Then leave it alone** until something genuinely changes. The value of the profile is that it is stable.
+
+## Editing efficiently
+
+You will read a lot of generated text. Here is how to do it fast without doing it badly.
+
+**Read the first and last sentence of each answer first.** Weak generated text usually announces itself in the opening; if both ends are specific, the middle usually is too.
+
+**Have one edit you always make.** Most people find there is a particular phrasing they never use, and searching for it takes two seconds per document.
+
+**Edit for truth first, then for voice.** Anything factually off gets fixed always; voice gets fixed on jobs you care about.
+
+**Do not rewrite from scratch.** If a draft needs total rewriting, the base resume is usually the problem rather than the draft — the generator only has what you gave it.
+
+**And stop editing at good enough for tier two and three.** Perfect documents sent to fifteen roles you are lukewarm about is effort in the wrong place.
+
 ## Mini checklist
 
 - [ ] Base resume uploaded at thetailorcv.com/extension
@@ -159,3 +219,17 @@ It should not — both are generated from the same base resume against the same 
 ### Should I edit the generated cover letter?
 
 On jobs you genuinely want, yes. The generated version solves structure and the blank page; the voice should be yours.
+### How do I improve a generated open-ended answer?
+
+Replace one generic sentence with one specific fact, cut the throat-clearing, answer the actual question with a real situation, and keep it under the limit rather than padding to it.
+
+### What does the workflow not cover?
+
+Reaching out to people at the company, interview preparation, deciding whether you want the job, and following up. The tooling removes the mechanical cost, not the search.
+### What should go in the apply profile?
+
+Contact details, work authorisation stated plainly, notice period, links, education, and your market's standard disclosures. Then leave it stable.
+
+### How do I edit generated text quickly?
+
+Read the first and last sentence of each answer, fix anything factually off always, fix the voice only on jobs you care about, and stop at good enough for lower-tier applications.
