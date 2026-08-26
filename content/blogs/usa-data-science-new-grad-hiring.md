@@ -23,7 +23,7 @@ showcase: portfolio
 
 Reading a posting properly is the first skill, because preparing for the wrong one wastes a season.
 
-**Data analyst / product analyst.** Answering business questions with data. Heavy SQL, dashboards, experiment analysis, and a great deal of [communication](/blog/usa-behavioral-interview-star-campus) with people who do not read code. The largest category by headcount, the most accessible at entry level, and the most consistently underestimated by students who think it is a lesser version of data science. It is not — it is the closest to decision-making.
+**[Data analyst](/blog/data-analyst-portfolio-guide) / product analyst.** Answering business questions with data. Heavy SQL, dashboards, experiment analysis, and a great deal of [communication](/blog/usa-behavioral-interview-star-campus) with people who do not read code. The largest category by headcount, the most accessible at entry level, and the most consistently underestimated by students who think it is a lesser version of data science. It is not — it is the closest to decision-making.
 
 **Data scientist, product or analytics flavour.** Experiment design, causal inference, metric definition, and modelling in service of product decisions. Overlaps heavily with the analyst role at many companies and with research at others.
 

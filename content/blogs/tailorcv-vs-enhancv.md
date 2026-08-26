@@ -66,7 +66,7 @@ Parsers are not smart. They read top to bottom, left to right, and they were bui
 
 So the uncomfortable truth is this: **the more distinctive the resume looks, the more risk it carries through an ATS.** A resume that makes a recruiter smile is worth a great deal — but only if a recruiter ever sees it.
 
-**To be fair to Enhancv:** they know this. They offer ATS-friendly templates alongside the showpieces, and Pro includes an ATS check. They are not naive about it. But the check is paywalled, and the templates people actually choose are the striking ones — that is why they came. Our guide on [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) covers the specific things to avoid.
+**To be fair to Enhancv:** they know this. They offer [ATS-friendly](/blog/ats-friendly-resume-singapore) templates alongside the showpieces, and Pro includes an ATS check. They are not naive about it. But the check is paywalled, and the templates people actually choose are the striking ones — that is why they came. Our guide on [making your resume ATS-friendly](/blog/how-to-make-resume-ats-friendly) covers the specific things to avoid.
 
 **And to be fair to design:** it genuinely matters in some contexts. If you are a designer, a marketer, or applying to a small company where a human opens every application, a distinctive resume is an advantage, and a plain one wastes a chance to signal taste. Context decides. Anyone who tells you design never matters is selling something too.
 

@@ -32,7 +32,7 @@ Start by checking what a parser currently extracts from your CV with the [free A
 
 The highest-leverage keyword on your CV, and the one most often wasted.
 
-Recruiters search by title. If your role was internally called "Customer Delight Champion" and the market calls it "Customer Service Team Leader", database search will not return you.
+Recruiters search by title. If your role was internally called "Customer Delight Champion" and the market calls it "[Customer Service](https://thetailorcv.com/blog/customer-service-resume-2026) Team Leader", database search will not return you.
 
 **Use the standard market title.** Put the internal one in brackets if it carries meaning:
 
@@ -128,7 +128,7 @@ The general method for extracting these from a posting rather than guessing is i
 
 ## The Honesty Constraint
 
-UK interviews are overwhelmingly competency-based, which makes keyword inflation unusually risky. "Tell me about a time you used Terraform" arrives about ten minutes into the conversation.
+UK interviews are overwhelmingly [competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide), which makes keyword inflation unusually risky. "Tell me about a time you used Terraform" arrives about ten minutes into the conversation.
 
 Include a term if you have genuinely used the thing. If your experience is light, keep the term but qualify it in the bullet rather than inflating it. A skills block that no experience bullet supports is a recognisable pattern - see [how recruiters spot generic resumes](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).
 

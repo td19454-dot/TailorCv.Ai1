@@ -84,7 +84,7 @@ Apprenticeships are graded by level, roughly mapping to established qualificatio
 
 ## Getting one
 
-**Competition at large employers is intense.** Degree apprenticeships at well-known companies attract application volumes comparable to graduate schemes, and the process is similar — online application, aptitude tests, video interview, assessment centre. Prepare accordingly using [the UK graduate scheme guide](https://thetailorcv.com/blog/uk-graduate-scheme-guide) and [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).
+**Competition at large employers is intense.** Degree apprenticeships at well-known companies attract application volumes comparable to graduate schemes, and the process is similar — online application, aptitude tests, [video interview](https://thetailorcv.com/blog/video-interview-tips-2026), assessment centre. Prepare accordingly using [the UK graduate scheme guide](https://thetailorcv.com/blog/uk-graduate-scheme-guide) and [UK interview tips](https://thetailorcv.com/blog/uk-interview-tips).
 
 **Applications often open in autumn** for September starts, though many employers recruit year-round.
 

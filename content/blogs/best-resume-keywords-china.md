@@ -42,7 +42,7 @@ Recruiters search by title. If your last role was internally called "Customer Ha
 
 > 产品经理 / Product Manager
 
-Common pairs worth knowing include 软件工程师 (Software Engineer), 数据分析师 (Data Analyst), 市场经理 (Marketing Manager), 人力资源 (Human Resources), 运营 (Operations), and 销售经理 (Sales Manager).
+Common pairs worth knowing include 软件工程师 ([Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation)), 数据分析师 ([Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)), 市场经理 ([Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026)), 人力资源 (Human Resources), 运营 (Operations), and 销售经理 (Sales Manager).
 
 Which version leads depends on your audience - the [Chinese resume format guide](https://thetailorcv.com/blog/chinese-resume-format-guide-2026) covers building the bilingual pair properly.
 
@@ -56,7 +56,7 @@ Name the specific technology, not the family. "Programming languages" returns no
 
 Include the domestic ecosystem, which foreign applicants routinely omit and local recruiters routinely search: Alibaba Cloud (阿里云), Tencent Cloud (腾讯云), Huawei Cloud, WeChat Mini Program (小程序) development, DingTalk integration. If you have worked with these, they are differentiators.
 
-Standard international terms still apply - Kubernetes, Docker, microservices (微服务), distributed systems (分布式系统), machine learning (机器学习).
+Standard international terms still apply - Kubernetes, Docker, microservices (微服务), distributed systems (分布式系统), [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions) (机器学习).
 
 ### Marketing and e-commerce
 

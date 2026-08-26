@@ -265,7 +265,7 @@ The specific mistakes that come from carrying one market's habits into another.
 
 **An academic CV sent to a US company.** Six pages, publication list, no summary. It signals that you did not know the word means something different there.
 
-**A one-page CV for a UK graduate scheme.** Reads as thin against a two-page norm, and you have given away space your competitors used.
+**A one-page CV for a [UK graduate scheme](/blog/uk-graduate-scheme-guide).** Reads as thin against a two-page norm, and you have given away space your competitors used.
 
 **Visa status on a US resume.** Takes room from evidence and moves the reader's attention to immigration before they have looked at your work.
 

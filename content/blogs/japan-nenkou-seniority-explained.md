@@ -42,7 +42,7 @@ Before applying, check your documents work — the [free ATS score checker](http
 
 ## What it means for you
 
-**Grade determines pay.** At most domestic companies, your compensation follows from your assigned grade, which follows from a combination of role, experience and tenure. Individual salary negotiation has far less room than in Western markets — see [the Japan salary negotiation guide](https://thetailorcv.com/blog/japan-salary-negotiation-guide).
+**Grade determines pay.** At most domestic companies, your compensation follows from your assigned grade, which follows from a combination of role, experience and tenure. Individual [salary negotiation](https://thetailorcv.com/blog/salary-negotiation-interview-guide-2026) has far less room than in Western markets — see [the Japan salary negotiation guide](https://thetailorcv.com/blog/japan-salary-negotiation-guide).
 
 **Mid-career hires are placed into that structure.** Ten years of experience elsewhere does not necessarily map to the grade someone with ten years at that company holds. Companies vary widely in how generously they credit external experience.
 
@@ -70,7 +70,7 @@ Take two candidates with identical experience, one placed a grade higher:
 
 **This is why the grade conversation is worth more than the salary conversation.** A one-off increase in starting salary, if you could even get one, is a single year's benefit. A higher grade changes the base every raise, every bonus and every promotion is calculated from.
 
-**What actually moves grade placement:** documented years in the specific function, a professional qualification the company recognises, direct management experience, and Japanese language level. Present those explicitly rather than assuming HR will infer them from your shokumu keirekisho.
+**What actually moves grade placement:** documented years in the specific function, a professional qualification the company recognises, direct management experience, and Japanese language level. Present those explicitly rather than assuming HR will infer them from your [shokumu keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide).
 
 ---
 

@@ -52,7 +52,7 @@ Almost never a criminal record. Almost always a discrepancy.
 
 **Employment dates.** You wrote "2021-2023"; HR confirms March 2021 to August 2022. If your resume implied you were there four months longer than you were, that reads as a misrepresentation even when it was sloppiness. **Use month and year**, and use the real ones.
 
-**Job title inflation.** You wrote "Senior Data Analyst"; HR confirms "Data Analyst II". This is the single most common problem. If your internal title differed from what the market calls the role, write the real title and bracket the explanation: `Data Analyst II (functioning as team lead)`.
+**Job title inflation.** You wrote "Senior [Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide)"; HR confirms "Data Analyst II". This is the single most common problem. If your internal title differed from what the market calls the role, write the real title and bracket the explanation: `Data Analyst II (functioning as team lead)`.
 
 **Degree status.** Claiming a degree you did not complete is the one that ends offers outright. "Completed 90 credits toward BSc Computer Science" is honest and perfectly acceptable; implying the degree is not.
 

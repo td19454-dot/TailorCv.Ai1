@@ -27,7 +27,7 @@ Before writing the letter, make sure your [resume with no experience](https://th
 
 - **Class projects** - especially group projects with a real deliverable
 - **Internships**, even short or unpaid ones - see the [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide)
-- **Part-time or campus jobs** - customer service, tutoring, retail all show reliability
+- **Part-time or campus jobs** - [customer service](https://thetailorcv.com/blog/customer-service-resume-2026), tutoring, retail all show reliability
 - **Clubs, leadership roles, and volunteer work** - see [volunteer work on resume](https://thetailorcv.com/blog/volunteer-work-on-resume)
 - **Personal or portfolio projects** - see [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and projects in resume
 

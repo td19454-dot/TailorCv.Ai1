@@ -25,7 +25,7 @@ showcase: none
 
 **A recognised teaching certification is increasingly expected**, and in some cases required, alongside the degree — **TEFL (Teaching English as a Foreign Language) certification specifically** is the standard credential in this sector, and has become a formal work-permit requirement at many schools rather than just a preference, worth obtaining before applying if you do not already hold one; a 120-hour course is the commonly cited baseline most schools reference.
 
-**Work permits for English teaching roles have historically been restricted to citizens of a defined list of countries** — commonly the US, UK, Canada, Australia, New Zealand, Ireland, and South Africa, treated as the countries where English is the primary official language for this specific purpose. This is a real, structural eligibility filter distinct from the general work permit categories, worth confirming directly and currently if your citizenship isn't on the commonly-cited list, since this specific rule is genuinely restrictive rather than a general guideline.
+**Work permits for [English teaching](/blog/english-teaching-jobs-japan-resume) roles have historically been restricted to citizens of a defined list of countries** — commonly the US, UK, Canada, Australia, New Zealand, Ireland, and South Africa, treated as the countries where English is the primary official language for this specific purpose. This is a real, structural eligibility filter distinct from the general work permit categories, worth confirming directly and currently if your citizenship isn't on the commonly-cited list, since this specific rule is genuinely restrictive rather than a general guideline.
 
 **Prior teaching or relevant work experience** is sometimes required or strongly preferred, similar in principle to the general experience threshold discussed in the [work visa guide](/blog/china-work-visa-z-visa-for-graduates), though specific requirements for teaching roles can differ from other work permit categories.
 
@@ -45,7 +45,7 @@ Be cautious of arrangements that seem to bypass proper work permit sponsorship e
 
 ## Where the roles actually are
 
-**International schools**, generally the most structured and highest-paying category, often requiring a teaching qualification and sometimes prior classroom experience, competitive but offering the strongest working conditions in the sector.
+**International schools**, generally the most structured and [highest-paying](/blog/highest-paying-jobs-without-a-degree-2026) category, often requiring a teaching qualification and sometimes prior classroom experience, competitive but offering the strongest working conditions in the sector.
 
 **Private training centres and language schools**, a large and varied category, quality differs enormously between individual operators, careful vetting matters most here.
 

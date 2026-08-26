@@ -75,7 +75,7 @@ The tool parses your resume the way an ATS would before it changes anything, so 
 - Personal details more openly listed than in Western resumes, including nationality and work-authorisation status.
 - Clear evidence of the specific skills the role needs.
 
-Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free ATS score checker; the mechanics are in how ATS works in Malaysia.
+Follow our [guide to writing a resume for Malaysia jobs](https://thetailorcv.com/blog/resume-for-malaysia-jobs), and note that in Malaysia "CV" usually just means a resume — see [CV vs resume in Malaysia](https://thetailorcv.com/blog/cv-vs-resume-malaysia). Because most employers screen with an ATS, make it [machine-readable](https://thetailorcv.com/blog/ats-resume-parser-friendly-format) and test it with the free [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free); the mechanics are in how ATS works in Malaysia.
 
 Build a clean, ATS-safe version with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions).
 
@@ -211,7 +211,7 @@ Landing the job is one thing; thriving is another. Malaysian workplaces have the
 - **Multiculturalism is the norm.** Malaysia's Malay, Chinese, Indian, and other communities work side by side, and sensitivity to different customs, festivals, and dietary practices is appreciated.
 - **Communication can be indirect.** Colleagues may avoid blunt disagreement to preserve harmony; learn to read context and respond graciously.
 - **English is widely used** in business, easing the transition, though learning some Bahasa Malaysia is genuinely appreciated socially.
-- **Work-life balance and pace** vary by sector — MNCs may feel familiar to Western professionals, while some local firms are more hierarchical.
+- **[Work-life balance](https://thetailorcv.com/blog/work-life-balance-tips) and pace** vary by sector — MNCs may feel familiar to Western professionals, while some local firms are more hierarchical.
 
 Approaching your new workplace with humility, curiosity, and respect goes a long way, and Malaysians are generally welcoming to newcomers who make the effort.
 
@@ -228,7 +228,7 @@ Because these rules change and depend on your category and sector, always confir
 
 ## Comparing Malaysia to Other Regional Hubs
 
-Foreign professionals often weigh Malaysia against Singapore, Thailand, or Vietnam. Malaysia's distinct advantages are a **lower cost of living than Singapore**, **widespread business English**, a **diverse, welcoming culture**, and a strong base of **MNCs and regional headquarters** — particularly in tech, engineering, oil and gas, and shared services. Salaries may be lower than Singapore's in absolute terms, but the cost-of-living difference often makes the real quality of life competitive. If your skills fit Malaysia's shortage sectors, it can be one of the most comfortable and rewarding bases in Southeast Asia.
+Foreign professionals often weigh Malaysia against Singapore, Thailand, or Vietnam. Malaysia's distinct advantages are a **lower cost of living than Singapore**, **widespread business English**, a **diverse, welcoming culture**, and a strong base of **MNCs and regional headquarters** — particularly in tech, engineering, oil and gas, and shared services. Salaries may be lower than Singapore's in absolute terms, but the cost-of-living difference often makes the real quality of life competitive. If your skills fit Malaysia's shortage sectors, it can be one of the most comfortable and rewarding bases in [Southeast Asia](https://thetailorcv.com/blog/southeast-asia-jobs-compared).
 
 ## Common Mistakes Foreign Job Seekers Make
 

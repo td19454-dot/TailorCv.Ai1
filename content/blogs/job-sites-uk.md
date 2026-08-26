@@ -68,7 +68,7 @@ Missing these is a common and costly gap.
 
 **NHS Jobs** - the route for NHS clinical and non-clinical roles. Applications use a standard structured form rather than a CV, which is a different exercise entirely.
 
-**Civil Service Jobs** - UK government departments. Applications are competency-based and often require written statements against named behaviours, so allow real time per application.
+**Civil Service Jobs** - UK government departments. Applications are [competency-based](https://thetailorcv.com/blog/competency-based-interview-questions-guide) and often require written statements against named behaviours, so allow real time per application.
 
 **jobs.ac.uk** - academic and research posts across UK universities. The standard platform for postdoctoral and lectureship roles.
 
@@ -108,7 +108,7 @@ Since agencies place so many UK roles, treat them as a channel rather than an ob
 
 Uploading a CV puts it into a searchable database. Recruiters search that database by keyword, job title, and location - so being found is a parsing problem before it is a writing problem.
 
-**Standard job titles.** A recruiter searching "Financial Analyst" will not find "Numbers Wizard". Use the market title and bracket the internal one if it matters.
+**Standard job titles.** A recruiter searching "[Financial Analyst](https://thetailorcv.com/blog/financial-analyst-resume-2026)" will not find "Numbers Wizard". Use the market title and bracket the internal one if it matters.
 
 **Named skills, not categories.** "Cloud platforms" is not searchable; "AWS" is. See [the best resume keywords for the UK](https://thetailorcv.com/blog/best-resume-keywords-uk).
 

@@ -34,7 +34,7 @@ They are not reviewing your code line by line. Non-technical recruiters cannot, 
 
 **Can they communicate?** A README that explains a project clearly suggests someone who can write a design doc and leave a useful PR description.
 
-**Does the resume match reality?** If your resume claims a machine-learning pipeline and GitHub shows three tutorial forks, the claim collapses. This is the same evidence problem that ruins keyword-stuffed resumes - see [why keyword stuffing backfires](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
+**Does the resume match reality?** If your resume claims a [machine-learning](https://thetailorcv.com/blog/machine-learning-interview-questions) pipeline and GitHub shows three tutorial forks, the claim collapses. This is the same evidence problem that ruins keyword-stuffed resumes - see [why keyword stuffing backfires](https://thetailorcv.com/blog/best-resume-keywords-to-beat-ats).
 
 That third point is the one candidates underestimate. GitHub is where an exaggerated resume gets caught.
 

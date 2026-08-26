@@ -34,7 +34,7 @@ Before applying, check your resume parses — the [free ATS score checker](https
 
 **Enterprise software and SaaS.** A broad market including satellite engineering offices of large US companies, several of which own significant products rather than support functions.
 
-**AI and machine learning.** A genuine research and commercial cluster, supported by strong university and institute presence in the region.
+**AI and [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions).** A genuine research and commercial cluster, supported by strong university and institute presence in the region.
 
 **Insurance.** Large employers with growing technology and data functions.
 

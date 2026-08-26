@@ -178,7 +178,7 @@ The timing sits within the wider plan in [the campus placement preparation timel
 
 ### What is a PPO?
 
-A pre-placement offer - a full-time job offer extended to an intern before campus placement season begins, based on their internship performance.
+A pre-placement offer - a full-time job offer extended to an intern before [campus placement](https://thetailorcv.com/blog/campus-placement-resume-mistakes) season begins, based on their internship performance.
 
 ### How likely is PPO conversion?
 

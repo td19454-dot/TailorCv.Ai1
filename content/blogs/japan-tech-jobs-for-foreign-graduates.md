@@ -152,7 +152,7 @@ Broadly similar in question type, which means [standard preparation](/blog/usa-t
 
 ### Is compensation competitive?
 
-Generally below the highest-paying US technology markets and reasonable relative to local costs, with variation by employer type — foreign companies and some startups paying differently from traditional enterprises.
+Generally below the [highest-paying](/blog/highest-paying-jobs-without-a-degree-2026) US technology markets and reasonable relative to local costs, with variation by employer type — foreign companies and some startups paying differently from traditional enterprises.
 
 ### What visa applies?
 

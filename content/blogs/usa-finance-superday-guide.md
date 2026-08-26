@@ -20,7 +20,7 @@ keywords: superday interview, investment banking interview, why investment banki
 
 ## What a superday is
 
-After a first round — often a phone or video interview, sometimes a HireVue — the remaining candidates are brought in for a concentrated final round.
+After a first round — often a phone or [video interview](/blog/video-interview-tips-2026), sometimes a HireVue — the remaining candidates are brought in for a concentrated final round.
 
 The typical shape: four to six interviews, 30 to 45 minutes each, back to back, with a mix of analysts, associates, VPs and sometimes an MD. Some firms include a case or modelling exercise. It runs half a day or more, and it is deliberately tiring.
 

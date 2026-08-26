@@ -99,7 +99,7 @@ Startups move fast, and so should your application. Paste the Greenhouse job pos
 
 ## Scenario-Based Resume Matching
 
-Understanding how to tailor your resume for a Greenhouse ATS can be greatly enhanced by considering various scenarios. Here are three hypothetical job postings and how to adapt your resume accordingly:
+Understanding [how to tailor](https://thetailorcv.com/blog/how-to-tailor-resume-on-naukri) your resume for a Greenhouse ATS can be greatly enhanced by considering various scenarios. Here are three hypothetical job postings and how to adapt your resume accordingly:
 
 ### Scenario 1: Marketing Coordinator
 

@@ -110,7 +110,7 @@ Your spouse's language results and education contribute. If they have not tested
 
 **Your resume matters at two stages** - getting the job, and supporting your work history claims in the PR application. Consistency across documents is important, because employment letters, contracts, and your profile are read together.
 
-**Canadian resume conventions differ** from many markets - no photo, no personal details, achievement-focused, and typically two pages. See [the resume for Express Entry guide](https://thetailorcv.com/blog/resume-for-express-entry-canada) and [ATS in Canada](https://thetailorcv.com/blog/ats-in-canada-guide).
+**[Canadian resume](https://thetailorcv.com/blog/canadian-resume-guide) conventions differ** from many markets - no photo, no personal details, achievement-focused, and typically two pages. See [the resume for Express Entry guide](https://thetailorcv.com/blog/resume-for-express-entry-canada) and [ATS in Canada](https://thetailorcv.com/blog/ats-in-canada-guide).
 
 **NOC codes matter.** Your occupation is classified under Canada's National Occupational Classification, and eligibility, category draws, and provincial streams all reference it. Identify your correct code early, because it determines which routes are open to you.
 

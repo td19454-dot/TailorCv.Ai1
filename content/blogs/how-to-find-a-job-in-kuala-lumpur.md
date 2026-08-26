@@ -29,7 +29,7 @@ KL's economy is diverse, which is good news for job seekers across fields.
 
 ### Industries Hiring in KL and the Klang Valley
 
-- **Technology & digital:** software, data, cybersecurity, product, and digital marketing roles cluster in KL Sentral, Bangsar South, Cyberjaya, and the surrounding tech corridors.
+- **Technology & digital:** software, data, cybersecurity, product, and [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) roles cluster in KL Sentral, Bangsar South, Cyberjaya, and the surrounding tech corridors.
 - **Banking & finance:** the major banks and insurers are headquartered here, with continuous demand in finance, risk, operations, and analytics.
 - **Global business services (GBS) / shared services:** MNCs run large regional service centres in and around KL, hiring for finance, HR, IT, and customer operations.
 - **Professional services:** consulting, law, audit, and advisory firms recruit graduates and experienced professionals.
@@ -140,7 +140,7 @@ Kuala Lumpur is competitive, so set realistic expectations and keep a steady rhy
 
 - **Weeks 1–2:** Build your ATS-ready resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), optimise your LinkedIn, and draft a base cover letter. Research and list 20–30 target employers.
 - **Weeks 2–6:** Apply consistently — quality over quantity — tailoring each application with the [resume optimizer](https://thetailorcv.com/solutions). Network actively: attend events, reconnect with alumni, and reach out to people at target companies. Track everything.
-- **Weeks 4–10:** Attend screens, assessments, and interviews. Prepare intensively for each with [interview prep](https://thetailorcv.com/interview-prep) and the AI mock interview, and follow up politely.
+- **Weeks 4–10:** Attend screens, assessments, and interviews. Prepare intensively for each with [interview prep](https://thetailorcv.com/interview-prep) and the [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume), and follow up politely.
 
 For fresh graduates and in-demand fields, one to three months of focused effort is typical; senior and niche roles can take longer. The candidates who succeed treat the search as a disciplined routine rather than a burst of activity.
 

@@ -52,7 +52,7 @@ Longer than the role seems to warrant:
 
 1. **Online application** with written motivational questions
 2. **Online assessments** — numerical, situational judgement, sometimes game-based
-3. **Video interview**, usually recorded rather than live
+3. **[Video interview](/blog/video-interview-tips-2026)**, usually recorded rather than live
 4. **Assessment centre** — group exercise, case study, presentation, interviews
 5. **Final interview** with senior staff
 
@@ -124,7 +124,7 @@ Spend the first fifth of the time reading and deciding your structure. State you
 
 **The presentation.** Usually from the case, five to ten minutes, with questions. Prepared candidates rehearse the presentation and neglect the questions, which are where the assessment actually happens. Expect to be challenged on your recommendation, and expect that changing your view under a good argument is scored positively while defending an indefensible position is not.
 
-**The interviews.** Competency-based, scored against a framework. Prepare six strong examples covering teamwork, conflict, failure, leadership, pressure and something you are proud of, and be ready for each to be probed two layers deeper than you expect.
+**The interviews.** [Competency-based](/blog/competency-based-interview-questions-guide), scored against a framework. Prepare six strong examples covering teamwork, conflict, failure, leadership, pressure and something you are proud of, and be ready for each to be probed two layers deeper than you expect.
 
 ## What the jobs actually are
 

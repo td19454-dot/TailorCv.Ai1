@@ -38,7 +38,7 @@ Because it's standardised, the rirekisho is less about standing out and more abo
 
 ### Shokumu-keirekisho (職務経歴書) — The Work-History Document
 
-The shokumu-keirekisho complements the rirekisho with a fuller account of your career: your roles, responsibilities, achievements, and skills. This is closer to a Western resume and is where you can demonstrate your value with specifics — projects delivered, results achieved, and expertise gained. It's especially important for mid-career and professional roles.
+The [shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide) complements the rirekisho with a fuller account of your career: your roles, responsibilities, achievements, and skills. This is closer to a Western resume and is where you can demonstrate your value with specifics — projects delivered, results achieved, and expertise gained. It's especially important for mid-career and professional roles.
 
 ## Rirekisho Formatting Rules That Matter
 

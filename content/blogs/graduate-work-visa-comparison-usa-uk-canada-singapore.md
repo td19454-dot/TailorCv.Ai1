@@ -168,7 +168,7 @@ A different way to compare them: not by what they offer, but by what you have to
 
 Everything on this page should be checked against the official source before you act on it, because all four have changed materially in recent years and secondhand summaries go stale quietly.
 
-**United States.** The immigration services agency for petition and status rules, and the student and exchange visitor programme guidance for training-period rules. Your institution's international student office is the authority on your own designation and dates.
+**United States.** The immigration services agency for petition and status rules, and the student and exchange visitor programme guidance for training-period rules. Your institution's [international student](/blog/international-student-jobs-canada) office is the authority on your own designation and dates.
 
 **United Kingdom.** The government's immigration pages for route eligibility, length and salary thresholds, and the register of licensed sponsors to check whether an employer can sponsor the next stage.
 

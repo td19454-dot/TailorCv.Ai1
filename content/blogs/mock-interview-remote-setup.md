@@ -173,7 +173,7 @@ Run this properly rather than five minutes prior.
 
 **Prioritising video over audio.** Poor sound is fatiguing to listen to in a way a soft image never is.
 
-**Sitting with a window behind you.** It turns you into a silhouette and is the most common video interview failure.
+**Sitting with a window behind you.** It turns you into a silhouette and is the most common [video interview](https://thetailorcv.com/blog/video-interview-tips-2026) failure.
 
 **Leaving the laptop flat on the desk.** The upward camera angle is unflattering and reads as less engaged.
 

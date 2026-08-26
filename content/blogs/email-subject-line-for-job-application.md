@@ -40,7 +40,7 @@ Use one of these clean formats:
 - `Application: [Role] — [Your Name]`
 - `[Role] Application — [Your Name] (Ref #1234)`
 - `[Your Name] — Applying for [Role]`
-- `[Role] — [Your Name], [Key Qualification]` (e.g., "Marketing Manager — Jane Doe, 6 yrs B2B SaaS")
+- `[Role] — [Your Name], [Key Qualification]` (e.g., "[Marketing Manager](https://thetailorcv.com/blog/marketing-manager-resume-2026) — Jane Doe, 6 yrs B2B SaaS")
 
 That last format sneaks a qualification into the subject, which can earn an extra second of attention. If a referral sent you, mentioning them is powerful: `[Role] Application — [Your Name] (referred by [Contact])`.
 

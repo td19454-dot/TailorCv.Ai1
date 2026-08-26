@@ -68,7 +68,7 @@ For non-academic jobs, don't let publications crowd out your experience and [qua
 
 ## Make publications ATS-safe
 
-A long, complex publications list can trip the [ATS](https://thetailorcv.com/blog/ats-score-guide) if it's formatted with tables, columns, or unusual characters. Keep it as clean, single-column text with standard punctuation, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). Then confirm it parses with the ATS score checker.
+A long, complex publications list can trip the [ATS](https://thetailorcv.com/blog/ats-score-guide) if it's formatted with tables, columns, or unusual characters. Keep it as clean, single-column text with standard punctuation, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes). Then confirm it parses with the [ATS score checker](https://thetailorcv.com/blog/ats-score-checker-free).
 
 ## Publications vs projects vs presentations
 

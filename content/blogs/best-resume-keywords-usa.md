@@ -40,9 +40,9 @@ Recruiters search by title. If your role was internally "Customer Happiness Hero
 
 **Common US title conventions worth matching:**
 
-- Software Engineer rather than Programmer or Developer at most US employers
-- Data Scientist, Data Analyst, Data Engineer - these are genuinely different roles and searched separately
-- Product Manager rather than Product Owner, unless you specifically worked in a Scrum context
+- [Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation) rather than Programmer or Developer at most US employers
+- [Data Scientist](https://thetailorcv.com/blog/data-scientist-portfolio-guide), [Data Analyst](https://thetailorcv.com/blog/data-analyst-portfolio-guide), Data Engineer - these are genuinely different roles and searched separately
+- [Product Manager](https://thetailorcv.com/blog/product-manager-portfolio-guide) rather than Product Owner, unless you specifically worked in a Scrum context
 - Account Executive for closing sales roles; Sales Development Representative for prospecting
 - Staff, Senior, Principal - US technology levelling terms that recruiters filter on directly
 
@@ -87,7 +87,7 @@ The interview those keywords lead to is covered in [the US tech interview proces
 
 ### Data and analytics
 
-SQL, Python, R, Spark, dbt, Airflow, Snowflake, Redshift, BigQuery, Databricks, Tableau, Power BI, Looker, ETL, data modeling, A/B testing, statistical analysis, machine learning, TensorFlow, PyTorch.
+SQL, Python, R, Spark, dbt, Airflow, Snowflake, Redshift, BigQuery, Databricks, Tableau, Power BI, Looker, ETL, data modeling, A/B testing, statistical analysis, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions), TensorFlow, PyTorch.
 
 Note the American spelling of "modeling" with one L - a small thing that matters for exact matching.
 

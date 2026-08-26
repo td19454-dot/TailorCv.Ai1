@@ -90,7 +90,7 @@ After each change, run the **free [ATS score checker](https://www.thetailorcv.co
 
 Many paid services lock the most useful feedback behind a subscription. The good news is that a quality **free [ATS score checker](https://www.thetailorcv.com/solutions)** gives you everything you need to start: a real score, a full breakdown of passed and failed checks, and clear guidance.
 
-With TailorCV, you can check your score, tailor your resume to a job, build from ATS-friendly templates, and even [practice mock interviews](https://thetailorcv.com/mock-interview) that ask questions based on your actual resume - all in one place, free to start. That last step matters: a great resume gets you the interview, and resume-based interview practice helps you win it.
+With TailorCV, you can check your score, tailor your resume to a job, build from [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore) templates, and even [practice mock interviews](https://thetailorcv.com/mock-interview) that ask questions based on your actual resume - all in one place, free to start. That last step matters: a great resume gets you the interview, and resume-based interview practice helps you win it.
 
 ## Make This Practical
 

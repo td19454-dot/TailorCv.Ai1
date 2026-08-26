@@ -70,7 +70,7 @@ Use a [clean, simple template](https://www.thetailorcv.com/templates) and the [r
 
 ## Keep it honest, clean, and one page
 
-Never invent experience — honesty matters, as [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume) explains, and it's easy to get caught. Keep the [resume](https://www.thetailorcv.com/modify-cv) to one page (you won't need more), use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide), and proofread carefully — a mistake-free page shows the care employers want. If you apply through an online system, keep it ATS-friendly.
+Never invent experience — honesty matters, as [should you lie on your resume](https://thetailorcv.com/blog/should-you-lie-on-your-resume) explains, and it's easy to get caught. Keep the [resume](https://www.thetailorcv.com/modify-cv) to one page (you won't need more), use a [readable font](https://thetailorcv.com/blog/resume-fonts-guide), and proofread carefully — a mistake-free page shows the care employers want. If you apply through an online system, keep it [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore).
 
 ## Preparing for the interview
 

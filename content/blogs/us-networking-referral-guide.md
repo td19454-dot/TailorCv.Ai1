@@ -123,7 +123,7 @@ You ask for **twenty minutes to hear about their work** — not for a job. This 
 
 **Omitting the easy out.** Without "no problem if you'd rather not", the ask carries social pressure and people resolve that by not replying.
 
-**Pitching during an informational interview.** You asked for twenty minutes about their work; turning it into a job request breaks the implicit agreement and is remembered.
+**Pitching during an [informational interview](https://thetailorcv.com/blog/informational-interview-guide).** You asked for twenty minutes about their work; turning it into a job request breaks the implicit agreement and is remembered.
 
 **Only networking when unemployed.** Reaching out cold after years of silence is the awkward version — occasional contact when you need nothing is what makes the later ask easy.
 

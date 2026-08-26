@@ -130,7 +130,7 @@ Using this checklist ensures that you don’t miss any critical elements when cu
 
 ## Example Scenario: Tailoring for a UX Design Role
 
-Imagine you're applying for a UX Designer position. The job description emphasizes user research, prototyping, and collaboration with cross-functional teams. Here’s how to tailor your portfolio:
+Imagine you're applying for a UX Designer position. The job description emphasizes user research, prototyping, and collaboration with cross-functional teams. Here’s [how to tailor](https://thetailorcv.com/blog/how-to-tailor-resume-on-naukri) your portfolio:
 
 1. **Select Relevant Projects**: Choose projects where you conducted user interviews or usability testing. 
 2. **Highlight Your Process**: For each project, include a section that discusses your research methods, findings, and how you integrated feedback into your designs.

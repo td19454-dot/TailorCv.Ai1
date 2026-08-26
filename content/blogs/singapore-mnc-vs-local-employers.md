@@ -71,7 +71,7 @@ Two years at a startup doing five jobs is compelling to another startup and can 
 
 ## How the hiring processes differ
 
-**MNCs and banks:** the full structured process — application, online assessments, video interview, [assessment centre](/blog/singapore-campus-recruiting-guide). Opens August to October for the following year. Miss the window and you wait.
+**MNCs and banks:** the full structured process — application, online assessments, [video interview](/blog/video-interview-tips-2026), [assessment centre](/blog/singapore-campus-recruiting-guide). Opens August to October for the following year. Miss the window and you wait.
 
 **SMEs and startups:** far shorter. A conversation, perhaps a task, an offer. Weeks rather than months, and they hire when they need someone rather than on a calendar.
 
@@ -99,7 +99,7 @@ Neither is better. The first teaches you how large organisations operate and giv
 
 **Progression.** Multinationals have defined bands and a visible ladder, and movement can be slow because the ladder is crowded. Local firms are less structured, which cuts both ways: promotion can be fast if you are visible, or absent if nobody is thinking about it.
 
-**Regional exposure.** A genuine multinational advantage. Singapore is a regional hub, and roles covering Southeast Asia from here give you a portfolio of markets that is hard to acquire otherwise.
+**Regional exposure.** A genuine multinational advantage. Singapore is a regional hub, and roles covering [Southeast Asia](/blog/southeast-asia-jobs-compared) from here give you a portfolio of markets that is hard to acquire otherwise.
 
 **Job security and process.** Multinationals restructure regionally, and a Singapore team can be affected by a decision about global cost bases. Local firms are exposed to their own market instead. The risks are different rather than absent in one case.
 

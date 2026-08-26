@@ -93,7 +93,7 @@ Use only those you can back up — and always prefer the specific over the gener
 - Frameworks/tools: React, Node.js, Spring, Django, .NET, Docker, Kubernetes
 - Cloud: AWS, Azure, Google Cloud
 - Practices: Agile, Scrum, CI/CD, REST APIs, microservices, DevOps
-- Data: data analysis, SQL, Power BI, Tableau, machine learning
+- Data: data analysis, SQL, Power BI, Tableau, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
 
 For tech and creative candidates, a portfolio strengthens your keywords with proof — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
@@ -109,7 +109,7 @@ For tech and creative candidates, a portfolio strengthens your keywords with pro
 
 - Revenue growth, sales targets, business development, key account management
 - Lead generation, CRM (Salesforce, HubSpot), pipeline management
-- Digital marketing, SEO, SEM, Google Ads, Meta Ads, content marketing
+- [Digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), SEO, SEM, Google Ads, Meta Ads, content marketing
 - Market research, campaign management, ROI, conversion rate
 - B2B, B2C, negotiation, client relationship management
 
@@ -122,7 +122,7 @@ For tech and creative candidates, a portfolio strengthens your keywords with pro
 
 ### Customer Service & Operations
 
-- Customer service, client support, complaint resolution, SLA
+- [Customer service](https://thetailorcv.com/blog/customer-service-resume-2026), client support, complaint resolution, SLA
 - Operations management, process optimisation, inventory management
 - Multilingual support (Bahasa Malaysia, English, Mandarin)
 - CRM systems, ticketing, KPI achievement

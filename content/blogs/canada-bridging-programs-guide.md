@@ -110,7 +110,7 @@ A bridging program is not a substitute for searching — run both.
 
 **Convert the placement.** Treat it as an extended interview, exactly as you would an internship — the behaviours that convert are in [the internship to PPO conversion guide](https://thetailorcv.com/blog/internship-to-ppo-conversion-guide).
 
-**Update your resume immediately** with the Canadian placement, which is now your Canadian experience — see [the resume for newcomers to Canada guide](https://thetailorcv.com/blog/resume-for-newcomers-to-canada).
+**[Update your resume](https://thetailorcv.com/blog/how-to-update-your-resume) immediately** with the Canadian placement, which is now your Canadian experience — see [the resume for newcomers to Canada guide](https://thetailorcv.com/blog/resume-for-newcomers-to-canada).
 
 ---
 

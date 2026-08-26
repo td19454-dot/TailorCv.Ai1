@@ -80,7 +80,7 @@ Broadly the same as a graduate scheme, compressed:
 
 1. **Online application** with competency questions
 2. **Aptitude tests** — numerical, verbal, situational judgement. Practisable, and practice measurably improves scores
-3. **Video interview**, often asynchronous
+3. **[Video interview](https://thetailorcv.com/blog/video-interview-tips-2026)**, often asynchronous
 4. **Assessment centre** — group exercise, presentation, interview
 
 **With no work experience yet**, your evidence comes from academic projects, societies, part-time work and volunteering. That is expected — see [UK part-time student jobs](https://thetailorcv.com/blog/uk-part-time-student-jobs) for writing those up properly.

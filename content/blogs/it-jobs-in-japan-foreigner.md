@@ -40,7 +40,7 @@ International technology companies with Tokyo offices, plus foreign financial in
 
 **Culture:** closer to the parent company's norms than to traditional Japanese practice.
 
-**Competition:** the most intense, because every English-speaking engineer in Japan is applying to the same short list.
+**Competition:** the most intense, because every [English-speaking](https://thetailorcv.com/blog/english-speaking-jobs-across-europe) engineer in Japan is applying to the same short list.
 
 ### Modern Japanese tech companies and startups
 
@@ -78,7 +78,7 @@ System integrators and staffing companies that place engineers onto client proje
 
 **Infrastructure and SRE.** AWS, GCP, Kubernetes, Terraform. Consistently in demand and often the easiest segment to enter without Japanese, because the work is less communication-dependent.
 
-**Data and machine learning.** Growing, particularly in e-commerce, advertising, and manufacturing.
+**Data and [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions).** Growing, particularly in e-commerce, advertising, and manufacturing.
 
 **Gaming.** A genuine specialism where Japan is a global centre - Unity, Unreal, C++, and engine work.
 

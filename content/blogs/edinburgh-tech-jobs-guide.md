@@ -34,7 +34,7 @@ Before applying, check your CV parses — the [free ATS score checker](https://w
 
 **Fintech.** A genuine cluster, including well-known payments and banking technology companies, plus a startup layer.
 
-**Data science and AI.** The university's informatics and AI research base is internationally recognised, and it feeds a commercial market in machine learning, natural language processing and data engineering. For research-adjacent technologists this is a real draw.
+**Data science and AI.** The university's informatics and AI research base is internationally recognised, and it feeds a commercial market in [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions), natural language processing and data engineering. For research-adjacent technologists this is a real draw.
 
 **Software and enterprise technology.** A steady sector, including satellite offices of larger companies.
 

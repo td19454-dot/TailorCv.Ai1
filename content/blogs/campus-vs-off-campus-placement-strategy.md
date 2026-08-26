@@ -20,7 +20,7 @@ keywords: campus vs off campus placement, off campus job search, campus placemen
 
 ## What each channel actually is
 
-**Campus placement** is a set of employer relationships your institution maintains. Employers visit, run a process, and hire a fixed number. The convenience is enormous: roles arrive, timing is announced, the process is scheduled, and eligibility is pre-filtered.
+**[Campus placement](/blog/campus-placement-resume-mistakes)** is a set of employer relationships your institution maintains. Employers visit, run a process, and hire a fixed number. The convenience is enormous: roles arrive, timing is announced, the process is scheduled, and eligibility is pre-filtered.
 
 The limitation is equally real. The employers who visit are a small subset of the employers who exist. Their intake is capped. And the timing is theirs, not yours.
 
@@ -211,7 +211,7 @@ Both channels always, and the weighting between them should depend on your situa
 
 **Weight toward campus if:** your institution has strong placement relationships in your field; you meet the eligibility criteria comfortably; the employers who visit are ones you actually want; and your field is one that recruits in volume through campus channels.
 
-**Weight toward off-campus if:** the companies visiting your campus are not in your target sector; you do not meet campus eligibility criteria; you want a specific type of role that volume hiring does not produce; you are targeting smaller or mid-sized employers, which never visit campuses; or you are an international student at an institution whose visiting employers cannot hire you.
+**Weight toward off-campus if:** the companies visiting your campus are not in your target sector; you do not meet campus eligibility criteria; you want a specific type of role that volume hiring does not produce; you are targeting smaller or mid-sized employers, which never visit campuses; or you are an [international student](/blog/international-student-resume-differences-by-country) at an institution whose visiting employers cannot hire you.
 
 **Weight heavily toward off-campus if** your campus placement season is short, thinly attended, or dominated by employers in one industry. Some institutions have excellent placement cells and some have three companies visiting for four hundred students, and being honest about which one you attend is worth more than any strategy advice.
 

@@ -34,7 +34,7 @@ Before the interview, make sure your resume is getting you there - run it throug
 
 **2. Technical screen (45-60 minutes).** A coding exercise, or increasingly a discussion of systems you have actually built. Some employers use a take-home instead.
 
-**3. Technical rounds (one to three).** Coding, system design at mid-level and above, and sometimes a domain-specific session.
+**3. Technical rounds (one to three).** Coding, [system design](https://thetailorcv.com/blog/system-design-interview-guide) at mid-level and above, and sometimes a domain-specific session.
 
 **4. Behavioral or hiring manager round.** Frequently the deciding round, and under-prepared by technically strong candidates.
 

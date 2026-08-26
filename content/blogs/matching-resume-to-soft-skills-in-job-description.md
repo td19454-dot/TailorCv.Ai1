@@ -183,7 +183,7 @@ By utilizing this checklist, you can ensure that your resume effectively showcas
 
 ## Short Scenarios for Practice
 
-1. **Scenario A:** You apply for a customer service role that emphasizes "empathy" and "active listening." Write down two experiences from past jobs where you demonstrated these skills.
+1. **Scenario A:** You apply for a [customer service](https://thetailorcv.com/blog/customer-service-resume-2026) role that emphasizes "empathy" and "active listening." Write down two experiences from past jobs where you demonstrated these skills.
 
 2. **Scenario B:** You’re targeting a project management position that highlights "leadership" and "time management." List examples where you successfully led a project and managed deadlines effectively.
 
