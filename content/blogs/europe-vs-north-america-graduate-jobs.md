@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- **North America pays substantially more** in technology, finance and medicine; the gap narrows considerably in most other fields once benefits and protections are counted.
-- **Immigration is the decisive variable.** The US H-1B lottery is genuinely a lottery; most European countries have deterministic post-study routes.
-- **Europe offers stronger statutory protections** — holiday, parental leave, dismissal protection, healthcare — that do not appear in a salary comparison but are worth real money.
+- **North America pays substantially more** in technology, [finance](/blog/resume-matching-insurance-jobs) and medicine; the gap narrows considerably in most other fields once benefits and protections are counted.
+- **Immigration is the decisive variable.** The US [H-1B](/blog/h1b-visa-job-search-guide) lottery is genuinely a lottery; most European countries have deterministic post-study routes.
+- **Europe offers stronger statutory protections** — holiday, pa[rental](/blog/canada-major-city-job-markets) leave, dismissal protection, [healthcare](/blog/first-job-abroad-practical-checklist) — that do not appear in a salary comparison but are worth real money.
 - **Canada sits between the two**, with North American salaries somewhat below the US and immigration that is far more predictable.
 - The right answer depends on **your field, your passport and your risk tolerance**, not on which continent is generally better.
 
@@ -23,15 +23,15 @@ showcase: none
 
 The salary gap is real and it is not uniform.
 
-**In software engineering, it is enormous.** A senior engineer at a large US technology company can earn a multiple of the European equivalent, driven substantially by equity compensation that barely exists in most of Europe.
+**In [software engineer](/blog/resume-matching-software-engineer)ing, it is enormous.** A senior engineer at a large US technology company can earn a multiple of the European equivalent, driven substantially by equity compensation that barely exists in most of Europe.
 
 **In finance**, New York pays above London, and London pays well above continental Europe.
 
 **In medicine**, US physician compensation is far above European levels.
 
-**In most other fields the gap is much smaller.** Marketing, operations, general management, engineering outside software, public sector, academia — the difference narrows considerably and in some cases reverses once you account for what you pay for separately in the US.
+**In most other fields the gap is much smaller.** [Marketing](/blog/resume-matching-marketing), operations, general management, engineering outside software, [public sector](/blog/canada-government-jobs-for-students), academia — the difference narrows considerably and in some cases reverses once you account for what you pay for separately in the US.
 
-**And the comparison has to be net of what Europe includes.** Healthcare, university education, childcare and pension provision are funded through taxation in most of Europe and paid for privately in the US. A European gross salary buys things an American gross salary does not.
+**And the comparison has to be net of what Europe includes.** Healthcare, university education, childcare and [pension](/blog/first-90-days-new-job) provision are funded through [taxation](/blog/canada-first-job-taxes-and-benefits) in most of Europe and paid for privately in the US. A European gross salary buys things an American gross salary does not.
 
 **The honest summary:** if you are a software engineer or a doctor, North America pays more, sometimes dramatically. If you are almost anything else, run the comparison carefully before assuming.
 
@@ -92,7 +92,7 @@ The daily experience differs more than the numbers suggest.
 
 A practical way to think about it rather than a general one.
 
-**Start with your passport.** It determines which of these options are actually available, and there is no point optimising between two things when only one is open to you.
+**Start with your passport.** It determines which of these [opt](/blog/opt-cpt-resume-guide)ions are actually available, and there is no point optimising between two things when only one is open to you.
 
 **Then your field.** The salary gap is field-specific and the difference between software and everything else is enormous.
 
@@ -108,11 +108,11 @@ The ten-year picture differs more than the five-year one.
 
 **The US green card queue is nationality-dependent** and, for applicants born in some countries, measured in many years. This is the most consequential fact in the whole comparison for a large share of graduates and it is almost never mentioned in salary discussions.
 
-**Canada's Express Entry** is points-based, transparent, and delivers permanent residence in a timeframe you can plan around, followed by citizenship after a qualifying residence period.
+**Canada's [Express Entry](/blog/how-to-get-a-job-in-canada)** is points-based, transparent, and delivers permanent residence in a timeframe you can plan around, followed by citizenship after a qualifying residence period.
 
 **European routes to long-term residence** typically run through several years of continuous legal residence, with EU long-term resident status available in most member states and national citizenship after a longer period. Requirements often include a language test and a civics test.
 
-**The UK's settlement route** runs through a qualifying period on eligible visas, with the Graduate Route itself generally not counting toward it — a detail that catches people out.
+**The UK's settlement route** runs through a qualifying period on eligible visas, with the [Graduate Route](/blog/how-to-get-a-job-in-uk-foreigner) itself generally not counting toward it — a detail that catches people out.
 
 **Dual citizenship rules vary** and matter if you would have to renounce an existing nationality.
 
@@ -122,17 +122,17 @@ The ten-year picture differs more than the five-year one.
 
 The mechanics of applying differ enough to matter.
 
-**Resume conventions.** North America uses a one-page resume with no photo and no personal details. Europe varies enormously — one page in France, two in the Netherlands and Ireland, a full dossier with photo in Switzerland and Germany. Sending a US-format resume to a Swiss employer signals unfamiliarity with the market.
+**Resume conventions.** North America uses a one-page resume with no photo and no personal details. Europe varies enormously — [one page](/blog/ats-resume-length-guide) in France, two in the Netherlands and Ireland, a full dossier with photo in Switzerland and Germany. Sending a US-format resume to a Swiss employer signals unfamiliarity with the market.
 
-**Cover letters.** Largely skimmed in the US and UK; genuinely read in France, the Netherlands, Germany and Switzerland. Where they are read, a generic one is worse than none.
+**[Cover letters](/blog/cover-letter-generator-by-country).** Largely skimmed in the US and UK; genuinely read in France, the Netherlands, Germany and Switzerland. Where they are read, a generic one is worse than none.
 
-**Interview style.** North American processes lean on behavioural questions and, in technology, algorithmic problems. Dutch, Nordic and German processes weight practical assessment and take-home work more heavily.
+**Interview style.** North American processes lean on [behavioural questions](/blog/mock-interview-for-sponsorship-roles) and, in technology, algorithmic problems. Dutch, Nordic and German processes weight practical assessment and take-home work more heavily.
 
 **Salary conversations.** Asked early and directly in the Netherlands and Nordics; later and more delicately in France; often prohibited as a history question in parts of the US.
 
-**References.** A formality in much of the US; genuinely called in Switzerland, New Zealand and Ireland.
+**[References](/blog/resume-references-guide).** A formality in much of the US; genuinely called in Switzerland, New Zealand and Ireland.
 
-**Automated screening is universal.** The one constant across every market in this comparison is that large employers screen documents with software first. Running your base document through an [ATS check](/ats-analysis) once is worth doing wherever you are applying.
+**[Automated screening](/blog/ats-resume-checker-how-it-works) is universal.** The one constant across every market in this comparison is that large employers screen documents with software first. Running your base document through an [ATS check](/ats-analysis) once is worth doing wherever you are applying.
 
 ## Mini checklist
 

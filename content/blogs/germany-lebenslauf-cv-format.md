@@ -13,15 +13,15 @@ showcase: resume
 
 ## Key Takeaways
 
-- The German CV is called a **Lebenslauf**, and the standard form is *tabellarisch* — a tabular, reverse-chronological layout rather than the prose-and-bullets style used in the US and UK.
+- The German CV is called a **Lebenslauf**, and the standard form is *tabellarisch* — a tabular, reverse-[chronological](/blog/chronological-vs-functional-resume) layout rather than the prose-and-bullets style used in the US and UK.
 - A **photograph is still conventional** at most German employers, unlike UK, US, Canadian and Australian practice where it is actively discouraged.
-- German applications are usually a **complete package** (Bewerbungsmappe): cover letter, Lebenslauf, and scanned certificates — not a CV on its own.
-- Two pages is normal and accepted, and gaps in your timeline are expected to be explained rather than hidden.
+- German applications are usually a **complete package** (Bewerbungsmappe): [cover letter](/blog/cover-letter-generator-by-country), Lebenslauf, and scanned certificates — not a CV on its own.
+- [Two pages](/blog/ats-resume-length-guide) is normal and accepted, and gaps in your timeline are expected to be explained rather than hidden.
 - Your degree may need formal recognition; the **anabin** database is where you check how a foreign qualification is classified before you apply anywhere.
 
 ## What a Lebenslauf actually is
 
-The word translates as "course of life", and the document lives up to it more literally than an English-language CV does. Where a US resume is a marketing document that selects the most relevant highlights, a Lebenslauf is closer to a complete, verifiable record presented in a fixed layout.
+The word translates as "course of life", and the document lives up to it more literally than an English-language CV does. Where a US resume is a [marketing](/blog/resume-matching-marketing) document that selects the most relevant highlights, a Lebenslauf is closer to a complete, verifiable record presented in a fixed layout.
 
 The standard form is the **tabellarischer Lebenslauf** — a two-column tabular layout with dates on the left and detail on the right, running in reverse chronological order. It is not a design exercise. German recruiters expect a predictable structure and read it quickly because every candidate's document is laid out the same way.
 
@@ -49,11 +49,11 @@ A German application is usually submitted as a set of documents rather than a CV
 
 1. **Anschreiben** — the cover letter. Genuinely read, and weighted more heavily than a UK cover letter typically is.
 2. **Lebenslauf** — the CV itself, in the tabular form described above.
-3. **Zeugnisse** — scanned certificates: your degree, and where you have them, references from previous employers.
+3. **Zeugnisse** — scanned certificates: your degree, and where you have them, [references](/blog/resume-references-guide) from previous employers.
 
-That third item has no real equivalent in UK or US hiring. German employers expect documentary evidence attached to the application, not offered later on request. Assemble scans of your degree certificate and transcripts before you start applying, because collecting them under deadline pressure is where applications slip.
+That third item has no real equivalent in UK or US hiring. German employers expect documentary evidence attached to the application, not offered later on request. Assemble scans of your degree certificate and transcripts before you start applying, because collecting them under [deadline](/blog/campus-placement-preparation-timeline) pressure is where applications slip.
 
-**Arbeitszeugnis** is worth knowing about as a term even if you have never held a German job. It is a formal written reference an employer is legally obliged to provide when you leave, written in a conventional coded language, and it forms part of the package for anyone with German work history.
+**[Arbeitszeugnis](/blog/switzerland-cv-and-application-format)** is worth knowing about as a term even if you have never held a German job. It is a formal written reference an employer is legally obliged to provide when you leave, written in a conventional coded language, and it forms part of the package for anyone with German work history.
 
 ## Getting your degree recognised
 
@@ -61,15 +61,15 @@ Before you invest time applying, check how your qualification is classified.
 
 **anabin** is the official database maintained by the German authorities that records how foreign qualifications and institutions are assessed. Looking your own university and degree up there takes a few minutes and tells you whether your qualification is recognised as equivalent — which matters both for employers and for visa routes like the [EU Blue Card](/blog/germany-eu-blue-card-graduates).
 
-For regulated professions — medicine, law, teaching, some engineering roles — recognition is a formal legal requirement rather than a helpful signal, and the process is separate and considerably longer. Start it early if it applies to you.
+For [regulated professions](/blog/canada-regulated-professions-guide) — medicine, law, teaching, some [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a formal legal requirement rather than a helpful signal, and the process is separate and considerably longer. Start it early if it applies to you.
 
 ## Language, honestly
 
-German language ability determines the shape of your job search more than any other single factor.
+German [language ability](/blog/bilingual-language-skills-on-resume) determines the shape of your job search more than any other single factor.
 
-Berlin's startup and technology scene has a genuine English-operating segment, and international companies with German offices frequently run in English. Outside those, most employers expect German, and many roles that do not strictly require it in the work still expect it socially and administratively.
+Berlin's [startup](/blog/japan-startup-jobs-guide) and technology scene has a genuine English-operating segment, and international companies with German offices frequently run in English. Outside those, most employers expect German, and many roles that do not strictly require it in the work still expect it socially and administratively.
 
-Certification is worth having. The **Goethe-Zertifikat** and **TestDaF** are the recognised benchmarks, and stating a certified level — B2, C1 — is more credible to a German employer than a self-described claim. B2 is broadly the level at which a German-language professional environment becomes workable; C1 is where it stops being a limiting factor.
+[Certification](/blog/how-to-list-certifications-on-resume) is worth having. The **Goethe-Zertifikat** and **TestDaF** are the recognised benchmarks, and stating a certified level — B2, C1 — is more credible to a German employer than a self-described claim. B2 is broadly the level at which a German-language professional environment becomes workable; C1 is where it stops being a limiting factor.
 
 ## Section by section, what goes in
 
@@ -83,7 +83,7 @@ Certification is worth having. The **Goethe-Zertifikat** and **TestDaF** are the
 
 **Weiterbildung / Zertifikate.** Courses and certifications, where relevant.
 
-**Interessen.** Optional, and more conventional in Germany than in the US. Keep it short and avoid the generic.
+**Interessen.** [Opt](/blog/opt-cpt-resume-guide)ional, and more conventional in Germany than in the US. Keep it short and avoid the generic.
 
 ## The grade conversion problem
 
@@ -98,13 +98,13 @@ A German reader knows exactly what a 1.7 means. They do not necessarily know wha
 | 2.6 – 3.5 | Satisfactory — a lower second (2:2) or a mid GPA |
 | 3.6 – 4.0 | Sufficient — a pass |
 
-State your grade in your own system, then add a short parenthetical showing where it sits. "First Class Honours (equivalent to approx. 1.3 in the German scale)" removes the ambiguity in one line. Where your university issues a formal transcript supplement with a conversion, attach it.
+State your grade in your own system, then add a short pa[rent](/blog/canada-major-city-job-markets)hetical showing where it sits. "First Class Honours (equivalent to approx. 1.3 in the German scale)" removes the ambiguity in one line. Where your university issues a formal transcript supplement with a conversion, attach it.
 
 ## Where the applications actually go
 
 Germany has its own recruiting platforms, and searching only on the international ones misses a large share of the market.
 
-**StepStone** and **Indeed Deutschland** are the two largest general job boards. **XING** is the domestic professional network — smaller than LinkedIn globally but still genuinely used in German-speaking markets, particularly by recruiters at mid-sized companies. LinkedIn is widely used too, especially at international employers and in Berlin.
+**StepStone** and **Indeed Deutschland** are the two largest general [job boards](/blog/best-job-search-websites-2026). **XING** is the domestic [professional network](/blog/networking-tips-for-job-search) — smaller than LinkedIn globally but still genuinely used in German-speaking markets, particularly by recruiters at mid-sized companies. LinkedIn is widely used too, especially at international employers and in Berlin.
 
 The **Bundesagentur für Arbeit** runs its own job portal, which carries a very large volume of listings including many from smaller employers who never post to commercial boards.
 
@@ -165,7 +165,7 @@ Check anabin before applying anywhere, and state the outcome plainly on your CV.
 - **Unexplained timeline gaps.** German readers expect a complete account, and a gap left silent invites the question you did not answer.
 - **Sending the CV alone.** Most adverts expect the Anschreiben and scanned Zeugnisse alongside it.
 - **Skipping anabin.** Your degree's classification affects both employer perception and visa eligibility, and checking costs minutes.
-- **Overstating German.** It surfaces immediately in a phone screen, and B2 stated honestly beats C1 claimed loosely.
+- **Overstating German.** It surfaces immediately in a [phone screen](/blog/phone-screen-interview-tips), and B2 stated honestly beats C1 claimed loosely.
 
 ## Related Guides
 

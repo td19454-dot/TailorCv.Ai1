@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- Germany has **no single graduate recruiting season**. Hiring runs year-round on vacancy, which removes the deadline pressure of the UK or Japanese systems but also removes the structure.
+- Germany has **no single graduate recruiting season**. Hiring runs year-round on vacancy, which removes the [deadline](/blog/campus-placement-preparation-timeline) pressure of the UK or [Japanese](/blog/how-to-get-a-job-in-japan-foreigner) systems but also removes the structure.
 - The **Mittelstand** — mid-sized, often family-owned companies, many of them world leaders in a narrow niche — employs a very large share of graduates and is consistently under-applied.
-- A **Trainee-Programm** is the closest German equivalent to a UK-style graduate scheme, and it is a minority route rather than the default.
-- **Working student roles (Werkstudent)** during study are the single strongest entry path, and international students frequently do not know they exist.
-- German language ability determines the size of your accessible market more than any other factor, with Berlin's international scene the main exception.
+- A **Trainee-Programm** is the closest German equivalent to a UK-style [graduate scheme](/blog/global-rotational-graduate-programmes), and it is a minority route rather than the default.
+- **Working student roles (Werkstudent)** during study are the single strongest entry path, and [international students](/blog/international-student-resume-differences-by-country) frequently do not know they exist.
+- German [language ability](/blog/bilingual-language-skills-on-resume) determines the size of your accessible market more than any other factor, with Berlin's international scene the main exception.
 
 ## There is no milkround
 
-This is the first thing to internalise, because it inverts how graduates from the UK, Japan, India or Singapore are taught to job-hunt.
+This is the first thing to internalise, because it inverts how graduates from the UK, Japan, India or [Singapore](/blog/how-to-get-a-job-in-singapore) are taught to job-hunt.
 
 German employers post roles when they have a vacancy. There is no synchronised autumn window that closes, no single application deadline that decides your year, and no cohort you have to join. A role advertised in March is filled in March.
 
@@ -39,11 +39,11 @@ The consequence cuts both ways. You cannot miss the season, which is genuinely f
 | **Research institutes** | Fraunhofer, Max Planck, Helmholtz | Strong for technical and research graduates, own application routes |
 | **Public sector** | Federal, state and municipal administration | Stable, structured, generally requires strong German and often citizenship |
 
-**The Mittelstand is the part international applicants systematically miss.** These companies are frequently the global leader in something specific — industrial fasteners, laboratory optics, packaging machinery — and they hire steadily. They also advertise on their own websites and the Bundesagentur portal rather than on LinkedIn, which is exactly why they stay under-applied while everyone competes for the same Siemens role.
+**The Mittelstand is the part international applicants systematically miss.** These companies are frequently the global leader in something specific — industrial fasteners, laboratory [opt](/blog/opt-cpt-resume-guide)ics, packaging machinery — and they hire steadily. They also advertise on their own websites and the Bundesagentur portal rather than on LinkedIn, which is exactly why they stay under-applied while everyone competes for the same Siemens role.
 
 ## Trainee-Programm, Direkteinstieg, Werkstudent
 
-Three terms worth knowing, because job adverts use them and they mean genuinely different things.
+Three terms worth knowing, because job adverts use them and they mean genuinely diffe[rent](/blog/canada-major-city-job-markets) things.
 
 **Trainee-Programm** is the structured graduate scheme — a fixed period, usually 12 to 24 months, rotating through several departments before you settle into a role. It is the closest thing to a UK graduate scheme. Large employers run them, they are competitive, and they are a minority of graduate hiring overall.
 
@@ -55,10 +55,10 @@ If you are still studying in Germany, this is the single most useful thing on th
 
 ## Where to actually search
 
-1. **The Bundesagentur für Arbeit portal** — the federal employment agency's own job board, carrying an enormous volume including many smaller employers who never post commercially.
+1. **The Bundesagentur für Arbeit portal** — the federal employment agency's own [job board](/blog/best-job-search-websites-2026), carrying an enormous volume including many smaller employers who never post commercially.
 2. **StepStone** — the largest commercial general board in Germany.
 3. **Indeed Deutschland** — broad coverage, useful for volume.
-4. **XING** — the German-speaking professional network, still genuinely used by recruiters at mid-sized companies.
+4. **XING** — the German-speaking [professional network](/blog/networking-tips-for-job-search), still genuinely used by recruiters at mid-sized companies.
 5. **LinkedIn** — strongest at international employers and in Berlin.
 6. **Company websites directly** — essential for Mittelstand employers, who often recruit no other way.
 
@@ -75,24 +75,24 @@ Searching only LinkedIn is the most common mistake, and it quietly filters your 
 
 B2 is the level worth targeting deliberately. It is where the accessible market roughly triples, and it is reachable from a standing start with sustained study in a way C1 is not.
 
-Certification matters: **Goethe-Zertifikat** and **TestDaF** are the recognised benchmarks, and a stated certified level is far more credible than "conversational".
+[Certification](/blog/how-to-list-certifications-on-resume) matters: **Goethe-Zertifikat** and **TestDaF** are the recognised benchmarks, and a stated certified level is far more credible than "conversational".
 
 ## What the hiring process looks like
 
 German processes are generally shorter than the UK or Japanese equivalents, and considerably less ceremonial.
 
-1. **Application** — the full package (Anschreiben, Lebenslauf, Zeugnisse), usually by email or through the company's own portal.
-2. **Telefoninterview** — a screening call, typically 20 to 30 minutes, often with HR rather than the hiring manager.
+1. **Application** — the full package ([Anschreiben](/blog/cover-letter-generator-by-country), Lebenslauf, Zeugnisse), usually by email or through the company's own portal.
+2. **Telefoninterview** — a screening call, typically 20 to 30 minutes, often with HR rather than the [hiring manager](/blog/how-recruiters-read-resumes).
 3. **Fachgespräch** — the technical or subject conversation, with the people you would actually work with.
 4. **Vorstellungsgespräch on site** — the main interview, sometimes including a short presentation or a practical task.
 5. **Assessment Center** — only at larger employers running structured Trainee-Programme; most Direkteinstieg hires never encounter one.
-6. **Vertragsangebot** — the contract offer, usually within one to two weeks of the final round.
+6. **Vertragsangebot** — the contract offer, usually within one to two weeks of the [final round](/blog/final-round-interview-tips).
 
 Two to four weeks end to end is common at a mid-sized employer. Large corporates running formal programmes take longer.
 
 ## The Probezeit, and why it matters
 
-Almost every German employment contract opens with a **Probezeit** — a probationary period, typically six months, during which either side can terminate with two weeks' notice rather than the standard statutory notice.
+Almost every German employment contract opens with a **Probezeit** — a probationary period, typically six months, during which either side can terminate with [two weeks' notice](/blog/how-to-write-two-weeks-notice) rather than the standard statutory notice.
 
 This is entirely routine and not a sign of a weak offer. What it means practically is that your first six months genuinely are an assessment, and that the strong employment protection German workers are known for takes full effect after it, not on day one.
 
@@ -100,7 +100,7 @@ For anyone on a visa tied to employment, the Probezeit is worth understanding cl
 
 ## Salary, and what actually drives it
 
-Graduate pay in Germany varies by sector, region and company size more than by negotiation skill.
+Graduate pay in Germany varies by sector, region and company size more than by [negotiation](/blog/how-to-negotiate-salary-offer) skill.
 
 | Factor | Effect |
 |---|---|

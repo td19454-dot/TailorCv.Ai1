@@ -13,8 +13,8 @@ showcase: none
 
 ## Key Takeaways
 
-- Most of what paid resume scanners charge for — **a match score and a keyword list** — is available free, including on [TailorCV's ATS analysis](/ats-analysis).
-- The **parsing check is the genuinely valuable part** and the part users most often skip: whether a machine can read your document at all.
+- Most of what paid [resume](/blog/resume-optimization-guide) scanners charge for — **a match score and a keyword list** — is available free, including on [TailorCV's ATS analysis](/ats-analysis).
+- The **[parsing](/blog/ats-resume-parser-friendly-format) check is the genuinely valuable part** and the part users most often skip: whether a machine can read your document at all.
 - **A high score guarantees nothing.** It measures document-to-posting correspondence, not whether you get an interview.
 - What is worth paying for is **doing something with the result** — a rewritten, tailored document — not the diagnosis itself.
 - **Beware tools that raise your score by inventing skills.** That is a problem you have to defend in an interview.
@@ -23,13 +23,13 @@ showcase: none
 
 Strip away the presentation and every scanner does two things.
 
-**It parses your document.** It extracts the text and tries to identify sections — contact details, work experience, education, skills. This is the step that silently kills applications, because a document that parses badly fails before any matching happens.
+**It parses your document.** It extracts the text and tries to identify sections — [contact details](/blog/resume-contact-section), work experience, education, skills. This is the step that silently kills applications, because a document that parses badly fails before any matching happens.
 
-**It matches text against a job description.** Usually literal term matching, sometimes with light normalisation. It reports which terms from the posting appear in your document and which do not.
+**It matches text against a [job description](/blog/job-description-analysis-checklist).** Usually literal term matching, sometimes with light normalisation. It reports which terms from the posting appear in your document and which do not.
 
 **That is essentially the whole product.** A score is a summary of the second step, presented as a number because a number feels more actionable than a list.
 
-**What none of them do** is evaluate whether you can do the job, whether your experience level fits, or whether the vacancy is real. Those determine outcomes far more than a match percentage does.
+**What none of them do** is evaluate whether you can do the job, whether your experience level fits, or whether the vacancy is real. Those determine outcomes far more than a [match percentage](/blog/resume-job-description-match-percentage) does.
 
 ## Free versus paid, honestly
 
@@ -57,7 +57,7 @@ If you take one practical thing from this, take this.
 
 **Copy all the text and paste it into a plain text editor.** Read what comes out. This is approximately what a parser sees.
 
-**If it is scrambled**, you have a two-column layout interleaving lines, and sentences that mean nothing to a matcher.
+**If it is scrambled**, you have a [two-column layout](/blog/ats-tables-columns-guide) interleaving lines, and sentences that mean nothing to a matcher.
 
 **If your contact details are missing**, they are inside an image or a header the parser did not read.
 
@@ -71,11 +71,11 @@ Worth being clear about, because scores become goals.
 
 **Whether the job is real.** Reposted listings, pipeline-building adverts and roles already earmarked internally all score exactly the same as live vacancies.
 
-**Whether your level fits.** A perfectly matched document for a role wanting eight years when you have one is still a rejection.
+**Whether your level fits.** A perfectly matched document for a role wanting eight years when you have one is still a [rejection](/blog/how-to-handle-job-rejection).
 
-**Whether the recruiter will like you.** Human review is the next gate and it uses entirely different criteria.
+**Whether the recruiter will like you.** Human review is the next gate and it uses entirely diffe[rent](/blog/canada-major-city-job-markets) criteria.
 
-**Whether you should want the job.** The most expensive applications are the well-optimised ones to jobs the candidate would have hated.
+**Whether you should want the job.** The most expensive applications are the well-[opt](/blog/opt-cpt-resume-guide)imised ones to jobs the candidate would have hated.
 
 **And whether the score is even the bottleneck.** If you are getting interviews but no offers, your resume is working and improving the score changes nothing.
 
@@ -87,7 +87,7 @@ The missing-terms list is the most actionable output of any scanner, and the mos
 
 **Have done it, did not write it.** This is the largest bucket for most graduates and it is pure upside. You used Docker; your resume says "containerised the deployment". Name the tool. Legitimate, instant, and it improves every future application at once.
 
-**Have touched it.** A university module, a small project, a few weeks alongside someone senior. Write it accurately — "used X in a university project to do Y" — rather than either omitting it or implying years of it.
+**Have touched it.** A university module, a small project, a few weeks alongside someone senior. Write it accurately — "used X in a [university project](/blog/projects-in-resume) to do Y" — rather than either omitting it or implying years of it.
 
 **Never used it.** Not a resume edit. If it appears in most postings in your target market, it is a learning priority. If it appears in one, ignore it.
 
@@ -119,9 +119,9 @@ A score is only useful if it is the right problem. Here is how to tell.
 
 **Responses but no first interviews.** The document passed the machine and failed the human. That is a content problem: duties instead of outcomes, no numbers, or a summary that says nothing.
 
-**First interviews but no second ones.** The resume is working. Stop editing it. This is interview performance and it needs practice out loud rather than another scan.
+**First interviews but no second ones.** The resume is working. Stop editing it. This is interview performance and it needs [practice out loud](/blog/how-to-practice-interviews-at-home) rather than another scan.
 
-**Final rounds but no offers.** Preparation and positioning at the late stage, or genuine competition. Ask for feedback; some employers give it.
+**[Final round](/blog/final-round-interview-tips)s but no offers.** Preparation and positioning at the late stage, or genuine competition. Ask for feedback; some employers give it.
 
 **Offers you do not want.** Your targeting is off, not your documents. Narrow rather than broaden.
 
@@ -131,7 +131,7 @@ A score is only useful if it is the right problem. Here is how to tell.
 
 Three situations where a scanner tells you something false.
 
-**Career changers.** Your resume genuinely does not match the target role's vocabulary yet, and the score reflects that accurately while being useless as guidance. What you need is a rewritten narrative, not more keywords.
+**[Career changers](/blog/resume-matching-for-career-changers).** Your resume genuinely does not match the target role's vocabulary yet, and the score reflects that accurately while being useless as guidance. What you need is a rewritten narrative, not more keywords.
 
 **Highly specialised roles.** A niche posting with unusual terminology can score low against an excellent resume simply because the vocabulary is idiosyncratic.
 

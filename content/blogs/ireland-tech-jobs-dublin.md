@@ -14,9 +14,9 @@ showcase: portfolio
 ## Key Takeaways
 
 - Dublin hosts the **EMEA headquarters** of an extraordinary share of US technology companies, concentrated in the Grand Canal Dock area known as **Silicon Docks**.
-- **Not every role at a technology company is a technology role** — many Dublin positions are sales, operations, support or finance, and the job title does not always make that obvious.
+- **Not every role at a technology company is a technology role** — many Dublin positions are sales, operations, support or [finance](/blog/resume-matching-insurance-jobs), and the job title does not always make that obvious.
 - **Indigenous Irish companies** — Stripe, Intercom, Workhuman and others — offer broader engineering work and are frequently overlooked.
-- Dublin salaries are strong by European standards; **housing costs are the counterweight** and they are severe.
+- Dublin salaries are strong by European standards; **[housing](/blog/canada-major-city-job-markets) costs are the counterweight** and they are severe.
 - **English-language working environment plus EU market access** is a combination very few cities offer.
 
 ## Silicon Docks, and what is actually there
@@ -25,13 +25,13 @@ The area around Grand Canal Dock holds a density of technology employers that wo
 
 **Google's Dublin operation** is among its largest outside the United States, spanning engineering, sales, operations and support for the whole EMEA region.
 
-**Meta, Microsoft, LinkedIn, Amazon, Salesforce, HubSpot, Airbnb, TikTok and Workday** all run substantial Irish operations.
+**Meta, Microsoft, LinkedIn, Amazon, Salesforce, HubSpot, Airbnb, TikTok and [Workday](/blog/icims-taleo-resume-formatting-guide)** all run substantial Irish operations.
 
 **Apple's Cork campus** is one of the oldest foreign technology operations in Ireland and predates most of the Dublin cluster by decades.
 
 **Intel's Leixlip fabrication plant** is a genuine semiconductor manufacturing site rather than an office, and it is one of the most significant industrial investments in the country.
 
-**Why here?** A combination of EU membership with an English-speaking workforce, a corporate tax regime that attracted early movers, and then the self-reinforcing effect of a talent pool that already exists. The reason matters less than the consequence: an unusually international, unusually mobile technology labour market for a city of Dublin's size.
+**Why here?** A combination of EU membership with an English-speaking workforce, a corporate [tax](/blog/canada-first-job-taxes-and-benefits) regime that attracted early movers, and then the self-reinforcing effect of a talent pool that already exists. The reason matters less than the consequence: an unusually international, unusually mobile technology labour market for a city of Dublin's size.
 
 ## The trap in the job titles
 
@@ -64,10 +64,10 @@ For a graduate who wants to build things rather than operate a piece of someone 
 ## The hiring process
 
 1. **Application**, usually through the company portal.
-2. **Recruiter screen** — motivation, work authorisation, salary expectations, and often a check that you understand what the role actually is.
+2. **[Recruiter screen](/blog/phone-screen-interview-tips)** — motivation, work authorisation, salary expectations, and often a check that you understand what the role actually is.
 3. **Technical screen** — a coding exercise, a take-home, or a live session depending on the employer.
-4. **Technical interviews** — algorithms and data structures at the large multinationals, more practical and product-focused at the indigenous companies.
-5. **System design** at more senior levels.
+4. **[Technical interviews](/blog/coding-interview-preparation-guide)** — algorithms and data structures at the large multinationals, more practical and product-focused at the indigenous companies.
+5. **[System design](/blog/campus-placement-system-design-basics)** at more senior levels.
 6. **Behavioural / values round**, weighted seriously at the multinationals.
 7. **Offer**, at which point [work permission](/blog/ireland-third-level-graduate-scheme) becomes the operative question if you need it.
 
@@ -79,7 +79,7 @@ Dublin technology salaries are strong by European standards and structured in a 
 
 **Multinationals pay near the top of the Irish market**, and the largest of them offer packages that are competitive across Europe as a whole.
 
-**Equity appears at the multinationals and the larger scale-ups.** RSUs vesting over several years are common at the American firms and effectively absent at most indigenous companies below a certain size. Ask how equity is granted, over what schedule, and what happens if you leave.
+**Equity appears at the multinationals and the larger [scale-ups](/blog/resume-tailoring-startup-vs-enterprise).** RSUs vesting over several years are common at the American firms and effectively absent at most indigenous companies below a certain size. Ask how equity is granted, over what schedule, and what happens if you leave.
 
 **Pension contributions matter more than graduates think.** Many Irish employers match contributions up to a percentage of salary, and a strong match is worth real money that never appears in the headline figure.
 
@@ -91,9 +91,9 @@ Dublin technology salaries are strong by European standards and structured in a 
 
 Three things move the needle in a market this competitive.
 
-**Show something running.** A deployed project with a working URL beats a repository a reviewer has to clone, and a [portfolio site](/portfolio) keeps working while your application sits in a queue.
+**Show something running.** A [deployed project](/blog/portfolio-website-for-job-applications) with a working URL beats a [repository](/blog/github-profile-for-job-search-2026) a reviewer has to clone, and a [portfolio site](/portfolio) keeps working while your application sits in a queue.
 
-**Mirror the posting's exact vocabulary.** Automated screening at the multinationals is literal and high-volume — "Kubernetes" is not matched by "container orchestration". One [ATS check](/ats-analysis) removes the whole risk.
+**Mirror the posting's exact vocabulary.** [Automated screening](/blog/ats-resume-checker-how-it-works) at the multinationals is literal and high-volume — "Kubernetes" is not matched by "container orchestration". One [ATS check](/ats-analysis) removes the whole risk.
 
 **Know what the Irish operation does.** This is the single strongest differentiator in a Dublin application. A candidate who knows that a particular Dublin site handles EMEA payments infrastructure rather than global product is immediately more credible than one who read the brand and assumed.
 
@@ -109,7 +109,23 @@ Two things determine whether a Dublin job works, and neither appears in the offe
 
 **Cost of living beyond rent is high** — Dublin is expensive for groceries, eating out and services relative to most of the eurozone. Budget from net pay after rent, not from a gross figure.
 
-**The upside is real too.** English-speaking, EU-based, an unusually international workforce, and a professional network that is small enough that people know each other. Two years in Dublin puts you inside a network that reaches across European technology.
+**The upside is real too.** English-speaking, EU-based, an unusually international workforce, and a [professional network](/blog/networking-tips-for-job-search) that is small enough that people know each other. Two years in Dublin puts you inside a network that reaches across European technology.
+
+## Interviewing at a Dublin technology employer
+
+Familiar in shape, with a few local emphases.
+
+**The recruiter screen matters more than elsewhere.** Dublin recruiters at large multinationals screen hard on work authorisation, on whether you understand what the Irish site does, and on salary expectations. Have all three answers ready.
+
+**Competency questions are structured and assessed.** Even at engineering-led companies, the behavioural round uses a framework and is scored. Prepare five or six situations, each tellable in two minutes with a concrete outcome.
+
+**Technical rounds follow global standards** at the multinationals, because the process is globally standardised. Indigenous companies lean more practical — a take-home, or a discussion of something you have actually built.
+
+**"Why Ireland?" comes up for international candidates.** Answer with the industry and the company rather than with general enthusiasm.
+
+**Values rounds are real at the American firms.** They map answers onto published company principles, and it is worth reading those principles before you go in.
+
+**Ask about the Irish operation specifically.** What does this site own, what decisions are made here, what reports elsewhere. It is the question that most reliably separates a prepared candidate from an enthusiastic one.
 
 ## Mini checklist
 
@@ -164,7 +180,7 @@ Check whether the role is on the Critical Skills list and whether the employer h
 - **Applying to the logo.** Many Dublin roles at technology companies are sales, support or operations.
 - **Misreading ambiguous titles.** "Analyst" and "Specialist" cover enormous ranges in a Dublin context.
 - **Ignoring indigenous companies.** Stripe, Intercom and their peers offer broader engineering ownership.
-- **Applying to language roles without the language.** It is a hard requirement, not a preference.
+- **Applying to language roles without the language.** It is a hard requirement, not a p[reference](/blog/resume-references-guide).
 - **Underestimating rent.** Dublin housing is the constraint that decides more than the salary.
 - **Assuming any employer can sponsor.** Check the Critical Skills list and the employer's track record.
 
@@ -215,3 +231,6 @@ Knowing what the Irish operation actually does. Candidates who know a site handl
 ### Should I live in Dublin city or commute?
 
 Many people commute. Maynooth, Bray, Drogheda, Naas and the DART line towns are meaningfully cheaper and reachable, and the rail spine into the city works well.
+### What should I ask in a Dublin tech interview?
+
+Ask what the Irish site specifically owns, what decisions are made there, and what reports elsewhere. It is the question that most reliably distinguishes a prepared candidate.

@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- The **orientation year (zoekjaar)** gives recent graduates a year in the Netherlands with **unrestricted access to the labour market** — no sponsorship required.
-- It applies to graduates of **Dutch institutions and, separately, to graduates of certain highly-ranked universities worldwide**, which is the part most people do not know about.
+- The **orientation year (zoekjaar)** gives recent [graduates](/blog/first-resume-for-gen-z-2026) a year in the Netherlands with **unrestricted access to the labour market** — no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required.
+- It applies to graduates of **Dutch institutions and, separately, to graduates of certain highly-ranked [universities](/blog/how-to-list-education-on-resume) worldwide**, which is the part most people do not know about.
 - You do not have to use it immediately — there is a window after graduation in which you can apply.
-- During the year, **any employer can hire you without becoming a recognised sponsor**, which is an enormous practical advantage.
+- During the year, **any [employer](/blog/how-recruiters-spot-generic-resumes) can hire you without becoming a recognised sponsor**, which is an enormous practical advantage.
 - The usual next step is the **highly skilled migrant** permit, which has a lower salary threshold for people who came through the orientation year.
 
 ## What the orientation year actually is
 
-The orientation year for highly educated persons — the *zoekjaar hoogopgeleiden* — is a residence permit that lets a recent graduate live in the Netherlands for a year and work without restriction.
+The orientation year for highly educated persons — the *zoekjaar hoogopgeleiden* — is a [residence permit](/blog/canada-work-permit-types-guide) that lets a recent graduate live in the Netherlands for a year and work without restriction.
 
 The crucial word is **unrestricted**. During this year you are treated, for employment purposes, like a local candidate. An employer does not need to be a recognised sponsor, does not need to apply for anything, and does not need to justify hiring you over an EU national. You can work full time, part time, on a temporary contract, or freelance.
 
@@ -35,7 +35,7 @@ Two routes matter.
 
 **Graduates of certain top-ranked universities abroad.** This is the route most people have never heard of. The Netherlands maintains a list based on international university rankings, and if you graduated from a qualifying institution within the relevant recent period, you can apply for the orientation year **without ever having studied in the Netherlands**.
 
-That second route is genuinely unusual. Very few countries offer a general-purpose, no-job-offer-required work permit to graduates of foreign universities, and it is worth checking the current list against your own institution before assuming you are not eligible.
+That second route is genuinely unusual. Very few countries offer a general-purpose, no-job-offer-required work permit to graduates of foreign universities, and it is worth checking the cur[rent](/blog/canada-major-city-job-markets) list against your own institution before assuming you are not eligible.
 
 Also eligible: people who completed certain research positions or specific scholarship-funded programmes in the Netherlands.
 
@@ -43,7 +43,7 @@ Also eligible: people who completed certain research positions or specific schol
 
 You do not have to apply the day you graduate.
 
-There is a defined period after completing your qualification in which the application can be made, and it is longer than a single day but not indefinite. The practical implication: if you graduated recently and went home to work for a while, you may still be inside the window.
+There is a defined period after completing your qualification in which the [application](/blog/how-many-jobs-should-you-apply-to-per-day) can be made, and it is longer than a single day but not indefinite. The practical implication: if you graduated recently and went home to work for a while, you may still be inside the window.
 
 **Check the current period on the IND website** — the Immigration and Naturalisation Service is the authority, and the rules around eligibility periods and qualifying institutions are updated.
 
@@ -53,7 +53,7 @@ The orientation year is a bridge, and the destination is usually the **highly sk
 
 **How it works.** A recognised sponsor employer applies on your behalf. There is a minimum salary threshold, set annually, which differs by age band.
 
-**The important detail:** there is a **reduced salary threshold** for people who transition directly from an orientation year. This is a deliberate policy — it makes you cheaper for an employer to hire than an equivalent candidate applying from abroad, and it is worth saying out loud in an interview.
+**The important detail:** there is a **reduced salary threshold** for people who transition directly from an orientation year. This is a deliberate policy — it makes you cheaper for an employer to hire than an equivalent candidate applying from abroad, and it is worth saying out loud in an [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **The employer must be a recognised sponsor.** The IND publishes a public register of recognised sponsors, and it is one of the most useful job-search tools available to an international candidate: it is, effectively, a list of every employer in the country that has already committed to hiring internationally.
 
@@ -65,9 +65,9 @@ The permit is only half the problem. The administrative sequence on arrival has 
 
 1. **Register with the municipality (gemeente).** You need an appointment, an address, and your documents. Appointments book out, so make one before you fly if you can.
 2. **Receive your BSN** — the citizen service number issued on registration. Almost everything downstream depends on it.
-3. **Open a Dutch bank account.** Many employers still prefer to pay into one, and a great deal of Dutch daily life runs on iDEAL, which needs a local account.
-4. **Arrange Dutch health insurance.** Basic health insurance is compulsory once you are working, and there is a deadline after which fines apply. This catches people out regularly.
-5. **Get a DigiD**, the national digital identity used for government services, your tax return and much else.
+3. **Open a Dutch [bank account](/blog/first-job-abroad-practical-checklist).** Many employers still prefer to pay into one, and a great deal of Dutch daily life runs on iDEAL, which needs a local account.
+4. **Arrange Dutch health insurance.** Basic health insurance is compulsory once you are working, and there is a [deadline](/blog/campus-placement-preparation-timeline) after which fines apply. This catches people out regularly.
+5. **Get a DigiD**, the national digital identity used for government services, your [tax return](/blog/canada-first-job-taxes-and-benefits) and much else.
 6. **Collect your residence document** from the IND at the appointment they assign.
 
 **Do not delay the health insurance step.** People assume it can wait until they have a job. It cannot, and the penalty for late enrolment is real money.
@@ -82,7 +82,7 @@ A year sounds long and disappears fast. Treat it in three phases.
 
 **Months nine to twelve — convert.** The highly skilled migrant application takes time on the employer's side. An offer in month eleven is uncomfortably tight; an offer in month eight is comfortable.
 
-**Take the interim work.** A temporary or part-time role during the orientation year is not a compromise — it is Dutch experience, a Dutch reference and a Dutch payslip, all three of which make the next application considerably easier.
+**Take the interim work.** A temporary or part-time role during the orientation year is not a compromise — it is Dutch experience, a Dutch [reference](/blog/resume-references-guide) and a Dutch payslip, all three of which make the next application considerably easier.
 
 ## What the year does not cover
 
@@ -90,7 +90,7 @@ Two limits are worth knowing before you plan around it.
 
 **It is not renewable.** The orientation year runs once, for its defined duration, and does not extend because the search went badly. Everything has to happen inside it.
 
-**It does not itself count toward permanent residence** in the way continuous residence on a work permit does. Check the current rules with the IND if long-term settlement is your goal, because the arithmetic of which permits count is specific and it changes.
+**It does not itself count toward [permanent residence](/blog/canada-provincial-nominee-guide)** in the way continuous residence on a work permit does. Check the current rules with the IND if long-term settlement is your goal, because the arithmetic of which permits count is specific and it changes.
 
 **Family members** have their own rules for accompanying you, with their own conditions and their own applications. Do not assume a partner automatically receives working rights on the strength of your permit — verify it directly.
 
@@ -98,7 +98,7 @@ Two limits are worth knowing before you plan around it.
 
 When two offers arrive in month ten, the decision is not only about the work.
 
-**Sponsor status is a hard filter.** An employer not on the recognised sponsor register cannot convert you, however good the role is. That is not a negotiation, it is a fact about their registration.
+**Sponsor status is a hard filter.** An employer not on the recognised sponsor register cannot convert you, however good the role is. That is not a [negotiation](/blog/how-to-negotiate-salary-offer), it is a fact about their registration.
 
 **Contract type matters.** A fixed-term contract is normal in the Netherlands for a first role, and a permanent contract after one or two fixed terms is the usual path. A very short contract creates permit uncertainty; ask what happens at renewal before you sign.
 
@@ -125,7 +125,7 @@ Apply now. The year is most valuable when you are already in the country, alread
 
 ### Scenario 2: You graduated from a top-ranked university abroad and have never been to the Netherlands
 
-Check the qualifying institution list. If your university is on it and you are inside the window, you can apply for the orientation year without ever having studied here — one of the most generous graduate routes in Europe.
+Check the qualifying institution list. If your university is on it and you are inside the window, you can apply for the orientation year without ever having studied here — one of the most generous [graduate route](/blog/how-to-get-a-job-in-uk-foreigner)s in Europe.
 
 ### Scenario 3: You are eight months into the year with no permanent role
 
@@ -150,7 +150,7 @@ Shift entirely to the recognised sponsor register and target only those employer
 - Wait until late in the year to start targeting sponsors
 - Rely on salary figures quoted anywhere but the IND
 - Treat the year as a holiday with a job search attached
-- Ignore the freelance and part-time options the permit allows
+- Ignore the freelance and part-time [opt](/blog/opt-cpt-resume-guide)ions the permit allows
 - Forget that the year is finite and non-renewable
 
 ## Common Mistakes

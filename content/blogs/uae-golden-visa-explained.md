@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Golden Visa** is a long-term, renewable UAE residence visa — typically **ten years** — that is **self-sponsored** rather than tied to an employer.
-- Categories include **investors, entrepreneurs, specialised talent, scientists, outstanding students and graduates**, and holders of certain professional and creative distinctions.
-- **The outstanding-students route is the one most graduates miss** — high achievers at UAE universities and top-ranked foreign institutions can qualify.
+- The **Golden [Visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore)** is a long-term, renewable UAE residence visa — typically **ten years** — that is **self-sponsored** rather than tied to an [employer](/blog/how-recruiters-spot-generic-resumes).
+- Categories include **investors, entrepreneurs, specialised talent, scientists, outstanding students and [graduates](/blog/first-resume-for-gen-z-2026)**, and holders of certain professional and creative distinctions.
+- **The outstanding-students route is the one most graduates miss** — high achievers at UAE [universities](/blog/how-to-list-education-on-resume) and top-ranked foreign institutions can qualify.
 - Holding it means you can **change jobs, or be between jobs, without losing your residency** — a structural change in your position.
 - Applications are made through the relevant emirate's authority (**ICP federally, GDRFA in Dubai**), and the criteria are revised.
 
@@ -29,11 +29,11 @@ The Golden Visa breaks that link. It is **self-sponsored**, granted on the basis
 
 **You can be between jobs** without your residency ending.
 
-**You can sponsor your own family** — spouse, children, and in defined circumstances parents and domestic staff.
+**You can sponsor your own family** — [spouse](/blog/first-job-abroad-practical-checklist), children, and in defined circumstances pa[rent](/blog/canada-major-city-job-markets)s and domestic staff.
 
 **You can start a business** or hold your position while your circumstances change.
 
-**And you become dramatically cheaper to hire.** An employer taking on a Golden Visa holder incurs no sponsorship cost, no processing delay, and no risk of a visa complication. Stated on a CV, it is one of the strongest lines a candidate in this market has.
+**And you become dramatically cheaper to hire.** An employer taking on a Golden Visa holder incurs no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) cost, no processing delay, and no risk of a visa complication. Stated on a CV, it is one of the strongest lines a candidate in this market has.
 
 ## The categories
 
@@ -72,7 +72,7 @@ The mechanics vary by category and emirate, but the shape is consistent.
 
 **Check whether nomination is required.** Several categories — scientists, certain specialised talent, some creative categories — require nomination or accreditation by a designated body before the visa application itself.
 
-**Gather and attest your documents.** Degree certificates, transcripts, professional accreditations, employment letters, salary certificates, and proof of the specific achievement your category rests on. Foreign documents generally need attestation, which runs through your home country's authorities and the UAE mission there and takes weeks.
+**Gather and attest your documents.** Degree certificates, transcripts, professional accreditations, employment letters, salary certificates, and proof of the specific achievement your category rests on. Foreign documents generally need [attestation](/blog/canada-credential-assessment-guide), which runs through your home country's authorities and the UAE mission there and [takes weeks](/blog/how-long-to-hear-back-after-applying).
 
 **Apply through the correct authority.** ICP handles federal applications; GDRFA handles Dubai. There are also authorised typing centres and service providers who prepare applications for a fee.
 
@@ -98,13 +98,13 @@ The visa is an immigration document with commercial consequences, and most holde
 
 **You are cheaper to hire.** Sponsorship costs money and administrative time, and a self-sponsored candidate removes both. In a close decision between two candidates, this is a tiebreaker with a number attached.
 
-**You can walk away.** An employee whose residency depends on their job is negotiating from a weaker position than one whose does not, and both sides know it. Golden Visa holders can decline an offer, resign, or take time between roles without immigration consequence.
+**You can walk away.** An employee whose residency depends on their job is [negotiating](/blog/how-to-negotiate-salary-offer) from a weaker position than one whose does not, and both sides know it. Golden Visa holders can [decline an offer](/blog/how-to-decline-job-offer), resign, or take time between roles without immigration consequence.
 
-**You can take contract and consulting work.** Freelance permits and independent working arrangements become genuinely available in a way they are not when your residency is bound to an employer.
+**You can take contract and [consulting](/blog/case-interview-preparation-guide-2026) work.** Freelance permits and independent working arrangements become genuinely available in a way they are not when your residency is bound to an employer.
 
 **You are a lower flight risk in the employer's eyes**, which sounds contradictory but is not — long-term residency signals commitment to being in the country, which is exactly what an employer investing in a graduate wants to see.
 
-**Use it explicitly.** In the CV summary, in the first recruiter call, and in the offer conversation. "I am self-sponsored, so there is no visa cost or processing delay on your side" is a sentence that does work every time it is said.
+**Use it explicitly.** In the CV summary, in the first [recruiter call](/blog/phone-screen-interview-tips), and in the offer conversation. "I am self-sponsored, so there is no visa cost or processing delay on your side" is a sentence that does work every time it is said.
 
 ## Family, and what changes for dependants
 
@@ -155,9 +155,9 @@ Check again. The categories have been broadened and thresholds adjusted more tha
 ### Do
 
 - Check the current criteria on the official portal
-- Look at the student and graduate routes specifically
+- Look at the student and [graduate route](/blog/how-to-get-a-job-in-uk-foreigner)s specifically
 - State the visa prominently on your CV if you hold it
-- Review family sponsorship options
+- Review family sponsorship [opt](/blog/opt-cpt-resume-guide)ions
 - Reconfirm eligibility if you were rejected in the past
 - Understand your renewal conditions
 
@@ -166,7 +166,7 @@ Check again. The categories have been broadened and thresholds adjusted more tha
 - Assume it is only for investors and executives
 - Rely on eligibility criteria quoted in an article
 - Bury the status at the bottom of your CV
-- Assume a past rejection still stands
+- Assume a past [rejection](/blog/how-to-handle-job-rejection) still stands
 - Ignore the nomination requirements for your category
 - Confuse it with an ordinary employment residence visa
 

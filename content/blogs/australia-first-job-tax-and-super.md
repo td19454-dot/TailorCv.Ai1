@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- Get a **Tax File Number (TFN)** immediately — without one you are taxed at the top marginal rate regardless of what you earn.
-- **Superannuation** is a compulsory employer contribution on top of your salary, paid into a retirement fund. It is real money and it is yours.
-- A salary quoted as a **"package"** includes super; a salary quoted as **"base"** or "plus super" does not. The same number can mean two different things.
-- Claim the **tax-free threshold** on one job only — claiming it on two leads to a bill at tax time.
+- Get a **[Tax](/blog/canada-first-job-taxes-and-benefits) File Number (TFN)** immediately — without one you are taxed at the top marginal rate regardless of what you earn.
+- **Superannuation** is a compulsory [employer](/blog/how-recruiters-spot-generic-resumes) contribution on top of your [salary](/blog/how-to-negotiate-salary-offer), paid into a [retirement fund](/blog/first-90-days-new-job). It is real money and it is yours.
+- A salary quoted as a **"[package](/blog/canada-salary-negotiation-guide)"** includes super; a salary quoted as **"base"** or "plus super" does not. The same number can mean two diffe[rent](/blog/canada-major-city-job-markets) things.
+- Claim the **tax-free [threshold](/blog/resume-for-h1b-visa-sponsorship)** on one job only — claiming it on two leads to a bill at tax time.
 - Australia's tax year runs **1 July to 30 June**, and most people lodge a return afterwards through myGov.
 
 ## Get a TFN before anything else
 
-A **Tax File Number** is your personal identifier with the Australian Taxation Office (ATO). You apply through the ATO, and international students and visa holders can generally apply online once they have arrived.
+A **Tax File Number** is your personal identifier with the Australian Taxation Office (ATO). You apply through the ATO, and [international students](/blog/international-student-resume-differences-by-country) and [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) holders can generally apply online once they have arrived.
 
 **Without a TFN you are taxed at the highest marginal rate** on every dollar, regardless of how little you earn. The money is recoverable when you lodge a return, but you are effectively lending it to the government interest-free for up to a year.
 
@@ -61,11 +61,11 @@ This single distinction changes what an offer is actually worth.
 | "$X base" | Same — super sits on top |
 | "$X package" or "total remuneration" | Super is **included** inside $X |
 
-Two offers quoting the same number can differ by the full super percentage depending on which convention each uses. **Ask which one applies before comparing anything**, and ask in writing. It is a completely normal question and recruiters answer it without blinking.
+Two offers quoting the same number can differ by the full super percentage depending on which convention each uses. **Ask which one applies before comparing anything**, and ask in writing. It is a completely normal question and [recruiters](/blog/how-recruiters-read-resumes) answer it without blinking.
 
 ## Reading your first payslip
 
-- **Gross pay** matches your contracted rate for the period.
+- **[Gross pay](/blog/canada-salary-expectations-new-grad)** matches your contracted rate for the period.
 - **PAYG withholding** is income tax withheld by your employer and sent to the ATO on your behalf.
 - **Superannuation** appears as an employer contribution — check it is actually being paid, and to the right fund.
 - **Net pay** is what reaches your account.
@@ -77,9 +77,9 @@ Two offers quoting the same number can differ by the full super percentage depen
 
 Australia's financial year runs **1 July to 30 June**.
 
-After 30 June, your employer reports your income to the ATO through Single Touch Payroll, and it appears pre-filled in **myGov**. Most people lodge a return between July and the October deadline, and for a straightforward situation it takes well under an hour because most of it is already filled in.
+After 30 June, your employer reports your income to the ATO through Single Touch Payroll, and it appears pre-filled in **myGov**. Most people lodge a return between July and the October [deadline](/blog/campus-placement-preparation-timeline), and for a straightforward situation it takes well under an hour because most of it is already filled in.
 
-**You may get a refund**, because PAYG withholding is an estimate and frequently over-withholds — particularly if you did not work the full year, which describes most graduates in their first year.
+**You may get a refund**, because PAYG withholding is an estimate and frequently over-withholds — particularly if you did not work the full year, which describes most [graduates](/blog/first-resume-for-gen-z-2026) in their first year.
 
 **Deductions** are for work-related expenses you paid for yourself and were not reimbursed for. Keep receipts. The ATO app has a tool for this and it is easier than reconstructing the year in July.
 

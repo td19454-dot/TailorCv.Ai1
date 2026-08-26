@@ -13,11 +13,11 @@ showcase: portfolio
 
 ## Key Takeaways
 
-- **Sydney is the larger tech market**, weighted toward fintech, banking technology, enterprise software and the Australian offices of global firms.
+- **Sydney is the larger tech market**, weighted toward fintech, [banking](/blog/resume-matching-insurance-jobs) technology, enterprise software and the Australian offices of [global firms](/blog/japan-gaishikei-vs-domestic).
 - **Melbourne** carries a strong product, health-tech and design culture, and generally costs somewhat less to live in than Sydney.
 - Australia's own success stories — **Atlassian, Canva, Afterpay, Airwallex, SafetyCulture** — hire graduates directly and are worth targeting by name.
 - **Brisbane, Perth, Adelaide and Canberra** have real technical employment with far less competition, particularly in defence, resources technology and government.
-- Technical interviews follow international convention, so standard preparation transfers almost entirely.
+- [Technical interviews](/blog/coding-interview-preparation-guide) follow international convention, so standard preparation transfers almost entirely.
 
 ## Sydney: scale, fintech, enterprise
 
@@ -65,12 +65,12 @@ For a graduate, applicant-to-seat ratio matters more than absolute market size, 
 ## What the hiring process looks like
 
 1. **Application**, usually through the company's own careers portal or SEEK.
-2. **Recruiter screen** — background, motivation, work rights, salary expectations.
+2. **[Recruiter screen](/blog/phone-screen-interview-tips)** — background, motivation, work rights, salary expectations.
 3. **Technical screen** — a coding exercise, take-home task, or live session.
 4. **Technical interviews** — algorithms and data structures, plus a deep discussion of your own projects.
-5. **System design**, at more senior levels or for larger platforms.
+5. **[System design](/blog/campus-placement-system-design-basics)**, at more senior levels or for larger platforms.
 6. **Behavioural round**, genuinely weighted rather than a formality.
-7. **Offer**, with your [visa position](/blog/australia-skilled-visa-points-graduates) becoming relevant here if you need sponsorship.
+7. **Offer**, with your [visa position](/blog/australia-skilled-visa-points-graduates) becoming relevant here if you need [sponsorship](/blog/resume-for-h1b-visa-sponsorship).
 
 **Preparation transfers.** The [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) used for US or UK processes works here, because the question banks and formats are broadly international.
 
@@ -82,7 +82,7 @@ Australian technology salaries sit below US levels, roughly in line with or slig
 
 **Super sits on top, or inside, depending on how it is quoted.** A compulsory employer superannuation contribution is paid as a percentage of your salary. Whether a quoted figure includes it changes what the offer is worth, and the two conventions are both in common use - which is why [the tax and super guide](/blog/australia-first-job-tax-and-super) is worth reading before you compare anything.
 
-**Graduate program rates are published and fixed.** Structured intakes pay a cohort rate that is the same for everyone and is not individually negotiable. Direct-entry roles at smaller companies have far more room, and that is where negotiation is worth your energy.
+**Graduate program rates are published and fixed.** Structured intakes pay a cohort rate that is the same for everyone and is not individually negotiable. Direct-entry roles at smaller companies have far more room, and that is where [negotiation](/blog/how-to-negotiate-salary-offer) is worth your energy.
 
 **Sydney pays more and costs more than the gap.** Run any Sydney-versus-elsewhere comparison against real rental listings for a specific suburb and a real commute, not against a state average. The headline difference between a Sydney and a Brisbane offer routinely disappears once you do.
 
@@ -110,19 +110,19 @@ Australia has a distinctive job-search landscape, and using the wrong channel wa
 
 **GradConnection and Prosple** aggregate structured graduate programs specifically, which makes them the right starting point if a formal intake is what you want.
 
-**Specialist recruiters** are unusually active in Australian tech - firms placing contract and permanent engineering roles who often know about positions before they are advertised. Building a relationship with two or three is worth more than an extra fifty cold applications.
+**[Specialist recruiters](/blog/how-to-work-with-recruitment-agencies)** are unusually active in Australian tech - firms placing contract and permanent engineering roles who often know about positions before they are advertised. Building a relationship with two or three is worth more than an extra fifty cold applications.
 
 ## Making your application land
 
 The mechanics are the same as anywhere; what differs is the emphasis.
 
-**Show something that runs.** One deployed project with a working URL outperforms four repositories a reviewer has to clone. A [portfolio site](/portfolio) that opens in a browser is doing work while your application sits in a queue.
+**Show [something that runs](/blog/portfolio-website-for-job-applications).** One deployed project with a working URL outperforms four [repositories](/blog/github-profile-for-job-search-2026) a reviewer has to clone. A [portfolio site](/portfolio) that opens in a browser is doing work while your application sits in a queue.
 
-**Tailor to the advert's own language.** Australian employers screen with software at scale, and mirroring the specific terminology of the posting - the exact framework name, the exact cloud provider - is the difference between parsing correctly and being filtered. Running the document through an [ATS check](/ats-analysis) once removes the whole category of risk.
+**Tailor to the advert's own language.** Australian employers screen with software at scale, and mirroring the specific terminology of the posting - the exact framework name, the exact cloud provider - is the difference between [parsing correctly](/blog/ats-resume-parser-friendly-format) and being filtered. Running the document through an [ATS check](/ats-analysis) once removes the whole category of risk.
 
-**Behavioural rounds are weighted, not decorative.** Australian interviewers ask genuine behavioural questions and listen to the answers. Prepare three or four real situations with a concrete result, and do not treat this round as the easy one.
+**Behavioural rounds are weighted, not decorative.** Australian interviewers ask genuine [behavioural questions](/blog/mock-interview-for-sponsorship-roles) and listen to the answers. Prepare three or four real situations with a concrete result, and do not treat this round as the easy one.
 
-**Be specific about why this company.** "I want to work in tech" reads identically to every other application. A sentence about the actual product, or a decision the company made that you have an opinion about, does not.
+**Be specific about [why this company](/blog/how-to-answer-why-do-you-want-this-job).** "I want to work in tech" reads identically to every other application. A sentence about the actual product, or a decision the company made that you have an opinion about, does not.
 
 ## Mini checklist
 

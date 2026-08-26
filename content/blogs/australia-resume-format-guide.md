@@ -14,14 +14,14 @@ showcase: resume
 ## Key Takeaways
 
 - Australian resumes commonly run **two to three pages** — longer than the US one-page convention and closer to a UK CV.
-- **Referees are usually listed by name** on the document, or offered explicitly, unlike the US "available on request" habit.
+- **[Referees](/blog/resume-references-guide) are usually listed by name** on the document, or offered explicitly, unlike the US "available on request" habit.
 - **No photo, no date of birth, no marital status** — Australia follows UK and US practice here, not European.
 - **Australian spelling** follows British forms: organis**e**, analys**e**, centr**e**, labour, programme for a scheme.
 - Government applications frequently require responses to **selection criteria**, which is a separate written task from the resume itself.
 
 ## Length, and why it differs
 
-The single biggest adjustment for anyone coming from a US-style resume is that Australia does not expect one page.
+The single biggest adjustment for anyone coming from a US-style resume is that Australia does not expect [one page](/blog/ats-resume-length-guide).
 
 Two to three pages is standard and unremarkable. A graduate with limited experience might reasonably use two; someone with a few years' work will use three. Compressing genuine relevant experience onto one page to satisfy a convention that does not apply here reads as thin rather than disciplined.
 
@@ -44,7 +44,7 @@ That said, length is not the goal — completeness is. Three pages of padded des
 
 This is the convention international applicants most often get wrong.
 
-Australian employers commonly expect referees listed on the resume itself: name, job title, organisation, relationship to you, and contact details. Two is typical, three is common for more senior roles.
+Australian employers commonly expect referees listed on the resume itself: name, job title, organisation, relationship to you, and [contact details](/blog/resume-contact-section). Two is typical, three is common for more senior roles.
 
 **Ask them first, every time.** A referee contacted without warning is a poor referee, and Australian employers do call. Give each person your resume and the role description so they can speak to the right things.
 
@@ -56,7 +56,7 @@ If you apply to any Australian government role — federal, state or local — y
 
 These are specific stated requirements, and you are expected to respond to each one individually in writing, with evidence. This is a separate document from your resume and it is what the panel actually scores.
 
-The **STAR method** — Situation, Task, Action, Result — is the expected structure for each response, and Australian government recruitment explicitly teaches it. A response that describes a real situation, what you specifically did, and what resulted will outscore one that asserts a capability without evidence.
+The **[STAR method](/blog/interview-story-bank-star-method)** — Situation, Task, Action, Result — is the expected structure for each response, and Australian government recruitment explicitly teaches it. A response that describes a real situation, what you specifically did, and what resulted will outscore one that asserts a capability without evidence.
 
 Word limits are usually stated and they are real. A criterion with a 250-word limit is being marked, and using 90 words of it is leaving marks on the table.
 
@@ -65,11 +65,11 @@ Word limits are usually stated and they are real. A criterion with a 250-word li
 Australian resumes follow a recognisable order, and deviating from it without reason makes a reader work harder than they will.
 
 1. **Contact details** — name, phone in Australian format, professional email, and city plus state (Melbourne, VIC). No full street address.
-2. **Professional summary** — three or four lines, specific. Optional but useful when it says something real rather than listing adjectives.
-3. **Key skills** — a short scannable block, particularly useful for technical roles and for automated screening.
-4. **Employment history** — reverse chronological, with employer, location, title, dates, and outcomes rather than duties.
+2. **[Professional summary](/blog/how-to-write-resume-summary)** — three or four lines, specific. [Opt](/blog/opt-cpt-resume-guide)ional but useful when it says something real rather than listing adjectives.
+3. **[Key skills](/blog/resume-skills-section-guide-2026)** — a short scannable block, particularly useful for technical roles and for [automated screening](/blog/ats-resume-checker-how-it-works).
+4. **Employment history** — [reverse chronological](/blog/chronological-vs-functional-resume), with employer, location, title, dates, and [outcomes rather than duties](/blog/how-to-quantify-resume-achievements).
 5. **Education** — degree, institution, completion date, and any notable results.
-6. **Certifications and licences** — including anything role-critical such as a driver's licence, a White Card for construction sites, or a Working with Children Check.
+6. **[Certifications](/blog/how-to-list-certifications-on-resume) and licences** — including anything role-critical such as a driver's licence, a White Card for construction sites, or a Working with Children Check.
 7. **Referees** — named, with permission.
 
 **The licences section matters more in Australia than elsewhere.** Roles in construction, healthcare, education and childcare frequently require specific clearances, and stating that you hold one — or that it is in progress — answers a screening question directly.
@@ -82,19 +82,19 @@ The principle is the same everywhere and Australian employers apply it strictly:
 
 Three things make a bullet work: **a specific action**, **a measurable result**, and **enough context to judge the scale**. Numbers do not have to be impressive — they have to be real. "Coordinated a team of four across a six-week project" is more credible and more useful than "extensive leadership experience".
 
-For graduates with limited work history, the same standard applies to projects, society roles and volunteering. A university project described with what was difficult about it and what came out of it outperforms a longer list of coursework.
+For graduates with limited work history, the same standard applies to projects, society roles and volunteering. A [university project](/blog/projects-in-resume) described with what was difficult about it and what came out of it outperforms a longer list of coursework.
 
 ## Automated screening in Australia
 
 Employers of any size in Australia screen with software before a human reads anything, and the large graduate programs process very high volumes.
 
-The practical implications are unremarkable but they are load-bearing: use standard section headings the parser recognises, avoid text inside images or complex multi-column layouts that extract badly, mirror the specific terminology of the advert rather than a synonym for it, and export as PDF unless the advert asks for Word.
+The practical implications are unremarkable but they are load-bearing: use standard section headings the parser recognises, avoid text inside images or complex [multi-column layouts](/blog/ats-tables-columns-guide) that extract badly, mirror the specific terminology of the advert rather than a synonym for it, and [export as PDF](/blog/ats-file-format-guide) unless the advert asks for Word.
 
 Running your base document through an [ATS check](/ats-analysis) once removes this whole category of risk, and it is worth doing before your first application rather than after a month of silence.
 
 ## The cover letter, and when it matters
 
-Australian employers ask for a cover letter more consistently than US employers do, and at smaller organisations a person genuinely reads it.
+Australian employers ask for a [cover letter](/blog/cover-letter-generator-by-country) more consistently than US employers do, and at smaller organisations a person genuinely reads it.
 
 One page, three or four short paragraphs. Open with something specific about the employer rather than announcing that you are applying. Use the middle to give one piece of evidence your resume cannot hold - what you did, what was hard about it, what changed. Close briefly with availability.
 

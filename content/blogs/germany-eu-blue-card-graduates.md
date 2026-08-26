@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- The **EU Blue Card (Blaue Karte EU)** is the main residence permit for university-qualified workers in Germany, and the whole thing turns on your salary meeting a published threshold.
-- **Shortage occupations** — IT, engineering, mathematics, natural sciences, and human medicine among them — qualify at a **lower salary threshold** than other fields.
+- The **EU Blue Card (Blaue Karte EU)** is the main [residence permit](/blog/canada-work-permit-types-guide) for [university](/blog/how-to-list-education-on-resume)-qualified workers in Germany, and the whole thing turns on your salary meeting a published [threshold](/blog/resume-for-h1b-visa-sponsorship).
+- **[Shortage occupations](/blog/in-demand-jobs-canada-2026)** — IT, engineering, mathematics, natural sciences, and human medicine among them — qualify at a **lower salary threshold** than other fields.
 - Your degree must be **recognised or comparable**, which is what the anabin database determines.
-- The Blue Card leads to **permanent residence faster than the standard route**, and faster still with strong German.
-- Thresholds are revised annually — check the current year's figures on the official source before planning around any number.
+- The Blue Card leads to **[permanent residence](/blog/canada-provincial-nominee-guide) faster than the standard route**, and faster still with strong German.
+- Thresholds are revised annually — check the cur[rent](/blog/canada-major-city-job-markets) year's figures on the official source before planning around any number.
 
 ## What the Blue Card is
 
-The Blue Card is an EU-wide residence title for highly qualified workers, implemented by each member state. In Germany it is the standard route for someone with a university degree and a graduate-level job offer.
+The Blue Card is an EU-wide residence title for highly qualified workers, implemented by each member state. In Germany it is the standard route for someone with a university degree and a graduate-level [job offer](/blog/how-to-negotiate-a-job-offer-email).
 
 Three conditions have to be met together:
 
@@ -43,7 +43,7 @@ Germany operates a general threshold and a lower one for shortage occupations.
 
 Both figures are set by regulation and **revised annually**, which is why no article should be your source for the actual number. The Federal Office for Migration and Refugees (BAMF) and the Make it in Germany portal publish the current figures, and they are the ones to check.
 
-**What matters practically is the gap between the two.** A software engineer or a mechanical engineer clears the bar at a salary that would not be enough in a non-shortage field. If your degree is in one of those areas, a graduate-level offer will frequently qualify you where the same salary in another field would not.
+**What matters practically is the gap between the two.** A [software engineer](/blog/resume-matching-software-engineer) or a mechanical engineer clears the bar at a salary that would not be enough in a non-shortage field. If your degree is in one of those areas, a graduate-level offer will frequently qualify you where the same salary in another field would not.
 
 ## Why anabin comes first
 
@@ -53,7 +53,7 @@ Look up two things: your **institution** (is it recognised, and at what status) 
 
 If your qualification is not listed or the classification is unclear, a formal individual assessment through the **Zentralstelle für ausländisches Bildungswesen (ZAB)** is the next step. It takes time, so start it early rather than after you have an offer waiting.
 
-For **regulated professions** — medicine, law, teaching, certain engineering roles — recognition is a separate legal requirement on top of this, and it is a longer process.
+For **[regulated professions](/blog/canada-regulated-professions-guide)** — medicine, law, teaching, certain [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a separate legal requirement on top of this, and it is a longer process.
 
 ## From Blue Card to permanent residence
 
@@ -65,9 +65,9 @@ This is the genuine advantage of the route, and the reason it is worth targeting
 | Blue Card, with basic German (A1) | A somewhat longer period |
 | Standard work permit | Considerably longer |
 
-The pattern is consistent even as the specific durations are adjusted by legislation: **the Blue Card shortens the path substantially, and German language ability shortens it further.** Two people who arrive on the same day can reach permanent residence years apart based on which permit they hold and what German they have.
+The pattern is consistent even as the specific durations are adjusted by legislation: **the Blue Card shortens the path substantially, and German [language ability](/blog/bilingual-language-skills-on-resume) shortens it further.** Two people who arrive on the same day can reach permanent residence years apart based on which permit they hold and what German they have.
 
-The practical read: if you intend to stay, learn German deliberately from the start rather than treating it as optional. It affects your permit, your permanent residence timeline, and the size of your accessible job market simultaneously.
+The practical read: if you intend to stay, learn German deliberately from the start rather than treating it as [opt](/blog/opt-cpt-resume-guide)ional. It affects your permit, your permanent residence timeline, and the size of your accessible job market simultaneously.
 
 ## Changing jobs on a Blue Card
 
@@ -83,7 +83,7 @@ The sequence depends on whether you are already in Germany or applying from abro
 
 **If you are applying from abroad**, you generally apply for a national visa (D visa) at the German mission in your country, then convert it to the Blue Card after arriving. The mission appointment is frequently the longest single delay in the whole process.
 
-Either way the documents are broadly the same: passport, degree certificate with recognition evidence, the signed employment contract, a completed application, biometric photos, proof of health insurance, and the fee.
+Either way the documents are broadly the same: passport, degree certificate with recognition evidence, the signed employment contract, a completed application, biometric photos, proof of [health insurance](/blog/first-job-abroad-practical-checklist), and the fee.
 
 **Health insurance is not optional.** Germany requires everyone to hold it, and you will need proof at the application. Statutory (gesetzlich) cover through your employer is the normal route for an employee.
 
@@ -107,7 +107,7 @@ The important points: notify rather than stay silent, understand how long your s
 
 Two things people underestimate: the fee is small, and the waiting is not.
 
-The Blue Card application fee itself is modest — a two-figure sum rather than a serious expense. What costs is everything around it: a ZAB individual assessment if your degree needs one, certified translations of your documents, and in some cases apostille or legalisation of your certificates in your home country.
+The Blue Card application fee itself is modest — a two-figure sum rather than a serious expense. What costs is everything around it: a ZAB individual assessment if your degree needs one, [certified translations](/blog/canada-credential-assessment-guide) of your documents, and in some cases apostille or legalisation of your certificates in your home country.
 
 The real cost is time. A German mission appointment abroad can take weeks to secure. A busy city Auslanderbehoerde appointment can take longer still. A ZAB assessment runs on its own schedule. None of these run in parallel with each other by default, so sequence them deliberately: start the degree recognition first, because everything else depends on its outcome.
 
@@ -132,7 +132,7 @@ Check whether the role counts as a shortage occupation — IT specialists genera
 
 ### Scenario 2: Your offer is just below the threshold
 
-This is a legitimate negotiation point, and employers who hire internationally understand it immediately. Raising a base salary by a modest amount to clear a visa threshold is a normal conversation, not an imposition.
+This is a legitimate [negotiation](/blog/how-to-negotiate-salary-offer) point, and employers who hire internationally understand it immediately. Raising a base salary by a modest amount to clear a visa threshold is a normal conversation, not an imposition.
 
 ### Scenario 3: Your degree is not clearly listed on anabin
 
@@ -167,7 +167,7 @@ Start a ZAB individual assessment before you go further. It takes real time, and
 - **Assuming recognition is automatic.** anabin decides how your degree is classified, and an unclear result needs a ZAB assessment that takes time.
 - **Accepting an offer just under the bar.** Employers who hire internationally expect this conversation and can usually accommodate it.
 - **Ignoring German.** It directly shortens the path to permanent residence, on top of widening your job market.
-- **Switching employer without checking.** Early-stage Blue Card holders generally need approval, and sequencing a resignation wrongly creates a real problem.
+- **Switching employer without checking.** Early-stage Blue Card holders generally need approval, and sequencing a [resignation](/blog/how-to-write-two-weeks-notice) wrongly creates a real problem.
 
 ## Related Guides
 

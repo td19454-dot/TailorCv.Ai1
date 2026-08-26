@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- **CDI versus CDD** is the central distinction in French employment — permanent versus fixed-term — and it affects everything from housing to borrowing.
-- The **Talent Passport (Passeport Talent)** is a multi-year residence permit covering qualified employees, researchers and founders, and it is far better than the standard route.
-- **Grandes écoles carry disproportionate weight** in French hiring, and the school on your CV follows you for years.
+- **CDI ve[rsu](/blog/how-to-negotiate-a-job-offer-email)s CDD** is the central distinction in French employment — permanent versus fixed-term — and it affects everything from [housing](/blog/canada-major-city-job-markets) to borrowing.
+- The **Talent Passport (Passeport Talent)** is a multi-year [residence permit](/blog/canada-work-permit-types-guide) covering qualified employees, researchers and founders, and it is far better than the standard route.
+- **Grandes écoles carry disproportionate weight** in French hiring, and the school on your [CV](/blog/resume-optimization-guide) follows you for years.
 - **French is required for most of the market**, though technology, research and international companies in Paris run substantially in English.
 - **Stage and alternance** — internships and apprenticeship contracts — are the mainstream entry route, more so than direct graduate hiring.
 
@@ -29,17 +29,17 @@ If you understand one thing about French employment, make it this.
 
 **The practical consequence for a graduate:** a CDI offer is worth more than its salary suggests, and a CDD is not a failure but is a step toward one. When comparing offers, the contract type belongs in the comparison alongside the money.
 
-**Période d'essai** — the probation period — is longer in France than in many countries and either side can end the contract easily during it. A CDI with a long trial period is still a CDI, but understand what the first months mean.
+**Période d'essai** — the probation period — is longer in France than in many countries and either side can end the contract easily during it. A CDI with a long trial period is still a CDI, but understand what the [first months](/blog/first-job-abroad-practical-checklist) mean.
 
 ## The Talent Passport
 
 The single most useful thing for a qualified non-EU graduate to know about France.
 
-**What it is.** The *Passeport Talent* is a multi-year residence permit, typically issued for up to four years, covering several categories including qualified employees with a master's-level degree, employees of innovative companies, researchers, and founders of startups.
+**What it is.** The *Passeport Talent* is a multi-year residence permit, typically issued for up to four years, covering several categories including qualified employees with a master's-level degree, employees of innovative companies, researchers, and founders of [startups](/blog/japan-startup-jobs-guide).
 
 **Why it is better than the standard route.** It is multi-year rather than annual, it does not require the labour market test that the ordinary salaried route can involve, and it grants an accompanying *passeport talent famille* permit to your family with full working rights.
 
-**The qualified employee category** generally requires a master's-level qualification and a salary above a defined threshold tied to the French reference wage. Check the current threshold with the French administration rather than a secondary source.
+**The qualified employee category** generally requires a master's-level qualification and a salary above a defined threshold tied to the French [reference](/blog/resume-references-guide) wage. Check the current threshold with the French administration rather than a secondary source.
 
 **Recherche d'emploi ou création d'entreprise (RECE)** is the post-study permit — graduates of French institutions at master's level and above can obtain a period to look for work or start a business, and can then transition to a Talent Passport.
 
@@ -49,7 +49,7 @@ The single most useful thing for a qualified non-EU graduate to know about Franc
 
 French hiring places unusual weight on educational pedigree, and it is worth understanding rather than resenting.
 
-**The grandes écoles** — Polytechnique, Centrale, Mines, HEC, ESSEC, ESCP, Sciences Po and others — sit outside the university system and recruit through competitive entrance examinations. Their alumni networks are powerful and long-lasting.
+**The grandes écoles** — Polytechnique, Centrale, Mines, HEC, ESSEC, ESCP, Sciences Po and others — sit outside the university system and recruit through competitive entrance examinations. Their [alumni networks](/blog/international-student-networking-guide) are powerful and long-lasting.
 
 **The school follows you.** Where an American CV foregrounds companies and an Australian one foregrounds outcomes, a French CV's education line does real work for a decade or more.
 
@@ -61,7 +61,7 @@ French hiring places unusual weight on educational pedigree, and it is worth und
 
 Paris dominates by volume and the regional cities are genuinely under-applied.
 
-**Paris and Île-de-France** hold the corporate headquarters, finance, consulting, media and the largest technology scene, centred on Station F and the wider startup ecosystem.
+**Paris and Île-de-France** hold the corporate headquarters, [finance](/blog/resume-matching-insurance-jobs), [consulting](/blog/case-interview-preparation-guide-2026), media and the largest technology scene, centred on Station F and the wider startup ecosystem.
 
 **Toulouse** is Europe's aerospace capital — Airbus, ATR, Thales and a deep supply chain. For an aerospace or systems engineer it is one of the best places in Europe.
 
@@ -81,9 +81,9 @@ France's gross-to-net gap is large and worth understanding before you evaluate a
 
 **Salaries are quoted as gross annual (brut annuel)**, sometimes over 12 payments and sometimes 13 or more. Ask which.
 
-**Social contributions are substantial**, funding health insurance, pension, unemployment and family benefits. The gap between brut and net is much larger than in the UK or US.
+**Social contributions are substantial**, funding health insurance, [pension](/blog/first-90-days-new-job), unemployment and family benefits. The gap between brut and net is much larger than in the UK or US.
 
-**Income tax is now withheld at source** (prélèvement à la source), which changed relatively recently — older advice describing an annual payment is out of date.
+**Income [tax](/blog/canada-first-job-taxes-and-benefits) is now withheld at source** (prélèvement à la source), which changed relatively recently — older advice describing an annual payment is out of date.
 
 **Mutuelle** is supplementary health insurance, and employers are required to offer and part-fund it. It covers what the state system does not, and it is a genuine benefit worth checking.
 
@@ -103,7 +103,7 @@ French administration has a reputation and some of it is deserved. The sequence 
 
 **A French bank account** with a RIB — the account identifier used for salary, rent and direct debits. Almost nothing works without one.
 
-**Attestation d'hébergement or a lease** for proof of address, which several other steps require.
+**[Attestation](/blog/canada-credential-assessment-guide) d'hébergement or a lease** for proof of address, which several other steps require.
 
 **Housing is the hard part in Paris.** Landlords typically want a French guarantor (*garant*), proof of income at several times the rent, and a CDI. Schemes like Visale exist to provide a state-backed guarantee for people without a French guarantor, and knowing about them changes the search substantially.
 
@@ -115,7 +115,7 @@ French administration has a reputation and some of it is deserved. The sequence 
 
 Worth calibrating, because the stereotypes are half right and misleading in the other half.
 
-**Hierarchy is real.** French organisations are more formal and more vertical than Nordic or Dutch ones. The *vouvoiement* form of address is standard with people you do not know well and with seniors, and switching to *tu* is something that happens, not something you initiate on day one.
+**[Hierarchy](/blog/japan-nenkou-seniority-explained) is real.** French organisations are more formal and more vertical than Nordic or Dutch ones. The *vouvoiement* form of address is standard with people you do not know well and with seniors, and switching to *tu* is something that happens, not something you initiate on day one.
 
 **Meetings are for discussion and debate.** Disagreement is intellectually respectable and directness about ideas is not read as personal. Debating a proposal robustly is engagement, not obstruction.
 
@@ -169,7 +169,7 @@ Take it if the work is right, and understand what it means practically — renti
 ### Don't
 
 - Treat a CDD as equivalent to a CDI for housing and credit
-- Assume the standard salaried permit is your only option
+- Assume the standard salaried permit is your only [opt](/blog/opt-cpt-resume-guide)ion
 - Ignore the weight French employers give to education
 - Expect the whole market to run in English
 - Overlook the RECE post-study permit
