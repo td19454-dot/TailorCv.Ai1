@@ -75,6 +75,7 @@ from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
 from routers.billing import _get_region
 from routers.feedback import router as feedback_router
+from routers.marketing import router as marketing_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
 from blog_system import BlogService, canonical_filter_label, codehilite_css, xml_escape
@@ -159,6 +160,7 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
+        "/webhooks/ses-events",
     }
     SAFE_METHODS = {"GET", "HEAD", "OPTIONS"}
 
@@ -397,6 +399,7 @@ templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
 app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)
+app.include_router(marketing_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
@@ -515,6 +518,12 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_resume_text TEXT")
     if "application_profile_json" not in cols:
         to_add.append("ADD COLUMN application_profile_json TEXT")
+    if "marketing_opt_out" not in cols:
+        to_add.append("ADD COLUMN marketing_opt_out BOOLEAN NOT NULL DEFAULT FALSE" if is_pg else "ADD COLUMN marketing_opt_out BOOLEAN NOT NULL DEFAULT 0")
+    if "email_bounced_at" not in cols:
+        to_add.append("ADD COLUMN email_bounced_at TIMESTAMP" if is_pg else "ADD COLUMN email_bounced_at TEXT")
+    if "email_complained_at" not in cols:
+        to_add.append("ADD COLUMN email_complained_at TIMESTAMP" if is_pg else "ADD COLUMN email_complained_at TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
