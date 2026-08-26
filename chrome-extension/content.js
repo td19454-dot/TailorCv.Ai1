@@ -1030,14 +1030,14 @@
     title.className = 'tcv-skill-gaps-title';
     title.textContent = showingAdded
       ? `Added ${skills.length} skill${skills.length === 1 ? '' : 's'} from this job`
-      : 'This job also asks for';
+      : 'Skills Added';
     box.appendChild(title);
 
     const list = document.createElement('div');
     list.className = 'tcv-skill-gaps-pills';
     skills.slice(0, 8).forEach(function (skill) {
       const pill = document.createElement('span');
-      pill.className = 'tcv-skill-gap-pill';
+      pill.className = 'tcv-skill-gap-pill' + (showingAdded ? ' added' : '');
       pill.textContent = skill;          // textContent, never innerHTML
       list.appendChild(pill);
     });
@@ -1054,6 +1054,96 @@
 
     if (scoreCard && scoreCard.parentNode) {
       scoreCard.parentNode.insertBefore(box, scoreCard.nextSibling);
+    }
+  }
+
+  // Compact bullet-level diff for the sidebar. Only reworded/new bullets are
+  // shown (unchanged ones add no information and the sidebar is narrow); the
+  // roomier "See what changed" modal on the web editor shows the full picture
+  // with word-level highlighting.
+  function showChangesPanel(changes) {
+    const existing = document.getElementById('tcv-changes-panel');
+    if (existing) existing.remove();
+    if (!changes || typeof changes !== 'object') return;
+
+    const entries = Array.isArray(changes.entries) ? changes.entries : [];
+    const summary = changes.summary || null;
+    const summaryChanged = summary && summary.status !== 'unchanged';
+    const entriesWithNotableBullets = entries
+      .map(function (e) {
+        const bullets = (e.bullets || []).filter(function (b) {
+          return b.status === 'reworded' || b.status === 'new';
+        });
+        return { label: e.label, bullets: bullets };
+      })
+      .filter(function (e) { return e.bullets.length > 0; });
+
+    if (!summaryChanged && !entriesWithNotableBullets.length) return;
+
+    const panel = document.createElement('div');
+    panel.id = 'tcv-changes-panel';
+    panel.className = 'tcv-changes-panel';
+
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'tcv-changes-toggle';
+    const toggleLabel = document.createElement('span');
+    toggleLabel.textContent = 'See what changed';
+    const chevron = document.createElement('span');
+    chevron.className = 'tcv-changes-chevron';
+    chevron.textContent = '▾';
+    toggle.append(toggleLabel, chevron);
+    toggle.addEventListener('click', function () {
+      panel.classList.toggle('tcv-changes-open');
+    });
+    panel.appendChild(toggle);
+
+    const body = document.createElement('div');
+    body.className = 'tcv-changes-body';
+
+    function addBulletRow(status, before, after) {
+      const row = document.createElement('div');
+      row.className = 'tcv-changes-bullet';
+      const tag = document.createElement('span');
+      tag.className = 'tcv-changes-tag';
+      tag.textContent = status;          // textContent, never innerHTML
+      row.appendChild(tag);
+      if (before) {
+        const beforeLine = document.createElement('div');
+        beforeLine.className = 'tcv-changes-before';
+        beforeLine.textContent = before; // textContent, never innerHTML
+        row.appendChild(beforeLine);
+      }
+      const afterLine = document.createElement('div');
+      afterLine.className = 'tcv-changes-after';
+      afterLine.textContent = after;     // textContent, never innerHTML
+      row.appendChild(afterLine);
+      body.appendChild(row);
+    }
+
+    if (summaryChanged) {
+      const label = document.createElement('div');
+      label.className = 'tcv-changes-entry-label';
+      label.textContent = 'Summary';
+      body.appendChild(label);
+      addBulletRow(summary.status, summary.before, summary.after);
+    }
+
+    entriesWithNotableBullets.forEach(function (e) {
+      const label = document.createElement('div');
+      label.className = 'tcv-changes-entry-label';
+      label.textContent = e.label || '';  // textContent, never innerHTML
+      body.appendChild(label);
+      e.bullets.forEach(function (b) {
+        addBulletRow(b.status, b.before, b.after);
+      });
+    });
+
+    panel.appendChild(body);
+
+    const anchor = document.getElementById('tcv-skill-gaps') || scoreCard;
+    if (anchor && anchor.parentNode) {
+      anchor.parentNode.insertBefore(panel, anchor.nextSibling);
     }
   }
 
@@ -1160,6 +1250,7 @@
       const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
       const gaps  = (res.data && Array.isArray(res.data.skillGaps))  ? res.data.skillGaps  : [];
       showSkillPanel(added, gaps);
+      showChangesPanel(res.data && res.data.changes);
       track('tailor_downloaded', {
         before_score: job.beforeScore,
         after_score: after,
