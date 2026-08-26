@@ -46,6 +46,13 @@ class User(Base):
     base_resume_text = Column(Text, nullable=True)
     # Stored application-form autofill profile used by the Chrome extension.
     application_profile_json = Column(Text, nullable=True)
+    # Marketing-broadcast suppression (SES campaigns only — never applies to
+    # transactional mail sent via Resend). Set by the /unsubscribe link or by an
+    # SES bounce/complaint webhook; any one of these three excludes the user from
+    # the next campaign send.
+    marketing_opt_out = Column(Boolean, nullable=False, default=False, server_default="false")
+    email_bounced_at = Column(DateTime, nullable=True)
+    email_complained_at = Column(DateTime, nullable=True)
 
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
