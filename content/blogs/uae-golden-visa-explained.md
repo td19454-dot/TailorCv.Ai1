@@ -21,7 +21,7 @@ showcase: none
 
 ## What makes it different
 
-Ordinary UAE residency is sponsored. Your [employer](/blog/how-recruiters-spot-generic-resumes) sponsors your [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), your visa depends on your job, and losing the job starts a clock on leaving the country.
+Ordinary UAE residency is sponsored. Your [employer](/blog/how-recruiters-spot-generic-resumes) sponsors your visa, your visa depends on your job, and losing the job starts a clock on leaving the country.
 
 The Golden Visa breaks that link. It is **self-sponsored**, granted on the basis of who you are and what you have achieved rather than who employs you. That single change has consequences that reach far beyond immigration [paperwork](/blog/campus-placement-document-checklist).
 
@@ -50,7 +50,7 @@ The scheme has been broadened repeatedly, and the current categories cover consi
 | **Executives and professionals** | Senior roles meeting defined salary and qualification criteria |
 | **Frontline heroes and humanitarian workers** | Recognised contributions in defined circumstances |
 
-**Every [threshold](/blog/resume-for-h1b-visa-sponsorship), salary level and ranking cut-off is set by the authorities and revised.** Check the current criteria on the ICP or GDRFA portals rather than on any secondary source. Categories have been added and requirements loosened more than once, which means an old "you do not qualify" is unreliable.
+**Every threshold, salary level and ranking cut-off is set by the authorities and revised.** Check the current criteria on the ICP or GDRFA portals rather than on any secondary source. Categories have been added and requirements loosened more than once, which means an old "you do not qualify" is unreliable.
 
 ## The graduate routes, specifically
 

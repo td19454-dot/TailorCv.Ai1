@@ -51,7 +51,7 @@ Small, open, and specialised in a handful of areas where it is genuinely world-l
 
 **EU/EEA and Nordic citizens** work freely. Nordic citizens have additional rights under longstanding intra-Nordic agreements.
 
-**The Positive List** is the key [document](/blog/campus-placement-document-checklist) for everyone else. It names occupations experiencing shortages, in two versions — one for people with higher education, and one for skilled work — and being on it provides a streamlined residence and [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) route.
+**The Positive List** is the key [document](/blog/campus-placement-document-checklist) for everyone else. It names occupations experiencing shortages, in two versions — one for people with higher education, and one for skilled work — and being on it provides a streamlined residence and work permit route.
 
 **The Pay Limit Scheme** offers a route for roles paying above a defined annual [salary](/blog/how-to-negotiate-salary-offer) [threshold](/blog/international-resume-tailoring-guide), regardless of occupation.
 

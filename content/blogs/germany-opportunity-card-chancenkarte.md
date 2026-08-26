@@ -88,7 +88,7 @@ Being in the country is the advantage — use it rather than continuing to apply
 
 **Get a German phone number and a German address on your [CV](/blog/resume-optimization-guide).** A local number and address materially change how a Mittelstand employer reads your application, because it answers the question of whether you can actually start.
 
-**Say plainly on your CV and in your [cover letter](/blog/cover-letter-generator-by-country) that you hold an Opportunity Card and can start without [sponsorship](/blog/resume-for-h1b-visa-sponsorship) delay.** Many German employers, especially smaller ones, assume any foreign candidate means a long visa process. One sentence removes that objection entirely — and it is the single most valuable thing you can write on the document.
+**Say plainly on your CV and in your [cover letter](/blog/cover-letter-generator-by-country) that you hold an Opportunity Card and can start without sponsorship delay.** Many German employers, especially smaller ones, assume any foreign candidate means a long visa process. One sentence removes that objection entirely — and it is the single most valuable thing you can write on the document.
 
 **Go to things in person.** Meetups, [job fairs](/blog/campus-vs-off-campus-placement-strategy), industry events. The whole reason for being physically present is that in-person contact converts at a rate cold applications never do.
 

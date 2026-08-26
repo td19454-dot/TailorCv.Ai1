@@ -68,7 +68,7 @@ Three positions, and yours determines everything.
 
 **EU/EEA and Swiss citizens** have free movement and need no permit. You register, get a personnummer, and work. Say so in the first line of any [application](/blog/how-many-jobs-should-you-apply-to-per-day).
 
-**Graduates of Swedish higher education institutions** can apply for a [residence permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) to look for work or start a business after completing their studies. It is not tied to an employer, which removes the [sponsorship](/blog/resume-for-h1b-visa-sponsorship) obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
+**Graduates of Swedish higher education institutions** can apply for a residence permit to look for work or start a business after completing their studies. It is not tied to an employer, which removes the sponsorship obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
 
 **Everyone else needs a work permit**, which requires a concrete [job offer](/blog/how-to-negotiate-a-job-offer-email). The distinctive Swedish feature is that the terms of employment must be at least equivalent to those set by **Swedish collective agreements** for the role — pay, insurance and conditions. The relevant trade union is given the opportunity to comment on the offer.
 

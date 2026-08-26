@@ -25,7 +25,7 @@ The orientation year for highly educated persons — the *zoekjaar hoogopgeleide
 
 The crucial word is **unrestricted**. During this year you are treated, for employment purposes, like a local candidate. An [employer](/blog/how-recruiters-spot-generic-resumes) does not need to be a recognised sponsor, does not need to apply for anything, and does not need to justify hiring you over an EU national. You can work full time, part time, on a temporary contract, or freelance.
 
-That removes the single largest obstacle a graduate faces in any European market: the employer's reluctance to take on the cost, delay and uncertainty of [sponsorship](/blog/resume-for-h1b-visa-sponsorship).
+That removes the single largest obstacle a graduate faces in any European market: the employer's reluctance to take on the cost, delay and uncertainty of sponsorship.
 
 ## Who qualifies — including the part people miss
 

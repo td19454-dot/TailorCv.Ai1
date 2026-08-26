@@ -51,7 +51,7 @@ The route after the post-study visa, and it introduces a constraint worth unders
 
 **Accreditation is the important one for your search.** Only accredited employers can hire on this visa, which means — exactly as with the Dutch sponsor register — you can identify in advance which employers are worth approaching if you will need this route.
 
-**Median wage [thresholds](/blog/resume-for-h1b-visa-sponsorship) have applied** to various parts of the system and have been adjusted repeatedly. Check the current settings.
+**Median wage thresholds have applied** to various parts of the system and have been adjusted repeatedly. Check the current settings.
 
 **Time limits apply** to how long you can hold the visa before moving toward residence or leaving, depending on the role and pay level.
 

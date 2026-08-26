@@ -79,9 +79,9 @@ This decides more than any other single factor.
 
 The structures rhyme but the details differ, and the details are what stop [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
-**Sweden.** EU/EEA citizens work freely. Others need a [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) with a concrete offer meeting collective agreement terms, with a union consultation step. Graduates of Swedish institutions can get a permit to look for work.
+**Sweden.** EU/EEA citizens work freely. Others need a work permit with a concrete offer meeting collective agreement terms, with a union consultation step. Graduates of Swedish institutions can get a permit to look for work.
 
-**Denmark.** EU/EEA and Nordic citizens work freely. Others use the Positive List for [shortage occupations](/blog/in-demand-jobs-usa-2026), the Pay Limit Scheme for higher-paid roles, or the Establishment Card after a Danish degree.
+**Denmark.** EU/EEA and Nordic citizens work freely. Others use the Positive List for shortage occupations, the Pay Limit Scheme for higher-paid roles, or the Establishment Card after a Danish degree.
 
 **Norway.** EEA citizens have free movement under the EEA agreement. Others generally need a skilled worker permit requiring a relevant qualification and a concrete offer meeting Norwegian pay norms. Graduates of Norwegian institutions have a job-seeking route.
 

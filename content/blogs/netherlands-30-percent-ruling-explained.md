@@ -35,7 +35,7 @@ Four conditions have to hold together.
 
 **You must have been recruited from abroad.** The ruling is for people hired to come to the Netherlands, not for people already living there who then find a job. There is a rule about where you lived before starting — specifically, a minimum distance from the Dutch border for a defined portion of the preceding period.
 
-**You must have specific expertise** that is scarce in the Dutch labour market. In practice this is assessed through a **minimum taxable salary [threshold](/blog/resume-for-h1b-visa-sponsorship)** rather than a subjective judgement of your [skills](/blog/resume-skills-match-job-description). Clear the threshold and the expertise test is treated as met.
+**You must have specific expertise** that is scarce in the Dutch labour market. In practice this is assessed through a **minimum taxable salary threshold** rather than a subjective judgement of your [skills](/blog/resume-skills-match-job-description). Clear the threshold and the expertise test is treated as met.
 
 **Your employer must be a Dutch withholding agent** — a company registered to withhold Dutch payroll tax.
 

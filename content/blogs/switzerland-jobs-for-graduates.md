@@ -27,7 +27,7 @@ Switzerland is simultaneously the most financially attractive labour market in E
 
 **Costs are genuinely higher too** — rent, [health insurance](/blog/first-job-abroad-practical-checklist) (which is private and compulsory), food, transport. A naive salary comparison overstates the gain, but a careful one still favours Switzerland substantially for most people.
 
-**Entry is genuinely restricted.** For EU/EFTA citizens, free movement makes it straightforward. For everyone else, Switzerland operates annual [quotas](/blog/resume-for-h1b-visa-sponsorship) on permits and requires [employers](/blog/how-recruiters-spot-generic-resumes) to demonstrate that no suitable candidate could be found in Switzerland or the EU/EFTA area first. That is a high bar for a graduate role.
+**Entry is genuinely restricted.** For EU/EFTA citizens, free movement makes it straightforward. For everyone else, Switzerland operates annual quotas on permits and requires [employers](/blog/how-recruiters-spot-generic-resumes) to demonstrate that no suitable candidate could be found in Switzerland or the EU/EFTA area first. That is a high bar for a graduate role.
 
 The honest read: if you hold an EU/EFTA passport, Switzerland is one of the best opportunities in Europe. If you do not, it is possible but you need a specific, scarce skill and an employer willing to make the case.
 
