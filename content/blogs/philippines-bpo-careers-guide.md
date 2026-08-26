@@ -27,11 +27,11 @@ The picture most advice misses.
 
 **Non-voice customer support** through chat and email, which is growing and does not carry the same shift burden in every case.
 
-**Finance and accounting outsourcing** — accounts payable and receivable, reconciliations, financial reporting, and increasingly analysis rather than processing.
+**[Finance](/blog/resume-matching-insurance-jobs) and accounting outsourcing** — accounts payable and receivable, reconciliations, financial reporting, and increasingly analysis rather than processing.
 
-**Healthcare information management** — medical coding, billing, claims and clinical documentation, which is a large and well-paid specialism requiring certification.
+**[Healthcare](/blog/first-job-abroad-practical-checklist) information management** — medical coding, billing, claims and clinical documentation, which is a large and well-paid specialism requiring [certification](/blog/how-to-list-certifications-on-resume).
 
-**Legal process outsourcing** — document review, contract management, research.
+**Legal process outsourcing** — [document](/blog/campus-placement-document-checklist) review, contract management, research.
 
 **Analytics and data services**, which has grown quickly.
 
@@ -75,13 +75,13 @@ The progression that exists and how to use it.
 
 **And moving into a shared service centre** of a multinational is the equivalent of the services-to-GCC move in India — better pay, better work and better progression.
 
-**The skills genuinely transfer.** Process management, client handling, quality systems and analytics capability are portable internationally, which is why so many Filipino BPO professionals move abroad successfully.
+**The [skills](/blog/resume-skills-match-job-description) genuinely transfer.** Process management, client handling, quality systems and analytics capability are portable internationally, which is why so many Filipino BPO professionals move abroad successfully.
 
 ## Where the sector sits globally
 
 Context that explains why it matters.
 
-**The Philippines and India lead global business process outsourcing**, with different strengths — India in scale and technical process work, the Philippines in voice, customer experience and English-language services.
+**The Philippines and India lead global business process outsourcing**, with different strengths — India in scale and technical process work, the Philippines in voice, customer [experience](/blog/resume-matching-experienced-professionals) and English-language services.
 
 **The Philippine advantage is language and cultural affinity** with American customers specifically, which is why voice work concentrated there rather than elsewhere.
 
@@ -91,7 +91,7 @@ Context that explains why it matters.
 
 **Which means the sector is moving upmarket**, and the roles being created now skew toward analytics, process design and specialist knowledge work rather than volume transaction handling.
 
-**And that shift is why the career advice matters** — entering the sector today and staying in a purely transactional role is a worse bet than it was a decade ago, while entering it and moving into specialist work is a better one.
+**And that shift is why the [career](/blog/career-change-to-tech-guide) advice matters** — entering the sector today and staying in a purely transactional role is a worse bet than it was a decade ago, while entering it and moving into specialist work is a better one.
 
 ## Pay and conditions
 
@@ -107,7 +107,7 @@ An honest financial account.
 
 **Shared service centres of multinationals** generally pay above pure outsourcing operators for equivalent work.
 
-**Health insurance and allowances** are standard at the larger employers and are a genuine part of the package.
+**Health insurance and allowances** are standard at the larger [employers](/blog/how-recruiters-spot-generic-resumes) and are a genuine part of the package.
 
 **Transport and shuttle arrangements** matter more than they sound given night shifts and Manila traffic.
 
@@ -125,11 +125,11 @@ Concrete steps rather than general advice.
 
 **Target shared service centres** of multinationals as the next step, since the work and pay are both better.
 
-**Build a genuine CV** rather than a role description — quantify handle times, quality scores, team sizes and improvements, because these are exactly the numbers a hiring manager reads.
+**Build a genuine CV** rather than a role description — [quantify](/blog/how-to-quantify-resume-achievements) handle times, quality scores, team sizes and improvements, because these are exactly the numbers a [hiring manager](/blog/how-recruiters-read-resumes) reads.
 
 **Run it through an [ATS check](/ats-analysis)**, since the larger employers screen at volume.
 
-**And consider the international angle**, because process, quality and analytics capability built here genuinely transfers abroad and to remote work for foreign employers.
+**And consider the international angle**, because process, quality and analytics capability built here genuinely transfers abroad and to [remote work](/blog/remote-job-search-guide) for foreign employers.
 
 ## The employers
 
@@ -159,7 +159,7 @@ What the day actually looks like.
 
 **Metrics are pervasive** — handle time, quality scores, adherence, resolution rates — and performance is measured closely.
 
-**Training is genuinely structured** at the larger employers, which is one of the sector's real advantages for a fresh graduate.
+**Training is genuinely structured** at the larger employers, which is one of the sector's real advantages for a fresh [graduate](/blog/first-resume-for-gen-z-2026).
 
 **Facilities are generally good**, with the larger operators competing on workplace quality because attrition is high.
 
@@ -179,7 +179,7 @@ What the process involves.
 
 **Assessment tests** covering language, comprehension, basic reasoning and sometimes typing or computer literacy.
 
-**A behavioural interview**, where situational judgement and customer-handling scenarios are common.
+**A behavioural [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)**, where situational judgement and customer-handling scenarios are common.
 
 **A mock call or role-play** for voice positions, which is the central assessment for those roles.
 

@@ -29,9 +29,9 @@ Being precise about a term that gets used loosely.
 
 **USMCA provides the framework**, replacing NAFTA and maintaining the rules of origin that make North American production advantageous.
 
-**It is not only manufacturing.** Services followed, and engineering, software development, finance operations and customer support serving North America have all expanded in Mexico for the same time zone and proximity reasons.
+**It is not only manufacturing.** Services followed, and engineering, software development, [finance](/blog/resume-matching-insurance-jobs) operations and customer support serving North America have all expanded in Mexico for the same time zone and proximity reasons.
 
-**And it is not a temporary shift.** The advantages — geography, time zone, trade framework and cost position — do not depend on any particular administration, which is why companies have committed capital rather than merely relocating orders.
+**And it is not a temporary shift.** The advantages — geography, time zone, trade framework and cost position — do not depend on any particular administration, which is why companies have committed capital rather than merely [relocating](/blog/first-job-abroad-practical-checklist) orders.
 
 ## The roles this creates
 
@@ -39,7 +39,7 @@ Where the actual jobs are.
 
 **Manufacturing and industrial engineering** — process design, automation, lean and continuous improvement, which is the largest single category.
 
-**Quality engineering**, particularly in automotive, aerospace and medical devices where certification requirements are demanding.
+**Quality engineering**, particularly in automotive, aerospace and [medical devices](/blog/resume-tailoring-healthcare) where [certification](/blog/how-to-list-certifications-on-resume) requirements are demanding.
 
 **Supply chain and logistics** — planning, procurement, customs, trade compliance and distribution, which nearshoring has made considerably more complex and therefore more valuable.
 
@@ -70,7 +70,7 @@ Where the actual jobs are.
 
 **The border cities** have the longest maquiladora history and the most direct cross-border integration.
 
-**And infrastructure is the constraint** — water, electricity, housing and transport in the fastest-growing areas are under real pressure, which is the most cited practical limit on how fast this can continue.
+**And infrastructure is the constraint** — water, electricity, [housing](/blog/remote-job-search-guide) and transport in the fastest-growing areas are under real pressure, which is the most cited practical limit on how fast this can continue.
 
 ## The maquiladora question
 
@@ -104,7 +104,7 @@ What the market actually rewards.
 
 **Customs and trade compliance knowledge**, which USMCA rules of origin have made considerably more valuable.
 
-**Project management**, particularly for plant expansion and new product introduction.
+**[Project](/blog/projects-in-resume) management**, particularly for plant expansion and new product introduction.
 
 **And English**, which for nearshoring specifically is not optional at any level of responsibility, since the operations report to North American parents.
 
@@ -112,19 +112,19 @@ What the market actually rewards.
 
 Practical channels for this sector.
 
-**LinkedIn**, where nearshoring recruiters are extremely active.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide)**, where nearshoring [recruiters](/blog/how-recruiters-read-resumes) are extremely active.
 
 **OCCMundial** and **Computrabajo** for domestic volume.
 
-**Specialist recruitment agencies** for engineering and manufacturing, which handle a large share of these roles and are worth engaging directly.
+**Specialist [recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** for engineering and manufacturing, which handle a large share of these roles and are worth engaging directly.
 
-**Company career pages** for the major manufacturers, several of which recruit continuously in the growth regions.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the major manufacturers, several of which recruit continuously in the growth regions.
 
 **Industrial park and cluster organisations**, which frequently list openings and run events.
 
-**University career services**, since the manufacturers recruit directly from Tec de Monterrey, the ITESM network and the regional technical universities.
+**[University](/blog/how-to-list-education-on-resume) career services**, since the manufacturers recruit directly from Tec de Monterrey, the ITESM network and the regional technical universities.
 
-**Apply in Spanish** with your English level stated clearly, and run the document through an [ATS check](/ats-analysis) since the large manufacturers screen at volume.
+**Apply in Spanish** with your English level stated clearly, and run the [document](/blog/campus-placement-document-checklist) through an [ATS check](/ats-analysis) since the large manufacturers screen at volume.
 
 ## Living in the nearshoring regions
 
@@ -156,7 +156,7 @@ Where a nearshoring career leads.
 
 **Into regional or corporate roles**, covering multiple plants or the Latin American operation.
 
-**Into consulting**, where operational improvement expertise transfers well.
+**Into [consulting](/blog/case-interview-preparation-guide-2026)**, where operational improvement expertise transfers well.
 
 **Into the United States**, via internal transfer or the TN visa for Mexican nationals in listed professions including engineering.
 
@@ -170,13 +170,13 @@ What the enthusiasm tends to skip.
 
 **Infrastructure is straining.** Water availability in the Bajio, electricity capacity and housing supply in the fastest-growing areas are genuine constraints, and companies discuss them openly.
 
-**Wages are the reason the work moved**, and expecting North American compensation misreads the entire arrangement.
+**Wages are the reason the work moved**, and expecting North American [compensation](/blog/how-to-negotiate-a-job-offer-email) misreads the entire arrangement.
 
 **Policy risk exists.** Trade arrangements are reviewed and renegotiated, and while the underlying advantages are durable, specific rules are not permanent.
 
 **And security varies by location** in ways that matter for daily life, particularly in some of the border manufacturing centres, and this deserves honest research rather than either dismissal or panic.
 
-**None of this argues against the opportunity.** It argues for choosing the region and employer deliberately rather than following the headline.
+**None of this argues against the opportunity.** It argues for choosing the region and [employer](/blog/how-recruiters-spot-generic-resumes) deliberately rather than following the headline.
 
 ## Comparing Mexico with the alternatives
 

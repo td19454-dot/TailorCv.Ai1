@@ -33,11 +33,11 @@ Scale and structure.
 
 **Financial services**, including a fast-growing fintech sector reaching a large unbanked and underbanked population.
 
-**Palm oil, agriculture and food processing**, a very large employer.
+**Palm oil, agriculture and food processing**, a very large [employer](/blog/how-recruiters-spot-generic-resumes).
 
 **Tourism**, concentrated in Bali and increasingly promoted elsewhere.
 
-**And infrastructure**, with sustained government investment including the new capital project.
+**And infrastructure**, with sustained government investment including the new capital [project](/blog/projects-in-resume).
 
 **For a foreign professional**, employment concentrates in international companies, resource and energy firms, senior technical roles and specialist positions where local expertise is genuinely scarce.
 
@@ -78,9 +78,9 @@ The first thing to establish.
 
 The financial picture.
 
-**Expatriate packages at international companies** are the attractive category, frequently including housing, schooling and flights for senior roles.
+**Expatriate packages at international companies** are the attractive category, frequently including [housing](/blog/remote-job-search-guide), schooling and flights for senior roles.
 
-**Local-contract salaries** are modest by international standards, and a foreigner on one will earn accordingly.
+**Local-contract [salaries](/blog/how-to-negotiate-salary-offer)** are modest by international standards, and a foreigner on one will earn accordingly.
 
 **Resource sector roles** frequently pay well with rotational arrangements and site allowances.
 
@@ -90,7 +90,7 @@ The financial picture.
 
 **Traffic is the defining daily cost in Jakarta**, and it affects where you should live substantially.
 
-**Healthcare** is mixed, with good private and international facilities in Jakarta and limited provision elsewhere, which makes insurance essential.
+**[Healthcare](/blog/first-job-abroad-practical-checklist)** is mixed, with good private and international facilities in Jakarta and limited provision elsewhere, which makes insurance essential.
 
 **And international schooling** is the largest family expense, as across the region.
 
@@ -98,7 +98,7 @@ The financial picture.
 
 Worth calibrating.
 
-**Hierarchy is respected** and seniority carries weight.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and seniority carries weight.
 
 **Indirect communication is the norm**, and direct disagreement, particularly with a senior person in public, causes real damage.
 
@@ -116,19 +116,19 @@ Worth calibrating.
 
 Indonesia's channels.
 
-**LinkedIn is the strongest** for professional and international roles, and Jakarta's business community is well represented.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is the strongest** for professional and international roles, and Jakarta's business community is well represented.
 
 **Jobstreet Indonesia** carries substantial domestic volume.
 
 **Glints and Kalibrr** cover the startup and technology market.
 
-**Company career pages** for the multinationals, resource companies and the large domestic groups.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the multinationals, resource companies and the large domestic groups.
 
 **Executive search firms** dominate senior appointments, particularly in resources and financial services.
 
-**The bilateral chambers of commerce** run networking and job listings and are genuinely useful for foreign professionals.
+**The bilateral chambers of commerce** run [networking](/blog/networking-tips-for-job-search) and [job listings](/blog/best-job-search-websites-2026) and are genuinely useful for foreign professionals.
 
-**And referrals**, which matter in a business culture built on relationships.
+**And [referrals](/blog/networking-messages-for-referrals)**, which matter in a business culture built on relationships.
 
 **State your work authorisation position clearly**, since employers screen on whether sponsorship is required and whether the position permits it.
 
@@ -136,13 +136,13 @@ Indonesia's channels.
 
 Where it leads.
 
-**Regional roles** are a natural progression, since Indonesia's scale makes it a significant market within any Southeast Asian portfolio.
+**Regional roles** are a natural progression, since Indonesia's scale makes it a significant market within any Southeast Asian [portfolio](/blog/portfolio-from-resume-minutes).
 
-**Resource sector experience** transfers globally and Indonesia is a major producer in several commodities.
+**Resource sector [experience](/blog/resume-matching-experienced-professionals)** transfers globally and Indonesia is a major producer in several commodities.
 
 **Consumer technology experience** at scale is genuinely valuable, given that Indonesian platforms operate at volumes few markets match.
 
-**Emerging market experience** is a real credential for people moving into similar roles elsewhere.
+**Emerging market experience** is a real [credential](/blog/how-to-list-certifications-on-resume) for people moving into similar roles elsewhere.
 
 **And the localisation dimension is worth naming.** Because foreign positions are frequently transitional by design, planning your next step from the beginning is more necessary here than in markets where you could simply stay.
 
@@ -224,7 +224,7 @@ Jakarta's technology sector is substantial and growing, though the local talent 
 
 Understand that Bali is largely not a local employment market for foreigners. It is a tourism economy plus a remote-working population, and the visa position for the latter needs proper attention.
 
-> **Tip:** Expect knowledge transfer to be a formal part of your role. Indonesia frequently requires a foreign worker to have an Indonesian counterpart being trained toward the position, and treating that as a genuine responsibility rather than paperwork makes the job work considerably better.
+> **Tip:** Expect knowledge transfer to be a formal part of your role. Indonesia frequently requires a foreign worker to have an Indonesian counterpart being trained toward the position, and treating that as a genuine responsibility rather than [paperwork](/blog/campus-placement-document-checklist) makes the job work considerably better.
 
 ## Do's and Don'ts
 

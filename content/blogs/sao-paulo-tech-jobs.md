@@ -23,7 +23,7 @@ showcase: none
 
 Where technology work concentrates.
 
-**Fintech**, which is the largest and most internationally visible. Nubank, PicPay, Stone, PagSeguro, Creditas, Neon and a long tail of companies built on a market with historically high banking fees and a large underbanked population.
+**Fintech**, which is the largest and most internationally visible. Nubank, PicPay, Stone, PagSeguro, Creditas, Neon and a long tail of companies built on a market with historically high [banking](/blog/resume-matching-insurance-jobs) fees and a large underbanked population.
 
 **E-commerce and marketplaces** — Mercado Livre has substantial Brazilian engineering, alongside Magalu, Americanas and the wider sector.
 
@@ -59,17 +59,17 @@ Worth understanding because it is the reason many people target this market.
 
 The financial picture, honestly.
 
-**Technology salaries are strong relative to the Brazilian market** and modest converted into dollars or euros, which is the tension that shapes every decision here.
+**Technology [salaries](/blog/how-to-negotiate-salary-offer) are strong relative to the Brazilian market** and modest converted into dollars or euros, which is the tension that shapes every decision here.
 
 **Currency volatility is a real factor.** The real has moved substantially against major currencies over the years, and a salary calculated at one rate can look very different a year later.
 
-**CLT packages include** paid holiday with a bonus, thirteenth salary, FGTS contributions and typically private health insurance, meal vouchers and transport allowance.
+**CLT packages include** paid holiday with a [bonus](/blog/how-to-negotiate-a-job-offer-email), thirteenth salary, FGTS contributions and typically private [health insurance](/blog/first-job-abroad-practical-checklist), meal vouchers and transport allowance.
 
 **PJ contracts** show a higher headline figure with none of that and with tax and contributions falling to you.
 
 **Equity exists** at the larger startups and the Brazilian market for it is less mature than the American one, so terms warrant careful reading.
 
-**Costs in Sao Paulo** concentrate in housing in the desirable central neighbourhoods, with much else being reasonable by international standards.
+**Costs in Sao Paulo** concentrate in [housing](/blog/remote-job-search-guide) in the desirable central neighbourhoods, with much else being reasonable by international standards.
 
 **And if you have obligations in another currency**, whether student debt or family support, model the exchange rate risk properly before committing. It has caught out a great many people.
 
@@ -95,33 +95,33 @@ Daily life in the city.
 
 The practical mechanics for this market.
 
-**LinkedIn is dominant** and genuinely well used by Brazilian recruiters.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is dominant** and genuinely well used by Brazilian [recruiters](/blog/how-recruiters-read-resumes).
 
-**Gupy** is the recruitment platform many large Brazilian employers run their hiring through, and it screens.
+**Gupy** is the recruitment platform many large Brazilian [employers](/blog/how-recruiters-spot-generic-resumes) run their hiring through, and it screens.
 
 **Programathor** and **Geekhunter** are technology-specific and worth using directly.
 
 **Vagas.com** and **Catho** for broader coverage.
 
-**Company career pages** for the fintechs and larger employers, several of which hire primarily through their own sites.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the fintechs and larger employers, several of which hire primarily through their own sites.
 
-**Referrals carry weight**, and the Brazilian technology community is relationship-driven and genuinely welcoming to people who show up at meetups and events.
+**[Referrals](/blog/networking-messages-for-referrals) carry weight**, and the Brazilian technology community is relationship-driven and genuinely welcoming to people who show up at meetups and events.
 
-**Apply in Portuguese** unless the posting is explicitly English, and a naturally written Portuguese CV outperforms a translated one substantially.
+**Apply in Portuguese** unless the posting is explicitly English, and a naturally written Portuguese [CV](/blog/resume-optimization-guide) outperforms a translated one substantially.
 
 **Run it through an [ATS check](/ats-analysis)** given how much hiring runs through Gupy.
 
-**And publish your work** — a [portfolio site](/portfolio) with deployed projects does more than a description, particularly for the product companies.
+**And publish your work** — a [portfolio site](/portfolio) with deployed [projects](/blog/projects-in-resume) does more than a description, particularly for the product companies.
 
 ## The interview process
 
 What to expect.
 
-**A recruiter screen**, generally in Portuguese, covering background and expectations.
+**A [recruiter screen](/blog/phone-screen-interview-tips)**, generally in Portuguese, covering background and expectations.
 
 **A technical challenge**, commonly a take-home for the product companies and a live exercise elsewhere.
 
-**Technical interviews** with engineers, practical in orientation and covering system design at senior levels.
+**[Technical interviews](/blog/coding-interview-preparation-guide)** with engineers, practical in orientation and covering system design at senior levels.
 
 **A cultural round**, which the larger fintechs take seriously and which is a genuine filter rather than a formality.
 

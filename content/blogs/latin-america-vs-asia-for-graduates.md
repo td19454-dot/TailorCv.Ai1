@@ -25,7 +25,7 @@ Where the two regions differ most fundamentally.
 
 **Latin America is linguistically uniform and demanding.** Spanish across almost all of it, Portuguese in Brazil, and professional work in either genuinely requires the language. English-only roles exist in a narrow international corporate band and nowhere else.
 
-**Asia is fragmented and uneven.** Singapore, Malaysia, the Philippines, India and Hong Kong all work in English to a genuine degree. Vietnam, Thailand, Indonesia, Japan, Korea and China do not, outside international companies.
+**Asia is fragmented and uneven.** Singapore, Malaysia, the Philippines, India and Hong Kong all work in English to a genuine [degree](/blog/how-to-list-education-on-resume). Vietnam, Thailand, Indonesia, Japan, Korea and China do not, outside international companies.
 
 **Which means** an English-only professional has real options in Asia and very few in Latin America.
 
@@ -39,25 +39,25 @@ Where the two regions differ most fundamentally.
 
 Where the work is, honestly.
 
-**Asia has more depth overall.** Singapore, India, Vietnam and China each have engineering ecosystems larger than anything in Latin America outside Sao Paulo.
+**Asia has more depth overall.** Singapore, India, Vietnam and China each have engineering ecosystems larger than anything in Latin America outside [Sao Paulo](/blog/sao-paulo-tech-jobs).
 
-**Latin America has genuine strength in specific places** — Brazilian fintech is internationally significant, Mexican nearshoring is expanding fast, and Argentina has historically produced excellent engineers.
+**Latin America has genuine strength in specific places** — [Brazilian fintech](/blog/brazil-startup-and-fintech-careers) is internationally significant, Mexican [nearshoring](/blog/mexico-nearshoring-careers) is expanding fast, and Argentina has historically produced excellent engineers.
 
 **Brazil's fintech sector** is the strongest single technology story in Latin America and comparable to anything in Southeast Asia outside Singapore.
 
 **Vietnam and India have the outsourcing heritage** and the sheer volume of engineering work that Latin America lacks.
 
-**Mexico's advantage is unique** — complete time zone overlap with the United States, which no Asian country can offer and which is why nearshoring keeps growing.
+**Mexico's advantage is unique** — complete [time zone](/blog/remote-job-search-guide) overlap with the United States, which no Asian country can offer and which is why nearshoring keeps growing.
 
 **And Indonesia's advantage is scale**, serving a very large domestic population.
 
-**For an engineer choosing between the regions**, Asia offers more volume and Latin America offers proximity to North American work, and which matters more depends entirely on where your clients or employers are.
+**For an engineer choosing between the regions**, Asia offers more volume and Latin America offers proximity to North American work, and which matters more depends entirely on where your clients or [employers](/blog/how-recruiters-spot-generic-resumes) are.
 
 ## Work authorisation and settling
 
 The structural comparison.
 
-**Latin America is generally more accessible** for long-term residence. Mexico offers permanent residence after four years, Brazil converts temporary residence to permanent, and several countries have straightforward naturalisation timelines.
+**Latin America is generally more accessible** for long-term residence. Mexico offers [permanent residence](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) after four years, Brazil converts temporary residence to permanent, and several countries have straightforward naturalisation timelines.
 
 **Mercosur is genuinely transformative** for nationals of member and associate states, granting residence and work rights across the bloc with minimal conditions. Asia has no equivalent.
 
@@ -65,7 +65,7 @@ The structural comparison.
 
 **Asia is more restrictive on settlement.** Singapore and Malaysia offer genuine long-term pathways; Vietnam, Thailand, Indonesia, the Philippines, Japan and Korea are all substantially harder to settle in permanently.
 
-**Employer sponsorship dominates both regions** for initial entry, and the employer's willingness and experience is the practical gate everywhere.
+**Employer [sponsorship](/blog/resume-for-h1b-visa-sponsorship) dominates both regions** for initial entry, and the employer's willingness and [experience](/blog/resume-matching-experienced-professionals) is the practical gate everywhere.
 
 **And Brazil's digital nomad visa and Mexico's financial solvency route** are among the more accessible independent options in either region.
 
@@ -85,23 +85,23 @@ Where each region genuinely leads.
 
 **Energy and resources** — Indonesia, Malaysia, Brazil and Mexico all significant.
 
-**Agriculture and agritech** — Brazil is a global leader and this is genuinely underrated as a technology career.
+**Agriculture and agritech** — Brazil is a global leader and this is genuinely underrated as a technology [career](/blog/career-change-to-tech-guide).
 
 **Tourism and hospitality** — Thailand, Indonesia and Mexico all at substantial scale.
 
-**And regional headquarters roles** — Singapore first globally among these options, with Mexico City and Sao Paulo hosting Latin American regional functions.
+**And regional headquarters roles** — Singapore first globally among these options, with [Mexico City](/blog/mexico-city-tech-jobs) and Sao Paulo hosting Latin American regional functions.
 
 ## Cost, salary and daily life
 
 The practical comparison.
 
-**Salaries converted to dollars** are broadly comparable across both regions outside Singapore, which pays several times more than anywhere else on this list.
+**[Salaries](/blog/how-to-negotiate-salary-offer) converted to dollars** are broadly comparable across both regions outside Singapore, which pays several times more than anywhere else on this list.
 
 **Local purchasing power** is what matters, and Malaysia, Vietnam, Mexico and Brazil all offer reasonable ratios for skilled professionals.
 
 **Currency stability differs sharply.** Turkish and Argentine inflation, Brazilian volatility and Indonesian and Philippine currency movements all affect what a salary is worth over time, while Singapore and Malaysia are more stable.
 
-**Healthcare** is excellent privately in Singapore, Malaysia, Thailand, Brazil and Mexico, and thinner outside major cities in both regions.
+**[Healthcare](/blog/first-job-abroad-practical-checklist)** is excellent privately in Singapore, Malaysia, Thailand, Brazil and Mexico, and thinner outside major cities in both regions.
 
 **Safety** varies more within countries than between regions, and city-level research beats any national comparison in both.
 
@@ -123,7 +123,7 @@ The structural advantage most comparisons miss.
 
 **Which is a genuine structural advantage for Latin America** if you hold a qualifying nationality, and no advantage at all if you do not.
 
-**For an Indian, Nigerian or Filipino graduate**, neither region offers mobility rights, and the comparison comes down to language, sector and employer sponsorship in both cases.
+**For an Indian, Nigerian or Filipino [graduate](/blog/first-resume-for-gen-z-2026)**, neither region offers mobility rights, and the comparison comes down to language, sector and employer sponsorship in both cases.
 
 ## Making the decision
 
@@ -149,7 +149,7 @@ A practical sequence.
 
 Worth including because it falls between the two and is frequently overlooked.
 
-**Geographically and economically** it bridges Europe and Asia, with a large manufacturing base and a technology sector led by mobile gaming.
+**Geographically and economically** it bridges Europe and Asia, with a large manufacturing base and a technology sector led by [mobile gaming](/blog/istanbul-tech-and-startup-jobs).
 
 **Language-wise** it resembles the harder Asian markets — Turkish is required outside international companies and gaming studios, and it is a demanding language for most learners.
 
@@ -257,7 +257,7 @@ For nationals of member and associate states, a great deal. It grants residence 
 Spanish opens most of a continent plus a substantial part of the United States labour market. Vietnamese, Thai or Indonesian each open one country, which is a materially different return on the same effort.
 ### Which region leads in which sectors?
 
-Asia leads in software volume, English teaching and business process services. Latin America leads in nearshoring for North America, Brazilian fintech and agritech, with manufacturing and finance strong in both.
+Asia leads in software volume, English teaching and business process services. Latin America leads in nearshoring for North America, Brazilian fintech and agritech, with manufacturing and [finance](/blog/resume-matching-insurance-jobs) strong in both.
 
 ### How do costs and salaries compare?
 

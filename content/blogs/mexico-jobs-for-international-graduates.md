@@ -23,17 +23,17 @@ showcase: none
 
 The single most important development in the Mexican job market.
 
-**Companies serving North America have been relocating production from Asia to Mexico**, driven by supply chain resilience concerns, tariffs, shipping costs and the desire for shorter lead times.
+**Companies serving North America have been [relocating](/blog/first-job-abroad-practical-checklist) production from Asia to Mexico**, driven by supply chain resilience concerns, tariffs, shipping costs and the desire for shorter lead times.
 
 **The USMCA trade agreement** provides the framework, replacing NAFTA and maintaining deeply integrated North American supply chains.
 
-**Manufacturing has grown substantially**, particularly automotive, electronics, aerospace, medical devices and appliances.
+**Manufacturing has grown substantially**, particularly automotive, electronics, aerospace, [medical devices](/blog/resume-tailoring-healthcare) and appliances.
 
 **The northern border states and the Bajio region** have absorbed much of this, with Monterrey, Queretaro, Saltillo, Tijuana and Ciudad Juarez all expanding.
 
-**Services nearshoring has followed** — engineering, design, software development, finance and customer operations serving North American clients in a compatible time zone.
+**Services nearshoring has followed** — engineering, design, software development, [finance](/blog/resume-matching-insurance-jobs) and customer operations serving North American clients in a compatible time zone.
 
-**Which matters for graduates** because it has genuinely expanded the number and quality of professional roles, particularly in engineering, supply chain, quality and technology.
+**Which matters for [graduates](/blog/first-resume-for-gen-z-2026)** because it has genuinely expanded the number and quality of professional roles, particularly in engineering, supply chain, quality and technology.
 
 **And the time zone advantage is real.** Mexican teams overlap fully with American working hours in a way Indian or Filipino teams cannot, which is the structural reason services work keeps moving there.
 
@@ -62,7 +62,7 @@ The single most important development in the Mexican job market.
 
 Where employment concentrates beyond the nearshoring story.
 
-**Manufacturing** across automotive, aerospace, electronics, medical devices and appliances, which is the largest single employer of engineers.
+**Manufacturing** across automotive, aerospace, electronics, medical devices and appliances, which is the largest single [employer](/blog/how-recruiters-spot-generic-resumes) of engineers.
 
 **Financial services**, with a substantial banking sector and a fintech scene that has grown quickly.
 
@@ -88,7 +88,7 @@ The practical picture.
 
 **English is more present than in Brazil**, particularly in the international corporate sector, technology companies and business services serving North America.
 
-**Bilingual professionals command a premium**, which is one of the clearest and most reliable salary differentiators in the market.
+**Bilingual professionals command a premium**, which is one of the clearest and most reliable [salary](/blog/how-to-negotiate-salary-offer) differentiators in the market.
 
 **Daily life runs in Spanish** outside a few expatriate enclaves, and functioning without it is genuinely limiting.
 
@@ -120,19 +120,19 @@ The administrative sequence.
 
 The practical channels.
 
-**LinkedIn is dominant** and Mexican recruiters use it heavily.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is dominant** and Mexican [recruiters](/blog/how-recruiters-read-resumes) use it heavily.
 
-**OCCMundial** is the largest domestic job board by volume.
+**OCCMundial** is the largest domestic [job board](/blog/best-job-search-websites-2026) by volume.
 
 **Computrabajo** for broad coverage across sectors and seniority levels.
 
 **Indeed Mexico**, well used.
 
-**Company career pages** for the manufacturers and multinationals, several of which hire primarily through their own systems.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the manufacturers and multinationals, several of which hire primarily through their own systems.
 
-**Recruitment agencies** are genuinely active in Mexico, particularly for engineering, manufacturing and bilingual corporate roles.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** are genuinely active in Mexico, particularly for engineering, manufacturing and bilingual corporate roles.
 
-**Referrals matter**, as across Latin America.
+**[Referrals](/blog/networking-messages-for-referrals) matter**, as across Latin America.
 
 **Apply in Spanish** unless the posting is explicitly in English, and state your English level clearly since it is frequently the differentiator.
 
@@ -144,7 +144,7 @@ An honest financial account.
 
 **Salaries are modest by American standards** and vary widely by sector, with technology, finance and bilingual corporate roles well above the general market.
 
-**The aguinaldo** — a statutory year-end bonus — is a legal minimum entitlement and part of any comparison.
+**The aguinaldo** — a statutory year-end [bonus](/blog/how-to-negotiate-a-job-offer-email) — is a legal minimum entitlement and part of any comparison.
 
 **Vacation entitlement was substantially increased** in a reform that improved a previously low statutory minimum, and current entitlements should be confirmed against the current law.
 
@@ -152,7 +152,7 @@ An honest financial account.
 
 **IMSS covers healthcare** and private insurance is a common employer benefit and effectively expected at professional level.
 
-**Costs vary enormously.** Mexico City housing in the desirable neighbourhoods is expensive by local standards, and much of the country is dramatically cheaper.
+**Costs vary enormously.** Mexico City [housing](/blog/remote-job-search-guide) in the desirable neighbourhoods is expensive by local standards, and much of the country is dramatically cheaper.
 
 **Monterrey is expensive**, Guadalajara moderate, Queretaro and Merida considerably cheaper.
 
@@ -164,7 +164,7 @@ Calibrating expectations.
 
 **Relationships come first**, and time invested in them is part of the job rather than a distraction from it.
 
-**Hierarchy is respected** and more so than in the United States, with titles and seniority carrying real weight.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and more so than in the United States, with titles and seniority carrying real weight.
 
 **Communication is indirect** and a direct no is uncommon, which means reading carefully matters.
 

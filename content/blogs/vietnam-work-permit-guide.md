@@ -23,21 +23,21 @@ showcase: none
 
 The conditions, in plain terms.
 
-**Employer sponsorship.** You cannot obtain a Vietnamese work permit independently; a legal entity in Vietnam applies on your behalf.
+**[Employer](/blog/how-recruiters-spot-generic-resumes) sponsorship.** You cannot obtain a Vietnamese work permit independently; a legal entity in Vietnam applies on your behalf.
 
-**A qualifying category.** The role must fall into a recognised classification — typically manager, executive, expert or technical worker — each with its own evidence requirements around qualifications and experience.
+**A qualifying category.** The role must fall into a recognised classification — typically manager, executive, expert or technical worker — each with its own evidence requirements around qualifications and [experience](/blog/resume-matching-experienced-professionals).
 
 **Demonstrated need.** Employers are generally required to justify recruiting a foreign worker, including publicly advertising the position, on the basis that a suitable Vietnamese candidate is not available.
 
-**Qualifications and experience evidence.** A degree relevant to the role plus documented years of experience in the same field is the usual expert-category requirement.
+**Qualifications and experience evidence.** A [degree](/blog/how-to-list-education-on-resume) relevant to the role plus documented years of experience in the same field is the usual expert-category requirement.
 
-**Health clearance** from an approved medical facility.
+**Health [clearance](/blog/matching-resume-security-clearance-jobs)** from an approved medical facility.
 
-**Criminal record certificate** covering your recent residence.
+**Criminal record [certificate](/blog/campus-placement-document-checklist)** covering your recent residence.
 
 **And all foreign documents must be legalised** — notarised, authenticated in the issuing country and consularised — then translated into Vietnamese by a recognised translator.
 
-**That legalisation chain is the timeline.** Everything else moves faster than it does, and starting it before you have an offer is the single most useful thing you can do.
+**That [legalisation](/blog/international-resume-tailoring-guide) chain is the timeline.** Everything else moves faster than it does, and starting it before you have an offer is the single most useful thing you can do.
 
 ## Exemptions and special cases
 
@@ -79,7 +79,7 @@ What to expect.
 
 **Document legalisation:** weeks to a couple of months, depending on your home country's processes.
 
-**The permit application itself:** faster once the file is complete, since the assessment is largely documentary.
+**The permit [application](/blog/how-many-jobs-should-you-apply-to-per-day) itself:** faster once the file is complete, since the assessment is largely documentary.
 
 **The residence card:** follows the permit.
 
@@ -117,7 +117,7 @@ The questions after the permit.
 
 **Dependants can generally accompany** a work permit holder, with their own temporary residence arrangements tied to yours.
 
-**A spouse's right to work is separate.** Accompanying family status does not automatically confer permission to work, and a spouse wanting employment generally needs their own permit through their own employer.
+**A [spouse](/blog/first-job-abroad-practical-checklist)'s right to work is separate.** Accompanying family status does not automatically confer permission to work, and a spouse wanting employment generally needs their own permit through their own employer.
 
 **Schooling** is a substantial consideration. International schools in Ho Chi Minh City and Hanoi are good and expensive, and this is frequently the largest single cost in a family relocation.
 
@@ -161,7 +161,7 @@ The ongoing obligations.
 
 **Report changes** — a change of address, passport or position generally needs recording.
 
-**And understand what happens if you leave the job.** Your permit is tied to that employer, so resignation has immigration consequences within a defined period.
+**And understand what happens if you leave the job.** Your permit is tied to that employer, so [resignation](/blog/how-to-write-two-weeks-notice) has immigration consequences within a defined period.
 
 ## Comparing Vietnam to its neighbours
 
@@ -173,7 +173,7 @@ If you are weighing Southeast Asian options on permit terms.
 
 **Against the Philippines.** English-language advantage there is substantial, and the permit process is comparable.
 
-**Against Singapore and Malaysia.** Both are considerably more developed for skilled foreign employment, with clearer criteria and stronger infrastructure, and correspondingly higher salary expectations.
+**Against Singapore and Malaysia.** Both are considerably more developed for skilled foreign employment, with clearer criteria and stronger infrastructure, and correspondingly higher [salary](/blog/how-to-negotiate-salary-offer) expectations.
 
 **The general pattern across the region:** work authorisation is employer-sponsored, expertise-based, document-heavy, and premised on the role not being fillable locally. Vietnam is neither notably easier nor notably harder than its neighbours.
 
@@ -193,7 +193,7 @@ The expenses involved, since practice on who pays varies.
 
 **Courier costs** for moving original documents internationally, which adds up given how many round trips are frequently needed.
 
-**And clarify who pays.** Many employers cover the process; some expect you to. Establishing this at offer stage avoids an unwelcome surprise, and it is a completely normal question.
+**And clarify who pays.** Many employers cover the process; some expect you to. Establishing this at [offer stage](/blog/how-to-negotiate-a-job-offer-email) avoids an unwelcome surprise, and it is a completely normal question.
 
 ## Mini checklist
 
@@ -301,8 +301,8 @@ Incomplete legalisation, a degree that does not relate to the role, insufficient
 Dependants can generally accompany a permit holder with residence tied to yours. A spouse's right to work is separate and generally requires their own permit through their own employer.
 ### What happens if I leave my job in Vietnam?
 
-Your permit is tied to that employer, so resignation has immigration consequences within a defined period. A new employer requires a new permit rather than a transfer.
+Your permit is tied to that employer, so [resignation](/blog/how-to-answer-why-leaving-current-job) has immigration consequences within a defined period. A new employer requires a new permit rather than a transfer.
 
 ### Is Vietnam harder than its neighbours for work permits?
 
-Not notably. Across Southeast Asia work authorisation is employer-sponsored, expertise-based and document-heavy, premised on the role not being fillable locally. Vietnam sits in the middle of that range.
+Not notably. [Across Southeast Asia](/blog/southeast-asia-jobs-compared) work authorisation is employer-sponsored, expertise-based and document-heavy, premised on the role not being fillable locally. Vietnam sits in the middle of that range.

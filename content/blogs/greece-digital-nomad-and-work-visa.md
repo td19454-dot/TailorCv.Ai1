@@ -23,23 +23,23 @@ showcase: none
 
 Greece has several, and they serve different people.
 
-**Standard employment visa and residence permit.** Requires a Greek employer, a job offer, and generally a labour market test confirming no suitable EU candidate is available. This is the conventional route and the hardest.
+**Standard employment visa and residence permit.** Requires a Greek [employer](/blog/how-recruiters-spot-generic-resumes), a [job offer](/blog/how-to-negotiate-a-job-offer-email), and generally a labour market test confirming no suitable EU candidate is available. This is the conventional route and the hardest.
 
 **Digital nomad visa.** For people working remotely for employers or clients outside Greece, whether employed or self-employed. An income requirement applies, assessed over a period.
 
-**Golden Visa.** Residency through qualifying investment, most commonly real estate. Thresholds have been raised in high-demand areas including parts of Athens, Thessaloniki and the popular islands, precisely because the scheme was contributing to housing pressure.
+**[Golden Visa](/blog/uae-golden-visa-explained).** Residency through qualifying investment, most commonly real estate. Thresholds have been raised in high-demand areas including parts of Athens, Thessaloniki and the popular islands, precisely because the scheme was contributing to [housing](/blog/remote-job-search-guide) pressure.
 
 **Financially independent person visa**, for those with sufficient passive income.
 
-**EU Blue Card**, available with its own salary threshold.
+**[EU Blue Card](/blog/germany-eu-blue-card-graduates)**, available with its own [salary](/blog/how-to-negotiate-salary-offer) threshold.
 
-**And for graduates of Greek institutions**, provisions exist to remain and seek work — check the current terms with the Greek authorities.
+**And for [graduates](/blog/first-resume-for-gen-z-2026) of Greek institutions**, provisions exist to remain and seek work — check the current terms with the Greek authorities.
 
 ## The tax incentive
 
 The provision that materially changes the arithmetic.
 
-**Greece introduced a regime aimed at attracting people to relocate**, offering a substantial exemption on a portion of employment or business income for individuals who transfer their tax residence to Greece and commit to staying for a defined period.
+**Greece introduced a regime aimed at attracting people to [relocate](/blog/first-job-abroad-practical-checklist)**, offering a substantial exemption on a portion of employment or business income for individuals who transfer their tax residence to Greece and commit to staying for a defined period.
 
 **Conditions apply**, including not having been Greek tax resident for a defined number of prior years, and taking up employment or self-employment in Greece.
 
@@ -71,9 +71,9 @@ Worth a direct account because it is heavily marketed and widely misunderstood.
 
 The mechanics.
 
-**Applications are generally made at a Greek consulate** in your country of residence for the visa, then converted to a residence permit after arrival.
+**[Applications](/blog/how-many-jobs-should-you-apply-to-per-day) are generally made at a Greek consulate** in your country of residence for the visa, then converted to a residence permit after arrival.
 
-**Documents typically required:** passport, proof of income at the applicable level, health insurance, criminal record certificate with apostille, accommodation evidence, and proof of the employment or contractual relationship for the nomad route.
+**[Documents](/blog/campus-placement-document-checklist) typically required:** passport, proof of income at the applicable level, health insurance, criminal record certificate with [apostille](/blog/international-resume-tailoring-guide), accommodation evidence, and proof of the employment or contractual relationship for the nomad route.
 
 **Apostilles and certified translations** are the slowest element, as everywhere.
 
@@ -81,7 +81,7 @@ The mechanics.
 
 **After arrival**, the residence permit application goes through the relevant migration authority with a biometrics appointment.
 
-**Processing times vary** and Greek administration is not fast, so plan generously.
+**[Processing times](/blog/how-long-to-hear-back-after-applying) vary** and Greek administration is not fast, so plan generously.
 
 **Renewals** are applied for before expiry with the conditions continuing to be met.
 
@@ -91,7 +91,7 @@ The mechanics.
 
 **EU long-term residence** is available with its own conditions and mobility rights across the union.
 
-**Citizenship** requires a longer residence period plus a Greek language and civics examination, and the language requirement is the binding constraint for most people.
+**Citizenship** requires a longer residence period plus a Greek language and civics examination, and the [language requirement](/blog/bilingual-language-skills-on-resume) is the binding constraint for most people.
 
 **Physical presence matters** for naturalisation in a way it does not for investment-based residency, which is why Golden Visa holders who never live in Greece do not progress toward citizenship.
 
@@ -137,7 +137,7 @@ Matching the route to the person.
 
 **Employment permit.** People with a specific Greek job offer, typically in shipping or the international sector, where an employer is willing to run the process.
 
-**EU Blue Card.** Qualified professionals with a degree-level offer above the threshold — better than the standard route where it applies.
+**EU Blue Card.** Qualified professionals with a [degree](/blog/how-to-list-education-on-resume)-level offer above the threshold — better than the standard route where it applies.
 
 **Golden Visa.** Investors seeking residency without an intention to work there. Not a work route.
 

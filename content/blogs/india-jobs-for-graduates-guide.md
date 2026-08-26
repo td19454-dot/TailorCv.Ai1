@@ -21,15 +21,15 @@ showcase: none
 
 ## The three hiring markets
 
-India is not one graduate market. It is at least three, and they work so differently that advice for one is actively wrong for another.
+India is not one [graduate](/blog/first-resume-for-gen-z-2026) market. It is at least three, and they work so differently that advice for one is actively wrong for another.
 
 **Mass IT services hiring.** TCS, Infosys, Wipro, Cognizant, Accenture, Capgemini and their peers recruit tens of thousands of freshers a year through campus drives and standardised tests. The process is high-volume, largely automated at the front end, and eligibility-criteria driven — percentage cutoffs, no backlogs, specific branches.
 
-**Product and startup hiring.** Companies building their own products — the Indian consumer internet firms, SaaS companies, and the fast-growing startup ecosystem — hire far smaller numbers and assess very differently. Data structures and algorithms, system design, and what you have actually built.
+**Product and startup hiring.** Companies building their own products — the Indian consumer internet firms, SaaS companies, and the fast-growing startup ecosystem — hire far smaller numbers and assess very differently. Data structures and algorithms, [system design](/blog/campus-placement-system-design-basics), and what you have actually built.
 
 **Global Capability Centres.** The India engineering and operations centres of international companies. These have grown enormously, they pay well above services rates, they hire on capability rather than on volume, and a great many students do not realise how many exist.
 
-**The practical implication:** decide which market you are targeting before you prepare, because the preparation is genuinely different. Aptitude tests and communication rounds for services; DSA and projects for product; domain depth and English fluency for GCCs.
+**The practical implication:** decide which market you are targeting before you prepare, because the preparation is genuinely different. Aptitude tests and communication rounds for services; DSA and [projects](/blog/projects-in-resume) for product; domain depth and English fluency for GCCs.
 
 ## What each market rewards
 
@@ -52,15 +52,15 @@ India is not one graduate market. It is at least three, and they work so differe
 
 Most advice about Indian graduate hiring assumes engineering, which leaves out a large share of graduates.
 
-**Banking and financial services.** Bank probationary officer exams, NBFCs, insurance, and the analytics functions inside all of them.
+**[Banking](/blog/resume-matching-insurance-jobs) and financial services.** Bank probationary officer exams, NBFCs, insurance, and the analytics functions inside all of them.
 
-**Consulting and professional services.** The Big Four hire large numbers of commerce and management graduates into audit, tax and advisory.
+**[Consulting](/blog/case-interview-preparation-guide-2026) and professional services.** The Big Four hire large numbers of commerce and management graduates into audit, tax and advisory.
 
 **FMCG and manufacturing.** Structured management trainee programmes at the large consumer and industrial companies, which are competitive and well regarded.
 
 **Government and public sector.** UPSC, state services, PSUs and banking exams absorb an enormous number of graduates and run on an entirely separate preparation track.
 
-**Healthcare, education and pharma**, each with their own entry structures.
+**[Healthcare](/blog/first-job-abroad-practical-checklist), education and pharma**, each with their own entry structures.
 
 **And the analytics layer across all of them**, which has become one of the fastest-growing graduate destinations regardless of sector.
 
@@ -68,7 +68,7 @@ Most advice about Indian graduate hiring assumes engineering, which leaves out a
 
 Timing matters more in India than in most markets because so much hiring is seasonal.
 
-**Campus placement season** typically runs from the autumn of the final year, with the large services recruiters coming earliest and product companies and GCCs following.
+**Campus placement season** typically runs from the autumn of the final year, with the large services [recruiters](/blog/how-recruiters-read-resumes) coming earliest and product companies and GCCs following.
 
 **Day zero and day one** at the better colleges are reserved for the highest-paying recruiters, and eligibility is tight.
 
@@ -97,17 +97,17 @@ Timing matters more in India than in most markets because so much hiring is seas
 
 **Bengaluru and Hyderabad dominate technology**, and the gap between them has narrowed considerably as Hyderabad grew.
 
-**Mumbai is finance**, and a career in banking, markets or corporate finance points there.
+**Mumbai is finance**, and a [career](/blog/career-change-to-tech-guide) in banking, markets or corporate finance points there.
 
 **Delhi NCR is the consulting and corporate centre** with a substantial startup scene in Gurugram.
 
-**And tier-2 cities are growing** — Coimbatore, Kochi, Indore, Jaipur and Bhubaneswar all have real technology employment now, frequently as satellite offices of larger firms, at dramatically lower living costs.
+**And tier-2 cities are growing** — Coimbatore, Kochi, Indore, Jaipur and Bhubaneswar all have real technology employment now, frequently as satellite offices of larger firms, at dramatically lower [living costs](/blog/how-to-negotiate-salary-offer).
 
 ## What Indian employers actually screen on
 
 Beyond the obvious, the filters that decide shortlisting.
 
-**Eligibility criteria at large recruiters.** Minimum percentage across tenth, twelfth and degree, no active backlogs, and sometimes a maximum year of passing. These are hard filters applied before anyone reads anything.
+**Eligibility criteria at large recruiters.** Minimum percentage across tenth, twelfth and [degree](/blog/how-to-list-education-on-resume), no active backlogs, and sometimes a maximum year of passing. These are hard filters applied before anyone reads anything.
 
 **Aptitude and coding tests.** Quantitative, logical and verbal reasoning plus basic programming, used at scale to reduce the pool. These are learnable and practice genuinely improves scores.
 
@@ -115,15 +115,15 @@ Beyond the obvious, the filters that decide shortlisting.
 
 **Projects and demonstrated skill** at product companies and startups, where the technical bar is the filter rather than the criteria.
 
-**Certifications**, which carry more weight in India than in many markets, particularly cloud and platform certifications.
+**[Certifications](/blog/how-to-list-certifications-on-resume)**, which carry more weight in India than in many markets, particularly cloud and platform certifications.
 
-**And referrals**, which move an application past the initial screen at companies where the volume of applicants is otherwise overwhelming.
+**And [referrals](/blog/networking-messages-for-referrals)**, which move an [application](/blog/how-many-jobs-should-you-apply-to-per-day) past the initial screen at companies where the volume of applicants is otherwise overwhelming.
 
 ## Common mistakes
 
 Six that recur across the Indian graduate market.
 
-**Preparing generically.** Aptitude practice does not prepare you for a product-company interview and DSA does not prepare you for a services aptitude test.
+**Preparing generically.** Aptitude practice does not prepare you for a product-company [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and DSA does not prepare you for a services aptitude test.
 
 **Starting late.** The students who clear product-company interviews generally began preparing a year or more earlier.
 
@@ -139,7 +139,7 @@ Six that recur across the Indian graduate market.
 
 Where Indian graduate careers typically go.
 
-**The two-to-three year move is standard.** A large share of technology careers begin in IT services and move to a product company, a GCC or a startup after building experience. This is normal and expected rather than disloyal.
+**The two-to-three year move is standard.** A large share of technology careers begin in IT services and move to a product company, a GCC or a startup after building [experience](/blog/resume-matching-experienced-professionals). This is normal and expected rather than disloyal.
 
 **Lateral hiring is where the money is.** Fresher salaries are compressed; experienced hiring is where the range widens sharply, which means the first job matters less than what you learn in it.
 

@@ -37,15 +37,15 @@ The terminology confuses people, so it is worth being precise.
 
 ## Why they are under-targeted
 
-The gap between how good these employers are and how many students apply to them is the point of this guide.
+The gap between how good these [employers](/blog/how-recruiters-spot-generic-resumes) are and how many students apply to them is the point of this guide.
 
 **They do not do mass campus recruitment.** Services companies visit hundreds of colleges and hire in bulk, so they are visible. GCCs recruit selectively, often off-campus, so students never encounter them.
 
 **They are not household names as employers.** A student knows Amazon and Google. They may not realise that a large European bank, a US retailer or a German industrial firm runs a two-thousand-person engineering centre in Pune or Hyderabad.
 
-**Their branding is corporate, not campus-facing.** They are not marketing to students, so students do not find them.
+**Their branding is corporate, not campus-facing.** They are not [marketing](/blog/resume-matching-marketing) to students, so students do not find them.
 
-**And nobody makes the list.** The single highest-return exercise for an Indian graduate is to sit down and build a list of fifty GCCs in their target city. Almost nobody does it.
+**And nobody makes the list.** The single highest-return exercise for an Indian [graduate](/blog/first-resume-for-gen-z-2026) is to sit down and build a list of fifty GCCs in their target city. Almost nobody does it.
 
 ## What they hire for
 
@@ -55,7 +55,7 @@ The functions are broader than technology.
 
 **Data and analytics**, which has grown enormously and is one of the largest GCC functions.
 
-**Finance and accounting.** Controllership, FP&A, treasury and reporting for the global business.
+**[Finance](/blog/resume-matching-insurance-jobs) and accounting.** Controllership, FP&A, treasury and reporting for the global business.
 
 **Risk, compliance and audit**, particularly at banking and insurance GCCs.
 
@@ -67,23 +67,23 @@ The functions are broader than technology.
 
 **And customer and technical support**, which is the older GCC model and still exists alongside the higher-value work.
 
-**Which means non-engineering graduates have real options here**, particularly in finance, analytics and risk — a fact that is even less well known than the engineering side.
+**Which means non-[engineering graduates](/blog/how-to-get-first-tech-job) have real options here**, particularly in finance, analytics and risk — a fact that is even less well known than the engineering side.
 
 ## How GCC hiring actually runs
 
 The process, which varies more than people expect.
 
-**Application through the parent company's India careers portal**, which is where most GCC hiring originates.
+**[Application](/blog/how-many-jobs-should-you-apply-to-per-day) through the parent company's India careers portal**, which is where most GCC hiring originates.
 
-**Recruiter screen**, covering background, notice period and expectations.
+**[Recruiter screen](/blog/phone-screen-interview-tips)**, covering background, [notice period](/blog/notice-period-negotiation-guide) and expectations.
 
-**Technical assessment**, which varies enormously — some GCCs run their parent company's global process with algorithmic interviews, others use a more conventional technical discussion of your experience.
+**Technical assessment**, which varies enormously — some GCCs run their parent company's global process with algorithmic [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), others use a more conventional technical discussion of your [experience](/blog/resume-matching-experienced-professionals).
 
 **Multiple technical rounds**, frequently including people from the global team who join by video.
 
 **Behavioural or values round**, taken seriously at most international parents.
 
-**Offer**, with a package that typically includes base, variable pay, benefits and sometimes stock in the parent company.
+**Offer**, with a package that typically includes base, variable pay, [benefits](/blog/questions-to-ask-in-an-interview) and sometimes [stock](/blog/how-to-negotiate-a-job-offer-email) in the parent company.
 
 **Which means preparation should be company-specific.** A GCC of a global technology company will interview like that company; a GCC of a European bank will interview like a bank. Researching the parent's process is more useful than generic preparation.
 
@@ -93,7 +93,7 @@ The process, which varies more than people expect.
 
 What to expect.
 
-**Base salaries are well above IT services** at equivalent experience and generally below the top Indian product companies and the global technology firms.
+**Base [salaries](/blog/how-to-negotiate-salary-offer) are well above IT services** at equivalent experience and generally below the top Indian product companies and the global technology firms.
 
 **Variable pay and bonuses** are common and tied to the parent company's global performance.
 
@@ -103,15 +103,15 @@ What to expect.
 
 **Progression is real** and increasingly leads into global roles rather than capping at the India centre, which is a meaningful change from the older captive-centre model.
 
-**International mobility exists** at many GCCs, with transfers to the parent's other offices a genuine possibility over a career.
+**International mobility exists** at many GCCs, with transfers to the parent's other offices a genuine possibility over a [career](/blog/career-change-to-tech-guide).
 
-**And stability is a feature.** GCCs are the parent's own capability rather than a cost line in a client contract, which makes them less exposed to the project-cycle volatility of services work.
+**And stability is a feature.** GCCs are the parent's own capability rather than a cost line in a client contract, which makes them less exposed to the [project](/blog/projects-in-resume)-cycle volatility of services work.
 
 ## Finding GCCs systematically
 
 The practical exercise, since building the list is the whole point.
 
-**Start from sectors, not from companies.** Global banks, insurers, retailers, airlines, automotive manufacturers, pharmaceutical companies, industrial firms, consultancies and technology companies all run Indian centres.
+**Start from sectors, not from companies.** Global banks, insurers, retailers, airlines, automotive manufacturers, pharmaceutical companies, industrial firms, [consultancies](/blog/case-interview-preparation-guide-2026) and technology companies all run Indian centres.
 
 **Search LinkedIn by location and company size.** Filter for companies with large employee counts in Bengaluru, Hyderabad, Pune, Chennai or Gurugram, and look at which are international parents.
 

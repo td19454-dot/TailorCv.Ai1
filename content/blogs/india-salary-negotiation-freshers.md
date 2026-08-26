@@ -21,13 +21,13 @@ showcase: none
 
 ## Understanding CTC first
 
-Before negotiating anything, understand what you are being offered — most freshers do not.
+Before [negotiating](/blog/how-to-negotiate-salary-offer) anything, understand what you are being offered — most freshers do not.
 
-**CTC means cost to company** — everything the employer spends on you, not what you receive.
+**CTC means cost to company** — everything the [employer](/blog/how-recruiters-spot-generic-resumes) spends on you, not what you receive.
 
 **Fixed base salary** is the guaranteed component and the one that determines your monthly pay.
 
-**Variable pay or performance bonus** depends on individual and company performance and is not guaranteed.
+**Variable pay or performance [bonus](/blog/how-to-negotiate-a-job-offer-email)** depends on individual and company performance and is not guaranteed.
 
 **Joining bonus** is a one-time payment, frequently with a clawback if you leave within a period.
 
@@ -37,9 +37,9 @@ Before negotiating anything, understand what you are being offered — most fres
 
 **Gratuity** is a statutory accrual payable after a qualifying period of service.
 
-**Insurance and benefits** are costed into CTC at their premium value.
+**Insurance and [benefits](/blog/questions-to-ask-in-an-interview)** are costed into CTC at their premium value.
 
-**Which means:** a CTC figure can include a substantial amount that never reaches your bank account monthly. Two offers at the same CTC can differ by a meaningful margin in take-home.
+**Which means:** a CTC figure can include a substantial amount that never reaches your [bank account](/blog/first-job-abroad-practical-checklist) monthly. Two offers at the same CTC can differ by a meaningful margin in take-home.
 
 **Always ask for the written breakdown.** It is a completely normal request and it is the only way to compare offers honestly.
 
@@ -59,7 +59,7 @@ The honest map.
 
 **With a scarce skill: yes.** If you have something specific the team needs, that is real leverage.
 
-**And after an internship conversion: modestly.** You are a known quantity, which helps.
+**And after an [internship](/blog/international-student-networking-guide) conversion: modestly.** You are a known quantity, which helps.
 
 ## How to ask without damaging the offer
 
@@ -79,7 +79,7 @@ The mechanics, since freshers frequently either do not ask or ask badly.
 
 **Accept a no gracefully.** If the answer is that the band is fixed, thank them and move on — pressing after a clear no is where offers get damaged.
 
-**And get any agreed change in writing** in the revised offer letter before resigning anything.
+**And get any agreed change in writing** in the revised offer letter before [resigning](/blog/how-to-answer-why-leaving-current-job) anything.
 
 ## What to do when the number is disappointing
 
@@ -99,13 +99,13 @@ The realistic response, since this is a common position.
 
 Where the real money is, and it starts now.
 
-**Track what you learn.** A running record of projects, technologies and outcomes makes the next resume write itself.
+**Track what you learn.** A running record of [projects](/blog/projects-in-resume), technologies and outcomes makes the next [resume](/blog/resume-optimization-guide) write itself.
 
 **Build outside work** if your day job is not shareable.
 
 **Develop a specialism** rather than staying general.
 
-**Watch the market** — knowing what your skills pay after two years is what makes the next negotiation informed rather than hopeful.
+**Watch the market** — knowing what your [skills](/blog/resume-skills-match-job-description) pay after two years is what makes the next negotiation informed rather than hopeful.
 
 **Time the move deliberately** rather than reacting to frustration.
 
@@ -139,7 +139,7 @@ Before you sign anything.
 
 **The joining bonus clawback period**, if there is one — leaving inside it means repaying.
 
-**The notice period**, both during probation and after. Indian notice periods can be long and they affect your next move.
+**The [notice period](/blog/notice-period-negotiation-guide)**, both during probation and after. Indian notice periods can be long and they affect your next move.
 
 **The bond or service agreement**, if any. Some employers require a commitment period with a financial penalty for early exit, and this is worth understanding fully before signing.
 
@@ -159,13 +159,13 @@ The variable freshers most often ignore.
 
 **The same CTC buys very different lives** in Bengaluru, Hyderabad, Pune, Chennai and a tier-2 city.
 
-**Housing is the dominant difference.** Bengaluru rents are the highest among Indian technology cities and Hyderabad's are meaningfully lower for comparable accommodation.
+**[Housing](/blog/remote-job-search-guide) is the dominant difference.** Bengaluru rents are the highest among Indian technology cities and Hyderabad's are meaningfully lower for comparable accommodation.
 
 **Commute costs time as well as money**, and in Bengaluru specifically the time cost is substantial enough to affect where you should live and therefore what you pay.
 
 **Tier-2 postings** at services companies or satellite GCC offices can leave you materially better off on a lower CTC.
 
-**Family proximity** matters financially if living at home is an option, and a great many Indian graduates underweight this in the first two years when saving matters most.
+**Family proximity** matters financially if living at home is an option, and a great many Indian [graduates](/blog/first-resume-for-gen-z-2026) underweight this in the first two years when saving matters most.
 
 **Run the comparison properly:** in-hand monthly, minus realistic rent for the area you would actually live in, minus commute. That number is the offer.
 
@@ -262,7 +262,7 @@ Ask about joining bonus, relocation support, an earlier review date or team allo
 
 ### Should I mention a competing offer?
 
-If you genuinely have one, yes — it is the strongest lever a fresher has. Never invent one; it is easily verified and it ends the conversation badly.
+If you genuinely have one, yes — it is the strongest [lever](/blog/lever-ats-resume-guide) a fresher has. Never invent one; it is easily verified and it ends the conversation badly.
 ### What if my fresher offer is low?
 
 Look at the trajectory rather than the entry point. Indian fresher salaries are compressed and experienced salaries are not, so what you learn in the first two years determines the second offer, where the real range opens.

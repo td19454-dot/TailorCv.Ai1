@@ -21,33 +21,33 @@ showcase: none
 
 ## The structure
 
-**Personal details** at the top: name, phone, email, city, LinkedIn. Date of birth and nationality still appear on many Greek CVs, and including them is unremarkable.
+**Personal details** at the top: name, phone, email, city, [LinkedIn](/blog/linkedin-profile-optimization-guide). Date of birth and nationality still appear on many Greek [CVs](/blog/resume-optimization-guide), and including them is unremarkable.
 
-**A photo** in the top corner remains common at domestic employers. International companies and shipping firms are more variable, and omitting it there is safe.
+**A photo** in the top corner remains common at domestic [employers](/blog/how-recruiters-spot-generic-resumes). International companies and shipping firms are more variable, and omitting it there is safe.
 
 **A short profile** of three or four lines, concrete rather than adjectival.
 
-**Work experience**, reverse chronological, with employer, location, role, dates and outcomes. Include internships properly — they count.
+**Work [experience](/blog/resume-matching-experienced-professionals)**, [reverse chronological](/blog/chronological-vs-functional-resume), with employer, location, role, dates and outcomes. Include internships properly — they count.
 
-**Education**, with institution, degree and dates. Greek employers pay attention to which institution, and for foreign degrees a clarifying line on the level helps.
+**Education**, with institution, [degree](/blog/how-to-list-education-on-resume) and dates. Greek employers pay attention to which institution, and for foreign degrees a clarifying line on the level helps.
 
-**Languages** with CEFR levels. English is close to assumed for professional roles, and additional languages are genuinely valued given the international orientation of shipping and tourism.
+**Languages** with [CEFR](/blog/bilingual-language-skills-on-resume) levels. English is close to assumed for professional roles, and additional languages are genuinely valued given the international orientation of shipping and tourism.
 
-**Skills**, listed concretely.
+**[Skills](/blog/resume-skills-match-job-description)**, listed concretely.
 
 **Military service** appears on Greek CVs for Greek men; as a foreign candidate this does not apply to you.
 
-**References** available on request is acceptable.
+**[References](/blog/resume-references-guide)** available on request is acceptable.
 
 ## Networks and how hiring actually works
 
 The most important practical point about the Greek market.
 
-**Personal recommendation carries substantial weight.** A candidate introduced by someone credible moves differently from a cold application, and this is more pronounced in Greece than in most of Northern Europe.
+**Personal recommendation carries substantial weight.** A candidate introduced by someone credible moves differently from a cold [application](/blog/how-many-jobs-should-you-apply-to-per-day), and this is more pronounced in Greece than in most of Northern Europe.
 
-**This is not corruption.** It is a high-trust-network culture where a referral is how an employer reduces hiring risk, and it operates alongside formal processes rather than instead of them.
+**This is not corruption.** It is a high-trust-network culture where a [referral](/blog/networking-messages-for-referrals) is how an employer reduces hiring risk, and it operates alongside formal processes rather than instead of them.
 
-**Practically, it means** that a university connection, a former colleague, an alumni network or a professional contact does more work than an extra fifty applications.
+**Practically, it means** that a university connection, a former colleague, an [alumni network](/blog/international-student-networking-guide) or a professional contact does more work than an extra [fifty applications](/blog/chrome-extension-50-applications-workflow).
 
 **Shipping in particular is relationship-driven**, and entry frequently comes through a graduate scheme, a specialist qualification or someone who knows you.
 

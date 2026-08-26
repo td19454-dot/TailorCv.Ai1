@@ -23,7 +23,7 @@ showcase: none
 
 The single most important fact about the Philippine labour market.
 
-**English is an official language** and the medium of instruction in higher education, which means graduates emerge genuinely English-capable rather than having studied it as a foreign language.
+**English is an official language** and the medium of instruction in higher education, which means [graduates](/blog/first-resume-for-gen-z-2026) emerge genuinely English-capable rather than having studied it as a foreign language.
 
 **The accent is broadly neutral** to American ears, which drove the outsourcing industry's location decision.
 
@@ -37,13 +37,13 @@ The single most important fact about the Philippine labour market.
 
 The sector that defines graduate employment.
 
-**It is very large** — one of the biggest employers of graduates in the country and a substantial share of GDP.
+**It is very large** — one of the biggest [employers](/blog/how-recruiters-spot-generic-resumes) of graduates in the country and a substantial share of GDP.
 
-**It has moved up the value chain.** The industry began with voice-based customer service and now includes finance and accounting, healthcare information management, legal process outsourcing, animation and game development, software development, and analytics.
+**It has moved up the value chain.** The industry began with voice-based customer service and now includes [finance](/blog/resume-matching-insurance-jobs) and accounting, [healthcare](/blog/first-job-abroad-practical-checklist) information management, legal process outsourcing, animation and game development, software development, and analytics.
 
 **"BPO" now covers work** that would be called shared services, global capability centres or professional services elsewhere.
 
-**Career progression is real** within the larger operators, and moving between them is common.
+**[Career](/blog/career-change-to-tech-guide) progression is real** within the larger operators, and moving between them is common.
 
 **Night shifts are a defining feature** for voice roles serving American clients, and the health and social consequences of long-term night work are a genuine consideration that the industry itself discusses.
 
@@ -79,7 +79,7 @@ A defining feature of the Philippine labour market that no honest guide can omit
 
 **Remittances are a substantial part of the economy** and a major source of household income.
 
-**Nursing and healthcare** is the most visible professional export, with Filipino nurses employed across the English-speaking world.
+**[Nursing](/blog/resume-tailoring-healthcare) and healthcare** is the most visible professional export, with Filipino nurses employed across the English-speaking world.
 
 **Seafaring** is enormous — Filipinos make up a very large share of the world's merchant marine crews.
 
@@ -89,7 +89,7 @@ A defining feature of the Philippine labour market that no honest guide can omit
 
 **For a Filipino graduate**, this means overseas employment is a genuine and normalised career path with established infrastructure rather than an unusual choice.
 
-**And it shapes the domestic market too**, since sectors like healthcare experience persistent outflow of experienced staff.
+**And it shapes the domestic market too**, since sectors like healthcare [experience](/blog/resume-matching-experienced-professionals) persistent outflow of experienced staff.
 
 ## Where the work is
 
@@ -114,7 +114,7 @@ Worth calibrating.
 
 **Warmth and hospitality are genuine** and the social dimension of work is real and enjoyable.
 
-**Hierarchy is respected** and seniority carries weight, though less rigidly than in some regional neighbours.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and seniority carries weight, though less rigidly than in some regional neighbours.
 
 **Face matters.** Direct public criticism causes damage and correction happens privately.
 
@@ -150,13 +150,13 @@ The administrative sequence for foreigners.
 
 The financial picture.
 
-**Graduate salaries are modest** by international standards, with BPO paying above the national average and knowledge process work above that again.
+**Graduate [salaries](/blog/how-to-negotiate-salary-offer) are modest** by international standards, with BPO paying above the national average and knowledge process work above that again.
 
-**Thirteenth month pay is mandatory** and is a statutory entitlement rather than a discretionary bonus, which is worth knowing when comparing offers.
+**Thirteenth month pay is mandatory** and is a statutory entitlement rather than a discretionary [bonus](/blog/how-to-negotiate-a-job-offer-email), which is worth knowing when comparing offers.
 
 **Night differential** applies to night shift work and is a meaningful addition for voice-based BPO roles.
 
-**SSS, PhilHealth and Pag-IBIG** are the mandatory contributions covering social security, health insurance and housing.
+**SSS, PhilHealth and Pag-IBIG** are the mandatory contributions covering social security, health insurance and [housing](/blog/remote-job-search-guide).
 
 **Costs are low** relative to Western standards, though Metro Manila housing in convenient areas is not cheap by local standards.
 
@@ -170,7 +170,7 @@ The financial picture.
 
 Four beliefs that mislead.
 
-**"BPO is a dead end."** It is not — progression is real, the sector spans far more than voice work, and the skills transfer internationally.
+**"BPO is a dead end."** It is not — progression is real, the sector spans far more than voice work, and the [skills](/blog/resume-skills-match-job-description) transfer internationally.
 
 **"Everything is in Manila."** Cebu, Clark, Davao, Iloilo and Bacolod all have genuine employment, frequently with better quality of life.
 
@@ -184,7 +184,7 @@ Where a Philippine career leads.
 
 **Within BPO and shared services**, progression is genuine and moving between operators is a normal accelerator.
 
-**Certification is the clearest lever** — accounting qualifications, medical coding credentials, project management and analytics certifications all move you materially.
+**[Certification](/blog/how-to-list-certifications-on-resume) is the clearest [lever](/blog/lever-ats-resume-guide)** — accounting qualifications, medical coding credentials, project management and analytics certifications all move you materially.
 
 **Remote work for foreign employers** is frequently the largest single pay increase available without leaving the country, and the English advantage makes Filipino professionals genuinely competitive for it.
 

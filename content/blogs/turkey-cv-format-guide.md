@@ -23,19 +23,19 @@ showcase: none
 
 The expected structure.
 
-**Kisisel bilgiler** — name, city, phone, email and LinkedIn. Full address is no longer expected.
+**Kisisel bilgiler** — name, city, phone, email and [LinkedIn](/blog/linkedin-profile-optimization-guide). Full address is no longer expected.
 
-**Ozet or profil** — a short professional summary, standard at modern employers.
+**Ozet or profil** — a short [professional summary](/blog/how-to-write-resume-summary), standard at modern [employers](/blog/how-recruiters-spot-generic-resumes).
 
-**Is deneyimi** in reverse chronological order with company, role, dates and achievements.
+**Is deneyimi** in [reverse chronological](/blog/chronological-vs-functional-resume) order with company, role, dates and achievements.
 
-**Egitim** — degree, institution and year, with the university being recognised and read.
+**Egitim** — [degree](/blog/how-to-list-education-on-resume), institution and year, with the university being recognised and read.
 
 **Yabanci diller** — languages with explicit levels, read closely.
 
-**Sertifikalar ve kurslar** — certifications and courses, which carry genuine weight.
+**Sertifikalar ve kurslar** — [certifications](/blog/how-to-list-certifications-on-resume) and courses, which carry genuine weight.
 
-**Yetkinlikler** — skills, technical and professional.
+**Yetkinlikler** — [skills](/blog/resume-skills-match-job-description), technical and professional.
 
 **Askerlik durumu** — military service status for male candidates, which is a genuine Turkish convention.
 
@@ -47,7 +47,7 @@ Worth explaining because it surprises foreign readers and matters domestically.
 
 **Military service is compulsory for Turkish male citizens**, and employers ask about status because it affects availability.
 
-**Turkish CVs for male candidates commonly state it** — completed, deferred, or exempt — and omitting it invites the question rather than avoiding it.
+**Turkish [CVs](/blog/resume-optimization-guide) for male candidates commonly state it** — completed, deferred, or exempt — and omitting it invites the question rather than avoiding it.
 
 **Deferred status matters to employers** because it means a future absence of a defined length, and being straightforward about it is better than leaving it to be discovered.
 
@@ -55,7 +55,7 @@ Worth explaining because it surprises foreign readers and matters domestically.
 
 **Foreign candidates do not include this**, and it does not apply.
 
-**And for applications to international companies**, it is less commonly expected even from Turkish candidates, though including it does no harm.
+**And for [applications](/blog/how-many-jobs-should-you-apply-to-per-day) to international companies**, it is less commonly expected even from Turkish candidates, though including it does no harm.
 
 ## Photographs and personal details
 
@@ -69,7 +69,7 @@ The conventions and where they are heading.
 
 **The practical approach** is to omit photographs and personal details for technology, gaming and international employers, and to consider a plain professional headshot for traditional and regional ones.
 
-**Never include** your Turkish identification number, which is requested at hiring and has no place on a document sent to strangers.
+**Never include** your Turkish identification number, which is requested at hiring and has no place on a [document](/blog/campus-placement-document-checklist) sent to strangers.
 
 **And if uncertain, omit.** No good employer rejects a strong candidate for the absence of a photograph, and the direction of travel is clear.
 
@@ -77,15 +77,15 @@ The conventions and where they are heading.
 
 The mechanics behind the document.
 
-**Kariyer.net** is where much domestic hiring runs, and it parses and ranks applications before a human reads them.
+**Kariyer.net** is where much domestic hiring runs, and it [parses](/blog/ats-resume-parser-friendly-format) and ranks applications before a human reads them.
 
 **Secretcv and Yenibiris** operate similarly at smaller volume.
 
 **Larger employers run their own systems**, particularly the corporates and manufacturers.
 
-**Which means standard ATS discipline applies** — conventional section headings, clean structure, no text buried in images or complex tables, and terminology matching the posting.
+**Which means standard [ATS](/blog/ats-score-guide) discipline applies** — conventional section headings, clean structure, no text buried in images or complex tables, and terminology matching the posting.
 
-**Gaming studios read more directly** and weight the portfolio far above the CV, which changes the priority entirely for that sector.
+**Gaming studios read more directly** and weight the [portfolio](/blog/portfolio-from-resume-minutes) far above the CV, which changes the priority entirely for that sector.
 
 **LinkedIn matters independently**, and Turkish technology recruiters use it heavily.
 

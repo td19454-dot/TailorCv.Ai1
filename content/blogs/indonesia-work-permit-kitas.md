@@ -23,7 +23,7 @@ showcase: none
 
 How the pieces fit together.
 
-**RPTKA** — the foreign worker utilisation plan. The employer submits this to the Ministry of Manpower, setting out the position, the justification for employing a foreigner, the duration and the Indonesian counterpart arrangement. This is the foundational approval.
+**RPTKA** — the foreign worker utilisation plan. The [employer](/blog/how-recruiters-spot-generic-resumes) submits this to the Ministry of Manpower, setting out the position, the justification for employing a foreigner, the duration and the Indonesian counterpart arrangement. This is the foundational approval.
 
 **A levy** is payable in connection with employing a foreign worker, calculated per position and period.
 
@@ -37,7 +37,7 @@ How the pieces fit together.
 
 **And renewals**, aligned to the approved employment period.
 
-**The employer drives all of it.** Your role is providing documents accurately and promptly, and choosing an employer who knows what they are doing.
+**The employer drives all of it.** Your role is providing [documents](/blog/campus-placement-document-checklist) accurately and promptly, and choosing an employer who knows what they are doing.
 
 ## The counterpart requirement
 
@@ -53,7 +53,7 @@ A distinctive feature worth understanding properly.
 
 **It is worth engaging with genuinely.** Foreign professionals who take counterpart development seriously tend to have better relationships with their teams and their employers, and those who treat it as a compliance box do not.
 
-**And it affects your career planning.** A role explicitly intended to be localised has a horizon, which is worth knowing at the start rather than discovering later.
+**And it affects your [career](/blog/career-change-to-tech-guide) planning.** A role explicitly intended to be localised has a horizon, which is worth knowing at the start rather than discovering later.
 
 ## Restrictions and special cases
 
@@ -65,7 +65,7 @@ What to check.
 
 **Investor KITAS** exists for shareholders meeting defined thresholds, which is a different route from employment.
 
-**Spouse of an Indonesian citizen** carries provisions including, in defined circumstances, the right to work.
+**[Spouse](/blog/first-job-abroad-practical-checklist) of an Indonesian citizen** carries provisions including, in defined circumstances, the right to work.
 
 **Retirement KITAS** exists for those meeting age and financial conditions, without work rights.
 
@@ -89,7 +89,7 @@ What to expect.
 
 **Do not resign** until the approval chain is genuinely progressing.
 
-**Document legalisation** should start immediately, since degrees and experience letters require authentication.
+**Document [legalisation](/blog/international-resume-tailoring-guide)** should start immediately, since [degrees](/blog/how-to-list-education-on-resume) and [experience](/blog/resume-matching-experienced-professionals) letters require authentication.
 
 **And build in buffer.** Indonesian administrative timelines are not always predictable and planning to the minimum estimate creates avoidable stress.
 
@@ -121,7 +121,7 @@ The financial side.
 
 **Agent fees**, since many employers use one for the process.
 
-**Practice on who pays varies**, though for professional roles the employer usually covers it. Clarify at offer stage.
+**Practice on who pays varies**, though for professional roles the employer usually covers it. Clarify at [offer stage](/blog/how-to-negotiate-a-job-offer-email).
 
 **Dependant permits carry their own costs**, which for a family adds up.
 

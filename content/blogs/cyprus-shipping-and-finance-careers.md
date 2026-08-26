@@ -21,7 +21,7 @@ showcase: none
 
 ## Ship management, explained
 
-Because most graduates have never encountered the concept.
+Because most [graduates](/blog/first-resume-for-gen-z-2026) have never encountered the concept.
 
 **A shipowner does not necessarily operate their own vessels.** Many outsource the technical and crewing management to specialist third-party companies, retaining ownership and commercial control.
 
@@ -35,17 +35,17 @@ Because most graduates have never encountered the concept.
 
 **Entry routes:** marine engineering or nautical qualifications for technical roles, and a wide range of backgrounds for the commercial, crewing, procurement and compliance functions.
 
-**Seagoing experience is valued but not universally required.** Many shore-based roles recruit graduates directly, and this is under-known.
+**Seagoing [experience](/blog/resume-matching-experienced-professionals) is valued but not universally required.** Many shore-based roles recruit graduates directly, and this is under-known.
 
 ## The forex and CFD sector
 
-An unusual concentration and a genuinely large employer.
+An unusual concentration and a genuinely large [employer](/blog/how-recruiters-spot-generic-resumes).
 
 **Cyprus hosts a very large number of retail forex and CFD brokers**, regulated by CySEC, the Cyprus Securities and Exchange Commission, which passports services across the EU.
 
 **They employ thousands** in Limassol and Nicosia across a wide range of functions.
 
-**Compliance is the largest and most accessible.** Regulated brokerage requires substantial compliance capability — AML, KYC, regulatory reporting, monitoring, licensing — and this function has grown enormously as regulation has tightened. It is a genuine graduate entry point in a way that few finance functions are.
+**Compliance is the largest and most accessible.** Regulated brokerage requires substantial compliance capability — AML, KYC, regulatory reporting, monitoring, licensing — and this function has grown enormously as regulation has tightened. It is a genuine graduate entry point in a way that few [finance](/blog/resume-matching-insurance-jobs) functions are.
 
 **Technology.** Trading platforms, integrations, payments, data and infrastructure.
 
@@ -53,7 +53,7 @@ An unusual concentration and a genuinely large employer.
 
 **Risk, dealing and treasury** functions.
 
-**Marketing**, which in this sector is highly digital and performance-driven.
+**[Marketing](/blog/resume-matching-marketing)**, which in this sector is highly digital and performance-driven.
 
 **A note on the sector:** retail CFD brokerage is a regulated but reputationally mixed industry, and firms vary enormously in quality and conduct. Research a specific employer rather than the sector, look at their regulatory record, and be clear-eyed about which end of it you are joining.
 
@@ -77,13 +77,13 @@ Practical mechanics.
 
 **Ship management.** Apply directly to the managers in Limassol — their websites carry vacancies and they recruit continuously. Maritime qualifications open technical roles; commercial, crewing, procurement and compliance functions take graduates from wider backgrounds. Industry events and the Cyprus Shipping Chamber are useful entry points.
 
-**Forex and brokerage.** These firms recruit heavily and continuously through LinkedIn, local boards and their own sites. Compliance and support roles are the accessible entries; check the firm's regulatory standing before applying.
+**Forex and brokerage.** These firms recruit heavily and continuously through [LinkedIn](/blog/linkedin-profile-optimization-guide), local boards and their own sites. Compliance and support roles are the accessible entries; check the firm's regulatory standing before applying.
 
 **Professional services.** The Big Four run graduate intakes in Cyprus and are the volume employer for accounting and audit graduates. Starting ACCA before or during is normal.
 
 **Across all three, LinkedIn is the strongest channel** given the international composition of these industries.
 
-**Referrals matter** on an island this size, and professional networks form fast.
+**[Referrals](/blog/networking-messages-for-referrals) matter** on an island this size, and professional networks form fast.
 
 **And state your work authorisation** in one line — EU status is a simple advantage worth leading with, and third-country candidates should be direct about needing a permit.
 
@@ -91,7 +91,7 @@ Practical mechanics.
 
 Where these paths lead.
 
-**Ship management experience is globally portable.** Singapore, Hong Kong, Hamburg, Glasgow, Dubai and Athens all have the same industry, and moving between centres is normal over a maritime career.
+**Ship management experience is globally portable.** Singapore, Hong Kong, Hamburg, Glasgow, Dubai and Athens all have the same industry, and moving between centres is normal over a maritime [career](/blog/career-change-to-tech-guide).
 
 **Compliance experience transfers across European financial services**, since the underlying regulatory framework is EU-wide.
 
@@ -109,15 +109,15 @@ What the market actually values.
 
 **ACA and CPA** also appear, particularly at international firms.
 
-**CySEC certifications** — Basic and Advanced — are required for certain roles in the regulated investment sector and are a straightforward, market-specific credential worth having.
+**CySEC [certifications](/blog/how-to-list-certifications-on-resume)** — Basic and Advanced — are required for certain roles in the regulated investment sector and are a straightforward, market-specific credential worth having.
 
 **AML and compliance certifications** including ICA and ACAMS are valued in the brokerage and services sector.
 
-**Maritime qualifications** — Class 1 or Class 2 marine engineer certificates, master mariner tickets — open technical superintendent roles directly.
+**Maritime qualifications** — Class 1 or Class 2 marine engineer [certificates](/blog/campus-placement-document-checklist), master mariner tickets — open technical superintendent roles directly.
 
 **Institute of Chartered Shipbrokers** qualifications are recognised across the maritime industry and are a genuine credential for commercial shipping roles.
 
-**And a law degree** with Cypriot qualification for the legal market, which is its own path.
+**And a law [degree](/blog/how-to-list-education-on-resume)** with Cypriot qualification for the legal market, which is its own path.
 
 **The pattern:** Cyprus is a credential-driven market. In a small economy where employers cannot easily verify unfamiliar backgrounds, a recognised qualification does a great deal of work.
 
@@ -151,7 +151,7 @@ Two quite different environments on one small island.
 
 **The industry runs on responsibility.** A superintendent may be accountable for several vessels worth tens of millions each, and the work is taken seriously.
 
-**Forex and brokerage is faster and younger.** Teams skew younger, turnover is higher, and the pace is commercial. Compensation frequently includes performance components.
+**Forex and brokerage is faster and younger.** Teams skew younger, turnover is higher, and the pace is commercial. [Compensation](/blog/how-to-negotiate-a-job-offer-email) frequently includes performance components.
 
 **Professional services follows global norms** — busy season in audit, structured progression, and qualification study alongside work.
 
@@ -165,7 +165,7 @@ Concrete steps.
 
 **Name the specific vessel types or asset classes** you have worked with if you have any relevant background — bulk, tanker, container, offshore for shipping; instruments and markets for finance.
 
-**Quantify by the industry's units** — fleet size, deadweight tonnage, transaction volumes, client numbers.
+**[Quantify](/blog/how-to-quantify-resume-achievements) by the industry's units** — fleet size, deadweight tonnage, transaction volumes, client numbers.
 
 **State your work authorisation plainly.** EU status is a simple advantage; third-country candidates should identify employers under the foreign-interest regime.
 
@@ -173,7 +173,7 @@ Concrete steps.
 
 **Apply directly** to company sites, since these employers recruit continuously and do not always advertise externally.
 
-**And use LinkedIn actively.** Both industries are heavily represented there and recruiters search it constantly.
+**And [use LinkedIn](/blog/how-to-use-linkedin-for-job-search) actively.** Both industries are heavily represented there and [recruiters](/blog/how-recruiters-read-resumes) search it constantly.
 
 ## Mini checklist
 
@@ -221,7 +221,7 @@ The brokerage sector recruits specifically for language combinations to serve di
 - Ignore the compliance function
 - Assume finance here means only banking
 - Overlook the professional services firms
-- Expect Northern European salaries
+- Expect Northern European [salaries](/blog/how-to-negotiate-salary-offer)
 
 ## Common Mistakes
 
