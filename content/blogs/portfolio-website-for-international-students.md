@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- An international applicant's biggest disadvantage is **unfamiliarity** — unknown university, unknown employers, unverifiable references. A portfolio replaces trust with evidence.
-- A working page a reviewer can **open in five seconds** outperforms a repository they have to clone or a description they have to believe.
-- It also solves the **link problem**: one URL on your CV, in your email signature, on your LinkedIn, everywhere.
-- TailorCV can **generate a portfolio from your resume** and publish it at a shareable address, with a choice of themes.
+- An international applicant's biggest disadvantage is **unfamiliarity** — unknown [university](/blog/how-to-list-education-on-resume), unknown [employers](/blog/how-recruiters-spot-generic-resumes), unverifiable [references](/blog/resume-references-guide). A portfolio replaces trust with evidence.
+- A working page a reviewer can **open in five seconds** outperforms a [repository](/blog/github-profile-for-job-search-2026) they have to clone or a description they have to believe.
+- It also solves the **link problem**: one URL on your [CV](/blog/resume-optimization-guide), in your email signature, on your [LinkedIn](/blog/linkedin-profile-optimization-guide), everywhere.
+- TailorCV can **generate a [portfolio](/blog/portfolio-from-resume-minutes) from your resume** and publish it at a shareable address, with a choice of themes.
 - **Publishing requires an account**; building and previewing does not.
 
 ## The unfamiliarity problem
 
 This is the specific disadvantage international candidates carry, and it is rarely named directly.
 
-**Your university is unknown.** A recruiter in Dublin or Berlin may have no calibration for an institution that is genuinely excellent in its own country. They cannot tell whether your degree is competitive or ordinary.
+**Your university is unknown.** A recruiter in [Dublin](/blog/ireland-tech-jobs-dublin) or Berlin may have no calibration for an institution that is genuinely excellent in its own country. They cannot tell whether your degree is competitive or ordinary.
 
 **Your employers are unknown.** "Senior Analyst at a 4,000-person firm" means something to people at home and nothing abroad.
 
@@ -41,11 +41,11 @@ Not everything. Three or four genuinely good pieces beat twelve mediocre ones.
 
 **Projects with the problem stated.** Not "built a web app" but what problem, what constraint, what you chose and why. The reasoning is what demonstrates capability; the artefact alone does not.
 
-**Something that runs.** A live demo, a deployed page, an interactive notebook. The single biggest advantage of a portfolio over a repository is that nobody has to clone anything.
+**[Something that runs](/blog/portfolio-website-for-job-applications).** A live demo, a deployed page, an interactive notebook. The single biggest advantage of a portfolio over a repository is that nobody has to clone anything.
 
 **Your thesis or major project, described as work.** This is usually the most substantial thing a graduate has done and it is usually described in one line on a CV.
 
-**Writing.** Even one clear piece of writing about a technical decision demonstrates communication in a way no bullet point does.
+**Writing.** Even one clear piece of writing about a technical decision demonstrates communication in a way no [bullet point](/blog/how-to-write-resume-bullet-points) does.
 
 **A short about section** that says what you are looking for and what your work authorisation situation is. Recruiters land here from a CV, and answering their next question saves them asking it.
 
@@ -61,7 +61,7 @@ The obstacle is almost never willingness; it is that building a site is a projec
 
 **It publishes at a shareable address**, so you have a URL to put on your CV immediately.
 
-**Optional deployment** to your own hosting is available if you want it on your own domain.
+**[Opt](/blog/opt-cpt-resume-guide)ional deployment** to your own hosting is available if you want it on your own domain.
 
 **Building and previewing is open; publishing requires an account.** That is the only gate.
 
@@ -81,9 +81,9 @@ The look is not decoration — it is a signal about what kind of work you do.
 
 **Engineering outside software.** Structured and technical, with room for diagrams and project documentation.
 
-**The general rule:** pick something that a person in your target field would find unremarkable in a good way. A wildly styled portfolio for a corporate finance role signals a mismatch, and a plain one for a creative role signals a lack of judgement.
+**The general rule:** pick something that a person in your target field would find unremarkable in a good way. A wildly styled portfolio for a corporate [finance](/blog/resume-matching-insurance-jobs) role signals a mismatch, and a plain one for a creative role signals a lack of judgement.
 
-**Then leave it alone.** Iterating on the theme is a very effective way to avoid writing the project descriptions, which is the part that actually matters.
+**Then leave it alone.** Iterating on the theme is a very effective way to avoid writing the [project descriptions](/blog/portfolio-case-study-writing), which is the part that actually matters.
 
 ## Keeping it alive
 
@@ -91,7 +91,7 @@ A stale portfolio is worse than none, because it dates you precisely.
 
 **Add one project per term or per quarter.** Not everything — one thing you are actually proud of.
 
-**Remove old work.** The project from three years ago that you would now do differently is not evidence of growth to a stranger; it is just your weakest piece.
+**Remove old work.** The project from three years ago that you would now do diffe[rent](/blog/canada-major-city-job-markets)ly is not evidence of growth to a stranger; it is just your weakest piece.
 
 **Update the about section** when your situation changes, especially your work authorisation and what you are looking for.
 
@@ -113,7 +113,7 @@ This is the part people skip and it is the part that does the work.
 
 **Say what happened.** Users, accuracy, time saved, what broke. Including what did not work is more credible, not less.
 
-**Then list the stack**, briefly, at the end. It matters for keyword matching and it is the least interesting part for a human.
+**Then list the stack**, briefly, at the end. It matters for [keyword match](/blog/best-resume-keywords-to-beat-ats)ing and it is the least interesting part for a human.
 
 **Four paragraphs is plenty.** A reader deciding whether to interview you will give each project about ninety seconds.
 
@@ -169,7 +169,7 @@ This is exactly the case a portfolio solves. A reviewer who cannot calibrate you
 
 ### Scenario 2: You have no work experience yet
 
-Then your projects are your evidence, and describing them properly is the highest-return work available to you. A well-documented university project outranks a bare list of coursework by a wide margin.
+Then your projects are your evidence, and describing them properly is the highest-return work available to you. A well-documented [university project](/blog/projects-in-resume) outranks a bare list of coursework by a wide margin.
 
 ### Scenario 3: You need something today
 

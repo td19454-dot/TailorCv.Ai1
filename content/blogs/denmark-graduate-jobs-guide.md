@@ -13,21 +13,21 @@ showcase: none
 
 ## Key Takeaways
 
-- Denmark runs on **flexicurity** — weak dismissal protection combined with strong unemployment support and active retraining. It makes employers less risk-averse about hiring.
+- Denmark runs on **flexicurity** — weak dismissal protection combined with strong unemployment support and active retraining. It makes [employers](/blog/how-recruiters-spot-generic-resumes) less risk-averse about hiring.
 - **Copenhagen dominates**, with Aarhus a genuine second centre and the Øresund region connecting Copenhagen to Malmö in Sweden.
-- The **Positive List** names occupations experiencing shortages and provides a streamlined work permit route.
-- **Danish workplaces are exceptionally flat**, informal and consensus-driven, and this is not marketing language.
+- The **Positive List** names occupations experiencing shortages and provides a streamlined [work permit](/blog/canada-work-permit-types-guide) route.
+- **Danish workplaces are exceptionally flat**, informal and consensus-driven, and this is not [marketing](/blog/resume-matching-marketing) language.
 - **English is widely sufficient** in technology, pharmaceuticals, shipping and international companies; Danish opens everything else.
 
 ## Flexicurity, and what it means for you
 
 Denmark's labour market model has a name and it genuinely affects your prospects.
 
-**Hiring and firing are both relatively easy.** Notice periods are shorter than in most of Europe and dismissal protection is weaker. An employer taking a chance on an unfamiliar international candidate is taking a smaller risk than an equivalent employer in Germany or France.
+**Hiring and firing are both relatively easy.** [Notice period](/blog/notice-period-negotiation-guide)s are shorter than in most of Europe and dismissal protection is weaker. An employer taking a chance on an unfamiliar international candidate is taking a smaller risk than an equivalent employer in Germany or France.
 
 **The safety net is strong.** Unemployment insurance through an *a-kasse* fund, combined with active labour market policy and retraining support, means the consequences of losing a job are cushioned in a way they are not in the UK or US.
 
-**The consequence for a graduate:** Danish employers hire more readily and with less anxiety, which is good news for someone with an unconventional background. It also means your first job is genuinely a first job rather than a lifetime commitment, and moving between employers early is unremarkable.
+**The consequence for a [graduate](/blog/first-resume-for-gen-z-2026):** Danish employers hire more readily and with less anxiety, which is good news for someone with an unconventional background. It also means your first job is genuinely a first job rather than a lifetime commitment, and moving between employers early is unremarkable.
 
 **Join an a-kasse if you stay.** It is voluntary, it costs a modest monthly amount, and it is what turns the theoretical safety net into an actual one.
 
@@ -41,7 +41,7 @@ Small, open, and specialised in a handful of areas where it is genuinely world-l
 
 **Renewable energy.** Ørsted and Vestas made Denmark a world leader in offshore wind, and the engineering demand around it is real.
 
-**Technology.** Unity, Zendesk's Copenhagen operation, Trustpilot, Pleo and a healthy startup scene, alongside the technology functions of the large corporates.
+**Technology.** Unity, Zendesk's Copenhagen operation, Trustpilot, Pleo and a healthy [startup](/blog/japan-startup-jobs-guide) scene, alongside the technology functions of the large corporates.
 
 **Design and manufacturing.** LEGO in Billund, Bang & Olufsen, Danfoss and Grundfos — the last two in Jutland rather than Copenhagen, and correspondingly less contested.
 
@@ -59,13 +59,13 @@ Small, open, and specialised in a handful of areas where it is genuinely world-l
 
 **The Startup Denmark scheme** exists for entrepreneurs with an approved business plan.
 
-**All thresholds and lists are revised** — check the current position with SIRI, the Danish Agency for International Recruitment and Integration.
+**All thresholds and lists are revised** — check the cur[rent](/blog/canada-major-city-job-markets) position with SIRI, the Danish Agency for International Recruitment and Integration.
 
 ## Danish workplace culture
 
 Flat even by Nordic standards.
 
-**Hierarchy is close to invisible.** First names for everyone including the chief executive, and an expectation that you will voice disagreement regardless of seniority. Waiting to be asked reads as passive.
+**[Hierarchy](/blog/japan-nenkou-seniority-explained) is close to invisible.** First names for everyone including the chief executive, and an expectation that you will voice disagreement regardless of seniority. Waiting to be asked reads as passive.
 
 **Trust is high and supervision is light.** You will be given responsibility early and not checked on much, which suits some people and unsettles others.
 
@@ -81,13 +81,13 @@ Flat even by Nordic standards.
 
 A tight sequence, and CPR is the gate for all of it.
 
-**CPR number.** Register your address and obtain your personal registration number. Healthcare, banking and public services all depend on it.
+**CPR number.** Register your address and obtain your personal registration number. Healthcare, [banking](/blog/resume-matching-insurance-jobs) and public services all depend on it.
 
 **Yellow health card** arrives with your CPR registration and assigns you a general practitioner. Healthcare is publicly funded and free at the point of use.
 
 **NemKonto** — you nominate a bank account into which all public payments are made. Salary and refunds route through it.
 
-**MitID** is the national digital identity, used for banking, tax, healthcare and government services. Set it up early.
+**MitID** is the national digital identity, used for banking, [tax](/blog/canada-first-job-taxes-and-benefits), healthcare and government services. Set it up early.
 
 **Tax card.** Register with SKAT so your employer deducts the right amount. Danish income tax is high and the deduction is substantial, but it funds healthcare, education and the safety net rather than disappearing.
 
@@ -107,7 +107,7 @@ The honest picture, since Danish tax is the thing everyone mentions.
 
 **Holiday pay** accrues under the Danish holiday act and is paid as a supplement — check how your employer handles it, as the system was reformed to a concurrent model.
 
-**Pension contributions** are usually part of the collective agreement, with both employer and employee contributing. It is real money and worth checking the percentage in your offer.
+**[Pension](/blog/first-90-days-new-job) contributions** are usually part of the collective agreement, with both employer and employee contributing. It is real money and worth checking the percentage in your offer.
 
 ## Applying to Danish employers
 
@@ -117,11 +117,11 @@ Denmark has its own conventions and they are worth matching.
 
 **The application is a CV plus an ansøgning** — a one-page application letter that is genuinely read and expected to be specific to the role.
 
-**Two pages for the CV**, plain, reverse chronological. A photo is more common in Denmark than in Sweden but is by no means required, and international employers generally do not expect one.
+**[Two pages](/blog/ats-resume-length-guide) for the CV**, plain, [reverse chronological](/blog/chronological-vs-functional-resume). A photo is more common in Denmark than in Sweden but is by no means required, and international employers generally do not expect one.
 
 **Unsolicited applications are normal.** Writing to a company that has not advertised is an established Danish practice, and a well-researched *uopfordret ansøgning* is read rather than discarded.
 
-**Networking matters more than the formality suggests.** Danish professional circles are small, and an introduction moves an application from a pile to a conversation.
+**[Networking](/blog/networking-tips-for-job-search) matters more than the formality suggests.** Danish professional circles are small, and an introduction moves an application from a pile to a conversation.
 
 **Interviews are informal and conversational.** First names, an open exchange, and a genuine expectation that you will ask questions and express views. Treating it as an interrogation to survive misreads the format.
 
@@ -135,11 +135,11 @@ Denmark scores extremely well on quality of life and poorly on ease of making fr
 
 **Work friendships stay at work** more than in Anglo-American cultures. Colleagues are warm during the day and go home to established lives.
 
-**Foreningsliv is the way in.** Denmark has an enormous associational culture — sports clubs, choirs, rowing, volunteering, evening classes. Joining one is the single most effective route into Danish social life, and it is the advice every long-term international gives.
+**Foreningsliv is the way in.** Denmark has an enormous associational culture — sports clubs, choirs, rowing, [volunteering](/blog/hobbies-and-interests-on-resume), evening classes. Joining one is the single most effective route into Danish social life, and it is the advice every long-term international gives.
 
 **Language accelerates everything.** Free Danish tuition is available to residents, and even modest ability changes how you are received socially, whatever the professional situation.
 
-**Hygge is not just a marketing word.** It describes a genuine preference for small, warm, home-based gatherings over large public socialising, which is precisely why the social scene is hard to enter from outside.
+**Hygge is not just a marketing word.** It describes a genuine p[reference](/blog/resume-references-guide) for small, warm, home-based gatherings over large public socialising, which is precisely why the social scene is hard to enter from outside.
 
 **Give it two winters.** Almost everyone who stays says the first year was hard and the third was home.
 

@@ -14,8 +14,8 @@ showcase: none
 ## Key Takeaways
 
 - The UAE labour market is **overwhelmingly expatriate** — a very large majority of the private-sector workforce is foreign, which makes it structurally open to international candidates.
-- **There is no personal income tax**, which changes the arithmetic of a salary offer more than any negotiation would.
-- Your **employment visa is sponsored by your employer** and tied to them, so the job and the residency are a single decision.
+- **There is no personal income [tax](/blog/canada-first-job-taxes-and-benefits)**, which changes the arithmetic of a salary offer more than any [negotiation](/blog/how-to-negotiate-salary-offer) would.
+- Your **employment visa is sponsored by your [employer](/blog/how-recruiters-spot-generic-resumes)** and tied to them, so the job and the residency are a single decision.
 - **Free zones** — DIFC, DMCC, Dubai Internet City, ADGM, Masdar City — operate their own regulatory regimes and are where much of the international corporate activity sits.
 - **Emiratisation** requirements mean private employers face quotas for hiring UAE nationals, which shapes which roles are open.
 
@@ -25,7 +25,7 @@ Two facts define hiring here and neither has an equivalent in Europe.
 
 **The workforce is predominantly expatriate.** In the private sector, the large majority of employees are foreign nationals from across South Asia, the Middle East, Europe, Africa and beyond. Being international is not an exception requiring justification; it is the default condition of the market.
 
-**Your visa is your employer's.** The standard employment visa is sponsored by the company that hires you. That means your right to be in the country is bound to your job, and changing employer involves a visa transfer. This is a different relationship between work and residency than most European systems, and it is worth understanding before you accept anything.
+**Your visa is your employer's.** The standard employment visa is sponsored by the company that hires you. That means your right to be in the country is bound to your job, and changing employer involves a visa transfer. This is a diffe[rent](/blog/canada-major-city-job-markets) relationship between work and residency than most European systems, and it is worth understanding before you accept anything.
 
 **The consequence:** the barrier is not usually permission, as it is in Switzerland or Germany. The barrier is getting the offer — and once you have it, the paperwork is a process the employer runs routinely.
 
@@ -43,27 +43,27 @@ Two facts define hiring here and neither has an equivalent in Europe.
 
 **Free zones matter practically.** They have their own employment regulations, their own visa administration, and in DIFC and ADGM their own courts operating in English on common-law principles. For an international professional this is frequently a more familiar environment than the onshore mainland regime.
 
-**Onshore versus free zone changes your contract.** Which regime you sit under affects notice periods, end-of-service benefits and dispute resolution. Ask which applies before signing.
+**Onshore versus free zone changes your contract.** Which regime you sit under affects [notice period](/blog/notice-period-negotiation-guide)s, end-of-service benefits and dispute resolution. Ask which applies before signing.
 
 ## Emiratisation, and what it means for you
 
 The UAE has an active policy of increasing the share of Emirati nationals in private-sector employment, with targets and quotas for companies above a certain size, administered through the **Nafis** programme.
 
-**What it means in practice:** some roles are prioritised for UAE nationals, and larger employers have targets to meet. This does not close the market to foreign graduates — the expatriate share of the workforce remains very large — but it does mean certain positions, particularly in banking, HR and government-adjacent sectors, are harder to access.
+**What it means in practice:** some roles are prioritised for UAE nationals, and larger employers have targets to meet. This does not close the market to foreign graduates — the expatriate share of the workforce remains very large — but it does mean certain positions, particularly in [banking](/blog/resume-matching-insurance-jobs), HR and government-adjacent sectors, are harder to access.
 
-**It is a real factor, not a rumour**, and understanding it prevents misreading a rejection.
+**It is a real factor, not a rumour**, and understanding it prevents misreading a [rejection](/blog/how-to-handle-job-rejection).
 
 ## How hiring actually happens
 
 The formal process is familiar; the informal one is not.
 
-**Networks carry a great deal of weight.** Referrals, alumni connections and professional communities generate a large share of hires. Cold applications work, but they work considerably better with a name attached.
+**Networks carry a great deal of weight.** [Referrals](/blog/networking-messages-for-referrals), alumni connections and professional communities generate a large share of hires. Cold applications work, but they work considerably better with a name attached.
 
-**Recruitment agencies are very active** across most sectors, and building relationships with several is standard practice rather than a fallback.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies) are very active** across most sectors, and building relationships with several is standard practice rather than a fallback.
 
 **Bayt, GulfTalent, Naukrigulf and LinkedIn** carry the advertised volume, with LinkedIn dominant for professional and international roles.
 
-**Response times vary enormously**, and processes can stall and restart without explanation. Persistence is normal and expected here in a way it is not in Switzerland.
+**[Response times](/blog/how-long-to-hear-back-after-applying) vary enormously**, and processes can stall and restart without explanation. Persistence is normal and expected here in a way it is not in Switzerland.
 
 **Being physically present helps.** A UAE phone number, a local address and availability for an in-person interview change how an application is read. Many candidates come on a visit visa to interview, which is a recognised approach — check the current rules on what a visit visa permits before relying on it.
 
@@ -90,11 +90,11 @@ This is where European and North American candidates most often misjudge an offe
 
 Worth calibrating before you arrive.
 
-**The working week has shifted.** The UAE public sector moved to a Monday-to-Friday week with a half-day Friday, and much of the private sector followed, though not universally. Confirm what your employer actually operates.
+**The working week has shifted.** The UAE [public sector](/blog/canada-government-jobs-for-students) moved to a Monday-to-Friday week with a half-day Friday, and much of the private sector followed, though not universally. Confirm what your employer actually operates.
 
 **Workplaces are extremely international.** A team of ten might hold eight nationalities, and the working language is English almost everywhere in the professional private sector.
 
-**Hierarchies tend to be more pronounced** than in Northern Europe, and titles carry weight.
+**[Hierarchies](/blog/japan-nenkou-seniority-explained) tend to be more pronounced** than in Northern Europe, and titles carry weight.
 
 **Ramadan changes the working day.** Reduced hours apply for the month, and it affects meeting culture and business rhythm generally.
 
@@ -106,7 +106,7 @@ Worth calibrating before you arrive.
 
 The absence of income tax is real, and it is not the whole picture.
 
-**Rent is the dominant expense** and it is high in central Dubai and Abu Dhabi. Traditionally rent was paid annually in a small number of cheques, which required a large sum upfront; monthly payment options have become more common but are not universal. Ask early, because a year of rent in advance is a genuine cash-flow problem for a graduate.
+**Rent is the dominant expense** and it is high in central Dubai and Abu Dhabi. Traditionally rent was paid annually in a small number of cheques, which required a large sum upfront; monthly payment [opt](/blog/opt-cpt-resume-guide)ions have become more common but are not universal. Ask early, because a year of rent in advance is a genuine cash-flow problem for a graduate.
 
 **Sharjah and the northern emirates are considerably cheaper** and many people working in Dubai live there. The commute is real, and so is the saving.
 
@@ -136,7 +136,7 @@ The absence of income tax is real, and it is not the whole picture.
 
 ### Scenario 1: You are applying from abroad with no UAE connections
 
-Use LinkedIn deliberately — find people from your university or your home country working in your target companies and ask for a conversation, not a job. Referral is the strongest channel in this market.
+[Use LinkedIn](/blog/how-to-use-linkedin-for-job-search) deliberately — find people from your university or your home country working in your target companies and ask for a conversation, not a job. Referral is the strongest channel in this market.
 
 ### Scenario 2: You have an offer from a free zone company
 
@@ -146,7 +146,7 @@ Ask which regime governs your contract and what it means for notice, end-of-serv
 
 That is Emiratisation and it is real. Adjust toward sectors and roles where the quotas bite less hard rather than reading it as a judgement on your application.
 
-> **Tip:** Start the attestation of your degree certificate before you have an offer. Attestation runs through your home country's authorities and the UAE mission there, it can take weeks, and it is the step most likely to delay a visa after everything else is agreed.
+> **Tip:** Start the [attestation](/blog/canada-credential-assessment-guide) of your degree certificate before you have an offer. Attestation runs through your home country's authorities and the UAE mission there, it can take weeks, and it is the step most likely to delay a visa after everything else is agreed.
 
 ## Do's and Don'ts
 
@@ -197,7 +197,7 @@ For a residency visa, yes — the standard employment visa is sponsored by your 
 
 ### Is my visa tied to my employer?
 
-Yes. Changing jobs involves transferring the visa sponsorship, so the job and the residency are a single decision rather than two.
+Yes. Changing jobs involves transferring the visa [sponsorship](/blog/resume-for-h1b-visa-sponsorship), so the job and the residency are a single decision rather than two.
 
 ### What are free zones?
 

@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- The **TailorCV Chrome extension** adds a panel directly to LinkedIn job pages, so tailoring happens where you are already reading the posting.
+- The **TailorCV [Chrome](/blog/best-chrome-extensions-for-job-seekers-2026) extension** adds a panel directly to LinkedIn job pages, so tailoring happens where you are already reading the posting.
 - You set up a **base resume and preferred template once** at thetailorcv.com/extension; after that every tailored resume starts from it.
-- One click produces a resume **rewritten against that specific job description** and downloaded as an ATS-ready PDF.
-- Every tailored resume is **saved to your account** on the My Resumes page, alongside the job it was written for.
+- One click produces a resume **rewritten against that specific [job description](/blog/job-description-analysis-checklist)** and downloaded as an [ATS-ready](/blog/how-to-make-resume-ats-friendly) PDF.
+- Every tailored resume is **saved to your account** on the [My Resumes page](/blog/chrome-extension-vs-manual-job-tracking), alongside the job it was written for.
 - The extension **only reads the job title, company and description** from the posting you have open — not your profile, connections or messages.
 
 ## The problem it solves
@@ -25,7 +25,7 @@ Everyone knows resumes should be tailored to each job. Almost nobody does it, an
 
 **The manual loop looks like this:** read the posting, open your resume in Word, decide which bullets matter for this role, rewrite three of them, check you have not broken the formatting, export a PDF, name the file, go back to the tab, upload, repeat. Twenty to forty minutes per application if you do it properly.
 
-**So people stop doing it properly.** They send the same generic resume to forty roles, which is precisely the behaviour that automated screening is designed to filter out.
+**So people stop doing it properly.** They send the same [generic resume](/blog/how-ats-detects-generic-resume) to forty roles, which is precisely the behaviour that [automated screening](/blog/ats-resume-checker-how-it-works) is designed to filter out.
 
 **The extension removes the loop.** The job description is already on screen; the extension reads it, rewrites your base resume against it, and hands you a PDF. The tailoring happens because it costs one click rather than half an hour.
 
@@ -33,7 +33,7 @@ Everyone knows resumes should be tailored to each job. Almost nobody does it, an
 
 Three steps, and you only do them once.
 
-**1. Install the extension** from the Chrome Web Store — "TailorCV — AI Resume Optimizer".
+**1. [Install the extension](/blog/how-to-install-tailorcv-extension)** from the Chrome Web Store — "TailorCV — AI Resume [Opt](/blog/opt-cpt-resume-guide)imizer".
 
 **2. Set your base resume** at thetailorcv.com/extension. Upload the resume you want everything generated from. This is the source material, so it should be your complete, honest, unabridged version — the tailoring is about emphasis and wording, not invention.
 
@@ -63,19 +63,19 @@ Worth being precise, because the word is used loosely.
 
 **It preserves your content.** The pipeline includes explicit steps that restore bullets and entries the model dropped, because language models silently lose content on long resumes and losing a candidate's actual work is the worst possible failure mode.
 
-**It outputs an ATS-safe PDF.** Single-column, standard headings, parseable text — not a design object that turns to nonsense in a parser.
+**It outputs an ATS-safe PDF.** Single-column, standard headings, [parse](/blog/ats-resume-parser-friendly-format)able text — not a design object that turns to nonsense in a parser.
 
 ## What makes a good base resume
 
 Everything the extension produces comes from your base resume, so its quality sets the ceiling on everything downstream.
 
-**Include everything.** This is the one document that should not be cut down. Every role, every project, every certification, every tool you have genuinely used. The tailoring step decides what to foreground for a given job; it cannot foreground something you did not tell it about.
+**Include everything.** This is the one document that should not be cut down. Every role, every project, every [certification](/blog/how-to-list-certifications-on-resume), every tool you have genuinely used. The tailoring step decides what to foreground for a given job; it cannot foreground something you did not tell it about.
 
 **Name specific tools and systems.** "Built a data pipeline" is weaker than "built an ETL pipeline in Python with Airflow, loading into Postgres". Screening is literal and so is matching, and a named tool is the thing that gets matched.
 
-**Quantify where you honestly can.** Team size, volume, percentage change, timeframe. Numbers do not have to be impressive, only real.
+**[Quantify](/blog/how-to-quantify-resume-achievements) where you honestly can.** Team size, volume, percentage change, timeframe. Numbers do not have to be impressive, only real.
 
-**Describe projects like work.** A university project with a real problem, a real constraint and a real outcome reads as experience. A project listed as a title reads as a module.
+**Describe projects like work.** A [university project](/blog/projects-in-resume) with a real problem, a real constraint and a real outcome reads as experience. A project listed as a title reads as a module.
 
 **Keep the formatting simple.** Single column, standard headings, no text inside images. A designed base resume parses badly, and everything generated inherits from what was parsed.
 
@@ -107,13 +107,13 @@ The handful of things that go wrong, and what each means.
 
 **You have hit your limit.** Free accounts include a limited number of tailored resumes; Pro removes the cap. The message will say which is the case.
 
-**The PDF looks wrong.** Check which template is selected at thetailorcv.com/extension. Templates differ in density, and a resume with a lot of content suits a different one from a short one.
+**The PDF looks wrong.** Check [which template](/blog/resume-templates-by-country-guide) is selected at thetailorcv.com/extension. Templates differ in density, and a resume with a lot of content suits a diffe[rent](/blog/canada-major-city-job-markets) one from a short one.
 
 ## Using it well over a whole search
 
 Three habits that separate people who get value from this from people who install it and forget.
 
-**Update the base resume monthly.** Everything generated inherits from it, so a stale base quietly degrades every application.
+**[Update the base resume](/blog/how-to-update-your-resume) monthly.** Everything generated inherits from it, so a stale base quietly degrades every application.
 
 **Re-read one generated resume properly each week.** Not all of them — one. It keeps you honest about what is going out under your name.
 
@@ -179,7 +179,7 @@ The My Resumes page records each tailored resume against the job it was generate
 - Upload a base resume that is already cut down
 - Send without reading
 - Expect it to invent skills you do not have
-- Use a heavily designed base resume that parses badly
+- Use a [heavily designed](/blog/resume-design-color-guide) base resume that parses badly
 - Assume one tailored resume works for a whole category of jobs
 - Forget to update the base after a new role or project
 

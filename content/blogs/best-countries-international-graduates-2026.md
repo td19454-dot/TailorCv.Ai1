@@ -13,11 +13,11 @@ showcase: none
 
 ## Key Takeaways
 
-- The single most useful ranking criterion is not salary — it is whether there is a **post-study route that does not require employer sponsorship**.
+- The single most useful ranking criterion is not salary — it is whether there is a **post-study route that does not require employer [sponsorship](/blog/resume-for-h1b-visa-sponsorship)**.
 - **Ireland, the Netherlands, Germany, Canada and Hong Kong** all offer open post-study permissions that make you administratively equivalent to a local hire.
 - **The Netherlands and Hong Kong are unusual** in offering routes to graduates of *foreign* universities who never studied there.
 - **The United States is the outlier** — the highest pay in several fields, and the only major destination where the outcome depends on a lottery.
-- **Language is the hidden filter.** Ireland, Canada, Australia, New Zealand, Hong Kong and Singapore run in English; most of continental Europe eventually does not.
+- **Language is the hidden filter.** Ireland, Canada, Australia, New Zealand, Hong Kong and [Singapore](/blog/how-to-get-a-job-in-singapore) run in English; most of continental Europe eventually does not.
 
 ## The criterion that actually matters
 
@@ -76,31 +76,31 @@ Three things any ranking should say and most do not.
 
 **Immigration policy changes.** Every route on this page has been amended in the last few years — durations shortened, thresholds raised, lists revised. Check the official source for the country you are targeting, always.
 
-**The country that fits you is field-specific and passport-specific.** There is no general answer. A software engineer with an EU passport and a nurse from outside the EEA are choosing between entirely different sets of options, and generic advice serves neither well.
+**The country that fits you is field-specific and passport-specific.** There is no general answer. A software engineer with an EU passport and a nurse from outside the EEA are choosing between entirely different sets of [opt](/blog/opt-cpt-resume-guide)ions, and generic advice serves neither well.
 
 ## Countries worth a second look
 
 Five that rarely appear on a shortlist and probably should.
 
-**Ireland.** English-speaking, EU member, Stamp 1G with no sponsorship, and the European headquarters of an extraordinary number of American technology and pharmaceutical companies. It is arguably the single best combination available to an English-speaking graduate who wants EU access.
+**Ireland.** English-speaking, EU member, [Stamp 1G](/blog/ireland-third-level-graduate-scheme) with no sponsorship, and the European headquarters of an extraordinary number of American technology and pharmaceutical companies. It is arguably the single best combination available to an English-speaking graduate who wants EU access.
 
-**The Netherlands.** The orientation year, a recognised sponsor register that tells you exactly who can hire you, technology and engineering depth, and one of the highest English proficiency levels in the world.
+**The Netherlands.** The orientation year, a [recognised sponsor register](/blog/netherlands-jobs-international-graduates) that tells you exactly who can hire you, technology and engineering depth, and one of the highest English proficiency levels in the world.
 
-**Germany.** Europe's largest economy, a job-seeker permit, the EU Blue Card, and the Opportunity Card for people who have never studied there. Engineering demand is genuine and persistent.
+**Germany.** Europe's largest economy, a job-seeker permit, the [EU Blue Card](/blog/germany-eu-blue-card-graduates), and the [Opportunity Card](/blog/germany-opportunity-card-chancenkarte) for people who have never studied there. Engineering demand is genuine and persistent.
 
 **Hong Kong.** IANG makes local graduates administratively identical to residents, the Top Talent Pass Scheme admits graduates of ranked universities with no prior connection, tax is low, and English works professionally.
 
-**Denmark.** The Positive List, flexicurity making employers unusually willing to hire, a world-class pharmaceutical cluster, and quality of life that consistently ranks at the top of international surveys.
+**Denmark.** The [Positive List](/blog/denmark-graduate-jobs-guide), flexicurity making employers unusually willing to hire, a world-class pharmaceutical cluster, and quality of life that consistently ranks at the top of international surveys.
 
-**And one under-considered choice within countries:** the second city. Eindhoven rather than Amsterdam, Cork rather than Dublin, Gothenburg rather than Stockholm, Aarhus rather than Copenhagen. The work is real, the housing is affordable, and the competition is a fraction.
+**And one under-considered choice within countries:** the second city. [Eindhoven](/blog/netherlands-tech-startup-jobs) rather than Amsterdam, Cork rather than [Dublin](/blog/ireland-tech-jobs-dublin), Gothenburg rather than Stockholm, Aarhus rather than Copenhagen. The work is real, the housing is affordable, and the competition is a fraction.
 
 ## Countries with real caveats
 
 Balance requires naming the harder cases too.
 
-**Switzerland.** Extraordinary salaries and one of the most restrictive regimes in Europe for third-country nationals — quotas, a priority test, and a qualified-specialist requirement that excludes most new graduates. Realistically an option after studying there or with a scarce specialism.
+**Switzerland.** Extraordinary salaries and one of the most restrictive regimes in Europe for third-country nationals — quotas, a [priority test](/blog/switzerland-work-permit-graduates), and a qualified-specialist requirement that excludes most new graduates. Realistically an option after studying there or with a scarce specialism.
 
-**Japan.** Genuinely open visa policy and a real skills shortage, but language is a hard barrier outside a narrow technology and English-teaching slice, and working culture differs sharply from Western norms.
+**[Japan](/blog/how-to-get-a-job-in-japan-foreigner).** Genuinely open visa policy and a real skills shortage, but language is a hard barrier outside a narrow technology and English-teaching slice, and working culture differs sharply from Western norms.
 
 **Singapore.** Excellent quality of life and a strong economy, with employment pass criteria that have tightened and a points-based framework favouring higher earners. Competitive rather than closed.
 
@@ -134,9 +134,9 @@ Concrete actions rather than a ranking to admire.
 
 **Get your documents ready early.** Apostilles, certified translations, sealed transcripts and background checks all come from your home country, and every one of them is easier to obtain before you move than after.
 
-**Build one deployed thing.** Whatever your field, a piece of work someone can open and evaluate — a [portfolio site](/portfolio), a repository, a published paper — travels across every border in this guide.
+**Build one deployed thing.** Whatever your field, a piece of work someone can open and evaluate — a [portfolio site](/portfolio), a [repository](/blog/github-profile-for-job-search-2026), a published paper — travels across every border in this guide.
 
-**Check your base resume parses.** Automated screening is the one constant in every market here. Run an [ATS check](/ats-analysis) once and remove the whole category of silent rejection.
+**Check your base resume [parse](/blog/ats-resume-parser-friendly-format)s.** [Automated screening](/blog/ats-resume-checker-how-it-works) is the one constant in every market here. Run an [ATS check](/ats-analysis) once and remove the whole category of silent [rejection](/blog/how-to-handle-job-rejection).
 
 **And learn the language of wherever you are going.** It is the difference between working in a country and living in one, and every long-term international says the same thing about it.
 

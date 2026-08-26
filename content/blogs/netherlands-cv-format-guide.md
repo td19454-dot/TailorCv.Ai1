@@ -13,11 +13,11 @@ showcase: none
 
 ## Key Takeaways
 
-- A Dutch CV runs to **two pages** and is expected to be plain, factual and well organised rather than designed.
-- **A photo is optional and increasingly omitted.** International employers in Amsterdam generally prefer you leave it off; some traditional Dutch firms still expect one.
+- A Dutch CV runs to **[two pages](/blog/ats-resume-length-guide)** and is expected to be plain, factual and well organised rather than designed.
+- **A photo is [opt](/blog/opt-cpt-resume-guide)ional and increasingly omitted.** International employers in Amsterdam generally prefer you leave it off; some traditional Dutch firms still expect one.
 - Dutch professional culture prizes **directness**. Overstated claims read as untrustworthy, and hedged language reads as evasive.
 - **English is genuinely sufficient** for a large share of roles in Amsterdam, Rotterdam, Eindhoven and Utrecht — but state your Dutch level honestly rather than omitting it.
-- The **motivatiebrief** (motivation letter) is still standard and is genuinely read, unlike cover letters in some other markets.
+- The **[motivatiebrief](/blog/cover-letter-generator-by-country)** (motivation letter) is still standard and is genuinely read, unlike cover letters in some other markets.
 
 ## The shape of a Dutch CV
 
@@ -27,11 +27,11 @@ Dutch employers want a document that answers questions quickly. Two pages is the
 
 **A short profile** of three or four lines. This is genuinely read in the Netherlands, more so than in the UK. It should state what you do, what you are looking for, and one concrete thing that distinguishes you.
 
-**Work experience**, reverse chronological, with employer, role, dates and outcomes.
+**Work experience**, [reverse chronological](/blog/chronological-vs-functional-resume), with employer, role, dates and outcomes.
 
 **Education**, including your institution, your degree in full, and your graduation date. If your degree has no obvious international equivalent, one clarifying line helps.
 
-**Skills**, with languages listed explicitly and levels stated using the CEFR scale (A1 through C2) rather than words like "basic" or "fluent", which mean different things to different readers.
+**Skills**, with languages listed explicitly and levels stated using the [CEFR](/blog/bilingual-language-skills-on-resume) scale (A1 through C2) rather than words like "basic" or "fluent", which mean diffe[rent](/blog/canada-major-city-job-markets) things to different readers.
 
 **Extracurriculars matter more here than you expect.** Dutch student culture involves substantial committee work, board years at student associations, and organising roles — and Dutch employers read these as genuine management experience rather than as filler. If you did something similar, describe it as the responsibility it was.
 
@@ -64,7 +64,7 @@ Unlike markets where cover letters are ignored, the Dutch motivation letter is s
 
 **Keep it to one page** — three or four short paragraphs.
 
-**Answer three questions:** why this company specifically, why this role, and what you bring that is concrete. Generic enthusiasm is transparent and counts against you.
+**Answer three questions:** [why this company](/blog/how-to-answer-why-do-you-want-this-job) specifically, why this role, and what you bring that is concrete. Generic enthusiasm is transparent and counts against you.
 
 **Write it in the language of the advert.** If the posting is in English, write in English. If it is in Dutch and your Dutch is genuinely good, write in Dutch — but a poor Dutch letter is worse than a strong English one.
 
@@ -76,13 +76,13 @@ If you want a starting point, a [tailored cover letter](/cover-letter) generated
 
 Larger Dutch employers and the big international offices in Amsterdam screen with software before anyone reads your document, which imposes a few unglamorous constraints.
 
-**Use section headings a parser recognises** — Work Experience, Education, Skills. A creatively named section is a section that does not get extracted.
+**Use section headings a [parse](/blog/ats-resume-parser-friendly-format)r recognises** — Work Experience, Education, Skills. A creatively named section is a section that does not get extracted.
 
-**Avoid multi-column layouts and text inside images.** Dutch design culture tempts people toward attractive documents, and attractive documents frequently parse into nonsense.
+**Avoid [multi-column layouts](/blog/ats-tables-columns-guide) and text inside images.** Dutch design culture tempts people toward attractive documents, and attractive documents frequently parse into nonsense.
 
 **Mirror the advert's vocabulary exactly.** If the posting says "Power BI", write "Power BI" rather than "business intelligence tooling". The matching is literal.
 
-**Export as PDF** unless the advert explicitly asks for Word, and name the file with your own name in it rather than "CV_final_v3".
+**[Export as PDF](/blog/ats-file-format-guide)** unless the advert explicitly asks for Word, and name the file with your own name in it rather than "CV_final_v3".
 
 Running your base document through an [ATS check](/ats-analysis) once removes this entire category of risk before you send the first application rather than after a month of silence.
 
@@ -94,7 +94,7 @@ Most Dutch graduate CVs fail for the same reason: they list what the candidate w
 
 **Internships and part-time work count fully.** Dutch employers do not discount a supermarket job or a call-centre stint — they read it as evidence you can hold responsibility. Describe the scale: how many customers, how many shifts, what you were trusted with.
 
-**Include a link to something real.** A repository, a deployed project, a [portfolio site](/portfolio) that opens in a browser. Dutch reviewers are practical and will click, and a working thing outranks a paragraph describing a thing.
+**Include a link to something real.** A [repository](/blog/github-profile-for-job-search-2026), a [deployed project](/blog/portfolio-website-for-job-applications), a [portfolio site](/portfolio) that opens in a browser. Dutch reviewers are practical and will click, and a working thing outranks a paragraph describing a thing.
 
 **Cut coursework lists.** A list of module names is the least informative thing on any graduate CV. One project described properly replaces ten module titles.
 
@@ -104,7 +104,7 @@ Most Dutch graduate CVs fail for the same reason: they list what the candidate w
 
 **Reverse chronological throughout.** Functional or skills-first CVs are read in the Netherlands as an attempt to hide something, whether or not that is fair.
 
-**Plain fonts, generous white space, no colour blocks.** The Dutch aesthetic preference in professional documents runs toward clarity rather than personality.
+**Plain [fonts](/blog/resume-fonts-guide), generous white space, no colour blocks.** The Dutch aesthetic p[reference](/blog/resume-references-guide) in professional documents runs toward clarity rather than personality.
 
 **One file, named with your own name.** "Anna_Kowalski_CV.pdf" is retrievable from a folder of two hundred applications; "cv_definitief.pdf" is not.
 
@@ -118,7 +118,7 @@ Dutch employers expect a CV aimed at the role, and the efficient way to do that 
 
 **For each application, cut rather than write.** Remove the experience that is irrelevant, reorder so the relevant sits highest, and adjust the profile paragraph to name the role and the company. Twenty minutes of cutting beats two hours of writing.
 
-**Match the advert's own nouns.** If the posting asks for "stakeholder management", the phrase "stakeholder management" should appear on your CV describing something you genuinely did. This is not keyword stuffing; it is removing the translation step from the reader's job.
+**Match the advert's own nouns.** If the posting asks for "stakeholder management", the phrase "stakeholder management" should appear on your CV describing something you genuinely did. This is not [keyword stuffing](/blog/resume-keyword-density-ats); it is removing the translation step from the reader's job.
 
 **Keep a log of what you sent where.** Dutch hiring processes can run over several weeks, and being asked about a document you cannot remember sending is a bad position to be in.
 

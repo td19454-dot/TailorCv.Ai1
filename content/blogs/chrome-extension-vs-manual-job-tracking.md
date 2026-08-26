@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- Manual trackers fail for a predictable reason: **logging happens after the application, when the motivation has already been spent**.
-- The extension **logs applications automatically** and saves each tailored resume against the job it was written for.
-- The thing a spreadsheet cannot store is **the actual document you sent** — which is what you need when the call comes.
+- Manual [tracker](/blog/job-application-tracker-template)s fail for a predictable reason: **logging happens after the application, when the motivation has already been spent**.
+- The extension **logs [applications](/blog/how-many-jobs-should-you-apply-to-per-day) automatically** and saves each tailored [resume](/blog/resume-optimization-guide) against the job it was written for.
+- The thing a spreadsheet cannot store is **the actual [document](/blog/campus-placement-document-checklist) you sent** — which is what you need when the call comes.
 - Tracking matters most **six to twelve weeks in**, exactly when manual discipline has usually collapsed.
 - A tracker's real job is not organisation. It is **making your own search legible to you** so you can improve it.
 
@@ -35,7 +35,7 @@ Almost everyone starts one. Almost nobody has it two months later.
 
 **It happens at the right moment — during, not after.** The application is logged as part of doing it, so there is no separate discipline to maintain.
 
-**It stores the document.** Every tailored resume is saved to your account on the My Resumes page, against the job it was generated for. That is the piece a spreadsheet structurally cannot hold.
+**It stores the document.** Every [tailored](/blog/how-to-tailor-resume-for-every-job) resume is saved to your account on the My Resumes page, against the job it was generated for. That is the piece a spreadsheet structurally cannot hold.
 
 **It survives your motivation.** In week nine, when you are applying without enthusiasm, the record still gets kept, because it does not depend on you feeling like keeping it.
 
@@ -45,7 +45,7 @@ Almost everyone starts one. Almost nobody has it two months later.
 
 Automatic logging is not the whole tracker, and pretending otherwise is unhelpful.
 
-**Outcomes.** Whether a company replied, whether you got an interview, what happened at it — these are events outside the application and they need a note.
+**Outcomes.** Whether a company replied, whether you got an [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), what happened at it — these are events outside the application and they need a note.
 
 **Follow-up dates.** A system can record that you applied; deciding to chase in ten days is your call.
 
@@ -69,11 +69,11 @@ Early on it feels unnecessary, which is why people skip it, which is why it fail
 
 ## What good notes look like
 
-Five sentences at the time beats an hour of reconstruction later. Here is what is worth writing.
+Five sentences at the time be[ats](/blog/ats-score-guide) an hour of reconstruction later. Here is what is worth writing.
 
 **Why you applied.** One line. It is remarkably easy to forget what appealed about a role, and it is the first thing an interviewer asks.
 
-**What worried you.** Salary, location, a vague job description, a company you could not find much about. If they call, this is your question list already written.
+**What worried you.** [Salary](/blog/how-to-negotiate-salary-offer), location, a vague [job description](/blog/job-description-analysis-checklist), a company you could not find much about. If they call, this is your question list already written.
 
 **Who you contacted.** Name, role, how you found them, what they said. This is the highest-value information in a search and it exists nowhere else.
 
@@ -105,9 +105,9 @@ The follow-up is where most tracked information actually earns its keep.
 
 **One follow-up, then let it go.** A polite message a week to ten days after applying is normal in most markets. Repeated chasing damages more than it helps almost everywhere except the Gulf.
 
-**Follow up to a person where you can.** A message to a named recruiter or hiring manager on LinkedIn outperforms a reply into an application portal by a wide margin.
+**Follow up to a person where you can.** A message to a named recruiter or [hiring manager](/blog/how-recruiters-read-resumes) on [LinkedIn](/blog/linkedin-profile-optimization-guide) outperforms a reply into an application portal by a wide margin.
 
-**Keep the message short and specific.** Reference the role, the date you applied, and one sentence about why you are a fit. Three lines.
+**Keep the message short and specific.** [Reference](/blog/resume-references-guide) the role, the date you applied, and one sentence about why you are a fit. Three lines.
 
 **Record the response, including silence.** Knowing that a company never replies to follow-ups is useful information about that company.
 
@@ -117,7 +117,7 @@ The follow-up is where most tracked information actually earns its keep.
 
 Automatic logging is not the answer to everything, and there are cases where a manual file is genuinely better.
 
-**Networking and referrals.** People you have spoken to, who introduced you, what was said and when to reconnect. None of this touches an application form, so nothing captures it automatically.
+**[Networking](/blog/networking-tips-for-job-search) and [referrals](/blog/networking-messages-for-referrals).** People you have spoken to, who introduced you, what was said and when to reconnect. None of this touches an application form, so nothing captures it automatically.
 
 **Speculative approaches.** Companies you wrote to without an advertised role. They have no posting to log against.
 
@@ -125,7 +125,7 @@ Automatic logging is not the answer to everything, and there are cases where a m
 
 **Salary information.** Ranges you were quoted, offers received, what you asked for. This is the most valuable data you will collect and it is worth keeping deliberately.
 
-**Your own reflections.** What went well in an interview, what you fumbled, what you would say differently. This is how interviewing actually improves, and it exists nowhere but in a note you wrote.
+**Your own reflections.** What went well in an interview, what you fumbled, what you would say diffe[rent](/blog/canada-major-city-job-markets)ly. This is how interviewing actually improves, and it exists nowhere but in a note you wrote.
 
 **The working split:** the system holds applications and documents; a single simple file holds people, pipelines, numbers and reflections. Neither replaces the other, and trying to make one do both is why the elaborate spreadsheet always dies.
 
@@ -141,7 +141,7 @@ The data only pays off if you sit down with it.
 
 **Check your timing.** If most responses came from applications made within a day of posting, your sourcing cadence matters more than your document.
 
-**Compare before and after your changes.** Whatever you altered in week five — the resume, the targeting, the cover letters — the data tells you whether it worked. Without a record, three months of effort teaches you nothing you can act on.
+**Compare before and after your changes.** Whatever you altered in week five — the resume, the targeting, the [cover letters](/blog/cover-letter-generator-by-country) — the data tells you whether it worked. Without a record, three months of effort teaches you nothing you can act on.
 
 **Then change one thing.** Not everything at once, because then the next three months are equally uninterpretable.
 

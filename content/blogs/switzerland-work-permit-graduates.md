@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- **EU/EFTA citizens** have free movement rights: no quota, no priority test, and permits are largely a registration formality.
-- **Third-country nationals** face annual **quotas**, a **labour market priority test**, and a requirement that they be qualified specialists — a high bar for a graduate.
-- **Graduates of Swiss universities get a defined period to remain and look for work**, and there is a specific easing for those in fields of scientific or economic interest.
-- The main permit types are **L** (short-term), **B** (residence) and **C** (settlement), with **G** for cross-border commuters.
+- **EU/EFTA citizens** have free movement rights: no [quota](/blog/resume-for-h1b-visa-sponsorship), no priority test, and permits are largely a registration formality.
+- **Third-country nationals** face annual **quotas**, a **labour market priority test**, and a requirement that they be qualified specialists — a high bar for a [graduate](/blog/first-resume-for-gen-z-2026).
+- **Graduates of Swiss [universities](/blog/how-to-list-education-on-resume) get a defined period to remain and look for work**, and there is a specific easing for those in fields of scientific or economic interest.
+- The main permit types are **L** (short-term), **B** (residence) and **C** ([settlement](/blog/canada-provincial-nominee-guide)), with **G** for cross-border commuters.
 - Permits are **cantonal as well as federal** — the canton where you work is part of the process, not a detail.
 
 ## The dividing line
 
 Everything in Swiss immigration follows from which side of one line you are on.
 
-**EU and EFTA citizens** benefit from the Agreement on the Free Movement of Persons. With a job offer, obtaining a permit is essentially registration: you present your contract, you register with your commune, and you receive an L or B permit depending on the contract length. There is no quota and no test of whether a Swiss candidate exists.
+**EU and EFTA citizens** benefit from the Agreement on the Free Movement of Persons. With a [job offer](/blog/how-to-negotiate-a-job-offer-email), obtaining a permit is essentially registration: you present your contract, you register with your commune, and you receive an L or B permit depending on the contract length. There is no quota and no test of whether a Swiss candidate exists.
 
 **Third-country nationals** — everyone else — fall under a separate and much more restrictive regime. Switzerland sets annual numerical quotas for these permits, allocated between the cantons and the federal government, and they run out.
 
@@ -31,13 +31,13 @@ This is not a formality that a good candidate overcomes with enthusiasm. It is a
 
 ## What a third-country national has to clear
 
-Three conditions, all of which the employer must satisfy.
+Three conditions, all of which the [employer](/blog/how-recruiters-spot-generic-resumes) must satisfy.
 
-**The priority test (Inländervorrang).** The employer must show that no suitable candidate could be recruited in Switzerland or from an EU/EFTA state. This means genuinely advertising the position and documenting the search.
+**The priority test (Inländervorrang).** The employer must show that no suitable candidate could be recruited in Switzerland or from an EU/EFTA state. This means genuinely advertising the position and [document](/blog/campus-placement-document-checklist)ing the search.
 
-**Qualified specialist status.** The role must require a university degree, specialised professional training and several years of professional experience, or equivalent expertise. This is the condition that most directly excludes new graduates from the standard route.
+**Qualified specialist status.** The role must require a university degree, specialised professional training and several years of professional [experience](/blog/resume-matching-experienced-professionals), or equivalent expertise. This is the condition that most directly excludes new graduates from the standard route.
 
-**Salary and conditions.** Pay and terms must match local Swiss standards for the role — undercutting is explicitly not permitted, which is protective of you but raises the cost to the employer.
+**[Salary](/blog/how-to-negotiate-salary-offer) and conditions.** Pay and terms must match local Swiss standards for the role — undercutting is explicitly not permitted, which is protective of you but raises the cost to the employer.
 
 **And then the quota.** Even where all three are met, the cantonal quota must have capacity.
 
@@ -45,7 +45,7 @@ Three conditions, all of which the employer must satisfy.
 
 There is a route specifically for people who studied in Switzerland, and it is the single most important thing on this page for a Swiss-educated international graduate.
 
-**A defined period to remain and seek work.** Graduates of Swiss higher education institutions may apply to stay in Switzerland after completing their studies in order to look for employment. The current duration and conditions are set out by the State Secretariat for Migration (SEM) — check there rather than relying on any secondhand figure.
+**A defined period to remain and seek work.** Graduates of Swiss higher education institutions may apply to stay in Switzerland after completing their studies in order to look for employment. The cur[rent](/blog/canada-major-city-job-markets) duration and conditions are set out by the State Secretariat for Migration (SEM) — check there rather than relying on any secondhand figure.
 
 **An easing on the quota and priority test** exists for graduates whose work is of **high scientific or economic interest** to Switzerland. In practice this favours people in engineering, natural sciences, medicine, information technology and similar fields.
 
@@ -61,19 +61,19 @@ There is a route specifically for people who studied in Switzerland, and it is t
 | **G** | Cross-border commuter, for people living in a neighbouring country and working in Switzerland |
 | **Ci** | For family members of staff at international organisations and embassies |
 
-**The G permit is genuinely worth knowing about.** Large numbers of people live in France, Germany or Italy and commute into Geneva, Basel or Ticino. Housing is dramatically cheaper across the border, and for Geneva and Basel in particular the commute is short. The permit has its own conditions and its own tax treatment, so look into it properly rather than assuming.
+**The G permit is genuinely worth knowing about.** Large numbers of people live in France, Germany or Italy and commute into Geneva, Basel or Ticino. Housing is dramatically cheaper across the border, and for Geneva and Basel in particular the commute is short. The permit has its own conditions and its own [tax](/blog/canada-first-job-taxes-and-benefits) treatment, so look into it properly rather than assuming.
 
 ## Registering and living with a permit
 
 Once the permit exists, the ongoing obligations are specific and Switzerland enforces them.
 
-**Register with your commune within the required period** after arriving — usually a small number of days. This is a legal obligation, not an administrative nicety, and the commune office is where your residence permit is actually issued.
+**Register with your commune within the required period** after arriving — usually a small number of days. This is a legal obligation, not an administrative nicety, and the commune office is where your [residence permit](/blog/canada-work-permit-types-guide) is actually issued.
 
 **Deregister when you leave**, including when moving between communes. Failing to deregister causes tax and insurance problems that follow you.
 
 **Your permit is tied to specific conditions.** L and B permits granted to third-country nationals are typically linked to a particular employer and canton at first, and changing either requires authorisation. Free movement rules make this far more flexible for EU/EFTA citizens.
 
-**Health insurance within three months.** You are legally required to take out basic health insurance shortly after arriving, and cover is backdated to your arrival date so delaying saves nothing.
+**[Health insurance](/blog/first-job-abroad-practical-checklist) within three months.** You are legally required to take out basic health insurance shortly after arriving, and cover is backdated to your arrival date so delaying saves nothing.
 
 **Keep continuity in mind for the C permit.** Settlement permits require a qualifying period of continuous residence, and gaps reset or extend it. If long-term settlement matters to you, understand how your permit history counts before you take a year abroad.
 
@@ -97,13 +97,13 @@ Swiss permit processes run on their own clock and the sequence matters.
 
 **EU/EFTA registration is quick** — days to weeks once you have a contract and an address.
 
-**Third-country applications take considerably longer**, because they involve the cantonal migration office, the labour market authority, and in some cases federal approval. Several months is not unusual, and the employer initiates it, not you.
+**Third-country [applications](/blog/how-many-jobs-should-you-apply-to-per-day) take considerably longer**, because they involve the cantonal migration office, the labour market authority, and in some cases federal approval. Several months is not unusual, and the employer initiates it, not you.
 
 **Quotas are allocated periodically through the year** and can be exhausted, which means timing occasionally matters as much as merit.
 
 **A job start date is often provisional** until the permit is granted. Do not resign from an existing position or sign a lease before the permit is confirmed.
 
-**Visa first, then permit.** Third-country nationals usually need an entry visa issued by a Swiss representation abroad before travelling, granted on the basis of the cantonal authorisation. Arriving as a tourist and converting is generally not available.
+**[Visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) first, then permit.** Third-country nationals usually need an entry visa issued by a Swiss representation abroad before travelling, granted on the basis of the cantonal authorisation. Arriving as a tourist and converting is generally not available.
 
 **Build the timeline backwards** from the date you need to start, and ask the employer's HR who is handling it and what they need from you. Employers with permit experience will have a clear answer; hesitation is itself information.
 
@@ -171,7 +171,7 @@ Look at the G cross-border permit. Living in France or Germany while working in 
 
 - **Underestimating the third-country regime.** Quotas and a priority test are structural, not procedural.
 - **Expecting small employers to sponsor.** The priority test is real administrative work most will not undertake for a graduate.
-- **Missing the Swiss-graduate route.** It is the most reliable entry path and many people never look at it.
+- **Missing the Swiss-[graduate route](/blog/how-to-get-a-job-in-uk-foreigner).** It is the most reliable entry path and many people never look at it.
 - **Ignoring the field-of-interest easing.** Engineering, sciences and IT are treated more favourably.
 - **Forgetting the canton.** Permits are cantonal as well as federal.
 - **Overlooking the G permit.** Cross-border living solves the housing problem for Geneva, Basel and Ticino.

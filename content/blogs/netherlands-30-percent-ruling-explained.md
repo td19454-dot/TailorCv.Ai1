@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- The **30% ruling** (*30%-regeling*) lets qualifying employees recruited from abroad receive part of their salary as a **tax-free allowance**, on the basis that moving countries carries extra costs.
-- **The employer applies, jointly with you** — it is not something you can arrange on your own after the fact.
-- There is a **minimum taxable salary threshold**, revised annually, with a lower threshold for young holders of a master's degree.
-- The percentage, the duration and the cap have all been **changed by legislation in recent years**, so verify the current position with the Belastingdienst rather than relying on what a colleague experienced.
-- Two offers with the same gross figure can differ substantially in net pay depending on whether the ruling applies — **ask before you negotiate, not after.**
+- The **30% ruling** (*30%-regeling*) lets qualifying employees recruited from abroad receive part of their salary as a **[tax](/blog/canada-first-job-taxes-and-benefits)-free allowance**, on the basis that moving countries carries extra costs.
+- **The [employer](/blog/how-recruiters-spot-generic-resumes) applies, jointly with you** — it is not something you can arrange on your own after the fact.
+- There is a **minimum taxable salary [threshold](/blog/resume-for-h1b-visa-sponsorship)**, revised annually, with a lower threshold for young holders of a master's [degree](/blog/how-to-list-education-on-resume).
+- The percentage, the duration and the cap have all been **changed by legislation in recent years**, so verify the cur[rent](/blog/canada-major-city-job-markets) position with the Belastingdienst rather than relying on what a colleague experienced.
+- Two offers with the same [gross figure](/blog/canada-salary-expectations-new-grad) can differ substantially in net pay depending on whether the ruling applies — **ask before you [negotiate](/blog/how-to-negotiate-salary-offer), not after.**
 
 ## What the ruling actually does
 
-The premise is straightforward. Someone recruited from abroad to work in the Netherlands incurs costs a local hire does not: relocation, temporary housing, travel home, the general friction of setting up a life in a new country. The Dutch government calls these **extraterritorial costs**.
+The premise is straightforward. Someone recruited from abroad to work in the Netherlands incurs costs a local hire does not: [relocation](/blog/relocating-to-usa-for-work), temporary housing, travel home, the general friction of setting up a life in a new country. The Dutch government calls these **extraterritorial costs**.
 
-Rather than making everyone document those costs individually, the 30% ruling offers a flat alternative: a defined portion of your salary is treated as a tax-free reimbursement of those costs.
+Rather than making everyone [document](/blog/campus-placement-document-checklist) those costs individually, the 30% ruling offers a flat alternative: a defined portion of your salary is treated as a tax-free reimbursement of those costs.
 
 The consequence is that a slice of your gross pay is not taxed at all. Because Dutch marginal rates are substantial, that slice is worth considerably more in your pocket than the same amount of ordinary salary.
 
@@ -35,7 +35,7 @@ Four conditions have to hold together.
 
 **You must have been recruited from abroad.** The ruling is for people hired to come to the Netherlands, not for people already living there who then find a job. There is a rule about where you lived before starting — specifically, a minimum distance from the Dutch border for a defined portion of the preceding period.
 
-**You must have specific expertise** that is scarce in the Dutch labour market. In practice this is assessed through a **minimum taxable salary threshold** rather than a subjective judgement of your skills. Clear the threshold and the expertise test is treated as met.
+**You must have specific expertise** that is scarce in the Dutch labour market. In practice this is assessed through a **minimum taxable salary threshold** rather than a subjective judgement of your [skills](/blog/resume-skills-match-job-description). Clear the threshold and the expertise test is treated as met.
 
 **Your employer must be a Dutch withholding agent** — a company registered to withhold Dutch payroll tax.
 
@@ -43,9 +43,9 @@ Four conditions have to hold together.
 
 ## The salary threshold, and the graduate exception
 
-This is the part that matters most to a recent graduate.
+This is the part that matters most to a recent [graduate](/blog/first-resume-for-gen-z-2026).
 
-There is a **general minimum taxable salary** you must earn for the ruling to apply. Taxable salary here means your salary *after* the tax-free portion is deducted, which is a subtlety people miss when doing arithmetic on a job offer.
+There is a **general minimum taxable salary** you must earn for the ruling to apply. Taxable salary here means your salary *after* the tax-free portion is deducted, which is a subtlety people miss when doing arithmetic on a [job offer](/blog/how-to-negotiate-a-job-offer-email).
 
 There is a **substantially lower threshold for employees under 30 who hold a Dutch master's degree or an equivalent foreign qualification.** This exception exists precisely so that recent graduates are not priced out of the facility, and it is the single most useful thing on this page for someone in their twenties.
 
@@ -64,7 +64,7 @@ The ruling has been amended repeatedly, and this is why advice from a colleague 
 | **Salary cap** | A cap was introduced above which the tax-free portion no longer grows |
 | **Partial non-resident status** | The associated benefit for certain foreign income was withdrawn, with transitional rules |
 
-**The practical instruction:** do not plan your finances on a percentage or a duration you read anywhere, including here. Ask your employer's payroll or tax adviser what applies to a start date in your specific year, and confirm it against the Belastingdienst.
+**The practical instruction:** do not plan your [finance](/blog/resume-matching-insurance-jobs)s on a percentage or a duration you read anywhere, including here. Ask your employer's payroll or tax adviser what applies to a start date in your specific year, and confirm it against the Belastingdienst.
 
 ## How it changes an offer
 
@@ -96,7 +96,7 @@ Three things people wrongly believe about the ruling, each of which causes a bad
 
 **It is not a discount on your tax rate.** Your remaining taxable salary is taxed at ordinary Dutch rates. The benefit is that a defined slice is not taxed at all, not that the rest is taxed more gently.
 
-**It does not reduce your pension or your social security in a way you should ignore.** Because part of your remuneration is treated as an allowance rather than salary, it can affect pension accrual and certain benefit calculations that are based on salary. For a young graduate this is usually a small consideration, but it is not zero, and an employer's pension provider can tell you exactly how they treat it.
+**It does not reduce your [pension](/blog/first-90-days-new-job) or your social security in a way you should ignore.** Because part of your [remuneration](/blog/canada-salary-negotiation-guide) is treated as an allowance rather than salary, it can affect pension accrual and certain benefit calculations that are based on salary. For a young graduate this is usually a small consideration, but it is not zero, and an employer's pension provider can tell you exactly how they treat it.
 
 **It does not make an underpaid job well paid.** A low offer with the ruling is still a low offer. Use it to compare like with like, not as a reason to accept less base salary than the role deserves — particularly since the ruling ends and the base salary does not.
 
@@ -154,7 +154,7 @@ Raise the transfer before you resign. The ruling can move with you under conditi
 - **Assuming the general threshold applies.** Under-30 master's holders have a substantially lower one.
 - **Using outdated figures.** Percentage, duration and cap have all been legislated on recently.
 - **Comparing gross salaries.** The ruling can make a lower gross offer the better one.
-- **Missing the application window.** Apply late and you lose backdating to your start date.
+- **Missing the [application window](/blog/campus-placement-preparation-timeline).** Apply late and you lose backdating to your start date.
 - **Assuming it follows you.** Transfers between employers have conditions and timing limits.
 
 ## Related Guides

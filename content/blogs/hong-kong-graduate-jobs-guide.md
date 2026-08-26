@@ -13,23 +13,23 @@ showcase: none
 
 ## Key Takeaways
 
-- Hong Kong is a **regional headquarters city** — finance, law, professional services, trade and logistics dominate, and much of the work covers Asia rather than the territory itself.
+- Hong Kong is a **regional headquarters city** — [finance](/blog/resume-matching-insurance-jobs), law, professional services, trade and logistics dominate, and much of the work covers Asia rather than the territory itself.
 - **English is a working language** across the professional sector, which makes it unusually accessible for an Asian market.
-- The **IANG visa** gives non-local graduates of Hong Kong institutions an open work permission with no employer sponsorship required.
-- **Salaries are high and taxes are low**, with a simple salaries tax at modest effective rates.
-- **Housing costs are among the highest in the world**, and they dominate a graduate's finances more than in almost any other city.
+- The **IANG visa** gives non-local graduates of Hong Kong institutions an open work permission with no employer [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required.
+- **Salaries are high and [taxes](/blog/canada-first-job-taxes-and-benefits) are low**, with a simple salaries tax at modest effective rates.
+- **[Housing](/blog/canada-major-city-job-markets) costs are among the highest in the world**, and they dominate a graduate's finances more than in almost any other city.
 
 ## The shape of the market
 
 Hong Kong's economy is narrow, deep and internationally oriented.
 
-**Banking and finance dominate.** HSBC, Standard Chartered, the global investment banks, asset managers, private equity and a very large insurance sector. Graduate programmes here are competitive and structured.
+**Banking and finance dominate.** HSBC, Standard Chartered, the global investment banks, asset managers, private equity and a very large insurance sector. [Graduate programmes](/blog/global-rotational-graduate-programmes) here are competitive and structured.
 
 **Law and professional services.** The magic circle and major American firms all maintain substantial Hong Kong offices, alongside the Big Four accountancy firms with large regional practices.
 
 **Trade and logistics.** The port and airport remain globally significant, and the supply chain, shipping and freight sector is real employment.
 
-**Property and construction** is a major domestic industry with a handful of very large developers.
+**Property and construction** is a major domestic industry with a handful of very large [developers](/blog/resume-matching-software-engineer).
 
 **Technology is smaller than the city's profile suggests**, though fintech, insurtech and the operations of regional technology companies provide a growing base. Cyberport and Science Park anchor what exists.
 
@@ -41,7 +41,7 @@ For anyone who studied in Hong Kong, this is the single most important thing to 
 
 **Immigration Arrangements for Non-local Graduates (IANG)** allows non-local graduates of Hong Kong institutions to stay and work, with **no employer sponsorship required and no restriction on the type of work**.
 
-**You do not need a job offer** to apply if you are within the eligible period after graduating.
+**You do not need a [job offer](/blog/how-to-negotiate-a-job-offer-email)** to apply if you are within the eligible period after graduating.
 
 **Returning graduates** who have left Hong Kong can also apply under the arrangement, subject to holding a job offer, which is a route many people do not realise exists years after finishing their degree.
 
@@ -83,11 +83,11 @@ Fast, formal, and more demanding than the region's reputation for balance sugges
 
 **Hours are long in the professional sector.** Finance, law and consulting in Hong Kong work hours comparable to New York or London, and the expectation is real.
 
-**Hierarchy is respected** and communication with seniors is more formal than in Australia or the Nordics.
+**Hierarchy is respected** and communication with seniors is more formal than in Australia or [the Nordics](/blog/nordic-graduate-job-markets-compared).
 
 **English is the professional working language** in most international firms, with Cantonese in social settings and internal conversation, and Mandarin increasingly relevant for mainland-facing work.
 
-**Regional travel is common.** Many roles cover Asia-Pacific, and being on a plane to Singapore, Tokyo or Shanghai several times a quarter is unremarkable.
+**Regional travel is common.** Many roles cover Asia-Pacific, and being on a plane to [Singapore](/blog/how-to-get-a-job-in-singapore), [Tokyo](/blog/how-to-get-a-job-in-japan-foreigner) or Shanghai several times a quarter is unremarkable.
 
 **Networks matter and the city is small.** Professional circles overlap heavily, reputations travel quickly, and the same people appear across firms over a career.
 
@@ -99,31 +99,31 @@ A small number of channels carry the professional market.
 
 **Company career portals** dominate for graduate programmes, particularly in banking, law and the Big Four, which run their own structured intakes.
 
-**JobsDB** is the largest general job board in Hong Kong.
+**JobsDB** is the largest general [job board](/blog/best-job-search-websites-2026) in Hong Kong.
 
 **LinkedIn is strong** across the international professional sector.
 
 **University careers services** run on-campus recruitment with the major employers, and if you studied in Hong Kong this access is genuinely valuable.
 
-**Specialist recruiters** are very active in finance, legal and technology, and relationships with two or three surface roles before they are advertised.
+**[Specialist recruiters](/blog/how-to-work-with-recruitment-agencies)** are very active in finance, legal and technology, and relationships with two or three surface roles before they are advertised.
 
 **eFinancialCareers** carries the financial sector specifically.
 
-**Networking is disproportionately effective** because the city is small. Alumni associations, professional bodies and industry events all connect quickly, and a referral moves an application meaningfully.
+**[Networking](/blog/networking-tips-for-job-search) is disproportionately effective** because the city is small. Alumni associations, professional bodies and industry events all connect quickly, and a [referral](/blog/networking-messages-for-referrals) moves an application meaningfully.
 
 ## Making the application work
 
 Three things separate applications in a market this competitive.
 
-**Quantify aggressively.** Deal sizes, portfolio values, transaction volumes, team sizes, percentage improvements. Hong Kong recruiters are numerate and read numbers first.
+**[Quantify](/blog/how-to-quantify-resume-achievements) aggressively.** Deal sizes, portfolio values, transaction volumes, team sizes, percentage improvements. Hong Kong recruiters are numerate and read numbers first.
 
 **Show regional awareness.** A candidate who understands that the role covers Asia-Pacific, and who can say something specific about a market in it, stands out immediately from one who applied to a city.
 
 **State your visa position in one line.** IANG, right of abode, dependant visa, or requires sponsorship — whichever it is, say it plainly at the top.
 
-**Keep the CV to two pages**, conventional layout, and run it through an [ATS check](/ats-analysis) — the large banks and professional services firms screen at volume.
+**Keep the CV to [two pages](/blog/ats-resume-length-guide)**, conventional layout, and run it through an [ATS check](/ats-analysis) — the large banks and professional services firms screen at volume.
 
-**Write a real cover note.** Generic enthusiasm is transparent; a specific reference to the firm's regional business is not.
+**Write a real cover note.** Generic enthusiasm is transparent; a specific [reference](/blog/resume-references-guide) to the firm's regional business is not.
 
 ## Living in Hong Kong
 

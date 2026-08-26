@@ -16,7 +16,7 @@ showcase: none
 - **Amsterdam** concentrates payments, platforms and international technology headquarters; **Eindhoven** is the deep-tech and semiconductor centre; **Delft** and **Enschede** are engineering hubs around their technical universities.
 - Dutch technology companies hire in English almost universally, which makes the market unusually accessible.
 - **ASML in Eindhoven** anchors one of the most strategically significant technology supply chains in the world, and it hires at scale.
-- Salaries sit below US and Swiss levels and are broadly competitive within Europe; **the 30% ruling** changes the net picture significantly for those who qualify.
+- Salaries sit below US and Swiss levels and are broadly competitive within Europe; **the [30% ruling](/blog/netherlands-30-percent-ruling-explained)** changes the net picture significantly for those who qualify.
 - The **IND recognised sponsor register** tells you immediately which of these companies can hire you.
 
 ## Amsterdam: payments, platforms, headquarters
@@ -35,7 +35,7 @@ Amsterdam's technology scene has a distinct centre of gravity.
 
 Eindhoven is the Netherlands' most underrated destination for engineers, and for hardware, physics and systems people it is arguably the best in Europe.
 
-**ASML** builds the lithography machines that essentially the entire advanced semiconductor industry depends on. It is a genuinely extraordinary engineering environment — optics, precision mechanics, control systems, enormous software complexity — and it hires internationally at very large scale.
+**ASML** builds the lithography machines that essentially the entire advanced semiconductor industry depends on. It is a genuinely extraordinary engineering environment — [opt](/blog/opt-cpt-resume-guide)ics, precision mechanics, control systems, enormous software complexity — and it hires internationally at very large scale.
 
 **Philips** retains substantial health-technology research and engineering in the region.
 
@@ -53,9 +53,9 @@ Eindhoven is the Netherlands' most underrated destination for engineers, and for
 ## How hiring runs
 
 1. **Application**, usually direct to the company. Dutch companies rely less on aggregator boards than the UK or Australia.
-2. **Recruiter call** — motivation, work rights, salary expectations. Dutch recruiters ask about salary early and directly; have a number ready.
+2. **[Recruiter call](/blog/phone-screen-interview-tips)** — motivation, work rights, salary expectations. Dutch recruiters ask about salary early and directly; have a number ready.
 3. **Technical screen** — a take-home assignment is more common in the Netherlands than a live algorithmic grilling.
-4. **Technical interviews**, often including a discussion of your take-home rather than fresh problems.
+4. **[Technical interviews](/blog/coding-interview-preparation-guide)**, often including a discussion of your take-home rather than fresh problems.
 5. **Team fit conversation**, which is weighted seriously — Dutch teams care about how you disagree.
 6. **Offer**, with the [30% ruling and sponsorship](/blog/netherlands-jobs-international-graduates) both worth raising explicitly.
 
@@ -69,9 +69,9 @@ Dutch technology salaries sit in a middle band: below the US and Switzerland, ab
 
 **Pension contributions are common** and often through a sector-wide fund. Employer and employee both contribute, and the employee share comes out of your pay.
 
-**The 30% ruling changes everything for those who qualify.** Its percentage, duration and conditions have been adjusted by legislation, so verify the current position rather than relying on what a colleague experienced three years ago. Where it applies, it can move net pay by a margin larger than any negotiation you would win.
+**The 30% ruling changes everything for those who qualify.** Its percentage, duration and conditions have been adjusted by legislation, so verify the current position rather than relying on what a colleague experienced three years ago. Where it applies, it can move net pay by a margin larger than any [negotiation](/blog/how-to-negotiate-salary-offer) you would win.
 
-**Equity is thin outside startups.** Scale-ups and venture-backed companies offer it; established Dutch employers largely do not. Judge an offer on base plus holiday allowance plus the ruling.
+**Equity is thin outside startups.** [Scale-ups](/blog/resume-tailoring-startup-vs-enterprise) and venture-backed companies offer it; established Dutch employers largely do not. Judge an offer on base plus holiday allowance plus the ruling.
 
 **Living costs vary enormously by city.** An Eindhoven or Groningen salary at a lower headline number frequently leaves more in your account at the end of the month than an Amsterdam one, because Amsterdam rent is in a different category entirely.
 
@@ -93,13 +93,13 @@ Worth calibrating before you arrive rather than discovering in month one.
 
 The mechanics are ordinary; the emphasis is what differs.
 
-**Ship something reviewers can open.** A deployed project with a URL outperforms four repositories a reviewer has to clone and run. A [portfolio site](/portfolio) works while your application sits in a queue.
+**Ship something reviewers can open.** A [deployed project](/blog/portfolio-website-for-job-applications) with a URL outperforms four [repositories](/blog/github-profile-for-job-search-2026) a reviewer has to clone and run. A [portfolio site](/portfolio) works while your application sits in a queue.
 
-**Write the CV to Dutch convention** — two pages, plain, reverse chronological, outcomes rather than duties. The [Dutch CV guide](/blog/netherlands-cv-format-guide) covers the specifics, and the biggest single mistake is a designed document that parses badly.
+**Write the CV to Dutch convention** — [two pages](/blog/ats-resume-length-guide), plain, [reverse chronological](/blog/chronological-vs-functional-resume), outcomes rather than duties. The [Dutch CV guide](/blog/netherlands-cv-format-guide) covers the specifics, and the biggest single mistake is a designed document that parses badly.
 
-**Mirror the stack in the advert exactly.** Automated screening at larger employers is literal: "Kubernetes" is not matched by "container orchestration". Run the document through an [ATS check](/ats-analysis) once and the whole category of risk disappears.
+**Mirror the stack in the advert exactly.** [Automated screening](/blog/ats-resume-checker-how-it-works) at larger employers is literal: "Kubernetes" is not matched by "container orchestration". Run the document through an [ATS check](/ats-analysis) once and the whole category of risk disappears.
 
-**Write a real motivation letter.** Dutch employers read them, and a letter that names a specific product decision or technical problem of theirs does more than a page of enthusiasm.
+**Write a real [motivation letter](/blog/cover-letter-generator-by-country).** Dutch employers read them, and a letter that names a specific product decision or technical problem of theirs does more than a page of enthusiasm.
 
 ## Startups versus scale-ups versus corporates
 
@@ -112,6 +112,20 @@ Three different bargains, and choosing wrongly is a common regret.
 **Corporates and international headquarters** offer structure, mentoring, the 30% ruling handled competently by an HR team who has done it a hundred times, and narrower work. For a first role needing sponsorship, the administrative competence alone is worth something.
 
 **Check the register before falling in love with a startup.** It takes ten seconds and it prevents a great deal of wasted hope.
+
+## Working in Dutch technology teams
+
+A few cultural specifics that show up quickly.
+
+**Engineers are expected to have opinions.** Dutch teams run flat, and a junior developer disagreeing with an architectural decision in a meeting is normal rather than presumptuous. Silence is read as disengagement.
+
+**Code review is direct.** Comments are blunt about the code and not about you, and the register can surprise people arriving from cultures where feedback is heavily softened.
+
+**Planning is taken seriously.** Sprint commitments mean something, and consistently over-promising is noticed faster than in a more chaotic environment.
+
+**Documentation matters.** Dutch engineering culture tends to write things down, which is genuinely useful and slightly slower than shipping first and explaining later.
+
+**And the four-day week is real.** Many Dutch engineers work four days, including senior ones, and asking about it in an offer conversation is an ordinary thing to do rather than a red flag.
 
 ## Mini checklist
 
@@ -166,7 +180,7 @@ Target Dutch companies deliberately. Take-home assignments are common here, and 
 - **Overlooking Eindhoven.** For engineers it is arguably the strongest destination in the country, with far lower living costs.
 - **Under-investing in the take-home.** It is the main technical filter at many Dutch companies.
 - **Having no salary number.** Dutch recruiters ask directly in the first call.
-- **Applying only through job boards.** Dutch companies rely on direct applications more than most markets.
+- **Applying only through [job boards](/blog/best-job-search-websites-2026).** Dutch companies rely on direct applications more than most markets.
 - **Skipping the sponsor register.** It tells you in seconds whether an application can go anywhere.
 - **Comparing gross salaries.** The 30% ruling can change which offer is actually better.
 
@@ -225,3 +239,7 @@ For a graduate needing sponsorship, a scale-up is usually the best bargain — t
 ### How do I check whether a company can sponsor me?
 
 Search the IND recognised sponsor register. It takes seconds and it tells you whether an application can lead anywhere.
+
+### What are Dutch engineering teams like to work in?
+
+Flat, direct and documentation-oriented. Juniors are expected to voice disagreement, code review is blunt about the code rather than the person, and four-day weeks are common even at senior level.

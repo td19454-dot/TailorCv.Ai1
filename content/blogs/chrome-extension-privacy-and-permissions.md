@@ -14,30 +14,30 @@ showcase: none
 ## Key Takeaways
 
 - The extension reads **the job title, company and description** from the job page you have open — nothing else on that page and nothing on other pages.
-- It **does not read your LinkedIn profile, connections, messages or feed**, and it does not track your browsing.
+- It **does not read your [LinkedIn profile](/blog/linkedin-profile-optimization-guide), connections, messages or feed**, and it does not track your browsing.
 - It requests five permissions — **activeTab, cookies, downloads, scripting and storage** — each for a specific, narrow purpose.
-- The **cookies permission reads only TailorCV's own CSRF cookie** from thetailorcv.com, never cookies belonging to LinkedIn or any other site.
-- Host permissions are limited to a named list of job boards, with **optional broader access you grant only when you use the toolbar icon** on another page.
+- The **cookies permission reads only [Tailor](/blog/how-to-tailor-resume-for-every-job)[CV](/blog/resume-optimization-guide)'s own CSRF cookie** from thetailorcv.com, never cookies belonging to LinkedIn or any other site.
+- Host permissions are limited to a named list of [job boards](/blog/best-job-search-websites-2026), with **[opt](/blog/opt-cpt-resume-guide)ional broader access you grant only when you use the toolbar icon** on another page.
 
 ## Why permissions look alarming
 
-Chrome shows extension permissions as a blunt list, and the list is worse than the reality for almost every legitimate extension.
+[Chrome](/blog/best-chrome-extensions-for-job-seekers-2026) shows extension permissions as a blunt list, and the list is worse than the reality for almost every legitimate extension.
 
-**"Read and change your data on linkedin.com"** is the warning Chrome shows for the ability to run a script on LinkedIn job pages. It is technically accurate and practically misleading — the same warning appears whether an extension reads one heading or everything on the site.
+**"Read and change [your data](/blog/are-job-search-chrome-extensions-safe) on linkedin.com"** is the warning Chrome shows for the ability to run a script on LinkedIn job pages. It is technically accurate and practically misleading — the same warning appears whether an extension reads one heading or everything on the site.
 
 **The honest answer to "what does it actually do"** is not in the permission list; it is in what the code reads and what it sends. So here it is, specifically.
 
 ## The five permissions, one by one
 
-**activeTab.** Used to identify the tab you are currently viewing when you click the toolbar icon, so the panel opens on the right page. It is not used to read or modify any other tab.
+**activeTab.** Used to identify the tab you are cur[rent](/blog/canada-major-city-job-markets)ly viewing when you click the toolbar icon, so the panel opens on the right page. It is not used to read or modify any other tab.
 
 **cookies.** Used only to read TailorCV's own CSRF-protection cookie, set by thetailorcv.com, so the extension can make authenticated requests to your own account the same way the website does. It is not used to read or modify cookies belonging to LinkedIn, Indeed, or any other site.
 
-**downloads.** Used to save the generated resume PDF to your computer through Chrome's download API when you click "Tailor & Download Resume". It is not used for any other file operation.
+**downloads.** Used to save the generated resume [PDF](/blog/resume-file-format-guide) to your computer through Chrome's download API when you click "Tailor & Download Resume". It is not used for any other file operation.
 
 **scripting.** Used to inject the panel into the job page you are on so the interface appears in context rather than in a separate window.
 
-**storage.** Used to hold your extension settings locally — your preferences, not your documents.
+**storage.** Used to hold your extension settings locally — your p[references](/blog/resume-references-guide), not your [documents](/blog/campus-placement-document-checklist).
 
 **That is the complete list.** There is no history permission, no tabs permission for reading all your open tabs, no webRequest interception.
 
@@ -53,7 +53,7 @@ Chrome shows extension permissions as a blunt list, and the list is worse than t
 
 **It does not read other tabs**, other sites, or pages you visit while it is installed.
 
-**It does not run everywhere.** The content script runs on a defined list of job board URLs — LinkedIn job pages, Indeed, Glassdoor, Naukri, Greenhouse, Lever, Workday, Ashby, ZipRecruiter, Monster, SimplyHired, Dice and Wellfound. On every other site, it does nothing at all unless you click the toolbar icon.
+**It does not run everywhere.** The content script runs on a defined list of job board URLs — LinkedIn job pages, Indeed, Glassdoor, Naukri, [Greenhouse](/blog/greenhouse-ats-resume-tips), [Lever](/blog/lever-ats-resume-guide), [Workday](/blog/icims-taleo-resume-formatting-guide), Ashby, ZipRecruiter, Monster, SimplyHired, Dice and Wellfound. On every other site, it does nothing at all unless you click the toolbar icon.
 
 ## The optional broader permission
 
@@ -69,7 +69,7 @@ One thing worth understanding clearly, because it is the permission that sounds 
 
 The reasoning here applies well beyond this one, and it is worth having.
 
-**Read the justifications, not just the permission names.** Chrome Web Store listings require a stated purpose for each permission. An extension that cannot explain why it needs something is telling you something.
+**Read the justifications, not just the permission names.** [Chrome Web Store](/blog/how-to-install-tailorcv-extension) listings require a stated purpose for each permission. An extension that cannot explain why it needs something is telling you something.
 
 **Check the host permissions list.** An extension that declares specific sites is meaningfully different from one that declares all sites at install time. Specific is better.
 
@@ -117,7 +117,7 @@ Beyond browser permissions, a few things worth knowing about anything that handl
 
 You do not have to take any of this on trust, and here is how to check.
 
-**Read the Chrome Web Store listing's permission justifications.** Each permission has a stated purpose that the developer had to submit and that Google reviews.
+**Read the Chrome Web Store listing's permission justifications.** Each permission has a stated purpose that the [developer](/blog/resume-matching-software-engineer) had to submit and that Google reviews.
 
 **Open the extension's details page in Chrome.** `chrome://extensions` shows exactly which sites it can access, and whether that access is on all sites or a specific list.
 

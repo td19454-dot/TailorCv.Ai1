@@ -13,21 +13,21 @@ showcase: none
 
 ## Key Takeaways
 
-- **Berlin and Munich are genuinely different markets**, not two versions of the same one — Berlin runs on startups and English, Munich on corporates, deep tech and German.
+- **Berlin and Munich are genuinely diffe[rent market](/blog/canada-major-city-job-markets)s**, not two versions of the same one — Berlin runs on [startups](/blog/japan-startup-jobs-guide) and English, Munich on corporates, deep tech and German.
 - Berlin has the largest concentration of **English-operating engineering teams** in Germany, which makes it the most accessible entry point without German.
 - Munich pays more on paper and costs considerably more to live in; the real comparison is much closer than the salary gap suggests.
 - **Hamburg, Cologne, Stuttgart, Frankfurt, Karlsruhe and Dresden** all have real tech employment and are far less contested than the two headline cities.
-- Technical interviews follow international convention closely, so standard preparation transfers almost entirely.
+- [Technical interviews](/blog/coding-interview-preparation-guide) follow international convention closely, so standard preparation transfers almost entirely.
 
 ## Berlin: startups, English, volume
 
 Berlin is where Germany's startup ecosystem concentrated, and it is the reason a foreign engineer with no German can realistically get hired in Germany at all.
 
-**What is there.** A dense startup and scale-up scene — companies like Zalando, Delivery Hero, N26 and SoundCloud grew there, and a long tail of smaller companies followed. Large international employers run Berlin engineering offices too, and the city hosts a substantial share of Germany's venture funding.
+**What is there.** A dense startup and [scale-up](/blog/resume-tailoring-startup-vs-enterprise) scene — companies like Zalando, Delivery Hero, N26 and SoundCloud grew there, and a long tail of smaller companies followed. Large international employers run Berlin engineering offices too, and the city hosts a substantial share of Germany's venture funding.
 
 **Why it is accessible.** A meaningful proportion of Berlin startups operate internally in English, because their teams are international by default. Job adverts are frequently written in English, interviews run in English, and the working language stays English.
 
-**The trade-off.** Berlin salaries generally sit below Munich and Frankfurt. Startup roles carry the usual risk profile — funding position matters, and "we just raised" is not the same as "we are stable". Berlin's cost of living has also risen sharply, and the cheap-Berlin reputation is now well out of date.
+**The trade-off.** Berlin salaries generally sit below Munich and Frankfurt. Startup roles carry the usual risk profile — funding position matters, and "we just raised" is not the same as "we are stable". Berlin's [cost of living](/blog/canada-salary-benchmarking-guide) has also risen sharply, and the cheap-Berlin reputation is now well out of date.
 
 ## Munich: corporates, deep tech, German
 
@@ -55,7 +55,7 @@ Munich is the other pole and it behaves almost oppositely.
 Concentrating on two cities means competing with everyone else who read the same advice.
 
 - **Hamburg** — media, logistics technology, e-commerce, and a growing startup scene.
-- **Frankfurt** — fintech and banking technology, unsurprisingly, plus a major internet exchange.
+- **Frankfurt** — fintech and [banking](/blog/resume-matching-insurance-jobs) technology, unsurprisingly, plus a major internet exchange.
 - **Stuttgart** — automotive and industrial software, Bosch and Mercedes-Benz territory.
 - **Cologne / Düsseldorf** — media, insurance technology, and a solid mid-market.
 - **Karlsruhe** — a genuine research and software cluster around KIT, well out of proportion to the city's size.
@@ -66,11 +66,11 @@ These markets are smaller in absolute terms and considerably less contested per 
 ## What the hiring process looks like
 
 1. **Application** — CV, and at German-language employers the full package. English-operating startups usually want a CV and nothing more.
-2. **Recruiter screen** — 20 to 30 minutes on background, motivation and salary expectations.
+2. **[Recruiter screen](/blog/phone-screen-interview-tips)** — 20 to 30 minutes on background, motivation and [salary expectations](/blog/canada-salary-expectations-new-grad).
 3. **Technical screen** — a coding exercise, a take-home, or a live session, closely matching [international technical interview convention](/blog/usa-technical-interview-newgrad-prep).
-4. **Technical deep dive** — your past projects in detail, plus system design at more senior levels.
+4. **Technical deep dive** — your past projects in detail, plus [system design](/blog/campus-placement-system-design-basics) at more senior levels.
 5. **Team and culture conversation** — genuinely weighted, not a formality.
-6. **Offer and visa** — the [Blue Card](/blog/germany-eu-blue-card-graduates) process starts here if you need sponsorship.
+6. **Offer and visa** — the [Blue Card](/blog/germany-eu-blue-card-graduates) process starts here if you need [sponsorship](/blog/resume-for-h1b-visa-sponsorship).
 
 ## Compensation, and how German tech pay is structured
 
@@ -78,7 +78,7 @@ German tech salaries sit below US levels and generally above most of Europe, and
 
 **Equity is much less common.** Outside venture-backed startups, German employers rarely offer meaningful stock. A corporate offer is largely base salary plus a bonus, and the base is therefore the number that matters. Do not evaluate a German offer expecting an equity component to make up a gap.
 
-**The gross-to-net gap is large.** Germany's combined income tax and social contributions mean take-home is a substantially smaller fraction of gross than in the UK or US. What you are paying into is real — statutory health insurance, pension, unemployment and long-term care cover — but the first payslip is a shock if you budgeted off the gross figure.
+**The gross-to-net gap is large.** Germany's combined income [tax](/blog/canada-first-job-taxes-and-benefits) and social contributions mean take-home is a substantially smaller fraction of gross than in the UK or US. What you are paying into is real — statutory health insurance, [pension](/blog/first-90-days-new-job), unemployment and long-term care cover — but the first payslip is a shock if you budgeted off the gross figure.
 
 **Tax class matters more than people expect.** Germany assigns a Steuerklasse based on marital and family status, and it materially changes monthly net pay. Married couples in particular should look at which combination applies to them.
 
@@ -86,7 +86,7 @@ German tech salaries sit below US levels and generally above most of Europe, and
 
 ## Working culture, honestly
 
-Worth calibrating before you arrive rather than discovering in month one.
+Worth calibrating before you arrive rather than discovering in [month one](/blog/first-job-abroad-practical-checklist).
 
 **Hours are genuinely protected.** German working time law caps hours and mandates rest periods, and it is taken seriously rather than treated as a formality. Statutory minimum paid leave is 20 days on a five-day week, and most employers offer materially more — often 27 to 30.
 
@@ -100,7 +100,7 @@ Worth calibrating before you arrive rather than discovering in month one.
 
 The technical bar is international, but how you present the work is not entirely.
 
-**A deployed project beats a repository of coursework.** Something a reviewer can open in a browser, with a short honest note on what was hard about it, carries more weight than a longer list of finished modules. This is [the same standard that holds in every technical market](/blog/fresher-resume-projects-that-get-interviews), and it matters more when your degree is from an institution the reviewer does not recognise.
+**A [deployed project](/blog/portfolio-website-for-job-applications) beats a [repository](/blog/github-profile-for-job-search-2026) of coursework.** Something a reviewer can open in a browser, with a short honest note on what was hard about it, carries more weight than a longer list of finished modules. This is [the same standard that holds in every technical market](/blog/fresher-resume-projects-that-get-interviews), and it matters more when your degree is from an institution the reviewer does not recognise.
 
 **Be precise about your stack.** German technical adverts tend to be specific about technologies, and applications that mirror that specificity read better than ones claiming broad familiarity. Name versions, name what you actually built with it.
 

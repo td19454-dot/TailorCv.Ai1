@@ -14,20 +14,20 @@ showcase: none
 ## Key Takeaways
 
 - The visa question **will be asked**. Preparing one clear, confident sentence for it removes the single largest source of awkwardness in the whole process.
-- **Raise it yourself, early, if the answer is good.** If you need no sponsorship, saying so unprompted is the strongest opening move available.
-- If you **do** need sponsorship, the question the employer is really asking is about **cost, delay and risk** — answer that, not the immigration policy.
+- **Raise it yourself, early, if the answer is good.** If you need no [sponsorship](/blog/resume-for-h1b-visa-sponsorship), saying so unprompted is the strongest opening move available.
+- If you **do** need sponsorship, the question the employer is really asking is about **cost, delay and risk** — answer that, not the [immigration policy](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore).
 - Everything else in the interview matters more, and international candidates frequently over-prepare the visa answer and under-prepare the rest.
-- Practise out loud. [Mock interview practice](/mock-interview) exists because reading answers and saying them are different skills.
+- [Practise out loud](/blog/how-to-practice-interviews-at-home). [Mock interview practice](/mock-interview) exists because reading answers and saying them are diffe[rent](/blog/canada-major-city-job-markets) skills.
 
 ## The one sentence
 
 Write it, memorise it, and deliver it without flinching.
 
-**If you need no sponsorship**, say so plainly and early: *"I hold full working rights under the Graduate Route until March 2028, so there is no sponsorship required and I can start immediately."*
+**If you need no sponsorship**, say so plainly and early: *"I hold full working rights under the [Graduate Route](/blog/how-to-get-a-job-in-uk-foreigner) until March 2028, so there is no sponsorship required and I can start immediately."*
 
-**If you hold a time-limited open permission**, be specific and forward-looking: *"I'm on an orientation year permit, which means no sponsorship is needed now, and when it converts I qualify for the reduced salary threshold — so the process later is simpler and cheaper than a standard hire."*
+**If you hold a time-limited open permission**, be specific and forward-looking: *"I'm on an [orientation year](/blog/netherlands-orientation-year-zoekjaar) permit, which means no sponsorship is needed now, and when it converts I qualify for the reduced salary threshold — so the process later is simpler and cheaper than a standard hire."*
 
-**If you need sponsorship from day one**, do not hide it: *"I would need sponsorship. My occupation is on the shortage list, which means the process is the streamlined route rather than the full one, and I've confirmed what's involved."*
+**If you need sponsorship from day one**, do not hide it: *"I would need sponsorship. My occupation is on the [shortage list](/blog/in-demand-jobs-canada-2026), which means the process is the streamlined route rather than the full one, and I've confirmed what's involved."*
 
 **Three properties of a good answer:** it is specific, it is short, and it ends. Do not trail off into apology or over-explanation. State the fact, then stop and let the conversation move on.
 
@@ -51,11 +51,11 @@ This reframing is what makes the answer easy.
 
 Timing is a judgement call and there is a clear rule.
 
-**If your answer is strong, raise it immediately** — on the CV, in the cover letter, and in the first thirty seconds of the recruiter screen. "No sponsorship required" is the single most reassuring thing an international candidate can say and it should never be a surprise discovered late.
+**If your answer is strong, raise it immediately** — on the CV, in the cover letter, and in the first thirty seconds of the [recruiter screen](/blog/phone-screen-interview-tips). "No sponsorship required" is the single most reassuring thing an international candidate can say and it should never be a surprise discovered late.
 
 **If your answer requires explanation, raise it in the first call.** The recruiter screen is exactly the right moment: early enough that nobody has invested heavily, late enough that you have said something about yourself first.
 
-**Never let it emerge at offer stage.** An employer who discovers a sponsorship requirement after choosing you feels misled even when nothing was concealed, and that is the worst possible footing for a negotiation.
+**Never let it emerge at offer stage.** An employer who discovers a sponsorship requirement after choosing you feels misled even when nothing was concealed, and that is the worst possible footing for a [negotiation](/blog/how-to-negotiate-salary-offer).
 
 **And answer honestly if asked directly.** Vagueness reads as concealment, and concealment about work rights ends processes.
 
@@ -85,7 +85,7 @@ Six that come up repeatedly, and what each is really testing.
 
 **"Have you worked in a culture like ours before?"** — testing adaptability. Any evidence of working across cultures, even in a diverse team at home, is relevant.
 
-**"Are you comfortable with [local working practice]?"** — sometimes about hours, sometimes about directness, sometimes about hierarchy. Show you know what you are agreeing to.
+**"Are you comfortable with [local working practice]?"** — sometimes about hours, sometimes about directness, sometimes about [hierarchy](/blog/japan-nenkou-seniority-explained). Show you know what you are agreeing to.
 
 **"Do you have family here?"** — usually about stability rather than curiosity, and in some jurisdictions it should not be asked at all. Answer as much as you are comfortable with and redirect to your commitment to the role.
 
@@ -231,7 +231,7 @@ Bring the facts — route, fee, timeline, whether a labour market test applies. 
 Enough that the answers sound boring to you. Reading and saying are different skills, and the interview should not be the first time you say something.
 ### What questions get asked of international candidates specifically?
 
-Why this country, what your long-term plan is, your language level, cross-cultural experience, comfort with local working practices, and sometimes family situation. Most are testing whether you will stay.
+Why this country, what your long-term plan is, your [language level](/blog/bilingual-language-skills-on-resume), cross-cultural experience, comfort with local working practices, and sometimes family situation. Most are testing whether you will stay.
 
 ### How should I practise?
 

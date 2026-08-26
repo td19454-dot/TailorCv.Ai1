@@ -15,8 +15,8 @@ showcase: none
 
 - Indeed carries enormous volume, which makes **per-posting tailoring both more valuable and more expensive** in time — exactly the trade-off the extension removes.
 - The extension runs on **Indeed job pages** and adds a panel directly to the posting.
-- One click rewrites your base resume against that specific description and downloads an **ATS-ready PDF**.
-- It also supports **Greenhouse, Lever, Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound and Naukri** — which matters because Indeed frequently hands you off to one of those.
+- One click rewrites your base resume against that specific description and downloads an **[ATS-ready](/blog/how-to-make-resume-ats-friendly) PDF**.
+- It also supports **[Greenhouse](/blog/greenhouse-ats-resume-tips), [Lever](/blog/lever-ats-resume-guide), Workday, Ashby, Glassdoor, ZipRecruiter, Monster, SimplyHired, Dice, Wellfound and Naukri** — which matters because Indeed frequently hands you off to one of those.
 - **Any other job page** works too, via the toolbar icon.
 
 ## Why Indeed specifically is worth optimising
@@ -25,9 +25,9 @@ Indeed's scale is the point and the problem.
 
 **More postings means more applications.** People apply to considerably more roles through Indeed than through a curated board, which multiplies whatever per-application cost you are carrying.
 
-**Automated screening is near-universal** at the employers advertising there, which means generic resumes are filtered at a higher rate than on smaller, more relationship-driven boards.
+**[Automated screening](/blog/ats-resume-checker-how-it-works) is near-universal** at the employers advertising there, which means [generic resumes](/blog/how-ats-detects-generic-resume) are filtered at a higher rate than on smaller, more relationship-driven boards.
 
-**The two facts together** produce the classic bad outcome: high volume, generic documents, and a response rate that makes people conclude the market is broken when the real problem is that forty identical resumes were sent to forty different jobs.
+**The two facts together** produce the classic bad outcome: high volume, generic documents, and a response rate that makes people conclude the market is broken when the real problem is that forty identical resumes were sent to forty diffe[rent](/blog/canada-major-city-job-markets) jobs.
 
 **Cheap tailoring inverts it.** If tailoring costs one click, high volume becomes an advantage rather than a reason to give up on quality.
 
@@ -39,9 +39,9 @@ Indeed's scale is the point and the problem.
 
 **The PDF downloads**, ready to attach to the application.
 
-**It is saved to your account too**, so the My Resumes page keeps a record of every version and the job it was written for.
+**It is saved to your account too**, so the [My Resumes page](/blog/chrome-extension-vs-manual-job-tracking) keeps a record of every version and the job it was written for.
 
-**If Indeed hands you off**, which it frequently does, the extension follows. Applications on Indeed often redirect to the employer's own applicant tracking system — Greenhouse, Lever, Workday, Ashby — and the extension supports all of those directly, so the panel is there on the destination page too.
+**If Indeed hands you off**, which it frequently does, the extension follows. Applications on Indeed often redirect to the employer's own [applicant tracking system](/blog/ats-score-guide) — Greenhouse, Lever, [Workday](/blog/icims-taleo-resume-formatting-guide), Ashby — and the extension supports all of those directly, so the panel is there on the destination page too.
 
 ## The boards it covers
 
@@ -63,7 +63,7 @@ The extension runs automatically on these job sites:
 | **Dice** | Yes |
 | **Wellfound** | Yes |
 
-**And anywhere else.** For job pages not on this list, click the toolbar icon and the extension will work on the page you have open. That covers company career pages, university job boards, and the long tail of niche industry sites.
+**And anywhere else.** For job pages not on this list, click the toolbar icon and the extension will work on the page you have open. That covers company career pages, university [job boards](/blog/best-job-search-websites-2026), and the long tail of niche industry sites.
 
 ## Getting more out of a high-volume board
 
@@ -71,13 +71,13 @@ The extension handles the document; these habits handle the rest.
 
 **Read the posting before you tailor.** Thirty seconds tells you whether the job is actually what the title suggests, and a tailored resume sent to a mismatched role is still a wasted application.
 
-**Watch for reposted and stale listings.** High-volume boards accumulate them. A posting that has been up for months with no company name attached is frequently not a live vacancy.
+**Watch for reposted and [stale listings](/blog/how-to-spot-a-job-scam).** High-volume boards accumulate them. A posting that has been up for months with no company name attached is frequently not a live vacancy.
 
 **Prefer postings that link to a real ATS.** A job that hands off to the employer's own Greenhouse or Lever page is more likely to be genuine than one collecting applications through an aggregator alone.
 
 **Apply early.** Response rates fall sharply with posting age on volume boards, and being in the first day or two of applicants matters more than most people assume.
 
-**Track what you send.** The My Resumes page does this automatically, which turns out to matter when a recruiter calls about a role you applied to three weeks ago.
+**Track what you send.** The My Resumes page does this automatically, which turns out to matter when a [recruiter call](/blog/phone-screen-interview-tips)s about a role you applied to three weeks ago.
 
 ## Reading an Indeed posting properly
 
@@ -91,7 +91,7 @@ Thirty seconds of reading saves a wasted application, and high-volume boards rew
 
 **Check where the application goes.** A link through to the employer's own Greenhouse, Lever, Workday or Ashby page is a good sign — it means a real applicant tracking system with a real requisition behind it.
 
-**Check the location and work model.** Remote, hybrid and on-site are used loosely on volume boards, and discovering the real answer at offer stage wastes everyone's time.
+**Check the location and work model.** [Remote, hybrid](/blog/resume-tailoring-remote-hybrid-onsite) and on-site are used loosely on volume boards, and discovering the real answer at offer stage wastes everyone's time.
 
 **Skim for the vocabulary you match.** If you can see three or four terms you genuinely have experience with, the tailored version will have material to work with. If you can see none, the score will tell you the same thing in a second.
 
@@ -115,7 +115,7 @@ A few quirks of the platform that affect how you use it.
 
 **Indeed Apply versus employer redirect.** Some listings collect the application on Indeed itself; others hand off to the employer's own system. The redirect route is generally the better signal — a real requisition in a real ATS — and the extension works on both.
 
-**Your Indeed profile is not your resume.** Indeed encourages you to build a profile and apply with it. A tailored PDF attached to the application is a stronger artefact than a generic profile, and where the form allows an upload, use it.
+**Your Indeed profile is not your resume.** Indeed encourages you to build a profile and apply with it. A [tailored PDF](/blog/job-posting-to-tailored-pdf-60-seconds) attached to the application is a stronger artefact than a generic profile, and where the form allows an upload, use it.
 
 **Sponsored listings sit at the top.** Position on the page reflects what an employer paid, not how good a match the job is. Read rather than working down the list.
 
@@ -145,7 +145,7 @@ Three things people worry about, answered plainly.
 
 **"Should I use the same resume if two jobs are nearly identical?"** Generate separately. Near-identical postings still use different vocabulary, and the matching is literal.
 
-**And one worth adding:** applying to a role you are underqualified for is not free. It costs the recruiter time and it costs you nothing visible, but consistently applying far above your level at one company is remembered.
+**And one worth adding:** applying to a role you are [underqualified](/blog/resume-tailoring-underqualified) for is not free. It costs the recruiter time and it costs you nothing visible, but consistently applying far above your level at one company is remembered.
 
 ## Mini checklist
 
@@ -170,7 +170,7 @@ The extension works there too. Tailor on the destination page if you did not on 
 
 ### Scenario 3: You found a job on a company career page instead
 
-Click the toolbar icon. Optional host permissions mean the extension works on any job page you open it on, not only the boards it runs on automatically.
+Click the toolbar icon. [Opt](/blog/opt-cpt-resume-guide)ional host permissions mean the extension works on any job page you open it on, not only the boards it runs on automatically.
 
 > **Tip:** Apply early. On high-volume boards, response rates fall noticeably as a posting ages, and being in the first wave of applicants is worth more than almost anything else you can control.
 
@@ -187,7 +187,7 @@ Click the toolbar icon. Optional host permissions mean the extension works on an
 
 ### Don't
 
-- Send the same generic resume to forty roles
+- Send [the same generic](/blog/how-to-stop-sounding-generic-on-resume) resume to forty roles
 - Apply to obviously stale or vague listings
 - Skip reading the generated PDF
 - Assume Indeed's own apply flow is always the employer's real one

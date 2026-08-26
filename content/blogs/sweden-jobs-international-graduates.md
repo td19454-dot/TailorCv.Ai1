@@ -13,11 +13,11 @@ showcase: none
 
 ## Key Takeaways
 
-- Sweden's technology sector is **disproportionately large for a country of ten million** — Spotify, Klarna, King, Mojang, Northvolt and a deep startup ecosystem.
-- **English is genuinely sufficient** for a large share of technology and international roles, though Swedish transforms your options everywhere else.
-- Graduates of Swedish institutions can apply for a **residence permit to look for work**, and the standard work permit route requires an employer offer meeting union-approved terms.
-- **Flat hierarchy and consensus decision-making** are real features, not brochure language, and they change how you should behave in an interview.
-- **Lagom, fika and work-life balance** describe a workplace culture that is genuinely different from Anglo-American norms.
+- Sweden's technology sector is **disproportionately large for a country of ten million** — Spotify, Klarna, King, Mojang, Northvolt and a deep [startup](/blog/japan-startup-jobs-guide) ecosystem.
+- **English is genuinely sufficient** for a large share of technology and international roles, though Swedish transforms your [opt](/blog/opt-cpt-resume-guide)ions everywhere else.
+- Graduates of Swedish institutions can apply for a **[residence permit](/blog/canada-work-permit-types-guide) to look for work**, and the standard work permit route requires an employer offer meeting union-approved terms.
+- **[Flat hierarch](/blog/japan-nenkou-seniority-explained)y and consensus decision-making** are real features, not brochure language, and they change how you should behave in an interview.
+- **Lagom, fika and work-life balance** describe a [workplace culture](/blog/japan-work-culture-first-job-guide) that is genuinely diffe[rent](/blog/canada-major-city-job-markets) from Anglo-American norms.
 
 ## The Swedish technology story
 
@@ -56,7 +56,7 @@ Sweden produces globally significant companies at a rate that a country of its s
 
 **Technology and international companies run in English.** Spotify, Klarna, King and the international operations of the large industrials all operate in English as a working language, and Swedes generally speak it to a very high standard.
 
-**Everything else is Swedish.** Public sector, healthcare, education, most client-facing roles, and the large majority of small and medium employers.
+**Everything else is Swedish.** [Public sector](/blog/canada-government-jobs-for-students), healthcare, education, most client-facing roles, and the large majority of small and medium employers.
 
 **Swedish is learnable and free.** SFI — *Svenska för invandrare* — is publicly funded Swedish tuition available to residents, and it is genuinely good. Taking it seriously in your first year changes your medium-term options substantially.
 
@@ -68,9 +68,9 @@ Three positions, and yours determines everything.
 
 **EU/EEA and Swiss citizens** have free movement and need no permit. You register, get a personnummer, and work. Say so in the first line of any application.
 
-**Graduates of Swedish higher education institutions** can apply for a residence permit to look for work or start a business after completing their studies. It is not tied to an employer, which removes the sponsorship obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
+**Graduates of Swedish higher education institutions** can apply for a residence permit to look for work or start a business after completing their studies. It is not tied to an employer, which removes the [sponsorship](/blog/resume-for-h1b-visa-sponsorship) obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
 
-**Everyone else needs a work permit**, which requires a concrete job offer. The distinctive Swedish feature is that the terms of employment must be at least equivalent to those set by **Swedish collective agreements** for the role — pay, insurance and conditions. The relevant trade union is given the opportunity to comment on the offer.
+**Everyone else needs a work permit**, which requires a concrete [job offer](/blog/how-to-negotiate-a-job-offer-email). The distinctive Swedish feature is that the terms of employment must be at least equivalent to those set by **Swedish collective agreements** for the role — pay, insurance and conditions. The relevant trade union is given the opportunity to comment on the offer.
 
 **Salary thresholds apply** and have been raised, so check the current level with Migrationsverket rather than any secondary source.
 
@@ -86,7 +86,7 @@ The differences are real and they show up in interviews.
 
 **Consensus takes time.** Decisions are made by discussion until broad agreement exists — the process can feel slow to someone from a decisive top-down culture, and pushing against it does not speed it up.
 
-**Lagom** — roughly "just the right amount" — describes a cultural preference for moderation that shows up in how people present themselves. Loud self-promotion is uncomfortable here.
+**Lagom** — roughly "just the right amount" — describes a cultural p[reference](/blog/resume-references-guide) for moderation that shows up in how people present themselves. Loud self-promotion is uncomfortable here.
 
 **Fika is real.** The scheduled coffee break is a genuine institution and a substantial part of how colleagues actually connect. Skipping it to look busy is a mistake.
 
@@ -118,15 +118,15 @@ The mechanics are ordinary; the register is not.
 
 **Where to look.** Arbetsförmedlingen (the public employment service) carries broad volume, LinkedIn works well for technology and Stockholm, The Hub and similar platforms cover startups, and company career pages carry the rest. Academic Work and specialist agencies are active in graduate placement.
 
-**Personal letter, not cover letter.** Swedish applications typically ask for a *personligt brev* — one page, specific, and genuinely read. Generic enthusiasm reads badly in a culture that dislikes overstatement.
+**Personal letter, not [cover letter](/blog/cover-letter-generator-by-country).** Swedish applications typically ask for a *personligt brev* — [one page](/blog/ats-resume-length-guide), specific, and genuinely read. Generic enthusiasm reads badly in a culture that dislikes overstatement.
 
-**Keep the CV to two pages**, plain, reverse chronological, no photo, no date of birth.
+**Keep the CV to two pages**, plain, [reverse chronological](/blog/chronological-vs-functional-resume), no photo, no date of birth.
 
 **Understate and evidence.** "Led a team of six through a migration that cut deployment time by half" works. "Passionate, driven, results-oriented leader" does not, and it triggers the lagom reflex.
 
 **Expect several interview rounds**, often including a conversation with the team you would join rather than only with managers.
 
-**Ask real questions about the work.** Swedish interviewers respond well to curiosity about how things are actually done, and poorly to questions only about progression and title.
+**[Ask real questions](/blog/questions-to-ask-in-an-interview) about the work.** Swedish interviewers respond well to curiosity about how things are actually done, and poorly to questions only about progression and title.
 
 **Run the document through an [ATS check](/ats-analysis)** — larger Swedish employers screen automatically like everyone else.
 
@@ -150,7 +150,7 @@ Look north. The battery and green-industry cluster around Skellefteå and Luleå
 
 ### Scenario 2: You want a well-known technology name
 
-Stockholm, and target Spotify, Klarna, King and the scale-ups directly. These run in English and hire internationally as a matter of course.
+Stockholm, and target Spotify, Klarna, King and the [scale-ups](/blog/resume-tailoring-startup-vs-enterprise) directly. These run in English and hire internationally as a matter of course.
 
 ### Scenario 3: You have no Swedish and are not planning to learn
 

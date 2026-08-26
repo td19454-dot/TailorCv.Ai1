@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- The French CV is **one page** for a graduate — considerably shorter than the German or Swiss convention.
+- The French CV is **[one page](/blog/ats-resume-length-guide)** for a graduate — considerably shorter than the German or Swiss convention.
 - The **lettre de motivation** is still standard and genuinely read, and a generic one actively damages an otherwise good application.
-- **A photo is common but optional**, and increasingly omitted by large and international employers.
+- **A photo is common but [opt](/blog/opt-cpt-resume-guide)ional**, and increasingly omitted by large and international employers.
 - **Education carries unusual weight**, and where you studied does real work on a French CV.
 - **Write in French** unless the advert is in English — and a poor French letter is worse than a strong English one.
 
@@ -25,17 +25,17 @@ French recruiters expect concision, and a graduate CV running to two pages signa
 
 **One page, always, for anyone under about ten years of experience.** Senior professionals may use two.
 
-**État civil** at the top: name, address, phone, email, and often age or date of birth. Nationality is common, and if you need a work permit, stating your status is genuinely helpful.
+**État civil** at the top: name, address, phone, email, and often age or date of birth. Nationality is common, and if you need a [work permit](/blog/canada-work-permit-types-guide), stating your status is genuinely helpful.
 
 **A title.** French CVs frequently carry a short title under the name stating the target role — "Ingénieur Data — Recherche CDI". It orients the reader immediately and its absence is noticeable.
 
 **Formation (education)** often comes before experience for a recent graduate, which reverses the Anglo-American order. Institution, qualification, year, and any distinction.
 
-**Expérience professionnelle**, reverse chronological, including stages and alternance, which are counted as real experience in France rather than discounted as student work.
+**Expérience professionnelle**, [reverse chronological](/blog/chronological-vs-functional-resume), including stages and alternance, which are counted as real experience in France rather than discounted as student work.
 
 **Compétences** — technical skills, languages with levels, and software.
 
-**Centres d'intérêt.** French CVs conventionally include a short interests line, and it is genuinely read as a signal of personality. Keep it specific — "marathon, photographie argentique" says more than "sport, cinéma".
+**[Centres d'intérêt](/blog/hobbies-and-interests-on-resume).** French CVs conventionally include a short interests line, and it is genuinely read as a signal of personality. Keep it specific — "marathon, photographie argentique" says more than "sport, cinéma".
 
 ## The photo question
 
@@ -47,7 +47,7 @@ Traditional French practice includes a small professional photo. Large employers
 
 ## The lettre de motivation
 
-Unlike the UK, where cover letters are frequently skimmed, the French letter is a real part of the assessment.
+Unlike the UK, where [cover letters](/blog/cover-letter-generator-by-country) are frequently skimmed, the French letter is a real part of the assessment.
 
 **One page. Three or four paragraphs.**
 
@@ -65,9 +65,9 @@ Unlike the UK, where cover letters are frequently skimmed, the French letter is 
 
 This is where an international CV most often undersells itself in France.
 
-**Internships count as experience.** A six-month stage at a recognised company is real professional experience in French eyes, and it belongs in the experience section described with outcomes, not in a student activities footnote.
+**[Internships count](/blog/internship-resume-guide) as experience.** A six-month stage at a recognised company is real professional experience in French eyes, and it belongs in the experience section described with outcomes, not in a student activities footnote.
 
-**Alternance is highly regarded.** An apprenticeship contract combining study and work signals both academic capability and professional maturity, and French recruiters read it very positively.
+**Alternance is highly regarded.** An app[rent](/blog/canada-major-city-job-markets)iceship contract combining study and work signals both academic capability and professional maturity, and French recruiters read it very positively.
 
 **Describe them properly.** Employer, dates, team, what you actually did, and what came of it. "Stage de fin d'études" with no description wastes the strongest thing on many graduate CVs.
 
@@ -77,7 +77,7 @@ This is where an international CV most often undersells itself in France.
 
 Large French employers screen with software, and the design instincts the market rewards can work against you here.
 
-**Keep the layout single-column.** Two-column CVs are visually common in France and they parse badly, which means a document that looks polished to a human can arrive at the recruiter as scrambled text.
+**Keep the layout single-column.** Two-column CVs are visually common in France and they [parse badly](/blog/ats-resume-parser-friendly-format), which means a document that looks polished to a human can arrive at the recruiter as scrambled text.
 
 **Use conventional section headings** — Formation, Expérience professionnelle, Compétences, Langues. A creatively named section is one that does not get extracted.
 
@@ -85,9 +85,9 @@ Large French employers screen with software, and the design instincts the market
 
 **Mirror the advert's vocabulary exactly**, in French. Matching is literal, and a synonym does not count.
 
-**Export as PDF** with a sensible filename — "Dupont_Marie_CV.pdf".
+**[Export as PDF](/blog/ats-file-format-guide)** with a sensible filename — "Dupont_Marie_CV.pdf".
 
-**Check it parses** with an [ATS scan](/ats-analysis) before you send it anywhere. It takes a minute and it removes a whole category of silent rejection.
+**Check it parses** with an [ATS scan](/ats-analysis) before you send it anywhere. It takes a minute and it removes a whole category of silent [rejection](/blog/how-to-handle-job-rejection).
 
 ## Tailoring, and the details that get noticed
 
@@ -97,9 +97,9 @@ French readers are attentive to form, and small errors carry disproportionate we
 
 **Be consistent with dates and formatting.** French documents are read as formal records.
 
-**Claim language levels honestly**, using CEFR. If you write C1 French, part of the interview will be in French.
+**Claim [language levels](/blog/bilingual-language-skills-on-resume) honestly**, using CEFR. If you write C1 French, part of the interview will be in French.
 
-**Adapt the title line per application.** It takes ten seconds and it makes each CV look aimed rather than broadcast.
+**Adapt the [title line](/blog/how-to-write-resume-headline) per application.** It takes ten seconds and it makes each CV look aimed rather than broadcast.
 
 **Have a native speaker read the letter.** The lettre de motivation is the document where errors are least forgiven, because the whole point of it is that you wrote it for them.
 
@@ -123,13 +123,13 @@ Three shifts that most international candidates do not make.
 
 The etiquette is specific and mostly unwritten.
 
-**One follow-up after ten days to two weeks** is normal and welcome. Use a formal register.
+**One [follow-up after](/blog/how-to-follow-up-after-job-application) ten days to two weeks** is normal and welcome. Use a formal register.
 
 **Use the correct formulas** even in a short email. The opening ("Madame, Monsieur," or a named form) and the closing formula matter as much in an email as in the letter.
 
 **Do not chase repeatedly.** French hiring is not fast, particularly at large employers where multiple approvals are involved, and impatience is read as poor judgement.
 
-**Networking works, quietly.** French professional networks — school alumni associations especially — are effective, and a *cooptation* referral from an employee carries real weight and often a bonus for the referrer.
+**[Networking](/blog/networking-tips-for-job-search) works, quietly.** French professional networks — school alumni associations especially — are effective, and a *cooptation* [referral](/blog/networking-messages-for-referrals) from an employee carries real weight and often a bonus for the referrer.
 
 **Salon and forum recruitment events** are a genuine channel in France, including school-specific forums that international candidates rarely think to attend.
 

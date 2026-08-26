@@ -14,10 +14,10 @@ showcase: none
 ## Key Takeaways
 
 - Amsterdam has an unusually high concentration of **English-language roles** — many teams operate entirely in English and Dutch is not required.
-- The **IND recognised sponsor register** is a public list of every employer permitted to sponsor, and it is the single best job-search tool an international candidate has.
-- **Housing is the real constraint.** Amsterdam rental supply is severely limited and it shapes every decision about where you work.
+- The **IND recognised [sponsor register](/blog/resume-for-h1b-visa-sponsorship)** is a public list of every employer permitted to sponsor, and it is the single best job-search tool an international candidate has.
+- **[Housing](/blog/canada-major-city-job-markets) is the real constraint.** Amsterdam rental supply is severely limited and it shapes every decision about where you work.
 - The **Randstad** — Amsterdam, Rotterdam, The Hague, Utrecht — functions as one connected job market, and Eindhoven is a serious technology centre in its own right.
-- The **30% ruling**, a tax advantage for qualifying incoming employees, materially changes take-home pay for those who qualify.
+- The **[30% ruling](/blog/netherlands-30-percent-ruling-explained)**, a [tax](/blog/canada-first-job-taxes-and-benefits) advantage for qualifying incoming employees, materially changes take-home pay for those who qualify.
 
 ## Why Amsterdam works for internationals
 
@@ -27,9 +27,9 @@ Amsterdam has an unusual profile among European capitals: a large share of its p
 
 **Financial and payments technology is a genuine specialism.** Adyen and Mollie grew here, and the broader payments and fintech ecosystem around them is substantial.
 
-**Media, marketing and creative** work concentrates in Amsterdam, including the European operations of global agencies.
+**Media, [marketing](/blog/resume-matching-marketing) and creative** work concentrates in Amsterdam, including the European operations of global agencies.
 
-**Consultancy and professional services** are strong across the Randstad, hiring graduates through structured intakes.
+**[Consultancy](/blog/case-interview-preparation-guide-2026) and professional services** are strong across the Randstad, hiring graduates through structured intakes.
 
 ## The recognised sponsor register
 
@@ -39,7 +39,7 @@ The IND publishes a **public register of recognised sponsors** — every organis
 
 **Why it matters.** An employer on that register has already done the paperwork, already understands the process, and has already decided that hiring internationally is something they do. An employer not on it has to start from nothing, which most will not do for a graduate.
 
-**How to use it.** Filter the register by location and sector, build a target list, and research those companies directly rather than scrolling job boards. It inverts the usual search: instead of finding a job and hoping they sponsor, you start from employers who definitely can.
+**How to use it.** Filter the register by location and sector, build a target list, and research those companies directly rather than scrolling [job boards](/blog/best-job-search-websites-2026). It inverts the usual search: instead of finding a job and hoping they sponsor, you start from employers who definitely can.
 
 If you are on an [orientation year permit](/blog/netherlands-orientation-year-zoekjaar) you do not need a sponsor during that year — but you will when it ends, so target the register anyway.
 
@@ -57,7 +57,7 @@ This is not a side issue. In Amsterdam it frequently determines whether a job is
 
 ## The 30% ruling
 
-A tax facility worth understanding before you negotiate.
+A tax facility worth understanding before you [negotiate](/blog/how-to-negotiate-salary-offer).
 
 The **30% ruling** allows qualifying employees recruited from abroad to receive a portion of their salary as a tax-free allowance, on the basis that international hires face additional costs. The percentage, the duration and the qualifying conditions have all been adjusted by legislation in recent years, so check the current position with the Belastingdienst or your employer.
 
@@ -75,7 +75,7 @@ The Dutch market has its own channels, and using the wrong ones wastes weeks.
 
 **Indeed NL and Nationale Vacaturebank** carry broad volume, much of it Dutch-language.
 
-**Sector platforms matter.** Honeypot and similar developer-focused platforms operate in the Netherlands, and specialist recruiters are active in technology, finance and engineering.
+**Sector platforms matter.** Honeypot and similar [developer](/blog/resume-matching-software-engineer)-focused platforms operate in the Netherlands, and [specialist recruiters](/blog/how-to-work-with-recruitment-agencies) are active in technology, [finance](/blog/resume-matching-insurance-jobs) and engineering.
 
 **Meetups are unusually productive here.** Amsterdam has a dense calendar of technical and professional meetups, they run in English, and the community is small enough that turning up repeatedly gets you known.
 
@@ -91,7 +91,7 @@ The format is familiar; the tone is not.
 
 **Do not oversell.** The single most common failure mode for candidates from more promotional cultures is enthusiasm that outruns evidence. Understating slightly and backing it with specifics beats the reverse.
 
-**Ask real questions.** Vague interest reads as vague interest. A question about a technical decision, a market they are entering, or how a team is structured demonstrates that you did the work.
+**[Ask real questions](/blog/questions-to-ask-in-an-interview).** Vague interest reads as vague interest. A question about a technical decision, a market they are entering, or how a team is structured demonstrates that you did the work.
 
 ## The practical setup, in order
 
@@ -102,7 +102,7 @@ Arriving without a plan for the administration costs weeks that could have been 
 3. **Dutch bank account** — much of Dutch daily payment runs on iDEAL, which needs one.
 4. **Health insurance**, compulsory once you are working, with penalties for late enrolment.
 5. **DigiD**, the national digital identity used for government services and your tax return.
-6. **A Dutch phone number**, which changes how recruiters read your application more than it should.
+6. **A Dutch phone number**, which changes [how recruiters read](/blog/how-recruiters-read-resumes) your application more than it should.
 7. **An OV-chipkaart** for public transport, and a bicycle, which in Amsterdam is genuinely infrastructure rather than a hobby.
 
 ## Reading the market honestly
@@ -189,7 +189,7 @@ You can also [check your resume's ATS score for free](/ats-analysis), [generate 
 
 ### Can I work in Amsterdam without speaking Dutch?
 
-For a large share of roles, yes. Many international companies and technology teams operate entirely in English. Client-facing, public sector and traditional Dutch employers usually require Dutch.
+For a large share of roles, yes. Many international companies and technology teams operate entirely in English. Client-facing, [public sector](/blog/canada-government-jobs-for-students) and traditional Dutch employers usually require Dutch.
 
 ### What is the recognised sponsor register?
 

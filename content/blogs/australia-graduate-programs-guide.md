@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- Australian graduate programs run on a **fixed annual cycle**: applications open around **February–March** for roles starting the following **February**, meaning you apply roughly a year ahead.
+- Australian [graduate programs](/blog/global-rotational-graduate-programmes) run on a **fixed annual cycle**: applications open around **February–March** for roles starting the following **February**, meaning you apply roughly a year ahead.
 - The market is dominated by a recognisable set of employers — the **Big Four banks**, the **Big 4 professional services firms**, the **Australian Public Service**, and the large miners and telcos.
 - **Video interviews and psychometric testing** are near-universal early stages, and both are trainable.
-- Many programs require **Australian citizenship or permanent residency**, particularly in government and defence — check before investing time.
+- Many programs require **Australian citizenship or [permanent residency](/blog/canada-provincial-nominee-guide)**, particularly in government and defence — check before investing time.
 - **Vacation (summer) clerkships** in your penultimate year are the strongest conversion route, exactly as internships are elsewhere.
 
 ## The calendar, which is the whole game
@@ -38,9 +38,9 @@ Missing the window does not mean waiting for nothing. Off-cycle and direct-entry
 
 ## Who actually runs graduate programs
 
-**The Big Four banks** — Commonwealth Bank, Westpac, NAB and ANZ — run large, structured programs across technology, risk, retail banking, institutional banking and data.
+**The Big Four banks** — Commonwealth Bank, Westpac, NAB and ANZ — run large, structured programs across technology, risk, retail [banking](/blog/resume-matching-insurance-jobs), institutional banking and data.
 
-**The Big 4 professional services firms** — Deloitte, PwC, EY and KPMG — hire at scale into audit, tax, consulting and technology, and run the clerkship-to-graduate pipeline most visibly.
+**The Big 4 professional services firms** — Deloitte, PwC, EY and KPMG — hire at scale into audit, [tax](/blog/canada-first-job-taxes-and-benefits), [consulting](/blog/case-interview-preparation-guide-2026) and technology, and run the clerkship-to-graduate pipeline most visibly.
 
 **The Australian Public Service (APS)** runs graduate programs across departments, plus specialist streams. Most require Australian citizenship.
 
@@ -57,7 +57,7 @@ Missing the window does not mean waiting for nothing. Off-cycle and direct-entry
 3. **Video interview** — recorded answers to set questions, no interviewer present. Rehearse to time, on camera.
 4. **Assessment centre** — group exercise, case study, and individual interviews, either in person or virtual.
 5. **Final interview** — with the business area you would join.
-6. **Offer** — frequently with a fast acceptance deadline.
+6. **Offer** — frequently with a fast acceptance [deadline](/blog/campus-placement-preparation-timeline).
 
 **The video interview is where international candidates most often underperform**, not because of ability but because talking to a camera with no feedback is genuinely unnatural. It is entirely fixable with practice, and almost nobody practises.
 
@@ -66,7 +66,7 @@ Missing the window does not mean waiting for nothing. Off-cycle and direct-entry
 This is the gate worth checking before anything else.
 
 - **Australian Public Service and defence-related roles** generally require **Australian citizenship**, without exception.
-- **Some private graduate programs** require citizenship or permanent residency, particularly where security clearance or regulated licensing is involved.
+- **Some private graduate programs** require citizenship or permanent residency, particularly where [security clearance](/blog/matching-resume-security-clearance-jobs) or regulated [licensing](/blog/canada-regulated-professions-guide) is involved.
 - **Many private employers accept** candidates on a [Temporary Graduate visa (subclass 485)](/blog/australia-skilled-visa-points-graduates), but not all will sponsor beyond it.
 
 Read the eligibility line on the advert before you write anything. Australian graduate adverts state this clearly, and applying to a citizenship-restricted program on a student visa wastes an application you cannot get back.
@@ -86,15 +86,15 @@ Australia's graduate market concentrates heavily, and knowing where your sector 
 
 **Canberra is the case people miss.** If you want policy, regulation, intelligence or public administration, essentially the entire market is there, and it recruits on its own APS calendar rather than the private-sector one.
 
-**Perth and the resources sector** work differently again. Many technical roles are FIFO — fly-in fly-out — where you work a roster on site and fly home between swings. It pays well and it is a genuine lifestyle decision rather than a detail.
+**Perth and the resources sector** work diffe[rent](/blog/canada-major-city-job-markets)ly again. Many technical roles are FIFO — fly-in fly-out — where you work a roster on site and fly home between swings. It pays well and it is a genuine lifestyle decision rather than a detail.
 
 ## Salary and what actually varies
 
 Australian graduate salaries are relatively compressed across employers within a sector, and the meaningful variation is between sectors and between structured programs and direct hires.
 
-**Structured graduate programs publish a cohort rate.** Everyone in the intake is paid the same, and it is not individually negotiable. This is not a sign of weak negotiating — it is how the programs are designed, and pushing on it rarely works.
+**Structured graduate programs publish a cohort rate.** Everyone in the intake is paid the same, and it is not individually negotiable. This is not a sign of weak [negotiating](/blog/how-to-negotiate-salary-offer) — it is how the programs are designed, and pushing on it rarely works.
 
-**Superannuation sits on top.** Australian employers pay a compulsory percentage of your salary into a retirement fund, separate from your gross pay. When comparing two offers, check whether each is quoted as base salary or as a "package" including super, because the same number can mean two different things — [covered in more detail in the tax and super guide](/blog/australia-first-job-tax-and-super).
+**Superannuation sits on top.** Australian employers pay a compulsory percentage of your salary into a [retirement fund](/blog/first-90-days-new-job), separate from your gross pay. When comparing two offers, check whether each is quoted as base salary or as a "package" including super, because the same number can mean two different things — [covered in more detail in the tax and super guide](/blog/australia-first-job-tax-and-super).
 
 **Sydney pays more and costs considerably more.** Sydney and Melbourne housing costs are among the highest in the world relative to income, and a Brisbane or Adelaide offer at a lower headline figure frequently leaves more disposable income. Run the comparison on actual rental listings for a specific suburb.
 
@@ -118,7 +118,7 @@ The assessment centre is where offers are actually decided, and it rewards prepa
 
 **The behavioural interview** runs on the same competencies the advert named. Prepare one specific example per competency, structured as situation, action, result. Generic teamwork stories are the most common weak answer in the entire process.
 
-**Ask real questions at the end.** Three, at least one about the actual day-to-day work. Having none reads as indifference and it is noticed.
+**[Ask real questions](/blog/questions-to-ask-in-an-interview) at the end.** Three, at least one about the actual day-to-day work. Having none reads as indifference and it is noticed.
 
 ## Mini checklist
 
@@ -146,7 +146,7 @@ You are not out of the market. Target off-cycle and direct-entry hiring at mid-s
 
 Filter for programs that do not require citizenship or PR before applying. Then plan the [485 visa](/blog/australia-skilled-visa-points-graduates) as your bridge, and raise your work rights early rather than at offer stage.
 
-> **Tip:** Practise the video interview properly — record yourself answering three standard questions, watch it back, and do it again. It is the stage with the widest gap between how easy it looks and how people actually perform, and it costs an evening to fix.
+> **Tip:** Practise the video interview properly — [record yourself](/blog/how-to-practice-interviews-at-home) answering three standard questions, watch it back, and do it again. It is the stage with the widest gap between how easy it looks and how people actually perform, and it costs an evening to fix.
 
 ## Do's and Don'ts
 
