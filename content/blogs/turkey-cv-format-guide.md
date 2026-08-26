@@ -175,6 +175,52 @@ The additional considerations.
 
 **And note that gaming is genuinely international**, which makes it the most realistic entry point by a considerable margin.
 
+## Phrasing that marks a document as foreign
+
+Small things Turkish reviewers notice.
+
+**Literally translated English action verbs**, which produce Turkish that is grammatically correct and stylistically odd.
+
+**Job titles translated word for word** rather than mapped to the Turkish equivalent, which can misrepresent seniority in either direction.
+
+**Degree names untranslated**, where mapping to the closest Turkish equivalent helps the reader considerably.
+
+**Company names without context**, since a well-known employer elsewhere means nothing here.
+
+**Date formats**, where Turkish convention is day-month-year.
+
+**And addressing conventions**, since Turkish professional address uses titles in ways that a directly translated cover letter frequently gets wrong.
+
+## A note on the gaming portfolio
+
+Because for that sector the CV is secondary.
+
+**What you shipped** — the title, the platform, the scale of the audience.
+
+**Your specific contribution**, stated precisely rather than claiming credit for the whole product.
+
+**The numbers**, since mobile gaming is a metrics-driven business and reviewers expect you to speak that language.
+
+**Playable or viewable work** where you have it.
+
+**Your own projects and game jam entries**, which count for genuinely more here than side projects do in most fields.
+
+**And a [portfolio site](/portfolio)** that presents all of it cleanly, since studios will click and a well-organised presentation is itself a signal about how you work.
+
+## Regional and sector variation
+
+Turkiye is not uniform and conventions differ.
+
+**Gaming studios and international technology companies** follow international practice closely — English, no photograph, portfolio-led.
+
+**Istanbul corporates** span the full range from very traditional to entirely modern.
+
+**Ankara and the public-adjacent sector** including defence contractors are considerably more formal, with qualifications and institutions weighted heavily.
+
+**Manufacturing employers** in Bursa, Kocaeli and Izmir tend conservative, with certifications and technical qualifications mattering most.
+
+**And the practical response** is to read the employer rather than the country — look at their careers page, their LinkedIn presence and how the posting itself is written, and match that register.
+
 ## Mini checklist
 
 - [ ] Written in Turkish for domestic employers
@@ -283,3 +329,6 @@ It runs one to two pages, may carry a photograph, includes military service stat
 ### Should I write a cover letter for Turkish applications?
 
 Not universally expected and read where offered. Three or four paragraphs, in Turkish for domestic employers and English for international ones, addressed to a named person where possible.
+### What matters most for a games industry application in Turkiye?
+
+The portfolio rather than the CV — what you shipped, your specific contribution stated precisely, the numbers, and playable or viewable work including personal projects and game jam entries.

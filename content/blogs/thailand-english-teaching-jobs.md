@@ -189,6 +189,20 @@ What teaching in Thailand actually leaves you with.
 
 **And the honest arithmetic:** teaching in Thailand funds a good life in Thailand. It does not usually fund saving at a rate that changes your financial position materially, unless you are at an international school.
 
+## A final word on expectations
+
+The honest summary for anyone weighing this.
+
+**Teaching in Thailand is a genuine experience** and it is not, for most people, a long-term career with compounding financial returns.
+
+**It works best as a defined chapter** — a year or two, entered deliberately, with a plan for what follows.
+
+**People who treat it as a career** generally need to move into international schools with proper qualifications, or into management, or accept a plateau.
+
+**People who treat it as a gap** and then return to their field frequently find it was worth doing and cost them less than they feared.
+
+**And people who drift** — extending indefinitely without a plan — are the ones who most often regret it, usually around year five when the savings position becomes clear.
+
 ## Mini checklist
 
 - [ ] Degree available and legalised
