@@ -2227,6 +2227,294 @@ body {
         document.body.appendChild(overlay);
     }
 
+    /* ─────────────────────────────────────────────────────────────────────────
+       "SEE WHAT CHANGED" MODAL
+    ───────────────────────────────────────────────────────────────────────── */
+    /* Word-level LCS diff, split on whitespace so word tokens and the spaces
+       between them are both diffed (keeps reconstructed spacing exact). Bullets
+       are short (a sentence or two) so an O(n*m) DP table is fine. */
+    function wordDiff(before, after) {
+        const a = String(before || "").split(/(\s+)/).filter(Boolean);
+        const b = String(after  || "").split(/(\s+)/).filter(Boolean);
+        const n = a.length, m = b.length;
+        const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+        for (let i = n - 1; i >= 0; i--) {
+            for (let j = m - 1; j >= 0; j--) {
+                dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+            }
+        }
+        const beforeParts = [], afterParts = [];
+        let i = 0, j = 0;
+        while (i < n && j < m) {
+            if (a[i] === b[j]) {
+                beforeParts.push({ text: a[i], same: true });
+                afterParts.push({ text: b[j], same: true });
+                i++; j++;
+            } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+                beforeParts.push({ text: a[i], same: false });
+                i++;
+            } else {
+                afterParts.push({ text: b[j], same: false });
+                j++;
+            }
+        }
+        while (i < n) { beforeParts.push({ text: a[i], same: false }); i++; }
+        while (j < m) { afterParts.push({ text: b[j], same: false }); j++; }
+        return { beforeParts, afterParts };
+    }
+
+    /* Builds diffed text as DOM nodes — every word is placed via textContent,
+       never interpolated into innerHTML, so resume/JD text can never be parsed
+       as markup (same rule showSkillPanel follows in the extension). */
+    function renderDiffLine(parts, changedClass) {
+        const frag = document.createDocumentFragment();
+        parts.forEach(p => {
+            if (p.same) {
+                frag.appendChild(document.createTextNode(p.text));
+            } else {
+                const span = document.createElement("span");
+                span.className = changedClass;
+                span.textContent = p.text;
+                frag.appendChild(span);
+            }
+        });
+        return frag;
+    }
+
+    function injectChangesModalStyles() {
+        if (document.getElementById("tc-chg-styles")) return;
+        const st = document.createElement("style");
+        st.id = "tc-chg-styles";
+        st.textContent = `
+#tc-chg-overlay {
+    position: fixed; inset: 0; z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+}
+.tc-chg-backdrop {
+    position: absolute; inset: 0;
+    background: rgba(10,16,34,0.55);
+    backdrop-filter: blur(6px);
+    animation: tc-chg-bgin 0.3s ease both;
+}
+@keyframes tc-chg-bgin { from { opacity:0; } to { opacity:1; } }
+.tc-chg-modal {
+    position: relative; z-index: 2; overflow: hidden;
+    background: linear-gradient(170deg, #f6f9ff 0%, #ffffff 42%);
+    border: 1px solid #c7d7f5;
+    border-radius: 18px;
+    padding: 1.9rem 2.1rem 1.6rem;
+    width: min(760px, 94vw);
+    max-height: 88vh; overflow-y: auto;
+    box-shadow: 0 26px 70px rgba(15,32,80,0.30), 0 2px 8px rgba(15,32,80,0.10);
+    animation: tc-chg-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    -webkit-font-smoothing: antialiased;
+}
+@keyframes tc-chg-modal-in {
+    from { opacity:0; transform:scale(0.85) translateY(20px); }
+    to   { opacity:1; transform:scale(1) translateY(0); }
+}
+.tc-chg-modal::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
+    background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
+}
+.tc-chg-modal h2 {
+    margin: 0 0 0.9rem; padding-right: 2rem;
+    color: #0b1220; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
+}
+.tc-chg-close {
+    position: absolute; top: 1.1rem; right: 1.2rem;
+    background: none; border: none; font-size: 1.3rem; line-height: 1;
+    color: #64748b; cursor: pointer; padding: 4px 8px; border-radius: 8px;
+}
+.tc-chg-close:hover { background: #eef2ff; color: #1d4ed8; }
+.tc-chg-section-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #64748b; margin: 1.1rem 0 0.5rem;
+}
+.tc-chg-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tc-chg-pill {
+    display: inline-flex; align-items: center; padding: 0.28rem 0.7rem;
+    border-radius: 999px; font-size: 0.76rem; font-weight: 500;
+    border: 1px solid #a7e3c5; background: #d1fae5; color: #065f46;
+}
+.tc-chg-pill.gap { background: #d1fae5; border-color: #a7e3c5; color: #065f46; }
+.tc-chg-summary-box, .tc-chg-entry {
+    border: 1px solid #e3e9f7; border-radius: 12px; padding: 0.8rem 0.95rem;
+    margin: 0.6rem 0; background: #fbfcff;
+}
+.tc-chg-entry-label { font-size: 0.82rem; font-weight: 600; color: #0b1220; margin-bottom: 0.4rem; }
+.tc-chg-bullet { font-size: 0.8rem; line-height: 1.55; margin: 0.5rem 0; }
+.tc-chg-before-line { color: #64748b; }
+.tc-chg-after-line { color: #0b1220; margin-top: 0.15rem; }
+.tc-chg-del { text-decoration: line-through; color: #b91c1c; background: #fee2e2; border-radius: 3px; }
+.tc-chg-add { color: #065f46; background: #d1fae5; border-radius: 3px; font-weight: 600; }
+.tc-chg-tag {
+    display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.03em;
+    text-transform: uppercase; padding: 0.1rem 0.45rem; border-radius: 5px; margin-right: 0.4rem;
+    vertical-align: middle;
+}
+.tc-chg-tag.new       { background: #dbeafe; color: #1d4ed8; }
+.tc-chg-tag.reworded  { background: #fef3e0; color: #92600a; }
+.tc-chg-tag.unchanged { background: #e2e8f0; color: #475569; }
+.tc-chg-removed-title { font-size: 0.7rem; font-weight: 700; color: #b91c1c; margin-top: 0.5rem; }
+.tc-chg-removed { font-size: 0.76rem; color: #b91c1c; text-decoration: line-through; margin: 0.2rem 0; }
+.tc-chg-empty { font-size: 0.82rem; color: #64748b; padding: 1rem 0; }
+@media (max-width: 640px) {
+    .tc-chg-modal { padding: 1.5rem 1.2rem 1.3rem; }
+}
+`;
+        document.head.appendChild(st);
+    }
+
+    function showChangesModal(payload) {
+        if (document.getElementById("tc-chg-overlay")) return;
+        injectChangesModalStyles();
+
+        const changes = (payload && payload.resume_data && payload.resume_data.changes) || {};
+        const skillsAdded = Array.isArray(changes.skills_added) ? changes.skills_added : [];
+        const skillGaps    = Array.isArray(changes.skill_gaps)   ? changes.skill_gaps   : [];
+        const entries      = Array.isArray(changes.entries)      ? changes.entries      : [];
+        const summary      = changes.summary || null;
+
+        const overlay = document.createElement("div");
+        overlay.id = "tc-chg-overlay";
+        overlay.innerHTML = `
+            <div class="tc-chg-backdrop"></div>
+            <div class="tc-chg-modal" role="dialog" aria-modal="true" aria-labelledby="tc-chg-title">
+                <button type="button" class="tc-chg-close" aria-label="Close">&times;</button>
+                <h2 id="tc-chg-title">What we changed on your resume</h2>
+                <div class="tc-chg-body"></div>
+            </div>`;
+
+        const body = overlay.querySelector(".tc-chg-body");
+
+        function addSectionTitle(text) {
+            const t = document.createElement("div");
+            t.className = "tc-chg-section-title";
+            t.textContent = text;
+            body.appendChild(t);
+        }
+
+        function addPills(items, extraClass) {
+            const wrap = document.createElement("div");
+            wrap.className = "tc-chg-pills";
+            items.forEach(skill => {
+                const pill = document.createElement("span");
+                pill.className = "tc-chg-pill" + (extraClass ? " " + extraClass : "");
+                pill.textContent = skill; // textContent, never innerHTML
+                wrap.appendChild(pill);
+            });
+            body.appendChild(wrap);
+        }
+
+        if (skillsAdded.length) {
+            addSectionTitle(`Skills added (${skillsAdded.length})`);
+            addPills(skillsAdded);
+        }
+        if (skillGaps.length) {
+            addSectionTitle(`Skills Added`);
+            addPills(skillGaps, "gap");
+        }
+
+        if (summary && summary.status !== "unchanged") {
+            addSectionTitle("Summary");
+            const box = document.createElement("div");
+            box.className = "tc-chg-summary-box";
+            if (summary.before) {
+                const { beforeParts, afterParts } = wordDiff(summary.before, summary.after);
+                const beforeLine = document.createElement("div");
+                beforeLine.className = "tc-chg-before-line";
+                beforeLine.appendChild(renderDiffLine(beforeParts, "tc-chg-del"));
+                const afterLine = document.createElement("div");
+                afterLine.className = "tc-chg-after-line";
+                afterLine.appendChild(renderDiffLine(afterParts, "tc-chg-add"));
+                box.append(beforeLine, afterLine);
+            } else {
+                const afterLine = document.createElement("div");
+                afterLine.className = "tc-chg-after-line";
+                afterLine.textContent = summary.after;
+                box.appendChild(afterLine);
+            }
+            body.appendChild(box);
+        }
+
+        if (entries.length) {
+            addSectionTitle("Experience & projects");
+            entries.forEach(entry => {
+                const card = document.createElement("div");
+                card.className = "tc-chg-entry";
+
+                const label = document.createElement("div");
+                label.className = "tc-chg-entry-label";
+                label.textContent = entry.label || entry.section || "";
+                card.appendChild(label);
+
+                (entry.bullets || []).forEach(b => {
+                    const row = document.createElement("div");
+                    row.className = "tc-chg-bullet";
+
+                    const tag = document.createElement("span");
+                    tag.className = "tc-chg-tag " + b.status;
+                    tag.textContent = b.status;
+                    row.appendChild(tag);
+
+                    if (b.status === "reworded" && b.before) {
+                        const { beforeParts, afterParts } = wordDiff(b.before, b.after);
+                        const beforeLine = document.createElement("div");
+                        beforeLine.className = "tc-chg-before-line";
+                        beforeLine.appendChild(renderDiffLine(beforeParts, "tc-chg-del"));
+                        const afterLine = document.createElement("div");
+                        afterLine.className = "tc-chg-after-line";
+                        afterLine.appendChild(renderDiffLine(afterParts, "tc-chg-add"));
+                        row.append(beforeLine, afterLine);
+                    } else {
+                        const afterLine = document.createElement("span");
+                        afterLine.textContent = b.after;
+                        row.appendChild(afterLine);
+                    }
+                    card.appendChild(row);
+                });
+
+                if (entry.removed && entry.removed.length) {
+                    const rTitle = document.createElement("div");
+                    rTitle.className = "tc-chg-removed-title";
+                    rTitle.textContent = "No longer on your resume";
+                    card.appendChild(rTitle);
+                    entry.removed.forEach(text => {
+                        const r = document.createElement("div");
+                        r.className = "tc-chg-removed";
+                        r.textContent = text;
+                        card.appendChild(r);
+                    });
+                }
+
+                body.appendChild(card);
+            });
+        }
+
+        if (!skillsAdded.length && !skillGaps.length && !summary && !entries.length) {
+            const empty = document.createElement("div");
+            empty.className = "tc-chg-empty";
+            empty.textContent = "No meaningful changes were detected — your resume came through largely as written.";
+            body.appendChild(empty);
+        }
+
+        function close() {
+            overlay.remove();
+            document.removeEventListener("keydown", onEsc);
+        }
+        function onEsc(e) {
+            if (e.key === "Escape") close();
+        }
+
+        overlay.querySelector(".tc-chg-close").addEventListener("click", close);
+        overlay.querySelector(".tc-chg-backdrop").addEventListener("click", close);
+        document.addEventListener("keydown", onEsc);
+
+        document.body.appendChild(overlay);
+    }
+
     function init() {
         const payload = getPayload();
         if (!payload || !payload.html) {
@@ -2294,6 +2582,10 @@ body {
 
         document.getElementById("switch-template-btn")?.addEventListener("click", () => {
             buildTemplateSwitcher();
+        });
+
+        document.getElementById("see-changes-btn")?.addEventListener("click", () => {
+            showChangesModal(getPayload() || payload);
         });
 
         const pulseTarget = fitGuidance || statusEl;
