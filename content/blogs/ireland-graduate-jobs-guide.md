@@ -13,9 +13,9 @@ showcase: none
 
 ## Key Takeaways
 
-- Ireland is the **European base for an unusual concentration of US multinationals** — technology, pharmaceutical, medical device and financial services — which makes the graduate market disproportionately international.
+- Ireland is the **European base for an unusual concentration of US [multinationals](/blog/japan-gaishikei-vs-domestic)** — technology, pharmaceutical, [medical device](/blog/resume-tailoring-healthcare) and financial services — which makes the graduate market disproportionately international.
 - **Dublin dominates by volume**, but Cork, Galway and Limerick have genuine specialisms and far less competition.
-- **Graduate programmes run on an autumn milkround**, with applications opening early in the academic year for the following summer.
+- **[Graduate programmes](/blog/global-rotational-graduate-programmes) run on an autumn milkround**, with applications opening early in the academic year for the following summer.
 - **EU/EEA and Swiss citizens need no permission to work.** Everyone else needs a permit or the [Third Level Graduate Scheme](/blog/ireland-third-level-graduate-scheme).
 - **English is the working language**, which removes the single largest barrier that exists in most continental European markets.
 
@@ -23,7 +23,7 @@ showcase: none
 
 Ireland's economy has a shape that is unusual for a country of its population, and it is worth understanding because it determines where the graduate jobs are.
 
-**American multinationals base their European operations here.** Google, Meta, Microsoft, Apple, Amazon, Salesforce, Stripe, Intel, LinkedIn and a long list besides run substantial EMEA operations from Ireland. These are not sales offices — many are genuine engineering, operations and finance centres serving all of Europe.
+**American multinationals base their European operations here.** Google, Meta, Microsoft, Apple, Amazon, Salesforce, Stripe, Intel, LinkedIn and a long list besides run substantial EMEA operations from Ireland. These are not sales offices — many are genuine engineering, operations and [finance](/blog/resume-matching-insurance-jobs) centres serving all of Europe.
 
 **Pharmaceutical and medical device manufacturing is enormous.** Pfizer, Johnson & Johnson, Boston Scientific, Medtronic, Stryker and Regeneron all have major Irish operations, concentrated around Cork, Galway and Limerick rather than Dublin.
 
@@ -51,11 +51,11 @@ Ireland runs a recognisable milkround, and missing it costs a year.
 
 **Applications open early in the academic year** — typically from September and October — for programmes starting the following summer or autumn.
 
-**Professional services move first.** The Big Four accountancy firms, the major law firms and the large consultancies recruit earliest and close earliest.
+**Professional services move first.** The Big Four accountancy firms, the major law firms and the large [consultancies](/blog/case-interview-preparation-guide-2026) recruit earliest and close earliest.
 
 **Technology and multinational programmes** follow through the autumn and winter, with some running rolling recruitment.
 
-**Many close when full**, not on the advertised deadline. The advertised date is the last possible day, not the sensible one.
+**Many close when full**, not on the advertised [deadline](/blog/campus-placement-preparation-timeline). The advertised date is the last possible day, not the sensible one.
 
 **gradireland** is the main aggregator for structured graduate programmes and the natural starting point, alongside IrishJobs and the companies' own portals.
 
@@ -65,7 +65,7 @@ Ireland runs a recognisable milkround, and missing it costs a year.
 
 **Non-EEA graduates of Irish institutions** can apply for the [Third Level Graduate Scheme](/blog/ireland-third-level-graduate-scheme), which grants a period of unrestricted work permission after graduating.
 
-**Everyone else** needs an employment permit, most commonly a Critical Skills Employment Permit for roles on the critical skills list, or a General Employment Permit otherwise. The Critical Skills route is considerably more favourable and the occupations list is published by the Department of Enterprise.
+**Everyone else** needs an employment permit, most commonly a [Critical Skills](/blog/in-demand-jobs-canada-2026) Employment Permit for roles on the critical skills list, or a General Employment Permit otherwise. The Critical Skills route is considerably more favourable and the occupations list is published by the Department of Enterprise.
 
 **Note the UK is separate.** Irish and British citizens have reciprocal rights under the Common Travel Area, which is independent of EU membership and survived Brexit intact.
 
@@ -75,13 +75,13 @@ Irish graduate salaries are competitive by European standards, particularly at t
 
 **Multinational graduate programmes pay well** relative to the Irish average, and the technology and professional services firms in particular set a rate that pulls the market up.
 
-**Rates are usually fixed for a cohort.** As with most structured programmes, the figure is published and applies to everyone in the intake. Negotiation is for direct-entry roles, not for a graduate scheme.
+**Rates are usually fixed for a cohort.** As with most structured programmes, the figure is published and applies to everyone in the intake. [Negotiation](/blog/how-to-negotiate-salary-offer) is for direct-entry roles, not for a graduate scheme.
 
-**Dublin rent is the constraint.** Housing supply in Dublin has been severely limited for years, competition for rentals is intense, and a substantial share of a graduate salary goes on accommodation. This is the single most important number to research before accepting an offer, and averages are misleading — look at actual listings for the areas you would realistically live in.
+**Dublin [rent](/blog/canada-major-city-job-markets) is the constraint.** Housing supply in Dublin has been severely limited for years, competition for rentals is intense, and a substantial share of a graduate salary goes on accommodation. This is the single most important number to research before accepting an offer, and averages are misleading — look at actual listings for the areas you would realistically live in.
 
 **Cork, Galway and Limerick are materially cheaper**, which is a further argument for matching your sector to the right city rather than defaulting to the capital.
 
-**Check whether the offer includes a pension contribution**, health insurance, or a bonus. Multinational packages frequently do, and two apparently similar base salaries can differ meaningfully once those are counted.
+**Check whether the offer includes a [pension](/blog/first-90-days-new-job) contribution**, [health insurance](/blog/first-job-abroad-practical-checklist), or a bonus. Multinational packages frequently do, and two apparently similar base salaries can differ meaningfully once those are counted.
 
 ## What Irish employers look for
 
@@ -89,9 +89,9 @@ Beyond the obvious, three things come up repeatedly in Irish graduate hiring.
 
 **Competency-based interviewing is the default.** Structured questions asking for a specific past example — a conflict, a deadline, a mistake — assessed against a defined framework. Prepare five or six genuine situations with a concrete outcome, and practise telling each in about two minutes.
 
-**Extracurricular involvement counts.** Society committees, sports clubs, volunteering and student union roles are read as evidence of initiative rather than as filler, particularly at the professional services firms.
+**Extracurricular involvement counts.** Society committees, sports clubs, [volunteering](/blog/hobbies-and-interests-on-resume) and student union roles are read as evidence of initiative rather than as filler, particularly at the professional services firms.
 
-**Genuine interest in the specific company is tested.** "Why us?" is asked seriously and answered badly by most candidates. Read the company's recent announcements, know what its Irish operation actually does — which is frequently different from what the global brand does — and have an opinion.
+**Genuine interest in the specific company is tested.** "Why us?" is asked seriously and answered badly by most candidates. [Read the company](/blog/how-to-research-company-before-interview)'s recent announcements, know what its Irish operation actually does — which is frequently different from what the global brand does — and have an opinion.
 
 **Do not assume the Irish office does what the brand does.** A multinational's Dublin operation might be EMEA finance, or customer operations, or genuine product engineering. Knowing which, and saying so, separates you immediately from applicants who only read the logo.
 
@@ -109,7 +109,7 @@ Ireland has a small number of channels that carry most of the market, and knowin
 
 **University careers services are unusually useful** in Ireland, with employer presentations, on-campus interviews and direct relationships with the large graduate recruiters. If you studied at an Irish institution, use them — that access does not exist for external applicants.
 
-**Recruitment agencies** are active across technology, finance and engineering, and a relationship with two or three specialists surfaces roles before they are advertised.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** are active across technology, finance and engineering, and a relationship with two or three specialists surfaces roles before they are advertised.
 
 ## Setting up when you arrive
 
@@ -125,7 +125,7 @@ Six things that block everything else if you leave them, roughly in the order th
 
 **Immigration registration**, if you are non-EEA, at the relevant registration office within the required period after arriving.
 
-**A local phone number.** It costs little and it changes how recruiters read your application more than it reasonably should.
+**A local phone number.** It costs little and it changes [how recruiters read](/blog/how-recruiters-read-resumes) your application more than it reasonably should.
 
 **Emergency tax is recoverable** but it takes a payroll cycle or two, and starting a new job while short on cash is avoidable pain.
 

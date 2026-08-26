@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- There is **no universal resume template**. Photo, length, personal details and section order all vary by market, and getting them wrong signals unfamiliarity.
+- There is **no universal resume template**. Photo, length, personal details and [section order](/blog/resume-section-order-guide) all vary by market, and getting them wrong signals unfamiliarity.
 - **Photo markets**: Germany, Switzerland, much of the Gulf, South Korea, and traditionally France. **No-photo markets**: UK, Ireland, US, Canada, Australia, New Zealand.
-- **Length**: one page in France and the US, two in most of Europe and the Gulf, two to three in New Zealand.
-- **Whatever the market, the template must parse.** Single column, standard headings, selectable text.
+- **Length**: [one page](/blog/ats-resume-length-guide) in France and the US, two in most of Europe and the Gulf, two to three in New Zealand.
+- **Whatever the market, the template must [parse](/blog/ats-resume-parser-friendly-format).** Single column, standard headings, selectable text.
 - TailorCV offers **22 templates across 4 style variants**, so you can hold one base resume and render it appropriately per market.
 
 ## The four things that vary
 
 Almost every national difference reduces to one of four decisions.
 
-**Photo or no photo.** In the UK, Ireland, US, Canada, Australia and New Zealand, including one is at best neutral and at worst a signal you did not check. In Germany, Switzerland, South Korea and much of the Gulf, omitting one is conspicuous. In France and the Netherlands it is optional and trending toward omission at large employers.
+**Photo or no photo.** In the UK, Ireland, US, Canada, Australia and New Zealand, including one is at best neutral and at worst a signal you did not check. In Germany, Switzerland, South Korea and much of the Gulf, omitting one is conspicuous. In France and the Netherlands it is [opt](/blog/opt-cpt-resume-guide)ional and trending toward omission at large employers.
 
 **Personal details.** Date of birth, nationality, marital status and visa status appear routinely in Germany, Switzerland, the Gulf and Korea, and are deliberately excluded in the UK, US, Canada, Australia and New Zealand for anti-discrimination reasons.
 
@@ -55,15 +55,15 @@ Almost every national difference reduces to one of four decisions.
 
 Parsing. It is invisible, it is decisive, and template choice is where people usually break it.
 
-**Single column.** Two-column layouts look organised to a human and interleave into nonsense in a parser. This is the single most common self-inflicted resume failure.
+**Single column.** [Two-column layouts](/blog/ats-tables-columns-guide) look organised to a human and interleave into nonsense in a parser. This is the single most common self-inflicted resume failure.
 
 **Standard section headings.** Experience, Education, Skills. A parser looks for recognisable headings and a creatively named section may not register as a section.
 
-**Text, not images.** Anything rendered as a graphic — contact details, skill bars, an icon-based header — is invisible to automated screening.
+**Text, not images.** Anything rendered as a graphic — [contact details](/blog/resume-contact-section), skill bars, an icon-based header — is invisible to [automated screening](/blog/ats-resume-checker-how-it-works).
 
 **Selectable text in the export.** If you cannot select it in the PDF, no system can read it.
 
-**Simple bullets and standard fonts.** Decorative glyphs sometimes extract as junk.
+**Simple bullets and standard [fonts](/blog/resume-fonts-guide).** Decorative glyphs sometimes extract as junk.
 
 **A template that fails these fails everywhere**, regardless of how well it matches national convention. Run any new template through an [ATS check](/ats-analysis) once before you use it for real.
 
@@ -85,9 +85,9 @@ The practical way to work across markets without maintaining several documents.
 
 Once the national conventions are settled, a few things still distinguish a good choice from a bad one.
 
-**Match density to your content.** A candidate with ten years of experience needs a compact template; a graduate with one internship needs one with generous spacing, or the page looks empty. Using a dense template with thin content is the most common mismatch.
+**Match density to your content.** A candidate with ten years of experience needs a compact template; a graduate with one internship needs one with generous [spacing](/blog/resume-margins-spacing-formatting), or the page looks empty. Using a dense template with thin content is the most common mismatch.
 
-**Prefer conservative for conservative sectors.** Law, finance, government and healthcare reward a plain document. Design and technology tolerate more character.
+**Prefer conservative for conservative sectors.** Law, [finance](/blog/resume-matching-insurance-jobs), government and [healthcare](/blog/first-job-abroad-practical-checklist) reward a plain document. Design and technology tolerate more character.
 
 **Check how it handles long entries.** Some templates break badly when a job title runs to two lines or a company name is long. Test with your actual content, not the sample text.
 
@@ -123,11 +123,11 @@ Beyond the four big variables, order carries meaning.
 
 **A skills block near the top** works well for technical roles and for automated screening, and looks odd on a senior commercial CV.
 
-**A summary paragraph** is genuinely read in the Netherlands, France and the Gulf, and often skimmed in the UK and US. Where it is read, make it specific; where it is skimmed, keep it short or omit it.
+**A [summary paragraph](/blog/how-to-write-resume-summary)** is genuinely read in the Netherlands, France and the Gulf, and often skimmed in the UK and US. Where it is read, make it specific; where it is skimmed, keep it short or omit it.
 
-**Certifications and licences** deserve their own section in Australia, the Gulf and healthcare everywhere, and can be a line elsewhere.
+**[Certifications](/blog/how-to-list-certifications-on-resume) and licences** deserve their own section in Australia, the Gulf and healthcare everywhere, and can be a line elsewhere.
 
-**Referees** are expected in New Zealand and Switzerland, and "available on request" is unnecessary filler in the UK and US.
+**[Referees](/blog/resume-references-guide)** are expected in New Zealand and Switzerland, and "available on request" is unnecessary filler in the UK and US.
 
 **Interests** are conventional in France, unusual in the US, and harmless in most places if kept specific.
 
@@ -204,7 +204,7 @@ Use the two-page, no-photo, single-column convention. It is the least wrong defa
 - **One document for every market.** The four variables are noticed and they signal unfamiliarity.
 - **Two-column layouts.** The most common self-inflicted parsing failure there is.
 - **Text inside images.** Invisible to every automated system.
-- **Maintaining several files.** They drift, and you will send the stale one.
+- **Maintaining [several files](/blog/managing-multiple-resume-versions).** They drift, and you will send the stale one.
 - **Ignoring work authorisation.** It is the reader's first practical question.
 - **Never testing the export.** Ninety seconds catches what nothing else will.
 

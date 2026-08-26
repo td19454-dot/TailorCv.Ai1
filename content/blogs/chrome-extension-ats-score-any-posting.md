@@ -13,7 +13,7 @@ showcase: none
 
 ## Key Takeaways
 
-- The extension calculates a **skill-match score** between your base resume and the job description on screen, instantly.
+- The extension calculates a **skill-match score** between your base resume and the [job description](/blog/job-description-analysis-checklist) on screen, instantly.
 - It is **deterministic — no AI call** — which means it is fast, free of your quota, and it can refire on every job you scroll to.
 - The score's most useful function is not filtering jobs. It is showing you **where your resume is understating you**.
 - A full **[ATS analysis](/ats-analysis)** on the site gives the deeper breakdown when you want it.
@@ -25,9 +25,9 @@ The skill match compares the text of your base resume against the text of the jo
 
 **It is text matching, not judgement.** No language model is involved. It is regex and comparison work, which is exactly why it can run every time you open a new posting without cost or delay.
 
-**That is a feature, not a limitation.** Automated screening at most employers is also literal text matching. A system that mimics what the real filter does is more useful for this purpose than one that forms a clever opinion the real filter would never share.
+**That is a feature, not a limitation.** [Automated screening](/blog/ats-resume-checker-how-it-works) at most employers is also literal text matching. A system that mimics what the real filter does is more useful for this purpose than one that forms a c[lever](/blog/lever-ats-resume-guide) opinion the real filter would never share.
 
-**It looks at the job's own vocabulary.** If the posting says "Power BI" and your resume says "business intelligence reporting", a human sees the same thing and a parser does not. The score surfaces that gap.
+**It looks at the job's own vocabulary.** If the posting says "Power BI" and your resume says "business intelligence reporting", a human sees the same thing and a [parse](/blog/ats-resume-parser-friendly-format)r does not. The score surfaces that gap.
 
 ## The insight people miss
 
@@ -67,13 +67,13 @@ A practical sequence rather than general advice.
 
 **Collect four postings** for jobs you would genuinely be good at and would genuinely take.
 
-**List the terms they share.** Tools, systems, methods, standards, certifications. Terms appearing in three or four of them are what your target market actually asks for.
+**List the terms they share.** Tools, systems, methods, standards, [certifications](/blog/how-to-list-certifications-on-resume). Terms appearing in three or four of them are what your target market actually asks for.
 
 **Mark each one honestly.** Have done it. Have touched it. Have never used it.
 
 **For "have done it" terms missing from your resume — add them.** This is the largest and easiest gain available to most graduates, and it is entirely legitimate because it is true.
 
-**For "have touched it" — find the honest phrasing.** "Used X in a university project to do Y" is accurate and it matches. Vagueness helps nobody.
+**For "have touched it" — find the honest phrasing.** "Used X in a [university project](/blog/projects-in-resume) to do Y" is accurate and it matches. Vagueness helps nobody.
 
 **For "never used it" — that is your learning list.** Not a resume edit. Pick the one or two that appear most often and go and learn them.
 
@@ -87,7 +87,7 @@ Worth stating plainly so the number does not become the goal.
 
 **A high score does not mean an interview.** Timing, competition, whether the requisition is real, and whether your experience level fits all sit outside it.
 
-**A low score does not mean rejection.** Referrals, unusual backgrounds and genuinely distinctive experience all beat keyword correspondence regularly.
+**A low score does not mean [rejection](/blog/how-to-handle-job-rejection).** [Referrals](/blog/networking-messages-for-referrals), unusual backgrounds and genuinely distinctive experience all beat keyword correspondence regularly.
 
 **And no score replaces reading the posting.** The most expensive applications are the well-matched ones sent to jobs the candidate did not want and would not have enjoyed.
 
@@ -95,7 +95,7 @@ Worth stating plainly so the number does not become the goal.
 
 Understanding the thing being modelled makes the score more useful.
 
-**It parses your document first.** Before any matching, the system extracts text and tries to identify sections — contact details, experience, education, skills. A document that parses badly fails here regardless of content, which is why formatting matters so much.
+**It parses your document first.** Before any matching, the system extracts text and tries to identify sections — [contact details](/blog/resume-contact-section), experience, education, skills. A document that parses badly fails here regardless of content, which is why formatting matters so much.
 
 **Then it matches against the requisition.** Usually literal terms drawn from the job description or from criteria the recruiter configured.
 
@@ -107,19 +107,19 @@ Understanding the thing being modelled makes the score more useful.
 
 ## Formatting for parsers
 
-The unglamorous half of any ATS score.
+The unglamorous half of any [ATS score](/blog/ats-score-guide).
 
-**Single column.** Two-column layouts interleave text when extracted and produce sentences that mean nothing.
+**Single column.** [Two-column layouts](/blog/ats-tables-columns-guide) interleave text when extracted and produce sentences that mean nothing.
 
 **Standard section headings.** Experience, Education, Skills. A creatively named section may not be recognised as a section at all.
 
 **No text inside images.** It is invisible to a parser, and any contact detail rendered as a graphic is a contact detail the system does not have.
 
-**Simple bullets and standard fonts.** Decorative glyphs sometimes extract as junk characters.
+**Simple bullets and standard [fonts](/blog/resume-fonts-guide).** Decorative glyphs sometimes extract as junk characters.
 
 **Dates in a consistent format**, so the parser can build a chronology.
 
-**Export as PDF** unless asked for Word, and check that you can select the text in the exported file. If you cannot select it, neither can the parser.
+**[Export as PDF](/blog/ats-file-format-guide)** unless asked for Word, and check that you can select the text in the exported file. If you cannot select it, neither can the parser.
 
 **Name the file with your name in it**, which matters to the human at the other end rather than the machine.
 
@@ -133,9 +133,9 @@ Beyond a single application, the number becomes data.
 
 **Compare across sectors.** Consistently higher scores in one sector than another is a signal about where your background actually fits, and it is often not where you assumed.
 
-**Notice score without response.** High match and no reply repeatedly usually means level mismatch, timing, or roles that were never really open — none of which more keywords will fix.
+**Notice score without response.** High match and no reply repeatedly usually means [level mismatch](/blog/resume-tailoring-underqualified), timing, or roles that were never really open — none of which more keywords will fix.
 
-**And stop looking at it once you are interviewing.** At that point the document has done its job and the number is no longer the thing to optimise.
+**And stop looking at it once you are interviewing.** At that point the document has done its job and the number is no longer the thing to [opt](/blog/opt-cpt-resume-guide)imise.
 
 ## Mini checklist
 

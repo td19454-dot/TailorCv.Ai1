@@ -25,13 +25,13 @@ This is the single most useful reframing for anyone arriving from a large econom
 
 **There are fewer roles, and fewer applicants per role.** Both halves matter. A specialist position in Auckland might attract a fraction of the applications the equivalent role in London would.
 
-**Everyone knows everyone.** Professional communities are small enough that a reference from the right person carries disproportionate weight, and a bad reputation travels fast.
+**Everyone knows everyone.** Professional communities are small enough that a [reference](/blog/resume-references-guide) from the right person carries disproportionate weight, and a bad reputation travels fast.
 
-**Direct approaches work.** Emailing a hiring manager at a mid-sized company is a normal thing to do in New Zealand and it is frequently answered. The formality that would make this awkward in Switzerland or Japan is largely absent.
+**Direct approaches work.** Emailing a [hiring manager](/blog/how-recruiters-read-resumes) at a mid-sized company is a normal thing to do in New Zealand and it is frequently answered. The formality that would make this awkward in Switzerland or [Japan](/blog/how-to-get-a-job-in-japan-foreigner) is largely absent.
 
-**Fewer structured graduate programmes exist**, simply because there are fewer very large employers. Direct-entry roles, internships and small-company hiring account for most graduate employment.
+**Fewer structured [graduate programmes](/blog/global-rotational-graduate-programmes) exist**, simply because there are fewer very large employers. Direct-entry roles, internships and small-company hiring account for most graduate employment.
 
-**The consequence for your strategy:** twenty well-researched, personally addressed approaches beat two hundred portal submissions. This is genuinely a different game from the UK or US graduate market.
+**The consequence for your strategy:** twenty well-researched, personally addressed approaches beat two hundred portal submissions. This is genuinely a diffe[rent](/blog/canada-major-city-job-markets) game from the UK or US graduate market.
 
 ## The cities
 
@@ -44,7 +44,7 @@ This is the single most useful reframing for anyone arriving from a large econom
 | **Dunedin** | University research, health sciences, and a small technology scene |
 | **Tauranga** | Horticulture, logistics and the port economy |
 
-**Wellington's public sector is a genuine graduate employer** with structured intakes, and it is under-considered by international candidates who assume government roles are closed to them. Many are open to residents and some to work-visa holders.
+**Wellington's [public sector](/blog/canada-government-jobs-for-students) is a genuine graduate employer** with structured intakes, and it is under-considered by international candidates who assume government roles are closed to them. Many are open to residents and some to work-visa holders.
 
 **Christchurch's engineering base is real**, built partly around post-earthquake reconstruction and increasingly around aerospace and agricultural technology.
 
@@ -82,9 +82,9 @@ The convention sits close to the Australian and British one, with a few local sp
 
 **State your work rights explicitly.** "New Zealand citizen", "resident", "post-study work visa valid until [date]" or "requires Accredited Employer Work Visa" — employers screen on this and ambiguity costs you.
 
-**Referees are expected**, named with contact details, and they are genuinely called. This is a small market and references carry weight beyond the formality they represent elsewhere.
+**Referees are expected**, named with [contact details](/blog/resume-contact-section), and they are genuinely called. This is a small market and references carry weight beyond the formality they represent elsewhere.
 
-**Include community and volunteer involvement.** New Zealand employers read it as a signal about how you will fit a team, and it is not padding here.
+**Include community and [volunteer](/blog/hobbies-and-interests-on-resume) involvement.** New Zealand employers read it as a signal about how you will fit a team, and it is not padding here.
 
 **Outcomes, not duties**, with numbers wherever they exist. The standard is the same as anywhere; the market simply gives you space to say more.
 
@@ -98,11 +98,11 @@ The honest picture, because it is easy to be surprised in either direction.
 
 **Auckland housing is expensive** relative to income, comparable in seriousness to Sydney's problem though on smaller absolute numbers.
 
-**KiwiSaver** is the retirement savings scheme — you contribute a percentage of pay, your employer contributes as well, and the government adds an annual contribution subject to conditions. Opting out is possible and usually unwise.
+**KiwiSaver** is the [retirement saving](/blog/first-90-days-new-job)s scheme — you contribute a percentage of pay, your employer contributes as well, and the government adds an annual contribution subject to conditions. [Opt](/blog/opt-cpt-resume-guide)ing out is possible and usually unwise.
 
 **ACC** is the Accident Compensation Corporation, a universal no-fault injury scheme funded by levies including one on your earnings. It replaces the ability to sue for personal injury, and it means injury cover is genuinely universal.
 
-**Tax is straightforward.** PAYE is deducted at source, there are no state or regional income taxes, and most employees never file a return.
+**[Tax](/blog/canada-first-job-taxes-and-benefits) is straightforward.** PAYE is deducted at source, there are no state or regional income taxes, and most employees never file a return.
 
 **Quality of life is the trade.** Lower salaries, high housing costs in Auckland, and an outdoor environment and pace of life that people move continents for. Whether that trade is worth it is a personal question, not a financial one.
 
@@ -120,7 +120,7 @@ A small number of channels carry the advertised market, and the unadvertised mar
 
 **University careers services** connect to local employers directly and are worth using if you studied in New Zealand.
 
-**And then go around all of it.** Identify companies you want to work for, find the person who would manage you, and write to them with something specific about what they do and what you would bring. In a country of five million this is normal behaviour and it produces interviews that no job board would have given you.
+**And then go around all of it.** Identify companies you want to work for, find the person who would manage you, and write to them with something specific about what they do and what you would bring. In a country of five million this is normal behaviour and it produces interviews that no [job board](/blog/best-job-search-websites-2026) would have given you.
 
 ## Interviewing in New Zealand
 
@@ -128,7 +128,7 @@ Informal in register, serious in substance.
 
 **First names from the outset.** Titles and formality are minimal, and over-formality reads as stiff rather than respectful.
 
-**Behavioural questions dominate.** Prepare specific examples with concrete outcomes, and expect follow-up questions that probe whether the story is real.
+**[Behavioural questions](/blog/mock-interview-for-sponsorship-roles) dominate.** Prepare specific examples with concrete outcomes, and expect follow-up questions that probe whether the story is real.
 
 **Modesty is expected but so is clarity.** New Zealand culture is uncomfortable with self-promotion, and the way through is factual specificity — describe what happened and let the numbers carry the claim.
 
@@ -136,7 +136,7 @@ Informal in register, serious in substance.
 
 **Ask about the team and the work**, not only about progression. In a small organisation, curiosity about what people actually do lands well.
 
-**Reference checks happen and they are thorough.** Brief your referees properly, because in this market the person calling may well know them.
+**[Reference checks](/blog/reference-check-process-guide) happen and they are thorough.** Brief your referees properly, because in this market the person calling may well know them.
 
 ## Mini checklist
 
@@ -219,7 +219,7 @@ A published list of occupations in genuine shortage, with straight-to-residence 
 
 ### Do New Zealand employers run graduate programmes?
 
-Some, particularly in government, banking and professional services — but fewer than in the UK or Australia, because there are fewer very large employers. Direct-entry roles dominate.
+Some, particularly in government, [banking](/blog/resume-matching-insurance-jobs) and professional services — but fewer than in the UK or Australia, because there are fewer very large employers. Direct-entry roles dominate.
 
 ### Does direct outreach to employers actually work?
 
@@ -231,7 +231,7 @@ Because many international candidates treat it as a stopover. A clear, specific 
 
 ### What is an accredited employer?
 
-An employer approved to hire migrants under the Accredited Employer Work Visa. Like the Dutch sponsor register, it identifies companies already committed to international hiring.
+An employer approved to hire migrants under the Accredited Employer Work Visa. Like the Dutch [sponsor register](/blog/resume-for-h1b-visa-sponsorship), it identifies companies already committed to international hiring.
 ### How long should a New Zealand CV be?
 
 Two to three pages, which is more generous than the UK convention. Omit photo, date of birth and marital status.

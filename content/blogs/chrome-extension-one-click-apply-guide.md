@@ -13,21 +13,21 @@ showcase: none
 
 ## Key Takeaways
 
-- The extension covers the whole application object, not just the resume: **tailored resume, matching cover letter, and answers to application form questions**.
-- Your **apply profile** stores the standard answers every form asks for, so deterministic autofill handles them without AI.
-- The **open-ended questions** — "why do you want to work here", "describe a time you..." — are answered from your base resume and the job description.
-- Everything downloads as **ATS-ready PDFs** and is saved to your TailorCV account.
+- The extension covers the whole [application](/blog/how-many-jobs-should-you-apply-to-per-day) object, not just the resume: **tailored resume, matching [cover letter](/blog/cover-letter-generator-by-country), and answers to [application form](/blog/resume-optimization-linkedin-easy-apply) questions**.
+- Your **apply profile** stores the standard answers every form asks for, so deterministic [autofill](/blog/autofill-vs-auto-tailor-job-extensions) handles them without AI.
+- The **open-ended questions** — "why do you want to work here", "describe a time you..." — are answered from your base resume and the [job description](/blog/job-description-analysis-checklist).
+- Everything downloads as **[ATS-ready](/blog/how-to-make-resume-ats-friendly) PDFs** and is saved to your TailorCV account.
 - The workflow deliberately **stops short of submitting for you**. You read, you edit, you send.
 
 ## What the workflow covers
 
 An application is rarely just a resume, and the parts around it are where the time actually goes.
 
-**The tailored resume.** Your base resume rewritten against this posting's description, downloaded as a PDF.
+**The tailored resume.** Your base resume rewritten against this posting's description, [downloaded as a PDF](/blog/job-posting-to-tailored-pdf-60-seconds).
 
 **The cover letter.** Generated against the same job description and your same base resume, so the two documents agree with each other rather than contradicting themselves — which happens more often than people think when the resume and letter are written weeks apart.
 
-**The apply profile.** The standard fields every application form asks: contact details, work authorisation, notice period, links, education. Stored once, filled deterministically.
+**The apply profile.** The standard fields every application form asks: [contact details](/blog/resume-contact-section), work authorisation, [notice period](/blog/notice-period-negotiation-guide), links, education. Stored once, filled deterministically.
 
 **The open questions.** The free-text prompts that make people abandon applications halfway through. These are answered from your base resume and the job description, with the question's own field type and character limit respected.
 
@@ -41,7 +41,7 @@ This distinction matters and it is deliberate.
 
 **Only the genuinely open questions go to AI.** "Why are you interested in this role?" with a 500-character limit is a writing task; "What is your phone number?" is not.
 
-**The system respects the field.** Character limits, field types and multiple-choice options are all passed through, so a 200-character answer comes back at 200 characters rather than at 800 that you then have to cut.
+**The system respects the field.** Character limits, field types and multiple-choice [opt](/blog/opt-cpt-resume-guide)ions are all passed through, so a 200-character answer comes back at 200 characters rather than at 800 that you then have to cut.
 
 **Why this matters to you:** it is faster, it costs less of your quota, and the answers that come back are the ones that actually needed writing.
 
@@ -91,7 +91,7 @@ The tooling is one part of something larger.
 
 **Alongside all of it:** the things no tool does. Reaching out to someone at the company, preparing for an interview, deciding whether you actually want the job, and following up when nobody replies.
 
-**The honest framing:** the extension removes the mechanical cost of applying. It does not remove the search. What it buys you is the time and energy to spend on the parts that actually differentiate you.
+**The honest framing:** the extension removes the mechanical cost of applying. It does not remove the search. What it buys you is the time and energy to spend on the parts that actually diffe[rent](/blog/canada-major-city-job-markets)iate you.
 
 ## Setting up the apply profile properly
 
@@ -99,15 +99,15 @@ An hour here is repaid across every application you will make. What to put in it
 
 **Contact details** exactly as you want them on official records — full legal name where forms ask for it, a phone number with country code, and a professional email address.
 
-**Work authorisation.** State it plainly in the terms your target market uses. "Full working rights, no sponsorship required" or the specific visa and its expiry. This is the field that most often decides whether an application is read.
+**Work authorisation.** State it plainly in the terms your target market uses. "Full working rights, no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required" or the specific visa and its expiry. This is the field that most often decides whether an application is read.
 
 **Notice period and availability.** A specific answer — "available immediately" or "four weeks' notice" — rather than a vague one.
 
-**Links.** LinkedIn, a [portfolio site](/portfolio), a repository. One working link that someone can open beats three that need explanation.
+**Links.** LinkedIn, a [portfolio site](/portfolio), a [repository](/blog/github-profile-for-job-search-2026). One working link that someone can open beats three that need explanation.
 
 **Education**, with institution, qualification, dates and grades in the format forms usually request.
 
-**Standard disclosures.** Whatever your market's forms routinely ask — right to work, willingness to relocate, driving licence where relevant.
+**Standard disclosures.** Whatever your market's forms routinely ask — right to work, willingness to [relocate](/blog/relocating-to-usa-for-work), driving licence where relevant.
 
 **Then leave it alone** until something genuinely changes. The value of the profile is that it is stable.
 
@@ -241,7 +241,7 @@ Replace one generic sentence with one specific fact, cut the throat-clearing, an
 
 ### What does the workflow not cover?
 
-Reaching out to people at the company, interview preparation, deciding whether you want the job, and following up. The tooling removes the mechanical cost, not the search.
+Reaching out to people at the company, [interview preparation](/blog/mock-interview-for-sponsorship-roles), deciding whether you want the job, and following up. The tooling removes the mechanical cost, not the search.
 ### What should go in the apply profile?
 
 Contact details, work authorisation stated plainly, notice period, links, education, and your market's standard disclosures. Then leave it stable.

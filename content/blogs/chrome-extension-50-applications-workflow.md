@@ -13,29 +13,29 @@ showcase: none
 
 ## Key Takeaways
 
-- Volume without a system produces **generic applications and burnout**, which is why most high-volume searches fail.
+- Volume without a system produces **generic [applications](/blog/how-many-jobs-should-you-apply-to-per-day) and [burnout](/blog/job-search-burnout)**, which is why most high-volume searches fail.
 - Split your targets into **tiers**: a small number of jobs you genuinely want, a larger number that are good fits, and a volume tier.
-- **Automate the document work, batch the research, and protect the tier-one applications** from both.
-- The extension makes per-posting tailoring cost roughly one click, which is what makes volume compatible with quality.
+- **Automate the [document](/blog/campus-placement-document-checklist) work, batch the research, and protect the tier-one applications** from both.
+- The extension makes per-posting [tailoring](/blog/how-to-tailor-resume-for-every-job) cost roughly one click, which is what makes volume compatible with quality.
 - **Track everything**, because the follow-up you forget is a real application you wasted.
 
 ## Why volume alone fails
 
 The standard advice is "apply to more jobs". It is not wrong, and it is incomplete.
 
-**More generic applications is worse than fewer tailored ones.** Automated screening filters generic documents, so doubling the number of them mostly doubles the rejections.
+**More generic applications is worse than fewer tailored ones.** [Automated screening](/blog/ats-resume-checker-how-it-works) filters generic documents, so doubling the number of them mostly doubles the [rejections](/blog/how-to-handle-job-rejection).
 
 **Volume without a system produces burnout.** Applying is emotionally expensive, and doing it in an unstructured way — a few applications whenever you feel able — turns a search into a low-grade dread that lasts months.
 
-**And it destroys your record.** Fifty applications made ad hoc means fifty jobs you cannot remember when a recruiter calls about one.
+**And it destroys your record.** Fifty applications made ad hoc means fifty jobs you cannot remember when a [recruiter call](/blog/phone-screen-interview-tips)s about one.
 
 **The fix is structure, not effort.** A repeatable weekly system with clear tiers uses less energy and produces better results than the same number of applications made chaotically.
 
 ## The three tiers
 
-Sort every job you find into one of three buckets. They get different amounts of your attention on purpose.
+Sort every job you find into one of three buckets. They get diffe[rent](/blog/canada-major-city-job-markets) amounts of your attention on purpose.
 
-**Tier one — jobs you genuinely want.** Perhaps three to five a week. These get the full treatment: read the company properly, generate the tailored resume and cover letter, then rewrite the letter in your own voice, find someone at the company on LinkedIn, and follow up personally. Forty minutes each.
+**Tier one — jobs you genuinely want.** Perhaps three to five a week. These get the full treatment: [read the company](/blog/how-to-research-company-before-interview) properly, generate the tailored [resume](/blog/resume-optimization-guide) and [cover letter](/blog/cover-letter-generator-by-country), then rewrite the letter in your own voice, find someone at the company on [LinkedIn](/blog/linkedin-profile-optimization-guide), and follow up personally. Forty minutes each.
 
 **Tier two — good fits you would be happy with.** Perhaps fifteen a week. Generate, read, light edit, send. Five minutes each.
 
@@ -51,7 +51,7 @@ Sort every job you find into one of three buckets. They get different amounts of
 
 **Wednesday — tier one.** One or two applications, done properly, with research and a personal follow-up.
 
-**Friday — follow-up and admin.** Chase anything a week old, update your tracker, and review what got responses.
+**Friday — follow-up and admin.** Chase anything a week old, update your [tracker](/blog/job-application-tracker-template), and review what got responses.
 
 **Weekend off.** Genuinely. A search that runs seven days a week ends in month three regardless of how it was going.
 
@@ -77,7 +77,7 @@ An hour of setup makes the weekly rhythm work. Skip it and every block starts wi
 
 **Template.** Pick one and leave it. Changing templates mid-search means your applications look inconsistent to anyone who sees two.
 
-**Apply profile.** Fill in the standard fields — contact details, work authorisation, notice period, links, education. This is the piece that makes tier-three applications take ninety seconds instead of eight minutes.
+**Apply profile.** Fill in the standard fields — [contact details](/blog/resume-contact-section), work authorisation, [notice period](/blog/notice-period-negotiation-guide), links, education. This is the piece that makes tier-three applications take ninety seconds instead of eight minutes.
 
 **Saved searches.** Set up alerts on the boards you use so Monday's sourcing session has material waiting rather than starting from nothing.
 
@@ -93,7 +93,7 @@ A system is only useful if you check whether it is working.
 
 **Responses but no interviews** — the resume is passing screening and failing the human read. Look at whether your bullets show outcomes or duties.
 
-**Interviews but no offers** — the documents are working and the problem has moved. That is progress, and it needs interview preparation rather than more applications.
+**Interviews but no offers** — the documents are working and the problem has moved. That is progress, and it needs [interview preparation](/blog/mock-interview-for-sponsorship-roles) rather than more applications.
 
 **Interviews for jobs you do not want** — your targeting is off. Narrow the tiers rather than widening them.
 

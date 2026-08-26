@@ -13,11 +13,11 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Post Study Work Visa** lets graduates of New Zealand institutions stay and work **for any employer**, with no sponsorship required.
-- **Duration depends on your qualification level and, for some qualifications, what you studied** — postgraduate awards get longer, and some non-degree qualifications only qualify if they lead to a Green List occupation.
+- The **Post Study Work Visa** lets [graduates](/blog/first-resume-for-gen-z-2026) of New Zealand institutions stay and work **for any [employer](/blog/how-recruiters-spot-generic-resumes)**, with no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) required.
+- **Duration depends on your qualification level and, for some qualifications, what you studied** — postgraduate awards get longer, and some non-[degree](/blog/how-to-list-education-on-resume) qualifications only qualify if they lead to a Green List occupation.
 - The usual next step is the **Accredited Employer Work Visa (AEWV)**, which requires an accredited employer, a job check, and a qualifying role.
 - The **Green List** provides **straight to residence** and **work to residence** pathways for occupations in genuine shortage.
-- **Studying outside Auckland** has at times carried additional advantages; check the current settings with Immigration New Zealand rather than assuming.
+- **Studying outside Auckland** has at times carried additional advantages; check the cur[rent](/blog/canada-major-city-job-markets) settings with Immigration New Zealand rather than assuming.
 
 ## What the visa gives you
 
@@ -25,9 +25,9 @@ The Post Study Work Visa is New Zealand's post-graduation route, and its definin
 
 **You can work for anyone.** Full time, part time, contract, self-employed. No employer has to apply for anything, pay anything, or wait for anything.
 
-**You do not need a job offer to get it.** You apply on the basis of having completed a qualifying New Zealand qualification.
+**You do not need a [job offer](/blog/how-to-negotiate-a-job-offer-email) to get it.** You apply on the basis of having completed a qualifying New Zealand qualification.
 
-**It is the window in which everything else has to happen** — the work experience, the accredited employer relationship, and the move toward residence.
+**It is the window in which everything else has to happen** — the work [experience](/blog/resume-matching-experienced-professionals), the accredited employer relationship, and the move toward residence.
 
 **Duration is tiered.** Longer for postgraduate qualifications, shorter for bachelor's-level and below, and for some lower-level qualifications the visa is only available where the study relates to a Green List occupation. The current durations and the conditions attached are published by Immigration New Zealand, and they have changed more than once — check the source, not a summary.
 
@@ -37,7 +37,7 @@ The Post Study Work Visa is New Zealand's post-graduation route, and its definin
 
 **Study undertaken in New Zealand**, with rules on how much of the qualification must have been completed in the country.
 
-**Applied for within the required period** after your studies end — this is a deadline and it is missed regularly.
+**Applied for within the required period** after your studies end — this is a [deadline](/blog/campus-placement-preparation-timeline) and it is missed regularly.
 
 **Health and character requirements**, as with any New Zealand visa.
 
@@ -59,13 +59,13 @@ The route after the post-study visa, and it introduces a constraint worth unders
 
 This is where a study-to-residence plan actually lands.
 
-**Tier 1 — Straight to Residence.** Certain occupations allow you to apply for residence directly, with a job or job offer in that occupation from an accredited employer. This is the fastest route available and it is why the list is worth consulting before you choose a specialism.
+**Tier 1 — Straight to Residence.** Certain occupations allow you to apply for residence directly, with a job or job offer in that occupation from an accredited employer. This is the fastest route available and it is why the list is worth [consulting](/blog/case-interview-preparation-guide-2026) before you choose a specialism.
 
 **Tier 2 — Work to Residence.** Other occupations require a qualifying period of employment in New Zealand in that occupation first, after which you can apply.
 
 **Sector agreements** exist for some industries with their own arrangements.
 
-**The Skilled Migrant Category** is the general points-based residence route, revised into a simpler six-point system based on qualifications, income and occupational registration.
+**The Skilled Migrant Category** is the general [points-based](/blog/canada-express-entry-for-new-grads) residence route, revised into a simpler six-point system based on qualifications, income and occupational registration.
 
 **The list changes.** Occupations move on and off it as shortages shift. Consulting Immigration New Zealand directly is not pedantry here; it is the difference between a plan that works and one that does not.
 
@@ -77,23 +77,23 @@ The visa is a countdown and the sequence inside it decides the outcome.
 
 **Second, get to an accredited employer.** Even a good role at a non-accredited employer cannot convert into an AEWV. Check accreditation before you accept, not after.
 
-**Third, document everything.** Employment agreements, payslips, position descriptions and evidence that your role matches the occupation you are claiming. Residence applications are evidence-based and reconstructing two years of employment from memory is unpleasant.
+**Third, [document](/blog/campus-placement-document-checklist) everything.** Employment agreements, [payslip](/blog/canada-salary-expectations-new-grad)s, position descriptions and evidence that your role matches the occupation you are claiming. Residence applications are evidence-based and reconstructing two years of employment from memory is unpleasant.
 
 **Fourth, watch the wage thresholds.** Various parts of the system have been tied to median wage figures that are adjusted periodically. A role that qualifies today may sit below a revised threshold later.
 
-**Fifth, start the residence application early.** Processing takes time and the post-study visa does not extend to accommodate it.
+**Fifth, start the residence [application](/blog/how-many-jobs-should-you-apply-to-per-day) early.** Processing takes time and the post-study visa does not extend to accommodate it.
 
 ## Practical setup in New Zealand
 
 The administrative sequence, briefly.
 
-**Get an IRD number.** New Zealand's tax identifier — without one you are taxed at a no-declaration rate that is considerably higher.
+**Get an IRD number.** New Zealand's [tax](/blog/canada-first-job-taxes-and-benefits) identifier — without one you are taxed at a no-declaration rate that is considerably higher.
 
 **Choose a tax code** on starting work, which tells your employer how much PAYE to deduct. Getting this wrong is a common and easily fixed problem.
 
-**Open a New Zealand bank account.** Most employers pay into a local account, and several other things depend on it.
+**Open a New Zealand [bank account](/blog/first-job-abroad-practical-checklist).** Most employers pay into a local account, and several other things depend on it.
 
-**Enrol in KiwiSaver** unless you have a specific reason not to — the employer contribution and the government contribution are money you do not get by opting out.
+**Enrol in KiwiSaver** unless you have a specific reason not to — the employer contribution and the government contribution are money you do not get by [opt](/blog/opt-cpt-resume-guide)ing out.
 
 **Understand your ACC cover.** The Accident Compensation Corporation provides universal no-fault injury cover funded partly by a levy on your earnings, and it applies from the day you arrive.
 

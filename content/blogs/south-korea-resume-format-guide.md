@@ -16,32 +16,32 @@ showcase: none
 - The Korean resume is the **이력서 (ireryeokseo)** — a structured, often tabular document with a photo and personal details.
 - It is normally accompanied by the **자기소개서 (jagi sogaeseo)**, a self-introduction essay with no direct Western equivalent.
 - **A photo is standard**, as are date of birth and often other personal details, which differs sharply from UK and US convention.
-- **Multinationals and Coupang accept Western-style resumes**; domestic employers generally expect the Korean format.
+- **[Multinationals](/blog/japan-gaishikei-vs-domestic) and Coupang accept Western-style resumes**; domestic employers generally expect the Korean format.
 - **TOPIK level belongs on the document** — it is a concrete, verifiable credential that Korean employers understand immediately.
 
 ## Two documents, not one
 
-The most important structural fact: a Korean application normally consists of two separate documents with different jobs.
+The most important structural fact: a Korean application normally consists of two separate documents with diffe[rent](/blog/canada-major-city-job-markets) jobs.
 
-**The 이력서 (ireryeokseo)** is the factual record — who you are, what you studied, where you worked, what certifications you hold. It is frequently laid out as a table, and many Korean companies provide their own template that you fill in rather than a document you design.
+**The 이력서 (ireryeokseo)** is the factual record — who you are, what you studied, where you worked, what [certifications](/blog/how-to-list-certifications-on-resume) you hold. It is frequently laid out as a table, and many Korean companies provide their own template that you fill in rather than a document you design.
 
-**The 자기소개서 (jagi sogaeseo)** is the self-introduction. It is a written narrative, often answering set prompts, covering your background, motivation, character and ambitions. It is substantially longer than a Western cover letter and it is genuinely read.
+**The 자기소개서 (jagi sogaeseo)** is the self-introduction. It is a written narrative, often answering set prompts, covering your background, motivation, character and ambitions. It is substantially longer than a Western [cover letter](/blog/cover-letter-generator-by-country) and it is genuinely read.
 
-**Some employers supply their own forms for both.** If they do, use them exactly. Substituting your own beautifully designed document for a company's required template reads as an inability to follow instructions.
+**Some employers supply their own forms for both.** If they do, use them exactly. Substituting your own beautifully [designed document](/blog/resume-design-color-guide) for a company's required template reads as an inability to follow instructions.
 
 ## Inside the ireryeokseo
 
 **A photo, top right.** Formal, professional, plain background. Korea has a well-established industry of professional application photographs, which tells you how seriously this is taken.
 
-**Personal details:** name (in Korean characters as well if you have a Korean name), date of birth, contact details, address, and nationality.
+**Personal details:** name (in Korean characters as well if you have a Korean name), date of birth, [contact details](/blog/resume-contact-section), address, and nationality.
 
-**Education**, reverse chronological, with institution, major, dates and grades. Korean employers pay close attention to institution and major, and the major matters again later for visa purposes.
+**Education**, [reverse chronological](/blog/chronological-vs-functional-resume), with institution, major, dates and grades. Korean employers pay close attention to institution and major, and the major matters again later for visa purposes.
 
 **Work experience**, with company, department, position, dates and responsibilities. Factual and concise rather than achievement-narrative in style.
 
 **Certifications and qualifications** — this section carries more weight than in Western markets. Korea has a strong culture of formal certification, and listed credentials are read as concrete evidence.
 
-**Language ability**, with **TOPIK level** stated explicitly if you have it, alongside English and any other languages with the standard test scores Koreans recognise (TOEIC in particular).
+**[Language ability](/blog/bilingual-language-skills-on-resume)**, with **TOPIK level** stated explicitly if you have it, alongside English and any other languages with the standard test scores Koreans recognise (TOEIC in particular).
 
 **Military service** appears on Korean resumes; as a foreign national it does not apply to you and can be omitted.
 
@@ -49,7 +49,7 @@ The most important structural fact: a Korean application normally consists of tw
 
 This is where international candidates struggle most, because there is nothing quite like it in Western practice.
 
-**It answers prompts.** Common ones include your upbringing and character, your motivation for applying, a difficulty you overcame, your strengths and weaknesses, and your aspirations at the company. Many employers specify the questions and a character limit for each.
+**It answers prompts.** Common ones include your upbringing and character, your motivation for applying, a difficulty you overcame, your [strengths and weaknesses](/blog/how-to-answer-greatest-weakness-interview), and your aspirations at the company. Many employers specify the questions and a character limit for each.
 
 **It is narrative and personal.** Where a Western cover letter argues a case, the jagi sogaeseo tells a story about who you are and how you came to be that person.
 
@@ -69,7 +69,7 @@ Not every employer expects the Korean format.
 
 **Coupang** operates substantially in English with internationally recognisable hiring.
 
-**Startups, particularly in Pangyo,** vary — many are entirely comfortable with a Western resume.
+**[Startups](/blog/japan-startup-jobs-guide), particularly in Pangyo,** vary — many are entirely comfortable with a Western resume.
 
 **Global recruitment tracks at the chaebol** frequently use their own English-language forms.
 
@@ -79,13 +79,13 @@ Not every employer expects the Korean format.
 
 Beyond the resume itself, Korean applications and visa processes require paperwork that takes time to obtain.
 
-**Apostilled degree certificate.** Korea is party to the Apostille Convention, so a degree from a member country needs an apostille rather than full consular legalisation. Obtain it in the country that issued the degree.
+**[Apostille](/blog/canada-credential-assessment-guide)d degree certificate.** Korea is party to the Apostille Convention, so a degree from a member country needs an apostille rather than full consular legalisation. Obtain it in the country that issued the degree.
 
 **Official transcripts**, sometimes sealed and sent directly by the institution.
 
 **A criminal background check** from your home country, frequently apostilled as well. This is required for the E-2 teaching visa and often for others.
 
-**Sealed reference letters** in some cases.
+**Sealed [reference](/blog/resume-references-guide) letters** in some cases.
 
 **Translations into Korean** by a certified translator for documents in other languages.
 
@@ -103,7 +103,7 @@ Small things that shape the impression.
 
 **Keep the design plain.** The ireryeokseo is a record, not a design object. Tabular, clean and complete beats creative every time.
 
-**Have a native speaker read the Korean version.** Errors in a self-introduction essay undermine the language claim you made two pages earlier, and this is one of the few situations where a second pair of eyes is genuinely essential.
+**Have a native speaker read the Korean version.** Errors in a self-introduction essay undermine the language claim you made [two pages](/blog/ats-resume-length-guide) earlier, and this is one of the few situations where a second pair of eyes is genuinely essential.
 
 **Keep an English version current too.** Multinationals, Coupang and the global tracks will want one, and maintaining both means you can apply to either market the day a posting appears.
 
@@ -113,11 +113,11 @@ The same facts land differently depending on how they are framed.
 
 **Name the company's scale.** Korean employers read organisational context quickly — headcount, revenue scale, whether it is a listed company. A reader unfamiliar with your previous employer needs one clause of context.
 
-**State your department, not only your title.** Korean organisational structure is department-centred, and "Marketing Team, Brand Division" communicates more than "Marketing Associate" does on its own.
+**State your department, not only your title.** Korean organisational structure is department-centred, and "[Marketing](/blog/resume-matching-marketing) Team, Brand Division" communicates more than "Marketing Associate" does on its own.
 
 **Be concrete about your major.** It is used in hiring and again in the visa process, so state it in full rather than abbreviating.
 
-**Show longevity where you have it.** Frequent job changes are read less favourably in Korea than in Western markets, and a coherent explanation for any short tenure is worth including.
+**Show longevity where you have it.** [Frequent job changes](/blog/resume-tailoring-job-hopping) are read less favourably in Korea than in Western markets, and a coherent explanation for any short tenure is worth including.
 
 **Mention any Korea connection explicitly.** Study in Korea, previous visits, TOPIK study, Korean colleagues or projects involving Korean partners — all of it addresses the unspoken question of whether you will actually stay.
 
@@ -127,7 +127,7 @@ The same facts land differently depending on how they are framed.
 
 Korean interviews test the documents rather than replacing them, and the register is more formal than Western candidates expect.
 
-**Multiple rounds are normal**, frequently including a panel of several interviewers and, at larger employers, a presentation task.
+**Multiple rounds are normal**, frequently including a [panel of several interviewers](/blog/panel-interview-tips-strategies) and, at larger employers, a presentation task.
 
 **Expect questions about your jagi sogaeseo.** The stories you told will be probed, which is a good reason for them to be true.
 
@@ -138,6 +138,22 @@ Korean interviews test the documents rather than replacing them, and the registe
 **Do not oversell.** Modesty is culturally valued, and the way to convey competence is specificity rather than enthusiasm.
 
 **Prepare a short self-introduction in Korean** even if the interview runs in English. Thirty seconds, well delivered, does more for you than a paragraph of claimed language ability.
+
+## Building a Korean-market application over time
+
+The documents improve with the same material, used better.
+
+**Keep a running record of achievements.** Korean applications ask for specific examples repeatedly, and reconstructing them under a character limit at midnight is how weak answers happen.
+
+**Track your TOPIK progress and put it on everything.** Each level is a concrete, verifiable credential that Korean employers read instantly, and it also scores in the [points-based](/blog/canada-express-entry-for-new-grads) residence route.
+
+**Collect certifications deliberately.** Korea values formal credentials more than most Western markets, and a relevant certification is a cheaper differentiator here than almost anywhere else.
+
+**Build a Korea-specific story.** Why Korea, why this industry, why now. It will be asked in the jagi sogaeseo and again in the interview, and a consistent answer across both is noticed.
+
+**Maintain both language versions in parallel.** Update the Korean and English documents together rather than letting one drift, so you can respond to a domestic or an international posting the same day.
+
+**And get the Korean [proofread](/blog/resume-proofreading-checklist) every time.** Not once — every time you make substantive edits. It is the document where a small error does disproportionate damage.
 
 ## Mini checklist
 
@@ -245,3 +261,6 @@ Korea is party to the Apostille Convention, so documents from member countries n
 ### Should I keep an English resume as well?
 
 Yes. Multinationals, Coupang and the chaebol global tracks all want one, and maintaining both lets you apply to either market immediately.
+### How do I build a strong Korean application over time?
+
+Keep a running record of achievements, track and display your TOPIK level, collect relevant certifications, maintain both language versions in parallel, and have the Korean proofread after every substantive edit.

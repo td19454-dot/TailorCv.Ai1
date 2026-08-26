@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- Swiss employers expect a **complete dossier**: cover letter, CV, work certificates, diplomas and references — not a CV alone.
+- Swiss employers expect a **complete dossier**: [cover letter](/blog/cover-letter-generator-by-country), CV, work certificates, diplomas and [references](/blog/resume-references-guide) — not a CV alone.
 - The **Arbeitszeugnis** (work certificate) is a formal reference document from each previous employer, and Swiss recruiters genuinely expect to see them.
 - A **photo is still conventional** on Swiss CVs, unlike the UK, Ireland or the Netherlands.
-- **Write in the language of the advert.** German, French, Italian or English — matching it is not optional.
+- **Write in the language of the advert.** German, French, Italian or English — matching it is not [opt](/blog/opt-cpt-resume-guide)ional.
 - Presentation is formal and precise. Swiss hiring rewards **completeness and accuracy** over personality.
 
 ## The dossier, not the CV
@@ -27,8 +27,8 @@ In the UK or the US you send a CV and possibly a cover letter. In Switzerland yo
 
 **The standard dossier contains:**
 
-1. **Motivationsschreiben / lettre de motivation** — a one-page cover letter.
-2. **Lebenslauf / CV** — two pages, with a photo.
+1. **Motivationsschreiben / [lettre de motivation](/blog/france-cv-lettre-de-motivation-guide)** — a one-page cover letter.
+2. **Lebenslauf / CV** — [two pages](/blog/ats-resume-length-guide), with a photo.
 3. **Arbeitszeugnisse** — work certificates from previous employers.
 4. **Diplomas and certificates** — degree certificates, transcripts, professional qualifications.
 5. **Language certificates** where relevant.
@@ -44,15 +44,15 @@ This is the document nobody outside the German-speaking world has heard of, and 
 
 **Why it matters.** Swiss recruiters expect to see them for every relevant previous role, and their absence raises a question.
 
-**The coded language.** Arbeitszeugnisse are written in a conventionalised register where apparently bland phrases carry specific meaning, because the document must be benevolent in tone but truthful in substance. Experienced Swiss recruiters read them fluently. If you receive one, it is worth having a native speaker read it before you file it.
+**The coded language.** Arbeitszeugnisse are written in a conventionalised register where appa[rent](/blog/canada-major-city-job-markets)ly bland phrases carry specific meaning, because the document must be benevolent in tone but truthful in substance. Experienced Swiss recruiters read them fluently. If you receive one, it is worth having a native speaker read it before you file it.
 
 **If you have never worked in a German-speaking country**, you will not have any, and that is understood. Provide reference letters from previous employers instead, and include named referees. What is not acceptable is providing nothing and offering no explanation.
 
 ## The CV itself
 
-Two pages, factual, reverse chronological.
+Two pages, factual, [reverse chronological](/blog/chronological-vs-functional-resume).
 
-**Personal details** at the top: name, address, phone, email, date of birth, nationality, and — importantly for Switzerland — your **work permit status**. Swiss employers screen on this early, and stating "EU citizen, no permit required" or your existing permit type is genuinely helpful.
+**Personal details** at the top: name, address, phone, email, date of birth, nationality, and — importantly for Switzerland — your **[work permit](/blog/canada-work-permit-types-guide) status**. Swiss employers screen on this early, and stating "EU citizen, no permit required" or your existing permit type is genuinely helpful.
 
 **A photo is conventional.** A plain, professional headshot in the top corner. This differs from the UK, Ireland and increasingly the Netherlands, and following the local convention here is the right call.
 
@@ -64,7 +64,7 @@ Two pages, factual, reverse chronological.
 
 **Skills and IT competencies**, listed concretely.
 
-**Do not use a creative layout.** Swiss professional documents favour clarity and precision. A designed CV signals a mismatch with the culture rather than initiative.
+**Do not use a [creative layout](/blog/resume-design-color-guide).** Swiss professional documents favour clarity and precision. A designed CV signals a mismatch with the culture rather than initiative.
 
 ## The cover letter
 
@@ -72,9 +72,9 @@ One page, formal, and specific.
 
 **Address a named person** where you can find one. "Sehr geehrte Frau [Name]" or "Madame, Monsieur" if you genuinely cannot.
 
-**Open with the role and where you saw it.** Swiss letters are direct about their purpose from the first sentence.
+**Open with the role and where you saw it.** Swiss letters are direct about their purpose from the [first sentence](/blog/cover-letter-opening-lines-that-work).
 
-**Middle paragraphs:** why this company, what you bring, and evidence for both. Connect specific experience to specific requirements from the advert.
+**Middle paragraphs:** [why this company](/blog/how-to-answer-why-do-you-want-this-job), what you bring, and evidence for both. Connect specific experience to specific requirements from the advert.
 
 **State your availability and permit position** explicitly — a start date and your right to work.
 
@@ -98,7 +98,7 @@ Switzerland places heavy weight on formal qualifications, and a foreign degree s
 
 The submission mechanics are ordinary; the etiquette differs.
 
-**Apply through the portal when there is one.** Swiss employers of any size use applicant tracking systems, and an email to a general address usually goes nowhere. Standard headings and a clean single PDF matter here as much as anywhere — an [ATS check](/ats-analysis) once removes the parsing risk.
+**Apply through the portal when there is one.** Swiss employers of any size use [applicant tracking system](/blog/ats-score-guide)s, and an email to a general address usually goes nowhere. Standard headings and a clean single PDF matter here as much as anywhere — an [ATS check](/ats-analysis) once removes the [parsing](/blog/ats-resume-parser-friendly-format) risk.
 
 **Confirm receipt if you hear nothing after a week or two.** A single polite enquiry is fine.
 
@@ -106,7 +106,7 @@ The submission mechanics are ordinary; the etiquette differs.
 
 **Prepare for a formal register.** Address people by title and surname unless invited otherwise, arrive early rather than on time, and expect structured, prepared questions rather than a conversation.
 
-**References are actually called.** Brief your referees, tell them which role and which company, and make sure the contact details are current. In markets where reference checks are a formality this feels excessive; in Switzerland it is not.
+**[References are actually called](/blog/reference-check-process-guide).** Brief your referees, tell them which role and which company, and make sure the [contact details](/blog/resume-contact-section) are current. In markets where reference checks are a formality this feels excessive; in Switzerland it is not.
 
 ## Tailoring, and the details that get noticed
 
@@ -118,11 +118,11 @@ Swiss reviewers read carefully, which cuts both ways.
 
 **Tailor the letter, not just the CV.** The motivation letter is where Swiss employers look for evidence that you understood the role, and a generic one undermines an otherwise strong dossier.
 
-**Mirror the advert's own terminology.** If the posting names a specific standard, tool or certification, use that exact term where it is genuinely true of you.
+**Mirror the advert's own terminology.** If the posting names a specific standard, tool or [certification](/blog/how-to-list-certifications-on-resume), use that exact term where it is genuinely true of you.
 
 **Check the file names.** "Muster_Anna_Lebenslauf.pdf" is professional; "cv_neu_final2.pdf" is not, and in a market that reads precision as competence this is not a small thing.
 
-**Proofread in the target language.** A German or French letter with errors does more damage than an English one, because it invites doubt about the language level you claimed.
+**[Proofread](/blog/resume-proofreading-checklist) in the target language.** A German or French letter with errors does more damage than an English one, because it invites doubt about the language level you claimed.
 
 ## The interview, and what the dossier has to survive
 

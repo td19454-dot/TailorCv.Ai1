@@ -15,9 +15,9 @@ showcase: none
 
 - South Korea hosts genuinely world-leading companies — **Samsung, LG, SK, Hyundai, Naver, Kakao, Coupang** — and they do hire foreign professionals.
 - **The E-7 visa is the main professional route**, and it is tied to a specific occupation code that must match your degree and the job.
-- **Korean language ability is a major differentiator.** Some roles run in English, but the market opens dramatically at business-level Korean.
+- **Korean [language ability](/blog/bilingual-language-skills-on-resume) is a major diffe[rent](/blog/canada-major-city-job-markets)iator.** Some roles run in English, but the market opens dramatically at business-level Korean.
 - **Teaching English (E-2) is the most accessible entry route** but it is a separate track that does not lead naturally to corporate employment.
-- **Chaebol hiring cycles** run on structured recruitment periods, closer to the Japanese model than the Western one.
+- **Chaebol hiring cycles** run on structured recruitment periods, closer to the [Japanese](/blog/how-to-get-a-job-in-japan-foreigner) model than the Western one.
 
 ## The shape of the market
 
@@ -31,21 +31,21 @@ Korea's economy is dominated by a small number of very large conglomerates along
 
 **Semiconductors and displays** are areas where Korea is world-leading, and where a specialised engineering background is genuinely scarce and valued.
 
-**Foreign multinationals** run Korean operations and are frequently the most accessible starting point for a foreign professional, because they are already structured around international staff.
+**Foreign [multinationals](/blog/japan-gaishikei-vs-domestic)** run Korean operations and are frequently the most accessible starting point for a foreign professional, because they are already structured around international staff.
 
-**Startups** cluster around Seoul's Gangnam and Pangyo districts, with Pangyo Techno Valley functioning as the country's technology corridor.
+**[Startups](/blog/japan-startup-jobs-guide)** cluster around Seoul's Gangnam and Pangyo districts, with Pangyo Techno Valley functioning as the country's technology corridor.
 
 ## The visa question, in outline
 
 Everything about your job search is shaped by which visa you can realistically obtain. The [E-7 guide](/blog/south-korea-e7-visa-explained) covers this properly; the short version matters here.
 
-**E-7 (Foreign National of Special Ability)** is the main professional work visa. It is tied to a specific occupation code, and your degree, your experience and the job description all have to align with it.
+**E-7 (Foreign National of Special Ability)** is the main professional work visa. It is tied to a specific occupation code, and your degree, your experience and the [job description](/blog/job-description-analysis-checklist) all have to align with it.
 
 **E-2** is the teaching visa for English instructors, and it is the most accessible route into the country for a native English-speaking graduate.
 
 **D-10** is a job-seeking visa allowing you to stay while looking for work, which is useful if you are already in Korea.
 
-**F-2-7** is a points-based residence visa, and **F-5** is permanent residency. Both reward Korean language ability, income and time in country.
+**F-2-7** is a [points-based](/blog/canada-express-entry-for-new-grads) residence visa, and **F-5** is [permanent residency](/blog/canada-provincial-nominee-guide). Both reward Korean language ability, income and time in country.
 
 **Graduates of Korean universities** are treated more favourably across several of these routes, which makes studying in Korea a genuine entry strategy.
 
@@ -83,7 +83,7 @@ Korean corporate hiring follows a rhythm that is closer to Japan's than to the W
 
 Worth calibrating carefully, because the gap from Western norms is real.
 
-**Hierarchy is explicit and linguistically encoded.** Korean has grammatical levels of formality tied to seniority and age, and workplace relationships are structured around them. This is not something you can opt out of.
+**[Hierarchy](/blog/japan-nenkou-seniority-explained) is explicit and linguistically encoded.** Korean has grammatical levels of formality tied to seniority and age, and workplace relationships are structured around them. This is not something you can [opt](/blog/opt-cpt-resume-guide) out of.
 
 **Hours have been legally capped** and the statutory maximum working week was reduced, with enforcement that has genuinely changed practice at larger employers. Smaller companies vary considerably.
 
@@ -101,15 +101,15 @@ Korean pay is respectable and the structure differs enough to matter.
 
 **Annual salary is quoted as yeonbong** — a total annual figure — and it is frequently divided into twelve or thirteen payments. Bonuses at the large conglomerates can be a significant share of total compensation and are performance-linked.
 
-**The four major insurances** are compulsory and deducted from pay: national pension, health insurance, employment insurance and industrial accident insurance. Employer and employee both contribute.
+**The four major insurances** are compulsory and deducted from pay: national [pension](/blog/first-90-days-new-job), health insurance, employment insurance and industrial accident insurance. Employer and employee both contribute.
 
 **Foreign nationals and the national pension.** Depending on your nationality, a lump-sum refund of your pension contributions may be available when you leave Korea permanently, under reciprocal arrangements with your home country. This is genuinely worth checking, because it can amount to a meaningful sum.
 
-**Income tax is progressive**, with a flat-rate election available to some foreign workers under certain conditions — worth asking your employer's payroll about, since it is occasionally advantageous.
+**Income [tax](/blog/canada-first-job-taxes-and-benefits) is progressive**, with a flat-rate election available to some foreign workers under certain conditions — worth asking your employer's payroll about, since it is occasionally advantageous.
 
 **Housing works differently.** *Jeonse* is a Korean arrangement where you pay a very large refundable deposit instead of monthly rent; *wolse* is monthly rent with a smaller deposit. Foreign employees usually take wolse, and some employers provide housing or a housing allowance, which is worth asking about explicitly.
 
-**Living costs are moderate by developed-economy standards.** Seoul housing is expensive, public transport is excellent and cheap, healthcare is good and inexpensive under national insurance, and eating out is affordable.
+**[Living costs](/blog/canada-salary-benchmarking-guide) are moderate by developed-economy standards.** Seoul housing is expensive, public transport is excellent and cheap, healthcare is good and inexpensive under national insurance, and eating out is affordable.
 
 **The net position is generally good**, particularly outside the most expensive Seoul districts.
 
@@ -117,7 +117,7 @@ Korean pay is respectable and the structure differs enough to matter.
 
 The channels differ from Western markets enough to matter.
 
-**Saramin and JobKorea** are the two dominant domestic job boards, and they run largely in Korean.
+**Saramin and JobKorea** are the two dominant domestic [job boards](/blog/best-job-search-websites-2026), and they run largely in Korean.
 
 **LinkedIn works for the international slice** — multinationals, Coupang, global tracks and startups — and is close to useless for the domestic mainstream.
 
@@ -125,11 +125,11 @@ The channels differ from Western markets enough to matter.
 
 **Wanted and Rocket Punch** are startup-oriented platforms with a more international feel, particularly around Pangyo.
 
-**University career centres** are genuinely valuable if you studied in Korea, and Korean universities maintain close employer relationships.
+**[University career centres](/blog/canada-university-career-services-guide)** are genuinely valuable if you studied in Korea, and Korean universities maintain close employer relationships.
 
-**Contact Korea and government programs** run periodic initiatives connecting foreign professionals with Korean employers, including job fairs aimed specifically at international candidates.
+**Contact Korea and government programs** run periodic initiatives connecting foreign professionals with Korean employers, including [job fairs](/blog/campus-vs-off-campus-placement-strategy) aimed specifically at international candidates.
 
-**Alumni networks matter here.** Korean professional life places real weight on school and university ties, and if you attended a Korean institution, that connection is a live asset rather than a sentimental one.
+**[Alumni networks](/blog/international-student-networking-guide) matter here.** Korean professional life places real weight on school and university ties, and if you attended a Korean institution, that connection is a live asset rather than a sentimental one.
 
 ## Mini checklist
 
