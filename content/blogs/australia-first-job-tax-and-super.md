@@ -13,10 +13,10 @@ showcase: none
 
 ## Key Takeaways
 
-- Get a **[Tax](/blog/canada-first-job-taxes-and-benefits) File Number (TFN)** immediately — without one you are taxed at the top marginal rate regardless of what you earn.
-- **Superannuation** is a compulsory [employer](/blog/how-recruiters-spot-generic-resumes) contribution on top of your [salary](/blog/how-to-negotiate-salary-offer), paid into a [retirement fund](/blog/first-90-days-new-job). It is real money and it is yours.
-- A salary quoted as a **"[package](/blog/canada-salary-negotiation-guide)"** includes super; a salary quoted as **"base"** or "plus super" does not. The same number can mean two diffe[rent](/blog/canada-major-city-job-markets) things.
-- Claim the **tax-free [threshold](/blog/resume-for-h1b-visa-sponsorship)** on one job only — claiming it on two leads to a bill at tax time.
+- Get a **Tax File Number (TFN)** immediately — without one you are taxed at the top marginal rate regardless of what you earn.
+- **Superannuation** is a compulsory employer contribution on top of your salary, paid into a retirement fund. It is real money and it is yours.
+- A salary quoted as a **"package"** includes super; a salary quoted as **"base"** or "plus super" does not. The same number can mean two different things.
+- Claim the **tax-free threshold** on one job only — claiming it on two leads to a bill at tax time.
 - Australia's tax year runs **1 July to 30 June**, and most people lodge a return afterwards through myGov.
 
 ## Get a TFN before anything else
@@ -25,7 +25,7 @@ A **Tax File Number** is your personal identifier with the Australian Taxation O
 
 **Without a TFN you are taxed at the highest marginal rate** on every dollar, regardless of how little you earn. The money is recoverable when you lodge a return, but you are effectively lending it to the government interest-free for up to a year.
 
-Your employer will give you a **Tax File Number Declaration** to complete when you start. This is where you provide your TFN and answer the tax-free threshold question below.
+Your [employer](/blog/how-recruiters-spot-generic-resumes) will give you a **Tax File Number Declaration** to complete when you start. This is where you provide your TFN and answer the tax-free [threshold](/blog/resume-for-h1b-visa-sponsorship) question below.
 
 ## The tax-free threshold, and the trap
 
@@ -41,13 +41,13 @@ If you hold two jobs and claim the threshold on both, each employer withholds as
 
 This is the concept that most confuses people arriving from other systems.
 
-**Super is a compulsory contribution your employer pays on top of your wages** into a retirement fund. It is not deducted from your salary — it is an additional amount, calculated as a percentage of your earnings, and the rate is set by legislation and has been rising in steps.
+**Super is a compulsory contribution your employer pays on top of your wages** into a [retirement fund](/blog/first-90-days-new-job). It is not deducted from your [salary](/blog/how-to-negotiate-salary-offer) — it is an additional amount, calculated as a percentage of your earnings, and the rate is set by legislation and has been rising in steps.
 
 **It is your money.** It sits in a fund in your name, invested, until you reach preservation age.
 
 **You usually choose the fund.** Your employer will offer a default, but you can nominate your own. If you never nominate one, contributions go into a **stapled fund** — one already linked to you from a previous job — which is a rule designed to stop people accumulating multiple accounts.
 
-**Multiple accounts cost you real money.** Each fund charges fees and often insurance premiums. Someone with four accounts from four casual jobs is paying four sets of fees on a small balance. Consolidating through myGov takes minutes.
+**Multiple accounts cost you real money.** Each fund charges [fees](/blog/best-free-online-certificates-for-resume) and often insurance premiums. Someone with four accounts from four casual jobs is paying four sets of fees on a small balance. Consolidating through myGov takes minutes.
 
 **If you leave Australia permanently** on a temporary visa, you may be able to claim your super back through the **Departing Australia Superannuation Payment (DASP)**, though it is taxed on withdrawal. Worth knowing before you assume the money is gone.
 
@@ -65,11 +65,11 @@ Two offers quoting the same number can differ by the full super percentage depen
 
 ## Reading your first payslip
 
-- **[Gross pay](/blog/canada-salary-expectations-new-grad)** matches your contracted rate for the period.
+- **Gross pay** matches your contracted rate for the period.
 - **PAYG withholding** is income tax withheld by your employer and sent to the ATO on your behalf.
 - **Superannuation** appears as an employer contribution — check it is actually being paid, and to the right fund.
 - **Net pay** is what reaches your account.
-- **Leave balances** — annual leave and personal (sick) leave — usually accrue visibly each period.
+- **Leave balances** — [annual leave](/blog/questions-to-ask-in-an-interview) and personal (sick) leave — usually accrue visibly each period.
 
 **Check your super is actually being paid.** Unpaid superannuation is a real and reasonably common problem, and it is far easier to raise in month one than to reconstruct a year later. Your fund's own app or myGov will show contributions arriving.
 
@@ -87,7 +87,7 @@ After 30 June, your employer reports your income to the ATO through Single Touch
 
 Beyond income tax, two deductions surprise people in their first year.
 
-**The Medicare levy** is a percentage of taxable income funding the public health system, applied on top of income tax for most residents for tax purposes. There is a low-income reduction, and a separate **Medicare Levy Surcharge** applies to higher earners without private hospital cover - which is the point at which taking out basic private cover can cost less than the surcharge does.
+**The Medicare levy** is a percentage of taxable income funding the public health system, applied on top of income tax for most residents for tax purposes. There is a low-income reduction, and a separate **Medicare Levy Surcharge** applies to higher earners without private hospital cover - which is the [point](/blog/aptitude-psychometric-test-tips) at which taking out basic private cover can cost less than the surcharge does.
 
 **HECS-HELP repayments**, if you studied in Australia on a government loan, start automatically once your income passes a repayment threshold. They are withheld through your pay like tax, at a rate that rises with income. Two things matter: tell your employer you have a HELP debt on your declaration form so they withhold enough, and remember that the balance is indexed annually.
 
@@ -190,7 +190,7 @@ Yes, but from one employer only — normally the highest-paying one. Claiming it
 
 ### What is the difference between base and package?
 
-"Plus super" or "base" means super sits on top of the figure. "Package" or "total remuneration" means super is included within it. Always ask which applies.
+"Plus super" or "base" means super sits on top of the figure. "Package" or "total [remuneration](/blog/how-to-negotiate-a-job-offer-email)" means super is included within it. Always ask which applies.
 
 ### When is the Australian tax year?
 

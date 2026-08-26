@@ -13,19 +13,19 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Temporary [Graduate](/blog/first-resume-for-gen-z-2026) visa (subclass 485)** is the bridge — it gives you full working rights after graduating, but it expires, and it is not [permanent residence](/blog/canada-provincial-nominee-guide).
-- Permanent skilled visas run on a **[points test](/blog/canada-express-entry-for-new-grads)**, and you must reach a minimum score before you can even submit an Expression of Interest.
+- The **Temporary Graduate visa (subclass 485)** is the bridge — it gives you full working rights after graduating, but it expires, and it is not permanent residence.
+- Permanent skilled visas run on a **points test**, and you must reach a minimum score before you can even submit an Expression of Interest.
 - **English test results are the single most improvable factor** — moving from Proficient to Superior English is worth a large jump for one weekend of preparation and a test fee.
-- Your occupation must be on a **skilled [occupation list](/blog/in-demand-jobs-canada-2026)** and you need a positive **[skills](/blog/resume-skills-match-job-description) assessment** from the relevant assessing authority before you can claim points.
+- Your occupation must be on a **skilled occupation list** and you need a positive **skills assessment** from the relevant assessing authority before you can claim points.
 - **State nomination (190) and regional (491)** routes add points on top of your base score and frequently decide the outcome.
 
 ## The two-stage picture
 
 Almost every confusion about Australian immigration comes from collapsing two separate things into one.
 
-**Stage one is the 485.** You graduate from an Australian institution, you apply for a Temporary Graduate visa, and you get full working rights for a defined period. No [employer](/blog/how-recruiters-spot-generic-resumes) [sponsorship](/blog/resume-for-h1b-visa-sponsorship), no points test, no [job offer](/blog/how-to-negotiate-a-job-offer-email) required. Its length depends on your qualification level, and studying or living in a designated regional area can extend it.
+**Stage one is the 485.** You [graduate](/blog/first-resume-for-gen-z-2026) from an Australian institution, you apply for a Temporary Graduate visa, and you get full working rights for a defined period. No [employer](/blog/how-recruiters-spot-generic-resumes) [sponsorship](/blog/resume-for-h1b-visa-sponsorship), no points test, no [job offer](/blog/how-to-negotiate-a-job-offer-email) required. Its length depends on your qualification level, and studying or living in a designated regional area can extend it.
 
-**Stage two is permanent residence**, which runs on an entirely diffe[rent](/blog/canada-major-city-job-markets) mechanism: the points test. The 485 does not convert into permanent residence automatically. It gives you a window in which to build the points and the work [experience](/blog/resume-matching-experienced-professionals) that a permanent visa requires.
+**Stage two is permanent residence**, which runs on an entirely different mechanism: the points test. The 485 does not convert into permanent residence automatically. It gives you a window in which to build the points and the work [experience](/blog/resume-matching-experienced-professionals) that a permanent visa requires.
 
 Graduates who treat the 485 as the destination rather than the runway are the ones who find themselves scrambling in its final year.
 
@@ -55,7 +55,7 @@ English is scored in bands: **Competent**, **Proficient**, and **Superior**. Com
 
 The gap between Competent and Superior is one of the largest single point swings available to any applicant — and unlike age, education or years of experience, it is entirely within your control and improvable in weeks.
 
-**Accepted tests include IELTS, PTE Academic, TOEFL iBT, Cambridge C1 Advanced and OET.** They are not interchangeable in difficulty for every candidate. Many applicants find PTE Academic's computer-scored format easier to [opt](/blog/opt-cpt-resume-guide)imise for than IELTS's human-marked speaking and writing, and switching test is a legitimate strategy rather than a trick.
+**Accepted tests include IELTS, PTE Academic, TOEFL iBT, Cambridge C1 Advanced and OET.** They are not interchangeable in difficulty for every candidate. Many applicants find PTE Academic's computer-scored format easier to optimise for than IELTS's human-marked speaking and writing, and switching test is a legitimate strategy rather than a trick.
 
 **Every band is scored separately.** Your lowest section determines your level — a Superior score in three sections and a Proficient in one gives you Proficient. Target the weakest band specifically rather than studying generally.
 
@@ -63,9 +63,9 @@ The gap between Competent and Superior is one of the largest single point swings
 
 Two gates before points matter at all.
 
-**Your occupation must be on a skilled occupation list.** The lists are reviewed and occupations are added and removed, which is why an occupation that qualified a friend three years ago may not qualify you now.
+**Your occupation must be on a skilled [occupation list](/blog/in-demand-jobs-usa-2026).** The lists are reviewed and occupations are added and removed, which is why an occupation that qualified a friend three years ago may not qualify you now.
 
-**You need a positive skills assessment** from the assessing authority for your occupation — Engineers Australia for engineers, ACS for ICT roles, CPA Australia or CAANZ for accountants, VETASSESS for many others. Each has its own requirements, its own fee and its own [processing time](/blog/how-long-to-hear-back-after-applying).
+**You need a positive [skills](/blog/resume-skills-match-job-description) assessment** from the assessing authority for your occupation — Engineers Australia for engineers, ACS for ICT roles, CPA Australia or CAANZ for accountants, VETASSESS for many others. Each has its own requirements, its own fee and its own [processing time](/blog/how-long-to-hear-back-after-applying).
 
 **Start this early.** A skills assessment takes real time, it must be valid when you submit, and it is the step most likely to delay an otherwise ready [application](/blog/how-many-jobs-should-you-apply-to-per-day). For ICT graduates in particular, the ACS has specific requirements about how much of your [degree](/blog/how-to-list-education-on-resume) is ICT-relevant and how work experience is counted.
 
@@ -83,7 +83,7 @@ Two gates before points matter at all.
 
 Submitting an Expression of Interest is not an application, and the distinction matters.
 
-You lodge an EOI through **SkillSelect**, the online system, stating your occupation, your claimed points and your visa p[references](/blog/resume-references-guide). It sits in a pool. The Department then runs **invitation rounds**, inviting the highest-ranked candidates in each occupation until that round's allocation is filled.
+You lodge an EOI through **SkillSelect**, the online system, stating your occupation, your claimed points and your visa preferences. It sits in a pool. The Department then runs **invitation rounds**, inviting the highest-ranked candidates in each occupation until that round's allocation is filled.
 
 Three consequences follow from that design.
 
@@ -91,7 +91,7 @@ Three consequences follow from that design.
 
 **Ties are broken by how long you have been in the pool.** Two candidates on the same score are separated by EOI submission date, which is a quiet argument for lodging as soon as your claims are genuinely supportable.
 
-**Your claims must be provable at invitation, not aspirational.** Everything you claim points for - skills assessment, English result, employment - has to be [document](/blog/campus-placement-document-checklist)ed if you are invited. Overstating a claim and hoping to fix it later is how applications get refused and applicants get barred from reapplying for a period.
+**Your claims must be provable at invitation, not aspirational.** Everything you claim points for - skills assessment, English result, employment - has to be documented if you are invited. Overstating a claim and hoping to fix it later is how applications get refused and applicants get barred from reapplying for a period.
 
 ## Building points across your 485 years
 
@@ -130,7 +130,7 @@ Check the individual state and territory lists, which differ from the federal on
 
 ### Scenario 3: Your 485 is running out
 
-Do not wait for the final months. Skills assessments, English tests and EOI invitation rounds all run on their own timelines, and stacking them at the end is how people run out of visa before they run out of options.
+Do not wait for the final months. Skills assessments, English tests and EOI invitation rounds all run on their own [timelines](/blog/campus-placement-preparation-timeline), and stacking them at the end is how people run out of visa before they run out of options.
 
 > **Tip:** Sit the English test early, even if you feel you are not ready. The result tells you exactly which band is holding your score down, and you can retake targeting only that section — far more efficient than studying everything and hoping.
 

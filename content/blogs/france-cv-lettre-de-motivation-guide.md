@@ -13,19 +13,19 @@ showcase: none
 
 ## Key Takeaways
 
-- The French CV is **[one page](/blog/ats-resume-length-guide)** for a graduate — considerably shorter than the German or Swiss convention.
+- The French CV is **one page** for a graduate — considerably shorter than the German or Swiss convention.
 - The **lettre de motivation** is still standard and genuinely read, and a generic one actively damages an otherwise good application.
-- **A photo is common but [opt](/blog/opt-cpt-resume-guide)ional**, and increasingly omitted by large and international employers.
+- **A photo is common but optional**, and increasingly omitted by large and international employers.
 - **Education carries unusual weight**, and where you studied does real work on a French CV.
 - **Write in French** unless the advert is in English — and a poor French letter is worse than a strong English one.
 
 ## The one-page rule
 
-French recruiters expect concision, and a graduate CV running to two pages signals an inability to prioritise.
+French [recruiters](/blog/how-recruiters-read-resumes) expect concision, and a graduate CV running to [two pages](/blog/ats-resume-length-guide) signals an inability to prioritise.
 
 **One page, always, for anyone under about ten years of experience.** Senior professionals may use two.
 
-**État civil** at the top: name, address, phone, email, and often age or date of birth. Nationality is common, and if you need a [work permit](/blog/canada-work-permit-types-guide), stating your status is genuinely helpful.
+**État civil** at the top: name, address, phone, email, and often age or date of birth. Nationality is common, and if you need a work permit, stating your status is genuinely helpful.
 
 **A title.** French CVs frequently carry a short title under the name stating the target role — "Ingénieur Data — Recherche CDI". It orients the reader immediately and its absence is noticeable.
 
@@ -67,7 +67,7 @@ This is where an international CV most often undersells itself in France.
 
 **[Internships count](/blog/internship-resume-guide) as experience.** A six-month stage at a recognised company is real professional experience in French eyes, and it belongs in the experience section described with outcomes, not in a student activities footnote.
 
-**Alternance is highly regarded.** An app[rent](/blog/canada-major-city-job-markets)iceship contract combining study and work signals both academic capability and professional maturity, and French recruiters read it very positively.
+**Alternance is highly regarded.** An apprenticeship contract combining study and work signals both academic capability and professional maturity, and French recruiters read it very positively.
 
 **Describe them properly.** Employer, dates, team, what you actually did, and what came of it. "Stage de fin d'études" with no description wastes the strongest thing on many graduate CVs.
 

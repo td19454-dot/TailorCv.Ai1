@@ -13,17 +13,17 @@ showcase: portfolio
 
 ## Key Takeaways
 
-- **Sydney is the larger tech market**, weighted toward fintech, [banking](/blog/resume-matching-insurance-jobs) technology, enterprise software and the Australian offices of [global firms](/blog/japan-gaishikei-vs-domestic).
+- **Sydney is the larger tech market**, weighted toward fintech, banking technology, enterprise software and the Australian offices of global firms.
 - **Melbourne** carries a strong product, health-tech and design culture, and generally costs somewhat less to live in than Sydney.
 - Australia's own success stories — **Atlassian, Canva, Afterpay, Airwallex, SafetyCulture** — hire graduates directly and are worth targeting by name.
 - **Brisbane, Perth, Adelaide and Canberra** have real technical employment with far less competition, particularly in defence, resources technology and government.
-- [Technical interviews](/blog/coding-interview-preparation-guide) follow international convention, so standard preparation transfers almost entirely.
+- Technical interviews follow international convention, so standard preparation transfers almost entirely.
 
 ## Sydney: scale, fintech, enterprise
 
 Sydney is Australia's largest technology market by a clear margin, and its character follows from what else is in the city.
 
-**The banks are technology employers.** Commonwealth Bank, Westpac, NAB and ANZ run very large engineering organisations — payments infrastructure, trading systems, digital banking, risk platforms. This is genuine software work at scale, and it is consistently underrated by graduates who filter for "tech companies" and skip anything with a bank's name on it.
+**The banks are technology [employers](/blog/how-recruiters-spot-generic-resumes).** Commonwealth Bank, Westpac, NAB and ANZ run very large engineering organisations — payments infrastructure, trading systems, digital [banking](/blog/resume-matching-insurance-jobs), risk platforms. This is genuine software work at scale, and it is consistently underrated by [graduates](/blog/first-resume-for-gen-z-2026) who filter for "tech companies" and skip anything with a bank's name on it.
 
 **Global firms run Sydney offices.** Amazon, Google, Microsoft, Canva and Atlassian all have substantial Sydney engineering presences rather than sales-only outposts.
 
@@ -70,9 +70,9 @@ For a graduate, applicant-to-seat ratio matters more than absolute market size, 
 4. **Technical interviews** — algorithms and data structures, plus a deep discussion of your own projects.
 5. **[System design](/blog/campus-placement-system-design-basics)**, at more senior levels or for larger platforms.
 6. **Behavioural round**, genuinely weighted rather than a formality.
-7. **Offer**, with your [visa position](/blog/australia-skilled-visa-points-graduates) becoming relevant here if you need [sponsorship](/blog/resume-for-h1b-visa-sponsorship).
+7. **Offer**, with your [visa position](/blog/australia-skilled-visa-points-graduates) becoming relevant here if you need sponsorship.
 
-**Preparation transfers.** The [standard technical interview preparation](/blog/usa-technical-interview-newgrad-prep) used for US or UK processes works here, because the question banks and formats are broadly international.
+**Preparation transfers.** The standard technical interview preparation used for US or UK processes works here, because the question banks and formats are broadly international.
 
 ## What Australian tech pay actually looks like
 

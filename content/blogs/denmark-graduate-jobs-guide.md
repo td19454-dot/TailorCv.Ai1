@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- Denmark runs on **flexicurity** — weak dismissal protection combined with strong unemployment support and active retraining. It makes [employers](/blog/how-recruiters-spot-generic-resumes) less risk-averse about hiring.
+- Denmark runs on **flexicurity** — weak dismissal protection combined with strong unemployment support and active retraining. It makes employers less risk-averse about hiring.
 - **Copenhagen dominates**, with Aarhus a genuine second centre and the Øresund region connecting Copenhagen to Malmö in Sweden.
-- The **Positive List** names occupations experiencing shortages and provides a streamlined [work permit](/blog/canada-work-permit-types-guide) route.
-- **Danish workplaces are exceptionally flat**, informal and consensus-driven, and this is not [marketing](/blog/resume-matching-marketing) language.
+- The **Positive List** names occupations experiencing shortages and provides a streamlined work permit route.
+- **Danish workplaces are exceptionally flat**, informal and consensus-driven, and this is not marketing language.
 - **English is widely sufficient** in technology, pharmaceuticals, shipping and international companies; Danish opens everything else.
 
 ## Flexicurity, and what it means for you
 
 Denmark's labour market model has a name and it genuinely affects your prospects.
 
-**Hiring and firing are both relatively easy.** [Notice period](/blog/notice-period-negotiation-guide)s are shorter than in most of Europe and dismissal protection is weaker. An employer taking a chance on an unfamiliar international candidate is taking a smaller risk than an equivalent employer in Germany or France.
+**Hiring and firing are both relatively easy.** Notice periods are shorter than in most of Europe and dismissal protection is weaker. An [employer](/blog/how-recruiters-spot-generic-resumes) taking a chance on an unfamiliar international candidate is taking a smaller risk than an equivalent employer in Germany or France.
 
 **The safety net is strong.** Unemployment insurance through an *a-kasse* fund, combined with active labour market policy and retraining support, means the consequences of losing a job are cushioned in a way they are not in the UK or US.
 
@@ -41,7 +41,7 @@ Small, open, and specialised in a handful of areas where it is genuinely world-l
 
 **Renewable energy.** Ørsted and Vestas made Denmark a world leader in offshore wind, and the engineering demand around it is real.
 
-**Technology.** Unity, Zendesk's Copenhagen operation, Trustpilot, Pleo and a healthy [startup](/blog/japan-startup-jobs-guide) scene, alongside the technology functions of the large corporates.
+**Technology.** Unity, Zendesk's Copenhagen operation, Trustpilot, Pleo and a healthy startup scene, alongside the technology functions of the large corporates.
 
 **Design and manufacturing.** LEGO in Billund, Bang & Olufsen, Danfoss and Grundfos — the last two in Jutland rather than Copenhagen, and correspondingly less contested.
 
@@ -51,21 +51,21 @@ Small, open, and specialised in a handful of areas where it is genuinely world-l
 
 **EU/EEA and Nordic citizens** work freely. Nordic citizens have additional rights under longstanding intra-Nordic agreements.
 
-**The Positive List** is the key document for everyone else. It names occupations experiencing shortages, in two versions — one for people with higher education, and one for skilled work — and being on it provides a streamlined residence and work permit route.
+**The Positive List** is the key [document](/blog/campus-placement-document-checklist) for everyone else. It names occupations experiencing shortages, in two versions — one for people with higher education, and one for skilled work — and being on it provides a streamlined residence and [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) route.
 
-**The Pay Limit Scheme** offers a route for roles paying above a defined annual salary threshold, regardless of occupation.
+**The Pay Limit Scheme** offers a route for roles paying above a defined annual [salary](/blog/how-to-negotiate-salary-offer) [threshold](/blog/international-resume-tailoring-guide), regardless of occupation.
 
-**The Establishment Card** allows graduates of Danish higher education institutions to remain in Denmark to seek work after completing their degree.
+**The Establishment Card** allows graduates of Danish higher education institutions to remain in Denmark to seek work after completing their [degree](/blog/how-to-list-education-on-resume).
 
 **The Startup Denmark scheme** exists for entrepreneurs with an approved business plan.
 
-**All thresholds and lists are revised** — check the cur[rent](/blog/canada-major-city-job-markets) position with SIRI, the Danish Agency for International Recruitment and Integration.
+**All thresholds and lists are revised** — check the current position with SIRI, the Danish Agency for International Recruitment and Integration.
 
 ## Danish workplace culture
 
 Flat even by Nordic standards.
 
-**[Hierarchy](/blog/japan-nenkou-seniority-explained) is close to invisible.** First names for everyone including the chief executive, and an expectation that you will voice disagreement regardless of seniority. Waiting to be asked reads as passive.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is close to invisible.** First names for everyone including the chief executive, and an expectation that you will voice disagreement regardless of seniority. Waiting to be asked reads as passive.
 
 **Trust is high and supervision is light.** You will be given responsibility early and not checked on much, which suits some people and unsettles others.
 
@@ -87,11 +87,11 @@ A tight sequence, and CPR is the gate for all of it.
 
 **NemKonto** — you nominate a bank account into which all public payments are made. Salary and refunds route through it.
 
-**MitID** is the national digital identity, used for banking, [tax](/blog/canada-first-job-taxes-and-benefits), healthcare and government services. Set it up early.
+**MitID** is the national digital identity, used for banking, tax, healthcare and government services. Set it up early.
 
 **Tax card.** Register with SKAT so your employer deducts the right amount. Danish income tax is high and the deduction is substantial, but it funds healthcare, education and the safety net rather than disappearing.
 
-**Housing in Copenhagen is expensive and competitive.** Consider the wider region — and note that living in Malmö, Sweden, while working in Copenhagen is a mainstream choice, with the bridge crossing taking well under an hour.
+**[Housing](/blog/remote-job-search-guide) in Copenhagen is expensive and competitive.** Consider the wider region — and note that living in Malmö, Sweden, while working in Copenhagen is a mainstream choice, with the bridge crossing taking well under an hour.
 
 ## Salaries and the tax question
 
@@ -113,7 +113,7 @@ The honest picture, since Danish tax is the thing everyone mentions.
 
 Denmark has its own conventions and they are worth matching.
 
-**Where roles are advertised.** Jobindex is the dominant national board, alongside JobNet (the public employment service), LinkedIn for international and technology roles, and company career pages. The Work in Denmark portal is aimed specifically at international candidates.
+**Where roles are advertised.** Jobindex is the dominant national board, alongside JobNet (the public employment service), LinkedIn for international and technology roles, and company [career](/blog/career-change-to-tech-guide) pages. The Work in Denmark portal is aimed specifically at international candidates.
 
 **The application is a CV plus an ansøgning** — a one-page application letter that is genuinely read and expected to be specific to the role.
 
@@ -139,7 +139,7 @@ Denmark scores extremely well on quality of life and poorly on ease of making fr
 
 **Language accelerates everything.** Free Danish tuition is available to residents, and even modest ability changes how you are received socially, whatever the professional situation.
 
-**Hygge is not just a marketing word.** It describes a genuine p[reference](/blog/resume-references-guide) for small, warm, home-based gatherings over large public socialising, which is precisely why the social scene is hard to enter from outside.
+**Hygge is not just a marketing word.** It describes a genuine preference for small, warm, home-based gatherings over large public socialising, which is precisely why the social scene is hard to enter from outside.
 
 **Give it two winters.** Almost everyone who stays says the first year was hard and the third was home.
 

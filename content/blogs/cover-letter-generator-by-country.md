@@ -13,11 +13,11 @@ showcase: none
 
 ## Key Takeaways
 
-- **[Cover letters](/blog/cover-letter-guide-2026) are not equally important everywhere.** In the US and UK they are frequently skimmed; in France, Germany, the Netherlands and Switzerland they are genuinely read.
+- **Cover letters are not equally important everywhere.** In the US and UK they are frequently skimmed; in France, Germany, the Netherlands and Switzerland they are genuinely read.
 - Where they are read, **a generic letter is worse than no letter** — it demonstrates that you did not bother.
 - The **structure differs by market**: the French *vous, moi, nous*, the German formality, the Dutch directness, the American brevity.
 - **Closing formulas are fixed** in French and German and getting them wrong is conspicuous.
-- A [generated draft](/cover-letter) solves the blank page and the structure; the specifics and the voice should be yours.
+- A generated draft solves the blank page and the structure; the specifics and the voice should be yours.
 
 ## Where it actually matters
 
@@ -44,9 +44,9 @@ Not just tone — the actual architecture differs.
 
 **France — vous, moi, nous.** Open with the company and why it interests you; continue with what you bring and the evidence; close with what you would do together. The order matters, and the closing formula is fixed and formal.
 
-**Germany — the Anschreiben.** Formal, structured, and precise. It states the position, connects your qualifications to the requirements specifically, mentions availability and often [salary expectations](/blog/canada-salary-expectations-new-grad) if the advert asked, and closes with a standard formula.
+**Germany — the Anschreiben.** Formal, structured, and precise. It states the position, connects your qualifications to the requirements specifically, mentions availability and often [salary](/blog/how-to-negotiate-salary-offer) expectations if the advert asked, and closes with a standard formula.
 
-**Switzerland** follows the German pattern and sits inside a complete dossier alongside work certificates and diplomas.
+**Switzerland** follows the German pattern and sits inside a complete dossier alongside work [certificates](/blog/campus-placement-document-checklist) and diplomas.
 
 **Netherlands** — direct, specific, [one page](/blog/ats-resume-length-guide). Overstatement is penalised and hedged language reads as evasive. Say what you did.
 
@@ -62,7 +62,7 @@ Underneath the local variation, the same three things.
 
 **It is about them, not you.** The opening should name something specific about the company — a product, a decision, a market they are in. "I am writing to apply for the position advertised" is a wasted [first sentence](/blog/cover-letter-opening-lines-that-work) in every country on earth.
 
-**It connects specific experience to specific requirements.** Not a summary of your CV, which they have. One or two concrete things you have done that map onto what this role needs.
+**It connects specific [experience](/blog/resume-matching-experienced-professionals) to specific requirements.** Not a summary of your [CV](/blog/resume-optimization-guide), which they have. One or two concrete things you have done that map onto what this role needs.
 
 **It answers the question the CV cannot.** [Why this company](/blog/how-to-answer-why-do-you-want-this-job), why this role, why now. That is the letter's actual job.
 
@@ -72,7 +72,7 @@ Underneath the local variation, the same three things.
 
 The blank page is the real obstacle, and it is worth solving.
 
-**A [tailored cover letter](/cover-letter) generated against the actual posting** gives you a structured first draft built from your own resume and the [job description](/blog/job-description-analysis-checklist), which means it starts from your real material rather than from a template.
+**A [tailored cover letter](/cover-letter) generated against the actual posting** gives you a structured first draft built from your own resume and the [job description](/blog/job-description-analysis-checklist), which means it starts from your real material rather than from a [template](/blog/how-to-choose-resume-template).
 
 **Then do three things to it.**
 
@@ -128,7 +128,7 @@ You do not need to write from scratch each time, and you should not use the same
 
 **The evidence paragraph is reusable within a role type.** If you are applying for [data analyst](/blog/resume-matching-data-analyst) roles, the concrete achievements you cite are largely stable.
 
-**The register changes by market.** Same facts, diffe[rent](/blog/canada-major-city-job-markets) confidence level — stronger for the US, more measured for the Netherlands and [the Nordics](/blog/nordic-graduate-job-markets-compared), more formal for Germany, Switzerland and France.
+**The register changes by market.** Same facts, different confidence level — stronger for the US, more measured for the Netherlands and [the Nordics](/blog/nordic-graduate-job-markets-compared), more formal for Germany, Switzerland and France.
 
 **The close is fixed by language.** Learn the standard formula for each language you apply in and use it exactly.
 
@@ -144,7 +144,7 @@ Not every application deserves one, and pretending otherwise leads to skipping t
 
 **When the role is tier three volume applying.** Spend the effort on the applications you actually want.
 
-**But never skip it in France, Germany, Switzerland or the Netherlands.** In those markets its absence is noticed, and the letter is part of how the application is assessed rather than an [opt](/blog/opt-cpt-resume-guide)ional extra.
+**But never skip it in France, Germany, Switzerland or the Netherlands.** In those markets its absence is noticed, and the letter is part of how the application is assessed rather than an optional extra.
 
 **And never skip it when the advert explicitly asks for one.** Ignoring a stated instruction is the cheapest possible way to be rejected.
 

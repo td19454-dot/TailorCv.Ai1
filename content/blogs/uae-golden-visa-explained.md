@@ -13,27 +13,27 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Golden [Visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore)** is a long-term, renewable UAE residence visa — typically **ten years** — that is **self-sponsored** rather than tied to an [employer](/blog/how-recruiters-spot-generic-resumes).
-- Categories include **investors, entrepreneurs, specialised talent, scientists, outstanding students and [graduates](/blog/first-resume-for-gen-z-2026)**, and holders of certain professional and creative distinctions.
-- **The outstanding-students route is the one most graduates miss** — high achievers at UAE [universities](/blog/how-to-list-education-on-resume) and top-ranked foreign institutions can qualify.
+- The **Golden Visa** is a long-term, renewable UAE residence visa — typically **ten years** — that is **self-sponsored** rather than tied to an employer.
+- Categories include **investors, entrepreneurs, specialised talent, scientists, outstanding students and graduates**, and holders of certain professional and creative distinctions.
+- **The outstanding-students route is the one most graduates miss** — high achievers at UAE universities and top-ranked foreign institutions can qualify.
 - Holding it means you can **change jobs, or be between jobs, without losing your residency** — a structural change in your position.
 - Applications are made through the relevant emirate's authority (**ICP federally, GDRFA in Dubai**), and the criteria are revised.
 
 ## What makes it different
 
-Ordinary UAE residency is sponsored. Your employer sponsors your visa, your visa depends on your job, and losing the job starts a clock on leaving the country.
+Ordinary UAE residency is sponsored. Your [employer](/blog/how-recruiters-spot-generic-resumes) sponsors your [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), your visa depends on your job, and losing the job starts a clock on leaving the country.
 
-The Golden Visa breaks that link. It is **self-sponsored**, granted on the basis of who you are and what you have achieved rather than who employs you. That single change has consequences that reach far beyond immigration paperwork.
+The Golden Visa breaks that link. It is **self-sponsored**, granted on the basis of who you are and what you have achieved rather than who employs you. That single change has consequences that reach far beyond immigration [paperwork](/blog/campus-placement-document-checklist).
 
 **You can change employer freely** without a visa transfer process.
 
 **You can be between jobs** without your residency ending.
 
-**You can sponsor your own family** — [spouse](/blog/first-job-abroad-practical-checklist), children, and in defined circumstances pa[rent](/blog/canada-major-city-job-markets)s and domestic staff.
+**You can sponsor your own family** — [spouse](/blog/first-job-abroad-practical-checklist), children, and in defined circumstances parents and domestic staff.
 
 **You can start a business** or hold your position while your circumstances change.
 
-**And you become dramatically cheaper to hire.** An employer taking on a Golden Visa holder incurs no [sponsorship](/blog/resume-for-h1b-visa-sponsorship) cost, no processing delay, and no risk of a visa complication. Stated on a CV, it is one of the strongest lines a candidate in this market has.
+**And you become dramatically cheaper to hire.** An employer taking on a Golden Visa holder incurs no [sponsorship](/blog/international-resume-tailoring-guide) cost, no processing delay, and no risk of a visa complication. Stated on a [CV](/blog/resume-optimization-guide), it is one of the strongest lines a candidate in this market has.
 
 ## The categories
 
@@ -50,17 +50,17 @@ The scheme has been broadened repeatedly, and the current categories cover consi
 | **Executives and professionals** | Senior roles meeting defined salary and qualification criteria |
 | **Frontline heroes and humanitarian workers** | Recognised contributions in defined circumstances |
 
-**Every threshold, salary level and ranking cut-off is set by the authorities and revised.** Check the current criteria on the ICP or GDRFA portals rather than on any secondary source. Categories have been added and requirements loosened more than once, which means an old "you do not qualify" is unreliable.
+**Every [threshold](/blog/resume-for-h1b-visa-sponsorship), salary level and ranking cut-off is set by the authorities and revised.** Check the current criteria on the ICP or GDRFA portals rather than on any secondary source. Categories have been added and requirements loosened more than once, which means an old "you do not qualify" is unreliable.
 
 ## The graduate routes, specifically
 
 Two categories are directly relevant to people early in their careers, and both are under-known.
 
-**Outstanding students at UAE universities.** High academic achievement at accredited UAE institutions can qualify a graduate, with the threshold set by grade and by the institution's classification. If you studied in the UAE and performed strongly, this is worth checking before you assume it is for other people.
+**Outstanding students at UAE universities.** High academic achievement at accredited UAE institutions can qualify a [graduate](/blog/first-resume-for-gen-z-2026), with the threshold set by grade and by the institution's classification. If you studied in the UAE and performed strongly, this is worth checking before you assume it is for other people.
 
 **Graduates of highly ranked foreign universities.** A route exists for graduates of institutions in defined global ranking bands, subject to graduation date and grade conditions. If you attended a highly ranked university abroad, check whether your institution and your year fall inside the current criteria.
 
-**Specialised talent while young.** The specialised talent category is not restricted to the very senior. Professionals in priority fields — including certain technology, engineering, medical and scientific specialisms — can qualify on qualifications and role rather than on decades of experience, subject to the criteria in force.
+**Specialised talent while young.** The specialised talent category is not restricted to the very senior. Professionals in priority fields — including certain technology, engineering, medical and scientific specialisms — can qualify on qualifications and role rather than on decades of [experience](/blog/resume-matching-experienced-professionals), subject to the criteria in force.
 
 **The practical point:** a great many people who would qualify never apply, because they assume the visa is for property investors and chief executives. It has not been only that for some time.
 
@@ -72,7 +72,7 @@ The mechanics vary by category and emirate, but the shape is consistent.
 
 **Check whether nomination is required.** Several categories — scientists, certain specialised talent, some creative categories — require nomination or accreditation by a designated body before the visa application itself.
 
-**Gather and attest your documents.** Degree certificates, transcripts, professional accreditations, employment letters, salary certificates, and proof of the specific achievement your category rests on. Foreign documents generally need [attestation](/blog/canada-credential-assessment-guide), which runs through your home country's authorities and the UAE mission there and [takes weeks](/blog/how-long-to-hear-back-after-applying).
+**Gather and attest your documents.** Degree certificates, transcripts, professional accreditations, employment letters, salary certificates, and proof of the specific achievement your category rests on. Foreign documents generally need attestation, which runs through your home country's authorities and the UAE mission there and [takes weeks](/blog/how-long-to-hear-back-after-applying).
 
 **Apply through the correct authority.** ICP handles federal applications; GDRFA handles Dubai. There are also authorised typing centres and service providers who prepare applications for a fee.
 
@@ -108,7 +108,7 @@ The visa is an immigration document with commercial consequences, and most holde
 
 ## Family, and what changes for dependants
 
-Sponsoring your own family is one of the largest practical benefits and it works differently from an employment visa.
+Sponsoring your own family is one of the largest practical [benefits](/blog/questions-to-ask-in-an-interview) and it works differently from an employment visa.
 
 **You sponsor them, not your employer.** Their residency is tied to yours rather than to your job, which means a change of employment does not disturb the household.
 
@@ -155,9 +155,9 @@ Check again. The categories have been broadened and thresholds adjusted more tha
 ### Do
 
 - Check the current criteria on the official portal
-- Look at the student and [graduate route](/blog/how-to-get-a-job-in-uk-foreigner)s specifically
+- Look at the student and graduate routes specifically
 - State the visa prominently on your CV if you hold it
-- Review family sponsorship [opt](/blog/opt-cpt-resume-guide)ions
+- Review family sponsorship options
 - Reconfirm eligibility if you were rejected in the past
 - Understand your renewal conditions
 

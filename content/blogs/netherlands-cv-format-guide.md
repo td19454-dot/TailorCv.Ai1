@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- A Dutch CV runs to **[two pages](/blog/ats-resume-length-guide)** and is expected to be plain, factual and well organised rather than designed.
-- **A photo is [opt](/blog/opt-cpt-resume-guide)ional and increasingly omitted.** International employers in Amsterdam generally prefer you leave it off; some traditional Dutch firms still expect one.
+- A Dutch CV runs to **two pages** and is expected to be plain, factual and well organised rather than designed.
+- **A photo is optional and increasingly omitted.** International employers in Amsterdam generally prefer you leave it off; some traditional Dutch firms still expect one.
 - Dutch professional culture prizes **directness**. Overstated claims read as untrustworthy, and hedged language reads as evasive.
 - **English is genuinely sufficient** for a large share of roles in Amsterdam, Rotterdam, Eindhoven and Utrecht — but state your Dutch level honestly rather than omitting it.
-- The **[motivatiebrief](/blog/cover-letter-generator-by-country)** (motivation letter) is still standard and is genuinely read, unlike cover letters in some other markets.
+- The **motivatiebrief** (motivation letter) is still standard and is genuinely read, unlike cover letters in some other markets.
 
 ## The shape of a Dutch CV
 
-Dutch employers want a document that answers questions quickly. Two pages is the norm and a graduate can reasonably use one and a half.
+Dutch employers want a [document](/blog/campus-placement-document-checklist) that answers questions quickly. [Two pages](/blog/ats-resume-length-guide) is the norm and a graduate can reasonably use one and a half.
 
-**Personal details** at the top: name, phone, email, city, and LinkedIn. Date of birth and nationality still appear on many Dutch CVs — this is a local convention rather than something an employer may demand, and international employers do not expect it. Include it or not; neither will cost you.
+**Personal details** at the top: name, phone, email, city, and LinkedIn. Date of birth and nationality still appear on many Dutch [CVs](/blog/resume-optimization-guide) — this is a local convention rather than something an [employer](/blog/how-recruiters-spot-generic-resumes) may demand, and international employers do not expect it. Include it or not; neither will cost you.
 
 **A short profile** of three or four lines. This is genuinely read in the Netherlands, more so than in the UK. It should state what you do, what you are looking for, and one concrete thing that distinguishes you.
 
@@ -31,7 +31,7 @@ Dutch employers want a document that answers questions quickly. Two pages is the
 
 **Education**, including your institution, your degree in full, and your graduation date. If your degree has no obvious international equivalent, one clarifying line helps.
 
-**Skills**, with languages listed explicitly and levels stated using the [CEFR](/blog/bilingual-language-skills-on-resume) scale (A1 through C2) rather than words like "basic" or "fluent", which mean diffe[rent](/blog/canada-major-city-job-markets) things to different readers.
+**Skills**, with languages listed explicitly and levels stated using the [CEFR](/blog/bilingual-language-skills-on-resume) scale (A1 through C2) rather than words like "basic" or "fluent", which mean different things to different readers.
 
 **Extracurriculars matter more here than you expect.** Dutch student culture involves substantial committee work, board years at student associations, and organising roles — and Dutch employers read these as genuine management experience rather than as filler. If you did something similar, describe it as the responsibility it was.
 
@@ -76,7 +76,7 @@ If you want a starting point, a [tailored cover letter](/cover-letter) generated
 
 Larger Dutch employers and the big international offices in Amsterdam screen with software before anyone reads your document, which imposes a few unglamorous constraints.
 
-**Use section headings a [parse](/blog/ats-resume-parser-friendly-format)r recognises** — Work Experience, Education, Skills. A creatively named section is a section that does not get extracted.
+**Use section headings a parser recognises** — Work Experience, Education, Skills. A creatively named section is a section that does not get extracted.
 
 **Avoid [multi-column layouts](/blog/ats-tables-columns-guide) and text inside images.** Dutch design culture tempts people toward attractive documents, and attractive documents frequently parse into nonsense.
 
@@ -104,7 +104,7 @@ Most Dutch graduate CVs fail for the same reason: they list what the candidate w
 
 **Reverse chronological throughout.** Functional or skills-first CVs are read in the Netherlands as an attempt to hide something, whether or not that is fair.
 
-**Plain [fonts](/blog/resume-fonts-guide), generous white space, no colour blocks.** The Dutch aesthetic p[reference](/blog/resume-references-guide) in professional documents runs toward clarity rather than personality.
+**Plain [fonts](/blog/resume-fonts-guide), generous white space, no colour blocks.** The Dutch aesthetic preference in professional documents runs toward clarity rather than personality.
 
 **One file, named with your own name.** "Anna_Kowalski_CV.pdf" is retrievable from a folder of two hundred applications; "cv_definitief.pdf" is not.
 
