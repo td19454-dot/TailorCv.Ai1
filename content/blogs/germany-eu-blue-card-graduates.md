@@ -13,27 +13,27 @@ showcase: none
 
 ## Key Takeaways
 
-- The **EU Blue Card (Blaue Karte EU)** is the main [residence permit](/blog/canada-work-permit-types-guide) for [university](/blog/how-to-list-education-on-resume)-qualified workers in Germany, and the whole thing turns on your salary meeting a published [threshold](/blog/resume-for-h1b-visa-sponsorship).
-- **[Shortage occupations](/blog/in-demand-jobs-canada-2026)** — IT, engineering, mathematics, natural sciences, and human medicine among them — qualify at a **lower salary threshold** than other fields.
+- The **EU Blue Card (Blaue Karte EU)** is the main residence permit for university-qualified workers in Germany, and the whole thing turns on your salary meeting a published threshold.
+- **Shortage occupations** — IT, engineering, mathematics, natural sciences, and human medicine among them — qualify at a **lower salary threshold** than other fields.
 - Your degree must be **recognised or comparable**, which is what the anabin database determines.
-- The Blue Card leads to **[permanent residence](/blog/canada-provincial-nominee-guide) faster than the standard route**, and faster still with strong German.
-- Thresholds are revised annually — check the cur[rent](/blog/canada-major-city-job-markets) year's figures on the official source before planning around any number.
+- The Blue Card leads to **permanent residence faster than the standard route**, and faster still with strong German.
+- Thresholds are revised annually — check the current year's figures on the official source before planning around any number.
 
 ## What the Blue Card is
 
-The Blue Card is an EU-wide residence title for highly qualified workers, implemented by each member state. In Germany it is the standard route for someone with a university degree and a graduate-level [job offer](/blog/how-to-negotiate-a-job-offer-email).
+The Blue Card is an EU-wide residence title for highly qualified workers, implemented by each member state. In Germany it is the standard route for someone with a [university](/blog/how-to-list-education-on-resume) degree and a [graduate](/blog/first-resume-for-gen-z-2026)-level [job offer](/blog/how-to-negotiate-a-job-offer-email).
 
 Three conditions have to be met together:
 
 1. **A recognised university degree**, or one assessed as comparable to a German qualification.
 2. **A binding job offer or employment contract** in a role that matches your qualification.
-3. **A gross annual salary meeting the threshold** for your category.
+3. **A gross annual salary meeting the [threshold](/blog/resume-for-h1b-visa-sponsorship)** for your category.
 
-That third condition is where applications actually succeed or fail, and it is the one worth understanding in detail before you accept any offer.
+That third condition is where [applications](/blog/how-many-jobs-should-you-apply-to-per-day) actually succeed or fail, and it is the one worth understanding in detail before you accept any offer.
 
 ## The two salary thresholds
 
-Germany operates a general threshold and a lower one for shortage occupations.
+Germany operates a general threshold and a lower one for [shortage occupations](/blog/in-demand-jobs-usa-2026).
 
 | Category | Threshold | Which fields |
 |---|---|---|
@@ -53,7 +53,7 @@ Look up two things: your **institution** (is it recognised, and at what status) 
 
 If your qualification is not listed or the classification is unclear, a formal individual assessment through the **Zentralstelle für ausländisches Bildungswesen (ZAB)** is the next step. It takes time, so start it early rather than after you have an offer waiting.
 
-For **[regulated professions](/blog/canada-regulated-professions-guide)** — medicine, law, teaching, certain [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a separate legal requirement on top of this, and it is a longer process.
+For **regulated professions** — medicine, law, teaching, certain [engineering roles](/blog/how-to-get-first-tech-job) — recognition is a separate legal requirement on top of this, and it is a longer process.
 
 ## From Blue Card to permanent residence
 
@@ -67,11 +67,11 @@ This is the genuine advantage of the route, and the reason it is worth targeting
 
 The pattern is consistent even as the specific durations are adjusted by legislation: **the Blue Card shortens the path substantially, and German [language ability](/blog/bilingual-language-skills-on-resume) shortens it further.** Two people who arrive on the same day can reach permanent residence years apart based on which permit they hold and what German they have.
 
-The practical read: if you intend to stay, learn German deliberately from the start rather than treating it as [opt](/blog/opt-cpt-resume-guide)ional. It affects your permit, your permanent residence timeline, and the size of your accessible job market simultaneously.
+The practical read: if you intend to stay, learn German deliberately from the start rather than treating it as optional. It affects your permit, your permanent residence [timeline](/blog/campus-placement-preparation-timeline), and the size of your accessible job market simultaneously.
 
 ## Changing jobs on a Blue Card
 
-Early in the permit, changing employer generally requires notifying or obtaining approval from the immigration authority — the Blue Card is tied to qualified employment, not to one specific company indefinitely. After an initial period this becomes more flexible.
+Early in the permit, changing [employer](/blog/how-recruiters-spot-generic-resumes) generally requires notifying or obtaining approval from the immigration authority — the Blue Card is tied to qualified employment, not to one specific company indefinitely. After an initial period this becomes more flexible.
 
 Do not treat this as a reason to stay in a bad first job, but do check the current rules before resigning, because the sequencing matters.
 
@@ -83,7 +83,7 @@ The sequence depends on whether you are already in Germany or applying from abro
 
 **If you are applying from abroad**, you generally apply for a national visa (D visa) at the German mission in your country, then convert it to the Blue Card after arriving. The mission appointment is frequently the longest single delay in the whole process.
 
-Either way the documents are broadly the same: passport, degree certificate with recognition evidence, the signed employment contract, a completed application, biometric photos, proof of [health insurance](/blog/first-job-abroad-practical-checklist), and the fee.
+Either way the [documents](/blog/campus-placement-document-checklist) are broadly the same: passport, degree certificate with recognition evidence, the signed employment contract, a completed application, biometric photos, proof of [health insurance](/blog/first-job-abroad-practical-checklist), and the fee.
 
 **Health insurance is not optional.** Germany requires everyone to hold it, and you will need proof at the application. Statutory (gesetzlich) cover through your employer is the normal route for an employee.
 
@@ -107,7 +107,7 @@ The important points: notify rather than stay silent, understand how long your s
 
 Two things people underestimate: the fee is small, and the waiting is not.
 
-The Blue Card application fee itself is modest — a two-figure sum rather than a serious expense. What costs is everything around it: a ZAB individual assessment if your degree needs one, [certified translations](/blog/canada-credential-assessment-guide) of your documents, and in some cases apostille or legalisation of your certificates in your home country.
+The Blue Card application fee itself is modest — a two-figure sum rather than a serious expense. What costs is everything around it: a ZAB individual assessment if your degree needs one, certified translations of your documents, and in some cases [apostille](/blog/international-resume-tailoring-guide) or legalisation of your certificates in your home country.
 
 The real cost is time. A German mission appointment abroad can take weeks to secure. A busy city Auslanderbehoerde appointment can take longer still. A ZAB assessment runs on its own schedule. None of these run in parallel with each other by default, so sequence them deliberately: start the degree recognition first, because everything else depends on its outcome.
 

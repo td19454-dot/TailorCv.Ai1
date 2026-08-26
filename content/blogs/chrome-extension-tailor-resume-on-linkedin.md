@@ -13,31 +13,31 @@ showcase: none
 
 ## Key Takeaways
 
-- The **TailorCV [Chrome](/blog/best-chrome-extensions-for-job-seekers-2026) extension** adds a panel directly to LinkedIn job pages, so tailoring happens where you are already reading the posting.
+- The **TailorCV Chrome extension** adds a panel directly to LinkedIn job pages, so tailoring happens where you are already reading the posting.
 - You set up a **base resume and preferred template once** at thetailorcv.com/extension; after that every tailored resume starts from it.
-- One click produces a resume **rewritten against that specific [job description](/blog/job-description-analysis-checklist)** and downloaded as an [ATS-ready](/blog/how-to-make-resume-ats-friendly) PDF.
-- Every tailored resume is **saved to your account** on the [My Resumes page](/blog/chrome-extension-vs-manual-job-tracking), alongside the job it was written for.
+- One click produces a resume **rewritten against that specific job description** and downloaded as an ATS-ready PDF.
+- Every tailored resume is **saved to your account** on the My Resumes page, alongside the job it was written for.
 - The extension **only reads the job title, company and description** from the posting you have open — not your profile, connections or messages.
 
 ## The problem it solves
 
-Everyone knows resumes should be tailored to each job. Almost nobody does it, and the reason is friction.
+Everyone knows [resumes](/blog/resume-optimization-guide) should be [tailored](/blog/how-to-tailor-resume-for-every-job) to each job. Almost nobody does it, and the reason is friction.
 
-**The manual loop looks like this:** read the posting, open your resume in Word, decide which bullets matter for this role, rewrite three of them, check you have not broken the formatting, export a PDF, name the file, go back to the tab, upload, repeat. Twenty to forty minutes per application if you do it properly.
+**The manual loop looks like this:** read the posting, open your resume in Word, decide which bullets matter for this role, rewrite three of them, check you have not broken the formatting, export a [PDF](/blog/resume-file-format-guide), name the file, go back to the tab, upload, repeat. Twenty to forty minutes per [application](/blog/how-many-jobs-should-you-apply-to-per-day) if you do it properly.
 
 **So people stop doing it properly.** They send the same [generic resume](/blog/how-ats-detects-generic-resume) to forty roles, which is precisely the behaviour that [automated screening](/blog/ats-resume-checker-how-it-works) is designed to filter out.
 
-**The extension removes the loop.** The job description is already on screen; the extension reads it, rewrites your base resume against it, and hands you a PDF. The tailoring happens because it costs one click rather than half an hour.
+**The extension removes the loop.** The [job description](/blog/job-description-analysis-checklist) is already on screen; the extension reads it, rewrites your base resume against it, and hands you a PDF. The tailoring happens because it costs one click rather than half an hour.
 
 ## Setting it up, once
 
 Three steps, and you only do them once.
 
-**1. [Install the extension](/blog/how-to-install-tailorcv-extension)** from the Chrome Web Store — "TailorCV — AI Resume [Opt](/blog/opt-cpt-resume-guide)imizer".
+**1. [Install the extension](/blog/how-to-install-tailorcv-extension)** from the [Chrome](/blog/best-chrome-extensions-for-job-seekers-2026) Web Store — "TailorCV — AI Resume Optimizer".
 
 **2. Set your base resume** at thetailorcv.com/extension. Upload the resume you want everything generated from. This is the source material, so it should be your complete, honest, unabridged version — the tailoring is about emphasis and wording, not invention.
 
-**3. Choose your template.** TailorCV renders to a set of clean, ATS-safe templates, and the one you pick is what every generated PDF uses.
+**3. Choose your template.** TailorCV renders to a set of clean, [ATS-safe](/blog/how-to-make-resume-ats-friendly) templates, and the one you pick is what every generated PDF uses.
 
 **Then sign in from the extension panel.** A TailorCV account is required, the free tier is included, and you can sign in directly from the panel including with Google.
 
@@ -63,7 +63,7 @@ Worth being precise, because the word is used loosely.
 
 **It preserves your content.** The pipeline includes explicit steps that restore bullets and entries the model dropped, because language models silently lose content on long resumes and losing a candidate's actual work is the worst possible failure mode.
 
-**It outputs an ATS-safe PDF.** Single-column, standard headings, [parse](/blog/ats-resume-parser-friendly-format)able text — not a design object that turns to nonsense in a parser.
+**It outputs an ATS-safe PDF.** Single-column, standard headings, parseable text — not a design object that turns to nonsense in a parser.
 
 ## What makes a good base resume
 
@@ -107,7 +107,7 @@ The handful of things that go wrong, and what each means.
 
 **You have hit your limit.** Free accounts include a limited number of tailored resumes; Pro removes the cap. The message will say which is the case.
 
-**The PDF looks wrong.** Check [which template](/blog/resume-templates-by-country-guide) is selected at thetailorcv.com/extension. Templates differ in density, and a resume with a lot of content suits a diffe[rent](/blog/canada-major-city-job-markets) one from a short one.
+**The PDF looks wrong.** Check [which template](/blog/resume-templates-by-country-guide) is selected at thetailorcv.com/extension. Templates differ in density, and a resume with a lot of content suits a different one from a short one.
 
 ## Using it well over a whole search
 

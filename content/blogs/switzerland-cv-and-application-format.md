@@ -13,22 +13,22 @@ showcase: none
 
 ## Key Takeaways
 
-- Swiss employers expect a **complete dossier**: [cover letter](/blog/cover-letter-generator-by-country), CV, work certificates, diplomas and [references](/blog/resume-references-guide) — not a CV alone.
+- Swiss employers expect a **complete dossier**: cover letter, CV, work certificates, diplomas and references — not a CV alone.
 - The **Arbeitszeugnis** (work certificate) is a formal reference document from each previous employer, and Swiss recruiters genuinely expect to see them.
 - A **photo is still conventional** on Swiss CVs, unlike the UK, Ireland or the Netherlands.
-- **Write in the language of the advert.** German, French, Italian or English — matching it is not [opt](/blog/opt-cpt-resume-guide)ional.
+- **Write in the language of the advert.** German, French, Italian or English — matching it is not optional.
 - Presentation is formal and precise. Swiss hiring rewards **completeness and accuracy** over personality.
 
 ## The dossier, not the CV
 
 This is the structural difference that catches every international applicant.
 
-In the UK or the US you send a CV and possibly a cover letter. In Switzerland you send a **Bewerbungsdossier** — a single, complete application package. A missing component is read as carelessness, and carelessness is expensive in a market this formal.
+In the UK or the US you send a CV and possibly a [cover letter](/blog/cover-letter-generator-by-country). In Switzerland you send a **Bewerbungsdossier** — a single, complete [application](/blog/how-many-jobs-should-you-apply-to-per-day) package. A missing component is read as carelessness, and carelessness is expensive in a market this formal.
 
 **The standard dossier contains:**
 
-1. **Motivationsschreiben / [lettre de motivation](/blog/france-cv-lettre-de-motivation-guide)** — a one-page cover letter.
-2. **Lebenslauf / CV** — [two pages](/blog/ats-resume-length-guide), with a photo.
+1. **Motivationsschreiben / [lettre de motivation](/blog/france-cv-lettre-de-motivation-guide)** — a one-page [cover letter](/blog/cover-letter-guide-2026).
+2. **Lebenslauf / [CV](/blog/resume-optimization-guide)** — [two pages](/blog/ats-resume-length-guide), with a photo.
 3. **Arbeitszeugnisse** — work certificates from previous employers.
 4. **Diplomas and certificates** — degree certificates, transcripts, professional qualifications.
 5. **Language certificates** where relevant.
@@ -44,7 +44,7 @@ This is the document nobody outside the German-speaking world has heard of, and 
 
 **Why it matters.** Swiss recruiters expect to see them for every relevant previous role, and their absence raises a question.
 
-**The coded language.** Arbeitszeugnisse are written in a conventionalised register where appa[rent](/blog/canada-major-city-job-markets)ly bland phrases carry specific meaning, because the document must be benevolent in tone but truthful in substance. Experienced Swiss recruiters read them fluently. If you receive one, it is worth having a native speaker read it before you file it.
+**The coded language.** Arbeitszeugnisse are written in a conventionalised register where apparently bland phrases carry specific meaning, because the document must be benevolent in tone but truthful in substance. Experienced Swiss recruiters read them fluently. If you receive one, it is worth having a native speaker read it before you file it.
 
 **If you have never worked in a German-speaking country**, you will not have any, and that is understood. Provide reference letters from previous employers instead, and include named referees. What is not acceptable is providing nothing and offering no explanation.
 
@@ -52,7 +52,7 @@ This is the document nobody outside the German-speaking world has heard of, and 
 
 Two pages, factual, [reverse chronological](/blog/chronological-vs-functional-resume).
 
-**Personal details** at the top: name, address, phone, email, date of birth, nationality, and — importantly for Switzerland — your **[work permit](/blog/canada-work-permit-types-guide) status**. Swiss employers screen on this early, and stating "EU citizen, no permit required" or your existing permit type is genuinely helpful.
+**Personal details** at the top: name, address, phone, email, date of birth, nationality, and — importantly for Switzerland — your **work permit status**. Swiss employers screen on this early, and stating "EU citizen, no permit required" or your existing permit type is genuinely helpful.
 
 **A photo is conventional.** A plain, professional headshot in the top corner. This differs from the UK, Ireland and increasingly the Netherlands, and following the local convention here is the right call.
 
@@ -98,7 +98,7 @@ Switzerland places heavy weight on formal qualifications, and a foreign degree s
 
 The submission mechanics are ordinary; the etiquette differs.
 
-**Apply through the portal when there is one.** Swiss employers of any size use [applicant tracking system](/blog/ats-score-guide)s, and an email to a general address usually goes nowhere. Standard headings and a clean single PDF matter here as much as anywhere — an [ATS check](/ats-analysis) once removes the [parsing](/blog/ats-resume-parser-friendly-format) risk.
+**Apply through the portal when there is one.** Swiss employers of any size use applicant tracking systems, and an email to a general address usually goes nowhere. Standard headings and a clean single PDF matter here as much as anywhere — an [ATS check](/ats-analysis) once removes the [parsing](/blog/ats-resume-parser-friendly-format) risk.
 
 **Confirm receipt if you hear nothing after a week or two.** A single polite enquiry is fine.
 

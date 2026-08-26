@@ -14,30 +14,30 @@ showcase: portfolio
 ## Key Takeaways
 
 - Dublin hosts the **EMEA headquarters** of an extraordinary share of US technology companies, concentrated in the Grand Canal Dock area known as **Silicon Docks**.
-- **Not every role at a technology company is a technology role** — many Dublin positions are sales, operations, support or [finance](/blog/resume-matching-insurance-jobs), and the job title does not always make that obvious.
+- **Not every role at a technology company is a technology role** — many Dublin positions are sales, operations, support or finance, and the job title does not always make that obvious.
 - **Indigenous Irish companies** — Stripe, Intercom, Workhuman and others — offer broader engineering work and are frequently overlooked.
-- Dublin salaries are strong by European standards; **[housing](/blog/canada-major-city-job-markets) costs are the counterweight** and they are severe.
+- Dublin salaries are strong by European standards; **housing costs are the counterweight** and they are severe.
 - **English-language working environment plus EU market access** is a combination very few cities offer.
 
 ## Silicon Docks, and what is actually there
 
-The area around Grand Canal Dock holds a density of technology employers that would be notable in a country ten times Ireland's size.
+The area around Grand Canal Dock holds a density of technology [employers](/blog/how-recruiters-spot-generic-resumes) that would be notable in a country ten times Ireland's size.
 
 **Google's Dublin operation** is among its largest outside the United States, spanning engineering, sales, operations and support for the whole EMEA region.
 
-**Meta, Microsoft, LinkedIn, Amazon, Salesforce, HubSpot, Airbnb, TikTok and [Workday](/blog/icims-taleo-resume-formatting-guide)** all run substantial Irish operations.
+**Meta, Microsoft, [LinkedIn](/blog/linkedin-profile-optimization-guide), Amazon, Salesforce, HubSpot, Airbnb, TikTok and [Workday](/blog/icims-taleo-resume-formatting-guide)** all run substantial Irish operations.
 
 **Apple's Cork campus** is one of the oldest foreign technology operations in Ireland and predates most of the Dublin cluster by decades.
 
 **Intel's Leixlip fabrication plant** is a genuine semiconductor manufacturing site rather than an office, and it is one of the most significant industrial investments in the country.
 
-**Why here?** A combination of EU membership with an English-speaking workforce, a corporate [tax](/blog/canada-first-job-taxes-and-benefits) regime that attracted early movers, and then the self-reinforcing effect of a talent pool that already exists. The reason matters less than the consequence: an unusually international, unusually mobile technology labour market for a city of Dublin's size.
+**Why here?** A combination of EU membership with an English-speaking workforce, a corporate tax regime that attracted early movers, and then the self-reinforcing effect of a talent pool that already exists. The reason matters less than the consequence: an unusually international, unusually mobile technology labour market for a city of Dublin's size.
 
 ## The trap in the job titles
 
 This is the most useful practical warning in this guide.
 
-**A large share of Dublin roles at technology companies are not engineering roles.** EMEA headquarters need sales, account management, customer support, trust and safety, content review, finance, payroll and localisation — frequently in many languages. Those are real jobs and some are excellent, but they are not what a computer science graduate usually means by "a job at Google".
+**A large share of Dublin roles at technology companies are not [engineering roles](/blog/how-to-get-first-tech-job).** EMEA headquarters need sales, account management, customer support, trust and safety, content review, finance, payroll and localisation — frequently in many languages. Those are real jobs and some are excellent, but they are not what a computer science graduate usually means by "a job at Google".
 
 **Titles can be ambiguous.** "Analyst", "Associate", "Specialist" and "Consultant" cover an enormous range in a Dublin context.
 
@@ -71,7 +71,7 @@ For a graduate who wants to build things rather than operate a piece of someone 
 6. **Behavioural / values round**, weighted seriously at the multinationals.
 7. **Offer**, at which point [work permission](/blog/ireland-third-level-graduate-scheme) becomes the operative question if you need it.
 
-**Preparation transfers.** The large employers run globally standardised processes, so [general technical interview preparation](/blog/usa-technical-interview-newgrad-prep) works without modification.
+**Preparation transfers.** The large employers run globally standardised processes, so general technical interview preparation works without modification.
 
 ## Compensation, and reading the package
 
@@ -180,7 +180,7 @@ Check whether the role is on the Critical Skills list and whether the employer h
 - **Applying to the logo.** Many Dublin roles at technology companies are sales, support or operations.
 - **Misreading ambiguous titles.** "Analyst" and "Specialist" cover enormous ranges in a Dublin context.
 - **Ignoring indigenous companies.** Stripe, Intercom and their peers offer broader engineering ownership.
-- **Applying to language roles without the language.** It is a hard requirement, not a p[reference](/blog/resume-references-guide).
+- **Applying to language roles without the language.** It is a hard requirement, not a preference.
 - **Underestimating rent.** Dublin housing is the constraint that decides more than the salary.
 - **Assuming any employer can sponsor.** Check the Critical Skills list and the employer's track record.
 

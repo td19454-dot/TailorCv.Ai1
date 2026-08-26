@@ -13,41 +13,41 @@ showcase: none
 
 ## Key Takeaways
 
-- **IANG** — Immigration Arrangements for Non-local [Graduates](/blog/first-resume-for-gen-z-2026) — lets graduates of Hong Kong institutions work with **no [employer](/blog/how-recruiters-spot-generic-resumes) [sponsorship](/blog/resume-for-h1b-visa-sponsorship) and no restriction on the type of work**.
-- **No [job offer](/blog/how-to-negotiate-a-job-offer-email) is required** if you apply within the eligible period after graduating.
+- **IANG** — Immigration Arrangements for Non-local Graduates — lets graduates of Hong Kong institutions work with **no employer sponsorship and no restriction on the type of work**.
+- **No job offer is required** if you apply within the eligible period after graduating.
 - **Returning graduates** who left Hong Kong can also apply, subject to holding a job offer — a route many people never discover.
-- IANG time counts toward **[permanent residency](/blog/canada-provincial-nominee-guide)**, achieved after a qualifying period of continuous ordinary residence.
+- IANG time counts toward **permanent residency**, achieved after a qualifying period of continuous ordinary residence.
 - For an employer, an IANG holder is **administratively identical to a local hire** — which is the whole point, and worth stating on your CV.
 
 ## What IANG actually gives you
 
 The defining feature is the absence of conditions.
 
-**No sponsor.** No employer applies for anything, pays anything, or waits for anything.
+**No sponsor.** No [employer](/blog/how-recruiters-spot-generic-resumes) applies for anything, pays anything, or waits for anything.
 
 **No occupation restriction.** You can work in any field, in any role, regardless of what you studied. This is unusually open — Korea's E-7 ties you to an occupation code, Ireland's permits eventually require a listed occupation, and Hong Kong's IANG simply does not.
 
-**No salary threshold** for the initial grant.
+**No [salary](/blog/how-to-negotiate-salary-offer) [threshold](/blog/resume-for-h1b-visa-sponsorship)** for the initial grant.
 
 **Full flexibility.** Full time, part time, multiple jobs, self-employment, changing employers freely without any immigration step.
 
-**Extendable.** IANG can be extended, and continuous residence under it counts toward permanent residency.
+**Extendable.** IANG can be extended, and continuous residence under it counts toward [permanent residency](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore).
 
-**Dependants.** [Spouse](/blog/first-job-abroad-practical-checklist)s and children can generally apply to accompany you, subject to conditions.
+**Dependants.** Spouses and children can generally apply to accompany you, subject to conditions.
 
-The practical effect: for the duration of your IANG, you are competing in the Hong Kong job market on the same administrative footing as a local graduate.
+The practical effect: for the duration of your IANG, you are competing in the Hong Kong [job market](/blog/choosing-country-to-study-abroad-for-jobs) on the same administrative footing as a local [graduate](/blog/first-resume-for-gen-z-2026).
 
 ## Who qualifies
 
 **Non-local graduates of Hong Kong institutions** who obtained an undergraduate or higher qualification in a full-time, locally-accredited programme in Hong Kong.
 
-**Two [application window](/blog/campus-placement-preparation-timeline)s exist.**
+**Two [application](/blog/how-many-jobs-should-you-apply-to-per-day) windows exist.**
 
-**Immediate applicants** — those applying within the eligible period after graduating — do **not** need a job offer. This is the more generous route and it is the one to use if you are eligible.
+**Immediate applicants** — those applying within the eligible period after graduating — do **not** need a [job offer](/blog/how-to-negotiate-a-job-offer-email). This is the more generous route and it is the one to use if you are eligible.
 
-**Returning applicants** — those who have left Hong Kong after graduating and wish to return — need a job offer that is at a level commonly taken up by degree holders, with remuneration at market rate. There is no time limit on returning, which means a Hong Kong degree from years ago is still an asset.
+**Returning applicants** — those who have left Hong Kong after graduating and wish to return — need a job offer that is at a level commonly taken up by [degree](/blog/how-to-list-education-on-resume) holders, with remuneration at market rate. There is no time limit on returning, which means a Hong Kong degree from years ago is still an asset.
 
-**Check the cur[rent](/blog/canada-major-city-job-markets) eligibility period and conditions** with the Hong Kong [Immigration Department](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), because the arrangement has been adjusted, including extensions to the period of stay granted.
+**Check the current eligibility period and conditions** with the Hong Kong Immigration Department, because the arrangement has been adjusted, including extensions to the period of stay granted.
 
 ## The route to permanent residency
 
@@ -67,7 +67,7 @@ This is what makes IANG strategically significant rather than merely convenient.
 
 The process is administratively light compared with most work visas.
 
-**Apply online or by post** to the Immigration Department, with the required form and supporting documents.
+**Apply online or by post** to the Immigration Department, with the required form and supporting [documents](/blog/campus-placement-document-checklist).
 
 **Documents you will need:** passport, graduation certificate or official proof of award, academic transcript, proof of your Hong Kong study, and — for returning applicants — the job offer and employment details.
 
@@ -77,7 +77,7 @@ The process is administratively light compared with most work visas.
 
 **On approval you receive a period of stay** endorsed in your passport, and you collect or activate it according to the instructions given.
 
-**Hong Kong Identity Card.** All residents staying beyond a short period must register for an HKID, and it is required for essentially everything — bank accounts, employment, healthcare and government services.
+**Hong Kong Identity Card.** All residents staying beyond a short period must register for an HKID, and it is required for essentially everything — bank accounts, employment, [healthcare](/blog/first-job-abroad-practical-checklist) and government services.
 
 **Extensions** are applied for before the current period expires, usually with evidence of your employment or continued residence. Apply early rather than at the deadline.
 
@@ -89,7 +89,7 @@ Four routes for people without a Hong Kong degree, all recently expanded.
 
 **General Employment Policy (GEP).** The standard employer-sponsored route, requiring a genuine vacancy, appropriate qualifications and market-rate remuneration.
 
-**Quality Migrant Admission Scheme (QMAS).** [Points-based](/blog/canada-express-entry-for-new-grads), assessing age, qualifications, experience, language and family background, and not requiring a job offer.
+**Quality Migrant Admission Scheme (QMAS).** Points-based, assessing age, qualifications, experience, language and family background, and not requiring a job offer.
 
 **Technology Talent Admission Scheme (TechTAS).** A streamlined route for technology companies operating in designated areas to bring in overseas talent.
 
@@ -133,7 +133,7 @@ Placing it against its peers makes clear why it is unusually generous.
 
 **No time limit on the returning route**, which is genuinely unusual. Most post-study schemes expire permanently once their window closes; Hong Kong lets alumni come back years later with an offer.
 
-**Residency counts.** Unlike the [UK Graduate Route](/blog/how-to-get-a-job-in-uk-foreigner), where time generally does not count toward settlement, IANG residence contributes toward Hong Kong permanent residency.
+**Residency counts.** Unlike the UK Graduate Route, where time generally does not count toward settlement, IANG residence contributes toward Hong Kong permanent residency.
 
 **The trade-off** is that Hong Kong is a narrow economy dominated by [finance](/blog/resume-matching-insurance-jobs), law and trade, with among the world's highest housing costs. The visa is generous; the market is specialised and expensive.
 

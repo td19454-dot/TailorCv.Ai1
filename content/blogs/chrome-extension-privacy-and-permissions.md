@@ -14,30 +14,30 @@ showcase: none
 ## Key Takeaways
 
 - The extension reads **the job title, company and description** from the job page you have open — nothing else on that page and nothing on other pages.
-- It **does not read your [LinkedIn profile](/blog/linkedin-profile-optimization-guide), connections, messages or feed**, and it does not track your browsing.
+- It **does not read your LinkedIn profile, connections, messages or feed**, and it does not track your browsing.
 - It requests five permissions — **activeTab, cookies, downloads, scripting and storage** — each for a specific, narrow purpose.
-- The **cookies permission reads only [Tailor](/blog/how-to-tailor-resume-for-every-job)[CV](/blog/resume-optimization-guide)'s own CSRF cookie** from thetailorcv.com, never cookies belonging to LinkedIn or any other site.
-- Host permissions are limited to a named list of [job boards](/blog/best-job-search-websites-2026), with **[opt](/blog/opt-cpt-resume-guide)ional broader access you grant only when you use the toolbar icon** on another page.
+- The **cookies permission reads only TailorCV's own CSRF cookie** from thetailorcv.com, never cookies belonging to LinkedIn or any other site.
+- Host permissions are limited to a named list of job boards, with **optional broader access you grant only when you use the toolbar icon** on another page.
 
 ## Why permissions look alarming
 
 [Chrome](/blog/best-chrome-extensions-for-job-seekers-2026) shows extension permissions as a blunt list, and the list is worse than the reality for almost every legitimate extension.
 
-**"Read and change [your data](/blog/are-job-search-chrome-extensions-safe) on linkedin.com"** is the warning Chrome shows for the ability to run a script on LinkedIn job pages. It is technically accurate and practically misleading — the same warning appears whether an extension reads one heading or everything on the site.
+**"Read and change [your data](/blog/are-job-search-chrome-extensions-safe) on [linkedin](/blog/linkedin-profile-optimization-guide).com"** is the warning Chrome shows for the ability to run a script on LinkedIn job pages. It is technically accurate and practically misleading — the same warning appears whether an extension reads one heading or everything on the site.
 
 **The honest answer to "what does it actually do"** is not in the permission list; it is in what the code reads and what it sends. So here it is, specifically.
 
 ## The five permissions, one by one
 
-**activeTab.** Used to identify the tab you are cur[rent](/blog/canada-major-city-job-markets)ly viewing when you click the toolbar icon, so the panel opens on the right page. It is not used to read or modify any other tab.
+**activeTab.** Used to identify the tab you are currently viewing when you click the toolbar icon, so the panel opens on the right page. It is not used to read or modify any other tab.
 
 **cookies.** Used only to read TailorCV's own CSRF-protection cookie, set by thetailorcv.com, so the extension can make authenticated requests to your own account the same way the website does. It is not used to read or modify cookies belonging to LinkedIn, Indeed, or any other site.
 
-**downloads.** Used to save the generated resume [PDF](/blog/resume-file-format-guide) to your computer through Chrome's download API when you click "Tailor & Download Resume". It is not used for any other file operation.
+**downloads.** Used to save the generated [resume](/blog/resume-optimization-guide) [PDF](/blog/resume-file-format-guide) to your computer through Chrome's download API when you click "[Tailor](/blog/how-to-tailor-resume-for-every-job) & Download Resume". It is not used for any other file operation.
 
 **scripting.** Used to inject the panel into the job page you are on so the interface appears in context rather than in a separate window.
 
-**storage.** Used to hold your extension settings locally — your p[references](/blog/resume-references-guide), not your [documents](/blog/campus-placement-document-checklist).
+**storage.** Used to hold your extension settings locally — your preferences, not your [documents](/blog/campus-placement-document-checklist).
 
 **That is the complete list.** There is no history permission, no tabs permission for reading all your open tabs, no webRequest interception.
 
@@ -47,7 +47,7 @@ showcase: none
 
 **That is the payload.** Those three things are what get sent to TailorCV to generate a tailored resume, because those three things are what the tailoring is based on.
 
-**It does not read your profile.** Your LinkedIn profile, your headline, your experience section as LinkedIn holds it — none of that is read. Your resume comes from the file you uploaded to your own account, not from scraping your profile.
+**It does not read your profile.** Your LinkedIn profile, your headline, your [experience](/blog/resume-matching-experienced-professionals) section as LinkedIn holds it — none of that is read. Your resume comes from the file you uploaded to your own account, not from scraping your profile.
 
 **It does not read your connections, messages or feed.**
 
@@ -61,7 +61,7 @@ One thing worth understanding clearly, because it is the permission that sounds 
 
 **The extension declares optional host permissions for all sites.** Optional means exactly that — Chrome does not grant it at install time, and it is used only when you deliberately click the toolbar icon on a job page that is not one of the supported boards.
 
-**Why it exists.** A great many jobs are advertised on company career pages, university boards and niche industry sites. Without this, the extension would be useless on all of them.
+**Why it exists.** A great many jobs are advertised on company [career](/blog/career-change-to-tech-guide) pages, [university](/blog/how-to-list-education-on-resume) boards and niche industry sites. Without this, the extension would be useless on all of them.
 
 **How to think about it.** It is not access the extension has by default; it is access you grant, on a page you chose, at the moment you asked it to do something there.
 
@@ -75,7 +75,7 @@ The reasoning here applies well beyond this one, and it is worth having.
 
 **Look at whether broad access is optional.** Optional host permissions mean Chrome asks you at the moment of use rather than granting at install.
 
-**Check what the extension is for.** A calculator that wants to read every page you visit is a different proposition from a job-application tool that reads job pages.
+**Check what the extension is for.** A calculator that wants to read every page you visit is a different proposition from a job-[application](/blog/how-many-jobs-should-you-apply-to-per-day) tool that reads job pages.
 
 **Look at the publisher and the privacy policy.** A named company with a real product and a policy that addresses the extension specifically is a better position than an anonymous listing.
 

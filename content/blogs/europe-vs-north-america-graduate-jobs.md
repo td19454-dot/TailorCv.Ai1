@@ -13,25 +13,25 @@ showcase: none
 
 ## Key Takeaways
 
-- **North America pays substantially more** in technology, [finance](/blog/resume-matching-insurance-jobs) and medicine; the gap narrows considerably in most other fields once benefits and protections are counted.
-- **Immigration is the decisive variable.** The US [H-1B](/blog/h1b-visa-job-search-guide) lottery is genuinely a lottery; most European countries have deterministic post-study routes.
-- **Europe offers stronger statutory protections** — holiday, pa[rental](/blog/canada-major-city-job-markets) leave, dismissal protection, [healthcare](/blog/first-job-abroad-practical-checklist) — that do not appear in a salary comparison but are worth real money.
+- **North America pays substantially more** in technology, finance and medicine; the gap narrows considerably in most other fields once benefits and protections are counted.
+- **Immigration is the decisive variable.** The US H-1B lottery is genuinely a lottery; most European countries have deterministic post-study routes.
+- **Europe offers stronger statutory protections** — holiday, parental leave, dismissal protection, healthcare — that do not appear in a salary comparison but are worth real money.
 - **Canada sits between the two**, with North American salaries somewhat below the US and immigration that is far more predictable.
 - The right answer depends on **your field, your passport and your risk tolerance**, not on which continent is generally better.
 
 ## The pay question, honestly
 
-The salary gap is real and it is not uniform.
+The [salary](/blog/how-to-negotiate-salary-offer) gap is real and it is not uniform.
 
-**In [software engineer](/blog/resume-matching-software-engineer)ing, it is enormous.** A senior engineer at a large US technology company can earn a multiple of the European equivalent, driven substantially by equity compensation that barely exists in most of Europe.
+**In software engineering, it is enormous.** A senior engineer at a large US technology company can earn a multiple of the European equivalent, driven substantially by [equity](/blog/how-to-negotiate-a-job-offer-email) compensation that barely exists in most of Europe.
 
-**In finance**, New York pays above London, and London pays well above continental Europe.
+**In [finance](/blog/resume-matching-insurance-jobs)**, New York pays above London, and London pays well above continental Europe.
 
 **In medicine**, US physician compensation is far above European levels.
 
 **In most other fields the gap is much smaller.** [Marketing](/blog/resume-matching-marketing), operations, general management, engineering outside software, [public sector](/blog/canada-government-jobs-for-students), academia — the difference narrows considerably and in some cases reverses once you account for what you pay for separately in the US.
 
-**And the comparison has to be net of what Europe includes.** Healthcare, university education, childcare and [pension](/blog/first-90-days-new-job) provision are funded through [taxation](/blog/canada-first-job-taxes-and-benefits) in most of Europe and paid for privately in the US. A European gross salary buys things an American gross salary does not.
+**And the comparison has to be net of what Europe includes.** [Healthcare](/blog/first-job-abroad-practical-checklist), university education, childcare and [pension](/blog/first-90-days-new-job) provision are funded through [taxation](/blog/canada-first-job-taxes-and-benefits) in most of Europe and paid for privately in the US. A European gross salary buys things an American gross salary does not.
 
 **The honest summary:** if you are a software engineer or a doctor, North America pays more, sometimes dramatically. If you are almost anything else, run the comparison carefully before assuming.
 
@@ -92,7 +92,7 @@ The daily experience differs more than the numbers suggest.
 
 A practical way to think about it rather than a general one.
 
-**Start with your passport.** It determines which of these [opt](/blog/opt-cpt-resume-guide)ions are actually available, and there is no point optimising between two things when only one is open to you.
+**Start with your passport.** It determines which of these options are actually available, and there is no point optimising between two things when only one is open to you.
 
 **Then your field.** The salary gap is field-specific and the difference between software and everything else is enormous.
 

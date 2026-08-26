@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- Germany has **no single graduate recruiting season**. Hiring runs year-round on vacancy, which removes the [deadline](/blog/campus-placement-preparation-timeline) pressure of the UK or [Japanese](/blog/how-to-get-a-job-in-japan-foreigner) systems but also removes the structure.
+- Germany has **no single graduate recruiting season**. Hiring runs year-round on vacancy, which removes the deadline pressure of the UK or Japanese systems but also removes the structure.
 - The **Mittelstand** — mid-sized, often family-owned companies, many of them world leaders in a narrow niche — employs a very large share of graduates and is consistently under-applied.
-- A **Trainee-Programm** is the closest German equivalent to a UK-style [graduate scheme](/blog/global-rotational-graduate-programmes), and it is a minority route rather than the default.
-- **Working student roles (Werkstudent)** during study are the single strongest entry path, and [international students](/blog/international-student-resume-differences-by-country) frequently do not know they exist.
-- German [language ability](/blog/bilingual-language-skills-on-resume) determines the size of your accessible market more than any other factor, with Berlin's international scene the main exception.
+- A **Trainee-Programm** is the closest German equivalent to a UK-style graduate scheme, and it is a minority route rather than the default.
+- **Working student roles (Werkstudent)** during study are the single strongest entry path, and international students frequently do not know they exist.
+- German language ability determines the size of your accessible market more than any other factor, with Berlin's international scene the main exception.
 
 ## There is no milkround
 
-This is the first thing to internalise, because it inverts how graduates from the UK, Japan, India or [Singapore](/blog/how-to-get-a-job-in-singapore) are taught to job-hunt.
+This is the first thing to internalise, because it inverts how [graduates](/blog/first-resume-for-gen-z-2026) from the UK, Japan, India or Singapore are taught to job-hunt.
 
-German employers post roles when they have a vacancy. There is no synchronised autumn window that closes, no single application deadline that decides your year, and no cohort you have to join. A role advertised in March is filled in March.
+German [employers](/blog/how-recruiters-spot-generic-resumes) post roles when they have a vacancy. There is no synchronised autumn window that closes, no single [application](/blog/how-many-jobs-should-you-apply-to-per-day) [deadline](/blog/campus-placement-preparation-timeline) that decides your year, and no cohort you have to join. A role advertised in March is filled in March.
 
 The consequence cuts both ways. You cannot miss the season, which is genuinely freeing — but nothing prompts you to start, and there is no structured pipeline carrying you from application to offer. Graduates who wait to be swept up by a process wait a long time.
 
@@ -39,13 +39,13 @@ The consequence cuts both ways. You cannot miss the season, which is genuinely f
 | **Research institutes** | Fraunhofer, Max Planck, Helmholtz | Strong for technical and research graduates, own application routes |
 | **Public sector** | Federal, state and municipal administration | Stable, structured, generally requires strong German and often citizenship |
 
-**The Mittelstand is the part international applicants systematically miss.** These companies are frequently the global leader in something specific — industrial fasteners, laboratory [opt](/blog/opt-cpt-resume-guide)ics, packaging machinery — and they hire steadily. They also advertise on their own websites and the Bundesagentur portal rather than on LinkedIn, which is exactly why they stay under-applied while everyone competes for the same Siemens role.
+**The Mittelstand is the part international applicants systematically miss.** These companies are frequently the global leader in something specific — industrial fasteners, laboratory optics, packaging machinery — and they hire steadily. They also advertise on their own websites and the Bundesagentur portal rather than on [LinkedIn](/blog/linkedin-profile-optimization-guide), which is exactly why they stay under-applied while everyone competes for the same Siemens role.
 
 ## Trainee-Programm, Direkteinstieg, Werkstudent
 
-Three terms worth knowing, because job adverts use them and they mean genuinely diffe[rent](/blog/canada-major-city-job-markets) things.
+Three terms worth knowing, because job adverts use them and they mean genuinely different things.
 
-**Trainee-Programm** is the structured graduate scheme — a fixed period, usually 12 to 24 months, rotating through several departments before you settle into a role. It is the closest thing to a UK graduate scheme. Large employers run them, they are competitive, and they are a minority of graduate hiring overall.
+**Trainee-Programm** is the structured [graduate scheme](/blog/global-rotational-graduate-programmes) — a fixed period, usually 12 to 24 months, rotating through several departments before you settle into a role. It is the closest thing to a UK graduate scheme. Large employers run them, they are competitive, and they are a minority of graduate hiring overall.
 
 **Direkteinstieg** means direct entry: you are hired into a specific role and start doing that job. This is how most graduates actually enter German employment. There is no rotation and no cohort — you are simply a junior hire.
 

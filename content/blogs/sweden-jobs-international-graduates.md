@@ -13,17 +13,17 @@ showcase: none
 
 ## Key Takeaways
 
-- Sweden's technology sector is **disproportionately large for a country of ten million** — Spotify, Klarna, King, Mojang, Northvolt and a deep [startup](/blog/japan-startup-jobs-guide) ecosystem.
-- **English is genuinely sufficient** for a large share of technology and international roles, though Swedish transforms your [opt](/blog/opt-cpt-resume-guide)ions everywhere else.
-- Graduates of Swedish institutions can apply for a **[residence permit](/blog/canada-work-permit-types-guide) to look for work**, and the standard work permit route requires an employer offer meeting union-approved terms.
-- **[Flat hierarch](/blog/japan-nenkou-seniority-explained)y and consensus decision-making** are real features, not brochure language, and they change how you should behave in an interview.
-- **Lagom, fika and work-life balance** describe a [workplace culture](/blog/japan-work-culture-first-job-guide) that is genuinely diffe[rent](/blog/canada-major-city-job-markets) from Anglo-American norms.
+- Sweden's technology sector is **disproportionately large for a country of ten million** — Spotify, Klarna, King, Mojang, Northvolt and a deep startup ecosystem.
+- **English is genuinely sufficient** for a large share of technology and international roles, though Swedish transforms your options everywhere else.
+- Graduates of Swedish institutions can apply for a **residence permit to look for work**, and the standard work permit route requires an employer offer meeting union-approved terms.
+- **Flat hierarchy and consensus decision-making** are real features, not brochure language, and they change how you should behave in an interview.
+- **Lagom, fika and work-life balance** describe a workplace culture that is genuinely different from Anglo-American norms.
 
 ## The Swedish technology story
 
 Sweden produces globally significant companies at a rate that a country of its size should not.
 
-**Spotify** is the obvious one, and it remains a major Stockholm engineering employer.
+**Spotify** is the obvious one, and it remains a major Stockholm engineering [employer](/blog/how-recruiters-spot-generic-resumes).
 
 **Klarna** built European payments and buy-now-pay-later infrastructure from Stockholm.
 
@@ -33,7 +33,7 @@ Sweden produces globally significant companies at a rate that a country of its s
 
 **Ericsson** remains a major telecommunications employer with deep R&D.
 
-**Established industry** — Volvo, Scania, Atlas Copco, SKF, ABB, IKEA, H&M, Electrolux — employs enormous numbers of engineers and commercial graduates and is consistently under-applied by international candidates chasing the startup names.
+**Established industry** — Volvo, Scania, Atlas Copco, SKF, ABB, IKEA, H&M, Electrolux — employs enormous numbers of engineers and commercial [graduates](/blog/first-resume-for-gen-z-2026) and is consistently under-applied by international candidates chasing the startup names.
 
 **Why Sweden?** Early and universal internet access, strong technical education, a small home market forcing companies to think internationally from day one, and a welfare system that reduces the personal risk of founding a company.
 
@@ -48,7 +48,7 @@ Sweden produces globally significant companies at a rate that a country of its s
 | **Linköping** | Aerospace (Saab), simulation and engineering |
 | **Skellefteå / Luleå** | Green industry, batteries, data centres |
 
-**Malmö deserves a specific note.** It sits across a bridge from Copenhagen, and a substantial number of people live in one country and work in the other. That makes the Öresund region a genuinely binational job market — see [the Nordic comparison](/blog/nordic-graduate-job-markets-compared) for how the two sides differ.
+**Malmö deserves a specific note.** It sits across a bridge from Copenhagen, and a substantial number of people live in one country and work in the other. That makes the Öresund region a genuinely binational [job market](/blog/choosing-country-to-study-abroad-for-jobs) — see [the Nordic comparison](/blog/nordic-graduate-job-markets-compared) for how the two sides differ.
 
 **The north is where the growth story is.** The green industrial investment around Skellefteå and Luleå has created serious engineering demand in places that were not on anyone's list five years ago, and competition there is a fraction of Stockholm's.
 
@@ -56,7 +56,7 @@ Sweden produces globally significant companies at a rate that a country of its s
 
 **Technology and international companies run in English.** Spotify, Klarna, King and the international operations of the large industrials all operate in English as a working language, and Swedes generally speak it to a very high standard.
 
-**Everything else is Swedish.** [Public sector](/blog/canada-government-jobs-for-students), healthcare, education, most client-facing roles, and the large majority of small and medium employers.
+**Everything else is Swedish.** Public sector, healthcare, education, most client-facing roles, and the large majority of small and medium employers.
 
 **Swedish is learnable and free.** SFI — *Svenska för invandrare* — is publicly funded Swedish tuition available to residents, and it is genuinely good. Taking it seriously in your first year changes your medium-term options substantially.
 
@@ -66,13 +66,13 @@ Sweden produces globally significant companies at a rate that a country of its s
 
 Three positions, and yours determines everything.
 
-**EU/EEA and Swiss citizens** have free movement and need no permit. You register, get a personnummer, and work. Say so in the first line of any application.
+**EU/EEA and Swiss citizens** have free movement and need no permit. You register, get a personnummer, and work. Say so in the first line of any [application](/blog/how-many-jobs-should-you-apply-to-per-day).
 
-**Graduates of Swedish higher education institutions** can apply for a residence permit to look for work or start a business after completing their studies. It is not tied to an employer, which removes the [sponsorship](/blog/resume-for-h1b-visa-sponsorship) obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
+**Graduates of Swedish higher education institutions** can apply for a [residence permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) to look for work or start a business after completing their studies. It is not tied to an employer, which removes the [sponsorship](/blog/resume-for-h1b-visa-sponsorship) obstacle for its duration — the same structural advantage as the Dutch and Irish schemes.
 
 **Everyone else needs a work permit**, which requires a concrete [job offer](/blog/how-to-negotiate-a-job-offer-email). The distinctive Swedish feature is that the terms of employment must be at least equivalent to those set by **Swedish collective agreements** for the role — pay, insurance and conditions. The relevant trade union is given the opportunity to comment on the offer.
 
-**Salary thresholds apply** and have been raised, so check the current level with Migrationsverket rather than any secondary source.
+**[Salary](/blog/how-to-negotiate-salary-offer) thresholds apply** and have been raised, so check the current level with Migrationsverket rather than any secondary source.
 
 **Permits are initially tied to employer and occupation**, becoming less restricted at renewal. Long-term residence follows a qualifying period.
 
@@ -80,13 +80,13 @@ Three positions, and yours determines everything.
 
 ## Swedish workplace culture
 
-The differences are real and they show up in interviews.
+The differences are real and they show up in [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Flat hierarchy is genuine.** Managers are approachable, first names are universal, and titles carry little weight. Deferring excessively to seniority reads as odd rather than respectful.
 
 **Consensus takes time.** Decisions are made by discussion until broad agreement exists — the process can feel slow to someone from a decisive top-down culture, and pushing against it does not speed it up.
 
-**Lagom** — roughly "just the right amount" — describes a cultural p[reference](/blog/resume-references-guide) for moderation that shows up in how people present themselves. Loud self-promotion is uncomfortable here.
+**Lagom** — roughly "just the right amount" — describes a cultural preference for moderation that shows up in how people present themselves. Loud self-promotion is uncomfortable here.
 
 **Fika is real.** The scheduled coffee break is a genuine institution and a substantial part of how colleagues actually connect. Skipping it to look busy is a mistake.
 
@@ -138,7 +138,7 @@ The mechanics are ordinary; the register is not.
 - [ ] Northern green-industry employers considered
 - [ ] Personnummer application planned for on arrival
 - [ ] SFI enrolment planned
-- [ ] CV in [Nordic convention](/blog/nordic-graduate-job-markets-compared), two pages
+- [ ] CV in Nordic convention, two pages
 - [ ] LinkedIn set to your target city
 - [ ] Interview prepared for a flat, consensus-oriented style
 

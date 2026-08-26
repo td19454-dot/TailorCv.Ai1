@@ -14,24 +14,24 @@ showcase: none
 ## Key Takeaways
 
 - **E-7** is Korea's main professional employment visa, formally for foreign nationals of special ability, and it is **tied to a specific occupation code**.
-- Your **degree field, your [experience](/blog/resume-matching-experienced-professionals) and the [job description](/blog/job-description-analysis-checklist) must align** with that code — this is the requirement that decides most [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
-- The general rule is a **bachelor's [degree](/blog/how-to-list-education-on-resume) plus one year of relevant experience, or a diploma plus more experience**, though it varies by occupation.
-- **D-10** is the job-seeking visa; **F-2-7** is a [points-based](/blog/canada-express-entry-for-new-grads) residence visa; **F-5** is [permanent residency](/blog/canada-provincial-nominee-guide).
+- Your **degree field, your experience and the job description must align** with that code — this is the requirement that decides most applications.
+- The general rule is a **bachelor's degree plus one year of relevant experience, or a diploma plus more experience**, though it varies by occupation.
+- **D-10** is the job-seeking visa; **F-2-7** is a points-based residence visa; **F-5** is permanent residency.
 - **Graduates of Korean universities are treated more favourably**, which makes studying in Korea a genuine strategic route.
 
 ## How E-7 actually works
 
-The E-7 is not a general [work permit](/blog/canada-work-permit-types-guide). It is a permission to perform a specific occupation, and Korea maintains a detailed list of occupation codes it covers.
+The E-7 is not a general [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore). It is a permission to perform a specific occupation, and Korea maintains a detailed list of occupation codes it covers.
 
-**Three things must match.** Your academic qualification, your work experience, and the duties in the job description all have to correspond to the same occupation code. A computer science graduate hired as a "[marketing](/blog/resume-matching-marketing) specialist" has a problem, even with a willing employer and a real job.
+**Three things must match.** Your academic qualification, your work experience, and the duties in the [job description](/blog/job-description-analysis-checklist) all have to correspond to the same occupation code. A computer science [graduate](/blog/first-resume-for-gen-z-2026) hired as a "[marketing](/blog/resume-matching-marketing) specialist" has a problem, even with a willing [employer](/blog/how-recruiters-spot-generic-resumes) and a real job.
 
-**The general qualification rule** is a bachelor's degree in a related field plus at least one year of relevant experience, **or** an associate degree or diploma with more years of experience, **or** substantial experience alone in certain occupations. The specifics vary by code.
+**The general qualification rule** is a bachelor's [degree](/blog/how-to-list-education-on-resume) in a related field plus at least one year of relevant [experience](/blog/resume-matching-experienced-professionals), **or** an associate degree or diploma with more years of experience, **or** substantial experience alone in certain occupations. The specifics vary by code.
 
-**Employer conditions apply too.** There are requirements around the ratio of foreign to Korean employees at the company, and around the salary offered relative to Korean norms. A very small company may struggle to satisfy them.
+**Employer conditions apply too.** There are requirements around the ratio of foreign to Korean employees at the company, and around the [salary](/blog/how-to-negotiate-salary-offer) offered relative to Korean norms. A very small company may struggle to satisfy them.
 
-**Salary matters.** The offered salary generally has to meet a threshold related to Korea's gross national income per capita, which prevents the visa being used to undercut local wages.
+**Salary matters.** The offered salary generally has to meet a [threshold](/blog/international-resume-tailoring-guide) related to Korea's gross national income per capita, which prevents the visa being used to undercut local wages.
 
-**The occupation codes are published and revised** by Korea [Immigration Service](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore). Check them directly, because this is the single point on which applications most often fail.
+**The occupation codes are published and revised** by Korea Immigration Service. Check them directly, because this is the single point on which applications most often fail.
 
 ## The visa types around it
 
@@ -66,11 +66,11 @@ The route from working in Korea to living in Korea on your own terms.
 
 Who does what, and in what order.
 
-**The employer usually initiates.** For most E-7 applications the Korean employer applies to Korea Immigration Service for a **Certificate of Confirmation of Visa Issuance** on your behalf.
+**The employer usually initiates.** For most E-7 applications the Korean employer applies to Korea Immigration Service for a **[Certificate](/blog/campus-placement-document-checklist) of Confirmation of Visa Issuance** on your behalf.
 
 **You then apply for the visa** at a Korean embassy or consulate using that certificate, which is considerably faster than applying without one.
 
-**Documents you will need:** passport, application form, photograph, [apostille](/blog/canada-credential-assessment-guide)d degree certificate, transcripts, employment contract, evidence of experience, and often a criminal background check and health documentation.
+**Documents you will need:** passport, [application form](/blog/resume-optimization-linkedin-easy-apply), photograph, apostilled degree certificate, transcripts, employment contract, evidence of experience, and often a criminal background check and health documentation.
 
 **On arrival, register.** Foreign residents must complete alien registration and receive an Alien Registration Card (ARC) within the required period. Almost everything else — a bank account, a phone contract, national [health insurance](/blog/first-job-abroad-practical-checklist) — depends on it.
 
@@ -86,9 +86,9 @@ Four honest paths, in rough order of reliability.
 
 **Come with a scarce technical skill.** Semiconductors, displays, batteries, advanced materials, certain software specialisms. Where Korea genuinely needs the expertise, the occupation code and the employer's case both become easy.
 
-**Join a foreign [multinational](/blog/japan-gaishikei-vs-domestic) or an international-facing Korean company.** Coupang, the global tracks, and foreign firms' Korean operations all have experience of the process and English-language environments.
+**Join a foreign multinational or an international-facing Korean company.** Coupang, the global tracks, and foreign firms' Korean operations all have experience of the process and English-language environments.
 
-**Teach first, then pivot — carefully.** E-2 gets you into the country and gives you time to build Korean, but converting from teaching to a professional E-7 requires a qualification and experience match that teaching itself does not provide. It is a way in, not a career ladder.
+**Teach first, then pivot — carefully.** E-2 gets you into the country and gives you time to build Korean, but converting from teaching to a professional E-7 requires a qualification and experience match that teaching itself does not provide. It is a way in, not a [career](/blog/career-change-to-tech-guide) ladder.
 
 ## Special categories and easings worth knowing
 
@@ -128,7 +128,7 @@ The visa is the start of a set of obligations and entitlements worth knowing.
 
 **Alien Registration Card first.** Register within the required period after arriving. [Banking](/blog/resume-matching-insurance-jobs), a phone contract, national health insurance and most online services in Korea require it, and Korean online identity verification is strict.
 
-**National health insurance is compulsory** for registered foreign residents, and the coverage is genuinely good and inexpensive. Do not treat it as [opt](/blog/opt-cpt-resume-guide)ional.
+**National health insurance is compulsory** for registered foreign residents, and the coverage is genuinely good and inexpensive. Do not treat it as optional.
 
 **Report changes.** Address, employer, and significant changes to your role all have to be reported to immigration within set periods.
 
@@ -163,7 +163,7 @@ Plan the D-2 to D-10 to E-7 sequence deliberately. Korean university graduates a
 
 ### Scenario 3: You want to stop depending on an employer
 
-Target F-2-7. Build TOPIK level, consider the KIIP course, keep continuous employment and income, and calculate your points against the cur[rent](/blog/canada-major-city-job-markets) threshold rather than guessing.
+Target F-2-7. Build TOPIK level, consider the KIIP course, keep continuous employment and income, and calculate your points against the current threshold rather than guessing.
 
 > **Tip:** Before applying for any job in Korea, check which E-7 occupation code it would fall under and whether your degree supports it. Employers frequently do not know this, and discovering the mismatch at the visa stage wastes everyone's time — including an offer you had already won.
 
@@ -193,7 +193,7 @@ Target F-2-7. Build TOPIK level, consider the KIIP course, keep continuous emplo
 - **Assuming employer willingness is enough.** Ratio, salary and code conditions all apply regardless.
 - **Late documents.** Apostilles and background checks come from your home country and take weeks.
 - **Ignoring D-10.** For anyone already in Korea it is the natural bridge.
-- **Neglecting TOPIK.** It is a major F-2-7 scoring factor and it opens the wider job market too.
+- **Neglecting TOPIK.** It is a major F-2-7 scoring factor and it opens the wider [job market](/blog/choosing-country-to-study-abroad-for-jobs) too.
 - **Treating residence as automatic.** F-2-7 is a points application you have to make and pass.
 
 ## Related Guides

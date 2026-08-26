@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- The **Chancenkarte (Opportunity Card)** lets qualified people live in Germany and look for work **before** holding a [job offer](/blog/how-to-negotiate-a-job-offer-email) — the reverse of how most work visas operate.
-- It runs on a **[points system](/blog/canada-express-entry-for-new-grads)** scoring qualification, German and English ability, work [experience](/blog/resume-matching-experienced-professionals), age, and prior ties to Germany.
-- There is a **baseline eligibility gate** before points matter at all: a [recognised qualification](/blog/canada-credential-assessment-guide) and proof you can support yourself.
-- Card holders can work **part-time while searching**, and take trial employment with a prospective [employer](/blog/how-recruiters-spot-generic-resumes).
-- It is a **bridge, not a destination** — the goal is to convert into a [Blue Card](/blog/germany-eu-blue-card-graduates) or a standard [work permit](/blog/canada-work-permit-types-guide) once you have an offer.
+- The **Chancenkarte (Opportunity Card)** lets qualified people live in Germany and look for work **before** holding a job offer — the reverse of how most work visas operate.
+- It runs on a **points system** scoring qualification, German and English ability, work experience, age, and prior ties to Germany.
+- There is a **baseline eligibility gate** before points matter at all: a recognised qualification and proof you can support yourself.
+- Card holders can work **part-time while searching**, and take trial employment with a prospective employer.
+- It is a **bridge, not a destination** — the goal is to convert into a Blue Card or a standard work permit once you have an offer.
 
 ## Why this route exists at all
 
-Most work visas have a chicken-and-egg problem: you need an offer to get the visa, but employers are reluctant to hire someone who is not yet in the country and cannot start for months.
+Most work visas have a chicken-and-egg problem: you need an offer to get the visa, but [employers](/blog/how-recruiters-spot-generic-resumes) are reluctant to hire someone who is not yet in the country and cannot start for months.
 
 The Chancenkarte breaks that loop. It is a job-seeker permit — you arrive, you are legally resident, you attend [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) in person, you can start quickly when an offer comes. For anyone who has tried applying to German employers cold from another continent, the difference in response rate is the entire point.
 
@@ -31,9 +31,9 @@ Germany introduced it as part of a broader skilled-immigration reform aimed at a
 
 Two things have to be true before the points system is even relevant.
 
-**A recognised qualification.** Either a German-recognised university degree, or a vocational qualification of at least two years recognised by the German authorities. This is where **anabin** matters again — it is the database that determines how your foreign qualification is classified. Check it first.
+**A recognised qualification.** Either a German-recognised [university](/blog/how-to-list-education-on-resume) degree, or a vocational qualification of at least two years recognised by the German authorities. This is where **anabin** matters again — it is the database that determines how your foreign qualification is classified. Check it first.
 
-**Proof you can support yourself.** You are arriving without a job, so you must demonstrate you can fund your stay. This is normally satisfied by a **blocked account (Sperrkonto)** holding a set amount, or by a formal declaration of commitment from someone in Germany. Part-time work is permitted once you arrive, but it is not accepted as proof at application.
+**Proof you can support yourself.** You are arriving without a job, so you must demonstrate you can fund your stay. This is normally satisfied by a **blocked account (Sperrkonto)** holding a set amount, or by a formal declaration of commitment from someone in Germany. Part-time work is permitted once you arrive, but it is not accepted as proof at [application](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 **A special case worth knowing:** if your qualification is *fully* recognised as equivalent to a German one, you may qualify without needing to score on points at all. Check this before assembling a points case you may not need.
 
@@ -49,9 +49,9 @@ Two things have to be true before the points system is even relevant.
 | **Ties to Germany** | Previous study, residence or work in Germany |
 | **Spouse/partner** | A partner who also meets the criteria adds points |
 
-The exact points per band and the total required are set by regulation and revised, so check the cur[rent](/blog/canada-major-city-job-markets) table on the **Make it in Germany** portal rather than any article — including this one.
+The exact points per band and the total required are set by regulation and revised, so check the current table on the **Make it in Germany** portal rather than any article — including this one.
 
-**The strategic read:** German language is the factor most within your control and it scores at every level, not just at fluency. Someone sitting one point short is usually better served by taking an A2 or B1 certificate than by trying to move any other factor.
+**The strategic read:** German language is the factor most within your control and it scores at every level, not just at fluency. Someone sitting one point short is usually better served by taking an A2 or B1 [certificate](/blog/campus-placement-document-checklist) than by trying to move any other factor.
 
 ## What you can actually do on it
 
@@ -64,7 +64,7 @@ What you cannot do is treat it as a general residence permit. It is time-limited
 
 ## Who it actually suits
 
-**It suits you if:** you have a recognised qualification, some German, savings to fund the blocked account, and you are applying into a market where being physically present changes your odds — which describes most of Germany outside the Berlin [startup](/blog/japan-startup-jobs-guide) scene.
+**It suits you if:** you have a recognised qualification, some German, savings to fund the blocked account, and you are applying into a market where being physically present changes your odds — which describes most of Germany outside the Berlin startup scene.
 
 **It suits you less if:** you have no German at all and no savings buffer, or you are targeting exactly the internationally visible employers who already interview remotely and sponsor directly. In that case, applying for a job first and going straight to a Blue Card is simpler and cheaper.
 
@@ -74,7 +74,7 @@ The card fee is minor. The cost of the route is everything around it, and undere
 
 **The blocked account is the big one.** You are demonstrating you can support yourself for the whole stay without employment, and the required sum is set by regulation and revised annually. It is not lost money — you draw it down monthly once you arrive — but you need it available upfront, and it is a serious amount to have sitting idle.
 
-**Then the smaller costs stack up:** certified translations of your certificates, possible apostille or legalisation in your home country, a ZAB assessment if your degree needs one, [health insurance](/blog/first-job-abroad-practical-checklist) for the full period, the visa fee itself, flights, and a deposit plus first rent on arrival.
+**Then the smaller costs stack up:** certified translations of your certificates, possible [apostille](/blog/international-resume-tailoring-guide) or legalisation in your home country, a ZAB assessment if your degree needs one, [health insurance](/blog/first-job-abroad-practical-checklist) for the full period, the visa fee itself, flights, and a deposit plus first rent on arrival.
 
 German rental deposits are typically three months' cold rent (Kaltmiete), payable before you move in. In a competitive city market that is a substantial sum arriving at exactly the moment you have no income.
 
@@ -84,9 +84,9 @@ German rental deposits are typically three months' cold rent (Kaltmiete), payabl
 
 Being in the country is the advantage — use it rather than continuing to apply the way you would have from abroad.
 
-**Register your address (Anmeldung) immediately.** Almost everything administrative in Germany depends on it: a bank account, a [tax](/blog/canada-first-job-taxes-and-benefits) ID, a phone contract. Appointments at the Bürgeramt book out, so do this in your first days.
+**Register your address (Anmeldung) immediately.** Almost everything administrative in Germany depends on it: a bank account, a tax ID, a phone contract. Appointments at the Bürgeramt book out, so do this in your first days.
 
-**Get a German phone number and a German address on your CV.** A local number and address materially change how a Mittelstand employer reads your application, because it answers the question of whether you can actually start.
+**Get a German phone number and a German address on your [CV](/blog/resume-optimization-guide).** A local number and address materially change how a Mittelstand employer reads your application, because it answers the question of whether you can actually start.
 
 **Say plainly on your CV and in your [cover letter](/blog/cover-letter-generator-by-country) that you hold an Opportunity Card and can start without [sponsorship](/blog/resume-for-h1b-visa-sponsorship) delay.** Many German employers, especially smaller ones, assume any foreign candidate means a long visa process. One sentence removes that objection entirely — and it is the single most valuable thing you can write on the document.
 
@@ -96,7 +96,7 @@ Being in the country is the advantage — use it rather than continuing to apply
 
 The card is a search window, and the conversion at the end of it is the part worth planning for from day one.
 
-When you receive a qualifying offer, you apply to change status from inside Germany at your local Auslanderbehoerde. You do not leave and re-enter. Which permit you convert to depends on the offer: a graduate-level role clearing the salary threshold goes to the Blue Card, while a role that does not meet those conditions may still support a standard work permit.
+When you receive a qualifying offer, you apply to change status from inside Germany at your local Auslanderbehoerde. You do not leave and re-enter. Which permit you convert to depends on the offer: a [graduate](/blog/first-resume-for-gen-z-2026)-level role clearing the [salary](/blog/how-to-negotiate-salary-offer) threshold goes to the Blue Card, while a role that does not meet those conditions may still support a standard work permit.
 
 Two practical points people miss. First, appointment waiting times at busy city immigration offices are long, so book as soon as you have a signed contract rather than waiting for your start date to approach. Second, the offer has to match your qualification - the whole route is built on qualified employment, and a job unrelated to your degree does not convert cleanly.
 
@@ -118,7 +118,7 @@ Keep every document from the original application. The conversion draws on the s
 
 ### Scenario 1: You are one point short
 
-Take a German exam. Language scores at every level from A1 up, it is the fastest factor to move, and a certificate is worth more than another year of experience for points purposes.
+Take a German exam. Language scores at every level from A1 up, it is the fastest factor to move, and a certificate is worth more than another year of [experience](/blog/resume-matching-experienced-professionals) for points purposes.
 
 ### Scenario 2: You have a strong offer already in hand
 

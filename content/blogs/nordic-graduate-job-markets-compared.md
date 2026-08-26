@@ -13,19 +13,19 @@ showcase: none
 
 ## Key Takeaways
 
-- The Nordics share a social model but differ sharply in **industry mix, language accessibility, [salary](/blog/how-to-negotiate-salary-offer) levels and permit routes**.
-- **Sweden** has the deepest technology and [startup](/blog/japan-startup-jobs-guide) ecosystem; **Norway** pays the most and is dominated by energy and maritime; **Denmark** is pharmaceuticals, shipping and design with the most flexible labour market; **Finland** is engineering, gaming and telecommunications.
-- **English coverage is high everywhere in technology** and low everywhere in the [public sector](/blog/canada-government-jobs-for-students), [healthcare](/blog/first-job-abroad-practical-checklist) and SMEs.
+- The Nordics share a social model but differ sharply in **industry mix, language accessibility, salary levels and permit routes**.
+- **Sweden** has the deepest technology and startup ecosystem; **Norway** pays the most and is dominated by energy and maritime; **Denmark** is pharmaceuticals, shipping and design with the most flexible labour market; **Finland** is engineering, gaming and telecommunications.
+- **English coverage is high everywhere in technology** and low everywhere in the public sector, healthcare and SMEs.
 - **Norway is not in the EU** — it is in the EEA, which matters for permits and for the details of professional recognition.
-- All four have a **[post-study route](/blog/best-countries-international-graduates-2026)** for graduates of their own institutions, and all four have some form of **shortage-[occupation list](/blog/in-demand-jobs-canada-2026)**.
+- All four have a **post-study route** for graduates of their own institutions, and all four have some form of **shortage-occupation list**.
 
 ## The one-paragraph summary of each
 
 **Sweden** is the largest market and the most internationally connected, with a technology sector out of all proportion to its size and the strongest startup ecosystem in the region. English works well in that sector and less well elsewhere.
 
-**Denmark** has the most employer-friendly hiring rules under flexicurity, which cuts in a graduate's favour, plus world-leading pharmaceuticals, shipping and renewable energy. Copenhagen is expensive; Jutland is not.
+**Denmark** has the most [employer](/blog/how-recruiters-spot-generic-resumes)-friendly hiring rules under flexicurity, which cuts in a [graduate](/blog/first-resume-for-gen-z-2026)'s favour, plus world-leading pharmaceuticals, shipping and renewable energy. Copenhagen is expensive; Jutland is not.
 
-**Norway** pays the highest salaries in the region by a clear margin and has the highest costs to match. Energy, maritime, seafood and public sector dominate. It sits outside the EU, inside the EEA.
+**Norway** pays the highest [salaries](/blog/how-to-negotiate-salary-offer) in the region by a clear margin and has the highest costs to match. Energy, maritime, seafood and public sector dominate. It sits outside the EU, inside the EEA.
 
 **Finland** has the strongest engineering and telecommunications tradition, a globally significant gaming industry, and the most difficult language of the four — but also the most deliberate policy effort to attract international talent.
 
@@ -45,9 +45,9 @@ showcase: none
 
 ## Choosing by what you actually do
 
-**[Software engineer](/blog/resume-matching-software-engineer)ing.** Sweden first, for depth and volume. Finland second, particularly for gaming and embedded systems. Denmark third with a smaller but real scene.
+**Software engineering.** Sweden first, for depth and volume. Finland second, particularly for gaming and embedded systems. Denmark third with a smaller but real scene.
 
-**Life sciences and pharmaceuticals.** Denmark, unambiguously. Novo Nordisk, Lundbeck, LEO and Novozymes anchor a cluster with genuine international standing. Sweden's Uppsala is a real second [opt](/blog/opt-cpt-resume-guide)ion.
+**Life sciences and pharmaceuticals.** Denmark, unambiguously. Novo Nordisk, Lundbeck, LEO and Novozymes anchor a cluster with genuine international standing. Sweden's Uppsala is a real second option.
 
 **Energy.** Norway for oil, gas and offshore, and increasingly for the energy transition. Denmark for wind, where Ørsted and Vestas lead globally.
 
@@ -65,11 +65,11 @@ showcase: none
 
 This decides more than any other single factor.
 
-**Swedish, Danish and Norwegian are closely related** and mutually intelligible to a substantial degree in writing. Learning one gives you meaningful access to the other two, which is a genuine argument for the Scandinavian three over Finland if you are undecided.
+**Swedish, Danish and Norwegian are closely related** and mutually intelligible to a substantial [degree](/blog/how-to-list-education-on-resume) in writing. Learning one gives you meaningful access to the other two, which is a genuine argument for the Scandinavian three over Finland if you are undecided.
 
 **Danish pronunciation is notoriously difficult** even for other Scandinavians, though the written language is close to Norwegian.
 
-**Finnish is unrelated to all of them.** It belongs to a diffe[rent](/blog/canada-major-city-job-markets) language family entirely and is genuinely hard for speakers of Indo-European languages. Swedish is Finland's second official language and helps in parts of the country, but not everywhere.
+**Finnish is unrelated to all of them.** It belongs to a different language family entirely and is genuinely hard for speakers of Indo-European languages. Swedish is Finland's second official language and helps in parts of the country, but not everywhere.
 
 **All four countries offer subsidised or free language tuition** to residents, and all four have high general English proficiency.
 
@@ -77,23 +77,23 @@ This decides more than any other single factor.
 
 ## Permits and post-study routes, side by side
 
-The structures rhyme but the details differ, and the details are what stop applications.
+The structures rhyme but the details differ, and the details are what stop [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
-**Sweden.** EU/EEA citizens work freely. Others need a [work permit](/blog/canada-work-permit-types-guide) with a concrete offer meeting collective agreement terms, with a union consultation step. Graduates of Swedish institutions can get a permit to look for work.
+**Sweden.** EU/EEA citizens work freely. Others need a [work permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) with a concrete offer meeting collective agreement terms, with a union consultation step. Graduates of Swedish institutions can get a permit to look for work.
 
-**Denmark.** EU/EEA and Nordic citizens work freely. Others use the Positive List for shortage occupations, the Pay Limit Scheme for higher-paid roles, or the Establishment Card after a Danish degree.
+**Denmark.** EU/EEA and Nordic citizens work freely. Others use the Positive List for [shortage occupations](/blog/in-demand-jobs-usa-2026), the Pay Limit Scheme for higher-paid roles, or the Establishment Card after a Danish degree.
 
 **Norway.** EEA citizens have free movement under the EEA agreement. Others generally need a skilled worker permit requiring a relevant qualification and a concrete offer meeting Norwegian pay norms. Graduates of Norwegian institutions have a job-seeking route.
 
 **Finland.** EU/EEA citizens work freely. Others use the specialist route, the residence permit for an employed person, or the Finnish post-study job-seeking permit, which is among the more generous in the region.
 
-**Common threads.** All four require a real offer for the standard route, all four have a post-study option for their own graduates, all four set pay floors to prevent undercutting, and all four maintain some form of shortage list. Check each country's own [immigration authority](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) — Migrationsverket, SIRI, UDI and Migri respectively.
+**Common threads.** All four require a real offer for the standard route, all four have a post-study option for their own graduates, all four set pay floors to prevent undercutting, and all four maintain some form of shortage list. Check each country's own immigration authority — Migrationsverket, SIRI, UDI and Migri respectively.
 
 ## Tax, and the schemes for incoming workers
 
-Nordic [tax](/blog/canada-first-job-taxes-and-benefits) is high and there are specific reliefs that materially change the picture for a newcomer.
+Nordic tax is high and there are specific reliefs that materially change the picture for a newcomer.
 
-**All four countries tax income progressively at high rates**, funding healthcare, education and extensive social provision.
+**All four countries tax income progressively at high rates**, funding [healthcare](/blog/first-job-abroad-practical-checklist), education and extensive social provision.
 
 **Sweden** has an expert tax relief for qualifying foreign specialists, researchers and key personnel, reducing the taxable share of income for a limited period.
 
@@ -103,7 +103,7 @@ Nordic [tax](/blog/canada-first-job-taxes-and-benefits) is high and there are sp
 
 **Norway** has a simplified flat-rate scheme available to many foreign workers in their early years.
 
-**Each has conditions** — salary thresholds, prior residence tests, application [deadlines](/blog/campus-placement-preparation-timeline) that are frequently short and easy to miss.
+**Each has conditions** — salary [thresholds](/blog/international-resume-tailoring-guide), prior residence tests, application [deadlines](/blog/campus-placement-preparation-timeline) that are frequently short and easy to miss.
 
 **Ask your employer's payroll about it before your first payslip.** Several of these schemes require an application within a limited window after starting work, and missing that window means paying full rates for years on income you could have kept.
 
@@ -111,9 +111,9 @@ Nordic [tax](/blog/canada-first-job-taxes-and-benefits) is high and there are sp
 
 Nominal comparison across the region is misleading in specific and predictable ways.
 
-**Norway is the most expensive by a clear margin** — housing, food, alcohol and services all sit above the rest of the region. The salary premium is real but a large share of it is consumed locally.
+**Norway is the most expensive by a clear margin** — [housing](/blog/remote-job-search-guide), food, alcohol and services all sit above the rest of the region. The salary premium is real but a large share of it is consumed locally.
 
-**Sweden and Denmark are broadly comparable**, with Stockholm and Copenhagen the expensive points and the rest of each country considerably cheaper.
+**Sweden and Denmark are broadly comparable**, with Stockholm and Copenhagen the expensive [points](/blog/aptitude-psychometric-test-tips) and the rest of each country considerably cheaper.
 
 **Finland is the most affordable of the four**, particularly outside Helsinki, which makes its somewhat lower salaries go further than a raw comparison suggests.
 
@@ -216,7 +216,7 @@ Sweden, for depth and volume, with Finland strong in gaming and embedded systems
 
 ### Which pays the most?
 
-Norway, by a clear margin — with the highest [living costs](/blog/canada-salary-benchmarking-guide) in the region to match. Compare net of real housing costs before treating it as settled.
+Norway, by a clear margin — with the highest living costs in the region to match. Compare net of real housing costs before treating it as settled.
 
 ### Is Norway in the EU?
 

@@ -13,15 +13,15 @@ showcase: none
 
 ## Key Takeaways
 
-- The single most useful ranking criterion is not salary — it is whether there is a **post-study route that does not require employer [sponsorship](/blog/resume-for-h1b-visa-sponsorship)**.
+- The single most useful ranking criterion is not salary — it is whether there is a **post-study route that does not require employer sponsorship**.
 - **Ireland, the Netherlands, Germany, Canada and Hong Kong** all offer open post-study permissions that make you administratively equivalent to a local hire.
 - **The Netherlands and Hong Kong are unusual** in offering routes to graduates of *foreign* universities who never studied there.
 - **The United States is the outlier** — the highest pay in several fields, and the only major destination where the outcome depends on a lottery.
-- **Language is the hidden filter.** Ireland, Canada, Australia, New Zealand, Hong Kong and [Singapore](/blog/how-to-get-a-job-in-singapore) run in English; most of continental Europe eventually does not.
+- **Language is the hidden filter.** Ireland, Canada, Australia, New Zealand, Hong Kong and Singapore run in English; most of continental Europe eventually does not.
 
 ## The criterion that actually matters
 
-Most rankings of countries for international graduates lead with salary or quality of life. For someone who needs permission to work, both are downstream of one question:
+Most rankings of countries for international [graduates](/blog/first-resume-for-gen-z-2026) lead with [salary](/blog/how-to-negotiate-salary-offer) or quality of life. For someone who needs permission to work, both are downstream of one question:
 
 **Can you work without an employer sponsoring you?**
 
@@ -76,7 +76,7 @@ Three things any ranking should say and most do not.
 
 **Immigration policy changes.** Every route on this page has been amended in the last few years — durations shortened, thresholds raised, lists revised. Check the official source for the country you are targeting, always.
 
-**The country that fits you is field-specific and passport-specific.** There is no general answer. A software engineer with an EU passport and a nurse from outside the EEA are choosing between entirely different sets of [opt](/blog/opt-cpt-resume-guide)ions, and generic advice serves neither well.
+**The country that fits you is field-specific and passport-specific.** There is no general answer. A software engineer with an EU passport and a nurse from outside the EEA are choosing between entirely different sets of options, and generic advice serves neither well.
 
 ## Countries worth a second look
 
@@ -136,7 +136,7 @@ Concrete actions rather than a ranking to admire.
 
 **Build one deployed thing.** Whatever your field, a piece of work someone can open and evaluate — a [portfolio site](/portfolio), a [repository](/blog/github-profile-for-job-search-2026), a published paper — travels across every border in this guide.
 
-**Check your base resume [parse](/blog/ats-resume-parser-friendly-format)s.** [Automated screening](/blog/ats-resume-checker-how-it-works) is the one constant in every market here. Run an [ATS check](/ats-analysis) once and remove the whole category of silent [rejection](/blog/how-to-handle-job-rejection).
+**Check your base resume parses.** [Automated screening](/blog/ats-resume-checker-how-it-works) is the one constant in every market here. Run an [ATS check](/ats-analysis) once and remove the whole category of silent [rejection](/blog/how-to-handle-job-rejection).
 
 **And learn the language of wherever you are going.** It is the difference between working in a country and living in one, and every long-term international says the same thing about it.
 

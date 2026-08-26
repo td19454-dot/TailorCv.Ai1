@@ -13,8 +13,8 @@ showcase: none
 
 ## Key Takeaways
 
-- Most of what paid [resume](/blog/resume-optimization-guide) scanners charge for — **a match score and a keyword list** — is available free, including on [TailorCV's ATS analysis](/ats-analysis).
-- The **[parsing](/blog/ats-resume-parser-friendly-format) check is the genuinely valuable part** and the part users most often skip: whether a machine can read your document at all.
+- Most of what paid resume scanners charge for — **a match score and a keyword list** — is available free, including on TailorCV's ATS analysis.
+- The **parsing check is the genuinely valuable part** and the part users most often skip: whether a machine can read your document at all.
 - **A high score guarantees nothing.** It measures document-to-posting correspondence, not whether you get an interview.
 - What is worth paying for is **doing something with the result** — a rewritten, tailored document — not the diagnosis itself.
 - **Beware tools that raise your score by inventing skills.** That is a problem you have to defend in an interview.
@@ -23,13 +23,13 @@ showcase: none
 
 Strip away the presentation and every scanner does two things.
 
-**It parses your document.** It extracts the text and tries to identify sections — [contact details](/blog/resume-contact-section), work experience, education, skills. This is the step that silently kills applications, because a document that parses badly fails before any matching happens.
+**It [parses](/blog/ats-resume-parser-friendly-format) your [document](/blog/campus-placement-document-checklist).** It extracts the text and tries to identify sections — [contact details](/blog/resume-contact-section), work experience, education, skills. This is the step that silently kills applications, because a document that parses badly fails before any matching happens.
 
 **It matches text against a [job description](/blog/job-description-analysis-checklist).** Usually literal term matching, sometimes with light normalisation. It reports which terms from the posting appear in your document and which do not.
 
 **That is essentially the whole product.** A score is a summary of the second step, presented as a number because a number feels more actionable than a list.
 
-**What none of them do** is evaluate whether you can do the job, whether your experience level fits, or whether the vacancy is real. Those determine outcomes far more than a [match percentage](/blog/resume-job-description-match-percentage) does.
+**What none of them do** is evaluate whether you can do the job, whether your [experience](/blog/resume-matching-experienced-professionals) level fits, or whether the vacancy is real. Those determine outcomes far more than a [match percentage](/blog/resume-job-description-match-percentage) does.
 
 ## Free versus paid, honestly
 
@@ -43,11 +43,11 @@ Strip away the presentation and every scanner does two things.
 | **Per-job tailoring at volume** | Rarely | Yes |
 | **Unlimited scans** | Varies | Usually |
 
-**The diagnosis is commodity.** Scoring a resume against a job description is not technically difficult, which is why it is widely available free.
+**The diagnosis is commodity.** Scoring a [resume](/blog/resume-optimization-guide) against a job description is not technically difficult, which is why it is widely available free.
 
 **The action is where the work is.** Rewriting a resume so it genuinely emphasises the right experience, in the posting's vocabulary, without inventing anything and without losing content — that is the part that takes real engineering, and it is the part worth paying for if you value your time.
 
-**On TailorCV specifically:** the ATS analysis is free and unlimited for logged-in users, and guests get one free scan. The paid tier is about volume of tailored documents, not about seeing your score.
+**On TailorCV specifically:** the [ATS](/blog/ats-score-guide) analysis is free and unlimited for logged-in users, and guests get one free scan. The paid tier is about volume of [tailored](/blog/how-to-tailor-resume-for-every-job) documents, not about seeing your score.
 
 ## The parsing check nobody uses
 
@@ -73,9 +73,9 @@ Worth being clear about, because scores become goals.
 
 **Whether your level fits.** A perfectly matched document for a role wanting eight years when you have one is still a [rejection](/blog/how-to-handle-job-rejection).
 
-**Whether the recruiter will like you.** Human review is the next gate and it uses entirely diffe[rent](/blog/canada-major-city-job-markets) criteria.
+**Whether the recruiter will like you.** Human review is the next gate and it uses entirely different criteria.
 
-**Whether you should want the job.** The most expensive applications are the well-[opt](/blog/opt-cpt-resume-guide)imised ones to jobs the candidate would have hated.
+**Whether you should want the job.** The most expensive applications are the well-optimised ones to jobs the candidate would have hated.
 
 **And whether the score is even the bottleneck.** If you are getting interviews but no offers, your resume is working and improving the score changes nothing.
 
@@ -121,7 +121,7 @@ A score is only useful if it is the right problem. Here is how to tell.
 
 **First interviews but no second ones.** The resume is working. Stop editing it. This is interview performance and it needs [practice out loud](/blog/how-to-practice-interviews-at-home) rather than another scan.
 
-**[Final round](/blog/final-round-interview-tips)s but no offers.** Preparation and positioning at the late stage, or genuine competition. Ask for feedback; some employers give it.
+**Final rounds but no offers.** Preparation and positioning at the late stage, or genuine competition. Ask for feedback; some employers give it.
 
 **Offers you do not want.** Your targeting is off, not your documents. Narrow rather than broaden.
 

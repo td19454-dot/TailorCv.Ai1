@@ -13,27 +13,27 @@ showcase: none
 
 ## Key Takeaways
 
-- Switzerland pays the **highest [graduate](/blog/first-resume-for-gen-z-2026) [salaries](/blog/how-to-negotiate-salary-offer) in Europe**, and costs of living absorb a large share of the difference — but not all of it.
-- The labour market is **strongly protected for EU/EFTA nationals**; third-country nationals face [quotas](/blog/resume-for-h1b-visa-sponsorship) and a priority test that make entry genuinely hard.
-- The country is **four language regions**, and which one you target changes the [language requirement](/blog/bilingual-language-skills-on-resume) completely.
-- **Pharmaceuticals in Basel, [finance](/blog/resume-matching-insurance-jobs) and technology in Zurich, international organisations in Geneva, research at ETH and EPFL** — the specialisms are sharply geographic.
-- **App[rent](/blog/canada-major-city-job-markets)iceship culture means the [graduate scheme](/blog/global-rotational-graduate-programmes) is less central here** than in the UK or Ireland; direct-entry roles and internships matter more.
+- Switzerland pays the **highest graduate salaries in Europe**, and costs of living absorb a large share of the difference — but not all of it.
+- The labour market is **strongly protected for EU/EFTA nationals**; third-country nationals face quotas and a priority test that make entry genuinely hard.
+- The country is **four language regions**, and which one you target changes the language requirement completely.
+- **Pharmaceuticals in Basel, finance and technology in Zurich, international organisations in Geneva, research at ETH and EPFL** — the specialisms are sharply geographic.
+- **Apprenticeship culture means the graduate scheme is less central here** than in the UK or Ireland; direct-entry roles and internships matter more.
 
 ## The trade-off, stated plainly
 
 Switzerland is simultaneously the most financially attractive labour market in Europe and one of the hardest to enter. Both halves are true and both matter.
 
-**Salaries are genuinely higher**, not marginally. A graduate role in Zurich can pay a multiple of an equivalent role in Berlin or Milan.
+**[Salaries](/blog/how-to-negotiate-salary-offer) are genuinely higher**, not marginally. A [graduate](/blog/first-resume-for-gen-z-2026) role in Zurich can pay a multiple of an equivalent role in Berlin or Milan.
 
 **Costs are genuinely higher too** — rent, [health insurance](/blog/first-job-abroad-practical-checklist) (which is private and compulsory), food, transport. A naive salary comparison overstates the gain, but a careful one still favours Switzerland substantially for most people.
 
-**Entry is genuinely restricted.** For EU/EFTA citizens, free movement makes it straightforward. For everyone else, Switzerland operates annual quotas on permits and requires [employers](/blog/how-recruiters-spot-generic-resumes) to demonstrate that no suitable candidate could be found in Switzerland or the EU/EFTA area first. That is a high bar for a graduate role.
+**Entry is genuinely restricted.** For EU/EFTA citizens, free movement makes it straightforward. For everyone else, Switzerland operates annual [quotas](/blog/resume-for-h1b-visa-sponsorship) on permits and requires [employers](/blog/how-recruiters-spot-generic-resumes) to demonstrate that no suitable candidate could be found in Switzerland or the EU/EFTA area first. That is a high bar for a graduate role.
 
 The honest read: if you hold an EU/EFTA passport, Switzerland is one of the best opportunities in Europe. If you do not, it is possible but you need a specific, scarce skill and an employer willing to make the case.
 
 ## Four language regions, four job markets
 
-Switzerland is not one market and treating it as one wastes applications.
+Switzerland is not one market and treating it as one wastes [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 | Region | Language | What concentrates there |
 |---|---|---|
@@ -46,7 +46,7 @@ Switzerland is not one market and treating it as one wastes applications.
 
 **Swiss German is a spoken dialect, not a written language.** Written German is standard German; spoken Swiss German is considerably different and takes time even for fluent German speakers. Employers do not expect you to write it, but meetings and lunchrooms in Zurich frequently run in it.
 
-**Many technology and pharmaceutical roles run entirely in English**, particularly at the [multinationals](/blog/japan-gaishikei-vs-domestic), ETH, EPFL and the large research organisations. Do not assume you are excluded before checking.
+**Many technology and pharmaceutical roles run entirely in English**, particularly at the multinationals, ETH, EPFL and the large research organisations. Do not assume you are excluded before checking.
 
 ## Where a graduate can actually get in
 
@@ -54,11 +54,11 @@ Four routes account for most successful entries.
 
 **International companies and research institutions.** Google's Zurich engineering office is one of its largest outside the US. IBM Research, Disney Research, Roche, Novartis, Nestlé and ABB all hire internationally and run in English.
 
-**ETH Zurich and EPFL.** Both are world-class technical universities with substantial research employment, and both are gateways — studying or doing research there makes the subsequent permit question much easier.
+**ETH Zurich and EPFL.** Both are world-class technical [universities](/blog/how-to-list-education-on-resume) with substantial research employment, and both are gateways — studying or doing research there makes the subsequent permit question much easier.
 
-**Internships and traineeships.** Swiss employers place unusual weight on practical experience, and an internship converting to a permanent role is a far more common path than a formal graduate scheme.
+**Internships and traineeships.** Swiss employers place unusual weight on practical [experience](/blog/resume-matching-experienced-professionals), and an internship converting to a permanent role is a far more common path than a formal [graduate scheme](/blog/global-rotational-graduate-programmes).
 
-**Finance and [consulting](/blog/case-interview-preparation-guide-2026) graduate programmes.** UBS, Zurich Insurance, Swiss Re and the large consultancies do run structured intakes, concentrated in Zurich.
+**[Finance](/blog/resume-matching-insurance-jobs) and [consulting](/blog/case-interview-preparation-guide-2026) graduate programmes.** UBS, Zurich Insurance, Swiss Re and the large consultancies do run structured intakes, concentrated in Zurich.
 
 **A note on the apprenticeship system.** A large share of Swiss professionals enter through vocational apprenticeships rather than universities, which means the "graduate scheme" is a less dominant institution than in the UK, Ireland or Australia. Do not assume that no scheme means no entry route.
 
@@ -66,7 +66,7 @@ Four routes account for most successful entries.
 
 1. **Application**, usually direct to the company. A full dossier is expected — see [the Swiss application format guide](/blog/switzerland-cv-and-application-format).
 2. **Screening**, often by HR against formal criteria including qualifications and language.
-3. **First interview**, structured and formal in tone.
+3. **First [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)**, structured and formal in tone.
 4. **Technical or professional assessment** where relevant.
 5. **Second and sometimes third interview**, including with the team.
 6. **[Reference](/blog/resume-references-guide) checks**, taken seriously and actually conducted.
@@ -84,7 +84,7 @@ Swiss pay is the headline, and the deductions are where the surprises live.
 
 **Health insurance is private and compulsory, and you pay it yourself.** This is the single largest difference from most European systems. It is not deducted from your payroll like a social contribution; you choose a provider, you pay a monthly premium, and there is an annual deductible (*franchise*) you cover before the insurer contributes. For a young adult it is a substantial monthly cost that people from national-health-service countries simply do not budget for.
 
-**[Pension](/blog/first-90-days-new-job) is a three-pillar system.** The first pillar (AHV/AVS) is the state scheme, the second (BVG/LPP) is occupational and deducted from pay with an employer contribution, and the third is voluntary private saving with [tax](/blog/canada-first-job-taxes-and-benefits) advantages. The second pillar is real money accruing in your name.
+**[Pension](/blog/first-90-days-new-job) is a three-pillar system.** The first pillar (AHV/AVS) is the state scheme, the second (BVG/LPP) is occupational and deducted from pay with an employer contribution, and the third is voluntary private saving with tax advantages. The second pillar is real money accruing in your name.
 
 **Tax varies enormously by canton and even by commune.** Zug and Schwyz are famously low; Geneva and Vaud considerably higher. Two identical salaries in two cantons produce meaningfully different net pay, which is one reason people commute across cantonal lines.
 
