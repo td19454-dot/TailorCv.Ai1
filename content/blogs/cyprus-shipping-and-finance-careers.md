@@ -239,7 +239,7 @@ Keep building on this with the related guides in this series:
 - [Working in Cyprus as an International Graduate](/blog/cyprus-jobs-for-international-graduates)
 - [Cyprus Work Permits and Relocation](/blog/cyprus-work-permit-and-relocation)
 - [Working in Greece as an International Graduate](/blog/greece-jobs-for-international-graduates)
-- [Malta iGaming and Finance Careers](/blog/malta-igaming-and-finance-careers)
+- [Working in Malta as an International Graduate](/blog/malta-jobs-for-international-graduates)
 - [Working in Luxembourg - Finance, Funds and the EU](/blog/luxembourg-finance-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
