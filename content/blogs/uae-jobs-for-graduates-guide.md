@@ -25,7 +25,7 @@ Two facts define hiring here and neither has an equivalent in Europe.
 
 **The workforce is predominantly expatriate.** In the private sector, the large majority of employees are foreign nationals from across South Asia, the Middle East, Europe, Africa and beyond. Being international is not an exception requiring justification; it is the default condition of the market.
 
-**Your [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) is your [employer](/blog/how-recruiters-spot-generic-resumes)'s.** The standard employment visa is sponsored by the company that hires you. That means your right to be in the country is bound to your job, and changing employer involves a visa transfer. This is a different relationship between work and residency than most European systems, and it is worth understanding before you accept anything.
+**Your visa is your [employer](/blog/how-recruiters-spot-generic-resumes)'s.** The standard employment visa is sponsored by the company that hires you. That means your right to be in the country is bound to your job, and changing employer involves a visa transfer. This is a different relationship between work and residency than most European systems, and it is worth understanding before you accept anything.
 
 **The consequence:** the barrier is not usually permission, as it is in Switzerland or Germany. The barrier is getting the offer — and once you have it, the [paperwork](/blog/campus-placement-document-checklist) is a process the employer runs routinely.
 
@@ -47,7 +47,7 @@ Two facts define hiring here and neither has an equivalent in Europe.
 
 ## Emiratisation, and what it means for you
 
-The UAE has an active policy of increasing the share of Emirati nationals in private-sector employment, with targets and [quotas](/blog/resume-for-h1b-visa-sponsorship) for companies above a certain size, administered through the **Nafis** programme.
+The UAE has an active policy of increasing the share of Emirati nationals in private-sector employment, with targets and quotas for companies above a certain size, administered through the **Nafis** programme.
 
 **What it means in practice:** some roles are prioritised for UAE nationals, and larger employers have targets to meet. This does not close the market to foreign [graduates](/blog/first-resume-for-gen-z-2026) — the expatriate share of the workforce remains very large — but it does mean certain positions, particularly in [banking](/blog/resume-matching-insurance-jobs), HR and government-adjacent sectors, are harder to access.
 

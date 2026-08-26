@@ -43,7 +43,7 @@ This distinction matters and it is deliberate.
 
 **The system respects the field.** Character limits, field types and multiple-choice options are all passed through, so a 200-character answer comes back at 200 characters rather than at 800 that you then have to cut.
 
-**Why this matters to you:** it is faster, it costs less of your [quota](/blog/resume-for-h1b-visa-sponsorship), and the answers that come back are the ones that actually needed writing.
+**Why this matters to you:** it is faster, it costs less of your quota, and the answers that come back are the ones that actually needed writing.
 
 ## The skill match, before you decide to apply
 

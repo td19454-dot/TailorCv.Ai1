@@ -80,7 +80,7 @@ Do this properly and the answer is usually clear; do it badly and it is misleadi
 
 **Add what you gain**: gratuity accrual, annual flights, and the absence of income tax on any bonus.
 
-**And weigh the intangibles honestly.** A UAE role is normally a fixed period in a life rather than a permanent [settlement](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), because residency is tied to employment and there is no general path to citizenship. That is not a criticism — it is a different kind of decision, and it deserves to be made deliberately.
+**And weigh the intangibles honestly.** A UAE role is normally a fixed period in a life rather than a permanent settlement, because residency is tied to employment and there is no general path to citizenship. That is not a criticism — it is a different kind of decision, and it deserves to be made deliberately.
 
 ## Saving, and the thing nobody plans for
 

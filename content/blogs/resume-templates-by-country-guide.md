@@ -25,7 +25,7 @@ Almost every national difference reduces to one of four decisions.
 
 **Photo or no photo.** In the UK, Ireland, US, Canada, Australia and New Zealand, including one is at best neutral and at worst a signal you did not check. In Germany, Switzerland, South Korea and much of the Gulf, omitting one is conspicuous. In France and the Netherlands it is optional and trending toward omission at large [employers](/blog/how-recruiters-spot-generic-resumes).
 
-**Personal details.** Date of birth, nationality, marital status and [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) status appear routinely in Germany, Switzerland, the Gulf and Korea, and are deliberately excluded in the UK, US, Canada, Australia and New Zealand for anti-discrimination reasons.
+**Personal details.** Date of birth, nationality, marital status and visa status appear routinely in Germany, Switzerland, the Gulf and Korea, and are deliberately excluded in the UK, US, Canada, Australia and New Zealand for anti-discrimination reasons.
 
 **Length.** One page in France and the US. Two in Germany, the Netherlands, Ireland, the UK, Switzerland and the Gulf. Two to three in New Zealand. Longer academic CVs are a separate category everywhere.
 

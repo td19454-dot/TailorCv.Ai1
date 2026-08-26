@@ -27,11 +27,11 @@ The defining feature is the absence of conditions.
 
 **No occupation restriction.** You can work in any field, in any role, regardless of what you studied. This is unusually open — Korea's E-7 ties you to an occupation code, Ireland's permits eventually require a listed occupation, and Hong Kong's IANG simply does not.
 
-**No [salary](/blog/how-to-negotiate-salary-offer) [threshold](/blog/resume-for-h1b-visa-sponsorship)** for the initial grant.
+**No [salary](/blog/how-to-negotiate-salary-offer) threshold** for the initial grant.
 
 **Full flexibility.** Full time, part time, multiple jobs, self-employment, changing employers freely without any immigration step.
 
-**Extendable.** IANG can be extended, and continuous residence under it counts toward [permanent residency](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore).
+**Extendable.** IANG can be extended, and continuous residence under it counts toward permanent residency.
 
 **Dependants.** Spouses and children can generally apply to accompany you, subject to conditions.
 

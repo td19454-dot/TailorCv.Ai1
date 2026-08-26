@@ -35,7 +35,7 @@ If you understand one thing about French employment, make it this.
 
 The single most useful thing for a qualified non-EU graduate to know about France.
 
-**What it is.** The *Passeport Talent* is a multi-year [residence permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore), typically issued for up to four years, covering several categories including qualified employees with a master's-level [degree](/blog/how-to-list-education-on-resume), employees of innovative companies, researchers, and founders of startups.
+**What it is.** The *Passeport Talent* is a multi-year residence permit, typically issued for up to four years, covering several categories including qualified employees with a master's-level [degree](/blog/how-to-list-education-on-resume), employees of innovative companies, researchers, and founders of startups.
 
 **Why it is better than the standard route.** It is multi-year rather than annual, it does not require the labour market test that the ordinary salaried route can involve, and it grants an accompanying *passeport talent famille* permit to your family with full working rights.
 
@@ -43,7 +43,7 @@ The single most useful thing for a qualified non-EU graduate to know about Franc
 
 **Recherche d'emploi ou création d'entreprise (RECE)** is the post-study permit — graduates of French institutions at master's level and above can obtain a period to look for work or start a business, and can then transition to a Talent Passport.
 
-**The strategic read:** a French master's degree is a genuinely effective route into France, because it unlocks both the job-search permit and the qualification [threshold](/blog/resume-for-h1b-visa-sponsorship) for the Talent Passport.
+**The strategic read:** a French master's degree is a genuinely effective route into France, because it unlocks both the job-search permit and the qualification threshold for the Talent Passport.
 
 ## Grandes écoles, and why they matter
 

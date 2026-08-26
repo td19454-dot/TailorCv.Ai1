@@ -23,7 +23,7 @@ showcase: none
 
 Everything in Swiss immigration follows from which side of one line you are on.
 
-**EU and EFTA citizens** benefit from the Agreement on the Free Movement of Persons. With a [job offer](/blog/how-to-negotiate-a-job-offer-email), obtaining a permit is essentially registration: you present your contract, you register with your commune, and you receive an L or B permit depending on the contract length. There is no [quota](/blog/resume-for-h1b-visa-sponsorship) and no test of whether a Swiss candidate exists.
+**EU and EFTA citizens** benefit from the Agreement on the Free Movement of Persons. With a [job offer](/blog/how-to-negotiate-a-job-offer-email), obtaining a permit is essentially registration: you present your contract, you register with your commune, and you receive an L or B permit depending on the contract length. There is no quota and no test of whether a Swiss candidate exists.
 
 **Third-country nationals** — everyone else — fall under a separate and much more restrictive regime. Switzerland sets annual numerical quotas for these permits, allocated between the cantons and the federal government, and they run out.
 
@@ -67,7 +67,7 @@ There is a route specifically for people who studied in Switzerland, and it is t
 
 Once the permit exists, the ongoing obligations are specific and Switzerland enforces them.
 
-**Register with your commune within the required period** after arriving — usually a small number of days. This is a legal obligation, not an administrative nicety, and the commune office is where your [residence permit](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) is actually issued.
+**Register with your commune within the required period** after arriving — usually a small number of days. This is a legal obligation, not an administrative nicety, and the commune office is where your residence permit is actually issued.
 
 **Deregister when you leave**, including when moving between communes. Failing to deregister causes tax and insurance problems that follow you.
 

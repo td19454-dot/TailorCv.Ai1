@@ -27,7 +27,7 @@ showcase: none
 
 **A photo is conventional.** A plain professional headshot, top corner. This is standard practice across the Gulf and its absence is noticed.
 
-**Personal details** that would be unusual elsewhere: **nationality**, and often date of birth and marital status. Nationality in particular is used in screening — for [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) cost, for language coverage, and for market familiarity.
+**Personal details** that would be unusual elsewhere: **nationality**, and often date of birth and marital status. Nationality in particular is used in screening — for visa cost, for language coverage, and for market familiarity.
 
 **Visa status is the most important line on the [document](/blog/campus-placement-document-checklist).** More on this below.
 

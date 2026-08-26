@@ -23,7 +23,7 @@ showcase: none
 
 Almost every confusion about Australian immigration comes from collapsing two separate things into one.
 
-**Stage one is the 485.** You [graduate](/blog/first-resume-for-gen-z-2026) from an Australian institution, you apply for a Temporary Graduate visa, and you get full working rights for a defined period. No [employer](/blog/how-recruiters-spot-generic-resumes) [sponsorship](/blog/resume-for-h1b-visa-sponsorship), no points test, no [job offer](/blog/how-to-negotiate-a-job-offer-email) required. Its length depends on your qualification level, and studying or living in a designated regional area can extend it.
+**Stage one is the 485.** You [graduate](/blog/first-resume-for-gen-z-2026) from an Australian institution, you apply for a Temporary Graduate visa, and you get full working rights for a defined period. No [employer](/blog/how-recruiters-spot-generic-resumes) sponsorship, no points test, no [job offer](/blog/how-to-negotiate-a-job-offer-email) required. Its length depends on your qualification level, and studying or living in a designated regional area can extend it.
 
 **Stage two is permanent residence**, which runs on an entirely different mechanism: the points test. The 485 does not convert into permanent residence automatically. It gives you a window in which to build the points and the work [experience](/blog/resume-matching-experienced-professionals) that a permanent visa requires.
 
@@ -63,7 +63,7 @@ The gap between Competent and Superior is one of the largest single point swings
 
 Two gates before points matter at all.
 
-**Your occupation must be on a skilled [occupation list](/blog/in-demand-jobs-usa-2026).** The lists are reviewed and occupations are added and removed, which is why an occupation that qualified a friend three years ago may not qualify you now.
+**Your occupation must be on a skilled occupation list.** The lists are reviewed and occupations are added and removed, which is why an occupation that qualified a friend three years ago may not qualify you now.
 
 **You need a positive [skills](/blog/resume-skills-match-job-description) assessment** from the assessing authority for your occupation — Engineers Australia for engineers, ACS for ICT roles, CPA Australia or CAANZ for accountants, VETASSESS for many others. Each has its own requirements, its own fee and its own [processing time](/blog/how-long-to-hear-back-after-applying).
 
