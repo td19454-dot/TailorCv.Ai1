@@ -23,11 +23,11 @@ showcase: none
 
 How the standard process works.
 
-**Your employer applies to the INM** — the Instituto Nacional de Migracion — for authorisation to hire you, which requires the employer to be registered as a certified employer with the institute.
+**Your [employer](/blog/how-recruiters-spot-generic-resumes) applies to the INM** — the Instituto Nacional de Migracion — for authorisation to hire you, which requires the employer to be registered as a certified employer with the institute.
 
 **INM issues an authorisation** referencing a case number, which is what the consulate works from.
 
-**You attend a Mexican consulate** in your country of residence within the validity period, present documents and are interviewed.
+**You attend a Mexican consulate** in your country of residence within the validity period, present [documents](/blog/campus-placement-document-checklist) and are interviewed.
 
 **The consulate places a visa in your passport**, valid for a single entry within a defined window.
 
@@ -37,7 +37,7 @@ How the standard process works.
 
 **And you register** for CURP, RFC and IMSS, which follow from the residence card.
 
-**The thirty-day canje deadline is the part people miss**, and missing it creates disproportionate problems relative to how simple the step is.
+**The thirty-day canje [deadline](/blog/campus-placement-preparation-timeline) is the part people miss**, and missing it creates disproportionate problems relative to how simple the step is.
 
 ## Routes without an employer
 
@@ -89,9 +89,9 @@ The registrations that follow.
 
 **RFC** from the tax authority, required for employment, invoicing and most financial activity.
 
-**IMSS** enrolment, handled by your employer, giving access to public healthcare and building social security entitlements.
+**IMSS** enrolment, handled by your employer, giving access to public [healthcare](/blog/first-job-abroad-practical-checklist) and building social security entitlements.
 
-**INFONAVIT** contributions, the housing fund, which accrue alongside.
+**INFONAVIT** [contributions](/blog/how-to-negotiate-salary-offer), the [housing](/blog/remote-job-search-guide) fund, which accrue alongside.
 
 **Bank account**, requiring your residence card and RFC.
 
@@ -123,7 +123,7 @@ The arrangements for dependants.
 
 **They apply through the same consular and canje sequence**, with their own documents and their own deadlines.
 
-**Work permission for a spouse is a separate application** rather than automatic, and it can generally be obtained.
+**Work permission for a spouse is a separate [application](/blog/how-many-jobs-should-you-apply-to-per-day)** rather than automatic, and it can generally be obtained.
 
 **Schooling** is available through a substantial private and international school sector in the major cities, with public education free and variable.
 
@@ -169,13 +169,13 @@ Requirements change and this article should be checked against the sources.
 
 ## The TN visa, in reverse
 
-Worth mentioning because it shapes career decisions in this region.
+Worth mentioning because it shapes [career](/blog/career-change-to-tech-guide) decisions in this region.
 
 **Mexican and Canadian nationals** have access to the TN visa for professional work in the United States under USMCA, covering a defined list of occupations.
 
 **It is considerably simpler than the H-1B** — no lottery, no annual cap, and renewable indefinitely in principle.
 
-**The occupation list is specific** and your role must genuinely map to it, with the degree requirement being strict.
+**The occupation list is specific** and your role must genuinely map to it, with the [degree](/blog/how-to-list-education-on-resume) requirement being strict.
 
 **Which matters for anyone weighing Mexico** as a destination, since acquiring Mexican citizenship eventually opens this route in a way that most other nationalities cannot access.
 
@@ -268,7 +268,7 @@ The family unity route is considerably simpler than the employment one and gener
 - **Confusing residence with work rights.** They are separate on several routes.
 - **Working on a tourist entry.** It happens and the exposure is real.
 - **Assuming employer portability.** Changes must be notified to INM.
-- **Late apostille.** The usual cause of consular delay.
+- **Late [apostille](/blog/international-resume-tailoring-guide).** The usual cause of consular delay.
 - **Overlooking family routes.** Frequently simpler than employment sponsorship.
 
 ## Related Guides

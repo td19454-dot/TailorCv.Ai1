@@ -21,13 +21,13 @@ showcase: none
 
 ## The two positions
 
-**EU, EEA and Swiss citizens** have free movement. You arrive, register with the Civil Registry and Migration Department, obtain a registration certificate, and work without restriction.
+**EU, EEA and Swiss citizens** have free movement. You arrive, register with the Civil Registry and Migration Department, obtain a registration [certificate](/blog/campus-placement-document-checklist), and work without restriction.
 
 **Third-country nationals** need a permit, and here the route matters enormously.
 
-**The standard route** involves employer application with conditions on the position and the labour market.
+**The standard route** involves [employer](/blog/how-recruiters-spot-generic-resumes) [application](/blog/how-many-jobs-should-you-apply-to-per-day) with conditions on the position and the labour market.
 
-**The facilitated route** applies to companies registered under the regime for foreign-interest companies — those with a physical presence in Cyprus, foreign ownership above a threshold and defined minimum investment. These companies can employ third-country nationals in categories including directors, middle management, key personnel and support staff, subject to minimum salary levels rather than a labour market test.
+**The facilitated route** applies to companies registered under the regime for foreign-interest companies — those with a physical presence in Cyprus, foreign ownership above a threshold and defined minimum investment. These companies can employ third-country nationals in categories including directors, middle management, key personnel and support staff, subject to minimum [salary](/blog/how-to-negotiate-salary-offer) levels rather than a labour market test.
 
 **The difference is substantial.** A third-country professional joining a registered company faces a far more tractable process than one joining an ordinary Cypriot employer.
 
@@ -41,7 +41,7 @@ A genuinely favourable feature.
 
 **Spouses of third-country nationals employed under the regime, above a defined salary level, have the right to work** without needing a separate employer-sponsored permit.
 
-**This is more generous than several European systems**, where a spouse's employment depends on their own sponsorship, and it materially changes the proposition for a couple.
+**This is more generous than several European systems**, where a [spouse](/blog/first-job-abroad-practical-checklist)'s employment depends on their own sponsorship, and it materially changes the proposition for a couple.
 
 **Children's schooling** is available through the public system in Greek and through a substantial private international school sector in English.
 
@@ -67,11 +67,11 @@ What to arrange and in what order.
 
 **Confirm your permit route** before anything else, since it determines the timeline.
 
-**Documents:** passport, qualifications with apostille where required, criminal record certificate, employment contract, health insurance and proof of accommodation.
+**Documents:** passport, qualifications with [apostille](/blog/international-resume-tailoring-guide) where required, criminal record certificate, employment contract, health insurance and proof of accommodation.
 
-**Housing first if you can.** Limassol's rental market tightened considerably with the corporate influx, and arriving without accommodation is a genuine problem rather than an inconvenience.
+**[Housing](/blog/remote-job-search-guide) first if you can.** Limassol's rental market tightened considerably with the corporate influx, and arriving without accommodation is a genuine problem rather than an inconvenience.
 
-**Banking takes time.** Cypriot banks apply substantial compliance checks and account opening can be slower than you expect — start early and bring thorough documentation.
+**[Banking](/blog/resume-matching-insurance-jobs) takes time.** Cypriot banks apply substantial compliance checks and account opening can be slower than you expect — start early and bring thorough documentation.
 
 **A car is close to essential** given limited public transport, and note the island drives on the left.
 

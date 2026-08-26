@@ -27,7 +27,7 @@ What makes Indonesian technology distinctive.
 
 **Mobile-first adoption** happened rapidly, with a population that came online through smartphones rather than through desktop computing, which shaped the products accordingly.
 
-**Payments and financial inclusion** are the standout opportunity, with a large population historically outside formal banking adopting digital wallets and lending quickly.
+**Payments and financial inclusion** are the standout opportunity, with a large population historically outside formal [banking](/blog/resume-matching-insurance-jobs) adopting digital wallets and lending quickly.
 
 **Logistics is genuinely hard** across an archipelago of thousands of islands, which makes Indonesian logistics technology substantive rather than routine.
 
@@ -57,15 +57,15 @@ What makes Indonesian technology distinctive.
 
 The honest assessment.
 
-**The local engineering pool is large and improving quickly.** Indonesian universities produce substantial numbers of engineers and the ecosystem has matured, which means a general foreign engineer does not have an obvious value proposition.
+**The local engineering pool is large and improving quickly.** Indonesian [universities](/blog/how-to-list-education-on-resume) produce substantial numbers of engineers and the ecosystem has matured, which means a general foreign engineer does not have an obvious value proposition.
 
-**Where foreigners are hired:** senior engineering leadership, specialist expertise not locally available, product leadership with international experience, and roles at international companies where a global standard is being established.
+**Where foreigners are hired:** senior engineering leadership, specialist expertise not locally available, product leadership with international [experience](/blog/resume-matching-experienced-professionals), and roles at international companies where a global standard is being established.
 
 **Regional roles** based in Jakarta covering Southeast Asia.
 
-**And the restricted position rules apply**, so the role must be one open to foreigners and the employer must justify it.
+**And the restricted position rules apply**, so the role must be one open to foreigners and the [employer](/blog/how-recruiters-spot-generic-resumes) must justify it.
 
-**The practical implication:** lead with seniority, specialism or international scale experience. "Software engineer with five years' experience" is not a proposition in a market with plenty of those locally.
+**The practical implication:** lead with seniority, specialism or international scale experience. "[Software engineer](/blog/resume-matching-software-engineer) with five years' experience" is not a proposition in a market with plenty of those locally.
 
 ## The wider technology employment picture
 
@@ -93,17 +93,17 @@ Beyond the consumer platforms.
 
 The financial and professional picture.
 
-**Local engineering salaries** are modest by international standards and have risen with demand, with the leading platforms paying well above the national average.
+**Local engineering [salaries](/blog/how-to-negotiate-salary-offer)** are modest by international standards and have risen with demand, with the leading platforms paying well above the national average.
 
 **Senior and leadership roles** command considerably more.
 
 **Foreign hires on expatriate terms** are a separate category.
 
-**Equity** exists at startups and the usual caution about vesting and valuation applies.
+**[Equity](/blog/how-to-negotiate-a-job-offer-email)** exists at startups and the usual caution about vesting and valuation applies.
 
-**Costs in Jakarta** are moderate for local living and high for expatriate-standard housing and schooling.
+**Costs in Jakarta** are moderate for local living and high for expatriate-standard [housing](/blog/remote-job-search-guide) and schooling.
 
-**Career progression** within the ecosystem is real, and Indonesian platform experience is increasingly recognised regionally.
+**[Career](/blog/career-change-to-tech-guide) progression** within the ecosystem is real, and Indonesian platform experience is increasingly recognised regionally.
 
 **And moving regionally** — to Singapore in particular — is a well-trodden path for senior Indonesian technology people, which cuts both ways for a foreigner assessing the market's depth.
 
@@ -111,7 +111,7 @@ The financial and professional picture.
 
 Practical mechanics.
 
-**LinkedIn is the primary channel** for professional technology roles and international companies.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is the primary channel** for professional technology roles and international companies.
 
 **Glints and Kalibrr** serve the startup and technology market specifically.
 
@@ -121,13 +121,13 @@ Practical mechanics.
 
 **Technology communities and meetups** exist in Jakarta and are accessible.
 
-**Referrals matter**, as across the region.
+**[Referrals](/blog/networking-messages-for-referrals) matter**, as across the region.
 
-**And state clearly what you bring.** In a market with a large capable local pool, an application that does not name the specific differentiator — scale experience, a specialism, leadership, regional exposure — will not progress.
+**And state clearly what you bring.** In a market with a large capable local pool, an [application](/blog/how-many-jobs-should-you-apply-to-per-day) that does not name the specific differentiator — scale experience, a specialism, leadership, regional exposure — will not progress.
 
-**Prepare for the interview properly.** The leading Indonesian platforms run technically serious processes, and the assumption that standards are lower than in Western markets is both wrong and immediately visible.
+**Prepare for the [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) properly.** The leading Indonesian platforms run technically serious processes, and the assumption that standards are lower than in Western markets is both wrong and immediately visible.
 
-**And show deployed work.** A [portfolio site](/portfolio) or live project does more than description, as everywhere.
+**And show deployed work.** A [portfolio site](/portfolio) or live [project](/blog/projects-in-resume) does more than description, as everywhere.
 
 ## What the work is actually like
 

@@ -36,7 +36,7 @@ showcase: none
 
 Where the engineering work actually is.
 
-**Singapore** has the highest salaries, the most sophisticated employers and the fiercest competition, with work authorisation genuinely hard at junior levels.
+**Singapore** has the highest [salaries](/blog/how-to-negotiate-salary-offer), the most sophisticated [employers](/blog/how-recruiters-spot-generic-resumes) and the fiercest competition, with work authorisation genuinely hard at junior levels.
 
 **Vietnam** has the deepest local engineering talent pool outside Singapore, with FPT, outsourcing heritage and a growing product sector. It is where the volume of serious engineering work is.
 
@@ -56,33 +56,33 @@ Beyond software.
 
 **Manufacturing and supply chain** — Vietnam and Thailand lead, with Malaysia strong in electronics and Indonesia growing.
 
-**Finance** — Singapore dominates, with Malaysia holding Islamic finance depth.
+**[Finance](/blog/resume-matching-insurance-jobs)** — Singapore dominates, with Malaysia holding Islamic finance depth.
 
 **Teaching English** — Thailand and Vietnam are the established markets, with Vietnam generally paying better and Thailand offering the more famous lifestyle.
 
 **Hospitality and tourism** — Thailand and Indonesia at scale, with Vietnam growing.
 
-**Shared services and BPO** — the Philippines and Malaysia lead comfortably.
+**Shared services and [BPO](/blog/philippines-bpo-careers-guide)** — the Philippines and Malaysia lead comfortably.
 
 **Energy and resources** — Indonesia and Malaysia.
 
-**And regional headquarters roles** — Singapore first, with Kuala Lumpur and Bangkok holding real numbers.
+**And regional headquarters roles** — Singapore first, with Kuala Lumpur and [Bangkok](/blog/bangkok-jobs-guide) holding real numbers.
 
 ## Work authorisation compared
 
 The practical differences that decide whether a move is possible at all.
 
-**Singapore** operates salary and qualification thresholds through the Employment Pass, with a framework that has tightened considerably. It is transparent and genuinely competitive, and junior candidates struggle.
+**Singapore** operates salary and qualification [thresholds](/blog/resume-for-h1b-visa-sponsorship) through the Employment Pass, with a framework that has tightened considerably. It is transparent and genuinely competitive, and junior candidates struggle.
 
 **Malaysia** runs a tiered Employment Pass with salary bands determining duration and dependant rights. It is among the clearer processes in the region.
 
-**Vietnam** requires an employer-sponsored work permit demonstrating expertise and experience, with document legalisation being the usual bottleneck.
+**Vietnam** requires an employer-sponsored work permit demonstrating expertise and [experience](/blog/resume-matching-experienced-professionals), with [document](/blog/campus-placement-document-checklist) legalisation being the usual bottleneck.
 
-**Thailand** requires both a visa and a work permit, with a list of occupations reserved for Thai nationals and employer conditions on capital and Thai employee ratios.
+**Thailand** requires both a [visa](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore) and a work permit, with a list of occupations reserved for Thai nationals and employer conditions on capital and Thai employee ratios.
 
-**Indonesia** requires the employer's RPTKA manpower plan followed by the KITAS, with a levy payable and a genuine administrative burden.
+**Indonesia** requires the employer's [RPTKA](/blog/indonesia-work-permit-kitas) manpower plan followed by the KITAS, with a levy payable and a genuine administrative burden.
 
-**The Philippines** requires an Alien Employment Permit plus a 9(g) visa, with several professions constitutionally reserved for Filipino citizens.
+**The Philippines** requires an [Alien Employment Permit](/blog/philippines-work-visa-guide) plus a 9(g) visa, with several professions constitutionally reserved for Filipino citizens.
 
 **The pattern across the region** is that everything is employer-driven, none of it is accessible independently, and the employer's experience and willingness matter more than your qualifications in almost every case.
 
@@ -90,7 +90,7 @@ The practical differences that decide whether a move is possible at all.
 
 The financial comparison that matters.
 
-**Singapore pays several times the regional average** and costs several times as much, with housing being the dominant expense.
+**Singapore pays several times the regional average** and costs several times as much, with [housing](/blog/remote-job-search-guide) being the dominant expense.
 
 **Malaysia offers the best ratio** for many people — reasonable salaries against genuinely moderate costs.
 
@@ -98,7 +98,7 @@ The financial comparison that matters.
 
 **Vietnam** has low costs and rising technology salaries, producing a genuinely favourable ratio for engineers.
 
-**Indonesia** has low costs and modest salaries, with Jakarta housing being the main pressure.
+**Indonesia** has low costs and modest salaries, with [Jakarta](/blog/jakarta-tech-and-startup-jobs) housing being the main pressure.
 
 **The Philippines** has low costs and the lowest local professional salaries of the six, which is precisely why the remote-work economy grew so large.
 
@@ -108,11 +108,11 @@ The financial comparison that matters.
 
 Where each leads over years rather than months.
 
-**Singapore** offers permanent residence pathways that are genuinely competitive and a strong platform for a regional career.
+**Singapore** offers permanent residence pathways that are genuinely competitive and a strong platform for a regional [career](/blog/career-change-to-tech-guide).
 
 **Malaysia** has residence pathways and the MM2H programme with conditions that have varied considerably.
 
-**Thailand** has the LTR visa for qualifying categories and otherwise limited long-term routes.
+**Thailand** has the [LTR visa](/blog/thailand-digital-nomad-and-ltr-visa) for qualifying categories and otherwise limited long-term routes.
 
 **Vietnam** has temporary residence cards and limited permanent routes.
 
@@ -134,7 +134,7 @@ The factors that decide whether people stay.
 
 **Vietnam** is energetic and rapidly improving, with excellent food and lower costs, and traffic and air quality being the routine complaints.
 
-**Indonesia** varies enormously between Jakarta, which is demanding, and Bali, which is a different proposition entirely.
+**Indonesia** varies enormously between Jakarta, which is demanding, and [Bali](/blog/bali-remote-work-and-visas), which is a different proposition entirely.
 
 **The Philippines** has genuine warmth, English everywhere and beautiful geography, alongside severe Manila traffic and infrastructure that lags its neighbours.
 

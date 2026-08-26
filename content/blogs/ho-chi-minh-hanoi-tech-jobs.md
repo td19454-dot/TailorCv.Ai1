@@ -21,7 +21,7 @@ showcase: none
 
 ## The outsourcing industry
 
-Vietnam's largest technology employer and the foundation of the sector.
+Vietnam's largest technology [employer](/blog/how-recruiters-spot-generic-resumes) and the foundation of the sector.
 
 **FPT Software** is the largest, with tens of thousands of engineers serving clients across Japan, the US and Europe.
 
@@ -29,7 +29,7 @@ Vietnam's largest technology employer and the foundation of the sector.
 
 **Japanese clients are a particular specialism.** Vietnam has built deep relationships with Japanese firms, and Japanese language capability is genuinely valuable in this market — considerably more so than in most outsourcing destinations.
 
-**The work is real engineering** — application development, maintenance, testing, embedded systems and increasingly data and cloud work.
+**The work is real engineering** — [application](/blog/how-many-jobs-should-you-apply-to-per-day) development, maintenance, testing, embedded systems and increasingly data and cloud work.
 
 **It trains a great many people**, and a large share of Vietnam's senior engineers came up through it.
 
@@ -63,7 +63,7 @@ Smaller but growing and increasingly where the interesting work is.
 
 **Ho Chi Minh City is where most foreign professionals are** and where the commercial technology sector concentrates.
 
-**Hanoi has excellent technical universities** and a deep engineering pool, with a somewhat more formal business culture.
+**Hanoi has excellent technical [universities](/blog/how-to-list-education-on-resume)** and a deep engineering pool, with a somewhat more formal business culture.
 
 **Da Nang has grown deliberately** as a technology and lifestyle destination, with lower costs and a coastal setting that has attracted both companies and remote workers.
 
@@ -71,7 +71,7 @@ Smaller but growing and increasingly where the interesting work is.
 
 The financial picture for technology work.
 
-**Local engineering salaries are low** by international standards and have risen steadily as demand grew.
+**Local engineering [salaries](/blog/how-to-negotiate-salary-offer) are low** by international standards and have risen steadily as demand grew.
 
 **Senior and lead roles** at product companies and international employers pay considerably more.
 
@@ -95,15 +95,15 @@ Practical mechanics.
 
 **VietnamWorks** covers professional roles broadly.
 
-**LinkedIn** works for international employers and senior roles.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide)** works for international employers and senior roles.
 
-**Company career pages** for FPT, VNG and the larger employers.
+**Company [career](/blog/career-change-to-tech-guide) pages** for FPT, VNG and the larger employers.
 
 **Technology meetups and communities** exist in both cities and are genuinely accessible.
 
-**Recruiters** are active, particularly for senior and specialist positions.
+**[Recruiters](/blog/how-recruiters-read-resumes)** are active, particularly for senior and specialist positions.
 
-**And be specific about your value.** In a market with strong local talent, an application that does not clearly state what you bring beyond general engineering competence will not progress. Lead with the specialism, the language, the leadership experience or the client-facing capability that makes hiring you make sense.
+**And be specific about your value.** In a market with strong local talent, an application that does not clearly state what you bring beyond general engineering competence will not progress. Lead with the specialism, the language, the leadership [experience](/blog/resume-matching-experienced-professionals) or the client-facing capability that makes hiring you make sense.
 
 ## The broader technology landscape
 
@@ -111,7 +111,7 @@ Beyond software, where technical work sits.
 
 **Embedded systems and hardware**, tied to the electronics manufacturing base and genuinely substantial.
 
-**Fintech**, driven by rapid mobile payment adoption — MoMo, VNPay, ZaloPay and the banking sector's digital efforts.
+**Fintech**, driven by rapid mobile payment adoption — MoMo, VNPay, ZaloPay and the [banking](/blog/resume-matching-insurance-jobs) sector's digital efforts.
 
 **E-commerce and logistics technology**, serving a market that moved online quickly.
 
@@ -137,7 +137,7 @@ Where a Vietnamese technology career leads.
 
 **Into international companies' Vietnamese operations**, which pay more and offer global exposure.
 
-**And out**, since Vietnamese engineering experience is increasingly recognised internationally, particularly for people who worked on international client projects.
+**And out**, since Vietnamese engineering experience is increasingly recognised internationally, particularly for people who worked on international client [projects](/blog/projects-in-resume).
 
 **For a foreigner specifically**, the path is usually leadership or specialist rather than individual contribution, and progression tends toward regional responsibility rather than deeper local roles.
 
@@ -147,7 +147,7 @@ An increasingly common arrangement worth treating properly.
 
 **Vietnam is an attractive base for remote workers** on cost grounds, and Da Nang in particular has built around this.
 
-**The visa position needs care.** Vietnam does not currently have a dedicated digital nomad visa comparable to Thailand's or Portugal's, and working remotely on a tourist visa is not a lawful arrangement.
+**The visa position needs care.** Vietnam does not currently have a dedicated digital nomad visa comparable to Thailand's or Portugal's, and [working remotely](/blog/remote-job-search-guide) on a tourist visa is not a lawful arrangement.
 
 **Some people use business visas or other categories**, and the position should be verified properly rather than assumed from forum advice.
 
@@ -171,7 +171,7 @@ Concrete actions.
 
 **Attend the meetups.** Both cities have active technology communities and they are genuinely accessible to foreigners.
 
-**Join the bilateral chamber** relevant to your nationality, which provides networking and job listings.
+**Join the bilateral chamber** relevant to your nationality, which provides [networking](/blog/networking-tips-for-job-search) and [job listings](/blog/best-job-search-websites-2026).
 
 **Understand the permit position before applying** so you can answer it clearly when asked.
 
@@ -226,7 +226,7 @@ Vietnam is an excellent base on cost grounds, and Da Nang in particular has buil
 ### Do
 
 - Be honest about what you add beyond local talent
-- Highlight Japanese language ability if you have it
+- Highlight Japanese [language ability](/blog/bilingual-language-skills-on-resume) if you have it
 - Consider the product sector, not just outsourcing
 - Look at Da Nang for cost and lifestyle
 - Use ITviec for technology roles
@@ -234,7 +234,7 @@ Vietnam is an excellent base on cost grounds, and Da Nang in particular has buil
 
 ### Don't
 
-- Assume general engineering skills justify a foreign hire
+- Assume general engineering [skills](/blog/resume-skills-match-job-description) justify a foreign hire
 - Overlook the outsourcing firms as employers
 - Ignore Hanoi's engineering base
 - Work remotely on a tourist visa

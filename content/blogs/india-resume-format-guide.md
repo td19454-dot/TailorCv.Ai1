@@ -21,25 +21,25 @@ showcase: none
 
 ## The structure
 
-Indian recruiters read fast and screening software reads first.
+Indian [recruiters](/blog/how-recruiters-read-resumes) read fast and screening software reads first.
 
-**Contact details:** name, phone, professional email, city, LinkedIn, and a GitHub or portfolio link for technical roles. No full address is needed.
+**[Contact details](/blog/resume-contact-section):** name, phone, professional email, city, LinkedIn, and a GitHub or [portfolio](/blog/portfolio-from-resume-minutes) link for technical roles. No full address is needed.
 
-**A career objective is optional and usually weak.** "Seeking a challenging role in a reputed organisation" appears on an enormous number of resumes and says nothing. Replace it with a two-line summary that states your specialisation and one concrete thing, or omit it.
+**A [career](/blog/career-change-to-tech-guide) objective is optional and usually weak.** "Seeking a challenging role in a reputed organisation" appears on an enormous number of [resumes](/blog/resume-optimization-guide) and says nothing. Replace it with a two-line summary that states your specialisation and one concrete thing, or omit it.
 
-**Education**, with degree, institution, year and your percentage or CGPA. State it — Indian recruiters look for it and eligibility criteria at large recruiters depend on it.
+**Education**, with [degree](/blog/how-to-list-education-on-resume), institution, year and your percentage or CGPA. State it — Indian recruiters look for it and eligibility criteria at large recruiters depend on it.
 
-**Technical skills**, grouped and specific. Languages, frameworks, databases, tools. Do not list everything you have ever opened.
+**Technical [skills](/blog/resume-skills-match-job-description)**, grouped and specific. Languages, frameworks, databases, tools. Do not list everything you have ever opened.
 
-**Projects**, and for a fresher this is the most important section. More below.
+**[Projects](/blog/projects-in-resume)**, and for a fresher this is the most important section. More below.
 
-**Internships and experience**, reverse chronological, with what you actually did and what came of it.
+**Internships and [experience](/blog/resume-matching-experienced-professionals)**, [reverse chronological](/blog/chronological-vs-functional-resume), with what you actually did and what came of it.
 
-**Certifications**, which are common and useful in the Indian market.
+**[Certifications](/blog/how-to-list-certifications-on-resume)**, which are common and useful in the Indian market.
 
 **Achievements and positions of responsibility**, including competitive results, hackathons and college leadership roles.
 
-**No photo, no date of birth, no marital status, no father's name.** These appear on older Indian resume templates and are not expected by modern recruiters, particularly at product companies and GCCs.
+**No photo, no date of birth, no marital status, no father's name.** These appear on older Indian [resume templates](/blog/resume-templates-by-country-guide) and are not expected by modern recruiters, particularly at product companies and GCCs.
 
 ## Projects, properly
 
@@ -47,13 +47,13 @@ The section that decides a fresher resume in technology.
 
 **Two or three projects, described properly, beat six listed by title.**
 
-**Say what the problem was.** "A web app" tells a reader nothing. "A tool that scrapes college notice boards and pushes updates to a Telegram channel, because students were missing deadlines" tells them how you think.
+**Say what the problem was.** "A web app" tells a reader nothing. "A tool that scrapes college notice boards and pushes updates to a Telegram channel, because students were missing [deadlines](/blog/campus-placement-preparation-timeline)" tells them how you think.
 
 **Say what you built and with what.** Specific stack, specific approach.
 
 **Say what was hard.** The interesting part of any project is the constraint you hit and what you did about it.
 
-**Link it.** A deployed URL or a repository. Indian technical recruiters do click, and a project that runs outperforms one that is described.
+**Link it.** A deployed URL or a [repository](/blog/github-profile-for-job-search-2026). Indian technical recruiters do click, and a project that runs outperforms one that is described.
 
 **Do not list tutorial projects as if they were original.** A to-do app or a clone of a well-known site from a course is recognised instantly. If you built one, extend it into something of your own.
 

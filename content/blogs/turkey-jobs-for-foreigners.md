@@ -31,7 +31,7 @@ Scale and structure.
 
 **Agriculture and food processing**, which is large and export-oriented.
 
-**Financial services**, with a substantial banking sector.
+**Financial services**, with a substantial [banking](/blog/resume-matching-insurance-jobs) sector.
 
 **Technology**, which is the growth story and treated separately below.
 
@@ -68,11 +68,11 @@ Turkiye's most internationally visible sector.
 | **Kocaeli and Gebze** | Heavy industry, chemicals, logistics near Istanbul |
 | **Antalya** | Tourism, seasonal and enormous |
 
-**Istanbul dominates** to a degree that surprises people, holding the great majority of professional employment across almost every white-collar sector, and it is a city of genuine scale.
+**Istanbul dominates** to a [degree](/blog/how-to-list-education-on-resume) that surprises people, holding the great majority of professional employment across almost every white-collar sector, and it is a city of genuine scale.
 
 **Ankara is the second professional centre**, driven by government, defence and the universities, with a considerably more ordered daily life.
 
-**Izmir has become a real alternative**, particularly for people prioritising quality of life over career depth.
+**Izmir has become a real alternative**, particularly for people prioritising quality of life over [career](/blog/career-change-to-tech-guide) depth.
 
 **And Bursa and Kocaeli** are serious industrial centres that are frequently overlooked by anyone thinking about Turkiye as a technology destination.
 
@@ -82,9 +82,9 @@ The factor that shapes every decision in this market, and one that no honest gui
 
 **Turkish inflation has run high for an extended period**, and the lira has depreciated substantially against major currencies over several years.
 
-**What this means practically** is that a salary agreed in lira loses purchasing power over the course of a year unless it is reviewed, and annual review is not always sufficient.
+**What this means practically** is that a [salary](/blog/how-to-negotiate-salary-offer) agreed in lira loses purchasing power over the course of a year unless it is reviewed, and annual review is not always sufficient.
 
-**Many employers review more frequently**, and this is a legitimate and important thing to ask about at offer stage.
+**Many [employers](/blog/how-recruiters-spot-generic-resumes) review more frequently**, and this is a legitimate and important thing to ask about at offer stage.
 
 **Some international employers pay in foreign currency** or index to it, which changes the picture entirely and is worth seeking out.
 
@@ -114,23 +114,23 @@ The practical picture.
 
 The practical channels.
 
-**LinkedIn is well used** in Turkiye, particularly in technology and by international employers.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is well used** in Turkiye, particularly in technology and by international employers.
 
-**Kariyer.net** is the largest domestic job board by volume.
+**Kariyer.net** is the largest domestic [job board](/blog/best-job-search-websites-2026) by volume.
 
 **Secretcv.com** and **Yenibiris** for broader coverage.
 
 **Company career pages** for the gaming studios and larger technology employers, most of which recruit directly.
 
-**Recruitment agencies**, active particularly in manufacturing and executive search.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)**, active particularly in manufacturing and executive search.
 
-**Referrals matter considerably**, and Turkish professional networks are relationship-driven.
+**[Referrals](/blog/networking-messages-for-referrals) matter considerably**, and Turkish professional networks are relationship-driven.
 
-**For gaming specifically**, the studios recruit internationally and through specialist channels, and a portfolio of shipped work is what matters.
+**For gaming specifically**, the studios recruit internationally and through specialist channels, and a [portfolio](/blog/portfolio-from-resume-minutes) of shipped work is what matters.
 
-**Apply in Turkish** unless the posting is in English, and run the document through an [ATS check](/ats-analysis) since Kariyer.net and the larger employers screen at volume.
+**Apply in Turkish** unless the posting is in English, and run the [document](/blog/campus-placement-document-checklist) through an [ATS check](/ats-analysis) since Kariyer.net and the larger employers screen at volume.
 
-**And publish your work** — a [portfolio](/portfolio) with deployed projects or shipped games does more than any description.
+**And publish your work** — a [portfolio](/portfolio) with deployed [projects](/blog/projects-in-resume) or shipped games does more than any description.
 
 ## Working culture
 
@@ -140,7 +140,7 @@ Calibrating expectations.
 
 **Hospitality is genuine and important**, extending well into professional contexts — tea, meals and time spent together are part of the working relationship rather than a distraction from it.
 
-**Hierarchy is respected** and seniority carries real weight, though technology companies are considerably flatter.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and seniority carries real weight, though technology companies are considerably flatter.
 
 **Communication is indirect** in traditional settings and more direct in technology.
 
@@ -158,7 +158,7 @@ Where a Turkish career leads.
 
 **Into international roles**, since Turkish companies operate across a wide region and regional responsibility is a common path.
 
-**Abroad**, where Turkish engineers and particularly game developers are genuinely well regarded and Berlin, London and Amsterdam have substantial Turkish professional communities.
+**Abroad**, where Turkish engineers and particularly game [developers](/blog/resume-matching-software-engineer) are genuinely well regarded and Berlin, London and Amsterdam have substantial Turkish professional communities.
 
 **Into founding**, supported by an ecosystem that has produced real exits and now has experienced operators and returning capital.
 

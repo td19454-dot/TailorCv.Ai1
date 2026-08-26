@@ -23,17 +23,17 @@ showcase: none
 
 The employment route.
 
-**Your employer applies** to the Ministry of Labour and Social Security, either from within Turkiye or with you applying at a Turkish consulate abroad in parallel.
+**Your [employer](/blog/how-recruiters-spot-generic-resumes) applies** to the Ministry of Labour and Social Security, either from within Turkiye or with you applying at a Turkish consulate abroad in parallel.
 
 **The employer must meet conditions**, principally a ratio of Turkish employees per foreign worker and a paid-in capital or turnover threshold, with exemptions for certain categories.
 
-**A minimum salary applies**, expressed as a multiple of the Turkish minimum wage and set higher for senior and specialist occupations than for general ones.
+**A minimum [salary](/blog/how-to-negotiate-salary-offer) applies**, expressed as a multiple of the Turkish minimum wage and set higher for senior and specialist occupations than for general ones.
 
-**Documents are submitted electronically** through the ministry system, with the employer holding responsibility for the filing.
+**[Documents](/blog/campus-placement-document-checklist) are submitted electronically** through the ministry system, with the employer holding responsibility for the filing.
 
 **A decision issues** within a period that varies with completeness and category.
 
-**The permit is employer and role specific** and does not transfer, meaning a change of employer requires a new application.
+**The permit is employer and role specific** and does not transfer, meaning a change of employer requires a new [application](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 **And the permit serves as a residence permit** for its duration, which removes a step that most comparable countries require separately.
 
@@ -89,13 +89,13 @@ What the process requires.
 
 **And fees**, payable at permit issue and again on renewal.
 
-**Start the apostille and equivalence steps first**, since they sit outside the employer's control and routinely take longer than expected.
+**Start the [apostille](/blog/international-resume-tailoring-guide) and equivalence steps first**, since they sit outside the employer's control and routinely take longer than expected.
 
 ## Other routes
 
 Beyond standard employment.
 
-**Spouse of a Turkish citizen**, which carries exemptions from several of the standard conditions and is a considerably simpler position.
+**[Spouse](/blog/first-job-abroad-practical-checklist) of a Turkish citizen**, which carries exemptions from several of the standard conditions and is a considerably simpler position.
 
 **Independent work permit**, available to foreigners meeting long-term residence and other conditions, which permits self-employment.
 
@@ -175,7 +175,7 @@ Requirements change and this article should be checked against the sources.
 
 **SGK** for social security registration and entitlements.
 
-**And e-Devlet**, which handles a wide range of administration once you hold the credentials.
+**And e-Devlet**, which handles a wide range of administration once you hold the [credentials](/blog/how-to-list-certifications-on-resume).
 
 ## Route comparison
 

@@ -31,7 +31,7 @@ Thailand's foreign employment has a specific and long-standing shape.
 
 **Education.** International schools are numerous and well established, employing qualified teachers; separately, the English language teaching market is very large.
 
-**Finance and professional services** serving both the domestic market and regional operations.
+**[Finance](/blog/resume-matching-insurance-jobs) and professional services** serving both the domestic market and regional operations.
 
 **Technology**, smaller relative to the economy than in Vietnam or Indonesia but growing, with a startup scene in Bangkok.
 
@@ -47,11 +47,11 @@ The first thing to establish and the thing most people do not know.
 
 **The list has been revised** over time, with some occupations opened conditionally, and the current position should be checked rather than assumed.
 
-**Practically**, this means certain roles cannot be performed by a foreigner regardless of qualifications or employer willingness.
+**Practically**, this means certain roles cannot be performed by a foreigner regardless of qualifications or [employer](/blog/how-recruiters-spot-generic-resumes) willingness.
 
 **Professional and managerial roles are generally available**, which is why foreign employment concentrates there.
 
-**Some professions require Thai licensing** — law, engineering in certain applications, architecture, accountancy — which is a separate barrier from the reserved list.
+**Some professions require Thai licensing** — law, engineering in certain [applications](/blog/how-many-jobs-should-you-apply-to-per-day), architecture, accountancy — which is a separate barrier from the reserved list.
 
 **Check both** before assuming a role is open to you, because discovering the restriction after an offer wastes everyone's time.
 
@@ -73,9 +73,9 @@ Conditions that fall on the company rather than on you, and which determine whet
 
 The financial picture.
 
-**Expatriate packages at international employers** are the attractive category, frequently including housing, schooling and flights for senior roles.
+**Expatriate packages at international employers** are the attractive category, frequently including [housing](/blog/remote-job-search-guide), schooling and flights for senior roles.
 
-**Local-contract professional salaries** are modest by Western standards and comfortable against Thai costs.
+**Local-contract professional [salaries](/blog/how-to-negotiate-salary-offer)** are modest by Western standards and comfortable against Thai costs.
 
 **Teaching pay is low** in absolute terms and workable locally.
 
@@ -85,7 +85,7 @@ The financial picture.
 
 **Bangkok housing** ranges from very cheap to genuinely expensive depending on area and standard.
 
-**Healthcare is excellent and private hospitals are outstanding**, which is why medical tourism exists, and insurance makes them accessible.
+**[Healthcare](/blog/first-job-abroad-practical-checklist) is excellent and private hospitals are outstanding**, which is why medical tourism exists, and insurance makes them accessible.
 
 **Provincial and Eastern Seaboard costs** are considerably lower than central Bangkok.
 
@@ -95,7 +95,7 @@ The financial picture.
 
 Worth calibrating.
 
-**Hierarchy is respected** and seniority carries real weight.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and seniority carries real weight.
 
 **Face matters enormously.** Public criticism is genuinely damaging and correction happens privately.
 
@@ -115,19 +115,19 @@ Thailand's channels.
 
 **JobsDB Thailand** carries substantial professional volume.
 
-**LinkedIn works well** for the international and regional headquarters sector.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) works well** for the international and regional headquarters sector.
 
 **JobTopGun and ThaiJob** cover the domestic market more heavily.
 
-**Company career pages** for the large manufacturers, hotel groups and regional offices.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the large manufacturers, hotel groups and regional offices.
 
-**Recruitment agencies** are very active, particularly in manufacturing, automotive and executive search across the region.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** are very active, particularly in manufacturing, automotive and executive search across the region.
 
-**The bilateral chambers of commerce** — American, British, German, Japanese and others — run job boards and networking that are genuinely useful for foreign professionals.
+**The bilateral chambers of commerce** — American, British, German, Japanese and others — run [job boards](/blog/best-job-search-websites-2026) and [networking](/blog/networking-tips-for-job-search) that are genuinely useful for foreign professionals.
 
 **International school recruitment fairs** for qualified teachers, which operate on their own annual cycle.
 
-**And referrals**, which in Bangkok's relatively concentrated expatriate professional community carry real weight.
+**And [referrals](/blog/networking-messages-for-referrals)**, which in Bangkok's relatively concentrated expatriate professional community carry real weight.
 
 ## Building a career from Thailand
 
@@ -135,7 +135,7 @@ Where it leads.
 
 **Regional roles are the natural progression.** Bangkok's position as a regional headquarters city means Southeast Asian responsibility is a common next step.
 
-**Manufacturing experience transfers** across the region and beyond, particularly automotive.
+**Manufacturing [experience](/blog/resume-matching-experienced-professionals) transfers** across the region and beyond, particularly automotive.
 
 **Hospitality management** is a genuinely global career, and Thai experience is well regarded in an industry where the country has real standing.
 
@@ -195,11 +195,11 @@ The administrative sequence.
 
 **Bank account**, which typically requires your work permit.
 
-**Social security registration**, which is compulsory for employees and provides basic healthcare and benefits alongside any private insurance.
+**Social security registration**, which is compulsory for employees and provides basic healthcare and [benefits](/blog/questions-to-ask-in-an-interview) alongside any private insurance.
 
 **Driving licence**, either converted or obtained locally, and note that international permits have limited validity.
 
-**And keep your documents accessible.** Thai administration asks for the work permit and passport repeatedly, and having certified copies ready saves considerable time.
+**And keep your [documents](/blog/campus-placement-document-checklist) accessible.** Thai administration asks for the work permit and passport repeatedly, and having certified copies ready saves considerable time.
 
 ## Mini checklist
 

@@ -29,11 +29,11 @@ Bangkok's position is deliberate and it explains the job market.
 
 **Government incentives** for regional operating headquarters and international business centres, which have been offered in various forms over time.
 
-**A large existing expatriate community**, which makes relocation easier and self-reinforces.
+**A large existing expatriate community**, which makes [relocation](/blog/first-job-abroad-practical-checklist) easier and self-reinforces.
 
 **Quality of life** that many senior international staff genuinely prefer to the alternatives in the region.
 
-**The result:** a substantial number of companies run their Southeast Asian commercial, marketing, supply chain and finance functions from Bangkok, and these are real senior roles rather than support functions.
+**The result:** a substantial number of companies run their Southeast Asian commercial, [marketing](/blog/resume-matching-marketing), supply chain and [finance](/blog/resume-matching-insurance-jobs) functions from Bangkok, and these are real senior roles rather than support functions.
 
 ## Where foreigners actually work
 
@@ -43,11 +43,11 @@ The honest map.
 
 **Manufacturing and supply chain management**, frequently based in Bangkok with responsibility for plants in the Eastern Economic Corridor or across the region.
 
-**Hospitality management** at the international hotel groups, which is a genuinely large employer given Thailand's tourism scale.
+**Hospitality management** at the international hotel groups, which is a genuinely large [employer](/blog/how-recruiters-spot-generic-resumes) given Thailand's tourism scale.
 
 **International school teaching**, requiring proper qualifications and offering the best-paid teaching work in the country.
 
-**Finance, consulting and professional services**, both domestic and regional.
+**Finance, [consulting](/blog/case-interview-preparation-guide-2026) and professional services**, both domestic and regional.
 
 **Technology**, smaller than in Vietnam or Indonesia but growing, with a startup scene and some international engineering presence.
 
@@ -63,7 +63,7 @@ The practicalities that shape daily life.
 
 **The BTS and MRT are excellent** where they run, and living within walking distance of a station is worth paying for.
 
-**Housing ranges enormously.** A serviced condominium in Sukhumvit and a local apartment further out differ by an order of magnitude in cost and considerably in daily experience.
+**[Housing](/blog/remote-job-search-guide) ranges enormously.** A serviced condominium in Sukhumvit and a local apartment further out differ by an order of magnitude in cost and considerably in daily [experience](/blog/resume-matching-experienced-professionals).
 
 **The expatriate areas** — Sukhumvit, Sathorn, Silom, Thonglor — are convenient, well served and expensive relative to the rest of the city.
 
@@ -77,7 +77,7 @@ The practicalities that shape daily life.
 
 ## Salaries and what they buy
 
-The financial picture, which varies more by lifestyle than by salary.
+The financial picture, which varies more by lifestyle than by [salary](/blog/how-to-negotiate-salary-offer).
 
 **Expatriate packages** at international employers frequently include housing allowance, international schooling and home flights, and these are what make senior Bangkok roles attractive.
 
@@ -103,7 +103,7 @@ Worth knowing before your first week.
 
 **International offices operate closer to global norms** than domestic Thai companies, but the local culture still shapes them.
 
-**Hierarchy is respected** and titles carry weight.
+**[Hierarchy](/blog/hr-round-interview-questions-answers) is respected** and titles carry weight.
 
 **Public disagreement is uncomfortable** and correction happens privately.
 
@@ -121,21 +121,21 @@ Worth knowing before your first week.
 
 Practical mechanics.
 
-**LinkedIn is the strongest channel** for regional and international roles, and Bangkok's professional community is well represented there.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is the strongest channel** for regional and international roles, and Bangkok's professional community is well represented there.
 
 **JobsDB Thailand** carries substantial professional volume.
 
-**Recruitment agencies** are very active in executive, manufacturing and regional commercial search.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** are very active in executive, manufacturing and regional commercial search.
 
-**The bilateral chambers of commerce** run job boards, networking events and directories that are genuinely useful and under-used by job seekers.
+**The bilateral chambers of commerce** run [job boards](/blog/best-job-search-websites-2026), [networking](/blog/networking-tips-for-job-search) events and directories that are genuinely useful and under-used by job seekers.
 
-**Company career pages** for the hotel groups, manufacturers and regional offices.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the hotel groups, manufacturers and regional offices.
 
 **International school recruitment** runs on an annual cycle with dedicated fairs.
 
-**And referrals**, which in a concentrated expatriate professional community carry substantial weight.
+**And [referrals](/blog/networking-messages-for-referrals)**, which in a concentrated expatriate professional community carry substantial weight.
 
-**State your visa position clearly** on applications, since employers screen for whether sponsorship is required and whether they can provide it.
+**State your visa position clearly** on [applications](/blog/how-many-jobs-should-you-apply-to-per-day), since employers screen for whether sponsorship is required and whether they can provide it.
 
 **And be specific about regional experience** if you have it, since that is what Bangkok regional roles are actually hiring for.
 

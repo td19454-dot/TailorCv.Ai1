@@ -31,11 +31,11 @@ Vietnam's growth story is real and it has a specific shape.
 
 **A domestic technology sector** including VNG, MoMo, Tiki and a startup ecosystem, primarily in Ho Chi Minh City and Hanoi.
 
-**Finance and banking**, growing with the economy.
+**[Finance](/blog/resume-matching-insurance-jobs) and banking**, growing with the economy.
 
 **Tourism and hospitality**, substantial and recovered.
 
-**Agriculture and agri-processing**, still a large employer and increasingly technical.
+**Agriculture and agri-processing**, still a large [employer](/blog/how-recruiters-spot-generic-resumes) and increasingly technical.
 
 **And education**, including a very large English-teaching market.
 
@@ -43,7 +43,7 @@ Vietnam's growth story is real and it has a specific shape.
 
 The honest map of foreign employment.
 
-**English teaching** is the largest category by headcount and the most accessible. Requirements are typically a degree, a TEFL certificate and native or near-native English, with the employer handling the work permit.
+**English teaching** is the largest category by headcount and the most accessible. Requirements are typically a [degree](/blog/how-to-list-education-on-resume), a TEFL [certificate](/blog/campus-placement-document-checklist) and native or near-native English, with the employer handling the work permit.
 
 **Management and technical roles at foreign-invested manufacturers.** Quality, production, supply chain and engineering positions at the international companies operating plants there.
 
@@ -53,7 +53,7 @@ The honest map of foreign employment.
 
 **Hospitality management** at international hotel groups.
 
-**Consulting, legal and financial services** serving foreign investors.
+**[Consulting](/blog/case-interview-preparation-guide-2026), legal and financial services** serving foreign investors.
 
 **Entrepreneurship**, with a visible foreign-founded business community particularly in Ho Chi Minh City.
 
@@ -67,7 +67,7 @@ The honest map of foreign employment.
 
 **Ho Chi Minh City has the largest international community**, with Hanoi second and Da Nang growing.
 
-**Costs are low** by international standards, which means even a modest foreign salary supports a comfortable life.
+**Costs are low** by international standards, which means even a modest foreign [salary](/blog/how-to-negotiate-salary-offer) supports a comfortable life.
 
 **And the country is young and fast-changing**, which shows up in the pace of development and in how quickly things shift.
 
@@ -79,7 +79,7 @@ The financial picture.
 
 **Local salaries are low** by international standards, and a foreigner on a local contract will earn accordingly.
 
-**Expatriate packages** at foreign-invested companies may include housing, schooling and flights, and these are what make Vietnam financially attractive for senior roles.
+**Expatriate packages** at foreign-invested companies may include [housing](/blog/remote-job-search-guide), schooling and flights, and these are what make Vietnam financially attractive for senior roles.
 
 **Teaching pay is modest** but goes a long way given local costs, and it is generally enough to live comfortably and save a little.
 
@@ -87,7 +87,7 @@ The financial picture.
 
 **Costs are genuinely low.** Food, transport, rent outside the premium expatriate areas and daily life all cost a fraction of Western equivalents.
 
-**Healthcare** is mixed — public facilities are basic and international clinics and hospitals are good and私 expensive, which is why insurance matters.
+**[Healthcare](/blog/first-job-abroad-practical-checklist)** is mixed — public facilities are basic and international clinics and hospitals are good and私 expensive, which is why insurance matters.
 
 **And the arithmetic works well** for someone on a foreign-linked salary and poorly for someone on a purely local one.
 
@@ -103,7 +103,7 @@ The administrative sequence.
 
 **Health check** at an approved facility.
 
-**Degree and experience documents**, legalised and consularised — the slowest element.
+**Degree and [experience](/blog/resume-matching-experienced-professionals) documents**, legalised and consularised — the slowest element.
 
 **Health insurance**, since international care is the practical option and it is expensive without cover.
 
@@ -117,25 +117,25 @@ Vietnam's channels.
 
 **VietnamWorks** is the largest professional job platform in the country.
 
-**LinkedIn works** for the international and foreign-invested sector, which is where most foreign hiring happens.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) works** for the international and foreign-invested sector, which is where most foreign hiring happens.
 
 **ITviec** covers technology roles specifically and is well used by the local engineering market.
 
-**Company career pages** for the large foreign-invested manufacturers and international employers.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the large foreign-invested manufacturers and international employers.
 
-**Recruitment agencies** are active in executive and specialist search, particularly for the manufacturing and industrial sector.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** are active in executive and specialist search, particularly for the manufacturing and industrial sector.
 
 **Teaching-specific channels** and school websites for the English teaching market, which operates separately.
 
-**Chambers of commerce** — the European, American, British and other bilateral chambers — run networking and job listings and are genuinely useful for foreign professionals.
+**Chambers of commerce** — the European, American, British and other bilateral chambers — run [networking](/blog/networking-tips-for-job-search) and [job listings](/blog/best-job-search-websites-2026) and are genuinely useful for foreign professionals.
 
-**And referrals**, which in a market where foreign hiring is relatively concentrated carry real weight.
+**And [referrals](/blog/networking-messages-for-referrals)**, which in a market where foreign hiring is relatively concentrated carry real weight.
 
 ## Working culture
 
 Worth calibrating before arriving.
 
-**Hierarchies are respected** and seniority carries weight, more so than in Western workplaces.
+**[Hierarchies](/blog/hr-round-interview-questions-answers) are respected** and seniority carries weight, more so than in Western workplaces.
 
 **Relationships underpin business** and time spent building them is not preamble.
 

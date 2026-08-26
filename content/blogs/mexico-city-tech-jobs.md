@@ -31,7 +31,7 @@ Where technology employment concentrates.
 
 **International engineering centres**, with American and European companies building teams in Mexico for time zone and talent reasons.
 
-**Banking technology**, as the large Mexican banks build capability.
+**[Banking](/blog/resume-matching-insurance-jobs) technology**, as the large Mexican banks build capability.
 
 **Enterprise software and IT services**, serving both domestic businesses and North American clients.
 
@@ -51,7 +51,7 @@ The structural reasons, which are worth understanding because they are durable.
 
 **Cultural and business familiarity** with the United States is high, particularly in Monterrey and among internationally educated professionals.
 
-**Talent is genuinely good**, with strong technical universities including Tec de Monterrey, UNAM, IPN and the ITESM network.
+**Talent is genuinely good**, with strong technical [universities](/blog/how-to-list-education-on-resume) including Tec de Monterrey, UNAM, IPN and the ITESM network.
 
 **Costs are substantially below American levels** while being above India or the Philippines, which positions Mexico as a quality-and-proximity choice rather than a lowest-cost one.
 
@@ -69,17 +69,17 @@ The map beyond the capital.
 
 **Merida** has attracted both technology companies and remote workers, with notably good safety outcomes and a growing services sector.
 
-**Tijuana** benefits from direct proximity to San Diego and the cross-border technology corridor.
+**Tijuana** [benefits](/blog/questions-to-ask-in-an-interview) from direct proximity to San Diego and the cross-border technology corridor.
 
 **Puebla** with a manufacturing base and growing services.
 
-**And remote work within Mexico**, which has spread technology employment considerably beyond these centres.
+**And [remote work](/blog/remote-job-search-guide) within Mexico**, which has spread technology employment considerably beyond these centres.
 
 ## Compensation
 
 The financial picture.
 
-**Technology salaries are strong relative to the Mexican market** and substantially below American levels, which is the arbitrage that drives nearshoring.
+**Technology [salaries](/blog/how-to-negotiate-salary-offer) are strong relative to the Mexican market** and substantially below American levels, which is the arbitrage that drives nearshoring.
 
 **International engineering centres pay above domestic companies**, sometimes considerably.
 
@@ -87,9 +87,9 @@ The financial picture.
 
 **The aguinaldo** is a statutory year-end entitlement and part of the comparison.
 
-**Profit sharing** applies to many employers by law.
+**Profit sharing** applies to many [employers](/blog/how-recruiters-spot-generic-resumes) by law.
 
-**Private health insurance and food vouchers** are standard professional benefits alongside IMSS.
+**Private [health insurance](/blog/first-job-abroad-practical-checklist) and food vouchers** are standard professional benefits alongside IMSS.
 
 **Costs in Mexico City** concentrate in housing in Roma, Condesa, Polanco and the desirable central neighbourhoods, with much else being reasonable.
 
@@ -99,23 +99,23 @@ The financial picture.
 
 The practical mechanics.
 
-**LinkedIn is dominant** and Mexican technology recruiters are active on it.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is dominant** and Mexican technology [recruiters](/blog/how-recruiters-read-resumes) are active on it.
 
 **OCCMundial** carries the largest domestic volume.
 
 **Computrabajo** and **Indeed Mexico** for broader coverage.
 
-**Company career pages** for the international engineering centres, which frequently hire directly.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the international engineering centres, which frequently hire directly.
 
-**Recruitment agencies** specialising in technology, which are genuinely active here.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** specialising in technology, which are genuinely active here.
 
 **Meetups and the community**, which is real in Mexico City and Guadalajara particularly.
 
-**Referrals**, which carry weight in a relationship-driven market.
+**[Referrals](/blog/networking-messages-for-referrals)**, which carry weight in a relationship-driven market.
 
-**Apply in Spanish** unless the posting is in English, state your English level accurately, and run the document through an [ATS check](/ats-analysis) since the larger employers screen at volume.
+**Apply in Spanish** unless the posting is in English, state your English level accurately, and run the [document](/blog/campus-placement-document-checklist) through an [ATS check](/ats-analysis) since the larger employers screen at volume.
 
-**And publish your work** — a [portfolio](/portfolio) with deployed projects reads better than a description, particularly for international teams that cannot easily verify your background otherwise.
+**And publish your work** — a [portfolio](/portfolio) with deployed [projects](/blog/projects-in-resume) reads better than a description, particularly for international teams that cannot easily verify your background otherwise.
 
 ## Living in Mexico City
 

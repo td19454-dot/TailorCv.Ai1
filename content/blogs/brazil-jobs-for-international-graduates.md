@@ -31,7 +31,7 @@ Scale and structure.
 
 **Manufacturing**, particularly automotive and aerospace — Embraer is a globally significant aircraft manufacturer.
 
-**Financial services**, with a large and sophisticated banking sector.
+**Financial services**, with a large and sophisticated [banking](/blog/resume-matching-insurance-jobs) sector.
 
 **Technology**, which is the growth story and covered in more detail below.
 
@@ -75,11 +75,11 @@ The map is wider than most people assume.
 
 **Sao Paulo** is the commercial and financial capital and holds the great majority of professional employment, technology included. It is enormous, expensive by Brazilian standards, and where the opportunity concentrates.
 
-**Rio de Janeiro** for oil and gas, energy, media and a growing technology presence, with a considerably different quality of life and a reputation for higher living costs in the desirable areas.
+**Rio de Janeiro** for oil and gas, energy, media and a growing technology presence, with a considerably different quality of life and a reputation for higher [living costs](/blog/how-to-negotiate-salary-offer) in the desirable areas.
 
 **Belo Horizonte** for mining, engineering and a genuine technology scene, at meaningfully lower cost.
 
-**Porto Alegre** in the south, with a real technology sector, strong universities and a European-influenced culture.
+**Porto Alegre** in the south, with a real technology sector, strong [universities](/blog/how-to-list-education-on-resume) and a European-influenced culture.
 
 **Florianopolis** has become a genuine technology hub, frequently described as one of the better places in Brazil to combine software work with quality of life.
 
@@ -87,7 +87,7 @@ The map is wider than most people assume.
 
 **Curitiba** for manufacturing, automotive and planning-led urban quality.
 
-**Brasilia** for government, public sector and the associated consulting.
+**Brasilia** for government, public sector and the associated [consulting](/blog/case-interview-preparation-guide-2026).
 
 **And Recife**, whose Porto Digital has produced a real technology cluster in the northeast.
 
@@ -95,11 +95,11 @@ The map is wider than most people assume.
 
 The distinction that catches foreigners.
 
-**CLT** is the formal employment regime under the Consolidation of Labour Laws. It carries statutory protections including paid holiday with a holiday bonus, thirteenth salary, FGTS severance fund contributions, notice requirements and unemployment protections.
+**CLT** is the formal employment regime under the Consolidation of Labour Laws. It carries statutory protections including paid holiday with a holiday [bonus](/blog/how-to-negotiate-a-job-offer-email), thirteenth salary, FGTS severance fund contributions, notice requirements and unemployment protections.
 
 **PJ** — pessoa juridica — means being engaged as a company rather than an employee. Headline pay is higher and the statutory protections do not apply, with tax and social contributions falling to you.
 
-**The gap is substantial**, and a PJ figure that looks better than a CLT one frequently is not once the benefits are priced in.
+**The gap is substantial**, and a PJ figure that looks better than a CLT one frequently is not once the [benefits](/blog/questions-to-ask-in-an-interview) are priced in.
 
 **Both are common** in the technology sector particularly, and the choice is a genuine negotiation point rather than a formality.
 
@@ -119,9 +119,9 @@ The bureaucracy is genuine and worth preparing for.
 
 **Diploma revalidation** through a Brazilian university for regulated professions, which is a genuine process rather than a formality and takes time.
 
-**Sworn translation** by a registered public translator for official documents, which is a specific legal category rather than any translation service.
+**Sworn translation** by a registered public translator for official [documents](/blog/campus-placement-document-checklist), which is a specific legal category rather than any translation service.
 
-**Apostille** for documents from Convention countries.
+**[Apostille](/blog/international-resume-tailoring-guide)** for documents from Convention countries.
 
 **And patience.** Brazilian administration has a reputation and it is partly earned, though digitalisation has genuinely improved several processes in recent years.
 
@@ -129,9 +129,9 @@ The bureaucracy is genuine and worth preparing for.
 
 The practical channels.
 
-**LinkedIn is dominant** in Brazil and genuinely well used across the professional market.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is dominant** in Brazil and genuinely well used across the professional market.
 
-**Gupy** is a widely used Brazilian recruitment platform, particularly for larger employers.
+**Gupy** is a widely used Brazilian recruitment platform, particularly for larger [employers](/blog/how-recruiters-spot-generic-resumes).
 
 **Vagas.com** carries substantial domestic volume.
 
@@ -139,11 +139,11 @@ The practical channels.
 
 **Programathor** and **Geekhunter** for technology roles specifically.
 
-**Company career pages** for the larger employers and multinationals.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the larger employers and multinationals.
 
-**Referrals matter considerably**, and the Brazilian professional network is relationship-driven in a way that rewards genuine contact over volume applications.
+**[Referrals](/blog/networking-messages-for-referrals) matter considerably**, and the Brazilian professional network is relationship-driven in a way that rewards genuine contact over volume [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
-**Your application should be in Portuguese** unless the posting is explicitly in English, and a Portuguese CV that reads naturally does far more than a translated one that does not.
+**Your application should be in Portuguese** unless the posting is explicitly in English, and a Portuguese [CV](/blog/resume-optimization-guide) that reads naturally does far more than a translated one that does not.
 
 **Run it through an [ATS check](/ats-analysis)** before submitting, since Gupy and the larger employers screen at volume.
 

@@ -23,15 +23,15 @@ showcase: none
 
 Its shape and scale.
 
-**Government schools** employ a very large number of foreign teachers, frequently through agencies that place teachers into schools — an arrangement worth understanding because the agency, not the school, is your employer.
+**Government schools** employ a very large number of foreign teachers, frequently through agencies that place teachers into schools — an arrangement worth understanding because the agency, not the school, is your [employer](/blog/how-recruiters-spot-generic-resumes).
 
 **Private and bilingual schools** offer better conditions and pay than government placements.
 
-**International schools** are the top of the market, requiring genuine teaching qualifications and paying substantially more, with proper contracts and benefits.
+**International schools** are the top of the market, requiring genuine teaching qualifications and paying substantially more, with proper contracts and [benefits](/blog/questions-to-ask-in-an-interview).
 
 **Language centres** teach children and adults outside school hours, with evening and weekend schedules.
 
-**Universities** hire for English and English-medium teaching, frequently requiring a master's degree.
+**[Universities](/blog/how-to-list-education-on-resume)** hire for English and English-medium teaching, frequently requiring a master's degree.
 
 **Corporate training** for companies upskilling staff.
 
@@ -45,7 +45,7 @@ Stricter than the reputation suggests.
 
 **A bachelor's degree** in any subject, required for the work permit.
 
-**A TEFL, TESOL or CELTA certificate**, with CELTA the most respected.
+**A TEFL, TESOL or CELTA [certificate](/blog/campus-placement-document-checklist)**, with CELTA the most respected.
 
 **A teacher licence or a waiver.** Thailand requires foreign teachers in formal education to hold a teaching licence from the Teachers Council, or a temporary waiver while working toward one. Waivers are limited in number and duration, which surprises people.
 
@@ -53,9 +53,9 @@ Stricter than the reputation suggests.
 
 **A health certificate.**
 
-**Degree verification and legalisation**, which takes time.
+**Degree verification and [legalisation](/blog/international-resume-tailoring-guide)**, which takes time.
 
-**And for international schools**, a genuine teaching qualification — PGCE, a state teaching licence or equivalent — plus experience. This is a professional teaching career, not an entry route.
+**And for international schools**, a genuine teaching qualification — PGCE, a state teaching licence or equivalent — plus [experience](/blog/resume-matching-experienced-professionals). This is a professional teaching [career](/blog/career-change-to-tech-guide), not an entry route.
 
 **The licence requirement in particular** is the element most commonly misunderstood, and it has become more strictly applied over time.
 
@@ -67,11 +67,11 @@ What to expect.
 
 **Private and bilingual schools** pay more.
 
-**International schools** pay substantially more, comparable to or exceeding teaching salaries in some Western countries when housing and benefits are included.
+**International schools** pay substantially more, comparable to or exceeding teaching [salaries](/blog/how-to-negotiate-salary-offer) in some Western countries when [housing](/blog/remote-job-search-guide) and benefits are included.
 
 **Language centres** pay hourly with unsocial hours.
 
-**Against Thai living costs**, even modest teaching pay supports a comfortable life outside the expensive expatriate areas.
+**Against Thai [living costs](/blog/first-job-abroad-practical-checklist)**, even modest teaching pay supports a comfortable life outside the expensive expatriate areas.
 
 **Saving is possible** but limited at the lower end of the market.
 
@@ -85,11 +85,11 @@ The practical channels and what to check.
 
 **School and international school websites directly**, which is the most reliable route.
 
-**Teaching-specific job boards** covering Thailand and the region.
+**Teaching-specific [job boards](/blog/best-job-search-websites-2026)** covering Thailand and the region.
 
 **Facebook teacher communities** in Bangkok and Chiang Mai, which share both vacancies and warnings.
 
-**Recruitment agencies**, with the caveat about quality.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)**, with the caveat about quality.
 
 **International school recruitment fairs**, which run on an annual cycle and are the main channel for qualified teachers.
 
@@ -127,7 +127,7 @@ Where it leads.
 
 **Another country**, since a qualification plus experience travels across the whole ESL market.
 
-**Another sector**, which requires building credentials separately.
+**Another sector**, which requires building [credentials](/blog/how-to-list-certifications-on-resume) separately.
 
 **Or home**, with savings, experience and a broadened view.
 

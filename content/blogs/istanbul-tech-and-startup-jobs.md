@@ -43,7 +43,7 @@ The rest of the ecosystem.
 
 **Getir** became internationally known for rapid grocery delivery and expanded aggressively abroad, with the retrenchment that followed being part of the story too.
 
-**Trendyol** operates at genuine scale in e-commerce and is one of the largest technology employers in the country.
+**Trendyol** operates at genuine scale in e-commerce and is one of the largest technology [employers](/blog/how-recruiters-spot-generic-resumes) in the country.
 
 **Fintech and payments**, with a growing sector addressing a large and young population.
 
@@ -59,7 +59,7 @@ The rest of the ecosystem.
 
 The financial picture, which needs care here.
 
-**Technology salaries are strong relative to the Turkish market** and modest converted into euros or dollars.
+**Technology [salaries](/blog/how-to-negotiate-salary-offer) are strong relative to the Turkish market** and modest converted into euros or dollars.
 
 **Gaming pays at the top of the domestic market**, and the successful studios pay well by any local standard.
 
@@ -67,11 +67,11 @@ The financial picture, which needs care here.
 
 **Review frequency matters almost as much.** Under sustained high inflation, an annual review is a meaningful real-terms cut, and many employers review more often.
 
-**Bonuses and profit sharing** exist particularly in gaming, where performance-linked pay can be substantial at successful studios.
+**[Bonuses](/blog/how-to-negotiate-a-job-offer-email) and profit sharing** exist particularly in gaming, where performance-linked pay can be substantial at successful studios.
 
 **Equity** exists at startups and warrants the usual scrutiny, complicated further by currency questions.
 
-**Istanbul costs** have risen substantially in local terms, with housing in the desirable districts being the main pressure.
+**Istanbul costs** have risen substantially in local terms, with [housing](/blog/remote-job-search-guide) in the desirable districts being the main pressure.
 
 **And the comparison people should actually make** is not against another Turkish offer but against what remote work for a foreign employer would pay, since that is the alternative most Turkish engineers are genuinely weighing.
 
@@ -79,19 +79,19 @@ The financial picture, which needs care here.
 
 The practical mechanics.
 
-**LinkedIn**, which is well used in Turkish technology and by international recruiters targeting the market.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide)**, which is well used in Turkish technology and by international [recruiters](/blog/how-recruiters-read-resumes) targeting the market.
 
 **Kariyer.net** for domestic volume across sectors.
 
-**Studio career pages**, since the gaming companies recruit directly and continuously.
+**Studio [career](/blog/career-change-to-tech-guide) pages**, since the gaming companies recruit directly and continuously.
 
-**Games industry job boards** internationally, where Turkish studios post alongside everyone else.
+**Games industry [job boards](/blog/best-job-search-websites-2026)** internationally, where Turkish studios post alongside everyone else.
 
 **Meetups, game jams and the community**, which is genuinely active in Istanbul.
 
-**Referrals**, which carry real weight in a relationship-driven professional culture.
+**[Referrals](/blog/networking-messages-for-referrals)**, which carry real weight in a relationship-driven professional culture.
 
-**For gaming, a portfolio of shipped titles is decisive** — what you shipped, what your contribution was, and what the numbers looked like.
+**For gaming, a [portfolio](/blog/portfolio-from-resume-minutes) of shipped titles is decisive** — what you shipped, what your contribution was, and what the numbers looked like.
 
 **For everything else**, deployed work on a [portfolio site](/portfolio) and an [ATS-checked CV](/ats-analysis) are the baseline, since the larger employers screen at volume.
 
@@ -103,7 +103,7 @@ What to expect.
 
 **A technical assessment**, commonly a take-home or a practical exercise.
 
-**Technical interviews** with engineers, practical in orientation.
+**[Technical interviews](/blog/coding-interview-preparation-guide)** with engineers, practical in orientation.
 
 **A portfolio review** at gaming studios, which is the central part of the process rather than a supplement to it.
 
@@ -139,13 +139,13 @@ Daily reality in one of the world's great cities.
 
 Where an Istanbul technology career leads.
 
-**Within gaming**, where enough successful studios exist to support real movement, and where experience at a company that shipped a global hit carries genuine weight.
+**Within gaming**, where enough successful studios exist to support real movement, and where [experience](/blog/resume-matching-experienced-professionals) at a company that shipped a global hit carries genuine weight.
 
 **Into founding**, since the gaming ecosystem in particular has a strong pattern of teams leaving successful studios to start new ones with backing from people who have done it before.
 
 **Into international roles**, as Turkish companies operate across a wide region.
 
-**Abroad**, where Turkish game developers and engineers are well regarded and Berlin, London, Amsterdam and increasingly Dubai have substantial Turkish professional communities.
+**Abroad**, where Turkish game [developers](/blog/resume-matching-software-engineer) and engineers are well regarded and Berlin, London, Amsterdam and increasingly Dubai have substantial Turkish professional communities.
 
 **Into foreign remote work**, which removes the currency exposure and is the most common alternative people weigh.
 
@@ -223,7 +223,7 @@ The currency situation makes this a materially different calculation than it is 
 
 ### Scenario 3: You are a foreign engineer considering Istanbul
 
-Gaming and international companies are the realistic entry points. Check the employer's work permit quota position early, because it stops more applications than any question about your qualifications.
+Gaming and international companies are the realistic entry points. Check the employer's work permit quota position early, because it stops more [applications](/blog/how-many-jobs-should-you-apply-to-per-day) than any question about your qualifications.
 
 > **Tip:** If you work in mobile games, take Istanbul seriously. The cluster is real, the studios ship internationally successful titles, and they recruit globally — which makes it one of the few genuinely accessible routes into the Turkish market for a foreign professional.
 

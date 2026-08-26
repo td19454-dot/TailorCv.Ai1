@@ -29,9 +29,9 @@ The distinction people repeat without understanding.
 
 **The daily difference is ownership.** In services you work within a client's requirements, timelines and technology choices. In product you participate in deciding those things.
 
-**Scale differs too.** Services projects are frequently large, long-running and maintenance-heavy. Product work is frequently smaller, faster and more iterative.
+**Scale differs too.** Services [projects](/blog/projects-in-resume) are frequently large, long-running and maintenance-heavy. Product work is frequently smaller, faster and more iterative.
 
-**Neither is trivial.** Large-scale enterprise integration is genuinely hard engineering, and dismissing services work as unskilled is both wrong and a common graduate error.
+**Neither is trivial.** Large-scale enterprise integration is genuinely hard engineering, and dismissing services work as unskilled is both wrong and a common [graduate](/blog/first-resume-for-gen-z-2026) error.
 
 ## Side by side
 
@@ -52,13 +52,13 @@ The distinction people repeat without understanding.
 
 Because the internet's dismissiveness about this is unhelpful.
 
-**You did not clear product interviews yet.** That is an extremely common position and services gives you a paid start while you continue preparing.
+**You did not clear product [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) yet.** That is an extremely common position and services gives you a paid start while you continue preparing.
 
 **You want structured training.** The services bootcamps are genuinely substantial and teach fundamentals many graduates lack.
 
 **You value stability.** Services employment is generally more secure than early-stage product work.
 
-**You want a recognisable name** on your first resume line, which does help subsequent applications.
+**You want a recognisable name** on your first [resume](/blog/resume-optimization-guide) line, which does help subsequent [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 **You are unsure what you want to specialise in.** Exposure to multiple clients and domains is a real advantage for someone still deciding.
 
@@ -72,11 +72,11 @@ The practical path, since so many people want it.
 
 **Build something outside work.** Client work is frequently not shareable, so you need public projects that demonstrate capability.
 
-**Get depth somewhere.** Cloud certification, a data engineering specialism, security — something specific that distinguishes you from the volume of generalist services engineers.
+**Get depth somewhere.** Cloud [certification](/blog/how-to-list-certifications-on-resume), a data engineering specialism, security — something specific that distinguishes you from the volume of generalist services engineers.
 
-**Use the domain knowledge.** Two years in banking projects makes you genuinely more valuable to a fintech than a generalist fresher, and candidates consistently undersell this.
+**Use the domain knowledge.** Two years in [banking](/blog/resume-matching-insurance-jobs) projects makes you genuinely more valuable to a fintech than a generalist fresher, and candidates consistently undersell this.
 
-**Time it around two to three years.** Early enough that you are still hired against potential, late enough to have real experience.
+**Time it around two to three years.** Early enough that you are still hired against potential, late enough to have real [experience](/blog/resume-matching-experienced-professionals).
 
 **Apply to GCCs as well as product companies.** They are frequently a more achievable step and pay well above services.
 
@@ -94,13 +94,13 @@ Concretely, since the abstract comparison only goes so far.
 
 **Learning differs.** Services teaches breadth, process and client interaction. Product teaches depth, ownership and speed.
 
-**And neither is uniformly better.** Plenty of people find product-company pace stressful and services structure comfortable; plenty find the reverse. Knowing which you are is worth more than any salary comparison.
+**And neither is uniformly better.** Plenty of people find product-company pace stressful and services structure comfortable; plenty find the reverse. Knowing which you are is worth more than any [salary](/blog/how-to-negotiate-salary-offer) comparison.
 
 ## Reading an offer properly
 
 Because CTC comparisons mislead constantly.
 
-**Break the number down.** Fixed base, variable pay, joining bonus, retention bonus, gratuity, employer PF contribution and any notional benefits are all frequently included in an advertised CTC.
+**Break the number down.** Fixed base, variable pay, joining [bonus](/blog/how-to-negotiate-a-job-offer-email), retention bonus, gratuity, [employer](/blog/how-recruiters-spot-generic-resumes) PF contribution and any notional benefits are all frequently included in an advertised CTC.
 
 **Only fixed base is guaranteed monthly income.** Variable pay depends on performance and company results.
 
@@ -124,7 +124,7 @@ Five beliefs that shape bad decisions.
 
 **"Training at services will make me employable elsewhere."** The training teaches fundamentals; what makes you employable elsewhere is what you build and learn on your own time.
 
-**"A big brand on my resume is enough."** It helps with screening and it does not survive a technical interview on its own.
+**"A big brand on my resume is enough."** It helps with screening and it does not survive a [technical interview](/blog/coding-interview-preparation-guide) on its own.
 
 **And a sixth:** "GCCs are just services with a different name." They are not — different employer, different economics, different work.
 
@@ -150,7 +150,7 @@ A practical framework when you have one of each.
 
 A third category that gets collapsed into "product" and behaves differently.
 
-**Early-stage startups hire fast and informally.** Referrals, direct outreach and quick processes rather than structured interview loops.
+**Early-stage startups hire fast and informally.** [Referrals](/blog/networking-messages-for-referrals), direct outreach and quick processes rather than structured interview loops.
 
 **Ownership is immediate.** A graduate at a fifteen-person company will own real features within weeks, which is a genuine learning accelerator.
 
@@ -213,11 +213,11 @@ Consider GCCs as an intermediate step. The bar is real but frequently more forgi
 ## Common Mistakes
 
 - **Dismissing services entirely.** It is a genuine start with real training and a well-worn exit.
-- **Not preparing from month one.** The move requires sustained effort begun early.
+- **Not preparing from [month one](/blog/first-job-abroad-practical-checklist).** The move requires sustained effort begun early.
 - **No public projects.** Client work is usually not shareable, so you need your own.
 - **Drifting too long.** Moving at two or three years is far easier than at six.
 - **Ignoring GCCs.** Frequently the most achievable step up from services.
-- **Overstating ownership.** Easily unpicked in a technical interview.
+- **Overstating ownership.** Easily unpicked in a [technical interview](/blog/technical-interview-preparation-guide).
 
 ## Related Guides
 
@@ -262,7 +262,7 @@ Services means working within a client's requirements and technology choices on 
 
 ### How should I compare two Indian offers?
 
-Break the CTC down. Only fixed base is guaranteed monthly income; variable pay, joining bonuses and notional benefits inflate headline figures. Compare take-home rather than CTC.
+Break the CTC down. Only fixed base is guaranteed monthly income; variable pay, joining bonuses and notional [benefits](/blog/questions-to-ask-in-an-interview) inflate headline figures. Compare take-home rather than CTC.
 ### Is services work real engineering?
 
 Yes. Large-scale enterprise integration, migration and maintenance is genuinely difficult, and dismissing it is a common graduate error that leads people to reject reasonable first jobs.

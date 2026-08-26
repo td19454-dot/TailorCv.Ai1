@@ -23,13 +23,13 @@ showcase: none
 
 How most foreign employment is authorised.
 
-**Alien Employment Permit** from the Department of Labour and Employment. The employer applies, publishing the position and demonstrating that no Filipino citizen is available, competent and willing to perform the work.
+**Alien Employment Permit** from the Department of Labour and Employment. The [employer](/blog/how-recruiters-spot-generic-resumes) applies, publishing the position and demonstrating that no Filipino citizen is available, competent and willing to perform the work.
 
 **The AEP is position and employer specific**, valid for the period of employment up to a maximum.
 
 **9(g) visa** from the Bureau of Immigration — the pre-arranged employment visa, applied for on the basis of the AEP and the employment contract.
 
-**ACR I-Card**, the alien certificate of registration identity card, issued to registered foreign nationals.
+**ACR I-Card**, the alien [certificate](/blog/campus-placement-document-checklist) of registration identity card, issued to registered foreign nationals.
 
 **Annual report** to the Bureau of Immigration, an ongoing obligation within a defined window each year.
 
@@ -59,13 +59,13 @@ Beyond employment.
 
 **SIRV** — Special Investor's Resident Visa — for those investing above a defined threshold.
 
-**SRRV** — Special Resident Retiree's Visa — administered by the Philippine Retirement Authority, with deposit requirements varying by age and pension status. It is popular and it does not automatically confer work rights.
+**SRRV** — Special Resident Retiree's Visa — administered by the Philippine Retirement Authority, with deposit requirements varying by age and [pension](/blog/first-90-days-new-job) status. It is popular and it does not automatically confer work rights.
 
 **Regional headquarters and regional operating headquarters** arrangements provide for staff of qualifying multinational entities with their own visa treatment.
 
 **Treaty trader and investor visas** for nationals of countries with relevant treaties.
 
-**Spouse of a Filipino citizen** carries provisions including a route to residence.
+**[Spouse](/blog/first-job-abroad-practical-checklist) of a Filipino citizen** carries provisions including a route to residence.
 
 **Former Filipino citizens** have specific reacquisition and residence provisions worth knowing about if they apply.
 
@@ -79,11 +79,11 @@ What the sequence involves.
 
 **Documents you will need** include your passport, qualifications, employment contract, and depending on the case authenticated certificates.
 
-**Authentication** through apostille or consular legalisation depending on your country's status under the Apostille Convention.
+**Authentication** through [apostille](/blog/international-resume-tailoring-guide) or consular legalisation depending on your country's status under the Apostille Convention.
 
 **Medical examination** where required.
 
-**NBI or police clearance** depending on circumstances.
+**NBI or police [clearance](/blog/matching-resume-security-clearance-jobs)** depending on circumstances.
 
 **Processing** varies and the AEP and 9(g) run in sequence rather than parallel, which extends the timeline.
 
@@ -186,7 +186,7 @@ Setting the options side by side.
 | **RHQ / ROHQ** | Staff of qualifying multinational entities | Yes, within the entity |
 | **Spouse of a citizen** | Married to a Filipino national | Route to residence |
 
-**The employment route is the default** for anyone with a job offer, and everything else is a specific circumstance rather than an alternative to it.
+**The employment route is the default** for anyone with a [job offer](/blog/how-to-negotiate-a-job-offer-email), and everything else is a specific circumstance rather than an alternative to it.
 
 **Note that SRRV holders frequently want to work** and discover that residence and work authorisation are separate questions, which is the most common misunderstanding in this area.
 
@@ -194,7 +194,7 @@ Setting the options side by side.
 
 What the options actually are.
 
-**Consultancy or advisory arrangements** may be structured differently from licensed practice, though the boundary matters and warrants proper advice.
+**[Consultancy](/blog/case-interview-preparation-guide-2026) or advisory arrangements** may be structured differently from licensed practice, though the boundary matters and warrants proper advice.
 
 **Corporate or management roles** within a company operating in your field, rather than licensed professional practice.
 
@@ -210,7 +210,7 @@ What the options actually are.
 
 Before you accept.
 
-**Have you sponsored an AEP before, and recently?** Experience is the single biggest predictor of a smooth process.
+**Have you sponsored an AEP before, and recently?** [Experience](/blog/resume-matching-experienced-professionals) is the single biggest predictor of a smooth process.
 
 **Who handles it internally, and is an agent involved?**
 
@@ -220,7 +220,7 @@ Before you accept.
 
 **When can I actually start, and is a provisional arrangement contemplated?**
 
-**What happens if the AEP is refused** — is the offer conditional, and what does that mean for a resignation already tendered?
+**What happens if the AEP is refused** — is the offer conditional, and what does that mean for a [resignation](/blog/how-to-write-two-weeks-notice) already tendered?
 
 **And what support exists for the ACR I-Card, annual reporting and renewals**, which are ongoing rather than one-off.
 
