@@ -67,6 +67,116 @@ The fastest-growing alternative and increasingly a first choice rather than a fa
 
 **Off-campus hiring is the norm** at all of these except the mass services recruiters, which is why these cities are accessible regardless of which college you attended.
 
+## Compensation
+
+The financial picture across employer types.
+
+**Global capability centres pay at the top of the domestic market**, frequently well above services firms for equivalent experience.
+
+**Product companies and well-funded startups** compete directly with them, sometimes exceeding on total compensation where equity is involved.
+
+**Services firms pay less** at equivalent levels, which is the central reason the services-to-GCC move is such a common career step.
+
+**Variable pay** is a meaningful component and the split between fixed and variable should be clarified explicitly rather than assumed from a headline figure.
+
+**Equity at startups** exists and the Indian market for it has matured considerably, with ESOP buybacks now a genuine feature at the better companies rather than a theoretical promise.
+
+**Notice periods are long** by international standards, frequently ninety days, and buyouts are negotiable but not guaranteed.
+
+**Costs in Bengaluru have risen sharply**, with housing in the technology corridors under real pressure and commuting being a genuine daily cost in time.
+
+**Hyderabad remains meaningfully cheaper** with better road infrastructure, which is a substantial part of why it has grown as fast as it has.
+
+## Working culture
+
+Worth calibrating for anyone moving between employer types.
+
+**GCCs and product companies** run closer to international norms — flatter, more autonomous, more emphasis on ownership.
+
+**Services firms are more hierarchical** and more process-driven, which reflects the client-delivery model rather than any failure of ambition.
+
+**Startups vary enormously**, from genuinely well-run to chaotic, and due diligence on the founding team matters more than the sector.
+
+**Hours are long** across most of the ecosystem, and the overlap requirement with American or European teams shapes the day considerably.
+
+**Hierarchy and seniority** carry more weight than in Western workplaces, though noticeably less so in product organisations.
+
+**Job-hopping is normal** and frequently the fastest route to a significant raise, which employers understand even when they dislike it.
+
+**And referrals dominate hiring**, so the network you build inside one company is a genuine asset when you leave it.
+
+## Getting hired
+
+Practical mechanics for these two cities.
+
+**LinkedIn** is dominant and Indian technology recruiters are extremely active on it.
+
+**Naukri** carries the largest domestic volume by a wide margin.
+
+**Instahyre, Cutshort and Hirist** for technology roles specifically.
+
+**Company career pages** for the GCCs, most of which recruit continuously and directly.
+
+**Referrals**, which carry disproportionate weight and are worth cultivating deliberately.
+
+**Campus placement** for those still studying, which remains the single most structured entry route.
+
+**Run your CV through an [ATS check](/ats-analysis)** since Naukri and every large employer screen at volume.
+
+**And publish deployed work** on a [portfolio site](/portfolio), which differentiates far more than another line of description in a market with this much competition.
+
+## Interviewing
+
+What the process looks like at each employer type.
+
+**GCCs** run structured processes — a recruiter screen, one or two technical rounds, a system design round at senior levels, a hiring manager conversation and frequently a round with the parent company abroad.
+
+**Product companies** weight problem-solving and design heavily, with take-home assignments common.
+
+**Services firms** run higher-volume processes with more standardised assessment.
+
+**Startups** are the most variable, ranging from rigorous to improvised, and a founder conversation is usually part of it.
+
+**Data structures and algorithms remain central** at the product companies and GCCs, more so than in many Western markets, and preparation for them is genuinely necessary rather than optional.
+
+**System design** becomes the differentiator from mid-level onward.
+
+**And behavioural rounds** matter more at GCCs than candidates expect, since the parent company's culture assessment frequently applies.
+
+## Which city to choose
+
+The practical comparison.
+
+**Bengaluru has the depth** — more companies, more roles, the strongest startup ecosystem in the country and the densest professional network. If you want maximum optionality, it is the answer.
+
+**Hyderabad has the infrastructure** — better roads, shorter commutes, lower housing costs and a substantial GCC presence that has grown very fast.
+
+**Bengaluru's traffic and housing pressure** are the routine complaints and they are genuine rather than exaggerated.
+
+**Hyderabad's ecosystem is narrower**, with fewer startups and a smaller product sector, which matters if you want to move companies frequently.
+
+**Climate** favours Bengaluru comfortably, which residents cite constantly.
+
+**Cost of living** favours Hyderabad meaningfully.
+
+**And for most engineers the honest answer** is Bengaluru for the first few years to build the network and the optionality, with Hyderabad becoming more attractive once you have the experience to be recruited into a specific role rather than needing a deep market to search in.
+
+## Career progression
+
+Where these two cities lead.
+
+**Within a GCC**, from engineer to senior to staff or management, with genuine internal mobility to the parent company abroad being one of the more reliable international routes available.
+
+**Into product companies**, domestically or at the international firms with Indian engineering.
+
+**Into founding**, supported by an ecosystem with real capital and a strong pattern of experienced operators backing new teams.
+
+**Into remote work for foreign employers**, which pays well and has grown substantially.
+
+**Abroad**, where Indian engineers with GCC or product experience are genuinely employable across most markets.
+
+**And into leadership of the Indian operation itself**, since GCCs have grown from cost centres into organisations with real strategic responsibility, and the senior roles in them are now substantial jobs rather than site management.
+
 ## Mini checklist
 
 - [ ] City chosen on cost and employer mix, not reputation alone
@@ -161,3 +271,17 @@ Hyderabad, generally. Several large employers pay comparably while housing and d
 ### Do referrals matter?
 
 Substantially at product companies and startups, much less at mass services recruiters where the process is standardised and criteria-driven.
+### How do salaries compare between employer types in Indian tech?
+
+Global capability centres and product companies pay at the top of the domestic market, frequently well above services firms for equivalent experience, which is why the services-to-GCC move is such a common step.
+
+### How do I get hired in Bengaluru or Hyderabad?
+
+LinkedIn is dominant, Naukri carries the largest domestic volume, Instahyre and Cutshort cover technology specifically, and referrals carry disproportionate weight throughout.
+### Bengaluru or Hyderabad?
+
+Bengaluru for depth, optionality and the strongest startup ecosystem. Hyderabad for better infrastructure, shorter commutes and lower costs with a substantial and fast-growing GCC presence.
+
+### Where does an Indian tech career lead?
+
+GCC progression with genuine internal mobility abroad, product companies, founding, remote work for foreign employers, or leadership of an Indian operation that now carries real strategic responsibility.

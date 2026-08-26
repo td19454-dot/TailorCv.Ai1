@@ -69,6 +69,140 @@ The most important practical point about the Greek market.
 
 **And processes can be slow**, with silence more often administrative than a decision.
 
+## How Greek screening works
+
+The mechanics behind the document.
+
+**Kariera.gr** carries substantial domestic volume and parses applications.
+
+**Skywalker.gr** is widely used across sectors.
+
+**LinkedIn** is well used, particularly in shipping, tourism management and by international employers.
+
+**Larger employers run their own systems**, which screen before a human reads anything.
+
+**Which means standard ATS discipline applies** — conventional headings, clean structure, no text hidden in images or complex tables, and terminology matching the posting.
+
+**Referrals carry real weight** in a relationship-driven market, and Greek professional networks reward genuine contact.
+
+**Run an [ATS check](/ats-analysis)** before submitting anywhere that screens.
+
+## Writing the experience section
+
+Where applications are decided.
+
+**Lead with achievement** rather than responsibility.
+
+**Quantify** wherever you can, since numbers read the same in any language.
+
+**Name systems and tools specifically**, because employers screen on them.
+
+**Three to five bullets** for recent roles, fewer for older ones.
+
+**Give one line of company context** where the name will not be recognised.
+
+**Write natural Greek** rather than translating English phrasing literally, or write in English where the posting is in English.
+
+**And tailor each application** — a [tailored document](/tailor-resume) consistently outperforms one generic version.
+
+## Languages and qualifications
+
+Weighted carefully in this market.
+
+**Language levels are stated explicitly** and read closely, with English proficiency being a genuine differentiator particularly in shipping, tourism and international companies.
+
+**Certificates support the claim** and are worth listing, since Greek employers are familiar with the standard frameworks.
+
+**Degree recognition through DOATAP** applies where a foreign qualification needs formal Greek recognition, which is a separate process from any job application and worth starting early if your field requires it.
+
+**Professional chamber membership** applies in regulated fields including engineering and law.
+
+**And postgraduate study** carries real weight, more so than in several other European markets.
+
+## Photographs and personal details
+
+The conventions and where they are heading.
+
+**Photographs appear** on Greek CVs, more so at traditional employers and less so at international companies and in technology.
+
+**Date of birth** is sometimes included and is declining.
+
+**Marital status and family details** appear on older-style Greek CVs and are best omitted.
+
+**Military service status** is sometimes stated by Greek male candidates, since service is compulsory and affects availability.
+
+**The practical approach** is to omit the photograph and personal details for international companies, shipping multinationals and technology employers, and to consider a plain headshot for smaller and more traditional ones.
+
+**Never include** your tax number, identity card number or social security number, which are requested at hiring and have no place on an application document.
+
+**And if uncertain, omit.** No serious employer rejects a strong candidate for the absence of a photograph.
+
+## Sectors and what each expects
+
+Greece is not uniform and the conventions differ meaningfully by industry.
+
+**Shipping** is the most internationally oriented sector in the country, frequently runs its processes in English, and expects a conventional international CV.
+
+**Tourism and hospitality** at management level values languages heavily and expects them stated prominently, with seasonal experience being read as relevant rather than as instability.
+
+**Technology and startups** follow international practice, with a portfolio and deployed work mattering more than the document itself.
+
+**Banking and professional services** are more formal and weight qualifications and institutions heavily.
+
+**The public sector** runs its own defined processes with formal requirements that sit outside anything covered here.
+
+**And smaller family businesses**, which make up a very large share of Greek employment, are the most traditional and the most relationship-driven of all.
+
+## The cover letter
+
+Worth doing selectively.
+
+**A cover letter is not universally expected** and is read where offered.
+
+**Three or four paragraphs** covering why this employer, what you bring and what you want.
+
+**In Greek for domestic employers**, English for shipping, technology and international companies.
+
+**Address a named person** where you can identify one, which matters in a relationship-driven market.
+
+**Reference something specific** about the company, since generic letters read as generic.
+
+**And a [tailored cover letter](/cover-letter)** for the applications that matter is worth the effort, while a generic one attached to everything adds nothing.
+
+## Applying as a foreigner
+
+The additional considerations for anyone applying from outside Greece.
+
+**Address your right to work directly.** EU and EEA nationals should state it plainly, since it removes the largest question a Greek employer has. Third-country nationals should be equally direct about what sponsorship would involve.
+
+**State your Greek level honestly**, and be clear if you have none, since it determines which sectors are realistic.
+
+**Target the sectors where foreign hiring genuinely happens** — shipping, tourism management, technology, international companies and the growing remote and relocation-driven segment — rather than the general domestic market.
+
+**Explain why Greece**, because a specific answer about the shipping industry or the technology scene reads far better than general enthusiasm about the country.
+
+**Have any Greek reviewed by a native speaker**, since errors in a foreign applicant's document confirm the concern the reviewer already had.
+
+**Position international experience as an asset**, particularly for shipping and tourism where it is directly relevant.
+
+**And be realistic about seasonality**, since a substantial share of Greek employment in tourism and hospitality is seasonal by design rather than by accident.
+
+## Common mistakes worth avoiding
+
+Small things that cost applications.
+
+**Translating English phrasing literally**, which produces Greek that is correct and stylistically odd.
+
+**Including identity, tax or social security numbers**, which are requested at hiring and never belong on an application.
+
+**Overstating language levels**, which is tested at any employer that actually needs the language.
+
+**Sending the same document everywhere**, which reviewers notice.
+
+**Omitting quantification**, since numbers carry across languages and most Greek CVs underuse them.
+
+**And ignoring the sector conventions**, since a document that suits a shipping multinational reads quite differently from one that suits a family business.
+
 ## Mini checklist
 
 - [ ] Two pages, plain formatting
@@ -163,3 +297,20 @@ Two pages, with more personal detail than a British or American CV would carry.
 ### Why are Greek hiring processes so slow?
 
 A combination of smaller HR functions, relationship-led decision making and general administrative pace. Silence is more often process than rejection.
+### Do Greek employers use applicant tracking systems?
+
+Yes. Kariera.gr and Skywalker.gr carry substantial volume and parse applications, and larger employers run their own screening before a human reads anything.
+
+### How important are language certificates in Greece?
+
+Genuinely. Levels are stated explicitly and read closely, with English proficiency being a real differentiator in shipping, tourism and international companies.
+### Should I include a photograph on a Greek CV?
+
+It depends on the employer. International companies, shipping multinationals and technology employers increasingly do not expect one; smaller and more traditional employers still commonly do.
+
+### Do CV conventions differ by sector in Greece?
+
+Considerably. Shipping is internationally oriented and often runs in English, technology follows international practice, banking is formal and qualification-weighted, and family businesses are the most traditional.
+### How should a foreigner approach applications in Greece?
+
+Address your right to work directly, state your Greek level honestly, target shipping, tourism management, technology and international companies rather than the general market, and explain why Greece specifically.

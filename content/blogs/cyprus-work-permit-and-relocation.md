@@ -159,6 +159,26 @@ The daily realities.
 
 **And the island is small enough** that everywhere is reachable in a couple of hours, which makes weekends genuinely easy.
 
+## Practical relocation notes
+
+What the move actually involves beyond the permit.
+
+**Registration with the Civil Registry and Migration Department** after arrival, within the required period.
+
+**Social insurance registration**, handled with your employer.
+
+**Tax registration** and obtaining a tax identification number.
+
+**A local bank account**, which requires your documentation and takes longer than people expect.
+
+**Health insurance** through GESY where you qualify, with private cover being common alongside.
+
+**Housing**, where Limassol has become considerably more expensive than the rest of the island.
+
+**A driving licence exchange** where your existing licence qualifies.
+
+**And school registration** if you are relocating a family, with a substantial private and international school sector available.
+
 ## Mini checklist
 
 - [ ] EU status established
@@ -222,7 +242,7 @@ Keep building on this with the related guides in this series:
 
 - [Working in Cyprus as an International Graduate](/blog/cyprus-jobs-for-international-graduates)
 - [Cyprus Shipping and Finance Careers](/blog/cyprus-shipping-and-finance-careers)
-- [Malta Work Permits Explained](/blog/malta-work-permit-guide)
+- [Working in Malta as an International Graduate](/blog/malta-jobs-for-international-graduates)
 - [Greece's Digital Nomad and Work Visa Routes](/blog/greece-digital-nomad-and-work-visa)
 - [Luxembourg Work Permits and Relocation](/blog/luxembourg-work-permit-and-relocation)
 
@@ -270,3 +290,6 @@ EU citizens register immediately. Third-country nationals at a registered foreig
 ### Do I need a car in Cyprus?
 
 Close to essential. Public transport is limited, most professionals drive, and the island uses left-hand traffic, which surprises arrivals from continental Europe.
+### What administrative steps follow arrival in Cyprus?
+
+Registration with the Civil Registry and Migration Department, social insurance and tax registration, a local bank account, health insurance arrangements and a driving licence exchange where applicable.

@@ -141,6 +141,46 @@ Where it leads.
 
 **And many people treat Malta as a defined period** — a few years building sector expertise and savings, then moving on with a portable specialism. That is a well-worn and sensible pattern rather than a failure to settle.
 
+## Practical setup
+
+The administrative sequence.
+
+**Single permit** application covering both residence and work for third-country nationals, submitted through Identita with your employer.
+
+**EU and EEA nationals** register rather than applying for permission, which is a fundamentally simpler position.
+
+**Social security registration** and a social security number.
+
+**Tax registration** and a tax number.
+
+**A local bank account**, which is known for being slower and more document-heavy in Malta than in most of Europe.
+
+**Health entitlement** through the public system where you qualify, with private cover being common.
+
+**Housing**, where costs have risen substantially and the market moves quickly.
+
+**And an ID card**, which underpins most administrative interaction on the island.
+
+## Living on a small island
+
+Considerations that genuinely affect whether people stay.
+
+**Malta is very small**, and this is the single factor that decides whether people stay past their first contract.
+
+**Everything is close** and the convenience is real.
+
+**The social scene is international** and heavily weighted toward the gaming and finance sectors.
+
+**Housing costs have risen sharply** and the rental market is competitive.
+
+**Traffic is a genuine daily problem** given the population density.
+
+**English is an official language**, which removes the barrier that most European destinations present.
+
+**The climate and the sea** are consistently what people cite as the compensation.
+
+**And island fatigue is real** — a widely discussed phenomenon where the smallness that felt charming becomes constraining, usually somewhere in the second year.
+
 ## Mini checklist
 
 - [ ] Sector chosen — iGaming, financial services, maritime or technology
@@ -202,8 +242,8 @@ Both iGaming and financial services are heavily regulated and compliance capabil
 
 Keep building on this with the related guides in this series:
 
-- [Malta iGaming and Finance Careers](/blog/malta-igaming-and-finance-careers)
-- [Malta Work Permits Explained](/blog/malta-work-permit-guide)
+- [Cyprus Shipping and Finance Careers](/blog/cyprus-shipping-and-finance-careers)
+- [Cyprus Work Permits and Relocation](/blog/cyprus-work-permit-and-relocation)
 - [Working in Cyprus as an International Graduate](/blog/cyprus-jobs-for-international-graduates)
 - [Graduate Jobs in Ireland - How the Market Works](/blog/ireland-graduate-jobs-guide)
 - [Working in Greece as an International Graduate](/blog/greece-jobs-for-international-graduates)
@@ -249,3 +289,10 @@ LinkedIn for the international sector, Keepmeposted and Jobsplus for domestic li
 ### Does Maltese experience travel?
 
 Yes. iGaming skills transfer across regulated gaming jurisdictions, compliance and AML transfer across EU financial services, and gaming technology experience transfers to fintech generally.
+### What does setting up in Malta involve?
+
+A single permit covering residence and work for third-country nationals through Identita, social security and tax registration, a bank account which is notably slow locally, and an ID card.
+
+### What is living in Malta actually like?
+
+Very small, extremely convenient, with an international social scene weighted toward gaming and finance, rising housing costs, real traffic problems, and English as an official language.
