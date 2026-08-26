@@ -212,6 +212,7 @@ Keep building on this with the related guides in this series:
 - [Finnish Residence Permits for Graduates](/blog/finland-residence-permit-graduates)
 - [Energy and Offshore Careers in Norway](/blog/norway-oil-energy-tech-careers)
 - [Nordic Graduate Job Markets Compared](/blog/nordic-graduate-job-markets-compared)
+- [Vancouver Tech Jobs Guide 2026 - Market, Pay, and the Housing Problem](/blog/vancouver-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

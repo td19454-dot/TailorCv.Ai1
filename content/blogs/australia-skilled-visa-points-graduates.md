@@ -172,6 +172,7 @@ Keep building on this with the related guides in this series:
 - [Technology Jobs in Sydney and Melbourne](/blog/australia-tech-jobs-sydney-melbourne)
 - [Your First Australian Job - Tax and Superannuation](/blog/australia-first-job-tax-and-super)
 - [Comparing Graduate Work Visas Across Countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore)
+- [Canada Startup Visa Guide 2026 - Permanent Residence Through Entrepreneurship](/blog/canada-startup-visa-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

@@ -190,7 +190,7 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 > "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) with 2.5 years of experience. Skilled in SQL and Excel. Learning Python and Tableau."
 
 **After [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary):**
-> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in progress."
+> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in progress."
 
 Same person.
 Completely different impression.

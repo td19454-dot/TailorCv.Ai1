@@ -33,7 +33,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) or publications
 
@@ -180,7 +180,7 @@ Hardware engineers who understand DFM, first-article inspection, and production 
 
 ### Mistake 4: Not naming communication protocols
 
-I2C, SPI, CAN, UART - many job descriptions search for specific protocols. List the ones you have used in real [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+I2C, SPI, CAN, UART - many job descriptions search for specific protocols. List the ones you have used in real [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ---
 
@@ -199,6 +199,7 @@ I2C, SPI, CAN, UART - many job descriptions search for specific protocols. List 
 - [QA Engineer Resume](https://thetailorcv.com/blog/qa-engineer-resume-2026)
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 - [DevOps Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/devops-engineer-resume-2026)
+- [Veteran to Civilian Resume Guide 2026](https://thetailorcv.com/blog/veteran-to-civilian-resume-2026)
 
 ## Make This Practical
 
@@ -220,7 +221,7 @@ An effective electrical engineer resume should include a well-structured format 
 In 2026, utilizing the right ATS keywords is crucial for ensuring your resume gets noticed by applicant tracking systems. Keywords related to your specific domain, such as PCB design or embedded systems, should be incorporated naturally throughout your resume. Before submitting your application, run your resume through our [free ATS score checker](https://www.thetailorcv.com/solutions) to optimize it for potential employers.
 
 ### What should I highlight in my work experience section?  
-In the work experience section, focus on quantifiable achievements that demonstrate your impact on previous projects. Use bullet points to describe your roles in various projects, highlighting your contributions to system-level outcomes and problem-solving capabilities. For example, you might mention how your embedded firmware development improved efficiency by a specific percentage. For more details on showcasing projects, check out our guide on [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
+In the work experience section, focus on quantifiable achievements that demonstrate your impact on previous projects. Use bullet points to describe your roles in various projects, highlighting your contributions to system-level outcomes and problem-solving capabilities. For example, you might mention how your embedded firmware development improved efficiency by a specific percentage. For more details on showcasing projects, check out our guide on [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
 
 ### How can I tailor my resume for different engineering domains?  
 Tailoring your resume for different engineering domains involves adjusting the vocabulary and focus of your content to match the specific industry requirements. For instance, if you are applying for a role in power electronics, emphasize relevant skills and projects that align with that field. You can also explore examples from other engineering disciplines, such as the [Chemical Engineer Resume 2026](https://thetailorcv.com/blog/chemical-engineer-resume-2026) for additional reference.

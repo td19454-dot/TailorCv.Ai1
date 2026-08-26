@@ -38,18 +38,18 @@ This is the resume after tailoring - the content is already matched, and these c
 2. Career objective
 3. Education
 4. Skills
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. Certifications
 7. Leadership or volunteering
 8. Achievements
 
-Put [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) above certifications if they are stronger.
+Put [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) above certifications if they are stronger.
 
 ---
 
 ## Objective Example
 
-Computer Science student seeking a software development internship. Skilled in Python, JavaScript, SQL, and data structures, with academic and personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in web applications and automation.
+Computer Science student seeking a software development internship. Skilled in Python, JavaScript, SQL, and data structures, with academic and personal [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in web applications and automation.
 
 ---
 
@@ -73,7 +73,7 @@ Avoid:
 
 ## How to Turn This Into a Stronger Application
 
-Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your internship resume with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) because small wording choices can change how recruiters and ATS systems understand your fit.
+Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the target role, update one part of the application, test the result, then repeat. That is especially important for your internship resume with [no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) because small wording choices can change how recruiters and ATS systems understand your fit.
 
 Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a specific posting with a specific title, responsibilities, tools, and outcomes. Then look at your resume, LinkedIn profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
@@ -108,7 +108,7 @@ I have experience in different tasks and I am looking for a good opportunity whe
 
 Stronger version:
 
-I am targeting roles where I can use internship resume with [no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience), practical problem solving, and measurable execution to support business outcomes. My strongest examples include improving a process, building a project, coordinating with stakeholders, and using relevant tools to deliver a clearer result.
+I am targeting roles where I can use internship resume with [no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026), practical problem solving, and measurable execution to support business outcomes. My strongest examples include improving a process, building a project, coordinating with stakeholders, and using relevant tools to deliver a clearer result.
 
 The stronger version works because it is specific enough to connect with a role. It gives the recruiter keywords and proof signals. You can make it even better by replacing the general words with your own tools, metrics, industry, and project names.
 
@@ -177,7 +177,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

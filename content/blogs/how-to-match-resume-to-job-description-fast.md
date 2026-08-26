@@ -269,6 +269,7 @@ Scan for the first half only. Required skills in long JDs are almost always conc
 - [How AI Resume Matching Works - And How to Use It to Your Advantage in 2026](https://thetailorcv.com/blog/how-ai-resume-matching-works)
 - [Resume to Job Description Match Percentage - What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
 - [How to Improve Your ATS Score in 2026](https://thetailorcv.com/blog/resume-optimization-guide)
+- [How to Match Your Resume to a Job Description Automatically (2026)](https://thetailorcv.com/blog/match-resume-to-job-description-automatically)
 
 ---
 

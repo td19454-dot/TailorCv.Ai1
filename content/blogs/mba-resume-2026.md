@@ -19,7 +19,7 @@ keywords: MBA resume, MBA resume 2026, business school resume, MBA resume format
 - Tailor your resume content to the target industry, emphasizing skills relevant to consulting, finance, product management, or tech.
 
 
-An MBA resume in 2026 must demonstrate leadership, [business impact](https://thetailorcv.com/blog/why-am-i-not-getting-interviews), and the ability to drive results - whether you are applying to consulting, investment banking, product management, corporate strategy, or tech. MBA recruiting is competitive and structured, and your resume is judged on quantified impact, leadership, and clear communication.
+An MBA resume in 2026 must demonstrate leadership, [business impact](https://thetailorcv.com/blog/why-getting-rejected), and the ability to drive results - whether you are applying to consulting, investment banking, product management, corporate strategy, or tech. MBA recruiting is competitive and structured, and your resume is judged on quantified impact, leadership, and clear communication.
 
 This guide covers how to write an MBA resume that stands out in competitive recruiting.
 

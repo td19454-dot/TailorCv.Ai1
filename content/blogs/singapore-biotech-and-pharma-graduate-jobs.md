@@ -85,6 +85,7 @@ Keep building on this with the related guides in this series:
 - [Job Search Portals and Channels in Singapore](/blog/singapore-job-search-portals-guide)
 - [Networking for Students in Singapore - How It Actually Works Locally](/blog/singapore-networking-guide-for-students)
 - [Permanent Residency in Singapore - What Graduates Need to Know](/blog/singapore-permanent-residency-for-graduates)
+- [Relocating to Singapore for Your First Job - A Practical Guide](/blog/singapore-relocating-from-overseas-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

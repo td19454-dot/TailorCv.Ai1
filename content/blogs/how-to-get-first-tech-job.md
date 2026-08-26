@@ -24,13 +24,13 @@ But here's the reality: companies still hire [freshers](https://thetailorcv.com/
 
 This guide walks you through every step: what to build, how to write your resume, where to apply, how to prepare, and how to convert your first [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) into your first offer.
 
-Before anything else, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) to understand how it reads. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for structuring your skills. If you are building from scratch, read the first-time resume with no experience guide.
+Before anything else, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions) to understand how it reads. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and read the [technical skills resume guide](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for structuring your skills. If you are building from scratch, read the first-time resume with no experience guide.
 
 ---
 
 ## Step 1: Choose a Clear Technical Niche
 
-The biggest mistake [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) make is trying to be "full stack" before they are strong at anything. Pick one area:
+The biggest mistake [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) make is trying to be "full stack" before they are strong at anything. Pick one area:
 
 - **Backend engineering** (Python, Node.js, Java, Go)
 - **Frontend engineering** (React, TypeScript)
@@ -76,7 +76,7 @@ What makes a strong project:
 - Budget app with charts
 - Recipe manager with offline sync
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for project formatting on your resume.
+Read [how to add projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for project formatting on your resume.
 
 ---
 
@@ -102,7 +102,7 @@ Key sections:
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) for every [job description](https://thetailorcv.com/blog/hidden-keywords-in-job-description) you apply to. It is likely that 40-60% of keyword mismatches are simply terminology differences (e.g., you wrote "REST endpoints" but the JD says "API development").
 
-Also read [common resume mistakes for freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) to avoid the most common errors.
+Also read [common resume mistakes for freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) to avoid the most common errors.
 
 ---
 
@@ -110,7 +110,7 @@ Also read [common resume mistakes for freshers](https://thetailorcv.com/blog/res
 
 ### GitHub
 
-- Keep your profile active - commit regularly, even if it is personal [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Keep your profile active - commit regularly, even if it is personal [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Pin your 6 strongest repos
 - Write proper READMEs for every project you pin (problem, stack, setup, screenshots)
 - Contribute to one open-source project - even bug fixes count
@@ -163,7 +163,7 @@ First tech jobs require clearing 2-4 [interview](https://thetailorcv.com/blog/ho
 
 **Project Discussion**
 
-- Be able to explain every line of your resume [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Be able to explain every line of your resume [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Why did you choose this stack? What went wrong and how did you fix it?
 - What would you do differently?
 
@@ -178,7 +178,7 @@ Practice with the [free AI mock interview tool](https://thetailorcv.com/mock-int
 
 ## Step 7: Handle Rejection Well
 
-Rejection is the default in tech hiring for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes). Most strong candidates apply to 30-80 companies before landing their first offer. This is normal.
+Rejection is the default in tech hiring for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers). Most strong candidates apply to 30-80 companies before landing their first offer. This is normal.
 
 ### What optimizing actually does to your resume
 
@@ -192,7 +192,7 @@ What helps:
 - Keep a pipeline of applications at different stages - never put all hope on one company
 - Request feedback when rejected (rarely given, but worth asking)
 - Treat every rejection as a data point: was it resume filtering? Technical round? Offer mismatch?
-- Continue building [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and improving your profile between applications
+- Continue building [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and improving your profile between applications
 
 Read [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-job-rejection) for a more detailed guide.
 
@@ -200,7 +200,7 @@ Read [how to handle job rejection](https://thetailorcv.com/blog/how-to-handle-jo
 
 ## Timeline Expectations for First Tech Job
 
-- With strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), optimized resume, and consistent interviewing: 2-4 months
+- With strong [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), optimized resume, and consistent interviewing: 2-4 months
 - With average resume and minimal preparation: 6-12+ months
 - With weak [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization), no projects, and poor interview prep: indefinitely
 
@@ -211,7 +211,7 @@ The 2-4 month timeline is achievable for most candidates who invest consistently
 ## Conclusion
 Getting your first tech job in 2026 is a marathon, not a sprint - but it is completely achievable for candidates who build real projects, write [strong resume](https://thetailorcv.com/blog/salary-negotiation-guide)s, optimize for [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it), and prepare their interviews seriously.
 
-Start with your resume: use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [technical skills guide for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide). Then build your projects, practice your interviews with the mock interview tool, and apply consistently.
+Start with your resume: use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions), use an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [technical skills guide for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience). Then build your projects, practice your interviews with the mock interview tool, and apply consistently.
 
 ## Related Guides
 
@@ -219,14 +219,14 @@ Start with your resume: use the [TailorCV ATS score checker](https://www.thetail
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Remote Job Search Guide](https://thetailorcv.com/blog/remote-job-search-guide)
 - [First 90 Days at a New Job](https://thetailorcv.com/blog/first-90-days-at-new-job)
-- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners-with-no-experience)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
-- [The CS Degree Bubble Is Real](https://thetailorcv.com/blog/cs-degree-bubble-oversaturated-2026)
+- [The CS Degree Bubble Is Real](https://thetailorcv.com/blog/cs-degree-worth-it)
 - [How to Ask for a Raise](https://thetailorcv.com/blog/how-to-ask-for-a-raise)
 - [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - [How to Get a Promotion](https://thetailorcv.com/blog/how-to-get-a-promotion)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
-- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
+- [First Time Resume With No Experience: Complete Guide for Freshers & College Students](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
 
 ## Make This Practical
 

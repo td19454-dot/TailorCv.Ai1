@@ -217,6 +217,7 @@ Keep building on this with the related guides in this series:
 - [Working in Austria as an International Graduate](/blog/austria-jobs-for-graduates)
 - [Finding a Job in the Netherlands as an International Graduate](/blog/netherlands-jobs-international-graduates)
 - [Working in France as an International Graduate](/blog/france-jobs-international-graduates)
+- [Birmingham Jobs Guide 2026 - The Midlands' Professional Centre](/blog/birmingham-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

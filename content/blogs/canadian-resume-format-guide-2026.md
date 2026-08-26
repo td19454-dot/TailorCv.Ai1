@@ -225,6 +225,7 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
 - [Top Skills to Add to Your Resume in 2026 - By Industry and Role](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
+- [Event Planner Resume Guide 2026](https://thetailorcv.com/blog/event-planner-resume-2026)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

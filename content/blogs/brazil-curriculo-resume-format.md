@@ -253,6 +253,7 @@ Keep building on this with the related guides in this series:
 - [Brazil Work Visas Explained](/blog/brazil-work-visa-guide)
 - [Startup and Fintech Careers in Brazil](/blog/brazil-startup-and-fintech-careers)
 - [The Mexican Curriculum Vitae Format](/blog/mexico-curriculum-vitae-format)
+- [Dental Hygienist Resume Guide 2026](/blog/dental-hygienist-resume-2026)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

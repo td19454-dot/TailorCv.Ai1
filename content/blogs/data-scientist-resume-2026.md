@@ -33,7 +33,7 @@ Before applying, test your resume against the job description with the [ATS scor
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. Publications or [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -149,7 +149,7 @@ Health-Tech Company | Aug 2023 - Present
 
 ## Data Science Project Ideas for Freshers
 
-Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) prove applied ability. Good project topics:
+Projects are how [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) prove applied ability. Good project topics:
 
 
 
@@ -174,7 +174,7 @@ Customer Churn Prediction | Python, scikit-learn, XGBoost, SQL, Tableau
 - Created a Tableau dashboard showing high-risk customer segments by region, plan type, and contract length.
 - Documented findings in a write-up with actionable retention recommendations.
 
-Read [how to add projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for formatting tips.
+Read [how to add projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for formatting tips.
 
 ---
 
@@ -186,7 +186,7 @@ Employers do not care that you used TensorFlow. They care what it predicted, how
 
 ### Mistake 2: Only academic projects
 
-[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) on MNIST, Iris, or Titanic datasets are overused. Build something on a real or novel dataset relevant to an industry.
+[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) on MNIST, Iris, or Titanic datasets are overused. Build something on a real or novel dataset relevant to an industry.
 
 ### Mistake 3: No deployment experience
 
@@ -214,6 +214,7 @@ Your summary should immediately show your domain (NLP, recommendation, time seri
 - [Consultant Resume](https://thetailorcv.com/blog/consultant-resume-2026)
 - [Data Analyst Resume 2026](https://thetailorcv.com/blog/data-analyst-resume-2026)
 - [ATS Mistakes Tech Professionals Make in 2026 (Software Engineers, Data Scientists and Developers Guide)](https://thetailorcv.com/blog/ats-mistakes-tech-professionals)
+- [10 Powerful Resume Templates for Beginners With No Experience That Actually Get Interviews](https://thetailorcv.com/blog/resume-templates-for-beginners)
 
 ## Make This Practical
 

@@ -197,6 +197,7 @@ Memorized solutions break when the problem varies slightly. Understand the under
 - [Best Questions to Ask in a Job Interview](https://thetailorcv.com/blog/questions-to-ask-in-an-interview)
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
+- [How to Reschedule an Interview (Without Losing the Offer)](https://thetailorcv.com/blog/how-to-reschedule-an-interview)
 
 ## Make This Practical
 

@@ -31,7 +31,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) (with App Store links)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) (with App Store links)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -168,7 +168,7 @@ If you have apps on the App Store, include download counts, ratings, or crash ra
 
 ### Mistake 2: UIKit only
 
-In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) before applying to modern iOS roles.
+In 2026, SwiftUI is increasingly expected alongside UIKit. If you only show UIKit, add SwiftUI [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) before applying to modern iOS roles.
 
 ### Mistake 3: No architecture pattern
 

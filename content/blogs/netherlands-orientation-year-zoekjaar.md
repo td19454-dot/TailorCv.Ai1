@@ -171,6 +171,7 @@ Keep building on this with the related guides in this series:
 - [Technology and Startup Jobs in the Netherlands](/blog/netherlands-tech-startup-jobs)
 - [The EU Blue Card for Graduates](/blog/germany-eu-blue-card-graduates)
 - [Comparing Graduate Work Visas Across Countries](/blog/graduate-work-visa-comparison-usa-uk-canada-singapore)
+- [Campus Placement Preparation in Second Year 2026 - The Highest-Leverage Time](/blog/campus-placement-second-year-prep)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

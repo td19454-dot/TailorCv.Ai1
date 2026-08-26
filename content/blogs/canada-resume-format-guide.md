@@ -105,6 +105,7 @@ Keep building on this with the related guides in this series:
 - [Your First Canadian Job - Taxes, Benefits and Your First Payslip](/blog/canada-first-job-taxes-and-benefits)
 - [The French Language Advantage in the Canadian Job Market](/blog/canada-french-language-jobs-advantage)
 - [Federal and Provincial Government Jobs for Canadian Graduates](/blog/canada-government-jobs-for-students)
+- [Event Planner Resume Guide 2026](/blog/event-planner-resume-2026)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

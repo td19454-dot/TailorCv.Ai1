@@ -203,6 +203,7 @@ Keep building your US job search with these related TailorCV guides:
 - [AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice](https://thetailorcv.com/blog/ai-job-search-agent-2026)
 - [Follow-Up Email After Job Application - Templates That Sound Professional](https://thetailorcv.com/blog/follow-up-email-after-application)
 - [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
+- [Layoffs and Severance for New Graduates in the US](https://thetailorcv.com/blog/usa-severance-and-layoffs-new-grad)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

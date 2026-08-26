@@ -155,7 +155,7 @@ Placement matters as much as count. Spread your priority keywords across:
 - The [skills section](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), for fast scanning by both parsers and humans
 - The summary, for positioning and to signal your top two or three strengths immediately
 - Experience bullets, where keywords get backed by evidence and numbers (see [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements))
-- The [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) section, for technical proof when your job history does not fully cover a required skill
+- The [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) section, for technical proof when your job history does not fully cover a required skill
 
 Do not put keywords in hidden text, white-on-white fonts, or sections unrelated to the role. That tactic is easy for modern parsers to detect and does nothing for the human reading the resume, which means it carries real downside with no upside. If a keyword genuinely does not belong anywhere honest on your resume, that is a signal about the gap itself, not a formatting problem to trick your way around.
 

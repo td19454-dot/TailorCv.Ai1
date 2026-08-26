@@ -273,6 +273,7 @@ Keep building on this with the related guides in this series:
 - [The Brazilian Currículo and Resume Format](/blog/brazil-curriculo-resume-format)
 - [Startup and Fintech Careers in Brazil](/blog/brazil-startup-and-fintech-careers)
 - [Latin America versus Asia for Graduates](/blog/latin-america-vs-asia-for-graduates)
+- [UK Charity Sector Jobs 2026 - Careers Beyond Fundraising](/blog/uk-charity-sector-jobs)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

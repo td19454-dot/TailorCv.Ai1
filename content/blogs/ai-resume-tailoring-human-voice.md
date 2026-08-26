@@ -280,6 +280,7 @@ The best tool is one that shows you keyword gaps and gives you control over the 
 - [How to Stop Sounding Generic on Your Resume](https://thetailorcv.com/blog/how-to-stop-sounding-generic-on-resume)
 - [Generic Resume Mistakes That Cost Interviews](https://thetailorcv.com/blog/generic-resume-mistakes-that-cost-interviews)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
+- [Resume Extension vs Manual Tailoring: What You Actually Save (2026)](https://thetailorcv.com/blog/resume-extension-vs-manual-tailoring)
 
 ---
 

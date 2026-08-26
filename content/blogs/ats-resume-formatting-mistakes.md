@@ -215,6 +215,7 @@ Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv
 - [ATS Mistakes Experienced Professionals Make (And Why Your Resume Stops Working After 5+ Years)](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Explain Resume Gaps in 2026 - Honest Strategies That Work](https://thetailorcv.com/blog/how-to-explain-resume-gaps)
+- [Attorney & Lawyer Resume Guide 2026](https://thetailorcv.com/blog/attorney-lawyer-resume-2026)
 
 ## Make This Practical
 

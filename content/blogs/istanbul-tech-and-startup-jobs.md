@@ -265,6 +265,8 @@ Keep building on this with the related guides in this series:
 - [The Turkish CV Format](/blog/turkey-cv-format-guide)
 - [Technology Jobs in Mexico City](/blog/mexico-city-tech-jobs)
 - [Technology Jobs in Sao Paulo](/blog/sao-paulo-tech-jobs)
+- [Bristol Tech Jobs Guide 2026 - Semiconductors, Aerospace, and Startups](/blog/bristol-tech-jobs-guide)
+- [Shanghai vs Shenzhen Tech Jobs 2026 - Which City Should You Choose?](/blog/shanghai-vs-shenzhen-tech-jobs)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

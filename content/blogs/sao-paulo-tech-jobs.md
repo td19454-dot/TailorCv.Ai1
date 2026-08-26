@@ -249,6 +249,8 @@ Keep building on this with the related guides in this series:
 - [Startup and Fintech Careers in Brazil](/blog/brazil-startup-and-fintech-careers)
 - [The Brazilian Curriculo and Resume Format](/blog/brazil-curriculo-resume-format)
 - [Technology Jobs in Mexico City](/blog/mexico-city-tech-jobs)
+- [Austin Tech Jobs Guide 2026 - Market, Pay, and What Changed](/blog/austin-tech-jobs-guide)
+- [Manchester Tech Jobs Guide 2026 - The UK's Strongest Market Outside London](/blog/manchester-tech-jobs-guide)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

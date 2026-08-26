@@ -243,6 +243,7 @@ Keep building your Canadian [job search](https://thetailorcv.com/blog/remote-job
 - [How to Negotiate a Salary Offer in 2026 - Tactics That Actually Work](https://thetailorcv.com/blog/how-to-negotiate-salary-offer)
 - [How to Quit Your Job Professionally in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [How to Use LinkedIn for Job Search in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)
+- [Canada Skilled Trades Jobs Guide 2026 - Red Seal and Getting Certified](https://thetailorcv.com/blog/canada-trades-jobs-guide)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

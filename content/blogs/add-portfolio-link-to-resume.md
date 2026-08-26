@@ -142,6 +142,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [How to Write a Resume From Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
 - [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
+- [Architect Resume Guide 2026](https://thetailorcv.com/blog/architect-resume-2026)
 
 ## Make This Practical
 

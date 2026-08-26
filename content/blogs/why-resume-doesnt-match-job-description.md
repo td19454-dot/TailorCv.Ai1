@@ -159,7 +159,7 @@ Read [job description keyword extraction guide](https://thetailorcv.com/blog/job
 ## Reason 7: Your Bullet Points Are Too Vague
 
 **Why this kills your match:**
-Bullets like "Responsible for managing [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" contain no keywords.
+Bullets like "Responsible for managing [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" contain no keywords.
 They do not tell the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) what tools you used.
 They do not tell the [recruiter](https://thetailorcv.com/blog/how-recruiters-read-resumes) what you actually accomplished.
 They match nothing.
@@ -167,7 +167,7 @@ They match nothing.
 **The exact fix:**
 Rewrite vague bullets with: Action verb + specific tool or context (JD language) + measurable result.
 
-**Before:** "Responsible for managing [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)"
+**Before:** "Responsible for managing [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)"
 **After:** "Led delivery of 5 cross-functional product features using Jira and Agile sprint planning, shipping on time 90% of the time over 18 months"
 
 Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).

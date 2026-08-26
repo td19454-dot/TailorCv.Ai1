@@ -59,7 +59,7 @@ Operations Manager with 8 years of experience in manufacturing and FMCG logistic
 
 ### Example for Entry-Level Operations Professional
 
-Operations Analyst with 3 years of experience in warehouse logistics and process improvement. Led 2 process redesign [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that reduced order processing time by 35% and improved on-time delivery from 82% to 94%. Proficient in MS Project, SAP, Excel, and lean waste analysis. Seeking an operations coordinator or manager role.
+Operations Analyst with 3 years of experience in warehouse logistics and process improvement. Led 2 process redesign [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that reduced order processing time by 35% and improved on-time delivery from 82% to 94%. Proficient in MS Project, SAP, Excel, and lean waste analysis. Seeking an operations coordinator or manager role.
 
 ---
 
@@ -130,7 +130,7 @@ FMCG Manufacturing Facility | Jul 2020 - Present
 
 - Managed end-to-end production operations for a 240-employee, 6-line bottling facility producing 180M units annually across 3 product categories.
 - Improved OEE from 64% to 81% in 18 months through TPM implementation, planned maintenance scheduling, and real-time line performance monitoring.
-- Reduced manufacturing cost per unit by 14% through packaging material optimization, yield improvement, and energy efficiency [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) with combined savings of $3.1M annually.
+- Reduced manufacturing cost per unit by 14% through packaging material optimization, yield improvement, and energy efficiency [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) with combined savings of $3.1M annually.
 - Led a cross-functional team to achieve ISO 9001:2015 certification for the first time in the facility's history - passing the audit with zero major non-conformances.
 - Reduced employee injury rate from 6.2 to 1.4 per 200,000 hours worked through a structured safety leadership program, near-miss reporting culture, and hazard elimination campaigns.
 
@@ -174,6 +174,7 @@ Operations roles involve managing teams. Show team size, retention improvements,
 - [Cloud Engineer Resume](https://thetailorcv.com/blog/cloud-engineer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [HR Manager Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/hr-manager-resume-2026)
+- [Retail Manager Resume Guide 2026](https://thetailorcv.com/blog/retail-manager-resume-2026)
 
 ## Make This Practical
 

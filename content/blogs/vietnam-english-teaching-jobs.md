@@ -249,6 +249,7 @@ Keep building on this with the related guides in this series:
 - [Technology Jobs in Ho Chi Minh City and Hanoi](/blog/ho-chi-minh-hanoi-tech-jobs)
 - [Manufacturing Careers in Vietnam](/blog/vietnam-manufacturing-careers)
 - [English Teaching Jobs in Thailand](/blog/thailand-english-teaching-jobs)
+- [Teaching English in China - Resume Guide and Requirements 2026](/blog/teaching-english-in-china-resume)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

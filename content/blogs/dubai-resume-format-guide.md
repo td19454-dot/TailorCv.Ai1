@@ -216,6 +216,7 @@ Keep building on this with the related guides in this series:
 - [Tax-Free Salaries in the UAE](/blog/uae-tax-free-salary-explained)
 - [The Swiss Application Dossier](/blog/switzerland-cv-and-application-format)
 - [How to Write a Dutch CV That Gets Read](/blog/netherlands-cv-format-guide)
+- [Veteran to Civilian Resume Guide 2026](/blog/veteran-to-civilian-resume-2026)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

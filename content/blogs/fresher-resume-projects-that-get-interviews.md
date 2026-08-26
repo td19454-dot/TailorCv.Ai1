@@ -19,13 +19,13 @@ keywords: fresher resume projects, projects for resume freshers, resume projects
 - Before submitting your application, check for clarity, keyword inclusion, measurable results, and consistency across your resume, cover letter, and online profiles.
 
 
-For [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), projects are often the strongest proof of skill. Recruiters do not expect years of experience, but they do expect evidence that you can learn, build, solve problems, and explain your work clearly.
+For [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), projects are often the strongest proof of skill. Recruiters do not expect years of experience, but they do expect evidence that you can learn, build, solve problems, and explain your work clearly.
 
 ---
 
-## Best [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for Fresher Resumes
+## Best [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for Fresher Resumes
 
-Choose [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that are specific:
+Choose [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that are specific:
 
 - Web app with authentication and database
 - Data dashboard using real dataset
@@ -35,7 +35,7 @@ Choose [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for
 - UI/UX [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) with user flow
 - Engineering prototype with test result
 
-Avoid [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) that are only copied tutorials.
+Avoid [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) that are only copied tutorials.
 
 ---
 
@@ -171,7 +171,7 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 

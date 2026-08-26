@@ -289,6 +289,7 @@ This is one of the most common executive transitions. Your tailoring challenge i
 - [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [Resume Tailoring for 50+ Job Seekers](https://thetailorcv.com/blog/resume-tailoring-over-50)
+- [Resume Extension vs Manual Tailoring: What You Actually Save (2026)](https://thetailorcv.com/blog/resume-extension-vs-manual-tailoring)
 
 ---
 

@@ -96,7 +96,7 @@ You upload the resume you already have and the sections fill themselves in - bas
 ## Common Mistakes
 
 - A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) still anchored in the old field.
-- No new-field [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), only courses.
+- No new-field [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), only courses.
 - Apologizing for the switch instead of owning it.
 - In[consistent messaging](https://thetailorcv.com/blog/resume-review-checklist-before-applying) across your resume, LinkedIn, and portfolio.
 
@@ -122,7 +122,7 @@ By following these steps and avoiding common pitfalls, you can create a compelli
 
 ### Can a portfolio really overcome no experience in the new field?
 
-Often yes - concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
+Often yes - concrete [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in the target field are exactly the proof employers need to take a chance on a switcher. Consider using an [AI portfolio builder](https://www.thetailorcv.com/portfolio) to showcase your work effectively.
 
 ### How many new-field projects do I need?
 
@@ -149,6 +149,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
+- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 

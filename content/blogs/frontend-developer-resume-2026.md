@@ -33,7 +33,7 @@ Start by testing your current resume against the job description with the [ATS s
 2. Summary
 3. Technical skills
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 
 ### Your resume after optimization
@@ -140,7 +140,7 @@ SaaS Analytics Company | Sep 2023 - Present
 
 ## Frontend Project Ideas
 
-Strong frontend [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers):
+Strong frontend [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews):
 
 
 
@@ -200,6 +200,7 @@ In 2026, React and TypeScript are standard expectations. If your resume only sho
 - [Technical Writer Resume](https://thetailorcv.com/blog/technical-writer-resume-2026)
 - [Accountant Resume](https://thetailorcv.com/blog/accountant-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [WordPress Developer Resume 2026 - Skills, Keywords, and Portfolio Tips](https://thetailorcv.com/blog/wordpress-developer-resume-2026)
 
 ## Make This Practical
 

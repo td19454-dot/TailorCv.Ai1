@@ -166,6 +166,7 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
 - [LinkedIn Referral Message Template - Ask Without Sounding Awkward](https://thetailorcv.com/blog/referral-message-template-linkedin)
 - [Video Resume Guide 2026 - When to Use One and What to Say](https://thetailorcv.com/blog/video-resume-guide-2026)
+- [Canada Skilled Trades Jobs Guide 2026 - Red Seal and Getting Certified](https://thetailorcv.com/blog/canada-trades-jobs-guide)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

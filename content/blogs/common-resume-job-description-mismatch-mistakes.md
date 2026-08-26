@@ -37,7 +37,7 @@ Check your resume right now using [TailorCV's ATS score checker](https://www.the
 
 **The Problem:**
 You wrote "client support" but the JD says "customer success."
-You wrote "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" but the JD says "project delivery."
+You wrote "managed [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" but the JD says "project delivery."
 You wrote "web development" but the JD says "full stack engineering."
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not always connect synonyms.
@@ -310,6 +310,7 @@ Focus on the ones relevant to your resume. You may already be doing some right. 
 - [Resume to Job Description Match Percentage - What Score Do You Need in 2026?](https://thetailorcv.com/blog/resume-job-description-match-percentage)
 - [What Recruiters Actually Look for When Matching Your Resume to a Job Description in 2026](https://thetailorcv.com/blog/what-recruiters-look-for-resume-job-match)
 - [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
+- [Journalist Resume Guide 2026](https://thetailorcv.com/blog/journalist-resume-2026)
 
 ---
 

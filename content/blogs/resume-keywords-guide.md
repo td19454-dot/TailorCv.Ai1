@@ -85,7 +85,7 @@ Look at 5-10 job postings for the same role across different companies. Keywords
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) matching can be literal. Include both:
 
 - Full terms and acronyms: "Search Engine Optimization (SEO)"
-- Variations: "project management" and "managed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)"
+- Variations: "project management" and "managed [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)"
 
 ### Step 4: Use a Keyword Tool
 
@@ -172,7 +172,7 @@ This 5-minute process can be the difference between getting filtered out and get
 ## Related Guides
 
 - [How to Improve Your ATS Score](https://thetailorcv.com/blog/resume-optimization-guide)
-- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide)
+- [35 Powerful Technical Skills in Resume for Freshers With No Experience (2026 Guide)](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience)
 - [ATS Score Guide for](https://thetailorcv.com/blog/ats-score-guide)
 - [How to Tailor Your Resume for Every Job Application (Step-by-Step)](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)
 - [How to Write a Resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai)

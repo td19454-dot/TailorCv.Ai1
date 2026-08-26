@@ -87,7 +87,7 @@ Even the most technical roles include behavioral rounds, because companies are a
 
 ### How to prepare
 
-- Use the STAR structure (Situation, Task, Action, Result) to turn real [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) into complete, convincing stories rather than vague summaries.
+- Use the STAR structure (Situation, Task, Action, Result) to turn real [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) into complete, convincing stories rather than vague summaries.
 - Prepare 5–6 flexible stories covering conflict, failure, initiative, and technical leadership — pulled from your actual resume, not memory alone.
 - Practice the most common questions specifically: "tell me about yourself," a conflict with a teammate, a technical decision you disagreed with, a time you missed a deadline.
 

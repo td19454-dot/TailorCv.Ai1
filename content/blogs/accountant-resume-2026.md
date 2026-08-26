@@ -186,6 +186,7 @@ GAAP, IFRS, SOX, or local tax compliance - name the standards you work under. Th
 - [Data Engineer Resume](https://thetailorcv.com/blog/data-engineer-resume-2026)
 - [Data Scientist Resume](https://thetailorcv.com/blog/data-scientist-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Architect Resume Guide 2026](https://thetailorcv.com/blog/architect-resume-2026)
 
 ## Make This Practical
 

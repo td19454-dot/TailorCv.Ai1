@@ -42,7 +42,7 @@ A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) 
 You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
 
 
-- It shows finished [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), case studies, and outcomes
+- It shows finished [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), case studies, and outcomes
 - It demonstrates taste, craft, and judgment a resume can only claim
 - It gives interviewers concrete things to ask about (so you steer the conversation)
 
@@ -106,7 +106,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
-- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- [Projects on a Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [How to Write a Resume From Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)

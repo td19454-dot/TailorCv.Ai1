@@ -19,7 +19,7 @@ keywords: civil engineer resume, civil engineering resume 2026, structural engin
 - Tailor the resume to match the job description using an ATS score checker and utilize ATS-friendly templates for optimal results.
 
 
-A civil engineer resume in 2026 must demonstrate [project delivery](https://thetailorcv.com/blog/job-description-analysis-checklist), technical design skills, and the ability to manage contractors, clients, and regulatory requirements on real infrastructure [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Whether you are working in structural design, transportation, water resources, geotechnical engineering, or construction management, your resume should show completed [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not just responsibilities.
+A civil engineer resume in 2026 must demonstrate [project delivery](https://thetailorcv.com/blog/job-description-analysis-checklist), technical design skills, and the ability to manage contractors, clients, and regulatory requirements on real infrastructure [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Whether you are working in structural design, transportation, water resources, geotechnical engineering, or construction management, your resume should show completed [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), not just responsibilities.
 
 Before applying, compare your resume to the job description with the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For comparison with other engineering disciplines, read the [mechanical engineer resume guide](https://thetailorcv.com/blog/mechanical-engineer-resume-2026) and electrical engineer resume guide.
 
@@ -31,7 +31,7 @@ Before applying, compare your resume to the job description with the [ATS score 
 2. Summary
 3. Technical skills
 4. Work experience with [project highlights](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
-5. Notable [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+5. Notable [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and professional memberships
 
@@ -54,7 +54,7 @@ Civil Engineer with X years of experience in [structural / transportation / wate
 
 ### Example for Experienced Civil Engineer
 
-Civil Engineer with 7 years of experience in structural design and project management for residential, commercial, and infrastructure [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Designed reinforced concrete and steel structures for 14 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) ranging from $2M to $180M in value. Proficient in ETABS, STAAD.Pro, AutoCAD, and Revit Structure. PE licensed with experience in IS, BS, and ASCE code compliance.
+Civil Engineer with 7 years of experience in structural design and project management for residential, commercial, and infrastructure [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Designed reinforced concrete and steel structures for 14 [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) ranging from $2M to $180M in value. Proficient in ETABS, STAAD.Pro, AutoCAD, and Revit Structure. PE licensed with experience in IS, BS, and ASCE code compliance.
 
 ### Example for Graduate Civil Engineer
 
@@ -105,7 +105,7 @@ Designed / Managed / Delivered / Led + [structure, project, or system] + [projec
 
 ### Weak Bullet Points
 
-- Worked on structural design [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
+- Worked on structural design [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
 - Used STAAD.Pro for analysis
 - Managed construction sites
 - Prepared drawings and reports
@@ -125,7 +125,7 @@ Designed / Managed / Delivered / Led + [structure, project, or system] + [projec
 Structural Design Engineer
 Infrastructure Consultancy | Aug 2021 - Present
 
-- Completed structural design for 18 [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) including commercial buildings, industrial structures, bridges, and elevated water tanks ranging from ₹8 crore to ₹280 crore in project value.
+- Completed structural design for 18 [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) including commercial buildings, industrial structures, bridges, and elevated water tanks ranging from ₹8 crore to ₹280 crore in project value.
 - Led design of a 6-lane vehicular bridge (span 180m) over a river, including foundation design on deep piles, post-tensioned deck, and seismic assessment per IRC:6 and IS 1893.
 - Managed BIM coordination for a ₹220 crore hospital project in Revit, producing clash-free structural and architectural models used for construction sequencing.
 - Supervised 2 junior engineers and reviewed all structural calculations and drawings before client submission, maintaining zero structural design error in submitted packages.
@@ -139,7 +139,7 @@ Infrastructure Consultancy | Aug 2021 - Present
 
 ### Mistake 1: No project values or scales
 
-"Managed construction [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" tells nothing. Add project value, structure size (sqm or floors), or infrastructure length.
+"Managed construction [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" tells nothing. Add project value, structure size (sqm or floors), or infrastructure length.
 
 ### Mistake 2: Only listing software tools
 
@@ -171,6 +171,7 @@ Civil engineering is project-based and multi-stakeholder. Show that you managed 
 - [Site Reliability Engineer (SRE) Resume](https://thetailorcv.com/blog/site-reliability-engineer-resume-2026)
 - [Software Engineer Resume for FAANG in 2026](https://thetailorcv.com/blog/software-engineer-resume-faang)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Interior Designer Resume Guide 2026](https://thetailorcv.com/blog/interior-designer-resume-2026)
 
 ## Make This Practical
 

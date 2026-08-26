@@ -105,7 +105,7 @@ Read it back and ask: could someone else truthfully have written this exact summ
 
 ## Where the Summary Goes and How Long It Should Be
 
-Place the summary at the very top, directly under your contact details, so it is the first thing read. Keep it to two or three lines — long enough to land your identity, proof, and focus; short enough that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) actually reads it before scanning your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience). On a tight one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) for an early-career candidate, a strong summary is a nice-to-have; for experienced professionals and career changers, it is the frame that makes everything below it make sense.
+Place the summary at the very top, directly under your contact details, so it is the first thing read. Keep it to two or three lines — long enough to land your identity, proof, and focus; short enough that a [recruiter](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter) actually reads it before scanning your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). On a tight one-page [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) for an early-career candidate, a strong summary is a nice-to-have; for experienced professionals and career changers, it is the frame that makes everything below it make sense.
 
 ## Tailor the Summary to Every Job
 
@@ -135,7 +135,7 @@ Two to three lines. Longer and it stops being a summary; shorter and it says not
 Summary. Objectives ("seeking a role where I can grow") center your wants; summaries center your value to the [employer](https://thetailorcv.com/blog/how-to-write-cold-email-to-recruiter).
 
 ### Where do I get the metric if my role isn't obviously measurable?
-Almost every role hides a number — scale, time saved, volume handled, or a percentage change. Walk your [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) through those lenses and you will find one. Our guide on [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) has a full worksheet.
+Almost every role hides a number — scale, time saved, volume handled, or a percentage change. Walk your [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) through those lenses and you will find one. Our guide on [quantifying achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) has a full worksheet.
 
 ### Should the summary use "I" or third person?
 Neither, ideally — write it in implied first person without the pronoun: "Content marketer who grew traffic 140%," not "I am a content marketer" or "He is a content marketer." It reads cleaner and saves space.
@@ -151,7 +151,7 @@ Present tense, implied first person, no pronouns: "Backend engineer who builds r
 
 ## When to Skip the Summary Entirely
 
-A summary is not mandatory, and a weak one is worse than none. If you cannot write a summary that says something specific and true — a real [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), a genuine specialty, a clear direction — leave it off and let a strong [experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) section lead instead. This is often the right call for a straightforward early-career [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where the projects and skills speak for themselves, or for a candidate whose most recent role obviously matches the target. The summary earns its space only when it *frames* something the reader might otherwise miss: a career change, a mix of experiences that needs a through-line, or a senior story that benefits from a headline. If your resume is already clear and targeted without it, three lines of generic self-description at the top only push your real evidence further down the page.
+A summary is not mandatory, and a weak one is worse than none. If you cannot write a summary that says something specific and true — a real [metric](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), a genuine specialty, a clear direction — leave it off and let a strong [experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) section lead instead. This is often the right call for a straightforward early-career [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) where the projects and skills speak for themselves, or for a candidate whose most recent role obviously matches the target. The summary earns its space only when it *frames* something the reader might otherwise miss: a career change, a mix of experiences that needs a through-line, or a senior story that benefits from a headline. If your resume is already clear and targeted without it, three lines of generic self-description at the top only push your real evidence further down the page.
 
 ## Common Words to Cut From Your Summary
 

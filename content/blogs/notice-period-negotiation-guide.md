@@ -140,7 +140,7 @@ If you are released early, you may have a gap before starting.
 
 **Check your benefits.** Health insurance, particularly in the US, may lapse between roles. Confirm when your old coverage ends and the new one begins.
 
-**Nobody asks about a two-week gap.** Anything under a month or so is unremarkable and does not need explaining - see [career gap explanation](https://thetailorcv.com/blog/career-gap-explanation-guide) if yours is longer.
+**Nobody asks about a two-week gap.** Anything under a month or so is unremarkable and does not need explaining - see [career gap explanation](https://thetailorcv.com/blog/how-to-explain-career-gap-in-interview) if yours is longer.
 
 ---
 

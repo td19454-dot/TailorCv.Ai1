@@ -69,7 +69,7 @@ The goal is natural keyword integration across your resume's key sections.
 Modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) platforms - Workday, Greenhouse, Lever, iCIMS - are not simple keyword counters.
 They use semantic matching and natural language processing.
 
-Semantic matching means the system understands that "project leadership," "project management," and "led cross-functional [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)" are related.
+Semantic matching means the system understands that "project leadership," "project management," and "led cross-functional [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)" are related.
 It does not just count the word "management."
 
 A keyword that appears once in a relevant, contextual sentence scores better in modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) than a keyword that appears eight times in a list.

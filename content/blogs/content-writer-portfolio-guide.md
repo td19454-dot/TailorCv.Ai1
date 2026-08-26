@@ -166,6 +166,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
+- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 

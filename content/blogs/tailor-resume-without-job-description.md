@@ -291,6 +291,7 @@ Only if the recipients are at very similar companies. For each distinct company 
 - [Resume Startup vs Enterprise Tailoring Guide](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)
 - [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Research a Company Before Your Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
+- [Autofill vs Auto-Tailor: What Job Search Extensions Actually Do (2026)](https://thetailorcv.com/blog/autofill-vs-auto-tailor-job-extensions)
 
 ---
 

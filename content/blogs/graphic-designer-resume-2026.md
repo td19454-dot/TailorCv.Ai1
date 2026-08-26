@@ -33,7 +33,7 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 2. Summary
 3. Skills by category
 4. Work experience
-5. [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) or freelance work
+5. [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) or freelance work
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 7. [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 
@@ -60,7 +60,7 @@ Brand and Marketing Designer with 5 years of experience creating visual identiti
 
 ### Example for Entry-Level Graphic Designer
 
-Junior Graphic Designer with [strong skills](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in Adobe Illustrator, Photoshop, InDesign, and Canva. Designed branding, social media content, posters, and digital ads for 4 clients during freelance work and university [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers). Strong foundation in typography, color theory, layout design, and print production.
+Junior Graphic Designer with [strong skills](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in Adobe Illustrator, Photoshop, InDesign, and Canva. Designed branding, social media content, posters, and digital ads for 4 clients during freelance work and university [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews). Strong foundation in typography, color theory, layout design, and print production.
 
 ---
 
@@ -142,7 +142,7 @@ Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfoli
 
 
 
-- Curate ruthlessly - 6-10 strong [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not 30 average ones
+- Curate ruthlessly - 6-10 strong [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), not 30 average ones
 - Show the process, not just the final output - sketches, iterations, client briefs
 - Include context - who the client was, what the brief was, what constraints you worked with
 - Show variety - identity, digital, print, motion if you have it
@@ -195,6 +195,8 @@ Some designers describe their thinking at length without naming what they actual
 - [Customer Service Resume](https://thetailorcv.com/blog/customer-service-resume-2026)
 - [Cybersecurity Engineer Resume 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/cybersecurity-engineer-resume-2026)
 - [How to List Education on a Resume in 2026 - Complete Guide with Examples](https://thetailorcv.com/blog/how-to-list-education-on-resume)
+- [Interior Designer Resume Guide 2026](https://thetailorcv.com/blog/interior-designer-resume-2026)
+- [Product Designer Resume Guide 2026](https://thetailorcv.com/blog/product-designer-resume-2026)
 
 ## Make This Practical
 

@@ -187,7 +187,7 @@ Three to four short paragraphs, under 300 words. Recruiters skim - use the [cove
 
 ### What if I have zero direct experience in the new field?
 
-Lean on projects, coursework, and transferable soft skills. Pair this with [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) even if you're not a fresher - the framing works the same way.
+Lean on projects, coursework, and transferable soft skills. Pair this with [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [fresher resume projects that get interviews](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) even if you're not a fresher - the framing works the same way.
 
 ### Can AI write this letter for me?
 

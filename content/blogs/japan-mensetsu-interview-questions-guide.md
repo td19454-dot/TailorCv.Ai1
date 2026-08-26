@@ -134,6 +134,7 @@ Keep building on this with the related guides in this series:
 - [Japanese Language Requirements for Jobs in Japan](/blog/japan-japanese-language-requirements-jobs)
 - [Teaching in Japan - The JET Programme and the Alternatives](/blog/japan-jet-programme-and-teaching-jobs)
 - [JLPT N2 and N1 - What They Actually Mean for Employment in Japan](/blog/japan-jlpt-n2-n1-for-employment)
+- [Machine Learning Interview Questions and Answers (2026 Guide)](/blog/machine-learning-interview-questions)
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 

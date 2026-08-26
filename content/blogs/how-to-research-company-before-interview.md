@@ -170,6 +170,7 @@ Pair your research with the [behavioral interview guide](https://thetailorcv.com
 - [Cover Letter Guide 2026 - How to Write a Cover Letter That Gets Read](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [First 90 Days at a New Job in 2026 - How to Succeed and Stand Out](https://thetailorcv.com/blog/first-90-days-at-new-job)
 - [How to Build a Professional Portfolio in 2026 - Guide for All Industries](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
+- [What to Bring to a Job Interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview)
 
 ## Make This Practical
 

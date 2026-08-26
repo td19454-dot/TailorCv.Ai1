@@ -34,7 +34,7 @@ A remote posting is open to a whole country or continent, so a single listing ca
 
 - Add remote results to your bullets: "Led a fully distributed team across three time zones to ship on schedule."
 - Show async communication [skills](https://thetailorcv.com/blog/resume-skills-section-guide-2026) — clear writing is the remote worker's core competency.
-- Mention self-direction: [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you drove without close supervision.
+- Mention self-direction: [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) you drove without close supervision.
 
 ## Address the Silent Filters
 
@@ -69,7 +69,7 @@ A [hiring manager](https://thetailorcv.com/blog/common-interview-mistakes-to-avo
 
 - **Put remote results in your bullets.** "Led a fully distributed team across three time zones to ship on schedule" says more than "remote-friendly."
 - **Foreground written communication.** Clear writing is the core competency of remote work; your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and [cover letter](https://thetailorcv.com/blog/cover-letter-opening-lines-that-work) are the first sample of it. Sloppy writing is disqualifying for a remote role in a way it is not for an in-office one.
-- **Show self-direction.** [Projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you drove without close supervision signal you will not need hand-holding.
+- **Show self-direction.** [Projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) you drove without close supervision signal you will not need hand-holding.
 - **State your time zone and availability.** A line like "Remote (GMT+5:30, 4-hour daily overlap with US Eastern)" removes a silent filter.
 
 If you are building from scratch, the [resume builder](https://thetailorcv.com/modify-cv) gives you a clean, [ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) base, and a quick [ATS score](https://thetailorcv.com/solutions) tells you whether a remote posting's keywords are actually present in your resume before you apply.
@@ -144,7 +144,7 @@ Not inherently, but you have to be more intentional — over-communicate your wi
 A tailored application plus a [referral](https://thetailorcv.com/blog/networking-messages-for-referrals). Tailoring gets you past the [ATS](https://thetailorcv.com/blog/how-to-pass-ats-in-2026) and the sheer volume; a referral gets a human to actually look. Together they beat any amount of mass applying.
 
 ### How do I show I can work independently if I've never worked remotely?
-Point to any self-directed work you have done — [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) you drove without close supervision, deadlines you owned, or situations where you figured things out alone. Independence and clear communication are the traits that transfer; frame your existing experience around them.
+Point to any self-directed work you have done — [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) you drove without close supervision, deadlines you owned, or situations where you figured things out alone. Independence and clear communication are the traits that transfer; frame your existing experience around them.
 
 ### Are remote roles more competitive than in-office ones?
 Generally yes, because a single remote posting is open to an entire country or region and can draw thousands of applicants. That is precisely why selectivity, tailoring, and referrals matter more for remote roles than the mass-application approach that sometimes works locally.

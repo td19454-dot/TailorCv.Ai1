@@ -131,7 +131,7 @@ Always ask permission before listing anyone as a reference. A reference who is s
 A strong reference can:
 
 - Speak specifically to your work (not vague praise)
-- Recall concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), achievements, or examples
+- Recall concrete [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), achievements, or examples
 - Confirm your technical and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) with direct evidence
 - Say with confidence that they would hire you again
 

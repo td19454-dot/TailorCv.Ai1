@@ -171,6 +171,7 @@ Employers know AI writing tools exist. Position yourself as a writer who uses AI
 - [How to List Certifications on a Resume in 2026 - With Examples](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
 - [How to Write a Resume Headline in 2026 - With 30 Examples](https://thetailorcv.com/blog/how-to-write-resume-headline)
 - [How to Write a Resume Summary in 2026 - With 20 Examples](https://thetailorcv.com/blog/how-to-write-resume-summary)
+- [Paralegal Resume Guide 2026](https://thetailorcv.com/blog/paralegal-resume-2026)
 
 ## Make This Practical
 

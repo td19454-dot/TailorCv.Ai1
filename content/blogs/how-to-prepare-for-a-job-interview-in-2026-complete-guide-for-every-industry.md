@@ -41,7 +41,7 @@ This is the same logic behind [tailoring your resume to every job](https://theta
 
 ### Turn Requirements Into Questions
 
-If the description says "manage cross-functional [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)," prepare for:
+If the description says "manage cross-functional [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)," prepare for:
 
 "Tell me about a time you managed a project with multiple stakeholders."
 
@@ -317,6 +317,7 @@ Before the interview, make sure the resume that earned the call is still aligned
 - [Final Round Interview Tips](https://thetailorcv.com/blog/final-round-interview-tips)
 - [Why Am I Not Getting Interviews for Jobs I'm Qualified For?](https://thetailorcv.com/blog/why-your-resume-gets-no-responses)
 - [How to Prepare for Campus Placement in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-prepare-for-campus-placement)
+- [What to Bring to a Job Interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview)
 
 
 ## Comparison of Strong vs. Weak Interview Preparation Strategies
