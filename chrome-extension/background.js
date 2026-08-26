@@ -305,36 +305,27 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             return;
           }
 
-          const afterScoreHeader = res.headers.get('X-Skill-Match-After');
-          const afterScore = afterScoreHeader ? parseInt(afterScoreHeader, 10) : null;
-
+          // The endpoint returns JSON now (not a raw PDF) so the "See what
+          // changed" diff and the skill lists can travel alongside the PDF —
+          // a response header cannot carry bullet-level before/after text.
+          const data = await res.json();
+          const afterScore = typeof data.skill_match_after === 'number' ? data.skill_match_after : null;
           // Skills this job asked for that the resume shows no evidence of. The
           // website shows these so the candidate can tick the ones they really
           // have; without this the extension silently dropped them and the user
           // never knew the job wanted something they might well be able to claim.
-          const readSkillHeader = (name) => {
-            try {
-              const raw = res.headers.get(name);
-              if (!raw) return [];
-              return decodeURIComponent(raw).split(',').map(s => s.trim()).filter(Boolean);
-            } catch (_) {
-              return [];   // a malformed header must never break the download
-            }
-          };
-          // Skills this job caused to be added to the resume. Gaps only appear
-          // when the confirm-first behaviour is switched back on server-side.
-          const skillsAdded = readSkillHeader('X-Skills-Added');
-          const skillGaps = readSkillHeader('X-Skill-Gaps');
+          const skillsAdded = Array.isArray(data.skills_added) ? data.skills_added : [];
+          const skillGaps = Array.isArray(data.skill_gaps) ? data.skill_gaps : [];
+          const changes = data.changes || {};
 
-          const buffer = await res.arrayBuffer();
           // Service workers have no DOM (no URL.createObjectURL), so build a data URL.
-          const dataUrl = `data:application/pdf;base64,${arrayBufferToBase64(buffer)}`;
+          const dataUrl = `data:application/pdf;base64,${data.pdf_base64}`;
           await chrome.downloads.download({
             url: dataUrl,
-            filename: 'tailored_resume.pdf',
+            filename: data.filename || 'tailored_resume.pdf',
             saveAs: false,
           });
-          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps } });
+          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
