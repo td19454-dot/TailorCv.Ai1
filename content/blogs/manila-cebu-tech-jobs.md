@@ -23,7 +23,7 @@ showcase: none
 
 Being precise, since the picture differs from the region's other markets.
 
-**Software development inside BPO and shared services** is the largest employer. Multinationals run development, maintenance and support functions from the Philippines, and this is genuine engineering work even though it sits under a services label.
+**Software development inside BPO and shared services** is the largest [employer](/blog/how-recruiters-spot-generic-resumes). Multinationals run development, maintenance and support functions from the Philippines, and this is genuine engineering work even though it sits under a services label.
 
 **Shared service centres** of international companies, doing internal technology work rather than client work.
 
@@ -31,11 +31,11 @@ Being precise, since the picture differs from the region's other markets.
 
 **Startups**, a modest but real ecosystem concentrated in Manila with some Cebu presence.
 
-**Banking and telecommunications technology**, as the large domestic institutions digitise.
+**[Banking](/blog/resume-matching-insurance-jobs) and telecommunications technology**, as the large domestic institutions digitise.
 
 **Game development and animation**, a long-standing Philippine specialism with genuine international work.
 
-**And remote work for foreign employers**, which is very substantial — Filipino developers working directly for American, Australian and European companies is a large and growing category that does not appear in domestic employment statistics.
+**And [remote work](/blog/remote-job-search-guide) for foreign employers**, which is very substantial — Filipino [developers](/blog/resume-matching-software-engineer) working directly for American, Australian and European companies is a large and growing category that does not appear in domestic employment statistics.
 
 ## Manila and Cebu
 
@@ -73,21 +73,21 @@ Distinctive to the Philippines and worth its own treatment.
 
 Practical mechanics.
 
-**LinkedIn works well** given the English-language environment and the international orientation of much of the sector.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) works well** given the English-language environment and the international orientation of much of the sector.
 
 **JobStreet Philippines** carries substantial domestic volume.
 
 **Kalibrr** is strong for technology and startup roles.
 
-**Company career pages** for the shared service centres and larger employers.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the shared service centres and larger employers.
 
 **Remote job platforms** — the global remote-work boards — are genuinely relevant given how many Filipino developers work for foreign employers.
 
-**Referrals matter**, as everywhere in the region.
+**[Referrals](/blog/networking-messages-for-referrals) matter**, as everywhere in the region.
 
-**And a portfolio matters.** Deployed projects and a [portfolio site](/portfolio) do more than description, particularly for remote applications where the employer cannot easily verify your background otherwise.
+**And a portfolio matters.** Deployed [projects](/blog/projects-in-resume) and a [portfolio site](/portfolio) do more than description, particularly for remote [applications](/blog/how-many-jobs-should-you-apply-to-per-day) where the employer cannot easily verify your background otherwise.
 
-**Run your CV through an [ATS check](/ats-analysis)**, since the larger employers and international remote employers both screen at volume.
+**Run your [CV](/blog/resume-optimization-guide) through an [ATS check](/ats-analysis)**, since the larger employers and international remote employers both screen at volume.
 
 ## Career progression
 
@@ -101,9 +101,9 @@ Where a Philippine technology career leads.
 
 **Abroad**, since Filipino technology professionals are employable across the English-speaking world and the overseas employment infrastructure is well established.
 
-**And into freelancing and consulting**, supported by the same English advantage and the established remote-work culture.
+**And into freelancing and [consulting](/blog/case-interview-preparation-guide-2026)**, supported by the same English advantage and the established remote-[work culture](/blog/first-90-days-new-job).
 
-**The pattern that recurs** is domestic experience followed by a remote or overseas move, and it is a rational trajectory rather than a failure of the local market.
+**The pattern that recurs** is domestic [experience](/blog/resume-matching-experienced-professionals) followed by a remote or overseas move, and it is a rational trajectory rather than a failure of the local market.
 
 ## The startup ecosystem
 
@@ -121,7 +121,7 @@ Modest but real, and worth an honest account.
 
 **Funding is the constraint.** Philippine startups frequently raise from regional investors in Singapore rather than domestically, and the local venture ecosystem is thinner than the market size would suggest.
 
-**Which means** joining a Philippine startup is a genuinely higher-risk proposition than joining one in a better-funded ecosystem, and equity should be assessed with that in mind.
+**Which means** joining a Philippine startup is a genuinely higher-risk proposition than joining one in a better-funded ecosystem, and [equity](/blog/how-to-negotiate-a-job-offer-email) should be assessed with that in mind.
 
 **And several successful Philippine companies** have relocated headquarters to Singapore for funding and structuring reasons, which tells you something about the ecosystem's current state.
 

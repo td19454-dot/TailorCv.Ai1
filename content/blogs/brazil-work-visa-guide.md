@@ -23,11 +23,11 @@ showcase: none
 
 How the standard process works.
 
-**Labour authorisation** is requested by the Brazilian employer through the Ministry of Labour, demonstrating the role, the qualifications required and the justification for a foreign hire.
+**Labour authorisation** is requested by the Brazilian [employer](/blog/how-recruiters-spot-generic-resumes) through the Ministry of Labour, demonstrating the role, the qualifications required and the justification for a foreign hire.
 
-**Qualification requirements** generally involve a combination of education and professional experience, with the specific combination depending on the category applied for.
+**Qualification requirements** generally involve a combination of education and professional [experience](/blog/resume-matching-experienced-professionals), with the specific combination depending on the category applied for.
 
-**The authorisation is published** and forms the basis of the visa application.
+**The authorisation is published** and forms the basis of the visa [application](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 **VITEM V visa** applied for at a Brazilian consulate in your country of residence, on the basis of the authorisation.
 
@@ -35,7 +35,7 @@ How the standard process works.
 
 **CRNM registration** with the Federal Police after arrival, within a defined period, producing the national migration registry card.
 
-**CPF** and the associated tax and banking registrations.
+**CPF** and the associated tax and [banking](/blog/resume-matching-insurance-jobs) registrations.
 
 **And the authorisation is employer-linked**, meaning a change of employer requires a new process rather than a transfer.
 
@@ -53,7 +53,7 @@ Beyond standard employment.
 
 **Research and academic** routes for professors, researchers and academic staff.
 
-**Retirement** provisions for those with a qualifying pension income.
+**Retirement** provisions for those with a qualifying [pension](/blog/first-90-days-new-job) income.
 
 **Digital nomad visa**, which Brazil introduced for remote workers employed by foreign entities, with income requirements.
 
@@ -71,7 +71,7 @@ Worth its own treatment because it changes everything for those who qualify.
 
 **And it converts to permanent residence** after the temporary period, subject to conditions.
 
-**For a graduate from Argentina, Colombia, Chile, Peru or Uruguay**, this makes Brazil dramatically more accessible than it is for someone from India, Nigeria or the Philippines, and any comparison of Brazil as a destination has to account for it.
+**For a [graduate](/blog/first-resume-for-gen-z-2026) from Argentina, Colombia, Chile, Peru or Uruguay**, this makes Brazil dramatically more accessible than it is for someone from India, Nigeria or the Philippines, and any comparison of Brazil as a destination has to account for it.
 
 **Non-Mercosur nationals** face the full employer-sponsored process, which is a materially different proposition.
 
@@ -81,7 +81,7 @@ The part that causes most delay.
 
 **Passport** with adequate validity.
 
-**Qualification certificates**, apostilled in the issuing country if it is a party to the Apostille Convention, or consular-legalised if not.
+**Qualification [certificates](/blog/campus-placement-document-checklist)**, apostilled in the issuing country if it is a party to the [Apostille](/blog/international-resume-tailoring-guide) Convention, or consular-legalised if not.
 
 **Employment contract or offer** from the Brazilian employer.
 
@@ -101,7 +101,7 @@ The part that causes most delay.
 
 A separate question from the visa, and one that catches regulated professionals.
 
-**Revalidation is the formal recognition of a foreign degree** by a Brazilian public university, and it is required for practising regulated professions.
+**Revalidation is the formal recognition of a foreign [degree](/blog/how-to-list-education-on-resume)** by a Brazilian public university, and it is required for practising regulated professions.
 
 **It is not the same as the visa process** and having work authorisation does not mean your qualification is recognised for professional practice.
 
@@ -121,17 +121,17 @@ What to plan for.
 
 **The labour authorisation** runs in weeks in a straightforward case and longer where documentation is queried.
 
-**The consular visa stage** adds its own processing time, varying considerably by post.
+**The consular visa stage** adds its own [processing time](/blog/how-long-to-hear-back-after-applying), varying considerably by post.
 
 **Apostille and sworn translation** are the variables you control least and should start earliest.
 
 **Fees** apply at the authorisation, consular and registration stages, and employers commonly cover them though this should be confirmed.
 
-**CRNM registration** happens after arrival with its own deadline and fee.
+**CRNM registration** happens after arrival with its own [deadline](/blog/campus-placement-preparation-timeline) and fee.
 
 **Renewals** need starting well ahead of expiry.
 
-**And the whole sequence** is realistically a matter of months rather than weeks for most people, which is worth knowing when negotiating a start date.
+**And the whole sequence** is realistically a matter of months rather than weeks for most people, which is worth knowing when [negotiating](/blog/how-to-negotiate-salary-offer) a start date.
 
 ## Family members
 
@@ -143,7 +143,7 @@ The arrangements for dependants.
 
 **Same-sex partnerships are recognised**, and Brazil is comparatively progressive on this within the region.
 
-**A spouse can generally work** on family-based residence, which is a meaningful advantage over the more restrictive dependent regimes elsewhere.
+**A [spouse](/blog/first-job-abroad-practical-checklist) can generally work** on family-based residence, which is a meaningful advantage over the more restrictive dependent regimes elsewhere.
 
 **Schooling** is available through a good private and international school sector in the major cities, with public education being free and variable in quality.
 

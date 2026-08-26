@@ -51,15 +51,15 @@ A country this small should not host industries of this scale, and the reasons a
 
 **iGaming dominates the international employment picture.** Operators, platform suppliers, payment providers, affiliates and the regulatory and compliance ecosystem around them employ a very large number of people, overwhelmingly international.
 
-**The roles are varied** — customer support in many languages, compliance and AML, technology, marketing and CRM, data and analytics, finance, and operations.
+**The roles are varied** — customer support in many languages, compliance and AML, technology, [marketing](/blog/resume-matching-marketing) and CRM, data and analytics, [finance](/blog/resume-matching-insurance-jobs), and operations.
 
-**A note on the sector:** online gaming is regulated and reputationally mixed, and operators vary enormously in conduct and quality. Research a specific employer rather than the industry, and be clear-eyed about which end of it you are joining.
+**A note on the sector:** online gaming is regulated and reputationally mixed, and operators vary enormously in conduct and quality. Research a specific [employer](/blog/how-recruiters-spot-generic-resumes) rather than the industry, and be clear-eyed about which end of it you are joining.
 
 ## Language and accessibility
 
 **English and Maltese are both official**, and English is the working language of business, government and higher education.
 
-**Which makes Malta genuinely accessible.** For an English-speaking graduate wanting EU access, Malta sits alongside Ireland as one of only two fully open EU labour markets.
+**Which makes Malta genuinely accessible.** For an English-speaking [graduate](/blog/first-resume-for-gen-z-2026) wanting EU access, Malta sits alongside Ireland as one of only two fully open EU labour markets.
 
 **Italian is widely understood** given proximity and television.
 
@@ -71,7 +71,7 @@ A country this small should not host industries of this scale, and the reasons a
 
 The financial picture.
 
-**Salaries are moderate** by EU standards — above Southern European levels, below Northern European ones, with iGaming and financial services paying above the national average.
+**[Salaries](/blog/how-to-negotiate-salary-offer) are moderate** by EU standards — above Southern European levels, below Northern European ones, with iGaming and financial services paying above the national average.
 
 **Tax is progressive**, and Malta operates a remittance basis for individuals resident but not domiciled there, meaning foreign income not remitted to Malta is generally outside the Maltese net. For someone with foreign-source income this is significant.
 
@@ -79,13 +79,13 @@ The financial picture.
 
 **Social security contributions** apply on both sides at moderate rates.
 
-**Housing is the constraint.** Rents in Sliema, St Julian's and the surrounding areas rose substantially with the international influx, and this is now the main pressure on the Maltese proposition.
+**[Housing](/blog/remote-job-search-guide) is the constraint.** Rents in Sliema, St Julian's and the surrounding areas rose substantially with the international influx, and this is now the main pressure on the Maltese proposition.
 
 **Living outside the main corridor** — Gozo, the south, the inland towns — is considerably cheaper and the island is small enough to commute across.
 
 **Everyday costs are moderate**, with imported goods more expensive as on any island.
 
-**And healthcare is good**, publicly funded and free at the point of use for residents.
+**And [healthcare](/blog/first-job-abroad-practical-checklist) is good**, publicly funded and free at the point of use for residents.
 
 ## Working culture and daily life
 
@@ -93,7 +93,7 @@ Worth calibrating.
 
 **Workplaces are international.** In iGaming particularly, a team of fifteen may hold twelve nationalities, and English is the working language throughout.
 
-**Hierarchies are moderate** and the register is informal in the international sector.
+**[Hierarchies](/blog/hr-round-interview-questions-answers) are moderate** and the register is informal in the international sector.
 
 **Hours are standard** in most professional roles.
 
@@ -111,25 +111,25 @@ Worth calibrating.
 
 Malta's channels.
 
-**LinkedIn is dominant** for the international sector, iGaming and financial services.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) is dominant** for the international sector, iGaming and financial services.
 
 **Keepmeposted and Jobsplus** carry domestic listings, the latter being the public employment service.
 
-**Company career pages** for the gaming operators and financial services firms, which recruit continuously.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the gaming operators and financial services firms, which recruit continuously.
 
-**Specialist iGaming recruiters** are very active and worth engaging with directly — the sector uses agencies heavily.
+**Specialist iGaming [recruiters](/blog/how-recruiters-read-resumes)** are very active and worth engaging with directly — the sector uses agencies heavily.
 
-**SiGMA and the industry events** bring the gaming sector together and function as genuine networking venues.
+**SiGMA and the industry events** bring the gaming sector together and function as genuine [networking](/blog/networking-tips-for-job-search) venues.
 
 **Malta Gaming Authority's licensee register** is a useful list of who actually operates there, and it is public.
 
-**And referrals**, which on an island this size move applications materially.
+**And [referrals](/blog/networking-messages-for-referrals)**, which on an island this size move [applications](/blog/how-many-jobs-should-you-apply-to-per-day) materially.
 
 ## Building a career from Malta
 
 Where it leads.
 
-**iGaming experience is portable** within the industry — Malta, Gibraltar, the Isle of Man, Cyprus, Curaçao and increasingly regulated markets across Europe all use the same skills.
+**iGaming [experience](/blog/resume-matching-experienced-professionals) is portable** within the industry — Malta, Gibraltar, the Isle of Man, Cyprus, Curaçao and increasingly regulated markets across Europe all use the same [skills](/blog/resume-skills-match-job-description).
 
 **Compliance and AML experience transfers broadly** across European financial services, since the regulatory framework is EU-derived.
 

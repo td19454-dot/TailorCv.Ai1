@@ -27,7 +27,7 @@ Greece deserves a direct account because the story is genuinely mixed.
 
 **Recovery has been real.** Growth returned, unemployment fell substantially from its peak, and international investment has picked up meaningfully.
 
-**Salaries remain low.** Greek pay is among the lowest in the eurozone, and this is the central constraint for anyone considering it.
+**[Salaries](/blog/how-to-negotiate-salary-offer) remain low.** Greek pay is among the lowest in the eurozone, and this is the central constraint for anyone considering it.
 
 **And yet specific sectors are world-class.** Shipping in particular is an industry where Greece is genuinely dominant globally, not merely present.
 
@@ -35,19 +35,19 @@ Greece deserves a direct account because the story is genuinely mixed.
 
 ## Shipping, the industry that matters
 
-This is Greece's genuine world-leading sector and it is chronically under-known by graduates.
+This is Greece's genuine world-leading sector and it is chronically under-known by [graduates](/blog/first-resume-for-gen-z-2026).
 
 **Greek owners control an extraordinary share of world merchant tonnage** — in tankers, bulk carriers and increasingly containers. This is not a regional industry; it is a globally dominant one run from Athens.
 
 **Piraeus is the operational centre**, with shipowners, managers, brokers, insurers, classification societies, lawyers and technical services all concentrated there.
 
-**The roles are varied.** Chartering, operations, technical management, marine engineering, ship finance, insurance and claims, sale and purchase broking, and increasingly maritime technology and decarbonisation work.
+**The roles are varied.** Chartering, operations, technical management, marine engineering, ship [finance](/blog/resume-matching-insurance-jobs), insurance and claims, sale and purchase broking, and increasingly maritime technology and decarbonisation work.
 
 **It runs in English.** Shipping is an international industry with English as its working language, and Greek shipping offices operate accordingly.
 
 **It pays well by Greek standards** and, at senior levels, internationally.
 
-**And it hires internationally**, though the industry is relationship-driven and entry usually comes through a graduate scheme, a specialist qualification or a connection.
+**And it hires internationally**, though the industry is relationship-driven and entry usually comes through a [graduate scheme](/blog/global-rotational-graduate-programmes), a specialist qualification or a connection.
 
 **For a graduate with an interest in maritime, logistics, commodities or shipping finance, Athens is one of the most interesting places in the world** — and almost nobody outside the industry knows it.
 
@@ -64,7 +64,7 @@ This is Greece's genuine world-leading sector and it is chronically under-known 
 | **Logistics** | The Piraeus port's expansion made it a significant Mediterranean gateway |
 | **Pharmaceuticals** | Manufacturing and some research |
 
-**Thessaloniki** is the second city with its own university base, technology scene and logistics role.
+**Thessaloniki** is the second city with its own [university](/blog/how-to-list-education-on-resume) base, technology scene and logistics role.
 
 **The islands** are tourism-dominated with strong seasonality, though management roles are increasingly year-round.
 
@@ -74,13 +74,13 @@ The financial picture, stated plainly.
 
 **Salaries are among the lowest in the eurozone.** Greek minimum and median wages sit near the bottom of the currency union, and graduate pay reflects that.
 
-**Fourteen payments are standard** in many arrangements — twelve monthly plus holiday bonuses — so clarify what an annual figure includes.
+**Fourteen payments are standard** in many arrangements — twelve monthly plus holiday [bonuses](/blog/how-to-negotiate-a-job-offer-email) — so clarify what an annual figure includes.
 
-**Social contributions are substantial** on both sides, funding healthcare and pensions.
+**Social contributions are substantial** on both sides, funding [healthcare](/blog/first-job-abroad-practical-checklist) and pensions.
 
 **Costs are genuinely low** outside central Athens. Food, transport, eating out and daily life all cost noticeably less than in Northern Europe, which offsets a meaningful part of the salary gap.
 
-**Athens housing has risen**, driven partly by short-term rentals and international demand, and it is the main pressure point.
+**Athens [housing](/blog/remote-job-search-guide) has risen**, driven partly by short-term rentals and international demand, and it is the main pressure point.
 
 **Thessaloniki and the smaller cities are considerably cheaper.**
 
@@ -98,25 +98,25 @@ The administrative sequence.
 
 **Bank account**, which needs the AFM.
 
-**Residence registration** or the EU registration certificate depending on your nationality.
+**Residence registration** or the EU registration [certificate](/blog/campus-placement-document-checklist) depending on your nationality.
 
 **Tax registration**, mostly handled through payroll for employees.
 
-**And expect paperwork.** Greek administration has digitised considerably through the gov.gr platform, which has genuinely improved things, but it remains more document-heavy than Estonia or the Nordics.
+**And expect paperwork.** Greek administration has digitised considerably through the gov.gr platform, which has genuinely improved things, but it remains more document-heavy than Estonia or [the Nordics](/blog/nordic-graduate-job-markets-compared).
 
 ## Where roles are advertised
 
 Greece's channels.
 
-**Kariera.gr** is the dominant national job board.
+**Kariera.gr** is the dominant national [job board](/blog/best-job-search-websites-2026).
 
 **Skywalker.gr** carries substantial volume including public and NGO roles.
 
-**LinkedIn works** for the international sector, shipping and Athens generally.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) works** for the international sector, shipping and Athens generally.
 
-**Shipping-specific channels** matter enormously if that is your target — industry publications, the Greek shipping associations, and specialist recruiters who place across Piraeus.
+**Shipping-specific channels** matter enormously if that is your target — industry [publications](/blog/how-to-list-publications-on-resume), the Greek shipping associations, and [specialist recruiters](/blog/how-to-work-with-recruitment-agencies) who place across Piraeus.
 
-**Company career pages** for the large employers and international companies with Greek operations.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the large [employers](/blog/how-recruiters-spot-generic-resumes) and international companies with Greek operations.
 
 **University career services** if you studied in Greece.
 

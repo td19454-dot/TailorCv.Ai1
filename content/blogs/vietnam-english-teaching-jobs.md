@@ -29,13 +29,13 @@ Why demand is as large as it is.
 
 **Public schools** employ foreign teachers alongside Vietnamese staff, frequently through programmes or partner organisations.
 
-**Universities** hire for English and for English-medium subject teaching.
+**[Universities](/blog/how-to-list-education-on-resume)** hire for English and for English-medium subject teaching.
 
 **Corporate training** exists for companies upskilling staff.
 
 **And online teaching** to Vietnamese students is a further market, though it operates differently.
 
-**The employers vary enormously.** Large reputable chains with proper contracts sit alongside small centres with poor practices, and the difference in experience is substantial.
+**The [employers](/blog/how-recruiters-spot-generic-resumes) vary enormously.** Large reputable chains with proper contracts sit alongside small centres with poor practices, and the difference in [experience](/blog/resume-matching-experienced-professionals) is substantial.
 
 ## Requirements and what they actually mean
 
@@ -43,7 +43,7 @@ The practical bar.
 
 **A bachelor's degree in any subject** is generally required for the work permit, not just for the job. This is a legal requirement rather than an employer preference.
 
-**A TEFL, TESOL or CELTA certificate.** CELTA is the most respected and the most demanding; a 120-hour TEFL is the common minimum.
+**A TEFL, TESOL or CELTA [certificate](/blog/campus-placement-document-checklist).** CELTA is the most respected and the most demanding; a 120-hour TEFL is the common minimum.
 
 **Native or near-native English.** Passport nationality frequently matters to employers and to permit processing, which is a real feature of this market whether or not it is fair.
 
@@ -53,7 +53,7 @@ The practical bar.
 
 **Teaching experience helps** but is not usually essential for entry-level centre work.
 
-**And the same document legalisation chain** applies as for any Vietnamese work permit, which is the slowest part.
+**And the same document [legalisation](/blog/international-resume-tailoring-guide) chain** applies as for any Vietnamese work permit, which is the slowest part.
 
 ## What it pays and what it is like
 
@@ -61,7 +61,7 @@ An honest account.
 
 **Pay is quoted hourly or monthly** depending on the employer, and language centre work is frequently hourly with evening and weekend hours.
 
-**In absolute terms it is modest**; against Vietnamese living costs it supports a comfortable life with saving possible.
+**In absolute terms it is modest**; against Vietnamese [living costs](/blog/how-to-negotiate-salary-offer) it supports a comfortable life with saving possible.
 
 **Hours are unsocial** at language centres — evenings and weekends, when students are free.
 
@@ -69,7 +69,7 @@ An honest account.
 
 **Contracts vary in quality.** Reputable employers provide proper contracts, handle the permit properly and pay on time; poor ones do none of these.
 
-**Housing is your own responsibility** in most cases, though some employers assist.
+**[Housing](/blog/remote-job-search-guide) is your own responsibility** in most cases, though some employers assist.
 
 **And the work is genuinely demanding.** Teaching well is a skill, classes can be large, and the difference between someone who takes it seriously and someone treating it as a visa is visible to everyone including the students.
 
@@ -83,7 +83,7 @@ The practical comparison.
 
 **Public schools.** More conventional hours, generally lower pay, larger classes, and frequently arranged through a placement organisation or programme.
 
-**International schools.** The best-paid and most demanding, requiring a genuine teaching qualification such as a PGCE or equivalent plus experience — this is a professional teaching career rather than an entry route.
+**International schools.** The best-paid and most demanding, requiring a genuine teaching qualification such as a PGCE or equivalent plus experience — this is a professional teaching [career](/blog/career-change-to-tech-guide) rather than an entry route.
 
 **Universities.** Reasonable hours, moderate pay, and frequently requiring a master's degree.
 
@@ -121,7 +121,7 @@ Before you sign anything.
 
 **What happens to your permit if you resign**, since it is tied to the employer.
 
-**Whether there is a contract completion bonus** and its conditions.
+**Whether there is a contract completion [bonus](/blog/how-to-negotiate-a-job-offer-email)** and its conditions.
 
 **Holiday entitlement**, including whether the centre closes for Tet and whether that period is paid.
 
@@ -153,11 +153,11 @@ The practical channels.
 
 **Direct to school and centre websites**, which is the most reliable route and lets you research the employer.
 
-**Teaching-specific job boards** covering Vietnam and Southeast Asia.
+**Teaching-specific [job boards](/blog/best-job-search-websites-2026)** covering Vietnam and Southeast Asia.
 
 **Facebook groups** are unusually significant in this market — teacher communities in Ho Chi Minh City and Hanoi share vacancies and, importantly, warnings about poor employers.
 
-**Recruitment agencies** specialising in ESL placement, some good and some not.
+**[Recruitment agencies](/blog/how-to-work-with-recruitment-agencies)** specialising in ESL placement, some good and some not.
 
 **Placement programmes** for public school positions, which handle logistics in exchange for a lower salary.
 
@@ -173,7 +173,7 @@ What people actually do next.
 
 **Move into corporate training** or educational management, where teaching experience plus business capability is valued.
 
-**Transition into another sector**, which requires building the credentials separately — study, remote work in your field, or a transfer from a company at home.
+**Transition into another sector**, which requires building the [credentials](/blog/how-to-list-certifications-on-resume) separately — study, remote work in your field, or a transfer from a company at home.
 
 **Move to another country** and teach there, since a year of experience plus a qualification travels across the whole ESL market.
 

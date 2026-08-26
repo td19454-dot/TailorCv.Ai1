@@ -23,19 +23,19 @@ showcase: none
 
 The expected structure.
 
-**Datos personales** — name, city, phone, email and LinkedIn. Full street address is no longer expected.
+**Datos personales** — name, city, phone, email and [LinkedIn](/blog/linkedin-profile-optimization-guide). Full street address is no longer expected.
 
-**Objetivo or perfil profesional** — a short professional summary, which has replaced the bare objective statement at most modern employers.
+**Objetivo or perfil profesional** — a short [professional summary](/blog/how-to-write-resume-summary), which has replaced the bare [objective statement](/blog/resume-objective-vs-summary) at most modern employers.
 
-**Experiencia profesional** in reverse chronological order with company, role, dates and achievements.
+**Experiencia profesional** in [reverse chronological](/blog/chronological-vs-functional-resume) order with company, role, dates and achievements.
 
-**Formacion academica** — degree, institution and year, with the cedula profesional number where you hold one.
+**Formacion academica** — [degree](/blog/how-to-list-education-on-resume), institution and year, with the cedula profesional number where you hold one.
 
-**Idiomas** with explicit levels, read closely by Mexican employers.
+**Idiomas** with explicit levels, read closely by Mexican [employers](/blog/how-recruiters-spot-generic-resumes).
 
 **Certificaciones y cursos**, which carry genuine weight particularly in manufacturing and technology.
 
-**Habilidades** — technical and professional skills.
+**Habilidades** — technical and professional [skills](/blog/resume-skills-match-job-description).
 
 **And software or systems knowledge**, listed specifically, since Mexican employers frequently screen on named tools.
 
@@ -43,7 +43,7 @@ The expected structure.
 
 More complicated here than in most markets.
 
-**Photographs are still common** on Mexican CVs, more so at traditional employers, smaller companies and in some regions.
+**Photographs are still common** on Mexican [CVs](/blog/resume-optimization-guide), more so at traditional employers, smaller companies and in some regions.
 
 **International corporates and technology companies increasingly do not expect one**, and several explicitly discourage it on diversity grounds.
 
@@ -51,7 +51,7 @@ More complicated here than in most markets.
 
 **The practical approach** is to omit the photograph and personal details for international companies, technology employers and anywhere with a stated diversity policy, and to consider including a plain professional headshot for traditional and regional employers.
 
-**Never include** your CURP, RFC or identity document numbers on a CV. They are requested at the offer stage and putting them on an application document is an unnecessary exposure.
+**Never include** your CURP, RFC or identity [document](/blog/campus-placement-document-checklist) numbers on a CV. They are requested at the offer stage and putting them on an [application](/blog/how-many-jobs-should-you-apply-to-per-day) document is an unnecessary exposure.
 
 **And if in doubt, omit.** No employer has ever rejected a strong candidate for the absence of a photograph, and the direction of travel is clearly away from them.
 
@@ -59,15 +59,15 @@ More complicated here than in most markets.
 
 Where Mexican applications diverge most usefully from other markets.
 
-**English proficiency is a genuine and observable salary differentiator** in Mexico, more so than in most Latin American markets, driven by the number of employers reporting to North American parents.
+**English proficiency is a genuine and observable [salary](/blog/how-to-negotiate-salary-offer) differentiator** in Mexico, more so than in most Latin American markets, driven by the number of employers reporting to North American parents.
 
 **State your level precisely** — basico, intermedio, avanzado, bilingue — and honestly, because it will be tested.
 
-**Overstating it is the single most damaging error** in this market. An English interview round is standard at international employers, and being exposed there ends the process immediately and memorably.
+**Overstating it is the single most damaging error** in this market. An English [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) round is standard at international employers, and being exposed there ends the process immediately and memorably.
 
 **Prepare both versions.** A Spanish CV for domestic applications and an English one for international employers is the practical setup, and a [tailored version](/tailor-resume) for each significant application beats one generic document.
 
-**Certifications support the claim** — TOEFL, IELTS or an employer assessment — and are worth listing where you have them.
+**[Certifications](/blog/how-to-list-certifications-on-resume) support the claim** — TOEFL, IELTS or an employer assessment — and are worth listing where you have them.
 
 **And if your English genuinely is strong**, say so prominently, because it moves you into a smaller and better-paid candidate pool than your technical skills alone would.
 
@@ -75,7 +75,7 @@ Where Mexican applications diverge most usefully from other markets.
 
 The mechanics behind the document.
 
-**OCCMundial** carries the largest volume of Mexican applications and parses and ranks them.
+**OCCMundial** carries the largest volume of Mexican applications and [parses](/blog/ats-resume-parser-friendly-format) and ranks them.
 
 **Computrabajo and Indeed Mexico** operate similarly.
 

@@ -23,27 +23,27 @@ showcase: none
 
 The expected structure.
 
-**Dados pessoais** — name, city and state, phone, email, LinkedIn. Full address is no longer expected and city and state remain standard.
+**Dados pessoais** — name, city and state, phone, email, [LinkedIn](/blog/linkedin-profile-optimization-guide). Full address is no longer expected and city and state remain standard.
 
-**Objetivo or resumo profissional** — a short professional summary, which has largely replaced the older objective statement at the better employers.
+**Objetivo or resumo profissional** — a short [professional summary](/blog/how-to-write-resume-summary), which has largely replaced the older [objective statement](/blog/resume-objective-vs-summary) at the better employers.
 
-**Experiencia profissional** in reverse chronological order, with company, role, dates and achievements.
+**Experiencia profissional** in [reverse chronological](/blog/chronological-vs-functional-resume) order, with company, role, dates and achievements.
 
-**Formacao academica** — degree, institution, completion year.
+**Formacao academica** — [degree](/blog/how-to-list-education-on-resume), institution, completion year.
 
-**Idiomas** — languages with explicit levels, which Brazilian employers read closely.
+**Idiomas** — languages with explicit levels, which Brazilian [employers](/blog/how-recruiters-spot-generic-resumes) read closely.
 
-**Cursos e certificacoes** — courses and certifications, which carry genuine weight.
+**Cursos e certificacoes** — courses and [certifications](/blog/how-to-list-certifications-on-resume), which carry genuine weight.
 
-**Habilidades or competencias** — skills, technical and otherwise.
+**Habilidades or competencias** — [skills](/blog/resume-skills-match-job-description), technical and otherwise.
 
-**And sometimes voluntary work, publications or additional information**, depending on relevance.
+**And sometimes voluntary work, [publications](/blog/how-to-list-publications-on-resume) or additional information**, depending on relevance.
 
 ## The photograph question
 
 A genuine point of divergence from Anglo-American practice.
 
-**Photographs remain common** on Brazilian CVs, more so at traditional employers and less so at international and technology companies.
+**Photographs remain common** on Brazilian [CVs](/blog/resume-optimization-guide), more so at traditional employers and less so at international and technology companies.
 
 **Some personal details still appear** — marital status, date of birth, nationality — though this is declining and increasingly regarded as outdated at the better employers.
 
@@ -51,13 +51,13 @@ A genuine point of divergence from Anglo-American practice.
 
 **Practically**, the safe approach is to omit the photograph when applying to technology companies, multinationals and anywhere with a stated diversity policy, and to consider including it for traditional sectors and smaller regional employers.
 
-**Do not include marital status, date of birth or a national ID number** unless specifically requested. It adds nothing and it dates the document.
+**Do not include marital status, date of birth or a national ID number** unless specifically requested. It adds nothing and it dates the [document](/blog/campus-placement-document-checklist).
 
 **And if you do include a photograph**, make it a plain professional headshot rather than anything casual.
 
 ## Writing in Portuguese
 
-The part that decides most applications.
+The part that decides most [applications](/blog/how-many-jobs-should-you-apply-to-per-day).
 
 **Write in Portuguese** unless the posting is explicitly in English, in which case follow the posting.
 
@@ -69,7 +69,7 @@ The part that decides most applications.
 
 **Keep it clean and factual** rather than heavily promotional, since Brazilian professional writing is somewhat less superlative-heavy than American practice.
 
-**And state your language levels precisely** — basico, intermediario, avancado, fluente — because Brazilian employers read these carefully and overstating English is a common and costly error that gets tested at interview.
+**And state your [language levels](/blog/bilingual-language-skills-on-resume) precisely** — basico, intermediario, avancado, fluente — because Brazilian employers read these carefully and overstating English is a common and costly error that gets tested at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ## How Brazilian screening works
 

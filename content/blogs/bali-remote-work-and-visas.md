@@ -33,7 +33,7 @@ The reasons are specific and they explain both the appeal and the problems.
 
 **And a tolerant historical approach**, where large numbers of people worked on tourist visas for years without much enforcement.
 
-**The consequences are also real.** Canggu and Seminyak have changed enormously, housing costs for locals have risen, traffic has worsened, and the relationship between the remote-worker population and local communities is a genuine and much-discussed issue.
+**The consequences are also real.** Canggu and Seminyak have changed enormously, [housing](/blog/remote-job-search-guide) costs for locals have risen, traffic has worsened, and the relationship between the remote-worker population and local communities is a genuine and much-discussed issue.
 
 ## The legal position
 
@@ -73,7 +73,7 @@ The dimension that causes the most eventual trouble.
 
 ## Practical life in Bali
 
-The realities beyond the marketing.
+The realities beyond the [marketing](/blog/resume-matching-marketing).
 
 **Internet is generally good** in the main areas and coworking spaces are plentiful and inexpensive.
 
@@ -81,7 +81,7 @@ The realities beyond the marketing.
 
 **Housing ranges enormously**, from inexpensive local accommodation to villa rentals at Western prices, and costs have risen substantially.
 
-**Healthcare** has decent private clinics and international-standard facilities are limited, with serious cases frequently evacuated to Singapore — which makes evacuation cover genuinely important rather than optional.
+**[Healthcare](/blog/first-job-abroad-practical-checklist)** has decent private clinics and international-standard facilities are limited, with serious cases frequently evacuated to Singapore — which makes evacuation cover genuinely important rather than optional.
 
 **Scooters are the default transport** and accidents involving foreign visitors are common, so licence, helmet and insurance all matter.
 
@@ -155,7 +155,7 @@ If Bali does not fit.
 
 **Yogyakarta** is considerably cheaper with a large student population, a strong cultural scene and a small but growing remote-worker presence.
 
-**Bandung** has a cooler climate, universities and a creative scene, within reach of Jakarta.
+**Bandung** has a cooler climate, [universities](/blog/how-to-list-education-on-resume) and a creative scene, within reach of Jakarta.
 
 **Lombok** offers something closer to Bali twenty years ago, with less infrastructure and a much smaller community.
 

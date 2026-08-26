@@ -23,7 +23,7 @@ showcase: none
 
 Thailand had a long-standing gap between reality and law.
 
-**A very large number of remote workers were already living in Thailand** on tourist visas, education visas and visa runs — an arrangement that was widespread, unlawful and quietly tolerated to varying degrees.
+**A very large number of remote workers were already living in Thailand** on tourist visas, education visas and visa runs — an arrangement that was widespread, unlawful and quietly tolerated to varying [degrees](/blog/how-to-list-education-on-resume).
 
 **The LTR changed that** by creating a category that actually fits the situation, which is a genuine improvement over the previous position.
 
@@ -37,13 +37,13 @@ Thailand had a long-standing gap between reality and law.
 
 The route for established remote professionals.
 
-**Employment with a foreign company.** The employer must be established, with conditions relating to the company's revenue or public listing status — this is the condition that excludes people working for very small or new foreign companies.
+**Employment with a foreign company.** The [employer](/blog/how-recruiters-spot-generic-resumes) must be established, with conditions relating to the company's revenue or public listing status — this is the condition that excludes people working for very small or new foreign companies.
 
 **Personal income requirement**, assessed over preceding years.
 
-**Work experience requirement** in the relevant field.
+**Work [experience](/blog/resume-matching-experienced-professionals) requirement** in the relevant field.
 
-**Health insurance** at a specified level of cover, or evidence of sufficient funds.
+**[Health insurance](/blog/first-job-abroad-practical-checklist)** at a specified level of cover, or evidence of sufficient funds.
 
 **What you get:** a multi-year visa, a digital work permit route, relaxed 90-day reporting to annual, fast-track airport service, and the ability to include a spouse and dependent children.
 
@@ -75,7 +75,7 @@ The broader picture for people who do not meet LTR conditions.
 
 What the process involves.
 
-**LTR applications go through the Board of Investment**, which administers the scheme, with an online application and document submission.
+**LTR [applications](/blog/how-many-jobs-should-you-apply-to-per-day) go through the Board of Investment**, which administers the scheme, with an online application and [document](/blog/campus-placement-document-checklist) submission.
 
 **Documents typically include** passport, employment evidence, income evidence over the required period, qualification and experience documentation, and health insurance confirmation.
 
@@ -169,7 +169,7 @@ Matching person to route.
 
 **LTR Highly Skilled Professional.** Specialists in targeted industries working for Thai or foreign employers, with its own conditions.
 
-**LTR Wealthy Pensioner.** Retirees with sufficient pension income.
+**LTR Wealthy Pensioner.** Retirees with sufficient [pension](/blog/first-90-days-new-job) income.
 
 **DTV.** Remote workers and freelancers who cannot meet LTR employment conditions, and people coming for defined activities.
 
@@ -231,7 +231,7 @@ Regularise it. Enforcement has become more active, the consequences are real, an
 
 ## Common Mistakes
 
-- **Assuming tourist visas permit remote work.** They do not, and enforcement has tightened.
+- **Assuming tourist visas permit [remote work](/blog/remote-job-search-guide).** They do not, and enforcement has tightened.
 - **Not checking employer eligibility.** The LTR conditions on the company exclude small or new foreign employers.
 - **Misusing education visas.** A known workaround that carries real risk.
 - **Confusing DTV with LTR.** Different structures, different bars and different permitted activities.

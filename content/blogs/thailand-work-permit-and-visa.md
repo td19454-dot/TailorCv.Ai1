@@ -23,7 +23,7 @@ showcase: none
 
 How most foreign employment in Thailand is authorised.
 
-**Non-Immigrant B visa.** Obtained before entry, on the basis of employment documentation from your Thai employer. It permits entry for the purpose of work; it does not itself permit working.
+**Non-Immigrant B visa.** Obtained before entry, on the basis of employment documentation from your Thai [employer](/blog/how-recruiters-spot-generic-resumes). It permits entry for the purpose of work; it does not itself permit working.
 
 **Work permit.** Applied for after arrival, through the Ministry of Labour, on the basis of the employer's documentation. Only this authorises you to work.
 
@@ -69,17 +69,17 @@ The newer routes that changed the picture for some people.
 
 **Its advantages** include a multi-year stay, a digital work permit route, relaxed reporting and family inclusion.
 
-**The work-from-Thailand category** is the significant one for remote workers, requiring employment with an established foreign company and meeting income and experience conditions.
+**The work-from-Thailand category** is the significant one for remote workers, requiring employment with an established foreign company and meeting income and [experience](/blog/resume-matching-experienced-professionals) conditions.
 
 **Both have specific criteria** including income thresholds, and both are revised — verify current requirements with the Thai authorities rather than relying on summaries.
 
 ## Documents and process detail
 
-What the application actually needs.
+What the [application](/blog/how-many-jobs-should-you-apply-to-per-day) actually needs.
 
-**From you:** passport, degree certificates, professional qualifications, employment references, a medical certificate and passport photographs.
+**From you:** passport, degree [certificates](/blog/campus-placement-document-checklist), professional qualifications, employment [references](/blog/resume-references-guide), a medical certificate and passport photographs.
 
-**Document legalisation** where required — practice varies by nationality and document type, so confirm what your case needs.
+**Document [legalisation](/blog/international-resume-tailoring-guide)** where required — practice varies by nationality and document type, so confirm what your case needs.
 
 **From the employer:** company registration documents, financial statements, VAT registration, the employee list demonstrating the Thai staffing ratio, and a description of the position.
 
@@ -97,7 +97,7 @@ The arrangements that follow.
 
 **Dependants** can generally obtain Non-Immigrant O visas on the basis of your employment, with extensions aligned to yours.
 
-**A spouse's right to work is separate.** Accompanying status does not confer permission to work, and a spouse wanting employment needs their own permit through their own employer.
+**A [spouse](/blog/first-job-abroad-practical-checklist)'s right to work is separate.** Accompanying status does not confer permission to work, and a spouse wanting employment needs their own permit through their own employer.
 
 **International schooling** in Bangkok is extensive and expensive, and it is frequently the largest cost in a family relocation.
 
@@ -129,7 +129,7 @@ Six that recur.
 
 Where the routes lead.
 
-**Permanent residence exists** and is available after a qualifying period of consecutive annual extensions of stay, subject to a quota by nationality and to conditions including income, tax payment history and Thai language ability.
+**Permanent residence exists** and is available after a qualifying period of consecutive annual extensions of stay, subject to a quota by nationality and to conditions including income, tax payment history and Thai [language ability](/blog/bilingual-language-skills-on-resume).
 
 **The quota is genuinely limiting** — a fixed number per nationality per year — which makes Thai permanent residence considerably harder to obtain than in most countries covered in this series.
 
@@ -177,7 +177,7 @@ The financial side of the process.
 
 **And agent fees**, where the employer uses a visa agent — which many do, since the process is administratively fiddly.
 
-**Practice on who pays varies.** Many employers cover the whole process; some expect the employee to bear document costs. Clarify at offer stage, since it is a normal question and the amounts are not trivial.
+**Practice on who pays varies.** Many employers cover the whole process; some expect the employee to bear document costs. Clarify at [offer stage](/blog/how-to-negotiate-a-job-offer-email), since it is a normal question and the amounts are not trivial.
 
 **LTR fees are higher** but cover a multi-year period, which changes the annualised comparison considerably.
 
@@ -293,7 +293,7 @@ Yes. Long-term foreign residents must report their address at 90-day intervals, 
 Not by transfer. A new permit is required, which is a genuine constraint on job mobility in Thailand.
 ### What documents does a Thai work permit need?
 
-From you: passport, degrees, qualifications, references and a medical certificate. From the employer: company registration, financial statements, VAT registration and the Thai employee list proving the staffing ratio.
+From you: passport, [degrees](/blog/how-to-list-education-on-resume), qualifications, references and a medical certificate. From the employer: company registration, financial statements, VAT registration and the Thai employee list proving the staffing ratio.
 
 ### Can my spouse work in Thailand?
 

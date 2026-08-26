@@ -33,7 +33,7 @@ The centre of gravity for Indian technology, and the reasons are cumulative rath
 
 **Research.** IISc and the R&D arms of several multinationals.
 
-**The trade-offs are real.** Bengaluru's traffic is genuinely difficult, housing costs are the highest among Indian technology cities, and the infrastructure has not kept pace with growth.
+**The trade-offs are real.** Bengaluru's traffic is genuinely difficult, [housing](/blog/remote-job-search-guide) costs are the highest among Indian technology cities, and the infrastructure has not kept pace with growth.
 
 ## Hyderabad
 
@@ -49,7 +49,7 @@ The fastest-growing alternative and increasingly a first choice rather than a fa
 
 **Infrastructure is better.** Hyderabad's roads, metro and planned development compare favourably with Bengaluru, and this is a genuine daily-life difference rather than a marginal one.
 
-**Costs are lower**, particularly housing, which for the same salary produces a materially different standard of living.
+**Costs are lower**, particularly housing, which for the same [salary](/blog/how-to-negotiate-salary-offer) produces a materially different standard of living.
 
 ## Employer types and how they hire
 
@@ -61,21 +61,21 @@ The fastest-growing alternative and increasingly a first choice rather than a fa
 | **GCCs** | Own portals, campus and off-campus | Strong, above services |
 | **IT services** | Mass campus drives, aptitude tests | Standardised, modest |
 
-**The interview preparation differs.** Global product companies and Indian product companies both run algorithmic and system design interviews. GCCs vary — some mirror their parent's global process, others are closer to a conventional technical interview. Services companies test aptitude and basics.
+**The [interview preparation](/blog/mock-interview-for-sponsorship-roles) differs.** Global product companies and Indian product companies both run algorithmic and system design interviews. GCCs vary — some mirror their parent's global process, others are closer to a conventional [technical interview](/blog/coding-interview-preparation-guide). Services companies test aptitude and basics.
 
-**Referrals matter substantially** at product companies and startups, and less at services recruiters where the process is standardised.
+**[Referrals](/blog/networking-messages-for-referrals) matter substantially** at product companies and startups, and less at services [recruiters](/blog/how-recruiters-read-resumes) where the process is standardised.
 
 **Off-campus hiring is the norm** at all of these except the mass services recruiters, which is why these cities are accessible regardless of which college you attended.
 
 ## Compensation
 
-The financial picture across employer types.
+The financial picture across [employer](/blog/how-recruiters-spot-generic-resumes) types.
 
-**Global capability centres pay at the top of the domestic market**, frequently well above services firms for equivalent experience.
+**Global capability centres pay at the top of the domestic market**, frequently well above services firms for equivalent [experience](/blog/resume-matching-experienced-professionals).
 
-**Product companies and well-funded startups** compete directly with them, sometimes exceeding on total compensation where equity is involved.
+**Product companies and well-funded startups** compete directly with them, sometimes exceeding on total compensation where [equity](/blog/how-to-negotiate-a-job-offer-email) is involved.
 
-**Services firms pay less** at equivalent levels, which is the central reason the services-to-GCC move is such a common career step.
+**Services firms pay less** at equivalent levels, which is the central reason the services-to-GCC move is such a common [career](/blog/career-change-to-tech-guide) step.
 
 **Variable pay** is a meaningful component and the split between fixed and variable should be clarified explicitly rather than assumed from a headline figure.
 
@@ -93,7 +93,7 @@ Worth calibrating for anyone moving between employer types.
 
 **GCCs and product companies** run closer to international norms — flatter, more autonomous, more emphasis on ownership.
 
-**Services firms are more hierarchical** and more process-driven, which reflects the client-delivery model rather than any failure of ambition.
+**Services firms are more [hierarchical](/blog/hr-round-interview-questions-answers)** and more process-driven, which reflects the client-delivery model rather than any failure of ambition.
 
 **Startups vary enormously**, from genuinely well-run to chaotic, and due diligence on the founding team matters more than the sector.
 
@@ -101,7 +101,7 @@ Worth calibrating for anyone moving between employer types.
 
 **Hierarchy and seniority** carry more weight than in Western workplaces, though noticeably less so in product organisations.
 
-**Job-hopping is normal** and frequently the fastest route to a significant raise, which employers understand even when they dislike it.
+**[Job-hopping](/blog/resume-tailoring-job-hopping) is normal** and frequently the fastest route to a significant raise, which employers understand even when they dislike it.
 
 **And referrals dominate hiring**, so the network you build inside one company is a genuine asset when you leave it.
 
@@ -109,7 +109,7 @@ Worth calibrating for anyone moving between employer types.
 
 Practical mechanics for these two cities.
 
-**LinkedIn** is dominant and Indian technology recruiters are extremely active on it.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide)** is dominant and Indian technology recruiters are extremely active on it.
 
 **Naukri** carries the largest domestic volume by a wide margin.
 
@@ -121,7 +121,7 @@ Practical mechanics for these two cities.
 
 **Campus placement** for those still studying, which remains the single most structured entry route.
 
-**Run your CV through an [ATS check](/ats-analysis)** since Naukri and every large employer screen at volume.
+**Run your [CV](/blog/resume-optimization-guide) through an [ATS check](/ats-analysis)** since Naukri and every large employer screen at volume.
 
 **And publish deployed work** on a [portfolio site](/portfolio), which differentiates far more than another line of description in a market with this much competition.
 

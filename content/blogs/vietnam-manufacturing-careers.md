@@ -70,13 +70,13 @@ Where expatriate hiring concentrates.
 
 **And technical training**, transferring capability into local teams — which is frequently an explicit part of a foreign hire's remit.
 
-**The common thread:** foreign hires are brought in for experience that the fast-growing local workforce has not yet had time to accumulate, and transferring that capability is usually part of the job.
+**The common thread:** foreign hires are brought in for [experience](/blog/resume-matching-experienced-professionals) that the fast-growing local workforce has not yet had time to accumulate, and transferring that capability is usually part of the job.
 
 ## Compensation and conditions
 
 What manufacturing roles actually offer.
 
-**Expatriate packages at international manufacturers** are the attractive category — frequently including housing, schooling, flights and sometimes a hardship or location allowance for remote postings.
+**Expatriate packages at international manufacturers** are the attractive category — frequently including [housing](/blog/remote-job-search-guide), schooling, flights and sometimes a hardship or location allowance for remote postings.
 
 **Local-contract roles pay local rates**, which for a foreigner is generally only workable if you have other reasons to be there.
 
@@ -88,15 +88,15 @@ What manufacturing roles actually offer.
 
 **Accommodation is frequently provided** or allowanced for site-based roles.
 
-**And the savings potential is genuine** for someone on an expatriate package against Vietnamese living costs.
+**And the savings potential is genuine** for someone on an expatriate package against Vietnamese [living costs](/blog/how-to-negotiate-salary-offer).
 
 ## Making the application work
 
 Practical mechanics for this sector.
 
-**Name the standards.** ISO certifications, IATF for automotive, GMP for food and pharmaceutical, and any customer-specific systems you have operated under.
+**Name the standards.** ISO [certifications](/blog/how-to-list-certifications-on-resume), IATF for automotive, GMP for food and pharmaceutical, and any customer-specific systems you have operated under.
 
-**Quantify by the industry's units** — output volumes, defect rates, headcount managed, line count, cost reductions achieved.
+**[Quantify](/blog/how-to-quantify-resume-achievements) by the industry's units** — output volumes, defect rates, headcount managed, line count, cost reductions achieved.
 
 **Name the methodologies** — lean, six sigma, TPM, 5S — and be ready to discuss what you actually implemented rather than what you attended training on.
 
@@ -104,7 +104,7 @@ Practical mechanics for this sector.
 
 **State your permit position** and your willingness to be based at a plant location.
 
-**Apply directly** to the foreign-invested manufacturers, and use recruiters who specialise in industrial search in the region.
+**Apply directly** to the foreign-invested manufacturers, and use [recruiters](/blog/how-recruiters-read-resumes) who specialise in industrial search in the region.
 
 **And be realistic about the environment.** These are working factories in industrial zones, frequently hot, frequently far from the city, and the job is on the floor rather than in an office. People who go in clear-eyed do well.
 
@@ -136,7 +136,7 @@ The practical realities.
 
 **Commutes can be long** or you live close to the plant, and neither option is a city-centre lifestyle.
 
-**Some employers provide transport and accommodation** for site-based staff.
+**Some [employers](/blog/how-recruiters-spot-generic-resumes) provide transport and accommodation** for site-based staff.
 
 **Facilities vary.** Larger industrial parks have decent amenities; smaller sites do not.
 
@@ -154,9 +154,9 @@ Realistic entry routes.
 
 **Join a company with Vietnamese operations from your home country**, then move internally after establishing yourself.
 
-**Specialist recruiters.** Industrial and manufacturing search firms operating across Southeast Asia place a substantial number of these roles.
+**[Specialist recruiters](/blog/how-to-work-with-recruitment-agencies).** Industrial and manufacturing search firms operating across Southeast Asia place a substantial number of these roles.
 
-**Direct applications** to the large foreign-invested manufacturers, whose careers pages carry vacancies.
+**Direct [applications](/blog/how-many-jobs-should-you-apply-to-per-day)** to the large foreign-invested manufacturers, whose careers pages carry vacancies.
 
 **Industry networks and trade bodies**, including the bilateral chambers which are active in the manufacturing sector.
 
@@ -206,7 +206,7 @@ International customers impose serious quality and social compliance requirement
 
 ### Scenario 3: You are early in your career
 
-Manufacturing is harder to enter as a foreigner at junior level, since local graduates fill those roles. A graduate scheme at a multinational with Vietnamese operations, entered from your home country, is a more realistic route.
+Manufacturing is harder to enter as a foreigner at junior level, since local [graduates](/blog/first-resume-for-gen-z-2026) fill those roles. A [graduate scheme](/blog/global-rotational-graduate-programmes) at a multinational with Vietnamese operations, entered from your home country, is a more realistic route.
 
 > **Tip:** Highlight any experience transferring capability to local teams — training, systems implementation, building a function from scratch. Vietnamese manufacturers frequently hire foreign managers explicitly to do that, and it is a stronger argument than technical competence alone.
 
@@ -219,7 +219,7 @@ Manufacturing is harder to enter as a foreigner at junior level, since local gra
 - Highlight capability-transfer experience
 - Research the relevant industrial zones
 - Accept locations outside city centres
-- Start document legalisation early
+- Start [document](/blog/campus-placement-document-checklist) [legalisation](/blog/international-resume-tailoring-guide) early
 
 ### Don't
 

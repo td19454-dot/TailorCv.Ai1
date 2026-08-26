@@ -25,7 +25,7 @@ A country of around a million people with an economy that behaves like a much la
 
 **Ship management.** Limassol is one of the world's leading third-party ship management centres, hosting companies that technically and commercially operate vessels for owners worldwide. This is a genuine global specialism.
 
-**Financial and professional services.** Accounting, audit, corporate services, fund administration and legal work — Cyprus built a services economy around its tax treaty network and EU membership, and the professional services firms are substantial employers.
+**Financial and professional services.** Accounting, audit, corporate services, fund administration and legal work — Cyprus built a services economy around its tax treaty network and EU membership, and the professional services firms are substantial [employers](/blog/how-recruiters-spot-generic-resumes).
 
 **Forex and trading.** A very large concentration of retail foreign exchange and CFD brokers is headquartered in Cyprus under CySEC regulation, employing thousands across compliance, technology, sales and support.
 
@@ -35,7 +35,7 @@ A country of around a million people with an economy that behaves like a much la
 
 **Shipping-adjacent services** — insurance, chartering, crewing and maritime law.
 
-**And a deliberate policy.** Cyprus actively courts international companies with a headquartering regime offering favourable corporate tax, work permit facilitation for third-country staff, and support for relocation. This is not incidental; it is strategy, and it has worked.
+**And a deliberate policy.** Cyprus actively courts international companies with a headquartering regime offering favourable corporate tax, work permit facilitation for third-country staff, and support for [relocation](/blog/first-job-abroad-practical-checklist). This is not incidental; it is strategy, and it has worked.
 
 ## The cities
 
@@ -58,13 +58,13 @@ A country of around a million people with an economy that behaves like a much la
 
 **Russian is genuinely useful** given the substantial Russian-speaking community and the historical business links, particularly in Limassol.
 
-**Which makes Cyprus one of the more accessible EU markets** for an English-speaking graduate — comparable to Ireland and Malta in that respect, and less discussed than either.
+**Which makes Cyprus one of the more accessible EU markets** for an English-speaking [graduate](/blog/first-resume-for-gen-z-2026) — comparable to Ireland and Malta in that respect, and less discussed than either.
 
 ## Money and cost of living
 
 The financial picture, which is one of Cyprus's genuine advantages.
 
-**Salaries are moderate by EU standards** — above Greece and Portugal, below Western Europe.
+**[Salaries](/blog/how-to-negotiate-salary-offer) are moderate by EU standards** — above Greece and Portugal, below Western Europe.
 
 **Personal tax is favourable for many.** Cyprus operates exemptions for individuals taking up first employment in Cyprus who were not previously resident, with the exemption level and duration set in legislation. For a professional relocating, this can be substantial.
 
@@ -74,7 +74,7 @@ The financial picture, which is one of Cyprus's genuine advantages.
 
 **Costs are low** relative to Western Europe. Limassol has become more expensive as the international sector grew, and Nicosia, Larnaca and Paphos remain cheaper.
 
-**Housing in Limassol has risen substantially**, driven by the influx of relocated companies and their staff, and it is now the main cost pressure on the island.
+**[Housing](/blog/remote-job-search-guide) in Limassol has risen substantially**, driven by the influx of relocated companies and their staff, and it is now the main cost pressure on the island.
 
 **Healthcare** operates through GESY, the national health system, funded by contributions.
 
@@ -88,7 +88,7 @@ Warm, relationship-led and more international than the island's size suggests.
 
 **Relationships matter**, as across the eastern Mediterranean, and personal recommendation carries weight.
 
-**Hierarchies are moderate** and less rigid than in Greece.
+**[Hierarchies](/blog/hr-round-interview-questions-answers) are moderate** and less rigid than in Greece.
 
 **Hours are standard** in international companies and can be longer in domestic and family businesses.
 
@@ -102,19 +102,19 @@ Warm, relationship-led and more international than the island's size suggests.
 
 **Ergodotisi and CareerFinder** carry domestic listings.
 
-**LinkedIn works well** for the international sector, shipping and forex.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide) works well** for the international sector, shipping and forex.
 
-**Company career pages** for the ship managers, the brokers and the technology companies.
+**Company [career](/blog/career-change-to-tech-guide) pages** for the ship managers, the brokers and the technology companies.
 
-**Specialist maritime recruiters** for the shipping cluster.
+**Specialist maritime [recruiters](/blog/how-recruiters-read-resumes)** for the shipping cluster.
 
-**And referrals**, given the size of the island and the weight personal recommendation carries.
+**And [referrals](/blog/networking-messages-for-referrals)**, given the size of the island and the weight personal recommendation carries.
 
 ## The permit position
 
 What applies depending on your nationality.
 
-**EU, EEA and Swiss citizens** have free movement. Register, obtain a registration certificate, and work.
+**EU, EEA and Swiss citizens** have free movement. Register, obtain a registration [certificate](/blog/campus-placement-document-checklist), and work.
 
 **Third-country nationals** need a work permit, generally applied for by the employer, with the position subject to conditions.
 
@@ -140,7 +140,7 @@ The administrative sequence.
 
 **GESY registration** for the national health system.
 
-**Bank account**, which requires your documents and can take longer than expected given compliance requirements in Cypriot banking.
+**Bank account**, which requires your documents and can take longer than expected given compliance requirements in Cypriot [banking](/blog/resume-matching-insurance-jobs).
 
 **Housing.** Limassol is the expensive point and has become genuinely competitive as international companies relocated staff there. Consider the surrounding villages and Larnaca as alternatives.
 
@@ -174,9 +174,9 @@ The channels that carry the Cypriot market.
 
 **Big Four graduate portals** for accounting and audit intakes.
 
-**Cyprus Shipping Chamber** and the industry associations for maritime networking.
+**Cyprus Shipping Chamber** and the industry associations for maritime [networking](/blog/networking-tips-for-job-search).
 
-**And referrals**, which on an island this size carry disproportionate weight — professional networks overlap heavily and an introduction moves an application materially.
+**And referrals**, which on an island this size carry disproportionate weight — professional networks overlap heavily and an introduction moves an [application](/blog/how-many-jobs-should-you-apply-to-per-day) materially.
 
 ## Mini checklist
 

@@ -25,15 +25,15 @@ The conditions that produced it.
 
 **A very large domestic market** means a Brazilian company can reach real scale without leaving the country, which is not true for most of Latin America.
 
-**Underserved consumers** across banking, credit, insurance, healthcare and logistics created obvious opportunities.
+**Underserved consumers** across [banking](/blog/resume-matching-insurance-jobs), credit, insurance, [healthcare](/blog/first-job-abroad-practical-checklist) and logistics created obvious opportunities.
 
-**A large and capable engineering talent pool**, supported by strong technical universities.
+**A large and capable engineering talent pool**, supported by strong technical [universities](/blog/how-to-list-education-on-resume).
 
 **Regulatory openness**, particularly from the central bank, which pushed Pix and open finance faster than many comparable regulators.
 
 **Capital arrived** — international venture funds, SoftBank's Latin America activity and a maturing local investor base.
 
-**And successful exits demonstrated it was possible**, which changed what ambitious Brazilian engineers considered a reasonable career choice.
+**And successful exits demonstrated it was possible**, which changed what ambitious Brazilian engineers considered a reasonable [career](/blog/career-change-to-tech-guide) choice.
 
 **The result** is an ecosystem with genuine depth rather than a handful of companies, and one that now exports talent and capital across the region.
 
@@ -63,15 +63,15 @@ An honest account.
 
 **The better-funded companies pay well by Brazilian standards** and run professionally, with genuine engineering practice.
 
-**Earlier-stage companies pay less** and offer equity that may or may not become worth something, exactly as everywhere.
+**Earlier-stage companies pay less** and offer [equity](/blog/how-to-negotiate-a-job-offer-email) that may or may not become worth something, exactly as everywhere.
 
 **Equity terms deserve real scrutiny.** The Brazilian market for startup equity is less standardised than the American one, vesting and exercise terms vary, and tax treatment is its own question worth advice on.
 
 **CLT or PJ** is a live question at startups particularly, and the difference in real value is substantial.
 
-**Working culture is generally informal**, English is used more than in the wider market, and hours can be long at the earlier stages.
+**[Working culture](/blog/first-90-days-new-job) is generally informal**, English is used more than in the wider market, and hours can be long at the earlier stages.
 
-**Career value is real.** Time at a strong Brazilian fintech is well regarded both domestically and internationally, and the alumni networks are genuinely useful.
+**Career value is real.** Time at a strong Brazilian fintech is well regarded both domestically and internationally, and the [alumni networks](/blog/international-student-networking-guide) are genuinely useful.
 
 **And the risk is real too**, since funding conditions have tightened and the era of easy capital that built much of this ecosystem has passed.
 
@@ -89,7 +89,7 @@ Worth its own section because it explains much of what makes this market distinc
 
 **Engineering-wise it created genuine problems** — very high transaction volumes, real-time settlement, fraud detection at speed and regulatory reporting.
 
-**And it made Brazil a reference case internationally**, with other central banks studying the model directly.
+**And it made Brazil a [reference](/blog/resume-references-guide) case internationally**, with other central banks studying the model directly.
 
 **For an engineer**, this is the concrete reason Brazilian fintech offers work that is genuinely hard rather than incrementally different from fintech anywhere else.
 
@@ -115,7 +115,7 @@ Real ecosystems worth knowing about.
 
 Where Brazil sits in Latin America.
 
-**Against Mexico.** Mexico has grown quickly, benefits from proximity to the United States and nearshoring, and has a smaller domestic consumer market with a fintech scene that is younger.
+**Against Mexico.** Mexico has grown quickly, [benefits](/blog/questions-to-ask-in-an-interview) from proximity to the United States and nearshoring, and has a smaller domestic consumer market with a fintech scene that is younger.
 
 **Against Colombia.** Bogota and Medellin have real ecosystems, Rappi being the standout, and the scale is smaller.
 
@@ -135,15 +135,15 @@ Practical routes into the ecosystem.
 
 **Programathor and Geekhunter** carry startup and technology roles specifically.
 
-**LinkedIn**, where Brazilian startup recruiters are active and responsive.
+**[LinkedIn](/blog/linkedin-profile-optimization-guide)**, where Brazilian startup [recruiters](/blog/how-recruiters-read-resumes) are active and responsive.
 
 **Meetups and events** genuinely matter here, and the community is welcoming to people who show up.
 
-**Referrals**, which carry disproportionate weight in a relationship-driven market.
+**[Referrals](/blog/networking-messages-for-referrals)**, which carry disproportionate weight in a relationship-driven market.
 
-**Open source and public work**, which the technical teams do look at — a [portfolio](/portfolio) with deployed projects is worth more than a description of them.
+**Open source and public work**, which the technical teams do look at — a [portfolio](/portfolio) with deployed [projects](/blog/projects-in-resume) is worth more than a description of them.
 
-**And an [ATS-checked CV](/ats-analysis)** in natural Portuguese, since the larger companies screen at volume and a poorly parsing document never reaches a person.
+**And an [ATS-checked CV](/ats-analysis)** in natural Portuguese, since the larger companies screen at volume and a poorly [parsing](/blog/ats-resume-parser-friendly-format) document never reaches a person.
 
 ## Interviewing at a Brazilian startup
 
