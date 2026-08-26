@@ -79,6 +79,62 @@ The extension handles the document; these habits handle the rest.
 
 **Track what you send.** The My Resumes page does this automatically, which turns out to matter when a recruiter calls about a role you applied to three weeks ago.
 
+## Reading an Indeed posting properly
+
+Thirty seconds of reading saves a wasted application, and high-volume boards reward the habit.
+
+**Check the company is named.** Anonymous postings on aggregator boards are disproportionately agencies fishing for CVs rather than live vacancies.
+
+**Check the posting date.** Response rates fall sharply with age, and something up for two months with the same wording is often not a real opening.
+
+**Check the seniority actually matches.** Titles are inconsistent across companies, and a "junior" role asking for five years is a role you will not get regardless of how well the resume is tailored.
+
+**Check where the application goes.** A link through to the employer's own Greenhouse, Lever, Workday or Ashby page is a good sign — it means a real applicant tracking system with a real requisition behind it.
+
+**Check the location and work model.** Remote, hybrid and on-site are used loosely on volume boards, and discovering the real answer at offer stage wastes everyone's time.
+
+**Skim for the vocabulary you match.** If you can see three or four terms you genuinely have experience with, the tailored version will have material to work with. If you can see none, the score will tell you the same thing in a second.
+
+## Making volume sustainable
+
+The extension handles the documents; the rest is habit.
+
+**Fixed blocks beat continuous applying.** Two focused two-hour blocks in a week produce more and cost less than applying in scattered ten-minute bursts whenever guilt strikes.
+
+**Separate finding from applying.** Sourcing jobs and applying to jobs use different attention, and switching between them constantly is what makes a search exhausting relative to the hours spent.
+
+**Do not tailor and then not read.** The one thing worth keeping manual is the thirty-second read before you send.
+
+**Keep a record.** The My Resumes page holds the documents; a short note on anything that progresses holds the rest.
+
+**And stop when the data says to stop.** If a source has produced thirty applications and no responses, that is information. Move the effort somewhere else rather than doubling down on it.
+
+## Indeed-specific things worth knowing
+
+A few quirks of the platform that affect how you use it.
+
+**Indeed Apply versus employer redirect.** Some listings collect the application on Indeed itself; others hand off to the employer's own system. The redirect route is generally the better signal — a real requisition in a real ATS — and the extension works on both.
+
+**Your Indeed profile is not your resume.** Indeed encourages you to build a profile and apply with it. A tailored PDF attached to the application is a stronger artefact than a generic profile, and where the form allows an upload, use it.
+
+**Sponsored listings sit at the top.** Position on the page reflects what an employer paid, not how good a match the job is. Read rather than working down the list.
+
+**Salary figures are frequently estimated.** Indeed displays estimated ranges where the employer gave none, and those estimates can be substantially wrong in either direction.
+
+**Alerts are worth setting up properly.** A well-specified saved search delivering daily is the difference between applying in the first day of a posting and the tenth.
+
+**Duplicates are common.** The same role appears through multiple agencies and directly from the employer. Apply through the employer where you can identify it.
+
+## Building the habit
+
+The extension only helps if opening it becomes automatic.
+
+**Tailor before you read the apply button.** Do it as part of reading the posting, not as a separate decision afterwards, and it stops being a choice you have to make each time.
+
+**Keep the toolbar icon pinned.** For the boards that are not covered automatically, the icon is the whole interface, and an unpinned extension is one you forget you have.
+
+**Do the first three of a session slowly.** Getting into rhythm matters more than the first three being fast, and rushing at the start of a block usually means a mistake you notice at application seven.
+
 ## Mini checklist
 
 - [ ] Extension installed and base resume set
@@ -172,3 +228,17 @@ Especially then. Automated screening is near-universal at scale, and generic doc
 ### Does it save my applications anywhere?
 
 Yes, each tailored resume is saved to your TailorCV account alongside the job it was generated for.
+### How do I spot a stale or fake Indeed listing?
+
+Look for an unnamed company, an old posting date with unchanged wording, and no link through to a real applicant tracking system. Those three together usually mean it is not a live vacancy.
+
+### How do I keep high-volume applying sustainable?
+
+Fixed blocks rather than continuous applying, sourcing separated from applying, a thirty-second read before every send, and a record so you can stop using sources that never respond.
+### Should I apply through Indeed or the employer's site?
+
+Where the listing redirects to the employer's own applicant tracking system, that is generally the better route and the stronger signal that the vacancy is real.
+
+### Are Indeed salary ranges accurate?
+
+Not always. Where an employer gave no figure, Indeed displays an estimate, and those estimates can be substantially wrong in either direction.
