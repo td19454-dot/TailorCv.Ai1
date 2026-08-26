@@ -69,6 +69,72 @@ The distinction is the whole point of the system.
 
 **Protect your energy.** The candidate still applying in month four with a working system beats the one who did eighty applications in two weeks and stopped.
 
+## Setting the system up once
+
+An hour of setup makes the weekly rhythm work. Skip it and every block starts with friction.
+
+**Base resume.** Upload your complete, unabridged resume at thetailorcv.com/extension. Everything generated comes from it, so it should contain everything you have done, described properly.
+
+**Template.** Pick one and leave it. Changing templates mid-search means your applications look inconsistent to anyone who sees two.
+
+**Apply profile.** Fill in the standard fields — contact details, work authorisation, notice period, links, education. This is the piece that makes tier-three applications take ninety seconds instead of eight minutes.
+
+**Saved searches.** Set up alerts on the boards you use so Monday's sourcing session has material waiting rather than starting from nothing.
+
+**A tracker file or the built-in record.** Decide which you are using before week one, not in week five when you already have a gap.
+
+**One test run.** Do one full application end to end before your first real block, so you find any friction on a job that does not matter.
+
+## Knowing when to change the plan
+
+A system is only useful if you check whether it is working.
+
+**Two weeks with no responses at all** — audit the resume. Run the skill match against four well-fitting jobs. A consistently low score means the document, not the volume.
+
+**Responses but no interviews** — the resume is passing screening and failing the human read. Look at whether your bullets show outcomes or duties.
+
+**Interviews but no offers** — the documents are working and the problem has moved. That is progress, and it needs interview preparation rather than more applications.
+
+**Interviews for jobs you do not want** — your targeting is off. Narrow the tiers rather than widening them.
+
+**Nothing changing after six weeks** — change one variable deliberately. A different sector, a different seniority level, a rewritten summary. Changing everything at once teaches you nothing about what worked.
+
+## Protecting your energy over months
+
+A search is usually longer than anyone plans for, and the thing that ends most of them is not failure but exhaustion.
+
+**Separate outcome from effort.** You control applications sent, quality maintained, and people contacted. You do not control responses. Track the first three and let the fourth be what it is.
+
+**Set a weekly target you can actually hit** on a bad week, not on your best week. A target you miss most weeks is a demoralisation machine.
+
+**Do the hard thing first in a block.** The tier-one application you are avoiding gets easier once it is done and impossible once it has been postponed for three weeks.
+
+**Have something in the week that is not the search.** People whose entire week is job hunting burn out faster and interview worse.
+
+**Notice avoidance.** Weeks of tier-three applications and no tier-one usually means the jobs you actually want feel intimidating. That is worth naming rather than scheduling around.
+
+**Talk to someone weekly.** A friend, a former colleague, anyone. Long searches are isolating and isolation makes everything harder than it is.
+
+**And remember the arithmetic.** Response rates in most graduate markets mean a lot of silence is normal rather than a verdict. Fifty applications with ten responses is a good month, and it still means forty silences.
+
+## A worked example week
+
+What the system actually looks like in practice.
+
+**Monday, 90 minutes.** Open saved searches and alerts. Save thirty roles without applying to any of them. Sort into tiers as you go — a quick judgement, not an agonised one.
+
+**Tuesday, two hours.** Work the tier-three pile. Open posting, glance at the skill match, tailor, skim the PDF, submit. Fifteen to twenty applications is a realistic block.
+
+**Wednesday, 90 minutes.** One or two tier-one applications. Read the company properly, generate the documents, rewrite the letter in your own voice, find someone relevant on LinkedIn and send a short note.
+
+**Thursday, two hours.** Tier two. Generate, read properly, light edit, submit. Ten to fifteen.
+
+**Friday, one hour.** Follow up on anything from last week. Update notes on whatever progressed. Look at the week's response pattern.
+
+**Saturday and Sunday.** Nothing. This is load-bearing.
+
+**Total: roughly eight hours, thirty-plus applications, two done to a standard you would defend.** That is a sustainable month, and a sustainable month beats a spectacular fortnight.
+
 ## Mini checklist
 
 - [ ] Extension installed and base resume set
@@ -163,3 +229,16 @@ Fixed blocks, clear tiers, a real day off, and a tracker so you are not carrying
 ### What if I am getting no responses at all?
 
 Audit before adding volume. Check the skill match on well-fitting jobs — a consistently low score means the resume, not the market, is the problem.
+### What setup does the system need?
+
+Base resume uploaded, template chosen, apply profile completed, saved searches configured, and one test application run end to end before your first real block.
+
+### What if two weeks produce no responses?
+
+Audit before adding volume. Run the skill match against four well-fitting jobs — a consistently low score means the resume is the problem, not the number of applications.
+### How do I avoid burning out over a long search?
+
+Track effort rather than outcomes, set a target you can hit on a bad week, do the hard application first, keep something in your week that is not the search, and talk to someone weekly.
+### What does a realistic week look like?
+
+Roughly eight hours: 90 minutes sourcing on Monday, two-hour application blocks Tuesday and Thursday, 90 minutes on tier-one work Wednesday, an hour of follow-ups Friday, and the weekend off.

@@ -65,6 +65,60 @@ Worth being precise, because the word is used loosely.
 
 **It outputs an ATS-safe PDF.** Single-column, standard headings, parseable text — not a design object that turns to nonsense in a parser.
 
+## What makes a good base resume
+
+Everything the extension produces comes from your base resume, so its quality sets the ceiling on everything downstream.
+
+**Include everything.** This is the one document that should not be cut down. Every role, every project, every certification, every tool you have genuinely used. The tailoring step decides what to foreground for a given job; it cannot foreground something you did not tell it about.
+
+**Name specific tools and systems.** "Built a data pipeline" is weaker than "built an ETL pipeline in Python with Airflow, loading into Postgres". Screening is literal and so is matching, and a named tool is the thing that gets matched.
+
+**Quantify where you honestly can.** Team size, volume, percentage change, timeframe. Numbers do not have to be impressive, only real.
+
+**Describe projects like work.** A university project with a real problem, a real constraint and a real outcome reads as experience. A project listed as a title reads as a module.
+
+**Keep the formatting simple.** Single column, standard headings, no text inside images. A designed base resume parses badly, and everything generated inherits from what was parsed.
+
+**Update it.** After every finished project, every new tool, every role change. A base resume six months stale quietly costs you on every application you make from it.
+
+## Reading the generated resume
+
+Thirty seconds, every time, and here is what to look at.
+
+**Does every claim hold?** The system is built not to fabricate, but you are the one who has to defend it in an interview. Read it as though someone will ask about each line, because they might.
+
+**Did anything important disappear?** The pipeline includes steps specifically to restore content the model drops, but on a very long resume it is still worth confirming that the role you most want emphasised is there.
+
+**Does the emphasis match the job?** The most relevant experience should be near the top and phrased in the posting's vocabulary.
+
+**Would you say it out loud?** If a line sounds unlike you, change it. On a job you want, the document should sound like the person who turns up to the interview.
+
+## Troubleshooting
+
+The handful of things that go wrong, and what each means.
+
+**The panel does not appear.** The content script runs on LinkedIn job pages specifically, not on the feed or a company page. Open an actual job posting. If it still does not appear, refresh — the script runs at document idle and a page that loaded oddly can miss it.
+
+**It says you are not signed in.** The extension authenticates against your TailorCV account the same way the website does. Open thetailorcv.com, sign in there, and the extension will pick it up.
+
+**It says no base resume is set.** Go to thetailorcv.com/extension and upload one. Nothing can be generated without it, since it is the source material for everything.
+
+**The description did not come through.** LinkedIn truncates long descriptions behind a "see more" control. Expand the full description before tailoring so the whole text is on the page to read.
+
+**You have hit your limit.** Free accounts include a limited number of tailored resumes; Pro removes the cap. The message will say which is the case.
+
+**The PDF looks wrong.** Check which template is selected at thetailorcv.com/extension. Templates differ in density, and a resume with a lot of content suits a different one from a short one.
+
+## Using it well over a whole search
+
+Three habits that separate people who get value from this from people who install it and forget.
+
+**Update the base resume monthly.** Everything generated inherits from it, so a stale base quietly degrades every application.
+
+**Re-read one generated resume properly each week.** Not all of them — one. It keeps you honest about what is going out under your name.
+
+**Check the My Resumes page before any call.** Knowing exactly which version a company received turns an awkward call into a prepared one, and it takes ten seconds.
+
 ## Mini checklist
 
 - [ ] Extension installed from the Chrome Web Store
@@ -157,3 +211,17 @@ No. It reads the job title, company and description text from the job page you h
 ### Is the output ATS-safe?
 
 Yes — the templates are single-column with standard headings and parseable text, which is what automated screening needs.
+### What should my base resume include?
+
+Everything — every role, project, tool and certification, described with named systems and real numbers. It is the one document that should never be cut down, because tailoring can only foreground what you supplied.
+
+### How often should I update the base resume?
+
+After every finished project, new tool or role change. A base six months stale quietly costs you on every application generated from it.
+### The panel is not appearing on LinkedIn — why?
+
+It runs on job posting pages, not the feed or company pages. Open an actual posting and refresh if needed, since the script runs at document idle.
+
+### Why does it say no base resume is set?
+
+Nothing can be generated without one. Upload your resume at thetailorcv.com/extension — it is the source material for every tailored version.

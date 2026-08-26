@@ -67,6 +67,68 @@ Early on it feels unnecessary, which is why people skip it, which is why it fail
 
 **Beyond three months.** Patterns become visible if you have the data — which sectors respond, which application sources are wasting your time, whether a change you made helped. Without data, three months of search teaches you almost nothing.
 
+## What good notes look like
+
+Five sentences at the time beats an hour of reconstruction later. Here is what is worth writing.
+
+**Why you applied.** One line. It is remarkably easy to forget what appealed about a role, and it is the first thing an interviewer asks.
+
+**What worried you.** Salary, location, a vague job description, a company you could not find much about. If they call, this is your question list already written.
+
+**Who you contacted.** Name, role, how you found them, what they said. This is the highest-value information in a search and it exists nowhere else.
+
+**What you sent.** The system holds the resume; note if you customised anything unusual.
+
+**The follow-up date.** A specific day, not "in a while".
+
+**Keep it in one file, not five.** A single running document ordered by date beats an elaborate structure you will not maintain.
+
+## Reviewing the data monthly
+
+The point of any record is what you learn from it.
+
+**Response rate by source.** If one board has produced forty applications and zero responses, stop using it. This is the single most common thing a search never notices.
+
+**Response rate by sector or role type.** Sometimes an adjacent role type responds far better, and the data shows it long before intuition does.
+
+**Response rate before and after changes.** If you rewrote your resume in week five, compare weeks one to four against six to nine. Without the record, you are guessing about whether your own improvements worked.
+
+**Time to response.** Knowing that your market typically replies within ten days tells you when to stop hoping about a specific application and move on, which is worth real emotional energy.
+
+**And notice what you are avoiding.** A month of applications with no tier-one entries usually means the jobs you actually want feel too intimidating to apply for — which is worth knowing, and is not a scheduling problem.
+
+## Tracking follow-ups properly
+
+The follow-up is where most tracked information actually earns its keep.
+
+**Set a date, not an intention.** "Follow up 12 March" is actionable; "follow up soon" is not, and soon never arrives.
+
+**One follow-up, then let it go.** A polite message a week to ten days after applying is normal in most markets. Repeated chasing damages more than it helps almost everywhere except the Gulf.
+
+**Follow up to a person where you can.** A message to a named recruiter or hiring manager on LinkedIn outperforms a reply into an application portal by a wide margin.
+
+**Keep the message short and specific.** Reference the role, the date you applied, and one sentence about why you are a fit. Three lines.
+
+**Record the response, including silence.** Knowing that a company never replies to follow-ups is useful information about that company.
+
+**Batch them.** All follow-ups on one day of the week rather than as they occur to you, which is both more efficient and less anxiety-producing.
+
+## When a spreadsheet still earns its place
+
+Automatic logging is not the answer to everything, and there are cases where a manual file is genuinely better.
+
+**Networking and referrals.** People you have spoken to, who introduced you, what was said and when to reconnect. None of this touches an application form, so nothing captures it automatically.
+
+**Speculative approaches.** Companies you wrote to without an advertised role. They have no posting to log against.
+
+**Interview pipelines.** Once a process starts, it has stages, dates, names and preparation notes. That belongs somewhere you control.
+
+**Salary information.** Ranges you were quoted, offers received, what you asked for. This is the most valuable data you will collect and it is worth keeping deliberately.
+
+**Your own reflections.** What went well in an interview, what you fumbled, what you would say differently. This is how interviewing actually improves, and it exists nowhere but in a note you wrote.
+
+**The working split:** the system holds applications and documents; a single simple file holds people, pipelines, numbers and reflections. Neither replaces the other, and trying to make one do both is why the elaborate spreadsheet always dies.
+
 ## Mini checklist
 
 - [ ] Extension installed and logged in
@@ -160,3 +222,16 @@ Around week six, when responses begin arriving for applications made a month ear
 ### How do I use the data?
 
 Review monthly. Which sources responded, which sectors ignored you, and whether response rates changed after you revised your resume.
+### What should I write in my notes?
+
+Why you applied, what worried you, who you contacted, anything unusual you sent, and a specific follow-up date. Five sentences at the time beats reconstruction later.
+
+### What should I review monthly?
+
+Response rate by source and by role type, whether rates changed after you revised your resume, and typical time to response so you know when to stop waiting.
+### When should I follow up on an application?
+
+A week to ten days afterwards, once, to a named person where possible. Keep it to three lines and batch all follow-ups on one day of the week.
+### What should stay in a manual file?
+
+People you have spoken to, speculative approaches, interview pipelines, salary information and your own reflections after interviews. None of that touches an application form.
