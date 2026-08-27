@@ -244,7 +244,7 @@ def test_devicon_slug():
 
 def test_themes_registry():
     ok = True
-    expected = {"editor", "nova", "codeflow", "panels", "wave", "bold", "terminal", "console", "monolith", "particle", "snowcard", "clean", "editorial", "vibrant", "github", "parchment", "assistant", "cloud"}
+    expected = {"editor", "nova", "codeflow", "panels", "wave", "bold", "terminal", "console", "monolith", "particle", "snowcard", "clean", "editorial", "vibrant", "github", "parchment", "assistant", "cloud", "neon", "brutalist", "hacker", "magazine"}
     ok &= check("themes registered", set(main.PORTFOLIO_THEMES) == expected)
     ok &= check("default theme valid", main.DEFAULT_PORTFOLIO_THEME in main.PORTFOLIO_THEMES)
     return ok
