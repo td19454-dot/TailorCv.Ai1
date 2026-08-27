@@ -8372,6 +8372,14 @@ PORTFOLIO_THEME_MEDIA = {
     "magazine": {"image": "/static/portfolio-previews/magazine.png", "demo": "https://thetailorcv.com/james-haunt"},
 }
 
+# "View demo" for every theme resolves to a real published sample portfolio on our
+# own domain (slug `demo-<theme>`, seeded by seed_demo_portfolios.py). This
+# replaces the per-person Netlify URLs that 404 once the Netlify account lapses.
+# Re-run seed_demo_portfolios.py after adding a theme so the target page exists.
+for _theme_slug, _theme_media in PORTFOLIO_THEME_MEDIA.items():
+    _theme_media["demo"] = f"{SITE_URL}/demo-{_theme_slug}"
+del _theme_slug, _theme_media
+
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
 # the encoded size so a row can't bloat the DB; the client downscales first.
 _PORTFOLIO_PHOTO_RE = re.compile(r"^data:image/(png|jpe?g|webp);base64,[A-Za-z0-9+/=\s]+$", re.IGNORECASE)
