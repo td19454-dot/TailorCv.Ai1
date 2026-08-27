@@ -8346,39 +8346,33 @@ DEFAULT_PORTFOLIO_THEME = "editor"
 
 # Optional per-theme marketing assets for the builder picker. Filled in over time;
 # a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
-# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is the Netlify URL.
+# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is a real
+# published portfolio on our own domain (https://thetailorcv.com/<slug>). The old
+# *.netlify.app demos below still need migrating — they 404 now.
 PORTFOLIO_THEME_MEDIA = {
-    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://karen-taylor-5.netlify.app/"},
-    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://william-davis-7ef8.netlify.app/"},
-    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://joseph-harris.netlify.app/"},
-    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://mary-smith-2.netlify.app/"},
-    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://trisha-debnath-8.netlify.app/"},
+    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://thetailorcv.com/trisha-debnath-18"},
+    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://thetailorcv.com/william-davis"},
+    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://thetailorcv.com/shubham-sarkar-5"},
+    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://thetailorcv.com/shubham-sarkar-8"},
+    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://thetailorcv.com/trisha-debnath-2"},
     "bold": {"image": "/static/portfolio-previews/bold.png", "demo": "https://shubham-sarkar-8.netlify.app/"},
     "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://nicholas-walker.netlify.app/"},
-    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://emma-martinez-ff85.netlify.app/"},
-    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://amelia-clark.netlify.app/"},
-    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://evelyn-harris.netlify.app/"},
-    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://ryan-lewis.netlify.app/"},
-    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://susan-garcia.netlify.app/"},
-    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
-    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
-    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
+    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://thetailorcv.com/shubham-sarkar-4"},
+    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://thetailorcv.com/trisha-debnath-3"},
+    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://thetailorcv.com/shubham-sarkar-9"},
+    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://thetailorcv.com/shubham-sarkar-7"},
+    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://thetailorcv.com/shubham-sarkar-3"},
+    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://thetailorcv.com/shubham-sarkar-10"},
+    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://thetailorcv.com/shubham-sarkar-2"},
+    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://thetailorcv.com/trisha-debnath-4"},
     "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://thetailorcv.com/karen-taylor"},
-    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
-    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://thetailorcv.com/shubham-sarkar-12"},
+    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://thetailorcv.com/trisha-debnath-7"},
     "neon": {"image": "/static/portfolio-previews/neon.png", "demo": "https://thetailorcv.com/olivia"},
     "brutalist": {"image": "/static/portfolio-previews/brutalist.png", "demo": "https://thetailorcv.com/emma-martinez"},
     "hacker": {"image": "/static/portfolio-previews/hacker.png", "demo": "https://thetailorcv.com/joseph-booth"},
     "magazine": {"image": "/static/portfolio-previews/magazine.png", "demo": "https://thetailorcv.com/james-haunt"},
 }
-
-# "View demo" for every theme resolves to a real published sample portfolio on our
-# own domain (slug `demo-<theme>`, seeded by seed_demo_portfolios.py). This
-# replaces the per-person Netlify URLs that 404 once the Netlify account lapses.
-# Re-run seed_demo_portfolios.py after adding a theme so the target page exists.
-for _theme_slug, _theme_media in PORTFOLIO_THEME_MEDIA.items():
-    _theme_media["demo"] = f"{SITE_URL}/demo-{_theme_slug}"
-del _theme_slug, _theme_media
 
 # Profile photos ride inside data_json as a base64 data URL (no S3 needed). Cap
 # the encoded size so a row can't bloat the DB; the client downscales first.
