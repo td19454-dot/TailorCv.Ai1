@@ -278,6 +278,25 @@
             function clearErr(){ errEl.hidden = true; errEl.textContent = ''; }
             function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
+            // Captured once, before any scan mutates it, so we can restore the
+            // idle "your score will show up here" state.
+            var outIdleHtml = outEl.innerHTML;
+
+            // Redirecting to /ats-analysis on success leaves this panel showing
+            // its "Scoring your resume…" spinner. On a normal navigation that's
+            // fine — the tab moves on — but pressing Back from /ats-analysis can
+            // restore this exact page from the browser's back-forward cache, and
+            // `pageshow` is the only event that fires for that restore (no
+            // DOMContentLoaded, no fresh network request), so it's what has to
+            // reset the spinner back to idle.
+            function resetATSGuestUI() {
+                goEl.disabled = false;
+                goEl.textContent = 'Get My Free ATS Score';
+                outEl.innerHTML = outIdleHtml;
+                clearErr();
+            }
+            window.addEventListener('pageshow', resetATSGuestUI);
+
             function setName(f){ nameEl.textContent = '✓ ' + f.name; nameEl.hidden = false; clearErr(); }
 
             fileEl.addEventListener('change', function(){
