@@ -1,13 +1,13 @@
 === CERT NAMES (from AI) ===
-  - Certificate in Python Programming
-  - Data Cleaning Course
-  - Data Visualization Course
+  - Web Development Certification
+  - JavaScript Course
+  - Cloud Fundamentals Certification
 
 === CERT SECTION LINKS (reading order) [0] ===
 
 === FINAL cert.url PER ENTRY ===
-  - Certificate in Python Programming  ->  
-  - Data Cleaning Course  ->  
-  - Data Visualization Course  ->  
+  - Web Development Certification  ->  
+  - JavaScript Course  ->  
+  - Cloud Fundamentals Certification  ->  
 
 === READING-ORDER FILL ASSIGNED [0] ===
