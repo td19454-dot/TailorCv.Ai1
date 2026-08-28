@@ -44,6 +44,10 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    weave_hard_skills_into_bullets,
+    weave_soft_skills_into_summary,
+    sanitize_resume_data,
+    factcheck_against_original,
     promptable_skill_gaps,
     weave_soft_skills_into_summary,
     compute_skill_match_score,
@@ -11069,6 +11073,17 @@ async def _optimize_resume_core(
     # skills array (Rule01b). Handled automatically rather than asked about:
     # unlike "do you know Tableau?", this is presentation, not a credential.
     parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills)
+
+    # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
+    # only decides which JD hard skills the resume is ALLOWED to claim (they land
+    # in `skills`); it does not check whether the rewrite actually mentioned them
+    # anywhere a recruiter or a context-aware ATS would read. Rule 1c asks the
+    # model to do that itself, but that's an instruction, not a guarantee - this
+    # is the deterministic backstop, scoped to skills already confirmed above so
+    # it can never introduce a claim the resume doesn't back up.
+    parsed = weave_hard_skills_into_bullets(
+        parsed, resume_string, jd_string, jd_skills=jd_hard_skills,
+    )
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
