@@ -44,6 +44,10 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
+    weave_hard_skills_into_bullets,
+    weave_soft_skills_into_summary,
+    sanitize_resume_data,
+    factcheck_against_original,
     promptable_skill_gaps,
     weave_soft_skills_into_summary,
     compute_skill_match_score,
@@ -8346,26 +8350,28 @@ DEFAULT_PORTFOLIO_THEME = "editor"
 
 # Optional per-theme marketing assets for the builder picker. Filled in over time;
 # a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
-# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is the Netlify URL.
+# Convention: image at static/portfolio-previews/<slug>.<ext>; demo is a real
+# published portfolio on our own domain (https://thetailorcv.com/<slug>). The old
+# *.netlify.app demos below still need migrating — they 404 now.
 PORTFOLIO_THEME_MEDIA = {
-    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://karen-taylor-5.netlify.app/"},
-    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://william-davis-7ef8.netlify.app/"},
-    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://joseph-harris.netlify.app/"},
-    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://mary-smith-2.netlify.app/"},
-    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://trisha-debnath-8.netlify.app/"},
-    "bold": {"image": "/static/portfolio-previews/bold.png", "demo": "https://shubham-sarkar-8.netlify.app/"},
-    "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://nicholas-walker.netlify.app/"},
-    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://emma-martinez-ff85.netlify.app/"},
-    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://amelia-clark.netlify.app/"},
-    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://evelyn-harris.netlify.app/"},
-    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://ryan-lewis.netlify.app/"},
-    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://susan-garcia.netlify.app/"},
-    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://jonathan-allen.netlify.app/"},
-    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://lisa-martinez.netlify.app/"},
-    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://karen-taylor.netlify.app/"},
+    "editor": {"image": "/static/portfolio-previews/editor.png", "demo": "https://thetailorcv.com/trisha-debnath-18"},
+    "nova": {"image": "/static/portfolio-previews/nova.png", "demo": "https://thetailorcv.com/william-davis"},
+    "codeflow": {"image": "/static/portfolio-previews/codeflow.png", "demo": "https://thetailorcv.com/shubham-sarkar-5"},
+    "panels": {"image": "/static/portfolio-previews/panels.png", "demo": "https://thetailorcv.com/shubham-sarkar-8"},
+    "wave": {"image": "/static/portfolio-previews/wave.png", "demo": "https://thetailorcv.com/trisha-debnath-2"},
+    "bold": {"image": "/static/portfolio-previews/bold.png", "demo": "https://thetailorcv.com/shubham-sarkar-23"},
+    "terminal": {"image": "/static/portfolio-previews/terminal.png", "demo": "https://thetailorcv.com/shubham-sarkar-22"},
+    "clean": {"image": "/static/portfolio-previews/clean.png", "demo": "https://thetailorcv.com/shubham-sarkar-4"},
+    "editorial": {"image": "/static/portfolio-previews/editorial.png", "demo": "https://thetailorcv.com/trisha-debnath-3"},
+    "vibrant": {"image": "/static/portfolio-previews/vibrant.png", "demo": "https://thetailorcv.com/shubham-sarkar-9"},
+    "console": {"image": "/static/portfolio-previews/console.png", "demo": "https://thetailorcv.com/shubham-sarkar-7"},
+    "monolith": {"image": "/static/portfolio-previews/monolith.png", "demo": "https://thetailorcv.com/shubham-sarkar-3"},
+    "particle": {"image": "/static/portfolio-previews/particle.png", "demo": "https://thetailorcv.com/shubham-sarkar-10"},
+    "snowcard": {"image": "/static/portfolio-previews/snowcard.png", "demo": "https://thetailorcv.com/shubham-sarkar-2"},
+    "github": {"image": "/static/portfolio-previews/github.png", "demo": "https://thetailorcv.com/trisha-debnath-4"},
     "parchment": {"image": "/static/portfolio-previews/parchment.png", "demo": "https://thetailorcv.com/karen-taylor"},
-    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://trisha-debnath.netlify.app/"},
-    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://uttam-debnath.netlify.app/"},
+    "assistant": {"image": "/static/portfolio-previews/assistant.png", "demo": "https://thetailorcv.com/shubham-sarkar-12"},
+    "cloud": {"image": "/static/portfolio-previews/cloud.png", "demo": "https://thetailorcv.com/trisha-debnath-7"},
     "neon": {"image": "/static/portfolio-previews/neon.png", "demo": "https://thetailorcv.com/olivia"},
     "brutalist": {"image": "/static/portfolio-previews/brutalist.png", "demo": "https://thetailorcv.com/emma-martinez"},
     "hacker": {"image": "/static/portfolio-previews/hacker.png", "demo": "https://thetailorcv.com/joseph-booth"},
@@ -11067,6 +11073,17 @@ async def _optimize_resume_core(
     # skills array (Rule01b). Handled automatically rather than asked about:
     # unlike "do you know Tableau?", this is presentation, not a credential.
     parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills)
+
+    # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
+    # only decides which JD hard skills the resume is ALLOWED to claim (they land
+    # in `skills`); it does not check whether the rewrite actually mentioned them
+    # anywhere a recruiter or a context-aware ATS would read. Rule 1c asks the
+    # model to do that itself, but that's an instruction, not a guarantee - this
+    # is the deterministic backstop, scoped to skills already confirmed above so
+    # it can never introduce a claim the resume doesn't back up.
+    parsed = weave_hard_skills_into_bullets(
+        parsed, resume_string, jd_string, jd_skills=jd_hard_skills,
+    )
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
