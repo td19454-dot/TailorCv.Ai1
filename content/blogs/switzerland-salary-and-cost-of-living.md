@@ -137,6 +137,34 @@ How the conversation runs.
 
 **Run your application through an [ATS check](/ats-analysis)** and use a [tailored CV](/tailor-resume) per role, since Swiss employers screen carefully and the application standard is high.
 
+## Four honest cautions
+
+Things the salary headline hides.
+
+**Housing is genuinely hard to find**, not merely expensive. Applications for a Zurich flat routinely attract dozens of candidates and landlords select on documentation and stability.
+
+**Leaving is expensive too.** Notice periods are long, deposits are large, and the administrative exit — deregistration, insurance, pension — takes real effort.
+
+**The social integration curve is slow.** Swiss social circles form early and hold, and many foreign professionals report friendship being harder here than the quality of life would suggest.
+
+**And the salary is anchored to staying.** Swiss pay does not travel — taking that number to Berlin or Lisbon means a large nominal cut, which quietly locks people in place longer than they planned.
+
+## A note on cross-border workers
+
+A large and often invisible part of the Swiss workforce.
+
+**Frontaliers** — cross-border commuters living in France, Germany, Italy or Austria and working in Switzerland — number in the hundreds of thousands.
+
+**The arithmetic is compelling** near Geneva, Basel and Ticino: a Swiss salary against French, German or Italian housing and grocery costs.
+
+**A G permit** governs this status and requires returning to your country of residence regularly.
+
+**Tax treatment varies by canton and country**, with different agreements applying, and it genuinely warrants professional advice rather than forum guesswork.
+
+**Health insurance choice** is more complex, with an option in some cases to remain in the home country's system.
+
+**And the commute is the cost** — border crossings at peak times are slow, and what looks like twenty kilometres can be an hour each way.
+
 ## Mini checklist
 
 - [ ] Net income modelled for your specific canton and commune
@@ -245,3 +273,6 @@ Zurich has the deepest market with high rents and salaries, Zug has very low tax
 ### What should I ask about in a Swiss offer?
 
 Whether the figure is twelve or thirteen months, the Pillar 2 pension contribution rates, bonus structure, relocation and language support, and the notice period.
+### What is a frontalier?
+
+A cross-border commuter living in France, Germany, Italy or Austria while working in Switzerland, on a G permit. The arithmetic is compelling near Geneva, Basel and Ticino, and the tax position warrants professional advice.
