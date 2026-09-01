@@ -62,7 +62,7 @@ The path it travels before anyone opens it.
 
 **It arrives in an inbox** where a recruiter sees the name alongside dozens of others before deciding what to open first.
 
-**It is stored in the applicant tracking system**, frequently under the name you gave it, and stays there for years.
+**It is stored in the [applicant tracking system](/blog/ats-resume-checker-how-it-works)**, frequently under the name you gave it, and stays there for years.
 
 **It is forwarded internally** to hiring managers and interviewers, who see the filename in the message before the attachment.
 
@@ -78,13 +78,13 @@ The path it travels before anyone opens it.
 
 Consistency across the documents you send.
 
-**The cover letter matches the resume**, differing only in the document type, so the pair is obviously connected.
+**The [cover letter](/blog/cover-letter-guide-2026) matches the resume**, differing only in the document type, so the pair is obviously connected.
 
-**Portfolio files follow the same pattern**, with your name first and a descriptive label after.
+**[Portfolio](/blog/how-to-build-professional-portfolio) files follow the same pattern**, with your name first and a descriptive label after.
 
 **Work samples name the piece** rather than describing the file, since a reader needs to know what they are opening.
 
-**References documents follow the convention** where one is requested separately.
+**[References](/blog/reference-check-process-guide) documents follow the convention** where one is requested separately.
 
 **Avoid dates in any of them** unless the employer asks, because a date makes a document look stale the moment it ages.
 
@@ -142,7 +142,7 @@ Use matching names differing only in the document type, so the pair is obviously
 - **Version numbers.** The most common and most visible error.
 - **Generic filenames.** They create work for the recipient.
 - **Download suffixes.** They signal inattention.
-- **Wrong format.** Ignoring instructions is an easy rejection.
+- **Wrong format.** Ignoring instructions is an easy [rejection](/blog/how-to-handle-job-rejection).
 - **Renaming after editing.** Too late to prevent the real error.
 - **Never checking before upload.** The last chance to catch it.
 
@@ -185,7 +185,7 @@ By role type rather than by number. A folder where each file names its target ro
 At the moment you duplicate it, before editing. This single habit prevents sending one employer a document named for another.
 ### Who actually sees my resume filename?
 
-The recruiter in their inbox, the applicant tracking system that stores it for years, hiring managers it is forwarded to, and the interviewer's downloads folder on the day of your interview.
+The recruiter in their inbox, the applicant tracking system that stores it for years, hiring managers it is forwarded to, and the interviewer's downloads folder on the day of your [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ### How should I name my cover letter and portfolio files?
 

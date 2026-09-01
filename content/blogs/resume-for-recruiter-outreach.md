@@ -52,7 +52,7 @@ The questions that save time.
 
 **Distinguish a real opening from list-building.** Agency recruiters frequently make contact to build a pipeline rather than to fill a live role, which is worth knowing before you invest time.
 
-**And ask why the role is open.** Growth, a promotion, a departure and a replacement are all different answers, and a straightforward one tells you a great deal.
+**And ask why the role is open.** Growth, a [promotion](/blog/resume-for-promotion-within-company), a departure and a replacement are all different answers, and a straightforward one tells you a great deal.
 
 ## Agency versus in-house
 
@@ -122,14 +122,14 @@ Say so and ask for discretion. Recruiters handle this constantly, and specifying
 - Reply even when declining
 - Ask about salary early
 - Establish whether the role is live
-- Tailor your resume after learning the details
+- [Tailor your resume](/blog/how-to-tailor-resume-for-every-job) after learning the details
 - Ask why the role is open
 - Keep the relationship for later
 
 ### Don't
 
 - Ignore messages entirely
-- Send a generic resume immediately
+- Send a [generic resume](/blog/same-resume-different-jobs-why-it-fails) immediately
 - Assume inbound contact means a strong fit
 - Give notice of your search to your employer
 - Accept vague answers about the role
@@ -164,7 +164,7 @@ Yes, briefly. Say no clearly and mention what would interest you. Recruiters kee
 
 ### Should I send my resume straight away?
 
-No. Ask about the role and the salary range first, then tailor your resume to what you learn. Sending a generic document immediately gives up your main advantage.
+No. Ask about the role and the [salary range](/blog/salary-expectation-answer-guide) first, then tailor your resume to what you learn. Sending a generic document immediately gives up your main advantage.
 
 ### Can I ask about salary first?
 

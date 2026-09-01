@@ -23,7 +23,7 @@ showcase: none
 
 What each part is actually telling you.
 
-**The title sets the band.** It maps to an internal salary range and seniority level, and it is the single most reliable indicator in the document.
+**The title sets the band.** It maps to an internal [salary range](/blog/salary-expectation-answer-guide) and seniority level, and it is the single most reliable indicator in the document.
 
 **The opening paragraph is usually marketing** and can be read quickly, though it occasionally names the actual problem the team is solving.
 
@@ -50,11 +50,11 @@ The distinction that changes who applies.
 | **Familiarity with** | Exposure is enough | Do not overclaim depth |
 | **Expert, deep, extensive** | Genuine depth expected | Be honest with yourself |
 
-**The verbs matter as much as the nouns.** Familiarity with a tool and expertise in it are different requirements, and matching the wrong one either undersells you or gets exposed at interview.
+**The verbs matter as much as the nouns.** Familiarity with a tool and expertise in it are different requirements, and matching the wrong one either undersells you or gets exposed at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
-**Years of experience are softer than they appear** in most private sector postings, and a strong candidate one or two years under a stated figure is routinely considered. In public sector and regulated hiring the same number is frequently a hard gate.
+**Years of experience are softer than they appear** in most private sector postings, and a strong candidate one or two years under a stated figure is routinely considered. In [public sector](/blog/resume-for-government-jobs) and regulated hiring the same number is frequently a hard gate.
 
-**And the required list is often aspirational.** Many postings describe an ideal candidate who does not exist, which is precisely why roles get reposted with reduced requirements.
+**And the required list is often aspirational.** Many postings describe an ideal candidate who does not exist, which is precisely why roles get [reposted](/blog/resume-for-reposted-job-listing) with reduced requirements.
 
 ## Extracting the vocabulary
 
@@ -133,7 +133,7 @@ Read what little describes the work very closely, then research the company to f
 
 - Treat preferred items as mandatory
 - Paraphrase their terminology into your own
-- Skim the requirements section
+- [Skim](/blog/how-recruiters-read-resume-6-seconds) the requirements section
 - Assume years of experience are absolute
 - Ignore contradictions between sections
 - Tailor before you have read it twice
@@ -175,7 +175,7 @@ In most private sector hiring, no. A strong candidate slightly under the stated 
 
 ### Should I use their exact words?
 
-Yes. Screening systems and busy human readers both match on specific terms, and paraphrasing into your own vocabulary loses the match even when the meaning is identical.
+Yes. [Screening systems](/blog/how-to-pass-ats-in-2026) and busy human readers both match on specific terms, and paraphrasing into your own vocabulary loses the match even when the meaning is identical.
 
 ### What if requirements and responsibilities disagree?
 

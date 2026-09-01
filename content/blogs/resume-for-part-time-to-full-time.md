@@ -47,7 +47,7 @@ Handling the transition explicitly.
 | **Second job alongside** | Now seeking a single full-time role |
 | **Only part-time was offered** | Sought full-time throughout |
 
-**State availability plainly in the cover letter or summary** — one line confirming you are seeking full-time work removes the ambiguity entirely.
+**State availability plainly in the [cover letter](/blog/cover-letter-guide-2026) or summary** — one line confirming you are seeking full-time work removes the ambiguity entirely.
 
 **You are not obliged to explain why** the work was part-time, particularly where the reason concerns health, caring or personal circumstances. Availability is the relevant fact.
 
@@ -65,7 +65,7 @@ The specific ways it gets discounted, and the corrections.
 
 **Achievements are described more modestly** by part-time workers themselves, which is the most common and most self-inflicted version of the problem.
 
-**Professional development is assumed to be absent**, so any training, certification or expanded responsibility is worth stating.
+**Professional development is assumed to be absent**, so any training, [certification](/blog/how-to-prove-skills-without-certificates) or expanded responsibility is worth stating.
 
 **And continuity is doubted.** Evidence that you held the role through changes — a restructure, a system migration, a leadership change — answers that directly.
 
@@ -79,7 +79,7 @@ What convinces a reader you will manage full-time work.
 
 **Mention concurrent commitments** where they were substantial — study, a second role, a significant project — because managing two things at once is the relevant evidence.
 
-**Be ready for the question** at interview, with a short factual answer and no elaboration.
+**Be ready for the question** at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry), with a short factual answer and no elaboration.
 
 **Do not over-justify.** A long explanation suggests you are uncertain about it yourself, which is the impression to avoid.
 
@@ -104,7 +104,7 @@ State that studies are complete and you are now available full-time. Working whi
 
 ### Scenario 2: You held two part-time roles simultaneously
 
-Present both with their real date ranges and note that they overlapped. Managing two roles at once demonstrates organisation, and hiding one creates an apparent gap.
+Present both with their real date ranges and note that they overlapped. Managing [two roles](/blog/resume-for-two-jobs-same-company) at once demonstrates organisation, and hiding one creates an apparent gap.
 
 ### Scenario 3: Only part-time hours were available in your field
 

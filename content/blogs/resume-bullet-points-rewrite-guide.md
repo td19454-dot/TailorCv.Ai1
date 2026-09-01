@@ -33,7 +33,7 @@ A structure that produces a usable bullet every time.
 
 **Answer all four in full sentences first.** The temptation is to compose the final bullet immediately, which produces the same tired phrasing you started with.
 
-**Then compress.** Most of the four answers collapse into one line, and the discarded material becomes your interview preparation, which is a second benefit of doing it this way.
+**Then compress.** Most of the four answers collapse into one line, and the discarded material becomes your [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation, which is a second benefit of doing it this way.
 
 ## Working through a role
 
@@ -52,7 +52,7 @@ The sequence for one job at a time.
 
 **Ranking is where most of the value appears.** People routinely bury their best achievement in position four, where it is not read.
 
-**And the discarded bullets are not wasted.** They go into your master resume, ready for a posting where they turn out to be the relevant ones.
+**And the discarded bullets are not wasted.** They go into your [master resume](/blog/how-long-should-resume-take-to-write), ready for a posting where they turn out to be the relevant ones.
 
 ## Length and rhythm
 

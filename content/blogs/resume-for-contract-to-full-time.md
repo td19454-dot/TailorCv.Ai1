@@ -49,7 +49,7 @@ What hiring managers are actually worried about.
 | **You are between contracts, not committed** | Directness about what changed |
 | **Your rate expectations are high** | Understanding of the total package difference |
 
-**Answer it before it is asked.** A single line in the cover letter stating why you want permanent work now removes the question far more effectively than a good answer at interview.
+**Answer it before it is asked.** A single line in the [cover letter](/blog/cover-letter-guide-2026) stating why you want permanent work now removes the question far more effectively than a good answer at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Have a real reason.** Stability, depth on one problem, building something over years, or wanting to develop a team are all credible, and a vague answer is not.
 
@@ -114,7 +114,7 @@ This is the best position available. Say so to your manager rather than waiting 
 
 ### Scenario 3: Your contracts have been short
 
-Compress the shortest into a summary line and lead with the longest. Emphasise the reasons where they were structural, such as project-length engagements or agency placements.
+Compress the shortest into a [summary line](/blog/resume-summary-vs-objective-2026) and lead with the longest. Emphasise the reasons where they were structural, such as project-length engagements or agency placements.
 
 > **Tip:** Say why you want permanent work in the first three lines of your cover letter. It is the only real objection to a contractor's application, and answering it unprompted removes it before the reader has finished forming it.
 

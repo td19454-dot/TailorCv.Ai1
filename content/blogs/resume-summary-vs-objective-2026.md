@@ -45,7 +45,7 @@ Three lines, doing three jobs.
 | **Second** | The most relevant experience or capability for this role |
 | **Third** | A concrete proof point or the specific value you bring |
 
-**Name the role you are applying for**, using the posting's title, so the match is immediate.
+**Name the role you are applying for**, using [the posting](/blog/how-to-read-a-job-description-properly)'s title, so the match is immediate.
 
 **Include your years or level** where it helps rather than where it dates you.
 
@@ -79,13 +79,13 @@ How the shape changes with circumstance.
 
 **Experienced and staying in field.** Lead with the level and the specialism, then the strongest capability, then a proof point. This is the simplest case and the most common.
 
-**Career changer.** Lead with the transferable capability described in the target field's language, then the bridging experience, then evidence that the transition is already underway.
+**[Career changer](/blog/career-change-to-tech-guide).** Lead with the transferable capability described in the target field's language, then the bridging experience, then evidence that the transition is already underway.
 
 **Recent graduate.** Lead with the field and the qualification, then the most relevant project or placement, then a concrete outcome from it.
 
 **Returning after a break.** Lead with the professional identity and level, then the relevant capability, then something current that demonstrates the skills are live.
 
-**Contractor moving to permanent.** Lead with the breadth of the contract work, then the specialism, then the reason permanent work suits the next stage.
+**[Contractor](/blog/resume-for-contract-to-full-time) moving to permanent.** Lead with the breadth of the contract work, then the specialism, then the reason permanent work suits the next stage.
 
 **Internal applicant.** Lead with your current role and tenure, then the capability the new role needs, then a result from within the organisation that the reader can verify easily.
 

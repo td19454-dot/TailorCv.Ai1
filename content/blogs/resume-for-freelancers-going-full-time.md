@@ -70,7 +70,7 @@ What actually changes in the numbers.
 
 **Consider the income stability**, which has real value that varies enormously depending on your circumstances.
 
-**And do this before you negotiate**, because a freelancer who quotes their day rate multiplied by working days appears not to understand the difference, which weakens the whole conversation.
+**And do this before you [negotiate](/blog/how-to-negotiate-salary-offer)**, because a freelancer who quotes their day rate multiplied by working days appears not to understand the difference, which weakens the whole conversation.
 
 ## Settling into employment
 
@@ -105,7 +105,7 @@ The adjustment people underestimate.
 
 ### Scenario 1: You freelanced for five years
 
-Present it as five years of business ownership, which it was. Lead with client outcomes and scale, and address the structure question directly in your cover letter.
+Present it as five years of business ownership, which it was. Lead with client outcomes and scale, and address the structure question directly in your [cover letter](/blog/cover-letter-guide-2026).
 
 ### Scenario 2: You freelanced between permanent roles
 
@@ -178,7 +178,7 @@ Specifically. Wanting depth on one problem, colleagues, or the chance to build s
 
 ### Will employers think I am overqualified or too independent?
 
-Some will wonder. Evidence of working to other people's briefs, deadlines and processes is what settles it, and most freelancers have plenty of that to point to.
+Some will wonder. Evidence of working to other people's briefs, [deadlines](/blog/how-to-handle-a-job-application-deadline) and processes is what settles it, and most freelancers have plenty of that to point to.
 
 ### Is freelance experience valued?
 

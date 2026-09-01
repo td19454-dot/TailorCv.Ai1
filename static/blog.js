@@ -679,6 +679,49 @@
     move("#blog-template-showcase", 0.72);
   };
 
+  /* "Read next": one strongly-matched article, offered late in the read while
+     the reader is still engaged, instead of only in the card grid below the
+     sign-off CTA. The server renders it into a <template> and omits it
+     entirely when no genuine match exists, so this is a no-op rather than a
+     weak recommendation.
+
+     Runs AFTER tcxRunPairs, not from init(): the Do's/Don'ts pairing rebuilds
+     .post-content on a later tick, and a card placed before that ran was
+     swallowed into a .dd-grid column. Placement therefore only ever targets a
+     DIRECT child H2 of .post-content - a heading already absorbed into a step
+     card, FAQ, or Do's/Don'ts grid is no longer a direct child, so it cannot
+     be picked. Short articles fall back to appending after the last block
+     rather than being skipped. */
+  const placeReadNext = window.tcxPlaceReadNext = () => {
+    const tpl = document.getElementById("read-next-tpl");
+    const content = document.querySelector(".post-content");
+    if (!tpl || !content) return;
+    if (content.querySelector(".read-next")) return;
+
+    // Never sit directly against another promo block, and never inside one.
+    const PROMO = ".article-cta-strip, .blog-ats, .blog-tpl, .end-cta, .blog-rate," +
+                  " .key-takeaways-box, .faq-box, .article-bottomline, .read-next";
+
+    const headings = Array.from(content.children).filter((el) => el.tagName === "H2");
+    const candidates = headings.filter(
+      (h) => !(h.previousElementSibling && h.previousElementSibling.matches(PROMO))
+    );
+
+    if (candidates.length >= 3) {
+      // Late in the read, but never the very first heading.
+      const idx = Math.max(1, Math.min(candidates.length - 1,
+                                       Math.floor(candidates.length * 0.75)));
+      candidates[idx].before(tpl.content.cloneNode(true));
+      return;
+    }
+
+    // Fallback for short articles: after the last top-level block that is not
+    // already a promo, so the card still appears instead of being dropped.
+    const blocks = Array.from(content.children).filter((el) => !el.matches(PROMO));
+    const last = blocks[blocks.length - 1];
+    if (last) last.after(tpl.content.cloneNode(true));
+  };
+
   /* Reveal the CTA cards when they scroll into view. The CSS holds them at
      opacity 0 only under prefers-reduced-motion: no-preference, so if motion
      is reduced (or IntersectionObserver is missing) they are already visible
@@ -1160,6 +1203,14 @@
    enhancers have finished restructuring .post-content - pairing headings
    while step cards and FAQ boxes are still being moved gave inconsistent
    results. */
+/* Pair Do's/Don'ts first, THEN place the Read-next card: the pairing
+   rebuilds .post-content, so placing the card earlier let it be absorbed
+   into a .dd-grid column. */
+const tcxAfterPairs = () => {
+  tcxRunPairs();
+  if (typeof window.tcxPlaceReadNext === "function") window.tcxPlaceReadNext();
+};
+
 const tcxRunPairs = () => {
   const content = document.querySelector(".post-content");
   if (!content) return;
@@ -1257,9 +1308,9 @@ const tcxRunPairs = () => {
 };
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxRunPairs, 0));
+  document.addEventListener("DOMContentLoaded", () => setTimeout(tcxAfterPairs, 0));
 } else {
-  setTimeout(tcxRunPairs, 0);
+  setTimeout(tcxAfterPairs, 0);
 }
 
 /* Copy-ready template blocks ("Full Template", "Template 2: ...", sample

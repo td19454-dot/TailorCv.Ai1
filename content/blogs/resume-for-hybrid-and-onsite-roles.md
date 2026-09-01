@@ -31,7 +31,7 @@ The practical reason it comes early.
 
 **Team coordination drives it.** A team that collaborates in person on specific days needs everyone present on those days.
 
-**And mismatches are expensive to discover late**, after several interview rounds, which is why the question comes early.
+**And mismatches are expensive to discover late**, after several [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) rounds, which is why the question comes early.
 
 **None of this is negotiable as often as candidates hope.** Some flexibility exists, but a role advertised as three days onsite usually means three days onsite.
 
@@ -118,7 +118,7 @@ Ask early, before investing in the process. Hybrid ranges from occasional attend
 
 Raise it once you have established mutual interest, framed as what you can offer. Raising it in the first message narrows your options before the employer has any reason to accommodate you.
 
-> **Tip:** State your location and working pattern in the contact block rather than leaving them to be inferred. Ambiguity here does not produce a clarifying question — it produces a rejection you never hear about.
+> **Tip:** State your location and working pattern in the contact block rather than leaving them to be inferred. Ambiguity here does not produce a clarifying question — it produces a [rejection](/blog/how-to-handle-job-rejection) you never hear about.
 
 ## Do's and Don'ts
 

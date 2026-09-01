@@ -25,13 +25,13 @@ The mechanics that differ from private hiring.
 
 **Applications are scored against published criteria**, frequently by a panel using a defined scale rather than by a single reader forming an impression.
 
-**Each criterion is assessed separately**, which means strength in one area does not compensate for silence in another.
+**Each criterion is assessed separately**, which means strength in one area does not compensate for [silence](/blog/why-your-resume-gets-no-responses) in another.
 
 **Assessors mark what is written**, not what is implied. Experience you did not explicitly connect to a criterion generally earns nothing.
 
 **Shortlisting is often mechanical**, with a threshold score determining who progresses, and a single unaddressed criterion can put you below it.
 
-**Formats are prescribed**, from application forms to word limits to required sections, and non-compliance is a standard rejection reason.
+**Formats are prescribed**, from application forms to word limits to required sections, and non-compliance is a standard [rejection](/blog/how-to-handle-job-rejection) reason.
 
 **Deadlines close absolutely** in most public processes, with systems shutting at the stated time.
 
@@ -62,7 +62,7 @@ The technique that determines your score.
 
 What follows a successful application.
 
-**Panel interviews are standard**, with several assessors scoring against the same published criteria used at application stage.
+**Panel [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) are standard**, with several assessors scoring against the same published criteria used at application stage.
 
 **Questions map to the criteria directly**, which means your application is effectively your interview preparation and should be reread beforehand.
 
@@ -72,9 +72,9 @@ What follows a successful application.
 
 **Timelines are long.** Public recruitment frequently takes months from closing date to offer, and this is normal rather than a sign of disinterest.
 
-**Pre-employment checks are thorough**, covering identity, right to work, references, and in many roles security vetting that can add months.
+**Pre-employment checks are thorough**, covering identity, right to work, [references](/blog/reference-check-process-guide), and in many roles security vetting that can add months.
 
-**And offers are usually at a fixed point** on a published pay scale, with far less negotiation than private sector hiring allows.
+**And offers are usually at a fixed point** on a published pay scale, with far less [negotiation](/blog/how-to-negotiate-salary-offer) than private sector hiring allows.
 
 ## Eligibility and vetting
 

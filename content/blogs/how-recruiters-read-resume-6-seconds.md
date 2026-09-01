@@ -73,7 +73,7 @@ What happens to a resume that survives the scan.
 
 **Specific detail earns credibility.** Named tools, real numbers and concrete scope all read as verifiable, while adjectives read as decoration.
 
-**And this is where a tailored resume separates from a merely attractive one**, because the second read is looking for fit with the actual work rather than for general competence.
+**And this is where a [tailored resume](/blog/how-to-tailor-resume-for-every-job) separates from a merely attractive one**, because the second read is looking for fit with the actual work rather than for general competence.
 
 ## Writing for both readers
 

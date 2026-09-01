@@ -23,7 +23,7 @@ showcase: none
 
 Where it actually breaks down.
 
-**The automated screen matches specific terms.** It looks for the skills, tools and titles named in the posting, and a resume written in your own general vocabulary can describe exactly the right experience without matching any of them.
+**The [automated screen](/blog/how-to-pass-ats-in-2026) matches specific terms.** It looks for the skills, tools and titles named in [the posting](/blog/how-to-read-a-job-description-properly), and a resume written in your own general vocabulary can describe exactly the right experience without matching any of them.
 
 **The human skim looks for relevance in seconds.** A reader with a stack of applications is scanning for evidence this person fits this role, and a general profile forces them to do that work themselves, which they will not do.
 
@@ -31,7 +31,7 @@ Where it actually breaks down.
 
 **The two failures compound.** Surviving the automated screen only delivers you to a human who finds nothing specific, which produces the same outcome one stage later.
 
-**And nothing tells you this happened.** Rejections are silent or templated, so the candidate concludes the market is difficult rather than that the document is not doing its job.
+**And nothing tells you this happened.** [Rejections](/blog/how-to-handle-job-rejection) are silent or templated, so the candidate concludes the market is difficult rather than that the document is not doing its job.
 
 ## What generic actually looks like
 
@@ -80,7 +80,7 @@ How to tell whether this is your problem.
 
 **Check whether your summary names any role.** If it could open an application to any employer in your field, it is doing nothing.
 
-**Look at where your interviews came from.** If they arrive only through referrals and never through applications, the document is failing the filters rather than your experience failing on merit.
+**Look at where your [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) came from.** If they arrive only through [referrals](/blog/resume-for-referral-vs-cold-application) and never through applications, the document is failing the filters rather than your experience failing on merit.
 
 **Ask someone in your field to guess the role** from your resume alone. If their guess is vague or wrong, the reader's will be too.
 

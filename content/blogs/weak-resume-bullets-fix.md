@@ -23,7 +23,7 @@ showcase: none
 
 The recognisable patterns.
 
-**It starts with responsible for**, which announces a job description rather than an achievement.
+**It starts with responsible for**, which announces a [job description](/blog/how-to-read-a-job-description-properly) rather than an achievement.
 
 **It describes the role, not your performance in it.** Anyone holding the title did this, so it distinguishes you from nobody.
 
@@ -71,7 +71,7 @@ The opening word does more than people expect.
 
 **Avoid the empty ones.** Utilised, leveraged and facilitated add syllables rather than meaning, and they signal a resume trying to sound senior.
 
-**Match the verb to the truth.** A support verb on work you genuinely led undersells you, and an ownership verb on work you contributed to fails at interview when the detail is probed.
+**Match the verb to the truth.** A support verb on work you genuinely led undersells you, and an ownership verb on work you contributed to fails at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) when the detail is probed.
 
 **And vary them across a role**, since five bullets all beginning with managed reads as a single undifferentiated blur.
 

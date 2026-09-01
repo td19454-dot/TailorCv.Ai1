@@ -58,7 +58,7 @@ What must match and what may differ.
 
 The situation in reverse, which is common and worth handling well.
 
-**Recruiters redirect candidates routinely**, and being told you are a better fit for a different opening is a good sign rather than a rejection.
+**Recruiters redirect candidates routinely**, and being told you are a better fit for a different opening is a good sign rather than a [rejection](/blog/how-to-handle-job-rejection).
 
 **Take the suggestion seriously** even if the role was not on your list, because the recruiter knows the internal picture and you do not.
 
@@ -78,7 +78,7 @@ Where the rules loosen slightly.
 
 **Different countries are usually separate processes** with separate recruiters and separate systems.
 
-**But the applicant tracking system is frequently shared**, so assume your history is visible even across divisions.
+**But the [applicant tracking system](/blog/ats-resume-checker-how-it-works) is frequently shared**, so assume your history is visible even across divisions.
 
 **Internal referral policies vary**, and some companies restrict how many roles one candidate may hold open at a time.
 
@@ -111,7 +111,7 @@ Choose one. Applying to both signals that you want the company rather than the w
 
 Apply, and mention the earlier application briefly. This is normal, and referencing it openly is better than leaving the recruiter to notice the pattern.
 
-> **Tip:** If you genuinely fit two roles, say so in the cover letter of the one you prefer rather than sending two silent applications. Recruiters frequently redirect candidates internally, and telling them directly is faster than letting them work it out.
+> **Tip:** If you genuinely fit two roles, say so in the [cover letter](/blog/cover-letter-guide-2026) of the one you prefer rather than sending two silent applications. Recruiters frequently redirect candidates internally, and telling them directly is faster than letting them work it out.
 
 ## Do's and Don'ts
 
