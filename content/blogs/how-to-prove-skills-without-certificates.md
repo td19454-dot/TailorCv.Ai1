@@ -27,11 +27,11 @@ Ordered roughly by persuasive weight.
 
 **Applied experience.** Having used the skill in a real role with real consequences, described concretely with scope and outcome.
 
-**A portfolio or public repository**, which lets a reader assess quality directly rather than taking your word.
+**A [portfolio](/blog/how-to-build-professional-portfolio) or public repository**, which lets a reader assess quality directly rather than taking your word.
 
 **A detailed project description**, where the work itself is confidential and cannot be shown.
 
-**A reference who can speak to it**, which carries real weight at the later stages.
+**A [reference](/blog/reference-check-process-guide) who can speak to it**, which carries real weight at the later stages.
 
 **A certificate**, which confirms you completed a course and little else.
 
@@ -144,7 +144,7 @@ There is no substitute here. Obtain it, or apply to roles that do not require it
 - **Certificate as the only support.** It proves attendance.
 - **Unlinked portfolios.** Evidence nobody can reach.
 - **Overclaiming level.** It fails in the technical conversation.
-- **Silence on confidential work.** A case study is still possible.
+- **[Silence](/blog/why-your-resume-gets-no-responses) on confidential work.** A case study is still possible.
 - **Ignoring real credential requirements.** Some are absolute.
 
 ## Related Guides

@@ -50,7 +50,7 @@ Absences that carry the most information.
 | **Required versus preferred split** | No clear internal agreement on the bar |
 | **Named tools or systems** | Genuine uncertainty about the work |
 
-**An absent salary band is the most informative omission.** In markets where publishing it is normal or required, leaving it out is a deliberate choice.
+**An absent [salary band](/blog/salary-expectation-answer-guide) is the most informative omission.** In markets where publishing it is normal or required, leaving it out is a deliberate choice.
 
 **An undefined reporting line** is worth asking about directly, because a role without a clear manager frequently means the position was created without the structure to support it.
 
@@ -62,11 +62,11 @@ Why the same phrase means opposite things at different employers.
 
 **Company size is the largest variable.** Wearing many hats at a ten person company is an accurate description of early-stage work; the same phrase at a large corporation usually means a team lost headcount.
 
-**Sector norms differ substantially.** Agencies, consultancies and newsrooms genuinely run on deadlines, and pace language there is descriptive rather than a warning.
+**Sector norms differ substantially.** Agencies, consultancies and newsrooms genuinely run on [deadlines](/blog/how-to-handle-a-job-application-deadline), and pace language there is descriptive rather than a warning.
 
 **Funding stage matters.** A company that raised recently and is building has different pressures from one that is extending its runway, and both may use identical language about ambition.
 
-**Public sector postings read differently by design.** They are formal, template-driven and light on personality, which is a house style rather than a signal about the workplace.
+**[Public sector](/blog/resume-for-government-jobs) postings read differently by design.** They are formal, template-driven and light on personality, which is a house style rather than a signal about the workplace.
 
 **Regional convention varies.** What counts as normal detail in a posting differs considerably between markets, and applying one country's expectations to another produces false alarms.
 
@@ -84,7 +84,7 @@ Where to verify what the document implies.
 
 **Former employees are approachable.** A polite message asking about their experience is answered more often than people expect, and the answer is unfiltered.
 
-**Ask the recruiter why the role is open.** Growth, a promotion, a departure and a replacement are all different answers, and a straightforward one is reassuring.
+**Ask the recruiter why the role is open.** Growth, a [promotion](/blog/resume-for-promotion-within-company), a departure and a replacement are all different answers, and a straightforward one is reassuring.
 
 **And ask what happened to the last person in the seat.** It is a fair question, it is rarely refused outright, and any discomfort in the answer is itself informative.
 
@@ -114,7 +114,7 @@ This is a pattern rather than a coincidence. Apply if you want, but ask about al
 
 Approach carefully. This combination usually means the team is trying to solve a resourcing problem by hiring one exceptional person, and the person hired inherits that problem.
 
-> **Tip:** Turn every red flag into a specific interview question rather than a reason not to apply. Asking who this role reports to and why it is open costs you nothing, and the quality of the answer is far better evidence than anything the posting contains.
+> **Tip:** Turn every [red flag](/blog/resume-red-flags-recruiters-notice) into a specific [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) question rather than a reason not to apply. Asking who this role reports to and why it is open costs you nothing, and the quality of the answer is far better evidence than anything the posting contains.
 
 ## Do's and Don'ts
 

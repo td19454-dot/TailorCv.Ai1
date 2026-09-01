@@ -31,7 +31,7 @@ Why it looks worse than it is.
 
 **It counts easy-apply clicks disproportionately**, because a one-click application costs the applicant nothing and therefore attracts volume rather than intent.
 
-**It does not shrink as people are rejected**, so a posting showing a large number may already have a shortlist formed.
+**It does not shrink as people are [rejected](/blog/how-to-handle-job-rejection)**, so a posting showing a large number may already have a shortlist formed.
 
 **And it says nothing about quality.** Two hundred applications containing four strong ones is a better opportunity for a fifth strong candidate than forty applications containing fifteen.
 
@@ -48,7 +48,7 @@ The sequence your application passes through.
 | **Manager review** | Perhaps ten | Genuine fit for the actual work |
 | **Interview** | A handful | Evidence and communication |
 
-**Most of the drop happens in the first two stages**, and both reward specificity over polish. A resume that visibly matches the posting survives them; a well-written general resume frequently does not.
+**Most of the drop happens in the first two stages**, and both reward specificity over polish. A resume that visibly matches [the posting](/blog/how-to-read-a-job-description-properly) survives them; a well-written general resume frequently does not.
 
 **The recruiter skim is brief by necessity.** With a large pile, the reader is looking for reasons to move on, which means your relevance must be visible in the top third of the first page.
 
@@ -62,7 +62,7 @@ What survives a six second skim in a large pile.
 
 **The summary must name the role and the core skill** in its first line rather than building toward it. Two lines of general ambition at the top of the page is space spent on nothing.
 
-**The skills section belongs high** when applying into volume, because it is the fastest possible confirmation that you match.
+**The [skills section](/blog/what-recruiters-actually-search-for) belongs high** when applying into volume, because it is the fastest possible confirmation that you match.
 
 **The most recent role's first bullet** should be the most relevant thing you have done, not the most recent thing you did.
 
@@ -82,7 +82,7 @@ Allocating limited time across many applications.
 
 **Referrals outrank everything.** A single referred application is worth many cold ones, which makes an hour spent finding a connection better spent than an hour spent applying.
 
-**Follow up selectively** on the roles you care most about rather than uniformly across everything.
+**[Follow up](/blog/how-to-follow-up-after-interview) selectively** on the roles you care most about rather than uniformly across everything.
 
 **Track what you sent** so that patterns become visible. If forty applications produce no responses, the problem is the resume rather than the volume.
 

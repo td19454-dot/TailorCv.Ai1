@@ -4251,3 +4251,109 @@ body.blog-list-page .tags-row::-webkit-scrollbar-thumb {
 body.blog-list-page .tags-row::-webkit-scrollbar-thumb:hover {
   background: rgba(175, 190, 235, .65);
 }
+
+/* ---- Read next + split related section -------------------------------
+   The related grid below the sign-off carries the posts that genuinely
+   match; the "More from the blog" list carries the ring/recency filler
+   that exists to keep every post linked. Separating them keeps the SEO
+   link graph intact without spending reader attention on cards that do
+   not match what they just finished. */
+
+/* In-article related-article card (resume.io pattern): cover image flush to
+   the left edge, label + title on a pale panel. Scoped to .post-content so it
+   inherits the LIGHT article palette rather than the dark card styling used
+   elsewhere on the page. Every post has an image, so the media half is
+   always populated - but it collapses safely if one ever 404s. */
+.blog-detail-page .post-content .read-next {
+  display: grid;
+  grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+  align-items: stretch;
+  margin: 38px 0;
+  border-radius: 10px;
+  background: #eef2fb;
+  overflow: hidden;
+}
+
+.blog-detail-page .post-content .read-next-media {
+  display: block;
+  min-height: 100%;
+  background: #dde5f5;
+}
+
+.blog-detail-page .post-content .read-next-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  object-fit: cover;
+}
+
+.blog-detail-page .post-content .read-next-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 26px 30px;
+}
+
+.blog-detail-page .post-content .read-next-label {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6b7a90;
+}
+
+.blog-detail-page .post-content .read-next-link {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1a73e8;
+  text-decoration: none;
+}
+
+.blog-detail-page .post-content .read-next-link:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .blog-detail-page .post-content .read-next { grid-template-columns: 1fr; }
+  .blog-detail-page .post-content .read-next-media img { min-height: 0; aspect-ratio: 16 / 9; }
+  .blog-detail-page .post-content .read-next-body { padding: 20px 22px; }
+  .blog-detail-page .post-content .read-next-link { font-size: 1.15rem; }
+}
+
+.blog-card-desc {
+  margin: 8px 0 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  /* Two lines: enough to earn the click, not enough to unbalance the grid. */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-more { padding-top: 6px; }
+.related-more h2 { font-size: 1.15rem; color: var(--muted); }
+
+.related-more-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 6px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-more-list a {
+  display: block;
+  padding: 5px 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.related-more-list a:hover { color: #eaf1ff; text-decoration: underline; }

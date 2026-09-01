@@ -10112,6 +10112,8 @@ async def blog_post_page(request: Request, slug: str):
     if post is None:
         raise HTTPException(status_code=404, detail="Blog post not found")
     related_posts = blog_service.related_posts(post, limit=6)
+    related_split = blog_service.related_split(post, relevant=3, limit=6)
+    read_next_post = blog_service.read_next(post)
     canonical_url = build_absolute_url(f"/blog/{post.slug}")
     og_image = post.image if str(post.image).startswith("http") else build_absolute_url(post.image or "/static/logo.png")
     author_profile = pick_author(post)
@@ -10122,6 +10124,9 @@ async def blog_post_page(request: Request, slug: str):
             "request": request,
             "post": post,
             "related_posts": related_posts,
+            "related_relevant": related_split["relevant"],
+            "related_more": related_split["more"],
+            "read_next_post": read_next_post,
             "canonical_url": canonical_url,
             "meta_title": f"{post.title} | TailorCV Blog",
             "meta_description": post.description,

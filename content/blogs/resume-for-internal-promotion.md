@@ -70,7 +70,7 @@ What changes when the reader knows you.
 
 **Keep the routine duties brief.** One line covering your core responsibilities is enough; the reader knows them already.
 
-**Reference things they can verify easily**, which is uniquely powerful internally because a reader can confirm your claims in a two-minute conversation.
+**[Reference](/blog/reference-check-process-guide) things they can verify easily**, which is uniquely powerful internally because a reader can confirm your claims in a two-minute conversation.
 
 **And update it properly rather than reusing an old version**, since a resume that stops two years ago suggests you have not thought about your own progression.
 
@@ -109,7 +109,7 @@ This is the strongest possible case. Document it specifically — what you took 
 
 ### Scenario 2: Your manager is not supportive
 
-Find out why before applying. Either there is a gap you can close or there is a relationship problem, and both are better addressed directly than discovered through a rejection.
+Find out why before applying. Either there is a gap you can close or there is a relationship problem, and both are better addressed directly than discovered through a [rejection](/blog/how-to-handle-job-rejection).
 
 ### Scenario 3: You are competing against an external candidate
 
@@ -133,7 +133,7 @@ Your advantage is context and relationships; theirs is fresh perspective. Compet
 - Rely on tenure as an argument
 - List your current duties
 - Submit a stale resume
-- Skip interview preparation
+- Skip [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) preparation
 - Assume the outcome is decided in your favour
 - React badly if you are passed over
 

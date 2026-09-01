@@ -64,9 +64,9 @@ A decision that depends entirely on what happened last time.
 
 **If you applied and heard nothing at all**, reapply freely. You were almost certainly filtered before a human read your application, which means there is no relationship to damage and no awkwardness to manage.
 
-**If you were rejected after a screening call**, wait for genuine change — either in the role or in your own experience — and address the gap directly when you reapply.
+**If you were [rejected](/blog/how-to-handle-job-rejection) after a screening call**, wait for genuine change — either in the role or in your own experience — and address the gap directly when you reapply.
 
-**If you were rejected after final interviews**, this is the delicate case. You were close, they know you, and reapplying is entirely reasonable if the role has changed or several months have passed. Reference the earlier process openly.
+**If you were rejected after final [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)**, this is the delicate case. You were close, they know you, and reapplying is entirely reasonable if the role has changed or several months have passed. [Reference](/blog/reference-check-process-guide) the earlier process openly.
 
 **If you withdrew**, explain briefly why you are back. Employers are generally receptive, but an unexplained return raises questions.
 
@@ -80,13 +80,13 @@ A decision that depends entirely on what happened last time.
 
 The other half of the comparison.
 
-**New skills or certifications** acquired since the first application, which directly address whatever the original gap was.
+**New skills or [certifications](/blog/how-to-prove-skills-without-certificates)** acquired since the first application, which directly address whatever the original gap was.
 
-**Additional experience** in the relevant area, even from a side project or a stretch assignment in your current role.
+**Additional experience** in the relevant area, even from a [side project](/blog/side-projects-on-resume-2026) or a stretch assignment in your current role.
 
 **A better resume**, because most people's applications improve substantially over months of practice and feedback.
 
-**A referral** you did not have before, which is frequently the single largest change you can make to your odds.
+**A [referral](/blog/resume-for-referral-vs-cold-application)** you did not have before, which is frequently the single largest change you can make to your odds.
 
 **Clearer positioning**, if you have narrowed what you are actually looking for and can now describe the fit more precisely.
 

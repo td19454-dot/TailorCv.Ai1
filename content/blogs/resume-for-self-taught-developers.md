@@ -27,13 +27,13 @@ What to assemble, in order of value.
 
 **Public code that is readable**, since reviewers assess how you write far more than what you chose to build.
 
-**Contributions to existing codebases**, which prove you can work within someone else's conventions — a skill personal projects never test.
+**Contributions to existing codebases**, which prove you can work within someone else's conventions — a skill [personal projects](/blog/side-projects-on-resume-2026) never test.
 
 **Written explanation of your decisions**, in a readme or a short write-up, because reasoning is what distinguishes an engineer from someone following tutorials.
 
 **Evidence of maintenance over time.** A project you have kept running for a year says more than three you abandoned.
 
-**Any professional or paid work**, however small, including freelance pieces and work for local organisations.
+**Any professional or paid work**, however small, including [freelance](/blog/resume-for-freelancers-going-full-time) pieces and work for local organisations.
 
 **And depth in one stack** rather than surface familiarity with many, since depth is checkable and breadth usually is not.
 
@@ -88,7 +88,7 @@ What self-taught developers most commonly miss.
 
 **Working to someone else's requirements** rather than your own, which is the single largest adjustment.
 
-**Estimation and scope negotiation**, which nothing but real delivery pressure teaches.
+**Estimation and scope [negotiation](/blog/how-to-negotiate-salary-offer)**, which nothing but real delivery pressure teaches.
 
 **And collaboration conventions** — branching, reviews, standards — that vary by team but whose existence you should understand.
 
@@ -166,7 +166,7 @@ You can also [check your resume's ATS score for free](/ats-analysis), [generate 
 
 ### Can I get a developer job without a degree?
 
-Yes, routinely. Many employers assess by portfolio and interview rather than by credential, and a strong public body of work substitutes effectively for formal education.
+Yes, routinely. Many employers assess by portfolio and [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) rather than by credential, and a strong public body of work substitutes effectively for formal education.
 
 ### What matters most on a self-taught resume?
 

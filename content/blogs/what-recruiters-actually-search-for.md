@@ -27,7 +27,7 @@ The fields that get queried most.
 
 **Tools and technologies by exact name**, including versions and abbreviations, because these are unambiguous and easy to filter on.
 
-**Certifications and qualifications**, particularly where a role requires them, since they are a clean binary filter.
+**[Certifications](/blog/how-to-prove-skills-without-certificates) and qualifications**, particularly where a role requires them, since they are a clean binary filter.
 
 **Location**, which is frequently the first constraint applied and can exclude you before anything else is considered.
 
@@ -64,15 +64,15 @@ The places your details are queried.
 
 **Professional networks** are the largest source, where recruiters run filtered searches daily and contact people who match.
 
-**Applicant tracking systems** hold every resume you have ever sent to a company, and recruiters search that internal database when a new role opens.
+**[Applicant tracking systems](/blog/ats-resume-checker-how-it-works)** hold every resume you have ever sent to a company, and recruiters search that internal database when a new role opens.
 
 **Job board databases** contain the resumes uploaded there, searchable by employers with access.
 
-**Referral networks** operate differently, running on people rather than queries, which is why a referral bypasses this entire mechanism.
+**[Referral](/blog/resume-for-referral-vs-cold-application) networks** operate differently, running on people rather than queries, which is why a referral bypasses this entire mechanism.
 
-**Specialist communities and portfolios** matter in particular fields, where public work is itself the search result.
+**Specialist communities and [portfolios](/blog/how-to-build-professional-portfolio)** matter in particular fields, where public work is itself the search result.
 
-**And previous applications are a real channel.** A resume rejected for one role frequently surfaces later for a different one, which is a reason to apply to companies you want even when the current opening is imperfect.
+**And previous applications are a real channel.** A resume [rejected](/blog/how-to-handle-job-rejection) for one role frequently surfaces later for a different one, which is a reason to apply to companies you want even when the current opening is imperfect.
 
 ## Optimising without distorting
 
@@ -80,7 +80,7 @@ Being findable while staying honest.
 
 **Add recognised equivalents, do not replace true titles.** Listing your actual title with a standard one beside it is accurate; claiming a title you never held is not.
 
-**Include only tools you can discuss.** Keyword stuffing survives the search and fails immediately at interview, which is a worse outcome than not being found.
+**Include only tools you can discuss.** [Keyword](/blog/how-to-match-resume-keywords-to-job-description) stuffing survives the search and fails immediately at interview, which is a worse outcome than not being found.
 
 **Put terms where they belong.** A skills section, the role descriptions and the summary are natural locations; a hidden block of white text is a manipulation that parsing detects and readers penalise.
 

@@ -67,7 +67,7 @@ Company size is not the same as company culture.
 
 **The posting's own vocabulary is the best signal.** A description full of ownership and ambiguity wants one profile; one full of governance and stakeholders wants another.
 
-**The interview process reveals it too.** Structured competency frameworks indicate a process-driven organisation, while a founder conversation indicates the opposite.
+**The [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) process reveals it too.** Structured competency frameworks indicate a process-driven organisation, while a founder conversation indicates the opposite.
 
 **And the team you would join matters more than the company**, since a single team's culture can differ substantially from the organisation around it.
 

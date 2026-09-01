@@ -33,7 +33,7 @@ What actually determines the right length.
 
 **Academic and research formats are different entirely**, where a full publication and funding record is expected and length is not a consideration.
 
-**Public sector and regulated applications** frequently specify a format or a limit, and following it exactly matters more than any general principle.
+**[Public sector](/blog/resume-for-government-jobs) and regulated applications** frequently specify a format or a limit, and following it exactly matters more than any general principle.
 
 **But the rule underneath all of these** is that every line should earn its place, and a resume of the right length by accident is still wrong if half of it is filler.
 
@@ -56,7 +56,7 @@ The order in which space should be reclaimed.
 
 **The address block can shrink** to a city and region, which is all anyone needs and is better practice besides.
 
-**And referees available on request is dead space** in every case, since it is assumed and asked for when needed.
+**And [referees](/blog/reference-check-process-guide) available on request is dead space** in every case, since it is assumed and asked for when needed.
 
 ## What belongs on page one
 
@@ -64,7 +64,7 @@ If you use two pages, the split is not arbitrary.
 
 **Contact details and summary** open the document and are never split across a page break.
 
-**The skills section** belongs on page one, since it is the fastest confirmation of match and it is frequently the only section read closely on a first pass.
+**The [skills section](/blog/what-recruiters-actually-search-for)** belongs on page one, since it is the fastest confirmation of match and it is frequently the only section read closely on a first pass.
 
 **Your current and most recent role** must be complete on page one, because a role split across the break loses its strongest bullets to a page nobody turns to.
 
@@ -72,7 +72,7 @@ If you use two pages, the split is not arbitrary.
 
 **Education moves to page two** for anyone with several years of experience, unless the qualification is a hard requirement for the role.
 
-**Older roles, certifications and additional sections** live on page two, compressed.
+**Older roles, [certifications](/blog/how-to-prove-skills-without-certificates) and additional sections** live on page two, compressed.
 
 **And nothing decisive belongs on page two at all**, since the first pass frequently does not reach it.
 
@@ -82,7 +82,7 @@ Where the general rule does not apply.
 
 **Academic and research applications** use a full curriculum vitae with complete publication, funding and teaching records, and length is not a consideration at all.
 
-**Public sector recruitment** in many countries specifies a format, a page limit or a competency-based structure, and following it exactly is more important than any general advice.
+**Public sector recruitment** in many countries specifies a format, a page limit or a [competency-based](/blog/competency-based-interview-questions-guide) structure, and following it exactly is more important than any general advice.
 
 **Some European markets** expect additional detail that would be unusual elsewhere, though photographs and personal data are increasingly discouraged.
 

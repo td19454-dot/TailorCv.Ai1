@@ -79,7 +79,7 @@ The sections that carry real weight.
 
 **The headline is the most valuable line**, appearing in every search result and every message preview.
 
-**The experience section should describe the work**, not repeat resume bullets verbatim, and can include roles the resume cut.
+**The experience section should describe the work**, not repeat [resume bullets](/blog/resume-bullet-points-rewrite-guide) verbatim, and can include roles the resume cut.
 
 **Skills matter for search**, and the ordering is worth setting deliberately rather than leaving to defaults.
 
