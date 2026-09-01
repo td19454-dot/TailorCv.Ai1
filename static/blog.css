@@ -4337,23 +4337,49 @@ body.blog-list-page .tags-row::-webkit-scrollbar-thumb:hover {
 }
 
 .related-more { padding-top: 6px; }
-.related-more h2 { font-size: 1.15rem; color: var(--muted); }
+.related-more h2 { font-size: 1.15rem; color: var(--muted); margin-bottom: 14px; }
 
+/* Coverage tail: same posts as the ring/recency filler, shown as compact
+   thumbnail rows. Smaller than the "Keep reading" cards on purpose - it is a
+   browse list, not a recommendation - but it still carries an image so the
+   section does not read as broken next to the cards above it. */
 .related-more-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 6px 22px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px 26px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.related-more-list a {
-  display: block;
-  padding: 5px 0;
-  font-size: 0.92rem;
-  color: var(--muted);
+.related-more-item {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
   text-decoration: none;
 }
 
-.related-more-list a:hover { color: #eaf1ff; text-decoration: underline; }
+.related-more-thumb {
+  width: 84px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #0d141f;
+}
+
+.related-more-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+
+.related-more-title {
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.related-more-meta { font-size: 0.78rem; color: #6b7a90; }
+
+.related-more-item:hover .related-more-title { color: #eaf1ff; text-decoration: underline; }

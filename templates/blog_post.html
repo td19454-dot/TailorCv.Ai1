@@ -231,7 +231,15 @@
         <h2>More from the blog</h2>
         <ul class="related-more-list">
             {% for rel in related_more %}
-            <li><a href="/blog/{{ rel.slug }}">{{ rel.title }}</a></li>
+            <li>
+                <a class="related-more-item" href="/blog/{{ rel.slug }}">
+                    {% if rel.image %}<img src="{{ rel.image }}" alt="" loading="lazy" decoding="async" class="related-more-thumb">{% endif %}
+                    <span class="related-more-text">
+                        <span class="related-more-title">{{ rel.title }}</span>
+                        <span class="related-more-meta">{{ rel.read_time }} min read</span>
+                    </span>
+                </a>
+            </li>
             {% endfor %}
         </ul>
     </section>
