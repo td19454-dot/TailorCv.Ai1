@@ -80,6 +80,28 @@ Markdown files in [content/blogs/](content/blogs/) with YAML-ish frontmatter (`t
 - **Much of an article's body is injected client-side by [static/blog.js](static/blog.js)** — TOC, key-takeaways box, FAQ accordion, step cards, CTAs. Read it before adding any in-article feature server-side; you will likely find it already exists.
 - New blog batches need heavy internal linking (blog→blog and blog→feature pages), floor of roughly 60 links across a batch.
 
+**Every blog post must pass three tests: buyer intent, reader value, SEO.** They reinforce each other — a post a buyer searches for and reads to the end is the post Google ranks. They only conflict when "SEO" means chasing volume, which is how the current catalogue drifted.
+
+Context (Trisha's call, Sep 2026; TailorCV was 3 months old): the blog took daily actives 150 → 300 and the product had 3,500 registered / 10 paying users. Real early traction. But 528 of 1,025 posts are Career Advice / Job Search, much of it visa-and-relocation content (`austria-red-white-red-card`, `australia-first-job-tax-and-super`) that ranks well and brings readers months away from touching a resume, against only 64 ATS Optimization posts.
+
+**1. Buyer intent — does this reader have a resume open right now?** If not, don't write it.
+- Write for the reader mid-application: tailoring a resume, decoding a JD, fixing an ATS score, prepping an interview this week.
+- Prefer ATS Optimization, Resume Examples, Resume Writing, role-specific posts (`backend-developer-resume-2026`) over country/visa/relocation guides.
+- Country content only when the intent is a resume written today (`australia-resume-format-guide`, `ats-english-resume-japan`), never immigration or tax pathways.
+- The post must end where the product starts. If the natural next step isn't "scan or tailor my resume," the topic is wrong — no CTA rescues it.
+- Say no to a brief that would only add pageviews. Traffic that never converts hides the real conversion rate.
+
+**2. Reader value — would they finish it, and read a second post?** Completion and return visits are the goal, not word count.
+- Lead with the answer. These readers arrive mid-task from search; a 200-word wind-up loses them.
+- Every section must teach something the bullets above it didn't — see the no-filler rule. Concrete examples (real bullet rewrites, real JD lines), not abstract advice.
+- Write the honest answer even when it isn't the product's answer. Trust is what earns the second post and the signup.
+- Earn the next click: the strongest related post, surfaced while the reader is still engaged — not a generic card grid after the CTA.
+
+**3. SEO — rank for terms buyers actually search.** Keep it subordinate to tests 1 and 2.
+- Target the query a job-seeker types mid-application, not the highest-volume adjacent term.
+- Keep the internal-linking floor above; it protects the link graph. But relevance to the reader comes first — `related_posts` in [blog_system.py](blog_system.py) deliberately pads with ring/recency filler for SEO coverage, which is why its tail is often irrelevant to the reader.
+- Match the frontmatter (`title`, `description`, `keywords`) to real search language, and let `description` carry the reason to click.
+
 ### Frontend
 
 Server-rendered Jinja plus vanilla JS in [static/](static/) — no framework, no bundler, no npm build for the site itself. The site is already heavily animated (wave canvas, scroll reveals, page transitions); before building an animation, check whether it ships already.

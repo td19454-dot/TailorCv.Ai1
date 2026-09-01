@@ -35,7 +35,7 @@ What to read when the requirements are generic.
 
 **The application questions** frequently ask for exactly what the description omitted, and they are written by someone closer to the actual work.
 
-**And the salary band, where present**, is the single most reliable seniority indicator available, because it is the one number that cannot be vague without consequences.
+**And the [salary band](/blog/salary-expectation-answer-guide), where present**, is the single most reliable seniority indicator available, because it is the one number that cannot be vague without consequences.
 
 ## Reading vagueness as a signal
 
@@ -69,7 +69,7 @@ Where to look when the posting itself gives you nothing.
 
 **The product itself**, if you can use it, tells you more in twenty minutes than most postings do.
 
-**And the interview process described publicly** by former candidates frequently reveals the real requirements, because what they test for is what they actually need.
+**And the [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) process described publicly** by former candidates frequently reveals the real requirements, because what they test for is what they actually need.
 
 **Twenty minutes of this research beats an hour of staring at a thin posting.** The information exists; it is simply not in the document they gave you.
 
@@ -85,9 +85,9 @@ How to state your interpretation without overcommitting.
 
 **Avoid narrow claims you cannot support** if the role turns out to be different from your guess.
 
-**Do not apologise for the ambiguity** or reference it. The summary should read as confident fit, not as a hedged interpretation of an unclear document.
+**Do not apologise for the ambiguity** or [reference](/blog/reference-check-process-guide) it. The summary should read as confident fit, not as a hedged interpretation of an unclear document.
 
-**And put the specific question in the cover letter instead**, if a letter is expected, where asking about the priorities of the role reads as engagement rather than confusion.
+**And put the specific question in the [cover letter](/blog/cover-letter-guide-2026) instead**, if a letter is expected, where asking about the priorities of the role reads as engagement rather than confusion.
 
 ## Mini checklist
 
@@ -130,7 +130,7 @@ Ignore the title and read the responsibilities and the team. Invented titles are
 
 ### Don't
 
-- Send a generic resume because the posting was generic
+- Send a [generic resume](/blog/same-resume-different-jobs-why-it-fails) because the posting was generic
 - Assume vagueness means the role is unimportant
 - Ignore the application questions
 - Over-narrow to a guess you cannot support

@@ -21,7 +21,7 @@ showcase: none
 
 ## What genuinely damages you
 
-The flags that reliably cost interviews.
+The flags that reliably cost [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Dates that do not add up.** Overlapping roles, gaps you have not accounted for, or a timeline that contradicts itself invite doubt about everything else on the page.
 
@@ -35,7 +35,7 @@ The flags that reliably cost interviews.
 
 **A resume that does not match the target role** at all, which reads as indiscriminate applying rather than interest in this position.
 
-**And obvious carelessness** — the wrong company name, a broken link, a filename describing your revision history.
+**And obvious carelessness** — the wrong company name, a broken link, a [filename](/blog/how-to-name-your-resume-file) describing your revision history.
 
 ## What people worry about needlessly
 
@@ -68,7 +68,7 @@ Practical repairs, in order of return.
 
 **Even out the detail.** If one role has four bullets and another has one, either expand the thin one or compress the thick one so the imbalance stops drawing attention.
 
-**Proofread the terminology specifically.** Read only the tool names, certifications and company names, ignoring everything else, which catches errors a general read misses.
+**Proofread the terminology specifically.** Read only the tool names, [certifications](/blog/how-to-prove-skills-without-certificates) and company names, ignoring everything else, which catches errors a general read misses.
 
 **Test every link** by opening it in a private browser window, which reveals the ones that only work because you are signed in.
 
@@ -78,7 +78,7 @@ Practical repairs, in order of return.
 
 When the flag is real rather than presentational.
 
-**A genuine pattern of short roles** needs addressing rather than hiding. Group contract work under one heading, explain a redundancy plainly, and let a stable recent role carry the weight.
+**A genuine pattern of short roles** needs addressing rather than hiding. Group [contract work](/blog/resume-for-contract-to-full-time) under one heading, explain a redundancy plainly, and let a stable recent role carry the weight.
 
 **A long gap** is best handled with a brief factual line and evidence of what you did — study, caring responsibilities, a project, contract work.
 
@@ -90,7 +90,7 @@ When the flag is real rather than presentational.
 
 **And a weak recent role** can be balanced by leading with relevant older work in your summary, provided the chronology below stays honest.
 
-**The principle throughout is that explanation beats concealment.** Every concealment strategy fails at reference or interview stage, and it fails worse then than the original problem would have.
+**The principle throughout is that explanation beats concealment.** Every concealment strategy fails at [reference](/blog/reference-check-process-guide) or interview stage, and it fails worse then than the original problem would have.
 
 ## Mini checklist
 
@@ -108,7 +108,7 @@ When the flag is real rather than presentational.
 
 ### Scenario 1: You have a genuine employment gap
 
-Explain it in one short line and move on. The gap is not the problem; the silence around it is what invites speculation.
+Explain it in one short line and move on. The gap is not the problem; the [silence](/blog/why-your-resume-gets-no-responses) around it is what invites speculation.
 
 ### Scenario 2: You left a role after four months
 

@@ -57,7 +57,7 @@ How much of the list you need.
 
 Where to say it and how much space to give it.
 
-**The cover letter is the right place** when one is expected, in a single sentence near the end rather than in the opening.
+**The [cover letter](/blog/cover-letter-guide-2026) is the right place** when one is expected, in a single sentence near the end rather than in the opening.
 
 **One sentence is the correct length.** A paragraph of explanation makes the gap look larger than it is and shifts the letter's emphasis onto your weakness.
 
@@ -75,15 +75,15 @@ Closing a gap rather than framing it.
 
 **Short courses and certifications** work for tool-specific gaps and are frequently completable in weeks rather than months.
 
-**A personal project** demonstrates a tool more convincingly than a certificate, because it shows the work rather than the attendance.
+**A [personal project](/blog/side-projects-on-resume-2026)** demonstrates a tool more convincingly than a certificate, because it shows the work rather than the attendance.
 
 **Volunteering** provides genuine experience in areas where paid opportunities are closed to you without the experience.
 
 **Internal moves** are the fastest route, since acquiring a skill in your current job carries no application risk at all.
 
-**Contract or freelance work** builds evidence quickly and is frequently available at a level below what permanent roles demand.
+**Contract or [freelance](/blog/resume-for-freelancers-going-full-time) work** builds evidence quickly and is frequently available at a level below what permanent roles demand.
 
-**And documenting what you learn** matters as much as learning it, because an undocumented skill is invisible on a resume and unverifiable at interview.
+**And documenting what you learn** matters as much as learning it, because an undocumented skill is invisible on a resume and unverifiable at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Six weeks of deliberate work closes many gaps** that feel permanent, which is worth remembering before writing off a role you want.
 
@@ -178,11 +178,11 @@ Frequently. A comparable tool or the same problem in a different industry usuall
 
 ### Do years of experience matter exactly?
 
-Rarely in private sector hiring, where a year or two under the stated figure is routinely considered. In public sector and regulated roles the number is far more often a hard gate.
+Rarely in private sector hiring, where a year or two under the stated figure is routinely considered. In [public sector](/blog/resume-for-government-jobs) and regulated roles the number is far more often a hard gate.
 ### Where should I mention a gap in my application?
 
 In the cover letter, in one sentence near the end, immediately followed by the closest equivalent experience. Never as a negative line on the resume itself, and never with an apology.
 
 ### How do I close a missing skill gap?
 
-Short courses for tool-specific gaps, a personal project to demonstrate real use, volunteering, an internal move at your current employer, or contract work. Document what you learn or it stays invisible.
+Short courses for tool-specific gaps, a personal project to demonstrate real use, volunteering, an internal move at your current employer, or [contract work](/blog/resume-for-contract-to-full-time). Document what you learn or it stays invisible.

@@ -25,9 +25,9 @@ A quick assessment before you invest any time.
 
 **Match.** Do you meet most of the required criteria, ignoring the preferred list entirely? If you meet under half, the odds are poor regardless of enthusiasm.
 
-**Level.** Is the seniority right? Applying two levels above yours rarely works, and applying well below yours usually leads to rejection as overqualified rather than to an offer.
+**Level.** Is the seniority right? Applying two levels above yours rarely works, and applying well below yours usually leads to [rejection](/blog/how-to-handle-job-rejection) as overqualified rather than to an offer.
 
-**Conditions.** Location, working pattern, contract type and salary band. A role you would decline if offered is not worth applying to, and people apply to these more often than they admit.
+**Conditions.** Location, working pattern, contract type and [salary band](/blog/salary-expectation-answer-guide). A role you would decline if offered is not worth applying to, and people apply to these more often than they admit.
 
 **Employer.** Would you accept this job? Company stage, sector and what you can learn about how they operate all matter, and none of it improves after you accept.
 
@@ -47,7 +47,7 @@ The case where the tests disagree.
 | **Weak** | **Weak** | Skip without hesitation |
 | **Moderate** | **Strong** | Apply, and address the gap directly |
 
-**Strong interest justifies a weaker match** because motivation shows in an application and because you will prepare properly for the interview.
+**Strong interest justifies a weaker match** because motivation shows in an application and because you will prepare properly for the [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 **Strong match with weak interest is the trap.** These applications are easy to make, they sometimes succeed, and they produce offers you then have to decline or accept reluctantly.
 
@@ -59,7 +59,7 @@ Why volume feels productive and is not.
 
 **Applications are not free.** Each one consumes reading, tailoring, form-filling and the low-level attention of tracking it afterwards.
 
-**Tailoring is what works**, and tailoring cannot be done at volume. A search that sends fifty applications a week is by definition sending untailored ones.
+**Tailoring is what works**, and tailoring cannot be done at volume. A search that sends fifty applications a week is by definition sending [untailored](/blog/same-resume-different-jobs-why-it-fails) ones.
 
 **Rejections accumulate psychologically.** Forty rejections from roles you were never suited to erodes confidence in exactly the way that damages the interviews you do get.
 
@@ -67,7 +67,7 @@ Why volume feels productive and is not.
 
 **And the data becomes useless.** With a scattergun approach you cannot tell whether a lack of responses reflects your resume, your targeting or your level, because everything varied at once.
 
-**A focused search produces readable signal.** Fifteen well-matched applications that generate no responses tell you something specific and actionable, which is worth more than a hundred that tell you nothing.
+**A focused search produces readable signal.** Fifteen well-matched applications that generate [no responses](/blog/why-your-resume-gets-no-responses) tell you something specific and actionable, which is worth more than a hundred that tell you nothing.
 
 ## When to break your own rules
 
@@ -77,7 +77,7 @@ The exceptions worth making deliberately.
 
 **A role that would teach you something specific** you have been trying to learn is worth a weaker match than usual.
 
-**An unusually strong referral** changes the calculation entirely, since a recommendation from inside carries more weight than any gap on paper.
+**An unusually strong [referral](/blog/resume-for-referral-vs-cold-application)** changes the calculation entirely, since a recommendation from inside carries more weight than any gap on paper.
 
 **A rare posting in a narrow specialism** may be worth applying to even at the wrong level, simply because the next one may be a year away.
 

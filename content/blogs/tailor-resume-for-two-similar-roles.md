@@ -33,7 +33,7 @@ The anatomy of two similar postings.
 
 **The team structure differs**, which changes whether you emphasise independent delivery or cross-functional collaboration.
 
-**And the company stage differs**, which is why the same person is described as a builder at a startup and as an operator at a large firm.
+**And the company stage differs**, which is why the same person is described as a builder at a [startup](/blog/resume-for-startup-vs-corporate) and as an operator at a large firm.
 
 **None of these require a rewrite.** They require reordering, reframing and swapping vocabulary, which is perhaps twenty minutes of work rather than two hours.
 
@@ -68,7 +68,7 @@ The adjustment that matters most between two levels.
 
 **The summary carries most of this**, because it is where you name your level explicitly and where a mismatch is most visible.
 
-**Do not inflate.** Claiming ownership you did not have is checkable at interview and it fails badly when a reference or a detailed question exposes it.
+**Do not inflate.** Claiming ownership you did not have is checkable at [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) and it fails badly when a [reference](/blog/reference-check-process-guide) or a detailed question exposes it.
 
 **And do not shrink either.** Under-describing genuine scope to seem appropriate for a mid-level posting costs you the senior one and does not help with either.
 
@@ -82,7 +82,7 @@ The administrative half, which is where the real errors live.
 
 **A simple tracking sheet** with the company, role, date, file sent and outcome takes two minutes per application and prevents every version of the confusion that follows.
 
-**Keep the posting text itself**, saved or copied, because listings are removed and you will want the original language when preparing for interview weeks later.
+**Keep [the posting](/blog/how-to-read-a-job-description-properly) text itself**, saved or copied, because listings are removed and you will want the original language when preparing for interview weeks later.
 
 **Note which version you sent** so that an interview conversation matches the document in front of them.
 

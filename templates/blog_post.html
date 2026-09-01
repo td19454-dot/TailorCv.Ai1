@@ -189,25 +189,58 @@
 
     </article>
 
+    {% if read_next_post %}
+    {# Image-led related card (resume.io pattern): every post has a cover
+       image, so the card leads with it and keeps the copy to a label + title.
+       blog.js clones this into the article body at reading depth. #}
+    <template id="read-next-tpl">
+        <aside class="read-next">
+            <a class="read-next-media" href="/blog/{{ read_next_post.slug }}" tabindex="-1" aria-hidden="true">
+                <img src="{{ read_next_post.image }}" alt="" loading="lazy" decoding="async">
+            </a>
+            <div class="read-next-body">
+                <p class="read-next-label">Related article</p>
+                <a class="read-next-link" href="/blog/{{ read_next_post.slug }}">{{ read_next_post.title }}</a>
+            </div>
+        </aside>
+    </template>
+    {% endif %}
+
+    {% if related_relevant %}
     <section class="related">
-        <h2>Related articles</h2>
+        <h2>Keep reading</h2>
         <div class="blog-grid">
-            {% for rel in related_posts %}
+            {% for rel in related_relevant %}
             <article class="blog-card">
                 <a href="/blog/{{ rel.slug }}">{% if rel.image %}<img src="{{ rel.image }}" alt="{{ rel.title }}" loading="lazy" decoding="async" class="blog-cover">{% endif %}</a>
                 <div class="blog-card-body">
                     <p class="meta">{{ rel.date_display }} - {{ rel.read_time }} min read</p>
                     <h3><a href="/blog/{{ rel.slug }}">{{ rel.title }}</a></h3>
+                    {% if rel.description %}<p class="blog-card-desc">{{ rel.description }}</p>{% endif %}
                 </div>
             </article>
             {% endfor %}
         </div>
     </section>
+    {% endif %}
+
+    {# Coverage tail: keeps every post linked (no orphans) without spending the
+       reader's attention on cards that do not match what they just read. #}
+    {% if related_more %}
+    <section class="related related-more">
+        <h2>More from the blog</h2>
+        <ul class="related-more-list">
+            {% for rel in related_more %}
+            <li><a href="/blog/{{ rel.slug }}">{{ rel.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
 
 </main>
 <button id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
         {% include "_footer.html" %}
-<script src="/static/blog.js?v=63" defer></script>
+<script src="/static/blog.js?v=66" defer></script>
 {% if show_ats_widget %}<script src="/static/blog_ats.js?v=1" defer></script>{% endif %}
 <script src="/static/auth_nav.js?v=17"></script>
 <script src="/static/mobile_nav.js"></script>

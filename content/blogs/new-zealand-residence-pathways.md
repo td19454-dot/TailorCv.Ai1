@@ -49,7 +49,7 @@ The variable that decides everything else.
 | **Skilled role, not on any list** | Skilled Migrant Category | Slower, points dependent |
 | **Role below the skill threshold** | Generally none directly | Requires a change of role |
 
-**Check the Green List before accepting any offer**, because two roles with identical salaries can sit on completely different sides of this divide.
+**Check the Green List before accepting any offer**, because [two roles](/blog/resume-for-two-jobs-same-company) with identical salaries can sit on completely different sides of this divide.
 
 **Salary matters, but it is not the whole story.** A well-paid role in a non-listed occupation can leave you with a slower route than a moderately paid one on the Green List.
 
@@ -67,13 +67,13 @@ The practical requirements common to most routes.
 
 **Qualification documentation**, frequently requiring an assessment of overseas qualifications against New Zealand equivalents.
 
-**Evidence of work experience**, in the form of references and employment records covering the claimed period.
+**Evidence of work experience**, in the form of [references](/blog/reference-check-process-guide) and employment records covering the claimed period.
 
 **English language evidence**, either through a recognised test or an exemption based on nationality, qualifications or work history.
 
 **Health requirements**, including medical examinations and chest x-rays depending on your circumstances and intended stay.
 
-**Character requirements**, including police certificates from countries where you have lived for a defined period.
+**Character requirements**, including police [certificates](/blog/how-to-prove-skills-without-certificates) from countries where you have lived for a defined period.
 
 **And occupational registration** where your profession is regulated, which must generally be in place rather than pending.
 
@@ -141,7 +141,7 @@ The Skilled Migrant Category is your route. Assess your points honestly against 
 
 Take it only with clear eyes. It may not lead anywhere directly, and the realistic plan is to use it as an entry point while working toward a qualifying role.
 
-> **Tip:** Ask the immigration question before you negotiate salary, not after. An offer that pays slightly less in a Green List occupation is frequently worth considerably more than a better-paid role that leaves you on the slowest available route.
+> **Tip:** Ask the immigration question before you [negotiate](/blog/how-to-negotiate-salary-offer) salary, not after. An offer that pays slightly less in a Green List occupation is frequently worth considerably more than a better-paid role that leaves you on the slowest available route.
 
 ## Do's and Don'ts
 

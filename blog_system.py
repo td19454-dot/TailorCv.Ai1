@@ -227,6 +227,48 @@ class BlogService:
             add(p)
         return picked[:limit]
 
+    def read_next(self, post: BlogPost) -> BlogPost | None:
+        """The single strongest follow-up for a reader who is still engaged.
+
+        related_posts() has to serve two masters - reader relevance AND the
+        no-orphan link ring - so its tail is often irrelevant to the human.
+        This returns only a genuine match (shared tags, or failing that the
+        same category) and None when there isn't one, because showing a
+        weak "Read next" is worse than showing none.
+        """
+        others = [p for p in self.load_posts() if p.slug != post.slug]
+        if not others:
+            return None
+        post_tags = set(post.tags)
+        if post_tags:
+            best = max(others, key=lambda c: (len(post_tags & set(c.tags)), c.date_iso))
+            if len(post_tags & set(best.tags)) > 0:
+                return best
+        same_cat = [p for p in others if post.category and p.category == post.category]
+        if same_cat:
+            seed = sum(ord(ch) for ch in post.slug) % len(same_cat)
+            return same_cat[seed]
+        return None
+
+    def related_split(self, post: BlogPost, relevant: int = 3, limit: int = 6) -> dict:
+        """related_posts() split into what the reader sees first vs. the tail.
+
+        Same posts, same link graph - only the presentation order changes, so
+        the SEO ring is untouched. "relevant" holds posts with real tag/category
+        overlap; "more" holds the ring/recency filler that exists for coverage.
+        """
+        picked = self.related_posts(post, limit=limit)
+        post_tags = set(post.tags)
+
+        def is_relevant(c: BlogPost) -> bool:
+            return bool(post_tags & set(c.tags)) or (
+                bool(post.category) and c.category == post.category
+            )
+
+        strong = [p for p in picked if is_relevant(p)]
+        weak = [p for p in picked if not is_relevant(p)]
+        return {"relevant": strong[:relevant], "more": strong[relevant:] + weak}
+
     def link_hub(self, post: BlogPost, exclude: list[BlogPost] | None = None,
                  per_group: int = 20, min_total: int = 100) -> list[dict]:
         """Curated groups of internal links shown as compact text lists under a

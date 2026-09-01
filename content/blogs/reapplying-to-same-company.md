@@ -27,7 +27,7 @@ The interval by stage reached.
 
 **Rejected after a screening call.** A few months, and ideally with a genuine change in your experience or in the role itself.
 
-**Rejected after interviews.** Longer, and only with something meaningfully different. You are remembered, which cuts both ways.
+**Rejected after [interviews](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).** Longer, and only with something meaningfully different. You are remembered, which cuts both ways.
 
 **Rejected at final stage.** This is frequently the most promising case of all, since being a close second means they rated you. Reapply when a suitable role appears rather than waiting a fixed period.
 
@@ -58,7 +58,7 @@ The change that makes a second application worthwhile.
 
 A longer strategy than single applications.
 
-**Target the company rather than the posting.** If you want to work somewhere specific, the individual role is a means rather than the goal, and that changes how you spend your effort.
+**Target the company rather than [the posting](/blog/how-to-read-a-job-description-properly).** If you want to work somewhere specific, the individual role is a means rather than the goal, and that changes how you spend your effort.
 
 **Build a connection before the next opening.** A conversation with someone who works there is worth more than three cold applications, and it costs one polite message.
 
@@ -121,7 +121,7 @@ Acquire it, then reapply naming it explicitly. Acting on feedback is unusual eno
 
 - Match the interval to the stage you reached
 - Ensure something genuine has changed
-- Reference the earlier process openly
+- [Reference](/blog/reference-check-process-guide) the earlier process openly
 - Act on any feedback you received
 - Contact the recruiter directly after a strong process
 - Consider a different role rather than the same one
@@ -132,7 +132,7 @@ Acquire it, then reapply naming it explicitly. Acting on feedback is unusual eno
 - Reapply within weeks of an interview rejection
 - Pretend the earlier application did not happen
 - Rely on time alone as the change
-- Apply repeatedly with no response
+- Apply repeatedly with [no response](/blog/why-your-resume-gets-no-responses)
 - Treat one rejection as a permanent judgement
 
 ## Common Mistakes

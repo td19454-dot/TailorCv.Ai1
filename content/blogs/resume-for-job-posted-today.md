@@ -27,9 +27,9 @@ The mechanics behind the advice.
 
 **Attention decays across a stack.** The fortieth resume of an afternoon receives less consideration than the fourth, which is a human limitation rather than a policy.
 
-**Some roles close early.** A posting that attracts strong candidates in the first days is sometimes filled before its advertised deadline, and late applicants are reviewed only if the early ones fail.
+**Some roles close early.** A posting that attracts strong candidates in the first days is sometimes filled before its advertised [deadline](/blog/how-to-handle-a-job-application-deadline), and late applicants are reviewed only if the early ones fail.
 
-**Interview slots fill in order.** Even when every application is read, the candidates who reach the calendar first shape the comparison set for everyone after them.
+**[Interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) slots fill in order.** Even when every application is read, the candidates who reach the calendar first shape the comparison set for everyone after them.
 
 **Screening standards drift upward** as the pile grows, because a recruiter with four hundred applications applies harsher filters than one with forty.
 
@@ -59,11 +59,11 @@ The highest-leverage edits, in order.
 
 **The summary is first** because it is read first and because it is the cheapest section to make specific. Two or three lines naming the role, the relevant experience and the outcome you deliver, using the posting's own title rather than a generic one.
 
-**The skills section is second.** Reordering it costs almost nothing and matters more than people expect, because both software screening and human skimming weight the top of a list far more heavily than the bottom.
+**The [skills section](/blog/what-recruiters-actually-search-for) is second.** Reordering it costs almost nothing and matters more than people expect, because both software screening and human [skimming](/blog/how-recruiters-read-resume-6-seconds) weight the top of a list far more heavily than the bottom.
 
 **The top three bullets of your most recent role are third.** These are the bullets that get read. Adjust them to emphasise the parts of your work that this posting cares about, without inventing anything.
 
-**Everything else can usually stay.** Older roles, education, certifications and formatting rarely need touching for an individual application, and editing them under time pressure introduces errors without improving your odds.
+**Everything else can usually stay.** Older roles, education, [certifications](/blog/how-to-prove-skills-without-certificates) and formatting rarely need touching for an individual application, and editing them under time pressure introduces errors without improving your odds.
 
 **The exception is a genuine mismatch of framing.** If you are applying across a boundary — industry, function or seniority — then the way your older experience is described may need real work, and that is not a forty five minute job.
 
@@ -77,7 +77,7 @@ The failure modes, all of them avoidable.
 
 **The wrong company name.** It survives from the last application, it is noticed immediately, and it ends the application. Search your document for the previous employer's name before sending.
 
-**A filename that embarrasses you.** Something like resume-final-v4-USE-THIS.pdf is visible to the recruiter and reads exactly as carelessly as it sounds.
+**A [filename](/blog/how-to-name-your-resume-file) that embarrasses you.** Something like resume-final-v4-USE-THIS.pdf is visible to the recruiter and reads exactly as carelessly as it sounds.
 
 **Broken formatting from hurried edits.** A bullet that lost its marker, an inconsistent date format, a line that wraps badly. Open the final PDF and look at it before uploading.
 

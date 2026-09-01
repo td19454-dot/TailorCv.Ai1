@@ -23,13 +23,13 @@ showcase: none
 
 The list, ordered by how much damage each catches.
 
-**The company name is correct** throughout, including in the summary and any cover letter. Search the document for the previous employer's name before every send.
+**The company name is correct** throughout, including in the summary and any [cover letter](/blog/cover-letter-guide-2026). Search the document for the previous employer's name before every send.
 
 **The role title matches** what you are applying for rather than a leftover from the last application.
 
 **Contact details work.** The phone number is current and the email is one you check and will keep.
 
-**Links resolve.** Portfolio, professional profile and project links all open, and none point at a deleted or private page.
+**Links resolve.** [Portfolio](/blog/how-to-build-professional-portfolio), professional profile and project links all open, and none point at a deleted or private page.
 
 **Dates are consistent** in format and contain no accidental overlaps or gaps you did not intend.
 
@@ -37,13 +37,13 @@ The list, ordered by how much damage each catches.
 
 **The file format matches** what the employer asked for.
 
-**Spelling of proper nouns is right** — company names, tools, certifications and your own job titles.
+**Spelling of proper nouns is right** — company names, tools, [certifications](/blog/how-to-prove-skills-without-certificates) and your own job titles.
 
 **The summary addresses this role** rather than a general statement or a previous target.
 
-**Required keywords from the posting appear** somewhere they belong.
+**Required [keywords](/blog/how-to-match-resume-keywords-to-job-description) from [the posting](/blog/how-to-read-a-job-description-properly) appear** somewhere they belong.
 
-**The page count is deliberate** rather than accidental, with no orphaned final line spilling onto an extra page.
+**The [page count](/blog/resume-length-one-page-or-two-decision) is deliberate** rather than accidental, with no orphaned final line spilling onto an extra page.
 
 **And the PDF renders correctly** when opened fresh, with fonts, spacing and bullets intact.
 

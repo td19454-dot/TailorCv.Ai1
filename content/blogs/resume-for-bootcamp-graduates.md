@@ -70,7 +70,7 @@ The project that changes your application.
 
 **Handle the unglamorous parts** — errors, empty states, bad input, basic security. These are what distinguish production thinking from tutorial thinking.
 
-**Write down why you made your choices**, because the reasoning is what a technical interviewer will probe and what most portfolios never show.
+**Write down why you made your choices**, because the reasoning is what a technical interviewer will probe and what most [portfolios](/blog/how-to-build-professional-portfolio) never show.
 
 **And keep working on it after launch**, since sustained maintenance over months is a signal almost no bootcamp portfolio carries.
 

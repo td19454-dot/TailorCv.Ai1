@@ -25,7 +25,7 @@ The mechanism, precisely.
 
 **It routes your application differently.** Referred candidates are frequently reviewed in a separate queue rather than in the general pile.
 
-**It guarantees a human read**, which is the single largest advantage, since most rejections happen before any person sees the application.
+**It guarantees a human read**, which is the single largest advantage, since most [rejections](/blog/how-to-handle-job-rejection) happen before any person sees the application.
 
 **It supplies social proof.** Someone inside the organisation has attached their judgement to you, and that carries weight.
 
@@ -33,7 +33,7 @@ The mechanism, precisely.
 
 **It gives you information.** A referrer tells you what the team actually needs, which improves the application itself.
 
-**But it does not guarantee an interview**, and it certainly does not guarantee an offer. A referred candidate who does not match still gets rejected, just faster and more politely.
+**But it does not guarantee an [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)**, and it certainly does not guarantee an offer. A referred candidate who does not match still gets rejected, just faster and more politely.
 
 ## Getting one without knowing anyone
 
@@ -64,7 +64,7 @@ The message itself, which decides the answer.
 
 **Name the specific role** with a link, so no searching is required.
 
-**State the fit in two lines**, concretely, using the same terms the posting uses.
+**State the fit in two lines**, concretely, using the same terms [the posting](/blog/how-to-read-a-job-description-properly) uses.
 
 **Ask directly.** Would you be willing to refer me, or could you point me to the right person, are both clear requests that can be answered quickly.
 
@@ -80,9 +80,9 @@ What happens next and what you owe.
 
 **Apply promptly** once the referral is in, since a referral that sits unused for two weeks loses its value.
 
-**Tell the referrer you applied**, which closes the loop and lets them follow up internally if they choose.
+**Tell the referrer you applied**, which closes the loop and lets them [follow up](/blog/how-to-follow-up-after-interview) internally if they choose.
 
-**Update them on the outcome**, whatever it is. People who refer candidates want to know what happened, and silence discourages them from doing it again.
+**Update them on the outcome**, whatever it is. People who refer candidates want to know what happened, and [silence](/blog/why-your-resume-gets-no-responses) discourages them from doing it again.
 
 **Thank them regardless of result**, because the referral was a favour independent of whether it worked.
 

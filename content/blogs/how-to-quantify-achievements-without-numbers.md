@@ -61,7 +61,7 @@ Where the concrete detail is hiding.
 
 **Old calendars** show what you spent time on, which meetings you ran and how often a recurring commitment appeared.
 
-**Project folders and shared drives** carry dates, filenames and versions that reconstruct a timeline you no longer remember.
+**Project folders and shared drives** carry dates, [filenames](/blog/how-to-name-your-resume-file) and versions that reconstruct a timeline you no longer remember.
 
 **Performance reviews** are the richest source available, because someone else described your work in specific terms and frequently attached figures.
 
@@ -83,7 +83,7 @@ The specific ways an invented figure collapses.
 
 **The suspicious roundness.** Improved efficiency by exactly fifty per cent, repeated across several bullets, signals estimation rather than measurement.
 
-**The reference check.** A former manager describing your role differently from your resume is a difficult contradiction to explain.
+**The [reference](/blog/reference-check-process-guide) check.** A former manager describing your role differently from your resume is a difficult contradiction to explain.
 
 **The internal inconsistency.** Two bullets implying different team sizes or timelines for the same period undermine both.
 

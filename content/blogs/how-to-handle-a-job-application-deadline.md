@@ -81,13 +81,13 @@ The part people forget under deadline pressure.
 
 **Save the confirmation.** Systems occasionally lose applications, and the confirmation is your only evidence you applied at all.
 
-**Keep a copy of the exact file you sent**, because interview conversations reference the document in front of them rather than the latest version on your machine.
+**Keep a copy of the exact file you sent**, because [interview](/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry) conversations [reference](/blog/reference-check-process-guide) the document in front of them rather than the latest version on your machine.
 
 **Save the posting text** as well, since listings are removed once filled and you will want the original language when preparing.
 
 **Note the date in your tracker**, which makes follow-up timing obvious later.
 
-**Do not follow up immediately.** Give it the time the process needs before checking in, and follow up once rather than repeatedly.
+**Do not [follow up](/blog/how-to-follow-up-after-interview) immediately.** Give it the time the process needs before checking in, and follow up once rather than repeatedly.
 
 **And move on to the next application** rather than waiting. The single most reliable predictor of a slow search is treating each application as though it will be the one.
 
@@ -164,7 +164,7 @@ You can also [check your resume's ATS score for free](/ats-analysis), [generate 
 
 ### Can I apply after the deadline?
 
-Often, for rolling private sector postings that remain live. Structured graduate schemes and public sector rounds genuinely close and late applications are not considered.
+Often, for rolling private sector postings that remain live. Structured graduate schemes and [public sector](/blog/resume-for-government-jobs) rounds genuinely close and late applications are not considered.
 
 ### What should I fix first with limited time?
 
