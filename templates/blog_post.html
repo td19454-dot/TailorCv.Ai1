@@ -194,10 +194,12 @@
        image, so the card leads with it and keeps the copy to a label + title.
        blog.js clones this into the article body at reading depth. #}
     <template id="read-next-tpl">
-        <aside class="read-next">
+        <aside class="read-next{% if not read_next_post.image %} read-next-noimg{% endif %}">
+            {% if read_next_post.image %}
             <a class="read-next-media" href="/blog/{{ read_next_post.slug }}" tabindex="-1" aria-hidden="true">
                 <img src="{{ read_next_post.image }}" alt="" loading="lazy" decoding="async">
             </a>
+            {% endif %}
             <div class="read-next-body">
                 <p class="read-next-label">Related article</p>
                 <a class="read-next-link" href="/blog/{{ read_next_post.slug }}">{{ read_next_post.title }}</a>

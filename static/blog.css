@@ -4383,3 +4383,9 @@ body.blog-list-page .tags-row::-webkit-scrollbar-thumb:hover {
 .related-more-meta { font-size: 0.78rem; color: #6b7a90; }
 
 .related-more-item:hover .related-more-title { color: #eaf1ff; text-decoration: underline; }
+
+/* Read-next card with no cover image yet (post awaiting a generated image):
+   collapse to a single column instead of leaving an empty media slot. */
+.blog-detail-page .post-content .read-next.read-next-noimg {
+  grid-template-columns: 1fr;
+}
