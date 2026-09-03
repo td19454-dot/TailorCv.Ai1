@@ -7,7 +7,7 @@ tags: [Job Applications, Job Search, Resume Tailoring, ATS Optimization, Career 
 category: Job Search
 slug: jd-asks-for-years-you-dont-have
 keywords: job requires more experience than i have, applying with less experience than required, years of experience requirement flexible, underqualified for job posting
-image: 
+image: public/blog-images/jd-asks-for-years-you-dont-have.png
 ---
 
 ## Key Takeaways

@@ -7,7 +7,7 @@ tags: [Job Descriptions, ATS Optimization, Job Search, AI Job Search, Resume Tai
 category: ATS Optimization
 slug: jd-written-by-ai-how-to-read-it
 keywords: ai generated job description, job posting written by ai, how to tell if job description is ai written, ai job posting tells, generic ai job description
-image: 
+image: public/blog-images/jd-written-by-ai-how-to-read-it.png
 ---
 
 ## Key Takeaways
