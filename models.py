@@ -382,6 +382,8 @@ class UserApplyProfile(Base):
     race_ethnicity = Column(String(80), nullable=True)
     veteran_status = Column(String(80), nullable=True)
     disability_status = Column(String(80), nullable=True)
+    gender_pronouns = Column(String(40), nullable=True)
+    lgbtq_identity = Column(String(60), nullable=True)
 
     # Standing permissions, both captured once in the profile modal.
     agreed_to_employer_terms = Column(Boolean, default=False, nullable=False)
@@ -391,6 +393,35 @@ class UserApplyProfile(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     user = relationship("User", back_populates="apply_profile")
+
+
+class UserApplyQA(Base):
+    """Arbitrary per-question answers that don't fit a fixed UserApplyProfile
+    column — genuinely per-employer/per-posting questions ("Have you worked
+    here before?", "Have you used <product>?", "Preferred office location")
+    that no fixed set of columns could hold a single correct value for.
+    Matched to a newly-seen form question by a normalized signature, since
+    the same underlying question is phrased differently by every ATS. Every
+    row here is something the user explicitly typed, in response to a
+    specific question shown to them — never LLM-generated — carrying the
+    same "no fabricated declarative answer" guarantee as UserApplyProfile."""
+    __tablename__ = "user_apply_qa"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True)
+
+    question_signature = Column(String(160), nullable=False, index=True)  # normalized question text
+    question_text = Column(Text, nullable=False)                          # raw text as last seen — some
+    # real EEO/compliance questions run past 500 characters (observed in
+    # practice), so this is unbounded like `answer`, not a short label field.
+    answer = Column(Text, nullable=False)
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+
+    __table_args__ = (UniqueConstraint("user_id", "question_signature", name="uq_user_question_signature"),)
+
+    user = relationship("User")
 
 
 class AutoApplyRun(Base):

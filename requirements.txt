@@ -48,8 +48,11 @@ sentry-sdk[fastapi]>=2.0.0
 razorpay>=1.4.0
 polar-sdk>=0.1.0
 
-# Auto-apply (cloud browser automation). connect_over_cdp attaches to a
-# Browserbase-hosted browser, so no local Chromium download is needed —
-# do NOT add `playwright install chromium` to the build.
-stagehand>=3.19.0
+# Auto-apply (local browser automation via Stagehand + Playwright — no
+# Browserbase account/session needed). >=4.0.0 is required: that's the first
+# version exposing stagehand.local_browser, which auto_apply/browser.py uses
+# to launch its own Chromium instead of connecting to a Browserbase session.
+# The build MUST also run `playwright install chromium --with-deps` — unlike
+# the old Browserbase-backed setup, this now launches a real local browser.
+stagehand>=4.0.0
 playwright>=1.47.0

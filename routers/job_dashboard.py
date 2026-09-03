@@ -39,12 +39,13 @@ from models import (
     SavedJob,
     User,
     UserApplyProfile,
+    UserApplyQA,
 )
 from extraction import extract_text_from_pdf
 from functions import embed_text, embedding_match_score, cosine_similarity, EMBEDDING_MODEL
 from job_sources import NormalizedJob, slugify
 from job_sources.jsearch import fetch_jsearch
-from schemas import ApplyProfileRequest, AutoApplyRequest, SaveJobRequest, LogApplicationRequest
+from schemas import ApplyProfileRequest, AutoApplyRequest, RunAnswersRequest, SaveJobRequest, LogApplicationRequest
 
 # Safe at module scope: auto_apply.config is stdlib-only and never imports
 # stagehand/playwright, so this router still loads when they aren't installed.
@@ -610,6 +611,8 @@ def _profile_payload(prof: UserApplyProfile | None, resume_text: str) -> dict:
         "raceEthnicity": value("race_ethnicity"),
         "veteranStatus": value("veteran_status"),
         "disabilityStatus": value("disability_status"),
+        "genderPronouns": value("gender_pronouns"),
+        "lgbtqIdentity": value("lgbtq_identity"),
         "agreeToEmployerTerms": bool(getattr(prof, "agreed_to_employer_terms", False)),
         "consent": bool(getattr(prof, "auto_apply_consent_at", None)),
     }
@@ -670,6 +673,8 @@ async def save_apply_profile(request: Request, payload: ApplyProfileRequest):
         prof.race_ethnicity = payload.raceEthnicity.strip()
         prof.veteran_status = payload.veteranStatus.strip()
         prof.disability_status = payload.disabilityStatus.strip()
+        prof.gender_pronouns = payload.genderPronouns.strip()
+        prof.lgbtq_identity = payload.lgbtqIdentity.strip()
         prof.agreed_to_employer_terms = bool(payload.agreeToEmployerTerms)
 
         # Consent is a standing authorization to submit unattended — recorded
@@ -835,5 +840,56 @@ async def auto_apply_run_status(request: Request, run_id: int):
             raise HTTPException(status_code=404, detail="Run not found")
         job = db.query(JobListing).filter(JobListing.id == run.job_listing_id).first()
         return _run_payload(run, job.apply_url if job else None)
+    finally:
+        db.close()
+
+
+@router.post("/api/dashboard/auto-apply/{run_id}/answers")
+async def save_run_answers(request: Request, run_id: int, payload: RunAnswersRequest):
+    """Save answers to specific questions a needs_input run couldn't resolve
+    from the stored profile. Writes into UserApplyQA, matched by a normalized
+    question signature — this deliberately does not requeue or touch the run
+    itself. auto_apply_runs is "one row per attempt" by design (a live
+    browser session's DOM state isn't persisted anywhere to resume into), so
+    the frontend re-triggers a normal fresh Auto-apply click after this call,
+    which now has these answers available."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    from auto_apply.profile import question_signature
+
+    db = SessionLocal()
+    try:
+        run = (
+            db.query(AutoApplyRun)
+            .filter(AutoApplyRun.id == run_id, AutoApplyRun.user_id == user_id)
+            .first()
+        )
+        if not run:
+            raise HTTPException(status_code=404, detail="Run not found")
+        if run.status != "needs_input":
+            raise HTTPException(status_code=400, detail="This run doesn't need input.")
+
+        saved = 0
+        for item in payload.answers:
+            question = item.question.strip()
+            answer = item.answer.strip()
+            if not question or not answer:
+                continue
+            sig = question_signature(question)
+            row = (
+                db.query(UserApplyQA)
+                .filter(UserApplyQA.user_id == user_id, UserApplyQA.question_signature == sig)
+                .first()
+            )
+            if not row:
+                row = UserApplyQA(user_id=user_id, question_signature=sig)
+                db.add(row)
+            row.question_text = question
+            row.answer = answer
+            saved += 1
+        db.commit()
+        return {"ok": True, "saved": saved}
     finally:
         db.close()

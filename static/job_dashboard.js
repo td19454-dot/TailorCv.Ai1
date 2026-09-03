@@ -200,6 +200,26 @@
     }
 
     setNote(jobId, run.detail || "", run.status === "failed" || run.status === "needs_input", links);
+
+    // A specific, answerable gap (see buildAnswerModal's comment) rather than
+    // an environmental blocker (CAPTCHA, login wall) — those don't carry
+    // missingFields, so this link only appears when there's something the
+    // user can actually do about it beyond "open the form yourself".
+    if (run.status === "needs_input" && run.missingFields && run.missingFields.length) {
+      var note = noteFor(jobId);
+      if (note) {
+        note.appendChild(document.createTextNode(" · "));
+        var answerLink = el("a", null, "Answer & retry");
+        answerLink.href = "#";
+        answerLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          buildAnswerModal(jobId, run.runId, run.missingFields, function () {
+            onAutoApply(job);
+          });
+        });
+        note.appendChild(answerLink);
+      }
+    }
   }
 
   function adoptRun(jobId, run) {
@@ -370,10 +390,65 @@
     { value: "flexible", label: "Flexible" },
   ];
   var DECLINE = "Decline to self-identify";
-  var EEO_OPTS = [
+  var CUSTOM_OPT = { value: "custom", label: "I'll type my own answer" };
+  var GENDER_OPTS = [
+    { value: "Male", label: "Male" },
+    { value: "Female", label: "Female" },
+    { value: "Non-binary", label: "Non-binary" },
     { value: DECLINE, label: DECLINE },
-    { value: "custom", label: "I'll type my own answer" },
+    CUSTOM_OPT,
   ];
+  var RACE_OPTS = [
+    { value: "American Indian or Alaska Native", label: "American Indian or Alaska Native" },
+    { value: "Asian", label: "Asian" },
+    { value: "Black or African American", label: "Black or African American" },
+    { value: "Hispanic or Latino", label: "Hispanic or Latino" },
+    { value: "Native Hawaiian or Other Pacific Islander", label: "Native Hawaiian or Other Pacific Islander" },
+    { value: "White", label: "White" },
+    { value: "Two or more races", label: "Two or more races" },
+    { value: DECLINE, label: DECLINE },
+    CUSTOM_OPT,
+  ];
+  var VETERAN_OPTS = [
+    { value: "I am not a protected veteran", label: "I am not a protected veteran" },
+    { value: "I identify as a protected veteran", label: "I identify as a protected veteran" },
+    { value: DECLINE, label: DECLINE },
+    CUSTOM_OPT,
+  ];
+  var DISABILITY_OPTS = [
+    { value: "Yes, I have a disability", label: "Yes, I have a disability" },
+    { value: "No, I don't have a disability", label: "No, I don't have a disability" },
+    { value: DECLINE, label: DECLINE },
+    CUSTOM_OPT,
+  ];
+  var PRONOUN_OPTS = [
+    { value: "He/Him", label: "He/Him" },
+    { value: "She/Her", label: "She/Her" },
+    { value: "They/Them", label: "They/Them" },
+    { value: DECLINE, label: DECLINE },
+    CUSTOM_OPT,
+  ];
+  var LGBTQ_OPTS = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+    { value: DECLINE, label: DECLINE },
+    CUSTOM_OPT,
+  ];
+  // Every option set above ends in DECLINE + CUSTOM_OPT — a fixed value from
+  // one of these gives fill_form() something reliable to match against the
+  // real form's <select> (see auto_apply/browser.py's option-matching); the
+  // custom escape hatch is what preserves free text a user already saved
+  // before this became a select (see fillProfileModal() below), and covers
+  // any employer-specific option none of these lists anticipated.
+  var EEO_FIELDS = [
+    { key: "gender", label: "Gender", choices: GENDER_OPTS },
+    { key: "raceEthnicity", label: "Race / ethnicity", choices: RACE_OPTS },
+    { key: "veteranStatus", label: "Veteran status", choices: VETERAN_OPTS },
+    { key: "disabilityStatus", label: "Disability status", choices: DISABILITY_OPTS },
+    { key: "genderPronouns", label: "Gender pronouns", choices: PRONOUN_OPTS },
+    { key: "lgbtqIdentity", label: "LGBTQ+ identity", choices: LGBTQ_OPTS },
+  ];
+  var EEO_KEYS = EEO_FIELDS.map(function (f) { return f.key; });
 
   var modalEl = null;
   var modalFields = {};
@@ -402,6 +477,25 @@
     input.id = "jd-f-" + key;
     if (opts && opts.placeholder) input.placeholder = opts.placeholder;
     wrap.appendChild(input);
+
+    // A select with a "custom" option gets a paired free-text input, hidden
+    // until "custom" is chosen — the escape hatch for anything the fixed
+    // option list didn't anticipate, and how an existing user's already-saved
+    // free text round-trips in once these fields stop being plain text
+    // (see fillProfileModal()).
+    if (type === "select" && opts && opts.customValue) {
+      var customInput = el("input");
+      customInput.type = "text";
+      customInput.id = "jd-f-" + key + "Custom";
+      customInput.placeholder = "Type your answer";
+      customInput.hidden = true;
+      wrap.appendChild(customInput);
+      modalFields[key + "Custom"] = customInput;
+      input.addEventListener("change", function () {
+        customInput.hidden = input.value !== opts.customValue;
+      });
+    }
+
     container.appendChild(wrap);
     modalFields[key] = input;
     return input;
@@ -462,9 +556,8 @@
       el("p", "jd-modal-intro", "Optional on every real form. Defaults to declining unless you set otherwise.")
     );
     var eeoGrid = el("div", "jd-fields");
-    ["gender", "raceEthnicity", "veteranStatus", "disabilityStatus"].forEach(function (key, i) {
-      var labels = ["Gender", "Race / ethnicity", "Veteran status", "Disability status"];
-      var input = field(eeoGrid, key, labels[i], "text", { placeholder: DECLINE });
+    EEO_FIELDS.forEach(function (f) {
+      var input = field(eeoGrid, f.key, f.label, "select", { choices: f.choices, customValue: "custom" });
       input.value = DECLINE;
     });
     card.appendChild(eeoGrid);
@@ -516,11 +609,29 @@
 
   function fillProfileModal(data) {
     Object.keys(modalFields).forEach(function (key) {
-      if (key === "_err") return;
+      if (key === "_err" || key.slice(-6) === "Custom") return;
       var input = modalFields[key];
       var value = data[key];
       if (input.type === "checkbox") {
         input.checked = !!value;
+      } else if (EEO_KEYS.indexOf(key) !== -1) {
+        // A value that matches one of this field's fixed options selects it
+        // directly; anything else (a legacy free-text answer from before
+        // this was a select, or a genuinely custom one) goes into "custom"
+        // plus its paired text input, so nothing already saved is lost.
+        var customInput = modalFields[key + "Custom"];
+        var isFixedOption = Array.prototype.some.call(input.options, function (o) {
+          return o.value === value;
+        });
+        if (value && !isFixedOption) {
+          input.value = "custom";
+          if (customInput) {
+            customInput.value = value;
+            customInput.hidden = false;
+          }
+        } else if (value) {
+          input.value = value;
+        }
       } else if (value) {
         input.value = value;
       }
@@ -561,12 +672,26 @@
 
   function submitProfileModal() {
     var payload = {};
+    var customTextMissing = null;
     Object.keys(modalFields).forEach(function (key) {
-      if (key === "_err") return;
+      if (key === "_err" || key.slice(-6) === "Custom") return;
       var input = modalFields[key];
       payload[key] = input.type === "checkbox" ? input.checked : input.value.trim();
     });
+    // Resolve each EEO field's "custom" choice to its paired text input's
+    // value — the backend only ever sees a plain string, never "custom".
+    EEO_KEYS.forEach(function (key) {
+      if (payload[key] !== "custom") return;
+      var customValue = (modalFields[key + "Custom"].value || "").trim();
+      if (!customValue && !customTextMissing) customTextMissing = key;
+      payload[key] = customValue;
+    });
 
+    if (customTextMissing) {
+      modalFields._err.hidden = false;
+      modalFields._err.textContent = "Type your own answer for the field you set to “I'll type my own answer,” or pick a listed option instead.";
+      return;
+    }
     if (!payload.phone) {
       modalFields._err.hidden = false;
       modalFields._err.textContent = "Add a phone number.";
@@ -620,6 +745,111 @@
         saveBtn.disabled = false;
         saveBtn.textContent = "Save profile";
       });
+  }
+
+  // A needs_input run whose missingFields is non-empty means fill_form()
+  // genuinely had nothing on file to answer these with — not a session to
+  // resume (auto_apply_runs is one row per attempt by design, the browser
+  // session is already gone), but a specific, answerable gap. This modal
+  // collects the answers, saves them (POST .../answers), and then just
+  // triggers a normal fresh onAutoApply() click — reusing the same "Try
+  // again" mechanism that already exists for needs_input runs, now informed
+  // by real answers instead of repeating the same failure.
+  function buildAnswerModal(jobId, runId, missingFields, onDone) {
+    var overlay = el("div", "jd-modal");
+    var card = el("div", "jd-modal-card");
+    card.appendChild(el("h2", null, "A couple of questions from this employer"));
+    card.appendChild(
+      el(
+        "p",
+        "jd-modal-intro",
+        "We couldn't answer these from your profile. Answer them once and we'll remember them next time."
+      )
+    );
+
+    var grid = el("div", "jd-fields");
+    var qaInputs = missingFields.map(function (question, i) {
+      var wrap = el("div", "jd-field wide");
+      var label = el("label", null, question);
+      label.setAttribute("for", "jd-qa-" + i);
+      wrap.appendChild(label);
+      var input = el("input");
+      input.type = "text";
+      input.id = "jd-qa-" + i;
+      // Chrome ignores a plain autocomplete="off" for field types it
+      // pattern-matches from nearby label text (an id/label like "Location
+      // (City)" reads as an address field to it) and silently fills in a
+      // saved address/answer — which then looks like a real answer already
+      // typed in, not a browser guess. "new-password" is a well-known,
+      // reliably-respected way to opt an arbitrary text field out of that.
+      input.autocomplete = "new-password";
+      input.placeholder = "Your answer";
+      wrap.appendChild(input);
+      grid.appendChild(wrap);
+      return { question: question, input: input };
+    });
+    card.appendChild(grid);
+
+    var errBox = el("div", "jd-modal-err");
+    errBox.hidden = true;
+    card.appendChild(errBox);
+
+    var actions = el("div", "jd-modal-actions");
+    var cancelBtn = el("button", "jd-modal-cancel", "Not now");
+    cancelBtn.type = "button";
+    cancelBtn.addEventListener("click", function () {
+      overlay.remove();
+    });
+    var saveBtn = el("button", "jd-modal-save", "Save & retry");
+    saveBtn.type = "button";
+    saveBtn.addEventListener("click", function () {
+      var answers = qaInputs
+        .filter(function (qa) {
+          return qa.input.value.trim();
+        })
+        .map(function (qa) {
+          return { question: qa.question, answer: qa.input.value.trim() };
+        });
+      if (!answers.length) {
+        errBox.hidden = false;
+        errBox.textContent = "Answer at least one question.";
+        return;
+      }
+      saveBtn.disabled = true;
+      saveBtn.textContent = "Saving…";
+      fetch("/api/dashboard/auto-apply/" + runId + "/answers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: answers }),
+      })
+        .then(function (r) {
+          if (r.status === 401) {
+            redirectToLogin();
+            return null;
+          }
+          return r.ok ? r.json() : Promise.reject(new Error("save failed"));
+        })
+        .then(function (data) {
+          if (!data) return;
+          overlay.remove();
+          onDone();
+        })
+        .catch(function () {
+          errBox.hidden = false;
+          errBox.textContent = "Couldn't save your answers. Try again.";
+          saveBtn.disabled = false;
+          saveBtn.textContent = "Save & retry";
+        });
+    });
+    actions.appendChild(cancelBtn);
+    actions.appendChild(saveBtn);
+    card.appendChild(actions);
+
+    overlay.appendChild(card);
+    overlay.addEventListener("click", function (e) {
+      if (e.target === overlay) overlay.remove();
+    });
+    document.body.appendChild(overlay);
   }
 
   var profileLinkBtn = document.getElementById("jd-profile-link");

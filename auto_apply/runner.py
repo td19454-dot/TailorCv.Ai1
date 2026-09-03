@@ -54,29 +54,34 @@ STAGE_TEXT = {
     "confirming": "Confirming the submission…",
 }
 
-AGENT_SYSTEM_PROMPT = """You are completing a job application on behalf of the candidate.
-CANDIDATE_DATA contains the candidate's own answers to every question a form may ask.
+# A field whose label looks like a file-attachment requirement (Cover
+# Letter, Writing Sample, ...) is one fill_form() already refuses to even
+# attempt (see browser.py's _SKIP_DESCRIPTION_MARKERS), so it can still show
+# up in the verify step's missing_required (the site's own required-marking
+# doesn't care why it's empty), and can never be resolved by typing an
+# answer in the "answer and retry" modal — a document-upload feature
+# auto-apply doesn't have — so it must never be offered there as if it
+# could be. Deliberately excludes "portfolio" despite it usually meaning a
+# file elsewhere: a "Portfolio URL" field is a normal, already-answerable
+# text field (answer_bank()'s portfolio_or_website) far more often than it's
+# an upload, and misclassifying that one would wrongly hide a real,
+# resolvable question from the modal instead of just misrouting an
+# unresolvable one.
+_DOCUMENT_FIELD_MARKERS = ("cover letter", "resume", "cv", "writing sample", "attach", "upload", "document")
 
-- Fill EVERY field that actually exists on THIS page, required and optional, using
-  CANDIDATE_DATA. This includes work authorization, visa/sponsorship, salary
-  expectations, notice period, start date, and EEO / demographic questions. The
-  candidate has already answered these — use their answers exactly as given.
-- Not every CANDIDATE_DATA key has a matching field on every form — this is normal.
-  If you cannot find a field that clearly corresponds to a CANDIDATE_DATA key (for
-  example, no cover letter box, no "why this role" box), SKIP it. Do not type it
-  into a different field, and never re-target a field you already filled correctly
-  (name, email, phone) to hold leftover text — each field gets exactly one value.
-- Tick agreement, consent, privacy-policy and terms-and-conditions checkboxes. The
-  candidate has authorized submission on their behalf.
-- For a free-text question with no exact match in CANDIDATE_DATA, adapt the closest
-  available answer (why_do_you_want_this_role, cover_letter, top_skills) — but only
-  into a field that is genuinely asking for that kind of content. Never state a fact
-  about the candidate that does not appear in CANDIDATE_DATA.
-- If a demographic question is genuinely absent from CANDIDATE_DATA, choose
-  "Decline to self-identify" or "Prefer not to say".
-- Do NOT solve CAPTCHAs, create an account, or log in. Stop and report instead.
-- Do NOT upload or attach files — the resume is attached separately.
-- Do NOT click the final submit/apply button. Stop once the form is complete."""
+
+def _split_missing_by_type(missing: list[str]) -> tuple[list[str], list[str]]:
+    """(text_answerable, needs_document) — see _DOCUMENT_FIELD_MARKERS."""
+    text_fields, document_fields = [], []
+    for label in missing:
+        lowered = label.lower()
+        (document_fields if any(m in lowered for m in _DOCUMENT_FIELD_MARKERS) else text_fields).append(label)
+    return text_fields, document_fields
+
+# The per-field fill instructions that used to live in AGENT_SYSTEM_PROMPT for
+# the autonomous Browserbase agent now live in browser.py's fill_form(), which
+# is the only place that still talks to an LLM about individual form fields —
+# see its module docstring for why the agent approach isn't available locally.
 
 PAGE_SCHEMA = {
     "type": "object",
@@ -320,27 +325,14 @@ def _name_corrupted(reported: str, expected: str) -> bool:
 async def _repair_field(run_id: int, browser, label: str, bad_value: str, correct_value: str) -> None:
     await _set_stage(run_id, "filling_form", f"Fixing the {label.lower()} field…")
     try:
-        await browser.agent(
-            f"The field labeled {label} currently contains the WRONG value: "
-            f"\"{bad_value[:200]}\". Clear that field completely and type exactly "
-            f"this instead: {correct_value}\nDo not touch any other field.",
-            AGENT_SYSTEM_PROMPT,
-            max_steps=10,
-            timeout=90.0,
-        )
+        ok = await browser.set_field(label, correct_value)
+        if not ok:
+            logger.warning(
+                "run %s could not locate the %s field to repair (was %r)",
+                run_id, label.lower(), bad_value[:200],
+            )
     except Exception:
         logger.exception("run %s %s-repair pass failed", run_id, label.lower())
-
-
-def _fill_instruction(p: ApplicantProfile, snap: dict) -> str:
-    return (
-        f"Complete this job application for the role \"{snap.get('job_title', '')}\" at "
-        f"\"{snap.get('job_company', '')}\".\n\n"
-        f"CANDIDATE_DATA:\n{p.to_agent_json()}\n\n"
-        "Fill every field on the form from CANDIDATE_DATA, including work authorization, "
-        "sponsorship, and any voluntary self-identification questions. Tick any required "
-        "agreement or consent checkboxes. Do not click the final submit button."
-    )
 
 
 async def _execute(run_id: int) -> None:
@@ -371,7 +363,7 @@ async def _execute(run_id: int) -> None:
     try:
         browser = await open_browser()
     except Exception as exc:
-        logger.exception("could not open Browserbase session for run %s", run_id)
+        logger.exception("could not open local browser session for run %s", run_id)
         _refund(meta["user_id"])
         await _finish(run_id, "failed", "Couldn't start the browser. Try again in a moment.", error=repr(exc))
         return
@@ -399,7 +391,7 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
 
     await _set_stage(run_id, "loading_page")
     try:
-        await browser.navigate(apply_url)
+        await browser.navigate_to_application(apply_url)
     except Exception as exc:
         await _finish(run_id, "failed", "Couldn't open the application page.", error=repr(exc))
         return
@@ -448,9 +440,8 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     attached = await browser.upload_resume(profile.resume_path)
 
     await _set_stage(run_id, "filling_form")
-    instruction = _fill_instruction(profile, snap)
     try:
-        await browser.agent(instruction, AGENT_SYSTEM_PROMPT, max_steps=50, timeout=300.0)
+        await browser.fill_form(profile.to_agent_json())
     except Exception as exc:
         await _finish(run_id, "failed", "Couldn't fill in the form.", error=repr(exc))
         return
@@ -493,31 +484,55 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
 
     if missing:
         # A repair pass, not a stopping point — the answers are all on file, so
-        # name the exact fields and let the agent finish them.
+        # scope fill_form to just the still-empty fields and let it finish them.
         await _set_stage(run_id, "filling_form", "Finishing the last few fields…")
         try:
-            await browser.agent(
-                "These REQUIRED fields are still empty or invalid: "
-                + "; ".join(missing[:15])
-                + ".\nFill each one using CANDIDATE_DATA below. Tick any required agreement "
-                "checkboxes. Do not click submit.\n\nCANDIDATE_DATA:\n"
-                + profile.to_agent_json(),
-                AGENT_SYSTEM_PROMPT,
-                max_steps=25,
-                timeout=180.0,
-            )
+            await browser.fill_form(profile.to_agent_json(), only_hint="; ".join(missing[:15]))
         except Exception:
             logger.exception("run %s repair pass failed", run_id)
-
-    if not config.submit_enabled():
+        await asyncio.sleep(1.0)
         recheck = await browser.extract(
             "List the labels of any REQUIRED fields still empty or invalid.", VERIFY_SCHEMA
         )
-        left = [str(m) for m in (recheck.get("missing_required") or [])]
+        missing = [str(m) for m in (recheck.get("missing_required") or [])]
+
+    text_missing, document_missing = _split_missing_by_type(missing)
+
+    if not config.submit_enabled():
         await _finish(
             run_id, "dry_run",
             "Dry run — the form was filled but not submitted.",
-            missing=left,
+            missing=text_missing,
+        )
+        return
+
+    # Required fields genuinely still unresolved after the one repair pass —
+    # nothing on file answers them. Stop cleanly here, naming exactly which
+    # fields need an answer, rather than clicking submit anyway and relying on
+    # the site's own rejection banner as the only signal something was wrong.
+    # That used to be the sole path here, and it's a strictly weaker one: the
+    # verify step's missing_required list (already page-derived, already
+    # honoring the site's own required-marking) is a more direct, more
+    # specific source than whatever text a rejected submission's confirm
+    # read happens to produce.
+    if text_missing or document_missing:
+        # document_missing (Cover Letter, Portfolio, Writing Sample, ...) can
+        # never be resolved by an "answer and retry" text prompt — fill_form()
+        # already refuses to even attempt these (_SKIP_DESCRIPTION_MARKERS),
+        # so the site's own required-marking on them will never clear no
+        # matter what's typed. Named separately in the message, and — this is
+        # the part that matters — never put in `missing`, so the retry modal
+        # only ever offers questions a text answer can actually resolve.
+        parts = []
+        if text_missing:
+            parts.append("A few required fields still need an answer we don't have on file: " + "; ".join(text_missing[:5]))
+        if document_missing:
+            parts.append("This employer also requires a document we can't attach automatically: " + "; ".join(document_missing[:3]) + " — finish that part by hand.")
+        await _finish(
+            run_id, "needs_input",
+            " ".join(parts),
+            error="unresolved_required_fields",
+            missing=text_missing,
         )
         return
 
@@ -536,7 +551,10 @@ CONFIRM_INSTRUCTION = (
     "- Also say whether this is another page of the form that still needs completing."
 )
 
-_PERMANENT_REJECTION_MARKERS = ("spam", "flagged", "blocked", "abuse", "banned", "too many attempts")
+_PERMANENT_REJECTION_MARKERS = (
+    "spam", "flagged", "blocked", "abuse", "banned", "too many attempts",
+    "rejected", "declined", "unsuccessful", "not successful",
+)
 
 
 def _looks_permanently_rejected(text: str) -> bool:
@@ -546,6 +564,28 @@ def _looks_permanently_rejected(text: str) -> bool:
     that again just looks more like abuse, not less."""
     lowered = (text or "").lower()
     return any(m in lowered for m in _PERMANENT_REJECTION_MARKERS)
+
+
+def _reconcile_confirm_result(result: dict) -> dict:
+    """CONFIRM_INSTRUCTION explicitly tells the model never to put a rejection
+    message in confirmation_text when submitted=True — but it isn't perfectly
+    reliable about that. Observed in practice: submitted=True with
+    confirmation_text reading as a spam-flag rejection banner, which got
+    recorded as a real submitted application (the user never got a confirmation
+    email because none was ever sent). submitted=True is never trusted on its
+    own; if the text handed back for it actually reads like a rejection, this
+    downgrades the result to not-submitted *before* any other logic sees it, so
+    it flows into the same rejection-handling path a genuine submitted=false
+    result already goes through — including the existing tolerance for a
+    rejection message landing in the wrong field."""
+    confirmation = str(result.get("confirmation_text") or "").strip()
+    if result.get("submitted") and confirmation and _looks_permanently_rejected(confirmation):
+        result = dict(result)
+        result["submitted"] = False
+        if not str(result.get("error_text") or "").strip():
+            result["error_text"] = confirmation
+        result["confirmation_text"] = ""
+    return result
 
 
 async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, missing: list[str]) -> None:
@@ -563,7 +603,7 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
         await asyncio.sleep(3.0)
 
         await _set_stage(run_id, "confirming")
-        result = await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA)
+        result = _reconcile_confirm_result(await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA))
 
         # A fully ambiguous first read — no confirmation, no error, no next
         # page — is often just a slow-loading confirmation screen rather than
@@ -571,7 +611,7 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
         # the submit didn't do anything.
         if not result.get("submitted") and not result.get("has_next_page") and not str(result.get("error_text") or "").strip():
             await asyncio.sleep(4.0)
-            result = await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA)
+            result = _reconcile_confirm_result(await browser.extract(CONFIRM_INSTRUCTION, CONFIRM_SCHEMA))
 
         if result.get("submitted") and not result.get("has_next_page"):
             confirmation = str(result.get("confirmation_text") or "").strip()
@@ -589,14 +629,7 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
         if result.get("has_next_page"):
             await _set_stage(run_id, "filling_form", "Filling in the next page…")
             try:
-                await browser.agent(
-                    "Complete this next page of the application form using CANDIDATE_DATA "
-                    "below. Tick any required agreement checkboxes. Do not click submit.\n\n"
-                    "CANDIDATE_DATA:\n" + profile.to_agent_json(),
-                    AGENT_SYSTEM_PROMPT,
-                    max_steps=30,
-                    timeout=240.0,
-                )
+                await browser.fill_form(profile.to_agent_json())
             except Exception:
                 logger.exception("run %s failed on form page %s", run_id, attempt + 2)
             continue
@@ -613,14 +646,12 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
         if error_text and attempt == 0 and not permanent:
             await _set_stage(run_id, "filling_form", "Fixing what the form flagged…")
             try:
-                await browser.agent(
-                    f"The form rejected the submission with: {error_text}\nFix the flagged "
-                    "fields using CANDIDATE_DATA below, then stop without submitting.\n\n"
-                    "CANDIDATE_DATA:\n" + profile.to_agent_json(),
-                    AGENT_SYSTEM_PROMPT,
-                    max_steps=25,
-                    timeout=180.0,
-                )
+                # error_text is a free-text rejection reason, not a clean list of
+                # field labels like `missing` — no reliable way to scope observe()
+                # to just the flagged fields, so re-run fill_form across the whole
+                # page. Re-setting an already-correct field to the same value is
+                # a no-op in practice, so this is safe, just not the cheapest path.
+                await browser.fill_form(profile.to_agent_json())
             except Exception:
                 logger.exception("run %s could not fix validation errors", run_id)
             continue

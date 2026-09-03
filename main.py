@@ -563,6 +563,43 @@ def _ensure_job_dashboard_columns() -> None:
                 conn.execute(_text("ALTER TABLE job_search_queries ADD COLUMN embedding TEXT"))
 
 
+def _ensure_apply_profile_columns() -> None:
+    """Add the gender-pronouns/LGBTQ+-identity EEO columns to the existing
+    user_apply_profiles table if missing.
+
+    Also widens user_apply_qa.question_text from its original VARCHAR(400) to
+    TEXT — real EEO/compliance questions run well past 400 characters
+    (observed in practice: a 538-character Robinhood conflict-of-interest
+    question), which was rejecting the save-answers endpoint with a 422.
+    create_all() only creates missing tables, it never alters an existing
+    column's type, so this table (new this release) still needs one manual
+    widen despite needing no ALTER for its *existence*. Postgres only —
+    SQLite has no real VARCHAR length enforcement, so String(400) there
+    already behaves like TEXT."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if insp.has_table("user_apply_qa") and engine.dialect.name != "sqlite":
+        cols = {c["name"]: c for c in insp.get_columns("user_apply_qa")}
+        col = cols.get("question_text")
+        if col is not None and str(col["type"]).upper().startswith("VARCHAR"):
+            with engine.begin() as conn:
+                conn.execute(_text("ALTER TABLE user_apply_qa ALTER COLUMN question_text TYPE TEXT"))
+
+    if not insp.has_table("user_apply_profiles"):
+        return
+    cols = {c["name"] for c in insp.get_columns("user_apply_profiles")}
+    to_add = []
+    if "gender_pronouns" not in cols:
+        to_add.append("ADD COLUMN gender_pronouns VARCHAR(40)")
+    if "lgbtq_identity" not in cols:
+        to_add.append("ADD COLUMN lgbtq_identity VARCHAR(60)")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE user_apply_profiles {clause}"))
+
+
 def _reap_stale_auto_apply_runs() -> None:
     """Fail any auto-apply run still queued/running at boot.
 
@@ -633,6 +670,7 @@ def initialize_database() -> None:
         _ensure_user_columns()
         _ensure_usage_columns()
         _ensure_job_dashboard_columns()
+        _ensure_apply_profile_columns()
         _ensure_pgvector()
         _reap_stale_auto_apply_runs()
         db_init_status["ok"] = True

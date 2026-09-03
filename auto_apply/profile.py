@@ -15,6 +15,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import re
 from dataclasses import dataclass, field
 
 from functions import _extract_contact_from_resume_text, get_resume_response
@@ -72,8 +73,16 @@ class ApplicantProfile:
     race_ethnicity: str = DECLINE
     veteran_status: str = DECLINE
     disability_status: str = DECLINE
+    gender_pronouns: str = DECLINE
+    lgbtq_identity: str = DECLINE
     agreed_to_employer_terms: bool = False
     has_consent: bool = False
+
+    # Answers to specific per-employer questions the user was asked before
+    # (e.g. "Have you used Robinhood?"), never LLM-generated — see
+    # UserApplyQA. Free-form, so no single fixed profile column could hold
+    # a universally-correct value for any of these.
+    qa_entries: list[dict] = field(default_factory=list)
 
     # Narrative — LLM may write these
     current_title: str = ""
@@ -96,6 +105,18 @@ def _split_name(full: str) -> tuple[str, str]:
     return parts[0], " ".join(parts[1:])
 
 
+def question_signature(text: str) -> str:
+    """Normalized question-text key used to match a form's question against a
+    stored UserApplyQA answer (and to save one) — lowercased, punctuation
+    stripped, whitespace collapsed. Exact-normalized match only at the storage
+    layer; matching a *newly*-seen, differently-worded question against a
+    stored one is fill_form()'s LLM prompt's job (via other_answers_on_file
+    in the answer bank below), not this function's."""
+    text = (text or "").lower().strip()
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()[:160]
+
+
 def snapshot_user(db, user_id: int, job_id: int) -> dict:
     """Read everything the run needs in one short DB transaction.
 
@@ -103,11 +124,12 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
     asyncio.to_thread and the session is closed immediately after, so anything
     still attached would blow up on later attribute access.
     """
-    from models import JobListing, User, UserApplyProfile
+    from models import JobListing, User, UserApplyProfile, UserApplyQA
 
     user = db.query(User).filter(User.id == user_id).first()
     job = db.query(JobListing).filter(JobListing.id == job_id).first()
     prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user_id).first()
+    qa_rows = db.query(UserApplyQA).filter(UserApplyQA.user_id == user_id).all()
     if not user or not job:
         return {}
 
@@ -126,6 +148,7 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
         "apply_url": job.apply_url or "",
         "job_source": job.source or "",
         "profile": _profile_to_dict(prof),
+        "qa_entries": [{"question": r.question_text, "answer": r.answer} for r in qa_rows],
     }
 
 
@@ -154,6 +177,8 @@ def _profile_to_dict(prof) -> dict:
         "race_ethnicity": prof.race_ethnicity or "",
         "veteran_status": prof.veteran_status or "",
         "disability_status": prof.disability_status or "",
+        "gender_pronouns": prof.gender_pronouns or "",
+        "lgbtq_identity": prof.lgbtq_identity or "",
         "agreed_to_employer_terms": bool(prof.agreed_to_employer_terms),
         "has_consent": prof.auto_apply_consent_at is not None,
     }
@@ -262,6 +287,9 @@ async def build_applicant_profile(snap: dict) -> ApplicantProfile:
         race_ethnicity=str(prof.get("race_ethnicity") or "").strip() or DECLINE,
         veteran_status=str(prof.get("veteran_status") or "").strip() or DECLINE,
         disability_status=str(prof.get("disability_status") or "").strip() or DECLINE,
+        gender_pronouns=str(prof.get("gender_pronouns") or "").strip() or DECLINE,
+        lgbtq_identity=str(prof.get("lgbtq_identity") or "").strip() or DECLINE,
+        qa_entries=snap.get("qa_entries") or [],
         agreed_to_employer_terms=bool(prof.get("agreed_to_employer_terms")),
         has_consent=bool(prof.get("has_consent")),
         current_title=str(prof.get("current_title") or "").strip(),
@@ -346,9 +374,17 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "race_ethnicity": p.race_ethnicity or DECLINE,
         "veteran_status": p.veteran_status or DECLINE,
         "disability_status": p.disability_status or DECLINE,
+        "gender_pronouns": p.gender_pronouns or DECLINE,
+        "lgbtq_identity": p.lgbtq_identity or DECLINE,
         "accepts_employer_terms_and_privacy_policy": "Yes" if p.agreed_to_employer_terms else "",
     }
-    return {k: v for k, v in bank.items() if str(v).strip()}
+    bank = {k: v for k, v in bank.items() if str(v).strip()}
+    # Added after the empty-string filter above: a *list* value would pass
+    # that filter even when empty (str([]) == "[]", non-blank), so this only
+    # goes in when there's actually something in it.
+    if p.qa_entries:
+        bank["other_answers_on_file"] = [f"Q: {e['question']} A: {e['answer']}" for e in p.qa_entries]
+    return bank
 
 
 def _as_url(value: str) -> str:

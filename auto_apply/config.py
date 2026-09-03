@@ -58,6 +58,16 @@ def submit_enabled() -> bool:
     return _env_bool("AUTO_APPLY_SUBMIT", True)
 
 
+def headless() -> bool:
+    """Whether the local Chromium runs headless.
+
+    Default on — a real deploy has no display server, so headless=False
+    there would just fail to launch. AUTO_APPLY_HEADLESS=0 is a local dev
+    switch to pop up the actual browser window and watch a run fill a form
+    live; never set this in production."""
+    return _env_bool("AUTO_APPLY_HEADLESS", True)
+
+
 def max_concurrency() -> int:
     return max(1, _env_int("AUTO_APPLY_MAX_CONCURRENCY", 2))
 
@@ -82,14 +92,6 @@ def model_api_key() -> str:
     return _env("AUTO_APPLY_MODEL_API_KEY") or _env("OPENAI_API_KEY")
 
 
-def browserbase_api_key() -> str:
-    return _env("BROWSERBASE_API_KEY")
-
-
-def browserbase_project_id() -> str:
-    return _env("BROWSERBASE_PROJECT_ID")
-
-
 def deps_installed() -> bool:
     """True if stagehand and playwright are importable — without importing them."""
     try:
@@ -100,10 +102,12 @@ def deps_installed() -> bool:
 
 def availability() -> tuple[bool, str]:
     """(available, user-facing reason). Missing deps or keys degrade the feature
-    to a disabled button rather than a 500 — the dashboard must still render."""
+    to a disabled button rather than a 500 — the dashboard must still render.
+
+    No Browserbase key required — auto_apply/browser.py launches its own local
+    Chromium via `playwright install chromium`. The one remaining external
+    dependency is the LLM used for page-reading and answer generation."""
     if not deps_installed():
-        return False, UNAVAILABLE_MSG
-    if not browserbase_api_key():
         return False, UNAVAILABLE_MSG
     if not model_api_key():
         return False, UNAVAILABLE_MSG

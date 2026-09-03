@@ -1,29 +1,42 @@
 """The only module that imports stagehand and playwright.
 
-Both are imported lazily inside functions so the app boots without them, and
-everything version-sensitive about the Stagehand SDK is quarantined behind
-RemoteBrowser. The SDK has shipped two shapes: v3 returns a bound session
-object (session.navigate(...)), earlier builds keep the client and pass an id
-(client.sessions.execute(id=...)). open_browser() probes for whichever the
-installed version exposes; callers see one interface either way.
+Runs Stagehand against a browser Chromium instance launched locally via
+Playwright — no Browserbase account, session, or credits required. Both
+packages are imported lazily inside functions so the app boots without them.
+
+IMPORTANT — why this file doesn't just call one "fill the form" primitive:
+Stagehand's Python SDK (v4, confirmed against the installed package and
+Stagehand's own docs) has no autonomous multi-step "agent" API at all,
+locally or on Browserbase — only the atomic act()/observe()/extract() calls.
+Their own docs are explicit: "If you need to orchestrate multi-step flows,
+use multiple act commands." The previous version of this file's
+RemoteBrowser.agent() was calling a Browserbase-hosted agent product via a
+REST-shaped `client.sessions.execute(execute_options=..., agent_config=...)`
+call — a Browserbase-specific feature layered on top of Stagehand, not a
+portable SDK capability. There is nothing to "swap" it for; fill_form()
+below is a replacement, not a port: observe() finds every field on the page,
+one LLM call maps CANDIDATE_DATA onto them by index, and each answer is
+applied with a direct Locator call (.fill / .select_option / .click). This
+is also cheaper than an autonomous agent would have been — one page read
+instead of an unknown number of think-act loops.
 """
 
 from __future__ import annotations
 
 import asyncio
+import difflib
+import html as _html
+import json
 import logging
 import platform
+import re
 import threading
 from typing import Any, Coroutine
 
-import httpx
-
 from auto_apply import config
+from functions import get_resume_response
 
 logger = logging.getLogger(__name__)
-
-BROWSERBASE_API = "https://api.browserbase.com/v1"
-CDP_ENDPOINT = "wss://connect.browserbase.com"
 
 _IS_WINDOWS = platform.system() == "Windows"
 
@@ -33,11 +46,15 @@ _IS_WINDOWS = platform.system() == "Windows"
 # SelectorEventLoop for the worker process whenever --reload or workers>1 is
 # used on Windows (its own reload-supervisor requirement), so a plain "uvicorn
 # main:app --reload" dev server is incompatible with Playwright out of the
-# box. Rather than ask for --reload to be dropped, run Playwright on its own
-# dedicated Proactor loop in a background thread, decoupled from whatever loop
-# policy the ASGI server ends up with. Linux (production) never hits this —
-# every event loop there supports subprocesses — so this only activates on
-# Windows and the rest of the app is untouched.
+# box. Rather than ask for --reload to be dropped, run the whole Stagehand
+# session — launch, every act/observe/extract/locator call, close — on its
+# own dedicated Proactor loop in a background thread, decoupled from
+# whatever loop policy the ASGI server ends up with. A Stagehand/Playwright
+# object is bound to the loop it was created on, so once open_browser() runs
+# there, every later call for that session has to go through the same loop
+# too — not just the one call that used to need it. Linux (production) never
+# hits this — every event loop there supports subprocesses — so this only
+# activates on Windows and the rest of the app is untouched.
 _pw_loop: asyncio.AbstractEventLoop | None = None
 _pw_loop_lock = threading.Lock()
 
@@ -60,8 +77,9 @@ def _get_playwright_loop() -> asyncio.AbstractEventLoop:
 
 
 async def _run_playwright(coro: Coroutine) -> Any:
-    """Run a Playwright coroutine on a loop that actually supports subprocess
-    transports, regardless of which loop is driving the current request."""
+    """Run a Playwright/Stagehand coroutine on a loop that actually supports
+    subprocess transports, regardless of which loop is driving the current
+    request. On non-Windows this is a no-op passthrough."""
     if not _IS_WINDOWS:
         return await coro
     loop = _get_playwright_loop()
@@ -69,267 +87,569 @@ async def _run_playwright(coro: Coroutine) -> Any:
     return await asyncio.wrap_future(fut)
 
 
-def _unwrap(response: Any) -> Any:
-    """Stagehand wraps results as resp.data.result; tolerate flatter shapes."""
-    data = getattr(response, "data", response)
-    result = getattr(data, "result", data)
-    if hasattr(result, "model_dump"):
-        return result.model_dump()
-    return result
-
-
-# extract/act/agent calls send real page content to the model, so a single run
-# (page-read, open-form, fill, verify, submit, confirm, maybe a repair pass)
-# can burn through an OpenAI account's tokens-per-minute cap in well under a
-# minute — especially with more than one run in flight. Stagehand's backend
-# already retries a few times internally and, when that's exhausted, reports
-# it back as a 422 rather than a clean 429 ("AI_RetryError: ... Rate limit
-# reached ... Requested X. Please try again in Yms"). Without a retry here
-# that surfaces as the whole run crashing, even though the TPM window resets
-# every 60s on its own.
+# stagehand.act/observe/extract send real page content to the model, so a
+# single run (page-read, open-form, fill, verify, submit, confirm, maybe a
+# repair pass) can burn through an OpenAI account's tokens-per-minute cap in
+# well under a minute — especially with more than one run in flight. There's
+# no dedicated stagehand exception type exported in the v4 package (checked:
+# nothing under stagehand.* has "error"/"exception" in its name), so unlike
+# the previous Browserbase-backed version this can't isinstance-check a
+# specific SDK error class — it falls back to the same text-matching heuristic
+# that was always the fallback path here.
 _RETRY_ATTEMPTS = 4
 _RETRY_BASE_DELAY = 3.0
 _RETRY_MAX_DELAY = 20.0
-_TRANSIENT_MARKERS = ("rate limit", "ai_retryerror", "try again", "timed out", "temporarily unavailable")
-# "Request too large" is reported through the same AI_RetryError wrapper as a
-# genuine rate limit, but it isn't transient — a heavy, JS-rendered page (seen
-# in practice: one Lever posting alone needed 54k tokens against a 30k/min
-# cap) produces the same oversized payload on every attempt. Retrying just
-# wastes the backoff window before failing identically; check for this first.
+_TRANSIENT_MARKERS = ("rate limit", "try again", "timed out", "temporarily unavailable", "connection")
 _PERMANENT_MARKERS = ("request too large", "must be reduced")
 
 
 def _is_transient(exc: Exception) -> bool:
-    import stagehand
-
-    # 5xx / connection / timeout errors are Stagehand's own backend or the
-    # network having a bad moment, not a judgment about the request — nearly
-    # always worth a retry regardless of what the (often generic, e.g. "An
-    # internal server error occurred") message says.
-    if isinstance(exc, (stagehand.InternalServerError, stagehand.APIConnectionError)):
-        return True
     text = str(exc).lower()
     if any(m in text for m in _PERMANENT_MARKERS):
         return False
     return any(m in text for m in _TRANSIENT_MARKERS)
 
 
-class RemoteBrowser:
-    """One Browserbase session, with the SDK-shape differences absorbed."""
+# Prompt for fill_form()'s single answer-mapping LLM call — the replacement
+# for the old AGENT_SYSTEM_PROMPT + multi-step agent. Kept here rather than
+# in runner.py because it's an implementation detail of *how* browser.py
+# fills a form, not of the run's stage machine.
+_FIELD_ANSWER_PROMPT = """You are filling out a job application form on behalf of a candidate.
 
-    def __init__(self, client: Any, session: Any, session_id: str, bound: bool):
-        self._client = client
-        self._session = session
-        self._bound = bound  # True: session.act(...); False: client.sessions.act(id=...)
-        self.session_id = session_id
+CANDIDATE_DATA is the candidate's own answers to whatever a form may ask. Use these values
+exactly as given — never invent a fact that isn't present here.
+CANDIDATE_DATA:
+{candidate_json}
+
+FORM FIELDS found on the page, each with an index and a description of what it asks for:
+{fields_block}
+
+For every field index that CANDIDATE_DATA reasonably answers, return a value for it. Skip an
+index only if nothing in CANDIDATE_DATA answers it, or the field clearly isn't part of the
+application (a search box, a filter, a nav link).
+- For a Yes/No question (work authorization, sponsorship, relocation, agree-to-terms), return
+  exactly "yes" or "no".
+- For a consent / "I agree" / privacy-policy / terms checkbox, return "yes" — the candidate has
+  authorized submitting on their behalf.
+- For a dropdown/select, return the option text as close to CANDIDATE_DATA's value as possible.
+- For free text with no exact CANDIDATE_DATA match, adapt the closest available value
+  (why_do_you_want_this_role, cover_letter, top_skills) only if it genuinely answers that field.
+- If CANDIDATE_DATA includes other_answers_on_file, it's a list of specific questions this
+  candidate has answered before, worded however that earlier form asked them. If a field here is
+  the same question asked in different words (e.g. "Have you used our product?" vs "Have you used
+  Robinhood?"), use that exact stored answer — do not treat a differently-worded question as
+  unanswered just because it doesn't match verbatim.
+- Never answer a field asking for sensitive data (SSN, bank details) not present in CANDIDATE_DATA.
+
+Return ONLY a JSON object of this shape, nothing else:
+{{"answers": {{"<index>": "<value>", "<index>": "<value>"}}}}
+"""
+
+# Fields the observe() pass finds that fill_form() must never touch: the
+# resume/cover-letter file input is handled separately by upload_resume(),
+# which can drive an OS file picker that act()/Locator.fill() cannot.
+_SKIP_DESCRIPTION_MARKERS = ("resume", "cv", "cover letter", "attach", "upload")
+
+
+def _board_root(apply_url: str) -> str | None:
+    """The company's board/listing root, one path segment up from a specific
+    posting — e.g. https://job-boards.greenhouse.io/acme/jobs/123 becomes
+    https://job-boards.greenhouse.io/acme. Holds for all four supported ATS
+    (greenhouse, lever, ashby, smartrecruiters): each puts the company slug
+    as the first path segment after the host."""
+    from urllib.parse import urlsplit
+
+    try:
+        parts = urlsplit(apply_url)
+        segments = [s for s in parts.path.split("/") if s]
+        if not segments or not parts.scheme or not parts.netloc:
+            return None
+        return f"{parts.scheme}://{parts.netloc}/{segments[0]}"
+    except Exception:
+        return None
+
+
+def _job_id_segment(apply_url: str) -> str | None:
+    """The path segment that actually identifies this job on its board page
+    — the last non-empty one, since every supported ATS ends apply_url with
+    the job's numeric id or slug (…/jobs/8654173002, …/{company}/{job-id})."""
+    from urllib.parse import urlsplit
+
+    try:
+        segments = [s for s in urlsplit(apply_url).path.split("/") if s]
+        return segments[-1] if segments else None
+    except Exception:
+        return None
+
+
+def _url_matches(landed_url: str, apply_url: str) -> bool:
+    """True if landed_url looks like the job page, not still the board.
+    Deliberately loose (substring on the id segment) since a click-through
+    can pick up query params / trailing slashes goto() wouldn't add."""
+    needle = _job_id_segment(apply_url)
+    return bool(needle) and needle in (landed_url or "")
+
+
+# ── <select> option matching ─────────────────────────────────────────────────
+# Root cause of forms getting stuck on EEO/demographic dropdowns: an answer
+# ("Decline to self-identify") exists in CANDIDATE_DATA, but the real <select>
+# on this specific employer's form uses different wording ("I don't wish to
+# answer", "Prefer not to say", ...). select_option(value) needs an exact
+# match, so a wording mismatch silently fails, leaving the field on
+# "Select…" — which the site's own required-field validation then blocks
+# submit on. These helpers read the select's real option text and match
+# against it, instead of trusting the LLM's guessed string to be exact.
+
+_EEO_FIELD_MARKERS = ("gender", "race", "ethnic", "veteran", "military", "disab", "pronoun")
+_DECLINE_OPTION_MARKERS = (
+    "decline", "prefer not", "don't wish", "do not wish",
+    "not to answer", "not disclose", "rather not",
+)
+_OPTION_MATCH_THRESHOLD = 0.55
+_OPTION_TAG_RE = re.compile(r"<option\b([^>]*)>(.*?)</option>", re.IGNORECASE | re.DOTALL)
+_VALUE_ATTR_RE = re.compile(r'value\s*=\s*(["\'])(.*?)\1', re.IGNORECASE | re.DOTALL)
+
+
+def _normalize_option_text(text: str) -> str:
+    text = (text or "").lower().strip()
+    text = re.sub(r"[^a-z0-9\s]", " ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _looks_like_eeo_field(description: str) -> bool:
+    lowered = (description or "").lower()
+    return any(m in lowered for m in _EEO_FIELD_MARKERS)
+
+
+def _parse_select_options(raw_html: str) -> list[dict[str, str]]:
+    """<option> value/label pairs out of a <select>'s inner_html(). Regex
+    rather than a full HTML parser — <option> markup is simple and well-formed
+    enough in practice, and this avoids adding a new dependency for it. The
+    attribute string is captured whole and searched separately for `value=`
+    rather than anchoring on it directly after the tag name — option tags
+    commonly carry other attributes (data-*, selected, class) before or
+    instead of value, at arbitrary whitespace, which a single combined regex
+    kept missing."""
+    options = []
+    for m in _OPTION_TAG_RE.finditer(raw_html or ""):
+        attrs, inner = m.group(1), m.group(2)
+        label = _html.unescape(re.sub(r"<[^>]+>", "", inner or "")).strip()
+        if not label:
+            continue
+        value_match = _VALUE_ATTR_RE.search(attrs or "")
+        value = _html.unescape(value_match.group(2)).strip() if value_match else label
+        options.append({"value": value, "label": label})
+    return options
+
+
+def _find_decline_option(options: list[dict[str, str]]) -> dict[str, str] | None:
+    for opt in options:
+        if any(m in opt.get("label", "").lower() for m in _DECLINE_OPTION_MARKERS):
+            return opt
+    return None
+
+
+def _best_option_match(value: str, options: list[dict[str, str]]) -> dict[str, str] | None:
+    """The option whose text best matches `value`, or None if nothing clears
+    _OPTION_MATCH_THRESHOLD — a non-match must not become a wrong click.
+    Exact normalized match wins outright; otherwise the option with the best
+    difflib ratio, with a floor bonus for substring containment (handles
+    "Decline to self-identify" being a superstring/substring of a slightly
+    different real option's wording)."""
+    norm_value = _normalize_option_text(value)
+    if not norm_value or not options:
+        return None
+    for opt in options:
+        if _normalize_option_text(opt.get("label", "")) == norm_value:
+            return opt
+    best_opt, best_score = None, 0.0
+    for opt in options:
+        norm_label = _normalize_option_text(opt.get("label", ""))
+        if not norm_label:
+            continue
+        score = difflib.SequenceMatcher(None, norm_value, norm_label).ratio()
+        if norm_value in norm_label or norm_label in norm_value:
+            score = max(score, 0.75)
+        if score > best_score:
+            best_opt, best_score = opt, score
+    return best_opt if best_score >= _OPTION_MATCH_THRESHOLD else None
+
+
+class LocalBrowser:
+    """One local Stagehand session, backed by a Playwright Chromium instance
+    this process launched and owns — no Browserbase account involved."""
+
+    def __init__(self, stagehand: Any, browser: Any):
+        self._sh = stagehand
+        self._browser = browser
+        self.session_id = getattr(browser, "session_id", None) or "local"
+        # Browserbase-only conveniences. Left None so job_dashboard.js's
+        # existing `if (run.liveViewUrl) ... else if (run.replayUrl)` checks
+        # degrade to showing neither link, rather than a broken one.
         self.live_view_url: str | None = None
-        self.replay_url: str | None = f"https://browserbase.com/sessions/{session_id}" if session_id else None
+        self.replay_url: str | None = None
 
-    # ── SDK shape shim ────────────────────────────────────────────────────
-    async def _call(self, name: str, **kwargs) -> Any:
-        import stagehand
-
-        async def invoke() -> Any:
-            if self._bound:
-                return await getattr(self._session, name)(**kwargs)
-            return await getattr(self._client.sessions, name)(id=self.session_id, **kwargs)
-
+    async def _call(self, coro_factory) -> Any:
+        """Run one Stagehand call with the transient-error retry, on the
+        dedicated Playwright loop this session was created on."""
         delay = _RETRY_BASE_DELAY
         for attempt in range(_RETRY_ATTEMPTS):
             try:
-                return await invoke()
-            except stagehand.APIError as exc:
+                return await _run_playwright(coro_factory())
+            except Exception as exc:
                 is_last = attempt == _RETRY_ATTEMPTS - 1
                 if is_last or not _is_transient(exc):
                     raise
                 logger.warning(
-                    "stagehand.%s hit a transient error (attempt %s/%s), retrying in %.0fs: %s",
-                    name, attempt + 1, _RETRY_ATTEMPTS, delay, exc,
+                    "stagehand call hit a transient error (attempt %s/%s), retrying in %.0fs: %s",
+                    attempt + 1, _RETRY_ATTEMPTS, delay, exc,
                 )
                 await asyncio.sleep(delay)
                 delay = min(_RETRY_MAX_DELAY, delay * 2)
 
     # ── Operations ────────────────────────────────────────────────────────
     async def navigate(self, url: str) -> None:
-        await self._call("navigate", url=url)
+        page = await self._active_page()
+        await self._call(lambda: page.goto(url))
+
+    async def navigate_to_application(self, apply_url: str) -> None:
+        """Reach a job application page the way a human applicant would —
+        via the company's board page first, not a cold direct link.
+
+        Confirmed in testing (two different Greenhouse-hosted companies, same
+        exact job URLs both times): navigating straight to apply_url got
+        flagged has_captcha=True by the page-read; reaching the identical URL
+        by clicking a link on the board page did not.
+
+        The first version of this method tried to reproduce that with
+        page.evaluate("...element.click()...") — a scripted DOM click, which
+        it still is not: a JS-invoked click sets event.isTrusted=false, and
+        that CAPTCHA still fired against the exact same job in testing after
+        adding it. Locator.click() below is a real CDP-dispatched pointer
+        event (isTrusted=true), the same mechanism a genuine act() click
+        uses — that's the actual difference between the click-through probes
+        that stayed clean and this one, not the Referer header. Falls back
+        to a direct navigate() if the board can't be reached or the matching
+        link can't be found — this must never leave a run stuck on the board
+        page.
+        """
+        root = _board_root(apply_url)
+        if root and root.rstrip("/") != apply_url.rstrip("/"):
+            try:
+                page = await self._active_page()
+                await self._call(lambda: page.goto(root))
+                if await self._click_matching_link(page, apply_url):
+                    await self._call(lambda: page.wait_for_load_state("domcontentloaded"))
+                    landed = await self._call(lambda: page.url())
+                    if _url_matches(landed, apply_url):
+                        return
+            except Exception:
+                logger.info("board warm-up navigation to %s didn't land on the job page, falling back", root, exc_info=True)
+        await self.navigate(apply_url)
+
+    async def _click_matching_link(self, page: Any, apply_url: str) -> bool:
+        """Click the <a> on the current (board) page whose href matches
+        apply_url's identifying path segment, via Locator.click() (a real
+        pointer event) — deterministic (a CSS attribute selector, no LLM
+        call), so it can't click the wrong job."""
+        needle = _job_id_segment(apply_url)
+        if not needle:
+            return False
+        try:
+            locator = page.locator(f'a[href*="{needle}"]')
+            count = await self._call(lambda: locator.count())
+            if count < 1:
+                return False
+            await self._call(lambda: locator.nth(0).click())
+            return True
+        except Exception:
+            return True  # navigation away from this context reads as success too
 
     async def act(self, instruction: str) -> Any:
-        return await self._call("act", input=instruction)
+        return await self._call(lambda: self._sh.act(instruction))
 
-    async def observe(self, instruction: str) -> Any:
-        return _unwrap(await self._call("observe", instruction=instruction))
+    async def observe(self, instruction: str) -> list[Any]:
+        result = await self._call(lambda: self._sh.observe(instruction))
+        return list(getattr(result, "data", None) or [])
 
     async def extract(self, instruction: str, schema: dict) -> dict:
-        resp = await self._call("extract", instruction=instruction, schema=schema)
-        result = _unwrap(resp)
-        return result if isinstance(result, dict) else {}
+        model = _schema_to_model(schema)
+        result = await self._call(lambda: self._sh.extract(instruction, model))
+        data = getattr(result, "data", None)
+        if data is None:
+            return {}
+        if hasattr(data, "model_dump"):
+            return data.model_dump()
+        return dict(data) if isinstance(data, dict) else {}
 
-    async def agent(
-        self,
-        instruction: str,
-        system_prompt: str,
-        max_steps: int = 50,
-        timeout: float = 300.0,
-    ) -> Any:
-        return _unwrap(
-            await self._call(
-                "execute",
-                execute_options={"instruction": instruction, "max_steps": max_steps},
-                agent_config={"model": config.model_name(), "system_prompt": system_prompt},
-                timeout=timeout,
-            )
-        )
+    async def fill_form(self, candidate_json: str, only_hint: str | None = None) -> dict:
+        """Find every field on the current page and fill what CANDIDATE_DATA
+        answers. only_hint scopes the observe() pass to fields matching a
+        description (e.g. missing-field labels from a verify step, or a
+        single field name for a targeted repair) instead of the whole form.
 
-    async def upload_resume(self, resume_path: str) -> bool:
-        """Attach the resume PDF by driving the file input directly over CDP.
-
-        The browser agent cannot do this — a file picker is an OS dialog, not a
-        DOM interaction. So we attach Playwright to the *same* Browserbase
-        session and call set_input_files ourselves.
-
-        Two details that matter: the form is usually inside an iframe on
-        Greenhouse/Lever, so every frame is searched; and the input is very
-        often display:none, so set_input_files goes to the element handle
-        (page.set_input_files(selector) applies visibility checks and would
-        fail on exactly the inputs we need).
+        Returns {"filled": [descriptions], "skipped": [descriptions]} for
+        logging — never raises for an individual field failing; one bad
+        field must not sink the whole run.
         """
+        find_instruction = (
+            "Find every fillable field in this job application form: text inputs, textareas, "
+            "selects, checkboxes, radio buttons, and comboboxes. Skip search boxes, filters, "
+            "and site navigation controls."
+            if not only_hint else
+            f"Find the form field(s) matching: {only_hint}"
+        )
+        actions = await self.observe(find_instruction)
+        logger.info("fill_form: observe() found %d field(s) for %r", len(actions), only_hint or "(full page)")
+        if not actions:
+            return {"filled": [], "skipped": []}
+
+        candidates = [
+            (i, a) for i, a in enumerate(actions)
+            if not any(m in (getattr(a, "description", "") or "").lower() for m in _SKIP_DESCRIPTION_MARKERS)
+        ]
+        if not candidates:
+            return {"filled": [], "skipped": []}
+
+        fields_block = "\n".join(f"{i}: {a.description}" for i, a in candidates)
+        prompt = _FIELD_ANSWER_PROMPT.format(candidate_json=candidate_json, fields_block=fields_block)
         try:
-            return await _run_playwright(self._upload_resume_impl(resume_path))
+            raw = await get_resume_response(prompt)
+            parsed = json.loads(raw)
+            answers = parsed.get("answers") or {}
         except Exception:
-            logger.exception("resume upload over CDP failed for session %s", self.session_id)
+            logger.exception("fill_form: answer-mapping LLM call failed")
+            return {"filled": [], "skipped": [a.description for _, a in candidates]}
+
+        # unanswered: the LLM had nothing in CANDIDATE_DATA for these — a
+        # profile/QA gap. apply_failed: it DID answer, but writing the value
+        # into the page failed — a DOM/interaction problem, not a data gap.
+        # Logged separately (rather than one flat "skipped" reason) because
+        # the fix for each is completely different, and conflating them made
+        # a real DOM-write failure indistinguishable from a genuinely missing
+        # answer when reading the run's outcome after the fact.
+        filled, unanswered, apply_failed = [], [], []
+        for i, action in candidates:
+            value = answers.get(str(i))
+            if value is None or str(value).strip() == "":
+                unanswered.append(action.description)
+                continue
+            ok = await self._apply_answer(action, str(value))
+            (filled if ok else apply_failed).append(f"{action.description} (tried: {value!r})")
+        logger.info(
+            "fill_form: %d filled, %d unanswered (no data on file): %s, %d apply failed: %s",
+            len(filled), len(unanswered), unanswered, len(apply_failed), apply_failed,
+        )
+        return {"filled": filled, "skipped": unanswered + apply_failed}
+
+    async def _apply_answer(self, action: Any, value: str) -> bool:
+        page = await self._active_page()
+        # Page.locator() is a plain synchronous constructor (confirmed against
+        # the installed SDK: it returns Locator directly, not an awaitable) —
+        # only the operations performed *on* the resulting Locator are RPC
+        # calls that need _call()'s retry/thread routing.
+        locator = page.locator(action.selector)
+        method = (getattr(action, "method", "") or "").lower()
+        is_yesish = value.strip().lower() in ("yes", "true", "1", "checked", "on")
+
+        try:
+            if method == "click" or is_yesish and method in ("", "check", "toggle"):
+                # Checkbox/radio: only click if not already in the desired
+                # state — Locator has no dedicated "check" call to lean on.
+                try:
+                    already = await self._call(lambda: locator.is_checked())
+                except Exception:
+                    already = False
+                if is_yesish and not already:
+                    await self._call(lambda: locator.click())
+                elif not is_yesish and already:
+                    await self._call(lambda: locator.click())
+                return True
+            if method == "select":
+                await self._select_with_match(locator, action, value)
+                return True
+            # Default: plain text/textarea fill. If that fails on what turns
+            # out to be a select/checkbox observe() mis-typed, fall back to
+            # select_option once before giving up on this field.
+            try:
+                await self._call(lambda: locator.fill(value))
+                return True
+            except Exception:
+                await self._select_with_match(locator, action, value)
+                return True
+        except Exception:
+            logger.warning("fill_form: could not apply field %r", getattr(action, "description", ""), exc_info=True)
             return False
 
-    async def _upload_resume_impl(self, resume_path: str) -> bool:
-        from playwright.async_api import async_playwright
+    async def _read_select_options(self, locator: Any) -> list[dict[str, str]]:
+        """Real <option> value/label text for a <select> Locator. This SDK's
+        Locator has no evaluate() (checked against the installed package), so
+        this reads inner_html() and regex-parses it instead — which reuses
+        exactly the same cross-frame resolution that already makes
+        fill()/click() work on iframed ATS forms (Greenhouse embeds its form
+        in an iframe; confirmed in live testing that Locator calls reach into
+        it correctly), rather than needing a separate iframe workaround."""
+        try:
+            raw_html = await self._call(lambda: locator.inner_html())
+            return _parse_select_options(raw_html)
+        except Exception:
+            return []
 
-        key = config.browserbase_api_key()
-        cdp_url = f"{CDP_ENDPOINT}?apiKey={key}&sessionId={self.session_id}"
-        async with async_playwright() as p:
-            # Deliberately never call browser.close() here. For a browser
-            # obtained via connect_over_cdp, Playwright's own docs say close()
-            # "clears all created contexts belonging to this browser" — not a
-            # soft disconnect. Since we're attaching to Stagehand's *existing*
-            # context/page (not one we created), that would tear down the very
-            # page the agent needs for every step after this one — exactly
-            # what showed up as "Debugging connection was closed" in the live
-            # view, on every run, right after the upload. Letting the `async
-            # with async_playwright()` block exit just stops our local driver
-            # connection without touching the remote session.
-            browser = await p.chromium.connect_over_cdp(cdp_url)
-            contexts = browser.contexts
-            if not contexts:
-                return False
-            ctx = contexts[0]
-            page = ctx.pages[0] if ctx.pages else await ctx.new_page()
+    async def _select_with_match(self, locator: Any, action: Any, value: str) -> None:
+        """select_option(), but resolved against the select's real option
+        text first. Raises if options WERE read but nothing — including the
+        EEO decline fallback — matched, which _apply_answer()'s existing
+        except Exception turns into a clean "skipped" rather than a wrong
+        click."""
+        options = await self._read_select_options(locator)
+        if not options:
+            # No <option> tags found in this element's own inner_html() at
+            # all — this is very likely not a native <select> in the first
+            # place but a custom JS combobox/dropdown widget (react-select
+            # and similar are common on Greenhouse's embedded EEO fields):
+            # visually identical "Select…" + chevron styling, but the real
+            # options only exist in a portal-rendered listbox that appears
+            # after a click, which select_option() has no way to drive at
+            # all (confirmed: it only operates on genuine <select> elements).
+            # act() is the one primitive that can open-then-pick a widget
+            # like that, since it drives real interaction rather than
+            # reading static markup.
+            description = getattr(action, "description", "") or "this field"
+            try:
+                await self.act(
+                    f'Open the dropdown for "{description}" and click the option that best '
+                    f"matches: {value}"
+                )
+                return
+            except Exception:
+                pass
+            # Last resort — behaves exactly as before this fallback existed,
+            # for the case where it genuinely is a plain <select> whose
+            # inner_html() just couldn't be read.
+            await self._call(lambda: locator.select_option(value))
+            return
+        match = _best_option_match(value, options)
+        if not match and _looks_like_eeo_field(getattr(action, "description", "")):
+            match = _find_decline_option(options)
+        if not match:
+            raise RuntimeError(f"no matching <option> for {value!r} on {getattr(action, 'selector', '')!r}")
+        # select_option() takes one positional string with no way to say
+        # "match by value" vs "match by label" (checked against the
+        # installed SDK's signature) — try the option's underlying value
+        # first, since that's what a <select> actually submits, falling back
+        # to its visible label if the value string doesn't resolve.
+        try:
+            await self._call(lambda: locator.select_option(match["value"]))
+        except Exception:
+            await self._call(lambda: locator.select_option(match["label"]))
 
-            # Upload to every file input on the page, not just the first.
-            # Ashby (among others) has TWO: a convenience "Autofill from
-            # resume" uploader that only pre-fills text fields, and a
-            # separate REQUIRED "Resume*" input that's the actual attachment.
-            # Stopping at the first successful upload attached the file to
-            # the wrong one, left the required field empty, and the agent
-            # can't fix that in a repair pass — it's explicitly forbidden
-            # from touching file inputs, since a file picker isn't something
-            # act() can drive. Uploading to every input found is harmless —
-            # a convenience uploader just re-parses the same PDF it already
-            # would have — and is the only way to guarantee the real one
-            # gets it too.
+    async def set_field(self, description_hint: str, value: str) -> bool:
+        """Targeted single-field fix — used for the email/name corruption
+        repair, where the correct value is already known and no LLM call
+        (or full-page observe scope) is needed."""
+        actions = await self.observe(f"Find the form field for: {description_hint}")
+        if not actions:
+            return False
+        return await self._apply_answer(actions[0], value)
+
+    async def upload_resume(self, resume_path: str) -> bool:
+        """Attach the resume PDF directly — a file picker is an OS dialog,
+        not a DOM interaction, so this drives the file input over Playwright
+        rather than through act()/fill_form()."""
+        try:
+            page = await self._active_page()
             uploaded_any = False
-            for frame in [page.main_frame, *page.frames]:
+            # The form is usually inside an iframe on Greenhouse/Lever, and
+            # the input is very often display:none, so every frame is
+            # searched and set_input_files goes to the element handle
+            # directly rather than a selector (which applies visibility
+            # checks that would fail on exactly the inputs we need).
+            # .locator()/.nth() are plain synchronous constructors (confirmed
+            # against the installed SDK) — only .count()/.set_input_files()
+            # are actual RPC calls that need _call()'s retry/thread routing.
+            handles = page.locator('input[type="file"]')
+            count = await self._call(lambda: handles.count())
+            for idx in range(count):
                 try:
-                    handles = await frame.query_selector_all('input[type="file"]')
+                    one = handles.nth(idx)
+                    await self._call(lambda h=one: h.set_input_files(resume_path))
+                    uploaded_any = True
                 except Exception:
                     continue
-                for handle in handles:
-                    try:
-                        await handle.set_input_files(resume_path)
-                        uploaded_any = True
-                    except Exception:
-                        continue
             if uploaded_any:
                 await asyncio.sleep(1.5)  # let the ATS parse/echo the upload(s)
             return uploaded_any
+        except Exception:
+            logger.exception("resume upload failed for session %s", self.session_id)
+            return False
+
+    async def _active_page(self) -> Any:
+        return await self._call(lambda: self._browser.context.active_page())
 
     async def end(self) -> None:
         try:
-            if self._bound and hasattr(self._session, "end"):
-                await self._session.end()
-            else:
-                await self._client.sessions.end(id=self.session_id)
+            await self._call(lambda: self._sh.close())
         except Exception:
-            logger.warning("could not cleanly end Browserbase session %s", self.session_id, exc_info=True)
+            logger.warning("could not cleanly close local browser session %s", self.session_id, exc_info=True)
 
 
-def _session_id_of(session: Any) -> str:
-    for attr in ("id", "session_id", "sessionId"):
-        value = getattr(session, attr, None)
-        if isinstance(value, str) and value:
-            return value
-    data = getattr(session, "data", None)
-    if data is not None:
-        for attr in ("id", "session_id", "sessionId"):
-            value = getattr(data, attr, None)
-            if isinstance(value, str) and value:
-                return value
-    return ""
+def _schema_to_model(schema: dict):
+    """Convert the flat JSON-schema dicts extract() call sites already use
+    (PAGE_SCHEMA / VERIFY_SCHEMA / CONFIRM_SCHEMA in runner.py) into the
+    Pydantic model class Stagehand v4's extract() requires. Keeping this
+    conversion here — rather than rewriting those constants as Pydantic
+    models in runner.py — keeps runner.py oblivious to which SDK generation
+    is actually installed, matching this file's original "quarantine
+    everything stagehand-shaped in browser.py" design.
+
+    Only handles the shapes runner.py actually uses: flat objects with
+    string/boolean/array-of-string properties. Good enough for PAGE_SCHEMA,
+    VERIFY_SCHEMA, and CONFIRM_SCHEMA — not a general JSON-schema converter.
+
+    Every property is made a required Pydantic field (`...`, no default) —
+    OpenAI's structured-output mode rejects a schema unless `required`
+    includes every key in `properties` (confirmed by a live 400: "'required'
+    is required to be supplied and to be an array including every key in
+    properties"). A property missing from the *original* dict schema's
+    `required` list is instead made nullable (Optional[...]) so the model can
+    legally return null for it — that's the correct "optional" encoding in
+    strict mode, not leaving it out of `required`. Every call site in
+    runner.py already reads these fields via `.get(...) or <fallback>` /
+    plain truthiness checks, so a None here behaves exactly like the old
+    dict-default (""/False/[]) did — no downstream changes needed.
+    """
+    from typing import Optional
+
+    from pydantic import create_model
+
+    type_map = {"string": str, "boolean": bool, "array": list[str]}
+    required = set(schema.get("required") or [])
+    fields = {}
+    for name, spec in (schema.get("properties") or {}).items():
+        py_type = type_map.get(spec.get("type"), str)
+        fields[name] = (py_type, ...) if name in required else (Optional[py_type], ...)
+    return create_model("ExtractSchema", **fields)
 
 
-async def _fetch_live_view_url(session_id: str) -> str | None:
-    """Best-effort. A missing live-view URL costs the user a convenience link,
-    so it must never fail the run."""
-    try:
-        async with httpx.AsyncClient(timeout=15.0) as client:
-            r = await client.get(
-                f"{BROWSERBASE_API}/sessions/{session_id}/debug",
-                headers={"X-BB-API-Key": config.browserbase_api_key()},
-            )
-            if r.status_code != 200:
-                return None
-            payload = r.json()
-        url = payload.get("debuggerFullscreenUrl") or payload.get("debuggerUrl")
-        return url or None
-    except Exception:
-        logger.debug("live view URL unavailable for %s", session_id, exc_info=True)
-        return None
+async def open_browser() -> LocalBrowser:
+    """Launch a local Chromium via Stagehand and return a bound session.
+    Headless by default (config.headless() — see its docstring: a real
+    deploy has no display to show a headed browser on). Raises if
+    stagehand/playwright aren't installed, or if Chromium itself isn't
+    (`playwright install chromium`)."""
+    async def _open() -> LocalBrowser:
+        from stagehand import Stagehand, local_browser
 
+        browser = await local_browser.launch(
+            headless=config.headless(),
+            viewport_width=1400,
+            viewport_height=1000,
+        )
+        stagehand = await Stagehand.create(
+            browser=browser,
+            model=config.model_name(),
+            model_api_key=config.model_api_key(),
+        )
+        return LocalBrowser(stagehand, browser)
 
-async def open_browser() -> RemoteBrowser:
-    """Start a Browserbase session. Raises if the SDK or credentials are absent."""
-    from stagehand import AsyncStagehand
-
-    client = AsyncStagehand(
-        browserbase_api_key=config.browserbase_api_key(),
-        model_api_key=config.model_api_key(),
-    )
-
-    session: Any = None
-    bound = True
-    starter = getattr(client.sessions, "create", None) or getattr(client.sessions, "start", None)
-    if starter is None:
-        raise RuntimeError("Installed stagehand SDK exposes neither sessions.create nor sessions.start")
-
-    # Without an explicit timeout, Browserbase applies its own platform
-    # default — observed in practice to be well under 7 minutes, which a real
-    # multi-field ATS form (fill + verify + repair pass + submit) can exceed.
-    # When that happens the session dies mid-run with an abrupt 410 ("session
-    # has completed or timed out") instead of our own run_timeout_seconds()
-    # ever getting a chance to fire cleanly. Give the session comfortably more
-    # room than our own budget so ours is always the one that trips first.
-    bb_params: dict[str, Any] = {"timeout": config.run_timeout_seconds() + 120}
-    project_id = config.browserbase_project_id()
-    if project_id:
-        bb_params["project_id"] = project_id
-
-    session = await starter(model_name=config.model_name(), browserbase_session_create_params=bb_params)
-    session_id = _session_id_of(session)
-    if not session_id:
-        raise RuntimeError("Browserbase session started but returned no session id")
-
-    # v3 returns a session object carrying the operations; older builds return a
-    # plain response and expect client.sessions.<op>(id=...).
-    if not hasattr(session, "navigate"):
-        bound = False
-
-    browser = RemoteBrowser(client, session, session_id, bound)
-    browser.live_view_url = await _fetch_live_view_url(session_id)
-    return browser
+    return await _run_playwright(_open())

@@ -74,6 +74,23 @@ class ApplyProfileRequest(BaseModel):
     raceEthnicity: str = Field(default="", max_length=80)
     veteranStatus: str = Field(default="", max_length=80)
     disabilityStatus: str = Field(default="", max_length=80)
+    genderPronouns: str = Field(default="", max_length=40)
+    lgbtqIdentity: str = Field(default="", max_length=60)
 
     agreeToEmployerTerms: bool = False
     consent: bool = False
+
+
+class QAAnswerItem(BaseModel):
+    """One answer to a question a job application form asked that auto-apply
+    couldn't resolve from the fixed profile fields — saved to UserApplyQA so
+    the same (or a similarly-worded) question resolves automatically next time.
+    Real EEO/compliance questions run well past a "label"-length string —
+    e.g. a real Robinhood conflict-of-interest question observed in practice
+    was 538 characters — so this is bounded generously, not tightly."""
+    question: str = Field(min_length=1, max_length=2000)
+    answer: str = Field(min_length=1, max_length=2000)
+
+
+class RunAnswersRequest(BaseModel):
+    answers: list[QAAnswerItem] = Field(min_length=1, max_length=25)
