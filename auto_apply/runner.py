@@ -150,6 +150,7 @@ async def _worker(run_id: int) -> None:
             await _finish(run_id, "failed", f"Timed out after about {mins} minutes.", error="timeout")
         except Exception as exc:
             logger.exception("auto-apply run %s crashed", run_id)
+            await _log_note(run_id, f"run crashed: {exc!r}")
             await _finish(run_id, "failed", "Something went wrong while applying.", error=repr(exc))
 
 
@@ -188,6 +189,25 @@ async def _set_stage(run_id: int, stage: str, detail: str | None = None) -> None
         run_id,
         {"status": "running", "stage": stage, "detail": text},
         {"t": datetime.utcnow().isoformat(), "stage": stage, "detail": text},
+    )
+
+
+async def _log_note(run_id: int, note: str) -> None:
+    """Append a diagnostic line to the run's step history without touching
+    status/stage/detail — those drive the live UI (paintAuto() shows `detail`
+    in the note area), and a technical field-by-field breakdown isn't
+    something a user should see flash by mid-run. This is purely for
+    reading back afterward: `python -c "...AutoApplyRun.steps..."` (or a
+    future admin view) shows exactly what fill_form() found/answered/failed
+    at each stage, instead of that only ever reaching a terminal via Python's
+    logger — which nothing persists once the process that printed it moves
+    on."""
+    logger.info("run %s: %s", run_id, note)
+    await asyncio.to_thread(
+        _db_write,
+        run_id,
+        {},
+        {"t": datetime.utcnow().isoformat(), "stage": "note", "detail": note[:500]},
     )
 
 
@@ -331,8 +351,10 @@ async def _repair_field(run_id: int, browser, label: str, bad_value: str, correc
                 "run %s could not locate the %s field to repair (was %r)",
                 run_id, label.lower(), bad_value[:200],
             )
-    except Exception:
+            await _log_note(run_id, f"{label} repair: field not found (bad value was {bad_value[:200]!r})")
+    except Exception as exc:
         logger.exception("run %s %s-repair pass failed", run_id, label.lower())
+        await _log_note(run_id, f"{label} repair raised: {exc!r}")
 
 
 async def _execute(run_id: int) -> None:
@@ -403,14 +425,15 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         PAGE_SCHEMA,
     )
 
-    # The only two blocks a stored answer can't clear. Everything else, we fill.
-    if page.get("has_captcha"):
-        await _finish(
-            run_id, "needs_input",
-            "This form has a CAPTCHA, so it has to be finished by hand.",
-            error="captcha",
-        )
-        return
+    # A CAPTCHA blocks the final submit click, not filling in the rest of the
+    # form — so it's tracked and only acted on right before that point,
+    # rather than stopping the whole run here. That way the user gets a
+    # fully-filled form to finish by hand (just solve the CAPTCHA and click
+    # submit) instead of an untouched one. requires_login is different: it
+    # blocks seeing/filling the form at all on most ATS, so that one still
+    # stops immediately below.
+    captcha_present = bool(page.get("has_captcha"))
+
     if page.get("requires_login"):
         await _finish(
             run_id, "needs_input",
@@ -424,8 +447,10 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         try:
             await browser.act(page.get("apply_button_text") or "Click the apply button to open the application form")
             page = await browser.extract("Is this now a job application form the visitor can fill in?", PAGE_SCHEMA)
-        except Exception:
+            captcha_present = captcha_present or bool(page.get("has_captcha"))
+        except Exception as exc:
             logger.exception("run %s could not open the form", run_id)
+            await _log_note(run_id, f"opening_form failed: {exc!r}")
         if not page.get("is_application_form"):
             await _finish(
                 run_id, "needs_input",
@@ -441,8 +466,14 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
 
     await _set_stage(run_id, "filling_form")
     try:
-        await browser.fill_form(profile.to_agent_json())
+        result = await browser.fill_form(profile.to_agent_json())
+        await _log_note(
+            run_id,
+            f"initial fill: {len(result.get('filled', []))} filled, "
+            f"{len(result.get('skipped', []))} skipped: {result.get('skipped', [])}",
+        )
     except Exception as exc:
+        await _log_note(run_id, f"initial fill raised: {exc!r}")
         await _finish(run_id, "failed", "Couldn't fill in the form.", error=repr(exc))
         return
 
@@ -486,10 +517,17 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         # A repair pass, not a stopping point — the answers are all on file, so
         # scope fill_form to just the still-empty fields and let it finish them.
         await _set_stage(run_id, "filling_form", "Finishing the last few fields…")
+        await _log_note(run_id, f"repair pass targeting: {missing}")
         try:
-            await browser.fill_form(profile.to_agent_json(), only_hint="; ".join(missing[:15]))
-        except Exception:
+            result = await browser.fill_form(profile.to_agent_json(), only_hint="; ".join(missing[:15]))
+            await _log_note(
+                run_id,
+                f"repair fill: {len(result.get('filled', []))} filled, "
+                f"{len(result.get('skipped', []))} still skipped: {result.get('skipped', [])}",
+            )
+        except Exception as exc:
             logger.exception("run %s repair pass failed", run_id)
+            await _log_note(run_id, f"repair pass raised: {exc!r}")
         await asyncio.sleep(1.0)
         recheck = await browser.extract(
             "List the labels of any REQUIRED fields still empty or invalid.", VERIFY_SCHEMA
@@ -499,11 +537,10 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     text_missing, document_missing = _split_missing_by_type(missing)
 
     if not config.submit_enabled():
-        await _finish(
-            run_id, "dry_run",
-            "Dry run — the form was filled but not submitted.",
-            missing=text_missing,
-        )
+        detail = "Dry run — the form was filled but not submitted."
+        if captcha_present:
+            detail += " This form also has a CAPTCHA, so a real run would still need it solved by hand."
+        await _finish(run_id, "dry_run", detail, missing=text_missing)
         return
 
     # Required fields genuinely still unresolved after the one repair pass —
@@ -533,6 +570,18 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
             " ".join(parts),
             error="unresolved_required_fields",
             missing=text_missing,
+        )
+        return
+
+    # The one thing a CAPTCHA actually blocks — clicking submit — checked
+    # last, after everything fillable has genuinely been filled and
+    # verified. Never attempt to solve or click past it; that's the one
+    # button we deliberately leave for the user.
+    if captcha_present:
+        await _finish(
+            run_id, "needs_input",
+            "Everything's filled in — this form has a CAPTCHA, so the final submit has to be done by hand.",
+            error="captcha",
         )
         return
 
@@ -629,9 +678,15 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
         if result.get("has_next_page"):
             await _set_stage(run_id, "filling_form", "Filling in the next page…")
             try:
-                await browser.fill_form(profile.to_agent_json())
-            except Exception:
+                next_result = await browser.fill_form(profile.to_agent_json())
+                await _log_note(
+                    run_id,
+                    f"page {attempt + 2} fill: {len(next_result.get('filled', []))} filled, "
+                    f"skipped: {next_result.get('skipped', [])}",
+                )
+            except Exception as exc:
                 logger.exception("run %s failed on form page %s", run_id, attempt + 2)
+                await _log_note(run_id, f"page {attempt + 2} fill raised: {exc!r}")
             continue
 
         error_text = str(result.get("error_text") or "").strip()
@@ -652,8 +707,9 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
                 # page. Re-setting an already-correct field to the same value is
                 # a no-op in practice, so this is safe, just not the cheapest path.
                 await browser.fill_form(profile.to_agent_json())
-            except Exception:
+            except Exception as exc:
                 logger.exception("run %s could not fix validation errors", run_id)
+                await _log_note(run_id, f"validation-error fix raised: {exc!r}")
             continue
 
         # A permanent rejection (spam/abuse flag) is a dead end, not a "try

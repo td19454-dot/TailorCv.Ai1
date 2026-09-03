@@ -102,6 +102,13 @@ _RETRY_MAX_DELAY = 20.0
 _TRANSIENT_MARKERS = ("rate limit", "try again", "timed out", "temporarily unavailable", "connection")
 _PERMANENT_MARKERS = ("request too large", "must be reduced")
 
+# Default per-call bound — see LocalBrowser._call()'s docstring. Real
+# act/observe/extract calls complete in single-digit seconds per the logs
+# (e.g. "inferenceTimeMs": 5356); 60s is generous headroom above that, not a
+# tight budget, while still catching a genuine hang well before it can eat
+# the whole run.
+_CALL_TIMEOUT_SECONDS = 60.0
+
 
 def _is_transient(exc: Exception) -> bool:
     text = str(exc).lower()
@@ -131,7 +138,16 @@ application (a search box, a filter, a nav link).
   exactly "yes" or "no".
 - For a consent / "I agree" / privacy-policy / terms checkbox, return "yes" — the candidate has
   authorized submitting on their behalf.
-- For a dropdown/select, return the option text as close to CANDIDATE_DATA's value as possible.
+- A field marked [OPTIONS: ...] is a dropdown — its real, actual choices on THIS form are listed
+  there, and every employer's list is different even for the same question (one company's
+  location field lists countries, another's is just "USA / Canada / Elsewhere"). You MUST return
+  one of the listed options, copied verbatim — never a value that isn't in that list, and never
+  CANDIDATE_DATA's raw value itself unless it happens to be one of the listed options. Reason
+  about which listed option actually fits CANDIDATE_DATA (e.g. if CANDIDATE_DATA's location is
+  "Kolkata, India" and OPTIONS are "USA | Canada | Elsewhere", the right answer is "Elsewhere",
+  not "Kolkata, India" or "India"). If truly none of the listed options fit at all, skip that index.
+- For a dropdown/select with no [OPTIONS] listed (its real choices couldn't be read), return the
+  option text as close to CANDIDATE_DATA's value as possible.
 - For free text with no exact CANDIDATE_DATA match, adapt the closest available value
   (why_do_you_want_this_role, cover_letter, top_skills) only if it genuinely answers that field.
 - If CANDIDATE_DATA includes other_answers_on_file, it's a list of specific questions this
@@ -200,10 +216,18 @@ def _url_matches(landed_url: str, apply_url: str) -> bool:
 # submit on. These helpers read the select's real option text and match
 # against it, instead of trusting the LLM's guessed string to be exact.
 
-_EEO_FIELD_MARKERS = ("gender", "race", "ethnic", "veteran", "military", "disab", "pronoun")
+_EEO_FIELD_MARKERS = ("gender", "race", "ethnic", "veteran", "military", "disab", "pronoun", "hispanic", "latino")
+# "I do not want to answer" (GitLab's exact real-world wording, confirmed
+# live to match neither the fuzzy matcher nor the original version of this
+# list — only "do not wish" was covered, not "do not want") is why this now
+# checks for the shared "not ... answer" core rather than one fixed phrase
+# per variant — new wording for the same underlying option shouldn't need a
+# new marker added by hand every time a different employer's copywriter
+# phrases "I decline" slightly differently.
 _DECLINE_OPTION_MARKERS = (
-    "decline", "prefer not", "don't wish", "do not wish",
-    "not to answer", "not disclose", "rather not",
+    "decline", "prefer not", "rather not", "not disclose",
+    "not wish to", "don't wish to", "not want to", "don't want to",
+    "not to answer",
 )
 _OPTION_MATCH_THRESHOLD = 0.55
 _OPTION_TAG_RE = re.compile(r"<option\b([^>]*)>(.*?)</option>", re.IGNORECASE | re.DOTALL)
@@ -221,6 +245,9 @@ def _looks_like_eeo_field(description: str) -> bool:
     return any(m in lowered for m in _EEO_FIELD_MARKERS)
 
 
+_PLACEHOLDER_OPTION_RE = re.compile(r"^(select|choose|please select)\b.*\.{0,3}$|^--+$", re.IGNORECASE)
+
+
 def _parse_select_options(raw_html: str) -> list[dict[str, str]]:
     """<option> value/label pairs out of a <select>'s inner_html(). Regex
     rather than a full HTML parser — <option> markup is simple and well-formed
@@ -229,15 +256,22 @@ def _parse_select_options(raw_html: str) -> list[dict[str, str]]:
     rather than anchoring on it directly after the tag name — option tags
     commonly carry other attributes (data-*, selected, class) before or
     instead of value, at arbitrary whitespace, which a single combined regex
-    kept missing."""
+    kept missing.
+
+    The placeholder option ("Select…", empty value) is dropped rather than
+    returned — it's never a real answer, only noise in front of the LLM
+    (and, worse, a candidate _best_option_match could technically pick if a
+    real answer scored low enough)."""
     options = []
     for m in _OPTION_TAG_RE.finditer(raw_html or ""):
         attrs, inner = m.group(1), m.group(2)
         label = _html.unescape(re.sub(r"<[^>]+>", "", inner or "")).strip()
-        if not label:
+        if not label or _PLACEHOLDER_OPTION_RE.match(label):
             continue
         value_match = _VALUE_ATTR_RE.search(attrs or "")
         value = _html.unescape(value_match.group(2)).strip() if value_match else label
+        if not value:
+            continue
         options.append({"value": value, "label": label})
     return options
 
@@ -289,13 +323,34 @@ class LocalBrowser:
         self.live_view_url: str | None = None
         self.replay_url: str | None = None
 
-    async def _call(self, coro_factory) -> Any:
+    async def _call(self, coro_factory, timeout: float = _CALL_TIMEOUT_SECONDS) -> Any:
         """Run one Stagehand call with the transient-error retry, on the
-        dedicated Playwright loop this session was created on."""
+        dedicated Playwright loop this session was created on — bounded by an
+        explicit per-call timeout.
+
+        This is the single chokepoint every act/observe/extract/Locator call
+        goes through, so it's the one place that needed a timeout added,
+        rather than scattering asyncio.wait_for at individual call sites. The
+        outer run-level timeout (config.run_timeout_seconds(), wrapping the
+        whole worker) turned out not to be enough of a safety net on its own
+        — observed in practice: a run stuck on "Finishing the last few
+        fields…" for well past both that and the frontend's own polling
+        ceiling, with no progress. A per-call bound catches a single hung RPC
+        call, the actual failure mode, without waiting on the whole run's
+        total budget.
+
+        A timeout is NOT retried like a transient error — if a call hung
+        once, retrying the identical call is unlikely to unstick it and just
+        multiplies the wasted time (4 attempts x timeout would be 4x as slow
+        to fail as just failing once). It's raised immediately so the
+        caller's own exception handling (in _apply_answer, fill_form, etc.)
+        can mark that one field/step failed and let the run move on."""
         delay = _RETRY_BASE_DELAY
         for attempt in range(_RETRY_ATTEMPTS):
             try:
-                return await _run_playwright(coro_factory())
+                return await asyncio.wait_for(_run_playwright(coro_factory()), timeout=timeout)
+            except asyncio.TimeoutError as exc:
+                raise TimeoutError(f"stagehand call exceeded {timeout:.0f}s") from exc
             except Exception as exc:
                 is_last = attempt == _RETRY_ATTEMPTS - 1
                 if is_last or not _is_transient(exc):
@@ -365,16 +420,19 @@ class LocalBrowser:
         except Exception:
             return True  # navigation away from this context reads as success too
 
-    async def act(self, instruction: str) -> Any:
-        return await self._call(lambda: self._sh.act(instruction))
+    async def act(self, instruction: Any, timeout: float = _CALL_TIMEOUT_SECONDS) -> Any:
+        """instruction is usually a plain string, but can also be a
+        stagehand.Action — passed straight through to the SDK either way
+        (see act()'s own signature: `str | ActionInput | Action`)."""
+        return await self._call(lambda: self._sh.act(instruction), timeout=timeout)
 
-    async def observe(self, instruction: str) -> list[Any]:
-        result = await self._call(lambda: self._sh.observe(instruction))
+    async def observe(self, instruction: str, timeout: float = _CALL_TIMEOUT_SECONDS) -> list[Any]:
+        result = await self._call(lambda: self._sh.observe(instruction), timeout=timeout)
         return list(getattr(result, "data", None) or [])
 
-    async def extract(self, instruction: str, schema: dict) -> dict:
+    async def extract(self, instruction: str, schema: dict, timeout: float = _CALL_TIMEOUT_SECONDS) -> dict:
         model = _schema_to_model(schema)
-        result = await self._call(lambda: self._sh.extract(instruction, model))
+        result = await self._call(lambda: self._sh.extract(instruction, model), timeout=timeout)
         data = getattr(result, "data", None)
         if data is None:
             return {}
@@ -411,10 +469,40 @@ class LocalBrowser:
         if not candidates:
             return {"filled": [], "skipped": []}
 
-        fields_block = "\n".join(f"{i}: {a.description}" for i, a in candidates)
+        # Read every select's real option list up front, and hand it to the
+        # LLM as part of the question rather than guessing a value blind and
+        # trying to reconcile it against the real options afterward. The same
+        # stored value can't be expected to match two employers' dropdowns
+        # for the "same" question — one company's location field is a country
+        # list, another's is "USA / Canada / Elsewhere" — so a fixed guess
+        # inevitably has no match on one of them. Giving the model the actual
+        # choice set lets it reason about which real option fits (e.g.
+        # "Kolkata, India" -> "Elsewhere" when that's genuinely all that's
+        # offered), instead of naming a value that was never going to exist
+        # on this particular form.
+        page = await self._active_page()
+        option_map: dict[int, list[str]] = {}
+        for i, action in candidates:
+            if (getattr(action, "method", "") or "").lower() != "select":
+                continue
+            locator = page.locator(action.selector)
+            opts = await self._read_select_options(locator)
+            labels = [o["label"] for o in opts if o.get("label")]
+            if labels:
+                option_map[i] = labels
+
+        fields_block = "\n".join(
+            f"{i}: {a.description}"
+            + (f"  [OPTIONS — pick exactly one of these: {' | '.join(option_map[i])}]" if i in option_map else "")
+            for i, a in candidates
+        )
         prompt = _FIELD_ANSWER_PROMPT.format(candidate_json=candidate_json, fields_block=fields_block)
         try:
-            raw = await get_resume_response(prompt)
+            # Not routed through _call() (this is a plain OpenAI call, not a
+            # Stagehand one) — bounded the same way regardless, for the same
+            # reason: nothing here should be able to hang the run past a
+            # bounded wait.
+            raw = await asyncio.wait_for(get_resume_response(prompt), timeout=_CALL_TIMEOUT_SECONDS)
             parsed = json.loads(raw)
             answers = parsed.get("answers") or {}
         except Exception:
@@ -465,7 +553,15 @@ class LocalBrowser:
                 elif not is_yesish and already:
                     await self._call(lambda: locator.click())
                 return True
-            if method == "select":
+            # Confirmed live against a real Greenhouse form (custom dropdown
+            # widgets, common for EEO/demographic fields): observe() doesn't
+            # always say "select" — it returned method="selectOptionFromDropdown"
+            # for these, a distinct string this check used to miss entirely,
+            # sending every one of them through a doomed .fill() attempt
+            # first. Matching on "select"/"dropdown" as a substring catches
+            # that and whatever other method names Stagehand uses for the
+            # same underlying pattern, rather than hand-listing exact strings.
+            if "select" in method or "dropdown" in method:
                 await self._select_with_match(locator, action, value)
                 return True
             # Default: plain text/textarea fill. If that fails on what turns
@@ -480,6 +576,35 @@ class LocalBrowser:
         except Exception:
             logger.warning("fill_form: could not apply field %r", getattr(action, "description", ""), exc_info=True)
             return False
+
+    async def _dropdown_shows_a_value(self, locator: Any, description: str = "") -> bool:
+        """Ground truth for whether a custom-widget dropdown actually has a
+        value selected now — read directly off the element, never inferred
+        from whether the action that tried to set it merely avoided raising.
+        Tries text_content() first (what a combobox trigger visually shows),
+        falls back to input_value() for a plain input-shaped trigger.
+
+        observe()'s selector for "the same" field isn't stable between calls
+        — confirmed live: one call resolved to the exact <input> trigger
+        (empty inner_html), another resolved to a broader wrapper that also
+        contains the field's own label ("Veteran Status"). Without excluding
+        that, a completely untouched field reads as "has a value" the moment
+        the selector happens to include its label — so any text that's
+        itself a close match for the field's own description is treated the
+        same as the empty placeholder, not as a real answer."""
+        norm_description = _normalize_option_text(description)
+        for reader in (lambda: locator.text_content(), lambda: locator.input_value()):
+            try:
+                text = (await self._call(reader) or "").strip()
+            except Exception:
+                continue
+            if not text or _PLACEHOLDER_OPTION_RE.match(text):
+                continue
+            norm_text = _normalize_option_text(text)
+            if norm_description and (norm_text == norm_description or norm_text in norm_description):
+                continue
+            return True
+        return False
 
     async def _read_select_options(self, locator: Any) -> list[dict[str, str]]:
         """Real <option> value/label text for a <select> Locator. This SDK's
@@ -515,18 +640,40 @@ class LocalBrowser:
             # like that, since it drives real interaction rather than
             # reading static markup.
             description = getattr(action, "description", "") or "this field"
+            # act()'s own timeout= (forwarded to _call()) is what stops this
+            # from hanging: if `value` doesn't correspond to anything
+            # actually in the widget (very possible, since this path only
+            # runs when option text couldn't be read up front and the LLM
+            # had to guess blind), act() has no natural stop condition and
+            # can run long hunting for a match that isn't there — this is
+            # what a run stuck on "Finishing the last few fields…" for
+            # minutes turned out to be. 45s (a bit under _call()'s general
+            # default) is enough for a real open-then-pick interaction
+            # without waiting as long as a plain page read is allowed to.
+            #
+            # act() completing without an exception is NOT trusted as proof
+            # the value actually landed — confirmed live: handing this same
+            # widget's own observe()-reported method+selector straight back
+            # to act() as a structured Action returned cleanly while the
+            # field was still showing "Select…" on the real page. Every
+            # attempt below is followed by reading the field's own displayed
+            # text directly (not another LLM read) before it's trusted.
             try:
                 await self.act(
                     f'Open the dropdown for "{description}" and click the option that best '
-                    f"matches: {value}"
+                    f"matches: {value}",
+                    timeout=45.0,
                 )
-                return
+                if await self._dropdown_shows_a_value(locator, description):
+                    return
             except Exception:
                 pass
             # Last resort — behaves exactly as before this fallback existed,
             # for the case where it genuinely is a plain <select> whose
             # inner_html() just couldn't be read.
             await self._call(lambda: locator.select_option(value))
+            if not await self._dropdown_shows_a_value(locator, description):
+                raise RuntimeError(f"dropdown still shows no value after every attempt for {value!r}")
             return
         match = _best_option_match(value, options)
         if not match and _looks_like_eeo_field(getattr(action, "description", "")):
@@ -631,6 +778,26 @@ def _schema_to_model(schema: dict):
     return create_model("ExtractSchema", **fields)
 
 
+# Observed in practice: a run's own headless session gets flagged
+# has_captcha=True on a form the same user opens cleanly by hand a moment
+# later, from the same network/IP — so it isn't network reputation deciding
+# this, it's the browser itself reading as automated. CDP-driven Chromium
+# sets navigator.webdriver=true by default; Cloudflare-style bot management
+# checks exactly this. This isn't "evading detection" in the
+# adversarial-scraping sense — this is the user's own agent, filling out the
+# user's own application with the user's own data, on their explicit
+# consent; the fingerprint is just an accident of how CDP automation works,
+# not a signal that means anything about this use.
+#
+# Only the launch flag below, not a hand-rolled navigator.webdriver
+# override — live-tested both: the flag alone cleanly passed a bot-detection
+# test page's WebDriver check, but adding an Object.defineProperty override
+# on top of it made a *stricter* check on the same page fail that had
+# passed without it. A naive property override can read as more suspicious
+# than the absence it's trying to fake once a detector specifically checks
+# for tampered descriptors — matching real stealth libraries' actual
+# complexity (dozens of coordinated patches, not four lines) rather than
+# risk shipping something that's net-negative and hard to verify further.
 async def open_browser() -> LocalBrowser:
     """Launch a local Chromium via Stagehand and return a bound session.
     Headless by default (config.headless() — see its docstring: a real
@@ -644,6 +811,7 @@ async def open_browser() -> LocalBrowser:
             headless=config.headless(),
             viewport_width=1400,
             viewport_height=1000,
+            args=["--disable-blink-features=AutomationControlled"],
         )
         stagehand = await Stagehand.create(
             browser=browser,
