@@ -10017,12 +10017,47 @@ def blog_shows_ats_widget(post) -> bool:
     widget never feels bolted on."""
     hay = f"{post.category} {post.slug} {post.title} {' '.join(post.tags)}".lower()
     subject = f"{post.slug} {post.title}".lower()
+
+    # Resume-writing intent wins over the off-topic bail below. The exclusion
+    # is meant to catch posts ABOUT cover letters / portfolios / interviews,
+    # but it matched on substrings, so genuine resume posts were losing the
+    # scanner: "resume-tailoring-second-interview" and "matching-portfolio-to-
+    # job-description" are read by someone editing a resume right now. A CV /
+    # resume FORMAT guide is the same moment - the reader has the document
+    # open - so those count too.
+    writing_now = ("resume", "cv format", "cv-format", "curriculum vitae",
+                   "lebenslauf", "rirekisho", "curriculo", "bewerbung")
+    tailoring = ("tailor", "matching", "match ", "keyword", "ats")
+    if any(t in subject for t in tailoring) and any(w in subject for w in writing_now):
+        return True
+
+    # Application-troubleshooting posts ("applied to 100 jobs and got no
+    # interviews", "rejected in 24 hours"). The reader is mid-search with a
+    # resume that is not working, so a free scan is the most useful thing on
+    # the page - but the word "interviews" in the title would otherwise trip
+    # the off-topic bail below.
+    troubleshooting = ("no interviews", "no callbacks", "no response",
+                       "not getting", "rejected", "no interview", "auto reject",
+                       "not passing", "why am i not", "applied to")
+    if any(t in subject for t in troubleshooting):
+        return True
+
     # Extension posts are about checking your ATS match on a job posting, so
     # letting the reader actually run that check is the most relevant thing
     # on the page - not an interruption.
     off_topic = ("cover letter", "cover-letter", "portfolio", "interview")
     if any(term in subject for term in off_topic):
         return False
+
+    # A resume/CV format or writing guide means the document is open. Comparison
+    # posts ("X vs Y") are bottom-of-funnel: the reader is choosing a tool, so
+    # give them one to try.
+    if any(w in subject for w in writing_now):
+        return True
+    if (post.category or "").strip().lower() in ("comparisons", "resume writing",
+                                                 "resume tips", "resume optimization",
+                                                 "resume examples", "linkedin"):
+        return True
     # The extension's headline feature is the live match score, so every
     # extension post gets the scanner even when the copy never says "ATS".
     if "extension" in subject or "chrome" in subject:
