@@ -7,7 +7,7 @@ tags: [Job Descriptions, ATS Optimization, Resume Keywords, Job Applications, Jo
 category: ATS Optimization
 slug: jd-keywords-that-are-not-real-requirements
 keywords: job description keywords not real, fake job requirements, job posting filler language, which keywords matter in job description, job description boilerplate
-image: 
+image: public/blog-images/jd-keywords-that-are-not-real-requirements.png
 ---
 
 ## Key Takeaways

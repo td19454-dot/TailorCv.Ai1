@@ -7,7 +7,7 @@ tags: [Job Descriptions, ATS Optimization, Resume Tailoring, Job Applications, J
 category: ATS Optimization
 slug: jd-lists-20-skills-which-matter
 keywords: job description too many skills, which skills matter in job posting, long list of requirements job, overwhelming job requirements, prioritize job description skills
-image: 
+image: public/blog-images/jd-lists-20-skills-which-matter.png
 ---
 
 ## Key Takeaways
