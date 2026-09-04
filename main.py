@@ -1,4 +1,5 @@
 ﻿import asyncio
+import asyncio
 import base64
 import hashlib
 import json
@@ -7,6 +8,7 @@ import os
 import random
 import re
 import resend
+import sys
 from secrets import token_hex, token_urlsafe
 from datetime import datetime, timedelta
 import uuid
@@ -600,6 +602,28 @@ def _ensure_apply_profile_columns() -> None:
                 conn.execute(_text(f"ALTER TABLE user_apply_profiles {clause}"))
 
 
+def _ensure_base_cover_letter_columns() -> None:
+    """Add the base-cover-letter columns to the existing users table if missing."""
+    from sqlalchemy import inspect as _inspect, text as _text
+
+    insp = _inspect(engine)
+    if not insp.has_table("users"):
+        return
+    cols = {c["name"] for c in insp.get_columns("users")}
+    to_add = []
+    if "base_cover_letter_path" not in cols:
+        to_add.append("ADD COLUMN base_cover_letter_path VARCHAR(500)")
+    if "base_cover_letter_filename" not in cols:
+        to_add.append("ADD COLUMN base_cover_letter_filename VARCHAR(255)")
+    if "base_cover_letter_generated_at" not in cols:
+        is_pg = engine.dialect.name != "sqlite"
+        to_add.append("ADD COLUMN base_cover_letter_generated_at TIMESTAMP" if is_pg else "ADD COLUMN base_cover_letter_generated_at TEXT")
+    if to_add:
+        with engine.begin() as conn:
+            for clause in to_add:
+                conn.execute(_text(f"ALTER TABLE users {clause}"))
+
+
 def _reap_stale_auto_apply_runs() -> None:
     """Fail any auto-apply run still queued/running at boot.
 
@@ -627,6 +651,88 @@ def _reap_stale_auto_apply_runs() -> None:
             )
     except Exception as exc:
         print(f"⚠️  Could not reap stale auto-apply runs: {exc}")
+
+
+def _reap_timed_out_auto_apply_runs() -> int:
+    """Fail runs that have been running far longer than any run legitimately can.
+
+    Distinct from _reap_stale_auto_apply_runs, which only ever runs at boot and
+    so cannot rescue a run that wedges while the process stays up — the case
+    actually observed: a row sitting `running` with finished_at NULL for 584s
+    while the dashboard polled it forever.
+
+    The age filter is not optional. The boot-time reaper can safely skip it
+    (nothing is in flight at boot); on a timer, an unfiltered version would
+    kill every healthy in-flight run on its first tick. The 2x multiplier
+    leaves room for a run that is legitimately near its own timeout, so this
+    only ever fires for runs the in-process timeout already failed to catch."""
+    from sqlalchemy import inspect as _inspect, text as _text
+    from auto_apply import config as _aa_config
+
+    if not _inspect(engine).has_table("auto_apply_runs"):
+        return 0
+    cutoff = datetime.utcnow() - timedelta(seconds=_aa_config.run_timeout_seconds() * 2)
+    with engine.begin() as conn:
+        result = conn.execute(
+            _text(
+                "UPDATE auto_apply_runs SET status = 'failed', "
+                "error = 'reaped_timeout', "
+                "detail = 'This run stopped responding and was closed out. Please try again.', "
+                "finished_at = :now "
+                "WHERE status IN ('queued', 'running') "
+                "AND COALESCE(started_at, created_at) < :cutoff"
+            ),
+            {"now": datetime.utcnow(), "cutoff": cutoff},
+        )
+        return result.rowcount or 0
+
+
+async def _auto_apply_reaper_loop() -> None:
+    """Belt-and-braces: whatever else breaks, no run stays `running` forever."""
+    from auto_apply import config as _aa_config
+
+    interval = max(60.0, _aa_config.run_timeout_seconds() / 2)
+    while True:
+        try:
+            await asyncio.sleep(interval)
+            reaped = await asyncio.to_thread(_reap_timed_out_auto_apply_runs)
+            if reaped:
+                logger.warning("reaped %s auto-apply run(s) that overran their timeout", reaped)
+        except asyncio.CancelledError:
+            raise
+        except Exception:
+            logger.exception("auto-apply reaper tick failed; continuing")
+
+
+def _sweep_orphaned_chromium() -> None:
+    """Kill Playwright Chromiums left behind by a previous process.
+
+    Matched strictly on `ms-playwright` in the executable path — that is
+    Playwright's own browser cache directory, so this can never match the
+    user's installed Chrome (Program Files) or any other browser. Best-effort
+    and never fatal: a failure here costs some memory, not correctness."""
+    import subprocess
+
+    try:
+        if sys.platform == "win32":
+            script = (
+                "Get-CimInstance Win32_Process -Filter \"Name='chrome.exe'\" | "
+                "Where-Object { $_.ExecutablePath -like '*ms-playwright*' } | "
+                "ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; $_.ProcessId }"
+            )
+            out = subprocess.run(
+                ["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+                capture_output=True, text=True, timeout=30,
+            )
+        else:
+            out = subprocess.run(
+                ["pkill", "-f", "ms-playwright.*chrome"], capture_output=True, text=True, timeout=30
+            )
+        killed = [ln for ln in (out.stdout or "").split() if ln.strip()]
+        if killed:
+            print(f"🧹 Swept {len(killed)} orphaned Playwright Chromium process(es)")
+    except Exception as exc:
+        print(f"⚠️  Could not sweep orphaned Chromium processes: {exc}")
 
 
 def _ensure_pgvector() -> None:
@@ -671,6 +777,7 @@ def initialize_database() -> None:
         _ensure_usage_columns()
         _ensure_job_dashboard_columns()
         _ensure_apply_profile_columns()
+        _ensure_base_cover_letter_columns()
         _ensure_pgvector()
         _reap_stale_auto_apply_runs()
         db_init_status["ok"] = True
@@ -681,9 +788,33 @@ def initialize_database() -> None:
         logger.exception("Database initialization failed during startup")
 
 
+_BACKGROUND_TASKS: set[asyncio.Task] = set()
+
+
 @app.on_event("startup")
 async def startup_event() -> None:
     initialize_database()
+    _sweep_orphaned_chromium()
+    task = asyncio.create_task(_auto_apply_reaper_loop())
+    _BACKGROUND_TASKS.add(task)
+    task.add_done_callback(_BACKGROUND_TASKS.discard)
+
+
+@app.on_event("shutdown")
+async def shutdown_event() -> None:
+    """Close out live auto-apply work instead of abandoning it.
+
+    Without this, every restart (and every --reload) orphaned whatever
+    Chromium was mid-run and left its row `running` forever — the boot reaper
+    only catches that on the *next* start, so the dashboard spins in between."""
+    for task in list(_BACKGROUND_TASKS):
+        task.cancel()
+    try:
+        from auto_apply.runner import shutdown_runs
+
+        await asyncio.wait_for(shutdown_runs(), timeout=30)
+    except Exception:
+        logger.warning("auto-apply shutdown cleanup did not complete", exc_info=True)
 
 
 def get_db() -> Session:
@@ -5698,6 +5829,39 @@ COVER_LETTER_TONES = {
 }
 
 
+def _build_base_cover_letter_prompt(resume_text: str) -> str:
+    """A reusable, non-job-specific cover letter — for auto-apply to attach
+    as a document wherever a form requires one, the same way base_resume_path
+    is attached wherever a form requires a resume. Deliberately generic
+    (no company/role name, no specific "job description" to match against)
+    since the same file gets reused across different employers and roles;
+    _build_cover_letter_prompt's per-job version is for the standalone
+    generator and the extension, which always have a real JD in hand."""
+    return (
+        "You are an expert career writer. Write a general-purpose cover letter for the "
+        "candidate below, based only on their resume — there is no specific job description "
+        "for this one; it will be reused across different applications.\n\n"
+        "Rules:\n"
+        "- 3 to 4 short paragraphs, under 300 words total.\n"
+        "- Professional and confident tone.\n"
+        "- Open by introducing the candidate's professional focus and what they're looking "
+        "for next, in general terms — do not name a specific company or role, and do not "
+        "claim to be applying to \"this position\" or similar.\n"
+        "- Use concrete, relevant achievements and skills FROM THE RESUME. Never invent "
+        "experience that is not in the resume.\n"
+        "- Close with a confident, general call to action. No markdown, no placeholder "
+        "brackets like [Company Name], no sign-off name line.\n\n"
+        "Also extract the candidate's contact details FROM THE RESUME (never invent them; "
+        "use an empty string if a field is not present).\n"
+        "Return ONLY a JSON object of the form "
+        "{\"cover_letter\": \"<the full letter as plain text, with \\n between paragraphs>\", "
+        "\"name\": \"<candidate full name>\", "
+        "\"email\": \"<candidate email address>\", "
+        "\"location\": \"<candidate city, state/country>\"}.\n\n"
+        f"=== RESUME ===\n{resume_text}\n"
+    )
+
+
 @app.post("/api/generate-cover-letter")
 async def generate_cover_letter(request: Request):
     """Generate a tailored cover letter from a resume (PDF upload — preferred — or
@@ -6093,6 +6257,135 @@ async def delete_extension_base_resume(request: Request):
         user.base_resume_filename = None
         user.base_resume_uploaded_at = None
         user.base_resume_text = None
+        db.commit()
+        if old_path and os.path.exists(old_path):
+            os.remove(old_path)
+    finally:
+        db.close()
+    return JSONResponse({"success": True})
+
+
+@app.get("/api/dashboard/base-cover-letter")
+async def get_base_cover_letter(request: Request):
+    """Status the auto-apply profile modal reads to know whether a base
+    cover letter is configured yet, mirroring GET /api/extension/base-resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        has_one = bool(user.base_cover_letter_path and os.path.exists(user.base_cover_letter_path))
+        return JSONResponse({
+            "has_base_cover_letter": has_one,
+            "filename": user.base_cover_letter_filename if has_one else None,
+            "generated_at": user.base_cover_letter_generated_at.isoformat() if (has_one and user.base_cover_letter_generated_at) else None,
+        })
+    finally:
+        db.close()
+
+
+@app.post("/api/dashboard/base-cover-letter/generate")
+async def generate_base_cover_letter(request: Request):
+    """Write a general-purpose cover letter from the user's base resume and
+    store it as a PDF — auto-apply attaches this to any "Cover Letter" file
+    field it finds, the same way it attaches base_resume_path to a Resume
+    field. Deliberately NOT gated by enforce_quota("cover_letters") — that
+    quota is for the per-job tailored letters /cover-letter and the
+    extension generate; this is a one-time reusable-baseline setup action,
+    the same category as uploading a base resume, not a per-application
+    generation."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+            raise HTTPException(status_code=400, detail="Upload a base resume first — the cover letter is written from it.")
+        base_resume_path = user.base_resume_path
+        cover_template = user.base_cover_template or "classic"
+        old_path = user.base_cover_letter_path
+    finally:
+        db.close()
+
+    resume_text = (await asyncio.to_thread(extract_pdf_text, base_resume_path) or "").strip()
+    if len(resume_text) < 50:
+        raise HTTPException(
+            status_code=400,
+            detail="Could not read your base resume. Re-upload a text-based PDF first.",
+        )
+
+    prompt = _build_base_cover_letter_prompt(resume_text[:8000])
+    try:
+        async with request_semaphore:
+            raw = await get_resume_response(prompt, model="gpt-4o-mini", temperature=0.4)
+        parsed = parse_ai_json_response(raw)
+        if not isinstance(parsed, dict):
+            parsed = {}
+        letter = str(parsed.get("cover_letter") or "").strip()
+        if not letter:
+            raise ValueError("Empty cover letter returned")
+    except Exception:
+        logger.exception("Base cover letter generation failed")
+        raise HTTPException(status_code=502, detail="Could not write the cover letter. Please try again.")
+
+    letter_html = _render_cover_letter_html(
+        cover_template,
+        str(parsed.get("name") or "").strip(),
+        str(parsed.get("email") or "").strip(),
+        str(parsed.get("location") or "").strip(),
+        letter,
+    )
+
+    new_path = os.path.join(resumes_dir, f"base_cover_letter_{uuid.uuid4()}.pdf")
+    try:
+        from weasyprint import HTML
+        await asyncio.to_thread(lambda: HTML(string=letter_html, base_url=BASE_DIR).write_pdf(new_path))
+    except Exception:
+        logger.exception("Base cover letter PDF render failed")
+        if os.path.exists(new_path):
+            os.remove(new_path)
+        raise HTTPException(status_code=500, detail="Failed to render the cover letter PDF.")
+
+    db2 = get_db()
+    try:
+        user = db2.query(User).filter(User.id == user_id).first()
+        if not user:
+            os.remove(new_path)
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.base_cover_letter_path = new_path
+        user.base_cover_letter_filename = "cover_letter.pdf"
+        user.base_cover_letter_generated_at = datetime.utcnow()
+        db2.commit()
+    finally:
+        db2.close()
+    if old_path and old_path != new_path and os.path.exists(old_path):
+        os.remove(old_path)
+
+    return JSONResponse({"success": True, "filename": "cover_letter.pdf"})
+
+
+@app.delete("/api/dashboard/base-cover-letter")
+async def delete_base_cover_letter(request: Request):
+    """Remove the base cover letter, mirroring DELETE /api/extension/base-resume."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        old_path = user.base_cover_letter_path
+        user.base_cover_letter_path = None
+        user.base_cover_letter_filename = None
+        user.base_cover_letter_generated_at = None
         db.commit()
         if old_path and os.path.exists(old_path):
             os.remove(old_path)

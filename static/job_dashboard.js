@@ -450,6 +450,9 @@
   ];
   var EEO_KEYS = EEO_FIELDS.map(function (f) { return f.key; });
 
+  var coverLetterStatusEl = null;
+  var coverLetterBtnEl = null;
+
   var modalEl = null;
   var modalFields = {};
   var modalOnSaved = null;
@@ -562,6 +565,23 @@
     });
     card.appendChild(eeoGrid);
 
+    card.appendChild(el("div", "jd-modal-sec", "Cover letter"));
+    card.appendChild(
+      el(
+        "p",
+        "jd-modal-intro",
+        "A reusable cover letter, written from your base resume — attached automatically " +
+          "whenever a form asks for one as a document, the same way your resume is."
+      )
+    );
+    coverLetterStatusEl = el("p", "jd-modal-intro", "Checking…");
+    card.appendChild(coverLetterStatusEl);
+    coverLetterBtnEl = el("button", "jd-modal-cancel", "Generate my base cover letter");
+    coverLetterBtnEl.type = "button";
+    coverLetterBtnEl.style.marginBottom = "18px";
+    coverLetterBtnEl.addEventListener("click", generateBaseCoverLetter);
+    card.appendChild(coverLetterBtnEl);
+
     var termsCheck = el("label", "jd-check");
     var termsInput = document.createElement("input");
     termsInput.type = "checkbox";
@@ -656,6 +676,7 @@
         if (data) fillProfileModal(data);
       })
       .catch(function () {});
+    refreshCoverLetterStatus();
 
     modalEl.hidden = false;
     document.addEventListener("keydown", onModalKeydown);
@@ -668,6 +689,51 @@
 
   function onModalKeydown(e) {
     if (e.key === "Escape") closeProfileModal();
+  }
+
+  function refreshCoverLetterStatus() {
+    if (!coverLetterStatusEl) return;
+    coverLetterStatusEl.textContent = "Checking…";
+    fetch("/api/dashboard/base-cover-letter")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data) { coverLetterStatusEl.textContent = ""; return; }
+        if (data.has_base_cover_letter) {
+          coverLetterStatusEl.textContent = "On file: " + (data.filename || "cover_letter.pdf");
+          coverLetterBtnEl.textContent = "Regenerate";
+        } else {
+          coverLetterStatusEl.textContent = "None yet — auto-apply will skip Cover Letter document fields until you generate one.";
+          coverLetterBtnEl.textContent = "Generate my base cover letter";
+        }
+      })
+      .catch(function () { coverLetterStatusEl.textContent = ""; });
+  }
+
+  function generateBaseCoverLetter() {
+    coverLetterBtnEl.disabled = true;
+    var origText = coverLetterBtnEl.textContent;
+    coverLetterBtnEl.textContent = "Writing…";
+    coverLetterStatusEl.textContent = "Writing your cover letter from your base resume…";
+    fetch("/api/dashboard/base-cover-letter/generate", { method: "POST" })
+      .then(function (r) {
+        if (r.status === 401) { redirectToLogin(); return null; }
+        return jsonOrNull(r).then(function (body) { return { ok: r.ok, body: body || {} }; });
+      })
+      .then(function (res) {
+        if (!res) return;
+        if (!res.ok) {
+          coverLetterStatusEl.textContent = res.body.detail || "Couldn't write a cover letter. Try again.";
+          return;
+        }
+        refreshCoverLetterStatus();
+      })
+      .catch(function () {
+        coverLetterStatusEl.textContent = "Couldn't write a cover letter. Try again.";
+      })
+      .then(function () {
+        coverLetterBtnEl.disabled = false;
+        if (coverLetterBtnEl.textContent === "Writing…") coverLetterBtnEl.textContent = origText;
+      });
   }
 
   function submitProfileModal() {

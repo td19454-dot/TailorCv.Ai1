@@ -28,9 +28,12 @@ import difflib
 import html as _html
 import json
 import logging
+import os
 import platform
 import re
+import tempfile
 import threading
+import time
 from typing import Any, Coroutine
 
 from auto_apply import config
@@ -76,15 +79,42 @@ def _get_playwright_loop() -> asyncio.AbstractEventLoop:
     return _pw_loop
 
 
-async def _run_playwright(coro: Coroutine) -> Any:
+async def _run_playwright(coro: Coroutine, timeout: float | None = None) -> Any:
     """Run a Playwright/Stagehand coroutine on a loop that actually supports
     subprocess transports, regardless of which loop is driving the current
-    request. On non-Windows this is a no-op passthrough."""
+    request, bounded by `timeout`. On non-Windows this is a plain wait_for.
+
+    The Windows branch deliberately does NOT use
+    `asyncio.wait_for(asyncio.wrap_future(fut))`, which is the obvious way to
+    write this and is quietly broken here. wait_for, on timing out, cancels
+    the inner awaitable and then *waits for that cancellation to be
+    acknowledged*. A concurrent.futures.Future already executing on another
+    thread cannot acknowledge it — Future.cancel() returns False once running
+    and nothing ever completes the wrapper — so wait_for itself blocks
+    forever, defeating the very timeout it implements. Observed in practice:
+    a run sat in "Finishing the last few fields…" for 777 seconds, blowing
+    through both the 60s per-call bound and the 420s run-level bound without
+    either firing.
+
+    Polling fut.done() instead keeps the decision entirely on this side of
+    the thread boundary: we never await anything that depends on the other
+    thread cooperating. The abandoned work does keep running over there
+    (genuinely unavoidable — there is no way to force-kill it), but this
+    side stops waiting and the run moves on, which is the part that matters.
+    """
     if not _IS_WINDOWS:
-        return await coro
+        return await asyncio.wait_for(coro, timeout) if timeout else await coro
+
     loop = _get_playwright_loop()
     fut = asyncio.run_coroutine_threadsafe(coro, loop)
-    return await asyncio.wrap_future(fut)
+    deadline = None if timeout is None else time.monotonic() + timeout
+    while True:
+        if fut.done():
+            return fut.result()
+        if deadline is not None and time.monotonic() >= deadline:
+            fut.cancel()  # best effort: only takes effect if it hasn't started
+            raise TimeoutError(f"playwright call exceeded {timeout:.0f}s")
+        await asyncio.sleep(0.05)
 
 
 # stagehand.act/observe/extract send real page content to the model, so a
@@ -108,6 +138,51 @@ _PERMANENT_MARKERS = ("request too large", "must be reduced")
 # tight budget, while still catching a genuine hang well before it can eat
 # the whole run.
 _CALL_TIMEOUT_SECONDS = 60.0
+# Browser launch is a cold Chromium start plus Stagehand attach — slower than
+# any single RPC, so it gets its own, longer bound.
+_LAUNCH_TIMEOUT_SECONDS = 120.0
+# Teardown gets a short bound of its own: a close that is going to work is
+# near-instant, and end() runs in a finally, so a long wait here would delay
+# the run reaching a terminal state for no gain. The OS reclaims a Chromium
+# we give up on; the startup sweep catches whatever survives.
+_CLOSE_TIMEOUT_SECONDS = 20.0
+# How far past `timeout` the retries may collectively run. >1 so a transient
+# error still gets a real second chance, but small enough that the caller's
+# stated bound stays meaningful.
+_CALL_TOTAL_BUDGET_FACTOR = 2.0
+# Single keystroke / scroll / screenshot. These are local browser operations
+# with no LLM in the loop, so anything past a few seconds is a hang.
+_DROPDOWN_KEY_TIMEOUT_SECONDS = 10.0
+# Temporary attribute used to re-find a field after its widget re-renders.
+_FIELD_MARK_ATTR = "data-autoapply-target"
+# Cap on how many options are pulled out of a widget at all, and (lower) on
+# how many are worth spending prompt tokens listing. See the call sites.
+_MAX_COMBOBOX_OPTIONS_READ = 200
+_MAX_COMBOBOX_OPTIONS_IN_PROMPT = 40
+# The act()-driven custom-dropdown fallback. Kept well under the general
+# per-call bound: a genuine open-then-pick finishes in a few seconds, so a
+# call still going at this point is hunting for an option that isn't there,
+# and every second past that is pure waste multiplied by however many
+# dropdowns the form has (GitLab's has 11+).
+_DROPDOWN_ACT_TIMEOUT_SECONDS = 15.0
+# After this many custom-dropdown fallbacks fail on one page, stop trying the
+# rest. They're the same widget from the same UI library — if two in a row
+# can't be driven, the twelfth won't be either, and paying the timeout for
+# each is what turned one form into a multi-minute stall.
+_DROPDOWN_FALLBACK_FAILURE_LIMIT = 2
+
+# Which <input type=file> is the cover-letter slot vs. the resume one, by the
+# input's own attributes. Deliberately attribute-based rather than via
+# observe(): Greenhouse fronts these inputs with an "Attach" button and hides
+# the input itself, so observe() reports the *button*, and set_input_files()
+# on a button fails. `i` is CSS case-insensitive attribute matching.
+_COVER_LETTER_ATTR_MATCH = '[name*="cover" i], [id*="cover" i], [aria-label*="cover" i]'
+_COVER_LETTER_INPUT_SELECTOR = ", ".join(
+    f'input[type="file"]{part.strip()}' for part in _COVER_LETTER_ATTR_MATCH.split(",")
+)
+_RESUME_INPUT_SELECTOR = (
+    'input[type="file"]:not([name*="cover" i]):not([id*="cover" i]):not([aria-label*="cover" i])'
+)
 
 
 def _is_transient(exc: Exception) -> bool:
@@ -322,6 +397,9 @@ class LocalBrowser:
         # degrade to showing neither link, rather than a broken one.
         self.live_view_url: str | None = None
         self.replay_url: str | None = None
+        # Circuit breaker for the custom-dropdown act() fallback — see
+        # _DROPDOWN_FALLBACK_FAILURE_LIMIT.
+        self._dropdown_fallback_failures = 0
 
     async def _call(self, coro_factory, timeout: float = _CALL_TIMEOUT_SECONDS) -> Any:
         """Run one Stagehand call with the transient-error retry, on the
@@ -344,12 +422,27 @@ class LocalBrowser:
         multiplies the wasted time (4 attempts x timeout would be 4x as slow
         to fail as just failing once). It's raised immediately so the
         caller's own exception handling (in _apply_answer, fill_form, etc.)
-        can mark that one field/step failed and let the run move on."""
+        can mark that one field/step failed and let the run move on.
+
+        The bound is handed to _run_playwright rather than applied here with
+        asyncio.wait_for — see its docstring: wait_for around a cross-thread
+        future deadlocks on Windows instead of timing out.
+
+        `timeout` bounds the whole call, retries and backoff included — not
+        each attempt separately. Without that distinction a nominally "60s"
+        call could legitimately run 4 x 60s plus backoff (~261s), which is why
+        a run could blow past budgets that all looked correct in isolation.
+        Each attempt gets whatever is left of the budget, so the caller's
+        number means what it says."""
         delay = _RETRY_BASE_DELAY
+        budget_ends = time.monotonic() + timeout * _CALL_TOTAL_BUDGET_FACTOR
         for attempt in range(_RETRY_ATTEMPTS):
+            remaining = budget_ends - time.monotonic()
+            if remaining <= 0:
+                raise TimeoutError(f"stagehand call exhausted its {timeout:.0f}s budget over {attempt} attempts")
             try:
-                return await asyncio.wait_for(_run_playwright(coro_factory()), timeout=timeout)
-            except asyncio.TimeoutError as exc:
+                return await _run_playwright(coro_factory(), timeout=min(timeout, remaining))
+            except (asyncio.TimeoutError, TimeoutError) as exc:
                 raise TimeoutError(f"stagehand call exceeded {timeout:.0f}s") from exc
             except Exception as exc:
                 is_last = attempt == _RETRY_ATTEMPTS - 1
@@ -359,7 +452,7 @@ class LocalBrowser:
                     "stagehand call hit a transient error (attempt %s/%s), retrying in %.0fs: %s",
                     attempt + 1, _RETRY_ATTEMPTS, delay, exc,
                 )
-                await asyncio.sleep(delay)
+                await asyncio.sleep(min(delay, max(0.0, budget_ends - time.monotonic())))
                 delay = min(_RETRY_MAX_DELAY, delay * 2)
 
     # ── Operations ────────────────────────────────────────────────────────
@@ -483,12 +576,28 @@ class LocalBrowser:
         page = await self._active_page()
         option_map: dict[int, list[str]] = {}
         for i, action in candidates:
-            if (getattr(action, "method", "") or "").lower() != "select":
+            # Substring match, for the same reason _apply_answer() uses one:
+            # observe() reports these as "selectOptionFromDropdown", never a
+            # bare "select". An equality check here silently skipped every
+            # custom dropdown — so the options were never read, and the model
+            # kept answering "India" to a field offering only USA / Canada /
+            # Located Elsewhere.
+            method = (getattr(action, "method", "") or "").lower()
+            if "select" not in method and "dropdown" not in method:
                 continue
             locator = page.locator(action.selector)
             opts = await self._read_select_options(locator)
             labels = [o["label"] for o in opts if o.get("label")]
-            if labels:
+            if not labels:
+                # Not a native <select> — open the custom widget and read what
+                # it really offers.
+                labels = await self._read_combobox_options(locator)
+            # A very long list is a country/state picker: the natural answer
+            # ("India") is in there and typing it works, so spending hundreds
+            # of prompt tokens listing them buys nothing. It's the SHORT,
+            # idiosyncratic lists that blind guessing gets wrong, and those
+            # are cheap to include.
+            if labels and len(labels) <= _MAX_COMBOBOX_OPTIONS_IN_PROMPT:
                 option_map[i] = labels
 
         fields_block = "\n".join(
@@ -620,6 +729,179 @@ class LocalBrowser:
         except Exception:
             return []
 
+    async def _mark_focused_field(self) -> bool:
+        """Tag the currently-focused element so we can find it again after the
+        widget has re-rendered. Returns False if nothing was focused."""
+        try:
+            page = await self._active_page()
+            got = await self._call(
+                lambda: page.evaluate(
+                    "(() => { const el = document.activeElement;"
+                    " if (!el || el === document.body) return false;"
+                    f" el.setAttribute('{_FIELD_MARK_ATTR}', '1'); return true; }})()"
+                ),
+                timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS,
+            )
+            return bool(got)
+        except Exception:
+            logger.debug("could not mark the focused field", exc_info=True)
+            return False
+
+    async def _unmark_field(self) -> None:
+        try:
+            page = await self._active_page()
+            await self._call(
+                lambda: page.evaluate(
+                    f"(() => {{ for (const el of document.querySelectorAll('[{_FIELD_MARK_ATTR}]'))"
+                    f" el.removeAttribute('{_FIELD_MARK_ATTR}'); return true; }})()"
+                ),
+                timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS,
+            )
+        except Exception:
+            logger.debug("could not unmark the field", exc_info=True)
+
+    async def _marked_widget_text(self) -> str | None:
+        """The text the marked field's *widget* is displaying right now.
+
+        react-select (what every dropdown on Greenhouse's boards actually is —
+        13 of them on the GitLab form, and zero native <select>) renders the
+        chosen value into the control wrapper and CLEARS the inner <input>.
+        Reading the input, as the old check did, therefore returns "" for a
+        field that is correctly filled: probed live, the control goes
+        "Select..." -> "India" while input.value goes "India" -> "". That false
+        negative is what made good fills look failed, which tripped the
+        circuit breaker and skipped every remaining dropdown."""
+        try:
+            page = await self._active_page()
+            text = await self._call(
+                lambda: page.evaluate(
+                    f"(() => {{ const el = document.querySelector('[{_FIELD_MARK_ATTR}]');"
+                    " if (!el) return null;"
+                    " const ctl = el.closest('[class*=\"control\"]')"
+                    "   || el.closest('[class*=\"container\"]') || el.parentElement;"
+                    " return ctl ? ctl.textContent.trim() : null; })()"
+                ),
+                timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS,
+            )
+            return text if isinstance(text, str) else None
+        except Exception:
+            logger.debug("could not read the marked widget's text", exc_info=True)
+            return None
+
+    async def _read_combobox_options(self, locator: Any) -> list[str]:
+        """Open a react-select widget and read the choices it actually offers.
+
+        _read_select_options() finds nothing on these (no <option> tags exist —
+        every dropdown on Greenhouse's boards is react-select), so the model
+        was naming values blind. That is why "Where are you currently based?",
+        whose only choices are USA / Canada / Located Elsewhere, got "India":
+        a perfectly sensible answer to the question, and not on the menu.
+
+        Only used to enrich the prompt, so it is entirely best-effort: on any
+        failure the caller just gets no options, exactly as before.
+        """
+        try:
+            await self._call(lambda: locator.scroll_to("center"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            await self._call(lambda: locator.click(), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            if not await self._mark_focused_field():
+                return []
+            page = await self._active_page()
+            opts = await self._call(
+                lambda: page.evaluate(
+                    f"(() => {{ const el = document.querySelector('[{_FIELD_MARK_ATTR}]');"
+                    " if (!el) return [];"
+                    " const wrap = el.closest('[class*=\"container\"]') || el.parentElement;"
+                    " let menu = wrap && wrap.querySelector('[class*=\"menu\"]');"
+                    " let opts = menu ? Array.from(menu.querySelectorAll('[role=option]')) : [];"
+                    " if (!opts.length) {"
+                    "   const id = el.getAttribute('aria-controls');"
+                    "   const list = id ? document.getElementById(id) : null;"
+                    "   if (list) opts = Array.from(list.querySelectorAll('[role=option]'));"
+                    " }"
+                    f" return opts.map(o => o.textContent.trim()).filter(Boolean).slice(0, {_MAX_COMBOBOX_OPTIONS_READ}); }})()"
+                ),
+                timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS,
+            )
+            return [o for o in opts if isinstance(o, str)] if isinstance(opts, list) else []
+        except Exception:
+            logger.debug("could not read combobox options", exc_info=True)
+            return []
+        finally:
+            await self._unmark_field()
+            await self._dismiss_open_listbox()
+
+    async def _dismiss_open_listbox(self) -> None:
+        """Escape, unconditionally. Cheap, idempotent, and never worth failing on."""
+        try:
+            page = await self._active_page()
+            await self._call(lambda: page.key_press("Escape"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+        except BaseException:  # noqa: BLE001 — best effort by design
+            logger.debug("could not send Escape to close a dropdown", exc_info=True)
+
+    async def _capture_dropdown_failure(self, description: str) -> str | None:
+        """Screenshot the page when a dropdown won't commit.
+
+        Every previous round of this bug was diagnosed by inference from an
+        empty field; a picture of the actual widget state (open? filtered to
+        nothing? overlaid?) is what turns the next failure into evidence."""
+        try:
+            page = await self._active_page()
+            safe = re.sub(r"[^a-z0-9]+", "-", description.lower())[:40] or "dropdown"
+            path = os.path.join(
+                tempfile.gettempdir(), f"autoapply-{self.session_id}-{safe}-{int(time.time())}.png"
+            )
+            await self._call(lambda: page.screenshot(path=path), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            return path
+        except BaseException:  # noqa: BLE001
+            logger.debug("could not capture a dropdown failure screenshot", exc_info=True)
+            return None
+
+    async def _commit_combobox(self, locator: Any, description: str, value: str) -> bool:
+        """Drive a custom combobox from the keyboard: open, type, Enter.
+
+        Returns True only if the field's own displayed text then shows a real
+        value — act() has already been caught reporting success on a field
+        still reading "Select…", so nothing here is trusted without that
+        ground-truth read. Escape runs in the finally whether this succeeded or
+        not, so no listbox is ever left open to block the fields below."""
+        try:
+            await self._call(lambda: locator.scroll_to("center"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            await self._call(lambda: locator.click(), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            # Mark while focused: after Enter the widget re-renders and the
+            # observe() selector may no longer resolve to the same node.
+            marked = await self._mark_focused_field()
+            await self._call(
+                lambda: locator.type(value, delay=30), timeout=_DROPDOWN_ACT_TIMEOUT_SECONDS
+            )
+            page = await self._active_page()
+            await self._call(lambda: page.key_press("Enter"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+
+            shown = await self._marked_widget_text() if marked else None
+            if shown is not None:
+                committed = bool(shown.strip()) and not _PLACEHOLDER_OPTION_RE.match(shown.strip())
+            else:
+                # No mark (nothing focused, or a cross-frame form) — fall back
+                # to the element-level read.
+                committed = await self._dropdown_shows_a_value(locator, description)
+
+            if committed:
+                logger.info("dropdown %r committed %r via keyboard (now shows %r)",
+                            description, value, (shown or "").strip()[:60])
+                return True
+            shot = await self._capture_dropdown_failure(description)
+            logger.warning(
+                "keyboard entry left dropdown %r without a value (wanted %r, shows %r)%s",
+                description, value, (shown or "").strip()[:60],
+                f"; screenshot: {shot}" if shot else "",
+            )
+            return False
+        except Exception as exc:
+            logger.warning("keyboard entry failed on dropdown %r: %s", description, exc)
+            return False
+        finally:
+            await self._unmark_field()
+            await self._dismiss_open_listbox()
+
     async def _select_with_match(self, locator: Any, action: Any, value: str) -> None:
         """select_option(), but resolved against the select's real option
         text first. Raises if options WERE read but nothing — including the
@@ -658,16 +940,48 @@ class LocalBrowser:
             # field was still showing "Select…" on the real page. Every
             # attempt below is followed by reading the field's own displayed
             # text directly (not another LLM read) before it's trusted.
+            # Keyboard first, act() only as a backstop. These comboboxes filter
+            # as you type, so click → type → Enter commits the highlighted
+            # option through the widget's own keyboard handling, without
+            # needing a stable selector for the portal-rendered option row —
+            # which observe() does not reliably give (it returned the input,
+            # a wrapper div, and once a bare <label> for the same field).
+            #
+            # This attempt is ALWAYS made, never gated on the circuit breaker.
+            # The breaker exists to avoid paying act()'s timeout over and over;
+            # the keyboard path costs a few seconds and is the one most likely
+            # to work, so skipping it saved nothing and cost everything — a run
+            # with two early failures skipped 11 untried dropdowns, including
+            # every EEO field, which is exactly the reported symptom.
+            if await self._commit_combobox(locator, description, value):
+                self._dropdown_fallback_failures = 0
+                return
+            if self._dropdown_fallback_failures >= _DROPDOWN_FALLBACK_FAILURE_LIMIT:
+                raise RuntimeError(
+                    "custom dropdowns on this form can't be driven "
+                    f"({self._dropdown_fallback_failures} already failed); skipping the slow "
+                    f"act() retry for {value!r} rather than paying the timeout again"
+                )
             try:
                 await self.act(
                     f'Open the dropdown for "{description}" and click the option that best '
                     f"matches: {value}",
-                    timeout=45.0,
+                    timeout=_DROPDOWN_ACT_TIMEOUT_SECONDS,
                 )
                 if await self._dropdown_shows_a_value(locator, description):
+                    self._dropdown_fallback_failures = 0
                     return
+                self._dropdown_fallback_failures += 1
             except Exception:
-                pass
+                self._dropdown_fallback_failures += 1
+            finally:
+                # Unconditional: act() leaves the listbox open when it fails to
+                # pick (seen on the "Where are you currently based?" field), and
+                # an open portal listbox overlays the fields *below* it and
+                # swallows their clicks. That turns one unfillable dropdown into
+                # every subsequent field failing, which is the most likely reason
+                # all the EEO fields came back empty rather than just some.
+                await self._dismiss_open_listbox()
             # Last resort — behaves exactly as before this fallback existed,
             # for the case where it genuinely is a plain <select> whose
             # inner_html() just couldn't be read.
@@ -714,15 +1028,13 @@ class LocalBrowser:
             # .locator()/.nth() are plain synchronous constructors (confirmed
             # against the installed SDK) — only .count()/.set_input_files()
             # are actual RPC calls that need _call()'s retry/thread routing.
-            handles = page.locator('input[type="file"]')
-            count = await self._call(lambda: handles.count())
-            for idx in range(count):
-                try:
-                    one = handles.nth(idx)
-                    await self._call(lambda h=one: h.set_input_files(resume_path))
-                    uploaded_any = True
-                except Exception:
-                    continue
+            # Every file input EXCEPT any that identifies itself as the
+            # cover-letter slot. Uploading the resume to a spare/decoy input
+            # is harmless (an "autofill from resume" uploader just re-parses
+            # the same PDF), but uploading it into the Cover Letter input is
+            # not — that files the resume as the cover letter, and it's the
+            # very input upload_cover_letter() is about to fill.
+            uploaded_any = await self._set_files_on(page, _RESUME_INPUT_SELECTOR, resume_path)
             if uploaded_any:
                 await asyncio.sleep(1.5)  # let the ATS parse/echo the upload(s)
             return uploaded_any
@@ -730,14 +1042,86 @@ class LocalBrowser:
             logger.exception("resume upload failed for session %s", self.session_id)
             return False
 
+    async def _set_files_on(self, page: Any, selector: str, file_path: str) -> bool:
+        """set_input_files across every input matching `selector`. Individual
+        failures are ignored — one unusable input must not stop the rest."""
+        uploaded_any = False
+        handles = page.locator(selector)
+        try:
+            count = await self._call(lambda: handles.count())
+        except Exception:
+            return False
+        for idx in range(count):
+            try:
+                one = handles.nth(idx)
+                await self._call(lambda h=one: h.set_input_files(file_path))
+                uploaded_any = True
+            except Exception:
+                continue
+        return uploaded_any
+
+    async def upload_cover_letter(self, cover_letter_path: str) -> bool:
+        """Attach the base cover letter PDF to the input actually asking for
+        one — never blindly to every file input, which would overwrite the
+        resume attachment.
+
+        Targeted by CSS attribute selectors rather than observe(): on a real
+        Greenhouse form the visible control is an "Attach" *button* with the
+        real <input type=file> hidden behind it, so observe() hands back the
+        button's selector and set_input_files() on a <button> fails. Matching
+        the input's own name/id/aria-label is deterministic, needs no LLM
+        call, and finds the hidden input the button is fronting."""
+        try:
+            page = await self._active_page()
+            uploaded_any = await self._set_files_on(page, _COVER_LETTER_INPUT_SELECTOR, cover_letter_path)
+            if uploaded_any:
+                await asyncio.sleep(1.5)  # let the ATS parse/echo the upload(s)
+            return uploaded_any
+        except Exception:
+            logger.exception("cover letter upload failed for session %s", self.session_id)
+            return False
+
     async def _active_page(self) -> Any:
         return await self._call(lambda: self._browser.context.active_page())
 
     async def end(self) -> None:
-        try:
-            await self._call(lambda: self._sh.close())
-        except Exception:
-            logger.warning("could not cleanly close local browser session %s", self.session_id, exc_info=True)
+        """Tear down both handles.
+
+        Closing Stagehand does NOT close the Chromium underneath it: the
+        browser was launched by us and passed in via `browser=`, so Stagehand
+        never owns it. Closing only `_sh` (as this used to) is what leaked 27
+        Chromium processes. Both are closed independently so a failure in one
+        still attempts the other, and BaseException is caught because
+        CancelledError is not an Exception — a cancelled run would otherwise
+        skip cleanup entirely, which is precisely when it is needed most.
+        """
+        # StagehandBrowser.close() is a *sync* method returning
+        # asyncio.shield(task) — a Future, not a coroutine — and
+        # run_coroutine_threadsafe accepts only a coroutine. Passing it
+        # directly raised "A coroutine object is required" and the Chromium
+        # was never closed at all (confirmed in a live run). Wrapping it in a
+        # coroutine both satisfies that and keeps the create_task() inside
+        # close() on the Playwright loop, where it has to run.
+        async def _close_chromium() -> None:
+            # Closing Stagehand usually takes the browser down with it, and a
+            # second close() on an already-closed browser blocks until the
+            # timeout (measured: a full 20s stall on every teardown). The
+            # close still has to be attempted, because Stagehand does NOT own
+            # a browser passed in via browser= and won't always close it.
+            if getattr(self._browser, "closed", False):
+                return
+            await self._browser.close()
+
+        for label, closer in (
+            ("stagehand", lambda: self._sh.close()),
+            ("chromium", _close_chromium),
+        ):
+            try:
+                await self._call(closer, timeout=_CLOSE_TIMEOUT_SECONDS)
+            except BaseException:  # noqa: BLE001 — cleanup must never propagate
+                logger.warning(
+                    "could not cleanly close %s for session %s", label, self.session_id, exc_info=True
+                )
 
 
 def _schema_to_model(schema: dict):
@@ -813,11 +1197,25 @@ async def open_browser() -> LocalBrowser:
             viewport_height=1000,
             args=["--disable-blink-features=AutomationControlled"],
         )
-        stagehand = await Stagehand.create(
-            browser=browser,
-            model=config.model_name(),
-            model_api_key=config.model_api_key(),
-        )
+        try:
+            stagehand = await Stagehand.create(
+                browser=browser,
+                model=config.model_name(),
+                model_api_key=config.model_api_key(),
+            )
+        except BaseException:
+            # Chromium is already up at this point. Without this, a failed
+            # create() (bad model key, network blip) orphans a live browser
+            # that nothing holds a reference to and nothing will ever close.
+            try:
+                await browser.close()
+            except BaseException:  # noqa: BLE001
+                logger.warning("could not close browser after failed Stagehand.create", exc_info=True)
+            raise
         return LocalBrowser(stagehand, browser)
 
-    return await _run_playwright(_open())
+    # Launching Chromium + attaching Stagehand is the one call that can
+    # legitimately take a while (a cold browser start), so it gets a longer
+    # bound than a normal RPC — but it still gets one, so a wedged launch
+    # can't sit forever the way an unbounded call could.
+    return await _run_playwright(_open(), timeout=_LAUNCH_TIMEOUT_SECONDS)

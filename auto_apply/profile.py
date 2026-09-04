@@ -59,6 +59,15 @@ class ApplicantProfile:
     resume_path: str = ""
     resume_filename: str = ""
 
+    # Reusable, non-job-specific cover letter — attached to any "Cover
+    # Letter" file-upload field the same way resume_path is attached to a
+    # Resume one. Empty if the user hasn't generated/uploaded one; that's
+    # not a blocker (validate_profile() doesn't require it — a form that
+    # needs one but finds nothing on file still surfaces honestly via
+    # runner.py's document_missing path, same as before this existed).
+    cover_letter_path: str = ""
+    cover_letter_filename: str = ""
+
     # Declarative — from UserApplyProfile only, never LLM-written
     work_authorized: str = ""
     requires_sponsorship: str = ""
@@ -140,6 +149,8 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
         "resume_path": user.base_resume_path or "",
         "resume_filename": user.base_resume_filename or "",
         "resume_text": user.base_resume_text or "",
+        "cover_letter_path": user.base_cover_letter_path or "",
+        "cover_letter_filename": user.base_cover_letter_filename or "",
         "job_id": job.id,
         "job_title": job.title or "",
         "job_company": job.company or "",
@@ -274,6 +285,8 @@ async def build_applicant_profile(snap: dict) -> ApplicantProfile:
         portfolio=pick("portfolio_url", "portfolio"),
         resume_path=snap.get("resume_path", ""),
         resume_filename=snap.get("resume_filename", "") or "resume.pdf",
+        cover_letter_path=snap.get("cover_letter_path", ""),
+        cover_letter_filename=snap.get("cover_letter_filename", "") or "cover_letter.pdf",
         work_authorized=str(prof.get("work_authorized") or "").strip(),
         requires_sponsorship=str(prof.get("requires_sponsorship") or "").strip(),
         visa_status=str(prof.get("visa_status") or "").strip(),

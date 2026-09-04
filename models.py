@@ -41,6 +41,16 @@ class User(Base):
     base_resume_embedding = Column(Text, nullable=True)          # JSON-encoded list[float]
     base_resume_embedding_model = Column(String(60), nullable=True)
 
+    # A reusable, non-job-specific cover letter — auto-apply attaches this to
+    # any "Cover Letter" file-upload field it finds, the same way
+    # base_resume_path is attached to a Resume field. Distinct from the
+    # tailored, per-job cover letters /cover-letter generates (those aren't
+    # persisted anywhere; this one is, deliberately, exactly like the base
+    # resume it's generated alongside).
+    base_cover_letter_path = Column(String(500), nullable=True)
+    base_cover_letter_filename = Column(String(255), nullable=True)
+    base_cover_letter_generated_at = Column(DateTime, nullable=True)
+
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
     login_codes = relationship("LoginVerificationCode", back_populates="user", cascade="all, delete-orphan")
     job_applications = relationship("JobApplication", back_populates="user", cascade="all, delete-orphan")

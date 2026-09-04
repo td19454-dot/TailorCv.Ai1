@@ -18,8 +18,11 @@ Two rules encoded structurally here rather than left to the agent:
 from __future__ import annotations
 
 import asyncio
+import concurrent.futures
 import json
 import logging
+import threading
+import time
 from datetime import datetime
 
 from auto_apply import config
@@ -36,6 +39,83 @@ _SEM: asyncio.Semaphore | None = None
 # Strong refs: asyncio only holds weak references to tasks, so a GC'd task
 # would silently vanish mid-run.
 _TASKS: set[asyncio.Task] = set()
+# Browsers currently owned by a run. Normally each run's own finally closes
+# its browser; this exists so shutdown can close one whose run is wedged and
+# therefore never reaches that finally.
+_LIVE_BROWSERS: set = set()
+
+# Every DB write in a run goes through _db_call with this bound. Writes are
+# small and local; anything past this means the connection is wedged, not
+# that the query is genuinely slow.
+_DB_TIMEOUT_SECONDS = 20.0
+# build_applicant_profile()'s narrative LLM call has no bound of its own.
+_PROFILE_BUILD_TIMEOUT_SECONDS = 90.0
+
+def _submit_db(fn, args) -> "concurrent.futures.Future":
+    """Run fn on a throwaway daemon thread, reporting into a Future.
+
+    Deliberately not a ThreadPoolExecutor: its workers are non-daemon and are
+    joined by an atexit hook, so a single wedged DB thread would hang the whole
+    process on shutdown (confirmed — a test with a wedged write refused to exit
+    and had to be killed). Daemon threads let the interpreter exit and abandon
+    them, which is the right trade for a write we have already given up on.
+    A wedged thread also can't starve anything else here, since each call gets
+    its own thread rather than a slot in a shared pool.
+    """
+    fut: "concurrent.futures.Future" = concurrent.futures.Future()
+
+    def _run():
+        if not fut.set_running_or_notify_cancel():
+            return
+        try:
+            fut.set_result(fn(*args))
+        except BaseException as exc:  # noqa: BLE001 — must not die silently
+            fut.set_exception(exc)
+
+    threading.Thread(target=_run, daemon=True, name="auto-apply-db").start()
+    return fut
+
+
+async def _db_call(fn, *args, timeout: float = _DB_TIMEOUT_SECONDS):
+    """Run a blocking DB function off the event loop, bounded.
+
+    Deliberately NOT `asyncio.wait_for(asyncio.to_thread(...))`: cancelling an
+    executor future that has already started leaves the asyncio future pending
+    forever, so wait_for hangs instead of timing out — the same trap already
+    documented in browser.py's _run_playwright, and the confirmed cause of a
+    run sitting at "Finishing the last few fields…" for 584s with the outer
+    420s run timeout never firing (a to_thread in progress swallows that
+    cancellation until its thread returns).
+
+    Polling fut.done() keeps the decision on this side of the thread boundary:
+    nothing here depends on the DB thread cooperating. A wedged thread is
+    abandoned (it is a daemon, so it blocks neither other work nor shutdown)
+    and the run carries on.
+    """
+    fut = _submit_db(fn, args)
+    deadline = time.monotonic() + timeout
+    while True:
+        if fut.done():
+            return fut.result()
+        if time.monotonic() >= deadline:
+            fut.cancel()  # best effort: only lands if it never started
+            raise TimeoutError(f"db call exceeded {timeout:.0f}s")
+        await asyncio.sleep(0.05)
+
+
+async def _db_call_safe(fn, *args, timeout: float = _DB_TIMEOUT_SECONDS) -> bool:
+    """_db_call, but a timeout is logged rather than raised.
+
+    Used for progress writes (stage/note). Losing one progress row matters far
+    less than the run reaching a terminal state — a raise here would abort the
+    run partway and leave exactly the orphaned `running` row this is meant to
+    prevent."""
+    try:
+        await _db_call(fn, *args, timeout=timeout)
+        return True
+    except Exception:
+        logger.warning("auto-apply DB write timed out or failed; continuing", exc_info=True)
+        return False
 
 MAX_FORM_PAGES = 4
 
@@ -141,6 +221,28 @@ def enqueue_run(run_id: int) -> None:
     task.add_done_callback(_TASKS.discard)
 
 
+async def shutdown_runs(grace: float = 15.0) -> None:
+    """Cancel in-flight runs and make sure no Chromium outlives this process.
+
+    Cancelling gives each run's own finally a chance to close its browser and
+    mark its row terminal, which is the clean path. Anything still registered
+    after the grace period belongs to a run too wedged to reach that finally,
+    so its browser is closed directly — otherwise a restart (or any --reload)
+    abandons a live Chromium, which is how they accumulated."""
+    tasks = [t for t in _TASKS if not t.done()]
+    for task in tasks:
+        task.cancel()
+    if tasks:
+        await asyncio.gather(*tasks, return_exceptions=True)
+
+    for browser in list(_LIVE_BROWSERS):
+        _LIVE_BROWSERS.discard(browser)
+        try:
+            await asyncio.wait_for(browser.end(), timeout=grace)
+        except BaseException:  # noqa: BLE001 — shutdown must finish regardless
+            logger.warning("could not close a browser during shutdown", exc_info=True)
+
+
 async def _worker(run_id: int) -> None:
     async with _sem():
         try:
@@ -184,7 +286,7 @@ def _db_write(run_id: int, fields: dict, step: dict | None = None) -> None:
 
 async def _set_stage(run_id: int, stage: str, detail: str | None = None) -> None:
     text = detail or STAGE_TEXT.get(stage, "Working…")
-    await asyncio.to_thread(
+    await _db_call_safe(
         _db_write,
         run_id,
         {"status": "running", "stage": stage, "detail": text},
@@ -203,7 +305,7 @@ async def _log_note(run_id: int, note: str) -> None:
     logger — which nothing persists once the process that printed it moves
     on."""
     logger.info("run %s: %s", run_id, note)
-    await asyncio.to_thread(
+    await _db_call_safe(
         _db_write,
         run_id,
         {},
@@ -232,14 +334,18 @@ async def _finish(
         fields["confirmation_text"] = confirmation
     if missing is not None:
         fields["missing_fields"] = json.dumps(missing[:25])
-    await asyncio.to_thread(
+    # Safe (non-raising) on purpose: this is the write that makes a run
+    # terminal. If it times out we still want the rest of _finish to run and
+    # the worker to unwind — raising here would abort mid-cleanup and leave
+    # exactly the stuck `running` row the periodic reaper then has to mop up.
+    await _db_call_safe(
         _db_write,
         run_id,
         fields,
         {"t": datetime.utcnow().isoformat(), "stage": status, "detail": detail},
     )
     if status in ("submitted", "needs_input"):
-        await asyncio.to_thread(_record_application, run_id, status)
+        await _db_call_safe(_record_application, run_id, status)
 
 
 def _record_application(run_id: int, status: str) -> None:
@@ -362,20 +468,36 @@ async def _execute(run_id: int) -> None:
     if not meta:
         return
 
-    await asyncio.to_thread(_db_write, run_id, {"started_at": datetime.utcnow()})
+    await _db_call_safe(_db_write, run_id, {"started_at": datetime.utcnow()})
     await _set_stage(run_id, "preparing")
 
-    snap = await asyncio.to_thread(_snapshot, meta["user_id"], meta["job_listing_id"])
+    try:
+        snap = await _db_call(_snapshot, meta["user_id"], meta["job_listing_id"])
+    except Exception:
+        logger.exception("run %s could not read its snapshot", run_id)
+        snap = None
     if not snap:
-        _refund(meta["user_id"])
+        await _db_call_safe(_refund, meta["user_id"])
         await _finish(run_id, "failed", "That job is no longer available.", error="snapshot_missing")
         return
 
-    profile = await build_applicant_profile(snap)
+    # build_applicant_profile makes an LLM call for the narrative fields with
+    # no bound of its own (tenacity retries on top of the OpenAI SDK's own
+    # retries can run into the tens of minutes). Bounded here so a stalled
+    # provider can't hold a run in "preparing" — the narrative fields are a
+    # nice-to-have, so failing this is not fatal on its own.
+    try:
+        profile = await asyncio.wait_for(build_applicant_profile(snap), timeout=_PROFILE_BUILD_TIMEOUT_SECONDS)
+    except Exception as exc:
+        logger.exception("run %s could not build the applicant profile", run_id)
+        await _db_call_safe(_refund, meta["user_id"])
+        await _finish(run_id, "failed", "Couldn't prepare your details. Try again.", error=repr(exc))
+        return
+
     blockers = validate_profile(profile, snap)
     if blockers:
         # Nothing was spent yet — no session, so give the run back.
-        _refund(meta["user_id"])
+        await _db_call_safe(_refund, meta["user_id"])
         await _finish(run_id, "failed", blockers[0], error="profile_incomplete", missing=blockers)
         return
 
@@ -386,25 +508,32 @@ async def _execute(run_id: int) -> None:
         browser = await open_browser()
     except Exception as exc:
         logger.exception("could not open local browser session for run %s", run_id)
-        _refund(meta["user_id"])
+        await _db_call_safe(_refund, meta["user_id"])
         await _finish(run_id, "failed", "Couldn't start the browser. Try again in a moment.", error=repr(exc))
         return
 
-    # Persist session identity immediately: if anything below dies, the user can
-    # still watch the live view or read the replay.
-    await asyncio.to_thread(
-        _db_write,
-        run_id,
-        {
-            "browserbase_session_id": browser.session_id,
-            "live_view_url": browser.live_view_url,
-            "replay_url": browser.replay_url,
-        },
-    )
-
+    # Everything from here owns a live browser, so it all sits inside the
+    # try/finally — including the session-identity write, which used to run
+    # before it. A hang or raise in that write left a Chromium with no owner
+    # and no end(), which is one of the confirmed sources of leaked browsers.
     try:
+        # Registered first thing, so shutdown can still close this browser if
+        # the run is wedged anywhere below — including in the write that follows.
+        _LIVE_BROWSERS.add(browser)
+        # Persist session identity: if anything below dies, the user can
+        # still watch the live view or read the replay.
+        await _db_call_safe(
+            _db_write,
+            run_id,
+            {
+                "browserbase_session_id": browser.session_id,
+                "live_view_url": browser.live_view_url,
+                "replay_url": browser.replay_url,
+            },
+        )
         await _drive(run_id, browser, profile, snap, meta)
     finally:
+        _LIVE_BROWSERS.discard(browser)
         await browser.end()
 
 
@@ -463,6 +592,17 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     # name/email/experience, which shrinks the agent's job to corrections.
     await _set_stage(run_id, "attaching_resume")
     attached = await browser.upload_resume(profile.resume_path)
+
+    # Same idea for a Cover Letter file field, if this form has one and the
+    # user has a base cover letter on file — description-aware, unlike
+    # upload_resume(), so it can never land in the actual Resume/CV input.
+    # Skipped entirely (not even attempted) when there's nothing to attach —
+    # a form that requires one and gets nothing still surfaces honestly via
+    # the document_missing path below, unchanged from before this existed.
+    if profile.cover_letter_path:
+        cover_letter_attached = await browser.upload_cover_letter(profile.cover_letter_path)
+        if cover_letter_attached:
+            await _log_note(run_id, "cover letter attached")
 
     await _set_stage(run_id, "filling_form")
     try:
