@@ -1,19 +1,7 @@
 === CERT NAMES (from AI) ===
-<<<<<<< HEAD
-  - Web Development Certification
-  - JavaScript Course
-  - Cloud Fundamentals Certification
-=======
->>>>>>> fc70446c459ee973c6e7c82347d988f1098c7327
 
 === CERT SECTION LINKS (reading order) [0] ===
 
 === FINAL cert.url PER ENTRY ===
-<<<<<<< HEAD
-  - Web Development Certification  ->  
-  - JavaScript Course  ->  
-  - Cloud Fundamentals Certification  ->  
-=======
->>>>>>> fc70446c459ee973c6e7c82347d988f1098c7327
 
 === READING-ORDER FILL ASSIGNED [0] ===

@@ -471,7 +471,7 @@ async function handleATSAnalysis() {
             let detail = 'Analysis failed';
             try {
                 const payload = await response.json();
-                detail = payload?.detail || payload?.error || detail;
+                detail = tcvErrorMessage(payload, detail);
             } catch {}
             const error = new Error(detail);
             error.status = response.status;
