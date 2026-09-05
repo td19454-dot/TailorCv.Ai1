@@ -37,6 +37,7 @@ import time
 from typing import Any, Coroutine
 
 from auto_apply import config
+from auto_apply.profile import question_signature
 from functions import get_resume_response
 
 logger = logging.getLogger(__name__)
@@ -171,6 +172,287 @@ _DROPDOWN_ACT_TIMEOUT_SECONDS = 15.0
 # each is what turned one form into a multi-minute stall.
 _DROPDOWN_FALLBACK_FAILURE_LIMIT = 2
 
+_XPATH_PREFIX_RE = re.compile(r"^\s*xpath\s*=\s*", re.IGNORECASE)
+
+
+def _selector_kind(selector: str | None) -> tuple[str, str]:
+    """('xpath'|'css'|'', normalized) for a Stagehand Action.selector.
+
+    Stagehand accepts three shapes for the same element — "xpath=/html/…", a
+    bare "/html/…", and CSS — and its content-script normalizes them itself
+    (_extension/content-script.js: `isXPath = s.startsWith("xpath=") ||
+    s.startsWith("/")`). Every Locator call in this file therefore works.
+
+    The field probe was the one consumer resolving the raw string by hand, and
+    an "xpath="-prefixed value resolves under NEITHER engine: document.evaluate
+    parses it as a boolean expression ("xpath" = /html/…) and then raises
+    because FIRST_ORDERED_NODE_TYPE was requested, while querySelector rejects
+    it as invalid CSS. So every probe entry came back null, _probe_fields
+    returned {}, and the fill registry, the anti-downgrade guard and the
+    missing-field reconciliation were all silently inert — for every run.
+
+    Deliberately in Python rather than inside _FIELD_PROBE_JS: the JS string is
+    unreachable from the test suite (which stubs the browser call and feeds
+    canned JSON), which is precisely how this survived. Here it is one pure
+    function with unit tests."""
+    raw = str(selector or "").strip()
+    if not raw:
+        return "", ""
+    stripped = _XPATH_PREFIX_RE.sub("", raw).strip()
+    if not stripped:
+        return "", ""
+    if _XPATH_PREFIX_RE.match(raw) or stripped[0] in "/(":
+        return "xpath", stripped
+    return "css", stripped
+
+
+# One read-only Page.evaluate per fill_form pass, resolving every observed
+# field at once to a STABLE logical identity plus its current value.
+#
+# Why this exists: observe() gives a different selector and a different
+# free-text description for the same field on different passes (see
+# _dropdown_shows_a_value's docstring), and fill_form used to key answers by
+# position in the observe() list. So nothing could tell "a field we already
+# filled" from "a new field", and every later pass re-filled the whole form —
+# sometimes replacing a correct answer with a worse one when the option list
+# happened not to be readable the second time round.
+#
+# Returns JSON.stringify'd output: a plain string is the return shape already
+# proven against this SDK (_marked_widget_text), where a nested dict is not.
+# One entry per input xpath, null where unresolvable, so the caller can zip
+# positionally. Read-only by design — unlike _mark_focused_field this writes
+# no attributes, so even a badly-resolved xpath cannot disturb the page.
+_FIELD_PROBE_JS = r"""
+(() => {
+  const XPATHS = __XPATHS__;
+  const txt = (n) => (n && n.textContent ? n.textContent.replace(/\s+/g, ' ').trim() : '');
+  const attr = (n, a) => ((n && n.getAttribute && n.getAttribute(a)) || '').trim();
+
+  // Each entry is [kind, selector], already classified and normalized by
+  // _selector_kind() in Python — see its docstring for why the raw string
+  // could not be resolved here. Both engines stay as mutual fallbacks in case
+  // a selector is classified wrongly.
+  function resolve(pair) {
+    if (!pair || !pair[1]) return null;
+    const kind = pair[0], sel = pair[1];
+    const byXPath = () => {
+      try {
+        const r = document.evaluate(sel, document, null, 9, null); // FIRST_ORDERED_NODE_TYPE
+        return r ? r.singleNodeValue : null;
+      } catch (e) { return null; }
+    };
+    const byCss = () => {
+      try { return document.querySelector(sel); } catch (e) { return null; }
+    };
+    let n = (kind === 'xpath') ? (byXPath() || byCss()) : (byCss() || byXPath());
+    while (n && n.nodeType !== 1) n = n.parentNode;
+    return (n && n.nodeType === 1) ? n : null;
+  }
+
+  // The same field resolves to the <input>, a wrapper div, or a bare <label>
+  // depending on the pass. Normalise all three onto one control.
+  const CONTROL_SEL = 'select, textarea, input:not([type="hidden"]):not([type="file"]), [role="combobox"], [contenteditable="true"]';
+  function control(n) {
+    if (!n) return null;
+    const tag = (n.tagName || '').toLowerCase();
+    if (tag === 'label') {
+      const f = attr(n, 'for');
+      if (f) { let t = null; try { t = document.getElementById(f); } catch (e) {} if (t) return t; }
+      const inner = n.querySelector(CONTROL_SEL);
+      if (inner) return inner;
+    }
+    if (tag === 'input' || tag === 'select' || tag === 'textarea') return n;
+    if (attr(n, 'role') === 'combobox' || n.isContentEditable) return n;
+    // Never GUESS which control a multi-control node means. observe() can hand
+    // back a broad wrapper (a page-level <div class="application-container">),
+    // and taking its first control would give a dozen different fields the
+    // identity of whichever one happens to come first — usually First Name,
+    // which is filled. With the registry live that is actively dangerous: an
+    // empty field would be skipped as "already filled", and filled_field_labels
+    // would report a label that clears a genuinely-missing field, letting an
+    // incomplete form reach submit. Returning null instead means no identity,
+    // which means never skippable — the safe direction.
+    const own = only(n);
+    if (own) return own;
+    // Widening list deliberately excludes [class*="container"]: it matches
+    // page-level wrappers as readily as field ones. react-select is unaffected
+    // — it has its own rsContainer() lookup below.
+    const wide = n.closest && n.closest('fieldset, [class*="field"], [class*="form-group"]');
+    return (wide && only(wide)) || null;
+  }
+
+  // The single control inside `n`, or null when it holds none or several.
+  function only(n) {
+    let found;
+    try { found = n.querySelectorAll(CONTROL_SEL); } catch (e) { return null; }
+    return found && found.length === 1 ? found[0] : null;
+  }
+
+  function labelFor(el) {
+    if (!el) return '';
+    const aria = attr(el, 'aria-label');
+    if (aria) return aria;
+    const by = attr(el, 'aria-labelledby');
+    if (by) {
+      const t = by.split(/\s+/).map(id => {
+        let e = null; try { e = document.getElementById(id); } catch (x) {} return e ? txt(e) : '';
+      }).filter(Boolean).join(' ');
+      if (t) return t;
+    }
+    const id = attr(el, 'id');
+    if (id) {
+      let lab = null;
+      try { lab = document.querySelector('label[for="' + id.replace(/["\\]/g, '\\$&') + '"]'); } catch (e) {}
+      if (lab) return txt(lab);
+    }
+    const anc = el.closest && el.closest('label');
+    if (anc) return txt(anc);
+    const fs = el.closest && el.closest('fieldset');
+    if (fs) { const lg = fs.querySelector('legend'); if (lg) return txt(lg); }
+    return attr(el, 'placeholder');
+  }
+
+  // The react-select wrapper for THIS control, or null.
+  //
+  // Must never climb past the widget. A plain el.closest('[class*="container"]')
+  // matches a page-level <div class="application-container"> just as happily,
+  // and then every text input on the form reads the FIRST react-select's
+  // .singleValue and hidden input — so a dozen distinct fields collapse onto
+  // one identity and one value. With the registry live that is worse than
+  // useless: empty fields get skipped as "already filled" and bogus labels
+  // clear genuinely-missing fields, letting an incomplete form reach submit.
+  // Climb only while the ancestor still wraps this one control and nothing
+  // else, which is exactly what a widget wrapper does and a form wrapper
+  // never does.
+  function rsContainer(el) {
+    let n = el.parentElement, depth = 0, best = null;
+    while (n && depth < 5) {
+      if (only(n) !== el) break;   // now covering other controls: too far
+      const cls = (n.className && String(n.className)) || '';
+      if (/container|control|select|field/i.test(cls)) best = n;
+      n = n.parentElement; depth++;
+    }
+    return best;
+  }
+
+  // Whether the form is currently REJECTING this field's value.
+  //
+  // "Filled" is not the same as "accepted". A phone field reading
+  // "+246 8240044652" under a red "Phone number is too long" is filled and
+  // wrong, and treating it as done let an invalid application be submitted,
+  // then blocked the retry that was supposed to fix it (the registry skipped
+  // it as already filled). An invalid field must count as NOT done, so it
+  // stays fillable, stays in the missing list, and can be rewritten.
+  function isInvalid(el) {
+    if (!el) return false;
+    if (attr(el, 'aria-invalid') === 'true') return true;
+    try { if (el.willValidate && !el.checkValidity()) return true; } catch (e) {}
+    // Custom validation (what Greenhouse actually uses): an error node inside
+    // the field's own wrapper. Bounded climb, same reasoning as rsContainer —
+    // a form-level error banner must not condemn every field on the page.
+    let n = el.parentElement, depth = 0;
+    while (n && depth < 4) {
+      if (only(n) !== el) break;   // now covering other controls: too far
+      let errs = null;
+      try { errs = n.querySelectorAll('[class*="error"], [class*="invalid"], [role="alert"]'); }
+      catch (e) { errs = null; }
+      if (errs) {
+        for (let i = 0; i < errs.length; i++) {
+          if (txt(errs[i])) return true;
+        }
+      }
+      n = n.parentElement; depth++;
+    }
+    return false;
+  }
+
+  function describe(sel) {
+    const node = resolve(sel);
+    if (!node) return null;
+    const el = control(node);
+    if (!el) return null;
+
+    const tag = (el.tagName || '').toLowerCase();
+    const type = attr(el, 'type').toLowerCase();
+    const name = attr(el, 'name');
+    const id = attr(el, 'id');
+    const label = labelFor(el);
+    let kind = tag, ident = '', value = '', filled = false;
+
+    if (tag === 'input' && (type === 'radio' || type === 'checkbox')) {
+      kind = type;
+      // A shared name collapses the whole group into ONE logical field, which
+      // is what stops three radios reading as three separate fields.
+      let group = [el];
+      if (name) {
+        try {
+          group = Array.prototype.slice.call(
+            document.querySelectorAll('input[type="' + type + '"]')
+          ).filter(x => x.name === name);
+        } catch (e) { group = [el]; }
+      }
+      const checked = group.filter(x => x.checked);
+      filled = checked.length > 0;
+      value = checked.map(x => labelFor(x) || x.value || '').filter(Boolean).join(' | ');
+      ident = name || label || id;
+
+    } else if (tag === 'select') {
+      kind = 'select';
+      const opt = (el.selectedIndex >= 0 && el.options) ? el.options[el.selectedIndex] : null;
+      value = opt ? txt(opt) : '';
+      // A non-empty value rejects <option value="">Select…</option> without
+      // needing to re-implement the placeholder regex here.
+      filled = !!(el.value && String(el.value).trim()) && !!value;
+      ident = name || label || id;
+
+    } else if (el.isContentEditable) {
+      kind = 'contenteditable';
+      value = txt(el); filled = !!value; ident = label || name || id;
+
+    } else if (tag === 'textarea' || tag === 'input' || attr(el, 'role') === 'combobox') {
+      const cont = rsContainer(el);
+      const single = cont && cont.querySelector('[class*="singleValue"], [class*="single-value"], [class*="multiValue"], [class*="multi-value"]');
+      const ph = cont && cont.querySelector('[class*="placeholder"]');
+      const hidden = cont && cont.querySelector('input[type="hidden"][name]');
+      const isCombo = !!(single || ph || attr(el, 'role') === 'combobox'
+                         || attr(el, 'aria-haspopup') === 'listbox');
+      if (isCombo && cont) {
+        kind = 'combobox';
+        // react-select renders the committed value into the wrapper and
+        // CLEARS the inner input, so the input is not the place to look.
+        if (single) { value = txt(single); }
+        else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
+        else if (ph) { value = ''; }
+        else {
+          const shown = txt(cont);
+          value = (label && shown.indexOf(label) === 0) ? shown.slice(label.length).trim() : shown;
+        }
+        filled = !!value;
+        ident = (hidden ? attr(hidden, 'name') : '') || name || label || id;
+      } else {
+        kind = (tag === 'textarea') ? 'textarea' : 'text';
+        value = String(el.value || '').trim();
+        filled = !!value;
+        ident = name || label || id;
+      }
+    } else {
+      value = txt(el); filled = !!value; ident = name || label || id;
+    }
+
+    // No stable identity => the caller must NOT be able to skip this field.
+    if (!ident) return null;
+    return { ident: ident, kind: kind, label: label, value: value,
+             filled: !!filled, invalid: isInvalid(el) };
+  }
+
+  const out = [];
+  for (let i = 0; i < XPATHS.length; i++) {
+    try { out.push(describe(XPATHS[i])); } catch (e) { out.push(null); }
+  }
+  return JSON.stringify(out);
+})()
+"""
+
 # Which <input type=file> is the cover-letter slot vs. the resume one, by the
 # input's own attributes. Deliberately attribute-based rather than via
 # observe(): Greenhouse fronts these inputs with an "Attach" button and hides
@@ -212,7 +494,10 @@ application (a search box, a filter, a nav link).
 - For a Yes/No question (work authorization, sponsorship, relocation, agree-to-terms), return
   exactly "yes" or "no".
 - For a consent / "I agree" / privacy-policy / terms checkbox, return "yes" — the candidate has
-  authorized submitting on their behalf.
+  authorized submitting on their behalf. This includes opt-ins to receive marketing, promotional,
+  recruiting or other communications ("Do you consent to receive marketing?"): answer "yes".
+  Never leave one of these unanswered — an unanswered consent question blocks the whole
+  submission, and these are all reversible by unsubscribing later.
 - A field marked [OPTIONS: ...] is a dropdown — its real, actual choices on THIS form are listed
   there, and every employer's list is different even for the same question (one company's
   location field lists countries, another's is just "USA / Canada / Elsewhere"). You MUST return
@@ -320,6 +605,36 @@ def _looks_like_eeo_field(description: str) -> bool:
     return any(m in lowered for m in _EEO_FIELD_MARKERS)
 
 
+def _commit_matches(wanted: str, shown: str | None) -> bool:
+    """Whether a combobox's displayed text is actually the option we asked for.
+
+    The widget's own filter decides what Enter selects, and its first hit is
+    not always the right one — "India" highlights "British Indian Ocean
+    Territory (+246)" before "India (+91)". So a commit that *worked* can still
+    be wrong, and the old check (did anything land?) could not tell.
+
+    The shown text legitimately carries extra decoration — a dial code, a flag,
+    the label echoed alongside the value — so this compares WHOLE WORDS and
+    allows either side to carry extras, rather than raw substrings or a
+    similarity ratio. Both of those are far too loose for exactly the values
+    that go wrong here: "india" is a substring of "british INDIAn ocean
+    territory", and "Austria" scores 0.75 against "Australia".
+    """
+    want = set(_normalize_option_text(wanted).split())
+    got = set(_normalize_option_text(shown or "").split())
+    if not want:
+        return True
+    if not got:
+        return False
+    return want <= got or got <= want
+
+
+def _looks_like_decline(text: str) -> bool:
+    """Whether a value is a 'prefer not to answer'-style non-answer."""
+    lowered = (text or "").lower()
+    return any(m in lowered for m in _DECLINE_OPTION_MARKERS)
+
+
 _PLACEHOLDER_OPTION_RE = re.compile(r"^(select|choose|please select)\b.*\.{0,3}$|^--+$", re.IGNORECASE)
 
 
@@ -400,6 +715,16 @@ class LocalBrowser:
         # Circuit breaker for the custom-dropdown act() fallback — see
         # _DROPDOWN_FALLBACK_FAILURE_LIMIT.
         self._dropdown_fallback_failures = 0
+        # Logical field key -> the value we wrote there, for the whole run.
+        # ONLY ever holds keys this session filled itself, which is what makes
+        # the skip in fill_form safe: a field can never be skipped the first
+        # time it is seen, and a field the ATS pre-filled from the resume is
+        # still overwritten with our value exactly as before.
+        self._filled_fields: dict[str, str] = {}
+        # What the last _probe_fields call actually managed to resolve, so the
+        # run's step history records it rather than it only reaching a logger.
+        self._last_probe_note: str = "probe not run"
+        self._probe_resolved: int = 0
 
     async def _call(self, coro_factory, timeout: float = _CALL_TIMEOUT_SECONDS) -> Any:
         """Run one Stagehand call with the transient-error retry, on the
@@ -553,14 +878,74 @@ class LocalBrowser:
         actions = await self.observe(find_instruction)
         logger.info("fill_form: observe() found %d field(s) for %r", len(actions), only_hint or "(full page)")
         if not actions:
-            return {"filled": [], "skipped": []}
+            return {"filled": [], "skipped": [], "already_filled": [], "probe": "observe found nothing"}
 
-        candidates = [
-            (i, a) for i, a in enumerate(actions)
-            if not any(m in (getattr(a, "description", "") or "").lower() for m in _SKIP_DESCRIPTION_MARKERS)
-        ]
+        candidates, dropped = [], []
+        for i, a in enumerate(actions):
+            desc = (getattr(a, "description", "") or "").lower()
+            if any(m in desc for m in _SKIP_DESCRIPTION_MARKERS):
+                dropped.append(getattr(a, "description", ""))
+            else:
+                candidates.append((i, a))
+        # A dropped candidate used to appear in NONE of filled/skipped/
+        # already_filled — it just vanished. That is exactly the signature of a
+        # field that goes unanswered for no visible reason, and the markers are
+        # bare substrings ("cv" matches inside any word containing those two
+        # letters), so a false positive here is silent and untraceable.
+        if dropped:
+            logger.info("fill_form: skipped %d attachment-ish field(s): %s", len(dropped), dropped)
         if not candidates:
-            return {"filled": [], "skipped": []}
+            return {"filled": [], "skipped": [], "already_filled": [], "probe": self._last_probe_note}
+
+        # Drop fields THIS RUN already filled, before anything else touches
+        # them. This has to happen here — above the option-reading loop, not
+        # down at the write — for three reasons:
+        #
+        #  1. _read_combobox_options() below *clicks the widget open* to read
+        #     its choices. On a field that already holds a value that is not a
+        #     harmless read: react-select filters its menu against the current
+        #     selection, so the second pass often reads back fewer options or
+        #     none. Losing the option list drops the "[OPTIONS — pick exactly
+        #     one]" constraint from the prompt, and the model then answers from
+        #     the generic profile value instead — which is how a correct
+        #     "I am not a military Veteran" became "I do not wish to answer" on
+        #     a later pass. Skipping early removes that click entirely.
+        #  2. A skipped field never enters fields_block, so it has no index and
+        #     the model *cannot* return a value for it. There is no second path
+        #     by which an already-correct answer can be overwritten.
+        #  3. Each skipped dropdown saves six browser round-trips.
+        probed = await self._probe_fields([a for _, a in candidates])
+        kept, already, rejected = [], [], []
+        for pos, (i, action) in enumerate(candidates):
+            info = probed.get(pos)
+            if info and info.get("invalid"):
+                # Filled but the form is rejecting it. Re-fill rather than
+                # skip, and say so — this is the case where a run submitted a
+                # phone number the site called too long and then could not
+                # repair it, because "already filled" had won.
+                rejected.append(action.description)
+            # All three conditions required. The registry says we wrote this
+            # field; the probe confirms the page still shows a value. If the
+            # form cleared it, or nothing actually landed (e.g. the model said
+            # "No" to every radio in a group so nothing was clicked), filled is
+            # False and the field is filled again rather than wrongly skipped.
+            if info and info["key"] in self._filled_fields and info["filled"]:
+                already.append(action.description)
+                logger.info(
+                    "fill_form: skipping %r — already filled this run (key=%r, shows %r)",
+                    action.description, info["key"], info["value"][:60],
+                )
+                continue
+            kept.append((i, action, info))
+        if rejected:
+            logger.info("fill_form: %d field(s) the form is rejecting, re-filling: %s",
+                        len(rejected), rejected)
+        if not kept:
+            logger.info("fill_form: all %d field(s) already filled this run; nothing to do", len(already))
+            return {"filled": [], "skipped": [], "already_filled": already,
+                    "rejected": rejected, "probe": self._last_probe_note}
+        candidates = [(i, a) for i, a, _ in kept]
+        probe_by_index = {i: info for i, _, info in kept if info}
 
         # Read every select's real option list up front, and hand it to the
         # LLM as part of the question rather than guessing a value blind and
@@ -616,7 +1001,12 @@ class LocalBrowser:
             answers = parsed.get("answers") or {}
         except Exception:
             logger.exception("fill_form: answer-mapping LLM call failed")
-            return {"filled": [], "skipped": [a.description for _, a in candidates]}
+            return {
+                "filled": [],
+                "skipped": [a.description for _, a in candidates],
+                "already_filled": already,
+                "probe": self._last_probe_note,
+            }
 
         # unanswered: the LLM had nothing in CANDIDATE_DATA for these — a
         # profile/QA gap. apply_failed: it DID answer, but writing the value
@@ -631,15 +1021,27 @@ class LocalBrowser:
             if value is None or str(value).strip() == "":
                 unanswered.append(action.description)
                 continue
-            ok = await self._apply_answer(action, str(value))
+            info = probe_by_index.get(i)
+            ok = await self._apply_answer(action, str(value), current=(info or {}).get("value", ""))
+            if ok and info:
+                # Registered only on success, and only for a field we wrote —
+                # this is the sole thing that ever adds to the registry.
+                self._filled_fields[info["key"]] = str(value)
             (filled if ok else apply_failed).append(f"{action.description} (tried: {value!r})")
         logger.info(
-            "fill_form: %d filled, %d unanswered (no data on file): %s, %d apply failed: %s",
-            len(filled), len(unanswered), unanswered, len(apply_failed), apply_failed,
+            "fill_form: %d filled, %d already filled this run, %d unanswered (no data on file): %s, "
+            "%d apply failed: %s",
+            len(filled), len(already), len(unanswered), unanswered, len(apply_failed), apply_failed,
         )
-        return {"filled": filled, "skipped": unanswered + apply_failed}
+        return {
+            "filled": filled,
+            "skipped": unanswered + apply_failed,
+            "already_filled": already,
+            "rejected": rejected,
+            "probe": self._last_probe_note,
+        }
 
-    async def _apply_answer(self, action: Any, value: str) -> bool:
+    async def _apply_answer(self, action: Any, value: str, current: str = "") -> bool:
         page = await self._active_page()
         # Page.locator() is a plain synchronous constructor (confirmed against
         # the installed SDK: it returns Locator directly, not an awaitable) —
@@ -671,7 +1073,7 @@ class LocalBrowser:
             # that and whatever other method names Stagehand uses for the
             # same underlying pattern, rather than hand-listing exact strings.
             if "select" in method or "dropdown" in method:
-                await self._select_with_match(locator, action, value)
+                await self._select_with_match(locator, action, value, current=current)
                 return True
             # Default: plain text/textarea fill. If that fails on what turns
             # out to be a select/checkbox observe() mis-typed, fall back to
@@ -680,7 +1082,7 @@ class LocalBrowser:
                 await self._call(lambda: locator.fill(value))
                 return True
             except Exception:
-                await self._select_with_match(locator, action, value)
+                await self._select_with_match(locator, action, value, current=current)
                 return True
         except Exception:
             logger.warning("fill_form: could not apply field %r", getattr(action, "description", ""), exc_info=True)
@@ -714,6 +1116,119 @@ class LocalBrowser:
                 continue
             return True
         return False
+
+    def probe_healthy(self) -> bool:
+        """Whether the last probe actually resolved fields.
+
+        Gate any *repeat* full-page pass on this. When the probe resolves
+        nothing the registry is inert, so a second pass is not a cheap
+        top-up — it is a full destructive re-fill that re-opens every dropdown
+        with the anti-downgrade guard also disabled, i.e. precisely the
+        overwriting this whole mechanism exists to prevent."""
+        return self._probe_resolved > 0
+
+    async def _probe_fields(self, actions: list) -> dict[int, dict]:
+        """Stable logical identity + current value for every observed field.
+
+        One read-only Page.evaluate for the whole list — see _FIELD_PROBE_JS.
+        Keyed by position in `actions` so the caller can look up by the same
+        index it already uses.
+
+        Entirely best-effort: every failure path returns {} (or simply omits
+        that index), and the caller treats a missing entry as "fill it", so a
+        probe that cannot run degrades exactly to the previous behaviour
+        rather than skipping something it shouldn't. That matters here because
+        Greenhouse serves its form in an iframe while Page.evaluate runs
+        against the top document, so some forms may resolve nothing at all.
+        """
+        if not config.field_registry_enabled() or not actions:
+            return {}
+        try:
+            raw_selectors = [str(getattr(a, "selector", "") or "") for a in actions]
+            xpaths = [list(_selector_kind(s)) for s in raw_selectors]
+            # One raw selector, once per pass, at DEBUG: the entire probe rests
+            # on what shape this SDK actually emits, and nothing used to record
+            # it — which is why a total resolution failure looked like "no
+            # fields were already filled" instead of a bug.
+            if raw_selectors:
+                logger.debug("field probe: first raw selector %r", raw_selectors[0][:160])
+            # ensure_ascii escapes every non-ASCII char, so nothing in a
+            # selector can terminate the JS string. .replace() rather than
+            # .format() because the JS is full of braces.
+            js = _FIELD_PROBE_JS.replace("__XPATHS__", json.dumps(xpaths))
+            page = await self._active_page()
+            raw = await self._call(
+                lambda: page.evaluate(js), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS
+            )
+            # str is the shape this SDK is known to return; accept an already
+            # -decoded list too rather than depend on that staying true.
+            if isinstance(raw, str):
+                parsed = json.loads(raw)
+            elif isinstance(raw, list):
+                parsed = raw
+            else:
+                self._probe_resolved = 0
+                self._last_probe_note = f"probe returned {type(raw).__name__}, not JSON"
+                logger.warning("field probe: unexpected evaluate result %r", type(raw).__name__)
+                return {}
+            if not isinstance(parsed, list) or len(parsed) != len(xpaths):
+                self._probe_resolved = 0
+                self._last_probe_note = "probe returned a malformed result"
+                logger.warning(
+                    "field probe: expected a list of %d, got %r", len(xpaths), type(parsed).__name__
+                )
+                return {}
+
+            probed: dict[int, dict] = {}
+            for i, entry in enumerate(parsed):
+                if not isinstance(entry, dict):
+                    continue
+                key = question_signature(str(entry.get("ident") or ""))
+                if not key:
+                    continue
+                invalid = bool(entry.get("invalid"))
+                # A field the form is rejecting is NOT done, however full it
+                # looks. Collapsing that here means every consumer gets it
+                # right at once: the registry won't skip it, the missing-list
+                # reconciliation won't clear it, and the post-rejection repair
+                # pass can actually rewrite it.
+                filled = bool(entry.get("filled")) and not invalid
+                # Only carry a value when the field is genuinely filled. An
+                # unfilled <select> still reports its placeholder ("Select…")
+                # as displayed text, and `value` feeds the anti-downgrade
+                # guard, which treats any non-empty current value as a real
+                # answer worth protecting — so leaking a placeholder through
+                # here would make it refuse a legitimate first "prefer not to
+                # answer" on an empty field.
+                probed[i] = {
+                    "key": key,
+                    "kind": str(entry.get("kind") or ""),
+                    "label": str(entry.get("label") or "").strip(),
+                    "value": str(entry.get("value") or "").strip() if filled else "",
+                    "filled": filled,
+                    "invalid": invalid,
+                }
+            # Telemetry, not decoration: this returned {} identically whether
+            # the call raised, the JSON was malformed, or it resolved 0 of 18
+            # selectors — and a silent 0/18 (a selector-format mismatch) went
+            # unnoticed through several runs because nothing distinguished
+            # them. Now the run's own step history says which.
+            self._probe_resolved = len(probed)
+            self._last_probe_note = f"probe resolved {len(probed)}/{len(xpaths)} field(s)"
+            if not probed and xpaths:
+                logger.warning(
+                    "field probe resolved 0 of %d selectors — registry, downgrade guard and "
+                    "missing-field reconciliation are all inactive this pass. First selector: %r",
+                    len(xpaths), xpaths[0][:120],
+                )
+            else:
+                logger.info("field probe resolved %d/%d selectors", len(probed), len(xpaths))
+            return probed
+        except Exception as exc:
+            self._probe_resolved = 0
+            self._last_probe_note = f"probe raised: {exc!r}"
+            logger.warning("field identity probe failed; filling every field as before", exc_info=True)
+            return {}
 
     async def _read_select_options(self, locator: Any) -> list[dict[str, str]]:
         """Real <option> value/label text for a <select> Locator. This SDK's
@@ -856,7 +1371,7 @@ class LocalBrowser:
             logger.debug("could not capture a dropdown failure screenshot", exc_info=True)
             return None
 
-    async def _commit_combobox(self, locator: Any, description: str, value: str) -> bool:
+    async def _commit_combobox(self, locator: Any, description: str, value: str, current: str = "") -> bool:
         """Drive a custom combobox from the keyboard: open, type, Enter.
 
         Returns True only if the field's own displayed text then shows a real
@@ -864,6 +1379,17 @@ class LocalBrowser:
         still reading "Select…", so nothing here is trusted without that
         ground-truth read. Escape runs in the finally whether this succeeded or
         not, so no listbox is ever left open to block the fields below."""
+        # Backstop for the case fill_form's registry didn't catch (probe
+        # returned nothing for this field, so it wasn't skipped). Never trade a
+        # real answer for a "prefer not to say" one: a later pass that lost the
+        # option list answers from the generic profile value, and without this
+        # it would type that straight over a correct earlier answer.
+        if current and _looks_like_decline(value) and not _looks_like_decline(current):
+            logger.info(
+                "dropdown %r already reads %r; refusing to overwrite it with the decline answer %r",
+                description, current[:60], value,
+            )
+            return True
         try:
             await self._call(lambda: locator.scroll_to("center"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
             await self._call(lambda: locator.click(), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
@@ -879,6 +1405,20 @@ class LocalBrowser:
             shown = await self._marked_widget_text() if marked else None
             if shown is not None:
                 committed = bool(shown.strip()) and not _PLACEHOLDER_OPTION_RE.match(shown.strip())
+                # A value landed — but is it the value we asked for? These
+                # widgets filter as you type and Enter takes whatever is
+                # highlighted first, which is not always the best match:
+                # typing "India" into a phone country-code list highlights
+                # "British Indian Ocean Territory (+246)" ahead of "India
+                # (+91)" because it sorts first. That committed cleanly, so
+                # this check passed, and the application went out with a +246
+                # dial code and a phone number the form then called too long.
+                if committed and not _commit_matches(value, shown):
+                    logger.warning(
+                        "dropdown %r committed %r but we asked for %r — treating as a failure",
+                        description, shown.strip()[:60], value,
+                    )
+                    committed = False
             else:
                 # No mark (nothing focused, or a cross-frame form) — fall back
                 # to the element-level read.
@@ -902,7 +1442,7 @@ class LocalBrowser:
             await self._unmark_field()
             await self._dismiss_open_listbox()
 
-    async def _select_with_match(self, locator: Any, action: Any, value: str) -> None:
+    async def _select_with_match(self, locator: Any, action: Any, value: str, current: str = "") -> None:
         """select_option(), but resolved against the select's real option
         text first. Raises if options WERE read but nothing — including the
         EEO decline fallback — matched, which _apply_answer()'s existing
@@ -953,7 +1493,7 @@ class LocalBrowser:
             # to work, so skipping it saved nothing and cost everything — a run
             # with two early failures skipped 11 untried dropdowns, including
             # every EEO field, which is exactly the reported symptom.
-            if await self._commit_combobox(locator, description, value):
+            if await self._commit_combobox(locator, description, value, current=current):
                 self._dropdown_fallback_failures = 0
                 return
             if self._dropdown_fallback_failures >= _DROPDOWN_FALLBACK_FAILURE_LIMIT:
@@ -990,7 +1530,10 @@ class LocalBrowser:
                 raise RuntimeError(f"dropdown still shows no value after every attempt for {value!r}")
             return
         match = _best_option_match(value, options)
-        if not match and _looks_like_eeo_field(getattr(action, "description", "")):
+        # `not current` for the same reason as the combobox guard above: the
+        # decline fallback is a last resort for an unanswerable field, not
+        # something to apply to a field that already holds a real answer.
+        if not match and not current and _looks_like_eeo_field(getattr(action, "description", "")):
             match = _find_decline_option(options)
         if not match:
             raise RuntimeError(f"no matching <option> for {value!r} on {getattr(action, 'selector', '')!r}")
@@ -1041,6 +1584,91 @@ class LocalBrowser:
         except Exception:
             logger.exception("resume upload failed for session %s", self.session_id)
             return False
+
+    async def filled_field_labels(self) -> list[str]:
+        """Labels of every field on this form that currently holds a value.
+
+        Ground truth for reconciling the verify step's missing_required list.
+        That list is an LLM reading of the page, and it routinely names fields
+        that are demonstrably filled: on a react-select the chosen value lives
+        in a wrapper div while the underlying input reads empty, so the model
+        sees no value and reports the field as still required. Observed on a
+        real Robinhood/Greenhouse form — a repair pass filled 11 fields and
+        the recheck then listed all 14 of them as missing, which ended the run
+        without ever submitting a fully-completed application.
+
+        Best-effort: on any failure this returns [], and the caller then falls
+        back to trusting missing_required exactly as before.
+        """
+        try:
+            actions = await self.observe(
+                "Find every fillable field in this job application form: text inputs, textareas, "
+                "selects, checkboxes, radio buttons, and comboboxes. Skip search boxes, filters, "
+                "and site navigation controls."
+            )
+            if not actions:
+                return []
+            probed = await self._probe_fields(actions)
+            labels: list[str] = []
+            for i, info in probed.items():
+                if not info["filled"]:
+                    continue
+                # Prefer the DOM label; fall back to observe()'s description
+                # and then the identity key, so a field with an aria-label but
+                # no visible <label> still contributes something matchable.
+                labels.append(
+                    info["label"]
+                    or str(getattr(actions[i], "description", "") or "")
+                    or info["key"]
+                )
+            return [l for l in labels if l.strip()]
+        except Exception:
+            logger.debug("could not read filled field labels", exc_info=True)
+            return []
+
+    async def attached_documents(self) -> dict[str, list[str]]:
+        """Which document slots actually hold a file right now.
+
+        Ground truth read off the inputs themselves, for the same reason
+        _dropdown_shows_a_value exists: neither the upload call returning True
+        nor the verify LLM's reading of the page is reliable on its own. The
+        upload only proves *some* file input took the file (a form can have a
+        decoy "autofill from resume" uploader beside the required Resume
+        field), and the LLM routinely reports Resume/CV as still-missing on
+        Greenhouse because the real <input type=file> is hidden behind an
+        "Attach" button, so there is no visible filename for it to see.
+
+        <input type="file"> exposes "C:\\fakepath\\<name>" through .value once
+        a file is set and "" when empty — verified against Chromium including
+        display:none inputs. Read via Locator (not Page.evaluate) because the
+        form is usually inside an iframe, which Locator resolves into and a
+        top-document evaluate does not.
+        """
+        page = await self._active_page()
+        return {
+            "resume": await self._attached_filenames(page, _RESUME_INPUT_SELECTOR),
+            "cover_letter": await self._attached_filenames(page, _COVER_LETTER_INPUT_SELECTOR),
+        }
+
+    async def _attached_filenames(self, page: Any, selector: str) -> list[str]:
+        """Basenames of the files currently sitting in inputs matching selector."""
+        names: list[str] = []
+        try:
+            handles = page.locator(selector)
+            count = await self._call(lambda: handles.count())
+        except Exception:
+            logger.debug("could not count file inputs for %r", selector, exc_info=True)
+            return names
+        for idx in range(count):
+            try:
+                one = handles.nth(idx)
+                raw = await self._call(lambda h=one: h.input_value())
+            except Exception:
+                continue
+            raw = (raw or "").strip()
+            if raw:
+                names.append(raw.replace("\\", "/").rsplit("/", 1)[-1])
+        return names
 
     async def _set_files_on(self, page: Any, selector: str, file_path: str) -> bool:
         """set_input_files across every input matching `selector`. Individual

@@ -29,6 +29,7 @@ from auto_apply import config
 from auto_apply.profile import (
     ApplicantProfile,
     build_applicant_profile,
+    question_signature,
     snapshot_user,
     validate_profile,
 )
@@ -119,6 +120,12 @@ async def _db_call_safe(fn, *args, timeout: float = _DB_TIMEOUT_SECONDS) -> bool
 
 MAX_FORM_PAGES = 4
 
+# How many times the repair stage may re-sweep the page. Bounded because each
+# sweep still costs one observe() + one answer-mapping LLM call (~20-40s), and
+# the whole run has to fit inside config.run_timeout_seconds(). Convergence is
+# normally reached in 2 — the loop stops as soon as a pass fills nothing new.
+_MAX_FILL_SWEEPS = 3
+
 TERMINAL = ("submitted", "needs_input", "failed", "dry_run")
 
 STAGE_TEXT = {
@@ -157,6 +164,104 @@ def _split_missing_by_type(missing: list[str]) -> tuple[list[str], list[str]]:
         lowered = label.lower()
         (document_fields if any(m in lowered for m in _DOCUMENT_FIELD_MARKERS) else text_fields).append(label)
     return text_fields, document_fields
+
+
+# Which attached-document slot a missing-field label refers to, if any. Only
+# these two are ones we ever attach ourselves; a Portfolio or Writing Sample
+# label stays unmatched and is still reported as needing the user.
+_DOCUMENT_SLOT_MARKERS = (
+    ("cover_letter", ("cover letter", "coverletter")),
+    ("resume", ("resum", "cv", "curriculum")),
+)
+
+
+def _document_slot_for(label: str) -> str | None:
+    lowered = (label or "").lower()
+    for slot, markers in _DOCUMENT_SLOT_MARKERS:
+        if any(m in lowered for m in markers):
+            return slot
+    return None
+
+
+def _drop_documents_already_attached(
+    document_missing: list[str], attached: dict[str, list[str]]
+) -> tuple[list[str], list[str]]:
+    """(still_missing, satisfied) — never tell the user we couldn't attach
+    something that is demonstrably sitting in the form right now.
+
+    The verify step reads Resume/CV as missing on Greenhouse whenever the real
+    file input is hidden behind an "Attach" button, since there is no visible
+    filename to read. Left unchecked that ends the run with "we can't attach
+    this automatically — finish it by hand" for a resume we not only can
+    attach but already did, and the application is never submitted."""
+    still_missing, satisfied = [], []
+    for label in document_missing:
+        slot = _document_slot_for(label)
+        (satisfied if slot and attached.get(slot) else still_missing).append(label)
+    return still_missing, satisfied
+
+
+# Words that carry no identifying weight in a form label, so they don't count
+# toward "these two labels name the same question".
+_LABEL_STOPWORDS = frozenset("""
+a an and any are as at be by can do does for from have has how i if in is it
+me my no not of on or please provide select that the their this to us was we
+what when where which who will with would you your now future
+""".split())
+
+
+def _distinctive(label: str) -> set[str]:
+    return {t for t in question_signature(label).split() if t not in _LABEL_STOPWORDS}
+
+
+def _labels_match(a: str, b: str) -> bool:
+    """Whether two form labels name the same question.
+
+    Deliberately NOT a similarity ratio. The EEO block is a set of labels that
+    differ by a single word — "What is your military status?" vs "What is your
+    disability status?" scores 0.85 on SequenceMatcher, and treating those as
+    the same question would drop a genuinely-empty required field from the
+    missing list and submit the application without it. Token containment has
+    no such failure: neither is a subset of the other.
+
+    Matches when the normalised labels are equal, or when one's distinctive
+    words are wholly contained in the other's (so "Gender identity" matches
+    "What is your gender identity?", and a trailing "*" or "(optional)" is
+    irrelevant). At least two distinctive words are required, so a stopword-only
+    or one-word label can never match broadly."""
+    na, nb = question_signature(a), question_signature(b)
+    if not na or not nb:
+        return False
+    if na == nb:
+        return True
+    da, db = _distinctive(a), _distinctive(b)
+    if not da or not db:
+        return False
+    small, large = (da, db) if len(da) <= len(db) else (db, da)
+    return len(small) >= 2 and small <= large
+
+
+def _drop_fields_already_filled(
+    missing: list[str], filled_labels: list[str]
+) -> tuple[list[str], list[str]]:
+    """(still_missing, already_filled) — reconcile the verify step's list
+    against what the page demonstrably holds.
+
+    The verify step is an LLM read and is wrong in one specific, repeatable
+    direction: it reports react-select fields as empty because the committed
+    value renders into a wrapper div rather than the input it inspects. Left
+    unreconciled that blocks submission of forms that are completely filled.
+
+    Deliberately one-directional — this only ever removes a field the DOM says
+    is filled. A field the probe knows nothing about stays in `missing`, so a
+    failed or empty probe degrades to exactly the previous behaviour."""
+    if not filled_labels:
+        return list(missing), []
+    still_missing, already = [], []
+    for label in missing:
+        matched = any(_labels_match(label, f) for f in filled_labels)
+        (already if matched else still_missing).append(label)
+    return still_missing, already
 
 # The per-field fill instructions that used to live in AGENT_SYSTEM_PROMPT for
 # the autonomous Browserbase agent now live in browser.py's fill_form(), which
@@ -592,6 +697,7 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     # name/email/experience, which shrinks the agent's job to corrections.
     await _set_stage(run_id, "attaching_resume")
     attached = await browser.upload_resume(profile.resume_path)
+    await _log_note(run_id, f"resume upload {'succeeded' if attached else 'FAILED'}")
 
     # Same idea for a Cover Letter file field, if this form has one and the
     # user has a base cover letter on file — description-aware, unlike
@@ -610,7 +716,9 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         await _log_note(
             run_id,
             f"initial fill: {len(result.get('filled', []))} filled, "
-            f"{len(result.get('skipped', []))} skipped: {result.get('skipped', [])}",
+            f"{len(result.get('already_filled', []))} already filled, "
+            f"{len(result.get('skipped', []))} skipped "
+            f"[{result.get('probe', 'n/a')}]: {result.get('skipped', [])}",
         )
     except Exception as exc:
         await _log_note(run_id, f"initial fill raised: {exc!r}")
@@ -639,6 +747,11 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     resume_flagged_missing = any("resum" in m.lower() or m.lower() == "cv" for m in missing)
     if not verify.get("resume_attached") or resume_flagged_missing:
         attached = await browser.upload_resume(profile.resume_path)
+        await _log_note(
+            run_id,
+            f"verify said resume_attached={verify.get('resume_attached')}, flagged={resume_flagged_missing} "
+            f"— re-uploaded, {'succeeded' if attached else 'FAILED'}",
+        )
 
     # Guard against the agent's grounding mis-targeting a field that doesn't
     # exist on this page onto one that does, silently overwriting it —
@@ -654,27 +767,110 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         await _repair_field(run_id, browser, "Name", name_reported, profile.full_name)
 
     if missing:
-        # A repair pass, not a stopping point — the answers are all on file, so
-        # scope fill_form to just the still-empty fields and let it finish them.
+        # Sweep to convergence, not a single repair pass.
+        #
+        # observe() is not exhaustive on a long form — the same page returned
+        # 22, 19 and 18 candidates on three consecutive runs — so one pass
+        # cannot be assumed to have seen every field. That is why the final
+        # "Do you consent to receive marketing?" question was never answered:
+        # it was never surfaced, so it appeared in neither the filled list nor
+        # the missing list. Re-running a full-page pass gives observe() a fresh
+        # look and picks up whatever the last one missed.
+        #
+        # This is only affordable because fill_form now skips fields already
+        # filled this run BEFORE the per-dropdown option reads and before the
+        # answer-mapping LLM call, returning early when everything is skipped.
+        # A converged pass therefore costs one observe() and nothing else.
+        # Attempt 1 stays scoped to the labels verify complained about (cheap
+        # and targeted); later attempts go full-page to catch the unseen ones.
         await _set_stage(run_id, "filling_form", "Finishing the last few fields…")
         await _log_note(run_id, f"repair pass targeting: {missing}")
-        try:
-            result = await browser.fill_form(profile.to_agent_json(), only_hint="; ".join(missing[:15]))
+        for attempt in range(_MAX_FILL_SWEEPS):
+            hint = "; ".join(missing[:15]) if (attempt == 0 and missing) else None
+            try:
+                result = await browser.fill_form(profile.to_agent_json(), only_hint=hint)
+            except Exception as exc:
+                logger.exception("run %s fill sweep %s failed", run_id, attempt + 1)
+                await _log_note(run_id, f"fill sweep {attempt + 1} raised: {exc!r}")
+                break
+            newly_filled = len(result.get("filled", []))
             await _log_note(
                 run_id,
-                f"repair fill: {len(result.get('filled', []))} filled, "
-                f"{len(result.get('skipped', []))} still skipped: {result.get('skipped', [])}",
+                f"fill sweep {attempt + 1}{' (scoped)' if hint else ' (full page)'}: "
+                f"{newly_filled} filled, {len(result.get('already_filled', []))} already filled, "
+                f"{len(result.get('skipped', []))} skipped "
+                f"[{result.get('probe', 'n/a')}]"
+                + (f" rejected-by-form: {result.get('rejected')}" if result.get('rejected') else "")
+                + f": {result.get('skipped', [])}",
             )
-        except Exception as exc:
-            logger.exception("run %s repair pass failed", run_id)
-            await _log_note(run_id, f"repair pass raised: {exc!r}")
+            # Nothing new went in: observe() has stopped finding anything this
+            # run can act on, so another pass would only repeat itself.
+            if newly_filled == 0:
+                break
+            # A repeat pass is only cheap and non-destructive while the probe
+            # is resolving fields. If it isn't, the registry is inert and the
+            # next pass would re-fill everything from scratch with the
+            # anti-downgrade guard also disabled — the exact overwriting this
+            # is meant to stop. Stop at one pass instead, i.e. old behaviour.
+            if not browser.probe_healthy():
+                await _log_note(
+                    run_id,
+                    "field probe resolved nothing; not re-sweeping (a second pass would "
+                    "re-fill every field instead of skipping the done ones)",
+                )
+                break
+            await asyncio.sleep(1.0)
         await asyncio.sleep(1.0)
-        recheck = await browser.extract(
-            "List the labels of any REQUIRED fields still empty or invalid.", VERIFY_SCHEMA
-        )
-        missing = [str(m) for m in (recheck.get("missing_required") or [])]
+        # Non-fatal on purpose. This used to be the one unguarded browser call
+        # in the whole run, so a hiccup here (a dropped RPC connection, a slow
+        # read) threw away a form that was completely filled and ready to
+        # send. If the recheck can't run we keep the pre-repair list and let
+        # the reconciliation below sort it out.
+        try:
+            recheck = await browser.extract(
+                "List the labels of any REQUIRED fields still empty or invalid.", VERIFY_SCHEMA
+            )
+            missing = [str(m) for m in (recheck.get("missing_required") or [])]
+        except Exception as exc:
+            logger.exception("run %s recheck failed", run_id)
+            await _log_note(run_id, f"recheck raised: {exc!r} — keeping the pre-repair missing list")
+
+    # Reconcile the LLM's list against what the page demonstrably holds before
+    # any of it is allowed to block submission. The verify step reports
+    # react-select fields as empty because the committed value renders into a
+    # wrapper div rather than the input it reads — observed on this exact
+    # Robinhood form, where a repair pass filled 11 fields and the recheck then
+    # listed all 14 as still missing, ending a fully-completed application as
+    # needs_input without ever pressing submit.
+    if missing:
+        filled_labels = await browser.filled_field_labels()
+        missing, reconciled = _drop_fields_already_filled(missing, filled_labels)
+        if reconciled:
+            await _log_note(
+                run_id,
+                f"verify listed {len(reconciled)} field(s) as missing that the page shows as "
+                f"filled; treating them as done: {reconciled[:10]}",
+            )
 
     text_missing, document_missing = _split_missing_by_type(missing)
+
+    # Reconcile the LLM's "still missing" list against what the form actually
+    # holds. Without this the run dead-ends telling the user to attach a
+    # resume by hand while their resume is already attached — see
+    # _drop_documents_already_attached.
+    if document_missing:
+        try:
+            attached_docs = await browser.attached_documents()
+        except Exception:
+            logger.exception("run %s could not read attached documents", run_id)
+            attached_docs = {}
+        document_missing, satisfied = _drop_documents_already_attached(document_missing, attached_docs)
+        if satisfied:
+            await _log_note(
+                run_id,
+                f"verify listed {satisfied} as missing, but the form already holds "
+                f"{attached_docs}; treating them as attached",
+            )
 
     if not config.submit_enabled():
         detail = "Dry run — the form was filled but not submitted."
@@ -730,7 +926,10 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
 
 CONFIRM_INSTRUCTION = (
     "Did the application submit successfully?\n"
-    "- If YES: set submitted=true and put the success message in confirmation_text.\n"
+    "- If YES: set submitted=true and quote the page's actual confirmation wording verbatim "
+    "into confirmation_text (e.g. \"Thank you for applying\", \"Your application has been "
+    "received\"). Never leave confirmation_text empty when submitted=true — a submission with "
+    "no quoted confirmation is not treated as successful.\n"
     "- If NO: set submitted=false and put the reason in error_text. This includes validation "
     "errors AND any rejection banner the site shows — for example \"flagged as spam\", "
     "\"blocked\", or similar. confirmation_text must stay empty unless the application "
@@ -740,10 +939,18 @@ CONFIRM_INSTRUCTION = (
     "- Also say whether this is another page of the form that still needs completing."
 )
 
+# Unambiguous on their own — no innocent form echoes these back.
 _PERMANENT_REJECTION_MARKERS = (
     "spam", "flagged", "blocked", "abuse", "banned", "too many attempts",
-    "rejected", "declined", "unsuccessful", "not successful",
 )
+# Ambiguous words that only mean "rejected" when they are talking about the
+# submission. "declined" in particular is a word this very app puts INTO the
+# form: the EEO answers read "Decline to self-identify" / "I declined to
+# self-identify", so a confirmation page that echoes the submitted answers back
+# used to match here and downgrade a genuine submitted=True to not-submitted —
+# turning a successful application into a reported failure.
+_AMBIGUOUS_REJECTION_MARKERS = ("rejected", "declined", "unsuccessful", "not successful")
+_REJECTION_SUBJECTS = ("application", "submission", "submit", "request", "form")
 
 
 def _looks_permanently_rejected(text: str) -> bool:
@@ -752,7 +959,11 @@ def _looks_permanently_rejected(text: str) -> bool:
     submission as spam is not a validation error to fix and resubmit; doing
     that again just looks more like abuse, not less."""
     lowered = (text or "").lower()
-    return any(m in lowered for m in _PERMANENT_REJECTION_MARKERS)
+    if any(m in lowered for m in _PERMANENT_REJECTION_MARKERS):
+        return True
+    return any(m in lowered for m in _AMBIGUOUS_REJECTION_MARKERS) and any(
+        s in lowered for s in _REJECTION_SUBJECTS
+    )
 
 
 def _reconcile_confirm_result(result: dict) -> dict:
@@ -822,6 +1033,7 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
                 await _log_note(
                     run_id,
                     f"page {attempt + 2} fill: {len(next_result.get('filled', []))} filled, "
+                    f"{len(next_result.get('already_filled', []))} already filled, "
                     f"skipped: {next_result.get('skipped', [])}",
                 )
             except Exception as exc:
@@ -844,9 +1056,21 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
                 # error_text is a free-text rejection reason, not a clean list of
                 # field labels like `missing` — no reliable way to scope observe()
                 # to just the flagged fields, so re-run fill_form across the whole
-                # page. Re-setting an already-correct field to the same value is
-                # a no-op in practice, so this is safe, just not the cheapest path.
-                await browser.fill_form(profile.to_agent_json())
+                # page. Fields this run already filled are skipped by fill_form's
+                # own registry, so this costs one observe() and re-fills only what
+                # is genuinely still empty. (It is NOT safe on the assumption that
+                # rewriting a field with the same value is harmless — it isn't:
+                # before the registry existed, a second pass that failed to re-read
+                # a dropdown's options answered from the generic profile value and
+                # overwrote a correct answer with "prefer not to say".)
+                retry_result = await browser.fill_form(profile.to_agent_json())
+                await _log_note(
+                    run_id,
+                    f"validation-error fix: {len(retry_result.get('filled', []))} filled, "
+                    f"{len(retry_result.get('already_filled', []))} already filled, "
+                    f"rejected-by-form: {retry_result.get('rejected', [])}, "
+                    f"skipped: {retry_result.get('skipped', [])}",
+                )
             except Exception as exc:
                 logger.exception("run %s could not fix validation errors", run_id)
                 await _log_note(run_id, f"validation-error fix raised: {exc!r}")

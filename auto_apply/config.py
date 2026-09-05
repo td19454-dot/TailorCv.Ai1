@@ -58,6 +58,16 @@ def submit_enabled() -> bool:
     return _env_bool("AUTO_APPLY_SUBMIT", True)
 
 
+def field_registry_enabled() -> bool:
+    """Whether fill_form skips fields this run already filled.
+
+    Default on. AUTO_APPLY_FIELD_REGISTRY=0 restores the old behaviour of
+    re-filling every observed field on every pass — kept as an escape hatch
+    because the skip depends on a DOM probe that a sufficiently unusual form
+    could defeat, and re-filling everything is the safer failure direction."""
+    return _env_bool("AUTO_APPLY_FIELD_REGISTRY", True)
+
+
 def headless() -> bool:
     """Whether the local Chromium runs headless.
 

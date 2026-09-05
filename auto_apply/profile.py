@@ -390,6 +390,13 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "gender_pronouns": p.gender_pronouns or DECLINE,
         "lgbtq_identity": p.lgbtq_identity or DECLINE,
         "accepts_employer_terms_and_privacy_policy": "Yes" if p.agreed_to_employer_terms else "",
+        # Not a stored profile field — no UI collects it. Present here as an
+        # actual CANDIDATE_DATA value, not only as a prompt rule, because the
+        # prompt's opening instruction ("never invent a fact that isn't present
+        # here") otherwise wins and the model returns nothing for it. An
+        # unanswered consent question the employer marks required blocks the
+        # whole submission, which is how a completed form failed to send.
+        "marketing_or_promotional_emails_opt_in": "Yes",
     }
     bank = {k: v for k, v in bank.items() if str(v).strip()}
     # Added after the empty-string filter above: a *list* value would pass
