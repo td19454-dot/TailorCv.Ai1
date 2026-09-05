@@ -418,6 +418,30 @@ async def _log_note(run_id: int, note: str) -> None:
     )
 
 
+async def _log_field_trace(run_id: int, label: str, result: dict) -> None:
+    """Write the per-field outcome of one fill pass into the run history.
+
+    Counts alone ("12 filled") could not say which field got which value, nor
+    whether the page agreed afterwards — so a dropdown reporting success while
+    the form still showed "This field is required" was indistinguishable from a
+    real fill, and every diagnosis needed a database session. Split across
+    several notes because each step's detail is truncated at 500 chars."""
+    trace = result.get("trace") or []
+    if not trace:
+        return
+    chunk: list[str] = []
+    size = 0
+    part = 1
+    for line in trace:
+        if size + len(line) > 420 and chunk:
+            await _log_note(run_id, f"{label} fields ({part}): " + " | ".join(chunk))
+            chunk, size, part = [], 0, part + 1
+        chunk.append(line)
+        size += len(line)
+    if chunk:
+        await _log_note(run_id, f"{label} fields ({part}): " + " | ".join(chunk))
+
+
 async def _finish(
     run_id: int,
     status: str,
@@ -705,14 +729,15 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
     # Skipped entirely (not even attempted) when there's nothing to attach —
     # a form that requires one and gets nothing still surfaces honestly via
     # the document_missing path below, unchanged from before this existed.
+    cover_letter_attached = False
     if profile.cover_letter_path:
         cover_letter_attached = await browser.upload_cover_letter(profile.cover_letter_path)
-        if cover_letter_attached:
-            await _log_note(run_id, "cover letter attached")
+        await _log_note(run_id, f"cover letter upload {'succeeded' if cover_letter_attached else 'FAILED'}")
 
     await _set_stage(run_id, "filling_form")
     try:
         result = await browser.fill_form(profile.to_agent_json())
+        await _log_field_trace(run_id, "initial fill", result)
         await _log_note(
             run_id,
             f"initial fill: {len(result.get('filled', []))} filled, "
@@ -794,6 +819,7 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
                 await _log_note(run_id, f"fill sweep {attempt + 1} raised: {exc!r}")
                 break
             newly_filled = len(result.get("filled", []))
+            await _log_field_trace(run_id, f"sweep {attempt + 1}", result)
             await _log_note(
                 run_id,
                 f"fill sweep {attempt + 1}{' (scoped)' if hint else ' (full page)'}: "
@@ -864,13 +890,26 @@ async def _drive(run_id: int, browser, profile: ApplicantProfile, snap: dict, me
         except Exception:
             logger.exception("run %s could not read attached documents", run_id)
             attached_docs = {}
-        document_missing, satisfied = _drop_documents_already_attached(document_missing, attached_docs)
+        # Fold in what we KNOW we uploaded. Reading the file input back is the
+        # better evidence when it works, but several ATS clear the input once
+        # they have the file and render the filename in their own element, so
+        # input.value comes back empty for a resume that is definitely
+        # attached — which is how a run whose log says "resume upload
+        # succeeded" still ended with "we can't attach Resume/CV, do it by
+        # hand". set_input_files() returning True means the bytes went in.
+        uploaded = {"resume": bool(attached), "cover_letter": bool(cover_letter_attached)}
+        effective = {
+            slot: list(attached_docs.get(slot) or []) or (["(uploaded this run)"] if uploaded.get(slot) else [])
+            for slot in ("resume", "cover_letter")
+        }
+        await _log_note(
+            run_id,
+            f"documents still flagged {document_missing}; read from page: {attached_docs}; "
+            f"uploaded this run: {uploaded}",
+        )
+        document_missing, satisfied = _drop_documents_already_attached(document_missing, effective)
         if satisfied:
-            await _log_note(
-                run_id,
-                f"verify listed {satisfied} as missing, but the form already holds "
-                f"{attached_docs}; treating them as attached",
-            )
+            await _log_note(run_id, f"treating {satisfied} as attached")
 
     if not config.submit_enabled():
         detail = "Dry run — the form was filled but not submitted."
@@ -1064,6 +1103,7 @@ async def _submit_and_confirm(run_id: int, browser, profile: ApplicantProfile, m
                 # a dropdown's options answered from the generic profile value and
                 # overwrote a correct answer with "prefer not to say".)
                 retry_result = await browser.fill_form(profile.to_agent_json())
+                await _log_field_trace(run_id, "validation-error fix", retry_result)
                 await _log_note(
                     run_id,
                     f"validation-error fix: {len(retry_result.get('filled', []))} filled, "

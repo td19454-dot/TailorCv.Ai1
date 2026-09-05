@@ -423,6 +423,14 @@ _FIELD_PROBE_JS = r"""
         if (single) { value = txt(single); }
         else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
         else if (ph) { value = ''; }
+        else if (cont.querySelector('[role="option"], [role="listbox"], [class*="menu"]')) {
+          // The menu is OPEN, so nothing has been chosen yet. Falling through
+          // to the container's text here would return the whole option list as
+          // the field's "value" — and since that list contains the option we
+          // were trying to pick, the did-it-commit check would match it and
+          // call an uncommitted dropdown a success.
+          value = '';
+        }
         else {
           const shown = txt(cont);
           value = (label && shown.indexOf(label) === 0) ? shown.slice(label.length).trim() : shown;
@@ -1016,18 +1024,49 @@ class LocalBrowser:
         # a real DOM-write failure indistinguishable from a genuinely missing
         # answer when reading the run's outcome after the fact.
         filled, unanswered, apply_failed = [], [], []
+        # Per-field trace for the run's own step history. Every previous round
+        # of this bug was diagnosed from a bare count ("12 filled") that could
+        # not say WHICH field took WHICH value, nor whether the page agreed
+        # afterwards — so a dropdown that reported success while the form still
+        # showed "This field is required" looked identical to a real fill.
+        trace = []
         for i, action in candidates:
             value = answers.get(str(i))
+            desc = (action.description or "")[:70]
             if value is None or str(value).strip() == "":
                 unanswered.append(action.description)
+                trace.append(f"- {desc} -> NO DATA")
                 continue
             info = probe_by_index.get(i)
-            ok = await self._apply_answer(action, str(value), current=(info or {}).get("value", ""))
+            was = (info or {}).get("value", "")
+            ok = await self._apply_answer(action, str(value), current=was)
             if ok and info:
                 # Registered only on success, and only for a field we wrote —
                 # this is the sole thing that ever adds to the registry.
                 self._filled_fields[info["key"]] = str(value)
+            # Read the field back after writing it: "the write didn't raise" is
+            # not evidence the value landed.
+            after = None
+            if info:
+                verify = await self._probe_one(action)
+                if verify is not None:
+                    after = verify
+            mark = "OK" if ok else "FAILED"
+            if after is not None:
+                if after["invalid"]:
+                    mark = "WROTE BUT FORM REJECTS IT"
+                elif not after["filled"]:
+                    mark = "WROTE BUT PAGE STILL EMPTY"
+                elif not _commit_matches(str(value), after["value"]):
+                    mark = f"PAGE SHOWS {after['value'][:40]!r} INSTEAD"
+            trace.append(
+                f"- {desc} -> {mark}: wanted {str(value)[:40]!r}"
+                + (f", was {was[:30]!r}" if was else "")
+                + (f", now {after['value'][:40]!r}" if after else "")
+            )
             (filled if ok else apply_failed).append(f"{action.description} (tried: {value!r})")
+        if trace:
+            logger.info("fill_form field trace:\n%s", "\n".join(trace))
         logger.info(
             "fill_form: %d filled, %d already filled this run, %d unanswered (no data on file): %s, "
             "%d apply failed: %s",
@@ -1039,6 +1078,7 @@ class LocalBrowser:
             "already_filled": already,
             "rejected": rejected,
             "probe": self._last_probe_note,
+            "trace": trace,
         }
 
     async def _apply_answer(self, action: Any, value: str, current: str = "") -> bool:
@@ -1303,6 +1343,88 @@ class LocalBrowser:
             logger.debug("could not read the marked widget's text", exc_info=True)
             return None
 
+    async def _probe_one(self, action: Any) -> dict | None:
+        """Probe a single field by its observe() selector — the read-back used
+        to check that a write actually landed.
+
+        Saves and restores the pass-level probe telemetry: this runs once per
+        field, and without it `probe resolved N/M` (and probe_healthy(), which
+        gates re-sweeping) would end up reporting the last single-field probe
+        instead of the whole pass."""
+        note, resolved = self._last_probe_note, self._probe_resolved
+        try:
+            probed = await self._probe_fields([action])
+            return probed.get(0)
+        finally:
+            self._last_probe_note, self._probe_resolved = note, resolved
+
+    async def _probe_marked_field(self) -> dict | None:
+        """Run the field probe against the currently-marked element.
+
+        This is the ground truth for "did the dropdown actually take a value",
+        and it exists because the older checks could not tell a COMMITTED value
+        from the text we had just typed. react-select keeps typed text in the
+        input and only writes a .singleValue node once an option is really
+        chosen — so input_value() reads back our own keystrokes and reports
+        success for a field the form is still rejecting as required. Observed
+        live: four EEO dropdowns showed their answer as typed text under a red
+        "This field is required.", were logged as filled, and were re-filled on
+        every subsequent pass.
+
+        Reuses _FIELD_PROBE_JS (via a CSS selector, which it now handles) so
+        there is exactly one definition of filled/invalid in the codebase."""
+        try:
+            page = await self._active_page()
+            js = _FIELD_PROBE_JS.replace(
+                "__XPATHS__", json.dumps([["css", f"[{_FIELD_MARK_ATTR}]"]])
+            )
+            raw = await self._call(lambda: page.evaluate(js), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            parsed = json.loads(raw) if isinstance(raw, str) else raw
+            if not isinstance(parsed, list) or not parsed or not isinstance(parsed[0], dict):
+                return None
+            entry = parsed[0]
+            return {
+                "value": str(entry.get("value") or "").strip(),
+                "filled": bool(entry.get("filled")),
+                "invalid": bool(entry.get("invalid")),
+            }
+        except Exception:
+            logger.debug("could not probe the marked field", exc_info=True)
+            return None
+
+    async def _click_matching_option(self, page: Any, value: str) -> bool:
+        """Pick the option whose text matches `value` by clicking it.
+
+        Preferred over typing then pressing Enter. Enter takes whatever the
+        widget has highlighted, which is not necessarily what we asked for
+        ("India" highlights "British Indian Ocean Territory" first), and on
+        some builds it does not commit at all — leaving the typed text sitting
+        in the input while the form still counts the field as empty. Clicking
+        the option row is what a person does and is unambiguous about which
+        option is chosen.
+        """
+        try:
+            labels = await self._call(
+                lambda: page.evaluate(
+                    "(() => Array.from(document.querySelectorAll('[role=option]'))"
+                    ".map(o => (o.textContent || '').replace(/\\s+/g, ' ').trim()))()"
+                ),
+                timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS,
+            )
+            if not isinstance(labels, list) or not labels:
+                return False
+            idx = next((i for i, t in enumerate(labels) if _commit_matches(value, str(t))), None)
+            if idx is None:
+                logger.info("no visible option matches %r; offered: %s", value, labels[:12])
+                return False
+            option = page.locator('[role="option"]').nth(idx)
+            await self._call(lambda: option.click(), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+            logger.info("clicked option %r for %r", labels[idx], value)
+            return True
+        except Exception:
+            logger.debug("could not click a matching option for %r", value, exc_info=True)
+            return False
+
     async def _read_combobox_options(self, locator: Any) -> list[str]:
         """Open a react-select widget and read the choices it actually offers.
 
@@ -1393,46 +1515,43 @@ class LocalBrowser:
         try:
             await self._call(lambda: locator.scroll_to("center"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
             await self._call(lambda: locator.click(), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
-            # Mark while focused: after Enter the widget re-renders and the
+            # Mark while focused: the widget re-renders on commit and the
             # observe() selector may no longer resolve to the same node.
             marked = await self._mark_focused_field()
             await self._call(
                 lambda: locator.type(value, delay=30), timeout=_DROPDOWN_ACT_TIMEOUT_SECONDS
             )
             page = await self._active_page()
-            await self._call(lambda: page.key_press("Enter"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
 
-            shown = await self._marked_widget_text() if marked else None
-            if shown is not None:
-                committed = bool(shown.strip()) and not _PLACEHOLDER_OPTION_RE.match(shown.strip())
-                # A value landed — but is it the value we asked for? These
-                # widgets filter as you type and Enter takes whatever is
-                # highlighted first, which is not always the best match:
-                # typing "India" into a phone country-code list highlights
-                # "British Indian Ocean Territory (+246)" ahead of "India
-                # (+91)" because it sorts first. That committed cleanly, so
-                # this check passed, and the application went out with a +246
-                # dial code and a phone number the form then called too long.
-                if committed and not _commit_matches(value, shown):
-                    logger.warning(
-                        "dropdown %r committed %r but we asked for %r — treating as a failure",
-                        description, shown.strip()[:60], value,
-                    )
-                    committed = False
-            else:
-                # No mark (nothing focused, or a cross-frame form) — fall back
-                # to the element-level read.
-                committed = await self._dropdown_shows_a_value(locator, description)
+            # Click the matching option first. Enter is the fallback: it takes
+            # whatever the widget highlights, which may be the wrong option, and
+            # on Greenhouse's EEO dropdowns it often commits nothing at all —
+            # leaving the typed text visible while the field stays required.
+            how = "option-click"
+            if not await self._click_matching_option(page, value):
+                how = "enter-key"
+                await self._call(lambda: page.key_press("Enter"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
 
+            committed, shown, why = await self._verify_commit(locator, description, value, marked)
             if committed:
-                logger.info("dropdown %r committed %r via keyboard (now shows %r)",
-                            description, value, (shown or "").strip()[:60])
+                logger.info("dropdown %r committed %r via %s (now shows %r)",
+                            description, value, how, shown[:60])
                 return True
+
+            # Second chance with the other mechanism before giving up: these
+            # two fail in different ways, so one often works where the other
+            # silently does nothing.
+            if how == "option-click":
+                await self._call(lambda: page.key_press("Enter"), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
+                committed, shown, why = await self._verify_commit(locator, description, value, marked)
+                if committed:
+                    logger.info("dropdown %r committed %r via enter-key retry", description, value)
+                    return True
+
             shot = await self._capture_dropdown_failure(description)
             logger.warning(
-                "keyboard entry left dropdown %r without a value (wanted %r, shows %r)%s",
-                description, value, (shown or "").strip()[:60],
-                f"; screenshot: {shot}" if shot else "",
+                "dropdown %r did not take %r (%s; shows %r)%s",
+                description, value, why, shown[:60], f"; screenshot: {shot}" if shot else "",
             )
             return False
         except Exception as exc:
@@ -1441,6 +1560,37 @@ class LocalBrowser:
         finally:
             await self._unmark_field()
             await self._dismiss_open_listbox()
+
+    async def _verify_commit(
+        self, locator: Any, description: str, value: str, marked: bool
+    ) -> tuple[bool, str, str]:
+        """(committed, shown_text, reason) — did the widget really take `value`?
+
+        Prefers the field probe, which distinguishes a committed value from
+        text merely typed into the input and also notices the form rejecting
+        the field. The old element-level read could not: input_value() returns
+        our own keystrokes, so an uncommitted dropdown reported success and was
+        recorded as filled while the page still showed "This field is
+        required."
+        """
+        info = await self._probe_marked_field() if marked else None
+        if info is not None:
+            shown = info["value"]
+            if info["invalid"]:
+                return False, shown, "the form is still rejecting this field"
+            if not info["filled"]:
+                return False, shown, "no value committed (text was only typed in)"
+            if not _commit_matches(value, shown):
+                return False, shown, f"committed a different option than {value!r}"
+            return True, shown, ""
+        # No mark (nothing focused, or a cross-frame form) — fall back to the
+        # weaker element-level read rather than nothing.
+        shown_text = (await self._marked_widget_text() if marked else None) or ""
+        if await self._dropdown_shows_a_value(locator, description):
+            if not _commit_matches(value, shown_text or value):
+                return False, shown_text, f"committed a different option than {value!r}"
+            return True, shown_text, ""
+        return False, shown_text, "no value visible after the attempt"
 
     async def _select_with_match(self, locator: Any, action: Any, value: str, current: str = "") -> None:
         """select_option(), but resolved against the select's real option
