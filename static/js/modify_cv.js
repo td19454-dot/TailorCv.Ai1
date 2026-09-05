@@ -23,6 +23,17 @@
         { category: "Databases", items: "" },
     ];
 
+    /* Shared with every other page — defined in auth_nav.js, which loads
+       universally. Falls back to a plain string read if that ever fails to
+       load, so an error here can never itself throw. */
+    function errorMessageFrom(payload, fallback) {
+        if (typeof window.tcvErrorMessage === "function") {
+            return window.tcvErrorMessage(payload, fallback);
+        }
+        const detail = payload?.detail ?? payload;
+        return (typeof detail === "string" && detail) ? detail : fallback;
+    }
+
     function createEmptyCvData() {
         return {
             personalInfo: {
@@ -589,7 +600,7 @@
             let detail = "Could not prepare the resume editor.";
             try {
                 const payload = await response.json();
-                detail = payload?.detail || payload?.error || detail;
+                detail = errorMessageFrom(payload, detail);
             } catch {}
             throw new Error(detail);
         }
@@ -921,7 +932,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok) {
-                    throw new Error(result.detail || result.error || "Extraction failed. Please try again.");
+                    throw new Error(errorMessageFrom(result, "Extraction failed. Please try again."));
                 }
                 const cvPayload = result.cvData || result;
                 if (!cvPayload || typeof cvPayload !== "object") {
@@ -1035,7 +1046,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok || !result?.success) {
-                    throw new Error(result?.detail || result?.error || "Import failed. Make sure your profile is Public and try again.");
+                    throw new Error(errorMessageFrom(result, "Import failed. Make sure your profile is Public and try again."));
                 }
                 await applyLinkedInData(result.data);
                 resetModal();
@@ -1078,7 +1089,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok || !result?.success) {
-                    throw new Error(result?.detail || "Could not read that profile text. Try copying the whole page.");
+                    throw new Error(errorMessageFrom(result, "Could not read that profile text. Try copying the whole page."));
                 }
                 await applyLinkedInData(result.data);
                 resetModal();

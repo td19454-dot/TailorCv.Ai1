@@ -602,7 +602,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>ATS score, unlimited</li>
+                            <li>3 free ATS scans</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -827,7 +827,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=17"></script>
+    <script src="/static/auth_nav.js?v=19"></script>
     <script src="/static/mobile_nav.js"></script>
     <script>
     (function () {
@@ -2385,7 +2385,7 @@ Nice to have:
                     setStatus('');
                     return;
                 }
-                if (!res.ok) throw new Error(res.d.detail || 'Generation failed');
+                if (!res.ok) throw new Error(tcvErrorMessage(res.d, 'Generation failed'));
                 output.value = res.d.cover_letter || '';
                 // Auto-fill the candidate's details from their resume so they
                 // don't have to type them (still editable if anything's off).
@@ -2556,7 +2556,7 @@ Nice to have:
                 }
                 if (!r.ok) {
                     return r.json().catch(function () { return {}; }).then(function (body) {
-                        throw new Error(body.detail || 'PDF failed');
+                        throw new Error(tcvErrorMessage(body, 'PDF failed'));
                     });
                 }
                 return r.blob();

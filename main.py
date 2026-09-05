@@ -551,6 +551,10 @@ def _ensure_usage_columns() -> None:
         to_add.append("ADD COLUMN cover_letters INTEGER NOT NULL DEFAULT 0")
     if "linkedin_imports" not in cols:
         to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
+    if "cv_uploads" not in cols:
+        to_add.append("ADD COLUMN cv_uploads INTEGER NOT NULL DEFAULT 0")
+    if "template_changes" not in cols:
+        to_add.append("ADD COLUMN template_changes INTEGER NOT NULL DEFAULT 0")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -688,15 +692,16 @@ def is_pro(user) -> bool:
 
 
 FREE_LIMITS: dict[str, int] = {
-    # Lowered from 3 when the whole app moved to gpt-5-mini, which costs ~3x
-    # more per call than gpt-4o-mini. The download popup reads this number
-    # rather than hardcoding it, so the copy follows automatically.
-    "ai_optimizations": 2,
+    # Lowered from 3 to 2 to 1 as model costs rose. The download popup reads
+    # this number rather than hardcoding it, so the copy follows automatically.
+    "ai_optimizations": 1,
     "cover_letters": 2,
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
-    # ats_scans intentionally absent — stays unlimited-free
+    "ats_scans": 3,
+    "cv_uploads": 1,
+    "template_changes": 1,
 }
 
 
@@ -11924,6 +11929,11 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
     is_guest = False
     try:
         is_guest = enforce_guest_ats_allowed(request, db)
+        if not is_guest:
+            user_id = request.session.get("user_id")
+            user = db.query(User).filter(User.id == user_id).first() if user_id else None
+            if user:
+                enforce_quota(db, user, "ats_scans")
     except HTTPException:
         db.close()
         raise
@@ -12202,8 +12212,20 @@ def _template_parsed_to_editor_payload(parsed: dict) -> dict:
 @app.post("/api/extract-cv-from-pdf/")
 @app.post("/extract-cv-from-pdf")
 @app.post("/extract-cv-from-pdf/")
-async def extract_cv_from_pdf(file: UploadFile = File(...)):
-    """Extract structured CV data from an uploaded PDF for the Modify CV editor."""
+async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
+    """Extract structured CV data from an uploaded PDF for the Modify CV editor.
+
+    Free users get one lifetime upload (cv_uploads); Pro is unlimited."""
+    require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == request.session["user_id"]).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        enforce_quota(db, user, "cv_uploads")
+    finally:
+        db.close()
+
     file_path = None
     try:
         file_path = save_uploaded_pdf(file)
@@ -12305,8 +12327,21 @@ async def render_template_preview(request: Request):
 
 @app.post("/api/download-cv-pdf")
 async def download_cv_pdf(request: Request):
-    """Generate a styled PDF from modify-cv builder data."""
+    """Generate a styled PDF from modify-cv builder data.
+
+    Free users get one lifetime template download (template_changes); Pro is
+    unlimited. Browsing/previewing templates stays free — only the download
+    is gated, same pattern as ai_optimizations."""
     require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == request.session["user_id"]).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        enforce_quota(db, user, "template_changes")
+    finally:
+        db.close()
+
     payload = await request.json()
     template_id = int(payload.get("templateId", 1))
     cv_data = payload.get("cvData") or payload.get("resumeData", {}) or {}
@@ -12341,8 +12376,20 @@ async def download_cv_pdf_browser(
     template_id: int = Form(...),
     cv_data_json: str = Form(...),
 ):
-    """Browser-native PDF download via form submit."""
+    """Browser-native PDF download via form submit.
+
+    Same template_changes gate as /api/download-cv-pdf — this is the same
+    feature over a different transport (form submit vs fetch)."""
     require_logged_in(request)
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == request.session["user_id"]).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        enforce_quota(db, user, "template_changes")
+    finally:
+        db.close()
+
     try:
         cv_data = json.loads(cv_data_json)
     except Exception:

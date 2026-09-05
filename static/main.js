@@ -72,7 +72,7 @@ async function handleATSAnalysis() {
             let detail = 'Failed to get ATS score';
             try {
                 const payload = await response.json();
-                detail = payload?.detail || payload?.error || detail;
+                detail = tcvErrorMessage(payload, detail);
             } catch {
                 const errorText = await response.text();
                 detail = errorText || detail;
@@ -267,8 +267,9 @@ async function handleResumeOptimization() {
         });
 
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(errorText || 'Failed to optimize resume');
+            let payload = null;
+            try { payload = await response.clone().json(); } catch { payload = await response.text(); }
+            throw new Error(tcvErrorMessage(payload, 'Failed to optimize resume'));
         }
 
         // Get the PDF blob

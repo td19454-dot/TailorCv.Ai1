@@ -166,14 +166,14 @@
             <div class="solx-wrap">
                 <div class="solx-kicker">Pricing</div>
                 <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
-                <p class="solx-lead">Your ATS score is free forever. Upgrade only when you want unlimited access.</p>
+                <p class="solx-lead">Get 3 free ATS scans. Upgrade only when you want unlimited access.</p>
                 <div class="pricing-preview-grid cols-3">
                     <article class="pricing-preview-card basic">
                         <p class="pricing-plan-name">Free</p>
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>ATS score, unlimited</li>
+                            <li>3 free ATS scans</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -331,7 +331,7 @@
                 fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                     .then(function(res){
                         return res.json().catch(function(){ return {}; }).then(function(body){
-                            if (!res.ok) throw new Error(body.detail || body.error || 'That scan did not go through. Please try again.');
+                            if (!res.ok) throw new Error(tcvErrorMessage(body, 'That scan did not go through. Please try again.'));
                             return body;
                         });
                     })
