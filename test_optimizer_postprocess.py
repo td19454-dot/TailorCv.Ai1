@@ -27,6 +27,7 @@ from functions import (
     normalize_links,
     promptable_skill_gaps,
     sanitize_resume_data,
+    weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
 )
 
@@ -613,7 +614,7 @@ def test_promptable_handles_empty_and_junk_input():
 def test_soft_skills_are_appended_to_the_summary():
     data = {"summary": "Data Analyst with experience in Python and SQL."}
     out = weave_soft_skills_into_summary(data, ["mentoring", "facilitation"])
-    assert out["summary"].endswith("Skilled in mentoring and facilitation."), out["summary"]
+    assert out["summary"].endswith("Demonstrated mentoring and facilitation in this work."), out["summary"]
     assert out["soft_skills_added"] == ["mentoring", "facilitation"], out["soft_skills_added"]
 
 
@@ -636,8 +637,8 @@ def test_soft_skill_phrasing_by_count():
     three = weave_soft_skills_into_summary(
         dict(base), ["mentoring", "facilitation", "stakeholder management"]
     )["summary"]
-    assert one.endswith("Skilled in mentoring."), one
-    assert three.endswith("Skilled in mentoring, facilitation and stakeholder management."), three
+    assert one.endswith("Demonstrated mentoring in this work."), one
+    assert three.endswith("Demonstrated mentoring, facilitation and stakeholder management in this work."), three
 
 
 def test_soft_skill_already_in_summary_is_not_repeated():
@@ -657,7 +658,81 @@ def test_soft_skills_noop_on_empty_input():
 
 
 def test_soft_skills_build_a_summary_when_none_exists():
-    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Skilled in communication."
+    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Demonstrated communication in this work."
+
+
+def test_soft_skills_are_gated_on_resume_evidence():
+    """Regression: the summary used to claim whatever soft skills the JD asked
+    for, producing "attention to code quality, mentoring and technical
+    guidance" on a resume evidencing none of them - a sentence that could sit
+    on a stranger's resume unchanged."""
+    resume = "Mentored two junior analysts. Analysed quantitative data for a 7-person research team."
+    jd = ["problem-solving skills", "attention to code quality", "mentoring", "technical guidance"]
+    out = weave_soft_skills_into_summary({"summary": "Engineer."}, jd, resume)
+    assert out["soft_skills_added"] == ["mentoring"], out.get("soft_skills_added")
+    assert "attention to code quality" not in out["summary"]
+    assert "technical guidance" not in out["summary"]
+
+
+def test_soft_skill_evidence_matches_verb_forms():
+    """Soft skills surface as verbs on a resume ("Mentored"), never as the JD's
+    noun ("mentoring"), so exact matching would reject genuine evidence."""
+    resume = "Mentored juniors, collaborated with stakeholders and communicated results."
+    out = weave_soft_skills_into_summary(
+        {"summary": "Analyst."}, ["mentoring", "collaboration", "communication"], resume
+    )
+    assert out["soft_skills_added"] == ["mentoring", "collaboration", "communication"], out
+
+
+def test_soft_skill_trailing_skills_suffix_is_not_doubled():
+    """JD soft skills often arrive as "problem-solving skills", which produced
+    "Skilled in problem-solving skills" on real output - redundant, and built
+    from two phrases create_prompt bans outright."""
+    out = weave_soft_skills_into_summary({"summary": "Engineer."}, ["problem-solving skills"])
+    assert out["summary"] == "Engineer. Demonstrated problem-solving in this work.", out["summary"]
+    assert "skills skills" not in out["summary"].lower()
+    assert "Skilled in" not in out["summary"]
+
+
+def test_unevidenced_hard_skills_never_get_appended_to_the_summary():
+    """Regression: an unevidenced JD skill used to be bolted onto the summary as
+    "Applied MySQL in this work.", stacking one flat sentence per skill and
+    asserting experience the resume never showed. The skill must stay in the
+    skills array only."""
+    summary = "Backend engineer building FastAPI services on Postgres."
+    data = {
+        "summary": summary,
+        "skills": ["MySQL", "Java", "NumPy"],
+        "experience": [{"company": "TailorCV", "bullets": ["Built FastAPI services on Postgres."]}],
+        "projects": [],
+    }
+    out = weave_hard_skills_into_bullets(
+        data,
+        resume_text="TailorCV. Built FastAPI services on Postgres.",
+        jd_skills=["MySQL", "Java", "NumPy"],
+    )
+    assert out["summary"] == summary, out["summary"]
+    assert "in this work" not in out["summary"]
+    assert out["hard_skills_woven"] == []
+    # Still surfaced honestly, just not asserted as prose experience.
+    assert out["skills"] == ["MySQL", "Java", "NumPy"]
+
+
+def test_evidenced_hard_skill_is_still_woven_into_its_own_entry():
+    """The fix above must not disable the legitimate path."""
+    data = {
+        "summary": "Backend engineer.",
+        "skills": ["Redis"],
+        "experience": [{"company": "TailorCV", "bullets": ["Built caching layer.", "Shipped billing."]}],
+        "projects": [],
+    }
+    out = weave_hard_skills_into_bullets(
+        data,
+        resume_text="TailorCV. Built caching layer with Redis for session storage.",
+        jd_skills=["Redis"],
+    )
+    assert any("Redis" in str(b) for b in out["experience"][0]["bullets"]), out["experience"]
+    assert out["hard_skills_woven"][0]["skill"] == "Redis"
 
 
 def test_promptable_matches_the_real_optimizer_output():

@@ -11117,7 +11117,7 @@ async def _optimize_resume_core(
     # Soft skills the rewrite failed to express go into the summary, not the
     # skills array (Rule01b). Handled automatically rather than asked about:
     # unlike "do you know Tableau?", this is presentation, not a credential.
-    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills)
+    parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
 
     # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
     # only decides which JD hard skills the resume is ALLOWED to claim (they land

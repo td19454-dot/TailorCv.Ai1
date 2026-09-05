@@ -1819,7 +1819,39 @@ def promptable_skill_gaps(gaps) -> list[str]:
     return promptable
 
 
-def weave_soft_skills_into_summary(data: dict, soft_skills) -> dict:
+def _soft_skill_evidenced(evidence: str, skill: str) -> bool:
+    """Is this soft skill genuinely visible in the original resume text?
+
+    Soft skills surface as verbs, not nouns - a resume says "Mentored two
+    juniors", never "mentoring". Exact matching therefore rejects skills the
+    resume plainly demonstrates, so each word is compared on a crude stem
+    (mentor|mentoring|mentored, collaborate|collaboration) instead. Multi-word
+    skills need every significant word present, which keeps "attention to code
+    quality" from matching a resume that merely says "quality".
+    """
+    text = str(evidence or "").lower()
+    if not text:
+        return False
+
+    def _stem(w: str) -> str:
+        # Longest suffix first: "collaboration" must lose "ation" (-> collabor)
+        # to meet "collaborated" (-> collabor), not stop at the shorter "ion".
+        for suffix in ("ation", "ated", "ising", "izing", "ing", "ship", "ment", "ion", "ed", "es", "s"):
+            if len(w) > len(suffix) + 3 and w.endswith(suffix):
+                return w[: -len(suffix)]
+        return w
+
+    words = [w for w in re.split(r'[^a-z0-9+#]+', str(skill or "").lower()) if len(w) > 2]
+    # Drop connective words so "attention to detail" tests attention + detail.
+    words = [w for w in words if w not in {"and", "the", "for", "with", "to", "of", "in"}]
+    if not words:
+        return False
+
+    text_words = {_stem(w) for w in re.split(r'[^a-z0-9+#]+', text) if w}
+    return all(_stem(w) in text_words for w in words)
+
+
+def weave_soft_skills_into_summary(data: dict, soft_skills, resume_text: str = "") -> dict:
     """Fold JD soft skills the rewrite missed into the professional summary.
 
     Rule01c already tells the model to express every JD soft skill through work
@@ -1842,6 +1874,7 @@ def weave_soft_skills_into_summary(data: dict, soft_skills) -> dict:
         return data
 
     summary = str(data.get("summary") or "").strip()
+    evidence = str(resume_text or "")
 
     additions: list[str] = []
     seen: set[str] = set()
@@ -1855,7 +1888,19 @@ def weave_soft_skills_into_summary(data: dict, soft_skills) -> dict:
         # Already stated - do not repeat it.
         if summary and _contains_skill(summary, skill):
             continue
+        # Only claim what the ORIGINAL resume backs up. Without this the
+        # function appended whatever the JD asked for, producing a sentence
+        # that could sit on a stranger's resume unchanged - the exact failure
+        # create_prompt's BANNED-phrases rule is written to prevent.
+        if evidence and not _soft_skill_evidenced(evidence, skill):
+            continue
         seen.add(key)
+        # JD soft skills often arrive already suffixed ("problem-solving
+        # skills"), which produced "Skilled in problem-solving skills" -
+        # redundant, and one of the filler phrases the prompt bans outright.
+        skill = re.sub(r'\s+skills?$', '', skill, flags=re.IGNORECASE).strip()
+        if not skill:
+            continue
         additions.append(skill[0].lower() + skill[1:] if skill[:1].isupper() and not skill.isupper() else skill)
 
     if not additions:
@@ -1868,7 +1913,12 @@ def weave_soft_skills_into_summary(data: dict, soft_skills) -> dict:
     else:
         phrase = ", ".join(additions[:-1]) + f" and {additions[-1]}"
 
-    sentence = f"Skilled in {phrase}."
+    # "Skilled in" is on create_prompt's BANNED-filler list - appending it here
+    # contradicted the prompt we had just sent. Every generic frame has the same
+    # flaw ("Recognised for X" could sit on a stranger's resume unchanged), so
+    # the sentence is kept to the plainest possible statement and, above, is
+    # only ever built from traits the ORIGINAL resume evidences.
+    sentence = f"Demonstrated {phrase} in this work."
     data["summary"] = f"{summary} {sentence}".strip() if summary else sentence
     data["soft_skills_added"] = additions
     return data
@@ -1924,6 +1974,9 @@ def weave_hard_skills_into_bullets(
         unrelated project just to place a keyword.
       - Appends as a short parenthetical to the entry's shortest bullet (the
         one with the most "room"), never rewrites or replaces existing text.
+      - Never touches the summary. If no entry evidences the skill there is
+        nowhere honest to weave it, so it is left in data["skills"] alone
+        rather than asserted as experience in prose.
       - Capped at `max_injections` total edits so this cannot turn into
         keyword stuffing - by design it complements Rule 1c, it does not
         replace it as the primary mechanism.
@@ -2010,14 +2063,15 @@ def weave_hard_skills_into_bullets(
                 break
 
         if target_entry is None:
-            # No specific entry evidences it in the original text. The safest
-            # remaining spot is the summary, since it already makes a
-            # whole-resume claim rather than pinning the skill to one role.
-            if not _contains_skill(summary_text, skill):
-                sep = " " if summary_text else ""
-                summary_text = f"{summary_text}{sep}Applied {skill} in this work.".strip()
-                data["summary"] = _clean_inline_text(summary_text)
-                woven.append({"skill": skill, "section": "summary", "entry": None})
+            # No entry in the ORIGINAL resume evidences this skill, so there is
+            # nowhere honest to put it. This used to append "Applied X in this
+            # work." to the summary, which produced strings of tacked-on
+            # sentences ("Applied MySQL in this work. Applied Java in this
+            # work.") that read as machine-generated and, worse, asserted
+            # experience the resume never showed - the exact fabrication
+            # Rule01/01b and factcheck_against_original() exist to prevent.
+            # The skill still appears in data["skills"], which inject_jd_hard_
+            # skills() already evidence-gated; that is the honest home for it.
             continue
 
         bullets = target_entry["bullets"]
