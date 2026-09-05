@@ -277,6 +277,8 @@ class UsageRecord(Base):
     interview_questions = Column(Integer, default=0, nullable=False)
     cover_letters = Column(Integer, default=0, nullable=False)
     linkedin_imports = Column(Integer, default=0, nullable=False)
+    cv_uploads = Column(Integer, default=0, nullable=False)
+    template_changes = Column(Integer, default=0, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 

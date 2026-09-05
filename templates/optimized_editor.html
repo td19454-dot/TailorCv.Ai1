@@ -132,14 +132,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>window.__TCV_REGION__ = {{ region | tojson }};</script>
-    <script src="/static/auth_nav.js?v=17"></script>
+    <script src="/static/auth_nav.js?v=19"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
-    <script src="/static/optimized_editor.js?v=125"></script>
+    <script src="/static/optimized_editor.js?v=126"></script>
     <script>
     /* Page entrance: stagger control cards up, slide preview in. Start states are
        applied here (progressive enhancement) so no-JS users see everything. */

@@ -29,8 +29,12 @@
         // seconds after they paid is the worst moment to be wrong.
         if (_justUpgraded()) return response;
         response.clone().json().then(function (body) {
-          if (body && body.error === "upgrade_required") {
-            showUpgradeModal(body.feature);
+          // Two shapes reach here: JSONResponse gates put the fields at the top
+          // level, while HTTPException(detail={...}) gates (enforce_quota,
+          // linkedin) nest them under .detail. Accept both.
+          var payload = (body && body.error) ? body : (body && body.detail) || null;
+          if (payload && payload.error === "upgrade_required") {
+            showUpgradeModal(payload.feature);
           }
         }).catch(function () {});
       }
@@ -63,6 +67,42 @@ function _justUpgraded() {
   } catch (e) {
     return false;   // storage blocked — behave exactly as before
   }
+}
+
+/* Turn an error response body into text a person can act on.
+
+   Quota gates raise HTTPException(detail={error, feature}), so `detail` is an
+   object; pages that did `payload.detail || "..."` rendered "[object Object]"
+   and told the user nothing. The 402 modal above is the primary explanation —
+   this is the inline fallback text, and it must never be an object.
+   Global so every page's error handler can share it. */
+var TCV_QUOTA_MESSAGES = {
+  cv_uploads:       "You've used your free CV upload. Upgrade to Pro to import more resumes.",
+  template_changes: "You've used your free template download. Upgrade to Pro for unlimited downloads.",
+  ai_optimizations: "You've used your free AI optimisation. Upgrade to Pro to tailor more resumes.",
+  ats_scans:        "You've used your 3 free ATS scans. Upgrade to Pro for unlimited scans.",
+  cover_letters:    "You've used your free cover letters. Upgrade to Pro to write more.",
+  linkedin_imports: "You've used your free LinkedIn import. Upgrade to Pro to import again.",
+  mock_interviews:  "You've used your free mock interview. Upgrade to Pro for unlimited practice.",
+  interview_questions: "You've used your free interview questions. Upgrade to Pro for more."
+};
+
+function tcvErrorMessage(payload, fallback) {
+  fallback = fallback || "Something went wrong. Please try again.";
+  if (payload == null) return fallback;
+  if (typeof payload === "string") return payload || fallback;
+  var detail = (payload.detail !== undefined && payload.detail !== null) ? payload.detail : payload;
+  if (typeof detail === "string") return detail || fallback;
+  if (detail && typeof detail === "object") {
+    if (detail.error === "upgrade_required") {
+      return TCV_QUOTA_MESSAGES[detail.feature]
+        || "You've used your free allowance for this feature. Upgrade to Pro to continue.";
+    }
+    if (typeof detail.message === "string") return detail.message;
+    if (typeof detail.error === "string") return detail.error;
+  }
+  if (typeof payload.error === "string") return payload.error;
+  return fallback;
 }
 
 // ── Upgrade paywall modal ──────────────────────────────────────────────────
@@ -109,11 +149,34 @@ var FEATURE_LABELS = {
 function showUpgradeModal(feature) {
   if (_upgradeModalOpen) return;
   _upgradeModalOpen = true;
+  /* Counts here MUST match FREE_LIMITS in main.py — a modal that promises a
+     different number than the server enforces is worse than no modal. Keep the
+     two in step whenever a limit changes. */
   var modalCopy = {
+    ats_scans: {
+      title: "Upgrade to Pro",
+      freeUse: "3 free ATS scans",
+      message: "Upgrade to Pro to scan unlimited resumes against any job description."
+    },
+    cv_uploads: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free CV upload",
+      message: "Upgrade to Pro to import unlimited resumes into the builder."
+    },
+    template_changes: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free template download",
+      message: "Upgrade to Pro for unlimited templates and downloads."
+    },
     cover_letters: {
       title: "Your cover letter is ready!",
-      freeUse: "3 free cover letters",
+      freeUse: "2 free cover letters",
       message: "Upgrade to Pro to create unlimited cover letters."
+    },
+    linkedin_imports: {
+      title: "Upgrade to Pro",
+      freeUse: "1 free LinkedIn import",
+      message: "Upgrade to Pro to import your profile as often as you like."
     },
     interview_questions: {
       title: "Your interview questions are ready!",
@@ -127,7 +190,7 @@ function showUpgradeModal(feature) {
     },
     ai_optimizations: {
       title: "Upgrade to Pro",
-      freeUse: "3 free resume optimizations",
+      freeUse: "1 free resume optimization",
       message: "Upgrade for unlimited resume downloads and AI optimizations."
     }
   };
@@ -180,8 +243,8 @@ function showUpgradeModal(feature) {
       '<p class="tc-up-sub">You\'ve used your <strong>' + copy.freeUse + '</strong>.<br>' +
       copy.message + '</p>' +
       '<div class="tc-up-perks">' +
-        '<div class="tc-up-perk">Unlimited resume downloads</div>' +
-        '<div class="tc-up-perk">Unlimited AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited ATS scans &amp; AI optimizations</div>' +
+        '<div class="tc-up-perk">Unlimited resume templates &amp; downloads</div>' +
         '<div class="tc-up-perk">Unlimited cover letters</div>' +
         '<div class="tc-up-perk">Mock interviews &amp; LinkedIn import</div>' +
       '</div>' +

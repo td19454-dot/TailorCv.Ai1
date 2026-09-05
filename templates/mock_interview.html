@@ -245,7 +245,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>ATS score, unlimited</li>
+                            <li>3 free ATS scans</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -1394,7 +1394,7 @@
         {% endif %}
 
     {% include "_footer.html" %}
-<script src="/static/auth_nav.js?v=17"></script>
+<script src="/static/auth_nav.js?v=19"></script>
 <script src="/static/mobile_nav.js"></script>
 {% if is_logged_in %}
 <script>
@@ -1905,7 +1905,7 @@ async function startInterview(){
     return;
   }
   if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
-  if(!r.ok || !data.success){ hidePrepOverlay(); alert(data.detail || 'Failed to start interview'); return; }
+  if(!r.ok || !data.success){ hidePrepOverlay(); alert(tcvErrorMessage(data, 'Failed to start interview')); return; }
   document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
   hidePrepOverlay();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1930,7 +1930,7 @@ async function submitAnswer(fromTimer=false){
   document.getElementById('questionText').innerHTML = '<span style="color:#8b83ff;opacity:0.75;font-style:italic;">⏳ Zara is thinking…</span>';
   const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer,difficulty:'hard',question_style:'Ask deep follow-up questions based on ' + 'the candidate previous answer. ' + 'Probe deeper into their projects. ' + 'Ask about specific decisions they made. ' + 'Challenge their answers with harder follow-ups. ' + 'Reference their resume and job description. ' + 'Never ask generic interview questions.'})});
   const data = await r.json();
-  if(!r.ok || !data.success){ alert(data.detail || 'Failed to fetch next question'); return; }
+  if(!r.ok || !data.success){ alert(tcvErrorMessage(data, 'Failed to fetch next question')); return; }
   STATE.conversation_history.push({role:'user',content:answer});
   if(data.done || STATE.questionIndex >= STATE.numQuestions){ endInterview(); return; }
   STATE.questionIndex += 1; STATE.currentQuestion = `${data.ack} ${data.question}`.trim(); updateCount();

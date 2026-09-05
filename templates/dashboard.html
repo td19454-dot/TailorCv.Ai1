@@ -691,7 +691,7 @@
         </main>
     </div>
 
-    <script src="/static/auth_nav.js?v=17"></script>
+    <script src="/static/auth_nav.js?v=19"></script>
     <script>
     (function () {
         function doLogout(e) {
@@ -2317,7 +2317,7 @@ Nice to have:
             fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                 .then(function (r) {
                     if (r.status === 401 || r.status === 403) { window.location.href = '/login?next=/dashboard'; throw new Error('login'); }
-                    if (!r.ok) { return r.json().then(function (p) { throw new Error((p && (p.detail || p.error)) || 'Could not score the resume.'); }); }
+                    if (!r.ok) { return r.json().then(function (p) { throw new Error(tcvErrorMessage(p, 'Could not score the resume.')); }); }
                     return r.json();
                 })
                 .then(function (data) {

@@ -2158,7 +2158,7 @@ body {
                     let detail = "";
                     try {
                         const body = await res.json();
-                        detail = (body && (body.detail || body.error)) || "";
+                        detail = tcvErrorMessage(body, "");
                     } catch (e) {}
                     throw new Error(detail || `Request failed (${res.status})`);
                 }
