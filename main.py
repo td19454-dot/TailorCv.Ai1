@@ -4120,8 +4120,47 @@ def group_skills(skills: list[str]) -> list[str]:
         "data mining", "anomaly detection", "recommendation systems",
         "time series analysis", "time series forecasting",
         "embeddings", "semantic search", "knowledge graphs",
-        "multimodal", "vision language models", "vlm" 
+        "multimodal", "vision language models", "vlm",
+        # Classical ML / NLP algorithms and techniques. Without these they read
+        # as unknown tokens and land in "Other Technical Skills".
+        "tf-idf", "tfidf", "term frequency-inverse document frequency",
+        "random forest", "random forests", "decision tree", "decision trees",
+        "logistic regression", "linear regression", "svm",
+        "support vector machine", "support vector machines",
+        "naive bayes", "k-means", "k means", "kmeans", "k-means clustering",
+        "knn", "k-nearest neighbors", "k-nearest neighbours",
+        "gradient boosting", "boosting", "bagging", "ensemble learning",
+        "clustering", "classification", "pca",
+        "principal component analysis", "dimensionality reduction",
+        "cnn", "convolutional neural networks", "rnn", "lstm", "gru",
+        "gan", "generative adversarial networks", "autoencoder",
+        "transformers", "transformer", "attention mechanism",
+        "word2vec", "glove", "fasttext", "bag of words", "n-grams",
+        "tokenization", "lemmatization", "stemming",
+        "named entity recognition", "ner", "topic modeling", "topic modelling",
+        "lda", "latent dirichlet allocation",
+        "ocr", "optical character recognition",
+        "hyperparameter tuning", "cross validation", "cross-validation",
+        "feature selection", "model evaluation", "model deployment",
+        "lora", "qlora", "peft", "quantization", "knowledge distillation",
+        "few-shot learning", "zero-shot learning", "chain of thought",
+        "data annotation", "data labeling", "data labelling",
     }
+    # Model families and versioned model names. The buckets above are
+    # exact-match sets, so "LLaMA 3.3", "Groq LLaMA", "RoBERTa-base" or
+    # "GPT-4o" match nothing and fall through to "Other Technical Skills".
+    # This pattern is checked LAST, after every exact-match bucket, so
+    # "LlamaIndex" / "Llama Index" still resolves to Frameworks/Libraries.
+    ai_model_pattern = re.compile(
+        r"(?:^|[^a-z0-9])(?:"
+        r"llama|llama\d|gemma|mistral|mixtral|qwen|deepseek|falcon|"
+        r"gpt|chatgpt|gemini|claude|"
+        r"bert|roberta|deberta|albert|distilbert|xlnet|electra|"
+        r"whisper|wav2vec|llava|blip|"
+        r"yolo|yolov\d|resnet|efficientnet|mobilenet|densenet|u-net|unet|"
+        r"stable diffusion|sdxl|dall-e|dalle|midjourney"
+        r")(?:[^a-z0-9]|$)"
+    )
     framework_terms = {
         "numpy", "pandas", "scikit-learn", "sklearn", "scipy",
         "pytorch", "tensorflow", "keras", "jax",
@@ -4160,6 +4199,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "excel", "jira", "confluence",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
         "pytest", "jest", "selenium", "cuda", "jupyter",
+        "jupyter notebook", "jupyter notebooks", "colab", "google colab",
+        "pycharm", "anaconda", "wkhtmltopdf",
         # BI / analytics
         "looker", "looker studio", "qlik", "qlikview", "qlik sense",
         "quicksight", "google data studio", "data studio", "alteryx",
@@ -4198,7 +4239,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "nginx", "apache", "vercel", "netlify", "heroku",
         "linux", "ubuntu", "centos", "grafana", "prometheus",
         "cloudformation", "cloud infrastructure", "infrastructure as code",
-        "digitalocean", "openshift", "rancher"
+        "digitalocean", "openshift", "rancher",
+        "railway", "render", "fly.io", "cloudflare", "cloudflare workers"
     }
     network_protocol_terms = {
         "tcp/ip", "tcp", "udp", "ip", "dns", "http", "https", "ftp", "sftp",
@@ -4266,6 +4308,10 @@ def group_skills(skills: list[str]) -> list[str]:
             return "Frameworks/Libraries"
         if item_norm in methodology_terms:
             return "Methodologies & Practices"
+        # Fuzzy model-name fallback, deliberately last so an exact match in any
+        # bucket above wins (e.g. LlamaIndex -> Frameworks/Libraries).
+        if ai_model_pattern.search(item_norm):
+            return "AI/ML"
         return "uncategorized"
 
     for skill in skills:
