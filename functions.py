@@ -3302,6 +3302,15 @@ AND
 
 Fail otherwise.
 
+Years of experience are a tolerance band, not an exact threshold. Treat
+condition 1 as satisfied when the candidate has at least 80% of the required
+years - a candidate with 8 years against a "10 years required" job description
+SATISFIES it and must NOT be failed on years. Read "8+ years" as a minimum the
+candidate states, never as a ceiling; their dated work history may total more.
+Only a substantial shortfall - below 80% of the requirement, e.g. 4 years
+against 10 - fails on years. If the years are inside that band and the
+responsibilities are represented, Experience Match PASSES.
+
 The explanation must clearly identify:
 
 * missing years of experience
@@ -3359,6 +3368,60 @@ Migrated
 Produced
 Directed
 Established
+Supervised
+Mentored
+Coached
+Trained
+Oversaw
+Owned
+Spearheaded
+Headed
+Coordinated
+Drove
+Launched
+Scaled
+Streamlined
+Improved
+Enhanced
+Achieved
+Executed
+Integrated
+Configured
+Tested
+Validated
+Debugged
+Refactored
+Conducted
+Investigated
+Diagnosed
+Resolved
+Standardized
+Transformed
+Revamped
+Upgraded
+Consolidated
+Introduced
+Initiated
+Pioneered
+Facilitated
+Negotiated
+Presented
+Authored
+Documented
+Published
+Researched
+Evaluated
+Assessed
+Identified
+Monitored
+Audited
+Benchmarked
+Accelerated
+Minimized
+Maximized
+Secured
+Enabled
+Shipped
 
 Weak verbs include:
 
@@ -3371,6 +3434,13 @@ Involved in
 Contributed to
 
 A bullet point that begins with a word from the Strong action verbs list above MUST be counted as strong, even if the rest of the sentence sounds generic or technical. Never cite a word from the Strong action verbs list (e.g. "Developed") as an example of weak wording in an explanation. Only words from the Weak verbs list (or synonyms of them) may be cited as weak.
+
+Leadership and management verbs — Managed, Led, Supervised, Mentored, Directed,
+Oversaw, Owned, Spearheaded, Headed, Coordinated — are STRONG. They signal
+ownership of people and outcomes, which is exactly what recruiters look for.
+Never describe a bullet such as "Managed development engineers/technicians" as
+weak wording; a bullet naming the people or scope a candidate owned is a
+strength, not a defect.
 
 Pass if at least 4 of bullets begin with strong action verbs.
 
@@ -3846,6 +3916,174 @@ def _repair_false_future_experience_match(parsed: dict, current_date: date | Non
     )
 
 
+# A candidate one or two years short of a stated requirement is not a mismatch —
+# recruiters interview them, and "8+ years" on a resume is a floor the candidate
+# states, not a ceiling. Experience Match only fails on years below this
+# fraction of the requirement.
+_EXPERIENCE_YEARS_TOLERANCE = 0.8
+
+# Reasons a failed Experience Match may be about something other than years. If
+# the explanation mentions any of these, a real gap may remain and the years
+# tolerance must not flip the check.
+_EXPERIENCE_MATCH_NON_YEARS_ISSUES = (
+    "responsibilit", "technolog", "domain", "skill", "tool", "certification",
+    "education", "degree", "qualification", "leadership", "management",
+)
+
+_YEARS_MENTION_RE = re.compile(r"\byears?\b|\byrs?\b", re.IGNORECASE)
+
+
+def _repair_experience_years_tolerance(
+    parsed: dict, resume_text: str, jd_text: str
+) -> None:
+    """Stop failing Experience Match on a near-miss on years.
+
+    An "8+ years" resume against a "10 years of experience" job description was
+    being failed outright, costing 8 points. Years are a tolerance band: at or
+    above _EXPERIENCE_YEARS_TOLERANCE of the requirement counts as satisfied.
+    Only flips a failure whose stated reason is years alone — an explanation
+    that also cites missing responsibilities, technologies or domain expertise
+    is left exactly as the model wrote it.
+    """
+    if not isinstance(parsed, dict):
+        return
+    experience = parsed.get("experience")
+    if not isinstance(experience, dict):
+        return
+    check = experience.get("experience_match")
+    if not isinstance(check, dict) or bool_score(check.get("passed")):
+        return
+
+    required_years = _extract_years_of_experience(jd_text)
+    candidate_years = _extract_years_of_experience(resume_text)
+    if required_years <= 0 or candidate_years <= 0:
+        return
+    if candidate_years < required_years * _EXPERIENCE_YEARS_TOLERANCE:
+        return
+
+    explanation = str(check.get("explanation") or "")
+    explanation_lower = explanation.lower()
+    if not _YEARS_MENTION_RE.search(explanation_lower):
+        return
+    if any(issue in explanation_lower for issue in _EXPERIENCE_MATCH_NON_YEARS_ISSUES):
+        return
+
+    check["passed"] = "true"
+    check["explanation"] = (
+        f"The resume shows {candidate_years}+ years of experience against the "
+        f"{required_years} years the job description asks for — close enough to "
+        "the requirement to be competitive, and the required responsibilities "
+        "are represented."
+    )
+    check["action"] = ""
+
+
+# Mirrors the Strong action verbs list in _ATS_SYSTEM_PROMPT. The prompt already
+# tells the model never to cite one of these as weak wording, and it does it
+# anyway ("'Managed development engineers/technicians' uses weak wording"), so
+# the rule is enforced here deterministically as well.
+_STRONG_ACTION_VERBS = frozenset({
+    "developed", "built", "implemented", "designed", "engineered", "created",
+    "led", "optimized", "optimised", "automated", "managed", "analyzed",
+    "analysed", "delivered", "reduced", "increased", "generated", "architected",
+    "deployed", "migrated", "produced", "directed", "established",
+    # Leadership / ownership — the bucket the model most often mislabels.
+    "supervised", "mentored", "coached", "trained", "oversaw", "owned",
+    "spearheaded", "headed", "coordinated", "drove", "launched", "scaled",
+    # Delivery and improvement
+    "streamlined", "improved", "enhanced", "achieved", "executed", "integrated",
+    "configured", "tested", "validated", "debugged", "refactored", "conducted",
+    "investigated", "diagnosed", "resolved", "standardized", "standardised",
+    "transformed", "revamped", "upgraded", "consolidated", "introduced",
+    "initiated", "pioneered", "facilitated", "negotiated", "presented",
+    "authored", "documented", "published", "researched", "evaluated",
+    "assessed", "identified", "monitored", "audited", "benchmarked",
+    "accelerated", "minimized", "minimised", "maximized", "maximised",
+    "secured", "enabled", "shipped",
+})
+
+_ACTION_VERB_MIN_STRONG_BULLETS = 4
+
+_BULLET_PREFIX_RE = re.compile(r'^[\s•●▪◦‣⁃∙\-\*·>\+]+')
+# Straight or curly quotes around the snippet the explanation is citing.
+_QUOTED_SNIPPET_RE = re.compile(
+    r'[\'"‘“]([^\'"‘’“”]{4,200})[\'"’”]'
+)
+
+
+def _leading_verb(line: str) -> str:
+    """First word of a bullet, with any bullet glyph stripped."""
+    cleaned = _BULLET_PREFIX_RE.sub("", str(line or "")).strip()
+    # A heading or a company name ("Managed Services Inc.") is not a bullet.
+    if len(cleaned.split()) < 5:
+        return ""
+    match = re.match(r"[A-Za-z][A-Za-z\-']*", cleaned)
+    return match.group(0).lower() if match else ""
+
+
+def _count_strong_verb_bullets(resume_text: str) -> int:
+    return sum(
+        1 for line in str(resume_text or "").splitlines()
+        if _leading_verb(line) in _STRONG_ACTION_VERBS
+    )
+
+
+def _snippet_opens_with_strong_verb(snippet: str) -> bool:
+    match = re.match(r"\s*[A-Za-z][A-Za-z\-']*", str(snippet or ""))
+    return bool(match) and match.group(0).strip().lower() in _STRONG_ACTION_VERBS
+
+
+def _scrub_strong_verb_citations(check: dict) -> None:
+    """Drop any sentence that holds up a strong action verb as an example of
+    weak wording. Runs on checks that stay failed, so the user never reads
+    "'Managed ...' uses weak wording" — leadership verbs are a strength."""
+    explanation = str(check.get("explanation") or "")
+    if not explanation:
+        return
+    sentences = re.split(r'(?<=[.!?])\s+', explanation)
+    kept = [
+        sentence for sentence in sentences
+        if not any(
+            _snippet_opens_with_strong_verb(snippet)
+            for snippet in _QUOTED_SNIPPET_RE.findall(sentence)
+        )
+    ]
+    if len(kept) == len(sentences):
+        return
+    check["explanation"] = " ".join(part for part in kept if part.strip()).strip() or (
+        f"Fewer than {_ACTION_VERB_MIN_STRONG_BULLETS} bullet points begin with a "
+        "strong action verb."
+    )
+
+
+def _repair_action_verbs(parsed: dict, resume_text: str) -> None:
+    """The action-verb check is a countable rule — "at least 4 bullets begin
+    with a strong action verb" — so count them here rather than trusting the
+    model's arithmetic, which under-counts and then justifies itself with a
+    leadership verb ("Managed ...") presented as weak wording.
+    Only ever flips a failure to a pass; a genuine failure keeps its
+    explanation, minus any bogus strong-verb example.
+    """
+    if not isinstance(parsed, dict):
+        return
+    strong_bullets = _count_strong_verb_bullets(resume_text)
+    for section in ("experience", "projects"):
+        container = parsed.get(section)
+        if not isinstance(container, dict):
+            continue
+        check = container.get("action_verbs")
+        if not isinstance(check, dict) or bool_score(check.get("passed")):
+            continue
+        if strong_bullets >= _ACTION_VERB_MIN_STRONG_BULLETS:
+            check["passed"] = "true"
+            check["explanation"] = (
+                f"{strong_bullets} bullet points begin with a strong action verb."
+            )
+            check["action"] = ""
+        else:
+            _scrub_strong_verb_citations(check)
+
+
 _ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
 _ATS_CACHE_MAX = 50
 
@@ -3860,7 +4098,9 @@ async def ats_scoring(resume_string, jd_string):
     current_date = date.today()
     _cache_key = hashlib.md5(
         (
-            "ats-chronology-v3|" + current_date.isoformat() + "|" +
+            # Bump on every prompt/repair change or cached scans keep serving
+            # the old verdicts (v4: action-verb + years-tolerance repairs).
+            "ats-chronology-v4|" + current_date.isoformat() + "|" +
             # The separator matters: joining these with nothing meant a resume
             # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
             # different scans could collide and return each other's score.
@@ -4581,6 +4821,8 @@ The JSON must strictly follow the schema provided below.
     _deep_merge(parsed, precheck)
     _force_pass_chronology(parsed)
     _repair_false_future_experience_match(parsed, current_date)
+    _repair_experience_years_tolerance(parsed, resume_string, jd_string)
+    _repair_action_verbs(parsed, resume_string)
 
     hard_matched = parsed.get("skills", {}) \
                      .get("hard_skills", {}) \
