@@ -7,6 +7,7 @@ import os
 import random
 import re
 import resend
+import time
 from secrets import token_hex, token_urlsafe
 from urllib.parse import quote
 from datetime import datetime, timedelta, timezone
@@ -955,6 +956,57 @@ request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 # OPTIMIZATION: Cache for templates and CSS to avoid repeated file I/O
 _template_cache = {}
 _css_cache = {}
+
+
+class _TTLCache:
+    """A tiny bounded, time-expiring cache.
+
+    Exists to keep ambient bot/crawler traffic off Postgres: the public
+    portfolio lookup and /sitemap.xml were both querying the DB on every single
+    unauthenticated request, which alone kept Neon's compute from ever hitting
+    its 5-minute autosuspend.
+
+    Deliberately NOT locked. Every use here is a read-through cache over a
+    query that is safe to repeat, so the worst outcome of a race between two
+    workers is one redundant DB round trip — never a wrong answer.
+
+    `max_entries` is not optional book-keeping. The slug cache stores *misses*
+    keyed by whatever a caller asked for, so an unbounded dict would let a
+    scanner walk /a1, /a2, /a3 … until the process runs out of memory.
+    """
+
+    def __init__(self, ttl_seconds: float, max_entries: int):
+        self.ttl = float(ttl_seconds)
+        self.max_entries = int(max_entries)
+        self._data: dict = {}  # key -> (expires_at, value)
+
+    def get(self, key):
+        """The cached value, or None when absent or expired."""
+        entry = self._data.get(key)
+        if not entry:
+            return None
+        expires_at, value = entry
+        if time.time() >= expires_at:
+            self._data.pop(key, None)
+            return None
+        return value
+
+    def set(self, key, value) -> None:
+        now = time.time()
+        if len(self._data) >= self.max_entries:
+            # Drop everything already expired; that alone usually makes room.
+            for k in [k for k, (exp, _) in self._data.items() if now >= exp]:
+                self._data.pop(k, None)
+            # Still full of live entries — evict the half closest to expiring.
+            if len(self._data) >= self.max_entries:
+                doomed = sorted(self._data, key=lambda k: self._data[k][0])
+                for k in doomed[: max(1, len(doomed) // 2)]:
+                    self._data.pop(k, None)
+        self._data[key] = (now + self.ttl, value)
+
+    def discard(self, key) -> None:
+        """Explicit invalidation. Safe to call for a key that isn't cached."""
+        self._data.pop(key, None)
 
 
 def _resend_from() -> str:
@@ -8512,6 +8564,28 @@ def _portfolio_slugify(value: str) -> str:
     return value[:60].strip("-") or "portfolio"
 
 
+# The exact shape _portfolio_slugify can emit: runs of [a-z0-9] joined by single
+# hyphens, never a leading/trailing one. Matching on this lets the public routes
+# reject a scanner probe (/.env, /wp-login.php, /Admin) without touching the DB.
+# It is a *shape* test, not a whitelist — it can never reject a real slug.
+_PORTFOLIO_SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+# Slugs we have already looked up and found absent. Bounded and short-lived, so
+# a scanner hammering /admin costs one query per window instead of one each.
+_SLUG_MISS_CACHE = _TTLCache(ttl_seconds=300, max_entries=2048)
+
+
+def _looks_like_portfolio_slug(slug: str) -> bool:
+    """True if *slug* could have been produced by _portfolio_slugify.
+
+    Cheap enough to run ahead of every public portfolio lookup. The 160 cap
+    matches the DB column and the guard this replaced.
+    """
+    if not slug or len(slug) > 160:
+        return False
+    return bool(_PORTFOLIO_SLUG_RE.match(slug))
+
+
 def _portfolio_initials(name: str) -> str:
     """Up to two initials for the monogram avatar (resumes carry no photo)."""
     parts = [p for p in re.split(r"\s+", str(name or "").strip()) if p]
@@ -8871,13 +8945,20 @@ def _unique_portfolio_slug(db: Session, name: str) -> str:
     def free(s):
         return s not in reserved and not db.query(Portfolio.id).filter(Portfolio.slug == s).first()
 
+    def claim(s):
+        # Someone may have hit this URL while it was still free, parking it in
+        # the negative cache. Drop it, or the owner's brand-new portfolio would
+        # 404 for the rest of the TTL.
+        _SLUG_MISS_CACHE.discard(s)
+        return s
+
     if free(base):
-        return base
+        return claim(base)
     for n in range(2, 100):
         slug = f"{base}-{n}"
         if free(slug):
-            return slug
-    return f"{base}-{token_hex(3)}"
+            return claim(slug)
+    return claim(f"{base}-{token_hex(3)}")
 
 
 @app.post("/api/generate-portfolio", include_in_schema=False)
@@ -9087,13 +9168,46 @@ async def portfolio_builder_page(request: Request):
     })
 
 
+# Substrings that identify automated clients. Matched case-insensitively against
+# the raw User-Agent, which is how every one of these announces itself.
+_CRAWLER_UA_RE = re.compile(
+    r"bot|crawl|spider|slurp|curl|wget|python-requests|httpx|okhttp|java/|"
+    r"facebookexternalhit|embedly|quora link preview|headless|phantomjs|"
+    r"lighthouse|monitor|uptime|scrapy|go-http-client",
+    re.I,
+)
+
+
+def _should_count_view(request: Request) -> bool:
+    """True only for what looks like a real person loading the page.
+
+    Every real browser sends a User-Agent, so treating a blank one as automated
+    cannot suppress a human view. HEAD is never a human reading the page — it is
+    a link checker or a preview probe.
+    """
+    try:
+        if (request.method or "").upper() == "HEAD":
+            return False
+        ua = (request.headers.get("user-agent") or "").strip()
+        if not ua:
+            return False
+        return not _CRAWLER_UA_RE.search(ua)
+    except Exception:
+        # Never let view counting break the page it is counting.
+        return False
+
+
 def _render_portfolio_page(request: Request, portfolio: Portfolio):
     """Shared renderer for a portfolio's public page (used by both the /p/<slug>
     path route and the <handle>.domain subdomain router). Bumps the view count."""
-    try:
-        portfolio.view_count = (portfolio.view_count or 0) + 1
-    except Exception:
-        pass
+    # Only humans move the counter. Crawler hits were the one write on an
+    # otherwise read-only public page, and published portfolios are listed in
+    # sitemap.xml, so search engines re-fetched them on a schedule.
+    if _should_count_view(request):
+        try:
+            portfolio.view_count = (portfolio.view_count or 0) + 1
+        except Exception:
+            pass
     data = json.loads(portfolio.data_json) if portfolio.data_json else {}
     # Safety net for portfolios saved before link normalization: ensure every
     # outbound URL is absolute so it can't resolve relative to this page.
@@ -9398,13 +9512,24 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
 @app.get("/p/{slug}", response_class=HTMLResponse, include_in_schema=False)
 async def portfolio_public(request: Request, slug: str):
     """Public, no-login portfolio website (path form, works on any host)."""
-    if not slug or len(slug) > 160:
+    # This route also backs the /{slug} catch-all, so it sees every unmatched
+    # single-segment URL on the domain. Both guards below run before get_db()
+    # so ambient scanner traffic never reaches Postgres.
+    if not _looks_like_portfolio_slug(slug):
+        raise HTTPException(status_code=404, detail="Portfolio not found")
+    if _SLUG_MISS_CACHE.get(slug):
         raise HTTPException(status_code=404, detail="Portfolio not found")
 
     db = get_db()
     try:
         portfolio = db.query(Portfolio).filter(Portfolio.slug == slug).first()
-        if not portfolio or not portfolio.published:
+        if not portfolio:
+            # Genuinely absent — safe to remember. An existing-but-unpublished
+            # portfolio deliberately does NOT get cached, so publishing it takes
+            # effect immediately rather than after the TTL.
+            _SLUG_MISS_CACHE.set(slug, True)
+            raise HTTPException(status_code=404, detail="Portfolio not found")
+        if not portfolio.published:
             raise HTTPException(status_code=404, detail="Portfolio not found")
         response = _render_portfolio_page(request, portfolio)
         try:
@@ -9419,12 +9544,18 @@ async def portfolio_public(request: Request, slug: str):
 @app.get("/p/{slug}/cv", include_in_schema=False)
 async def portfolio_public_cv(request: Request, slug: str):
     """Public 'Download CV' — renders the linked resume's stored HTML to PDF."""
-    if not slug or len(slug) > 160:
+    # Same pre-DB guards as portfolio_public: this backs the /{slug}/cv catch-all.
+    if not _looks_like_portfolio_slug(slug):
+        raise HTTPException(status_code=404, detail="Not found")
+    if _SLUG_MISS_CACHE.get(slug):
         raise HTTPException(status_code=404, detail="Not found")
     db = get_db()
     try:
         portfolio = db.query(Portfolio).filter(Portfolio.slug == slug).first()
-        if not portfolio or not portfolio.published or not portfolio.resume_id:
+        if not portfolio:
+            _SLUG_MISS_CACHE.set(slug, True)
+            raise HTTPException(status_code=404, detail="Not found")
+        if not portfolio.published or not portfolio.resume_id:
             raise HTTPException(status_code=404, detail="Not found")
         resume = db.query(SavedResume).filter(SavedResume.id == portfolio.resume_id).first()
         html_content = resume.html_content if resume else None
@@ -10233,8 +10364,24 @@ async def blog_post_page(request: Request, slug: str):
     )
 
 
+# Crawlers re-fetch the sitemap constantly and it is identical every time, but
+# building it meant a full portfolios scan plus a json.loads per row. Cache the
+# finished XML: 15 minutes is far inside the hours-long cycle on which search
+# engines actually re-poll, so a newly published portfolio still lands in time.
+SITEMAP_CACHE_SECONDS = 900
+_SITEMAP_CACHE = _TTLCache(ttl_seconds=SITEMAP_CACHE_SECONDS, max_entries=1)
+
+
 @app.get("/sitemap.xml", include_in_schema=False)
 async def sitemap_xml():
+    cached = _SITEMAP_CACHE.get("xml")
+    if cached is not None:
+        return Response(
+            content=cached,
+            media_type="application/xml",
+            headers={"Cache-Control": f"public, max-age={SITEMAP_CACHE_SECONDS}"},
+        )
+
     today = datetime.utcnow().strftime("%Y-%m-%d")
     # (path, changefreq, priority) for public, indexable pages.
     static_pages = [
@@ -10303,7 +10450,12 @@ async def sitemap_xml():
         + "".join(entries)
         + "</urlset>"
     )
-    return Response(content=xml, media_type="application/xml")
+    _SITEMAP_CACHE.set("xml", xml)
+    return Response(
+        content=xml,
+        media_type="application/xml",
+        headers={"Cache-Control": f"public, max-age={SITEMAP_CACHE_SECONDS}"},
+    )
 
 
 @app.get("/rss.xml", include_in_schema=False)
