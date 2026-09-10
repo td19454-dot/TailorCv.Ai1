@@ -10,6 +10,7 @@ Run:  python test_portfolio.py
 import json
 import sys
 import traceback
+from datetime import datetime, timedelta
 
 import main
 
@@ -250,6 +251,36 @@ def test_themes_registry():
     return ok
 
 
+def test_theme_gating():
+    """Free accounts get exactly 3 templates; everything else needs Pro."""
+    ok = True
+
+    class Free:
+        id = 1
+        pro_until = None
+
+    class Pro:
+        id = 2
+        pro_until = datetime.utcnow() + timedelta(days=30)
+
+    ok &= check("free themes are 3", main.PORTFOLIO_FREE_THEMES == {"panels", "neon", "terminal"})
+    ok &= check("free themes are real themes",
+                main.PORTFOLIO_FREE_THEMES <= set(main.PORTFOLIO_THEMES))
+    ok &= check("free fallback is itself free",
+                main.FREE_PORTFOLIO_THEME in main.PORTFOLIO_FREE_THEMES)
+
+    ok &= check("free user: free theme allowed", main.theme_allowed("panels", Free()))
+    ok &= check("free user: pro theme blocked", not main.theme_allowed("editor", Free()))
+    ok &= check("free user: every pro theme blocked", not any(
+        main.theme_allowed(t, Free())
+        for t in set(main.PORTFOLIO_THEMES) - main.PORTFOLIO_FREE_THEMES))
+    ok &= check("pro user: every theme allowed", all(
+        main.theme_allowed(t, Pro()) for t in main.PORTFOLIO_THEMES))
+    ok &= check("logged-out: pro theme blocked", not main.theme_allowed("editor", None))
+    ok &= check("logged-out: free theme allowed", main.theme_allowed("neon", None))
+    return ok
+
+
 def test_empty_resume():
     d = main._build_portfolio_data({})
     ok = True
@@ -289,7 +320,8 @@ def main_run():
         test_slugify, test_initials, test_strip_bullets, test_skill_groups,
         test_build_editor_shape, test_build_candidate_shape, test_photo_validator,
         test_handle_helpers, test_share_url, test_social_links_absolute,
-        test_new_sections, test_devicon_slug, test_themes_registry, test_empty_resume,
+        test_new_sections, test_devicon_slug, test_themes_registry, test_theme_gating,
+        test_empty_resume,
         test_static_bundle,
     ]
     all_ok = True

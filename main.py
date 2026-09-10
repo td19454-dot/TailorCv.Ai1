@@ -8399,6 +8399,22 @@ PORTFOLIO_THEMES = {
 }
 DEFAULT_PORTFOLIO_THEME = "editor"
 
+# Themes a free account can publish. Everything else in PORTFOLIO_THEMES is Pro.
+# Kept as an explicit allow-list (not a "pro themes" deny-list) so a newly added
+# theme is Pro by default rather than silently free.
+PORTFOLIO_FREE_THEMES = {"panels", "neon", "terminal"}
+
+# What a free user gets when they ask for a Pro theme. NOT DEFAULT_PORTFOLIO_THEME:
+# that is "editor" (a Pro theme), and it stays the fallback for rendering old rows
+# whose stored theme predates this gate — downgrading those would change the look
+# of portfolios that are already public.
+FREE_PORTFOLIO_THEME = "panels"
+
+
+def theme_allowed(theme: str, user) -> bool:
+    """True if *user* may publish with *theme*. Free themes are open to everyone."""
+    return theme in PORTFOLIO_FREE_THEMES or is_pro(user)
+
 # Optional per-theme marketing assets for the builder picker. Filled in over time;
 # a missing slug/key just falls back to the CSS mini-preview (image) / no link (demo).
 # Convention: image at static/portfolio-previews/<slug>.<ext>; demo is a real
@@ -8542,12 +8558,25 @@ def _portfolio_skill_groups(skills) -> list[dict]:
     Handles: list[str], list[{name|category}], and the candidate_data dict of
     {category: [skills]}.
     """
+    # Catch-all bucket names. group_skills() files anything its keyword lists
+    # don't recognize under "Other Technical Skills"; on a resume that header is
+    # legitimate (and deliberately preserved - see the note at the skills block
+    # in _render_resume_html), but on a public portfolio a headed section called
+    # "Other Technical Skills" reads like a dumping ground. Keep the skills,
+    # drop the label so they render as an uncategorized group.
+    filler_labels = {
+        "other technical skills", "other skills", "other", "others",
+        "miscellaneous", "misc", "additional skills", "uncategorized",
+    }
+
     groups: list[dict] = []
     if isinstance(skills, dict):
         for cat, items in skills.items():
             vals = [str(s).strip() for s in (items or []) if str(s).strip()]
             if vals:
                 label = str(cat).replace("_", " ").title()
+                if label.strip().lower() in filler_labels:
+                    label = ""
                 groups.append({"group": label, "items": vals})
         return groups
 
@@ -8904,6 +8933,13 @@ async def generate_portfolio(request: Request):
 
     db = get_db()
     try:
+        # Premium themes are Pro-only. This caller (Portfolio Studio) sends no
+        # theme today, so a free user lands on FREE_PORTFOLIO_THEME rather than
+        # the Pro default. Downgrade quietly - there is no picker to correct.
+        user = db.query(User).filter(User.id == user_id).first()
+        if not theme_allowed(theme, user):
+            theme = FREE_PORTFOLIO_THEME
+
         resume = (
             db.query(SavedResume)
             .filter(SavedResume.id == resume_id, SavedResume.user_id == user_id)
@@ -9010,6 +9046,22 @@ async def build_portfolio(request: Request):
     if theme not in PORTFOLIO_THEMES:
         theme = DEFAULT_PORTFOLIO_THEME
 
+    # Premium themes are Pro-only. Checked server-side: the picker hides them, but
+    # the slug arrives in the request body and can be set by hand.
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        theme_is_allowed = theme_allowed(theme, user)
+    finally:
+        db.close()
+    if not theme_is_allowed:
+        return JSONResponse(status_code=402, content={
+            "error": f"{PORTFOLIO_THEMES[theme].split('—')[0].split('-')[0].strip()} is a Pro template. "
+                     "Upgrade to publish with it, or pick one of the free templates.",
+            "upgrade": True,
+            "upgrade_url": "/pricing",
+        })
+
     pi = cv.get("personalInfo") or cv.get("personal_info") or {}
     candidate_name = str(pi.get("name") or cv.get("name") or "").strip()
 
@@ -9072,11 +9124,26 @@ async def portfolio_builder_page(request: Request):
 
     Public so it works as a marketing entry point from the Features menu; the
     final 'Publish' step prompts for login (signup capture)."""
-    logged_in = bool(request.session.get("user_id"))
+    user_id = request.session.get("user_id")
+    logged_in = bool(user_id)
+    is_pro_user = False
+    if user_id:
+        db = get_db()
+        try:
+            is_pro_user = is_pro(db.query(User).filter(User.id == user_id).first())
+        finally:
+            db.close()
+    # Free templates first so the gallery opens on something a free user can use.
+    ordered_themes = dict(
+        sorted(PORTFOLIO_THEMES.items(), key=lambda kv: kv[0] not in PORTFOLIO_FREE_THEMES)
+    )
     return templates.TemplateResponse(request, "portfolio_builder.html", {
         "request": request,
-        "themes": PORTFOLIO_THEMES,
+        "themes": ordered_themes,
         "theme_media": PORTFOLIO_THEME_MEDIA,
+        "free_themes": sorted(PORTFOLIO_FREE_THEMES),
+        "free_theme": FREE_PORTFOLIO_THEME,
+        "is_pro_user": is_pro_user,
         "logged_in": logged_in,
         "is_logged_in": logged_in,
         "portfolio_domain": PORTFOLIO_DOMAIN,
