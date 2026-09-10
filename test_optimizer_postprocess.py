@@ -685,13 +685,27 @@ def test_soft_skill_evidence_matches_verb_forms():
 
 
 def test_soft_skill_trailing_skills_suffix_is_not_doubled():
-    """JD soft skills often arrive as "problem-solving skills", which produced
-    "Skilled in problem-solving skills" on real output - redundant, and built
-    from two phrases create_prompt bans outright."""
-    out = weave_soft_skills_into_summary({"summary": "Engineer."}, ["problem-solving skills"])
-    assert out["summary"] == "Engineer. Demonstrated problem-solving in this work.", out["summary"]
+    """JD soft skills often arrive suffixed ("mentoring skills"), which produced
+    "Skilled in mentoring skills" on real output - redundant, and built from a
+    phrase create_prompt bans outright."""
+    out = weave_soft_skills_into_summary({"summary": "Engineer."}, ["mentoring skills"])
+    assert out["summary"] == "Engineer. Demonstrated mentoring in this work.", out["summary"]
     assert "skills skills" not in out["summary"].lower()
     assert "Skilled in" not in out["summary"]
+
+
+def test_filler_soft_skills_are_never_stated_outright():
+    """"Demonstrated problem-solving in this work." appended under a summary that
+    already proves it with a shipped outcome only subtracts - and the phrase is
+    on create_prompt's own BANNED list. These are dropped even when the resume
+    contains the words."""
+    resume = "Problem-solving across payment rails. Attention to detail throughout. Mentored two juniors."
+    out = weave_soft_skills_into_summary(
+        {"summary": "Engineer."}, ["problem-solving", "attention to detail", "mentoring"], resume
+    )
+    assert out["soft_skills_added"] == ["mentoring"], out.get("soft_skills_added")
+    assert "problem-solving" not in out["summary"].lower()
+    assert "attention to detail" not in out["summary"].lower()
 
 
 def test_unevidenced_hard_skills_never_get_appended_to_the_summary():

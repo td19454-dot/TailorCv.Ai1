@@ -820,9 +820,18 @@ It MUST:
 
 BANNED — these are the exact phrases that make a summary read as filler, and they are what this prompt keeps producing: "Detail-oriented", "Results-driven", "Proven ability", "Proven track record", "Adept at", "Skilled in", "Passionate about", "Strong analytical skills", "problem-solving skills", "Seeking a challenging role", "Dynamic professional", "Excellent communication skills", "Self-motivated", "wide range of", "various technologies", "Strong background in", "Experienced professional with". Do not open with any of them. State what was built, in which stack, to what effect.
 
+BANNED — hedging verbs that shrink real work into acquaintance. NEVER write "exposure to", "familiarity with", "understanding of", "knowledge of", "worked with", "involved in", "experience with" or "domain experience in" followed by a list of technologies. If the resume evidences the work, state what was DONE with it: "modelled the Postgres schema behind X" beats "exposure to database modelling". If it does not evidence the work, leave the technology out of the summary entirely — it already appears in `skills`.
+
+NEVER end the summary with a trailing list of technologies, domains or capabilities. A closing clause like "Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations" is keyword padding: it names things without claiming anything, and it is the weakest position on the most-read line of the resume. Every sentence must make a claim with a subject and an outcome. End on the strongest verifiable fact, not on a keyword list.
+
 BAD  : "Detail-oriented Data Analyst with strong analytical skills. Proven ability to transform data into insights. Adept at collaborating with cross-functional teams."
 GOOD : "Data Analyst with 1.5 years turning transactional data into commercial decisions in Python, SQL and Power BI. Cleaned and modelled 3,900 transaction records to surface that 'Loyal' customers drive the highest revenue, and shipped the Power BI dashboards category managers use weekly."
 The difference is not the vocabulary — it is that every clause in the GOOD version could only have been written about THIS candidate.
+
+A second pair, showing the padded-tail failure specifically:
+BAD  : "Backend Software Engineer with experience building production FastAPI services and data-driven SaaS features in Python, SQL and PostgreSQL. Owned the full-stack backend for a SaaS used by 16,000+ users and implemented the core ATS scoring engine, payment rails and analytics instrumentation. Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations."
+GOOD : "Backend Software Engineer building production FastAPI services in Python, SQL and PostgreSQL. Owned the full-stack backend for an AI resume-optimization SaaS serving 16,000+ users across 30+ countries, shipping the ATS scoring engine, Razorpay payment rails and analytics instrumentation that run it."
+The third sentence in BAD names eight things and claims none of them; cutting it makes the summary stronger, not shorter. GOOD ends on the concrete systems the candidate shipped.
 
 1)Keyword and Skill Optimization:
 Rule01: EVIDENCED SKILLS ONLY — The `skills` array MUST contain every hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that the job description names AND the candidate's resume actually evidences anywhere — in a bullet, a project, a summary line, or an existing skills list. Use the job description's exact wording for those (if the resume says "Postgres" and the JD says "PostgreSQL", output "PostgreSQL"), because the filter matches language, not meaning.
@@ -1819,6 +1828,18 @@ def promptable_skill_gaps(gaps) -> list[str]:
     return promptable
 
 
+# Soft skills that are pure filler when stated outright. Mirrors the BANNED
+# list in create_prompt: a recruiter discounts the claim entirely, and the work
+# in the bullets is what actually demonstrates it. Never appended to a summary.
+_UNSTATEABLE_SOFT_SKILLS = {
+    "problem-solving", "problem solving", "analytical thinking", "critical thinking",
+    "attention to detail", "detail-oriented", "self-motivated", "self motivated",
+    "hard-working", "hard working", "team player", "results-driven", "results driven",
+    "passionate", "proactive", "adaptable", "adaptability", "flexibility",
+    "work ethic", "multitasking", "time management", "interpersonal",
+}
+
+
 def _soft_skill_evidenced(evidence: str, skill: str) -> bool:
     """Is this soft skill genuinely visible in the original resume text?
 
@@ -1900,6 +1921,12 @@ def weave_soft_skills_into_summary(data: dict, soft_skills, resume_text: str = "
         # redundant, and one of the filler phrases the prompt bans outright.
         skill = re.sub(r'\s+skills?$', '', skill, flags=re.IGNORECASE).strip()
         if not skill:
+            continue
+        # Some JD soft skills ARE the filler create_prompt bans by name. A
+        # summary that already proves the trait with a shipped outcome is only
+        # weakened by "Demonstrated problem-solving in this work." appended
+        # underneath it, so these are dropped rather than restated.
+        if skill.lower() in _UNSTATEABLE_SOFT_SKILLS:
             continue
         additions.append(skill[0].lower() + skill[1:] if skill[:1].isupper() and not skill.isupper() else skill)
 
