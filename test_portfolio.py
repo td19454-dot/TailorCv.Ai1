@@ -315,14 +315,106 @@ def test_static_bundle():
     return ok
 
 
+def test_slug_shape_filter():
+    """The pre-DB guard on /{slug} must reject scanner probes and never a real slug."""
+    ok = True
+    accept = main._looks_like_portfolio_slug
+
+    # Anything _portfolio_slugify can emit has to survive the filter, or a real
+    # portfolio would 404. Derive the cases instead of hand-writing them.
+    for name in ["Emilian Leaman", "J. Doe, Jr.!", "", "@#$%", "  hi  ", "x" * 200,
+                 "Ravi   Kumar", "O'Brien-Smith", "李 Wei", "3M Corp"]:
+        generated = main._portfolio_slugify(name)
+        ok &= check(f"accepts generated {generated!r}", accept(generated))
+    # ...including the uniqueness suffixes _unique_portfolio_slug appends.
+    ok &= check("accepts numeric suffix", accept("j-doe-jr-2"))
+    ok &= check("accepts hex suffix", accept("emilian-leaman-a1b2c3"))
+    ok &= check("accepts single char", accept("x"))
+    ok &= check("accepts digits only", accept("2024"))
+
+    # Scanner probes: every one of these currently costs a Postgres round trip.
+    for probe in [".env", "wp-login.php", "xmlrpc.php", "config.json",
+                  "apple-touch-icon.png", "Admin", "WP-Admin", "foo_bar",
+                  "foo.bar", "foo bar", "foo/bar", "-leading", "trailing-",
+                  "double--hyphen", "", "a" * 161, "ünicode", "foo%20bar"]:
+        ok &= check(f"rejects {probe!r}", not accept(probe))
+    return ok
+
+
+def test_should_count_view():
+    """view_count must move for humans and stay put for automated clients."""
+    ok = True
+
+    class Req:
+        def __init__(self, ua, method="GET"):
+            self.method = method
+            self.headers = {"user-agent": ua} if ua is not None else {}
+
+    chrome = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+              "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    iphone = ("Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) "
+              "AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile Safari/604.1")
+    ok &= check("counts desktop Chrome", main._should_count_view(Req(chrome)))
+    ok &= check("counts mobile Safari", main._should_count_view(Req(iphone)))
+
+    for ua in ["Googlebot/2.1 (+http://www.google.com/bot.html)",
+               "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)",
+               "Mozilla/5.0 (compatible; GPTBot/1.0; +https://openai.com/gptbot)",
+               "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)",
+               "curl/8.4.0", "Wget/1.21.3", "python-requests/2.31.0",
+               "facebookexternalhit/1.1", "Scrapy/2.11 (+https://scrapy.org)",
+               "Go-http-client/1.1", "HeadlessChrome/120.0.0.0"]:
+        ok &= check(f"skips {ua.split('/')[0][:28]}", not main._should_count_view(Req(ua)))
+
+    ok &= check("skips blank UA", not main._should_count_view(Req("")))
+    ok &= check("skips missing UA", not main._should_count_view(Req(None)))
+    ok &= check("skips HEAD from a browser", not main._should_count_view(Req(chrome, "HEAD")))
+    ok &= check("counts lowercase 'get'", main._should_count_view(Req(chrome, "get")))
+    return ok
+
+
+def test_ttl_cache():
+    """The shared cache must expire, invalidate, and stay bounded."""
+    ok = True
+
+    c = main._TTLCache(ttl_seconds=60, max_entries=10)
+    c.set("a", True)
+    ok &= check("hit before expiry", c.get("a") is True)
+    ok &= check("miss for unknown key", c.get("nope") is None)
+
+    c.discard("a")
+    ok &= check("discard invalidates", c.get("a") is None)
+    c.discard("not-there")  # must not raise
+    ok &= check("discard of absent key is safe", True)
+
+    expired = main._TTLCache(ttl_seconds=-1, max_entries=10)
+    expired.set("a", True)
+    ok &= check("expired entry reads as miss", expired.get("a") is None)
+
+    # Overfill well past the cap: a scanner walking distinct slugs must not be
+    # able to grow this without bound.
+    bounded = main._TTLCache(ttl_seconds=60, max_entries=10)
+    for i in range(500):
+        bounded.set(f"slug-{i}", True)
+    ok &= check("stays at or below max_entries", len(bounded._data) <= 10)
+    ok &= check("most recent write survives eviction", bounded.get("slug-499") is True)
+    return ok
+
+
 def main_run():
     tests = [
         test_slugify, test_initials, test_strip_bullets, test_skill_groups,
         test_build_editor_shape, test_build_candidate_shape, test_photo_validator,
         test_handle_helpers, test_share_url, test_social_links_absolute,
+<<<<<<< HEAD
         test_new_sections, test_devicon_slug, test_themes_registry, test_theme_gating,
         test_empty_resume,
         test_static_bundle,
+=======
+        test_new_sections, test_devicon_slug, test_themes_registry, test_empty_resume,
+        test_static_bundle, test_slug_shape_filter, test_should_count_view,
+        test_ttl_cache,
+>>>>>>> 61b2912c39a18d68b712b14805186b740b720271
     ]
     all_ok = True
     for t in tests:
