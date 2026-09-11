@@ -10599,41 +10599,124 @@
   // src/analytics.js
   var PROJECT_TOKEN = "phc_uGU456NXKhzPnNpdMsiPpDZrXY2ydg67rP2ixQT6QEkE";
   var API_HOST = "https://us.i.posthog.com";
+  var HOST_PAGE_SELECTOR = [
+    "body > *:not(#tailorcv-sidebar):not(#tailorcv-launcher):not(#tailorcv-changes-modal)",
+    "head > *:not(#tailorcv-styles)"
+  ].join(", ");
+  var MASKED_TEXT_SELECTOR = "#tcvAccountEmail, #tcvManualJd, #tailorcv-changes-modal";
+  var URL_PROP = /(url|referrer|href)$/i;
+  function stripUrl(value) {
+    if (typeof value !== "string" || !/^https?:/i.test(value)) return value;
+    try {
+      const u2 = new URL(value);
+      return u2.origin + u2.pathname;
+    } catch (_2) {
+      return value;
+    }
+  }
+  function scrubSnapshot(node, depth) {
+    if (depth > 60 || !node || typeof node !== "object") return;
+    for (const key of Object.keys(node)) {
+      const v2 = node[key];
+      if (typeof v2 === "string") {
+        if (v2.startsWith(location.origin) && /[?#]/.test(v2)) node[key] = stripUrl(v2);
+      } else if (v2 && typeof v2 === "object") {
+        scrubSnapshot(v2, depth + 1);
+      }
+    }
+  }
+  function minimizeUrls(event) {
+    if (!event || !event.properties) return event;
+    const props = event.properties;
+    for (const key of Object.keys(props)) {
+      if (URL_PROP.test(key)) props[key] = stripUrl(props[key]);
+    }
+    if (Array.isArray(props.$snapshot_data)) scrubSnapshot(props.$snapshot_data, 0);
+    return event;
+  }
   var posthog = new Ba();
+  function sendRuntimeMessage(msg) {
+    return new Promise((resolve) => {
+      try {
+        chrome.runtime.sendMessage(msg, (res) => {
+          void chrome.runtime.lastError;
+          resolve(res || {});
+        });
+      } catch (_2) {
+        resolve({});
+      }
+    });
+  }
   var ready = null;
   function init() {
     if (ready) return ready;
-    ready = new Promise((resolve) => {
-      chrome.runtime.sendMessage({ type: "GET_ANALYTICS_ID" }, (res) => {
-        const distinctId = res && res.id || crypto.randomUUID();
-        posthog.init(PROJECT_TOKEN, {
-          api_host: API_HOST,
-          bootstrap: { distinctID: distinctId },
-          disable_external_dependency_loading: true,
-          // localStorage (not posthog's own 'memory' default for content
-          // scripts) so a recording/session survives SPA navigation on the
-          // same job-board origin, not just a single page view.
-          persistence: "localStorage",
-          capture_pageview: false,
-          autocapture: false,
-          // sendBeacon from a content script is subject to the HOST PAGE's
-          // CSP connect-src, unlike fetch/XHR which run in the extension's
-          // own network context — force fetch/XHR so a strict job-board CSP
-          // can't silently drop events/recordings on tab close.
-          opt_out_useBeacon: true
-        });
-        posthog.register({ source: "chrome_extension" });
-        resolve();
+    ready = sendRuntimeMessage({ type: "GET_ANALYTICS_ID" }).then((res) => {
+      const bootstrap = { distinctID: res.id || crypto.randomUUID() };
+      if (res.sessionId) bootstrap.sessionID = res.sessionId;
+      posthog.init(PROJECT_TOKEN, {
+        api_host: API_HOST,
+        bootstrap,
+        persistence: "memory",
+        disable_external_dependency_loading: true,
+        // Host-page behaviour is none of our business: no automatic capture of
+        // the job board's clicks, pageviews, errors, performance or console.
+        autocapture: false,
+        rageclick: false,
+        capture_pageview: false,
+        capture_pageleave: false,
+        capture_dead_clicks: false,
+        capture_heatmaps: false,
+        capture_performance: false,
+        capture_exceptions: false,
+        enable_recording_console_log: false,
+        disable_surveys: true,
+        disable_product_tours: true,
+        disable_conversations: true,
+        // sendBeacon from a content script is subject to the HOST PAGE's CSP
+        // connect-src, unlike fetch/XHR which run in the extension's own network
+        // context — force fetch/XHR so a strict job-board CSP can't silently
+        // drop events/recordings on tab close.
+        opt_out_useBeacon: true,
+        session_recording: {
+          blockSelector: HOST_PAGE_SELECTOR,
+          maskAllInputs: true,
+          maskTextSelector: MASKED_TEXT_SELECTOR,
+          recordCrossOriginIframes: false,
+          recordHeaders: false,
+          recordBody: false,
+          captureCanvas: { recordCanvas: false },
+          // Keep rrweb events readable by before_send (see scrubSnapshot); the
+          // request body is still gzip-compressed on the wire.
+          compress_events: false
+        },
+        before_send: minimizeUrls
+      });
+      posthog.register({
+        source: "chrome_extension",
+        ext_version: chrome.runtime.getManifest().version,
+        host: location.hostname
       });
     });
     return ready;
   }
+  var lastTouch = 0;
+  function touchSession() {
+    const now = Date.now();
+    if (now - lastTouch < 6e4) return;
+    lastTouch = now;
+    sendRuntimeMessage({ type: "TOUCH_ANALYTICS_SESSION", sessionId: posthog.get_session_id() });
+  }
   window.__tcvTrack = function(event, props) {
-    init().then(() => posthog.capture(event, props || {}));
+    init().then(() => {
+      posthog.capture(event, props || {});
+      touchSession();
+    });
   };
   window.__tcvIdentify = function(email) {
     if (!email) return;
-    init().then(() => posthog.identify(email, { email }));
+    init().then(() => {
+      if (posthog.get_distinct_id() !== email) posthog.identify(email, { email });
+    });
   };
   init();
 })();

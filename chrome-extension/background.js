@@ -52,6 +52,83 @@ async function clearAuthCache() {
   await chrome.storage.session.remove(AUTH_CACHE_KEY);
 }
 
+// ── Analytics identity + session ────────────────────────
+// The PostHog SDK itself lives in the content script (src/analytics.js,
+// bundled); this worker only owns the ids so they're shared across every tab
+// and job board. One install id (storage.local) and one rolling session id
+// (storage.session) — a UUIDv7, as PostHog's bootstrap.sessionID requires,
+// rotated after 30 min idle or ~23h (PostHog caps a session at 24h).
+const POSTHOG_TOKEN = 'phc_uGU456NXKhzPnNpdMsiPpDZrXY2ydg67rP2ixQT6QEkE';
+const POSTHOG_CAPTURE_URL = 'https://us.i.posthog.com/i/v0/e/';
+const ANALYTICS_SESSION_KEY = 'tcv_analytics_session';
+const SESSION_IDLE_MS = 30 * 60 * 1000;
+const SESSION_MAX_MS = 23 * 60 * 60 * 1000;
+
+function uuidv7() {
+  const b = crypto.getRandomValues(new Uint8Array(16));
+  const ts = Date.now();
+  for (let i = 0; i < 6; i++) b[i] = Math.floor(ts / 2 ** (8 * (5 - i))) & 0xff;
+  b[6] = (b[6] & 0x0f) | 0x70;
+  b[8] = (b[8] & 0x3f) | 0x80;
+  const h = [...b].map((x) => x.toString(16).padStart(2, '0')).join('');
+  return `${h.slice(0, 8)}-${h.slice(8, 12)}-${h.slice(12, 16)}-${h.slice(16, 20)}-${h.slice(20)}`;
+}
+
+async function getDistinctId() {
+  const stored = await chrome.storage.local.get('tcv_distinct_id');
+  let id = stored.tcv_distinct_id;
+  if (!id) {
+    id = crypto.randomUUID();
+    await chrome.storage.local.set({ tcv_distinct_id: id });
+  }
+  return id;
+}
+
+// Returns the current session id, starting a new one if the last expired.
+// `adoptId` lets a tab report that PostHog rotated its session on its own.
+async function touchAnalyticsSession(adoptId) {
+  const now = Date.now();
+  const stored = await chrome.storage.session.get(ANALYTICS_SESSION_KEY);
+  let s = stored[ANALYTICS_SESSION_KEY];
+  if (adoptId && (!s || s.id !== adoptId)) {
+    s = { id: adoptId, start: now, last: now };
+  } else if (!s || now - s.last > SESSION_IDLE_MS || now - s.start > SESSION_MAX_MS) {
+    s = { id: uuidv7(), start: now, last: now };
+  } else {
+    s.last = now;
+  }
+  await chrome.storage.session.set({ [ANALYTICS_SESSION_KEY]: s });
+  return s.id;
+}
+
+// Plain JSON POST to PostHog's public capture API — data only, no SDK here.
+async function captureFromWorker(event, properties) {
+  try {
+    await fetch(POSTHOG_CAPTURE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        api_key: POSTHOG_TOKEN,
+        event,
+        distinct_id: await getDistinctId(),
+        properties: {
+          source: 'chrome_extension',
+          ext_version: chrome.runtime.getManifest().version,
+          ...properties,
+        },
+      }),
+    });
+  } catch (_) { /* analytics must never break the extension */ }
+}
+
+chrome.runtime.onInstalled.addListener((details) => {
+  if (details.reason === 'install') {
+    captureFromWorker('extension_installed', {});
+  } else if (details.reason === 'update') {
+    captureFromWorker('extension_updated', { previous_version: details.previousVersion });
+  }
+});
+
 // Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
 // extension's only UI surface). On the job boards we declare in the manifest the
 // content script is already there, so we just toggle it. On ANY other site —
@@ -121,13 +198,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
         // One stable id per install, shared across every tab/site the content
         // script runs on — chrome.storage.local (not localStorage, which is
         // partitioned per-site and would fragment identity across job boards).
-        const stored = await chrome.storage.local.get('tcv_distinct_id');
-        let id = stored.tcv_distinct_id;
-        if (!id) {
-          id = crypto.randomUUID();
-          await chrome.storage.local.set({ tcv_distinct_id: id });
-        }
-        sendResponse({ id });
+        sendResponse({ id: await getDistinctId(), sessionId: await touchAnalyticsSession() });
+
+      } else if (msg.type === 'TOUCH_ANALYTICS_SESSION') {
+        await touchAnalyticsSession(msg.sessionId);
+        sendResponse({ ok: true });
 
       } else if (msg.type === 'GET_PROFILE') {
         const cached = await readAuthCache();

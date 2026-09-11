@@ -27,6 +27,21 @@
   function track(event, props) {
     if (typeof window.__tcvTrack === 'function') window.__tcvTrack(event, props);
   }
+  // One event name for every failure the user sees, so errors can be broken
+  // down by `stage` in one place. Never pass resume/JD text in here.
+  function trackError(stage, res) {
+    track('extension_error', {
+      stage,
+      code: (res && res.code) || null,
+      message: String((res && res.error) || '').slice(0, 200),
+    });
+  }
+  function lengthBucket(n) {
+    return n < 200 ? '<200' : n < 1000 ? '200-1k' : n < 3000 ? '1k-3k' : n < 8000 ? '3k-8k' : '8k+';
+  }
+  // renderJobFromPage() re-runs after every action, so detection is reported
+  // once per page URL + source rather than on every re-render.
+  let lastDetectKey = '';
   const PROGRESS_CIRCUMFERENCE = 2 * Math.PI * 30; // r=30 in the SVG below
   // The lock-check.svg loop is 4.7s at 30fps (141 frames). Frame 74 is the last
   // moment before it starts turning green / drawing the checkmark, so looping
@@ -589,6 +604,7 @@
       sb.classList.add('tcv-collapsed');
       launcher.classList.add('tcv-visible');
       accountMenu.classList.remove('tcv-visible');
+      track('panel_closed', { via: 'close_button' });
     });
     launcher.addEventListener('click', () => {
       sb.classList.remove('tcv-collapsed');
@@ -599,6 +615,12 @@
     accountBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       accountMenu.classList.toggle('tcv-visible');
+      if (accountMenu.classList.contains('tcv-visible')) track('account_menu_opened');
+    });
+    accountMenu.querySelectorAll('a.tcv-account-item').forEach((a) => {
+      a.addEventListener('click', () => {
+        track('account_menu_link_clicked', { target: new URL(a.href).hash.slice(1) || 'settings' });
+      });
     });
     document.addEventListener('click', (e) => {
       if (accountMenu.classList.contains('tcv-visible') && !accountMenu.contains(e.target) && e.target !== accountBtn) {
@@ -610,6 +632,7 @@
       accountMenu.classList.remove('tcv-visible');
       logoutBtn.disabled = true;
       logoutBtn.textContent = 'Logging out…';
+      track('logout_clicked');
       await sendMessage({ type: 'LOGOUT' });
       logoutBtn.disabled = false;
       logoutBtn.textContent = 'Log out';
@@ -625,6 +648,8 @@
     const wasCollapsed = sb.classList.contains('tcv-collapsed');
     sb.classList.toggle('tcv-collapsed');
     launcher.classList.toggle('tcv-visible');
+    if (wasCollapsed) track('panel_opened', { host: location.hostname, via: 'toolbar' });
+    else track('panel_closed', { via: 'toolbar' });
 
     // The auto-injected panel starts its ~8s auto-detect window right on page
     // load, often before LinkedIn (and similar SPAs) have finished painting the
@@ -719,19 +744,30 @@
       const btn = body.querySelector('#tcvLoginBtn');
       btn.disabled = true;
       btn.textContent = 'Logging in…';
+      track('login_submitted', { method: 'password' });
       const res = await sendMessage({ type: 'LOGIN', email, password });
       if (res.error) {
         btn.disabled = false;
         btn.textContent = 'Log in';
         body.querySelector('#tcvLoginError').textContent = res.error;
+        track('login_failed', { method: 'password' });
+        trackError('login', res);
         return;
       }
+      track('login_succeeded', { method: 'password' });
       refreshFull();
+    });
+    body.querySelectorAll('a[href*="/login?ext=1"]').forEach((a) => {
+      a.addEventListener('click', () => {
+        track('login_link_clicked', { target: a.classList.contains('tcv-btn') ? 'google' : 'forgot_password' });
+      });
     });
     body.querySelector('#tcvLoginRetry').addEventListener('click', (e) => {
       e.preventDefault();
+      track('login_retry_clicked');
       refreshFull();
     });
+    track('login_form_shown');
   }
 
   function renderNoBaseResume() {
@@ -764,8 +800,11 @@
       <a class="tcv-link tcv-retry-link" href="#" id="tcvNoResumeRetry">Already set one up? Retry</a>
     `;
     noBaseResumeShown = true;
+    track('base_resume_missing_shown');
+    body.querySelector('a.tcv-btn-link').addEventListener('click', () => track('base_resume_setup_clicked'));
     body.querySelector('#tcvNoResumeRetry').addEventListener('click', (e) => {
       e.preventDefault();
+      track('base_resume_retry_clicked');
       refreshFull();
     });
   }
@@ -778,8 +817,11 @@
         <a class="tcv-link tcv-retry-link" id="tcvRetryAfterUpgrade" href="#">Already upgraded? Retry</a>
       </div>
     `;
+    track('upgrade_prompt_shown');
+    body.querySelector('a[href$="/pricing"]').addEventListener('click', () => track('upgrade_cta_clicked', { from: 'quota_prompt' }));
     body.querySelector('#tcvRetryAfterUpgrade').addEventListener('click', (e) => {
       e.preventDefault();
+      track('upgrade_retry_clicked');
       quotaExceeded = false;
       renderJobFromPage();
     });
@@ -810,25 +852,32 @@
       const sel = (window.getSelection() || '').toString().trim();
       if (!sel) {
         err.textContent = 'Select the job description on the page first, then click again.';
+        track('manual_jd_selection_empty');
         return;
       }
       ta.value = sel;
       err.textContent = '';
+      track('manual_jd_selection_used', { length_bucket: lengthBucket(sel.length) });
     });
 
     body.querySelector('#tcvManualGo').addEventListener('click', () => {
       const text = ta.value.trim();
       if (text.length < MIN_JD_LENGTH) {
         err.textContent = `That is too short — paste at least ${MIN_JD_LENGTH} characters of the job description.`;
+        track('manual_jd_too_short', { length_bucket: lengthBucket(text.length) });
         return;
       }
       manualJd = text;
+      track('manual_jd_submitted', { edited_detected: !!prefill, length_bucket: lengthBucket(text.length) });
       renderJobFromPage();
     });
+
+    track('manual_jd_shown', { reason: prefill ? 'user_edit' : 'not_detected' });
 
     if (showRetry) {
       body.querySelector('#tcvRetryDetect').addEventListener('click', (e) => {
         e.preventDefault();
+        track('jd_retry_detection_clicked');
         renderJobFromPage();
       });
     }
@@ -857,6 +906,7 @@
 
     body.querySelector('#tcvEditJd').addEventListener('click', (e) => {
       e.preventDefault();
+      track('jd_edit_clicked', { source: job.source });
       renderManual(job.jd_string);
     });
 
@@ -891,6 +941,8 @@
         return;
       }
       const score = res.data && typeof res.data.score === 'number' ? res.data.score : null;
+      if (res.error) trackError('skill_match', res);
+      else track('skill_match_loaded', { score, source: job.source });
       if (score === null) {
         // The scorer found no named hard skills in this posting (common on
         // founder / generalist / "culture" JDs), so there is nothing to match
@@ -1057,13 +1109,153 @@
     }
   }
 
-  // Compact bullet-level diff for the sidebar. Only reworded/new bullets are
-  // shown (unchanged ones add no information and the sidebar is narrow); the
-  // roomier "See what changed" modal on the web editor shows the full picture
-  // with word-level highlighting.
+  // Word-level LCS diff, ported from the web editor's "See what changed" modal
+  // (static/optimized_editor.js wordDiff) so both highlight changes the same way.
+  function wordDiff(before, after) {
+    const a = String(before || '').split(/(\s+)/).filter(Boolean);
+    const b = String(after || '').split(/(\s+)/).filter(Boolean);
+    const n = a.length, m = b.length;
+    const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+    for (let i = n - 1; i >= 0; i--) {
+      for (let j = m - 1; j >= 0; j--) {
+        dp[i][j] = a[i] === b[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
+      }
+    }
+    const beforeParts = [], afterParts = [];
+    let i = 0, j = 0;
+    while (i < n && j < m) {
+      if (a[i] === b[j]) {
+        beforeParts.push({ text: a[i], same: true });
+        afterParts.push({ text: b[j], same: true });
+        i++; j++;
+      } else if (dp[i + 1][j] >= dp[i][j + 1]) {
+        beforeParts.push({ text: a[i], same: false });
+        i++;
+      } else {
+        afterParts.push({ text: b[j], same: false });
+        j++;
+      }
+    }
+    while (i < n) { beforeParts.push({ text: a[i], same: false }); i++; }
+    while (j < m) { afterParts.push({ text: b[j], same: false }); j++; }
+    return { beforeParts, afterParts };
+  }
+
+  // Every word goes in via textContent, never innerHTML.
+  function renderDiffLine(parts, changedClass) {
+    const frag = document.createDocumentFragment();
+    parts.forEach((p) => {
+      if (p.same) {
+        frag.appendChild(document.createTextNode(p.text));
+      } else {
+        const span = document.createElement('span');
+        span.className = changedClass;
+        span.textContent = p.text;
+        frag.appendChild(span);
+      }
+    });
+    return frag;
+  }
+
+  function closeChangesModal(via) {
+    const modal = document.getElementById('tailorcv-changes-modal');
+    if (!modal) return;
+    modal.remove();
+    document.removeEventListener('keydown', onChangesModalKey, true);
+    if (via) track('changes_modal_closed', { via });
+  }
+
+  function onChangesModalKey(e) {
+    if (e.key === 'Escape') closeChangesModal('escape');
+  }
+
+  // Centred popup, like the web editor's. Appended to <body>, not the sidebar:
+  // the sidebar's transform makes it the containing block for position:fixed
+  // children, so a popup inside it can't escape to the viewport centre.
+  function openChangesModal(summary, entries) {
+    closeChangesModal();
+
+    const overlay = document.createElement('div');
+    overlay.id = 'tailorcv-changes-modal';
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'tcv-chg-backdrop';
+    backdrop.addEventListener('click', () => closeChangesModal('backdrop'));
+
+    const dialog = document.createElement('div');
+    dialog.className = 'tcv-chg-dialog';
+    dialog.setAttribute('role', 'dialog');
+    dialog.setAttribute('aria-modal', 'true');
+
+    const head = document.createElement('div');
+    head.className = 'tcv-chg-head';
+    const title = document.createElement('h2');
+    title.className = 'tcv-chg-title';
+    title.textContent = 'What changed in your resume';
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'tcv-chg-close';
+    close.title = 'Close';
+    close.textContent = '✕';
+    close.addEventListener('click', () => closeChangesModal('close'));
+    head.append(title, close);
+
+    const body = document.createElement('div');
+    body.className = 'tcv-chg-body';
+
+    function addBulletRow(status, before, after) {
+      const row = document.createElement('div');
+      row.className = 'tcv-changes-bullet';
+      const tag = document.createElement('span');
+      tag.className = 'tcv-changes-tag';
+      tag.textContent = status;
+      row.appendChild(tag);
+      const diff = before ? wordDiff(before, after) : null;
+      if (before) {
+        const beforeLine = document.createElement('div');
+        beforeLine.className = 'tcv-changes-before';
+        beforeLine.appendChild(renderDiffLine(diff.beforeParts, 'tcv-diff-del'));
+        row.appendChild(beforeLine);
+      }
+      const afterLine = document.createElement('div');
+      afterLine.className = 'tcv-changes-after';
+      if (diff) afterLine.appendChild(renderDiffLine(diff.afterParts, 'tcv-diff-add'));
+      else afterLine.textContent = after || '';
+      row.appendChild(afterLine);
+      body.appendChild(row);
+    }
+
+    function addLabel(text) {
+      const label = document.createElement('div');
+      label.className = 'tcv-changes-entry-label';
+      label.textContent = text || '';
+      body.appendChild(label);
+    }
+
+    let bulletCount = 0;
+    if (summary) {
+      addLabel('Summary');
+      addBulletRow(summary.status, summary.before, summary.after);
+    }
+    entries.forEach((e) => {
+      addLabel(e.label);
+      e.bullets.forEach((b) => { addBulletRow(b.status, b.before, b.after); bulletCount++; });
+    });
+
+    dialog.append(head, body);
+    overlay.append(backdrop, dialog);
+    document.body.appendChild(overlay);
+    document.addEventListener('keydown', onChangesModalKey, true);
+    close.focus();
+    track('changes_modal_opened', { entries: entries.length, bullets: bulletCount, summary_changed: !!summary });
+  }
+
+  // Only reworded/new bullets are shown — unchanged ones add no information.
+  // The sidebar gets a single button; the diff itself opens in a centred popup.
   function showChangesPanel(changes) {
     const existing = document.getElementById('tcv-changes-panel');
     if (existing) existing.remove();
+    closeChangesModal();
     if (!changes || typeof changes !== 'object') return;
 
     const entries = Array.isArray(changes.entries) ? changes.entries : [];
@@ -1080,66 +1272,14 @@
 
     if (!summaryChanged && !entriesWithNotableBullets.length) return;
 
-    const panel = document.createElement('div');
+    const panel = document.createElement('button');
+    panel.type = 'button';
     panel.id = 'tcv-changes-panel';
     panel.className = 'tcv-changes-panel';
-
-    const toggle = document.createElement('button');
-    toggle.type = 'button';
-    toggle.className = 'tcv-changes-toggle';
-    const toggleLabel = document.createElement('span');
-    toggleLabel.textContent = 'See what changed';
-    const chevron = document.createElement('span');
-    chevron.className = 'tcv-changes-chevron';
-    chevron.textContent = '▾';
-    toggle.append(toggleLabel, chevron);
-    toggle.addEventListener('click', function () {
-      panel.classList.toggle('tcv-changes-open');
+    panel.textContent = '🔍 See what changed';
+    panel.addEventListener('click', () => {
+      openChangesModal(summaryChanged ? summary : null, entriesWithNotableBullets);
     });
-    panel.appendChild(toggle);
-
-    const body = document.createElement('div');
-    body.className = 'tcv-changes-body';
-
-    function addBulletRow(status, before, after) {
-      const row = document.createElement('div');
-      row.className = 'tcv-changes-bullet';
-      const tag = document.createElement('span');
-      tag.className = 'tcv-changes-tag';
-      tag.textContent = status;          // textContent, never innerHTML
-      row.appendChild(tag);
-      if (before) {
-        const beforeLine = document.createElement('div');
-        beforeLine.className = 'tcv-changes-before';
-        beforeLine.textContent = before; // textContent, never innerHTML
-        row.appendChild(beforeLine);
-      }
-      const afterLine = document.createElement('div');
-      afterLine.className = 'tcv-changes-after';
-      afterLine.textContent = after;     // textContent, never innerHTML
-      row.appendChild(afterLine);
-      body.appendChild(row);
-    }
-
-    if (summaryChanged) {
-      const label = document.createElement('div');
-      label.className = 'tcv-changes-entry-label';
-      label.textContent = 'Summary';
-      body.appendChild(label);
-      addBulletRow(summary.status, summary.before, summary.after);
-    }
-
-    entriesWithNotableBullets.forEach(function (e) {
-      const label = document.createElement('div');
-      label.className = 'tcv-changes-entry-label';
-      label.textContent = e.label || '';  // textContent, never innerHTML
-      body.appendChild(label);
-      e.bullets.forEach(function (b) {
-        addBulletRow(b.status, b.before, b.after);
-      });
-    });
-
-    panel.appendChild(body);
 
     const anchor = document.getElementById('tcv-skill-gaps') || scoreCard;
     if (anchor && anchor.parentNode) {
@@ -1155,6 +1295,7 @@
     globalStatus.textContent = `Writing a cover letter for "${label}"…`;
     startProgress();
     track('cover_letter_started', { source: job.source });
+    const startedAt = performance.now();
 
     const res = await sendMessage({
       type: 'COVER_LETTER',
@@ -1182,6 +1323,7 @@
       sessionReady = false;
       globalStatus.className = 'tcv-status-text';
       globalStatus.textContent = '';
+      track('cover_letter_failed', { reason: 'no_base_resume' });
       renderNoBaseResume();
       return;
     }
@@ -1193,7 +1335,12 @@
     // No skill-match score for a cover letter — showSuccessTick() with no
     // afterScore plays the tick and simply skips the score card afterward.
     if (!res.error) showSuccessTick();
-    track(res.error ? 'cover_letter_failed' : 'cover_letter_downloaded', { error: res.error });
+    track(res.error ? 'cover_letter_failed' : 'cover_letter_downloaded', {
+      source: job.source,
+      error: res.error,
+      duration_s: Math.round((performance.now() - startedAt) / 1000),
+    });
+    if (res.error) trackError('cover_letter', res);
 
     if (sessionReady) renderJobFromPage();
   }
@@ -1206,7 +1353,8 @@
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = `Tailoring "${label}"… this can take up to a minute.`;
     startProgress();
-    track('tailor_started', { source: job.source });
+    track('tailor_started', { source: job.source, before_score: job.beforeScore });
+    const startedAt = performance.now();
 
     const res = await sendMessage({
       type: 'TAILOR_AND_DOWNLOAD',
@@ -1234,14 +1382,17 @@
       sessionReady = false;
       globalStatus.className = 'tcv-status-text';
       globalStatus.textContent = '';
+      track('tailor_failed', { reason: 'no_base_resume' });
       renderNoBaseResume();
       return;
     }
 
+    const durationS = Math.round((performance.now() - startedAt) / 1000);
     if (res.error) {
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${label}: ${res.error}`;
-      track('tailor_failed', { error: res.error });
+      track('tailor_failed', { error: res.error, source: job.source, duration_s: durationS });
+      trackError('tailor', res);
     } else {
       globalStatus.className = 'tcv-status-text tcv-ok';
       globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
@@ -1256,6 +1407,8 @@
         after_score: after,
         skills_added_count: added.length,
         skill_gap_count: gaps.length,
+        source: job.source,
+        duration_s: durationS,
       });
     }
 
@@ -1317,13 +1470,32 @@
     const job = extractJob();
     if (job) {
       if (attempt > 0) console.log(`[TailorCV] job description found after ${attempt} retries (${job.source})`);
+      const detectKey = location.href + '|' + job.source;
+      if (detectKey !== lastDetectKey) {
+        lastDetectKey = detectKey;
+        track('jd_detected', {
+          layer: job.source,
+          attempts: attempt,
+          length_bucket: lengthBucket(job.jd_string.length),
+          has_role: !!job.role,
+          has_company: !!job.company,
+        });
+      }
       renderReady(job);
       return;
     }
 
     const maxTries = isLinkedInCollectionsPage() ? LINKEDIN_COLLECTIONS_TRIES : EXTRACT_TRIES;
     if (attempt >= maxTries) {
-      if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
+      if (tryAutoRefreshOnce()) {   // page is reloading — nothing left to render
+        track('jd_not_found', { attempts: attempt, action: 'auto_reload' });
+        return;
+      }
+      const detectKey = location.href + '|none';
+      if (detectKey !== lastDetectKey) {
+        lastDetectKey = detectKey;
+        track('jd_not_found', { attempts: attempt, action: 'manual_fallback' });
+      }
       logDiagnostics();
       renderManual();
       return;
@@ -1343,6 +1515,7 @@
     if (profileRes.error || !profileRes.data) {
       clearInterval(lockLoopTimer); // not authenticated — cut the loop, no unlock flourish
       accountBtn.classList.remove('tcv-visible');
+      track('auth_checked', { logged_in: false });
       renderLogin();
       return;
     }
@@ -1352,6 +1525,7 @@
     accountBtn.textContent = email.trim().charAt(0).toUpperCase() || '?';
     accountBtn.classList.add('tcv-visible');
     if (typeof window.__tcvIdentify === 'function') window.__tcvIdentify(email);
+    track('auth_checked', { logged_in: true });
 
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra
@@ -1361,6 +1535,7 @@
       sendMessage({ type: 'GET_BASE_RESUME' }),
       new Promise((resolve) => setTimeout(resolve, remainingMs)),
     ]);
+    if (baseRes.error) trackError('base_resume_check', baseRes);
     if (baseRes.error || !baseRes.data || !baseRes.data.has_base_resume) { renderNoBaseResume(); return; }
 
     sessionReady = true;

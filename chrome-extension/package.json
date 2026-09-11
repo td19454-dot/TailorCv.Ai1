@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js"
+    "build": "esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js",
+    "package": "node scripts/package.mjs",
+    "verify": "node scripts/verify-package.mjs"
   },
   "dependencies": {
     "posthog-js": "^1.407.2"

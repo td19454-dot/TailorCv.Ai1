@@ -22,6 +22,8 @@ A TailorCV account is required (free tier included — sign up or log in directl
 
 This extension only reads the job title, company, and description text from the job page you have open — it does not read your profile, connections, messages, or any other page you browse.
 
+To improve the extension, TailorCV collects usage analytics and session replays of its own panel (via PostHog). Job-board page content is never recorded and form inputs are masked. See thetailorcv.com/privacy.
+
 ## Category
 
 Productivity (or: Just for fun → not applicable; "Productivity" is the closest fit — "Social & Communication" is not appropriate since it doesn't interact with LinkedIn's social features)
@@ -71,7 +73,7 @@ Host access to thetailorcv.com is required to communicate with TailorCV's own se
 ### Remote code use justification
 
 ```
-This extension does not use remote code. All JavaScript executed by the extension (background service worker and content script) is bundled directly in the extension package and reviewed as part of this submission. The extension only performs data fetches (JSON API responses and a generated PDF) to its own backend at thetailorcv.com — it never downloads or executes remote script code, and contains no eval(), Function() constructor calls, or remotely-sourced <script> tags.
+This extension does not use remote code. All JavaScript executed by the extension (background service worker and content scripts) is bundled directly in the extension package and reviewed as part of this submission. Product analytics use the open-source PostHog JavaScript SDK, statically bundled into analytics.bundle.js at build time from PostHog's Manifest V3 build ("module.no-external", which has no dynamic script loading, plus its extension-store recorder build), with external dependency loading disabled. PostHog's servers (us.i.posthog.com) are used only as a data API: the extension sends JSON event/recording data and reads a JSON configuration object; no script is ever fetched from them. The only other network traffic is data fetches (JSON API responses and a generated PDF) to TailorCV's own backend at thetailorcv.com. The package contains no eval(), Function() constructor calls, remotely-sourced <script> tags or importScripts() of remote URLs. PostHog domain names that appear in analytics.bundle.js are the API endpoint and URLs inside the SDK's log messages, not script sources.
 ```
 
 ### scripting justification
@@ -80,9 +82,44 @@ This extension does not use remote code. All JavaScript executed by the extensio
 The scripting permission is used for two things: (1) if a job tab was already open before the extension was installed or last updated, that tab never received the normal automatic content-script injection defined in the manifest; and (2) on a job page outside the boards declared in the manifest, the user clicks the toolbar icon and the panel is injected into that one tab under activeTab. This permission lets the extension inject its existing bundled panel script into that already-open tab on demand when the user clicks the toolbar icon, instead of silently failing and requiring the user to manually refresh the page. It injects only the extension's own bundled files (content.js, sidebar.css) — no remote or dynamically generated code.
 ```
 
+### Data usage — what to tick
+
+Tick these data types in the Privacy practices tab:
+
+- **Personally identifiable information** — the user's email (account login; also used as the analytics identity).
+- **Authentication information** — the login form sends email + password to thetailorcv.com.
+- **User activity** — product analytics events and session replay of interactions with the TailorCV panel (clicks, mouse movement and scrolling inside the panel, and which panel screens were shown).
+- **Website content** — the job title, company and description text read from the job page.
+
+Session replay records only TailorCV's own panel. Every element of the host page is recorded as an empty, content-free box. All form inputs are masked, and so are the account email, the pasted job description and the resume-change list. Page URLs are reduced to origin + path, with query strings and fragments removed.
+
 ### Data usage certification
 
-Check the box certifying compliance with the Developer Program Policies — the disclosures above (and the `/privacy` page section 04) are what that certification is based on: the extension only reads LinkedIn job-posting text and TailorCV's own cookie, sends login/job data only to TailorCV's own servers over HTTPS, and doesn't sell or share data with third parties.
+Check the box certifying compliance with the Developer Program Policies. The disclosures above, and the `/privacy` page section 04, are what that certification is based on:
+
+- The extension reads job-posting text and TailorCV's own cookie.
+- It sends login and job data only to TailorCV's own servers over HTTPS.
+- It sends usage analytics and panel session replays to PostHog (TailorCV's analytics processor) to improve the product.
+- Data is not sold, and is not used for advertising or credit decisions.
+
+**Before submitting:** `/privacy` section 04 must describe the PostHog analytics and panel session replay. If it doesn't, update it first. The listing's claims have to match the policy.
+
+## Building the upload zip
+
+Never zip the `chrome-extension/` folder by hand. A hand-made zip once included `node_modules/`, including PostHog's CDN loader (`posthog-js/dist/array.js`), and the store rejected it for remotely hosted code. Instead:
+
+```
+cd chrome-extension
+npm ci
+npm run package      # builds, stages dist/extension/, writes dist/tailorcv-extension-<version>.zip, verifies it
+```
+
+Upload only `dist/tailorcv-extension-<version>.zip`. `npm run verify [zip]` re-checks any zip. The check fails if the zip contains:
+
+- a file outside the allowlist (`node_modules`, `src`, source maps, package files)
+- a remote script loader
+- `eval` or `new Function`
+- a loosened CSP
 
 ## Assets checklist (you provide — this is the other blocker in the error list)
 

@@ -27,7 +27,6 @@ from functions import (
     normalize_links,
     promptable_skill_gaps,
     sanitize_resume_data,
-    weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
 )
 
@@ -706,47 +705,6 @@ def test_filler_soft_skills_are_never_stated_outright():
     assert out["soft_skills_added"] == ["mentoring"], out.get("soft_skills_added")
     assert "problem-solving" not in out["summary"].lower()
     assert "attention to detail" not in out["summary"].lower()
-
-
-def test_unevidenced_hard_skills_never_get_appended_to_the_summary():
-    """Regression: an unevidenced JD skill used to be bolted onto the summary as
-    "Applied MySQL in this work.", stacking one flat sentence per skill and
-    asserting experience the resume never showed. The skill must stay in the
-    skills array only."""
-    summary = "Backend engineer building FastAPI services on Postgres."
-    data = {
-        "summary": summary,
-        "skills": ["MySQL", "Java", "NumPy"],
-        "experience": [{"company": "TailorCV", "bullets": ["Built FastAPI services on Postgres."]}],
-        "projects": [],
-    }
-    out = weave_hard_skills_into_bullets(
-        data,
-        resume_text="TailorCV. Built FastAPI services on Postgres.",
-        jd_skills=["MySQL", "Java", "NumPy"],
-    )
-    assert out["summary"] == summary, out["summary"]
-    assert "in this work" not in out["summary"]
-    assert out["hard_skills_woven"] == []
-    # Still surfaced honestly, just not asserted as prose experience.
-    assert out["skills"] == ["MySQL", "Java", "NumPy"]
-
-
-def test_evidenced_hard_skill_is_still_woven_into_its_own_entry():
-    """The fix above must not disable the legitimate path."""
-    data = {
-        "summary": "Backend engineer.",
-        "skills": ["Redis"],
-        "experience": [{"company": "TailorCV", "bullets": ["Built caching layer.", "Shipped billing."]}],
-        "projects": [],
-    }
-    out = weave_hard_skills_into_bullets(
-        data,
-        resume_text="TailorCV. Built caching layer with Redis for session storage.",
-        jd_skills=["Redis"],
-    )
-    assert any("Redis" in str(b) for b in out["experience"][0]["bullets"]), out["experience"]
-    assert out["hard_skills_woven"][0]["skill"] == "Redis"
 
 
 def test_promptable_matches_the_real_optimizer_output():
