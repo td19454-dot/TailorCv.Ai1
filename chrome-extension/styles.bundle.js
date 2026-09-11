@@ -18,6 +18,11 @@
   color: #f1f5f9 !important;\r
   padding: 20px !important;\r
   transition: transform 0.25s ease !important;\r
+  /* After a tailor (score card + skills + "See what changed") the panel can be\r
+     taller than a laptop screen; scroll inside it rather than run off-screen. */\r
+  max-height: calc(100vh - 100px) !important;\r
+  overflow-y: auto !important;\r
+  overscroll-behavior: contain !important;\r
 }\r
 \r
 #tailorcv-sidebar.tcv-collapsed {\r
@@ -373,6 +378,194 @@
 }\r
 .tcv-score-card.tcv-visible {\r
   display: flex !important;\r
+}\r
+\r
+/* Skills the job asked for that the resume evidences nowhere. Deliberately\r
+   quieter than the score card next to it: this is information, not a result. */\r
+.tcv-skill-gaps {\r
+  padding: 12px !important;\r
+  margin: 4px 0 !important;\r
+  border-radius: 12px !important;\r
+  background: rgba(255,255,255,0.03) !important;\r
+  border: 1px solid rgba(148,163,184,0.18) !important;\r
+}\r
+.tcv-skill-gaps-title {\r
+  font-size: 11px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .04em !important;\r
+  text-transform: uppercase !important;\r
+  color: #94a3b8 !important;\r
+  margin-bottom: 8px !important;\r
+}\r
+.tcv-skill-gaps-pills {\r
+  display: flex !important;\r
+  flex-wrap: wrap !important;\r
+  gap: 6px !important;\r
+}\r
+.tcv-skill-gap-pill {\r
+  display: inline-block !important;\r
+  padding: 3px 9px !important;\r
+  border-radius: 999px !important;\r
+  font-size: 11px !important;\r
+  font-weight: 600 !important;\r
+  color: #cbd5e1 !important;\r
+  background: rgba(79,127,255,0.14) !important;\r
+  border: 1px solid rgba(79,127,255,0.28) !important;\r
+}\r
+.tcv-skill-gap-pill.added {\r
+  color: #6ee7b7 !important;\r
+  background: rgba(16,185,129,0.16) !important;\r
+  border: 1px solid rgba(16,185,129,0.35) !important;\r
+}\r
+.tcv-skill-gaps-note {\r
+  margin-top: 8px !important;\r
+  font-size: 10.5px !important;\r
+  line-height: 1.45 !important;\r
+  color: #7e8ba3 !important;\r
+}\r
+\r
+/* "See what changed": a button in the sidebar that opens a centred popup.\r
+   The popup (#tailorcv-changes-modal) lives directly under <body>, outside\r
+   the sidebar, so every rule is scoped to it and host-page CSS can't bleed in. */\r
+.tcv-changes-panel {\r
+  display: block !important;\r
+  width: 100% !important;\r
+  box-sizing: border-box !important;\r
+  margin: 8px 0 4px !important;\r
+  padding: 11px 14px !important;\r
+  border-radius: 10px !important;\r
+  background: rgba(255,255,255,0.06) !important;\r
+  color: #cbd5e1 !important;\r
+  border: 1px solid rgba(255,255,255,0.14) !important;\r
+  font: 600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;\r
+  cursor: pointer !important;\r
+  text-align: center !important;\r
+}\r
+.tcv-changes-panel:hover { background: rgba(255,255,255,0.11) !important; }\r
+\r
+#tailorcv-changes-modal {\r
+  position: fixed !important;\r
+  inset: 0 !important;\r
+  z-index: 2147483647 !important;\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  justify-content: center !important;\r
+  padding: 20px !important;\r
+  box-sizing: border-box !important;\r
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;\r
+  -webkit-font-smoothing: antialiased !important;\r
+}\r
+#tailorcv-changes-modal *, #tailorcv-changes-modal *::before { box-sizing: border-box !important; }\r
+#tailorcv-changes-modal .tcv-chg-backdrop {\r
+  position: absolute !important;\r
+  inset: 0 !important;\r
+  background: rgba(5,10,25,0.6) !important;\r
+  backdrop-filter: blur(6px) !important;\r
+  animation: tcv-chg-fade 0.25s ease both !important;\r
+}\r
+#tailorcv-changes-modal .tcv-chg-dialog {\r
+  position: relative !important;\r
+  display: flex !important;\r
+  flex-direction: column !important;\r
+  width: min(640px, 94vw) !important;\r
+  max-height: 85vh !important;\r
+  overflow: hidden !important;\r
+  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;\r
+  border: 1px solid rgba(79,127,255,0.3) !important;\r
+  border-radius: 16px !important;\r
+  box-shadow: 0 26px 70px rgba(0,0,0,0.55) !important;\r
+  color: #f1f5f9 !important;\r
+  animation: tcv-chg-in 0.35s cubic-bezier(0.34,1.56,0.64,1) both !important;\r
+}\r
+#tailorcv-changes-modal .tcv-chg-dialog::before {\r
+  content: "" !important;\r
+  position: absolute !important;\r
+  inset: 0 0 auto 0 !important;\r
+  height: 4px !important;\r
+  background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed) !important;\r
+}\r
+@keyframes tcv-chg-fade { from { opacity: 0; } to { opacity: 1; } }\r
+@keyframes tcv-chg-in {\r
+  from { opacity: 0; transform: scale(0.9) translateY(16px); }\r
+  to   { opacity: 1; transform: scale(1) translateY(0); }\r
+}\r
+#tailorcv-changes-modal .tcv-chg-head {\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  justify-content: space-between !important;\r
+  gap: 12px !important;\r
+  padding: 20px 20px 12px 24px !important;\r
+  border-bottom: 1px solid rgba(148,163,184,0.14) !important;\r
+}\r
+#tailorcv-changes-modal .tcv-chg-title {\r
+  margin: 0 !important;\r
+  font-size: 17px !important;\r
+  font-weight: 700 !important;\r
+  color: #f1f5f9 !important;\r
+  line-height: 1.3 !important;\r
+}\r
+#tailorcv-changes-modal .tcv-chg-close {\r
+  flex: none !important;\r
+  background: none !important;\r
+  border: none !important;\r
+  color: #94a3b8 !important;\r
+  font-size: 18px !important;\r
+  line-height: 1 !important;\r
+  padding: 6px 9px !important;\r
+  border-radius: 8px !important;\r
+  cursor: pointer !important;\r
+}\r
+#tailorcv-changes-modal .tcv-chg-close:hover { background: rgba(255,255,255,0.08) !important; color: #fff !important; }\r
+#tailorcv-changes-modal .tcv-chg-body {\r
+  overflow-y: auto !important;\r
+  padding: 8px 24px 22px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-changes-entry-label {\r
+  font-size: 12px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .04em !important;\r
+  text-transform: uppercase !important;\r
+  color: #94a3b8 !important;\r
+  margin: 18px 0 6px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-changes-bullet {\r
+  font-size: 14px !important;\r
+  line-height: 1.6 !important;\r
+  margin: 8px 0 !important;\r
+  padding: 10px 12px !important;\r
+  border-radius: 10px !important;\r
+  background: rgba(255,255,255,0.03) !important;\r
+  border: 1px solid rgba(148,163,184,0.14) !important;\r
+}\r
+#tailorcv-changes-modal .tcv-changes-before {\r
+  color: #7e8ba3 !important;\r
+  margin-top: 6px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-changes-after {\r
+  color: #e2e8f0 !important;\r
+  margin-top: 4px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-diff-del {\r
+  color: #fca5a5 !important;\r
+  background: rgba(239,68,68,0.14) !important;\r
+  text-decoration: line-through !important;\r
+  border-radius: 3px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-diff-add {\r
+  color: #6ee7b7 !important;\r
+  background: rgba(16,185,129,0.16) !important;\r
+  border-radius: 3px !important;\r
+}\r
+#tailorcv-changes-modal .tcv-changes-tag {\r
+  display: inline-block !important;\r
+  font-size: 10px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .03em !important;\r
+  text-transform: uppercase !important;\r
+  padding: 2px 7px !important;\r
+  border-radius: 5px !important;\r
+  background: rgba(79,127,255,0.18) !important;\r
+  color: #93b4ff !important;\r
 }\r
 \r
 .tcv-score-item {\r
