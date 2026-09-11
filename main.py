@@ -520,6 +520,8 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN base_cover_template VARCHAR(20)" if is_pg else "ADD COLUMN base_cover_template TEXT")
     if "base_resume_text" not in cols:
         to_add.append("ADD COLUMN base_resume_text TEXT")
+    if "base_resume_pdf" not in cols:
+        to_add.append("ADD COLUMN base_resume_pdf BYTEA" if is_pg else "ADD COLUMN base_resume_pdf BLOB")
     if "application_profile_json" not in cols:
         to_add.append("ADD COLUMN application_profile_json TEXT")
     if "marketing_opt_out" not in cols:
@@ -2167,6 +2169,33 @@ def save_uploaded_pdf(file: UploadFile) -> str:
     file_ext = filename.rsplit(".", 1)[-1].lower()
     file_name = token_hex(10)
     return os.path.join(uploads_dir, f"{file_name}.{file_ext}")
+
+
+def ensure_base_resume_file(user, db) -> str | None:
+    """Path to the user's base resume PDF on local disk, or None if they have none.
+
+    The host's filesystem is wiped on every redeploy, so the file at
+    user.base_resume_path routinely disappears while the database row survives;
+    every "has a base resume?" check used to read that as "no base resume" and
+    users had to upload again after each deploy. The PDF bytes are kept in
+    user.base_resume_pdf, and a missing file is rewritten from them here (and the
+    stored path updated if the uploads folder moved)."""
+    if not user:
+        return None
+    path = user.base_resume_path
+    if path and os.path.exists(path):
+        return path
+    blob = user.base_resume_pdf
+    if not blob:
+        return None
+    os.makedirs(uploads_dir, exist_ok=True)
+    restored = os.path.join(uploads_dir, os.path.basename(path) if path else f"{token_hex(10)}.pdf")
+    with open(restored, "wb") as f:
+        f.write(blob)
+    if restored != path:
+        user.base_resume_path = restored
+        db.commit()
+    return restored
 
 
 def normalize_list_of_strings(items):
@@ -5100,7 +5129,7 @@ async def extension_page(request: Request):
         db = get_db()
         try:
             user = db.query(User).filter(User.id == user_id).first()
-            has_base = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+            has_base = bool(ensure_base_resume_file(user, db))
             base_resume = {
                 "has_base_resume": has_base,
                 "filename": user.base_resume_filename if has_base else None,
@@ -6642,7 +6671,7 @@ async def my_resumes_page(request: Request):
             .all()
         )
         user = db.query(User).filter(User.id == user_id).first()
-        has_base_resume = bool(user and user.base_resume_path and os.path.exists(user.base_resume_path))
+        has_base_resume = bool(ensure_base_resume_file(user, db))
         base_resume = {
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -7109,7 +7138,7 @@ async def extension_cover_letter(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not ensure_base_resume_file(user, db):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         cover_template = user.base_cover_template or "classic"
@@ -7356,10 +7385,11 @@ async def set_extension_base_resume(request: Request):
     cover_template = str(form.get("cover_template") or "classic").strip().lower()
 
     new_path = None
+    content = None
     if has_upload:
         new_path = save_uploaded_pdf(upload)
+        content = await upload.read()
         with open(new_path, "wb") as f:
-            content = await upload.read()
             f.write(content)
 
     # Extracted once here so the extension's skill-match score never needs to
@@ -7380,12 +7410,13 @@ async def set_extension_base_resume(request: Request):
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
 
-        if not has_upload and not user.base_resume_path:
+        if not has_upload and not ensure_base_resume_file(user, db):
             raise HTTPException(status_code=400, detail="Upload a base resume PDF first.")
 
         old_path = user.base_resume_path
         if has_upload:
             user.base_resume_path = new_path
+            user.base_resume_pdf = content  # durable copy; the disk file doesn't survive redeploys
             user.base_resume_filename = (upload.filename or "resume.pdf")[:255]
             user.base_resume_uploaded_at = datetime.utcnow()
             user.base_resume_text = extracted_text
@@ -7412,7 +7443,7 @@ async def get_extension_base_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        has_base_resume = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
+        has_base_resume = bool(ensure_base_resume_file(user, db))
         return JSONResponse({
             "has_base_resume": has_base_resume,
             "filename": user.base_resume_filename if has_base_resume else None,
@@ -7439,6 +7470,7 @@ async def delete_extension_base_resume(request: Request):
             raise HTTPException(status_code=401, detail="Not logged in")
         old_path = user.base_resume_path
         user.base_resume_path = None
+        user.base_resume_pdf = None
         user.base_resume_filename = None
         user.base_resume_uploaded_at = None
         user.base_resume_text = None
@@ -7474,7 +7506,7 @@ async def extension_skill_match(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not ensure_base_resume_file(user, db):
             raise HTTPException(status_code=404, detail="No base resume set.")
 
         resume_text = user.base_resume_text
@@ -7515,7 +7547,7 @@ async def extension_tailor_resume(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not ensure_base_resume_file(user, db):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/my-resumes first.")
 
         # Atomically gate + consume the same ai_optimizations quota the website
@@ -7761,7 +7793,7 @@ async def extension_apply_answers(request: Request):
         user = db.query(User).filter(User.id == user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        if not user.base_resume_path or not os.path.exists(user.base_resume_path):
+        if not ensure_base_resume_file(user, db):
             raise HTTPException(status_code=404, detail="No base resume set. Set one up at thetailorcv.com/extension first.")
         base_resume_path = user.base_resume_path
         resume_text = user.base_resume_text
