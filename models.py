@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, String, Text, UniqueConstraint
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, Integer, LargeBinary, String, Text, UniqueConstraint
+from sqlalchemy.orm import deferred, relationship
 
 from database import Base
 
@@ -44,6 +44,12 @@ class User(Base):
     # Extracted once at upload time so the extension's skill-match score never
     # needs to re-parse the PDF on every job the user looks at.
     base_resume_text = Column(Text, nullable=True)
+    # The base resume PDF itself. base_resume_path points at a copy on local
+    # disk, but the host's disk is wiped on every redeploy, so the database is
+    # the durable copy and ensure_base_resume_file() (main.py) rewrites the file
+    # from here when it is missing. Deferred so the bytes are only loaded then,
+    # not on every user lookup.
+    base_resume_pdf = deferred(Column(LargeBinary, nullable=True))
     # Stored application-form autofill profile used by the Chrome extension.
     application_profile_json = Column(Text, nullable=True)
     # Marketing-broadcast suppression (SES campaigns only — never applies to
