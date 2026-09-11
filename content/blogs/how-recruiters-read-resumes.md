@@ -10,15 +10,6 @@ slug: how-recruiters-read-resumes
 keywords: how recruiters read resumes, resume scanning, 10 second resume test, what recruiters look for on resume, recruiter resume review, resume scan tips, hiring manager resume review
 ---
 
-## Key Takeaways
-
-- Recruiters spend an average of 6-7 seconds on an initial resume scan, focusing on specific patterns of information.
-- The top third of the resume is crucial; include your name, current job title, and a concise professional summary prominently.
-- Use a single-column layout to ensure all key information is easily visible, as the right side of the resume is often ignored.
-- Ensure job titles and company names are clear and left-aligned, with consistent date formatting to avoid confusion about employment history.
-- A resume that passes the initial scan can earn a longer review, where bullet point quality and relevance to the job description become critical.
-
-
 Eye-tracking studies of recruiters reviewing resumes show something uncomfortable: most resumes are read in under 10 seconds before a decision is made. Not because recruiters are lazy - but because they review hundreds of resumes per role, and pattern recognition is faster than reading.
 
 Understanding how recruiters scan resumes lets you put the right information in the right places - so your resume gets through the initial cut and earns a proper read.
@@ -27,6 +18,14 @@ Before optimizing your layout, make sure your content passes ATS first with the 
 
 ---
 
+## Key Takeaways
+
+- Recruiters spend an average of 6-7 seconds on an initial resume scan, focusing on specific patterns of information.
+- The top third of the resume is crucial; include your name, current job title, and a concise professional summary prominently.
+- Use a single-column layout to ensure all key information is easily visible, as the right side of the resume is often ignored.
+- Ensure job titles and company names are clear and left-aligned, with consistent date formatting to avoid confusion about employment history.
+- A resume that passes the initial scan can earn a longer review, where bullet point quality and relevance to the job description become critical.
+
 ## What Eye-Tracking Research Shows
 
 TheLadders' eye-tracking study - one of the most widely cited in recruiting - found that recruiters spend an average of 6-7 seconds on an initial resume review. Their gaze follows a predictable pattern:
@@ -34,7 +33,6 @@ TheLadders' eye-tracking study - one of the most widely cited in recruiting - fo
 **The F-pattern**: Recruiters scan across the top, then down the left side, then across at key points that catch their eye. Most of a resume's right side is never read on the first pass.
 
 **What they look at first (in order):**
-
 1. Your name
 2. Current job title and company
 3. Previous job title and company
@@ -55,7 +53,6 @@ A resume passes the 10-second test if the [recruiter](https://thetailorcv.com/bl
 - **Whether you match** - role relevance at a glance
 
 A resume fails the test when:
-
 - The name/title area is cluttered or hard to find
 - Job titles are buried in wall-of-text descriptions
 - Companies are not prominent
@@ -149,13 +146,6 @@ A single typo can end a review. Inconsistent date formats, varying font sizes, a
 5. **Use standard section headers** - Experience, [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), Skills
 6. **Single-column layout only** - Two-column breaks the scan and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)
 7. **White space matters** - A dense, cramped resume is harder to scan than one with breathing room
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 ---
 

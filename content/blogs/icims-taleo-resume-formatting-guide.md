@@ -10,15 +10,6 @@ keywords: icims resume format, taleo resume tips, icims ats resume, taleo ats re
 image: public/blog-images/icims-taleo-resume-formatting-guide.webp
 ---
 
-## Key Takeaways
-
-- iCIMS and Taleo are legacy ATS platforms that are less forgiving of formatting mistakes, leading to higher chances of parsing failures.
-- Use a single-column layout, standard fonts, and avoid graphics to ensure better compatibility with these systems.
-- Exact keyword matching is crucial; synonyms may not be recognized, so mirror the job description's phrasing.
-- Large applicant volumes mean even minor keyword gaps can result in low scores, so carefully review and optimize your resume.
-- Be prepared to manually enter or confirm work history and education after uploading your resume, as errors can impact your application.
-
-
 iCIMS and Taleo are two of the oldest, most widely deployed [ATS](https://thetailorcv.com/blog/ats-score-guide) platforms still in use today. Large enterprises, healthcare systems, retailers, and government-adjacent employers often run their hiring through one of these two systems. If you have applied to a large, established company and the application process felt slower and more form-heavy than a typical startup posting, there is a good chance it was iCIMS or Taleo.
 
 These platforms are less forgiving than newer [ATS](https://thetailorcv.com/blog/ats-score-guide) tools. Their parsing engines are older, formatting mistakes cause more damage, and the volume of applicants at large employers means your resume gets filtered aggressively before anyone reads it.
@@ -28,6 +19,14 @@ This guide covers how iCIMS and Taleo parse and score resumes, and how to [match
 Check your resume's compatibility and match score instantly with the [TailorCV ATS score checker](/solutions).
 
 ---
+
+## Key Takeaways
+
+- iCIMS and Taleo are legacy ATS platforms that are less forgiving of formatting mistakes, leading to higher chances of parsing failures.
+- Use a single-column layout, standard fonts, and avoid graphics to ensure better compatibility with these systems.
+- Exact keyword matching is crucial; synonyms may not be recognized, so mirror the job description's phrasing.
+- Large applicant volumes mean even minor keyword gaps can result in low scores, so carefully review and optimize your resume.
+- Be prepared to manually enter or confirm work history and education after uploading your resume, as errors can impact your application.
 
 ## Why Legacy ATS Platforms Are Stricter
 
@@ -52,13 +51,6 @@ If a modern [ATS](https://thetailorcv.com/blog/ats-score-guide) is forgiving of 
 | Use exact keyword matches, not just synonyms | Older parsers are less likely to recognize related terms or synonyms |
 | Submit as a text-based PDF or .docx | Avoid scanned or image-based resumes entirely |
 | Use fully spelled-out section headers | "Professional Experience" and "Education" parse more reliably than abbreviated or creative headers |
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
 
 Start with a [free ATS-friendly resume template](/templates) built for maximum parser compatibility, and avoid rebuilding this from scratch for every legacy-ATS application.
 
@@ -122,8 +114,6 @@ TailorCV's [resume optimizer](/solutions) rewrites your resume using exact keywo
 ## Common Mistakes to Avoid When Applying Through iCIMS and Taleo
 
 1. **Ignoring Application Instructions**: Always read the application instructions carefully. Missing a specific requirement can lead to immediate disqualification.
-
-
 
 2. **Overloading with Graphics**: Avoid using images, charts, or graphics. These elements can disrupt the ATS parsing process and lead to misinterpretations of your qualifications.
 

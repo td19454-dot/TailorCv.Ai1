@@ -10,6 +10,8 @@ slug: business-analyst-portfolio-guide
 keywords: business analyst portfolio, ba portfolio website, requirements documentation portfolio, process mapping portfolio, business analyst case study
 ---
 
+A business analyst's value is in translation - turning a vague business problem into requirements a technical team can build. That is hard to show in resume bullets but easy to show in a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real artifacts. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide).
+
 ## Key Takeaways
 
 - Include artifacts like requirements documents, process maps, case studies, and wireframes in your business analyst portfolio to showcase your skills.
@@ -18,18 +20,12 @@ keywords: business analyst portfolio, ba portfolio website, requirements documen
 - Avoid common mistakes such as sharing confidential documents, lacking narrative context, or omitting examples of stakeholder conflict resolution.
 - Create compelling case studies by selecting impactful projects, clearly defining problems, outlining your approach, and detailing the solutions implemented.
 
-
-A business analyst's value is in translation - turning a vague business problem into requirements a technical team can build. That is hard to show in resume bullets but easy to show in a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) with real artifacts. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide).
-
 ## What to Include
-
-| What to include | Why |
-|---|---|
-| **A requirements document** | a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs |
-| **Process maps** | a before/after workflow diagram (BPMN, swimlane, or simple flowchart) for a process you improved |
-| **Stakeholder management case study** | how you resolved conflicting requirements between departments |
-| **A wireframe or prototype** | if you worked on product or system design, showing your input into the solution |
-| **Certifications** | CBAP, PMI-PBA, or relevant coursework |
+- **A requirements document** - a BRD, user stories, or functional spec (sanitized) showing how you captured and structured stakeholder needs
+- **Process maps** - a before/after workflow diagram (BPMN, swimlane, or simple flowchart) for a process you improved
+- **Stakeholder management case study** - how you resolved conflicting requirements between departments
+- **A wireframe or prototype** - if you worked on product or system design, showing your input into the solution
+- **Certifications** - CBAP, PMI-PBA, or relevant coursework
 
 ## Frame the Translation, Not Just the Document
 A requirements doc alone does not show judgment - the story behind it does. For each artifact:
@@ -97,13 +93,6 @@ Include examples of how you’ve used these tools in your projects within your p
 ## Do’s and Don’ts of Business Analyst Portfolios
 
 Creating a portfolio can be a daunting task, but following these do’s and don’ts can streamline the process and enhance your presentation.
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 ### Do’s:
 
@@ -187,11 +176,10 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 - [Career Change Portfolio](https://thetailorcv.com/blog/career-change-portfolio)
 - [AI Portfolio Builder: No Code Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
-- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, methodology, and strongest projects are easier to discover.
 

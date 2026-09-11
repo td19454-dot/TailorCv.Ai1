@@ -10,6 +10,12 @@ keywords: how to get a job in japan as a foreigner, jobs in japan for foreigners
 image: public/blog-images/how-to-get-a-job-in-japan-foreigner.png
 ---
 
+Japan has steadily opened up to foreign talent, driven by a shrinking workforce and a growing need for global skills — especially in technology, English education, and international business. For foreigners, Japan offers a fascinating culture, a high quality of life, and real career opportunities. But getting hired takes understanding: the visa system, the role of Japanese-language ability, and how to present yourself in a business culture that values precision, respect, and long-term commitment.
+
+This guide walks you through getting a job in Japan as a foreigner in 2026 — which sectors hire, how work visas function, the language question, where to search, and how to make your application stand out.
+
+> **Note:** Japanese immigration and visa rules change and depend on your nationality, qualifications, and role. Treat visa information here as a general overview and always confirm current requirements with the Japanese Immigration Services Agency, a Japanese embassy/consulate, or your prospective employer.
+
 ## Key Takeaways
 
 - Foreigners generally need an **employer-sponsored work visa** matched to their role and qualifications; you secure the job first, then the employer sponsors.
@@ -17,13 +23,6 @@ image: public/blog-images/how-to-get-a-job-in-japan-foreigner.png
 - **Japanese-language ability (JLPT)** widens your options significantly, though many global and tech roles operate in English.
 - A resume tailored to the employer — Japanese-format documents or a strong English resume — is essential.
 - Respect for Japanese business culture, shown throughout your application and interviews, matters a great deal.
-
-
-Japan has steadily opened up to foreign talent, driven by a shrinking workforce and a growing need for global skills — especially in technology, English education, and international business. For foreigners, Japan offers a fascinating culture, a high quality of life, and real career opportunities. But getting hired takes understanding: the visa system, the role of Japanese-language ability, and how to present yourself in a business culture that values precision, respect, and long-term commitment.
-
-This guide walks you through getting a job in Japan as a foreigner in 2026 — which sectors hire, how work visas function, the language question, where to search, and how to make your application stand out.
-
-> **Note:** Japanese immigration and visa rules change and depend on your nationality, qualifications, and role. Treat visa information here as a general overview and always confirm current requirements with the Japanese Immigration Services Agency, a Japanese embassy/consulate, or your prospective employer.
 
 ## Can Foreigners Work in Japan?
 
@@ -49,7 +48,7 @@ Because sponsorship is an effort for employers, your job is to make your value �
 ## Which Sectors Hire Foreigners in Japan?
 
 - **Technology / IT:** strong and growing demand for software engineers, data specialists, and IT professionals — often with English-friendly environments.
-- **[English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume):** a well-established route (language schools, the JET Programme, universities); typically requires a degree, and native/fluent English.
+- **English teaching:** a well-established route (language schools, the JET Programme, universities); typically requires a degree, and native/fluent English.
 - **Finance and international business:** global firms in Tokyo hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and specialist professionals.
 - **Engineering and manufacturing:** Japan's industrial base recruits skilled engineers.
 - **Tourism, hospitality, and translation:** roles that value foreign language skills and international perspective.
@@ -70,7 +69,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 
 Your approach depends on the employer:
 
-- **Traditional Japanese companies** expect Japanese-format documents — the *rirekisho* and *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*. See our [Japanese resume (rirekisho) guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
+- **Traditional Japanese companies** expect Japanese-format documents — the *rirekisho* and *shokumu-keirekisho*. See our [Japanese resume (rirekisho) guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
 - **Global companies and English-language roles** usually accept a strong Western-style resume; many use applicant tracking systems — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan).
 
 Build a polished English resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it to each posting with the [resume optimizer](https://thetailorcv.com/solutions). For a format comparison, read [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
@@ -88,15 +87,6 @@ See our guide to the [best job sites for finding work in Japan](https://thetailo
 ## Step 3: Present Your Value and Fit
 
 Employers sponsoring a foreigner need a clear reason. In your resume, cover letter, and interviews:
-
-
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
-
 
 - Lead with **in-demand skills** and relevant qualifications (a degree matters for many visa categories).
 - Show **respect for and interest in Japan** — cultural fit is genuinely valued.

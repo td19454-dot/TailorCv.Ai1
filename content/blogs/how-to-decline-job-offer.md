@@ -10,15 +10,6 @@ slug: how-to-decline-job-offer
 keywords: how to decline a job offer, decline job offer email, turning down a job offer, reject job offer professionally, decline offer template, how to say no to a job offer
 ---
 
-## Key Takeaways
-
-- Decline a job offer promptly to show professionalism and respect for the company's time.
-- Use email as the standard method for declining, but consider a phone call for strong relationships or senior roles.
-- A professional decline should include gratitude, a clear statement of decline, a brief positive reason, and an invitation to keep the relationship open.
-- Sharing a reason for declining is optional; if chosen, keep it positive and avoid criticizing the company or offer.
-- Maintaining good relations can lead to future opportunities with the company or within your network.
-
-
 Declining a job offer is a delicate but common situation. You may have received a better offer, decided the role is not the right fit, or chosen to stay at your current job. However you decline, doing it professionally protects your reputation and keeps the door open - the company may be a future employer, client, or part of your network.
 
 This guide shows you how to decline a job offer gracefully, with templates.
@@ -26,6 +17,14 @@ This guide shows you how to decline a job offer gracefully, with templates.
 If you are deciding between offers, read the [salary negotiation guide](https://thetailorcv.com/blog/how-to-negotiate-salary-offer) to make sure you are choosing well. Keep your resume current for future opportunities with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Decline a job offer promptly to show professionalism and respect for the company's time.
+- Use email as the standard method for declining, but consider a phone call for strong relationships or senior roles.
+- A professional decline should include gratitude, a clear statement of decline, a brief positive reason, and an invitation to keep the relationship open.
+- Sharing a reason for declining is optional; if chosen, keep it positive and avoid criticizing the company or offer.
+- Maintaining good relations can lead to future opportunities with the company or within your network.
 
 ## When and How to Decline
 
@@ -42,7 +41,6 @@ Decline as soon as you have made your decision. Do not leave the company waiting
 ## How to Decline Professionally
 
 A good decline includes:
-
 1. Genuine thanks for the offer and their time
 2. A clear, polite statement that you are declining
 3. A brief, gracious reason (optional, kept positive)
@@ -116,7 +114,6 @@ Kind regards,
 ## Should You Share Your Reason?
 
 You are not obligated to share why you are declining. If you choose to:
-
 - Keep it positive and brief
 - "Accepted a role that better aligns with my goals" is enough
 - Avoid criticizing the company, role, or compensation
@@ -129,7 +126,6 @@ If you are declining due to a low offer, consider negotiating first using the [s
 ## Keeping the Door Open
 
 The professional world is small. The company you decline today could be:
-
 - A future employer
 - A client or partner
 - Connected to people in your network
@@ -147,8 +143,6 @@ Always decline graciously. Connect with the recruiter or hiring manager on [Link
 - Don't delay your decision unnecessarily once you have decided
 - Don't decline before exploring whether negotiation could change your decision
 - Don't badmouth the company to others afterward
-
-
 
 ---
 

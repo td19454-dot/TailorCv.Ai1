@@ -515,7 +515,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=115">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=114">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -645,7 +645,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>3 free ATS scans</li>
+                            <li>ATS score, unlimited</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -1106,7 +1106,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=19"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
 
     {% if is_logged_in %}
@@ -1247,7 +1247,7 @@
                     showUpgradeModal('interview_questions');
                     return;
                 }
-                if (!resp.ok || !json.success) throw new Error(tcvErrorMessage(json, 'Generation failed'));
+                if (!resp.ok || !json.success) throw new Error(json.detail || 'Generation failed');
                 finishProgress();
                 renderResults(json.data);
             } catch (err) {
@@ -1391,7 +1391,7 @@
                                 })
                             });
                             const out = await res.json();
-                            if (!res.ok || !out.success) throw new Error(tcvErrorMessage(out, 'Evaluation failed'));
+                            if (!res.ok || !out.success) throw new Error(out.detail || 'Evaluation failed');
                             const score = Number(out.score || 0);
                             evalScores[qId] = score;
                             updateEvalStats();

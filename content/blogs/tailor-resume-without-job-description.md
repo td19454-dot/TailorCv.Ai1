@@ -10,15 +10,6 @@ slug: tailor-resume-without-job-description
 keywords: tailor resume without job description, resume for referral application, cold outreach resume tips, how to apply without job description, resume blind application 2026
 ---
 
-## Key Takeaways
-
-- Tailoring your resume without a job description requires gathering indirect signals about the role and company needs.
-- Utilize referrals to gain insights about the team’s current projects, hiring manager's priorities, and specific resume preferences.
-- Research current employees in similar roles to identify common skills, backgrounds, and industry-specific language to incorporate into your resume.
-- Align your professional summary with the company's mission, using relevant terminology to demonstrate your understanding of their goals.
-- Match your skills to industry standards by inferring required competencies based on the role and sector you are targeting.
-
-
 Every resume guide tells you to read the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) carefully.
 
 Extract the keywords.
@@ -43,6 +34,14 @@ This guide does not.
 
 ---
 
+## Key Takeaways
+
+- Tailoring your resume without a job description requires gathering indirect signals about the role and company needs.
+- Utilize referrals to gain insights about the team’s current projects, hiring manager's priorities, and specific resume preferences.
+- Research current employees in similar roles to identify common skills, backgrounds, and industry-specific language to incorporate into your resume.
+- Align your professional summary with the company's mission, using relevant terminology to demonstrate your understanding of their goals.
+- Match your skills to industry standards by inferring required competencies based on the role and sector you are targeting.
+
 ## Why No Job Description Makes Tailoring Harder (But Not Impossible)
 
 A [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) is a targeting system.
@@ -53,7 +52,6 @@ Without one, you are working from signals - indirect information about what the 
 The good news: you usually have more signal than you think.
 
 You have:
-
 - The company's existing job postings (even for different roles)
 - [LinkedIn profiles](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) of current employees in similar roles
 - The company's website, product, and mission language
@@ -80,7 +78,6 @@ The [hidden keywords technique](https://thetailorcv.com/blog/hidden-keywords-in-
 Your referral contact is your most valuable source.
 
 Ask them:
-
 - What is the team actually working on right now?
 - What is the hiring manager's biggest pain point?
 - What did they say they were looking for?
@@ -94,7 +91,6 @@ This conversation gives you more useful information than most job descriptions.
 [Use LinkedIn for your job search](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) strategically here.
 Look at people on that team.
 What do their profiles show?
-
 - What skills and tools appear frequently?
 - What past employers have team members come from?
 - What titles do they use?
@@ -141,7 +137,6 @@ Before reaching out, think about your [personal brand](https://thetailorcv.com/b
 ### Research First, Write Second
 
 Before you send a single line, research the company and person deeply:
-
 - What has the company published recently? (blog posts, press releases, product launches)
 - What is the person's role and focus area?
 - What problems are they probably trying to solve?
@@ -188,7 +183,6 @@ No specifics.
 ### Use the Company Website as Your JD Substitute
 
 Read the company's:
-
 - About page (mission, values, priorities)
 - Product pages (what they build, who it is for)
 - Blog (what they write about reveals what they think matters)
@@ -207,7 +201,6 @@ Even if this posting is vague, there may be previous postings for this type of r
 Search "[Company name] [role type]" with [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search)'s job search, set the time filter to past year.
 
 Old postings tell you:
-
 - What skills they typically require
 - What the actual title usually is
 - What they call their teams
@@ -216,17 +209,9 @@ That is your [keyword guide](https://thetailorcv.com/blog/resume-keywords-guide)
 
 ---
 
-
 ## The Universal Tailoring Principles (No JD Required)
 
 Whether you have a referral, are doing cold outreach, or are facing a vague posting - these principles apply:
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
-
 
 **1. Tailor to the company, not just the role**
 Every company has a personality.
@@ -259,9 +244,9 @@ This tells you whether your keyword coverage is strong for this type of role.
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## FAQ
 ### Is it worth applying without a job description?
@@ -291,7 +276,6 @@ Only if the recipients are at very similar companies. For each distinct company 
 - [Resume Startup vs Enterprise Tailoring Guide](https://thetailorcv.com/blog/resume-tailoring-startup-vs-enterprise)
 - [Cover Letter Guide 2026](https://thetailorcv.com/blog/cover-letter-guide-2026)
 - [How to Research a Company Before Your Interview](https://thetailorcv.com/blog/how-to-research-company-before-interview)
-- [Autofill vs Auto-Tailor: What Job Search Extensions Actually Do (2026)](https://thetailorcv.com/blog/autofill-vs-auto-tailor-job-extensions)
 
 ---
 

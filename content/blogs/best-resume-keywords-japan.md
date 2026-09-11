@@ -10,6 +10,10 @@ keywords: best resume keywords japan, resume keywords for jobs in japan, ats key
 image: public/blog-images/best-resume-keywords-japan.png
 ---
 
+Keywords are what get an English resume noticed in Japan's global and tech job market — both by the **applicant tracking systems (ATS)** many international employers use and by the recruiters who search LinkedIn and resume databases. Using the right skills, language credentials, and industry terms — the exact words employers scan for — can be the difference between landing in the interview pile and being filtered out. And in Japan specifically, some keywords (like your JLPT and TOEIC scores) carry unusual weight.
+
+This guide covers the best resume keywords for jobs in Japan in 2026: the categories that matter, examples by field, the Japan-specific credentials to feature, and how to use them naturally.
+
 ## Key Takeaways
 
 - Keywords help you pass **ATS screening** and appear in recruiter searches at global employers in Japan.
@@ -17,11 +21,6 @@ image: public/blog-images/best-resume-keywords-japan.png
 - **Language credentials — JLPT and TOEIC scores — are high-value keywords** in the Japanese market.
 - Always **mirror the exact terms** in the job posting where they're true of you.
 - Use keywords **naturally and honestly** — stuffing backfires with both the ATS and recruiters.
-
-
-Keywords are what get an English resume noticed in Japan's global and tech job market — both by the **applicant tracking systems (ATS)** many international employers use and by the recruiters who search LinkedIn and resume databases. Using the right skills, language credentials, and industry terms — the exact words employers scan for — can be the difference between landing in the interview pile and being filtered out. And in Japan specifically, some keywords (like your JLPT and TOEIC scores) carry unusual weight.
-
-This guide covers the best resume keywords for jobs in Japan in 2026: the categories that matter, examples by field, the Japan-specific credentials to feature, and how to use them naturally.
 
 ## Why Keywords Matter in Japan
 
@@ -57,7 +56,7 @@ Use these as prompts — always match them to the specific job and your real exp
 
 - Programming languages and frameworks (e.g. Python, Java, JavaScript, React) as relevant
 - Cloud (AWS, Azure, GCP), DevOps, CI/CD
-- Data analysis, SQL, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
+- Data analysis, SQL, machine learning
 - Agile, Scrum, software development lifecycle
 
 ### Finance and Business
@@ -82,7 +81,7 @@ Use these as prompts — always match them to the specific job and your real exp
 ### Sales, Marketing, and International Business
 
 - Business development, account management
-- [Digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), SEO, CRM (e.g. Salesforce)
+- Digital marketing, SEO, CRM (e.g. Salesforce)
 - Market research, localisation
 
 ## Soft-Skill and Culture Keywords
@@ -103,13 +102,6 @@ Back these with evidence rather than listing them as empty adjectives.
 - **State language credentials clearly** near the top or in a dedicated section.
 - **Use exact terms and sensible variations** (e.g. spell out and abbreviate: "Search Engine Optimization (SEO)").
 - **Stay honest** — only claim skills you have; you'll be tested in interviews.
-
-### What an ATS score report actually shows you
-
-![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
-
 
 ## Don't Overdo It
 
@@ -141,6 +133,6 @@ Yes — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) ba
 
 ## Final Thoughts
 
-The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), and keep the format [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-singapore).
+The best resume keywords for jobs in Japan are the ones that match each job description — plus the Japan-specific credentials, especially your JLPT and TOEIC scores, that employers here trust. Mirror the posting's language honestly, weave keywords into [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), and keep the format ATS-friendly.
 
 Build your resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), and let the [resume optimizer](https://thetailorcv.com/solutions) show you exactly which keywords each Japanese job is looking for. The right words, used honestly, get you found — and get you interviews.

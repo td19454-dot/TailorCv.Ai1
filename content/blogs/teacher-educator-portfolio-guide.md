@@ -10,6 +10,8 @@ slug: teacher-educator-portfolio-guide
 keywords: teacher portfolio, educator portfolio website, teaching portfolio examples, digital teaching portfolio, education portfolio
 ---
 
+Hiring committees for teaching roles often review dozens of nearly identical resumes. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is where you show your actual classroom practice - lesson design, student growth, and your teaching philosophy - in a way a resume bullet never can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
+
 ## Key Takeaways
 
 - A teaching portfolio should include a philosophy statement, lesson plans, evidence of student outcomes, classroom management strategies, and professional development certifications.
@@ -18,18 +20,12 @@ keywords: teacher portfolio, educator portfolio website, teaching portfolio exam
 - Keep your resume and portfolio aligned in content and messaging to present a cohesive narrative of your teaching experience.
 - Avoid common mistakes such as sharing identifiable student information, lacking a clear philosophy statement, and including outdated materials.
 
-
-Hiring committees for teaching roles often review dozens of nearly identical resumes. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) is where you show your actual classroom practice - lesson design, student growth, and your teaching philosophy - in a way a resume bullet never can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide).
-
 ## What to Include
-
-| What to include | Why |
-|---|---|
-| **A teaching philosophy statement** | one page on how you approach learning, differentiation, and classroom culture |
-| **2-3 lesson or unit plans** | with objectives, materials, and how you adapted for different learners |
-| **Student outcome evidence** | test score growth, reading level improvement, or project examples (with all student names and identifying details removed) |
-| **Classroom management approach** | a brief description of your systems and routines |
-| **Certifications and professional development** | licensure, endorsements, workshops, and any specialized training |
+- **A teaching philosophy statement** - one page on how you approach learning, differentiation, and classroom culture
+- **2-3 lesson or unit plans** - with objectives, materials, and how you adapted for different learners
+- **Student outcome evidence** - test score growth, reading level improvement, or project examples (with all student names and identifying details removed)
+- **Classroom management approach** - a brief description of your systems and routines
+- **Certifications and professional development** - licensure, endorsements, workshops, and any specialized training
 
 ## Frame Growth, Not Just Activities
 A strong teaching portfolio does not just list what you did - it shows the effect on students. For each artifact:
@@ -98,13 +94,6 @@ When creating your teacher portfolio, be mindful of these common pitfalls to ens
 
 Use this checklist to ensure your portfolio is comprehensive and well-organized:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
-
 - [ ] **Purpose Defined**: Have you clearly defined the purpose of your portfolio?
 - [ ] **Evidence Collected**: Do you have a variety of work samples and evidence of your teaching?
 - [ ] **Sections Organized**: Is your content organized into clear and logical sections?
@@ -170,7 +159,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure hiring committees can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure hiring committees can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, grade level, and strongest work are easier to discover.
 

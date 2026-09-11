@@ -10,6 +10,12 @@ slug: resume-contact-section
 keywords: resume contact section, what to include in resume contact, resume header, resume email phone LinkedIn, resume personal information, resume contact info 2026
 ---
 
+The contact section of your resume is the first thing a recruiter sees and the last thing you want to get wrong. A hiring manager who wants to call you should never have to search for your phone number. An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system should never struggle to identify your email address. This guide tells you exactly what to include, what to leave out, and how to format it correctly.
+
+For complete resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that formats the contact section correctly, and test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
+
 ## Key Takeaways
 
 - Include your full name prominently, using the same version across all professional platforms.
@@ -17,13 +23,6 @@ keywords: resume contact section, what to include in resume contact, resume head
 - List only your city and state/province for location, omitting your full address for privacy reasons.
 - Provide a LinkedIn profile link if it is up to date, and ensure consistency with your resume.
 - Include GitHub or portfolio links only if they are active and representative of your work, while avoiding outdated personal websites.
-
-
-The contact section of your resume is the first thing a recruiter sees and the last thing you want to get wrong. A hiring manager who wants to call you should never have to search for your phone number. An [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) system should never struggle to identify your email address. This guide tells you exactly what to include, what to leave out, and how to format it correctly.
-
-For complete resume structure, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume). Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that formats the contact section correctly, and test your resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
 
 ## What to Include in Your Resume Contact Section
 
@@ -34,7 +33,6 @@ Do not use nicknames unless they are the name you exclusively use professionally
 
 ### 2. Professional Email Address
 Your email is the most-used contact method in hiring. Rules:
-
 - Use a professional address: **firstname.lastname@gmail.com** or **firstlast@gmail.com**
 - Avoid unprofessional addresses: **partytime99@**, **coolkid2003@**, **gamerguy@**
 - Avoid old institutional addresses you no longer monitor (university address after graduation)
@@ -48,7 +46,6 @@ Your email is the most-used contact method in hiring. Rules:
 
 ### 4. City and State/Province (Not Full Address)
 In 2026, listing your full street address on a resume is outdated and unnecessary:
-
 - It takes up space
 - It raises privacy and security concerns
 - Employers don't need it until an offer stage
@@ -66,7 +63,6 @@ Ensure your LinkedIn profile is consistent with your resume - different job date
 
 ### 6. GitHub (For Technical Roles)
 For software engineers, data scientists, DevOps, and other technical roles, a [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) link is expected and valuable. Only include it if:
-
 - Your profile is active and public
 - Your repositories are clean, documented, and representative of your skills
 
@@ -100,7 +96,7 @@ In the **US, Canada, and UK**, do not include a photo. It invites conscious or u
 Some European and Asian countries do expect a photo - follow the convention for the country and role you are applying to.
 
 ### Social Media (Unless Relevant)
-Do not include personal Instagram, Twitter/X, Facebook, or TikTok unless your social media is your professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (e.g., you are a [social media manager](https://thetailorcv.com/blog/social-media-manager-portfolio) showcasing your own work).
+Do not include personal Instagram, Twitter/X, Facebook, or TikTok unless your social media is your professional [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (e.g., you are a social media manager showcasing your own work).
 
 ### Unprofessional or Outdated Emails
 As mentioned above - if your email address includes a birth year, a nickname, or anything unprofessional, create a new one.
@@ -141,13 +137,6 @@ Verify your contact details are read correctly by running your resume through th
 ---
 
 ## Common Contact Section Mistakes
-
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### Mistake 1: Using a Word header/footer for contact info
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot read Word headers and footers. Use the main document body only.

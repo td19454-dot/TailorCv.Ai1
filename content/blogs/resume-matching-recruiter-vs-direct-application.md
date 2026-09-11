@@ -10,15 +10,6 @@ keywords: resume matching through recruiter, should I tailor resume for recruite
 image: public/blog-images/resume-matching-recruiter-vs-direct-application.webp
 ---
 
-## Key Takeaways
-
-- Your resume still goes through an ATS when submitted by a recruiter, making keyword matching important.
-- A recruiter evaluates your fit before submission, so your resume must impress them first.
-- Tailoring your resume shows effort and strengthens the recruiter's internal advocacy for you.
-- Provide the full job description to extract relevant keywords and tailor your resume effectively.
-- Use conversations with the recruiter to explain nuances that a resume cannot capture.
-
-
 A recruiter reaches out about a role, or you connect with a staffing agency, and suddenly the resume matching calculus feels different. Since a human recruiter, not just an [ATS](https://thetailorcv.com/blog/ats-score-guide), is reviewing your resume and vouching for you internally, does [matching your resume to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) still matter as much?
 
 Short answer: yes, but the reasons and the emphasis shift. This guide breaks down exactly how.
@@ -26,6 +17,14 @@ Short answer: yes, but the reasons and the emphasis shift. This guide breaks dow
 Whether you are working with a recruiter or applying directly, check your match score with the [TailorCV ATS score checker](/solutions) before your resume goes out the door.
 
 ---
+
+## Key Takeaways
+
+- Your resume still goes through an ATS when submitted by a recruiter, making keyword matching important.
+- A recruiter evaluates your fit before submission, so your resume must impress them first.
+- Tailoring your resume shows effort and strengthens the recruiter's internal advocacy for you.
+- Provide the full job description to extract relevant keywords and tailor your resume effectively.
+- Use conversations with the recruiter to explain nuances that a resume cannot capture.
 
 ## What Actually Changes When a Recruiter Is Involved
 
@@ -46,13 +45,6 @@ Unlike a fully automated application, a recruiter conversation lets you explain 
 ## Should You Still Tailor Your Resume for a Recruiter Submission?
 
 Yes. Here is why it still matters:
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
 
 1. **The resume usually still passes through an ATS** at the employer's end, so keyword matching still affects your score.
 2. **The recruiter uses your resume to build internal credibility** with the hiring manager, and a well-matched resume makes their pitch stronger.
@@ -117,11 +109,6 @@ Paste the job description your recruiter shares into [TailorCV's resume optimize
 ## Common Mistakes When Working with Recruiters
 
 Navigating the job market with the assistance of a recruiter can be beneficial, but there are common pitfalls that candidates should avoid. Here’s a list of mistakes that can hinder your chances of success:
-
-
-
-
-
 
 1. **Neglecting to Customize Your Resume**: Even when working with a recruiter, failing to tailor your resume to the specific role can lead to missed opportunities. Recruiters appreciate candidates who make an effort to reflect the job description in their resumes.
 

@@ -10,6 +10,8 @@ slug: student-portfolio-guide
 keywords: student portfolio, college portfolio, portfolio for internship, undergraduate portfolio, student portfolio examples
 ---
 
+A portfolio is a student's single biggest edge, because most of your peers will not bother to build one. Start now and you graduate with **proof**, not just a degree and a GPA. Here is the playbook. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
+
 ## Key Takeaways
 
 - Start building your portfolio early to showcase proof of skills beyond just a degree and GPA.
@@ -18,14 +20,11 @@ keywords: student portfolio, college portfolio, portfolio for internship, underg
 - Ensure your resume, LinkedIn, and portfolio tell a consistent story to avoid confusing recruiters.
 - Tailor your portfolio to fit the expectations of your specific field, emphasizing relevant skills and examples.
 
-
-A portfolio is a student's single biggest edge, because most of your peers will not bother to build one. Start now and you graduate with **proof**, not just a degree and a GPA. Here is the playbook. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [What to Put in Your Portfolio With No Projects](https://thetailorcv.com/blog/portfolio-no-projects).
-
 ## What to Include
-- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)** with outcomes
+- 2-4 academic or personal **[projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)** with outcomes
 - Any **internship** or part-time work (even small contributions)
-- **Hackathon** [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) and competition results
-- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- **Hackathon** [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) and competition results
+- **Relevant coursework** reframed as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 
 ## Reframe Coursework as Projects
 A class assignment becomes a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) project the moment you add a problem statement, your specific role, and a result - then deploy it or publish the code/notebook. This single move turns a transcript into evidence.
@@ -49,7 +48,7 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 
 ## Common Mistakes
 - Waiting until final year to start
-- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- Listing coursework without framing it as [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - No deployed/published proof
 - See more in [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 
@@ -69,13 +68,6 @@ Different industries have unique expectations when it comes to student portfolio
 
 Creating a standout portfolio can feel overwhelming, but breaking it down into manageable steps can simplify the process. Use this checklist to guide you through building your portfolio:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
-
 1. **Define Your Purpose**: Determine what you want to achieve with your portfolio (e.g., internships, job applications).
 2. **Select Your Platform**: Choose a portfolio platform that suits your needs. Consider ease of use, design options, and professional appeal.
 3. **Gather Your Work**: Collect projects, coursework, and experiences that align with your goals.
@@ -90,13 +82,11 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 
 When building your portfolio, it’s essential to avoid pitfalls that can detract from your professional image. Here are common mistakes to watch out for:
 
-| Mistake | Why it costs you |
-|---|---|
-| **Overloading with Content** | Less is often more. Focus on quality over quantity. Select your best work rather than trying to showcase everything |
-| **Neglecting Design** | A cluttered or unattractive design can turn people away. Invest time in creating an aesthetically pleasing layout |
-| **Lack of Context** | Always provide context for your work. Don’t assume the viewer will understand the significance of a project without explanation |
-| **Inconsistency** | Ensure a consistent style and tone throughout your portfolio. This includes fonts, colors, and language |
-| **Forgetting About Mobile Optimization** | Many users will view your portfolio on mobile devices. Make sure it is responsive and looks good on all screen sizes |
+- **Overloading with Content**: Less is often more. Focus on quality over quantity. Select your best work rather than trying to showcase everything.
+- **Neglecting Design**: A cluttered or unattractive design can turn people away. Invest time in creating an aesthetically pleasing layout.
+- **Lack of Context**: Always provide context for your work. Don’t assume the viewer will understand the significance of a project without explanation.
+- **Inconsistency**: Ensure a consistent style and tone throughout your portfolio. This includes fonts, colors, and language.
+- **Forgetting About Mobile Optimization**: Many users will view your portfolio on mobile devices. Make sure it is responsive and looks good on all screen sizes.
 
 ## Scenario: Portfolio Critique
 
@@ -119,13 +109,10 @@ Creating a student portfolio involves making strategic choices. Here are some do
 - **Do Use Analytics**: If your portfolio is online, use analytics tools to understand viewer engagement and adjust accordingly.
 
 ### Don'ts:
-
-| Skill | Why it matters |
-|---|---|
-| **Don’t Use Generic Templates** | Avoid using overly common templates that may make your portfolio blend in with others |
-| **Don’t Ignore SEO** | If your portfolio is online, optimize it for search engines to increase visibility |
-| **Don’t Forget to Cite Sources** | If you include collaborative work, always credit your collaborators to maintain integrity |
-| **Don’t Leave Out Soft Skills** | While technical skills are crucial, don’t forget to highlight your soft skills through examples in your projects |
+- **Don’t Use Generic Templates**: Avoid using overly common templates that may make your portfolio blend in with others.
+- **Don’t Ignore SEO**: If your portfolio is online, optimize it for search engines to increase visibility.
+- **Don’t Forget to Cite Sources**: If you include collaborative work, always credit your collaborators to maintain integrity.
+- **Don’t Leave Out Soft Skills**: While technical skills are crucial, don’t forget to highlight your soft skills through examples in your projects. 
 
 By following these guidelines and suggestions, you can create a standout portfolio that not only showcases your skills and experiences but also reflects your unique identity as a student and future professional.
 
@@ -163,7 +150,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

@@ -10,17 +10,9 @@ slug: attorney-lawyer-resume-2026
 keywords: attorney resume, lawyer resume, legal cv, attorney resume 2026
 ---
 
-## Key Takeaways
-
-- A legal resume is a writing sample - one typo or inconsistent citation signals carelessness in a profession built on care.
-- Lead with bar admissions (states and dates), your JD, law school, and honours such as law review or moot court.
-- State your practice area clearly; a generic "attorney" reads weaker than a specific focus.
-- Show scale and results without breaching confidentiality by pairing a strong action verb with a measurable outcome.
-- Litigation, transactional, law-firm, and in-house resumes each emphasise different things, so tailor every application.
-
 Legal hiring is precise, and your [resume](https://www.thetailorcv.com/modify-cv) should be too. Whether you're a new associate or a seasoned litigator, firms and legal departments look for clear practice areas, credentials, and evidence that you deliver results — with zero typos. And with more firms and corporate legal teams using an [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) to screen applications, your [resume](https://www.thetailorcv.com/modify-cv) now has to satisfy both software and a detail-obsessed hiring partner.
 
-This guide walks through every section of an attorney [resume](https://www.thetailorcv.com/modify-cv), the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that matter, and how to pass the [ATS](https://thetailorcv.com/blog/ats-score-guide). Before you send anything, run your draft through the free ATS score checker, start from an ATS-friendly template, and read the ATS score guide. If you support a legal team as a paralegal, that guide covers your path.
+This guide walks through every section of an attorney [resume](https://www.thetailorcv.com/modify-cv), the [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) that matter, and how to pass the [ATS](https://thetailorcv.com/blog/ats-score-guide). Before you send anything, run your draft through the [free ATS score checker](https://www.thetailorcv.com/solutions), start from an [ATS-friendly template](https://www.thetailorcv.com/templates), and read the [ATS score guide](https://thetailorcv.com/blog/ats-score-guide). If you support a legal team as a [paralegal](https://thetailorcv.com/blog/paralegal-resume-2026), that guide covers your path.
 
 ## Why legal resumes are held to a higher bar
 
@@ -38,7 +30,7 @@ For the difference between a summary and an objective, see [resume objective vs 
 
 ## Define your practice areas clearly
 
-State your focus — litigation, corporate, IP, employment, real estate, tax — and align it with the role. A generic "attorney" reads weaker than a specialist who matches the posting. Your practice area is one of the strongest [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the [ATS](https://thetailorcv.com/blog/ats-score-guide) scans for, so mirror the language in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Use the job description analysis checklist to pull out the exact terms a firm uses.
+State your focus — litigation, corporate, IP, employment, real estate, tax — and align it with the role. A generic "attorney" reads weaker than a specialist who matches the posting. Your practice area is one of the strongest [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) the [ATS](https://thetailorcv.com/blog/ats-score-guide) scans for, so mirror the language in the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist). Use the [job description analysis checklist](https://thetailorcv.com/blog/job-description-analysis-checklist) to pull out the exact terms a firm uses.
 
 ## Quantify impact without breaching confidentiality
 
@@ -64,11 +56,11 @@ This mirrors the layout in the [resume builder](https://www.thetailorcv.com/modi
 
 ## Formatting bar admissions and jurisdictions
 
-How you present admissions matters. List each jurisdiction with its admission year, and if you're admitted in multiple states, order them by relevance to the role. For federal courts, note the specific districts. If you're registered as in-house counsel or have a limited license, state it accurately — precision here reflects the precision the profession demands, and it doubles as an [ATS](https://thetailorcv.com/blog/ats-score-guide) [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) when a role requires a specific bar. Keep the formatting clean and consistent so it parses correctly, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and confirm with the ATS score checker.
+How you present admissions matters. List each jurisdiction with its admission year, and if you're admitted in multiple states, order them by relevance to the role. For federal courts, note the specific districts. If you're registered as in-house counsel or have a limited license, state it accurately — precision here reflects the precision the profession demands, and it doubles as an [ATS](https://thetailorcv.com/blog/ats-score-guide) [keyword](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) when a role requires a specific bar. Keep the formatting clean and consistent so it parses correctly, per [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly), and confirm with the [ATS score checker](https://www.thetailorcv.com/solutions).
 
 ## Precision is the whole game
 
-Impeccable formatting, consistent citations, and flawless proofreading matter more in law than almost any field. Run a careful pass with the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) and the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying). Use a conservative, [ATS-friendly template](https://www.thetailorcv.com/templates) and a professional font — no graphics or columns that could break parsing, as covered in how to make your resume ATS-friendly and ATS formatting mistakes.
+Impeccable formatting, consistent citations, and flawless proofreading matter more in law than almost any field. Run a careful pass with the [resume proofreading checklist](https://thetailorcv.com/blog/resume-proofreading-checklist) and the [resume review checklist](https://thetailorcv.com/blog/resume-review-checklist-before-applying). Use a conservative, [ATS-friendly template](https://www.thetailorcv.com/templates) and a [professional font](https://thetailorcv.com/blog/resume-fonts-guide) — no graphics or columns that could break parsing, as covered in [how to make your resume ATS-friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) and [ATS formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes).
 
 ## Resume length for lawyers
 
@@ -80,30 +72,23 @@ If you're a recent law graduate, lead with your JD, honors, journal, clerkships,
 
 ## Tailor every application
 
-Different firms and legal departments weight practice areas and skills differently, so [tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). Paste the posting into the [resume optimizer](https://www.thetailorcv.com/solutions) to align your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description), then re-check your ATS match. See how much to change your resume for every job.
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
+Different firms and legal departments weight practice areas and skills differently, so [tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes). Paste the posting into the [resume optimizer](https://www.thetailorcv.com/solutions) to align your [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description), then re-check your [ATS](https://thetailorcv.com/blog/ats-score-guide) match. See [how much to change your resume for every job](https://thetailorcv.com/blog/how-much-to-change-resume-for-every-job).
 
 ## Prepare for legal interviews
 
-Legal interviews probe judgment and communication. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of matters and challenges, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). Prepare for behavioral questions and know what to bring to the interview. Afterward, send a thank-you email and follow up. If a cover letter is required, generate a tailored one with the AI cover letter tool.
+Legal interviews probe judgment and communication. Build a [STAR story bank](https://thetailorcv.com/blog/interview-story-bank-star-method) of matters and challenges, practice with a [free AI mock interview](https://www.thetailorcv.com/mock-interview), and use the [interview prep tool](https://www.thetailorcv.com/interview-prep). Prepare for [behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and know [what to bring to the interview](https://thetailorcv.com/blog/what-to-bring-to-an-interview). Afterward, send a [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) and [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview). If a cover letter is required, generate a tailored one with the [AI cover letter tool](https://www.thetailorcv.com/cover-letter).
 
 ## Litigation vs transactional resumes
 
-Litigators and transactional attorneys tell different stories. A **litigation** [resume](https://www.thetailorcv.com/modify-cv) should emphasize case management, motion practice, discovery, depositions, trial experience, and outcomes — win rates, dispositive motions, and caseload size. A **transactional** [resume](https://www.thetailorcv.com/modify-cv) should foreground deals: types (M&A, financings, real estate), sizes, your role in drafting and negotiation, and closings. In both cases, mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and lead with quantified results, because the ATS and the hiring partner both look for the exact practice-area keywords they're hiring for. When you tailor each application, the resume optimizer shows whether your language matches the role's focus.
+Litigators and transactional attorneys tell different stories. A **litigation** [resume](https://www.thetailorcv.com/modify-cv) should emphasize case management, motion practice, discovery, depositions, trial experience, and outcomes — win rates, dispositive motions, and caseload size. A **transactional** [resume](https://www.thetailorcv.com/modify-cv) should foreground deals: types (M&A, financings, real estate), sizes, your role in drafting and negotiation, and closings. In both cases, mirror the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) and lead with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) results, because the [ATS](https://thetailorcv.com/blog/ats-score-guide) and the hiring partner both look for the exact [practice-area keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) they're hiring for. When you [tailor each application](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes), the [resume optimizer](https://www.thetailorcv.com/solutions) shows whether your language matches the role's focus.
 
 ## Clerkships, journals, and pro bono work
 
-For associates and recent graduates, credentials beyond the JD carry real weight. **Judicial clerkships** are prestigious and belong prominently near the top. **Law review or a journal** editorship signals writing and analytical strength. **Moot court and trial advocacy** competitions show courtroom aptitude. And **pro bono work** demonstrates commitment and, often, hands-on experience you couldn't otherwise get early in your career — treat it like real experience, as [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume) suggests. If your paid experience is still thin, these credentials help you build a compelling [resume](https://www.thetailorcv.com/modify-cv) using the same principles as the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). List academic honors and class rank if strong, and format credentials cleanly with how to list certifications on a resume and how to list education on a resume.
+For associates and recent graduates, credentials beyond the JD carry real weight. **Judicial clerkships** are prestigious and belong prominently near the top. **Law review or a journal** editorship signals writing and analytical strength. **Moot court and trial advocacy** competitions show courtroom aptitude. And **pro bono work** demonstrates commitment and, often, hands-on experience you couldn't otherwise get early in your career — treat it like real experience, as [volunteer work on a resume](https://thetailorcv.com/blog/volunteer-work-on-resume) suggests. If your paid experience is still thin, these credentials help you build a compelling [resume](https://www.thetailorcv.com/modify-cv) using the same principles as the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). List academic honors and class rank if strong, and format credentials cleanly with [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and [how to list education on a resume](https://thetailorcv.com/blog/how-to-list-education-on-resume).
 
 ## In-house vs law firm resumes
 
-A law-firm [resume](https://www.thetailorcv.com/modify-cv) and an in-house [resume](https://www.thetailorcv.com/modify-cv) emphasize different things. Firms want billable expertise, matter volume, and practice-area depth. In-house teams want business judgment, risk management, and the ability to partner with non-lawyers — so translate your firm experience into commercial impact for those roles. If you're making that move, the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) shows how to reframe transferable skills, and the resume optimizer helps you align keywords to each posting. For an internal move up, read how to get a promotion and the internal job application resume guide.
+A law-firm [resume](https://www.thetailorcv.com/modify-cv) and an in-house [resume](https://www.thetailorcv.com/modify-cv) emphasize different things. Firms want billable expertise, matter volume, and practice-area depth. In-house teams want business judgment, risk management, and the ability to partner with non-lawyers — so translate your firm experience into commercial impact for those roles. If you're making that move, the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) shows how to reframe transferable skills, and the [resume optimizer](https://www.thetailorcv.com/solutions) helps you align [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description) to each posting. For an internal move up, read [how to get a promotion](https://thetailorcv.com/blog/how-to-get-a-promotion) and the [internal job application resume guide](https://thetailorcv.com/blog/internal-job-application-resume).
 
 ## Common attorney resume mistakes
 
@@ -119,7 +104,7 @@ For a wider list of what quietly sinks applications, read [why your resume gets 
 
 ## Newly admitted or awaiting bar results?
 
-If you're a recent graduate or waiting on bar results, be transparent about your status — "Admitted, New York (2026)" or "Awaiting July 2026 bar results, New York." Firms hire around bar timelines constantly, so clarity helps rather than hurts. Lead your [resume](https://www.thetailorcv.com/modify-cv) with your JD, honors, clerkships, and internships, and treat substantial coursework and moot court as real experience using the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). Prepare thoroughly for interviews with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the interview prep tool, and rehearse behavioral questions that probe judgment. Afterward, a prompt thank-you email reinforces the professionalism the profession expects.
+If you're a recent graduate or waiting on bar results, be transparent about your status — "Admitted, New York (2026)" or "Awaiting July 2026 bar results, New York." Firms hire around bar timelines constantly, so clarity helps rather than hurts. Lead your [resume](https://www.thetailorcv.com/modify-cv) with your JD, honors, clerkships, and internships, and treat substantial coursework and moot court as real experience using the [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026). Prepare thoroughly for interviews with a [free AI mock interview](https://www.thetailorcv.com/mock-interview) and the [interview prep tool](https://www.thetailorcv.com/interview-prep), and rehearse [behavioral questions](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) that probe judgment. Afterward, a prompt [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) reinforces the professionalism the profession expects.
 
 ## Salary and offer negotiation for lawyers
 
@@ -146,10 +131,10 @@ Critical. In law, a typo signals carelessness with filings. [Proofread](https://
 
 Your attorney [resume](https://www.thetailorcv.com/modify-cv) is ready when it:
 
-- [ ] Leads with **bar admissions** and a clear practice area.
-- [ ] Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
-- [ ] Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), confidentiality-safe results.
-- [ ] Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) with consistent formatting.
-- [ ] Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
+- Leads with **bar admissions** and a clear practice area.
+- Mirrors the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist) [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
+- Backs experience with [quantified](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), confidentiality-safe results.
+- Is flawlessly [proofread](https://thetailorcv.com/blog/resume-proofreading-checklist) with consistent formatting.
+- Uses an [ATS-friendly template](https://www.thetailorcv.com/templates) and passes the [ATS score checker](https://www.thetailorcv.com/solutions).
 
-In law, precision wins. Build your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and tailor it to every firm you apply to.
+In law, precision wins. Build your [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), score it with the [free ATS checker](https://www.thetailorcv.com/solutions), and [tailor](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) it to every firm you apply to.

@@ -666,36 +666,24 @@
             padding-top: 0 !important;
         }
         @media (max-width: 768px) {
-            header.navbar + .ext-promo-bar { margin-top: 38px !important; }
+            header.navbar + .ext-promo-bar { margin-top: 74px !important; }
         }
     </style>
 
+
     <style>
-        /* Mobile navbar: the site-wide base (style3.css `header.navbar{height:100px}`)
-           has higher specificity than style3's own mobile override, so mobile was
-           stuck at the desktop-sized 100px bar — much thicker than intended. Slim
-           it down here, and while at it swap the hamburger (which opens the drawer
-           containing Features) to the left edge with the logo centered, instead of
-           the logo pinned left and the hamburger floating at an awkward 63%. */
+        #primary-nav-index .mobile-feature-link {
+            display: none;
+        }
+
         @media (max-width: 768px) {
-            header.navbar {
-                height: 64px !important;
+            #primary-nav-index .mobile-feature-link {
+                display: block;
+                text-align: center;
             }
-            header.navbar + * {
-                padding-top: 64px !important;
-            }
-            header.navbar .logo {
-                position: absolute !important;
-                left: 50% !important;
-                top: 50% !important;
-                transform: translate(-50%, -50%) !important;
-                margin: 0 !important;
-            }
-            header.navbar .mobile-menu-toggle {
-                left: 14px !important;
-                transform: translateY(-50%) !important;
-                width: 46px !important;
-                height: 32px !important;
+
+            #primary-nav-index .features-dropdown {
+                display: none;
             }
         }
 
@@ -850,9 +838,9 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: #f4f5f7;
-            font-size: 15px;
-            font-weight: 400;
+            color: #f4f6fb;
+            font-size: 18px;
+            font-weight: 700;
             line-height: 1.3;
             text-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
         }
@@ -888,10 +876,10 @@
                         Your <span class="gradient-text">dream job</span> starts here
                     </h1>
                     <ul class="hero-features">
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Resume optimized to every job role in 30s</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free Resume to Portfolio Website</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>Free ATS Score Checker</li>
-                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span>AI Mock Interviews &amp; More</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Accurate Resume Optimizations</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Free Portfolio Website</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> ATS Score Check</li>
+                        <li><span class="feat-tick" aria-hidden="true">&#10003;</span> Mock Interviews &amp; More</li>
                     </ul>
                     <div class="hero-cta">
                         <a href="/optimize" class="btn btn-primary btn-large " id="hero_optimize_my_resume_free"
@@ -1551,230 +1539,6 @@
             } else {
                 createLogoItems();
             }
-        })();
-    </script>
-
-    <!-- Demo Video Section -->
-    <section class="demo-video-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Watch TailorCV <span class="st-hl">in action</span></h2>
-                <p class="section-subtitle">From raw resume to a tailored, ATS-ready PDF — the whole flow, start to
-                    finish.</p>
-            </div>
-
-            <div class="demo-video-card" data-reveal>
-                <!-- Plays with sound. Browsers only grant unmuted autoplay to sites the
-                     visitor already engages with, so the script below tries anyway and
-                     falls back to the play button when it's refused. No loop: the
-                     narration restarting on its own would be jarring. preload="none"
-                     keeps the file off the wire until the section scrolls into view. -->
-                <video id="demoVideo" class="demo-video" playsinline controls preload="none"
-                    poster="/static/videos/demo-poster.jpg">
-                    <source src="/static/videos/demo.mp4" type="video/mp4">
-                    Your browser doesn't support embedded video.
-                    <a href="/static/videos/demo.mp4">Download the demo</a> instead.
-                </video>
-
-                <!-- Fallback only: shown if the browser refuses autoplay (strict data
-                     saver settings, or reduced-motion). -->
-                <button type="button" class="demo-video-play" id="demoVideoPlay" hidden
-                    aria-label="Play the TailorCV demo">
-                    <span class="demo-video-play-ring">
-                        <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
-                            <path d="M8 5.5v13l11-6.5z" fill="currentColor" />
-                        </svg>
-                    </span>
-                    <span class="demo-video-play-label">Play demo</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        /* ─── Demo Video Section ─── */
-        .demo-video-section {
-            padding: 64px 0 72px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .demo-video-card {
-            position: relative;
-            max-width: 980px;
-            margin: 0 auto;
-            /* Matches the source recording (1920x1032) exactly, so object-fit
-               never crops the edges of the UI in frame. */
-            aspect-ratio: 1920 / 1032;
-            border-radius: 20px;
-            overflow: hidden;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            box-shadow: 0 24px 70px rgba(3, 8, 25, 0.55), 0 0 0 1px rgba(74, 106, 255, 0.08);
-        }
-
-        /* Accent glow ring, matching the template/pricing cards elsewhere on the page. */
-        .demo-video-card::after {
-            content: "";
-            position: absolute;
-            inset: -1px;
-            border-radius: 21px;
-            pointer-events: none;
-            background: linear-gradient(135deg, rgba(91, 140, 255, 0.35), transparent 42%, rgba(138, 140, 255, 0.28));
-            opacity: 0;
-            transition: opacity .35s ease;
-        }
-
-        .demo-video-card:hover::after {
-            opacity: 1;
-        }
-
-        .demo-video {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #050b1e;
-        }
-
-        /* Custom play overlay — sits on top until the video starts, so the section
-           still reads as a deliberate frame before a poster image exists. */
-        .demo-video-play {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 14px;
-            width: 100%;
-            border: 0;
-            cursor: pointer;
-            color: #ffffff;
-            font-family: inherit;
-            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.35), rgba(5, 11, 30, 0.72));
-            transition: background .3s ease, opacity .3s ease;
-        }
-
-        .demo-video-play:hover {
-            background: radial-gradient(ellipse at center, rgba(10, 20, 55, 0.22), rgba(5, 11, 30, 0.62));
-        }
-
-        .demo-video-card.is-playing .demo-video-play {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .demo-video-play-ring {
-            display: grid;
-            place-items: center;
-            width: 76px;
-            height: 76px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 10px 34px rgba(74, 106, 255, 0.5);
-            transition: transform .25s ease, box-shadow .25s ease;
-        }
-
-        .demo-video-play:hover .demo-video-play-ring {
-            transform: scale(1.07);
-            box-shadow: 0 14px 44px rgba(74, 106, 255, 0.62);
-        }
-
-        .demo-video-play-ring svg {
-            margin-left: 3px;
-            /* optically centre the triangle */
-        }
-
-        .demo-video-play-label {
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: .02em;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* The overlay is a fallback now, so [hidden] has to beat the flex above. */
-        .demo-video-play[hidden] {
-            display: none;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .demo-video-card::after,
-            .demo-video-play,
-            .demo-video-play-ring {
-                transition: none;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .demo-video-section {
-                padding: 44px 0 52px;
-            }
-
-            .demo-video-card {
-                border-radius: 14px;
-            }
-
-            .demo-video-play-ring {
-                width: 60px;
-                height: 60px;
-            }
-        }
-    </style>
-
-    <script>
-        (function () {
-            var card = document.querySelector('.demo-video-card');
-            var video = document.getElementById('demoVideo');
-            var playBtn = document.getElementById('demoVideoPlay');
-            if (!card || !video || !playBtn) return;
-
-            var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-            function showFallback() {
-                playBtn.hidden = false;
-                card.classList.remove('is-playing');
-            }
-
-            function attemptPlay() {
-                var p = video.play();
-                if (p && typeof p.catch === 'function') {
-                    p.then(function () {
-                        playBtn.hidden = true;
-                        card.classList.add('is-playing');
-                    }).catch(showFallback);
-                }
-            }
-
-            playBtn.addEventListener('click', function () {
-                playBtn.hidden = true;
-                attemptPlay();
-            });
-
-            // Respect reduced-motion and browsers without IO: no autoplay, just offer
-            // the play button.
-            if (reduce || !('IntersectionObserver' in window)) {
-                showFallback();
-                return;
-            }
-
-            // Only start once the section is actually on screen — that's what keeps the
-            // file off the wire for visitors who never scroll this far. Since the video
-            // carries sound, a refused autoplay just surfaces the play button; and we
-            // always pause on the way out so audio never runs off-screen.
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        attemptPlay();
-                    } else if (!video.paused) {
-                        video.pause();
-                        playBtn.hidden = false;
-                    }
-                });
-            }, { threshold: 0.35 });
-
-            io.observe(card);
         })();
     </script>
 
@@ -2634,7 +2398,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Simple, honest <span class="st-hl">pricing</span></h2>
-                <p class="section-subtitle">Start free, no card needed. Upgrade for unlimited AI power — cancel any time.</p>
+                <p class="section-subtitle">ATS scoring is free forever. Upgrade for unlimited AI power — cancel any time.</p>
             </div>
 
             <div class="pricing-preview-grid cols-3">
@@ -2644,10 +2408,10 @@
                     <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">₹</span>0</p>
                     <p class="pricing-plan-note">Always free, no card needed.</p>
                     <ul class="pricing-feature-list">
-                        <li>3 free ATS scans</li>
+                        <li>ATS score — unlimited</li>
                         <li>1 free resume optimization</li>
-                        <li>2 free cover letters + mock interview</li>
-                        <li>1 CV upload + 1 template download</li>
+                        <li>1 free cover letter + mock interview</li>
+                        <li>All templates &amp; downloads</li>
                     </ul>
                     <a href="/login?next=/solutions" class="pricing-plan-btn" id="pricing_free_plan_start">Start free</a>
                 </article>
@@ -2815,7 +2579,7 @@
             aria-label="Close notification">&times;</button>
     </div>
 
-    
+    <a href="/solutions" class="mobile-sticky-cta" id="mobile_sticky_optimize_resume" aria-label="Optimize resume for free">Optimize Resume Free</a>
 
 
 
@@ -2839,7 +2603,7 @@
     <!-- Footer -->
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=19" defer></script>
+    <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script src="/static/main.js" defer></script>
 

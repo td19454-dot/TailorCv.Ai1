@@ -10,19 +10,18 @@ slug: how-to-stop-sounding-generic-on-resume
 keywords: how to stop sounding generic on resume, resume vague language, specific resume language, resume rewrite, resume language tips
 ---
 
+Read your current resume and ask: could this sentence describe anyone who has held this job? If the answer is yes, it is generic - and that is costing you interviews. This guide shows you the most common generic language patterns on resumes and how to rewrite each one to be specific, credible, and compelling.
+
+See how your resume reads to ATS systems with the [free scanner](/solutions).
+
+---
+
 ## Key Takeaways
 
 - Generic language on resumes can hurt your chances by failing to match ATS keywords and losing recruiters' attention.
 - Replace vague phrases with specific achievements that include results, scale, timeline, and methods to stand out.
 - Use strong action verbs and quantify your contributions to demonstrate ownership and impact in your roles.
 - Avoid unprovable claims like "passionate about" and instead provide concrete examples of your skills and experiences.
-
-
-Read your current resume and ask: could this sentence describe anyone who has held this job? If the answer is yes, it is generic - and that is costing you interviews. This guide shows you the most common generic language patterns on resumes and how to rewrite each one to be specific, credible, and compelling.
-
-See how your resume reads to ATS systems with the [free scanner](/solutions).
-
----
 
 ## Why Generic Language Hurts More Than You Think
 
@@ -37,13 +36,6 @@ Both problems are fixable with the same solution: replace categories with specif
 ---
 
 ## The 8 Most Common Generic Phrases - and How to Rewrite Them
-
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
 ### 1. "Results-oriented professional"
 
@@ -171,8 +163,6 @@ Check your resume's keyword match with the [free TailorCV ATS checker](/solution
 2. Circle any phrase that appears on generic lists (see above)
 3. For each circled phrase: add a specific tool, a number, a team size, a time frame, or an outcome
 4. Retest with the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) checker to confirm the rewrites hit keyword targets
-
-
 
 The entire audit takes 20-30 minutes for a standard resume.
 

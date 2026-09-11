@@ -13,27 +13,6 @@
         { id: "templates", label: "Templates" },
     ];
 
-    // Seeded the first time a user opens Skills on a fresh resume. Purely a
-    // starting point — categories can be renamed, removed, or added to.
-    const DEFAULT_SKILL_CATEGORIES = [
-        { category: "Languages", items: "" },
-        { category: "AI/ML", items: "" },
-        { category: "Frameworks & Libraries", items: "" },
-        { category: "Cloud & DevOps", items: "" },
-        { category: "Databases", items: "" },
-    ];
-
-    /* Shared with every other page — defined in auth_nav.js, which loads
-       universally. Falls back to a plain string read if that ever fails to
-       load, so an error here can never itself throw. */
-    function errorMessageFrom(payload, fallback) {
-        if (typeof window.tcvErrorMessage === "function") {
-            return window.tcvErrorMessage(payload, fallback);
-        }
-        const detail = payload?.detail ?? payload;
-        return (typeof detail === "string" && detail) ? detail : fallback;
-    }
-
     function createEmptyCvData() {
         return {
             personalInfo: {
@@ -65,7 +44,6 @@
 
     let selectedTemplate = null;
     let templates = [];
-    const OPTIMIZED_EDITOR_STORAGE_KEY = "tailorcv_optimized_editor_payload";
 
     function getTemplatePreviewSrc(templateId) {
         const id = Number(templateId);
@@ -136,27 +114,6 @@
                 })
                 .filter((item) => item.title);
 
-        // Migrates the old single-text-field skills ("Category: a, b" typed as
-        // one string, or bare "a" from LinkedIn import) into {category, items}.
-        // Already-migrated data ({category, items}) passes through unchanged.
-        const normalizeSkills = (skills) =>
-            normalizeArray(skills)
-                .map((item) => {
-                    if (item && typeof item === "object") {
-                        if ("category" in item || "items" in item) {
-                            return { category: toString(item.category), items: toString(item.items) };
-                        }
-                        const raw = toString(item.name || item.details);
-                        const colonIndex = raw.indexOf(":");
-                        if (colonIndex > -1) {
-                            return { category: raw.slice(0, colonIndex).trim(), items: raw.slice(colonIndex + 1).trim() };
-                        }
-                        return { category: "", items: raw };
-                    }
-                    return { category: "", items: toString(item) };
-                })
-                .filter((item) => item.category || item.items);
-
         return {
             personalInfo: {
                 name: toString(personalInfo.name),
@@ -175,7 +132,7 @@
             education: normalizeArray(data.education),
             experience: normalizeArray(data.experience),
             projects: normalizeArray(data.projects),
-            skills: normalizeSkills(data.skills),
+            skills: normalizeArray(data.skills),
             extracurriculars: normalizeArray(data.extracurriculars),
             certifications: normalizeArray(data.certifications),
             awards: normalizeAwards(data.awards),
@@ -303,36 +260,25 @@
     }
 
     function SkillsSection() {
-        if (!cvData.skills.length) {
-            cvData.skills = DEFAULT_SKILL_CATEGORIES.map((preset) => ({ ...preset }));
-        }
-        const categories = cvData.skills;
+        const skills = cvData.skills.length ? cvData.skills : [{ name: ""}];
         return `
             <section id="skills" class="form-card section-card">
                 <h2 class="form-title">Skills</h2>
-                ${categories
+                ${skills
                     .map(
-                        (cat, index) => `
+                        (skill, index) => `
                         <div class="entry-card">
-                            <div class="skill-category-row">
-                                <div>
-                                    <label class="form-label">Category</label>
-                                    <input class="section-input" value="${escapeHtml(cat.category || "")}" data-oninput="skills.${index}.category" placeholder="e.g. Cloud &amp; DevOps" />
-                                </div>
-                                <div>
-                                    <label class="form-label">Skills</label>
-                                    <input class="section-input" value="${escapeHtml(cat.items || "")}" data-oninput="skills.${index}.items" placeholder="AWS, Docker, Kubernetes, Terraform" />
-                                </div>
-                            </div>
+                            <label class="form-label">Skill / Category</label>
+                            <input class="section-input" value="${escapeHtml(skill.name || "")}" data-oninput="skills.${index}.name" placeholder="Languages: JavaScript, Python" />
                             <div class="section-controls">
-                                <button type="button" class="small-btn" data-remove-entry="skills" data-index="${index}">Remove Category</button>
+                                <button type="button" class="small-btn" data-remove-entry="skills" data-index="${index}">Remove</button>
                             </div>
                         </div>
                     `
                     )
                     .join("")}
                 <div class="section-controls">
-                    <button type="button" class="small-btn" data-add-entry="skills">+ Add Skill Category</button>
+                    <button type="button" class="small-btn" data-add-entry="skills">+ Add Skill</button>
                 </div>
             </section>
         `;
@@ -483,7 +429,7 @@
             education: () => ({ school: "", degree: "", year: "", score: ""}),
             experience: () => ({ company: "", title: "", dates: "", location: "", details: "" }),
             projects: () => ({ name: "", subtitle: "", dates: "", url: "", github_link: "", details: "" }),
-            skills: () => ({ category: "", items: "" }),
+            skills: () => ({ name: "" }),
             extracurriculars: () => ({ role: "", organization: "", dates: "", url: "" }),
             certifications: () => ({ name: "", issuer: "", year: "", url: ""}),
             awards: () => ({ title: "" }),
@@ -583,43 +529,6 @@
     let debouncedPersistDraft = debounce(persistDraft, 500);
     window.addEventListener("resize", debounce(applyPreviewScale, 120));
 
-    async function buildEditorPayload() {
-        if (!selectedTemplate) {
-            throw new Error("Select a template first.");
-        }
-
-        const response = await fetch("/api/render-template-preview", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                templateId: selectedTemplate,
-                cvData
-            })
-        });
-        if (!response.ok) {
-            let detail = "Could not prepare the resume editor.";
-            try {
-                const payload = await response.json();
-                detail = errorMessageFrom(payload, detail);
-            } catch {}
-            throw new Error(detail);
-        }
-        const data = await response.json();
-        if (!data?.html) {
-            throw new Error("Could not render the selected template.");
-        }
-
-        return {
-            success: true,
-            source: "modify-cv",
-            html: data.html,
-            template_id: selectedTemplate,
-            resume_data: cvData,
-            candidate_name: (cvData.personalInfo && cvData.personalInfo.name) || "",
-            filename: "custom_cv_edited.pdf"
-        };
-    }
-
     function bindInteractions() {
         document.querySelectorAll("[data-scroll-to]").forEach((button) => {
             button.addEventListener("click", () => {
@@ -683,10 +592,33 @@
                 }
                 setDownloadLoading(true);
                 try {
-                    const payload = await buildEditorPayload();
-                    sessionStorage.setItem(OPTIMIZED_EDITOR_STORAGE_KEY, JSON.stringify(payload));
-                    sessionStorage.removeItem("tailorcv_current_resume_id");
-                    window.location.href = "/optimized-editor?source=modify-cv";
+                    const response = await fetch("/api/download-cv-pdf", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ templateId: selectedTemplate, cvData })
+                    });
+                    if (!response.ok) {
+                        let detail = "Primary download route failed";
+                        try {
+                            const payload = await response.json();
+                            detail = payload?.detail || payload?.error || detail;
+                        } catch {}
+                        const error = new Error(detail);
+                        error.status = response.status;
+                        throw error;
+                    }
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const link = document.createElement("a");
+                    link.href = url;
+                    link.download = "custom_cv.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+                    setTimeout(() => window.URL.revokeObjectURL(url), 2000);
+                    setDownloadLoading(false);
+                    downloadBtn.classList.add("pulse-success");
+                    setTimeout(() => downloadBtn.classList.remove("pulse-success"), 1000);
                     return;
                 } catch (error) {
                     const message = (error?.message || "").toLowerCase();
@@ -695,7 +627,7 @@
                         redirectToLogin();
                         return;
                     }
-                    console.warn("Could not open resume editor, using direct download fallback.", error);
+                    console.warn("Primary download failed, using fallback.", error);
                 }
 
                 setDownloadLoading(false);
@@ -797,14 +729,14 @@
             };
         }).filter((edu) => edu.school || edu.degree);
 
-        const importedSkillNames = asArray(data.skills)
-            .map((skill) => (skill && typeof skill === "object"
-                ? toText(skill.name || skill.skill || Object.values(skill)[0])
-                : toText(skill)))
-            .filter(Boolean);
-        mapped.skills = importedSkillNames.length
-            ? [{ category: "Skills", items: importedSkillNames.join(", ") }]
-            : [];
+        mapped.skills = asArray(data.skills)
+            .map((skill) => {
+                const name = skill && typeof skill === "object"
+                    ? toText(skill.name || skill.skill || Object.values(skill)[0])
+                    : toText(skill);
+                return { name };
+            })
+            .filter((skill) => skill.name);
 
         mapped.certifications = asArray(data.certifications).map((cert) => ({
             name: toText(cert?.name),
@@ -850,7 +782,6 @@
             dropzoneLabel.textContent = "Click to choose a PDF";
             errorDiv.style.display = "none";
             loadingDiv.style.display = "none";
-            dropzone.style.display = "flex";
             footer.style.display = "flex";
             submitBtn.disabled = true;
             dropzone.style.borderColor = "rgba(16,185,129,0.4)";
@@ -918,7 +849,6 @@
         submitBtn.addEventListener("click", async () => {
             if (!selectedFile) return;
             errorDiv.style.display = "none";
-            dropzone.style.display = "none";
             loadingDiv.style.display = "block";
             footer.style.display = "none";
             submitBtn.disabled = true;
@@ -932,7 +862,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok) {
-                    throw new Error(errorMessageFrom(result, "Extraction failed. Please try again."));
+                    throw new Error(result.detail || result.error || "Extraction failed. Please try again.");
                 }
                 const cvPayload = result.cvData || result;
                 if (!cvPayload || typeof cvPayload !== "object") {
@@ -953,7 +883,6 @@
                 document.getElementById("sections-container").scrollIntoView({ behavior: "smooth", block: "start" });
             } catch (error) {
                 loadingDiv.style.display = "none";
-                dropzone.style.display = "flex";
                 footer.style.display = "flex";
                 submitBtn.disabled = false;
                 errorDiv.textContent = error.message || "Import failed. Please try again.";
@@ -1046,7 +975,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok || !result?.success) {
-                    throw new Error(errorMessageFrom(result, "Import failed. Make sure your profile is Public and try again."));
+                    throw new Error(result?.detail || result?.error || "Import failed. Make sure your profile is Public and try again.");
                 }
                 await applyLinkedInData(result.data);
                 resetModal();
@@ -1089,7 +1018,7 @@
                 });
                 const result = await response.json();
                 if (!response.ok || !result?.success) {
-                    throw new Error(errorMessageFrom(result, "Could not read that profile text. Try copying the whole page."));
+                    throw new Error(result?.detail || "Could not read that profile text. Try copying the whole page.");
                 }
                 await applyLinkedInData(result.data);
                 resetModal();

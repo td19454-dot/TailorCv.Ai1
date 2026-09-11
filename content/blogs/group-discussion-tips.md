@@ -10,15 +10,6 @@ slug: group-discussion-tips
 keywords: group discussion tips, GD tips 2026, group discussion topics, how to crack group discussion, GD round preparation, campus placement GD, group discussion strategies
 ---
 
-## Key Takeaways
-
-- Evaluators in group discussions assess communication, leadership, teamwork, and logical reasoning, valuing quality contributions over quantity.
-- Strong openings should define the topic, outline key dimensions, and present an initial perspective to establish leadership.
-- Use structured thinking and data to enhance contributions, while actively listening and building on others' points to demonstrate collaboration.
-- Handle difficult situations by asserting your point politely, bringing order to chaos, and respectfully disagreeing with reasoning.
-- Conclude discussions with a concise summary that reflects the group's consensus and acknowledges differing viewpoints to showcase leadership.
-
-
 The group discussion (GD) round is a common screening stage in campus placements, MBA admissions, and some corporate hiring processes - especially in India and parts of Asia. In a GD, 6-12 candidates discuss a topic for 10-20 minutes while evaluators assess communication, leadership, teamwork, and thinking under pressure.
 
 The challenge: standing out positively without dominating, and contributing meaningfully without staying silent. This guide gives you proven strategies.
@@ -27,10 +18,17 @@ A GD is one stage of a larger process. Make sure your resume gets you there with
 
 ---
 
+## Key Takeaways
+
+- Evaluators in group discussions assess communication, leadership, teamwork, and logical reasoning, valuing quality contributions over quantity.
+- Strong openings should define the topic, outline key dimensions, and present an initial perspective to establish leadership.
+- Use structured thinking and data to enhance contributions, while actively listening and building on others' points to demonstrate collaboration.
+- Handle difficult situations by asserting your point politely, bringing order to chaos, and respectfully disagreeing with reasoning.
+- Conclude discussions with a concise summary that reflects the group's consensus and acknowledges differing viewpoints to showcase leadership.
+
 ## What Evaluators Look For in a GD
 
 GD evaluators assess:
-
 - Communication skills (clarity, articulation, listening)
 - Leadership and initiative
 - Content quality and knowledge
@@ -64,7 +62,6 @@ Topics with clear for/against positions. Example: "Should social media be regula
 Initiating a GD well makes a strong impression - but only if you have something substantial to say. A weak opening hurts more than staying quiet.
 
 Strong opening approach:
-
 1. Briefly define or frame the topic
 2. State the key dimensions to discuss
 3. Offer your initial perspective

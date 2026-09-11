@@ -4,10 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-domain-name-guide
 image: public/blog-images/portfolio-domain-name-guide.webp
-category: Portfolio
-tags: [Portfolio Guide, Career Advice, Job Search]
-keywords: Portfolio Guide, Career Advice, Job Search
 ---
+
+Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Key Takeaways
 
@@ -16,9 +15,6 @@ keywords: Portfolio Guide, Career Advice, Job Search
 - Ensure your domain is easy to spell, memorable, and consistent across social media platforms to avoid confusion.
 - Use reputable registrars for purchasing your domain, and enable WHOIS privacy to protect your personal information.
 - Keep your resume and portfolio aligned in branding and messaging to present a cohesive professional identity.
-
-
-Your domain is your personal brand's address - the thing you say out loud in interviews and print on your resume. A clean one is worth the ~$10/year many times over. Pair this with [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Best Choice: Your Name
 **yourname.com** is ideal - memorable, professional, and timeless. If it is taken, try in roughly this order:
@@ -29,7 +25,6 @@ Your domain is your personal brand's address - the thing you say out loud in int
 
 ### Creative Alternatives
 If your name is common or already taken, consider these creative alternatives:
-
 - **Add a Middle Initial**: yournamej.com
 - **Include Your Profession**: yournamewriter.com or yournamephotography.com
 - **Use Action Words**: createwithyourname.com or designbyyourname.com
@@ -72,13 +67,6 @@ Point it at your free host or your [portfolio builder](https://thetailorcv.com/p
 ## Keep Your Resume and Portfolio in Sync
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
-
 ## Common Mistakes
 - A domain so clever no one can spell it
 - Hyphens/numbers that get lost when spoken
@@ -92,30 +80,24 @@ You upload the resume you already have and the sections fill themselves in - bas
 
 ## Examples of Effective Domain Names
 Here are some examples of effective domain names that illustrate the points made above:
-
 - **SarahSmith.com**: Simple, professional, and memorable.
 - **JohnDoeDesigns.com**: Clearly indicates what John does while keeping his name.
 - **EmilyWrites.com**: Uses an action word to signify her profession.
 
 ## SEO Considerations for Your Domain
 Choosing the right domain name can also impact your SEO. Here are some tips to optimize your domain for search engines:
-
 - **Use Keywords**: If relevant, include a keyword that describes your services (e.g., yournamephotography.com).
 - **Keep It Short**: Shorter domains are easier to remember and share.
 - **Avoid Numbers and Hyphens**: These can confuse users and affect SEO negatively.
 
-
-
 ## How to Promote Your Domain
 Once you’ve secured your domain, it’s crucial to promote it effectively. Here are some strategies:
-
 - **Link from Your Social Media Profiles**: Ensure your portfolio link is in your bios.
 - **Networking Events**: Share your domain verbally when meeting new contacts.
 - **Email Signature**: Include your domain in your email signature for professional correspondence.
 
 ## Measuring Success
 To understand how well your domain is performing:
-
 - **Use Google Analytics**: Track visitor numbers and behavior on your site.
 - **Check Domain Authority**: Use tools like Moz or Ahrefs to see how your domain ranks.
 - **Monitor Backlinks**: Keep an eye on who is linking to your portfolio.
@@ -157,7 +139,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

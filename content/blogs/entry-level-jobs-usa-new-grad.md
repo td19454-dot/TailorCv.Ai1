@@ -10,6 +10,8 @@ keywords: entry level jobs usa, new grad resume usa, first job in america 2026
 image: public/blog-images/entry-level-jobs-usa-new-grad.webp
 ---
 
+Navigating the job market as a new graduate in the USA can feel overwhelming. With thousands of applicants vying for the same entry-level positions, understanding how to craft a compelling resume and effectively search for jobs is crucial. This guide will walk you through the essentials of creating a standout resume, optimizing it for Applicant Tracking Systems (ATS), and leveraging your job search strategies to land your first job after graduation.
+
 ## Key Takeaways
 
 - Tailor your resume to one page, focusing on relevant experiences and using strong action verbs to highlight contributions.
@@ -17,9 +19,6 @@ image: public/blog-images/entry-level-jobs-usa-new-grad.webp
 - Optimize your resume for Applicant Tracking Systems by incorporating keywords from job descriptions and using simple formatting.
 - Leverage your network by connecting with alumni, joining professional associations, and attending career fairs to enhance your job search.
 - Utilize both general and niche online job boards to find entry-level positions in your desired field.
-
-
-Navigating the job market as a new graduate in the USA can feel overwhelming. With thousands of applicants vying for the same entry-level positions, understanding how to craft a compelling resume and effectively search for jobs is crucial. This guide will walk you through the essentials of creating a standout resume, optimizing it for Applicant Tracking Systems (ATS), and leveraging your job search strategies to land your first job after graduation.
 
 ## Understanding the US Job Market
 
@@ -129,13 +128,6 @@ Navigating the job market as a new graduate can be daunting. Here are some commo
 
 A well-crafted cover letter can set you apart from other candidates. Follow these steps to create a powerful cover letter:
 
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
-
-
 1. **Research the Company**: Before you start writing, learn about the company’s mission, values, and culture. This will help you tailor your letter effectively.
 
 2. **Use a Strong Opening**: Start with a compelling introduction that captures attention. Mention the position you are applying for and a brief summary of why you are a good fit.
@@ -203,7 +195,6 @@ Keep building your US job search with these related TailorCV guides:
 - [AI Job Search Agent 2026 - How to Use AI Without Losing Your Voice](https://thetailorcv.com/blog/ai-job-search-agent-2026)
 - [Follow-Up Email After Job Application - Templates That Sound Professional](https://thetailorcv.com/blog/follow-up-email-after-application)
 - [Job Application Tracker Template - What to Track After Every Application](https://thetailorcv.com/blog/job-application-tracker-template)
-- [Layoffs and Severance for New Graduates in the US](https://thetailorcv.com/blog/usa-severance-and-layoffs-new-grad)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

@@ -3,12 +3,16 @@ title: How ATS Works in Malaysia: Beating Applicant Tracking Systems in 2026
 description: A complete guide to how Applicant Tracking Systems work in Malaysia, why your resume gets filtered out, and exactly how to optimise your resume to pass the ATS used by Malaysian banks, MNCs, GLCs, and JobStreet.
 date: 2026-07-28
 author: TailorCV Team
-tags: [ATS Malaysia, applicant tracking system Malaysia, Malaysian ATS, beat ATS Malaysia]
+tags: [ATS Malaysia, [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) Malaysia, Malaysian ATS, beat ATS Malaysia]
 category: ATS Optimization
 slug: ats-in-malaysia-guide
 keywords: ats in malaysia, malaysia applicant tracking system, beat ats malaysia, ats resume malaysia, jobstreet ats
 image: public/blog-images/ats-in-malaysia-guide.png
 ---
+
+If you have applied to dozens of jobs in Malaysia and heard nothing back, the problem may not be your qualifications — it may be that a machine rejected your resume before any human read it. That machine is the Applicant Tracking System (ATS), and it is used by the majority of mid-sized and large Malaysian employers, from banks and GLCs to MNCs and the country's biggest [job portals](https://thetailorcv.com/blog/best-job-search-websites-2026).
+
+The good news: once you understand how the ATS works, you can format and write your resume to sail through it. This guide explains exactly what an ATS does in the Malaysian context, why good candidates get filtered out, and the concrete steps to make your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) in 2026.
 
 ## Key Takeaways
 
@@ -17,11 +21,6 @@ image: public/blog-images/ats-in-malaysia-guide.png
 - Complex formatting — tables, columns, text boxes, images, headers/footers — is the leading cause of parsing failure.
 - **Keyword alignment with each job description** is the single most important factor in your [ATS score](https://thetailorcv.com/blog/ats-score-guide).
 - You can test your resume against any posting for free with an [ATS score checker](https://thetailorcv.com/solutions) to see your match and missing keywords.
-
-
-If you have applied to dozens of jobs in Malaysia and heard nothing back, the problem may not be your qualifications — it may be that a machine rejected your resume before any human read it. That machine is the Applicant Tracking System (ATS), and it is used by the majority of mid-sized and large Malaysian employers, from banks and GLCs to MNCs and the country's biggest [job portals](https://thetailorcv.com/blog/best-job-search-websites-2026).
-
-The good news: once you understand how the ATS works, you can format and write your resume to sail through it. This guide explains exactly what an ATS does in the Malaysian context, why good candidates get filtered out, and the concrete steps to make your resume [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) in 2026.
 
 ## What Is an ATS and Why Do Malaysian Employers Use It?
 
@@ -34,13 +33,6 @@ This means your resume has two audiences, in this order: **the software, then th
 ## How the ATS Actually Processes Your Resume
 
 Understanding the pipeline helps you optimise each stage.
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, which is why the suggestions are grounded in the posting.
-
 
 ### Step 1: Parsing
 
@@ -143,7 +135,6 @@ Before submitting any Malaysian application, confirm:
 - [ ] Dedicated skills section with tools and languages
 - [ ] Tested against the posting with an [ATS checker](https://thetailorcv.com/solutions)
 
-
 ## Keyword Optimisation in Practice: Before and After
 
 Abstract advice about keywords is easy to nod along to and hard to apply. Here is what it actually looks like on the page.
@@ -203,7 +194,7 @@ Optimising for the ATS is a process, and the candidates who improve fastest trea
 
 ## Beyond the ATS: Winning the Human Stage
 
-Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our Malaysia interview tips and a realistic [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume).
+Passing the ATS gets you into the recruiter's shortlist. Now your resume has to persuade a person. That means [quantified achievements](https://thetailorcv.com/blog/awards-achievements-on-resume), a sharp summary, and clear relevance to the role — everything covered in our [Malaysian resume guide](https://thetailorcv.com/blog/resume-for-malaysia-jobs). Pair it with a targeted cover letter using the [Malaysia cover letter guide](https://thetailorcv.com/blog/cover-letter-for-malaysia-jobs), and once you land the interview, prepare with our [Malaysia interview tips](https://thetailorcv.com/blog/interview-tips-malaysia) and a realistic [AI mock interview](https://thetailorcv.com/mock-interview).
 
 ## Formatting Details That Quietly Break Parsers
 
@@ -220,7 +211,7 @@ The safest test remains simple: open your PDF, select all the text, and copy it 
 
 ## The Future of ATS: AI-Powered Screening
 
-Applicant tracking is evolving, and Malaysian employers — especially large MNCs and banks — are increasingly layering AI on top of traditional keyword matching. Newer systems attempt to understand *meaning*, not just exact strings: recognising that "managed a team" and "led five direct reports" describe similar things, or inferring seniority and domain from context. Some pipelines now include AI-assisted ranking, [video-interview](https://thetailorcv.com/blog/video-interview-tips-2026) analysis, and skills inference.
+Applicant tracking is evolving, and Malaysian employers — especially large MNCs and banks — are increasingly layering AI on top of traditional keyword matching. Newer systems attempt to understand *meaning*, not just exact strings: recognising that "managed a team" and "led five direct reports" describe similar things, or inferring seniority and domain from context. Some pipelines now include AI-assisted ranking, video-interview analysis, and skills inference.
 
 What does this mean for you as a candidate?
 

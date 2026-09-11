@@ -10,6 +10,8 @@ keywords: resume for international candidates usa, foreign candidate us resume, 
 image: public/blog-images/resume-for-international-candidates-usa.webp
 ---
 
+When you're an international candidate seeking employment in the United States, crafting a resume that meets U.S. norms is crucial. The U.S. job market is competitive, and employers often rely on Applicant Tracking Systems (ATS) to screen resumes before they even reach human eyes. Understanding the nuances of U.S. resume expectations, coupled with strategic job search techniques, will significantly enhance your chances of landing interviews and job offers. This guide will provide you with the essential steps to create a compelling resume tailored for U.S. employers, whether you're a new graduate, an experienced professional, or seeking visa sponsorship.
+
 ## Key Takeaways
 
 - U.S. resumes should exclude personal information like photos, age, and nationality to prevent bias.
@@ -17,9 +19,6 @@ image: public/blog-images/resume-for-international-candidates-usa.webp
 - Use strong action verbs and quantify achievements to demonstrate impact in your work experience.
 - Tailor your resume with relevant keywords to pass Applicant Tracking Systems (ATS) and use simple formatting.
 - Clearly state your work authorization status if seeking visa sponsorship to inform potential employers.
-
-
-When you're an international candidate seeking employment in the United States, crafting a resume that meets U.S. norms is crucial. The U.S. job market is competitive, and employers often rely on Applicant Tracking Systems (ATS) to screen resumes before they even reach human eyes. Understanding the nuances of U.S. resume expectations, coupled with strategic job search techniques, will significantly enhance your chances of landing interviews and job offers. This guide will provide you with the essential steps to create a compelling resume tailored for U.S. employers, whether you're a new graduate, an experienced professional, or seeking visa sponsorship.
 
 ## Understand U.S. Resume Norms
 
@@ -36,13 +35,6 @@ Before you begin crafting your resume, familiarize yourself with the typical str
 ## Key Sections of Your Resume
 
 A well-structured resume typically consists of several key sections. Here’s how to organize yours:
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 ### 1. Contact Information
 
@@ -73,10 +65,9 @@ List your work experience in reverse chronological order. Include:
 
 **Example:**
 
-**[Software Engineer](https://thetailorcv.com/blog/software-engineer-interview-preparation)**  
+**Software Engineer**  
 XYZ Tech Solutions, San Francisco, CA  
 June 2021 - Present  
-
 - Developed and implemented a customer feedback system that improved user satisfaction ratings by 20% within six months.
 - Collaborated with cross-functional teams to streamline project workflows, reducing project delivery time by 15%.
 
@@ -96,7 +87,7 @@ Many U.S. companies use ATS to filter resumes before they reach hiring managers.
 
 - **Simple Formatting**: Avoid complex layouts, graphics, or unusual fonts. Stick to a standard format that ATS can easily read.
 
-- **Free [ATS Score Checker](https://thetailorcv.com/blog/ats-score-checker-free)**: Use tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate how well your resume aligns with the job description.
+- **Free ATS Score Checker**: Use tools like the [free ATS score checker](https://www.thetailorcv.com/solutions) to evaluate how well your resume aligns with the job description.
 
 ## Highlight Work Authorization
 
@@ -107,8 +98,6 @@ If you're seeking visa sponsorship, it’s essential to address your work author
 ## Leverage Networking and LinkedIn
 
 Networking is crucial in the U.S. job market. Here are some strategies to enhance your networking efforts:
-
-
 
 - **LinkedIn Profile**: Maintain an updated LinkedIn profile that reflects your resume. Use the platform to connect with professionals in your field and engage with relevant content.
 

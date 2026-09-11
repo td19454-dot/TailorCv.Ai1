@@ -166,14 +166,14 @@
             <div class="solx-wrap">
                 <div class="solx-kicker">Pricing</div>
                 <h2 class="solx-h2">Simple pricing, <span class="g">powerful features</span></h2>
-                <p class="solx-lead">Get 3 free ATS scans. Upgrade only when you want unlimited access.</p>
+                <p class="solx-lead">Your ATS score is free forever. Upgrade only when you want unlimited access.</p>
                 <div class="pricing-preview-grid cols-3">
                     <article class="pricing-preview-card basic">
                         <p class="pricing-plan-name">Free</p>
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>3 free ATS scans</li>
+                            <li>ATS score, unlimited</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -278,25 +278,6 @@
             function clearErr(){ errEl.hidden = true; errEl.textContent = ''; }
             function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-            // Captured once, before any scan mutates it, so we can restore the
-            // idle "your score will show up here" state.
-            var outIdleHtml = outEl.innerHTML;
-
-            // Redirecting to /ats-analysis on success leaves this panel showing
-            // its "Scoring your resume…" spinner. On a normal navigation that's
-            // fine — the tab moves on — but pressing Back from /ats-analysis can
-            // restore this exact page from the browser's back-forward cache, and
-            // `pageshow` is the only event that fires for that restore (no
-            // DOMContentLoaded, no fresh network request), so it's what has to
-            // reset the spinner back to idle.
-            function resetATSGuestUI() {
-                goEl.disabled = false;
-                goEl.textContent = 'Get My Free ATS Score';
-                outEl.innerHTML = outIdleHtml;
-                clearErr();
-            }
-            window.addEventListener('pageshow', resetATSGuestUI);
-
             function setName(f){ nameEl.textContent = '✓ ' + f.name; nameEl.hidden = false; clearErr(); }
 
             fileEl.addEventListener('change', function(){
@@ -331,7 +312,7 @@
                 fetch('/get-ats-score?jd_string=' + encodeURIComponent(jd), { method: 'POST', body: fd })
                     .then(function(res){
                         return res.json().catch(function(){ return {}; }).then(function(body){
-                            if (!res.ok) throw new Error(tcvErrorMessage(body, 'That scan did not go through. Please try again.'));
+                            if (!res.ok) throw new Error(body.detail || body.error || 'That scan did not go through. Please try again.');
                             return body;
                         });
                     })

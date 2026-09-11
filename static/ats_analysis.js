@@ -217,15 +217,10 @@
     return s;
   }
 
-  // Bands must match the server's match_level (functions.py compute_* / main.py),
-  // otherwise the ring says "Good Match" while the payload says "Fair".
-  //   <40 Poor · <60 Fair · <75 Good · <90 Strong · else Excellent
   function scoreColor(score) {
-    if (score >= 90) return { stroke: "#20d870", label: "Excellent Match" };
-    if (score >= 75) return { stroke: "#20d870", label: "Strong Match"    };
-    if (score >= 60) return { stroke: "#ffb020", label: "Good Match"      };
-    if (score >= 40) return { stroke: "#ffb020", label: "Fair Match"      };
-    return               { stroke: "#ff4d6d", label: "Needs Work"      };
+    if (score >= 75) return { stroke: "#20d870", label: "Strong Match" };
+    if (score >= 55) return { stroke: "#ffb020", label: "Good Match"   };
+    return               { stroke: "#ff4d6d", label: "Needs Work"   };
   }
 
   /* ─── Count checks ───────────────────────────────────────────────────────── */
@@ -244,13 +239,9 @@
       d?.sections?.skills?.present,
       d?.sections?.education?.present,
       d?.sections?.chronological_dates?.passed,
-      // single_column and project_links are both scored server-side; leaving
-      // them out made the "N passed / N failed" pills disagree with the score.
-      d?.formatting?.single_column?.passed,
       d?.formatting?.photos_or_graphics?.passed,
       d?.formatting?.excessive_design?.passed,
       d?.formatting?.unnecessary_sections?.passed,
-      d?.projects?.project_links?.passed,
       d?.education?.qualification_match?.passed,
       d?.experience?.experience_match?.passed,
       d?.experience?.company_names?.present,
@@ -765,9 +756,8 @@
     document.dispatchEvent(new CustomEvent("atsScoreReady", { detail: { score } }));
   }
 
-  // Portfolio card: a suggestion, not a scored check. There is no portfolio
-  // term in the scoring math, so this must not claim a points penalty - it
-  // used to render "−4", which was a number we invented.
+  // Portfolio card: nudge to the builder when no portfolio link was found (−4), or
+  // a positive note when one was detected.
   function renderPortfolioSection(d) {
     const box = document.getElementById("portfolio-section");
     if (!box) return;
@@ -782,11 +772,11 @@
       box.style.borderColor = "rgba(52,211,153,.3)";
     } else {
       box.innerHTML =
-        '<div class="card-title">Portfolio <span style="color:#94a3b8;font-weight:600;font-size:12px;">Optional</span></div>' +
+        '<div class="card-title">Portfolio <span style="color:#f87171;font-weight:700;">&minus;4</span></div>' +
         '<div style="display:flex;gap:12px;align-items:flex-start;">' +
           '<span style="font-size:22px;line-height:1;">🚀</span>' +
-          '<div><strong style="color:#eaf2ff;">No portfolio link found</strong>' +
-          '<p style="font-size:13.5px;color:var(--muted);margin:6px 0 12px;line-height:1.55;">This does not affect your score. But a live portfolio gives a recruiter something your resume cannot — proof they can click. Build one from this resume in about a minute, then add the link near the top.</p>' +
+          '<div><strong style="color:#eaf2ff;">Don\'t worry — you\'re almost there!</strong>' +
+          '<p style="font-size:13.5px;color:var(--muted);margin:6px 0 12px;line-height:1.55;">No portfolio link was found on your resume. Go to the <strong>Portfolio Website Builder</strong>, upload your resume, and publish a live portfolio in one minute — then add the link to your resume to recover these points.</p>' +
           '<a href="/portfolio" style="display:inline-block;padding:9px 16px;border-radius:10px;font-weight:700;font-size:13.5px;text-decoration:none;color:#fff;background:linear-gradient(135deg,#7c3aed,#2563eb);">Build my portfolio &rarr;</a>' +
           '</div>' +
         '</div>';

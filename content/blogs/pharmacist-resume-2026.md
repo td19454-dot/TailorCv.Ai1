@@ -10,6 +10,12 @@ slug: pharmacist-resume-2026
 keywords: pharmacist resume, pharmacist resume 2026, clinical pharmacist resume, retail pharmacist resume, hospital pharmacist resume, pharmacy ATS keywords, PharmD resume
 ---
 
+A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) must be immediately visible, and your clinical responsibilities must be specific.
+
+Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
+
+---
+
 ## Key Takeaways
 
 - A pharmacist resume in 2026 should highlight clinical competence, licensure, and medication safety records relevant to the specific pharmacy setting.
@@ -17,13 +23,6 @@ keywords: pharmacist resume, pharmacist resume 2026, clinical pharmacist resume,
 - Strong bullet points should quantify achievements and demonstrate clinical or operational impact, using action verbs and specific outcomes.
 - Incorporate relevant ATS keywords such as "medication therapy management," "patient counseling," and "controlled substances" to enhance visibility to employers.
 - Tailor your resume summary to reflect your experience level, emphasizing key skills and certifications that align with the desired pharmacy role.
-
-
-A pharmacist resume in 2026 must show clinical competence, licensure, medication safety record, and the specific pharmacy setting you specialize in - retail, hospital, clinical, or industry. Pharmacy hiring is credential-driven, so your license and [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) must be immediately visible, and your clinical responsibilities must be specific.
-
-Before applying, run your resume through the [ATS score checker](https://www.thetailorcv.com/solutions). Use [ATS-friendly resume templates](https://www.thetailorcv.com/templates). For other healthcare roles, read the [nursing resume guide](https://thetailorcv.com/blog/nursing-resume-2026).
-
----
 
 ## Best Pharmacist Resume Format
 
@@ -33,13 +32,6 @@ Before applying, run your resume through the [ATS score checker](https://www.the
 4. Clinical and technical skills
 5. Work experience
 6. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 One to two pages.
 
@@ -128,8 +120,6 @@ Tertiary Care Hospital | Mar 2021 - Present
 
 ## Common Pharmacist Resume Mistakes
 
-
-
 ### Mistake 1: License not prominent
 
 Pharmacy is credential-gated. Your license status and number must be clearly visible near the top.
@@ -145,6 +135,12 @@ Epic Willow, Cerner, Pyxis, Omnicell - list the systems you have used. These are
 ### Mistake 4: Generic duties
 
 "Dispensed medications and counseled patients" - add volume, setting, accuracy, and specific clinical programs.
+
+---
+
+## Sources Checked
+
+This guide uses career context from the [BLS Pharmacists Occupational Outlook Handbook](https://www.bls.gov/ooh/healthcare/pharmacists.htm) and TailorCV analysis of pharmacy job descriptions.
 
 ---
 
@@ -167,7 +163,7 @@ Epic Willow, Cerner, Pyxis, Omnicell - list the systems you have used. These are
 
 ## Make This Practical
 
-Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with How to Write Resume Bullet Points.
+Once you draft this resume, test it against a real job post with the [free ATS score checker](https://www.thetailorcv.com/solutions). Then improve fit using [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), polish the layout with [ATS-friendly resume templates](https://www.thetailorcv.com/templates), and make the bullets stronger with [How to Write Resume Bullet Points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points).
 
 A complete application needs more than one document. Pair the resume with a targeted letter from the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice role-specific questions with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and publish proof of work with the [portfolio website builder](https://www.thetailorcv.com/portfolio) when your role benefits from projects or case studies.
 

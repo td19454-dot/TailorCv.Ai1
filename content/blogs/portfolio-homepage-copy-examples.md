@@ -10,6 +10,10 @@ slug: portfolio-homepage-copy-examples
 keywords: portfolio homepage copy examples, portfolio headline examples, personal portfolio copy, job seeker portfolio examples
 ---
 
+Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) homepage should tell recruiters who you are, what you do, and what proof they should look at first. Do not make them decode a vague personal tagline.
+
+---
+
 ## Key Takeaways
 
 - Your portfolio homepage should clearly state your name, target role, core value, and provide a proof link to your work.
@@ -18,21 +22,9 @@ keywords: portfolio homepage copy examples, portfolio headline examples, persona
 - Ensure that your contact information and links to your portfolio or profiles are easily accessible for recruiters.
 - Use a practical checklist to align your application materials with the target role, ensuring clarity and focus in your messaging.
 
-
-Your [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) homepage should tell recruiters who you are, what you do, and what proof they should look at first. Do not make them decode a vague personal tagline.
-
----
-
 ## Homepage Formula
 
 Use:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 Name + target role + core value + proof link
 
@@ -44,7 +36,7 @@ I am Aisha, a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-20
 
 ## Developer Example
 
-Full-stack developer building fast, accessible web apps with React, Node.js, and PostgreSQL. My [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) include SaaS dashboards, API integrations, and authentication systems.
+Full-stack developer building fast, accessible web apps with React, Node.js, and PostgreSQL. My [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) include SaaS dashboards, API integrations, and authentication systems.
 
 ---
 
@@ -66,9 +58,15 @@ Avoid:
 
 - Welcome to my [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio)
 - Passionate and creative professional
-- Long paragraphs before [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- Long paragraphs before [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - No clear target role
 - Hidden contact button
+
+---
+
+## Conclusion
+
+Strong portfolio copy is clear before it is clever. Build your portfolio with a focused role message, then link it from your resume and test the resume with the [ATS score checker](/solutions).
 
 ---
 
@@ -85,8 +83,6 @@ The goal is not to copy the [job description](https://thetailorcv.com/blog/job-d
 ## Practical Upgrade Checklist
 
 Before you send the application, review this checklist:
-
-
 
 1. Does the top section match the target role clearly?
 2. Are the most important keywords from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) included naturally?
@@ -160,12 +156,6 @@ Use these links as a practical cluster: first fix the resume and ATS alignment, 
 
 ---
 
-## Conclusion
-
-Strong portfolio copy is clear before it is clever. Build your portfolio with a focused role message, then link it from your resume and test the resume with the [ATS score checker](/solutions).
-
----
-
 ## Frequently Asked Questions
 
 ### How many times should I customize this before applying?
@@ -178,11 +168,11 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and how to write resume bullet points guides will help you revise before testing again.
+Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
 
 ---
 

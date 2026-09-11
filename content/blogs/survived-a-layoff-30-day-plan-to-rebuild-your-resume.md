@@ -10,6 +10,12 @@ keywords: laid off what to do next, layoff 30 day plan, resume after layoff, job
 image: public/blog-images/survived-a-layoff-30-day-plan-to-rebuild-your-resume.webp
 ---
 
+A layoff is disorienting - one day you have a routine and a role, the next you're staring at a blank calendar. The candidates who bounce back fastest aren't the ones who panic-apply to fifty jobs on day one; they're the ones who follow a structured plan that rebuilds momentum in stages. Here's a realistic 30-day framework.
+
+Start with a quick win: check your current resume against a role you actually want with the [free ATS score checker](https://www.thetailorcv.com/solutions) - seeing a concrete score is a better first step than staring at a blank document.
+
+---
+
 ## Key Takeaways
 
 - Take time to reset and assess your situation before applying for jobs to avoid panic-driven decisions.
@@ -17,13 +23,6 @@ image: public/blog-images/survived-a-layoff-30-day-plan-to-rebuild-your-resume.w
 - Tailor your resume for each job application and utilize tools to check its effectiveness against target roles.
 - Network with former colleagues and apply to a limited number of tailored roles daily to maintain focus and quality.
 - Prepare to discuss your layoff confidently and practice interview skills to rebuild your confidence before real interviews.
-
-
-A layoff is disorienting - one day you have a routine and a role, the next you're staring at a blank calendar. The candidates who bounce back fastest aren't the ones who panic-apply to fifty jobs on day one; they're the ones who follow a structured plan that rebuilds momentum in stages. Here's a realistic 30-day framework.
-
-Start with a quick win: check your current resume against a role you actually want with the [free ATS score checker](https://www.thetailorcv.com/solutions) - seeing a concrete score is a better first step than staring at a blank document.
-
----
 
 ## Week 1: Reset and Assess
 
@@ -40,13 +39,6 @@ Start with a quick win: check your current resume against a role you actually wa
 - Run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) against 2-3 real target roles to see where it's weak
 - Update your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) to match your resume and signal you're open to opportunities
 - If your field supports it, build or refresh a [portfolio](https://www.thetailorcv.com/portfolio) to show recent work
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 ---
 
@@ -91,8 +83,6 @@ Rebuilding your resume after a layoff can be daunting, and it's easy to make mis
 ## Do’s and Don’ts for Networking After a Layoff
 
 Networking is a critical component of your job search, especially after a layoff. Here are some effective do’s and don’ts to guide you:
-
-
 
 ### Do’s:
 - **Do Reach Out to Former Colleagues**: They can provide valuable insights about job openings or refer you to potential employers.

@@ -10,15 +10,6 @@ slug: resume-file-format-guide
 keywords: resume file format, PDF vs Word resume, should resume be PDF or Word, how to name resume file, resume file name, docx vs pdf resume, resume format 2026
 ---
 
-## Key Takeaways
-
-- Save your resume as a PDF unless the job posting specifically requests a Word document (.docx).
-- PDFs preserve formatting across devices, ensuring your resume appears as intended.
-- Word documents may be necessary if explicitly requested by employers or for certain older ATS systems.
-- Avoid using formats like .pages, .rtf, Google Docs links, .txt, or image files, as they can cause compatibility issues.
-- Most modern ATS systems handle both PDF and Word formats well, but be cautious of specific requirements.
-
-
 You have written a great resume. Now - should you save it as a PDF or a Word document? And what should you name the file? These seem like trivial questions, but the wrong choice can cause formatting to break, [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems to parse incorrectly, or your file to get lost in a recruiter's inbox.
 
 This guide gives you clear rules for file format and naming so your resume reaches every reviewer the way you intended it to look.
@@ -26,6 +17,14 @@ This guide gives you clear rules for file format and naming so your resume reach
 For the content of your resume, read [the anatomy of a perfect resume](https://thetailorcv.com/blog/anatomy-of-a-resume) and start from an [ATS-friendly template](https://www.thetailorcv.com/templates). Test your resume for ATS compatibility with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Save your resume as a PDF unless the job posting specifically requests a Word document (.docx).
+- PDFs preserve formatting across devices, ensuring your resume appears as intended.
+- Word documents may be necessary if explicitly requested by employers or for certain older ATS systems.
+- Avoid using formats like .pages, .rtf, Google Docs links, .txt, or image files, as they can cause compatibility issues.
+- Most modern ATS systems handle both PDF and Word formats well, but be cautious of specific requirements.
 
 ## PDF vs Word: The Short Answer
 
@@ -68,13 +67,6 @@ When applying internally within your company (through internal portals or emaili
 
 ## Other Formats: What to Avoid
 
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 ### .pages (Apple Pages)
 Not universally readable. If you created your resume in Pages, export it as PDF or Word before submitting.
 
@@ -115,7 +107,6 @@ This is the detail almost everyone gets wrong. Your file name is the first thing
 **[FirstName-LastName-Resume.pdf]**
 
 Examples:
-
 - `John-Smith-Resume.pdf`
 - `Priya-Mehta-Resume.pdf`
 - `James-OBrien-Resume.pdf`
@@ -125,8 +116,7 @@ Examples:
 **[FirstName-LastName-Role-Resume.pdf]**
 
 Examples:
-
-- `Sarah-Johnson-[Product-Manager](https://thetailorcv.com/blog/product-manager-portfolio-guide)-Resume.pdf`
+- `Sarah-Johnson-Product-Manager-Resume.pdf`
 - `Daniel-Lee-Data-Scientist-Resume.pdf`
 
 This is useful if you are tailoring resumes per role and want to keep track of versions.
@@ -148,12 +138,9 @@ This is useful if you are tailoring resumes per role and want to keep track of v
 
 If you tailor your resume for different roles (which you should - read [how to tailor your resume for every job](https://thetailorcv.com/blog/how-to-tailor-resume-for-every-job)), maintain a clear naming system:
 
-
-
 **Master resume**: `John-Smith-Resume-Master.pdf` - full version, never submitted directly
 
 **Tailored versions**:
-
 - `John-Smith-Software-Engineer-Resume.pdf`
 - `John-Smith-Data-Scientist-Resume.pdf`
 

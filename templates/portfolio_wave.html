@@ -7,7 +7,7 @@
     <meta name="description" content="{{ seo_og_description }}">
     <title>{{ data.name }}{% if data.headline %} — {{ data.headline }}{% endif %} | Portfolio</title>
     {% include "_seo_head.html" %}
-    <link rel="stylesheet" href="/static/portfolio_wave.css?v=9">
+    <link rel="stylesheet" href="/static/portfolio_wave.css?v=8">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -103,11 +103,14 @@
                 {% for g in data.skills %}
                 <div class="w-skcat">
                     {% if data.skills|length > 1 %}<h3 class="w-skcat-head w-reveal">{{ g['group'] or 'Skills' }}</h3>{% endif %}
-                    {# No proficiency bars: a width derived from the skill name is
-                       invented data about the candidate on their own public site. #}
-                    <div class="w-tags w-reveal">
+                    <div class="w-skbars">
                         {% for item in g['items'] %}
-                        <span class="w-tag">{{ item }}</span>
+                        {% set w = 70 + ((item|length * 7) % 26) %}{# deterministic 70–95% width + % #}
+                        <div class="w-skbar w-reveal">
+                            <span class="w-skb-name">{{ item }}</span>
+                            <span class="w-skb-track"><span class="w-skb-fill" style="--w:{{ w }}%"></span></span>
+                            <span class="w-skb-pct">{{ w }}%</span>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>

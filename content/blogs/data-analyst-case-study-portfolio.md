@@ -10,6 +10,10 @@ slug: data-analyst-case-study-portfolio
 keywords: data analyst case study portfolio, data analyst portfolio project, analytics case study, data analyst project structure
 ---
 
+A data analyst [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) case study should show how you turn messy information into a decision. It is not enough to upload a dashboard screenshot. Hiring teams want to see the question, the method, and the recommendation.
+
+---
+
 ## Key Takeaways
 
 - A data analyst case study should clearly outline the business question, dataset source, cleaning steps, analysis approach, insights, recommendations, and limitations.
@@ -17,21 +21,9 @@ keywords: data analyst case study portfolio, data analyst portfolio project, ana
 - Optimize your application materials by aligning them with specific job descriptions, ensuring relevant keywords and examples are included.
 - Before applying, review your application to ensure it matches the target role, includes measurable results, and is easy for recruiters to scan quickly.
 
-
-A data analyst [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) case study should show how you turn messy information into a decision. It is not enough to upload a dashboard screenshot. Hiring teams want to see the question, the method, and the recommendation.
-
----
-
 ## Best [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) Structure
 
 Use this order:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 1. Business question
 2. Dataset source
@@ -73,11 +65,17 @@ Do not over-design the [portfolio](https://thetailorcv.com/blog/how-to-build-pro
 
 ---
 
+## Conclusion
+
+A strong [data analyst case study](https://thetailorcv.com/blog/data-analyst-portfolio-guide) proves business thinking and technical skill together. Link it from your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026), then use the [ATS score checker](/solutions) to make sure your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026) reflects the same tools and outcomes.
+
+---
+
 ## How to Turn This Into a Stronger Application
 
 Treat this guide as a working document, not just something to read once. The best job seekers use a simple loop: compare the [target role](https://thetailorcv.com/blog/resume-matching-data-analyst), update one part of the application, test the result, then repeat. That is especially important for your data analyst [case study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study) because small wording choices can change how recruiters and ATS systems understand your fit.
 
-Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a [specific posting](https://thetailorcv.com/blog/resume-matching-data-analyst) with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) profile, portfolio, cover letter, or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
+Start by choosing one real [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). Do not optimize for a vague job category like "marketing" or "developer." Optimize for a [specific posting](https://thetailorcv.com/blog/resume-matching-data-analyst) with a specific title, responsibilities, tools, and outcomes. Then look at your resume, [LinkedIn](https://thetailorcv.com/blog/linkedin-to-portfolio-guide) profile, [portfolio](https://thetailorcv.com/blog/data-analyst-portfolio-guide), [cover letter](https://www.thetailorcv.com/cover-letter), or interview story through that exact lens. If the employer asks for stakeholder management, automation, SQL, customer support, documentation, or leadership, those words should appear naturally in your materials where they are true.
 
 The goal is not to copy the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide). The goal is to prove overlap. A good application makes the recruiter think, "This person has already done work close to what we need." That happens when your examples include the same skills, context, and outcomes the role is asking for.
 
@@ -103,8 +101,6 @@ If the answer is no for any item, fix that before applying. Most candidates do n
 ## Example Before and After
 
 Weak version:
-
-
 
 I have experience in different tasks and I am looking for a good opportunity where I can grow and contribute to the company.
 
@@ -161,12 +157,6 @@ Use these links as a practical cluster: first fix the resume and ATS alignment, 
 
 ---
 
-## Conclusion
-
-A strong [data analyst case study](https://thetailorcv.com/blog/data-analyst-portfolio-guide) proves business thinking and technical skill together. Link it from your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026), then use the [ATS score checker](/solutions) to make sure your [resume](https://thetailorcv.com/blog/data-analyst-resume-2026) reflects the same tools and outcomes.
-
----
-
 ## Frequently Asked Questions
 
 ### How many times should I customize this before applying?
@@ -179,11 +169,11 @@ No. Add only the keywords that honestly match your experience. Keyword stuffing 
 
 ### What if I do not have exact experience yet?
 
-Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [projects in resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
+Use adjacent proof. Projects, coursework, freelance work, volunteer experience, internships, or internal responsibilities can all demonstrate relevant skill. The key is to explain the connection clearly instead of hoping the recruiter guesses it. If you are early-career, read [resume with no experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [projects in resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers); if you are switching fields, use the [career change resume guide](https://thetailorcv.com/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026).
 
 ### How do I know if the final version is strong enough?
 
-Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and how to write resume bullet points guides will help you revise before testing again.
+Paste your resume and the job description into the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). If the score is low, review missing keywords, weak section headings, and bullets that describe responsibilities instead of outcomes. The [how to increase ATS score](https://thetailorcv.com/blog/how-to-increase-ats-score), [ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes), and [how to write resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) guides will help you revise before testing again.
 
 ---
 

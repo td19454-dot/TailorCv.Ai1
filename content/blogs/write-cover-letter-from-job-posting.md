@@ -10,14 +10,6 @@ keywords: cover letter from job posting, write cover letter from job description
 image: public/blog-images/write-cover-letter-from-job-posting.webp
 ---
 
-## Key Takeaways
-
-- Cover letters matter sometimes - on a high-volume ATS-filtered application the letter may never be opened.
-- A letter drawn from the specific posting, rather than a template, does four things a generic one cannot.
-- By hand it means reading the posting closely, identifying its top priorities, and mapping your examples to them.
-- Doing it on the page changes the equation, because the posting is already open in front of you.
-- Whatever you draft it with, a strong letter follows a simple shape.
-
 Most cover letters are written once, saved as "Cover Letter Final.docx", and pasted into every application with the company name swapped out — and recruiters can smell it instantly. A cover letter is only worth writing if it is built from the specific posting in front of you. The good news is that doing it properly no longer means starting from a blank page every time.
 
 This guide covers what a cover letter actually needs to do in 2026, how to build one from a job posting, and how to generate a genuinely tailored letter in one click straight from the page you are applying on.
@@ -58,28 +50,13 @@ That combination — tailored *and* effortless — is what a generic saved lette
 
 Whatever you use to draft it, a strong letter follows a simple shape.
 
-### What the finished letter looks like
-
-![A classic cover letter template: single column, standard headings, real text rather than a graphic](public/blog-images/ats-friendly-cover-letter-format-template-classic.webp)
-
-A format like this parses cleanly - one column, standard headings, everything the parser needs where it expects to find it.
-
-
 **Opening (1–2 sentences):** a specific hook — why this role, why this company — not "I am writing to apply for". **Body paragraph one:** your strongest match to the posting's top requirement, with a concrete, [quantified](/blog/how-to-quantify-resume-achievements) example. **Body paragraph two:** a second relevant proof point, or why you are drawn to the company specifically. **Close (1–2 sentences):** a confident, brief sign-off. Keep the whole thing under a page — three to four short paragraphs. Recruiters skim; a wall of text loses them.
 
 Keep it [ATS-friendly](/blog/how-to-make-resume-ats-friendly) in format if it is going through a portal — plain text, no fancy layout — since the same [parser rules](/blog/ats-resume-parser-friendly-format) and [formatting mistakes](/blog/ats-resume-formatting-mistakes) can apply to letters too.
 
-
 ## Cover Letters for Different Situations
 
 The approach adapts to the situation, and the posting is still the anchor in every case.
-
-### Generating the letter from a job description
-
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Details are pulled from your resume automatically, and the tone control decides how formal the letter reads before you download it.
-
 
 For a [career change](/blog/cover-letter-for-career-change), the letter does heavier lifting than usual — it is where you connect the dots the resume cannot, explaining why your background transfers to a role it does not obviously fit. For [remote roles](/blog/cover-letter-for-remote-jobs), address the remote-specific concerns directly: how you work independently, communicate across time zones, and stay accountable without an office. For an [internal job application](/blog/cover-letter-for-internal-job-application), the tone shifts again — you are known, so the letter is about ambition and fit for the new team, not introduction.
 

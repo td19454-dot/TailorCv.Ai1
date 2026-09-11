@@ -10,14 +10,6 @@ slug: data-analyst-vs-data-scientist
 keywords: data analyst vs data scientist, data analyst or data scientist, data career 2026, difference between data analyst and data scientist, which data role, data career path
 ---
 
-## Key Takeaways
-
-- Data analysts focus on understanding past data and answering business questions using SQL, dashboards, and reporting, while data scientists predict future outcomes using machine learning and statistical modeling.
-- The day-to-day work of data analysts includes creating reports and dashboards, whereas data scientists build and deploy predictive models and work with complex datasets.
-- Data analyst roles are more accessible, often requiring only a bachelor's degree or certifications, while data scientist positions typically demand advanced degrees and a strong math background.
-- Data scientists generally earn higher salaries than data analysts due to their specialized skills, though salary ranges can overlap significantly based on experience and location.
-
-
 "Should I become a [data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) or a [data scientist](https://thetailorcv.com/blog/data-scientist-portfolio-guide)?" is one of the most common questions for people entering the data field. The roles overlap but differ significantly in skills, day-to-day work, salary, and career trajectory. Choosing the right one depends on your interests, math comfort, and career goals.
 
 This guide compares the two roles honestly across every dimension that matters.
@@ -25,6 +17,13 @@ This guide compares the two roles honestly across every dimension that matters.
 For each role, we have detailed resume guides: the [data analyst resume guide](https://thetailorcv.com/blog/data-analyst-resume-2026) and [data scientist resume guide](https://thetailorcv.com/blog/data-scientist-resume-2026). Whichever you choose, optimize your resume with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- Data analysts focus on understanding past data and answering business questions using SQL, dashboards, and reporting, while data scientists predict future outcomes using machine learning and statistical modeling.
+- The day-to-day work of data analysts includes creating reports and dashboards, whereas data scientists build and deploy predictive models and work with complex datasets.
+- Data analyst roles are more accessible, often requiring only a bachelor's degree or certifications, while data scientist positions typically demand advanced degrees and a strong math background.
+- Data scientists generally earn higher salaries than data analysts due to their specialized skills, though salary ranges can overlap significantly based on experience and location.
 
 ## The Core Difference
 
@@ -122,7 +121,6 @@ Many data scientists start as analysts and transition up. The analyst role is an
 
 ## Which Should You Choose?
 
-
 ### Choose Data Analyst If You:
 - Enjoy answering business questions and finding insights
 - Like building dashboards and communicating with stakeholders
@@ -157,13 +155,10 @@ Read the [how to get your first tech job guide](https://thetailorcv.com/blog/how
 ## Related Roles to Consider
 
 The data field has more than two roles:
-
-| Role | What it involves |
-|---|---|
-| **Data Engineer** | Builds the data infrastructure and pipelines. Read the [data engineer resume guide](https://thetailorcv.com/blog/data-engineer-resume-2026) |
-| **ML Engineer** | Productionizes ML models. Read the [ML engineer resume guide](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026) |
-| **Analytics Engineer** | Bridges analyst and engineer (dbt, modeling) |
-| **BI Developer** | Specializes in business intelligence and dashboards |
+- **Data Engineer**: Builds the data infrastructure and pipelines. Read the [data engineer resume guide](https://thetailorcv.com/blog/data-engineer-resume-2026).
+- **ML Engineer**: Productionizes ML models. Read the [ML engineer resume guide](https://thetailorcv.com/blog/machine-learning-engineer-resume-2026).
+- **Analytics Engineer**: Bridges analyst and engineer (dbt, modeling).
+- **BI Developer**: Specializes in business intelligence and dashboards.
 
 ---
 

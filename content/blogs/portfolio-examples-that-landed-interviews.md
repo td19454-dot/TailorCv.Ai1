@@ -10,6 +10,12 @@ keywords: portfolio examples that get interviews, developer portfolio examples, 
 image: public/blog-images/portfolio-examples-that-landed-interviews.webp
 ---
 
+A resume tells a recruiter what you claim you can do. A portfolio shows them. Across every field we've reviewed - design, development, data, and marketing - the portfolios that consistently land interviews share the same traits: a handful of focused projects, clear context on your role, and measurable results, not just screenshots.
+
+You can build a version of every example below in minutes by turning your existing resume into a live site with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - no separate design work required.
+
+---
+
 ## Key Takeaways
 
 - Effective portfolios across design, development, data, and marketing should focus on a few key projects with clear context and measurable results.
@@ -17,13 +23,6 @@ image: public/blog-images/portfolio-examples-that-landed-interviews.webp
 - Data portfolios should showcase the transformation of messy datasets into clean outputs and highlight business impacts of technical work.
 - UX design portfolios must document the entire design process, while graphic design portfolios should curate a selection of diverse works.
 - Marketing portfolios should emphasize campaign metrics and provide context for writing samples to better connect with potential employers.
-
-
-A resume tells a recruiter what you claim you can do. A portfolio shows them. Across every field we've reviewed - design, development, data, and marketing - the portfolios that consistently land interviews share the same traits: a handful of focused projects, clear context on your role, and measurable results, not just screenshots.
-
-You can build a version of every example below in minutes by turning your existing resume into a live site with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) - no separate design work required.
-
----
 
 ## Development Portfolios
 
@@ -94,30 +93,19 @@ Cybersecurity candidates who documented CTF writeups or personal security resear
 
 ---
 
-
 ## What Every Strong Portfolio Has in Common
 
 - **3-6 focused projects**, not a dumping ground of everything you've touched - see [portfolio checklist before applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
-
-| Tool | What it does |
-|---|---|
-| **Context before code or visuals** | the problem, your role, and the outcome |
-| **A clear About Me and contact section** | see [portfolio about me section](https://thetailorcv.com/blog/portfolio-about-me-section) and [portfolio contact section](https://thetailorcv.com/blog/portfolio-contact-section) |
-| **Fast load times and mobile-friendly layout** | see portfolio SEO - get found |
-| **A direct link from the resume itself** | see add a portfolio link to your resume |
+- **Context before code or visuals** - the problem, your role, and the outcome
+- **A clear About Me and contact section** - see [portfolio about me section](https://thetailorcv.com/blog/portfolio-about-me-section) and [portfolio contact section](https://thetailorcv.com/blog/portfolio-contact-section)
+- **Fast load times and mobile-friendly layout** - see [portfolio SEO - get found](https://thetailorcv.com/blog/portfolio-seo-get-found)
+- **A direct link from the resume itself** - see [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume)
 
 ---
 
 ## Common Mistakes to Avoid When Creating Your Portfolio
 
 Creating a portfolio can be an exciting but daunting task. Many candidates make avoidable mistakes that can undermine their chances of landing interviews. Here are some common pitfalls and how to steer clear of them:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
 
 1. **Neglecting to Tailor Your Portfolio**  
    Failing to customize your portfolio for specific job applications can lead to missed opportunities. Always align your showcased projects and skills with the job description.
@@ -178,13 +166,6 @@ Use this checklist to ensure your portfolio is comprehensive and effectively sho
 ## Scenarios: How to Use Your Portfolio in Interviews
 
 Understanding how to effectively present your portfolio during an interview can greatly enhance your chances of success. Here are a few scenarios to consider:
-
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-Practising out loud is the part most people skip. Here the session is built from your own resume and target role, and ends with a scorecard naming what to fix.
-
 
 1. **Scenario 1: The Portfolio Walkthrough**  
    When asked about your experience, take the opportunity to guide the interviewer through your portfolio. Highlight specific projects that align with the role. Use your narrative to engage them and demonstrate your thought process.

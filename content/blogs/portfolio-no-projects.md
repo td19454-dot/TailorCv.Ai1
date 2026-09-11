@@ -10,6 +10,8 @@ slug: portfolio-no-projects
 keywords: portfolio no projects, what to put in portfolio, portfolio without experience, build first project, empty portfolio
 ---
 
+An empty portfolio feels like a chicken-and-egg trap - you need work to get hired, but you need to be hired to get work. It is not. You can create credible material in a weekend or two. Here is exactly what to put in your portfolio when you are starting from zero. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
+
 ## Key Takeaways
 
 - Build small, real projects that solve actual problems to establish credibility in your portfolio.
@@ -17,9 +19,6 @@ keywords: portfolio no projects, what to put in portfolio, portfolio without exp
 - Contribute to open-source projects, collaborate with others, or help nonprofits to gain practical experience.
 - Document your learning process and create case studies from hypothetical scenarios to demonstrate problem-solving skills.
 - Ensure your resume and portfolio tell a consistent story to avoid confusion for recruiters.
-
-
-An empty portfolio feels like a chicken-and-egg trap - you need work to get hired, but you need to be hired to get work. It is not. You can create credible material in a weekend or two. Here is exactly what to put in your portfolio when you are starting from zero. Pair this with [Build a Portfolio With No Experience](https://thetailorcv.com/blog/portfolio-with-no-experience) and [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026).
 
 ## Build Something Small and Real
 Solve a problem you or someone near you actually has. The realness is the credibility.
@@ -78,13 +77,6 @@ By structuring your case studies in this way, you can effectively demonstrate yo
 ## Build a Personal Brand Through Blogging
 
 Another strategy to strengthen your portfolio is to create a blog around your field of expertise. This not only showcases your knowledge but also establishes you as a thought leader. Here’s how to get started:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 1. **Choose a Niche**: Focus on a specific area within your field. For instance, if you’re a frontend developer, consider writing about the latest trends in web development or tutorials on CSS frameworks.
 
@@ -152,17 +144,17 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Student Portfolio Guide](https://thetailorcv.com/blog/student-portfolio-guide)
 - [How to Get a Job With No Experience](https://thetailorcv.com/blog/how-to-get-a-job-with-no-experience-10-strategies-that-actually-work-in-2026)
 - [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas)
-- [Projects on a Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- [Projects on a Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)
 - [Turn Your Resume Into a Portfolio in Minutes](https://thetailorcv.com/blog/portfolio-from-resume-minutes)
-- [Resume With No Experience](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
+- [Resume With No Experience](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

@@ -10,6 +10,12 @@ slug: resume-customization-checklist
 keywords: resume customization checklist, resume tailoring checklist, resume check before applying, resume application checklist 2026, job application checklist resume
 ---
 
+Most candidates submit a resume they are "pretty confident" about. The candidates who consistently get callbacks run a structured check every time. This checklist covers 15 things to verify before every application - broken into sections so you can stop wherever your time allows and still come out ahead of the average applicant.
+
+After the checklist, verify your score automatically with the [free ATS checker](/solutions).
+
+---
+
 ## Key Takeaways
 
 - Always ensure your resume headline matches the exact job title from the job posting to catch the recruiter's attention.
@@ -17,13 +23,6 @@ keywords: resume customization checklist, resume tailoring checklist, resume che
 - Include all required and preferred skills from the job posting in your skills section, using both acronyms and full terms for key skills.
 - Prioritize the most relevant experience and ensure your bullet points highlight results rather than just tasks, embedding key keywords from the posting.
 - Regularly check your resume against the job description to ensure alignment and increase your chances of passing ATS screenings.
-
-
-Most candidates submit a resume they are "pretty confident" about. The candidates who consistently get callbacks run a structured check every time. This checklist covers 15 things to verify before every application - broken into sections so you can stop wherever your time allows and still come out ahead of the average applicant.
-
-After the checklist, verify your score automatically with the [free ATS checker](/solutions).
-
----
 
 ## Before You Start: Pull Up the Job Description
 
@@ -135,13 +134,6 @@ Use: Summary, Experience, Skills, Education, Certifications. Non-standard header
 ---
 
 ## Section 5 - Final Verification (1 Minute)
-
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
 
 ### 15. Have you run the ATS check?
 

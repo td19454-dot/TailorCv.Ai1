@@ -10,6 +10,10 @@ keywords: how to find a job in tokyo, jobs in tokyo for foreigners, work in toky
 image: public/blog-images/how-to-find-a-job-in-tokyo.png
 ---
 
+Tokyo is the beating heart of Japan's economy — home to global corporations, a thriving tech and startup scene, major financial institutions, and the largest concentration of English-friendly and international roles in the country. For foreigners aiming to work in Japan, Tokyo is where the most opportunities are, and where a career in Japan most often begins. But it's also competitive and fast-moving, so a focused strategy — knowing the industries, the right search channels, and how to present yourself — makes all the difference.
+
+This guide walks you through finding a job in Tokyo in 2026: the city's key sectors, where foreigners fit, how and where to search, the language question, and how to build an application that wins interviews.
+
 ## Key Takeaways
 
 - Tokyo has **Japan's largest concentration of international, tech, finance, and English-friendly roles**.
@@ -17,11 +21,6 @@ image: public/blog-images/how-to-find-a-job-in-tokyo.png
 - **Japanese-language ability widens your options**, but many Tokyo roles operate in English.
 - Use **foreigner-focused [job sites](https://thetailorcv.com/blog/best-job-search-websites-2026), LinkedIn, and recruitment agencies** that place foreigners.
 - Tailor your resume and application to each role — the market is competitive.
-
-
-Tokyo is the beating heart of Japan's economy — home to global corporations, a thriving tech and startup scene, major financial institutions, and the largest concentration of English-friendly and international roles in the country. For foreigners aiming to work in Japan, Tokyo is where the most opportunities are, and where a career in Japan most often begins. But it's also competitive and fast-moving, so a focused strategy — knowing the industries, the right search channels, and how to present yourself — makes all the difference.
-
-This guide walks you through finding a job in Tokyo in 2026: the city's key sectors, where foreigners fit, how and where to search, the language question, and how to build an application that wins interviews.
 
 ## Why Tokyo?
 
@@ -39,7 +38,7 @@ If you want the widest range of opportunities in Japan — especially as a forei
 
 - **Technology / IT:** strong demand for software engineers, data specialists, and IT professionals — often with English-friendly environments and global teams.
 - **Finance and consulting:** global banks, asset managers, and consultancies hire [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) and specialist professionals.
-- **[English teaching](https://thetailorcv.com/blog/english-teaching-jobs-japan-resume):** a reliable entry route — language schools, the JET Programme, and international schools.
+- **English teaching:** a reliable entry route — language schools, the JET Programme, and international schools.
 - **International business, sales, and marketing:** global firms need people who bridge cultures and markets.
 - **Tourism, hospitality, and translation:** roles valuing foreign language skills.
 
@@ -60,7 +59,7 @@ Even basic Japanese and a willingness to learn are viewed positively. If you hav
 Match your documents to the employer:
 
 - **Global/English-language roles** (the bulk of foreigner-friendly jobs in Tokyo): a strong Western-style, [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume. See [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and build one with the [TailorCV resume builder](https://thetailorcv.com/modify-cv).
-- **Traditional Japanese companies:** a *rirekisho* + *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
+- **Traditional Japanese companies:** a *rirekisho* + *shokumu-keirekisho* — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
 
 Tailor every application with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 
@@ -87,15 +86,6 @@ A warm introduction or referral carries weight in Japan and can open doors that 
 ## Step 4: Understand the Visa Reality
 
 As a foreigner, you generally need an employer-sponsored work visa matched to your role and qualifications — you secure the job first, then the employer sponsors. Factor visa processing (including the Certificate of Eligibility) into your timeline, and always confirm current rules with official Japanese authorities. See [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner) for context.
-
-
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
-
 
 > **Note:** Visa rules change and depend on your situation — always verify with the Japanese Immigration Services Agency, an embassy/consulate, or your employer.
 

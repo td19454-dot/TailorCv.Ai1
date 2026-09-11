@@ -10,6 +10,8 @@ slug: one-page-vs-multi-page-portfolio
 keywords: one page portfolio, multi page portfolio, portfolio website structure, single page portfolio design, portfolio layout
 ---
 
+Before you write a line of content, you have to decide on structure: one scrolling page, or several linked pages with dedicated project detail views. This choice affects how deep you can go on each project and how a recruiter navigates your work. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026).
+
 ## Key Takeaways
 
 - One-page portfolios are best for early-career candidates and generalists with 3-5 projects, offering quick scanning and simplicity.
@@ -18,20 +20,15 @@ keywords: one page portfolio, multi page portfolio, portfolio website structure,
 - Common mistakes include creating overly long one-page portfolios, unclear navigation in multi-page sites, and inconsistent project depth.
 - Starting with a one-page structure is advisable for early career professionals, expanding to multi-page as experience grows.
 
-
-Before you write a line of content, you have to decide on structure: one scrolling page, or several linked pages with dedicated project detail views. This choice affects how deep you can go on each project and how a recruiter navigates your work. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Website Themes 2026](https://thetailorcv.com/blog/portfolio-website-themes-2026).
-
 ## One-Page Portfolios
 **Best for:** early-career candidates, generalists, and anyone with 3-5 projects that do not need deep individual write-ups.
 
 **Pros:**
-
 - Fast to scan - a recruiter sees everything in one scroll
 - Simple to build and maintain
 - Works well on mobile with minimal navigation
 
 **Cons:**
-
 - Limited room for deep case studies - each project usually gets a short blurb, not a full narrative
 - Can feel cramped once you have more than 4-5 strong projects
 - Harder to target different audiences (e.g., a recruiter vs. a technical interviewer) with different depth levels
@@ -40,13 +37,11 @@ Before you write a line of content, you have to decide on structure: one scrolli
 **Best for:** designers and developers with detailed case studies, senior professionals with a large body of work, or anyone using [How to Write a Portfolio Case Study](https://thetailorcv.com/blog/how-to-write-portfolio-case-study)-style deep dives.
 
 **Pros:**
-
 - Each project gets its own page with full context (Problem -> Process -> Solution -> Outcome)
 - Easier to organize by category (case studies, writing samples, code repos) for different audiences
 - Scales better as your body of work grows over a multi-year career
 
 **Cons:**
-
 - Takes longer to build and keep updated
 - Risk of losing a recruiter's attention if navigation is unclear or projects are buried too many clicks deep
 - Requires more discipline to keep every sub-page current
@@ -89,14 +84,6 @@ Understanding when to use a one-page or multi-page portfolio can often be the di
 ## Step-by-Step Checklist: Building Your Portfolio
 
 Creating a portfolio that converts requires careful planning and execution. Follow this checklist to ensure you cover all bases, whether you choose a one-page or multi-page format:
-
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 1. **Define Your Goals**
    - What do you want to achieve with your portfolio? (e.g., job applications, freelance clients)
@@ -188,7 +175,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name and strongest work are easier to discover.
 

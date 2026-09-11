@@ -28,12 +28,8 @@ def _enforce_linkedin_quota(request: Request):
         user = db.query(User).filter_by(id=user_id).first()
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
-        # Pro check — bypass quota. Goes through main.is_pro rather than
-        # comparing pro_until directly: a stored value that is a string or is
-        # timezone-aware raises on a raw ">", which 500s the request instead of
-        # answering it, and a paying user is then refused.
-        from main import is_pro as _is_pro
-        if _is_pro(user):
+        # Pro check — bypass quota
+        if user.pro_until and user.pro_until > datetime.utcnow():
             return
         # Beta rollout: only gate users in BILLING_BETA_USER_IDS
         _beta_env = os.getenv("BILLING_BETA_USER_IDS", "").strip()
@@ -306,14 +302,9 @@ def _extract_json_block(raw: str) -> str:
 
 
 async def _parse_cv_with_openai(api_key: str, raw_text: str) -> dict:
-    # Shares the app's single model constant, and goes through functions'
-    # client so reasoning-model parameters are translated (gpt-5 rejects
-    # max_tokens). Imported lazily to keep this router import-light.
-    from functions import AI_MODEL, _build_openai_client
-
-    client = await _build_openai_client()
+    client = AsyncOpenAI(api_key=api_key)
     response = await client.chat.completions.create(
-        model=AI_MODEL,
+        model="gpt-4o-mini",
         max_tokens=3500,
         response_format={"type": "json_object"},
         messages=[

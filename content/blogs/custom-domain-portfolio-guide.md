@@ -10,6 +10,8 @@ slug: custom-domain-portfolio-guide
 keywords: custom domain portfolio, portfolio website domain, how to buy a domain for portfolio, portfolio netlify deploy, personal domain name
 ---
 
+`yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
+
 ## Key Takeaways
 
 - A custom domain enhances credibility, memorability, and longevity for your portfolio.
@@ -18,17 +20,11 @@ keywords: custom domain portfolio, portfolio website domain, how to buy a domain
 - Follow a straightforward process to connect your custom domain to your portfolio, including DNS settings and SSL confirmation.
 - Avoid common mistakes like not linking your domain or forgetting to update your resume and online profiles.
 
-
-`yourname.com` reads very differently on a resume than a long, generic subdomain. A custom domain is one of the cheapest, highest-leverage upgrades you can make to a [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio), and it takes under an hour to set up. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide).
-
 ## Why It Matters
-
-| Reason | What it gets you |
-|---|---|
-| **Credibility** | a custom domain reads as more established than a free subdomain |
-| **Memorability** | `yourname.com` is easier for a recruiter to type from memory or a printed resume than a long generated URL |
-| **Longevity** | your domain stays yours even if you switch which platform or builder hosts the site behind it |
-| **Email matching** | you can pair it with a matching professional email address later if you choose |
+- **Credibility** - a custom domain reads as more established than a free subdomain
+- **Memorability** - `yourname.com` is easier for a recruiter to type from memory or a printed resume than a long generated URL
+- **Longevity** - your domain stays yours even if you switch which platform or builder hosts the site behind it
+- **Email matching** - you can pair it with a matching professional email address later if you choose
 
 ## Choosing Your Domain
 1. **Use your name if it is available** - `firstlastname.com` is the safest, most professional choice
@@ -97,13 +93,6 @@ The [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio) supports
 - [ ] Regularly update your portfolio with new content.
 - [ ] Secure your domain with an SSL certificate.
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
-
 ## Scenarios to Consider
 
 - **Scenario 1**: You’re a business analyst creating a portfolio. You choose a domain like "YourNameAnalytics.com". After registering, you connect it with a WordPress site. You include case studies and data visualization projects to showcase your skills. 
@@ -157,7 +146,7 @@ You do not need to code a site or spend a weekend wrestling with DNS settings fr
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name and strongest work are easier to discover.
 

@@ -82,12 +82,19 @@ h1,h2,h3,h4 { font-family: var(--w-display); color: var(--w-ink); }
 .w-tl-card p, .w-tl-card li { color: var(--w-dim); font-size: .96rem; }
 .w-tl-card ul { margin: 0; padding-left: 18px; }
 
-/* ---- Skills (sectioned columns of tags) ----
-   Proficiency bars were removed: their width/% was derived from the skill
-   name's length, i.e. invented data about the candidate. Skills render as
-   plain tags (.w-tags/.w-tag, shared with project tech tags). */
+/* ---- Skills (sectioned columns + thin glowing proficiency bars with % ) ---- */
 .w-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(460px,100%),1fr)); gap: 52px 70px; }
 .w-skcat-head { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace; text-transform: uppercase; letter-spacing: .22em; color: var(--w-ink); font-size: 1.1rem; font-weight: 700; margin: 0 0 26px; padding-bottom: 14px; border-bottom: 1px solid var(--w-border); }
+/* a single group is split into 2 columns so it reads as sections (not crowded) */
+.w-skbars { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px,100%),1fr)); gap: 4px 72px; }
+.w-skbar { display: grid; grid-template-columns: 150px 1fr 42px; align-items: center; gap: 18px; margin-bottom: 26px; }
+.w-skb-name { color: var(--w-dim); font-size: .95rem; font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace; letter-spacing: .01em; }
+.w-skb-track { position: relative; height: 2px; border-radius: 999px; background: rgba(255,255,255,.09); }
+.w-skb-fill { position: absolute; left: 0; top: 0; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg,var(--w-green-2),var(--w-green)); transition: width 1.2s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 0 7px rgba(46,230,166,.5)); }
+.w-skb-fill::after { content: ''; position: absolute; right: -1px; top: 50%; width: 7px; height: 7px; transform: translateY(-50%); background: var(--w-green); border-radius: 1px; box-shadow: 0 0 8px var(--w-green); }
+.w-skb-pct { font-family: ui-monospace, 'SF Mono', 'Cascadia Code', Menlo, Consolas, monospace; font-size: .82rem; font-weight: 700; text-align: right; color: var(--w-green); }
+/* each bar runs (fills) as its own row scrolls into view */
+.w-skbar.w-reveal.in .w-skb-fill { width: var(--w); }
 
 /* ---- Projects: alternating showcase (wide, image swaps side per row) ---- */
 .w-showcase { display: grid; gap: 56px; }
@@ -174,6 +181,8 @@ h1,h2,h3,h4 { font-family: var(--w-display); color: var(--w-ink); }
     .w-tl, .w-tl:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 32px 44px; }
     .w-tl-dot, .w-tl:nth-child(even) .w-tl-dot { left: 9px; right: auto; }
     .w-skills-grid { gap: 32px; }
+    .w-skbars { grid-template-columns: 1fr; }
+    .w-skbar { grid-template-columns: 110px 1fr 40px; }
     .w-show, .w-show:nth-child(even) { grid-template-columns: 1fr; gap: 22px; }
     .w-show:nth-child(even) .w-show-media { order: 0; }
 }

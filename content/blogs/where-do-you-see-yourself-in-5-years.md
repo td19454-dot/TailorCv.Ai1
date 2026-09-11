@@ -10,14 +10,6 @@ keywords: where do you see yourself in 5 years, 5 year plan interview answer, wh
 image: public/blog-images/where-do-you-see-yourself-in-5-years.webp
 ---
 
-## Key Takeaways
-
-- Four concerns sit underneath this question, and none of them is really about your five-year plan.
-- The structure that works has four parts and runs forty-five to seventy-five seconds.
-- "In your job" is meant as a compliment but heard as a threat, or at best as poor judgment.
-- Most people genuinely do not know, and there is a version of that which interviews well.
-- The question is checked for consistency against everything else you say, so your answers should tell one story.
-
 Nobody knows where they'll be in five years. The interviewer doesn't either, and they know you don't. So the question feels dishonest to answer sincerely and risky to answer honestly, which is why so many people produce something vague and forgettable.
 
 The way out is to understand what's actually being asked. This is not a prediction test. It's a question about direction, commitment, and whether this specific job fits the trajectory you're on. Answer that, and you don't have to invent a five-year plan you don't have.

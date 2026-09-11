@@ -10,15 +10,6 @@ slug: how-to-write-resume-from-scratch
 keywords: how to write a resume from scratch, write a resume step by step, resume writing guide 2026, build resume from scratch, how to start a resume, first resume guide, resume writing for beginners
 ---
 
-## Key Takeaways
-
-- Gather all relevant information, including job history, education, projects, certifications, skills, achievements, and the target job description before starting your resume.
-- Choose the right format for your resume, such as reverse chronological or combination, based on your experience and career goals.
-- Include a clear contact section at the top of your resume with your name, professional email, phone number, and relevant links, avoiding unnecessary personal details.
-- Write a concise professional summary that highlights your experience, strengths, and how you can contribute to the prospective employer.
-- Build a skills section by matching your skills to those listed in the job description, using exact wording to enhance ATS compatibility.
-
-
 Writing a resume from scratch feels overwhelming until you break it into a clear sequence of steps. This guide walks you through the entire process - from deciding what to include, to writing each section, to testing the final document before you submit.
 
 Follow these steps whether you are writing your first resume, rebuilding after years out of the job market, or starting fresh for a [career change](https://thetailorcv.com/blog/career-change-to-tech-guide).
@@ -26,6 +17,14 @@ Follow these steps whether you are writing your first resume, rebuilding after y
 For shortcuts, start from an [ATS-friendly template](https://www.thetailorcv.com/templates) that gives you the correct structure automatically. Test your finished resume with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) before applying.
 
 ---
+
+## Key Takeaways
+
+- Gather all relevant information, including job history, education, projects, certifications, skills, achievements, and the target job description before starting your resume.
+- Choose the right format for your resume, such as reverse chronological or combination, based on your experience and career goals.
+- Include a clear contact section at the top of your resume with your name, professional email, phone number, and relevant links, avoiding unnecessary personal details.
+- Write a concise professional summary that highlights your experience, strengths, and how you can contribute to the prospective employer.
+- Build a skills section by matching your skills to those listed in the job description, using exact wording to enhance ATS compatibility.
 
 ## Before You Write: Gather Everything
 
@@ -58,20 +57,12 @@ Read [chronological vs functional resume](https://thetailorcv.com/blog/chronolog
 ## Step 2: Write Your Contact Section
 
 Add at the top:
-
 - Name (large, bold)
 - Professional email
 - Phone number
 - City, State
 - [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) URL (customized)
 - GitHub or [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) (if relevant)
-
-### Building the resume section by section
-
-![The TailorCV resume builder: section-by-section editing on the left, live template preview on the right](public/blog-images/ats-friendly-resume-builder-builder-ui.webp)
-
-You fill one section at a time - personal info, education, experience, projects, skills - and the preview on the right re-renders as you type, so the layout is never a surprise at export.
-
 
 Keep it clean. No full address, no photo (in the US/UK), no date of birth. Read the [resume contact section guide](https://thetailorcv.com/blog/resume-contact-section) for exact formatting rules.
 
@@ -106,7 +97,6 @@ Use the exact wording from the job description wherever possible - this helps AT
 ## Step 5: Write Your Work Experience
 
 For each role:
-
 1. **Header**: Job Title | Company | City | Month Year - Month Year (or Present)
 2. **Bullets**: 3-6 achievement-based bullets per role
 
@@ -115,7 +105,6 @@ For each role:
 > "Reduced infrastructure costs by 35% by migrating 60% of workloads to AWS Spot Instances."
 
 Rules:
-
 - Use past tense for previous roles, present tense for current role
 - Start every bullet with a different, strong action verb
 - [quantify](https://thetailorcv.com/blog/how-to-quantify-resume-achievements) wherever possible
@@ -127,7 +116,6 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 ## Step 6: Add Your Education
 
 For each degree:
-
 - Degree type and field (Bachelor of Science, Computer Science)
 - Institution
 - Graduation year (or expected year)
@@ -141,7 +129,7 @@ If you are a fresh graduate with limited experience, move Education above Work E
 
 Based on your background, add:
 
-**Projects** - Essential for freshers, [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews).
+**Projects** - Essential for freshers, [career change](https://thetailorcv.com/blog/career-change-from-non-tech-to-data-analyst)rs, and engineers. Show what you built, what you used, and what it achieved. Read [how to add projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers).
 
 **Certifications** - List name, issuer, and date. Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume).
 
@@ -150,7 +138,6 @@ Based on your background, add:
 **Volunteer work** - Especially valuable for freshers and career changers. Read [how to add volunteer work to your resume](https://thetailorcv.com/blog/volunteer-work-on-resume).
 
 ---
-
 
 ## Step 8: Tailor for the Specific Role
 
@@ -168,7 +155,6 @@ Tailoring takes 20-30 minutes per application and increases your ATS score and c
 ## Step 9: Format and Polish
 
 Now clean up the formatting:
-
 - Consistent margins (0.75-1 inch)
 - Single-column layout
 - One font family throughout
@@ -183,7 +169,6 @@ Read [resume margins, spacing and layout](https://thetailorcv.com/blog/resume-ma
 ## Step 10: Proofread
 
 Read the entire resume out loud. Check every:
-
 - Spelling
 - Grammar
 - Date (are start/end dates accurate?)
@@ -197,7 +182,6 @@ Use the full [resume proofreading checklist](https://thetailorcv.com/blog/resume
 ## Step 11: Test Your ATS Score
 
 Before submitting, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions). This tells you:
-
 - Your [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) match score for the role
 - Which keywords are missing
 - Formatting issues that could cause [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) parsing errors
@@ -227,8 +211,7 @@ Aim for a strong match score before submitting. Read [how to increase your ATS s
 - [Resume Proofreading Checklist](https://thetailorcv.com/blog/resume-proofreading-checklist)
 - [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide)
 - [Resume File Format Guide](https://thetailorcv.com/blog/resume-file-format-guide)
-- [Resume with No Experience Guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
-- [Relocating to Singapore for Your First Job - A Practical Guide](https://thetailorcv.com/blog/singapore-relocating-from-overseas-guide)
+- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 
 ---
 

@@ -28,7 +28,7 @@ Resume text:
 {_escape_braces(pdf_text)}"""
     client = OpenAI()
     temperature=0
-    model=os.getenv("AI_MODEL", "gpt-5-mini")
+    model="gpt-4o-mini"
     response=client.chat.completions.create(model=model,
                                             messages=[
                                                 {'role':'system',"content":'Extract data from file like ats software'},

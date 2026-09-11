@@ -10,6 +10,10 @@ slug: resume-trends-2026
 keywords: resume trends 2026, what to put on a resume 2026, resume format 2026, modern resume tips
 ---
 
+Resume conventions shift every year, but 2026 has produced a sharper split than usual between changes that actually affect whether you get an interview and changes that are purely cosmetic. Two forces are driving most of it: AI tools now sit on both sides of the hiring process, and hiring signals are shifting away from pure title-and-degree gatekeeping toward evidence of what you can actually do. Based on patterns across thousands of resumes optimized through [TailorCV](https://www.thetailorcv.com/solutions), here is what's genuinely changing this year, what's overstated, and what you should actually act on. Check where your own resume stands against these shifts with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you change anything based on a trends article.
+
+---
+
 ## Key Takeaways
 
 - Tailoring resumes to specific job descriptions is crucial in 2026, as ATS engines have become more precise and recruiters expect customized applications.
@@ -17,11 +21,6 @@ keywords: resume trends 2026, what to put on a resume 2026, resume format 2026, 
 - Emphasizing skills and evidence of capabilities is now more important than traditional qualifications like titles and degrees.
 - Portfolios are becoming standard in resumes, moving from optional to essential for showcasing relevant work.
 - Cosmetic trends, such as video resumes and frequent visual redesigns, are less impactful and should be approached with skepticism.
-
-
-Resume conventions shift every year, but 2026 has produced a sharper split than usual between changes that actually affect whether you get an interview and changes that are purely cosmetic. Two forces are driving most of it: AI tools now sit on both sides of the hiring process, and hiring signals are shifting away from pure title-and-degree gatekeeping toward evidence of what you can actually do. Based on patterns across thousands of resumes optimized through [TailorCV](https://www.thetailorcv.com/solutions), here is what's genuinely changing this year, what's overstated, and what you should actually act on. Check where your own resume stands against these shifts with the [free ATS score checker](https://www.thetailorcv.com/solutions) before you change anything based on a trends article.
-
----
 
 ## The Signal-vs-Noise Problem With "Resume Trends" Articles
 
@@ -72,7 +71,7 @@ The second version is not longer or more elaborate - it's more specific, and spe
 2. Use AI to help structure, phrase, and tighten those facts, not invent new ones.
 3. Read every generated line back and cut anything you couldn't defend, unprompted, in an interview.
 
-This is also increasingly relevant because interviewers are getting more comfortable probing specifics on the spot precisely because they suspect AI involvement - see [can recruiters tell if your resume was written by AI](https://thetailorcv.com/blog/can-recruiters-tell-if-resume-was-written-by-ai) for what actually gives it away. For the drafting process itself, [how to write a resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai), [ChatGPT resume prompts](https://thetailorcv.com/blog/chatgpt-resume-prompts), and AI resume tailoring without losing your voice all walk through how to keep the process fast without producing something anonymous-sounding.
+This is also increasingly relevant because interviewers are getting more comfortable probing specifics on the spot precisely because they suspect AI involvement - see [can recruiters tell if your resume was written by AI](https://thetailorcv.com/blog/can-recruiters-tell-if-resume-was-written-by-ai) for what actually gives it away. For the drafting process itself, [how to write a resume with AI](https://thetailorcv.com/blog/how-to-write-resume-with-ai), [ChatGPT resume prompts](https://thetailorcv.com/blog/chatgpt-resume-prompts), and [AI resume tailoring without losing your voice](https://thetailorcv.com/blog/ai-resume-tailoring-human-voice) all walk through how to keep the process fast without producing something anonymous-sounding.
 
 ---
 
@@ -90,7 +89,7 @@ For your resume, this shows up in a few concrete ways:
 
 > Stronger, JD-mapped version: "Skills: SQL, Python (pandas, matplotlib), A/B testing, dashboarding in Looker, stakeholder reporting"
 
-The second version reads as evidence because it's specific enough that a recruiter can picture it being used, and it can be scanned and matched by an ATS parser far more reliably than a generic list. See [skills to add to resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide), and [how AI resume matching actually works](https://thetailorcv.com/blog/how-ai-resume-matching-works) for the mechanics behind why this matters more than it used to. If you want a deeper look at how this shift is playing out across hiring more broadly, resume matching in a skills-based hiring market covers it directly.
+The second version reads as evidence because it's specific enough that a recruiter can picture it being used, and it can be scanned and matched by an ATS parser far more reliably than a generic list. See [skills to add to resume 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026), [resume keywords guide](https://thetailorcv.com/blog/resume-keywords-guide), and [how AI resume matching actually works](https://thetailorcv.com/blog/how-ai-resume-matching-works) for the mechanics behind why this matters more than it used to. If you want a deeper look at how this shift is playing out across hiring more broadly, [resume matching in a skills-based hiring market](https://thetailorcv.com/blog/resume-matching-skills-based-hiring) covers it directly.
 
 ---
 
@@ -110,7 +109,7 @@ It adds less value, or can even be a distraction, when:
 - The portfolio is thin, outdated, or clearly assembled in a rush right before applying
 - It duplicates the resume instead of adding something the resume can't show, like process, range, or scale
 
-For technical roles specifically, a well-organized GitHub profile is functioning more and more like an informal second resume - see [GitHub portfolio optimization](https://thetailorcv.com/blog/github-portfolio-optimization) and [developer portfolio project ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas). For the broader question of when a portfolio adds real signal versus when it's unnecessary overhead, see [portfolio website vs resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) and add a portfolio link to your resume.
+For technical roles specifically, a well-organized GitHub profile is functioning more and more like an informal second resume - see [GitHub portfolio optimization](https://thetailorcv.com/blog/github-portfolio-optimization) and [developer portfolio project ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas). For the broader question of when a portfolio adds real signal versus when it's unnecessary overhead, see [portfolio website vs resume](https://thetailorcv.com/blog/portfolio-website-vs-resume) and [add a portfolio link to your resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume).
 
 ---
 
@@ -137,13 +136,6 @@ The safest way to use this trend is as an optional add-on referenced from your r
 ## Out: Keyword Stuffing, Objective Statements, and Decorative Templates
 
 Three older tactics are firmly out in 2026, and none of them are close calls anymore.
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 **Keyword stuffing.** Early ATS advice pushed candidates to cram keywords anywhere they'd fit, including in white text or hidden sections. Modern ATS parsing and human reviewers both catch this quickly, and it now reads as a red flag rather than a clever workaround. See [ATS keyword mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes) for what natural keyword usage looks like instead.
 
@@ -195,7 +187,7 @@ Across resumes scored on TailorCV, the biggest factor separating high-scoring re
 
 ## Make This Practical
 
-Turn these trends into an actual audit instead of a reading exercise. Score your current resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), rewrite weak bullets using [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements), and rebuild your skills section so it maps to a real job posting rather than a generic list. If your field supports it, add a [portfolio link](https://www.thetailorcv.com/portfolio) backed by two or three real work samples. Once your resume is in good shape, pair it with a tailored AI-generated cover letter and practice defending your bullet points out loud with the AI mock interview tool - since interviewers are increasingly probing for the specifics behind what's on the page. For roles where AI skills themselves are the qualification, resume tips for AI engineer roles in 2026 applies several of these trends directly.
+Turn these trends into an actual audit instead of a reading exercise. Score your current resume with the [free ATS score checker](https://www.thetailorcv.com/solutions), rewrite weak bullets using [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements), and rebuild your skills section so it maps to a real job posting rather than a generic list. If your field supports it, add a [portfolio link](https://www.thetailorcv.com/portfolio) backed by two or three real work samples. Once your resume is in good shape, pair it with a tailored [AI-generated cover letter](https://www.thetailorcv.com/cover-letter) and practice defending your bullet points out loud with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview) - since interviewers are increasingly probing for the specifics behind what's on the page. For roles where AI skills themselves are the qualification, [resume tips for AI engineer roles in 2026](https://thetailorcv.com/blog/resume-for-ai-engineer-2026) applies several of these trends directly.
 
 ---
 

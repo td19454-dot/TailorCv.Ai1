@@ -10,6 +10,8 @@ slug: data-scientist-portfolio-guide
 keywords: data scientist portfolio, machine learning portfolio, ml projects, kaggle portfolio, ml portfolio examples
 ---
 
+A data science portfolio should prove you can frame a problem, model it responsibly, and explain the impact - not just chase a leaderboard score. Most rejected portfolios are a wall of Kaggle notebooks with a final accuracy number and nothing else; the ones that get callbacks show a small number of projects done end to end, with the reasoning made visible. Pair this guide with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for the fundamentals, and read the [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) if you are not sure which track fits your background.
+
 ## Key Takeaways
 
 - A strong data science portfolio should demonstrate problem framing, responsible modeling, and impact explanation, rather than just leaderboard scores.
@@ -17,9 +19,6 @@ keywords: data scientist portfolio, machine learning portfolio, ml projects, kag
 - Include at least one end-to-end project showcasing the entire modeling process, along with one or two technique-demonstration projects.
 - Ensure projects highlight your decision-making process, including what didn't work and why, rather than just presenting final metrics.
 - Dashboards can support your portfolio but should not dominate, as they may lead hiring managers to view you as an analyst rather than a data scientist.
-
-
-A data science portfolio should prove you can frame a problem, model it responsibly, and explain the impact - not just chase a leaderboard score. Most rejected portfolios are a wall of Kaggle notebooks with a final accuracy number and nothing else; the ones that get callbacks show a small number of projects done end to end, with the reasoning made visible. Pair this guide with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) for the fundamentals, and read the [Data Analyst Portfolio Guide](https://thetailorcv.com/blog/data-analyst-portfolio-guide) if you are not sure which track fits your background.
 
 ## Data Scientist vs. Data Analyst Portfolios: What Actually Changes
 
@@ -52,7 +51,7 @@ Quality bar for "does this project belong in the portfolio":
 - Does it use a dataset or problem you chose or meaningfully modified, rather than a stock Kaggle dataset run through a stock notebook template?
 - Does the README or write-up explain *why*, not just *what*?
 
-If a project fails more than one of those, cut it or rework it. Three tight, well-explained projects beat ten shallow ones every time. For ideas on scoping projects that map to what employers screen for, see [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) and [Projects in Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for how to summarize the same work in resume bullet form.
+If a project fails more than one of those, cut it or rework it. Three tight, well-explained projects beat ten shallow ones every time. For ideas on scoping projects that map to what employers screen for, see [15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas) and [Projects in Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for how to summarize the same work in resume bullet form.
 
 ## What a Strong Project Write-Up Actually Includes
 
@@ -109,13 +108,6 @@ The goal is not to add these for their own sake. Include one only if it genuinel
 ## Where to Host and Deploy Your Work
 
 Hosting choices for data science portfolios differ a little from a typical developer portfolio, because the "demo" is often a model rather than a UI.
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 - **GitHub** for code, notebooks, and the README-driven story of each project (see the repo structure section above).
 - **A deployed model or small app** - even a minimal one - is a large differentiator. A tiny API endpoint, a Streamlit or Gradio app, or a Hugging Face Space where someone can enter an input and see a live prediction, beats a static notebook every time. It proves the model works outside your own machine and that you understand the basics of serving it.
@@ -182,7 +174,7 @@ Understanding the distinctions between a data scientist and a data analyst portf
 
 ### Do I need Kaggle medals?
 
-No. A few well-explained, reproducible [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) - ideally one deployed - beat medals with no narrative. A hiring manager can't interview your leaderboard rank; they can interview your reasoning.
+No. A few well-explained, reproducible [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) - ideally one deployed - beat medals with no narrative. A hiring manager can't interview your leaderboard rank; they can interview your reasoning.
 
 ### How many projects should be in a data science portfolio?
 

@@ -10,15 +10,6 @@ slug: how-to-write-cold-email-to-recruiter
 keywords: how to write cold email to recruiter, recruiter email template 2026, cold outreach job search, email recruiter for job, networking email, LinkedIn message recruiter
 ---
 
-## Key Takeaways
-
-- Cold emailing recruiters can significantly increase your chances of getting noticed, especially when personalized and concise.
-- Effective cold emails should be under 100 words, include a specific role reference, and have a clear, confident tone.
-- Recruiter emails should have five key elements: a relevant subject line, a personal opener, a brief introduction, a reason for reaching out, and a clear ask.
-- Utilize platforms like LinkedIn, company career pages, and email finder tools to locate recruiter contact information.
-- The article provides five templates for cold emails tailored to different scenarios, emphasizing personalization and relevance.
-
-
 Cold emailing or messaging a recruiter is one of the highest-leverage job search actions most candidates ignore. While hundreds of people apply through the [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) portal and wait, a small number send a direct, personalized message to the recruiter or hiring manager. Those candidates get noticed.
 
 This guide covers how to write cold emails and [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) messages to recruiters that get replies - including 5 templates for different scenarios.
@@ -27,19 +18,25 @@ Before reaching out, make sure your resume is ready. Use the [TailorCV ATS score
 
 ---
 
+## Key Takeaways
+
+- Cold emailing recruiters can significantly increase your chances of getting noticed, especially when personalized and concise.
+- Effective cold emails should be under 100 words, include a specific role reference, and have a clear, confident tone.
+- Recruiter emails should have five key elements: a relevant subject line, a personal opener, a brief introduction, a reason for reaching out, and a clear ask.
+- Utilize platforms like LinkedIn, company career pages, and email finder tools to locate recruiter contact information.
+- The article provides five templates for cold emails tailored to different scenarios, emphasizing personalization and relevance.
+
 ## Does Cold Emailing Recruiters Actually Work?
 
 Yes - but only when done correctly.
 
 What works:
-
 - Short messages (under 100 words)
 - Personalized reference to the specific role or company
 - Clear context about who you are and why you are relevant
 - A single, easy ask
 
 What fails:
-
 - Long emails asking for job referrals immediately
 - Generic copy-paste messages
 - Desperate or apologetic tone
@@ -121,7 +118,6 @@ For emails (not [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-
 - [University] Alum - Exploring [Role] at [Company]
 
 Avoid:
-
 - "Just following up" (too vague)
 - "I am interested in any opportunity" (no specificity)
 - "URGENT: Job Application" (desperate)
@@ -132,8 +128,6 @@ Avoid:
 ## Follow-Up Strategy
 
 If you send an email and hear nothing after 5-7 business days, one [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) is appropriate.
-
-
 
 "Hi [Name], I wanted to [follow up](https://thetailorcv.com/blog/how-to-follow-up-after-interview) on my note from [date]. I'm still very interested in the [Role] at [Company] and would welcome the chance to connect. Happy to share my resume or anything else that would be helpful. Thanks for your time."
 
@@ -184,7 +178,6 @@ If you misspell someone's name in the opening line, the email is over.
 - [Freelancing vs Full-Time Employment in 2026 - Honest Comparison](https://thetailorcv.com/blog/freelancing-vs-full-time-employment)
 - [How to Quit Your Job Professionally in 2026 - Complete Guide](https://thetailorcv.com/blog/how-to-quit-your-job-professionally)
 - [Work-Life Balance Tips for Professionals in 2026 - Practical Guide](https://thetailorcv.com/blog/work-life-balance-tips)
-- [Campus Placement Email Etiquette 2026 - Templates That Get Replies](https://thetailorcv.com/blog/campus-placement-email-etiquette)
 
 ## Make This Practical
 
@@ -195,7 +188,7 @@ Use the letter to explain context that does not fit neatly on the resume. Career
 ## Conclusion
 A well-written cold email or [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) message is one of the most underused job search tools. Most candidates apply and wait. A short, specific, confident message to a recruiter takes 10 minutes to write and can compress a 6-week job search to 6 days.
 
-Make sure your resume is ready before sending outreach. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it, read the [cover letter guide](https://thetailorcv.com/blog/cover-letter-guide-2026), and check [LinkedIn job search tips](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the full outreach strategy. For interview preparation, use the interview guide.
+Make sure your resume is ready before sending outreach. Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to optimize it, read the [cover letter guide](https://thetailorcv.com/blog/cover-letter-guide-2026), and check [LinkedIn job search tips](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) for the full outreach strategy. For interview preparation, use the [interview guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
 ## Frequently Asked Questions
 
