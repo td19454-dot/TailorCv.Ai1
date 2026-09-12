@@ -10,6 +10,10 @@ keywords: resume keywords malaysia, ats keywords malaysia, best resume keywords,
 image: public/blog-images/best-resume-keywords-malaysia.png
 ---
 
+Keywords are what get your resume noticed — first by the [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
+
+This guide gives you the best resume keywords for Malaysian jobs in 2026, organised by industry and role, plus the crucial part most people miss: how to use them naturally so you pass both the software and the human.
+
 ## Key Takeaways
 
 - Resume keywords are the specific skills, tools, and phrases a job description uses — and the ATS scans for.
@@ -17,11 +21,6 @@ image: public/blog-images/best-resume-keywords-malaysia.png
 - Use keywords **truthfully and in context** — [keyword stuffing](https://thetailorcv.com/blog/ats-keyword-mistakes) is detected and penalised.
 - Include a dedicated skills section plus keywords woven into your experience bullets.
 - Test your resume against each posting with an [ATS score checker](https://thetailorcv.com/solutions) to see which keywords you're missing.
-
-
-Keywords are what get your resume noticed — first by the [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that most Malaysian employers use, and then by the recruiter skimming it. Use the right terms, matched to the job you're applying for, and you rise to the top of the shortlist. Use the wrong ones (or none), and even a strong candidate gets filtered out.
-
-This guide gives you the best resume keywords for Malaysian jobs in 2026, organised by industry and role, plus the crucial part most people miss: how to use them naturally so you pass both the software and the human.
 
 ## How Resume Keywords Actually Work
 
@@ -93,7 +92,7 @@ Use only those you can back up — and always prefer the specific over the gener
 - Frameworks/tools: React, Node.js, Spring, Django, .NET, Docker, Kubernetes
 - Cloud: AWS, Azure, Google Cloud
 - Practices: Agile, Scrum, CI/CD, REST APIs, microservices, DevOps
-- Data: data analysis, SQL, Power BI, Tableau, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
+- Data: data analysis, SQL, Power BI, Tableau, machine learning
 
 For tech and creative candidates, a portfolio strengthens your keywords with proof — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
@@ -109,7 +108,7 @@ For tech and creative candidates, a portfolio strengthens your keywords with pro
 
 - Revenue growth, sales targets, business development, key account management
 - Lead generation, CRM (Salesforce, HubSpot), pipeline management
-- [Digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026), SEO, SEM, Google Ads, Meta Ads, content marketing
+- Digital marketing, SEO, SEM, Google Ads, Meta Ads, content marketing
 - Market research, campaign management, ROI, conversion rate
 - B2B, B2C, negotiation, client relationship management
 
@@ -122,7 +121,7 @@ For tech and creative candidates, a portfolio strengthens your keywords with pro
 
 ### Customer Service & Operations
 
-- [Customer service](https://thetailorcv.com/blog/customer-service-resume-2026), client support, complaint resolution, SLA
+- Customer service, client support, complaint resolution, SLA
 - Operations management, process optimisation, inventory management
 - Multilingual support (Bahasa Malaysia, English, Mandarin)
 - CRM systems, ticketing, KPI achievement
@@ -239,13 +238,6 @@ Revisit and refresh your keyword mix each time you target a more senior role, an
 ## How to Place Keywords on Your Resume
 
 Distribute keywords across three areas so both the ATS and the recruiter see them:
-
-### What an ATS score report actually shows you
-
-![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-Passed and failed checks are listed individually, so you can see which part of the resume is costing you points.
-
 
 - **Professional summary:** weave in your two or three strongest, most relevant terms.
 - **Skills section:** list hard skills, tools, and languages explicitly — clean keywords for the parser.

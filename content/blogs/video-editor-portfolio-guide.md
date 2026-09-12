@@ -10,6 +10,8 @@ slug: video-editor-portfolio-guide
 keywords: video editor portfolio, videographer portfolio website, video editing reel, demo reel guide, video portfolio examples
 ---
 
+For video editors and videographers, the portfolio *is* the pitch - clients and hiring managers decide within the first ten seconds of your reel whether to keep watching. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around a strong reel and organized samples converts far better than a folder of raw clips. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide).
+
 ## Key Takeaways
 
 - A strong portfolio should feature a 60-90 second reel that showcases your best work first, without slow introductions.
@@ -18,18 +20,12 @@ keywords: video editor portfolio, videographer portfolio website, video editing 
 - Keep your resume and portfolio aligned in terms of specialty and software skills to present a cohesive narrative.
 - Avoid common mistakes like slow-loading reels, mixing unrelated genres, and sharing unreleased client work.
 
-
-For video editors and videographers, the portfolio *is* the pitch - clients and hiring managers decide within the first ten seconds of your reel whether to keep watching. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) built around a strong reel and organized samples converts far better than a folder of raw clips. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Photographer Portfolio Guide](https://thetailorcv.com/blog/photographer-portfolio-guide).
-
 ## What to Include
-
-| What to include | Why |
-|---|---|
-| **A 60-90 second reel** | your best work first, cut fast, no slow build-up |
-| **Genre-specific samples** | narrative, commercial, corporate, social/short-form, documentary - grouped so a client can find their use case immediately |
-| **Before/after or raw-vs-edit clips** | especially valuable for color grading and sound design work |
-| **Client or project context** | what the brief was, what you delivered, and any results (views, engagement, campaign use) |
-| **Technical skills** | software (Premiere, DaVinci Resolve, After Effects), codecs, and delivery formats you are fluent in |
+- **A 60-90 second reel** - your best work first, cut fast, no slow build-up
+- **Genre-specific samples** - narrative, commercial, corporate, social/short-form, documentary - grouped so a client can find their use case immediately
+- **Before/after or raw-vs-edit clips** - especially valuable for color grading and sound design work
+- **Client or project context** - what the brief was, what you delivered, and any results (views, engagement, campaign use)
+- **Technical skills** - software (Premiere, DaVinci Resolve, After Effects), codecs, and delivery formats you are fluent in
 
 ## Frame the Reel Like a Trailer
 Your reel should follow the same logic as a movie trailer: hook, variety, payoff.
@@ -91,13 +87,6 @@ By customizing your presentation for each scenario, you can make a stronger impr
 
 Use this checklist to ensure your video portfolio is comprehensive and compelling:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
-
 - [ ] **Diverse Content**: Include a range of projects that showcase different styles and techniques.
 - [ ] **High-Quality Visuals**: Ensure all videos are high-resolution and professionally edited.
 - [ ] **Clear Branding**: Consistently use logos, fonts, and colors that represent your brand.
@@ -117,13 +106,10 @@ By following this checklist, you can create a polished and professional portfoli
 - **Do optimize for SEO**: Use relevant keywords in video titles, descriptions, and tags to enhance discoverability.
 
 ### Don'ts
-
-| What | Details |
-|---|---|
-| **Don’t overload with content** | Avoid cluttering your portfolio with too many videos; focus on your strongest pieces |
-| **Don’t neglect mobile optimization** | Ensure your portfolio is accessible and looks good on mobile devices |
-| **Don’t forget to proofread** | Check for any typos or errors in your descriptions and titles |
-| **Don’t ignore feedback** | Seek critiques from peers or mentors and be willing to make adjustments based on their advice |
+- **Don’t overload with content**: Avoid cluttering your portfolio with too many videos; focus on your strongest pieces.
+- **Don’t neglect mobile optimization**: Ensure your portfolio is accessible and looks good on mobile devices.
+- **Don’t forget to proofread**: Check for any typos or errors in your descriptions and titles.
+- **Don’t ignore feedback**: Seek critiques from peers or mentors and be willing to make adjustments based on their advice.
 
 By adhering to these do's and don'ts, you can create a more effective and professional video portfolio.
 
@@ -174,7 +160,7 @@ You do not need to code a site or spend a weekend on a website builder. Turn you
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure clients can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure clients can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, genre, and strongest reel are easier to discover.
 

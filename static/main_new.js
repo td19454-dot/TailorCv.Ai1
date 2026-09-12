@@ -87,10 +87,6 @@ function clearStoredInputs() {
 // "Get ATS Score". Self-contained: remove this block + its 3 call sites to revert.
 const PENDING_ATS_KEY = 'tailorcv_pending_ats';
 const ATS_PAYLOAD_KEY = 'atsAnalysisPayload';
-// The JD the stored analysis was scored against. The optimizer only reuses that
-// analysis when the job matches, so a scan for one role can never decide the
-// missing skills for another.
-const ATS_PAYLOAD_JD_KEY = 'atsAnalysisJobDescription';
 const ATS_PAYLOAD_LOCAL_KEY = 'tailorcv_ats_payload_guest';
 
 function capturePostHog(event, props) {
@@ -471,7 +467,7 @@ async function handleATSAnalysis() {
             let detail = 'Analysis failed';
             try {
                 const payload = await response.json();
-                detail = tcvErrorMessage(payload, detail);
+                detail = payload?.detail || payload?.error || detail;
             } catch {}
             const error = new Error(detail);
             error.status = response.status;
@@ -482,7 +478,6 @@ async function handleATSAnalysis() {
         // Store raw API response so ats_analysis.js can render the full audit schema.
         const payloadJson = JSON.stringify(data);
         sessionStorage.setItem(ATS_PAYLOAD_KEY, payloadJson);
-        try { sessionStorage.setItem(ATS_PAYLOAD_JD_KEY, jdInput.value.trim()); } catch (e) {}
         if (data.guest_scan || !isUserLoggedIn()) {
             try { localStorage.setItem(ATS_PAYLOAD_LOCAL_KEY, payloadJson); } catch (e) {}
         }
@@ -1026,20 +1021,6 @@ async function handleResumeOptimization() {
     formData.append('template_id', templateId);
     formData.append('style_id', styleId);
     formData.append('editor_mode', 'true');
-
-    // Reuse the ATS analysis the user has already seen instead of letting the
-    // server score the same resume a second time. Two separate LLM calls do not
-    // reliably agree - that is why the score page listed 13 missing skills while
-    // the editor listed 5 - so the score page's own verdict is passed through
-    // and becomes the single source of truth. Only sent when it was scored
-    // against this exact job description.
-    try {
-        const atsPayload = sessionStorage.getItem(ATS_PAYLOAD_KEY) || '';
-        const atsJd = sessionStorage.getItem(ATS_PAYLOAD_JD_KEY) || '';
-        if (atsPayload && atsJd && atsJd === jdInput.value.trim()) {
-            formData.append('ats_payload', atsPayload);
-        }
-    } catch (e) {}
 
     // Reassurance toast if optimization takes longer than 30s
     const optSlowTimer = setTimeout(() => {

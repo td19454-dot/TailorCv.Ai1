@@ -10,6 +10,10 @@ keywords: rirekisho vs western resume, japanese resume vs western resume, which 
 image: public/blog-images/rirekisho-vs-western-resume.png
 ---
 
+One of the first questions foreigners face when applying for jobs in Japan is: *do I need a Japanese rirekisho, or will my regular resume do?* The two documents come from very different hiring philosophies. The **rirekisho** is a standardised, formal Japanese personal-history form built around completeness and conformity; the **Western resume** is a flexible marketing document built around standing out with achievements. Choosing the right one — and knowing when each is expected — can make or break your application in Japan.
+
+This guide compares the rirekisho and the Western resume in 2026: their key differences, when to use each, and how foreigners should decide.
+
 ## Key Takeaways
 
 - The **rirekisho** is a standardised Japanese form emphasising completeness, neatness, and conformity (with a photo and fixed layout).
@@ -17,11 +21,6 @@ image: public/blog-images/rirekisho-vs-western-resume.png
 - **Traditional Japanese companies** expect a rirekisho (plus a *shokumu-keirekisho*); **global/English-language roles** usually accept a Western resume.
 - Know **which type of employer** you're applying to, and match your document accordingly.
 - For global roles, an **[ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) Western resume** is your main tool.
-
-
-One of the first questions foreigners face when applying for jobs in Japan is: *do I need a Japanese rirekisho, or will my regular resume do?* The two documents come from very different hiring philosophies. The **rirekisho** is a standardised, formal Japanese personal-history form built around completeness and conformity; the **Western resume** is a flexible marketing document built around standing out with achievements. Choosing the right one — and knowing when each is expected — can make or break your application in Japan.
-
-This guide compares the rirekisho and the Western resume in 2026: their key differences, when to use each, and how foreigners should decide.
 
 ## The Two Philosophies
 
@@ -51,7 +50,7 @@ Understanding this explains every specific difference below.
 
 ### Work History Detail
 
-- **Rirekisho:** a concise [chronological](https://thetailorcv.com/blog/chronological-vs-functional-resume) listing; detailed accomplishments go in the separate ***[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*** (work-history document).
+- **Rirekisho:** a concise [chronological](https://thetailorcv.com/blog/chronological-vs-functional-resume) listing; detailed accomplishments go in the separate ***shokumu-keirekisho*** (work-history document).
 - **Western resume:** the resume itself carries detailed achievement bullets.
 
 ### Tone and Differentiation
@@ -82,7 +81,7 @@ Use a Western-style resume when applying to:
 - **Tech firms, startups, and international teams** that hire in English.
 - **English-language roles** generally.
 
-These employers value a clear, achievement-focused, [ATS-friendly resume](https://thetailorcv.com/blog/ats-friendly-resume-singapore). This is the route many foreigners take — see [working in Japan without Japanese](https://thetailorcv.com/blog/working-in-japan-without-japanese) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
+These employers value a clear, achievement-focused, ATS-friendly resume. This is the route many foreigners take — see [working in Japan without Japanese](https://thetailorcv.com/blog/working-in-japan-without-japanese) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 
 ## How Foreigners Should Decide
 
@@ -91,22 +90,12 @@ These employers value a clear, achievement-focused, [ATS-friendly resume](https:
 3. **Ask your recruiter.** Agencies that place foreigners will tell you exactly what each employer wants — and some help prepare both.
 4. **Consider language.** Japanese-language roles expect Japanese documents; English roles accept English resumes.
 
-
-
-
 Many foreigners primarily use a strong Western resume (for global/English roles) and prepare a rirekisho only when a traditional employer requires it.
 
 ## Building Each Document
 
 - **Western resume:** build a clean, ATS-friendly resume with the [TailorCV resume builder](https://thetailorcv.com/modify-cv), tailor it to each role with the [resume optimizer](https://thetailorcv.com/solutions), and use the right terms — see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 - **Rirekisho:** follow the conventions in the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide) — formal photo, correct dates, neatness, and a specific *shibō dōki* (motivation).
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 Whichever you use, add a cover letter where expected (see the [Japanese cover letter guide](https://thetailorcv.com/blog/japanese-cover-letter-guide)) and prepare for Japan's interview etiquette (see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide)) — rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 

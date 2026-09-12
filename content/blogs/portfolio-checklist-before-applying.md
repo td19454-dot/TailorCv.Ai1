@@ -10,6 +10,8 @@ slug: portfolio-checklist-before-applying
 keywords: portfolio checklist, portfolio before applying, portfolio review, is my portfolio ready, portfolio audit
 ---
 
+Before you send a single application, run your portfolio through this checklist. Five minutes here prevents the silent rejections that come from a dead link, a slow page, or a missing contact path. Pair this with [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
+
 ## Key Takeaways
 
 - Include 3-5 strong projects in your portfolio, ensuring each has a clear problem, process, and outcome.
@@ -17,9 +19,6 @@ keywords: portfolio checklist, portfolio before applying, portfolio review, is m
 - Provide an obvious contact path and ensure your LinkedIn and GitHub links are correct.
 - Maintain consistency across your resume, LinkedIn, and portfolio by using the same name, headline, and key projects.
 - Regularly update your portfolio to reflect your latest work and seek feedback to catch any errors.
-
-
-Before you send a single application, run your portfolio through this checklist. Five minutes here prevents the silent rejections that come from a dead link, a slow page, or a missing contact path. Pair this with [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid) and [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
 
 ## Content
 - [ ] 3-5 strong projects; weak ones removed ([15 Developer Portfolio Project Ideas](https://thetailorcv.com/blog/developer-portfolio-project-ideas))
@@ -77,13 +76,6 @@ Creating a standout portfolio is a crucial step in your job application process,
 ## Step-by-Step Guide to Curate Your Portfolio
 
 Follow these steps to create a polished and professional portfolio:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
 
 1. **Define Your Purpose**: Determine what you want to achieve with your portfolio. Are you looking for a job, freelance work, or simply showcasing your skills?
 
@@ -168,7 +160,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

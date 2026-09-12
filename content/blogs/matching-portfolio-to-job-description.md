@@ -10,15 +10,6 @@ keywords: match portfolio to job description, tailor portfolio for job applicati
 image: public/blog-images/matching-portfolio-to-job-description.webp
 ---
 
-## Key Takeaways
-
-- Tailor your portfolio for each job application by showcasing the most relevant projects instead of maintaining a static collection.
-- Analyze the job description to identify key skills, work types, and desired outcomes to guide your project selection.
-- Feature 3-5 projects that closely align with the job requirements, prioritizing relevance over impressiveness.
-- Reorder your portfolio to present the most pertinent projects first and rewrite descriptions using the job's language for better alignment.
-- Consider adding a detailed case study for your strongest match to provide deeper insights into your relevant work.
-
-
 Most job seekers tailor their resume for every application and never think twice about their portfolio. It sits static, the same set of projects, the same order, the same descriptions, no matter which job they are applying to. That is a missed opportunity, because a portfolio that is [matched to the job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) can reinforce your fit far more convincingly than a resume bullet ever could.
 
 If a resume tells an employer what you did, a portfolio shows them. But only if you show them the right things, in the right order, described in the right language.
@@ -26,6 +17,14 @@ If a resume tells an employer what you did, a portfolio shows them. But only if 
 Build or update your portfolio in minutes with [TailorCV's Portfolio Builder](/portfolio), then read on for how to tailor it project by project.
 
 ---
+
+## Key Takeaways
+
+- Tailor your portfolio for each job application by showcasing the most relevant projects instead of maintaining a static collection.
+- Analyze the job description to identify key skills, work types, and desired outcomes to guide your project selection.
+- Feature 3-5 projects that closely align with the job requirements, prioritizing relevance over impressiveness.
+- Reorder your portfolio to present the most pertinent projects first and rewrite descriptions using the job's language for better alignment.
+- Consider adding a detailed case study for your strongest match to provide deeper insights into your relevant work.
 
 ## Why a Static Portfolio Undersells You
 
@@ -113,13 +112,6 @@ A well-matched portfolio only helps if the hiring manager finds it. Read [how to
 
 To streamline the process of tailoring your portfolio, consider creating a checklist that aligns with the job description. This checklist should focus on specific elements that the employer values. Here’s how to build it:
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
-
 1. **Identify Key Requirements**: From the job description, list out the essential skills and experiences required for the role.
 2. **Match Your Projects**: For each requirement, identify which projects from your portfolio demonstrate that skill or experience.
 3. **Visual Appeal**: Note any visual or design preferences mentioned in the job description. This could include color schemes, layout styles, or specific formats.
@@ -130,7 +122,7 @@ Using this checklist ensures that you don’t miss any critical elements when cu
 
 ## Example Scenario: Tailoring for a UX Design Role
 
-Imagine you're applying for a UX Designer position. The job description emphasizes user research, prototyping, and collaboration with cross-functional teams. Here’s [how to tailor](https://thetailorcv.com/blog/how-to-tailor-resume-on-naukri) your portfolio:
+Imagine you're applying for a UX Designer position. The job description emphasizes user research, prototyping, and collaboration with cross-functional teams. Here’s how to tailor your portfolio:
 
 1. **Select Relevant Projects**: Choose projects where you conducted user interviews or usability testing. 
 2. **Highlight Your Process**: For each project, include a section that discusses your research methods, findings, and how you integrated feedback into your designs.

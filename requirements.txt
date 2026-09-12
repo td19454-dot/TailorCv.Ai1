@@ -11,6 +11,7 @@ email-validator>=2.0.0
 psycopg2-binary>=2.9.9
 itsdangerous>=2.0.0
 sqlalchemy
+pgvector>=0.5.0
 bs4
 # Google Sign-In
 google-auth>=2.29.0
@@ -37,7 +38,6 @@ markdown>=3.5.0
 # gradio
 httpx>=0.27.0
 resend
-boto3>=1.34.0
 #Analytics
 posthog
 
@@ -47,3 +47,12 @@ sentry-sdk[fastapi]>=2.0.0
 # Payments
 razorpay>=1.4.0
 polar-sdk>=0.1.0
+
+# Auto-apply (local browser automation via Stagehand + Playwright — no
+# Browserbase account/session needed). >=4.0.0 is required: that's the first
+# version exposing stagehand.local_browser, which auto_apply/browser.py uses
+# to launch its own Chromium instead of connecting to a Browserbase session.
+# The build MUST also run `playwright install chromium --with-deps` — unlike
+# the old Browserbase-backed setup, this now launches a real local browser.
+stagehand>=4.0.0
+playwright>=1.47.0

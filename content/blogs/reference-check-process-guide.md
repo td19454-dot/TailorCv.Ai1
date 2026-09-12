@@ -10,14 +10,6 @@ slug: reference-check-process-guide
 keywords: reference check, job references, how references work, professional references
 ---
 
-## Key Takeaways
-
-- Reference checks come after you have impressed in interviews, to confirm your experience and what you are like to work with.
-- Pick people who know your work well and will speak specifically and positively.
-- Never list someone without permission - ask directly whether they can give a strong reference.
-- Once someone agrees, set them up to succeed by sending them the details they need.
-- Only share references when asked, which is usually late in the process.
-
 Reference checks are one of the last steps before an offer is finalized, and a lukewarm reference can quietly sink an otherwise strong candidacy. Most candidates treat references as an afterthought — they scramble to list three names at the last minute and hope for the best. A little preparation turns your references into a genuine asset that closes the deal. This guide explains how reference checks work, who to choose, and how to prepare them.
 
 Reaching the reference stage means you're close, often alongside or just before a [background check](https://thetailorcv.com/blog/background-check-what-to-expect). Keep the momentum by staying organized and professional right through to the offer.
@@ -25,13 +17,6 @@ Reaching the reference stage means you're close, often alongside or just before 
 ## How reference checks work
 
 After you've impressed in interviews, an employer contacts your references to confirm your experience and get a sense of what you're like to work with. They typically ask about your role and responsibilities, your strengths, how you handled challenges, and whether they'd rehire or recommend you. Some employers call; others send a short form. The tone is usually confirmatory — they want reasons to feel confident, not to dig for dirt — but a vague or unenthusiastic reference plants doubt at the worst possible moment.
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-Optimising runs against the specific job description you paste in, not in the abstract.
-
 
 ## Who to choose as references
 
@@ -51,8 +36,6 @@ Never list someone as a reference without permission. Reach out ahead of time, c
 
 Once someone agrees, set them up to give the best possible reference. Send them:
 
-
-
 - **The role you're applying for** and a link to the [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 - **A few strengths** you'd love them to highlight, ideally aligned to the role's [keywords](https://thetailorcv.com/blog/how-to-match-resume-keywords-to-job-description).
 - **A copy of your current [resume](https://www.thetailorcv.com/modify-cv)** so their memory is fresh and their answers align with your story.
@@ -71,9 +54,9 @@ It's completely normal not to want your current employer contacted before you've
 
 To make your references work for you:
 
-- [ ] Choose **former managers and colleagues** who'll speak specifically and positively.
-- [ ] **Always ask first** and confirm they'll give a *strong* reference.
-- [ ] **Prep them** with the role, your target strengths, and your [resume](https://www.thetailorcv.com/modify-cv).
-- [ ] **Share references only when asked**, then **thank them** and share the outcome.
+- Choose **former managers and colleagues** who'll speak specifically and positively.
+- **Always ask first** and confirm they'll give a *strong* reference.
+- **Prep them** with the role, your target strengths, and your [resume](https://www.thetailorcv.com/modify-cv).
+- **Share references only when asked**, then **thank them** and share the outcome.
 
 Do this and your references become one more reason to hire you, not a wildcard. Keep the rest of your process just as sharp — a tailored [resume](https://www.thetailorcv.com/modify-cv), the [ATS checker](https://www.thetailorcv.com/solutions), and a prompt [thank-you email](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) after each interview.

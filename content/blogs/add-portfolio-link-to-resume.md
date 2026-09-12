@@ -4,10 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: add-portfolio-link-to-resume
 image: public/blog-images/add-portfolio-link-to-resume.webp
-category: Portfolio
-tags: [Portfolio Guide, Career Advice, Job Search]
-keywords: Portfolio Guide, Career Advice, Job Search
 ---
+
+A portfolio only helps if recruiters can find and click it - and surprisingly many candidates either hide the link, format it badly, or let it 404. Here is how to add it so it works for both humans and Applicant Tracking Systems. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Make a Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ## Key Takeaways
 
@@ -16,9 +15,6 @@ keywords: Portfolio Guide, Career Advice, Job Search
 - Enhance clickability by adding a one-line hook that describes your portfolio's content and value.
 - Ensure consistency across your resume, LinkedIn, and portfolio regarding name, headline, and featured work to avoid confusion.
 - Regularly test and update your portfolio link, ensuring it is mobile-friendly and optimized for SEO.
-
-
-A portfolio only helps if recruiters can find and click it - and surprisingly many candidates either hide the link, format it badly, or let it 404. Here is how to add it so it works for both humans and Applicant Tracking Systems. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Make a Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly).
 
 ## Where to Put It
 In the **header/contact line**, alongside your email and LinkedIn. Keep it near the top so it survives the seven-second skim. See [Resume Contact Section](https://thetailorcv.com/blog/resume-contact-section).
@@ -73,13 +69,6 @@ The format of your portfolio can significantly impact how recruiters perceive yo
 
 ## Examples of Well-Formatted Portfolio Links
 Here are a few examples of how to format your portfolio link effectively on your resume:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 - **Example 1**:  
   **Portfolio**: Design Projects & Case Studies → [yourname.com](https://yourname.com)
@@ -142,11 +131,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
 - [How to Write a Resume From Scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch)
 - [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide)
-- [Architect Resume Guide 2026](https://thetailorcv.com/blog/architect-resume-2026)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

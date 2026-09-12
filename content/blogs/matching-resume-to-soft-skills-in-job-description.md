@@ -10,15 +10,6 @@ keywords: soft skills job description resume, how to match soft skills to job de
 image: public/blog-images/matching-resume-to-soft-skills-in-job-description.webp
 ---
 
-## Key Takeaways
-
-- Soft skills are often implied in job descriptions rather than explicitly listed, requiring candidates to read between the lines to identify them.
-- Responsibilities and culture sections of job postings contain clues about necessary soft skills, such as collaboration and adaptability.
-- Resumes should provide concrete examples of soft skills in action, rather than simply listing unsupported adjectives.
-- Candidates should extract implied soft skills from job descriptions and match them with real experiences to enhance their resumes.
-- Using the specific language from the job posting to describe your experiences can strengthen the alignment between your resume and the role.
-
-
 Most candidates hunt job descriptions for hard skills, tools, certifications, years of experience, and ignore the soft skills entirely, or worse, copy generic words like "team player" and "hard worker" straight onto their [resume](https://www.thetailorcv.com/solutions) without any real matching effort. Both approaches miss something important: soft skills are rarely listed as a bullet point. They are buried in the responsibilities section, the culture blurb, and the way the role is described.
 
 Learning to read between the lines and [match your resume](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) to these implied soft skills, with real evidence instead of buzzwords, is a differentiator most candidates skip entirely.
@@ -26,6 +17,14 @@ Learning to read between the lines and [match your resume](https://thetailorcv.c
 Paste any job description into the [TailorCV resume optimizer](/solutions) to see how well your resume reflects both the hard and soft skills the role demands.
 
 ---
+
+## Key Takeaways
+
+- Soft skills are often implied in job descriptions rather than explicitly listed, requiring candidates to read between the lines to identify them.
+- Responsibilities and culture sections of job postings contain clues about necessary soft skills, such as collaboration and adaptability.
+- Resumes should provide concrete examples of soft skills in action, rather than simply listing unsupported adjectives.
+- Candidates should extract implied soft skills from job descriptions and match them with real experiences to enhance their resumes.
+- Using the specific language from the job posting to describe your experiences can strengthen the alignment between your resume and the role.
 
 ## Where Soft Skills Actually Hide in a Job Description
 
@@ -120,7 +119,6 @@ To illustrate how to effectively match soft skills with job descriptions, consid
 **Job Description Snippet:** "We are looking for a candidate who demonstrates strong communication skills and the ability to collaborate with cross-functional teams."
 
 **Resume Application:**
-
 - **Soft Skill Identified:** Communication
 - **Proving the Skill:** Instead of merely stating "excellent communication skills," provide a bullet point in your experience section like:
   - "Developed and presented weekly marketing reports to stakeholders, facilitating informed decision-making and enhancing team collaboration."
@@ -129,7 +127,6 @@ To illustrate how to effectively match soft skills with job descriptions, consid
 **Job Description Snippet:** "Candidates should exhibit problem-solving abilities and adaptability in a fast-paced environment."
 
 **Resume Application:**
-
 - **Soft Skill Identified:** Problem Solving
 - **Proving the Skill:** Rather than just listing "problem-solving," you could write:
   - "Resolved critical software bugs under tight deadlines, improving application stability by 30% and adapting solutions for diverse user needs."
@@ -139,13 +136,6 @@ By using specific examples, candidates can effectively demonstrate their soft sk
 ## Step-by-Step How to Analyze Soft Skills in Job Descriptions
 
 1. **Highlight Key Terms:** Read the job description thoroughly and underline soft skill phrases. Look for words like “team player,” “adaptability,” and “leadership.”
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
    
 2. **Categorize Skills:** Organize the identified soft skills into categories such as communication, leadership, teamwork, and problem-solving to visualize your matches better.
 
@@ -183,7 +173,7 @@ By utilizing this checklist, you can ensure that your resume effectively showcas
 
 ## Short Scenarios for Practice
 
-1. **Scenario A:** You apply for a [customer service](https://thetailorcv.com/blog/customer-service-resume-2026) role that emphasizes "empathy" and "active listening." Write down two experiences from past jobs where you demonstrated these skills.
+1. **Scenario A:** You apply for a customer service role that emphasizes "empathy" and "active listening." Write down two experiences from past jobs where you demonstrated these skills.
 
 2. **Scenario B:** You’re targeting a project management position that highlights "leadership" and "time management." List examples where you successfully led a project and managed deadlines effectively.
 

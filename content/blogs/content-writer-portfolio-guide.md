@@ -10,6 +10,8 @@ slug: content-writer-portfolio-guide
 keywords: writing portfolio, copywriter portfolio, content writer portfolio, freelance writing samples, writing portfolio examples
 ---
 
+A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
+
 ## Key Takeaways
 
 - Curate 10-15 relevant writing samples that align with the types of projects you want to attract, ensuring they demonstrate your skills across various formats.
@@ -17,9 +19,6 @@ keywords: writing portfolio, copywriter portfolio, content writer portfolio, fre
 - Organize your portfolio for quick navigation by grouping samples by format or industry and providing context for each piece.
 - Maintain consistency across your resume, LinkedIn, and portfolio to present a cohesive professional narrative and avoid confusing potential employers.
 - Include detailed case studies in your portfolio that outline the challenges faced, your approach, and the results achieved to enhance credibility.
-
-
-A writing portfolio is proof that you can write for **a purpose** - to rank, to convert, to explain, to sell. The trick is curation: show samples that match the work you actually want, and back them with results wherever you can. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Marketing Portfolio Guide](https://thetailorcv.com/blog/marketing-portfolio-guide).
 
 ## Choose the Right Samples
 Show 10-15 pieces across the formats you want to be hired for, and cut everything off-target:
@@ -49,13 +48,6 @@ Your [Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-m
 ## Keep Your Resume and Portfolio in Sync
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 
 ## Common Mistakes
@@ -88,8 +80,6 @@ For a detailed breakdown, check out our guide on [How to Write a Portfolio Case 
 ## Developing a Cohesive Narrative
 
 Your portfolio should tell a cohesive story about your career as a content writer or copywriter. Here’s how to develop a narrative that resonates with potential employers or clients:
-
-
 
 - **Chronological Flow**: Arrange your samples in a way that reflects your growth and evolution as a writer. Start with your earliest work and progress to your most recent projects to show how your skills have developed over time.
 
@@ -166,11 +156,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [How to Host Your Portfolio for Free](https://thetailorcv.com/blog/how-to-host-portfolio-free)
 - [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid)
-- [Teacher and Educator Portfolio Guide: Showcase Your Classroom Impact](https://thetailorcv.com/blog/teacher-educator-portfolio-guide)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

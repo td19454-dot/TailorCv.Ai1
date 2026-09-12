@@ -10,6 +10,10 @@ keywords: cover letter for jobs in japan, japanese cover letter, how to write a 
 image: public/blog-images/japanese-cover-letter-guide.png
 ---
 
+The cover letter's role in Japan depends heavily on the employer. Traditional Japanese hiring centres on the *rirekisho* and *shokumu-keirekisho*, where your motivation is expressed in the *shibō dōki* (motivation) section rather than a separate letter. But at global companies, tech firms, and international roles — the ones many foreigners target — a Western-style cover letter is often expected, and a strong one can set you apart. Either way, the tone that wins in Japan is consistent: sincere, respectful, specific to the company, and focused on long-term commitment.
+
+This guide explains how to write a cover letter for jobs in Japan in 2026: when it's needed, how to structure it, the tone to strike, and how foreigners can make a respectful, compelling case.
+
 ## Key Takeaways
 
 - Whether a separate cover letter is expected **depends on the employer** — common at global/English roles, less so at traditional firms (where motivation lives in the rirekisho).
@@ -18,14 +22,9 @@ image: public/blog-images/japanese-cover-letter-guide.png
 - Emphasise **commitment, teamwork, and long-term fit**, not just individual achievement.
 - Keep it concise, polished, and tailored to each role.
 
-
-The cover letter's role in Japan depends heavily on the employer. Traditional Japanese hiring centres on the *rirekisho* and *shokumu-keirekisho*, where your motivation is expressed in the *shibō dōki* (motivation) section rather than a separate letter. But at global companies, tech firms, and international roles — the ones many foreigners target — a Western-style cover letter is often expected, and a strong one can set you apart. Either way, the tone that wins in Japan is consistent: sincere, respectful, specific to the company, and focused on long-term commitment.
-
-This guide explains how to write a cover letter for jobs in Japan in 2026: when it's needed, how to structure it, the tone to strike, and how foreigners can make a respectful, compelling case.
-
 ## Do You Need a Cover Letter in Japan?
 
-- **Traditional Japanese companies:** typically rely on the *rirekisho* + *[shokumu-keirekisho](https://thetailorcv.com/blog/shokumu-keirekisho-guide)*. Your motivation is expressed in the rirekisho's *shibō dōki* section rather than a separate cover letter — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
+- **Traditional Japanese companies:** typically rely on the *rirekisho* + *shokumu-keirekisho*. Your motivation is expressed in the rirekisho's *shibō dōki* section rather than a separate cover letter — see the [Japanese resume guide](https://thetailorcv.com/blog/japanese-resume-rirekisho-guide).
 - **Global companies, tech firms, startups, international roles:** frequently expect (or welcome) a Western-style English cover letter alongside your resume.
 
 If a posting requests a cover letter, always include one. If it's optional at a global employer, a strong letter is usually worth it. For the wider picture, see [how to get a job in Japan as a foreigner](https://thetailorcv.com/blog/how-to-get-a-job-in-japan-foreigner).
@@ -45,20 +44,6 @@ This tone applies whether you're writing a separate cover letter or the *shibō 
 ## How to Structure an English Cover Letter for Japan
 
 For global and English-language roles, use a clean, professional structure:
-
-### What the finished letter looks like
-
-![A modern cover letter template with a clean header block and a single-column body](public/blog-images/ats-friendly-cover-letter-format-template-modern.webp)
-
-The same rules with a little more styling: the header is real text, not an image, so the layout stays readable to both a recruiter and a parser.
-
-
-### Generating the letter from a job description
-
-![TailorCV cover letter generator: resume and job description on the left, a live letter preview with Classic, Modern and Monogram templates on the right](public/blog-images/ai-cover-letter-generator-job-description-generator.webp)
-
-Having the preview beside the inputs is what makes this fast: change the tone or template and you see the result immediately.
-
 
 ### 1. Header and Greeting
 
@@ -86,12 +71,10 @@ Keep it to [one page](https://thetailorcv.com/blog/anatomy-of-a-resume), polishe
 
 Whether in a cover letter or the rirekisho section, the *shibō dōki* is the heart of a Japanese application. To write a strong one:
 
-| Section | What goes in it |
-|---|---|
-| **Research the company deeply** | its philosophy, products, and recent developments |
-| **Be specific** | generic praise ("I admire your company") is weak; cite concrete reasons |
-| **Connect to your goals** | show how this company fits your long-term aspirations |
-| **Signal commitment** | Japanese firms value candidates who want to stay and grow |
+- **Research the company deeply** — its philosophy, products, and recent developments.
+- **Be specific** — generic praise ("I admire your company") is weak; cite concrete reasons.
+- **Connect to your goals** — show how this company fits your long-term aspirations.
+- **Signal commitment** — Japanese firms value candidates who want to stay and grow.
 
 ## Tailor Every Letter
 
@@ -102,7 +85,6 @@ Never send a generic letter. For each application:
 - Keep your resume aligned — build it with the [TailorCV resume builder](https://thetailorcv.com/modify-cv) and tailor it with the [resume optimizer](https://thetailorcv.com/solutions). For which terms to feature, see [best resume keywords for Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
 
 A tailored letter shows exactly the diligence and sincerity Japanese employers reward.
-
 
 ## Feature Your Language Credentials
 
@@ -125,7 +107,7 @@ If relevant, note your **JLPT** and **TOEIC** levels — trusted, concrete signa
 ## Pair It With a Strong Application
 
 - Match your resume format to the employer — see [ATS and English resumes for Japan](https://thetailorcv.com/blog/ats-english-resume-japan) and [rirekisho vs Western resume](https://thetailorcv.com/blog/rirekisho-vs-western-resume).
-- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/blog/ai-mock-interview-practice-from-resume).
+- Prepare for Japan's interview etiquette — see [Japan interview etiquette](https://thetailorcv.com/blog/japan-interview-etiquette-guide) and rehearse with the [AI mock interview](https://thetailorcv.com/mock-interview).
 - Find the right roles via the [best job sites for Japan](https://thetailorcv.com/blog/job-sites-japan) and [how to find a job in Tokyo](https://thetailorcv.com/blog/how-to-find-a-job-in-tokyo).
 
 ## Frequently Asked Questions

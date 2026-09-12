@@ -10,15 +10,6 @@ slug: anatomy-of-a-resume
 keywords: resume sections, anatomy of a resume, resume structure 2026, what sections to include in resume, resume layout guide, resume parts explained, how to structure a resume
 ---
 
-## Key Takeaways
-
-- A resume should have a structured format with essential sections like Contact Information, Professional Summary, Skills, Work Experience, and Education.
-- The Contact Information section must include your name, professional email, phone number, and relevant online profiles while excluding personal details like full address and photo.
-- A strong Professional Summary is crucial; it should succinctly convey who you are, what you do, and your key strengths or accomplishments.
-- The Skills section is vital for ATS optimization; list relevant skills using the exact terminology from the job description and categorize them effectively.
-- Work Experience should detail your roles and achievements, emphasizing quantifiable results to showcase your impact in previous positions.
-
-
 A resume is more than a list of jobs. It is a structured document with specific sections, each serving a distinct purpose in convincing a hiring manager to call you. Understanding what every section does - and how to write each one - is the foundation of a great resume.
 
 This guide walks through every resume section: mandatory ones you must include, optional ones that can strengthen your application, and sections you should remove entirely.
@@ -26,6 +17,14 @@ This guide walks through every resume section: mandatory ones you must include, 
 Start from an [ATS-friendly template](https://www.thetailorcv.com/templates) so your structure is already correct, then use this guide to fill in the content. Test the finished product with the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions).
 
 ---
+
+## Key Takeaways
+
+- A resume should have a structured format with essential sections like Contact Information, Professional Summary, Skills, Work Experience, and Education.
+- The Contact Information section must include your name, professional email, phone number, and relevant online profiles while excluding personal details like full address and photo.
+- A strong Professional Summary is crucial; it should succinctly convey who you are, what you do, and your key strengths or accomplishments.
+- The Skills section is vital for ATS optimization; list relevant skills using the exact terminology from the job description and categorize them effectively.
+- Work Experience should detail your roles and achievements, emphasizing quantifiable results to showcase your impact in previous positions.
 
 ## Standard Resume Structure
 
@@ -36,7 +35,7 @@ A well-structured resume follows this order:
 3. Skills
 4. Work Experience
 5. [education](https://thetailorcv.com/blog/how-to-list-education-on-resume)
-6. Optional Sections ([projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), Certifications, Awards, Volunteer Work)
+6. Optional Sections ([projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), Certifications, Awards, Volunteer Work)
 
 The order matters. Hiring managers and [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems expect the most important and relevant information first.
 
@@ -47,7 +46,6 @@ The order matters. Hiring managers and [ATS](https://thetailorcv.com/blog/what-i
 Your name and contact details sit at the top of your resume. This section seems obvious, but it is frequently done wrong.
 
 **Include:**
-
 - Full name (larger font - 16-20pt)
 - Professional email address
 - Phone number
@@ -57,7 +55,6 @@ Your name and contact details sit at the top of your resume. This section seems 
 - [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) URL (for creative/design roles)
 
 **Exclude:**
-
 - Full street address (security and space waste)
 - Date of birth
 - Marital status or gender
@@ -80,7 +77,6 @@ A good summary answers: Who are you? What do you do? What is your biggest streng
 Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary) for templates and examples by experience level. For those with no experience, see [resume summary with no experience](https://thetailorcv.com/blog/resume-summary-with-no-experience).
 
 **Avoid:**
-
 - Generic phrases like "hardworking team player"
 - Objectives ("Seeking a position where I can grow...")
 - Buzzwords with no substance
@@ -92,7 +88,6 @@ Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-r
 The skills section is one of the most [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it)-critical parts of your resume. [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems scan here for keyword matches against the job description.
 
 **How to structure it:**
-
 - Group skills by category (Languages, Tools, Platforms, [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume))
 - Use the exact terminology from the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 - Keep it concise - 15-25 skills is typical
@@ -102,7 +97,7 @@ The skills section is one of the most [ATS](https://thetailorcv.com/blog/what-is
 > **Tools:** Git, Docker, Kubernetes  
 > **Platforms:** AWS, GCP, Azure  
 
-Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and [technical skills for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience) for categorized skill lists by role.
+Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) and [technical skills for freshers](https://thetailorcv.com/blog/technical-skills-in-resume-for-freshers-with-no-experience-guide) for categorized skill lists by role.
 
 ---
 
@@ -111,7 +106,6 @@ Read [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-
 The work experience section is the heart of your resume. This is where you demonstrate what you have actually done and what impact it had.
 
 **Structure each role as:**
-
 - Job title | Company | Location | Dates (month/year - month/year)
 - 3-6 [bullet points](https://thetailorcv.com/blog/how-to-write-resume-bullet-points) per role
 - Each bullet: action verb + what you did + quantified result
@@ -120,7 +114,6 @@ The work experience section is the heart of your resume. This is where you demon
 > "Reduced database query time by 60% by implementing Redis caching, improving page load speed for 200,000 daily active users."
 
 Key rules:
-
 - Start every bullet with a strong [action verb](https://thetailorcv.com/blog/best-action-verbs-for-resume)
 - Quantify wherever possible - read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - List roles in reverse chronological order (most recent first)
@@ -132,19 +125,17 @@ Read [how to write resume bullet points that get results](https://thetailorcv.co
 
 ## Section 5: Education
 
-The education section lists your academic degrees. For recent graduates and [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), it carries more weight. For experienced professionals, it is brief.
+The education section lists your academic degrees. For recent graduates and [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), it carries more weight. For experienced professionals, it is brief.
 
 **Include:**
-
 - Degree and field of study
 - Institution name
 - Graduation year (or expected year)
 - GPA (only if 3.5/4.0 or higher, and only within 3 years of graduation)
-- Relevant coursework (for [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers) with limited experience)
+- Relevant coursework (for [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes) with limited experience)
 - Academic honors (cum laude, dean's list)
 
 **Exclude:**
-
 - High school (once you have a degree)
 - GPA older than 3-4 years
 - Irrelevant or failed coursework
@@ -155,17 +146,16 @@ Read [how to list education on a resume](https://thetailorcv.com/blog/how-to-lis
 
 ## Section 6: Projects (Optional but Often Critical)
 
-For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-freshers), career changers, and software engineers, a projects section can be the most important optional section. It demonstrates practical skill even without formal work experience.
+For students, [freshers](https://thetailorcv.com/blog/resume-mistakes-every-fresher-makes), career changers, and software engineers, a projects section can be the most important optional section. It demonstrates practical skill even without formal work experience.
 
 **Include for each project:**
-
 - Project name and brief description
 - Technologies and tools used
 - Your specific contribution
 - Measurable outcome or impact
 - [GitHub](https://thetailorcv.com/blog/github-portfolio-optimization) or demo link (if public)
 
-Read [how to add projects to your resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) for complete guidance with examples.
+Read [how to add projects to your resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) for complete guidance with examples.
 
 ---
 
@@ -174,25 +164,17 @@ Read [how to add projects to your resume](https://thetailorcv.com/blog/fresher-r
 Certifications from recognized providers add credibility and [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score). They matter most in tech, finance, project management, and healthcare.
 
 List:
-
 - Certification name
 - Issuing organization
 - Date (month/year)
 
-Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume).
+Read [how to list certifications on a resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) and [best free online certificates for resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026).
 
 ---
 
 ## Section 8: Awards and Achievements (Optional)
 
 If you have notable awards - academic, professional, or competitive - a dedicated section or inclusion within experience can strengthen your case. Read [how to list awards and achievements on a resume](https://thetailorcv.com/blog/awards-achievements-on-resume) for placement advice.
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
 
 ---
 
@@ -241,11 +223,10 @@ Read [10 ATS resume formatting mistakes](https://thetailorcv.com/blog/ats-resume
 - [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [How to Add Projects to Your Resume](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews)
+- [How to Add Projects to Your Resume](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers)
 - [Ideal Resume Length Guide](https://thetailorcv.com/blog/ideal-resume-length-guide)
 - [How to Make Your Resume ATS-Friendly](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly)
 - [Resume Contact Section Guide](https://thetailorcv.com/blog/resume-contact-section)
-- [Architect Resume Guide 2026](https://thetailorcv.com/blog/architect-resume-2026)
 
 ---
 

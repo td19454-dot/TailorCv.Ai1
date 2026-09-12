@@ -8,7 +8,7 @@
     <title>ATS-Friendly Resume Builder, Free Resume Maker | TailorCV</title>
     {% include "_seo_head.html" %}
 <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/modify_cv.css?v=31">
+    <link rel="stylesheet" href="/static/modify_cv.css?v=30">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -76,7 +76,7 @@
     {% include "_nav.html" %}
 
     {% if not is_logged_in %}
-    <link rel="stylesheet" href="/static/feature_landing.css?v=115">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=114">
     <div class="solx">
         <div class="solx-wrap">
             <div class="solx-hero">
@@ -206,7 +206,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>3 free ATS scans</li>
+                            <li>ATS score, unlimited</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -472,10 +472,9 @@
                     <input id="cv-upload-file-input" type="file" accept=".pdf,application/pdf" style="display:none;" data-restore-silent>
                 </label>
                 <div id="cv-upload-error" style="display:none;color:#fca5a5;font-size:13px;margin-top:10px;"></div>
-                <div id="cv-upload-loading" style="display:none;text-align:center;padding:1.5rem 0;color:#9bb0d8;">
-                    <div class="cv-upload-loader" aria-hidden="true" style="margin:0 auto 14px;"></div>
+                <div id="cv-upload-loading" style="display:none;text-align:center;padding:1rem 0;color:#9bb0d8;">
                     <div style="margin-bottom:4px;font-size:14px;">Extracting your CV data…</div>
-                    <small style="opacity:0.8;">This usually takes 10-15 seconds</small>
+                    <small style="opacity:0.8;">This usually takes 5,15 seconds</small>
                 </div>
             </div>
             <div class="linkedin-modal-footer" id="cv-upload-modal-footer">
@@ -532,9 +531,9 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=19"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
-    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=34"></script>{% endif %}
+    {% if is_logged_in %}<script src="/static/js/modify_cv.js?v=31"></script>{% endif %}
 <script>
 (function(){
   const canvas = document.getElementById('wave-canvas');
@@ -618,83 +617,6 @@
 @keyframes dlPulseSuccess {
   0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
   50%      { box-shadow: 0 0 0 8px rgba(34,197,94,.3); }
-}
-
-/* CV upload/extract loading spinner (modify_cv.html #cv-upload-loading) */
-.cv-upload-loader {
-  --color-1: #6ee7b7;
-  --size: 1px;
-
-  color: var(--color-1);
-  font-size: calc(45 * var(--size));
-  text-indent: -9999em;
-  overflow: hidden;
-  width: 1em;
-  height: 1em;
-  border-radius: 50%;
-  position: relative;
-  transform: translateZ(0);
-}
-@media (prefers-reduced-motion: no-preference) {
-  .cv-upload-loader {
-    animation: mltShdSpin 1.7s infinite ease, cvUploadRound 1.7s infinite ease;
-  }
-}
-@keyframes mltShdSpin {
-  0% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      0 -0.83em 0 -0.42em,
-      0 -0.83em 0 -0.44em,
-      0 -0.83em 0 -0.46em,
-      0 -0.83em 0 -0.477em;
-  }
-  5%,
-  95% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      0 -0.83em 0 -0.42em,
-      0 -0.83em 0 -0.44em,
-      0 -0.83em 0 -0.46em,
-      0 -0.83em 0 -0.477em;
-  }
-  10%,
-  59% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      -0.087em -0.825em 0 -0.42em,
-      -0.173em -0.812em 0 -0.44em,
-      -0.256em -0.789em 0 -0.46em,
-      -0.297em -0.775em 0 -0.477em;
-  }
-  20% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      -0.338em -0.758em 0 -0.42em,
-      -0.555em -0.617em 0 -0.44em,
-      -0.671em -0.488em 0 -0.46em,
-      -0.749em -0.34em 0 -0.477em;
-  }
-  38% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      -0.377em -0.74em 0 -0.42em,
-      -0.645em -0.522em 0 -0.44em,
-      -0.775em -0.297em 0 -0.46em,
-      -0.82em -0.09em 0 -0.477em;
-  }
-  100% {
-    box-shadow:
-      0 -0.83em 0 -0.4em,
-      0 -0.83em 0 -0.42em,
-      0 -0.83em 0 -0.44em,
-      0 -0.83em 0 -0.46em,
-      0 -0.83em 0 -0.477em;
-  }
-}
-@keyframes cvUploadRound {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* Global app-shell rule (header.navbar + * { padding-top:16px !important })

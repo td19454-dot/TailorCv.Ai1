@@ -1,14 +1,18 @@
 ---
 title: ATS and English Resumes for Jobs in Japan (2026 Guide)
-description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an ATS-friendly resume that passes the filters.
+description: How applicant tracking systems and English resumes work for jobs in Japan in 2026 — when to use an English resume, how global companies in Japan screen applications, and how to build an [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) resume that passes the filters.
 date: 2026-08-08
 author: TailorCV Team
-tags: [ATS Japan, English resume Japan, resume for global companies Japan, applicant tracking system]
+tags: [ATS Japan, English resume Japan, resume for global companies Japan, [applicant tracking system](https://thetailorcv.com/blog/ats-resume-checker-how-it-works)]
 category: Resume Writing
 slug: ats-english-resume-japan
 keywords: ats english resume japan, english resume for jobs in japan, applicant tracking system japan, resume for global companies japan
 image: public/blog-images/ats-english-resume-japan.png
 ---
+
+Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
+
+This guide explains how ATS and English resumes work for jobs in Japan in 2026: when an English resume is the right tool, how these employers screen, and how to build a resume that passes the filters and reaches a human.
 
 ## Key Takeaways
 
@@ -17,11 +21,6 @@ image: public/blog-images/ats-english-resume-japan.png
 - ATS software **parses and ranks** resumes by keywords and formatting; a poorly formatted resume can be filtered out before a human sees it.
 - **Keyword matching** to each job description is the single most important optimisation.
 - Traditional Japanese firms still expect Japanese-format documents — know which type of employer you're applying to.
-
-
-Not every job in Japan requires a handwritten *rirekisho* and fluent Japanese. A growing share of roles — at global companies, tech firms, startups, and international teams — hire in English and screen applications with **applicant tracking systems (ATS)**, exactly like employers in the US, UK, or [Singapore](https://thetailorcv.com/blog/ats-in-singapore-guide). For foreigners and [bilingual](https://thetailorcv.com/blog/bilingual-language-skills-on-resume) professionals, these are often the most accessible roles in Japan, and the key to landing them is a strong, ATS-friendly English resume.
-
-This guide explains how ATS and English resumes work for jobs in Japan in 2026: when an English resume is the right tool, how these employers screen, and how to build a resume that passes the filters and reaches a human.
 
 ## When to Use an English Resume in Japan
 
@@ -35,13 +34,6 @@ If you're targeting the English-friendly segment — which is where many foreign
 ## What Is an ATS and Why It Matters
 
 An applicant tracking system is software employers use to collect, parse, and rank applications. When you apply online at a global company, your resume often goes into an ATS first. It:
-
-### What an ATS score report actually shows you
-
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
-
 
 - **Parses** your resume into structured data (contact, experience, skills, education).
 - **Screens and ranks** candidates, often by how well the resume matches the job's keywords.
@@ -68,7 +60,6 @@ The ATS ranks you largely on keyword relevance. For every application:
 - Include the **exact terms** (and sensible variations) the employer uses.
 
 Tailoring keywords per job dramatically improves your ranking. Use the [TailorCV resume optimizer](https://thetailorcv.com/solutions) to compare your resume against a specific job description, get a match score, and see the keywords you're missing — the same approach that beats the ATS anywhere. For a starting palette of high-value terms, see [best resume keywords for jobs in Japan](https://thetailorcv.com/blog/best-resume-keywords-japan).
-
 
 ## Step 3: Write Strong, Quantified Content
 

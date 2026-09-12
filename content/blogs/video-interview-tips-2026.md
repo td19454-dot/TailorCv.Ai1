@@ -48,34 +48,26 @@ You can keep a small sticky note or a short doc just off-camera with your three 
 
 [Answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) that feel clear in your head often ramble out loud. Run a few [mock interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) reps on camera so you hear your own pacing and see your own body language before it counts.
 
-### See it in action: a resume-based mock interview
-
-![TailorCV AI mock interview: the interviewer reads your resume, asks resume-based questions and role-specific follow-ups, then returns a scorecard](public/blog-images/ai-mock-interview-complete-guide-2026-zara.webp)
-
-The scorecard at the end is the useful bit - an honest score plus specific feedback, which is what turns practice into improvement.
-
-
 ## The 30-Minute Pre-Interview Checklist
 
 Run this in the half hour before the call so nothing technical surprises you.
 
-- [ ] **Restart your computer** an hour before, so no lingering process hogs bandwidth or your camera.
-- [ ] **Close every other app**, especially anything syncing or streaming.
-- [ ] **Open the meeting link early** and confirm camera and mic in the platform's settings.
-- [ ] **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
-- [ ] **Have water within reach**, off-camera, for the inevitable dry mouth.
-- [ ] **Put your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
-- [ ] **Tell housemates** you are in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and post a note on the door.
-- [ ] **Do a final light check** — is your face lit from the front and clearly visible?
+- **Restart your computer** an hour before, so no lingering process hogs bandwidth or your camera.
+- **Close every other app**, especially anything syncing or streaming.
+- **Open the meeting link early** and confirm camera and mic in the platform's settings.
+- **Silence your phone** and turn off desktop notifications — a Slack popup mid-answer is distracting and can expose private messages if you share your screen.
+- **Have water within reach**, off-camera, for the inevitable dry mouth.
+- **Put your [resume](https://thetailorcv.com/blog/anatomy-of-a-resume), the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide), and three key stories** where you can glance at them near the lens.
+- **Tell housemates** you are in an [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) and post a note on the door.
+- **Do a final light check** — is your face lit from the front and clearly visible?
 
 ## Body Language on Camera
 
-Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
-
+Video flattens your presence, so you have to [project](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little more energy than feels natural. Sit up straight, keep your shoulders back, and let your hands gesture within frame occasionally — stillness reads as stiffness on camera. Nod while the interviewer speaks to show you are listening, since the usual small verbal cues get muddied by audio lag. And smile genuinely at the start and end; the first and last few seconds shape the interviewer's overall impression more than any single [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026).
 
 ## Your Answers Still Matter Most
 
-All the setup in the world does not substitute for good [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — a crisp "tell me about yourself," two or three [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) stories in STAR form, and thoughtful questions to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.
+All the setup in the world does not substitute for good [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). The advantage of video is that you can keep brief notes nearby; the risk is leaning on them. Prepare your core stories the same way you would for an in-person [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) — a crisp "tell me about yourself," two or three [achievement](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume) stories in [STAR form](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026), and thoughtful [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) to ask. Then practice them out loud on camera so your delivery is natural and your eyes are not glued to a script.
 
 ## Common Video Interview Mistakes
 
@@ -104,7 +96,7 @@ Whatever the platform, join two to three minutes early so any permission prompt 
 
 ## One-Way (Recorded) Video Interviews
 
-A growing number of companies use asynchronous, recorded [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) where you [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) preset [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) to a camera with no human on the other end. They feel awkward — you are talking to yourself — but the fundamentals still apply, with a few tweaks:
+A growing number of [companies](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) use asynchronous, recorded [interviews](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) where you [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) preset [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) to a camera with no human on the other end. They feel awkward — you are talking to yourself — but the fundamentals still apply, with a few tweaks:
 
 - **Look at the lens, not the screen.** With no human to react to, this is even easier to forget.
 - **Bring energy.** Without a listener nodding along, your delivery can go flat. Slightly over-project warmth.
@@ -113,7 +105,7 @@ A growing number of companies use asynchronous, recorded [interviews](https://th
 
 ## Turning Nerves Into Preparation
 
-Most video-interview anxiety comes from the unknowns — will the tech work, will I freeze, how do I look? Every one of those is preparable, which means nerves are largely a signal to prepare more, not a fixed trait. Do a full dress rehearsal: same outfit, same lighting, same platform, answering real [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) out loud on camera. Watching one recording of yourself is uncomfortable but enormously useful — you will catch the "ums," the flat delivery, or the bad angle before an interviewer does. A few reps in an [AI mock interview](https://thetailorcv.com/mock-interview) build the muscle memory that turns a nerve-wracking call into a routine one, and our [interview prep](https://thetailorcv.com/interview-prep) tool can generate the exact questions you are likely to face so nothing catches you cold.
+Most video-interview anxiety comes from the unknowns — will the tech work, will I freeze, how do I look? Every one of those is preparable, which means nerves are largely a signal to prepare more, not a fixed trait. Do a full dress rehearsal: same outfit, same lighting, same platform, answering real [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) out loud on camera. Watching one recording of yourself is uncomfortable but enormously useful — you will catch the "ums," the flat delivery, or the bad angle before an interviewer does. A few reps in an [AI mock interview](https://thetailorcv.com/mock-interview) build the muscle memory that turns a nerve-wracking call into a routine one, and our [interview prep](https://thetailorcv.com/interview-prep) tool can generate the exact [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) you are likely to face so nothing catches you cold.
 
 ## Frequently Asked Questions
 
@@ -140,12 +132,12 @@ Yes — brief [bullet points](https://thetailorcv.com/blog/best-action-verbs-for
 
 ## Answering Tough Questions on Camera
 
-Video adds a layer of difficulty to hard [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) because the usual in-person cues — a reassuring nod, a shared laugh, reading the room — are muted or delayed. When you hit a curveball, the temptation is to fill the silence by rushing, which reads as flustered on camera. Resist it. A deliberate two-second pause before answering looks thoughtful on video, not slow, and it gives you time to structure a real [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). If you genuinely need a moment, say so plainly: "That's a good [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — let me think about it for a second." Composure under a hard question is itself a signal interviewers are reading, and on video, calm reads even louder than it does in person. Keep your answers slightly more structured than you would face-to-face — signpost with "there are two things I'd point to" — because the audio-only feedback loop makes rambling easier to fall into and harder for the interviewer to follow.
+Video adds a layer of difficulty to hard [questions](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) because the usual in-person cues — a reassuring nod, a shared laugh, reading the room — are muted or delayed. When you hit a curveball, the temptation is to fill the silence by rushing, which reads as flustered on camera. Resist it. A deliberate two-second pause before answering looks thoughtful on video, not slow, and it gives you time to structure a real [answer](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026). If you genuinely need a moment, say so plainly: "That's a good [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) — let me think about it for a second." Composure under a hard [question](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) is itself a signal interviewers are reading, and on video, calm reads even louder than it does in person. Keep your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) slightly more structured than you would face-to-face — signpost with "there are two things I'd point to" — because the audio-only feedback loop makes rambling easier to fall into and harder for the interviewer to follow.
 
 ## Following Up After a Video Interview
 
-The [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something specific from the conversation. A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is often part of a remote or distributed hiring process, where written follow-up carries even more weight — it is another sample of the clear, prompt communication the role will require. Reference a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) an interview — the principles are identical whether the interview happened across a table or across a screen.
+The [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) does not end when the call disconnects. Send a thank-you within 24 hours, exactly as you would after an in-person round, and use it to [reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) something specific from the conversation. A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) is often part of a remote or distributed [hiring](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid) process, where written [follow-up](https://thetailorcv.com/blog/how-to-follow-up-after-job-application) carries even more weight — it is another sample of the clear, prompt communication the [role](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search) will require. [Reference](https://thetailorcv.com/blog/should-you-put-references-on-resume) a moment you discussed, reinforce one reason you fit, and keep it short. If the technology glitched at any point, a light, gracious acknowledgment ("thanks for your patience with my connection at the start") shows you handle small hiccups with grace. For the full wording, see our guide on the [thank-you email after an interview](https://thetailorcv.com/blog/thank-you-email-after-interview-templates) — the principles are identical whether the [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) happened across a table or across a screen.
 
 ## Putting It All Together
 
-A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.
+A video [interview](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) rewards preparation you can see: a camera at eye level, front lighting, a tested platform, and calm body language that [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) a little extra energy to survive the flatness of a screen. Look at the lens, keep short notes nearby without reading them, and prepare your [answers](https://thetailorcv.com/blog/ai-mock-interview-complete-guide-2026) exactly as you would for an in-person round. Get the mechanics right and they disappear, leaving the interviewer free to focus on the only thing that should matter — what you actually say.

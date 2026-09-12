@@ -4,10 +4,11 @@ date: 2026-07-12
 author: TailorCV Team
 slug: portfolio-seo-get-found
 image: public/blog-images/portfolio-seo-get-found.webp
-category: Portfolio
-tags: [Portfolio Guide, Career Advice, Job Search]
-keywords: Portfolio Guide, Career Advice, Job Search
 ---
+
+## Portfolio SEO: How to Get Your Portfolio Found on Google
+
+A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
 
 ## Key Takeaways
 
@@ -16,12 +17,6 @@ keywords: Portfolio Guide, Career Advice, Job Search
 - Create content like case studies and blog posts to provide valuable information for recruiters and enhance search indexing.
 - Ensure technical SEO best practices are followed, including mobile optimization, page speed, and structured data implementation.
 - Keep your resume and portfolio consistent in messaging to avoid confusing recruiters and maximize interview opportunities.
-
-## Portfolio SEO: How to Get Your Portfolio Found on Google
-
-A portfolio nobody can find still helps inside applications - but with a little SEO, it can also bring opportunities *to* you. Recruiters and clients Google names and skills; a findable portfolio means inbound interest, not just outbound effort. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals).
-
-
 
 ## On-Page Basics
 
@@ -63,12 +58,10 @@ A few short case studies or posts give Google something to index and recruiters 
 
 ### Content Structure Checklist
 
-| Section | What goes in it |
-|---|---|
-| **Title** | Include the project name and your role |
-| **Introduction** | Briefly introduce the project and its objectives |
-| **Process** | Describe your methodology, including tools and techniques used |
-| **Results** | Share measurable outcomes (e.g., “Increased user engagement by 30%”) |
+- **Title**: Include the project name and your role.
+- **Introduction**: Briefly introduce the project and its objectives.
+- **Process**: Describe your methodology, including tools and techniques used.
+- **Results**: Share measurable outcomes (e.g., “Increased user engagement by 30%”).
 
 ## Technical Hygiene
 
@@ -93,15 +86,6 @@ Your resume, your LinkedIn, and your portfolio should tell the **same** story - 
 - Generic title tags ("Home").
 - Slow, image-heavy pages.
 - Blocking indexing by accident - see the broader [Portfolio Mistakes to Avoid](https://thetailorcv.com/blog/portfolio-mistakes-to-avoid).
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
-
-
 
 ### Avoiding SEO Pitfalls
 
@@ -166,11 +150,10 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 - [GitHub Portfolio Optimization](https://thetailorcv.com/blog/github-portfolio-optimization)
 - [Portfolio Checklist Before You Apply](https://thetailorcv.com/blog/portfolio-checklist-before-applying)
 - [Personal Website vs Portfolio](https://thetailorcv.com/blog/personal-website-vs-portfolio)
-- [Portfolio SEO Guide 2026 - Getting Found by Recruiters](https://thetailorcv.com/blog/portfolio-seo-guide)
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

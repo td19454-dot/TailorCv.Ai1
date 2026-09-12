@@ -5,7 +5,9 @@ services:
   - type: web
     name: tailorcv
     env: python
-    buildCommand: pip install -r requirements.txt
+    # playwright install is required now that auto_apply/browser.py launches
+    # its own local Chromium (no more Browserbase-hosted session).
+    buildCommand: pip install -r requirements.txt && playwright install chromium --with-deps
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
     envVars:
       - key: DATABASE_URL

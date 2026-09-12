@@ -1,0 +1,55 @@
+=== PROJECT NAMES FROM AI ===
+  'Marketing Analytics'
+  'Attrition Analytics'
+
+=== ANNOTATION MAP (pdf) ===
+{
+ "Marketing Analytics": [
+  [
+   "Link",
+   "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"
+  ]
+ ],
+ "Attrition Analytics": [
+  [
+   "Link",
+   "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"
+  ]
+ ]
+}
+
+=== TITLE POSITIONS FOUND IN PDF ===
+  page0 top=443.2  'Marketing Analytics'
+  page0 top=555.0  'Attrition Analytics'
+  NOT LOCATED: []
+
+=== LINK POSITIONS AND DECISIONS ===
+  page0 top=  445.2 x0=  46.8 -> 'Marketing Analytics' (dist 2.9)  https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da
+  page0 top=  557.0 x0=  47.5 -> 'Attrition Analytics' (dist 2.9)  https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare
+
+=== TEXT MAP ===
+{}
+
+=== EFFECTIVE MAP ===
+{
+ "Marketing Analytics": [
+  [
+   "Link",
+   "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"
+  ]
+ ],
+ "Attrition Analytics": [
+  [
+   "Link",
+   "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"
+  ]
+ ]
+}
+
+=== AFTER inject_links ===
+  'Marketing Analytics'
+     links=[{"label": "Link", "url": "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"}]
+     github_link='' url=''
+  'Attrition Analytics'
+     links=[{"label": "Link", "url": "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"}]
+     github_link='' url=''

@@ -10,6 +10,10 @@ keywords: resume keywords canada, ats keywords canada, best resume keywords cana
 image: public/blog-images/best-resume-keywords-canada.png
 ---
 
+Keywords decide whether your resume gets seen in Canada. Most Canadian employers — banks, tech firms, government, healthcare, and large companies — screen applications with an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that scans for specific skills and phrases before a recruiter ever reads your resume. Match the right keywords to the job, and you rise to the top of the shortlist. Miss them, and even a strong candidate gets filtered out.
+
+This guide gives you the best resume keywords for Canadian jobs in 2026, organised by industry and role, plus the part that matters most: how to use them naturally so you pass both the software and the human.
+
 ## Key Takeaways
 
 - Resume keywords are the specific skills, tools, and phrases a job posting uses — and the ATS scans for.
@@ -17,11 +21,6 @@ image: public/blog-images/best-resume-keywords-canada.png
 - Use keywords **truthfully and in context** — stuffing is detected and penalised.
 - Include a dedicated skills section plus keywords woven into your experience.
 - Test your resume against each posting with an [ATS score checker](https://thetailorcv.com/solutions) to find missing keywords.
-
-
-Keywords decide whether your resume gets seen in Canada. Most Canadian employers — banks, tech firms, government, healthcare, and large companies — screen applications with an [Applicant Tracking System](https://thetailorcv.com/blog/ats-resume-checker-how-it-works) (ATS) that scans for specific skills and phrases before a recruiter ever reads your resume. Match the right keywords to the job, and you rise to the top of the shortlist. Miss them, and even a strong candidate gets filtered out.
-
-This guide gives you the best resume keywords for Canadian jobs in 2026, organised by industry and role, plus the part that matters most: how to use them naturally so you pass both the software and the human.
 
 ## How Keywords Work in the Canadian ATS
 
@@ -86,7 +85,7 @@ Use only those you can back up, and prefer the specific over the generic.
 - Frameworks/tools: React, Node.js, .NET, Angular, Docker, Kubernetes
 - Cloud: AWS, Azure, Google Cloud
 - Practices: Agile, Scrum, CI/CD, DevOps, REST APIs, microservices
-- Data: data analysis, SQL, Power BI, Tableau, [machine learning](https://thetailorcv.com/blog/machine-learning-interview-questions)
+- Data: data analysis, SQL, Power BI, Tableau, machine learning
 
 For tech and creative roles, a portfolio adds proof — build one from your resume with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio).
 
@@ -211,13 +210,6 @@ The goal is always natural, honest usage — keywords woven into real achievemen
 ## How to Place Keywords on Your Resume
 
 Distribute keywords across three areas:
-
-### What an ATS score report actually shows you
-
-![TailorCV resume score report: 51 out of 100 with 15 checks passed and 8 failed, broken down by contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-The score matters less than the breakdown beside it - each check names what passed, what failed and why, which is the list you actually work through.
-
 
 - **Professional summary:** weave in your two or three strongest, most relevant terms.
 - **Skills section:** list hard skills, tools, and certifications explicitly — clean keywords for the parser.

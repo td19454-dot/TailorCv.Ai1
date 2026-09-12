@@ -10,6 +10,10 @@ keywords: canadian resume, resume format canada, how to write a canadian resume,
 image: public/blog-images/canadian-resume-guide.png
 ---
 
+A Canadian resume follows conventions that differ from resumes in India, the UK, the Middle East, and many other regions — and those differences matter. Canadian employers and the Applicant Tracking Systems they use expect a specific format, and submitting a resume in your home-country style is one of the most common reasons newcomers and international applicants get overlooked.
+
+This guide shows you exactly how to write a Canadian resume in 2026: the right format and length, what to include (and crucially, what to leave out), how to make it [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder), and examples you can adapt whether you're a newcomer, a student, or an experienced professional.
+
 ## Key Takeaways
 
 - Canadian resumes are **concise (1–2 pages)**, achievement-focused, and tailored to each job.
@@ -17,11 +21,6 @@ image: public/blog-images/canadian-resume-guide.png
 - Most Canadian employers use an **ATS**, so clean formatting and job-specific keywords are essential.
 - **Canadian-style spelling and metrics**, plus clear evidence of results, help you fit local expectations.
 - Tailoring each application to the job description is the biggest driver of getting interviews.
-
-
-A Canadian resume follows conventions that differ from resumes in India, the UK, the Middle East, and many other regions — and those differences matter. Canadian employers and the Applicant Tracking Systems they use expect a specific format, and submitting a resume in your home-country style is one of the most common reasons newcomers and international applicants get overlooked.
-
-This guide shows you exactly how to write a Canadian resume in 2026: the right format and length, what to include (and crucially, what to leave out), how to make it [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder), and examples you can adapt whether you're a newcomer, a student, or an experienced professional.
 
 ## Why Canadian Resume Conventions Exist
 
@@ -146,13 +145,6 @@ Note how this newcomer resume drops all personal identifiers, uses Canadian form
 ## Choosing a Resume Format: Chronological, Functional, or Hybrid
 
 Most Canadian resumes use one of three structures, and picking the right one matters:
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
 
 - **Reverse-chronological** (the default and most recommended): lists your work history from most recent backward. Canadian employers and ATS parse it easily, and it works best when you have a steady, relevant work history.
 - **Functional (skills-based):** groups your experience by skill rather than timeline. It can help hide gaps or a [career change](https://thetailorcv.com/blog/cover-letter-for-career-change), but many Canadian recruiters are wary of it because it obscures your history, and ATS parse it poorly. Use sparingly.

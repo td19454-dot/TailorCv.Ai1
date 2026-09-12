@@ -10,6 +10,10 @@ keywords: linkedin optimization malaysia, linkedin profile tips malaysia, get fo
 image: public/blog-images/linkedin-optimization-malaysia.png
 ---
 
+In Malaysia's professional job market, LinkedIn is where a huge share of hiring quietly begins. Recruiters at banks, MNCs, tech companies, and agencies search LinkedIn daily for candidates — often before a role is even advertised. An optimised profile means you show up in those searches and get approached; a weak or incomplete one means you're invisible, no matter how good you are.
+
+This guide shows you how to optimise your LinkedIn profile for the Malaysian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
+
 ## Key Takeaways
 
 - Recruiters in Malaysia actively **search LinkedIn** — optimisation determines whether you appear in their results.
@@ -17,11 +21,6 @@ image: public/blog-images/linkedin-optimization-malaysia.png
 - A professional photo, a compelling headline, and a complete profile dramatically increase recruiter interest.
 - **Activity and connections** boost your visibility and credibility.
 - Your LinkedIn and your resume should tell a consistent, keyword-aligned story.
-
-
-In Malaysia's professional job market, LinkedIn is where a huge share of hiring quietly begins. Recruiters at banks, MNCs, tech companies, and agencies search LinkedIn daily for candidates — often before a role is even advertised. An optimised profile means you show up in those searches and get approached; a weak or incomplete one means you're invisible, no matter how good you are.
-
-This guide shows you how to optimise your LinkedIn profile for the Malaysian job market in 2026: how recruiters search, the keywords and sections that matter, and how to turn your profile into a magnet for the right opportunities.
 
 ## Why LinkedIn Matters So Much in Malaysia
 
@@ -34,18 +33,11 @@ For professional, MNC, and tech roles, LinkedIn is often the first place recruit
 
 ## How Recruiters Search LinkedIn
 
-Recruiters use LinkedIn's search and Recruiter tools to filter by keywords, job titles, skills, location, and industry. To appear in their results, your profile must contain the terms they search for — the same principle as beating the ATS on your resume. If a recruiter searches "[digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) executive Kuala Lumpur" and your profile doesn't contain those words, you won't surface.
+Recruiters use LinkedIn's search and Recruiter tools to filter by keywords, job titles, skills, location, and industry. To appear in their results, your profile must contain the terms they search for — the same principle as beating the ATS on your resume. If a recruiter searches "digital marketing executive Kuala Lumpur" and your profile doesn't contain those words, you won't surface.
 
 That makes keyword optimisation the foundation of everything below.
 
 ## Step 1: Nail the Profile Basics
-
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-This is the step most people skip - checking against the real job description rather than optimising in the abstract.
 
 ### Professional Photo
 
@@ -155,7 +147,6 @@ Before you consider your profile "done," confirm you have:
 - [ ] Consistency with your resume — same titles, dates, and story
 
 Hitting every item gets you to "All-Star" completeness, which LinkedIn rewards with more visibility.
-
 
 ## Building a Personal Brand in Your Field
 

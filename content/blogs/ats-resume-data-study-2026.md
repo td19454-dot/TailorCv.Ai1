@@ -10,6 +10,10 @@ slug: ats-resume-data-study-2026
 keywords: ats score data, what lowers ats score, ats resume study, ats keywords data, resume rejection reasons, ats score statistics
 ---
 
+Most resumes never reach a human. They are scored, ranked, and filtered by an Applicant Tracking System (ATS) first - and the gap between a callback and silence usually comes down to a handful of fixable issues. We looked at the patterns across resumes run through TailorCV's [free ATS score checker](https://thetailorcv.com/solutions) to see which problems show up most often and which fixes actually move the number.
+
+This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
+
 ## Key Takeaways
 
 - Most resumes are filtered by an Applicant Tracking System (ATS) before reaching a human, making small, fixable issues critical for success.
@@ -17,11 +21,6 @@ keywords: ats score data, what lowers ats score, ats resume study, ats keywords 
 - The most common issues affecting scores include missing keywords, unparseable formatting, generic resumes, and lack of measurable impact.
 - Keyword matching is the primary factor in ATS scoring; resumes must align closely with the specific language used in job descriptions.
 - Tailoring your resume to each job description is more important than overall presentation or design.
-
-
-Most resumes never reach a human. They are scored, ranked, and filtered by an Applicant Tracking System (ATS) first - and the gap between a callback and silence usually comes down to a handful of fixable issues. We looked at the patterns across resumes run through TailorCV's [free ATS score checker](https://thetailorcv.com/solutions) to see which problems show up most often and which fixes actually move the number.
-
-This is not a controlled lab experiment - it's an observational look at what tends to separate a low-scoring resume from a strong one. Here is what the pattern shows, why it happens, and exactly how to fix each issue on your own resume.
 
 ## How we looked at this
 
@@ -39,13 +38,6 @@ Keep that second point in mind. It matters more than anything else in this artic
 ## The pattern behind low scores
 
 Ranked roughly by how often they showed up and how much they tended to drag the score down, four categories accounted for the overwhelming majority of low-scoring resumes:
-
-### What an ATS score report actually shows you
-
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-This is what a score actually looks like. The number matters less than the breakdown: each check tells you what failed and why it matters.
-
 
 1. **Missing keywords** - the resume simply does not contain the language the job description uses.
 2. **Formatting the ATS cannot parse** - the content exists, but the system cannot read it correctly.
@@ -68,7 +60,7 @@ In the resumes we looked at, this was consistently the single largest gap betwee
 - Mirror the *exact* phrasing for anything you genuinely have experience with. If the posting says "stakeholder management," use that phrase - not just "worked with clients."
 - Do not stuff keywords that do not reflect real experience; that creates a different problem (see the nuance section below).
 - Paste both your resume and the job description into the [ATS score checker](https://thetailorcv.com/ats-analysis) to see exactly which terms are missing, and browse role-specific keyword lists in the [resume examples by job role](https://thetailorcv.com/resume-examples) library.
-- For a deeper walkthrough of how to extract the right terms from a posting without overdoing it, see the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and the hidden keywords in job descriptions post.
+- For a deeper walkthrough of how to extract the right terms from a posting without overdoing it, see the [job description keyword extraction guide](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) and the [hidden keywords in job descriptions](https://thetailorcv.com/blog/hidden-keywords-in-job-description) post.
 
 ## 2. Formatting the ATS can't parse
 
@@ -115,7 +107,6 @@ This is also where missing keywords and missing metrics compound each other. A b
 - Go back through your experience and attach a number wherever one honestly exists: percentage change, dollar amount, team size, time saved, volume handled.
 - If you genuinely do not have a hard number, use scope instead ("supported a 12-person team across three markets") rather than leaving the sentence generic.
 - See role-specific example bullet points in the [resume examples library](https://thetailorcv.com/resume-examples) for a sense of how much detail is appropriate.
-
 
 ## Which fix moves the score the most
 
@@ -179,9 +170,9 @@ None of this makes the four categories above less useful as a checklist - they l
 
 ## Make This Practical
 
-Do not guess whether your resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result against the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
+Do not guess whether your resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result against the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume](https://thetailorcv.com/blog/ats-friendly-resume-singapore) template. If you want a second data point on how closely score and callback rate track together, read Resume Match Score and Callback Rate: A Data Study.
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates). If you want a second data point on how closely score and callback rate track together, read [Resume Match Score and Callback Rate: A Data Study](https://thetailorcv.com/blog/resume-match-score-callback-rate-data-study).
 
 ## FAQ
 

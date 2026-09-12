@@ -553,7 +553,7 @@
 <canvas id="wave-canvas" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transform:translateZ(0);will-change:transform;backface-visibility:hidden;"></canvas>
     {% include "_nav.html" %}
 
-    <link rel="stylesheet" href="/static/feature_landing.css?v=115">
+    <link rel="stylesheet" href="/static/feature_landing.css?v=114">
 
     {% if not is_logged_in %}
     <div class="solx">
@@ -723,7 +723,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>3 free ATS scans</li>
+                            <li>ATS score, unlimited</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -1168,7 +1168,7 @@
                 }
                 if (res.status === 401) throw new Error('Your session expired. Please log in again.');
                 return res.json().catch(function () { return {}; }).then(function (data) {
-                    throw new Error(tcvErrorMessage(data, 'Could not save. Please try again.'));
+                    throw new Error(data.detail || 'Could not save. Please try again.');
                 });
             });
         }
@@ -1421,7 +1421,7 @@
 
     {% include "_footer.html" %}
 
-    <script src="/static/auth_nav.js?v=19"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
 <script>
 (function(){

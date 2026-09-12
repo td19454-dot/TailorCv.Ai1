@@ -10,6 +10,8 @@ keywords: us resume format, american resume format, resume for usa jobs, us resu
 image: public/blog-images/us-resume-format-guide-2026.webp
 ---
 
+Writing a resume for the American job market can be a daunting task, especially for new graduates, international candidates, and those seeking visa sponsorships. The U.S. has specific resume norms that differ significantly from practices in other countries. Understanding these norms is crucial for crafting a compelling resume that stands out to hiring managers and passes through Applicant Tracking Systems (ATS). This guide will walk you through the essential components of a U.S. resume, providing practical tips and examples to help you create a document that effectively showcases your skills and experiences.
+
 ## Key Takeaways
 
 - Resumes for early-career professionals should be one page, while experienced candidates may extend to two pages.
@@ -18,20 +20,15 @@ image: public/blog-images/us-resume-format-guide-2026.webp
 - Organize your resume with clear sections: Contact Information, Summary/Objective, Education, Work Experience, Skills, and optional Additional Sections.
 - Optimize your resume for Applicant Tracking Systems by using standard headings, avoiding graphics, and incorporating relevant keywords from the job description.
 
-
-Writing a resume for the American job market can be a daunting task, especially for new graduates, international candidates, and those seeking visa sponsorships. The U.S. has specific resume norms that differ significantly from practices in other countries. Understanding these norms is crucial for crafting a compelling resume that stands out to hiring managers and passes through Applicant Tracking Systems (ATS). This guide will walk you through the essential components of a U.S. resume, providing practical tips and examples to help you create a document that effectively showcases your skills and experiences.
-
 ## Understanding U.S. Resume Norms
 
 In the U.S., resumes typically follow a specific format and structure. Here are some key points to keep in mind:
 
-| Rule | What it means |
-|---|---|
-| **Length** | Early-career professionals should aim for a one-page resume. More experienced candidates can extend to two pages if necessary |
-| **Personal Information** | Do not include a photo, age, or marital status. Just your name, phone number, email address, and LinkedIn profile link are usually sufficient |
-| **Format** | Use a clean, [professional layout](https://www.thetailorcv.com/templates) with clear headings and bullet points for easy readability |
-| **Action Verbs** | Start each bullet point with a strong action verb to convey your achievements and responsibilities effectively |
-| **Quantification** | Whenever possible, quantify your accomplishments to provide context and scale (e.g., “Increased sales by 20% in Q2”) |
+- **Length**: Early-career professionals should aim for a one-page resume. More experienced candidates can extend to two pages if necessary.
+- **Personal Information**: Do not include a photo, age, or marital status. Just your name, phone number, email address, and LinkedIn profile link are usually sufficient.
+- **Format**: Use a clean, [professional layout](https://www.thetailorcv.com/templates) with clear headings and bullet points for easy readability.
+- **Action Verbs**: Start each bullet point with a strong action verb to convey your achievements and responsibilities effectively.
+- **Quantification**: Whenever possible, quantify your accomplishments to provide context and scale (e.g., “Increased sales by 20% in Q2”).
 
 ## Essential Components of a U.S. Resume
 
@@ -48,7 +45,7 @@ Your resume should start with your contact information at the top. Include:
 
 A brief summary or objective statement can set the tone of your resume. Tailor this section to reflect your career aspirations and what you bring to the table. Here’s an example:
 
-**Objective**: "Detail-oriented marketing graduate with a passion for [digital marketing](https://thetailorcv.com/blog/digital-marketing-resume-2026) and a proven track record in social media campaigns. Seeking to leverage skills in a dynamic marketing role at XYZ Company."
+**Objective**: "Detail-oriented marketing graduate with a passion for digital marketing and a proven track record in social media campaigns. Seeking to leverage skills in a dynamic marketing role at XYZ Company."
 
 ### 3. Education
 
@@ -81,7 +78,6 @@ This is the most crucial section of your resume. List your work experience in re
 **Marketing Intern**  
 ABC Marketing Agency, Los Angeles, CA  
 June 2025 – August 2025  
-
 - Developed and executed social media campaigns, increasing engagement by 30% over three months.
 - Assisted in the creation of marketing materials that contributed to a 15% rise in client inquiries.
 
@@ -115,13 +111,6 @@ Many employers use ATS to filter resumes before they reach human eyes. To optimi
 
 A [one-size-fits-all approach](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes) will not work in the competitive U.S. job market. Tailor your resume for each application by:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the resume after tailoring - the content is already matched, and these controls are how you fit it onto one page.
-
-
 - Analyzing the job description for keywords and required skills.
 - Adjusting your summary and experience sections to align with the job’s expectations.
 - Using our guide on [resume matching with job description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide) for detailed strategies.
@@ -137,8 +126,6 @@ Once your resume secures you an interview, preparation is key. Consider using ou
 ## Common Resume Mistakes to Avoid
 
 Avoiding common pitfalls can significantly enhance your resume's effectiveness. Here are some key mistakes to steer clear of:
-
-
 
 1. **Using a One-Size-Fits-All Approach**: Many applicants submit the same resume for multiple positions. This generic approach can lead to rejection. Tailor your resume to each specific job by incorporating relevant keywords and experiences. For more insights, check out [How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds](https://thetailorcv.com/blog/how-recruiters-spot-generic-resumes).
 
@@ -240,4 +227,4 @@ References are typically provided upon request, so you can simply state "Referen
 
 ### What is a good ATS score?
 
-A [good ATS score](https://thetailorcv.com/blog/what-is-a-good-ats-score) is typically 80% or higher. You can check your score using our [ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets industry standards.
+A good ATS score is typically 80% or higher. You can check your score using our [ATS score checker](https://www.thetailorcv.com/solutions) to ensure your resume meets industry standards.

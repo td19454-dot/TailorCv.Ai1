@@ -106,11 +106,6 @@
                         Not saved until you click save.
                     </p>
 
-                    <button id="see-changes-btn" class="secondary-btn" type="button"
-                        style="width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
-                        🔍 See what changed
-                    </button>
-
                     <a href="/solutions" class="secondary-btn desktop-only-back">← Back to Solutions</a>
             </div>
             </section>
@@ -131,15 +126,12 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>window.__TCV_REGION__ = {{ region | tojson }};</script>
-    <script src="/static/auth_nav.js?v=19"></script>
+    <script src="/static/auth_nav.js?v=16"></script>
     <script src="/static/mobile_nav.js"></script>
     <script src="/static/toast.js"></script>
     <script>window.IS_PRO = {{ 'true' if is_pro else 'false' }};</script>
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
-    <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
-    <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
-    <script src="/static/optimized_editor.js?v=126"></script>
+    <script src="/static/optimized_editor.js?v=109"></script>
     <script>
     /* Page entrance: stagger control cards up, slide preview in. Start states are
        applied here (progressive enhancement) so no-JS users see everything. */

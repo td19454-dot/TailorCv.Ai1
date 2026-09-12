@@ -3,11 +3,17 @@ title: How Recruiters Spot Generic Resumes - And Reject Them in 6 Seconds
 description: Recruiters spend an average of 6 seconds on a resume. Learn the exact signals that flag a resume as generic and what to do instead to get shortlisted.
 date: 2026-06-11
 author: TailorCV Team
-tags: [resume, recruiters, generic resume, job search, resume tailoring]
+tags: resume, recruiters, [generic resume, job search, resume tailoring]
 category: Resume Writing
 image: public/blog-images/how-recruiters-spot-generic-resumes.webp
 slug: how-recruiters-spot-generic-resumes
 keywords: how recruiters spot generic resumes, generic resume red flags, recruiter resume review, how recruiters read resumes, resume red flags recruiters
+---
+
+Recruiters review hundreds of resumes per week. In that volume, they develop a near-instant radar for the generic ones - and those resumes get passed over before a human ever reads beyond the header. This guide breaks down exactly what triggers that radar and how to make sure your resume doesn't.
+
+Scan your own resume for generic signals instantly with the [free ATS and resume checker](/solutions).
+
 ---
 
 ## Key Takeaways
@@ -17,13 +23,6 @@ keywords: how recruiters spot generic resumes, generic resume red flags, recruit
 - Highlight achievements with specific metrics rather than listing generic responsibilities to stand out to recruiters.
 - Mirror the job description's language and include relevant skills to avoid being flagged as generic by ATS systems.
 - Avoid using the same resume for multiple applications, as it signals low interest and effort to recruiters.
-
-
-Recruiters review hundreds of resumes per week. In that volume, they develop a near-instant radar for the generic ones - and those resumes get passed over before a human ever reads beyond the header. This guide breaks down exactly what triggers that radar and how to make sure your resume doesn't.
-
-Scan your own resume for generic signals instantly with the [free ATS and resume checker](/solutions).
-
----
 
 ## The 6-Second Rule Is Real
 
@@ -120,13 +119,6 @@ A [tailored resume](https://thetailorcv.com/blog/tailored-vs-generic-resume) mak
 
 You do not need to rewrite your resume from scratch for every job. You need to:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
-
 1. Swap your summary to mirror the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
 2. Add 3-5 keywords from the posting into your bullets
 3. Update your headline to match the exact job title
@@ -139,8 +131,6 @@ You can also run the [free ATS checker at TailorCV](/solutions) to see exactly w
 ---
 
 ## Frequently Asked Questions
-
-
 
 ### Do recruiters really notice if a resume is generic?
 

@@ -10,6 +10,8 @@ slug: sales-professional-portfolio-guide
 keywords: sales portfolio, sales rep portfolio website, business development portfolio, sales case study, quota attainment portfolio
 ---
 
+A resume tells a recruiter you hit 130% of quota. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) shows *how* - the territory you inherited, the deals you built, and the numbers behind them. Sales is one of the few fields where a portfolio is still rare, which makes having one a real edge over other candidates. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
+
 ## Key Takeaways
 
 - A sales portfolio complements your resume by showcasing how you achieved quota, including territory details and deal specifics.
@@ -18,18 +20,12 @@ keywords: sales portfolio, sales rep portfolio website, business development por
 - Host your portfolio on a personal site, LinkedIn, or as a PDF, ensuring it aligns with your resume for consistency.
 - Avoid common mistakes like lacking context in quota numbers, not providing deal narratives, and sharing confidential information.
 
-
-A resume tells a recruiter you hit 130% of quota. A [portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) shows *how* - the territory you inherited, the deals you built, and the numbers behind them. Sales is one of the few fields where a portfolio is still rare, which makes having one a real edge over other candidates. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements).
-
 ## What to Include
-
-| What to include | Why |
-|---|---|
-| **Quota attainment history** | a simple chart or table by quarter or year |
-| **2-4 deal case studies** | the account, the problem, your approach, the outcome |
-| **Pipeline and process evidence** | how you prospect, qualify, and forecast (frameworks like MEDDIC, SPIN, or your own) |
-| **Testimonials** | a line or two from a manager or client, with permission |
-| **Tools and stack** | CRM (Salesforce, HubSpot), sales engagement tools, and any certifications |
+- **Quota attainment history** - a simple chart or table by quarter or year
+- **2-4 deal case studies** - the account, the problem, your approach, the outcome
+- **Pipeline and process evidence** - how you prospect, qualify, and forecast (frameworks like MEDDIC, SPIN, or your own)
+- **Testimonials** - a line or two from a manager or client, with permission
+- **Tools and stack** - CRM (Salesforce, HubSpot), sales engagement tools, and any certifications
 
 ## Frame Every Deal as a Story
 Recruiters and sales leaders do not want a list of closed-won deals - they want to see judgment. For each case study, cover:
@@ -48,7 +44,7 @@ If deal specifics are confidential, describe them without naming the client: "Cl
 
 ## Keep Your Resume and Portfolio in Sync
 
-Your resume, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and portfolio should tell the same story - same quota numbers, same specialty (SaaS, enterprise, SMB), same territory focus - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See How to Add Your Portfolio Link to Your Resume for placing the link correctly.
+Your resume, [LinkedIn](https://thetailorcv.com/blog/how-to-use-linkedin-for-job-search), and portfolio should tell the same story - same quota numbers, same specialty (SaaS, enterprise, SMB), same territory focus - just at different levels of depth. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that positioning in your portfolio. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
 
 ## Common Mistakes
 - Listing quota numbers with no context on team size, ramp time, or territory difficulty
@@ -68,13 +64,10 @@ One of the most impactful ways to demonstrate your revenue impact in a sales por
 1. **Choose the Right Projects**: Select projects that had significant revenue implications. Look for examples where you played a crucial role in closing deals or turning around difficult client relationships.
 
 2. **Structure Your Case Study**:
-
-| Section | What goes in it |
-|---|---|
-| **Background** | Briefly describe the client’s business and the challenges they faced |
-| **Your Role** | Clearly define your responsibilities and the strategies you employed |
-| **Outcome** | Quantify the results. Use metrics such as revenue growth, percentage increases in sales, or improvements in client retention |
-| **Client Testimonial** | If possible, include a quote from the client that highlights your contribution |
+   - **Background**: Briefly describe the client’s business and the challenges they faced.
+   - **Your Role**: Clearly define your responsibilities and the strategies you employed.
+   - **Outcome**: Quantify the results. Use metrics such as revenue growth, percentage increases in sales, or improvements in client retention.
+   - **Client Testimonial**: If possible, include a quote from the client that highlights your contribution.
 
 3. **Visual Elements**: Utilize graphs, charts, and other visual aids to make the data more digestible. Visual storytelling can enhance the impact of your case study.
 
@@ -99,13 +92,6 @@ By following this checklist, you can create a compelling portfolio that effectiv
 ## Do’s and Don’ts of Portfolio Creation
 
 Creating a sales portfolio requires careful consideration. Here are some important do’s and don’ts to keep in mind:
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
 
 ### Do’s:
 - **Do Tailor Your Content**: Customize your portfolio for different job applications or industries.
@@ -175,7 +161,7 @@ You do not need to code a site or wrestle with a website builder for a weekend. 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest deals are easier to discover.
 

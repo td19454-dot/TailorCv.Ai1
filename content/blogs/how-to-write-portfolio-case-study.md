@@ -10,6 +10,8 @@ slug: how-to-write-portfolio-case-study
 keywords: portfolio case study, case study template, how to write case study, project write up, case study examples
 ---
 
+A case study turns a project into a story a hiring manager can follow and remember. It is the single highest-leverage thing you can add to a portfolio, because it converts "here is a thing I made" into "here is how I think and what I achieve." This template works for developers, designers, marketers, PMs, and analysts alike. Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
+
 ## Key Takeaways
 
 - A case study transforms a project into a narrative that showcases your thinking and achievements, making it a valuable addition to your portfolio.
@@ -18,22 +20,12 @@ keywords: portfolio case study, case study template, how to write case study, pr
 - Use visuals and keep case studies concise; 2-4 strong examples are more effective than many weaker ones.
 - Ensure consistency across your resume, LinkedIn, and portfolio to present a unified professional story.
 
-
-A case study turns a project into a story a hiring manager can follow and remember. It is the single highest-leverage thing you can add to a portfolio, because it converts "here is a thing I made" into "here is how I think and what I achieve." This template works for developers, designers, marketers, PMs, and analysts alike. Pair it with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio).
-
 ## The Universal Template
 1. **Context** - what it was, your role, the timeline, the constraints.
 2. **Problem** - the real challenge, framed sharply (not "build an app" but "users dropped off at checkout").
 3. **Process** - research, the options you weighed, and the decisions you made. Show the messy middle.
 4. **Solution** - what you actually built or delivered, with visuals.
 5. **Outcome** - the measurable result and what you learned.
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
 
 ## Lead With the Outcome
 Put the headline result at the very top: "Cut checkout drop-off 23%" or "Ranked #1 for a 12K-volume keyword." Skimmers decide in seconds whether to read on, so reward them immediately.
@@ -81,8 +73,6 @@ Creating a compelling case study involves a systematic approach. Follow these st
 ## Common Mistakes to Avoid When Writing Case Studies
 
 While crafting your case studies, be mindful of these common pitfalls that can undermine your efforts:
-
-
 
 - **Being Vague**: Avoid general statements. Instead of saying “I improved the project,” specify how you did it and what the impact was.
   
@@ -174,7 +164,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

@@ -176,7 +176,7 @@ async function handleATSAnalysis() {
             let detail = 'Failed to get ATS score';
             try {
                 const payload = await response.json();
-                detail = tcvErrorMessage(payload, detail);
+                detail = payload?.detail || payload?.error || detail;
             } catch {
                 const errorText = await response.text();
                 detail = errorText || detail;

@@ -10,15 +10,6 @@ keywords: lever ats resume, lever resume tips, lever job application, match resu
 image: public/blog-images/lever-ats-resume-guide.webp
 ---
 
-## Key Takeaways
-
-- Lever parses resumes into structured candidate profiles, making clean formatting essential to avoid parsing errors throughout the hiring pipeline.
-- To enhance visibility, resumes should match the job description's keywords and required skills, improving searchability for recruiters.
-- Maintaining a current and tailored resume is crucial, as Lever keeps profiles in its system for future roles, not just the one applied for.
-- Consistency between your resume and LinkedIn profile is important, as discrepancies can confuse recruiters during the review process.
-- Avoid using the same generic resume for multiple applications at Lever-powered companies to demonstrate focus and relevance for each role.
-
-
 Lever is a widely used [ATS](https://thetailorcv.com/blog/ats-score-guide) and recruiting CRM, popular with mid-size and growth-stage companies. If a job posting redirects you to a "jobs.lever.co" application page, your resume is about to be parsed into Lever's candidate database and evaluated against the role's requirements.
 
 Lever leans heavily on its CRM features, meaning recruiters often manage candidates across a longer pipeline and multiple touchpoints, not just a single application moment. Your resume needs to hold up not only at the initial screen but through however many stages that pipeline includes.
@@ -28,6 +19,14 @@ This guide explains how Lever parses resumes and how to [match yours to the job 
 Use the [TailorCV ATS score checker](/solutions) to see your [match score](https://www.thetailorcv.com/solutions) against any Lever job posting before you apply.
 
 ---
+
+## Key Takeaways
+
+- Lever parses resumes into structured candidate profiles, making clean formatting essential to avoid parsing errors throughout the hiring pipeline.
+- To enhance visibility, resumes should match the job description's keywords and required skills, improving searchability for recruiters.
+- Maintaining a current and tailored resume is crucial, as Lever keeps profiles in its system for future roles, not just the one applied for.
+- Consistency between your resume and LinkedIn profile is important, as discrepancies can confuse recruiters during the review process.
+- Avoid using the same generic resume for multiple applications at Lever-powered companies to demonstrate focus and relevance for each role.
 
 ## How Lever Parses and Organizes Resumes
 
@@ -88,13 +87,6 @@ If you apply to more than one role at a Lever-powered company, recruiters may se
 5. Simplify your resume formatting for clean parsing.
 6. Check your [ATS match score](https://thetailorcv.com/blog/ats-score-guide) before applying.
 
-### What an ATS score report actually shows you
-
-![TailorCV resume score dashboard showing 51 out of 100, with 15 checks passed and 8 failed across contact, skills, sections, format, education and experience](public/blog-images/what-is-a-good-ats-score-dashboard.webp)
-
-A score on its own is not actionable. The per-check list beside it - missing LinkedIn, skills gap, formatting the parser cannot read - is what you work through.
-
-
 ---
 
 ## How TailorCV Helps With Lever Applications
@@ -116,7 +108,6 @@ Paste the Lever job posting into [TailorCV's resume optimizer](/solutions) to in
 5. **Review and Adjust Formatting**: Ensure your resume adheres to the formatting rules for Lever applications, such as avoiding complex layouts and graphics. Simple, clean formatting improves parsing accuracy.
 
 6. **Proofread and Optimize**: Before submitting, proofread your resume for spelling and grammatical errors. Use an ATS checker to ensure your resume is optimized for Lever’s system.
-
 
 ## Common Mistakes to Avoid When Applying to Lever
 

@@ -10,18 +10,10 @@ slug: resume-tailoring-freelance-contract
 keywords: freelance resume tailoring, contract job resume, how to list freelance work on resume, contract vs permanent resume, gig worker resume 2026
 ---
 
-## Key Takeaways
-
-- Contract hiring managers prioritize proven delivery in short timeframes, while permanent hiring managers focus on long-term commitment and cultural fit.
-- Tailor your resume for contract roles by emphasizing project outcomes rather than duration of employment.
-- Match your skills section to the specific requirements listed in the contract job description for better alignment.
-- Highlight your ability to onboard quickly and deliver results promptly to appeal to contract employers.
-
-
 You have been freelancing for three years.
 
 You have worked with eight different clients.
-You have delivered real results on [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) worth hundreds of thousands of dollars.
+You have delivered real results on [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) worth hundreds of thousands of dollars.
 You have managed your own schedule, your own business development, and your own finances.
 
 And now you are applying to two different types of jobs:
@@ -42,10 +34,16 @@ This guide breaks down what each wants - and how to [tailor your resume](https:/
 
 ---
 
+## Key Takeaways
+
+- Contract hiring managers prioritize proven delivery in short timeframes, while permanent hiring managers focus on long-term commitment and cultural fit.
+- Tailor your resume for contract roles by emphasizing project outcomes rather than duration of employment.
+- Match your skills section to the specific requirements listed in the contract job description for better alignment.
+- Highlight your ability to onboard quickly and deliver results promptly to appeal to contract employers.
+
 ## The Core Difference: Contract vs. Permanent Hiring Logic
 
 **Contract hiring managers** want to see:
-
 - Proven ability to deliver in short timeframes
 - Specific skills and tools that match the project scope
 - History of successful client engagements
@@ -53,7 +51,6 @@ This guide breaks down what each wants - and how to [tailor your resume](https:/
 - No red flags around commitment or professionalism
 
 **Permanent hiring managers** want to see:
-
 - Long-term commitment potential
 - Cultural alignment and team fit
 - Growth trajectory over time
@@ -67,29 +64,21 @@ For permanent roles, it can raise questions - unless you present it correctly.
 
 ## How to Tailor Your Resume for Contract Roles
 
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-This is the optimized result, and it is usually how a spilling two-page draft gets back onto one page without deleting anything worth keeping.
-
 ### 1. Lead With Deliverables, Not Duration
 
 Contract hiring is project-based.
 The hiring manager wants to know: can this person deliver what we need in the time we have?
 
-Structure your freelance experience around [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), not employers.
+Structure your freelance experience around [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), not employers.
 
 **Weak (employer-focused):**
 > "Self-employed freelance designer, 2022-present."
 
 **Strong (project-focused):**
 > "Freelance [UX designer](https://thetailorcv.com/blog/ux-designer-resume-2026) - Independent Consultant, 2022-present
-> Led UX research and design for 8 client [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) across fintech, healthtech, and e-commerce, delivering mobile app redesigns, onboarding flow improvements, and design systems."
+> Led UX research and design for 8 client [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) across fintech, healthtech, and e-commerce, delivering mobile app redesigns, onboarding flow improvements, and design systems."
 
-Then list specific [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) as bullets:
-
+Then list specific [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) as bullets:
 - Redesigned onboarding flow for fintech app (15k users) - reduced drop-off from 68% to 31% in 6 weeks
 - Built design system from scratch for Series A healthcare platform - cut design-to-dev handoff time by 40%
 - Led UX audit for e-commerce client - surfaced 12 conversion blockers, implemented fixes generating $190k in additional revenue
@@ -105,7 +94,6 @@ They need someone who can do X, Y, and Z - immediately, without training.
 Tailor your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) to mirror the contract's exact requirements.
 
 If the contract asks for:
-
 - React Native
 - Figma
 - User testing
@@ -121,7 +109,6 @@ A high [ATS keyword match](https://thetailorcv.com/blog/ats-score-guide) is even
 Contract employers are paying premium rates for someone who hits the ground running.
 
 Include signals that show you onboard fast:
-
 - "Delivered first sprint results within week one"
 - "Ramped up on client tech stack in 3 days, shipped first feature in 8"
 - "Joined mid-project and restored team velocity within two weeks"
@@ -132,7 +119,7 @@ These signals directly address the contract employer's biggest risk: paying for 
 
 If you have a history of 3-12 month contracts, a simple label helps:
 
-**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles**, 2021-Present
+**[software engineer](https://thetailorcv.com/blog/software-engineer-resume-faang) - Contract Roles, 2021-Present**
 
 List clients below, with dates and key deliverables.
 This is standard and professional for contract professionals.
@@ -145,7 +132,6 @@ It eliminates the "job hopping" misread. For more on this, read [resume tailorin
 This is where it gets nuanced.
 
 Permanent hiring managers may look at 3 years of freelance and wonder:
-
 - Can this person commit to a team for the long term?
 - Do they know how to take direction from a manager?
 - Will they leave as soon as something more interesting comes up?
@@ -173,14 +159,13 @@ The second version shows agency and a clear decision - not desperation.
 Permanent employers worry that freelancers do not know how to work within teams.
 
 Counter this with evidence:
-
 - Mention team sizes and cross-functional collaborations
 - Reference working within client teams (not just delivering to them)
 - Highlight any experience with team processes: standups, sprints, retrospectives
 
 ### 3. Show Your Growth Trajectory
 
-Freelancers who jump between [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) can appear to lack a growth narrative.
+Freelancers who jump between [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) can appear to lack a growth narrative.
 Counter this by showing how each project built on the last.
 
 **Linear narrative:**
@@ -229,17 +214,13 @@ For each bullet, follow the [resume bullet points formula](https://thetailorcv.c
 
 ---
 
-
 ## The Rates and Availability Question (Contract Roles)
 
 For contract applications, be prepared - not necessarily on your resume, but in your initial outreach - to share:
-
 - Your hourly or daily rate (or range)
 - Your availability date
 - Whether you are open to on-site, hybrid, or remote arrangements - read [resume tailoring for remote vs hybrid vs on-site](https://thetailorcv.com/blog/resume-tailoring-remote-hybrid-onsite) to tailor your language accordingly
 - Whether you require specific contract terms (project-based vs. hourly, payment schedule)
-
-
 
 You do not put rates on your resume.
 But having these numbers ready speeds up the contract conversation significantly.
@@ -248,9 +229,9 @@ But having these numbers ready speeds up the contract conversation significantly
 
 ## Make This Practical
 
-Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and ATS Resume Parser Friendly Format.
+Do not guess whether the resume is ready. Upload it to the [free ATS score checker](https://www.thetailorcv.com/solutions), compare the result with the [ATS Score Guide](https://thetailorcv.com/blog/ats-score-guide), and fix formatting issues using [ATS Resume Formatting Mistakes](https://thetailorcv.com/blog/ats-resume-formatting-mistakes) and [ATS Resume Parser Friendly Format](https://thetailorcv.com/blog/ats-resume-parser-friendly-format).
 
-After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
+After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an [ATS-friendly resume template](https://www.thetailorcv.com/templates).
 
 ## FAQ
 ### Should I have separate resumes for contract and permanent roles?

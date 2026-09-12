@@ -118,7 +118,7 @@
     </div>
 </div>
 {% include "_nav.html" %}
-<link rel="stylesheet" href="/static/feature_landing.css?v=115">
+<link rel="stylesheet" href="/static/feature_landing.css?v=114">
 
     {% if not is_logged_in %}
     <div class="solx">
@@ -245,7 +245,7 @@
                         <p class="pricing-plan-price"><span class="pp-sym" id="ppFreeSym">&#8377;</span>0</p>
                         <p class="pricing-plan-note">Always free, no card needed.</p>
                         <ul class="pricing-feature-list">
-                            <li>3 free ATS scans</li>
+                            <li>ATS score, unlimited</li>
                             <li>1 free resume optimization</li>
                             <li>1 free cover letter + mock interview</li>
                             <li>All templates &amp; downloads</li>
@@ -1394,7 +1394,7 @@
         {% endif %}
 
     {% include "_footer.html" %}
-<script src="/static/auth_nav.js?v=19"></script>
+<script src="/static/auth_nav.js?v=16"></script>
 <script src="/static/mobile_nav.js"></script>
 {% if is_logged_in %}
 <script>
@@ -1575,17 +1575,9 @@ async function speakQuestion(text, onDone){
 function stopTimer(){
   if(STATE.timerId){ clearInterval(STATE.timerId); STATE.timerId = null; }
 }
-/* How long a candidate gets per answer.
-
-   This was 60s, and at zero the answer is force-submitted with whatever has been
-   captured so far. A real interview answer - especially a "tell me about a time
-   when" - runs past a minute, so the rest was never heard. That is
-   indistinguishable from the interviewer failing to hear you. */
-const ANSWER_SECONDS = 120;
-
 function startTimer(){
   stopTimer();
-  STATE.timerSec = ANSWER_SECONDS;
+  STATE.timerSec = 60;
   const timerEl = document.getElementById('timerText');
   timerEl.textContent = `Time left: ${STATE.timerSec}s`;
   STATE.timerId = setInterval(async () => {
@@ -1603,55 +1595,26 @@ function startTimer(){
   }, 1000);
 }
 
-/* Which English the recogniser should expect.
-
-   It was hardcoded to en-US. Accuracy on the Web Speech API drops sharply when
-   the accent model does not match the speaker, and most of our candidates are in
-   India - en-IN recognises Indian-accented English far better than en-US, which
-   is a large part of "it cannot hear me".
-
-   The browser's own locale is preferred when it is already an English variant,
-   so a US or UK user is unaffected; a non-English locale falls back to the
-   region's English if we know it, because the interview itself is in English. */
-function speechLang(){
-  try{
-    const nav = (navigator.language || '').trim();
-    if(/^en[-_]/i.test(nav)) return nav.replace('_', '-');
-    const region = (nav.split(/[-_]/)[1] || '').toUpperCase();
-    const byRegion = { IN:'en-IN', GB:'en-GB', AU:'en-AU', CA:'en-CA',
-                       NZ:'en-NZ', IE:'en-IE', ZA:'en-ZA', SG:'en-SG',
-                       PH:'en-PH', NG:'en-NG', PK:'en-IN', BD:'en-IN', LK:'en-IN' };
-    if(byRegion[region]) return byRegion[region];
-    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
-    if(/Asia\/(Kolkata|Calcutta|Colombo|Karachi|Dhaka)/i.test(tz)) return 'en-IN';
-  }catch(e){}
-  return 'en-US';
-}
-
 function initSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR) return false;
   const rec = new SR();
   rec.continuous       = true;
   rec.interimResults   = true;
-  rec.maxAlternatives  = 1;   // [0] is already the engine's best guess
-  rec.lang             = speechLang();
+  rec.maxAlternatives  = 5;   // get up to 5 alternatives per result
+  rec.lang             = 'en-US';
 
   rec.onresult = (e) => {
     let final = '', interim = '';
     for(let i = e.resultIndex; i < e.results.length; i++){
-      // Alternatives come back ordered by likelihood, so [0] IS the best guess.
-      // Scanning for the highest `confidence` did the opposite of what it looks
-      // like: Chrome reports 0 for most alternatives, so a worse alternative
-      // with a token score could beat the engine's own first choice.
-      const best = e.results[i][0];
-      if(!best) continue;
+      // Pick the alternative with the highest confidence score
+      let best = e.results[i][0];
+      for(let a = 1; a < e.results[i].length; a++){
+        if(e.results[i][a].confidence > best.confidence) best = e.results[i][a];
+      }
       if(e.results[i].isFinal){
-        // Never drop a final result. This used to require confidence >= 0.45,
-        // which silently binned correctly-heard speech - accented English,
-        // short answers and anything with room noise score below that, so the
-        // interview looked like it could not hear the candidate at all.
-        final += best.transcript;
+        // Accept unless confidence is explicitly very low (some browsers always report 0)
+        if(best.confidence === 0 || best.confidence >= 0.45) final += best.transcript;
       } else {
         interim += best.transcript;
       }
@@ -1665,17 +1628,6 @@ function initSpeech(){
   rec.onerror = (e) => {
     if(e.error === 'no-speech' || e.error === 'aborted') return; // non-fatal
     console.warn('SpeechRecognition error:', e.error);
-
-    // A blocked microphone is NOT recoverable, and retrying it silently every
-    // 300ms just looks like the interview cannot hear you. Say so instead.
-    if(e.error === 'not-allowed' || e.error === 'service-not-allowed'){
-      STATE.isRecording = false;
-      const tEl = document.getElementById('transcript');
-      if(tEl) tEl.textContent =
-        'Microphone blocked. Allow mic access for this site (padlock in the address bar), then start again.';
-      return;
-    }
-
     // Restart on recoverable errors without resetting transcript
     if(STATE.isRecording){
       setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 300);
@@ -1684,15 +1636,6 @@ function initSpeech(){
 
   rec.onend = () => {
     if(STATE.isRecording){
-      // Chrome ends a session on silence even with continuous = true, and the
-      // next session rebuilds liveInterim from scratch. Anything still interim
-      // at that moment was simply lost - a word or two disappearing every time
-      // the candidate paused, which is most of "it keeps mishearing me".
-      // Promote it to the transcript before restarting.
-      if(STATE.liveInterim && STATE.liveInterim.trim()){
-        STATE.currentTranscript += STATE.liveInterim.trim() + ' ';
-        STATE.liveInterim = '';
-      }
       // Small gap prevents a tight restart loop on some browsers
       setTimeout(() => { if(STATE.isRecording){ try{ rec.start(); }catch(err){} } }, 80);
     }
@@ -1718,10 +1661,7 @@ function stopMicAndFlush(){
       }
       resolve();
     };
-    // Chrome finalises the last utterance asynchronously after stop(). 600ms was
-    // not always enough, and when the guard fired first the tail of the answer -
-    // usually the candidate's conclusion - was cut off.
-    const guard = setTimeout(finish, 1500); // hard timeout
+    const guard = setTimeout(finish, 600); // hard timeout
     const origOnEnd = rec.onend;
     rec.onend = () => { clearTimeout(guard); rec.onend = origOnEnd; finish(); };
     try{ rec.stop(); }catch(e){ clearTimeout(guard); finish(); }
@@ -1734,19 +1674,8 @@ function startMic(){
   STATE.currentTranscript = ''; STATE.liveInterim = '';
   const tEl = document.getElementById('transcript');
   if(tEl) tEl.textContent = 'Listening…';
-  // start() throws InvalidStateError when the previous session has not finished
-  // unwinding yet. Unguarded, the throw happened BEFORE isRecording was set, so
-  // the function aborted and the microphone was silently dead for that whole
-  // question - the interview simply never heard the answer.
+  STATE.speechRec.start();
   STATE.isRecording = true;
-  try{
-    STATE.speechRec.start();
-  }catch(err){
-    // Already running is harmless. Anything else: let it settle and retry once.
-    setTimeout(() => {
-      if(STATE.isRecording){ try{ STATE.speechRec.start(); }catch(e){} }
-    }, 250);
-  }
   const btnSetup = document.getElementById('micBtnSetup');
   if(btnSetup){ btnSetup.textContent = 'Mic Enabled'; btnSetup.disabled = true; btnSetup.style.opacity = '0.7'; }
   updateSetupCards();
@@ -1905,7 +1834,7 @@ async function startInterview(){
     return;
   }
   if(r.ok && data.resume_text){ STATE.resumeText = data.resume_text; }
-  if(!r.ok || !data.success){ hidePrepOverlay(); alert(tcvErrorMessage(data, 'Failed to start interview')); return; }
+  if(!r.ok || !data.success){ hidePrepOverlay(); alert(data.detail || 'Failed to start interview'); return; }
   document.getElementById('setupPanel').classList.add('hidden'); document.getElementById('livePanel').classList.remove('hidden');
   hidePrepOverlay();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1930,7 +1859,7 @@ async function submitAnswer(fromTimer=false){
   document.getElementById('questionText').innerHTML = '<span style="color:#8b83ff;opacity:0.75;font-style:italic;">⏳ Zara is thinking…</span>';
   const r = await fetch('/api/interview/next',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resume_text:STATE.resumeText,role:STATE.role,interview_type:STATE.type,num_questions:STATE.numQuestions,question_index:STATE.questionIndex,job_desc:STATE.jobDesc,conversation_history:STATE.conversation_history,user_answer:answer,difficulty:'hard',question_style:'Ask deep follow-up questions based on ' + 'the candidate previous answer. ' + 'Probe deeper into their projects. ' + 'Ask about specific decisions they made. ' + 'Challenge their answers with harder follow-ups. ' + 'Reference their resume and job description. ' + 'Never ask generic interview questions.'})});
   const data = await r.json();
-  if(!r.ok || !data.success){ alert(tcvErrorMessage(data, 'Failed to fetch next question')); return; }
+  if(!r.ok || !data.success){ alert(data.detail || 'Failed to fetch next question'); return; }
   STATE.conversation_history.push({role:'user',content:answer});
   if(data.done || STATE.questionIndex >= STATE.numQuestions){ endInterview(); return; }
   STATE.questionIndex += 1; STATE.currentQuestion = `${data.ack} ${data.question}`.trim(); updateCount();
@@ -2505,7 +2434,7 @@ function startNewInterview(){
   STATE.totalWords = 0;
   STATE.speechRec = null;
   STATE.isRecording = false;
-  STATE.timerSec = ANSWER_SECONDS;
+  STATE.timerSec = 60;
   STATE.timerId = null;
   STATE.camStream = null;
   STATE.isCameraOn = false;

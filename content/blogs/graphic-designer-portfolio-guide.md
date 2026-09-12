@@ -10,15 +10,14 @@ slug: graphic-designer-portfolio-guide
 keywords: graphic designer portfolio, design portfolio, branding portfolio, behance dribbble, design portfolio examples
 ---
 
+A graphic design portfolio is judged in seconds, and the verdict is brutal: one weak piece can sink the whole set. Unlike a developer's GitHub or a writer's clip file, your portfolio is not just a container for your work - the layout, type choices, and pacing of the site itself are a design sample too. Get the curation and presentation guidance from [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and see how a related discipline handles narrative in the [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide), then apply the design-specific advice below.
+
 ## Key Takeaways
 
 - A graphic design portfolio is judged on both the quality of work and the presentation, making the design of the portfolio itself a critical component.
 - Showcase 6-10 projects for generalists or early-career designers, focusing on quality over quantity; mix client work with personal projects to demonstrate range.
 - The order of projects matters; lead with your strongest piece and close with your second strongest to leave a lasting impression.
 - If lacking client work, create spec work with real briefs, redesign existing brands, or develop personal projects with self-imposed constraints to demonstrate your design skills.
-
-
-A graphic design portfolio is judged in seconds, and the verdict is brutal: one weak piece can sink the whole set. Unlike a developer's GitHub or a writer's clip file, your portfolio is not just a container for your work - the layout, type choices, and pacing of the site itself are a design sample too. Get the curation and presentation guidance from [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and see how a related discipline handles narrative in the [UX Designer Portfolio Guide](https://thetailorcv.com/blog/ux-designer-portfolio-guide), then apply the design-specific advice below.
 
 ## What Makes a Design Portfolio Different
 
@@ -114,13 +113,6 @@ What does not work is an unlabeled grid mixing a logo, an app screen, an illustr
 
 Different platforms serve different jobs in your search - use them together rather than picking one.
 
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-You upload the resume you already have and the sections fill themselves in - basics, experience, projects, education - so building the site is editing rather than starting from an empty page.
-
-
 - **Behance and Dribbble** are best for discovery and reach. Recruiters and art directors browse these platforms directly, and strong pieces can get pulled into curated collections that put you in front of people who were not looking for you specifically.
 - **A custom site** (Framer, Webflow, Adobe Portfolio, or a purpose-built site like the [TailorCV portfolio builder](https://thetailorcv.com/portfolio)) gives you full control over narrative, case study depth, and first impression - this is the link you put on your resume and LinkedIn. See [Best Portfolio Website Builders 2026](https://thetailorcv.com/blog/portfolio-website-builders-2026) for a comparison and [Custom Domain for Your Portfolio](https://thetailorcv.com/blog/custom-domain-portfolio-guide) for making it look established rather than like a free subdomain demo.
 - **Instagram** works as a discovery funnel and a way to show work-in-progress, but it should point back to your main site, not replace it - a feed cannot hold case study depth.
@@ -151,9 +143,9 @@ Your resume, LinkedIn, and portfolio should also tell the same story - same name
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
-Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and pair your specialty positioning with the [Graphic Designer Resume 2026](https://thetailorcv.com/blog/graphic-designer-resume-2026) guide and Personal Branding for Professionals so your name, role, and strongest projects tell one consistent story everywhere a recruiter looks.
+Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and pair your specialty positioning with the [Graphic Designer Resume 2026](https://thetailorcv.com/blog/graphic-designer-resume-2026) guide and [Personal Branding for Professionals](https://thetailorcv.com/blog/personal-branding-for-professionals) so your name, role, and strongest projects tell one consistent story everywhere a recruiter looks.
 
 
 ## Weak vs. Strong Portfolio Presentation

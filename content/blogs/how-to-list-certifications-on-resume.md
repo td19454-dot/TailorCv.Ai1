@@ -10,6 +10,14 @@ slug: how-to-list-certifications-on-resume
 keywords: how to list certifications on resume, certifications on resume 2026, where to put certifications resume, resume certification format, listing certifications resume
 ---
 
+[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can strengthen your [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for maximum impact.
+
+![How to List Certifications](public/blog-images/how-to-list-certifications.webp)
+
+Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-resume-with-ai) through the [ATS score checker](https://www.thetailorcv.com/solutions) - many job descriptions list required [certifications](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) as keywords, and the ATS scans for them. Use an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
+
 ## Key Takeaways
 
 - Certifications enhance resumes, especially in technical, healthcare, finance, and project management fields.
@@ -17,16 +25,9 @@ keywords: how to list certifications on resume, certifications on resume 2026, w
 - Use a standard format that includes the certification name, issuing organization, and year, with expiration dates when applicable.
 - Include only relevant, industry-standard certifications and those mentioned in job descriptions, while omitting outdated or irrelevant ones.
 
-
-[certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) can strengthen your [resume](https://thetailorcv.com/blog/resume-for-returning-to-work-after-break) significantly - especially for technical, healthcare, finance, and project management roles where credentials are screening criteria. But many candidates list them incorrectly, bury them, or include irrelevant ones. This guide shows you exactly how to list [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) for maximum impact.
-
-
----
-
 ## Why Certifications Matter
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume):
-
 - Prove specific skills and knowledge
 - Serve as [ATS keywords](https://thetailorcv.com/blog/ats-keywords-to-boost-score) (many jobs require specific certs)
 - Differentiate you from candidates without them
@@ -56,7 +57,6 @@ If you have just one certification, you can include it within or right after you
 ### Option 4: After Your Name (For Critical Credentials)
 
 For credentials that are part of your professional identity, add them after your name:
-
 - "Jane Smith, CPA"
 - "John Doe, PMP"
 - "Priya Sharma, RN, BSN"
@@ -70,7 +70,6 @@ Standard format:
 Certification Name | Issuing Organization | Year (and expiration if applicable)
 
 Examples:
-
 - AWS Certified Solutions Architect - Associate | Amazon Web Services | 2025
 - Project Management Professional (PMP) | PMI | 2024
 - Google Data Analytics Professional Certificate | Coursera | 2026
@@ -79,13 +78,11 @@ Examples:
 ### Include Expiration Dates When Relevant
 
 For [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) that expire (BLS, ACLS, some IT certs), include the validity:
-
 - Basic Life Support (BLS) | American Heart Association | Valid through 2027
 
 ### Include In-Progress Certifications
 
 If you are studying for a certification, you can list it as in progress:
-
 - AWS Certified Solutions Architect - Professional | In progress, expected 2026
 - CFA Level 2 Candidate | June 2026
 
@@ -145,15 +142,9 @@ Quality over quantity. Three relevant [certifications](https://thetailorcv.com/b
 
 ## Certifications Section Examples
 
-
-![How to List Certifications](public/blog-images/how-to-list-certifications.webp)
-
-Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-resume-with-ai) through the [ATS score checker](https://www.thetailorcv.com/solutions) - many job descriptions list required [certifications](https://thetailorcv.com/blog/how-to-make-resume-ats-friendly) as keywords, and the ATS scans for them. Use an ATS-friendly template.
-
 ### Example for a Cloud Engineer
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-
 - AWS Certified Solutions Architect - Professional | AWS | 2025
 - HashiCorp Certified: Terraform Associate | HashiCorp | 2025
 - Certified Kubernetes Administrator (CKA) | CNCF | 2024
@@ -161,7 +152,6 @@ Before finalizing, run your [resume](https://thetailorcv.com/blog/how-to-write-r
 ### Example for a Nurse
 
 LICENSURE & [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-
 - Registered Nurse (RN) | State Board of Nursing | Active, valid through 2027
 - Basic Life Support (BLS) | AHA | Valid through 2026
 - Advanced Cardiac Life Support (ACLS) | AHA | Valid through 2026
@@ -170,7 +160,6 @@ LICENSURE & [certifications](https://thetailorcv.com/blog/how-to-list-certificat
 ### Example for a Project Manager
 
 [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-
 - Project Management Professional (PMP) | PMI | 2024
 - Certified ScrumMaster (CSM) | Scrum Alliance | 2023
 
@@ -222,14 +211,14 @@ Use the official certification name, especially since [ATS](https://thetailorcv.
 
 ## Make This Practical
 
-Use this guide as part of a complete job-search workflow. Check your [resume](https://thetailorcv.com/blog/accountant-resume-2026) with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the ATS-friendly resume templates.
+Use this guide as part of a complete job-search workflow. Check your [resume](https://thetailorcv.com/blog/accountant-resume-2026) with the [free ATS score checker](https://www.thetailorcv.com/solutions), improve targeting with the [Resume Optimization Guide](https://thetailorcv.com/blog/resume-optimization-guide), and choose a clean format from the [ATS-friendly resume templates](https://www.thetailorcv.com/templates).
 
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
 ## Conclusion
 List [certifications](https://thetailorcv.com/blog/soft-skills-for-resume) in a clear, consistently formatted section, place critical credentials prominently, and include only relevant [certifications](https://thetailorcv.com/blog/ideal-resume-length-guide). Use the exact official names so [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems can match them to job requirements.
 
-Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your [certifications](https://thetailorcv.com/blog/resume-section-order-guide) match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the resume optimization guide for complete resume guidance.
+Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to verify your [certifications](https://thetailorcv.com/blog/resume-section-order-guide) match the job description's requirements. Read [how to list education on resume](https://thetailorcv.com/blog/how-to-list-education-on-resume) and the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide) for complete resume guidance.
 
 ## Frequently Asked Questions
 

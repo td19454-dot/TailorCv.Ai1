@@ -4,10 +4,9 @@ date: 2026-07-12
 author: TailorCV Team
 slug: photographer-portfolio-guide
 image: public/blog-images/photographer-portfolio-guide.webp
-category: Portfolio
-tags: [Portfolio Guide, Career Advice, Job Search]
-keywords: Portfolio Guide, Career Advice, Job Search
 ---
+
+A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
 
 ## Key Takeaways
 
@@ -16,9 +15,6 @@ keywords: Portfolio Guide, Career Advice, Job Search
 - Ensure your portfolio is technically optimized with fast-loading images, a clean layout, and mobile-first design.
 - Choose a suitable platform for hosting your portfolio, considering user-friendliness and customization options.
 - Keep your resume and portfolio aligned in terms of branding and messaging to avoid confusion for potential clients or employers.
-
-
-A photography portfolio sells two things at once: a feeling and a standard. Tight curation, smart sequencing, and fast galleries are what turn browsers into bookings. Pair this with [How to Build a Professional Portfolio](https://thetailorcv.com/blog/how-to-build-professional-portfolio) and [Graphic Designer Portfolio Guide](https://thetailorcv.com/blog/graphic-designer-portfolio-guide).
 
 ## Curate by Intent
 Show only the niche you want to be booked for. A wedding client should not have to scroll past product shots. Aim for 20-40 strong images, organized into clear galleries (e.g., Weddings, Portraits, Editorial). 
@@ -58,7 +54,6 @@ Open strong, vary the rhythm, and close strong. Cut anything that breaks your st
 - Keep branding minimal so the photos lead
 
 ### Comparing Portfolio Platforms
-
 | Platform     | Best For                    | Pros                                   | Cons                          |
 |--------------|-----------------------------|----------------------------------------|-------------------------------|
 | Squarespace  | All-in-one solutions        | User-friendly, customizable templates  | Monthly fee                   |
@@ -71,13 +66,6 @@ Host it fast and free where you can - see [How to Host Your Portfolio for Free](
 ## Keep Your Resume and Portfolio in Sync
 
 Your resume, your LinkedIn, and your portfolio should tell the **same** story - same name, same headline, same top projects - just at different levels of depth. A recruiter who sees a 'Full Stack Developer' resume and a portfolio headlined 'Aspiring Designer' gets confused, and confusion loses interviews. Lock the resume down first with the [ATS score checker](https://www.thetailorcv.com/solutions) and an [ATS-friendly template](https://www.thetailorcv.com/templates), then mirror that exact positioning in your portfolio. When they reinforce each other, every recruiter touchpoint pushes you forward. See [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume) for placing the link correctly.
-
-### Turning a resume into a portfolio site
-
-![The TailorCV portfolio builder: pick a template, upload an existing CV to auto-fill the sections, then publish a shareable link](public/blog-images/portfolio-builder-from-resume.webp)
-
-The three steps are template, details, publish. Uploading an existing CV fills in the details step for you, which is why this takes minutes rather than a weekend.
-
 
 ### Syncing Strategies
 - **Use Consistent Language**: Ensure the descriptions in your resume match those in your portfolio.
@@ -100,8 +88,6 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 - Add a short About with your style and a friendly photo of you ([Portfolio About Me Section](https://thetailorcv.com/blog/portfolio-about-me-section)).
 - Generate a simple, fast site from your bio with the [portfolio builder](https://thetailorcv.com/portfolio).
 
-
-
 ### Additional Enhancements
 - **Testimonials**: Include positive feedback from past clients to build trust.
 - **Blog Section**: Consider adding a blog to showcase your insights and experiences, which can also help with SEO.
@@ -109,7 +95,6 @@ The three steps are template, details, publish. Uploading an existing CV fills i
 
 ### Future-Proofing Your Portfolio
 As technology and trends evolve, consider these strategies to keep your portfolio relevant:
-
 - **Incorporate Video**: Short behind-the-scenes clips or slide shows can engage visitors. Check out the [Video Editor and Videographer Portfolio Guide](https://thetailorcv.com/blog/video-editor-portfolio-guide) for more ideas.
 - **Utilize AI Tools**: Explore options like [How to Build a Portfolio With AI - No Coding Required](https://thetailorcv.com/blog/ai-portfolio-builder-no-code-guide) to simplify the creation process.
 - **Stay Informed**: Follow industry trends to adapt your portfolio to changing client expectations. 
@@ -128,7 +113,7 @@ A photographer-focused builder (Pixieset, Format) or a custom site. Speed and mo
 
 ### How do I get found?
 
-Use a [custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) and basic SEO - see [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) and the [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide). You can also explore our Portfolio builder for more options.
+Use a [custom domain](https://thetailorcv.com/blog/custom-domain-portfolio-guide) and basic SEO - see [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) and the [Portfolio Domain Name Guide](https://thetailorcv.com/blog/portfolio-domain-name-guide). You can also explore our [Portfolio builder](https://www.thetailorcv.com/portfolio) for more options.
 ## Build Your Portfolio Now
 
 You do not need to code a site from scratch or spend a weekend wrestling with a website builder. Turn your existing resume into a live, shareable portfolio website in minutes with the [TailorCV portfolio builder](https://thetailorcv.com/portfolio) - choose a template, upload your CV, tweak the details, and publish a link you can drop straight onto your resume and LinkedIn. Before you start applying, run your resume through the [free ATS score checker](https://www.thetailorcv.com/solutions) and switch to an [ATS-friendly template](https://www.thetailorcv.com/templates) so your portfolio and resume tell one clean, consistent story to every recruiter.
@@ -150,7 +135,7 @@ You do not need to code a site from scratch or spend a weekend wrestling with a 
 
 ## Make This Practical
 
-If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean Portfolio Contact Section.
+If this topic connects to your work samples, turn the advice into a live proof page with the [TailorCV portfolio builder](https://www.thetailorcv.com/portfolio). After publishing, add the link correctly using [How to Add Your Portfolio Link to Your Resume](https://thetailorcv.com/blog/add-portfolio-link-to-resume), tighten the page with the [Portfolio Checklist Before Applying](https://thetailorcv.com/blog/portfolio-checklist-before-applying), and make sure recruiters can contact you through a clean [Portfolio Contact Section](https://thetailorcv.com/blog/portfolio-contact-section).
 
 Your portfolio works best when it supports the resume, not when it replaces it. Run the resume through the [free ATS score checker](https://www.thetailorcv.com/solutions), choose an [ATS-friendly resume template](https://www.thetailorcv.com/templates), and use [Portfolio SEO: Get Found](https://thetailorcv.com/blog/portfolio-seo-get-found) so your name, role, and strongest projects are easier to discover.
 

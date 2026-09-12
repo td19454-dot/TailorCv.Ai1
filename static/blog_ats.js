@@ -94,7 +94,7 @@
       .then((res) =>
         res.json().catch(() => ({})).then((body) => {
           if (!res.ok) {
-            const err = new Error(tcvErrorMessage(body, "That scan did not go through. Please try again."));
+            const err = new Error(body.detail || body.error || "That scan did not go through. Please try again.");
             err.status = res.status;
             throw err;
           }

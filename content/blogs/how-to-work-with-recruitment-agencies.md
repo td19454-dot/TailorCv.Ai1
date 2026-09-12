@@ -10,17 +10,9 @@ slug: how-to-work-with-recruitment-agencies
 keywords: recruitment agencies, working with recruiters, staffing agency, how to work with recruiters
 ---
 
-## Key Takeaways
-
-- Agency recruiters are paid a fee by the employer when they fill a role, which explains most of how they behave.
-- Look for agencies that specialise in your field, industry, or seniority level - a niche recruiter knows the market.
-- Recruiters place candidates who are easy to work with, so be clear about target role, salary, and location up front.
-- Recruiters often submit your resume directly, sometimes on their own letterhead, so make it ATS-friendly and excellent.
-- Treat recruiters as long-term relationships, and never rely on agencies as your whole strategy.
-
 Recruitment agencies can open doors to roles you'd never find on a [job board](https://thetailorcv.com/blog/best-job-search-websites-2026) — including unadvertised positions and relationships with hiring managers who trust the agency's judgment. But they only work in your favor if you understand how they operate. Recruiters are paid by employers, not by you, so the relationship works best when you make yourself easy to place. This guide shows you how to get recruiters genuinely working on your behalf.
 
-Whether you go through an agency or apply directly, the foundation is the same: a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that passes the [ATS](https://thetailorcv.com/blog/ats-score-guide). Build it in the [resume builder](https://www.thetailorcv.com/modify-cv) and score it with the ATS checker before you engage a single recruiter.
+Whether you go through an agency or apply directly, the foundation is the same: a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that passes the [ATS](https://thetailorcv.com/blog/ats-score-guide). Build it in the [resume builder](https://www.thetailorcv.com/modify-cv) and score it with the [ATS checker](https://www.thetailorcv.com/solutions) before you engage a single recruiter.
 
 ## Understand how agencies get paid
 
@@ -36,14 +28,7 @@ Recruiters place candidates who are easy to work with. Tell them exactly what yo
 
 ## Give them a strong, tailored resume
 
-Recruiters often submit your [resume](https://www.thetailorcv.com/modify-cv) directly to employers, sometimes reformatted onto their letterhead, so make it excellent. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), lead with [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and tailor it to the kinds of roles they pitch you. A recruiter can only sell what's on the page — a sharp, results-driven resume makes their job easy and your placement more likely. Ask whether they'll tweak keywords for specific submissions, and provide a version aligned to each job description.
-
-### What optimizing actually does to your resume
-
-![TailorCV optimizing a resume against a job description, with a four-stage progress tracker: upload, analyzing, optimizing, completed](public/blog-images/free-resume-optimizer-online-2026-process.webp)
-
-The tool parses your resume the way an ATS would before it changes anything, so the edits it suggests are grounded in the posting itself.
-
+Recruiters often submit your [resume](https://www.thetailorcv.com/modify-cv) directly to employers, sometimes reformatted onto their letterhead, so make it excellent. Use an [ATS-friendly template](https://www.thetailorcv.com/templates), lead with [quantified achievements](https://thetailorcv.com/blog/how-to-quantify-achievements-on-resume), and [tailor it](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) to the kinds of roles they pitch you. A recruiter can only sell what's on the page — a sharp, results-driven [resume](https://www.thetailorcv.com/modify-cv) makes their job easy and your placement more likely. Ask whether they'll tweak keywords for specific submissions, and provide a version aligned to each [job description](https://thetailorcv.com/blog/job-description-analysis-checklist).
 
 ## Manage the relationship over time
 
@@ -57,9 +42,9 @@ Agencies are one channel, not your whole strategy. Keep applying directly, [netw
 
 To get recruiters working for you:
 
-- [ ] **Choose specialists** in your field, not generalists.
-- [ ] Be **clear, responsive, and honest** about what you want.
-- [ ] Give them a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that's [ATS-ready](https://www.thetailorcv.com/solutions).
-- [ ] **Nurture the relationship** and run **other channels** in parallel.
+- **Choose specialists** in your field, not generalists.
+- Be **clear, responsive, and honest** about what you want.
+- Give them a strong, [tailored resume](https://thetailorcv.com/blog/how-to-tailor-resume-in-5-minutes) that's [ATS-ready](https://www.thetailorcv.com/solutions).
+- **Nurture the relationship** and run **other channels** in parallel.
 
 Work with agencies this way and they become a powerful accelerant. Start with a standout [resume](https://www.thetailorcv.com/modify-cv) in the [resume builder](https://www.thetailorcv.com/modify-cv), scored with the [ATS checker](https://www.thetailorcv.com/solutions), so every recruiter has something great to sell.

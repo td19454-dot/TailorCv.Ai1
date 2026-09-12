@@ -10,14 +10,6 @@ slug: resume-tailoring-over-50
 keywords: resume tailoring over 50, resume for 50+ job seekers, age bias resume tips, how to hide age on resume, mature job seeker resume 2026, career after 50 resume
 ---
 
-## Key Takeaways
-
-- Age bias can manifest in resume screening as assumptions about culture fit, overqualification, or outdated formats, often before qualifications are evaluated.
-- Limit your work history to the past 10-15 years and include relevant earlier roles without dates to keep your resume focused and modern.
-- Remove graduation dates if you graduated before 2000 to avoid age-related assumptions while still showcasing your education.
-- Modernize your technology language by including current tools and platforms you are familiar with, demonstrating your relevance in today's job market.
-
-
 You are one of the most experienced candidates who will apply for this role.
 
 You have lived through industry transformations.
@@ -43,12 +35,18 @@ But to give you a real, practical strategy to [tailor your resume](https://theta
 
 ---
 
+## Key Takeaways
+
+- Age bias can manifest in resume screening as assumptions about culture fit, overqualification, or outdated formats, often before qualifications are evaluated.
+- Limit your work history to the past 10-15 years and include relevant earlier roles without dates to keep your resume focused and modern.
+- Remove graduation dates if you graduated before 2000 to avoid age-related assumptions while still showcasing your education.
+- Modernize your technology language by including current tools and platforms you are familiar with, demonstrating your relevance in today's job market.
+
 ## What Age Bias Actually Looks Like in Resume Screening
 
 Age bias rarely announces itself.
 
 Instead, it disguises itself as:
-
 - "Not a culture fit"
 - "Looking for someone with a fresher perspective"
 - "Overqualified for this position"
@@ -58,7 +56,6 @@ Instead, it disguises itself as:
 The signals that trigger bias - often before anyone consciously decides anything:
 
 **On the resume:**
-
 - Graduation year from a college that clearly dates you
 - A 30-year career history with roles going back to the early 1990s
 - Outdated technologies that are no longer in use
@@ -68,7 +65,6 @@ The signals that trigger bias - often before anyone consciously decides anything
 - Listing all jobs, including entry-level roles from 25 years ago
 
 **In [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it):**
-
 - Low keyword match on modern tools (Slack, Notion, cloud platforms, Agile)
 - Missing terms that have emerged as standard in the last 5-8 years
 - Outdated [certifications](https://thetailorcv.com/blog/how-to-list-certifications-on-resume) with no newer ones
@@ -90,7 +86,6 @@ Limit your work history to the past 10-15 years.
 If you had an earlier role that is relevant to the specific job, include it in a brief "Earlier Career" section with no dates:
 
 **Earlier Career (Selected)**
-
 - Marketing Director, [Company], managed $5M brand budget during product repositioning
 - Regional Sales Manager, [Company], built the Midwest territory from $0 to $8M ARR
 
@@ -121,7 +116,6 @@ If you have delivered results in a remote or hybrid environment - say so.
 Review [skills to add to your resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026) to make sure your [skills section](https://thetailorcv.com/blog/resume-skills-match-job-description) reflects current standards.
 
 If you have genuinely not used modern tools, now is a good time to:
-
 - Complete a short online certification (Google Analytics, AWS Cloud Practitioner, Scrum certification)
 - Learn and use the most common tools in your industry
 - List any recent learning explicitly: "Currently completing [Certification]"
@@ -137,7 +131,6 @@ The Objective Statement - "Seeking a challenging position where I can utilize my
 Understanding the [difference between resume objective vs summary](https://thetailorcv.com/blog/resume-objective-vs-summary) is critical here. Replace it immediately with a powerful professional summary.
 
 Your summary should:
-
 - Use present tense and modern language
 - Lead with your most relevant and recent accomplishments
 - Include 2-3 keywords from the target [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide)
@@ -177,15 +170,7 @@ It also does not invite mental math about when this happened.
 Old resume formats signal old-era job searching.
 Review [resume fonts and formatting](https://thetailorcv.com/blog/resume-fonts-guide) to make sure your document looks contemporary.
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
-
-
 **Replace:**
-
 - Two-column layouts that some [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) cannot parse
 - Serif fonts like Times New Roman or Courier
 - Fully justified text alignment
@@ -194,7 +179,6 @@ The optimized resume renders live beside the controls, so you see the page count
 - Bold use of your full address
 
 **Use:**
-
 - Clean, single-column [ATS-friendly](https://thetailorcv.com/blog/ats-friendly-resume-builder) format
 - Modern sans-serif fonts (Calibri, Arial, Aptos)
 - Left-aligned text
@@ -206,7 +190,6 @@ They are designed for modern [ATS](https://thetailorcv.com/blog/what-is-an-ats-s
 
 ---
 
-
 ## Step 6: Update Your Email and Digital Presence
 
 Your email address matters.
@@ -215,7 +198,6 @@ An AOL or Hotmail address signals a digital era that ended two decades ago.
 Create a professional Gmail address if you have not already.
 
 Your [LinkedIn profile](https://thetailorcv.com/blog/linkedin-profile-optimization-guide) should be:
-
 - Complete with a current, professional photo
 - Updated with your recent roles and key accomplishments
 - Active - even occasional engagement shows you are current
@@ -239,7 +221,6 @@ Upload your resume.
 See exactly which modern keywords are missing - and where to add them naturally.
 
 Common modern keywords that experienced professionals often miss:
-
 - Agile, Scrum, sprint planning
 - Data-driven, KPI-led, OKR
 - Cloud, SaaS, digital transformation
@@ -313,7 +294,7 @@ You do not need to unless it comes up. If it does, pivot to your value: "I bring
 - [How to Write a Resume Summary](https://thetailorcv.com/blog/how-to-write-resume-summary)
 - [How to Update Your Resume](https://thetailorcv.com/blog/how-to-update-your-resume)
 - [Skills to Add to Your Resume in 2026](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
-- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume)
+- [Best Free Online Certificates for Resume](https://thetailorcv.com/blog/best-free-online-certificates-for-resume-2026)
 - [LinkedIn Profile Optimization Guide](https://thetailorcv.com/blog/linkedin-profile-optimization-guide)
 - [ATS Mistakes Experienced Professionals Make](https://thetailorcv.com/blog/ats-mistakes-experienced-professionals)
 - [Executive Resume Tailoring Guide](https://thetailorcv.com/blog/executive-resume-tailoring-guide)

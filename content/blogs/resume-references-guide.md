@@ -10,6 +10,12 @@ slug: resume-references-guide
 keywords: resume references, should I put references on resume, references available upon request, how to list references on resume, professional references, reference letter vs reference list, resume reference section 2026
 ---
 
+"References available upon request" was standard resume advice for decades. Today it is outdated, wastes space, and signals that you are using advice from 20 years ago. This guide tells you exactly what to do with references in 2026 - when to include them, what format to use, how to prepare them, and what common mistakes to avoid.
+
+Once your references are sorted, focus on making your resume content exceptional. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
+
+---
+
 ## Key Takeaways
 
 - In 2026, do not include references on your resume as they take up space and are assumed by employers.
@@ -17,13 +23,6 @@ keywords: resume references, should I put references on resume, references avail
 - When preparing a reference list, create a separate document with details such as name, title, relationship, email, and phone number.
 - Aim for 3 references for standard roles and 4-5 for senior positions, and have them ready before applying.
 - Choose credible references like former managers or peers, and avoid family or friends unless exceptional. Always ask for permission before listing someone as a reference.
-
-
-"References available upon request" was standard resume advice for decades. Today it is outdated, wastes space, and signals that you are using advice from 20 years ago. This guide tells you exactly what to do with references in 2026 - when to include them, what format to use, how to prepare them, and what common mistakes to avoid.
-
-Once your references are sorted, focus on making your resume content exceptional. Use an [ATS-friendly template](https://www.thetailorcv.com/templates) and check your score with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions).
-
----
 
 ## The Short Answer: Do Not Put References on Your Resume
 
@@ -116,7 +115,6 @@ Have references prepared and ready before you begin applying. Do not wait until 
 Always ask permission before listing anyone as a reference. A reference who is surprised by a call gives a weak or awkward endorsement.
 
 **When asking:**
-
 - Give them context on the role(s) you are applying for
 - Share your updated resume so they can speak to your current positioning
 - Ask if they are comfortable speaking positively on your behalf
@@ -129,16 +127,14 @@ Always ask permission before listing anyone as a reference. A reference who is s
 ## What Makes a Strong Reference
 
 A strong reference can:
-
 - Speak specifically to your work (not vague praise)
-- Recall concrete [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews), achievements, or examples
+- Recall concrete [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers), achievements, or examples
 - Confirm your technical and [soft skills](https://thetailorcv.com/blog/soft-skills-for-resume) with direct evidence
 - Say with confidence that they would hire you again
 
 A weak reference gives generic answers: "She was great. Very hard-working. I'd recommend her." Without specifics, this does little to move your candidacy forward.
 
 Brief your references before they receive a call:
-
 - What role you are applying for
 - What the employer is most likely to ask about
 - One or two key stories they could reference about your work
@@ -148,12 +144,9 @@ Brief your references before they receive a call:
 ## The "References Available Upon Request" Line: Remove It
 
 If your resume currently includes this line, delete it. It:
-
 - Wastes valuable resume space
 - Is assumed by all employers
 - Makes your resume look dated
-
-
 
 Replace that space with a strong bullet point, certification, or achievement. Read [what not to put on a resume](https://thetailorcv.com/blog/what-not-to-put-on-resume) for more things to remove.
 
@@ -162,7 +155,6 @@ Replace that space with a strong bullet point, certification, or achievement. Re
 ## Reference Checks in the Hiring Process
 
 Reference checks typically happen:
-
 1. **After the final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - When the employer is deciding between top candidates
 2. **Before an official offer is extended** - As part of background verification
 3. **Occasionally before a final [interview](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry)** - For senior or sensitive roles
@@ -174,7 +166,6 @@ Reference checks are a formality in some industries and a critical decision fact
 ## What Employers Ask References
 
 Common reference check questions:
-
 - How long did you work with this person and in what capacity?
 - What were their greatest strengths?
 - What were their areas for improvement?

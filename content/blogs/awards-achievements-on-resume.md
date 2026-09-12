@@ -10,6 +10,12 @@ slug: awards-achievements-on-resume
 keywords: awards on resume, achievements on resume, how to list awards resume, resume achievements section, professional awards resume, academic awards resume, accomplishments on resume
 ---
 
+Awards and achievements can significantly strengthen a resume - but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
+
+Before adding achievements, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to check your overall score, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
+
+---
+
 ## Key Takeaways
 
 - Awards and achievements enhance a resume by providing independent validation of performance and making candidates more memorable.
@@ -17,19 +23,11 @@ keywords: awards on resume, achievements on resume, how to list awards resume, r
 - Include high-value awards such as prestigious recognitions, competition wins, and significant academic honors, while using discretion for lower-value awards.
 - Frame awards with context to highlight their significance, including what the award was for, its selectivity, and your contributions to earning it.
 
-
-Awards and achievements can significantly strengthen a resume - but only when they are positioned correctly, framed in a way employers care about, and relevant to the role. Knowing where to put them, how to write them, and when a dedicated section helps versus hurts is the difference between impressive and cluttered.
-
-Before adding achievements, run your resume through the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to check your overall score, and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
-
----
-
 ## Why Awards Matter on a Resume
 
 Awards and achievements serve a purpose that job duties alone cannot: they provide independent validation of your performance. When a third party (your company, a university, an industry association, a competition) recognizes you above your peers, it signals something that a self-reported bullet point cannot.
 
 Used well, awards add:
-
 - **Credibility**: External recognition validates your accomplishments
 - **Differentiation**: Awards make you memorable in a competitive pool
 - **Specificity**: Named awards are concrete evidence, not vague claims
@@ -57,7 +55,6 @@ If the award is tied to a specific role or educational institution, integrate it
 ### Option 2: A Dedicated Achievements/Awards Section
 
 Create a separate "Awards & Achievements" or "Honors" section when:
-
 - You have 3 or more notable awards
 - The awards are from multiple roles and don't fit neatly in one section
 - The awards are particularly prestigious and deserve prominence
@@ -65,7 +62,6 @@ Create a separate "Awards & Achievements" or "Honors" section when:
 **Example section:**
 
 **Awards & Achievements**
-
 - Forbes 30 Under 30 - Technology, 2025
 - Winner, Y Combinator Startup Hackathon 2024 (out of 400+ teams)
 - ACM Programming Contest Regional Champion, 2022
@@ -109,7 +105,6 @@ If your most impressive award is a headline-worthy credential (Forbes 30 Under 3
 ## How to Frame Awards for Maximum Impact
 
 An award listed without context is weaker than it could be. Add context that shows:
-
 1. **What the award was for**
 2. **How selective it was** (how many candidates, what the competition was)
 3. **What you did to earn it**
@@ -128,14 +123,13 @@ An award listed without context is weaker than it could be. Add context that sho
 
 ### Recent Graduates and Freshers
 Academic awards carry significant weight. List them prominently:
-
 - Scholarships (especially named scholarships)
 - Academic rank/GPA honors
 - Research prizes or thesis awards
 - Club/society leadership awards
 - Internship performance recognition
 
-Read [resume with no experience guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
+Read [resume with no experience guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience) and [internship resume guide](https://thetailorcv.com/blog/internship-resume-guide) for fresher-specific advice.
 
 ### Mid-Career Professionals (3-8 Years)
 Transition away from academic awards toward professional ones. Remove high school and minor college awards. Keep any continuing [education](https://thetailorcv.com/blog/how-to-list-education-on-resume), industry certification honors, or competition wins.
@@ -176,14 +170,11 @@ Academic awards are largely irrelevant unless exceptionally prestigious (Rhodes 
 - Old awards that are no longer relevant to your current career
 - Awards that contradict the image you want to project (e.g., humor awards in a serious industry)
 
-
-
 ---
 
 ## ATS and Awards
 
 [ATS](https://thetailorcv.com/blog/what-is-an-ats-score-and-why-does-it-decide-your-job-application-before-any-human-reads-it) systems do not specifically look for an "Awards" section but will scan your achievement text for keywords. Ensure:
-
 - Award names use recognizable terms ("Dean's List," "hackathon," "scholarship")
 - Associated accomplishments include industry-relevant keywords
 - The section has a clear standard heading: "Awards," "Achievements," or "Honors"
@@ -198,11 +189,10 @@ Test your resume's full ATS score with the [TailorCV checker](https://www.thetai
 - [How to Quantify Resume Achievements](https://thetailorcv.com/blog/how-to-quantify-resume-achievements)
 - [How to Write Resume Bullet Points That Get Results](https://thetailorcv.com/blog/how-to-write-resume-bullet-points)
 - [How to List Certifications on a Resume](https://thetailorcv.com/blog/how-to-list-certifications-on-resume)
-- [Resume with No Experience Guide](https://thetailorcv.com/blog/how-to-write-resume-with-no-experience-2026)
+- [Resume with No Experience Guide](https://thetailorcv.com/blog/first-time-resume-with-no-experience)
 - [Internship Resume Guide](https://thetailorcv.com/blog/internship-resume-guide)
 - [How to List Education on a Resume](https://thetailorcv.com/blog/how-to-list-education-on-resume)
 - [What Not to Put on a Resume](https://thetailorcv.com/blog/what-not-to-put-on-resume)
-- [Chef & Culinary Resume Guide 2026](https://thetailorcv.com/blog/chef-culinary-resume-2026)
 
 ---
 

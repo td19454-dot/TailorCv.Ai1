@@ -10,6 +10,8 @@ keywords: canadian resume format, resume for canada, how to write a canadian res
 image: public/blog-images/canadian-resume-format-guide-2026.webp
 ---
 
+Navigating the Canadian job market can be daunting, especially for newcomers and international students. A well-crafted resume is crucial to making a strong first impression on potential employers. In Canada, the resume format has its unique norms and expectations, which differ from other countries. This guide will walk you through everything you need to know about writing a resume for Canada in 2026, ensuring that you stand out in a competitive job landscape.
+
 ## Key Takeaways
 
 - Canadian resumes should not include personal photos, age, or marital status to prevent bias and discrimination.
@@ -17,20 +19,15 @@ image: public/blog-images/canadian-resume-format-guide-2026.webp
 - Tailor your resume for each job application by matching keywords from the job description and highlighting relevant experience with quantifiable achievements.
 - Use standard formatting and fonts to ensure your resume is ATS-friendly and can easily pass through Applicant Tracking Systems.
 
-
-Navigating the Canadian job market can be daunting, especially for newcomers and international students. A well-crafted resume is crucial to making a strong first impression on potential employers. In Canada, the resume format has its unique norms and expectations, which differ from other countries. This guide will walk you through everything you need to know about writing a resume for Canada in 2026, ensuring that you stand out in a competitive job landscape.
-
 ## Understanding Canadian Resume Norms
 
 Before you start writing, it's essential to familiarize yourself with the specific norms that govern Canadian resumes. Here are some key points to keep in mind:
 
-| Rule | What it means |
-|---|---|
-| **No Personal Photos** | Unlike some countries, Canadian employers do not expect to see a photo on your resume. This helps prevent bias based on appearance. For more details on this, refer to our guide on [should you put a photo on your resume?](https://thetailorcv.com/blog/photo-on-resume) |
-| **No Age or Marital Status** | It's illegal for employers to discriminate based on age or marital status, so these details should not be included |
-| **Length** | While one-page resumes are common, two-page resumes are acceptable in Canada, especially for those with extensive experience |
-| **Contact Information** | Use the Canadian format for phone numbers (e.g., (123) 456-7890) and include your address (city and province) without the street address for privacy. For more on this, check out our guide on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section) |
-| **References** | Simply state "References available upon request" rather than listing them on your resume |
+- **No Personal Photos**: Unlike some countries, Canadian employers do not expect to see a photo on your resume. This helps prevent bias based on appearance. For more details on this, refer to our guide on [should you put a photo on your resume?](https://thetailorcv.com/blog/photo-on-resume).
+- **No Age or Marital Status**: It's illegal for employers to discriminate based on age or marital status, so these details should not be included.
+- **Length**: While one-page resumes are common, two-page resumes are acceptable in Canada, especially for those with extensive experience.
+- **Contact Information**: Use the Canadian format for phone numbers (e.g., (123) 456-7890) and include your address (city and province) without the street address for privacy. For more on this, check out our guide on the [resume contact section](https://thetailorcv.com/blog/resume-contact-section).
+- **References**: Simply state "References available upon request" rather than listing them on your resume.
 
 ## Structure of a Canadian Resume
 
@@ -89,13 +86,6 @@ Depending on your background, you may also want to include:
 
 Customizing your resume for each job application is essential. Here’s how you can do that effectively:
 
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-Font size, spacing, accent colour and template are all adjustable, with a live page counter.
-
-
 - **Match Keywords**: Review the job description and incorporate relevant keywords into your resume. This not only helps with ATS optimization but also shows that you are aligned with the employer's needs. For more details on this, check out our guide on [how to write a resume from scratch](https://thetailorcv.com/blog/how-to-write-resume-from-scratch).
 - **Highlight Relevant Experience**: Focus on the experience that is most relevant to the job. Use quantifiable achievements to demonstrate your impact in previous roles. For example, instead of stating "responsible for managing a team," say "led a team of 5 to achieve a 20% increase in sales over six months."
 
@@ -111,13 +101,11 @@ Many Canadian employers use Applicant Tracking Systems (ATS) to filter resumes. 
 
 To ensure your resume stands out for the right reasons, avoid these common pitfalls:
 
-| Mistake | Why it costs you |
-|---|---|
-| **Typos and Grammatical Errors** | Always proofread your resume. Consider using tools like Grammarly or asking a friend to review it |
-| **Generic Content** | Avoid using a one-size-fits-all resume. Tailor each resume to the specific job you are applying for |
-| **Overly Complex Language** | Use clear and concise language. Avoid jargon that may not be understood by everyone |
-| **Inconsistent Formatting** | Ensure that font sizes, bullet points, and spacing are consistent throughout your resume |
-| **Including Irrelevant Information** | Focus on what’s relevant to the job. Exclude outdated or unrelated work experience |
+- **Typos and Grammatical Errors**: Always proofread your resume. Consider using tools like Grammarly or asking a friend to review it.
+- **Generic Content**: Avoid using a one-size-fits-all resume. Tailor each resume to the specific job you are applying for.
+- **Overly Complex Language**: Use clear and concise language. Avoid jargon that may not be understood by everyone.
+- **Inconsistent Formatting**: Ensure that font sizes, bullet points, and spacing are consistent throughout your resume.
+- **Including Irrelevant Information**: Focus on what’s relevant to the job. Exclude outdated or unrelated work experience.
 
 ## Utilizing TailorCV Resources
 
@@ -131,8 +119,6 @@ To further enhance your job application process, consider using the following re
 ## Understanding the Canadian Job Market
 
 The Canadian job market is diverse, with opportunities across various sectors. Here are some insights to keep in mind:
-
-
 
 - **Networking is Key**: Building connections can significantly enhance your job search. Utilize platforms like LinkedIn to network with industry professionals. Attend networking events and informational interviews to expand your reach.
 - **In-Demand Jobs**: Familiarize yourself with the in-demand jobs in Canada for 2026. This can help you tailor your resume to highlight relevant skills. For more information, read our guide on [in-demand jobs in Canada for 2026](https://thetailorcv.com/blog/in-demand-jobs-canada-2026).
@@ -225,7 +211,6 @@ Keep building your Canadian job search with these related TailorCV guides:
 - [Resume Keywords Guide 2026 - How to Find and Use the Right Keywords](https://thetailorcv.com/blog/resume-keywords-guide)
 - [Top Skills to Add to Your Resume in 2026 - By Industry and Role](https://thetailorcv.com/blog/skills-to-add-to-resume-2026)
 - [Soft Skills for Resume in 2026 - How to Show Them (Not Just List Them)](https://thetailorcv.com/blog/soft-skills-for-resume)
-- [Event Planner Resume Guide 2026](https://thetailorcv.com/blog/event-planner-resume-2026)
 
 You can also [check your resume's ATS score for free](https://www.thetailorcv.com/solutions), [generate a tailored cover letter](https://www.thetailorcv.com/cover-letter), or [build a portfolio website](https://www.thetailorcv.com/portfolio) in minutes.
 

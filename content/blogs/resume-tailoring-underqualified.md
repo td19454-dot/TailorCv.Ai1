@@ -10,15 +10,6 @@ slug: resume-tailoring-underqualified
 keywords: resume tailoring underqualified, how to apply when underqualified, resume when missing qualifications, underqualified job application tips, how to get job without meeting all requirements 2026
 ---
 
-## Key Takeaways
-
-- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
-- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
-- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
-- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
-- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
-
-
 You see the [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide).
 
 It asks for 5 years of experience.
@@ -43,6 +34,14 @@ This guide shows you how to tailor your resume when you are underqualified - hon
 
 ---
 
+## Key Takeaways
+
+- Job descriptions are often wishlists, and most candidates do not need to meet every requirement to be considered.
+- Apply for roles when you meet at least 60-70% of qualifications, especially if missing skills are learnable and you have strong transferable experience.
+- Create a side-by-side comparison of job requirements and your qualifications to identify strengths, areas for growth, and skills to omit.
+- Lead your resume with your strengths and relevant achievements rather than focusing on what you lack. 
+- Highlight your ability to learn and grow, as hiring managers often seek candidates who can develop into the role.
+
 ## The Truth About "Required" Qualifications
 
 "Required" in a [job description](https://thetailorcv.com/blog/job-description-keyword-extraction-guide) rarely means "required to be considered."
@@ -54,7 +53,6 @@ They know the perfect candidate is not applying.
 They are hiring the best available candidate who can grow into the role.
 
 If you can demonstrate:
-
 - Core skill match (even at 70%)
 - A clear ability to learn the rest
 - Motivation and genuine fit
@@ -76,7 +74,6 @@ Apply when you meet **at least 60-70% of the required qualifications** and:
 - The role is one level above your current position (a stretch, not a leap of faith)
 
 Do not apply when:
-
 - The missing requirements are regulatory (you cannot practice law without a bar license)
 - The technical skill gap is foundational and would take years to close
 - More than half the core requirements are genuinely missing
@@ -84,13 +81,6 @@ Do not apply when:
 ---
 
 ## How to Tailor Your Resume When You're Underqualified
-
-
-### Your resume after optimization
-
-![The optimized resume in TailorCV, with font size, line spacing, accent colour and template controls beside the finished one-page preview](public/blog-images/how-to-tailor-resume-for-every-job-editor.webp)
-
-The optimized resume renders live beside the controls, so you see the page count change as you adjust.
 
 ### Step 1: Map What You Have Against What They Need
 
@@ -105,7 +95,6 @@ Create a simple side-by-side comparison.
 | Cross-functional campaign management | Yes - multiple examples |
 
 This map tells you:
-
 - Where you are strong (lead with these)
 - Where you are close (frame as developing)
 - What to honestly omit (do not fabricate)
@@ -190,22 +179,18 @@ Read [how to quantify resume achievements](https://thetailorcv.com/blog/how-to-q
 > "[data analyst](https://thetailorcv.com/blog/data-analyst-resume-2026) with 2.5 years of experience. Skilled in SQL and Excel. Learning Python and Tableau."
 
 **After [resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary):**
-> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live [projects](https://thetailorcv.com/blog/fresher-resume-projects-that-get-interviews) in progress."
+> "Data Analyst with 2.5 years of progressive experience building SQL-based reporting systems that directly informed executive decisions at a 200-person SaaS company. Strong in data modeling, Excel-based dashboards, and stakeholder communication. Actively developing Python automation and Tableau visualization skills with 3 live [projects](https://thetailorcv.com/blog/how-to-add-projects-in-resume-for-freshers) in progress."
 
 Same person.
 Completely different impression.
 
 ---
 
-
 ## The Cover Letter Is Your Secret Weapon
 
 When you are underqualified, a strong [cover letter](https://thetailorcv.com/blog/cover-letter-guide-2026) can bridge the gap your resume cannot.
 
-
-
 Use it to:
-
 - Acknowledge the stretch directly (without apologizing)
 - Show genuine enthusiasm for the company and role
 - Highlight two or three specific ways your background is uniquely relevant

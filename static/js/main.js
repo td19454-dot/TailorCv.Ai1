@@ -267,13 +267,12 @@ async function handleATSAnalysis() {
         });
 
         if (!response.ok) {
-            let payload = null;
-            try { payload = await response.clone().json(); } catch { payload = await response.text(); }
-            throw new Error(tcvErrorMessage(payload, 'Failed to get ATS score'));
+            const errorText = await response.text();
+            throw new Error(errorText || 'Failed to get ATS score');
         }
 
         const data = await response.json();
-
+        
         // Display results
         displayATSResults(data);
         resultsSection.style.display = 'block';
