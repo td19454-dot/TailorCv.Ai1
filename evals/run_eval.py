@@ -44,6 +44,7 @@ from functions import (  # noqa: E402
     create_prompt,
     get_resume_response,
     inject_jd_hard_skills,
+    repair_summary,
     sanitize_resume_data,
 )
 
@@ -193,6 +194,11 @@ async def run_one(fixture: dict, model: str, usage_sink: list[dict]) -> dict:
     raw_snapshot = json.loads(json.dumps(raw))
     final = restore_dropped_bullets(raw, resume_text)
     final = inject_jd_hard_skills(final, jd_text, resume_text)
+    # repair_summary runs in production between the skill weaves and the
+    # sanitizer (main.py, _optimize_resume_core). Omitting it here meant summary
+    # regressions were invisible to the harness — the one grader that measures
+    # the most-read line on the resume was scoring text production never ships.
+    final = repair_summary(final, jd_text, resume_text)
     final = sanitize_resume_data(final)
 
     prompt_tokens = sum(u["prompt_tokens"] for u in usage_sink)

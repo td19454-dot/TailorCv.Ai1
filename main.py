@@ -47,6 +47,7 @@ from functions import (
     inject_jd_hard_skills,
     weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
+    repair_summary,
     sanitize_resume_data,
     factcheck_against_original,
     promptable_skill_gaps,
@@ -11433,6 +11434,16 @@ async def _optimize_resume_core(
     # skills array (Rule01b). Handled automatically rather than asked about:
     # unlike "do you know Tableau?", this is presentation, not a credential.
     parsed = weave_soft_skills_into_summary(parsed, missing_soft_skills, resume_string)
+
+    # Rule 00 is an instruction, not a guarantee, so the countable half of it is
+    # checked here rather than trusted — the same reasoning as _repair_action_verbs.
+    # Strictly subtractive: it deletes keyword padding (a trailing "in the X
+    # domain" tag, a final sentence that names things without claiming any of
+    # them) and never writes new words, so it cannot introduce a claim the resume
+    # does not support. Runs AFTER the soft-skill weave so it sees the final
+    # assembled text, including anything that step appended. Whatever it cannot
+    # fix by deletion is reported on parsed["summary_issues"] instead.
+    parsed = repair_summary(parsed, jd_string, resume_string)
 
     # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
     # only decides which JD hard skills the resume is ALLOWED to claim (they land
