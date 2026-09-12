@@ -14,11 +14,28 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BLOGS = os.path.join(ROOT, "content", "blogs")
 PLAN = os.path.join(ROOT, "content-plan", "tailorcv_1000_topics.json")
 BOM = "﻿"
-WPM = 250
 
-MIN = dict(words=2000, h2=8, h3=6, table_rows=6, blog_links=12,
+# MUST match blog_system.WORD_PER_MINUTE, because that is the figure the site
+# renders on the post ("9 min read"). Validating against any other rate lets
+# articles pass here and display a lower number to the reader. Imported live so
+# the two can never drift apart again.
+try:
+    sys.path.insert(0, ROOT)
+    from blog_system import WORD_PER_MINUTE as WPM
+except Exception:                                    # pragma: no cover
+    WPM = 220
+
+# Hard floor: 9 minutes of genuine reading time at the site's own rate.
+MIN_READ_MINUTES = 9
+TARGET_READ_MINUTES = 10
+MIN_WORDS = MIN_READ_MINUTES * WPM          # 1980 at 220 wpm
+TARGET_WORDS = TARGET_READ_MINUTES * WPM    # 2200 at 220 wpm
+
+# The site rounds read_time, so 1930 words would display as "9 min" while being
+# under the true 9-minute bar. Require the real word count, not the rounded one.
+MIN = dict(words=MIN_WORDS, h2=8, h3=6, table_rows=6, blog_links=12,
            product_links=2, faqs=6, examples=2)
-TARGET = dict(words=2200, h2=10, h3=12, table_rows=10, blog_links=18,
+TARGET = dict(words=TARGET_WORDS, h2=10, h3=12, table_rows=10, blog_links=18,
               product_links=3, faqs=8, examples=3)
 
 # Verified against main.py @app.get routes. Do not add a path that is not a real route.
@@ -93,16 +110,90 @@ def analyse(slug, exist, planned):
                blog_links=len(blog_links), product_links=len(prod_links),
                faqs=faq, examples=quotes + ba)
 
+    site_read = max(1, round(words / WPM))   # exactly what blog_system renders
+    true_read = words / WPM
+
+    # ---- engagement checks -------------------------------------------------
+    # Length alone does not make an article worth reading. These catch the
+    # mechanical failures: a generic opening, walls of text, and long stretches
+    # of undifferentiated prose. Padding and repetition still need human review.
+    engagement = []
+
+    # 1. Opening: first prose paragraph after Key Takeaways must not be filler.
+    # Drop ONLY the Key Takeaways bullet list, keeping the prose that follows it -
+    # that prose is the real opening and the thing being judged. (An earlier
+    # version stripped through to the next H2 and deleted the opening entirely,
+    # so this check silently never fired.)
+    kt = re.search(r"^## Key Takeaways\s*$", body, re.M)
+    after_kt = body
+    if kt:
+        rest = body[kt.end():]
+        # skip the bullet block immediately under the heading
+        m = re.search(r"\n(?=\s*[^\s\-*])", rest)
+        after_kt = rest[m.start():] if m else rest
+    first_para = ""
+    for raw in after_kt.split("\n\n"):
+        s = raw.strip()
+        if s and not s.startswith(("#", "|", "-", "*", ">", "```")):
+            first_para = s
+            break
+    GENERIC = [
+        r"in today'?s\s+(competitive|fast[- ]paced|digital|modern|current)",
+        r"in the (competitive|modern|current|ever[- ]changing)\s+(job market|world)",
+        r"this (article|guide|post)\s+(will|explains|covers|walks|explores)",
+        r"by the end of this (article|guide)",
+        r"before we (dive|get) in",
+        r"let'?s (face it|dive in|take a look)",
+        r"it'?s no secret",
+        r"we all know",
+        r"gone are the days",
+    ]
+    for pat in GENERIC:
+        if re.search(pat, first_para[:400], re.I):
+            engagement.append("generic opening: '%s...'" % first_para[:60])
+            break
+
+    # 2. Wall of text: paragraphs over ~90 words read badly on mobile.
+    long_paras = 0
+    for raw in body.split("\n\n"):
+        s = raw.strip()
+        if s and not s.startswith(("#", "|", "-", "*", ">", "```")):
+            if len(s.split()) > 90:
+                long_paras += 1
+    if long_paras > 2:
+        engagement.append("%d paragraphs over 90 words (wall of text)" % long_paras)
+
+    # 3. Texture: a section of pure prose with no table, list, quote or example
+    #    is where readers drop. Flag long runs of undifferentiated prose.
+    plain_runs = 0
+    for sec in re.split(r"^## ", body, flags=re.M)[1:]:
+        if len(sec.split()) > 220 and not re.search(r"^(\||>|[-*]\s|\d+\.\s|###)",
+                                                    sec, re.M):
+            plain_runs += 1
+    if plain_runs:
+        engagement.append("%d long section(s) with no list/table/example/H3" % plain_runs)
+
     fails = []
+    # Read time is the headline requirement, so it is reported first and in
+    # minutes - the unit the requirement was given in.
+    if true_read < MIN_READ_MINUTES:
+        fails.append(
+            "READ TIME %.1f min (site shows %d min) - REQUIRED %d min. "
+            "Need %d more words."
+            % (true_read, site_read, MIN_READ_MINUTES, MIN_WORDS - words))
     for k, lo in MIN.items():
+        if k == "words":
+            continue                          # covered by the read-time check
         if got[k] < lo:
             fails.append("%s=%d (min %d)" % (k, got[k], lo))
     if dead:
         fails.append("DEAD LINKS: " + ", ".join("%s->%s" % (a[:18], t) for a, t in dead[:4]))
     if other:
         fails.append("UNKNOWN PATHS: " + ", ".join(h for _, h in other[:4]))
+    fails.extend(engagement)
 
-    got["read_min"] = round(words / WPM, 1)
+    got["read_min"] = round(true_read, 1)
+    got["site_read"] = site_read
     got["pending"] = len(pending)
     got["sections_with_links"] = "%d/%d" % (linked_secs, len(secs))
     return got, fails
@@ -123,6 +214,9 @@ def main():
         slugs = [a.replace(".md", "") for a in args]
 
     bad = 0
+    short = 0
+    print("Enforcing >= %d min read at %d wpm (blog_system rate) = %d words minimum\n"
+          % (MIN_READ_MINUTES, WPM, MIN_WORDS))
     print("%-44s %6s %5s %3s %3s %4s %4s %3s %4s  %s"
           % ("slug", "words", "read", "h2", "h3", "tbl", "link", "fe", "faq", "status"))
     for s in slugs:
@@ -132,6 +226,8 @@ def main():
         status = "OK" if not fails else "FAIL"
         if fails:
             bad += 1
+        if got["read_min"] < MIN_READ_MINUTES:
+            short += 1
         print("%-44s %6d %5.1f %3d %3d %4d %4d %3d %4d  %s"
               % (s[:44], got["words"], got["read_min"], got["h2"], got["h3"],
                  got["table_rows"], got["blog_links"], got["product_links"],
@@ -139,6 +235,9 @@ def main():
         for f in fails:
             print("      - %s" % f)
     print("\n%d checked, %d failing" % (len(slugs), bad))
+    if short:
+        print("%d BELOW THE %d-MINUTE READ-TIME FLOOR - these are not publishable."
+              % (short, MIN_READ_MINUTES))
     return 1 if bad else 0
 
 if __name__ == "__main__":
