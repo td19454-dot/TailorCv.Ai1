@@ -156,6 +156,38 @@ An operations analyst scoring 54% on a role she was well qualified for.
 
 Total time: about twenty minutes. Two of the three fixes were structural or lexical, not content. She did not add a single skill she did not have.
 
+## How This Differs by Role Type
+
+The three causes are universal, but which one bites you depends on the field you are in. Knowing your field's typical failure saves a diagnostic round.
+
+### Design and creative roles
+
+Parsing is almost always the cause. Designers build resumes in design tools, and those tools produce exactly the structures parsers cannot read — frames, grids, custom glyphs, occasionally flattened images.
+
+The tension is real: your resume doubles as a work sample. The workable compromise is two files — a designed PDF for direct applications and human review, and a clean single-column version for portals. Your [portfolio](/portfolio) carries the visual case, so the resume does not have to.
+
+### Engineering and data roles
+
+Vocabulary is the usual cause, because tool names are unforgiving. A posting asking for PostgreSQL and a resume saying "SQL databases" will not match, even though you obviously qualify.
+
+Name specific technologies and versions where the posting names them. [How specific your skills should be](/blog/technical-skills-in-resume-for-freshers-with-no-experience) covers where the line sits.
+
+### Management and operations roles
+
+Placement is the usual cause. Senior work is described in long paragraphs about scope, and the concrete evidence ends up in the middle of a dense block.
+
+Lead with scale — budget, headcount, remit — in the first bullet of your current role.
+
+### Healthcare, legal and regulated fields
+
+Credentials are the binding constraint, and they are frequently mis-parsed because they sit in a right-aligned column or a table. A licence number that does not arrive is functionally a missing licence.
+
+Put registrations in plain body text near the top, not in a sidebar.
+
+### Career changers
+
+Often all three at once, which is why the diagnosis feels hopeless. Work the order strictly — parsing, then vocabulary, then placement — rather than rewriting everything. [Translating experience into a new industry's language](/blog/career-change-resume-how-to-write-a-resume-when-switching-industries-in-2026) is the vocabulary step for this case specifically.
+
 ## Common Mistakes When Diagnosing This
 
 **Rewriting content before checking structure.** If the parser cannot read your skills section, rewriting it changes nothing. Always test parsing first.
@@ -167,6 +199,10 @@ Total time: about twenty minutes. Two of the three fixes were structural or lexi
 **Testing the wrong file.** Your source document may be fine while the export is not. Test what you actually send.
 
 **Treating the score as a verdict.** It approximates keyword relevance for one posting. It does not predict whether you will be interviewed.
+
+**Fixing all three causes at once.** Change one variable, re-scan, and you learn which one mattered. Change everything simultaneously and you learn nothing — and you will repeat the whole exercise on your next application because you still do not know what was wrong.
+
+**Assuming a clean paste means a good resume.** Parsing is a floor, not a standard. A perfectly readable resume full of duty statements will still be ignored by the human who reads it next.
 
 ## Frequently Asked Questions
 
@@ -192,11 +228,23 @@ A parsing fix often moves it substantially, because whole sections become visibl
 
 ### Can the same resume score differently on two jobs?
 
-Yes, and it should. The score is a comparison against one posting. A different posting is a different comparison, not a change in your resume's quality.
+Yes, and it should. The score is a comparison against one posting, so a different posting is a different comparison rather than a change in your resume's quality. A twenty-point spread across two roles with the same job title is entirely normal, and usually reflects how differently the two were written.
 
 ### Is there a length that scores better?
 
 Not directly, though very short resumes have less evidence to match and very long ones dilute relevance. The [resume length guide](/blog/ats-resume-length-guide) covers what actually matters.
+
+### How long should the whole diagnosis take?
+
+About fifteen minutes. Two minutes for the copy-paste test, five comparing vocabulary against the posting, and the rest reordering. If you are spending an hour, you have skipped the structural check and gone straight to rewriting.
+
+### Should I fix the base resume or tailor per application?
+
+Both, in that order. Parsing and bullet quality are base-resume problems — fix them once and every future application benefits. Vocabulary and placement are per-application, and take about five minutes each time.
+
+### My score is low on every posting, not just one. What does that mean?
+
+A consistent pattern across ten or more well-matched postings points at the base resume rather than any individual application. Run the parsing check first; if it is clean, the issue is usually that your bullets describe duties rather than outcomes.
 
 ### What if my score is fine but I get no interviews?
 

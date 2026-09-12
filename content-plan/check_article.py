@@ -25,18 +25,20 @@ try:
 except Exception:                                    # pragma: no cover
     WPM = 220
 
-# Hard floor: 9 minutes of genuine reading time at the site's own rate.
-MIN_READ_MINUTES = 9
-TARGET_READ_MINUTES = 10
+# Hard floor: 12 minutes of genuine reading time at the site's own rate.
+MIN_READ_MINUTES = 12
+TARGET_READ_MINUTES = 13
 MIN_WORDS = MIN_READ_MINUTES * WPM          # 1980 at 220 wpm
 TARGET_WORDS = TARGET_READ_MINUTES * WPM    # 2200 at 220 wpm
 
 # The site rounds read_time, so 1930 words would display as "9 min" while being
 # under the true 9-minute bar. Require the real word count, not the rounded one.
-MIN = dict(words=MIN_WORDS, h2=8, h3=6, table_rows=6, blog_links=12,
-           product_links=2, faqs=6, examples=2)
-TARGET = dict(words=TARGET_WORDS, h2=10, h3=12, table_rows=10, blog_links=18,
-              product_links=3, faqs=8, examples=3)
+# Structure scales with length. A 2,640-word article with 8 H2s is a wall of
+# text; these minimums keep it scannable at the larger size.
+MIN = dict(words=MIN_WORDS, h2=11, h3=12, table_rows=12, blog_links=15,
+           product_links=2, faqs=8, examples=3)
+TARGET = dict(words=TARGET_WORDS, h2=13, h3=16, table_rows=18, blog_links=20,
+              product_links=3, faqs=10, examples=5)
 
 # Verified against main.py @app.get routes. Do not add a path that is not a real route.
 PRODUCT_PATHS = {
@@ -163,6 +165,32 @@ def analyse(slug, exist, planned):
     if long_paras > 2:
         engagement.append("%d paragraphs over 90 words (wall of text)" % long_paras)
 
+    # 2b. At 2,600+ words, a section running long without internal structure is
+    # where readers abandon. Every H2 over ~400 words needs H3s breaking it up.
+    for sec in re.split(r"^## ", body, flags=re.M)[1:]:
+        head = sec.split("\n", 1)[0].strip()[:40]
+        if len(sec.split()) > 400 and len(re.findall(r"^### ", sec, re.M)) < 2:
+            engagement.append("section '%s' >400 words with <2 H3s" % head)
+
+    # 2c. Repetition: at 2,600+ words the failure mode is restating a point in
+    #     new words. Flag near-duplicate sentences (high token overlap).
+    sents = [s.strip() for s in re.split(r"(?<=[.!?])\s+", re.sub(r"[#>|*_`\[\]()]", " ", body))
+             if 8 <= len(s.split()) <= 60]
+    dup = 0
+    seen_sets = []
+    for s in sents:
+        toks = frozenset(w.lower() for w in re.findall(r"[a-zA-Z]{4,}", s))
+        if len(toks) < 5:
+            continue
+        for prev in seen_sets:
+            inter = len(toks & prev)
+            if inter / max(1, len(toks | prev)) >= 0.62:
+                dup += 1
+                break
+        seen_sets.append(toks)
+    if dup > 3:
+        engagement.append("%d near-duplicate sentences (repetition)" % dup)
+
     # 3. Texture: a section of pure prose with no table, list, quote or example
     #    is where readers drop. Flag long runs of undifferentiated prose.
     plain_runs = 0
@@ -206,10 +234,17 @@ def main():
     if args[0] == "--all":
         slugs = sorted(exist)
     elif args[0] == "--batch":
-        std = os.path.join(ROOT, "content-plan", "ARTICLE-STANDARD.md")
-        cutoff = os.path.getmtime(std) if os.path.exists(std) else 0
-        slugs = sorted(s for s in exist
-                       if os.path.getmtime(os.path.join(BLOGS, s + ".md")) >= cutoff)
+        # Every article this project has authored, tracked explicitly so the
+        # list cannot drift with file mtimes. Add new slugs here as batches land.
+        manifest = os.path.join(ROOT, "content-plan", "authored.txt")
+        if os.path.exists(manifest):
+            slugs = [l.strip() for l in io.open(manifest, encoding="utf-8")
+                     if l.strip() and not l.startswith("#")]
+        else:
+            std = os.path.join(ROOT, "content-plan", "ARTICLE-STANDARD.md")
+            cutoff = os.path.getmtime(std) if os.path.exists(std) else 0
+            slugs = sorted(s for s in exist
+                           if os.path.getmtime(os.path.join(BLOGS, s + ".md")) >= cutoff)
     else:
         slugs = [a.replace(".md", "") for a in args]
 

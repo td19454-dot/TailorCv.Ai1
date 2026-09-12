@@ -1,0 +1,35 @@
+# Articles authored for the 1,000-topic project.
+# `python content-plan/check_article.py --batch` validates every slug listed here.
+# Add new slugs as each batch lands.
+
+# --- Batch 1-2: ATS Optimization ---
+resume-scores-low-but-reads-well
+good-ats-score-when-to-stop
+ats-score-dropped-after-edit
+how-to-read-your-ats-report
+ats-missing-skills-to-ignore
+high-ats-score-no-interviews
+copy-paste-ats-test
+missing-required-skill-what-to-do
+keyword-stuffing-vs-coverage
+two-column-resume-ats-safe
+adjacent-skills-resume-credit
+how-many-keywords-on-resume
+where-to-place-keywords-resume
+ats-exact-match-vs-synonym
+white-text-keyword-trick
+use-posting-job-title
+employment-dates-parsed-wrong
+parsing-errors-delete-a-job
+weak-bullets-behind-good-score
+why-ats-checkers-disagree
+nonstandard-job-title-fix
+ats-score-vs-recruiter-judgment
+
+# --- Batch 3: Resume Tailoring ---
+what-to-change-when-tailoring
+tailoring-in-ten-minutes
+tailoring-without-lying
+read-a-jd-like-a-recruiter
+which-bullets-to-rewrite
+tailoring-checklist-per-application
