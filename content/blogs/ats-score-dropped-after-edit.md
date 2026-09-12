@@ -161,6 +161,41 @@ A rewrite that stuffed four extra tools into your skills list and gained eight p
 
 Keep edits that make the document clearer and better evidenced. Reinstate specific terms the posting actually uses. Then stop scoring and send it.
 
+## How to Edit Without Triggering a Drop
+
+Most of this article is diagnostic. This section is preventive — the working habits that stop the problem occurring.
+
+### Keep the specific term when you simplify a sentence
+
+The most common cause of an avoidable drop. Before deleting a phrase for readability, check whether it is a named term from the posting. If it is, rewrite around it rather than removing it.
+
+### Edit one thing at a time
+
+Change your summary, re-scan. Change bullet order, re-scan. Changing six things at once means a drop tells you nothing about which change caused it.
+
+This is slower on the first application and much faster afterwards, because you learn which edits move the number in your field.
+
+### Keep a plain-text copy of your terms
+
+Before a big rewrite, paste your skills section and your first three bullets into a scratch file. If the score falls, you have an exact reference for what was there before.
+
+### Do the structural work first, then the wording
+
+Layout changes cause the largest drops. Settle your template, run the [copy-paste test](/blog/copy-paste-ats-test), and only then start editing text. Reversing that order means re-diagnosing the same problem twice.
+
+### Know which edits are score-neutral by design
+
+| Edit type | Expected score effect | Worth doing anyway? |
+|---|---|---|
+| Reordering bullets | None to slightly negative | Yes — humans read top-down |
+| Turning duties into outcomes | Slightly negative | Yes — this is what gets interviews |
+| Cutting an old role | Slightly positive | Usually |
+| Adding scope and numbers | Neutral | Yes |
+| Renaming to posting vocabulary | Positive | Yes |
+| Adding marginal tools | Positive | No |
+
+Two rows there are worth internalising: the edits that most improve your resume for a human reader are mildly *negative* for the score. Expecting that in advance stops you undoing good work.
+
 ## Common Mistakes After a Drop
 
 **Reverting everything.** You lose genuine improvements to fix a problem that may not exist.
@@ -174,6 +209,35 @@ Keep edits that make the document clearer and better evidenced. Reinstate specif
 **Ignoring a 20-point drop.** That one is real. Check parsing before doing anything else.
 
 **Optimising past a workable score.** Once you are in a good range, more keyword work has [diminishing returns](/blog/good-ats-score-when-to-stop) and starts costing readability.
+
+## A Second Worked Case: When Reverting Was Right
+
+Not every drop should be kept. This one should have been undone, and shows the difference.
+
+A software engineer switched from a plain single-column resume to a two-column template because it fit more on one page. Score fell from 81% to 49%.
+
+His instinct was that the template looked more professional, so he kept it and started adding keywords to recover the number — which is exactly the wrong response.
+
+The copy-paste test showed why:
+
+> Senior Engineer Python, Go
+> Acme Systems Kubernetes, Terraform
+> 2021–Present PostgreSQL, Redis
+
+His entire skills sidebar had interleaved with his job history. Both sections were arriving as nonsense, so no amount of added vocabulary could help — the parser was not failing to *match* his terms, it was failing to *read* them.
+
+Reverting the template restored 81% immediately, with no wording changes at all.
+
+**The distinguishing signal was the size of the drop.** A four-point fall after rewriting bullets is dilution and should be kept. A thirty-two-point fall after a layout change is structural and should be reverted. [Two-column resumes](/blog/two-column-resume-ats-safe) are the single most common cause of the second pattern.
+
+### The general rule
+
+| Drop size | After what change | Verdict |
+|---|---|---|
+| 1–8 points | Rewording, adding content | Keep the edit |
+| 9–14 points | Rewording | Check for a lost term, then keep |
+| 15+ points | Any change | Investigate before keeping |
+| 15+ points | Layout or template change | Almost always revert |
 
 ## Frequently Asked Questions
 
@@ -204,6 +268,10 @@ Send it. A resume that reads well to a human and scores slightly lower will outp
 ### Should I keep a copy of the previous version?
 
 Yes — keeping versions makes before-and-after comparison possible and stops you guessing at what changed. It also matters when [managing multiple resume versions](/blog/managing-multiple-resume-versions) across different role types.
+
+### Can a drop mean I removed something I should not have?
+
+Occasionally, yes. If you cut an older role or a project section to save space and the score fell noticeably, that content was carrying relevant terms. Check whether it can be compressed to one line rather than deleted — [what to cut from a resume](/blog/weak-resume-bullets-fix) covers what is genuinely safe to remove.
 
 ### Does the same drop happen on every tool?
 

@@ -179,6 +179,40 @@ The copy-paste test is first because it is fastest and because everything else i
 
 **Trusting an "ATS-friendly" label.** That is a marketing claim about a template, not a verified property of your exported file. Several widely sold templates fail this test. Our guide on [choosing a resume template](/blog/how-to-choose-resume-template) covers what to look for.
 
+## What the Test Looks Like on Real Templates
+
+Abstract rules are less useful than knowing which specific layouts fail. These are the patterns that show up most often.
+
+### The design-tool sidebar
+
+A coloured left column holding your photo, contact details, skills and languages, with experience on the right.
+
+**Usually fails.** The sidebar is a separate frame, and the two columns interleave. Contact details are the most common casualty, which means a recruiter who wants to call you cannot.
+
+### The header band
+
+Your name and contact details in a full-width coloured band at the top of the page.
+
+**Fails when the band is a header region**, passes when it is body text with a background colour. The copy-paste test distinguishes these instantly — if your name is missing from the paste, it was a header.
+
+### The skills grid
+
+Skills laid out in a three-by-four grid of boxes, sometimes with proficiency dots.
+
+**Usually fails or scrambles.** Grids are tables underneath, and the reading order flattens unpredictably. The dots carry no information to a parser at all — [rating your skills out of five](/blog/skills-to-add-to-resume-2026) tells a machine nothing.
+
+### The timeline
+
+A vertical line down the left with dates on one side and roles on the other.
+
+**Almost always fails.** Dates become detached from their roles, which corrupts your computed experience — the failure covered in [when employment dates parse wrong](/blog/employment-dates-parsed-wrong).
+
+### The clean single column
+
+Name and contact in body text, section headings, roles with dates beneath, bullets under each.
+
+**Passes reliably.** It is also what the [ATS-friendly resume format](/blog/how-to-make-resume-ats-friendly) guidance converges on, for exactly this reason.
+
 ## How Often to Run It
 
 Once per resume version, not once per application. The test checks structure, and your structure does not change between applications unless you edit the layout.
@@ -226,6 +260,14 @@ Rebuild in a simple single-column layout. A template that loses a section is cos
 ### Does the file name matter for parsing?
 
 Not for parsing, but it matters for the human. `Priya-Sharma-Resume.pdf` is read by a person in their inbox — see [naming your resume file](/blog/how-to-name-your-resume-file).
+
+### My resume passes in one tool and fails in another. Which is right?
+
+Both, in a sense — parsers differ in how they handle edge cases, so a layout can survive one and break another. Treat any failure as real: employers do not tell you which system they use, so the safe assumption is the stricter one.
+
+### Does the test work on a resume with a photo?
+
+Yes, and it is worth running. A photo itself does not break parsing, but photos usually sit inside a frame or sidebar, and that surrounding structure is what causes failures.
 
 ### How do I know if the problem is the parser or my content?
 

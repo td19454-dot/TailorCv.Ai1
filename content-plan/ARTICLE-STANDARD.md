@@ -6,25 +6,42 @@ Every new article must meet these. Enforced by `content-plan/check_article.py`.
 
 ## The one non-negotiable: read time
 
-**Every article must be at least 9 minutes of genuine reading time**, measured
+**Every article must be at least 12 minutes of genuine reading time**, measured
 at the rate the site itself uses. `blog_system.WORD_PER_MINUTE` is **220**, so:
 
-- 9 minutes = **1,980 words** (hard floor, article is not publishable below this)
-- 10 minutes = **2,200 words** (target)
+- 12 minutes = **2,640 words** (hard floor, article is not publishable below this)
+- 13 minutes = **2,860 words** (target)
 
 `check_article.py` imports that constant live from `blog_system.py`, so the
 validator can never drift from the number the reader sees on the page. Do not
 hardcode a words-per-minute rate anywhere.
 
-4–8 minutes is a failure. If an article comes in short, keep expanding it with
-genuinely useful material — more worked examples, a comparison table, a
-scenario walkthrough, deeper FAQs — until it clears 9 minutes. Never pad.
+Anything under 12 minutes is a failure. If an article comes in short, keep
+expanding it with genuinely useful material until it clears 12 minutes.
+Never pad.
+
+### What earns the extra 600+ words
+
+Going from 9 to 12 minutes must add substance, not volume. In priority order:
+
+1. **A second worked example** with different circumstances from the first —
+   different seniority, industry, or constraint.
+2. **A decision table** — when to do X vs Y, by situation.
+3. **Edge cases and exceptions** — the "but what if" the reader is already
+   thinking. This is the highest-value addition and the most commonly skipped.
+4. **A step-by-step walkthrough** with the actual keystrokes or wording.
+5. **What this looks like at different levels** — fresher vs mid vs senior.
+6. **Two or three more FAQs** drawn from real follow-up questions.
+7. **A "common mistakes" section** naming specific failure patterns.
 
 ### But length is the symptom, not the goal
 
-The target is NOT "make this 10 minutes long." It is "make this so useful that
-a reader willingly spends 10 minutes on it." An article that hits 2,200 words
+The target is NOT "make this 12 minutes long." It is "make this so useful that
+a reader willingly spends 12 minutes on it." An article that hits 2,640 words
 by restating itself has failed even though the checker passes it.
+
+The checker now flags near-duplicate sentences, but it cannot catch a section
+that adds nothing. That judgement stays with the writer.
 
 The word count is a floor that catches thin work. It cannot detect padding, so
 that judgement stays with the writer. Two tests before calling an article done:
@@ -57,14 +74,18 @@ that judgement stays with the writer. Two tests before calling an article done:
 
 | Property | Minimum | Target | Why |
 |---|---|---|---|
-| Words | 1,980 | 2,200–2,600 | 9–10 min read at the site's 220 wpm |
-| H2 sections | 8 | 10–13 | Scannable structure |
-| H3 subsections | 6 | 12–16 | Depth inside sections; mobile scanning |
-| Table rows | 6 | 10–16 | Comparisons, options, before/after |
-| Internal blog links | 12 | 18–22 | Topical authority + discovery |
+| Words | 2,640 | 2,860–3,200 | 12–13 min read at the site's 220 wpm |
+| H2 sections | 11 | 13–16 | Scannable structure at this length |
+| H3 subsections | 12 | 16–22 | Depth inside sections; mobile scanning |
+| Table rows | 12 | 18–24 | Comparisons, options, before/after |
+| Internal blog links | 15 | 20–25 | Topical authority + discovery |
 | Product/feature links | 2 | 3–5 | Natural next step |
-| FAQ questions | 6 | 8–10 | People Also Ask coverage |
-| Worked examples | 2 | 3–5 | Concrete > abstract |
+| FAQ questions | 8 | 10–12 | People Also Ask coverage |
+| Worked examples | 3 | 5–7 | Concrete > abstract |
+
+No H2 section may exceed ~400 words without at least two H3s inside it. The
+checker enforces this — at 2,640 words, an unbroken section is where readers
+leave.
 
 ## Structure
 
