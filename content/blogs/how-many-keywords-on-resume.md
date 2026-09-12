@@ -154,11 +154,15 @@ That question takes five minutes and produces a better resume than any amount of
 
 Not every gap is the same kind of problem, and the sorting takes a minute:
 
-**Vocabulary gaps.** You did the work under another name. Rename it - this is most of the list.
+**Vocabulary gaps.** You did the work under another name. Rename it - this is most of the list, and [adjacent experience](/blog/adjacent-skills-resume-credit) usually accounts for more of it than people expect.
 
-**Depth gaps.** You have touched it but shallowly. State the real extent rather than the term alone.
+**Depth gaps.** You have touched it but shallowly. State the real extent rather than the term alone, which keeps you on the right side of [the line between framing and fabrication](/blog/tailoring-without-lying).
 
 **Genuine gaps.** You have not done it. Leave it out, and use it as [information about fit](/blog/missing-required-skill-what-to-do) rather than something to write around.
+
+The sorting matters because the three categories need completely different responses. A vocabulary gap is a ten-second rename. A depth gap needs one honest sentence about the real extent. A genuine gap is not a writing problem at all - it is information telling you whether this application is worth sending, and treating it as something to phrase around is how people end up with claims they cannot defend at interview.
+
+Most people find the first category is the largest by some distance. A typical missing list of nine terms sorts into roughly five renames, three depth statements, and one real gap. That is why the list looks alarming and turns out to be an hour of work rather than a reason not to apply.
 
 ## Edge Cases
 
@@ -188,15 +192,21 @@ What to cut is the irrelevant, not the unmentioned.
 
 ## Common Mistakes
 
+### Mistakes about what to count
+
 **Treating the missing list as a shopping list.** A scan tells you what is absent, not what belongs. A good proportion of any missing list is [terms worth ignoring](/blog/ats-missing-skills-to-ignore).
 
 **Counting mentions instead of covered requirements.** Three shallow mentions of one term is worse than one evidenced mention, on both sides of the screen.
+
+**Ignoring whether the terms arrived at all.** A term placed in a header, a text box or a sidebar frame can vanish during extraction, and [the copy-paste test](/blog/copy-paste-ats-test) is the only way to see it. Counting keywords on a page that does not parse is wasted effort.
+
+### Mistakes about placement and stopping
 
 **Adding terms to the skills list because it is the easiest place.** It is also the weakest, and the place interviewers pick questions from.
 
 **Letting the list grow across applications without ever pruning.** Skills sections accumulate. Review yours every few months against what you could actually defend today.
 
-**Chasing a number past the point of return.** Once the score is workable, [further keyword work returns almost nothing](/blog/good-ats-score-when-to-stop) while your bullets still have a lot of room.
+**Chasing a number past the point of return.** Once the score is workable, [further keyword work returns almost nothing](/blog/good-ats-score-when-to-stop) while your bullets still have a lot of room. Past that point the deciding factor is [recruiter judgment rather than the score](/blog/ats-score-vs-recruiter-judgment), and that stage reads evidence rather than counting terms.
 
 **Assuming more terms means more searches.** It means more searches surfacing a resume that then converts worse, because the reader cannot tell what you are for.
 

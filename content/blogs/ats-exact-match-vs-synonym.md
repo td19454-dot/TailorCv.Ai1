@@ -175,11 +175,19 @@ The exception is where their misuse would make you claim something untrue - then
 
 Your title line is the highest-weight text on the page, and it is the one string you cannot freely change. The bracket format covers both your real title and the market term without substituting one for the other.
 
-This is the single highest-return application of the exact-match principle, and [whether to use the posting's job title](/blog/use-posting-job-title) deserves its own decision.
+This is the single highest-return application of the exact-match principle, and [whether to use the posting's job title](/blog/use-posting-job-title) deserves its own decision. Where your internal title is genuinely meaningless outside the company, [translating it to the market term](/blog/nonstandard-job-title-fix) matters more than any other matching work on the page.
+
+### The term did not register even though you used it
+
+Sometimes you have matched exactly and a scan still reports the term missing. Before rewriting anything, check that the section containing it actually parsed - a term inside a text box or a sidebar frame never reaches the matcher at all.
+
+That is a structural failure wearing a vocabulary costume, and [the copy-paste test](/blog/copy-paste-ats-test) separates the two in about thirty seconds.
 
 ### Plural, tense and word forms
 
 Most systems normalise simple variations - "managed" and "management," "pipeline" and "pipelines." Do not write multiple forms to cover it; that produces the hedging pattern above.
+
+The exception is a compound term where the forms genuinely differ in meaning, such as "data model" and "data modelling" - one is a thing you built, the other is a practice you have. Write whichever is true of your work.
 
 ### The term appears only in the company's own jargon
 

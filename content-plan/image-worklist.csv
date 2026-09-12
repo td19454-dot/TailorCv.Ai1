@@ -1,0 +1,1001 @@
+﻿priority,image_filename,title,slug,tier,cluster,primary_keyword,article_written,authored_by_project,image_exists
+1,resume-scores-low-but-reads-well.png,Why Your Resume Scores Low on ATS but Reads Perfectly to a Human,resume-scores-low-but-reads-well,Tier 1,ATS Optimization,resume ats score low but looks good,yes,yes,no
+2,good-ats-score-when-to-stop.png,"What Counts as a Good ATS Score, and When to Stop Optimizing",good-ats-score-when-to-stop,Tier 1,ATS Optimization,what is a good ats score percentage,yes,yes,no
+3,ats-score-dropped-after-edit.png,My ATS Score Dropped After I Edited My Resume — What Happened,ats-score-dropped-after-edit,Tier 1,ATS Optimization,ats score went down after editing,yes,yes,no
+4,how-to-read-your-ats-report.png,How to Read an ATS Report Without Chasing Every Missing Keyword,how-to-read-your-ats-report,Tier 1,ATS Optimization,how to read ats report,yes,yes,no
+5,ats-missing-skills-to-ignore.png,Missing Keywords Your ATS Scan Flags That You Should Ignore,ats-missing-skills-to-ignore,Tier 1,ATS Optimization,ats missing keywords ignore,yes,yes,no
+6,high-ats-score-no-interviews.png,"High ATS Score, Still No Interviews: What to Check Next",high-ats-score-no-interviews,Tier 1,ATS Optimization,high ats score no interview,yes,yes,no
+7,weak-bullets-behind-good-score.png,A Strong Score With Weak Bullets: The Gap Scanners Can't See,weak-bullets-behind-good-score,Tier 1,ATS Optimization,ats score vs bullet quality,yes,yes,no
+8,ats-score-vs-recruiter-judgment.png,ATS Score vs Recruiter Judgment: Which One Actually Gets the Call,ats-score-vs-recruiter-judgment,Tier 1,ATS Optimization,ats score vs recruiter opinion,yes,yes,no
+9,why-ats-checkers-disagree.png,Why Two ATS Checkers Give You Two Different Scores,why-ats-checkers-disagree,Tier 1,ATS Optimization,different ats checkers different scores,yes,yes,no
+10,how-many-keywords-on-resume.png,How Many Keywords Should You Actually Add to a Resume,how-many-keywords-on-resume,Tier 1,ATS Optimization,how many keywords on a resume,yes,yes,no
+11,where-to-place-keywords-resume.png,Where to Place Keywords on a Resume So They Actually Count,where-to-place-keywords-resume,Tier 1,ATS Optimization,where to put keywords on resume,yes,yes,no
+12,ats-exact-match-vs-synonym.png,Exact Keyword or Synonym: Which One Does the ATS Credit,ats-exact-match-vs-synonym,Tier 1,ATS Optimization,ats exact match vs synonym,yes,yes,no
+13,keyword-stuffing-vs-coverage.png,Keyword Stuffing vs Keyword Coverage: The Line Recruiters Notice,keyword-stuffing-vs-coverage,Tier 1,ATS Optimization,resume keyword stuffing penalty,yes,yes,no
+14,white-text-keyword-trick.png,Hidden White Text Keywords: Why This Trick Gets You Blacklisted,white-text-keyword-trick,Tier 1,ATS Optimization,white text resume keywords,yes,yes,no
+15,use-posting-job-title.png,Should You Use the Exact Job Title From the Posting?,use-posting-job-title,Tier 1,ATS Optimization,use job title from posting on resume,yes,yes,no
+16,nonstandard-job-title-fix.png,Your Internal Job Title Doesn't Match the Market — How to Fix It,nonstandard-job-title-fix,Tier 1,ATS Optimization,internal job title vs standard title,yes,yes,no
+17,two-column-resume-ats-safe.png,Two-Column Resumes and ATS: When They're Safe and When They Break,two-column-resume-ats-safe,Tier 1,ATS Optimization,two column resume ats safe,yes,yes,no
+18,employment-dates-parsed-wrong.png,Your Employment Dates Parsed Wrong and Shortened Your Experience,employment-dates-parsed-wrong,Tier 1,ATS Optimization,ats wrong employment dates,yes,yes,no
+19,parsing-errors-delete-a-job.png,Parsing Errors That Silently Delete an Entire Job,parsing-errors-delete-a-job,Tier 1,ATS Optimization,resume parsing deleted job,yes,yes,no
+20,copy-paste-ats-test.png,The 30-Second Copy-Paste Test for ATS Readability,copy-paste-ats-test,Tier 1,ATS Optimization,resume copy paste test,yes,yes,no
+21,what-to-change-when-tailoring.png,What to Change and What to Leave When You Tailor a Resume,what-to-change-when-tailoring,Tier 1,Resume Tailoring,what to change when tailoring resume,yes,yes,no
+22,tailoring-in-ten-minutes.png,Tailoring a Resume in Ten Minutes Without Rewriting It,tailoring-in-ten-minutes,Tier 1,Resume Tailoring,tailor resume quickly,yes,yes,no
+23,tailoring-checklist-per-application.png,A Per-Application Tailoring Checklist You Can Actually Follow,tailoring-checklist-per-application,Tier 1,Resume Tailoring,resume tailoring checklist,yes,yes,no
+24,tailoring-without-lying.png,Tailoring Without Lying: The Line Between Framing and Fabrication,tailoring-without-lying,Tier 1,Resume Tailoring,tailoring resume without lying,yes,yes,no
+25,which-bullets-to-rewrite.png,Which Three Bullets to Rewrite for This Specific Job,which-bullets-to-rewrite,Tier 1,Resume Tailoring,which bullets to rewrite tailoring,yes,yes,no
+26,read-a-jd-like-a-recruiter.png,How to Read a Job Description Like a Recruiter Wrote It,read-a-jd-like-a-recruiter,Tier 1,Resume Tailoring,how to read a job description,yes,yes,no
+27,test-resume-machine-readable.png,How to Test Whether Your Resume Is Machine-Readable,test-resume-machine-readable,Tier 1,ATS Optimization,test if resume is ats readable,no,no,no
+28,pdf-vs-docx-which-parses-better.png,PDF or DOCX: Which One Parses More Reliably in 2026,pdf-vs-docx-which-parses-better,Tier 1,ATS Optimization,pdf or docx for ats,no,no,no
+29,canva-and-image-resumes-ats.png,Why a Scanned or Exported-From-Canva Resume Scores Zero,canva-and-image-resumes-ats,Tier 1,ATS Optimization,canva resume ats problem,no,no,no
+30,knockout-questions-explained.png,Knockout Questions: The Real Reason You Were Rejected in Minutes,knockout-questions-explained,Tier 1,ATS Optimization,ats knockout questions,no,no,no
+31,rejected-within-an-hour.png,Rejected Within an Hour: What Actually Happened,rejected-within-an-hour,Tier 1,ATS Optimization,rejected same day application,no,no,no
+32,apply-at-half-the-requirements.png,Should You Apply if You Match Only Half the Requirements?,apply-at-half-the-requirements,Tier 1,ATS Optimization,apply if you meet half requirements,no,no,no
+33,required-vs-preferred-decoded.png,Required vs Preferred Qualifications: Which to Chase,required-vs-preferred-decoded,Tier 1,ATS Optimization,required vs preferred qualifications,no,no,no
+34,years-of-experience-filter.png,Years of Experience: What the Filter Does With 4 When It Says 5,years-of-experience-filter,Tier 1,ATS Optimization,years of experience filter ats,no,no,no
+35,no-degree-ats-filter.png,Degree Requirements and the ATS When You Don't Have One,no-degree-ats-filter,Tier 1,ATS Optimization,no degree ats filter,no,no,no
+36,workday-profile-vs-resume.png,Why Workday Makes You Retype Everything (and What It Scores),workday-profile-vs-resume,Tier 1,ATS Optimization,workday profile vs resume,no,no,no
+37,ai-screeners-vs-keyword-ats.png,AI Resume Screeners vs Keyword ATS: What Changed in 2026,ai-screeners-vs-keyword-ats,Tier 1,ATS Optimization,ai resume screening 2026,no,no,no
+38,semantic-matching-explained.png,"Semantic Matching: How AI Screeners Understand Meaning, Not Words",semantic-matching-explained,Tier 1,ATS Optimization,semantic resume matching,no,no,no
+39,can-screeners-detect-ai-resumes.png,Can an AI Screener Tell Your Resume Was Written by AI?,can-screeners-detect-ai-resumes,Tier 1,ATS Optimization,ai detect ai written resume,no,no,no
+40,ai-resume-sounds-generic-fix.png,Your AI-Written Resume Sounds Generic — How to Put Yourself Back In,ai-resume-sounds-generic-fix,Tier 1,ATS Optimization,ai resume sounds generic,no,no,no
+41,how-much-tailoring-is-too-much.png,How Much Tailoring Is Too Much? The Honest Answer,how-much-tailoring-is-too-much,Tier 1,Resume Tailoring,how much to tailor resume,no,no,no
+42,missing-required-skill-response.png,You Don't Have the Required Skill — What to Write Instead,missing-required-skill-response,Tier 1,Resume Tailoring,resume missing required skill,no,no,no
+43,adjacent-skills-credit.png,Adjacent Skills: Getting Credit for Experience That Doesn't Match the Title,adjacent-skills-credit,Tier 1,Resume Tailoring,transferable skills job description,no,no,no
+44,reordering-bullets-by-relevance.png,Reordering Bullets by Relevance Beats Rewriting Them,reordering-bullets-by-relevance,Tier 1,Resume Tailoring,reorder resume bullets job,no,no,no
+45,cutting-experience-without-gaps.png,Cutting Irrelevant Experience Without Creating a Gap,cutting-experience-without-gaps,Tier 1,Resume Tailoring,remove irrelevant jobs resume,no,no,no
+46,find-the-real-requirements.png,Finding the Three Requirements That Actually Decide the Shortlist,find-the-real-requirements,Tier 1,Resume Tailoring,real requirements in job description,no,no,no
+47,tailoring-for-a-stretch-role.png,Tailoring for a Role One Level Above Yours,tailoring-for-a-stretch-role,Tier 1,Resume Tailoring,resume for role above your level,no,no,no
+48,seniority-signals-to-add.png,Seniority Signals to Add When You're Going for a Step Up,seniority-signals-to-add,Tier 1,Resume Tailoring,show seniority on resume,no,no,no
+49,overqualified-signals-to-soften.png,Applying Below Your Level Without Looking Overqualified,overqualified-signals-to-soften,Tier 1,Resume Tailoring,overqualified resume how to handle,no,no,no
+50,splitting-resume-versions.png,"One Resume, Two Job Families: When to Split Versions",splitting-resume-versions,Tier 1,Resume Tailoring,different resume versions job types,no,no,no
+51,tailoring-at-volume.png,Tailoring at Volume: 20 Applications Without 20 Rewrites,tailoring-at-volume,Tier 1,Resume Tailoring,tailor resume many applications,no,no,no
+52,master-resume-how-to-use.png,Is a Master Resume Worth Building? How to Use One,master-resume-how-to-use,Tier 1,Resume Tailoring,master resume document,no,no,no
+53,tailoring-when-underqualified.png,Tailoring for a Job You're Slightly Underqualified For,tailoring-when-underqualified,Tier 1,Resume Tailoring,underqualified but applying anyway,no,no,no
+54,tailoring-for-remote-first.png,Tailoring for Remote-First Companies,tailoring-for-remote-first,Tier 1,Resume Tailoring,remote job resume tailoring,no,no,no
+55,remote-work-signals-resume.png,Remote-Work Signals Hiring Managers Look For on a Resume,remote-work-signals-resume,Tier 1,Resume Tailoring,show remote experience resume,no,no,no
+56,enterprise-to-startup-tailoring.png,Tailoring for a Scale-Up After Years at a Large Company,enterprise-to-startup-tailoring,Tier 1,Resume Tailoring,big company to startup resume,no,no,no
+57,side-projects-as-evidence.png,Proving a Skill You've Only Used on Side Projects,side-projects-as-evidence,Tier 1,Resume Tailoring,side project as evidence resume,no,no,no
+58,portfolio-as-proof-of-skill.png,When a Portfolio Link Does the Convincing Your Resume Can't,portfolio-as-proof-of-skill,Tier 1,Resume Tailoring,portfolio link on resume,no,no,no
+59,quantifying-without-real-numbers.png,Matching a JD That Asks for Metrics You Were Never Given,quantifying-without-real-numbers,Tier 1,Resume Tailoring,no metrics available resume,no,no,no
+60,estimating-impact-honestly.png,Estimating Impact Honestly When You Don't Have Exact Data,estimating-impact-honestly,Tier 1,Resume Tailoring,estimate resume achievements,no,no,no
+61,summary-vs-objective-2026.png,Resume Summary vs Objective in 2026: Which One You Actually Need,summary-vs-objective-2026,Tier 1,Resume Sections,resume summary or objective,no,no,no
+62,summary-in-three-sentences.png,Writing a Resume Summary in Three Sentences,summary-in-three-sentences,Tier 1,Resume Sections,how to write resume summary short,no,no,no
+63,summary-for-career-changer.png,A Resume Summary When You're Changing Careers,summary-for-career-changer,Tier 1,Resume Sections,resume summary career change,no,no,no
+64,summary-with-no-experience.png,A Resume Summary With No Work Experience Yet,summary-with-no-experience,Tier 1,Resume Sections,resume summary no experience,no,no,no
+65,summary-after-career-break.png,Resume Summary for a Returner After Years Away,summary-after-career-break,Tier 1,Resume Sections,resume summary after career break,no,no,no
+66,summary-for-senior-roles.png,Resume Summary for a Senior Role: What Changes Above 10 Years,summary-for-senior-roles,Tier 1,Resume Sections,senior resume summary,no,no,no
+67,empty-summary-phrases.png,Summary Phrases That Say Nothing (and What to Write Instead),empty-summary-phrases,Tier 1,Resume Sections,generic resume summary phrases,no,no,no
+68,summary-that-matches-not-echoes.png,Writing a Summary That Matches the Job Without Repeating It,summary-that-matches-not-echoes,Tier 1,Resume Sections,summary matching job description,no,no,no
+69,anatomy-of-a-strong-bullet.png,The Anatomy of a Resume Bullet That Gets Read,anatomy-of-a-strong-bullet,Tier 1,Resume Bullets & Achievements,how to write resume bullet,no,no,no
+70,verb-metric-outcome-formula.png,"Verb, Metric, Outcome: A Formula That Survives Any Role",verb-metric-outcome-formula,Tier 1,Resume Bullets & Achievements,resume bullet formula,no,no,no
+71,duty-into-achievement.png,Turning a Job Duty Into an Achievement,duty-into-achievement,Tier 1,Resume Bullets & Achievements,duties vs achievements resume,no,no,no
+72,twenty-bullets-rewritten.png,Twenty Weak Bullets Rewritten Side by Side,twenty-bullets-rewritten,Tier 1,Resume Bullets & Achievements,weak resume bullets examples,no,no,no
+73,overused-action-verbs.png,Action Verbs That Are Overused (and Precise Alternatives),overused-action-verbs,Tier 1,Resume Bullets & Achievements,resume action verbs overused,no,no,no
+74,breaking-the-responsible-for-habit.png,Starting Every Bullet With 'Responsible For' — How to Break the Habit,breaking-the-responsible-for-habit,Tier 1,Resume Bullets & Achievements,responsible for resume,no,no,no
+75,quantifying-the-unmeasured.png,Quantifying Achievements When Nothing Was Measured,quantifying-the-unmeasured,Tier 1,Resume Bullets & Achievements,quantify achievements no data,no,no,no
+76,metrics-that-actually-land.png,Metrics That Impress and Metrics That Don't,metrics-that-actually-land,Tier 1,Resume Bullets & Achievements,meaningless resume metrics,no,no,no
+77,avoiding-repetition-across-roles.png,Repeating Yourself Across Three Similar Jobs,avoiding-repetition-across-roles,Tier 1,Resume Bullets & Achievements,similar jobs resume repetition,no,no,no
+78,leadership-without-the-title.png,Bullets That Show Leadership Without a Manager Title,leadership-without-the-title,Tier 1,Resume Bullets & Achievements,leadership without title resume,no,no,no
+79,what-belongs-in-skills.png,What Belongs in a Skills Section and What Doesn't,what-belongs-in-skills,Tier 1,Resume Sections,what to put in skills section,no,no,no
+80,soft-skills-without-cliche.png,Listing Soft Skills Without Sounding Generic,soft-skills-without-cliche,Tier 1,Resume Sections,soft skills on resume examples,no,no,no
+81,certifications-placement-and-pruning.png,Where Certifications Go and Which Ones to Cut,certifications-placement-and-pruning,Tier 1,Resume Sections,certifications on resume,no,no,no
+82,which-course-certificates-count.png,Online Course Certificates: Which Ones Are Worth Listing,which-course-certificates-count,Tier 1,Resume Sections,online course certificate resume,no,no,no
+83,where-education-goes.png,Where Education Goes Once You Have Experience,where-education-goes,Tier 1,Resume Sections,education section placement,no,no,no
+84,should-you-list-gpa.png,Should You List Your GPA? A Decision Rule,should-you-list-gpa,Tier 1,Resume Sections,should i put gpa on resume,no,no,no
+85,unfinished-degree-on-resume.png,An Unfinished Degree on a Resume,unfinished-degree-on-resume,Tier 1,Resume Sections,incomplete degree resume,no,no,no
+86,bootcamp-alongside-degree.png,Listing a Bootcamp Next to a Degree,bootcamp-alongside-degree,Tier 1,Resume Sections,bootcamp on resume,no,no,no
+87,choosing-resume-structure.png,"Chronological, Functional or Hybrid: Choosing by Situation",choosing-resume-structure,Tier 1,Resume Writing,functional vs chronological resume,no,no,no
+88,why-functional-resumes-fail.png,Why Functional Resumes Often Backfire,why-functional-resumes-fail,Tier 1,Resume Writing,functional resume ats problem,no,no,no
+89,one-page-or-two-decision.png,"One Page or Two? Deciding by Evidence, Not Rules",one-page-or-two-decision,Tier 1,Resume Writing,one page or two page resume,no,no,no
+90,cutting-a-resume-to-one-page.png,Cutting a Three-Page Resume to One Without Losing Substance,cutting-a-resume-to-one-page,Tier 1,Resume Writing,shorten resume to one page,no,no,no
+91,showing-promotions-one-company.png,Promotions Within One Company: How to Show Progression,showing-promotions-one-company,Tier 1,Resume Sections,show promotion on resume,no,no,no
+92,same-title-many-years.png,Same Title for Six Years: Showing Growth Anyway,same-title-many-years,Tier 1,Resume Sections,same job title long time resume,no,no,no
+93,freelance-work-on-resume.png,Putting Freelance Work on a Resume Without Looking Unemployed,freelance-work-on-resume,Tier 1,Resume Sections,freelance work on resume,no,no,no
+94,self-employment-on-resume.png,Self-Employment and Running Your Own Business,self-employment-on-resume,Tier 1,Resume Sections,self employed on resume,no,no,no
+95,short-stints-on-a-resume.png,Short Stints: When to Include Them and When to Group Them,short-stints-on-a-resume,Tier 1,Resume Sections,short stints resume,no,no,no
+96,what-to-delete-from-resume.png,Twelve Things to Delete From Your Resume Today,what-to-delete-from-resume,Tier 1,Resume Writing,what to remove from resume,no,no,no
+97,which-links-belong-on-resume.png,Which Links Belong on a Resume (and How Many),which-links-belong-on-resume,Tier 1,Resume Sections,links on resume,no,no,no
+98,portfolio-link-placement.png,Where to Put a Portfolio Link So It Gets Clicked,portfolio-link-placement,Tier 1,Resume Sections,portfolio link placement resume,no,no,no
+99,buzzwords-recruiters-ignore.png,Buzzwords Recruiters Have Stopped Believing,buzzwords-recruiters-ignore,Tier 1,Resume Writing,resume buzzwords to avoid,no,no,no
+100,the-seven-second-scan.png,How a Recruiter Reads Your Resume in Seven Seconds,the-seven-second-scan,Tier 1,Resume Writing,recruiter seven second scan,no,no,no
+101,the-top-third-of-page-one.png,The Top Third of Page One Decides Everything,the-top-third-of-page-one,Tier 1,Resume Writing,resume top third,no,no,no
+102,first-resume-from-blank-page.png,Writing Your First Resume From a Blank Page,first-resume-from-blank-page,Tier 1,Resume Writing,first resume blank page,no,no,no
+103,rebuilding-an-outdated-resume.png,Rebuilding a Resume You Haven't Touched in Eight Years,rebuilding-an-outdated-resume,Tier 1,Resume Writing,update old resume,no,no,no
+104,platform-engineer-resume-guide.png,Platform Engineer Resume: The Skills Section That Passes the First Filter,platform-engineer-resume-guide,Tier 1,Resume Examples,platform engineer resume,no,no,no
+105,data-platform-engineer-resume-guide.png,Building a Data Platform Engineer Resume Around What the JD Actually Asks,data-platform-engineer-resume-guide,Tier 1,Resume Examples,data platform engineer resume,no,no,no
+106,analytics-engineer-resume-guide.png,What a Analytics Engineer Resume Needs Before the Screen Even Opens,analytics-engineer-resume-guide,Tier 1,Resume Examples,analytics engineer resume,no,no,no
+107,mlops-engineer-resume-guide.png,MLOps Engineer Resume: Evidence That Beats a Long Tool List,mlops-engineer-resume-guide,Tier 1,Resume Examples,mlops engineer resume,no,no,no
+108,ai-engineer-resume-guide.png,How a AI Engineer Resume Reads to the Hiring Manager,ai-engineer-resume-guide,Tier 1,Resume Examples,ai engineer resume,no,no,no
+109,llm-engineer-resume-guide.png,LLM / Applied AI Engineer Resume: The Skills Section That Passes the First Filter,llm-engineer-resume-guide,Tier 1,Resume Examples,llm engineer resume,no,no,no
+110,solutions-architect-resume-guide.png,How a Solutions Architect Resume Reads to the Hiring Manager,solutions-architect-resume-guide,Tier 1,Resume Examples,solutions architect resume,no,no,no
+111,enterprise-architect-resume-guide.png,Enterprise Architect Resume: Evidence That Beats a Long Tool List,enterprise-architect-resume-guide,Tier 1,Resume Examples,enterprise architect resume,no,no,no
+112,database-administrator-resume-guide.png,Database Administrator Resume: Showing Depth Without Listing Every Tool,database-administrator-resume-guide,Tier 1,Resume Examples,dba resume,no,no,no
+113,network-engineer-resume-guide.png,How a Network Engineer Resume Reads to the Hiring Manager,network-engineer-resume-guide,Tier 1,Resume Examples,network engineer resume,no,no,no
+114,systems-administrator-resume-guide.png,Building a Systems Administrator Resume Around What the JD Actually Asks,systems-administrator-resume-guide,Tier 1,Resume Examples,sysadmin resume,no,no,no
+115,it-support-specialist-resume-guide.png,IT Support Specialist Resume: Evidence That Beats a Long Tool List,it-support-specialist-resume-guide,Tier 1,Resume Examples,it support resume,no,no,no
+116,help-desk-technician-resume-guide.png,Help Desk Technician Resume: Turning Project Work Into Bullets That Land,help-desk-technician-resume-guide,Tier 1,Resume Examples,help desk resume,no,no,no
+117,penetration-tester-resume-guide.png,Penetration Tester Resume: Evidence That Beats a Long Tool List,penetration-tester-resume-guide,Tier 1,Resume Examples,penetration tester resume,no,no,no
+118,soc-analyst-resume-guide.png,Building a Security Analyst (SOC) Resume Around What the JD Actually Asks,soc-analyst-resume-guide,Tier 1,Resume Examples,soc analyst resume,no,no,no
+119,cloud-security-engineer-resume-guide.png,Building a Cloud Security Engineer Resume Around What the JD Actually Asks,cloud-security-engineer-resume-guide,Tier 1,Resume Examples,cloud security engineer resume,no,no,no
+120,blockchain-developer-resume-guide.png,Blockchain Developer Resume Keywords Worth Matching (and Ones to Skip),blockchain-developer-resume-guide,Tier 1,Resume Examples,blockchain developer resume,no,no,no
+121,unity-developer-resume-guide.png,How a Unity / Game Programmer Resume Reads to the Hiring Manager,unity-developer-resume-guide,Tier 1,Resume Examples,unity developer resume,no,no,no
+122,ar-vr-developer-resume-guide.png,AR/VR Developer Resume: Showing Depth Without Listing Every Tool,ar-vr-developer-resume-guide,Tier 1,Resume Examples,ar vr developer resume,no,no,no
+123,firmware-engineer-resume-guide.png,Firmware Engineer Resume: The Skills Section That Passes the First Filter,firmware-engineer-resume-guide,Tier 1,Resume Examples,firmware engineer resume,no,no,no
+124,hardware-design-engineer-resume-guide.png,Hardware Design Engineer Resume: The Skills Section That Passes the First Filter,hardware-design-engineer-resume-guide,Tier 1,Resume Examples,hardware engineer resume,no,no,no
+125,robotics-engineer-resume-guide.png,Robotics Engineer Resume: The Skills Section That Passes the First Filter,robotics-engineer-resume-guide,Tier 1,Resume Examples,robotics engineer resume,no,no,no
+126,computer-vision-engineer-resume-guide.png,Building a Computer Vision Engineer Resume Around What the JD Actually Asks,computer-vision-engineer-resume-guide,Tier 1,Resume Examples,computer vision engineer resume,no,no,no
+127,nlp-engineer-resume-guide.png,How a NLP Engineer Resume Reads to the Hiring Manager,nlp-engineer-resume-guide,Tier 1,Resume Examples,nlp engineer resume,no,no,no
+128,technical-program-manager-resume-guide.png,Technical Program Manager Resume: Turning Project Work Into Bullets That Land,technical-program-manager-resume-guide,Tier 1,Resume Examples,tpm resume,no,no,no
+129,engineering-manager-resume-guide.png,Engineering Manager Resume: Showing Depth Without Listing Every Tool,engineering-manager-resume-guide,Tier 1,Resume Examples,engineering manager resume,no,no,no
+130,vp-engineering-resume-guide.png,Building a CTO / VP Engineering Resume Around What the JD Actually Asks,vp-engineering-resume-guide,Tier 1,Resume Examples,vp engineering resume,no,no,no
+131,developer-advocate-resume-guide.png,What a Developer Advocate Resume Needs Before the Screen Even Opens,developer-advocate-resume-guide,Tier 1,Resume Examples,developer advocate resume,no,no,no
+132,solutions-engineer-resume-guide.png,What a Solutions Engineer Resume Needs Before the Screen Even Opens,solutions-engineer-resume-guide,Tier 1,Resume Examples,solutions engineer resume,no,no,no
+133,sales-engineer-resume-guide.png,What a Sales Engineer Resume Needs Before the Screen Even Opens,sales-engineer-resume-guide,Tier 1,Resume Examples,sales engineer resume,no,no,no
+134,integration-engineer-resume-guide.png,Building a Integration Engineer Resume Around What the JD Actually Asks,integration-engineer-resume-guide,Tier 1,Resume Examples,integration engineer resume,no,no,no
+135,automation-engineer-resume-guide.png,Automation Engineer Resume: Showing Depth Without Listing Every Tool,automation-engineer-resume-guide,Tier 1,Resume Examples,automation engineer resume,no,no,no
+136,performance-engineer-resume-guide.png,How a Performance Engineer Resume Reads to the Hiring Manager,performance-engineer-resume-guide,Tier 1,Resume Examples,performance engineer resume,no,no,no
+137,release-engineer-resume-guide.png,Release / Build Engineer Resume: Showing Depth Without Listing Every Tool,release-engineer-resume-guide,Tier 1,Resume Examples,build engineer resume,no,no,no
+138,technical-support-engineer-resume-guide.png,Technical Support Engineer Resume: The Skills Section That Passes the First Filter,technical-support-engineer-resume-guide,Tier 1,Resume Examples,technical support engineer resume,no,no,no
+139,management-consultant-resume-guide.png,Management Consultant Resume: Making Scope Obvious in Six Seconds,management-consultant-resume-guide,Tier 1,Resume Examples,management consultant resume,no,no,no
+140,strategy-analyst-resume-guide.png,Strategy Analyst Resume: The Metrics Worth Putting on Page One,strategy-analyst-resume-guide,Tier 1,Resume Examples,strategy analyst resume,no,no,no
+141,investment-banking-analyst-resume-guide.png,Investment Banking Analyst Resume: Making Scope Obvious in Six Seconds,investment-banking-analyst-resume-guide,Tier 1,Resume Examples,investment banking analyst resume,no,no,no
+142,private-equity-associate-resume-guide.png,What Hiring Managers Look For on a Private Equity Associate Resume,private-equity-associate-resume-guide,Tier 1,Resume Examples,private equity resume,no,no,no
+143,venture-capital-analyst-resume-guide.png,Venture Capital Analyst Resume: Making Scope Obvious in Six Seconds,venture-capital-analyst-resume-guide,Tier 1,Resume Examples,venture capital resume,no,no,no
+144,equity-research-analyst-resume-guide.png,Equity Research Analyst Resume: The Metrics Worth Putting on Page One,equity-research-analyst-resume-guide,Tier 1,Resume Examples,equity research resume,no,no,no
+145,risk-analyst-resume-guide.png,What Hiring Managers Look For on a Risk Analyst Resume,risk-analyst-resume-guide,Tier 1,Resume Examples,risk analyst resume,no,no,no
+146,credit-analyst-resume-guide.png,Credit Analyst Resume: The Metrics Worth Putting on Page One,credit-analyst-resume-guide,Tier 1,Resume Examples,credit analyst resume,no,no,no
+147,compliance-officer-resume-guide.png,A Compliance Officer Resume That Survives the First Cut,compliance-officer-resume-guide,Tier 1,Resume Examples,compliance officer resume,no,no,no
+148,internal-auditor-resume-guide.png,What Hiring Managers Look For on a Internal Auditor Resume,internal-auditor-resume-guide,Tier 1,Resume Examples,internal auditor resume,no,no,no
+149,tax-accountant-resume-guide.png,What Hiring Managers Look For on a Tax Accountant Resume,tax-accountant-resume-guide,Tier 1,Resume Examples,tax accountant resume,no,no,no
+150,financial-controller-resume-guide.png,A Financial Controller Resume That Survives the First Cut,financial-controller-resume-guide,Tier 1,Resume Examples,financial controller resume,no,no,no
+151,cfo-finance-director-resume-guide.png,What Hiring Managers Look For on a CFO / Finance Director Resume,cfo-finance-director-resume-guide,Tier 1,Resume Examples,cfo resume,no,no,no
+152,treasury-analyst-resume-guide.png,Treasury Analyst Resume: Numbers That Make the Case for You,treasury-analyst-resume-guide,Tier 1,Resume Examples,treasury analyst resume,no,no,no
+153,actuary-resume-guide.png,Actuary Resume: Writing Impact When Results Are Shared,actuary-resume-guide,Tier 1,Resume Examples,actuary resume,no,no,no
+154,insurance-underwriter-resume-guide.png,Insurance Underwriter Resume: Numbers That Make the Case for You,insurance-underwriter-resume-guide,Tier 1,Resume Examples,underwriter resume,no,no,no
+155,claims-adjuster-resume-guide.png,Claims Adjuster Resume: Numbers That Make the Case for You,claims-adjuster-resume-guide,Tier 1,Resume Examples,claims adjuster resume,no,no,no
+156,procurement-manager-resume-guide.png,Procurement Manager Resume: The Metrics Worth Putting on Page One,procurement-manager-resume-guide,Tier 1,Resume Examples,procurement manager resume,no,no,no
+157,logistics-coordinator-resume-guide.png,What Hiring Managers Look For on a Logistics Coordinator Resume,logistics-coordinator-resume-guide,Tier 1,Resume Examples,logistics coordinator resume,no,no,no
+158,warehouse-manager-resume-guide.png,Warehouse Manager Resume: From Responsibilities to Results,warehouse-manager-resume-guide,Tier 1,Resume Examples,warehouse manager resume,no,no,no
+159,inventory-analyst-resume-guide.png,Inventory Analyst Resume: What the Shortlist Actually Rewards,inventory-analyst-resume-guide,Tier 1,Resume Examples,inventory analyst resume,no,no,no
+160,production-planner-resume-guide.png,Production Planner Resume: The Metrics Worth Putting on Page One,production-planner-resume-guide,Tier 1,Resume Examples,production planner resume,no,no,no
+161,quality-manager-resume-guide.png,Quality Manager Resume: Writing Impact When Results Are Shared,quality-manager-resume-guide,Tier 1,Resume Examples,quality manager resume,no,no,no
+162,manufacturing-engineer-resume-guide.png,A Manufacturing Engineer Resume That Survives the First Cut,manufacturing-engineer-resume-guide,Tier 1,Resume Examples,manufacturing engineer resume,no,no,no
+163,industrial-engineer-resume-guide.png,Industrial Engineer Resume: Writing Impact When Results Are Shared,industrial-engineer-resume-guide,Tier 1,Resume Examples,industrial engineer resume,no,no,no
+164,process-engineer-resume-guide.png,Process Engineer Resume: Writing Impact When Results Are Shared,process-engineer-resume-guide,Tier 1,Resume Examples,process engineer resume,no,no,no
+165,maintenance-technician-resume-guide.png,A Maintenance Technician Resume That Survives the First Cut,maintenance-technician-resume-guide,Tier 1,Resume Examples,maintenance technician resume,no,no,no
+166,operations-analyst-resume-guide.png,Operations Analyst Resume: Making Scope Obvious in Six Seconds,operations-analyst-resume-guide,Tier 1,Resume Examples,operations analyst resume,no,no,no
+167,business-development-manager-resume-guide.png,Business Development Manager Resume: The Metrics Worth Putting on Page One,business-development-manager-resume-guide,Tier 1,Resume Examples,business development resume,no,no,no
+168,account-manager-resume-guide.png,Account Manager Resume: Making Scope Obvious in Six Seconds,account-manager-resume-guide,Tier 1,Resume Examples,account manager resume,no,no,no
+169,customer-success-manager-resume-guide.png,Customer Success Manager Resume: Numbers That Make the Case for You,customer-success-manager-resume-guide,Tier 1,Resume Examples,customer success manager resume,no,no,no
+170,sdr-resume-guide.png,Sales Development Rep (SDR) Resume: Writing Impact When Results Are Shared,sdr-resume-guide,Tier 1,Resume Examples,sdr resume,no,no,no
+171,account-executive-resume-guide.png,Enterprise Account Executive Resume: The Metrics Worth Putting on Page One,account-executive-resume-guide,Tier 1,Resume Examples,account executive resume,no,no,no
+172,revenue-operations-resume-guide.png,Revenue Operations Analyst Resume: From Responsibilities to Results,revenue-operations-resume-guide,Tier 1,Resume Examples,revops resume,no,no,no
+173,partnerships-manager-resume-guide.png,Partnerships Manager Resume: From Responsibilities to Results,partnerships-manager-resume-guide,Tier 1,Resume Examples,partnerships manager resume,no,no,no
+174,specialty-nurse-resume-guide.png,Registered Nurse (Specialty Units) Resume: Getting Certifications Read Correctly,specialty-nurse-resume-guide,Tier 1,Resume Examples,icu nurse resume,no,no,no
+175,clinical-research-associate-resume-guide.png,Clinical Research Associate Resume: Getting Certifications Read Correctly,clinical-research-associate-resume-guide,Tier 1,Resume Examples,clinical research associate resume,no,no,no
+176,clinical-data-manager-resume-guide.png,Clinical Data Manager Resume: Getting Certifications Read Correctly,clinical-data-manager-resume-guide,Tier 1,Resume Examples,clinical data manager resume,no,no,no
+177,regulatory-affairs-resume-guide.png,Regulatory Affairs Specialist Resume: Writing Patient-Facing Work as Evidence,regulatory-affairs-resume-guide,Tier 1,Resume Examples,regulatory affairs resume,no,no,no
+178,pharmacovigilance-resume-guide.png,Pharmacovigilance Associate Resume: Writing Patient-Facing Work as Evidence,pharmacovigilance-resume-guide,Tier 1,Resume Examples,pharmacovigilance resume,no,no,no
+179,medical-science-liaison-resume-guide.png,Medical Science Liaison Resume: Getting Certifications Read Correctly,medical-science-liaison-resume-guide,Tier 1,Resume Examples,medical science liaison resume,no,no,no
+180,biomedical-engineer-resume-guide.png,"Biomedical Engineer Resume: Settings, Volumes and Specialisms That Count",biomedical-engineer-resume-guide,Tier 1,Resume Examples,biomedical engineer resume,no,no,no
+181,research-scientist-resume-guide.png,Research Scientist Resume: Licensure and Where It Belongs,research-scientist-resume-guide,Tier 1,Resume Examples,research scientist resume,no,no,no
+182,bioinformatics-scientist-resume-guide.png,Bioinformatics Scientist Resume: Getting Certifications Read Correctly,bioinformatics-scientist-resume-guide,Tier 1,Resume Examples,bioinformatics resume,no,no,no
+183,lab-manager-resume-guide.png,"Lab Manager Resume: Credentials, Clinical Detail and Keywords",lab-manager-resume-guide,Tier 1,Resume Examples,lab manager resume,no,no,no
+184,veterinary-technician-resume-guide.png,Veterinary Technician Resume: Getting Certifications Read Correctly,veterinary-technician-resume-guide,Tier 1,Resume Examples,vet tech resume,no,no,no
+185,dental-assistant-resume-guide.png,Dental Assistant Resume: Writing Patient-Facing Work as Evidence,dental-assistant-resume-guide,Tier 1,Resume Examples,dental assistant resume,no,no,no
+186,surgical-technologist-resume-guide.png,Surgical Technologist Resume: Licensure and Where It Belongs,surgical-technologist-resume-guide,Tier 1,Resume Examples,surgical technologist resume,no,no,no
+187,healthcare-administrator-resume-guide.png,"Healthcare Administrator Resume: Credentials, Clinical Detail and Keywords",healthcare-administrator-resume-guide,Tier 1,Resume Examples,healthcare administrator resume,no,no,no
+188,medical-biller-coder-resume-guide.png,Medical Biller and Coder Resume: Licensure and Where It Belongs,medical-biller-coder-resume-guide,Tier 1,Resume Examples,medical coder resume,no,no,no
+189,mental-health-counselor-resume-guide.png,Mental Health Counselor Resume: Writing Patient-Facing Work as Evidence,mental-health-counselor-resume-guide,Tier 1,Resume Examples,counselor resume,no,no,no
+190,social-worker-resume-guide.png,What a Social Worker Resume Must Show Before an Interview,social-worker-resume-guide,Tier 1,Resume Examples,social worker resume,no,no,no
+191,dietitian-nutritionist-resume-guide.png,Dietitian / Nutritionist Resume: Licensure and Where It Belongs,dietitian-nutritionist-resume-guide,Tier 1,Resume Examples,dietitian resume,no,no,no
+192,paramedic-emt-resume-guide.png,"Paramedic / EMT Resume: Settings, Volumes and Specialisms That Count",paramedic-emt-resume-guide,Tier 1,Resume Examples,paramedic resume,no,no,no
+193,public-health-analyst-resume-guide.png,"Public Health Analyst Resume: Credentials, Clinical Detail and Keywords",public-health-analyst-resume-guide,Tier 1,Resume Examples,public health resume,no,no,no
+194,career-change-resume-what-changes.png,The Career-Change Resume: What Actually Has to Change,career-change-resume-what-changes,Tier 1,Career Change,career change resume what to change,no,no,no
+195,translating-experience-new-industry.png,Translating Your Experience Into a New Industry's Language,translating-experience-new-industry,Tier 1,Career Change,translate experience new industry,no,no,no
+196,achievements-that-survive-a-pivot.png,Which of Your Achievements Still Count After a Pivot,achievements-that-survive-a-pivot,Tier 1,Career Change,transferable achievements career change,no,no,no
+197,reframing-irrelevant-experience.png,Reframing Ten Years of the Wrong Experience,reframing-irrelevant-experience,Tier 1,Career Change,reframe irrelevant experience,no,no,no
+198,career-change-opening-line.png,The First Line of a Career-Change Resume,career-change-opening-line,Tier 1,Career Change,career change resume opening,no,no,no
+199,skills-first-layout-for-changers.png,Should a Career Changer Use a Skills-First Layout?,skills-first-layout-for-changers,Tier 1,Career Change,skills based resume career change,no,no,no
+200,teacher-to-corporate-resume.png,Teaching to Corporate: Rewriting the Classroom,teacher-to-corporate-resume,Tier 1,Career Change,teacher to corporate resume,no,no,no
+201,military-to-civilian-translation.png,"Military to Civilian: Translating Rank, Role and Scope",military-to-civilian-translation,Tier 1,Career Change,military to civilian resume translation,no,no,no
+202,academic-cv-to-industry-resume.png,Academia to Industry: Cutting the CV Down to a Resume,academic-cv-to-industry-resume,Tier 1,Career Change,academic cv to industry resume,no,no,no
+203,phd-to-industry-resume.png,PhD to Industry: What to Keep From the Thesis Years,phd-to-industry-resume,Tier 1,Career Change,phd to industry resume,no,no,no
+204,clinical-to-non-clinical-resume.png,Clinical to Non-Clinical: Leaving Bedside Work on Paper,clinical-to-non-clinical-resume,Tier 1,Career Change,nurse to non clinical resume,no,no,no
+205,finance-to-tech-resume.png,Finance to Tech: Which Parts of the Story Survive,finance-to-tech-resume,Tier 1,Career Change,finance to tech resume,no,no,no
+206,marketing-to-product-resume.png,Marketing to Product Management: Closing the Credibility Gap,marketing-to-product-resume,Tier 1,Career Change,marketing to product manager resume,no,no,no
+207,analyst-to-data-scientist-resume.png,Analyst to Data Scientist: Where the Line Really Is,analyst-to-data-scientist-resume,Tier 1,Career Change,analyst to data scientist resume,no,no,no
+208,freelance-to-fulltime-resume.png,Freelancer Going Full-Time: Presenting Years of Client Work,freelance-to-fulltime-resume,Tier 1,Career Change,freelance to full time resume,no,no,no
+209,founder-returning-to-employment.png,Founder Going Back to Employment,founder-returning-to-employment,Tier 1,Career Change,founder to employee resume,no,no,no
+210,second-career-after-fifty.png,A Second Career After Fifty,second-career-after-fifty,Tier 1,Career Change,career change at 50 resume,no,no,no
+211,age-signals-on-a-resume.png,Age Signals on a Resume and Which to Remove,age-signals-on-a-resume,Tier 1,Career Change,hide age on resume,no,no,no
+212,explaining-the-gap-on-paper.png,Explaining a Career Gap on the Resume Itself,explaining-the-gap-on-paper,Tier 1,Career Gaps & Setbacks,how to explain gap on resume,no,no,no
+213,gap-length-changes-the-answer.png,Gap Length Changes the Answer: Three Months vs Three Years,gap-length-changes-the-answer,Tier 1,Career Gaps & Setbacks,length of career gap resume,no,no,no
+214,listing-a-break-as-an-entry.png,Should You Put the Gap in the Experience Section?,listing-a-break-as-an-entry,Tier 1,Career Gaps & Setbacks,list career break on resume,no,no,no
+215,caregiving-gap-on-resume.png,A Gap for Caregiving,caregiving-gap-on-resume,Tier 1,Career Gaps & Setbacks,career gap caregiving resume,no,no,no
+216,parental-leave-gap-resume.png,A Gap for Parental Leave,parental-leave-gap-resume,Tier 1,Career Gaps & Setbacks,maternity leave gap resume,no,no,no
+217,health-gap-how-much-to-say.png,A Gap for Health Reasons: How Much to Say,health-gap-how-much-to-say,Tier 1,Career Gaps & Setbacks,health gap on resume,no,no,no
+218,layoff-gap-on-resume.png,A Gap After Redundancy or Layoff,layoff-gap-on-resume,Tier 1,Career Gaps & Setbacks,laid off gap resume,no,no,no
+219,gap-with-nothing-to-show.png,A Gap With Nothing to Show For It,gap-with-nothing-to-show,Tier 1,Career Gaps & Setbacks,unexplained gap resume,no,no,no
+220,currently-unemployed-resume-top.png,Currently Unemployed: What Goes at the Top,currently-unemployed-resume-top,Tier 1,Career Gaps & Setbacks,currently unemployed resume,no,no,no
+221,filling-a-gap-in-progress.png,Filling a Current Gap So It Stops Growing,filling-a-gap-in-progress,Tier 1,Career Gaps & Setbacks,fill employment gap now,no,no,no
+222,job-hopping-on-paper.png,Job Hopping on Paper: When It Reads as a Pattern,job-hopping-on-paper,Tier 1,Career Gaps & Setbacks,job hopping resume,no,no,no
+223,fired-what-the-resume-says.png,Being Fired and What the Resume Says About It,fired-what-the-resume-says,Tier 1,Career Gaps & Setbacks,fired resume what to write,no,no,no
+224,resume-after-many-rejections.png,Applying After a Long Stretch of Rejections,resume-after-many-rejections,Tier 1,Career Gaps & Setbacks,resume after many rejections,no,no,no
+225,diagnosing-a-resume-that-fails.png,Diagnosing a Resume That Keeps Failing,diagnosing-a-resume-that-fails,Tier 1,Career Gaps & Setbacks,why resume not getting interviews,no,no,no
+226,resume-problem-or-targeting-problem.png,When It's the Resume and When It's the Targeting,resume-problem-or-targeting-problem,Tier 1,Career Gaps & Setbacks,resume or job targeting problem,no,no,no
+227,defending-your-resume-line-by-line.png,Defending Every Line of Your Resume in an Interview,defending-your-resume-line-by-line,Tier 1,Interview Preparation,interview questions about resume,no,no,no
+228,walk-me-through-your-resume.png,'Walk Me Through Your Resume' — A Structure That Works,walk-me-through-your-resume,Tier 1,Interview Preparation,walk me through your resume,no,no,no
+229,interview-question-about-the-gap.png,Answering Questions About the Gap They Spotted,interview-question-about-the-gap,Tier 1,Interview Preparation,interview question career gap,no,no,no
+230,interview-why-the-career-change.png,Explaining a Career Change When They Ask 'Why Now?',interview-why-the-career-change,Tier 1,Interview Preparation,interview why career change,no,no,no
+231,interview-short-stints.png,Explaining Short Stints Without Sounding Defensive,interview-short-stints,Tier 1,Interview Preparation,interview question job hopping,no,no,no
+232,questioned-about-a-metric.png,When They Ask About a Number on Your Resume,questioned-about-a-metric,Tier 1,Interview Preparation,interview asked about resume metric,no,no,no
+233,bullets-into-interview-stories.png,Turning Your Resume Bullets Into Interview Stories,bullets-into-interview-stories,Tier 1,Interview Preparation,resume bullets to interview answers,no,no,no
+234,building-a-story-bank.png,Building a Story Bank From Your Own Work History,building-a-story-bank,Tier 1,Interview Preparation,interview story bank,no,no,no
+235,what-the-recruiter-screen-checks.png,The Recruiter Screen: What They're Really Checking,what-the-recruiter-screen-checks,Tier 1,Interview Preparation,recruiter screening call,no,no,no
+236,salary-question-first-call.png,Salary Expectations on the First Call,salary-question-first-call,Tier 1,Interview Preparation,salary expectation first call,no,no,no
+237,async-video-interview-takes.png,Asynchronous Video Interviews: Recording a Good Take,async-video-interview-takes,Tier 1,Interview Preparation,one way video interview tips,no,no,no
+238,ai-scored-interviews.png,AI-Scored Interviews: What the System Measures,ai-scored-interviews,Tier 1,Interview Preparation,ai interview scoring,no,no,no
+239,star-without-sounding-rehearsed.png,STAR Answers That Don't Sound Rehearsed,star-without-sounding-rehearsed,Tier 1,Interview Preparation,natural star method answers,no,no,no
+240,tell-me-about-yourself-90-seconds.png,'Tell Me About Yourself' in Ninety Seconds,tell-me-about-yourself-90-seconds,Tier 1,Interview Preparation,tell me about yourself answer,no,no,no
+241,why-this-company-answer.png,Answering 'Why This Company' Without Flattery,why-this-company-answer,Tier 1,Interview Preparation,why this company answer,no,no,no
+242,why-are-you-leaving-answer.png,Answering 'Why Are You Leaving?' Honestly,why-are-you-leaving-answer,Tier 1,Interview Preparation,why are you leaving answer,no,no,no
+243,failure-story-that-works.png,A Failure Story That Doesn't Damage You,failure-story-that-works,Tier 1,Interview Preparation,tell me about a failure,no,no,no
+244,conflict-story-that-works.png,A Conflict Story That Doesn't Blame Anyone,conflict-story-that-works,Tier 1,Interview Preparation,tell me about a conflict,no,no,no
+245,when-you-have-no-example.png,When You Genuinely Have No Example,when-you-have-no-example,Tier 1,Interview Preparation,no example for interview question,no,no,no
+246,live-coding-without-freezing.png,Live Coding Without Freezing,live-coding-without-freezing,Tier 1,Interview Preparation,live coding interview nerves,no,no,no
+247,not-knowing-in-a-tech-round.png,When You Don't Know the Answer in a Technical Round,not-knowing-in-a-tech-round,Tier 1,Interview Preparation,dont know answer technical interview,no,no,no
+248,sql-interview-rounds.png,SQL Interview Rounds: What They Actually Test,sql-interview-rounds,Tier 1,Interview Preparation,sql interview questions,no,no,no
+249,product-sense-interview.png,Product Sense Interviews for Product Roles,product-sense-interview,Tier 1,Interview Preparation,product sense interview,no,no,no
+250,design-portfolio-review.png,Design Portfolio Reviews: Presenting Three Projects,design-portfolio-review,Tier 1,Interview Preparation,design portfolio interview,no,no,no
+251,take-home-scope-and-time.png,"The Take-Home Assignment: Scope, Time and Polish",take-home-scope-and-time,Tier 1,Interview Preparation,take home assignment scope,no,no,no
+252,questions-worth-asking.png,Questions Worth Asking That Aren't Generic,questions-worth-asking,Tier 1,Interview Preparation,good questions to ask interviewer,no,no,no
+253,follow-up-that-adds-something.png,The Follow-Up Note That Adds Something,follow-up-that-adds-something,Tier 1,Interview Preparation,interview follow up email,no,no,no
+254,chasing-after-silence.png,Chasing After Silence Without Nagging,chasing-after-silence,Tier 1,Interview Preparation,no response after interview,no,no,no
+255,two-day-interview-prep.png,Preparing in Two Days When You Have a Job,two-day-interview-prep,Tier 1,Interview Preparation,interview prep short notice,no,no,no
+256,practising-out-loud.png,Practising Out Loud vs Reading Your Notes,practising-out-loud,Tier 1,Interview Preparation,how to practice interview answers,no,no,no
+257,rehearsing-alone.png,Rehearsing With No One to Practise On,rehearsing-alone,Tier 1,Interview Preparation,practice interview alone,no,no,no
+258,do-cover-letters-still-matter.png,Does Anyone Read Cover Letters in 2026? When to Bother,do-cover-letters-still-matter,Tier 1,Cover Letters,do cover letters matter 2026,no,no,no
+259,cover-letter-in-four-paragraphs.png,A Cover Letter in Four Paragraphs,cover-letter-in-four-paragraphs,Tier 1,Cover Letters,cover letter structure,no,no,no
+260,cover-letter-first-line.png,The First Line That Isn't 'I Am Writing to Apply',cover-letter-first-line,Tier 1,Cover Letters,cover letter opening line,no,no,no
+261,letter-that-adds-not-repeats.png,A Cover Letter That Isn't Your Resume in Prose,letter-that-adds-not-repeats,Tier 1,Cover Letters,cover letter vs resume content,no,no,no
+262,the-pivot-paragraph.png,The Paragraph That Explains Your Pivot to a Hiring Manager,the-pivot-paragraph,Tier 1,Cover Letters,explain career change in cover letter,no,no,no
+263,cover-letter-explaining-gap.png,A Cover Letter Explaining a Gap,cover-letter-explaining-gap,Tier 1,Cover Letters,cover letter career gap,no,no,no
+264,cover-letter-first-job.png,A Cover Letter With No Experience,cover-letter-first-job,Tier 1,Cover Letters,cover letter student no experience,no,no,no
+265,mirroring-the-jd-in-a-letter.png,Mirroring the Job Description Without Copying It,mirroring-the-jd-in-a-letter,Tier 1,Cover Letters,cover letter match job description,no,no,no
+266,should-ai-write-your-letter.png,Should AI Write Your Cover Letter? Where the Line Is,should-ai-write-your-letter,Tier 1,Cover Letters,ai written cover letter,no,no,no
+267,linkedin-headline-as-search-field.png,"Your LinkedIn Headline Is a Search Field, Not a Title",linkedin-headline-as-search-field,Tier 1,LinkedIn & Personal Branding,linkedin headline keywords,no,no,no
+268,linkedin-about-section.png,The About Section That Gets Read Past Two Lines,linkedin-about-section,Tier 1,LinkedIn & Personal Branding,linkedin about section,no,no,no
+269,why-recruiters-cant-find-you.png,Why Recruiters Can't Find You in LinkedIn Search,why-recruiters-cant-find-you,Tier 1,LinkedIn & Personal Branding,linkedin not showing in recruiter search,no,no,no
+270,linkedin-skills-that-rank.png,Which LinkedIn Skills Actually Affect Ranking,linkedin-skills-that-rank,Tier 1,LinkedIn & Personal Branding,linkedin skills section,no,no,no
+271,linkedin-versus-resume-consistency.png,Should Your LinkedIn Match Your Resume Exactly?,linkedin-versus-resume-consistency,Tier 1,LinkedIn & Personal Branding,linkedin match resume,no,no,no
+272,open-to-work-badge-decision.png,"Open to Work: The Badge, the Risk and the Alternative",open-to-work-badge-decision,Tier 1,LinkedIn & Personal Branding,linkedin open to work badge,no,no,no
+273,job-searching-quietly.png,Job Searching Quietly While Employed,job-searching-quietly,Tier 1,LinkedIn & Personal Branding,confidential job search linkedin,no,no,no
+274,messaging-a-recruiter.png,Messaging a Recruiter on LinkedIn Without Being Ignored,messaging-a-recruiter,Tier 1,LinkedIn & Personal Branding,message recruiter linkedin,no,no,no
+275,cold-outreach-that-works.png,Cold Outreach to a Hiring Manager,cold-outreach-that-works,Tier 1,LinkedIn & Personal Branding,cold message hiring manager,no,no,no
+276,asking-a-weak-tie-for-referral.png,Asking for a Referral From Someone You Barely Know,asking-a-weak-tie-for-referral,Tier 1,LinkedIn & Personal Branding,ask for referral linkedin,no,no,no
+277,who-needs-a-portfolio.png,Who Actually Needs a Portfolio (and Who Doesn't),who-needs-a-portfolio,Tier 1,Portfolio,do i need a portfolio,no,no,no
+278,portfolio-from-your-resume.png,Building a Portfolio Site From the Resume You Already Have,portfolio-from-your-resume,Tier 1,Portfolio,portfolio from resume,no,no,no
+279,three-projects-beat-twelve.png,Three Projects Beat Twelve: Curating a Portfolio,three-projects-beat-twelve,Tier 1,Portfolio,how many projects portfolio,no,no,no
+280,writing-a-project-case-study.png,Writing a Project Case Study a Recruiter Will Finish,writing-a-project-case-study,Tier 1,Portfolio,portfolio case study format,no,no,no
+281,coursework-into-portfolio-pieces.png,Turning Coursework and Personal Projects Into Portfolio Pieces,coursework-into-portfolio-pieces,Tier 1,Portfolio,coursework portfolio projects,no,no,no
+282,data-portfolio-that-shows-judgment.png,"A Data Portfolio That Shows Judgment, Not Just Charts",data-portfolio-that-shows-judgment,Tier 1,Portfolio,data analyst portfolio,no,no,no
+283,developer-portfolio-beyond-github.png,A Developer Portfolio Beyond a GitHub Link,developer-portfolio-beyond-github,Tier 1,Portfolio,developer portfolio github,no,no,no
+284,ai-without-losing-your-voice.png,Using AI on Your Resume Without Losing Your Voice,ai-without-losing-your-voice,Tier 1,AI & Careers,ai resume writing voice,no,no,no
+285,what-ai-gets-wrong.png,What AI Gets Wrong About Your Resume,what-ai-gets-wrong,Tier 1,AI & Careers,ai resume mistakes,no,no,no
+286,factchecking-an-ai-resume.png,Fact-Checking an AI-Written Resume Before You Send It,factchecking-an-ai-resume,Tier 1,AI & Careers,check ai resume accuracy,no,no,no
+287,ai-invented-a-skill.png,AI Invented a Skill You Don't Have — Catching It,ai-invented-a-skill,Tier 1,AI & Careers,ai hallucinated resume skill,no,no,no
+288,is-using-ai-cheating.png,Is Using AI on a Job Application Cheating?,is-using-ai-cheating,Tier 1,AI & Careers,is ai resume cheating,no,no,no
+289,ai-tools-worth-using.png,AI Tools That Help a Job Search and Ones That Waste Time,ai-tools-worth-using,Tier 1,AI & Careers,ai job search tools,no,no,no
+290,auto-apply-bots-reality.png,Auto-Apply Bots: Why Volume Without Tailoring Fails,auto-apply-bots-reality,Tier 1,AI & Careers,auto apply bots jobs,no,no,no
+291,ai-skills-worth-adding.png,AI Skills Worth Adding to a Resume This Year,ai-skills-worth-adding,Tier 1,AI & Careers,ai skills on resume,no,no,no
+292,applications-per-week-realistic.png,How Many Applications a Week Is Realistic,applications-per-week-realistic,Tier 1,Job Search Strategy,how many applications per week,no,no,no
+293,quality-versus-volume.png,Quality vs Volume: The Numbers Behind Both Strategies,quality-versus-volume,Tier 1,Job Search Strategy,quality vs quantity job applications,no,no,no
+294,what-happens-after-submit.png,Where Your Applications Actually Go After Submit,what-happens-after-submit,Tier 1,Job Search Strategy,what happens after you apply,no,no,no
+295,company-site-or-job-board.png,Company Site or Job Board: Which Application Wins,company-site-or-job-board,Tier 1,Job Search Strategy,apply company site or job board,no,no,no
+296,when-easy-apply-is-worth-it.png,When Easy Apply Is Worth It and When It Isn't,when-easy-apply-is-worth-it,Tier 1,Job Search Strategy,linkedin easy apply worth it,no,no,no
+297,one-page-resume-no-jobs.png,A One-Page Resume When You've Never Had a Job,one-page-resume-no-jobs,Tier 1,Resume Writing,resume no work experience one page,no,no,no
+298,what-fills-a-fresher-resume.png,What Fills the Page When Experience Is Empty,what-fills-a-fresher-resume,Tier 1,Resume Writing,what to put on resume no experience,no,no,no
+299,university-projects-as-work.png,University Projects Written as Professional Work,university-projects-as-work,Tier 1,Resume Sections,college projects on resume,no,no,no
+300,internship-with-no-internships.png,Applying for an Internship With No Internships,internship-with-no-internships,Tier 1,Resume Tailoring,internship resume no experience,no,no,no
+301,graduate-scheme-resume.png,A Graduate Scheme Application Resume,graduate-scheme-resume,Tier 1,Resume Tailoring,graduate scheme resume,no,no,no
+302,placement-resume-many-companies.png,"Campus Placement Resume: One Document, Many Companies",placement-resume-many-companies,Tier 1,Resume Tailoring,placement resume multiple companies,no,no,no
+303,first-resume-after-bootcamp.png,Your First Resume After a Bootcamp,first-resume-after-bootcamp,Tier 1,Resume Tailoring,bootcamp graduate resume,no,no,no
+304,self-taught-no-degree-resume.png,Self-Taught With No Degree: Building Credibility,self-taught-no-degree-resume,Tier 1,Resume Tailoring,self taught developer resume,no,no,no
+305,six-months-post-graduation.png,Six Months Post-Graduation With No Offers,six-months-post-graduation,Tier 1,Resume Tailoring,no job after graduation resume,no,no,no
+306,second-job-resume-changes.png,Your Second Job: What Changes From the First Resume,second-job-resume-changes,Tier 1,Resume Writing,second job resume,no,no,no
+307,two-years-in-going-mid-level.png,Two Years In and Applying for a Mid-Level Role,two-years-in-going-mid-level,Tier 1,Resume Tailoring,2 years experience resume,no,no,no
+308,title-undersells-your-work.png,When Your Title Undersells What You Do,title-undersells-your-work,Tier 1,Resume Sections,title undersells work,no,no,no
+309,leaving-before-one-year.png,Leaving a First Job Before a Year,leaving-before-one-year,Tier 1,Resume Tailoring,leaving job before one year resume,no,no,no
+310,twenty-years-two-pages.png,Twenty Years of Experience on Two Pages,twenty-years-two-pages,Tier 1,Resume Writing,20 years experience resume length,no,no,no
+311,what-senior-resumes-drop.png,What a Senior Resume Stops Including,what-senior-resumes-drop,Tier 1,Resume Writing,senior resume what to remove,no,no,no
+312,scope-budget-headcount.png,"Scope, Budget and Headcount: The Senior Metrics",scope-budget-headcount,Tier 1,Resume Bullets & Achievements,senior resume metrics,no,no,no
+313,executive-resume-is-different.png,An Executive Resume Is a Different Document,executive-resume-is-different,Tier 1,Resume Writing,executive resume format,no,no,no
+314,first-management-role-resume.png,Moving From Senior IC to First Management Role,first-management-role-resume,Tier 1,Resume Tailoring,ic to manager resume,no,no,no
+315,reentering-after-children.png,Re-entering After Raising Children,reentering-after-children,Tier 1,Resume Tailoring,return to work after children,no,no,no
+316,leaving-the-military-resume.png,A Resume for Someone Leaving the Military,leaving-the-military-resume,Tier 1,Resume Tailoring,transitioning out of military resume,no,no,no
+317,resume-when-relocating.png,Relocating: A Resume for a City You Don't Live In Yet,resume-when-relocating,Tier 1,Resume Tailoring,resume for relocation,no,no,no
+318,no-local-experience.png,Applying Internationally Without Local Experience,no-local-experience,Tier 1,Resume Tailoring,no local experience resume,no,no,no
+319,photo-or-no-photo-by-country.png,Photo or No Photo: A Country-by-Country Decision Table,photo-or-no-photo-by-country,Tier 1,International Resumes,resume photo which countries,no,no,no
+320,personal-details-by-country.png,"Date of Birth, Marital Status, Nationality: What to Cut and Where",personal-details-by-country,Tier 1,International Resumes,personal details on resume country,no,no,no
+321,page-length-by-country.png,Page Length Expectations That Change by Country,page-length-by-country,Tier 1,International Resumes,resume length by country,no,no,no
+322,cv-or-resume-by-country.png,CV or Resume: What the Word Means Where You're Applying,cv-or-resume-by-country,Tier 1,International Resumes,cv or resume difference country,no,no,no
+323,europass-help-or-hurt.png,Europass: When It Helps and When It Hurts,europass-help-or-hurt,Tier 1,International Resumes,europass cv worth it,no,no,no
+324,english-resume-non-native.png,Writing an English Resume When English Isn't Your First Language,english-resume-non-native,Tier 1,International Resumes,english resume non native speaker,no,no,no
+325,translating-a-resume-well.png,Translating a Resume Without Losing the Achievements,translating-a-resume-well,Tier 1,International Resumes,translate resume to english,no,no,no
+326,mentioning-work-authorisation.png,Should Your Resume Mention Work Authorisation at All?,mentioning-work-authorisation,Tier 1,International Resumes,mention visa status on resume,no,no,no
+327,already-authorised-how-to-say-it.png,You Already Have the Right to Work — Saying So in One Line,already-authorised-how-to-say-it,Tier 1,International Resumes,right to work line on resume,no,no,no
+328,the-sponsorship-question-field.png,The Sponsorship Question on an Application Form,the-sponsorship-question-field,Tier 1,International Resumes,sponsorship question application form,no,no,no
+329,indian-resume-going-global.png,Indian Resumes for Global Roles: What to Drop,indian-resume-going-global,Tier 1,International Resumes,indian resume for international jobs,no,no,no
+330,canada-versus-us-resume.png,Canadian Applications: What Differs From the US Resume,canada-versus-us-resume,Tier 1,International Resumes,canada vs us resume difference,no,no,no
+331,uk-cv-personal-statement.png,UK Applications: The Personal Statement at the Top,uk-cv-personal-statement,Tier 1,International Resumes,uk cv personal statement,no,no,no
+332,remote-cross-border-format.png,Remote Roles Hiring Across Borders: Which Format Wins,remote-cross-border-format,Tier 1,International Resumes,remote international resume format,no,no,no
+333,one-resume-many-countries.png,One Resume for Multiple Countries: Where It Breaks,one-resume-many-countries,Tier 1,International Resumes,same resume different countries,no,no,no
+334,how-tech-recruiters-skim.png,How Tech Recruiters Skim a Developer Resume,how-tech-recruiters-skim,Tier 1,Industry & Role Guides,tech recruiter resume scan,no,no,no
+335,tech-stack-without-a-wall.png,Listing a Tech Stack Without a Wall of Logos,tech-stack-without-a-wall,Tier 1,Industry & Role Guides,tech stack on resume,no,no,no
+336,languages-to-list-and-order.png,Which Programming Languages to List and in What Order,languages-to-list-and-order,Tier 1,Industry & Role Guides,programming languages resume order,no,no,no
+337,github-when-repos-are-quiet.png,GitHub on a Resume When the Repos Are Quiet,github-when-repos-are-quiet,Tier 1,Industry & Role Guides,github on resume empty,no,no,no
+338,cloud-certs-recruiters-filter.png,Certifications in Cloud: Which Ones Recruiters Filter On,cloud-certs-recruiters-filter,Tier 1,Industry & Role Guides,cloud certification resume,no,no,no
+339,big-tech-committee-resume.png,A Resume for Big Tech Hiring Committees,big-tech-committee-resume,Tier 1,Industry & Role Guides,big tech resume committee,no,no,no
+340,sql-depth-beyond-the-word.png,Showing SQL Depth Beyond 'SQL' in the Skills List,sql-depth-beyond-the-word,Tier 1,Industry & Role Guides,sql on resume depth,no,no,no
+341,dashboards-versus-analysis.png,Dashboards vs Analysis: Framing Data Work by Outcome,dashboards-versus-analysis,Tier 1,Industry & Role Guides,data analyst resume outcomes,no,no,no
+342,ml-without-production.png,Machine Learning Projects Without Production Experience,ml-without-production,Tier 1,Industry & Role Guides,ml projects no production,no,no,no
+343,deal-experience-on-resume.png,Deal Experience on a Finance Resume,deal-experience-on-resume,Tier 1,Industry & Role Guides,deal experience resume,no,no,no
+344,part-qualified-status-on-resume.png,"CFA, ACCA and Part-Qualified Status",part-qualified-status-on-resume,Tier 1,Industry & Role Guides,cfa on resume,no,no,no
+345,modelling-skills-beyond-excel.png,Modelling Skills That Aren't Just 'Excel',modelling-skills-beyond-excel,Tier 1,Industry & Role Guides,financial modelling resume skills,no,no,no
+346,audit-to-industry-move.png,Moving From Audit to Industry Finance,audit-to-industry-move,Tier 1,Industry & Role Guides,audit to industry resume,no,no,no
+347,licences-and-registration-placement.png,"Licences, Registration Numbers and Where They Go",licences-and-registration-placement,Tier 1,Industry & Role Guides,nursing licence on resume,no,no,no
+348,rotations-on-newgrad-resume.png,Clinical Rotations and Placements on a New-Grad Resume,rotations-on-newgrad-resume,Tier 1,Industry & Role Guides,clinical rotations resume,no,no,no
+349,patient-volume-as-evidence.png,"Patient Volumes, Acuity and Unit Type as Evidence",patient-volume-as-evidence,Tier 1,Industry & Role Guides,nursing resume metrics,no,no,no
+350,campaign-results-without-data.png,Campaign Results Without Access to the Analytics,campaign-results-without-data,Tier 1,Industry & Role Guides,marketing resume no data,no,no,no
+351,quota-attainment-numbers.png,Quota Attainment: The Numbers a Sales Resume Needs,quota-attainment-numbers,Tier 1,Industry & Role Guides,sales resume quota numbers,no,no,no
+352,sales-resume-missed-quota.png,A Sales Resume When You Missed Quota,sales-resume-missed-quota,Tier 1,Industry & Role Guides,missed quota resume,no,no,no
+353,cost-savings-that-hold-up.png,Cost Savings and Efficiency Claims That Hold Up,cost-savings-that-hold-up,Tier 1,Industry & Role Guides,cost savings on resume,no,no,no
+354,teaching-outcomes-without-scores.png,Teaching Outcomes Without Standardised Test Data,teaching-outcomes-without-scores,Tier 1,Industry & Role Guides,teacher resume outcomes,no,no,no
+355,stating-security-clearance.png,Security Clearance: Stating It Correctly,stating-security-clearance,Tier 1,Industry & Role Guides,security clearance on resume,no,no,no
+356,matters-and-cases-on-legal-resume.png,"Matters, Cases and Clients on a Legal Resume",matters-and-cases-on-legal-resume,Tier 1,Industry & Role Guides,legal resume matters,no,no,no
+357,fifty-applications-no-interviews.png,No Interviews After Fifty Applications: A Diagnostic Order,fifty-applications-no-interviews,Tier 1,ATS Optimization,50 applications no interviews,no,no,no
+358,interviews-but-no-offers.png,Interviews but No Offers: Where the Problem Isn't the Resume,interviews-but-no-offers,Tier 1,ATS Optimization,interviews but no offers,no,no,no
+359,screened-then-rejected.png,Recruiter Calls but No Hiring-Manager Rounds,screened-then-rejected,Tier 1,ATS Optimization,recruiter screen then rejected,no,no,no
+360,strong-resume-wrong-jobs.png,"Strong Resume, Wrong Jobs: Fixing the Targeting",strong-resume-wrong-jobs,Tier 1,ATS Optimization,applying to wrong jobs,no,no,no
+361,same-resume-two-different-scores.png,Why the Same Resume Scores Differently on Two Jobs,same-resume-two-different-scores,Tier 1,ATS Optimization,same resume different score,no,no,no
+362,when-linkedin-and-resume-disagree.png,Your LinkedIn and Resume Disagree — Which Wins,when-linkedin-and-resume-disagree,Tier 1,ATS Optimization,linkedin resume mismatch,no,no,no
+363,embellishment-that-backfires.png,Embellishment That Becomes a Problem Later,embellishment-that-backfires,Tier 1,ATS Optimization,resume exaggeration consequences,no,no,no
+364,changing-a-title-on-paper.png,Job Titles You Changed and Whether That's Lying,changing-a-title-on-paper,Tier 1,ATS Optimization,changing job title on resume,no,no,no
+365,tailoring-across-industries.png,Tailoring When the Company Is in Another Industry,tailoring-across-industries,Tier 1,Resume Tailoring,different industry same role,no,no,no
+366,twenty-minute-tailoring.png,Tailoring Under a Deadline: The Twenty-Minute Version,twenty-minute-tailoring,Tier 1,Resume Tailoring,tailor resume fast deadline,no,no,no
+367,one-bullet-five-ways.png,Rewriting a Bullet Five Ways for Five Jobs,one-bullet-five-ways,Tier 1,Resume Bullets & Achievements,rewrite bullet for different jobs,no,no,no
+368,scope-versus-impact.png,The Difference Between Scope and Impact,scope-versus-impact,Tier 1,Resume Bullets & Achievements,scope vs impact resume,no,no,no
+369,leading-with-the-result.png,Leading With the Result Instead of the Task,leading-with-the-result,Tier 1,Resume Bullets & Achievements,result first bullet,no,no,no
+370,three-lines-to-one.png,Cutting a Bullet From Three Lines to One,three-lines-to-one,Tier 1,Resume Bullets & Achievements,shorten resume bullet,no,no,no
+371,when-a-bullet-needs-a-number.png,When a Bullet Needs a Number and When It Doesn't,when-a-bullet-needs-a-number,Tier 1,Resume Bullets & Achievements,every bullet needs a number,no,no,no
+372,free-ats-checker-limits.png,Free ATS Checkers: What the Free Tier Actually Tells You,free-ats-checker-limits,Tier 1,Job Search Strategy,free ats checker limits,no,no,no
+373,builder-or-word-document.png,Resume Builder or Word Document: Which to Start From,builder-or-word-document,Tier 1,Job Search Strategy,resume builder vs word,no,no,no
+374,resume-writer-versus-diy.png,Paying for a Resume Writer vs Doing It Yourself,resume-writer-versus-diy,Tier 1,Job Search Strategy,resume writer worth it,no,no,no
+375,how-auto-tailoring-works.png,Tools That Auto-Tailor Resumes: How They Actually Work,how-auto-tailoring-works,Tier 1,Job Search Strategy,auto tailor resume tool,no,no,no
+376,what-application-extensions-do.png,Chrome Extensions for Job Applications: What They Do,what-application-extensions-do,Tier 1,Job Search Strategy,job application chrome extension,no,no,no
+377,what-to-look-for-in-ats-tool.png,What to Look For in an ATS Score Tool,what-to-look-for-in-ats-tool,Tier 1,Job Search Strategy,best ats score tool,no,no,no
+378,data-analyst-keyword-list.png,Data Analyst Resume Keywords: Pulling Them From the Job Description,data-analyst-keyword-list,Tier 1,ATS Optimization,data analyst resume keywords,no,no,no
+379,software-engineer-keyword-list.png,Software Engineer Resume Keywords: Pulling Them From the Job Description,software-engineer-keyword-list,Tier 1,ATS Optimization,software engineer resume keywords,no,no,no
+380,product-manager-keyword-list.png,Product Manager Resume Keywords: Pulling Them From the Job Description,product-manager-keyword-list,Tier 1,ATS Optimization,product manager resume keywords,no,no,no
+381,project-manager-keyword-list.png,Project Manager Resume Keywords: Pulling Them From the Job Description,project-manager-keyword-list,Tier 1,ATS Optimization,project manager resume keywords,no,no,no
+382,business-analyst-keyword-list.png,Business Analyst Resume Keywords: Pulling Them From the Job Description,business-analyst-keyword-list,Tier 1,ATS Optimization,business analyst resume keywords,no,no,no
+383,marketing-manager-keyword-list.png,Marketing Manager Resume Keywords: Pulling Them From the Job Description,marketing-manager-keyword-list,Tier 1,ATS Optimization,marketing manager resume keywords,no,no,no
+384,accountant-keyword-list.png,Accountant Resume Keywords: Pulling Them From the Job Description,accountant-keyword-list,Tier 1,ATS Optimization,accountant resume keywords,no,no,no
+385,nursing-keyword-list.png,Nurse Resume Keywords: Pulling Them From the Job Description,nursing-keyword-list,Tier 1,ATS Optimization,nursing resume keywords,no,no,no
+386,teacher-keyword-list.png,Teacher Resume Keywords: Pulling Them From the Job Description,teacher-keyword-list,Tier 1,ATS Optimization,teacher resume keywords,no,no,no
+387,mechanical-engineer-keyword-list.png,Mechanical Engineer Resume Keywords: Pulling Them From the Job Description,mechanical-engineer-keyword-list,Tier 1,ATS Optimization,mechanical engineer resume keywords,no,no,no
+388,civil-engineer-keyword-list.png,Civil Engineer Resume Keywords: Pulling Them From the Job Description,civil-engineer-keyword-list,Tier 1,ATS Optimization,civil engineer resume keywords,no,no,no
+389,devops-keyword-list.png,DevOps Engineer Resume Keywords: Pulling Them From the Job Description,devops-keyword-list,Tier 1,ATS Optimization,devops resume keywords,no,no,no
+390,cybersecurity-keyword-list.png,Cybersecurity Analyst Resume Keywords: Pulling Them From the Job Description,cybersecurity-keyword-list,Tier 1,ATS Optimization,cybersecurity resume keywords,no,no,no
+391,ux-designer-keyword-list.png,UX Designer Resume Keywords: Pulling Them From the Job Description,ux-designer-keyword-list,Tier 1,ATS Optimization,ux designer resume keywords,no,no,no
+392,sales-executive-keyword-list.png,Sales Executive Resume Keywords: Pulling Them From the Job Description,sales-executive-keyword-list,Tier 1,ATS Optimization,sales resume keywords,no,no,no
+393,hr-manager-keyword-list.png,HR Manager Resume Keywords: Pulling Them From the Job Description,hr-manager-keyword-list,Tier 1,ATS Optimization,hr resume keywords,no,no,no
+394,supply-chain-keyword-list.png,Supply Chain Manager Resume Keywords: Pulling Them From the Job Description,supply-chain-keyword-list,Tier 1,ATS Optimization,supply chain resume keywords,no,no,no
+395,financial-analyst-keyword-list.png,Financial Analyst Resume Keywords: Pulling Them From the Job Description,financial-analyst-keyword-list,Tier 1,ATS Optimization,financial analyst resume keywords,no,no,no
+396,data-scientist-keyword-list.png,Data Scientist Resume Keywords: Pulling Them From the Job Description,data-scientist-keyword-list,Tier 1,ATS Optimization,data scientist resume keywords,no,no,no
+397,customer-service-keyword-list.png,Customer Service Resume Keywords: Pulling Them From the Job Description,customer-service-keyword-list,Tier 1,ATS Optimization,customer service resume keywords,no,no,no
+398,operations-manager-keyword-list.png,Operations Manager Resume Keywords: Pulling Them From the Job Description,operations-manager-keyword-list,Tier 1,ATS Optimization,operations manager resume keywords,no,no,no
+399,graphic-designer-keyword-list.png,Graphic Designer Resume Keywords: Pulling Them From the Job Description,graphic-designer-keyword-list,Tier 1,ATS Optimization,graphic designer resume keywords,no,no,no
+400,qa-engineer-keyword-list.png,QA Engineer Resume Keywords: Pulling Them From the Job Description,qa-engineer-keyword-list,Tier 1,ATS Optimization,qa engineer resume keywords,no,no,no
+401,scrum-master-keyword-list.png,Scrum Master Resume Keywords: Pulling Them From the Job Description,scrum-master-keyword-list,Tier 1,ATS Optimization,scrum master resume keywords,no,no,no
+402,pharmacist-keyword-list.png,Pharmacist Resume Keywords: Pulling Them From the Job Description,pharmacist-keyword-list,Tier 1,ATS Optimization,pharmacist resume keywords,no,no,no
+403,software-engineer-summary-examples.png,Software Engineer Resume Summary: Examples and What Makes Them Work,software-engineer-summary-examples,Tier 1,Resume Examples,software engineer resume summary,no,no,no
+404,data-analyst-summary-examples.png,Data Analyst Resume Summary: Examples and What Makes Them Work,data-analyst-summary-examples,Tier 1,Resume Examples,data analyst resume summary,no,no,no
+405,product-manager-summary-examples.png,Product Manager Resume Summary: Examples and What Makes Them Work,product-manager-summary-examples,Tier 1,Resume Examples,product manager resume summary,no,no,no
+406,project-manager-summary-examples.png,Project Manager Resume Summary: Examples and What Makes Them Work,project-manager-summary-examples,Tier 1,Resume Examples,project manager resume summary,no,no,no
+407,marketing-manager-summary-examples.png,Marketing Manager Resume Summary: Examples and What Makes Them Work,marketing-manager-summary-examples,Tier 1,Resume Examples,marketing resume summary,no,no,no
+408,accountant-summary-examples.png,Accountant Resume Summary: Examples and What Makes Them Work,accountant-summary-examples,Tier 1,Resume Examples,accountant resume summary,no,no,no
+409,nurse-summary-examples.png,Nurse Resume Summary: Examples and What Makes Them Work,nurse-summary-examples,Tier 1,Resume Examples,nurse resume summary,no,no,no
+410,teacher-summary-examples.png,Teacher Resume Summary: Examples and What Makes Them Work,teacher-summary-examples,Tier 1,Resume Examples,teacher resume summary,no,no,no
+411,sales-rep-summary-examples.png,Sales Representative Resume Summary: Examples and What Makes Them Work,sales-rep-summary-examples,Tier 1,Resume Examples,sales resume summary,no,no,no
+412,customer-service-summary-examples.png,Customer Service Representative Resume Summary: Examples and What Makes Them Work,customer-service-summary-examples,Tier 1,Resume Examples,customer service resume summary,no,no,no
+413,business-analyst-summary-examples.png,Business Analyst Resume Summary: Examples and What Makes Them Work,business-analyst-summary-examples,Tier 1,Resume Examples,business analyst resume summary,no,no,no
+414,hr-summary-examples.png,HR Professional Resume Summary: Examples and What Makes Them Work,hr-summary-examples,Tier 1,Resume Examples,hr resume summary,no,no,no
+415,mechanical-engineer-summary-examples.png,Mechanical Engineer Resume Summary: Examples and What Makes Them Work,mechanical-engineer-summary-examples,Tier 1,Resume Examples,mechanical engineer resume summary,no,no,no
+416,graduate-summary-examples.png,Recent Graduate Resume Summary: Examples and What Makes Them Work,graduate-summary-examples,Tier 1,Resume Examples,graduate resume summary,no,no,no
+417,career-changer-summary-examples.png,Career Changer Resume Summary: Examples and What Makes Them Work,career-changer-summary-examples,Tier 1,Resume Examples,career changer resume summary,no,no,no
+418,software-engineer-bullet-examples.png,Software Engineer Resume Bullet Points: Twelve Rewritten Examples,software-engineer-bullet-examples,Tier 1,Resume Examples,software engineer resume bullet points,no,no,no
+419,data-analyst-bullet-examples.png,Data Analyst Resume Bullet Points: Twelve Rewritten Examples,data-analyst-bullet-examples,Tier 1,Resume Examples,data analyst bullet points,no,no,no
+420,product-manager-bullet-examples.png,Product Manager Resume Bullet Points: Twelve Rewritten Examples,product-manager-bullet-examples,Tier 1,Resume Examples,product manager bullet points,no,no,no
+421,marketing-bullet-examples.png,Marketing Resume Bullet Points: Twelve Rewritten Examples,marketing-bullet-examples,Tier 1,Resume Examples,marketing resume bullet points,no,no,no
+422,sales-bullet-examples.png,Sales Resume Bullet Points: Twelve Rewritten Examples,sales-bullet-examples,Tier 1,Resume Examples,sales resume bullet points,no,no,no
+423,customer-service-bullet-examples.png,Customer Service Resume Bullet Points: Twelve Rewritten Examples,customer-service-bullet-examples,Tier 1,Resume Examples,customer service bullet points,no,no,no
+424,project-manager-bullet-examples.png,Project Manager Resume Bullet Points: Twelve Rewritten Examples,project-manager-bullet-examples,Tier 1,Resume Examples,project manager bullet points,no,no,no
+425,accounting-bullet-examples.png,Accountant Resume Bullet Points: Twelve Rewritten Examples,accounting-bullet-examples,Tier 1,Resume Examples,accounting resume bullet points,no,no,no
+426,nursing-bullet-examples.png,Nurse Resume Bullet Points: Twelve Rewritten Examples,nursing-bullet-examples,Tier 1,Resume Examples,nursing resume bullet points,no,no,no
+427,teaching-bullet-examples.png,Teacher Resume Bullet Points: Twelve Rewritten Examples,teaching-bullet-examples,Tier 1,Resume Examples,teaching resume bullet points,no,no,no
+428,retail-bullet-examples.png,Retail Resume Bullet Points: Twelve Rewritten Examples,retail-bullet-examples,Tier 1,Resume Examples,retail resume bullet points,no,no,no
+429,operations-bullet-examples.png,Operations Resume Bullet Points: Twelve Rewritten Examples,operations-bullet-examples,Tier 1,Resume Examples,operations resume bullet points,no,no,no
+430,emailing-a-resume-properly.png,"Sending a Resume by Email: Subject, Body and Attachment",emailing-a-resume-properly,Tier 1,Resume Writing,email resume to recruiter,no,no,no
+431,scan-resume-against-jd.png,Scanning Your Resume Against a Job Description in Under a Minute,scan-resume-against-jd,Tier 1,Resume Tailoring,scan resume against job description,no,no,no
+432,reading-your-match-score.png,Reading Your Match Score and Knowing What to Fix First,reading-your-match-score,Tier 1,Resume Tailoring,resume match score meaning,no,no,no
+433,scan-result-into-three-edits.png,Turning a Scan Result Into Three Concrete Edits,scan-result-into-three-edits,Tier 1,Resume Tailoring,fix resume from ats report,no,no,no
+434,tailoring-on-the-posting-page.png,Tailoring Directly on a Job Posting Page,tailoring-on-the-posting-page,Tier 1,Resume Tailoring,tailor resume on job page,no,no,no
+435,portfolio-in-one-sitting.png,Building a Portfolio Page in One Sitting,portfolio-in-one-sitting,Tier 1,Resume Tailoring,build portfolio quickly,no,no,no
+436,exporting-a-clean-pdf.png,Exporting a Clean PDF That Survives Every Portal,exporting-a-clean-pdf,Tier 1,Resume Tailoring,export clean resume pdf,no,no,no
+437,five-versions-without-chaos.png,Keeping Five Tailored Versions Without Losing Track,five-versions-without-chaos,Tier 1,Resume Tailoring,manage multiple resume versions,no,no,no
+438,final-check-before-submit.png,Checking a Resume Before You Hit Submit,final-check-before-submit,Tier 1,Resume Tailoring,check resume before submitting,no,no,no
+439,practice-from-your-resume.png,Practising Interview Answers From Your Own Resume,practice-from-your-resume,Tier 1,Resume Tailoring,practice interview from resume,no,no,no
+440,cover-letter-from-the-posting.png,Generating a Cover Letter That Matches the Posting,cover-letter-from-the-posting,Tier 1,Resume Tailoring,generate cover letter from job posting,no,no,no
+441,costliest-resume-mistake.png,The Resume Mistake That Costs the Most Interviews,costliest-resume-mistake,Tier 1,Resume Writing,biggest resume mistake,no,no,no
+442,fresher-resume-mistakes.png,Mistakes on a Fresher Resume,fresher-resume-mistakes,Tier 1,Resume Writing,fresher resume mistakes,no,no,no
+443,senior-resume-mistakes.png,Mistakes on a Senior Resume,senior-resume-mistakes,Tier 1,Resume Writing,senior resume mistakes,no,no,no
+444,career-changer-mistakes.png,Mistakes Career Changers Repeat,career-changer-mistakes,Tier 1,Resume Writing,career change resume mistakes,no,no,no
+445,technical-resume-mistakes.png,Mistakes on a Technical Resume,technical-resume-mistakes,Tier 1,Resume Writing,technical resume mistakes,no,no,no
+446,resume-summary-mistakes.png,Mistakes in a Resume Summary,resume-summary-mistakes,Tier 1,Resume Writing,resume summary mistakes,no,no,no
+447,skills-section-mistakes.png,Mistakes in a Skills Section,skills-section-mistakes,Tier 1,Resume Writing,skills section mistakes,no,no,no
+448,experience-section-mistakes.png,Mistakes in the Experience Section,experience-section-mistakes,Tier 1,Resume Writing,experience section mistakes,no,no,no
+449,formatting-mistakes-you-miss.png,Mistakes in Formatting That Look Fine to You,formatting-mistakes-you-miss,Tier 1,Resume Writing,resume formatting mistakes,no,no,no
+450,overclaiming-on-a-resume.png,Overclaiming: The Line Between Confident and False,overclaiming-on-a-resume,Tier 1,Resume Writing,overclaiming on resume,no,no,no
+451,underselling-yourself.png,Underselling: The More Common Problem,underselling-yourself,Tier 1,Resume Writing,underselling on resume,no,no,no
+452,one-resume-for-everything.png,Using the Same Resume for Every Application,one-resume-for-everything,Tier 1,Resume Writing,same resume every job mistake,no,no,no
+453,ignoring-the-jd.png,Ignoring the Job Description Entirely,ignoring-the-jd,Tier 1,Resume Writing,ignoring job description,no,no,no
+454,listing-every-job-ever.png,Listing Every Job You've Ever Had,listing-every-job-ever,Tier 1,Resume Writing,listing every job mistake,no,no,no
+455,burying-your-best-work.png,Burying the Best Thing You've Done,burying-your-best-work,Tier 1,Resume Writing,burying your best achievement,no,no,no
+456,mistakes-only-the-ats-sees.png,Mistakes That Only Show Up in the ATS,mistakes-only-the-ats-sees,Tier 1,Resume Writing,mistakes only ats sees,no,no,no
+457,should-i-include-a-cover-letter-if-its-optional.png,Should I Include a Cover Letter If It's Optional?,should-i-include-a-cover-letter-if-its-optional,Tier 1,Cover Letters,cover letter optional should i,no,no,no
+458,should-i-remove-jobs-from-fifteen-years-ago.png,Should I Remove Jobs From Fifteen Years Ago?,should-i-remove-jobs-from-fifteen-years-ago,Tier 1,Resume Tailoring,remove old jobs resume,no,no,no
+459,should-i-mention-i-was-laid-off.png,Should I Mention I Was Laid Off?,should-i-mention-i-was-laid-off,Tier 1,Career Gaps & Setbacks,mention layoff on resume,no,no,no
+460,should-i-use-a-resume-template-or-start-blank.png,Should I Use a Resume Template or Start Blank?,should-i-use-a-resume-template-or-start-blank,Tier 1,Resume Writing,template or blank resume,no,no,no
+461,should-i-have-more-than-one-resume.png,Should I Have More Than One Resume?,should-i-have-more-than-one-resume,Tier 1,Resume Tailoring,multiple resumes,no,no,no
+462,should-my-resume-match-my-linkedin-word-for-word.png,Should My Resume Match My LinkedIn Word for Word?,should-my-resume-match-my-linkedin-word-for-word,Tier 1,LinkedIn & Personal Branding,resume linkedin identical,no,no,no
+463,should-i-include-an-objective-in-2026.png,Should I Include an Objective in 2026?,should-i-include-an-objective-in-2026,Tier 1,Resume Sections,resume objective still needed,no,no,no
+464,should-i-list-every-technology-ive-touched.png,Should I List Every Technology I've Touched?,should-i-list-every-technology-ive-touched,Tier 1,Resume Sections,list every technology resume,no,no,no
+465,should-i-use-the-companys-keywords-exactly.png,Should I Use the Company's Keywords Exactly?,should-i-use-the-companys-keywords-exactly,Tier 1,ATS Optimization,copy keywords from job posting,no,no,no
+466,should-i-send-a-pdf-or-let-them-choose.png,Should I Send a PDF or Let Them Choose?,should-i-send-a-pdf-or-let-them-choose,Tier 1,ATS Optimization,pdf or docx send,no,no,no
+467,is-a-two-page-resume-ever-wrong.png,Is a Two-Page Resume Ever Wrong?,is-a-two-page-resume-ever-wrong,Tier 1,Resume Writing,two page resume bad,no,no,no
+468,is-it-worth-applying-without-all-the-requirements.png,Is It Worth Applying Without All the Requirements?,is-it-worth-applying-without-all-the-requirements,Tier 1,Resume Tailoring,apply without all requirements,no,no,no
+469,is-my-resume-too-long-for-my-experience-level.png,Is My Resume Too Long for My Experience Level?,is-my-resume-too-long-for-my-experience-level,Tier 1,Resume Writing,resume too long for experience,no,no,no
+470,is-a-career-gap-still-a-problem-in-2026.png,Is a Career Gap Still a Problem in 2026?,is-a-career-gap-still-a-problem-in-2026,Tier 1,Career Gaps & Setbacks,career gap still matters,no,no,no
+471,is-it-bad-to-have-three-jobs-in-three-years.png,Is It Bad to Have Three Jobs in Three Years?,is-it-bad-to-have-three-jobs-in-three-years,Tier 1,Career Gaps & Setbacks,three jobs three years,no,no,no
+472,do-recruiters-actually-read-cover-letters.png,Do Recruiters Actually Read Cover Letters?,do-recruiters-actually-read-cover-letters,Tier 1,Cover Letters,recruiters read cover letters,no,no,no
+473,do-employers-verify-everything-on-a-resume.png,Do Employers Verify Everything on a Resume?,do-employers-verify-everything-on-a-resume,Tier 1,ATS Optimization,employers verify resume,no,no,no
+474,does-a-referral-skip-the-ats.png,Does a Referral Skip the ATS?,does-a-referral-skip-the-ats,Tier 1,ATS Optimization,referral skip ats,no,no,no
+475,can-i-use-one-resume-for-two-industries.png,Can I Use One Resume for Two Industries?,can-i-use-one-resume-for-two-industries,Tier 1,Resume Tailoring,one resume two industries,no,no,no
+476,can-i-leave-a-job-off-my-resume.png,Can I Leave a Job Off My Resume?,can-i-leave-a-job-off-my-resume,Tier 1,Resume Sections,leave job off resume,no,no,no
+477,can-i-change-my-job-title-to-match-the-posting.png,Can I Change My Job Title to Match the Posting?,can-i-change-my-job-title-to-match-the-posting,Tier 1,ATS Optimization,change job title match posting,no,no,no
+478,can-ai-write-a-resume-that-passes-ats.png,Can AI Write a Resume That Passes ATS?,can-ai-write-a-resume-that-passes-ats,Tier 1,AI & Careers,ai resume pass ats,no,no,no
+479,how-many-jobs-should-be-on-a-resume.png,How Many Jobs Should Be on a Resume?,how-many-jobs-should-be-on-a-resume,Tier 1,Resume Sections,how many jobs on resume,no,no,no
+480,how-many-skills-should-i-list.png,How Many Skills Should I List?,how-many-skills-should-i-list,Tier 1,Resume Sections,how many skills on resume,no,no,no
+481,how-do-i-know-if-my-resume-is-actually-good.png,How Do I Know if My Resume Is Actually Good?,how-do-i-know-if-my-resume-is-actually-good,Tier 1,ATS Optimization,is my resume good,no,no,no
+482,what-do-recruiters-look-at-first.png,What Do Recruiters Look at First?,what-do-recruiters-look-at-first,Tier 1,Resume Writing,what recruiters look at first,no,no,no
+483,what-makes-a-resume-look-senior.png,What Makes a Resume Look Senior?,what-makes-a-resume-look-senior,Tier 1,Resume Writing,resume looks senior,no,no,no
+484,what-should-never-go-on-a-resume.png,What Should Never Go on a Resume?,what-should-never-go-on-a-resume,Tier 1,Resume Writing,never put on resume,no,no,no
+485,what-counts-as-relevant-experience.png,What Counts as Relevant Experience?,what-counts-as-relevant-experience,Tier 1,Resume Tailoring,what counts as relevant experience,no,no,no
+486,what-if-i-have-no-metrics-for-anything.png,What if I Have No Metrics for Anything?,what-if-i-have-no-metrics-for-anything,Tier 1,Resume Bullets & Achievements,no metrics for resume,no,no,no
+487,when-should-i-rewrite-instead-of-edit.png,When Should I Rewrite Instead of Edit?,when-should-i-rewrite-instead-of-edit,Tier 1,Resume Writing,rewrite or edit resume,no,no,no
+488,when-should-i-stop-applying-and-fix-the-resume.png,When Should I Stop Applying and Fix the Resume?,when-should-i-stop-applying-and-fix-the-resume,Tier 1,ATS Optimization,stop applying fix resume,no,no,no
+489,where-do-i-even-start-with-a-bad-resume.png,Where Do I Even Start With a Bad Resume?,where-do-i-even-start-with-a-bad-resume,Tier 1,Resume Writing,where to start bad resume,no,no,no
+490,ats-diminishing-returns.png,The Point Where More Keywords Stop Helping Your Score,ats-diminishing-returns,Tier 2,ATS Optimization,ats keyword diminishing returns,no,no,no
+491,acronym-or-full-term-on-resume.png,Acronym or Full Term? Writing Skills Both the Parser and Recruiter Read,acronym-or-full-term-on-resume,Tier 2,ATS Optimization,resume acronyms vs full terms ats,no,no,no
+492,seniority-keywords-resume.png,Seniority Words in a JD and What They Change on Your Resume,seniority-keywords-resume,Tier 2,ATS Optimization,seniority keywords job description,no,no,no
+493,hard-vs-soft-skills-ats.png,Hard Skills vs Soft Skills: Which Ones the Parser Actually Scores,hard-vs-soft-skills-ats,Tier 2,ATS Optimization,hard vs soft skills ats,no,no,no
+494,soft-skills-that-are-not-keywords.png,Soft Skills That Never Help Your ATS Score (Write These Instead),soft-skills-that-are-not-keywords,Tier 2,ATS Optimization,soft skills resume ats useless,no,no,no
+495,how-specific-should-skills-be.png,"Tools, Frameworks and Versions: How Specific Should Your Skills Be",how-specific-should-skills-be,Tier 2,ATS Optimization,resume list tool versions,no,no,no
+496,resume-headers-footers-parsing.png,Why Headers and Footers Vanish in ATS Parsing,resume-headers-footers-parsing,Tier 2,ATS Optimization,resume header footer ats problem,no,no,no
+497,contact-details-disappear-ats.png,Your Contact Details Disappeared in Parsing — Here's Why,contact-details-disappear-ats,Tier 2,ATS Optimization,ats cannot read contact information,no,no,no
+498,do-icons-break-ats.png,Do Icons and Symbols Break an ATS Resume?,do-icons-break-ats,Tier 2,ATS Optimization,do icons break ats resume,no,no,no
+499,skills-table-parsing.png,Putting Skills in a Table: What Really Happens in the Parser,skills-table-parsing,Tier 2,ATS Optimization,resume skills table ats,no,no,no
+500,ats-safe-resume-fonts.png,Resume Fonts That Survive ATS Parsing (and Ones That Don't),ats-safe-resume-fonts,Tier 2,ATS Optimization,best resume font for ats,no,no,no
+501,resume-date-format-ats.png,Date Formats on a Resume: The One the ATS Reads Correctly,resume-date-format-ats,Tier 2,ATS Optimization,resume date format ats,no,no,no
+502,resume-breaks-after-upload.png,Your Resume Looks Fine in Word and Breaks in the Portal,resume-breaks-after-upload,Tier 2,ATS Optimization,resume looks different after upload,no,no,no
+503,section-headings-ats-recognizes.png,Section Headings the ATS Recognizes (and Creative Ones It Doesn't),section-headings-ats-recognizes,Tier 2,ATS Optimization,resume section headings ats,no,no,no
+504,how-ats-parses-section-order.png,Does the ATS Read Your Skills Section First? Parsing Order Explained,how-ats-parses-section-order,Tier 2,ATS Optimization,how ats parses resume sections,no,no,no
+505,do-recruiters-see-low-scores.png,Do Recruiters Ever See a Low-Scoring Resume?,do-recruiters-see-low-scores,Tier 2,ATS Optimization,do recruiters see low ats score,no,no,no
+506,applying-twice-same-company.png,Applying Twice to the Same Company: What the ATS Remembers,applying-twice-same-company,Tier 2,ATS Optimization,apply twice same company,no,no,no
+507,successfactors-resume-parsing.png,How SuccessFactors Parses Your Resume Differently,successfactors-resume-parsing,Tier 2,ATS Optimization,successfactors resume tips,no,no,no
+508,startup-vs-enterprise-ats.png,"Startup ATS vs Enterprise ATS: Different Rules, Different Resume",startup-vs-enterprise-ats,Tier 2,ATS Optimization,startup vs enterprise ats,no,no,no
+509,resume-prompt-injection-myth.png,Prompt Injection in Resumes: Why 'Ignore Previous Instructions' Fails,resume-prompt-injection-myth,Tier 2,ATS Optimization,resume prompt injection,no,no,no
+510,ai-screening-and-career-gaps.png,Will an AI Screener Penalize a Career Gap? What It Sees,ai-screening-and-career-gaps,Tier 2,ATS Optimization,ai screening career gap,no,no,no
+511,reordering-work-history.png,Should You Reorder Your Work History for a Specific Role?,reordering-work-history,Tier 2,Resume Tailoring,reorder work experience resume,no,no,no
+512,how-far-back-experience-goes.png,How Far Back Your Experience Should Go for This Role,how-far-back-experience-goes,Tier 2,Resume Tailoring,how far back resume experience,no,no,no
+513,jd-boilerplate-to-ignore.png,Boilerplate in a JD: The Lines You Can Safely Ignore,jd-boilerplate-to-ignore,Tier 2,Resume Tailoring,job description boilerplate,no,no,no
+514,vague-jd-small-company.png,Decoding a Vague Job Description at a Small Company,vague-jd-small-company,Tier 2,Resume Tailoring,vague job description small company,no,no,no
+515,startup-jd-vs-corporate-jd.png,Startup JD vs Corporate JD: Two Different Resumes,startup-jd-vs-corporate-jd,Tier 2,Resume Tailoring,startup vs corporate job description,no,no,no
+516,ghost-jobs-how-to-spot.png,Ghost Jobs: How to Spot a Posting That Isn't Really Hiring,ghost-jobs-how-to-spot,Tier 2,Job Search Strategy,ghost jobs how to spot,no,no,no
+517,tailoring-for-contract-roles.png,Tailoring a Resume for a Contract or Freelance Role,tailoring-for-contract-roles,Tier 2,Resume Tailoring,resume for contract role,no,no,no
+518,tailoring-for-hybrid-roles.png,Tailoring for a Hybrid Role That Mixes Two Disciplines,tailoring-for-hybrid-roles,Tier 2,Resume Tailoring,resume for hybrid role,no,no,no
+519,naming-resume-versions-system.png,A Naming System for Resume Versions That Doesn't Get Confusing,naming-resume-versions-system,Tier 2,Resume Tailoring,organize resume versions,no,no,no
+520,tracking-which-resume-you-sent.png,Tracking Which Resume You Sent Where,tracking-which-resume-you-sent,Tier 2,Resume Tailoring,track resume versions applications,no,no,no
+521,internal-vs-external-tailoring.png,Tailoring for an Internal Transfer vs an External Application,internal-vs-external-tailoring,Tier 2,Resume Tailoring,internal transfer resume,no,no,no
+522,reapplying-after-rejection.png,Tailoring a Resume for a Role at a Company You Were Rejected From,reapplying-after-rejection,Tier 2,Resume Tailoring,reapply after rejection resume,no,no,no
+523,tailoring-for-a-referral.png,Tailoring When You're Applying Through a Referral,tailoring-for-a-referral,Tier 2,Resume Tailoring,referral application resume,no,no,no
+524,tailoring-for-agency-submission.png,Tailoring for a Recruiter-Submitted Application,tailoring-for-agency-submission,Tier 2,Resume Tailoring,agency recruiter resume format,no,no,no
+525,tailoring-for-unfamiliar-titles.png,Tailoring When the Role Title Is New to You,tailoring-for-unfamiliar-titles,Tier 2,Resume Tailoring,unfamiliar job title how to apply,no,no,no
+526,tailoring-for-public-sector.png,Tailoring for a Government or Public-Sector Posting,tailoring-for-public-sector,Tier 2,Resume Tailoring,public sector resume tailoring,no,no,no
+527,selection-criteria-responses.png,Writing Selection-Criteria Responses That Mirror the Posting,selection-criteria-responses,Tier 2,Resume Tailoring,selection criteria response,no,no,no
+528,corporate-to-nonprofit-tailoring.png,Tailoring for Nonprofits When You Come From Corporate,corporate-to-nonprofit-tailoring,Tier 2,Resume Tailoring,nonprofit resume from corporate,no,no,no
+529,agency-vs-in-house-tailoring.png,Tailoring for an Agency Role vs an In-House Role,agency-vs-in-house-tailoring,Tier 2,Resume Tailoring,agency vs in house resume,no,no,no
+530,consulting-vs-industry-tailoring.png,Tailoring for a Consulting Firm vs an Industry Role,consulting-vs-industry-tailoring,Tier 2,Resume Tailoring,consulting vs industry resume,no,no,no
+531,startup-to-enterprise-resume.png,Moving From a Startup to a Large Company: Rewriting Scope and Process,startup-to-enterprise-resume,Tier 2,Resume Tailoring,startup to big company resume,no,no,no
+532,in-progress-certifications.png,Certifications the JD Asks For and You're Halfway Through,in-progress-certifications,Tier 2,Resume Tailoring,in progress certification resume,no,no,no
+533,confidential-work-on-resume.png,Tailoring When Most of Your Work Is Confidential,confidential-work-on-resume,Tier 2,Resume Tailoring,confidential work on resume,no,no,no
+534,team-vs-individual-credit.png,Tailoring When Your Work Was a Team Effort,team-vs-individual-credit,Tier 2,Resume Tailoring,team achievements on resume,no,no,no
+535,executive-summary-vs-senior.png,Executive Summary vs Senior Summary: A Real Difference,executive-summary-vs-senior,Tier 2,Resume Sections,executive resume summary,no,no,no
+536,headline-above-the-summary.png,Should Your Resume Have a Headline Above the Summary?,headline-above-the-summary,Tier 2,Resume Sections,resume headline vs summary,no,no,no
+537,how-long-should-a-bullet-be.png,How Long Should a Resume Bullet Be?,how-long-should-a-bullet-be,Tier 2,Resume Bullets & Achievements,resume bullet length,no,no,no
+538,how-many-bullets-per-job.png,How Many Bullets Per Job? A Rule That Scales With Recency,how-many-bullets-per-job,Tier 2,Resume Bullets & Achievements,how many bullets per job resume,no,no,no
+539,resume-bullet-tense.png,Past or Present Tense in Resume Bullets?,resume-bullet-tense,Tier 2,Resume Bullets & Achievements,resume tense past or present,no,no,no
+540,first-person-on-a-resume.png,Should a Resume Ever Say 'I'?,first-person-on-a-resume,Tier 2,Resume Writing,first person on resume,no,no,no
+541,percentages-vs-absolute-numbers.png,Percentages or Absolute Numbers: Which Is More Convincing,percentages-vs-absolute-numbers,Tier 2,Resume Bullets & Achievements,resume percentage or number,no,no,no
+542,showing-scale-without-numbers.png,Scale Words: Showing Size Without Confidential Numbers,showing-scale-without-numbers,Tier 2,Resume Bullets & Achievements,show scale on resume,no,no,no
+543,bullets-for-invisible-work.png,Writing Bullets for Work Nobody Can See,bullets-for-invisible-work,Tier 2,Resume Bullets & Achievements,invisible work on resume,no,no,no
+544,bullets-when-you-did-everything.png,Bullets for a Job Where You Did Everything,bullets-when-you-did-everything,Tier 2,Resume Bullets & Achievements,generalist resume bullets,no,no,no
+545,bullets-for-short-tenure.png,Writing Bullets for a Job You Held for Three Months,bullets-for-short-tenure,Tier 2,Resume Bullets & Achievements,short tenure resume bullets,no,no,no
+546,ic-vs-manager-track-resume.png,IC or Manager Track: Writing the Same History Two Ways,ic-vs-manager-track-resume,Tier 2,Resume Bullets & Achievements,ic vs manager resume,no,no,no
+547,skill-levels-on-a-resume.png,Should You Rate Your Skills Out of Five?,skill-levels-on-a-resume,Tier 2,Resume Sections,skill level bars resume,no,no,no
+548,grouping-skills-for-scanning.png,Grouping Skills So a Recruiter Can Scan Them in Seconds,grouping-skills-for-scanning,Tier 2,Resume Sections,organize skills section resume,no,no,no
+549,languages-on-a-resume.png,"Languages on a Resume: Levels, Proof and Placement",languages-on-a-resume,Tier 2,Resume Sections,languages on resume,no,no,no
+550,coursework-and-thesis-placement.png,"Coursework, Thesis and Academic Projects: When They Earn Space",coursework-and-thesis-placement,Tier 2,Resume Sections,relevant coursework resume,no,no,no
+551,unrelated-degree-on-resume.png,A Second Degree That Has Nothing to Do With Your Career,unrelated-degree-on-resume,Tier 2,Resume Sections,unrelated degree resume,no,no,no
+552,context-for-unknown-employers.png,A Company Nobody Has Heard Of: Adding One Line of Context,context-for-unknown-employers,Tier 2,Resume Sections,unknown company on resume,no,no,no
+553,contract-and-agency-structure.png,"Contract, Agency and Client Work on One Resume",contract-and-agency-structure,Tier 2,Resume Sections,contract work resume format,no,no,no
+554,failed-startup-on-resume.png,A Failed Startup on Your Resume,failed-startup-on-resume,Tier 2,Resume Sections,failed startup resume,no,no,no
+555,volunteer-work-placement.png,"Volunteer Work That Belongs in Experience, Not a Footnote",volunteer-work-placement,Tier 2,Resume Sections,volunteer work on resume,no,no,no
+556,when-to-drop-internships.png,Internships on a Resume After Two Years of Real Work,when-to-drop-internships,Tier 2,Resume Sections,when to remove internships,no,no,no
+557,part-time-jobs-placement.png,Part-Time and Retail Jobs on a Professional Resume,part-time-jobs-placement,Tier 2,Resume Sections,part time job on resume,no,no,no
+558,hobbies-and-interests.png,Hobbies and Interests: The Rare Case They Help,hobbies-and-interests,Tier 2,Resume Sections,hobbies on resume,no,no,no
+559,references-available-on-request.png,'References Available on Request' and Other Dead Lines,references-available-on-request,Tier 2,Resume Writing,references available on request,no,no,no
+560,address-on-resume-2026.png,"Address on a Resume in 2026: City, Country or Nothing",address-on-resume-2026,Tier 2,Resume Sections,address on resume,no,no,no
+561,proofreading-your-own-resume.png,Proofreading a Resume When You've Read It Fifty Times,proofreading-your-own-resume,Tier 2,Resume Writing,proofread resume tips,no,no,no
+562,resume-consistency-checklist.png,"A Consistency Checklist: Dates, Tense, Punctuation, Capitals",resume-consistency-checklist,Tier 2,Resume Writing,resume consistency check,no,no,no
+563,plain-english-technical-resume.png,Writing a Resume in Plain English When the Job Is Technical,plain-english-technical-resume,Tier 2,Resume Writing,technical resume plain language,no,no,no
+564,jargon-that-hurts-you.png,Jargon That Helps You and Jargon That Hurts You,jargon-that-hurts-you,Tier 2,Resume Writing,resume jargon,no,no,no
+565,updating-while-still-employed.png,Updating a Resume While You Still Have the Job,updating-while-still-employed,Tier 2,Resume Writing,update resume while employed,no,no,no
+566,keeping-a-running-brag-file.png,Keeping a Running Record So You Never Rebuild Again,keeping-a-running-brag-file,Tier 2,Resume Writing,track achievements ongoing,no,no,no
+567,brand-manager-resume-guide.png,A Brand Manager Resume That Earns the Portfolio Click,brand-manager-resume-guide,Tier 2,Resume Examples,brand manager resume,no,no,no
+568,performance-marketing-resume-guide.png,A Performance Marketing Manager Resume That Earns the Portfolio Click,performance-marketing-resume-guide,Tier 2,Resume Examples,performance marketing resume,no,no,no
+569,growth-marketer-resume-guide.png,Growth Marketer Resume: Linking a Portfolio That Gets Opened,growth-marketer-resume-guide,Tier 2,Resume Examples,growth marketing resume,no,no,no
+570,email-marketing-specialist-resume-guide.png,Email Marketing Specialist Resume: Showing Range Without Looking Unfocused,email-marketing-specialist-resume-guide,Tier 2,Resume Examples,email marketing resume,no,no,no
+571,marketing-analyst-resume-guide.png,A Marketing Analyst Resume That Earns the Portfolio Click,marketing-analyst-resume-guide,Tier 2,Resume Examples,marketing analyst resume,no,no,no
+572,public-relations-specialist-resume-guide.png,A Public Relations Specialist Resume That Earns the Portfolio Click,public-relations-specialist-resume-guide,Tier 2,Resume Examples,pr specialist resume,no,no,no
+573,communications-manager-resume-guide.png,A Communications Manager Resume That Earns the Portfolio Click,communications-manager-resume-guide,Tier 2,Resume Examples,communications manager resume,no,no,no
+574,copywriter-resume-guide.png,Copywriter Resume: Showing Range Without Looking Unfocused,copywriter-resume-guide,Tier 2,Resume Examples,copywriter resume,no,no,no
+575,video-editor-resume-guide.png,Video Editor Resume: When the Work Speaks and When Words Must,video-editor-resume-guide,Tier 2,Resume Examples,video editor resume,no,no,no
+576,motion-designer-resume-guide.png,Motion Designer Resume: When the Work Speaks and When Words Must,motion-designer-resume-guide,Tier 2,Resume Examples,motion designer resume,no,no,no
+577,three-d-artist-resume-guide.png,3D Artist Resume: Linking a Portfolio That Gets Opened,three-d-artist-resume-guide,Tier 2,Resume Examples,3d artist resume,no,no,no
+578,illustrator-resume-guide.png,Illustrator Resume: Linking a Portfolio That Gets Opened,illustrator-resume-guide,Tier 2,Resume Examples,illustrator resume,no,no,no
+579,photographer-resume-guide.png,What Goes on a Photographer Resume When You Have a Portfolio,photographer-resume-guide,Tier 2,Resume Examples,photographer resume,no,no,no
+580,art-director-resume-guide.png,A Art Director Resume That Earns the Portfolio Click,art-director-resume-guide,Tier 2,Resume Examples,art director resume,no,no,no
+581,ux-researcher-resume-guide.png,UX Researcher Resume: Describing Craft Without the Clichés,ux-researcher-resume-guide,Tier 2,Resume Examples,ux researcher resume,no,no,no
+582,ux-writer-resume-guide.png,UX Writer / Content Designer Resume: Showing Range Without Looking Unfocused,ux-writer-resume-guide,Tier 2,Resume Examples,ux writer resume,no,no,no
+583,service-designer-resume-guide.png,Service Designer Resume: When the Work Speaks and When Words Must,service-designer-resume-guide,Tier 2,Resume Examples,service designer resume,no,no,no
+584,design-systems-designer-resume-guide.png,Design Systems Designer Resume: Showing Range Without Looking Unfocused,design-systems-designer-resume-guide,Tier 2,Resume Examples,design systems resume,no,no,no
+585,instructional-designer-resume-guide.png,A Instructional Designer Resume That Earns the Portfolio Click,instructional-designer-resume-guide,Tier 2,Resume Examples,instructional designer resume,no,no,no
+586,curriculum-developer-resume-guide.png,Curriculum Developer Resume: Linking a Portfolio That Gets Opened,curriculum-developer-resume-guide,Tier 2,Resume Examples,curriculum developer resume,no,no,no
+587,university-lecturer-resume-guide.png,A University Lecturer Resume That Earns the Portfolio Click,university-lecturer-resume-guide,Tier 2,Resume Examples,lecturer resume,no,no,no
+588,academic-researcher-resume-guide.png,"Academic Researcher (Non-Tenure) Resume: Portfolio, Proof and the Bullets That Matter",academic-researcher-resume-guide,Tier 2,Resume Examples,academic researcher resume,no,no,no
+589,school-principal-resume-guide.png,School Principal Resume: Linking a Portfolio That Gets Opened,school-principal-resume-guide,Tier 2,Resume Examples,principal resume,no,no,no
+590,special-education-teacher-resume-guide.png,Special Education Teacher Resume: When the Work Speaks and When Words Must,special-education-teacher-resume-guide,Tier 2,Resume Examples,special education teacher resume,no,no,no
+591,teaching-assistant-resume-guide.png,What Goes on a Teaching Assistant Resume When You Have a Portfolio,teaching-assistant-resume-guide,Tier 2,Resume Examples,teaching assistant resume,no,no,no
+592,librarian-resume-guide.png,Librarian Resume: Linking a Portfolio That Gets Opened,librarian-resume-guide,Tier 2,Resume Examples,librarian resume,no,no,no
+593,policy-analyst-resume-guide.png,Policy Analyst Resume: When the Work Speaks and When Words Must,policy-analyst-resume-guide,Tier 2,Resume Examples,policy analyst resume,no,no,no
+594,urban-planner-resume-guide.png,Urban Planner Resume: Linking a Portfolio That Gets Opened,urban-planner-resume-guide,Tier 2,Resume Examples,urban planner resume,no,no,no
+595,environmental-scientist-resume-guide.png,"Environmental Scientist Resume: Portfolio, Proof and the Bullets That Matter",environmental-scientist-resume-guide,Tier 2,Resume Examples,environmental scientist resume,no,no,no
+596,sustainability-manager-resume-guide.png,Sustainability Manager Resume: Describing Craft Without the Clichés,sustainability-manager-resume-guide,Tier 2,Resume Examples,sustainability manager resume,no,no,no
+597,nonprofit-program-manager-resume-guide.png,Nonprofit Program Manager Resume: Linking a Portfolio That Gets Opened,nonprofit-program-manager-resume-guide,Tier 2,Resume Examples,nonprofit program manager resume,no,no,no
+598,grant-writer-resume-guide.png,"Grant Writer Resume: Portfolio, Proof and the Bullets That Matter",grant-writer-resume-guide,Tier 2,Resume Examples,grant writer resume,no,no,no
+599,event-manager-resume-guide.png,Event Manager Resume: Showing Range Without Looking Unfocused,event-manager-resume-guide,Tier 2,Resume Examples,event manager resume,no,no,no
+600,hotel-manager-resume-guide.png,A Hotel Manager Resume That Earns the Portfolio Click,hotel-manager-resume-guide,Tier 2,Resume Examples,hotel manager resume,no,no,no
+601,restaurant-manager-resume-guide.png,What Goes on a Restaurant Manager Resume When You Have a Portfolio,restaurant-manager-resume-guide,Tier 2,Resume Examples,restaurant manager resume,no,no,no
+602,real-estate-agent-resume-guide.png,Real Estate Agent Resume: Linking a Portfolio That Gets Opened,real-estate-agent-resume-guide,Tier 2,Resume Examples,real estate agent resume,no,no,no
+603,construction-project-manager-resume-guide.png,Construction Project Manager Resume: Describing Craft Without the Clichés,construction-project-manager-resume-guide,Tier 2,Resume Examples,construction project manager resume,no,no,no
+604,site-supervisor-resume-guide.png,"Site Supervisor Resume: Portfolio, Proof and the Bullets That Matter",site-supervisor-resume-guide,Tier 2,Resume Examples,site supervisor resume,no,no,no
+605,electrician-resume-guide.png,A Electrician Resume That Earns the Portfolio Click,electrician-resume-guide,Tier 2,Resume Examples,electrician resume,no,no,no
+606,plumber-resume-guide.png,Plumber Resume: Linking a Portfolio That Gets Opened,plumber-resume-guide,Tier 2,Resume Examples,plumber resume,no,no,no
+607,hvac-technician-resume-guide.png,What Goes on a HVAC Technician Resume When You Have a Portfolio,hvac-technician-resume-guide,Tier 2,Resume Examples,hvac technician resume,no,no,no
+608,cnc-machinist-resume-guide.png,What Goes on a CNC Machinist Resume When You Have a Portfolio,cnc-machinist-resume-guide,Tier 2,Resume Examples,cnc machinist resume,no,no,no
+609,welder-resume-guide.png,Welder Resume: Showing Range Without Looking Unfocused,welder-resume-guide,Tier 2,Resume Examples,welder resume,no,no,no
+610,truck-driver-resume-guide.png,What Goes on a Truck Driver Resume When You Have a Portfolio,truck-driver-resume-guide,Tier 2,Resume Examples,truck driver resume,no,no,no
+611,security-guard-resume-guide.png,"Security Guard Resume: Portfolio, Proof and the Bullets That Matter",security-guard-resume-guide,Tier 2,Resume Examples,security guard resume,no,no,no
+612,police-officer-resume-guide.png,"Police Officer Resume: Portfolio, Proof and the Bullets That Matter",police-officer-resume-guide,Tier 2,Resume Examples,police officer resume,no,no,no
+613,firefighter-resume-guide.png,Firefighter Resume: Describing Craft Without the Clichés,firefighter-resume-guide,Tier 2,Resume Examples,firefighter resume,no,no,no
+614,air-traffic-controller-resume-guide.png,A Air Traffic Controller Resume That Earns the Portfolio Click,air-traffic-controller-resume-guide,Tier 2,Resume Examples,air traffic controller resume,no,no,no
+615,pilot-resume-guide.png,Pilot Resume: Showing Range Without Looking Unfocused,pilot-resume-guide,Tier 2,Resume Examples,pilot resume,no,no,no
+616,aircraft-maintenance-engineer-resume-guide.png,"Aircraft Maintenance Engineer Resume: Portfolio, Proof and the Bullets That Matter",aircraft-maintenance-engineer-resume-guide,Tier 2,Resume Examples,aircraft maintenance resume,no,no,no
+617,supply-chain-analyst-resume-guide.png,Supply Chain Analyst Resume: Linking a Portfolio That Gets Opened,supply-chain-analyst-resume-guide,Tier 2,Resume Examples,supply chain analyst resume,no,no,no
+618,hr-business-partner-resume-guide.png,HR Business Partner Resume: When the Work Speaks and When Words Must,hr-business-partner-resume-guide,Tier 2,Resume Examples,hr business partner resume,no,no,no
+619,talent-acquisition-specialist-resume-guide.png,"Talent Acquisition Specialist Resume: Portfolio, Proof and the Bullets That Matter",talent-acquisition-specialist-resume-guide,Tier 2,Resume Examples,talent acquisition resume,no,no,no
+620,learning-development-manager-resume-guide.png,A Learning and Development Manager Resume That Earns the Portfolio Click,learning-development-manager-resume-guide,Tier 2,Resume Examples,l and d manager resume,no,no,no
+621,compensation-benefits-analyst-resume-guide.png,Compensation and Benefits Analyst Resume: When the Work Speaks and When Words Must,compensation-benefits-analyst-resume-guide,Tier 2,Resume Examples,compensation analyst resume,no,no,no
+622,executive-assistant-resume-guide.png,A Executive Assistant Resume That Earns the Portfolio Click,executive-assistant-resume-guide,Tier 2,Resume Examples,executive assistant resume,no,no,no
+623,office-manager-resume-guide.png,Office Manager Resume: Linking a Portfolio That Gets Opened,office-manager-resume-guide,Tier 2,Resume Examples,office manager resume,no,no,no
+624,virtual-assistant-resume-guide.png,A Virtual Assistant Resume That Earns the Portfolio Click,virtual-assistant-resume-guide,Tier 2,Resume Examples,virtual assistant resume,no,no,no
+625,data-entry-specialist-resume-guide.png,A Data Entry Specialist Resume That Earns the Portfolio Click,data-entry-specialist-resume-guide,Tier 2,Resume Examples,data entry resume,no,no,no
+626,call-center-agent-resume-guide.png,What Goes on a Call Center Agent Resume When You Have a Portfolio,call-center-agent-resume-guide,Tier 2,Resume Examples,call center resume,no,no,no
+627,hospitality-to-corporate-resume.png,Hospitality to Corporate: Skills That Transfer Better Than You Think,hospitality-to-corporate-resume,Tier 2,Career Change,hospitality to corporate resume,no,no,no
+628,retail-to-operations-resume.png,Retail Management to Operations: A Direct Route,retail-to-operations-resume,Tier 2,Career Change,retail to operations resume,no,no,no
+629,support-to-engineering-resume.png,Support to Engineering: Making the Internal Case on Paper,support-to-engineering-resume,Tier 2,Career Change,support to engineer resume,no,no,no
+630,qa-to-developer-resume.png,QA to Development: A Resume That Shows the Shift,qa-to-developer-resume,Tier 2,Career Change,qa to developer resume,no,no,no
+631,agency-to-client-side-resume.png,Agency to Client Side: Reframing Account Work,agency-to-client-side-resume,Tier 2,Career Change,agency to client side resume,no,no,no
+632,public-to-private-sector-resume.png,Public Sector to Private: Translating Process Into Impact,public-to-private-sector-resume,Tier 2,Career Change,government to private sector resume,no,no,no
+633,private-to-public-sector-resume.png,Private to Public Sector: Meeting Selection Criteria,private-to-public-sector-resume,Tier 2,Career Change,private to government resume,no,no,no
+634,nonprofit-to-corporate-resume.png,Nonprofit to Corporate Without Losing the Mission Story,nonprofit-to-corporate-resume,Tier 2,Career Change,nonprofit to corporate resume,no,no,no
+635,new-role-same-industry.png,Changing Career Without Changing Industry,new-role-same-industry,Tier 2,Career Change,change role same industry,no,no,no
+636,same-role-new-industry.png,Changing Industry Without Changing Role,same-role-new-industry,Tier 2,Career Change,same role new industry,no,no,no
+637,returning-to-a-former-field.png,Going Back to a Field You Left Years Ago,returning-to-a-former-field,Tier 2,Career Change,returning to old career resume,no,no,no
+638,deliberately-stepping-down.png,Stepping Down a Level Deliberately,deliberately-stepping-down,Tier 2,Career Change,step down career resume,no,no,no
+639,study-gap-on-resume.png,A Gap You Spent Studying,study-gap-on-resume,Tier 2,Career Gaps & Setbacks,gap year study resume,no,no,no
+640,travel-gap-on-resume.png,A Gap You Spent Travelling,travel-gap-on-resume,Tier 2,Career Gaps & Setbacks,travel gap resume,no,no,no
+641,open-to-work-on-resume.png,Should You Say You're 'Open to Work' on the Resume?,open-to-work-on-resume,Tier 2,Career Gaps & Setbacks,open to work on resume,no,no,no
+642,demotion-on-a-resume.png,Demotion or Sideways Move on a Resume,demotion-on-a-resume,Tier 2,Career Gaps & Setbacks,demotion on resume,no,no,no
+643,returning-after-burnout.png,Rebuilding After a Long Illness or Burnout,returning-after-burnout,Tier 2,Career Gaps & Setbacks,return to work after burnout,no,no,no
+644,getting-a-useful-resume-review.png,Asking Someone to Review Your Resume (and What to Ask),getting-a-useful-resume-review,Tier 2,Career Gaps & Setbacks,get resume reviewed,no,no,no
+645,rusty-skill-on-your-resume.png,A Skill on Your Resume You Haven't Used in Two Years,rusty-skill-on-your-resume,Tier 2,Interview Preparation,rusty skill interview,no,no,no
+646,project-you-barely-touched.png,Being Asked About a Project You Barely Touched,project-you-barely-touched,Tier 2,Interview Preparation,interview project you didnt lead,no,no,no
+647,first-call-preparation.png,Preparing for a Fifteen-Minute First Call,first-call-preparation,Tier 2,Interview Preparation,15 minute screening call prep,no,no,no
+648,deflecting-salary-early.png,Deflecting the Salary Question Without Being Evasive,deflecting-salary-early,Tier 2,Interview Preparation,avoid salary question interview,no,no,no
+649,video-interview-setup.png,"Your Camera, Light and Background Are Part of the Answer",video-interview-setup,Tier 2,Interview Preparation,video interview setup,no,no,no
+650,star-for-vague-questions.png,Using STAR When the Question Is Vague,star-for-vague-questions,Tier 2,Interview Preparation,star method vague question,no,no,no
+651,influence-without-authority.png,Describing a Time You Influenced Without Authority,influence-without-authority,Tier 2,Interview Preparation,influence without authority interview,no,no,no
+652,pressure-and-deadline-questions.png,Questions About Handling Pressure and Deadlines,pressure-and-deadline-questions,Tier 2,Interview Preparation,pressure interview question,no,no,no
+653,thinking-aloud-technical.png,Thinking Aloud in a Technical Interview,thinking-aloud-technical,Tier 2,Interview Preparation,think aloud technical interview,no,no,no
+654,data-case-interview.png,Data Case Interviews: Structuring an Answer,data-case-interview,Tier 2,Interview Preparation,data case interview,no,no,no
+655,product-metrics-interview.png,Product Metrics Interviews: Choosing the Right Number,product-metrics-interview,Tier 2,Interview Preparation,product metrics interview,no,no,no
+656,sales-mock-pitch-round.png,Sales Interviews: The Mock Pitch Round,sales-mock-pitch-round,Tier 2,Interview Preparation,sales interview role play,no,no,no
+657,sales-metrics-interview.png,Talking Numbers in a Sales Interview,sales-metrics-interview,Tier 2,Interview Preparation,sales interview quota questions,no,no,no
+658,finance-technical-questions.png,Finance Interviews: Technical Questions You Must Not Miss,finance-technical-questions,Tier 2,Interview Preparation,finance interview technical questions,no,no,no
+659,clinical-scenario-questions.png,Clinical Interviews: Scenario and Ethics Questions,clinical-scenario-questions,Tier 2,Interview Preparation,nursing interview scenario questions,no,no,no
+660,healthcare-values-interview.png,Values-Based Interviews in Healthcare,healthcare-values-interview,Tier 2,Interview Preparation,values based interview nhs,no,no,no
+661,teaching-demo-lesson.png,Teaching Interviews and the Demo Lesson,teaching-demo-lesson,Tier 2,Interview Preparation,teaching interview demo lesson,no,no,no
+662,assessment-centre-exercises.png,Assessment Centres: Group Exercises and What's Scored,assessment-centre-exercises,Tier 2,Interview Preparation,assessment centre tips,no,no,no
+663,group-exercise-tactics.png,Group Exercises Without Dominating or Disappearing,group-exercise-tactics,Tier 2,Interview Preparation,group exercise interview,no,no,no
+664,unpaid-take-home-limits.png,When a Take-Home Is Really Unpaid Work,unpaid-take-home-limits,Tier 2,Interview Preparation,unpaid take home assignment,no,no,no
+665,peer-interview-round.png,Meeting the Team: What Peers Are Assessing,peer-interview-round,Tier 2,Interview Preparation,peer interview round,no,no,no
+666,skip-level-interview.png,The Skip-Level or Founder Round,skip-level-interview,Tier 2,Interview Preparation,founder interview round,no,no,no
+667,reading-the-room-in-interview.png,Reading the Room: Signals the Interview Is Going Badly,reading-the-room-in-interview,Tier 2,Interview Preparation,interview going badly signs,no,no,no
+668,recovering-a-bad-interview.png,Recovering an Interview That Started Badly,recovering-a-bad-interview,Tier 2,Interview Preparation,recover bad interview,no,no,no
+669,asking-for-feedback-after-no.png,Asking for Feedback After a Rejection,asking-for-feedback-after-no,Tier 2,Interview Preparation,ask for interview feedback,no,no,no
+670,researching-before-interview.png,Researching a Company Beyond the Careers Page,researching-before-interview,Tier 2,Interview Preparation,research company before interview,no,no,no
+671,interviewing-while-employed.png,Interviewing While Employed: Logistics and Discretion,interviewing-while-employed,Tier 2,Interview Preparation,interview while employed,no,no,no
+672,the-ten-minutes-before.png,Nerves: What Actually Helps in the Ten Minutes Before,the-ten-minutes-before,Tier 2,Interview Preparation,interview nerves before,no,no,no
+673,cover-letter-length-2026.png,How Long a Cover Letter Should Be,cover-letter-length-2026,Tier 2,Cover Letters,cover letter length,no,no,no
+674,addressing-without-a-name.png,Addressing a Letter When You Don't Know the Name,addressing-without-a-name,Tier 2,Cover Letters,cover letter no name,no,no,no
+675,speculative-application-letter.png,Writing a Letter for a Speculative Application,speculative-application-letter,Tier 2,Cover Letters,speculative cover letter,no,no,no
+676,internal-role-letter.png,A Letter for an Internal Role,internal-role-letter,Tier 2,Cover Letters,internal application letter,no,no,no
+677,cover-letter-as-email-body.png,The Email Version: When the Letter Is the Message Body,cover-letter-as-email-body,Tier 2,Cover Letters,cover letter email body,no,no,no
+678,cover-letter-cliches.png,Cover Letter Clichés Recruiters Skim Past,cover-letter-cliches,Tier 2,Cover Letters,cover letter cliches,no,no,no
+679,linkedin-for-career-changers.png,A LinkedIn Profile for a Career Changer,linkedin-for-career-changers,Tier 2,LinkedIn & Personal Branding,linkedin career change profile,no,no,no
+680,linkedin-featured-and-projects.png,"Featured, Projects and Portfolio Links on LinkedIn",linkedin-featured-and-projects,Tier 2,LinkedIn & Personal Branding,linkedin featured section,no,no,no
+681,asking-for-recommendations.png,Recommendations: Who to Ask and What to Ask For,asking-for-recommendations,Tier 2,LinkedIn & Personal Branding,linkedin recommendations,no,no,no
+682,portfolio-when-work-is-nda.png,A Portfolio When Your Work Is Confidential,portfolio-when-work-is-nda,Tier 2,Portfolio,portfolio confidential work,no,no,no
+683,portfolio-for-non-creative-roles.png,Portfolios for Non-Creative Roles,portfolio-for-non-creative-roles,Tier 2,Portfolio,portfolio for analyst,no,no,no
+684,writing-portfolio-no-clips.png,A Writing Portfolio Without Published Clips,writing-portfolio-no-clips,Tier 2,Portfolio,writing portfolio no clips,no,no,no
+685,site-or-pdf-portfolio.png,Personal Site vs PDF Portfolio,site-or-pdf-portfolio,Tier 2,Portfolio,portfolio website or pdf,no,no,no
+686,portfolio-home-page-contents.png,What to Put on the Portfolio Home Page,portfolio-home-page-contents,Tier 2,Portfolio,portfolio homepage,no,no,no
+687,employers-ai-policies.png,Employers Who Ask Whether You Used AI,employers-ai-policies,Tier 2,AI & Careers,employer ai disclosure policy,no,no,no
+688,ai-changing-your-field.png,Which Jobs AI Is Actually Changing in Your Field,ai-changing-your-field,Tier 2,AI & Careers,ai changing my job,no,no,no
+689,prompt-engineering-on-resume.png,Prompt Engineering on a Resume: Real Signal or Noise,prompt-engineering-on-resume,Tier 2,AI & Careers,prompt engineering resume,no,no,no
+690,tracking-applications-simply.png,Tracking Applications Without a Spreadsheet Mess,tracking-applications-simply,Tier 2,Job Search Strategy,track job applications,no,no,no
+691,weekly-job-search-routine.png,A Weekly Job-Search Routine That Survives a Full-Time Job,weekly-job-search-routine,Tier 2,Job Search Strategy,job search routine while working,no,no,no
+692,reading-a-posted-salary-range.png,Reading a Salary Range Before You Apply,reading-a-posted-salary-range,Tier 2,Job Search Strategy,job posting salary range,no,no,no
+693,sorting-recruiter-messages.png,Recruiters Who Contact You: Sorting Real From Noise,sorting-recruiter-messages,Tier 2,Job Search Strategy,recruiter message real or spam,no,no,no
+694,staying-application-ready.png,Keeping a Resume Ready for Opportunities You Didn't Plan,staying-application-ready,Tier 2,Job Search Strategy,resume ready passive candidate,no,no,no
+695,the-application-not-to-send.png,The Application You Should Not Send,the-application-not-to-send,Tier 2,Job Search Strategy,when not to apply,no,no,no
+696,final-year-project-depth.png,A Final-Year Project on One Line and on Five,final-year-project-depth,Tier 2,Resume Sections,final year project resume,no,no,no
+697,group-coursework-your-part.png,Group Coursework: Claiming Your Part Honestly,group-coursework-your-part,Tier 2,Resume Sections,group project resume,no,no,no
+698,extracurriculars-that-count.png,"Society, Club and Sports Roles That Count",extracurriculars-that-count,Tier 2,Resume Sections,extracurricular on resume,no,no,no
+699,unrelated-summer-job.png,A Summer Job That Has Nothing to Do With Your Degree,unrelated-summer-job,Tier 2,Resume Sections,unrelated job on student resume,no,no,no
+700,internship-to-fulltime-paper.png,Converting an Internship Into a Full-Time Offer on Paper,internship-to-fulltime-paper,Tier 2,Resume Tailoring,internship to fulltime resume,no,no,no
+701,hackathons-and-open-source.png,"Listing Hackathons, Competitions and Open Source",hackathons-and-open-source,Tier 2,Resume Sections,hackathon on resume,no,no,no
+702,research-assistant-on-resume.png,A Research Assistant Role on an Industry Resume,research-assistant-on-resume,Tier 2,Resume Sections,research assistant resume,no,no,no
+703,graduating-into-a-weak-market.png,Graduating Into a Weak Market,graduating-into-a-weak-market,Tier 2,Resume Tailoring,graduating bad job market resume,no,no,no
+704,building-experience-to-write-about.png,Asking for More Responsibility to Fill the Resume,building-experience-to-write-about,Tier 2,Resume Writing,get experience for resume,no,no,no
+705,after-a-graduate-programme.png,A Resume After a Graduate Programme Ends,after-a-graduate-programme,Tier 2,Resume Tailoring,after graduate scheme resume,no,no,no
+706,stating-p-and-l-ownership.png,P&L Ownership and How to State It,stating-p-and-l-ownership,Tier 2,Resume Bullets & Achievements,p and l on resume,no,no,no
+707,turnaround-stories-on-resume.png,Turnaround and Transformation Stories on a Resume,turnaround-stories-on-resume,Tier 2,Resume Bullets & Achievements,transformation leader resume,no,no,no
+708,what-headhunters-read-first.png,Executive Search: What Headhunters Read First,what-headhunters-read-first,Tier 2,Resume Tailoring,headhunter resume,no,no,no
+709,management-back-to-ic.png,Moving Back From Management to IC,management-back-to-ic,Tier 2,Resume Tailoring,manager back to ic resume,no,no,no
+710,independent-consultant-resume.png,Consulting Independently After a Corporate Career,independent-consultant-resume,Tier 2,Resume Writing,independent consultant resume,no,no,no
+711,returnship-application-resume.png,A Returnship Application Resume,returnship-application-resume,Tier 2,Resume Tailoring,returnship resume,no,no,no
+712,returning-after-caring.png,Returning After Caring for a Relative,returning-after-caring,Tier 2,Resume Tailoring,return to work after caring,no,no,no
+713,refreshing-skills-before-applying.png,Refreshing Skills Before You Apply Again,refreshing-skills-before-applying,Tier 2,Resume Tailoring,refresh skills before applying,no,no,no
+714,disability-and-the-resume.png,A Resume With a Disability or Accommodation Question,disability-and-the-resume,Tier 2,Resume Tailoring,disability on resume,no,no,no
+715,neurodivergent-resume-strengths.png,Neurodivergent Job Seekers: Writing to Your Strengths,neurodivergent-resume-strengths,Tier 2,Resume Tailoring,neurodivergent resume,no,no,no
+716,foreign-qualifications-on-paper.png,Getting Foreign Qualifications Recognised on Paper,foreign-qualifications-on-paper,Tier 2,Resume Sections,foreign degree on resume,no,no,no
+717,resume-in-a-second-language.png,Writing a Resume in a Second Language,resume-in-a-second-language,Tier 2,Resume Writing,resume in second language,no,no,no
+718,applying-to-a-competitor.png,Applying to a Competitor of Your Current Employer,applying-to-a-competitor,Tier 2,Job Search Strategy,apply to competitor,no,no,no
+719,roles-that-are-new.png,A Resume for a Role That Didn't Exist Five Years Ago,roles-that-are-new,Tier 2,Resume Tailoring,new job title no history,no,no,no
+720,academic-cv-vs-industry-cv.png,Academic CV vs Industry CV in Europe,academic-cv-vs-industry-cv,Tier 2,International Resumes,academic cv europe,no,no,no
+721,british-or-american-spelling.png,British or American Spelling on a Resume,british-or-american-spelling,Tier 2,International Resumes,british or american spelling resume,no,no,no
+722,tone-and-directness-by-market.png,How Direct to Sound: Self-Promotion Norms by Market,tone-and-directness-by-market,Tier 2,International Resumes,resume tone by country,no,no,no
+723,bilingual-resume-versions.png,Bilingual Applications: Submitting Two Versions,bilingual-resume-versions,Tier 2,International Resumes,bilingual resume versions,no,no,no
+724,degree-classification-abroad.png,Stating a Degree Classification Foreign Recruiters Understand,degree-classification-abroad,Tier 2,International Resumes,degree classification on resume,no,no,no
+725,gpa-conversion-on-resume.png,"GPA, Percentage or Class: Converting Grades on a Resume",gpa-conversion-on-resume,Tier 2,International Resumes,convert gpa for resume,no,no,no
+726,licences-that-dont-transfer.png,Professional Licences That Don't Transfer,licences-that-dont-transfer,Tier 2,International Resumes,licence not recognised abroad resume,no,no,no
+727,unknown-foreign-employer.png,Naming an Employer Nobody Abroad Recognises,unknown-foreign-employer,Tier 2,International Resumes,unknown foreign employer resume,no,no,no
+728,lebenslauf-structure-expected.png,The German Lebenslauf: Structure Recruiters Expect,lebenslauf-structure-expected,Tier 2,International Resumes,lebenslauf structure,no,no,no
+729,german-application-folder.png,The German Application Folder: Certificates and Attachments,german-application-folder,Tier 2,International Resumes,bewerbungsmappe zeugnisse,no,no,no
+730,french-cv-conventions.png,French CV Conventions and the Lettre de Motivation,french-cv-conventions,Tier 2,International Resumes,french cv conventions,no,no,no
+731,dutch-cv-for-english-speakers.png,Dutch CV Expectations for English Speakers,dutch-cv-for-english-speakers,Tier 2,International Resumes,dutch cv english,no,no,no
+732,spanish-cv-conventions.png,Spanish and Latin American CV Conventions,spanish-cv-conventions,Tier 2,International Resumes,spanish cv format,no,no,no
+733,gulf-resume-page-one.png,Middle East Resumes: What Gulf Employers Expect on Page One,gulf-resume-page-one,Tier 2,International Resumes,gulf resume expectations,no,no,no
+734,japan-applying-in-english.png,Applying to Japanese Companies in English,japan-applying-in-english,Tier 2,International Resumes,japan english application,no,no,no
+735,anz-selection-criteria-style.png,Australian and New Zealand Applications: Selection Criteria Style,anz-selection-criteria-style,Tier 2,International Resumes,australia selection criteria resume,no,no,no
+736,singapore-hongkong-resume-fields.png,Singapore and Hong Kong: Expected Resume Fields,singapore-hongkong-resume-fields,Tier 2,International Resumes,singapore resume fields,no,no,no
+737,system-design-in-two-lines.png,Describing System Design Work in Two Lines,system-design-in-two-lines,Tier 2,Industry & Role Guides,system design on resume,no,no,no
+738,oncall-and-incidents-as-wins.png,"On-Call, Incidents and Reliability as Achievements",oncall-and-incidents-as-wins,Tier 2,Industry & Role Guides,on call experience resume,no,no,no
+739,migrations-as-achievements.png,Migrations and Refactors: Making Invisible Work Visible,migrations-as-achievements,Tier 2,Industry & Role Guides,migration project resume,no,no,no
+740,open-source-that-counts.png,Open Source Contributions That Carry Weight,open-source-that-counts,Tier 2,Industry & Role Guides,open source on resume,no,no,no
+741,agile-without-padding.png,"Agile, Scrum and Ceremonies: What Not to Pad With",agile-without-padding,Tier 2,Industry & Role Guides,agile on resume,no,no,no
+742,startup-engineering-resume.png,A Resume for a Startup Engineering Team of Five,startup-engineering-resume,Tier 2,Industry & Role Guides,startup engineer resume,no,no,no
+743,experiments-on-a-resume.png,A/B Tests and Experiments on a Resume,experiments-on-a-resume,Tier 2,Industry & Role Guides,ab testing resume,no,no,no
+744,model-metrics-that-land.png,Model Metrics That Mean Something to a Hiring Manager,model-metrics-that-land,Tier 2,Industry & Role Guides,ml metrics resume,no,no,no
+745,pipelines-in-business-terms.png,Data Engineering Pipelines Described in Business Terms,pipelines-in-business-terms,Tier 2,Industry & Role Guides,data pipeline resume,no,no,no
+746,kaggle-worth-listing.png,Kaggle and Competition Results: Worth Listing?,kaggle-worth-listing,Tier 2,Industry & Role Guides,kaggle on resume,no,no,no
+747,naming-deals-under-nda.png,Naming Clients and Transactions Under Confidentiality,naming-deals-under-nda,Tier 2,Industry & Role Guides,confidential deals resume,no,no,no
+748,audit-work-as-achievement.png,Regulatory and Audit Work as Achievements,audit-work-as-achievement,Tier 2,Industry & Role Guides,audit experience resume,no,no,no
+749,continuing-education-placement.png,Continuing Education and Mandatory Training,continuing-education-placement,Tier 2,Industry & Role Guides,ceu on resume,no,no,no
+750,agency-shifts-on-clinical-resume.png,Agency and Bank Shifts on a Clinical Resume,agency-shifts-on-clinical-resume,Tier 2,Industry & Role Guides,agency nursing resume,no,no,no
+751,changing-clinical-specialty.png,Moving Between Specialties in Healthcare,changing-clinical-specialty,Tier 2,Industry & Role Guides,change nursing specialty resume,no,no,no
+752,attribution-honesty-marketing.png,Attribution Honesty: Claiming Growth You Influenced,attribution-honesty-marketing,Tier 2,Industry & Role Guides,marketing attribution resume,no,no,no
+753,channel-specialist-or-generalist.png,Channel Specialisms vs Generalist Positioning,channel-specialist-or-generalist,Tier 2,Industry & Role Guides,marketing generalist resume,no,no,no
+754,bylines-you-dont-own.png,A Content Portfolio With Bylines You Don't Own,bylines-you-dont-own,Tier 2,Industry & Role Guides,ghostwriting portfolio,no,no,no
+755,design-work-under-nda.png,Design Work Under NDA in a Portfolio,design-work-under-nda,Tier 2,Industry & Role Guides,design nda portfolio,no,no,no
+756,before-after-redesign-cases.png,Before-and-After Redesigns as Case Studies,before-after-redesign-cases,Tier 2,Industry & Role Guides,redesign case study,no,no,no
+757,territory-and-deal-size-context.png,"Territory, Segment and Deal Size as Context",territory-and-deal-size-context,Tier 2,Industry & Role Guides,sales territory resume,no,no,no
+758,ramp-time-on-sales-resume.png,Ramp Time and Tenure on a Sales Resume,ramp-time-on-sales-resume,Tier 2,Industry & Role Guides,sales ramp time resume,no,no,no
+759,cs-metrics-beyond-nps.png,Customer Success Metrics That Aren't Just NPS,cs-metrics-beyond-nps,Tier 2,Industry & Role Guides,customer success resume metrics,no,no,no
+760,lean-six-sigma-placement.png,"Lean, Six Sigma and Belt Certifications",lean-six-sigma-placement,Tier 2,Industry & Role Guides,six sigma on resume,no,no,no
+761,safety-and-compliance-wins.png,Safety Records and Compliance as Achievements,safety-and-compliance-wins,Tier 2,Industry & Role Guides,safety record resume,no,no,no
+762,operational-scope-framing.png,"Shift Work, Plants and Sites: Framing Operational Scope",operational-scope-framing,Tier 2,Industry & Role Guides,plant operations resume,no,no,no
+763,disruption-stories-supply-chain.png,Supply Chain Disruption Stories on a Resume,disruption-stories-supply-chain,Tier 2,Industry & Role Guides,supply chain resume achievements,no,no,no
+764,classroom-management-as-skill.png,Classroom Management as a Professional Skill,classroom-management-as-skill,Tier 2,Industry & Role Guides,classroom management resume,no,no,no
+765,grants-and-funding-totals.png,"Grants, Funding and Fundraising Totals",grants-and-funding-totals,Tier 2,Industry & Role Guides,fundraising on resume,no,no,no
+766,programme-delivery-numbers.png,Programme Delivery and Beneficiary Numbers,programme-delivery-numbers,Tier 2,Industry & Role Guides,nonprofit resume metrics,no,no,no
+767,public-sector-grades-on-resume.png,Public Sector Grading and Pay Bands on a Resume,public-sector-grades-on-resume,Tier 2,Industry & Role Guides,civil service grade resume,no,no,no
+768,bar-admission-and-jurisdictions.png,Bar Admission and Jurisdictions,bar-admission-and-jurisdictions,Tier 2,Industry & Role Guides,bar admission resume,no,no,no
+769,inhouse-versus-private-practice.png,In-House vs Private Practice Positioning,inhouse-versus-private-practice,Tier 2,Industry & Role Guides,in house counsel resume,no,no,no
+770,covers-revenue-team-size.png,"Covers, Revenue and Team Size in Hospitality",covers-revenue-team-size,Tier 2,Industry & Role Guides,hospitality resume metrics,no,no,no
+771,retail-targets-and-shrinkage.png,Retail Targets and Shrinkage as Achievements,retail-targets-and-shrinkage,Tier 2,Industry & Role Guides,retail resume achievements,no,no,no
+772,trades-tickets-and-licences.png,"Tickets, Licences and Cards on a Trades Resume",trades-tickets-and-licences,Tier 2,Industry & Role Guides,trades resume certifications,no,no,no
+773,site-experience-project-values.png,Site Experience and Project Values in Construction,site-experience-project-values,Tier 2,Industry & Role Guides,construction resume project value,no,no,no
+774,hiring-numbers-time-to-fill.png,Hiring Numbers and Time-to-Fill on an HR Resume,hiring-numbers-time-to-fill,Tier 2,Industry & Role Guides,recruiter resume metrics,no,no,no
+775,er-cases-described-safely.png,Employee Relations Cases Described Safely,er-cases-described-safely,Tier 2,Industry & Role Guides,employee relations resume,no,no,no
+776,hris-experience-that-matters.png,HR Systems and HRIS Experience That Matters,hris-experience-that-matters,Tier 2,Industry & Role Guides,hris on resume,no,no,no
+777,resume-works-for-one-role-only.png,Your Resume Works for One Role Type and Nothing Else,resume-works-for-one-role-only,Tier 2,ATS Optimization,resume only works for one role,no,no,no
+778,referrals-not-converting.png,When Referrals Don't Convert Either,referrals-not-converting,Tier 2,ATS Optimization,referral did not work,no,no,no
+779,resume-was-fine-two-years-ago.png,Your Resume Was Fine Two Years Ago,resume-was-fine-two-years-ago,Tier 2,ATS Optimization,resume outdated now,no,no,no
+780,internal-applications-going-nowhere.png,Applying Internally and Getting Nowhere,internal-applications-going-nowhere,Tier 2,ATS Optimization,internal applications rejected,no,no,no
+781,only-junior-roles-respond.png,Senior Roles Ignoring You While Junior Ones Respond,only-junior-roles-respond,Tier 2,ATS Optimization,only junior roles respond,no,no,no
+782,more-experienced-candidate-line.png,Every Rejection Says 'More Experienced Candidate',more-experienced-candidate-line,Tier 2,ATS Optimization,more experienced candidate rejection,no,no,no
+783,boolean-search-and-your-resume.png,How Boolean Search Finds (and Misses) Your Resume,boolean-search-and-your-resume,Tier 2,ATS Optimization,boolean search resume,no,no,no
+784,search-strings-to-write-for.png,Recruiter Search Strings You Should Write For,search-strings-to-write-for,Tier 2,ATS Optimization,recruiter search string,no,no,no
+785,ranking-versus-filtering.png,Ranking vs Filtering: Two Different ATS Behaviours,ranking-versus-filtering,Tier 2,ATS Optimization,ats ranking vs filtering,no,no,no
+786,long-jd-versus-short-jd.png,Scoring Against a Long JD vs a Short One,long-jd-versus-short-jd,Tier 2,ATS Optimization,long job description ats score,no,no,no
+787,inside-the-shortlist-view.png,What Happens to Your Resume in a Recruiter's Shortlist View,inside-the-shortlist-view,Tier 2,ATS Optimization,recruiter shortlist view,no,no,no
+788,updating-after-you-applied.png,Updating a Resume After You've Already Applied,updating-after-you-applied,Tier 2,ATS Optimization,update resume after applying,no,no,no
+789,contradicting-resume-versions.png,Resume Versions That Contradict Each Other,contradicting-resume-versions,Tier 2,ATS Optimization,conflicting resume versions,no,no,no
+790,background-check-versus-resume.png,Background Checks and What Your Resume Claimed,background-check-versus-resume,Tier 2,ATS Optimization,background check resume discrepancy,no,no,no
+791,rounding-employment-dates.png,Dates You Rounded and Why It Matters,rounding-employment-dates,Tier 2,ATS Optimization,rounded employment dates,no,no,no
+792,tailoring-to-a-three-line-jd.png,Tailoring When the JD Is Three Bullet Points Long,tailoring-to-a-three-line-jd,Tier 2,Resume Tailoring,very short job description,no,no,no
+793,tailoring-to-thirty-requirements.png,Tailoring to a JD That Lists Thirty Requirements,tailoring-to-thirty-requirements,Tier 2,Resume Tailoring,job description too many requirements,no,no,no
+794,jd-written-for-an-insider.png,A JD Written for the Person Already Doing the Job,jd-written-for-an-insider,Tier 2,Resume Tailoring,job description written for internal,no,no,no
+795,two-roles-one-company.png,When Two Jobs at the Same Company Overlap,two-roles-one-company,Tier 2,Resume Tailoring,two roles same company apply,no,no,no
+796,resume-for-a-talent-pool.png,"Tailoring a Resume for a Recruiter's Database, Not a Job",resume-for-a-talent-pool,Tier 2,Resume Tailoring,general application resume,no,no,no
+797,tailoring-when-approached.png,Tailoring When You're Being Poached,tailoring-when-approached,Tier 2,Resume Tailoring,approached by recruiter resume,no,no,no
+798,tailoring-after-feedback.png,Tailoring After the Hiring Manager Gave Feedback,tailoring-after-feedback,Tier 2,Resume Tailoring,resume feedback from hiring manager,no,no,no
+799,when-everything-is-relevant.png,What to Tailor When Everything Is Already Relevant,when-everything-is-relevant,Tier 2,Resume Tailoring,already relevant resume tailoring,no,no,no
+800,bullets-for-work-that-failed.png,Bullets for Work That Failed,bullets-for-work-that-failed,Tier 2,Resume Bullets & Achievements,failed project on resume,no,no,no
+801,process-improvement-plainly.png,Describing Process Improvement Without Jargon,process-improvement-plainly,Tier 2,Resume Bullets & Achievements,process improvement resume,no,no,no
+802,stakeholder-work-concretely.png,Describing Stakeholder Work Concretely,stakeholder-work-concretely,Tier 2,Resume Bullets & Achievements,stakeholder management resume,no,no,no
+803,mentoring-and-training-bullets.png,Describing Mentoring and Training Others,mentoring-and-training-bullets,Tier 2,Resume Bullets & Achievements,mentoring on resume,no,no,no
+804,cost-time-quality-together.png,"Describing Cost, Time and Quality Together",cost-time-quality-together,Tier 2,Resume Bullets & Achievements,cost time quality resume,no,no,no
+805,ranges-and-approximations.png,Using Ranges and Approximations Credibly,ranges-and-approximations,Tier 2,Resume Bullets & Achievements,approximate numbers resume,no,no,no
+806,comparing-to-a-baseline.png,Comparing Yourself to a Baseline,comparing-to-a-baseline,Tier 2,Resume Bullets & Achievements,baseline comparison resume,no,no,no
+807,achievements-because-of-team.png,Achievements That Happened Because of Your Team,achievements-because-of-team,Tier 2,Resume Bullets & Achievements,shared achievement resume,no,no,no
+808,bullet-order-within-a-job.png,The Bullet Order Within a Single Job,bullet-order-within-a-job,Tier 2,Resume Bullets & Achievements,order bullets within job,no,no,no
+809,what-a-review-service-fixes.png,What a Resume Review Service Can and Can't Fix,what-a-review-service-fixes,Tier 2,Job Search Strategy,resume review service worth it,no,no,no
+810,paid-templates-versus-parsing.png,Templates You Pay For vs Templates That Parse,paid-templates-versus-parsing,Tier 2,Job Search Strategy,paid resume template worth it,no,no,no
+811,choosing-a-resume-tool.png,Choosing Between Resume Tools Without a Trial,choosing-a-resume-tool,Tier 2,Job Search Strategy,compare resume tools,no,no,no
+812,when-free-is-enough.png,When a Free Tool Is Genuinely Enough,when-free-is-enough,Tier 2,Job Search Strategy,free resume tools enough,no,no,no
+813,personal-website-next-to-linkedin.png,Adding a Personal Website Next to LinkedIn,personal-website-next-to-linkedin,Tier 2,Resume Sections,personal website on resume,no,no,no
+814,publications-and-patents.png,Publications and Patents Outside Academia,publications-and-patents,Tier 2,Resume Sections,patents on resume,no,no,no
+815,awards-worth-the-line.png,Awards That Are Worth the Line,awards-worth-the-line,Tier 2,Resume Sections,awards on resume,no,no,no
+816,skills-top-or-bottom.png,A Skills Summary at the Top vs a List at the Bottom,skills-top-or-bottom,Tier 2,Resume Sections,skills at top or bottom,no,no,no
+817,core-competencies-or-padding.png,Core Competencies Blocks: Useful or Padding,core-competencies-or-padding,Tier 2,Resume Sections,core competencies resume,no,no,no
+818,selected-achievements-section.png,Adding a 'Selected Achievements' Section,selected-achievements-section,Tier 2,Resume Sections,selected achievements section,no,no,no
+819,technical-skills-matrix.png,A Technical Skills Matrix for Engineers,technical-skills-matrix,Tier 2,Resume Sections,technical skills matrix resume,no,no,no
+820,resume-on-a-phone-screen.png,A Resume That Reads Well on a Phone Screen,resume-on-a-phone-screen,Tier 2,Resume Writing,resume on mobile,no,no,no
+821,export-problems-by-editor.png,"Google Docs, Pages and Export Problems",export-problems-by-editor,Tier 2,Resume Writing,google docs resume export,no,no,no
+822,file-naming-at-volume.png,Naming Files When You Apply to Twenty Companies,file-naming-at-volume,Tier 2,Resume Writing,resume file naming system,no,no,no
+823,version-control-for-resumes.png,Version Control Without a Folder Full of Drafts,version-control-for-resumes,Tier 2,Resume Writing,resume version control,no,no,no
+824,plain-text-copy-for-forms.png,Keeping a Plain-Text Copy for Paste-In Forms,plain-text-copy-for-forms,Tier 2,Resume Writing,plain text resume,no,no,no
+825,applying-in-december.png,Applying in December: What Actually Happens to Your Resume,applying-in-december,Tier 2,Job Search Strategy,applying for jobs in december,no,no,no
+826,january-hiring-wave-prep.png,January Hiring Waves and Getting Ready in Advance,january-hiring-wave-prep,Tier 2,Job Search Strategy,january job market,no,no,no
+827,graduate-timeline-resume-ready.png,Graduate Recruitment Timelines and When to Have a Resume Ready,graduate-timeline-resume-ready,Tier 2,Job Search Strategy,graduate recruitment timeline,no,no,no
+828,resume-before-review-season.png,Updating a Resume Before Performance Review Season,resume-before-review-season,Tier 2,Job Search Strategy,resume before performance review,no,no,no
+829,resume-before-a-restructure.png,Preparing a Resume Before a Restructure Is Announced,resume-before-a-restructure,Tier 2,Job Search Strategy,resume before layoffs,no,no,no
+830,bank-teller-resume-guide.png,Bank Teller Resume: What to Put First and What to Cut,bank-teller-resume-guide,Tier 2,Resume Examples,bank teller resume,no,no,no
+831,loan-officer-resume-guide.png,Loan Officer Resume: What to Put First and What to Cut,loan-officer-resume-guide,Tier 2,Resume Examples,loan officer resume,no,no,no
+832,financial-advisor-resume-guide.png,Financial Advisor Resume: What to Put First and What to Cut,financial-advisor-resume-guide,Tier 2,Resume Examples,financial advisor resume,no,no,no
+833,bookkeeper-resume-guide.png,Bookkeeper Resume: What to Put First and What to Cut,bookkeeper-resume-guide,Tier 2,Resume Examples,bookkeeper resume,no,no,no
+834,payroll-specialist-resume-guide.png,Payroll Specialist Resume: What to Put First and What to Cut,payroll-specialist-resume-guide,Tier 2,Resume Examples,payroll specialist resume,no,no,no
+835,billing-specialist-resume-guide.png,Billing Specialist Resume: What to Put First and What to Cut,billing-specialist-resume-guide,Tier 2,Resume Examples,billing specialist resume,no,no,no
+836,receptionist-resume-guide.png,Receptionist Resume: What to Put First and What to Cut,receptionist-resume-guide,Tier 2,Resume Examples,receptionist resume,no,no,no
+837,administrative-coordinator-resume-guide.png,Administrative Coordinator Resume: What to Put First and What to Cut,administrative-coordinator-resume-guide,Tier 2,Resume Examples,administrative coordinator resume,no,no,no
+838,facilities-manager-resume-guide.png,Facilities Manager Resume: What to Put First and What to Cut,facilities-manager-resume-guide,Tier 2,Resume Examples,facilities manager resume,no,no,no
+839,fleet-manager-resume-guide.png,Fleet Manager Resume: What to Put First and What to Cut,fleet-manager-resume-guide,Tier 2,Resume Examples,fleet manager resume,no,no,no
+840,store-manager-resume-guide.png,Store Manager Resume: What to Put First and What to Cut,store-manager-resume-guide,Tier 2,Resume Examples,store manager resume,no,no,no
+841,merchandiser-resume-guide.png,Merchandiser Resume: What to Put First and What to Cut,merchandiser-resume-guide,Tier 2,Resume Examples,merchandiser resume,no,no,no
+842,retail-buyer-resume-guide.png,Buyer Resume: What to Put First and What to Cut,retail-buyer-resume-guide,Tier 2,Resume Examples,retail buyer resume,no,no,no
+843,category-manager-resume-guide.png,Category Manager Resume: What to Put First and What to Cut,category-manager-resume-guide,Tier 2,Resume Examples,category manager resume,no,no,no
+844,barista-supervisor-resume-guide.png,Barista / Café Supervisor Resume: What to Put First and What to Cut,barista-supervisor-resume-guide,Tier 2,Resume Examples,barista resume,no,no,no
+845,bartender-resume-guide.png,Bartender Resume: What to Put First and What to Cut,bartender-resume-guide,Tier 2,Resume Examples,bartender resume,no,no,no
+846,housekeeping-supervisor-resume-guide.png,Housekeeping Supervisor Resume: What to Put First and What to Cut,housekeeping-supervisor-resume-guide,Tier 2,Resume Examples,housekeeping resume,no,no,no
+847,tour-guide-resume-guide.png,Tour Guide Resume: What to Put First and What to Cut,tour-guide-resume-guide,Tier 2,Resume Examples,tour guide resume,no,no,no
+848,cabin-crew-resume-guide.png,Cabin Crew Resume: What to Put First and What to Cut,cabin-crew-resume-guide,Tier 2,Resume Examples,cabin crew resume,no,no,no
+849,travel-consultant-resume-guide.png,Travel Consultant Resume: What to Put First and What to Cut,travel-consultant-resume-guide,Tier 2,Resume Examples,travel consultant resume,no,no,no
+850,personal-trainer-resume-guide.png,Personal Trainer Resume: What to Put First and What to Cut,personal-trainer-resume-guide,Tier 2,Resume Examples,personal trainer resume,no,no,no
+851,physiotherapy-assistant-resume-guide.png,Physiotherapy Assistant Resume: What to Put First and What to Cut,physiotherapy-assistant-resume-guide,Tier 2,Resume Examples,physiotherapy assistant resume,no,no,no
+852,care-worker-resume-guide.png,Care Worker Resume: What to Put First and What to Cut,care-worker-resume-guide,Tier 2,Resume Examples,care worker resume,no,no,no
+853,childcare-worker-resume-guide.png,Childcare Worker Resume: What to Put First and What to Cut,childcare-worker-resume-guide,Tier 2,Resume Examples,childcare resume,no,no,no
+854,school-counselor-resume-guide.png,School Counselor Resume: What to Put First and What to Cut,school-counselor-resume-guide,Tier 2,Resume Examples,school counselor resume,no,no,no
+855,academic-advisor-resume-guide.png,Academic Advisor Resume: What to Put First and What to Cut,academic-advisor-resume-guide,Tier 2,Resume Examples,academic advisor resume,no,no,no
+856,admissions-officer-resume-guide.png,Admissions Officer Resume: What to Put First and What to Cut,admissions-officer-resume-guide,Tier 2,Resume Examples,admissions officer resume,no,no,no
+857,museum-curator-resume-guide.png,Museum Curator Resume: What to Put First and What to Cut,museum-curator-resume-guide,Tier 2,Resume Examples,curator resume,no,no,no
+858,archivist-resume-guide.png,Archivist Resume: What to Put First and What to Cut,archivist-resume-guide,Tier 2,Resume Examples,archivist resume,no,no,no
+859,translator-resume-guide.png,Translator Resume: What to Put First and What to Cut,translator-resume-guide,Tier 2,Resume Examples,translator resume,no,no,no
+860,interpreter-resume-guide.png,Interpreter Resume: What to Put First and What to Cut,interpreter-resume-guide,Tier 2,Resume Examples,interpreter resume,no,no,no
+861,editor-resume-guide.png,Editor Resume: What to Put First and What to Cut,editor-resume-guide,Tier 2,Resume Examples,editor resume,no,no,no
+862,proofreader-resume-guide.png,Proofreader Resume: What to Put First and What to Cut,proofreader-resume-guide,Tier 2,Resume Examples,proofreader resume,no,no,no
+863,social-media-coordinator-resume-guide.png,Social Media Coordinator Resume: What to Put First and What to Cut,social-media-coordinator-resume-guide,Tier 2,Resume Examples,social media coordinator resume,no,no,no
+864,community-manager-resume-guide.png,Community Manager Resume: What to Put First and What to Cut,community-manager-resume-guide,Tier 2,Resume Examples,community manager resume,no,no,no
+865,podcast-producer-resume-guide.png,Podcast Producer Resume: What to Put First and What to Cut,podcast-producer-resume-guide,Tier 2,Resume Examples,podcast producer resume,no,no,no
+866,sound-engineer-resume-guide.png,Sound Engineer Resume: What to Put First and What to Cut,sound-engineer-resume-guide,Tier 2,Resume Examples,sound engineer resume,no,no,no
+867,broadcast-technician-resume-guide.png,Broadcast Technician Resume: What to Put First and What to Cut,broadcast-technician-resume-guide,Tier 2,Resume Examples,broadcast technician resume,no,no,no
+868,film-production-assistant-resume-guide.png,Film Production Assistant Resume: What to Put First and What to Cut,film-production-assistant-resume-guide,Tier 2,Resume Examples,production assistant resume,no,no,no
+869,stage-manager-resume-guide.png,Stage Manager Resume: What to Put First and What to Cut,stage-manager-resume-guide,Tier 2,Resume Examples,stage manager resume,no,no,no
+870,agricultural-technician-resume-guide.png,Agricultural Technician Resume: What to Put First and What to Cut,agricultural-technician-resume-guide,Tier 2,Resume Examples,agricultural technician resume,no,no,no
+871,food-safety-inspector-resume-guide.png,Food Safety Inspector Resume: What to Put First and What to Cut,food-safety-inspector-resume-guide,Tier 2,Resume Examples,food safety inspector resume,no,no,no
+872,laboratory-analyst-resume-guide.png,Laboratory Analyst Resume: What to Put First and What to Cut,laboratory-analyst-resume-guide,Tier 2,Resume Examples,laboratory analyst resume,no,no,no
+873,quality-control-inspector-resume-guide.png,Quality Control Inspector Resume: What to Put First and What to Cut,quality-control-inspector-resume-guide,Tier 2,Resume Examples,quality control inspector resume,no,no,no
+874,surveyor-resume-guide.png,Surveyor Resume: What to Put First and What to Cut,surveyor-resume-guide,Tier 2,Resume Examples,surveyor resume,no,no,no
+875,estimator-resume-guide.png,Estimator Resume: What to Put First and What to Cut,estimator-resume-guide,Tier 2,Resume Examples,estimator resume,no,no,no
+876,health-safety-officer-resume-guide.png,Health and Safety Officer Resume: What to Put First and What to Cut,health-safety-officer-resume-guide,Tier 2,Resume Examples,health and safety officer resume,no,no,no
+877,energy-analyst-resume-guide.png,Energy Analyst Resume: What to Put First and What to Cut,energy-analyst-resume-guide,Tier 2,Resume Examples,energy analyst resume,no,no,no
+878,marine-engineer-resume-guide.png,Marine Engineer Resume: What to Put First and What to Cut,marine-engineer-resume-guide,Tier 2,Resume Examples,marine engineer resume,no,no,no
+879,mining-engineer-resume-guide.png,Mining Engineer Resume: What to Put First and What to Cut,mining-engineer-resume-guide,Tier 2,Resume Examples,mining engineer resume,no,no,no
+880,creative-resume-mistakes.png,Mistakes on a Creative Resume,creative-resume-mistakes,Tier 2,Resume Writing,creative resume mistakes,no,no,no
+881,grammar-errors-recruiters-notice.png,Grammar Errors Recruiters Notice Immediately,grammar-errors-recruiters-notice,Tier 2,Resume Writing,resume grammar mistakes,no,no,no
+882,tense-consistency-errors.png,Tense and Consistency Errors Across Jobs,tense-consistency-errors,Tier 2,Resume Writing,resume tense mistakes,no,no,no
+883,copying-a-template-badly.png,Copying a Template Without Adapting It,copying-a-template-badly,Tier 2,Resume Writing,template copying mistake,no,no,no
+884,writing-for-yourself-not-reader.png,Writing for Yourself Instead of the Reader,writing-for-yourself-not-reader,Tier 2,Resume Writing,resume written for yourself,no,no,no
+885,leading-with-education-wrongly.png,Leading With Education When You Shouldn't,leading-with-education-wrongly,Tier 2,Resume Writing,education first mistake,no,no,no
+886,forgetting-the-summary.png,Forgetting to Update the Summary After Tailoring,forgetting-the-summary,Tier 2,Resume Writing,summary not updated tailoring,no,no,no
+887,sending-the-wrong-version.png,Sending the Wrong Version,sending-the-wrong-version,Tier 2,Resume Writing,sent wrong resume version,no,no,no
+888,wrong-company-name-left-in.png,Leaving Another Company's Name in the Letter,wrong-company-name-left-in,Tier 2,Resume Writing,wrong company name cover letter,no,no,no
+889,broken-links-on-resume.png,Broken or Dead Links on a Resume,broken-links-on-resume,Tier 2,Resume Writing,broken link on resume,no,no,no
+890,portfolio-behind-a-login.png,A Portfolio Link Behind a Login,portfolio-behind-a-login,Tier 2,Resume Writing,portfolio link requires login,no,no,no
+891,applying-from-your-phone.png,Mistakes When Applying From a Phone,applying-from-your-phone,Tier 2,Resume Writing,applying from phone mistakes,no,no,no
+892,application-form-mistakes.png,"Mistakes in the Application Form, Not the Resume",application-form-mistakes,Tier 2,Resume Writing,application form mistakes,no,no,no
+893,should-i-put-my-photo-on-my-resume.png,Should I Put My Photo on My Resume?,should-i-put-my-photo-on-my-resume,Tier 2,Resume Sections,should i put photo on resume,no,no,no
+894,should-i-apply-if-the-posting-is-two-months-old.png,Should I Apply if the Posting Is Two Months Old?,should-i-apply-if-the-posting-is-two-months-old,Tier 2,Job Search Strategy,old job posting apply,no,no,no
+895,should-i-follow-up-after-applying.png,Should I Follow Up After Applying?,should-i-follow-up-after-applying,Tier 2,Job Search Strategy,should i follow up after applying,no,no,no
+896,should-i-put-my-current-job-if-i-just-started.png,Should I Put My Current Job if I Just Started?,should-i-put-my-current-job-if-i-just-started,Tier 2,Resume Sections,new job on resume already applying,no,no,no
+897,should-i-list-a-job-i-was-only-at-for-a-month.png,Should I List a Job I Was Only At for a Month?,should-i-list-a-job-i-was-only-at-for-a-month,Tier 2,Resume Sections,one month job on resume,no,no,no
+898,should-i-explain-why-i-left-each-job.png,Should I Explain Why I Left Each Job?,should-i-explain-why-i-left-each-job,Tier 2,Resume Sections,reason for leaving on resume,no,no,no
+899,should-i-put-my-degree-if-i-never-finished.png,Should I Put My Degree if I Never Finished?,should-i-put-my-degree-if-i-never-finished,Tier 2,Resume Sections,unfinished degree list or not,no,no,no
+900,should-i-round-up-my-years-of-experience.png,Should I Round Up My Years of Experience?,should-i-round-up-my-years-of-experience,Tier 2,ATS Optimization,round up years experience,no,no,no
+901,should-i-apply-to-multiple-roles-at-one-company.png,Should I Apply to Multiple Roles at One Company?,should-i-apply-to-multiple-roles-at-one-company,Tier 2,Job Search Strategy,apply multiple roles same company,no,no,no
+902,who-should-i-ask-to-be-a-reference.png,Who Should I Ask to Be a Reference?,who-should-i-ask-to-be-a-reference,Tier 2,Resume Sections,who to ask for a reference,no,no,no
+903,should-i-list-my-certifications-before-education.png,Should I List My Certifications Before Education?,should-i-list-my-certifications-before-education,Tier 2,Resume Sections,certifications before education,no,no,no
+904,should-i-bold-keywords-in-my-resume.png,Should I Bold Keywords in My Resume?,should-i-bold-keywords-in-my-resume,Tier 2,ATS Optimization,bold keywords resume,no,no,no
+905,should-i-use-colour-on-an-ats-resume.png,Should I Use Colour on an ATS Resume?,should-i-use-colour-on-an-ats-resume,Tier 2,ATS Optimization,colour on ats resume,no,no,no
+906,do-recruiters-check-your-linkedin-before-calling.png,Do Recruiters Check Your LinkedIn Before Calling?,do-recruiters-check-your-linkedin-before-calling,Tier 2,LinkedIn & Personal Branding,recruiters check linkedin,no,no,no
+907,do-small-companies-use-an-ats.png,Do Small Companies Use an ATS?,do-small-companies-use-an-ats,Tier 2,ATS Optimization,small companies ats,no,no,no
+908,does-a-longer-resume-rank-higher.png,Does a Longer Resume Rank Higher?,does-a-longer-resume-rank-higher,Tier 2,ATS Optimization,longer resume better ats,no,no,no
+909,how-long-should-i-wait-before-following-up.png,How Long Should I Wait Before Following Up?,how-long-should-i-wait-before-following-up,Tier 2,Job Search Strategy,how long wait follow up,no,no,no
+910,what-makes-a-resume-look-cheap.png,What Makes a Resume Look Cheap?,what-makes-a-resume-look-cheap,Tier 2,Resume Writing,resume looks unprofessional,no,no,no
+911,what-if-my-whole-industry-is-shrinking.png,What if My Whole Industry Is Shrinking?,what-if-my-whole-industry-is-shrinking,Tier 2,Career Change,industry declining career change,no,no,no
+912,what-if-my-best-work-was-unpaid.png,What if My Best Work Was Unpaid?,what-if-my-best-work-was-unpaid,Tier 2,Resume Sections,unpaid work on resume,no,no,no
+913,what-if-i-was-the-only-person-in-my-role.png,What if I Was the Only Person in My Role?,what-if-i-was-the-only-person-in-my-role,Tier 2,Resume Bullets & Achievements,only person in role resume,no,no,no
+914,what-if-my-manager-took-credit-for-my-work.png,What if My Manager Took Credit for My Work?,what-if-my-manager-took-credit-for-my-work,Tier 2,Resume Bullets & Achievements,manager took credit resume,no,no,no
+915,when-is-a-resume-too-tailored.png,When Is a Resume Too Tailored?,when-is-a-resume-too-tailored,Tier 2,Resume Tailoring,resume too tailored,no,no,no
+916,why-does-my-resume-look-different-to-the-recruiter.png,Why Does My Resume Look Different to the Recruiter?,why-does-my-resume-look-different-to-the-recruiter,Tier 2,ATS Optimization,resume looks different recruiter,no,no,no
+917,bullet-symbols-that-break-parsing.png,"Bullet Characters, Dashes and Symbols That Confuse Parsers",bullet-symbols-that-break-parsing,Tier 3,ATS Optimization,resume bullet symbols ats,no,no,no
+918,formatting-ats-doesnt-care-about.png,"Resume Margins, Spacing and Length the Parser Doesn't Care About",formatting-ats-doesnt-care-about,Tier 3,ATS Optimization,resume margins ats myth,no,no,no
+919,resume-file-naming-recruiter-view.png,Naming Your Resume File: What the Recruiter Sees in Their Inbox,resume-file-naming-recruiter-view,Tier 3,ATS Optimization,resume file name ats,no,no,no
+920,how-long-ats-keeps-resume.png,"How Long an ATS Keeps Your Resume, and What a Talent Pool Means",how-long-ats-keeps-resume,Tier 3,ATS Optimization,how long does ats keep resume,no,no,no
+921,oracle-recruiting-cloud-resume.png,Oracle Recruiting Cloud: Formatting That Survives the Import,oracle-recruiting-cloud-resume,Tier 3,ATS Optimization,oracle recruiting cloud resume,no,no,no
+922,bamboohr-smb-ats-resume.png,BambooHR and Small-Company ATS: What Changes,bamboohr-smb-ats-resume,Tier 3,ATS Optimization,bamboohr resume tips,no,no,no
+923,smaller-ats-formatting-notes.png,"SmartRecruiters, Jobvite and Breezy: Quick Formatting Notes",smaller-ats-formatting-notes,Tier 3,ATS Optimization,smartrecruiters resume format,no,no,no
+924,same-job-different-wording.png,The Same Job Posted Twice With Different Wording — Which to Match,same-job-different-wording,Tier 3,Resume Tailoring,same job different wording,no,no,no
+925,jd-with-two-roles-combined.png,When the JD Lists Two Jobs in One Posting,jd-with-two-roles-combined,Tier 3,Resume Tailoring,job description two roles combined,no,no,no
+926,what-a-reposted-job-means.png,Reading Between the Lines of a Reposted Job,what-a-reposted-job-means,Tier 3,Resume Tailoring,job reposted what it means,no,no,no
+927,tailoring-for-hybrid-rto.png,Tailoring for a Hybrid Return-to-Office Role,tailoring-for-hybrid-rto,Tier 3,Resume Tailoring,hybrid role resume,no,no,no
+928,expired-certifications.png,"Expired Certifications: Keep, Cut or Requalify",expired-certifications,Tier 3,Resume Sections,expired certification resume,no,no,no
+929,acquired-or-renamed-company.png,Company Acquired or Renamed: Which Name Goes on the Resume,acquired-or-renamed-company,Tier 3,Resume Sections,company acquired resume,no,no,no
+930,contract-ended-early.png,A Contract That Ended Early,contract-ended-early,Tier 3,Career Gaps & Setbacks,contract ended early resume,no,no,no
+931,employer-that-went-under.png,A Company That Went Under,employer-that-went-under,Tier 3,Career Gaps & Setbacks,company closed resume,no,no,no
+932,resume-after-incarceration.png,Returning to Work After Prison,resume-after-incarceration,Tier 3,Career Gaps & Setbacks,resume after incarceration,no,no,no
+933,modelling-test-round.png,The Modelling Test Round,modelling-test-round,Tier 3,Interview Preparation,financial modelling test interview,no,no,no
+934,posting-while-job-hunting.png,Posting on LinkedIn When You're Job Hunting,posting-while-job-hunting,Tier 3,LinkedIn & Personal Branding,linkedin posting job search,no,no,no
+935,keeping-a-portfolio-current.png,Keeping a Portfolio Current Without Rebuilding It,keeping-a-portfolio-current,Tier 3,Portfolio,update portfolio regularly,no,no,no
+936,two-applications-one-month.png,Applying to a Company Twice in One Month,two-applications-one-month,Tier 3,Job Search Strategy,multiple applications one company,no,no,no
+937,reapplying-after-six-months.png,Reapplying After Six Months,reapplying-after-six-months,Tier 3,Job Search Strategy,reapply after six months,no,no,no
+938,study-abroad-on-resume.png,Study Abroad and Exchange Terms,study-abroad-on-resume,Tier 3,Resume Sections,study abroad on resume,no,no,no
+939,board-level-resume.png,A Board or Advisory Resume,board-level-resume,Tier 3,Resume Writing,board resume,no,no,no
+940,fractional-career-resume.png,A Resume for a Fractional or Portfolio Career,fractional-career-resume,Tier 3,Resume Writing,fractional executive resume,no,no,no
+941,applying-with-a-record.png,Applying With a Criminal Record,applying-with-a-record,Tier 3,Resume Tailoring,criminal record job application,no,no,no
+942,name-fields-and-parsing.png,"Your Name, Their Applicant Tracking System",name-fields-and-parsing,Tier 3,ATS Optimization,unusual name ats,no,no,no
+943,four-day-week-applications.png,A Resume for a Four-Day-Week Employer,four-day-week-applications,Tier 3,Resume Tailoring,four day week job application,no,no,no
+944,applying-after-their-layoffs.png,Applying to a Company That Just Had Layoffs,applying-after-their-layoffs,Tier 3,Job Search Strategy,apply after company layoffs,no,no,no
+945,non-competes-and-your-resume.png,Non-Competes and What You Can Put on a Resume,non-competes-and-your-resume,Tier 3,Resume Sections,non compete resume,no,no,no
+946,signing-and-dating-a-resume.png,Signing and Dating a Resume: Where It's Still Expected,signing-and-dating-a-resume,Tier 3,International Resumes,sign resume country,no,no,no
+947,paper-size-and-pdf-settings.png,"Paper Sizes, Margins and PDF Settings for Overseas Applications",paper-size-and-pdf-settings,Tier 3,International Resumes,a4 vs letter resume,no,no,no
+948,currency-and-units-in-bullets.png,Currency and Units in Achievements for a Foreign Reader,currency-and-units-in-bullets,Tier 3,International Resumes,currency on resume,no,no,no
+949,nordic-cv-and-personal-letter.png,Nordic Applications: Short CVs and Personal Letters,nordic-cv-and-personal-letter,Tier 3,International Resumes,nordic cv personal letter,no,no,no
+950,italian-cv-privacy-line.png,Italian CV and the Privacy Consent Line,italian-cv-privacy-line,Tier 3,International Resumes,italian cv privacy consent,no,no,no
+951,swiss-cv-and-references.png,Swiss Applications: Precision and the Reference Letter,swiss-cv-and-references,Tier 3,International Resumes,swiss cv references,no,no,no
+952,korean-standard-application-form.png,Korean Resumes and the Standard Application Form,korean-standard-application-form,Tier 3,International Resumes,korean resume form,no,no,no
+953,uk-irish-referees.png,Irish and UK Referee Expectations,uk-irish-referees,Tier 3,International Resumes,uk cv references,no,no,no
+954,duplicate-profiles-in-ats.png,Duplicate Profiles in One ATS,duplicate-profiles-in-ats,Tier 3,ATS Optimization,duplicate ats profile,no,no,no
+955,withdraw-and-reapply.png,Withdrawing and Reapplying With a Better Resume,withdraw-and-reapply,Tier 3,ATS Optimization,withdraw application reapply,no,no,no
+956,tailoring-for-an-unusual-role.png,Tailoring for a Role With No Clear Career Path,tailoring-for-an-unusual-role,Tier 3,Resume Tailoring,unusual role resume,no,no,no
+957,tailoring-when-unsure.png,Tailoring for a Job You're Not Sure You Want,tailoring-when-unsure,Tier 3,Resume Tailoring,unsure about the role,no,no,no
+958,retailoring-for-same-company.png,How Often to Re-Tailor for the Same Company,retailoring-for-same-company,Tier 3,Resume Tailoring,retailor for same company,no,no,no
+959,tailoring-a-resume-you-didnt-write.png,Tailoring a Resume You Didn't Write,tailoring-a-resume-you-didnt-write,Tier 3,Resume Tailoring,inherited resume rewrite,no,no,no
+960,cancelled-project-bullets.png,Bullets for a Project That Was Cancelled,cancelled-project-bullets,Tier 3,Resume Bullets & Achievements,cancelled project resume,no,no,no
+961,two-addresses-on-resume.png,Two Addresses: Applying While Between Cities,two-addresses-on-resume,Tier 3,Resume Sections,two addresses on resume,no,no,no
+962,international-phone-formats.png,Phone Numbers and International Formats,international-phone-formats,Tier 3,Resume Sections,international phone number resume,no,no,no
+963,professional-email-address.png,A Professional Email Address That Isn't Your Name,professional-email-address,Tier 3,Resume Sections,professional email resume,no,no,no
+964,pronouns-on-a-resume.png,Pronouns on a Resume,pronouns-on-a-resume,Tier 3,Resume Sections,pronouns on resume,no,no,no
+965,qr-code-on-printed-resume.png,A QR Code on a Printed Resume,qr-code-on-printed-resume,Tier 3,Resume Sections,qr code resume,no,no,no
+966,speaking-engagements-on-resume.png,Speaking Engagements and Conference Talks,speaking-engagements-on-resume,Tier 3,Resume Sections,conference talks resume,no,no,no
+967,memberships-and-associations.png,Professional Memberships and Associations,memberships-and-associations,Tier 3,Resume Sections,professional membership resume,no,no,no
+968,tools-versus-methodologies.png,Tools vs Methodologies in a Skills List,tools-versus-methodologies,Tier 3,Resume Sections,tools vs methodologies resume,no,no,no
+969,printing-for-an-interview.png,Printing a Resume for an In-Person Interview,printing-for-an-interview,Tier 3,Resume Writing,print resume for interview,no,no,no
+970,locked-pdf-problems.png,Password-Protected and Locked PDFs,locked-pdf-problems,Tier 3,Resume Writing,locked pdf resume,no,no,no
+971,fonts-that-dont-embed.png,Fonts That Don't Embed and What Breaks,fonts-that-dont-embed,Tier 3,Resume Writing,font embedding pdf resume,no,no,no
+972,file-size-limits-on-portals.png,File Size Limits on Application Portals,file-size-limits-on-portals,Tier 3,Resume Writing,resume file size limit,no,no,no
+973,fiscal-year-end-applications.png,Applying Around a Fiscal Year End,fiscal-year-end-applications,Tier 3,Job Search Strategy,fiscal year end hiring,no,no,no
+974,summer-hiring-slowdown.png,Summer Hiring Slowdowns: Real or Myth,summer-hiring-slowdown,Tier 3,Job Search Strategy,summer hiring slow,no,no,no
+975,filename-mistakes.png,Filename Mistakes That Reach the Recruiter,filename-mistakes,Tier 3,Resume Writing,resume filename mistake,no,no,no
+976,should-i-include-salary-history.png,Should I Include Salary History?,should-i-include-salary-history,Tier 3,Resume Sections,salary history on resume,no,no,no
+977,should-i-add-a-skills-bar-chart.png,Should I Add a Skills Bar Chart?,should-i-add-a-skills-bar-chart,Tier 3,Resume Sections,skills chart resume,no,no,no
+978,should-i-write-in-third-person.png,Should I Write in Third Person?,should-i-write-in-third-person,Tier 3,Resume Writing,third person resume,no,no,no
+979,should-i-put-available-immediately.png,Should I Put 'Available Immediately'?,should-i-put-available-immediately,Tier 3,Resume Sections,available immediately resume,no,no,no
+980,should-i-include-failed-certifications-in-progress.png,Should I Include Failed Certifications in Progress?,should-i-include-failed-certifications-in-progress,Tier 3,Resume Sections,in progress certification list,no,no,no
+981,should-i-tell-my-current-employer-im-looking.png,Should I Tell My Current Employer I'm Looking?,should-i-tell-my-current-employer-im-looking,Tier 3,Job Search Strategy,tell employer job searching,no,no,no
+982,should-i-include-volunteer-work-if-its-unrelated.png,Should I Include Volunteer Work if It's Unrelated?,should-i-include-volunteer-work-if-its-unrelated,Tier 3,Resume Sections,unrelated volunteer work resume,no,no,no
+983,does-applying-on-weekends-matter.png,Does Applying on Weekends Matter?,does-applying-on-weekends-matter,Tier 3,Job Search Strategy,apply on weekend,no,no,no
+984,how-recent-do-certifications-need-to-be.png,How Recent Do Certifications Need to Be?,how-recent-do-certifications-need-to-be,Tier 3,Resume Sections,how recent certifications,no,no,no
+985,ai-native-role-resumes.png,Resumes for AI-Native Roles That Didn't Exist in 2024,ai-native-role-resumes,Tier 4,AI & Careers,ai native role resume,no,no,no
+986,ai-fluency-without-engineering.png,Showing AI Fluency Without Claiming to Be an Engineer,ai-fluency-without-engineering,Tier 4,AI & Careers,ai fluency on resume,no,no,no
+987,when-the-interviewer-is-ai.png,When the Interviewer Is an AI Agent,when-the-interviewer-is-ai,Tier 4,AI & Careers,ai agent interviewer,no,no,no
+988,skills-based-hiring-changes.png,Skills-Based Hiring: What Changes on the Resume,skills-based-hiring-changes,Tier 4,AI & Careers,skills based hiring resume,no,no,no
+989,degree-optional-screening.png,Degree-Optional Postings and How They're Screened,degree-optional-screening,Tier 4,AI & Careers,degree optional job screening,no,no,no
+990,work-samples-replacing-resumes.png,Work Samples Replacing Resumes in Some Sectors,work-samples-replacing-resumes,Tier 4,AI & Careers,work sample instead of resume,no,no,no
+991,verified-credentials-and-badges.png,Verified Credentials and Digital Badges,verified-credentials-and-badges,Tier 4,AI & Careers,digital badges resume,no,no,no
+992,portfolio-first-applications.png,Portfolio-First Applications Without a Resume,portfolio-first-applications,Tier 4,AI & Careers,apply with portfolio only,no,no,no
+993,async-first-written-tests.png,Async-First Companies and Written Application Tests,async-first-written-tests,Tier 4,AI & Careers,async hiring written test,no,no,no
+994,four-day-week-screening.png,Four-Day-Week Employers and What They Screen For,four-day-week-screening,Tier 4,AI & Careers,four day week hiring,no,no,no
+995,returnships-becoming-standard.png,Returnships Becoming Standard Practice,returnships-becoming-standard,Tier 4,AI & Careers,returnship programmes,no,no,no
+996,internal-talent-marketplaces.png,Internal Talent Marketplaces and Your Internal Profile,internal-talent-marketplaces,Tier 4,AI & Careers,internal talent marketplace,no,no,no
+997,contract-to-hire-implications.png,Contract-to-Hire on the Rise: Resume Implications,contract-to-hire-implications,Tier 4,AI & Careers,contract to hire resume,no,no,no
+998,micro-credentials-checked.png,Micro-Credentials That Employers Actually Check,micro-credentials-checked,Tier 4,AI & Careers,micro credentials employers,no,no,no
+999,blind-application-formats.png,Anonymous and Blind Applications,blind-application-formats,Tier 4,AI & Careers,blind recruitment resume,no,no,no
+1000,video-introductions-attached.png,Video Introductions Attached to Applications,video-introductions-attached,Tier 4,AI & Careers,video intro application,no,no,no
