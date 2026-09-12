@@ -762,6 +762,17 @@ _SUMMARY_BANNED_PHRASES = (
     "problem-solving skills", "Seeking a challenging role", "Dynamic professional",
     "Excellent communication skills", "Self-motivated", "wide range of",
     "various technologies", "Strong background in", "Experienced professional with",
+    # Added with the 6-7 line length. A longer paragraph is an invitation to
+    # fill space with assertion rather than fact, and these are the words that
+    # get reached for when a sentence has nothing left to say.
+    "extensive experience", "robust", "cutting-edge", "seasoned",
+    "demonstrated ability", "proven expertise", "comprehensive understanding",
+    "well-versed", "track record", "deep understanding", "highly skilled",
+    # Weak future-focused closings. They turn a statement of capability into a
+    # statement of hope, and they are most damaging on exactly the early-career
+    # resumes where they are most tempting.
+    "prepared to grow into", "looking to gain experience", "hoping to develop",
+    "eager to learn", "aspiring to", "seeking to gain",
 )
 
 # Hedging constructions that shrink real work into mere acquaintance. Banned by
@@ -834,21 +845,70 @@ Guidelines to Follow:
 ### Rule 00: THE PROFESSIONAL SUMMARY (MANDATORY — IT IS THE MOST-READ LINE ON THE RESUME)
 The `summary` is the first thing a recruiter reads and it is where a generic resume gives itself away. A summary that would fit any candidate applying to any job has FAILED, however well written it is. Write it LAST, after the bullets are done, so it can draw on what the tailored resume actually shows.
 
-WRITE IT AS CAPABILITY DOMAINS, ONE PER SENTENCE — 3 to 5 sentences. This is the single most important instruction in this rule. A summary that crams the whole profile into two dense keyword-loaded sentences has failed even if every word in it is true. Each sentence takes ONE dimension of the candidate and makes a complete claim about it:
-  Sentence 1 — IDENTITY AND SCOPE: the role, at the seniority the resume genuinely supports, plus the breadth of the lifecycle or problem space the candidate actually covers. Name the stages ("across the end-to-end machine learning lifecycle, including data pipelines, feature engineering, model training, deployment, and evaluation"), because the stage names are themselves what a recruiter and an ATS are scanning for.
-  Sentence 2 — WHAT THEY BUILD AND SHIP, and the concrete stack it is built with. Say the form the work takes ("as REST APIs and inference services"), then the tools.
-  Sentence 3 — THE PRACTICES that make the work production-grade: the methodology, tooling and discipline layered on top (experiment tracking, versioning, containerized deployment, CI/CD automation, testing, monitoring), ending in what those practices deliver ("reproducible, production-grade systems").
-  Sentence 4 — APPLIED SPECIALISMS AND DOMAINS, with what they were used for, and whether the work reached real users.
-Use FEWER sentences when the resume genuinely supports fewer. A junior resume with one project must NOT be padded out to four sentences — padding invents breadth, and inventing is the one unforgivable failure. Three honest sentences beat five stretched ones.
+LENGTH: use the SHORTEST length that communicates the candidate's strongest qualifications.
+- Students and early-career candidates: about 60 to 100 words.
+- Experienced candidates: about 80 to 120 words.
+Never exceed 120 words. One paragraph, 4 to 5 sentences.
+
+Length is a ceiling, not a target. A 75-word summary that lands every point beats a 120-word one carrying the same content more slowly. If you have said everything the resume supports in four sentences, stop — adding a fifth to fill the budget is padding, and padding is visible.
+
+THERE IS NO TEMPLATE. DO NOT follow a fixed sentence order. This is the single most important instruction in this rule, and it replaces an earlier version of this prompt that supplied a numbered sentence plan — that plan produced summaries which were structurally identical across completely different candidates, with only the nouns swapped. If two people in different fields would come out with the same sentence shapes, you are slot-filling, not writing.
+
+DERIVE THE ORDER FROM THE RESUME. Before writing, identify the single most distinctive thing this candidate has for THIS job — a named product they built, a specialism, a scale they operated at, a domain they know. That goes in SENTENCE ONE. Everything else arranges itself behind it, in whatever order this particular profile calls for.
+
+NEVER OPEN WITH A LIFECYCLE LIST. "Across the end-to-end ML lifecycle including data preparation, feature engineering, model training, deployment and evaluation" describes every practitioner in the field and differentiates nobody. It is the single most wasteful opening available — roughly thirteen words spent restating the job title. The same applies to "the full frontend lifecycle", "the full software development lifecycle", "end-to-end data workflows" and every variant. If the candidate built a named product, that product opens the summary.
+
+LENGTH: 2 to 3 sentences, 45 to 60 words. Hard ceiling 65. This is a budget you must fit inside, not a target to approach — a 48-word summary that lands three real claims beats a 60-word one carrying the same content slowly.
+
+LEAD WITH THE DIFFERENTIATOR, NOT THE CATEGORY. If the distinctive content is a shipped product (an ATS scoring engine, a Chrome extension, a resume-tailoring pipeline), it opens the summary and it is named in plain words — never parenthesised at the end of sentence four. If the distinctive content is a specialism (NLP, Retrieval Augmented Generation), that opens instead. Whatever a competing candidate with the same job title could NOT write about themselves is what goes first.
+
+SAY EACH CAPABILITY EXACTLY ONCE. "Deployment as services", "post-deployment monitoring" and "deployed features" are ONE capability written three times. So are "REST API integration", "integration with RESTful services" and "frontend-backend contracts". Before finishing, list the distinct claims you are making — if two sentences make the same claim in different words, delete one and spend the words on something new.
+
+NAME AT MOST FOUR TOOLS IN TOTAL. A summary listing eight technologies is a skills section in prose form, and the `skills` array already does that job. Choose the four that most distinguish this candidate for this job and let the rest live in `skills`.
+
+NEVER SPEND SUMMARY WORDS ON ASSUMED SKILLS. Every role has table stakes, and naming them signals junior — only someone without stronger material would spend the most-read line on them.
+  Frontend: HTML, HTML5, CSS, CSS3, JavaScript basics, ES6+, DOM manipulation, responsive design
+  Backend: CRUD, MVC, OOP, Git, basic SQL, REST basics
+  Machine learning: Python, scikit-learn, pandas, NumPy, Jupyter
+  Data: Excel, basic SQL, charts, dashboards
+A Machine Learning Engineer who spends a word on "Python" has wasted it.
+
+NO SENIORITY HEDGES. Never write "(early-career)", "(junior)", "aspiring", "entry-level" or "recent graduate". Leading with the weakest signal in the first six words is self-sabotage. Let the scale and substance of the work establish the level — a reader infers seniority from what was built far more reliably than from a label.
+
+NO FILLER CLOSER. Do not end on "collaborates with cross-functional teams", "documents technical processes", "committed to continuous improvement" or any variant. These carry no information, they could sit on any resume in the world, and they occupy the last thing a recruiter reads. End on the strongest concrete fact instead.
+
+DO NOT ATTACH OUTCOME LANGUAGE TO PLAIN TOOLING CHOICES. "Neon-hosted databases for scale" claims an achievement that a hosting choice does not evidence. "PostgreSQL for persistent state" is padding — persistence is what a database is. Name the tool, or name what was achieved with it, but never dress the former as the latter.
+
+NEVER END ON WEAK FUTURE-FOCUSED LANGUAGE. "Prepared to grow into...", "looking to gain experience in...", "hoping to develop skills in...", "eager to learn...", "aspiring to..." — all banned. They convert a statement of capability into a statement of hope, and they are most damaging exactly where they are most tempting, on an early-career resume that needs to sound capable. State what the candidate CAN do, then connect it to the target work: "Applies these fundamentals to process design, simulation and scale-up work" rather than "prepared to grow into process simulation".
+
+DO NOT INFLATE THE VOCABULARY. Plain, standard industry terminology beats elaborate phrasing every time. "Hands-on experience in process design" is better than "hands-on exposure to process design paradigms". If a simpler word carries the same meaning, use the simpler word — sophistication in a summary reads as compensation, and recruiters discount it.
+
+CUT WHAT DOES NOT STRENGTHEN THE FIT. Every clause must earn its place against THIS job description. Detail that is true, interesting and irrelevant is the most common reason a summary runs long. Remove it rather than shortening everything else to accommodate it.
+
+AT THIS LENGTH THE BUZZWORD RISK IS THE MAIN RISK. A longer paragraph is an invitation to fill space with words that assert instead of describing. Do not take it. Every additional line must add a FACT — a system, a stack, a practice, a domain, a scale, an outcome, a responsibility — never an adjective about the candidate. If you find yourself reaching for "extensive", "robust", "cutting-edge", "dynamic", "seasoned", "demonstrated ability", "strong background", "proven expertise", "comprehensive understanding", "well-versed" or "track record", the sentence has nothing left to say and should be cut rather than written. The banned-filler list below applies with full force to sentences 5 and 6.
+
+DESCRIBE HOW THE SKILLS ARE APPLIED, NEVER LIST THEM. A summary is not a skills section in prose form. Every technology named must sit inside a clause saying what was built, run or decided with it. "Builds and productionizes ML models as REST APIs using Python, FastAPI and Docker" applies the skills; "Skilled in Python, FastAPI, Docker, MLflow and AWS" lists them, and the `skills` array already does that job better.
+
+MATCH THE EMPHASIS TO THE SENIORITY THE RESUME SUPPORTS:
+- SENIOR / LEAD: emphasise ownership, technical decision-making, the scope of systems owned, production responsibility, and mentoring — but ONLY where the resume evidences each one. A senior summary that lists technologies instead of decisions reads as someone describing proximity to work rather than ownership of it.
+- MID-LEVEL: emphasise what was built end to end, the stack it was built with, and the outcomes it produced.
+- JUNIOR / EARLY-CAREER / FRESHER: emphasise relevant projects, technical foundations, internships and demonstrated capability. NEVER inflate seniority to close the gap — no "extensive experience", no invented ownership, no implied team leadership. A junior summary that is honest and concrete outperforms one straining to sound senior, and the strain is obvious to every recruiter who reads it.
+
+PRIORITISE BY THE JOB DESCRIPTION'S OWN TECHNICAL DOMAIN. Work out what this specific role is built around — backend engineering, data, ML, security, design, operations — and lead with the resume evidence closest to that centre. For a backend role that means backend services, API design, the language and framework, relational and non-relational data stores, testing, CI/CD, containerisation, cloud, queues, observability and system ownership. For a data role it means pipelines, modelling, warehousing and analysis. Apply the same logic to whatever domain the JD describes, and include each item ONLY where the resume genuinely evidences it.
 
 It MUST ALSO:
 - Name the role in its CANONICAL form, at the seniority the resume genuinely supports. Write the real job title ("Machine Learning Engineer", "Data Analyst", "Backend Software Engineer"). If the JD says "Data Analyst", do not write "Software Developer". If the resume evidences a total years-of-experience figure, lead with it.
 - Name the job description's HIGHEST-PRIORITY hard skills that the resume genuinely evidences, using the job description's own wording for them. These must be the JD's headline requirements, not whichever technologies were easiest to mention. GROUP them by what they are FOR, never as one flat comma list: "productionizes models as REST APIs and inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services (AWS)" beats "using Python, FastAPI, Flask, Docker, MLflow, AWS".
 - EXPAND ACRONYMS ON FIRST USE, then keep the short form: "Amazon Web Services (AWS)", "Retrieval Augmented Generation (RAG)", "Natural Language Processing (NLP)", "Continuous Integration/Continuous Deployment (CI/CD)". ATS keyword matching is literal, and the expanded form and the acronym are two different keywords — this is the one place in the resume where spending the extra words is worth it. Only expand acronyms the resume genuinely evidences.
-- Use PRESENT-TENSE capability verbs for what the candidate does habitually — "Builds", "Applies", "Designs", "Productionizes", "Automates" — because a summary describes a standing capability, not a single past event. Use past tense only for one specific shipped outcome.
+- Write in CANDIDATE VOICE, not job-description voice. "Machine Learning Engineer with 3 years building RAG pipelines for X" describes a person; "Implements interactive UIs", "Applies reproducible practices", "Builds and ships production-capable systems" describe a job opening. Bare present-tense verb openings ("Implements...", "Applies...", "Builds...") are the signature of the JD-echo failure — avoid starting consecutive sentences that way, and never start the summary that way.
+- MATCH THE TITLE TO THE SUBSTANCE. The role you name in sentence one must be supported by what the resume actually shows. If the title says "Machine Learning Engineer" but the resume evidences backend services, API work and product features with only LLM/RAG integration and no model training, modelling or evaluation methodology, then the honest title is "AI Engineer" or "Backend Engineer" — write that instead. A headline the body cannot deliver on is caught immediately by anyone who does the job, and it damages every other claim on the page.
 - Contain no first-person pronouns, and no sentence that could be lifted onto a stranger's resume unchanged.
 
-A concrete proof point — a metric, a scale, a named system, or a shipped outcome — is OPTIONAL, not required. Include one ONLY when it is genuinely the strongest evidence FOR THIS JOB. An impressive number that has nothing to do with what this job is hiring for actively WEAKENS the summary: it spends the most valuable line on the resume making a point the reader did not ask about, and it reads as the candidate reaching for whatever number they had. If the resume's only metrics are irrelevant to this JD, leave every number out and spend those words on capability instead. NEVER invent, estimate or inflate a number.
+EXACTLY ONE CONCRETE PROOF POINT IS REQUIRED — a metric, a scale, or a named system — and it must be taken VERBATIM from elsewhere in the resume. This reverses an earlier version of this rule which made proof points optional; that version produced summaries containing no evidence at all, while the source resume carried real numbers further down. Search the experience and project sections for the strongest number or named system relevant to THIS job and bring it up into the summary.
+
+If the resume genuinely contains no numbers anywhere, name the most specific system the candidate actually built — "the ATS scoring engine", "the payments reconciliation service" — never a vague substitute. "Serving a global user base", "at scale", "for real users" and "high-volume" are NOT evidence; they are the vague-claim pattern this rule exists to eliminate. NEVER invent, estimate or inflate a number, and NEVER omit the proof point entirely.
+
+Use AT MOST TWO metrics. One is usually right. An impressive number that has nothing to do with what this job is hiring for actively WEAKENS the summary: it spends the most valuable line on the resume making a point the reader did not ask about, and it reads as the candidate reaching for whatever number they had. If the resume's only metrics are irrelevant to this JD, leave every number out and spend those words on capability instead. NEVER invent, estimate or inflate a number.
 
 DO NOT ECHO THE JOB DESCRIPTION'S HEADLINE. The summary must read as a description of a person, not a compressed restatement of the posting. Specifically BANNED:
   - "<Role> focused on <the JD's headline/team name>" — e.g. "ML Engineer focused on AI/ML Platform & MLOps". Write "Machine Learning Engineer with ..." and let the capability sentences show the focus.
@@ -2018,7 +2078,209 @@ _SUMMARY_JD_ECHO_RE = re.compile(r"\bfocus(?:ed|ing)?\s+on\b", re.IGNORECASE)
 _SUMMARY_PRONOUN_RE = re.compile(r"\b(?:I|me|my|mine|we|our|ours)\b")
 
 _SUMMARY_MIN_SENTENCES = 2
-_SUMMARY_MAX_SENTENCES = 5
+_SUMMARY_MAX_SENTENCES = 4
+
+# Lifecycle-list openings. "Across the end-to-end ML lifecycle including data
+# preparation, feature engineering..." describes every practitioner in the
+# field and differentiates nobody - roughly thirteen words restating the job
+# title, in the most valuable position on the resume.
+_LIFECYCLE_OPENER_RE = re.compile(
+    r"\b(?:across|through(?:out)?|spanning|covering)\s+the\s+"
+    r"(?:full|entire|complete|end[-\s]?to[-\s]?end)\s+\w+",
+    re.IGNORECASE,
+)
+
+# Seniority hedges. Leading with the weakest signal in the first six words is
+# self-sabotage; the work should establish the level.
+_SENIORITY_HEDGE_RE = re.compile(
+    r"\((?:early[-\s]career|junior|entry[-\s]level|graduate|fresher)\)|"
+    r"\b(?:early[-\s]career|entry[-\s]level|aspiring|recent graduate|"
+    r"budding|upcoming)\b",
+    re.IGNORECASE,
+)
+
+# Filler closers that carry no information and could sit on any resume.
+_FILLER_CLOSER_RE = re.compile(
+    r"\b(?:collaborat\w+\s+with\s+(?:cross[-\s]functional|product|"
+    r"stakeholder|various)|documents?\s+technical\s+(?:processes|"
+    r"documentation)|committed\s+to\s+continuous|passionate\s+about\s+"
+    r"(?:learning|technology)|thrives?\s+in)\b",
+    re.IGNORECASE,
+)
+
+# Vague substitutes people reach for instead of a real proof point.
+_VAGUE_EVIDENCE_RE = re.compile(
+    r"\b(?:global user base|real users|at scale|large[-\s]scale|"
+    r"high[-\s]volume|numerous|various|multiple|several)\b",
+    re.IGNORECASE,
+)
+
+# Outcome language welded onto a plain tooling choice. "Neon-hosted databases
+# for scale" claims an achievement the hosting choice does not evidence.
+_OVERCLAIM_RE = re.compile(
+    r"\b\w+(?:-hosted|-backed|-powered)?\s+(?:databases?|storage|hosting|"
+    r"infrastructure)\s+for\s+(?:scale|performance|reliability|speed)\b",
+    re.IGNORECASE,
+)
+
+# Concepts that are one capability wearing different words. Two members of the
+# same group appearing in one summary is a restatement, not two claims.
+_SEMANTIC_GROUPS = (
+    {"rest api", "restful", "api integration", "frontend-backend contract", "apis"},
+    {"deployment", "deployed", "deploy", "productioniz", "production-capable",
+     "production-ready", "post-deployment"},
+    {"evaluation", "evaluating", "rubric", "assessment"},
+    {"responsive", "mobile-friendly", "adaptive layout"},
+    {"monitoring", "observability", "error tracking"},
+    {"pipeline", "pipelines", "workflow", "workflows"},
+    {"testing", "test automation", "automated testing", "e2e testing"},
+)
+
+# Table-stakes skills per domain. Naming these signals junior, because only a
+# candidate without stronger material would spend the most-read line on them.
+_BASELINE_SKILLS_BY_DOMAIN = {
+    "frontend": {"html", "html5", "css", "css3", "es6+", "es6",
+                 "dom manipulation", "responsive design", "javascript basics"},
+    "backend": {"crud", "mvc", "oop", "git", "basic sql", "rest basics"},
+    "ml": {"python", "scikit-learn", "sklearn", "pandas", "numpy", "jupyter"},
+    "data": {"excel", "basic sql", "charts", "dashboards"},
+}
+
+# Words whose presence in the JD says which domain's baseline list applies.
+_DOMAIN_HINTS = {
+    "frontend": ("frontend", "front-end", "react", "vue", "angular", "ui ", "ux "),
+    "ml": ("machine learning", "ml engineer", "deep learning", "model training", "mlops"),
+    "backend": ("backend", "back-end", "api", "microservice", "server-side"),
+    "data": ("data analyst", "analytics", "business intelligence", "data engineer"),
+}
+
+# A summary claiming an ML title needs ML substance behind it. LLM/RAG
+# integration alone is AI *application*, not machine learning engineering, and
+# a headline the body cannot deliver on is caught by anyone who does the job.
+_ML_TITLE_RE = re.compile(r"\bmachine learning engineer\b|\bml engineer\b", re.IGNORECASE)
+_ML_SUBSTANCE_RE = re.compile(
+    r"\b(?:model training|trained|training|fine-tun\w+|feature engineering|"
+    r"model evaluation|hyperparameter|cross-validation|scikit-learn|"
+    r"tensorflow|pytorch|xgboost|regression|classification|clustering)\b",
+    re.IGNORECASE,
+)
+
+
+def _has_concrete_evidence(summary: str) -> bool:
+    """Does the summary carry a real proof point rather than a vague claim?
+
+    A number, a percentage, a scale figure, or a capitalised named system all
+    count. "Serving a global user base" does not - that is the vague-claim
+    pattern the rule exists to eliminate.
+    """
+    text = str(summary or "")
+    if not text.strip():
+        return False
+    # Any digit that is not part of a version/acronym token (ES6, GA4, CSS3).
+    for m in re.finditer(r"\d[\d,.]*\+?%?", text):
+        token = text[max(0, m.start() - 12): m.end() + 2]
+        if re.search(r"[A-Za-z]\d", token) and not re.search(r"\d\s*(?:%|x\b|\+)", m.group(0)):
+            continue  # ES6 / GA4 / CSS3 style token, not a metric
+        return True
+    # A named system: two or more consecutive capitalised words that are not
+    # the opening role title, or a quoted/definite-article named component.
+    body = re.sub(r"^[^.]*\.", "", text, count=1)  # drop sentence one (the title)
+    if re.search(r"\bthe\s+[A-Z][\w-]*(?:\s+[A-Z][\w-]*)*\s+"
+                 r"(?:engine|service|platform|pipeline|extension|system|API)\b", body):
+        return True
+    if re.search(r"\b(?:ATS scoring|Chrome extension|resume tailoring)\b", body, re.IGNORECASE):
+        return True
+    return False
+
+
+def _duplicate_capability(summary: str) -> list[str]:
+    """Concepts stated more than once in different words.
+
+    String matching cannot catch this: "deployment as services",
+    "post-deployment monitoring" and "deployed features" share no common
+    token long enough to match, yet they are one capability written thrice.
+    """
+    lowered = str(summary or "").lower()
+    repeated: list[str] = []
+    for group in _SEMANTIC_GROUPS:
+        hits = sum(1 for term in group if term in lowered)
+        if hits >= 2:
+            repeated.append(sorted(group)[0])
+    return repeated
+
+
+def _summary_domain(jd_string: str) -> str:
+    """Which baseline-skill list applies, inferred from the job description."""
+    jd = str(jd_string or "").lower()
+    best, best_score = "", 0
+    for domain, hints in _DOMAIN_HINTS.items():
+        score = sum(1 for h in hints if h in jd)
+        if score > best_score:
+            best, best_score = domain, score
+    return best
+
+
+def _baseline_skills_present(summary: str, jd_string: str = "") -> list[str]:
+    """Table-stakes skills that should never occupy summary words."""
+    domain = _summary_domain(jd_string)
+    if not domain:
+        return []
+    lowered = str(summary or "").lower()
+    return sorted(
+        skill for skill in _BASELINE_SKILLS_BY_DOMAIN.get(domain, ())
+        if re.search(r"(?<![\w-])" + re.escape(skill) + r"(?![\w-])", lowered)
+    )
+
+
+def _count_named_tools(summary: str) -> int:
+    """Rough count of distinct named technologies in the summary.
+
+    Capitalised or camel-cased proper nouns that are not sentence openers,
+    plus a small set of lowercase tool names that never capitalise.
+    """
+    text = str(summary or "")
+    body = re.sub(r"(?<=[.!?])\s+", "\x00", text)
+    tools: set[str] = set()
+    for sentence in body.split("\x00"):
+        words = sentence.split()
+        for i, w in enumerate(words):
+            clean = w.strip("(),.;:/").replace("/", " ").split()
+            for tok in clean:
+                if i == 0 and tok[:1].isupper():
+                    continue  # sentence-initial capital
+                if re.fullmatch(r"[A-Z][A-Za-z0-9.+#-]{1,}", tok) or \
+                   re.fullmatch(r"[A-Z]{2,}\d?", tok):
+                    tools.add(tok.lower())
+    return len(tools)
+
+
+def _title_substance_mismatch(summary: str, resume_text: str = "") -> str:
+    """Does the claimed headline title match what the resume evidences?
+
+    Returns a suggested replacement title, or "" when the title is supported.
+    Currently checks the failure we have actually observed: an ML Engineer
+    headline over a resume whose only AI content is LLM/RAG integration, with
+    no training, modelling or evaluation methodology anywhere.
+    """
+    head = str(summary or "").split(".")[0]
+    if not _ML_TITLE_RE.search(head):
+        return ""
+    evidence = f"{summary} {resume_text}"
+    if _ML_SUBSTANCE_RE.search(evidence):
+        return ""
+    if re.search(r"\b(?:LLM|RAG|Retrieval Augmented Generation|prompt)\b",
+                 evidence, re.IGNORECASE):
+        return "AI Engineer"
+    return "Backend Engineer"
+
+# Rule 00 asks for 45-60 words with a hard ceiling of 65. The previous ceiling
+# of 130 was the reason a 114-word summary passed validation untouched: the
+# number was set from an older version of the rule and never brought down when
+# the rule tightened. The floor is reported but is NOT a rejection - a thin
+# junior resume produces a short honest summary, and padding it to hit a word
+# count is the exact failure the rule exists to prevent.
+_SUMMARY_MAX_WORDS = 65
+_SUMMARY_MIN_WORDS = 40
 
 
 def _summary_sentences(summary: str) -> list[str]:
@@ -2127,10 +2389,75 @@ def _summary_quality_issues(summary: str, jd_string: str = "") -> list[str]:
     elif len(sentences) > _SUMMARY_MAX_SENTENCES:
         issues.append("too_many_sentences")
 
+    word_count = len(text.split())
+    if word_count > _SUMMARY_MAX_WORDS:
+        issues.append("too_long")
+    elif word_count < _SUMMARY_MIN_WORDS:
+        issues.append("too_short")
+
     if sentences and _is_keyword_tail(sentences[-1]):
         issues.append("keyword_tail")
 
+    # --- checks added after three rounds of real output review --------------
+    # Each of these corresponds to a defect observed in production summaries
+    # that the earlier validator passed without comment.
+    if _LIFECYCLE_OPENER_RE.search(sentences[0] if sentences else ""):
+        issues.append("lifecycle_opener")
+
+    if _SENIORITY_HEDGE_RE.search(text):
+        issues.append("seniority_hedge")
+
+    if sentences and _FILLER_CLOSER_RE.search(sentences[-1]):
+        issues.append("filler_closer")
+
+    if _OVERCLAIM_RE.search(text):
+        issues.append("overclaim")
+
+    for concept in _duplicate_capability(text):
+        issues.append(f"duplicate_capability:{concept}")
+
+    for skill in _baseline_skills_present(text, jd_string):
+        issues.append(f"baseline_skill:{skill}")
+
+    if _count_named_tools(text) > _SUMMARY_MAX_TOOLS:
+        issues.append("tool_laundry")
+
+    if not _has_concrete_evidence(text):
+        issues.append("no_evidence")
+
+    if _VAGUE_EVIDENCE_RE.search(text):
+        issues.append("vague_evidence")
+
     return issues
+
+
+# How many named technologies may appear before the summary reads as a skills
+# section in prose form. The `skills` array already does that job.
+_SUMMARY_MAX_TOOLS = 4
+
+
+def summary_rejection_reasons(summary: str, jd_string: str = "",
+                              resume_text: str = "") -> list[str]:
+    """The subset of issues that should REJECT a summary outright.
+
+    Distinct from _summary_quality_issues(), which reports everything worth
+    knowing. These are the hard gates: a summary failing any of them is not
+    publishable, because each represents a defect that survived three rounds
+    of prompt-only fixes and reached real users.
+    """
+    hard = {
+        "too_long", "no_evidence", "vague_evidence", "lifecycle_opener",
+        "seniority_hedge", "filler_closer", "overclaim", "tool_laundry",
+        "empty",
+    }
+    reasons = [
+        issue for issue in _summary_quality_issues(summary, jd_string)
+        if issue.split(":")[0] in hard or issue.startswith("duplicate_capability")
+    ]
+    suggested = _title_substance_mismatch(summary, resume_text)
+    if suggested:
+        reasons.append(f"title_mismatch:{suggested}")
+    return reasons
 
 
 def repair_summary(data: dict, jd_string: str = "", resume_text: str = "") -> dict:
