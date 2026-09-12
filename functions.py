@@ -751,6 +751,29 @@ def _normalize_openai_error(exc: Exception) -> RuntimeError:
         )
     return RuntimeError(f"OpenAI request failed: {message}")
 
+# The filler phrases Rule 00 bans from the professional summary. Defined here
+# rather than inline in the prompt so that create_prompt() and the deterministic
+# validator below (_summary_quality_issues) are guaranteed to police the SAME
+# list — when they were written out twice they drifted, and the validator went
+# on passing summaries the prompt had already banned.
+_SUMMARY_BANNED_PHRASES = (
+    "Detail-oriented", "Results-driven", "Proven ability", "Proven track record",
+    "Adept at", "Skilled in", "Passionate about", "Strong analytical skills",
+    "problem-solving skills", "Seeking a challenging role", "Dynamic professional",
+    "Excellent communication skills", "Self-motivated", "wide range of",
+    "various technologies", "Strong background in", "Experienced professional with",
+)
+
+# Hedging constructions that shrink real work into mere acquaintance. Banned by
+# Rule 00 and checked by the validator.
+_SUMMARY_HEDGING_PHRASES = (
+    "exposure to", "familiarity with", "understanding of", "knowledge of",
+    "worked with", "involved in", "experience with", "domain experience in",
+)
+
+_SUMMARY_BANNED_PHRASES_TEXT = ", ".join(f'"{p}"' for p in _SUMMARY_BANNED_PHRASES)
+
+
 def create_prompt(resume_string,jd_string):
     """Creates a detailed prompt for AI-powered resume optimization based on a job description.
 
@@ -811,22 +834,43 @@ Guidelines to Follow:
 ### Rule 00: THE PROFESSIONAL SUMMARY (MANDATORY — IT IS THE MOST-READ LINE ON THE RESUME)
 The `summary` is the first thing a recruiter reads and it is where a generic resume gives itself away. A summary that would fit any candidate applying to any job has FAILED, however well written it is. Write it LAST, after the bullets are done, so it can draw on what the tailored resume actually shows.
 
-It MUST:
-- Open by naming the candidate as the role THIS job is hiring for, at the seniority the resume genuinely supports, echoing the job description's own title wording. If the JD says "Data Analyst", do not write "Software Developer". If the resume evidences a total years-of-experience figure, lead with it.
-- Name 3-5 of the job description's HIGHEST-PRIORITY hard skills that the resume genuinely evidences, in the job description's own wording. These must be the JD's headline requirements, not whichever technologies were easiest to mention.
-- Carry ONE concrete proof point lifted from the resume: a metric, a scale, a named system, or a shipped outcome. If the resume has no numbers anywhere, use its most specific named achievement. Never invent one.
-- Name the domain the job sits in when the resume supports it (fintech, healthcare, e-commerce, semiconductors, logistics).
-- Be 2-3 sentences with no first-person pronouns, and contain no sentence that could be lifted onto a stranger's resume unchanged.
+WRITE IT AS CAPABILITY DOMAINS, ONE PER SENTENCE — 3 to 5 sentences. This is the single most important instruction in this rule. A summary that crams the whole profile into two dense keyword-loaded sentences has failed even if every word in it is true. Each sentence takes ONE dimension of the candidate and makes a complete claim about it:
+  Sentence 1 — IDENTITY AND SCOPE: the role, at the seniority the resume genuinely supports, plus the breadth of the lifecycle or problem space the candidate actually covers. Name the stages ("across the end-to-end machine learning lifecycle, including data pipelines, feature engineering, model training, deployment, and evaluation"), because the stage names are themselves what a recruiter and an ATS are scanning for.
+  Sentence 2 — WHAT THEY BUILD AND SHIP, and the concrete stack it is built with. Say the form the work takes ("as REST APIs and inference services"), then the tools.
+  Sentence 3 — THE PRACTICES that make the work production-grade: the methodology, tooling and discipline layered on top (experiment tracking, versioning, containerized deployment, CI/CD automation, testing, monitoring), ending in what those practices deliver ("reproducible, production-grade systems").
+  Sentence 4 — APPLIED SPECIALISMS AND DOMAINS, with what they were used for, and whether the work reached real users.
+Use FEWER sentences when the resume genuinely supports fewer. A junior resume with one project must NOT be padded out to four sentences — padding invents breadth, and inventing is the one unforgivable failure. Three honest sentences beat five stretched ones.
 
-BANNED — these are the exact phrases that make a summary read as filler, and they are what this prompt keeps producing: "Detail-oriented", "Results-driven", "Proven ability", "Proven track record", "Adept at", "Skilled in", "Passionate about", "Strong analytical skills", "problem-solving skills", "Seeking a challenging role", "Dynamic professional", "Excellent communication skills", "Self-motivated", "wide range of", "various technologies", "Strong background in", "Experienced professional with". Do not open with any of them. State what was built, in which stack, to what effect.
+It MUST ALSO:
+- Name the role in its CANONICAL form, at the seniority the resume genuinely supports. Write the real job title ("Machine Learning Engineer", "Data Analyst", "Backend Software Engineer"). If the JD says "Data Analyst", do not write "Software Developer". If the resume evidences a total years-of-experience figure, lead with it.
+- Name the job description's HIGHEST-PRIORITY hard skills that the resume genuinely evidences, using the job description's own wording for them. These must be the JD's headline requirements, not whichever technologies were easiest to mention. GROUP them by what they are FOR, never as one flat comma list: "productionizes models as REST APIs and inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services (AWS)" beats "using Python, FastAPI, Flask, Docker, MLflow, AWS".
+- EXPAND ACRONYMS ON FIRST USE, then keep the short form: "Amazon Web Services (AWS)", "Retrieval Augmented Generation (RAG)", "Natural Language Processing (NLP)", "Continuous Integration/Continuous Deployment (CI/CD)". ATS keyword matching is literal, and the expanded form and the acronym are two different keywords — this is the one place in the resume where spending the extra words is worth it. Only expand acronyms the resume genuinely evidences.
+- Use PRESENT-TENSE capability verbs for what the candidate does habitually — "Builds", "Applies", "Designs", "Productionizes", "Automates" — because a summary describes a standing capability, not a single past event. Use past tense only for one specific shipped outcome.
+- Contain no first-person pronouns, and no sentence that could be lifted onto a stranger's resume unchanged.
+
+A concrete proof point — a metric, a scale, a named system, or a shipped outcome — is OPTIONAL, not required. Include one ONLY when it is genuinely the strongest evidence FOR THIS JOB. An impressive number that has nothing to do with what this job is hiring for actively WEAKENS the summary: it spends the most valuable line on the resume making a point the reader did not ask about, and it reads as the candidate reaching for whatever number they had. If the resume's only metrics are irrelevant to this JD, leave every number out and spend those words on capability instead. NEVER invent, estimate or inflate a number.
+
+DO NOT ECHO THE JOB DESCRIPTION'S HEADLINE. The summary must read as a description of a person, not a compressed restatement of the posting. Specifically BANNED:
+  - "<Role> focused on <the JD's headline/team name>" — e.g. "ML Engineer focused on AI/ML Platform & MLOps". Write "Machine Learning Engineer with ..." and let the capability sentences show the focus.
+  - Any trailing "in the <X> domain" / "in the <X> space" / "in the <X> sector" clause — e.g. "... for RAG, sentiment and pricing systems in the AI/ML domain". The domain is already obvious from the work described; naming it again adds a keyword and claims nothing.
+  - Copying the JD's team, org or product names ("AI/ML Platform & MLOps") into the summary as if they were the candidate's experience.
+Name an INDUSTRY domain (fintech, healthcare, e-commerce, semiconductors, logistics) only when the resume genuinely evidences it and only woven into a claim, never as a trailing tag.
+
+BANNED — these are the exact phrases that make a summary read as filler, and they are what this prompt keeps producing: {_SUMMARY_BANNED_PHRASES_TEXT}. Do not open with any of them. State what was built, in which stack, to what effect.
 
 BANNED — hedging verbs that shrink real work into acquaintance. NEVER write "exposure to", "familiarity with", "understanding of", "knowledge of", "worked with", "involved in", "experience with" or "domain experience in" followed by a list of technologies. If the resume evidences the work, state what was DONE with it: "modelled the Postgres schema behind X" beats "exposure to database modelling". If it does not evidence the work, leave the technology out of the summary entirely — it already appears in `skills`.
 
 NEVER end the summary with a trailing list of technologies, domains or capabilities. A closing clause like "Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations" is keyword padding: it names things without claiming anything, and it is the weakest position on the most-read line of the resume. Every sentence must make a claim with a subject and an outcome. End on the strongest verifiable fact, not on a keyword list.
 
-BAD  : "Detail-oriented Data Analyst with strong analytical skills. Proven ability to transform data into insights. Adept at collaborating with cross-functional teams."
-GOOD : "Data Analyst with 1.5 years turning transactional data into commercial decisions in Python, SQL and Power BI. Cleaned and modelled 3,900 transaction records to surface that 'Loyal' customers drive the highest revenue, and shipped the Power BI dashboards category managers use weekly."
-The difference is not the vocabulary — it is that every clause in the GOOD version could only have been written about THIS candidate.
+THE CENTRAL EXAMPLE — this pair shows every rule above at once. Both were written from the SAME resume against the SAME "ML Engineer – AI/ML Platform & MLOps" job description:
+BAD  : "ML Engineer focused on AI/ML Platform & MLOps with hands-on delivery of model deployment, CI/CD-driven inference services, and cloud-hosted pipelines using AWS, Docker and MLflow. Improved model prediction accuracy by 15% through rubric-driven evaluation of agent responses and shipped production-grade APIs and pipelines for RAG, sentiment and pricing systems in the AI/ML domain."
+GOOD : "Machine Learning Engineer with hands-on experience across the end-to-end Machine Learning lifecycle, including data pipelines, feature engineering, model training, deployment, and evaluation. Builds and productionizes ML models as REST APIs and inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services (AWS). Applies MLOps practices including MLflow experiment tracking, DVC model and data versioning, containerized deployment, and CI/CD automation to deliver reproducible, production-grade ML systems. Applied background in Natural Language Processing (NLP), Computer Vision, LLM fine-tuning, and Retrieval Augmented Generation (RAG), with deployed projects serving real users."
+Study exactly what changed, because these are the failures this rule exists to stop:
+  - BAD opens by echoing the posting's headline ("focused on AI/ML Platform & MLOps"); GOOD opens with the canonical role and the LIFECYCLE BREADTH the candidate covers, naming each stage.
+  - BAD is two dense sentences carrying a flat tool list; GOOD is four sentences, each owning one capability domain — lifecycle, then build-and-ship stack, then MLOps practice, then applied specialisms.
+  - BAD forces in "15% accuracy", a real number that this platform/MLOps job never asked about; GOOD drops every metric and spends those words on capability. That omission makes it STRONGER, not weaker.
+  - BAD ends on "in the AI/ML domain", a keyword tag claiming nothing; GOOD ends on "deployed projects serving real users", a claim.
+  - GOOD expands the acronyms (Amazon Web Services, Natural Language Processing, Retrieval Augmented Generation) so both forms are matchable, and uses standing-capability verbs ("Builds", "Applies").
 
 A second pair, showing the padded-tail failure specifically:
 BAD  : "Backend Software Engineer with experience building production FastAPI services and data-driven SaaS features in Python, SQL and PostgreSQL. Owned the full-stack backend for a SaaS used by 16,000+ users and implemented the core ATS scoring engine, payment rails and analytics instrumentation. Domain experience in developer tools / AI-enabled SaaS and platform reliability, with exposure to database modelling, query optimization and API integrations."
@@ -934,7 +978,7 @@ Follow this EXACT schema
     "google_scholar": ""
   }},
 
-  "summary": "",
+  "summary": "3-5 sentences, one capability domain each (see Rule 00): identity + lifecycle scope, what is built and the stack, the production practices, then applied specialisms. Canonical role name, acronyms expanded on first use, no JD-headline echo, no trailing domain tag, metric only if it is the strongest evidence for THIS job.",
 
   "experience": [
     {{
@@ -1945,9 +1989,205 @@ def weave_soft_skills_into_summary(data: dict, soft_skills, resume_text: str = "
     # flaw ("Recognised for X" could sit on a stranger's resume unchanged), so
     # the sentence is kept to the plainest possible statement and, above, is
     # only ever built from traits the ORIGINAL resume evidences.
-    sentence = f"Demonstrated {phrase} in this work."
+    #
+    # "Demonstrated X in this work." was that plainest statement, but it is a
+    # bare assertion bolted onto the most-read line, and Rule 00 now bans
+    # exactly that shape. The traits are instead folded into a capability clause
+    # naming WHERE they were applied, which is the same claim in the voice the
+    # rest of the summary is written in. Still purely presentational: the traits
+    # are already evidence-gated above, and no new fact is introduced.
+    sentence = f"Applies {phrase} across this work."
     data["summary"] = f"{summary} {sentence}".strip() if summary else sentence
     data["soft_skills_added"] = additions
+    return data
+
+
+# Trailing keyword-tag clauses Rule 00 bans: "... in the AI/ML domain",
+# "... in the fintech space". The domain is already implied by the work the
+# summary describes, so the tag adds a keyword and claims nothing - and it sits
+# in the most valuable position on the page.
+_SUMMARY_DOMAIN_TAG_RE = re.compile(
+    r"[,\s]*\b(?:in|within|across)\s+the\s+[A-Za-z0-9/&+\-\s]{2,40}?\s*"
+    r"(?:domain|space|sector|vertical|industry|field)\b\s*",
+    re.IGNORECASE,
+)
+
+# "<Role> focused on <JD headline>" - the posting's own title pasted in.
+_SUMMARY_JD_ECHO_RE = re.compile(r"\bfocus(?:ed|ing)?\s+on\b", re.IGNORECASE)
+
+_SUMMARY_PRONOUN_RE = re.compile(r"\b(?:I|me|my|mine|we|our|ours)\b")
+
+_SUMMARY_MIN_SENTENCES = 2
+_SUMMARY_MAX_SENTENCES = 5
+
+
+def _summary_sentences(summary: str) -> list[str]:
+    """Split a summary into sentences for counting and tail surgery.
+
+    Abbreviations that legitimately carry a period mid-sentence would otherwise
+    each read as a sentence break and inflate the count.
+    """
+    text = str(summary or "").strip()
+    if not text:
+        return []
+    guarded = text
+    for abbr in ("e.g.", "i.e.", "etc.", "Inc.", "Ltd.", "Ph.D.", "B.Sc.", "M.Sc.", "vs."):
+        guarded = guarded.replace(abbr, abbr.replace(".", "\x00"))
+    parts = re.split(r"(?<=[.!?])\s+", guarded)
+    return [p.replace("\x00", ".").strip() for p in parts if p.strip()]
+
+
+def _is_keyword_tail(sentence: str) -> bool:
+    """Does this sentence name things without claiming anything?
+
+    The padded-tail failure Rule 00 describes: a closing clause that lists three
+    or more comma-separated items and contains no finite verb, e.g. "Domain
+    experience in developer tools, platform reliability and API integrations."
+    Conservative by design - a sentence with a real verb is never a tail, and
+    this only ever runs on the LAST sentence.
+    """
+    s = str(sentence or "").strip().rstrip(".")
+    # Three or more listed items. The canonical padded tail is "A, B and C",
+    # which carries only ONE comma — requiring two missed every real instance,
+    # including the "developer tools, platform reliability and API integrations"
+    # example Rule 00 is written around. Count list SEPARATORS, not commas.
+    if not s:
+        return False
+    separators = s.count(",") + len(re.findall(r"\b(?:and|&|/)\b", s, re.IGNORECASE))
+    if separators < 2:
+        return False
+    # A finite verb means the sentence makes a claim; leave it alone.
+    #
+    # Every alternative here is an explicit verb FORM. Stemmed patterns are the
+    # trap: "develop\w*" also matches the noun "developer", so the padded tail
+    # "Domain experience in developer tools, platform reliability and API
+    # integrations." read as a claim and survived repair. Noun forms that share
+    # a stem with a verb (developer/development, engineering, automation) must
+    # never appear below.
+    if re.search(
+        r"\b(?:built|build|builds|design|designs|designed|ship|ships|shipped|"
+        r"deliver|delivers|delivered|led|leads|lead|own|owns|owned|apply|applies|"
+        r"applied|automates?|automated|automating|develops?|developed|developing|"
+        r"implements?|implemented|implementing|serving|serve|serves|"
+        r"reduces?|reduced|reducing|improves?|improved|improving|cut|"
+        r"scaled|scales|migrates?|migrated|migrating|"
+        r"productionizes?|productionized|productionizing)\b",
+        s,
+        re.IGNORECASE,
+    ):
+        return False
+    return bool(
+        re.match(
+            r"^(?:domain\s+experience|experience|exposure|familiarity|knowledge|"
+            r"background|skills?|expertise|proficien\w+|competen\w+)\b",
+            s,
+            re.IGNORECASE,
+        )
+    )
+
+
+def _summary_quality_issues(summary: str, jd_string: str = "") -> list[str]:
+    """Deterministic quality check for the professional summary.
+
+    Rule 00 of create_prompt() is an instruction, not a guarantee. This is the
+    countable half of it: every failure mode here is decidable from the text
+    itself, so it is checked rather than trusted - the same reasoning as
+    _repair_action_verbs(), which counts strong verbs instead of believing the
+    model's arithmetic.
+
+    Returns a list of issue codes (empty means clean). Never raises.
+    """
+    text = str(summary or "").strip()
+    if not text:
+        return ["empty"]
+
+    issues: list[str] = []
+    lowered = text.lower()
+
+    for phrase in _SUMMARY_BANNED_PHRASES:
+        if phrase.lower() in lowered:
+            issues.append(f"banned_phrase:{phrase}")
+
+    for phrase in _SUMMARY_HEDGING_PHRASES:
+        if phrase.lower() in lowered:
+            issues.append(f"hedging:{phrase}")
+
+    if _SUMMARY_DOMAIN_TAG_RE.search(text):
+        issues.append("domain_tag")
+
+    if _SUMMARY_JD_ECHO_RE.search(text):
+        issues.append("jd_echo")
+
+    if _SUMMARY_PRONOUN_RE.search(text):
+        issues.append("pronoun")
+
+    sentences = _summary_sentences(text)
+    if len(sentences) < _SUMMARY_MIN_SENTENCES:
+        issues.append("too_few_sentences")
+    elif len(sentences) > _SUMMARY_MAX_SENTENCES:
+        issues.append("too_many_sentences")
+
+    if sentences and _is_keyword_tail(sentences[-1]):
+        issues.append("keyword_tail")
+
+    return issues
+
+
+def repair_summary(data: dict, jd_string: str = "", resume_text: str = "") -> dict:
+    """Subtractive repair of the professional summary.
+
+    STRICTLY SUBTRACTIVE. This function only ever DELETES an offending trailing
+    clause or sentence; it never writes new words. That is the whole safety
+    argument: removing keyword padding cannot introduce a claim the resume does
+    not support, so this can run on every optimization without any risk to the
+    never-fabricate invariant. Anything it cannot fix by deletion is left alone
+    and reported on `data["summary_issues"]` instead - the same conservatism as
+    factcheck_against_original(), which reports rather than deletes because a
+    false positive that silently removed real content is the worse failure.
+
+    Never raises; any unexpected shape is returned untouched.
+    """
+    if not isinstance(data, dict):
+        return data
+    summary = data.get("summary")
+    if not isinstance(summary, str) or not summary.strip():
+        return data
+
+    text = summary.strip()
+
+    # 1. Drop a keyword-tag clause ("... in the AI/ML domain") that ENDS ITS OWN
+    #    SENTENCE. Anchoring on the end of the whole summary was wrong: the
+    #    soft-skill weave appends a sentence after this one, so the tag stopped
+    #    being the final characters and survived. Mid-sentence the phrase can be
+    #    load-bearing ("deployed in the healthcare domain for X"), so a tag only
+    #    qualifies when nothing but the sentence terminator follows it.
+    rebuilt: list[str] = []
+    for sentence in _summary_sentences(text):
+        tag = _SUMMARY_DOMAIN_TAG_RE.search(sentence)
+        if tag and sentence[tag.end():].strip() in {"", ".", "!", "?"}:
+            stripped = sentence[: tag.start()].strip().rstrip(",;").strip()
+            # Only if a substantial claim remains once the tag is gone.
+            if len(stripped.split()) >= 8:
+                if not stripped.endswith((".", "!", "?")):
+                    stripped += "."
+                rebuilt.append(stripped)
+                continue
+        rebuilt.append(sentence)
+    text = " ".join(rebuilt).strip()
+
+    # 2. Drop a final sentence that is pure keyword padding.
+    sentences = _summary_sentences(text)
+    if len(sentences) > _SUMMARY_MIN_SENTENCES and _is_keyword_tail(sentences[-1]):
+        text = " ".join(sentences[:-1]).strip()
+
+    if text != summary.strip():
+        data["summary"] = text
+
+    remaining = _summary_quality_issues(text, jd_string)
+    if remaining:
+        data["summary_issues"] = remaining
+    else:
+        data.pop("summary_issues", None)
     return data
 
 
@@ -4166,7 +4406,12 @@ def _repair_action_verbs(parsed: dict, resume_text: str) -> None:
 
 
 _ATS_SCORE_CACHE: OrderedDict[str, str] = OrderedDict()
-_ATS_CACHE_MAX = 50
+# ~8.5 KB per entry, so 300 is ~2.5 MB — negligible next to the cost of a miss,
+# which is a paid LLM call rather than just CPU time. Sized by that asymmetry
+# rather than tuned against measured traffic.
+# In-process and wiped on every deploy, so entries live hours in practice —
+# churn evicts them long before the month-scoped key would.
+_ATS_CACHE_MAX = 300
 
 # Fixed seed so the same resume + job description scores the same number on
 # every run and on every machine. A score that moves on its own is not a
@@ -4181,7 +4426,17 @@ async def ats_scoring(resume_string, jd_string):
         (
             # Bump on every prompt/repair change or cached scans keep serving
             # the old verdicts (v4: action-verb + years-tolerance repairs).
-            "ats-chronology-v4|" + current_date.isoformat() + "|" +
+            #
+            # Scoped to the MONTH, not the day. The date is a real input — it is
+            # sent to the model (see user_message) and drives the chronology and
+            # years-of-experience checks — so it has to be in the key or a cached
+            # verdict would go stale as time passes. But every consumer of it
+            # works at month granularity: _passes_chronology_recheck compares
+            # (year, month) and the explanations render "%B %Y". Keying on the
+            # day therefore forced a fresh paid LLM call every midnight to
+            # reproduce an identical answer — ~365 re-scans a year where ~12
+            # carry real change.
+            "ats-chronology-v4|" + current_date.strftime("%Y-%m") + "|" +
             # The separator matters: joining these with nothing meant a resume
             # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
             # different scans could collide and return each other's score.
