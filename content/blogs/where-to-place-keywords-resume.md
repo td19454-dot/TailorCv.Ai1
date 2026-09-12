@@ -22,15 +22,25 @@ Most advice about keywords stops at "include them." Where you put them changes h
 
 ## The Placement Hierarchy
 
+Six tiers, strongest first. The gap between the top and the bottom is larger than most people assume - it is the difference between a term that decides your ranking and one that never arrives.
+
+### The top two tiers: title and bullets
+
 **1. The job title line.** The strongest position on the resume. A title matching or closely resembling the posting's title is the single highest-weight signal, for scanners and humans alike.
 
 You cannot invent a title you did not hold. You can accurately clarify one - more on that below.
 
 **2. Inside experience bullets.** The most valuable placement you fully control. A term here comes with proof attached: what you did with it, at what scale, to what effect.
 
-**3. The skills section.** Useful and expected, but weaker. It asserts without evidencing. Its real job is coverage for terms already demonstrated elsewhere.
+These two tiers are where a competitive application is won. If the posting's central requirements do not appear here, they are not really covered however many times they appear elsewhere.
+
+### The middle tiers: skills and summary
+
+**3. The skills section.** Useful and expected, but weaker. It asserts without evidencing. Its real job is coverage for terms already demonstrated elsewhere, and [what to list and what to cut](/blog/resume-skills-section-guide-2026) is mostly a question of what you can defend.
 
 **4. The summary.** High visibility because it sits at the top, moderate weight because it is self-description. Best used for the two or three terms the posting repeats most.
+
+### The bottom tiers: supporting sections and dead zones
 
 **5. Education, certifications, projects.** Genuine placements for genuinely relevant terms, lower weight for most roles - though projects carry real weight for career changers and early-career applicants.
 
@@ -177,9 +187,15 @@ If a whole section can disappear, so can [an entire job](/blog/parsing-errors-de
 
 ### You have a skills-first resume
 
-Putting skills above experience is legitimate for career changers and early-career applicants, because it puts relevant capability in the top third before a less-relevant history.
+Putting skills above experience is legitimate for career changers and early-career applicants, because it puts relevant capability in the top third before a less-relevant history. [Section order](/blog/resume-section-order-guide) is one of the few structural choices worth varying by situation.
 
-It does not change the hierarchy. The terms still need evidence below, or the section reads as a list of aspirations.
+It does not change the hierarchy. The terms still need evidence below, or the section reads as a list of aspirations - and [an unevidenced skills list](/blog/keyword-stuffing-vs-coverage) is the pattern recruiters read fastest.
+
+### Your dates or title line did not parse
+
+Placement assumes the structure survives extraction. If your dates detach from their roles, the system computes your experience wrongly and no placement decision compensates.
+
+[Employment dates parsing wrong](/blog/employment-dates-parsed-wrong) is worth ruling out before optimising anything above it, because it changes what the reader sees about your seniority rather than your keywords.
 
 ### Your most relevant work was a side project
 
@@ -209,9 +225,9 @@ On a first pass, page two effectively does not exist. Either surface the capabil
 
 **Two to five years.** Experience bullets take over as the primary placement. The skills section shifts to a coverage role for terms already demonstrated.
 
-**Senior.** The title line and the scope of described systems do most of the work. A senior resume leading with a technology list reads as someone describing proximity rather than ownership.
+**Senior.** The title line and the scope of described systems do most of the work. A senior resume leading with a technology list reads as someone describing proximity rather than ownership, which is a common reason [strong candidates get no response](/blog/high-ats-score-no-interviews) despite good coverage.
 
-**Career changer.** Summary and projects carry disproportionate weight, because they are where the translation happens. The history below supplies evidence in the destination field's vocabulary.
+**Career changer.** Summary and projects carry disproportionate weight, because they are where the translation happens. The history below supplies evidence in the destination field's vocabulary, and [bridging two fields](/blog/resume-matching-for-career-changers) is largely a placement exercise.
 
 ## Frequently Asked Questions
 

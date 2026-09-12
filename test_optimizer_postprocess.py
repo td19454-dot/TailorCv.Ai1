@@ -954,11 +954,22 @@ SUMMARY_PADDED_TAIL = (
 )
 
 
+SUMMARY_TARGET = (
+    "Backend Engineer who built the ATS scoring engine behind a resume "
+    "platform serving 16,000 users across 30 countries. Owns the FastAPI "
+    "services and PostgreSQL schema powering tailoring and billing."
+)
+
+
 def test_good_summary_has_no_quality_issues():
-    """The anti-false-positive guard. If the validator flags the target-quality
-    summary, it will mangle good output in production - a worse outcome than the
-    padding it exists to remove."""
-    assert _summary_quality_issues(SUMMARY_GOOD) == [], _summary_quality_issues(SUMMARY_GOOD)
+    """The anti-false-positive guard. If the validator flags a target-quality
+    summary, it will mangle good output in production - a worse outcome than
+    the padding it exists to remove.
+
+    SUMMARY_GOOD is the old four-sentence capability-domain shape and now
+    legitimately fails on length; SUMMARY_TARGET is the current bar.
+    """
+    assert _summary_quality_issues(SUMMARY_TARGET) == [], _summary_quality_issues(SUMMARY_TARGET)
 
 
 def test_validator_flags_jd_echo_and_domain_tag():
@@ -984,11 +995,43 @@ def test_validator_flags_pronouns_and_sentence_count():
         "I build backend services in Python. My work covers APIs and data pipelines."
     )
     assert "too_few_sentences" in _summary_quality_issues("Backend Engineer building APIs.")
+    # Rule 00 asks for 2-3 sentences, so the ceiling sits at 4.
+    assert "too_many_sentences" not in _summary_quality_issues(
+        "One sentence here. Two sentence here. Three sentence here."
+    )
     assert "too_many_sentences" in _summary_quality_issues(
         "One sentence here. Two sentence here. Three sentence here. "
-        "Four sentence here. Five sentence here. Six sentence here."
+        "Four sentence here. Five sentence here."
     )
     assert _summary_quality_issues("") == ["empty"]
+
+
+def test_validator_flags_an_over_long_summary():
+    """Rule 00 asks for 45-60 words with a hard ceiling of 65. The ceiling was
+    previously 130, which is why a 114-word production summary passed
+    validation untouched."""
+    # A summary inside the budget passes on length.
+    in_budget = (
+        "Backend Engineer who built the ATS scoring engine behind a resume "
+        "platform serving 16,000 users across 30 countries. Owns the FastAPI "
+        "services and PostgreSQL schema powering tailoring and billing."
+    )
+    assert 40 <= len(in_budget.split()) <= 65, len(in_budget.split())
+    assert "too_long" not in _summary_quality_issues(in_budget)
+    # The old four-sentence capability-domain shape is now too long.
+    assert "too_long" in _summary_quality_issues(SUMMARY_GOOD)
+
+
+def test_validator_flags_weak_future_focused_closings():
+    """"Prepared to grow into..." converts capability into hope, and it is most
+    damaging on the early-career resumes where it is most tempting."""
+    for weak in (
+        "Chemical Engineer with lab experience in process design and mass balances. "
+        "Prepared to grow into process simulation and plant engineering roles.",
+        "Analyst building SQL reporting pipelines. Eager to learn data engineering.",
+    ):
+        issues = _summary_quality_issues(weak)
+        assert any(i.startswith("banned_phrase:") for i in issues), (weak, issues)
 
 
 def test_keyword_tail_detection():
