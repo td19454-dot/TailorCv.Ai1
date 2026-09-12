@@ -860,6 +860,14 @@ NEVER OPEN WITH A LIFECYCLE LIST. "Across the end-to-end ML lifecycle including 
 
 LENGTH: 2 to 3 sentences, 45 to 60 words. Hard ceiling 65. This is a budget you must fit inside, not a target to approach — a 48-word summary that lands three real claims beats a 60-word one carrying the same content slowly.
 
+DO NOT RESTATE THE BULLETS. The summary sits directly above Experience and Projects, and the reader sees both. If a phrase in your summary also appears in a bullet below it, the summary has spent its most valuable words telling the reader something they are about to read anyway. Its job is to FRAME and PRIORITISE — to tell the reader what to conclude from the entries below — not to preview them. Name the through-line, the scale, or the judgement the work demonstrates; leave the itemised detail to the bullets.
+
+PREFER DESIGN DECISIONS OVER CATEGORY NOUNS. "Implements payment rails" names a category and discards the engineering. "Built dual payment rails — Razorpay domestic, Polar international — with usage quotas and subscription lifecycle handling" shows a design decision and the constraint it answered. When choosing between two true specifics, always take the one that reveals a decision, a trade-off, or a measured outcome over the one that merely names the area of work.
+
+DRAW ON AT LEAST TWO ENTRIES where the resume has more than one substantive entry. A summary sourced entirely from a single project is a project description wearing a profile's clothes, and it wastes the rest of the candidate's history. Pick the strongest evidence from the strongest entry, then the strongest complementary evidence from a different one.
+
+NEVER COMPRESS A PHRASE INTO SOMETHING THAT IS NOT TRUE. Shortening is allowed; narrowing is not. If the resume says "owned the full stack", you may not write "full-stack backend" — the compound is false, because a full-stack engineer is precisely not a backend-only one, and every individual word came from the source. Check each compressed phrase against what the source actually claimed.
+
 LEAD WITH THE DIFFERENTIATOR, NOT THE CATEGORY. If the distinctive content is a shipped product (an ATS scoring engine, a Chrome extension, a resume-tailoring pipeline), it opens the summary and it is named in plain words — never parenthesised at the end of sentence four. If the distinctive content is a specialism (NLP, Retrieval Augmented Generation), that opens instead. Whatever a competing candidate with the same job title could NOT write about themselves is what goes first.
 
 SAY EACH CAPABILITY EXACTLY ONCE. "Deployment as services", "post-deployment monitoring" and "deployed features" are ONE capability written three times. So are "REST API integration", "integration with RESTful services" and "frontend-backend contracts". Before finishing, list the distinct claims you are making — if two sentences make the same claim in different words, delete one and spend the words on something new.
@@ -2254,6 +2262,126 @@ def _count_named_tools(summary: str) -> int:
     return len(tools)
 
 
+def _summary_body_redundancy(summary: str, resume_text: str = "") -> list[str]:
+    """Phrases the summary lifts near-verbatim from Experience/Projects bullets.
+
+    The summary's job is to frame and prioritise, not to preview. When it
+    restates content that appears a few centimetres below it, the reader gets
+    the same information twice and the most-read line on the resume has added
+    nothing.
+
+    Detects shared content-word runs of 4+ words, which is long enough to be a
+    lifted phrase rather than incidental vocabulary overlap ("REST APIs in
+    Python" is unavoidable; "payment rails, analytics instrumentation and
+    reliability tooling" is a lift).
+    """
+    text = str(summary or "").lower()
+    body = str(resume_text or "").lower()
+    if not text.strip() or not body.strip():
+        return []
+
+    stop = {"and", "the", "a", "an", "of", "in", "to", "with", "for", "on",
+            "as", "that", "by", "from", "at", "across", "into"}
+
+    def runs(s: str) -> list[str]:
+        words = [w for w in re.findall(r"[a-z0-9+#.-]+", s) if w not in stop]
+        return [" ".join(words[i:i + 4]) for i in range(len(words) - 3)]
+
+    body_runs = set(runs(body))
+    shared = {r for r in runs(text) if r in body_runs}
+
+    # Two exemptions, both learned from the gate over-firing on correct output.
+    #
+    # 1. A run carrying a NUMBER is the proof point, not redundancy. The
+    #    evidence rule requires the summary to lift its strongest metric
+    #    verbatim from the resume, so flagging that same text here would make
+    #    the two gates mutually unsatisfiable.
+    #
+    # 2. Redundancy means restating the bullets' CATEGORY CONTENT - a run of
+    #    listed noun phrases such as "payment rails, analytics instrumentation
+    #    and reliability tooling". It does NOT mean any four-word overlap: a
+    #    summary saying "mentored two juniors through their first production
+    #    deploys" shares words with the bullet it summarises because that is
+    #    the only honest way to state the fact. Requiring the ORIGINAL bullet
+    #    to have presented the run as a comma-separated list keeps the gate on
+    #    lifted enumerations and off ordinary factual restatement.
+    def _is_listed_in_source(run: str) -> bool:
+        first = run.split()[0]
+        for line in body.splitlines():
+            if first in line and line.count(",") >= 1:
+                # The run's words appear inside a line that enumerates.
+                if sum(1 for w in run.split() if w in line) >= 3:
+                    return True
+        return False
+
+    return sorted(
+        r for r in shared
+        if not re.search(r"\d", r) and _is_listed_in_source(r)
+    )
+
+
+# Compounds the rewrite can form by welding two source terms together that did
+# not modify each other in the original. "owning the full stack" + "backend"
+# becomes "full-stack backend", which is a narrowing that reads as a
+# contradiction - a full-stack engineer is precisely not a backend-only one.
+_COMPRESSION_TRAPS = (
+    ("full-stack backend", "full stack"),
+    ("full stack backend", "full stack"),
+    ("backend full-stack", "full stack"),
+    ("full-stack frontend", "full stack"),
+    ("end-to-end frontend", "end-to-end"),
+    ("senior junior", ""),
+)
+
+
+def _meaning_corrupting_compression(summary: str, resume_text: str = "") -> list[str]:
+    """Compressions that changed what the source actually said.
+
+    A rewrite may shorten freely, but it may never shorten into something the
+    original does not support. These are narrowings rather than fabrications,
+    which makes them easy to miss: every individual word is present in the
+    source, and the combination is false.
+    """
+    text = str(summary or "").lower()
+    source = str(resume_text or "").lower()
+    hits = []
+    for compound, source_form in _COMPRESSION_TRAPS:
+        if compound in text:
+            # It is only a corruption if the source did NOT use the compound.
+            if compound not in source:
+                hits.append(compound)
+    return hits
+
+
+def _entries_represented(summary: str, resume_text: str = "") -> int:
+    """How many distinct resume entries the summary draws on.
+
+    A summary built entirely from one project is a project description, not a
+    profile. Counts company and project names from the source that appear in
+    the summary, plus distinct metric values traced back to different entries.
+    """
+    text = str(summary or "").lower()
+    body = str(resume_text or "")
+    if not text.strip() or not body.strip():
+        return 0
+
+    # Proper-noun entry names: lines that look like "Name | ..." or "Name, City"
+    names = set()
+    for line in body.splitlines():
+        line = line.strip()
+        if not line or line.startswith("-"):
+            continue
+        head = re.split(r"[|,]", line)[0].strip()
+        if 3 <= len(head) <= 40 and re.match(r"^[A-Z][\w.& -]+$", head):
+            names.add(head.lower())
+
+    hit = sum(1 for n in names if n in text)
+
+    # Distinct numbers from different bullets also evidence separate entries.
+    nums = {m.group(0) for m in re.finditer(r"\d[\d,.]*\+?%?", text)}
+    return max(hit, min(len(nums), 3)) if nums else hit
+
+
 def _title_substance_mismatch(summary: str, resume_text: str = "") -> str:
     """Does the claimed headline title match what the resume evidences?
 
@@ -2348,7 +2476,8 @@ def _is_keyword_tail(sentence: str) -> bool:
     )
 
 
-def _summary_quality_issues(summary: str, jd_string: str = "") -> list[str]:
+def _summary_quality_issues(summary: str, jd_string: str = "",
+                            resume_text: str = "") -> list[str]:
     """Deterministic quality check for the professional summary.
 
     Rule 00 of create_prompt() is an instruction, not a guarantee. This is the
@@ -2416,6 +2545,12 @@ def _summary_quality_issues(summary: str, jd_string: str = "") -> list[str]:
     for concept in _duplicate_capability(text):
         issues.append(f"duplicate_capability:{concept}")
 
+    for phrase in _summary_body_redundancy(text, resume_text):
+        issues.append(f"body_redundancy:{phrase}")
+
+    for compound in _meaning_corrupting_compression(text, resume_text):
+        issues.append(f"corrupt_compression:{compound}")
+
     for skill in _baseline_skills_present(text, jd_string):
         issues.append(f"baseline_skill:{skill}")
 
@@ -2448,15 +2583,20 @@ def summary_rejection_reasons(summary: str, jd_string: str = "",
     hard = {
         "too_long", "no_evidence", "vague_evidence", "lifecycle_opener",
         "seniority_hedge", "filler_closer", "overclaim", "tool_laundry",
-        "empty",
+        "empty", "body_redundancy", "corrupt_compression",
     }
     reasons = [
-        issue for issue in _summary_quality_issues(summary, jd_string)
+        issue for issue in _summary_quality_issues(summary, jd_string, resume_text)
         if issue.split(":")[0] in hard or issue.startswith("duplicate_capability")
     ]
     suggested = _title_substance_mismatch(summary, resume_text)
     if suggested:
         reasons.append(f"title_mismatch:{suggested}")
+    # A summary drawing on only one entry when the resume has several is a
+    # project description rather than a profile.
+    if resume_text and _entries_represented(summary, resume_text) < 2:
+        if len(re.findall(r"^[A-Z][\w.& -]{2,39}\s*[|,]", resume_text, re.M)) >= 2:
+            reasons.append("single_entry_only")
     return reasons
 
 
