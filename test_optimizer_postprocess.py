@@ -955,9 +955,11 @@ SUMMARY_PADDED_TAIL = (
 
 
 SUMMARY_TARGET = (
-    "Backend Engineer who built the ATS scoring engine behind a resume "
-    "platform serving 16,000 users across 30 countries. Owns the FastAPI "
-    "services and PostgreSQL schema powering tailoring and billing."
+    "Backend Engineer who built the deterministic ATS scoring engine behind a "
+    "resume platform serving 16,000 users across 30 countries. Owns the "
+    "FastAPI services and partitioned PostgreSQL schema powering tailoring, "
+    "dual payment rails and the quota system that meters every paid feature "
+    "on the platform."
 )
 
 
@@ -1011,13 +1013,8 @@ def test_validator_flags_an_over_long_summary():
     previously 130, which is why a 114-word production summary passed
     validation untouched."""
     # A summary inside the budget passes on length.
-    in_budget = (
-        "Backend Engineer who built the ATS scoring engine behind a resume "
-        "platform serving 16,000 users across 30 countries. Owns the FastAPI "
-        "services and PostgreSQL schema powering tailoring and billing."
-    )
-    assert 40 <= len(in_budget.split()) <= 65, len(in_budget.split())
-    assert "too_long" not in _summary_quality_issues(in_budget)
+    assert 40 <= len(SUMMARY_TARGET.split()) <= 65, len(SUMMARY_TARGET.split())
+    assert "too_long" not in _summary_quality_issues(SUMMARY_TARGET)
     # The old four-sentence capability-domain shape is now too long.
     assert "too_long" in _summary_quality_issues(SUMMARY_GOOD)
 
@@ -1090,9 +1087,12 @@ def test_repair_keeps_a_load_bearing_mid_sentence_domain_phrase():
 
 
 def test_repair_is_a_noop_on_a_good_summary():
-    data = {"summary": SUMMARY_GOOD}
+    """Repair is subtractive, so it must not rewrite a summary that meets the
+    current bar. SUMMARY_GOOD is the superseded four-sentence shape and now
+    legitimately carries issues; SUMMARY_TARGET is the current one."""
+    data = {"summary": SUMMARY_TARGET}
     out = repair_summary(data)
-    assert out["summary"] == SUMMARY_GOOD, out["summary"]
+    assert out["summary"] == SUMMARY_TARGET, out["summary"]
     assert "summary_issues" not in out, out.get("summary_issues")
 
 

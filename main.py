@@ -48,6 +48,7 @@ from functions import (
     weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
     repair_summary,
+    summary_rejection_reasons,
     sanitize_resume_data,
     factcheck_against_original,
     promptable_skill_gaps,
@@ -11444,6 +11445,22 @@ async def _optimize_resume_core(
     # assembled text, including anything that step appended. Whatever it cannot
     # fix by deletion is reported on parsed["summary_issues"] instead.
     parsed = repair_summary(parsed, jd_string, resume_string)
+
+    # The hard gates. repair_summary above is subtractive and can only delete;
+    # these decide whether what survived is publishable at all. Previously the
+    # gate layer existed in functions.py but was called from NOWHERE in this
+    # module, so every defect it detects shipped to users annotated but intact.
+    # Reported rather than blocking: a rejected summary still reaches the page,
+    # because an empty summary is worse than a flawed one — but the reasons now
+    # travel with the payload so the editor and the evals can see them.
+    try:
+        summary_rejections = summary_rejection_reasons(
+            str(parsed.get("summary") or ""), jd_string, resume_string,
+        )
+    except Exception:
+        summary_rejections = []
+    if summary_rejections:
+        parsed["summary_rejected"] = summary_rejections
 
     # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
     # only decides which JD hard skills the resume is ALLOWED to claim (they land
