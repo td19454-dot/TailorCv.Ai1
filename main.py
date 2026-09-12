@@ -10016,6 +10016,31 @@ _BLOG_TO_ROLE = {
 # cover letter, an interview record) and so still routes through /login?next=.
 _BLOG_CTA_OPEN_PATHS = {"/solutions", "/templates", "/extension"}
 
+# Categories whose readers are working on a resume. A post in one of these keeps
+# a resume CTA even when its title mentions interviews, so that
+# "fresher-resume-projects-that-get-interviews" does not push a mock interview.
+_BLOG_RESUME_CATEGORIES = {
+    "ats optimization", "resume writing", "resume examples",
+    "resume optimization", "resume tips",
+}
+
+# Does the post's SUBJECT (title/slug, not a passing mention) involve a document
+# the reader is working on right now? Audit of the 1,088 published posts found
+# 55% do not — visa routes, tax, work culture, city job markets — and every one
+# of them was being shown "Tailor Your Resume". Matching on the subject keeps the
+# tailoring CTA for readers who actually have a resume open.
+_BLOG_SUBJECT_IS_DOCUMENT = re.compile(
+    r"\b(resume|resumes|cv|cvs|curriculum|rirekisho|lebenslauf|curriculo|"
+    r"bullet|bullets|ats|applicant-tracking|parser|parsing|keyword|keywords|"
+    r"tailor|tailoring|tailored|portfolio|cover-?letter|letter|"
+    r"application|applications|applying|apply|reapply|reapplying|profile|linkedin|"
+    # the JD-reading and evidence-building posts are the same reader, mid-application
+    r"jd|job-description|posting|skills|skill|achievements|quantify|quantifying|"
+    r"experience|qualifications|requirements|recruiter|recruiters|screening|"
+    r"shortlist|headline|summary|section|sections|format|formatting|template|templates)\b",
+    re.I,
+)
+
 
 def blog_cta(post, is_logged_in: bool = False) -> dict:
     """Pick a topic-aware hero CTA from the post's category/slug/title so each
@@ -10032,7 +10057,18 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
     # that just mention the extension would wrongly push "Add to Chrome" instead of
     # the core tool their reader actually wants.
     subject = f"{post.slug} {post.title}".lower()
-    if "extension" in subject or "chrome" in subject or "add to chrome" in subject:
+    # A resume-category post stays on a resume CTA even when its wording mentions
+    # interviews — the category is the stronger signal about what the reader
+    # currently has open. ("bullets that get interviews" is a resume post.)
+    is_resume_category = (post.category or "").strip().lower() in _BLOG_RESUME_CATEGORIES
+    # Highest commercial intent on the site: a reader comparing TailorCV to a
+    # named competitor is evaluating, not learning. Matched before everything
+    # else because competitor names carry none of the keywords below.
+    if "tailorcv" in subject and (" vs" in subject or "vs " in subject or "alternative" in subject):
+        cta = {"title": "See the difference yourself",
+               "text": "Scan your resume against a real job and compare the result — free, no card needed.",
+               "label": "Try TailorCV Free", "url": "/solutions"}
+    elif "extension" in subject or "chrome" in subject or "add to chrome" in subject:
         cta = {"title": "Tailor on the job page",
                "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
                "label": "Add to Chrome — Free", "url": "/extension"}
@@ -10044,7 +10080,11 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
         cta = {"title": "Turn your resume into a website",
                "text": "Build a live portfolio site from your resume — no code needed.",
                "label": "Build Your Portfolio", "url": "/portfolio"}
-    elif "interview" in hay or "mock" in hay:
+    elif ("interview" in hay or "mock" in hay) and not is_resume_category:
+        # "interview" appears in plenty of resume posts ("bullets that get
+        # interviews", "no interviews after 50 applications"). Those readers have
+        # a resume open, not an interview booked — so a resume-category post keeps
+        # its resume CTA even when the word appears in its title or tags.
         cta = {"title": "Practice before it counts",
                "text": "Run a free AI mock interview and get instant feedback.",
                "label": "Try a Free AI Mock Interview", "url": "/mock-interview"}
@@ -10056,11 +10096,21 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
         cta = {"title": "Boost your resume in minutes",
                "text": "Scan your resume against any job with the free ATS score checker.",
                "label": "Check My ATS Score", "url": "/solutions"}
-    else:
-        # Everything else (incl. general ATS, resume, career, job-search) -> tailoring tool.
+    elif is_resume_category or _BLOG_SUBJECT_IS_DOCUMENT.search(subject):
+        # The post is ABOUT a document the reader is working on -> tailoring tool.
         cta = {"title": "Boost your resume in minutes",
                "text": "Tailor your resume to any job and beat the ATS — free to start.",
                "label": "Tailor Your Resume", "url": "/solutions"}
+    else:
+        # The reader has no resume open: visas, tax, work culture, city job
+        # markets, salary benchmarks. 55% of the catalogue sits here, and a
+        # "Tailor Your Resume" button is a non-sequitur to someone researching a
+        # residence permit — they read, then leave. Offer the step that IS next
+        # for them (understanding what the market expects of an application)
+        # and let the tailoring CTA meet them once they are actually applying.
+        cta = {"title": "Know what employers screen for",
+               "text": "See how applications get filtered before a human reads them — then check yours when you're ready to apply.",
+               "label": "How Screening Works", "url": "/solutions"}
 
     # Logged-out readers: only wall the tools whose OUTPUT needs an account to
     # live somewhere. The open tools already meter guests themselves (the ATS
