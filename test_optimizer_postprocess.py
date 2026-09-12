@@ -11,6 +11,7 @@ Run:  python test_optimizer_postprocess.py
 Exit code is non-zero if any test fails (CI-friendly).
 """
 
+import re
 import sys
 import traceback
 from datetime import date
@@ -20,7 +21,11 @@ from functions import (
     _clean_inline_text,
     _extract_hard_skills_from_jd,
     _is_atomic_hard_skill,
+    _is_keyword_tail,
     _repair_false_future_chronology,
+    _summary_quality_issues,
+    _summary_sentences,
+    repair_summary,
     factcheck_against_original,
     inject_jd_hard_skills,
     inject_links,
@@ -614,7 +619,7 @@ def test_promptable_handles_empty_and_junk_input():
 def test_soft_skills_are_appended_to_the_summary():
     data = {"summary": "Data Analyst with experience in Python and SQL."}
     out = weave_soft_skills_into_summary(data, ["mentoring", "facilitation"])
-    assert out["summary"].endswith("Demonstrated mentoring and facilitation in this work."), out["summary"]
+    assert out["summary"].endswith("Applies mentoring and facilitation across this work."), out["summary"]
     assert out["soft_skills_added"] == ["mentoring", "facilitation"], out["soft_skills_added"]
 
 
@@ -637,8 +642,8 @@ def test_soft_skill_phrasing_by_count():
     three = weave_soft_skills_into_summary(
         dict(base), ["mentoring", "facilitation", "stakeholder management"]
     )["summary"]
-    assert one.endswith("Demonstrated mentoring in this work."), one
-    assert three.endswith("Demonstrated mentoring, facilitation and stakeholder management in this work."), three
+    assert one.endswith("Applies mentoring across this work."), one
+    assert three.endswith("Applies mentoring, facilitation and stakeholder management across this work."), three
 
 
 def test_soft_skill_already_in_summary_is_not_repeated():
@@ -658,7 +663,7 @@ def test_soft_skills_noop_on_empty_input():
 
 
 def test_soft_skills_build_a_summary_when_none_exists():
-    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Demonstrated communication in this work."
+    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Applies communication across this work."
 
 
 def test_soft_skills_are_gated_on_resume_evidence():
@@ -689,7 +694,7 @@ def test_soft_skill_trailing_skills_suffix_is_not_doubled():
     "Skilled in mentoring skills" on real output - redundant, and built from a
     phrase create_prompt bans outright."""
     out = weave_soft_skills_into_summary({"summary": "Engineer."}, ["mentoring skills"])
-    assert out["summary"] == "Engineer. Demonstrated mentoring in this work.", out["summary"]
+    assert out["summary"] == "Engineer. Applies mentoring across this work.", out["summary"]
     assert "skills skills" not in out["summary"].lower()
     assert "Skilled in" not in out["summary"]
 
@@ -727,6 +732,7 @@ def test_unevidenced_hard_skills_never_get_appended_to_the_summary():
     )
     assert out["summary"] == summary, out["summary"]
     assert "in this work" not in out["summary"]
+    assert "across this work" not in out["summary"]
     assert out["hard_skills_woven"] == []
     # Still surfaced honestly, just not asserted as prose experience.
     assert out["skills"] == ["MySQL", "Java", "NumPy"]
@@ -906,6 +912,193 @@ def test_atomic_skills_injection_end_to_end():
     ):
         assert phrase not in lowered, f"generic phrase leaked: '{phrase}' in {out}"
     assert len(lowered) == len(set(lowered)), f"duplicates present: {out}"
+
+
+# --------------------------------------------------------------------------- #
+# Professional summary (Rule 00). The summary is the most-read line on the
+# resume and the place a tailored resume gives itself away as a compressed
+# restatement of the job description. These guard the deterministic half of
+# Rule 00: the failures that are decidable from the text itself.
+# --------------------------------------------------------------------------- #
+
+# The quality bar, and the shape Rule 00 now asks for: four sentences, one
+# capability domain each, acronyms expanded, no metric forced in.
+SUMMARY_GOOD = (
+    "Machine Learning Engineer with hands-on experience across the end-to-end Machine "
+    "Learning lifecycle, including data pipelines, feature engineering, model training, "
+    "deployment, and evaluation. Builds and productionizes ML models as REST APIs and "
+    "inference services using Python, FastAPI, Flask, and Docker on Amazon Web Services "
+    "(AWS). Applies MLOps practices including MLflow experiment tracking, DVC model and "
+    "data versioning, containerized deployment, and CI/CD automation to deliver "
+    "reproducible, production-grade ML systems. Applied background in Natural Language "
+    "Processing (NLP), Computer Vision, LLM fine-tuning, and Retrieval Augmented "
+    "Generation (RAG), with deployed projects serving real users."
+)
+
+# The failure this work exists to fix: the JD's headline echoed back, a metric
+# that this job never asked about, and a trailing domain tag.
+SUMMARY_JD_ECHO = (
+    "ML Engineer focused on AI/ML Platform & MLOps with hands-on delivery of model "
+    "deployment, CI/CD-driven inference services, and cloud-hosted pipelines using AWS, "
+    "Docker and MLflow. Improved model prediction accuracy by 15% through rubric-driven "
+    "evaluation of agent responses and shipped production-grade APIs and pipelines for "
+    "RAG, sentiment and pricing systems in the AI/ML domain."
+)
+
+SUMMARY_PADDED_TAIL = (
+    "Backend Software Engineer with experience building production FastAPI services in "
+    "Python, SQL and PostgreSQL. Owned the full-stack backend for a SaaS used by 16,000+ "
+    "users and implemented the ATS scoring engine, payment rails and analytics "
+    "instrumentation. Domain experience in developer tools, platform reliability and "
+    "API integrations."
+)
+
+
+def test_good_summary_has_no_quality_issues():
+    """The anti-false-positive guard. If the validator flags the target-quality
+    summary, it will mangle good output in production - a worse outcome than the
+    padding it exists to remove."""
+    assert _summary_quality_issues(SUMMARY_GOOD) == [], _summary_quality_issues(SUMMARY_GOOD)
+
+
+def test_validator_flags_jd_echo_and_domain_tag():
+    issues = _summary_quality_issues(SUMMARY_JD_ECHO)
+    assert "jd_echo" in issues, issues
+    assert "domain_tag" in issues, issues
+
+
+def test_validator_flags_banned_filler_and_hedging():
+    filler = _summary_quality_issues(
+        "Detail-oriented engineer. Proven ability to deliver. Adept at shipping code."
+    )
+    assert any(i.startswith("banned_phrase:") for i in filler), filler
+
+    hedging = _summary_quality_issues(
+        "Backend Engineer building services. Exposure to Kubernetes and Terraform."
+    )
+    assert any(i.startswith("hedging:") for i in hedging), hedging
+
+
+def test_validator_flags_pronouns_and_sentence_count():
+    assert "pronoun" in _summary_quality_issues(
+        "I build backend services in Python. My work covers APIs and data pipelines."
+    )
+    assert "too_few_sentences" in _summary_quality_issues("Backend Engineer building APIs.")
+    assert "too_many_sentences" in _summary_quality_issues(
+        "One sentence here. Two sentence here. Three sentence here. "
+        "Four sentence here. Five sentence here. Six sentence here."
+    )
+    assert _summary_quality_issues("") == ["empty"]
+
+
+def test_keyword_tail_detection():
+    """The padded tail is "A, B and C" - ONE comma. Requiring two commas missed
+    every real instance, including the example Rule 00 is written around."""
+    assert _is_keyword_tail("Domain experience in developer tools, platform reliability and API integrations.")
+    # A sentence with a real finite verb makes a claim and is never a tail.
+    assert not _is_keyword_tail(
+        "Builds and productionizes ML models as REST APIs and inference services "
+        "using Python, FastAPI, Flask, and Docker."
+    )
+    # "developer"/"development" are nouns sharing a stem with a verb - they must
+    # not be mistaken for a claim.
+    assert not _is_keyword_tail("Short list of two, items.")
+
+
+def test_repair_strips_trailing_domain_tag():
+    out = repair_summary({"summary": SUMMARY_JD_ECHO})
+    assert "in the AI/ML domain" not in out["summary"], out["summary"]
+    assert out["summary"].rstrip().endswith("."), out["summary"]
+    # The substantive claim before the tag survives untouched.
+    assert "sentiment and pricing systems" in out["summary"]
+
+
+def test_repair_drops_a_padded_final_sentence():
+    out = repair_summary({"summary": SUMMARY_PADDED_TAIL})
+    assert "Domain experience" not in out["summary"], out["summary"]
+    assert out["summary"].endswith("analytics instrumentation."), out["summary"]
+
+
+def test_repair_strips_a_domain_tag_that_is_no_longer_the_last_text():
+    """Regression: the tag-strip was anchored to the end of the WHOLE summary,
+    but repair_summary runs after weave_soft_skills_into_summary has appended a
+    sentence. The tag then stopped being the final characters and survived into
+    production output. It must qualify on ending its own SENTENCE instead."""
+    woven = (
+        "ML Engineer building inference services using AWS, Docker and MLflow. "
+        "Shipped APIs and pipelines for RAG, sentiment and pricing systems in the AI/ML domain. "
+        "Applies mentoring across this work."
+    )
+    out = repair_summary({"summary": woven})
+    assert "in the AI/ML domain" not in out["summary"], out["summary"]
+    # The claim it was hanging off, and the appended sentence, both survive.
+    assert "sentiment and pricing systems" in out["summary"], out["summary"]
+    assert out["summary"].endswith("Applies mentoring across this work."), out["summary"]
+
+
+def test_repair_keeps_a_load_bearing_mid_sentence_domain_phrase():
+    """"in the fintech domain" mid-sentence qualifies a real claim - stripping it
+    would delete meaning, which subtractive repair must never do."""
+    text = (
+        "Engineer who deployed fraud models in the fintech domain for a top-five bank. "
+        "Builds APIs in Python and Go. Ships weekly to production."
+    )
+    assert repair_summary({"summary": text})["summary"] == text
+
+
+def test_repair_is_a_noop_on_a_good_summary():
+    data = {"summary": SUMMARY_GOOD}
+    out = repair_summary(data)
+    assert out["summary"] == SUMMARY_GOOD, out["summary"]
+    assert "summary_issues" not in out, out.get("summary_issues")
+
+
+def test_repair_never_fabricates():
+    """The safety argument for running this on every optimization: repair is
+    strictly subtractive, so it cannot introduce a claim the resume never made.
+    Enforced mechanically rather than by reading the implementation."""
+    def words(text):
+        return set(re.findall(r"[a-z0-9+#/&-]+", text.lower()))
+
+    for source in (SUMMARY_GOOD, SUMMARY_JD_ECHO, SUMMARY_PADDED_TAIL):
+        out = repair_summary({"summary": source})["summary"]
+        assert not (words(out) - words(source)), words(out) - words(source)
+        assert len(out) <= len(source), (len(out), len(source))
+
+
+def test_repair_reports_what_it_cannot_fix():
+    """"focused on ..." sits mid-sentence, so removing it would mean rewriting
+    the clause - which subtractive repair must never do. It is reported instead."""
+    out = repair_summary({"summary": SUMMARY_JD_ECHO})
+    assert "jd_echo" in (out.get("summary_issues") or []), out.get("summary_issues")
+
+
+def test_repair_handles_empty_and_odd_shapes():
+    assert repair_summary({}) == {}
+    assert repair_summary(None) is None
+    assert repair_summary({"summary": ""}) == {"summary": ""}
+    assert repair_summary({"summary": None}) == {"summary": None}
+    # Must not disturb the rest of the resume.
+    data = {"summary": SUMMARY_GOOD, "skills": ["Python"], "experience": [{"bullets": ["Built X."]}]}
+    out = repair_summary(data)
+    assert out["skills"] == ["Python"]
+    assert out["experience"] == [{"bullets": ["Built X."]}]
+
+
+def test_summary_sentence_split_handles_abbreviations():
+    """"e.g." and "Ph.D." must not each read as a sentence break, or the count
+    inflates and a clean summary gets flagged as too long."""
+    assert len(_summary_sentences("Engineer with a Ph.D. in physics. Builds models.")) == 2
+    assert len(_summary_sentences("Uses tools, e.g. Docker and Airflow. Ships services.")) == 2
+
+
+def test_prompt_and_validator_share_one_banned_list():
+    """Regression guard: the banned-phrase list was written out twice and the
+    two copies drifted, so the validator passed summaries the prompt banned."""
+    from functions import _SUMMARY_BANNED_PHRASES, create_prompt
+    prompt = create_prompt("resume", "jd")
+    for phrase in _SUMMARY_BANNED_PHRASES:
+        assert phrase in prompt, f"{phrase!r} missing from the prompt's banned list"
 
 
 def main() -> int:

@@ -389,6 +389,33 @@ def grade_cleanliness(final: dict) -> dict:
 
 
 # --------------------------------------------------------------------------
+# 9. Summary quality (Rule 00)
+# --------------------------------------------------------------------------
+
+def grade_summary(final: dict, jd_text: str) -> dict:
+    """Is the professional summary a positioning paragraph or a compressed JD?
+
+    Reuses the production validator rather than reimplementing the rules, so a
+    score moving here is a score that moved for the user. Every failure mode is
+    decidable from the text (banned filler, hedging, JD-echo, trailing domain
+    tag, keyword padding, pronouns, sentence count) - no LLM judge, consistent
+    with the rest of this file.
+    """
+    summary = str(final.get("summary") or "").strip()
+    if not summary:
+        return {"issues": ["empty"], "sentences": 0, "examples": [], "score": 0.0}
+
+    issues = functions._summary_quality_issues(summary, jd_text)
+    sentences = functions._summary_sentences(summary)
+    return {
+        "issues": issues,
+        "sentences": len(sentences),
+        "examples": issues[:5],
+        "score": round(max(0.0, 100.0 - 15.0 * len(issues)), 1),
+    }
+
+
+# --------------------------------------------------------------------------
 # Composite
 # --------------------------------------------------------------------------
 
@@ -396,14 +423,20 @@ def grade_cleanliness(final: dict) -> dict:
 # the candidate's work, never claim an unbacked skill. Wording quality matters
 # but is worth less than trustworthiness - a beautifully written resume with an
 # invented employer is a worse product than a plain honest one.
+#
+# `summary` earns its 0.07 from `bullets` (0.15 -> 0.10) and `cleanliness`
+# (0.03 -> 0.01): the summary is the most-read line on the resume and was
+# previously unmeasured, while cleanliness counts cosmetic artifacts. The
+# trustworthiness weights (fabrication, preservation) are deliberately untouched.
 WEIGHTS = {
     "fabrication": 0.25,
     "preservation": 0.20,
     "skill_gating": 0.15,
     "evidence": 0.15,
-    "bullets": 0.15,
+    "bullets": 0.10,
+    "summary": 0.07,
     "links": 0.05,
-    "cleanliness": 0.03,
+    "cleanliness": 0.01,
     "schema": 0.02,
 }
 
@@ -422,6 +455,7 @@ def grade_all(raw: dict, final: dict, resume_text: str, jd_text: str, meta: dict
         "skill_gating": grade_skill_gating(raw, resume_text, jd_text, meta),
         "evidence": grade_evidence(final, jd_text),
         "bullets": grade_bullets(final, jd_text),
+        "summary": grade_summary(final, jd_text),
         "links": grade_links(final, resume_text),
         "cleanliness": grade_cleanliness(final),
     }
