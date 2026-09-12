@@ -142,6 +142,47 @@ He reverted pass two. The interview he eventually got asked him to talk through 
 
 **The pattern holds generally:** the first pass buys most of the score and improves the document. The second buys a few points and introduces risk.
 
+## What a Good Score Looks Like at Different Stages
+
+A "good" score is not one number. What counts as strong depends on how much evidence you have to match with.
+
+### Freshers and first-job applicants
+
+Expect lower scores, and do not treat that as failure. A posting describing two years of experience will never match a resume that has none, no matter how it is worded.
+
+**Workable range: 50–65%.** Above that usually means either an entry-level posting or genuine project work that lines up well. Chasing 80% at this stage produces padded skills lists, which is the most visible form of inexperience. The [ATS score for freshers](/blog/ats-score-for-freshers) guide covers realistic benchmarks.
+
+### Mid-career applicants
+
+This is where the published ranges apply most directly. You have enough evidence that a poor score usually means a real problem — parsing, vocabulary, or targeting.
+
+**Workable range: 65–80%.** If you are consistently below 60% on well-matched postings, check parsing before anything else.
+
+### Senior and executive applicants
+
+Scores often read lower, and the number matters less. Senior postings are written in outcomes and scope rather than tool lists, so there is less literal vocabulary to match.
+
+**Workable range: 55–75%**, with far more weight on whether your scope language matches the level. [ATS mistakes experienced professionals make](/blog/ats-mistakes-experienced-professionals) covers why optimising a senior resume like a junior one backfires.
+
+### Career changers
+
+The hardest case to read from a score alone. A low number can mean vocabulary mismatch — fixable in ten minutes — or a genuine domain gap that no wording addresses.
+
+Diagnose by looking at *which* terms are missing rather than the percentage. If they are things you have done under other names, the gap is lexical. If they are the domain itself, the score is telling you something true.
+
+## How the Score Behaves Across a Batch of Applications
+
+One score tells you about one posting. Ten scores tell you about your resume.
+
+| Pattern across 10+ applications | What it means | What to do |
+|---|---|---|
+| Consistently 70%+ | Base resume is sound | Focus on bullet quality |
+| Consistently 40–55% | Structural or targeting problem | Check parsing, then role band |
+| Wildly variable (40–85%) | Applying across too many role types | Build 2–3 base versions |
+| High scores, no responses | Scanner stage solved | Move to [evidence quality](/blog/high-ats-score-no-interviews) |
+
+The third row is the most commonly missed. A resume optimised for one role type will score erratically across several, and the fix is [splitting into separate versions](/blog/managing-multiple-resume-versions) rather than one document that half-fits everything.
+
 ## Common Mistakes
 
 **Comparing scores across different tools.** They share a percentage sign and nothing else.
@@ -155,6 +196,8 @@ He reverted pass two. The interview he eventually got asked him to talk through 
 **Ignoring bullet quality once the score is good.** The scanner cannot see whether your achievements are impressive, which is what [weak bullets behind a good score](/blog/weak-bullets-behind-good-score) addresses.
 
 **Re-scanning after every small edit.** It encourages optimising for the tool rather than the reader, and it turns a ten-minute tailoring job into an hour of diminishing adjustments.
+
+**Using the score to decide whether to apply.** It measures wording overlap, not your candidacy. Plenty of people are hired from applications that scored in the sixties, and plenty of ninety-percent resumes are never called because the bullets underneath said nothing.
 
 ## Frequently Asked Questions
 
@@ -189,6 +232,18 @@ A pattern across ten or more well-matched postings is different information from
 ### How often should I re-scan while editing?
 
 Once before tailoring and once after. Scanning after every sentence turns a ten-minute job into an hour and encourages optimising for the tool.
+
+### Does the score predict anything about salary or level?
+
+No. It measures textual overlap with one posting and nothing else. A perfect match on a junior role alongside a weak match on a senior one tells you about how the two postings were written, not about what you are worth or what you are ready for next.
+
+### Should I stop applying if the score is low and I cannot raise it?
+
+Not necessarily — but weight your time. One application to a poorly matched role is fine; ten is an afternoon spent on odds you already know are bad. Better-matched postings convert at a much higher rate for the same effort.
+
+### Is there a score at which I should stop tailoring entirely?
+
+Once you are in the workable band for your stage and the missing terms are all things you genuinely lack, further tailoring has nothing honest left to do. That is the point to send it and move on.
 
 ### Is a free checker good enough?
 

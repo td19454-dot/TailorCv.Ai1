@@ -159,6 +159,51 @@ Nineteen became six, and of those six the analyst already had four — they were
 
 If your worklist comes out empty and the score is still low, you have learned something useful: the gap is real, not cosmetic.
 
+## Reading the Report When You Are Short on Time
+
+The full sort takes three minutes. Sometimes you have thirty seconds, applying to your fifth role of the evening. Here is the compressed version.
+
+### The 30-second version
+
+Read only the terms that appear in the **job title or first paragraph** of the posting. Check those against your resume. Ignore everything else on the report entirely.
+
+That single filter captures most of the value, because position in the posting is the strongest signal of what actually matters.
+
+### The 3-minute version
+
+The full four-bucket sort described above. Worth doing for any role you genuinely want.
+
+### The 10-minute version
+
+The full sort plus rewriting the two or three Bucket 1 lines properly, with outcomes rather than just renamed duties. This is the version that also improves your base resume permanently — the renamed lines usually stay in place for future applications.
+
+| Time available | What to do | What you get |
+|---|---|---|
+| 30 seconds | Check title-paragraph terms only | Catches the deal-breakers |
+| 3 minutes | Full four-bucket sort | Knows what is worth fixing |
+| 10 minutes | Sort plus proper rewrites | Permanent base-resume gain |
+| 30+ minutes | Diminishing returns | Usually padding territory |
+
+## What the Report Cannot Tell You
+
+Worth stating plainly, because people over-trust these tools in both directions.
+
+### It cannot judge whether your work was impressive
+
+A bullet reading "responsible for reporting" and one reading "rebuilt reporting, cutting turnaround from two days to 40 minutes" can score identically. The scanner sees the same keywords; a hiring manager sees two different candidates. That gap is covered in [weak bullets behind a good score](/blog/weak-bullets-behind-good-score).
+
+### It cannot tell you the employer's threshold
+
+You do not know what score, if any, the employer's system applies — or whether they use ranking rather than filtering. The [difference between ATS score and recruiter judgment](/blog/ats-score-vs-recruiter-judgment) is the gap between passing a filter and being chosen.
+
+### It cannot see knockout questions
+
+Application forms often filter on answers to direct questions — work authorisation, notice period, salary expectation, willingness to relocate. Those decisions happen outside your resume text entirely, and a perfect report will not save an answer that disqualifies you.
+
+### It cannot account for internal candidates
+
+Some postings are open because policy requires it while an internal candidate is already favoured. No report models that, and it explains a share of unexplained rejections.
+
 ## Common Mistakes
 
 **Treating the list as a to-do list.** It is a diff between two documents, and diffs contain plenty of irrelevant differences.
@@ -206,6 +251,14 @@ For roles you genuinely want, yes — it takes a minute and the Bucket 1 items d
 ### My score went up but I still got rejected. Was the report wrong?
 
 No — the report only measures keyword relevance for one posting. Rejection can come from bullet quality, competition, or internal candidates. [High score, no interviews](/blog/high-ats-score-no-interviews) covers what to look at next.
+
+### Should I trust a report that gives me a very high score?
+
+Be slightly suspicious of it. A score above ninety usually means your resume has absorbed the posting's language closely enough that it reads as generic to a human. Check that your bullets still sound like you describing your own work, not the posting reflected back.
+
+### Does re-scanning after edits cost anything?
+
+Only time. Scan once before tailoring and once after — that gives you a clean before-and-after. Scanning after every sentence is how a ten-minute job becomes an hour, and it pulls your attention toward the tool rather than the [reader who decides](/blog/how-recruiters-read-resumes).
 
 ### Do the clustered tools really mean "pick one"?
 
