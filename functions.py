@@ -558,7 +558,20 @@ def create_prompt(resume_string,jd_string):
 
     Returns:
         str: A formatted prompt string containing instructions for resume optimization"""
-    
+
+    # Repeated after the resume/JD on purpose: the model weighs the end of a long
+    # prompt most, and the summary is where it drifts into restating the JD.
+    summary_reminder = ""
+    if str(jd_string or "").strip():
+        summary_reminder = """
+FINAL CHECK FOR `summary` (Rule 3) — apply before you output:
+1. It opens with the candidate's REAL identity (full role title they genuinely hold or have done the work of), then 3-4 sentences: identity + scope of relevant work -> what they build/do and with which tools -> the practices/methods they apply -> optional relevant breadth or real-world proof.
+2. Strike out every tool, technique, certification or domain that is NOT written in "My Resume" above — even if the job requires it and even if you put it in `skills`. Job-description-only items never go in the summary. Do not relabel their work as the job's specialty either (e.g. a medical-surgical nurse did not provide "critical care"; a teacher did not work with "business stakeholders").
+3. Never use these words/phrases: "Proficient in", "Skilled in", "Demonstrates", "extensive experience", "detail-oriented", "strong communication/teamwork skills", "collaborates effectively", "leveraging", "drive decision-making". No invented years or seniority, no JD title/team name ("focused on ...", "in the ... domain").
+4. At most one metric, only if it is in "My Resume" and central to this job; otherwise none.
+5. Career change: if their past job titles differ from the target role, the first sentence must name their real background first, e.g. "<Past role> transitioning into <target field>, with hands-on project experience in <real work>" — never "<Target title> with hands-on experience ..." as if they already held it.
+"""
+
     return f"""
 Your objective is to generate a professional, compelling resume content according to the provided job description, maximizing interview chances by integrating best practices in content quality, keyword optimization, measurable achievements, and proper formatting.
 
@@ -585,11 +598,11 @@ Guidelines to Follow:
 1)Keyword and Skill Optimization:
 Rule01: MANDATORY SKILLS INJECTION — The `skills` array in the output JSON MUST contain EVERY hard skill (programming languages, frameworks, tools, technologies, platforms, libraries, databases) that is explicitly mentioned in the job description. Do NOT skip any. Even if the candidate does not have a skill, it must still appear in the `skills` array for ATS keyword matching purposes. If a related skill already exists, keep it AND also add the exact JD keyword. Do not fabricate experience, expertise, or accomplishments.
 
-Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. NEVER extract fragments of a RESPONSIBILITY or ACTIVITY sentence as if they were named technologies — many JD lines describe what the candidate will DO, not a tool they must know, and these must be skipped entirely unless a genuine named technology can be pulled out of them. For example: "designing and implementing scalable API architectures" → skip entirely, do NOT add "designing", "implementing", or "scalable API architectures" as skills (only add "API"/"REST APIs" if that technology is separately and explicitly named elsewhere in the JD, never derived from this sentence). "establishing and maintaining technical standards for multi-agent orchestration" → skip entirely, do NOT add "establishing", "maintaining technical standards", or "multi-agent orchestration". "experience with the Microsoft Copilot ecosystem, including Power Platform integration and Microsoft Graph API" → extract ONLY the real product names ("Microsoft Copilot", "Power Platform", "Microsoft Graph API"); discard "ecosystem" and "integration" as connective words, not skills. Rule of thumb: if a phrase is a verb-led description of an activity ("designing...", "implementing...", "establishing...", "maintaining...", "building...", "developing...", "driving...", "leading...") or a vague noun phrase about scope/process rather than a specific tool ("architecture", "ecosystem", "orchestration", "roadmap", "workload", "standard", "strategy", "pattern" used generically), it is NOT an atomic skill — extract only the concrete proper-noun technology named inside it, if any, never the sentence fragment itself. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into the `summary` or experience/project `bullets` instead — never as a standalone `skills` entry.
+Rule01b: SKILLS ARRAY FORMAT — Every entry in `skills` MUST be a short, concrete, named technology (e.g. "Python", "React", "PostgreSQL", "Docker", "REST APIs") — a proper noun or standard industry term, 1-3 words. NEVER put soft skills, narrative phrases, or generic descriptions in `skills` (e.g. do NOT add things like "cross-functional collaboration", "commercial analytics applications", "marketing performance measurement", "technical report writing"). NEVER extract sentence fragments about the ROLE or COMPANY as skills — e.g. do NOT add "senior IC role", "high-growth startup", "one or more languages", "5+ years experience". If the job description says something like "proficiency in one or more of Python, Java, or C++ for a senior IC role at a high-growth startup", extract ONLY the actual technology names ("Python", "Java", "C++") and discard the surrounding sentence entirely. NEVER extract fragments of a RESPONSIBILITY or ACTIVITY sentence as if they were named technologies — many JD lines describe what the candidate will DO, not a tool they must know, and these must be skipped entirely unless a genuine named technology can be pulled out of them. For example: "designing and implementing scalable API architectures" → skip entirely, do NOT add "designing", "implementing", or "scalable API architectures" as skills (only add "API"/"REST APIs" if that technology is separately and explicitly named elsewhere in the JD, never derived from this sentence). "establishing and maintaining technical standards for multi-agent orchestration" → skip entirely, do NOT add "establishing", "maintaining technical standards", or "multi-agent orchestration". "experience with the Microsoft Copilot ecosystem, including Power Platform integration and Microsoft Graph API" → extract ONLY the real product names ("Microsoft Copilot", "Power Platform", "Microsoft Graph API"); discard "ecosystem" and "integration" as connective words, not skills. Rule of thumb: if a phrase is a verb-led description of an activity ("designing...", "implementing...", "establishing...", "maintaining...", "building...", "developing...", "driving...", "leading...") or a vague noun phrase about scope/process rather than a specific tool ("architecture", "ecosystem", "orchestration", "roadmap", "workload", "standard", "strategy", "pattern" used generically), it is NOT an atomic skill — extract only the concrete proper-noun technology named inside it, if any, never the sentence fragment itself. If the job description mentions a soft skill (communication, leadership, collaboration, stakeholder management, etc.), weave it naturally into experience/project `bullets` instead — never as a standalone `skills` entry.
 
 Analyze the job description and identify relevant hard-skill keywords.
 Match as much as possible of the job description's hard-skill keywords following the rules above to align with applicant tracking systems (ATS).
-Prioritize industry-relevant hard skills in the dedicated Skills section, and weave soft skills into bullet points and the summary instead.
+Prioritize industry-relevant hard skills in the dedicated Skills section, and weave soft skills into bullet points instead.
 
 ### Rule 1c: JD SKILLS MUST APPEAR IN THE BULLETS, NOT ONLY IN THE SKILLS LIST (MANDATORY)
 A skills list proves nothing on its own. A recruiter believes a skill when they can see WHERE it was used, and an ATS that scores context ranks a skill named inside an achievement above the same word sitting in a comma-separated list. So:
@@ -604,22 +617,48 @@ Step B — HARD skills, in the bullets:
    - If the candidate has NO factual basis for a JD hard skill, it stays in the `skills` array only (per Rule01). NEVER write a bullet claiming they used a technology they never touched.
 
 Step C — SOFT skills, in the bullets:
-   - Soft skills must NEVER appear in the `skills` array. They belong in `bullets` and `summary`.
+   - Soft skills must NEVER appear in the `skills` array. They belong in `bullets`.
    - Demonstrate each JD soft skill through work ALREADY described in the resume, by re-framing the SAME facts. Show it, do not assert it: write what the collaboration or ownership actually consisted of.
      GOOD (re-frames an existing bullet): "Partnered with 2 backend engineers to redesign the checkout API, cutting handoff bugs in half."
      BAD  (empty assertion): "Excellent communication and teamwork skills."
      BAD  (invented event): a bullet describing a team, mentee, client or presentation that appears nowhere in the original resume.
    - Spread the soft-skill signals across DIFFERENT entries and prioritise the projects and experience most relevant to this job (the projects section especially — that is where a hiring manager checks whether the person can actually work with others, not just code).
    - At most ONE soft-skill signal per bullet, and keep bullets to a single idea. Do not stuff several JD phrases into one sentence — a bullet crammed with keywords reads as fake to a human and adds nothing for an ATS.
-   - If the resume gives NO factual basis for a JD soft skill (no team, no stakeholders, no mentoring anywhere), do NOT manufacture one. Reflect it in the `summary` as an approach instead, or leave it out. An invented collaboration is a lie that gets caught in the interview.
+   - If the resume gives NO factual basis for a JD soft skill (no team, no stakeholders, no mentoring anywhere), do NOT manufacture one. Leave it out. An invented collaboration is a lie that gets caught in the interview.
 
 The hard rule underneath all of Step B and C: rewriting means expressing the SAME facts in the job description's vocabulary. You may re-word, re-frame, re-order and sharpen. You may NOT add work, people, tools, scale or outcomes that are not in the original resume.
 
-Rule 2:Incorporate Measurable Metrics:
+Rule 2:Incorporate Measurable Metrics (experience/project BULLETS only — the summary has its own rules below):
 Quantify achievements using the XYZ formula if the user has put such quantifications but not formatted it if user has not put anything quantifyable don't do it: Accomplished X, measured by Y, by doing Z.
 
 Use existing metrics whenever available. Do not create, estimate, infer, or invent numerical results, percentages, revenue impact, time savings, rankings, or performance improvements.
-Don't use vague statements; use metrics to highlight value and effectiveness.
+In bullets, don't use vague statements; use the resume's own metrics to highlight value and effectiveness.
+
+### Rule 3: PROFESSIONAL SUMMARY (MANDATORY — write it LAST)
+The summary is NOT a compressed job description and NOT a keyword list. It is a recruiter's 10-second answer to: "Who is this person professionally, what have they actually done, and why do they fit THIS role?" Write it only after you have rewritten experience, projects and skills, and build it from that evidence.
+
+If the job description is empty, keep the original resume's summary exactly as written (or "" if the resume has none) and ignore the rest of this rule.
+
+Structure — 3 to 4 sentences, roughly 60-100 words, no pronouns ("I", "my"), no line breaks:
+   1. IDENTITY + BREADTH: open with the candidate's real professional identity — the role they genuinely are, written as the full standard title (e.g. "Machine Learning Engineer", "Frontend Developer", "Registered Nurse", "Project Manager"), aligned with the target role where the resume supports it — followed by the scope of relevant work they have hands-on experience across.
+   2. WHAT THEY BUILD / DO, AND WITH WHAT: the core capability most relevant to the job, naming the specific tools, languages, platforms or methods the resume shows them actually using for it.
+   3. HOW THEY WORK: the practices, standards or methods from the resume that match what the job values (e.g. testing, CI/CD, experiment tracking, accessibility, clinical protocols, Agile delivery), and what those practices deliver.
+   4. (Optional) BREADTH / CREDIBILITY: secondary relevant areas of applied experience, or real-world proof such as deployed products, real users, or production systems — only if the resume supports it.
+
+Rules:
+   - GROUNDED IN THE ORIGINAL RESUME ONLY: every role, capability, tool, technique and domain in the summary must appear in the ORIGINAL resume's experience, projects, education or certifications (the "My Resume" text below). The output `skills` array is NOT evidence — per Rule01 it contains job-description keywords the candidate may not have. A tool or technique that appears only in the job description (or only in the skills you added) must NEVER be in the summary, however central it is to the job. Describing the candidate's real work in the job's vocabulary is fine; claiming the job's requirements as their experience is not.
+   - SELF-CHECK before finalizing: go through every tool, technique and claim in your summary and confirm you can point to where it appears in the original resume text. Delete anything you cannot point to. When in doubt, leave it out — a shorter true summary beats a longer invented one.
+   - CAREER CHANGERS / PARTIAL MATCHES: if the candidate's real background differs from the target role, do not relabel them with the target title as if they already held it. Lead with the transferable identity plus the relevant work they have actually done (e.g. "Mathematics teacher turned data analyst with hands-on project experience in ..."), then the transferable strengths from their past role.
+   - ALIGNED, NOT COPIED BLINDLY: lead with the parts of the candidate's background that matter most for this job, in the job's vocabulary. You MAY reuse the job description's phrasing for the scope of work (e.g. "end-to-end Machine Learning lifecycle, including data pipelines, feature engineering, model training, deployment, and evaluation") when the resume supports each part of it. Do NOT write "<title> focused on <JD title/team name>", "in the <X> domain", or list JD requirements the candidate does not meet.
+   - ATS TERMS, NATURALLY: include the job's most important terms where they are true. On first use, write the full term followed by the acronym, e.g. "Natural Language Processing (NLP)", "Retrieval Augmented Generation (RAG)", "Amazon Web Services (AWS)", "Continuous Integration/Continuous Deployment (CI/CD)". Group related tools into one natural clause rather than a long comma dump.
+   - CAPABILITIES OVER METRICS: by default use NO numbers. Include at most ONE metric, and only if it appears in the original resume, is central to what this job does, and is the candidate's strongest relevant proof. Never invent, estimate or combine numbers, and never force in an impressive but off-topic result.
+   - NO INFLATION: do not add "senior", "lead", "expert" or a years-of-experience figure unless the resume states it. Students/early-career candidates are described by the real work they have done (projects, internships), not by inflated titles.
+   - NO FILLER: no clichés or self-praise ("results-driven", "passionate", "dynamic", "detail-oriented", "proven track record", "extensive experience", "excellent/strong communication skills", "team player", "collaborates effectively"). Do not open sentences with "Proficient in", "Skilled in" or "Demonstrates"; use concrete verbs for what they do ("Builds", "Designs", "Delivers", "Applies", "Provides"). Soft skills stay out of the summary — show them in bullets.
+   - Each sentence carries a distinct idea; do not repeat the same tool or claim twice.
+
+Illustration of the difference (structure only — never copy these words; always write from the actual resume and job):
+   BAD (compressed JD + forced metric): "Data Engineer focused on Data Platform & Analytics Engineering with hands-on delivery of pipelines using Spark, Airflow and dbt. Reduced costs by 30% and shipped production-grade pipelines in the data domain."
+   GOOD (identity, capability, practice, breadth): "Data Engineer with hands-on experience designing and operating batch and streaming data pipelines, from ingestion and transformation to warehouse modeling. Builds ELT workflows in Python and SQL using Apache Spark, Apache Airflow and dbt on Google Cloud Platform (GCP). Applies data quality testing, version-controlled transformations and CI/CD to keep pipelines reliable and reproducible. Background in analytics engineering and dashboarding, with pipelines serving production reporting."
 
 
 Content Quality and Language:
@@ -630,7 +669,7 @@ Replace generic phrases with specific examples that showcase expertise and succe
 Focus on selling professional experience, skills, and results, not merely summarizing past roles.
 
 Additional Instructions:
-Keyword Optimize and be specific for each section (Professional Summary, Experience, Skills, Education) to reflect relevance to the job.
+Keyword Optimize and be specific for the Experience, Projects, Skills and Education sections to reflect relevance to the job. The Professional Summary follows Rule 3 instead.
 Use concise bullet points, each starting with a strong action verb.
 Preserve all existing links from the resume exactly when they exist. Do not remove project, GitHub, LinkedIn, portfolio, or other URLs.
 If a project has a GitHub/repository/demo/live link in the original resume, keep it in the output using `github_link`, `url`, or `links`.
@@ -659,8 +698,6 @@ Follow this EXACT schema
     "codechef": "",
     "google_scholar": ""
   }},
-
-  "summary": "",
 
   "experience": [
     {{
@@ -730,14 +767,16 @@ Follow this EXACT schema
       "year": "",
       "url": ""
     }}
-  ]
+  ],
+
+  "summary": ""
 }}
 
 My Resume:
 {_escape_braces(resume_string)}
 Job Description:
 {_escape_braces(jd_string)}
-
+{summary_reminder}
 """
 @retry(
     stop=stop_after_attempt(5),
