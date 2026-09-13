@@ -773,6 +773,10 @@ _SUMMARY_BANNED_PHRASES = (
     # resumes where they are most tempting.
     "prepared to grow into", "looking to gain experience", "hoping to develop",
     "eager to learn", "aspiring to", "seeking to gain",
+    # Banned as a TOKEN, not just inside "Applies reproducible ... practices".
+    # It returned in six outputs across three resumes under different framings,
+    # and it never carries information a concrete noun would not carry better.
+    "reproducible", "reproducibility",
 )
 
 # Hedging constructions that shrink real work into mere acquaintance. Banned by
@@ -862,6 +866,10 @@ LENGTH: 2 to 3 sentences, 45 to 60 words. Hard ceiling 65. This is a budget you 
 
 DO NOT RESTATE THE BULLETS. The summary sits directly above Experience and Projects, and the reader sees both. If a phrase in your summary also appears in a bullet below it, the summary has spent its most valuable words telling the reader something they are about to read anyway. Its job is to FRAME and PRIORITISE — to tell the reader what to conclude from the entries below — not to preview them. Name the through-line, the scale, or the judgement the work demonstrates; leave the itemised detail to the bullets.
 
+NEVER BORROW VOCABULARY FROM THIS PROMPT'S EXAMPLES. Every illustration in this rule — pipelines, experiment tracking, versioning, containerized deployment, CI/CD, inference services, REST APIs — is an example of SHAPE, never a word list to draw from. If a term appears in this prompt but NOT in the candidate's resume, it must not appear in the summary. Writing "builds repeatable ETL and analysis pipelines" for a candidate whose resume never mentions ETL or pipelines is fabrication, and it happens by copying vocabulary from examples written for a different role.
+
+PREFER THE INSIGHT OVER THE INPUT VOLUME. Given a choice between the size of the dataset processed and the finding that came out of it, always take the finding. "Analysed 3,900 transaction records" describes effort; "found express shipping carries 3.5% higher average transaction value" describes a result that changed a decision. Small input numbers actively invite scepticism — leading with one draws attention to the scale rather than the work. Prefer, in order: a finding that changed a decision, a measured improvement, a scale figure, and only then a volume-processed figure.
+
 PREFER DESIGN DECISIONS OVER CATEGORY NOUNS. "Implements payment rails" names a category and discards the engineering. "Built dual payment rails — Razorpay domestic, Polar international — with usage quotas and subscription lifecycle handling" shows a design decision and the constraint it answered. When choosing between two true specifics, always take the one that reveals a decision, a trade-off, or a measured outcome over the one that merely names the area of work.
 
 DRAW ON AT LEAST TWO ENTRIES where the resume has more than one substantive entry. A summary sourced entirely from a single project is a project description wearing a profile's clothes, and it wastes the rest of the candidate's history. Pick the strongest evidence from the strongest entry, then the strongest complementary evidence from a different one.
@@ -882,6 +890,8 @@ NEVER SPEND SUMMARY WORDS ON ASSUMED SKILLS. Every role has table stakes, and na
 A Machine Learning Engineer who spends a word on "Python" has wasted it.
 
 NO SENIORITY HEDGES. Never write "(early-career)", "(junior)", "aspiring", "entry-level" or "recent graduate". Leading with the weakest signal in the first six words is self-sabotage. Let the scale and substance of the work establish the level — a reader infers seniority from what was built far more reliably than from a label.
+
+BANNED CONSTRUCTION: "Applies <adjective> <noun> practices". "Applies reproducible evaluation and monitoring practices", "Applies MLOps practices such as...", "Applies engineering practices including..." - this exact frame has appeared in output after output across unrelated candidates. It is a category noun wearing a verb, it claims nothing specific, and it is always replaceable by the concrete thing that was actually done. If you find yourself writing "Applies ... practices", delete the sentence and name the system, decision or outcome instead.
 
 NO FILLER CLOSER. Do not end on "collaborates with cross-functional teams", "documents technical processes", "committed to continuous improvement" or any variant. These carry no information, they could sit on any resume in the world, and they occupy the last thing a recruiter reads. End on the strongest concrete fact instead.
 
@@ -1685,6 +1695,22 @@ def _sanitize_hard_skill_list(
     return cleaned_missing, newly_matched
 
 
+def _skill_in_source_resume(resume_evidence: str, skill: str) -> bool:
+    """Did the CANDIDATE write this skill down themselves?
+
+    _contains_skill() applies stemming and multi-word matching, which is right
+    for judging whether prose evidences a capability but wrong for judging
+    whether a named technology appears in a skills list. "Flask" and "Django"
+    sitting on the resume's own Technical Skills line are claimed by the
+    candidate, and no retention rule should ever remove them.
+    """
+    text = str(resume_evidence or "").lower()
+    name = str(skill or "").strip().lower()
+    if not text or not name:
+        return False
+    return re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", text) is not None
+
+
 def inject_jd_hard_skills(
     data: dict,
     jd_string: str,
@@ -1804,21 +1830,29 @@ def inject_jd_hard_skills(
             continue
 
         if auto_add:
-            # Extension policy: put every skill the job asks for straight onto the
-            # resume, with no "do you actually have this?" step. There is no UI in
-            # the sidebar to ask through, and the point of the extension is one
-            # click on a job posting.
+            # Extension policy: surface the skills this job asks for without a
+            # "do you actually have this?" step, because there is no UI in the
+            # sidebar to ask through.
             #
-            # The website does the opposite (auto_add=False): unevidenced skills
-            # come back as `skill_gaps` and the candidate ticks the ones they
-            # really have. Same optimization engine either way — this is the only
-            # place the two surfaces are allowed to differ.
+            # It may NEVER add a skill the resume does not evidence. This branch
+            # used to append every JD term unconditionally, which put XGBoost,
+            # Seaborn, Tableau, SageMaker and Vertex AI onto a resume that
+            # names none of them - read straight off the target posting. That is
+            # the single worst thing this pipeline can do: the candidate is
+            # asked about Tableau in a screening call and has nothing, and the
+            # fabrication is traceable to the job ad they applied with.
+            #
+            # Unevidenced JD skills now fall through to the gap path below on
+            # BOTH surfaces. The two policies still differ - the extension
+            # promotes evidenced skills silently where the website asks - but
+            # neither invents.
+            if resume_evidence and not _contains_skill(resume_evidence, skill):
+                skill_gaps.append(skill)
+                continue
             if key not in seen_lower:
                 seen_lower.add(key)
                 cleaned_skills.append(skill)
-                # Recorded so the UI can say what it did. With gaps always empty
-                # there is nothing left to ASK about, but the user should still
-                # see which skills this job caused to be added.
+                # Recorded so the UI can say what it did.
                 if not resume_evidence or not _contains_skill(resume_evidence, skill):
                     auto_added.append(skill)
             continue
@@ -1836,6 +1870,17 @@ def inject_jd_hard_skills(
             # whole skills list would be worse than leaving it alone.
             if not resume_evidence:
                 continue
+            # NEVER strip a skill the candidate actually wrote down. A skill
+            # present in the source resume's own text is evidenced by
+            # definition - the candidate claimed it themselves - and removing
+            # it is a pure loss. On a real run this deleted Django and Flask
+            # from a resume applying to a JD that required "deploying models
+            # via REST APIs", which were that candidate's ONLY REST-framework
+            # signal, and also deleted Stable-Baselines3 from an ML
+            # application. The strip is meant for skills the MODEL invented,
+            # not for ones the resume lists.
+            if _skill_in_source_resume(resume_evidence, skill):
+                continue
             cleaned_skills = [s for s in cleaned_skills if s.lower() != key]
             seen_lower.discard(key)
 
@@ -1851,11 +1896,219 @@ def inject_jd_hard_skills(
                 already.add(skill.strip().lower())
                 skill_gaps.append(skill)
 
+    # Put back any skill the CANDIDATE listed that the model silently dropped.
+    #
+    # Nothing above does this: inject_jd_hard_skills() adds JD skills and
+    # strips unevidenced model claims, but a source skill the model simply
+    # omitted from its `skills` array falls out of the resume entirely. On a
+    # real run that deleted Django, Flask, Stable-Baselines3, C, Java and
+    # PineconeDB - and Django/Flask were that candidate's only REST-framework
+    # signal against a JD requiring "deploying models via REST APIs", so the
+    # optimizer removed the most JD-relevant skills on the page.
+    #
+    # JD-relevant ones go back first and in JD order, because the skills list
+    # is read top-down and the ones answering a stated requirement earn the
+    # first line.
+    source_skills = _extract_source_skill_list(resume_evidence)
+    if source_skills:
+        present = {s.strip().lower() for s in cleaned_skills}
+        jd_terms = [str(s).strip().lower() for s in (required_skills or [])
+                    if str(s or "").strip()]
+        jd_blob = str(jd_string or "").lower()
+
+        def _jd_rank(name: str) -> int:
+            """Position of the JD requirement this skill answers, or -1.
+
+            Matching is on whole tokens, never bare substrings. `low in term`
+            let the single-letter skill "C" match the JD requirement "PyTorch",
+            so C was restored onto a machine-learning application where cutting
+            it was the right editorial call.
+            """
+            low = name.strip().lower()
+            if not low:
+                return -1
+            # Aliases and inflections. JD extraction returns "LLMs" and
+            # "Retrieval Augmented Generation" where a resume writes "LLM" and
+            # "RAG", so exact matching dropped the candidate's only LLM/RAG
+            # signal on a JD that names LLMs as a requirement.
+            variants = {low, low.rstrip("s"), low + "s"}
+            for short, longform in _SKILL_ALIASES:
+                if low in (short, longform):
+                    variants |= {short, longform, short + "s", longform + "s"}
+            for i, term in enumerate(jd_terms):
+                if term in variants or term.rstrip("s") in variants:
+                    return i
+            for i, term in enumerate(jd_terms):
+                if not term:
+                    continue
+                if term == low:
+                    return i
+                # Multi-word containment is fine ("rest api" vs "rest apis"),
+                # but only on a word boundary and only for names long enough
+                # that a coincidental match is implausible.
+                if len(low) >= 3 and re.search(
+                    r"(?<![\w-])" + re.escape(low) + r"(?![\w-])", term
+                ):
+                    return i
+                if len(term) >= 3 and re.search(
+                    r"(?<![\w-])" + re.escape(term) + r"(?![\w-])", low
+                ):
+                    return i
+            # Not an extracted requirement, but named in the JD prose. Same
+            # boundary rule, and a minimum length for the same reason.
+            if len(low) >= 3 and re.search(
+                r"(?<![\w-])" + re.escape(low) + r"(?![\w-])", jd_blob
+            ):
+                return len(jd_terms)
+            return -1
+
+        # Restore ONLY what answers a stated JD requirement. Blanket restoration
+        # would put every dropped skill back, including ones legitimately cut
+        # for relevance - dropping C and Java from an ML application is a
+        # reasonable editorial call. Dropping Flask and Django from a JD that
+        # requires "deploying models via REST APIs" is not, because they were
+        # the candidate's only REST-framework signal on the page.
+        # Restore EVERY skill the candidate listed that the model dropped, with
+        # JD-relevant ones ordered first.
+        #
+        # Restoring only JD-mapped skills was too narrow and deleted real
+        # material: Deep Learning, Generative AI, LLM and RAG all vanished from
+        # a Data Scientist application because none matched an extracted JD
+        # term, and CI/CD, Linux, EC2, S3 and ECS went with them. A skill the
+        # candidate wrote down needs no permission from the posting to stay on
+        # his own resume; the JD decides ORDER, not existence.
+        dropped = [s for s in source_skills if s.strip().lower() not in present]
+        restored = list(dropped)
+        restored.sort(key=lambda s: (_jd_rank(s) < 0, _jd_rank(s) if _jd_rank(s) >= 0 else 0))
+        for skill in restored:
+            key = skill.strip().lower()
+            if key in present:
+                continue
+            present.add(key)
+            cleaned_skills.append(skill)
+
+        # Everything else the model dropped is surfaced rather than silently
+        # binned, so the editor can offer it back and the evals can see it.
+        review = [s for s in dropped if _jd_rank(s) < 0]
+        review = []  # nothing is withheld any more; kept for payload shape
+        if restored:
+            data["skills_restored_from_resume"] = restored
+        if review:
+            data["skills_dropped_for_review"] = review
+
+        # Symmetry. Retention was one-directional: JD-relevant source skills
+        # were restored, but skills the model RETAINED with no bearing on this
+        # JD were never questioned - which is how TensorFlow and scikit-learn
+        # survived onto a frontend application. Flagging rather than deleting,
+        # because a skill can be worth keeping for reasons the JD does not
+        # state (a second target role, a recruiter search, an adjacent team).
+        irrelevant = []
+        for skill in cleaned_skills:
+            if _jd_rank(skill) >= 0:
+                continue
+            if not _skill_in_source_resume(resume_evidence, skill):
+                continue
+            irrelevant.append(skill)
+        if irrelevant:
+            data["skills_irrelevant_to_jd"] = irrelevant
+
     data["skills"] = cleaned_skills
-    data["skill_gaps"] = skill_gaps
+    data["skill_gaps"] = [g for g in skill_gaps
+                          if g.strip().lower() not in {s.strip().lower() for s in cleaned_skills}]
     data["skills_added_from_jd"] = auto_added
 
     return data
+
+
+# Short form <-> long form for skills whose two spellings are both common. A
+# JD saying "LLMs" and a resume saying "LLM" name the same thing, and exact
+# matching treated them as unrelated.
+_SKILL_ALIASES = (
+    ("llm", "large language model"),
+    ("rag", "retrieval augmented generation"),
+    ("nlp", "natural language processing"),
+    ("cv", "computer vision"),
+    ("ml", "machine learning"),
+    ("ci/cd", "continuous integration"),
+    ("k8s", "kubernetes"),
+    ("gcp", "google cloud platform"),
+    ("aws", "amazon web services"),
+)
+
+
+def build_jd_gap_report(jd_string: str, resume_text: str) -> dict:
+    """Which JD requirements the resume evidences, and which it does not.
+
+    The optimizer's job stops at presenting what the candidate has. When a JD
+    asks for six years of MLOps and the resume shows none, no rewrite closes
+    that gap, and prose implying coverage is worse than silence - it reads as
+    padding to a recruiter and cannot be defended in an interview.
+
+    So the gap is reported rather than written around. Returns both lists plus
+    a coverage ratio the caller can surface to the user.
+    """
+    required = _extract_hard_skills_from_jd(jd_string)
+    evidence = str(resume_text or "")
+    evidenced, missing = [], []
+    for skill in required:
+        (evidenced if _contains_skill(evidence, skill) else missing).append(skill)
+    total = len(required) or 1
+    return {
+        "required": required,
+        "evidenced": evidenced,
+        "missing": missing,
+        "coverage": round(100.0 * len(evidenced) / total, 1),
+    }
+
+
+def _extract_source_skill_list(resume_evidence: str) -> list[str]:
+    """Named technologies from the resume's own Skills section.
+
+    Only the skills block is read, because that is where the candidate makes
+    explicit claims. Pulling proper nouns out of bullet prose would recover
+    company and product names alongside real technologies.
+    """
+    text = str(resume_evidence or "")
+    if not text.strip():
+        return []
+    lines = text.splitlines()
+    start = None
+    for i, line in enumerate(lines):
+        if _SKILLS_SECTION_HEADER_RE.match(line):
+            start = i + 1
+            break
+    if start is None:
+        return []
+
+    found: list[str] = []
+    seen: set[str] = set()
+    for line in lines[start:]:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # Stop at the next section heading (a short line with no separators).
+        if (len(stripped) < 40 and ":" not in stripped and "," not in stripped
+                and stripped[:1].isupper() and not stripped.startswith(("-", "•"))):
+            break
+        body = stripped.split(":", 1)[1] if ":" in stripped else stripped
+        # "LLM(Chatgpt, Gemini)" must split into LLM, not concatenate into
+        # "LLMChatgpt": the comma inside the parenthesis is a list separator
+        # like any other, and stripping the bracket afterwards glued the
+        # fragments together.
+        body = re.sub(r"\(([^)]*)\)", r", \1", body)
+        for raw in re.split(r"[,;|]", body):
+            name = _clean_inline_text(raw)
+            name = re.sub(r"\s*\([^)]*\)\s*$", "", name).strip()
+            if not name or len(name) > 30:
+                continue
+            if not _is_atomic_hard_skill(name):
+                continue
+            key = name.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            found.append(name)
+    return found
 
 
 # Industry/domain nouns a job description uses to describe the BUSINESS, not a
@@ -2064,8 +2317,25 @@ def weave_soft_skills_into_summary(data: dict, soft_skills, resume_text: str = "
     # naming WHERE they were applied, which is the same claim in the voice the
     # rest of the summary is written in. Still purely presentational: the traits
     # are already evidence-gated above, and no new fact is introduced.
-    sentence = f"Applies {phrase} across this work."
-    data["summary"] = f"{summary} {sentence}".strip() if summary else sentence
+    # NOTHING is appended to the summary any more.
+    #
+    # This used to add "Applies {phrase} across this work." - and that single
+    # line became the most persistent artifact in the generator, surfacing as
+    # "Applies reproducible ... practices" in five separate outputs across
+    # three different resumes. It is a generic closer with no specific
+    # referent, which is exactly what Rule 00's filler-closer rule bans, so
+    # the post-processor was re-introducing the defect the prompt forbids.
+    #
+    # The soft skills are still recorded for the editor to surface; they are
+    # simply never written into the most-read line of the resume.
+    data["soft_skills_suggested"] = additions
+    return data
+
+
+def _unused_soft_skill_sentence(summary: str, additions: list) -> dict:
+    """Superseded. Retained only to document what was removed and why."""
+    sentence = f"Applies {' and '.join(additions)} across this work."
+    data = {"summary": f"{summary} {sentence}".strip() if summary else sentence}
     data["soft_skills_added"] = additions
     return data
 
@@ -2084,6 +2354,17 @@ _SUMMARY_DOMAIN_TAG_RE = re.compile(
 _SUMMARY_JD_ECHO_RE = re.compile(r"\bfocus(?:ed|ing)?\s+on\b", re.IGNORECASE)
 
 _SUMMARY_PRONOUN_RE = re.compile(r"\b(?:I|me|my|mine|we|our|ours)\b")
+
+# Literal adjacent repetition: "Applies applied Natural Language Processing",
+# "the the", "and and". No semantic-group check can see this - the words are
+# identical rather than equivalent - and it shipped to a real user.
+_ADJACENT_REPEAT_RE = re.compile(r"\b(\w+)\s+\1\b", re.IGNORECASE)
+
+# Same stem, adjacent: "Applies applied", "engineers engineering". Caught
+# separately because the surface forms differ.
+_ADJACENT_STEM_REPEAT_RE = re.compile(
+    r"\b(\w{4,})(?:s|es|ed|ing|d)?\s+\1(?:s|es|ed|ing|d)?\b", re.IGNORECASE
+)
 
 _SUMMARY_MIN_SENTENCES = 2
 _SUMMARY_MAX_SENTENCES = 4
@@ -2109,10 +2390,19 @@ _SENIORITY_HEDGE_RE = re.compile(
 
 # Filler closers that carry no information and could sit on any resume.
 _FILLER_CLOSER_RE = re.compile(
-    r"\b(?:collaborat\w+\s+with\s+(?:cross[-\s]functional|product|"
-    r"stakeholder|various)|documents?\s+technical\s+(?:processes|"
-    r"documentation)|committed\s+to\s+continuous|passionate\s+about\s+"
-    r"(?:learning|technology)|thrives?\s+in)\b",
+    # Matches the CLASS, not a list of phrasings. An earlier version enumerated
+    # specific wordings ("collaborates with cross-functional teams"), so the
+    # same empty claim came back as "communicates results to non-technical
+    # stakeholders" and passed untouched. A filler clause is a generic
+    # activity verb pointed at a generic audience or artefact, with no
+    # specific referent - no named team, system, product or number.
+    r"\b(?:collaborat\w+|communicat\w+|partner\w*|liais\w+|engag\w+|"
+    r"present\w*|document\w*|translat\w+)\b[^.]{0,40}?\b(?:"
+    r"cross[-\s]functional|non[-\s]technical|technical\s+(?:processes|"
+    r"documentation|reports?)|stakeholders?|teams?|audiences?|"
+    r"leadership|management|peers|colleagues|clients?)(?![-\w])"
+    r"|\b(?:committed\s+to\s+continuous|passionate\s+about|thrives?\s+in|"
+    r"dedicated\s+to\s+delivering)\b",
     re.IGNORECASE,
 )
 
@@ -2142,6 +2432,9 @@ _SEMANTIC_GROUPS = (
     {"monitoring", "observability", "error tracking"},
     {"pipeline", "pipelines", "workflow", "workflows"},
     {"testing", "test automation", "automated testing", "e2e testing"},
+    {"full-stack", "full stack", "end-to-end application", "frontend and backend"},
+    {"model inference", "inference service", "model serving", "serving models"},
+    {"containerised", "containerized", "docker", "containerisation"},
 )
 
 # Table-stakes skills per domain. Naming these signals junior, because only a
@@ -2184,6 +2477,12 @@ def _has_concrete_evidence(summary: str) -> bool:
     text = str(summary or "")
     if not text.strip():
         return False
+    # An explicit [BRACKETED] placeholder satisfies this gate deliberately.
+    # On a metric-poor resume the honest output names the gap rather than
+    # inventing a number to fill it, so a placeholder must COUNT as evidence -
+    # otherwise the gate pressures exactly the fabrication it exists to stop.
+    if re.search(r"\[[A-Z][A-Z _-]{2,}\]", text):
+        return True
     # Any digit that is not part of a version/acronym token (ES6, GA4, CSS3).
     for m in re.finditer(r"\d[\d,.]*\+?%?", text):
         token = text[max(0, m.start() - 12): m.end() + 2]
@@ -2211,7 +2510,12 @@ def _duplicate_capability(summary: str) -> list[str]:
     lowered = str(summary or "").lower()
     repeated: list[str] = []
     for group in _SEMANTIC_GROUPS:
-        hits = sum(1 for term in group if term in lowered)
+        # Count OCCURRENCES, not distinct members. "full-stack experience ...
+        # a full-stack agentic trip planner" repeats one concept twice using
+        # the same word, which an earlier version scored as a single hit and
+        # passed - so the most obvious kind of repetition was the one the gate
+        # could not see.
+        hits = sum(lowered.count(term) for term in group)
         if hits >= 2:
             repeated.append(sorted(group)[0])
     return repeated
@@ -2256,10 +2560,70 @@ def _count_named_tools(summary: str) -> int:
             for tok in clean:
                 if i == 0 and tok[:1].isupper():
                     continue  # sentence-initial capital
-                if re.fullmatch(r"[A-Z][A-Za-z0-9.+#-]{1,}", tok) or \
-                   re.fullmatch(r"[A-Z]{2,}\d?", tok):
-                    tools.add(tok.lower())
+                low = tok.lower()
+                # Capitalisation alone is not toolhood. Job titles, employer
+                # names, segment labels and ordinary capitalised verbs were
+                # all being counted, so a summary naming three tools scored
+                # nine and failed the cap. Only count tokens that are either a
+                # known technology or shaped like one (internal capitals,
+                # digits, or a symbol), and never a word in the stoplist.
+                if low in _NOT_A_TOOL:
+                    continue
+                if low in _KNOWN_TOOL_TOKENS:
+                    tools.add(low)
+                    continue
+                # Version strings are not tools. "v3.15.0" was being counted
+                # alongside the package it belongs to, double-charging the cap.
+                if re.fullmatch(r"v?\d+(?:\.\d+)+[a-z0-9.-]*", low):
+                    continue
+                if re.fullmatch(r"[A-Z]{3,}\d?", tok):      # SQL, AWS, GA4
+                    tools.add(low)
+                elif re.fullmatch(r"[A-Za-z][a-z]+[A-Z][A-Za-z0-9.+#-]*", tok):  # FastAPI, PostHog
+                    tools.add(low)
+                elif re.fullmatch(r"[A-Za-z][A-Za-z0-9.+#-]*[0-9.+#][A-Za-z0-9.+#-]*", tok):
+                    tools.add(low)                          # C++, ES6, Python3
     return len(tools)
+
+
+# Words that are capitalised mid-sentence but are not technologies: job-title
+# nouns, sentence-initial verbs that survive the split, and common labels.
+_NOT_A_TOOL = {
+    "engineer", "analyst", "designer", "developer", "coordinator", "manager",
+    "scientist", "architect", "consultant", "specialist", "administrator",
+    "delivered", "built", "owns", "owned", "scored", "mapped", "ran", "runs",
+    "shipped", "cut", "rebuilt", "partitioned", "mentored", "evaluated",
+    "loyal", "express", "present", "data", "product", "backend", "frontend",
+    "operations", "machine", "learning", "paints", "wms",
+    # Field abbreviations and product/paper names that read as tools by shape.
+    # Two-letter all-caps tokens are almost never technologies (ML, DL, AI, UI,
+    # UX, QA, PR) and were inflating the count on summaries that named none.
+    "ml", "dl", "ai", "ui", "ux", "qa", "pr", "api", "apis", "mcp",
+    "prettytable", "mediawiki", "bengali", "outlier", "alignerr", "alignerr",
+    # Business/product nouns that happen to be camel-cased or all-caps. "SaaS"
+    # was consuming a slot in the four-tool budget on every summary that named
+    # the product category, leaving a genuinely four-tool summary reading as
+    # five and failing the cap.
+    "saas", "paas", "iaas", "crm", "erp", "sdk", "cli", "ide", "url", "urls",
+    "pdf", "pdfs", "json", "csv", "html5", "dom",
+    # Product names and architectural styles are not tools. "YouTube" is the
+    # platform a dataset came from and "REST" is a style, not a technology, yet
+    # both consumed slots in the four-tool budget and failed summaries naming
+    # only three real tools.
+    "youtube", "rest", "github", "gitlab", "linkedin", "chrome", "google",
+    "amazon", "microsoft", "api", "apis", "etl", "eda",
+}
+
+# Technologies whose names are ordinary lowercase-able words, so the shape
+# heuristics above cannot recognise them.
+_KNOWN_TOOL_TOKENS = {
+    "python", "java", "javascript", "typescript", "go", "rust", "ruby", "php",
+    "react", "vue", "angular", "django", "flask", "rails", "spring", "node",
+    "postgresql", "postgres", "mysql", "redis", "mongodb", "snowflake",
+    "docker", "kubernetes", "terraform", "jenkins", "airflow", "kafka",
+    "pandas", "numpy", "tensorflow", "pytorch", "sklearn", "matplotlib",
+    "tableau", "looker", "excel", "figma", "sketch", "jira", "git",
+    "playwright", "sentry", "posthog", "mlflow", "dvc", "neon",
+}
 
 
 def _summary_body_redundancy(summary: str, resume_text: str = "") -> list[str]:
@@ -2375,11 +2739,32 @@ def _entries_represented(summary: str, resume_text: str = "") -> int:
         if 3 <= len(head) <= 40 and re.match(r"^[A-Z][\w.& -]+$", head):
             names.add(head.lower())
 
-    hit = sum(1 for n in names if n in text)
+    # Attribute every summary metric back to the resume BLOCK it came from,
+    # rather than counting distinct numbers. An earlier version used
+    # min(len(nums), 3) as a proxy for entry coverage, which scored a summary
+    # built entirely from one metric-dense project as covering two entries -
+    # the exact failure this gate exists to catch.
+    blocks: list[str] = []
+    current: list[str] = []
+    for line in body.splitlines():
+        if line.strip() and not line.strip().startswith("-") and current:
+            blocks.append("\n".join(current))
+            current = [line]
+        else:
+            current.append(line)
+    if current:
+        blocks.append("\n".join(current))
 
-    # Distinct numbers from different bullets also evidence separate entries.
-    nums = {m.group(0) for m in re.finditer(r"\d[\d,.]*\+?%?", text)}
-    return max(hit, min(len(nums), 3)) if nums else hit
+    covered = set()
+    for idx, block in enumerate(blocks):
+        block_low = block.lower()
+        for num in re.findall(r"\d[\d,.]*\+?%?", text):
+            if num and num in block_low:
+                covered.add(idx)
+        for name in names:
+            if name in text and name in block_low:
+                covered.add(idx)
+    return max(sum(1 for n in names if n in text), len(covered))
 
 
 def _title_substance_mismatch(summary: str, resume_text: str = "") -> str:
@@ -2536,11 +2921,21 @@ def _summary_quality_issues(summary: str, jd_string: str = "",
     if _SENIORITY_HEDGE_RE.search(text):
         issues.append("seniority_hedge")
 
-    if sentences and _FILLER_CLOSER_RE.search(sentences[-1]):
+    # A sentence naming two or more concrete technologies is making a specific
+    # claim, whatever its verbs look like. Without this guard the pattern fired
+    # on "Builds responsive interfaces in HTML, CSS and JavaScript with
+    # client-side state" - four named technologies, matched because
+    # "client-side" begins with "client".
+    if sentences and _FILLER_CLOSER_RE.search(sentences[-1]) \
+            and _count_named_tools(sentences[-1]) < 2:
         issues.append("filler_closer")
 
     if _OVERCLAIM_RE.search(text):
         issues.append("overclaim")
+
+    if _ADJACENT_REPEAT_RE.search(text) or _ADJACENT_STEM_REPEAT_RE.search(text):
+        m = _ADJACENT_REPEAT_RE.search(text) or _ADJACENT_STEM_REPEAT_RE.search(text)
+        issues.append(f"adjacent_repetition:{m.group(0)}")
 
     for concept in _duplicate_capability(text):
         issues.append(f"duplicate_capability:{concept}")
@@ -2584,6 +2979,9 @@ def summary_rejection_reasons(summary: str, jd_string: str = "",
         "too_long", "no_evidence", "vague_evidence", "lifecycle_opener",
         "seniority_hedge", "filler_closer", "overclaim", "tool_laundry",
         "empty", "body_redundancy", "corrupt_compression",
+        # "Applies applied Natural Language Processing" shipped to a real user
+        # because this check was computed but never promoted to a hard gate.
+        "adjacent_repetition",
     }
     reasons = [
         issue for issue in _summary_quality_issues(summary, jd_string, resume_text)
@@ -2820,16 +3218,27 @@ def weave_hard_skills_into_bullets(
     # Apply all queued bullet edits, combining multiple skills destined for
     # the same bullet into a single "(using X and Y)" instead of stacking
     # separate parentheticals.
+    # The bullet text is deliberately NOT edited any more.
+    #
+    # This loop used to append "(using X and Y)" to the entry's shortest bullet.
+    # On a real resume that produced "...to produce feasible, time-aware travel
+    # plans (using TypeScript)." and "...to populate candidate profiles (using
+    # MySQL and Firebase)." - visibly artificial keyword stuffing that a human
+    # reader spots instantly, on bullets whose project header already lists the
+    # whole stack. The parenthetical added nothing a recruiter or a
+    # context-weighted scanner could not already see, and it made the candidate
+    # look like they were gaming the filter.
+    #
+    # The skill still reaches the resume through data["skills"], which
+    # inject_jd_hard_skills() has already evidence-gated, and the placement
+    # decision is still reported on data["hard_skills_woven"] so the editor and
+    # the evals can see what would have been woven.
     for key, skill_list in pending.items():
         _, bullet_idx = key
         entry = pending_entry_by_key[key]
-        bullets = entry["bullets"]
-        bullet = str(bullets[bullet_idx]).rstrip().rstrip(".")
-        if len(skill_list) == 1:
-            phrase = skill_list[0]
-        else:
-            phrase = ", ".join(skill_list[:-1]) + f" and {skill_list[-1]}"
-        bullets[bullet_idx] = _clean_inline_text(f"{bullet} (using {phrase}).")
+        entry.setdefault("_skill_placement_suggestions", []).append(
+            {"bullet_index": bullet_idx, "skills": list(skill_list)}
+        )
 
     data["hard_skills_woven"] = woven
     return data
