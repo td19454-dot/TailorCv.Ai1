@@ -1490,7 +1490,45 @@ _NON_SKILL_PRODUCTS: set[str] = {
     "edx", "datacamp", "kaggle learn",
     "chatgpt", "chat gpt", "gemini", "google gemini", "bard", "copilot",
     "github copilot", "claude", "perplexity",
+    # Consumer devices. A JD from the company that makes them names them as
+    # the business ("work on Apple Watch"), and the pills then asked a
+    # candidate to claim "Apple Watch" as a skill. The platform (watchOS,
+    # iOS) is the skill and is untouched here.
+    "apple watch", "iphone", "ipad", "mac", "macbook", "imac", "airpods",
+    "apple tv", "homepod", "vision pro", "apple vision pro", "google pixel",
+    "pixel", "samsung galaxy", "galaxy", "kindle", "amazon echo", "xbox",
+    "playstation",
 }
+
+# "<Brand> software/services/products": how a JD describes its own company's
+# offering ("Apple software", "Apple services"). Nothing a candidate can own.
+_EMPLOYER_OFFERING_NOUNS: set[str] = {
+    "software", "services", "service", "products", "product", "devices",
+    "device", "hardware", "ecosystem", "apps", "offerings", "solutions",
+    "experiences", "customers", "users", "stores", "features",
+}
+# Descriptive heads that make those same nouns a real skill ("Web Services",
+# "Cloud Services"), so the phrase is not a brand's offering.
+_GENERIC_OFFERING_HEADS: set[str] = {
+    "web", "cloud", "rest", "restful", "data", "managed", "financial",
+    "professional", "customer", "it", "network", "enterprise", "mobile",
+    "consumer", "microservices", "backend", "frontend", "platform", "saas",
+    "digital", "field", "shared", "support", "hosting", "embedded",
+}
+
+
+def _is_employer_offering(skill: str) -> bool:
+    """True for "Apple software" style brand-plus-offering phrases."""
+    tokens = skill.split()
+    if not 2 <= len(tokens) <= 3 or tokens[-1].lower() not in _EMPLOYER_OFFERING_NOUNS:
+        return False
+    head = tokens[0]
+    return (
+        head[:1].isupper()
+        and head.lower() not in _GENERIC_OFFERING_HEADS
+        # "AWS services", "Azure services": the brand itself is a skill.
+        and head.lower() not in _HARD_SKILL_KEYWORDS_LOWER
+    )
 
 
 def _strip_skill_qualifiers(value: str) -> str:
@@ -1519,6 +1557,8 @@ def _is_atomic_hard_skill(value: str) -> bool:
         return False
     if normalized in _HARD_SKILL_KEYWORDS_LOWER:
         return True
+    if _is_employer_offering(skill):
+        return False
     if any(
         normalized == generic or normalized.startswith(f"{generic} ")
         for generic in _GENERIC_SKILL_PHRASES
@@ -2655,183 +2695,6 @@ def repair_summary(data: dict, jd_string: str = "", resume_text: str = "") -> di
         data["summary_issues"] = remaining
     else:
         data.pop("summary_issues", None)
-    return data
-
-
-def _entry_anchor_window(resume_text: str, anchor: str, window: int = 900) -> str:
-    """Best-effort slice of the ORIGINAL resume text following a company/project
-    name, used as a proxy for "was this skill genuinely evidenced under this
-    specific entry" without needing a full structured parse of the raw PDF
-    text. Returns "" if the anchor cannot be located, in which case the
-    caller must not treat the skill as evidenced for that entry."""
-    text = str(resume_text or "")
-    a = str(anchor or "").strip()
-    if not text or not a or len(a) < 3:
-        return ""
-    idx = text.lower().find(a.lower())
-    if idx == -1:
-        return ""
-    return text[idx: idx + window]
-
-
-def weave_hard_skills_into_bullets(
-    data: dict,
-    resume_text: str,
-    jd_string: str = "",
-    jd_skills: list[str] | None = None,
-    max_injections: int = 3,
-) -> dict:
-    """Deterministic safety net for Rule 1c of create_prompt(): make sure JD
-    hard skills the resume genuinely evidences actually show up INSIDE the
-    summary/experience/project text, not only in the `skills` array.
-
-    Why this exists: the prompt already instructs the model to weave every
-    evidenced hard skill into a bullet (Rule 1c, Step B), and mostly it
-    complies - but an instruction is not a guarantee, the same reason
-    factcheck_against_original() exists for facts and
-    weave_soft_skills_into_summary() exists for soft skills. This is the
-    hard-skill equivalent of weave_soft_skills_into_summary().
-
-    Must run AFTER inject_jd_hard_skills(), because it only ever moves a skill
-    that inject_jd_hard_skills() already decided the candidate can defend
-    (i.e. it already sits in data["skills"]). It NEVER adds a new skill claim
-    on its own - that would defeat the entire evidence-gating
-    inject_jd_hard_skills() does.
-
-    Deliberately conservative:
-      - Only ever considers skills already confirmed onto data["skills"].
-      - Skips any skill already mentioned anywhere in summary/experience/
-        project bullets - the model did its job, there is nothing to do.
-      - Locates the ORIGINAL resume text near the matching company/project
-        name and only injects into that entry when the skill is actually
-        evidenced in that window, so a technology never gets pinned onto an
-        unrelated project just to place a keyword.
-      - Appends as a short parenthetical to the entry's shortest bullet (the
-        one with the most "room"), never rewrites or replaces existing text.
-      - Never touches the summary. If no entry evidences the skill there is
-        nowhere honest to weave it, so it is left in data["skills"] alone
-        rather than asserted as experience in prose.
-      - Capped at `max_injections` total edits so this cannot turn into
-        keyword stuffing - by design it complements Rule 1c, it does not
-        replace it as the primary mechanism.
-
-    Records what it changed on data["hard_skills_woven"] for transparency/
-    debugging, the same way skills_added_from_jd works for the skills array.
-    """
-    if not isinstance(data, dict):
-        return data
-
-    skills = data.get("skills")
-    if not isinstance(skills, list) or not skills:
-        data["hard_skills_woven"] = []
-        return data
-
-    confirmed = {s.lower(): s for s in skills if isinstance(s, str) and s.strip()}
-    if not confirmed:
-        data["hard_skills_woven"] = []
-        return data
-
-    if jd_skills is None:
-        candidates_order = _extract_hard_skills_from_jd(jd_string)
-    else:
-        candidates_order = [str(s or "").strip() for s in jd_skills if str(s or "").strip()]
-
-    # Only ever act on skills inject_jd_hard_skills() already confirmed -
-    # walk the JD's own priority order first.
-    ordered_candidates: list[str] = []
-    seen_c: set[str] = set()
-    for c in candidates_order:
-        key = c.lower()
-        if key in confirmed and key not in seen_c:
-            seen_c.add(key)
-            ordered_candidates.append(confirmed[key])
-    # Anything confirmed but not resurfaced above (e.g. supplied via an
-    # ATS-analysis jd_skills list with slightly different wording) still
-    # deserves a check - append the rest in their original order.
-    for key, original in confirmed.items():
-        if key not in seen_c:
-            seen_c.add(key)
-            ordered_candidates.append(original)
-
-    summary_text = str(data.get("summary") or "")
-    experience = data.get("experience") if isinstance(data.get("experience"), list) else []
-    projects = data.get("projects") if isinstance(data.get("projects"), list) else []
-
-    def _all_bullets_text() -> str:
-        parts = [summary_text]
-        for entry in list(experience) + list(projects):
-            if isinstance(entry, dict):
-                parts.extend(str(b) for b in (entry.get("bullets") or []))
-        return " ".join(parts)
-
-    woven: list[dict] = []
-    resume_evidence = str(resume_text or "")
-    # (id(entry), bullet_idx) -> skills queued for that bullet, combined into
-    # one parenthetical at the end rather than stacking "(using X) (using Y)".
-    pending: "OrderedDict[tuple[int, int], list[str]]" = OrderedDict()
-    pending_entry_by_key: dict[tuple[int, int], dict] = {}
-
-    for skill in ordered_candidates:
-        if len(woven) >= max_injections:
-            break
-        if _contains_skill(_all_bullets_text(), skill):
-            continue  # already woven somewhere - Rule 1c worked, nothing to do
-
-        target_entry = None
-        target_section = None
-        # Prefer projects, then experience - the prompt already asks for the
-        # densest technical signal to live in projects.
-        for section_name, entries in (("projects", projects), ("experience", experience)):
-            for entry in entries:
-                if not isinstance(entry, dict):
-                    continue
-                bullets = entry.get("bullets")
-                if not isinstance(bullets, list) or not bullets:
-                    continue
-                anchor = entry.get("name") or entry.get("company") or entry.get("title") or ""
-                window = _entry_anchor_window(resume_evidence, str(anchor))
-                if window and _contains_skill(window, skill):
-                    target_entry, target_section = entry, section_name
-                    break
-            if target_entry:
-                break
-
-        if target_entry is None:
-            # No entry in the ORIGINAL resume evidences this skill, so there is
-            # nowhere honest to put it. This used to append "Applied X in this
-            # work." to the summary, which produced strings of tacked-on
-            # sentences ("Applied MySQL in this work. Applied Java in this
-            # work.") that read as machine-generated and, worse, asserted
-            # experience the resume never showed - the exact fabrication
-            # Rule01/01b and factcheck_against_original() exist to prevent.
-            # The skill still appears in data["skills"], which inject_jd_hard_
-            # skills() already evidence-gated; that is the honest home for it.
-            continue
-
-        bullets = target_entry["bullets"]
-        shortest_idx = min(range(len(bullets)), key=lambda i: len(str(bullets[i])))
-        key = (id(target_entry), shortest_idx)
-        pending.setdefault(key, []).append(skill)
-        pending_entry_by_key[key] = target_entry
-
-        entry_label = target_entry.get("name") or target_entry.get("company") or target_entry.get("title") or ""
-        woven.append({"skill": skill, "section": target_section, "entry": str(entry_label)})
-
-    # Apply all queued bullet edits, combining multiple skills destined for
-    # the same bullet into a single "(using X and Y)" instead of stacking
-    # separate parentheticals.
-    for key, skill_list in pending.items():
-        _, bullet_idx = key
-        entry = pending_entry_by_key[key]
-        bullets = entry["bullets"]
-        bullet = str(bullets[bullet_idx]).rstrip().rstrip(".")
-        if len(skill_list) == 1:
-            phrase = skill_list[0]
-        else:
-            phrase = ", ".join(skill_list[:-1]) + f" and {skill_list[-1]}"
-        bullets[bullet_idx] = _clean_inline_text(f"{bullet} (using {phrase}).")
-
-    data["hard_skills_woven"] = woven
     return data
 
 
@@ -3988,6 +3851,8 @@ RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside 
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
 
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
+
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
   "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
@@ -5091,6 +4956,8 @@ RULE 1 — ATOMICITY: Every hard skill entry must be a single technology name, t
 RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside parentheses, e.g. "MLOps tools (Kubeflow, Airflow)", extract EACH tool as its own separate entry: "Kubeflow", "Airflow". Do not include the surrounding phrase.
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
+
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
 
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
