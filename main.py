@@ -4148,6 +4148,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "Networking & Protocols": [],
         "Security & SIEM": [],
         "Methodologies & Practices": [],
+        "Data & Analytics": [],
+        "Finance & Economics": [],
         "Other Technical Skills": [],
     }
 
@@ -4229,7 +4231,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "matplotlib", "seaborn", "plotly", "bokeh",
         "streamlit", "gradio", "hugging face",
         "sqlalchemy", "celery", "spark", "pyspark", "hadoop", "flink",
-        "rest api", "restful api", "restful apis", "graphql", "grpc",
+        "rest api", "rest apis", "restful api", "restful apis", "graphql", "grpc",
         "opencv", "nltk", "spacy", "gensim",
         "xgboost", "lightgbm", "catboost", "statsmodels",
         "bootstrap", "tailwindcss", "tailwind",
@@ -4253,6 +4255,10 @@ def group_skills(skills: list[str]) -> list[str]:
         "vscode", "visual studio code", "visual studio",
         "postman", "insomnia", "swagger",
         "mlflow", "dvc", "wandb", "weights & biases",
+        # Managed ML platforms - MLOps platforms like MLflow, not generic cloud.
+        "sagemaker", "amazon sagemaker", "aws sagemaker", "vertex ai",
+        "google vertex ai", "azure machine learning", "azure ml",
+        "databricks ml", "bedrock", "amazon bedrock", "azure openai",
         "power bi", "powerbi", "tableau",
         "excel", "jira", "confluence",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
@@ -4270,7 +4276,58 @@ def group_skills(skills: list[str]) -> list[str]:
         "sap", "salesforce", "servicenow", "hubspot", "workday",
         "sharepoint", "erp", "erp systems", "crm",
         # Project / work tracking
-        "ms project", "microsoft project", "asana", "trello", "notion"
+        "ms project", "microsoft project", "asana", "trello", "notion",
+        # Office suite. Only "powerpoint" was listed, so a resume came back with
+        # PowerPoint under Tools while "Microsoft Excel" and "Microsoft Word"
+        # fell into Other Technical Skills.
+        "microsoft excel", "ms excel", "microsoft word", "ms word", "word",
+        "microsoft powerpoint", "ms powerpoint", "microsoft office",
+        "ms office", "microsoft office suite", "office 365", "microsoft 365",
+        "outlook", "microsoft outlook", "google docs", "google slides",
+        "google workspace",
+        # Finance / statistics software
+        "bloomberg", "bloomberg terminal", "refinitiv", "eikon",
+        "refinitiv eikon", "capital iq", "s&p capital iq", "factset",
+        "stata", "eviews", "spss", "sas", "quickbooks", "xero", "sage",
+        "sage pastel", "pastel"
+    }
+    # Finance, accounting and economics disciplines. Commerce and finance
+    # graduates list these as their core skills; without a bucket every one of
+    # them landed in "Other Technical Skills". Kept apart from analytics_terms:
+    # a data analyst with Excel and statistics has no finance background, and a
+    # "Finance" heading over their skills would claim one.
+    finance_terms = {
+        "corporate finance", "finance", "financial analysis",
+        "financial modelling", "financial modeling", "financial reporting",
+        "financial statement analysis", "financial planning",
+        "financial planning and analysis", "fp&a", "valuation", "dcf",
+        "discounted cash flow", "budgeting", "forecasting",
+        "budgeting and forecasting", "variance analysis",
+        "investment analysis", "quantitative investment analysis",
+        "portfolio management", "asset management",
+        "equity research", "credit analysis", "credit risk", "market risk",
+        "risk management", "risk analysis", "financial risk management",
+        "derivatives", "derivatives & risk management",
+        "derivatives and risk management", "fixed income", "capital markets",
+        "mergers and acquisitions", "m&a",
+        "accounting", "financial accounting", "management accounting",
+        "cost accounting", "bookkeeping", "auditing", "audit", "taxation",
+        "tax", "ifrs", "gaap", "us gaap", "reconciliation",
+        "account reconciliation", "accounts payable", "accounts receivable",
+        "payroll", "treasury",
+        "economics", "econometrics", "microeconomics", "macroeconomics",
+        "international trade", "international economics",
+        "development economics", "economic analysis", "economic modelling",
+        "economic modeling",
+    }
+    # Analysis skills that belong to no single domain - an ops, marketing or
+    # finance candidate may list any of them.
+    analytics_terms = {
+        "data analysis", "data analytics", "statistical analysis", "statistics",
+        "quantitative analysis", "regression analysis", "business analysis",
+        "market research", "business intelligence", "data visualization",
+        "data visualisation", "data cleaning", "data entry", "reporting and analysis",
+        "kpi tracking", "dashboarding", "a/b testing",
     }
     # Ways of working and analysis artefacts. These are legitimate resume
     # skills - a business analyst lists Agile, BPMN and user stories - but they
@@ -4285,6 +4342,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "requirements gathering", "requirement gathering", "gap analysis",
         "process mapping", "process modelling", "process modeling",
         "process flow", "data modelling", "data modeling",
+        "project management", "stakeholder management", "change management",
+        "process improvement",
     }
     cloud_devops_terms = {
         "aws", "amazon web services", "azure", "gcp",
@@ -4325,9 +4384,25 @@ def group_skills(skills: list[str]) -> list[str]:
         "threat intelligence", "vulnerability management"
     }
 
+    def skill_keys(value: str) -> set[str]:
+        """Every name a skill goes by: "Natural Language Processing (NLP)" is
+        also "natural language processing" and "nlp"."""
+        v = re.sub(r"\s+", " ", value.lower().strip())
+        keys = {v}
+        m = re.match(r"^(.*?)\s*\(([^)]+)\)$", v)
+        if m:
+            keys.update({m.group(1).strip(), m.group(2).strip()})
+        return keys
+
     def add_unique(bucket: list[str], value: str):
-        if value and value not in bucket:
-            bucket.append(value)
+        # Alias-aware, so "NLP" and "Natural Language Processing (NLP)" do not
+        # both appear. First form seen wins.
+        if not value:
+            return
+        keys = skill_keys(value)
+        if any(keys & skill_keys(existing) for existing in bucket):
+            return
+        bucket.append(value)
 
     # Delegates to functions.py's canonical, actively-maintained atomicity
     # filter instead of a separate/duplicated blocklist, so a fix there (e.g.
@@ -4339,11 +4414,7 @@ def group_skills(skills: list[str]) -> list[str]:
         parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
         return parts if len(parts) > 1 else [text.strip()]
 
-    def classify_item(item: str) -> str:
-        item_norm = (item.lower().strip()
-                     .replace("react js", "react")
-                     .replace("restful apis", "restful api")
-                     .replace("node js", "node.js"))
+    def classify_norm(item_norm: str) -> str:
         if item_norm in human_language_terms:
             return "human_language"
         if item_norm in language_terms:
@@ -4366,10 +4437,34 @@ def group_skills(skills: list[str]) -> list[str]:
             return "Frameworks/Libraries"
         if item_norm in methodology_terms:
             return "Methodologies & Practices"
+        if item_norm in analytics_terms:
+            return "Data & Analytics"
+        if item_norm in finance_terms:
+            return "Finance & Economics"
         # Fuzzy model-name fallback, deliberately last so an exact match in any
         # bucket above wins (e.g. LlamaIndex -> Frameworks/Libraries).
         if ai_model_pattern.search(item_norm):
             return "AI/ML"
+        return "uncategorized"
+
+    def classify_item(item: str) -> str:
+        item_norm = re.sub(r"\s+", " ", item.lower().strip()
+                           .replace("react js", "react")
+                           .replace("restful apis", "restful api")
+                           .replace("node js", "node.js"))
+        # Resumes write the same skill several ways. Try it as written, then
+        # "Natural Language Processing (NLP)" as its full name and its acronym,
+        # then "Apache Spark" as "spark" - otherwise each form needs its own
+        # entry in every bucket and the misses land in Other Technical Skills.
+        candidates = [item_norm]
+        m = re.match(r"^(.*?)\s*\(([^)]+)\)$", item_norm)
+        if m:
+            candidates += [m.group(1).strip(), m.group(2).strip()]
+        candidates += [c[len("apache "):] for c in list(candidates) if c.startswith("apache ")]
+        for candidate in candidates:
+            cat = classify_norm(candidate)
+            if cat != "uncategorized":
+                return cat
         return "uncategorized"
 
     for skill in skills:
@@ -4466,7 +4561,8 @@ def group_skills(skills: list[str]) -> list[str]:
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
                   "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
-                  "Methodologies & Practices", "Other Technical Skills"):
+                  "Methodologies & Practices", "Data & Analytics", "Finance & Economics",
+                  "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result
