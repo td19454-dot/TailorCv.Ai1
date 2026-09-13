@@ -1500,7 +1500,48 @@ _NON_SKILL_PRODUCTS: set[str] = {
     "edx", "datacamp", "kaggle learn",
     "chatgpt", "chat gpt", "gemini", "google gemini", "bard", "copilot",
     "github copilot", "claude", "perplexity",
+    # Consumer devices. A JD from the company that makes them names them as
+    # the business ("work on Apple Watch"), and the pills then asked a
+    # candidate to claim "Apple Watch" as a skill. The platform (watchOS,
+    # iOS) is the skill and is untouched here.
+    "apple watch", "iphone", "ipad", "mac", "macbook", "imac", "airpods",
+    "apple tv", "homepod", "vision pro", "apple vision pro", "google pixel",
+    "pixel", "samsung galaxy", "galaxy", "kindle", "amazon echo", "xbox",
+    "playstation",
+    # A bare company name is an employer, never a skill. Its real products
+    # (AWS, Google Cloud, Microsoft Excel) are separate entries and unaffected.
+    "apple", "samsung", "google", "microsoft", "amazon",
 }
+
+# "<Brand> software/services/products": how a JD describes its own company's
+# offering ("Apple software", "Apple services"). Nothing a candidate can own.
+_EMPLOYER_OFFERING_NOUNS: set[str] = {
+    "software", "services", "service", "products", "product", "devices",
+    "device", "hardware", "ecosystem", "apps", "offerings", "solutions",
+    "experiences", "customers", "users", "stores", "features",
+}
+# Descriptive heads that make those same nouns a real skill ("Web Services",
+# "Cloud Services"), so the phrase is not a brand's offering.
+_GENERIC_OFFERING_HEADS: set[str] = {
+    "web", "cloud", "rest", "restful", "data", "managed", "financial",
+    "professional", "customer", "it", "network", "enterprise", "mobile",
+    "consumer", "microservices", "backend", "frontend", "platform", "saas",
+    "digital", "field", "shared", "support", "hosting", "embedded",
+}
+
+
+def _is_employer_offering(skill: str) -> bool:
+    """True for "Apple software" style brand-plus-offering phrases."""
+    tokens = skill.split()
+    if not 2 <= len(tokens) <= 3 or tokens[-1].lower() not in _EMPLOYER_OFFERING_NOUNS:
+        return False
+    head = tokens[0]
+    return (
+        head[:1].isupper()
+        and head.lower() not in _GENERIC_OFFERING_HEADS
+        # "AWS services", "Azure services": the brand itself is a skill.
+        and head.lower() not in _HARD_SKILL_KEYWORDS_LOWER
+    )
 
 
 def _strip_skill_qualifiers(value: str) -> str:
@@ -1529,6 +1570,8 @@ def _is_atomic_hard_skill(value: str) -> bool:
         return False
     if normalized in _HARD_SKILL_KEYWORDS_LOWER:
         return True
+    if _is_employer_offering(skill):
+        return False
     if any(
         normalized == generic or normalized.startswith(f"{generic} ")
         for generic in _GENERIC_SKILL_PHRASES
@@ -4407,6 +4450,8 @@ RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside 
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
 
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
+
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
   "Experience deploying models via REST APIs or model serving frameworks (TorchServe, TF Serving)"
@@ -4814,6 +4859,8 @@ Prioritize:
 
 Do not include minor issues unless no major issues exist.
 
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
+
 ==================================================
 OUTPUT RULES
 ============
@@ -5159,6 +5206,41 @@ def _force_pass_chronology(parsed: dict) -> None:
     }
 
 
+# "Future date in experience" / "update the end date ... to a date before
+# September 2026". Matched on the two together so an unrelated fix that merely
+# says "future" (a goals statement) is never dropped.
+_FUTURE_WORD_RE = re.compile(r"\bfuture\b", re.IGNORECASE)
+_DATE_WORD_RE = re.compile(r"\bdat(?:e|es|ed)\b|chronolog", re.IGNORECASE)
+
+
+def _drop_future_date_priority_fixes(parsed: dict) -> None:
+    """Remove "future date" items from top_priority_fixes.
+
+    Same false positive _force_pass_chronology exists for, surfacing in a
+    second place: the model miscounts months against the supplied Current
+    Date and told a user to move a "January 2022 - February 2026" role's end
+    date "to a date before September 2026" - in September 2026. The action
+    cites the current month rather than the resume's date, so the date
+    comparison in _apply_false_future_repair cannot catch it; the chronology
+    check is already never allowed to fail, so its fix is never shown either.
+    """
+    if not isinstance(parsed, dict):
+        return
+    fixes = parsed.get("top_priority_fixes")
+    if not isinstance(fixes, list):
+        return
+    kept = []
+    for fix in fixes:
+        text = (
+            f"{fix.get('issue', '')} {fix.get('action', '')}"
+            if isinstance(fix, dict) else str(fix or "")
+        )
+        if _FUTURE_WORD_RE.search(text) and _DATE_WORD_RE.search(text):
+            continue
+        kept.append(fix)
+    parsed["top_priority_fixes"] = kept
+
+
 def _repair_false_future_experience_match(parsed: dict, current_date: date | None = None) -> None:
     """The same past-date-miscounted-as-future failure also leaks into the
     Experience Match explanation, e.g. "most recent experience is dated in
@@ -5360,7 +5442,8 @@ async def ats_scoring(resume_string, jd_string):
     _cache_key = hashlib.md5(
         (
             # Bump on every prompt/repair change or cached scans keep serving
-            # the old verdicts (v4: action-verb + years-tolerance repairs).
+            # the old verdicts (v4: action-verb + years-tolerance repairs;
+            # v5: future-date priority fixes dropped).
             #
             # Scoped to the MONTH, not the day. The date is a real input — it is
             # sent to the model (see user_message) and drives the chronology and
@@ -5371,7 +5454,7 @@ async def ats_scoring(resume_string, jd_string):
             # day therefore forced a fresh paid LLM call every midnight to
             # reproduce an identical answer — ~365 re-scans a year where ~12
             # carry real change.
-            "ats-chronology-v4|" + current_date.strftime("%Y-%m") + "|" +
+            "ats-chronology-v5|" + current_date.strftime("%Y-%m") + "|" +
             # The separator matters: joining these with nothing meant a resume
             # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
             # different scans could collide and return each other's score.
@@ -5510,6 +5593,8 @@ RULE 1 — ATOMICITY: Every hard skill entry must be a single technology name, t
 RULE 2 — PARENTHETICAL EXPLOSION: When the job description lists tools inside parentheses, e.g. "MLOps tools (Kubeflow, Airflow)", extract EACH tool as its own separate entry: "Kubeflow", "Airflow". Do not include the surrounding phrase.
 
 RULE 3 — STRIP QUALIFIERS: Remove experience-level wrappers before extracting. Phrases beginning with "X+ years of", "Experience in/with", "Knowledge of", "Familiarity with", "Strong background in" are NOT skills — extract only the technology name(s) embedded inside them.
+
+RULE 4 — THE EMPLOYER'S PRODUCTS ARE NOT SKILLS: Never list the hiring company's own products, devices, services or brand as hard skills (for an Apple JD: NOT "Apple Watch", "iPhone", "Apple software", "Apple services"). Extract the technology the candidate would actually use instead (e.g. "Swift", "watchOS", "SwiftUI") — only if the JD names it.
 
 BAD (entire phrase as one skill — NEVER do this):
   "3+ years of experience in ML engineering or software engineering with an ML focus"
@@ -5891,6 +5976,8 @@ Prioritize:
 
 Do not include minor issues unless no major issues exist.
 
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
+
 ==================================================
 OUTPUT RULES
 ============
@@ -6092,6 +6179,7 @@ The JSON must strictly follow the schema provided below.
 
     _deep_merge(parsed, precheck)
     _force_pass_chronology(parsed)
+    _drop_future_date_priority_fixes(parsed)
     _repair_false_future_experience_match(parsed, current_date)
     _repair_experience_years_tolerance(parsed, resume_string, jd_string)
     _repair_action_verbs(parsed, resume_string)
