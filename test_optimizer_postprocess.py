@@ -21,6 +21,8 @@ from functions import (
     _clean_inline_text,
     _extract_hard_skills_from_jd,
     _is_atomic_hard_skill,
+    _entries_represented,
+    _has_concrete_evidence,
     _is_keyword_tail,
     _repair_false_future_chronology,
     _summary_quality_issues,
@@ -394,7 +396,28 @@ def test_extension_keeps_unbacked_claims():
     assert "TorchServe" in out["skills"], out["skills"]
 
 
-def test_website_and_extension_differ_only_in_skills_policy():
+def test_website_and_extension_differ_only_on_evidenced_skills():
+    """The two surfaces still differ - the extension promotes evidenced skills
+    silently where the website asks - but neither may invent. Previously the
+    difference was that the extension added unevidenced JD terms outright."""
+    resume = "Built dashboards in Power BI and wrote SQL against Postgres."
+    jd = "Data Scientist. Requires Python, SQL, Power BI and Tableau."
+    site = inject_jd_hard_skills({"skills": ["Python"]}, jd, resume, auto_add=False)
+    ext = inject_jd_hard_skills({"skills": ["Python"]}, jd, resume, auto_add=True)
+    site_skills = {s.lower() for s in site["skills"]}
+    ext_skills = {s.lower() for s in ext["skills"]}
+    # Neither invents the unevidenced JD skill.
+    assert "tableau" not in site_skills, site["skills"]
+    assert "tableau" not in ext_skills, ext["skills"]
+    # Both surface it as a gap rather than a claim.
+    assert any("tableau" == str(g).lower() for g in (site.get("skill_gaps") or []))
+    assert any("tableau" == str(g).lower() for g in (ext.get("skill_gaps") or []))
+    # The surfaces still differ: the extension promotes an evidenced skill
+    # without asking, the website routes the unevidenced one to the candidate.
+    assert "power bi" in ext_skills and "power bi" in site_skills
+
+
+def _superseded_website_and_extension_differ_only_in_skills_policy():
     """One engine, two skill policies — the contract between the surfaces.
 
     Website: an unevidenced JD skill is withheld and offered as a gap, so the
@@ -427,7 +450,25 @@ def test_website_and_extension_differ_only_in_skills_policy():
     assert {s.lower() for s in ext["skills_added_from_jd"]} == {"tableau", "sap"}
 
 
-def test_extension_policy_adds_every_jd_skill():
+def test_extension_policy_never_adds_an_unevidenced_jd_skill():
+    """The extension may promote skills silently, but it may NEVER invent one.
+
+    This branch used to append every JD term unconditionally. On a real resume
+    that wrote XGBoost, Seaborn, Tableau, SageMaker and Vertex AI onto a
+    candidate who names none of them - read straight off the target posting.
+    Unevidenced JD skills now become gaps on BOTH surfaces.
+    """
+    resume = "Built dashboards in Power BI and wrote SQL against Postgres."
+    jd = "Data Scientist. Requires Python, SQL, Power BI, XGBoost, Seaborn and Tableau."
+    out = inject_jd_hard_skills({"skills": ["Python"]}, jd, resume, auto_add=True)
+    final = {s.lower() for s in out["skills"]}
+    for invented in ("xgboost", "seaborn", "tableau"):
+        assert invented not in final, (invented, out["skills"])
+    # Evidenced JD skills are still promoted without asking.
+    assert "power bi" in final, out["skills"]
+
+
+def _superseded_extension_policy_adds_every_jd_skill():
     """auto_add=True (Chrome extension): no confirmation step, nothing held back."""
     out = inject_jd_hard_skills(
         {"skills": ["Python"]},
@@ -616,11 +657,20 @@ def test_promptable_handles_empty_and_junk_input():
 # automatically rather than asked about: unlike "do you know Tableau?", this is
 # presentation of existing work, not a credential only the candidate can confirm.
 # --------------------------------------------------------------------------- #
-def test_soft_skills_are_appended_to_the_summary():
-    data = {"summary": "Data Analyst with experience in Python and SQL."}
-    out = weave_soft_skills_into_summary(data, ["mentoring", "facilitation"])
-    assert out["summary"].endswith("Applies mentoring and facilitation across this work."), out["summary"]
-    assert out["soft_skills_added"] == ["mentoring", "facilitation"], out["soft_skills_added"]
+def test_soft_skills_are_suggested_never_appended_to_the_summary():
+    """The summary is NEVER edited by this function any more.
+
+    It used to append "Applies X across this work." That one line became the
+    generator's most persistent artifact, surfacing as "Applies reproducible
+    ... practices" in five outputs across three unrelated resumes - a generic
+    closer with no specific referent, i.e. exactly what Rule 00's filler rule
+    bans. The post-processor was re-introducing the defect the prompt forbids.
+    """
+    summary = "Data Analyst with experience in Python and SQL."
+    out = weave_soft_skills_into_summary({"summary": summary}, ["mentoring", "facilitation"])
+    assert out["summary"] == summary, out["summary"]
+    assert "Applies" not in out["summary"]
+    assert out["soft_skills_suggested"] == ["mentoring", "facilitation"], out.get("soft_skills_suggested")
 
 
 def test_soft_skills_never_touch_the_skills_array_or_bullets():
@@ -636,14 +686,15 @@ def test_soft_skills_never_touch_the_skills_array_or_bullets():
     assert out["experience"][0]["bullets"] == ["Analyzed data."], out["experience"]
 
 
-def test_soft_skill_phrasing_by_count():
+def test_soft_skill_suggestions_are_recorded_in_order():
     base = {"summary": "Analyst."}
-    one = weave_soft_skills_into_summary(dict(base), ["mentoring"])["summary"]
+    one = weave_soft_skills_into_summary(dict(base), ["mentoring"])
     three = weave_soft_skills_into_summary(
         dict(base), ["mentoring", "facilitation", "stakeholder management"]
-    )["summary"]
-    assert one.endswith("Applies mentoring across this work."), one
-    assert three.endswith("Applies mentoring, facilitation and stakeholder management across this work."), three
+    )
+    assert one["summary"] == "Analyst." and three["summary"] == "Analyst."
+    assert one["soft_skills_suggested"] == ["mentoring"]
+    assert three["soft_skills_suggested"] == ["mentoring", "facilitation", "stakeholder management"]
 
 
 def test_soft_skill_already_in_summary_is_not_repeated():
@@ -662,8 +713,13 @@ def test_soft_skills_noop_on_empty_input():
     weave_soft_skills_into_summary(None, ["communication"])
 
 
-def test_soft_skills_build_a_summary_when_none_exists():
-    assert weave_soft_skills_into_summary({}, ["communication"])["summary"] == "Applies communication across this work."
+def test_soft_skills_never_invent_a_summary():
+    """With no summary there is nothing to annotate, and manufacturing one out
+    of soft skills produced "Applies communication across this work." as an
+    entire professional summary."""
+    out = weave_soft_skills_into_summary({}, ["communication"])
+    assert not out.get("summary"), out.get("summary")
+    assert out.get("soft_skills_suggested") == ["communication"]
 
 
 def test_soft_skills_are_gated_on_resume_evidence():
@@ -674,7 +730,7 @@ def test_soft_skills_are_gated_on_resume_evidence():
     resume = "Mentored two junior analysts. Analysed quantitative data for a 7-person research team."
     jd = ["problem-solving skills", "attention to code quality", "mentoring", "technical guidance"]
     out = weave_soft_skills_into_summary({"summary": "Engineer."}, jd, resume)
-    assert out["soft_skills_added"] == ["mentoring"], out.get("soft_skills_added")
+    assert out.get("soft_skills_suggested") == ["mentoring"], out.get("soft_skills_suggested")
     assert "attention to code quality" not in out["summary"]
     assert "technical guidance" not in out["summary"]
 
@@ -686,17 +742,15 @@ def test_soft_skill_evidence_matches_verb_forms():
     out = weave_soft_skills_into_summary(
         {"summary": "Analyst."}, ["mentoring", "collaboration", "communication"], resume
     )
-    assert out["soft_skills_added"] == ["mentoring", "collaboration", "communication"], out
+    assert out.get("soft_skills_suggested") == ["mentoring", "collaboration", "communication"], out
 
 
 def test_soft_skill_trailing_skills_suffix_is_not_doubled():
-    """JD soft skills often arrive suffixed ("mentoring skills"), which produced
-    "Skilled in mentoring skills" on real output - redundant, and built from a
-    phrase create_prompt bans outright."""
+    """JD soft skills often arrive suffixed ("mentoring skills"). The suffix is
+    still stripped so the suggestion reads cleanly in the editor."""
     out = weave_soft_skills_into_summary({"summary": "Engineer."}, ["mentoring skills"])
-    assert out["summary"] == "Engineer. Applies mentoring across this work.", out["summary"]
-    assert "skills skills" not in out["summary"].lower()
-    assert "Skilled in" not in out["summary"]
+    assert out["summary"] == "Engineer.", out["summary"]
+    assert out["soft_skills_suggested"] == ["mentoring"], out.get("soft_skills_suggested")
 
 
 def test_filler_soft_skills_are_never_stated_outright():
@@ -708,7 +762,7 @@ def test_filler_soft_skills_are_never_stated_outright():
     out = weave_soft_skills_into_summary(
         {"summary": "Engineer."}, ["problem-solving", "attention to detail", "mentoring"], resume
     )
-    assert out["soft_skills_added"] == ["mentoring"], out.get("soft_skills_added")
+    assert out.get("soft_skills_suggested") == ["mentoring"], out.get("soft_skills_suggested")
     assert "problem-solving" not in out["summary"].lower()
     assert "attention to detail" not in out["summary"].lower()
 
@@ -738,8 +792,35 @@ def test_unevidenced_hard_skills_never_get_appended_to_the_summary():
     assert out["skills"] == ["MySQL", "Java", "NumPy"]
 
 
-def test_evidenced_hard_skill_is_still_woven_into_its_own_entry():
-    """The fix above must not disable the legitimate path."""
+def test_evidenced_hard_skill_placement_is_suggested_not_injected():
+    """Placement is RECORDED, never written into the bullet.
+
+    This function used to append "(using Redis)" to the entry's shortest
+    bullet. On a real resume that produced "...to produce feasible, time-aware
+    travel plans (using TypeScript)." - visible keyword stuffing on a project
+    whose header already listed the stack. The decision is still made and
+    reported; only the bullet edit is gone.
+    """
+    data = {
+        "summary": "Backend engineer.",
+        "skills": ["Redis"],
+        "experience": [{"company": "TailorCV",
+                        "bullets": ["Built caching layer.", "Shipped billing."]}],
+        "projects": [],
+    }
+    out = weave_hard_skills_into_bullets(
+        data, resume_text="TailorCV. Built caching layer with Redis.", jd_skills=["Redis"],
+    )
+    entry = out["experience"][0]
+    assert all("(using" not in b for b in entry["bullets"]), entry["bullets"]
+    assert entry["bullets"] == ["Built caching layer.", "Shipped billing."]
+    suggestions = entry.get("_skill_placement_suggestions")
+    assert suggestions and suggestions[0]["skills"] == ["Redis"], suggestions
+    assert out["hard_skills_woven"], out.get("hard_skills_woven")
+
+
+def _unused_evidenced_hard_skill_is_still_woven_into_its_own_entry():
+    """Superseded by the test above; kept for reference, not collected."""
     data = {
         "summary": "Backend engineer.",
         "skills": ["Redis"],
@@ -1029,6 +1110,56 @@ def test_validator_flags_weak_future_focused_closings():
     ):
         issues = _summary_quality_issues(weak)
         assert any(i.startswith("banned_phrase:") for i in issues), (weak, issues)
+
+
+def test_filler_closer_matches_the_class_not_a_phrase_list():
+    """Regression: the filler rule was written as a list of exact phrasings
+    ("collaborates with cross-functional teams"), so the same empty claim
+    returned two rounds later as "communicates results to non-technical
+    stakeholders" and shipped. It must match the CLASS - a generic activity
+    verb pointed at a generic audience with no specific referent."""
+    from functions import _FILLER_CLOSER_RE
+    for filler in (
+        "communicates results to non-technical stakeholders.",
+        "collaborates with cross-functional teams.",
+        "presents findings to leadership.",
+        "partners with product teams.",
+        "documents technical processes.",
+    ):
+        assert _FILLER_CLOSER_RE.search(filler), filler
+    # Clauses naming a specific outcome are not filler.
+    for real in (
+        "informing pricing and marketing recommendations.",
+        "cut nightly reconciliation from 52 minutes to 9.",
+        "mentored two juniors through their first production deploys.",
+    ):
+        assert not _FILLER_CLOSER_RE.search(real), real
+
+
+def test_entries_represented_counts_blocks_not_numbers():
+    """Regression: entry coverage used min(len(numbers), 3) as a proxy, so a
+    summary built entirely from one metric-dense project scored as covering
+    two entries - the exact failure the two-source rule exists to catch."""
+    resume = (
+        "Customer Behaviour Analytics\n"
+        "- Analysed 3,900 transaction records; 3,116 Loyal customers generate highest revenue\n"
+        "Outlier\n"
+        "- Evaluated 50+ repositories with a 10-metric rubric, 15% measured improvement"
+    )
+    one_project = ("Data Analyst who analysed 3,900 transaction records and found "
+                   "3,116 Loyal customers generate the highest revenue.")
+    two_projects = ("Data Analyst who found 3,116 Loyal customers drive revenue. "
+                    "Scored 50+ repositories against a 10-metric rubric.")
+    assert _entries_represented(one_project, resume) < 2, "two numbers, one project"
+    assert _entries_represented(two_projects, resume) >= 2
+
+
+def test_bracketed_placeholder_counts_as_evidence():
+    """A metric-poor resume's honest output names the gap rather than inventing
+    a number. If the placeholder did not satisfy the evidence gate, the gate
+    would pressure exactly the fabrication it exists to stop."""
+    assert _has_concrete_evidence("Product Designer who owns the design system behind [PRODUCT].")
+    assert not _has_concrete_evidence("Product Designer who owns the design system.")
 
 
 def test_keyword_tail_detection():
