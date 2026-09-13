@@ -60,6 +60,8 @@ from functions import (
     factcheck_against_original,
     _clean_inline_text,
     _is_atomic_hard_skill,
+    canonical_skill_key,
+    _preferred_skill_spelling,
     map_demo_links,
     extract_project_links,
     extract_publication_links,

@@ -1515,6 +1515,73 @@ def _strip_skill_qualifiers(value: str) -> str:
     return cleaned.strip().strip("\"'.,:;-")
 
 
+# Version suffixes and parenthetical qualifiers that name the SAME skill.
+# "HTML" and "HTML5" are one entry on a resume, and listing both reads as
+# padding. Dedupe at both call sites keyed on the raw lowercase string, so
+# every pair below survived onto one Languages row:
+#   HTML/HTML5, CSS/CSS3, JavaScript/JavaScript (ES6+), PostgreSQL/postgres sql
+_SKILL_CANONICAL_FORMS = {
+    "html5": "html", "css3": "css", "es6": "javascript", "es6+": "javascript",
+    "ecmascript": "javascript", "js": "javascript",
+    "postgres": "postgresql", "postgres sql": "postgresql", "psql": "postgresql",
+    "postgre sql": "postgresql", "mysql db": "mysql",
+    "node": "node.js", "nodejs": "node.js",
+    "power bi": "powerbi", "powerbi": "powerbi",
+    "scikit learn": "scikit-learn", "sklearn": "scikit-learn",
+    "tensor flow": "tensorflow", "py torch": "pytorch",
+    "rest api": "rest apis", "restful api": "rest apis", "restful apis": "rest apis",
+}
+
+
+def canonical_skill_key(skill: str) -> str:
+    """Identity key for deduping skills that are the same thing spelled twice.
+
+    Collapses parenthetical qualifiers ("JavaScript (ES6+)" -> javascript),
+    spacing ("postgres sql" -> postgresql), aliases, and trailing version
+    digits ("HTML5" -> html). Used as a dedupe KEY only - the displayed
+    spelling stays whatever the resume presented, so this never rewrites what
+    the candidate actually wrote.
+    """
+    s = str(skill or "").strip().lower()
+    if not s:
+        return ""
+    s = re.sub(r"\s*\([^)]*\)\s*$", "", s).strip()   # drop "(ES6+)", "(advanced)"
+    s = re.sub(r"\s+", " ", s)
+    if s in _SKILL_CANONICAL_FORMS:
+        return _SKILL_CANONICAL_FORMS[s]
+    # A bare trailing version number on a real base name: html5, css3, vue3.
+    stripped = re.sub(r"(?<=[a-z])\d+(?:\.\d+)*\+?$", "", s)
+    if stripped != s and len(stripped) >= 3:
+        return _SKILL_CANONICAL_FORMS.get(stripped, stripped)
+    return s
+
+
+def _preferred_skill_spelling(existing: str, candidate: str) -> str:
+    """Which of two spellings of one skill to display.
+
+    Prefers conventional capitalisation ("PostgreSQL" over "postgres sql")
+    and, between equally conventional forms, the one without a parenthetical
+    or trailing version digit - the suffix is what makes the pair read as
+    padding.
+    """
+    a, b = str(existing or "").strip(), str(candidate or "").strip()
+    if not a:
+        return b
+    if not b:
+        return a
+
+    def score(x: str) -> tuple:
+        return (
+            any(c.isupper() for c in x),        # conventional capitals
+            not x.islower(),
+            "(" not in x,                        # no parenthetical qualifier
+            not bool(re.search(r"\d\+?$", x)),   # no trailing version digit
+            -len(x),
+        )
+
+    return a if score(a) >= score(b) else b
+
+
 def _is_atomic_hard_skill(value: str) -> bool:
     """Return whether a value is a concrete, resume-safe hard skill."""
     skill = _strip_skill_qualifiers(value)
