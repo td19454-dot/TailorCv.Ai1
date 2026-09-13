@@ -5073,15 +5073,13 @@ async def interview_prep_page(request: Request):
     return templates.TemplateResponse(request, "interview_prep.html", {"request": request, "is_logged_in": bool(request.session.get("user_id"))})
 
 
-# Chrome Web Store listing. Until the extension is published, the CTAs fall back to
-# signup so they are never dead links; set CHROME_STORE_URL to point them at the store.
 # Live Chrome Web Store listing. Kept as the default (not just an env var) so the
 # install buttons work on deploy without extra Render config; override via
-# CHROME_STORE_URL if the listing ever moves. The personal ?authuser/&hl params
-# from the share link are intentionally left off — they'd break for other users.
+# CHROME_STORE_URL if the listing ever moves. The templates' "Add to Chrome"
+# buttons hardcode the same URL - change them together.
 CHROME_STORE_URL = os.getenv(
     "CHROME_STORE_URL",
-    "https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno",
+    "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb",
 ).strip()
 
 
@@ -10072,7 +10070,7 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
     elif "extension" in subject or "chrome" in subject or "add to chrome" in subject:
         cta = {"title": "Tailor on the job page",
                "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
-               "label": "Add to Chrome — Free", "url": "/extension"}
+               "label": "Add to Chrome — Free", "url": CHROME_STORE_URL}
     elif "cover letter" in hay or "cover-letter" in hay:
         cta = {"title": "Write a standout cover letter",
                "text": "Generate a cover letter matched to any job in seconds.",
