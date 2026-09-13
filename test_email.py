@@ -17,3 +17,4 @@ for recipient in recipients:
         subject="Hello from TailorCV",
         html_body="<p>Hi! This is a test email from TailorCV.</p>",
     )
+print("Done")
