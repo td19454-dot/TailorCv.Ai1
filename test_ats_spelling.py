@@ -155,6 +155,40 @@ def test_scrub_keeps_the_real_error_and_drops_the_artifact():
     assert "progresstracking" not in spelling["explanation"]
 
 
+def test_scrub_clears_an_email_flagged_as_misspelled():
+    # Real report: the candidate's own email address was shown as a typo.
+    parsed = _finding(
+        "The word 'Gerson.craviid@gmail.com' contains a misspelling in the email "
+        "domain, where 'craviid' should be 'cravid'."
+    )
+    out = scrub_extraction_artifacts_from_spelling(parsed)
+    spelling = out["spelling_and_grammar"]["spelling"]
+    assert spelling["passed"] == "true"
+    assert spelling["explanation"] == ""
+
+
+def test_scrub_drops_contact_claims_but_keeps_real_errors():
+    parsed = _finding(
+        "The word 'recieved' should be 'received'. "
+        "The URL 'linkedin.com/in/jhon-doe' should be 'john-doe'. "
+        "The handle '@devjhon' looks misspelled."
+    )
+    out = scrub_extraction_artifacts_from_spelling(parsed)
+    spelling = out["spelling_and_grammar"]["spelling"]
+    assert spelling["passed"] == "false"
+    assert "recieved" in spelling["explanation"]
+    assert "linkedin" not in spelling["explanation"]
+    assert "devjhon" not in spelling["explanation"]
+
+
+def test_scrub_keeps_a_real_misspelling_of_a_contact_keyword():
+    parsed = _finding("The word 'domian' should be 'domain'.")
+    out = scrub_extraction_artifacts_from_spelling(parsed)
+    spelling = out["spelling_and_grammar"]["spelling"]
+    assert spelling["passed"] == "false"
+    assert "domian" in spelling["explanation"]
+
+
 def test_scrub_is_safe_on_missing_or_odd_shapes():
     # parse_ai_json_response can hand back anything; the scrub must not raise.
     for shape in [None, {}, [], "text", {"spelling_and_grammar": None},
