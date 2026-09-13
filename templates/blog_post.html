@@ -29,7 +29,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     {# Article typography: serif reading text, bold sans headings. #}
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/blog.css?v=108">
+    <link rel="stylesheet" href="/static/blog.css?v=109">
     <style>
         .navbar .nav-links { min-width: 560px; gap: 2px; }
         .navbar .nav-links .nav-link { font-size: 11px; padding: 18px 10px; letter-spacing: 0; }
@@ -251,7 +251,8 @@
 <button id="backToTop" type="button" aria-label="Back to top" title="Back to top">&uarr;</button>
         {% include "_footer.html" %}
 <script src="/static/blog.js?v=66" defer></script>
-{% if show_ats_widget %}<script src="/static/blog_ats.js?v=2" defer></script>{% endif %}
+{% if show_ats_widget %}<script src="/static/jd_picker.js?v=2"></script>
+<script src="/static/blog_ats.js?v=2" defer></script>{% endif %}
 <script src="/static/auth_nav.js?v=19"></script>
 <script src="/static/mobile_nav.js"></script>
 <script>
