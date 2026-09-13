@@ -1,7 +1,15 @@
 === CERT NAMES (from AI) ===
+  - Internet of Things
+  - Introduction to Java as a Second Language
+  - Mobile Development and JavaScript
+  - Deep Learning for Developers
 
 === CERT SECTION LINKS (reading order) [0] ===
 
 === FINAL cert.url PER ENTRY ===
+  - Internet of Things  ->  
+  - Introduction to Java as a Second Language  ->  
+  - Mobile Development and JavaScript  ->  
+  - Deep Learning for Developers  ->  
 
 === READING-ORDER FILL ASSIGNED [0] ===
