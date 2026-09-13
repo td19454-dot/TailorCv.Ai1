@@ -6,7 +6,6 @@ import logging
 import os
 import random
 import re
-import resend
 import time
 from secrets import token_hex, token_urlsafe
 from urllib.parse import quote
@@ -31,6 +30,7 @@ from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
 from seo_roles import ROLE_SEO
 from database import Base, SessionLocal, engine
+from email_service import EmailConfigurationError, send_email
 from functions import (
     ats_scoring,
     compute_deterministic_ats_score_breakdown,
@@ -1013,100 +1013,76 @@ class _TTLCache:
         self._data.pop(key, None)
 
 
-def _resend_from() -> str:
-    return os.getenv("EMAIL_FROM", "").strip()
-
-
-def _resend_welcome_from() -> str:
-    return os.getenv("EMAIL_FROM_WELCOME", "").strip() or _resend_from()
-
-
 def send_password_reset_email(recipient_email: str, reset_code: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Your TailorCV password reset code",
+            (
+                "<p>We received a request to reset your TailorCV password.</p>"
+                f"<p>Your verification code is: <strong>{reset_code}</strong></p>"
+                "<p>This code expires in 10 minutes.</p>"
+                "<p>If you did not request this, you can ignore this email.</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Password reset email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Your TailorCV password reset code",
-        "text": (
-            "We received a request to reset your TailorCV password.\n\n"
-            f"Your verification code is: {reset_code}\n\n"
-            "This code expires in 10 minutes.\n\n"
-            "If you did not request this, you can ignore this email."
-        ),
-    })
-    return True
 
 
 def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Your TailorCV sign-up verification code",
+            (
+                "<p>Welcome to TailorCV.</p>"
+                f"<p>Your sign-up verification code is: <strong>{signup_code}</strong></p>"
+                "<p>This code expires in 10 minutes.</p>"
+                "<p>If you did not request this, you can ignore this email.</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Signup verification email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Your TailorCV sign-up verification code",
-        "text": (
-            "Welcome to TailorCV.\n\n"
-            f"Your sign-up verification code is: {signup_code}\n\n"
-            "This code expires in 10 minutes.\n\n"
-            "If you did not request this, you can ignore this email."
-        ),
-    })
-    return True
 
 
 def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_welcome_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Did we help you?",
+            (
+                f"<p>Hi {recipient_name or 'there'},</p>"
+                "<p>I'm Shubham, Co-Founder of TailorCV.</p>"
+                "<p>Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
+                "someone trying to switch careers, or someone simply looking for a better future.</p>"
+                "<p>As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.</p>"
+                "<p>I'd genuinely love to know whether we're creating something that truly helps job seekers.</p>"
+                "<p>If you have few minutes sometime this week, I'd really appreciate your honest feedback.</p>"
+                "<p>I'd especially love to know:</p>"
+                "<ul>"
+                "<li>Does TailorCV actually save you time and effort?</li>"
+                "<li>Would you use it in your job application workflow?</li>"
+                "<li>Was anything confusing or frustrating?</li>"
+                "<li>Would you consider paying for something like this?</li>"
+                "</ul>"
+                "<p>Explore the platform here:<br>"
+                "<a href='https://thetailorcv.com/dashboard'>https://thetailorcv.com/dashboard</a></p>"
+                "<p>While you're there, feel free to explore our AI Resume Builder, ATS Resume Analysis, "
+                "Portfolio Builder, Mock Interviews, Interview Question Generator, and Chrome Extension.</p>"
+                "<p><a href='https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb'>"
+                "TailorCV Chrome Extension</a></p>"
+                "<p>Every feature is being built with one goal in mind: making the job application process less stressful and more effective.</p>"
+                "<p>Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.</p>"
+                "<p>You can also reach me directly at +91 8240044652 (Whatsapp, text or call).</p>"
+                "<p>Thank you for your time and support!</p>"
+                "<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Welcome email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Did we help you?",
-        "text": (
-            f"Hi {recipient_name or 'there'},\n\n"
-            "I'm Shubham, Co-Founder of TailorCV.\n\n"
-            "Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
-            "someone trying to switch careers, or someone simply looking for a better future.\n\n"
-            "As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.\n\n"
-            "I'd genuinely love to know whether we're creating something that truly helps job seekers.\n\n"
-            "If you have few minutes sometime this week, I'd really appreciate your honest feedback.\n\n"
-            "I'd especially love to know:\n"
-            "⏳ Does TailorCV actually save you time and effort?\n"
-            "\U0001F4BC Would you use it in your job application workflow?\n"
-            "\U0001F914 Was anything confusing or frustrating?\n"
-            "\U0001F4B3 Would you consider paying for something like this?\n\n"
-            "\U0001F449 Explore the platform here:\n"
-            "https://thetailorcv.com/dashboard\n\n"
-            "While you're there, feel free to explore our other tools too:\n"
-            "\U0001F4DD AI Resume Builder\n"
-            "\U0001F4CA ATS Resume Analysis\n"
-            "\U0001F310 Portfolio Builder\n"
-            "\U0001F3A4 Mock Interviews\n"
-            "❓ Interview Question Generator\n"
-            "\U0001F9E9 Chrome Extension - Tailor your Resume without leaving job page(Linkedin, Wellfound, Greenhouse, etc.) in seconds\n"
-            "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb\n\n"
-            "Every feature is being built with one goal in mind: making the job application process less stressful and more effective.\n\n"
-            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n"
-            "\U0001F4DE You can also reach me directly at +91 8240044652(Whatsapp,Text or call).\n\n"
-            "Thank you for your time and support! \U0001F64F\n\n"
-            "Best,\n"
-            "Shubham\n"
-            "Co-Founder, TailorCV"
-        ),
-    })
-    return True
 
 
 def send_welcome_email_once(db: Session, user: User, source: str) -> None:
@@ -4634,6 +4610,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "Networking & Protocols": [],
         "Security & SIEM": [],
         "Methodologies & Practices": [],
+        "Data & Analytics": [],
+        "Finance & Economics": [],
         "Other Technical Skills": [],
     }
 
@@ -4715,7 +4693,7 @@ def group_skills(skills: list[str]) -> list[str]:
         "matplotlib", "seaborn", "plotly", "bokeh",
         "streamlit", "gradio", "hugging face",
         "sqlalchemy", "celery", "spark", "pyspark", "hadoop", "flink",
-        "rest api", "restful api", "restful apis", "graphql", "grpc",
+        "rest api", "rest apis", "restful api", "restful apis", "graphql", "grpc",
         "opencv", "nltk", "spacy", "gensim",
         "xgboost", "lightgbm", "catboost", "statsmodels",
         "bootstrap", "tailwindcss", "tailwind",
@@ -4739,6 +4717,10 @@ def group_skills(skills: list[str]) -> list[str]:
         "vscode", "visual studio code", "visual studio",
         "postman", "insomnia", "swagger",
         "mlflow", "dvc", "wandb", "weights & biases",
+        # Managed ML platforms - MLOps platforms like MLflow, not generic cloud.
+        "sagemaker", "amazon sagemaker", "aws sagemaker", "vertex ai",
+        "google vertex ai", "azure machine learning", "azure ml",
+        "databricks ml", "bedrock", "amazon bedrock", "azure openai",
         "power bi", "powerbi", "tableau",
         "excel", "jira", "confluence",
         "kubeflow", "airflow", "prefect", "dagster", "kafka",
@@ -4756,7 +4738,58 @@ def group_skills(skills: list[str]) -> list[str]:
         "sap", "salesforce", "servicenow", "hubspot", "workday",
         "sharepoint", "erp", "erp systems", "crm",
         # Project / work tracking
-        "ms project", "microsoft project", "asana", "trello", "notion"
+        "ms project", "microsoft project", "asana", "trello", "notion",
+        # Office suite. Only "powerpoint" was listed, so a resume came back with
+        # PowerPoint under Tools while "Microsoft Excel" and "Microsoft Word"
+        # fell into Other Technical Skills.
+        "microsoft excel", "ms excel", "microsoft word", "ms word", "word",
+        "microsoft powerpoint", "ms powerpoint", "microsoft office",
+        "ms office", "microsoft office suite", "office 365", "microsoft 365",
+        "outlook", "microsoft outlook", "google docs", "google slides",
+        "google workspace",
+        # Finance / statistics software
+        "bloomberg", "bloomberg terminal", "refinitiv", "eikon",
+        "refinitiv eikon", "capital iq", "s&p capital iq", "factset",
+        "stata", "eviews", "spss", "sas", "quickbooks", "xero", "sage",
+        "sage pastel", "pastel"
+    }
+    # Finance, accounting and economics disciplines. Commerce and finance
+    # graduates list these as their core skills; without a bucket every one of
+    # them landed in "Other Technical Skills". Kept apart from analytics_terms:
+    # a data analyst with Excel and statistics has no finance background, and a
+    # "Finance" heading over their skills would claim one.
+    finance_terms = {
+        "corporate finance", "finance", "financial analysis",
+        "financial modelling", "financial modeling", "financial reporting",
+        "financial statement analysis", "financial planning",
+        "financial planning and analysis", "fp&a", "valuation", "dcf",
+        "discounted cash flow", "budgeting", "forecasting",
+        "budgeting and forecasting", "variance analysis",
+        "investment analysis", "quantitative investment analysis",
+        "portfolio management", "asset management",
+        "equity research", "credit analysis", "credit risk", "market risk",
+        "risk management", "risk analysis", "financial risk management",
+        "derivatives", "derivatives & risk management",
+        "derivatives and risk management", "fixed income", "capital markets",
+        "mergers and acquisitions", "m&a",
+        "accounting", "financial accounting", "management accounting",
+        "cost accounting", "bookkeeping", "auditing", "audit", "taxation",
+        "tax", "ifrs", "gaap", "us gaap", "reconciliation",
+        "account reconciliation", "accounts payable", "accounts receivable",
+        "payroll", "treasury",
+        "economics", "econometrics", "microeconomics", "macroeconomics",
+        "international trade", "international economics",
+        "development economics", "economic analysis", "economic modelling",
+        "economic modeling",
+    }
+    # Analysis skills that belong to no single domain - an ops, marketing or
+    # finance candidate may list any of them.
+    analytics_terms = {
+        "data analysis", "data analytics", "statistical analysis", "statistics",
+        "quantitative analysis", "regression analysis", "business analysis",
+        "market research", "business intelligence", "data visualization",
+        "data visualisation", "data cleaning", "data entry", "reporting and analysis",
+        "kpi tracking", "dashboarding", "a/b testing",
     }
     # Ways of working and analysis artefacts. These are legitimate resume
     # skills - a business analyst lists Agile, BPMN and user stories - but they
@@ -4771,6 +4804,8 @@ def group_skills(skills: list[str]) -> list[str]:
         "requirements gathering", "requirement gathering", "gap analysis",
         "process mapping", "process modelling", "process modeling",
         "process flow", "data modelling", "data modeling",
+        "project management", "stakeholder management", "change management",
+        "process improvement",
     }
     cloud_devops_terms = {
         "aws", "amazon web services", "azure", "gcp",
@@ -4811,16 +4846,30 @@ def group_skills(skills: list[str]) -> list[str]:
         "threat intelligence", "vulnerability management"
     }
 
+    def skill_keys(value: str) -> set[str]:
+        """Every name a skill goes by: "Natural Language Processing (NLP)" is
+        also "natural language processing" and "nlp"."""
+        v = re.sub(r"\s+", " ", value.lower().strip())
+        keys = {v}
+        m = re.match(r"^(.*?)\s*\(([^)]+)\)$", v)
+        if m:
+            keys.update({m.group(1).strip(), m.group(2).strip()})
+        return keys
+
     def add_unique(bucket: list[str], value: str):
         if not value:
             return
-        # Exact-string identity let one skill appear twice in a row under two
-        # spellings ("HTML, CSS, CSS3, HTML5"). Keyed on canonical form so a
-        # version suffix or parenthetical qualifier cannot reintroduce it after
-        # sanitize_resume_data has already collapsed the pair.
+        # Two checks, because each catches what the other misses:
+        #  - canonical_skill_key: one skill under two spellings ("HTML, CSS,
+        #    CSS3, HTML5"), so a version suffix or parenthetical qualifier
+        #    cannot reintroduce a pair sanitize_resume_data already collapsed.
+        #  - skill_keys: a full name and its acronym ("NLP" vs "Natural
+        #    Language Processing (NLP)"); canonical_skill_key drops the
+        #    parenthetical, so it never sees that the two are the same.
         key = canonical_skill_key(value)
+        aliases = skill_keys(value)
         for i, existing in enumerate(bucket):
-            if canonical_skill_key(existing) == key:
+            if canonical_skill_key(existing) == key or aliases & skill_keys(existing):
                 bucket[i] = _preferred_skill_spelling(existing, value)
                 return
         bucket.append(value)
@@ -4835,11 +4884,7 @@ def group_skills(skills: list[str]) -> list[str]:
         parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
         return parts if len(parts) > 1 else [text.strip()]
 
-    def classify_item(item: str) -> str:
-        item_norm = (item.lower().strip()
-                     .replace("react js", "react")
-                     .replace("restful apis", "restful api")
-                     .replace("node js", "node.js"))
+    def classify_norm(item_norm: str) -> str:
         if item_norm in human_language_terms:
             return "human_language"
         if item_norm in language_terms:
@@ -4862,10 +4907,34 @@ def group_skills(skills: list[str]) -> list[str]:
             return "Frameworks/Libraries"
         if item_norm in methodology_terms:
             return "Methodologies & Practices"
+        if item_norm in analytics_terms:
+            return "Data & Analytics"
+        if item_norm in finance_terms:
+            return "Finance & Economics"
         # Fuzzy model-name fallback, deliberately last so an exact match in any
         # bucket above wins (e.g. LlamaIndex -> Frameworks/Libraries).
         if ai_model_pattern.search(item_norm):
             return "AI/ML"
+        return "uncategorized"
+
+    def classify_item(item: str) -> str:
+        item_norm = re.sub(r"\s+", " ", item.lower().strip()
+                           .replace("react js", "react")
+                           .replace("restful apis", "restful api")
+                           .replace("node js", "node.js"))
+        # Resumes write the same skill several ways. Try it as written, then
+        # "Natural Language Processing (NLP)" as its full name and its acronym,
+        # then "Apache Spark" as "spark" - otherwise each form needs its own
+        # entry in every bucket and the misses land in Other Technical Skills.
+        candidates = [item_norm]
+        m = re.match(r"^(.*?)\s*\(([^)]+)\)$", item_norm)
+        if m:
+            candidates += [m.group(1).strip(), m.group(2).strip()]
+        candidates += [c[len("apache "):] for c in list(candidates) if c.startswith("apache ")]
+        for candidate in candidates:
+            cat = classify_norm(candidate)
+            if cat != "uncategorized":
+                return cat
         return "uncategorized"
 
     for skill in skills:
@@ -4962,7 +5031,8 @@ def group_skills(skills: list[str]) -> list[str]:
     result = []
     for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
                   "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
-                  "Methodologies & Practices", "Other Technical Skills"):
+                  "Methodologies & Practices", "Data & Analytics", "Finance & Economics",
+                  "Other Technical Skills"):
         if grouped[label]:
             result.append(f"{label}: {', '.join(grouped[label])}")
     return result

@@ -35,6 +35,7 @@ from functions import (
     normalize_links,
     promptable_skill_gaps,
     sanitize_resume_data,
+    weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
 )
 

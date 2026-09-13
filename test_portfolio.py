@@ -406,15 +406,10 @@ def main_run():
         test_slugify, test_initials, test_strip_bullets, test_skill_groups,
         test_build_editor_shape, test_build_candidate_shape, test_photo_validator,
         test_handle_helpers, test_share_url, test_social_links_absolute,
-<<<<<<< HEAD
         test_new_sections, test_devicon_slug, test_themes_registry, test_theme_gating,
         test_empty_resume,
-        test_static_bundle,
-=======
-        test_new_sections, test_devicon_slug, test_themes_registry, test_empty_resume,
         test_static_bundle, test_slug_shape_filter, test_should_count_view,
         test_ttl_cache,
->>>>>>> 61b2912c39a18d68b712b14805186b740b720271
     ]
     all_ok = True
     for t in tests:
