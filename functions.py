@@ -3533,6 +3533,43 @@ def _claim_is_artifact(claim: str) -> bool:
     return looks_like_fused_word(alleged)
 
 
+# Contact details the model mistakes for misspellings - users were told
+# "The word 'Gerson.craviid@gmail.com' contains a misspelling ... 'craviid'
+# should be 'cravid'". Emails, URLs, handles and phone numbers are
+# identifiers the candidate chose, so no claim about them is ever valid.
+_CONTACT_TOKEN_RE = re.compile(
+    r"[\w.+\-]+@[\w\-]+(?:\.[\w\-]+)+"          # email
+    r"|\bhttps?://\S+|\bwww\.\S+"               # URL
+    r"|\b[\w\-]+\.(?:com|org|net|io|dev|in|co|me|ai|app|edu)\b"  # bare domain
+    r"|(?<!\w)@[A-Za-z0-9_]{2,}"                # handle
+    r"|\+?\d[\d\s().\-]{7,}\d",                 # phone
+    re.I,
+)
+_CONTACT_WORD_RE = re.compile(
+    r"\b(?:e-?mail|domain|url|website|username|handle|linkedin|github|phone)\b",
+    re.I,
+)
+# Quoted spans are removed before the keyword check, so a genuine claim such
+# as "'domian' should be 'domain'" is not mistaken for a contact critique.
+_QUOTED_SPAN_RE = re.compile(r"['\"‘’“”][^'\"‘’“”]*['\"‘’“”]")
+# Sentence boundary: terminal punctuation followed by whitespace, so the dots
+# inside "first.last@gmail.com" never split a sentence.
+_SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?])\s+")
+
+
+def _drop_contact_detail_claims(explanation: str) -> str:
+    """Remove every sentence that critiques an email, URL, handle or phone."""
+    sentences = _SENTENCE_SPLIT_RE.split(explanation.strip())
+    kept = [
+        s for s in sentences
+        if not (
+            _CONTACT_TOKEN_RE.search(s)
+            or _CONTACT_WORD_RE.search(_QUOTED_SPAN_RE.sub("", s))
+        )
+    ]
+    return " ".join(kept).strip()
+
+
 def scrub_extraction_artifacts_from_spelling(parsed):
     """Drop spelling findings that are really PDF extraction artifacts.
 
@@ -3540,6 +3577,7 @@ def scrub_extraction_artifacts_from_spelling(parsed):
     users were shown "The word 'progresstracking' should be 'progress
     tracking'" for a resume that had the space all along. This removes each
     such claim, and when nothing genuine is left, marks the check passed.
+    Claims about contact details (emails, URLs, handles) are dropped too.
 
     Mutates and returns `parsed`.
     """
@@ -3555,6 +3593,16 @@ def scrub_extraction_artifacts_from_spelling(parsed):
     explanation = str(spelling.get("explanation") or "")
     if not explanation.strip():
         return parsed
+
+    without_contacts = _drop_contact_detail_claims(explanation)
+    if without_contacts != explanation.strip():
+        if not without_contacts:
+            spelling["passed"] = "true"
+            spelling["explanation"] = ""
+            spelling["action"] = ""
+            return parsed
+        explanation = without_contacts
+        spelling["explanation"] = explanation
 
     claims = _SPELLING_CLAIM_RE.findall(explanation)
     if not claims:
@@ -4032,6 +4080,7 @@ RULE: Any token containing 2 or more recognizable English words merged together 
 RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
 RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
 RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+RULE: Contact details are NEVER spelling errors. Email addresses, usernames, URLs, domains, LinkedIn/GitHub handles, phone numbers and personal names are identifiers chosen by the candidate — never check or mention their spelling.
 
 ==================================================
 GRAMMAR RULES
@@ -5138,6 +5187,7 @@ RULE: Any token containing 2 or more recognizable English words merged together 
 RULE: Any token where recognizable words are merged around a hyphen (e.g., "drivingcross-teamcollaboration", "end-to-endproblems") is an extraction artifact. Ignore it entirely.
 RULE: When uncertain whether a long token (10+ characters) is an artifact or a genuine misspelling, treat it as an artifact and do NOT flag it.
 RULE: Capitalization differences (e.g., "Medals" vs "medals", "Java", "Team") are NOT spelling errors. Only flag tokens where the specific letters themselves are wrong (e.g., "acomplishment" → "accomplishment").
+RULE: Contact details are NEVER spelling errors. Email addresses, usernames, URLs, domains, LinkedIn/GitHub handles, phone numbers and personal names are identifiers chosen by the candidate — never check or mention their spelling.
 
 ==================================================
 GRAMMAR RULES
