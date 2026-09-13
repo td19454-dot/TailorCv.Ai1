@@ -4811,8 +4811,18 @@ def group_skills(skills: list[str]) -> list[str]:
     }
 
     def add_unique(bucket: list[str], value: str):
-        if value and value not in bucket:
-            bucket.append(value)
+        if not value:
+            return
+        # Exact-string identity let one skill appear twice in a row under two
+        # spellings ("HTML, CSS, CSS3, HTML5"). Keyed on canonical form so a
+        # version suffix or parenthetical qualifier cannot reintroduce it after
+        # sanitize_resume_data has already collapsed the pair.
+        key = canonical_skill_key(value)
+        for i, existing in enumerate(bucket):
+            if canonical_skill_key(existing) == key:
+                bucket[i] = _preferred_skill_spelling(existing, value)
+                return
+        bucket.append(value)
 
     # Delegates to functions.py's canonical, actively-maintained atomicity
     # filter instead of a separate/duplicated blocklist, so a fix there (e.g.

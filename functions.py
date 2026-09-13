@@ -3504,15 +3504,25 @@ def sanitize_resume_data(data: dict) -> dict:
     skills = data.get("skills")
     if isinstance(skills, list):
         cleaned: list[str] = []
-        seen: set[str] = set()
+        # Keyed on canonical form, not the raw lowercase string. The old key
+        # treated "HTML" and "HTML5" as different skills, so both shipped on
+        # one Languages row - along with CSS/CSS3, JavaScript/JavaScript
+        # (ES6+) and PostgreSQL/postgres sql.
+        seen: dict[str, int] = {}
         for raw in skills:
             s = _clean_inline_text(raw)
             if not _is_atomic_hard_skill(s):
                 continue
-            key = s.lower()
-            if key in seen:
+            key = canonical_skill_key(s)
+            if not key:
                 continue
-            seen.add(key)
+            if key in seen:
+                # Same skill, second spelling: keep whichever presents better
+                # rather than whichever happened to arrive first.
+                idx = seen[key]
+                cleaned[idx] = _preferred_skill_spelling(cleaned[idx], s)
+                continue
+            seen[key] = len(cleaned)
             cleaned.append(s)
         data["skills"] = cleaned
 
