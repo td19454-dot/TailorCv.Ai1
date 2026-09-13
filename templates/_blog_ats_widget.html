@@ -42,8 +42,16 @@
 
     <div>
       <label class="blog-ats-label" for="blog-ats-jd">Job description</label>
+      {# Same sample-JD picker the landing scanner uses (_landing_ats.html).
+         jd_picker.js auto-attaches to every [data-jd-picker] and fills the
+         textarea named by data-target, so a blog reader who has no posting to
+         hand can still score against a realistic JD instead of bouncing. #}
+      <div class="blog-ats-jdrow">
+        <span class="blog-ats-jdlabel">Use sample JD:</span>
+        <div data-jd-picker data-target="blog-ats-jd"></div>
+      </div>
       <textarea id="blog-ats-jd" class="blog-ats-jd" rows="8"
-                placeholder="Paste the full job description you are applying to…"></textarea>
+                placeholder="Paste the job description here, or pick a sample role above."></textarea>
     </div>
   </div>
 
