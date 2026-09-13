@@ -23,6 +23,7 @@ from functions import (
     _is_atomic_hard_skill,
     _is_keyword_tail,
     _repair_false_future_chronology,
+    _drop_future_date_priority_fixes,
     _summary_quality_issues,
     _summary_sentences,
     repair_summary,
@@ -614,6 +615,39 @@ def test_promptable_drops_the_employers_own_products():
     # Real report: tailoring for an Apple JD offered "Apple Watch" as a skill.
     gaps = ["Swift", "Apple software", "Apple services", "Apple Watch", "iPhone"]
     assert promptable_skill_gaps(gaps) == ["Swift"], promptable_skill_gaps(gaps)
+
+
+def test_future_date_priority_fix_is_dropped():
+    # Real report, September 2026: a Jan 2022 - Feb 2026 role was flagged.
+    parsed = {"top_priority_fixes": [
+        {"issue": "Future date in experience",
+         "action": "Update the end date of the position at California Medical "
+                   "Research Associates (CMRA) to a date before September 2026."},
+        {"issue": "Missing strong action verbs", "action": "Start bullets with verbs."},
+        {"issue": "Missing measurable achievements",
+         "action": "Add metrics, e.g. future-facing growth targets."},
+    ]}
+    _drop_future_date_priority_fixes(parsed)
+    issues = [f["issue"] for f in parsed["top_priority_fixes"]]
+    assert issues == ["Missing strong action verbs", "Missing measurable achievements"], issues
+
+
+def test_future_date_fix_drop_is_safe_on_odd_shapes():
+    for shape in [None, {}, {"top_priority_fixes": None}, {"top_priority_fixes": ["x", None]}]:
+        _drop_future_date_priority_fixes(shape)
+
+
+def test_skills_section_drops_employer_products():
+    # Real report: a resume tailored for Apple shipped a Technical Skills line of
+    # "Apple, iPhone, MacBook, Apple hardware, Apple software, Apple services".
+    resume = ("Used Apple, iPhone, MacBook, Apple hardware, Apple software and "
+              "Apple services daily. Device onboarding. Salesforce.")
+    data = {"skills": ["Apple", "iPhone", "MacBook", "Device onboarding",
+                       "Apple hardware", "Apple software", "Apple services",
+                       "Salesforce"]}
+    out = inject_jd_hard_skills(data, "Apple retail specialist.", resume_text=resume,
+                                jd_skills=[])
+    assert out["skills"] == ["Device onboarding", "Salesforce"], out["skills"]
 
 
 def test_promptable_keeps_brand_led_real_skills():
