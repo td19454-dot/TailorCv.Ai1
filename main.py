@@ -45,7 +45,6 @@ from functions import (
     extract_links,
     inject_links,
     inject_jd_hard_skills,
-    weave_hard_skills_into_bullets,
     weave_soft_skills_into_summary,
     repair_summary,
     summary_rejection_reasons,
@@ -5570,15 +5569,13 @@ async def interview_prep_page(request: Request):
     return templates.TemplateResponse(request, "interview_prep.html", {"request": request, "is_logged_in": bool(request.session.get("user_id"))})
 
 
-# Chrome Web Store listing. Until the extension is published, the CTAs fall back to
-# signup so they are never dead links; set CHROME_STORE_URL to point them at the store.
 # Live Chrome Web Store listing. Kept as the default (not just an env var) so the
 # install buttons work on deploy without extra Render config; override via
-# CHROME_STORE_URL if the listing ever moves. The personal ?authuser/&hl params
-# from the share link are intentionally left off — they'd break for other users.
+# CHROME_STORE_URL if the listing ever moves. The templates' "Add to Chrome"
+# buttons hardcode the same URL - change them together.
 CHROME_STORE_URL = os.getenv(
     "CHROME_STORE_URL",
-    "https://chromewebstore.google.com/detail/tailorcv-%E2%80%94-ai-resume-opti/lnkplncemohgcdjlgccgmbcgiokcgmno",
+    "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb",
 ).strip()
 
 
@@ -10569,7 +10566,7 @@ def blog_cta(post, is_logged_in: bool = False) -> dict:
     elif "extension" in subject or "chrome" in subject or "add to chrome" in subject:
         cta = {"title": "Tailor on the job page",
                "text": "Add the free TailorCV extension and tailor your resume on any posting in one click.",
-               "label": "Add to Chrome — Free", "url": "/extension"}
+               "label": "Add to Chrome — Free", "url": CHROME_STORE_URL}
     elif "cover letter" in hay or "cover-letter" in hay:
         cta = {"title": "Write a standout cover letter",
                "text": "Generate a cover letter matched to any job in seconds.",
@@ -11988,17 +11985,6 @@ async def _optimize_resume_core(
         summary_rejections = []
     if summary_rejections:
         parsed["summary_rejected"] = summary_rejections
-
-    # Hard-skill counterpart of the soft-skill weave above: inject_jd_hard_skills()
-    # only decides which JD hard skills the resume is ALLOWED to claim (they land
-    # in `skills`); it does not check whether the rewrite actually mentioned them
-    # anywhere a recruiter or a context-aware ATS would read. Rule 1c asks the
-    # model to do that itself, but that's an instruction, not a guarantee - this
-    # is the deterministic backstop, scoped to skills already confirmed above so
-    # it can never introduce a claim the resume doesn't back up.
-    parsed = weave_hard_skills_into_bullets(
-        parsed, resume_string, jd_string, jd_skills=jd_hard_skills,
-    )
 
     # Recover real contact URLs (LinkedIn/GitHub/portfolio/etc.) from the PDF's
     # clickable annotations. PDFs often show only anchor text ("LinkedIn") while
