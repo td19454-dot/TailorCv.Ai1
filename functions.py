@@ -1498,6 +1498,9 @@ _NON_SKILL_PRODUCTS: set[str] = {
     "apple tv", "homepod", "vision pro", "apple vision pro", "google pixel",
     "pixel", "samsung galaxy", "galaxy", "kindle", "amazon echo", "xbox",
     "playstation",
+    # A bare company name is an employer, never a skill. Its real products
+    # (AWS, Google Cloud, Microsoft Excel) are separate entries and unaffected.
+    "apple", "samsung", "google", "microsoft", "amazon",
 }
 
 # "<Brand> software/services/products": how a JD describes its own company's
@@ -4260,6 +4263,8 @@ Prioritize:
 
 Do not include minor issues unless no major issues exist.
 
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
+
 ==================================================
 OUTPUT RULES
 ============
@@ -4605,6 +4610,41 @@ def _force_pass_chronology(parsed: dict) -> None:
     }
 
 
+# "Future date in experience" / "update the end date ... to a date before
+# September 2026". Matched on the two together so an unrelated fix that merely
+# says "future" (a goals statement) is never dropped.
+_FUTURE_WORD_RE = re.compile(r"\bfuture\b", re.IGNORECASE)
+_DATE_WORD_RE = re.compile(r"\bdat(?:e|es|ed)\b|chronolog", re.IGNORECASE)
+
+
+def _drop_future_date_priority_fixes(parsed: dict) -> None:
+    """Remove "future date" items from top_priority_fixes.
+
+    Same false positive _force_pass_chronology exists for, surfacing in a
+    second place: the model miscounts months against the supplied Current
+    Date and told a user to move a "January 2022 - February 2026" role's end
+    date "to a date before September 2026" - in September 2026. The action
+    cites the current month rather than the resume's date, so the date
+    comparison in _apply_false_future_repair cannot catch it; the chronology
+    check is already never allowed to fail, so its fix is never shown either.
+    """
+    if not isinstance(parsed, dict):
+        return
+    fixes = parsed.get("top_priority_fixes")
+    if not isinstance(fixes, list):
+        return
+    kept = []
+    for fix in fixes:
+        text = (
+            f"{fix.get('issue', '')} {fix.get('action', '')}"
+            if isinstance(fix, dict) else str(fix or "")
+        )
+        if _FUTURE_WORD_RE.search(text) and _DATE_WORD_RE.search(text):
+            continue
+        kept.append(fix)
+    parsed["top_priority_fixes"] = kept
+
+
 def _repair_false_future_experience_match(parsed: dict, current_date: date | None = None) -> None:
     """The same past-date-miscounted-as-future failure also leaks into the
     Experience Match explanation, e.g. "most recent experience is dated in
@@ -4806,7 +4846,8 @@ async def ats_scoring(resume_string, jd_string):
     _cache_key = hashlib.md5(
         (
             # Bump on every prompt/repair change or cached scans keep serving
-            # the old verdicts (v4: action-verb + years-tolerance repairs).
+            # the old verdicts (v4: action-verb + years-tolerance repairs;
+            # v5: future-date priority fixes dropped).
             #
             # Scoped to the MONTH, not the day. The date is a real input — it is
             # sent to the model (see user_message) and drives the chronology and
@@ -4817,7 +4858,7 @@ async def ats_scoring(resume_string, jd_string):
             # day therefore forced a fresh paid LLM call every midnight to
             # reproduce an identical answer — ~365 re-scans a year where ~12
             # carry real change.
-            "ats-chronology-v4|" + current_date.strftime("%Y-%m") + "|" +
+            "ats-chronology-v5|" + current_date.strftime("%Y-%m") + "|" +
             # The separator matters: joining these with nothing meant a resume
             # ending in "ab" with JD "c" hashed the same as "a" + "bc", so two
             # different scans could collide and return each other's score.
@@ -5339,6 +5380,8 @@ Prioritize:
 
 Do not include minor issues unless no major issues exist.
 
+Never include a fix about dates being "in the future" or about date chronology. Resume dates are validated separately; every date on or before the Current Date is in the past.
+
 ==================================================
 OUTPUT RULES
 ============
@@ -5540,6 +5583,7 @@ The JSON must strictly follow the schema provided below.
 
     _deep_merge(parsed, precheck)
     _force_pass_chronology(parsed)
+    _drop_future_date_priority_fixes(parsed)
     _repair_false_future_experience_match(parsed, current_date)
     _repair_experience_years_tolerance(parsed, resume_string, jd_string)
     _repair_action_verbs(parsed, resume_string)
