@@ -1669,6 +1669,31 @@ header.navbar {
   margin: 6px 0 0; color: #4b1fa8; font-weight: 700; font-size: 0.9rem; word-break: break-all;
 }
 
+/* Sample-JD picker row above the textarea. Mirrors .solx-ats-jdrow from
+   feature_landing.css, which blog pages do not load - without these the
+   picker renders unstyled, and the dropdown needs the positioned flex parent
+   to anchor against. Colours follow the light blog palette rather than the
+   landing page's dark one. */
+.blog-detail-page .blog-ats-jdrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  flex-wrap: wrap;
+}
+.blog-detail-page .post-content .blog-ats-jdlabel {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b1fa8;
+  white-space: nowrap;
+}
+.blog-detail-page .blog-ats-jdrow > [data-jd-picker] {
+  position: relative;
+  flex: 1;
+  min-width: 190px;
+}
+
 .blog-detail-page .blog-ats-jd {
   width: 100%;
   min-height: 186px;

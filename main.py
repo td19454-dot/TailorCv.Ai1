@@ -6,7 +6,6 @@ import logging
 import os
 import random
 import re
-import resend
 import time
 from secrets import token_hex, token_urlsafe
 from urllib.parse import quote
@@ -31,6 +30,7 @@ from sqlalchemy.orm import Session
 from auth import hash_password, verify_password
 from seo_roles import ROLE_SEO
 from database import Base, SessionLocal, engine
+from email_service import EmailConfigurationError, send_email
 from functions import (
     ats_scoring,
     compute_deterministic_ats_score_breakdown,
@@ -48,6 +48,7 @@ from functions import (
     weave_soft_skills_into_summary,
     repair_summary,
     summary_rejection_reasons,
+    build_jd_gap_report,
     sanitize_resume_data,
     factcheck_against_original,
     promptable_skill_gaps,
@@ -58,6 +59,8 @@ from functions import (
     factcheck_against_original,
     _clean_inline_text,
     _is_atomic_hard_skill,
+    canonical_skill_key,
+    _preferred_skill_spelling,
     map_demo_links,
     extract_project_links,
     extract_publication_links,
@@ -1010,100 +1013,76 @@ class _TTLCache:
         self._data.pop(key, None)
 
 
-def _resend_from() -> str:
-    return os.getenv("EMAIL_FROM", "").strip()
-
-
-def _resend_welcome_from() -> str:
-    return os.getenv("EMAIL_FROM_WELCOME", "").strip() or _resend_from()
-
-
 def send_password_reset_email(recipient_email: str, reset_code: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Your TailorCV password reset code",
+            (
+                "<p>We received a request to reset your TailorCV password.</p>"
+                f"<p>Your verification code is: <strong>{reset_code}</strong></p>"
+                "<p>This code expires in 10 minutes.</p>"
+                "<p>If you did not request this, you can ignore this email.</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Password reset email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Your TailorCV password reset code",
-        "text": (
-            "We received a request to reset your TailorCV password.\n\n"
-            f"Your verification code is: {reset_code}\n\n"
-            "This code expires in 10 minutes.\n\n"
-            "If you did not request this, you can ignore this email."
-        ),
-    })
-    return True
 
 
 def send_signup_code_email(recipient_email: str, signup_code: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Your TailorCV sign-up verification code",
+            (
+                "<p>Welcome to TailorCV.</p>"
+                f"<p>Your sign-up verification code is: <strong>{signup_code}</strong></p>"
+                "<p>This code expires in 10 minutes.</p>"
+                "<p>If you did not request this, you can ignore this email.</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Signup verification email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Your TailorCV sign-up verification code",
-        "text": (
-            "Welcome to TailorCV.\n\n"
-            f"Your sign-up verification code is: {signup_code}\n\n"
-            "This code expires in 10 minutes.\n\n"
-            "If you did not request this, you can ignore this email."
-        ),
-    })
-    return True
 
 
 def send_welcome_email(recipient_email: str, recipient_name: str) -> bool:
-    api_key = os.getenv("RESEND_API_KEY", "").strip()
-    from_addr = _resend_welcome_from()
-    if not (api_key and from_addr):
+    try:
+        return send_email(
+            recipient_email,
+            "Did we help you?",
+            (
+                f"<p>Hi {recipient_name or 'there'},</p>"
+                "<p>I'm Shubham, Co-Founder of TailorCV.</p>"
+                "<p>Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
+                "someone trying to switch careers, or someone simply looking for a better future.</p>"
+                "<p>As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.</p>"
+                "<p>I'd genuinely love to know whether we're creating something that truly helps job seekers.</p>"
+                "<p>If you have few minutes sometime this week, I'd really appreciate your honest feedback.</p>"
+                "<p>I'd especially love to know:</p>"
+                "<ul>"
+                "<li>Does TailorCV actually save you time and effort?</li>"
+                "<li>Would you use it in your job application workflow?</li>"
+                "<li>Was anything confusing or frustrating?</li>"
+                "<li>Would you consider paying for something like this?</li>"
+                "</ul>"
+                "<p>Explore the platform here:<br>"
+                "<a href='https://thetailorcv.com/dashboard'>https://thetailorcv.com/dashboard</a></p>"
+                "<p>While you're there, feel free to explore our AI Resume Builder, ATS Resume Analysis, "
+                "Portfolio Builder, Mock Interviews, Interview Question Generator, and Chrome Extension.</p>"
+                "<p><a href='https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb'>"
+                "TailorCV Chrome Extension</a></p>"
+                "<p>Every feature is being built with one goal in mind: making the job application process less stressful and more effective.</p>"
+                "<p>Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.</p>"
+                "<p>You can also reach me directly at +91 8240044652 (Whatsapp, text or call).</p>"
+                "<p>Thank you for your time and support!</p>"
+                "<p>Best,<br>Shubham<br>Co-Founder, TailorCV</p>"
+            ),
+        )
+    except EmailConfigurationError:
+        logger.warning("Welcome email skipped because SES SMTP is not configured")
         return False
-
-    resend.api_key = api_key
-    resend.Emails.send({
-        "from": from_addr,
-        "to": [recipient_email],
-        "subject": "Did we help you?",
-        "text": (
-            f"Hi {recipient_name or 'there'},\n\n"
-            "I'm Shubham, Co-Founder of TailorCV.\n\n"
-            "Behind every resume is someone hoping for an opportunity—a student looking for their first break, "
-            "someone trying to switch careers, or someone simply looking for a better future.\n\n"
-            "As a student myself, I know how overwhelming that journey can feel. That's why I started building TailorCV.\n\n"
-            "I'd genuinely love to know whether we're creating something that truly helps job seekers.\n\n"
-            "If you have few minutes sometime this week, I'd really appreciate your honest feedback.\n\n"
-            "I'd especially love to know:\n"
-            "⏳ Does TailorCV actually save you time and effort?\n"
-            "\U0001F4BC Would you use it in your job application workflow?\n"
-            "\U0001F914 Was anything confusing or frustrating?\n"
-            "\U0001F4B3 Would you consider paying for something like this?\n\n"
-            "\U0001F449 Explore the platform here:\n"
-            "https://thetailorcv.com/dashboard\n\n"
-            "While you're there, feel free to explore our other tools too:\n"
-            "\U0001F4DD AI Resume Builder\n"
-            "\U0001F4CA ATS Resume Analysis\n"
-            "\U0001F310 Portfolio Builder\n"
-            "\U0001F3A4 Mock Interviews\n"
-            "❓ Interview Question Generator\n"
-            "\U0001F9E9 Chrome Extension - Tailor your Resume without leaving job page(Linkedin, Wellfound, Greenhouse, etc.) in seconds\n"
-            "https://chromewebstore.google.com/detail/lnkplncemohgcdjlgccgmbcgiokcgmno?utm_source=item-share-cb\n\n"
-            "Every feature is being built with one goal in mind: making the job application process less stressful and more effective.\n\n"
-            "\U0001F4E9 Just reply to this email with your thoughts. I personally read every reply, and every piece of feedback helps shape what we build next.\n"
-            "\U0001F4DE You can also reach me directly at +91 8240044652(Whatsapp,Text or call).\n\n"
-            "Thank you for your time and support! \U0001F64F\n\n"
-            "Best,\n"
-            "Shubham\n"
-            "Co-Founder, TailorCV"
-        ),
-    })
-    return True
 
 
 def send_welcome_email_once(db: Session, user: User, source: str) -> None:
@@ -2714,6 +2693,489 @@ def _bullet_facts(text: str) -> set:
             out.add(word.lower().rstrip(".,;"))
     out.discard("")
     return out
+
+
+_CLAIM_VERB_RE = re.compile(
+    r"\b(improv\w+|increas\w+|reduc\w+|cut|enabl\w+|ensur\w+|strengthen\w+|"
+    r"produc\w+|preserv\w+|structur\w+|orchestrat\w+|optimis\w+|optimiz\w+|"
+    r"support\w+|deliver\w+|driv\w+|boost\w+|acceler\w+|guarante\w+)\b",
+    re.IGNORECASE,
+)
+
+
+_PURPOSE_SPLIT_RE = re.compile(
+    r"(?:,\s+(?=\w+ing\b))"          # ", producing ..."
+    r"|(?:\s*[-–—]\s+and\s+)"  # " - and fed findings back ..."
+    r"|(?:\s*[-–—]\s+(?=\w+ing\b))"
+    r"|(?:,\s+and\s+(?=\w+ed\b))"    # ", and recommended ..."
+    r"|(?:;\s+)"
+    r"|(?:\s+to\s+(?=\w+\b))"        # " to support supply-chain improvements"
+)
+
+
+def _purpose_clauses(text: str) -> list[str]:
+    """Trailing clauses that could carry an appended purpose or outcome.
+
+    Returns every candidate after the first segment, because the fabricated
+    clause is not always last - "Analysed X to support Y, detailing Z" buries
+    it in the middle.
+    """
+    parts = [p.strip().rstrip(".") for p in _PURPOSE_SPLIT_RE.split(str(text or "")) if p and p.strip()]
+    return parts[1:] if len(parts) > 1 else []
+
+
+# Source verbs that describe watching or learning, mapped to the verbs a
+# rewrite must not promote them into. An observational internship that becomes
+# "mapped / analysed / engineered" is as indefensible in an interview as an
+# invented metric, and it is harder to spot because every noun is unchanged.
+_PASSIVE_SOURCE_VERBS = (
+    "studied", "study", "observed", "observing", "gained", "gaining",
+    "shadowed", "exposure", "learned", "learnt", "familiarised",
+    "familiarized", "attended", "assisted", "helped", "supported",
+    "participated", "reviewed", "read",
+)
+_ACTIVE_CLAIM_VERBS = (
+    "mapped", "analysed", "analyzed", "engineered", "drove", "produced",
+    "designed", "built", "owned", "led", "architected", "implemented",
+    "delivered", "established", "optimised", "optimized", "extracted",
+    # Added after a real run promoted an observational internship using verbs
+    # absent from the list above. Enumerating verbs is inherently leaky - each
+    # round the rewrite reaches for a synonym not yet listed - so this set is
+    # deliberately broad and errs toward flagging for human review.
+    "assessed", "compiled", "captured", "diagnosed", "evaluated", "audited",
+    "identified", "determined", "quantified", "measured", "benchmarked",
+    "investigated", "restructured", "redesigned", "overhauled", "spearheaded",
+    "orchestrated", "coordinated", "directed", "managed", "oversaw",
+)
+
+
+# Ordinary connective vocabulary that carries no claim, so its presence in a
+# rewrite but not the source is not evidence of fabrication.
+_CLAIM_NOUN_STOPWORDS = {
+    "across", "using", "through", "within", "while", "based", "including",
+    "these", "those", "their", "which", "where", "there", "other", "every",
+    "after", "before", "during", "between", "against", "under", "above",
+    "about", "into", "onto", "from", "with", "that", "this", "were", "been",
+    "also", "such", "than", "then", "when", "them", "they", "them", "have",
+    "would", "could", "should", "being", "does", "each", "both", "same",
+}
+
+
+# Units of measure that name no subject. "10 minutes" is as true of a build
+# pipeline as of a user's task, so a shared unit drawn only from this set
+# cannot establish that two documents describe the same metric.
+_BARE_MEASURE_UNITS = {
+    "second", "seconds", "minute", "minutes", "hour", "hours", "day", "days",
+    "week", "weeks", "month", "months", "year", "years", "percent", "times",
+    "point", "points", "line", "lines", "item", "items",
+}
+
+
+def report_metric_reframing(parsed: dict, resume_string: str) -> dict:
+    """Numbers restated in terms that change what they measure.
+
+    The hardest fabrication class to spot, because the number is real and the
+    source line exists. A Chrome extension that cut "per-application tailoring
+    from ~10 minutes to under 60 seconds" - a product outcome for end users -
+    was restated in a frontend summary as reducing "user task time", which a
+    frontend interviewer reads as interaction latency the engineer optimised.
+    Same digits, different measured subject, nothing behind it.
+
+    For each number appearing in both summary and source, compares the words
+    immediately around it. A large divergence means the metric was re-pointed.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+    summary = str(parsed.get("summary") or "")
+    source = str(resume_string or "")
+    if not summary.strip():
+        return parsed
+
+    def _context(text: str, number: str) -> set:
+        """Words naming WHAT the number measures.
+
+        A wide window was the first attempt and it produced false positives:
+        at +-90 characters the context of "16,000+ users" absorbed unrelated
+        neighbouring clauses, so a metric used correctly looked re-pointed.
+        The measured subject sits immediately around the figure - "users",
+        "per-application tailoring" - so the window is tight and the words
+        before it matter more than the words after.
+        """
+        out: set = set()
+        for m in re.finditer(re.escape(number), text):
+            start = max(0, m.start() - 45)
+            end = m.end() + 30
+            # Expand to WHOLE words. Slicing mid-token produced fragments like
+            # "timization" (from "resume-optimization") which match nothing in
+            # the source and made a correctly-used metric look re-pointed.
+            while start > 0 and (text[start - 1].isalnum() or text[start - 1] == "-"):
+                start -= 1
+            while end < len(text) and (text[end].isalnum() or text[end] == "-"):
+                end += 1
+            window = text[start:end].lower()
+            out |= {w for w in re.findall(r"[a-z]{4,}", window)
+                    if w not in _CLAIM_NOUN_STOPWORDS}
+        return out
+
+    findings = []
+    for number in set(re.findall(r"\d[\d,.]*\+?%?", summary)):
+        if len(number) < 2 or number not in source:
+            continue
+        # The MEASURED NOUN settles it. "15 job boards" in both documents is
+        # the same metric however different the surrounding clauses read; an
+        # earlier version compared only the surrounding words and flagged it,
+        # which would fire on correctly-reused metrics throughout.
+        def _unit(text: str) -> set:
+            out: set = set()
+            for m in re.finditer(re.escape(number) + r"\s*([a-z-]+(?:\s+[a-z-]+)?)", text.lower()):
+                out |= {w for w in re.findall(r"[a-z]{3,}", m.group(1))
+                        if w not in _CLAIM_NOUN_STOPWORDS}
+            return out
+
+        sctx, rctx = _context(summary, number), _context(source, number)
+        if not sctx or not rctx:
+            continue
+        shared = len(sctx & rctx) / len(sctx)
+
+        # Threshold tuning cannot separate these cases and was abandoned after
+        # measurement: the real reframe scored 0.25-0.33 shared context while a
+        # correctly-reused metric scored 0.20 - LOWER than both. The separating
+        # signal is what the shared unit IS.
+        #
+        #   "15 job boards"   -> unit {job, boards}   names what was counted
+        #   "16,000+ users"   -> unit {users}         names what was counted
+        #   "~10 minutes"     -> unit {minutes}       names nothing at all
+        #
+        # A bare unit of measure is compatible with any subject, so it cannot
+        # vouch for the metric; the subject has to be checked separately. A
+        # domain noun already identifies the metric, so the finding is dropped.
+        s_unit, r_unit = _unit(summary), _unit(source)
+        shared_unit = s_unit & r_unit
+        if shared_unit and not (shared_unit <= _BARE_MEASURE_UNITS):
+            continue  # same named thing being counted
+
+        if shared < 0.34:
+            findings.append({
+                "metric": number,
+                "summary_context": sorted(sctx - rctx)[:6],
+                "source_context": sorted(rctx - sctx)[:6],
+            })
+    parsed["metric_reframing"] = findings
+    return parsed
+
+
+def report_coined_terms(parsed: dict, resume_string: str, jd_string: str = "") -> dict:
+    """Invented compound adjectives grounded in neither source nor JD.
+
+    "pixel-conscious" is not a term anyone uses; it was assembled from the
+    JD's "pixel-perfect" to imply design work the resume never evidences. A
+    hyphenated compound that appears in neither input is a coinage, and a
+    coinage in a resume is a claim nobody can check.
+    """
+    if not isinstance(parsed, dict):
+        return parsed
+    summary = str(parsed.get("summary") or "")
+    haystack = (str(resume_string or "") + " " + str(jd_string or "")).lower()
+    coined = []
+    for compound in set(re.findall(r"\b[a-z]{3,}-[a-z]{3,}\b", summary.lower())):
+        if compound in haystack:
+            continue
+        # A compound is NOT a coinage when both halves are present in the
+        # inputs: "client-side" against a source saying "client-side
+        # interactions", or "cross-viewport" against "across viewport sizes",
+        # is ordinary standard terminology. Requiring the exact hyphenated
+        # string flagged those as inventions, which would fire on almost every
+        # resume and train the reader to ignore the report.
+        #
+        # "pixel-conscious" still flags, because "conscious" appears nowhere -
+        # it was assembled from the JD's "pixel-perfect" to imply design work
+        # the resume never evidences. That is the failure worth reporting.
+        left, right = compound.split("-", 1)
+        halves_present = all(
+            re.search(r"(?<![\w-])" + re.escape(half) + r"(?![\w-])", haystack)
+            for half in (left, right)
+        )
+        if halves_present:
+            continue
+        coined.append(compound)
+    parsed["coined_terms"] = sorted(coined)
+    return parsed
+
+
+def report_verb_inflation(parsed: dict, resume_string: str) -> dict:
+    """Rewrites that promote an observational verb into an ownership verb.
+
+    "Studied the paint manufacturing process, gaining hands-on exposure"
+    becoming "Mapped the end-to-end paint manufacturing process ... and
+    produced a technical report" converts a one-month observational internship
+    into project ownership. Nothing numeric changed, so the fact checks stay
+    silent; only the verb moved, and the verb is the claim.
+
+    Reports on parsed["verb_inflation"]; never rewrites, because choosing a
+    replacement verb is exactly the judgement that produced the problem.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+
+    section_lines = _restore_section_lines(resume_string)
+    findings: list[dict] = []
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+
+        for e, ident in zip(entries, identifiers):
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+            if not cands:
+                continue
+            source_blob = " ".join(cands).lower()
+            # Only entries whose ORIGINAL language is observational qualify.
+            passive_hits = [v for v in _PASSIVE_SOURCE_VERBS if re.search(
+                r"(?<![\w-])" + re.escape(v) + r"(?![\w-])", source_blob)]
+            if not passive_hits:
+                continue
+            for bullet in (e.get("bullets") or []):
+                low = str(bullet or "").lower()
+                promoted = [v for v in _ACTIVE_CLAIM_VERBS if re.search(
+                    r"(?<![\w-])" + re.escape(v) + r"(?![\w-])", low)]
+                if not promoted:
+                    continue
+                # If the original already used that active verb, no inflation.
+                promoted = [v for v in promoted if not re.search(
+                    r"(?<![\w-])" + re.escape(v) + r"(?![\w-])", source_blob)]
+                if promoted:
+                    findings.append({
+                        "section": parsed_key,
+                        "entry": str(ident),
+                        "source_verbs": passive_hits[:4],
+                        "promoted_to": promoted[:4],
+                        "bullet": str(bullet)[:160],
+                    })
+
+    parsed["verb_inflation"] = findings
+    return parsed
+
+
+def report_new_claims(parsed: dict, resume_string: str) -> dict:
+    """Flag rewritten bullets that assert something the source never said.
+
+    enforce_bullet_facts() checks the opposite direction - whether a rewrite
+    LOST the original's facts - and factcheck_against_original() checks
+    employers, schools, years and numbers. Neither sees the failure mode that
+    matters most here: a bullet that keeps every source fact and then appends a
+    plausible PURPOSE for it.
+
+        source: "Evaluated LLM conversations to assess correctness of tool
+                 usage, API calls, and reasoning flow."
+        output: "... producing annotation guidance that improved label
+                 consistency for downstream model training."
+
+    Every word is credible, nothing is contradicted, and the candidate cannot
+    defend it in an interview because it did not happen. The tell is a trailing
+    clause built around an outcome verb whose content words are absent from the
+    matched original.
+
+    Reports on parsed["new_claims"]; deletes nothing, because a false positive
+    that silently removed a genuine outcome would be the worse failure.
+    """
+    if not isinstance(parsed, dict) or not resume_string:
+        return parsed
+
+    section_lines = _restore_section_lines(resume_string)
+    findings: list[dict] = []
+    plan = (
+        ("experience", "experience", ("company", "title")),
+        ("projects", "projects", ("name",)),
+        ("extracurricular", "extracurriculars", ("role", "organization")),
+    )
+    for heading_section, parsed_key, id_fields in plan:
+        entries = [e for e in (parsed.get(parsed_key) or []) if isinstance(e, dict)]
+        if not entries:
+            continue
+        identifiers = []
+        for e in entries:
+            vals = [str(e.get(f, "")).strip() for f in id_fields if str(e.get(f, "")).strip()]
+            identifiers.append(max(vals, key=len) if vals else "")
+        orig = _original_entry_candidates(section_lines, heading_section, identifiers)
+
+        for e, ident in zip(entries, identifiers):
+            cands = _entry_original_bullets(orig.get(ident), e, entries, id_fields)
+            if not cands:
+                continue
+            source_tokens: set[str] = set()
+            for c in cands:
+                source_tokens |= _restore_tokens(c)
+
+            for bullet in (e.get("bullets") or []):
+                text = str(bullet or "").strip()
+                if not text:
+                    continue
+                # Appended purpose lands in one of several shapes, and an
+                # earlier version only matched ", <verb>ing". Real output used
+                # em-dashes ("- and fed findings back to improve...") and bare
+                # infinitives ("to support supply-chain improvements"), so
+                # every genuine fabrication slipped past. Split on all of them.
+                # Novel NOUNS anywhere in the bullet, not only in a trailing
+                # clause. A real run added "control points", "gaps" and
+                # "failure modes" mid-sentence across three consecutive
+                # bullets; each is a concrete artifact the source never names,
+                # and the clause-splitter below never looked at them because
+                # they are not appended purposes.
+                bullet_nouns = {
+                    t for t in re.findall(r"[a-z]{5,}", text.lower())
+                    if t not in _CLAIM_NOUN_STOPWORDS
+                    # Verbs are report_verb_inflation's job. Listing them here
+                    # too produced a findings list where the real signals
+                    # ("shopfloor", "failure modes") were buried among
+                    # "mapped"/"assessed"/"compiled", which trains a reader to
+                    # ignore the report.
+                    and t not in _ACTIVE_CLAIM_VERBS
+                    and t not in _PASSIVE_SOURCE_VERBS
+                    and not t.endswith("ing")
+                }
+                novel_nouns = sorted(bullet_nouns - source_tokens)
+                if novel_nouns:
+                    findings.append({
+                        "section": parsed_key,
+                        "entry": str(ident),
+                        "clause": "(novel terms in bullet)",
+                        "novel_terms": novel_nouns[:8],
+                    })
+
+                for clause in _purpose_clauses(text):
+                    if not _CLAIM_VERB_RE.search(clause):
+                        continue
+                    clause_tokens = _restore_tokens(clause)
+                    if len(clause_tokens) < 2:
+                        continue
+                    novel = clause_tokens - source_tokens
+                    # Most of the clause's content absent from every source
+                    # bullet for this entry means the claim was introduced.
+                    if len(novel) / len(clause_tokens) >= 0.6:
+                        findings.append({
+                            "section": parsed_key,
+                            "entry": str(ident),
+                            "clause": clause,
+                            "novel_terms": sorted(novel)[:8],
+                        })
+
+    parsed["new_claims"] = findings
+    return parsed
+
+
+def dedupe_overlapping_bullets(parsed: dict) -> dict:
+    """Remove bullets whose content is already carried by another bullet.
+
+    A real run returned a Resume Analyzer entry whose first bullet had swallowed
+    all three source bullets into one paragraph, followed by two more bullets
+    restating the second and third individually - so the reader met the same
+    content twice. Neither restore_dropped_bullets() nor enforce_bullet_facts()
+    catches this: both reason about whether facts SURVIVED, and here they
+    survived twice.
+
+    Conservative by construction. A bullet is dropped only when another bullet
+    in the same entry already contains nearly all of its content words, and the
+    LONGER bullet is the one kept only if it is not itself a merge of several
+    others - otherwise the merged paragraph wins and the individual sentences,
+    which read better, would be lost. Never drops the only bullet in an entry.
+    """
+    if not isinstance(parsed, dict):
+        return parsed
+
+    def _content(text: str) -> set[str]:
+        return {t for t in re.findall(r"[a-z0-9]+", str(text or "").lower()) if len(t) > 3}
+
+    for section in ("experience", "projects", "extracurriculars"):
+        for entry in (parsed.get(section) or []):
+            if not isinstance(entry, dict):
+                continue
+            bullets = [str(b).strip() for b in (entry.get("bullets") or []) if str(b).strip()]
+            if len(bullets) < 2:
+                continue
+
+            # Sentence-level first: a long bullet can absorb ONE clause from
+            # another long bullet without whole-bullet containment coming
+            # close to firing. Berger's B1 gained "produced a technical report
+            # with process-flow analysis and improvement recommendations"
+            # while B3 kept "compiled key insights into a comprehensive
+            # technical report, and recommended process and quality-control
+            # changes" - the same claim twice, and whole-bullet overlap was
+            # nowhere near any sensible threshold.
+            # Compare on SHARED NOUN-PHRASE ANCHORS, not on clause token
+            # overlap. Two earlier attempts failed on the same real pair:
+            #   B1 "...produced a technical report with process-flow analysis
+            #       and improvement recommendations"
+            #   B3 "...compiled key insights into a comprehensive technical
+            #       report, and recommended process and quality-control changes"
+            # These restate one claim while sharing only a handful of tokens,
+            # so every ratio-over-a-clause measure stayed far below threshold.
+            # What actually repeats is the artifact ("technical report") plus
+            # an action on it ("recommend"), and that is what to look for.
+            def _anchors(text: str) -> set:
+                low = str(text or "").lower()
+                found = set()
+                # Two-word noun phrases, plus stemmed action verbs.
+                words = re.findall(r"[a-z]{4,}", low)
+                for i in range(len(words) - 1):
+                    found.add(words[i] + " " + words[i + 1])
+                for w in words:
+                    found.add(re.sub(r"(ations?|ed|ing|s)$", "", w))
+                return found
+
+            anchor_sets = [_anchors(b) for b in bullets]
+            repeated_clauses: list[str] = []
+            for a in range(len(bullets)):
+                for b in range(a + 1, len(bullets)):
+                    shared_phrases = {
+                        p for p in (anchor_sets[a] & anchor_sets[b]) if " " in p
+                    }
+                    if shared_phrases:
+                        repeated_clauses.extend(sorted(shared_phrases)[:4])
+            if repeated_clauses:
+                entry["duplicate_clauses"] = repeated_clauses[:6]
+
+            toks = [_content(b) for b in bullets]
+            drop: set[int] = set()
+            for i in range(len(bullets)):
+                if i in drop or not toks[i]:
+                    continue
+                for j in range(len(bullets)):
+                    if i == j or j in drop or not toks[j]:
+                        continue
+                    # j's content is essentially contained in i.
+                    #
+                    # 0.7, not 0.85: the duplicate is usually a REWRITE of the
+                    # sentence the merged paragraph swallowed, not a copy of
+                    # it. "Extracted ... via advanced NLP" against "Extracted
+                    # ... using advanced NLP" shares most content words but not
+                    # nearly all, so a tighter threshold missed every real
+                    # instance. Below 0.7 genuinely distinct bullets in one
+                    # entry start matching, because they share the project's
+                    # vocabulary.
+                    covered = len(toks[i] & toks[j]) / len(toks[j])
+                    if covered < 0.70:
+                        continue
+                    # Prefer keeping the SHORTER, single-idea bullet: the long
+                    # one is usually the merged paragraph, and splitting reads
+                    # better than a wall of three sentences.
+                    if len(bullets[i]) > len(bullets[j]) * 1.6:
+                        drop.add(i)
+                    else:
+                        drop.add(j)
+            if drop and len(drop) < len(bullets):
+                entry["bullets"] = [b for k, b in enumerate(bullets) if k not in drop]
+                entry["bullets_deduped"] = len(drop)
+    return parsed
 
 
 def enforce_bullet_facts(parsed: dict, resume_string: str) -> dict:
@@ -4395,13 +4857,21 @@ def group_skills(skills: list[str]) -> list[str]:
         return keys
 
     def add_unique(bucket: list[str], value: str):
-        # Alias-aware, so "NLP" and "Natural Language Processing (NLP)" do not
-        # both appear. First form seen wins.
         if not value:
             return
-        keys = skill_keys(value)
-        if any(keys & skill_keys(existing) for existing in bucket):
-            return
+        # Two checks, because each catches what the other misses:
+        #  - canonical_skill_key: one skill under two spellings ("HTML, CSS,
+        #    CSS3, HTML5"), so a version suffix or parenthetical qualifier
+        #    cannot reintroduce a pair sanitize_resume_data already collapsed.
+        #  - skill_keys: a full name and its acronym ("NLP" vs "Natural
+        #    Language Processing (NLP)"); canonical_skill_key drops the
+        #    parenthetical, so it never sees that the two are the same.
+        key = canonical_skill_key(value)
+        aliases = skill_keys(value)
+        for i, existing in enumerate(bucket):
+            if canonical_skill_key(existing) == key or aliases & skill_keys(existing):
+                bucket[i] = _preferred_skill_spelling(existing, value)
+                return
         bucket.append(value)
 
     # Delegates to functions.py's canonical, actively-maintained atomicity
@@ -11377,6 +11847,37 @@ async def _optimize_resume_core(
     # lists that made it worth reading. Preserve first, rewrite second - and
     # enforce it here rather than trusting the model to have obeyed.
     parsed = enforce_bullet_facts(parsed, resume_string)
+
+    # Runs last of the bullet passes: restore_dropped_bullets() and
+    # enforce_bullet_facts() can each put an original back, and neither checks
+    # whether its content is already carried by a bullet that merged several
+    # originals into one paragraph. That is how the same content shipped twice
+    # in one entry on a real resume.
+    parsed = dedupe_overlapping_bullets(parsed)
+
+    # Appended-purpose fabrication: a bullet that keeps every source fact and
+    # then states a plausible reason for it that the resume never claimed.
+    # Reported rather than stripped - see report_new_claims' docstring.
+    parsed = report_new_claims(parsed, resume_string)
+
+    # Observational source verbs promoted into ownership verbs. Same class of
+    # indefensible claim as an invented outcome, and invisible to every fact
+    # check because only the verb moved.
+    parsed = report_verb_inflation(parsed, resume_string)
+
+    # Metrics re-pointed at a different subject, and compound adjectives
+    # invented from JD vocabulary. Both keep every number and word traceable
+    # to an input while changing what is actually being claimed.
+    parsed = report_metric_reframing(parsed, resume_string)
+    parsed = report_coined_terms(parsed, resume_string, jd_string)
+
+    # What this JD asks for that the resume cannot evidence. Surfaced rather
+    # than silently written around: on a large gap the honest output is a
+    # report, not prose implying coverage the candidate would have to defend.
+    try:
+        parsed["jd_gap_report"] = build_jd_gap_report(jd_string, resume_string)
+    except Exception:
+        pass
 
     # OPTIMIZATION: Removed duplicate process_resume() call that was making a second OpenAI API call
     # The AI response already contains the optimized data - no need to re-extract original data
