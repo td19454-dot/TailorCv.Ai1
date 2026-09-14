@@ -1321,6 +1321,28 @@ def test_prompt_and_validator_share_one_banned_list():
         assert phrase in prompt, f"{phrase!r} missing from the prompt's banned list"
 
 
+def test_bare_proficiency_words_are_not_skills():
+    """A split like "..., proficient, HTML/CSS" left a bare level word behind,
+    and the Skills section rendered "proficient" as a skill."""
+    from functions import _is_atomic_hard_skill
+    for word in ("proficient", "Proficient", "experienced", "expert", "advanced",
+                 "intermediate", "beginner", "working knowledge", "hands-on", "fluent"):
+        assert not _is_atomic_hard_skill(word), word
+    # Only an item made ENTIRELY of level words is rejected.
+    for skill in ("Advanced Excel", "Python", "PostgreSQL"):
+        assert _is_atomic_hard_skill(skill), skill
+
+
+def test_proficiency_prefixes_are_stripped():
+    from functions import _strip_skill_qualifiers
+    assert _strip_skill_qualifiers("proficient in Python") == "Python"
+    assert _strip_skill_qualifiers("familiar with Docker") == "Docker"
+    assert _strip_skill_qualifiers("experienced with Kubernetes") == "Kubernetes"
+    assert _strip_skill_qualifiers("working knowledge of SQL") == "SQL"
+    assert _strip_skill_qualifiers("hands-on experience with AWS") == "AWS"
+    assert _strip_skill_qualifiers("expert in React") == "React"
+
+
 def main() -> int:
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     passed = 0
