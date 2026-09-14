@@ -1,7 +1,10 @@
+import logging
+
 from dotenv import load_dotenv
 from email_service import send_email
 
 load_dotenv()
+logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
 recipients = [
     "supersarkar804@gmail.com",
@@ -12,8 +15,14 @@ recipients = [
 ]
 
 for recipient in recipients:
-    send_email(
-        recipient_email=recipient,
-        subject="Hello from TailorCV",
-        html_body="<p>Hi! This is a test email from TailorCV.</p>",
-    )
+    try:
+        send_email(
+            recipient_email=recipient,
+            subject="Hello from TailorCV",
+            html_body="<p>Hi! This is a test email from TailorCV.</p>",
+        )
+        print(f"Accepted by SMTP server: {recipient}")
+    except Exception as exc:
+        print(f"Failed for {recipient}: {exc}")
+
+print("Done")

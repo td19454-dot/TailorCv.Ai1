@@ -86,7 +86,9 @@ def send_email(
         with smtp_factory(config.host, config.port, timeout=30) as smtp:
             smtp.starttls()
             smtp.login(config.username, config.password)
-            smtp.send_message(message)
+            refused = smtp.send_message(message)
+            if refused:
+                raise smtplib.SMTPRecipientsRefused(refused)
     except smtplib.SMTPException:
         logger.exception("SMTP email send failed for recipient=%s subject=%r", recipient_email, subject)
         raise
