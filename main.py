@@ -4686,7 +4686,41 @@ def group_skills(skills: list[str]) -> list[str]:
             if item.strip():
                 place(item, fallback)
 
-    return [f"{label}: {', '.join(items)}" for label, items in grouped.items() if items]
+    # A category header must name something a recruiter can screen for. A row
+    # built ONLY out of category-shaped phrases announces an area of work and
+    # nothing ownable: "Data & Analytics: Data Analysis" rendered a whole
+    # header from one generic phrase while GA4 and PostHog sat unextracted in a
+    # bullet one line away. Those items fold into "Other Technical Skills",
+    # where they read as the leftovers they are.
+    #
+    # Row SIZE is deliberately not part of this test. A one-item row is normal
+    # and correct - plenty of resumes list exactly one language or one
+    # database - and demoting on count buried Python and FastAPI under "Other"
+    # on a backend resume, which is far worse than the thin row it was meant to
+    # tidy. Thin rows like "Cloud & DevOps: Netlify" are a RELEVANCE signal for
+    # the ATS gap report, not a rendering fault.
+    #
+    # Nothing is ever dropped: every item the candidate listed still renders.
+    anchored: dict[str, list[str]] = {}
+    demoted: list[str] = []
+    for label, items in grouped.items():
+        if not items:
+            continue
+        if label == skillcat.OTHER or any(
+            not skillcat.is_generic_phrase(i) for i in items
+        ):
+            anchored.setdefault(label, []).extend(items)
+        else:
+            demoted.extend(items)
+
+    if demoted:
+        anchored.setdefault(skillcat.OTHER, []).extend(demoted)
+
+    return [
+        f"{label}: {', '.join(anchored[label])}"
+        for label in skillcat.CATEGORY_ORDER
+        if anchored.get(label)
+    ]
 
 
 def _link_identity(href: str) -> str:
@@ -11751,6 +11785,44 @@ async def _optimize_resume_core(
             v = str(v or "").strip().lower()
             return v.startswith(("http://", "https://")) or ("." in v and " " not in v)
 
+        async def _reserve_certification_links(parsed_doc, pdf_path, used):
+            """Hold back the links that belong to the Certifications section.
+
+            Returns the set of cert-section URLs not already placed, after
+            adding them to `used` so the experience/education passes cannot
+            claim them. The caller releases them again once those passes have
+            run, so the certifications reading-order fill below can still
+            assign them.
+
+            Without this, a credential whose anchor text names its issuing
+            employer loses the link to that employer's Experience entry: the
+            cert name match fails ("Internship Trainee Certificate, Berger
+            Paints" vs the annotation text), then experience matches on
+            `company` and `section_used` makes the URL exclusive. The
+            certification is left unverifiable in the one section a recruiter
+            checks credentials in.
+            """
+            cert_items = [
+                i for i in (parsed_doc.get("certifications") or [])
+                if isinstance(i, dict)
+            ]
+            if not cert_items:
+                return set()
+            if all(_real(str(i.get("url", "") or "")) for i in cert_items):
+                return set()
+            try:
+                cert_urls = await asyncio.to_thread(
+                    extract_section_annotation_links, pdf_path, "certifications"
+                ) or []
+            except Exception:
+                return set()
+            reserved = {
+                str(u).lower() for u in cert_urls
+                if u and str(u).lower() not in used
+            }
+            used.update(reserved)
+            return reserved
+
         async def _match_entry_links(section_key, id_fields, field, use_above):
             """Assign each entry's link using two position-correct matchers:
             (1) text under the link rectangle (column-aware) and, optionally,
@@ -11809,8 +11881,24 @@ async def _optimize_resume_core(
 
         # Certifications use text-under-rect only (2-column safe). Experience and
         # education also use nearest-title-above to recover icon-style links.
+        #
+        # Certifications run FIRST and get a second pass (reading-order fill,
+        # below) before experience is matched at all. A credential URL whose
+        # anchor text names the issuing employer - "Internship Trainee
+        # Certificate, Berger Paints" - failed the cert name match, and then
+        # the experience pass claimed it on `company` == "Berger Paints".
+        # `section_used` makes that exclusive, so the certification was left
+        # with NO link: a recruiter scanning the credentials section could not
+        # verify the credential from where credentials live.
+        #
+        # _reserve_certification_links holds back any section link that belongs
+        # to a certification, so the experience pass can no longer take it.
         await _match_entry_links("certifications", ("name",), "url", use_above=False)
+        reserved_cert_urls = await _reserve_certification_links(
+            parsed, file_path, section_used
+        )
         await _match_entry_links("experience", ("company", "title"), "url", use_above=True)
+        section_used.difference_update(reserved_cert_urls)
         await _match_entry_links("education", ("school", "degree"), "links", use_above=True)
 
         # Unambiguous-only position fallback for experience/education: fill a

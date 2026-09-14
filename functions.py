@@ -1591,6 +1591,104 @@ _SKILL_CANONICAL_FORMS = {
     "rest api": "rest apis", "restful api": "rest apis", "restful apis": "rest apis",
 }
 
+# Misspellings that reach us from real resumes. Kept in the SAME table as the
+# casing and spacing variants deliberately: a typo and a spelling variant are
+# the same problem - two strings naming one skill - and splitting them across
+# two passes is how "Panda" ended up on a different row from "Pandas".
+_SKILL_TYPO_FORMS = {
+    "matpotlib": "matplotlib", "matplotlb": "matplotlib", "matploltib": "matplotlib",
+    "panda": "pandas", "numpny": "numpy", "nunpy": "numpy",
+    "javascripts": "javascript", "pythone": "python", "phyton": "python",
+    "postgressql": "postgresql", "mongo db": "mongodb", "mongdb": "mongodb",
+    "kubernets": "kubernetes", "dokcer": "docker", "githib": "github",
+    "tensorflw": "tensorflow", "sciket-learn": "scikit-learn",
+}
+
+
+def correct_skill_spelling(skill: str) -> str:
+    """Fix a KNOWN misspelling of a skill's name, preserving anything else.
+
+    Dedup alone cannot fix a lone typo: "Panda" collapses onto "Pandas" only
+    because both spellings were present to merge. A resume carrying just
+    "Matpotlib" has nothing to merge into, so the misspelling renders on the
+    finished PDF - the candidate's own typo, now laundered through our
+    optimizer and shipped to a recruiter.
+
+    ONLY spellings in _SKILL_TYPO_FORMS are touched, and the correction keeps
+    the candidate's capitalisation style where it is unambiguous. Anything not
+    in that table is returned exactly as written: this must never "correct" a
+    real name we simply do not know.
+    """
+    text = str(skill or "").strip()
+    if not text:
+        return text
+    norm = re.sub(r"\s+", " ", text.lower())
+    target = _SKILL_TYPO_FORMS.get(norm)
+    if not target:
+        target = _SKILL_TYPO_FORMS.get(re.sub(r"[^a-z0-9+#]", "", norm))
+    if not target:
+        return text
+    # Render the corrected name the way the vocabulary spells it, which is the
+    # conventional casing a recruiter expects ("Matplotlib", not "matpotlib").
+    return _SKILL_DISPLAY_FORMS.get(target, target)
+
+
+# Conventional display spelling for the names correct_skill_spelling() emits.
+# Without this a corrected skill would render in the table's lowercase key.
+_SKILL_DISPLAY_FORMS = {
+    "matplotlib": "Matplotlib", "pandas": "Pandas", "numpy": "NumPy",
+    "javascript": "JavaScript", "python": "Python", "postgresql": "PostgreSQL",
+    "mongodb": "MongoDB", "kubernetes": "Kubernetes", "docker": "Docker",
+    "github": "GitHub", "tensorflow": "TensorFlow", "scikit-learn": "scikit-learn",
+    # Casing the candidate commonly writes casually. A resume that said
+    # "Power Bi", "Mysql", "Postgresql" and "Html" beat the conventional
+    # spelling in _preferred_skill_spelling(), because both forms have a
+    # capital and the tiebreak then fell through to length and arrival order -
+    # so which spelling shipped was luck.
+    "powerbi": "Power BI", "mysql": "MySQL", "html": "HTML", "css": "CSS",
+    "sql": "SQL", "seaborn": "Seaborn", "fastapi": "FastAPI", "mssql": "MS SQL",
+    "sqlite": "SQLite", "nodejs": "Node.js", "node.js": "Node.js",
+    "restapis": "REST APIs", "rest apis": "REST APIs", "graphql": "GraphQL",
+    "openai": "OpenAI", "langchain": "LangChain", "pytorch": "PyTorch",
+    "keras": "Keras", "opencv": "OpenCV", "aws": "AWS", "gcp": "GCP",
+}
+
+
+def _conventional_spelling(value: str) -> str | None:
+    """The vocabulary's own spelling of this skill, if it has one."""
+    key = _dedupe_skill_key(value)
+    return _SKILL_DISPLAY_FORMS.get(key) if key else None
+
+
+def _dedupe_skill_key(skill: str) -> str:
+    """Space- and punctuation-insensitive identity for DEDUPING skills only.
+
+    Deliberately NOT folded into canonical_skill_key(): that key is fed
+    straight into skill_categories.TERM_INDEX, whose keys keep their spaces
+    ("machine learning", "power bi", "rest api"). Stripping spaces there would
+    stop every multi-word skill from matching its category and silently
+    mis-file it - a much larger bug than the duplicates this fixes.
+
+    Collapsing separators is what catches the pairs raw-lowercase dedup missed
+    on a real resume: "FastAPI"/"Fast Api", "JavaScript"/"Java Script",
+    "Pandas"/"Panda", "Matplotlib"/"Matpotlib" - all of which shipped twice on
+    the same Skills line. The "Java Script" case is the worst of them: it also
+    let the fabrication guard read a bare "Java" as candidate-claimed.
+    """
+    base = canonical_skill_key(skill)
+    if not base:
+        return ""
+    collapsed = re.sub(r"[^a-z0-9+#]", "", base)
+    if not collapsed:
+        return base
+    # Re-check both tables against the collapsed form, so "fast api" and
+    # "Matpotlib" resolve even though neither is a key in its spaced spelling.
+    collapsed = _SKILL_TYPO_FORMS.get(collapsed, collapsed)
+    canonical = _SKILL_CANONICAL_FORMS.get(collapsed)
+    if canonical:
+        collapsed = re.sub(r"[^a-z0-9+#]", "", canonical) or collapsed
+    return collapsed
+
 
 def canonical_skill_key(skill: str) -> str:
     """Identity key for deduping skills that are the same thing spelled twice.
@@ -1606,6 +1704,7 @@ def canonical_skill_key(skill: str) -> str:
         return ""
     s = re.sub(r"\s*\([^)]*\)\s*$", "", s).strip()   # drop "(ES6+)", "(advanced)"
     s = re.sub(r"\s+", " ", s)
+    s = _SKILL_TYPO_FORMS.get(s, s)
     if s in _SKILL_CANONICAL_FORMS:
         return _SKILL_CANONICAL_FORMS[s]
     # A bare trailing version number on a real base name: html5, css3, vue3.
@@ -1629,12 +1728,31 @@ def _preferred_skill_spelling(existing: str, candidate: str) -> str:
     if not b:
         return a
 
+    def _is_misspelling(x: str) -> bool:
+        """Whether this spelling only resolves via the typo table."""
+        norm = re.sub(r"\s+", " ", x.strip().lower())
+        if norm in _SKILL_TYPO_FORMS:
+            return True
+        return re.sub(r"[^a-z0-9+#]", "", norm) in _SKILL_TYPO_FORMS
+
     def score(x: str) -> tuple:
         return (
+            # The vocabulary's own spelling wins outright. Ranked first because
+            # every later test treats "Power Bi" and "Power BI" as equals - both
+            # have a capital, neither has a parenthetical or version digit - so
+            # the winner fell through to length and arrival order. The resume
+            # then displayed "Mysql", "Postgresql" and "Html" whenever the
+            # candidate's casual casing happened to arrive first.
+            _conventional_spelling(x) == x.strip(),
             any(c.isupper() for c in x),        # conventional capitals
             not x.islower(),
             "(" not in x,                        # no parenthetical qualifier
             not bool(re.search(r"\d\+?$", x)),   # no trailing version digit
+            # A known spelling beats a misspelling. Ranked ABOVE length because
+            # the length tiebreak picks the shorter string, and a typo is often
+            # shorter than the real name - "Panda" beat "Pandas", so the resume
+            # displayed the misspelling and the correct spelling was discarded.
+            not _is_misspelling(x),
             -len(x),
         )
 
@@ -1705,12 +1823,46 @@ def _explode_skill_phrase(value: str) -> list[str]:
 
 
 def _contains_skill(text: str, skill: str) -> bool:
-    """Match a skill without treating short names such as R or Go as substrings."""
-    return bool(re.search(
-        rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])',
-        text,
-        re.IGNORECASE,
-    ))
+    """Match a skill without treating short names such as R or Go as substrings.
+
+    The word-boundary class stops at a space, so a multi-word skill on the
+    resume's own skills line satisfies a query for its first word: "Java Script"
+    (a real typo for JavaScript) answered "Java". A Java the model had lifted
+    from the JD's "Python, Java, Go, or Node.js" therefore read as evidenced on
+    a resume that never said Java, and shipped into a skills line the candidate
+    would have had to defend in a screening call.
+
+    So a match that lands inside a LISTED skill has to agree with that whole
+    item, not just its first word. Matches in prose are untouched - a bullet
+    saying "built services in Java" is genuine evidence, and that is the case
+    this function exists to catch.
+    """
+    pattern = rf'(?<![A-Za-z0-9]){re.escape(skill)}(?![A-Za-z0-9])'
+    if not re.search(pattern, text, re.IGNORECASE):
+        return False
+
+    # Only the skills section can produce the false positive above; prose has
+    # no comma-separated items to be a prefix of.
+    listed = _extract_source_skill_list(text)
+    if not listed:
+        return True
+
+    key = _dedupe_skill_key(skill)
+    for item in listed:
+        if _dedupe_skill_key(item) == key:
+            return True          # listed under a spelling of this exact skill
+
+    # Not listed. It still counts if it appears anywhere OUTSIDE the skills
+    # items - i.e. in real prose - so strip those items out and re-check.
+    remainder = text
+    for item in listed:
+        remainder = re.sub(
+            rf'(?<![A-Za-z0-9]){re.escape(item)}(?![A-Za-z0-9])',
+            " ",
+            remainder,
+            flags=re.IGNORECASE,
+        )
+    return bool(re.search(pattern, remainder, re.IGNORECASE))
 
 
 def _extract_hard_skills_from_jd(jd_string: str) -> list[str]:
@@ -1836,12 +1988,37 @@ def _skill_in_source_resume(resume_evidence: str, skill: str) -> bool:
     whether a named technology appears in a skills list. "Flask" and "Django"
     sitting on the resume's own Technical Skills line are claimed by the
     candidate, and no retention rule should ever remove them.
+
+    Compared against the resume's own PARSED skill list, not a regex over the
+    raw document. A word-boundary regex matches inside a neighbouring skill: a
+    resume whose Skills line read "Java Script" (a real typo, for JavaScript)
+    matched a bare "Java", so a Java the MODEL invented from the JD's "Python,
+    Java, Go, or Node.js" was judged candidate-claimed, skipped the strip at
+    the JD loop below, and shipped. The candidate had never written Java.
+
+    Falls back to the old boundary regex only when the resume has no parseable
+    skills section - with nothing to compare against, keeping the previous
+    behaviour is safer than retaining nothing.
     """
-    text = str(resume_evidence or "").lower()
-    name = str(skill or "").strip().lower()
-    if not text or not name:
+    text = str(resume_evidence or "")
+    name = str(skill or "").strip()
+    if not text.strip() or not name:
         return False
-    return re.search(r"(?<![\w-])" + re.escape(name) + r"(?![\w-])", text) is not None
+
+    key = _dedupe_skill_key(name)
+    source_skills = _extract_source_skill_list(text)
+    if source_skills:
+        if key and any(_dedupe_skill_key(s) == key for s in source_skills):
+            return True
+        # A multi-word skill ("Machine Learning") may be written as prose in
+        # the skills line rather than as its own comma-separated item, so a
+        # miss above is not proof of absence for those.
+        if " " not in name:
+            return False
+
+    return re.search(
+        r"(?<![\w-])" + re.escape(name.lower()) + r"(?![\w-])", text.lower()
+    ) is not None
 
 
 def inject_jd_hard_skills(
@@ -1915,7 +2092,22 @@ def inject_jd_hard_skills(
         # auto_add (the Chrome extension) deliberately skips this: there is no
         # dialog to ask through there, and adding everything is the chosen
         # behaviour for that surface.
-        if resume_evidence and not auto_add and not _contains_skill(resume_evidence, skill):
+        #
+        # Evidence is judged by BOTH checks, and a skill needs only one of them.
+        # _contains_skill alone was not enough: it is a boundary regex over the
+        # raw document, so "\bjava\b" matched inside the source's "Java Script"
+        # typo and a Java the model had lifted from the JD cleared this filter
+        # as though the candidate had written it. _skill_in_source_resume
+        # compares against the resume's own PARSED skills, where "Java Script"
+        # is one item named JavaScript and yields no Java at all. Keeping both
+        # preserves prose evidence (a skill demonstrated in a bullet but absent
+        # from the skills line) while closing the substring hole.
+        if (
+            resume_evidence
+            and not auto_add
+            and not _skill_in_source_resume(resume_evidence, skill)
+            and not _contains_skill(resume_evidence, skill)
+        ):
             unevidenced_claims.append(skill)
             continue
         seen_lower.add(key)
@@ -2110,14 +2302,21 @@ def inject_jd_hard_skills(
         # term, and CI/CD, Linux, EC2, S3 and ECS went with them. A skill the
         # candidate wrote down needs no permission from the posting to stay on
         # his own resume; the JD decides ORDER, not existence.
-        dropped = [s for s in source_skills if s.strip().lower() not in present]
+        # Keyed on _dedupe_skill_key, not the raw lowercase string. Raw keys let
+        # a source spelling come back alongside the normalized one already in
+        # the list - "Fast Api" restored next to "FastAPI", "Panda" next to
+        # "Pandas" - which is how both spellings reached one Frameworks row.
+        present_keys = {_dedupe_skill_key(s) for s in cleaned_skills}
+        present_keys.discard("")
+        dropped = [s for s in source_skills if _dedupe_skill_key(s) not in present_keys]
         restored = list(dropped)
         restored.sort(key=lambda s: (_jd_rank(s) < 0, _jd_rank(s) if _jd_rank(s) >= 0 else 0))
         for skill in restored:
-            key = skill.strip().lower()
-            if key in present:
+            key = _dedupe_skill_key(skill)
+            if not key or key in present_keys:
                 continue
-            present.add(key)
+            present_keys.add(key)
+            present.add(skill.strip().lower())
             cleaned_skills.append(skill)
 
         # Everything else the model dropped is surfaced rather than silently
@@ -3641,12 +3840,22 @@ def sanitize_resume_data(data: dict) -> dict:
         # treated "HTML" and "HTML5" as different skills, so both shipped on
         # one Languages row - along with CSS/CSS3, JavaScript/JavaScript
         # (ES6+) and PostgreSQL/postgres sql.
+        #
+        # _dedupe_skill_key rather than canonical_skill_key: the canonical key
+        # keeps spaces (TERM_INDEX needs them), so it still read "FastAPI" and
+        # "Fast Api" as two skills - and they shipped on one Frameworks row
+        # together, alongside Pandas/Panda and JavaScript/Java Script.
         seen: dict[str, int] = {}
         for raw in skills:
             s = _clean_inline_text(raw)
             if not _is_atomic_hard_skill(s):
                 continue
-            key = canonical_skill_key(s)
+            # A known misspelling is corrected before it is keyed, so a resume
+            # carrying ONLY "Matpotlib" still renders "Matplotlib". Dedup alone
+            # cannot do this - it collapses "Panda" onto "Pandas" only when
+            # both are present, and a lone typo has nothing to merge into.
+            s = correct_skill_spelling(s)
+            key = _dedupe_skill_key(s)
             if not key:
                 continue
             if key in seen:
