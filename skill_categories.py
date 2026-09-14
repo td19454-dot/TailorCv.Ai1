@@ -24,7 +24,7 @@ from __future__ import annotations
 import difflib
 import re
 
-from functions import canonical_skill_key
+from functions import _dedupe_skill_key, canonical_skill_key
 
 LANGUAGES = "Languages"
 AI_ML = "AI/ML"
@@ -153,6 +153,7 @@ _FRAMEWORK_TERMS = {
     "spark", "pyspark", "spark sql", "hadoop", "mapreduce", "flink", "beam",
     "kafka streams", "dask", "ray",
     # Python backend and utilities
+    "uvicorn", "alembic", "jinja", "jinja2", "weasyprint",
     "flask", "fastapi", "django", "django rest framework", "drf",
     "sqlalchemy", "celery", "pydantic", "beautifulsoup", "beautiful soup",
     "bs4", "scrapy", "pypdf2", "pypdf", "pymupdf", "pdfplumber", "reportlab",
@@ -238,6 +239,28 @@ _TOOL_TERMS = {
     "power bi", "powerbi", "tableau", "looker", "looker studio", "qlik",
     "qlikview", "qlik sense", "quicksight", "google data studio",
     "data studio", "alteryx", "google analytics",
+    # Product analytics. Named alongside Sentry in the same resume bullet that
+    # we DID extract Sentry from - the dictionary covered observability and
+    # stopped at analytics, so GA4 and PostHog sat unextracted one line away
+    # while a "Data & Analytics" row was built out of the generic phrase
+    # "Data Analysis".
+    "ga4", "google analytics 4", "posthog", "mixpanel", "amplitude",
+    "segment", "heap", "hotjar", "matomo", "plausible", "fathom",
+    "firebase analytics", "google tag manager", "gtm",
+    # Payments. A full-stack SaaS resume is full of these and we knew none.
+    # They live under Tools & Platforms rather than a "Payments" row of their
+    # own: a two-member row is exactly the padding the renderer now rejects.
+    "razorpay", "polar", "stripe", "paypal", "paddle", "lemon squeezy",
+    "braintree", "adyen", "square", "payu", "phonepe", "cashfree",
+    "stripe connect", "stripe billing",
+    # Transactional email and messaging vendors.
+    "resend", "sendgrid", "mailgun", "postmark", "twilio", "amazon ses",
+    "aws ses", "ses", "nodemailer",
+    # Browser platform / extension work - a shipped Chrome extension is a real
+    # engineering artefact, not a soft skill.
+    "chrome extension", "chrome extensions", "browser extension",
+    "browser extensions", "chrome extension api", "manifest v3",
+    "web extensions", "webextensions",
     # Office suite and documents
     "excel", "advanced excel", "microsoft excel", "ms excel", "google sheets",
     "powerpoint", "microsoft powerpoint", "ms powerpoint", "word",
@@ -393,7 +416,53 @@ _OTHER_TECHNICAL_TERMS = {
     "blockchain", "web3", "smart contracts", "iot", "embedded systems", "mvc",
     "responsive design", "web accessibility", "wcag", "pwa",
     "progressive web apps",
+    "ats scoring", "ats optimization", "ats optimisation", "resume parsing",
+    "pdf generation", "pdf rendering", "text extraction",
+    "dom", "dom manipulation", "webhooks", "webhook", "web sockets",
+    "browser apis", "browser api", "service workers", "service worker",
+    "local storage", "localstorage", "indexeddb api", "cors",
 }
+
+
+# Real skills, but CATEGORY-SHAPED ones: they name an area of work rather than
+# a tool anyone can be asked about in a screening call. They stay on the
+# resume - a candidate who wrote "Data Analysis" meant it - but they must never
+# be the reason a category header renders. "Data & Analytics: Data Analysis"
+# announced a whole row built from one generic phrase while GA4 and PostHog sat
+# unextracted in a bullet one line away; the header made the gap louder than no
+# header would have.
+_GENERIC_PHRASE_TERMS = {
+    "data analysis", "data analytics", "machine learning", "deep learning",
+    "artificial intelligence", "data science", "business analysis",
+    "statistical analysis", "statistics", "quantitative analysis",
+    "problem solving", "problem-solving", "critical thinking",
+    "data visualization", "data visualisation", "reporting and analysis",
+    "software development", "web development", "web design",
+    "frontend development", "front-end development", "backend development",
+    "back-end development", "full stack development", "full-stack development",
+    "mobile development", "app development", "application development",
+    "programming", "coding", "software engineering", "computer science",
+    "database management", "system administration", "network administration",
+    "project management", "product management", "cloud computing",
+    "cybersecurity", "information security", "quality assurance", "testing",
+    "automation", "scripting", "debugging", "troubleshooting",
+    "data entry", "data cleaning", "research", "analytics",
+}
+
+
+def is_generic_phrase(value: str) -> bool:
+    """Whether a skill names an AREA of work rather than a nameable tool.
+
+    Used by group_skills() to decide whether a category has earned its header:
+    a row needs at least one genuinely named product, because a header built
+    only from phrases like these advertises a gap rather than a strength.
+    """
+    norm = _normalize(value)
+    if not norm:
+        return True
+    if norm in _GENERIC_PHRASE_TERMS:
+        return True
+    return canonical_skill_key(norm) in _GENERIC_PHRASE_TERMS
 
 _CATEGORY_TERMS: dict[str, set[str]] = {
     HUMAN_LANGUAGE: _HUMAN_LANGUAGE_TERMS,
