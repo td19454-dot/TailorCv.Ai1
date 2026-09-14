@@ -11,7 +11,7 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=7">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v=8">
 </head>
 
 <body>
@@ -24,6 +24,15 @@
             <section class="editor-top">
                 <h1>One Page. More Impact.</h1>
                 <p>Fine-tune font, spacing, colors, and template — then download your perfect resume.</p>
+            </section>
+
+            <!-- See what changed. Desktop only: on phones this card would sit behind the
+                 fixed bottom bar, so the bar carries its own copy (see-changes-btn-mobile). -->
+            <section class="editor-controls see-changes-card">
+                <button id="see-changes-btn" class="secondary-btn" type="button"
+                    style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
+                    🔍 See what changed
+                </button>
             </section>
 
             <!--
@@ -106,7 +115,7 @@
                         Not saved until you click save.
                     </p>
 
-                    <button id="see-changes-btn" class="secondary-btn" type="button"
+                    <button id="see-changes-btn-mobile" class="secondary-btn see-changes-mobile" type="button"
                         style="width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
                         🔍 See what changed
                     </button>
@@ -139,7 +148,7 @@
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
-    <script src="/static/optimized_editor.js?v=126"></script>
+    <script src="/static/optimized_editor.js?v=127"></script>
     <script>
     /* Page entrance: stagger control cards up, slide preview in. Start states are
        applied here (progressive enhancement) so no-JS users see everything. */

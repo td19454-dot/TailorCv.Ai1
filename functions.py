@@ -1370,11 +1370,15 @@ _HARD_SKILL_KEYWORDS_LOWER = frozenset(
 _PHRASE_QUALIFIER_RE = re.compile(
     r'^\s*(?:\d+\+?\s*years?\s+of\s+|'
     r'experience\s+(?:in|with|deploying|building|using)\s+|'
-    r'knowledge\s+of\s+|'
-    r'familiarity\s+with\s+|'
+    r'(?:(?:basic|good|solid|strong|working|in-depth|deep|advanced)\s+)?knowledge\s+of\s+|'
+    r'familiar(?:ity)?\s+with\s+|'
     r'expertise\s+in\s+|'
+    r'expert\s+(?:in|with|at)\s+|'
+    r'experienced\s+(?:in|with)\s+|'
+    r'skilled\s+(?:in|with|at)\s+|'
+    r'hands[-\s]on\s+(?:experience\s+)?(?:in|with)\s+|'
     r'strong\s+(?:experience|background)\s+(?:in|with)\s+|'
-    r'proficien(?:cy|t)\s+(?:in|with)\s+)',
+    r'proficien(?:cy|t)\s+(?:in|with|at)\s+)',
     re.IGNORECASE,
 )
 _PHRASE_DELIMITERS_RE = re.compile(r'[,;/()\[\]]|\band\b|\bor\b|\bvia\b', re.IGNORECASE)
@@ -1480,6 +1484,20 @@ _GENERIC_SKILL_STOPWORDS: set[str] = {
     "a", "an", "the", "one", "two", "more", "less", "some", "any", "several",
     "of", "or", "and", "with", "for", "in", "at", "is", "are", "to", "as",
     "such", "etc", "including", "like", "via",
+}
+
+# Proficiency labels. A resume line like "Python (proficient), HTML/CSS" or
+# "..., proficient, HTML/CSS" splits into a bare "proficient", which then
+# rendered as a skill. Only an item made ENTIRELY of these words is rejected,
+# so "Advanced Excel" and "Expert Systems" are untouched.
+_SKILL_LEVEL_WORDS: set[str] = {
+    "proficient", "proficiency", "familiar", "familiarity", "experienced",
+    "experience", "expert", "expertise", "advanced", "intermediate",
+    "beginner", "novice", "basic", "basics", "fundamentals", "fluent",
+    "fluency", "skilled", "skill", "skills", "strong", "good", "solid",
+    "working", "knowledge", "knowledgeable", "hands-on", "competent",
+    "competency", "exposure", "understanding", "mastery", "excellent",
+    "very", "highly", "level", "native", "conversational", "professional",
 }
 
 
@@ -1634,6 +1652,11 @@ def _is_atomic_hard_skill(value: str) -> bool:
     # recognised product names, and the point is that being real is not the same
     # as being a skill worth listing.
     if normalized in _NON_SKILL_PRODUCTS:
+        return False
+    level_words = re.findall(r"[a-z][a-z0-9+#.\-]*", normalized)
+    if level_words and all(
+        w in _SKILL_LEVEL_WORDS or w in _GENERIC_SKILL_STOPWORDS for w in level_words
+    ):
         return False
     if normalized in _HARD_SKILL_KEYWORDS_LOWER:
         return True

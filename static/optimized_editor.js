@@ -2585,9 +2585,12 @@ body {
             buildTemplateSwitcher();
         });
 
-        document.getElementById("see-changes-btn")?.addEventListener("click", () => {
-            showChangesModal(getPayload() || payload);
-        });
+        // Desktop: card under the page title. Phones: copy in the fixed bottom bar.
+        for (const id of ["see-changes-btn", "see-changes-btn-mobile"]) {
+            document.getElementById(id)?.addEventListener("click", () => {
+                showChangesModal(getPayload() || payload);
+            });
+        }
 
         const pulseTarget = fitGuidance || statusEl;
         pulseTarget?.addEventListener("animationend", e => {
