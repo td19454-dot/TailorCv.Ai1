@@ -425,6 +425,16 @@ header.navbar .nav-links a {
 /* ─────────────────────────────────────────────────────────────────────────────
    RESPONSIVE – MOBILE (≤900 px)
 ───────────────────────────────────────────────────────────────────────────── */
+/* "See what changed": a sidebar card under the page title on desktop; on phones
+   that card would sit behind the fixed bottom bar, so the bar has its own button.
+   !important because both buttons carry an inline display style. */
+@media (min-width: 901px) {
+    .see-changes-mobile { display: none !important; }
+}
+@media (max-width: 900px) {
+    .see-changes-card { display: none !important; }
+}
+
 @media (max-width: 900px) {
     .editor-page {
         grid-template-columns: 1fr;

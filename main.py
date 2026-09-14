@@ -77,6 +77,7 @@ from functions import (
 )
 
 from extraction import process_resume
+import skill_categories as skillcat
 from models import BlogRating, GuestAtsScan, JobApplication, PasswordResetToken, PersonalityCard, Portfolio, SavedResume, SignupVerificationCode, UsageRecord, User, WelcomeEmailLog
 from sqlalchemy.exc import IntegrityError
 from schemas import ForgotPasswordRequest, ResetPasswordRequest, SignupCodeRequest, UserLogin, UserLoginVerify, UserSignup
@@ -4600,251 +4601,36 @@ def infer_headline_from_jd(jd_string: str) -> str:
 
 
 def group_skills(skills: list[str]) -> list[str]:
-    grouped = {
-        "Languages": [],
-        "AI/ML": [],
-        "Frameworks/Libraries": [],
-        "Databases": [],
-        "Tools & Platforms": [],
-        "Cloud & DevOps": [],
-        "Networking & Protocols": [],
-        "Security & SIEM": [],
-        "Methodologies & Practices": [],
-        "Data & Analytics": [],
-        "Finance & Economics": [],
-        "Other Technical Skills": [],
-    }
+    """Group a flat or partly-labelled skills list into "Label: a, b" rows.
 
-    human_language_terms = {
-        "english", "french", "german", "spanish", "hindi", "marathi", "tamil",
-        "telugu", "kannada", "malayalam", "punjabi", "urdu", "arabic", "chinese",
-        "japanese", "korean", "italian", "portuguese", "russian"
-    }
-    language_terms = {
-        "python", "c", "c++", "java", "javascript", "typescript", "sql",
-        "html", "html5", "css", "css3", "r", "go", "rust", "php",
-        "kotlin", "swift", "scala", "perl", "ruby", "matlab", "bash",
-        "shell", "c#", "dart", "groovy", "julia", "solidity", "assembly",
-        "haskell", "elixir", "erlang", "f#", "vba", "cobol", "fortran"
-    }
-    ai_ml_terms = {
-        "machine learning", "deep learning", "generative ai", "gen ai",
-        "natural language processing", "nlp", "computer vision",
-        "reinforcement learning", "data science", "llm", "llms",
-        "large language models", "prompt engineering", "rag",
-        "retrieval augmented generation", "agentic ai", "fine tuning",
-        "fine-tuning", "finetuning", "llm fine tuning", "llm finetuning",
-        "transfer learning", "artificial intelligence", "mlops",
-        "feature engineering", "supervised learning", "unsupervised learning",
-        "object detection", "image classification", "text classification",
-        "sentiment analysis", "speech recognition", "text generation",
-        "image generation", "neural networks", "neural network",
-        "data mining", "anomaly detection", "recommendation systems",
-        "time series analysis", "time series forecasting",
-        "embeddings", "semantic search", "knowledge graphs",
-        "multimodal", "vision language models", "vlm",
-        # Classical ML / NLP algorithms and techniques. Without these they read
-        # as unknown tokens and land in "Other Technical Skills".
-        "tf-idf", "tfidf", "term frequency-inverse document frequency",
-        "random forest", "random forests", "decision tree", "decision trees",
-        "logistic regression", "linear regression", "svm",
-        "support vector machine", "support vector machines",
-        "naive bayes", "k-means", "k means", "kmeans", "k-means clustering",
-        "knn", "k-nearest neighbors", "k-nearest neighbours",
-        "gradient boosting", "boosting", "bagging", "ensemble learning",
-        "clustering", "classification", "pca",
-        "principal component analysis", "dimensionality reduction",
-        "cnn", "convolutional neural networks", "rnn", "lstm", "gru",
-        "gan", "generative adversarial networks", "autoencoder",
-        "transformers", "transformer", "attention mechanism",
-        "word2vec", "glove", "fasttext", "bag of words", "n-grams",
-        "tokenization", "lemmatization", "stemming",
-        "named entity recognition", "ner", "topic modeling", "topic modelling",
-        "lda", "latent dirichlet allocation",
-        "ocr", "optical character recognition",
-        "hyperparameter tuning", "cross validation", "cross-validation",
-        "feature selection", "model evaluation", "model deployment",
-        "lora", "qlora", "peft", "quantization", "knowledge distillation",
-        "few-shot learning", "zero-shot learning", "chain of thought",
-        "data annotation", "data labeling", "data labelling",
-    }
-    # Model families and versioned model names. The buckets above are
-    # exact-match sets, so "LLaMA 3.3", "Groq LLaMA", "RoBERTa-base" or
-    # "GPT-4o" match nothing and fall through to "Other Technical Skills".
-    # This pattern is checked LAST, after every exact-match bucket, so
-    # "LlamaIndex" / "Llama Index" still resolves to Frameworks/Libraries.
-    ai_model_pattern = re.compile(
-        r"(?:^|[^a-z0-9])(?:"
-        r"llama|llama\d|gemma|mistral|mixtral|qwen|deepseek|falcon|"
-        r"gpt|chatgpt|gemini|claude|"
-        r"bert|roberta|deberta|albert|distilbert|xlnet|electra|"
-        r"whisper|wav2vec|llava|blip|"
-        r"yolo|yolov\d|resnet|efficientnet|mobilenet|densenet|u-net|unet|"
-        r"stable diffusion|sdxl|dall-e|dalle|midjourney"
-        r")(?:[^a-z0-9]|$)"
-    )
-    framework_terms = {
-        "numpy", "pandas", "scikit-learn", "sklearn", "scipy",
-        "pytorch", "tensorflow", "keras", "jax",
-        "langchain", "langgraph", "llamaindex", "llama index",
-        "flask", "fastapi", "django", "express", "expressjs",
-        "react", "reactjs", "vue", "vuejs", "angular",
-        "node.js", "nodejs", "spring", "spring boot",
-        "matplotlib", "seaborn", "plotly", "bokeh",
-        "streamlit", "gradio", "hugging face",
-        "sqlalchemy", "celery", "spark", "pyspark", "hadoop", "flink",
-        "rest api", "rest apis", "restful api", "restful apis", "graphql", "grpc",
-        "opencv", "nltk", "spacy", "gensim",
-        "xgboost", "lightgbm", "catboost", "statsmodels",
-        "bootstrap", "tailwindcss", "tailwind",
-        "etl pipelines", "data pipelines",
-        "crewai", "autogen", "dspy", "haystack",
-        "next.js", "nextjs", "svelte", "nuxt", "nestjs", "fasthtml"
-    }
-    database_terms = {
-        "mongodb", "mysql", "postgresql", "postgres", "sqlite",
-        "redis", "cassandra", "dynamodb", "oracle", "sql server",
-        "mariadb", "firestore", "firebase",
-        "faiss", "pinecone", "chroma", "chromadb", "weaviate",
-        "milvus", "qdrant", "elasticsearch", "opensearch",
-        "neo4j", "supabase", "snowflake", "bigquery",
-        "redshift", "databricks", "clickhouse",
-        "vector databases", "vector database", "nosql",
-        "influxdb", "timescaledb", "cockroachdb"
-    }
-    tool_terms = {
-        "git", "github", "gitlab", "bitbucket",
-        "vscode", "visual studio code", "visual studio",
-        "postman", "insomnia", "swagger",
-        "mlflow", "dvc", "wandb", "weights & biases",
-        # Managed ML platforms - MLOps platforms like MLflow, not generic cloud.
-        "sagemaker", "amazon sagemaker", "aws sagemaker", "vertex ai",
-        "google vertex ai", "azure machine learning", "azure ml",
-        "databricks ml", "bedrock", "amazon bedrock", "azure openai",
-        "power bi", "powerbi", "tableau",
-        "excel", "jira", "confluence",
-        "kubeflow", "airflow", "prefect", "dagster", "kafka",
-        "pytest", "jest", "selenium", "cuda", "jupyter",
-        "jupyter notebook", "jupyter notebooks", "colab", "google colab",
-        "pycharm", "anaconda", "wkhtmltopdf",
-        # BI / analytics
-        "looker", "looker studio", "qlik", "qlikview", "qlik sense",
-        "quicksight", "google data studio", "data studio", "alteryx",
-        "google analytics", "advanced excel", "google sheets", "powerpoint",
-        # Diagramming / modelling
-        "visio", "microsoft visio", "lucidchart", "draw.io", "drawio",
-        "miro", "figma", "balsamiq",
-        # Enterprise platforms (ERP / CRM / ITSM)
-        "sap", "salesforce", "servicenow", "hubspot", "workday",
-        "sharepoint", "erp", "erp systems", "crm",
-        # Project / work tracking
-        "ms project", "microsoft project", "asana", "trello", "notion",
-        # Office suite. Only "powerpoint" was listed, so a resume came back with
-        # PowerPoint under Tools while "Microsoft Excel" and "Microsoft Word"
-        # fell into Other Technical Skills.
-        "microsoft excel", "ms excel", "microsoft word", "ms word", "word",
-        "microsoft powerpoint", "ms powerpoint", "microsoft office",
-        "ms office", "microsoft office suite", "office 365", "microsoft 365",
-        "outlook", "microsoft outlook", "google docs", "google slides",
-        "google workspace",
-        # Finance / statistics software
-        "bloomberg", "bloomberg terminal", "refinitiv", "eikon",
-        "refinitiv eikon", "capital iq", "s&p capital iq", "factset",
-        "stata", "eviews", "spss", "sas", "quickbooks", "xero", "sage",
-        "sage pastel", "pastel"
-    }
-    # Finance, accounting and economics disciplines. Commerce and finance
-    # graduates list these as their core skills; without a bucket every one of
-    # them landed in "Other Technical Skills". Kept apart from analytics_terms:
-    # a data analyst with Excel and statistics has no finance background, and a
-    # "Finance" heading over their skills would claim one.
-    finance_terms = {
-        "corporate finance", "finance", "financial analysis",
-        "financial modelling", "financial modeling", "financial reporting",
-        "financial statement analysis", "financial planning",
-        "financial planning and analysis", "fp&a", "valuation", "dcf",
-        "discounted cash flow", "budgeting", "forecasting",
-        "budgeting and forecasting", "variance analysis",
-        "investment analysis", "quantitative investment analysis",
-        "portfolio management", "asset management",
-        "equity research", "credit analysis", "credit risk", "market risk",
-        "risk management", "risk analysis", "financial risk management",
-        "derivatives", "derivatives & risk management",
-        "derivatives and risk management", "fixed income", "capital markets",
-        "mergers and acquisitions", "m&a",
-        "accounting", "financial accounting", "management accounting",
-        "cost accounting", "bookkeeping", "auditing", "audit", "taxation",
-        "tax", "ifrs", "gaap", "us gaap", "reconciliation",
-        "account reconciliation", "accounts payable", "accounts receivable",
-        "payroll", "treasury",
-        "economics", "econometrics", "microeconomics", "macroeconomics",
-        "international trade", "international economics",
-        "development economics", "economic analysis", "economic modelling",
-        "economic modeling",
-    }
-    # Analysis skills that belong to no single domain - an ops, marketing or
-    # finance candidate may list any of them.
-    analytics_terms = {
-        "data analysis", "data analytics", "statistical analysis", "statistics",
-        "quantitative analysis", "regression analysis", "business analysis",
-        "market research", "business intelligence", "data visualization",
-        "data visualisation", "data cleaning", "data entry", "reporting and analysis",
-        "kpi tracking", "dashboarding", "a/b testing",
-    }
-    # Ways of working and analysis artefacts. These are legitimate resume
-    # skills - a business analyst lists Agile, BPMN and user stories - but they
-    # are not tools, so grouping them under "Tools & Platforms" reads wrong.
-    methodology_terms = {
-        "agile", "waterfall", "scrum", "kanban", "safe", "lean", "six sigma",
-        "bpmn", "uml", "sdlc", "rup",
-        "user stories", "user story", "use cases", "use case",
-        "brd", "brds", "business requirements document",
-        "frd", "srs", "user acceptance testing", "uat",
-        "wireframes", "wireframing", "prototyping", "mockups",
-        "requirements gathering", "requirement gathering", "gap analysis",
-        "process mapping", "process modelling", "process modeling",
-        "process flow", "data modelling", "data modeling",
-        "project management", "stakeholder management", "change management",
-        "process improvement",
-    }
-    cloud_devops_terms = {
-        "aws", "amazon web services", "azure", "gcp",
-        "google cloud", "google cloud platform", "cloud platforms", "serverless",
-        "docker", "kubernetes", "k8s", "helm",
-        "jenkins", "github actions", "gitlab ci", "circleci",
-        "ci/cd", "ci", "cd", "devops", "continuous integration",
-        "continuous deployment", "continuous delivery",
-        "terraform", "ansible", "puppet", "chef", "pulumi",
-        "nginx", "apache", "vercel", "netlify", "heroku",
-        "linux", "ubuntu", "centos", "grafana", "prometheus",
-        "cloudformation", "cloud infrastructure", "infrastructure as code",
-        "digitalocean", "openshift", "rancher",
-        "railway", "render", "fly.io", "cloudflare", "cloudflare workers"
-    }
-    network_protocol_terms = {
-        "tcp/ip", "tcp", "udp", "ip", "dns", "http", "https", "ftp", "sftp",
-        "ssh", "smtp", "dhcp", "arp", "vpn", "tls", "ssl", "ospf", "bgp",
-        "snmp", "ipv4", "ipv6", "subnetting", "routing", "switching",
-        "firewalls", "firewall", "load balancing", "network protocols",
-        "osi model", "packet analysis", "wireshark", "tcpdump", "vlan",
-        "nat", "proxy", "network segmentation"
-    }
-    security_siem_terms = {
-        "splunk", "splunk enterprise", "sysmon", "siem", "threat hunting",
-        "incident investigation", "incident response", "ioc analysis",
-        "security event analysis", "log ingestion", "spl",
-        "search processing language", "event correlation",
-        "security operations", "soc", "security operations (soc)",
-        "log analysis", "windows event logs", "windows event viewer",
-        "windows endpoint monitoring", "endpoint monitoring",
-        "authentication monitoring", "powershell monitoring",
-        "qradar", "ibm qradar", "arcsight", "microsoft sentinel", "sentinel",
-        "crowdstrike", "nessus", "metasploit", "burp suite", "nmap", "snort",
-        "suricata", "ids", "ips", "edr", "xdr", "mitre att&ck", "mitre attack",
-        "vulnerability assessment", "penetration testing", "malware analysis",
-        "digital forensics", "dfir", "security information and event management",
-        "threat intelligence", "vulnerability management"
-    }
+    Every item is classified by skill_categories.classify_skill() whatever
+    label it arrived under, so "Languages: Python, React" still files React
+    under Frameworks/Libraries. The source label only decides where an item
+    goes when the vocabulary doesn't recognise it; with no usable label that
+    is "Other Technical Skills". Rows come back in skillcat.CATEGORY_ORDER.
+    """
+    grouped: dict[str, list[str]] = {label: [] for label in skillcat.CATEGORY_ORDER}
+
+    label_fallbacks: dict[str, str] = {}
+    for labels, category in (
+        (("languages", "language", "programming", "programming languages"), skillcat.LANGUAGES),
+        (("ai", "ml", "ai/ml", "machine learning", "artificial intelligence", "data science",
+          "ai/ml & data science", "ai & ml"), skillcat.AI_ML),
+        (("technologies/frameworks", "technologies", "frameworks", "frameworks & libraries",
+          "frameworks/libraries", "libraries", "technologies & frameworks"), skillcat.FRAMEWORKS),
+        (("databases", "database", "db", "data stores", "data storage", "databases & storage"),
+         skillcat.DATABASES),
+        (("developer tools", "tools", "tooling", "tools & platforms", "tools and platforms",
+          "platforms"), skillcat.TOOLS),
+        (("cloud", "devops", "cloud & devops", "cloud and devops", "cloud/devops",
+          "cloud platforms", "ci/cd", "cloud & infrastructure", "cloud infrastructure"),
+         skillcat.CLOUD),
+        (("networking", "network", "protocols", "networking & protocols",
+          "networking and protocols", "network protocols"), skillcat.NETWORKING),
+        (("security", "siem", "security & siem", "security and siem", "cybersecurity",
+          "security operations"), skillcat.SECURITY),
+    ):
+        label_fallbacks.update(dict.fromkeys(labels, category))
 
     def skill_keys(value: str) -> set[str]:
         """Every name a skill goes by: "Natural Language Processing (NLP)" is
@@ -4856,186 +4642,51 @@ def group_skills(skills: list[str]) -> list[str]:
             keys.update({m.group(1).strip(), m.group(2).strip()})
         return keys
 
-    def add_unique(bucket: list[str], value: str):
-        if not value:
-            return
-        # Two checks, because each catches what the other misses:
-        #  - canonical_skill_key: one skill under two spellings ("HTML, CSS,
-        #    CSS3, HTML5"), so a version suffix or parenthetical qualifier
-        #    cannot reintroduce a pair sanitize_resume_data already collapsed.
+    def add_unique(category: str, value: str) -> None:
+        # One skill, one row - checked across every row, not just the target,
+        # so a labelled source line and a bare name can't list it twice. Two
+        # checks, because each catches what the other misses:
+        #  - skill_identity: one skill under two spellings ("HTML5"/"HTML",
+        #    "React.js"/"React", "PineconeDB"/"Pinecone") - canonical_skill_key
+        #    plus ".js", "DB" and version suffixes - so a pair
+        #    sanitize_resume_data already collapsed can't come back.
         #  - skill_keys: a full name and its acronym ("NLP" vs "Natural
-        #    Language Processing (NLP)"); canonical_skill_key drops the
+        #    Language Processing (NLP)"); the identity drops the
         #    parenthetical, so it never sees that the two are the same.
-        key = canonical_skill_key(value)
+        key = skillcat.skill_identity(value)
         aliases = skill_keys(value)
-        for i, existing in enumerate(bucket):
-            if canonical_skill_key(existing) == key or aliases & skill_keys(existing):
-                bucket[i] = _preferred_skill_spelling(existing, value)
-                return
-        bucket.append(value)
+        for bucket in grouped.values():
+            for i, existing in enumerate(bucket):
+                if skillcat.skill_identity(existing) == key or aliases & skill_keys(existing):
+                    bucket[i] = _preferred_skill_spelling(existing, value)
+                    return
+        grouped[category].append(value)
 
-    # Delegates to functions.py's canonical, actively-maintained atomicity
-    # filter instead of a separate/duplicated blocklist, so a fix there (e.g.
-    # rejecting JD responsibility-sentence fragments) applies here too.
-    def is_generic_phrase(item: str) -> bool:
-        return not _is_atomic_hard_skill(item)
-
-    def split_skill_items(text: str) -> list[str]:
-        parts = [part.strip() for part in re.split(r"[,;]", text) if part.strip()]
-        return parts if len(parts) > 1 else [text.strip()]
-
-    def classify_norm(item_norm: str) -> str:
-        if item_norm in human_language_terms:
-            return "human_language"
-        if item_norm in language_terms:
-            return "Languages"
-        if item_norm in database_terms:
-            return "Databases"
-        if "vector database" in item_norm or "vector db" in item_norm:
-            return "Databases"
-        if item_norm in tool_terms:
-            return "Tools & Platforms"
-        if item_norm in cloud_devops_terms:
-            return "Cloud & DevOps"
-        if item_norm in network_protocol_terms:
-            return "Networking & Protocols"
-        if item_norm in security_siem_terms:
-            return "Security & SIEM"
-        if item_norm in ai_ml_terms:
-            return "AI/ML"
-        if item_norm in framework_terms:
-            return "Frameworks/Libraries"
-        if item_norm in methodology_terms:
-            return "Methodologies & Practices"
-        if item_norm in analytics_terms:
-            return "Data & Analytics"
-        if item_norm in finance_terms:
-            return "Finance & Economics"
-        # Fuzzy model-name fallback, deliberately last so an exact match in any
-        # bucket above wins (e.g. LlamaIndex -> Frameworks/Libraries).
-        if ai_model_pattern.search(item_norm):
-            return "AI/ML"
-        return "uncategorized"
-
-    def classify_item(item: str) -> str:
-        item_norm = re.sub(r"\s+", " ", item.lower().strip()
-                           .replace("react js", "react")
-                           .replace("restful apis", "restful api")
-                           .replace("node js", "node.js"))
-        # Resumes write the same skill several ways. Try it as written, then
-        # "Natural Language Processing (NLP)" as its full name and its acronym,
-        # then "Apache Spark" as "spark" - otherwise each form needs its own
-        # entry in every bucket and the misses land in Other Technical Skills.
-        candidates = [item_norm]
-        m = re.match(r"^(.*?)\s*\(([^)]+)\)$", item_norm)
-        if m:
-            candidates += [m.group(1).strip(), m.group(2).strip()]
-        candidates += [c[len("apache "):] for c in list(candidates) if c.startswith("apache ")]
-        for candidate in candidates:
-            cat = classify_norm(candidate)
-            if cat != "uncategorized":
-                return cat
-        return "uncategorized"
+    def place(item: str, fallback: str) -> None:
+        for text, category, confident in skillcat.classify_skill(item):
+            if category == skillcat.HUMAN_LANGUAGE:
+                continue
+            # An unrecognised item, or a typo/pattern guess, must still read as
+            # a real skill. Delegates to functions.py's canonical atomicity
+            # filter, which rejects "proficient", "cross-functional
+            # collaboration" and JD sentence fragments.
+            if (category is None or not confident) and not _is_atomic_hard_skill(text):
+                continue
+            add_unique(category or fallback, text)
 
     for skill in skills:
         text = str(skill or "").strip()
         if not text:
             continue
-
+        fallback = skillcat.OTHER
         if ":" in text:
-            label, value = text.split(":", 1)
-            label_lower = label.strip().lower()
-            value = value.strip()
-            if label_lower in {"languages", "language", "programming", "programming languages"}:
-                for item in [p.strip() for p in re.split(r"[,;/]", value) if p.strip()]:
-                    if item.lower() not in human_language_terms:
-                        add_unique(grouped["Languages"], item)
-                continue
-            if label_lower in {"developer tools", "tools", "tooling", "tools & platforms",
-                                "tools and platforms", "platforms"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    cat = classify_item(item)
-                    if cat == "uncategorized" and is_generic_phrase(item):
-                        continue
-                    target = cat if cat not in ("uncategorized", "human_language") else "Tools & Platforms"
-                    add_unique(grouped[target], item)
-                continue
-            if label_lower in {"cloud", "devops", "cloud & devops", "cloud and devops",
-                                "cloud/devops", "cloud platforms", "ci/cd", "cloud & infrastructure",
-                                "cloud infrastructure"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    cat = classify_item(item)
-                    if cat == "uncategorized" and is_generic_phrase(item):
-                        continue
-                    target = cat if cat not in ("uncategorized", "human_language") else "Cloud & DevOps"
-                    add_unique(grouped[target], item)
-                continue
-            if label_lower in {"technologies/frameworks", "technologies", "frameworks",
-                                "frameworks & libraries", "frameworks/libraries", "libraries",
-                                "technologies & frameworks"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    cat = classify_item(item)
-                    if cat == "uncategorized" and is_generic_phrase(item):
-                        continue
-                    target = cat if cat not in ("uncategorized", "human_language") else "Frameworks/Libraries"
-                    add_unique(grouped[target], item)
-                continue
-            if label_lower in {"ai", "ml", "ai/ml", "machine learning", "artificial intelligence",
-                                "data science", "ai/ml & data science", "ai & ml"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["AI/ML"], item)
-                continue
-            if label_lower in {"databases", "database", "db", "data stores", "data storage",
-                                "databases & storage"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["Databases"], item)
-                continue
-            if label_lower in {"networking", "network", "protocols", "networking & protocols",
-                                "networking and protocols", "network protocols"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["Networking & Protocols"], item)
-                continue
-            if label_lower in {"security", "siem", "security & siem", "security and siem",
-                                "cybersecurity", "security operations"}:
-                for item in [p.strip() for p in value.split(",") if p.strip()]:
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["Security & SIEM"], item)
-                continue
-            # Unknown label: classify each value item individually
-            for item in [p.strip() for p in re.split(r"[,;]", value) if p.strip()]:
-                cat = classify_item(item)
-                if cat == "human_language":
-                    continue
-                if cat == "uncategorized":
-                    if not is_generic_phrase(item):
-                        add_unique(grouped["Other Technical Skills"], item)
-                else:
-                    add_unique(grouped[cat], item)
-            continue
+            label, text = text.split(":", 1)
+            fallback = label_fallbacks.get(label.strip().lower(), skillcat.OTHER)
+        for item in re.split(r"[,;|•]", text):
+            if item.strip():
+                place(item, fallback)
 
-        # No colon: split and classify each token
-        raw_items = split_skill_items(text)
-        for item in raw_items:
-            cat = classify_item(item)
-            if cat == "human_language":
-                continue
-            if cat == "uncategorized":
-                if not is_generic_phrase(item):
-                    add_unique(grouped["Other Technical Skills"], item)
-            else:
-                add_unique(grouped[cat], item)
-
-    result = []
-    for label in ("Languages", "AI/ML", "Frameworks/Libraries", "Databases", "Tools & Platforms",
-                  "Cloud & DevOps", "Networking & Protocols", "Security & SIEM",
-                  "Methodologies & Practices", "Data & Analytics", "Finance & Economics",
-                  "Other Technical Skills"):
-        if grouped[label]:
-            result.append(f"{label}: {', '.join(grouped[label])}")
-    return result
+    return [f"{label}: {', '.join(items)}" for label, items in grouped.items() if items]
 
 
 def _link_identity(href: str) -> str:
