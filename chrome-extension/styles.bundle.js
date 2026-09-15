@@ -375,6 +375,240 @@
   display: flex !important;\r
 }\r
 \r
+/* Skills the job asked for that the resume evidences nowhere. Deliberately\r
+   quieter than the score card next to it: this is information, not a result. */\r
+.tcv-skill-gaps {\r
+  padding: 12px !important;\r
+  margin: 4px 0 !important;\r
+  border-radius: 12px !important;\r
+  background: rgba(255,255,255,0.03) !important;\r
+  border: 1px solid rgba(148,163,184,0.18) !important;\r
+}\r
+.tcv-skill-gaps-title {\r
+  font-size: 11px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .04em !important;\r
+  text-transform: uppercase !important;\r
+  color: #94a3b8 !important;\r
+  margin-bottom: 8px !important;\r
+}\r
+.tcv-skill-gaps-pills {\r
+  display: flex !important;\r
+  flex-wrap: wrap !important;\r
+  gap: 6px !important;\r
+}\r
+.tcv-skill-gap-pill {\r
+  display: inline-block !important;\r
+  padding: 3px 9px !important;\r
+  border-radius: 999px !important;\r
+  font-size: 11px !important;\r
+  font-weight: 600 !important;\r
+  color: #cbd5e1 !important;\r
+  background: rgba(79,127,255,0.14) !important;\r
+  border: 1px solid rgba(79,127,255,0.28) !important;\r
+}\r
+.tcv-skill-gap-pill.added {\r
+  color: #6ee7b7 !important;\r
+  background: rgba(16,185,129,0.16) !important;\r
+  border: 1px solid rgba(16,185,129,0.35) !important;\r
+}\r
+.tcv-skill-gaps-note {\r
+  margin-top: 8px !important;\r
+  font-size: 10.5px !important;\r
+  line-height: 1.45 !important;\r
+  color: #7e8ba3 !important;\r
+}\r
+.tcv-skill-gaps-note.tcv-error { color: #fca5a5 !important; }\r
+\r
+/* Post-tailor skills pop-up: the download waits on this, so it is the loudest\r
+   thing in the panel while it is up. */\r
+.tcv-skill-prompt {\r
+  padding: 14px !important;\r
+  margin: 6px 0 !important;\r
+  border-radius: 12px !important;\r
+  background: rgba(79,127,255,0.08) !important;\r
+  border: 1px solid rgba(79,127,255,0.35) !important;\r
+}\r
+.tcv-skill-prompt-title {\r
+  font-size: 13px !important;\r
+  font-weight: 700 !important;\r
+  line-height: 1.35 !important;\r
+  color: #eaf1ff !important;\r
+}\r
+.tcv-skill-prompt-sub {\r
+  margin: 4px 0 10px !important;\r
+  font-size: 11.5px !important;\r
+  line-height: 1.45 !important;\r
+  color: #a5b4cf !important;\r
+}\r
+.tcv-skill-prompt-pills {\r
+  display: flex !important;\r
+  flex-wrap: wrap !important;\r
+  gap: 6px !important;\r
+  margin-bottom: 12px !important;\r
+}\r
+.tcv-skill-prompt-pill {\r
+  padding: 4px 10px !important;\r
+  border-radius: 999px !important;\r
+  font-size: 11.5px !important;\r
+  font-weight: 600 !important;\r
+  cursor: pointer !important;\r
+  color: #cbd5e1 !important;\r
+  background: rgba(255,255,255,0.04) !important;\r
+  border: 1px solid rgba(148,163,184,0.35) !important;\r
+}\r
+.tcv-skill-prompt-pill[aria-pressed="true"] {\r
+  color: #6ee7b7 !important;\r
+  background: rgba(16,185,129,0.16) !important;\r
+  border-color: rgba(16,185,129,0.5) !important;\r
+}\r
+.tcv-skill-prompt-pill[aria-pressed="true"]::before { content: "\u2713 " !important; }\r
+.tcv-skill-prompt-actions {\r
+  display: flex !important;\r
+  flex-direction: column !important;\r
+  gap: 6px !important;\r
+}\r
+.tcv-skill-btn {\r
+  width: 100% !important;\r
+  padding: 8px 10px !important;\r
+  border-radius: 8px !important;\r
+  font-size: 12.5px !important;\r
+  font-weight: 600 !important;\r
+  cursor: pointer !important;\r
+  color: #eaf1ff !important;\r
+  background: rgba(255,255,255,0.06) !important;\r
+  border: 1px solid rgba(255,255,255,0.16) !important;\r
+}\r
+.tcv-skill-btn:hover:not(:disabled) { background: rgba(255,255,255,0.12) !important; }\r
+.tcv-skill-btn-primary {\r
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;\r
+  border-color: transparent !important;\r
+}\r
+.tcv-skill-btn-primary:hover:not(:disabled) { opacity: 0.9 !important; background: linear-gradient(135deg, #4f7fff, #7c3aed) !important; }\r
+.tcv-skill-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }\r
+.tcv-skill-notnow {\r
+  display: block !important;\r
+  margin: 8px auto 0 !important;\r
+  background: none !important;\r
+  border: none !important;\r
+  font-size: 11px !important;\r
+  color: #8da3c6 !important;\r
+  text-decoration: underline !important;\r
+  cursor: pointer !important;\r
+}\r
+.tcv-skill-notnow:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }\r
+\r
+/* Account-menu switch for "Add missing skills automatically". */\r
+.tcv-account-switch {\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  justify-content: space-between !important;\r
+  gap: 8px !important;\r
+  line-height: 1.3 !important;\r
+}\r
+.tcv-account-switch input {\r
+  position: absolute !important;\r
+  opacity: 0 !important;\r
+  width: 0 !important;\r
+  height: 0 !important;\r
+}\r
+.tcv-switch-track {\r
+  position: relative !important;\r
+  flex: 0 0 30px !important;\r
+  width: 30px !important;\r
+  height: 17px !important;\r
+  border-radius: 999px !important;\r
+  background: rgba(255,255,255,0.18) !important;\r
+  transition: background .15s !important;\r
+}\r
+.tcv-switch-track::after {\r
+  content: "" !important;\r
+  position: absolute !important;\r
+  top: 2px !important;\r
+  left: 2px !important;\r
+  width: 13px !important;\r
+  height: 13px !important;\r
+  border-radius: 50% !important;\r
+  background: #fff !important;\r
+  transition: transform .15s !important;\r
+}\r
+.tcv-account-switch input:checked + .tcv-switch-track { background: #10b981 !important; }\r
+.tcv-account-switch input:checked + .tcv-switch-track::after { transform: translateX(13px) !important; }\r
+.tcv-account-switch input:disabled + .tcv-switch-track { opacity: 0.5 !important; }\r
+\r
+.tcv-changes-panel {\r
+  padding: 0 !important;\r
+  margin: 4px 0 !important;\r
+  border-radius: 12px !important;\r
+  background: rgba(255,255,255,0.03) !important;\r
+  border: 1px solid rgba(148,163,184,0.18) !important;\r
+  overflow: hidden !important;\r
+}\r
+.tcv-changes-toggle {\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  justify-content: space-between !important;\r
+  width: 100% !important;\r
+  padding: 12px !important;\r
+  background: none !important;\r
+  border: none !important;\r
+  cursor: pointer !important;\r
+  font-size: 11px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .04em !important;\r
+  text-transform: uppercase !important;\r
+  color: #94a3b8 !important;\r
+}\r
+.tcv-changes-toggle .tcv-changes-chevron {\r
+  transition: transform 0.2s ease !important;\r
+  font-size: 10px !important;\r
+}\r
+.tcv-changes-panel.tcv-changes-open .tcv-changes-chevron {\r
+  transform: rotate(180deg) !important;\r
+}\r
+.tcv-changes-body {\r
+  display: none !important;\r
+  padding: 0 12px 12px !important;\r
+}\r
+.tcv-changes-panel.tcv-changes-open .tcv-changes-body {\r
+  display: block !important;\r
+}\r
+.tcv-changes-entry-label {\r
+  font-size: 10.5px !important;\r
+  font-weight: 700 !important;\r
+  color: #cbd5e1 !important;\r
+  margin: 8px 0 4px !important;\r
+}\r
+.tcv-changes-bullet {\r
+  font-size: 10.5px !important;\r
+  line-height: 1.5 !important;\r
+  margin: 6px 0 !important;\r
+}\r
+.tcv-changes-before {\r
+  color: #7e8ba3 !important;\r
+  text-decoration: line-through !important;\r
+}\r
+.tcv-changes-after {\r
+  color: #e2e8f0 !important;\r
+  margin-top: 2px !important;\r
+}\r
+.tcv-changes-tag {\r
+  display: inline-block !important;\r
+  font-size: 9px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: .03em !important;\r
+  text-transform: uppercase !important;\r
+  padding: 1px 6px !important;\r
+  border-radius: 5px !important;\r
+  margin-right: 5px !important;\r
+  background: rgba(79,127,255,0.18) !important;\r
+  color: #93b4ff !important;\r
+}\r
+.tcv-changes-empty {\r
+  font-size: 10.5px !important;\r
+  color: #7e8ba3 !important;\r
+}\r
+\r
 .tcv-score-item {\r
   display: flex !important;\r
   flex-direction: column !important;\r
