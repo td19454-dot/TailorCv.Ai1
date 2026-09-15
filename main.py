@@ -74,6 +74,7 @@ from functions import (
     score_mock_interview,
     generate_tts_audio,
     agent_chat_reply,
+    user_error_detail,
 )
 
 from extraction import process_resume
@@ -164,6 +165,8 @@ async def csrf_middleware(request: Request, call_next):
         "/api/linkedin/oauth/callback",
         "/api/extension/log-application",
         "/api/extension/tailor-resume",
+        "/api/extension/add-skills",
+        "/api/extension/settings",
         "/api/extension/cover-letter",
         "/api/extension/skill-match",
         "/api/extension/apply-profile",
@@ -247,8 +250,9 @@ async def global_exception_handler(request: Request, exc: Exception):
         sentry_sdk.capture_exception(exc)
     accept = request.headers.get("accept", "")
     if "text/html" in accept and request.headers.get("X-Requested-With") != "XMLHttpRequest":
-        return templates.TemplateResponse(request, "error.html", {"status_code": 500, "message": "Something went wrong on our end. Please try again."}, status_code=500)
-    return JSONResponse(status_code=500, content={"detail": "Internal server error. Please try again."})
+        message = user_error_detail(exc, "Something went wrong on our end. Please try again.")
+        return templates.TemplateResponse(request, "error.html", {"status_code": 500, "message": message}, status_code=500)
+    return JSONResponse(status_code=500, content={"detail": user_error_detail(exc, "Something went wrong on our end. Please try again.")})
 
 # Branded 404 (and other HTTP errors) for browser navigations; JSON for APIs.
 @app.exception_handler(StarletteHTTPException)
@@ -534,6 +538,8 @@ def _ensure_user_columns() -> None:
         to_add.append("ADD COLUMN email_bounced_at TIMESTAMP" if is_pg else "ADD COLUMN email_bounced_at TEXT")
     if "email_complained_at" not in cols:
         to_add.append("ADD COLUMN email_complained_at TIMESTAMP" if is_pg else "ADD COLUMN email_complained_at TEXT")
+    if "ext_auto_add_skills" not in cols:
+        to_add.append("ADD COLUMN ext_auto_add_skills BOOLEAN DEFAULT FALSE" if is_pg else "ADD COLUMN ext_auto_add_skills BOOLEAN DEFAULT 0")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -5019,10 +5025,10 @@ def parse_ai_json_response(response_string: str) -> dict:
             parsed = _repair_truncated_json(response_string)
         if parsed is None:
             logger.error("AI JSON response could not be parsed or repaired")
-            raise HTTPException(status_code=500, detail="Could not process the AI response. Please try again.")
+            raise HTTPException(status_code=500, detail="The AI returned an incomplete result. Please try again. If it keeps happening, trim the job description to the key requirements.")
 
     if not isinstance(parsed, dict):
-        raise HTTPException(status_code=500, detail="AI response JSON is not an object")
+        raise HTTPException(status_code=500, detail="The AI returned a result in the wrong format. Please try again.")
     return parsed
 
 
@@ -5415,9 +5421,11 @@ async def api_interview_start(payload: dict):
             job_desc=job_desc,
         )
         return JSONResponse({"success": True, "question": question})
+    except HTTPException:
+        raise
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("Mock interview start failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not start the mock interview. Please try again."))
 
 
 @app.post("/api/interview/start-with-pdf")
@@ -5462,7 +5470,8 @@ async def api_interview_start_with_pdf(
                 refund_quota(db2, uid, "mock_interviews")
             finally:
                 db2.close()
-            raise HTTPException(status_code=502, detail="Could not start the mock interview. Please try again.")
+            logger.exception("Mock interview first question failed")
+            raise HTTPException(status_code=502, detail=user_error_detail(exc, "Could not start the mock interview. Please try again."))
         audio_b64 = None
         try:
             audio_bytes = await generate_tts_audio(question)
@@ -5473,8 +5482,8 @@ async def api_interview_start_with_pdf(
     except HTTPException:
         raise
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("Mock interview start (PDF) failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not start the mock interview. Please try again."))
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -5503,8 +5512,8 @@ async def api_interview_next(payload: dict):
                 pass
         return JSONResponse({"success": True, **result, "audio_b64": audio_b64})
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("Mock interview next question failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not get the next interview question. Please try again."))
 
 
 @app.post("/api/interview/score")
@@ -5522,8 +5531,8 @@ async def api_interview_score(payload: dict):
         )
         return JSONResponse({"success": True, "scores": scores})
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("Mock interview scoring failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not score your interview. Please try again."))
 
 
 @app.post("/api/tts")
@@ -5535,8 +5544,8 @@ async def api_tts(payload: dict):
         audio_bytes = await generate_tts_audio(text)
         return Response(content=audio_bytes, media_type="audio/mpeg")
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("TTS failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not generate the spoken audio. Please try again."))
 
 
 # Site-wide "Tailor" assistant. Guests get a small free allowance per session
@@ -5628,9 +5637,9 @@ async def api_agent_chat(request: Request, payload: dict):
             is_logged_in=is_logged_in,
             blog_catalog=_retrieve_agent_blogs(message),
         )
-    except Exception:
+    except Exception as exc:
         logger.exception("Agent chat failed")
-        raise HTTPException(status_code=500, detail="The assistant is unavailable right now. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "The assistant is unavailable right now. Please try again."))
 
     request.session[key] = used + 1
     return {"reply": reply, "remaining": max(0, limit - (used + 1))}
@@ -5671,19 +5680,20 @@ async def api_generate_interview_questions(
                 db.close()
             try:
                 result = await generate_interview_questions(resume_string, jd_string)
-            except Exception:
+            except Exception as exc:
+                logger.exception("Interview question generation failed")
                 db2 = get_db()
                 try:
                     refund_quota(db2, uid, "interview_questions")
                 finally:
                     db2.close()
-                raise HTTPException(status_code=502, detail="Could not generate interview questions. Please try again.")
+                raise HTTPException(status_code=502, detail=user_error_detail(exc, "Could not generate interview questions. Please try again."))
             return JSONResponse({"success": True, "data": result})
     except HTTPException:
         raise
     except Exception as e:
         logger.exception("generate-interview-questions failed")
-        raise HTTPException(status_code=500, detail="Could not generate interview questions. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(e, "Could not generate interview questions. Please try again."))
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -5710,8 +5720,8 @@ async def api_evaluate_interview_answer(payload: dict):
     except HTTPException:
         raise
     except Exception as exc:
-        logger.exception("Unhandled error in request")
-        raise HTTPException(status_code=500, detail="Something went wrong. Please try again.")
+        logger.exception("Interview answer evaluation failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not evaluate your answer. Please try again."))
 
 
 @app.get("/health")
@@ -6979,7 +6989,7 @@ async def download_saved_resume(request: Request, resume_id: int):
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
         logger.exception("PDF render failed")
-        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(e, "Failed to render the PDF. Please try again."))
 
     return FileResponse(
         pdf_path,
@@ -7285,14 +7295,14 @@ async def generate_cover_letter(request: Request):
         letter = ((parsed.get("cover_letter")) or "").strip()
         if not letter:
             raise ValueError("Empty cover letter returned")
-    except Exception:
+    except Exception as exc:
         logger.exception("Cover letter generation failed")
         db2 = get_db()
         try:
             refund_quota(db2, uid, "cover_letters")
         finally:
             db2.close()
-        raise HTTPException(status_code=502, detail="Could not generate the cover letter. Please try again.")
+        raise HTTPException(status_code=502, detail=user_error_detail(exc, "Could not generate the cover letter. Please try again."))
 
     return JSONResponse({
         "cover_letter": letter,
@@ -7391,14 +7401,14 @@ async def extension_cover_letter(request: Request):
         letter = str(parsed.get("cover_letter") or "").strip()
         if not letter:
             raise ValueError("Empty cover letter returned")
-    except Exception:
+    except Exception as exc:
         logger.exception("Extension cover letter generation failed")
         db2 = get_db()
         try:
             refund_quota(db2, user_id, "cover_letters")
         finally:
             db2.close()
-        raise HTTPException(status_code=502, detail="Could not write the cover letter. Please try again.")
+        raise HTTPException(status_code=502, detail=user_error_detail(exc, "Could not write the cover letter. Please try again."))
 
     template = requested_template if requested_template in COVER_TEMPLATES else cover_template
     letter_html = _render_cover_letter_html(
@@ -7450,6 +7460,7 @@ async def extension_profile(request: Request):
             "email": user.email,
             "has_resume": bool(latest),
             "resume_title": latest.title if latest else None,
+            "auto_add_skills": bool(getattr(user, "ext_auto_add_skills", False)),
         }
     finally:
         db.close()
@@ -7799,6 +7810,8 @@ async def extension_tailor_resume(request: Request):
         # There is no "tick the skills you have" step in the extension, so
         # without this the extension can never include a confirmed skill.
         user_confirmed_skills = get_confirmed_skills(user)
+        # "Add all automatically", set from the extension's skills pop-up.
+        auto_add_all = bool(getattr(user, "ext_auto_add_skills", False))
         if not base_resume_text:
             # Backfill for base resumes uploaded before this column existed.
             base_resume_text = await asyncio.to_thread(extract_pdf_text, base_resume_path)
@@ -7817,6 +7830,14 @@ async def extension_tailor_resume(request: Request):
                 confirmed_skills=user_confirmed_skills,
                 auto_add_skills=True,
             )
+            # The user opted in to "Add all automatically": every missing JD skill
+            # goes on without the pop-up. Done before scoring so the after-score
+            # reflects the resume they actually download.
+            auto_added: list[str] = []
+            if auto_add_all and isinstance(parsed, dict):
+                pending = promptable_skill_gaps(parsed.get("skill_gaps"))
+                if pending:
+                    auto_added, _, _ = _apply_confirmed_skills(parsed, pending)
             # Structured scorer, not the flat-text one /api/extension/skill-match uses
             # for the base resume: a flat match on the tailored output would count the
             # guaranteed skills-array injection the same as a skill actually evidenced
@@ -7851,16 +7872,16 @@ async def extension_tailor_resume(request: Request):
             html_content, use_default_template = _render_resume_html(parsed, jd_string, template_id, style_id)
             try:
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
-            except Exception:
+            except Exception as exc:
                 logger.exception("PDF render failed")
-                raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
+                raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to render the PDF. Please try again."))
 
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
 
             db = get_db()
             try:
-                db.add(SavedResume(
+                saved_row = SavedResume(
                     user_id=user_id,
                     title=role or "Tailored Resume",
                     candidate_name=str((parsed or {}).get("name") or "").strip()[:255] or None,
@@ -7871,8 +7892,12 @@ async def extension_tailor_resume(request: Request):
                     status="saved",
                     resume_json=json.dumps(parsed) if isinstance(parsed, dict) else None,
                     html_content=html_content,
-                ))
+                )
+                db.add(saved_row)
                 db.commit()
+                # /api/extension/add-skills re-renders this row if the user
+                # picks skills from the pop-up.
+                saved_resume_id = saved_row.id
             finally:
                 db.close()
 
@@ -7889,8 +7914,8 @@ async def extension_tailor_resume(request: Request):
             added: list = []
             gaps: list = []
             try:
-                added = [s for s in ((parsed or {}).get("skills_added_from_jd") or []) if s]
-                gaps = promptable_skill_gaps((parsed or {}).get("skill_gaps"))
+                added = auto_added or [s for s in ((parsed or {}).get("skills_added_from_jd") or []) if s]
+                gaps = [] if auto_add_all else promptable_skill_gaps((parsed or {}).get("skill_gaps"))
             except Exception:
                 logger.exception("Could not build the skill lists")
 
@@ -7912,16 +7937,21 @@ async def extension_tailor_resume(request: Request):
                 "skills_added": added,
                 "skill_gaps": gaps,
                 "changes": (parsed or {}).get("changes") or {},
+                "saved_resume_id": saved_resume_id,
+                # The extension holds the download and shows the skills pop-up;
+                # this PDF is what "Not now" downloads.
+                "pending_skill_choice": bool(gaps),
+                "auto_add_skills": auto_add_all,
             })
     except HTTPException:
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
         raise
-    except Exception:
+    except Exception as exc:
         logger.exception("Extension tailor-resume failed")
         if pdf_path and os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail="Could not tailor the resume. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not tailor the resume. Please try again."))
 
 
 MAX_APPLY_QUESTIONS = 40
@@ -8035,9 +8065,9 @@ async def extension_apply_answers(request: Request):
         raw_answers = parsed.get("answers") if isinstance(parsed, dict) else None
         if not isinstance(raw_answers, list):
             raise ValueError("Malformed answers array")
-    except Exception:
+    except Exception as exc:
         logger.exception("Extension apply-answers generation failed")
-        raise HTTPException(status_code=502, detail="Could not generate answers. Please try again.")
+        raise HTTPException(status_code=502, detail=user_error_detail(exc, "Could not generate answers. Please try again."))
 
     by_id = {q["id"]: q for q in questions}
     answers_by_id = {}
@@ -8547,9 +8577,9 @@ async def generate_personality_card(request: Request):
     except (json.JSONDecodeError, TypeError):
         logger.error("Personality card GPT returned non-JSON")
         return JSONResponse(status_code=500, content={"error": "AI returned invalid data. Please try again."})
-    except Exception:
+    except Exception as exc:
         logger.exception("Personality card generation failed")
-        return JSONResponse(status_code=500, content={"error": "Generation failed. Please try again."})
+        return JSONResponse(status_code=500, content={"error": user_error_detail(exc, "Could not generate your personality card. Please try again.")})
 
     archetype = str(card_data.get("archetype") or "").strip()
     tagline = str(card_data.get("tagline") or "").strip()
@@ -8612,13 +8642,13 @@ async def generate_personality_card(request: Request):
                 **vitals,
             }
         })
-    except Exception:
+    except Exception as exc:
         logger.exception("Failed to persist personality card")
         try:
             db.rollback()
         except Exception:
             pass
-        return JSONResponse(status_code=500, content={"error": "Failed to save card. Please try again."})
+        return JSONResponse(status_code=500, content={"error": user_error_detail(exc, "Failed to save card. Please try again.")})
     finally:
         db.close()
 
@@ -9342,13 +9372,13 @@ async def generate_portfolio(request: Request):
             "view_url": f"/{portfolio.slug}",
             "netlify_url": portfolio.netlify_url,
         })
-    except Exception:
+    except Exception as exc:
         logger.exception("Failed to persist portfolio")
         try:
             db.rollback()
         except Exception:
             pass
-        return JSONResponse(status_code=500, content={"error": "Could not generate portfolio. Please try again."})
+        return JSONResponse(status_code=500, content={"error": user_error_detail(exc, "Could not generate portfolio. Please try again.")})
     finally:
         db.close()
 
@@ -9437,13 +9467,13 @@ async def build_portfolio(request: Request):
             "view_url": f"/{portfolio.slug}",
             "netlify_url": portfolio.netlify_url,
         })
-    except Exception:
+    except Exception as exc:
         logger.exception("Failed to build portfolio")
         try:
             db.rollback()
         except Exception:
             pass
-        return JSONResponse(status_code=500, content={"error": "Could not publish portfolio. Please try again."})
+        return JSONResponse(status_code=500, content={"error": user_error_detail(exc, "Could not publish portfolio. Please try again.")})
     finally:
         db.close()
 
@@ -9810,9 +9840,9 @@ async def deploy_portfolio_netlify(portfolio_id: int, request: Request):
         try:
             # Deploy to the user's single shared site (one live link per user).
             site_id, site_url = await _deploy_portfolio_to_netlify(user, portfolio)
-        except Exception:
+        except Exception as exc:
             logger.exception("Live-site publish failed for portfolio %s", portfolio_id)
-            return JSONResponse(status_code=502, content={"error": "Could not publish your live site. Please try again."})
+            return JSONResponse(status_code=502, content={"error": user_error_detail(exc, "Could not publish your live site. Please try again.")})
         user.netlify_site_id = site_id
         user.netlify_url = site_url
         user.netlify_portfolio_id = portfolio.id
@@ -9892,7 +9922,7 @@ async def portfolio_public_cv(request: Request, slug: str):
         await asyncio.to_thread(_render_pdf)
     except Exception as e:
         logger.exception("PDF render failed")
-        raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(e, "Failed to render the PDF. Please try again."))
 
     return FileResponse(
         pdf_path, media_type="application/pdf", filename=f"{dl_name or 'resume'}.pdf",
@@ -11389,23 +11419,7 @@ def _ai_failure_detail(exc: BaseException) -> str:
     and need someone to act; the third clears on its own. _normalize_openai_error
     already produces a specific message, so use it rather than discarding it.
     """
-    # tenacity wraps the cause when it gives up; unwrap to the real one.
-    cause = getattr(exc, "last_attempt", None)
-    if cause is not None:
-        try:
-            exc = cause.exception() or exc
-        except Exception:
-            pass
-    text = str(exc or "")
-    low = text.lower()
-    if "quota" in low or "insufficient_quota" in low or "billing" in low:
-        return "The AI account is out of credit. Add billing, then try again."
-    if ("invalid_api_key" in low or "unauthorized" in low
-            or ("api_key" in low or "api key" in low) and "invalid" in low):
-        return "The AI API key is not valid. Check the server configuration."
-    if "rate limit" in low or "429" in low or "timeout" in low or "timed out" in low:
-        return "The AI service is busy right now. Please try again in a moment."
-    return "AI generation failed. Please try again."
+    return user_error_detail(exc, "We couldn't tailor your resume this time. Please try again.")
 
 
 def _all_pdf_annotation_urls(pdf_path: str) -> set[str]:
@@ -11699,11 +11713,10 @@ async def _optimize_resume_core(
     # the list meant a shorter (or empty) ATS list silently swallowed those, and
     # the editor then had nothing to ask about at all.
     #
-    # On the extension (auto_add_skills=True) nothing is withheld and there is
-    # no UI to ask through, so the list stays empty rather than being refilled.
-    if auto_add_skills:
-        parsed["skill_gaps"] = []
-    elif jd_hard_skills is not None:
+    # The extension gets the same list: inject_jd_hard_skills withholds
+    # unevidenced JD skills on both surfaces, and the extension's pop-up is where
+    # the user adds them. Wiping it here used to make those skills vanish.
+    if jd_hard_skills is not None:
         withheld = [str(s) for s in (parsed.get("skill_gaps") or []) if str(s).strip()]
         seen = {s.strip().lower() for s in ats_missing_hard}
         parsed["skill_gaps"] = list(ats_missing_hard) + [
@@ -12164,7 +12177,7 @@ async def upload_resume(
                 pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
             except Exception as e:
                 logger.exception("PDF render failed")
-                raise HTTPException(status_code=500, detail="Failed to render the PDF. Please try again.")
+                raise HTTPException(status_code=500, detail=user_error_detail(e, "Failed to render the PDF. Please try again."))
 
             if not os.path.exists(pdf_path):
                 raise HTTPException(status_code=404, detail="PDF file not found after generation")
@@ -12187,8 +12200,8 @@ async def upload_resume(
     except HTTPException:
         raise
     except Exception as e:
-        logger.exception("Uploaded file processing failed")
-        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
+        logger.exception("Resume tailoring failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(e, "We couldn't tailor your resume this time. Please try again."))
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -12213,6 +12226,73 @@ def _fallback_skill_is_acceptable(raw) -> bool:
     if not re.fullmatch(r"[A-Za-z0-9 .+#/&()'-]+", text):
         return False
     return bool(promptable_skill_gaps([text]))
+
+
+def _apply_confirmed_skills(resume_data: dict, requested) -> tuple[list[str], list[str], list[str]]:
+    """Write user-confirmed skills into resume_data["skills"] in place.
+
+    Only skills listed in the payload's own `skill_gaps` are accepted - the
+    candidate can confirm only what we asked about - using the gap list's JD
+    casing. Added skills are removed from `skill_gaps`. Shared by the website's
+    confirm dialog and the Chrome extension's skills pop-up.
+
+    Returns (added, already_present, rejected).
+    """
+    # Only what we offered. Matching on the raw skill_gaps rather than the
+    # filtered display list keeps this tolerant of the filter changing later.
+    offered = {
+        str(g).strip().lower(): str(g).strip()
+        for g in (resume_data.get("skill_gaps") or [])
+        if str(g or "").strip()
+    }
+
+    skills = resume_data.get("skills")
+    if not isinstance(skills, list):
+        skills = []
+    existing = {str(s).strip().lower() for s in skills if str(s or "").strip()}
+
+    # skill_gaps is the list the pills were built from, so normally every ticked
+    # skill is in it. It can go missing when the editor is working from a payload
+    # that lost the field (a saved resume, an older session, a re-render that
+    # rebuilt resume_data). Rejecting everything then makes the box look broken
+    # while showing pills the user just ticked. The gate exists to stop a forged
+    # payload writing arbitrary text into a resume, and _is_atomic_hard_skill
+    # already provides that, so fall back to it rather than refusing outright.
+    gate_is_open = not offered
+
+    added: list[str] = []
+    rejected: list[str] = []
+    already: list[str] = []
+    for raw in requested or []:
+        key = str(raw or "").strip().lower()
+        if not key:
+            continue
+        if key not in offered:
+            if gate_is_open and _fallback_skill_is_acceptable(raw):
+                offered[key] = _clean_inline_text(raw)
+            else:
+                rejected.append(str(raw))
+                continue
+        if key in existing:
+            already.append(str(raw).strip())
+            continue
+        # Use the wording from skill_gaps (which follows the JD's own casing),
+        # not whatever the client echoed back.
+        canonical = _clean_inline_text(offered[key])
+        if not canonical:
+            continue
+        skills.append(canonical)
+        existing.add(key)
+        added.append(canonical)
+
+    if added:
+        resume_data["skills"] = skills
+        added_lower = {s.lower() for s in added}
+        resume_data["skill_gaps"] = [
+            g for g in (resume_data.get("skill_gaps") or [])
+            if str(g).strip().lower() not in added_lower
+        ]
+    return added, already, rejected
 
 
 @app.post("/api/resume/add-confirmed-skills", include_in_schema=False)
@@ -12261,52 +12341,10 @@ async def add_confirmed_skills(request: Request):
     except (TypeError, ValueError):
         raise HTTPException(status_code=400, detail="template_id and style_id must be numbers")
 
-    # Only what we offered. Matching on the raw skill_gaps rather than the
-    # filtered display list keeps this tolerant of the filter changing later.
-    offered = {
-        str(g).strip().lower(): str(g).strip()
-        for g in (resume_data.get("skill_gaps") or [])
-        if str(g or "").strip()
-    }
-
-    skills = resume_data.get("skills")
-    if not isinstance(skills, list):
-        skills = []
-    existing = {str(s).strip().lower() for s in skills if str(s or "").strip()}
-
-    # skill_gaps is the list the pills were built from, so normally every ticked
-    # skill is in it. It can go missing when the editor is working from a payload
-    # that lost the field (a saved resume, an older session, a re-render that
-    # rebuilt resume_data). Rejecting everything then makes the box look broken
-    # while showing pills the user just ticked. The gate exists to stop a forged
-    # payload writing arbitrary text into a resume, and _is_atomic_hard_skill
-    # already provides that, so fall back to it rather than refusing outright.
-    gate_is_open = not offered
-
-    added: list[str] = []
-    rejected: list[str] = []
-    already: list[str] = []
-    for raw in requested:
-        key = str(raw or "").strip().lower()
-        if not key:
-            continue
-        if key not in offered:
-            if gate_is_open and _fallback_skill_is_acceptable(raw):
-                offered[key] = _clean_inline_text(raw)
-            else:
-                rejected.append(str(raw))
-                continue
-        if key in existing:
-            already.append(str(raw).strip())
-            continue
-        # Use the wording from skill_gaps (which follows the JD's own casing),
-        # not whatever the client echoed back.
-        canonical = _clean_inline_text(offered[key])
-        if not canonical:
-            continue
-        skills.append(canonical)
-        existing.add(key)
-        added.append(canonical)
+    added, already, rejected = _apply_confirmed_skills(resume_data, requested)
+    gate_is_open = not resume_data.get("skill_gaps") and not added
+    offered = {str(g).strip().lower(): str(g).strip() for g in (resume_data.get("skill_gaps") or [])}
+    existing = {str(s).strip().lower() for s in (resume_data.get("skills") or [])}
 
     if not added and already and not rejected:
         # Everything asked for is already on the resume. Clicking add a second
@@ -12338,8 +12376,6 @@ async def add_confirmed_skills(request: Request):
             ),
         )
 
-    resume_data["skills"] = skills
-
     # Remember the answer. Without this it lived only in this editing session, so
     # the next tailor - and every Chrome extension run, which has no confirm step
     # at all - started again from "the resume does not evidence this" and dropped
@@ -12356,19 +12392,13 @@ async def add_confirmed_skills(request: Request):
     finally:
         _sk_db.close()
 
-    added_lower = {s.lower() for s in added}
-    resume_data["skill_gaps"] = [
-        g for g in (resume_data.get("skill_gaps") or [])
-        if str(g).strip().lower() not in added_lower
-    ]
-
     try:
         html_content, _ = _render_resume_html(resume_data, jd_string, template_id, style_id)
     except HTTPException:
         raise
-    except Exception:
+    except Exception as exc:
         logger.exception("Re-render after confirming skills failed")
-        raise HTTPException(status_code=500, detail="Could not update the resume. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not update the resume. Please try again."))
 
     return JSONResponse({
         "success": True,
@@ -12378,6 +12408,114 @@ async def add_confirmed_skills(request: Request):
         "resume_data": resume_data,
         "promptable_skill_gaps": promptable_skill_gaps(resume_data.get("skill_gaps")),
     })
+
+
+@app.post("/api/extension/add-skills", include_in_schema=False)
+async def extension_add_skills(request: Request):
+    """The Chrome extension's skills pop-up: add the skills the user picked to a
+    resume /api/extension/tailor-resume just produced, and return the re-rendered
+    PDF. Re-render only - no LLM call and no quota, the tailor already paid.
+
+    `enable_auto` is the pop-up's "Add all automatically" button: it also turns
+    on ext_auto_add_skills so future tailors skip the pop-up."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+
+    try:
+        saved_id = int(body.get("saved_resume_id"))
+    except (TypeError, ValueError):
+        raise HTTPException(status_code=400, detail="saved_resume_id is required")
+    requested = body.get("skills")
+    if not isinstance(requested, list) or not requested:
+        raise HTTPException(status_code=400, detail="skills must be a non-empty list")
+    enable_auto = bool(body.get("enable_auto"))
+
+    db = get_db()
+    try:
+        saved = db.query(SavedResume).filter(
+            SavedResume.id == saved_id, SavedResume.user_id == user_id
+        ).first()
+        user = db.query(User).filter(User.id == user_id).first()
+        if not saved or not user:
+            raise HTTPException(status_code=404, detail="That resume is no longer available. Tailor it again.")
+        try:
+            resume_data = json.loads(saved.resume_json or "")
+        except (TypeError, ValueError):
+            resume_data = None
+        if not isinstance(resume_data, dict):
+            raise HTTPException(status_code=400, detail="That resume can't be edited. Tailor it again.")
+
+        added, _already, _rejected = _apply_confirmed_skills(resume_data, requested)
+
+        if enable_auto:
+            user.ext_auto_add_skills = True
+        if added:
+            # Same memory as the website's dialog: future tailors keep them.
+            try:
+                add_confirmed_skills_to_user(db, user, added)
+            except Exception:
+                logger.exception("Could not persist confirmed skills")
+
+        html_content, use_default_template = _render_resume_html(
+            resume_data, saved.jd_snippet or "", saved.template_id or 1, saved.style_id or 1
+        )
+        saved.resume_json = json.dumps(resume_data)
+        saved.html_content = html_content
+        db.commit()
+    finally:
+        db.close()
+
+    pdf_path = None
+    try:
+        pdf_path = await asyncio.to_thread(_render_resume_pdf_sync, html_content, use_default_template)
+        with open(pdf_path, "rb") as f:
+            pdf_bytes = f.read()
+    except Exception as exc:
+        logger.exception("Extension add-skills render failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to render the PDF. Please try again."))
+    finally:
+        if pdf_path and os.path.exists(pdf_path):
+            os.remove(pdf_path)
+
+    return JSONResponse({
+        "success": True,
+        "pdf_base64": base64.b64encode(pdf_bytes).decode("ascii"),
+        "filename": "tailored_resume.pdf",
+        "added": added,
+        "auto_add_skills": enable_auto,
+    })
+
+
+@app.post("/api/extension/settings", include_in_schema=False)
+async def extension_settings(request: Request):
+    """Extension preferences. Currently only the account menu's "Add missing
+    skills automatically" switch."""
+    user_id = request.session.get("user_id")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Not logged in")
+    try:
+        body = await request.json()
+    except Exception:
+        raise HTTPException(status_code=400, detail="Invalid request body")
+    if not isinstance(body.get("auto_add_skills"), bool):
+        raise HTTPException(status_code=400, detail="auto_add_skills must be true or false")
+
+    db = get_db()
+    try:
+        user = db.query(User).filter(User.id == user_id).first()
+        if not user:
+            raise HTTPException(status_code=401, detail="Not logged in")
+        user.ext_auto_add_skills = body["auto_add_skills"]
+        db.commit()
+        value = bool(user.ext_auto_add_skills)
+    finally:
+        db.close()
+    return JSONResponse({"success": True, "auto_add_skills": value})
 
 
 @app.post("/api/download-html-pdf")
@@ -12415,7 +12553,7 @@ async def download_html_pdf(request: Request):
         logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to generate the PDF. Please try again."))
 
 
 @app.post("/api/estimate-html-pages")
@@ -12445,7 +12583,7 @@ async def estimate_html_pages(request: Request):
         return {"success": True, "pages": pages}
     except Exception as exc:
         logger.exception("Page estimate failed")
-        raise HTTPException(status_code=500, detail="Could not estimate pages. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not estimate pages. Please try again."))
 
 def _detect_two_column_layout(pdf_path: str) -> bool:
     """
@@ -12669,8 +12807,8 @@ async def get_score(request: Request, jd_string: str, file: UploadFile = File(..
     except HTTPException:
         raise
     except Exception as e:
-        logger.exception("Uploaded file processing failed")
-        raise HTTPException(status_code=500, detail="Could not process the uploaded file. Please try again.")
+        logger.exception("ATS scoring failed")
+        raise HTTPException(status_code=500, detail=user_error_detail(e, "We couldn't score your resume this time. Please try again."))
     finally:
         db.close()
         if file_path and os.path.exists(file_path):
@@ -12909,7 +13047,7 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
             response_string = await get_resume_response(prompt)
         except Exception as exc:
             logger.exception("AI generation failed")
-            raise HTTPException(status_code=500, detail="AI generation failed. Please try again.")
+            raise HTTPException(status_code=500, detail=user_error_detail(exc, "We couldn't extract your CV details this time. Please try again."))
 
         parsed = parse_ai_json_response(response_string)
         parsed = restore_dropped_bullets(parsed, resume_text)
@@ -12918,7 +13056,7 @@ async def extract_cv_from_pdf(request: Request, file: UploadFile = File(...)):
         raise
     except Exception as exc:
         logger.exception("CV extraction failed")
-        raise HTTPException(status_code=500, detail="Could not read the CV. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not read the CV. Please try again."))
     finally:
         if file_path and os.path.exists(file_path):
             os.remove(file_path)
@@ -12951,7 +13089,7 @@ async def extract_cv_from_text(request: Request):
         raise
     except Exception as exc:
         logger.exception("CV text extraction failed")
-        raise HTTPException(status_code=500, detail="Could not read the CV text. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Could not read the CV text. Please try again."))
 
 
 @app.get("/api/resume-templates")
@@ -13032,7 +13170,7 @@ async def download_cv_pdf(request: Request):
         logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to generate the PDF. Please try again."))
 
 
 @app.post("/api/download-cv-pdf-browser")
@@ -13081,7 +13219,7 @@ async def download_cv_pdf_browser(
         logger.exception("PDF generation failed")
         if os.path.exists(pdf_path):
             os.remove(pdf_path)
-        raise HTTPException(status_code=500, detail="Failed to generate the PDF. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to generate the PDF. Please try again."))
 from bs4 import BeautifulSoup
 
 @app.post("/api/rerender-template")
@@ -13124,7 +13262,7 @@ async def rerender_template(request: Request):
         raise
     except Exception as exc:
         logger.exception("Template render failed")
-        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to render the template. Please try again."))
 
     return JSONResponse({"html": new_html, "template_id": template_id})
 
@@ -13293,7 +13431,7 @@ def _render_custom_cv_html_legacy(template_id: int, cv_data: dict) -> str:
         html_output = jinja_template.render(**context)
     except Exception as exc:
         logger.exception("Template render failed")
-        raise HTTPException(status_code=500, detail="Failed to render the template. Please try again.")
+        raise HTTPException(status_code=500, detail=user_error_detail(exc, "Failed to render the template. Please try again."))
 
     style_filename = ""
     if template_id == 6:

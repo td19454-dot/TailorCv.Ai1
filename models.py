@@ -22,6 +22,10 @@ class User(Base):
     # resume with no confirm step, so every extension run silently dropped every
     # skill they had ever ticked. Persisted here so it survives both.
     confirmed_skills = Column(Text, nullable=True)
+    # Chrome extension "Add all automatically": when on, every tailor writes
+    # every missing JD skill onto the resume instead of asking. Opt-in only,
+    # set from the extension's skills pop-up, cleared from its account menu.
+    ext_auto_add_skills = Column(Boolean, nullable=True, default=False)
     plan_provider = Column(String(20), nullable=True)                  # "razorpay" | "polar"
     razorpay_subscription_id = Column(String(100), nullable=True)
     polar_subscription_id = Column(String(100), nullable=True)
