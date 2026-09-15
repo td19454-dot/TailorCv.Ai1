@@ -8704,7 +8704,7 @@ DEFAULT_PORTFOLIO_THEME = "editor"
 # Themes a free account can publish. Everything else in PORTFOLIO_THEMES is Pro.
 # Kept as an explicit allow-list (not a "pro themes" deny-list) so a newly added
 # theme is Pro by default rather than silently free.
-PORTFOLIO_FREE_THEMES = {"panels", "neon", "terminal"}
+PORTFOLIO_FREE_THEMES = {"panels", "neon", "terminal", "hacker", "magazine"}
 
 # What a free user gets when they ask for a Pro theme. NOT DEFAULT_PORTFOLIO_THEME:
 # that is "editor" (a Pro theme), and it stays the fallback for rendering old rows

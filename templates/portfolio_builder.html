@@ -491,10 +491,11 @@
                 <div class="solx-kicker">Design gallery</div>
                 <h2 class="solx-h2">Find the perfect portfolio design <span class="g">for your career goals</span></h2>
                 <p class="solx-lead">Click any design to see it live. Publish free on <b>yourname.thetailorcv.com</b>, or go Pro for <b>yourname.netlify.app</b>.</p>
-                <div class="solx-carousel wide big">
+                <div class="solx-carousel wide big gallery-wide">
                     <button type="button" class="solx-car-btn solx-car-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
                     <div class="solx-car-track">
                         {% for _k, _label in themes.items() %}{% set _m = theme_media.get(_k) %}{% if _m and _m.image %}
+                        {% set _locked = (_k not in (free_themes | default([]))) and not (is_pro_user | default(false)) %}
                         <div class="solx-car-item">
                             {% set _nm = _label.replace('—', '-').split('-')[0].strip() %}
                             {% if _m.demo %}
@@ -506,6 +507,11 @@
                             <div class="solx-car-shot"><img src="{{ _m.image }}" alt="{{ _nm }} portfolio design preview" loading="lazy" decoding="async"></div>
                             {% endif %}
                             <div class="solx-car-name">{{ _nm }}</div>
+                            <button type="button" class="solx-car-use{% if _locked %} locked{% endif %}"
+                                    data-theme="{{ _k }}"
+                                    aria-label="{% if _locked %}Unlock the {{ _nm }} design with Pro{% else %}Use the {{ _nm }} design{% endif %}">
+                                {% if _locked %}&#128274; Unlock with Pro &rarr;{% else %}Use this template &rarr;{% endif %}
+                            </button>
                         </div>
                         {% endif %}{% endfor %}
                     </div>
@@ -553,6 +559,38 @@
             buildDots(); sync();
           }
           document.querySelectorAll('.solx-carousel').forEach(init);
+
+          // "Use this template" sends the visitor to signup.
+          //
+          // This whole marketing section renders inside {% raw %}{% if not is_logged_in %}{% endraw %},
+          // and the builder itself (<main class="pb">, the .pb-tpl cards and
+          // pbPickTheme) renders inside {% raw %}{% if is_logged_in %}{% endraw %} - the two never
+          // exist on the same page. An earlier version of this handler looked
+          // for the matching .pb-tpl card and called pbPickTheme() on it, which
+          // could NEVER match for the only audience that sees these buttons, so
+          // the button quietly did nothing at all.
+          //
+          // The chosen design is stashed under the builder's own localStorage
+          // key first, so it survives the signup round-trip and the template
+          // they clicked is the one already selected when they land in the
+          // builder. Merged into whatever is stored rather than overwriting, so
+          // a returning user keeps their saved details.
+          var PB_KEY = 'tailorcv_portfolio_builder';
+          document.addEventListener('click', function (ev) {
+            var btn = ev.target.closest && ev.target.closest('.solx-car-use');
+            if (!btn) return;
+            ev.preventDefault();
+            var slug = btn.getAttribute('data-theme');
+            if (slug) {
+              try {
+                var saved = {};
+                try { saved = JSON.parse(localStorage.getItem(PB_KEY)) || {}; } catch (e) { saved = {}; }
+                saved.theme = slug;
+                localStorage.setItem(PB_KEY, JSON.stringify(saved));
+              } catch (e) { /* private mode / blocked storage - continue anyway */ }
+            }
+            window.location.href = '/signup?next=/portfolio';
+          });
         })();
         </script>
 

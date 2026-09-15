@@ -263,7 +263,9 @@ def test_theme_gating():
         id = 2
         pro_until = datetime.utcnow() + timedelta(days=30)
 
-    ok &= check("free themes are 3", main.PORTFOLIO_FREE_THEMES == {"panels", "neon", "terminal"})
+    ok &= check("free themes are the published allow-list",
+                main.PORTFOLIO_FREE_THEMES
+                == {"panels", "neon", "terminal", "hacker", "magazine"})
     ok &= check("free themes are real themes",
                 main.PORTFOLIO_FREE_THEMES <= set(main.PORTFOLIO_THEMES))
     ok &= check("free fallback is itself free",
