@@ -9,6 +9,15 @@ async function getCsrfToken() {
   return cookie ? cookie.value : '';
 }
 
+// Service workers have no DOM (no URL.createObjectURL), so build a data URL.
+async function downloadPdfBase64(pdfBase64, filename) {
+  await chrome.downloads.download({
+    url: `data:application/pdf;base64,${pdfBase64}`,
+    filename: filename || 'tailored_resume.pdf',
+    saveAs: false,
+  });
+}
+
 function arrayBufferToBase64(buffer) {
   let binary = '';
   const bytes = new Uint8Array(buffer);
@@ -318,14 +327,69 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           const skillGaps = Array.isArray(data.skill_gaps) ? data.skill_gaps : [];
           const changes = data.changes || {};
 
-          // Service workers have no DOM (no URL.createObjectURL), so build a data URL.
-          const dataUrl = `data:application/pdf;base64,${data.pdf_base64}`;
-          await chrome.downloads.download({
-            url: dataUrl,
-            filename: data.filename || 'tailored_resume.pdf',
-            saveAs: false,
+          // Missing skills to ask about: hold the download. content.js shows the
+          // skills pop-up and then downloads either the re-rendered PDF
+          // (ADD_SKILLS) or this one unchanged ("Not now" -> DOWNLOAD_PDF).
+          if (data.pending_skill_choice && skillGaps.length) {
+            sendResponse({ data: {
+              success: true, pendingSkillChoice: true, afterScore, skillsAdded, skillGaps, changes,
+              savedResumeId: data.saved_resume_id,
+              pdfBase64: data.pdf_base64,
+              filename: data.filename || 'tailored_resume.pdf',
+            } });
+            return;
+          }
+
+          await downloadPdfBase64(data.pdf_base64, data.filename);
+          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes, autoAddSkills: !!data.auto_add_skills } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'ADD_SKILLS') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/add-skills`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(msg.payload),
           });
-          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes } });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            sendResponse({ error: data.detail || 'Could not add those skills.' });
+            return;
+          }
+          // The profile carries auto_add_skills for the account-menu switch.
+          if (msg.payload && msg.payload.enable_auto) await clearAuthCache();
+          await downloadPdfBase64(data.pdf_base64, data.filename);
+          sendResponse({ data: { success: true, added: data.added || [] } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'DOWNLOAD_PDF') {
+        try {
+          await downloadPdfBase64(msg.pdfBase64, msg.filename);
+          sendResponse({ data: { success: true } });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
+      } else if (msg.type === 'SET_AUTO_ADD_SKILLS') {
+        try {
+          const res = await fetch(`${BASE_URL}/api/extension/settings`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ auto_add_skills: !!msg.value }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) {
+            sendResponse({ error: data.detail || 'Could not save that setting.' });
+            return;
+          }
+          await clearAuthCache();
+          sendResponse({ data: { autoAddSkills: !!data.auto_add_skills } });
         } catch (e) {
           sendResponse({ error: e.message });
         }

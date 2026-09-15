@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 import re
 import secrets
@@ -10,6 +11,10 @@ from fastapi import APIRouter, HTTPException, Query, Request
 from fastapi.responses import RedirectResponse
 from openai import AsyncOpenAI
 from pydantic import BaseModel
+
+from functions import user_error_detail
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
@@ -498,10 +503,21 @@ async def parse_linkedin(body: LinkedInParseRequest):
             raise HTTPException(status_code=400, detail="Please paste more text from your LinkedIn profile.")
         parsed = await _parse_cv_with_openai(api_key, raw_text)
         return {"success": True, "data": parsed}
-    except json.JSONDecodeError as exc:
-        raise HTTPException(status_code=500, detail=f"Could not parse response: {exc}")
+    except HTTPException:
+        raise
+    except json.JSONDecodeError:
+        logger.exception("LinkedIn text parse returned invalid JSON")
+        raise HTTPException(
+            status_code=500,
+            detail="We couldn't make sense of that LinkedIn text. Paste your full profile "
+                   "(About, Experience, Education) and try again.",
+        )
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Server error: {exc}")
+        logger.exception("LinkedIn text parse failed")
+        raise HTTPException(
+            status_code=500,
+            detail=user_error_detail(exc, "We couldn't import your LinkedIn profile. Please try again."),
+        )
 
 
 async def _fetch_linkedin_html_text(linkedin_url: str) -> str:
