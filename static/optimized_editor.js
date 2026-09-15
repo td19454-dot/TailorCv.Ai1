@@ -2300,68 +2300,105 @@ body {
 @keyframes tc-chg-bgin { from { opacity:0; } to { opacity:1; } }
 .tc-chg-modal {
     position: relative; z-index: 2; overflow: hidden;
-    background: linear-gradient(170deg, #f6f9ff 0%, #ffffff 42%);
-    border: 1px solid #c7d7f5;
-    border-radius: 18px;
-    padding: 1.9rem 2.1rem 1.6rem;
-    width: min(760px, 94vw);
+    background: #ffffff;
+    border: 1px solid #e8e3f5;
+    border-radius: 20px;
+    /* Generous, asymmetric padding: more at the top so the title has air, and
+       a wide gutter so long diff lines never crowd the edge. */
+    padding: 2.4rem 2.5rem 2rem;
+    width: min(780px, 94vw);
     max-height: 88vh; overflow-y: auto;
-    box-shadow: 0 26px 70px rgba(15,32,80,0.30), 0 2px 8px rgba(15,32,80,0.10);
+    box-shadow: 0 30px 80px rgba(40,10,90,0.22), 0 2px 10px rgba(40,10,90,0.08);
     animation: tc-chg-modal-in 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    font-family: 'poppins', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 @keyframes tc-chg-modal-in {
     from { opacity:0; transform:scale(0.85) translateY(20px); }
     to   { opacity:1; transform:scale(1) translateY(0); }
 }
+/* House gradient, matching --brand-grad in blog.css. */
 .tc-chg-modal::before {
     content: ""; position: absolute; inset: 0 0 auto 0; height: 4px;
-    background: linear-gradient(90deg, #1d4ed8, #4f46e5 55%, #7c3aed);
+    background: linear-gradient(144deg, #AF40FF 0%, #5B42F3 50%, #00DDEB 100%);
 }
 .tc-chg-modal h2 {
-    margin: 0 0 0.9rem; padding-right: 2rem;
-    color: #0b1220; font-size: 0.98rem; font-weight: 600; letter-spacing: -0.01em;
+    margin: 0 0 0.4rem; padding-right: 2rem;
+    color: #12082b; font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em;
 }
 .tc-chg-close {
-    position: absolute; top: 1.1rem; right: 1.2rem;
-    background: none; border: none; font-size: 1.3rem; line-height: 1;
-    color: #64748b; cursor: pointer; padding: 4px 8px; border-radius: 8px;
+    position: absolute; top: 1.3rem; right: 1.4rem;
+    background: none; border: none; font-size: 1.35rem; line-height: 1;
+    color: #8b83a3; cursor: pointer; padding: 4px 9px; border-radius: 9px;
+    transition: background .18s ease, color .18s ease;
 }
-.tc-chg-close:hover { background: #eef2ff; color: #1d4ed8; }
+.tc-chg-close:hover { background: #f3efff; color: #6405fc; }
+/* Section titles carry a brand rule so the eye finds the structure. */
 .tc-chg-section-title {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
-    color: #64748b; margin: 1.1rem 0 0.5rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #6405fc; margin: 2rem 0 0.15rem; padding-left: 0.65rem;
+    border-left: 3px solid #6405fc; line-height: 1.3;
 }
-.tc-chg-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.tc-chg-section-title:first-child { margin-top: 1rem; }
+.tc-chg-note {
+    font-size: 0.78rem; color: #6b6480; margin: 0 0 0.75rem 0.65rem; line-height: 1.5;
+}
+.tc-chg-pills { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-left: 0.65rem; }
 .tc-chg-pill {
-    display: inline-flex; align-items: center; padding: 0.28rem 0.7rem;
-    border-radius: 999px; font-size: 0.76rem; font-weight: 500;
-    border: 1px solid #a7e3c5; background: #d1fae5; color: #065f46;
+    display: inline-flex; align-items: center; padding: 0.34rem 0.8rem;
+    border-radius: 999px; font-size: 0.78rem; font-weight: 500;
+    border: 1px solid #a7e3c5; background: #e8faf0; color: #065f46;
 }
-.tc-chg-pill.gap { background: #d1fae5; border-color: #a7e3c5; color: #065f46; }
+/* Gaps are NOT additions - they must never read as the same thing. */
+.tc-chg-pill.gap {
+    background: #fff8ec; border-color: #f0d29a; color: #8a5a00;
+    border-style: dashed;
+}
 .tc-chg-summary-box, .tc-chg-entry {
-    border: 1px solid #e3e9f7; border-radius: 12px; padding: 0.8rem 0.95rem;
-    margin: 0.6rem 0; background: #fbfcff;
+    border: 1px solid #ece8f7; border-radius: 14px; padding: 1.15rem 1.25rem;
+    margin: 0.75rem 0 0; background: #fcfbff;
 }
-.tc-chg-entry-label { font-size: 0.82rem; font-weight: 600; color: #0b1220; margin-bottom: 0.4rem; }
-.tc-chg-bullet { font-size: 0.8rem; line-height: 1.55; margin: 0.5rem 0; }
-.tc-chg-before-line { color: #64748b; }
-.tc-chg-after-line { color: #0b1220; margin-top: 0.15rem; }
-.tc-chg-del { text-decoration: line-through; color: #b91c1c; background: #fee2e2; border-radius: 3px; }
-.tc-chg-add { color: #065f46; background: #d1fae5; border-radius: 3px; font-weight: 600; }
+.tc-chg-entry + .tc-chg-entry { margin-top: 0.85rem; }
+.tc-chg-entry-label {
+    font-size: 0.92rem; font-weight: 600; color: #12082b; margin-bottom: 0.7rem;
+    padding-bottom: 0.6rem; border-bottom: 1px solid #f0ecfa;
+}
+.tc-chg-bullet { font-size: 0.84rem; line-height: 1.75; margin: 0 0 1.1rem; }
+.tc-chg-bullet:last-child { margin-bottom: 0; }
+/* Before/after read as a pair: the old line recedes, the new line leads. */
+.tc-chg-before-line {
+    color: #9992ab; margin-top: 0.35rem;
+    padding-left: 0.7rem; border-left: 2px solid #eee9f8;
+}
+.tc-chg-after-line {
+    color: #12082b; margin-top: 0.4rem;
+    padding-left: 0.7rem; border-left: 2px solid #6405fc;
+}
+/* Calmer diff: no red wash. Deletions recede, additions are marked once. */
+.tc-chg-del { text-decoration: line-through; text-decoration-color: #c9c2db; color: #9992ab; }
+.tc-chg-add { color: #12082b; background: #ecfdf3; border-radius: 3px; padding: 0 2px; font-weight: 600; }
 .tc-chg-tag {
-    display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.03em;
-    text-transform: uppercase; padding: 0.1rem 0.45rem; border-radius: 5px; margin-right: 0.4rem;
+    display: inline-block; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.16rem 0.5rem; border-radius: 6px;
     vertical-align: middle;
 }
-.tc-chg-tag.new       { background: #d1fae5; color: #0b1220; }
-.tc-chg-tag.reworded  { background: #d1fae5; color: #0b1220; }
-.tc-chg-tag.unchanged { background: #e2e8f0; color: #475569; }
-.tc-chg-removed-title { font-size: 0.7rem; font-weight: 700; color: #b91c1c; margin-top: 0.5rem; }
-.tc-chg-removed { font-size: 0.76rem; color: #b91c1c; text-decoration: line-through; margin: 0.2rem 0; }
-.tc-chg-empty { font-size: 0.82rem; color: #64748b; padding: 1rem 0; }
+.tc-chg-tag.new       { background: #ecfdf3; color: #05683f; }
+.tc-chg-tag.reworded  { background: #f3efff; color: #6405fc; }
+.tc-chg-tag.unchanged { background: #f1f0f5; color: #6b6480; }
+.tc-chg-removed-title {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #8a5a00; margin-top: 1rem;
+}
+.tc-chg-removed {
+    font-size: 0.8rem; color: #9992ab; text-decoration: line-through;
+    text-decoration-color: #d8d2e6; margin: 0.35rem 0; line-height: 1.6;
+}
+.tc-chg-empty { font-size: 0.86rem; color: #6b6480; padding: 1.2rem 0; line-height: 1.6; }
 @media (max-width: 640px) {
-    .tc-chg-modal { padding: 1.5rem 1.2rem 1.3rem; }
+    .tc-chg-modal { padding: 1.9rem 1.3rem 1.5rem; border-radius: 16px; }
+    .tc-chg-modal h2 { font-size: 1.08rem; }
+    .tc-chg-section-title { margin-top: 1.6rem; }
+    .tc-chg-summary-box, .tc-chg-entry { padding: 0.95rem 1rem; }
 }
 `;
         document.head.appendChild(st);
@@ -2396,6 +2433,13 @@ body {
             body.appendChild(t);
         }
 
+        function addNote(text) {
+            const n = document.createElement("div");
+            n.className = "tc-chg-note";
+            n.textContent = text;
+            body.appendChild(n);
+        }
+
         function addPills(items, extraClass) {
             const wrap = document.createElement("div");
             wrap.className = "tc-chg-pills";
@@ -2409,12 +2453,9 @@ body {
         }
 
         if (skillsAdded.length) {
-            addSectionTitle(`Skills added (${skillsAdded.length})`);
+            addSectionTitle(`Added to your skills (${skillsAdded.length})`);
+            addNote("Found in your resume and asked for by this job.");
             addPills(skillsAdded);
-        }
-        if (skillGaps.length) {
-            addSectionTitle(`Skills Added`);
-            addPills(skillGaps, "gap");
         }
 
         if (summary && summary.status !== "unchanged") {
@@ -2492,6 +2533,18 @@ body {
 
                 body.appendChild(card);
             });
+        }
+
+        // Gaps go LAST and are never called "added". They are skills this job
+        // asks for that the resume does not evidence - we deliberately withheld
+        // them. The panel used to title this block "Skills Added", identical to
+        // the block above it, which told the candidate we had put React,
+        // Node.js, Java, MongoDB and Docker on their resume. We had not, and
+        // saying so is the exact failure the evidence gate exists to prevent.
+        if (skillGaps.length) {
+            addSectionTitle(`This job also asks for (${skillGaps.length})`);
+            addNote("Not added — your resume doesn't show these yet. Add any you genuinely have.");
+            addPills(skillGaps, "gap");
         }
 
         if (!skillsAdded.length && !skillGaps.length && !summary && !entries.length) {

@@ -1028,9 +1028,15 @@
 
     const title = document.createElement('div');
     title.className = 'tcv-skill-gaps-title';
+    // Gaps are NOT additions. This branch runs when nothing was added and what
+    // came through is `gaps` - skills this job asks for that the resume does
+    // not evidence, which we deliberately withheld. Titling them "Skills
+    // Added" told the candidate we had put them on the resume; they would find
+    // out otherwise in a screening call, which is the precise failure the
+    // evidence gate exists to prevent.
     title.textContent = showingAdded
       ? `Added ${skills.length} skill${skills.length === 1 ? '' : 's'} from this job`
-      : 'Skills Added';
+      : `This job also asks for ${skills.length} skill${skills.length === 1 ? '' : 's'}`;
     box.appendChild(title);
 
     const list = document.createElement('div');

@@ -265,12 +265,82 @@
 .solx-car-name { text-align:center; margin-top:14px; color:#e8edf6; font-size:1.02rem; font-weight:600; }
 /* Narrower cards than a 2-up, so the preview is not too wide */
 .solx-carousel.big .solx-car-item { flex-basis:calc((100% - 44px) / 2.5); }
+/* The design gallery breaks out of the 1180px text column: at 2.5-up inside it
+   the screenshots were small and the section carried wide empty gutters on
+   both sides. Only this carousel widens - .solx-wrap stays put so every other
+   section on the page keeps its reading measure. */
+.solx-carousel.gallery-wide { width:min(1560px, calc(100vw - 140px)); margin-left:50%; transform:translateX(-50%); }
+/* Exactly 2 cards per page, never a sliced third.
+   The track is scroll-snap with `gap:22px`, so a whole number of cards must
+   fill 100% of it: at 2.2-up the extra 0.2 rendered as a card chopped down the
+   middle at the right edge, which reads as a rendering fault rather than as an
+   invitation to scroll. The arrows and dots already say there is more. */
+.solx-carousel.gallery-wide.big .solx-car-item { flex-basis:calc((100% - 22px) / 2); }
+/* The arrows sit OUTSIDE the box by default (left:-22px). Once this carousel
+   spans nearly the full viewport there is no room out there, so they would be
+   clipped at the screen edge - pull them inside the track instead. */
+.solx-carousel.gallery-wide .solx-car-prev { left:10px; }
+.solx-carousel.gallery-wide .solx-car-next { right:10px; }
+@media (max-width:1240px){
+  .solx-carousel.gallery-wide { width:calc(100vw - 80px); }
+}
+/* These MUST out-specify `.solx-carousel.gallery-wide.big .solx-car-item` (3
+   classes) for the same reason the note further down gives: media queries add
+   no specificity, so the 2.2-up desktop rule otherwise wins on a phone and the
+   gallery showed ~2.2 cards each barely 100px wide. */
+@media (max-width:900px){
+  .solx-carousel.gallery-wide { width:calc(100vw - 44px); }
+  /* 2 whole cards, not 1.6: a fractional divisor slices the next card down the
+     middle at the right edge exactly the way 2.2-up did on desktop. */
+  .solx-carousel.gallery-wide.big .solx-car-item { flex-basis:calc((100% - 22px) / 2); }
+}
+@media (max-width:620px){
+  /* One WHOLE card at a time: a phone has no room for a second, and a portfolio
+     screenshot is unreadable below full width. 92% peeked the next card, which
+     is a common mobile affordance but reads here as the same sliced-card fault
+     - the arrows and dots already signal that there is more to scroll. */
+  .solx-carousel.gallery-wide.big .solx-car-item { flex-basis:100%; }
+  .solx-carousel.gallery-wide { width:calc(100vw - 32px); }
+  .solx-car-use { margin-top:10px; padding:13px 14px; font-size:.95rem; }
+}
 /* Website screenshots (real assets are ~2.09:1) fill their frame instead. */
 .solx-carousel.wide .solx-car-shot { aspect-ratio:1.75 / 1; background:#fff; }
 .solx-carousel.wide .solx-car-shot img { object-fit:cover; object-position:top center; padding:0; }
 /* Live-demo affordance on the portfolio designs */
 .solx-car-demo { position:absolute; left:0; right:0; bottom:0; display:flex; align-items:center; justify-content:center; gap:6px; padding:14px 12px 12px; font-size:.88rem; font-weight:600; color:#fff; background:linear-gradient(to top, rgba(8,13,32,.96), rgba(8,13,32,.72) 55%, rgba(8,13,32,0)); transition:color .2s ease; }
 .solx-car-item:hover .solx-car-demo { color:#8ec5ff; }
+/* A slow heartbeat so the label reads as something to press. It sat static and
+   looked like a caption on the screenshot rather than a control - on touch
+   there is no hover state to reveal that it is interactive. Kept gentle and
+   slow: this repeats forever on the page, and anything faster reads as an
+   error state rather than an invitation. */
+@keyframes solx-car-demo-beat {
+  0%, 62%, 100% { transform:scale(1); }
+  70%           { transform:scale(1.055); }
+  78%           { transform:scale(1); }
+  86%           { transform:scale(1.035); }
+}
+.solx-car-demo > * , .solx-car-demo { will-change:transform; }
+.solx-car-demo { animation:solx-car-demo-beat 3.2s ease-in-out infinite; transform-origin:center bottom; }
+/* Hovering means the user has already found it - stop the prompt. */
+.solx-car-item:hover .solx-car-demo { animation:none; }
+/* "Use this template" sits BELOW the shot, never inside it: .solx-car-shot is
+   an <a> that opens the live demo in a new tab, and nesting a second control
+   inside an anchor is invalid markup and fights that click. */
+.solx-car-use {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  width:100%; margin-top:12px; padding:11px 14px; border:0; border-radius:10px;
+  font-size:.9rem; font-weight:700; color:#fff; cursor:pointer;
+  font-family:inherit; background:linear-gradient(135deg,#7c3aed,#4c1d95);
+  box-shadow:0 4px 14px rgba(124,58,237,.35);
+  transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+.solx-car-use:hover { transform:translateY(-2px); box-shadow:0 8px 22px rgba(124,58,237,.5); filter:brightness(1.08); }
+.solx-car-use:focus-visible { outline:2px solid #a78bfa; outline-offset:2px; }
+/* Pro-locked themes say so rather than promising access they cannot deliver. */
+.solx-car-use.locked { background:linear-gradient(135deg,#b45309,#78350f); box-shadow:0 4px 14px rgba(180,83,9,.35); }
+.solx-car-use.locked:hover { box-shadow:0 8px 22px rgba(180,83,9,.5); }
+.solx-car-name + .solx-car-use { margin-top:10px; }
 .solx-car-shot:focus-visible { outline:2px solid #60a5fa; outline-offset:3px; }
 .solx-car-btn { position:absolute; top:38%; transform:translateY(-50%); width:48px; height:48px; border-radius:50%; display:grid; place-items:center; cursor:pointer; border:1px solid rgba(96,165,250,.35); background:rgba(10,20,48,.9); color:#cfe0ff; z-index:3; transition:background .2s ease, border-color .2s ease, opacity .2s ease; }
 .solx-car-btn:hover { background:rgba(37,99,235,.6); border-color:rgba(96,165,250,.85); }
@@ -296,7 +366,7 @@
      it compact so it frames the screenshot rather than covering it. */
   .solx-car-demo { padding:10px 10px 8px; font-size:.82rem; }
 }
-@media (prefers-reduced-motion: reduce){ .solx-car-track { scroll-behavior:auto; } .solx-car-item:hover .solx-car-shot { transform:none; } }
+@media (prefers-reduced-motion: reduce){ .solx-car-track { scroll-behavior:auto; } .solx-car-item:hover .solx-car-shot { transform:none; } .solx-car-demo { animation:none; } .solx-car-use { transition:none; } }
 
 /* ---- company logo row (monochrome white on dark) ---- */
 .solx-logos-row img { height: 24px; width: auto; filter: brightness(0) invert(1); opacity: .6; }
