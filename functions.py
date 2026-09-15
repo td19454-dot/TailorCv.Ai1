@@ -751,6 +751,108 @@ def _normalize_openai_error(exc: Exception) -> RuntimeError:
         )
     return RuntimeError(f"OpenAI request failed: {message}")
 
+
+class AIOutputError(ValueError):
+    """The model answered, but with output we could not use. str() is user-facing."""
+
+
+def _error_chain(exc: BaseException):
+    seen = set()
+    while exc is not None and id(exc) not in seen and len(seen) < 8:
+        seen.add(id(exc))
+        yield exc
+        # tenacity's RetryError hides the real failure in last_attempt.
+        last = getattr(exc, "last_attempt", None)
+        if last is not None:
+            try:
+                inner = last.exception()
+            except Exception:
+                inner = None
+            if inner is not None and id(inner) not in seen:
+                exc = inner
+                continue
+        exc = exc.__cause__ or exc.__context__
+
+
+def _classify_one_error(exc: BaseException) -> str | None:
+    name = type(exc).__name__
+    module = type(exc).__module__ or ""
+    low = str(exc).lower()
+
+    if name == "HTTPException" and isinstance(getattr(exc, "detail", None), str):
+        return exc.detail
+    if isinstance(exc, AIOutputError):
+        return str(exc)
+    # Before the substring checks: its message carries char offsets like "char 14290".
+    if isinstance(exc, json.JSONDecodeError):
+        return ("The AI returned an incomplete result. Please try again. If it keeps "
+                "happening, trim the job description to the key requirements.")
+
+    # AI provider. Quota/key problems are ours to fix, not the user's, so say so
+    # instead of asking them to retry into the same wall.
+    if ("insufficient_quota" in low or "exceeded your current quota" in low
+            or "openai quota exceeded" in low):
+        return ("Our AI service has hit its usage limit. This is on our side and we've "
+                "been alerted. Please try again later.")
+    if (name in ("AuthenticationError", "PermissionDeniedError") or "invalid_api_key" in low
+            or "openai_api_key is invalid" in low):
+        return ("Our AI service is misconfigured right now. This is on our side and we've "
+                "been alerted. Please try again later.")
+    if "context_length_exceeded" in low or "maximum context length" in low:
+        return ("Your resume and job description are too long for the AI to read together. "
+                "Trim the job description to the key requirements and try again.")
+    if "content_filter" in low or "content management policy" in low:
+        return ("The AI declined to process this text. Remove any unusual or sensitive "
+                "content from the job description and try again.")
+    if name == "RateLimitError" or "rate limit" in low or "error code: 429" in low:
+        return "The AI service is handling a lot of requests. Please wait a minute and try again."
+    if (name in ("APITimeoutError", "TimeoutError", "ReadTimeout", "ConnectTimeout")
+            or "timed out" in low or "timeout" in low):
+        return ("The AI took too long to respond. Please try again. Long resumes and job "
+                "descriptions are slower, so trimming the job description helps.")
+    if name in ("APIConnectionError", "ConnectError", "RemoteProtocolError"):
+        return "We couldn't reach the AI service. Please try again in a moment."
+    if name == "InternalServerError" and module.startswith("openai"):
+        return "The AI service had an outage on its side. Please try again in a few minutes."
+
+    # Reading the uploaded PDF.
+    if module.startswith(("pdfminer", "pdfplumber", "pypdf")):
+        if "password" in low or "encrypt" in low:
+            return ("This PDF is password-protected. Remove the password (or export a fresh "
+                    "copy from Word or Google Docs) and upload it again.")
+        return ("We couldn't read this PDF. The file may be damaged. Re-export it as a PDF "
+                "from Word or Google Docs and upload it again.")
+
+    # Rendering our own output.
+    if module.startswith(("weasyprint", "tinycss2", "pydyf", "cssselect2")):
+        return ("We couldn't build the PDF for this resume. Try a different template, or "
+                "remove unusual symbols from the text, and download again.")
+    if module.startswith("jinja2"):
+        return "We couldn't fill in this template with your details. Try a different template."
+
+    if module.startswith(("sqlalchemy", "psycopg2", "psycopg")):
+        return "We couldn't reach our database just now. Please try again in a minute."
+    if isinstance(exc, MemoryError):
+        return "This file is too large for us to process. Upload a smaller PDF (under 2 MB)."
+    if isinstance(exc, (PermissionError, FileNotFoundError, IsADirectoryError)) or (
+            isinstance(exc, OSError) and getattr(exc, "errno", None) == 28):
+        return "We couldn't store your file on our server. Please try again in a moment."
+    return None
+
+
+def user_error_detail(exc: BaseException | None, fallback: str) -> str:
+    """A specific, user-facing message for exc, or fallback if the cause is unknown.
+
+    Walks the cause chain because most failures arrive wrapped
+    (_normalize_openai_error, tenacity, asyncio.gather). Never returns raw
+    exception text, which would leak internals.
+    """
+    for e in _error_chain(exc):
+        msg = _classify_one_error(e)
+        if msg:
+            return msg
+    return fallback
+
 # The filler phrases Rule 00 bans from the professional summary. Defined here
 # rather than inline in the prompt so that create_prompt() and the deterministic
 # validator below (_summary_quality_issues) are guaranteed to police the SAME
@@ -6463,7 +6565,16 @@ The JSON must strictly follow the schema provided below.
         parsed = json.loads(content)
     except Exception:
         match = re.search(r"\{[\s\S]*\}\s*$", content)
-        parsed = json.loads(match.group(0)) if match else {}
+        try:
+            parsed = json.loads(match.group(0)) if match else {}
+        except json.JSONDecodeError as exc:
+            # JSON mode can degenerate into thousands of blank lines until
+            # max_tokens, leaving an unterminated object.
+            raise AIOutputError(
+                "Our AI scanner returned an incomplete report for this resume. Please scan "
+                "again. If it keeps failing, trim the job description to the key "
+                "requirements, or re-export your resume as a fresh PDF."
+            ) from exc
 
     if not isinstance(parsed, dict):
         parsed = {}

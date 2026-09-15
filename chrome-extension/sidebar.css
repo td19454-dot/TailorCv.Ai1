@@ -416,6 +416,123 @@
   line-height: 1.45 !important;
   color: #7e8ba3 !important;
 }
+.tcv-skill-gaps-note.tcv-error { color: #fca5a5 !important; }
+
+/* Post-tailor skills pop-up: the download waits on this, so it is the loudest
+   thing in the panel while it is up. */
+.tcv-skill-prompt {
+  padding: 14px !important;
+  margin: 6px 0 !important;
+  border-radius: 12px !important;
+  background: rgba(79,127,255,0.08) !important;
+  border: 1px solid rgba(79,127,255,0.35) !important;
+}
+.tcv-skill-prompt-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: #eaf1ff !important;
+}
+.tcv-skill-prompt-sub {
+  margin: 4px 0 10px !important;
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+  color: #a5b4cf !important;
+}
+.tcv-skill-prompt-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-bottom: 12px !important;
+}
+.tcv-skill-prompt-pill {
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  color: #cbd5e1 !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(148,163,184,0.35) !important;
+}
+.tcv-skill-prompt-pill[aria-pressed="true"] {
+  color: #6ee7b7 !important;
+  background: rgba(16,185,129,0.16) !important;
+  border-color: rgba(16,185,129,0.5) !important;
+}
+.tcv-skill-prompt-pill[aria-pressed="true"]::before { content: "✓ " !important; }
+.tcv-skill-prompt-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+.tcv-skill-btn {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  color: #eaf1ff !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+}
+.tcv-skill-btn:hover:not(:disabled) { background: rgba(255,255,255,0.12) !important; }
+.tcv-skill-btn-primary {
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
+  border-color: transparent !important;
+}
+.tcv-skill-btn-primary:hover:not(:disabled) { opacity: 0.9 !important; background: linear-gradient(135deg, #4f7fff, #7c3aed) !important; }
+.tcv-skill-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+.tcv-skill-notnow {
+  display: block !important;
+  margin: 8px auto 0 !important;
+  background: none !important;
+  border: none !important;
+  font-size: 11px !important;
+  color: #8da3c6 !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+.tcv-skill-notnow:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+
+/* Account-menu switch for "Add missing skills automatically". */
+.tcv-account-switch {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  line-height: 1.3 !important;
+}
+.tcv-account-switch input {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.tcv-switch-track {
+  position: relative !important;
+  flex: 0 0 30px !important;
+  width: 30px !important;
+  height: 17px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.18) !important;
+  transition: background .15s !important;
+}
+.tcv-switch-track::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  transition: transform .15s !important;
+}
+.tcv-account-switch input:checked + .tcv-switch-track { background: #10b981 !important; }
+.tcv-account-switch input:checked + .tcv-switch-track::after { transform: translateX(13px) !important; }
+.tcv-account-switch input:disabled + .tcv-switch-track { opacity: 0.5 !important; }
 
 .tcv-changes-panel {
   padding: 0 !important;
