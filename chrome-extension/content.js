@@ -515,6 +515,11 @@
         </div>
         <div class="tcv-account-menu" id="tcvAccountMenu">
           <div class="tcv-account-email" id="tcvAccountEmail"></div>
+          <label class="tcv-account-item tcv-account-switch" title="Every tailor adds all the skills the job lists that your resume doesn't show, without asking">
+            <span>Add missing skills automatically</span>
+            <input type="checkbox" id="tcvAutoSkills">
+            <span class="tcv-switch-track" aria-hidden="true"></span>
+          </label>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Change base resume</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-resume-template" target="_blank">Change resume template</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
@@ -605,6 +610,22 @@
         accountMenu.classList.remove('tcv-visible');
       }
     });
+    const autoSkillsInput = sb.querySelector('#tcvAutoSkills');
+    autoSkillsInput.addEventListener('change', async () => {
+      const want = autoSkillsInput.checked;
+      autoSkillsInput.disabled = true;
+      const res = await sendMessage({ type: 'SET_AUTO_ADD_SKILLS', value: want });
+      autoSkillsInput.disabled = false;
+      if (res.error) {
+        autoSkillsInput.checked = !want;   // server didn't take it — show the real state
+        globalStatus.className = 'tcv-status-text tcv-error';
+        globalStatus.textContent = `✗ ${res.error}`;
+        return;
+      }
+      autoSkillsInput.checked = !!(res.data && res.data.autoAddSkills);
+      track('auto_add_skills_toggled', { enabled: autoSkillsInput.checked, via: 'account_menu' });
+    });
+
     sb.querySelector('#tcvAccountLogout').addEventListener('click', async () => {
       const logoutBtn = sb.querySelector('#tcvAccountLogout');
       accountMenu.classList.remove('tcv-visible');
@@ -1010,7 +1031,7 @@
      is information the candidate needs: some of these they genuinely have and
      simply never wrote down. The website lets them tick those; the extension
      used to discard the list entirely, so they never even knew. */
-  function showSkillPanel(added, gaps) {
+  function showSkillPanel(added, gaps, auto) {
     const host = document.getElementById('tcv-skill-gaps');
     if (host) host.remove();
 
@@ -1046,8 +1067,9 @@
     const note = document.createElement('div');
     note.className = 'tcv-skill-gaps-note';
     note.textContent = showingAdded
-      ? 'Matched to this posting and added to your resume. Remove any you would ' +
-        'rather not be asked about in the interview.'
+      ? (auto
+          ? 'Added automatically — you turned this on. Switch it off in your account menu to be asked instead.'
+          : 'Added to your resume. Remove any you would rather not be asked about in the interview.')
       : 'Not added — your resume does not show these. If you do have any, add them ' +
         'once on thetailorcv.com and every future tailor will include them.';
     box.appendChild(note);
@@ -1242,25 +1264,162 @@
       globalStatus.className = 'tcv-status-text tcv-error';
       globalStatus.textContent = `✗ ${label}: ${res.error}`;
       track('tailor_failed', { error: res.error });
-    } else {
-      globalStatus.className = 'tcv-status-text tcv-ok';
-      globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
-      const after = res.data && typeof res.data.afterScore === 'number' ? res.data.afterScore : null;
-      showSuccessTick(job.beforeScore, after);
-      const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
-      const gaps  = (res.data && Array.isArray(res.data.skillGaps))  ? res.data.skillGaps  : [];
-      showSkillPanel(added, gaps);
-      showChangesPanel(res.data && res.data.changes);
-      track('tailor_downloaded', {
-        before_score: job.beforeScore,
-        after_score: after,
-        skills_added_count: added.length,
-        skill_gap_count: gaps.length,
+    } else if (res.data && res.data.pendingSkillChoice) {
+      // Download is held until the user answers the skills pop-up. Stay busy so
+      // a second tailor can't start underneath it.
+      tcvBusy = true;
+      globalStatus.className = 'tcv-status-text';
+      globalStatus.textContent = `Almost done — pick the skills to add for "${label}".`;
+      const gaps = Array.isArray(res.data.skillGaps) ? res.data.skillGaps : [];
+      track('skill_prompt_shown', { skill_gap_count: gaps.length });
+      showSkillPrompt(gaps, res.data, (added, error) => {
+        tcvBusy = false;
+        if (error) {
+          globalStatus.className = 'tcv-status-text tcv-error';
+          globalStatus.textContent = `✗ ${label}: ${error}`;
+        } else {
+          finishTailorSuccess(job, label, res.data, added, false);
+        }
+        if (sessionReady) renderJobFromPage();
       });
+    } else {
+      const added = (res.data && Array.isArray(res.data.skillsAdded)) ? res.data.skillsAdded : [];
+      finishTailorSuccess(job, label, res.data, added, !!(res.data && res.data.autoAddSkills));
     }
 
     // Refresh whichever job is on screen now that we're free to tailor again.
     if (sessionReady) renderJobFromPage();
+  }
+
+  function finishTailorSuccess(job, label, data, added, auto) {
+    globalStatus.className = 'tcv-status-text tcv-ok';
+    globalStatus.textContent = `✓ Downloaded resume for "${label}"`;
+    const after = data && typeof data.afterScore === 'number' ? data.afterScore : null;
+    showSuccessTick(job.beforeScore, after);
+    showSkillPanel(added, [], auto);
+    showChangesPanel(data && data.changes);
+    track('tailor_downloaded', {
+      before_score: job.beforeScore,
+      after_score: after,
+      skills_added_count: added.length,
+      auto_add_skills: auto,
+    });
+  }
+
+  function setAutoSkillsSwitch(on) {
+    const input = sb && sb.querySelector('#tcvAutoSkills');
+    if (input) input.checked = !!on;
+  }
+
+  /* Post-tailor skills pop-up — the extension's version of the website editor's
+     "tick the skills you have" dialog. The optimizer never writes a JD skill
+     the resume doesn't evidence; this is where the candidate adds the ones they
+     genuinely have. The PDF download waits on the answer, so the file they get
+     is the final one. `done(added, error)` fires once, after the download. */
+  function showSkillPrompt(gaps, data, done) {
+    const old = document.getElementById('tcv-skill-prompt');
+    if (old) old.remove();
+    const oldPanel = document.getElementById('tcv-skill-gaps');
+    if (oldPanel) oldPanel.remove();
+
+    const selected = new Set();
+    const box = document.createElement('div');
+    box.id = 'tcv-skill-prompt';
+    box.className = 'tcv-skill-prompt';
+
+    const title = document.createElement('div');
+    title.className = 'tcv-skill-prompt-title';
+    title.textContent = `This job asks for ${gaps.length} skill${gaps.length === 1 ? '' : 's'} your resume doesn't show`;
+    const sub = document.createElement('div');
+    sub.className = 'tcv-skill-prompt-sub';
+    sub.textContent = 'Tick the ones you genuinely have and could defend in an interview — we\'ll add them to your resume.';
+    box.append(title, sub);
+
+    const pills = document.createElement('div');
+    pills.className = 'tcv-skill-prompt-pills';
+    gaps.forEach(function (skill) {
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = 'tcv-skill-prompt-pill';
+      pill.setAttribute('aria-pressed', 'false');
+      pill.textContent = skill;          // textContent, never innerHTML
+      pill.addEventListener('click', function () {
+        const on = pill.getAttribute('aria-pressed') === 'true';
+        pill.setAttribute('aria-pressed', on ? 'false' : 'true');
+        if (on) selected.delete(skill); else selected.add(skill);
+        refresh();
+      });
+      pills.appendChild(pill);
+    });
+    box.appendChild(pills);
+
+    const actions = document.createElement('div');
+    actions.className = 'tcv-skill-prompt-actions';
+    const addSel = makeBtn('tcv-skill-btn tcv-skill-btn-primary', 'Add skills');
+    const addAll = makeBtn('tcv-skill-btn', 'Add all skills');
+    const addAuto = makeBtn('tcv-skill-btn', 'Add all skills automatically');
+    actions.append(addSel, addAll, addAuto);
+    box.appendChild(actions);
+
+    const note = document.createElement('div');
+    note.className = 'tcv-skill-gaps-note';
+    note.textContent = '"Automatically" adds every missing skill on all future tailors without asking. ' +
+      'Turn it off any time from your account menu.';
+    box.appendChild(note);
+
+    const notNow = makeBtn('tcv-skill-notnow', 'Not now — download without adding');
+    box.appendChild(notNow);
+
+    const buttons = [addSel, addAll, addAuto, notNow];
+    function makeBtn(cls, text) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = cls;
+      b.textContent = text;
+      return b;
+    }
+    function refresh() {
+      addSel.disabled = selected.size === 0;
+      addSel.textContent = selected.size
+        ? `Add ${selected.size} skill${selected.size === 1 ? '' : 's'}`
+        : 'Add skills';
+    }
+    function setBusy(busy) { buttons.forEach(function (b) { b.disabled = busy; }); if (!busy) refresh(); }
+
+    async function submit(skills, enableAuto, btn, via) {
+      const original = btn.textContent;
+      setBusy(true);
+      btn.textContent = 'Adding…';
+      const res = await sendMessage({
+        type: 'ADD_SKILLS',
+        payload: { saved_resume_id: data.savedResumeId, skills: skills, enable_auto: enableAuto },
+      });
+      if (res.error) {
+        btn.textContent = original;
+        setBusy(false);
+        note.className = 'tcv-skill-gaps-note tcv-error';
+        note.textContent = res.error;
+        return;
+      }
+      if (enableAuto) setAutoSkillsSwitch(true);
+      track('skill_prompt_added', { via: via, count: skills.length, enable_auto: enableAuto });
+      box.remove();
+      done((res.data && res.data.added) || skills, null);
+    }
+
+    addSel.addEventListener('click', function () { submit(Array.from(selected), false, addSel, 'selected'); });
+    addAll.addEventListener('click', function () { submit(gaps.slice(), false, addAll, 'all'); });
+    addAuto.addEventListener('click', function () { submit(gaps.slice(), true, addAuto, 'auto'); });
+    notNow.addEventListener('click', async function () {
+      setBusy(true);
+      const res = await sendMessage({ type: 'DOWNLOAD_PDF', pdfBase64: data.pdfBase64, filename: data.filename });
+      track('skill_prompt_skipped', { skill_gap_count: gaps.length });
+      box.remove();
+      done([], res.error || null);
+    });
+
+    refresh();
+    globalStatus.parentNode.insertBefore(box, globalStatus.nextSibling);
   }
 
   // ── State machine ────────────────────────────────────
@@ -1351,6 +1510,7 @@
     accountEmailEl.textContent = email;
     accountBtn.textContent = email.trim().charAt(0).toUpperCase() || '?';
     accountBtn.classList.add('tcv-visible');
+    setAutoSkillsSwitch(!!profileRes.data.auto_add_skills);
     if (typeof window.__tcvIdentify === 'function') window.__tcvIdentify(email);
 
     // Login confirmed: let the lock finish unlocking (green tick) while the
