@@ -149,13 +149,13 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/tailor-resume",
         "/api/extension/cover-letter",
         "/api/extension/skill-match",
-    # Client-side autofill. Exempt for the same reason as the four above:
-    # getCsrfToken() in the extension pings /api/auth/me on every call, which
-    # would double the latency of a request the user is watching a form wait
-    # on, and the session cookie is SameSite=lax so it is not sent on a
-    # cross-site POST at all.
-    "/api/extension/autofill/plan",
-    "/api/extension/apply-answers",
+        # Client-side autofill. Exempt for the same reason as the four above:
+        # getCsrfToken() in the extension pings /api/auth/me on every call, which
+        # would double the latency of a request the user is watching a form wait
+        # on, and the session cookie is SameSite=lax so it is not sent on a
+        # cross-site POST at all.
+        "/api/extension/autofill/plan",
+        "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }

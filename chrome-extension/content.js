@@ -1573,6 +1573,21 @@
       onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
     });
+
+    // Fetch the context in the background and repaint once. It carries the
+    // blockers ("upload your base resume first") and the quota state, and both
+    // are worth telling the user BEFORE they click Autofill and wait — finding
+    // out afterwards that no resume was on file wastes the click and reads as a
+    // failure rather than as something they can fix.
+    if (!applyCtx) {
+      const gen = extractGen;
+      ensureApplyContext().then((ctx) => {
+        if (gen !== extractGen || applyBusy) return;
+        if (!ctx || ctx.error) return;
+        if (!document.getElementById('tailorcv-sidebar')) return;
+        renderApplyReady();
+      });
+    }
   }
 
   async function runAutofill() {
