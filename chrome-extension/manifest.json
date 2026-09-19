@@ -31,14 +31,18 @@
     "*://*.simplyhired.com/*",
     "*://*.dice.com/*",
     "*://*.wellfound.com/*",
-    "https://thetailorcv.com/*"
+    "https://thetailorcv.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
   ],
   "optional_host_permissions": [
     "*://*/*"
   ],
   "externally_connectable": {
     "matches": [
-      "https://thetailorcv.com/*"
+      "https://thetailorcv.com/*",
+      "http://localhost/*",
+      "http://127.0.0.1/*"
     ]
   },
   "background": {
@@ -69,6 +73,7 @@
         "*://*.wellfound.com/*"
       ],
       "js": [
+        "env.js",
         "analytics.bundle.js",
         "styles.bundle.js",
         "autofill.bundle.js",

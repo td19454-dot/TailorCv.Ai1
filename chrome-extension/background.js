@@ -1,5 +1,15 @@
 // TailorCV — AI Resume Optimizer — Background Service Worker
-const BASE_URL = 'https://thetailorcv.com';
+
+// The backend URL lives in env.js so there is exactly one place to switch it —
+// see the comments there. importScripts is available because this worker is not
+// declared as a module; the fallback keeps the worker alive if env.js is ever
+// missing from a package, rather than failing to register at all.
+try {
+  importScripts('env.js');
+} catch (e) {
+  console.error('TailorCV: env.js failed to load, falling back to production —', e);
+}
+const BASE_URL = (self.__TCV_ENV && self.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
 
 async function getCsrfToken() {
   // Make sure a csrftoken cookie exists (the server sets one on every response),
@@ -104,6 +114,9 @@ chrome.action.onClicked.addListener(async (tab) => {
     await chrome.scripting.executeScript({
       target: { tabId: tab.id, allFrames: true }, files: ['autofill.bundle.js'],
     });
+    // env.js before content.js, mirroring the manifest's script order — this is
+    // the other place BASE_URL gets decided and it is easy to forget.
+    await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['env.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['analytics.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['styles.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['content.js'] });

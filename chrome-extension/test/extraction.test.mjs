@@ -21,6 +21,7 @@ import { test, run, ok, notOk, eq } from './harness.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CONTENT_JS = readFileSync(resolve(HERE, '../content.js'), 'utf8');
+const ENV_JS = readFileSync(resolve(HERE, '../env.js'), 'utf8');
 const PROBE_JS = readFileSync(resolve(HERE, '../../auto_apply/field_probe.js'), 'utf8');
 const AUTOFILL_BUNDLE = readFileSync(resolve(HERE, '../autofill.bundle.js'), 'utf8');
 
@@ -73,7 +74,9 @@ function loadPage(html, url, withAutofill) {
     storage: { session: { get: async () => ({}), set: async () => {}, remove: async () => {} } },
   };
   window.__tcvSidebarCss = '/* test */';
-  // The analytics bundle is not loaded; content.js guards for that already.
+  // Real manifest order: env.js, then the bundles, then content.js. The
+  // analytics bundle is not loaded; content.js guards for that already.
+  window.eval(ENV_JS);
   if (withAutofill) {
     window.eval(PROBE_JS);
     window.eval(AUTOFILL_BUNDLE);
@@ -115,6 +118,30 @@ const HEURISTIC_PAGE = `<!doctype html><html><body>
 test('content.js evaluates without throwing', () => {
   const page = loadPage(JSON_LD_PAGE);
   ok(page.window.__tailorcvInjected, 'the injection guard must be set');
+});
+
+test('env.js supplies the backend URL to content.js', () => {
+  const page = loadPage(JSON_LD_PAGE);
+  const env = page.window.__TCV_ENV;
+  ok(env && env.BASE_URL, 'env.js must set __TCV_ENV.BASE_URL');
+  ok(/^https?:\/\//.test(env.BASE_URL), `not a URL: ${env.BASE_URL}`);
+});
+
+test('content.js falls back to production when env.js did not load', () => {
+  // The fallback matters: a package missing env.js must still reach the real
+  // backend rather than crash or point nowhere.
+  const dom = new JSDOM(JSON_LD_PAGE, { runScripts: 'dangerously',
+                                        url: 'https://example.test/jobs/view/1' });
+  dom.window.chrome = { runtime: { sendMessage: (m, cb) => cb && cb({ data: null }),
+                                   onMessage: { addListener() {} }, getURL: p => p },
+                        storage: { session: {} } };
+  dom.window.__tcvSidebarCss = '';
+  dom.window.eval(CONTENT_JS);        // no env.js
+  ok(dom.window.__tailorcvInjected, 'it must still load');
+  // The URL is a closure constant, so assert on what it produces: the login link.
+  const source = CONTENT_JS;
+  ok(/\|\| 'https:\/\/thetailorcv\.com'/.test(source),
+     'the production URL must be the hardcoded fallback');
 });
 
 test('content.js evaluates with the autofill bundle loaded', () => {

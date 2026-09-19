@@ -7,7 +7,10 @@
     "build": "esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js && esbuild src/autofill.js --bundle --format=iife --loader:.css=text --outfile=autofill.bundle.js",
     "test": "node test/match.test.mjs && node test/probe.test.mjs && node test/plan.test.mjs && node test/write.test.mjs && node test/discover.test.mjs && node test/integration.test.mjs && node test/extraction.test.mjs",
     "package": "npm run build && node scripts/package.mjs",
-    "fixtures": "node test/build-fixture-pages.mjs"
+    "fixtures": "node test/build-fixture-pages.mjs",
+    "dev": "node scripts/set-env.mjs dev",
+    "prod": "node scripts/set-env.mjs prod",
+    "env": "node scripts/set-env.mjs"
   },
   "dependencies": {
     "posthog-js": "^1.407.2"

@@ -1133,14 +1133,21 @@
         // stuck on "no base resume set" catch up on its own the moment a
         // resume is actually saved here, instead of the user having to notice
         // and refresh it by hand.
-        var TAILORCV_EXTENSION_ID = 'lnkplncemohgcdjlgccgmbcgiokcgmno';
+        // The published id, plus a dev one when TAILORCV_DEV_EXTENSION_ID is set
+        // — an unpacked extension's id is machine-specific. Messaging an id that
+        // isn't installed is a no-op, so trying both costs nothing.
+        var TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
+          {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}
+        ];
         function notifyExtensionBaseResumeUpdated() {
             if (typeof chrome === 'undefined' || !chrome.runtime || !chrome.runtime.sendMessage) return;
-            try {
-                chrome.runtime.sendMessage(TAILORCV_EXTENSION_ID, { type: 'tailorcv-base-resume-updated' }, function () {
-                    void chrome.runtime.lastError; // nothing actionable here either way
-                });
-            } catch (e) { /* extension not installed / not reachable */ }
+            TAILORCV_EXTENSION_IDS.forEach(function (id) {
+                try {
+                    chrome.runtime.sendMessage(id, { type: 'tailorcv-base-resume-updated' }, function () {
+                        void chrome.runtime.lastError; // nothing actionable here either way
+                    });
+                } catch (e) { /* extension not installed / not reachable */ }
+            });
         }
 
         function saveSettings(fileOverride) {

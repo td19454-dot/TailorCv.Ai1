@@ -772,7 +772,13 @@
     // that channel can't be relied on here. chrome.runtime.sendMessage to the
     // extension's own ID via "externally_connectable" doesn't depend on any
     // window relationship at all, so it isn't affected by that.
-    var TAILORCV_EXTENSION_ID = 'lnkplncemohgcdjlgccgmbcgiokcgmno';
+    // The published id, plus a dev one when TAILORCV_DEV_EXTENSION_ID is set —
+    // an unpacked extension has a machine-specific id, so without this a local
+    // sign-in never reaches the sidebar. Messaging an id that isn't installed is
+    // a no-op (lastError, already ignored below), so trying both is free.
+    var TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
+      {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}
+    ];
 
     function tailorCvFinishLogin() {
       if (new URLSearchParams(window.location.search).get('ext') !== '1') {
@@ -785,13 +791,15 @@
       }
       console.log('[TailorCV] finishLogin: notifying the extension, closing this tab in 600ms');
       setTimeout(() => {
-        try {
-          chrome.runtime.sendMessage(TAILORCV_EXTENSION_ID, { type: 'tailorcv-login-success' }, function () {
-            void chrome.runtime.lastError; // nothing actionable from this tab either way
-          });
-        } catch (e) {
-          console.error('[TailorCV] finishLogin: sendMessage threw', e);
-        }
+        TAILORCV_EXTENSION_IDS.forEach(function (id) {
+          try {
+            chrome.runtime.sendMessage(id, { type: 'tailorcv-login-success' }, function () {
+              void chrome.runtime.lastError; // nothing actionable from this tab either way
+            });
+          } catch (e) {
+            console.error('[TailorCV] finishLogin: sendMessage threw', e);
+          }
+        });
         window.close();
       }, 600);
       return true;

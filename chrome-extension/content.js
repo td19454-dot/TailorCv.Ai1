@@ -27,7 +27,10 @@
   // (autofill.bundle.js, which DOES load in every frame, has no UI of its own.)
   if (window.top !== window) return;
 
-  const BASE_URL = 'https://thetailorcv.com';
+  // env.js is loaded before this file (see the manifest's content_scripts, and
+  // the toolbar-click injection chain in background.js). The fallback is the
+  // production URL, so a missing env.js degrades to shipping behaviour.
+  const BASE_URL = (window.__TCV_ENV && window.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
 
   // The autofill bundle, loaded before this file by the manifest. Feature-checked

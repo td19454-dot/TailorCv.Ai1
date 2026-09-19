@@ -388,6 +388,13 @@ templates.env.filters["skilliconurl"] = _skill_icon_url
 # Make the GSC verification token available to every template (used by
 # _seo_head.html to emit the verification meta tag).
 templates.env.globals["google_site_verification"] = GOOGLE_SITE_VERIFICATION
+# An UNPACKED extension gets a different, machine-specific id from the published
+# one, so the login page's "tell the extension I'm signed in" message never
+# arrives during local development and the sidebar sits on its logged-out view
+# after a successful Google sign-in. Set TAILORCV_DEV_EXTENSION_ID to the id
+# shown in chrome://extensions and the page notifies both. Empty in production,
+# where the published id is the only one that exists.
+templates.env.globals["dev_extension_id"] = os.getenv("TAILORCV_DEV_EXTENSION_ID", "").strip()
 app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)

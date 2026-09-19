@@ -25,6 +25,7 @@ const OUT = join(ROOT, 'dist', 'extension');
 // package.json and the store-listing assets.
 const SHIPPED = [
   'manifest.json',
+  'env.js',
   'background.js',
   'content.js',
   'analytics.bundle.js',
@@ -38,6 +39,23 @@ const SHIPPED = [
 ];
 
 const manifest = JSON.parse(readFileSync(join(ROOT, 'manifest.json'), 'utf8'));
+
+// An extension shipped pointing at localhost is a complete outage with no error
+// a user could act on — every request just fails to connect. Refused here rather
+// than remembered, because "flip env.js back before packaging" is precisely the
+// step that gets skipped.
+const PROD_BASE_URL = 'https://thetailorcv.com';
+const envSource = readFileSync(join(ROOT, 'env.js'), 'utf8');
+const envMatch = envSource.match(/var BASE_URL = '([^']*)';\s*\/\/ tcv:base-url/);
+if (!envMatch) {
+  console.error('Could not read BASE_URL out of env.js — refusing to package blind.');
+  process.exit(1);
+}
+if (envMatch[1] !== PROD_BASE_URL) {
+  console.error(`env.js points at ${envMatch[1]}, not ${PROD_BASE_URL}.`);
+  console.error('Run `npm run prod` first.');
+  process.exit(1);
+}
 
 // Every script the manifest references must be in SHIPPED. This is the check
 // that would have caught autofill.bundle.js being missing from the zip.
