@@ -34,6 +34,7 @@ import re
 import tempfile
 import threading
 import time
+from pathlib import Path
 from typing import Any, Coroutine
 
 from auto_apply import config
@@ -191,7 +192,7 @@ def _selector_kind(selector: str | None) -> tuple[str, str]:
     returned {}, and the fill registry, the anti-downgrade guard and the
     missing-field reconciliation were all silently inert — for every run.
 
-    Deliberately in Python rather than inside _FIELD_PROBE_JS: the JS string is
+    Deliberately in Python rather than inside field_probe.js: the JS was
     unreachable from the test suite (which stubs the browser call and feeds
     canned JSON), which is precisely how this survived. Here it is one pure
     function with unit tests."""
@@ -217,249 +218,39 @@ def _selector_kind(selector: str | None) -> tuple[str, str]:
 # sometimes replacing a correct answer with a worse one when the option list
 # happened not to be readable the second time round.
 #
-# Returns JSON.stringify'd output: a plain string is the return shape already
-# proven against this SDK (_marked_widget_text), where a nested dict is not.
-# One entry per input xpath, null where unresolvable, so the caller can zip
-# positionally. Read-only by design — unlike _mark_focused_field this writes
-# no attributes, so even a badly-resolved xpath cannot disturb the page.
-_FIELD_PROBE_JS = r"""
-(() => {
-  const XPATHS = __XPATHS__;
-  const txt = (n) => (n && n.textContent ? n.textContent.replace(/\s+/g, ' ').trim() : '');
-  const attr = (n, a) => ((n && n.getAttribute && n.getAttribute(a)) || '').trim();
+# Read-only by design — unlike _mark_focused_field the probe writes no
+# attributes, so even a badly-resolved xpath cannot disturb the page.
+#
+# The probe's JavaScript now lives in field_probe.js beside this file, because
+# the Chrome extension's client-side autofill runs the very same code in the
+# user's own tab. Two copies of "what is this field and does it already hold an
+# accepted value?" would drift, and every divergence would be a silent
+# correctness bug in one of the two engines — so there is exactly one copy and
+# both load it.
+#
+# Read once at import: it is a few KB, it never changes at runtime, and doing it
+# per call would put a synchronous disk read inside the fill loop.
+_FIELD_PROBE_SRC = (Path(__file__).with_name("field_probe.js")).read_text(encoding="utf-8")
 
-  // Each entry is [kind, selector], already classified and normalized by
-  // _selector_kind() in Python — see its docstring for why the raw string
-  // could not be resolved here. Both engines stay as mutual fallbacks in case
-  // a selector is classified wrongly.
-  function resolve(pair) {
-    if (!pair || !pair[1]) return null;
-    const kind = pair[0], sel = pair[1];
-    const byXPath = () => {
-      try {
-        const r = document.evaluate(sel, document, null, 9, null); // FIRST_ORDERED_NODE_TYPE
-        return r ? r.singleNodeValue : null;
-      } catch (e) { return null; }
-    };
-    const byCss = () => {
-      try { return document.querySelector(sel); } catch (e) { return null; }
-    };
-    let n = (kind === 'xpath') ? (byXPath() || byCss()) : (byCss() || byXPath());
-    while (n && n.nodeType !== 1) n = n.parentNode;
-    return (n && n.nodeType === 1) ? n : null;
-  }
 
-  // The same field resolves to the <input>, a wrapper div, or a bare <label>
-  // depending on the pass. Normalise all three onto one control.
-  const CONTROL_SEL = 'select, textarea, input:not([type="hidden"]):not([type="file"]), [role="combobox"], [contenteditable="true"]';
-  function control(n) {
-    if (!n) return null;
-    const tag = (n.tagName || '').toLowerCase();
-    if (tag === 'label') {
-      const f = attr(n, 'for');
-      if (f) { let t = null; try { t = document.getElementById(f); } catch (e) {} if (t) return t; }
-      const inner = n.querySelector(CONTROL_SEL);
-      if (inner) return inner;
-    }
-    if (tag === 'input' || tag === 'select' || tag === 'textarea') return n;
-    if (attr(n, 'role') === 'combobox' || n.isContentEditable) return n;
-    // Never GUESS which control a multi-control node means. observe() can hand
-    // back a broad wrapper (a page-level <div class="application-container">),
-    // and taking its first control would give a dozen different fields the
-    // identity of whichever one happens to come first — usually First Name,
-    // which is filled. With the registry live that is actively dangerous: an
-    // empty field would be skipped as "already filled", and filled_field_labels
-    // would report a label that clears a genuinely-missing field, letting an
-    // incomplete form reach submit. Returning null instead means no identity,
-    // which means never skippable — the safe direction.
-    const own = only(n);
-    if (own) return own;
-    // Widening list deliberately excludes [class*="container"]: it matches
-    // page-level wrappers as readily as field ones. react-select is unaffected
-    // — it has its own rsContainer() lookup below.
-    const wide = n.closest && n.closest('fieldset, [class*="field"], [class*="form-group"]');
-    return (wide && only(wide)) || null;
-  }
+def _probe_js(xpaths: list[list[str]]) -> str:
+    """One evaluable expression that probes every selector in `xpaths`.
 
-  // The single control inside `n`, or null when it holds none or several.
-  function only(n) {
-    let found;
-    try { found = n.querySelectorAll(CONTROL_SEL); } catch (e) { return null; }
-    return found && found.length === 1 ? found[0] : null;
-  }
+    Returns JSON.stringify'd output: a plain string is the return shape already
+    proven against this SDK (_marked_widget_text), where a nested dict is not.
+    One entry per input xpath, null where unresolvable, so the caller can zip
+    positionally.
 
-  function labelFor(el) {
-    if (!el) return '';
-    const aria = attr(el, 'aria-label');
-    if (aria) return aria;
-    const by = attr(el, 'aria-labelledby');
-    if (by) {
-      const t = by.split(/\s+/).map(id => {
-        let e = null; try { e = document.getElementById(id); } catch (x) {} return e ? txt(e) : '';
-      }).filter(Boolean).join(' ');
-      if (t) return t;
-    }
-    const id = attr(el, 'id');
-    if (id) {
-      let lab = null;
-      try { lab = document.querySelector('label[for="' + id.replace(/["\\]/g, '\\$&') + '"]'); } catch (e) {}
-      if (lab) return txt(lab);
-    }
-    const anc = el.closest && el.closest('label');
-    if (anc) return txt(anc);
-    const fs = el.closest && el.closest('fieldset');
-    if (fs) { const lg = fs.querySelector('legend'); if (lg) return txt(lg); }
-    return attr(el, 'placeholder');
-  }
-
-  // The react-select wrapper for THIS control, or null.
-  //
-  // Must never climb past the widget. A plain el.closest('[class*="container"]')
-  // matches a page-level <div class="application-container"> just as happily,
-  // and then every text input on the form reads the FIRST react-select's
-  // .singleValue and hidden input — so a dozen distinct fields collapse onto
-  // one identity and one value. With the registry live that is worse than
-  // useless: empty fields get skipped as "already filled" and bogus labels
-  // clear genuinely-missing fields, letting an incomplete form reach submit.
-  // Climb only while the ancestor still wraps this one control and nothing
-  // else, which is exactly what a widget wrapper does and a form wrapper
-  // never does.
-  function rsContainer(el) {
-    let n = el.parentElement, depth = 0, best = null;
-    while (n && depth < 5) {
-      if (only(n) !== el) break;   // now covering other controls: too far
-      const cls = (n.className && String(n.className)) || '';
-      if (/container|control|select|field/i.test(cls)) best = n;
-      n = n.parentElement; depth++;
-    }
-    return best;
-  }
-
-  // Whether the form is currently REJECTING this field's value.
-  //
-  // "Filled" is not the same as "accepted". A phone field reading
-  // "+246 8240044652" under a red "Phone number is too long" is filled and
-  // wrong, and treating it as done let an invalid application be submitted,
-  // then blocked the retry that was supposed to fix it (the registry skipped
-  // it as already filled). An invalid field must count as NOT done, so it
-  // stays fillable, stays in the missing list, and can be rewritten.
-  function isInvalid(el) {
-    if (!el) return false;
-    if (attr(el, 'aria-invalid') === 'true') return true;
-    try { if (el.willValidate && !el.checkValidity()) return true; } catch (e) {}
-    // Custom validation (what Greenhouse actually uses): an error node inside
-    // the field's own wrapper. Bounded climb, same reasoning as rsContainer —
-    // a form-level error banner must not condemn every field on the page.
-    let n = el.parentElement, depth = 0;
-    while (n && depth < 4) {
-      if (only(n) !== el) break;   // now covering other controls: too far
-      let errs = null;
-      try { errs = n.querySelectorAll('[class*="error"], [class*="invalid"], [role="alert"]'); }
-      catch (e) { errs = null; }
-      if (errs) {
-        for (let i = 0; i < errs.length; i++) {
-          if (txt(errs[i])) return true;
-        }
-      }
-      n = n.parentElement; depth++;
-    }
-    return false;
-  }
-
-  function describe(sel) {
-    const node = resolve(sel);
-    if (!node) return null;
-    const el = control(node);
-    if (!el) return null;
-
-    const tag = (el.tagName || '').toLowerCase();
-    const type = attr(el, 'type').toLowerCase();
-    const name = attr(el, 'name');
-    const id = attr(el, 'id');
-    const label = labelFor(el);
-    let kind = tag, ident = '', value = '', filled = false;
-
-    if (tag === 'input' && (type === 'radio' || type === 'checkbox')) {
-      kind = type;
-      // A shared name collapses the whole group into ONE logical field, which
-      // is what stops three radios reading as three separate fields.
-      let group = [el];
-      if (name) {
-        try {
-          group = Array.prototype.slice.call(
-            document.querySelectorAll('input[type="' + type + '"]')
-          ).filter(x => x.name === name);
-        } catch (e) { group = [el]; }
-      }
-      const checked = group.filter(x => x.checked);
-      filled = checked.length > 0;
-      value = checked.map(x => labelFor(x) || x.value || '').filter(Boolean).join(' | ');
-      ident = name || label || id;
-
-    } else if (tag === 'select') {
-      kind = 'select';
-      const opt = (el.selectedIndex >= 0 && el.options) ? el.options[el.selectedIndex] : null;
-      value = opt ? txt(opt) : '';
-      // A non-empty value rejects <option value="">Select…</option> without
-      // needing to re-implement the placeholder regex here.
-      filled = !!(el.value && String(el.value).trim()) && !!value;
-      ident = name || label || id;
-
-    } else if (el.isContentEditable) {
-      kind = 'contenteditable';
-      value = txt(el); filled = !!value; ident = label || name || id;
-
-    } else if (tag === 'textarea' || tag === 'input' || attr(el, 'role') === 'combobox') {
-      const cont = rsContainer(el);
-      const single = cont && cont.querySelector('[class*="singleValue"], [class*="single-value"], [class*="multiValue"], [class*="multi-value"]');
-      const ph = cont && cont.querySelector('[class*="placeholder"]');
-      const hidden = cont && cont.querySelector('input[type="hidden"][name]');
-      const isCombo = !!(single || ph || attr(el, 'role') === 'combobox'
-                         || attr(el, 'aria-haspopup') === 'listbox');
-      if (isCombo && cont) {
-        kind = 'combobox';
-        // react-select renders the committed value into the wrapper and
-        // CLEARS the inner input, so the input is not the place to look.
-        if (single) { value = txt(single); }
-        else if (hidden && hidden.value) { value = String(hidden.value).trim(); }
-        else if (ph) { value = ''; }
-        else if (cont.querySelector('[role="option"], [role="listbox"], [class*="menu"]')) {
-          // The menu is OPEN, so nothing has been chosen yet. Falling through
-          // to the container's text here would return the whole option list as
-          // the field's "value" — and since that list contains the option we
-          // were trying to pick, the did-it-commit check would match it and
-          // call an uncommitted dropdown a success.
-          value = '';
-        }
-        else {
-          const shown = txt(cont);
-          value = (label && shown.indexOf(label) === 0) ? shown.slice(label.length).trim() : shown;
-        }
-        filled = !!value;
-        ident = (hidden ? attr(hidden, 'name') : '') || name || label || id;
-      } else {
-        kind = (tag === 'textarea') ? 'textarea' : 'text';
-        value = String(el.value || '').trim();
-        filled = !!value;
-        ident = name || label || id;
-      }
-    } else {
-      value = txt(el); filled = !!value; ident = name || label || id;
-    }
-
-    // No stable identity => the caller must NOT be able to skip this field.
-    if (!ident) return null;
-    return { ident: ident, kind: kind, label: label, value: value,
-             filled: !!filled, invalid: isInvalid(el) };
-  }
-
-  const out = [];
-  for (let i = 0; i < XPATHS.length; i++) {
-    try { out.push(describe(XPATHS[i])); } catch (e) { out.push(null); }
-  }
-  return JSON.stringify(out);
-})()
-"""
+    json.dumps defaults to ensure_ascii=True, which escapes every non-ASCII
+    character — so nothing inside a selector can terminate the JS string. That
+    property is why this is built by interpolation rather than .format() (the
+    JS is full of braces) and it must be preserved by any future change here.
+    """
+    return (
+        "(() => { "
+        + _FIELD_PROBE_SRC
+        + f"; return JSON.stringify(__tcvFieldProbe.describeAll({json.dumps(xpaths)})); }})()"
+    )
 
 # Which <input type=file> is the cover-letter slot vs. the resume one, by the
 # input's own attributes. Deliberately attribute-based rather than via
@@ -1170,7 +961,7 @@ class LocalBrowser:
     async def _probe_fields(self, actions: list) -> dict[int, dict]:
         """Stable logical identity + current value for every observed field.
 
-        One read-only Page.evaluate for the whole list — see _FIELD_PROBE_JS.
+        One read-only Page.evaluate for the whole list — see field_probe.js.
         Keyed by position in `actions` so the caller can look up by the same
         index it already uses.
 
@@ -1192,10 +983,7 @@ class LocalBrowser:
             # fields were already filled" instead of a bug.
             if raw_selectors:
                 logger.debug("field probe: first raw selector %r", raw_selectors[0][:160])
-            # ensure_ascii escapes every non-ASCII char, so nothing in a
-            # selector can terminate the JS string. .replace() rather than
-            # .format() because the JS is full of braces.
-            js = _FIELD_PROBE_JS.replace("__XPATHS__", json.dumps(xpaths))
+            js = _probe_js(xpaths)
             page = await self._active_page()
             raw = await self._call(
                 lambda: page.evaluate(js), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS
@@ -1371,13 +1159,11 @@ class LocalBrowser:
         "This field is required.", were logged as filled, and were re-filled on
         every subsequent pass.
 
-        Reuses _FIELD_PROBE_JS (via a CSS selector, which it now handles) so
+        Reuses the shared field probe (via a CSS selector, which it handles) so
         there is exactly one definition of filled/invalid in the codebase."""
         try:
             page = await self._active_page()
-            js = _FIELD_PROBE_JS.replace(
-                "__XPATHS__", json.dumps([["css", f"[{_FIELD_MARK_ATTR}]"]])
-            )
+            js = _probe_js([["css", f"[{_FIELD_MARK_ATTR}]"]])
             raw = await self._call(lambda: page.evaluate(js), timeout=_DROPDOWN_KEY_TIMEOUT_SECONDS)
             parsed = json.loads(raw) if isinstance(raw, str) else raw
             if not isinstance(parsed, list) or not parsed or not isinstance(parsed[0], dict):

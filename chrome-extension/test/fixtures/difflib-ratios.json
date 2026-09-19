@@ -1,0 +1,3902 @@
+[
+[
+"austria",
+"austria",
+1.0
+],
+[
+"austria",
+"india",
+0.3333333333
+],
+[
+"austria",
+"indonesia",
+0.375
+],
+[
+"austria",
+"british indian ocean territory",
+0.1621621622
+],
+[
+"austria",
+"yes",
+0.2
+],
+[
+"austria",
+"no",
+0.0
+],
+[
+"austria",
+"male",
+0.1818181818
+],
+[
+"austria",
+"female",
+0.1538461538
+],
+[
+"austria",
+"other",
+0.3333333333
+],
+[
+"austria",
+"decline to self identify",
+0.1935483871
+],
+[
+"austria",
+"i decline to self identify",
+0.1818181818
+],
+[
+"austria",
+"prefer not to say",
+0.0833333333
+],
+[
+"austria",
+"i do not wish to answer",
+0.2
+],
+[
+"austria",
+"i do not want to answer",
+0.2
+],
+[
+"austria",
+"united states",
+0.4
+],
+[
+"austria",
+"united states of america",
+0.3870967742
+],
+[
+"austria",
+"usa",
+0.6
+],
+[
+"austria",
+"us",
+0.4444444444
+],
+[
+"austria",
+"canada",
+0.3076923077
+],
+[
+"austria",
+"located elsewhere",
+0.25
+],
+[
+"austria",
+"i am a protected veteran",
+0.2580645161
+],
+[
+"austria",
+"i am not a protected veteran",
+0.2285714286
+],
+[
+"austria",
+"white",
+0.1666666667
+],
+[
+"austria",
+"hispanic or latino",
+0.24
+],
+[
+"austria",
+"not hispanic or latino",
+0.2068965517
+],
+[
+"austria",
+"remote",
+0.1538461538
+],
+[
+"austria",
+"hybrid",
+0.3076923077
+],
+[
+"austria",
+"onsite",
+0.3076923077
+],
+[
+"austria",
+"bachelors degree",
+0.2608695652
+],
+[
+"austria",
+"masters degree",
+0.380952381
+],
+[
+"austria",
+"high school",
+0.1111111111
+],
+[
+"austria",
+"doctorate",
+0.25
+],
+[
+"austria",
+"immediately",
+0.2222222222
+],
+[
+"australia",
+"austria",
+0.875
+],
+[
+"australia",
+"australia",
+1.0
+],
+[
+"australia",
+"india",
+0.2857142857
+],
+[
+"australia",
+"indonesia",
+0.3333333333
+],
+[
+"australia",
+"british indian ocean territory",
+0.1538461538
+],
+[
+"australia",
+"yes",
+0.1666666667
+],
+[
+"australia",
+"no",
+0.0
+],
+[
+"australia",
+"male",
+0.3076923077
+],
+[
+"australia",
+"female",
+0.2666666667
+],
+[
+"australia",
+"other",
+0.2857142857
+],
+[
+"australia",
+"decline to self identify",
+0.1212121212
+],
+[
+"australia",
+"i decline to self identify",
+0.1142857143
+],
+[
+"australia",
+"prefer not to say",
+0.0769230769
+],
+[
+"australia",
+"i do not wish to answer",
+0.1875
+],
+[
+"australia",
+"i do not want to answer",
+0.1875
+],
+[
+"australia",
+"united states",
+0.3636363636
+],
+[
+"australia",
+"united states of america",
+0.303030303
+],
+[
+"australia",
+"usa",
+0.5
+],
+[
+"australia",
+"us",
+0.3636363636
+],
+[
+"australia",
+"canada",
+0.4
+],
+[
+"australia",
+"located elsewhere",
+0.2307692308
+],
+[
+"australia",
+"i am a protected veteran",
+0.2424242424
+],
+[
+"australia",
+"i am not a protected veteran",
+0.2162162162
+],
+[
+"australia",
+"white",
+0.1428571429
+],
+[
+"australia",
+"hispanic or latino",
+0.2222222222
+],
+[
+"australia",
+"not hispanic or latino",
+0.1935483871
+],
+[
+"australia",
+"remote",
+0.1333333333
+],
+[
+"australia",
+"hybrid",
+0.2666666667
+],
+[
+"australia",
+"onsite",
+0.2666666667
+],
+[
+"australia",
+"bachelors degree",
+0.24
+],
+[
+"australia",
+"masters degree",
+0.347826087
+],
+[
+"australia",
+"high school",
+0.2
+],
+[
+"australia",
+"doctorate",
+0.3333333333
+],
+[
+"australia",
+"immediately",
+0.2
+],
+[
+"india",
+"india",
+1.0
+],
+[
+"india",
+"indonesia",
+0.7142857143
+],
+[
+"india",
+"yes",
+0.0
+],
+[
+"india",
+"no",
+0.2857142857
+],
+[
+"india",
+"male",
+0.2222222222
+],
+[
+"india",
+"other",
+0.0
+],
+[
+"india",
+"prefer not to say",
+0.1818181818
+],
+[
+"india",
+"united states",
+0.3333333333
+],
+[
+"india",
+"united states of america",
+0.275862069
+],
+[
+"india",
+"usa",
+0.25
+],
+[
+"india",
+"us",
+0.0
+],
+[
+"india",
+"located elsewhere",
+0.0909090909
+],
+[
+"india",
+"white",
+0.2
+],
+[
+"india",
+"not hispanic or latino",
+0.1481481481
+],
+[
+"india",
+"remote",
+0.0
+],
+[
+"india",
+"onsite",
+0.1818181818
+],
+[
+"india",
+"masters degree",
+0.1052631579
+],
+[
+"indonesia",
+"indonesia",
+1.0
+],
+[
+"indonesia",
+"yes",
+0.3333333333
+],
+[
+"indonesia",
+"no",
+0.3636363636
+],
+[
+"indonesia",
+"male",
+0.1538461538
+],
+[
+"indonesia",
+"other",
+0.2857142857
+],
+[
+"indonesia",
+"prefer not to say",
+0.3076923077
+],
+[
+"indonesia",
+"united states",
+0.3636363636
+],
+[
+"indonesia",
+"united states of america",
+0.3636363636
+],
+[
+"indonesia",
+"usa",
+0.3333333333
+],
+[
+"indonesia",
+"us",
+0.1818181818
+],
+[
+"indonesia",
+"located elsewhere",
+0.2307692308
+],
+[
+"indonesia",
+"white",
+0.2857142857
+],
+[
+"indonesia",
+"not hispanic or latino",
+0.1935483871
+],
+[
+"indonesia",
+"remote",
+0.2666666667
+],
+[
+"indonesia",
+"onsite",
+0.5333333333
+],
+[
+"indonesia",
+"masters degree",
+0.1739130435
+],
+[
+"british indian ocean territory",
+"india",
+0.2857142857
+],
+[
+"british indian ocean territory",
+"indonesia",
+0.2564102564
+],
+[
+"british indian ocean territory",
+"british indian ocean territory",
+1.0
+],
+[
+"british indian ocean territory",
+"yes",
+0.0606060606
+],
+[
+"british indian ocean territory",
+"no",
+0.125
+],
+[
+"british indian ocean territory",
+"male",
+0.1176470588
+],
+[
+"british indian ocean territory",
+"female",
+0.1111111111
+],
+[
+"british indian ocean territory",
+"other",
+0.2285714286
+],
+[
+"british indian ocean territory",
+"decline to self identify",
+0.1481481481
+],
+[
+"british indian ocean territory",
+"i decline to self identify",
+0.1428571429
+],
+[
+"british indian ocean territory",
+"prefer not to say",
+0.2553191489
+],
+[
+"british indian ocean territory",
+"i do not wish to answer",
+0.3773584906
+],
+[
+"british indian ocean territory",
+"i do not want to answer",
+0.4150943396
+],
+[
+"british indian ocean territory",
+"united states",
+0.2790697674
+],
+[
+"british indian ocean territory",
+"united states of america",
+0.1111111111
+],
+[
+"british indian ocean territory",
+"usa",
+0.1212121212
+],
+[
+"british indian ocean territory",
+"us",
+0.0625
+],
+[
+"british indian ocean territory",
+"canada",
+0.1666666667
+],
+[
+"british indian ocean territory",
+"located elsewhere",
+0.2553191489
+],
+[
+"british indian ocean territory",
+"i am a protected veteran",
+0.2592592593
+],
+[
+"british indian ocean territory",
+"i am not a protected veteran",
+0.2413793103
+],
+[
+"british indian ocean territory",
+"white",
+0.1714285714
+],
+[
+"british indian ocean territory",
+"hispanic or latino",
+0.2083333333
+],
+[
+"british indian ocean territory",
+"not hispanic or latino",
+0.1923076923
+],
+[
+"british indian ocean territory",
+"remote",
+0.2222222222
+],
+[
+"british indian ocean territory",
+"hybrid",
+0.2222222222
+],
+[
+"british indian ocean territory",
+"onsite",
+0.1666666667
+],
+[
+"british indian ocean territory",
+"masters degree",
+0.2272727273
+],
+[
+"british indian ocean territory",
+"high school",
+0.243902439
+],
+[
+"british indian ocean territory",
+"doctorate",
+0.3076923077
+],
+[
+"british indian ocean territory",
+"immediately",
+0.3414634146
+],
+[
+"yes",
+"yes",
+1.0
+],
+[
+"no",
+"yes",
+0.0
+],
+[
+"no",
+"no",
+1.0
+],
+[
+"no",
+"other",
+0.2857142857
+],
+[
+"no",
+"prefer not to say",
+0.2105263158
+],
+[
+"no",
+"united states",
+0.1333333333
+],
+[
+"no",
+"united states of america",
+0.1538461538
+],
+[
+"no",
+"usa",
+0.0
+],
+[
+"no",
+"us",
+0.0
+],
+[
+"no",
+"white",
+0.0
+],
+[
+"no",
+"not hispanic or latino",
+0.1666666667
+],
+[
+"no",
+"remote",
+0.25
+],
+[
+"no",
+"onsite",
+0.25
+],
+[
+"male",
+"yes",
+0.2857142857
+],
+[
+"male",
+"no",
+0.0
+],
+[
+"male",
+"male",
+1.0
+],
+[
+"male",
+"other",
+0.2222222222
+],
+[
+"male",
+"prefer not to say",
+0.0952380952
+],
+[
+"male",
+"united states",
+0.2352941176
+],
+[
+"male",
+"united states of america",
+0.1428571429
+],
+[
+"male",
+"usa",
+0.2857142857
+],
+[
+"male",
+"us",
+0.0
+],
+[
+"male",
+"white",
+0.2222222222
+],
+[
+"male",
+"not hispanic or latino",
+0.1538461538
+],
+[
+"male",
+"remote",
+0.4
+],
+[
+"male",
+"onsite",
+0.2
+],
+[
+"male",
+"masters degree",
+0.3333333333
+],
+[
+"female",
+"india",
+0.1818181818
+],
+[
+"female",
+"indonesia",
+0.2666666667
+],
+[
+"female",
+"yes",
+0.2222222222
+],
+[
+"female",
+"no",
+0.0
+],
+[
+"female",
+"male",
+0.8
+],
+[
+"female",
+"female",
+1.0
+],
+[
+"female",
+"other",
+0.1818181818
+],
+[
+"female",
+"i decline to self identify",
+0.125
+],
+[
+"female",
+"prefer not to say",
+0.2608695652
+],
+[
+"female",
+"i do not wish to answer",
+0.0689655172
+],
+[
+"female",
+"i do not want to answer",
+0.0689655172
+],
+[
+"female",
+"united states",
+0.3157894737
+],
+[
+"female",
+"united states of america",
+0.2
+],
+[
+"female",
+"usa",
+0.2222222222
+],
+[
+"female",
+"us",
+0.0
+],
+[
+"female",
+"located elsewhere",
+0.2608695652
+],
+[
+"female",
+"i am a protected veteran",
+0.1333333333
+],
+[
+"female",
+"i am not a protected veteran",
+0.1176470588
+],
+[
+"female",
+"white",
+0.1818181818
+],
+[
+"female",
+"hispanic or latino",
+0.1666666667
+],
+[
+"female",
+"not hispanic or latino",
+0.1428571429
+],
+[
+"female",
+"remote",
+0.5
+],
+[
+"female",
+"hybrid",
+0.0
+],
+[
+"female",
+"onsite",
+0.1666666667
+],
+[
+"female",
+"masters degree",
+0.3
+],
+[
+"female",
+"high school",
+0.1176470588
+],
+[
+"female",
+"immediately",
+0.3529411765
+],
+[
+"other",
+"yes",
+0.25
+],
+[
+"other",
+"other",
+1.0
+],
+[
+"other",
+"prefer not to say",
+0.1818181818
+],
+[
+"other",
+"united states",
+0.2222222222
+],
+[
+"other",
+"united states of america",
+0.2068965517
+],
+[
+"other",
+"usa",
+0.0
+],
+[
+"other",
+"us",
+0.0
+],
+[
+"other",
+"white",
+0.4
+],
+[
+"other",
+"remote",
+0.5454545455
+],
+[
+"decline to self identify",
+"india",
+0.2068965517
+],
+[
+"decline to self identify",
+"indonesia",
+0.303030303
+],
+[
+"decline to self identify",
+"yes",
+0.1481481481
+],
+[
+"decline to self identify",
+"no",
+0.1538461538
+],
+[
+"decline to self identify",
+"male",
+0.0714285714
+],
+[
+"decline to self identify",
+"female",
+0.2
+],
+[
+"decline to self identify",
+"other",
+0.0689655172
+],
+[
+"decline to self identify",
+"decline to self identify",
+1.0
+],
+[
+"decline to self identify",
+"i decline to self identify",
+0.96
+],
+[
+"decline to self identify",
+"prefer not to say",
+0.3902439024
+],
+[
+"decline to self identify",
+"i do not wish to answer",
+0.3404255319
+],
+[
+"decline to self identify",
+"i do not want to answer",
+0.3404255319
+],
+[
+"decline to self identify",
+"united states",
+0.2162162162
+],
+[
+"decline to self identify",
+"united states of america",
+0.2916666667
+],
+[
+"decline to self identify",
+"usa",
+0.0740740741
+],
+[
+"decline to self identify",
+"us",
+0.0769230769
+],
+[
+"decline to self identify",
+"located elsewhere",
+0.2926829268
+],
+[
+"decline to self identify",
+"i am a protected veteran",
+0.125
+],
+[
+"decline to self identify",
+"i am not a protected veteran",
+0.1153846154
+],
+[
+"decline to self identify",
+"white",
+0.0689655172
+],
+[
+"decline to self identify",
+"hispanic or latino",
+0.2380952381
+],
+[
+"decline to self identify",
+"not hispanic or latino",
+0.2173913043
+],
+[
+"decline to self identify",
+"remote",
+0.1333333333
+],
+[
+"decline to self identify",
+"hybrid",
+0.1333333333
+],
+[
+"decline to self identify",
+"onsite",
+0.0666666667
+],
+[
+"decline to self identify",
+"masters degree",
+0.2105263158
+],
+[
+"decline to self identify",
+"high school",
+0.2285714286
+],
+[
+"decline to self identify",
+"doctorate",
+0.303030303
+],
+[
+"decline to self identify",
+"immediately",
+0.3428571429
+],
+[
+"i decline to self identify",
+"india",
+0.1935483871
+],
+[
+"i decline to self identify",
+"indonesia",
+0.2857142857
+],
+[
+"i decline to self identify",
+"yes",
+0.1379310345
+],
+[
+"i decline to self identify",
+"no",
+0.1428571429
+],
+[
+"i decline to self identify",
+"male",
+0.0666666667
+],
+[
+"i decline to self identify",
+"other",
+0.064516129
+],
+[
+"i decline to self identify",
+"i decline to self identify",
+1.0
+],
+[
+"i decline to self identify",
+"prefer not to say",
+0.3720930233
+],
+[
+"i decline to self identify",
+"i do not wish to answer",
+0.4081632653
+],
+[
+"i decline to self identify",
+"i do not want to answer",
+0.4081632653
+],
+[
+"i decline to self identify",
+"united states",
+0.2564102564
+],
+[
+"i decline to self identify",
+"united states of america",
+0.32
+],
+[
+"i decline to self identify",
+"usa",
+0.0689655172
+],
+[
+"i decline to self identify",
+"us",
+0.0714285714
+],
+[
+"i decline to self identify",
+"located elsewhere",
+0.2790697674
+],
+[
+"i decline to self identify",
+"white",
+0.1290322581
+],
+[
+"i decline to self identify",
+"not hispanic or latino",
+0.25
+],
+[
+"i decline to self identify",
+"remote",
+0.125
+],
+[
+"i decline to self identify",
+"onsite",
+0.125
+],
+[
+"i decline to self identify",
+"masters degree",
+0.25
+],
+[
+"i decline to self identify",
+"immediately",
+0.3783783784
+],
+[
+"prefer not to say",
+"yes",
+0.2
+],
+[
+"prefer not to say",
+"prefer not to say",
+1.0
+],
+[
+"prefer not to say",
+"united states",
+0.2666666667
+],
+[
+"prefer not to say",
+"united states of america",
+0.243902439
+],
+[
+"prefer not to say",
+"usa",
+0.2
+],
+[
+"prefer not to say",
+"us",
+0.1052631579
+],
+[
+"prefer not to say",
+"white",
+0.0909090909
+],
+[
+"prefer not to say",
+"remote",
+0.347826087
+],
+[
+"i do not wish to answer",
+"india",
+0.2857142857
+],
+[
+"i do not wish to answer",
+"indonesia",
+0.375
+],
+[
+"i do not wish to answer",
+"yes",
+0.0769230769
+],
+[
+"i do not wish to answer",
+"no",
+0.16
+],
+[
+"i do not wish to answer",
+"male",
+0.1481481481
+],
+[
+"i do not wish to answer",
+"other",
+0.3571428571
+],
+[
+"i do not wish to answer",
+"prefer not to say",
+0.45
+],
+[
+"i do not wish to answer",
+"i do not wish to answer",
+1.0
+],
+[
+"i do not wish to answer",
+"united states",
+0.2222222222
+],
+[
+"i do not wish to answer",
+"united states of america",
+0.2978723404
+],
+[
+"i do not wish to answer",
+"usa",
+0.1538461538
+],
+[
+"i do not wish to answer",
+"us",
+0.08
+],
+[
+"i do not wish to answer",
+"located elsewhere",
+0.25
+],
+[
+"i do not wish to answer",
+"white",
+0.2142857143
+],
+[
+"i do not wish to answer",
+"not hispanic or latino",
+0.4
+],
+[
+"i do not wish to answer",
+"remote",
+0.2068965517
+],
+[
+"i do not wish to answer",
+"onsite",
+0.275862069
+],
+[
+"i do not wish to answer",
+"masters degree",
+0.2162162162
+],
+[
+"i do not wish to answer",
+"immediately",
+0.2352941176
+],
+[
+"i do not want to answer",
+"india",
+0.2142857143
+],
+[
+"i do not want to answer",
+"indonesia",
+0.3125
+],
+[
+"i do not want to answer",
+"yes",
+0.0769230769
+],
+[
+"i do not want to answer",
+"no",
+0.16
+],
+[
+"i do not want to answer",
+"male",
+0.1481481481
+],
+[
+"i do not want to answer",
+"other",
+0.2857142857
+],
+[
+"i do not want to answer",
+"prefer not to say",
+0.45
+],
+[
+"i do not want to answer",
+"i do not wish to answer",
+0.8695652174
+],
+[
+"i do not want to answer",
+"i do not want to answer",
+1.0
+],
+[
+"i do not want to answer",
+"united states",
+0.3333333333
+],
+[
+"i do not want to answer",
+"united states of america",
+0.2978723404
+],
+[
+"i do not want to answer",
+"usa",
+0.0769230769
+],
+[
+"i do not want to answer",
+"us",
+0.08
+],
+[
+"i do not want to answer",
+"located elsewhere",
+0.2
+],
+[
+"i do not want to answer",
+"white",
+0.2142857143
+],
+[
+"i do not want to answer",
+"not hispanic or latino",
+0.3555555556
+],
+[
+"i do not want to answer",
+"remote",
+0.2068965517
+],
+[
+"i do not want to answer",
+"onsite",
+0.275862069
+],
+[
+"i do not want to answer",
+"masters degree",
+0.2162162162
+],
+[
+"i do not want to answer",
+"immediately",
+0.2352941176
+],
+[
+"united states",
+"yes",
+0.25
+],
+[
+"united states",
+"united states",
+1.0
+],
+[
+"united states",
+"united states of america",
+0.7027027027
+],
+[
+"united states",
+"usa",
+0.375
+],
+[
+"united states",
+"us",
+0.2666666667
+],
+[
+"united states",
+"white",
+0.3333333333
+],
+[
+"united states of america",
+"yes",
+0.1481481481
+],
+[
+"united states of america",
+"united states of america",
+1.0
+],
+[
+"united states of america",
+"usa",
+0.2222222222
+],
+[
+"united states of america",
+"us",
+0.1538461538
+],
+[
+"united states of america",
+"white",
+0.2068965517
+],
+[
+"usa",
+"yes",
+0.3333333333
+],
+[
+"usa",
+"usa",
+1.0
+],
+[
+"usa",
+"white",
+0.0
+],
+[
+"us",
+"yes",
+0.4
+],
+[
+"us",
+"usa",
+0.8
+],
+[
+"us",
+"us",
+1.0
+],
+[
+"us",
+"white",
+0.0
+],
+[
+"canada",
+"india",
+0.1818181818
+],
+[
+"canada",
+"indonesia",
+0.1333333333
+],
+[
+"canada",
+"yes",
+0.0
+],
+[
+"canada",
+"no",
+0.25
+],
+[
+"canada",
+"male",
+0.2
+],
+[
+"canada",
+"female",
+0.1666666667
+],
+[
+"canada",
+"other",
+0.0
+],
+[
+"canada",
+"decline to self identify",
+0.2
+],
+[
+"canada",
+"i decline to self identify",
+0.1875
+],
+[
+"canada",
+"prefer not to say",
+0.0869565217
+],
+[
+"canada",
+"i do not wish to answer",
+0.1379310345
+],
+[
+"canada",
+"i do not want to answer",
+0.2068965517
+],
+[
+"canada",
+"united states",
+0.1052631579
+],
+[
+"canada",
+"united states of america",
+0.1333333333
+],
+[
+"canada",
+"usa",
+0.2222222222
+],
+[
+"canada",
+"us",
+0.0
+],
+[
+"canada",
+"canada",
+1.0
+],
+[
+"canada",
+"located elsewhere",
+0.2608695652
+],
+[
+"canada",
+"i am a protected veteran",
+0.2
+],
+[
+"canada",
+"i am not a protected veteran",
+0.1764705882
+],
+[
+"canada",
+"white",
+0.0
+],
+[
+"canada",
+"hispanic or latino",
+0.25
+],
+[
+"canada",
+"not hispanic or latino",
+0.2142857143
+],
+[
+"canada",
+"remote",
+0.0
+],
+[
+"canada",
+"hybrid",
+0.1666666667
+],
+[
+"canada",
+"onsite",
+0.1666666667
+],
+[
+"canada",
+"masters degree",
+0.2
+],
+[
+"canada",
+"high school",
+0.1176470588
+],
+[
+"canada",
+"doctorate",
+0.2666666667
+],
+[
+"canada",
+"immediately",
+0.1176470588
+],
+[
+"located elsewhere",
+"yes",
+0.2
+],
+[
+"located elsewhere",
+"no",
+0.1052631579
+],
+[
+"located elsewhere",
+"male",
+0.1904761905
+],
+[
+"located elsewhere",
+"other",
+0.4545454545
+],
+[
+"located elsewhere",
+"prefer not to say",
+0.1764705882
+],
+[
+"located elsewhere",
+"united states",
+0.4
+],
+[
+"located elsewhere",
+"united states of america",
+0.3902439024
+],
+[
+"located elsewhere",
+"usa",
+0.1
+],
+[
+"located elsewhere",
+"us",
+0.1052631579
+],
+[
+"located elsewhere",
+"located elsewhere",
+1.0
+],
+[
+"located elsewhere",
+"white",
+0.1818181818
+],
+[
+"located elsewhere",
+"not hispanic or latino",
+0.1538461538
+],
+[
+"located elsewhere",
+"remote",
+0.2608695652
+],
+[
+"located elsewhere",
+"onsite",
+0.2608695652
+],
+[
+"located elsewhere",
+"masters degree",
+0.4516129032
+],
+[
+"i am a protected veteran",
+"india",
+0.1379310345
+],
+[
+"i am a protected veteran",
+"indonesia",
+0.1212121212
+],
+[
+"i am a protected veteran",
+"yes",
+0.0740740741
+],
+[
+"i am a protected veteran",
+"no",
+0.0769230769
+],
+[
+"i am a protected veteran",
+"male",
+0.1428571429
+],
+[
+"i am a protected veteran",
+"other",
+0.275862069
+],
+[
+"i am a protected veteran",
+"i decline to self identify",
+0.36
+],
+[
+"i am a protected veteran",
+"prefer not to say",
+0.3414634146
+],
+[
+"i am a protected veteran",
+"i do not wish to answer",
+0.2553191489
+],
+[
+"i am a protected veteran",
+"i do not want to answer",
+0.2978723404
+],
+[
+"i am a protected veteran",
+"united states",
+0.3783783784
+],
+[
+"i am a protected veteran",
+"united states of america",
+0.375
+],
+[
+"i am a protected veteran",
+"usa",
+0.0740740741
+],
+[
+"i am a protected veteran",
+"us",
+0.0
+],
+[
+"i am a protected veteran",
+"located elsewhere",
+0.3902439024
+],
+[
+"i am a protected veteran",
+"i am a protected veteran",
+1.0
+],
+[
+"i am a protected veteran",
+"i am not a protected veteran",
+0.9230769231
+],
+[
+"i am a protected veteran",
+"white",
+0.2068965517
+],
+[
+"i am a protected veteran",
+"not hispanic or latino",
+0.2173913043
+],
+[
+"i am a protected veteran",
+"remote",
+0.2666666667
+],
+[
+"i am a protected veteran",
+"onsite",
+0.2
+],
+[
+"i am a protected veteran",
+"masters degree",
+0.2105263158
+],
+[
+"i am a protected veteran",
+"immediately",
+0.2285714286
+],
+[
+"i am not a protected veteran",
+"india",
+0.1212121212
+],
+[
+"i am not a protected veteran",
+"indonesia",
+0.1081081081
+],
+[
+"i am not a protected veteran",
+"yes",
+0.064516129
+],
+[
+"i am not a protected veteran",
+"no",
+0.1333333333
+],
+[
+"i am not a protected veteran",
+"male",
+0.125
+],
+[
+"i am not a protected veteran",
+"other",
+0.2424242424
+],
+[
+"i am not a protected veteran",
+"i decline to self identify",
+0.3333333333
+],
+[
+"i am not a protected veteran",
+"prefer not to say",
+0.2666666667
+],
+[
+"i am not a protected veteran",
+"i do not wish to answer",
+0.3921568627
+],
+[
+"i am not a protected veteran",
+"i do not want to answer",
+0.5098039216
+],
+[
+"i am not a protected veteran",
+"united states",
+0.3414634146
+],
+[
+"i am not a protected veteran",
+"united states of america",
+0.3461538462
+],
+[
+"i am not a protected veteran",
+"usa",
+0.064516129
+],
+[
+"i am not a protected veteran",
+"us",
+0.0
+],
+[
+"i am not a protected veteran",
+"located elsewhere",
+0.3555555556
+],
+[
+"i am not a protected veteran",
+"i am not a protected veteran",
+1.0
+],
+[
+"i am not a protected veteran",
+"white",
+0.1818181818
+],
+[
+"i am not a protected veteran",
+"not hispanic or latino",
+0.28
+],
+[
+"i am not a protected veteran",
+"remote",
+0.2352941176
+],
+[
+"i am not a protected veteran",
+"onsite",
+0.1764705882
+],
+[
+"i am not a protected veteran",
+"masters degree",
+0.1904761905
+],
+[
+"i am not a protected veteran",
+"immediately",
+0.2051282051
+],
+[
+"white",
+"yes",
+0.25
+],
+[
+"white",
+"white",
+1.0
+],
+[
+"asian",
+"austria",
+0.6666666667
+],
+[
+"asian",
+"australia",
+0.5714285714
+],
+[
+"asian",
+"india",
+0.4
+],
+[
+"asian",
+"indonesia",
+0.4285714286
+],
+[
+"asian",
+"british indian ocean territory",
+0.2285714286
+],
+[
+"asian",
+"yes",
+0.25
+],
+[
+"asian",
+"no",
+0.2857142857
+],
+[
+"asian",
+"male",
+0.2222222222
+],
+[
+"asian",
+"female",
+0.1818181818
+],
+[
+"asian",
+"other",
+0.0
+],
+[
+"asian",
+"decline to self identify",
+0.2068965517
+],
+[
+"asian",
+"i decline to self identify",
+0.1935483871
+],
+[
+"asian",
+"prefer not to say",
+0.0909090909
+],
+[
+"asian",
+"i do not wish to answer",
+0.2142857143
+],
+[
+"asian",
+"i do not want to answer",
+0.2142857143
+],
+[
+"asian",
+"united states",
+0.2222222222
+],
+[
+"asian",
+"united states of america",
+0.275862069
+],
+[
+"asian",
+"usa",
+0.25
+],
+[
+"asian",
+"us",
+0.2857142857
+],
+[
+"asian",
+"canada",
+0.3636363636
+],
+[
+"asian",
+"located elsewhere",
+0.1818181818
+],
+[
+"asian",
+"i am a protected veteran",
+0.2068965517
+],
+[
+"asian",
+"i am not a protected veteran",
+0.1818181818
+],
+[
+"asian",
+"white",
+0.2
+],
+[
+"asian",
+"asian",
+1.0
+],
+[
+"asian",
+"hispanic or latino",
+0.2608695652
+],
+[
+"asian",
+"not hispanic or latino",
+0.2222222222
+],
+[
+"asian",
+"remote",
+0.0
+],
+[
+"asian",
+"hybrid",
+0.1818181818
+],
+[
+"asian",
+"onsite",
+0.3636363636
+],
+[
+"asian",
+"bachelors degree",
+0.1904761905
+],
+[
+"asian",
+"masters degree",
+0.2105263158
+],
+[
+"asian",
+"high school",
+0.125
+],
+[
+"asian",
+"doctorate",
+0.1428571429
+],
+[
+"asian",
+"immediately",
+0.25
+],
+[
+"hispanic or latino",
+"india",
+0.1739130435
+],
+[
+"hispanic or latino",
+"indonesia",
+0.2222222222
+],
+[
+"hispanic or latino",
+"yes",
+0.0952380952
+],
+[
+"hispanic or latino",
+"no",
+0.2
+],
+[
+"hispanic or latino",
+"male",
+0.1818181818
+],
+[
+"hispanic or latino",
+"other",
+0.1739130435
+],
+[
+"hispanic or latino",
+"i decline to self identify",
+0.2272727273
+],
+[
+"hispanic or latino",
+"prefer not to say",
+0.2857142857
+],
+[
+"hispanic or latino",
+"i do not wish to answer",
+0.243902439
+],
+[
+"hispanic or latino",
+"i do not want to answer",
+0.2926829268
+],
+[
+"hispanic or latino",
+"united states",
+0.3225806452
+],
+[
+"hispanic or latino",
+"united states of america",
+0.2857142857
+],
+[
+"hispanic or latino",
+"usa",
+0.1904761905
+],
+[
+"hispanic or latino",
+"us",
+0.1
+],
+[
+"hispanic or latino",
+"located elsewhere",
+0.1714285714
+],
+[
+"hispanic or latino",
+"i am a protected veteran",
+0.1904761905
+],
+[
+"hispanic or latino",
+"i am not a protected veteran",
+0.1739130435
+],
+[
+"hispanic or latino",
+"white",
+0.2608695652
+],
+[
+"hispanic or latino",
+"hispanic or latino",
+1.0
+],
+[
+"hispanic or latino",
+"not hispanic or latino",
+0.9
+],
+[
+"hispanic or latino",
+"remote",
+0.1666666667
+],
+[
+"hispanic or latino",
+"hybrid",
+0.1666666667
+],
+[
+"hispanic or latino",
+"onsite",
+0.1666666667
+],
+[
+"hispanic or latino",
+"masters degree",
+0.1875
+],
+[
+"hispanic or latino",
+"immediately",
+0.275862069
+],
+[
+"not hispanic or latino",
+"yes",
+0.08
+],
+[
+"not hispanic or latino",
+"other",
+0.2962962963
+],
+[
+"not hispanic or latino",
+"prefer not to say",
+0.3076923077
+],
+[
+"not hispanic or latino",
+"united states",
+0.2857142857
+],
+[
+"not hispanic or latino",
+"united states of america",
+0.2608695652
+],
+[
+"not hispanic or latino",
+"usa",
+0.16
+],
+[
+"not hispanic or latino",
+"us",
+0.0833333333
+],
+[
+"not hispanic or latino",
+"white",
+0.2222222222
+],
+[
+"not hispanic or latino",
+"not hispanic or latino",
+1.0
+],
+[
+"not hispanic or latino",
+"remote",
+0.1428571429
+],
+[
+"not hispanic or latino",
+"onsite",
+0.1428571429
+],
+[
+"remote",
+"yes",
+0.2222222222
+],
+[
+"remote",
+"united states",
+0.2105263158
+],
+[
+"remote",
+"united states of america",
+0.1333333333
+],
+[
+"remote",
+"usa",
+0.0
+],
+[
+"remote",
+"us",
+0.0
+],
+[
+"remote",
+"white",
+0.3636363636
+],
+[
+"remote",
+"remote",
+1.0
+],
+[
+"hybrid",
+"india",
+0.3636363636
+],
+[
+"hybrid",
+"indonesia",
+0.2666666667
+],
+[
+"hybrid",
+"yes",
+0.2222222222
+],
+[
+"hybrid",
+"no",
+0.0
+],
+[
+"hybrid",
+"male",
+0.0
+],
+[
+"hybrid",
+"other",
+0.3636363636
+],
+[
+"hybrid",
+"i decline to self identify",
+0.125
+],
+[
+"hybrid",
+"prefer not to say",
+0.0869565217
+],
+[
+"hybrid",
+"i do not wish to answer",
+0.1379310345
+],
+[
+"hybrid",
+"i do not want to answer",
+0.0689655172
+],
+[
+"hybrid",
+"united states",
+0.2105263158
+],
+[
+"hybrid",
+"united states of america",
+0.1333333333
+],
+[
+"hybrid",
+"usa",
+0.0
+],
+[
+"hybrid",
+"us",
+0.0
+],
+[
+"hybrid",
+"located elsewhere",
+0.1739130435
+],
+[
+"hybrid",
+"i am a protected veteran",
+0.1333333333
+],
+[
+"hybrid",
+"i am not a protected veteran",
+0.1176470588
+],
+[
+"hybrid",
+"white",
+0.3636363636
+],
+[
+"hybrid",
+"not hispanic or latino",
+0.2142857143
+],
+[
+"hybrid",
+"remote",
+0.1666666667
+],
+[
+"hybrid",
+"hybrid",
+1.0
+],
+[
+"hybrid",
+"onsite",
+0.1666666667
+],
+[
+"hybrid",
+"masters degree",
+0.2
+],
+[
+"hybrid",
+"immediately",
+0.1176470588
+],
+[
+"onsite",
+"yes",
+0.2222222222
+],
+[
+"onsite",
+"other",
+0.5454545455
+],
+[
+"onsite",
+"prefer not to say",
+0.1739130435
+],
+[
+"onsite",
+"united states",
+0.4210526316
+],
+[
+"onsite",
+"united states of america",
+0.2666666667
+],
+[
+"onsite",
+"usa",
+0.2222222222
+],
+[
+"onsite",
+"us",
+0.25
+],
+[
+"onsite",
+"white",
+0.5454545455
+],
+[
+"onsite",
+"remote",
+0.5
+],
+[
+"onsite",
+"onsite",
+1.0
+],
+[
+"bachelors degree",
+"india",
+0.0952380952
+],
+[
+"bachelors degree",
+"indonesia",
+0.08
+],
+[
+"bachelors degree",
+"british indian ocean territory",
+0.2608695652
+],
+[
+"bachelors degree",
+"yes",
+0.2105263158
+],
+[
+"bachelors degree",
+"no",
+0.1111111111
+],
+[
+"bachelors degree",
+"male",
+0.2
+],
+[
+"bachelors degree",
+"female",
+0.1818181818
+],
+[
+"bachelors degree",
+"other",
+0.2857142857
+],
+[
+"bachelors degree",
+"decline to self identify",
+0.3
+],
+[
+"bachelors degree",
+"i decline to self identify",
+0.2380952381
+],
+[
+"bachelors degree",
+"prefer not to say",
+0.1818181818
+],
+[
+"bachelors degree",
+"i do not wish to answer",
+0.2051282051
+],
+[
+"bachelors degree",
+"i do not want to answer",
+0.2051282051
+],
+[
+"bachelors degree",
+"united states",
+0.2068965517
+],
+[
+"bachelors degree",
+"united states of america",
+0.3
+],
+[
+"bachelors degree",
+"usa",
+0.1052631579
+],
+[
+"bachelors degree",
+"us",
+0.1111111111
+],
+[
+"bachelors degree",
+"canada",
+0.1818181818
+],
+[
+"bachelors degree",
+"located elsewhere",
+0.303030303
+],
+[
+"bachelors degree",
+"i am a protected veteran",
+0.2
+],
+[
+"bachelors degree",
+"i am not a protected veteran",
+0.1818181818
+],
+[
+"bachelors degree",
+"white",
+0.1904761905
+],
+[
+"bachelors degree",
+"hispanic or latino",
+0.2941176471
+],
+[
+"bachelors degree",
+"not hispanic or latino",
+0.2631578947
+],
+[
+"bachelors degree",
+"remote",
+0.2727272727
+],
+[
+"bachelors degree",
+"hybrid",
+0.2727272727
+],
+[
+"bachelors degree",
+"onsite",
+0.0909090909
+],
+[
+"bachelors degree",
+"bachelors degree",
+1.0
+],
+[
+"bachelors degree",
+"masters degree",
+0.7333333333
+],
+[
+"bachelors degree",
+"high school",
+0.2222222222
+],
+[
+"bachelors degree",
+"doctorate",
+0.32
+],
+[
+"bachelors degree",
+"immediately",
+0.2222222222
+],
+[
+"masters degree",
+"yes",
+0.1176470588
+],
+[
+"masters degree",
+"no",
+0.0
+],
+[
+"masters degree",
+"other",
+0.3157894737
+],
+[
+"masters degree",
+"prefer not to say",
+0.1935483871
+],
+[
+"masters degree",
+"united states",
+0.2962962963
+],
+[
+"masters degree",
+"united states of america",
+0.2105263158
+],
+[
+"masters degree",
+"usa",
+0.1176470588
+],
+[
+"masters degree",
+"us",
+0.125
+],
+[
+"masters degree",
+"white",
+0.2105263158
+],
+[
+"masters degree",
+"not hispanic or latino",
+0.1111111111
+],
+[
+"masters degree",
+"remote",
+0.3
+],
+[
+"masters degree",
+"onsite",
+0.3
+],
+[
+"masters degree",
+"masters degree",
+1.0
+],
+[
+"high school",
+"india",
+0.125
+],
+[
+"high school",
+"indonesia",
+0.2
+],
+[
+"high school",
+"yes",
+0.1428571429
+],
+[
+"high school",
+"no",
+0.1538461538
+],
+[
+"high school",
+"male",
+0.1333333333
+],
+[
+"high school",
+"other",
+0.125
+],
+[
+"high school",
+"i decline to self identify",
+0.2162162162
+],
+[
+"high school",
+"prefer not to say",
+0.1428571429
+],
+[
+"high school",
+"i do not wish to answer",
+0.2352941176
+],
+[
+"high school",
+"i do not want to answer",
+0.1764705882
+],
+[
+"high school",
+"united states",
+0.25
+],
+[
+"high school",
+"united states of america",
+0.2285714286
+],
+[
+"high school",
+"usa",
+0.1428571429
+],
+[
+"high school",
+"us",
+0.1538461538
+],
+[
+"high school",
+"located elsewhere",
+0.0714285714
+],
+[
+"high school",
+"i am a protected veteran",
+0.1714285714
+],
+[
+"high school",
+"i am not a protected veteran",
+0.1538461538
+],
+[
+"high school",
+"white",
+0.25
+],
+[
+"high school",
+"hispanic or latino",
+0.3448275862
+],
+[
+"high school",
+"not hispanic or latino",
+0.303030303
+],
+[
+"high school",
+"remote",
+0.1176470588
+],
+[
+"high school",
+"hybrid",
+0.2352941176
+],
+[
+"high school",
+"onsite",
+0.1176470588
+],
+[
+"high school",
+"masters degree",
+0.08
+],
+[
+"high school",
+"high school",
+1.0
+],
+[
+"high school",
+"immediately",
+0.1818181818
+],
+[
+"doctorate",
+"india",
+0.2857142857
+],
+[
+"doctorate",
+"indonesia",
+0.3333333333
+],
+[
+"doctorate",
+"yes",
+0.1666666667
+],
+[
+"doctorate",
+"no",
+0.1818181818
+],
+[
+"doctorate",
+"male",
+0.3076923077
+],
+[
+"doctorate",
+"female",
+0.2666666667
+],
+[
+"doctorate",
+"other",
+0.4285714286
+],
+[
+"doctorate",
+"i decline to self identify",
+0.2857142857
+],
+[
+"doctorate",
+"prefer not to say",
+0.3076923077
+],
+[
+"doctorate",
+"i do not wish to answer",
+0.3125
+],
+[
+"doctorate",
+"i do not want to answer",
+0.3125
+],
+[
+"doctorate",
+"united states",
+0.4545454545
+],
+[
+"doctorate",
+"united states of america",
+0.303030303
+],
+[
+"doctorate",
+"usa",
+0.1666666667
+],
+[
+"doctorate",
+"us",
+0.0
+],
+[
+"doctorate",
+"located elsewhere",
+0.3846153846
+],
+[
+"doctorate",
+"i am a protected veteran",
+0.303030303
+],
+[
+"doctorate",
+"i am not a protected veteran",
+0.2702702703
+],
+[
+"doctorate",
+"white",
+0.2857142857
+],
+[
+"doctorate",
+"hispanic or latino",
+0.3703703704
+],
+[
+"doctorate",
+"not hispanic or latino",
+0.3870967742
+],
+[
+"doctorate",
+"remote",
+0.4
+],
+[
+"doctorate",
+"hybrid",
+0.1333333333
+],
+[
+"doctorate",
+"onsite",
+0.4
+],
+[
+"doctorate",
+"masters degree",
+0.2608695652
+],
+[
+"doctorate",
+"high school",
+0.2
+],
+[
+"doctorate",
+"doctorate",
+1.0
+],
+[
+"doctorate",
+"immediately",
+0.4
+],
+[
+"immediately",
+"india",
+0.5
+],
+[
+"immediately",
+"indonesia",
+0.4
+],
+[
+"immediately",
+"yes",
+0.1428571429
+],
+[
+"immediately",
+"no",
+0.0
+],
+[
+"immediately",
+"male",
+0.2666666667
+],
+[
+"immediately",
+"other",
+0.125
+],
+[
+"immediately",
+"prefer not to say",
+0.2142857143
+],
+[
+"immediately",
+"united states",
+0.5
+],
+[
+"immediately",
+"united states of america",
+0.3428571429
+],
+[
+"immediately",
+"usa",
+0.1428571429
+],
+[
+"immediately",
+"us",
+0.0
+],
+[
+"immediately",
+"located elsewhere",
+0.2857142857
+],
+[
+"immediately",
+"white",
+0.375
+],
+[
+"immediately",
+"not hispanic or latino",
+0.2424242424
+],
+[
+"immediately",
+"remote",
+0.3529411765
+],
+[
+"immediately",
+"onsite",
+0.3529411765
+],
+[
+"immediately",
+"masters degree",
+0.32
+],
+[
+"immediately",
+"immediately",
+1.0
+],
+[
+"2 weeks",
+"austria",
+0.1428571429
+],
+[
+"2 weeks",
+"australia",
+0.125
+],
+[
+"2 weeks",
+"india",
+0.0
+],
+[
+"2 weeks",
+"indonesia",
+0.25
+],
+[
+"2 weeks",
+"british indian ocean territory",
+0.1621621622
+],
+[
+"2 weeks",
+"yes",
+0.4
+],
+[
+"2 weeks",
+"no",
+0.0
+],
+[
+"2 weeks",
+"male",
+0.1818181818
+],
+[
+"2 weeks",
+"female",
+0.3076923077
+],
+[
+"2 weeks",
+"other",
+0.1666666667
+],
+[
+"2 weeks",
+"decline to self identify",
+0.1935483871
+],
+[
+"2 weeks",
+"i decline to self identify",
+0.2424242424
+],
+[
+"2 weeks",
+"prefer not to say",
+0.1666666667
+],
+[
+"2 weeks",
+"i do not wish to answer",
+0.2
+],
+[
+"2 weeks",
+"i do not want to answer",
+0.2
+],
+[
+"2 weeks",
+"united states",
+0.3
+],
+[
+"2 weeks",
+"united states of america",
+0.1935483871
+],
+[
+"2 weeks",
+"usa",
+0.2
+],
+[
+"2 weeks",
+"us",
+0.2222222222
+],
+[
+"2 weeks",
+"canada",
+0.0
+],
+[
+"2 weeks",
+"located elsewhere",
+0.3333333333
+],
+[
+"2 weeks",
+"i am a protected veteran",
+0.1935483871
+],
+[
+"2 weeks",
+"i am not a protected veteran",
+0.1714285714
+],
+[
+"2 weeks",
+"white",
+0.3333333333
+],
+[
+"2 weeks",
+"asian",
+0.1666666667
+],
+[
+"2 weeks",
+"hispanic or latino",
+0.08
+],
+[
+"2 weeks",
+"not hispanic or latino",
+0.1379310345
+],
+[
+"2 weeks",
+"remote",
+0.3076923077
+],
+[
+"2 weeks",
+"hybrid",
+0.0
+],
+[
+"2 weeks",
+"onsite",
+0.1538461538
+],
+[
+"2 weeks",
+"bachelors degree",
+0.2608695652
+],
+[
+"2 weeks",
+"masters degree",
+0.2857142857
+],
+[
+"2 weeks",
+"high school",
+0.2222222222
+],
+[
+"2 weeks",
+"doctorate",
+0.125
+],
+[
+"2 weeks",
+"immediately",
+0.2222222222
+],
+[
+"2 weeks",
+"2 weeks",
+1.0
+],
+[
+"2 weeks",
+"30 days",
+0.2857142857
+],
+[
+"2 weeks",
+"60 days",
+0.2857142857
+],
+[
+"2 weeks",
+"90 days",
+0.2857142857
+],
+[
+"30 days",
+"austria",
+0.2857142857
+],
+[
+"30 days",
+"australia",
+0.25
+],
+[
+"30 days",
+"india",
+0.3333333333
+],
+[
+"30 days",
+"indonesia",
+0.25
+],
+[
+"30 days",
+"british indian ocean territory",
+0.2162162162
+],
+[
+"30 days",
+"yes",
+0.4
+],
+[
+"30 days",
+"no",
+0.0
+],
+[
+"30 days",
+"male",
+0.1818181818
+],
+[
+"30 days",
+"female",
+0.1538461538
+],
+[
+"30 days",
+"other",
+0.0
+],
+[
+"30 days",
+"decline to self identify",
+0.1935483871
+],
+[
+"30 days",
+"i decline to self identify",
+0.1818181818
+],
+[
+"30 days",
+"prefer not to say",
+0.25
+],
+[
+"30 days",
+"i do not wish to answer",
+0.2666666667
+],
+[
+"30 days",
+"i do not want to answer",
+0.2666666667
+],
+[
+"30 days",
+"united states",
+0.3
+],
+[
+"30 days",
+"united states of america",
+0.1935483871
+],
+[
+"30 days",
+"usa",
+0.2
+],
+[
+"30 days",
+"us",
+0.2222222222
+],
+[
+"30 days",
+"canada",
+0.3076923077
+],
+[
+"30 days",
+"located elsewhere",
+0.1666666667
+],
+[
+"30 days",
+"i am a protected veteran",
+0.1935483871
+],
+[
+"30 days",
+"i am not a protected veteran",
+0.1714285714
+],
+[
+"30 days",
+"white",
+0.0
+],
+[
+"30 days",
+"asian",
+0.3333333333
+],
+[
+"30 days",
+"hispanic or latino",
+0.16
+],
+[
+"30 days",
+"not hispanic or latino",
+0.1379310345
+],
+[
+"30 days",
+"remote",
+0.0
+],
+[
+"30 days",
+"hybrid",
+0.1538461538
+],
+[
+"30 days",
+"onsite",
+0.1538461538
+],
+[
+"30 days",
+"bachelors degree",
+0.1739130435
+],
+[
+"30 days",
+"masters degree",
+0.1904761905
+],
+[
+"30 days",
+"high school",
+0.2222222222
+],
+[
+"30 days",
+"doctorate",
+0.25
+],
+[
+"30 days",
+"immediately",
+0.3333333333
+],
+[
+"30 days",
+"30 days",
+1.0
+],
+[
+"30 days",
+"60 days",
+0.8571428571
+],
+[
+"30 days",
+"90 days",
+0.8571428571
+],
+[
+"60 days",
+"austria",
+0.2857142857
+],
+[
+"60 days",
+"australia",
+0.25
+],
+[
+"60 days",
+"india",
+0.3333333333
+],
+[
+"60 days",
+"indonesia",
+0.25
+],
+[
+"60 days",
+"british indian ocean territory",
+0.2162162162
+],
+[
+"60 days",
+"yes",
+0.4
+],
+[
+"60 days",
+"no",
+0.0
+],
+[
+"60 days",
+"male",
+0.1818181818
+],
+[
+"60 days",
+"female",
+0.1538461538
+],
+[
+"60 days",
+"other",
+0.0
+],
+[
+"60 days",
+"decline to self identify",
+0.1935483871
+],
+[
+"60 days",
+"i decline to self identify",
+0.1818181818
+],
+[
+"60 days",
+"prefer not to say",
+0.25
+],
+[
+"60 days",
+"i do not wish to answer",
+0.2666666667
+],
+[
+"60 days",
+"i do not want to answer",
+0.2666666667
+],
+[
+"60 days",
+"united states",
+0.3
+],
+[
+"60 days",
+"united states of america",
+0.1935483871
+],
+[
+"60 days",
+"usa",
+0.2
+],
+[
+"60 days",
+"us",
+0.2222222222
+],
+[
+"60 days",
+"canada",
+0.3076923077
+],
+[
+"60 days",
+"located elsewhere",
+0.1666666667
+],
+[
+"60 days",
+"i am a protected veteran",
+0.1935483871
+],
+[
+"60 days",
+"i am not a protected veteran",
+0.1714285714
+],
+[
+"60 days",
+"white",
+0.0
+],
+[
+"60 days",
+"asian",
+0.3333333333
+],
+[
+"60 days",
+"hispanic or latino",
+0.16
+],
+[
+"60 days",
+"not hispanic or latino",
+0.1379310345
+],
+[
+"60 days",
+"remote",
+0.0
+],
+[
+"60 days",
+"hybrid",
+0.1538461538
+],
+[
+"60 days",
+"onsite",
+0.1538461538
+],
+[
+"60 days",
+"bachelors degree",
+0.1739130435
+],
+[
+"60 days",
+"masters degree",
+0.1904761905
+],
+[
+"60 days",
+"high school",
+0.2222222222
+],
+[
+"60 days",
+"doctorate",
+0.25
+],
+[
+"60 days",
+"immediately",
+0.3333333333
+],
+[
+"60 days",
+"60 days",
+1.0
+],
+[
+"60 days",
+"90 days",
+0.8571428571
+],
+[
+"90 days",
+"austria",
+0.2857142857
+],
+[
+"90 days",
+"australia",
+0.25
+],
+[
+"90 days",
+"india",
+0.3333333333
+],
+[
+"90 days",
+"indonesia",
+0.25
+],
+[
+"90 days",
+"british indian ocean territory",
+0.2162162162
+],
+[
+"90 days",
+"yes",
+0.4
+],
+[
+"90 days",
+"no",
+0.0
+],
+[
+"90 days",
+"male",
+0.1818181818
+],
+[
+"90 days",
+"female",
+0.1538461538
+],
+[
+"90 days",
+"other",
+0.0
+],
+[
+"90 days",
+"decline to self identify",
+0.1935483871
+],
+[
+"90 days",
+"i decline to self identify",
+0.1818181818
+],
+[
+"90 days",
+"prefer not to say",
+0.25
+],
+[
+"90 days",
+"i do not wish to answer",
+0.2666666667
+],
+[
+"90 days",
+"i do not want to answer",
+0.2666666667
+],
+[
+"90 days",
+"united states",
+0.3
+],
+[
+"90 days",
+"united states of america",
+0.1935483871
+],
+[
+"90 days",
+"usa",
+0.2
+],
+[
+"90 days",
+"us",
+0.2222222222
+],
+[
+"90 days",
+"canada",
+0.3076923077
+],
+[
+"90 days",
+"located elsewhere",
+0.1666666667
+],
+[
+"90 days",
+"i am a protected veteran",
+0.1935483871
+],
+[
+"90 days",
+"i am not a protected veteran",
+0.1714285714
+],
+[
+"90 days",
+"white",
+0.0
+],
+[
+"90 days",
+"asian",
+0.3333333333
+],
+[
+"90 days",
+"hispanic or latino",
+0.16
+],
+[
+"90 days",
+"not hispanic or latino",
+0.1379310345
+],
+[
+"90 days",
+"remote",
+0.0
+],
+[
+"90 days",
+"hybrid",
+0.1538461538
+],
+[
+"90 days",
+"onsite",
+0.1538461538
+],
+[
+"90 days",
+"bachelors degree",
+0.1739130435
+],
+[
+"90 days",
+"masters degree",
+0.1904761905
+],
+[
+"90 days",
+"high school",
+0.2222222222
+],
+[
+"90 days",
+"doctorate",
+0.25
+],
+[
+"90 days",
+"immediately",
+0.3333333333
+],
+[
+"90 days",
+"90 days",
+1.0
+]
+]

@@ -9,6 +9,7 @@ Run: python test_field_registry.py
 """
 import asyncio
 import json
+import os
 import sys
 import traceback
 
@@ -605,6 +606,102 @@ def test_commit_check_is_permissive_when_nothing_was_requested():
 def test_commit_does_not_confuse_neighbouring_countries():
     assert not b._commit_matches("India", "Indonesia (+62)")
     assert not b._commit_matches("Austria", "Australia")
+
+
+# ── The shared field probe ────────────────────────────────────────────────
+#
+# field_probe.js is loaded off disk and is also bundled into the Chrome
+# extension, so these guard the plumbing this file's other tests can't see:
+# the JS is stubbed out everywhere above (canned page.evaluate payloads), which
+# is precisely why a packaging mistake here would otherwise reach production
+# silently. The probe's actual DOM behaviour is covered separately, against a
+# real DOM, by chrome-extension/test/probe.test.mjs.
+
+
+def test_probe_source_is_present_and_shipped():
+    from pathlib import Path
+
+    path = Path(b.__file__).with_name("field_probe.js")
+    assert path.exists(), f"{path} missing — the container COPYs the tree, so check the build"
+    assert b._FIELD_PROBE_SRC.strip(), "probe source loaded empty"
+    # The installer contract both consumers depend on.
+    assert "__tcvFieldProbe" in b._FIELD_PROBE_SRC
+    assert "function describeEl" in b._FIELD_PROBE_SRC
+    assert "function describeAll" in b._FIELD_PROBE_SRC
+
+
+def test_probe_js_is_one_evaluable_expression():
+    js = b._probe_js([["css", '[name="a"]']])
+    assert js.startswith("(() => {"), js[:40]
+    assert js.rstrip().endswith("})()"), js[-40:]
+    # One expression, not a statement list: page.evaluate() needs a value back.
+    assert "return JSON.stringify(__tcvFieldProbe.describeAll(" in js
+
+
+def test_probe_js_serializes_every_selector():
+    js = b._probe_js([["css", "#one"], ["xpath", "//two"]])
+    assert '["css", "#one"]' in js or '["css","#one"]' in js
+    assert "//two" in js
+
+
+def test_probe_js_escapes_non_ascii_so_a_selector_cannot_break_out():
+    # ensure_ascii=True is load-bearing: a selector is page-derived data (it
+    # comes from the DOM via observe()), and an unescaped quote or line
+    # terminator would end the JS string literal and change the program.
+    js = b._probe_js([["css", '[name="café"]'], ["css", "a'b\"c\\d"]])
+    assert "café" not in js
+    assert "caf\\u00e9" in js
+    # U+2028/U+2029 terminate a JS string literal even inside quotes.
+    assert " " not in b._probe_js([["css", "a b"]])
+
+
+def test_probe_js_still_parses_with_hostile_selectors():
+    """The real breakout test: hand the generated program to a JS parser.
+
+    Substring assertions can only check the escapes we thought of. Anything
+    that terminates the string early makes the whole expression a syntax error,
+    so `node --check` catches the general case — including escapes nobody here
+    anticipated. Skipped, not failed, where node isn't installed: this is a
+    Python suite and node is not one of its dependencies.
+    """
+    import shutil
+    import subprocess
+    import tempfile
+
+    node = shutil.which("node")
+    if not node:
+        print("    (skipped: node not on PATH)")
+        return
+
+    hostile = [
+        ["css", '");alert(1);//'],
+        ["css", "');alert(1);//"],
+        ["css", "`);alert(1);//"],
+        ["css", "</script><script>alert(1)"],
+        ["css", "a b c"],
+        ["css", "back\\slash"],
+        ["css", "new\nline\ttab"],
+        ["xpath", '//*[@x="\'\\"]'],
+    ]
+    # Individually and all at once — a breakout can need two selectors to land.
+    for selectors in [[s] for s in hostile] + [hostile]:
+        js = b._probe_js(selectors)
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False,
+                                         encoding="utf-8") as fh:
+            fh.write(f"void ({js});")
+            path = fh.name
+        try:
+            proc = subprocess.run([node, "--check", path], capture_output=True, text=True)
+            assert proc.returncode == 0, (
+                f"generated probe JS does not parse for {selectors!r}:\n{proc.stderr}"
+            )
+        finally:
+            os.unlink(path)
+
+
+def test_probe_js_handles_an_empty_field_list():
+    js = b._probe_js([])
+    assert "describeAll([])" in js
 
 
 def main() -> int:
