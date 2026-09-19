@@ -1420,6 +1420,8 @@
 
     refresh();
     globalStatus.parentNode.insertBefore(box, globalStatus.nextSibling);
+    // The download waits on this, so make sure the buttons are on screen.
+    box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }
 
   // ── State machine ────────────────────────────────────
