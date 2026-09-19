@@ -339,47 +339,6 @@ test('looksSecret flags secret-shaped values', () => {
   notOk(m.looksSecret(''));
 });
 
-// ── splitLocation ────────────────────────────────────────────
-
-test('splitLocation handles City, State, Country', () => {
-  deepEq(m.splitLocation('Kolkata, West Bengal, India'),
-         { city: 'Kolkata', state: 'West Bengal', country: 'India', postalCode: '' });
-});
-
-test('splitLocation handles City, Country', () => {
-  deepEq(m.splitLocation('Bangalore, India'),
-         { city: 'Bangalore', state: '', country: 'India', postalCode: '' });
-});
-
-test('splitLocation handles US City, ST', () => {
-  deepEq(m.splitLocation('Austin, TX'),
-         { city: 'Austin', state: 'TX', country: '', postalCode: '' });
-});
-
-test('splitLocation picks up a trailing postal code', () => {
-  deepEq(m.splitLocation('San Francisco, CA 94107, USA'),
-         { city: 'San Francisco', state: 'CA', country: 'USA', postalCode: '94107' });
-});
-
-test('splitLocation leaves a bare city alone rather than guessing', () => {
-  deepEq(m.splitLocation('Remote'),
-         { city: '', state: '', country: 'Remote', postalCode: '' });
-  deepEq(m.splitLocation('Kolkata'),
-         { city: 'Kolkata', state: '', country: '', postalCode: '' });
-});
-
-test('splitLocation on empty input yields all-empty, never a guess', () => {
-  deepEq(m.splitLocation(''), { city: '', state: '', country: '', postalCode: '' });
-  deepEq(m.splitLocation(null), { city: '', state: '', country: '', postalCode: '' });
-});
-
-test('usStateCode maps names and passes codes through', () => {
-  eq(m.usStateCode('California'), 'CA');
-  eq(m.usStateCode('ca'), 'CA');
-  eq(m.usStateCode('New York'), 'NY');
-  eq(m.usStateCode('West Bengal'), '');
-});
-
 // ── splitPhone ───────────────────────────────────────────────
 
 test('splitPhone separates a dial code from the national number', () => {

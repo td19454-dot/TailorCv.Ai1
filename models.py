@@ -259,6 +259,13 @@ class UsageRecord(Base):
     cover_letters = Column(Integer, default=0, nullable=False)
     linkedin_imports = Column(Integer, default=0, nullable=False)
     auto_applies = Column(Integer, default=0, nullable=False)
+    # Client-side autofill plans (the Chrome extension filling a form in the
+    # user's own tab). Deliberately NOT auto_applies: that one is a monthly cap
+    # priced against a cloud browser session that actually submits, and applies
+    # to Pro too. A local fill costs one small LLM call and submits nothing, so
+    # it goes through enforce_quota()'s lifetime-free rule instead (see
+    # FREE_LIMITS in main.py) and is unlimited for Pro.
+    autofills = Column(Integer, default=0, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "month", name="uq_user_month"),)
 
@@ -426,10 +433,67 @@ class UserApplyQA(Base):
     # practice), so this is unbounded like `answer`, not a short label field.
     answer = Column(Text, nullable=False)
 
+    # Embedding of question_text, so a stored answer can be recalled for the
+    # SAME question worded differently by another employer. question_signature
+    # only ever matches an exact normalized string, which is why the server
+    # engine has to hand the whole answer list to an LLM (see answer_bank's
+    # other_answers_on_file) to do that matching — that does not scale past a
+    # few dozen rows and costs a prompt every time. JSON-encoded list[float],
+    # mirroring User.base_resume_embedding. Nullable: rows predating this are
+    # backfilled lazily, and an un-embedded row still works via the exact path.
+    embedding = Column(Text)
+    embedding_model = Column(String(60))
+
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     __table_args__ = (UniqueConstraint("user_id", "question_signature", name="uq_user_question_signature"),)
+
+    user = relationship("User")
+
+
+class UserResumeFacts(Base):
+    """Structured facts parsed out of the user's base resume, cached.
+
+    Why this exists: application forms routinely ask for university, degree,
+    major, graduation date, GPA, current/previous employer and the separate
+    parts of an address — and UserApplyProfile holds none of them (its
+    `location` is one free-text string). The information IS already on file, as
+    the plain text in User.base_resume_text; it just isn't structured. This
+    caches one parse of it.
+
+    Deliberately NOT a column on `users`: that table is already wide and is
+    loaded by nearly every query in the app, and adding a table needs no
+    hand-written ALTER (create_all makes it) unlike the runtime column-adding
+    main.py does for the older tables. Deliberately NOT SavedResume.resume_json
+    either — that is per-tailored-resume and per-job, so it has both the wrong
+    cardinality and a lossier shape (no major, and one combined `dates` string).
+
+    Everything in here is derived from the user's own resume, so it is not
+    fabricated — but it IS parsed, so it can be wrong. It therefore ranks BELOW
+    anything the user typed themselves: build_applicant_profile layers these
+    under UserApplyProfile, and a per-question answer the user gives in the
+    extension (UserApplyQA) overrides it permanently.
+    """
+    __tablename__ = "user_resume_facts"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"),
+                     nullable=False, unique=True, index=True)
+
+    # {personal_info:{...}, education:[...], work_history:[...], address:{...},
+    #  skills:[...]} — see auto_apply/resume_facts.py for the exact shape.
+    facts_json = Column(Text, nullable=False)
+
+    # sha256 of the base_resume_text this was parsed from. The invalidation key:
+    # a path or a timestamp would both miss an in-place re-upload of a file with
+    # the same name, and the parse is only valid for the exact text it saw.
+    resume_text_hash = Column(String(64), nullable=False)
+    source_resume_path = Column(String(500))
+    model = Column(String(60))
+
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
 
     user = relationship("User")
 

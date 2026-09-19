@@ -94,3 +94,43 @@ class QAAnswerItem(BaseModel):
 
 class RunAnswersRequest(BaseModel):
     answers: list[QAAnswerItem] = Field(min_length=1, max_length=25)
+
+
+class ApplyAnswersRequest(BaseModel):
+    """Answers the user typed into the Chrome extension's autofill panel.
+
+    Separate from RunAnswersRequest, which is tied to an auto_apply_runs row
+    that must be in needs_input state; a client-side fill has no run at all.
+    Same storage, same per-item bounds.
+    """
+    answers: list[QAAnswerItem] = Field(min_length=1, max_length=25)
+
+
+class AutofillField(BaseModel):
+    """One form field the extension found and could not answer for itself.
+
+    `label`, `kind` and `options` are all the server ever learns about the page —
+    never a value read out of it. `sensitive` is advisory: the server re-derives
+    it (auto_apply/match_guard.classify_sensitive) and ORs the two, so a request
+    cannot unlock a field by claiming it is ordinary.
+    """
+    i: int = Field(ge=0, le=999)
+    label: str = Field(min_length=1, max_length=2000)
+    kind: str = Field(default="text", max_length=40)
+    required: bool = False
+    sensitive: bool = False
+    neverFill: bool = False
+    documentSlot: str | None = Field(default=None, max_length=40)
+    # Bounded generously: a country picker legitimately has ~250 entries, and the
+    # server truncates to what it will actually put in the prompt.
+    options: list[str] = Field(default_factory=list, max_length=300)
+
+
+class AutofillPlanRequest(BaseModel):
+    url: str = Field(default="", max_length=2000)
+    host: str = Field(default="", max_length=253)
+    ats: str = Field(default="generic", max_length=40)
+    jobTitle: str = Field(default="", max_length=300)
+    jobCompany: str = Field(default="", max_length=300)
+    jdExcerpt: str = Field(default="", max_length=2000)
+    fields: list[AutofillField] = Field(default_factory=list, max_length=200)

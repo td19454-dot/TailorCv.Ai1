@@ -68,6 +68,7 @@ from routers.linkedin import router as linkedin_router
 from routers.billing import router as billing_router
 from routers.feedback import router as feedback_router
 from routers.job_dashboard import router as job_dashboard_router
+from routers.extension_autofill import router as extension_autofill_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -148,6 +149,13 @@ async def csrf_middleware(request: Request, call_next):
         "/api/extension/tailor-resume",
         "/api/extension/cover-letter",
         "/api/extension/skill-match",
+    # Client-side autofill. Exempt for the same reason as the four above:
+    # getCsrfToken() in the extension pings /api/auth/me on every call, which
+    # would double the latency of a request the user is watching a form wait
+    # on, and the session cookie is SameSite=lax so it is not sent on a
+    # cross-site POST at all.
+    "/api/extension/autofill/plan",
+    "/api/extension/apply-answers",
         "/api/billing/razorpay/webhook",
         "/api/billing/polar/webhook",
     }
@@ -384,6 +392,7 @@ app.include_router(linkedin_router)
 app.include_router(billing_router)
 app.include_router(feedback_router)
 app.include_router(job_dashboard_router)
+app.include_router(extension_autofill_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
@@ -521,6 +530,8 @@ def _ensure_usage_columns() -> None:
         to_add.append("ADD COLUMN linkedin_imports INTEGER NOT NULL DEFAULT 0")
     if "auto_applies" not in cols:
         to_add.append("ADD COLUMN auto_applies INTEGER NOT NULL DEFAULT 0")
+    if "autofills" not in cols:
+        to_add.append("ADD COLUMN autofills INTEGER NOT NULL DEFAULT 0")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:
@@ -581,12 +592,24 @@ def _ensure_apply_profile_columns() -> None:
     from sqlalchemy import inspect as _inspect, text as _text
 
     insp = _inspect(engine)
-    if insp.has_table("user_apply_qa") and engine.dialect.name != "sqlite":
-        cols = {c["name"]: c for c in insp.get_columns("user_apply_qa")}
-        col = cols.get("question_text")
-        if col is not None and str(col["type"]).upper().startswith("VARCHAR"):
+    if insp.has_table("user_apply_qa"):
+        qa_cols = {c["name"]: c for c in insp.get_columns("user_apply_qa")}
+        if engine.dialect.name != "sqlite":
+            col = qa_cols.get("question_text")
+            if col is not None and str(col["type"]).upper().startswith("VARCHAR"):
+                with engine.begin() as conn:
+                    conn.execute(_text("ALTER TABLE user_apply_qa ALTER COLUMN question_text TYPE TEXT"))
+        # Semantic recall of a stored answer for the same question worded
+        # differently — see UserApplyQA.embedding.
+        qa_add = []
+        if "embedding" not in qa_cols:
+            qa_add.append("ADD COLUMN embedding TEXT")
+        if "embedding_model" not in qa_cols:
+            qa_add.append("ADD COLUMN embedding_model VARCHAR(60)")
+        if qa_add:
             with engine.begin() as conn:
-                conn.execute(_text("ALTER TABLE user_apply_qa ALTER COLUMN question_text TYPE TEXT"))
+                for clause in qa_add:
+                    conn.execute(_text(f"ALTER TABLE user_apply_qa {clause}"))
 
     if not insp.has_table("user_apply_profiles"):
         return
@@ -881,6 +904,11 @@ FREE_LIMITS: dict[str, int] = {
     "linkedin_imports": 1,
     "mock_interviews": 1,
     "interview_questions": 1,
+    # Extension autofill: 10 applications filled, ever, then Pro. Priced low
+    # because a fill is one small LLM call in the user's own browser — unlike
+    # auto_applies, which has its own monthly cap (enforce_auto_apply_quota)
+    # because every run burns a cloud browser session and applies to Pro too.
+    "autofills": 10,
     # ats_scans intentionally absent — stays unlimited-free
 }
 
@@ -6208,6 +6236,14 @@ async def set_extension_base_resume(request: Request):
         user.base_style_id = style_id
         user.base_cover_template = cover_template if cover_template in COVER_TEMPLATES else "classic"
         db.commit()
+        if has_upload:
+            # The cached education/address facts describe the OLD resume. Dropped
+            # rather than re-parsed: re-parsing would put an LLM call on the
+            # upload path for facts that may never be needed, and the extension's
+            # apply-context endpoint parses lazily on first use anyway.
+            from auto_apply.resume_facts import invalidate_facts
+
+            invalidate_facts(db, user_id)
         if has_upload and old_path and old_path != new_path and os.path.exists(old_path):
             os.remove(old_path)
     finally:
@@ -6258,6 +6294,10 @@ async def delete_extension_base_resume(request: Request):
         user.base_resume_uploaded_at = None
         user.base_resume_text = None
         db.commit()
+        # Facts parsed from a resume the user just removed must go with it.
+        from auto_apply.resume_facts import invalidate_facts
+
+        invalidate_facts(db, user_id)
         if old_path and os.path.exists(old_path):
             os.remove(old_path)
     finally:

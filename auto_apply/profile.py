@@ -93,6 +93,27 @@ class ApplicantProfile:
     # a universally-correct value for any of these.
     qa_entries: list[dict] = field(default_factory=list)
 
+    # Parsed from the user's own base resume (UserResumeFacts), never invented —
+    # see auto_apply/resume_facts.py. Application forms ask for all of these and
+    # UserApplyProfile has a column for none of them. They rank BELOW anything
+    # the user typed: a stored profile value wins, and a per-question answer in
+    # UserApplyQA overrides both permanently.
+    address_city: str = ""
+    address_state: str = ""
+    address_country: str = ""
+    postal_code: str = ""
+    university: str = ""
+    degree: str = ""
+    major: str = ""
+    graduation_date: str = ""
+    gpa: str = ""
+    current_company: str = ""
+    previous_company: str = ""
+    # Full lists, for forms with education/experience repeaters rather than one
+    # box each. Not flattened into the answer bank's label->value map.
+    education: list[dict] = field(default_factory=list)
+    work_history: list[dict] = field(default_factory=list)
+
     # Narrative — LLM may write these
     current_title: str = ""
     years_experience: str = ""
@@ -142,6 +163,12 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
     if not user or not job:
         return {}
 
+    # Read-only: never parses here. A cache miss yields {} and the run simply
+    # has no education/address facts, exactly as before this existed — a server
+    # run must not grow an LLM call inside its DB snapshot. The extension's
+    # /apply-context endpoint is what populates this.
+    facts = _load_facts_quietly(db, user)
+
     return {
         "user_id": user.id,
         "name": user.name or "",
@@ -159,8 +186,25 @@ def snapshot_user(db, user_id: int, job_id: int) -> dict:
         "apply_url": job.apply_url or "",
         "job_source": job.source or "",
         "profile": _profile_to_dict(prof),
+        "resume_facts": facts,
         "qa_entries": [{"question": r.question_text, "answer": r.answer} for r in qa_rows],
     }
+
+
+def _load_facts_quietly(db, user) -> dict:
+    """Cached resume facts, or {}. Never raises and never parses.
+
+    Isolated so a problem in the facts layer can never break a run that would
+    otherwise have worked — before this existed the runner had no education or
+    address data at all, so {} is a genuinely safe outcome rather than a
+    degraded one."""
+    try:
+        from auto_apply.resume_facts import load_cached_facts
+
+        return load_cached_facts(db, user) or {}
+    except Exception:
+        logger.warning("could not read cached resume facts", exc_info=True)
+        return {}
 
 
 def _profile_to_dict(prof) -> dict:
@@ -262,13 +306,25 @@ async def _narrative_fields(snap: dict) -> dict:
     }
 
 
-async def build_applicant_profile(snap: dict) -> ApplicantProfile:
-    """Layer resume-derived defaults, then stored profile (wins), then narrative."""
+async def build_applicant_profile(snap: dict, narrative: bool = True) -> ApplicantProfile:
+    """Layer resume-derived defaults, then stored profile (wins), then narrative.
+
+    narrative=False skips the one LLM call this function makes
+    (_narrative_fields). The extension's /apply-context endpoint is on the
+    critical path of a click and must stay fast; it also does not need
+    why_this_role or a cover note, because a client-side fill never composes
+    prose unprompted — those are offered as suggestions from stored values only.
+    """
     prof = snap.get("profile") or {}
     derived = resume_defaults(snap.get("resume_text", ""))
+    facts = snap.get("resume_facts") or {}
+    fact_keys = _facts_keys_quietly(facts)
 
     def pick(profile_key: str, derived_key: str = "") -> str:
         return str(prof.get(profile_key) or derived.get(derived_key or profile_key) or "").strip()
+
+    def fact(key: str) -> str:
+        return str(fact_keys.get(key) or "").strip()
 
     full_name = (snap.get("name") or "").strip()
     first, last = _split_name(full_name)
@@ -305,19 +361,58 @@ async def build_applicant_profile(snap: dict) -> ApplicantProfile:
         qa_entries=snap.get("qa_entries") or [],
         agreed_to_employer_terms=bool(prof.get("agreed_to_employer_terms")),
         has_consent=bool(prof.get("has_consent")),
+        # Resume-derived, so under anything stored — pick() already prefers the
+        # profile, and these keys have no profile column at all today.
+        address_city=fact("address_city"),
+        address_state=fact("address_state"),
+        address_country=fact("address_country"),
+        postal_code=fact("postal_code"),
+        university=fact("university"),
+        degree=fact("degree"),
+        major=fact("major"),
+        graduation_date=fact("graduation_date"),
+        gpa=fact("gpa"),
+        current_company=fact("current_company"),
+        previous_company=fact("previous_company"),
+        education=list(facts.get("education") or []),
+        work_history=list(facts.get("work_history") or []),
         current_title=str(prof.get("current_title") or "").strip(),
         years_experience=str(prof.get("years_experience") or "").strip(),
         why_this_role=str(prof.get("why_this_role") or "").strip(),
     )
 
-    narrative = await _narrative_fields(snap)
+    # The resume's own work history names the current role when the profile
+    # doesn't — still below the stored value, same rule as everything above.
+    if not p.current_title:
+        current = next((w for w in p.work_history if w.get("is_current")),
+                       p.work_history[0] if p.work_history else {})
+        p.current_title = str(current.get("role") or "").strip()
+
+    if not narrative:
+        # No LLM pass. cover_note stays whatever the user stored, and is offered
+        # as a suggestion rather than written into a form unasked.
+        p.cover_note = p.why_this_role
+        p.top_skills = [str(s) for s in (facts.get("skills") or [])][:8]
+        return p
+
+    generated = await _narrative_fields(snap)
     # Stored answers still win — the LLM only fills gaps.
-    p.current_title = p.current_title or narrative.get("current_title", "")
-    p.years_experience = p.years_experience or narrative.get("years_experience", "")
-    p.why_this_role = p.why_this_role or narrative.get("why_this_role", "")
-    p.cover_note = narrative.get("cover_note", "") or p.why_this_role
-    p.top_skills = narrative.get("top_skills", [])
+    p.current_title = p.current_title or generated.get("current_title", "")
+    p.years_experience = p.years_experience or generated.get("years_experience", "")
+    p.why_this_role = p.why_this_role or generated.get("why_this_role", "")
+    p.cover_note = generated.get("cover_note", "") or p.why_this_role
+    p.top_skills = generated.get("top_skills", [])
     return p
+
+
+def _facts_keys_quietly(facts: dict) -> dict:
+    try:
+        from auto_apply.resume_facts import facts_answer_keys
+
+        return facts_answer_keys(facts)
+    except Exception:
+        logger.warning("could not flatten resume facts", exc_info=True)
+        return {}
 
 
 def validate_profile(p: ApplicantProfile, snap: dict) -> list[str]:
@@ -372,6 +467,23 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "current_job_title": p.current_title,
         "years_of_experience": p.years_experience,
         "top_skills": ", ".join(p.top_skills),
+        # Resume-derived (UserResumeFacts). Every one of these is filtered out
+        # below when empty, so a user with no parsed facts produces a
+        # byte-identical CANDIDATE_DATA blob to before these keys existed — the
+        # server engine's prompt does not change for them at all.
+        "address": p.address_city and ", ".join(
+            x for x in (p.address_city, p.address_state, p.address_country) if x) or "",
+        "address_city": p.address_city,
+        "address_state": p.address_state,
+        "address_country": p.address_country,
+        "postal_code": p.postal_code,
+        "university": p.university,
+        "degree": p.degree,
+        "major": p.major,
+        "graduation_date": p.graduation_date,
+        "gpa": p.gpa,
+        "current_company": p.current_company,
+        "previous_company": p.previous_company,
         "authorized_to_work_in_country": _yn(p.work_authorized),
         "requires_visa_sponsorship": _yn(p.requires_sponsorship),
         "visa_status": p.visa_status,

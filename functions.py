@@ -524,6 +524,37 @@ async def embed_text(text: str) -> list[float]:
     return response.data[0].embedding
 
 
+async def embed_texts(texts: list[str]) -> list[list[float]]:
+    """Embed several strings in ONE request.
+
+    The extension's autofill plan endpoint embeds a form's field labels plus any
+    un-embedded stored answers on a single click; calling embed_text per string
+    would turn that into dozens of round trips on the critical path of a user
+    waiting for a form to fill. Returns vectors positionally aligned with
+    `texts`; an empty or whitespace-only input yields [] in that slot rather
+    than being sent to the API (which rejects empty strings).
+    """
+    items = [str(t or "") for t in (texts or [])]
+    wanted = [(i, t[:20000]) for i, t in enumerate(items) if t.strip()]
+    out: list[list[float]] = [[] for _ in items]
+    if not wanted:
+        return out
+    client = await _build_openai_client()
+    try:
+        response = await client.embeddings.create(
+            model=EMBEDDING_MODEL, input=[t for _, t in wanted]
+        )
+    except Exception as exc:
+        raise _normalize_openai_error(exc)
+    # The API preserves input order, but keying off the returned index rather
+    # than enumerate() means a reordered response cannot silently misalign a
+    # vector with the wrong question.
+    for item in response.data:
+        slot = wanted[item.index][0]
+        out[slot] = item.embedding
+    return out
+
+
 def cosine_similarity(a: list[float], b: list[float]) -> float:
     """Plain-Python cosine similarity — no numpy dependency needed at this scale
     (one resume vector against a page of cached job vectors per request)."""

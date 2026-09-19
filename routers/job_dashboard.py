@@ -857,7 +857,7 @@ async def save_run_answers(request: Request, run_id: int, payload: RunAnswersReq
     if not user_id:
         raise HTTPException(status_code=401, detail="Not logged in")
 
-    from auto_apply.profile import question_signature
+    from auto_apply.qa_store import upsert_answers
 
     db = SessionLocal()
     try:
@@ -871,25 +871,9 @@ async def save_run_answers(request: Request, run_id: int, payload: RunAnswersReq
         if run.status != "needs_input":
             raise HTTPException(status_code=400, detail="This run doesn't need input.")
 
-        saved = 0
-        for item in payload.answers:
-            question = item.question.strip()
-            answer = item.answer.strip()
-            if not question or not answer:
-                continue
-            sig = question_signature(question)
-            row = (
-                db.query(UserApplyQA)
-                .filter(UserApplyQA.user_id == user_id, UserApplyQA.question_signature == sig)
-                .first()
-            )
-            if not row:
-                row = UserApplyQA(user_id=user_id, question_signature=sig)
-                db.add(row)
-            row.question_text = question
-            row.answer = answer
-            saved += 1
-        db.commit()
+        # Shared with the extension's own save-answer path, so an answer typed in
+        # either place is available to both engines — see auto_apply/qa_store.py.
+        saved = upsert_answers(db, user_id, payload.answers)
         return {"ok": True, "saved": saved}
     finally:
         db.close()
