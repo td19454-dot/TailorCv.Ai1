@@ -17,15 +17,10 @@
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
 import { scrollIntoView, dismissListbox, reprobe } from './discover.js';
+import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
-// How long to wait for a custom dropdown's menu to render after opening it.
-const OPTION_WAIT_MS = 600;
-// How long to let a framework re-render before reading a field back.
-const SETTLE_MS = 60;
-
-const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 // ── event plumbing ───────────────────────────────────────────
 
@@ -279,7 +274,7 @@ export async function commitCombobox(row, value) {
   try {
     scrollIntoView(el);
     openWidget(row);
-    await sleep(SETTLE_MS);
+    await sleep(TIMING.settleMs);
 
     // Type to filter. Whole-value write first (react-select reads the input's
     // onChange); per-character with key events if no menu appears, for widgets
@@ -287,21 +282,21 @@ export async function commitCombobox(row, value) {
     const input = typableInput(row) || el;
     setText(input, value);
     focus(input);
-    let options = await waitForOptions(el, OPTION_WAIT_MS);
+    let options = await waitForOptions(el, TIMING.optionWaitMs);
     if (!options.length) {
       await typeText(input, value, 8);
-      options = await waitForOptions(el, OPTION_WAIT_MS);
+      options = await waitForOptions(el, TIMING.optionWaitMs);
     }
 
     if (options.length && await clickMatchingOption(el, value, options)) {
-      await sleep(SETTLE_MS);
+      await sleep(TIMING.settleMs);
       if (committed(row, value)) return true;
     }
 
     // Fallback: Enter on whatever is highlighted.
     fireKey(input, 'keydown', 'Enter');
     fireKey(input, 'keyup', 'Enter');
-    await sleep(SETTLE_MS);
+    await sleep(TIMING.settleMs);
     if (committed(row, value)) return true;
 
     return false;
@@ -544,7 +539,7 @@ export async function applyDecision(decision) {
     default:
       wrote = setText(row.el, value);
       if (wrote) {
-        await sleep(SETTLE_MS);
+        await sleep(TIMING.settleMs);
         const check = reprobe(row);
         // A masked or otherwise reformatting input can swallow a whole-value
         // write; typing it character by character is the second attempt.
@@ -556,7 +551,7 @@ export async function applyDecision(decision) {
       break;
   }
 
-  await sleep(SETTLE_MS);
+  await sleep(TIMING.settleMs);
   const after = reprobe(row);
   if (!after) return { ok: wrote, outcome: wrote ? 'ok' : 'failed', shown: '' };
   if (after.invalid) return { ok: false, outcome: 'rejected', shown: after.value };

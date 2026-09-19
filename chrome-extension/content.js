@@ -19,8 +19,30 @@
   if (window.__tailorcvInjected) return;   // toolbar click on an auto-injected page
   window.__tailorcvInjected = true;
 
+  // Top frame only. The sidebar must never paint inside an iframe, and the
+  // job-description heuristic below walks every div on the page — running it in
+  // every ad frame on LinkedIn would be a visible bug and a real slowdown. The
+  // manifest already scopes this file to the top frame; this is the belt to that
+  // braces, because the toolbar-click injection path is a separate code path.
+  // (autofill.bundle.js, which DOES load in every frame, has no UI of its own.)
+  if (window.top !== window) return;
+
   const BASE_URL = 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
+
+  // The autofill bundle, loaded before this file by the manifest. Feature-checked
+  // at every call site so a bundle that failed to load leaves the extension
+  // behaving exactly as it did before autofill existed.
+  const AF = window.__tcvAutofill || null;
+  // The application form in THIS document, or null. Set by refreshApplyMode().
+  let applyForm = null;
+  // The sub-frame that holds the form, when it isn't in this document — Greenhouse
+  // and Lever embed theirs on company-branded domains. {frameId, fieldCount, ats}.
+  let applyFrame = null;
+  // The context the answer tiers need (answer bank, blockers, quota), fetched
+  // once per browser session by the background worker.
+  let applyCtx = null;
+  let applyBusy = false;
 
   // analytics.bundle.js (loaded before this file, see manifest.json) installs
   // these globals — guarded in case it failed to load on some page.
@@ -868,13 +890,22 @@
         </div>
         <div class="tcv-match-bar"><span class="tcv-match-fill" id="tcvMatchFill"></span></div>
       </div>
-      <button class="tcv-btn tcv-btn-start" id="tcvTailorBtn">
+      ${applyForm ? `
+      <button class="tcv-btn tcv-btn-start" id="tcvAfFillBtn">
+        ✎ Autofill this application
+      </button>` : ''}
+      <button class="tcv-btn ${applyForm ? 'tcv-btn-ghost' : 'tcv-btn-start'}" id="tcvTailorBtn">
         ${tcvBusy ? 'Working on another job…' : '✦ Tailor & Download Resume'}
       </button>
       <button class="tcv-btn tcv-btn-ghost" id="tcvCoverBtn">
         ✉ Write a Cover Letter
       </button>
     `;
+
+    // On a page that is BOTH a posting and an application form, autofill leads
+    // and the resume actions stay where they were — one view, no mode switch.
+    const fillBtn = body.querySelector('#tcvAfFillBtn');
+    if (fillBtn) fillBtn.addEventListener('click', () => runAutofill());
 
     body.querySelector('#tcvEditJd').addEventListener('click', (e) => {
       e.preventDefault();
@@ -1460,6 +1491,12 @@
   }
   function tryAutoRefreshOnce() {
     if (!isLinkedInCollectionsPage()) return false;
+    // Never reload a page holding an application form. On a half-filled form that
+    // throws away the user's work — and ours — and it is the single worst thing
+    // this extension could do. The LinkedIn collections check above already makes
+    // this unreachable in practice; asserted anyway because the cost of being
+    // wrong is unrecoverable.
+    if (applyForm) return false;
     const key = 'tailorcv_auto_refreshed:' + location.href;
     try {
       if (sessionStorage.getItem(key)) return false;
@@ -1471,9 +1508,183 @@
     return true;
   }
 
+  // ── Application autofill ─────────────────────────────────
+  //
+  // Additive by design. Every function below is new, and the only changes to the
+  // existing state machine are: one extra button in renderReady(), and one
+  // branch in renderJobFromPage() that shows the apply panel instead of the
+  // paste-the-JD box when the page is an application form with no readable
+  // description. The four extraction layers are untouched.
+
+  /** Cheap, synchronous: is there an application form in THIS document? */
+  function refreshApplyMode() {
+    if (!AF) { applyForm = null; return null; }
+    try {
+      applyForm = AF.isApplicationPage();
+    } catch (err) {
+      console.warn('[TailorCV] form detection failed —', err && err.message);
+      applyForm = null;
+    }
+    return applyForm || (applyFrame ? { fields: new Array(applyFrame.fieldCount), ats: applyFrame.ats, framed: true } : null);
+  }
+
+  /**
+   * Look for an application form in a sub-frame.
+   *
+   * Greenhouse and Lever serve the form in an iframe when a company fronts the
+   * board with its own domain, so the top document has no form at all and the
+   * sync check above finds nothing. The frames announce themselves to the
+   * background worker as they load (see discoverFormFrames there), so this is a
+   * cheap lookup rather than a broadcast — but it is async, hence separate.
+   */
+  async function checkFrameForm() {
+    if (!AF || applyForm) return null;
+    const res = await sendMessage({ type: 'AF_FRAME_DISCOVER' });
+    const frames = (res && res.data) || [];
+    if (!frames.length) return null;
+    applyFrame = frames[0];
+    return applyFrame;
+  }
+
+  /** Send a message to the frame that holds the form. */
+  async function toFrame(payload) {
+    if (!applyFrame) return { error: 'no_frame' };
+    const res = await sendMessage({
+      type: 'AF_FRAME_SEND', frameId: applyFrame.frameId, payload,
+    });
+    if (res.error) return { error: res.error };
+    return res.data || {};
+  }
+
+  async function ensureApplyContext() {
+    if (applyCtx) return applyCtx;
+    const res = await sendMessage({ type: 'AF_GET_CONTEXT' });
+    if (res.error) return { error: res.error, code: res.code };
+    applyCtx = res.data;
+    return applyCtx;
+  }
+
+  /** The "form detected" view, for an apply page with no job description. */
+  function renderApplyReady() {
+    if (!AF || !applyForm) { renderManual(); return; }
+    AF.ui.renderReady(body, applyForm, applyCtx, {
+      onFill: () => runAutofill(),
+      onTailor: () => renderManual(),
+      onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
+      onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
+    });
+  }
+
+  async function runAutofill() {
+    if (!AF || applyBusy) return;
+    const form = refreshApplyMode();
+    if (!form) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = '✗ No application form found on this page.';
+      return;
+    }
+
+    applyBusy = true;
+    AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning);
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = '';
+    startProgress();
+    track('autofill_started', { host: location.hostname, ats: form.ats });
+
+    const ctx = await ensureApplyContext();
+    if (!ctx || ctx.error) {
+      finishProgress(false);
+      applyBusy = false;
+      if (ctx && ctx.code === 'not_logged_in') { refreshFull(); return; }
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${(ctx && ctx.error) || 'Could not load your profile.'}`;
+      renderApplyReady();
+      return;
+    }
+
+    let result;
+    try {
+      if (applyForm) {
+        result = await AF.runAutofill(ctx, (p) => {
+          const text = AF.ui.PHASE_TEXT[p.phase];
+          if (text) {
+            AF.ui.setPhase(body, p.total && p.done != null
+              ? `${text} (${p.done}/${p.total})` : text);
+          }
+        });
+      } else {
+        // The form lives in a sub-frame. It runs the identical code path there
+        // and sends back serialized decisions — there is no progress streaming
+        // across the boundary, so the panel just says what it is doing.
+        AF.ui.setPhase(body, AF.ui.PHASE_TEXT.filling);
+        result = await toFrame({ type: 'AF_FRAME_APPLY', ctx });
+      }
+    } catch (err) {
+      console.error('[TailorCV] autofill failed', err);
+      result = { error: String((err && err.message) || err), decisions: [], counts: {} };
+    }
+
+    finishProgress(!result.error);
+    applyBusy = false;
+
+    if (result.error) {
+      globalStatus.className = 'tcv-status-text tcv-error';
+      globalStatus.textContent = `✗ ${humanFillError(result.error)}`;
+      track('autofill_failed', { error: result.error, host: location.hostname });
+      renderApplyReady();
+      return;
+    }
+
+    const counts = result.counts || {};
+    const filled = (counts.fill || 0) + (counts.document || 0);
+    globalStatus.className = 'tcv-status-text tcv-ok';
+    globalStatus.textContent = `✓ Filled ${filled} field${filled === 1 ? '' : 's'} — review before submitting`;
+    track('autofill_completed', {
+      host: location.hostname,
+      ats: result.ats,
+      field_count: (result.decisions || []).length,
+      filled,
+      review: counts.suggest || 0,
+      ask: counts.ask || 0,
+      profile: counts.profile || 0,
+      page: result.page || 1,
+    });
+    renderApplyResults(result);
+  }
+
+  function renderApplyResults(result) {
+    AF.ui.renderResults(body, result, applyCtx, {
+      onFill: () => runAutofill(),
+      // Re-render in place after the user answers a field, so the row moves out
+      // of "needs your answer" and into "filled" without re-running anything.
+      onRefresh: () => renderApplyResults(result),
+      onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
+      onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
+      // These three only fire for a framed form; a local run acts on the live
+      // decision objects directly and never calls them.
+      onAnswer: async (index, value, remember) => {
+        const res = await toFrame({ type: 'AF_FRAME_ANSWER', index, value, remember });
+        if (res && res.decision) result.decisions[index] = res.decision;
+        return res;
+      },
+      onJump: (index) => toFrame({ type: 'AF_FRAME_JUMP', index }),
+      onRemember: (items) => toFrame({ type: 'AF_FRAME_REMEMBER', items }),
+    });
+  }
+
+  function humanFillError(code) {
+    if (code === 'no_form') return 'No application form found on this page.';
+    if (code === 'no_fields') return 'We could not read any fields on this form.';
+    return code;
+  }
+
   function renderJobFromPage(attempt = 0, gen = ++extractGen) {
     if (gen !== extractGen) return;   // a newer page took over
     if (quotaExceeded) { renderUpgradePrompt(); return; }
+
+    // Checked before extraction so renderReady() knows whether to offer the
+    // autofill button. Deterministic and synchronous — no network, no LLM.
+    refreshApplyMode();
 
     const job = extractJob();
     if (job) {
@@ -1482,11 +1693,28 @@
       return;
     }
 
+    // An application page usually has no job description on it — that lived on
+    // the posting the user came from. Retrying the extractor ten times and then
+    // showing a paste-the-JD box would be the wrong answer to the wrong
+    // question, so an unambiguous form short-circuits to the apply panel.
+    if (applyForm && attempt === 0) {
+      renderApplyReady();
+      return;
+    }
+
     const maxTries = isLinkedInCollectionsPage() ? LINKEDIN_COLLECTIONS_TRIES : EXTRACT_TRIES;
     if (attempt >= maxTries) {
+      if (applyForm) { renderApplyReady(); return; }
       if (tryAutoRefreshOnce()) return;   // page is reloading — nothing left to render
-      logDiagnostics();
-      renderManual();
+      // Last resort before the paste box: the form may be in an iframe, which
+      // only an async lookup can see. Checked here rather than up front so a
+      // normal posting never pays for it.
+      checkFrameForm().then((frame) => {
+        if (gen !== extractGen) return;
+        if (frame) { refreshApplyMode(); renderApplyReady(); return; }
+        logDiagnostics();
+        renderManual();
+      });
       return;
     }
 
@@ -1555,6 +1783,39 @@
   const openedFromToolbar = window.__tailorcvFromToolbar === true;
   if (openedFromToolbar || looksLikeJobPage()) {
     setTimeout(createPanel, openedFromToolbar ? 0 : 1200);
+  } else {
+    // An application page often fails looksLikeJobPage(): its URL is
+    // /application or /apply, not a posting, and there may be no per-host
+    // adapter. The form itself is the signal, so check for one once the page has
+    // had a chance to render — this is the only reason the panel appears on a
+    // page the JD heuristic would have skipped, and it appears collapsed.
+    setTimeout(async () => {
+      if (document.getElementById('tailorcv-sidebar')) return;
+      if (!refreshApplyMode()) {
+        // Nothing in this document — the form may be inside an iframe.
+        if (!(await checkFrameForm())) return;
+        refreshApplyMode();
+      }
+      createPanel();
+    }, 1600);
+  }
+
+  // A multi-step application navigates between pages, which destroys this script
+  // every time. Picking the run back up means the panel says "page 2 of this
+  // application" and keeps the record of what was already filled, instead of
+  // presenting each step as an unrelated form.
+  if (AF) {
+    setTimeout(async () => {
+      try {
+        const page = await AF.resumeIfContinuing();
+        if (page > 1 && document.getElementById('tailorcv-sidebar')) {
+          globalStatus.className = 'tcv-status-text';
+          globalStatus.textContent = `Continuing — page ${page} of this application`;
+        }
+      } catch (err) {
+        console.warn('[TailorCV] could not resume the autofill run —', err && err.message);
+      }
+    }, 1800);
   }
 
   // These boards are client-routed SPAs — re-read the page when the URL changes.
@@ -1563,6 +1824,10 @@
     if (location.href === lastUrl) return;
     lastUrl = location.href;
     manualJd = '';   // a new posting: never carry the last one's text over
+    // Same reasoning for the form: a different URL is a different form, and a
+    // stale frameId would route a fill at whatever now occupies that frame.
+    applyForm = null;
+    applyFrame = null;
     setTimeout(() => {
       if (!document.getElementById('tailorcv-sidebar')) {
         if (looksLikeJobPage()) createPanel();

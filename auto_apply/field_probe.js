@@ -111,9 +111,54 @@
     }
     const anc = el.closest && el.closest('label');
     if (anc) return txt(anc);
+
+    // A <label> that is a SIBLING of the control, with no `for` and no wrapping.
+    // Lever writes every field this way
+    // (<label class="application-label"><span>Current company</span></label>
+    //  <input name="org">), and Workday and several hand-rolled careers pages do
+    // the same. Without this the field has no label at all: it falls through to
+    // `ident` (here, "org"), which matches no question and makes an ordinary
+    // "Current company" box unanswerable.
+    //
+    // Scoped to the field's own wrapper, and only while that wrapper holds this
+    // one control — the same bound rsContainer and isInvalid use. An unscoped
+    // "nearest preceding label" search on a compact form reads the label of the
+    // field ABOVE, which is worse than no label: it produces a confident wrong
+    // answer instead of a question.
+    const sibling = siblingLabel(el);
+    if (sibling) return sibling;
+
     const fs = el.closest && el.closest('fieldset');
     if (fs) { const lg = fs.querySelector('legend'); if (lg) return txt(lg); }
     return attr(el, 'placeholder');
+  }
+
+  function siblingLabel(el) {
+    let n = el.parentElement, depth = 0;
+    while (n && depth < 3) {
+      if (only(n) !== el) break;          // now covering other controls: too far
+      if (isFormLevel(n)) break;
+      let labels = null;
+      try { labels = n.querySelectorAll('label'); } catch (e) { labels = null; }
+      if (labels) {
+        for (let i = 0; i < labels.length; i++) {
+          // Skip a label that wraps a DIFFERENT control — on a radio group the
+          // per-option labels live here too, and the group's question does not.
+          if (labels[i].querySelector(CONTROL_SEL)) continue;
+          const t = txt(labels[i]);
+          if (t) return t;
+        }
+      }
+      // The label may sit just before the wrapper rather than inside it.
+      const prev = n.previousElementSibling;
+      if (prev && (prev.tagName || '').toLowerCase() === 'label'
+          && !prev.querySelector(CONTROL_SEL)) {
+        const t = txt(prev);
+        if (t) return t;
+      }
+      n = n.parentElement; depth++;
+    }
+    return '';
   }
 
   // The react-select wrapper for THIS control, or null.

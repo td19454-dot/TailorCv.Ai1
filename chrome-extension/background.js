@@ -38,6 +38,15 @@ function arrayBufferToBase64(buffer) {
 // uncached call) keeps it correct sooner than that; AUTH_CACHE_TTL_MS is only
 // a backstop for a session cookie silently expiring with none of those firing.
 const AUTH_CACHE_KEY = 'tcv_auth_cache';
+
+const AF_CONTEXT_KEY = 'tcv_autofill_context';
+const AF_FILE_KEY = 'tcv_autofill_file';
+// Short relative to the auth cache: the answer bank changes whenever the user
+// edits their profile or saves an answer, and both of those happen mid-session.
+// Explicit invalidation (below) is what keeps it correct sooner than this.
+const AF_CONTEXT_TTL_MS = 10 * 60 * 1000;
+const AF_FILE_TTL_MS = 30 * 60 * 1000;
+
 const AUTH_CACHE_TTL_MS = 5 * 60 * 1000;
 
 async function readAuthCache() {
@@ -58,7 +67,11 @@ async function writeAuthCacheField(field, value) {
 }
 
 async function clearAuthCache() {
-  await chrome.storage.session.remove(AUTH_CACHE_KEY);
+  // The autofill context is a per-user artifact too — it carries the answer bank
+  // and the quota state — so anything that invalidates the auth cache
+  // invalidates it as well. Keeping them separate once let a logged-out user's
+  // panel keep offering the previous user's answers.
+  await chrome.storage.session.remove([AUTH_CACHE_KEY, AF_CONTEXT_KEY, AF_FILE_KEY]);
 }
 
 // Clicking the toolbar icon toggles the sidebar (no popup — the sidebar is the
@@ -82,6 +95,14 @@ chrome.action.onClicked.addListener(async (tab) => {
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: () => { window.__tailorcvFromToolbar = true; },
+    });
+    // The filler goes into EVERY frame: Greenhouse and Lever embed their form in
+    // an iframe on company-branded domains, and the form is what we need to
+    // reach. The sidebar and the job-description reader stay in the top frame
+    // only — injecting those into every frame would paint a panel inside ad
+    // iframes and run the div-walking JD heuristic dozens of times per page.
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id, allFrames: true }, files: ['autofill.bundle.js'],
     });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['analytics.bundle.js'] });
     await chrome.scripting.executeScript({ target: { tabId: tab.id }, files: ['styles.bundle.js'] });
@@ -394,6 +415,143 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           sendResponse({ error: e.message });
         }
 
+      // ── Client-side application autofill ──────────────────────────────
+      //
+      // The content script owns the DOM; these four just move data. Note what
+      // is NOT here: no endpoint that submits anything. The extension has no
+      // code path that sends an application.
+
+      } else if (msg.type === 'AF_GET_CONTEXT') {
+        // Cached for the browser session and keyed on profileVersion, so a
+        // second application on the same site costs one request, not three.
+        const cached = await readAutofillContext();
+        if (cached) {
+          sendResponse({ data: cached });
+          return;
+        }
+        const res = await fetch(`${BASE_URL}/api/extension/apply-context`, {
+          credentials: 'include',
+        });
+        if (!res.ok) {
+          sendResponse({
+            error: res.status === 401
+              ? 'Not logged in to TailorCV. Open the TailorCV panel to log in.'
+              : 'Could not load your profile.',
+            code: res.status === 401 ? 'not_logged_in' : null,
+          });
+          return;
+        }
+        const data = await res.json();
+        await writeAutofillContext(data);
+        sendResponse({ data });
+
+      } else if (msg.type === 'AF_PLAN') {
+        const res = await fetch(`${BASE_URL}/api/extension/autofill/plan`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          const data = await res.json().catch(() => ({}));
+          const detail = data.detail || {};
+          if (res.status === 402 || detail.error === 'upgrade_required') {
+            sendResponse({
+              error: "You've used your free autofills. Upgrade to Pro at thetailorcv.com.",
+              code: 'upgrade_required',
+            });
+            return;
+          }
+          if (res.status === 401) {
+            await clearAuthCache();
+            await clearAutofillContext();
+            sendResponse({ error: 'Not logged in to TailorCV.', code: 'not_logged_in' });
+            return;
+          }
+          sendResponse({ error: 'Could not work out the answers for this form.' });
+          return;
+        }
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'AF_SAVE_ANSWERS') {
+        const res = await fetch(`${BASE_URL}/api/extension/apply-answers`, {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(msg.payload || {}),
+        });
+        if (!res.ok) {
+          sendResponse({ error: 'Could not save that answer.' });
+          return;
+        }
+        // A saved answer changes what the next form can be filled from.
+        await clearAutofillContext();
+        sendResponse({ data: await res.json() });
+
+      } else if (msg.type === 'AF_GET_RESUME_FILE') {
+        // Fetched here and passed as base64 rather than as a blob URL: MV3
+        // service workers have no URL.createObjectURL (the same constraint the
+        // download helper above works around), and a URL minted here would not
+        // be fetchable from a content script anyway.
+        const doc = msg.doc === 'cover_letter' ? 'cover_letter' : 'resume';
+        const cached = await readResumeFile(doc);
+        if (cached) {
+          sendResponse({ data: cached });
+          return;
+        }
+        const res = await fetch(`${BASE_URL}/api/extension/base-resume/file?doc=${doc}`, {
+          credentials: 'include',
+        });
+        if (!res.ok) {
+          sendResponse({ error: res.status === 404 ? 'no_file' : 'fetch_failed' });
+          return;
+        }
+        const buffer = await res.arrayBuffer();
+        const payload = {
+          base64: arrayBufferToBase64(buffer),
+          filename: filenameFromResponse(res, doc),
+          mime: res.headers.get('content-type') || 'application/pdf',
+        };
+        await writeResumeFile(doc, payload);
+        sendResponse({ data: payload });
+
+      } else if (msg.type === 'AF_STATE_GET') {
+        // Keyed on the sender's own tab id, which comes from Chrome and not from
+        // the page, so one tab's run state can never be read or spoofed by
+        // another. Wiped when the browser closes, like the auth cache.
+        const key = autofillStateKey(sender);
+        if (!key) { sendResponse({ data: null }); return; }
+        const stored = await chrome.storage.session.get(key);
+        sendResponse({ data: stored[key] || null });
+
+      } else if (msg.type === 'AF_STATE_SET') {
+        const key = autofillStateKey(sender);
+        if (key) await chrome.storage.session.set({ [key]: msg.data });
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'AF_STATE_CLEAR') {
+        const key = autofillStateKey(sender);
+        if (key) await chrome.storage.session.remove(key);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'AF_FRAME_ANNOUNCE') {
+        recordFormFrame(sender, msg);
+        sendResponse({ data: { ok: true } });
+
+      } else if (msg.type === 'AF_FRAME_DISCOVER') {
+        sendResponse({ data: discoverFormFrames(sender) });
+
+      } else if (msg.type === 'AF_FRAME_SEND') {
+        const tabId = sender.tab && sender.tab.id;
+        if (!tabId) { sendResponse({ error: 'no_tab' }); return; }
+        try {
+          const res = await chrome.tabs.sendMessage(
+            tabId, msg.payload || {}, { frameId: msg.frameId });
+          sendResponse({ data: res });
+        } catch (e) {
+          sendResponse({ error: e.message });
+        }
+
       } else {
         sendResponse({ error: 'Unknown message type' });
       }
@@ -402,4 +560,110 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     }
   })();
   return true; // keep channel open for async response
+});
+
+// ── Autofill caches and helpers ────────────────────────────────────────────
+
+async function readAutofillContext() {
+  const stored = await chrome.storage.session.get(AF_CONTEXT_KEY);
+  const entry = stored[AF_CONTEXT_KEY];
+  if (!entry || (Date.now() - entry.cachedAt) > AF_CONTEXT_TTL_MS) return null;
+  return entry.data;
+}
+
+async function writeAutofillContext(data) {
+  await chrome.storage.session.set({
+    [AF_CONTEXT_KEY]: { cachedAt: Date.now(), data },
+  });
+}
+
+async function clearAutofillContext() {
+  await chrome.storage.session.remove([AF_CONTEXT_KEY, AF_FILE_KEY]);
+}
+
+async function readResumeFile(doc) {
+  const stored = await chrome.storage.session.get(AF_FILE_KEY);
+  const entry = stored[AF_FILE_KEY];
+  if (!entry || (Date.now() - entry.cachedAt) > AF_FILE_TTL_MS) return null;
+  return entry[doc] || null;
+}
+
+async function writeResumeFile(doc, payload) {
+  const stored = await chrome.storage.session.get(AF_FILE_KEY);
+  const entry = stored[AF_FILE_KEY] || {};
+  const fresh = (Date.now() - (entry.cachedAt || 0)) <= AF_FILE_TTL_MS
+    ? { ...entry } : {};
+  fresh[doc] = payload;
+  fresh.cachedAt = Date.now();
+  await chrome.storage.session.set({ [AF_FILE_KEY]: fresh });
+}
+
+function filenameFromResponse(res, doc) {
+  const disposition = res.headers.get('content-disposition') || '';
+  const match = disposition.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
+  if (match) {
+    try { return decodeURIComponent(match[1]); } catch (_) { return match[1]; }
+  }
+  return doc === 'cover_letter' ? 'cover_letter.pdf' : 'resume.pdf';
+}
+
+function autofillStateKey(sender) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  return tabId ? `tcv_af:${tabId}` : null;
+}
+
+/**
+ * Which frames of the sender's tab contain an application form.
+ *
+ * ANNOUNCE-based, and that shape is forced by two constraints. Enumerating
+ * frames would need the webNavigation permission, which is a new install-time
+ * prompt and a harder store review for one feature. And broadcasting an AF_PING
+ * with chrome.tabs.sendMessage and no frameId fans out to every frame but only
+ * ever resolves with the FIRST reply — which on a page full of ad iframes is
+ * reliably the wrong one.
+ *
+ * So instead each sub-frame that finds a form announces itself once on load, and
+ * Chrome stamps the announcement with a frameId the page cannot forge. This map
+ * is the collected result.
+ */
+const formFrames = new Map();   // tabId -> Map(frameId -> {fieldCount, url, ats, at})
+
+function recordFormFrame(sender, info) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  const frameId = sender && sender.frameId;
+  if (tabId == null || frameId == null) return;
+  if (!formFrames.has(tabId)) formFrames.set(tabId, new Map());
+  formFrames.get(tabId).set(frameId, {
+    fieldCount: Number(info.fieldCount) || 0,
+    url: String(info.url || ''),
+    ats: String(info.ats || 'generic'),
+    at: Date.now(),
+  });
+}
+
+function discoverFormFrames(sender) {
+  const tabId = sender && sender.tab && sender.tab.id;
+  if (tabId == null) return [];
+  const frames = formFrames.get(tabId);
+  if (!frames) return [];
+  const out = [];
+  for (const [frameId, info] of frames) {
+    // Skip the top frame: the caller already knows whether it has a form of its
+    // own, and it fills that one in-process with no messaging at all.
+    if (frameId === 0) continue;
+    out.push(Object.assign({ frameId }, info));
+  }
+  // The frame with the most fields is the application; an ad iframe with a
+  // two-field newsletter box never wins.
+  out.sort((a, b) => b.fieldCount - a.fieldCount);
+  return out;
+}
+
+// A navigation replaces the frames, so their announcements are stale.
+chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
+  if (changeInfo.status === 'loading') formFrames.delete(tabId);
+});
+chrome.tabs.onRemoved.addListener((tabId) => {
+  formFrames.delete(tabId);
+  chrome.storage.session.remove(`tcv_af:${tabId}`).catch(() => {});
 });

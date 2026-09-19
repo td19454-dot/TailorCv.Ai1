@@ -25,6 +25,7 @@
 import {
   bestOptionMatch,
   classifySensitive,
+  findDeclineOption,
   isNeverFill,
   matchFieldKey,
   formatDateForField,
@@ -164,8 +165,38 @@ export function decide(rows, ctx, server, state) {
     if (row.required) {
       return done(d, ASK, '', '', 0, 'we have no answer for this on file');
     }
+    // Optional and unanswered. Skipped in the results, but some of these are
+    // still worth one line in the server request:
+    //
+    //  - A consent or opt-in checkbox. The server engine's prompt carries a
+    //    specific rule for these and a specific reason: an unanswered consent
+    //    question the employer marks required blocks the whole submission, and
+    //    "required" is not always in the markup.
+    //  - A choice field, where the answer is one of a handful of listed options
+    //    and costs a few tokens to ask about.
+    //  - A field whose key we DID match but could not coerce onto this form's
+    //    options ("B.Tech" against High School / Bachelor's / Master's). We know
+    //    the answer; we just cannot map it, which is precisely what the model is
+    //    for.
+    const choice = row.kind === 'select' || row.kind === 'combobox'
+                || row.kind === 'radio' || row.kind === 'checkbox';
+    d.askable = looksLikeConsent(row.label) || choice || !!entry;
     return done(d, SKIP, '', '', 0, 'optional, and we have no answer for it');
   });
+}
+
+// Consent, opt-in and agreement checkboxes, which are frequently unmarked in the
+// markup and required in practice.
+const CONSENT_RE = new RegExp([
+  /\bconsent\b|\bi agree\b|\bagree to\b|\baccept\b|\backnowledge\b/.source,
+  /\bprivacy (policy|notice)\b|\bterms\b|\bgdpr\b/.source,
+  /\bopt[ -]?in\b|\bsubscribe\b|\bmarketing\b|\bpromotional\b/.source,
+  /\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b/.source,
+  /\bcontact me\b|\bkeep me\b|\bnotify me\b/.source,
+].join('|'), 'i');
+
+export function looksLikeConsent(label) {
+  return CONSENT_RE.test(String(label == null ? '' : label));
 }
 
 function base(row) {
@@ -233,7 +264,8 @@ export function coerce(value, row) {
     const options = (row.options || []).map(o => (typeof o === 'string' ? o : o.label));
     if (!options.length) return text;     // options unreadable: let the writer try
     const match = bestOptionMatch(text, options);
-    return match == null ? null : (typeof match === 'string' ? match : match.label);
+    if (match != null) return typeof match === 'string' ? match : match.label;
+    return declineFallback(text, options);
   }
 
   const hints = row.hints || {};
@@ -253,6 +285,26 @@ export function coerce(value, row) {
     return text.length > PROSE_LENGTH ? null : text.slice(0, hints.maxLength);
   }
   return text;
+}
+
+/**
+ * When the stored answer is "prefer not to say" and no option matches its
+ * wording, take whatever option on THIS form means the same thing.
+ *
+ * Every employer words the opt-out differently — "Decline To Self Identify",
+ * "I don't wish to answer", "I prefer not to say" — and none of those is close
+ * enough to the others for a similarity ratio to link them (the shared words are
+ * all stopwords). But the user's intent is unambiguous and the mapping is
+ * one-to-one: there is at most one decline option in a list. The server engine
+ * reaches the same conclusion with _find_decline_option.
+ *
+ * Only ever maps a decline ONTO a decline. It cannot turn a real answer into an
+ * opt-out, which is the direction that would lose information the user gave us.
+ */
+function declineFallback(text, options) {
+  if (!looksLikeDecline(text)) return null;
+  const found = findDeclineOption(options);
+  return found == null ? null : (typeof found === 'string' ? found : found.label);
 }
 
 function looksLikeDateField(row) {
@@ -303,7 +355,9 @@ function shapePhone(text, row) {
 export function fieldsForServer(decisions) {
   const out = [];
   decisions.forEach((d, i) => {
-    if (d.action !== ASK) return;
+    // `askable` covers the optional fields still worth one line — see the end of
+    // decide() for which and why.
+    if (d.action !== ASK && !d.askable) return;
     if (d.sensitive || d.slot) return;
     if (isNeverFill(d.label)) return;
     if (classifySensitive(d.label)) return;     // belt and braces

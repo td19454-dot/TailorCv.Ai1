@@ -12,6 +12,7 @@
 // "we saw N fields" an honest number.
 
 import { questionSignature, documentSlotFor } from './match.js';
+import { TIMING } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
 
@@ -326,7 +327,13 @@ export function describeFields(form) {
       kind,
       label: (d.label || '').trim() || d.ident,
       ident: d.ident,
-      value: d.value || '',
+      // Collapsed the same way the server engine collapses it: a value is only
+      // carried when the field is genuinely filled. An unfilled <select> still
+      // reports its placeholder ("Select…") as displayed text, and `value` feeds
+      // the anti-downgrade guard, which treats any non-empty current value as a
+      // real answer worth protecting — so leaking a placeholder through here
+      // makes it refuse a legitimate first "prefer not to answer".
+      value: d.filled ? (d.value || '') : '',
       filled: !!d.filled,
       invalid: !!d.invalid,
       required: !!d.required,
@@ -343,8 +350,7 @@ export function describeFields(form) {
     if (kind === 'radio' || kind === 'checkbox') {
       const label = p.labelFor(el) || el.value || '';
       row.options = label ? [{ value: el.value || label, label, el }] : [];
-      // A group's question is its fieldset legend, not the option's own label.
-      row.label = groupLabel(el, p) || row.label;
+      row.optionLabel = label;
       if (logical) groupKeys.set(logical, out.length);
     }
 
@@ -353,6 +359,19 @@ export function describeFields(form) {
       row.documentSlot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
     }
     out.push(row);
+  }
+
+  // The group question can only be worked out once every option is known, so it
+  // is a second pass: during the first, a group's later members have not been
+  // seen yet and the smallest-common-ancestor search would find the wrong node.
+  for (const row of out) {
+    if (row.kind !== 'radio' && row.kind !== 'checkbox') continue;
+    const question = groupLabel(row.members, p);
+    // A lone checkbox is its own question ("I agree to the terms"), so its own
+    // label is the right one and a wrapper search would only find something
+    // broader and less specific.
+    if (question && (row.members.length > 1 || row.kind === 'radio')) row.label = question;
+    else if (row.optionLabel) row.label = row.optionLabel;
   }
   return out;
 }
@@ -393,14 +412,60 @@ function groupIdentity(el, d, kind) {
   return null;
 }
 
-function groupLabel(el, p) {
+/**
+ * The QUESTION a radio/checkbox group asks — not the label of one option.
+ *
+ * describeEl's label for a radio is its own option text ("Yes"), which is the
+ * right answer for that element and the wrong one for the field. A fieldset
+ * legend or a radiogroup's aria-label gives the question directly; where neither
+ * exists (Lever wraps the question in a plain <label> beside the options, with no
+ * fieldset anywhere) the smallest ancestor containing every member is found and
+ * searched for a label that does not itself wrap a control.
+ *
+ * Getting this wrong is not cosmetic: with "Yes" as the question, the group is
+ * unanswerable, and a group we cannot name is a required field left blank.
+ */
+function groupLabel(members, p) {
+  const el = members[0];
   const group = el.closest && el.closest('[role="radiogroup"], fieldset');
-  if (!group) return '';
-  const aria = group.getAttribute && group.getAttribute('aria-label');
-  if (aria) return aria.trim();
-  const legend = group.querySelector && group.querySelector('legend');
-  if (legend) return (legend.textContent || '').replace(/\s+/g, ' ').trim();
-  return p.labelFor(group) || '';
+  if (group) {
+    const aria = group.getAttribute && group.getAttribute('aria-label');
+    if (aria) return aria.trim();
+    const legend = group.querySelector && group.querySelector('legend');
+    if (legend) return clean(legend.textContent);
+    const viaProbe = p.labelFor(group);
+    if (viaProbe) return viaProbe;
+  }
+
+  // Smallest ancestor that contains all the options.
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    if (members.every(m => n.contains(m))) {
+      const found = questionLabelIn(n);
+      if (found) return found;
+    }
+    n = n.parentElement; depth++;
+  }
+  return '';
+}
+
+/** A label inside `node` that describes the group rather than one option. */
+function questionLabelIn(node) {
+  let labels = null;
+  try { labels = node.querySelectorAll('label, legend'); } catch (e) { return ''; }
+  for (const label of labels) {
+    // A label wrapping a control is that control's own option text.
+    if (label.querySelector && label.querySelector(probe().CONTROL_SEL)) continue;
+    if (label.getAttribute && label.getAttribute('for')) continue;
+    const text = clean(label.textContent);
+    // An option label is short and answer-shaped; a question is not.
+    if (text && !/^(yes|no|n\/a|other|male|female)$/i.test(text)) return text;
+  }
+  return '';
+}
+
+function clean(text) {
+  return String(text == null ? '' : text).replace(/\s+/g, ' ').trim();
 }
 
 function normalizeOptions(options) {
@@ -445,7 +510,6 @@ function fieldHints(el) {
 
 // ── custom dropdown option reading ───────────────────────────
 
-const OPTION_WAIT_MS = 500;
 const MAX_OPTIONS_READ = 200;
 
 /**
@@ -524,7 +588,7 @@ function waitForOptions() {
       if (labels.length) finish(labels);
     });
     try { obs.observe(doc.body, { childList: true, subtree: true }); } catch (e) {}
-    const timer = setTimeout(() => finish(read()), OPTION_WAIT_MS);
+    const timer = setTimeout(() => finish(read()), TIMING.optionWaitMs);
   });
 }
 
