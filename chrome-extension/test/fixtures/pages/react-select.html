@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorCV fixture — Portal-rendered dropdown</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+  .tcv-fixture-note { background: #eef2ff; border: 1px solid #c7d2fe; color: #1e1b4b;
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 20px; font-size: 13px; }
+  .tcv-fixture-note code { background: #fff; padding: 1px 5px; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b1020; color: #e5e7eb; }
+    .tcv-fixture-note { background: #1e1b4b; border-color: #3730a3; color: #e0e7ff; }
+    .tcv-fixture-note code { background: #0b1020; }
+  }
+  label { display: block; font-weight: 600; margin-top: 14px; font-size: 13px; }
+  input:not([type=radio]):not([type=checkbox]), select, textarea {
+    width: 100%; padding: 8px 10px; font: inherit; box-sizing: border-box;
+    border: 1px solid #94a3b8; border-radius: 6px; margin-top: 4px; }
+  label:has(input[type=radio]), label:has(input[type=checkbox]) {
+    font-weight: 400; display: flex; gap: 8px; align-items: center; }
+  fieldset { margin-top: 18px; border: 1px solid #cbd5e1; border-radius: 8px; }
+  button { margin-top: 20px; padding: 10px 18px; font: inherit; border-radius: 8px;
+    border: 1px solid #4f46e5; background: #4f46e5; color: #fff; cursor: pointer; }
+  .attach-button { background: #f1f5f9; color: #0f172a; border-color: #94a3b8;
+    margin-top: 4px; padding: 6px 12px; }
+  .select__control { border: 1px solid #94a3b8; border-radius: 6px; padding: 8px 10px;
+    margin-top: 4px; cursor: pointer; min-height: 20px; }
+  .select__placeholder { color: #64748b; }
+  .select__menu { border: 1px solid #94a3b8; border-radius: 6px; margin-top: 2px;
+    background: Canvas; }
+  .select__menu [role=option] { padding: 8px 10px; cursor: pointer; }
+  .select__menu [role=option]:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+<div class="tcv-fixture-note">
+  <strong>TailorCV fixture: Portal-rendered dropdown</strong><br>
+  A dropdown whose menu is rendered into a <code>&lt;body&gt;</code>-level portal and which commits on <strong>mousedown</strong>, like react-select. Also a conditional field that only appears once the first is answered.<br><br>
+  Run it: open the console and call <code>__tcvAutofill.selfTest()</code>. It runs
+  the real pipeline with the network stubbed and prints a table of every field,
+  what was written, and whether the page verified it — no login needed.
+  <br>Or use the sidebar's <em>Autofill this application</em> button to test the
+  real end-to-end flow with your own account.
+</div>
+
+
+<form id="rs-form">
+  <label for="rs-name">Full name</label><input id="rs-name" name="name" required>
+  <label for="rs-email">Email</label><input id="rs-email" name="email" type="email" required>
+
+  <label for="rs-country">Where are you currently based?</label>
+  <div class="select__container">
+    <div class="select__control" id="rs-control">
+      <span class="select__placeholder" id="rs-display">Select...</span>
+      <input role="combobox" id="rs-country" aria-haspopup="listbox"
+             aria-autocomplete="list" style="border:none;width:100%;padding:0;margin:0">
+    </div>
+    <input type="hidden" name="country" id="rs-value">
+  </div>
+
+  <div id="rs-followup" style="display:none">
+    <label for="rs-visa">Do you hold a work permit for that country?</label>
+    <select id="rs-visa" name="work_permit">
+      <option value="">Select...</option><option value="y">Yes</option><option value="n">No</option>
+    </select>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+<script>
+  (function () {
+    var ALL = ['USA', 'Canada', 'India', 'Located Elsewhere'];
+    var input = document.getElementById('rs-country');
+    var control = document.getElementById('rs-control');
+    var display = document.getElementById('rs-display');
+    var hidden = document.getElementById('rs-value');
+    var menu = null;
+
+    function close() { if (menu) { menu.remove(); menu = null; } }
+
+    function open() {
+      close();
+      var q = (input.value || '').toLowerCase();
+      var shown = ALL.filter(function (o) { return o.toLowerCase().indexOf(q) >= 0; });
+      menu = document.createElement('div');
+      menu.className = 'select__menu';
+      menu.setAttribute('role', 'listbox');
+      var box = control.getBoundingClientRect();
+      menu.style.cssText = 'position:absolute;z-index:9999;left:' + (box.left + window.scrollX)
+        + 'px;top:' + (box.bottom + window.scrollY) + 'px;width:' + box.width + 'px';
+      shown.forEach(function (o) {
+        var row = document.createElement('div');
+        row.setAttribute('role', 'option');
+        row.textContent = o;
+        // MOUSEDOWN, not click — this is the react-select behaviour that makes a
+        // bare .click() open the menu and change nothing.
+        row.addEventListener('mousedown', function () {
+          display.textContent = o;
+          display.className = 'select__singleValue';
+          hidden.value = o;
+          input.value = '';
+          close();
+          // A conditional field, revealed by the answer.
+          document.getElementById('rs-followup').style.display = o === 'Located Elsewhere' ? 'none' : 'block';
+        });
+        menu.appendChild(row);
+      });
+      document.body.appendChild(menu);   // the portal
+    }
+
+    control.addEventListener('mousedown', open);
+    input.addEventListener('input', function () { if (menu) open(); else open(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }());
+</script>
+
+<script>
+  window.__tcvFixtureCtx = {
+  "answerBank": {
+    "full_name": "Ada Lovelace",
+    "first_name": "Ada",
+    "last_name": "Lovelace",
+    "email": "ada@example.com",
+    "phone": "+91 98765 43210",
+    "location": "Kolkata, West Bengal, India",
+    "address_city": "Kolkata",
+    "address_state": "West Bengal",
+    "address_country": "India",
+    "postal_code": "700001",
+    "linkedin_url": "https://linkedin.com/in/adalovelace",
+    "github_url": "https://github.com/ada",
+    "university": "Indian Institute of Technology Delhi",
+    "degree": "B.Tech",
+    "major": "Computer Science and Engineering",
+    "graduation_date": "Jun 2024",
+    "gpa": "8.7/10",
+    "current_company": "Acme Corp",
+    "current_job_title": "Software Engineer II",
+    "years_of_experience": "2",
+    "available_start_date": "01/09/2026",
+    "how_did_you_hear_about_us": "Company website",
+    "authorized_to_work_in_country": "No",
+    "requires_visa_sponsorship": "Yes",
+    "gender": "Female",
+    "veteran_status": "I am not a protected veteran",
+    "accepts_employer_terms_and_privacy_policy": "Yes"
+  },
+  "hasResume": true,
+  "hasCoverLetter": false,
+  "blockers": [],
+  "quota": {
+    "exhausted": false,
+    "isPro": false
+  }
+};
+  window.__tcvFixturePlan = { answers: {} };
+</script>
+</body>
+</html>

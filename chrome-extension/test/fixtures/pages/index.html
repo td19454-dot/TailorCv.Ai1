@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorCV autofill fixtures</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 680px; margin: 0 auto; padding: 32px 16px; }
+  @media (prefers-color-scheme: dark) { body { background: #0b1020; color: #e5e7eb; } }
+  li { margin-bottom: 10px; }
+  code { background: rgba(127,127,127,0.18); padding: 1px 5px; border-radius: 4px; }
+</style></head><body>
+<h1>TailorCV autofill fixtures</h1>
+<p>Load the unpacked extension, open a page, then call
+<code>__tcvAutofill.selfTest()</code> in the console. It runs the real pipeline
+with the network stubbed and prints a table of every field and whether the page
+verified what was written.</p>
+<p>These pages cover what the jsdom suites cannot: real layout (geometric
+visibility), a real <code>DataTransfer</code> (file attach), portal-rendered
+dropdown menus driven by real pointer events, and <code>innerText</code>.</p>
+<ul>
+  <li><a href="greenhouse.html">Greenhouse</a> — react-select comboboxes, a file input hidden behind an Attach button, EEO dropdowns, and sensitive questions that must stay unanswered.</li>
+  <li><a href="lever.html">Lever</a> — Labels that are SIBLINGS of their inputs with no for, bracketed field names, and a radio group with no fieldset.</li>
+  <li><a href="workday.html">Workday</a> — data-automation-id attributes, a radio group with no shared name, and a phone field beside its own country-code picker.</li>
+  <li><a href="ashby.html">Ashby</a> — ARIA-driven comboboxes and a native date input.</li>
+  <li><a href="generic.html">Generic careers page</a> — A plain hand-written form — the long-tail case with no ATS behind it.</li>
+  <li><a href="decoys.html">Decoys only</a> — A search box, a newsletter signup and a login form. NOTHING should be detected here and no panel should offer to autofill.</li>
+  <li><a href="upload.html">Upload variants</a> — A plain file input, one hidden behind a button, and a drag-and-drop-only zone that listens for drop and ignores change. jsdom has no DataTransfer, so this page is the only place the attach path is genuinely proven.</li>
+  <li><a href="react-select.html">Portal-rendered dropdown</a> — A dropdown whose menu is rendered into a &lt;body&gt;-level portal and which commits on mousedown, like react-select. Also a conditional field that only appears once the first is answered.</li>
+</ul>
+<h2>What to check</h2>
+<ol>
+  <li>Every field the table says was written shows <code>verified: ok</code>.</li>
+  <li>Work authorization, sponsorship, salary and the EEO questions are
+      <em>never</em> filled from anything but the stored profile values above.</li>
+  <li>The upload page's drop zone reports the file it received.</li>
+  <li>The portal dropdown commits a real option, and the conditional field that
+      appears afterwards is picked up.</li>
+  <li>The decoys page detects nothing.</li>
+  <li>No page is ever submitted.</li>
+</ol>
+</body></html>

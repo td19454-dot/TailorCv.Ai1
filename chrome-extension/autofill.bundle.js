@@ -1196,6 +1196,29 @@ what when where which who will with would you your now future
       }
       out.push(row);
     }
+    for (const zone of dropOnlyZones(form.root)) {
+      const label = zoneLabel(zone, p);
+      const key = questionSignature(label) || `dropzone ${out.length}`;
+      if (keyCounts.has(key)) continue;
+      keyCounts.set(key, 1);
+      out.push({
+        key,
+        el: zone,
+        members: [zone],
+        kind: "file",
+        label: label || "File upload",
+        ident: key,
+        value: "",
+        filled: false,
+        invalid: false,
+        required: /\*|\(required\)/.test(label),
+        options: [],
+        readable: true,
+        documentSlot: documentSlotFor(label),
+        hints: { tag: "dropzone" },
+        dropOnly: true
+      });
+    }
     for (const row of out) {
       if (row.kind !== "radio" && row.kind !== "checkbox") continue;
       const question = groupLabel(row.members, p);
@@ -1224,6 +1247,47 @@ what when where which who will with would you your now future
   }
   function isFileField(el) {
     return el.getAttribute && (el.getAttribute("type") || "").toLowerCase() === "file";
+  }
+  var DROP_ZONE_SEL = [
+    '[class*="dropzone" i]',
+    '[class*="drop-zone" i]',
+    '[class*="filepond" i]',
+    '[class*="uppy" i]',
+    "[data-uppy]",
+    "[data-filepond]"
+  ].join(", ");
+  function dropOnlyZones(root) {
+    if (!root) return [];
+    let zones = [];
+    try {
+      zones = Array.prototype.slice.call(root.querySelectorAll(DROP_ZONE_SEL));
+    } catch (e) {
+      return [];
+    }
+    const out = [];
+    for (const zone of zones) {
+      let hasInput = false;
+      try {
+        hasInput = !!zone.querySelector('input[type="file"]');
+      } catch (e) {
+        hasInput = true;
+      }
+      const nested = out.some((other) => zone.contains(other) || other.contains(zone));
+      if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+    }
+    return out;
+  }
+  function zoneLabel(zone, p) {
+    const aria = zone.getAttribute && zone.getAttribute("aria-label");
+    if (aria) return aria.trim();
+    const viaProbe = p.labelFor(zone);
+    if (viaProbe) return viaProbe;
+    const prev = zone.previousElementSibling;
+    if (prev && /^(label|legend|h[1-6]|p|span|div)$/i.test(prev.tagName || "")) {
+      const text = clean(prev.textContent);
+      if (text && text.length < 120) return text;
+    }
+    return clean(zone.textContent).slice(0, 80);
   }
   function groupIdentity(el, d, kind) {
     if (kind !== "radio" && kind !== "checkbox") return null;
@@ -2445,14 +2509,19 @@ what when where which who will with would you your now future
     } catch (e) {
       return { ok: false, shown: "" };
     }
-    const input = decision.row.el;
-    let ok = attachFile(input, file);
-    if (!ok || !(input.files && input.files.length)) {
-      const zone = findDropZone(input);
+    const target = decision.row.el;
+    if (decision.row.dropOnly) {
+      const dropped = dropFile(target, file);
+      await sleep(TIMING.settleMs + 120);
+      return { ok: false, shown: dropped ? `${file.name} (check it attached)` : "" };
+    }
+    let ok = attachFile(target, file);
+    if (!ok || !(target.files && target.files.length)) {
+      const zone = findDropZone(target);
       if (zone) ok = dropFile(zone, file) || ok;
     }
-    await sleep(120);
-    const attached = !!(input.files && input.files.length);
+    await sleep(TIMING.settleMs + 120);
+    const attached = !!(target.files && target.files.length);
     return { ok: ok && attached, shown: attached ? file.name : "" };
   }
   async function answerField(decision, value, remember) {
@@ -2907,8 +2976,58 @@ what when where which who will with would you your now future
       // the same reasoning as content.js's logDiagnostics(): a real page's own
       // shape is worth more than any amount of guessing from outside the browser.
       match: match_exports,
+      selfTest,
       handleFrameMessage
     };
+  }
+  async function selfTest() {
+    const ctx = globalThis.__tcvFixtureCtx;
+    if (!ctx) {
+      console.warn("[TailorCV] selfTest() needs window.__tcvFixtureCtx \u2014 see test/fixtures/pages");
+      return null;
+    }
+    const plan = globalThis.__tcvFixturePlan || { answers: {} };
+    const bytes = globalThis.__tcvFixtureResume || "JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDM+PnN0cmVhbQpCVAplbmRzdHJlYW0=";
+    const realSend = globalThis.chrome && globalThis.chrome.runtime && globalThis.chrome.runtime.sendMessage;
+    const stub = (msg, cb) => {
+      const reply = {
+        AF_PLAN: { data: plan },
+        AF_GET_RESUME_FILE: { data: {
+          base64: bytes,
+          filename: "fixture.pdf",
+          mime: "application/pdf"
+        } },
+        AF_SAVE_ANSWERS: { data: { saved: 0 } }
+      }[msg.type] || { data: null };
+      cb(reply);
+    };
+    if (!globalThis.chrome) globalThis.chrome = { runtime: {} };
+    if (!globalThis.chrome.runtime) globalThis.chrome.runtime = {};
+    globalThis.chrome.runtime.sendMessage = stub;
+    try {
+      await clearState();
+      const result = await runAutofill(ctx, (p) => console.log("[TailorCV]", p.phase, p.detail || ""));
+      const expected = globalThis.__tcvFixtureExpect || {};
+      const rows = (result.decisions || []).map((d) => ({
+        field: d.label,
+        action: d.action,
+        expected: expected[d.key] || expected[d.label] || "(unspecified)",
+        match: !expected[d.key] && !expected[d.label] ? "\u2014" : (expected[d.key] || expected[d.label]) === d.action ? "OK" : "MISMATCH",
+        value: String(d.value || "").slice(0, 50),
+        verified: d.outcome || "",
+        why: d.reason || ""
+      }));
+      console.table(rows);
+      const bad = rows.filter((r) => r.match === "MISMATCH");
+      const unverified = rows.filter((r) => r.value && r.verified && r.verified !== "ok");
+      console.log(`[TailorCV] ${rows.length} fields \xB7 ${bad.length} mismatched \xB7 ${unverified.length} written but not verified`);
+      if (bad.length) console.warn("[TailorCV] mismatches:", bad);
+      if (unverified.length) console.warn("[TailorCV] unverified:", unverified);
+      highlight(result.decisions || []);
+      return { result, rows, mismatches: bad, unverified };
+    } finally {
+      if (realSend) globalThis.chrome.runtime.sendMessage = realSend;
+    }
   }
   if (!isTopFrame && globalThis.chrome && globalThis.chrome.runtime) {
     globalThis.chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {

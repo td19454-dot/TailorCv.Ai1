@@ -361,18 +361,30 @@ async function attachDocument(decision, ctx) {
     return { ok: false, shown: '' };
   }
 
-  const input = decision.row.el;
-  let ok = attachFile(input, file);
+  const target = decision.row.el;
+  void ctx;
+
+  // A drop-target with no file input of its own. There is nothing to write to,
+  // so the drop event IS the mechanism — and there is also nothing to read back,
+  // so success cannot be verified the way an input's .files can be. Reported as
+  // needing the user's eyes rather than as done, because an unverifiable attach
+  // claimed as successful is exactly the lie this whole layer avoids.
+  if (decision.row.dropOnly) {
+    const dropped = dropFile(target, file);
+    await sleep(TIMING.settleMs + 120);
+    return { ok: false, shown: dropped ? `${file.name} (check it attached)` : '' };
+  }
+
+  let ok = attachFile(target, file);
 
   // Uppy, Dropzone and FilePond listen for `drop` and never for `change`, so a
   // form using one of those ignores the input write even when it succeeds.
-  if (!ok || !(input.files && input.files.length)) {
-    const zone = findDropZone(input);
+  if (!ok || !(target.files && target.files.length)) {
+    const zone = findDropZone(target);
     if (zone) ok = dropFile(zone, file) || ok;
   }
-  await sleep(120);
-  const attached = !!(input.files && input.files.length);
-  void ctx;
+  await sleep(TIMING.settleMs + 120);
+  const attached = !!(target.files && target.files.length);
   return { ok: ok && attached, shown: attached ? file.name : '' };
 }
 

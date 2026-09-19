@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorCV fixture — Ashby</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+  .tcv-fixture-note { background: #eef2ff; border: 1px solid #c7d2fe; color: #1e1b4b;
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 20px; font-size: 13px; }
+  .tcv-fixture-note code { background: #fff; padding: 1px 5px; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b1020; color: #e5e7eb; }
+    .tcv-fixture-note { background: #1e1b4b; border-color: #3730a3; color: #e0e7ff; }
+    .tcv-fixture-note code { background: #0b1020; }
+  }
+  label { display: block; font-weight: 600; margin-top: 14px; font-size: 13px; }
+  input:not([type=radio]):not([type=checkbox]), select, textarea {
+    width: 100%; padding: 8px 10px; font: inherit; box-sizing: border-box;
+    border: 1px solid #94a3b8; border-radius: 6px; margin-top: 4px; }
+  label:has(input[type=radio]), label:has(input[type=checkbox]) {
+    font-weight: 400; display: flex; gap: 8px; align-items: center; }
+  fieldset { margin-top: 18px; border: 1px solid #cbd5e1; border-radius: 8px; }
+  button { margin-top: 20px; padding: 10px 18px; font: inherit; border-radius: 8px;
+    border: 1px solid #4f46e5; background: #4f46e5; color: #fff; cursor: pointer; }
+  .attach-button { background: #f1f5f9; color: #0f172a; border-color: #94a3b8;
+    margin-top: 4px; padding: 6px 12px; }
+  .select__control { border: 1px solid #94a3b8; border-radius: 6px; padding: 8px 10px;
+    margin-top: 4px; cursor: pointer; min-height: 20px; }
+  .select__placeholder { color: #64748b; }
+  .select__menu { border: 1px solid #94a3b8; border-radius: 6px; margin-top: 2px;
+    background: Canvas; }
+  .select__menu [role=option] { padding: 8px 10px; cursor: pointer; }
+  .select__menu [role=option]:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+<div class="tcv-fixture-note">
+  <strong>TailorCV fixture: Ashby</strong><br>
+  ARIA-driven comboboxes and a native date input.<br><br>
+  Run it: open the console and call <code>__tcvAutofill.selfTest()</code>. It runs
+  the real pipeline with the network stubbed and prints a table of every field,
+  what was written, and whether the page verified it — no login needed.
+  <br>Or use the sidebar's <em>Autofill this application</em> button to test the
+  real end-to-end flow with your own account.
+</div>
+
+
+<div data-ui="application-form" id="ashby-form">
+  <div class="_fieldEntry">
+    <label for="a-name">Name<span aria-hidden="true">*</span></label>
+    <input id="a-name" name="_systemfield_name" required>
+  </div>
+  <div class="_fieldEntry">
+    <label for="a-email">Email<span aria-hidden="true">*</span></label>
+    <input id="a-email" type="email" name="_systemfield_email" required>
+  </div>
+  <div class="_fieldEntry">
+    <label for="a-resume">Resume<span aria-hidden="true">*</span></label>
+    <input id="a-resume" type="file" name="_systemfield_resume" required>
+  </div>
+  <div class="_fieldEntry">
+    <label for="a-loc">Location</label>
+    <div class="_container">
+      <input id="a-loc" role="combobox" aria-expanded="false" aria-controls="a-loc-list"
+             aria-autocomplete="list" autocomplete="off">
+      <input type="hidden" name="_systemfield_location" value="">
+    </div>
+  </div>
+  <div class="_fieldEntry">
+    <label for="a-degree">Highest level of education</label>
+    <select id="a-degree" name="q_education">
+      <option value="">Select an option</option>
+      <option value="hs">High School</option>
+      <option value="ba">Bachelor's Degree</option>
+      <option value="ma">Master's Degree</option>
+      <option value="phd">Doctorate</option>
+    </select>
+  </div>
+  <div class="_fieldEntry">
+    <label for="a-start">Earliest start date</label>
+    <input id="a-start" type="date" name="q_start_date">
+  </div>
+  <button type="button">Submit Application</button>
+</div>
+
+<script>
+  window.__tcvFixtureCtx = {
+  "answerBank": {
+    "full_name": "Ada Lovelace",
+    "first_name": "Ada",
+    "last_name": "Lovelace",
+    "email": "ada@example.com",
+    "phone": "+91 98765 43210",
+    "location": "Kolkata, West Bengal, India",
+    "address_city": "Kolkata",
+    "address_state": "West Bengal",
+    "address_country": "India",
+    "postal_code": "700001",
+    "linkedin_url": "https://linkedin.com/in/adalovelace",
+    "github_url": "https://github.com/ada",
+    "university": "Indian Institute of Technology Delhi",
+    "degree": "B.Tech",
+    "major": "Computer Science and Engineering",
+    "graduation_date": "Jun 2024",
+    "gpa": "8.7/10",
+    "current_company": "Acme Corp",
+    "current_job_title": "Software Engineer II",
+    "years_of_experience": "2",
+    "available_start_date": "01/09/2026",
+    "how_did_you_hear_about_us": "Company website",
+    "authorized_to_work_in_country": "No",
+    "requires_visa_sponsorship": "Yes",
+    "gender": "Female",
+    "veteran_status": "I am not a protected veteran",
+    "accepts_employer_terms_and_privacy_policy": "Yes"
+  },
+  "hasResume": true,
+  "hasCoverLetter": false,
+  "blockers": [],
+  "quota": {
+    "exhausted": false,
+    "isPro": false
+  }
+};
+  window.__tcvFixturePlan = { answers: {} };
+</script>
+</body>
+</html>

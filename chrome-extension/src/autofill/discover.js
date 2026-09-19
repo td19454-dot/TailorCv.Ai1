@@ -361,6 +361,28 @@ export function describeFields(form) {
     out.push(row);
   }
 
+  // Drag-and-drop uploaders that have no <input type="file"> at all.
+  //
+  // Most do have one, hidden, and it is found by the scan above. A few (FilePond
+  // and Uppy in some configurations) render only a drop target. Those are real
+  // required fields, and leaving them undiscovered is the worst outcome
+  // available: the user is told the form is filled and never learns a document
+  // slot was missed. Surfaced here so they appear in the results either way.
+  for (const zone of dropOnlyZones(form.root)) {
+    const label = zoneLabel(zone, p);
+    const key = questionSignature(label) || `dropzone ${out.length}`;
+    if (keyCounts.has(key)) continue;
+    keyCounts.set(key, 1);
+    out.push({
+      key, el: zone, members: [zone], kind: 'file',
+      label: label || 'File upload', ident: key, value: '',
+      filled: false, invalid: false, required: /\*|\(required\)/.test(label),
+      options: [], readable: true,
+      documentSlot: documentSlotFor(label),
+      hints: { tag: 'dropzone' }, dropOnly: true,
+    });
+  }
+
   // The group question can only be worked out once every option is known, so it
   // is a second pass: during the first, a group's later members have not been
   // seen yet and the smallest-common-ancestor search would find the wrong node.
@@ -387,6 +409,43 @@ function unreadable(el, p) {
 
 function isFileField(el) {
   return (el.getAttribute && (el.getAttribute('type') || '').toLowerCase() === 'file');
+}
+
+const DROP_ZONE_SEL = [
+  '[class*="dropzone" i]', '[class*="drop-zone" i]', '[class*="filepond" i]',
+  '[class*="uppy" i]', '[data-uppy]', '[data-filepond]',
+].join(', ');
+
+/** Drop targets in `root` that contain no file input of their own. */
+function dropOnlyZones(root) {
+  if (!root) return [];
+  let zones = [];
+  try { zones = Array.prototype.slice.call(root.querySelectorAll(DROP_ZONE_SEL)); }
+  catch (e) { return []; }
+  const out = [];
+  for (const zone of zones) {
+    let hasInput = false;
+    try { hasInput = !!zone.querySelector('input[type="file"]'); } catch (e) { hasInput = true; }
+    // Nested matches (an Uppy root inside an Uppy dashboard) would otherwise each
+    // become a field; keep only the innermost.
+    const nested = out.some(other => zone.contains(other) || other.contains(zone));
+    if (!hasInput && !nested && isVisible(zone)) out.push(zone);
+  }
+  return out;
+}
+
+function zoneLabel(zone, p) {
+  const aria = zone.getAttribute && zone.getAttribute('aria-label');
+  if (aria) return aria.trim();
+  const viaProbe = p.labelFor(zone);
+  if (viaProbe) return viaProbe;
+  // The label usually sits just above the zone.
+  const prev = zone.previousElementSibling;
+  if (prev && /^(label|legend|h[1-6]|p|span|div)$/i.test(prev.tagName || '')) {
+    const text = clean(prev.textContent);
+    if (text && text.length < 120) return text;
+  }
+  return clean(zone.textContent).slice(0, 80);
 }
 
 /**

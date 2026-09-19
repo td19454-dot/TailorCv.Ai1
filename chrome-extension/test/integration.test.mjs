@@ -442,6 +442,76 @@ test('Generic: the privacy-policy checkbox is accepted', async () => {
   });
 });
 
+// ── drop-only uploaders ──────────────────────────────────────
+
+const DROP_ONLY = `
+<form id="drop-form">
+  <label for="do-name">Full name</label><input id="do-name" name="name" required>
+  <label for="do-email">Email</label><input id="do-email" name="email" type="email" required>
+  <label for="do-phone">Phone</label><input id="do-phone" name="phone" type="tel">
+  <label>Resume/CV *</label>
+  <div class="filepond--root" id="do-zone">Drop your resume here</div>
+</form>`;
+
+test('a drop-only uploader with no file input is still discovered', async () => {
+  await withForm(DROP_ONLY, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    const zone = rows.find(r => r.dropOnly);
+    ok(zone, `not found among: ${rows.map(r => r.key).join(', ')}`);
+    eq(zone.kind, 'file');
+    eq(zone.documentSlot, 'resume');
+    ok(zone.required, 'the asterisk in the label marks it required');
+  });
+});
+
+test('a drop-only uploader receives a real drop event', async () => {
+  await withForm(DROP_ONLY, {}, async (env) => {
+    let dropped = null;
+    env.document.getElementById('do-zone').addEventListener('drop', (e) => {
+      dropped = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    });
+    await run_.runAutofill(CTX, null);
+    ok(dropped, 'the zone must receive the file');
+    eq(dropped.name, 'ada_lovelace.pdf');
+  });
+});
+
+test('a drop-only attach is reported as needing the user, not as done', async () => {
+  await withForm(DROP_ONLY, {}, async (env) => {
+    void env;
+    const result = await run_.runAutofill(CTX, null);
+    const row = result.decisions.find(x => x.row && x.row.dropOnly);
+    ok(row, 'the zone must appear in the results');
+    eq(row.action, p.ASK,
+       'there is no way to read a drop zone back, so it cannot be claimed as done');
+    ok(/yourself/.test(row.reason), row.reason);
+  });
+});
+
+test('a nested drop zone does not become two fields', async () => {
+  await withForm(`
+    <form id="f">
+      <input name="a"><input name="b" type="email"><input name="c" type="tel">
+      <div class="uppy-Dashboard"><div class="uppy-DragDrop">Drop here</div></div>
+    </form>`, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    eq(rows.filter(r => r.dropOnly).length, 1, 'only the innermost zone counts');
+  });
+});
+
+test('a drop zone that DOES have a file input is not double-counted', async () => {
+  await withForm(`
+    <form id="f">
+      <input name="a"><input name="b" type="email">
+      <div class="dropzone"><label for="r">Resume</label>
+        <input id="r" type="file" name="resume"></div>
+    </form>`, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    eq(rows.filter(r => r.dropOnly).length, 0, 'the input is the field');
+    eq(rows.filter(r => r.kind === 'file').length, 1);
+  });
+});
+
 // ── behaviour across the whole pipeline ──────────────────────
 
 test('one plan request per form, at most', async () => {

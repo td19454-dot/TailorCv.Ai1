@@ -150,8 +150,77 @@ if (!globalThis.__tcvAutofill) {
     // shape is worth more than any amount of guessing from outside the browser.
     match,
 
+    selfTest,
     handleFrameMessage,
   };
+}
+
+/**
+ * Run the whole pipeline against the page and report it, without a login.
+ *
+ * For the fixture pages in test/fixtures/pages, which exist to cover what jsdom
+ * cannot: real layout (so geometric visibility is exercised), a real
+ * DataTransfer (so an upload genuinely attaches), and a portal-rendered
+ * react-select menu. The page supplies `__tcvFixtureCtx` (an answer bank) and
+ * optionally `__tcvFixtureExpect` ({key: expectedAction}), so this needs no
+ * server and no session.
+ *
+ * Dev-only by construction: it does nothing unless the page declares
+ * __tcvFixtureCtx, so it cannot be triggered on a real application form.
+ */
+async function selfTest() {
+  const ctx = globalThis.__tcvFixtureCtx;
+  if (!ctx) {
+    console.warn('[TailorCV] selfTest() needs window.__tcvFixtureCtx — see test/fixtures/pages');
+    return null;
+  }
+  // Stub the background worker: the fixture pages run as plain file/http pages
+  // with no extension messaging behind them.
+  const plan = globalThis.__tcvFixturePlan || { answers: {} };
+  const bytes = globalThis.__tcvFixtureResume
+    || 'JVBERi0xLjQKJcOkw7zDtsOfCjIgMCBvYmoKPDwvTGVuZ3RoIDM+PnN0cmVhbQpCVAplbmRzdHJlYW0=';
+  const realSend = globalThis.chrome && globalThis.chrome.runtime
+    && globalThis.chrome.runtime.sendMessage;
+  const stub = (msg, cb) => {
+    const reply = {
+      AF_PLAN: { data: plan },
+      AF_GET_RESUME_FILE: { data: { base64: bytes, filename: 'fixture.pdf',
+                                    mime: 'application/pdf' } },
+      AF_SAVE_ANSWERS: { data: { saved: 0 } },
+    }[msg.type] || { data: null };
+    cb(reply);
+  };
+  if (!globalThis.chrome) globalThis.chrome = { runtime: {} };
+  if (!globalThis.chrome.runtime) globalThis.chrome.runtime = {};
+  globalThis.chrome.runtime.sendMessage = stub;
+
+  try {
+    await clearState();
+    const result = await runAutofill(ctx, p => console.log('[TailorCV]', p.phase, p.detail || ''));
+    const expected = globalThis.__tcvFixtureExpect || {};
+    const rows = (result.decisions || []).map(d => ({
+      field: d.label,
+      action: d.action,
+      expected: expected[d.key] || expected[d.label] || '(unspecified)',
+      match: !expected[d.key] && !expected[d.label]
+        ? '—'
+        : ((expected[d.key] || expected[d.label]) === d.action ? 'OK' : 'MISMATCH'),
+      value: String(d.value || '').slice(0, 50),
+      verified: d.outcome || '',
+      why: d.reason || '',
+    }));
+    console.table(rows);
+    const bad = rows.filter(r => r.match === 'MISMATCH');
+    const unverified = rows.filter(r => r.value && r.verified && r.verified !== 'ok');
+    console.log(`[TailorCV] ${rows.length} fields · ${bad.length} mismatched `
+      + `· ${unverified.length} written but not verified`);
+    if (bad.length) console.warn('[TailorCV] mismatches:', bad);
+    if (unverified.length) console.warn('[TailorCV] unverified:', unverified);
+    ui.highlight(result.decisions || []);
+    return { result, rows, mismatches: bad, unverified };
+  } finally {
+    if (realSend) globalThis.chrome.runtime.sendMessage = realSend;
+  }
 }
 
 // Sub-frames answer messages and do nothing else. The top frame's listener lives
