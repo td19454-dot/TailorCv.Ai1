@@ -334,6 +334,10 @@ export function describeFields(form) {
       readable: true,
       documentSlot: null,
       hints: fieldHints(el),
+      // A separate country-code picker beside a phone box means the box wants
+      // the national number only; pasting "+91 98765 43210" into it produces a
+      // doubled dial code the form then rejects.
+      hasCountryWidget: hasCountryWidget(el),
     };
 
     if (kind === 'radio' || kind === 'checkbox') {
@@ -402,6 +406,26 @@ function groupLabel(el, p) {
 function normalizeOptions(options) {
   if (!Array.isArray(options)) return [];
   return options.map(o => (typeof o === 'string' ? { value: o, label: o } : o));
+}
+
+/**
+ * Whether this control sits next to its own country/dial-code picker.
+ *
+ * Bounded to the field's immediate surroundings rather than the whole form: a
+ * Country field elsewhere on the application says nothing about how the phone
+ * box wants its value.
+ */
+function hasCountryWidget(el) {
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 3) {
+    try {
+      const found = n.querySelector(
+        '[class*="country" i], [class*="dial" i], [data-country], [class*="flag" i]');
+      if (found && found !== el) return true;
+    } catch (e) { /* ignore */ }
+    n = n.parentElement; depth++;
+  }
+  return false;
 }
 
 /** Everything a writer needs to shape a value for this specific control. */

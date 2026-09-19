@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "esbuild": "^0.24.0",
-    "jsdom": "^30.1.0"
+    "jsdom": "^30.1.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
   }
 }
