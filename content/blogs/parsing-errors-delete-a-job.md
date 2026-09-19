@@ -258,12 +258,15 @@ Single column, plain body text, conventional headings, one role per contiguous b
 
 Same risks and same checks. Count those too - [a projects section](/blog/projects-in-resume) in a frame disappears exactly the way a job does, and for juniors it carries more weight.
 
+<<<<<<< HEAD
 ### The file opens correctly on my machine. Why would it break anywhere else?
 
 Opening is not parsing. Your PDF viewer renders the visual result the file describes; a parser ignores that rendering and walks the underlying text objects in storage order. Those two things agree on a plain single-column document and diverge as soon as the layout is built from frames, columns or tables.
 
 So a file that looks flawless on screen can still hand over its content in an order nobody would recognise, or omit a block entirely because the text lives inside an image. What you see on your own machine tells you the file is not corrupt. It tells you nothing about what an employer's system extracts, which is why the copy-paste test exists as a separate check rather than a formality.
 
+=======
+>>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 ## Check Nothing Is Missing
 
 This is the one resume problem that no amount of good writing can compensate for, because the writing never arrives.
