@@ -970,6 +970,177 @@ request_semaphore = asyncio.Semaphore(MAX_CONCURRENT_REQUESTS)
 _template_cache = {}
 _css_cache = {}
 
+# ---------------------------------------------------------------------------
+# Shared PDF/preview normalization
+# ---------------------------------------------------------------------------
+# Templates 7-22 each ship their own inline <style> and load NO shared
+# stylesheet (see _render_resume_html: `else: style_filename = ""`). That is
+# why fixes made in css/style1..4.css reached templates 1-6 only, and the same
+# rendering bugs kept reappearing on every other template.
+#
+# This sheet is appended LAST, after each template's own <style>, so it wins on
+# equal specificity. It is deliberately corrective-only: it fixes the classes of
+# bug listed below and does not restyle anything else, so each template keeps
+# its own look.
+_RESUME_NORMALIZE_CSS = """
+/* --- BUG A: coloured sidebars/headers must repeat on every page ----------
+   A sidebar drawn as a grid cell ends with its content, so page 2 lost it
+   entirely. The panel colour is painted by the @page background instead (set
+   per-template by _sidebar_page_css), and the column itself goes transparent
+   so the two cannot disagree. */
+
+/* --- BUG C: let the paper flow instead of forcing one fixed-height box ---
+   `min-height: 297mm` + overflow:hidden on the root made WeasyPrint reserve a
+   full page for the container even when 3 lines remained, which is what
+   produced near-blank trailing pages. */
+.resume, .resume-wrap, .page, .layout {
+  min-height: 0 !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+/* Decorations that cannot survive a page split. */
+.resume, .resume-wrap, .page {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/* --- BUG E: nothing may cross its column or the page margin ------------- */
+* { box-sizing: border-box; }
+.sidebar, .main, .layout > *, .resume, .resume-wrap, .page {
+  overflow-wrap: break-word;
+  word-break: normal;
+  min-width: 0;
+}
+.sidebar { max-width: 100%; }
+
+/* --- BUG B: markers belong to real bullet lists only --------------------
+   The List Style setting must reach experience/project/education bullets and
+   nothing else. Contacts, skills, certifications, awards, languages and chip
+   rows are semantic <ul>s too, so they are explicitly cleared here. */
+ul.contact-list, ul.contact, .contact ul, .contact-list,
+ul.skills, .skills ul, .skill-group ul, .skill-list, .pill-wrap,
+.chips, .chip-list, .certifications ul, .certs ul, .awards ul,
+.languages ul, .activities ul, .simple-list, .sidebar-list,
+.contact-item, .pill, .chip {
+  list-style: none !important;
+}
+ul.contact-list > li, ul.contact > li, .contact ul > li, .contact-list > li,
+ul.skills > li, .skills ul > li, .skill-group ul > li, .skill-list > li,
+.pill-wrap > li, .chips > li, .chip-list > li, .certifications ul > li,
+.certs ul > li, .awards ul > li, .languages ul > li, .activities ul > li,
+.simple-list > li, .sidebar-list > li {
+  list-style: none !important;
+}
+/* ::marker is what actually paints "1." — clearing list-style alone is not
+   always enough once a template has set list-style-type on a parent. */
+ul.contact-list > li::marker, ul.contact > li::marker, .contact ul > li::marker,
+.contact-list > li::marker, ul.skills > li::marker, .skills ul > li::marker,
+.skill-group ul > li::marker, .skill-list > li::marker, .pill-wrap > li::marker,
+.chips > li::marker, .chip-list > li::marker, .certifications ul > li::marker,
+.certs ul > li::marker, .awards ul > li::marker, .languages ul > li::marker,
+.activities ul > li::marker, .simple-list > li::marker,
+.sidebar-list > li::marker {
+  content: "" !important;
+}
+
+/* --- BUG D: only real links are coloured and underlined ----------------- */
+a { text-decoration: none; }
+a[href^="http"], a[href^="mailto"], a[href^="tel"] {
+  text-decoration: underline;
+}
+.bullets li, .bullet-list li, .entry-body li {
+  text-decoration: none;
+}
+
+/* --- RIGHT-EDGE CLIPPING -------------------------------------------------
+   Every template declared `@page { margin: 8mm 0 0 }` - zero LEFT and RIGHT
+   margin - while sizing its root container to the full paper width
+   (`width: 210mm`). Content therefore ran edge to edge: measured left=0.0,
+   right_edge=793.7 on a 794px page. The left only LOOKED correct because a
+   sidebar or padding happened to inset the text.
+
+   The horizontal margin is moved onto @page (so it applies identically to
+   every page, including ones generated after a break), and the root container
+   is released from the fixed 210mm so it fills the printable width instead of
+   the paper width. */
+@page {
+  margin-left: var(--tcv-margin-x, 10mm) !important;
+  margin-right: var(--tcv-margin-x, 10mm) !important;
+}
+.resume, .resume-wrap, .page, .layout {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+/* Nothing may stretch the page: long URLs, chips and wide rows wrap. */
+.resume *, .resume-wrap *, .page * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+a, code, .chip, .pill, .skill, .contact-item {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+"""
+
+
+def _sidebar_page_css(html_content: str) -> str:
+    """Paint a sidebar template's column colour as a PAGE background so it runs
+    full height on EVERY page, not just the one its content happens to land on.
+
+    Returns a small stylesheet, or "" when the template has no sidebar. The
+    width and colour are read back out of the template's own CSS so each
+    template keeps its own palette and proportions.
+    """
+    if not re.search(r'class="[^"]*\bsidebar\b', html_content):
+        return ""
+
+    # Column width. Templates express this as a grid track or a flex basis.
+    width = ""
+    for pat in (r"grid-template-columns:\s*([0-9.]+)%",
+                r"\.sidebar\s*\{[^}]*?\bwidth:\s*([0-9.]+)%",
+                r"\.sidebar\s*\{[^}]*?flex:\s*0\s+0\s+([0-9.]+)%"):
+        m = re.search(pat, html_content, re.S)
+        if m:
+            width = f"{m.group(1)}%"
+            break
+    if not width:
+        return ""
+
+    # Panel colour. `background` and `background-color` are both used, and the
+    # value is frequently a custom property, which does NOT resolve inside an
+    # @page rule - so the variable is dereferenced to its literal here.
+    colour = ""
+    m = re.search(
+        r"\.sidebar\s*\{[^}]*?background(?:-color)?:\s*([^;]+);",
+        html_content, re.S)
+    if m:
+        decl = m.group(1).strip()
+        var = re.search(r"var\(\s*(--[\w-]+)", decl)
+        if var:
+            v = re.search(
+                rf"{re.escape(var.group(1))}\s*:\s*([^;]+);", html_content)
+            decl = v.group(1).strip() if v else ""
+        g = re.search(r"(#[0-9a-fA-F]{3,8}|rgba?\([^)]*\))", decl)
+        if g:
+            colour = g.group(1)
+    if not colour:
+        return ""
+
+    return f"""
+/* BUG A: sidebar as a repeating page background (full height, every page).
+   Drawn on @page so it exists on pages the sidebar's own content never
+   reaches; the column itself goes transparent so the two cannot disagree. */
+@page {{
+  background-image: linear-gradient(to right,
+    {colour} 0 {width}, transparent {width} 100%);
+  background-repeat: no-repeat;
+  background-position: left top;
+}}
+.sidebar {{ background: transparent !important; }}
+"""
+
 
 class _TTLCache:
     """A tiny bounded, time-expiring cache.
@@ -2159,8 +2330,31 @@ def save_uploaded_pdf(file: UploadFile) -> str:
     return os.path.join(uploads_dir, f"{file_name}.{file_ext}")
 
 
+def _strip_inline_markup(text: str) -> str:
+    """Remove inline HTML the model sometimes writes inside bullet text.
+
+    The resume templates are rendered with `Jinja2Template(...)`, which has
+    autoescape OFF, so an <a>/<u>/<strong> the model emitted inside a bullet
+    was rendered as LIVE markup - that is why words like "GitHub", "Razorpay"
+    and "50+" showed up underlined or link-coloured in the middle of an
+    otherwise plain sentence. Real links are carried in their own structured
+    fields (project url/github_link, contact.*), never in bullet prose, so
+    nothing legitimate is lost by stripping tags here.
+    """
+    s = str(text)
+    if "<" not in s and "&" not in s:
+        return s.strip()
+    s = re.sub(r"</?(?:a|u|b|i|em|strong|span|mark|font|code|small)\b[^>]*>",
+               "", s, flags=re.I)
+    s = re.sub(r"<[^>]+>", "", s)
+    s = (s.replace("&amp;", "&").replace("&lt;", "<").replace("&gt;", ">")
+          .replace("&quot;", '"').replace("&#39;", "'").replace("&nbsp;", " "))
+    return re.sub(r"\s{2,}", " ", s).strip()
+
+
 def normalize_list_of_strings(items):
-    return [str(item).strip() for item in (items or []) if str(item).strip()]
+    return [_strip_inline_markup(item) for item in (items or [])
+            if _strip_inline_markup(item)]
 
 
 # ---------------------------------------------------------------------------
@@ -12119,6 +12313,11 @@ def _render_resume_html(parsed: dict, jd_string: str, template_id: int, style_id
         html_content = html_content.replace('href="STYLESHEET_PLACEHOLDER"', '')
         if css_content:
             html_content = html_content.replace('</head>', f'<style>{css_content}</style></head>')
+        # Corrective sheet LAST so it wins over each template's inline <style>.
+        # Templates 7+ load no shared stylesheet, so this is the only shared
+        # CSS they ever see - it is what keeps all 22 fixed from one place.
+        _fixes = _RESUME_NORMALIZE_CSS + _sidebar_page_css(html_content)
+        html_content = html_content.replace('</head>', f'<style>{_fixes}</style></head>')
     else:
         template = templates.env.get_template('resume_template.html')
         html_content = template.render(**context)

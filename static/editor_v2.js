@@ -147,6 +147,10 @@
     let hidden = {};           // "path" -> true when a field is hidden
     let renderTimer = null;
     let pageCount = 1;
+    // Page count reported by WeasyPrint for the CURRENT html, or 0 when we
+    // have not heard back yet. This is the number the PDF will really have,
+    // so it outranks the preview's own DOM-based split.
+    let serverPageCount = 0;
     // The document's original top-level blocks, captured before the first
     // pagination. Re-paginating rebuilds from these, so repeated passes can
     // never drop or duplicate content.
@@ -392,6 +396,12 @@
                 margin: 0 0 8px; box-shadow: 0 1px 3px rgba(17,24,39,.12);
                 overflow: hidden;
             }
+            /* While paginating, the sheet must be free to report its CONTENT
+               height. With the full-page min-height above applied, every
+               sheet's scrollHeight is >= a whole page, so the fit test below
+               was true for every block and each one landed on its own sheet -
+               an 8-page preview for a 2-page resume. */
+            .edv2-sheet.edv2-measuring { min-height: 0 !important; }
             .edv2-sheetlabel {
                 text-align: center; font: 500 11px system-ui, sans-serif;
                 color: #6b7280; margin: 0 0 24px;
@@ -407,8 +417,18 @@
             return s;
         };
 
+        // Paginate over the blocks that actually flow. A template that wraps
+        // everything in one root container (.page/.resume) would otherwise be
+        // a single un-splittable node, so we descend into it first.
+        let blocks = frameSource;
+        while (blocks.length === 1 && blocks[0].children &&
+               blocks[0].children.length > 1) {
+            blocks = Array.from(blocks[0].children);
+        }
+
         let sheet = newSheet();
-        frameSource.forEach(node => {
+        sheet.classList.add("edv2-measuring");
+        blocks.forEach(node => {
             const block = node.cloneNode(true);
             sheet.appendChild(block);
             // Overflowed this sheet: move the block to a fresh one. A block
@@ -417,18 +437,26 @@
             // the PDF handles.
             if (sheet.scrollHeight > printable && sheet.children.length > 1) {
                 sheet.removeChild(block);
+                sheet.classList.remove("edv2-measuring");
                 sheet = newSheet();
+                sheet.classList.add("edv2-measuring");
                 sheet.appendChild(block);
             }
         });
+        sheet.classList.remove("edv2-measuring");
 
-        // Label each sheet underneath it.
+        // Label each sheet underneath it. The COUNT shown to the user comes
+        // from WeasyPrint (countPages -> /api/estimate-html-pages) whenever we
+        // have it, because that is the engine that produces the actual PDF;
+        // the JS split above only decides where to draw the sheet boundaries
+        // in the preview. Letting the DOM count win here is what made the
+        // banner disagree with the downloaded file.
         const sheets = Array.from(doc.querySelectorAll(".edv2-sheet"));
-        pageCount = Math.max(1, sheets.length);
+        if (!serverPageCount) pageCount = Math.max(1, sheets.length);
         sheets.forEach((s, i) => {
             const lab = doc.createElement("div");
             lab.className = "edv2-sheetlabel";
-            lab.textContent = `Page ${i + 1} of ${pageCount}`;
+            lab.textContent = `Page ${i + 1} of ${sheets.length}`;
             s.insertAdjacentElement("afterend", lab);
         });
 
@@ -448,6 +476,7 @@
             if (!res.ok) return;
             const out = await res.json();
             if (out && out.pages) {
+                serverPageCount = out.pages;
                 pageCount = out.pages;
                 layoutPages();
             }
