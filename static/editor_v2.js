@@ -340,19 +340,24 @@
         const win = frameEl && frameEl.contentWindow;
         if (!doc || !doc.body || !win) return;
 
-        const tid = Number((payload && payload.template_id) || 0);
-        if (INK_TEMPLATES.indexOf(tid) === -1) {
+        // Clears BOTH the surface markers and the inline colours pushed onto
+        // their text-bearing children, so a re-run never layers stale ink.
+        const clearInk = () => {
             doc.querySelectorAll("[data-edv2-ink]").forEach(el => {
                 el.removeAttribute("data-edv2-ink");
                 el.style.removeProperty("--edv2-ink");
+                el.style.removeProperty("background-image");
+                el.style.removeProperty("background-color");
             });
-            return;
-        }
+            doc.querySelectorAll("[data-edv2-kid]").forEach(el => {
+                el.removeAttribute("data-edv2-kid");
+                el.style.removeProperty("color");
+            });
+        };
 
-        doc.querySelectorAll("[data-edv2-ink]").forEach(el => {
-            el.removeAttribute("data-edv2-ink");
-            el.style.removeProperty("--edv2-ink");
-        });
+        const tid = Number((payload && payload.template_id) || 0);
+        if (INK_TEMPLATES.indexOf(tid) === -1) { clearInk(); return; }
+        clearInk();
 
         // Walk every element; mark the ones that PAINT their own background.
         doc.querySelectorAll("*").forEach(el => {
@@ -384,6 +389,27 @@
             const ink = inkOn(bg);
             el.setAttribute("data-edv2-ink", "1");
             el.style.setProperty("--edv2-ink", ink);
+
+            // Descendants that carry text but paint NO background of their own
+            // take this surface's ink directly. Done per element rather than
+            // with an inherit rule, so a nested surface (a skill chip on its
+            // own dark pill) keeps the ink computed for ITS background instead
+            // of the container's - that mismatch rendered chips as empty
+            // capsules, dark text on a dark pill.
+            el.querySelectorAll("*").forEach(kid => {
+                if (kid.hasAttribute("data-edv2-ink")) return;
+                let kbg = "";
+                try {
+                    const kcs = win.getComputedStyle(kid);
+                    kbg = kcs.backgroundColor || "";
+                    if (kcs.backgroundImage && kcs.backgroundImage !== "none") return;
+                } catch (e) { return; }
+                const opaque = kbg && !/transparent/i.test(kbg) &&
+                    !/rgba\([^)]*,\s*0(\.0+)?\s*\)/.test(kbg);
+                if (opaque) return;          // has its own surface; leave it
+                kid.setAttribute("data-edv2-kid", "1");
+                kid.style.setProperty("color", ink, "important");
+            });
 
             // A mid-tone surface can still fall just short of 4.5:1 even with
             // the best possible ink (template 7's name card sits at 4.47 with
@@ -471,10 +497,14 @@
                real surfaces are .header, .contact-strip, .contact-bar, .top,
                .name-block - so the accent won and painted dark-red text on a
                dark navy banner. */
+            /* Each marked element carries its OWN ink. Descendants are NOT
+               forced to inherit: a skill chip paints its own dark pill, and
+               inheriting the outer sheet's dark ink turned every chip into an
+               empty capsule. paintSafeInk() marks each coloured surface
+               individually, so the nearest one always wins naturally. */
             [data-edv2-ink] { color: var(--edv2-ink) !important; }
-            [data-edv2-ink] * { color: inherit !important; }
             /* No faded ghost text on coloured surfaces. */
-            [data-edv2-ink], [data-edv2-ink] * { opacity: 1 !important; }
+            [data-edv2-ink] { opacity: 1 !important; }
             /* Long contact URLs must wrap inside the column, not overlap the
                line below. */
             .sidebar a, .contact-list a, .contact a, .contact-item {

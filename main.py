@@ -998,11 +998,14 @@ _RESUME_NORMALIZE_CSS = """
   height: auto !important;
   overflow: visible !important;
 }
-/* Decorations that cannot survive a page split. */
-.resume, .resume-wrap, .page {
-  box-shadow: none !important;
-  border-radius: 0 !important;
-}
+/* Decorations are DELIBERATELY left alone here.
+   A card radius and drop shadow are part of the template's real design
+   (template 7 is a rounded, shadowed sheet). Stripping them globally made
+   every PDF stop looking like the template the candidate chose. They only
+   misbehave when a resume actually splits across pages - the shadow then
+   repeats at each break - so that case is handled by _multipage_fix_css(),
+   which is appended only when the render really produced more than one
+   page. */
 
 /* --- BUG E: nothing may cross its column or the page margin ------------- */
 * { box-sizing: border-box; }
@@ -1085,6 +1088,37 @@ a, code, .chip, .pill, .skill, .contact-item {
 """
 
 
+_MULTIPAGE_FIX_CSS = """
+/* Applied ONLY when a resume really spans more than one page.
+   A card radius and drop shadow belong to the template's design and must
+   survive on a one-page resume; across a page break the shadow repeats at
+   every seam and the rounded corner clips content, so they come off there. */
+.resume, .resume-wrap, .page {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+"""
+
+
+def _apply_multipage_fixes(html_content: str) -> str:
+    """Append the multi-page-only corrections when the document paginates.
+
+    Rendering twice costs a layout pass, but the alternative - stripping the
+    template's decorations from every resume - is what made downloaded PDFs
+    stop matching the template that was chosen.
+    """
+    try:
+        from weasyprint import HTML as _HTML
+        pages = len(_HTML(string=html_content, base_url=BASE_DIR)
+                    .render().pages)
+    except Exception:
+        return html_content
+    if pages <= 1:
+        return html_content
+    return html_content.replace(
+        '</head>', f'<style>{_MULTIPAGE_FIX_CSS}</style></head>')
+
+
 def _sidebar_page_css(html_content: str) -> str:
     """Paint a sidebar template's column colour as a PAGE background so it runs
     full height on EVERY page, not just the one its content happens to land on.
@@ -1108,23 +1142,54 @@ def _sidebar_page_css(html_content: str) -> str:
     if not width:
         return ""
 
-    # Panel colour. `background` and `background-color` are both used, and the
-    # value is frequently a custom property, which does NOT resolve inside an
-    # @page rule - so the variable is dereferenced to its literal here.
-    colour = ""
-    m = re.search(
-        r"\.sidebar\s*\{[^}]*?background(?:-color)?:\s*([^;]+);",
-        html_content, re.S)
-    if m:
-        decl = m.group(1).strip()
+    def _literal(decl: str) -> str:
+        """First real colour in a declaration, dereferencing custom properties.
+        Variables do NOT resolve inside an @page rule, so the literal is what
+        must be written there."""
+        decl = decl.strip()
         var = re.search(r"var\(\s*(--[\w-]+)", decl)
         if var:
             v = re.search(
                 rf"{re.escape(var.group(1))}\s*:\s*([^;]+);", html_content)
             decl = v.group(1).strip() if v else ""
         g = re.search(r"(#[0-9a-fA-F]{3,8}|rgba?\([^)]*\))", decl)
-        if g:
-            colour = g.group(1)
+        return g.group(1) if g else ""
+
+    def _lum(hex_colour: str) -> float:
+        h = hex_colour.lstrip("#")
+        if len(h) == 3:
+            h = "".join(c * 2 for c in h)
+        if len(h) < 6:
+            return 1.0
+        r, g, b = (int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+    # Panel colour.
+    #
+    # `.sidebar`'s own background is NOT always the colour a reader sees. In
+    # template 8 the column is `--side: #f7f7f7` (near-white) and the colour
+    # lives in four `var(--accent)` blocks INSIDE it (.contact-card,
+    # .chip-list li). Painting that near-white across page 2 produced a blank
+    # stripe where a maroon panel belonged. So: take the column's own colour
+    # only when it is actually tinted, and otherwise fall back to the accent
+    # the panel's blocks are filled with.
+    colour = ""
+    m = re.search(
+        r"\.sidebar\s*\{[^}]*?background(?:-color)?:\s*([^;]+);",
+        html_content, re.S)
+    if m:
+        candidate = _literal(m.group(1))
+        # A near-white column is the paper showing through, not a panel.
+        if candidate and _lum(candidate) < 0.92:
+            colour = candidate
+
+    if not colour:
+        accent = re.search(r"--accent\s*:\s*([^;]+);", html_content)
+        if accent:
+            candidate = _literal(accent.group(1))
+            if candidate and _lum(candidate) < 0.92:
+                colour = candidate
+
     if not colour:
         return ""
 
@@ -12318,6 +12383,9 @@ def _render_resume_html(parsed: dict, jd_string: str, template_id: int, style_id
         # CSS they ever see - it is what keeps all 22 fixed from one place.
         _fixes = _RESUME_NORMALIZE_CSS + _sidebar_page_css(html_content)
         html_content = html_content.replace('</head>', f'<style>{_fixes}</style></head>')
+        # Decorations come off only if the resume actually paginates, so a
+        # one-page PDF keeps the template's own card radius and shadow.
+        html_content = _apply_multipage_fixes(html_content)
     else:
         template = templates.env.get_template('resume_template.html')
         html_content = template.render(**context)
