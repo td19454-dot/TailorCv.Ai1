@@ -147,8 +147,10 @@
     let hidden = {};           // "path" -> true when a field is hidden
     let renderTimer = null;
     let pageCount = 1;         // what the UI shows: WeasyPrint's count when known
-    let pdfPages = 0;          // WeasyPrint's count for the CURRENT html, 0 = unknown
-    let sheetCount = 1;        // sheets the preview actually drew
+    // Page count reported by WeasyPrint for the CURRENT html, or 0 when we
+    // have not heard back yet. This is the number the PDF will really have,
+    // so it outranks the preview's own DOM-based split.
+    let serverPageCount = 0;
     // The document's original top-level blocks, captured before the first
     // pagination. Re-paginating rebuilds from these, so repeated passes can
     // never drop or duplicate content.
@@ -212,12 +214,213 @@
         return JSON.stringify(String(value == null ? "" : value));
     }
 
+    /* --- Contrast safety -------------------------------------------------
+       The Design tab's accent must never be painted onto an element that
+       already sits on an accent-coloured background: picking blue turned
+       template 7's name card into blue-on-blue and the summary banner into
+       an invisible heading. These helpers pick a readable ink for a given
+       background instead, so the rule holds for EVERY accent the user can
+       choose, not just the ones we happened to test. */
+    function parseColor(c) {
+        const s = String(c || "").trim();
+        let m = /^#([0-9a-f]{3})$/i.exec(s);
+        if (m) {
+            const h = m[1];
+            return [parseInt(h[0] + h[0], 16), parseInt(h[1] + h[1], 16),
+                    parseInt(h[2] + h[2], 16)];
+        }
+        m = /^#([0-9a-f]{6})$/i.exec(s);
+        if (m) {
+            const h = m[1];
+            return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16),
+                    parseInt(h.slice(4, 6), 16)];
+        }
+        m = /^rgba?\(([^)]+)\)$/i.exec(s);
+        if (m) {
+            const p = m[1].split(",").map(v => parseFloat(v));
+            if (p.length >= 3 && p.every(v => !isNaN(v))) return [p[0], p[1], p[2]];
+        }
+        return null;
+    }
+
+    /* Relative luminance per WCAG 2.1. */
+    function luminance(rgb) {
+        const f = rgb.map(v => {
+            const x = Math.min(255, Math.max(0, v)) / 255;
+            return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+        });
+        return 0.2126 * f[0] + 0.7152 * f[1] + 0.0722 * f[2];
+    }
+
+    function contrastRatio(a, b) {
+        const la = luminance(a), lb = luminance(b);
+        const hi = Math.max(la, lb), lo = Math.min(la, lb);
+        return (hi + 0.05) / (lo + 0.05);
+    }
+
+    function toHex(rgb) {
+        return "#" + rgb.map(v => Math.round(Math.min(255, Math.max(0, v)))
+            .toString(16).padStart(2, "0")).join("");
+    }
+
+    /* Readable ink for text sitting ON `bg`: white on dark, near-black on
+       light. A MID-TONE surface (e.g. template 8's teal #2f9b95) clears 4.5:1
+       against neither plain white nor #1f2937, so the better of the two is
+       then pushed further - lightened toward white or darkened toward black -
+       until it actually passes. Returning "close enough" here is what ships
+       unreadable text. */
+    function inkOn(bg) {
+        const rgb = parseColor(bg);
+        if (!rgb) return "#ffffff";
+        const white = [255, 255, 255], dark = [31, 41, 55];
+        const useWhite = contrastRatio(rgb, white) >= contrastRatio(rgb, dark);
+        let ink = useWhite ? white.slice() : dark.slice();
+        let guard = 0;
+        while (contrastRatio(rgb, ink) < 4.5 && guard++ < 32) {
+            ink = useWhite ? ink.map(v => Math.min(255, v + 8))
+                           : ink.map(v => Math.max(0, v - 8));
+            // Already at an extreme and still short: nothing more to give.
+            if (useWhite && ink.every(v => v >= 255)) break;
+            if (!useWhite && ink.every(v => v <= 0)) break;
+        }
+        return toHex(ink);
+    }
+
+    /* An accent safe to use as TEXT on the white paper. A very light accent
+       (pale yellow, mint) is unreadable as a heading, so it is darkened
+       until it clears 4.5:1 rather than silently shipping faint text. */
+    function accentOnPaper(accent) {
+        let rgb = parseColor(accent);
+        if (!rgb) return accent;
+        const paper = [255, 255, 255];
+        let guard = 0;
+        while (contrastRatio(rgb, paper) < 4.5 && guard++ < 24) {
+            rgb = rgb.map(v => Math.max(0, v * 0.88));
+        }
+        return "#" + rgb.map(v => Math.round(v).toString(16)
+            .padStart(2, "0")).join("");
+    }
+
+    /* The template's own coloured-surface colour (sidebar / name card /
+       banner), read from the rendered document so each template keeps its own
+       palette. Falls back to a dark panel when we cannot measure - white ink
+       on dark is the safer default for these surfaces. */
+    function surfaceColor() {
+        const doc = frameEl && frameEl.contentDocument;
+        if (!doc || !doc.body) return "#3d66a8";
+        const el = doc.querySelector(
+            ".sidebar, .name-card, .banner, .header-band, .summary-banner");
+        if (!el || !frameEl.contentWindow) return "#3d66a8";
+        try {
+            const cs = frameEl.contentWindow.getComputedStyle(el);
+            // A gradient lives in background-image; take its first colour.
+            const img = cs.backgroundImage || "";
+            const g = /(#[0-9a-f]{3,8}|rgba?\([^)]*\))/i.exec(img);
+            if (g && parseColor(g[1])) return g[1];
+            const bg = cs.backgroundColor;
+            const rgb = parseColor(bg);
+            // Skip fully transparent backgrounds.
+            if (rgb && !/rgba\([^)]*,\s*0\s*\)/.test(bg)) return bg;
+        } catch (e) {}
+        return "#3d66a8";
+    }
+
+    /* Give every element that sits on a COLOURED background a readable ink,
+       measured from the rendered document instead of guessed from class
+       names. Runs after the design CSS is applied, so it corrects whatever
+       that CSS just painted.
+
+       Scoped to templates 7-12: those are the ones with coloured banners and
+       sidebars, and 1-6 render correctly today - touching them would risk a
+       regression for no gain. */
+    const INK_TEMPLATES = [7, 8, 9, 10, 11, 12];
+
+    function paintSafeInk() {
+        const doc = frameEl && frameEl.contentDocument;
+        const win = frameEl && frameEl.contentWindow;
+        if (!doc || !doc.body || !win) return;
+
+        const tid = Number((payload && payload.template_id) || 0);
+        if (INK_TEMPLATES.indexOf(tid) === -1) {
+            doc.querySelectorAll("[data-edv2-ink]").forEach(el => {
+                el.removeAttribute("data-edv2-ink");
+                el.style.removeProperty("--edv2-ink");
+            });
+            return;
+        }
+
+        doc.querySelectorAll("[data-edv2-ink]").forEach(el => {
+            el.removeAttribute("data-edv2-ink");
+            el.style.removeProperty("--edv2-ink");
+        });
+
+        // Walk every element; mark the ones that PAINT their own background.
+        doc.querySelectorAll("*").forEach(el => {
+            let bg = null;
+            try {
+                const cs = win.getComputedStyle(el);
+                const img = cs.backgroundImage || "";
+                const g = /(#[0-9a-f]{3,8}|rgba?\([^)]*\))/i.exec(img);
+                if (g && parseColor(g[1])) {
+                    bg = g[1];
+                } else {
+                    const col = cs.backgroundColor || "";
+                    // Skip transparent / fully see-through backgrounds.
+                    if (col && !/transparent/i.test(col) &&
+                        !/rgba\([^)]*,\s*0(\.0+)?\s*\)/.test(col) &&
+                        parseColor(col)) {
+                        bg = col;
+                    }
+                }
+            } catch (e) { return; }
+            if (!bg) return;
+
+            const rgb = parseColor(bg);
+            if (!rgb) return;
+            // White-ish paper needs no correction: the normal ink is fine and
+            // overriding it would flatten the template's own text colours.
+            if (luminance(rgb) > 0.82) return;
+
+            const ink = inkOn(bg);
+            el.setAttribute("data-edv2-ink", "1");
+            el.style.setProperty("--edv2-ink", ink);
+
+            // A mid-tone surface can still fall just short of 4.5:1 even with
+            // the best possible ink (template 7's name card sits at 4.47 with
+            // pure white). Deepen the SURFACE until the pair passes, rather
+            // than shipping text that is technically unreadable.
+            const inkRgb = parseColor(ink);
+            if (!inkRgb) return;
+            let surf = rgb.slice(), guard = 0;
+            const wantDark = luminance(inkRgb) > 0.5;
+            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 24) {
+                surf = wantDark ? surf.map(v => Math.max(0, v * 0.94))
+                                : surf.map(v => Math.min(255, v * 1.06 + 4));
+            }
+            if (guard > 0) {
+                el.style.setProperty("background-image", "none", "important");
+                el.style.setProperty("background-color", toHex(surf), "important");
+            }
+        });
+    }
+
     function buildDesignCss() {
         const P = paperSize();
         const nameCase = design.nameCase === "uppercase" ? "uppercase"
                        : design.nameCase === "lowercase" ? "lowercase" : "none";
         const px = Math.max(8, Number(design.fontSize || 10.5) * 96 / 72);
         const delimiter = String(design.delimiter || "|");
+        // Accent, guaranteed readable as text on white paper.
+        const safeAccent = accentOnPaper(design.accent);
+        // Ink for text on the template's coloured surfaces. The surface colour
+        // is read from the live document when we can see it, so each template
+        // keeps its own palette; the accent is never used here.
+        const surface = surfaceColor();
+        const sidebarInk = inkOn(surface);
+        const nameCardInk = sidebarInk;
+        // Ink for text sitting on an accent-FILLED chip/pill/badge. Computed
+        // from the raw accent, which is what the fill actually uses.
+        const accentInk = inkOn(design.accent);
         return `
             :root, .resume-container {
                 --body-size: ${px}px !important;
@@ -247,14 +450,59 @@
                 margin: 0 !important;
             }
             body > *:first-child { margin-top: 0 !important; }
+            /* Accent text on the white page, darkened if the picked accent is
+               too light to read. Deliberately NOT applied inside a coloured
+               banner or sidebar - those are handled below. */
             h1, .name, .resume-name, .header-name {
-                color: ${design.accent} !important;
                 text-transform: ${nameCase} !important;
             }
-            h2, .section-title, .section-heading, .sec-title {
-                color: ${design.accent} !important;
+            h1:not(.on-accent), .resume-name, .header-name,
+            .name:not(.on-accent) {
+                color: ${safeAccent} !important;
             }
+            h2, .section-title, .section-heading, .sec-title {
+                color: ${safeAccent} !important;
+            }
+
+            /* Text on a coloured surface is handled by paintSafeInk(), which
+               MEASURES each element's real background in the rendered document.
+               Listing class names here was the bug: the selectors guessed at
+               ".banner"/".header-band", which exist in no template, while the
+               real surfaces are .header, .contact-strip, .contact-bar, .top,
+               .name-block - so the accent won and painted dark-red text on a
+               dark navy banner. */
+            [data-edv2-ink] { color: var(--edv2-ink) !important; }
+            [data-edv2-ink] * { color: inherit !important; }
+            /* No faded ghost text on coloured surfaces. */
+            [data-edv2-ink], [data-edv2-ink] * { opacity: 1 !important; }
+            /* Long contact URLs must wrap inside the column, not overlap the
+               line below. */
+            .sidebar a, .contact-list a, .contact a, .contact-item {
+                overflow-wrap: anywhere !important;
+                word-break: break-word !important;
+                max-width: 100% !important;
+            }
+
+            /* Chips/pills/badges are FILLED with the accent by several
+               templates (".chip-list li { background: var(--accent) }") while
+               hardcoding white text. A pale accent then gives white-on-pale
+               and the chips disappear, so the ink is computed from the fill
+               itself rather than assumed. */
+            .chip, .pill, .badge, .tag, .chip-list li, .pill-wrap li,
+            .badge-list li, .skills li.skill, .skill {
+                color: ${accentInk} !important;
+                overflow-wrap: anywhere !important;
+                max-width: 100% !important;
+            }
+            .chip a, .pill a, .badge a, .chip-list li a, .pill-wrap li a {
+                color: ${accentInk} !important;
+            }
+
             a, .contact a, .links a { color: ${design.link} !important; }
+            /* A link on a coloured surface must stay legible too. */
+            .sidebar a, .name-card a, .banner a, .header-band a {
+                color: ${sidebarInk} !important;
+            }
             .contact-item + .contact-item::before,
             .project-state-contact-separator::before {
                 content: " ${delimiter.replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
@@ -321,6 +569,10 @@
             doc.head.appendChild(st);
         }
         st.textContent = buildDesignCss();
+        // Must run AFTER the design CSS lands: it corrects the text colour on
+        // coloured surfaces that the accent rule would otherwise make
+        // unreadable (dark-red name on a dark navy banner).
+        paintSafeInk();
         fitFrame();
     }
 
@@ -433,7 +685,15 @@
                 padding: ${design.marginY}in ${design.marginX}in;
                 margin: 0 0 8px; box-shadow: 0 1px 3px rgba(17,24,39,.12);
             }
+            /* Blocks live in this box and IT is what gets measured. The sheet
+               carries a full-page min-height, so its own scrollHeight is
+               always >= a whole page: measuring the sheet made the fit test
+               true for every block and put each one on its own sheet - an
+               8-page preview for a 2-page resume. */
             .edv2-sheetinner { width: 100%; }
+            /* Same problem, for the off-screen probe that asks whether a
+               single block is taller than a page. */
+            .edv2-sheet.edv2-measuring { min-height: 0 !important; }
             .edv2-sheetlabel {
                 text-align: center; font: 500 11px system-ui, sans-serif;
                 color: #6b7280; margin: 0 0 24px;
@@ -442,9 +702,8 @@
 
         // Rebuild from the captured source every time.
         doc.body.innerHTML = "";
-        // The sheet itself carries a full-page min-height, so measuring IT
-        // always reported an overflow. Blocks go into an inner box and that is
-        // what gets measured.
+        // Each sheet carries its measuring box (_inner) and the deepest
+        // rebuilt wrapper that blocks get appended to (_host).
         const newSheet = () => {
             const s = doc.createElement("div");
             s.className = "edv2-sheet";
@@ -457,31 +716,90 @@
                 host.appendChild(c);
                 host = c;
             });
+            s._inner = inner;
+            s._host = host;
             doc.body.appendChild(s);
-            return { inner, host };
+            return s;
         };
 
+        // Paginate over the blocks that actually flow. A template that wraps
+        // everything in one root container (.page/.resume) would otherwise be
+        // a single un-splittable node, so we descend into it first.
+        let blocks = frameSource;
+        while (blocks.length === 1 && blocks[0].children &&
+               blocks[0].children.length > 1) {
+            blocks = Array.from(blocks[0].children);
+        }
+
+        // Descend into any block that is TALLER THAN A PAGE, otherwise it can
+        // only ever be moved whole. Templates 10/11 are `<header>` + `.layout`,
+        // where .layout is the entire two-column body: the header stayed on
+        // page 1 and the whole body jumped to page 2, leaving page 1 empty
+        // below the banner. Measured against the real printable height, so a
+        // block that genuinely fits is never taken apart.
+        const probe = doc.createElement("div");
+        probe.className = "edv2-sheet edv2-measuring";
+        probe.style.position = "absolute";
+        probe.style.visibility = "hidden";
+        doc.body.appendChild(probe);
+        const tooTall = node => {
+            probe.innerHTML = "";
+            probe.appendChild(node.cloneNode(true));
+            return probe.scrollHeight > printable;
+        };
+        for (let pass = 0; pass < 4; pass++) {
+            let changed = false;
+            const next = [];
+            blocks.forEach(b => {
+                // Never take apart a multi-column container: its children are
+                // the columns themselves, and splitting them across sheets
+                // would put the sidebar on one page and the main column on
+                // another. Such a block stays whole and overflows instead.
+                let multiCol = false;
+                try {
+                    const d = frameEl.contentWindow.getComputedStyle(b).display;
+                    multiCol = d === "grid" || d === "flex";
+                } catch (e) {}
+                if (!multiCol && b.children && b.children.length > 1 &&
+                    tooTall(b)) {
+                    next.push(...Array.from(b.children));
+                    changed = true;
+                } else {
+                    next.push(b);
+                }
+            });
+            blocks = next;
+            if (!changed) break;
+        }
+        probe.remove();
+
         let sheet = newSheet();
-        frameSource.forEach(node => {
+        blocks.forEach(node => {
             const block = node.cloneNode(true);
-            sheet.host.appendChild(block);
+            sheet._host.appendChild(block);
             // Overflowed this sheet: move the block to a fresh one. A block
             // taller than a whole page stays put - splitting mid-element
             // would need its own layout pass and is what page-break CSS in
             // the PDF handles.
-            if (sheet.inner.scrollHeight > printable && sheet.host.children.length > 1) {
-                sheet.host.removeChild(block);
+            if (sheet._inner.scrollHeight > printable && sheet._host.children.length > 1) {
+                sheet._host.removeChild(block);
                 sheet = newSheet();
-                sheet.host.appendChild(block);
+                sheet._host.appendChild(block);
             }
         });
 
-        // Label each sheet underneath it. WeasyPrint's count wins when we have
-        // it: it is the engine that makes the downloaded file, and the browser
-        // can only approximate where it breaks.
+        // Label each sheet underneath it. The COUNT shown to the user comes
+        // from WeasyPrint (countPages -> /api/estimate-html-pages) whenever we
+        // have it, because that is the engine that produces the actual PDF;
+        // the JS split above only decides where to draw the sheet boundaries
+        // in the preview. Letting the DOM count win here is what made the
+        // banner disagree with the downloaded file.
         const sheets = Array.from(doc.querySelectorAll(".edv2-sheet"));
-        sheetCount = Math.max(1, sheets.length);
-        pageCount = pdfPages || sheetCount;
+        const sheetCount = Math.max(1, sheets.length);
+        pageCount = serverPageCount || sheetCount;
+        // The labels must not contradict the banner, so they carry whichever
+        // total is larger: a preview that drew fewer sheets than the PDF has
+        // still says "of 3" rather than quietly promising a shorter file.
         const total = Math.max(sheetCount, pageCount);
         sheets.forEach((s, i) => {
             const lab = doc.createElement("div");
@@ -490,6 +808,9 @@
             s.insertAdjacentElement("afterend", lab);
         });
 
+        // This function rebuilds body from cloned nodes, which drops the ink
+        // attributes set on the previous DOM - re-apply them to the new one.
+        paintSafeInk();
         fitFrame();
         updatePageHint();
     }
@@ -508,7 +829,7 @@
             if (!res.ok) return;
             const out = await res.json();
             if (out && out.pages) {
-                pdfPages = out.pages;
+                serverPageCount = out.pages;
                 pageCount = out.pages;
                 layoutPages();
             }
@@ -561,11 +882,14 @@
                     // Page count comes back from WeasyPrint with the render,
                     // so the markers move in step with the content.
                     if (out.pages) {
-                        pdfPages = out.pages;
+                        serverPageCount = out.pages;
                         pageCount = out.pages;
                         updatePageHint();
                     } else {
-                        pdfPages = 0;
+                        // No count this time: drop the stale one so the
+                        // preview falls back to its own split rather than
+                        // showing a number from the previous content.
+                        serverPageCount = 0;
                     }
                 }
             }
