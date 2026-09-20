@@ -38,7 +38,6 @@ That makes date parsing one of the few places where a formatting choice has a di
 
 ## The Four Common Failures
 
-<<<<<<< HEAD
 ### 1. The date detaches from the job
 
 Your dates sit in a right-hand column or a separate table cell. The parser extracts them as a block, unattached, and either discards them or attaches them to the wrong role.
@@ -56,17 +55,6 @@ This is the most damaging version, because the resulting record can show your 20
 ### 4. Non-standard words
 
 "Summer 2023," "Q3 2021," "Spring term 2022," "Present" written as "Now," "Ongoing," or "Current" in an unusual place. Anything outside the expected vocabulary risks being skipped.
-=======
-**1. The date detaches from the job.** Your dates sit in a right-hand column or a separate table cell. The parser extracts them as a block, unattached, and either discards them or attaches them to the wrong role.
-
-This is the most damaging version, because the resulting record can show your 2018 dates against your current job.
-
-**2. The format is ambiguous.** `03/04/2022` is March 4th to an American parser and 3rd April to a British one. Worse, `2020-2022` in a context expecting month precision can be read as a single year.
-
-**3. Only years are given.** `2022 – 2024` could mean January 2022 to December 2024 (three years) or December 2022 to January 2024 (thirteen months). Parsers usually assume the shorter reading, and you lose the difference.
-
-**4. Non-standard words.** "Summer 2023," "Q3 2021," "Spring term 2022," "Present" written as "Now," "Ongoing," or "Current" in an unusual place. Anything outside the expected vocabulary risks being skipped.
->>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 
 ### What each failure costs
 

@@ -83,7 +83,7 @@ The second version does not claim a title she does not hold. It describes the sa
 
 Step five is the one people miss. A stretch resume with three excellent ownership bullets and five task bullets averages out to your current level. The task bullets are actively working against you, and removing them is free.
 
-This is more work than a standard application — about twenty minutes rather than ten — which is why [stretch roles are one of the three exceptions](/blog/how-much-tailoring-is-too-much) to keeping tailoring short.
+This is more work than a standard application — about twenty minutes rather than ten — which is why [stretch roles are one of the three exceptions](/blog/how-much-to-change-resume-for-every-job) to keeping tailoring short.
 
 ## A Worked Example
 
@@ -168,7 +168,7 @@ Stretch applications convert at a lower rate. They should be a portion of your a
 
 ### Ignoring the skills gap entirely
 
-If the next level genuinely requires something you have never done, reframing will not manufacture it — [the honest moves for a missing requirement](/blog/missing-required-skill-response) still apply.
+If the next level genuinely requires something you have never done, reframing will not manufacture it — [the honest moves for a missing requirement](/blog/missing-required-skill-what-to-do) still apply.
 
 ## Frequently Asked Questions
 
@@ -220,4 +220,4 @@ Go through your top three bullets and ask, for each one, what you decided, what 
 
 [Scan the posting](/ats-analysis) to see which requirements are real at the target level, then [tailor the summary and top bullets](/solutions) around ownership rather than tasks.
 
-Related: [adjacent skills and how far they stretch](/blog/adjacent-skills-credit), [writing a summary in three sentences](/blog/summary-in-three-sentences), and [how much tailoring is too much](/blog/how-much-tailoring-is-too-much).
+Related: [adjacent skills and how far they stretch](/blog/adjacent-skills-resume-credit), [writing a summary in three sentences](/blog/summary-in-three-sentences), and [how much tailoring is too much](/blog/how-much-to-change-resume-for-every-job).

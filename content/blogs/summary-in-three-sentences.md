@@ -235,7 +235,7 @@ Where they describe what you genuinely are, yes. "Backend engineer" instead of "
 
 ### What if I am missing a skill the posting treats as central?
 
-The summary is the wrong place to address it — those three lines are your strongest case, not an audit. [There are four honest moves for a missing skill](/blog/missing-required-skill-response), and none of them is a summary disclaimer.
+The summary is the wrong place to address it — those three lines are your strongest case, not an audit. [There are four honest moves for a missing skill](/blog/missing-required-skill-what-to-do), and none of them is a summary disclaimer.
 
 ### Can an AI-written summary work?
 

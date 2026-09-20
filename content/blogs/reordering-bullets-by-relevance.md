@@ -114,7 +114,7 @@ Name the capability in your summary, so it appears in the first three lines rega
 
 ### No bullet addresses the requirement
 
-If nothing in your history speaks to their top requirement, reordering has nothing to work with. That is a content problem, and [the honest moves for a missing skill](/blog/missing-required-skill-response) apply instead.
+If nothing in your history speaks to their top requirement, reordering has nothing to work with. That is a content problem, and [the honest moves for a missing skill](/blog/missing-required-skill-what-to-do) apply instead.
 
 ### All your bullets are duties rather than outcomes
 
@@ -240,7 +240,7 @@ Less than it should. A two-line bullet in slot one competes with itself — [bul
 
 ### What if my most relevant experience used a different tool than the posting names?
 
-Order it first anyway, and let the description do the translating. [Adjacent skills](/blog/adjacent-skills-credit) are best surfaced in a top-slot bullet where there is room to show the work.
+Order it first anyway, and let the description do the translating. [Adjacent skills](/blog/adjacent-skills-resume-credit) are best surfaced in a top-slot bullet where there is room to show the work.
 
 ### Should the first bullet use the posting's exact wording?
 
@@ -258,4 +258,4 @@ Open your resume, read the posting's top requirement, and move the bullet that a
 
 [Scan the posting](/ats-analysis) to identify which requirements are real, then [tailor the order and the two or three renames that follow](/solutions).
 
-Related: [which three bullets to rewrite](/blog/which-bullets-to-rewrite), [tailoring in ten minutes](/blog/tailoring-in-ten-minutes), and [how much tailoring is too much](/blog/how-much-tailoring-is-too-much).
+Related: [which three bullets to rewrite](/blog/which-bullets-to-rewrite), [tailoring in ten minutes](/blog/tailoring-in-ten-minutes), and [how much tailoring is too much](/blog/how-much-to-change-resume-for-every-job).

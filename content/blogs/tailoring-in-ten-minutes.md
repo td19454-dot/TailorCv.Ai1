@@ -20,7 +20,6 @@ image: public/blog-images/tailoring-in-ten-minutes.png
 
 The reason most people stop tailoring is that they have no routine, so each application becomes an open-ended editing session. Give it a fixed order and a clock and it becomes something you can do ten times in an afternoon.
 
-<<<<<<< HEAD
 ## The Ten Minutes at a Glance
 
 | Minutes | Step | What changes | Skip it when |
@@ -33,15 +32,12 @@ The reason most people stop tailoring is that they have no routine, so each appl
 
 The order matters more than the timings. Reading first means every later edit has something to aim at. Leaving vocabulary until last means you are renaming things you have already decided to keep, rather than polishing lines you will end up cutting.
 
-=======
->>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 ## Before You Start: The Base Resume
 
 This routine assumes a base resume that is already good — parses cleanly, bullets that state outcomes, no formatting traps.
 
 If your base is weak, tailoring it repeatedly is wasted effort. Spend two hours fixing the base once. Then every application afterwards costs ten minutes.
 
-<<<<<<< HEAD
 ### What "already good" actually means
 
 Four things, and they are all binary rather than matters of taste:
@@ -62,8 +58,6 @@ If you apply to thirty roles over a job search — a modest number — a strong 
 
 The less obvious return is that a strong base makes the ten-minute routine *possible*. When the underlying bullets already state outcomes, tailoring is genuinely a matter of emphasis and vocabulary. When they do not, every application quietly turns into a rewrite, which is exactly the open-ended editing session the clock is meant to prevent.
 
-=======
->>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 ## Minute 0–2: Read for Three Things
 
 Read the posting once. You are looking for exactly three things, not absorbing the whole document.
@@ -116,7 +110,6 @@ Find the two or three places where you did the work but used different words, an
 
 Three of these is plenty. This is the step where people overrun, because the missing-keyword list is long and tempting. Two or three genuine renames capture most of the value.
 
-<<<<<<< HEAD
 ### What counts as a rename, and what does not
 
 The line is simple: a rename changes the label on work you did. Anything that changes the work itself is a fabrication.
@@ -183,8 +176,6 @@ Always start from the base. Tailoring a copy that was tailored for a different r
 
 Save each tailored file as `name-company-role.pdf`. When the call comes three weeks later, you need to know which version they read.
 
-=======
->>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 ## Then Stop
 
 At ten minutes, send it.
@@ -207,7 +198,6 @@ Everything else gets ten minutes.
 
 ## Frequently Asked Questions
 
-<<<<<<< HEAD
 ### Is ten-minute tailoring actually enough?
 
 For a well-matched role with a strong base resume, yes. The summary, bullet order, skills emphasis and two or three renames cover most of what tailoring achieves. The remaining gains are real but small, and they cost far more than ten minutes to capture.
@@ -247,22 +237,6 @@ Yes — `firstname-lastname-company-role.pdf`. It helps you track versions, and 
 ### What if ten minutes never feels like enough?
 
 That is usually a signal that the base resume is doing too little work, not that the routine is too short. If every application needs substantial rewriting, the problem is upstream: the bullets are duties rather than outcomes, or the summary is generic. Fix the base, and the ten minutes starts to feel generous.
-=======
-**Is ten-minute tailoring actually enough?**
-For a well-matched role with a strong base resume, yes. The summary, bullet order, skills emphasis and two or three renames cover most of what tailoring achieves.
-
-**Should I tailor my cover letter too?**
-If you are writing one, it needs more adaptation than the resume - it is the document where role-specific reasoning belongs. Budget separately for it.
-
-**What if I am applying to 20 jobs a week?**
-Group by role type. Build two or three base versions, then the per-application work drops to the summary and bullet order - about four minutes.
-
-**Does this work for senior roles?**
-Yes, with more weight on the summary and scope framing. Senior readers are assessing level fit, which the summary establishes fastest.
-
-**How do I stop myself over-editing?**
-Set an actual timer. It sounds trivial and it is the single most effective part of the routine.
->>>>>>> 58ab32c0555dd938d609cecb2da86397a21889fd
 
 ## Make the Reading Step Faster
 
