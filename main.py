@@ -13550,11 +13550,27 @@ async def editor_render(request: Request):
     # Page count from WeasyPrint, the same engine that produces the PDF. A
     # CSS-based guess in the browser drifts from the real file, and the whole
     # point of the page markers is that they match what gets downloaded.
+    # The editor applies its Design tab (font size, line height, margins, paper
+    # size) as a stylesheet in the browser, and Download sends that same styled
+    # document. Counting the bare template render therefore counted a file
+    # nobody downloads - a resume the editor called 1 page came back as 2 or 3.
+    # `design_css` is that stylesheet; inject it before counting.
+    # `</` cannot appear inside a style element; dropping it keeps a stray
+    # delimiter or font name from closing the tag.
+    design_css = str(body.get("design_css") or "").replace("</", "<\\/")[:20000]
+    count_html = html_content
+    if design_css:
+        style_tag = f"<style id=\"edv2-design\">{design_css}</style>"
+        if "</head>" in count_html:
+            count_html = count_html.replace("</head>", style_tag + "</head>", 1)
+        else:
+            count_html = style_tag + count_html
+
     pages = 1
     try:
         from weasyprint import HTML as _WeasyHTML
         def _count() -> int:
-            doc = _WeasyHTML(string=html_content, base_url=BASE_DIR).render()
+            doc = _WeasyHTML(string=count_html, base_url=BASE_DIR).render()
             return max(1, len(getattr(doc, "pages", []) or []))
         pages = await asyncio.to_thread(_count)
     except Exception:

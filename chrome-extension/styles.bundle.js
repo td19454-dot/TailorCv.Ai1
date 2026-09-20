@@ -6,7 +6,8 @@
   position: fixed !important;\r
   top: 80px !important;\r
   right: 0 !important;\r
-  width: 340px !important;\r
+  width: 400px !important;\r
+  max-width: calc(100vw - 16px) !important;\r
   background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;\r
   border: 1px solid rgba(79, 127, 255, 0.3) !important;\r
   border-right: none !important;\r
@@ -18,6 +19,11 @@
   color: #f1f5f9 !important;\r
   padding: 20px !important;\r
   transition: transform 0.25s ease !important;\r
+  /* Fixed and anchored at top:80px, so without a cap anything taller than the\r
+     window (the skills pop-up, the changes panel) ran off the bottom unseen. */\r
+  max-height: calc(100vh - 96px) !important;\r
+  overflow-y: auto !important;\r
+  overscroll-behavior: contain !important;\r
 }\r
 \r
 #tailorcv-sidebar.tcv-collapsed {\r

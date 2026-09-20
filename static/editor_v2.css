@@ -360,3 +360,78 @@ body.edv2-active #intercom-container { display: none !important; }
     .edv2-btn span { display: none; }
     .edv2-btn { padding: 0 12px; }
 }
+
+/* ── Dark top bar ────────────────────────────────────────────────────────────
+   Same treatment as the sidebar below: the vars are redefined on the bar so
+   crumbs, icons and outline buttons follow. The primary blue button keeps its
+   own colour. */
+.edv2-topbar {
+    --ed-border: #2b2f36;
+    --ed-text: #f3f4f6;
+    --ed-muted: #9aa1ab;
+    background: #0f1115;
+    color: var(--ed-text);
+    border-bottom-color: #2b2f36;
+}
+.edv2-topbar .edv2-crumb-sep { color: #4b5159; }
+.edv2-topbar .edv2-rename:hover { background: #1c2027; color: var(--ed-text); }
+.edv2-topbar .edv2-iconbtn { background: #1c2027; border-color: #343a43; color: var(--ed-muted); }
+.edv2-topbar .edv2-iconbtn:hover { background: #242932; color: var(--ed-text); }
+.edv2-topbar .edv2-iconbtn.saving { color: #93b4fb; }
+.edv2-topbar .edv2-btn-outline { background: #1c2027; color: var(--ed-text); border-color: #343a43; }
+.edv2-topbar .edv2-btn-outline:hover { background: #242932; border-color: #454c56; }
+.edv2-topbar .edv2-badge { background: #1e2a44; color: #93b4fb; }
+
+/* ── Dark sidebar ────────────────────────────────────────────────────────────
+   The left editing panel only. The preview column stays light so the resume
+   keeps rendering on white paper. Everything here re-points the panel's
+   hardcoded light values; the shared --ed-* vars are redefined on the panel
+   itself so descendants that use them follow without extra selectors. */
+.edv2-panel {
+    --ed-border: #2b2f36;
+    --ed-text: #f3f4f6;
+    --ed-muted: #9aa1ab;
+    --ed-blue-soft: #1e2a44;
+    background: #0f1115;
+    color: var(--ed-text);
+    border-right-color: #2b2f36;
+}
+.edv2-panel .edv2-tabs { border-bottom-color: #2b2f36; }
+.edv2-panel .edv2-tab { color: #d1d5db; }
+.edv2-panel .edv2-tab:hover { background: #1c2027; }
+.edv2-panel .edv2-tab.on { background: #1e2a44; color: #93b4fb; }
+.edv2-panel .edv2-collapse { color: var(--ed-muted); }
+.edv2-panel .edv2-collapse:hover { background: #1c2027; color: var(--ed-text); }
+
+.edv2-panel .edv2-card { background: #161a20; border-color: #2b2f36; }
+.edv2-panel .edv2-cardhead:hover { background: #1c2027; }
+.edv2-panel .edv2-drag { color: #6b7280; }
+
+.edv2-panel .edv2-input,
+.edv2-panel .edv2-num { background: #1c2027; border-color: #343a43; color: var(--ed-text); }
+.edv2-panel .edv2-input::placeholder { color: #6b7280; }
+.edv2-panel .edv2-input:focus,
+.edv2-panel .edv2-num:focus { border-color: var(--ed-blue); box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
+.edv2-panel .edv2-eye { background: #1c2027; border-color: #343a43; color: var(--ed-muted); }
+.edv2-panel .edv2-eye:hover { background: #242932; color: var(--ed-text); }
+.edv2-panel .edv2-field.off .edv2-input,
+.edv2-panel .edv2-field.off .edv2-eye { background: #14171c; color: #6b7280; }
+.edv2-panel .edv2-info { border-color: #4b5159; color: var(--ed-muted); }
+
+.edv2-panel .edv2-segbtn,
+.edv2-panel .edv2-reset,
+.edv2-panel .edv2-addbtn,
+.edv2-panel .edv2-bullet,
+.edv2-panel .edv2-bartools,
+.edv2-panel .edv2-tool { background: #1c2027; border-color: #343a43; color: var(--ed-text); }
+.edv2-panel .edv2-segbtn.on { border-color: var(--ed-blue); color: #93b4fb; }
+.edv2-panel .edv2-reset:hover,
+.edv2-panel .edv2-addbtn:hover,
+.edv2-panel .edv2-tool:hover { background: #242932; }
+.edv2-panel .edv2-bullet:hover { border-color: #454c56; }
+.edv2-panel .edv2-bullet.off .edv2-bullet-text { color: #6b7280; }
+.edv2-panel .edv2-bartools { box-shadow: 0 4px 14px rgba(0,0,0,.5); }
+.edv2-panel .edv2-tool-ai { color: #93b4fb; }
+.edv2-panel .edv2-swatch { box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
+
+.edv2-panel .edv2-tabpanes { scrollbar-color: #3a4049 #0f1115; }

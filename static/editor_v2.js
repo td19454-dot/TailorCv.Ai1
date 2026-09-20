@@ -146,7 +146,7 @@
     let design = { ...DESIGN_DEFAULTS };
     let hidden = {};           // "path" -> true when a field is hidden
     let renderTimer = null;
-    let pageCount = 1;
+    let pageCount = 1;         // what the UI shows: WeasyPrint's count when known
     // Page count reported by WeasyPrint for the CURRENT html, or 0 when we
     // have not heard back yet. This is the number the PDF will really have,
     // so it outranks the preview's own DOM-based split.
@@ -155,6 +155,12 @@
     // pagination. Re-paginating rebuilds from these, so repeated passes can
     // never drop or duplicate content.
     let frameSource = [];
+    // Wrapper chain the blocks came out of (e.g. .resume-container), cloned
+    // empty. Every sheet rebuilds it so the template's own CSS still applies.
+    let frameWrappers = [];
+    // Preview scale: the sheets are laid out at real paper size in CSS px and
+    // shrunk to the column, so the browser's line breaks match WeasyPrint's.
+    let frameScale = 1;
     let root, frameEl, saveBtn, pagesEl, pageHintEl, tipEl;
 
     /* ── Helpers ─────────────────────────────────────────────────────────── */
@@ -478,7 +484,7 @@
             }
 
             /* Chips/pills/badges are FILLED with the accent by several
-               templates (`.chip-list li { background: var(--accent) }`) while
+               templates (".chip-list li { background: var(--accent) }") while
                hardcoding white text. A pale accent then gives white-on-pale
                and the chips disappear, so the ink is computed from the fill
                itself rather than assumed. */
@@ -586,7 +592,10 @@
         const h = Math.max(
             doc.body ? doc.body.scrollHeight : 0,
             doc.documentElement ? doc.documentElement.scrollHeight : 0);
-        if (h > 0) frameEl.style.height = (h + 8) + "px";
+        // The body is scaled down to the column width, so its layout height has
+        // to be scaled too or the frame reserves the unscaled height and leaves
+        // a long blank gap under the resume.
+        if (h > 0) frameEl.style.height = (h * frameScale + 8) + "px";
     }
 
     function paintFrame(html) {
@@ -612,21 +621,49 @@
        This measures every top-level block against the printable height and
        MOVES it into the next sheet when it does not fit. Nothing is covered,
        so every line appears exactly once. */
+    /* Pull the real page blocks out of the document.
+
+       Almost every template wraps the whole resume in a single
+       `.resume-container`, so taking BODY's children gave exactly ONE block:
+       nothing could ever be moved to a second sheet and the preview claimed
+       "1 page" however long the resume was. Descend through single-element
+       wrappers until there is something to split, and remember the wrappers
+       (cloned empty) so each sheet can rebuild the chain - the template's CSS
+       hangs off those classes. */
+    function captureSource(doc) {
+        const isOurs = n => n.classList && (n.classList.contains("edv2-sheet") ||
+                                            n.classList.contains("edv2-sheetlabel"));
+        let nodes = Array.from(doc.body.children).filter(n => !isOurs(n));
+        const wrappers = [];
+        while (nodes.length === 1 && nodes[0].children && nodes[0].children.length > 1
+               && wrappers.length < 4) {
+            wrappers.push(nodes[0].cloneNode(false));
+            nodes = Array.from(nodes[0].children);
+        }
+        frameWrappers = wrappers;
+        frameSource = nodes.map(n => n.cloneNode(true));
+    }
+
     function layoutPages() {
         const doc = frameEl && frameEl.contentDocument;
         if (!doc || !doc.body) { updatePageHint(); return; }
 
         const P = paperSize();
-        const pxPerIn = frameEl.clientWidth / P.w;
-        const printable = (P.h - design.marginY * 2) * pxPerIn;
+        // Lay the sheets out at TRUE paper size in CSS px (96 per inch, the
+        // same unit WeasyPrint uses) and scale the whole body down to the
+        // column. Measuring at the column's own width instead made every line
+        // wrap at a different place than the PDF, so the break estimate was
+        // off before a single block had been moved.
+        const pageW = P.w * 96, pageH = P.h * 96;
+        const printable = (P.h - design.marginY * 2) * 96;
         if (!(printable > 50)) { updatePageHint(); return; }
+        const avail = frameEl.clientWidth || pageW;
+        frameScale = Math.min(1, avail / pageW);
 
         // Source blocks, captured once so re-paginating never loses content.
         if (!doc.body.dataset.edv2Src) {
             doc.body.dataset.edv2Src = "1";
-            frameSource = Array.from(doc.body.children)
-                .filter(n => !n.classList || !n.classList.contains("edv2-sheet"))
-                .map(n => n.cloneNode(true));
+            captureSource(doc);
         }
         if (!frameSource.length) { updatePageHint(); return; }
 
@@ -637,20 +674,25 @@
             doc.head.appendChild(st);
         }
         st.textContent = `
-            html, body { background: #eef0f4 !important; padding: 0 !important;
-                         margin: 0 !important; }
+            html { background: #eef0f4 !important; padding: 0 !important;
+                   margin: 0 !important; }
+            body { background: #eef0f4 !important; padding: 0 !important;
+                   margin: 0 !important; width: ${pageW}px !important;
+                   transform: scale(${frameScale}); transform-origin: top left; }
             .edv2-sheet {
                 background: #fff; box-sizing: border-box;
-                width: 100%; min-height: ${P.h * pxPerIn}px;
+                width: ${pageW}px; min-height: ${pageH}px;
                 padding: ${design.marginY}in ${design.marginX}in;
                 margin: 0 0 8px; box-shadow: 0 1px 3px rgba(17,24,39,.12);
-                overflow: hidden;
             }
-            /* While paginating, the sheet must be free to report its CONTENT
-               height. With the full-page min-height above applied, every
-               sheet's scrollHeight is >= a whole page, so the fit test below
-               was true for every block and each one landed on its own sheet -
-               an 8-page preview for a 2-page resume. */
+            /* Blocks live in this box and IT is what gets measured. The sheet
+               carries a full-page min-height, so its own scrollHeight is
+               always >= a whole page: measuring the sheet made the fit test
+               true for every block and put each one on its own sheet - an
+               8-page preview for a 2-page resume. */
+            .edv2-sheetinner { width: 100%; }
+            /* Same problem, for the off-screen probe that asks whether a
+               single block is taller than a page. */
             .edv2-sheet.edv2-measuring { min-height: 0 !important; }
             .edv2-sheetlabel {
                 text-align: center; font: 500 11px system-ui, sans-serif;
@@ -660,9 +702,22 @@
 
         // Rebuild from the captured source every time.
         doc.body.innerHTML = "";
+        // Each sheet carries its measuring box (_inner) and the deepest
+        // rebuilt wrapper that blocks get appended to (_host).
         const newSheet = () => {
             const s = doc.createElement("div");
             s.className = "edv2-sheet";
+            const inner = doc.createElement("div");
+            inner.className = "edv2-sheetinner";
+            s.appendChild(inner);
+            let host = inner;
+            frameWrappers.forEach(w => {
+                const c = w.cloneNode(false);
+                host.appendChild(c);
+                host = c;
+            });
+            s._inner = inner;
+            s._host = host;
             doc.body.appendChild(s);
             return s;
         };
@@ -719,23 +774,19 @@
         probe.remove();
 
         let sheet = newSheet();
-        sheet.classList.add("edv2-measuring");
         blocks.forEach(node => {
             const block = node.cloneNode(true);
-            sheet.appendChild(block);
+            sheet._host.appendChild(block);
             // Overflowed this sheet: move the block to a fresh one. A block
             // taller than a whole page stays put - splitting mid-element
             // would need its own layout pass and is what page-break CSS in
             // the PDF handles.
-            if (sheet.scrollHeight > printable && sheet.children.length > 1) {
-                sheet.removeChild(block);
-                sheet.classList.remove("edv2-measuring");
+            if (sheet._inner.scrollHeight > printable && sheet._host.children.length > 1) {
+                sheet._host.removeChild(block);
                 sheet = newSheet();
-                sheet.classList.add("edv2-measuring");
-                sheet.appendChild(block);
+                sheet._host.appendChild(block);
             }
         });
-        sheet.classList.remove("edv2-measuring");
 
         // Label each sheet underneath it. The COUNT shown to the user comes
         // from WeasyPrint (countPages -> /api/estimate-html-pages) whenever we
@@ -744,11 +795,16 @@
         // in the preview. Letting the DOM count win here is what made the
         // banner disagree with the downloaded file.
         const sheets = Array.from(doc.querySelectorAll(".edv2-sheet"));
-        if (!serverPageCount) pageCount = Math.max(1, sheets.length);
+        const sheetCount = Math.max(1, sheets.length);
+        pageCount = serverPageCount || sheetCount;
+        // The labels must not contradict the banner, so they carry whichever
+        // total is larger: a preview that drew fewer sheets than the PDF has
+        // still says "of 3" rather than quietly promising a shorter file.
+        const total = Math.max(sheetCount, pageCount);
         sheets.forEach((s, i) => {
             const lab = doc.createElement("div");
             lab.className = "edv2-sheetlabel";
-            lab.textContent = `Page ${i + 1} of ${sheets.length}`;
+            lab.textContent = `Page ${i + 1} of ${total}`;
             s.insertAdjacentElement("afterend", lab);
         });
 
@@ -759,7 +815,9 @@
         updatePageHint();
     }
 
-    /* Page count for the current HTML, from the same engine as the PDF. */
+    /* Page count for the current HTML, from the same engine as the PDF.
+       Counted on the DESIGNED html - the same bytes Download sends - so font
+       size, spacing and margins are in the count. */
     async function countPages() {
         if (!payload || !payload.html) return;
         try {
@@ -808,6 +866,11 @@
                     style_id: payload.style_id || 1,
                     design: design,
                     hidden: hidden,
+                    // The server counts pages with WeasyPrint. Without the
+                    // design CSS it counts a document nobody downloads -
+                    // font size, spacing and margins all move the breaks -
+                    // so send the exact stylesheet the preview and the PDF use.
+                    design_css: buildDesignCss(),
                 }),
             });
             if (res.ok) {
@@ -821,6 +884,7 @@
                     if (out.pages) {
                         serverPageCount = out.pages;
                         pageCount = out.pages;
+                        updatePageHint();
                     } else {
                         // No count this time: drop the stale one so the
                         // preview falls back to its own split rather than
