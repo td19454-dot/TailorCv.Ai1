@@ -375,8 +375,26 @@
             // overriding it would flatten the template's own text colours.
             if (luminance(rgb) > 0.82) return;
 
+            const ink = inkOn(bg);
             el.setAttribute("data-edv2-ink", "1");
-            el.style.setProperty("--edv2-ink", inkOn(bg));
+            el.style.setProperty("--edv2-ink", ink);
+
+            // A mid-tone surface can still fall just short of 4.5:1 even with
+            // the best possible ink (template 7's name card sits at 4.47 with
+            // pure white). Deepen the SURFACE until the pair passes, rather
+            // than shipping text that is technically unreadable.
+            const inkRgb = parseColor(ink);
+            if (!inkRgb) return;
+            let surf = rgb.slice(), guard = 0;
+            const wantDark = luminance(inkRgb) > 0.5;
+            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 24) {
+                surf = wantDark ? surf.map(v => Math.max(0, v * 0.94))
+                                : surf.map(v => Math.min(255, v * 1.06 + 4));
+            }
+            if (guard > 0) {
+                el.style.setProperty("background-image", "none", "important");
+                el.style.setProperty("background-color", toHex(surf), "important");
+            }
         });
     }
 
@@ -545,6 +563,10 @@
             doc.head.appendChild(st);
         }
         st.textContent = buildDesignCss();
+        // Must run AFTER the design CSS lands: it corrects the text colour on
+        // coloured surfaces that the accent rule would otherwise make
+        // unreadable (dark-red name on a dark navy banner).
+        paintSafeInk();
         fitFrame();
     }
 
@@ -654,6 +676,48 @@
             blocks = Array.from(blocks[0].children);
         }
 
+        // Descend into any block that is TALLER THAN A PAGE, otherwise it can
+        // only ever be moved whole. Templates 10/11 are `<header>` + `.layout`,
+        // where .layout is the entire two-column body: the header stayed on
+        // page 1 and the whole body jumped to page 2, leaving page 1 empty
+        // below the banner. Measured against the real printable height, so a
+        // block that genuinely fits is never taken apart.
+        const probe = doc.createElement("div");
+        probe.className = "edv2-sheet edv2-measuring";
+        probe.style.position = "absolute";
+        probe.style.visibility = "hidden";
+        doc.body.appendChild(probe);
+        const tooTall = node => {
+            probe.innerHTML = "";
+            probe.appendChild(node.cloneNode(true));
+            return probe.scrollHeight > printable;
+        };
+        for (let pass = 0; pass < 4; pass++) {
+            let changed = false;
+            const next = [];
+            blocks.forEach(b => {
+                // Never take apart a multi-column container: its children are
+                // the columns themselves, and splitting them across sheets
+                // would put the sidebar on one page and the main column on
+                // another. Such a block stays whole and overflows instead.
+                let multiCol = false;
+                try {
+                    const d = frameEl.contentWindow.getComputedStyle(b).display;
+                    multiCol = d === "grid" || d === "flex";
+                } catch (e) {}
+                if (!multiCol && b.children && b.children.length > 1 &&
+                    tooTall(b)) {
+                    next.push(...Array.from(b.children));
+                    changed = true;
+                } else {
+                    next.push(b);
+                }
+            });
+            blocks = next;
+            if (!changed) break;
+        }
+        probe.remove();
+
         let sheet = newSheet();
         sheet.classList.add("edv2-measuring");
         blocks.forEach(node => {
@@ -688,6 +752,9 @@
             s.insertAdjacentElement("afterend", lab);
         });
 
+        // This function rebuilds body from cloned nodes, which drops the ink
+        // attributes set on the previous DOM - re-apply them to the new one.
+        paintSafeInk();
         fitFrame();
         updatePageHint();
     }
