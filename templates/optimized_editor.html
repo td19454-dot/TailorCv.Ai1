@@ -11,7 +11,8 @@
     {% include "_seo_head.html" %}
     <link rel="stylesheet" href="/static/style2.css">
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
-    <link rel="stylesheet" href="/static/optimized_editor.css?v=8">
+    <link rel="stylesheet" href="/static/optimized_editor.css?v={{ asset_v }}">
+    <link rel="stylesheet" href="/static/editor_v2.css?v={{ asset_v }}">
 </head>
 
 <body>
@@ -148,7 +149,10 @@
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
-    <script src="/static/optimized_editor.js?v=127"></script>
+    <script src="/static/optimized_editor.js?v={{ asset_v }}"></script>
+    <!-- Editor v2 mounts a full-screen light-theme shell over the old page and
+         reuses its download / change-review functions through window hooks. -->
+    <script src="/static/editor_v2.js?v={{ asset_v }}"></script>
     <script>
     /* Page entrance: stagger control cards up, slide preview in. Start states are
        applied here (progressive enhancement) so no-JS users see everything. */

@@ -136,9 +136,10 @@
       if (!job) continue;
 
       const org = job.hiringOrganization;
+      const ldRole = clean(htmlToText(job.title || ''));
       return {
         jd_string: clean(htmlToText(job.description)),
-        role: clean(job.title || ''),
+        role: looksLikeRole(ldRole) ? ldRole : guessRole(),
         company: cleanCompany(clean(typeof org === 'string' ? org : (org && org.name) || '')),
         source: 'jsonld',
       };
@@ -223,9 +224,15 @@
     if (!a) return null;
     const jd = textOf(a.jd);
     if (!jd || jd.length < MIN_JD_LENGTH) return null;
+    let jdEl = null;
+    for (const sel of a.jd) {
+      try { jdEl = document.querySelector(sel); } catch (_) { continue; }
+      if (jdEl && (jdEl.innerText || '').trim()) break;
+      jdEl = null;
+    }
     return {
       jd_string: clean(jd),
-      role: clean(textOf(a.role)),
+      role: guessRole(jdEl),
       company: cleanCompany(clean(textOf(a.company))),
       source: 'adapter',
     };
@@ -282,7 +289,7 @@
         expandTruncatedText(container);
         const text = (container.innerText || '').trim();
         if (text.length >= MIN_JD_LENGTH && text.length <= 25000 && jdScore(text) >= 3) {
-          return { jd_string: clean(text), role: clean(guessRole()), company: cleanCompany(clean(guessCompany(container))), source: 'heading' };
+          return { jd_string: clean(text), role: clean(guessRole(container)), company: cleanCompany(clean(guessCompany(container))), source: 'heading' };
         }
         container = container.parentElement;
       }
@@ -360,16 +367,133 @@
     if (!best) return null;
     return {
       jd_string: clean(best),
-      role: clean(guessRole()),
+      role: clean(guessRole(bestEl)),
       company: cleanCompany(clean(guessCompany(bestEl))),
       source: 'heuristic',
     };
   }
 
-  function guessRole() {
-    const h1 = textOf(['h1']);
-    if (h1 && h1.length < 120) return h1;
-    return (document.title || '').split(/[|–—-]/)[0].trim();
+  // ── Job title ────────────────────────────────────────
+  // This used to be "take the first <h1> and call it the role", which on
+  // LinkedIn is regularly not the job title at all: the premium upsell card
+  // ("Add this job to view your Match Score and tailor your resume.") and the
+  // section heading right above the description ("About the job") both render
+  // ahead of — or inside — the job pane, and each of them shipped to the panel
+  // as the job title. Every candidate now has to look like a title before we
+  // accept it, and structured sources are tried before any heading scan.
+
+  // Page furniture that appears in headings on job boards but is never a role.
+  const ROLE_NOISE = /(match score|premium insight|premium|sign ?in|sign ?up|log ?in|join now|create (a )?job alert|job alert|set alert|save this job|jobs? you (may|might)|recommended for you|people also viewed|people you can reach|meet the hiring team|similar jobs|more jobs|top job picks|search results|apply now|easy apply|share this|cookie|your profile|upgrade|try .* free)/i;
+
+  // Section labels *inside* the posting. "About the job" is the heading above
+  // the description, not the job's title — it reached the panel because the
+  // scoped heading scan below looks inside the JD container, which is exactly
+  // where these labels live. HEADING_LABEL_PATTERNS (used by the layer-2.5
+  // scan) already enumerates most of them, so reuse it rather than keeping a
+  // second list that drifts.
+  const ROLE_SECTION_LABEL = /^(about (the |this )?(job|role|company|us|the team)|job (description|details|summary|type|function|overview)|description|overview|summary|responsibilit(y|ies)|requirements?|qualifications?|skills?|benefits?|perks?|compensation|salary|base pay( range)?|seniority level|employment type|industries|location|posted|how to apply|apply|share|related|experience|education)\s*:?$/i;
+
+  // Board names only count as noise when they're the *whole* string (a tab-title
+  // segment, say) — "LinkedIn Outreach Specialist" is a real job title.
+  const SITE_NAME = /^(linkedin|indeed(\.com)?|glassdoor|naukri(\.com)?|ziprecruiter|monster|simplyhired|dice|wellfound|greenhouse|lever|workday|ashby)$/i;
+
+  function looksLikeRole(text) {
+    const t = (text || '').trim();
+    if (t.length < 2 || t.length > 90) return false;
+    if (t.split(/\s+/).length > 10) return false;   // titles are phrases, not sentences
+    if (/[.!?]$/.test(t)) return false;             // ditto: a full stop means prose
+    if (/\n/.test(t)) return false;
+    if (/^\d+$/.test(t)) return false;
+    if (ROLE_NOISE.test(t)) return false;
+    if (ROLE_SECTION_LABEL.test(t)) return false;
+    if (HEADING_LABEL_PATTERNS.some(p => p.test(t))) return false;
+    if (SITE_NAME.test(t)) return false;
+    // Generic page/tab names. Harmless to exclude — nobody's job title is "Careers".
+    if (/^(careers?|jobs?|job (search|openings?)|open positions?|home|welcome|dashboard|loading|untitled)$/i.test(t)) return false;
+    return true;
+  }
+
+  // First element text matching any selector that also passes looksLikeRole.
+  // Unlike textOf(), a selector whose first hit is junk doesn't poison the
+  // result — we keep scanning that selector's other matches and the later
+  // selectors. That is what makes the 'h1' fallbacks in ADAPTERS safe.
+  function firstRoleLike(selectors, root = document) {
+    for (const sel of selectors) {
+      let els;
+      try { els = root.querySelectorAll(sel); } catch (_) { continue; }
+      for (const el of els) {
+        if (el.closest('#tailorcv-sidebar')) continue;
+        const text = clean((el.innerText || '').trim());
+        if (looksLikeRole(text)) return text;
+      }
+    }
+    return '';
+  }
+
+  // JSON-LD is the one source that *names* the field, so it wins even when the
+  // description itself came from a different layer.
+  function roleFromJsonLd() {
+    try {
+      for (const block of document.querySelectorAll('script[type="application/ld+json"]')) {
+        let parsed;
+        try { parsed = JSON.parse(block.textContent); } catch (_) { continue; }
+        const job = walkForJobPosting(parsed);
+        const title = job && clean(htmlToText(job.title || ''));
+        if (looksLikeRole(title)) return title;
+      }
+    } catch (_) { /* never let this kill detection */ }
+    return '';
+  }
+
+  // Boards write the tab title to a handful of shapes:
+  //   "(3) Senior Backend Engineer | Acme | LinkedIn"
+  //   "Acme hiring Senior Backend Engineer in Bengaluru | LinkedIn"
+  //   "Senior Backend Engineer - Acme - Indeed.com"
+  // Strip the unread-count prefix, unwrap "<company> hiring <role> in <place>",
+  // then take the first segment that survives looksLikeRole.
+  function roleFromDocumentTitle() {
+    const t = (document.title || '').replace(/^\(\d+\+?\)\s*/, '').trim();
+    if (!t) return '';
+
+    const hiring = t.match(/\bhiring\s+(.+?)(?:\s+in\s+.+)?$/i);
+    if (hiring) {
+      const role = clean(hiring[1].split(/[|–—]/)[0].trim());
+      if (looksLikeRole(role)) return role;
+    }
+
+    for (const part of t.split(/\s[|–—]\s|[|–—]|\s-\s/)) {
+      const role = clean(part.trim());
+      if (looksLikeRole(role)) return role;
+    }
+    return '';
+  }
+
+  // scopeEl is the JD container we already matched. Headings inside it (or in
+  // its nearest few ancestors) belong to *this* posting; anything the page-wide
+  // scan finds afterwards may belong to some other job card on the page.
+  function guessRole(scopeEl) {
+    const fromLd = roleFromJsonLd();
+    if (fromLd) return fromLd;
+
+    const adapter = adapterForHost();
+    if (adapter) {
+      const fromAdapterSel = firstRoleLike(adapter.role);
+      if (fromAdapterSel) return fromAdapterSel;
+    }
+
+    const HEADINGS = ['h1', 'h2', '[role="heading"]'];
+    let node = scopeEl || null;
+    for (let i = 0; i < 4 && node; i++) {
+      if (node === document.body || node === document.documentElement) break;
+      const scoped = firstRoleLike(HEADINGS, node);
+      if (scoped) return scoped;
+      node = node.parentElement;
+    }
+
+    const fromTitle = roleFromDocumentTitle();
+    if (fromTitle) return fromTitle;
+
+    return firstRoleLike(HEADINGS);
   }
 
   // A link to /company/... is LinkedIn's own URL-routing convention for "this is
@@ -378,11 +502,18 @@
   // walking up from it keeps the search inside the selected job's own detail
   // pane instead of finding some *other* job card's company link.
   function guessCompany(scopeEl) {
+    // Not every /company/ link is the employer's name: LinkedIn's own controls
+    // ("Show Premium Insights", "Follow", "See all jobs") point there too, and
+    // one of those is what put "at Show Premium Insights" on screen next to the
+    // job title. Drop anything that reads as a button rather than a name.
+    const COMPANY_NOISE = /^(show|see|view|follow|unfollow|about|more|less|jobs?|all jobs|company page|premium|save|apply)\b|premium insight|\bfollowers?\b/i;
     const pickLink = (root) => {
       for (const a of root.querySelectorAll('a[href*="/company/"]')) {
         if (a.closest('#tailorcv-sidebar')) continue;
         const text = (a.textContent || '').trim();
-        if (text && text.length <= 80) return text;
+        if (!text || text.length > 80) continue;
+        if (COMPANY_NOISE.test(text)) continue;
+        return text;
       }
       return null;
     };
@@ -1049,9 +1180,15 @@
 
     const title = document.createElement('div');
     title.className = 'tcv-skill-gaps-title';
+    // Gaps are NOT additions. This branch runs when nothing was added and what
+    // came through is `gaps` - skills this job asks for that the resume does
+    // not evidence, which we deliberately withheld. Titling them "Skills
+    // Added" told the candidate we had put them on the resume; they would find
+    // out otherwise in a screening call, which is the precise failure the
+    // evidence gate exists to prevent.
     title.textContent = showingAdded
       ? `Added ${skills.length} skill${skills.length === 1 ? '' : 's'} from this job`
-      : 'Skills Added';
+      : `This job also asks for ${skills.length} skill${skills.length === 1 ? '' : 's'}`;
     box.appendChild(title);
 
     const list = document.createElement('div');

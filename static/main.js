@@ -43,12 +43,12 @@ async function handleATSAnalysis() {
 
     // Validation
     if (!fileInput.files[0]) {
-        alert('Please upload a resume file');
+        window.showToast && window.showToast('Please upload a resume file');
         return;
     }
 
     if (!jdInput.value.trim()) {
-        alert('Please paste the job description');
+        window.showToast && window.showToast('Please paste the job description');
         return;
     }
 
@@ -98,7 +98,7 @@ async function handleATSAnalysis() {
         if (error.status === 401 || error.status === 403 || message.includes('not logged in') || message.includes('login')) {
             redirectToLogin();
         } else {
-            alert('Error analyzing resume: ' + error.message);
+            window.showToast && window.showToast('Error analyzing resume: ' + error.message);
         }
     } finally {
         // Reset button state
@@ -241,12 +241,12 @@ async function handleResumeOptimization() {
 
     // Validation
     if (!fileInput.files[0]) {
-        alert('Please upload a resume file');
+        window.showToast && window.showToast('Please upload a resume file');
         return;
     }
 
     if (!jdInput.value.trim()) {
-        alert('Please paste the job description');
+        window.showToast && window.showToast('Please paste the job description');
         return;
     }
 
@@ -286,7 +286,7 @@ async function handleResumeOptimization() {
 
     } catch (error) {
         console.error('Error:', error);
-        alert('Error optimizing resume: ' + error.message);
+        window.showToast && window.showToast('Error optimizing resume: ' + error.message);
     } finally {
         // Reset button state
         optimizeBtn.disabled = false;
