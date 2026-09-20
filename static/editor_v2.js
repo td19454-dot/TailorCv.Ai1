@@ -92,20 +92,19 @@
         })();
     }
 
-    /* Reuse the page's OWN button rather than a global.
+    /* Open the implemented change-review modal directly.
 
-       The old editor is still in the DOM underneath this shell, and its
-       "See what changed" button already has a working handler bound by
-       optimized_editor.js. Clicking it is immune to the script-timing
-       problem that made a global hook unreliable: if the button exists, its
-       listener exists, because the same code created both. The hook stays as
-       a fallback for the case where the legacy markup is absent. */
+       The v2 shell used to click the hidden legacy button first. That made
+       integration depend on old DOM wiring even though optimized_editor.js
+       already publishes a stable hook for this exact action. */
     function openChanges() {
-        const legacy = document.getElementById("see-changes-btn")
-                    || document.getElementById("see-changes-btn-mobile");
-        if (legacy) { legacy.click(); return; }
         callHook("tcvShowChangesModal", payload, "See what changed",
-            () => toast("Couldn't load changes.", openChanges));
+            () => {
+                const legacy = document.getElementById("see-changes-btn")
+                            || document.getElementById("see-changes-btn-mobile");
+                if (legacy) { legacy.click(); return; }
+                toast("Couldn't load changes.", openChanges);
+            });
     }
 
     /* ── Design defaults. Mirrors the reference "Style Settings" panel. ──── */
@@ -177,6 +176,10 @@
             sessionStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
         } catch (e) {}
     }
+
+    window.tcvGetEditorV2Html = function () {
+        return buildDesignedHtml(payload && payload.html ? payload.html : "");
+    };
     function loadDesign() {
         try {
             const d = JSON.parse(localStorage.getItem(DESIGN_KEY) || "null");
@@ -197,38 +200,40 @@
         return design.paper === "Letter" ? { w: 8.5, h: 11 } : { w: 8.27, h: 11.69 };
     }
 
-    function applyDesignToFrame() {
-        const doc = frameEl && frameEl.contentDocument;
-        if (!doc || !doc.head) return;
-        let st = doc.getElementById("edv2-design");
-        if (!st) {
-            st = doc.createElement("style");
-            st.id = "edv2-design";
-            doc.head.appendChild(st);
-        }
+    function cssString(value) {
+        return JSON.stringify(String(value == null ? "" : value));
+    }
+
+    function buildDesignCss() {
         const P = paperSize();
         const nameCase = design.nameCase === "uppercase" ? "uppercase"
                        : design.nameCase === "lowercase" ? "lowercase" : "none";
-        st.textContent = `
-            /* The templates set line-height on their own elements (li, p,
-               .bullet...), which out-specifies a rule on html/body - so the
-               slider appeared to do almost nothing. Targeting the text
-               elements directly is what makes it visible. */
+        const px = Math.max(8, Number(design.fontSize || 10.5) * 96 / 72);
+        const delimiter = String(design.delimiter || "|");
+        return `
+            :root, .resume-container {
+                --body-size: ${px}px !important;
+                --body-line: ${design.lineHeight} !important;
+                --contact-size: ${Math.max(7, px * 0.78)}px !important;
+                --header-size: ${Math.max(18, px * 2.35)}px !important;
+                --section-size: ${Math.max(10, px * 1.18)}px !important;
+                --title-size: ${Math.max(9, px * 1.08)}px !important;
+                --meta-size: ${Math.max(8, px * 0.92)}px !important;
+                --project-title-size: ${Math.max(9, px * 1.08)}px !important;
+                --project-meta-size: ${Math.max(8, px * 0.92)}px !important;
+                --skill-size: ${Math.max(9, px * 0.96)}px !important;
+                --bullet-line: ${design.lineHeight} !important;
+            }
             html, body {
-                font-family: ${JSON.stringify(design.font)}, serif !important;
+                font-family: ${cssString(design.font)}, serif !important;
                 font-size: ${design.fontSize}pt !important;
                 line-height: ${design.lineHeight} !important;
             }
             body, body p, body li, body div, body span, body td,
             body h1, body h2, body h3, body h4 {
                 line-height: ${design.lineHeight} !important;
-                font-family: ${JSON.stringify(design.font)}, serif !important;
+                font-family: ${cssString(design.font)}, serif !important;
             }
-            /* Margins are owned by @page alone. The templates already declare
-               their own @page margin (style1.css: 0.14in 0.22in), so adding
-               body padding on top stacked two margins and left roughly two
-               inches of dead space above the name. Zeroing the body here
-               makes the Design slider the single source of that space. */
             body {
                 padding: 0 !important;
                 margin: 0 !important;
@@ -242,10 +247,10 @@
                 color: ${design.accent} !important;
             }
             a, .contact a, .links a { color: ${design.link} !important; }
-            /* The templates' reset sets "* { padding: 0 }", so a list-style
-               alone renders no marker - there is no indent for it to sit in,
-               and some templates also set list-style:none outright. Restore
-               the position and the padding alongside the type. */
+            .contact-item + .contact-item::before,
+            .project-state-contact-separator::before {
+                content: " ${delimiter.replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
+            }
             ul, ol {
                 list-style-type: ${listStyleCss(design.listStyle)} !important;
                 list-style-position: outside !important;
@@ -253,21 +258,8 @@
                 margin-left: 0 !important;
             }
             ul li, ol li { list-style: inherit !important; display: list-item !important; }
-
-            /* @page governs the PDF. The preview is a continuous scroll, so
-               the same geometry is applied to the document body as real
-               padding - otherwise the margin slider moves nothing on screen
-               while still changing the downloaded file. */
             @page { size: ${P.w}in ${P.h}in; margin: ${design.marginY}in ${design.marginX}in; }
-            /* No padding here: each .edv2-sheet carries the margin, so adding
-               it on html as well would double the space above the name. */
             html { padding: 0 !important; margin: 0 !important; }
-
-            /* Smart breaks. Each rule below exists because the default
-               behaviour produced a specific ugly split:
-                 - a section heading stranded alone at the foot of a page
-                 - an entry's title/company/dates cut from its first bullet
-                 - a short section (Education) torn across two pages        */
             h2, h3, .section-title, .section-heading, .sec-title {
                 break-after: avoid-page; page-break-after: avoid;
                 break-inside: avoid; page-break-inside: avoid;
@@ -276,16 +268,51 @@
             .exp-entry, .edu-entry, .proj-entry, .item {
                 break-inside: avoid; page-break-inside: avoid;
             }
-            /* A bullet of a few lines should move whole rather than split. */
             li { break-inside: avoid; page-break-inside: avoid;
                  orphans: 2; widows: 2; }
             p  { orphans: 2; widows: 2; }
-            /* Short sections stay together where they fit on one page. */
             .education, .certifications, .awards, .achievements,
             section.education, section.certifications {
                 break-inside: avoid; page-break-inside: avoid;
             }
         `;
+    }
+
+    function buildDesignedHtml(html) {
+        html = String(html || "").trim();
+        if (!html) return "";
+        try {
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            let st = doc.getElementById("edv2-design");
+            if (!st) {
+                st = doc.createElement("style");
+                st.id = "edv2-design";
+                doc.head.appendChild(st);
+            }
+            st.textContent = buildDesignCss();
+            return "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+        } catch (e) {
+            return html;
+        }
+    }
+
+    function refreshDesignPreview() {
+        applyDesignToFrame();
+        layoutPages();
+        fitFrame();
+        countPages();
+    }
+
+    function applyDesignToFrame() {
+        const doc = frameEl && frameEl.contentDocument;
+        if (!doc || !doc.head) return;
+        let st = doc.getElementById("edv2-design");
+        if (!st) {
+            st = doc.createElement("style");
+            st.id = "edv2-design";
+            doc.head.appendChild(st);
+        }
+        st.textContent = buildDesignCss();
         fitFrame();
     }
 
@@ -416,7 +443,7 @@
             const res = await fetch("/api/estimate-html-pages", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ html: payload.html, pdf_scale: 1 }),
+                body: JSON.stringify({ html: buildDesignedHtml(payload.html), pdf_scale: 1 }),
             });
             if (!res.ok) return;
             const out = await res.json();
@@ -818,42 +845,42 @@
         }, { select: [["Letter", "Letter (8.5x11 Inches)"], ["A4", "A4 (8.27x11.69 Inches)"]] }));
 
         b.appendChild(fieldRow("Font", design.font, v => {
-            design.font = v; saveDesign(); applyDesignToFrame();
+            design.font = v; saveDesign(); refreshDesignPreview();
         }, { select: FONTS.map(f => [f, f]) }));
 
         b.appendChild(slider("Font Size", design.fontSize, 7, 14, 0.5, "pt", v => {
-            design.fontSize = v; saveDesign(); applyDesignToFrame();
+            design.fontSize = v; saveDesign(); refreshDesignPreview();
         }));
         b.appendChild(slider("Line Height", design.lineHeight, 1, 2.4, 0.025, "", v => {
-            design.lineHeight = v; saveDesign(); applyDesignToFrame();
+            design.lineHeight = v; saveDesign(); refreshDesignPreview();
         }));
         b.appendChild(slider("Left & Right Margins", design.marginX, 0.2, 1.5, 0.01, "in", v => {
-            design.marginX = v; saveDesign(); applyDesignToFrame();
+            design.marginX = v; saveDesign(); refreshDesignPreview();
         }));
         b.appendChild(slider("Top & Bottom Margins", design.marginY, 0.2, 2, 0.01, "in", v => {
-            design.marginY = v; saveDesign(); applyDesignToFrame();
+            design.marginY = v; saveDesign(); refreshDesignPreview();
         }));
 
         b.appendChild(swatchRow("Accent Color", design.accent, v => {
-            design.accent = v; saveDesign(); applyDesignToFrame();
+            design.accent = v; saveDesign(); refreshDesignPreview();
         }));
         b.appendChild(swatchRow("Link Color", design.link, v => {
-            design.link = v; saveDesign(); applyDesignToFrame();
+            design.link = v; saveDesign(); refreshDesignPreview();
         }));
 
         b.appendChild(segRow("Name", [["capitalize", "Capitalize"],
                                       ["uppercase", "Uppercase"],
                                       ["lowercase", "Lowercase"]],
-            design.nameCase, v => { design.nameCase = v; saveDesign(); applyDesignToFrame(); }));
+            design.nameCase, v => { design.nameCase = v; saveDesign(); refreshDesignPreview(); }));
 
         b.appendChild(segRow("Header Delimiter",
             [["|", "|"], ["•", "•"], ["-", "-"], ["◇", "◇"], ["❖", "❖"]],
-            design.delimiter, v => { design.delimiter = v; saveDesign(); scheduleRender(); }));
+            design.delimiter, v => { design.delimiter = v; saveDesign(); refreshDesignPreview(); }));
 
         b.appendChild(segRow("List Style",
             [["•", "•"], ["○", "○"], ["■", "■"],
              ["1", "Number"], ["none", "None"]],
-            design.listStyle, v => { design.listStyle = v; saveDesign(); applyDesignToFrame(); }));
+            design.listStyle, v => { design.listStyle = v; saveDesign(); refreshDesignPreview(); }));
 
         b.appendChild(fieldRow("Date Range", design.dateFormat, v => {
             design.dateFormat = v; saveDesign(); scheduleRender();
@@ -868,7 +895,7 @@
             design = { ...DESIGN_DEFAULTS };
             saveDesign();
             buildDesignPane(pane);
-            applyDesignToFrame();
+            refreshDesignPreview();
             scheduleRender();
         });
         rr.appendChild(reset);
@@ -1125,11 +1152,6 @@
         dl.innerHTML = SVG.download;
         dl.appendChild(el("span", null, "Download Resume"));
         dl.addEventListener("click", () => {
-            // Same reasoning as openChanges(): the legacy button's handler is
-            // bound by the same module that created it, so clicking it cannot
-            // race with script evaluation.
-            const legacy = document.getElementById("download-edited-btn");
-            if (legacy) { legacy.click(); return; }
             callHook("tcvDownloadEditedPdf", undefined, "Download Resume",
                 () => toast("Couldn't start the download.",
                             () => callHook("tcvDownloadEditedPdf", undefined, "Download Resume")));
@@ -1147,7 +1169,6 @@
         const paneMap = {};
 
         [["content", "person", "Resume Content"],
-         ["ai", "sparkle", "AI Assistant"],
          ["design", "palette", "Design"]].forEach(([key, ic, label], i) => {
             const t = el("button", "edv2-tab" + (i === 0 ? " on" : ""));
             t.type = "button";
@@ -1197,7 +1218,6 @@
         document.body.appendChild(root);
 
         buildContentPane(paneMap.content);
-        buildAiPane(paneMap.ai);
         buildDesignPane(paneMap.design);
 
         if (payload.html) paintFrame(payload.html);

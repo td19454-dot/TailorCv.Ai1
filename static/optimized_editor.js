@@ -849,7 +849,14 @@ body {
     }
 
     function buildExportHtml() {
-        if (!frame || !frame.contentDocument) return "";
+        if (typeof window.tcvGetEditorV2Html === "function") {
+            const v2Html = cleanExportHtml(window.tcvGetEditorV2Html());
+            if (v2Html) return v2Html;
+        }
+        if (!frame || !frame.contentDocument) {
+            const payload = getPayload();
+            return cleanExportHtml(payload && payload.html ? payload.html : currentHtml);
+        }
         const src   = frame.contentDocument;
         const clone = src.documentElement.cloneNode(true);
         const body  = clone.querySelector("body");
@@ -863,6 +870,41 @@ body {
              "overflow-x", "overflow-y", "margin"].forEach(p => body.style.removeProperty(p));
         }
         return "<!DOCTYPE html>\n" + clone.outerHTML;
+    }
+
+    function cleanExportHtml(html) {
+        html = String(html || "").trim();
+        if (!html) return "";
+        try {
+            const doc = new DOMParser().parseFromString(html, "text/html");
+            doc.querySelector("#tailorcv-preview-fit-style")?.remove();
+            doc.querySelector("#tailorcv-page-guides")?.remove();
+            doc.querySelectorAll("script").forEach(s => s.remove());
+            if (doc.body) {
+                doc.body.removeAttribute("contenteditable");
+                doc.body.removeAttribute("spellcheck");
+                ["transform", "transform-origin", "width", "max-width",
+                 "overflow-x", "overflow-y", "margin"].forEach(p => doc.body.style.removeProperty(p));
+            }
+            return "<!DOCTYPE html>\n" + doc.documentElement.outerHTML;
+        } catch (e) {
+            return html;
+        }
+    }
+
+    async function readDownloadError(res) {
+        try {
+            const text = await res.text();
+            if (!text) return "Server error";
+            try {
+                const data = JSON.parse(text);
+                return data && data.detail ? String(data.detail) : text;
+            } catch (e) {
+                return text;
+            }
+        } catch (e) {
+            return "Server error";
+        }
     }
 
     async function refreshServerEstimate() {
@@ -1150,8 +1192,6 @@ body {
        PDF DOWNLOAD
     ───────────────────────────────────────────────────────────────────────── */
     async function downloadEditedPdf(isAuto = false) {
-        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
-
         const html = buildExportHtml();
         if (!html) { setStatus("Could not read resume content."); return; }
 
@@ -1196,7 +1236,7 @@ body {
                     pdf_scale: Math.max(0.6, Math.min(1.8, currentZoom))
                 }),
             });
-            if (!res.ok) throw new Error(await res.text() || "Server error");
+            if (!res.ok) throw new Error(await readDownloadError(res));
             const blob = await res.blob();
             const url  = URL.createObjectURL(blob);
             const a    = document.createElement("a");
@@ -1215,8 +1255,9 @@ body {
                 }
                 setTimeout(showPersonalityCornerPopup, 1500);
             }
-        } catch {
-            setStatus("Could not download PDF. Please try again.");
+        } catch (err) {
+            console.error("[TailorCV] PDF download failed:", err);
+            setStatus((err && err.message) ? err.message : "Could not download PDF. Please try again.");
         } finally {
             if (downloadBtn) downloadBtn.disabled = false;
         }
@@ -2658,8 +2699,8 @@ body.tc-chg-open #intercom-container { display: none !important; }
         const allEntries = entries.concat(synthetic);
 
         allEntries.forEach((entry, ei) => {
-            (entry.bullets || []).forEach((raw, bi) => {
-                const b = reconcileStatus(raw, origIdx);
+            (entry.bullets || []).forEach((change, bi) => {
+                const b = reconcileStatus(change, origIdx);
                 if (!b || b.status === "unchanged" || !b.after) return;
                 const target = norm(b.after);
                 if (!target) return;
@@ -2707,8 +2748,8 @@ body.tc-chg-open #intercom-container { display: none !important; }
                     return;
                 }
 
-                const raw = wordDiff(b.before, b.after);
-                const { beforeParts, afterParts } = coalesceDiff(raw.beforeParts, raw.afterParts);
+                const diff = wordDiff(b.before, b.after);
+                const { beforeParts, afterParts } = coalesceDiff(diff.beforeParts, diff.afterParts);
                 el.textContent = "";
 
                 // Build ONE run per contiguous stretch of the same type, then
@@ -3537,7 +3578,10 @@ body.tc-chg-open #intercom-container { display: none !important; }
         document.getElementById("spacing-increase-btn")?.addEventListener("click", () => changeLineSpacing(+0.05));
         document.getElementById("spacing-reset-btn")?.addEventListener("click", resetLineSpacing);
 
-        downloadBtn?.addEventListener("click", () => downloadEditedPdf(false));
+        if (downloadBtn && !downloadBtn.dataset.tcvBound) {
+            downloadBtn.dataset.tcvBound = "1";
+            downloadBtn.addEventListener("click", () => downloadEditedPdf(false));
+        }
         saveBtn?.addEventListener("click", () => saveToMyResumes());
 
         document.getElementById("switch-template-btn")?.addEventListener("click", () => {
@@ -3546,7 +3590,10 @@ body.tc-chg-open #intercom-container { display: none !important; }
 
         // Desktop: card under the page title. Phones: copy in the fixed bottom bar.
         for (const id of ["see-changes-btn", "see-changes-btn-mobile"]) {
-            document.getElementById(id)?.addEventListener("click", () => {
+            const btn = document.getElementById(id);
+            if (!btn || btn.dataset.tcvBound) continue;
+            btn.dataset.tcvBound = "1";
+            btn.addEventListener("click", () => {
                 showChangesModal(getPayload() || payload);
             });
         }
