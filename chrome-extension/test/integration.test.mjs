@@ -561,6 +561,52 @@ test('diagnose() lists interactive controls nothing handles', async () => {
   });
 });
 
+// ── Workday Legal Name section (the reported middle-name bug) ─
+
+const LEGAL_NAME = `
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="formField-legalNameSection_firstName">
+    <label for="n1">First Name<abbr>*</abbr></label>
+    <input id="n1" data-automation-id="legalNameSection_firstName" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-legalNameSection_middleName">
+    <label for="n2">Middle Name</label>
+    <input id="n2" data-automation-id="legalNameSection_middleName" type="text"></div>
+  <div data-automation-id="formField-legalNameSection_lastName">
+    <label for="n3">Family Name<abbr>*</abbr></label>
+    <input id="n3" data-automation-id="legalNameSection_lastName" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-email">
+    <label for="n4">Email Address<abbr>*</abbr></label>
+    <input id="n4" type="email"></div>
+</div>`;
+
+test('Legal Name: no middle name means the Middle Name box stays EMPTY', async () => {
+  await withForm(LEGAL_NAME, {
+    // The stub model would happily return the full name if it were ever asked.
+    serverAnswers: { 'Middle Name': 'Ada Lovelace' },
+  }, async (env, sent) => {
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { full_name: 'Ada Lovelace' }),
+    });
+    await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '#n1'), 'Ada');
+    eq(valueOf(env, '#n2'), '', 'the middle name box must not get the full name');
+    eq(valueOf(env, '#n3'), 'Lovelace');
+    const plan = sent.find(msg => msg.type === 'AF_PLAN');
+    const middle = plan && plan.payload.fields.find(f => /middle/i.test(f.label));
+    ok(!middle || middle.recallOnly, 'if sent at all, only for saved-answer recall');
+  });
+});
+
+test('Legal Name: a stored middle name goes in the Middle Name box', async () => {
+  await withForm(LEGAL_NAME, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { middle_name: 'Augusta' }),
+    });
+    await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '#n2'), 'Augusta');
+  });
+});
+
 // ── Ashby ────────────────────────────────────────────────────
 
 test('Ashby: ARIA-labelled fields resolve and the date is shaped for the input', async () => {

@@ -374,6 +374,15 @@ class UserApplyProfile(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False, unique=True, index=True)
 
     # Contact — defaults parsed from the resume, editable by the user.
+    # Legal name, in parts. The account stores one name string (User.name), and
+    # splitting it at fill time guessed wrong in both directions: there was no
+    # place for a middle name, and a form's Middle Name box got the whole name.
+    # Saved here once, by the user. An empty middle_name alongside a saved
+    # first/last name means "I have no middle name" and is respected as such.
+    first_name = Column(String(80), nullable=True)
+    middle_name = Column(String(80), nullable=True)
+    last_name = Column(String(80), nullable=True)
+
     phone = Column(String(40), nullable=True)
     location = Column(String(160), nullable=True)
     linkedin_url = Column(String(300), nullable=True)

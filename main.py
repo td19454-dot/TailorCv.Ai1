@@ -626,6 +626,9 @@ def _ensure_apply_profile_columns() -> None:
         to_add.append("ADD COLUMN gender_pronouns VARCHAR(40)")
     if "lgbtq_identity" not in cols:
         to_add.append("ADD COLUMN lgbtq_identity VARCHAR(60)")
+    for name_col in ("first_name", "middle_name", "last_name"):
+        if name_col not in cols:
+            to_add.append(f"ADD COLUMN {name_col} VARCHAR(80)")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:

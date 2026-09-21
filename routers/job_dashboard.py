@@ -578,10 +578,10 @@ def _run_payload(run: AutoApplyRun, apply_url: str | None = None) -> dict:
     }
 
 
-def _profile_payload(prof: UserApplyProfile | None, resume_text: str) -> dict:
+def _profile_payload(prof: UserApplyProfile | None, resume_text: str, account_name: str = "") -> dict:
     """Stored profile merged over resume-derived defaults, so the modal opens
     pre-filled instead of blank."""
-    from auto_apply.profile import resume_defaults
+    from auto_apply.profile import resolve_name_parts, resume_defaults
 
     derived = resume_defaults(resume_text)
 
@@ -589,7 +589,17 @@ def _profile_payload(prof: UserApplyProfile | None, resume_text: str) -> dict:
         stored = getattr(prof, attr, None) if prof else None
         return str(stored or derived.get(derived_key or attr, "") or "")
 
+    # Same resolution the fill uses, so what the modal shows IS what forms get.
+    names = resolve_name_parts({
+        "first_name": getattr(prof, "first_name", "") if prof else "",
+        "middle_name": getattr(prof, "middle_name", "") if prof else "",
+        "last_name": getattr(prof, "last_name", "") if prof else "",
+    }, account_name)
+
     return {
+        "firstName": names["first"],
+        "middleName": names["middle"],
+        "lastName": names["last"],
         "phone": value("phone"),
         "location": value("location"),
         "linkedinUrl": value("linkedin_url", "linkedin"),
@@ -630,7 +640,7 @@ async def get_apply_profile(request: Request):
         if not user:
             raise HTTPException(status_code=401, detail="Not logged in")
         prof = db.query(UserApplyProfile).filter(UserApplyProfile.user_id == user_id).first()
-        payload = _profile_payload(prof, user.base_resume_text or "")
+        payload = _profile_payload(prof, user.base_resume_text or "", user.name or "")
         payload["name"] = user.name or ""
         payload["email"] = user.email or ""
         payload["hasResume"] = bool(user.base_resume_path and os.path.exists(user.base_resume_path))
@@ -652,6 +662,14 @@ async def save_apply_profile(request: Request, payload: ApplyProfileRequest):
             prof = UserApplyProfile(user_id=user_id)
             db.add(prof)
 
+        # None = not sent (leave as is); "" = sent empty. The distinction is what
+        # lets a user clear a middle name they don't have.
+        if payload.firstName is not None:
+            prof.first_name = payload.firstName.strip()
+        if payload.middleName is not None:
+            prof.middle_name = payload.middleName.strip()
+        if payload.lastName is not None:
+            prof.last_name = payload.lastName.strip()
         prof.phone = payload.phone.strip()
         prof.location = payload.location.strip()
         prof.linkedin_url = payload.linkedinUrl.strip()

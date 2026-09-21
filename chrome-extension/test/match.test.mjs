@@ -453,6 +453,32 @@ test('matchFieldKey prefers the more specific synonym', () => {
   eq(m.matchFieldKey('Current job title').key, 'current_job_title');
 });
 
+test('Middle Name is the middle name, never the full name', () => {
+  // The reported bug: the one-word synonym "name" claimed this label, so a
+  // person with no middle name got their full name in the box.
+  eq(m.matchFieldKey('Middle Name').key, 'middle_name');
+  eq(m.matchFieldKey('Middle Initial').key, 'middle_name');
+  eq(m.matchFieldKey('Middle Name(s)').key, 'middle_name');
+});
+
+test('a one-word synonym does not claim a label with a meaningful extra word', () => {
+  for (const label of ['Manager Name', 'Reference Name', 'Recruiter Name', 'Referrer Name',
+                       'Emergency Contact Name', 'Name of your previous employer']) {
+    const hit = m.matchFieldKey(label);
+    ok(!hit || hit.key !== 'full_name', `${label} must not be treated as the applicant's name`);
+  }
+});
+
+test('a one-word synonym still absorbs a harmless qualifier or a sibling word', () => {
+  eq(m.matchFieldKey('Name').key, 'full_name');
+  eq(m.matchFieldKey('Legal Name').key, 'full_name');
+  eq(m.matchFieldKey('Full Name').key, 'full_name');
+  eq(m.matchFieldKey('Current City').key, 'address_city');
+  eq(m.matchFieldKey('University / College').key, 'university');
+  eq(m.matchFieldKey('Given Name(s)').key, 'first_name');
+  eq(m.matchFieldKey('Family Name').key, 'last_name');
+});
+
 test('matchFieldKey returns null for a question it has no key for', () => {
   eq(m.matchFieldKey('Have you ever used Robinhood?'), null);
   eq(m.matchFieldKey('Which of our products do you use most?'), null);

@@ -264,7 +264,11 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         # index it could return for one of those.
         remaining = [f for f in fields
                      if str(f.i) not in answers
-                     and not f.sensitive and not f.neverFill and not f.documentSlot]
+                     and not f.sensitive and not f.neverFill and not f.documentSlot
+                     # Identified but empty in the profile (Middle Name for
+                     # someone with none): the model could only borrow a
+                     # neighbouring value, e.g. the full name.
+                     and not f.recallOnly]
         if remaining:
             try:
                 llm = await _llm_answers(bank, remaining, payload)

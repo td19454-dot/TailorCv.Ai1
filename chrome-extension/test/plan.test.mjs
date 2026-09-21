@@ -271,6 +271,48 @@ test('a recalled answer names the question it came from', () => {
   ok(d.reason.includes('your answer to'), d.reason);
 });
 
+// ── name parts ───────────────────────────────────────────────
+
+test('no middle name on file leaves the Middle Name box empty', () => {
+  // BANK has first/last but no middle_name key — as for "Shubham Sarkar".
+  const d = one(field('Middle Name'));
+  eq(d.value, '', 'the full name must never go in a middle name box');
+  eq(d.action, p.SKIP);
+});
+
+test('a required Middle Name with nothing on file is asked, not guessed', () => {
+  const d = one(field('Middle Name', { required: true }));
+  eq(d.action, p.ASK);
+  eq(d.value, '');
+});
+
+test('a known-but-empty field is sent recall-only, never for the model', () => {
+  const send = p.fieldsForServer([one(field('Middle Name'))]);
+  eq(send.length, 1, 'a saved answer may still exist for it');
+  ok(send[0].recallOnly, 'the server must not let the model answer it');
+});
+
+test('an AI answer for a known-but-empty field is ignored', () => {
+  const server = { answers: { 0: { value: 'Ada Lovelace', source: 'ai', confidence: 0.9 } } };
+  const d = p.decide([field('Middle Name')], CTX, server, null)[0];
+  eq(d.value, '', 'even if a response carried one');
+});
+
+test('a SAVED answer for a known-but-empty field is used', () => {
+  const server = { answers: { 0: { value: 'https://ada.dev', source: 'saved_answer',
+                                   confidence: 0.85, matchedQuestion: 'Portfolio URL' } } };
+  const ctx = { answerBank: { full_name: 'Ada Lovelace' } };
+  const d = p.decide([field('Portfolio')], ctx, server, null)[0];
+  eq(d.value, 'https://ada.dev');
+  eq(d.source, 'saved_answer');
+});
+
+test('a stored middle name fills Middle Name, and Middle Initial gets its initial', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { middle_name: 'kumar' }) };
+  eq(p.decide([field('Middle Name')], ctx, null, null)[0].value, 'kumar');
+  eq(p.decide([field('Middle Initial')], ctx, null, null)[0].value, 'K');
+});
+
 // ── what must never be overwritten ───────────────────────────
 
 test('a field the user edited is never written to', () => {

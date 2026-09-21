@@ -930,6 +930,7 @@ what when where which who will with would you your now future
   var FIELD_SYNONYMS = [
     // identity
     { key: "first_name", labels: ["first name", "given name", "forename", "legal first name"] },
+    { key: "middle_name", labels: ["middle name", "middle names", "middle initial", "legal middle name"] },
     { key: "last_name", labels: ["last name", "surname", "family name", "legal last name"] },
     { key: "full_name", labels: ["full name", "your name", "name", "legal name", "candidate name"] },
     { key: "preferred_name", labels: ["preferred name", "nickname", "preferred first name"] },
@@ -978,13 +979,38 @@ what when where which who will with would you your now future
     { key: "gender_pronouns", sensitive: true, labels: ["pronouns", "preferred pronouns"] },
     { key: "lgbtq_identity", sensitive: true, labels: ["lgbtq", "sexual orientation", "transgender"] }
   ];
-  function synonymMatches(syn, label) {
+  function synonymMatches(syn, label, entry) {
     const ds = distinctive(syn), dl = distinctive(label);
     if (!ds.size || !dl.size) return false;
     if (!isSubset(ds, dl)) return false;
-    if (ds.size === 1 && dl.size > 2) return false;
+    if (ds.size === 1) {
+      if (dl.size > 2) return false;
+      if (dl.size === 2) {
+        const [word] = ds;
+        const extra = [...dl].find((w) => w !== word);
+        const siblings = /* @__PURE__ */ new Set();
+        for (const s of entry && entry.labels || []) {
+          for (const w of distinctive(s)) siblings.add(w);
+        }
+        if (!NEUTRAL_QUALIFIERS.has(extra) && !siblings.has(extra)) return false;
+      }
+    }
     return true;
   }
+  var NEUTRAL_QUALIFIERS = /* @__PURE__ */ new Set([
+    "current",
+    "present",
+    "primary",
+    "legal",
+    "full",
+    "official",
+    "home",
+    "permanent",
+    "personal",
+    "contact",
+    "main",
+    "preferred"
+  ]);
   function matchFieldKey(label) {
     const sig = questionSignature(label);
     if (!sig) return null;
@@ -996,7 +1022,7 @@ what when where which who will with would you your now future
     let best = null, bestWeight = -1;
     for (const entry of FIELD_SYNONYMS) {
       for (const syn of entry.labels) {
-        if (!synonymMatches(syn, label)) continue;
+        if (!synonymMatches(syn, label, entry)) continue;
         const weight = distinctive(syn).size;
         if (weight > bestWeight) {
           best = entry;
@@ -1904,11 +1930,30 @@ what when where which who will with would you your now future
       }
       const entry = matchFieldKey(row.label);
       if (entry && bank[entry.key]) {
-        const value = coerce(bank[entry.key], row);
+        const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(bank[entry.key]).trim().charAt(0).toUpperCase() : bank[entry.key];
+        const value = coerce(raw, row);
         if (value !== null) {
           const action = isProse(entry.key, value) ? SUGGEST : FILL;
           return done(d, action, value, "profile", 0.95, "");
         }
+      }
+      if (entry && !bank[entry.key] && !PROSE_KEYS.has(entry.key)) {
+        d.knownEmpty = true;
+        const recalled = answered[String(row.serverIndex != null ? row.serverIndex : position)];
+        if (recalled && recalled.source === "saved_answer" && String(recalled.value || "").trim()) {
+          const value = coerce(recalled.value, row);
+          if (value !== null) {
+            return done(
+              d,
+              Number(recalled.confidence) >= AUTOFILL_MIN ? FILL : SUGGEST,
+              value,
+              "saved_answer",
+              Number(recalled.confidence) || 0,
+              recalled.matchedQuestion ? `from your answer to "${truncate(recalled.matchedQuestion, 60)}"` : ""
+            );
+          }
+        }
+        return row.required ? done(d, ASK, "", "", 0, "not in your profile") : done(d, SKIP, "", "", 0, "not in your profile");
       }
       const fromServer = answered[String(row.serverIndex != null ? row.serverIndex : position)];
       if (fromServer && String(fromServer.value || "").trim()) {
@@ -2053,7 +2098,7 @@ what when where which who will with would you your now future
   function fieldsForServer(decisions) {
     const out = [];
     decisions.forEach((d, i) => {
-      if (d.action !== ASK && !d.askable) return;
+      if (d.action !== ASK && !d.askable && !d.knownEmpty) return;
       if (d.sensitive || d.slot) return;
       if (isNeverFill(d.label)) return;
       if (classifySensitive(d.label)) return;
@@ -2063,6 +2108,9 @@ what when where which who will with would you your now future
         kind: d.kind,
         required: !!d.required,
         sensitive: false,
+        // A field we can name but have no value for: recall a saved answer, but
+        // never let the model compose one. Enforced on the server as well.
+        recallOnly: !!d.knownEmpty,
         documentSlot: null,
         options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean).slice(0, 300)
       });

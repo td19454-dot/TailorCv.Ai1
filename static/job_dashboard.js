@@ -525,6 +525,17 @@
     errBox.hidden = true;
     modalFields = { _err: errBox };
 
+    // Legal name in parts. Application forms ask for First / Middle / Last
+    // separately, and guessing the split from one name string put the whole
+    // name into Middle Name boxes. Leave Middle name empty if you don't have one.
+    card.appendChild(el("div", "jd-modal-sec", "Legal name"));
+    var nameGrid = el("div", "jd-fields");
+    field(nameGrid, "firstName", "First name", "text", {});
+    field(nameGrid, "middleName", "Middle name (optional)", "text",
+          { placeholder: "Leave empty if you have none" });
+    field(nameGrid, "lastName", "Last name", "text", {});
+    card.appendChild(nameGrid);
+
     card.appendChild(el("div", "jd-modal-sec", "Contact"));
     var contactGrid = el("div", "jd-fields");
     field(contactGrid, "phone", "Phone", "tel", { placeholder: "+1 555 000 1111" });
@@ -652,11 +663,18 @@
         } else if (value) {
           input.value = value;
         }
+      } else if (NAME_KEYS.indexOf(key) !== -1) {
+        // Always assigned, empty included: an empty middle name is a real
+        // answer ("none"), and the modal is reused across opens, so skipping
+        // an empty value would leave a stale one showing.
+        input.value = value || "";
       } else if (value) {
         input.value = value;
       }
     });
   }
+
+  var NAME_KEYS = ["firstName", "middleName", "lastName"];
 
   function openProfileModal(message, onSaved) {
     if (!modalEl) buildApplyProfileModal();
@@ -756,6 +774,11 @@
     if (customTextMissing) {
       modalFields._err.hidden = false;
       modalFields._err.textContent = "Type your own answer for the field you set to “I'll type my own answer,” or pick a listed option instead.";
+      return;
+    }
+    if (!payload.firstName || !payload.lastName) {
+      modalFields._err.hidden = false;
+      modalFields._err.textContent = "Add your first and last name.";
       return;
     }
     if (!payload.phone) {

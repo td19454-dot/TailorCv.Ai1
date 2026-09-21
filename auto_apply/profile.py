@@ -47,6 +47,10 @@ class ApplicantProfile:
     # Identity / contact
     full_name: str = ""
     first_name: str = ""
+    # Empty when the person has none. Never filled with a guess: a form's
+    # Middle Name box is usually optional, and a wrong value there is worse than
+    # a blank one.
+    middle_name: str = ""
     last_name: str = ""
     email: str = ""
     phone: str = ""
@@ -126,13 +130,55 @@ class ApplicantProfile:
         return json.dumps(answer_bank(self), ensure_ascii=False, indent=1)
 
 
-def _split_name(full: str) -> tuple[str, str]:
+def split_full_name(full: str) -> tuple[str, str, str]:
+    """(first, middle, last) guessed from a single full-name string.
+
+    Only a DEFAULT. The account stores one name string, and splitting it is a
+    guess — "Mary Ann Smith" may be first name "Mary Ann", and "Maria Garcia
+    Lopez" has two surnames — so the result is offered in the application
+    profile for the user to confirm, and whatever they save there wins.
+
+    Two words are first + last with NO middle name. That case matters most:
+    the previous two-way split had nowhere to put a middle name at all, and a
+    form's "Middle Name" box ended up with the whole name in it.
+    """
     parts = [p for p in str(full or "").strip().split() if p]
     if not parts:
-        return "", ""
+        return "", "", ""
     if len(parts) == 1:
-        return parts[0], ""
-    return parts[0], " ".join(parts[1:])
+        return parts[0], "", ""
+    if len(parts) == 2:
+        return parts[0], "", parts[1]
+    return parts[0], " ".join(parts[1:-1]), parts[-1]
+
+
+def _split_name(full: str) -> tuple[str, str]:
+    """(first, last). Kept for callers that predate middle names."""
+    first, _middle, last = split_full_name(full)
+    return first, last
+
+
+def resolve_name_parts(stored: dict, account_name: str) -> dict:
+    """The name parts to fill forms with: stored parts win, else the split guess.
+
+    Returns {first, middle, last, full}. Once the user has saved a first and
+    last name, their middle name is taken exactly as saved — including EMPTY.
+    An empty stored middle name means "I have none", and must not be refilled
+    from the guess.
+    """
+    first = str((stored or {}).get("first_name") or "").strip()
+    middle = str((stored or {}).get("middle_name") or "").strip()
+    last = str((stored or {}).get("last_name") or "").strip()
+    if first and last:
+        full = " ".join(x for x in (first, middle, last) if x)
+        return {"first": first, "middle": middle, "last": last, "full": full}
+    g_first, g_middle, g_last = split_full_name(account_name)
+    return {
+        "first": first or g_first,
+        "middle": middle or g_middle,
+        "last": last or g_last,
+        "full": str(account_name or "").strip(),
+    }
 
 
 def question_signature(text: str) -> str:
@@ -211,6 +257,9 @@ def _profile_to_dict(prof) -> dict:
     if not prof:
         return {}
     return {
+        "first_name": getattr(prof, "first_name", "") or "",
+        "middle_name": getattr(prof, "middle_name", "") or "",
+        "last_name": getattr(prof, "last_name", "") or "",
         "phone": prof.phone or "",
         "location": prof.location or "",
         "linkedin_url": prof.linkedin_url or "",
@@ -326,13 +375,13 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
     def fact(key: str) -> str:
         return str(fact_keys.get(key) or "").strip()
 
-    full_name = (snap.get("name") or "").strip()
-    first, last = _split_name(full_name)
+    names = resolve_name_parts(prof, snap.get("name") or "")
 
     p = ApplicantProfile(
-        full_name=full_name,
-        first_name=first,
-        last_name=last,
+        full_name=names["full"],
+        first_name=names["first"],
+        middle_name=names["middle"],
+        last_name=names["last"],
         email=(snap.get("email") or derived.get("email") or "").strip(),
         phone=pick("phone"),
         location=pick("location"),
@@ -456,6 +505,10 @@ def answer_bank(p: ApplicantProfile) -> dict:
     bank = {
         "full_name": p.full_name,
         "first_name": p.first_name,
+        # Dropped by the blank filter below when empty, so a person with no
+        # middle name has NO middle_name key — nothing for a matcher or a model
+        # to put in a Middle Name box.
+        "middle_name": p.middle_name,
         "last_name": p.last_name,
         "email": p.email,
         "phone": p.phone,

@@ -51,6 +51,13 @@ class ApplyProfileRequest(BaseModel):
     """The answer bank auto-apply fills forms from. Every field is optional here
     so the modal can be saved incrementally; validate_profile() decides which
     ones a run actually requires."""
+    # Optional (None) rather than "" so a client that doesn't send them — an
+    # older cached copy of the modal — leaves stored names alone instead of
+    # blanking them.
+    firstName: str | None = Field(default=None, max_length=80)
+    middleName: str | None = Field(default=None, max_length=80)
+    lastName: str | None = Field(default=None, max_length=80)
+
     phone: str = Field(default="", max_length=40)
     location: str = Field(default="", max_length=160)
     linkedinUrl: str = Field(default="", max_length=300)
@@ -120,6 +127,9 @@ class AutofillField(BaseModel):
     required: bool = False
     sensitive: bool = False
     neverFill: bool = False
+    # A field the client identified exactly (Middle Name, GitHub URL) but has no
+    # value for: stored answers may be recalled for it, the LLM is never asked.
+    recallOnly: bool = False
     documentSlot: str | None = Field(default=None, max_length=40)
     # Bounded generously: a country picker legitimately has ~250 entries, and the
     # server truncates to what it will actually put in the prompt.

@@ -475,6 +475,7 @@ export function formatDateForField(value, hints) {
 export const FIELD_SYNONYMS = [
   // identity
   { key: 'first_name', labels: ['first name', 'given name', 'forename', 'legal first name'] },
+  { key: 'middle_name', labels: ['middle name', 'middle names', 'middle initial', 'legal middle name'] },
   { key: 'last_name', labels: ['last name', 'surname', 'family name', 'legal last name'] },
   { key: 'full_name', labels: ['full name', 'your name', 'name', 'legal name', 'candidate name'] },
   { key: 'preferred_name', labels: ['preferred name', 'nickname', 'preferred first name'] },
@@ -547,13 +548,37 @@ export const FIELD_SYNONYMS = [
  * "Name of your previous university supervisor" — which falls through to the
  * LLM tier rather than being answered with the wrong value.
  */
-function synonymMatches(syn, label) {
+function synonymMatches(syn, label, entry) {
   const ds = distinctive(syn), dl = distinctive(label);
   if (!ds.size || !dl.size) return false;
   if (!isSubset(ds, dl)) return false;
-  if (ds.size === 1 && dl.size > 2) return false;
+  if (ds.size === 1) {
+    // A one-word synonym may only absorb ONE extra word, and only a word that
+    // does not change what is being asked for: a harmless qualifier ("Current
+    // City", "Legal Name") or another word this same entry already accepts
+    // ("University / College"). The earlier rule accepted ANY one extra word,
+    // so the bare synonym "name" claimed "Middle Name" and filled it with the
+    // person's full name — and would have done the same to "Manager Name",
+    // "Reference Name" and "Company Name".
+    if (dl.size > 2) return false;
+    if (dl.size === 2) {
+      const [word] = ds;
+      const extra = [...dl].find(w => w !== word);
+      const siblings = new Set();
+      for (const s of (entry && entry.labels) || []) {
+        for (const w of distinctive(s)) siblings.add(w);
+      }
+      if (!NEUTRAL_QUALIFIERS.has(extra) && !siblings.has(extra)) return false;
+    }
+  }
   return true;
 }
+
+// Words that can sit next to a one-word field name without changing the field.
+const NEUTRAL_QUALIFIERS = new Set([
+  'current', 'present', 'primary', 'legal', 'full', 'official', 'home', 'permanent',
+  'personal', 'contact', 'main', 'preferred',
+]);
 
 /**
  * The answer-bank key this label asks for, or null.
@@ -579,7 +604,7 @@ export function matchFieldKey(label) {
   let best = null, bestWeight = -1;
   for (const entry of FIELD_SYNONYMS) {
     for (const syn of entry.labels) {
-      if (!synonymMatches(syn, label)) continue;
+      if (!synonymMatches(syn, label, entry)) continue;
       const weight = distinctive(syn).size;
       if (weight > bestWeight) { best = entry; bestWeight = weight; }
     }

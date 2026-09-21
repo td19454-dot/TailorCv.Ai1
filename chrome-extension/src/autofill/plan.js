@@ -138,11 +138,40 @@ export function decide(rows, ctx, server, state) {
     // Tier 1 — deterministic profile match.
     const entry = matchFieldKey(row.label);
     if (entry && bank[entry.key]) {
-      const value = coerce(bank[entry.key], row);
+      const raw = entry.key === 'middle_name' && /\binitial\b/i.test(row.label)
+        ? String(bank[entry.key]).trim().charAt(0).toUpperCase()
+        : bank[entry.key];
+      const value = coerce(raw, row);
       if (value !== null) {
         const action = isProse(entry.key, value) ? SUGGEST : FILL;
         return done(d, action, value, 'profile', 0.95, '');
       }
+    }
+
+    // We know EXACTLY what this field asks for, and the profile has nothing for
+    // it: someone with no middle name, no GitHub, no portfolio. The answer is
+    // "nothing", and it must stay nothing. The model sees only this same
+    // profile, so the most it could do is borrow a neighbouring value — which is
+    // how a Middle Name box ended up holding the full name.
+    //
+    // Still sent to the server, but RECALL-ONLY: an answer the user typed for
+    // this field before (the learning loop) is legitimately theirs and is used;
+    // the model is never asked.
+    if (entry && !bank[entry.key] && !PROSE_KEYS.has(entry.key)) {
+      d.knownEmpty = true;
+      const recalled = answered[String(row.serverIndex != null ? row.serverIndex : position)];
+      if (recalled && recalled.source === 'saved_answer' && String(recalled.value || '').trim()) {
+        const value = coerce(recalled.value, row);
+        if (value !== null) {
+          return done(d, Number(recalled.confidence) >= AUTOFILL_MIN ? FILL : SUGGEST,
+                      value, 'saved_answer', Number(recalled.confidence) || 0,
+                      recalled.matchedQuestion
+                        ? `from your answer to "${truncate(recalled.matchedQuestion, 60)}"` : '');
+        }
+      }
+      return row.required
+        ? done(d, ASK, '', '', 0, 'not in your profile')
+        : done(d, SKIP, '', '', 0, 'not in your profile');
     }
 
     // Tiers 2 and 3 — whatever the server answered.
@@ -362,7 +391,7 @@ export function fieldsForServer(decisions) {
   decisions.forEach((d, i) => {
     // `askable` covers the optional fields still worth one line — see the end of
     // decide() for which and why.
-    if (d.action !== ASK && !d.askable) return;
+    if (d.action !== ASK && !d.askable && !d.knownEmpty) return;
     if (d.sensitive || d.slot) return;
     if (isNeverFill(d.label)) return;
     if (classifySensitive(d.label)) return;     // belt and braces
@@ -372,6 +401,9 @@ export function fieldsForServer(decisions) {
       kind: d.kind,
       required: !!d.required,
       sensitive: false,
+      // A field we can name but have no value for: recall a saved answer, but
+      // never let the model compose one. Enforced on the server as well.
+      recallOnly: !!d.knownEmpty,
       documentSlot: null,
       options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label))
                                 .filter(Boolean).slice(0, 300),
