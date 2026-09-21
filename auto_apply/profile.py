@@ -163,30 +163,39 @@ def _split_name(full: str) -> tuple[str, str]:
 ADDRESS_KEYS = ("address_line1", "address_line2", "city", "state", "postal_code", "country")
 
 
-def resolve_address_parts(stored: dict, *free_text: str) -> dict:
+def resolve_address_parts(stored: dict, *free_text: str, phone: str = "") -> dict:
     """The address to fill forms with: saved parts win, else a parse of the
     free-text location (profile first, then the resume's).
 
     "Saved" means the user filled in a city or a first address line in their
     profile. From then on every part is taken exactly as saved — an empty
-    Address Line 2 or State means empty, and is never refilled from the guess.
+    Address Line 2 means empty, and is never refilled from the guess.
+
+    State and country are the exception, and only in one direction: when either
+    is empty and the city is a known Indian city corroborated as being in India
+    (see infer_state_country), they are filled from the city. They are facts
+    OF the city rather than a choice the user made, and a form's required
+    "Region" left at "Select One" is the alternative.
     """
+    from auto_apply.resume_facts import infer_state_country, split_location
+
     s = {k: str((stored or {}).get(k) or "").strip() for k in ADDRESS_KEYS}
-    if s["city"] or s["address_line1"]:
-        return s
-
-    from auto_apply.resume_facts import split_location
-
-    source = next((t for t in free_text if str(t or "").strip()), "")
-    guess = split_location(source)
-    return {
-        "address_line1": guess["street"],
-        "address_line2": guess["area"],
-        "city": guess["city"],
-        "state": guess["state"],
-        "postal_code": guess["postal_code"],
-        "country": guess["country"],
-    }
+    if not (s["city"] or s["address_line1"]):
+        source = next((t for t in free_text if str(t or "").strip()), "")
+        guess = split_location(source)
+        s = {
+            "address_line1": guess["street"],
+            "address_line2": guess["area"],
+            "city": guess["city"],
+            "state": guess["state"],
+            "postal_code": guess["postal_code"],
+            "country": guess["country"],
+        }
+    if s["city"] and (not s["state"] or not s["country"]):
+        state, country = infer_state_country(s["city"], s["country"], s["postal_code"], phone)
+        s["state"] = s["state"] or state
+        s["country"] = s["country"] or country
+    return s
 
 
 def resolve_name_parts(stored: dict, account_name: str) -> dict:
@@ -416,7 +425,8 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
     addr = resolve_address_parts(
         prof, prof.get("location") or "",
         ((facts.get("personal_info") or {}).get("location") or "") if isinstance(facts, dict) else "",
-        derived.get("location") or "")
+        derived.get("location") or "",
+        phone=prof.get("phone") or derived.get("phone") or "")
 
     p = ApplicantProfile(
         full_name=names["full"],

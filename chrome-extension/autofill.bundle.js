@@ -1466,6 +1466,15 @@ what when where which who will with would you your now future
         dropOnly: true
       });
     }
+    const phoneCode = out.find((r) => PHONE_CODE_RE.test(r.label || ""));
+    if (phoneCode) {
+      for (const row of out) {
+        if (row === phoneCode) continue;
+        if (row.hints && row.hints.type === "tel" || /\b(phone|mobile)\b/i.test(row.label || "")) {
+          if (!/extension|\bext\b|device|type|code/i.test(row.label || "")) row.hasCountryWidget = true;
+        }
+      }
+    }
     for (const row of out) {
       if (row.kind === "date-parts") {
         const now = readDateParts(row);
@@ -1503,6 +1512,7 @@ what when where which who will with would you your now future
     };
   }
   var DATE_PART_RE = /dateSection(Month|Day|Year)/i;
+  var PHONE_CODE_RE = /\b(phone|dial(ing)?|calling|country)\s*(\/\s*territory\s*)?(phone\s*)?code\b/i;
   function dateWrapperOf(el) {
     const automation = el.getAttribute && el.getAttribute("data-automation-id") || "";
     if (!DATE_PART_RE.test(automation)) return null;
@@ -2380,11 +2390,32 @@ what when where which who will with would you your now future
         await sleep(TIMING.settleMs);
         if (committed(row, value)) return true;
       }
+      reportDropdownFailure(row, value, options);
       return false;
     } catch (e) {
       return false;
     } finally {
       dismissListbox(row.el);
+    }
+  }
+  function reportDropdownFailure(row, value, options) {
+    try {
+      const after = reprobe(row);
+      const el = row.el;
+      console.groupCollapsed(
+        `%c[TailorCV] dropdown did not commit: ${row.label}`,
+        "color:#b91c1c;font-weight:700"
+      );
+      console.log("wanted  :", value);
+      console.log("control :", el && el.outerHTML ? el.outerHTML.slice(0, 400) : el);
+      console.log("options seen:", (options || []).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).slice(0, 30));
+      console.log(
+        "option markup (first):",
+        options && options[0] && options[0].outerHTML ? options[0].outerHTML.slice(0, 400) : "(none)"
+      );
+      console.log("field now reads:", after);
+      console.groupEnd();
+    } catch (e) {
     }
   }
   function openWidget(row) {
@@ -2763,6 +2794,12 @@ what when where which who will with would you your now future
     for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
       const broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value);
       if (!broken.length) break;
+      for (const d of broken) {
+        if (d.row && isPhoneRow(d.row)) {
+          const alt = alternatePhone(d.value, ctx);
+          if (alt && alt !== d.value) d.value = alt;
+        }
+      }
       progress("repairing", { total: broken.length });
       await writeAll(broken, ctx, progress, true);
     }
@@ -2789,6 +2826,17 @@ what when where which who will with would you your now future
       opaqueHosts: form.opaqueHosts || 0,
       ats: form.ats
     };
+  }
+  function isPhoneRow(row) {
+    const label = row.label || "";
+    if (/extension|\bext\b|device|type|code/i.test(label)) return false;
+    return row.hints && row.hints.type === "tel" || /\b(phone|mobile)\b/i.test(label);
+  }
+  function alternatePhone(value, ctx) {
+    const stored = String(ctx && ctx.answerBank && ctx.answerBank.phone || value || "");
+    const parts = splitPhone(stored);
+    if (!parts.dialCode) return "";
+    return String(value).startsWith("+") ? parts.national : parts.e164;
   }
   function decisionsToWrite(decisions) {
     return decisions.filter((d) => d.action === FILL || d.action === SUGGEST || d.action === DOCUMENT);

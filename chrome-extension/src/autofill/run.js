@@ -19,7 +19,8 @@ import { describeFields, findForm, isApplicationPage, readComboboxOptions, repro
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
 import { applyDecision, attachFile, dropFile, findDropZone, fileFromBase64 } from './write.js';
-import { questionSignature, isNeverFill, looksSecret, classifySensitive } from './match.js';
+import { questionSignature, isNeverFill, looksSecret, classifySensitive, splitPhone }
+  from './match.js';
 import { TIMING, sleep } from './timing.js';
 
 const MAX_REPAIR_SWEEPS = 1;
@@ -224,6 +225,16 @@ export async function runAutofill(ctx, onProgress) {
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
     const broken = decisions.filter(d => d.outcome && d.outcome !== 'ok' && d.value);
     if (!broken.length) break;
+    // A phone number the form rejected is retried in the OTHER shape, not the
+    // same one again: some forms want "+918240044652", others (with their own
+    // country-code field) only "8240044652", and the markup does not always say
+    // which. The form's own validation error is what settles it.
+    for (const d of broken) {
+      if (d.row && isPhoneRow(d.row)) {
+        const alt = alternatePhone(d.value, ctx);
+        if (alt && alt !== d.value) d.value = alt;
+      }
+    }
     progress('repairing', { total: broken.length });
     await writeAll(broken, ctx, progress, true);
   }
@@ -254,6 +265,20 @@ export async function runAutofill(ctx, onProgress) {
     opaqueHosts: form.opaqueHosts || 0,
     ats: form.ats,
   };
+}
+
+function isPhoneRow(row) {
+  const label = row.label || '';
+  if (/extension|\bext\b|device|type|code/i.test(label)) return false;
+  return (row.hints && row.hints.type === 'tel') || /\b(phone|mobile)\b/i.test(label);
+}
+
+/** The same number in the other shape: E.164 <-> national. */
+function alternatePhone(value, ctx) {
+  const stored = String((ctx && ctx.answerBank && ctx.answerBank.phone) || value || '');
+  const parts = splitPhone(stored);
+  if (!parts.dialCode) return '';
+  return String(value).startsWith('+') ? parts.national : parts.e164;
 }
 
 function decisionsToWrite(decisions) {

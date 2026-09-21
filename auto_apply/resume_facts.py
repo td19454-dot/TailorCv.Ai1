@@ -306,6 +306,72 @@ def split_location(location: str) -> dict:
     return out
 
 
+# Major Indian cities and the one state each belongs to. Deliberately curated,
+# not exhaustive: a city name that exists in more than one state (Aurangabad is
+# in Maharashtra AND Bihar) is left out, because a wrong state is worse than an
+# empty one. Used to fill a form's "Region" / "State" when the address itself
+# names only the city — "36/F Sitalatala Lane, Kolkata, 700011" never says
+# West Bengal, but Kolkata is in no other state.
+_INDIAN_CITY_STATE = {
+    "kolkata": "West Bengal", "calcutta": "West Bengal", "howrah": "West Bengal",
+    "durgapur": "West Bengal", "asansol": "West Bengal", "siliguri": "West Bengal",
+    "mumbai": "Maharashtra", "bombay": "Maharashtra", "pune": "Maharashtra",
+    "nagpur": "Maharashtra", "nashik": "Maharashtra", "thane": "Maharashtra",
+    "navi mumbai": "Maharashtra",
+    "bengaluru": "Karnataka", "bangalore": "Karnataka", "mysuru": "Karnataka",
+    "mysore": "Karnataka", "mangaluru": "Karnataka", "mangalore": "Karnataka",
+    "hubli": "Karnataka",
+    "chennai": "Tamil Nadu", "madras": "Tamil Nadu", "coimbatore": "Tamil Nadu",
+    "madurai": "Tamil Nadu",
+    "hyderabad": "Telangana", "secunderabad": "Telangana", "warangal": "Telangana",
+    "visakhapatnam": "Andhra Pradesh", "vijayawada": "Andhra Pradesh",
+    "ahmedabad": "Gujarat", "surat": "Gujarat", "vadodara": "Gujarat", "rajkot": "Gujarat",
+    "gandhinagar": "Gujarat",
+    "jaipur": "Rajasthan", "jodhpur": "Rajasthan", "udaipur": "Rajasthan",
+    "lucknow": "Uttar Pradesh", "kanpur": "Uttar Pradesh", "noida": "Uttar Pradesh",
+    "greater noida": "Uttar Pradesh", "ghaziabad": "Uttar Pradesh",
+    "varanasi": "Uttar Pradesh", "agra": "Uttar Pradesh",
+    "gurgaon": "Haryana", "gurugram": "Haryana", "faridabad": "Haryana",
+    "new delhi": "Delhi", "delhi": "Delhi",
+    "chandigarh": "Chandigarh",
+    "patna": "Bihar",
+    "bhubaneswar": "Odisha", "cuttack": "Odisha",
+    "kochi": "Kerala", "cochin": "Kerala", "thiruvananthapuram": "Kerala",
+    "trivandrum": "Kerala", "kozhikode": "Kerala",
+    "bhopal": "Madhya Pradesh", "indore": "Madhya Pradesh",
+    "ranchi": "Jharkhand", "jamshedpur": "Jharkhand",
+    "guwahati": "Assam",
+    "dehradun": "Uttarakhand",
+    "raipur": "Chhattisgarh",
+    "panaji": "Goa",
+}
+
+
+def infer_state_country(city: str, country: str = "", postal_code: str = "",
+                        phone: str = "") -> tuple[str, str]:
+    """(state, country) for a known Indian city, or ("", "").
+
+    Needs corroboration that the address is in India — the country saying so, a
+    six-digit PIN, or a +91 phone — before anything is filled. A city name alone
+    is not enough: Hyderabad is also in Pakistan, and "Delhi" is a town in
+    several US states. Never overrides a country the text states as something
+    other than India.
+    """
+    key = str(city or "").strip().lower()
+    state = _INDIAN_CITY_STATE.get(key, "")
+    if not state:
+        return "", ""
+    c = str(country or "").strip().lower()
+    if c and c not in ("india", "in", "ind", "bharat"):
+        return "", ""
+    corroborated = (c in ("india", "in", "ind", "bharat")
+                    or bool(re.fullmatch(r"\d{6}", str(postal_code or "").strip()))
+                    or re.sub(r"[\s\-()]", "", str(phone or "")).startswith("+91"))
+    if not corroborated:
+        return "", ""
+    return state, (country or "India")
+
+
 def us_state_code(state: str) -> str:
     """The two-letter code for a US state name, or "" — many forms want the code."""
     s = str(state or "").strip()

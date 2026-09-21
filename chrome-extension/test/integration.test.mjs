@@ -649,6 +649,77 @@ test('Address: line 1 gets the street, City gets the city', async () => {
   });
 });
 
+// ── Workday Phone section (the reported +91 bug) ─────────────
+
+const PHONE = `
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="formField-phoneType">
+    <label for="p1">Phone Device Type<abbr>*</abbr></label>
+    <button type="button" aria-haspopup="listbox" id="p1">Select One</button></div>
+  <div data-automation-id="formField-countryPhoneCode">
+    <label for="p2">Country / Territory Phone Code<abbr>*</abbr></label>
+    <div data-automation-id="multiSelectContainer">
+      <ul><li><div data-automation-id="selectedItem">India (+91)</div></li></ul>
+      <div data-automation-id="multiselectInputContainer"><input id="p2" type="text"></div>
+    </div></div>
+  <div data-automation-id="formField-phoneNumber">
+    <label for="p3">Phone Number<abbr>*</abbr></label>
+    <input id="p3" data-automation-id="phone-number" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-extension">
+    <label for="p4">Phone Extension</label><input id="p4" type="text"></div>
+</div>`;
+
+test('Phone: with a separate country-code field, the number has no +91', async () => {
+  await withForm(PHONE, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { phone: '+91 8240044652' }),
+    });
+    await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '#p3'), '8240044652');
+    eq(valueOf(env, '#p4'), '', 'the extension box is not a phone number');
+  });
+});
+
+test('Phone: a rejected number is retried in the other format', async () => {
+  // No country-code field this time, so +91 is tried first — and the form
+  // rejects it the way Workday did ("Enter a valid format").
+  await withForm(`<form>
+      <div class="field"><label for="ph">Phone Number*</label><input id="ph" type="text"
+        aria-required="true"><div class="err" id="err"></div></div>
+      <input name="x"><input name="y" type="email"></form>`, {}, async (env) => {
+    const input = env.document.getElementById('ph');
+    const err = env.document.getElementById('err');
+    const check = () => {
+      const bad = String(input.value).startsWith('+');
+      err.className = bad ? 'error' : '';
+      err.textContent = bad ? 'Enter a valid format for Phone Number.' : '';
+    };
+    input.addEventListener('input', check);
+    input.addEventListener('blur', check);
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { phone: '+91 8240044652' }),
+    });
+    const result = await run_.runAutofill(ctx, null);
+    eq(input.value, '8240044652', 'the national number must be tried after the rejection');
+    eq(byLabel(result.decisions, 'phone number').outcome, 'ok');
+  });
+});
+
+test('Region is filled with the state', async () => {
+  await withForm(`<div data-automation-id="applyFlowPage">
+      <div data-automation-id="formField-city"><label for="c">City*</label><input id="c" type="text"></div>
+      <div data-automation-id="formField-region"><label for="r">Region</label>
+        <select id="r"><option value="">Select One</option><option value="wb">West Bengal</option>
+          <option value="mh">Maharashtra</option></select></div>
+      <input name="x" type="email"></div>`, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, {
+      answerBank: Object.assign({}, BANK, { address_state: 'West Bengal' }),
+    });
+    await run_.runAutofill(ctx, null);
+    eq(valueOf(env, '#r'), 'wb');
+  });
+});
+
 // ── Ashby ────────────────────────────────────────────────────
 
 test('Ashby: ARIA-labelled fields resolve and the date is shaped for the input', async () => {

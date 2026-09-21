@@ -323,6 +323,7 @@ export async function commitCombobox(row, value) {
       if (committed(row, value)) return true;
     }
 
+    reportDropdownFailure(row, value, options);
     return false;
   } catch (e) {
     return false;
@@ -331,6 +332,32 @@ export async function commitCombobox(row, value) {
     // one open breaks every write after this one.
     dismissListbox(row.el);
   }
+}
+
+/**
+ * Say, in the page console, exactly how a dropdown commit failed.
+ *
+ * A dropdown that "didn't take" has half a dozen possible causes — no options
+ * appeared, options appeared but none matched, the click landed but the widget
+ * committed nothing, the widget committed a different row — and they need
+ * different fixes. This prints the evidence for whichever one happened, so a
+ * failure on a live form is diagnosable from one paste instead of by guessing.
+ */
+function reportDropdownFailure(row, value, options) {
+  try {
+    const after = reprobe(row);
+    const el = row.el;
+    console.groupCollapsed(`%c[TailorCV] dropdown did not commit: ${row.label}`,
+                           'color:#b91c1c;font-weight:700');
+    console.log('wanted  :', value);
+    console.log('control :', el && el.outerHTML ? el.outerHTML.slice(0, 400) : el);
+    console.log('options seen:', (options || []).map(n =>
+      (n.textContent || '').replace(/\s+/g, ' ').trim()).slice(0, 30));
+    console.log('option markup (first):',
+      options && options[0] && options[0].outerHTML ? options[0].outerHTML.slice(0, 400) : '(none)');
+    console.log('field now reads:', after);
+    console.groupEnd();
+  } catch (e) { /* diagnostics must never break a run */ }
 }
 
 function openWidget(row) {

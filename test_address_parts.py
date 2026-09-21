@@ -124,15 +124,51 @@ def _bank(profile):
 
 
 def test_bank_from_the_reported_location():
-    bank = _bank({"location": "36/F Sitalatala Lane, Kolkata, 700011"})
+    bank = _bank({"location": "36/F Sitalatala Lane, Kolkata, 700011",
+                  "phone": "+91 8240044652"})
     assert bank["address_city"] == "Kolkata", bank.get("address_city")
     assert bank["address_line1"] == "36/F Sitalatala Lane"
     assert bank["postal_code"] == "700011"
-    assert "address_state" not in bank, "Kolkata is not a state"
+    # The form's Region: Kolkata is only ever in West Bengal, and the PIN
+    # corroborates India.
+    assert bank["address_state"] == "West Bengal", bank.get("address_state")
+    assert bank["address_country"] == "India"
     assert "address_line2" not in bank
     assert bank["current_city"] == "Kolkata"
-    assert bank["location"] == "Kolkata", "a place, not a street address"
-    assert bank["address"] == "36/F Sitalatala Lane, Kolkata, 700011"
+    assert bank["location"] == "Kolkata, West Bengal, India", "a place, not a street address"
+    assert bank["address"] == "36/F Sitalatala Lane, Kolkata, West Bengal, 700011, India"
+
+
+# ── state from city ───────────────────────────────────────────────────────
+
+from auto_apply.resume_facts import infer_state_country  # noqa: E402
+
+
+def test_state_is_filled_from_a_corroborated_indian_city():
+    assert infer_state_country("Kolkata", "", "700011") == ("West Bengal", "India")
+    assert infer_state_country("Bangalore", "India") == ("Karnataka", "India")
+    assert infer_state_country("Pune", "", "", "+91 98765 43210") == ("Maharashtra", "India")
+
+
+def test_a_city_name_alone_is_not_enough():
+    # Hyderabad is also in Pakistan; nothing here says India.
+    assert infer_state_country("Hyderabad") == ("", "")
+
+
+def test_a_stated_other_country_is_never_overridden():
+    assert infer_state_country("Hyderabad", "Pakistan", "71000") == ("", "")
+    assert infer_state_country("Delhi", "USA", "", "+1 555 0100") == ("", "")
+
+
+def test_an_unknown_or_ambiguous_city_is_left_alone():
+    assert infer_state_country("Aurangabad", "India") == ("", ""), "in two states"
+    assert infer_state_country("Smalltown", "India") == ("", "")
+
+
+def test_a_saved_state_is_never_replaced():
+    got = resolve_address_parts({"city": "Kolkata", "state": "WB", "postal_code": "700011"})
+    assert got["state"] == "WB"
+    assert got["country"] == "India", "an empty country is still filled"
 
 
 def test_bank_from_saved_parts():

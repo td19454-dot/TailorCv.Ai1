@@ -518,6 +518,22 @@ export function describeFields(form) {
     });
   }
 
+  // A form with its own country-code FIELD wants the phone number without the
+  // dial code. Workday's "Country / Territory Phone Code" is a separate field
+  // entirely, not a picker inside the phone box, so the per-field
+  // hasCountryWidget() check (which looks only at the box's own surroundings)
+  // missed it — and "+918240044652" went into a box that already had +91
+  // selected beside it, which Workday rejects as an invalid format.
+  const phoneCode = out.find(r => PHONE_CODE_RE.test(r.label || ''));
+  if (phoneCode) {
+    for (const row of out) {
+      if (row === phoneCode) continue;
+      if (row.hints && row.hints.type === 'tel' || /\b(phone|mobile)\b/i.test(row.label || '')) {
+        if (!/extension|\bext\b|device|type|code/i.test(row.label || '')) row.hasCountryWidget = true;
+      }
+    }
+  }
+
   // The group question can only be worked out once every option is known, so it
   // is a second pass: during the first, a group's later members have not been
   // seen yet and the smallest-common-ancestor search would find the wrong node.
@@ -557,6 +573,9 @@ function unreadable(el, p) {
 }
 
 const DATE_PART_RE = /dateSection(Month|Day|Year)/i;
+
+// "Country / Territory Phone Code", "Country Code", "Dial Code", "Calling code".
+const PHONE_CODE_RE = /\b(phone|dial(ing)?|calling|country)\s*(\/\s*territory\s*)?(phone\s*)?code\b/i;
 
 function dateWrapperOf(el) {
   const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';

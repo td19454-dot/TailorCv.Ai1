@@ -603,6 +603,7 @@ def _profile_payload(prof: UserApplyProfile | None, resume_text: str, account_na
         {k: (getattr(prof, k, "") if prof else "") for k in ADDRESS_KEYS},
         getattr(prof, "location", "") if prof else "",
         derived.get("location", ""),
+        phone=(getattr(prof, "phone", "") if prof else "") or derived.get("phone", ""),
     )
 
     return {
