@@ -83,18 +83,24 @@
     .name-card {
       position: relative;
       margin: 14px -10px 14px -2px;
-      padding: 18px 18px 16px 18px;
+      padding: 18px 14px 16px 14px;
       border-radius: 0 14px 14px 0;
       background: linear-gradient(180deg, #4a78bb, #3a69aa);
       box-shadow: 0 12px 22px rgba(22, 47, 88, 0.18);
     }
 
+    /* The PDF gives the page 10mm side margins, which leaves the name card
+       ~150px of text width. At 27px an 11-letter first name did not fit and
+       was chopped mid-word ("Samudrane / el"). Smaller, and hyphenated at a
+       real syllable boundary if a name is still too long. */
     .name {
       margin: 0 0 6px;
-      font-size: 27px;
-      line-height: 1.04;
+      font-size: 22px;
+      line-height: 1.08;
       font-weight: 700;
       color: #ffffff;
+      hyphens: auto;
+      -webkit-hyphens: auto;
     }
 
     .headline {
@@ -354,6 +360,45 @@
       color: var(--accent);
       font-weight: 600;
       text-decoration: none;
+    }
+
+    /* PDF: the sidebar colour is painted as an @page background so it runs
+       full height on EVERY page (a grid cell's background stops where its
+       content does, leaving page 2 half white), and .sidebar itself is made
+       transparent by _sidebar_page_css in main.py.
+
+       Two things broke that and shipped white sidebar text on a white page:
+       1. The shared stripe is written `#c 0 28.5%` - a double-position colour
+          stop WeasyPrint does not support, so it drops the whole declaration
+          and paints nothing. It is NOT fixed there because the same helper
+          guesses wrong for templates 8 and 9 (a maroon stripe under dark text,
+          a teal one across the main column); the broken syntax is currently
+          what hides that. This template declares its own stripe instead.
+       2. The paper texture on html/body and the white .resume card sit ABOVE
+          the page background. On paper they are only the page colour anyway.
+
+       Stops are relative to the page area (inside the @page margins). The
+       column starts after .resume-wrap's 10px padding and is 28.5% of the
+       remaining width, which lands at ~29.1% of the page area. */
+    @media print {
+      @page {
+        background-image: linear-gradient(to right,
+          transparent 0, transparent 10px,
+          #3d66a8 10px, #3d66a8 29.1%,
+          transparent 29.1%, transparent 100%);
+        background-repeat: no-repeat;
+      }
+      html, body, .resume { background: none !important; }
+      body::before { display: none !important; }
+    }
+
+    /* Screen (the editor preview): @page backgrounds do not exist in a
+       browser, so the transparent column would show white-on-white there
+       too. The column paints its own colour on screen. */
+    @media screen {
+      .layout > .sidebar {
+        background: linear-gradient(180deg, var(--sidebar), var(--sidebar-deep)) !important;
+      }
     }
   </style>
 </head>

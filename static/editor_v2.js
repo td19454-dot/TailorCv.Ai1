@@ -489,6 +489,19 @@
             h2, .section-title, .section-heading, .sec-title {
                 color: ${safeAccent} !important;
             }
+            /* Template 7 (Navy Sidebar; .resume-wrap exists in no other
+               template): the name, the sidebar headings and the summary
+               heading sit on the template's own blue surfaces, which the
+               accent never changes. The two rules above turned them dark on
+               blue in the PDF. The live preview hid it - paintSafeInk() fixes
+               the preview DOM, but Download sends the raw HTML plus THIS
+               stylesheet, so the fix has to live here. */
+            .resume-wrap .name-card .name,
+            .resume-wrap .name-card .headline,
+            .resume-wrap .sidebar-section h2,
+            .resume-wrap .summary-card h2 {
+                color: #ffffff !important;
+            }
 
             /* Text on a coloured surface is handled by paintSafeInk(), which
                MEASURES each element's real background in the rendered document.
