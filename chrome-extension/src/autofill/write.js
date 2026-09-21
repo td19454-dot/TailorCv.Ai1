@@ -16,7 +16,7 @@
 // field is required".
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
-import { scrollIntoView, dismissListbox, reprobe } from './discover.js';
+import { scrollIntoView, dismissListbox, reprobe, datePartOf } from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -271,21 +271,41 @@ export async function commitCombobox(row, value) {
   const current = row.value || '';
   if (current && looksLikeDecline(value) && !looksLikeDecline(current)) return true;
 
+  const isButton = (el.tagName || '').toLowerCase() === 'button';
+
   try {
     scrollIntoView(el);
+    // Stale options from some other widget must not be read as this one's.
+    dismissListbox(el);
     openWidget(row);
     await sleep(TIMING.settleMs);
 
-    // Type to filter. Whole-value write first (react-select reads the input's
-    // onChange); per-character with key events if no menu appears, for widgets
-    // that filter from keydown.
-    const input = typableInput(row) || el;
-    setText(input, value);
-    focus(input);
-    let options = await waitForOptions(el, TIMING.optionWaitMs);
-    if (!options.length) {
-      await typeText(input, value, 8);
+    let options;
+    if (isButton) {
+      // A <button> dropdown (Workday): there is no input to type into, and
+      // writing a "value" onto a button changes nothing — pressing it is the
+      // whole interaction, and the options appear in a portal.
       options = await waitForOptions(el, TIMING.optionWaitMs);
+    } else {
+      // Type to filter. Whole-value write first (react-select reads the
+      // input's onChange); per-character with key events if no menu appears,
+      // for widgets that filter from keydown.
+      const input = typableInput(row) || el;
+      setText(input, value);
+      focus(input);
+      options = await waitForOptions(el, TIMING.optionWaitMs);
+      if (!options.length) {
+        await typeText(input, value, 8);
+        options = await waitForOptions(el, TIMING.optionWaitMs);
+      }
+      if (!options.length) {
+        // Workday's multiselect search only shows results on Enter. Here Enter
+        // runs the search; it does not pick anything, so it is safe to press
+        // before an option is chosen.
+        fireKey(input, 'keydown', 'Enter');
+        fireKey(input, 'keyup', 'Enter');
+        options = await waitForOptions(el, TIMING.optionWaitMs);
+      }
     }
 
     if (options.length && await clickMatchingOption(el, value, options)) {
@@ -293,11 +313,15 @@ export async function commitCombobox(row, value) {
       if (committed(row, value)) return true;
     }
 
-    // Fallback: Enter on whatever is highlighted.
-    fireKey(input, 'keydown', 'Enter');
-    fireKey(input, 'keyup', 'Enter');
-    await sleep(TIMING.settleMs);
-    if (committed(row, value)) return true;
+    // Fallback: Enter on whatever is highlighted. Not for a button dropdown, where
+    // the highlighted row is simply the first one and Enter would commit it.
+    if (!isButton) {
+      const input = typableInput(row) || el;
+      fireKey(input, 'keydown', 'Enter');
+      fireKey(input, 'keyup', 'Enter');
+      await sleep(TIMING.settleMs);
+      if (committed(row, value)) return true;
+    }
 
     return false;
   } catch (e) {
@@ -313,8 +337,9 @@ function openWidget(row) {
   const p = probe();
   const el = row.el;
   const role = el.getAttribute && el.getAttribute('role');
+  const isButton = (el.tagName || '').toLowerCase() === 'button';
   let target = el;
-  if (role !== 'combobox') {
+  if (role !== 'combobox' && !isButton) {
     const wrap = (p && p.rsContainer(el)) || el.parentElement;
     if (wrap) {
       let ctl = null;
@@ -341,10 +366,11 @@ function typableInput(row) {
 }
 
 function visibleOptionNodes(doc) {
-  try {
-    return Array.prototype.slice.call(doc.querySelectorAll('[role="option"]'))
-      .filter(n => (n.textContent || '').trim());
-  } catch (e) { return []; }
+  // Through the shared probe, which also reads Workday's promptOption rows and
+  // de-duplicates a row that carries both markers.
+  const p = probe();
+  const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
+  return nodes.filter(n => (n.textContent || '').trim());
 }
 
 function waitForOptions(el, timeout) {
@@ -501,6 +527,32 @@ export function fileFromBase64(base64, filename, mime) {
                              { type: mime || 'application/pdf' });
 }
 
+// ── split dates (Workday) ────────────────────────────────────
+
+/**
+ * Write an ISO date ("2026-01-09") into Workday's separate month/day/year
+ * spinbuttons.
+ *
+ * Typed a character at a time rather than set in one write: these inputs are
+ * spinbuttons that format and advance focus from key events, and a whole-value
+ * write can land in the DOM while the widget's own state stays empty.
+ */
+export async function setDateParts(row, iso) {
+  const m = String(iso || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return false;
+  const want = { year: m[1], month: m[2], day: m[3] };
+  let wrote = 0;
+  for (const el of row.members || []) {
+    const part = datePartOf(el);
+    if (!part || !want[part]) continue;
+    await typeText(el, want[part], 0);
+    fire(el, 'change');
+    blur(el);
+    wrote++;
+  }
+  return wrote > 0;
+}
+
 // ── the dispatcher ───────────────────────────────────────────
 
 /**
@@ -520,6 +572,9 @@ export async function applyDecision(decision) {
 
   let wrote = false;
   switch (row.kind) {
+    case 'date-parts':
+      wrote = await setDateParts(row, value);
+      break;
     case 'select':
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget

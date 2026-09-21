@@ -102,6 +102,24 @@ export async function resumeIfContinuing() {
   return state.page;
 }
 
+/**
+ * Advance to the next step of an application that did NOT navigate.
+ *
+ * Workday moves between steps by swapping the form in place, so the content
+ * script survives and resumeIfContinuing (which runs on a fresh load) never
+ * fires. The registry is kept: it is what stops a field that persists across
+ * steps from being overwritten, and what tells the user it was already filled.
+ */
+export async function nextPage() {
+  if (!state.startedAt) {
+    state.startedAt = Date.now();
+    state.origin = globalThis.location.origin;
+  }
+  if (state.page < MAX_PAGES) state.page += 1;
+  await saveState();
+  return state.page;
+}
+
 // ── watching what the user types ─────────────────────────────
 
 let editWatcher = null;

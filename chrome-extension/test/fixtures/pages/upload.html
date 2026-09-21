@@ -40,9 +40,12 @@
 <div class="tcv-fixture-note">
   <strong>TailorCV fixture: Upload variants</strong><br>
   A plain file input, one hidden behind a button, and a drag-and-drop-only zone that listens for <code>drop</code> and ignores <code>change</code>. jsdom has no DataTransfer, so this page is the only place the attach path is genuinely proven.<br><br>
-  Run it: open the console and call <code>__tcvAutofill.selfTest()</code>. It runs
-  the real pipeline with the network stubbed and prints a table of every field,
-  what was written, and whether the page verified it — no login needed.
+  Run it: open DevTools → Console, switch the context dropdown at the top of the
+  console from <em>top</em> to <em>TailorCV</em> (extension globals live in the
+  extension's isolated world and are invisible from <em>top</em>), then call
+  <code>__tcvAutofill.selfTest()</code>. It runs the real pipeline with the network
+  stubbed and prints a table of every field, what was written, and whether the page
+  verified it — no login needed.
   <br>Or use the sidebar's <em>Autofill this application</em> button to test the
   real end-to-end flow with your own account.
 </div>

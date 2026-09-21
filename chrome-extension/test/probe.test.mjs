@@ -438,6 +438,73 @@ test('visibleOptionLabels respects its cap', () => {
   eq(probe.visibleOptionLabels(10).length, 10);
 });
 
+// ── Workday shapes ───────────────────────────────────────────
+
+test('a listbox <button> is a combobox whose value is its text', () => {
+  const d = describe1(`<div data-automation-id="formField-country">
+      <label for="c">Country*</label>
+      <button type="button" id="c" aria-haspopup="listbox" aria-label="Country India Required">India</button>
+    </div>`, '#c');
+  eq(d.kind, 'combobox');
+  eq(d.value, 'India');
+  ok(d.filled);
+  eq(d.label, 'Country*', 'label[for] wins over the value-bearing aria-label');
+  ok(d.required);
+});
+
+test('a listbox <button> reading "Select One" is empty', () => {
+  const d = describe1(`<label for="c">Country</label>
+      <button type="button" id="c" aria-haspopup="listbox">Select One</button>`, '#c');
+  notOk(d.filled);
+  eq(d.value, '');
+});
+
+test('without a label element, aria-label is used minus the value and "Required"', () => {
+  const d = describe1(`<button type="button" id="c" aria-haspopup="listbox"
+      aria-label="Country India Required">India</button>`, '#c');
+  eq(d.label, 'Country');
+});
+
+test('an ordinary button is still not a field', () => {
+  const { document, probe } = mount('<form><input name="a"><button type="button">Save and Continue</button></form>');
+  const { elements } = probe.fillableIn(document.querySelector('form'));
+  notOk(elements.some(e => e.tagName === 'BUTTON'));
+});
+
+test('a Workday multiselect reads its selectedItem, not its search text', () => {
+  const html = `<div data-automation-id="formField-source">
+      <label for="s">How Did You Hear About Us?</label>
+      <div data-automation-id="multiSelectContainer">
+        <ul><li><div data-automation-id="selectedItem">Company Website</div></li></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input id="s" type="text" value="half-typed search"></div></div></div>`;
+  const d = describe1(html, '#s');
+  eq(d.kind, 'combobox');
+  eq(d.value, 'Company Website');
+  ok(d.filled);
+});
+
+test('a Workday multiselect with only typed text is NOT filled', () => {
+  const d = describe1(`<div data-automation-id="multiSelectContainer">
+      <div data-automation-id="multiselectInputContainer">
+        <input id="s" type="text" value="Company Website"></div></div>`, '#s');
+  notOk(d.filled, 'typed search text is not an answer');
+});
+
+test('promptOption rows are read as options, without duplicates', () => {
+  const { probe } = mount(`<ul role="listbox">
+      <li role="option"><div data-automation-id="promptOption">India</div></li>
+      <li role="option"><div data-automation-id="promptOption">Canada</div></li>
+      <div data-automation-id="promptOption">Mexico</div></ul>`);
+  deepEq(probe.visibleOptionLabels(), ['India', 'Canada', 'Mexico']);
+});
+
+test('the Workday formField wrapper is the field wrapper', () => {
+  const { document, probe } = mount(`<div data-automation-id="formField-x" class="css-1a2b">
+      <input id="i" name="x"></div>`);
+  eq(probe.fieldWrapper(document.getElementById('i')).getAttribute('data-automation-id'), 'formField-x');
+});
+
 test('the probe installs only once per frame', () => {
   const { window, probe } = mount('<input name="a">');
   const marker = {};

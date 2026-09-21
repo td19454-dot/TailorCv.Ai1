@@ -127,16 +127,19 @@ const SOURCE_LABEL = {
  * Draw the "ready to fill" view: what we found, and the button.
  * `onFill` runs the autofill; `onTailor` falls through to the resume flow.
  */
-export function renderReady(body, form, ctx, handlers) {
-  const count = (form.fields || []).length;
+export function renderReady(body, form, ctx, handlers, extra) {
+  const count = ((form && form.fields) || []).length;
   const blockers = (ctx && ctx.blockers) || [];
   const quotaOut = ctx && ctx.quota && ctx.quota.exhausted;
+  const page = (extra && extra.page) || 0;
 
   body.innerHTML = `
     <div class="tcv-af-panel">
-      <div class="tcv-job-info">Application form detected</div>
+      <div class="tcv-job-info">${page > 1
+        ? `Page ${esc(page)} of this application`
+        : 'Application form detected'}</div>
       <div class="tcv-source">${esc(count)} field${count === 1 ? '' : 's'} on this page${
-        form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
+        form && form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
       ${blockers.length ? `
         <div class="tcv-af-note">
           ${esc(blockers[0])}
@@ -146,7 +149,8 @@ export function renderReady(body, form, ctx, handlers) {
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro →</a>
         </div>` : `
-        <button class="tcv-btn tcv-btn-start" id="tcvAfFillBtn">✎ Autofill this application</button>`}
+        <button class="tcv-btn tcv-btn-start" id="tcvAfFillBtn">${page > 1
+          ? '✎ Autofill this page' : '✎ Autofill this application'}</button>`}
       <button class="tcv-btn tcv-btn-ghost" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.

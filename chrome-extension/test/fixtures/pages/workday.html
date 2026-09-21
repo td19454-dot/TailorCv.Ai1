@@ -40,16 +40,19 @@
 <div class="tcv-fixture-note">
   <strong>TailorCV fixture: Workday</strong><br>
   data-automation-id attributes, a radio group with no shared name, and a phone field beside its own country-code picker.<br><br>
-  Run it: open the console and call <code>__tcvAutofill.selfTest()</code>. It runs
-  the real pipeline with the network stubbed and prints a table of every field,
-  what was written, and whether the page verified it — no login needed.
+  Run it: open DevTools → Console, switch the context dropdown at the top of the
+  console from <em>top</em> to <em>TailorCV</em> (extension globals live in the
+  extension's isolated world and are invisible from <em>top</em>), then call
+  <code>__tcvAutofill.selfTest()</code>. It runs the real pipeline with the network
+  stubbed and prints a table of every field, what was written, and whether the page
+  verified it — no login needed.
   <br>Or use the sidebar's <em>Autofill this application</em> button to test the
   real end-to-end flow with your own account.
 </div>
 
 
-<div data-automation-id="jobApplicationPage">
-  <div data-automation-id="jobApplicationForm" id="wd-form">
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="applyFlowMyInfoPage" id="wd-form">
     <div data-automation-id="formField-legalNameSection_firstName">
       <label for="wd-first">First Name<abbr title="required">*</abbr></label>
       <input id="wd-first" data-automation-id="legalNameSection_firstName"

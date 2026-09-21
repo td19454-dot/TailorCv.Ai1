@@ -14,12 +14,12 @@
 import '../../auto_apply/field_probe.js';
 
 import {
-  findForm, isApplicationPage, describeFields, detectAts, reprobe,
+  findForm, isApplicationPage, describeFields, detectAts, reprobe, diagnose, looksLikeApplyUrl,
 } from './autofill/discover.js';
 import { decide, summarize, fieldsForServer, ASK, FILL, SUGGEST, PROFILE, DOCUMENT, SKIP }
   from './autofill/plan.js';
 import {
-  runAutofill, resumeIfContinuing, clearState, getState,
+  runAutofill, resumeIfContinuing, nextPage, clearState, getState,
   watchUserEdits, stopWatchingUserEdits, answerField, learnableAnswers, rememberAnswers,
 } from './autofill/run.js';
 import * as ui from './autofill/ui.js';
@@ -120,12 +120,15 @@ if (!globalThis.__tcvAutofill) {
     isApplicationPage,
     findForm,
     detectAts,
+    looksLikeApplyUrl,
+    diagnose,
     isTopFrame,
     serializeDecision,
 
     // The run.
     runAutofill,
     resumeIfContinuing,
+    nextPage,
     clearState,
     getState,
     answerField,

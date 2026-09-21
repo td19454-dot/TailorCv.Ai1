@@ -100,9 +100,12 @@ const PAGE = ({ title, body, note, plan }) => `<!doctype html>
 <div class="tcv-fixture-note">
   <strong>TailorCV fixture: ${title}</strong><br>
   ${note}<br><br>
-  Run it: open the console and call <code>__tcvAutofill.selfTest()</code>. It runs
-  the real pipeline with the network stubbed and prints a table of every field,
-  what was written, and whether the page verified it — no login needed.
+  Run it: open DevTools → Console, switch the context dropdown at the top of the
+  console from <em>top</em> to <em>TailorCV</em> (extension globals live in the
+  extension's isolated world and are invisible from <em>top</em>), then call
+  <code>__tcvAutofill.selfTest()</code>. It runs the real pipeline with the network
+  stubbed and prints a table of every field, what was written, and whether the page
+  verified it — no login needed.
   <br>Or use the sidebar's <em>Autofill this application</em> button to test the
   real end-to-end flow with your own account.
 </div>
@@ -157,6 +160,43 @@ const pages = {
     body: fixtures.DECOYS,
     plan: {},
   },
+};
+
+// Workday as it really behaves: the form arrives ~3s after the page loads (so the
+// sidebar first shows the job view, then gains the Autofill button without a
+// reload), the dropdowns are listbox <button>s with portal menus, and "Save and
+// Continue" swaps the step's fields in place without changing the URL.
+pages['workday-real.html'] = {
+  title: 'Workday (late render, real markup)',
+  note: 'The form renders ~3 seconds after load, as on citi.wd5 / pwc.wd3.myworkdayjobs.com. '
+      + 'The sidebar should first show nothing to fill, then offer '
+      + '<strong>Autofill this application</strong> by itself. "Next step" below '
+      + 'simulates Save and Continue: the fields change, the URL does not, and the '
+      + 'sidebar should offer page 2.',
+  body: `
+<div id="wd-mount">Loading application…</div>
+<button type="button" id="wd-next" style="display:none">Next step (simulated Save and Continue)</button>
+<script>
+  ${fixtures.wireWorkday.toString()}
+  setTimeout(function () {
+    document.getElementById('wd-mount').innerHTML = ${JSON.stringify(fixtures.WORKDAY_MYINFO)};
+    wireWorkday(document);
+    document.getElementById('wd-next').style.display = '';
+  }, 3000);
+  document.getElementById('wd-next').addEventListener('click', function () {
+    var step = document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+    if (!step) return;
+    step.setAttribute('data-automation-id', 'applyFlowMyExpPage');
+    step.innerHTML =
+      '<div data-automation-id="formField-school"><label for="s1">School or University*</label>'
+      + '<input id="s1" type="text" aria-required="true"></div>'
+      + '<div data-automation-id="formField-degree"><label for="s2">Degree*</label>'
+      + '<input id="s2" type="text" aria-required="true"></div>'
+      + '<div data-automation-id="formField-field"><label for="s3">Field of Study</label>'
+      + '<input id="s3" type="text"></div>';
+  });
+</script>`,
+  plan: {},
 };
 
 // Two pages that only make sense in a real browser, so they are not in
@@ -295,10 +335,12 @@ const INDEX = `<!doctype html>
   code { background: rgba(127,127,127,0.18); padding: 1px 5px; border-radius: 4px; }
 </style></head><body>
 <h1>TailorCV autofill fixtures</h1>
-<p>Load the unpacked extension, open a page, then call
-<code>__tcvAutofill.selfTest()</code> in the console. It runs the real pipeline
-with the network stubbed and prints a table of every field and whether the page
-verified what was written.</p>
+<p>Load the unpacked extension, open a page, then in DevTools → Console switch the
+context dropdown from <em>top</em> to <em>TailorCV</em> and call
+<code>__tcvAutofill.selfTest()</code> (or <code>__tcvAutofill.diagnose()</code>).
+Extension globals are not visible from the default <em>top</em> context. selfTest
+runs the real pipeline with the network stubbed and prints a table of every field
+and whether the page verified what was written.</p>
 <p>These pages cover what the jsdom suites cannot: real layout (geometric
 visibility), a real <code>DataTransfer</code> (file attach), portal-rendered
 dropdown menus driven by real pointer events, and <code>innerText</code>.</p>

@@ -171,9 +171,15 @@ export const LEVER = `
   </form>
 </div>`;
 
+// Real Workday container IDs. An earlier version of this fixture used
+// "jobApplicationPage" / "jobApplicationForm", which were invented — Workday
+// actually wraps every step in applyFlowPage, with a per-step inner container
+// (applyFlowMyInfoPage, applyFlowMyExpPage, ...). Because the invented IDs also
+// happened to be matched by a generic selector, the tests passed while a real
+// Workday page was never detected at all.
 export const WORKDAY = `
-<div data-automation-id="jobApplicationPage">
-  <div data-automation-id="jobApplicationForm" id="wd-form">
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="applyFlowMyInfoPage" id="wd-form">
     <div data-automation-id="formField-legalNameSection_firstName">
       <label for="wd-first">First Name<abbr title="required">*</abbr></label>
       <input id="wd-first" data-automation-id="legalNameSection_firstName"
@@ -220,6 +226,142 @@ export const WORKDAY = `
     <button data-automation-id="bottom-navigation-next-button">Save and Continue</button>
   </div>
 </div>`;
+
+// The "My Information" step as it actually renders — modelled on the Citi
+// tenant (citi.wd5.myworkdayjobs.com) where autofill failed to appear. The
+// shapes that matter, none of which the fixture above has:
+//
+//   * No <form> element anywhere. The root is data-automation-id="applyFlowPage".
+//   * Dropdowns are <button aria-haspopup="listbox">, not <select>. The current
+//     value is the button's own text; "Select One" means empty. The options
+//     only exist in a portal listbox after the button is pressed.
+//   * "How Did You Hear About Us?" is a multiselect prompt: a search box whose
+//     committed values render as separate selectedItem nodes. Typing into the
+//     box is NOT an answer, so a writer that types and reads the input back
+//     reports success for an empty field.
+//   * Radio groups use a <fieldset> whose <legend> holds the question.
+//   * Dates are three separate spinbutton inputs.
+//   * Labels use label[for] pointing at generated ids ("input-5").
+export const WORKDAY_MYINFO = `
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="applyFlowMyInfoPage">
+    <div data-automation-id="formField-sourcePrompt">
+      <label for="input-2">How Did You Hear About Us?<abbr title="required">*</abbr></label>
+      <div data-automation-id="multiSelectContainer">
+        <ul data-automation-id="selectedItemList"></ul>
+        <div data-automation-id="multiselectInputContainer">
+          <input data-automation-id="searchBox" id="input-2" type="text" placeholder="Search"
+                 aria-required="true">
+        </div>
+      </div>
+    </div>
+
+    <fieldset data-automation-id="formField-candidateIsPreviousWorker">
+      <legend>
+        <label>Have you ever been employed by Citi or any of its predecessor companies
+          (including but not limited to Citibank, Citicorp, Banamex, Salomon Brothers, or
+          Smith Barney) whether as an employee or via an agency or as a contractor,
+          temporary worker or consultant?<abbr title="required">*</abbr></label>
+      </legend>
+      <div><input type="radio" id="radio-yes" name="candidateIsPreviousWorker" value="true">
+        <label for="radio-yes">Yes</label></div>
+      <div><input type="radio" id="radio-no" name="candidateIsPreviousWorker" value="false">
+        <label for="radio-no">No</label></div>
+    </fieldset>
+
+    <div data-automation-id="formField-countryDropdown">
+      <label for="input-4">Country<abbr title="required">*</abbr></label>
+      <button type="button" aria-haspopup="listbox" id="input-4"
+              data-automation-id="countryDropdown" aria-label="Country Select One Required">Select One</button>
+    </div>
+
+    <div data-automation-id="formField-legalNameSection_firstName">
+      <label for="input-5">Given Name(s)<abbr title="required">*</abbr></label>
+      <input data-automation-id="legalNameSection_firstName" id="input-5" type="text"
+             aria-required="true">
+    </div>
+    <div data-automation-id="formField-legalNameSection_lastName">
+      <label for="input-6">Family Name<abbr title="required">*</abbr></label>
+      <input data-automation-id="legalNameSection_lastName" id="input-6" type="text"
+             aria-required="true">
+    </div>
+
+    <div data-automation-id="formField-addressSection_city">
+      <label for="input-8">City<abbr title="required">*</abbr></label>
+      <input data-automation-id="addressSection_city" id="input-8" type="text" aria-required="true">
+    </div>
+
+    <div data-automation-id="formField-email">
+      <label for="input-9">Email Address<abbr title="required">*</abbr></label>
+      <input data-automation-id="email" id="input-9" type="text" aria-required="true">
+    </div>
+
+    <div data-automation-id="formField-availableStartDate">
+      <label id="date-label">Available Start Date</label>
+      <div data-automation-id="dateInputWrapper" aria-labelledby="date-label">
+        <input data-automation-id="dateSectionMonth-input" role="spinbutton" type="text"
+               aria-label="Month" placeholder="MM">
+        <input data-automation-id="dateSectionDay-input" role="spinbutton" type="text"
+               aria-label="Day" placeholder="DD">
+        <input data-automation-id="dateSectionYear-input" role="spinbutton" type="text"
+               aria-label="Year" placeholder="YYYY">
+      </div>
+    </div>
+  </div>
+  <div data-automation-id="pageFooter">
+    <button data-automation-id="bottom-navigation-next-button" type="button">Save and Continue</button>
+  </div>
+</div>
+<div data-automation-id="activeListContainer" id="wd-portal"></div>`;
+
+/**
+ * Give WORKDAY_MYINFO its widget behaviour, the way Workday's own JS would.
+ *
+ * Kept next to the markup so the tests and the browser fixture page wire it
+ * identically. Faithful in the ways that broke real autofills: options exist only
+ * after a press, they render into a portal outside the field, the button commits
+ * on MOUSEDOWN, and the multiselect only records an answer as a selectedItem.
+ */
+export function wireWorkday(doc) {
+  const portal = doc.getElementById('wd-portal');
+  const COUNTRIES = ['India', 'United States of America', 'United Kingdom', 'Canada'];
+  const SOURCES = ['Company Website', 'Job Board', 'Employee Referral', 'Social Media'];
+
+  const clearPortal = () => { portal.innerHTML = ''; };
+  const renderOptions = (options, onPick) => {
+    portal.innerHTML = '<ul role="listbox">' + options.map(o =>
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`)
+      .join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      li.addEventListener('mousedown', () => { onPick(li.textContent); clearPortal(); });
+    }
+  };
+
+  const button = doc.querySelector('[data-automation-id=countryDropdown]');
+  if (button) {
+    button.addEventListener('mousedown', () => renderOptions(COUNTRIES, (value) => {
+      button.textContent = value;
+      button.setAttribute('aria-label', `Country ${value} Required`);
+    }));
+  }
+
+  const search = doc.querySelector('[data-automation-id=searchBox]');
+  if (search) {
+    const list = doc.querySelector('[data-automation-id=selectedItemList]');
+    const show = () => {
+      const q = (search.value || '').toLowerCase();
+      renderOptions(SOURCES.filter(s => s.toLowerCase().includes(q)), (value) => {
+        list.innerHTML += `<li><div data-automation-id="selectedItem">${value}</div></li>`;
+        search.value = '';
+      });
+    };
+    search.addEventListener('mousedown', show);
+    search.addEventListener('input', show);
+    search.addEventListener('keydown', (e) => { if (e.key === 'Enter') show(); });
+  }
+
+  doc.addEventListener('keydown', (e) => { if (e.key === 'Escape') clearPortal(); });
+}
 
 export const ASHBY = `
 <div data-ui="application-form" id="ashby-form">
@@ -291,4 +433,4 @@ export const DECOYS = `
     <button type="submit">Sign in</button></form>
 </aside>`;
 
-export const ALL = { GREENHOUSE, LEVER, WORKDAY, ASHBY, GENERIC };
+export const ALL = { GREENHOUSE, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, GENERIC };

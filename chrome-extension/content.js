@@ -46,6 +46,14 @@
   // once per browser session by the background worker.
   let applyCtx = null;
   let applyBusy = false;
+  // Which view #tcvBody is showing: 'loading' | 'blocked' (login, no resume,
+  // upgrade) | 'reading' | 'manual' | 'job' | 'apply' | 'running' | 'results'.
+  // The form watcher only repaints the views it is safe to repaint — never the
+  // login form, never a run in progress, never results the user is reviewing.
+  let currentView = 'loading';
+  // The job last shown by renderReady, so the watcher can redraw that view with
+  // the Autofill button added, without re-running extraction.
+  let lastJob = null;
 
   // analytics.bundle.js (loaded before this file, see manifest.json) installs
   // these globals — guarded in case it failed to load on some page.
@@ -664,6 +672,7 @@
     });
 
     refreshFull();
+    startFormWatcher();
   }
 
   function togglePanel() {
@@ -696,6 +705,7 @@
   // let the green-tick ending play once login is confirmed — the SVG has to be
   // inlined into the page DOM instead.
   async function renderLoading() {
+    currentView = 'loading';
     body.innerHTML = `
       <div class="tcv-loading-anim" id="tcvLoadingAnim"></div>
       <div class="tcv-loading-label">Authenticating</div>
@@ -741,6 +751,7 @@
   }
 
   function renderLogin(errorMsg) {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-msg">Log in to TailorCV to tailor your resume.</div>
       <form id="tcvLoginForm">
@@ -781,6 +792,7 @@
   }
 
   function renderNoBaseResume() {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-empty-state">
         <div class="tcv-doc-wrap">
@@ -817,6 +829,7 @@
   }
 
   function renderUpgradePrompt() {
+    currentView = 'blocked';
     body.innerHTML = `
       <div class="tcv-upgrade-box">
         <div class="tcv-msg">You've used all your free resume tailors for this month.</div>
@@ -834,6 +847,7 @@
   // Layer 4. The page beat every extractor, so let the user hand us the text —
   // this is what keeps the extension useful on login-gated SPAs and odd career pages.
   function renderManual(prefill) {
+    currentView = 'manual';
     // No prefill means this is the auto-fallback (every extractor missed), not
     // the user deliberately opening "not right? edit" on an already-found job —
     // only that case gets a retry link, so we don't offer to overwrite an
@@ -882,6 +896,8 @@
 
   function renderReady(job) {
     if (quotaExceeded) { renderUpgradePrompt(); return; }
+    currentView = 'job';
+    lastJob = job;
     const label = `${job.role || 'this job'}${job.company ? ' at ' + job.company : ''}`;
     body.innerHTML = `
       <div class="tcv-job-info">Job Title: <b>${esc(job.role || 'this job')}</b>${job.company ? ' at ' + esc(job.company) : ''}</div>
@@ -1568,14 +1584,16 @@
   }
 
   /** The "form detected" view, for an apply page with no job description. */
-  function renderApplyReady() {
+  function renderApplyReady(extra) {
+    currentView = 'apply';
     if (!AF || !applyForm) { renderManual(); return; }
-    AF.ui.renderReady(body, applyForm, applyCtx, {
+    const page = (extra && extra.page) || 0;
+    AF.ui.renderReady(body, applyForm || refreshApplyMode(), applyCtx, {
       onFill: () => runAutofill(),
       onTailor: () => renderManual(),
       onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
-    });
+    }, { page });
 
     // Fetch the context in the background and repaint once. It carries the
     // blockers ("upload your base resume first") and the quota state, and both
@@ -1585,12 +1603,174 @@
     if (!applyCtx) {
       const gen = extractGen;
       ensureApplyContext().then((ctx) => {
-        if (gen !== extractGen || applyBusy) return;
+        if (gen !== extractGen || applyBusy || currentView !== 'apply') return;
         if (!ctx || ctx.error) return;
         if (!document.getElementById('tailorcv-sidebar')) return;
-        renderApplyReady();
+        renderApplyReady(extra);
       });
     }
+  }
+
+  // ── The form watcher ─────────────────────────────────────
+  //
+  // Detection used to run exactly once, about a second after the page loaded.
+  // That is fine for a static careers page and wrong for Workday, which renders
+  // its application seconds later and then moves between steps (My Information,
+  // My Experience, Questions…) WITHOUT changing the URL. The single check ran
+  // before the form existed and never ran again; the posting's JSON-LD was still
+  // on the page, so the panel showed the job view with no Autofill button at all.
+  //
+  // So the page is watched. Cheaply: mutations are debounced and throttled, and
+  // each check first compares a signature built from plain attribute reads (no
+  // layout, no field description). Only when that changes is the form actually
+  // re-detected and described.
+
+  const WATCH_DEBOUNCE_MS = 700;
+  const WATCH_MIN_INTERVAL_MS = 1500;
+  const DIAGNOSE_AFTER_MS = 8000;
+
+  let watcherStarted = false;
+  let watchTimer = null;
+  let lastWatchRun = 0;
+  let cheapSignature = '';
+  let formSignature = '';
+  // The field keys the form had when the last fill finished. A later form whose
+  // keys barely overlap with these is the application's next step.
+  let lastFillKeys = null;
+  let diagnosedUrl = '';
+
+  function startFormWatcher() {
+    if (!AF || watcherStarted || !document.body) return;
+    watcherStarted = true;
+    new MutationObserver(scheduleFormCheck)
+      .observe(document.body, { childList: true, subtree: true });
+    scheduleFormCheck();
+    scheduleDiagnostics();
+  }
+
+  function scheduleFormCheck() {
+    if (watchTimer) return;
+    const sinceLast = Date.now() - lastWatchRun;
+    const wait = Math.max(WATCH_DEBOUNCE_MS, WATCH_MIN_INTERVAL_MS - sinceLast);
+    watchTimer = setTimeout(() => {
+      watchTimer = null;
+      lastWatchRun = Date.now();
+      try { checkForm(); } catch (err) {
+        console.warn('[TailorCV] form watcher error —', err && err.message);
+      }
+    }, wait);
+  }
+
+  /** Attribute-only fingerprint of the fillable controls. No layout reads. */
+  function fillableFingerprint() {
+    const sel = window.__tcvFieldProbe && window.__tcvFieldProbe.FILLABLE_SEL;
+    if (!sel) return '';
+    let nodes;
+    try { nodes = document.querySelectorAll(sel); } catch (e) { return ''; }
+    let out = String(nodes.length);
+    for (let i = 0; i < nodes.length && i < 80; i++) {
+      const n = nodes[i];
+      if (n.closest && n.closest('#tailorcv-sidebar')) continue;
+      out += '|' + (n.getAttribute('data-automation-id') || n.getAttribute('name')
+                   || n.id || n.tagName);
+    }
+    return out;
+  }
+
+  function fieldKeysOf(form) {
+    try {
+      return AF.describeFields(form).map(r => r.key).filter(Boolean);
+    } catch (e) { return []; }
+  }
+
+  function checkForm() {
+    if (!document.getElementById('tailorcv-sidebar')) return;
+    // Nothing is repainted while a fill runs, or while the user is typing an
+    // answer into the panel — a redraw would throw away what they typed.
+    if (applyBusy) return;
+    const active = document.activeElement;
+    if (active && active.closest && active.closest('#tailorcv-sidebar')
+        && /^(input|textarea|select)$/i.test(active.tagName)) return;
+
+    const fp = fillableFingerprint();
+    if (fp === cheapSignature) return;
+    cheapSignature = fp;
+
+    const had = !!applyForm;
+    refreshApplyMode();
+    const keys = applyForm ? fieldKeysOf(applyForm) : [];
+    const sig = keys.slice().sort().join('|');
+    const changed = sig !== formSignature;
+    formSignature = sig;
+    if (!applyForm || !changed) return;
+
+    if (!had) { onFormAppeared(); return; }
+    if (currentView === 'results' && lastFillKeys && isNewStep(lastFillKeys, keys)) {
+      onNextStep();
+    }
+  }
+
+  /**
+   * Whether `now` is a different step of the application rather than the same
+   * step with a field or two revealed by an answer. A new step replaces most of
+   * the form; a conditional field adds to it. Treating the second as the first
+   * would announce "Page 2" every time the user picked "Yes" on something.
+   */
+  function isNewStep(before, now) {
+    const a = new Set(before);
+    const shared = now.filter(k => a.has(k)).length;
+    return shared / Math.max(before.length, now.length, 1) < 0.5;
+  }
+
+  function onFormAppeared() {
+    if (currentView === 'job' && lastJob) {
+      renderReady(lastJob);             // same job view, now with the button
+    } else if (currentView === 'manual' || currentView === 'reading') {
+      renderApplyReady();
+    }
+    // Any other view is left alone: the login form, a run in progress, and
+    // results the user is reviewing all take priority over a new button.
+  }
+
+  async function onNextStep() {
+    let page = 0;
+    try { page = await AF.nextPage(); } catch (e) { page = 0; }
+    lastFillKeys = null;
+    renderApplyReady({ page: page || 2 });
+    globalStatus.className = 'tcv-status-text';
+    globalStatus.textContent = `Page ${page || 2} of this application — ready to autofill`;
+  }
+
+  /**
+   * On an apply-shaped URL where no form turns up, print what the page looked
+   * like, once. Mirrors logDiagnostics() for the job-description reader: a real
+   * page's own markup is worth more than any amount of guessing from outside,
+   * and this turns the next unsupported ATS into a one-line fix. console is
+   * shared between the page and this script, so it shows in the ordinary
+   * DevTools console with no context switching.
+   */
+  function scheduleDiagnostics() {
+    setTimeout(() => {
+      if (!AF || applyForm || applyFrame) return;
+      if (diagnosedUrl === location.href) return;
+      if (!AF.looksLikeApplyUrl || !AF.looksLikeApplyUrl(location.href)) return;
+      diagnosedUrl = location.href;
+      try {
+        const report = AF.diagnose();
+        console.groupCollapsed('%c[TailorCV] autofill could not find a form — diagnostics',
+                               'color:#7c3aed;font-weight:700');
+        console.log(report.summary);
+        if (report.roots.length) console.table(report.roots);
+        if (report.fields.length) console.table(report.fields);
+        if (report.uncovered.length) {
+          console.log('controls that look interactive but are not handled:');
+          console.table(report.uncovered);
+        }
+        console.groupEnd();
+      } catch (err) {
+        console.warn('[TailorCV] diagnostics failed —', err && err.message);
+      }
+    }, DIAGNOSE_AFTER_MS);
   }
 
   async function runAutofill() {
@@ -1603,6 +1783,7 @@
     }
 
     applyBusy = true;
+    currentView = 'running';
     AF.ui.renderRunning(body, AF.ui.PHASE_TEXT.scanning);
     globalStatus.className = 'tcv-status-text';
     globalStatus.textContent = '';
@@ -1667,10 +1848,20 @@
       profile: counts.profile || 0,
       page: result.page || 1,
     });
+    // Remember what this step looked like, so the watcher can tell the next
+    // Workday step (most fields replaced) from the same step gaining a field.
+    // Also resynchronise its signatures: the fill itself mutated the DOM, and that
+    // must not read as "the form changed".
+    if (applyForm) {
+      lastFillKeys = fieldKeysOf(applyForm);
+      formSignature = lastFillKeys.slice().sort().join('|');
+      cheapSignature = fillableFingerprint();
+    }
     renderApplyResults(result);
   }
 
   function renderApplyResults(result) {
+    currentView = 'results';
     AF.ui.renderResults(body, result, applyCtx, {
       onFill: () => runAutofill(),
       // Re-render in place after the user answers a field, so the row moves out
@@ -1715,7 +1906,10 @@
     // the posting the user came from. Retrying the extractor ten times and then
     // showing a paste-the-JD box would be the wrong answer to the wrong
     // question, so an unambiguous form short-circuits to the apply panel.
-    if (applyForm && attempt === 0) {
+    // Any attempt, not only the first: a SPA form that finishes rendering during
+    // the retry window must stop the retries, or the next one overwrites the
+    // apply panel with "Reading the job description…".
+    if (applyForm) {
       renderApplyReady();
       return;
     }
@@ -1736,6 +1930,7 @@
       return;
     }
 
+    currentView = 'reading';
     body.innerHTML = `<div class="tcv-status-text">Reading the job description…</div>`;
     setTimeout(() => renderJobFromPage(attempt + 1, gen), EXTRACT_EVERY);
   }
@@ -1846,6 +2041,10 @@
     // stale frameId would route a fill at whatever now occupies that frame.
     applyForm = null;
     applyFrame = null;
+    lastFillKeys = null;
+    cheapSignature = '';
+    formSignature = '';
+    scheduleDiagnostics();
     setTimeout(() => {
       if (!document.getElementById('tailorcv-sidebar')) {
         if (looksLikeJobPage()) createPanel();

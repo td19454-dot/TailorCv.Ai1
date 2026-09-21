@@ -389,6 +389,178 @@ test('Workday: a phone beside a country picker gets the national number only', a
   });
 });
 
+// ── Workday, as it really renders ────────────────────────────
+
+test('Workday (real markup): applyFlowPage with no <form> is detected', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const form = d.isApplicationPage();
+    ok(form, 'a Workday page has no <form> element and must still be found');
+    eq(form.root.getAttribute('data-automation-id'), 'applyFlowPage');
+  });
+});
+
+test('Workday (real markup): the button dropdown is discovered as a combobox', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    const country = rows.find(r => /country/i.test(r.label));
+    ok(country, `no Country field among: ${rows.map(r => r.label).join(' | ')}`);
+    eq(country.kind, 'combobox');
+    notOk(country.filled, '"Select One" is a placeholder, not an answer');
+    eq(country.label.replace(/\*/g, '').trim(), 'Country',
+       'the label must not include the button value or "Required"');
+    ok(country.required);
+  });
+});
+
+test('Workday (real markup): a button already showing a value reads as filled', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO.replace('>Select One</button>', '>India</button>'), {},
+    () => {
+      const rows = d.describeFields(d.findForm());
+      const country = rows.find(r => /country/i.test(r.label));
+      ok(country.filled);
+      eq(country.value, 'India');
+    });
+});
+
+test('Workday (real markup): the multiselect prompt is a combobox, not a text box', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    const source = rows.find(r => /hear about/i.test(r.label));
+    ok(source, 'How Did You Hear About Us? must be discovered');
+    eq(source.kind, 'combobox',
+       'typing into this box is not an answer, so it must not be treated as text');
+  });
+});
+
+test('Workday (real markup): the three date spinbuttons are one field', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    const dates = rows.filter(r => /start date|month|day|year/i.test(r.label));
+    eq(dates.length, 1, `got ${dates.map(r => r.label).join(' | ')}`);
+    eq(dates[0].kind, 'date-parts');
+    eq(dates[0].label.trim(), 'Available Start Date');
+    eq(dates[0].members.length, 3);
+  });
+});
+
+test('Workday (real markup): the Save and Continue button is never a field', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const rows = d.describeFields(d.findForm());
+    notOk(rows.some(r => /save and continue/i.test(r.label)));
+  });
+});
+
+test('Workday (real markup): names, city and email fill and verify', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    notOk(result.error, result.error);
+    eq(valueOf(env, '#input-5'), 'Ada');
+    eq(valueOf(env, '#input-6'), 'Lovelace');
+    eq(valueOf(env, '#input-8'), 'Kolkata');
+    eq(valueOf(env, '#input-9'), 'ada@example.com');
+  });
+});
+
+test('Workday (real markup): the Country button dropdown is committed and verified', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    const button = env.document.querySelector('[data-automation-id=countryDropdown]');
+    eq(button.textContent.trim(), 'India');
+    const row = byLabel(result.decisions, 'country');
+    eq(row.outcome, 'ok', `${row.action} / ${row.reason}`);
+    eq(env.document.getElementById('wd-portal').innerHTML, '',
+       'the listbox must be closed afterwards');
+  });
+});
+
+test('Workday (real markup): How Did You Hear commits a selectedItem, not typed text', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    const items = [...env.document.querySelectorAll('[data-automation-id=selectedItem]')]
+      .map(n => n.textContent.trim());
+    eq(items.join(','), 'Company Website');
+    const row = byLabel(result.decisions, 'hear about');
+    eq(row.outcome, 'ok', `${row.action} / ${row.reason}`);
+  });
+});
+
+test('Workday (real markup): typing that never commits is NOT reported as filled', async () => {
+  // The false success this layer exists to prevent: the text sits in the
+  // search box, the input reads back "non-empty", and nothing was selected.
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    // No wireWorkday(): the widget shows no options and never commits.
+    const result = await run_.runAutofill(CTX, null);
+    const row = byLabel(result.decisions, 'hear about');
+    notOk(row.outcome === 'ok', 'an uncommitted multiselect must not be a success');
+    eq(env.document.querySelectorAll('[data-automation-id=selectedItem]').length, 0);
+  });
+});
+
+test('Workday (real markup): the date parts are written', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    await run_.runAutofill(CTX, null);
+    // available_start_date is "01/09/2026" in the bank.
+    eq(valueOf(env, '[data-automation-id=dateSectionMonth-input]'), '01');
+    eq(valueOf(env, '[data-automation-id=dateSectionDay-input]'), '09');
+    eq(valueOf(env, '[data-automation-id=dateSectionYear-input]'), '2026');
+  });
+});
+
+test('Workday (real markup): the Citi-employment question is asked, never guessed', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    const result = await run_.runAutofill(CTX, null);
+    const row = byLabel(result.decisions, 'employed by citi');
+    ok(row, 'the radio group must be found, labelled by its legend');
+    eq(row.action, p.ASK);
+    notOk(env.document.querySelector('#radio-yes').checked);
+    notOk(env.document.querySelector('#radio-no').checked);
+  });
+});
+
+test('both real failing Workday URLs are recognised as application pages', () => {
+  ok(d.looksLikeApplyUrl('https://citi.wd5.myworkdayjobs.com/en-US/2/job/Pune-Maharashtra-India/'
+    + 'Machine-Learning-with-Gen-AI_26991325/apply/applyManually'));
+  ok(d.looksLikeApplyUrl('https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/'
+    + 'job/Kolkata/Business-Analyst-Data-Modelling-Associate----Kolkata-Y-14---Technology-'
+    + 'Consulting_315280WD/apply/applyManually?source=LinkedIn'));
+  eq(d.detectAts('https://pwc.wd3.myworkdayjobs.com/en-US/x/job/y/apply/applyManually'), 'workday');
+});
+
+test('diagnose() reports a found Workday form and its fields', async () => {
+  await withForm(fixtures.WORKDAY_MYINFO, {}, () => {
+    const report = d.diagnose();
+    ok(report.summary.formFound);
+    ok(/applyFlowPage/.test(report.summary.root), report.summary.root);
+    ok(report.fields.some(f => /country/i.test(f.label) && f.kind === 'combobox'));
+  });
+});
+
+test('diagnose() explains why decoys were rejected', async () => {
+  await withForm(fixtures.DECOYS, {}, () => {
+    const report = d.diagnose();
+    notOk(report.summary.formFound);
+    const reasons = report.roots.map(r => r.rejected).join(' | ');
+    ok(/search/.test(reasons), reasons);
+    ok(/password/.test(reasons), reasons);
+  });
+});
+
+test('diagnose() lists interactive controls nothing handles', async () => {
+  await withForm(`<div data-automation-id="applyFlowPage">
+      <input name="a"><input name="b" type="email">
+      <div role="switch" aria-checked="false" data-automation-id="optInSwitch">Opt in</div>
+    </div>`, {}, () => {
+    const report = d.diagnose();
+    ok(report.uncovered.some(u => u.role === 'switch'),
+       JSON.stringify(report.uncovered));
+  });
+});
+
 // ── Ashby ────────────────────────────────────────────────────
 
 test('Ashby: ARIA-labelled fields resolve and the date is shaped for the input', async () => {

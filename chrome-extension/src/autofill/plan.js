@@ -260,6 +260,11 @@ export function coerce(value, row) {
   if (row.kind === 'checkbox' || row.kind === 'radio') {
     return coerceChoice(text, row);
   }
+  // Workday's split date: carried as ISO and split into month/day/year by the
+  // writer. Unparseable means ask, never three pieces of a guess.
+  if (row.kind === 'date-parts') {
+    return formatDateForField(text, { type: 'date' }) || null;
+  }
   if (row.kind === 'select' || row.kind === 'combobox') {
     const options = (row.options || []).map(o => (typeof o === 'string' ? o : o.label));
     if (!options.length) return text;     // options unreadable: let the writer try

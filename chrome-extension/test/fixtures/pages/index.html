@@ -11,10 +11,12 @@
   code { background: rgba(127,127,127,0.18); padding: 1px 5px; border-radius: 4px; }
 </style></head><body>
 <h1>TailorCV autofill fixtures</h1>
-<p>Load the unpacked extension, open a page, then call
-<code>__tcvAutofill.selfTest()</code> in the console. It runs the real pipeline
-with the network stubbed and prints a table of every field and whether the page
-verified what was written.</p>
+<p>Load the unpacked extension, open a page, then in DevTools → Console switch the
+context dropdown from <em>top</em> to <em>TailorCV</em> and call
+<code>__tcvAutofill.selfTest()</code> (or <code>__tcvAutofill.diagnose()</code>).
+Extension globals are not visible from the default <em>top</em> context. selfTest
+runs the real pipeline with the network stubbed and prints a table of every field
+and whether the page verified what was written.</p>
 <p>These pages cover what the jsdom suites cannot: real layout (geometric
 visibility), a real <code>DataTransfer</code> (file attach), portal-rendered
 dropdown menus driven by real pointer events, and <code>innerText</code>.</p>
@@ -25,6 +27,7 @@ dropdown menus driven by real pointer events, and <code>innerText</code>.</p>
   <li><a href="ashby.html">Ashby</a> — ARIA-driven comboboxes and a native date input.</li>
   <li><a href="generic.html">Generic careers page</a> — A plain hand-written form — the long-tail case with no ATS behind it.</li>
   <li><a href="decoys.html">Decoys only</a> — A search box, a newsletter signup and a login form. NOTHING should be detected here and no panel should offer to autofill.</li>
+  <li><a href="workday-real.html">Workday (late render, real markup)</a> — The form renders ~3 seconds after load, as on citi.wd5 / pwc.wd3.myworkdayjobs.com. The sidebar should first show nothing to fill, then offer Autofill this application by itself. "Next step" below simulates Save and Continue: the fields change, the URL does not, and the sidebar should offer page 2.</li>
   <li><a href="upload.html">Upload variants</a> — A plain file input, one hidden behind a button, and a drag-and-drop-only zone that listens for drop and ignores change. jsdom has no DataTransfer, so this page is the only place the attach path is genuinely proven.</li>
   <li><a href="react-select.html">Portal-rendered dropdown</a> — A dropdown whose menu is rendered into a &lt;body&gt;-level portal and which commits on mousedown, like react-select. Also a conditional field that only appears once the first is answered.</li>
 </ul>

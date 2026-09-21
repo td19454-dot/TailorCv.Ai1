@@ -67,6 +67,8 @@
     }
     if (tag === 'input' || tag === 'select' || tag === 'textarea') return n;
     if (attr(n, 'role') === 'combobox' || isEditable(n)) return n;
+    // A <button> that opens a listbox is itself the dropdown (Workday).
+    if (tag === 'button' && attr(n, 'aria-haspopup') === 'listbox') return n;
     // Never GUESS which control a multi-control node means. observe() can hand
     // back a broad wrapper (a page-level <div class="application-container">),
     // and taking its first control would give a dozen different fields the
@@ -293,6 +295,41 @@
       kind = 'contenteditable';
       value = txt(el); filled = !!value; ident = label || name || id;
 
+    } else if (tag === 'input' && workdayMultiselect(el)) {
+      // Workday's multiselect prompt ("How Did You Hear About Us?"). The input is
+      // only a SEARCH box: whatever is typed into it is not an answer, and the
+      // answer, once chosen, renders as separate selectedItem nodes while the
+      // box is cleared. Reading the input as a text field would report typed
+      // text as a filled field — a success on a field the form still rejects.
+      kind = 'combobox';
+      const box = workdayMultiselect(el);
+      let items = [];
+      try { items = Array.prototype.slice.call(box.querySelectorAll('[data-automation-id="selectedItem"]')); }
+      catch (e) { items = []; }
+      value = items.map(txt).filter(Boolean).join(' | ');
+      filled = !!value;
+      ident = name || label || id;
+
+    } else if (tag === 'button' && attr(el, 'aria-haspopup') === 'listbox') {
+      // A dropdown that is a <button>, as on Workday: the current value IS the
+      // button's own text, and the options exist only in a portal listbox after
+      // it is pressed. "Select One" means empty. The label comes from label[for]
+      // before aria-label, because Workday's aria-label bundles the value and the
+      // word "Required" into it ("Country India Required") — used as a label that
+      // would change every time the answer did, and never match a question.
+      kind = 'combobox';
+      const shown = txt(el);
+      value = (shown && !PLACEHOLDER_OPTION_RE.test(shown)
+               && !/^(select one|none selected|choose one)$/i.test(shown)) ? shown : '';
+      filled = !!value;
+      const own = buttonLabel(el, shown);
+      ident = name || attr(el, 'data-automation-id') || own || id;
+      return { ident: ident, kind: kind, label: own, value: value, filled: filled,
+               invalid: attr(el, 'aria-invalid') === 'true',
+               required: /\*/.test(own) || /\brequired\b/i.test(attr(el, 'aria-label'))
+                         || attr(el, 'aria-required') === 'true',
+               options: null };
+
     } else if (tag === 'textarea' || tag === 'input' || attr(el, 'role') === 'combobox') {
       const cont = rsContainer(el);
       const single = cont && cont.querySelector('[class*="singleValue"], [class*="single-value"], [class*="multiValue"], [class*="multi-value"]');
@@ -395,8 +432,54 @@
     if (!el) return null;
     if (rsContainer(el)) return rsContainer(el);
     let wide = null;
-    try { wide = el.closest('label, [class*="field"], [class*="form-group"]'); } catch (e) {}
+    // Workday's per-field wrapper carries no class that says "field" — its
+    // classes are generated hashes — but it is always data-automation-id
+    // "formField-<name>", which is a far more stable signal anyway.
+    try {
+      wide = el.closest('[data-automation-id^="formField"], label, [class*="field"], [class*="form-group"]');
+    } catch (e) {}
     return wide || el;
+  }
+
+  // The Workday multiselect container an input belongs to, or null.
+  function workdayMultiselect(el) {
+    if (!el || !el.closest) return null;
+    let inner = null;
+    try { inner = el.closest('[data-automation-id="multiselectInputContainer"]'); } catch (e) {}
+    if (!inner) return null;
+    let box = null;
+    try {
+      box = el.closest('[data-automation-id="multiSelectContainer"]')
+         || el.closest('[data-automation-id^="formField"]');
+    } catch (e) {}
+    return box || inner;
+  }
+
+  // The question a <button aria-haspopup="listbox"> answers, without its value.
+  function buttonLabel(el, shown) {
+    const id = attr(el, 'id');
+    if (id) {
+      let lab = null;
+      try { lab = document.querySelector('label[for="' + id.replace(/["\\]/g, '\\$&') + '"]'); } catch (e) {}
+      if (lab && txt(lab)) return txt(lab);
+    }
+    const by = attr(el, 'aria-labelledby');
+    if (by) {
+      const t = by.split(/\s+/).map(ref => {
+        let e = null; try { e = document.getElementById(ref); } catch (x) {} return e ? txt(e) : '';
+      }).filter(Boolean).join(' ');
+      if (t) return t;
+    }
+    let wrap = null;
+    try { wrap = el.closest('[data-automation-id^="formField"]'); } catch (e) {}
+    if (wrap) {
+      const lab = wrap.querySelector('label');
+      if (lab && txt(lab)) return txt(lab);
+    }
+    // Last resort: aria-label with the current value and "Required" removed.
+    let aria = attr(el, 'aria-label');
+    if (shown) aria = aria.split(shown).join(' ');
+    return aria.replace(/\brequired\b/ig, '').replace(/\s+/g, ' ').trim();
   }
 
   // An already-rendered listbox belonging to this control, if there is one.
@@ -419,11 +502,22 @@
   // this to the field's own subtree does not work: react-select renders its
   // menu into a <body>-level portal, so the options are not descendants of the
   // control at all.
+  // Workday marks its rows data-automation-id="promptOption", sometimes without
+  // role="option", so both are read. Where one row carries both (a role=option
+  // wrapping a promptOption), only the outermost is kept, or every option would
+  // be listed twice and the option-count guards would be off by double.
+  const OPTION_SEL = '[role="option"], [data-automation-id="promptOption"]';
+
+  function optionNodes(scope) {
+    let nodes = [];
+    try { nodes = Array.prototype.slice.call((scope || document).querySelectorAll(OPTION_SEL)); }
+    catch (e) { return []; }
+    return nodes.filter(n => !nodes.some(o => o !== n && o.contains(n)));
+  }
+
   function visibleOptionLabels(limit) {
     const cap = limit || 200;
-    let nodes = [];
-    try { nodes = Array.prototype.slice.call(document.querySelectorAll('[role="option"]')); }
-    catch (e) { return []; }
+    const nodes = optionNodes(document);
     const out = [];
     for (let i = 0; i < nodes.length && out.length < cap; i++) {
       const t = txt(nodes[i]);
@@ -454,6 +548,11 @@
     '[role="combobox"]',
     '[contenteditable="true"]',
     'input[type="file"]',     // re-added deliberately: a field, but never typed into
+    // A <button> that opens a listbox is a dropdown — Workday builds every one of
+    // its dropdowns this way. Deliberately NOT added to CONTROL_SEL: that one
+    // defines the single-control test the server engine's identity rules rest
+    // on, and widening it would change which fields they consider distinct.
+    'button[aria-haspopup="listbox"]',
   ].join(', ');
 
   function fillableIn(root) {
@@ -509,6 +608,9 @@
     fieldWrapper: fieldWrapper,
     listboxFor: listboxFor,
     visibleOptionLabels: visibleOptionLabels,
+    optionNodes: optionNodes,
+    OPTION_SEL: OPTION_SEL,
+    workdayMultiselect: workdayMultiselect,
     fillableIn: fillableIn,
     CONTROL_SEL: CONTROL_SEL,
     FILLABLE_SEL: FILLABLE_SEL,

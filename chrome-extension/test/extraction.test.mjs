@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { JSDOM } from 'jsdom';
 import { test, run, ok, notOk, eq } from './harness.mjs';
+import * as fixtures from './fixtures.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CONTENT_JS = readFileSync(resolve(HERE, '../content.js'), 'utf8');
@@ -32,7 +33,8 @@ const AUTOFILL_BUNDLE = readFileSync(resolve(HERE, '../autofill.bundle.js'), 'ut
  * script order — so these tests cover both the with-autofill and the
  * bundle-failed-to-load paths.
  */
-function loadPage(html, url, withAutofill) {
+function loadPage(html, url, withAutofill, opts) {
+  const options = opts || {};
   const dom = new JSDOM(html, {
     runScripts: 'dangerously', pretendToBeVisual: true,
     url: url || 'https://example.test/jobs/view/12345',
@@ -48,6 +50,7 @@ function loadPage(html, url, withAutofill) {
     switch (msg.type) {
       case 'GET_ANALYTICS_ID': return { id: 'test-install' };
       case 'GET_PROFILE':
+        if (options.loggedOut) return { error: 'Not logged in to TailorCV.' };
         return { data: { name: 'Ada Lovelace', email: 'ada@example.com',
                          has_resume: true, auto_add_skills: false } };
       case 'GET_BASE_RESUME':
@@ -243,6 +246,88 @@ test('an application page with no description shows the autofill panel', async (
   ok(/Application form detected|Autofill this application/i.test(text),
      `expected the apply panel, got: ${text.slice(0, 400)}`);
   ok(/never submits/i.test(text), 'the no-submit promise must be stated in the UI');
+});
+
+// ── late-rendering forms (the Workday failure) ───────────────
+//
+// Workday renders its application several seconds after the page loads, and
+// moves between steps without changing the URL. Detection that runs once at load
+// finds nothing, and the posting's JSON-LD is still on the page, so the panel
+// showed the job view with no Autofill button at all. These use the two real
+// URLs that failed.
+
+const CITI_URL = 'https://citi.wd5.myworkdayjobs.com/en-US/2/job/Pune-Maharashtra-India/'
+  + 'Machine-Learning-with-Gen-AI_26991325/apply/applyManually';
+const PWC_URL = 'https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers/job/'
+  + 'Kolkata/Business-Analyst-Data-Modelling-Associate----Kolkata-Y-14---Technology-'
+  + 'Consulting_315280WD/apply/applyManually?source=LinkedIn';
+
+/** Insert markup into a live page after a delay, as a SPA would. */
+function renderLater(page, html, ms) {
+  setTimeout(() => {
+    const host = page.document.createElement('div');
+    host.innerHTML = html;
+    page.document.body.appendChild(host);
+  }, ms);
+}
+
+async function waitForText(page, re, timeout) {
+  const deadline = Date.now() + (timeout || 15000);
+  while (Date.now() < deadline) {
+    const panel = page.document.getElementById('tailorcv-sidebar');
+    if (panel && re.test(panel.textContent || '')) return true;
+    await new Promise(r => setTimeout(r, 150));
+  }
+  return false;
+}
+
+test('Workday: a form rendered AFTER load still gets the Autofill button (Citi URL)', async () => {
+  // JSON-LD present, so the job view renders first — exactly the screenshot.
+  const page = loadPage(JSON_LD_PAGE, CITI_URL, true);
+  ok(await waitForText(page, /Senior Backend Engineer/, 10000), 'the job view must render first');
+  renderLater(page, fixtures.WORKDAY_MYINFO, 2500);
+  ok(await waitForText(page, /Autofill this application/, 15000),
+     'the button must appear once the form renders, without a reload');
+  ok(/Tailor/.test(page.document.getElementById('tailorcv-sidebar').textContent),
+     'the resume actions must still be there');
+});
+
+test('Workday: a late form on a page with no description shows the apply panel (PwC URL)', async () => {
+  const page = loadPage('<!doctype html><html><body><div id="wd-app">Loading…</div></body></html>',
+                        PWC_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 2500);
+  ok(await waitForText(page, /Application form detected|Autofill this application/, 20000),
+     'the apply panel must appear once the form renders');
+});
+
+test('Workday: a new step on the SAME URL is offered as the next page', async () => {
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+
+  // "Save and Continue": Workday swaps the step's fields in place, URL unchanged.
+  const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+  step.setAttribute('data-automation-id', 'applyFlowMyExpPage');
+  step.innerHTML = `
+    <div data-automation-id="formField-school"><label for="s1">School or University*</label>
+      <input id="s1" type="text" aria-required="true"></div>
+    <div data-automation-id="formField-degree"><label for="s2">Degree*</label>
+      <input id="s2" type="text" aria-required="true"></div>
+    <div data-automation-id="formField-field"><label for="s3">Field of Study</label>
+      <input id="s3" type="text"></div>`;
+  ok(await waitForText(page, /Page 2/, 15000), 'the next step must be offered as page 2');
+});
+
+test('the form watcher does not repaint the login view', async () => {
+  const page = loadPage(JSON_LD_PAGE, CITI_URL, true, { loggedOut: true });
+  ok(await waitForText(page, /log ?in|sign ?in|password/i, 10000), 'login view first');
+  renderLater(page, fixtures.WORKDAY_MYINFO, 500);
+  await new Promise(r => setTimeout(r, 4000));
+  notOk(/Autofill this application/.test(page.document.getElementById('tailorcv-sidebar').textContent),
+        'a logged-out user must stay on the login view');
 });
 
 test('content.js contains no code that submits a form', () => {

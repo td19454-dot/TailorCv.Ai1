@@ -884,153 +884,153 @@
   border: 1px solid rgba(255,255,255,0.14) !important;\r
 }\r
 .tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }\r
-
-/* \u2500\u2500 Application autofill \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-   Same conventions as everything above: flat .tcv- classes, !important on
-   every declaration (host pages on LinkedIn and Indeed reset aggressively),
-   and the same colour set \u2014 #86efac for good, #fcd34d for review, #60a5fa
-   for needs-you, #64748b for quiet. */
-
-.tcv-af-panel { }
-
-.tcv-af-summary {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  gap: 6px !important;
-  margin-bottom: 12px !important;
-}
-.tcv-af-summary-pill {
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  padding: 4px 10px !important;
-  border-radius: 99px !important;
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
-  white-space: nowrap !important;
-}
-.tcv-af-summary-pill.tcv-af-ok { color: #86efac !important; border-color: rgba(134,239,172,0.3) !important; }
-.tcv-af-summary-pill.tcv-af-review { color: #fcd34d !important; border-color: rgba(252,211,77,0.3) !important; }
-.tcv-af-summary-pill.tcv-af-ask { color: #60a5fa !important; border-color: rgba(96,165,250,0.3) !important; }
-
-.tcv-af-group { margin-bottom: 14px !important; }
-.tcv-af-group-title {
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  color: #8da3c6 !important;
-  margin-bottom: 6px !important;
-}
-
-.tcv-af-row {
-  padding: 9px 11px !important;
-  margin-bottom: 6px !important;
-  border-radius: 10px !important;
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.07) !important;
-}
-.tcv-af-row-head {
-  display: flex !important;
-  align-items: center !important;
-  gap: 7px !important;
-}
-.tcv-af-badge {
-  flex: 0 0 auto !important;
-  width: 16px !important;
-  height: 16px !important;
-  border-radius: 50% !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 10px !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-}
-.tcv-af-badge.tcv-af-ok { background: rgba(134,239,172,0.18) !important; color: #86efac !important; }
-.tcv-af-badge.tcv-af-review { background: rgba(252,211,77,0.18) !important; color: #fcd34d !important; }
-.tcv-af-badge.tcv-af-ask { background: rgba(96,165,250,0.18) !important; color: #60a5fa !important; }
-.tcv-af-badge.tcv-af-unknown { background: rgba(100,116,139,0.20) !important; color: #94a3b8 !important; }
-
-.tcv-af-row-label {
-  flex: 1 1 auto !important;
-  font-size: 13px !important;
-  font-weight: 600 !important;
-  color: #eaf1ff !important;
-  overflow-wrap: anywhere !important;
-}
-.tcv-af-jump {
-  flex: 0 0 auto !important;
-  font-size: 11px !important;
-  color: #93c5fd !important;
-  text-decoration: underline !important;
-  cursor: pointer !important;
-}
-.tcv-af-row-value {
-  font-size: 12px !important;
-  color: #cbd5e1 !important;
-  margin: 4px 0 0 23px !important;
-  overflow-wrap: anywhere !important;
-}
-.tcv-af-row-src {
-  font-size: 11px !important;
-  color: #64748b !important;
-  margin: 3px 0 0 23px !important;
-  overflow-wrap: anywhere !important;
-}
-
-.tcv-af-ask-form { margin: 8px 0 0 23px !important; }
-.tcv-af-ask-input, .tcv-af-ask-select {
-  width: 100% !important;
-  padding: 8px 10px !important;
-  font-size: 13px !important;
-  font-family: inherit !important;
-  color: #f1f5f9 !important;
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(255,255,255,0.12) !important;
-  border-radius: 8px !important;
-  box-sizing: border-box !important;
-  margin-bottom: 6px !important;
-}
-.tcv-af-ask-input:focus, .tcv-af-ask-select:focus {
-  outline: none !important;
-  border-color: #4f7fff !important;
-}
-.tcv-af-ask-select option { background: #101a30 !important; color: #f1f5f9 !important; }
-.tcv-af-remember {
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  font-size: 11px !important;
-  color: #94a3b8 !important;
-  margin-bottom: 7px !important;
-  cursor: pointer !important;
-}
-.tcv-af-remember input { accent-color: #4f7fff !important; margin: 0 !important; }
-.tcv-af-ask-save {
-  width: auto !important;
-  padding: 7px 14px !important;
-  font-size: 12px !important;
-  margin-bottom: 0 !important;
-}
-
-.tcv-af-note {
-  font-size: 12px !important;
-  color: #cbd5e1 !important;
-  background: rgba(79,127,255,0.10) !important;
-  border: 1px solid rgba(79,127,255,0.22) !important;
-  border-radius: 10px !important;
-  padding: 9px 11px !important;
-  margin-bottom: 10px !important;
-  line-height: 1.45 !important;
-}
-.tcv-af-note a { color: #93c5fd !important; text-decoration: underline !important; }
-.tcv-af-note.tcv-af-note-quiet {
-  background: transparent !important;
-  border: none !important;
-  color: #64748b !important;
-  padding: 4px 0 0 !important;
-  font-size: 11px !important;
-}
+\r
+/* \u2500\u2500 Application autofill \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r
+   Same conventions as everything above: flat .tcv- classes, !important on\r
+   every declaration (host pages on LinkedIn and Indeed reset aggressively),\r
+   and the same colour set \u2014 #86efac for good, #fcd34d for review, #60a5fa\r
+   for needs-you, #64748b for quiet. */\r
+\r
+.tcv-af-panel { }\r
+\r
+.tcv-af-summary {\r
+  display: flex !important;\r
+  flex-wrap: wrap !important;\r
+  gap: 6px !important;\r
+  margin-bottom: 12px !important;\r
+}\r
+.tcv-af-summary-pill {\r
+  font-size: 12px !important;\r
+  font-weight: 600 !important;\r
+  padding: 4px 10px !important;\r
+  border-radius: 99px !important;\r
+  background: rgba(255,255,255,0.06) !important;\r
+  border: 1px solid rgba(255,255,255,0.10) !important;\r
+  white-space: nowrap !important;\r
+}\r
+.tcv-af-summary-pill.tcv-af-ok { color: #86efac !important; border-color: rgba(134,239,172,0.3) !important; }\r
+.tcv-af-summary-pill.tcv-af-review { color: #fcd34d !important; border-color: rgba(252,211,77,0.3) !important; }\r
+.tcv-af-summary-pill.tcv-af-ask { color: #60a5fa !important; border-color: rgba(96,165,250,0.3) !important; }\r
+\r
+.tcv-af-group { margin-bottom: 14px !important; }\r
+.tcv-af-group-title {\r
+  font-size: 11px !important;\r
+  font-weight: 700 !important;\r
+  letter-spacing: 0.06em !important;\r
+  text-transform: uppercase !important;\r
+  color: #8da3c6 !important;\r
+  margin-bottom: 6px !important;\r
+}\r
+\r
+.tcv-af-row {\r
+  padding: 9px 11px !important;\r
+  margin-bottom: 6px !important;\r
+  border-radius: 10px !important;\r
+  background: rgba(255,255,255,0.04) !important;\r
+  border: 1px solid rgba(255,255,255,0.07) !important;\r
+}\r
+.tcv-af-row-head {\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  gap: 7px !important;\r
+}\r
+.tcv-af-badge {\r
+  flex: 0 0 auto !important;\r
+  width: 16px !important;\r
+  height: 16px !important;\r
+  border-radius: 50% !important;\r
+  display: inline-flex !important;\r
+  align-items: center !important;\r
+  justify-content: center !important;\r
+  font-size: 10px !important;\r
+  font-weight: 700 !important;\r
+  line-height: 1 !important;\r
+}\r
+.tcv-af-badge.tcv-af-ok { background: rgba(134,239,172,0.18) !important; color: #86efac !important; }\r
+.tcv-af-badge.tcv-af-review { background: rgba(252,211,77,0.18) !important; color: #fcd34d !important; }\r
+.tcv-af-badge.tcv-af-ask { background: rgba(96,165,250,0.18) !important; color: #60a5fa !important; }\r
+.tcv-af-badge.tcv-af-unknown { background: rgba(100,116,139,0.20) !important; color: #94a3b8 !important; }\r
+\r
+.tcv-af-row-label {\r
+  flex: 1 1 auto !important;\r
+  font-size: 13px !important;\r
+  font-weight: 600 !important;\r
+  color: #eaf1ff !important;\r
+  overflow-wrap: anywhere !important;\r
+}\r
+.tcv-af-jump {\r
+  flex: 0 0 auto !important;\r
+  font-size: 11px !important;\r
+  color: #93c5fd !important;\r
+  text-decoration: underline !important;\r
+  cursor: pointer !important;\r
+}\r
+.tcv-af-row-value {\r
+  font-size: 12px !important;\r
+  color: #cbd5e1 !important;\r
+  margin: 4px 0 0 23px !important;\r
+  overflow-wrap: anywhere !important;\r
+}\r
+.tcv-af-row-src {\r
+  font-size: 11px !important;\r
+  color: #64748b !important;\r
+  margin: 3px 0 0 23px !important;\r
+  overflow-wrap: anywhere !important;\r
+}\r
+\r
+.tcv-af-ask-form { margin: 8px 0 0 23px !important; }\r
+.tcv-af-ask-input, .tcv-af-ask-select {\r
+  width: 100% !important;\r
+  padding: 8px 10px !important;\r
+  font-size: 13px !important;\r
+  font-family: inherit !important;\r
+  color: #f1f5f9 !important;\r
+  background: rgba(255,255,255,0.06) !important;\r
+  border: 1px solid rgba(255,255,255,0.12) !important;\r
+  border-radius: 8px !important;\r
+  box-sizing: border-box !important;\r
+  margin-bottom: 6px !important;\r
+}\r
+.tcv-af-ask-input:focus, .tcv-af-ask-select:focus {\r
+  outline: none !important;\r
+  border-color: #4f7fff !important;\r
+}\r
+.tcv-af-ask-select option { background: #101a30 !important; color: #f1f5f9 !important; }\r
+.tcv-af-remember {\r
+  display: flex !important;\r
+  align-items: center !important;\r
+  gap: 6px !important;\r
+  font-size: 11px !important;\r
+  color: #94a3b8 !important;\r
+  margin-bottom: 7px !important;\r
+  cursor: pointer !important;\r
+}\r
+.tcv-af-remember input { accent-color: #4f7fff !important; margin: 0 !important; }\r
+.tcv-af-ask-save {\r
+  width: auto !important;\r
+  padding: 7px 14px !important;\r
+  font-size: 12px !important;\r
+  margin-bottom: 0 !important;\r
+}\r
+\r
+.tcv-af-note {\r
+  font-size: 12px !important;\r
+  color: #cbd5e1 !important;\r
+  background: rgba(79,127,255,0.10) !important;\r
+  border: 1px solid rgba(79,127,255,0.22) !important;\r
+  border-radius: 10px !important;\r
+  padding: 9px 11px !important;\r
+  margin-bottom: 10px !important;\r
+  line-height: 1.45 !important;\r
+}\r
+.tcv-af-note a { color: #93c5fd !important; text-decoration: underline !important; }\r
+.tcv-af-note.tcv-af-note-quiet {\r
+  background: transparent !important;\r
+  border: none !important;\r
+  color: #64748b !important;\r
+  padding: 4px 0 0 !important;\r
+  font-size: 11px !important;\r
+}\r
 `;
 
   // src/styles.js

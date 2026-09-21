@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorCV fixture — Workday (late render, real markup)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+  .tcv-fixture-note { background: #eef2ff; border: 1px solid #c7d2fe; color: #1e1b4b;
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 20px; font-size: 13px; }
+  .tcv-fixture-note code { background: #fff; padding: 1px 5px; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b1020; color: #e5e7eb; }
+    .tcv-fixture-note { background: #1e1b4b; border-color: #3730a3; color: #e0e7ff; }
+    .tcv-fixture-note code { background: #0b1020; }
+  }
+  label { display: block; font-weight: 600; margin-top: 14px; font-size: 13px; }
+  input:not([type=radio]):not([type=checkbox]), select, textarea {
+    width: 100%; padding: 8px 10px; font: inherit; box-sizing: border-box;
+    border: 1px solid #94a3b8; border-radius: 6px; margin-top: 4px; }
+  label:has(input[type=radio]), label:has(input[type=checkbox]) {
+    font-weight: 400; display: flex; gap: 8px; align-items: center; }
+  fieldset { margin-top: 18px; border: 1px solid #cbd5e1; border-radius: 8px; }
+  button { margin-top: 20px; padding: 10px 18px; font: inherit; border-radius: 8px;
+    border: 1px solid #4f46e5; background: #4f46e5; color: #fff; cursor: pointer; }
+  .attach-button { background: #f1f5f9; color: #0f172a; border-color: #94a3b8;
+    margin-top: 4px; padding: 6px 12px; }
+  .select__control { border: 1px solid #94a3b8; border-radius: 6px; padding: 8px 10px;
+    margin-top: 4px; cursor: pointer; min-height: 20px; }
+  .select__placeholder { color: #64748b; }
+  .select__menu { border: 1px solid #94a3b8; border-radius: 6px; margin-top: 2px;
+    background: Canvas; }
+  .select__menu [role=option] { padding: 8px 10px; cursor: pointer; }
+  .select__menu [role=option]:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+<div class="tcv-fixture-note">
+  <strong>TailorCV fixture: Workday (late render, real markup)</strong><br>
+  The form renders ~3 seconds after load, as on citi.wd5 / pwc.wd3.myworkdayjobs.com. The sidebar should first show nothing to fill, then offer <strong>Autofill this application</strong> by itself. "Next step" below simulates Save and Continue: the fields change, the URL does not, and the sidebar should offer page 2.<br><br>
+  Run it: open DevTools → Console, switch the context dropdown at the top of the
+  console from <em>top</em> to <em>TailorCV</em> (extension globals live in the
+  extension's isolated world and are invisible from <em>top</em>), then call
+  <code>__tcvAutofill.selfTest()</code>. It runs the real pipeline with the network
+  stubbed and prints a table of every field, what was written, and whether the page
+  verified it — no login needed.
+  <br>Or use the sidebar's <em>Autofill this application</em> button to test the
+  real end-to-end flow with your own account.
+</div>
+
+
+<div id="wd-mount">Loading application…</div>
+<button type="button" id="wd-next" style="display:none">Next step (simulated Save and Continue)</button>
+<script>
+  function wireWorkday(doc) {
+  const portal = doc.getElementById('wd-portal');
+  const COUNTRIES = ['India', 'United States of America', 'United Kingdom', 'Canada'];
+  const SOURCES = ['Company Website', 'Job Board', 'Employee Referral', 'Social Media'];
+
+  const clearPortal = () => { portal.innerHTML = ''; };
+  const renderOptions = (options, onPick) => {
+    portal.innerHTML = '<ul role="listbox">' + options.map(o =>
+      `<li role="option" data-automation-id="promptOption" data-automation-label="${o}">${o}</li>`)
+      .join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      li.addEventListener('mousedown', () => { onPick(li.textContent); clearPortal(); });
+    }
+  };
+
+  const button = doc.querySelector('[data-automation-id=countryDropdown]');
+  if (button) {
+    button.addEventListener('mousedown', () => renderOptions(COUNTRIES, (value) => {
+      button.textContent = value;
+      button.setAttribute('aria-label', `Country ${value} Required`);
+    }));
+  }
+
+  const search = doc.querySelector('[data-automation-id=searchBox]');
+  if (search) {
+    const list = doc.querySelector('[data-automation-id=selectedItemList]');
+    const show = () => {
+      const q = (search.value || '').toLowerCase();
+      renderOptions(SOURCES.filter(s => s.toLowerCase().includes(q)), (value) => {
+        list.innerHTML += `<li><div data-automation-id="selectedItem">${value}</div></li>`;
+        search.value = '';
+      });
+    };
+    search.addEventListener('mousedown', show);
+    search.addEventListener('input', show);
+    search.addEventListener('keydown', (e) => { if (e.key === 'Enter') show(); });
+  }
+
+  doc.addEventListener('keydown', (e) => { if (e.key === 'Escape') clearPortal(); });
+}
+  setTimeout(function () {
+    document.getElementById('wd-mount').innerHTML = "\n<div data-automation-id=\"applyFlowPage\">\n  <div data-automation-id=\"applyFlowMyInfoPage\">\n    <div data-automation-id=\"formField-sourcePrompt\">\n      <label for=\"input-2\">How Did You Hear About Us?<abbr title=\"required\">*</abbr></label>\n      <div data-automation-id=\"multiSelectContainer\">\n        <ul data-automation-id=\"selectedItemList\"></ul>\n        <div data-automation-id=\"multiselectInputContainer\">\n          <input data-automation-id=\"searchBox\" id=\"input-2\" type=\"text\" placeholder=\"Search\"\n                 aria-required=\"true\">\n        </div>\n      </div>\n    </div>\n\n    <fieldset data-automation-id=\"formField-candidateIsPreviousWorker\">\n      <legend>\n        <label>Have you ever been employed by Citi or any of its predecessor companies\n          (including but not limited to Citibank, Citicorp, Banamex, Salomon Brothers, or\n          Smith Barney) whether as an employee or via an agency or as a contractor,\n          temporary worker or consultant?<abbr title=\"required\">*</abbr></label>\n      </legend>\n      <div><input type=\"radio\" id=\"radio-yes\" name=\"candidateIsPreviousWorker\" value=\"true\">\n        <label for=\"radio-yes\">Yes</label></div>\n      <div><input type=\"radio\" id=\"radio-no\" name=\"candidateIsPreviousWorker\" value=\"false\">\n        <label for=\"radio-no\">No</label></div>\n    </fieldset>\n\n    <div data-automation-id=\"formField-countryDropdown\">\n      <label for=\"input-4\">Country<abbr title=\"required\">*</abbr></label>\n      <button type=\"button\" aria-haspopup=\"listbox\" id=\"input-4\"\n              data-automation-id=\"countryDropdown\" aria-label=\"Country Select One Required\">Select One</button>\n    </div>\n\n    <div data-automation-id=\"formField-legalNameSection_firstName\">\n      <label for=\"input-5\">Given Name(s)<abbr title=\"required\">*</abbr></label>\n      <input data-automation-id=\"legalNameSection_firstName\" id=\"input-5\" type=\"text\"\n             aria-required=\"true\">\n    </div>\n    <div data-automation-id=\"formField-legalNameSection_lastName\">\n      <label for=\"input-6\">Family Name<abbr title=\"required\">*</abbr></label>\n      <input data-automation-id=\"legalNameSection_lastName\" id=\"input-6\" type=\"text\"\n             aria-required=\"true\">\n    </div>\n\n    <div data-automation-id=\"formField-addressSection_city\">\n      <label for=\"input-8\">City<abbr title=\"required\">*</abbr></label>\n      <input data-automation-id=\"addressSection_city\" id=\"input-8\" type=\"text\" aria-required=\"true\">\n    </div>\n\n    <div data-automation-id=\"formField-email\">\n      <label for=\"input-9\">Email Address<abbr title=\"required\">*</abbr></label>\n      <input data-automation-id=\"email\" id=\"input-9\" type=\"text\" aria-required=\"true\">\n    </div>\n\n    <div data-automation-id=\"formField-availableStartDate\">\n      <label id=\"date-label\">Available Start Date</label>\n      <div data-automation-id=\"dateInputWrapper\" aria-labelledby=\"date-label\">\n        <input data-automation-id=\"dateSectionMonth-input\" role=\"spinbutton\" type=\"text\"\n               aria-label=\"Month\" placeholder=\"MM\">\n        <input data-automation-id=\"dateSectionDay-input\" role=\"spinbutton\" type=\"text\"\n               aria-label=\"Day\" placeholder=\"DD\">\n        <input data-automation-id=\"dateSectionYear-input\" role=\"spinbutton\" type=\"text\"\n               aria-label=\"Year\" placeholder=\"YYYY\">\n      </div>\n    </div>\n  </div>\n  <div data-automation-id=\"pageFooter\">\n    <button data-automation-id=\"bottom-navigation-next-button\" type=\"button\">Save and Continue</button>\n  </div>\n</div>\n<div data-automation-id=\"activeListContainer\" id=\"wd-portal\"></div>";
+    wireWorkday(document);
+    document.getElementById('wd-next').style.display = '';
+  }, 3000);
+  document.getElementById('wd-next').addEventListener('click', function () {
+    var step = document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+    if (!step) return;
+    step.setAttribute('data-automation-id', 'applyFlowMyExpPage');
+    step.innerHTML =
+      '<div data-automation-id="formField-school"><label for="s1">School or University*</label>'
+      + '<input id="s1" type="text" aria-required="true"></div>'
+      + '<div data-automation-id="formField-degree"><label for="s2">Degree*</label>'
+      + '<input id="s2" type="text" aria-required="true"></div>'
+      + '<div data-automation-id="formField-field"><label for="s3">Field of Study</label>'
+      + '<input id="s3" type="text"></div>';
+  });
+</script>
+
+<script>
+  window.__tcvFixtureCtx = {
+  "answerBank": {
+    "full_name": "Ada Lovelace",
+    "first_name": "Ada",
+    "last_name": "Lovelace",
+    "email": "ada@example.com",
+    "phone": "+91 98765 43210",
+    "location": "Kolkata, West Bengal, India",
+    "address_city": "Kolkata",
+    "address_state": "West Bengal",
+    "address_country": "India",
+    "postal_code": "700001",
+    "linkedin_url": "https://linkedin.com/in/adalovelace",
+    "github_url": "https://github.com/ada",
+    "university": "Indian Institute of Technology Delhi",
+    "degree": "B.Tech",
+    "major": "Computer Science and Engineering",
+    "graduation_date": "Jun 2024",
+    "gpa": "8.7/10",
+    "current_company": "Acme Corp",
+    "current_job_title": "Software Engineer II",
+    "years_of_experience": "2",
+    "available_start_date": "01/09/2026",
+    "how_did_you_hear_about_us": "Company website",
+    "authorized_to_work_in_country": "No",
+    "requires_visa_sponsorship": "Yes",
+    "gender": "Female",
+    "veteran_status": "I am not a protected veteran",
+    "accepts_employer_terms_and_privacy_policy": "Yes"
+  },
+  "hasResume": true,
+  "hasCoverLetter": false,
+  "blockers": [],
+  "quota": {
+    "exhausted": false,
+    "isPro": false
+  }
+};
+  window.__tcvFixturePlan = { answers: {} };
+</script>
+</body>
+</html>

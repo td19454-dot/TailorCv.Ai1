@@ -108,7 +108,11 @@ const APP_ROOT_SELECTORS = [
   '[role="form"]',
   '[class*="application" i]',
   '[id*="application" i]',
-  '[data-automation-id*="jobApplication" i]',
+  // Workday. There is no <form> element on a Workday application at all; every
+  // step renders inside applyFlowPage. (An earlier version listed
+  // "jobApplication" here — an invented id that matched nothing real.)
+  '[data-automation-id="applyFlowPage"]',
+  '[data-automation-id*="applyFlow" i]',
   '[data-ui="application-form"]',      // Ashby
   '#application-form',                 // Greenhouse classic
   '.application--form',                // Lever
@@ -148,6 +152,10 @@ function scoreRoot(el, doc) {
   if (has('button[type="submit"], input[type="submit"]')) score += 2;
   // A <form> is a stronger signal than a div that happens to contain inputs.
   if ((el.tagName || '').toLowerCase() === 'form') score += 2;
+  // A container an ATS names as its application flow is stronger still — and on
+  // Workday it is the ONLY signal, since there is no <form> to score.
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  if (/applyFlow/i.test(automation)) score += 4;
   void doc;
   return { root: el, score, fields: visible, opaqueHosts };
 }
@@ -209,10 +217,13 @@ export function findForm(doc) {
     }
   }
 
-  // Nothing declared itself. Fall back to the smallest element that contains
-  // every visible fillable control on the page — a careers page that renders
-  // its form into bare divs still has one.
-  if (!scored.length) {
+  // Nothing convincing declared itself. Fall back to the smallest element that
+  // contains every visible fillable control on the page — a careers page that
+  // renders its form into bare divs still has one. Run not only when nothing
+  // scored but also when everything that did is tiny: otherwise a stray
+  // two-field box in a page header wins by default and the real form, which
+  // matched no selector, is never considered.
+  if (!scored.length || scored.every(s => s.fields.length < 3)) {
     const all = probe().fillableIn(d).elements.filter(isVisible);
     if (all.length >= 2) {
       const root = commonAncestor(all);
@@ -265,6 +276,115 @@ function pairAncestor(a, b) {
   return null;
 }
 
+/** Whether a URL has the shape of an application page. */
+export function looksLikeApplyUrl(url) {
+  return APPLY_URL_RE.test(String(url || ''));
+}
+
+/**
+ * Everything detection saw on this page, for the console.
+ *
+ * Built for the case where autofill does not appear and nobody can see why. The
+ * point is to print the page's own markup back — which candidate containers
+ * scored what, why each rejected one was rejected, and which interactive-looking
+ * controls no part of discovery handles — so an unsupported ATS widget becomes a
+ * visible, specific gap rather than a mystery.
+ */
+export function diagnose(doc) {
+  const d = doc || globalThis.document;
+  const p = probe();
+  const report = { summary: {}, roots: [], fields: [], uncovered: [] };
+  if (!p) { report.summary.error = 'field probe not installed'; return report; }
+
+  const seen = new Set();
+  for (const sel of APP_ROOT_SELECTORS) {
+    let nodes = [];
+    try { nodes = Array.prototype.slice.call(d.querySelectorAll(sel)); } catch (e) { continue; }
+    for (const node of nodes.slice(0, 12)) {
+      if (seen.has(node)) continue;
+      seen.add(node);
+      const all = p.fillableIn(node).elements;
+      const scored = scoreRoot(node, d);
+      report.roots.push({
+        selector: sel,
+        node: describeNode(node),
+        fillable: all.length,
+        visible: all.filter(isVisible).length,
+        score: scored ? scored.score : null,
+        rejected: scored ? '' : rootRejection(node, all),
+      });
+    }
+  }
+
+  const form = findForm(d);
+  if (form) {
+    for (const row of describeFields(form)) {
+      report.fields.push({
+        label: String(row.label || '').slice(0, 60), kind: row.kind, key: row.key,
+        filled: row.filled, required: row.required, readable: row.readable,
+      });
+    }
+  }
+
+  // Interactive-looking controls discovery does not select at all.
+  const covered = new Set(form ? form.fields : []);
+  let candidates = [];
+  try {
+    candidates = Array.prototype.slice.call(d.querySelectorAll(
+      '[aria-haspopup], [role="listbox"], [role="spinbutton"], [role="radio"], '
+      + '[role="checkbox"], [role="switch"], [role="textbox"], [data-automation-id]'));
+  } catch (e) { candidates = []; }
+  for (const el of candidates) {
+    if (covered.has(el) || (el.closest && el.closest('#tailorcv-sidebar'))) continue;
+    if (el.matches && el.matches(p.FILLABLE_SEL)) continue;
+    const role = el.getAttribute('role') || '';
+    const automation = el.getAttribute('data-automation-id') || '';
+    // Only report data-automation-id nodes that look like inputs.
+    if (!role && !el.getAttribute('aria-haspopup')
+        && !/input|select|dropdown|radio|checkbox|date|prompt|textbox/i.test(automation)) continue;
+    report.uncovered.push({ node: describeNode(el), role, automation,
+                            text: clean(el.textContent).slice(0, 40) });
+    if (report.uncovered.length >= 40) break;
+  }
+
+  report.summary = {
+    url: (d.defaultView && d.defaultView.location && d.defaultView.location.href) || '',
+    applyShapedUrl: looksLikeApplyUrl(d.defaultView && d.defaultView.location
+                                      && d.defaultView.location.href),
+    formFound: !!form,
+    isForm: !!(form && form.isForm),
+    root: form ? describeNode(form.root) : null,
+    fieldCount: form ? form.fields.length : 0,
+    totalFillableOnPage: p.fillableIn(d).elements.length,
+    opaqueHosts: form ? form.opaqueHosts : 0,
+  };
+  return report;
+}
+
+function rootRejection(node, fillable) {
+  if (node.closest && node.closest('#tailorcv-sidebar')) return 'inside the TailorCV panel';
+  try {
+    if (node.matches('[role="search"]')) return 'role=search';
+    if (node.querySelector('input[type="search"]')) return 'contains a search input';
+    if (node.querySelector('input[type="password"]')) return 'contains a password field';
+  } catch (e) { /* ignore */ }
+  const text = `${node.getAttribute('action') || ''} ${node.id || ''} ${node.className || ''}`;
+  if (SEARCHY.test(text)) return `id/class/action looks like search/login: ${text.trim().slice(0, 60)}`;
+  const visible = fillable.filter(isVisible).length;
+  if (visible < 2) return `only ${visible} visible field(s)`;
+  return 'unknown';
+}
+
+function describeNode(el) {
+  if (!el || !el.tagName) return '';
+  const tag = el.tagName.toLowerCase();
+  const id = el.id ? `#${el.id}` : '';
+  const automation = el.getAttribute && el.getAttribute('data-automation-id');
+  const cls = typeof el.className === 'string' && el.className
+    ? `.${el.className.trim().split(/\s+/).slice(0, 2).join('.')}` : '';
+  return `${tag}${id}${automation ? `[data-automation-id=${automation}]` : ''}${cls}`.slice(0, 120);
+}
+
 /** The cheap public predicate content.js calls on every render. */
 export function isApplicationPage(doc) {
   const form = findForm(doc);
@@ -291,8 +411,23 @@ export function describeFields(form) {
   const out = [];
   const groupKeys = new Map();   // logical identity -> index in `out`
   const keyCounts = new Map();
+  const dateGroups = new Map();  // date wrapper -> its row
 
   for (const el of form.fields) {
+    // Workday dates: three spinbutton inputs (month, day, year) that are one
+    // question. Described individually they come out as three fields labelled
+    // "Month", "Day" and "Year", none of which matches anything the user has
+    // on file — so the date is never filled, and three noise rows appear.
+    const dateWrap = dateWrapperOf(el);
+    if (dateWrap) {
+      const existing = dateGroups.get(dateWrap);
+      if (existing) { existing.members.push(el); continue; }
+      const row = dateRow(dateWrap, el, p, keyCounts);
+      dateGroups.set(dateWrap, row);
+      out.push(row);
+      continue;
+    }
+
     const d = p.describeEl(el);
     // No stable identity. Reported rather than dropped, so the review UI can
     // say "we could not read N fields" instead of quietly showing a short list.
@@ -387,13 +522,27 @@ export function describeFields(form) {
   // is a second pass: during the first, a group's later members have not been
   // seen yet and the smallest-common-ancestor search would find the wrong node.
   for (const row of out) {
+    if (row.kind === 'date-parts') {
+      const now = readDateParts(row);
+      row.filled = now.filled;
+      row.value = now.value;
+      continue;
+    }
     if (row.kind !== 'radio' && row.kind !== 'checkbox') continue;
     const question = groupLabel(row.members, p);
     // A lone checkbox is its own question ("I agree to the terms"), so its own
     // label is the right one and a wrapper search would only find something
     // broader and less specific.
-    if (question && (row.members.length > 1 || row.kind === 'radio')) row.label = question;
-    else if (row.optionLabel) row.label = row.optionLabel;
+    if (question && (row.members.length > 1 || row.kind === 'radio')) {
+      row.label = question;
+      // The required marker lives on the QUESTION (Workday puts the asterisk in
+      // the fieldset legend), never on "Yes"/"No". Read only off the options, a
+      // required group looked optional — and an optional unknown is skipped
+      // rather than asked, so the user was never told it needed an answer.
+      if (/\*|\(required\)/i.test(question)) row.required = true;
+      const group = row.members[0].closest && row.members[0].closest('fieldset, [role="radiogroup"]');
+      if (group && group.getAttribute('aria-required') === 'true') row.required = true;
+    } else if (row.optionLabel) row.label = row.optionLabel;
   }
   return out;
 }
@@ -405,6 +554,48 @@ function unreadable(el, p) {
     filled: false, invalid: false, required: !!p.requiredFor(el),
     options: [], readable: false, documentSlot: null, hints: fieldHints(el),
   };
+}
+
+const DATE_PART_RE = /dateSection(Month|Day|Year)/i;
+
+function dateWrapperOf(el) {
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  if (!DATE_PART_RE.test(automation)) return null;
+  return (el.closest && el.closest('[data-automation-id="dateInputWrapper"]'))
+      || el.parentElement;
+}
+
+function dateRow(wrap, first, p, keyCounts) {
+  let label = '';
+  const by = wrap.getAttribute && wrap.getAttribute('aria-labelledby');
+  if (by) {
+    const ref = wrap.ownerDocument.getElementById(by);
+    if (ref) label = clean(ref.textContent);
+  }
+  if (!label) {
+    const field = wrap.closest && wrap.closest('[data-automation-id^="formField"]');
+    const lab = field && field.querySelector('label, legend');
+    if (lab) label = clean(lab.textContent);
+  }
+  label = label || 'Date';
+  let key = questionSignature(label) || 'date';
+  const n = (keyCounts.get(key) || 0) + 1;
+  keyCounts.set(key, n);
+  if (n > 1) key = `${key}#${n}`;
+  return {
+    key, el: first, members: [first], kind: 'date-parts', label, ident: label,
+    value: '', filled: false, invalid: false,
+    required: /\*/.test(label) || (first.getAttribute && first.getAttribute('aria-required') === 'true'),
+    options: [], readable: true, documentSlot: null,
+    hints: { type: 'date-parts', tag: 'input' },
+  };
+}
+
+/** Which part of a date a Workday spinbutton holds: 'month', 'day' or 'year'. */
+export function datePartOf(el) {
+  const automation = (el.getAttribute && el.getAttribute('data-automation-id')) || '';
+  const m = automation.match(DATE_PART_RE);
+  return m ? m[1].toLowerCase() : '';
 }
 
 function isFileField(el) {
@@ -612,9 +803,8 @@ export async function readComboboxOptions(row) {
 }
 
 function optionLabelsIn(node) {
-  let nodes = [];
-  try { nodes = Array.prototype.slice.call(node.querySelectorAll('[role="option"]')); }
-  catch (e) { return []; }
+  const p = probe();
+  const nodes = p && p.optionNodes ? p.optionNodes(node) : [];
   const out = [];
   for (const n of nodes) {
     const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
@@ -674,6 +864,9 @@ export function clickOpen(el) {
 function pickClickTarget(el, p) {
   const role = el.getAttribute && el.getAttribute('role');
   if (role === 'combobox' || role === 'button') return el;
+  // A native <button> dropdown (Workday) is its own trigger. Searching its
+  // wrapper for "something clickable" instead finds unrelated controls.
+  if ((el.tagName || '').toLowerCase() === 'button') return el;
   const wrap = (p && p.rsContainer(el)) || el.parentElement;
   if (wrap) {
     let ctl = null;
@@ -682,6 +875,26 @@ function pickClickTarget(el, p) {
     if (ctl) return ctl;
   }
   return el;
+}
+
+/**
+ * Read a Workday date back as one value. Filled only when EVERY part is: a date
+ * with a month and a year but no day is not an answer the form will accept.
+ */
+function readDateParts(row) {
+  const parts = {};
+  for (const el of row.members || []) {
+    if (!el.isConnected) continue;
+    const part = datePartOf(el);
+    if (part) parts[part] = String(el.value || '').trim();
+  }
+  const order = ['month', 'day', 'year'].filter(k => k in parts);
+  const values = order.map(k => parts[k]);
+  const filled = order.length > 0 && values.every(Boolean);
+  const invalid = (row.members || []).some(el => el.getAttribute
+    && el.getAttribute('aria-invalid') === 'true');
+  return { value: filled ? values.join('/') : '', filled, invalid, required: !!row.required,
+           parts };
 }
 
 /** Escape, unconditionally — cheap, idempotent, never worth failing on. */
@@ -701,6 +914,7 @@ export function dismissListbox(el) {
 export function reprobe(row) {
   const p = probe();
   if (!p || !row) return null;
+  if (row.kind === 'date-parts') return readDateParts(row);
   let el = row.el;
   if (!el || !el.isConnected) {
     el = reresolve(row);
