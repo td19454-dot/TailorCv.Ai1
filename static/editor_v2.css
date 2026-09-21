@@ -89,6 +89,12 @@ body.edv2-active { overflow: hidden; }
 .edv2-btn-primary:hover { background: var(--ed-blue-dark); }
 .edv2-btn-outline { background: #fff; color: var(--ed-text); border-color: var(--ed-border); }
 .edv2-btn-outline:hover { background: #f9fafb; border-color: #d1d5db; }
+.edv2-btn:disabled { opacity: .72; cursor: wait; }
+.edv2-save-btn.saved {
+    color: #166534;
+    border-color: #86efac;
+    background: #f0fdf4;
+}
 /* Toasts. Above the editor, below the changes modal. */
 #edv2-toasts {
     position: fixed; right: 20px; bottom: 20px; z-index: 2147482000;
@@ -277,7 +283,7 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-num:focus { border-color: var(--ed-blue); }
 .edv2-swatches { display: flex; flex-wrap: wrap; gap: 8px; }
 .edv2-swatch {
-    width: 30px; height: 30px; border-radius: 7px; cursor: pointer;
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
     border: 2px solid transparent; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
     padding: 0;
 }
@@ -380,6 +386,11 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-topbar .edv2-iconbtn.saving { color: #93b4fb; }
 .edv2-topbar .edv2-btn-outline { background: #1c2027; color: var(--ed-text); border-color: #343a43; }
 .edv2-topbar .edv2-btn-outline:hover { background: #242932; border-color: #454c56; }
+.edv2-topbar .edv2-save-btn.saved {
+    color: #bbf7d0;
+    border-color: #166534;
+    background: #10261a;
+}
 .edv2-topbar .edv2-badge { background: #1e2a44; color: #93b4fb; }
 
 /* ── Dark sidebar ────────────────────────────────────────────────────────────
@@ -541,7 +552,7 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-panel .edv2-swatch {
     width: 36px;
     height: 36px;
-    border-radius: 12px;
+    border-radius: 50%;
     border: 2px solid rgba(226, 232, 240, .88);
     box-shadow: 0 0 0 1px rgba(15, 23, 42, .5), inset 0 0 0 1px rgba(255,255,255,.16);
 }

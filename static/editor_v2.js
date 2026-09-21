@@ -83,13 +83,16 @@
        resolve on the first attempt; the retry covers script-order races. */
     function callHook(name, arg, label, onFail) {
         let tries = 0;
-        (function attempt() {
-            const fn = window[name];
-            if (typeof fn === "function") { fn(arg); return; }
-            if (++tries < 20) { setTimeout(attempt, 100); return; }
-            console.warn("[TailorCV] " + name + " unavailable - " + label + " did nothing.");
-            if (onFail) onFail();
-        })();
+        return new Promise(resolve => {
+            (function attempt() {
+                const fn = window[name];
+                if (typeof fn === "function") { resolve(fn(arg)); return; }
+                if (++tries < 20) { setTimeout(attempt, 100); return; }
+                console.warn("[TailorCV] " + name + " unavailable - " + label + " did nothing.");
+                if (onFail) onFail();
+                resolve(undefined);
+            })();
+        });
     }
 
     /* Open the implemented change-review modal directly.
@@ -1590,10 +1593,22 @@
         pageHintEl = el("span", "edv2-pages", "1 page");
         actions.appendChild(pageHintEl);
 
-        saveBtn = el("button", "edv2-iconbtn");
+        saveBtn = el("button", "edv2-btn edv2-btn-outline edv2-save-btn");
         saveBtn.type = "button";
-        saveBtn.title = "Saved";
+        saveBtn.title = "Save to My Resumes";
         saveBtn.innerHTML = SVG.cloud;
+        const saveText = el("span", null, "Save to My Resumes");
+        saveBtn.appendChild(saveText);
+        saveBtn.addEventListener("click", async () => {
+            saveBtn.disabled = true;
+            saveText.textContent = "Saving...";
+            const ok = await callHook("tcvSaveToMyResumes", undefined, "Save to My Resumes",
+                () => toast("Couldn't save this resume.",
+                            () => callHook("tcvSaveToMyResumes", undefined, "Save to My Resumes")));
+            saveBtn.disabled = false;
+            saveBtn.classList.toggle("saved", ok === true);
+            saveText.textContent = ok === true ? "Saved to My Resumes" : "Save to My Resumes";
+        });
         actions.appendChild(saveBtn);
 
         // "See what changed" only appears when there is something to review,

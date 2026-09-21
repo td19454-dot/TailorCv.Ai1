@@ -15,26 +15,50 @@
     <link rel="stylesheet" href="/static/editor_v2.css?v={{ asset_v }}">
 </head>
 
-<body>
+<body class="optimized-editor-body">
     {% include "_nav.html" %}
 
     <main class="editor-page">
-        <aside class="editor-sidebar">
-
-            <nav class="legacy-editor-tabs" aria-label="Editor sections">
-                <a class="legacy-tab" href="#resume-preview-frame">
-                    <span class="legacy-tab-icon">◎</span>
-                    Resume Content
+        <section class="editor-actionbar" aria-label="Resume actions">
+            <div class="editor-actionbar-left">
+                <a class="editor-home-link" href="/dashboard" aria-label="Back to dashboard" title="Dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 11.5 12 4l9 7.5"/>
+                        <path d="M5.5 10.5V20h13v-9.5"/>
+                        <path d="M9.5 20v-5h5v5"/>
+                    </svg>
                 </a>
-                <button id="see-changes-btn" class="legacy-tab" type="button">
-                    <span class="legacy-tab-icon">✧</span>
-                    AI Assistant
+                <div class="editor-actionbar-copy">
+                    <span class="editor-actionbar-title">Optimized Resume</span>
+                    <span class="editor-actionbar-status" id="editor-actionbar-status">Ready to review and save.</span>
+                </div>
+            </div>
+            <div class="editor-actionbar-actions">
+                <button id="top-save-resume-btn" class="editor-actionbar-btn editor-actionbar-btn-cloud" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 18H7a4 4 0 1 1 .9-7.9A6 6 0 0 1 19.6 11 3.5 3.5 0 0 1 18 18Z"/>
+                    </svg>
+                    <span>Save to My Resumes</span>
                 </button>
-                <button class="legacy-tab active" type="button">
-                    <span class="legacy-tab-icon">☯</span>
-                    Design
+                <button id="top-see-changes-btn" class="editor-actionbar-btn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="10.5" cy="10.5" r="6.5"/>
+                        <path d="m20 20-4.6-4.6"/>
+                    </svg>
+                    <span>See what changed</span>
                 </button>
-            </nav>
+                <button id="top-download-edited-btn" class="editor-actionbar-btn editor-actionbar-btn-primary" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v12"/>
+                        <path d="m7 11 5 5 5-5"/>
+                        <path d="M4 20h16"/>
+                    </svg>
+                    <span>Download Resume</span>
+                </button>
+            </div>
+        </section>
+
+        <aside class="editor-sidebar">
 
             <!--
                 Desktop: transparent wrapper (display:contents).

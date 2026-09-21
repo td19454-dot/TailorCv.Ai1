@@ -48,6 +48,17 @@
     let currentLineSpacing       = 1;
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
+    let fontScaleDirty           = false;
+    let lineSpacingDirty         = false;
+    let styleTouched             = {
+        page: false,
+        font: false,
+        nameCase: false,
+        delimiter: false,
+        listStyle: false,
+        dateFormat: false,
+        link: false,
+    };
     let legacyDesign             = {
         paper: "A4",
         font: "Arial",
@@ -104,6 +115,13 @@
 
     function paperCssSize() {
         return legacyDesign.paper === "Letter" ? "8.5in 11in" : "8.27in 11.69in";
+    }
+
+    function designMargin(axis) {
+        const fallback = 0.39;
+        const max = axis === "x" ? 1.5 : 2;
+        const raw = axis === "x" ? legacyDesign.marginX : legacyDesign.marginY;
+        return Math.max(0.2, Math.min(max, Number.isFinite(Number(raw)) ? Number(raw) : fallback));
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -205,6 +223,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function changeLineSpacing(delta) {
+        lineSpacingDirty = true;
         currentLineSpacing = Math.max(0.7, Math.min(1.5, currentLineSpacing + delta));
         if (frame && frame.contentDocument) {
             captureBaseLineSpacing(frame.contentDocument);
@@ -225,6 +244,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function resetLineSpacing() {
+        lineSpacingDirty = true;
         currentLineSpacing = 1;
         if (frame && frame.contentDocument) {
             applyLineSpacing(frame.contentDocument, 1);
@@ -265,30 +285,43 @@ document.addEventListener("DOMContentLoaded", function () {
             style.id = "tailorcv-style-settings";
             doc.head.appendChild(style);
         }
-        style.textContent = `
-@page { size: ${paperCssSize()}; margin: ${legacyDesign.marginY || 0.39}in ${legacyDesign.marginX || 0.39}in; }
-${DESIGN_TEXT_SEL} {
+        const rules = [];
+        const marginX = designMargin("x");
+        const marginY = designMargin("y");
+        if (styleTouched.page) {
+            rules.push(`@page { size: ${paperCssSize()}; margin: ${marginY}in ${marginX}in; }`);
+        }
+        if (styleTouched.font) {
+            rules.push(`${DESIGN_TEXT_SEL} {
   font-family: ${cssString(legacyDesign.font)}, serif !important;
-}
-body {
-  padding: ${legacyDesign.marginY || 0.39}in ${legacyDesign.marginX || 0.39}in !important;
+}`);
+        }
+        rules.push(`body {
   box-sizing: border-box !important;
-}
-h1, .name, .resume-name, .header-name {
+}`);
+        if (styleTouched.nameCase) {
+            rules.push(`h1, .name, .resume-name, .header-name {
   text-transform: ${nameTransformCss(legacyDesign.nameCase)} !important;
-}
-ul, ol {
+}`);
+        }
+        if (styleTouched.listStyle) {
+            rules.push(`ul, ol {
   list-style-type: ${listStyleCss(legacyDesign.listStyle)} !important;
-}
-a, .contact a, .links a {
+}`);
+        }
+        if (styleTouched.link) {
+            rules.push(`a, .contact a, .links a {
   color: ${legacyDesign.link || "#000000"} !important;
-}
-.contact-item + .contact-item::before,
+}`);
+        }
+        if (styleTouched.delimiter) {
+            rules.push(`.contact-item + .contact-item::before,
 .project-state-contact-separator::before {
   content: " ${String(legacyDesign.delimiter || "◇").replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
-}
-`;
-        formatDates(doc);
+}`);
+        }
+        style.textContent = rules.join("\n");
+        if (styleTouched.dateFormat) formatDates(doc);
     }
 
     const MONTHS = {
@@ -359,6 +392,7 @@ a, .contact a, .links a {
     }
 
     function setFontSizePt(value) {
+        fontScaleDirty = true;
         const v = Math.max(7, Math.min(14, Number(value) || 11));
         currentZoom = v / 11;
         syncRangeNumber("font-size-range", "font-size-input", v, "pt");
@@ -368,6 +402,7 @@ a, .contact a, .links a {
     }
 
     function setLineHeightValue(value) {
+        lineSpacingDirty = true;
         const v = Math.max(1, Math.min(2.4, Number(value) || 1.125));
         currentLineSpacing = v / 1.125;
         syncRangeNumber("line-height-range", "line-height-input", v, "");
@@ -385,9 +420,11 @@ a, .contact a, .links a {
         const max = axis === "x" ? 1.5 : 2;
         const v = Math.max(0.2, Math.min(max, Number(value) || 0.39));
         if (axis === "x") {
+            styleTouched.page = true;
             legacyDesign.marginX = v;
             syncRangeNumber("margin-x-range", "margin-x-input", v, "in");
         } else {
+            styleTouched.page = true;
             legacyDesign.marginY = v;
             syncRangeNumber("margin-y-range", "margin-y-input", v, "in");
         }
@@ -402,11 +439,12 @@ a, .contact a, .links a {
         container.innerHTML = `
             <div class="tc-accent-presets">
                 ${colors.map(c => `<button class="tc-accent-swatch ${legacyDesign.link === c ? "active" : ""}" type="button" data-hex="${c}" style="background:${c}" title="${c}"></button>`).join("")}
-                <input class="tc-accent-swatch tc-accent-custom-input" type="color" value="${legacyDesign.link}" title="Custom link color">
+                <input class="tc-accent-swatch tc-accent-custom-input" type="color" value="${legacyDesign.link || "#000000"}" title="Custom link color">
             </div>
         `;
         container.querySelectorAll("button[data-hex]").forEach(btn => {
             btn.addEventListener("click", () => {
+                styleTouched.link = true;
                 legacyDesign.link = btn.dataset.hex;
                 buildLinkColorPanel();
                 applyWordStylePreview();
@@ -414,6 +452,7 @@ a, .contact a, .links a {
             });
         });
         container.querySelector("input[type='color']")?.addEventListener("input", e => {
+            styleTouched.link = true;
             legacyDesign.link = e.target.value;
             container.querySelectorAll(".tc-accent-swatch").forEach(s => s.classList.remove("active"));
             applyWordStylePreview();
@@ -426,6 +465,7 @@ a, .contact a, .links a {
         if (paper) {
             paper.value = legacyDesign.paper;
             paper.addEventListener("change", () => {
+                styleTouched.page = true;
                 legacyDesign.paper = paper.value === "Letter" ? "Letter" : "A4";
                 applyWordStylePreview();
                 setStatus(`Paper size: ${legacyDesign.paper}.`);
@@ -436,6 +476,7 @@ a, .contact a, .links a {
         if (font) {
             font.value = legacyDesign.font;
             font.addEventListener("change", () => {
+                styleTouched.font = true;
                 legacyDesign.font = font.value;
                 applyWordStylePreview();
                 setStatus(`Font: ${legacyDesign.font}.`);
@@ -459,12 +500,26 @@ a, .contact a, .links a {
                 const btn = e.target.closest("button[data-value]");
                 if (!btn) return;
                 const control = group.dataset.styleControl;
+                if (Object.prototype.hasOwnProperty.call(styleTouched, control)) {
+                    styleTouched[control] = true;
+                }
                 legacyDesign[control] = btn.dataset.value;
                 setSegmentedValue(control, btn.dataset.value);
                 applyWordStylePreview();
                 setStatus("Style setting updated.");
             });
         });
+
+        const dateFormat = document.getElementById("date-format-select");
+        if (dateFormat) {
+            dateFormat.value = legacyDesign.dateFormat;
+            dateFormat.addEventListener("change", () => {
+                styleTouched.dateFormat = true;
+                legacyDesign.dateFormat = dateFormat.value;
+                applyWordStylePreview();
+                setStatus("Date format updated.");
+            });
+        }
 
         buildLinkColorPanel();
     }
@@ -894,11 +949,15 @@ hr, .divider, [class*="divider"],
 
         removePageGuides(doc);
 
-        captureBaseFonts(doc);
-        applyFontScale(doc, currentZoom);
+        if (fontScaleDirty) {
+            captureBaseFonts(doc);
+            applyFontScale(doc, currentZoom);
+        }
 
-        captureBaseLineSpacing(doc);
-        applyLineSpacing(doc, currentLineSpacing);
+        if (lineSpacingDirty) {
+            captureBaseLineSpacing(doc);
+            applyLineSpacing(doc, currentLineSpacing);
+        }
         applyLegacyDesignSettings(doc);
 
         if (currentAccentColor) {
@@ -914,9 +973,53 @@ hr, .divider, [class*="divider"],
         const pageW          = pageWidthPx();
         const pageH          = pageHeightPx();
         const viewScale      = Math.min(1, availableWidth / pageW);
+        const marginX        = designMargin("x");
+        const marginY        = designMargin("y");
+        const bodyPaddingCss = styleTouched.page
+            ? `  padding: ${marginY}in ${marginX}in !important;\n`
+            : "";
 
         frame.style.width  = `${pageW}px`;
         frame.style.height = "9999px";
+
+        const wordCss = `
+/* TailorCV Word-Style Preview */
+html {
+  background: #525659 !important;
+  margin: 0 !important;
+  padding: ${PAGE_GAP_PX}px 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(148,163,184,0.35) transparent !important;
+  display: block !important;
+  height: auto !important;
+}
+body {
+  width:  ${pageW}px !important;
+  min-height: ${pageH}px !important;
+  margin: 0 auto !important;
+${bodyPaddingCss}  box-sizing: border-box !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25) !important;
+  overflow: visible !important;
+  position: relative !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
+  border-radius: 2px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+`;
+
+        if (!fitStyle) {
+            fitStyle = doc.createElement("style");
+            fitStyle.id = "tailorcv-preview-fit-style";
+            doc.head.appendChild(fitStyle);
+        }
+        fitStyle.textContent = wordCss;
 
         void root.offsetHeight;
 
@@ -935,46 +1038,6 @@ hr, .divider, [class*="divider"],
         estimatedPages = Math.max(1,
             lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
         );
-
-        const wordCss = `
-/* ── TailorCV Word-Style Preview ── */
-html {
-  background: #525659 !important;
-  margin: 0 !important;
-  padding: ${PAGE_GAP_PX}px 0 !important;
-  box-sizing: border-box !important;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  scrollbar-width: thin !important;
-  scrollbar-color: rgba(148,163,184,0.35) transparent !important;
-  display: block !important;
-  height: auto !important;
-}
-body {
-  width:  ${pageW}px !important;
-  min-height: ${pageH}px !important;
-  margin: 0 auto !important;
-  padding: 0 !important;
-  background: #ffffff !important;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25) !important;
-  box-sizing: border-box !important;
-  overflow: visible !important;
-  position: relative !important;
-  transform: none !important;
-  left: auto !important;
-  right: auto !important;
-  border-radius: 2px !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-`;
-
-        if (!fitStyle) {
-            fitStyle = doc.createElement("style");
-            fitStyle.id = "tailorcv-preview-fit-style";
-            doc.head.appendChild(fitStyle);
-        }
-        fitStyle.textContent = wordCss;
 
         renderPageBreaks(doc, estimatedPages);
 
@@ -1087,6 +1150,7 @@ body {
        FONT SCALE CONTROLS
     ───────────────────────────────────────────────────────────────────────── */
     function changeFontScale(delta) {
+        fontScaleDirty = true;
         currentZoom = Math.max(0.6, Math.min(1.8, currentZoom + delta));
         applyWordStylePreview();
         updateFontSizeBadge();
@@ -1094,6 +1158,7 @@ body {
     }
 
     function resetFontScale() {
+        fontScaleDirty = true;
         currentZoom = 1.0;
         applyWordStylePreview();
         updateFontSizeBadge();
@@ -1565,9 +1630,9 @@ body {
     /* Explicit "Save to My Resumes" — only runs when the user clicks the button,
        so nothing is stored unless they choose to save. */
     async function saveToMyResumes() {
-        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return; }
+        if (!frame || !frame.contentDocument) { setStatus("Preview not ready."); return false; }
         const html = buildExportHtml();
-        if (!html) { setStatus("Could not read resume content."); return; }
+        if (!html) { setStatus("Could not read resume content."); return false; }
 
         let jd = "";
         try { jd = (localStorage.getItem("tailorcv_jobDescription") || "").trim(); } catch (e) {}
@@ -1593,7 +1658,7 @@ body {
             });
             if (res.status === 401) {
                 window.location.href = "/login?next=" + encodeURIComponent(location.pathname);
-                return;
+                return false;
             }
             if (!res.ok) throw new Error("Save failed");
             try {
@@ -1609,10 +1674,12 @@ body {
             if (hint) hint.innerHTML = 'Saved — <a href="/my-resumes" style="color:#8b5cf6;text-decoration:underline;">View My Resumes →</a>';
             setStatus("Saved to My Resumes.");
             if (typeof showToast === "function") showToast("Resume saved to My Resumes.", "success", "Saved");
+            return true;
         } catch (e) {
             if (saveBtn) { saveBtn.disabled = false; saveBtn.innerHTML = orig; }
             setStatus("Could not save. Please try again.");
             if (typeof showToast === "function") showToast("Could not save to My Resumes. Please try again.", "error", "Save failed");
+            return false;
         }
     }
 
@@ -3845,6 +3912,35 @@ body.tc-chg-open #intercom-container { display: none !important; }
         }
         saveBtn?.addEventListener("click", () => saveToMyResumes());
 
+        const topStatus = document.getElementById("editor-actionbar-status");
+        const topSave = document.getElementById("top-save-resume-btn");
+        if (topSave && !topSave.dataset.tcvBound) {
+            topSave.dataset.tcvBound = "1";
+            const label = topSave.querySelector("span");
+            topSave.addEventListener("click", async () => {
+                topSave.disabled = true;
+                if (label) label.textContent = "Saving...";
+                if (topStatus) topStatus.textContent = "Saving to My Resumes...";
+                const ok = await saveToMyResumes();
+                topSave.disabled = false;
+                topSave.classList.toggle("saved", ok === true);
+                if (label) label.textContent = ok === true ? "Saved to My Resumes" : "Save to My Resumes";
+                if (topStatus) topStatus.textContent = ok === true ? "Saved. You can find it in My Resumes." : "Could not save. Please try again.";
+            });
+        }
+
+        const topChanges = document.getElementById("top-see-changes-btn");
+        if (topChanges && !topChanges.dataset.tcvBound) {
+            topChanges.dataset.tcvBound = "1";
+            topChanges.addEventListener("click", () => showChangesModal(getPayload() || payload));
+        }
+
+        const topDownload = document.getElementById("top-download-edited-btn");
+        if (topDownload && !topDownload.dataset.tcvBound) {
+            topDownload.dataset.tcvBound = "1";
+            topDownload.addEventListener("click", () => downloadEditedPdf(false));
+        }
+
         document.getElementById("switch-template-btn")?.addEventListener("click", () => {
             buildTemplateSwitcher();
         });
@@ -3883,6 +3979,13 @@ body.tc-chg-open #intercom-container { display: none !important; }
             if (p && p.html) currentHtml = addEditingOverlay(p.html);
         }
         return downloadEditedPdf(false);
+    };
+    window.tcvSaveToMyResumes = () => {
+        if (!currentHtml) {
+            const p = getPayload();
+            if (p && p.html) currentHtml = addEditingOverlay(p.html);
+        }
+        return saveToMyResumes();
     };
     window.tcvShowChangesModal  = (p) => {
         try {
