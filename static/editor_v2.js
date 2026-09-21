@@ -177,8 +177,22 @@
     };
 
     function loadPayload() {
-        try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null"); }
-        catch (e) { return null; }
+        let p = null;
+        try { p = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null"); }
+        catch (e) { p = null; }
+        if (p && p.html) return p;
+        // sessionStorage is empty on a direct visit, a reload or a new tab.
+        // Without this the editor returned early and the LEGACY page that the
+        // template still ships stayed on screen - indistinguishable from the
+        // new editor having been reverted. The server seeds the user's most
+        // recent saved resume so it mounts with real content instead.
+        const boot = window.__TCV_EDITOR_BOOTSTRAP__;
+        if (boot && boot.html) {
+            try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(boot)); }
+            catch (e) {}
+            return boot;
+        }
+        return p;
     }
     function savePayload() {
         try {
@@ -398,6 +412,16 @@
             // capsules, dark text on a dark pill.
             el.querySelectorAll("*").forEach(kid => {
                 if (kid.hasAttribute("data-edv2-ink")) return;
+                // Only the NEAREST marked ancestor may colour this node.
+                // Template 7 nests a dark name-card and a dark sidebar inside
+                // lighter wrappers; without this check an outer light surface
+                // walked all the way in and painted the sidebar's contact and
+                // skills lines dark-on-dark, blanking them.
+                let near = kid.parentElement;
+                while (near && !near.hasAttribute("data-edv2-ink")) {
+                    near = near.parentElement;
+                }
+                if (near !== el) return;
                 let kbg = "";
                 try {
                     const kcs = win.getComputedStyle(kid);
@@ -411,21 +435,37 @@
                 kid.style.setProperty("color", ink, "important");
             });
 
-            // A mid-tone surface can still fall just short of 4.5:1 even with
-            // the best possible ink (template 7's name card sits at 4.47 with
-            // pure white). Deepen the SURFACE until the pair passes, rather
-            // than shipping text that is technically unreadable.
+            // A mid-tone surface can fall just short of 4.5:1 even with the
+            // best ink (template 7's name card sits at 4.47 with pure white).
+            // The SURFACE may be nudged to close that gap - but only slightly,
+            // and only DARKER.
+            //
+            // The previous version lightened a surface whenever the ink was
+            // dark (`v * 1.06 + 4`, up to 24 times). That bleached template
+            // 12's blue skill pills to near-white until they vanished against
+            // the paper, and `background-image: none` destroyed every gradient
+            // it touched. A template's own colour is part of its design: adjust
+            // it barely, never repaint it.
             const inkRgb = parseColor(ink);
             if (!inkRgb) return;
+            if (contrastRatio(rgb, inkRgb) >= 4.5) return;   // already fine
+            if (luminance(inkRgb) <= 0.5) return;  // dark ink: leave the
+                                                   // surface alone entirely
             let surf = rgb.slice(), guard = 0;
-            const wantDark = luminance(inkRgb) > 0.5;
-            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 24) {
-                surf = wantDark ? surf.map(v => Math.max(0, v * 0.94))
-                                : surf.map(v => Math.min(255, v * 1.06 + 4));
+            // At most 6 gentle steps, so the colour stays recognisably itself.
+            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 6) {
+                surf = surf.map(v => Math.max(0, v * 0.94));
             }
+            // Only repaint a FLAT colour; a gradient keeps its own painting.
             if (guard > 0) {
-                el.style.setProperty("background-image", "none", "important");
-                el.style.setProperty("background-color", toHex(surf), "important");
+                let hasImage = false;
+                try {
+                    const cs2 = win.getComputedStyle(el);
+                    hasImage = cs2.backgroundImage && cs2.backgroundImage !== "none";
+                } catch (e) {}
+                if (!hasImage) {
+                    el.style.setProperty("background-color", toHex(surf), "important");
+                }
             }
         });
     }

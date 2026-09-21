@@ -149,6 +149,10 @@
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
+    <!-- The v2 editor reads its resume from sessionStorage, which is empty
+         on a direct visit or a reload. Without this seed it returns early
+         and the legacy markup above stays on screen. -->
+    <script>window.__TCV_EDITOR_BOOTSTRAP__ = {{ editor_bootstrap | tojson }};</script>
     <script src="/static/optimized_editor.js?v={{ asset_v }}"></script>
     <!-- Editor v2 mounts a full-screen light-theme shell over the old page and
          reuses its download / change-review functions through window hooks. -->
