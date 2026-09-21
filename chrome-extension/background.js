@@ -142,7 +142,10 @@ chrome.action.onClicked.addListener(async (tab) => {
 // actually saved — so a panel stuck on "no base resume set" catches up on
 // its own instead of the user having to notice and refresh it by hand.
 chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
-  if (!msg || (msg.type !== 'tailorcv-login-success' && msg.type !== 'tailorcv-base-resume-updated')) return;
+  // tailorcv-profile-updated: the application profile was saved on the website,
+  // so the cached answer bank (see AF_GET_CONTEXT) is stale.
+  if (!msg || !['tailorcv-login-success', 'tailorcv-base-resume-updated',
+                'tailorcv-profile-updated'].includes(msg.type)) return;
   (async () => {
     // Clear before broadcasting so every tab that reacts to REFRESH_AUTH is
     // guaranteed a fresh fetch instead of racing a cache write that hasn't
@@ -150,7 +153,9 @@ chrome.runtime.onMessageExternal.addListener((msg, sender, sendResponse) => {
     await clearAuthCache();
     const tabs = await chrome.tabs.query({});
     for (const tab of tabs) {
-      if (tab.id) chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH' }).catch(() => {});
+      if (tab.id) {
+        chrome.tabs.sendMessage(tab.id, { type: 'REFRESH_AUTH', reason: msg.type }).catch(() => {});
+      }
     }
     sendResponse({ ok: true });
   })();

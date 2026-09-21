@@ -3159,10 +3159,15 @@ what when where which who will with would you your now future
         submits for you.
       </div>
       <button class="tcv-btn tcv-btn-ghost" id="tcvAfRerun">\u21BB Scan again</button>
+      <div class="tcv-af-note tcv-af-note-quiet">
+        Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
+        profile</a> \u2014 name, address, phone and eligibility answers all come from there.
+      </div>
     </div>`;
     wireRows(body, decisions, ctx, handlers);
     const rerun = body.querySelector("#tcvAfRerun");
     if (rerun) rerun.addEventListener("click", () => handlers.onFill());
+    bindLink(body, "#tcvAfEditProfile", handlers.onOpenProfile);
     if (decisions.length && decisions[0].row) highlight(decisions);
     offerToRemember(body, result, handlers);
   }

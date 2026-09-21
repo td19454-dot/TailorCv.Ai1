@@ -58,6 +58,14 @@
 
     <script src="/static/auth_nav.js?v=16" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
-    <script src="/static/job_dashboard.js?v=3" defer></script>
+    <script>
+      // Extension ids to notify when the application profile is saved, so an
+      // open autofill panel drops its cached copy (see background.js). The dev
+      // id is set only when TAILORCV_DEV_EXTENSION_ID is (an unpacked extension
+      // has a machine-specific id).
+      window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
+        {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
+    </script>
+    <script src="/static/job_dashboard.js?v=4" defer></script>
 </body>
 </html>

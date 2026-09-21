@@ -68,7 +68,7 @@
   function logApplication(job, method) {
     fetch("/api/dashboard/applications", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: jsonHeaders(),
       body: JSON.stringify({ jobId: job.id, method: method }),
     }).catch(function () {});
   }
@@ -278,7 +278,7 @@
 
     fetch("/api/dashboard/auto-apply", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: jsonHeaders(),
       body: JSON.stringify({ jobId: jobId }),
     })
       .then(function (r) {
@@ -452,6 +452,34 @@
 
   var coverLetterStatusEl = null;
   var coverLetterBtnEl = null;
+
+  // Every JSON write here must echo the csrftoken cookie back as X-CSRFToken.
+  // The server's double-submit check rejects a JSON POST without it (403
+  // "CSRF token invalid."), and none of these calls sent it — so saving the
+  // application profile, saving a job, logging an application and starting
+  // auto-apply all failed. The same header every other page already sends.
+  function csrfToken() {
+    var m = document.cookie.match(/(?:^|;\s*)csrftoken=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+  function jsonHeaders() {
+    return { "Content-Type": "application/json", "X-CSRFToken": csrfToken() };
+  }
+
+  // Tell the Chrome extension its cached copy of the profile is stale. It keeps
+  // the answer bank for up to ten minutes, so without this an edit made here
+  // would not reach the next autofill until that expired. Messaging an id that
+  // isn't installed is a no-op.
+  function notifyExtensionProfileUpdated() {
+    if (typeof chrome === "undefined" || !chrome.runtime || !chrome.runtime.sendMessage) return;
+    (window.TAILORCV_EXTENSION_IDS || []).forEach(function (id) {
+      try {
+        chrome.runtime.sendMessage(id, { type: "tailorcv-profile-updated" }, function () {
+          void chrome.runtime.lastError;
+        });
+      } catch (e) { /* extension not installed / not reachable */ }
+    });
+  }
 
   var modalEl = null;
   var modalFields = {};
@@ -823,7 +851,7 @@
 
     fetch("/api/apply-profile", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: jsonHeaders(),
       body: JSON.stringify(payload),
     })
       .then(function (r) {
@@ -836,6 +864,7 @@
       })
       .then(function (data) {
         if (!data) return;
+        notifyExtensionProfileUpdated();
         closeProfileModal();
         var cb = modalOnSaved;
         modalOnSaved = null;
@@ -923,7 +952,7 @@
       saveBtn.textContent = "Saving…";
       fetch("/api/dashboard/auto-apply/" + runId + "/answers", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: jsonHeaders(),
         body: JSON.stringify({ answers: answers }),
       })
         .then(function (r) {
@@ -963,12 +992,20 @@
     });
   }
 
+  // /dashboard/jobs#profile opens the profile straight away. This is the link
+  // the Chrome extension uses ("Edit your application profile"), so someone who
+  // arrives from a half-filled application lands on the form, not on a job list
+  // they then have to find a button on.
+  if (window.location.hash === "#profile") {
+    openProfileModal("", null);
+  }
+
   function onSave(job, btn) {
     var willSave = !btn.classList.contains("saved");
     var req = willSave
       ? fetch("/api/saved-jobs", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: jsonHeaders(),
           body: JSON.stringify({ jobId: job.id }),
         })
       : fetch("/api/saved-jobs/" + job.id, { method: "DELETE" });

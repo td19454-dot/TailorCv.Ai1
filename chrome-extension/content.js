@@ -32,6 +32,9 @@
   // production URL, so a missing env.js degrades to shipping behaviour.
   const BASE_URL = (window.__TCV_ENV && window.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
+  // Where the application profile (name, address, eligibility, EEO answers) is
+  // edited. #profile makes the Job Dashboard open the form immediately.
+  const PROFILE_URL = `${BASE_URL}/dashboard/jobs#profile`;
 
   // The autofill bundle, loaded before this file by the manifest. Feature-checked
   // at every call site so a bundle that failed to load leaves the extension
@@ -556,6 +559,7 @@
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-base-resume" target="_blank">Change base resume</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-resume-template" target="_blank">Change resume template</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension#ext-cover-template" target="_blank">Change cover letter template</a>
+          <a class="tcv-account-item" href="${PROFILE_URL}" target="_blank">Application profile (name, address…)</a>
           <a class="tcv-account-item" href="${BASE_URL}/extension" target="_blank">Extension settings</a>
           <button class="tcv-account-item tcv-account-logout" id="tcvAccountLogout" type="button">Log out</button>
         </div>
@@ -1591,7 +1595,7 @@
     AF.ui.renderReady(body, applyForm || refreshApplyMode(), applyCtx, {
       onFill: () => runAutofill(),
       onTailor: () => renderManual(),
-      onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
+      onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
     }, { page });
 
@@ -1867,7 +1871,7 @@
       // Re-render in place after the user answers a field, so the row moves out
       // of "needs your answer" and into "filled" without re-running anything.
       onRefresh: () => renderApplyResults(result),
-      onOpenProfile: () => window.open(`${BASE_URL}/auto-apply`, '_blank'),
+      onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
       onUpgrade: () => window.open(`${BASE_URL}/#pricing`, '_blank'),
       // These three only fire for a framed form; a local run acts on the live
       // decision objects directly and never calls them.
@@ -2065,7 +2069,17 @@
       // — see tailorCvFinishLogin() in login.html — which broadcasts this to
       // every open tab. Re-check auth so the panel updates itself instead of
       // the user having to click "Already logged in? Retry".
-      if (document.getElementById('tailorcv-sidebar')) refreshFull();
+      //
+      // Also fired when the application profile is saved on the website. The
+      // panel's in-memory copy of it is dropped either way, so the next fill
+      // reads the new name/address. But a profile edit does not repaint over a
+      // fill in progress or results the user is reviewing — those stay, and the
+      // new values apply from the next "Scan again".
+      applyCtx = null;
+      if (!document.getElementById('tailorcv-sidebar')) return;
+      if (msg.reason === 'tailorcv-profile-updated'
+          && (currentView === 'results' || currentView === 'running')) return;
+      refreshFull();
     }
   });
 

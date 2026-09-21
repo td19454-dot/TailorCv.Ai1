@@ -205,11 +205,16 @@ export function renderResults(body, result, ctx, handlers) {
         submits for you.
       </div>
       <button class="tcv-btn tcv-btn-ghost" id="tcvAfRerun">↻ Scan again</button>
+      <div class="tcv-af-note tcv-af-note-quiet">
+        Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
+        profile</a> — name, address, phone and eligibility answers all come from there.
+      </div>
     </div>`;
 
   wireRows(body, decisions, ctx, handlers);
   const rerun = body.querySelector('#tcvAfRerun');
   if (rerun) rerun.addEventListener('click', () => handlers.onFill());
+  bindLink(body, '#tcvAfEditProfile', handlers.onOpenProfile);
   // Only a local run can highlight: the fields of an embedded form are not in
   // this document, so the frame highlights its own when it fills them.
   if (decisions.length && decisions[0].row) highlight(decisions);
