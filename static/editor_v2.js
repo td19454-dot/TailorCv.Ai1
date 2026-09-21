@@ -577,11 +577,20 @@
             .project-state-contact-separator::before {
                 content: " ${delimiter.replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
             }
+            /* Set the MARKER only. The indent belongs to the template:
+               `.bullets { margin: 0.9mm 0 0 3mm; padding: 0 }` in t15/t18.
+               Forcing `padding-left: 1.15em` on top of that, and wiping the
+               template's margin-left, pushed bullets right - and the two
+               indents compounded where a list continued onto a second page
+               (measured: bullets at 54px on page 1, 66px on page 2). */
             ul, ol {
                 list-style-type: ${listStyleCss(design.listStyle)} !important;
                 list-style-position: outside !important;
-                padding-left: 1.15em !important;
-                margin-left: 0 !important;
+            }
+            /* Only lists with NO indent of their own get one, so markers are
+               never clipped against the container edge. */
+            ul:not([class]), ol:not([class]) {
+                padding-left: 1.15em;
             }
             ul li, ol li { list-style: inherit !important; display: list-item !important; }
             @page { size: ${P.w}in ${P.h}in; margin: ${design.marginY}in ${design.marginX}in; }
@@ -1705,7 +1714,17 @@
     /* ── Boot ────────────────────────────────────────────────────────────── */
     function init() {
         payload = loadPayload();
-        if (!payload || !payload.html) return;      // old editor handles this
+        // The editor mounts even with no resume.
+        //
+        // This used to `return` when sessionStorage was empty, leaving the
+        // LEGACY editor markup that the template still ships on screen - which
+        // is indistinguishable from the new editor having been reverted. It is
+        // empty on a direct visit, a reload, a new tab, and for any account
+        // that has not saved a resume yet (verified: user 1099 has 0 rows in
+        // saved_resumes), so that was most visits. An empty shell the person
+        // can start typing into beats silently showing them the old page.
+        if (!payload) payload = {};
+        if (!payload.resume_data) payload.resume_data = {};
 
         // One line that says whether the shared actions registered. If a
         // button ever misbehaves again, this answers "is the hook there?"
