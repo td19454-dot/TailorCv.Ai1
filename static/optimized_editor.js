@@ -9,9 +9,13 @@
 
     const A4_WIDTH_MM  = 210;
     const A4_HEIGHT_MM = 297;
+    const LETTER_WIDTH_MM  = 215.9;
+    const LETTER_HEIGHT_MM = 279.4;
     const MM_TO_PX     = 96 / 25.4;
     const A4_WIDTH_PX  = A4_WIDTH_MM  * MM_TO_PX;
     const A4_HEIGHT_PX = A4_HEIGHT_MM * MM_TO_PX;
+    const LETTER_WIDTH_PX  = LETTER_WIDTH_MM  * MM_TO_PX;
+    const LETTER_HEIGHT_PX = LETTER_HEIGHT_MM * MM_TO_PX;
     const PAGE_GAP_PX  = 24;
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -44,6 +48,14 @@
     let currentLineSpacing       = 1;
     let baseLineSpacingsCaptured = false;
     let currentAccentColor       = null;
+    let legacyDesign             = {
+        paper: "A4",
+        font: "Arial",
+        nameCase: "capitalize",
+        delimiter: "◇",
+        listStyle: "disc",
+        dateFormat: "MMM 'YY",
+    };
     let allTemplates             = [];
     // The frame's load handler re-runs on every srcdoc swap, including the one
     // that applies confirmed skills, so the prompt is shown at most once.
@@ -80,6 +92,18 @@
         if (fillPct >= 90) { setStatus("Perfect fit on 1 page. Ready to download!"); return; }
         if (fillPct <= 78) { setStatus("Lots of space left — press A+ to increase font size."); return; }
         setStatus("Good fit. You can nudge font (A+) if you like.");
+    }
+
+    function pageWidthPx() {
+        return legacyDesign.paper === "Letter" ? LETTER_WIDTH_PX : A4_WIDTH_PX;
+    }
+
+    function pageHeightPx() {
+        return legacyDesign.paper === "Letter" ? LETTER_HEIGHT_PX : A4_HEIGHT_PX;
+    }
+
+    function paperCssSize() {
+        return legacyDesign.paper === "Letter" ? "8.5in 11in" : "8.27in 11.69in";
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -211,6 +235,238 @@ document.addEventListener("DOMContentLoaded", function () {
         if (guidance) guidance.textContent = "Default spacing.";
         setStatus("Line spacing reset to default.");
         scheduleServerEstimate();
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       STYLE SETTINGS PANEL
+    ───────────────────────────────────────────────────────────────────────── */
+    const DESIGN_TEXT_SEL = "body,h1,h2,h3,h4,h5,h6,p,li,span,a,strong,em,b,i,small,td,th,div";
+
+    function cssString(value) {
+        return JSON.stringify(String(value == null ? "" : value));
+    }
+
+    function listStyleCss(value) {
+        if (value === "circle" || value === "square" || value === "decimal" || value === "none") return value;
+        return "disc";
+    }
+
+    function nameTransformCss(value) {
+        if (value === "uppercase") return "uppercase";
+        if (value === "lowercase") return "lowercase";
+        return "none";
+    }
+
+    function applyLegacyDesignSettings(doc) {
+        if (!doc || !doc.head) return;
+        let style = doc.getElementById("tailorcv-style-settings");
+        if (!style) {
+            style = doc.createElement("style");
+            style.id = "tailorcv-style-settings";
+            doc.head.appendChild(style);
+        }
+        style.textContent = `
+@page { size: ${paperCssSize()}; margin: ${legacyDesign.marginY || 0.39}in ${legacyDesign.marginX || 0.39}in; }
+${DESIGN_TEXT_SEL} {
+  font-family: ${cssString(legacyDesign.font)}, serif !important;
+}
+body {
+  padding: ${legacyDesign.marginY || 0.39}in ${legacyDesign.marginX || 0.39}in !important;
+  box-sizing: border-box !important;
+}
+h1, .name, .resume-name, .header-name {
+  text-transform: ${nameTransformCss(legacyDesign.nameCase)} !important;
+}
+ul, ol {
+  list-style-type: ${listStyleCss(legacyDesign.listStyle)} !important;
+}
+a, .contact a, .links a {
+  color: ${legacyDesign.link || "#000000"} !important;
+}
+.contact-item + .contact-item::before,
+.project-state-contact-separator::before {
+  content: " ${String(legacyDesign.delimiter || "◇").replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
+}
+`;
+        formatDates(doc);
+    }
+
+    const MONTHS = {
+        jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3,
+        apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7,
+        aug: 8, august: 8, sep: 9, sept: 9, september: 9,
+        oct: 10, october: 10, nov: 11, november: 11, dec: 12, december: 12,
+    };
+    const MONTH_ABBR = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    function formatDateToken(token) {
+        const raw = String(token || "");
+        let m = raw.match(/\b([A-Za-z]{3,9})\.?\s+('?\d{2}|\d{4})\b/);
+        let month, year;
+        if (m) {
+            month = MONTHS[m[1].toLowerCase()];
+            year = m[2].replace(/^'/, "");
+        } else {
+            m = raw.match(/\b(\d{1,2})\/(\d{2,4})\b/);
+            if (!m) return raw;
+            month = Number(m[1]);
+            year = m[2];
+        }
+        if (!month || month < 1 || month > 12) return raw;
+        const yyyy = year.length === 2 ? "20" + year : year;
+        const yy = yyyy.slice(-2);
+        if (legacyDesign.dateFormat === "MMM YYYY") return `${MONTH_ABBR[month - 1]} ${yyyy}`;
+        if (legacyDesign.dateFormat === "MM/YYYY") return `${String(month).padStart(2, "0")}/${yyyy}`;
+        if (legacyDesign.dateFormat === "YYYY") return yyyy;
+        return `${MONTH_ABBR[month - 1]} '${yy}`;
+    }
+
+    function formatDates(doc) {
+        if (!doc || !doc.body) return;
+        const walker = doc.createTreeWalker(doc.body, NodeFilter.SHOW_TEXT, {
+            acceptNode(node) {
+                const parent = node.parentElement;
+                if (!parent || /^(SCRIPT|STYLE|TEXTAREA|INPUT|SELECT)$/i.test(parent.tagName)) {
+                    return NodeFilter.FILTER_REJECT;
+                }
+                return /\b([A-Za-z]{3,9}\.?\s+'?\d{2,4}|\d{1,2}\/\d{2,4})\b/.test(node.nodeValue || "")
+                    ? NodeFilter.FILTER_ACCEPT
+                    : NodeFilter.FILTER_REJECT;
+            }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+            if (!node.parentElement.dataset.tailorcvOriginalDateText) {
+                node.parentElement.dataset.tailorcvOriginalDateText = node.nodeValue;
+            }
+            const original = node.parentElement.dataset.tailorcvOriginalDateText;
+            node.nodeValue = original.replace(/\b([A-Za-z]{3,9}\.?\s+'?\d{2,4}|\d{1,2}\/\d{2,4})\b/g, formatDateToken);
+        });
+    }
+
+    function setSegmentedValue(control, value) {
+        document.querySelectorAll(`.style-segmented[data-style-control="${control}"] button`).forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.value === value);
+        });
+    }
+
+    function syncRangeNumber(rangeId, inputId, value, unit) {
+        const range = document.getElementById(rangeId);
+        const input = document.getElementById(inputId);
+        if (range) range.value = String(value);
+        if (input) input.value = unit ? `${value} ${unit}` : String(value);
+    }
+
+    function setFontSizePt(value) {
+        const v = Math.max(7, Math.min(14, Number(value) || 11));
+        currentZoom = v / 11;
+        syncRangeNumber("font-size-range", "font-size-input", v, "pt");
+        applyWordStylePreview();
+        updateFontSizeBadge();
+        setStatus(`Font size: ${v} pt.`);
+    }
+
+    function setLineHeightValue(value) {
+        const v = Math.max(1, Math.min(2.4, Number(value) || 1.125));
+        currentLineSpacing = v / 1.125;
+        syncRangeNumber("line-height-range", "line-height-input", v, "");
+        if (frame && frame.contentDocument) {
+            captureBaseLineSpacing(frame.contentDocument);
+            applyLineSpacing(frame.contentDocument, currentLineSpacing);
+        }
+        const guidance = document.getElementById("spacing-guidance");
+        if (guidance) guidance.textContent = v <= 1.15 ? "Default spacing." : "Comfortable spacing.";
+        applyWordStylePreview();
+        setStatus(`Line height: ${v}.`);
+    }
+
+    function setMargin(axis, value) {
+        const max = axis === "x" ? 1.5 : 2;
+        const v = Math.max(0.2, Math.min(max, Number(value) || 0.39));
+        if (axis === "x") {
+            legacyDesign.marginX = v;
+            syncRangeNumber("margin-x-range", "margin-x-input", v, "in");
+        } else {
+            legacyDesign.marginY = v;
+            syncRangeNumber("margin-y-range", "margin-y-input", v, "in");
+        }
+        applyWordStylePreview();
+        setStatus("Margins updated.");
+    }
+
+    function buildLinkColorPanel() {
+        const container = document.getElementById("tc-link-panel-container");
+        if (!container) return;
+        const colors = ["#000000", "#0b7de3", "#7c3aed", "#ff5a5f", "#f5a623", "#2ec9bd", "#d61f32"];
+        container.innerHTML = `
+            <div class="tc-accent-presets">
+                ${colors.map(c => `<button class="tc-accent-swatch ${legacyDesign.link === c ? "active" : ""}" type="button" data-hex="${c}" style="background:${c}" title="${c}"></button>`).join("")}
+                <input class="tc-accent-swatch tc-accent-custom-input" type="color" value="${legacyDesign.link}" title="Custom link color">
+            </div>
+        `;
+        container.querySelectorAll("button[data-hex]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                legacyDesign.link = btn.dataset.hex;
+                buildLinkColorPanel();
+                applyWordStylePreview();
+                setStatus(`Link color: ${legacyDesign.link}`);
+            });
+        });
+        container.querySelector("input[type='color']")?.addEventListener("input", e => {
+            legacyDesign.link = e.target.value;
+            container.querySelectorAll(".tc-accent-swatch").forEach(s => s.classList.remove("active"));
+            applyWordStylePreview();
+            setStatus(`Link color: ${legacyDesign.link}`);
+        });
+    }
+
+    function bindStyleSettings() {
+        const paper = document.getElementById("paper-size-select");
+        if (paper) {
+            paper.value = legacyDesign.paper;
+            paper.addEventListener("change", () => {
+                legacyDesign.paper = paper.value === "Letter" ? "Letter" : "A4";
+                applyWordStylePreview();
+                setStatus(`Paper size: ${legacyDesign.paper}.`);
+            });
+        }
+
+        const font = document.getElementById("font-family-select");
+        if (font) {
+            font.value = legacyDesign.font;
+            font.addEventListener("change", () => {
+                legacyDesign.font = font.value;
+                applyWordStylePreview();
+                setStatus(`Font: ${legacyDesign.font}.`);
+            });
+        }
+
+        [
+            ["font-size-range", "font-size-input", "pt", setFontSizePt],
+            ["line-height-range", "line-height-input", "", setLineHeightValue],
+            ["margin-x-range", "margin-x-input", "in", v => setMargin("x", v)],
+            ["margin-y-range", "margin-y-input", "in", v => setMargin("y", v)],
+        ].forEach(([rangeId, inputId, unit, fn]) => {
+            const range = document.getElementById(rangeId);
+            const input = document.getElementById(inputId);
+            range?.addEventListener("input", () => fn(parseFloat(range.value)));
+            input?.addEventListener("change", () => fn(parseFloat(String(input.value).replace(/[^0-9.]/g, ""))));
+        });
+
+        document.querySelectorAll(".style-segmented[data-style-control]").forEach(group => {
+            group.addEventListener("click", e => {
+                const btn = e.target.closest("button[data-value]");
+                if (!btn) return;
+                const control = group.dataset.styleControl;
+                legacyDesign[control] = btn.dataset.value;
+                setSegmentedValue(control, btn.dataset.value);
+                applyWordStylePreview();
+                setStatus("Style setting updated.");
+            });
+        });
+
+        buildLinkColorPanel();
     }
 
     /* ─────────────────────────────────────────────────────────────────────────
@@ -643,6 +899,7 @@ hr, .divider, [class*="divider"],
 
         captureBaseLineSpacing(doc);
         applyLineSpacing(doc, currentLineSpacing);
+        applyLegacyDesignSettings(doc);
 
         if (currentAccentColor) {
             applyAccentColor(doc, currentAccentColor);
@@ -654,9 +911,11 @@ hr, .divider, [class*="divider"],
         const availableWidth = previewWrap
             ? Math.max(320, previewWrap.clientWidth - (isMobile ? 0 : 32))
             : 760;
-        const viewScale      = Math.min(1, availableWidth / A4_WIDTH_PX);
+        const pageW          = pageWidthPx();
+        const pageH          = pageHeightPx();
+        const viewScale      = Math.min(1, availableWidth / pageW);
 
-        frame.style.width  = `${A4_WIDTH_PX}px`;
+        frame.style.width  = `${pageW}px`;
         frame.style.height = "9999px";
 
         void root.offsetHeight;
@@ -670,9 +929,9 @@ hr, .divider, [class*="divider"],
         }
         
         // Ensure content fills at least one full page
-        contentHeightPx = Math.max(contentHeightPx, A4_HEIGHT_PX);
+        contentHeightPx = Math.max(contentHeightPx, pageH);
 
-        lastFillRatio  = contentHeightPx / A4_HEIGHT_PX;
+        lastFillRatio  = contentHeightPx / pageH;
         estimatedPages = Math.max(1,
             lastFillRatio > 1.01 ? Math.ceil(lastFillRatio) : 1
         );
@@ -692,8 +951,8 @@ html {
   height: auto !important;
 }
 body {
-  width:  ${A4_WIDTH_PX}px !important;
-  min-height: ${A4_HEIGHT_PX}px !important;
+  width:  ${pageW}px !important;
+  min-height: ${pageH}px !important;
   margin: 0 auto !important;
   padding: 0 !important;
   background: #ffffff !important;
@@ -720,10 +979,10 @@ body {
         renderPageBreaks(doc, estimatedPages);
 
         // Ensure frame height is at least one full page, with appropriate gaps
-        const minFrameHeight = A4_HEIGHT_PX + PAGE_GAP_PX * 2;
+        const minFrameHeight = pageH + PAGE_GAP_PX * 2;
         const frameHeight = Math.max(minFrameHeight, contentHeightPx + PAGE_GAP_PX * (estimatedPages + 1));
 
-        frame.style.width           = `${A4_WIDTH_PX}px`;
+        frame.style.width           = `${pageW}px`;
         frame.style.height          = `${Math.ceil(frameHeight)}px`;
         frame.style.transform       = `scale(${viewScale})`;
         frame.style.transformOrigin = "top left";
@@ -763,6 +1022,7 @@ body {
     function renderPageBreaks(doc, pages) {
         removePageGuides(doc);
         if (pages <= 1) return;
+        const pageH = pageHeightPx();
 
         const host = doc.createElement("div");
         host.id = "tailorcv-page-guides";
@@ -772,14 +1032,14 @@ body {
             top:           "0",
             left:          "0",
             width:         "100%",
-            height:        `${A4_HEIGHT_PX * pages}px`,
+            height:        `${pageH * pages}px`,
             pointerEvents: "none",
             zIndex:        "2147483646",
             overflow:      "visible",
         });
 
         for (let i = 1; i < pages; i++) {
-            const y = A4_HEIGHT_PX * i;
+            const y = pageH * i;
 
             const gap = doc.createElement("div");
             Object.assign(gap.style, {
@@ -3531,6 +3791,7 @@ body.tc-chg-open #intercom-container { display: none !important; }
         currentHtml              = addEditingOverlay(payload.html);
 
         injectHostPageStyles();
+        bindStyleSettings();
 
         frame.srcdoc = currentHtml;
         frame.addEventListener("load", function onLoad() {

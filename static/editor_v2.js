@@ -110,24 +110,24 @@
     /* ── Design defaults. Mirrors the reference "Style Settings" panel. ──── */
     const DESIGN_DEFAULTS = {
         paper: "A4",
-        font: "Georgia",
-        fontSize: 10.5,
-        lineHeight: 1.2,
+        font: "Times New Roman",
+        fontSize: 11,
+        lineHeight: 1.125,
         // A resume's own template already carries page padding, so stacking a
         // 1.4in margin on top left roughly two inches of dead space above the
         // name. 0.5in matches what the reference design renders.
-        marginX: 0.5,
-        marginY: 0.5,
-        accent: "#111827",
-        link: "#2563eb",
+        marginX: 0.39,
+        marginY: 0.39,
+        accent: "#000000",
+        link: "#000000",
         nameCase: "capitalize",
         delimiter: "◇",
         listStyle: "•",
         dateFormat: "MMM 'YY",
     };
 
-    const SWATCHES = ["#111827", "#2563eb", "#7c3aed", "#f87171",
-                      "#f59e0b", "#14b8a6", "#dc2626"];
+    const SWATCHES = ["#000000", "#0b7de3", "#7c3aed", "#ff5a5f",
+                      "#f5a623", "#2ec9bd", "#d61f32"];
 
     const FONTS = ["Georgia", "Times New Roman", "Garamond", "Calibri",
                    "Arial", "Helvetica", "Verdana", "Tahoma", "Cambria"];
@@ -1644,13 +1644,15 @@
         const paneMap = {};
 
         [["content", "person", "Resume Content"],
+         ["ai", "sparkle", "AI Assistant"],
          ["design", "palette", "Design"]].forEach(([key, ic, label], i) => {
-            const t = el("button", "edv2-tab" + (i === 0 ? " on" : ""));
+            const selected = key === "design";
+            const t = el("button", "edv2-tab" + (selected ? " on" : ""));
             t.type = "button";
             t.innerHTML = SVG[ic];
             t.appendChild(el("span", null, label));
             const pane = el("div", "edv2-pane");
-            if (i !== 0) pane.hidden = true;
+            if (!selected) pane.hidden = true;
             paneMap[key] = pane;
             panes.appendChild(pane);
             t.addEventListener("click", () => {
@@ -1693,6 +1695,7 @@
         document.body.appendChild(root);
 
         buildContentPane(paneMap.content);
+        buildAiPane(paneMap.ai);
         buildDesignPane(paneMap.design);
 
         if (payload.html) paintFrame(payload.html);
