@@ -52,6 +52,24 @@
   border-color: rgba(124,58,237,.7);
 }
 
+/* Tabs: the user's own details vs answers remembered from specific forms */
+.pf-tabs {
+  display: flex; gap: 4px; margin: 0 0 18px; border-bottom: 1px solid rgba(99,130,200,.22);
+}
+.pf-tabs button {
+  background: none; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  color: #9fb0cc; font: inherit; font-size: .92rem; font-weight: 700; padding: 10px 14px; cursor: pointer;
+}
+.pf-tabs button:hover { color: #eaf1ff; }
+.pf-tabs button.on { color: #eaf1ff; border-bottom-color: #7c3aed; }
+.pf-count {
+  display: inline-block; min-width: 20px; margin-left: 4px; padding: 0 6px; border-radius: 99px;
+  background: rgba(124,58,237,.25); color: #ddd6fe; font-size: .72rem; line-height: 18px; text-align: center;
+}
+.pf-intro a { color: #8fb4ff; }
+#pf-panel-answers { max-width: 860px; }
+#pf-answers-status { margin: 10px 0 0; }
+
 /* Saved answers */
 .pf-answers { display: flex; flex-direction: column; gap: 10px; }
 .pf-answer {

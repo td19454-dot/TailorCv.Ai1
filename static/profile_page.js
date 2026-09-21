@@ -6,7 +6,9 @@
   if (!form) return;
   var statusEl = document.getElementById("pf-status");
   var saveBtn = document.getElementById("pf-save");
-  var answersEl = document.getElementById("pf-answers");
+  var answersEl = document.getElementById("pf-saved-list");
+  var answersStatusEl = document.getElementById("pf-answers-status");
+  var answersCountEl = document.getElementById("pf-answers-count");
 
   // Every JSON write echoes the csrftoken cookie as X-CSRFToken — the server's
   // double-submit check rejects a JSON POST without it.
@@ -35,6 +37,37 @@
       } catch (e) { /* extension not installed */ }
     });
   }
+
+  // ── tabs ───────────────────────────────────────────────────
+  // "Your details" is the applicant's own profile; "Saved answers" holds
+  // answers remembered from specific forms, which are mostly employer-specific
+  // and would otherwise bury the profile. #saved-answers opens the second tab.
+
+  function showTab(name) {
+    ["details", "answers"].forEach(function (t) {
+      var on = t === name;
+      var tab = document.getElementById("pf-tab-" + t);
+      tab.classList.toggle("on", on);
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+      document.getElementById("pf-panel-" + t).hidden = !on;
+    });
+  }
+
+  document.getElementById("pf-tab-details").addEventListener("click", function () {
+    showTab("details");
+    history.replaceState(null, "", location.pathname);
+  });
+  document.getElementById("pf-tab-answers").addEventListener("click", function () {
+    showTab("answers");
+    history.replaceState(null, "", "#saved-answers");
+  });
+  document.addEventListener("click", function (e) {
+    var link = e.target.closest("a[data-tab]");
+    if (!link) return;
+    e.preventDefault();
+    document.getElementById("pf-tab-" + link.getAttribute("data-tab")).click();
+  });
+  if (location.hash === "#saved-answers") showTab("answers");
 
   // ── collecting the form ────────────────────────────────────
 
@@ -143,7 +176,23 @@
     return d.innerHTML;
   }
 
+  function setAnswersStatus(text, kind) {
+    answersStatusEl.textContent = text || "";
+    answersStatusEl.className = "pf-status" + (kind ? " pf-" + kind : "");
+  }
+
+  function updateCount() {
+    var n = answersEl.querySelectorAll(".pf-answer").length;
+    answersCountEl.textContent = String(n);
+    answersCountEl.hidden = !n;
+  }
+
   function renderAnswers(list) {
+    renderAnswerList(list);
+    updateCount();
+  }
+
+  function renderAnswerList(list) {
     if (!list.length) {
       answersEl.innerHTML = '<p class="pf-muted">None yet. When you answer a question in the ' +
         'extension\'s autofill panel with “Remember this answer” ticked, it appears here.</p>';
@@ -198,10 +247,10 @@
         })
         .then(function (res) {
           btn.textContent = res.ok ? "✓ Saved" : "Save";
-          if (res.ok) notifyExtension();
+          if (res.ok) { setAnswersStatus(""); notifyExtension(); }
           else {
             btn.disabled = false;
-            setStatus((res.body && res.body.detail) || "Couldn't save that answer.", "err");
+            setAnswersStatus((res.body && res.body.detail) || "Couldn't save that answer.", "err");
           }
         })
         .catch(function () { btn.disabled = false; btn.textContent = "Save"; });
@@ -210,7 +259,9 @@
       fetch("/api/profile/answers/" + id, { method: "DELETE", headers: jsonHeaders() })
         .then(function (r) {
           if (r.ok) { card.remove(); notifyExtension(); }
+          else setAnswersStatus("Couldn't forget that answer. Try again.", "err");
           if (!answersEl.querySelector(".pf-answer")) renderAnswers([]);
+          else updateCount();
         });
     }
   });

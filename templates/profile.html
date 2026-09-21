@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/header-footer.css?v=8">
     <link rel="stylesheet" href="/static/style2.css?v=7">
     <link rel="stylesheet" href="/static/job_dashboard.css?v=2">
-    <link rel="stylesheet" href="/static/profile.css?v=1">
+    <link rel="stylesheet" href="/static/profile.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -48,12 +48,19 @@
         </div>
         {% endif %}
 
+        <div class="pf-tabs" role="tablist" aria-label="Profile">
+            <button type="button" role="tab" id="pf-tab-details" aria-controls="pf-panel-details"
+                    aria-selected="true" class="on">Your details</button>
+            <button type="button" role="tab" id="pf-tab-answers" aria-controls="pf-panel-answers"
+                    aria-selected="false">Saved answers <span id="pf-answers-count" class="pf-count" hidden></span></button>
+        </div>
+
+        <div id="pf-panel-details" role="tabpanel" aria-labelledby="pf-tab-details">
         <div class="pf-layout">
             <nav class="pf-toc" aria-label="Profile sections">
                 {% for sid, title, specs in sections %}
                 <a href="#pf-{{ sid }}">{{ title }}</a>
                 {% endfor %}
-                <a href="#pf-saved-answers">Saved answers</a>
             </nav>
 
             <form id="pf-form" class="pf-form" novalidate>
@@ -105,19 +112,26 @@
                 </section>
                 {% endfor %}
 
-                <section class="pf-card" id="pf-saved-answers">
-                    <h2>Saved answers</h2>
-                    <p class="pf-intro">Answers you gave to specific application questions.
-                       Autofill reuses them when the same question — or one worded
-                       differently — comes up on another form.</p>
-                    <div id="pf-answers" class="pf-answers"><p class="pf-muted">Loading…</p></div>
-                </section>
-
                 <div class="pf-savebar">
                     <span id="pf-status" class="pf-status" role="status" aria-live="polite"></span>
                     <button type="submit" class="jd-btn pf-save" id="pf-save">Save profile</button>
                 </div>
             </form>
+        </div>
+
+        </div>
+
+        <div id="pf-panel-answers" role="tabpanel" aria-labelledby="pf-tab-answers" hidden>
+            <section class="pf-card">
+                <h2>Saved answers</h2>
+                <p class="pf-intro">Answers you gave to questions on specific application forms,
+                   such as an employer's conflict-of-interest declaration. Autofill reuses one when
+                   the same question, or one worded differently, comes up on another form.
+                   Edit or forget any of them here. Your own details are on the
+                   <a href="#details" data-tab="details">Your details</a> tab.</p>
+                <div id="pf-saved-list" class="pf-answers"><p class="pf-muted">Loading…</p></div>
+                <p id="pf-answers-status" class="pf-status" role="status" aria-live="polite"></p>
+            </section>
         </div>
 
         <datalist id="pf-dial-codes">
@@ -146,6 +160,6 @@
       window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
         {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
     </script>
-    <script src="/static/profile_page.js?v=1" defer></script>
+    <script src="/static/profile_page.js?v=2" defer></script>
 </body>
 </html>
