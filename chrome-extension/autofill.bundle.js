@@ -938,7 +938,12 @@ what when where which who will with would you your now future
     { key: "phone", labels: ["phone", "phone number", "mobile", "mobile number", "telephone", "contact number", "cell"] },
     // location
     { key: "location", labels: ["location", "current location", "where are you based", "where do you live"] },
-    { key: "address", labels: ["address", "street address", "address line 1", "mailing address"] },
+    // Line 1 / line 2 are their own keys. "address line 1" used to map to the
+    // whole-address key, which held city+state+country — so a street box got a
+    // place name.
+    { key: "address_line1", labels: ["address line 1", "address line1", "address 1", "street address", "street", "street line 1"] },
+    { key: "address_line2", labels: ["address line 2", "address line2", "address 2", "apartment", "suite", "street line 2"] },
+    { key: "address", labels: ["address", "mailing address", "full address", "residential address", "postal address"] },
     { key: "address_city", labels: ["city", "town", "current city", "city of residence"] },
     { key: "address_state", labels: ["state", "province", "region", "state province"] },
     { key: "address_country", labels: ["country", "country of residence"] },

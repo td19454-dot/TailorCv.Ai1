@@ -479,6 +479,16 @@ test('a one-word synonym still absorbs a harmless qualifier or a sibling word', 
   eq(m.matchFieldKey('Family Name').key, 'last_name');
 });
 
+test('each address box maps to its own part', () => {
+  eq(m.matchFieldKey('Address Line 1').key, 'address_line1');
+  eq(m.matchFieldKey('Address Line 2').key, 'address_line2');
+  eq(m.matchFieldKey('Street Address').key, 'address_line1');
+  eq(m.matchFieldKey('Address').key, 'address');
+  eq(m.matchFieldKey('City').key, 'address_city');
+  eq(m.matchFieldKey('Postal Code').key, 'postal_code');
+  eq(m.matchFieldKey('Region').key, 'address_state');
+});
+
 test('matchFieldKey returns null for a question it has no key for', () => {
   eq(m.matchFieldKey('Have you ever used Robinhood?'), null);
   eq(m.matchFieldKey('Which of our products do you use most?'), null);

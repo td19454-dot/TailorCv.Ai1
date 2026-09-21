@@ -607,6 +607,48 @@ test('Legal Name: a stored middle name goes in the Middle Name box', async () =>
   });
 });
 
+// ── Workday Address section (the reported city bug) ──────────
+
+const ADDRESS = `
+<div data-automation-id="applyFlowPage">
+  <div data-automation-id="formField-addressSection_addressLine1">
+    <label for="a1">Address Line 1<abbr>*</abbr></label><input id="a1" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-addressSection_addressLine2">
+    <label for="a2">Address Line 2<abbr>*</abbr></label><input id="a2" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-addressSection_city">
+    <label for="a3">City<abbr>*</abbr></label><input id="a3" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-addressSection_postalCode">
+    <label for="a4">Postal Code<abbr>*</abbr></label><input id="a4" type="text" aria-required="true"></div>
+  <div data-automation-id="formField-addressSection_countryRegion">
+    <label for="a5">Region</label>
+    <button type="button" aria-haspopup="listbox" id="a5">Select One</button></div>
+</div>`;
+
+// What the server now sends for "36/F Sitalatala Lane, Kolkata, 700011".
+const ADDRESS_BANK = Object.assign({}, BANK, {
+  address: '36/F Sitalatala Lane, Kolkata, 700011',
+  address_line1: '36/F Sitalatala Lane',
+  address_city: 'Kolkata',
+  postal_code: '700011',
+});
+delete ADDRESS_BANK.address_state;
+delete ADDRESS_BANK.address_country;
+
+test('Address: line 1 gets the street, City gets the city', async () => {
+  await withForm(ADDRESS, {
+    serverAnswers: { 'Region': 'Kolkata', 'Address Line 2*': 'Kolkata' },
+  }, async (env) => {
+    const result = await run_.runAutofill(Object.assign({}, CTX, { answerBank: ADDRESS_BANK }), null);
+    eq(valueOf(env, '#a1'), '36/F Sitalatala Lane');
+    eq(valueOf(env, '#a3'), 'Kolkata', 'the city, not the street');
+    eq(valueOf(env, '#a4'), '700011');
+    eq(valueOf(env, '#a2'), '', 'nothing on file for line 2, and the model must not invent one');
+    eq(byLabel(result.decisions, 'line 2').action, p.ASK, 'required, so it is asked');
+    eq(env.document.getElementById('a5').textContent, 'Select One',
+       'no region on file: left alone rather than tried and failed');
+  });
+});
+
 // ── Ashby ────────────────────────────────────────────────────
 
 test('Ashby: ARIA-labelled fields resolve and the date is shaped for the input', async () => {

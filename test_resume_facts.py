@@ -14,22 +14,28 @@ import traceback
 from auto_apply import resume_facts as rf
 
 
+def _place(parts):
+    """The four place parts. split_location also returns street/area, which
+    test_address_parts.py covers."""
+    return {k: parts[k] for k in ("city", "state", "country", "postal_code")}
+
+
 # ── split_location ────────────────────────────────────────────────────────
 
 def test_city_state_country():
-    assert rf.split_location("Kolkata, West Bengal, India") == {
+    assert _place(rf.split_location("Kolkata, West Bengal, India")) == {
         "city": "Kolkata", "state": "West Bengal", "country": "India", "postal_code": ""
     }
 
 
 def test_city_country():
-    assert rf.split_location("Bangalore, India") == {
+    assert _place(rf.split_location("Bangalore, India")) == {
         "city": "Bangalore", "state": "", "country": "India", "postal_code": ""
     }
 
 
 def test_us_city_state():
-    assert rf.split_location("Austin, TX") == {
+    assert _place(rf.split_location("Austin, TX")) == {
         "city": "Austin", "state": "TX", "country": "", "postal_code": ""
     }
 
@@ -37,32 +43,32 @@ def test_us_city_state():
 def test_postal_code_before_the_country():
     # The zip sits on the part BEFORE the country, which is why the country is
     # removed first.
-    assert rf.split_location("San Francisco, CA 94107, USA") == {
+    assert _place(rf.split_location("San Francisco, CA 94107, USA")) == {
         "city": "San Francisco", "state": "CA", "country": "USA", "postal_code": "94107"
     }
 
 
 def test_uk_postcode():
-    got = rf.split_location("London, EC1A 1BB, United Kingdom")
+    got = _place(rf.split_location("London, EC1A 1BB, United Kingdom"))
     assert got["country"] == "United Kingdom", got
     assert got["postal_code"].upper() == "EC1A 1BB", got
 
 
 def test_indian_six_digit_pincode():
-    got = rf.split_location("Kolkata, West Bengal 700001, India")
+    got = _place(rf.split_location("Kolkata, West Bengal 700001, India"))
     assert got["postal_code"] == "700001", got
     assert got["city"] == "Kolkata", got
 
 
 def test_a_bare_city_is_not_promoted_to_a_country():
-    assert rf.split_location("Kolkata") == {
+    assert _place(rf.split_location("Kolkata")) == {
         "city": "Kolkata", "state": "", "country": "", "postal_code": ""
     }
 
 
 def test_nothing_in_nothing_out():
     for value in ("", None, "   ", ","):
-        assert rf.split_location(value) == {
+        assert _place(rf.split_location(value)) == {
             "city": "", "state": "", "country": "", "postal_code": ""
         }, value
 
@@ -162,7 +168,7 @@ def test_normalize_trims_and_shapes():
     assert facts["version"] == rf.FACTS_VERSION
     assert facts["personal_info"]["full_name"] == "Ada Lovelace"
     assert facts["personal_info"]["portfolio"] == ""
-    assert facts["address"] == {
+    assert _place(facts["address"]) == {
         "city": "Kolkata", "state": "West Bengal", "country": "India", "postal_code": ""
     }
     assert facts["gpa"] == "8.7/10"

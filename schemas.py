@@ -58,6 +58,14 @@ class ApplyProfileRequest(BaseModel):
     middleName: str | None = Field(default=None, max_length=80)
     lastName: str | None = Field(default=None, max_length=80)
 
+    # Postal address in parts; None = not sent (leave stored values alone).
+    addressLine1: str | None = Field(default=None, max_length=200)
+    addressLine2: str | None = Field(default=None, max_length=200)
+    city: str | None = Field(default=None, max_length=100)
+    state: str | None = Field(default=None, max_length=100)
+    postalCode: str | None = Field(default=None, max_length=20)
+    country: str | None = Field(default=None, max_length=80)
+
     phone: str = Field(default="", max_length=40)
     location: str = Field(default="", max_length=160)
     linkedinUrl: str = Field(default="", max_length=300)

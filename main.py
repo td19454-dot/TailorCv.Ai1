@@ -629,6 +629,10 @@ def _ensure_apply_profile_columns() -> None:
     for name_col in ("first_name", "middle_name", "last_name"):
         if name_col not in cols:
             to_add.append(f"ADD COLUMN {name_col} VARCHAR(80)")
+    for addr_col, width in (("address_line1", 200), ("address_line2", 200), ("city", 100),
+                            ("state", 100), ("postal_code", 20), ("country", 80)):
+        if addr_col not in cols:
+            to_add.append(f"ADD COLUMN {addr_col} VARCHAR({width})")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:

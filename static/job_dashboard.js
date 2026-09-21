@@ -536,6 +536,19 @@
     field(nameGrid, "lastName", "Last name", "text", {});
     card.appendChild(nameGrid);
 
+    // Postal address in parts. Forms ask for City, Postal Code and Region in
+    // separate boxes, and guessing the parts from one free-text line put a
+    // street address in a City box. Pre-filled from that guess; check it.
+    card.appendChild(el("div", "jd-modal-sec", "Address"));
+    var addrGrid = el("div", "jd-fields");
+    field(addrGrid, "addressLine1", "Address line 1", "text", { placeholder: "House / flat, street" });
+    field(addrGrid, "addressLine2", "Address line 2 (optional)", "text", { placeholder: "Area, landmark" });
+    field(addrGrid, "city", "City", "text", {});
+    field(addrGrid, "state", "State / region", "text", {});
+    field(addrGrid, "postalCode", "Postal code", "text", {});
+    field(addrGrid, "country", "Country", "text", {});
+    card.appendChild(addrGrid);
+
     card.appendChild(el("div", "jd-modal-sec", "Contact"));
     var contactGrid = el("div", "jd-fields");
     field(contactGrid, "phone", "Phone", "tel", { placeholder: "+1 555 000 1111" });
@@ -674,7 +687,9 @@
     });
   }
 
-  var NAME_KEYS = ["firstName", "middleName", "lastName"];
+  // Assigned even when empty (see above) — an empty part is a real answer.
+  var NAME_KEYS = ["firstName", "middleName", "lastName",
+                   "addressLine1", "addressLine2", "city", "state", "postalCode", "country"];
 
   function openProfileModal(message, onSaved) {
     if (!modalEl) buildApplyProfileModal();

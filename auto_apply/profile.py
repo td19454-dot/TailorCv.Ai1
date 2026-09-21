@@ -102,6 +102,8 @@ class ApplicantProfile:
     # UserApplyProfile has a column for none of them. They rank BELOW anything
     # the user typed: a stored profile value wins, and a per-question answer in
     # UserApplyQA overrides both permanently.
+    address_line1: str = ""
+    address_line2: str = ""
     address_city: str = ""
     address_state: str = ""
     address_country: str = ""
@@ -156,6 +158,35 @@ def _split_name(full: str) -> tuple[str, str]:
     """(first, last). Kept for callers that predate middle names."""
     first, _middle, last = split_full_name(full)
     return first, last
+
+
+ADDRESS_KEYS = ("address_line1", "address_line2", "city", "state", "postal_code", "country")
+
+
+def resolve_address_parts(stored: dict, *free_text: str) -> dict:
+    """The address to fill forms with: saved parts win, else a parse of the
+    free-text location (profile first, then the resume's).
+
+    "Saved" means the user filled in a city or a first address line in their
+    profile. From then on every part is taken exactly as saved — an empty
+    Address Line 2 or State means empty, and is never refilled from the guess.
+    """
+    s = {k: str((stored or {}).get(k) or "").strip() for k in ADDRESS_KEYS}
+    if s["city"] or s["address_line1"]:
+        return s
+
+    from auto_apply.resume_facts import split_location
+
+    source = next((t for t in free_text if str(t or "").strip()), "")
+    guess = split_location(source)
+    return {
+        "address_line1": guess["street"],
+        "address_line2": guess["area"],
+        "city": guess["city"],
+        "state": guess["state"],
+        "postal_code": guess["postal_code"],
+        "country": guess["country"],
+    }
 
 
 def resolve_name_parts(stored: dict, account_name: str) -> dict:
@@ -260,6 +291,12 @@ def _profile_to_dict(prof) -> dict:
         "first_name": getattr(prof, "first_name", "") or "",
         "middle_name": getattr(prof, "middle_name", "") or "",
         "last_name": getattr(prof, "last_name", "") or "",
+        "address_line1": getattr(prof, "address_line1", "") or "",
+        "address_line2": getattr(prof, "address_line2", "") or "",
+        "city": getattr(prof, "city", "") or "",
+        "state": getattr(prof, "state", "") or "",
+        "postal_code": getattr(prof, "postal_code", "") or "",
+        "country": getattr(prof, "country", "") or "",
         "phone": prof.phone or "",
         "location": prof.location or "",
         "linkedin_url": prof.linkedin_url or "",
@@ -376,6 +413,10 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         return str(fact_keys.get(key) or "").strip()
 
     names = resolve_name_parts(prof, snap.get("name") or "")
+    addr = resolve_address_parts(
+        prof, prof.get("location") or "",
+        ((facts.get("personal_info") or {}).get("location") or "") if isinstance(facts, dict) else "",
+        derived.get("location") or "")
 
     p = ApplicantProfile(
         full_name=names["full"],
@@ -410,12 +451,14 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         qa_entries=snap.get("qa_entries") or [],
         agreed_to_employer_terms=bool(prof.get("agreed_to_employer_terms")),
         has_consent=bool(prof.get("has_consent")),
-        # Resume-derived, so under anything stored — pick() already prefers the
-        # profile, and these keys have no profile column at all today.
-        address_city=fact("address_city"),
-        address_state=fact("address_state"),
-        address_country=fact("address_country"),
-        postal_code=fact("postal_code"),
+        # Saved address parts win; otherwise the profile's free-text location is
+        # parsed, and only then the resume's.
+        address_line1=addr["address_line1"],
+        address_line2=addr["address_line2"],
+        address_city=addr["city"],
+        address_state=addr["state"],
+        address_country=addr["country"],
+        postal_code=addr["postal_code"],
         university=fact("university"),
         degree=fact("degree"),
         major=fact("major"),
@@ -512,8 +555,10 @@ def answer_bank(p: ApplicantProfile) -> dict:
         "last_name": p.last_name,
         "email": p.email,
         "phone": p.phone,
-        "location": p.location,
-        "current_city": p.location,
+        # "Location" questions want a place, not a street address: the saved or
+        # parsed city/state/country when known, else the free text as typed.
+        "location": _place(p) or p.location,
+        "current_city": p.address_city or p.location,
         "linkedin_url": _as_url(p.linkedin),
         "github_url": _as_url(p.github),
         "portfolio_or_website": _as_url(p.portfolio),
@@ -524,8 +569,13 @@ def answer_bank(p: ApplicantProfile) -> dict:
         # below when empty, so a user with no parsed facts produces a
         # byte-identical CANDIDATE_DATA blob to before these keys existed — the
         # server engine's prompt does not change for them at all.
-        "address": p.address_city and ", ".join(
-            x for x in (p.address_city, p.address_state, p.address_country) if x) or "",
+        # A single "Address" box gets the whole postal address; line 1 / line 2
+        # boxes get their own part. Previously "address" was city+state+country,
+        # so an Address Line 1 box got a place name instead of the street.
+        "address": ", ".join(x for x in (p.address_line1, p.address_line2, p.address_city,
+                                         p.address_state, p.postal_code, p.address_country) if x),
+        "address_line1": p.address_line1,
+        "address_line2": p.address_line2,
         "address_city": p.address_city,
         "address_state": p.address_state,
         "address_country": p.address_country,
@@ -570,6 +620,11 @@ def answer_bank(p: ApplicantProfile) -> dict:
     if p.qa_entries:
         bank["other_answers_on_file"] = [f"Q: {e['question']} A: {e['answer']}" for e in p.qa_entries]
     return bank
+
+
+def _place(p: ApplicantProfile) -> str:
+    """City, State, Country — the answer to "Where are you located?"."""
+    return ", ".join(x for x in (p.address_city, p.address_state, p.address_country) if x)
 
 
 def _as_url(value: str) -> str:

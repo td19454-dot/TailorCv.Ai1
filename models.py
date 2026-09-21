@@ -385,6 +385,17 @@ class UserApplyProfile(Base):
 
     phone = Column(String(40), nullable=True)
     location = Column(String(160), nullable=True)
+
+    # Postal address, in parts. `location` above is one free-text line, and
+    # guessing its parts at fill time put a street in a City box (it read
+    # "36/F Sitalatala Lane, Kolkata, 700011" as city "36/F Sitalatala Lane",
+    # region "Kolkata"). Saved here by the user; saved values win over any guess.
+    address_line1 = Column(String(200), nullable=True)
+    address_line2 = Column(String(200), nullable=True)
+    city = Column(String(100), nullable=True)
+    state = Column(String(100), nullable=True)
+    postal_code = Column(String(20), nullable=True)
+    country = Column(String(80), nullable=True)
     linkedin_url = Column(String(300), nullable=True)
     github_url = Column(String(300), nullable=True)
     portfolio_url = Column(String(300), nullable=True)

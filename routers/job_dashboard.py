@@ -596,10 +596,25 @@ def _profile_payload(prof: UserApplyProfile | None, resume_text: str, account_na
         "last_name": getattr(prof, "last_name", "") if prof else "",
     }, account_name)
 
+    # Same resolution the fill uses: saved parts, else a parse of the location.
+    from auto_apply.profile import ADDRESS_KEYS, resolve_address_parts
+
+    addr = resolve_address_parts(
+        {k: (getattr(prof, k, "") if prof else "") for k in ADDRESS_KEYS},
+        getattr(prof, "location", "") if prof else "",
+        derived.get("location", ""),
+    )
+
     return {
         "firstName": names["first"],
         "middleName": names["middle"],
         "lastName": names["last"],
+        "addressLine1": addr["address_line1"],
+        "addressLine2": addr["address_line2"],
+        "city": addr["city"],
+        "state": addr["state"],
+        "postalCode": addr["postal_code"],
+        "country": addr["country"],
         "phone": value("phone"),
         "location": value("location"),
         "linkedinUrl": value("linkedin_url", "linkedin"),
@@ -670,6 +685,12 @@ async def save_apply_profile(request: Request, payload: ApplyProfileRequest):
             prof.middle_name = payload.middleName.strip()
         if payload.lastName is not None:
             prof.last_name = payload.lastName.strip()
+        for attr, sent in (("address_line1", payload.addressLine1),
+                           ("address_line2", payload.addressLine2),
+                           ("city", payload.city), ("state", payload.state),
+                           ("postal_code", payload.postalCode), ("country", payload.country)):
+            if sent is not None:
+                setattr(prof, attr, sent.strip())
         prof.phone = payload.phone.strip()
         prof.location = payload.location.strip()
         prof.linkedin_url = payload.linkedinUrl.strip()

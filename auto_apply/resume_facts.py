@@ -188,18 +188,69 @@ _POSTAL_RE = re.compile(
 )
 
 
+# Regions recognised by name. Used to decide whether the last remaining part is
+# a state/province or a city — never to INFER one: a region is only ever taken
+# from what the text actually says.
+_INDIAN_STATES = {
+    "andhra pradesh", "arunachal pradesh", "assam", "bihar", "chhattisgarh", "goa",
+    "gujarat", "haryana", "himachal pradesh", "jharkhand", "karnataka", "kerala",
+    "madhya pradesh", "maharashtra", "manipur", "meghalaya", "mizoram", "nagaland",
+    "odisha", "orissa", "punjab", "rajasthan", "sikkim", "tamil nadu", "telangana",
+    "tripura", "uttar pradesh", "uttarakhand", "west bengal", "delhi", "new delhi",
+    "jammu and kashmir", "ladakh", "puducherry", "chandigarh",
+}
+_CA_PROVINCES = {
+    "ontario", "quebec", "british columbia", "alberta", "manitoba", "saskatchewan",
+    "nova scotia", "new brunswick", "newfoundland and labrador", "prince edward island",
+    "on", "qc", "bc", "ab", "mb", "sk", "ns", "nb", "nl", "pe",
+}
+
+# A part that is a street / house / building line rather than a place name: it
+# starts with a house number ("36/F Sitalatala Lane", "221B Baker Street", "Flat
+# 3B"), or names a thoroughfare or building. Resume headers routinely carry the
+# full postal address, and the old splitter — built for "City, Region" — read
+# "36/F Sitalatala Lane, Kolkata, 700011" as city "36/F Sitalatala Lane", region
+# "Kolkata".
+# Deliberately not "st", "dr" or "main": those appear inside real city names
+# (St. Louis, St Albans, Frankfurt am Main), and a city read as a street loses
+# the city entirely.
+_STREET_WORDS = re.compile(
+    r"\b(lane|ln|road|rd|street|avenue|ave|boulevard|blvd|drive|marg|sarani|gali|"
+    r"sector|block|plot|flat|apt|apartment|suite|floor|house|building|bldg|tower|"
+    r"society|enclave|layout)\b",
+    re.IGNORECASE,
+)
+
+
+def _looks_like_street(part: str) -> bool:
+    p = part.strip()
+    if not p:
+        return False
+    if re.match(r"^(#\s*)?\d", p):          # starts with a house/flat number
+        return True
+    return bool(_STREET_WORDS.search(p))
+
+
+def _is_region(part: str) -> bool:
+    p = part.strip().lower()
+    return (p in _US_STATES or p.upper() in _US_STATE_CODES
+            or p in _INDIAN_STATES or p in _CA_PROVINCES)
+
+
 def split_location(location: str) -> dict:
-    """Split "Kolkata, West Bengal, India" into its parts.
+    """Split a free-text address into street / area / city / state / postal / country.
 
-    Done here rather than in the extension so there is one implementation: the
-    server already holds the location string, and both the extension's answer
-    lookup and the server engine's own answer_bank want the parts.
+    Handles both shapes that turn up: a place ("Kolkata, West Bengal, India",
+    "Austin, TX") and a full postal address ("36/F Sitalatala Lane, Kolkata,
+    700011"). Done here rather than in the extension so there is one
+    implementation, used by both the extension and the server engine.
 
-    Anything not identified stays EMPTY rather than guessed. An empty field is
-    surfaced to the user as "needs your answer"; a wrong city is submitted
-    silently.
+    Anything not identified stays EMPTY rather than guessed — no country is
+    inferred from a postcode, no state from a city. An empty field is surfaced
+    to the user as "needs your answer"; a wrong city is submitted silently.
     """
-    out = {"city": "", "state": "", "country": "", "postal_code": ""}
+    out = {"street": "", "area": "", "city": "", "state": "", "country": "",
+           "postal_code": ""}
     raw = str(location or "").strip()
     if not raw:
         return out
@@ -219,19 +270,39 @@ def split_location(location: str) -> dict:
     m = _POSTAL_RE.search(parts[-1])
     if m:
         out["postal_code"] = m.group(1)
-        stripped = parts[-1].replace(m.group(0), "").strip().strip(",").strip()
+        stripped = parts[-1].replace(m.group(0), "").strip().strip(",").strip(" -").strip()
         parts = parts[:-1] + [stripped] if stripped else parts[:-1]
     if not parts:
         return out
 
-    # Whatever is last of two-or-more parts is the region, recognised or not:
-    # "Kolkata, West Bengal" is structurally the same as "Austin, TX", and
-    # treating an unrecognised region as part of the city put the whole string
-    # in a City box.
-    if len(parts) >= 2:
+    # The street: the leading run of street-like parts. Never the LAST part — a
+    # one-part address is a place, and the city has to come from somewhere.
+    street = []
+    while (len(parts) > 1 and _looks_like_street(parts[0])
+           # ...and a city must be left over: "Sector 62, Uttar Pradesh" has no
+           # city once the sector is taken, so the sector is the place.
+           and not (len(parts) == 2 and _is_region(parts[1]))):
+        street.append(parts.pop(0))
+    out["street"] = ", ".join(street)
+
+    if len(parts) >= 2 and _is_region(parts[-1]):
+        # "…, Kolkata, West Bengal" / "…, Austin, TX": a recognised region.
         out["state"] = parts[-1]
-        parts = parts[:-1]
-    out["city"] = ", ".join(parts)
+        out["city"] = parts[-2]
+        out["area"] = ", ".join(parts[:-2])
+    elif street:
+        # A postal address with no recognisable region: the last place name is
+        # the city, and anything between it and the street is a locality
+        # ("12 AB Road, Salt Lake, Kolkata" -> area "Salt Lake").
+        out["city"] = parts[-1]
+        out["area"] = ", ".join(parts[:-1])
+    elif len(parts) >= 2:
+        # A place with an unrecognised region ("Kolkata, Bengal", "Leeds,
+        # Yorkshire"): City, Region is by far the common shape.
+        out["state"] = parts[-1]
+        out["city"] = ", ".join(parts[:-1])
+    else:
+        out["city"] = parts[0]
     return out
 
 
