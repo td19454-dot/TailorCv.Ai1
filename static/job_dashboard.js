@@ -992,12 +992,10 @@
     });
   }
 
-  // /dashboard/jobs#profile opens the profile straight away. This is the link
-  // the Chrome extension uses ("Edit your application profile"), so someone who
-  // arrives from a half-filled application lands on the form, not on a job list
-  // they then have to find a button on.
   if (window.location.hash === "#profile") {
-    openProfileModal("", null);
+    // The profile now has its own page; older links (and older extension
+    // builds) that point here are forwarded to it.
+    window.location.replace("/profile");
   }
 
   function onSave(job, btn) {

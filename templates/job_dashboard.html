@@ -23,7 +23,7 @@
             <span class="jd-eyebrow">Job Dashboard</span>
             <h1>Find jobs, ranked by how well they match your resume</h1>
             <p>Search live job postings and see a match score for each one, computed against your saved base resume.</p>
-            <button type="button" id="jd-profile-link" class="jd-profile-link">Application profile</button>
+            <a href="/profile" class="jd-profile-link">Your application profile →</a>
         </div>
 
         <div id="jd-nudge" class="jd-nudge" hidden>
@@ -56,7 +56,7 @@
         </div>
     </main>
 
-    <script src="/static/auth_nav.js?v=16" defer></script>
+    <script src="/static/auth_nav.js?v=17" defer></script>
     <script src="/static/mobile_nav.js" defer></script>
     <script>
       // Extension ids to notify when the application profile is saved, so an
@@ -66,6 +66,6 @@
       window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
         {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
     </script>
-    <script src="/static/job_dashboard.js?v=4" defer></script>
+    <script src="/static/job_dashboard.js?v=5" defer></script>
 </body>
 </html>

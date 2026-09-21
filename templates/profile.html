@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "_google_analytics.html" %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile | TailorCV</title>
+    <meta name="description" content="The details TailorCV fills into job applications — name, address, phone, education and your saved answers.">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/static/style3.css">
+    <link rel="stylesheet" href="/static/header-footer.css?v=8">
+    <link rel="stylesheet" href="/static/style2.css?v=7">
+    <link rel="stylesheet" href="/static/job_dashboard.css?v=2">
+    <link rel="stylesheet" href="/static/profile.css?v=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style> html { background-color: #030014; } </style>
+</head>
+<body>
+    {% include "_nav.html" %}
+
+    <main class="jd-page pf-page">
+        <div class="jd-head">
+            <span class="jd-eyebrow">Profile</span>
+            <h1>Your application profile</h1>
+            <p>Everything TailorCV's autofill puts into a job application comes from here.
+               Change anything and every future application uses it.</p>
+        </div>
+
+        {% set suggested_count = model.fields.values() | selectattr("source", "equalto", "suggested") | list | length %}
+        {% if suggested_count %}
+        <div class="pf-banner">
+            <strong>{{ suggested_count }} value{{ "s" if suggested_count != 1 }} marked <span class="pf-badge pf-badge-suggested">Suggested</span></strong>
+            came from your resume or account and {{ "are" if suggested_count != 1 else "is" }}n't saved yet.
+            Autofill already uses {{ "them" if suggested_count != 1 else "it" }} — check {{ "them" if suggested_count != 1 else "it" }} and press Save to confirm.
+        </div>
+        {% endif %}
+        {% if not has_resume %}
+        <div class="pf-banner pf-banner-warn">
+            No base resume on file, so education and work details can't be suggested and
+            resume upload fields can't be filled. <a href="/extension">Add your resume</a>.
+        </div>
+        {% elif not model.factsCached %}
+        <div class="pf-banner">
+            Education and work details are read from your resume the first time you use
+            Autofill in the Chrome extension. You can also type them in below.
+        </div>
+        {% endif %}
+
+        <div class="pf-layout">
+            <nav class="pf-toc" aria-label="Profile sections">
+                {% for sid, title, specs in sections %}
+                <a href="#pf-{{ sid }}">{{ title }}</a>
+                {% endfor %}
+                <a href="#pf-saved-answers">Saved answers</a>
+            </nav>
+
+            <form id="pf-form" class="pf-form" novalidate>
+                {% for sid, title, specs in sections %}
+                <section class="pf-card" id="pf-{{ sid }}">
+                    <h2>{{ title }}</h2>
+                    <div class="jd-fields">
+                    {% for spec in specs %}
+                        {% set f = model.fields[spec.key] %}
+                        <div class="jd-field{{ ' wide' if spec.wide or spec.kind == 'checkbox' }}" data-key="{{ spec.key }}">
+                        {% if spec.kind == "checkbox" %}
+                            <label class="pf-check">
+                                <input type="checkbox" name="{{ spec.key }}" {{ "checked" if f.value }}>
+                                <span>{{ spec.label }}</span>
+                            </label>
+                        {% else %}
+                            <label for="pf-{{ spec.key }}">{{ spec.label }}
+                                {% if f.source == "suggested" %}<span class="pf-badge pf-badge-suggested" title="Not saved yet — autofill already uses this value">Suggested</span>{% endif %}
+                            </label>
+                            {% if spec.kind == "select" %}
+                                <select id="pf-{{ spec.key }}" name="{{ spec.key }}">
+                                {% for value, text in spec.options %}
+                                    <option value="{{ value }}" {{ "selected" if f.value == value }}>{{ text }}</option>
+                                {% endfor %}
+                                </select>
+                            {% elif spec.kind == "textarea" %}
+                                <textarea id="pf-{{ spec.key }}" name="{{ spec.key }}" maxlength="{{ spec.max_len }}"
+                                          placeholder="{{ spec.placeholder }}">{{ f.value }}</textarea>
+                            {% elif spec.kind == "phone" %}
+                                <div class="pf-phone">
+                                    <input id="pf-phoneCode" name="phoneCode" list="pf-dial-codes" inputmode="tel"
+                                           aria-label="Country code" placeholder="+91" maxlength="6"
+                                           value="{{ f.value.code }}">
+                                    <input id="pf-phone" name="phoneNumber" inputmode="tel"
+                                           aria-label="Phone number" placeholder="8240044652" maxlength="20"
+                                           value="{{ f.value.number }}">
+                                </div>
+                            {% elif spec.kind == "readonly" %}
+                                <input id="pf-{{ spec.key }}" value="{{ f.value }}" readonly class="pf-readonly">
+                            {% else %}
+                                <input id="pf-{{ spec.key }}" name="{{ spec.key }}" maxlength="{{ spec.max_len }}"
+                                       value="{{ f.value }}" placeholder="{{ spec.placeholder }}">
+                            {% endif %}
+                        {% endif %}
+                        {% if spec.help %}<small class="pf-help">{{ spec.help }}</small>{% endif %}
+                        </div>
+                    {% endfor %}
+                    </div>
+                </section>
+                {% endfor %}
+
+                <section class="pf-card" id="pf-saved-answers">
+                    <h2>Saved answers</h2>
+                    <p class="pf-intro">Answers you gave to specific application questions.
+                       Autofill reuses them when the same question — or one worded
+                       differently — comes up on another form.</p>
+                    <div id="pf-answers" class="pf-answers"><p class="pf-muted">Loading…</p></div>
+                </section>
+
+                <div class="pf-savebar">
+                    <span id="pf-status" class="pf-status" role="status" aria-live="polite"></span>
+                    <button type="submit" class="jd-btn pf-save" id="pf-save">Save profile</button>
+                </div>
+            </form>
+        </div>
+
+        <datalist id="pf-dial-codes">
+            <option value="+91">India</option>
+            <option value="+1">United States / Canada</option>
+            <option value="+44">United Kingdom</option>
+            <option value="+61">Australia</option>
+            <option value="+49">Germany</option>
+            <option value="+33">France</option>
+            <option value="+65">Singapore</option>
+            <option value="+971">United Arab Emirates</option>
+            <option value="+81">Japan</option>
+            <option value="+86">China</option>
+            <option value="+880">Bangladesh</option>
+            <option value="+977">Nepal</option>
+            <option value="+94">Sri Lanka</option>
+            <option value="+92">Pakistan</option>
+            <option value="+353">Ireland</option>
+            <option value="+31">Netherlands</option>
+        </datalist>
+    </main>
+
+    <script src="/static/auth_nav.js?v=17" defer></script>
+    <script src="/static/mobile_nav.js" defer></script>
+    <script>
+      window.TAILORCV_EXTENSION_IDS = ['lnkplncemohgcdjlgccgmbcgiokcgmno'
+        {%- if dev_extension_id %}, {{ dev_extension_id | tojson }}{% endif -%}];
+    </script>
+    <script src="/static/profile_page.js?v=1" defer></script>
+</body>
+</html>

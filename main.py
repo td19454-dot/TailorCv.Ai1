@@ -69,6 +69,7 @@ from routers.billing import router as billing_router
 from routers.feedback import router as feedback_router
 from routers.job_dashboard import router as job_dashboard_router
 from routers.extension_autofill import router as extension_autofill_router
+from routers.profile_page import router as profile_page_router
 # Gigs feature disabled — import kept out so the route isn't registered.
 # from routers.jobs import router as jobs_router
 from blog_system import BlogService, codehilite_css, xml_escape
@@ -400,6 +401,7 @@ app.include_router(billing_router)
 app.include_router(feedback_router)
 app.include_router(job_dashboard_router)
 app.include_router(extension_autofill_router)
+app.include_router(profile_page_router)
 # Gigs feature hidden/disabled — route intentionally not registered (files kept dormant on disk).
 # app.include_router(jobs_router)
 blog_service = BlogService(BLOG_CONTENT_DIR)
@@ -630,9 +632,14 @@ def _ensure_apply_profile_columns() -> None:
         if name_col not in cols:
             to_add.append(f"ADD COLUMN {name_col} VARCHAR(80)")
     for addr_col, width in (("address_line1", 200), ("address_line2", 200), ("city", 100),
-                            ("state", 100), ("postal_code", 20), ("country", 80)):
+                            ("state", 100), ("postal_code", 20), ("country", 80),
+                            ("university", 200), ("degree", 120), ("major", 120),
+                            ("graduation_date", 40), ("gpa", 20),
+                            ("current_company", 160), ("previous_company", 160)):
         if addr_col not in cols:
             to_add.append(f"ADD COLUMN {addr_col} VARCHAR({width})")
+    if "skills" not in cols:
+        to_add.append("ADD COLUMN skills TEXT")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:

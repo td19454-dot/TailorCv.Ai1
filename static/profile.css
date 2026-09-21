@@ -1,0 +1,97 @@
+/* Profile page. Builds on job_dashboard.css (.jd-page, .jd-head, .jd-fields,
+   .jd-field, .jd-btn) so it reads as the same product; only layout and the
+   page-specific pieces live here. */
+
+.pf-page { max-width: 1080px; }
+
+.pf-banner {
+  margin: 0 0 16px; padding: 12px 14px; border-radius: 12px;
+  background: rgba(79,127,255,.10); border: 1px solid rgba(79,127,255,.25);
+  color: #cfdcf5; font-size: .9rem; line-height: 1.5;
+}
+.pf-banner a { color: #8fb4ff; text-decoration: underline; }
+.pf-banner-warn { background: rgba(245,158,11,.10); border-color: rgba(245,158,11,.3); }
+
+.pf-layout { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: start; }
+
+.pf-toc {
+  position: sticky; top: 90px; display: flex; flex-direction: column; gap: 2px;
+}
+.pf-toc a {
+  color: #9fb0cc; text-decoration: none; font-size: .86rem; font-weight: 600;
+  padding: 7px 10px; border-radius: 8px;
+}
+.pf-toc a:hover { background: rgba(255,255,255,.05); color: #eaf1ff; }
+
+.pf-form { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+.pf-card {
+  background: rgba(255,255,255,.035); border: 1px solid rgba(99,130,200,.18);
+  border-radius: 14px; padding: 18px 18px 20px; scroll-margin-top: 90px;
+}
+.pf-card h2 { font-size: 1rem; font-weight: 800; color: #eaf1ff; margin: 0 0 12px; }
+.pf-intro { color: #9fb0cc; font-size: .86rem; margin: -4px 0 12px; line-height: 1.5; }
+.pf-muted { color: #7c8aa5; font-size: .86rem; margin: 0; }
+
+.pf-help { color: #7c8aa5; font-size: .74rem; line-height: 1.4; }
+.pf-readonly { opacity: .7; cursor: not-allowed; }
+
+.pf-badge {
+  display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 99px;
+  font-size: .66rem; font-weight: 700; letter-spacing: .02em; vertical-align: 1px;
+}
+.pf-badge-suggested { background: rgba(245,158,11,.14); color: #fcd34d; border: 1px solid rgba(245,158,11,.3); }
+
+.pf-phone { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 8px; }
+
+.pf-check { display: flex !important; align-items: flex-start; gap: 9px; cursor: pointer;
+  font-size: .86rem !important; color: #cfdcf5 !important; font-weight: 500 !important; }
+.pf-check input { width: auto !important; margin-top: 2px; accent-color: #7c3aed; }
+
+.jd-field.pf-dirty input, .jd-field.pf-dirty select, .jd-field.pf-dirty textarea {
+  border-color: rgba(124,58,237,.7);
+}
+
+/* Saved answers */
+.pf-answers { display: flex; flex-direction: column; gap: 10px; }
+.pf-answer {
+  border: 1px solid rgba(99,130,200,.18); border-radius: 10px; padding: 10px 12px;
+  background: rgba(255,255,255,.02);
+}
+.pf-answer-q { color: #b9c8e4; font-size: .82rem; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+.pf-answer-row { display: flex; gap: 8px; align-items: flex-start; }
+.pf-answer-row textarea {
+  flex: 1; min-height: 38px; padding: 8px 10px; border-radius: 8px; resize: vertical;
+  background: rgba(255,255,255,.05); border: 1px solid rgba(99,130,200,.28); color: #eaf1ff;
+  font: inherit; font-size: .88rem;
+}
+.pf-answer-actions { display: flex; flex-direction: column; gap: 6px; }
+.pf-mini {
+  border: 1px solid rgba(99,130,200,.32); background: transparent; color: #cfe0ff;
+  border-radius: 8px; padding: 6px 10px; font-size: .78rem; font-weight: 700; cursor: pointer;
+}
+.pf-mini:hover { background: rgba(255,255,255,.06); }
+.pf-mini-danger { color: #fca5a5; border-color: rgba(239,68,68,.35); }
+.pf-mini[disabled] { opacity: .5; cursor: default; }
+
+/* Save bar */
+.pf-savebar {
+  position: sticky; bottom: 14px; z-index: 5; display: flex; justify-content: flex-end;
+  align-items: center; gap: 14px; padding: 12px 14px; border-radius: 14px;
+  background: rgba(10,14,32,.92); border: 1px solid rgba(99,130,200,.25);
+  backdrop-filter: blur(8px);
+}
+.pf-status { color: #9fb0cc; font-size: .86rem; }
+.pf-status.pf-ok { color: #6ee7b7; }
+.pf-status.pf-err { color: #fca5a5; }
+.pf-save { background: linear-gradient(135deg, #3392ff, #7c3aed); color: #fff; }
+.pf-save[disabled] { opacity: .6; cursor: default; filter: none; }
+
+@media (max-width: 760px) {
+  .pf-layout { grid-template-columns: 1fr; }
+  .pf-toc { position: static; flex-direction: row; flex-wrap: wrap; }
+  .pf-toc a { padding: 5px 8px; font-size: .78rem; }
+  .pf-card .jd-fields { grid-template-columns: 1fr; }
+  .pf-answer-row { flex-direction: column; }
+  .pf-answer-actions { flex-direction: row; }
+}

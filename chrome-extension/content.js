@@ -33,8 +33,8 @@
   const BASE_URL = (window.__TCV_ENV && window.__TCV_ENV.BASE_URL) || 'https://thetailorcv.com';
   const MIN_JD_LENGTH = 200;
   // Where the application profile (name, address, eligibility, EEO answers) is
-  // edited. #profile makes the Job Dashboard open the form immediately.
-  const PROFILE_URL = `${BASE_URL}/dashboard/jobs#profile`;
+  // viewed and edited: the dedicated profile page.
+  const PROFILE_URL = `${BASE_URL}/profile`;
 
   // The autofill bundle, loaded before this file by the manifest. Feature-checked
   // at every call site so a bundle that failed to load leaves the extension

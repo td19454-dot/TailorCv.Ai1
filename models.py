@@ -396,6 +396,19 @@ class UserApplyProfile(Base):
     state = Column(String(100), nullable=True)
     postal_code = Column(String(20), nullable=True)
     country = Column(String(80), nullable=True)
+
+    # Education and work history, as the user wants them on applications. Until
+    # saved these come from the parsed base resume (UserResumeFacts); a value
+    # saved here overrides the parse — the resume's wording is not always what a
+    # form should say, and the parse can be wrong.
+    university = Column(String(200), nullable=True)
+    degree = Column(String(120), nullable=True)
+    major = Column(String(120), nullable=True)
+    graduation_date = Column(String(40), nullable=True)
+    gpa = Column(String(20), nullable=True)
+    current_company = Column(String(160), nullable=True)
+    previous_company = Column(String(160), nullable=True)
+    skills = Column(Text, nullable=True)   # comma-separated
     linkedin_url = Column(String(300), nullable=True)
     github_url = Column(String(300), nullable=True)
     portfolio_url = Column(String(300), nullable=True)

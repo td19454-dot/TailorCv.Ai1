@@ -160,6 +160,43 @@ def _split_name(full: str) -> tuple[str, str]:
     return first, last
 
 
+# Longest-first, so +971 is not read as +9 and +353 not as +35. Mirrors the
+# list in chrome-extension/src/autofill/match.js splitPhone().
+_DIAL_CODES = sorted([
+    "1", "7", "20", "27", "30", "31", "32", "33", "34", "36", "39", "40", "41", "43",
+    "44", "45", "46", "47", "48", "49", "51", "52", "54", "55", "56", "57", "58", "60",
+    "61", "62", "63", "64", "65", "66", "81", "82", "84", "86", "90", "91", "92", "93",
+    "94", "95", "98", "211", "212", "213", "234", "254", "353", "358", "359", "370",
+    "371", "372", "380", "420", "421", "852", "880", "886", "966", "971", "972", "974",
+    "977",
+], key=len, reverse=True)
+
+
+def split_phone(phone: str) -> tuple[str, str]:
+    """("+91", "8240044652") from "+91 8240044652"; ("", number) with no "+".
+
+    One stored string, shown as two fields. A number stored without a leading
+    "+" keeps no dial code rather than having a country guessed for it.
+    """
+    raw = str(phone or "").strip()
+    if not raw.startswith("+"):
+        return "", re.sub(r"[^\d]", "", raw) if raw else ""
+    digits = re.sub(r"\D", "", raw[1:])
+    for code in _DIAL_CODES:
+        if digits.startswith(code):
+            return "+" + code, digits[len(code):]
+    return "", digits
+
+
+def join_phone(code: str, number: str) -> str:
+    """The stored form: "+91 8240044652". Either part may be empty."""
+    code = str(code or "").strip()
+    number = re.sub(r"[^\d]", "", str(number or ""))
+    if code and not code.startswith("+"):
+        code = "+" + re.sub(r"\D", "", code)
+    return " ".join(x for x in (code if code != "+" else "", number) if x)
+
+
 ADDRESS_KEYS = ("address_line1", "address_line2", "city", "state", "postal_code", "country")
 
 
@@ -300,6 +337,14 @@ def _profile_to_dict(prof) -> dict:
         "first_name": getattr(prof, "first_name", "") or "",
         "middle_name": getattr(prof, "middle_name", "") or "",
         "last_name": getattr(prof, "last_name", "") or "",
+        "university": getattr(prof, "university", "") or "",
+        "degree": getattr(prof, "degree", "") or "",
+        "major": getattr(prof, "major", "") or "",
+        "graduation_date": getattr(prof, "graduation_date", "") or "",
+        "gpa": getattr(prof, "gpa", "") or "",
+        "current_company": getattr(prof, "current_company", "") or "",
+        "previous_company": getattr(prof, "previous_company", "") or "",
+        "skills": getattr(prof, "skills", "") or "",
         "address_line1": getattr(prof, "address_line1", "") or "",
         "address_line2": getattr(prof, "address_line2", "") or "",
         "city": getattr(prof, "city", "") or "",
@@ -419,9 +464,12 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         return str(prof.get(profile_key) or derived.get(derived_key or profile_key) or "").strip()
 
     def fact(key: str) -> str:
-        return str(fact_keys.get(key) or "").strip()
+        # A value saved on the profile page wins over the resume parse.
+        saved = str(prof.get(key) or "").strip()
+        return saved or str(fact_keys.get(key) or "").strip()
 
     names = resolve_name_parts(prof, snap.get("name") or "")
+    saved_skills = [s.strip() for s in str(prof.get("skills") or "").split(",") if s.strip()][:20]
     addr = resolve_address_parts(
         prof, prof.get("location") or "",
         ((facts.get("personal_info") or {}).get("location") or "") if isinstance(facts, dict) else "",
@@ -494,7 +542,7 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
         # No LLM pass. cover_note stays whatever the user stored, and is offered
         # as a suggestion rather than written into a form unasked.
         p.cover_note = p.why_this_role
-        p.top_skills = [str(s) for s in (facts.get("skills") or [])][:8]
+        p.top_skills = saved_skills or [str(s) for s in (facts.get("skills") or [])][:8]
         return p
 
     generated = await _narrative_fields(snap)
@@ -503,7 +551,9 @@ async def build_applicant_profile(snap: dict, narrative: bool = True) -> Applica
     p.years_experience = p.years_experience or generated.get("years_experience", "")
     p.why_this_role = p.why_this_role or generated.get("why_this_role", "")
     p.cover_note = generated.get("cover_note", "") or p.why_this_role
-    p.top_skills = generated.get("top_skills", [])
+    # Skills the user saved are theirs to choose; the model's JD-matched pick is
+    # only used when they haven't.
+    p.top_skills = saved_skills or generated.get("top_skills", [])
     return p
 
 

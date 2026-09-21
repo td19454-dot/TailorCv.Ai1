@@ -259,6 +259,7 @@ function showUpgradeModal(feature) {
           <div class="tc-nav-hd-id"><strong>${safeName}</strong><small>${safeEmail}</small></div>
         </div>
         ${proSection}
+        <a class="tc-nav-link tc-myresumes-link" href="/profile">My profile</a>
         <a class="tc-nav-link tc-myresumes-link" href="/privacy">Privacy Policy</a>
         <a class="tc-nav-link tc-myresumes-link" href="/terms">Terms</a>
         <button type="button" class="tc-nav-logout" id="logoutBtn">Log out</button>
