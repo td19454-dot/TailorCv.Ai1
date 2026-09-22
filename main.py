@@ -1046,6 +1046,33 @@ ul.contact-list > li::marker, ul.contact > li::marker, .contact ul > li::marker,
   content: "" !important;
 }
 
+/* --- PAGE BREAKS: fill each page before starting the next ---------------
+   `break-inside: avoid` on .entry treats a whole job - header plus every
+   bullet - as one unbreakable block, so an entry that does not fit ENTIRELY
+   jumps to the next page whole. Measured: page 1 at 96% full with page 2
+   holding a single bullet. Entries flow instead; only the pieces that must
+   stay together are pinned. Mirrors buildDesignCss() in editor_v2.js so the
+   preview and the PDF paginate identically. */
+.entry, .experience-item, .project-item, .education-item,
+.exp-entry, .edu-entry, .proj-entry, .item {
+  break-inside: auto !important; page-break-inside: auto !important;
+  orphans: 2; widows: 2;
+}
+/* A heading never ends a page, and an entry header never parts from its
+   first bullet. */
+h2, h3, .section-title, .section-heading, .sec-title,
+.entry-head, .entry-title, .entry-top, .primary {
+  break-after: avoid-page; page-break-after: avoid;
+  break-inside: avoid; page-break-inside: avoid;
+}
+/* One bullet never splits across the seam. */
+li { break-inside: avoid; page-break-inside: avoid; orphans: 2; widows: 2; }
+p  { orphans: 2; widows: 2; }
+/* Short trailing sections stay whole when they fit. */
+.certifications, .awards, .achievements, section.certifications {
+  break-inside: avoid; page-break-inside: avoid;
+}
+
 /* --- BUG D: only real links are coloured and underlined ----------------- */
 a { text-decoration: none; }
 a[href^="http"], a[href^="mailto"], a[href^="tel"] {
@@ -1066,10 +1093,12 @@ a[href^="http"], a[href^="mailto"], a[href^="tel"] {
    every page, including ones generated after a break), and the root container
    is released from the fixed 210mm so it fills the printable width instead of
    the paper width. */
-@page {
-  margin-left: var(--tcv-margin-x, 10mm) !important;
-  margin-right: var(--tcv-margin-x, 10mm) !important;
-}
+/* NOTE: the @page horizontal margin is NOT set here. Most templates already
+   inset their content themselves - `.page { padding: 7mm }` in 15-18, inner
+   .header/.main/.side padding in 13-14 - and adding a page margin on top of
+   that DOUBLED the white space (t17 measured 64px where the design asks for
+   26.5px). It is added by _page_margin_css() only for templates that provide
+   no inset of their own. */
 .resume, .resume-wrap, .page, .layout {
   width: 100% !important;
   max-width: 100% !important;
@@ -1117,6 +1146,68 @@ def _apply_multipage_fixes(html_content: str) -> str:
         return html_content
     return html_content.replace(
         '</head>', f'<style>{_MULTIPAGE_FIX_CSS}</style></head>')
+
+
+def _page_margin_css(html_content: str) -> str:
+    """Add a horizontal @page margin ONLY when the template provides none.
+
+    Most templates inset their content themselves and deliberately declare
+    `@page { margin: 8mm 0 ... }` - zero left/right - because the inset lives
+    on a container instead (`.page { padding: 7mm }`, or inner .header/.main
+    padding). Adding a page margin on top of that stacks the two: template 17
+    measured 64.3px of inset where its design asks for 26.5px, squeezing the
+    content column on every page.
+
+    So the margin is applied only to templates whose content would otherwise
+    run edge to edge, which is the case this rule was written for.
+    """
+    MIN_INSET_MM = 4.0
+
+    # Horizontal padding on the root container, if any.
+    inset_mm = 0.0
+    for sel in (r"\.page", r"\.resume-wrap", r"\.resume", r"\.sheet"):
+        m = re.search(rf"{sel}\s*\{{[^}}]*?padding:\s*([^;]+);",
+                      html_content, re.S)
+        if not m:
+            continue
+        parts = m.group(1).split()
+        # CSS shorthand: 1 value = all sides, 2 = v/h, 3 = t/h/b, 4 = t/r/b/l
+        if len(parts) == 1:
+            horiz = parts[0]
+        elif len(parts) in (2, 3):
+            horiz = parts[1]
+        else:
+            horiz = parts[3]
+        g = re.match(r"([0-9.]+)(mm|px|in)", horiz.strip())
+        if g:
+            val = float(g.group(1))
+            unit = g.group(2)
+            mm = val if unit == "mm" else (val * 25.4 / 96 if unit == "px"
+                                           else val * 25.4)
+            inset_mm = max(inset_mm, mm)
+            break
+
+    # Templates 13/14 pad inner columns rather than the page itself.
+    if inset_mm < MIN_INSET_MM:
+        for sel in (r"\.header", r"\.main", r"\.content", r"\.side"):
+            m = re.search(rf"{sel}\s*\{{[^}}]*?padding:\s*([^;]+);",
+                          html_content, re.S)
+            if not m:
+                continue
+            parts = m.group(1).split()
+            horiz = (parts[0] if len(parts) == 1
+                     else parts[1] if len(parts) in (2, 3) else parts[3])
+            g = re.match(r"([0-9.]+)mm", horiz.strip())
+            if g:
+                inset_mm = max(inset_mm, float(g.group(1)))
+
+    if inset_mm >= MIN_INSET_MM:
+        return ""      # the template already spaces its own content
+
+    return """
+/* No inset of its own: content would run to the paper edge and clip. */
+@page { margin-left: 10mm !important; margin-right: 10mm !important; }
+"""
 
 
 def _sidebar_page_css(html_content: str) -> str:
@@ -7126,6 +7217,33 @@ async def optimized_editor_page(request: Request):
             (not user_is_pro) and bool(user) and quota_exhausted(db, user, "ai_optimizations")
         )
         downloads_used = 0 if user_is_pro else lifetime_usage(db, user, "ai_optimizations")
+
+        # Seed for the v2 editor.
+        #
+        # editor_v2.js reads its resume from sessionStorage and returns early
+        # when that is empty - which it is on a direct visit, a reload or a new
+        # tab. The template still ships the legacy editor markup, so that early
+        # return left the OLD page on screen, looking exactly as though the new
+        # editor had been reverted. Handing the page the most recent saved
+        # resume means it mounts every time.
+        editor_bootstrap = None
+        if user:
+            try:
+                recent = (db.query(SavedResume)
+                            .filter_by(user_id=user.id)
+                            .order_by(SavedResume.updated_at.desc())
+                            .first())
+                if recent and recent.html_content:
+                    editor_bootstrap = {
+                        "html": recent.html_content,
+                        "resume_data": json.loads(recent.resume_json or "{}"),
+                        "template_id": recent.template_id or 1,
+                        "style_id": recent.style_id or 1,
+                        "saved_resume_id": recent.id,
+                    }
+            except Exception:
+                # A malformed row must never take the editor page down.
+                editor_bootstrap = None
     finally:
         db.close()
     response = templates.TemplateResponse(
@@ -7146,6 +7264,7 @@ async def optimized_editor_page(request: Request):
             # editor script is indistinguishable from a broken feature - the
             # button simply does nothing. This changes on every save.
             "asset_v": _editor_asset_version(),
+            "editor_bootstrap": editor_bootstrap,
         },
     )
     # This page bakes the user's Pro and quota state into its HTML, so a cached
@@ -12381,7 +12500,8 @@ def _render_resume_html(parsed: dict, jd_string: str, template_id: int, style_id
         # Corrective sheet LAST so it wins over each template's inline <style>.
         # Templates 7+ load no shared stylesheet, so this is the only shared
         # CSS they ever see - it is what keeps all 22 fixed from one place.
-        _fixes = _RESUME_NORMALIZE_CSS + _sidebar_page_css(html_content)
+        _fixes = (_RESUME_NORMALIZE_CSS + _page_margin_css(html_content)
+                  + _sidebar_page_css(html_content))
         html_content = html_content.replace('</head>', f'<style>{_fixes}</style></head>')
         # Decorations come off only if the resume actually paginates, so a
         # one-page PDF keeps the template's own card radius and shadow.

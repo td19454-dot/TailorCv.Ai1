@@ -89,6 +89,12 @@ body.edv2-active { overflow: hidden; }
 .edv2-btn-primary:hover { background: var(--ed-blue-dark); }
 .edv2-btn-outline { background: #fff; color: var(--ed-text); border-color: var(--ed-border); }
 .edv2-btn-outline:hover { background: #f9fafb; border-color: #d1d5db; }
+.edv2-btn:disabled { opacity: .72; cursor: wait; }
+.edv2-save-btn.saved {
+    color: #166534;
+    border-color: #86efac;
+    background: #f0fdf4;
+}
 /* Toasts. Above the editor, below the changes modal. */
 #edv2-toasts {
     position: fixed; right: 20px; bottom: 20px; z-index: 2147482000;
@@ -277,7 +283,7 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-num:focus { border-color: var(--ed-blue); }
 .edv2-swatches { display: flex; flex-wrap: wrap; gap: 8px; }
 .edv2-swatch {
-    width: 30px; height: 30px; border-radius: 7px; cursor: pointer;
+    width: 30px; height: 30px; border-radius: 50%; cursor: pointer;
     border: 2px solid transparent; box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
     padding: 0;
 }
@@ -380,6 +386,11 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-topbar .edv2-iconbtn.saving { color: #93b4fb; }
 .edv2-topbar .edv2-btn-outline { background: #1c2027; color: var(--ed-text); border-color: #343a43; }
 .edv2-topbar .edv2-btn-outline:hover { background: #242932; border-color: #454c56; }
+.edv2-topbar .edv2-save-btn.saved {
+    color: #bbf7d0;
+    border-color: #166534;
+    background: #10261a;
+}
 .edv2-topbar .edv2-badge { background: #1e2a44; color: #93b4fb; }
 
 /* ── Dark sidebar ────────────────────────────────────────────────────────────
@@ -435,3 +446,148 @@ body.edv2-active #intercom-container { display: none !important; }
 .edv2-panel .edv2-swatch { box-shadow: inset 0 0 0 1px rgba(255,255,255,.14); }
 
 .edv2-panel .edv2-tabpanes { scrollbar-color: #3a4049 #0f1115; }
+
+/* Dark optimize sidebar polish. Keeps the richer TailorCV dark vibe while
+   matching the reference editor structure: tab rail, Style Settings card,
+   dense sliders, segmented controls and swatches. */
+.edv2-panel {
+    --ed-border: rgba(111, 132, 179, .34);
+    --ed-text: #f8fafc;
+    --ed-muted: #cbd5e1;
+    --ed-blue-soft: rgba(37, 99, 235, .24);
+    background: linear-gradient(180deg, #0b1630 0%, #071126 100%);
+    color: var(--ed-text);
+    border-right-color: rgba(79, 108, 173, .36);
+}
+.edv2-panel .edv2-tabs {
+    min-height: 74px;
+    padding: 10px 16px;
+    gap: 12px;
+    background: rgba(4, 11, 27, .72);
+    border-bottom-color: rgba(111, 132, 179, .32);
+}
+.edv2-panel .edv2-tab {
+    min-height: 54px;
+    padding: 0 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: #e5e7eb;
+    font-size: .95rem;
+    font-weight: 700;
+}
+.edv2-panel .edv2-tab:hover {
+    background: rgba(15, 31, 67, .86);
+    border-color: rgba(111, 132, 179, .36);
+}
+.edv2-panel .edv2-tab.on {
+    background: rgba(29, 78, 216, .22);
+    border-color: rgba(96, 165, 250, .76);
+    box-shadow: inset 0 0 0 1px rgba(96, 165, 250, .22);
+    color: #dbeafe;
+}
+.edv2-panel .edv2-collapse {
+    color: #dbeafe;
+    border: 1px solid rgba(111, 132, 179, .32);
+    background: rgba(7, 17, 38, .8);
+}
+.edv2-panel .edv2-collapse:hover {
+    background: rgba(29, 78, 216, .24);
+    color: #fff;
+}
+.edv2-panel .edv2-tabpanes {
+    padding: 20px;
+    background: linear-gradient(180deg, rgba(8, 19, 43, .98), rgba(5, 12, 28, .98));
+    scrollbar-color: rgba(148, 163, 184, .7) rgba(8, 17, 38, .75);
+}
+.edv2-panel .edv2-card {
+    overflow: hidden;
+    background: rgba(8, 17, 44, .82);
+    border-color: rgba(111, 132, 179, .34);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(2, 6, 23, .36);
+}
+.edv2-panel .edv2-cardhead {
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(111, 132, 179, .24);
+}
+.edv2-panel .edv2-cardhead:hover { background: rgba(15, 31, 67, .74); }
+.edv2-panel .edv2-cardtitle {
+    color: #f8fafc;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.edv2-panel .edv2-cardbody { padding: 18px 20px 20px; }
+.edv2-panel .edv2-label {
+    color: #f8fafc;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+.edv2-panel .edv2-field { margin-bottom: 17px; }
+.edv2-panel .edv2-input,
+.edv2-panel .edv2-num {
+    height: 44px;
+    background: rgba(7, 17, 38, .78);
+    border-color: rgba(148, 163, 184, .62);
+    border-radius: 8px;
+    color: #f8fafc;
+}
+.edv2-panel .edv2-input:focus,
+.edv2-panel .edv2-num:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, .24);
+}
+.edv2-panel select.edv2-input { color: #f8fafc; }
+.edv2-panel .edv2-slider { gap: 16px; }
+.edv2-panel .edv2-range {
+    height: 4px;
+    accent-color: #2f7df6;
+}
+.edv2-panel .edv2-num {
+    width: 112px;
+    text-align: left;
+    padding: 0 14px;
+}
+.edv2-panel .edv2-swatches { gap: 14px; }
+.edv2-panel .edv2-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(226, 232, 240, .88);
+    box-shadow: 0 0 0 1px rgba(15, 23, 42, .5), inset 0 0 0 1px rgba(255,255,255,.16);
+}
+.edv2-panel .edv2-swatch.on {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, .42), inset 0 0 0 1px rgba(255,255,255,.2);
+}
+.edv2-panel .edv2-seg {
+    flex-wrap: nowrap;
+    width: 100%;
+}
+.edv2-panel .edv2-segbtn {
+    flex: 1 1 0;
+    min-width: 0;
+    height: 40px;
+    background: rgba(7, 17, 38, .72);
+    border-color: rgba(148, 163, 184, .62);
+    color: #f8fafc;
+    font-size: .95rem;
+}
+.edv2-panel .edv2-segbtn:first-child { border-radius: 8px 0 0 8px; }
+.edv2-panel .edv2-segbtn:last-child { border-radius: 0 8px 8px 0; }
+.edv2-panel .edv2-segbtn.on {
+    background: rgba(37, 99, 235, .18);
+    border-color: #60a5fa;
+    color: #bfdbfe;
+}
+.edv2-panel .edv2-reset {
+    min-width: 196px;
+    justify-content: center;
+    background: rgba(7, 17, 38, .72);
+    border-color: rgba(148, 163, 184, .62);
+    color: #e2e8f0;
+}
+.edv2-panel .edv2-reset:hover {
+    background: rgba(29, 78, 216, .2);
+    border-color: #60a5fa;
+}

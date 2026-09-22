@@ -15,32 +15,87 @@
     <link rel="stylesheet" href="/static/editor_v2.css?v={{ asset_v }}">
 </head>
 
-<body>
+<body class="optimized-editor-body">
     {% include "_nav.html" %}
 
     <main class="editor-page">
-        <aside class="editor-sidebar">
-
-            <!-- Title (hidden on mobile) -->
-            <section class="editor-top">
-                <h1>One Page. More Impact.</h1>
-                <p>Fine-tune font, spacing, colors, and template — then download your perfect resume.</p>
-            </section>
-
-            <!-- See what changed. Desktop only: on phones this card would sit behind the
-                 fixed bottom bar, so the bar carries its own copy (see-changes-btn-mobile). -->
-            <section class="editor-controls see-changes-card">
-                <button id="see-changes-btn" class="secondary-btn" type="button"
-                    style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:8px;">
-                    🔍 See what changed
+        <section class="editor-actionbar" aria-label="Resume actions">
+            <div class="editor-actionbar-left">
+                <a class="editor-home-link" href="/dashboard" aria-label="Back to dashboard" title="Dashboard">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 11.5 12 4l9 7.5"/>
+                        <path d="M5.5 10.5V20h13v-9.5"/>
+                        <path d="M9.5 20v-5h5v5"/>
+                    </svg>
+                </a>
+                <div class="editor-actionbar-copy">
+                    <span class="editor-actionbar-title">Optimized Resume</span>
+                    <span class="editor-actionbar-status" id="editor-actionbar-status">Ready to review and save.</span>
+                </div>
+            </div>
+            <div class="editor-actionbar-actions">
+                <button id="top-save-resume-btn" class="editor-actionbar-btn editor-actionbar-btn-cloud" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M18 18H7a4 4 0 1 1 .9-7.9A6 6 0 0 1 19.6 11 3.5 3.5 0 0 1 18 18Z"/>
+                    </svg>
+                    <span>Save to My Resumes</span>
                 </button>
-            </section>
+                <button id="top-see-changes-btn" class="editor-actionbar-btn" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="10.5" cy="10.5" r="6.5"/>
+                        <path d="m20 20-4.6-4.6"/>
+                    </svg>
+                    <span>See what changed</span>
+                </button>
+                <button id="top-download-edited-btn" class="editor-actionbar-btn editor-actionbar-btn-primary" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M12 3v12"/>
+                        <path d="m7 11 5 5 5-5"/>
+                        <path d="M4 20h16"/>
+                    </svg>
+                    <span>Download Resume</span>
+                </button>
+            </div>
+        </section>
+
+        <aside class="editor-sidebar">
 
             <!--
                 Desktop: transparent wrapper (display:contents).
                 Mobile:  position:fixed bottom toolbar.
             -->
             <div class="mobile-bar-container" id="mobile-bar-container">
+
+                <section class="editor-controls style-settings-card">
+                    <button class="style-settings-head" type="button" aria-expanded="true">
+                        <span>Style Settings</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="18 15 12 9 6 15" />
+                        </svg>
+                    </button>
+                    <div class="style-settings-body">
+                        <label class="style-field">
+                            <span class="style-label">Paper Size</span>
+                            <select id="paper-size-select" class="style-select" aria-label="Paper Size">
+                                <option value="A4">A4 (8.27x11.69 Inches)</option>
+                                <option value="Letter">Letter (8.5x11 Inches)</option>
+                            </select>
+                        </label>
+
+                        <label class="style-field">
+                            <span class="style-label">Font</span>
+                            <select id="font-family-select" class="style-select" aria-label="Font">
+                                <option value="Verdana">Verdana</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Arial">Arial</option>
+                                <option value="Helvetica">Helvetica</option>
+                                <option value="Poppins">Poppins</option>
+                                <option value="Corbel">Corbel</option>
+                                <option value="Tahoma">Tahoma</option>
+                                <option value="Georgia">Georgia</option>
+                            </select>
+                        </label>
 
                 <!--
                     Desktop: transparent wrapper (display:contents).
@@ -51,30 +106,36 @@
                     <!-- Font Size -->
                     <section class="editor-controls">
                         <div class="control-title">Font Size</div>
-                        <div class="font-group">
-                            <button class="font-btn" id="font-decrease-btn" type="button"
-                                title="Decrease font size">A−</button>
-                            <button class="font-btn" id="font-reset-btn" type="button"
-                                title="Reset font size">A</button>
-                            <button class="font-btn" id="font-increase-btn" type="button"
-                                title="Increase font size">A+</button>
-                            <span class="font-size-badge" id="font-size-badge">100%</span>
+                        <div class="style-slider-row">
+                            <input id="font-size-range" class="style-range" type="range" min="7" max="14" step="0.5" value="11">
+                            <input id="font-size-input" class="style-number" type="text" value="11 pt" aria-label="Font Size">
                         </div>
                     </section>
 
                     <!-- Line Spacing -->
                     <section class="editor-controls">
-                        <div class="control-title">Line Spacing</div>
-                        <div class="font-group">
-                            <button class="font-btn" id="spacing-decrease-btn" type="button"
-                                title="Tighten spacing">S−</button>
-                            <button class="font-btn" id="spacing-reset-btn" type="button"
-                                title="Reset spacing">S</button>
-                            <button class="font-btn" id="spacing-increase-btn" type="button"
-                                title="Loosen spacing">S+</button>
-                            <span class="font-size-badge" id="spacing-badge">100%</span>
+                        <div class="control-title">Line Height</div>
+                        <div class="style-slider-row">
+                            <input id="line-height-range" class="style-range" type="range" min="1" max="2.4" step="0.025" value="1.125">
+                            <input id="line-height-input" class="style-number" type="text" value="1.125" aria-label="Line Height">
                         </div>
                         <p id="spacing-guidance" style="font-size:0.8rem;margin:0;">Default spacing.</p>
+                    </section>
+
+                    <section class="editor-controls">
+                        <div class="control-title">Left &amp; Right Margins</div>
+                        <div class="style-slider-row">
+                            <input id="margin-x-range" class="style-range" type="range" min="0.2" max="1.5" step="0.01" value="0.39">
+                            <input id="margin-x-input" class="style-number" type="text" value="0.39 in" aria-label="Left and Right Margins">
+                        </div>
+                    </section>
+
+                    <section class="editor-controls">
+                        <div class="control-title">Top &amp; Bottom Margins</div>
+                        <div class="style-slider-row">
+                            <input id="margin-y-range" class="style-range" type="range" min="0.2" max="2" step="0.01" value="0.39">
+                            <input id="margin-y-input" class="style-number" type="text" value="0.39 in" aria-label="Top and Bottom Margins">
+                        </div>
                     </section>
 
                     <!-- Accent Colour. buildAccentPanel() in optimized_editor.js mounts the
@@ -84,7 +145,55 @@
                         <div id="tc-accent-panel-container"></div>
                     </section>
 
+                    <section class="editor-controls">
+                        <div class="control-title">Link Color</div>
+                        <div id="tc-link-panel-container" class="style-color-panel"></div>
+                    </section>
+
                 </div><!-- /.mobile-controls-panel -->
+
+                        <div class="style-field">
+                            <span class="style-label">Name</span>
+                            <div class="style-segmented" data-style-control="nameCase" aria-label="Name case">
+                                <button type="button" class="active" data-value="capitalize">Capitalize</button>
+                                <button type="button" data-value="uppercase">Uppercase</button>
+                                <button type="button" data-value="lowercase">Lowercase</button>
+                            </div>
+                        </div>
+
+                        <div class="style-field">
+                            <span class="style-label">Header Delimiter</span>
+                            <div class="style-segmented" data-style-control="delimiter" aria-label="Header delimiter">
+                                <button type="button" data-value="|">|</button>
+                                <button type="button" data-value="•">•</button>
+                                <button type="button" data-value="-">-</button>
+                                <button type="button" class="active" data-value="◇">◇</button>
+                                <button type="button" data-value="❖">❖</button>
+                            </div>
+                        </div>
+
+                        <div class="style-field">
+                            <span class="style-label">List Style</span>
+                            <div class="style-segmented" data-style-control="listStyle" aria-label="List style">
+                                <button type="button" class="active" data-value="disc">•</button>
+                                <button type="button" data-value="circle">○</button>
+                                <button type="button" data-value="square">■</button>
+                                <button type="button" data-value="decimal">Number</button>
+                                <button type="button" data-value="none">None</button>
+                            </div>
+                        </div>
+
+                        <label class="style-field">
+                            <span class="style-label">Date Range</span>
+                            <select id="date-format-select" class="style-select" aria-label="Date Range">
+                                <option value="MMM 'YY">Jan '26 (MMM 'YY)</option>
+                                <option value="MMM YYYY">Jan 2026 (MMM YYYY)</option>
+                                <option value="MM/YYYY">01/2026 (MM/YYYY)</option>
+                                <option value="YYYY">2026 (YYYY)</option>
+                            </select>
+                        </label>
+                    </div>
+                </section>
 
                 <!-- Always-visible strip: page info + download.  Fixed at bottom on mobile. -->
                 <section class="editor-controls actions-card">
@@ -149,6 +258,10 @@
     <script>window.QUOTA_EXHAUSTED = {{ 'true' if quota_exhausted_flag else 'false' }};</script>
     <script>window.DOWNLOADS_USED = {{ downloads_used | default(0) | int }};</script>
     <script>window.FREE_DOWNLOAD_LIMIT = {{ free_download_limit | default(3) | int }};</script>
+    <!-- The v2 editor reads its resume from sessionStorage, which is empty
+         on a direct visit or a reload. Without this seed it returns early
+         and the legacy markup above stays on screen. -->
+    <script>window.__TCV_EDITOR_BOOTSTRAP__ = {{ editor_bootstrap | tojson }};</script>
     <script src="/static/optimized_editor.js?v={{ asset_v }}"></script>
     <!-- Editor v2 mounts a full-screen light-theme shell over the old page and
          reuses its download / change-review functions through window hooks. -->

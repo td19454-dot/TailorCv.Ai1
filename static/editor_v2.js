@@ -83,13 +83,16 @@
        resolve on the first attempt; the retry covers script-order races. */
     function callHook(name, arg, label, onFail) {
         let tries = 0;
-        (function attempt() {
-            const fn = window[name];
-            if (typeof fn === "function") { fn(arg); return; }
-            if (++tries < 20) { setTimeout(attempt, 100); return; }
-            console.warn("[TailorCV] " + name + " unavailable - " + label + " did nothing.");
-            if (onFail) onFail();
-        })();
+        return new Promise(resolve => {
+            (function attempt() {
+                const fn = window[name];
+                if (typeof fn === "function") { resolve(fn(arg)); return; }
+                if (++tries < 20) { setTimeout(attempt, 100); return; }
+                console.warn("[TailorCV] " + name + " unavailable - " + label + " did nothing.");
+                if (onFail) onFail();
+                resolve(undefined);
+            })();
+        });
     }
 
     /* Open the implemented change-review modal directly.
@@ -110,24 +113,24 @@
     /* ── Design defaults. Mirrors the reference "Style Settings" panel. ──── */
     const DESIGN_DEFAULTS = {
         paper: "A4",
-        font: "Georgia",
-        fontSize: 10.5,
-        lineHeight: 1.2,
+        font: "Times New Roman",
+        fontSize: 11,
+        lineHeight: 1.125,
         // A resume's own template already carries page padding, so stacking a
         // 1.4in margin on top left roughly two inches of dead space above the
         // name. 0.5in matches what the reference design renders.
-        marginX: 0.5,
-        marginY: 0.5,
-        accent: "#111827",
-        link: "#2563eb",
+        marginX: 0.39,
+        marginY: 0.39,
+        accent: "#000000",
+        link: "#000000",
         nameCase: "capitalize",
         delimiter: "◇",
         listStyle: "•",
         dateFormat: "MMM 'YY",
     };
 
-    const SWATCHES = ["#111827", "#2563eb", "#7c3aed", "#f87171",
-                      "#f59e0b", "#14b8a6", "#dc2626"];
+    const SWATCHES = ["#000000", "#0b7de3", "#7c3aed", "#ff5a5f",
+                      "#f5a623", "#2ec9bd", "#d61f32"];
 
     const FONTS = ["Georgia", "Times New Roman", "Garamond", "Calibri",
                    "Arial", "Helvetica", "Verdana", "Tahoma", "Cambria"];
@@ -177,8 +180,22 @@
     };
 
     function loadPayload() {
-        try { return JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null"); }
-        catch (e) { return null; }
+        let p = null;
+        try { p = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "null"); }
+        catch (e) { p = null; }
+        if (p && p.html) return p;
+        // sessionStorage is empty on a direct visit, a reload or a new tab.
+        // Without this the editor returned early and the LEGACY page that the
+        // template still ships stayed on screen - indistinguishable from the
+        // new editor having been reverted. The server seeds the user's most
+        // recent saved resume so it mounts with real content instead.
+        const boot = window.__TCV_EDITOR_BOOTSTRAP__;
+        if (boot && boot.html) {
+            try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(boot)); }
+            catch (e) {}
+            return boot;
+        }
+        return p;
     }
     function savePayload() {
         try {
@@ -398,6 +415,16 @@
             // capsules, dark text on a dark pill.
             el.querySelectorAll("*").forEach(kid => {
                 if (kid.hasAttribute("data-edv2-ink")) return;
+                // Only the NEAREST marked ancestor may colour this node.
+                // Template 7 nests a dark name-card and a dark sidebar inside
+                // lighter wrappers; without this check an outer light surface
+                // walked all the way in and painted the sidebar's contact and
+                // skills lines dark-on-dark, blanking them.
+                let near = kid.parentElement;
+                while (near && !near.hasAttribute("data-edv2-ink")) {
+                    near = near.parentElement;
+                }
+                if (near !== el) return;
                 let kbg = "";
                 try {
                     const kcs = win.getComputedStyle(kid);
@@ -411,21 +438,37 @@
                 kid.style.setProperty("color", ink, "important");
             });
 
-            // A mid-tone surface can still fall just short of 4.5:1 even with
-            // the best possible ink (template 7's name card sits at 4.47 with
-            // pure white). Deepen the SURFACE until the pair passes, rather
-            // than shipping text that is technically unreadable.
+            // A mid-tone surface can fall just short of 4.5:1 even with the
+            // best ink (template 7's name card sits at 4.47 with pure white).
+            // The SURFACE may be nudged to close that gap - but only slightly,
+            // and only DARKER.
+            //
+            // The previous version lightened a surface whenever the ink was
+            // dark (`v * 1.06 + 4`, up to 24 times). That bleached template
+            // 12's blue skill pills to near-white until they vanished against
+            // the paper, and `background-image: none` destroyed every gradient
+            // it touched. A template's own colour is part of its design: adjust
+            // it barely, never repaint it.
             const inkRgb = parseColor(ink);
             if (!inkRgb) return;
+            if (contrastRatio(rgb, inkRgb) >= 4.5) return;   // already fine
+            if (luminance(inkRgb) <= 0.5) return;  // dark ink: leave the
+                                                   // surface alone entirely
             let surf = rgb.slice(), guard = 0;
-            const wantDark = luminance(inkRgb) > 0.5;
-            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 24) {
-                surf = wantDark ? surf.map(v => Math.max(0, v * 0.94))
-                                : surf.map(v => Math.min(255, v * 1.06 + 4));
+            // At most 6 gentle steps, so the colour stays recognisably itself.
+            while (contrastRatio(surf, inkRgb) < 4.5 && guard++ < 6) {
+                surf = surf.map(v => Math.max(0, v * 0.94));
             }
+            // Only repaint a FLAT colour; a gradient keeps its own painting.
             if (guard > 0) {
-                el.style.setProperty("background-image", "none", "important");
-                el.style.setProperty("background-color", toHex(surf), "important");
+                let hasImage = false;
+                try {
+                    const cs2 = win.getComputedStyle(el);
+                    hasImage = cs2.backgroundImage && cs2.backgroundImage !== "none";
+                } catch (e) {}
+                if (!hasImage) {
+                    el.style.setProperty("background-color", toHex(surf), "important");
+                }
             }
         });
     }
@@ -550,11 +593,20 @@
             .project-state-contact-separator::before {
                 content: " ${delimiter.replace(/\\/g, "\\\\").replace(/"/g, '\\"')} " !important;
             }
+            /* Set the MARKER only. The indent belongs to the template:
+               `.bullets { margin: 0.9mm 0 0 3mm; padding: 0 }` in t15/t18.
+               Forcing `padding-left: 1.15em` on top of that, and wiping the
+               template's margin-left, pushed bullets right - and the two
+               indents compounded where a list continued onto a second page
+               (measured: bullets at 54px on page 1, 66px on page 2). */
             ul, ol {
                 list-style-type: ${listStyleCss(design.listStyle)} !important;
                 list-style-position: outside !important;
-                padding-left: 1.15em !important;
-                margin-left: 0 !important;
+            }
+            /* Only lists with NO indent of their own get one, so markers are
+               never clipped against the container edge. */
+            ul:not([class]), ol:not([class]) {
+                padding-left: 1.15em;
             }
             ul li, ol li { list-style: inherit !important; display: list-item !important; }
             @page { size: ${P.w}in ${P.h}in; margin: ${design.marginY}in ${design.marginX}in; }
@@ -1554,10 +1606,22 @@
         pageHintEl = el("span", "edv2-pages", "1 page");
         actions.appendChild(pageHintEl);
 
-        saveBtn = el("button", "edv2-iconbtn");
+        saveBtn = el("button", "edv2-btn edv2-btn-outline edv2-save-btn");
         saveBtn.type = "button";
-        saveBtn.title = "Saved";
+        saveBtn.title = "Save to My Resumes";
         saveBtn.innerHTML = SVG.cloud;
+        const saveText = el("span", null, "Save to My Resumes");
+        saveBtn.appendChild(saveText);
+        saveBtn.addEventListener("click", async () => {
+            saveBtn.disabled = true;
+            saveText.textContent = "Saving...";
+            const ok = await callHook("tcvSaveToMyResumes", undefined, "Save to My Resumes",
+                () => toast("Couldn't save this resume.",
+                            () => callHook("tcvSaveToMyResumes", undefined, "Save to My Resumes")));
+            saveBtn.disabled = false;
+            saveBtn.classList.toggle("saved", ok === true);
+            saveText.textContent = ok === true ? "Saved to My Resumes" : "Save to My Resumes";
+        });
         actions.appendChild(saveBtn);
 
         // "See what changed" only appears when there is something to review,
@@ -1608,13 +1672,15 @@
         const paneMap = {};
 
         [["content", "person", "Resume Content"],
+         ["ai", "sparkle", "AI Assistant"],
          ["design", "palette", "Design"]].forEach(([key, ic, label], i) => {
-            const t = el("button", "edv2-tab" + (i === 0 ? " on" : ""));
+            const selected = key === "design";
+            const t = el("button", "edv2-tab" + (selected ? " on" : ""));
             t.type = "button";
             t.innerHTML = SVG[ic];
             t.appendChild(el("span", null, label));
             const pane = el("div", "edv2-pane");
-            if (i !== 0) pane.hidden = true;
+            if (!selected) pane.hidden = true;
             paneMap[key] = pane;
             panes.appendChild(pane);
             t.addEventListener("click", () => {
@@ -1657,6 +1723,7 @@
         document.body.appendChild(root);
 
         buildContentPane(paneMap.content);
+        buildAiPane(paneMap.ai);
         buildDesignPane(paneMap.design);
 
         if (payload.html) paintFrame(payload.html);
@@ -1678,7 +1745,17 @@
     /* ── Boot ────────────────────────────────────────────────────────────── */
     function init() {
         payload = loadPayload();
-        if (!payload || !payload.html) return;      // old editor handles this
+        // The editor mounts even with no resume.
+        //
+        // This used to `return` when sessionStorage was empty, leaving the
+        // LEGACY editor markup that the template still ships on screen - which
+        // is indistinguishable from the new editor having been reverted. It is
+        // empty on a direct visit, a reload, a new tab, and for any account
+        // that has not saved a resume yet (verified: user 1099 has 0 rows in
+        // saved_resumes), so that was most visits. An empty shell the person
+        // can start typing into beats silently showing them the old page.
+        if (!payload) payload = {};
+        if (!payload.resume_data) payload.resume_data = {};
 
         // One line that says whether the shared actions registered. If a
         // button ever misbehaves again, this answers "is the hook there?"
