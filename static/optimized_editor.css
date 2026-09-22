@@ -556,7 +556,17 @@ header.navbar .nav-links a {
         border-radius: 0;
         box-shadow: none;
         overflow: hidden;
+        /* No gap above the paper: the action bar is hidden on phones, so any
+           margin here is just dead dark space at the top of the screen. */
+        margin: 0 !important;
+        padding: 0 !important;
     }
+
+    /* The grid gap does the same thing between the rows. */
+    .editor-page { gap: 0 !important; }
+    body.optimized-editor-body > .editor-page { padding-top: 0 !important; }
+    /* The browser's default 8px body margin is the last of the gap. */
+    body.optimized-editor-body { margin: 0 !important; }
 
     /* A fallback size for the preview frame.
 
@@ -646,6 +656,10 @@ header.navbar .nav-links a {
         border-top: 0;
         box-shadow: none;
         padding-bottom: 0;
+        /* Must not become a scroll container of its own, or it eats the drag
+           that belongs to the controls panel inside it. */
+        overflow: visible;
+        touch-action: auto;
     }
 
     /* "Adjust Size, Spacing & Colour" opens ABOVE the strip.
@@ -668,9 +682,13 @@ header.navbar .nav-links a {
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25);
-        overflow-y: auto;
+        overflow-y: scroll;                  /* not `auto`: iOS only reliably
+                                                scrolls a box that always has
+                                                a scroller */
         -webkit-overflow-scrolling: touch;   /* momentum scrolling on iOS */
         overscroll-behavior: contain;        /* no scroll-chaining to the page */
+        touch-action: pan-y;                 /* the parent bar's handlers must
+                                                not swallow the drag */
         /* Collapsed by default. The base rule animates max-height only, which
            leaves a 1px sliver visible above the strip. */
         height: 0;
@@ -738,8 +756,24 @@ header.navbar .nav-links a {
     }
 
     .mobile-controls-panel.open {
-        max-height: 320px;
-        padding: 0.75rem 0.9rem;
+        /* This is the ORIGINAL open state and it comes after the one above, so
+           it is the one that decides. The scrolling properties live here for
+           that reason:
+
+           - a real `height`, not just a max, or overflow-y has nothing to
+             scroll against and the last controls stay unreachable;
+           - `overflow-y: scroll`, because the collapsed state's
+             `overflow: hidden` shorthand outranks any overflow-y set earlier
+             in this block and left the panel computing to hidden;
+           - no transition, since animating max-height while a touch drag is in
+             flight cancels the scroll. */
+        height: min(46vh, 340px);
+        max-height: min(46vh, 340px);
+        overflow-y: scroll;
+        overflow-x: hidden;
+        transition: none;
+        border-top-width: 1px;
+        padding: 0.75rem 0.9rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
         border-bottom-width: 1px;
     }
 
