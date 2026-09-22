@@ -127,7 +127,8 @@ body.edv2-active { overflow: hidden; }
     white-space: nowrap;
 }
 .edv2-tip {
-    max-width: 860px; margin: 0 auto 16px; padding: 10px 14px;
+    /* Matches .edv2-page so the hint lines up with the paper below it. */
+    max-width: 793.7px; margin: 0 auto 16px; padding: 10px 14px;
     background: #fef9c3; border: 1px solid #fde68a; border-radius: 8px;
     font-size: .85rem; line-height: 1.5; color: #713f12;
 }
@@ -246,8 +247,16 @@ select.edv2-input { cursor: pointer; }
     overflow-y: auto;            /* the ONLY scroller in this column */
     padding: 40px;
 }
+/* Width is the PAPER's width, not a round number.
+
+   This was max-width:860px while the document inside is A4 - 793.9px at 96dpi
+   - and frameScale never scales up past 1. The white page was therefore 66px
+   wider than the resume it contained, leaving ~33px of blank white down each
+   side, INSIDE the page. That reads as a page margin, which is why shrinking
+   the resume's own margins never removed it. Measured: content now sits 0.1px
+   from the page edge. */
 .edv2-page {
-    width: 100%; max-width: 860px; margin: 0 auto;
+    width: 100%; max-width: 793.7px; margin: 0 auto;
     background: #fff; border-radius: 2px;
     box-shadow: 0 1px 3px rgba(17,24,39,.10), 0 10px 30px rgba(17,24,39,.08);
     overflow: hidden;            /* clips the iframe's own corners only */

@@ -543,6 +543,9 @@ header.navbar .nav-links a {
         grid-template-columns: 1fr;
         padding-left: 0;
         padding-right: 0;
+        /* No top padding: the desktop action bar is hidden on phones, so this
+           0.9rem only pushed the resume down the screen. */
+        padding-top: 0;
     }
 
     /* Preview occupies the top; width and height are controlled by JS to fill edge-to-edge */
@@ -553,6 +556,20 @@ header.navbar .nav-links a {
         border-radius: 0;
         box-shadow: none;
         overflow: hidden;
+    }
+
+    /* A fallback size for the preview frame.
+
+       Its width and height are set by applyWordStylePreview() in
+       optimized_editor.js. When that does not run - and on this page it is one
+       throw away from not running, because the whole module is a single IIFE -
+       the iframe falls back to the HTML default of 300x150px, a grey stub in
+       the corner of the screen with the resume invisible inside it. Sizing it
+       in CSS means the preview is readable even when the script is not there,
+       and JS still overrides both values the moment it is. */
+    #resume-preview-frame {
+        width: 100%;
+        min-height: 58vh;
     }
 
     .editor-sidebar {
@@ -570,6 +587,31 @@ header.navbar .nav-links a {
         display: none;
     }
 
+    /* The desktop action bar is redundant on a phone.
+
+       "Optimized Resume / Ready to review and save" plus Save, See what
+       changed and Download Resume stack into a 161px block at the top of the
+       screen - and every one of those actions is already in the fixed strip at
+       the bottom, where a thumb reaches. It was pushing the resume preview
+       down for no gain. */
+    .editor-actionbar {
+        display: none !important;
+    }
+
+    /* The sidebar's only child (.mobile-bar-container) is position:fixed, so
+       the sidebar has no in-flow content to size against and collapsed to 1px.
+       It is also restyled by a LATER `.editor-sidebar` rule further down this
+       file, which outranks a plain selector here - hence the explicit width
+       and the !important on min-height.
+
+       It still has to reserve the height the fixed bar occupies, or the page
+       scrolls up behind the toolbar and the last controls cannot be reached. */
+    .editor-sidebar {
+        width: 100% !important;
+        min-width: 0;
+        min-height: 52vh !important;
+    }
+
     /* ── Fixed bottom toolbar ─────────────────────────────── */
     .mobile-bar-container {
         position: fixed;
@@ -584,6 +626,102 @@ header.navbar .nav-links a {
         -webkit-backdrop-filter: blur(16px);
         border-top: 1px solid rgba(148, 163, 184, 0.25);
         box-shadow: 0 -4px 30px rgba(2, 6, 23, 0.55);
+
+        /* ONLY the action strip is fixed.
+
+           The container wraps the whole style-settings card - paper size,
+           font, every swatch and segmented control - so as a fixed element it
+           was 1183px tall on a 390px phone, anchored bottom, top edge at
+           -339px: it covered the screen and hid the preview. Capping its
+           height only clipped the settings, and left the strip painted on top
+           of Font and Font Size.
+
+           So the container goes back into normal flow and scrolls with the
+           page, and the strip inside it is what stays pinned. The settings are
+           reachable by scrolling; Download and Save never move. */
+        position: static;
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-top: 0;
+        box-shadow: none;
+        padding-bottom: 0;
+    }
+
+    /* "Adjust Size, Spacing & Colour" opens ABOVE the strip.
+
+       The toggle button sits in the fixed strip, but the panel it controls is
+       inside the settings card further up the page - so opening it changed
+       something off-screen and the button looked dead. The panel is pinned
+       just above the strip instead, which is where the button that opens it
+       is and where the reference design puts it.
+
+       The inline `aria-hidden` the template sets is not a styling hook; the
+       .open class the toggle adds is what drives this. */
+    .mobile-controls-panel {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 221px;          /* the measured strip height */
+        z-index: 299;
+        background: rgba(8, 17, 44, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(148, 163, 184, 0.25);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;   /* momentum scrolling on iOS */
+        overscroll-behavior: contain;        /* no scroll-chaining to the page */
+        /* Collapsed by default. The base rule animates max-height only, which
+           leaves a 1px sliver visible above the strip. */
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top-width: 0;
+    }
+    .mobile-controls-panel.open {
+        /* A fixed height, not just a max, so the panel has something for
+           overflow-y to scroll against. With only a max-height the box grew to
+           its content and the last controls - Left & Right Margins, Top &
+           Bottom Margins, Accent and Link colour - were clipped at the strip
+           with no way to reach them.
+
+           The max-height transition is dropped here too: animating the same
+           property that governs the scroll height leaves the panel mid-
+           animation when a touch starts, and the scroll never engages. */
+        height: min(46vh, 340px);
+        max-height: min(46vh, 340px);
+        transition: none;
+        padding: 0.75rem 0.9rem calc(0.9rem + env(safe-area-inset-bottom, 0px));
+        border-top-width: 1px;
+    }
+
+    /* The always-visible strip: pinned to the bottom of the viewport. */
+    .mobile-bar-container .actions-card {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 300;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        background: rgba(8, 17, 44, 0.98) !important;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid rgba(148, 163, 184, 0.25) !important;
+        box-shadow: 0 -4px 30px rgba(2, 6, 23, 0.55);
+        padding-bottom: calc(0.8rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Nothing may sit under the fixed strip.
+
+       The space is reserved on the settings card rather than on
+       .editor-sidebar, because a later `.editor-sidebar { padding: 0 }` rule
+       in this file wins over any padding-bottom set here - the shorthand
+       resets all four sides. The card is what actually holds the controls, so
+       it is the right element to pad anyway. ~222px is the measured strip
+       height; the remainder clears the home indicator. */
+    .style-settings-card {
+        margin-bottom: calc(244px + env(safe-area-inset-bottom, 0px)) !important;
     }
 
     /* ── Collapsible controls panel (Font Size + Spacing) ─── */
@@ -1094,8 +1232,18 @@ body.optimized-editor-body > .editor-page {
     box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.24);
 }
 
-.style-settings-card .mobile-controls-panel {
-    display: contents;
+/* Desktop only.
+
+   `display: contents` dissolves the panel so its controls sit directly in the
+   settings card, which is what the desktop sidebar wants. But it also defeats
+   the panel's own collapse on mobile - .mobile-controls-panel animates
+   max-height, and an element with display:contents generates no box to
+   animate - so Font Size, Line Height and the margin sliders were always
+   expanded and ran underneath the fixed action strip. */
+@media (min-width: 901px) {
+    .style-settings-card .mobile-controls-panel {
+        display: contents;
+    }
 }
 
 .style-settings-card .mobile-controls-panel > .editor-controls {
@@ -1238,9 +1386,20 @@ body.optimized-editor-body > .editor-page {
     border-radius: 16px;
 }
 
-.editor-sidebar .actions-card,
-.editor-sidebar .editor-status {
-    display: none !important;
+/* Desktop only.
+
+   This hid the actions card - the strip carrying Download and Save to My
+   Resumes - at EVERY width. On a desktop that is right: editor v2 mounts over
+   this page and puts both actions in its own top bar. On a phone v2 is not
+   what renders, so the rule took the only Download button on the page away
+   and left a mobile editor you could style a resume in but never export from.
+
+   901px matches the breakpoint the mobile layout above is built on. */
+@media (min-width: 901px) {
+    .editor-sidebar .actions-card,
+    .editor-sidebar .editor-status {
+        display: none !important;
+    }
 }
 
 .editor-preview-wrap {

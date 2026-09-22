@@ -7,7 +7,9 @@
   - https://pdflink.to/4d942525
 
 === FINAL cert.url PER ENTRY ===
-  - LeetCode SQL 50 Badge  ->  https://drive.google.com/
-  - Internship Trainee Certificate  ->  https://
+  - LeetCode SQL 50 Badge  ->  https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view
+  - Internship Trainee Certificate  ->  https://pdflink.to/4d942525
 
-=== READING-ORDER FILL ASSIGNED [0] ===
+=== READING-ORDER FILL ASSIGNED [2] ===
+  - LeetCode SQL 50 Badge  ->  https://drive.google.com/file/d/1zXVHv38EO7Ur5t_2O1_n5HwhpRnsJjeq/view
+  - Internship Trainee Certificate  ->  https://pdflink.to/4d942525
