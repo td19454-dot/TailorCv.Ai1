@@ -124,6 +124,83 @@
         return Math.max(0.2, Math.min(max, Number.isFinite(Number(raw)) ? Number(raw) : fallback));
     }
 
+    /* The horizontal margin a template declares in its OWN @page rule, in
+       inches - or null when it declares none.
+
+       Templates disagree about this by design:
+
+           1-6     0.22in, in the shared style1-4.css
+           7-18    ZERO, deliberately: these inset their content with container
+                   padding instead (.page, .layout, .main/.side/.content)
+           19-22   12-16mm, inline
+
+       A browser applies @page only when PRINTING, never to a document inside
+       an iframe, so the preview never saw any of it and applyWordStylePreview
+       substituted one flat marginX for all 22. On the templates that ask for
+       zero that padding lands ON TOP of the inset they already have, which is
+       the extra left/right white space reported on 7-11 and 14.
+
+       The rule is still parsed into the stylesheet even though it is not
+       applied, so it can simply be read back. The frame is written with
+       srcdoc, so its sheets are same-origin; one that throws on .cssRules is
+       skipped and treated as declaring nothing. */
+    function templatePageMarginXIn(doc) {
+        if (!doc) return null;
+        const LEN = /^([0-9.]+)(mm|cm|in|pt|px)$/;
+        const toIn = (v, u) => u === "in" ? v
+            : u === "mm" ? v / 25.4
+            : u === "cm" ? v / 2.54
+            : u === "pt" ? v / 72
+            : v / 96;                                  // px
+
+        // CSS shorthand: 1 value = all sides, 2 = v/h, 3 = t/h/b, 4 = t/r/b/l.
+        const horizontalOf = decl => {
+            const parts = String(decl).trim().split(/\s+/);
+            if (!parts.length) return null;
+            const h = parts.length === 1 ? parts[0]
+                    : parts.length === 4 ? parts[3]
+                    : parts[1];
+            if (parseFloat(h) === 0) return 0;
+            const m = LEN.exec(h);
+            return m ? toIn(parseFloat(m[1]), m[2]) : null;
+        };
+
+        let found = null;
+        let sheets;
+        try { sheets = Array.from(doc.styleSheets || []); } catch (e) { return null; }
+        for (const sheet of sheets) {
+            // Never read back the sheets this editor injects.
+            const node = sheet.ownerNode;
+            if (node && node.id && /^(tailorcv-|edv2)/.test(node.id)) continue;
+            let rules;
+            try { rules = sheet.cssRules; } catch (e) { continue; }
+            if (!rules) continue;
+            for (const rule of Array.from(rules)) {
+                if (!rule.style) continue;
+                const isPage = (typeof CSSPageRule !== "undefined"
+                                && rule instanceof CSSPageRule)
+                            || rule.type === 6;
+                if (!isPage) continue;
+                const margin = rule.style.margin
+                    || rule.style.getPropertyValue("margin");
+                if (margin) {
+                    const v = horizontalOf(margin);
+                    if (v !== null) found = v;
+                    continue;
+                }
+                const left = (rule.style.marginLeft || "").trim();
+                if (left) {
+                    if (parseFloat(left) === 0) found = 0;
+                    else {
+                        const m = LEN.exec(left);
+                        if (m) found = toIn(parseFloat(m[1]), m[2]);
+                    }
+                }
+            }
+        }
+        return found;
+    }
+
     /* ─────────────────────────────────────────────────────────────────────────
        PAYLOAD
     ───────────────────────────────────────────────────────────────────────── */
@@ -975,8 +1052,23 @@ hr, .divider, [class*="divider"],
         const viewScale      = Math.min(1, availableWidth / pageW);
         const marginX        = designMargin("x");
         const marginY        = designMargin("y");
+        /* Horizontal padding: honour what the template asks for.
+
+           A template that declares ~0 horizontal @page margin has already
+           inset its own content and must not be padded again - doing so is
+           what put an extra ~37px of white down both sides of templates 7-11
+           and 14. The vertical margin is unaffected: nothing else supplies it.
+
+           Only while the slider sits at its default. Once the reader moves
+           "Left & Right Margins" their value wins, on every template. */
+        const ZERO_IN = 0.02;                       // ~0.5mm, i.e. "none"
+        const ownX    = templatePageMarginXIn(doc);
+        const useOwnX = ownX !== null && ownX < ZERO_IN
+                        && marginX === 0.39;        // the slider's default
+        const padX    = useOwnX ? 0 : marginX;
+
         const bodyPaddingCss = styleTouched.page
-            ? `  padding: ${marginY}in ${marginX}in !important;\n`
+            ? `  padding: ${marginY}in ${padX}in !important;\n`
             : "";
 
         frame.style.width  = `${pageW}px`;

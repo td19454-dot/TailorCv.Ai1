@@ -1161,10 +1161,18 @@ def _page_margin_css(html_content: str) -> str:
     So the margin is applied only to templates whose content would otherwise
     run edge to edge, which is the case this rule was written for.
     """
-    MIN_INSET_MM = 4.0
+    # 3mm, not 4mm.
+    #
+    # Templates 10, 11 and 14 inset their content by 3.2-3.7mm and were the
+    # only ones in 7-18 still failing the old 4mm test, so the page margin
+    # stacked on top of spacing they already had. Their insets are the same
+    # kind of deliberate choice as template 12's 5mm, just tighter; 3mm keeps
+    # the guard for a template with genuinely none (1-6 and 19-22 all measure
+    # 0.0mm and still get the margin).
+    MIN_INSET_MM = 3.0
 
     # Horizontal padding on the root container, if any.
-    inset_mm = 0.0
+    root_mm = 0.0
     for sel in (r"\.page", r"\.resume-wrap", r"\.resume", r"\.sheet"):
         m = re.search(rf"{sel}\s*\{{[^}}]*?padding:\s*([^;]+);",
                       html_content, re.S)
@@ -1184,22 +1192,46 @@ def _page_margin_css(html_content: str) -> str:
             unit = g.group(2)
             mm = val if unit == "mm" else (val * 25.4 / 96 if unit == "px"
                                            else val * 25.4)
-            inset_mm = max(inset_mm, mm)
+            root_mm = max(root_mm, mm)
             break
 
-    # Templates 13/14 pad inner columns rather than the page itself.
-    if inset_mm < MIN_INSET_MM:
-        for sel in (r"\.header", r"\.main", r"\.content", r"\.side"):
-            m = re.search(rf"{sel}\s*\{{[^}}]*?padding:\s*([^;]+);",
-                          html_content, re.S)
-            if not m:
-                continue
-            parts = m.group(1).split()
-            horiz = (parts[0] if len(parts) == 1
-                     else parts[1] if len(parts) in (2, 3) else parts[3])
-            g = re.match(r"([0-9.]+)mm", horiz.strip())
-            if g:
-                inset_mm = max(inset_mm, float(g.group(1)))
+    # Templates that pad an inner column rather than the page itself.
+    #
+    # Two gaps here used to make this miss real insets, and the 10mm page
+    # margin then landed on top of padding the template already had - measured
+    # as an extra ~37px of white down both sides of 7-11 and 14 in the PDF:
+    #
+    #   * `.layout` was not in the list, and it is the padded element in
+    #     templates 9 (16px), 10 (12px) and 11 (14px);
+    #   * the pattern only accepted `mm`, so `.content { padding: 16px }` in
+    #     template 8 and `.resume-wrap { padding: 10px }` in template 7 both
+    #     measured as zero.
+    #
+    # px and in are converted the same way as the root scan above.
+    inner_mm = 0.0
+    for sel in (r"\.layout", r"\.header", r"\.main", r"\.content",
+                r"\.side", r"\.sidebar", r"\.body-col", r"\.inner"):
+        m = re.search(rf"{sel}\s*\{{[^}}]*?padding:\s*([^;]+);",
+                      html_content, re.S)
+        if not m:
+            continue
+        parts = m.group(1).split()
+        horiz = (parts[0] if len(parts) == 1
+                 else parts[1] if len(parts) in (2, 3) else parts[3])
+        g = re.match(r"([0-9.]+)(mm|px|in)", horiz.strip())
+        if g:
+            val = float(g.group(1))
+            unit = g.group(2)
+            mm = val if unit == "mm" else (val * 25.4 / 96 if unit == "px"
+                                           else val * 25.4)
+            inner_mm = max(inner_mm, mm)
+
+    # The two levels ADD UP, because the text sits inside both. Template 7 is
+    # `.resume-wrap { padding: 10px }` wrapping `.main { padding: 14px }`:
+    # 2.6mm and 3.7mm, each under the threshold on its own, 6.3mm together -
+    # comfortably more than the 10mm margin was there to provide. Taking the
+    # larger of the two instead of the sum is what made it look unspaced.
+    inset_mm = root_mm + inner_mm
 
     if inset_mm >= MIN_INSET_MM:
         return ""      # the template already spaces its own content
