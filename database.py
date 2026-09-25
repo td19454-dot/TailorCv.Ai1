@@ -20,6 +20,12 @@ def get_database_url() -> str:
     if database_url.startswith("postgres://"):
         database_url = database_url.replace("postgres://", "postgresql://", 1)
 
+    # Only psycopg2-binary is installed (requirements.txt). A URL naming the
+    # psycopg v3 driver ("postgresql+psycopg://") crashed the Render deploy at
+    # import with "No module named 'psycopg'", so pin it to psycopg2.
+    if database_url.startswith("postgresql+psycopg://"):
+        database_url = database_url.replace("postgresql+psycopg://", "postgresql+psycopg2://", 1)
+
     return database_url
 
 
