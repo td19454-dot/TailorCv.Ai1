@@ -10,7 +10,9 @@ Pillow
 email-validator>=2.0.0
 psycopg2-binary>=2.9.9
 itsdangerous>=2.0.0
-sqlalchemy
+# Pinned below 2.1: 2.1 switched the default Postgres driver to psycopg v3,
+# which crashed production on deploy. Matches the 2.0.x the app runs on locally.
+sqlalchemy>=2.0,<2.1
 bs4
 # Google Sign-In
 google-auth>=2.29.0

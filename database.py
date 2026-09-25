@@ -20,11 +20,14 @@ def get_database_url() -> str:
     if database_url.startswith("postgres://"):
         database_url = database_url.replace("postgres://", "postgresql://", 1)
 
-    # Only psycopg2-binary is installed (requirements.txt). A URL naming the
-    # psycopg v3 driver ("postgresql+psycopg://") crashed the Render deploy at
-    # import with "No module named 'psycopg'", so pin it to psycopg2.
-    if database_url.startswith("postgresql+psycopg://"):
-        database_url = database_url.replace("postgresql+psycopg://", "postgresql+psycopg2://", 1)
+    # Name the driver explicitly. Only psycopg2-binary is installed, but
+    # SQLAlchemy 2.1 made psycopg v3 the default for a bare "postgresql://",
+    # so an unpinned install crashed the Render deploy at import with
+    # "No module named 'psycopg'". Covers the bare and "+psycopg" forms.
+    for prefix in ("postgresql://", "postgresql+psycopg://"):
+        if database_url.startswith(prefix):
+            database_url = "postgresql+psycopg2://" + database_url[len(prefix):]
+            break
 
     return database_url
 
