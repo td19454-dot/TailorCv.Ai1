@@ -35,12 +35,38 @@
 }
 /* The rail collapses on narrow screens and on demand; follow it. */
 html.tcv-collapsed .edv2 { left: 0; }
+/* The rail collapses at 900px, but the top bar does not shrink until 860px.
+   Splitting them matters: between 861px and 900px .tcv-top is still 76px, and
+   offsetting the editor by 52px there tucked its top bar 24px underneath the
+   header. Each offset now changes at the width its own bar actually changes -
+   both read from app_shell.css. */
 @media (max-width: 900px) {
-    .edv2 { left: 0; --ed-shell-top: 52px; }
+    .edv2 { left: 0; }
+}
+@media (max-width: 860px) {
+    .edv2 { --ed-shell-top: 52px; }
 }
 /* While the editor owns the viewport the page behind it must not scroll -
    otherwise the body scrollbar sits beside the two column scrollbars. */
 body.edv2-active { overflow: hidden; }
+
+/* No dark band between the site header and the editor's top bar.
+
+   optimized_editor.css reserves the app shell's height with
+   `html.tcv-app body.optimized-editor-body { padding-top: 76px }`, which is
+   right for a page that flows under a fixed header. But .edv2 is itself
+   position:fixed at `top: var(--ed-shell-top)`, so it is already clear of the
+   header and ignores that padding - all the reservation does is push the page
+   BEHIND the editor down, leaving a strip of page background showing between
+   the header and the editor's own top bar.
+
+   The editor covers the viewport while it is mounted, so nothing behind it
+   needs the space. The padding is dropped for as long as .edv2 is active and
+   comes straight back if the shell ever unmounts. */
+body.edv2-active,
+html.tcv-app body.optimized-editor-body.edv2-active {
+    padding-top: 0 !important;
+}
 
 /* ── Top bar ─────────────────────────────────────────────────────────────── */
 .edv2-topbar {

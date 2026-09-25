@@ -294,14 +294,14 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.body.querySelectorAll(SPACING_SEL).forEach(node => {
             const base = parseFloat(node.getAttribute("data-tailorcv-base-lh") || "");
             if (!Number.isFinite(base) || base <= 0) return;
-            const next = Math.max(8, Math.min(80, base * scale));
+            const next = Math.max(1, Math.min(80, base * scale));
             node.style.setProperty("line-height", `${next}px`, "important");
         });
     }
 
     function changeLineSpacing(delta) {
         lineSpacingDirty = true;
-        currentLineSpacing = Math.max(0.7, Math.min(1.5, currentLineSpacing + delta));
+        currentLineSpacing = Math.max(0.2 / 1.125, Math.min(1.5, currentLineSpacing + delta));
         if (frame && frame.contentDocument) {
             captureBaseLineSpacing(frame.contentDocument);
             applyLineSpacing(frame.contentDocument, currentLineSpacing);
@@ -480,7 +480,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function setLineHeightValue(value) {
         lineSpacingDirty = true;
-        const v = Math.max(1, Math.min(2.4, Number(value) || 1.125));
+        const v = Math.max(0.2, Math.min(2.4, Number(value) || 1.125));
         currentLineSpacing = v / 1.125;
         syncRangeNumber("line-height-range", "line-height-input", v, "");
         if (frame && frame.contentDocument) {
@@ -488,7 +488,8 @@ document.addEventListener("DOMContentLoaded", function () {
             applyLineSpacing(frame.contentDocument, currentLineSpacing);
         }
         const guidance = document.getElementById("spacing-guidance");
-        if (guidance) guidance.textContent = v <= 1.15 ? "Default spacing." : "Comfortable spacing.";
+        if (guidance) guidance.textContent = v < 0.9 ? "Very tight — lines may overlap."
+            : v <= 1.15 ? "Default spacing." : "Comfortable spacing.";
         applyWordStylePreview();
         setStatus(`Line height: ${v}.`);
     }

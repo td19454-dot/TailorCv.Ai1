@@ -1329,7 +1329,7 @@
         b.appendChild(slider("Font Size", design.fontSize, 7, 14, 0.5, "pt", v => {
             design.fontSize = v; saveDesign(); refreshDesignPreview();
         }));
-        b.appendChild(slider("Line Height", design.lineHeight, 1, 2.4, 0.025, "", v => {
+        b.appendChild(slider("Line Height", design.lineHeight, 0.2, 2.4, 0.025, "", v => {
             design.lineHeight = v; saveDesign(); refreshDesignPreview();
         }));
         b.appendChild(slider("Left & Right Margins", design.marginX, 0.2, 1.5, 0.01, "in", v => {

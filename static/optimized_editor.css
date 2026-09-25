@@ -1087,15 +1087,44 @@ header.navbar .nav-links a {
     gap: 3px;
 }
 
-html.tcv-app header.navbar + .editor-page,
-header.navbar + .editor-page {
-    padding-top: 0 !important;
+/* No gap between the site header and the editor's action bar.
+
+   `.editor-page` carries `padding: 0.9rem 1rem 1rem`, and the 14.4px of that
+   which sits at the top shows as a dark band under the TailorCV header,
+   above "Optimized Resume".
+
+   This used to be cancelled with `header.navbar + .editor-page`, an ADJACENT
+   SIBLING selector - it only matches when .editor-page is the element
+   immediately after the header. The nav is an include and the app shell
+   injects its own markup, so on this page the two are not siblings and the
+   rule silently never applied. Targeting .editor-page directly removes the
+   dependency on where the header happens to sit in the DOM. */
+.editor-page {
+    /* Exactly the fixed navbar's height - no more, no less.
+
+       style2.css reserves the space with `header.navbar + * { padding-top:
+       100px }` while header.navbar is 72px tall, so 28px of bare page
+       background showed as a dark band between the site header and the
+       "Optimized Resume" bar. Zeroing it instead is not right either: the
+       navbar is position:fixed, so with no reservation the action bar slides
+       underneath it.
+
+       72px matches `header.navbar { height: 72px !important }` in
+       header-footer.css. The app-shell path (html.tcv-app) has its own 76px
+       reservation further down this file for its own 76px .tcv-top. */
+    padding-top: 72px !important;
     margin-top: 0 !important;
 }
 
 html.tcv-app body.optimized-editor-body {
     padding-top: 76px !important;
     padding-left: 0 !important;
+    /* The browser's own 8px body margin stacks ON TOP of that reservation, so
+       the page started at 84px while the fixed header ends at 77px - 7px of
+       page background showing as a dark strip between the header and the
+       "Optimized Resume" bar. The padding is the reservation; the margin is
+       just the UA default and has no job here. */
+    margin: 0 !important;
 }
 
 html.tcv-app body.optimized-editor-body .tcv-rail,
