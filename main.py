@@ -8578,6 +8578,35 @@ async def dashboard_page(request: Request):
             s = (r.status or "saved").strip().lower()
             if s in pipeline:
                 pipeline[s] += 1
+
+        # Action-plan progress. Every flag comes from something the user has
+        # actually done (lifetime usage, tracker status, portfolio rows) so a
+        # green tick never claims work that didn't happen.
+        usage_cols = ("ats_scans", "ai_optimizations", "mock_interviews", "interview_questions",
+                      "cover_letters", "linkedin_imports", "cv_uploads", "template_changes")
+        lifetime = dict.fromkeys(usage_cols, 0)
+        for rec in db.query(UsageRecord).filter(UsageRecord.user_id == user_id).all():
+            for col in usage_cols:
+                lifetime[col] += getattr(rec, col, 0) or 0
+        portfolio_count = db.query(Portfolio).filter(Portfolio.user_id == user_id).count()
+        app_stages = [(a.stage or "").strip().lower() for a in applications]
+        moved_on = pipeline["applied"] + pipeline["interview"] + pipeline["selected"] + pipeline["rejected"]
+        reached_interview = (pipeline["interview"] + pipeline["selected"] > 0
+                             or any(s in ("interview", "offer") for s in app_stages))
+        plan_done = {
+            "resume_base": bool(resumes) or lifetime["cv_uploads"] > 0 or lifetime["linkedin_imports"] > 0,
+            "resume_ats": latest_ats is not None or lifetime["ats_scans"] > 0,
+            "resume_tailor": bool(resumes) or lifetime["ai_optimizations"] > 0,
+            "apply_letter": lifetime["cover_letters"] > 0,
+            "apply_track": moved_on > 0 or any(s and s != "saved" for s in app_stages),
+            "iv_questions": lifetime["interview_questions"] > 0,
+            "iv_mock": lifetime["mock_interviews"] > 0,
+            "iv_round": reached_interview,
+            "iv_offer": pipeline["selected"] > 0 or "offer" in app_stages,
+            "out_portfolio": portfolio_count > 0,
+            "out_template": lifetime["template_changes"] > 0,
+        }
+        first_name = ((user.name or "").strip().split() or [""])[0]
         ctx = {
             "request": request,
             "user_name": user.name,
@@ -8590,6 +8619,8 @@ async def dashboard_page(request: Request):
             "recent_applications": applications[:5],
             "pipeline": pipeline,
             "usage": usage,
+            "plan_done": plan_done,
+            "first_name": first_name,
         }
     finally:
         db.close()
