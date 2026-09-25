@@ -533,4 +533,98 @@ test('isPlaceholderOption spots the non-answers', () => {
   notOk(m.isPlaceholderOption('Selected candidate'));
 });
 
+// ── containment: the wrong-city hazard ───────────────────────
+
+test('an option we fully cover is matched', () => {
+  eq(m.bestOptionMatch('Kolkata, West Bengal, India', ['Kolkata', 'Bengaluru']), 'Kolkata');
+  eq(m.bestOptionMatch('West Bengal', ['West Bengal, India', 'Karnataka, India']),
+     'West Bengal, India', 'two thirds of the option is enough');
+});
+
+test('a lone qualifier never picks a longer option that merely contains it', () => {
+  // "India" used to select the first CITY ending in India: right for a
+  // candidate in Kolkata, silently wrong for one in Bengaluru.
+  eq(m.bestOptionMatch('India', ['Kolkata, West Bengal, India',
+                               'Bengaluru, Karnataka, India']), null);
+});
+
+test('a country still matches a country list and a combined dial-code label', () => {
+  eq(m.bestOptionMatch('India', ['Indonesia', 'India']), 'India');
+  eq(m.bestOptionMatch('India', ['India (+91)', 'Indonesia (+62)']), 'India (+91)');
+});
+
+// ── sensitive labels the live forms actually use ─────────────
+
+test('a gender question is matched however the form phrases it', () => {
+  // "Which gender do you identify as?" went unanswered even with a gender
+  // saved, because the entry knew "gender identity" and identify != identity,
+  // so the one-word synonym "gender" was refused its one extra word.
+  for (const label of ['Gender', 'Gender identity', 'Which gender do you identify as?*',
+                       'What gender do you identify as?', 'What is your gender?']) {
+    const entry = m.matchFieldKey(label);
+    ok(entry && entry.key === 'gender', `${label} -> ${entry && entry.key}`);
+  }
+});
+
+test('a nationality question maps to its own stored answer', () => {
+  for (const label of ['Nationality', 'Please indicate your nationality:*',
+                       'Country of citizenship', 'What is your nationality?']) {
+    const entry = m.matchFieldKey(label);
+    ok(entry && entry.key === 'nationality', `${label} -> ${entry && entry.key}`);
+    ok(entry.sensitive, 'nationality must stay in the sensitive tier');
+  }
+});
+
+test('a yes/no citizenship question is NOT a nationality field', () => {
+  // "Are you a US citizen?" wants Yes or No. Answering it with "Indian" would
+  // be a wrong declaration on an immigration-adjacent question, so it stays
+  // unmatched and goes back to the user.
+  for (const label of ['Are you a US citizen?', 'Are you a citizen of the United States?',
+                       'Do you hold dual citizenship?']) {
+    eq(m.matchFieldKey(label), null, label);
+  }
+});
+
+test('the name entries still resolve after the new labels', () => {
+  eq(m.matchFieldKey('Middle Name').key, 'middle_name');
+  eq(m.matchFieldKey('Full name').key, 'full_name');
+  eq(m.matchFieldKey('First Name').key, 'first_name');
+});
+
+// ── OPT the visa status vs "opt in" the consent ──────────────
+
+test('an opt-in question is not an immigration question', () => {
+  // opt in the sponsorship pattern means OPT, the US work authorisation.
+  // It was matching the "opt" of "opt-in", so a marketing checkbox was locked
+  // behind the sensitive tier and reported as "add your sponsorship answer to
+  // your profile" — a question the person could not answer even in principle.
+  eq(m.classifySensitive('Do you opt-in to receive WhatsApp messages from Stripe Recruiting?*'), null);
+  eq(m.classifySensitive('Do you want to opt out of marketing emails?'), null);
+  eq(m.classifySensitive('Opt-in to our talent community'), null);
+});
+
+test('OPT the work authorisation is still sensitive', () => {
+  eq(m.classifySensitive('Are you currently on OPT?'), 'sponsorship');
+  eq(m.classifySensitive('Are you on CPT or OPT?'), 'sponsorship');
+  eq(m.classifySensitive('Will you require visa sponsorship?'), 'sponsorship');
+});
+
+test('a sponsorship question is matched however the form words it', () => {
+  // Real Stripe wording. The entry knew "sponsorship" but the form says
+  // "sponsor you for a work permit", so a stored answer could never be used.
+  const long = 'Will you require Stripe to sponsor you for a work permit now or in '
+             + 'the future for the location(s) you selected in in your previous response? *';
+  for (const label of [long,
+                       'Will you now or in the future require visa sponsorship?',
+                       'Do you need us to sponsor you for a work visa?']) {
+    const entry = m.matchFieldKey(label);
+    ok(entry && entry.key === 'requires_visa_sponsorship', `${label} -> ${entry && entry.key}`);
+    ok(entry.sensitive, 'sponsorship stays answerable only from the profile');
+  }
+});
+
+test('an unrelated work-permit question does not claim the sponsorship answer', () => {
+  eq(m.matchFieldKey('Do you have a valid work permit?'), null);
+});
+
 await run('match.js');

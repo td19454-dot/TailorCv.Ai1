@@ -127,6 +127,15 @@ const pages = {
     body: fixtures.GREENHOUSE,
     plan: PLANS.greenhouse,
   },
+  'greenhouse-remix.html': {
+    title: 'Greenhouse (current markup)',
+    note: 'Today\'s job-boards.greenhouse.io: two sibling question sections, the '
+        + 'phone country picker whose flyout holds an <code>input[type=search]</code>, '
+        + 'and an upload named by its wrapping group rather than its Attach label. '
+        + 'Real layout matters here — this is the shape that broke discovery.',
+    body: fixtures.GREENHOUSE_REMIX,
+    plan: PLANS.greenhouse,
+  },
   'lever.html': {
     title: 'Lever',
     note: 'Labels that are SIBLINGS of their inputs with no <code>for</code>, '

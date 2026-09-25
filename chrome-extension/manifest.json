@@ -8,35 +8,11 @@
     "cookies",
     "downloads",
     "scripting",
-    "storage"
+    "storage",
+    "webNavigation"
   ],
   "host_permissions": [
-    "*://*.linkedin.com/*",
-    "*://*.indeed.com/*",
-    "*://*.naukri.com/*",
-    "*://*.greenhouse.io/*",
-    "*://*.lever.co/*",
-    "*://*.myworkdayjobs.com/*",
-    "*://*.myworkdaysite.com/*",
-    "*://*.ashbyhq.com/*",
-    "*://*.smartrecruiters.com/*",
-    "*://*.workable.com/*",
-    "*://*.icims.com/*",
-    "*://*.jobvite.com/*",
-    "*://*.bamboohr.com/*",
-    "*://*.glassdoor.com/*",
-    "*://*.glassdoor.co.in/*",
-    "*://*.ziprecruiter.com/*",
-    "*://*.monster.com/*",
-    "*://*.simplyhired.com/*",
-    "*://*.dice.com/*",
-    "*://*.wellfound.com/*",
-    "https://thetailorcv.com/*",
-    "http://localhost/*",
-    "http://127.0.0.1/*"
-  ],
-  "optional_host_permissions": [
-    "*://*/*"
+    "<all_urls>"
   ],
   "externally_connectable": {
     "matches": [
@@ -51,26 +27,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*.linkedin.com/jobs/*",
-        "*://*.indeed.com/*",
-        "*://*.naukri.com/*",
-        "*://*.greenhouse.io/*",
-        "*://*.lever.co/*",
-        "*://*.myworkdayjobs.com/*",
-        "*://*.myworkdaysite.com/*",
-        "*://*.ashbyhq.com/*",
-        "*://*.smartrecruiters.com/*",
-        "*://*.workable.com/*",
-        "*://*.icims.com/*",
-        "*://*.jobvite.com/*",
-        "*://*.bamboohr.com/*",
-        "*://*.glassdoor.com/*",
-        "*://*.glassdoor.co.in/*",
-        "*://*.ziprecruiter.com/*",
-        "*://*.monster.com/*",
-        "*://*.simplyhired.com/*",
-        "*://*.dice.com/*",
-        "*://*.wellfound.com/*"
+        "<all_urls>"
       ],
       "js": [
         "env.js",
@@ -83,16 +40,7 @@
     },
     {
       "matches": [
-        "*://*.greenhouse.io/*",
-        "*://*.lever.co/*",
-        "*://*.ashbyhq.com/*",
-        "*://*.myworkdayjobs.com/*",
-        "*://*.myworkdaysite.com/*",
-        "*://*.smartrecruiters.com/*",
-        "*://*.workable.com/*",
-        "*://*.icims.com/*",
-        "*://*.jobvite.com/*",
-        "*://*.bamboohr.com/*"
+        "<all_urls>"
       ],
       "js": [
         "autofill.bundle.js"

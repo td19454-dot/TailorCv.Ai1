@@ -187,6 +187,32 @@ test('each fixture is attributed to the right ATS by URL', () => {
   eq(d.detectAts('https://jobs.ashbyhq.com/acme/abc-123/application'), 'ashby');
 });
 
+// ── one label, several meanings, end to end ──────────────────
+
+test('dropdowns: the option list decides what the label meant', async () => {
+  await withForm(fixtures.DROPDOWN_MEANINGS, {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);
+    notOk(result.error, result.error);
+    eq(valueOf(env, '#d_country'), 'India', 'a list of country names');
+    eq(valueOf(env, '#d_dial'), '+91', 'the same answer as a dial code');
+    eq(valueOf(env, '#d_loc'), 'Kolkata, West Bengal, India', 'a list of full locations');
+    eq(valueOf(env, '#d_state'), 'West Bengal', 'a list of states');
+    // Four different meanings behind two labels, one pass, no extra opens.
+  });
+});
+
+test('dropdowns: a closed office list takes the catch-all and says so', async () => {
+  await withForm(fixtures.DROPDOWN_MEANINGS, {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);
+    eq(valueOf(env, '#d_office'), 'Other',
+       'Kolkata is not on the list, so the catch-all rather than a wrong office');
+    const row = result.decisions.find(x => x.row && x.row.el
+      && x.row.el.id === 'd_office');
+    ok(row, 'the office field must be reported');
+    eq(row.action, p.SUGGEST, 'flagged for review, not filled silently');
+  });
+});
+
 // ── Greenhouse end to end ────────────────────────────────────
 
 test('Greenhouse: identity fields are filled from the profile', async () => {
@@ -198,6 +224,41 @@ test('Greenhouse: identity fields are filled from the profile', async () => {
     eq(valueOf(env, '#email'), 'ada@example.com');
     eq(valueOf(env, '#phone'), '+919876543210');
     eq(valueOf(env, '#q_linkedin'), 'https://linkedin.com/in/adalovelace');
+  });
+});
+
+// Today's Greenhouse (the Remix rewrite), which failed in the field while the
+// suite above stayed green: the country picker's <input type="search"> vetoed
+// the <form>, discovery dropped to the custom-questions section alone, and the
+// whole identity block — name, email, phone, country, resume — was missing from
+// the panel entirely. Everything asserted here was silently absent, not wrong.
+test('Greenhouse (current markup): the identity block is filled, not skipped', async () => {
+  await withForm(fixtures.GREENHOUSE_REMIX, {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);
+    notOk(result.error, result.error);
+    eq(valueOf(env, '#first_name'), 'Ada');
+    eq(valueOf(env, '#last_name'), 'Lovelace');
+    eq(valueOf(env, '#email'), 'ada@example.com');
+    // National, not E.164: intl-tel-input's own dial-code picker sits beside
+    // the box inside div.iti, so pasting "+91…" here would double the country
+    // code. Verified against the live page, which resolves the picker at
+    // depth 0 via .iti__country-container.
+    eq(valueOf(env, '#phone'), '9876543210');
+    // The custom questions kept working throughout; assert they still do.
+    // (Website stays empty: this profile has no website, which is the correct
+    // "not in your profile" outcome rather than an invented one.)
+    eq(valueOf(env, '#question_3'), 'https://linkedin.com/in/adalovelace');
+  });
+});
+
+test('Greenhouse (current markup): the resume reaches the upload behind "Attach"', async () => {
+  await withForm(fixtures.GREENHOUSE_REMIX, {}, async (env) => {
+    const result = await run_.runAutofill(CTX, null);
+    const input = env.document.querySelector('#resume');
+    eq(input.files.length, 1, 'no file was attached');
+    const row = result.decisions.find(x => x.row && x.row.el === input);
+    ok(row, 'the resume must appear in the results');
+    eq(row.slot, 'resume', `"Attach" must not be the field's name (got ${row.label})`);
   });
 });
 

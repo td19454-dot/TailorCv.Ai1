@@ -16,7 +16,7 @@
 // field is required".
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
-import { scrollIntoView, dismissListbox, reprobe, datePartOf } from './discover.js';
+import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible } from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
 const probe = () => globalThis.__tcvFieldProbe;
@@ -104,8 +104,13 @@ function writeValue(el, value) {
 
 // ── text-ish controls ────────────────────────────────────────
 
-export function setText(el, value) {
+export function setText(el, value, opts) {
   if (!el) return false;
+  // Blurring is the default because Workday and Formik validate on blur. It is
+  // WRONG for a dropdown's search box: react-select closes its menu when the
+  // input loses focus, so typing a query and then blurring leaves nothing to
+  // pick from. Callers filtering a listbox pass { blur: false }.
+  const wantBlur = !opts || opts.blur !== false;
   focus(el);
   // Clear first. A framework that appends rather than replaces (some masked
   // inputs do) otherwise ends up with the old value glued to the new one.
@@ -116,7 +121,7 @@ export function setText(el, value) {
   const ok = writeValue(el, value);
   fire(el, 'input');
   fire(el, 'change');
-  blur(el);
+  if (wantBlur) blur(el);
   return ok;
 }
 
@@ -261,9 +266,40 @@ export function setCheckable(row, value) {
  * EEO dropdowns Enter frequently commits nothing at all, leaving the typed text
  * visible while the field stays required.
  */
-export async function commitCombobox(row, value) {
+/** Unique, non-empty, order preserved. */
+function dedupe(list) {
+  const seen = new Set();
+  const out = [];
+  for (const v of list) {
+    const t = String(v == null ? '' : v).trim();
+    if (!t || seen.has(t.toLowerCase())) continue;
+    seen.add(t.toLowerCase());
+    out.push(t);
+  }
+  return out;
+}
+
+/**
+ * The part of an answer worth TYPING into a search box.
+ *
+ * The first comma segment: "Kolkata" of "Kolkata, West Bengal, India". A
+ * remote-search widget queries an API with whatever is typed, and the full
+ * string matches no record, so the menu comes back empty and the field is left
+ * blank — the "writing the whole location does not stick" case. Short answers
+ * and anything without a comma are typed as-is.
+ */
+function searchToken(value) {
+  const text = String(value == null ? '' : value).trim();
+  const head = text.split(',')[0].trim();
+  return head.length >= 2 ? head : text;
+}
+
+export async function commitCombobox(row, value, candidates) {
   const el = row.el;
   if (!el) return false;
+  // `value` stays the primary answer; the rest are other shapes of it that
+  // this list might be the one to want. See candidatesFor() in plan.js.
+  const shapes = dedupe([value].concat(candidates || []));
 
   // Never trade a real answer for a "prefer not to say" one. plan.js checks
   // this too; repeated here because a repair sweep can call the writer directly
@@ -291,9 +327,19 @@ export async function commitCombobox(row, value) {
       // input's onChange); per-character with key events if no menu appears,
       // for widgets that filter from keydown.
       const input = typableInput(row) || el;
-      setText(input, value);
+      // What we TYPE and what we SELECT are different strings. A remote-search
+      // city box returns nothing for "Kolkata, West Bengal, India" and the row
+      // we want for "Kolkata", so the query is the first segment of the answer
+      // while the selection is still matched against every full shape below.
+      const query = searchToken(value);
+      // Keep the focus: this input IS the open menu's search box.
+      setText(input, query, { blur: false });
       focus(input);
       options = await waitForOptions(el, TIMING.optionWaitMs);
+      if (!options.length && query !== value) {
+        setText(input, value, { blur: false });
+        options = await waitForOptions(el, TIMING.optionWaitMs);
+      }
       if (!options.length) {
         await typeText(input, value, 8);
         options = await waitForOptions(el, TIMING.optionWaitMs);
@@ -308,9 +354,12 @@ export async function commitCombobox(row, value) {
       }
     }
 
-    if (options.length && await clickMatchingOption(el, value, options)) {
+    // Every shape, against the list we already have open: no extra open, no
+    // extra wait, and the list itself settles what the field meant.
+    for (const shape of options.length ? shapes : []) {
+      if (!await clickMatchingOption(el, shape, options)) continue;
       await sleep(TIMING.settleMs);
-      if (committed(row, value)) return true;
+      if (committed(row, shape)) return true;
     }
 
     // Fallback: Enter on whatever is highlighted. Not for a button dropdown, where
@@ -366,8 +415,8 @@ function openWidget(row) {
   const role = el.getAttribute && el.getAttribute('role');
   const isButton = (el.tagName || '').toLowerCase() === 'button';
   let target = el;
+  const wrap = (p && p.rsContainer(el)) || el.parentElement;
   if (role !== 'combobox' && !isButton) {
-    const wrap = (p && p.rsContainer(el)) || el.parentElement;
     if (wrap) {
       let ctl = null;
       try {
@@ -375,9 +424,20 @@ function openWidget(row) {
       } catch (e) { ctl = null; }
       target = ctl || el;
     }
+  } else if (role === 'combobox' && wrap) {
+    // react-select listens for mousedown on its CONTROL, not on the inner
+    // search input, and measurably so: pressing the input left the widget
+    // closed (aria-expanded="false", "options seen: Array(0)") while pressing
+    // the control opened it with its full list. The input is a child of the
+    // control, so `contains` keeps this to the widget that owns this field.
+    let ctl = null;
+    try { ctl = wrap.querySelector('[class*="control"]'); } catch (e) { ctl = null; }
+    if (ctl && ctl.contains(el)) target = ctl;
   }
   focus(target);
   pressPointer(target);
+  // Typing goes to the input, whatever we pressed to open the menu.
+  if (target !== el) focus(el);
 }
 
 /** The text input inside a widget, which is not always the element we hold. */
@@ -397,7 +457,15 @@ function visibleOptionNodes(doc) {
   // de-duplicates a row that carries both markers.
   const p = probe();
   const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-  return nodes.filter(n => (n.textContent || '').trim());
+  // ON SCREEN, not merely present. The query has to sweep the whole document
+  // (react-select portals its menu to <body>), and a document holds option
+  // rows that belong to CLOSED widgets: every Greenhouse form ships the
+  // intl-tel-input country picker, whose 244 <li role="option"> country rows
+  // sit in a display:none dropdown from first paint. Without this filter
+  // waitForOptions returned those immediately, for every dropdown on the page
+  // — so "Bachelor's Degree" was matched against a list of countries, matched
+  // nothing, and every dropdown reported "we could not get this to stick".
+  return nodes.filter(n => (n.textContent || '').trim() && isNodeVisible(n));
 }
 
 function waitForOptions(el, timeout) {
@@ -592,6 +660,44 @@ export async function setDateParts(row, iso) {
  *   mismatch  — the page shows a different value
  *   failed    — the write itself did not go through
  */
+/**
+ * Did the field end up holding what we asked for?
+ *
+ * Three ways of saying yes, because a widget is allowed to restate a value:
+ *
+ *  - the plain whole-word match, as before;
+ *  - ANOTHER SHAPE of the same answer. A dial-code picker sent "India" shows
+ *    "+91" — that is the widget agreeing with us, not disagreeing;
+ *  - the same PHONE NUMBER, formatted. intl-tel-input rewrites a number as it
+ *    is typed: "8240044652" becomes "82400 44652", and once a country is
+ *    picked, "+91 82400 44652". Comparing those as words failed, the repair
+ *    sweep then wrote the E.164 form into a box that already had a country
+ *    code, and the person was left with a rejected number and a field we
+ *    claimed we could not fill — when the first write had been correct.
+ */
+function accepts(decision, value, shown) {
+  if (commitMatches(value, shown)) return true;
+  for (const candidate of (decision && decision.candidates) || []) {
+    if (commitMatches(candidate, shown)) return true;
+  }
+  return isPhoneField(decision && decision.row) && samePhone(value, shown);
+}
+
+function isPhoneField(row) {
+  if (!row) return false;
+  const label = row.label || '';
+  if (/extension|\bext\b|device|type|code/i.test(label)) return false;
+  return (row.hints && row.hints.type === 'tel') || /\b(phone|mobile|telephone)\b/i.test(label);
+}
+
+/** The same number, ignoring spacing, punctuation and a leading dial code. */
+function samePhone(wanted, shown) {
+  const a = String(wanted || '').replace(/\D/g, '');
+  const b = String(shown || '').replace(/\D/g, '');
+  if (a.length < 6 || b.length < 6) return false;
+  return a === b || a.endsWith(b) || b.endsWith(a);
+}
+
 export async function applyDecision(decision) {
   const row = decision.row;
   const value = decision.value;
@@ -606,10 +712,10 @@ export async function applyDecision(decision) {
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget
       // wearing a select's clothes.
-      if (!wrote) wrote = await commitCombobox(row, value);
+      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates);
       break;
     case 'combobox':
-      wrote = await commitCombobox(row, value);
+      wrote = await commitCombobox(row, value, decision.candidates);
       break;
     case 'radio':
     case 'checkbox':
@@ -638,7 +744,7 @@ export async function applyDecision(decision) {
   if (!after) return { ok: wrote, outcome: wrote ? 'ok' : 'failed', shown: '' };
   if (after.invalid) return { ok: false, outcome: 'rejected', shown: after.value };
   if (!after.filled) return { ok: false, outcome: 'empty', shown: '' };
-  if (!commitMatches(value, after.value)) {
+  if (!accepts(decision, value, after.value)) {
     return { ok: false, outcome: 'mismatch', shown: after.value };
   }
   return { ok: true, outcome: 'ok', shown: after.value };

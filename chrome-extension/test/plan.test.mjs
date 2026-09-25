@@ -353,6 +353,251 @@ test('an unreadable field is skipped and reported', () => {
   ok(d.reason.includes('could not read'), d.reason);
 });
 
+// ── one label, several meanings ──────────────────────────────
+//
+// "Country" and "Current location" name a box without saying what it wants.
+// The option list does, and it is already open by the time anything is
+// written — so the answer is carried as several shapes and the list picks.
+
+test('candidatesFor offers the country as a name, a dial code and both', () => {
+  deepEq(p.candidatesFor('address_country', 'India', BANK),
+         ['India', '+91', 'India (+91)']);
+});
+
+test('candidatesFor has no dial code to offer without a stored phone', () => {
+  deepEq(p.candidatesFor('address_country', 'India', { address_country: 'India' }),
+         ['India']);
+});
+
+test('candidatesFor offers a location at every granularity, most specific first', () => {
+  deepEq(p.candidatesFor('location', BANK.location, BANK),
+         ['Kolkata, West Bengal, India', 'Kolkata, West Bengal', 'Kolkata',
+          'West Bengal', 'India']);
+});
+
+test('candidatesFor leaves an ordinary field with exactly one shape', () => {
+  deepEq(p.candidatesFor('first_name', 'Ada', BANK), ['Ada']);
+});
+
+test('a Country list of names takes the name', () => {
+  const d = one(field('Country', { kind: 'select', options: ['Indonesia', 'India', 'Ireland'] }));
+  eq(d.action, p.FILL);
+  eq(d.value, 'India');
+});
+
+test('a Country list of dial codes takes the dial code', () => {
+  const d = one(field('Country', { kind: 'select', options: ['+1', '+62', '+91'] }));
+  eq(d.action, p.FILL);
+  eq(d.value, '+91', 'the same answer, in the shape this list offers');
+});
+
+test('a Country list of "India (+91)" takes the combined form', () => {
+  const d = one(field('Country', { kind: 'select', options: ['India (+91)', 'Indonesia (+62)'] }));
+  eq(d.value, 'India (+91)');
+});
+
+test('a location list of full addresses takes the full address', () => {
+  const d = one(field('Current location', {
+    kind: 'select',
+    options: ['Bengaluru, Karnataka, India', 'Kolkata, West Bengal, India'],
+  }));
+  eq(d.value, 'Kolkata, West Bengal, India');
+});
+
+test('a location list of states takes the state', () => {
+  const d = one(field('Current location', {
+    kind: 'select', options: ['Karnataka', 'West Bengal', 'Maharashtra'],
+  }));
+  eq(d.value, 'West Bengal');
+});
+
+test('a location list of cities never guesses one from the country alone', () => {
+  // The old substring rule scored any containment 0.75, so "India" selected
+  // the first city ENDING in India — right for Kolkata, silently wrong for
+  // anyone else. With no city of ours on the list, this must not be answered.
+  const bank = { address_country: 'India' };
+  const d = p.decide([field('Current location', {
+    kind: 'select', required: true,
+    options: ['Bengaluru, Karnataka, India', 'Mumbai, Maharashtra, India'],
+  })], { answerBank: bank, hasResume: true }, null, null)[0];
+  notOk(d.value, `picked ${d.value}`);
+  eq(d.action, p.ASK);
+});
+
+test('a closed office list falls back to Other, flagged for review', () => {
+  const d = one(field('Current location', {
+    kind: 'select', options: ['Bengaluru', 'Hyderabad', 'Other'],
+  }));
+  eq(d.value, 'Other');
+  eq(d.action, p.SUGGEST, 'a compromise the user should see, not a silent fill');
+  ok(/isn't offered here/.test(d.reason), d.reason);
+});
+
+test('a sensitive question never takes the Other fallback', () => {
+  // The whole point of the sensitive tier: "Other" on a work-authorization or
+  // demographic question is a declaration filed under the user's name.
+  const ctx = { answerBank: Object.assign({}, BANK, { gender: 'Female' }), hasResume: true };
+  const d = p.decide([field('Gender', {
+    kind: 'select', options: ['Male', 'Other', 'Decline To Self Identify'],
+  })], ctx, null, null)[0];
+  notOk(d.value === 'Other' && d.action === p.SUGGEST,
+        'a stored answer must not be traded for "Other"');
+});
+
+test('a field with nothing on file does not take Other either', () => {
+  const ctx = { answerBank: {}, hasResume: true };
+  const d = p.decide([field('Current location', {
+    kind: 'select', required: true, options: ['Bengaluru', 'Other'],
+  })], ctx, null, null)[0];
+  notOk(d.value, `"Other" must not stand in for an answer we never had (got ${d.value})`);
+});
+
+// ── degrees: the profile wording is not the dropdown wording ──
+
+test('candidatesFor offers a degree as its level, then the profile wording', () => {
+  deepEq(p.candidatesFor('degree', 'Bachelor of Technology', {}),
+         ["Bachelor's Degree", 'Bachelors', 'Bachelor', 'Undergraduate Degree',
+          'Undergraduate', 'Bachelor of Technology']);
+});
+
+const degreeRow = (stored, options) => ({
+  key: 'degree', el: null, members: [], kind: 'select', label: 'Degree',
+  ident: 'Degree', value: '', filled: false, invalid: false, required: false,
+  options, readable: true, documentSlot: null, hints: {},
+  candidates: p.candidatesFor('degree', stored, {}), candidateKey: 'degree',
+});
+
+// The live case: the profile says "Bachelor of Technology", the form offers
+// only levels, and it was reported as "we could not get this to stick".
+const SHOT = ["Associate's Degree", "Bachelor's Degree", 'Computer Science Degree',
+              'Doctor of Medicine (M.D.)', 'Master of Business Administration',
+              'Juris Doctor (J.D.)', 'High School Diploma'];
+
+test('a degree level list takes the level', () => {
+  eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', SHOT)),
+     "Bachelor's Degree");
+  eq(p.coerce('B.Tech', degreeRow('B.Tech', SHOT)), "Bachelor's Degree");
+  eq(p.coerce('Higher Secondary', degreeRow('Higher Secondary', SHOT)),
+     'High School Diploma');
+});
+
+test('a list that spells degrees out keeps the exact one', () => {
+  const full = ['Bachelor of Technology', 'Master of Technology', 'Bachelor of Science'];
+  eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', full)),
+     'Bachelor of Technology', 'never a sibling degree when ours is on the list');
+});
+
+test('a degree is never traded for a different qualification at the same level', () => {
+  // "Master's Degree" scores respectably against "Master of Business
+  // Administration"; claiming an MBA is not a rounding error.
+  eq(p.coerce('Master of Science', degreeRow('Master of Science', SHOT)), null);
+  // Nor a doctorate for the first thing on the list that says "Degree".
+  eq(p.coerce('PhD', degreeRow('PhD', SHOT)), null);
+});
+
+test('short level labels still match', () => {
+  const plain = ['Bachelors', 'Masters', 'Doctorate', 'Other'];
+  eq(p.coerce('Bachelor of Technology', degreeRow('Bachelor of Technology', plain)), 'Bachelors');
+  eq(p.coerce('PhD', degreeRow('PhD', plain)), 'Doctorate');
+});
+
+// ── ethnicity: their answer, in the form's words ─────────────
+//
+// Sensitive, so the rules are stricter than anywhere else: the stored answer
+// may be restated in the wording a form offers, and may be WIDENED to the
+// category it belongs to, but must never be narrowed and never invented.
+
+const ethnicityRow = (stored, options) => ({
+  key: 'race ethnicity', el: null, members: [], kind: 'select',
+  label: 'Please indicate your race or ethnicity:', ident: 'race',
+  value: '', filled: false, invalid: false, required: true,
+  options, readable: true, documentSlot: null, hints: {},
+  candidates: p.candidatesFor('race_ethnicity', stored, {}),
+  candidateKey: 'race_ethnicity',
+});
+
+// The list from the live form that could not be filled.
+const RACE_LIST = ['Asian', 'Black or African', 'Hispanic or Latino',
+                   'White / European', 'Middle Eastern / North African',
+                   'Indigenous / First Nations'];
+
+test('a stored ethnicity takes the broader category the form offers', () => {
+  eq(p.coerce('South Asian', ethnicityRow('South Asian', RACE_LIST)), 'Asian');
+  eq(p.coerce('Middle Eastern', ethnicityRow('Middle Eastern', RACE_LIST)),
+     'Middle Eastern / North African');
+});
+
+test('a stored ethnicity is restated in the standard EEO wording', () => {
+  const eeo = ['American Indian or Alaska Native', 'Asian', 'Black or African American',
+               'Hispanic or Latino', 'White', 'Two or More Races'];
+  eq(p.coerce('South Asian', ethnicityRow('South Asian', eeo)), 'Asian');
+  eq(p.coerce('Hispanic', ethnicityRow('Hispanic', eeo)), 'Hispanic or Latino');
+  eq(p.coerce('Native American', ethnicityRow('Native American', eeo)),
+     'American Indian or Alaska Native');
+});
+
+test('an ethnicity is NEVER narrowed to something they did not say', () => {
+  // The direction that matters. Taking "South Asian" off a list because the
+  // profile says "Asian" would file a more specific claim about a protected
+  // characteristic than the person ever made.
+  eq(p.coerce('Asian', ethnicityRow('Asian', ['South Asian', 'East Asian'])), null);
+  eq(p.coerce('Black', ethnicityRow('Black', ['Black Caribbean', 'Black African'])), null);
+  eq(p.coerce('White', ethnicityRow('White', ['White British', 'White Irish'])), null);
+});
+
+test('an ethnicity is never crossed into another group', () => {
+  eq(p.coerce('South Asian', ethnicityRow('South Asian',
+     ['Black or African American', 'Hispanic or Latino', 'White'])), null);
+});
+
+test('an unrecognised ethnicity is matched literally or left alone', () => {
+  eq(p.coerce('Martian', ethnicityRow('Martian', RACE_LIST)), null);
+});
+
+test('the whole sensitive row fills from the profile and nowhere else', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { race_ethnicity: 'South Asian' }),
+                hasResume: true };
+  const row = ethnicityRow('South Asian', RACE_LIST);
+  delete row.candidates;           // decide() builds them itself
+  delete row.candidateKey;
+  const d = p.decide([row], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Asian');
+  eq(d.sensitive, 'demographic');
+  eq(d.source, 'profile');
+});
+
+test('a sensitive row with nothing stored still asks, never guesses', () => {
+  const row = ethnicityRow('', RACE_LIST);
+  delete row.candidates;
+  delete row.candidateKey;
+  const d = p.decide([row], { answerBank: {}, hasResume: true }, null, null)[0];
+  eq(d.action, p.PROFILE);
+  notOk(d.value);
+});
+
+// ── nationality ──────────────────────────────────────────────
+
+test('nationality fills from the stored answer only', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { nationality: 'Indian' }), hasResume: true };
+  const d = p.decide([field('Please indicate your nationality:*',
+                            { kind: 'select', required: true,
+                              options: ['Indian', 'American', 'British'] })],
+                     ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'Indian');
+  eq(d.sensitive, 'citizenship');
+});
+
+test('nationality is never guessed when the profile has none', () => {
+  // The country, the phone's dial code and the address are all in this bank —
+  // none of them may become a nationality.
+  const d = one(field('Please indicate your nationality:*',
+                      { kind: 'select', required: true, options: ['Indian', 'American'] }));
+  notOk(d.value, `nothing may be written here (got ${d.value})`);
+  eq(d.action, p.PROFILE);
+});
+
 // ── documents ────────────────────────────────────────────────
 
 test('a resume file field is a document action when a resume is on file', () => {

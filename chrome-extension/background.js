@@ -91,14 +91,49 @@ async function clearAuthCache() {
 // the click itself grants us that one tab via activeTab and we inject on demand.
 // That is what lets the extension work everywhere without asking every user for
 // "read your data on all websites" at install time.
+// ── SPA navigation ───────────────────────────────────────────
+//
+// A client-routed board (LinkedIn, Workday, Ashby, most careers sites built on
+// React) changes the URL with history.pushState and never reloads, so the
+// content script is never re-run and its view of "which job is this?" goes
+// stale. It already noticed by comparing location.href inside a
+// MutationObserver, which works only when the route change happens to mutate
+// the DOM, and pays a callback on every mutation of every page we now run on.
+//
+// webNavigation reports the navigation itself. onHistoryStateUpdated covers
+// pushState AND replaceState; onReferenceFragmentUpdated covers #fragment
+// routing, which is how several older ATS SPAs page through an application.
+//
+// Top frame only (frameId 0): the sidebar lives there, and an embedded ATS
+// iframe routing internally is the filler's business, not the panel's.
+function notifyUrlChanged(details) {
+  if (!details || details.frameId !== 0 || !details.tabId || details.tabId < 0) return;
+  chrome.tabs.sendMessage(
+    details.tabId, { type: 'URL_CHANGED', url: details.url }, { frameId: 0 },
+  ).catch(() => { /* no content script in that tab (chrome://, the store) */ });
+}
+
+if (chrome.webNavigation) {
+  chrome.webNavigation.onHistoryStateUpdated.addListener(notifyUrlChanged);
+  chrome.webNavigation.onReferenceFragmentUpdated.addListener(notifyUrlChanged);
+}
+
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab || !tab.id) return;
 
+  // TOP FRAME ONLY. chrome.tabs.sendMessage broadcasts to every frame in the
+  // tab, and the filler registers its own onMessage listener in each one
+  // (src/autofill.js) — so on a company careers page that embeds its ATS form
+  // in an iframe (Stripe embeds Greenhouse), the click could be answered by
+  // that iframe, which ignores TOGGLE_PANEL. The result was a click that did
+  // nothing at all: the top frame never got the message and never got the
+  // content script either. frameId 0 addresses the page itself, so the reply
+  // can only come from the frame that owns the sidebar.
   try {
-    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' });
+    await chrome.tabs.sendMessage(tab.id, { type: 'TOGGLE_PANEL' }, { frameId: 0 });
     return;   // content script was already running — toggled it
   } catch (_) {
-    // No listener on that tab: not a declared site, so inject now.
+    // Nothing listening in the top frame: inject now.
   }
 
   try {

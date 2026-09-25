@@ -1,4 +1,4 @@
-﻿import asyncio
+import asyncio
 import asyncio
 import base64
 import hashlib
@@ -640,6 +640,8 @@ def _ensure_apply_profile_columns() -> None:
             to_add.append(f"ADD COLUMN {addr_col} VARCHAR({width})")
     if "skills" not in cols:
         to_add.append("ADD COLUMN skills TEXT")
+    if "nationality" not in cols:
+        to_add.append("ADD COLUMN nationality VARCHAR(80)")
     if to_add:
         with engine.begin() as conn:
             for clause in to_add:

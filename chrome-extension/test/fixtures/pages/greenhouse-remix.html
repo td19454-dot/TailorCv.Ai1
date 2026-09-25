@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TailorCV fixture — Greenhouse (current markup)</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+         max-width: 720px; margin: 0 auto; padding: 24px 16px 80px; }
+  .tcv-fixture-note { background: #eef2ff; border: 1px solid #c7d2fe; color: #1e1b4b;
+    border-radius: 10px; padding: 12px 14px; margin-bottom: 20px; font-size: 13px; }
+  .tcv-fixture-note code { background: #fff; padding: 1px 5px; border-radius: 4px; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #0b1020; color: #e5e7eb; }
+    .tcv-fixture-note { background: #1e1b4b; border-color: #3730a3; color: #e0e7ff; }
+    .tcv-fixture-note code { background: #0b1020; }
+  }
+  label { display: block; font-weight: 600; margin-top: 14px; font-size: 13px; }
+  input:not([type=radio]):not([type=checkbox]), select, textarea {
+    width: 100%; padding: 8px 10px; font: inherit; box-sizing: border-box;
+    border: 1px solid #94a3b8; border-radius: 6px; margin-top: 4px; }
+  label:has(input[type=radio]), label:has(input[type=checkbox]) {
+    font-weight: 400; display: flex; gap: 8px; align-items: center; }
+  fieldset { margin-top: 18px; border: 1px solid #cbd5e1; border-radius: 8px; }
+  button { margin-top: 20px; padding: 10px 18px; font: inherit; border-radius: 8px;
+    border: 1px solid #4f46e5; background: #4f46e5; color: #fff; cursor: pointer; }
+  .attach-button { background: #f1f5f9; color: #0f172a; border-color: #94a3b8;
+    margin-top: 4px; padding: 6px 12px; }
+  .select__control { border: 1px solid #94a3b8; border-radius: 6px; padding: 8px 10px;
+    margin-top: 4px; cursor: pointer; min-height: 20px; }
+  .select__placeholder { color: #64748b; }
+  .select__menu { border: 1px solid #94a3b8; border-radius: 6px; margin-top: 2px;
+    background: Canvas; }
+  .select__menu [role=option] { padding: 8px 10px; cursor: pointer; }
+  .select__menu [role=option]:hover { background: #e0e7ff; }
+</style>
+</head>
+<body>
+<div class="tcv-fixture-note">
+  <strong>TailorCV fixture: Greenhouse (current markup)</strong><br>
+  Today's job-boards.greenhouse.io: two sibling question sections, the phone country picker whose flyout holds an <code>input[type=search]</code>, and an upload named by its wrapping group rather than its Attach label. Real layout matters here — this is the shape that broke discovery.<br><br>
+  Run it: open DevTools → Console, switch the context dropdown at the top of the
+  console from <em>top</em> to <em>TailorCV</em> (extension globals live in the
+  extension's isolated world and are invisible from <em>top</em>), then call
+  <code>__tcvAutofill.selfTest()</code>. It runs the real pipeline with the network
+  stubbed and prints a table of every field, what was written, and whether the page
+  verified it — no login needed.
+  <br>Or use the sidebar's <em>Autofill this application</em> button to test the
+  real end-to-end flow with your own account.
+</div>
+
+
+<div class="application--container">
+  <div class="application--header"><h2 class="section-header">Apply for this job</h2></div>
+  <form method="get" action="/acme/jobs/7104698" id="application-form" class="application--form">
+    <div class="application--questions">
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="first_name-label" for="first_name" class="label">First Name<span aria-hidden="true">*</span></label>
+        <input id="first_name" class="input input__single-line" aria-label="First Name" aria-required="true" type="text" autocomplete="given-name" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="last_name-label" for="last_name" class="label">Last Name<span aria-hidden="true">*</span></label>
+        <input id="last_name" class="input input__single-line" aria-label="Last Name" aria-required="true" type="text" autocomplete="family-name" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="email-label" for="email" class="label">Email<span aria-hidden="true">*</span></label>
+        <input id="email" class="input input__single-line" aria-label="Email" aria-required="true" type="text" autocomplete="email" value="">
+      </div></div></div>
+
+      <fieldset class="phone-input">
+        <div class="phone-input__country">
+          <div class="select__container">
+            <label id="country-label" class="label">Country</label>
+            <div class="select__control">
+              <div class="select__placeholder">Select...</div>
+              <input class="select__input" id="country" role="combobox" aria-labelledby="country-label"
+                     aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" type="text" value="">
+            </div>
+          </div>
+        </div>
+        <div class="phone-input__phone"><div class="text-input-wrapper"><div class="input-wrapper">
+          <label id="phone-label" for="phone" class="label">Phone</label>
+          <!-- intl-tel-input wraps the box itself: the flag/dial-code picker is
+               a SIBLING of the input inside div.iti, and its flyout is the
+               input[type=search] that used to veto the whole form. -->
+          <div class="iti iti--allow-dropdown iti--show-flags iti--inline-dropdown">
+            <div class="iti__country-container">
+              <button type="button" class="iti__selected-country" aria-expanded="false">
+                <span class="iti__flag iti__in"></span>
+              </button>
+              <div class="iti__dropdown-content">
+                <div class="iti__search-input-wrapper">
+                  <input type="search" id="iti-0__search-input" class="iti__search-input" aria-label="Search" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <input id="phone" class="input input__single-line" aria-label="Phone" type="tel">
+          </div>
+        </div></div></div>
+      </fieldset>
+
+      <div class="field-wrapper">
+        <div role="group" aria-labelledby="upload-label-resume" aria-required="true" class="file-upload">
+          <div id="upload-label-resume" class="label upload-label">Resume/CV<span class="required">*</span></div>
+          <div class="file-upload__wrapper"><div class="button-container"><div class="secondary-button"><div>
+            <button type="button" class="btn btn--pill">Attach</button>
+            <label class="visually-hidden" for="resume">Attach</label>
+            <input id="resume" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf">
+          </div></div></div></div>
+        </div>
+      </div>
+      <div class="field-wrapper">
+        <div role="group" aria-labelledby="upload-label-cover_letter" class="file-upload">
+          <div id="upload-label-cover_letter" class="label upload-label">Cover Letter</div>
+          <div class="file-upload__wrapper"><div class="button-container"><div class="secondary-button"><div>
+            <button type="button" class="btn btn--pill">Attach</button>
+            <label class="visually-hidden" for="cover_letter">Attach</label>
+            <input id="cover_letter" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf">
+          </div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="application--questions">
+      <div class="field-wrapper field-wrapper--multiline"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_1-label" for="question_1" class="label">Describe your experience of data visualisation<span aria-hidden="true">*</span></label>
+        <textarea id="question_1" class="input input__multi-line" aria-label="Describe your experience of data visualisation" aria-required="true"></textarea>
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_2-label" for="question_2" class="label">Website</label>
+        <input id="question_2" class="input input__single-line" aria-label="Website" type="text" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_3-label" for="question_3" class="label">LinkedIn Profile</label>
+        <input id="question_3" class="input input__single-line" aria-label="LinkedIn Profile" type="text" value="">
+      </div></div></div>
+    </div>
+
+    <button type="submit" id="submit_app">Submit application</button>
+  </form>
+</div>
+
+<script>
+  window.__tcvFixtureCtx = {
+  "answerBank": {
+    "full_name": "Ada Lovelace",
+    "first_name": "Ada",
+    "last_name": "Lovelace",
+    "email": "ada@example.com",
+    "phone": "+91 98765 43210",
+    "location": "Kolkata, West Bengal, India",
+    "address_city": "Kolkata",
+    "address_state": "West Bengal",
+    "address_country": "India",
+    "postal_code": "700001",
+    "linkedin_url": "https://linkedin.com/in/adalovelace",
+    "github_url": "https://github.com/ada",
+    "university": "Indian Institute of Technology Delhi",
+    "degree": "B.Tech",
+    "major": "Computer Science and Engineering",
+    "graduation_date": "Jun 2024",
+    "gpa": "8.7/10",
+    "current_company": "Acme Corp",
+    "current_job_title": "Software Engineer II",
+    "years_of_experience": "2",
+    "available_start_date": "01/09/2026",
+    "how_did_you_hear_about_us": "Company website",
+    "authorized_to_work_in_country": "No",
+    "requires_visa_sponsorship": "Yes",
+    "gender": "Female",
+    "veteran_status": "I am not a protected veteran",
+    "accepts_employer_terms_and_privacy_policy": "Yes"
+  },
+  "hasResume": true,
+  "hasCoverLetter": false,
+  "blockers": [],
+  "quota": {
+    "exhausted": false,
+    "isPro": false
+  }
+};
+  window.__tcvFixturePlan = { answers: {} };
+</script>
+</body>
+</html>

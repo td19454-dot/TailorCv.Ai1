@@ -58,6 +58,29 @@ export function isVisible(el) {
 }
 
 /**
+ * Is this node actually on screen?
+ *
+ * The part of isVisible() that applies to any element rather than to a form
+ * control: no field wrapper, no disabled/readonly rules. Used for dropdown
+ * option rows, which are plain <li>/<div> nodes.
+ *
+ * Fails OPEN for the same reason isVisible() does — where there is no layout
+ * engine (jsdom) nothing can be measured, and dropping what we cannot measure
+ * would hide every option from the tests.
+ */
+export function isNodeVisible(node) {
+  if (!node) return false;
+  if (inAriaHidden(node)) return false;
+  if (hiddenByStyle(node)) return false;
+  if (typeof node.getBoundingClientRect === 'function') {
+    const r = node.getBoundingClientRect();
+    const measured = r && (r.width || r.height || r.top || r.left);
+    if (measured && r.width < 2 && r.height < 2) return false;
+  }
+  return true;
+}
+
+/**
  * Whether this node or any ancestor is styled out of existence.
  *
  * The ancestor walk is the point. `display` is not an inherited property, so
@@ -120,17 +143,51 @@ const APP_ROOT_SELECTORS = [
 
 const SEARCHY = /search|filter|newsletter|subscribe|login|sign ?in|sign ?up|cookie|consent ?banner/i;
 
+/**
+ * Does this container look like a real application rather than a search box?
+ *
+ * The signals scoreRoot() rewards below, asked as a yes/no. A site-search or
+ * newsletter box has one or two text inputs and none of these; an application
+ * form has a file upload, a phone/email field, a submit button, or simply more
+ * fields than a search box ever carries.
+ */
+function hasApplicationSignal(el) {
+  const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
+  if (has('input[type="file"]')) return true;
+  if (has('input[type="email"]') || has('input[type="tel"]')) return true;
+  if (has('button[type="submit"], input[type="submit"]')) return true;
+  const p = probe();
+  if (!p) return false;
+  try {
+    return p.fillableIn(el).elements.filter(isVisible).length > SEARCH_VETO_MAX_FIELDS;
+  } catch (e) { return false; }
+}
+
+// A search box with more fields than this is not a search box.
+const SEARCH_VETO_MAX_FIELDS = 3;
+
 /** Is this container a search/filter/login box rather than an application? */
 function looksLikeNotAnApplication(el) {
   if (!el) return true;
   try {
     if (el.matches('[role="search"]')) return true;
-    if (el.querySelector('input[type="search"]')) return true;
     if (el.querySelector('input[type="password"]')) return true;   // a login form
     const action = (el.getAttribute && el.getAttribute('action')) || '';
     const id = (el.getAttribute && (el.getAttribute('id') || '')) || '';
     const cls = (el.className && String(el.className)) || '';
+    // The container naming ITSELF a search/login/newsletter box is decisive.
     if (SEARCHY.test(action) || SEARCHY.test(id) || SEARCHY.test(cls)) return true;
+    // A DESCENDANT search input is not, and treating it as such cost us every
+    // Greenhouse application: the phone field's country picker is an
+    // intl-tel-input widget containing <input type="search" id="iti-0__search-input">,
+    // so form#application-form and .application--container were both vetoed.
+    // Discovery then fell through to one SECTION of the form — Greenhouse
+    // renders two sibling .application--questions divs — and picked the larger
+    // one, the custom questions. First name, last name, email, phone, country
+    // and the resume upload live in the other one, so they were never found,
+    // never planned and never reported: the panel did not list them at all.
+    // A widget's own search box says nothing about its container's purpose.
+    if (el.querySelector('input[type="search"]') && !hasApplicationSignal(el)) return true;
   } catch (e) { /* treat an unqueryable node as unusable */ }
   return false;
 }
@@ -413,7 +470,8 @@ export function describeFields(form) {
   const keyCounts = new Map();
   const dateGroups = new Map();  // date wrapper -> its row
 
-  for (const el of form.fields) {
+  const fields = (form.fields || []).concat(orphanFileInputs(form));
+  for (const el of fields) {
     // Workday dates: three spinbutton inputs (month, day, year) that are one
     // question. Described individually they come out as three fields labelled
     // "Month", "Day" and "Year", none of which matches anything the user has
@@ -428,7 +486,18 @@ export function describeFields(form) {
       continue;
     }
 
-    const d = p.describeEl(el);
+    let d = p.describeEl(el);
+    // A file input with no id, name, label or aria-* has no identity to read —
+    // Adobe's is literally <input type="file" tabindex="-1" hidden>. That is
+    // not an unreadable field, it is an upload whose name is on the control
+    // beside it, so it gets described from that instead of being dropped.
+    if (!d && isFileField(el)) {
+      const named = uploadGroupLabel(el);
+      if (named) {
+        d = { ident: named, kind: 'file', label: named, value: '', filled: false,
+              invalid: false, required: false, options: null };
+      }
+    }
     // No stable identity. Reported rather than dropped, so the review UI can
     // say "we could not read N fields" instead of quietly showing a short list.
     if (!d) {
@@ -491,7 +560,21 @@ export function describeFields(form) {
 
     if (isFileField(el)) {
       row.kind = 'file';
-      row.documentSlot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+      let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+      // The label we have names no document, or names only the button ("Attach").
+      // Either way the field's real name is on the control beside it: Greenhouse
+      // puts it on the wrapping group, Adobe on the "Upload Resume" button while
+      // the row itself reads "Upload options". Only taken when it actually names
+      // a document, so a genuine "Portfolio" row is never rewritten.
+      if (!slot || UPLOAD_ACTION_RE.test(row.label)) {
+        const group = uploadGroupLabel(el);
+        const groupSlot = documentSlotFor(group);
+        if (group && (groupSlot || UPLOAD_ACTION_RE.test(row.label))) {
+          row.label = group;
+          slot = groupSlot || slot;
+        }
+      }
+      row.documentSlot = slot;
     }
     out.push(row);
   }
@@ -619,6 +702,104 @@ export function datePartOf(el) {
 
 function isFileField(el) {
   return (el.getAttribute && (el.getAttribute('type') || '').toLowerCase() === 'file');
+}
+
+// A label that names the BUTTON rather than the field. Greenhouse ships
+// <label class="visually-hidden" for="resume">Attach</label> beside the file
+// input and puts the field's real name on the wrapper, so labelFor() — which
+// takes label[for] first, correctly for every other field — reads "Attach".
+// "Attach" matches no document slot, so the resume was never attached: the
+// planner reported "we could not tell which file this wants" and handed a
+// required upload back to the user on every Greenhouse application.
+const UPLOAD_ACTION_RE =
+  /^(attach|upload|browse|choose|select|add|replace)(\s+(a|an|your)?\s*(file|document|resume|cv|another))?\.?$/i;
+
+/**
+ * The accessible name of the group wrapping a file input, or ''.
+ *
+ * Only the standard naming mechanisms — an ancestor's `aria-labelledby` (what
+ * Greenhouse's <div role="group" aria-labelledby="upload-label-resume"> uses)
+ * or a <fieldset><legend>. Scraping nearby text instead would read the
+ * PREVIOUS field's label on a compact form, which is worse than no label: a
+ * confident wrong slot attaches the resume to "Cover Letter".
+ *
+ * Climbs only while the ancestor still wraps this one file input, so a section
+ * holding both Resume and Cover Letter can never name either of them.
+ */
+function uploadGroupLabel(el) {
+  const doc = el.ownerDocument;
+  if (!doc) return '';
+  const text = n => (n && n.textContent ? n.textContent.replace(/\s+/g, ' ').trim() : '');
+  let n = el.parentElement, depth = 0;
+  while (n && depth < 6) {
+    let files = 0;
+    try { files = n.querySelectorAll('input[type="file"]').length; } catch (e) { break; }
+    if (files > 1) break;                       // now covering a sibling upload
+    if (isFormLevel(n)) break;
+
+    const by = (n.getAttribute && n.getAttribute('aria-labelledby')) || '';
+    if (by) {
+      const named = by.split(/\s+/)
+        .map(id => { try { return text(doc.getElementById(id)); } catch (e) { return ''; } })
+        .filter(Boolean).join(' ');
+      if (named && !UPLOAD_ACTION_RE.test(named)) return named;
+    }
+    if ((n.tagName || '').toLowerCase() === 'fieldset') {
+      const lg = n.querySelector('legend');
+      const named = text(lg);
+      if (named && !UPLOAD_ACTION_RE.test(named)) return named;
+    }
+    // The button that opens the file picker, or a heading over the block.
+    // Adobe (Phenom) ships <div class="resume-upload-wrapper"><button>Upload
+    // Resume</button><input type="file" hidden></div> — the input carries no
+    // id, name, aria-label or <label for>, so the ONLY thing naming this field
+    // is the button's own text. Bare action words are still refused, which is
+    // what keeps Greenhouse's "Attach" from winning over its group label.
+    let named = '';
+    try {
+      const texts = Array.from(
+        n.querySelectorAll('button, label, legend, [role="button"], h1, h2, h3, h4'))
+        .map(text).filter(t => t && t.length <= 60);
+      // "Upload Resume" is an action phrase AND names the document, and on
+      // Adobe it is the only name the field has — so naming beats the
+      // action-word rule. A bare "Attach" names nothing and is still refused.
+      named = texts.find(t => documentSlotFor(t)) || '';
+      // Anything else is only trusted in the field's OWN wrapper: one level up
+      // sits "Apply With LinkedIn" beside the Dropbox and Drive buttons, and
+      // any of those would be a confident wrong name.
+      if (!named && depth === 0) named = texts.find(t => !UPLOAD_ACTION_RE.test(t)) || '';
+    } catch (e) { /* ignore */ }
+    if (named) return named;
+    n = n.parentElement; depth++;
+  }
+  return '';
+}
+
+/**
+ * File inputs that belong to this application but sit OUTSIDE the form root.
+ *
+ * Adobe's apply page puts the whole upload block above the <form> and inside no
+ * form at all, so enumerating the root found no upload and the resume was never
+ * attached. Deliberately narrow: only when the root itself holds no file input,
+ * only inputs that belong to no other <form> (an avatar or search upload
+ * elsewhere on the page stays out), and at most two.
+ */
+function orphanFileInputs(form) {
+  const root = form && form.root;
+  const doc = root && root.ownerDocument;
+  if (!doc) return [];
+  try {
+    if (root.querySelectorAll('input[type="file"]').length) return [];
+    return Array.from(doc.querySelectorAll('input[type="file"]'))
+      .filter(el => !root.contains(el) && !(el.closest && el.closest('form')) && isVisible(el))
+      .slice(0, 2);
+  } catch (e) { return []; }
+}
+
+/** Is `el` the form/page level rather than one field's wrapper? */
+function isFormLevel(el) {
+  const tag = (el.tagName || '').toLowerCase();
+  return tag === 'form' || tag === 'body' || tag === 'html' || tag === 'main';
 }
 
 const DROP_ZONE_SEL = [
@@ -838,7 +1019,25 @@ function waitForOptions() {
     // Captured now, not read inside the timer: the timer can outlive the frame
     // (or, in tests, the mounted document), and probe() would then be undefined.
     const p = probe();
-    const read = () => (p ? p.visibleOptionLabels(MAX_OPTIONS_READ) : []);
+    // ON SCREEN only. The probe's visibleOptionLabels() does not actually check
+    // visibility, and every Greenhouse form carries the phone country picker's
+    // 244 hidden <li role="option"> rows — so this returned a capped list of
+    // countries for whatever dropdown was being read. The sidebar then had 200
+    // "options" for "What time zone are you in?", blew past the 40-option cap
+    // in askFormHtml(), and offered a free-text box instead of the four real
+    // choices. (The probe itself is shared byte-for-byte with the server
+    // Playwright engine, which has the same latent bug; fixing it there is its
+    // own change.)
+    const read = () => {
+      if (!p || !p.optionNodes) return [];
+      const out = [];
+      for (const n of p.optionNodes(doc)) {
+        if (!isNodeVisible(n)) continue;
+        const t = (n.textContent || '').replace(/\s+/g, ' ').trim();
+        if (t && out.length < MAX_OPTIONS_READ) out.push(t);
+      }
+      return out;
+    };
     const immediate = read();
     if (immediate.length) { resolve(immediate); return; }
 
@@ -872,7 +1071,17 @@ export function clickOpen(el) {
   const p = probe();
   const target = pickClickTarget(el, p);
   try { target.focus({ preventScroll: true }); } catch (e) { try { target.focus(); } catch (_) {} }
-  try { target.click(); } catch (e) { /* fall through */ }
+  // A bare .click() is not enough: react-select commits and opens on
+  // MOUSEDOWN, and several component libraries open on pointerdown. The write
+  // path already sends the full sequence (pressPointer in write.js); reading
+  // has to send the same one or it sees a widget that never opened.
+  const win = (el.ownerDocument && el.ownerDocument.defaultView) || globalThis;
+  for (const type of ['pointerdown', 'mousedown', 'pointerup', 'mouseup', 'click']) {
+    try {
+      const Ctor = type.startsWith('pointer') && win.PointerEvent ? win.PointerEvent : win.MouseEvent;
+      target.dispatchEvent(new Ctor(type, { bubbles: true, cancelable: true, view: win, button: 0 }));
+    } catch (e) { /* best effort, same as the writer */ }
+  }
 }
 
 /**
@@ -882,7 +1091,17 @@ export function clickOpen(el) {
  */
 function pickClickTarget(el, p) {
   const role = el.getAttribute && el.getAttribute('role');
-  if (role === 'combobox' || role === 'button') return el;
+  // A react-select's inner search input carries role="combobox", but the
+  // widget listens on its CONTROL and ignores events whose target is that
+  // input. Returning the input here is why reading a dropdown's options
+  // returned nothing: the menu never opened, the sidebar got no choices, and
+  // it offered a free-text box for a question that has eight fixed answers.
+  if (role === 'combobox') {
+    const ctl = el.closest && el.closest('[class*="control"]');
+    if (ctl && ctl !== el) return ctl;
+    return el;
+  }
+  if (role === 'button') return el;
   // A native <button> dropdown (Workday) is its own trigger. Searching its
   // wrapper for "something clickable" instead finds unrelated controls.
   if ((el.tagName || '').toLowerCase() === 'button') return el;

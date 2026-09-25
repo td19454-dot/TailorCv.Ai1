@@ -233,6 +233,16 @@ export async function runAutofill(ctx, onProgress) {
       if (d.row && isPhoneRow(d.row)) {
         const alt = alternatePhone(d.value, ctx);
         if (alt && alt !== d.value) d.value = alt;
+        continue;
+      }
+      // A dropdown that did not take is retried with the NEXT shape of the
+      // answer, not the same string again — re-sending "India" to a list of
+      // dial codes fails exactly as it did the first time. The writer tries
+      // every remaining shape against the open list, so this costs one open.
+      const next = nextCandidate(d);
+      if (next) {
+        d.candidates = d.candidates.filter(c => c !== d.value);
+        d.value = next;
       }
     }
     progress('repairing', { total: broken.length });
@@ -271,6 +281,14 @@ function isPhoneRow(row) {
   const label = row.label || '';
   if (/extension|\bext\b|device|type|code/i.test(label)) return false;
   return (row.hints && row.hints.type === 'tel') || /\b(phone|mobile)\b/i.test(label);
+}
+
+/** The next shape of the answer this row has not tried yet, or ''. */
+function nextCandidate(d) {
+  if (!d || !d.candidates || d.candidates.length < 2) return '';
+  const current = String(d.value || '').toLowerCase();
+  const next = d.candidates.find(c => String(c).toLowerCase() !== current);
+  return next || '';
 }
 
 /** The same number in the other shape: E.164 <-> national. */

@@ -292,6 +292,164 @@ test('commitCombobox opens, filters, and clicks the matching option', async () =
   });
 });
 
+test('options belonging to a closed widget are never read as this one’s', async () => {
+  // Every Greenhouse form ships the intl-tel-input phone country picker, whose
+  // 244 <li role="option"> rows sit in a display:none dropdown from first
+  // paint. The option query has to sweep the whole document (react-select
+  // portals its menu to <body>), so those rows were returned INSTANTLY for
+  // every dropdown on the page: "Bachelor's Degree" was matched against a list
+  // of countries, matched nothing, and the field reported "we could not get
+  // this to stick". Degree, School, Discipline and every custom question on
+  // the form failed the same way.
+  const html = `<form><input name="x"><input name="y">
+    <div class="iti__dropdown-content" style="display:none">
+      <ul class="iti__country-list">
+        <li class="iti__country" role="option">Afghanistan+93</li>
+        <li class="iti__country" role="option">India+91</li>
+      </ul>
+    </div>
+    <div class="select__container">
+      <div class="select__control"><input role="combobox" name="degree"></div>
+      <input type="hidden" name="degree_value">
+    </div>
+    <div id="portal"></div></form>`;
+  await withDoc(html, async (env) => {
+    const doc = env.document;
+    const input = doc.querySelector('[role=combobox]');
+    const portal = doc.querySelector('#portal');
+    const renderMenu = () => {
+      portal.innerHTML = '';
+      for (const label of ["Associate's Degree", "Bachelor's Degree", 'Doctor of Medicine (M.D.)']) {
+        const node = doc.createElement('div');
+        node.setAttribute('role', 'option');
+        node.dataset.v = label;
+        node.textContent = label;
+        portal.appendChild(node);
+        node.addEventListener('mousedown', () => {
+          const control = doc.querySelector('.select__control');
+          control.innerHTML =
+            `<div class="select__singleValue">${node.dataset.v}</div>` + control.innerHTML;
+          doc.querySelector('[name=degree_value]').value = node.dataset.v;
+          portal.innerHTML = '';
+        });
+      }
+    };
+    // ASYNC, like the real widget: the menu is not in the DOM on the tick the
+    // options are first queried. That is what made the stale country rows
+    // decisive in production — they were the only thing there to find.
+    // 200ms: after the writer's settle wait, well inside optionWaitMs.
+    const renderSoon = () => { env.window.setTimeout(renderMenu, 200); };
+    input.addEventListener('mousedown', renderSoon);
+    input.addEventListener('input', renderSoon);
+
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, "Bachelor's Degree"),
+       'the hidden country list must not be mistaken for these options');
+    eq(doc.querySelector('[name=degree_value]').value, "Bachelor's Degree");
+  });
+});
+
+test('typing a filter never blurs the dropdown it is filtering', async () => {
+  // setText() blurs by default, because Workday and Formik validate on blur.
+  // On a dropdown that is fatal: react-select closes its menu when the search
+  // input loses focus, so the query was typed and the menu vanished before
+  // anything could be picked. Live, this was "we could not get this to stick"
+  // on every react-select on the page.
+  const html = `<form><input name="x"><input name="y">
+    <div class="select__container">
+      <div class="select__control"><input role="combobox" name="race"></div>
+      <input type="hidden" name="race_value">
+    </div>
+    <div id="portal"></div></form>`;
+  await withDoc(html, async (env) => {
+    const doc = env.document;
+    const input = doc.querySelector('[role=combobox]');
+    const portal = doc.querySelector('#portal');
+    let open = false;
+    const render = () => {
+      open = true;
+      portal.innerHTML = '';
+      for (const label of ['Asian', 'Black or African', 'White / European']) {
+        const node = doc.createElement('div');
+        node.setAttribute('role', 'option');
+        node.textContent = label;
+        portal.appendChild(node);
+        node.addEventListener('mousedown', () => {
+          doc.querySelector('[name=race_value]').value = label;
+          const control = doc.querySelector('.select__control');
+          // PREPEND: the inner input must survive, or the row cannot be
+          // re-probed and the commit check has nothing to read.
+          control.innerHTML =
+            `<div class="select__singleValue">${label}</div>` + control.innerHTML;
+          portal.innerHTML = ''; open = false;
+        });
+      }
+    };
+    // The widget closes its menu on blur, exactly as react-select does. The
+    // ORDER is what this test is about: the per-character fallback can reopen
+    // a menu that a blur closed, which hides the bug in jsdom and made it
+    // intermittent live. So assert the blur never happens at all while we are
+    // filtering — not merely that the value landed in the end.
+    const events = [];
+    input.addEventListener('blur', () => { events.push('blur'); open = false; portal.innerHTML = ''; });
+    input.addEventListener('mousedown', render);
+    input.addEventListener('input', render);
+    portal.addEventListener('mousedown', () => events.push('pick'), true);
+
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, 'Asian'), 'the menu must still be open to pick from');
+    eq(doc.querySelector('[name=race_value]').value, 'Asian');
+    eq(events.indexOf('blur'), -1,
+       `the search box must not be blurred while its menu is in use: ${events.join(',')}`);
+    void open;
+  });
+});
+
+test('a react-select is opened by its control, not its inner input', async () => {
+  // Measured on a live Greenhouse form: pressing the inner search input left
+  // the widget closed (aria-expanded="false", "options seen: Array(0)"), while
+  // pressing the control opened it with its full list.
+  const html = `<form><input name="x"><input name="y">
+    <div class="select__container">
+      <div class="select__control"><input role="combobox" name="degree"></div>
+      <input type="hidden" name="degree_value">
+    </div>
+    <div id="portal"></div></form>`;
+  await withDoc(html, async (env) => {
+    const doc = env.document;
+    const control = doc.querySelector('.select__control');
+    const portal = doc.querySelector('#portal');
+    let openedBy = '';
+    const render = source => () => {
+      if (!openedBy) openedBy = source;
+      portal.innerHTML = '';
+      const node = doc.createElement('div');
+      node.setAttribute('role', 'option');
+      node.textContent = "Bachelor's Degree";
+      portal.appendChild(node);
+      node.addEventListener('mousedown', () => {
+        doc.querySelector('[name=degree_value]').value = "Bachelor's Degree";
+        control.innerHTML =
+          `<div class="select__singleValue">Bachelor's Degree</div>` + control.innerHTML;
+        portal.innerHTML = '';
+      });
+    };
+    // react-select's control handler returns early when the event target IS
+    // its search input, which is why a press on the input left the live widget
+    // closed ("options seen: Array(0)") even though the event bubbles.
+    const input = doc.querySelector('[role=combobox]');
+    control.addEventListener('mousedown', e => {
+      if (e.target === input) return;
+      render('control')();
+    });
+
+    const row = rowFor(env, '[role=combobox]');
+    ok(await w.commitCombobox(row, "Bachelor's Degree"), 'the control must be pressed');
+    eq(openedBy, 'control');
+    eq(doc.querySelector('[name=degree_value]').value, "Bachelor's Degree");
+  });
+});
+
 test('commitCombobox reports failure when nothing commits', async () => {
   const html = `<form><input name="x"><input name="y">
     <div class="select__container">
@@ -328,6 +486,61 @@ test('commitCombobox refuses to replace a real answer with a decline', async () 
 });
 
 // ── applyDecision: verification ──────────────────────────────
+
+test('a phone the widget reformats is not a mismatch', async () => {
+  // intl-tel-input rewrites a number as it is typed. We wrote the national
+  // number the form asked for and it came back spaced, so verification called
+  // it a mismatch, the repair sweep wrote the E.164 form into a box that
+  // already had a +91 picker beside it, and the person was left with
+  // "+91 82400 44652" rejected in red.
+  await withDoc(`<form><input name="a"><input name="phone" type="tel"></form>`, async (env) => {
+    const el = env.document.querySelector('[name=phone]');
+    el.addEventListener('input', () => {
+      const digits = String(el.value || '').replace(/\D/g, '');
+      if (digits.length === 10) el.value = digits.slice(0, 5) + ' ' + digits.slice(5);
+    });
+    const row = rowFor(env, '[name=phone]');
+    const res = await w.applyDecision({ row, value: '8240044652' });
+    ok(res.ok, `spacing is not disagreement (outcome ${res.outcome}, shown ${res.shown})`);
+    eq(res.outcome, 'ok');
+  });
+});
+
+test('a phone shown with its dial code is the same number', async () => {
+  await withDoc(`<form><input name="a"><input name="phone" type="tel"></form>`, async (env) => {
+    const el = env.document.querySelector('[name=phone]');
+    el.addEventListener('input', () => {
+      const digits = String(el.value || '').replace(/\D/g, '');
+      if (digits.length === 10) el.value = '+91 ' + digits;
+    });
+    const row = rowFor(env, '[name=phone]');
+    const res = await w.applyDecision({ row, value: '8240044652' });
+    ok(res.ok, `a widget adding the country code agrees with us (${res.shown})`);
+  });
+});
+
+test('a different phone number is still a mismatch', async () => {
+  await withDoc(`<form><input name="a"><input name="phone" type="tel"></form>`, async (env) => {
+    const el = env.document.querySelector('[name=phone]');
+    el.addEventListener('input', () => { el.value = '9999999999'; });
+    const row = rowFor(env, '[name=phone]');
+    const res = await w.applyDecision({ row, value: '8240044652' });
+    notOk(res.ok, 'a genuinely different number must still be reported');
+    eq(res.outcome, 'mismatch');
+  });
+});
+
+test('a value restated as another of its shapes is accepted', async () => {
+  // A dial-code picker sent "India" displays "+91". That is the widget
+  // agreeing with us, and "+91" is one of the shapes we offered it.
+  await withDoc(`<form><input name="a"><input name="country"></form>`, async (env) => {
+    const el = env.document.querySelector('[name=country]');
+    el.addEventListener('input', () => { if (/india/i.test(el.value)) el.value = '+91'; });
+    const row = rowFor(env, '[name=country]');
+    const res = await w.applyDecision({ row, value: 'India', candidates: ['India', '+91'] });
+    ok(res.ok, `outcome ${res.outcome}, shown ${res.shown}`);
+  });
+});
 
 test('applyDecision reports ok when the value lands', async () => {
   await withDoc('<form><input name="a"><input name="b"></form>', async (env) => {

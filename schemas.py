@@ -85,6 +85,7 @@ class ApplyProfileRequest(BaseModel):
     howDidYouHear: str = Field(default="", max_length=120)
     whyThisRole: str = Field(default="", max_length=2000)
 
+    nationality: str = Field(default="", max_length=80)
     gender: str = Field(default="", max_length=60)
     raceEthnicity: str = Field(default="", max_length=80)
     veteranStatus: str = Field(default="", max_length=80)

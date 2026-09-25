@@ -169,6 +169,42 @@ function optLabel(opt) {
  * `options` may be strings or {value,label} objects; the matching element is
  * returned in whatever shape it came in.
  */
+/**
+ * The score a raw substring containment earns, or 0.
+ *
+ * A plain `label.includes(value)` used to force 0.75 either way round, which is
+ * how the value "India" selected the option "Kolkata, West Bengal, India" — the
+ * first CITY that happens to end in the country. It was right for a candidate
+ * in Kolkata and silently wrong for one in Bengaluru, which is the worst shape
+ * a bug can have: a confident wrong answer on a form someone submits.
+ *
+ * Token coverage instead, in the two directions that mean different things:
+ *
+ *   option ⊆ value   — we hold "Kolkata, West Bengal, India" and the list
+ *                      offers "Kolkata". Picking the less specific option is
+ *                      safe: everything it says, we also say.
+ *   value  ⊂ option  — the list is MORE specific than we are. Safe only when
+ *                      what we hold covers most of it ("West Bengal" of "West
+ *                      Bengal, India"), never when it is a lone qualifier of a
+ *                      much longer label ("India" of a full city address).
+ */
+const CONTAINMENT_MIN_COVERAGE = 0.5;
+
+function tokenSet(text) {
+  return new Set(String(text || '').split(' ').filter(Boolean));
+}
+
+function containmentScore(normValue, normLabel) {
+  const want = tokenSet(normValue);
+  const got = tokenSet(normLabel);
+  if (!want.size || !got.size) return 0;
+  if (isSubset(got, want)) return 0.75;              // option ⊆ value
+  if (isSubset(want, got)) {                          // value ⊂ option
+    return (want.size / got.size) >= CONTAINMENT_MIN_COVERAGE ? 0.75 : 0;
+  }
+  return 0;
+}
+
 export function bestOptionMatch(value, options) {
   const normValue = normalizeOptionText(value);
   const list = options || [];
@@ -181,10 +217,8 @@ export function bestOptionMatch(value, options) {
   for (const opt of list) {
     const normLabel = normalizeOptionText(optLabel(opt));
     if (!normLabel) continue;
-    let score = similarity(normValue, normLabel);
-    if (normLabel.includes(normValue) || normValue.includes(normLabel)) {
-      score = Math.max(score, 0.75);
-    }
+    let score = Math.max(similarity(normValue, normLabel),
+                         containmentScore(normValue, normLabel));
     if (score > bestScore) { best = opt; bestScore = score; }
   }
   return bestScore >= OPTION_MATCH_THRESHOLD ? best : null;
@@ -269,7 +303,12 @@ export function documentSlotFor(label) {
 // most common phrasing of the one question in here with a number for an answer.
 export const SENSITIVE_PATTERNS = [
   // category, matcher (against the normalised signature)
-  ['sponsorship', /\bsponsor\w*|\bvisa\b|\bh1b\b|\bh 1b\b|\bwork permit\b|\bimmigration status\b|\bopt\b|\bcpt\b/],
+  // \bopt\b is OPT, the US work authorisation — NOT the "opt" of "opt in".
+  // Without the lookahead, "Do you opt-in to receive WhatsApp messages?"
+  // classified as an immigration question, so a marketing checkbox was locked
+  // behind the sponsorship tier and reported as "add your sponsorship answer
+  // to your profile".
+  ['sponsorship', /\bsponsor\w*|\bvisa\b|\bh1b\b|\bh 1b\b|\bwork permit\b|\bimmigration status\b|\bopt\b(?!\s+(in|out)\b)|\bcpt\b/],
   ['work_authorization', new RegExp([
     /\bright to work\b/.source,                       // standalone, UK phrasing
     /\bwork (authori\w*|eligib\w*|status)\b/.source,   // "work authorization"
@@ -526,10 +565,14 @@ export const FIELD_SYNONYMS = [
 
   // sensitive — stored answers only, never inferred
   { key: 'authorized_to_work_in_country', sensitive: true, labels: ['authorized to work', 'legally authorized to work', 'work authorization', 'eligible to work', 'employment eligibility', 'right to work'] },
-  { key: 'requires_visa_sponsorship', sensitive: true, labels: ['require sponsorship', 'need sponsorship', 'visa sponsorship', 'require visa', 'sponsorship now or in the future'] },
+  { key: 'requires_visa_sponsorship', sensitive: true, labels: ['require sponsorship', 'need sponsorship', 'visa sponsorship', 'require visa', 'sponsorship now or in the future', 'sponsor work permit', 'sponsor work visa', 'sponsor employment visa'] },
   { key: 'visa_status', sensitive: true, labels: ['visa status', 'immigration status', 'work permit status', 'current visa'] },
+  // Sensitive on purpose. Nationality sits beside the right-to-work questions,
+  // and a guess from a dial code or an address would be an immigration-adjacent
+  // declaration the person never made.
+  { key: 'nationality', sensitive: true, labels: ['nationality', 'citizenship', 'country of citizenship', 'nationality or citizenship', 'what is your nationality', 'indicate your nationality'] },
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
-  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity'] },
+  { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
   { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino'] },
   { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service'] },
   { key: 'disability_status', sensitive: true, labels: ['disability status', 'disability', 'disabled'] },

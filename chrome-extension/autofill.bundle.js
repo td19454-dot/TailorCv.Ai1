@@ -107,7 +107,7 @@
       let n = el.parentElement, depth = 0;
       while (n && depth < 3) {
         if (only(n) !== el) break;
-        if (isFormLevel(n)) break;
+        if (isFormLevel2(n)) break;
         let labels = null;
         try {
           labels = n.querySelectorAll("label");
@@ -142,7 +142,7 @@
       }
       return best;
     }
-    function isFormLevel(n) {
+    function isFormLevel2(n) {
       if (!n) return true;
       const tag = (n.tagName || "").toLowerCase();
       return tag === "form" || tag === "body" || tag === "main" || attr(n, "role") === "form";
@@ -164,7 +164,7 @@
       let n = el.parentElement, depth = 0;
       while (n && depth < 4) {
         if (only(n) !== el) break;
-        if (isFormLevel(n)) break;
+        if (isFormLevel2(n)) break;
         let errs = null;
         try {
           errs = n.querySelectorAll('[class*="error"], [class*="invalid"], [role="alert"]');
@@ -299,7 +299,7 @@
       let n = el.parentElement, depth = 0;
       while (n && depth < 3) {
         if (only(n) !== el) break;
-        if (isFormLevel(n)) break;
+        if (isFormLevel2(n)) break;
         try {
           if (n.querySelector('[class*="required"], abbr[title*="required" i]')) return true;
         } catch (e) {
@@ -638,6 +638,20 @@
     if (opt == null) return "";
     return typeof opt === "string" ? opt : String(opt.label == null ? "" : opt.label);
   }
+  var CONTAINMENT_MIN_COVERAGE = 0.5;
+  function tokenSet(text) {
+    return new Set(String(text || "").split(" ").filter(Boolean));
+  }
+  function containmentScore(normValue, normLabel) {
+    const want = tokenSet(normValue);
+    const got = tokenSet(normLabel);
+    if (!want.size || !got.size) return 0;
+    if (isSubset(got, want)) return 0.75;
+    if (isSubset(want, got)) {
+      return want.size / got.size >= CONTAINMENT_MIN_COVERAGE ? 0.75 : 0;
+    }
+    return 0;
+  }
   function bestOptionMatch(value, options) {
     const normValue = normalizeOptionText(value);
     const list = options || [];
@@ -649,10 +663,10 @@
     for (const opt of list) {
       const normLabel = normalizeOptionText(optLabel(opt));
       if (!normLabel) continue;
-      let score = similarity(normValue, normLabel);
-      if (normLabel.includes(normValue) || normValue.includes(normLabel)) {
-        score = Math.max(score, 0.75);
-      }
+      let score = Math.max(
+        similarity(normValue, normLabel),
+        containmentScore(normValue, normLabel)
+      );
       if (score > bestScore) {
         best = opt;
         bestScore = score;
@@ -701,7 +715,12 @@ what when where which who will with would you your now future
   }
   var SENSITIVE_PATTERNS = [
     // category, matcher (against the normalised signature)
-    ["sponsorship", /\bsponsor\w*|\bvisa\b|\bh1b\b|\bh 1b\b|\bwork permit\b|\bimmigration status\b|\bopt\b|\bcpt\b/],
+    // \bopt\b is OPT, the US work authorisation — NOT the "opt" of "opt in".
+    // Without the lookahead, "Do you opt-in to receive WhatsApp messages?"
+    // classified as an immigration question, so a marketing checkbox was locked
+    // behind the sponsorship tier and reported as "add your sponsorship answer
+    // to your profile".
+    ["sponsorship", /\bsponsor\w*|\bvisa\b|\bh1b\b|\bh 1b\b|\bwork permit\b|\bimmigration status\b|\bopt\b(?!\s+(in|out)\b)|\bcpt\b/],
     ["work_authorization", new RegExp([
       /\bright to work\b/.source,
       // standalone, UK phrasing
@@ -974,10 +993,14 @@ what when where which who will with would you your now future
     { key: "cover_letter", labels: ["cover letter", "additional information", "anything else", "tell us about yourself", "introduce yourself"] },
     // sensitive — stored answers only, never inferred
     { key: "authorized_to_work_in_country", sensitive: true, labels: ["authorized to work", "legally authorized to work", "work authorization", "eligible to work", "employment eligibility", "right to work"] },
-    { key: "requires_visa_sponsorship", sensitive: true, labels: ["require sponsorship", "need sponsorship", "visa sponsorship", "require visa", "sponsorship now or in the future"] },
+    { key: "requires_visa_sponsorship", sensitive: true, labels: ["require sponsorship", "need sponsorship", "visa sponsorship", "require visa", "sponsorship now or in the future", "sponsor work permit", "sponsor work visa", "sponsor employment visa"] },
     { key: "visa_status", sensitive: true, labels: ["visa status", "immigration status", "work permit status", "current visa"] },
+    // Sensitive on purpose. Nationality sits beside the right-to-work questions,
+    // and a guess from a dial code or an address would be an immigration-adjacent
+    // declaration the person never made.
+    { key: "nationality", sensitive: true, labels: ["nationality", "citizenship", "country of citizenship", "nationality or citizenship", "what is your nationality", "indicate your nationality"] },
     { key: "expected_salary", sensitive: true, labels: ["expected salary", "salary expectation", "desired salary", "compensation expectation", "expected ctc", "desired compensation"] },
-    { key: "gender", sensitive: true, labels: ["gender", "gender identity"] },
+    { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify"] },
     { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino"] },
     { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service"] },
     { key: "disability_status", sensitive: true, labels: ["disability status", "disability", "disabled"] },
@@ -1069,6 +1092,17 @@ what when where which who will with would you your now future
     }
     return true;
   }
+  function isNodeVisible(node) {
+    if (!node) return false;
+    if (inAriaHidden(node)) return false;
+    if (hiddenByStyle(node)) return false;
+    if (typeof node.getBoundingClientRect === "function") {
+      const r = node.getBoundingClientRect();
+      const measured = r && (r.width || r.height || r.top || r.left);
+      if (measured && r.width < 2 && r.height < 2) return false;
+    }
+    return true;
+  }
   function hiddenByStyle(node) {
     const win = node.ownerDocument && node.ownerDocument.defaultView;
     if (!win || typeof win.getComputedStyle !== "function") return false;
@@ -1118,16 +1152,36 @@ what when where which who will with would you your now future
     // Lever
   ];
   var SEARCHY = /search|filter|newsletter|subscribe|login|sign ?in|sign ?up|cookie|consent ?banner/i;
+  function hasApplicationSignal(el) {
+    const has = (sel) => {
+      try {
+        return !!el.querySelector(sel);
+      } catch (e) {
+        return false;
+      }
+    };
+    if (has('input[type="file"]')) return true;
+    if (has('input[type="email"]') || has('input[type="tel"]')) return true;
+    if (has('button[type="submit"], input[type="submit"]')) return true;
+    const p = probe();
+    if (!p) return false;
+    try {
+      return p.fillableIn(el).elements.filter(isVisible).length > SEARCH_VETO_MAX_FIELDS;
+    } catch (e) {
+      return false;
+    }
+  }
+  var SEARCH_VETO_MAX_FIELDS = 3;
   function looksLikeNotAnApplication(el) {
     if (!el) return true;
     try {
       if (el.matches('[role="search"]')) return true;
-      if (el.querySelector('input[type="search"]')) return true;
       if (el.querySelector('input[type="password"]')) return true;
       const action = el.getAttribute && el.getAttribute("action") || "";
       const id = el.getAttribute && (el.getAttribute("id") || "") || "";
       const cls = el.className && String(el.className) || "";
       if (SEARCHY.test(action) || SEARCHY.test(id) || SEARCHY.test(cls)) return true;
+      if (el.querySelector('input[type="search"]') && !hasApplicationSignal(el)) return true;
     } catch (e) {
     }
     return false;
@@ -1365,7 +1419,8 @@ what when where which who will with would you your now future
     const groupKeys = /* @__PURE__ */ new Map();
     const keyCounts = /* @__PURE__ */ new Map();
     const dateGroups = /* @__PURE__ */ new Map();
-    for (const el of form.fields) {
+    const fields = (form.fields || []).concat(orphanFileInputs(form));
+    for (const el of fields) {
       const dateWrap = dateWrapperOf(el);
       if (dateWrap) {
         const existing = dateGroups.get(dateWrap);
@@ -1378,7 +1433,22 @@ what when where which who will with would you your now future
         out.push(row2);
         continue;
       }
-      const d = p.describeEl(el);
+      let d = p.describeEl(el);
+      if (!d && isFileField(el)) {
+        const named = uploadGroupLabel(el);
+        if (named) {
+          d = {
+            ident: named,
+            kind: "file",
+            label: named,
+            value: "",
+            filled: false,
+            invalid: false,
+            required: false,
+            options: null
+          };
+        }
+      }
       if (!d) {
         out.push(unreadable(el, p));
         continue;
@@ -1439,7 +1509,16 @@ what when where which who will with would you your now future
       }
       if (isFileField(el)) {
         row.kind = "file";
-        row.documentSlot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+        let slot = documentSlotFor(row.label) || documentSlotFor(d.ident) || null;
+        if (!slot || UPLOAD_ACTION_RE.test(row.label)) {
+          const group = uploadGroupLabel(el);
+          const groupSlot = documentSlotFor(group);
+          if (group && (groupSlot || UPLOAD_ACTION_RE.test(row.label))) {
+            row.label = group;
+            slot = groupSlot || slot;
+          }
+        }
+        row.documentSlot = slot;
       }
       out.push(row);
     }
@@ -1559,6 +1638,67 @@ what when where which who will with would you your now future
   }
   function isFileField(el) {
     return el.getAttribute && (el.getAttribute("type") || "").toLowerCase() === "file";
+  }
+  var UPLOAD_ACTION_RE = /^(attach|upload|browse|choose|select|add|replace)(\s+(a|an|your)?\s*(file|document|resume|cv|another))?\.?$/i;
+  function uploadGroupLabel(el) {
+    const doc = el.ownerDocument;
+    if (!doc) return "";
+    const text = (n2) => n2 && n2.textContent ? n2.textContent.replace(/\s+/g, " ").trim() : "";
+    let n = el.parentElement, depth = 0;
+    while (n && depth < 6) {
+      let files = 0;
+      try {
+        files = n.querySelectorAll('input[type="file"]').length;
+      } catch (e) {
+        break;
+      }
+      if (files > 1) break;
+      if (isFormLevel(n)) break;
+      const by = n.getAttribute && n.getAttribute("aria-labelledby") || "";
+      if (by) {
+        const named2 = by.split(/\s+/).map((id) => {
+          try {
+            return text(doc.getElementById(id));
+          } catch (e) {
+            return "";
+          }
+        }).filter(Boolean).join(" ");
+        if (named2 && !UPLOAD_ACTION_RE.test(named2)) return named2;
+      }
+      if ((n.tagName || "").toLowerCase() === "fieldset") {
+        const lg = n.querySelector("legend");
+        const named2 = text(lg);
+        if (named2 && !UPLOAD_ACTION_RE.test(named2)) return named2;
+      }
+      let named = "";
+      try {
+        const texts = Array.from(
+          n.querySelectorAll('button, label, legend, [role="button"], h1, h2, h3, h4')
+        ).map(text).filter((t) => t && t.length <= 60);
+        named = texts.find((t) => documentSlotFor(t)) || "";
+        if (!named && depth === 0) named = texts.find((t) => !UPLOAD_ACTION_RE.test(t)) || "";
+      } catch (e) {
+      }
+      if (named) return named;
+      n = n.parentElement;
+      depth++;
+    }
+    return "";
+  }
+  function orphanFileInputs(form) {
+    const root = form && form.root;
+    const doc = root && root.ownerDocument;
+    if (!doc) return [];
+    try {
+      if (root.querySelectorAll('input[type="file"]').length) return [];
+      return Array.from(doc.querySelectorAll('input[type="file"]')).filter((el) => !root.contains(el) && !(el.closest && el.closest("form")) && isVisible(el)).slice(0, 2);
+    } catch (e) {
+      return [];
+    }
+  }
+  function isFormLevel(el) {
+    const tag = (el.tagName || "").toLowerCase();
+    return tag === "form" || tag === "body" || tag === "html" || tag === "main";
   }
   var DROP_ZONE_SEL = [
     '[class*="dropzone" i]',
@@ -1721,7 +1861,16 @@ what when where which who will with would you your now future
     return new Promise((resolve) => {
       const doc = globalThis.document;
       const p = probe();
-      const read = () => p ? p.visibleOptionLabels(MAX_OPTIONS_READ) : [];
+      const read = () => {
+        if (!p || !p.optionNodes) return [];
+        const out = [];
+        for (const n of p.optionNodes(doc)) {
+          if (!isNodeVisible(n)) continue;
+          const t = (n.textContent || "").replace(/\s+/g, " ").trim();
+          if (t && out.length < MAX_OPTIONS_READ) out.push(t);
+        }
+        return out;
+      };
       const immediate = read();
       if (immediate.length) {
         resolve(immediate);
@@ -1768,14 +1917,23 @@ what when where which who will with would you your now future
       } catch (_) {
       }
     }
-    try {
-      target.click();
-    } catch (e) {
+    const win = el.ownerDocument && el.ownerDocument.defaultView || globalThis;
+    for (const type of ["pointerdown", "mousedown", "pointerup", "mouseup", "click"]) {
+      try {
+        const Ctor = type.startsWith("pointer") && win.PointerEvent ? win.PointerEvent : win.MouseEvent;
+        target.dispatchEvent(new Ctor(type, { bubbles: true, cancelable: true, view: win, button: 0 }));
+      } catch (e) {
+      }
     }
   }
   function pickClickTarget(el, p) {
     const role = el.getAttribute && el.getAttribute("role");
-    if (role === "combobox" || role === "button") return el;
+    if (role === "combobox") {
+      const ctl = el.closest && el.closest('[class*="control"]');
+      if (ctl && ctl !== el) return ctl;
+      return el;
+    }
+    if (role === "button") return el;
     if ((el.tagName || "").toLowerCase() === "button") return el;
     const wrap = p && p.rsContainer(el) || el.parentElement;
     if (wrap) {
@@ -1934,7 +2092,13 @@ what when where which who will with would you your now future
         if (!stored) {
           return done(d, PROFILE, "", "", 0, profileHint(category));
         }
-        const value = coerce(stored, row);
+        const shapes = candidatesFor(entry2 ? entry2.key : "", stored, bank);
+        if (shapes.length > 1) d.candidates = shapes;
+        const value = coerce(stored, Object.assign(
+          {},
+          row,
+          { candidates: shapes, candidateKey: entry2 ? entry2.key : "" }
+        ));
         if (value === null) {
           return done(d, ASK, "", "", 0, `none of the options match your stored answer (${stored})`);
         }
@@ -1946,10 +2110,27 @@ what when where which who will with would you your now future
       const entry = matchFieldKey(row.label);
       if (entry && bank[entry.key]) {
         const raw = entry.key === "middle_name" && /\binitial\b/i.test(row.label) ? String(bank[entry.key]).trim().charAt(0).toUpperCase() : bank[entry.key];
-        const value = coerce(raw, row);
+        const shapes = candidatesFor(entry.key, raw, bank);
+        d.candidates = shapes.length > 1 ? shapes : [];
+        const value = coerce(raw, Object.assign(
+          {},
+          row,
+          { candidates: shapes, candidateKey: entry.key }
+        ));
         if (value !== null) {
           const action = isProse(entry.key, value) ? SUGGEST : FILL;
           return done(d, action, value, "profile", 0.95, "");
+        }
+        const other = row.options && row.options.length ? findOtherOption(row.options) : null;
+        if (other) {
+          return done(
+            d,
+            SUGGEST,
+            other,
+            "profile",
+            0.5,
+            `"${truncate(String(raw), 40)}" isn't offered here; chose "${other}"`
+          );
         }
       }
       if (entry && !bank[entry.key] && !PROSE_KEYS.has(entry.key)) {
@@ -2014,7 +2195,10 @@ what when where which who will with would you your now future
       required: !!row.required,
       options: row.options || [],
       sensitive: null,
-      slot: null
+      slot: null,
+      // Shapes the answer may take, best first. One entry for an ordinary field;
+      // several for the ones whose label does not say what the box wants.
+      candidates: []
     };
   }
   function done(d, action, value, source, confidence, reason) {
@@ -2052,6 +2236,225 @@ what when where which who will with would you your now future
         return "answer this one yourself";
     }
   }
+  var LOCATION_KEYS = /* @__PURE__ */ new Set(["location", "address_city", "address_state", "address_country"]);
+  var DEGREE_LEVELS = [
+    {
+      test: /\b(ph\.? ?d|doctorate|doctoral|d\.?phil)\b/i,
+      // Level phrasings only. "Doctor of Philosophy" is a SPECIFIC degree and
+      // reads as a near-match for "Doctor of Medicine (M.D.)", which it is not.
+      shapes: ["Doctorate", "Doctoral Degree", "PhD"]
+    },
+    // "graduate" is master-level in US phrasing; \b keeps it out of
+    // "undergraduate", which is the bachelor's row below. Every shape a level
+    // offers must itself name that level, or the level guard has nothing to
+    // check and a generic "Postgraduate Degree" drifts onto "Associate's Degree".
+    {
+      test: /\b(m\.? ?tech|m\.? ?sc|m\.? ?s|m\.? ?a|m\.? ?eng|mba|mca|m\.? ?com|master'?s?|post ?graduate|graduate)\b/i,
+      shapes: ["Master's Degree", "Masters", "Master", "Postgraduate Degree", "Graduate Degree"]
+    },
+    {
+      test: /\b(b\.? ?tech|b\.? ?e|b\.? ?sc|b\.? ?s|b\.? ?a|b\.? ?eng|bca|b\.? ?com|bachelor'?s?|under ?graduate)\b/i,
+      shapes: ["Bachelor's Degree", "Bachelors", "Bachelor", "Undergraduate Degree", "Undergraduate"]
+    },
+    {
+      test: /\bassociate'?s?\b/i,
+      shapes: ["Associate's Degree", "Associates", "Associate"]
+    },
+    {
+      test: /\b(high school|secondary school|higher secondary|12th|hsc|diploma)\b/i,
+      shapes: ["High School", "High School Diploma", "Secondary School"]
+    }
+  ];
+  var ETHNICITY_GROUPS = [
+    // Ordered before the Asian row: "American Indian" and "Asian Indian" share a
+    // word, and only the tribal-affiliation sense belongs here.
+    {
+      test: /\b(american indian|alaska(n)? native|native american|indigenous|first nations?|aboriginal)\b/i,
+      shapes: [
+        "American Indian or Alaska Native",
+        "Indigenous / First Nations",
+        "Indigenous",
+        "First Nations",
+        "Native American"
+      ]
+    },
+    {
+      test: /\b(native hawaiian|pacific islander)\b/i,
+      shapes: [
+        "Native Hawaiian or Other Pacific Islander",
+        "Pacific Islander",
+        "Native Hawaiian"
+      ]
+    },
+    {
+      test: /\b(south asian|east asian|southeast asian|asian|desi|chinese|japanese|korean|filipino|vietnamese|asian indian|indian subcontinent)\b/i,
+      shapes: ["Asian", "Asian or Pacific Islander", "Asian (Not Hispanic or Latino)"]
+    },
+    {
+      test: /\b(black|african american|afro|african)\b/i,
+      shapes: [
+        "Black or African American",
+        "Black or African",
+        "Black",
+        "African American",
+        "Black (Not Hispanic or Latino)"
+      ]
+    },
+    {
+      test: /\b(hispanic|latino|latina|latinx|latin american)\b/i,
+      shapes: ["Hispanic or Latino", "Hispanic / Latino", "Hispanic", "Latino"]
+    },
+    {
+      test: /\b(middle eastern|north african|arab|mena)\b/i,
+      shapes: [
+        "Middle Eastern or North African",
+        "Middle Eastern / North African",
+        "Middle Eastern",
+        "MENA"
+      ]
+    },
+    {
+      test: /\b(white|caucasian|european)\b/i,
+      shapes: [
+        "White",
+        "White / European",
+        "Caucasian",
+        "White (Not Hispanic or Latino)"
+      ]
+    },
+    {
+      test: /\b(two or more|multiracial|multi racial|mixed|biracial)\b/i,
+      shapes: ["Two or More Races", "Multiracial", "Two or more races (Not Hispanic or Latino)"]
+    }
+  ];
+  function ethnicityGroup(text) {
+    return ETHNICITY_GROUPS.findIndex((g) => g.test.test(String(text || "")));
+  }
+  function ethnicityShapes(text) {
+    const i = ethnicityGroup(text);
+    return i < 0 ? [] : ETHNICITY_GROUPS[i].shapes;
+  }
+  function ethnicityGuardFor(stored) {
+    return function ethnicityGuard(candidate, option) {
+      const want = ethnicityGroup(candidate);
+      if (want < 0) return true;
+      if (ethnicityGroup(option) !== want) return false;
+      return sameText(candidate, option) || widensOrEquals(stored, option);
+    };
+  }
+  function sameText(a, b) {
+    return normalizeOptionText(a) === normalizeOptionText(b);
+  }
+  function widensOrEquals(stored, option) {
+    const a = normalizeOptionText(stored);
+    const b = normalizeOptionText(option);
+    if (!a || !b) return false;
+    if (a === b) return true;
+    const want = new Set(a.split(" ").filter(Boolean));
+    const got = new Set(b.split(" ").filter(Boolean));
+    return [...got].every((t) => want.has(t));
+  }
+  function degreeLevel(text) {
+    return DEGREE_LEVELS.findIndex((l) => l.test.test(String(text || "")));
+  }
+  function degreeShapes(text) {
+    const i = degreeLevel(text);
+    return i < 0 ? [] : DEGREE_LEVELS[i].shapes;
+  }
+  function degreeLevelAgrees(candidate, option) {
+    const want = degreeLevel(candidate);
+    if (want < 0) return true;
+    return degreeLevel(option) === want;
+  }
+  function degreeReadsTheSame(candidate, option) {
+    const a = normalizeOptionText(candidate);
+    const b = normalizeOptionText(option);
+    if (!a || !b) return false;
+    if (a === b) return true;
+    const want = new Set(a.split(" ").filter(Boolean));
+    const got = new Set(b.split(" ").filter(Boolean));
+    const subset = (small, large) => [...small].every((t) => large.has(t));
+    if (subset(got, want)) return true;
+    if (subset(want, got)) return want.size / got.size >= 0.5;
+    return false;
+  }
+  function degreeGuard(candidate, option) {
+    return degreeLevelAgrees(candidate, option) && degreeReadsTheSame(candidate, option);
+  }
+  function uniq(list) {
+    const seen = /* @__PURE__ */ new Set();
+    const out = [];
+    for (const v of list) {
+      const t = String(v == null ? "" : v).trim();
+      if (!t || seen.has(t.toLowerCase())) continue;
+      seen.add(t.toLowerCase());
+      out.push(t);
+    }
+    return out;
+  }
+  function candidatesFor(key, value, bank) {
+    const b = bank || {};
+    const text = String(value == null ? "" : value).trim();
+    if (key === "degree") return uniq(degreeShapes(text).concat([text]));
+    if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
+    if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
+    const city = String(b.address_city || "").trim();
+    const state2 = String(b.address_state || "").trim();
+    const country = String(b.address_country || "").trim();
+    const full = String(b.location || "").trim();
+    if (key === "address_country") {
+      const plus = splitPhone(String(b.phone || "")).dialCode;
+      return uniq([text, plus, plus && country ? `${country} (${plus})` : ""]);
+    }
+    return uniq([
+      text,
+      full,
+      city && state2 && country ? `${city}, ${state2}, ${country}` : "",
+      city && state2 ? `${city}, ${state2}` : "",
+      city,
+      state2,
+      country
+    ]);
+  }
+  var OTHER_OPTION_MARKERS = [
+    "other",
+    "none of the above",
+    "not listed",
+    "not applicable",
+    "n/a",
+    "outside",
+    "elsewhere",
+    "rest of world"
+  ];
+  function findOtherOption(options) {
+    for (const opt of options || []) {
+      const label = String(typeof opt === "string" ? opt : opt && opt.label || "").toLowerCase().trim();
+      if (!label) continue;
+      if (OTHER_OPTION_MARKERS.some((m) => label === m || label.startsWith(m + " ") || label.startsWith(m + ","))) {
+        return typeof opt === "string" ? opt : opt.label;
+      }
+    }
+    return null;
+  }
+  function bestCandidateMatch(candidates, options, guard) {
+    if (!options || !options.length) return null;
+    const labels = options.map((o) => typeof o === "string" ? o : o.label);
+    for (const candidate of candidates || []) {
+      const allowed = guard ? labels.filter((l) => guard(candidate, l)) : labels;
+      if (!allowed.length) continue;
+      const hit = bestOptionMatch(candidate, allowed);
+      if (hit == null) continue;
+      const label = typeof hit === "string" ? hit : hit.label;
+      if (sharesWord(candidate, label)) return label;
+    }
+    return null;
+  }
+  function sharesWord(a, b) {
+    const wordsOf = (t) => new Set(String(t || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(Boolean));
+    const left = wordsOf(a);
+    for (const w of wordsOf(b)) if (left.has(w)) return true;
+    return false;
+  }
   function coerce(value, row) {
     const text = String(value == null ? "" : value).trim();
     if (!text) return null;
@@ -2064,8 +2467,10 @@ what when where which who will with would you your now future
     if (row.kind === "select" || row.kind === "combobox") {
       const options = (row.options || []).map((o) => typeof o === "string" ? o : o.label);
       if (!options.length) return text;
-      const match = bestOptionMatch(text, options);
-      if (match != null) return typeof match === "string" ? match : match.label;
+      const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
+      const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : null;
+      const match = bestCandidateMatch(candidates, options, guard);
+      if (match != null) return match;
       return declineFallback(text, options);
     }
     const hints = row.hints || {};
@@ -2221,8 +2626,9 @@ what when where which who will with would you your now future
       return false;
     }
   }
-  function setText(el, value) {
+  function setText(el, value, opts) {
     if (!el) return false;
+    const wantBlur = !opts || opts.blur !== false;
     focus(el);
     if (String(el.value || "") !== "") {
       writeValue(el, "");
@@ -2231,7 +2637,7 @@ what when where which who will with would you your now future
     const ok = writeValue(el, value);
     fire(el, "input");
     fire(el, "change");
-    blur(el);
+    if (wantBlur) blur(el);
     return ok;
   }
   async function typeText(el, value, delay) {
@@ -2350,9 +2756,26 @@ what when where which who will with would you your now future
     }
     return !!target.checked;
   }
-  async function commitCombobox(row, value) {
+  function dedupe(list) {
+    const seen = /* @__PURE__ */ new Set();
+    const out = [];
+    for (const v of list) {
+      const t = String(v == null ? "" : v).trim();
+      if (!t || seen.has(t.toLowerCase())) continue;
+      seen.add(t.toLowerCase());
+      out.push(t);
+    }
+    return out;
+  }
+  function searchToken(value) {
+    const text = String(value == null ? "" : value).trim();
+    const head = text.split(",")[0].trim();
+    return head.length >= 2 ? head : text;
+  }
+  async function commitCombobox(row, value, candidates) {
     const el = row.el;
     if (!el) return false;
+    const shapes = dedupe([value].concat(candidates || []));
     const current = row.value || "";
     if (current && looksLikeDecline(value) && !looksLikeDecline(current)) return true;
     const isButton = (el.tagName || "").toLowerCase() === "button";
@@ -2366,9 +2789,14 @@ what when where which who will with would you your now future
         options = await waitForOptions2(el, TIMING.optionWaitMs);
       } else {
         const input = typableInput(row) || el;
-        setText(input, value);
+        const query = searchToken(value);
+        setText(input, query, { blur: false });
         focus(input);
         options = await waitForOptions2(el, TIMING.optionWaitMs);
+        if (!options.length && query !== value) {
+          setText(input, value, { blur: false });
+          options = await waitForOptions2(el, TIMING.optionWaitMs);
+        }
         if (!options.length) {
           await typeText(input, value, 8);
           options = await waitForOptions2(el, TIMING.optionWaitMs);
@@ -2379,9 +2807,10 @@ what when where which who will with would you your now future
           options = await waitForOptions2(el, TIMING.optionWaitMs);
         }
       }
-      if (options.length && await clickMatchingOption(el, value, options)) {
+      for (const shape of options.length ? shapes : []) {
+        if (!await clickMatchingOption(el, shape, options)) continue;
         await sleep(TIMING.settleMs);
-        if (committed(row, value)) return true;
+        if (committed(row, shape)) return true;
       }
       if (!isButton) {
         const input = typableInput(row) || el;
@@ -2424,8 +2853,8 @@ what when where which who will with would you your now future
     const role = el.getAttribute && el.getAttribute("role");
     const isButton = (el.tagName || "").toLowerCase() === "button";
     let target = el;
+    const wrap = p && p.rsContainer(el) || el.parentElement;
     if (role !== "combobox" && !isButton) {
-      const wrap = p && p.rsContainer(el) || el.parentElement;
       if (wrap) {
         let ctl = null;
         try {
@@ -2435,9 +2864,18 @@ what when where which who will with would you your now future
         }
         target = ctl || el;
       }
+    } else if (role === "combobox" && wrap) {
+      let ctl = null;
+      try {
+        ctl = wrap.querySelector('[class*="control"]');
+      } catch (e) {
+        ctl = null;
+      }
+      if (ctl && ctl.contains(el)) target = ctl;
     }
     focus(target);
     pressPointer(target);
+    if (target !== el) focus(el);
   }
   function typableInput(row) {
     const el = row.el;
@@ -2455,7 +2893,7 @@ what when where which who will with would you your now future
   function visibleOptionNodes(doc) {
     const p = probe2();
     const nodes = p && p.optionNodes ? p.optionNodes(doc) : [];
-    return nodes.filter((n) => (n.textContent || "").trim());
+    return nodes.filter((n) => (n.textContent || "").trim() && isNodeVisible(n));
   }
   function waitForOptions2(el, timeout) {
     return new Promise((resolve) => {
@@ -2600,6 +3038,25 @@ what when where which who will with would you your now future
     }
     return wrote > 0;
   }
+  function accepts(decision, value, shown) {
+    if (commitMatches(value, shown)) return true;
+    for (const candidate of decision && decision.candidates || []) {
+      if (commitMatches(candidate, shown)) return true;
+    }
+    return isPhoneField(decision && decision.row) && samePhone(value, shown);
+  }
+  function isPhoneField(row) {
+    if (!row) return false;
+    const label = row.label || "";
+    if (/extension|\bext\b|device|type|code/i.test(label)) return false;
+    return row.hints && row.hints.type === "tel" || /\b(phone|mobile|telephone)\b/i.test(label);
+  }
+  function samePhone(wanted, shown) {
+    const a = String(wanted || "").replace(/\D/g, "");
+    const b = String(shown || "").replace(/\D/g, "");
+    if (a.length < 6 || b.length < 6) return false;
+    return a === b || a.endsWith(b) || b.endsWith(a);
+  }
   async function applyDecision(decision) {
     const row = decision.row;
     const value = decision.value;
@@ -2611,10 +3068,10 @@ what when where which who will with would you your now future
         break;
       case "select":
         wrote = setSelect(row.el, value);
-        if (!wrote) wrote = await commitCombobox(row, value);
+        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates);
         break;
       case "combobox":
-        wrote = await commitCombobox(row, value);
+        wrote = await commitCombobox(row, value, decision.candidates);
         break;
       case "radio":
       case "checkbox":
@@ -2640,7 +3097,7 @@ what when where which who will with would you your now future
     if (!after) return { ok: wrote, outcome: wrote ? "ok" : "failed", shown: "" };
     if (after.invalid) return { ok: false, outcome: "rejected", shown: after.value };
     if (!after.filled) return { ok: false, outcome: "empty", shown: "" };
-    if (!commitMatches(value, after.value)) {
+    if (!accepts(decision, value, after.value)) {
       return { ok: false, outcome: "mismatch", shown: after.value };
     }
     return { ok: true, outcome: "ok", shown: after.value };
@@ -2798,6 +3255,12 @@ what when where which who will with would you your now future
         if (d.row && isPhoneRow(d.row)) {
           const alt = alternatePhone(d.value, ctx);
           if (alt && alt !== d.value) d.value = alt;
+          continue;
+        }
+        const next = nextCandidate(d);
+        if (next) {
+          d.candidates = d.candidates.filter((c) => c !== d.value);
+          d.value = next;
         }
       }
       progress("repairing", { total: broken.length });
@@ -2831,6 +3294,12 @@ what when where which who will with would you your now future
     const label = row.label || "";
     if (/extension|\bext\b|device|type|code/i.test(label)) return false;
     return row.hints && row.hints.type === "tel" || /\b(phone|mobile)\b/i.test(label);
+  }
+  function nextCandidate(d) {
+    if (!d || !d.candidates || d.candidates.length < 2) return "";
+    const current = String(d.value || "").toLowerCase();
+    const next = d.candidates.find((c) => String(c).toLowerCase() !== current);
+    return next || "";
   }
   function alternatePhone(value, ctx) {
     const stored = String(ctx && ctx.answerBank && ctx.answerBank.phone || value || "");

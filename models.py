@@ -427,6 +427,12 @@ class UserApplyProfile(Base):
     how_did_you_hear = Column(String(120), nullable=True)
     why_this_role = Column(Text, nullable=True)
 
+    # Nationality / citizenship. NOT voluntary self-identification: a form that
+    # asks it usually needs it, and it sits next to right-to-work questions —
+    # so like those it is answered only from what the user stored here, never
+    # inferred from a phone dial code or an address.
+    nationality = Column(String(80), nullable=True)
+
     # Voluntary self-identification. Default to declining rather than guessing.
     gender = Column(String(60), nullable=True)
     race_ethnicity = Column(String(80), nullable=True)

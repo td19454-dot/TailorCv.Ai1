@@ -633,6 +633,7 @@ def _profile_payload(prof: UserApplyProfile | None, resume_text: str, account_na
         "availableStartDate": value("available_start_date"),
         "howDidYouHear": value("how_did_you_hear"),
         "whyThisRole": value("why_this_role"),
+        "nationality": value("nationality"),
         "gender": value("gender"),
         "raceEthnicity": value("race_ethnicity"),
         "veteranStatus": value("veteran_status"),
@@ -709,6 +710,7 @@ async def save_apply_profile(request: Request, payload: ApplyProfileRequest):
         prof.available_start_date = payload.availableStartDate.strip()
         prof.how_did_you_hear = payload.howDidYouHear.strip()
         prof.why_this_role = payload.whyThisRole.strip()
+        prof.nationality = payload.nationality.strip()
         prof.gender = payload.gender.strip()
         prof.race_ethnicity = payload.raceEthnicity.strip()
         prof.veteran_status = payload.veteranStatus.strip()

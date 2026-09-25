@@ -11,6 +11,7 @@
 import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import { mount } from './dom.mjs';
 import * as d from '../src/autofill/discover.js';
+import * as fixtures from './fixtures.mjs';
 
 /**
  * Run discover against a mounted document by installing it as the global.
@@ -90,6 +91,127 @@ test('findForm prefers the application form over a search box on the same page',
   await withDoc(SEARCH_FORM + GREENHOUSE, () => {
     const f = d.findForm();
     eq(f.root.id, 'application-form');
+  });
+});
+
+// The live Greenhouse regression. Every one of these asserts a field that was
+// silently missing from the panel, not merely filled wrongly: the phone
+// field's country picker ships an <input type="search">, that vetoed the whole
+// <form>, and discovery fell through to ONE of the two .application--questions
+// sections — the custom questions. Nothing in the identity block was ever
+// found, planned or reported.
+test('findForm is not vetoed by a search box inside a field widget', async () => {
+  await withDoc(fixtures.GREENHOUSE_REMIX, () => {
+    const f = d.findForm();
+    ok(f, 'no form found');
+    eq(f.root.id, 'application-form',
+       'a widget search box must not push the root down into one section');
+    ok(f.root.contains(f.root.ownerDocument.getElementById('first_name')),
+       'the identity block must be inside the root');
+    ok(f.root.contains(f.root.ownerDocument.getElementById('question_1')),
+       'the custom questions must be inside the same root');
+  });
+});
+
+test('describeFields finds both Greenhouse question sections', async () => {
+  await withDoc(fixtures.GREENHOUSE_REMIX, () => {
+    const rows = d.describeFields(d.findForm());
+    const ids = rows.map(r => (r.el && r.el.id) || '');
+    for (const id of ['first_name', 'last_name', 'email', 'phone', 'country',
+                      'resume', 'question_1', 'question_2', 'question_3']) {
+      ok(ids.includes(id), `${id} was not discovered`);
+    }
+  });
+});
+
+test('a Greenhouse upload takes its name from its group, not the Attach button', async () => {
+  await withDoc(fixtures.GREENHOUSE_REMIX, () => {
+    const rows = d.describeFields(d.findForm());
+    const resume = rows.find(r => r.el && r.el.id === 'resume');
+    const cover = rows.find(r => r.el && r.el.id === 'cover_letter');
+    ok(resume, 'no resume row');
+    eq(resume.documentSlot, 'resume', 'the resume must not be left unattachable');
+    eq(resume.label, 'Resume/CV*');
+    ok(cover, 'no cover letter row');
+    eq(cover.documentSlot, 'cover_letter');
+    ok(resume.label !== cover.label, 'two uploads must not both read "Attach"');
+  });
+});
+
+test('a real search form is still rejected', async () => {
+  // The veto only loosened for a search input INSIDE something that is
+  // otherwise plainly an application; a search box on its own still loses.
+  await withDoc(`<form action="/search"><input type="search" name="q">
+           <input name="loc"><button type="submit">Go</button></form>`,
+    () => eq(d.findForm(), null, 'a two-field search box is not an application'));
+  await withDoc(`<form class="job-filter"><input type="search" name="q">
+           <input name="loc"><input name="radius"><input name="salary">
+           <button type="submit">Filter</button></form>`,
+    () => eq(d.findForm(), null, 'a filter bar names itself in its class'));
+});
+
+// Adobe's careers site (Phenom People). Copied in shape from the live page:
+// the whole upload block sits ABOVE the <form> and inside no form at all, and
+// its file input carries no id, no name, no accept and no label — the only
+// thing naming it is the button next to it. Both of those had to be true for
+// the resume to go unattached, and both are real.
+const PHENOM_UPLOAD = `
+<div class="apply-page">
+  <div class="options-block">
+    <div class="cloud-options">
+      <div class="drives">
+        <button type="button" class="linkedin-btn">Apply With LinkedIn</button>
+        <div class="resume-upload-wrapper">
+          <button type="button" class="upload-resume-btn" atm-id="resume-button">Upload Resume</button>
+          <input type="file" autocomplete="off" tabindex="-1" style="display:none">
+        </div>
+      </div>
+    </div>
+  </div>
+  <form class="rjsf">
+    <label for="fn">First Name</label><input id="fn" name="first_name" required>
+    <label for="ln">Last Name</label><input id="ln" name="last_name" required>
+    <label for="em">Email</label><input id="em" name="email" type="email" required>
+    <label for="ph">Phone</label><input id="ph" name="phone" type="tel">
+    <button type="submit">Continue</button>
+  </form>
+</div>`;
+
+test('an upload that sits outside the form is still found', async () => {
+  await withDoc(PHENOM_UPLOAD, () => {
+    const f = d.findForm();
+    eq(f.root.className, 'rjsf', 'the form is still the root');
+    const rows = d.describeFields(f);
+    const upload = rows.find(r => r.kind === 'file');
+    ok(upload, 'the resume upload must be enumerated even though it is outside the form');
+    eq(upload.documentSlot, 'resume');
+  });
+});
+
+test('a nameless upload is named by the button beside it', async () => {
+  await withDoc(PHENOM_UPLOAD, () => {
+    const rows = d.describeFields(d.findForm());
+    const upload = rows.find(r => r.kind === 'file');
+    eq(upload.label, 'Upload Resume',
+       'not "Apply With LinkedIn", and not left unreadable');
+    ok(upload.readable, 'an upload with no label is not an unreadable field');
+  });
+});
+
+test('an upload belonging to another form is left alone', async () => {
+  // Only uploads that belong to NO form are adopted — a profile-photo or
+  // support-ticket upload elsewhere on the page is not part of this application.
+  await withDoc(`<div>
+      <form id="avatar"><input type="file" name="photo"><input name="alt"></form>
+      <form id="application-form">
+        <label for="a">First Name</label><input id="a" name="first_name">
+        <label for="b">Email</label><input id="b" name="email" type="email">
+        <label for="c">Phone</label><input id="c" name="phone" type="tel">
+        <button type="submit">Submit</button>
+      </form>
+    </div>`, () => {
+    const rows = d.describeFields(d.findForm());
+    notOk(rows.some(r => r.kind === 'file'), 'an upload owned by another form is not ours');
   });
 });
 
@@ -391,6 +513,30 @@ test('readComboboxOptions opens a widget that renders its menu on click', async 
     });
     const row = d.describeFields(d.findForm()).find(r => r.kind === 'combobox');
     deepEq(await d.readComboboxOptions(row), ['Yes', 'No']);
+  });
+});
+
+test('readComboboxOptions opens a react-select, which ignores a bare click', async () => {
+  // react-select opens on MOUSEDOWN on its control and ignores events whose
+  // target is the inner search input. clickOpen() sent only .click() on that
+  // input, so the menu never opened, the read returned nothing, and the
+  // sidebar offered a free-text box for a question with eight fixed answers.
+  await withDoc(`<form><input name="x"><input name="y">
+      <div class="select__container">
+        <div class="select__control"><input role="combobox" name="maths"></div>
+      </div>
+      <div id="portal"></div></form>`, async (env) => {
+    const doc = env.document;
+    const input = doc.querySelector('[role=combobox]');
+    const control = doc.querySelector('.select__control');
+    control.addEventListener('mousedown', e => {
+      if (e.target === input) return;          // as react-select does
+      doc.getElementById('portal').innerHTML =
+        '<div role="listbox"><div role="option">Cannot recall</div>' +
+        '<div role="option">Top 10% at school</div></div>';
+    });
+    const row = d.describeFields(d.findForm()).find(r => r.kind === 'combobox');
+    deepEq(await d.readComboboxOptions(row), ['Cannot recall', 'Top 10% at school']);
   });
 });
 

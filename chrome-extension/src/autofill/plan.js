@@ -24,6 +24,7 @@
 
 import {
   bestOptionMatch,
+  normalizeOptionText,
   classifySensitive,
   findDeclineOption,
   isNeverFill,
@@ -121,7 +122,14 @@ export function decide(rows, ctx, server, state) {
       if (!stored) {
         return done(d, PROFILE, '', '', 0, profileHint(category));
       }
-      const value = coerce(stored, row);
+      // The stored answer, in whatever wording this form offers for it. Still
+      // only ever THEIR answer — the shapes widen it ("South Asian" ->
+      // "Asian"), never narrow or invent one, and a value belonging to no
+      // known group is matched exactly as before.
+      const shapes = candidatesFor(entry ? entry.key : '', stored, bank);
+      if (shapes.length > 1) d.candidates = shapes;
+      const value = coerce(stored, Object.assign({}, row,
+        { candidates: shapes, candidateKey: entry ? entry.key : '' }));
       if (value === null) {
         // We have their answer but this form offers no option matching it.
         return done(d, ASK, '', '', 0, `none of the options match your stored answer (${stored})`);
@@ -141,10 +149,29 @@ export function decide(rows, ctx, server, state) {
       const raw = entry.key === 'middle_name' && /\binitial\b/i.test(row.label)
         ? String(bank[entry.key]).trim().charAt(0).toUpperCase()
         : bank[entry.key];
-      const value = coerce(raw, row);
+      // Built BEFORE coerce so it can weigh every shape against the options.
+      // Passed on a COPY of the row: decide() is a pure reducer over the
+      // descriptors and is re-run on every pass, so it must not write to them.
+      // Only when there is genuinely more than one shape. A phone number's
+      // single candidate is its UNSHAPED self, which the writer must never
+      // reach for after shapePhone() has done its work.
+      const shapes = candidatesFor(entry.key, raw, bank);
+      d.candidates = shapes.length > 1 ? shapes : [];
+      const value = coerce(raw, Object.assign({}, row,
+        { candidates: shapes, candidateKey: entry.key }));
       if (value !== null) {
         const action = isProse(entry.key, value) ? SUGGEST : FILL;
         return done(d, action, value, 'profile', 0.95, '');
+      }
+      // We hold an answer and this list does not offer it. A catch-all is the
+      // honest choice for "somewhere else" — but only here, in the ordinary
+      // profile tier: the sensitive tier above returns before this point, so a
+      // work-authorization or EEO question can never reach it. SUGGEST, not
+      // FILL, because a catch-all is a compromise the user should see.
+      const other = row.options && row.options.length ? findOtherOption(row.options) : null;
+      if (other) {
+        return done(d, SUGGEST, other, 'profile', 0.5,
+                    `"${truncate(String(raw), 40)}" isn't offered here; chose "${other}"`);
       }
     }
 
@@ -238,6 +265,9 @@ function base(row) {
     options: row.options || [],
     sensitive: null,
     slot: null,
+    // Shapes the answer may take, best first. One entry for an ordinary field;
+    // several for the ones whose label does not say what the box wants.
+    candidates: [],
   };
 }
 
@@ -282,6 +312,313 @@ function profileHint(category) {
  * Elsewhere". Coercing regardless is how "India" gets typed into a menu that
  * never offered it; refusing turns that into a question for the user.
  */
+// ── candidates: one field, several legitimate shapes ─────────
+//
+// A dropdown labelled "Country" may want "India", a dial code "+91", or
+// "India (+91)". One labelled "Current location" may want the full
+// "Kolkata, West Bengal, India", or just the city, or just the state, or a
+// closed list of offices. The LABEL cannot tell these apart — the option list
+// can, and by the time anything is written the widget is already open and its
+// options already read. So a decision carries an ordered list of shapes the
+// same answer can take, and whichever one the form actually offers wins, at no
+// extra open, click or wait.
+//
+// Most specific first, so a form that accepts several gets the fullest one.
+
+const LOCATION_KEYS = new Set(['location', 'address_city', 'address_state', 'address_country']);
+
+// A degree is written one way on a CV and offered another way in a dropdown:
+// "Bachelor of Technology" on the profile, "Bachelor's Degree" on the form. The
+// level is the part both agree on, so each level carries the phrasings forms
+// actually use. Ordered most specific first, and checked highest-level first so
+// "Master of Technology" is never read as a bachelor's.
+const DEGREE_LEVELS = [
+  { test: /\b(ph\.? ?d|doctorate|doctoral|d\.?phil)\b/i,
+    // Level phrasings only. "Doctor of Philosophy" is a SPECIFIC degree and
+    // reads as a near-match for "Doctor of Medicine (M.D.)", which it is not.
+    shapes: ["Doctorate", "Doctoral Degree", "PhD"] },
+  // "graduate" is master-level in US phrasing; \b keeps it out of
+  // "undergraduate", which is the bachelor's row below. Every shape a level
+  // offers must itself name that level, or the level guard has nothing to
+  // check and a generic "Postgraduate Degree" drifts onto "Associate's Degree".
+  { test: /\b(m\.? ?tech|m\.? ?sc|m\.? ?s|m\.? ?a|m\.? ?eng|mba|mca|m\.? ?com|master'?s?|post ?graduate|graduate)\b/i,
+    shapes: ["Master's Degree", "Masters", "Master", "Postgraduate Degree", "Graduate Degree"] },
+  { test: /\b(b\.? ?tech|b\.? ?e|b\.? ?sc|b\.? ?s|b\.? ?a|b\.? ?eng|bca|b\.? ?com|bachelor'?s?|under ?graduate)\b/i,
+    shapes: ["Bachelor's Degree", "Bachelors", "Bachelor", "Undergraduate Degree", "Undergraduate"] },
+  { test: /\bassociate'?s?\b/i,
+    shapes: ["Associate's Degree", "Associates", "Associate"] },
+  { test: /\b(high school|secondary school|higher secondary|12th|hsc|diploma)\b/i,
+    shapes: ["High School", "High School Diploma", "Secondary School"] },
+];
+
+// Race / ethnicity, which every form words differently: "South Asian" on the
+// profile, "Asian" on the form, "Asian or Pacific Islander" on the next one.
+//
+// These WIDEN and never narrow. Going from the broader category the user chose
+// to a narrower one would be putting an answer in their mouth on a protected
+// characteristic, so each group lists only equal-or-broader phrasings of what
+// they already said, and a stored value matching no group is left alone.
+const ETHNICITY_GROUPS = [
+  // Ordered before the Asian row: "American Indian" and "Asian Indian" share a
+  // word, and only the tribal-affiliation sense belongs here.
+  { test: /\b(american indian|alaska(n)? native|native american|indigenous|first nations?|aboriginal)\b/i,
+    shapes: ['American Indian or Alaska Native', 'Indigenous / First Nations',
+             'Indigenous', 'First Nations', 'Native American'] },
+  { test: /\b(native hawaiian|pacific islander)\b/i,
+    shapes: ['Native Hawaiian or Other Pacific Islander', 'Pacific Islander',
+             'Native Hawaiian'] },
+  { test: /\b(south asian|east asian|southeast asian|asian|desi|chinese|japanese|korean|filipino|vietnamese|asian indian|indian subcontinent)\b/i,
+    shapes: ['Asian', 'Asian or Pacific Islander', 'Asian (Not Hispanic or Latino)'] },
+  { test: /\b(black|african american|afro|african)\b/i,
+    shapes: ['Black or African American', 'Black or African', 'Black',
+             'African American', 'Black (Not Hispanic or Latino)'] },
+  { test: /\b(hispanic|latino|latina|latinx|latin american)\b/i,
+    shapes: ['Hispanic or Latino', 'Hispanic / Latino', 'Hispanic', 'Latino'] },
+  { test: /\b(middle eastern|north african|arab|mena)\b/i,
+    shapes: ['Middle Eastern or North African', 'Middle Eastern / North African',
+             'Middle Eastern', 'MENA'] },
+  { test: /\b(white|caucasian|european)\b/i,
+    shapes: ['White', 'White / European', 'Caucasian',
+             'White (Not Hispanic or Latino)'] },
+  { test: /\b(two or more|multiracial|multi racial|mixed|biracial)\b/i,
+    shapes: ['Two or More Races', 'Multiracial', 'Two or more races (Not Hispanic or Latino)'] },
+];
+
+/** The index of the group `text` belongs to, or -1. */
+function ethnicityGroup(text) {
+  return ETHNICITY_GROUPS.findIndex(g => g.test.test(String(text || '')));
+}
+
+/** Broader phrasings of the ethnicity `text` names, or []. */
+function ethnicityShapes(text) {
+  const i = ethnicityGroup(text);
+  return i < 0 ? [] : ETHNICITY_GROUPS[i].shapes;
+}
+
+/**
+ * May this option answer this ethnicity candidate?
+ *
+ * The same trap as degrees, with more at stake: these labels are long, share
+ * connectives, and sit right in the fuzzy matcher's weak band — "Black or
+ * African American" against "American Indian or Alaska Native" shares two
+ * words. A protected characteristic is never recorded on a resemblance, so the
+ * option must belong to the SAME group and read as the same thing.
+ */
+function ethnicityGuardFor(stored) {
+  return function ethnicityGuard(candidate, option) {
+    const want = ethnicityGroup(candidate);
+    if (want < 0) return true;
+    if (ethnicityGroup(option) !== want) return false;
+    // Either the form words it exactly as one of the curated phrasings (which
+    // are equal-or-broader by construction), or it is a plain widening of what
+    // the person themselves wrote.
+    return sameText(candidate, option) || widensOrEquals(stored, option);
+  };
+}
+
+function sameText(a, b) {
+  return normalizeOptionText(a) === normalizeOptionText(b);
+}
+
+/**
+ * Is `option` the same as what they wrote, or broader than it?
+ *
+ * The direction is the whole point. "South Asian" may answer a list offering
+ * "Asian": everything the narrower answer says, the broader one also says.
+ * The reverse must never happen — a stored "Asian" taking "South Asian" off a
+ * list would be filing a more specific claim about the person's ethnicity than
+ * they ever made, on a form they sign. Anything a candidate does not already
+ * say is refused, and the field goes back to them.
+ */
+function widensOrEquals(stored, option) {
+  const a = normalizeOptionText(stored);
+  const b = normalizeOptionText(option);
+  if (!a || !b) return false;
+  if (a === b) return true;
+  const want = new Set(a.split(' ').filter(Boolean));
+  const got = new Set(b.split(' ').filter(Boolean));
+  return [...got].every(t => want.has(t));
+}
+
+/** The index of the level `text` names, or -1. */
+function degreeLevel(text) {
+  return DEGREE_LEVELS.findIndex(l => l.test.test(String(text || '')));
+}
+
+/** The dropdown phrasings for whatever level `text` names, or []. */
+function degreeShapes(text) {
+  const i = degreeLevel(text);
+  return i < 0 ? [] : DEGREE_LEVELS[i].shapes;
+}
+
+/**
+ * May this option answer this degree candidate?
+ *
+ * Education lists are full of near-misses that the fuzzy matcher rates highly
+ * because they share a generic word: "Master of Science" scores over the bar
+ * against "Computer Science Degree", and "Doctoral Degree" against
+ * "Bachelor's Degree". Both would put the wrong qualification on an
+ * application. So a candidate that names a level may only take an option
+ * naming the SAME level — an option naming none (a subject, not a
+ * qualification) is not an answer to "what is your degree level".
+ */
+function degreeLevelAgrees(candidate, option) {
+  const want = degreeLevel(candidate);
+  if (want < 0) return true;                 // we cannot tell; leave it to matching
+  return degreeLevel(option) === want;
+}
+
+/**
+ * Whether these two name the same qualification, not merely a similar one.
+ *
+ * Education lists sit in the band where the fuzzy matcher is least reliable —
+ * every entry is three words, two of them shared. "Master's Degree" scores
+ * respectably against "Master of Business Administration", and matching there
+ * would claim an MBA the person does not hold. So a degree is only taken on an
+ * exact reading or a whole-word containment, never on the 0.55 fuzzy band that
+ * serves reworded sentences elsewhere.
+ */
+function degreeReadsTheSame(candidate, option) {
+  const a = normalizeOptionText(candidate);
+  const b = normalizeOptionText(option);
+  if (!a || !b) return false;
+  if (a === b) return true;
+  const want = new Set(a.split(' ').filter(Boolean));
+  const got = new Set(b.split(' ').filter(Boolean));
+  const subset = (small, large) => [...small].every(t => large.has(t));
+  if (subset(got, want)) return true;                     // option ⊆ candidate
+  if (subset(want, got)) return want.size / got.size >= 0.5;
+  return false;
+}
+
+/** The per-option test for a degree row. */
+function degreeGuard(candidate, option) {
+  return degreeLevelAgrees(candidate, option) && degreeReadsTheSame(candidate, option);
+}
+
+/** Unique, non-empty, order preserved. */
+function uniq(list) {
+  const seen = new Set();
+  const out = [];
+  for (const v of list) {
+    const t = String(v == null ? '' : v).trim();
+    if (!t || seen.has(t.toLowerCase())) continue;
+    seen.add(t.toLowerCase());
+    out.push(t);
+  }
+  return out;
+}
+
+/**
+ * The shapes `value` could legitimately take for this field, best first.
+ *
+ * Deliberately built only from what the user actually stored. The dial code
+ * comes from their own phone number via splitPhone() rather than a country
+ * table: a table would have to be kept correct forever, and the number in the
+ * profile is already the authority on which country they dial from.
+ */
+export function candidatesFor(key, value, bank) {
+  const b = bank || {};
+  const text = String(value == null ? '' : value).trim();
+  // Level phrasings first: a dropdown offering "Bachelor's Degree" is answered
+  // by the level, while the raw "Bachelor of Technology" is only right on the
+  // lists that spell it out — so it stays, last.
+  if (key === 'degree') return uniq(degreeShapes(text).concat([text]));
+  // The stored wording first — a form offering "South Asian" should get it —
+  // then the broader categories it belongs to.
+  if (key === 'race_ethnicity') return uniq([text].concat(ethnicityShapes(text)));
+  if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
+
+  const city = String(b.address_city || '').trim();
+  const state = String(b.address_state || '').trim();
+  const country = String(b.address_country || '').trim();
+  const full = String(b.location || '').trim();
+
+  if (key === 'address_country') {
+    // splitPhone already returns it with the leading '+'.
+    const plus = splitPhone(String(b.phone || '')).dialCode;
+    return uniq([text, plus, plus && country ? `${country} (${plus})` : '']);
+  }
+
+  // City / state / free-text location: every granularity the box might want.
+  return uniq([
+    text,
+    full,
+    city && state && country ? `${city}, ${state}, ${country}` : '',
+    city && state ? `${city}, ${state}` : '',
+    city,
+    state,
+    country,
+  ]);
+}
+
+// Catch-alls, tried only after every real candidate has missed. Kept separate
+// from DECLINE_OPTION_MARKERS: declining to answer is a statement about the
+// question, "Other" is a statement about the answer, and only one of them is
+// ever acceptable on a sensitive field.
+const OTHER_OPTION_MARKERS = [
+  'other', 'none of the above', 'not listed', 'not applicable', 'n/a',
+  'outside', 'elsewhere', 'rest of world',
+];
+
+/** The list's catch-all option, or null. */
+export function findOtherOption(options) {
+  for (const opt of options || []) {
+    const label = String(typeof opt === 'string' ? opt : (opt && opt.label) || '')
+      .toLowerCase().trim();
+    if (!label) continue;
+    if (OTHER_OPTION_MARKERS.some(m => label === m || label.startsWith(m + ' ')
+                                   || label.startsWith(m + ','))) {
+      return typeof opt === 'string' ? opt : opt.label;
+    }
+  }
+  return null;
+}
+
+/**
+ * The option this row offers for any of `candidates`, or null.
+ *
+ * Every candidate is scored and the best match wins, rather than the first that
+ * clears the bar: on a list of "India (+91)" the country candidate scores
+ * higher than the bare dial code, and on a list of "+91" only the dial code
+ * matches at all. Ties go to the earlier (more specific) candidate.
+ */
+export function bestCandidateMatch(candidates, options, guard) {
+  if (!options || !options.length) return null;
+  const labels = options.map(o => (typeof o === 'string' ? o : o.label));
+  for (const candidate of candidates || []) {
+    const allowed = guard ? labels.filter(l => guard(candidate, l)) : labels;
+    if (!allowed.length) continue;
+    const hit = bestOptionMatch(candidate, allowed);
+    if (hit == null) continue;
+    const label = typeof hit === 'string' ? hit : hit.label;
+    if (sharesWord(candidate, label)) return label;
+  }
+  return null;
+}
+
+/**
+ * Do these two share a whole word?
+ *
+ * Character similarity alone is not safe on place names: "West Bengal" scores
+ * 0.60 against "Bengaluru" — over the 0.55 threshold — on the letters they
+ * happen to share, which would put a candidate from Kolkata in the Bengaluru
+ * office. They have no word in common, and that is the signal that the
+ * resemblance is an accident of spelling.
+ *
+ * Scoped to this path deliberately. Elsewhere the fuzzy matcher earns its keep
+ * on rewordings of the same sentence ("I am not a protected veteran"), which
+ * always share words anyway; tightening it globally is a separate change with
+ * its own risks.
+ */
+function sharesWord(a, b) {
+  const wordsOf = t => new Set(String(t || '').toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(Boolean));
+  const left = wordsOf(a);
+  for (const w of wordsOf(b)) if (left.has(w)) return true;
+  return false;
+}
+
 export function coerce(value, row) {
   const text = String(value == null ? '' : value).trim();
   if (!text) return null;
@@ -297,8 +634,15 @@ export function coerce(value, row) {
   if (row.kind === 'select' || row.kind === 'combobox') {
     const options = (row.options || []).map(o => (typeof o === 'string' ? o : o.label));
     if (!options.length) return text;     // options unreadable: let the writer try
-    const match = bestOptionMatch(text, options);
-    if (match != null) return typeof match === 'string' ? match : match.label;
+    // Every shape of the answer, not just the one the label suggested: a
+    // "Country" list of dial codes matches "+91" and nothing else.
+    const candidates = (row.candidates && row.candidates.length) ? row.candidates : [text];
+    const guard = row.candidateKey === 'degree' ? degreeGuard
+                : row.candidateKey === 'race_ethnicity'
+                  ? ethnicityGuardFor(candidates[0])
+                : null;
+    const match = bestCandidateMatch(candidates, options, guard);
+    if (match != null) return match;
     return declineFallback(text, options);
   }
 

@@ -109,6 +109,10 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
         Spec("requiresSponsorship", "requires_sponsorship", "Need visa sponsorship?",
              kind="select", options=YES_NO),
         Spec("visaStatus", "visa_status", "Visa status", max_len=60),
+        Spec("nationality", "nationality", "Nationality / citizenship",
+             placeholder="e.g. Indian",
+             help="Only ever filled from this answer — never guessed from your "
+                  "address or phone number.", max_len=80),
         Spec("willingToRelocate", "willing_to_relocate", "Willing to relocate?",
              kind="select", options=YES_NO),
         Spec("remotePreference", "remote_preference", "Work arrangement", kind="select",

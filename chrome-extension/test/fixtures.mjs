@@ -121,6 +121,163 @@ export const GREENHOUSE = `
   </form>
 </div>`;
 
+// Greenhouse as it renders TODAY (the Remix rewrite on job-boards.greenhouse.io),
+// which is a different shape from GREENHOUSE above and broke discovery outright.
+// Copied in structure from a live Canonical posting. What matters here:
+//
+//  * TWO sibling .application--questions divs. The core identity fields are in
+//    the first, the custom questions in the second — so a root that lands on
+//    one section silently loses the other.
+//  * The phone field carries an intl-tel-input country picker whose flyout has
+//    <input type="search">. That single element vetoed the whole <form> and is
+//    why name/email/phone/country/resume were never discovered.
+//  * No `name` attributes anywhere, and the email field is type="text", so
+//    nothing can be recognised by input type alone.
+//  * The upload is <div role="group" aria-labelledby> holding a
+//    visually-hidden <label for="resume">Attach</label> — the button's word,
+//    not the field's name.
+export const GREENHOUSE_REMIX = `
+<div class="application--container">
+  <div class="application--header"><h2 class="section-header">Apply for this job</h2></div>
+  <form method="get" action="/acme/jobs/7104698" id="application-form" class="application--form">
+    <div class="application--questions">
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="first_name-label" for="first_name" class="label">First Name<span aria-hidden="true">*</span></label>
+        <input id="first_name" class="input input__single-line" aria-label="First Name" aria-required="true" type="text" autocomplete="given-name" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="last_name-label" for="last_name" class="label">Last Name<span aria-hidden="true">*</span></label>
+        <input id="last_name" class="input input__single-line" aria-label="Last Name" aria-required="true" type="text" autocomplete="family-name" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="email-label" for="email" class="label">Email<span aria-hidden="true">*</span></label>
+        <input id="email" class="input input__single-line" aria-label="Email" aria-required="true" type="text" autocomplete="email" value="">
+      </div></div></div>
+
+      <fieldset class="phone-input">
+        <div class="phone-input__country">
+          <div class="select__container">
+            <label id="country-label" class="label">Country</label>
+            <div class="select__control">
+              <div class="select__placeholder">Select...</div>
+              <input class="select__input" id="country" role="combobox" aria-labelledby="country-label"
+                     aria-autocomplete="list" aria-expanded="false" aria-haspopup="true" type="text" value="">
+            </div>
+          </div>
+        </div>
+        <div class="phone-input__phone"><div class="text-input-wrapper"><div class="input-wrapper">
+          <label id="phone-label" for="phone" class="label">Phone</label>
+          <!-- intl-tel-input wraps the box itself: the flag/dial-code picker is
+               a SIBLING of the input inside div.iti, and its flyout is the
+               input[type=search] that used to veto the whole form. -->
+          <div class="iti iti--allow-dropdown iti--show-flags iti--inline-dropdown">
+            <div class="iti__country-container">
+              <button type="button" class="iti__selected-country" aria-expanded="false">
+                <span class="iti__flag iti__in"></span>
+              </button>
+              <div class="iti__dropdown-content">
+                <div class="iti__search-input-wrapper">
+                  <input type="search" id="iti-0__search-input" class="iti__search-input" aria-label="Search" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <input id="phone" class="input input__single-line" aria-label="Phone" type="tel">
+          </div>
+        </div></div></div>
+      </fieldset>
+
+      <div class="field-wrapper">
+        <div role="group" aria-labelledby="upload-label-resume" aria-required="true" class="file-upload">
+          <div id="upload-label-resume" class="label upload-label">Resume/CV<span class="required">*</span></div>
+          <div class="file-upload__wrapper"><div class="button-container"><div class="secondary-button"><div>
+            <button type="button" class="btn btn--pill">Attach</button>
+            <label class="visually-hidden" for="resume">Attach</label>
+            <input id="resume" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf">
+          </div></div></div></div>
+        </div>
+      </div>
+      <div class="field-wrapper">
+        <div role="group" aria-labelledby="upload-label-cover_letter" class="file-upload">
+          <div id="upload-label-cover_letter" class="label upload-label">Cover Letter</div>
+          <div class="file-upload__wrapper"><div class="button-container"><div class="secondary-button"><div>
+            <button type="button" class="btn btn--pill">Attach</button>
+            <label class="visually-hidden" for="cover_letter">Attach</label>
+            <input id="cover_letter" class="visually-hidden" type="file" accept=".pdf,.doc,.docx,.txt,.rtf">
+          </div></div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="application--questions">
+      <div class="field-wrapper field-wrapper--multiline"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_1-label" for="question_1" class="label">Describe your experience of data visualisation<span aria-hidden="true">*</span></label>
+        <textarea id="question_1" class="input input__multi-line" aria-label="Describe your experience of data visualisation" aria-required="true"></textarea>
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_2-label" for="question_2" class="label">Website</label>
+        <input id="question_2" class="input input__single-line" aria-label="Website" type="text" value="">
+      </div></div></div>
+      <div class="field-wrapper"><div class="text-input-wrapper"><div class="input-wrapper">
+        <label id="question_3-label" for="question_3" class="label">LinkedIn Profile</label>
+        <input id="question_3" class="input input__single-line" aria-label="LinkedIn Profile" type="text" value="">
+      </div></div></div>
+    </div>
+
+    <button type="submit" id="submit_app">Submit application</button>
+  </form>
+</div>`;
+
+// Five boxes, two labels, five different meanings — the shape this suite
+// exists to pin down. Each is a real pattern seen on live forms: the label says
+// "Country" or "Location" and the OPTIONS say what is actually wanted.
+export const DROPDOWN_MEANINGS = `
+<div class="application">
+  <form id="app-form">
+    <div class="field">
+      <label for="d_country">Country</label>
+      <select id="d_country" name="country">
+        <option value="">Select...</option>
+        <option>Indonesia</option><option>India</option><option>Ireland</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="d_dial">Country</label>
+      <select id="d_dial" name="country_code">
+        <option value="">Select...</option>
+        <option>+1</option><option>+62</option><option>+91</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="d_loc">Current location</label>
+      <select id="d_loc" name="location">
+        <option value="">Select...</option>
+        <option>Bengaluru, Karnataka, India</option>
+        <option>Kolkata, West Bengal, India</option>
+        <option>Mumbai, Maharashtra, India</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="d_state">Current location</label>
+      <select id="d_state" name="state">
+        <option value="">Select...</option>
+        <option>Karnataka</option><option>West Bengal</option><option>Maharashtra</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="d_office">Current location</label>
+      <select id="d_office" name="office">
+        <option value="">Select...</option>
+        <option>Bengaluru</option><option>Hyderabad</option><option>Other</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="d_email">Email</label>
+      <input id="d_email" name="email" type="email">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>`;
+
 export const LEVER = `
 <div class="content">
   <form method="POST" class="application-form" id="lever-form">
@@ -433,4 +590,4 @@ export const DECOYS = `
     <button type="submit">Sign in</button></form>
 </aside>`;
 
-export const ALL = { GREENHOUSE, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, GENERIC };
+export const ALL = { GREENHOUSE, GREENHOUSE_REMIX, DROPDOWN_MEANINGS, LEVER, WORKDAY, WORKDAY_MYINFO, ASHBY, GENERIC };

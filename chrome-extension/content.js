@@ -2036,8 +2036,20 @@
   }
 
   // These boards are client-routed SPAs — re-read the page when the URL changes.
+  //
+  // Driven from THREE places, all funnelling into handleUrlChange(), which is
+  // idempotent because it returns early when the URL has not actually moved:
+  //
+  //   * webNavigation in the worker (URL_CHANGED) — the real signal, and the
+  //     only one that fires for a pushState route change that mutates nothing
+  //     this observer would see;
+  //   * popstate / hashchange — free, and they arrive before the worker's
+  //     message on a back/forward;
+  //   * the MutationObserver below — kept as the fallback for a build where
+  //     the webNavigation permission is absent or refused.
   let lastUrl = location.href;
-  new MutationObserver(() => {
+
+  function handleUrlChange() {
     if (location.href === lastUrl) return;
     lastUrl = location.href;
     manualJd = '';   // a new posting: never carry the last one's text over
@@ -2049,20 +2061,38 @@
     cheapSignature = '';
     formSignature = '';
     scheduleDiagnostics();
-    setTimeout(() => {
+    setTimeout(async () => {
       if (!document.getElementById('tailorcv-sidebar')) {
-        if (looksLikeJobPage()) createPanel();
+        if (looksLikeJobPage()) { createPanel(); return; }
+        // An application STEP inside an SPA is not job-shaped by URL — the
+        // form is the only signal, the same as on first load. Without this a
+        // multi-step application that never reloads showed the panel on step
+        // one and nothing afterwards.
+        if (refreshApplyMode() || await checkFrameForm()) {
+          refreshApplyMode();
+          createPanel();
+        }
         return;
       }
       if (!looksLikeJobPage()) return;   // e.g. LinkedIn nav'd back to a list with no job picked — nothing to (re-)detect
       if (sessionReady) renderJobFromPage();
       else refreshFull();
     }, 1200);
-  }).observe(document.body, { childList: true, subtree: true });
+  }
+
+  window.addEventListener('popstate', handleUrlChange);
+  window.addEventListener('hashchange', handleUrlChange);
+  new MutationObserver(handleUrlChange)
+    .observe(document.body, { childList: true, subtree: true });
 
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg.type === 'TOGGLE_PANEL') {
       togglePanel();
+    } else if (msg.type === 'URL_CHANGED') {
+      // webNavigation saw a pushState/replaceState/#fragment route change in
+      // this tab's top frame. handleUrlChange() re-checks location itself, so
+      // a duplicate with the observer below costs one string compare.
+      handleUrlChange();
     } else if (msg.type === 'REFRESH_AUTH') {
       // The login tab we opened (Continue with Google / Forgot password, both
       // carry ?ext=1) told background.js it succeeded via externally_connectable
