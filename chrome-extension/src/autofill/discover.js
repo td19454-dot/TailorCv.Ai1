@@ -209,12 +209,31 @@ function hasApplicationSignal(el) {
 // A search box with more fields than this is not a search box.
 const SEARCH_VETO_MAX_FIELDS = 3;
 
+// A login box is email + password; a sign-up box adds a name and a confirm.
+const ACCOUNT_FORM_MAX_FIELDS = 6;
+
+/** A form holding a password that is still, unmistakably, an application. */
+function isApplicationWithAccount(el) {
+  const has = sel => { try { return !!el.querySelector(sel); } catch (e) { return false; } };
+  if (has('input[type="file"]')) return true;
+  const p = probe();
+  if (!p) return false;
+  try {
+    return p.fillableIn(el).elements.filter(isVisible).length > ACCOUNT_FORM_MAX_FIELDS;
+  } catch (e) { return false; }
+}
+
 /** Is this container a search/filter/login box rather than an application? */
 function looksLikeNotAnApplication(el) {
   if (!el) return true;
   try {
     if (el.matches('[role="search"]')) return true;
-    if (el.querySelector('input[type="password"]')) return true;   // a login form
+    // A password box marks a login or sign-up box — unless the container is an
+    // application that also creates an account, as iCIMS, Taleo and
+    // SuccessFactors ship: "Create a password" inside the same form as the name,
+    // address and resume. Vetoing those found no form at all. The password
+    // itself is never filled either way (NEVER_FILL_PATTERNS in match.js).
+    if (el.querySelector('input[type="password"]') && !isApplicationWithAccount(el)) return true;
     const action = (el.getAttribute && el.getAttribute('action')) || '';
     const id = (el.getAttribute && (el.getAttribute('id') || '')) || '';
     const cls = (el.className && String(el.className)) || '';
@@ -466,7 +485,9 @@ function rootRejection(node, fillable) {
   try {
     if (node.matches('[role="search"]')) return 'role=search';
     if (node.querySelector('input[type="search"]')) return 'contains a search input';
-    if (node.querySelector('input[type="password"]')) return 'contains a password field';
+    if (node.querySelector('input[type="password"]') && !isApplicationWithAccount(node)) {
+      return 'contains a password field (and is login/sign-up sized)';
+    }
   } catch (e) { /* ignore */ }
   const text = `${node.getAttribute('action') || ''} ${node.id || ''} ${node.className || ''}`;
   if (SEARCHY.test(text)) return `id/class/action looks like search/login: ${text.trim().slice(0, 60)}`;
@@ -617,6 +638,17 @@ export function describeFields(form) {
         if (group && (groupSlot || UPLOAD_ACTION_RE.test(row.label))) {
           row.label = group;
           slot = groupSlot || slot;
+        }
+      }
+      // Still unnamed: Workday labels the box "Upload a file (5MB max)" and the
+      // button "Select files", and says "Resume/CV" only in the section heading
+      // above them — outside the box uploadGroupLabel is allowed to read.
+      if (!slot) {
+        const heading = sectionHeadingBefore(el);
+        const headingSlot = documentSlotFor(heading);
+        if (headingSlot) {
+          slot = headingSlot;
+          row.label = heading;
         }
       }
       row.documentSlot = slot;
@@ -790,6 +822,38 @@ export function hasUploadedFile(el) {
     n = n.parentElement; depth++;
   }
   return false;
+}
+
+/**
+ * The section heading an upload sits under, or ''.
+ *
+ * Only a HEADING (h1-h6, role=heading), never nearby label text: a heading is
+ * a section's title, while a label beside the box may belong to the previous
+ * field. And only when no other upload sits between that heading and this
+ * one — under "Resume/CV" followed by an unheaded cover-letter box, the second
+ * box must not inherit "Resume/CV".
+ */
+function sectionHeadingBefore(el) {
+  const doc = el.ownerDocument;
+  if (!doc) return '';
+  const FOLLOWS = 4;   // Node.DOCUMENT_POSITION_FOLLOWING
+  let heading = null;
+  try {
+    for (const h of doc.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"]')) {
+      if (h.closest('#tailorcv-sidebar')) continue;
+      if (h.compareDocumentPosition(el) & FOLLOWS) heading = h;
+      else break;
+    }
+    if (!heading) return '';
+    for (const other of doc.querySelectorAll('input[type="file"]')) {
+      if (other === el) continue;
+      const afterHeading = heading.compareDocumentPosition(other) & FOLLOWS;
+      const beforeEl = other.compareDocumentPosition(el) & FOLLOWS;
+      if (afterHeading && beforeEl) return '';
+    }
+  } catch (e) { return ''; }
+  const text = (heading.textContent || '').replace(/\s+/g, ' ').trim();
+  return text.length <= 60 ? text : '';
 }
 
 /**

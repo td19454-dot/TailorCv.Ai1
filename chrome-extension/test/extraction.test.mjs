@@ -384,6 +384,74 @@ test('a slow (uncached) login check still shows "Authenticating"', async () => {
   ok(await sawAuthenticating(page, 3000), 'a real network check is worth the animation');
 });
 
+// LinkedIn's search view after the redesign: hashed class names everywhere, the
+// company and its logo as /company/ links above the title, and a tab title that
+// names the SEARCH, not the job. The adapter's company selectors match nothing.
+const JD_TEXT = `${'Build models that detect fraud and forecast demand. '.repeat(6)}
+  ${'Requirements: Python, SQL, statistics and experience shipping ML to production. '.repeat(5)}`;
+const LINKEDIN_NEW_UI = `<!doctype html><html><head><title>bank of america jobs | LinkedIn</title></head><body>
+  <div class="a8f3k2">
+    <div class="q1w2e3">
+      <a href="https://www.linkedin.com/company/bankofamerica/life/"><img
+         alt="Bank of America logo" src="https://media.licdn.com/dms/image/v2/C4E0/company-logo_100_100/bofa.png"></a>
+      <a href="https://www.linkedin.com/company/bankofamerica/life/">Bank of America</a>
+    </div>
+    <h1 class="z9x8c7">Data Scientist I</h1>
+    <div class="r5t6y7">Charlotte, NC · 1 week ago</div>
+  </div>
+  <div class="m3n4b5">
+    <h2>About the job</h2>
+    <p>${JD_TEXT}</p>
+  </div></body></html>`;
+
+test('LinkedIn (hashed classes): the company and its logo come from the /company/ link', async () => {
+  const page = loadPage(LINKEDIN_NEW_UI,
+    'https://www.linkedin.com/jobs/search-results/?currentJobId=4428170145', true);
+  ok(await waitForText(page, /Data Scientist I/, 10000), 'the job view renders');
+  ok(await waitForText(page, /Bank of America/, 3000), 'the company is shown on the job card');
+  const img = page.document.querySelector('#tcvJobAvatar img');
+  ok(img, 'the avatar shows the logo, not a letter');
+  eq(img && img.getAttribute('src'),
+     'https://media.licdn.com/dms/image/v2/C4E0/company-logo_100_100/bofa.png');
+});
+
+const CAREERS_SITE = `<!doctype html><html><head>
+  <title>Senior Data Scientist - Payments | Airbnb Careers</title>
+  <meta property="og:site_name" content="Airbnb Careers">
+  <link rel="icon" href="/favicon-192.png">
+</head><body>
+  <h1>Senior Data Scientist - Payments</h1>
+  <div><h2>About the role</h2><p>${JD_TEXT}</p></div></body></html>`;
+
+test("a company's own careers site: its name and icon", async () => {
+  const page = loadPage(CAREERS_SITE, 'https://careers.airbnb.com/positions/8123037/', true);
+  ok(await waitForText(page, /Senior Data Scientist/, 10000), 'the job view renders');
+  ok(await waitForText(page, /Airbnb/, 3000), 'the company comes from the site name');
+  notOk(/Airbnb Careers ·/.test(page.document.getElementById('tailorcv-sidebar').textContent),
+        '"Careers" is dropped from the name');
+  const img = page.document.querySelector('#tcvJobAvatar img');
+  eq(img && img.getAttribute('src'), 'https://careers.airbnb.com/favicon-192.png');
+});
+
+test('the rest of a job title is never taken for the company', async () => {
+  const html = CAREERS_SITE
+    .replace('<meta property="og:site_name" content="Airbnb Careers">', '')
+    .replace('| Airbnb Careers', '| Careers');
+  const page = loadPage(html, 'https://jobs.example.com/positions/1/', true);
+  ok(await waitForText(page, /Detected on this page|Read from/, 10000), 'the job view renders');
+  const meta = page.document.querySelector('.tcv-job-meta');
+  notOk(/Payments ·/.test(meta ? meta.textContent : ''), `got "${meta && meta.textContent}"`);
+});
+
+test("LinkedIn's single-job title names the company when no link does", async () => {
+  const html = LINKEDIN_NEW_UI
+    .replace('<title>bank of america jobs | LinkedIn</title>', '<title>Data Scientist I | Bank of America | LinkedIn</title>')
+    .replace(/<div class="q1w2e3">[\s\S]*?<\/div>/, '');
+  const page = loadPage(html, 'https://www.linkedin.com/jobs/view/4428170145/', true);
+  ok(await waitForText(page, /Data Scientist I/, 10000), 'the job view renders');
+  ok(await waitForText(page, /Bank of America/, 3000), 'the company comes from the tab title');
+});
+
 test('content.js contains no code that submits a form', () => {
   // The invariant, asserted against the source rather than trusted. Comments and
   // the user-facing copy legitimately contain the word, so those are stripped

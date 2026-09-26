@@ -254,5 +254,29 @@ if (!isTopFrame && globalThis.chrome && globalThis.chrome.runtime) {
     } catch (e) { /* the worker is asleep; the retry covers it */ }
     return true;
   };
-  setTimeout(() => { if (!announce()) setTimeout(announce, 2500); }, 800);
+  setTimeout(() => {
+    if (announce()) return;
+    setTimeout(() => { if (!announce()) logFrameDiagnostics(); }, 2500);
+  }, 800);
+
+  // The top frame's "could not find a form" report describes the top document,
+  // which on iCIMS (and any ATS that frames its application) holds nothing but
+  // the frame. So a frame on an application URL that never found a form prints
+  // its own report — the one that can actually say why.
+  function logFrameDiagnostics() {
+    if (!looksLikeApplyUrl(globalThis.location.href)) return;
+    try {
+      const report = diagnose();
+      console.groupCollapsed('%c[TailorCV] autofill could not find a form in this frame — diagnostics',
+                             'color:#7c3aed;font-weight:700');
+      console.log('frame:', globalThis.location.href);
+      console.log(report.summary);
+      if (report.roots.length) console.table(report.roots);
+      if (report.fields.length) console.table(report.fields);
+      if (report.uncovered.length) console.table(report.uncovered);
+      console.groupEnd();
+    } catch (e) {
+      console.warn('[TailorCV] frame diagnostics failed —', e && e.message);
+    }
+  }
 }

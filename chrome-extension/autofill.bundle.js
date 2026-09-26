@@ -1205,7 +1205,10 @@ what when where which who will with would you your now future
     // How long to wait for a custom dropdown's menu to appear after opening it.
     optionWaitMs: 600,
     // How long to watch for fields that appear in response to an answer.
-    revealWatchMs: 900
+    revealWatchMs: 900,
+    // How long an upload may take to show as taken. Workday sends the file to its
+    // server first and only then shows the filename (clearing the input).
+    uploadConfirmMs: 4e3
   };
   var sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -1335,11 +1338,29 @@ what when where which who will with would you your now future
     }
   }
   var SEARCH_VETO_MAX_FIELDS = 3;
+  var ACCOUNT_FORM_MAX_FIELDS = 6;
+  function isApplicationWithAccount(el) {
+    const has = (sel) => {
+      try {
+        return !!el.querySelector(sel);
+      } catch (e) {
+        return false;
+      }
+    };
+    if (has('input[type="file"]')) return true;
+    const p = probe();
+    if (!p) return false;
+    try {
+      return p.fillableIn(el).elements.filter(isVisible).length > ACCOUNT_FORM_MAX_FIELDS;
+    } catch (e) {
+      return false;
+    }
+  }
   function looksLikeNotAnApplication(el) {
     if (!el) return true;
     try {
       if (el.matches('[role="search"]')) return true;
-      if (el.querySelector('input[type="password"]')) return true;
+      if (el.querySelector('input[type="password"]') && !isApplicationWithAccount(el)) return true;
       const action = el.getAttribute && el.getAttribute("action") || "";
       const id = el.getAttribute && (el.getAttribute("id") || "") || "";
       const cls = el.className && String(el.className) || "";
@@ -1554,7 +1575,9 @@ what when where which who will with would you your now future
     try {
       if (node.matches('[role="search"]')) return "role=search";
       if (node.querySelector('input[type="search"]')) return "contains a search input";
-      if (node.querySelector('input[type="password"]')) return "contains a password field";
+      if (node.querySelector('input[type="password"]') && !isApplicationWithAccount(node)) {
+        return "contains a password field (and is login/sign-up sized)";
+      }
     } catch (e) {
     }
     const text = `${node.getAttribute("action") || ""} ${node.id || ""} ${node.className || ""}`;
@@ -1680,6 +1703,14 @@ what when where which who will with would you your now future
           if (group && (groupSlot || UPLOAD_ACTION_RE.test(row.label))) {
             row.label = group;
             slot = groupSlot || slot;
+          }
+        }
+        if (!slot) {
+          const heading = sectionHeadingBefore(el);
+          const headingSlot = documentSlotFor(heading);
+          if (headingSlot) {
+            slot = headingSlot;
+            row.label = heading;
           }
         }
         row.documentSlot = slot;
@@ -1828,6 +1859,30 @@ what when where which who will with would you your now future
       depth++;
     }
     return false;
+  }
+  function sectionHeadingBefore(el) {
+    const doc = el.ownerDocument;
+    if (!doc) return "";
+    const FOLLOWS = 4;
+    let heading = null;
+    try {
+      for (const h of doc.querySelectorAll('h1, h2, h3, h4, h5, h6, [role="heading"]')) {
+        if (h.closest("#tailorcv-sidebar")) continue;
+        if (h.compareDocumentPosition(el) & FOLLOWS) heading = h;
+        else break;
+      }
+      if (!heading) return "";
+      for (const other of doc.querySelectorAll('input[type="file"]')) {
+        if (other === el) continue;
+        const afterHeading = heading.compareDocumentPosition(other) & FOLLOWS;
+        const beforeEl = other.compareDocumentPosition(el) & FOLLOWS;
+        if (afterHeading && beforeEl) return "";
+      }
+    } catch (e) {
+      return "";
+    }
+    const text = (heading.textContent || "").replace(/\s+/g, " ").trim();
+    return text.length <= 60 ? text : "";
   }
   function uploadGroupLabel(el) {
     const doc = el.ownerDocument;
@@ -3691,8 +3746,14 @@ what when where which who will with would you your now future
       const zone = findDropZone(target);
       if (zone) ok = dropFile(zone, file) || ok;
     }
+    const deadline = Date.now() + TIMING.uploadConfirmMs;
+    let attached = false;
     await sleep(TIMING.settleMs + 120);
-    const attached = !!(target.files && target.files.length);
+    for (; ; ) {
+      attached = !!(target.files && target.files.length) || hasUploadedFile(target);
+      if (attached || Date.now() >= deadline) break;
+      await sleep(150);
+    }
     return { ok: ok && attached, shown: attached ? file.name : "" };
   }
   async function answerField(decision, value, remember) {
@@ -4223,6 +4284,24 @@ what when where which who will with would you your now future
     }
   }
   if (!isTopFrame && globalThis.chrome && globalThis.chrome.runtime) {
+    let logFrameDiagnostics = function() {
+      if (!looksLikeApplyUrl(globalThis.location.href)) return;
+      try {
+        const report = diagnose();
+        console.groupCollapsed(
+          "%c[TailorCV] autofill could not find a form in this frame \u2014 diagnostics",
+          "color:#7c3aed;font-weight:700"
+        );
+        console.log("frame:", globalThis.location.href);
+        console.log(report.summary);
+        if (report.roots.length) console.table(report.roots);
+        if (report.fields.length) console.table(report.fields);
+        if (report.uncovered.length) console.table(report.uncovered);
+        console.groupEnd();
+      } catch (e) {
+        console.warn("[TailorCV] frame diagnostics failed \u2014", e && e.message);
+      }
+    };
     globalThis.chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       if (!msg || !String(msg.type || "").startsWith("AF_")) return void 0;
       handleFrameMessage(msg).then((res) => sendResponse(res || {}));
@@ -4248,7 +4327,10 @@ what when where which who will with would you your now future
       return true;
     };
     setTimeout(() => {
-      if (!announce()) setTimeout(announce, 2500);
+      if (announce()) return;
+      setTimeout(() => {
+        if (!announce()) logFrameDiagnostics();
+      }, 2500);
     }, 800);
   }
 })();

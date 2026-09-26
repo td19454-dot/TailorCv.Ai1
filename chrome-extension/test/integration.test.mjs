@@ -26,7 +26,7 @@ import { setTiming } from '../src/autofill/timing.js';
 // minutes — long enough that it stops being run on every change, which is the
 // thing worth avoiding. The waits themselves are exercised by write.test.mjs
 // against real React.
-setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10 });
+setTiming({ settleMs: 0, optionWaitMs: 20, revealWatchMs: 10, uploadConfirmMs: 400 });
 
 const BANK = {
   full_name: 'Ada Lovelace',
@@ -641,6 +641,67 @@ test('Workday: a dropdown is one field, and another widget\'s chosen tag is not 
     const asked = plan && plan.payload.fields.filter(x => /phone device type/i.test(x.label));
     eq(asked.length, 1, 'asked about once');
     deepEq(asked[0].options, ['Home', 'Home Cellular'], 'its own options, not "India (+91)"');
+  });
+});
+
+// Workday's "My Experience" upload (ghr.wd1.myworkdayjobs.com): the document is
+// named only by the section heading; the box says "Upload a file (5MB max)" and
+// the button "Select files". After a file is chosen Workday uploads it, clears
+// the input, and lists the filename a moment later.
+const WD_UPLOAD_SECTION = `
+  <div data-automation-id="resumeSection">
+    <h3>Resume/CV</h3>
+    <div data-automation-id="formField-resume">
+      <label>Upload a file (5MB max)<abbr title="required">*</abbr></label>
+      <div data-automation-id="file-upload-drop-zone">
+        <p>Drop files here</p>
+        <p>or <button type="button" data-automation-id="select-files">Select files</button></p>
+        <input type="file" data-automation-id="file-upload-input-ref" style="display:none">
+      </div>
+      <div data-automation-id="file-upload-list"></div>
+    </div>
+  </div>`;
+
+function wireWorkdayUpload(doc) {
+  const input = doc.querySelector('[data-automation-id="file-upload-input-ref"]');
+  input.addEventListener('change', () => {
+    const name = input.files && input.files[0] ? input.files[0].name : '';
+    if (!name) return;
+    setTimeout(() => {
+      input.value = '';   // Workday keeps no FileList once it has the file
+      doc.querySelector('[data-automation-id="file-upload-list"]').innerHTML =
+        `<div data-automation-id="file-upload-item"><span>${name}</span><button type="button">Delete</button></div>`;
+    }, 120);
+  });
+}
+
+test('Workday: the Resume/CV upload is named by its section heading and attached', async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="formField-email">', WD_UPLOAD_SECTION + '\n    <div data-automation-id="formField-email">');
+  await withForm(html, {}, async (env, sent) => {
+    fixtures.wireWorkday(env.document);
+    wireWorkdayUpload(env.document);
+    const result = await run_.runAutofill(Object.assign({}, CTX, { hasResume: true }), null);
+    const row = result.decisions.find(x => x.slot === 'resume');
+    ok(row, 'the upload is recognised as the resume slot');
+    eq(row && row.label, 'Resume/CV');
+    ok(sent.some(m => m.type === 'AF_GET_RESUME_FILE' && m.doc === 'resume'), 'the resume is fetched');
+    eq(row && row.outcome, 'ok', 'the listed filename counts as attached, though the input was cleared');
+  });
+});
+
+test('an unheaded upload after "Resume/CV" does not inherit it', async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="formField-email">',
+    WD_UPLOAD_SECTION +
+    `<div data-automation-id="formField-other"><label>Upload a file</label>
+       <input type="file" id="second-upload"></div>` +
+    '\n    <div data-automation-id="formField-email">');
+  await withForm(html, {}, async (env) => {
+    const rows = d.describeFields(d.findForm());
+    const second = rows.find(r => r.el && r.el.id === 'second-upload');
+    ok(second, 'the second upload is found');
+    notOk(second.documentSlot === 'resume', `got slot ${second.documentSlot}, label "${second.label}"`);
   });
 });
 

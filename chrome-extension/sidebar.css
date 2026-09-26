@@ -154,6 +154,19 @@
   font-size: 18px !important;
   font-weight: 700 !important;
 }
+/* The employer's logo in the avatar tile, on white like most logos expect. */
+.tcv-job-avatar.tcv-has-logo {
+  background: #ffffff !important;
+  padding: 4px !important;
+  overflow: hidden !important;
+}
+.tcv-job-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 6px !important;
+  display: block !important;
+}
 .tcv-job-text { min-width: 0 !important; }
 .tcv-job-title {
   font-size: 17px !important;

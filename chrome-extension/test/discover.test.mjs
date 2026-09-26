@@ -11,6 +11,7 @@
 import { test, run, ok, notOk, eq, deepEq } from './harness.mjs';
 import { mount } from './dom.mjs';
 import * as d from '../src/autofill/discover.js';
+import * as p from '../src/autofill/plan.js';
 import * as fixtures from './fixtures.mjs';
 
 /**
@@ -79,6 +80,48 @@ test('findForm ignores a login form', async () => {
   await withDoc(`<form><input name="email"><input name="pw" type="password">
            <button type="submit">Sign in</button></form>`,
     () => eq(d.findForm(), null, 'a password field means this is not an application'));
+});
+
+test('findForm still ignores a sign-up box with a password', async () => {
+  await withDoc(`<form><input name="name"><input name="email" type="email">
+           <input name="pw" type="password"><input name="pw2" type="password">
+           <button type="submit">Create account</button></form>`,
+    () => eq(d.findForm(), null, 'account creation alone is not an application'));
+});
+
+// iCIMS candidate profile: the application and "create a password" in one form.
+const ICIMS_PROFILE = `<form id="cp_form" action="/jobs/26696/candidate">
+  <label for="fn">First Name *</label><input id="fn" name="PersonProfileFields.FirstName">
+  <label for="ln">Last Name *</label><input id="ln" name="PersonProfileFields.LastName">
+  <label for="em">Email *</label><input id="em" type="email" name="PersonProfileFields.Email">
+  <label for="ph">Phone *</label><input id="ph" type="tel" name="PhoneNumber">
+  <label for="ad">Address *</label><input id="ad" name="AddressStreet1">
+  <label for="ci">City *</label><input id="ci" name="AddressCity">
+  <label for="zp">Zip *</label><input id="zp" name="AddressZip">
+  <label for="rs">Resume *</label><input id="rs" type="file" name="Resume">
+  <label for="pw">Create a Password *</label><input id="pw" type="password" name="Password">
+  <label for="pw2">Confirm Password *</label><input id="pw2" type="password" name="PasswordConfirm">
+  <button type="submit">Next</button></form>`;
+
+test('findForm finds an iCIMS application that also creates an account', async () => {
+  await withDoc(ICIMS_PROFILE, () => {
+    const f = d.findForm();
+    ok(f, 'the candidate profile is an application, password or not');
+    eq(f && f.root.id, 'cp_form');
+  });
+});
+
+test('the password boxes in such a form are never filled', async () => {
+  await withDoc(ICIMS_PROFILE, () => {
+    const rows = d.describeFields(d.findForm());
+    const pw = rows.filter(r => /password/i.test(r.label || ''));
+    ok(pw.length >= 1, 'the password rows are described');
+    const decisions = p.decide(rows, { answerBank: { first_name: 'Ada', email: 'ada@example.com' } }, null, null);
+    for (const x of decisions.filter(x => /password/i.test(x.label || ''))) {
+      eq(x.action, p.SKIP, x.label);
+      eq(x.value, '', 'nothing written into a password box');
+    }
+  });
 });
 
 test('findForm ignores a newsletter signup', async () => {

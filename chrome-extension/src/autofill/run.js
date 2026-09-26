@@ -17,7 +17,7 @@
 //     fields the page disagreed about, using the other mechanism.
 //   * Fields that appear in response to an answer get one extra round, capped.
 
-import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe }
+import { describeFields, findForm, isApplicationPage, readComboboxOptions, reprobe, hasUploadedFile }
   from './discover.js';
 import { decide, fieldsForServer, summarize, FILL, SUGGEST, ASK, PROFILE, DOCUMENT, SKIP }
   from './plan.js';
@@ -487,8 +487,17 @@ async function attachDocument(decision, ctx) {
     const zone = findDropZone(target);
     if (zone) ok = dropFile(zone, file) || ok;
   }
+  // Taken when the input still holds it, or when the page shows its name —
+  // Workday uploads first, then clears the input and lists the file, so
+  // reading the input alone reported a finished upload as a failure.
+  const deadline = Date.now() + TIMING.uploadConfirmMs;
+  let attached = false;
   await sleep(TIMING.settleMs + 120);
-  const attached = !!(target.files && target.files.length);
+  for (;;) {
+    attached = !!(target.files && target.files.length) || hasUploadedFile(target);
+    if (attached || Date.now() >= deadline) break;
+    await sleep(150);
+  }
   return { ok: ok && attached, shown: attached ? file.name : '' };
 }
 

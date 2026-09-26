@@ -545,8 +545,8 @@
     // Not every /company/ link is the employer's name: LinkedIn's own controls
     // ("Show Premium Insights", "Follow", "See all jobs") point there too, and
     // one of those is what put "at Show Premium Insights" on screen next to the
-    // job title. Drop anything that reads as a button rather than a name.
-    const COMPANY_NOISE = /^(show|see|view|follow|unfollow|about|more|less|jobs?|all jobs|company page|premium|save|apply)\b|premium insight|\bfollowers?\b/i;
+    // job title. Drop anything that reads as a button rather than a name
+    // (COMPANY_NOISE, shared with enrichJob below).
     const pickLink = (root) => {
       for (const a of root.querySelectorAll('a[href*="/company/"]')) {
         if (a.closest('#tailorcv-sidebar')) continue;
@@ -573,16 +573,173 @@
     return '';
   }
 
+  // ── Company and logo, whichever layer found the job ────────────────────
+  //
+  // A layer can find the description and the title and still miss the
+  // employer: LinkedIn's redesign replaced every class the adapter named with
+  // hashed ones, and guessCompany() without a scope element had nothing to
+  // search from. So once any layer has the job, these fill in what it missed.
+
+  // Names of job boards and ATSs — a site's name, never the hiring company.
+  const SITE_NAMES = /^(linkedin|indeed|glassdoor|naukri(\.com)?|monster|dice|ziprecruiter|wellfound|angellist|simplyhired|greenhouse|lever|workday|ashby|icims|smartrecruiters|jobvite|bamboohr|workable|careers?|jobs?|job search|home)$/i;
+
+  // The element showing this job's title, found by its text. The /company/
+  // link and logo sit beside it on LinkedIn (and most boards) in every layout
+  // so far, whatever the classes are called this month.
+  function titleElement(role) {
+    const want = (role || '').replace(/\s+/g, ' ').trim().toLowerCase();
+    if (!want || !document.body) return null;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      const t = (node.nodeValue || '').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (t !== want) continue;
+      const el = node.parentElement;
+      if (!el || el.closest('#tailorcv-sidebar, script, style, title')) continue;
+      return el;
+    }
+    return null;
+  }
+
+  const COMPANY_NOISE = /^(show|see|view|follow|unfollow|about|more|less|jobs?|all jobs|company page|premium|save|apply)\b|premium insight|\bfollowers?\b/i;
+
+  // The employer named by a /company/ link: its text, or its logo's alt text.
+  function companyFromLink(a) {
+    const text = (a.textContent || '').replace(/\s+/g, ' ').trim();
+    if (text && text.length <= 80 && !COMPANY_NOISE.test(text)) return text;
+    const img = a.querySelector('img[alt]');
+    const alt = img ? (img.getAttribute('alt') || '').replace(/\s+logo$/i, '').trim() : '';
+    return alt && alt.length <= 80 && !COMPANY_NOISE.test(alt) ? alt : '';
+  }
+
+  // The nearest /company/ link around the title, climbing a few levels.
+  function companyLinksNear(el) {
+    let node = el;
+    for (let i = 0; i < 8 && node && node !== document.body; i++) {
+      const links = Array.from(node.querySelectorAll('a[href*="/company/"]'))
+        .filter(a => !a.closest('#tailorcv-sidebar'));
+      if (links.length) return links;
+      node = node.parentElement;
+    }
+    return [];
+  }
+
+  // "Data Scientist I | Bank of America | LinkedIn", "Role - Company", or
+  // "Job Application for Role at Company": the part that is neither the role
+  // nor the site. On LinkedIn's search view the title is the SEARCH, not the
+  // job, which is why the page itself is read first.
+  function companyFromTitle(role) {
+    const t = (document.title || '').replace(/^\(\d+\+?\)\s*/, '').trim();
+    if (!t) return '';
+    const at = t.match(/\bat\s+([^|–—]{2,60}?)\s*(?:[|–—]|$)/i);
+    if (at && !SITE_NAMES.test(at[1].trim())) return at[1].trim();
+    const want = (role || '').trim().toLowerCase();
+    const parts = t.split(/\s[|–—]\s|[|–—]|\s-\s/).map(p => p.trim()).filter(Boolean);
+    if (parts.length < 2 || !want || parts[0].toLowerCase() !== want) return '';
+    const next = parts[1];
+    if (!next || SITE_NAMES.test(next) || next.length > 60) return '';
+    // "Senior Data Scientist - Payments | Airbnb Careers": "Payments" is the rest
+    // of the title, not the employer. If the page's own heading carries the
+    // two joined, the second half belongs to the role.
+    const joined = `${parts[0]} - ${next}`.toLowerCase();
+    for (const h of document.querySelectorAll('h1, h2')) {
+      if ((h.textContent || '').replace(/\s+/g, ' ').toLowerCase().includes(joined)) return '';
+    }
+    return next;
+  }
+
+  // A company's own careers site names itself: "Airbnb Careers" -> "Airbnb".
+  // Never trusted on a job board or ATS, whose site name is theirs, not the employer's.
+  function companyFromSiteName() {
+    if (adapterForHost() || /icims|greenhouse|lever|workday|ashby|smartrecruiters|jobvite|bamboohr|workable/i.test(location.hostname)) return '';
+    const meta = document.querySelector('meta[property="og:site_name"]');
+    const name = ((meta && meta.getAttribute('content')) || '')
+      .replace(/\s*(careers?|jobs?|job openings|work with us)\s*$/i, '').trim();
+    return name && !SITE_NAMES.test(name) && name.length <= 60 ? name : '';
+  }
+
+  function absoluteHttps(src) {
+    try {
+      const u = new URL(src, location.href);
+      return u.protocol === 'https:' ? u.href : '';
+    } catch (_) { return ''; }
+  }
+
+  function logoFromJsonLd() {
+    for (const block of document.querySelectorAll('script[type="application/ld+json"]')) {
+      let parsed;
+      try { parsed = JSON.parse(block.textContent); } catch (_) { continue; }
+      const job = walkForJobPosting(parsed);
+      const org = job && job.hiringOrganization;
+      const logo = org && typeof org === 'object' ? org.logo : null;
+      const url = typeof logo === 'string' ? logo : (logo && (logo.url || logo.contentUrl)) || '';
+      if (url) return absoluteHttps(url);
+    }
+    return '';
+  }
+
+  // The employer's logo: never the site's own (LinkedIn's, Greenhouse's).
+  function resolveLogo(company, anchor) {
+    const fromLd = logoFromJsonLd();
+    if (fromLd) return fromLd;
+    const usable = img => img && !img.closest('#tailorcv-sidebar')
+      && absoluteHttps(img.currentSrc || img.getAttribute('src') || '');
+    for (const a of anchor ? companyLinksNear(anchor) : []) {
+      const img = a.querySelector('img');
+      const src = usable(img);
+      if (src) return src;
+    }
+    const name = (company || '').trim().toLowerCase();
+    if (name) {
+      for (const img of document.querySelectorAll('img[alt]')) {
+        const alt = (img.getAttribute('alt') || '').toLowerCase();
+        if (/logo/.test(alt) && alt.includes(name)) {
+          const src = usable(img);
+          if (src) return src;
+        }
+      }
+    }
+    // LinkedIn's preview image for a posting is the employer's logo.
+    const og = document.querySelector('meta[property="og:image"]');
+    const ogUrl = og ? absoluteHttps(og.getAttribute('content') || '') : '';
+    if (ogUrl && /company-logo/i.test(ogUrl)) return ogUrl;
+    // On a company's own careers site, its icon is its logo.
+    if (companyFromSiteName()) {
+      const icon = document.querySelector('link[rel~="apple-touch-icon"], link[rel~="icon"]');
+      const href = icon ? absoluteHttps(icon.getAttribute('href') || '') : '';
+      if (href) return href;
+    }
+    return '';
+  }
+
+  function enrichJob(job) {
+    if (!job) return job;
+    const anchor = titleElement(job.role);
+    if (!job.company) {
+      let fromLink = '';
+      for (const a of anchor ? companyLinksNear(anchor) : []) {
+        fromLink = companyFromLink(a);
+        if (fromLink) break;
+      }
+      // A careers site's own name before the tab title: it is the employer by
+      // definition, while titles mix the role, the team and the site together.
+      job.company = cleanCompany(fromLink || companyFromSiteName()
+        || companyFromTitle(job.role) || companyFromPage());
+    }
+    if (!job.logo) job.logo = resolveLogo(job.company, anchor);
+    return job;
+  }
+
   // ── The pipeline ─────────────────────────────────────
 
   function extractJob() {
     if (manualJd && manualJd.length >= MIN_JD_LENGTH) {
-      return { jd_string: manualJd, role: guessRole(), company: cleanCompany(guessCompany()), source: 'manual' };
+      return enrichJob({ jd_string: manualJd, role: guessRole(), company: cleanCompany(guessCompany()), source: 'manual' });
     }
     for (const layer of [fromJsonLd, fromAdapter, fromHeadingLabel, fromHeuristic]) {
       let job = null;
       try { job = layer(); } catch (_) { /* a broken layer must not kill the panel */ }
-      if (job && job.jd_string && job.jd_string.length >= MIN_JD_LENGTH) return job;
+      if (job && job.jd_string && job.jd_string.length >= MIN_JD_LENGTH) return enrichJob(job);
     }
     return null;
   }
@@ -1132,7 +1289,8 @@
     body.innerHTML = `
       <div class="tcv-card tcv-job-card">
         <div class="tcv-job-main">
-          <div class="tcv-job-avatar">${esc(initial)}</div>
+          <div class="tcv-job-avatar${job.logo ? ' tcv-has-logo' : ''}" id="tcvJobAvatar">${job.logo
+            ? `<img src="${esc(job.logo)}" alt="" referrerpolicy="no-referrer">` : esc(initial)}</div>
           <div class="tcv-job-text">
             <div class="tcv-job-title">${esc(job.role || 'This job')}</div>
             <div class="tcv-job-meta">${job.company ? esc(job.company) + ' · ' : ''}${SOURCE_LABEL[job.source] || ''}</div>
@@ -1184,6 +1342,17 @@
 
     // On a page that is BOTH a posting and an application form, autofill leads
     // and the resume actions stay where they were — one view, no mode switch.
+    // A logo that fails to load (moved, blocked) falls back to the initial.
+    const logoImg = body.querySelector('#tcvJobAvatar img');
+    if (logoImg) {
+      logoImg.addEventListener('error', () => {
+        const box = logoImg.parentElement;
+        if (!box) return;
+        box.classList.remove('tcv-has-logo');
+        box.textContent = initial;
+      }, { once: true });
+    }
+
     const fillBtn = body.querySelector('#tcvAfFillBtn');
     if (fillBtn) fillBtn.addEventListener('click', () => runAutofill());
     const startBtn = body.querySelector('#tcvStartAppBtn');

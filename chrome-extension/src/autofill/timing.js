@@ -16,6 +16,9 @@ export const TIMING = {
   optionWaitMs: 600,
   // How long to watch for fields that appear in response to an answer.
   revealWatchMs: 900,
+  // How long an upload may take to show as taken. Workday sends the file to its
+  // server first and only then shows the filename (clearing the input).
+  uploadConfirmMs: 4000,
 };
 
 export function setTiming(overrides) {
