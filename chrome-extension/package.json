@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js && esbuild src/autofill.js --bundle --format=iife --loader:.css=text --outfile=autofill.bundle.js",
+    "build": "node -e \"require('fs').copyFileSync('../static/changes_modal.js','changes_modal.js')\" && esbuild src/analytics.js --bundle --format=iife --outfile=analytics.bundle.js && esbuild src/styles.js --bundle --format=iife --loader:.css=text --outfile=styles.bundle.js && esbuild src/autofill.js --bundle --format=iife --loader:.css=text --outfile=autofill.bundle.js",
     "test": "node test/match.test.mjs && node test/probe.test.mjs && node test/plan.test.mjs && node test/write.test.mjs && node test/discover.test.mjs && node test/integration.test.mjs && node test/extraction.test.mjs && node test/role-detection.test.mjs",
     "package": "npm run build && node scripts/package.mjs",
     "fixtures": "node test/build-fixture-pages.mjs",

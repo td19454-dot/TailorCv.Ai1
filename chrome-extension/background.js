@@ -28,6 +28,18 @@ async function downloadPdfBase64(pdfBase64, filename) {
   });
 }
 
+// What the "See what changed" pop-up needs (changes_modal.js): the rendered
+// resume, the structured data its edits are marked from, and both scores.
+function previewOf(data) {
+  if (!data || !data.html) return null;
+  return {
+    html: data.html,
+    resumeData: data.resume_data || { changes: data.changes || {} },
+    before: typeof data.skill_match_before === 'number' ? data.skill_match_before : null,
+    after: typeof data.skill_match_after === 'number' ? data.skill_match_after : null,
+  };
+}
+
 function arrayBufferToBase64(buffer) {
   let binary = '';
   const bytes = new Uint8Array(buffer);
@@ -57,7 +69,9 @@ const AF_FILE_KEY = 'tcv_autofill_file';
 const AF_CONTEXT_TTL_MS = 10 * 60 * 1000;
 const AF_FILE_TTL_MS = 30 * 60 * 1000;
 
-const AUTH_CACHE_TTL_MS = 5 * 60 * 1000;
+// 30 minutes: one real check covers a job-hunting session across many careers
+// sites. Staleness is bounded by the explicit invalidation above, not by this.
+const AUTH_CACHE_TTL_MS = 30 * 60 * 1000;
 
 async function readAuthCache() {
   const stored = await chrome.storage.session.get(AUTH_CACHE_KEY);
@@ -407,6 +421,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           if (data.pending_skill_choice && skillGaps.length) {
             sendResponse({ data: {
               success: true, pendingSkillChoice: true, afterScore, skillsAdded, skillGaps, changes,
+              preview: previewOf(data),
               savedResumeId: data.saved_resume_id,
               pdfBase64: data.pdf_base64,
               filename: data.filename || 'tailored_resume.pdf',
@@ -415,7 +430,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           }
 
           await downloadPdfBase64(data.pdf_base64, data.filename);
-          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes, autoAddSkills: !!data.auto_add_skills } });
+          sendResponse({ data: { success: true, afterScore, skillsAdded, skillGaps, changes,
+                                 autoAddSkills: !!data.auto_add_skills, preview: previewOf(data) } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
@@ -436,7 +452,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
           // The profile carries auto_add_skills for the account-menu switch.
           if (msg.payload && msg.payload.enable_auto) await clearAuthCache();
           await downloadPdfBase64(data.pdf_base64, data.filename);
-          sendResponse({ data: { success: true, added: data.added || [] } });
+          sendResponse({ data: { success: true, added: data.added || [],
+                                 preview: data.html ? { html: data.html, resumeData: data.resume_data || {} } : null } });
         } catch (e) {
           sendResponse({ error: e.message });
         }
@@ -692,6 +709,11 @@ function recordFormFrame(sender, info) {
     ats: String(info.ats || 'generic'),
     at: Date.now(),
   });
+  // Tell the top frame now: an embedded form (Greenhouse on careers.airbnb.com)
+  // renders after the panel has drawn, and nothing else would make it look again.
+  if (frameId !== 0) {
+    chrome.tabs.sendMessage(tabId, { type: 'AF_FRAME_FOUND' }, { frameId: 0 }).catch(() => {});
+  }
 }
 
 function discoverFormFrames(sender) {

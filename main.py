@@ -8837,6 +8837,13 @@ async def extension_tailor_resume(request: Request):
                 "skills_added": added,
                 "skill_gaps": gaps,
                 "changes": (parsed or {}).get("changes") or {},
+                # For the extension's "See what changed" pop-up, which is the
+                # editor's own modal (static/changes_modal.js): it shows this
+                # rendered resume with each edit marked inline, and reads the
+                # skills/summary/bullets it marks from resume_data.
+                "html": html_content,
+                "resume_data": parsed if isinstance(parsed, dict) else {},
+                "skill_match_before": before_score,
                 "saved_resume_id": saved_resume_id,
                 # The extension holds the download and shows the skills pop-up;
                 # this PDF is what "Not now" downloads.
@@ -13447,6 +13454,9 @@ async def extension_add_skills(request: Request):
         "filename": "tailored_resume.pdf",
         "added": added,
         "auto_add_skills": enable_auto,
+        # The re-rendered resume, so "See what changed" shows the skills just added.
+        "html": html_content,
+        "resume_data": resume_data if isinstance(resume_data, dict) else {},
     })
 
 

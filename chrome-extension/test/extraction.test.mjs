@@ -43,6 +43,7 @@ function loadPage(html, url, withAutofill, opts) {
   polyfillInnerText(window);
 
   const sent = [];
+  const listeners = [];   // content.js's chrome.runtime.onMessage handlers
   // A logged-in user with a base resume, so the panel reaches the job/apply view
   // rather than stopping at login. These are the real response shapes the
   // background worker returns; see refreshFull() in content.js.
@@ -60,7 +61,9 @@ function loadPage(html, url, withAutofill, opts) {
         return { data: { answerBank: { full_name: 'Ada Lovelace', email: 'ada@example.com' },
                          hasResume: true, blockers: [],
                          quota: { exhausted: false, isPro: false } } };
-      case 'AF_FRAME_DISCOVER': return { data: [] };
+      // A form inside an iframe (Greenhouse embedded on careers.airbnb.com),
+      // as background.js reports it once the frame announces itself.
+      case 'AF_FRAME_DISCOVER': return { data: options.frames || [] };
       default: return { data: null };
     }
   };
@@ -68,9 +71,15 @@ function loadPage(html, url, withAutofill, opts) {
     runtime: {
       sendMessage: (msg, cb) => {
         sent.push(msg);
-        if (typeof cb === 'function') cb(reply(msg));
+        if (typeof cb !== 'function') return;
+        // A login check that has to go to the network (no cached answer).
+        if (msg.type === 'GET_PROFILE' && options.profileDelayMs) {
+          setTimeout(() => cb(reply(msg)), options.profileDelayMs);
+          return;
+        }
+        cb(reply(msg));
       },
-      onMessage: { addListener() {} },
+      onMessage: { addListener(fn) { listeners.push(fn); } },
       getURL: path => `chrome-extension://test/${path}`,
       id: 'test',
     },
@@ -85,7 +94,9 @@ function loadPage(html, url, withAutofill, opts) {
     window.eval(AUTOFILL_BUNDLE);
   }
   window.eval(CONTENT_JS);
-  return { dom, window, document: window.document, sent };
+  // Deliver a message from the background worker, as chrome.tabs.sendMessage would.
+  const push = (msg) => listeners.forEach(fn => fn(msg, {}, () => {}));
+  return { dom, window, document: window.document, sent, push };
 }
 
 const JSON_LD_PAGE = `<!doctype html><html><head>
@@ -328,6 +339,49 @@ test('the form watcher does not repaint the login view', async () => {
   await new Promise(r => setTimeout(r, 4000));
   notOk(/Autofill this application/.test(page.document.getElementById('tailorcv-sidebar').textContent),
         'a logged-out user must stay on the login view');
+});
+
+const GREENHOUSE_FRAME = { frameId: 7, fieldCount: 12, url: 'https://job-boards.greenhouse.io/embed/job_app?for=airbnb', ats: 'greenhouse' };
+
+test('a posting whose form is in an iframe offers Autofill (careers.airbnb.com)', async () => {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true,
+                        { frames: [GREENHOUSE_FRAME] });
+  ok(await waitForText(page, /Autofill this application/, 10000),
+     'the job view must lead with Autofill when a frame holds the form');
+  const tab = page.document.querySelector('.tcv-tab[data-tab="autofill"]');
+  notOk(tab.disabled, 'the Autofill tab must be enabled');
+});
+
+test('a frame form that appears after the panel drew is picked up', async () => {
+  const options = { frames: [] };
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true, options);
+  ok(await waitForText(page, /Start Application/, 10000), 'no form yet: Start Application');
+  options.frames.push(GREENHOUSE_FRAME);        // the Greenhouse iframe finishes rendering
+  page.push({ type: 'AF_FRAME_FOUND' });
+  ok(await waitForText(page, /Autofill this application/, 5000), 'redrawn with Autofill');
+});
+
+// Watches the panel body from the first moment it exists.
+async function sawAuthenticating(page, ms) {
+  const deadline = Date.now() + ms;
+  while (Date.now() < deadline) {
+    const body = page.document.getElementById('tcvBody');
+    if (body && /Authenticating/.test(body.textContent)) return true;
+    await new Promise(r => setTimeout(r, 20));
+  }
+  return false;
+}
+
+test('a cached login does not replay "Authenticating" on every new careers site', async () => {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true);
+  notOk(await sawAuthenticating(page, 2500), 'an instant (cached) login check shows no lock animation');
+  ok(await waitForText(page, /Senior Backend Engineer/, 5000), 'straight to the job view');
+});
+
+test('a slow (uncached) login check still shows "Authenticating"', async () => {
+  const page = loadPage(JSON_LD_PAGE, 'https://careers.airbnb.com/positions/8123037/', true,
+                        { profileDelayMs: 700 });
+  ok(await sawAuthenticating(page, 3000), 'a real network check is worth the animation');
 });
 
 test('content.js contains no code that submits a form', () => {

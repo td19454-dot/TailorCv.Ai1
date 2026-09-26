@@ -915,7 +915,7 @@
       renderApplyReady();
     } else if (lastJob) {
       renderReady(lastJob);
-    } else if (applyForm) {
+    } else if (hasForm()) {
       renderManual();   // an apply page with no posting on it — same as the apply view's tailor button
     } else {
       renderJobFromPage();
@@ -1140,7 +1140,7 @@
         </div>
         <div class="tcv-job-foot">Wrong job? <a href="#" id="tcvEditJd">Edit the description</a></div>
       </div>
-      ${applyForm ? `
+      ${hasForm() ? `
       <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">Autofill this application <span aria-hidden="true">▸</span></button>` : `
       <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvStartAppBtn">Start Application <span aria-hidden="true">▸</span></button>`}
       <div class="tcv-card tcv-resume-card">
@@ -1206,6 +1206,7 @@
       coverBtn.addEventListener('click', () => runCoverLetter(job, label));
     }
     loadBeforeScore(job);
+    if (!hasForm()) onFrameFormFound();
   }
 
   // ── Start Application ────────────────────────────────
@@ -1490,7 +1491,42 @@
   // shown (unchanged ones add no information and the sidebar is narrow); the
   // roomier "See what changed" modal on the web editor shows the full picture
   // with word-level highlighting.
-  function showChangesPanel(changes) {
+  // "See what changed", full size, over the page — the same modal the website's
+  // editor opens (static/changes_modal.js, copied in by the build). It runs in
+  // an extension page inside a full-viewport frame rather than in this
+  // document: the host page's CSS (LinkedIn resets aggressively) can't reach
+  // it, and its styles can't leak onto the host page.
+  let changesFrame = null;
+
+  function openChangesOverlay(preview) {
+    closeChangesOverlay();
+    const url = chrome.runtime.getURL('changes.html');
+    const frame = document.createElement('iframe');
+    frame.id = 'tailorcv-changes-frame';
+    frame.src = url;
+    frame.setAttribute('title', 'What changed in your resume');
+    frame.setAttribute('allowtransparency', 'true');
+    frame.style.cssText = 'position:fixed!important;inset:0!important;width:100vw!important;' +
+      'height:100vh!important;border:0!important;margin:0!important;padding:0!important;' +
+      'z-index:2147483647!important;background:transparent!important;color-scheme:normal!important;';
+    frame.addEventListener('load', () => {
+      frame.contentWindow.postMessage({ type: 'tcv-changes-open', preview }, new URL(url).origin);
+    });
+    document.documentElement.appendChild(frame);
+    changesFrame = frame;
+    track('changes_opened', { host: location.hostname });
+  }
+
+  function closeChangesOverlay() {
+    if (changesFrame) { changesFrame.remove(); changesFrame = null; }
+  }
+
+  window.addEventListener('message', (e) => {
+    if (!changesFrame || e.source !== changesFrame.contentWindow) return;
+    if (e.data && e.data.type === 'tcv-changes-closed') closeChangesOverlay();
+  });
+
+  function showChangesPanel(changes, preview) {
     const existing = document.getElementById('tcv-changes-panel');
     if (existing) existing.remove();
     if (!changes || typeof changes !== 'object') return;
@@ -1520,9 +1556,12 @@
     toggleLabel.textContent = 'See what changed';
     const chevron = document.createElement('span');
     chevron.className = 'tcv-changes-chevron';
-    chevron.textContent = '▾';
+    // With the rendered resume in hand, open the editor's full "See what
+    // changed" view over the page; without it, expand the short list below.
+    chevron.textContent = preview ? '↗' : '▾';
     toggle.append(toggleLabel, chevron);
     toggle.addEventListener('click', function () {
+      if (preview) { openChangesOverlay(preview); return; }
       panel.classList.toggle('tcv-changes-open');
     });
     panel.appendChild(toggle);
@@ -1679,12 +1718,16 @@
       globalStatus.textContent = `Almost done — pick the skills to add for "${label}".`;
       const gaps = Array.isArray(res.data.skillGaps) ? res.data.skillGaps : [];
       track('skill_prompt_shown', { skill_gap_count: gaps.length });
-      showSkillPrompt(gaps, res.data, (added, error) => {
+      showSkillPrompt(gaps, res.data, (added, error, rerendered) => {
         tcvBusy = false;
         if (error) {
           globalStatus.className = 'tcv-status-text tcv-error';
           globalStatus.textContent = `✗ ${label}: ${error}`;
         } else {
+          // Skills were added: the preview is the re-rendered resume, same scores.
+          if (rerendered && res.data.preview) {
+            res.data.preview = Object.assign({}, res.data.preview, rerendered);
+          }
           finishTailorSuccess(job, label, res.data, added, false);
         }
         if (sessionReady) renderJobFromPage();
@@ -1704,7 +1747,7 @@
     const after = data && typeof data.afterScore === 'number' ? data.afterScore : null;
     showSuccessTick(job.beforeScore, after);
     showSkillPanel(added, [], auto);
-    showChangesPanel(data && data.changes);
+    showChangesPanel(data && data.changes, data && data.preview);
     track('tailor_downloaded', {
       before_score: job.beforeScore,
       after_score: after,
@@ -1811,7 +1854,7 @@
       if (enableAuto) setAutoSkillsSwitch(true);
       track('skill_prompt_added', { via: via, count: skills.length, enable_auto: enableAuto });
       box.remove();
-      done((res.data && res.data.added) || skills, null);
+      done((res.data && res.data.added) || skills, null, res.data && res.data.preview);
     }
 
     addSel.addEventListener('click', function () { submit(Array.from(selected), false, addSel, 'selected'); });
@@ -1872,7 +1915,7 @@
     // this extension could do. The LinkedIn collections check above already makes
     // this unreachable in practice; asserted anyway because the cost of being
     // wrong is unrecoverable.
-    if (applyForm) return false;
+    if (hasForm()) return false;
     const key = 'tailorcv_auto_refreshed:' + location.href;
     try {
       if (sessionStorage.getItem(key)) return false;
@@ -1914,6 +1957,25 @@
    * background worker as they load (see discoverFormFrames there), so this is a
    * cheap lookup rather than a broadcast — but it is async, hence separate.
    */
+  /** An application form here — in this document, or in a frame (Greenhouse
+   *  embedded on careers.airbnb.com, Lever on a company domain). */
+  function hasForm() {
+    return !!(AF && (applyForm || applyFrame));
+  }
+
+  // A frame's form usually renders after this panel has drawn the job view, so
+  // the frame announcing it (background.js recordFormFrame) is pushed here and
+  // the current view is redrawn with Autofill in it.
+  async function onFrameFormFound() {
+    if (applyForm || !AF) return;
+    const had = !!applyFrame;
+    if (!(await checkFrameForm()) || had) return;
+    if (!document.getElementById('tailorcv-sidebar')) return;
+    if (currentView === 'job' && lastJob) renderReady(lastJob);
+    else if (currentView === 'manual' || currentView === 'reading') renderApplyReady();
+    syncTabs();
+  }
+
   async function checkFrameForm() {
     if (!AF || applyForm) return null;
     const res = await sendMessage({ type: 'AF_FRAME_DISCOVER' });
@@ -1944,7 +2006,7 @@
   /** The "form detected" view, for an apply page with no job description. */
   function renderApplyReady(extra) {
     currentView = 'apply';
-    if (!AF || !applyForm) { renderManual(); return; }
+    if (!hasForm()) { renderManual(); return; }
     const page = (extra && extra.page) || 0;
     AF.ui.renderReady(body, applyForm || refreshApplyMode(), applyCtx, {
       onFill: () => runAutofill(),
@@ -2325,13 +2387,28 @@
     setTimeout(() => renderJobFromPage(attempt + 1, gen), EXTRACT_EVERY);
   }
 
+  // How long the login check may take before "Authenticating" is shown. Every
+  // full page load (a new careers site, unlike LinkedIn's in-page navigation)
+  // starts this script afresh and checks again, but after the first page in a
+  // browsing session the answer comes from background.js's auth cache in a few
+  // milliseconds. Playing the ~4.7s lock animation for that — and then waiting
+  // for it to finish — made every new site look like it was logging in again.
+  // Only a real network check is slow enough to deserve the animation.
+  const AUTH_ANIMATION_DELAY_MS = 250;
+
   async function refreshFull() {
-    await renderLoading();
     sessionReady = false;
     noBaseResumeShown = false;
     quotaExceeded = false;
 
-    const profileRes = await sendMessage({ type: 'GET_PROFILE' });
+    const profileReq = sendMessage({ type: 'GET_PROFILE' });
+    const quick = await Promise.race([
+      profileReq,
+      new Promise((resolve) => setTimeout(() => resolve(null), AUTH_ANIMATION_DELAY_MS)),
+    ]);
+    const animated = !quick;
+    if (animated) await renderLoading();
+    const profileRes = quick || await profileReq;
     if (profileRes.error || !profileRes.data) {
       clearInterval(lockLoopTimer); // not authenticated — cut the loop, no unlock flourish
       accountBtn.classList.remove('tcv-visible');
@@ -2349,7 +2426,7 @@
     // Login confirmed: let the lock finish unlocking (green tick) while the
     // base-resume check runs at the same time, so the flourish adds no extra
     // wait beyond whichever of the two actually takes longer.
-    const remainingMs = finishLockAnimation();
+    const remainingMs = animated ? finishLockAnimation() : 0;
     const [baseRes] = await Promise.all([
       sendMessage({ type: 'GET_BASE_RESUME' }),
       new Promise((resolve) => setTimeout(resolve, remainingMs)),
@@ -2475,6 +2552,8 @@
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg.type === 'TOGGLE_PANEL') {
       togglePanel();
+    } else if (msg.type === 'AF_FRAME_FOUND') {
+      onFrameFormFound();
     } else if (msg.type === 'URL_CHANGED') {
       // webNavigation saw a pushState/replaceState/#fragment route change in
       // this tab's top frame. handleUrlChange() re-checks location itself, so

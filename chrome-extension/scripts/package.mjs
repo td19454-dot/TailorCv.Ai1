@@ -31,6 +31,11 @@ const SHIPPED = [
   'analytics.bundle.js',
   'styles.bundle.js',
   'autofill.bundle.js',
+  // "See what changed": the page content.js frames over the job page, and the
+  // editor's modal it runs (copied from static/ by `npm run build`).
+  'changes.html',
+  'changes_page.js',
+  'changes_modal.js',
   'icons/icon16.png',
   'icons/icon48.png',
   'icons/icon128.png',
@@ -71,6 +76,10 @@ for (const size of Object.values((manifest.action && manifest.action.default_ico
   referenced.add(size);
 }
 for (const size of Object.values(manifest.icons || {})) referenced.add(size);
+// Pages opened in a frame (changes.html) are only reachable through here.
+for (const entry of manifest.web_accessible_resources || []) {
+  for (const file of entry.resources || []) if (!file.includes('*')) referenced.add(file);
+}
 
 const missing = [...referenced].filter(f => !SHIPPED.includes(f));
 if (missing.length) {

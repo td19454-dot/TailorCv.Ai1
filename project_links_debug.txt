@@ -1,55 +1,91 @@
 === PROJECT NAMES FROM AI ===
+  'TailorCV'
+  'Youtube Sentiment Analysis'
   'Marketing Analytics'
-  'Attrition Analytics'
 
 === ANNOTATION MAP (pdf) ===
 {
- "Marketing Analytics": [
+ "TailorCV": [
   [
    "Link",
-   "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"
+   "https://www.thetailorcv.com"
+  ],
+  [
+   "GitHub",
+   "https://github.com/td19454-dot/TailorCv.Ai1"
   ]
  ],
- "Attrition Analytics": [
+ "Youtube Sentiment Analysis": [
   [
    "Link",
-   "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+  ],
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+  ]
+ ],
+ "Marketing Analytics": [
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Marketing-Analytics"
   ]
  ]
 }
 
 === TITLE POSITIONS FOUND IN PDF ===
-  page0 top=443.2  'Marketing Analytics'
-  page0 top=555.0  'Attrition Analytics'
+  page0 top=217.9  'TailorCV'
+  page0 top=307.8  'Marketing Analytics'
+  page0 top=326.6  'Youtube Sentiment Analysis'
   NOT LOCATED: []
 
 === LINK POSITIONS AND DECISIONS ===
-  page0 top=  445.2 x0=  46.8 -> 'Marketing Analytics' (dist 2.9)  https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da
-  page0 top=  557.0 x0=  47.5 -> 'Attrition Analytics' (dist 2.9)  https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare
+  page0 top=  233.1 x0=  30.6 -> 'TailorCV' (dist 7.5)  https://www.thetailorcv.com
+  page0 top=  233.1 x0=  74.2 -> 'TailorCV' (dist 7.5)  https://github.com/td19454-dot/TailorCv.Ai1
+  page0 top=  341.7 x0=  30.6 -> 'Youtube Sentiment Analysis' (dist 7.5)  https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view
+  page0 top=  341.7 x0=  82.4 -> 'Youtube Sentiment Analysis' (dist 7.5)  https://github.com/SSarkar-1/Youtube_Sentiment_Insights
+  page0 top=  402.8 x0=  30.6 -> 'Marketing Analytics' (dist 7.5)  https://github.com/SSarkar-1/Marketing-Analytics
 
 === TEXT MAP ===
 {}
 
 === EFFECTIVE MAP ===
 {
- "Marketing Analytics": [
+ "TailorCV": [
   [
    "Link",
-   "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"
+   "https://www.thetailorcv.com"
+  ],
+  [
+   "GitHub",
+   "https://github.com/td19454-dot/TailorCv.Ai1"
   ]
  ],
- "Attrition Analytics": [
+ "Youtube Sentiment Analysis": [
   [
    "Link",
-   "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"
+   "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"
+  ],
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"
+  ]
+ ],
+ "Marketing Analytics": [
+  [
+   "GitHub",
+   "https://github.com/SSarkar-1/Marketing-Analytics"
   ]
  ]
 }
 
 === AFTER inject_links ===
-  'Marketing Analytics'
-     links=[{"label": "Link", "url": "https://app.powerbi.com/links/kLsYmC0j1r?ctid=f3bdaabb-b2cf-4796-9d02-8246bcddfbd0&pbi_source=linkShare&bookmarkGuid=45de1d99-27f5-40f5-8424-68b53e5530da"}]
+  'TailorCV'
+     links=[{"label": "Link", "url": "https://www.thetailorcv.com"}, {"label": "GitHub", "url": "https://github.com/td19454-dot/TailorCv.Ai1"}]
      github_link='' url=''
-  'Attrition Analytics'
-     links=[{"label": "Link", "url": "https://app.powerbi.com/links/Sj4JH0axjw?ctid=cde3fd19-627e-4120-a9df-f8dbb1e1fb34&pbi_source=linkShare"}]
+  'Youtube Sentiment Analysis'
+     links=[{"label": "Link", "url": "https://drive.google.com/file/d/1P2ZI1jYzdPIwj3SOjkqm_TiRF266W5X8/view"}, {"label": "GitHub", "url": "https://github.com/SSarkar-1/Youtube_Sentiment_Insights"}]
+     github_link='' url=''
+  'Marketing Analytics'
+     links=[{"label": "GitHub", "url": "https://github.com/SSarkar-1/Marketing-Analytics"}]
      github_link='' url=''

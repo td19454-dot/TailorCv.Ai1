@@ -61,7 +61,8 @@
     {
       "resources": [
         "icons/*.png",
-        "icons/*.svg"
+        "icons/*.svg",
+        "changes.html"
       ],
       "matches": [
         "<all_urls>"
