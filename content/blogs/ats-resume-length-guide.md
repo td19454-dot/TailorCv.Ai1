@@ -212,6 +212,8 @@ When you do need to cut, there is an order.
 
 ---
 
+Length usually comes down to how many years you detail - [how far back your experience should go](/blog/how-far-back-experience-goes) sets the right window for your level and field.
+
 ## Frequently Asked Questions
 
 ### Does an ATS reject long resumes?

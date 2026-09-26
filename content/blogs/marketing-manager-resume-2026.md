@@ -191,6 +191,8 @@ A strong marketing manager resume in 2026 shows measurable campaign performance,
 
 Use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to compare your resume against the job description. Then prepare for your interview with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+If you are moving between an agency and an in-house team, [agency vs in-house tailoring](/blog/agency-vs-in-house-tailoring) shows how to frame the same campaigns for each.
+
 ## Frequently Asked Questions
 
 ### What are the key components of a Marketing Manager resume in 2026?  

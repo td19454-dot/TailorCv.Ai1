@@ -170,6 +170,8 @@ Stretch applications convert at a lower rate. They should be a portion of your a
 
 If the next level genuinely requires something you have never done, reframing will not manufacture it — [the honest moves for a missing requirement](/blog/missing-required-skill-what-to-do) still apply.
 
+For the specific step from junior to mid-level, [two years in and applying for a mid-level role](/blog/two-years-in-going-mid-level) covers restructuring the page around ownership.
+
 ## Frequently Asked Questions
 
 ### Will an ATS filter me out on years?

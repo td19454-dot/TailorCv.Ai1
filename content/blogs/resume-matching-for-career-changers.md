@@ -239,6 +239,8 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
+For the easier case of the same function in a new industry, see [tailoring when the company is in another industry](/blog/tailoring-across-industries).
+
 ## FAQ
 ### Do I need a completely different resume for a career change?
 

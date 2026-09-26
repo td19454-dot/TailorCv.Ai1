@@ -177,6 +177,10 @@ Prepare a two-minute version and a ten-minute version. Rehearse both out loud - 
 
 ---
 
+Group projects need your own contribution made clear - [tailoring when your work was a team effort](/blog/team-vs-individual-credit) shows how to write them.
+
+Which project leads should change by company type; [campus placement resume: one document, many companies](/blog/placement-resume-many-companies) shows how.
+
 ## Frequently Asked Questions
 
 ### How many projects do I need for placements?

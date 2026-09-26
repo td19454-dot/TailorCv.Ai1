@@ -149,6 +149,8 @@ More on placement in [how to add a portfolio link to your resume](https://thetai
 
 ---
 
+Side projects are especially useful for managers moving back to hands-on work - see [moving back from management to IC](/blog/management-back-to-ic).
+
 ## Frequently Asked Questions
 
 ### Should I include side projects if I have 10 years of experience?

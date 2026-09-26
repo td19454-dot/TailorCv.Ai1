@@ -171,6 +171,8 @@ If you are weighting off-campus heavily, the preparation shifts.
 
 ---
 
+For the campus side, [one placement resume for many companies](/blog/placement-resume-many-companies) covers tailoring inside a fixed college template.
+
 ## Frequently Asked Questions
 
 ### Is off-campus placement harder than campus placement?

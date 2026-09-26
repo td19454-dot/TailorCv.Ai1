@@ -183,6 +183,10 @@ Using the right tools can significantly enhance your portfolio tailoring process
 
 These resources can provide additional support in optimizing your portfolio to meet job requirements efficiently.
 
+Hybrid roles such as design engineer or growth engineer need both halves visible; [tailoring for a hybrid role](/blog/tailoring-for-hybrid-roles) covers the resume side.
+
+Agencies want range while in-house teams want depth - [agency vs in-house tailoring](/blog/agency-vs-in-house-tailoring) explains how that changes what you feature.
+
 ## Frequently Asked Questions
 
 ### Do I need a different portfolio for every job application?

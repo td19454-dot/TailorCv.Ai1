@@ -209,6 +209,8 @@ Consider a scenario where a candidate named Alex applies for a marketing manager
 
 By applying these practical strategies, you can significantly enhance your ATS score and increase your chances of landing interviews. For further guidance, check out [How to Increase Your ATS Score From 50 to 90](https://thetailorcv.com/blog/how-to-increase-ats-score) and [How to Check Your ATS Score for Free](https://thetailorcv.com/blog/how-to-check-ats-score-free).
 
+To fix a low score without over-editing, [turning a scan result into three concrete edits](/blog/scan-result-into-three-edits) gives a 20-minute routine.
+
 ## Frequently Asked Questions
 
 ### What is considered a low ATS score?

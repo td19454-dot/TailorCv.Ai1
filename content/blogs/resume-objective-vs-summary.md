@@ -187,6 +187,8 @@ For almost every candidate in 2026, the professional summary replaces the resume
 
 Use an objective only if you genuinely have nothing to summarize yet. In every other case, write a tight, tailored, accomplishment-forward 2-4 sentence summary. Read [how to write a resume summary](https://thetailorcv.com/blog/how-to-write-resume-summary), test the result with the [TailorCV ATS checker](https://www.thetailorcv.com/solutions), and start from an [ATS-friendly template](https://www.thetailorcv.com/templates).
 
+Dropping the objective is one of several changes at the two-year mark - see [two years in and applying for a mid-level role](/blog/two-years-in-going-mid-level).
+
 ## Frequently Asked Questions
 
 ### What is the main difference between a resume objective and a professional summary?  

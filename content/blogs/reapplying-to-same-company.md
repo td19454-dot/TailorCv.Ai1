@@ -156,6 +156,8 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+If you received feedback on the first attempt, [tailoring after feedback](/blog/tailoring-after-feedback) helps you decide which points your resume can fix.
+
 ## Frequently Asked Questions
 
 ### How long should I wait before reapplying?

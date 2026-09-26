@@ -83,6 +83,8 @@ If you are applying at real volume, manual version tracking eventually becomes t
 
 **Do not skip the pre-send check** because you are confident nothing changed — the failure mode is precisely that you do not notice.
 
+For deciding when a separate version is justified and what must stay identical across them, see [one resume, two job families](/blog/splitting-resume-versions).
+
 ## Frequently Asked Questions
 
 **Do I need special software to manage resume versions?**

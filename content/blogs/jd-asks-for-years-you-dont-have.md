@@ -74,6 +74,8 @@ If the form itself hard-filters below a threshold and you are meaningfully short
 
 If you are more than a few years short, and the posting's language consistently emphasises independent, high-stakes, unsupervised work, that combination is a reasonably strong signal that this specific role is not the best use of your application time right now. That is not a judgement on your trajectory — it is a reasonable read of fit at this specific moment, and your time is likely better spent on roles closer to your current level, where the odds are structurally better.
 
+Before deciding you are short on years, check what actually counts - [what counts as relevant experience](/blog/what-counts-as-relevant-experience) covers internships, freelance, projects and how to count them.
+
 ## Frequently Asked Questions
 
 **Should I apply if I'm one year short of a stated requirement?**

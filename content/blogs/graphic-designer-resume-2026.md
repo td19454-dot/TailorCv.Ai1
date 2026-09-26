@@ -209,6 +209,8 @@ A strong graphic designer resume in 2026 is clean, keyword-rich, and directly su
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to check keyword alignment. Then prepare for your portfolio walkthrough and creative brief discussions with the [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+Agency and in-house design teams read portfolios and resumes differently; [tailoring for an agency role vs an in-house role](/blog/agency-vs-in-house-tailoring) covers both directions.
+
 ## Frequently Asked Questions
 
 ### What are the key components of a graphic designer resume in 2026?  

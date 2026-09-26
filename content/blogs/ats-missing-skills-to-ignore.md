@@ -226,6 +226,8 @@ The rule: in-progress is fine when stated as in-progress. It becomes a problem o
 
 **Assuming a longer list means a worse match.** Long flagged lists usually mean a long posting, not a poor fit — and [job descriptions are often written aspirationally](/blog/read-a-jd-like-a-recruiter) by several contributors.
 
+After ignoring the noise, pick three edits that matter - [turning a scan result into three edits](/blog/scan-result-into-three-edits) covers which three.
+
 ## Frequently Asked Questions
 
 ### If a term is flagged, doesn't that mean the employer wants it?

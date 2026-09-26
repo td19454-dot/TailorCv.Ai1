@@ -277,6 +277,8 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
+Before building a second version, it is worth checking you actually need one - [one resume, two job families: when to split versions](/blog/splitting-resume-versions) gives a quick split test.
+
 ## FAQ
 ### How many resume versions is too many?
 

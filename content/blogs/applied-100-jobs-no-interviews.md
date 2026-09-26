@@ -108,6 +108,8 @@ But a generic application is not a lottery ticket — it is a near-certain rejec
 
 Our post on [applying to jobs with 100+ applicants](/blog/resume-for-jobs-with-100-applicants) covers what actually differentiates an application in a crowded posting, and [why your resume gets no responses](/blog/why-your-resume-gets-no-responses) covers the failure modes in more depth.
 
+The fix for untailored volume is not fewer applications but smarter ones - [tailoring at volume](/blog/tailoring-at-volume) lays out a weekly system for 20 tailored applications.
+
 ## Frequently Asked Questions
 
 **How many applications should produce an interview?**

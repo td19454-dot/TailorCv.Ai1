@@ -220,6 +220,8 @@ As virtual interviews become more common, adapting your STAR responses for a dig
 
 By adapting your STAR method responses to the virtual format, you can ensure that you leave a lasting impression, regardless of the interview setting.
 
+Interviewers probe team results for your specific role; [team vs individual credit on your resume](/blog/team-vs-individual-credit) helps you set those answers up on paper first.
+
 ## Frequently Asked Questions
 
 ### How long should a STAR answer be?

@@ -194,6 +194,8 @@ Resume length in 2026: one page for under 10 years of experience, one to two pag
 
 Once your length is right, run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions) to ensure your content matches the job. Use [ATS-friendly templates](https://www.thetailorcv.com/templates) and read the [resume optimization guide](https://thetailorcv.com/blog/resume-optimization-guide).
 
+Length is closely tied to how many years you show; [how far back your experience should go](/blog/how-far-back-experience-goes) gives the window by career stage and field.
+
 ## Frequently Asked Questions
 
 ### How do I determine the ideal resume length for my experience level?

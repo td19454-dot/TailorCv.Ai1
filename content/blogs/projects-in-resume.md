@@ -450,6 +450,8 @@ When detailing projects on your resume, the way you present them can significant
 | Built a mobile app.                              | Designed and launched a mobile app for tracking personal fitness goals, achieving over 500 downloads in the first month and receiving positive user feedback for its intuitive interface. |
 | Worked on a group project for class.             | Collaborated with a team of 5 on a semester-long project to develop a marketing strategy for a startup, resulting in a detailed report that was presented to the company's founders. |
 
+Whether a project counts as experience depends on its scope - [what counts as relevant experience](/blog/what-counts-as-relevant-experience) explains how employers judge it.
+
 ## FAQs
 
 ### 1. Can freshers add academic projects to resumes?

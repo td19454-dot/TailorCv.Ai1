@@ -161,6 +161,8 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+Out-of-order dates are one of the easiest red flags to avoid - [reordering your work history](/blog/reordering-work-history) explains how to lead with an older role without breaking the timeline.
+
 ## Frequently Asked Questions
 
 ### What is the biggest resume red flag?

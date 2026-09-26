@@ -291,6 +291,8 @@ Use this advice as interview practice, not just reading material. Start a role-s
 
 Before the interview, make sure the resume that earned the call is still aligned with the role. Check it with the [free ATS score checker](https://www.thetailorcv.com/solutions), review [Common Interview Mistakes to Avoid](https://thetailorcv.com/blog/common-interview-mistakes-to-avoid), and use [How to Follow Up After an Interview](https://thetailorcv.com/blog/how-to-follow-up-after-interview) once the conversation is over.
 
+For a detailed look at setting the right window for your level and role, read [how far back your experience should go](/blog/how-far-back-experience-goes).
+
 ## FAQ
 ### Should I include my graduation year?
 

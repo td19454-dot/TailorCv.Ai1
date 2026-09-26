@@ -1693,9 +1693,11 @@ const tcxBeforeAfterBlocks = () => {
     const parts = text.split(DASH);
     if (parts.length < 4) return;
     if (!/:\s*$/.test(parts[0].trim())) return;
-    // Only when the whole paragraph is plain text or links - rebuilding it
-    // would otherwise drop nested markup.
-    if (Array.from(p.children).some((n) => !/^(A|EM|STRONG|B|CODE)$/.test(n.tagName))) return;
+    // Only when the whole paragraph is plain text - the rebuild below uses
+    // textContent, so any nested markup is lost. Links especially: allowing
+    // <a> here silently deleted internal links from posts that write prose
+    // with spaced dashes ("Lead-in: - item - item - item").
+    if (p.children.length) return;
 
     const wrap = document.createElement("div");
     wrap.className = "dash-list-wrap";

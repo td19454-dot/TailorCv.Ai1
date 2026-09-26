@@ -178,6 +178,8 @@ The entire audit takes 20-30 minutes for a standard resume.
 
 ---
 
+Generic phrasing often comes from a resume someone else wrote; [tailoring a resume you didn't write](/blog/tailoring-a-resume-you-didnt-write) shows how to make it yours.
+
 ## Frequently Asked Questions
 
 ### What if my work doesn't have metrics?

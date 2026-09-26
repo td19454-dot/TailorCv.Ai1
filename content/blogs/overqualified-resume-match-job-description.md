@@ -193,6 +193,8 @@ Use this guide as part of a complete job-search workflow. Check your resume with
 
 After the resume is ready, strengthen the rest of the application. Draft a targeted letter with the [AI cover letter generator](https://www.thetailorcv.com/cover-letter), practice interviews with the [AI mock interview tool](https://www.thetailorcv.com/mock-interview), and create a project-backed proof page with the [portfolio website builder](https://www.thetailorcv.com/portfolio) if you need a stronger online presence.
 
+The related problem of having plenty of relevant material is covered in [what to tailor when everything is already relevant](/blog/when-everything-is-relevant).
+
 ## FAQ
 ### Will employers always reject overqualified candidates?
 

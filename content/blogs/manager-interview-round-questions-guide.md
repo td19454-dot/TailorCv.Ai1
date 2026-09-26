@@ -279,6 +279,8 @@ After your interview, a thoughtful follow-up can reinforce your interest and pro
 
 5. **Reflect on Your Performance**: Take notes on what went well and areas for improvement to prepare for future interviews.
 
+If you have never held the title, [moving from senior IC to your first management role](/blog/first-management-role-resume) shows how to surface the leadership evidence you already have.
+
 ## Frequently Asked Questions
 
 ### How long is a manager round interview?

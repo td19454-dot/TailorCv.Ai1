@@ -182,6 +182,8 @@ Use this quick checklist to ensure your resume is ready for submission through a
 
 By following these steps and avoiding common mistakes, you can significantly improve your chances of landing a job through a recruiter. Tailoring your resume is not just a task; it’s an opportunity to showcase your best self in the competitive job market.
 
+If a recruiter or company approached you first, [tailoring when you're being poached](/blog/tailoring-when-approached) shows how to use that access to tailor better.
+
 ## Frequently Asked Questions
 
 ### Does a recruiter submission skip the employer's ATS?

@@ -159,6 +159,10 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+When you do want a number but never saw the data, [estimating impact honestly](/blog/estimating-impact-honestly) walks through five methods for building a figure you can defend.
+
+If your numbers are confidential rather than missing, [tailoring when most of your work is confidential](/blog/confidential-work-on-resume) shows how to anonymise clients and figures.
+
 ## Frequently Asked Questions
 
 ### How do I quantify achievements without metrics?

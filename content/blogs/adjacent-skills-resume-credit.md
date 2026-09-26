@@ -209,6 +209,8 @@ The full approach is in [bridging two fields](/blog/resume-matching-for-career-c
 
 **Assuming the title disqualifies you.** Most people underestimate their coverage because they compare titles instead of capabilities, which is exactly what [scanning against the posting](/blog/how-to-read-your-ats-report) corrects.
 
+If the role combines two disciplines, [tailoring for a hybrid role](/blog/tailoring-for-hybrid-roles) shows how to read which side it leans toward and lead with the right one.
+
 ## Frequently Asked Questions
 
 ### Is this the same as exaggerating?

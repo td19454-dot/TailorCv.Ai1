@@ -175,6 +175,8 @@ Sincerely,
 
 By following these steps and using the provided templates and examples, you can craft a compelling cover letter that effectively communicates your career transition and showcases your qualifications. With the right approach, your cover letter can become a powerful tool in your job search, opening doors to new opportunities in your desired field.
 
+Moving from manager back to individual contributor needs a similar explanation; [moving back from management to IC](/blog/management-back-to-ic) covers the resume and letter together.
+
 ## Frequently Asked Questions
 
 ### Should I mention my career change in the cover letter or hide it?

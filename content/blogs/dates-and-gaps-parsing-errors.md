@@ -86,6 +86,8 @@ Month-year precision (`Mar 2022 - Feb 2024`) is generally preferable to year-onl
 
 The exception is very old roles, more than ten years back, where year-only is a widely accepted convention and month-level precision adds little value to either a parser or a human reader.
 
+Gaps are often self-inflicted when people delete an unrelated job; [cutting irrelevant experience without creating a gap](/blog/cutting-experience-without-gaps) shows how to condense or group roles instead.
+
 ## Frequently Asked Questions
 
 **Does an employment gap actually hurt my ATS score?**

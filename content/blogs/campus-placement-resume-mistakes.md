@@ -185,6 +185,8 @@ Small, cheap to fix, and cumulatively damaging.
 
 ---
 
+Since one resume goes to many companies during placements, [campus placement resume: one document, many companies](/blog/placement-resume-many-companies) shows how to build versions by company type.
+
 ## Frequently Asked Questions
 
 ### Should I include a photo on my placement resume?

@@ -139,6 +139,7 @@ Numbers do their best work when they are also relevant to the specific job. A me
 
 Font size, spacing, accent colour and template are all adjustable, with a live page counter.
 
+If you were never given exact figures, [estimating impact honestly](/blog/estimating-impact-honestly) shows how to build defensible estimates from what you observed.
 
 ## Frequently Asked Questions
 

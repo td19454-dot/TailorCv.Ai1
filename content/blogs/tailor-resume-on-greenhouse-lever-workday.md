@@ -109,6 +109,8 @@ The safe rules are boring and they work: a single column, standard section headi
 
 If you are unsure whether your current resume clears these bars, the fastest way to find out is to run it through a [free ATS score](/blog/how-to-check-ats-score-free) and read the structural flags before you send it into a strict system like Workday. Fix the base once, and every tailored copy inherits a clean foundation — the same principle as [tailoring in five minutes](/blog/how-to-tailor-resume-in-5-minutes) starting from a solid base.
 
+The listing on these portals is usually the version to match when the same job appears elsewhere; see [the same job posted twice with different wording](/blog/same-job-different-wording).
+
 ## Frequently Asked Questions
 
 **Do Greenhouse and Workday use an ATS?**

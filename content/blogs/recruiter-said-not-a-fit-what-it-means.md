@@ -78,6 +78,8 @@ Treating every "not a fit" as a verdict on your worth is a worse use of the info
 
 **In all cases:** do not over-interpret one instance. Look for the pattern across several rejections before concluding anything.
 
+When feedback does come with specifics, [tailoring after the hiring manager gave feedback](/blog/tailoring-after-feedback) shows how to decode it into resume changes.
+
 ## Frequently Asked Questions
 
 **Is "not a fit" ever about something I said wrong?**

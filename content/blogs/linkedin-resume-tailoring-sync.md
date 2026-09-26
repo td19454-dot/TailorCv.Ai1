@@ -268,6 +268,8 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
+LinkedIn is public, so confidential work needs extra care there - see [tailoring when most of your work is confidential](/blog/confidential-work-on-resume).
+
 ## FAQ
 ### Should I mention I am open to work on LinkedIn while applying for specific roles?
 

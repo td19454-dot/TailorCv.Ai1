@@ -209,6 +209,8 @@ Great [resume bullet points](https://thetailorcv.com/blog/how-to-write-resume-bu
 
 Use the [TailorCV ATS checker](https://www.thetailorcv.com/solutions) to verify your bullets contain the right keywords for each job, build on an [ATS-friendly template](https://www.thetailorcv.com/templates), and practice explaining your achievements in [mock interview prep](https://thetailorcv.com/interview-prep) before your call.
 
+Most achievements are shared, so it helps to know how to show your part - [tailoring when your work was a team effort](/blog/team-vs-individual-credit) covers the wording.
+
 ## Frequently Asked Questions
 
 ### Why should I focus on bullet points in my resume?

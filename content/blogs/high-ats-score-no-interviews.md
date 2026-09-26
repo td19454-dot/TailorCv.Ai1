@@ -207,6 +207,10 @@ Her score moved from 84% to 81% — slightly down, because the bullets are longe
 
 That trade is the whole point. The score was never the binding constraint.
 
+If a recruiter has told you what was missing, [tailoring after the hiring manager gave feedback](/blog/tailoring-after-feedback) covers turning that into edits.
+
+A high match gets you considered alongside other strong fits; [what to tailor when everything is relevant](/blog/when-everything-is-relevant) shows how to separate yourself.
+
 ## Frequently Asked Questions
 
 ### Should I keep optimising keywords if my score is already high?

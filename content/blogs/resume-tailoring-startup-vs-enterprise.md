@@ -268,6 +268,8 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
+A similar shift happens between consulting and industry roles - see [tailoring for a consulting firm vs an industry role](/blog/consulting-vs-industry-tailoring).
+
 ## FAQ
 ### Should I have two entirely different resumes for startups and enterprises?
 

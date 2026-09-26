@@ -218,6 +218,8 @@ Some postings are open because policy requires it while an internal candidate is
 
 **Acting on the score instead of the list.** The number varies by tool; the missing terms mostly do not.
 
+Once the report is sorted, [turning a scan result into three concrete edits](/blog/scan-result-into-three-edits) shows exactly which changes to make first.
+
 ## Frequently Asked Questions
 
 ### Should I try to clear the entire missing-keywords list?

@@ -96,6 +96,8 @@ Once your score is in a reasonable range, additional keyword work has close to z
 
 A practical split: get the score to a workable level with one tailoring pass, then spend the remaining time on the top five bullets. That allocation produces better results than another hour of keyword optimisation ever will.
 
+Adding numbers is the fastest way to strengthen these bullets; [estimating impact honestly](/blog/estimating-impact-honestly) covers how when you do not have exact data.
+
 ## Frequently Asked Questions
 
 **Will rewriting bullets lower my score?**

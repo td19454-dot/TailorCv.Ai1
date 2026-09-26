@@ -231,6 +231,8 @@ Effective salary negotiation is an essential skill that can significantly impact
 
 Utilize tools and resources from TailorCV, such as the [mock interview](https://www.thetailorcv.com/mock-interview) tool and the [ATS checker](https://www.thetailorcv.com/solutions), to ensure you are well-prepared for your next steps in the job market.
 
+Your resume shapes the offer too, especially when you were approached; [tailoring when you're being poached](/blog/tailoring-when-approached) covers writing it with levelling in mind.
+
 ## Frequently Asked Questions
 
 ### Should freshers negotiate salary?

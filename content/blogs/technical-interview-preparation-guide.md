@@ -197,6 +197,8 @@ Before the interview, make sure the resume that earned the call is still aligned
 
 Start with a resume that gets you interviews - use the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then work through the [coding interview guide](https://thetailorcv.com/blog/coding-interview-preparation-guide), [system design guide](https://thetailorcv.com/blog/system-design-interview-guide), and behavioral interview guide. Practice delivery with the mock interview tool.
 
+Former managers returning to hands-on roles face extra scrutiny here; [moving back from management to IC](/blog/management-back-to-ic) covers how to prove your skills are current.
+
 ## Frequently Asked Questions
 
 

@@ -87,6 +87,8 @@ Sorted:
 
 Out of a sentence-heavy posting, the actual actionable content is short: years of experience, two named tools, one specific responsibility. That is what deserves your tailoring time.
 
+Oddly specific requirements often come from the last person in the role; [decoding an insider JD](/blog/jd-written-for-an-insider) covers which ones to ignore.
+
 ## Frequently Asked Questions
 
 **Should I ignore soft-skill language entirely?**

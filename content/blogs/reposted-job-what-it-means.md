@@ -64,6 +64,8 @@ If you do want a genuine diagnostic on your application quality, that is better 
 
 In the absence of other information: if the posting changed meaningfully or a long gap has passed, submit a fresh, updated application. If it is a short-gap repost with no visible changes, assume your original application is still active and move your attention to other opportunities rather than resubmitting or waiting anxiously on this one.
 
+When the same role appears in several places with different wording, [which version to tailor to](/blog/same-job-different-wording) explains how to pick the source of truth.
+
 ## Frequently Asked Questions
 
 **Does a repost mean I definitely was not selected?**

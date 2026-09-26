@@ -196,6 +196,8 @@ Three cases justify more:
 
 Everything else gets ten minutes.
 
+Applying to many roles at once? [Tailoring at volume](/blog/tailoring-at-volume) shows how to cluster postings so this ten-minute routine scales to 20 applications.
+
 ## Frequently Asked Questions
 
 ### Is ten-minute tailoring actually enough?

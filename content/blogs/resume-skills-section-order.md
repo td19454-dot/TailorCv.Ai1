@@ -92,6 +92,8 @@ This is a separate placement question from internal ordering, and it depends on 
 
 Either placement is fine; what matters more is that once placed, the internal order reflects the specific posting.
 
+For roles that mix two disciplines, splitting skills into two labelled groups often works best - see [tailoring for a hybrid role](/blog/tailoring-for-hybrid-roles).
+
 ## Frequently Asked Questions
 
 **Does skill order actually affect my ATS score?**

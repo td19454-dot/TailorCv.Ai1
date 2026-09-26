@@ -199,6 +199,8 @@ The third row is the most commonly missed. A resume optimised for one role type 
 
 **Using the score to decide whether to apply.** It measures wording overlap, not your candidacy. Plenty of people are hired from applications that scored in the sixties, and plenty of ninety-percent resumes are never called because the bullets underneath said nothing.
 
+The same stopping logic applies beyond the score - [how much tailoring is too much](/blog/how-much-tailoring-is-too-much) covers when extra edits make the resume read worse to a human.
+
 ## Frequently Asked Questions
 
 ### Is 70% good enough to apply?

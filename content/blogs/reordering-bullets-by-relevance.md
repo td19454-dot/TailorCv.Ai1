@@ -192,6 +192,8 @@ This is also why the rule specifies relevance for slot one and strength for slot
 
 The failure mode to avoid is the reverse: leading with the impressive-but-irrelevant bullet across every application because it is the one you are proudest of. That bullet has earned its place on the resume. It has not earned slot one for every posting.
 
+If reordering bullets is not enough because your most relevant job sits further down the page, [reordering your work history](/blog/reordering-work-history) shows the safe layouts that keep dates in order.
+
 ## Frequently Asked Questions
 
 ### Should I reorder for every application?

@@ -189,6 +189,10 @@ A strong consultant resume in 2026 shows analytical rigor, measurable client imp
 
 Run your resume through the [TailorCV ATS score checker](https://www.thetailorcv.com/solutions). Then prepare for case and behavioral interviews with the [behavioral interview guide](https://thetailorcv.com/blog/behavioral-interview-questions-and-answers) and [interview preparation guide](https://thetailorcv.com/blog/how-to-prepare-for-a-job-interview-in-2026-complete-guide-for-every-industry).
 
+If you are moving between consulting and industry in either direction, [tailoring for a consulting firm vs an industry role](/blog/consulting-vs-industry-tailoring) shows how the two readers differ.
+
+Client confidentiality is the usual constraint on consulting resumes; [confidential work on your resume](/blog/confidential-work-on-resume) covers how to describe engagements precisely without naming clients.
+
 ## Frequently Asked Questions
 
 ### What are the key components of a consultant resume in 2026?  

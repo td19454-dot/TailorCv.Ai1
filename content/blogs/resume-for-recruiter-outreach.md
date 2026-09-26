@@ -156,6 +156,8 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+When the recruiter reaches out to you instead, the approach changes - [tailoring when you're being poached](/blog/tailoring-when-approached) covers what to ask before sending anything.
+
 ## Frequently Asked Questions
 
 ### Should I reply to a recruiter I am not interested in?

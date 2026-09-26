@@ -342,6 +342,8 @@ When switching industries, how you present your experience can make a significan
 | Keywords                 | "Teaching, Classroom Management"             | "Customer Success, Stakeholder Engagement, Agile Methodologies" |
 | Accomplishments          | "Managed classroom activities."               | "Led a team to enhance curriculum delivery, resulting in a 15% improvement in student satisfaction scores." |
 
+If you are keeping the same role and only changing industry, the job is smaller - [tailoring when the company is in another industry](/blog/tailoring-across-industries) covers translating vocabulary and metrics.
+
 ## Frequently Asked Questions
 
 ### What are transferable skills, and how do I identify them for my career change resume?  

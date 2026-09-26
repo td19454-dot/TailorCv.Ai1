@@ -219,6 +219,8 @@ Cover the underlying capability in standard language instead.
 
 **Forgetting the skills section normalises differently.** A term in a comma-separated list is matched but unevidenced, so exact matching there is the weakest version of this work.
 
+Industry switches are where vocabulary mismatches hurt most; [tailoring across industries](/blog/tailoring-across-industries) includes a translation table method.
+
 ## Frequently Asked Questions
 
 ### Do modern systems really understand synonyms?

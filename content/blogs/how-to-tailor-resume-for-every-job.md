@@ -392,6 +392,8 @@ Do not guess whether the resume is ready. Upload it to the [free ATS score check
 
 After the technical cleanup, improve relevance. Use [Resume Matching With Job Description](https://thetailorcv.com/blog/resume-matching-with-job-description-complete-guide), strengthen keyword coverage with the [Resume Keywords Guide](https://thetailorcv.com/blog/resume-keywords-guide), and avoid overdoing it by checking [ATS Keyword Mistakes](https://thetailorcv.com/blog/ats-keyword-mistakes). If the layout itself is weak, rebuild with an ATS-friendly resume template.
 
+When you have many postings open, [tailoring at volume: 20 applications without 20 rewrites](/blog/tailoring-at-volume) shows how to cluster and tier them.
+
 ## FAQ
 ### How long does it take to tailor a resume?
 

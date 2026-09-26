@@ -239,6 +239,8 @@ Use "Present". It is the term parsers are built to recognise, and a specific fut
 
 **Fixing the dates and stopping there.** Detached dates usually share a cause with other structural problems - the same table or frame that broke the date often [drops a whole role](/blog/parsing-errors-delete-a-job). Check the full paste while you are in there, and run [the 12-point check](/blog/does-my-resume-pass-ats) if anything else looks off.
 
+Moving an older job to the top is a common cause of misread dates; [reordering your work history](/blog/reordering-work-history) covers split-section layouts that parsers read correctly.
+
 ## Frequently Asked Questions
 
 ### Will only-years cost me?

@@ -90,6 +90,8 @@ If AI writes your resume from a thin prompt, it will produce a resume for a *gen
 
 A resume is not filtered for being AI-written. It is filtered for not matching the posting. Those are completely different problems, and only the second one is actually happening to you.
 
+If your resume came from a tool, a writer or a template, [tailoring a resume you didn't write](/blog/tailoring-a-resume-you-didnt-write) gives a three-pass audit to run first.
+
 ## Frequently Asked Questions
 
 **Will an ATS reject my resume for being AI-generated?**

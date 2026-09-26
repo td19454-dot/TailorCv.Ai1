@@ -174,6 +174,8 @@ The timing sits within the wider plan in [the campus placement preparation timel
 
 ---
 
+For how internships and other non-standard work count toward experience requirements, see [what counts as relevant experience](/blog/what-counts-as-relevant-experience).
+
 ## Frequently Asked Questions
 
 ### What is a PPO?

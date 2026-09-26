@@ -261,6 +261,8 @@ Preparing for a case interview requires a blend of strategic thinking, effective
 
 For additional resources on interview preparation, check out our guides on [remote job interview preparation](https://thetailorcv.com/blog/remote-job-interview-preparation-2026) and [group interview tips](https://thetailorcv.com/blog/group-interview-tips-strategies). Good luck with your case interviews!
 
+Getting to the case round starts with the resume; [consulting vs industry tailoring](/blog/consulting-vs-industry-tailoring) covers what consulting screeners look for.
+
 ## Frequently Asked Questions
 
 ### Do tech companies use case interviews?

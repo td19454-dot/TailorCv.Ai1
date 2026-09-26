@@ -158,6 +158,10 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+If you are moving up by changing companies instead, [two years in and applying for a mid-level role](/blog/two-years-in-going-mid-level) shows how to show ownership on paper.
+
+For a first move into management, [senior IC to first management role](/blog/first-management-role-resume) covers rebalancing your resume toward leadership.
+
 ## Frequently Asked Questions
 
 ### How do I build a case for promotion?

@@ -157,6 +157,10 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+If the two roles turn out to be different job families rather than similar roles, you need separate bases; [when to split resume versions](/blog/splitting-resume-versions) covers how to build them.
+
+When your whole background already fits, the challenge is choosing - [what to tailor when everything is already relevant](/blog/when-everything-is-relevant) covers how to stand out among qualified candidates.
+
 ## Frequently Asked Questions
 
 ### Can I use one resume for two similar roles?

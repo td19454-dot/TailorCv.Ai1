@@ -100,6 +100,8 @@ Reordering bullets - yes. Renaming client management as stakeholder management -
 
 That single question covers almost every judgment call in tailoring.
 
+Once these edits are done, the next question is when to stop - [how much tailoring is too much](/blog/how-much-tailoring-is-too-much) sets out the signs that more editing is starting to hurt.
+
 ## Frequently Asked Questions
 
 **How long should tailoring take per application?**

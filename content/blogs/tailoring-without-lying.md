@@ -108,6 +108,8 @@ A fabricated skill sits in a list with no supporting evidence, which readers dis
 
 Most people underclaim their genuine work far more than they would gain from inventing. Fixing that is both safer and more effective.
 
+Over-tailoring is usually where honesty starts to slip, so it helps to know your stopping point; [how much tailoring is too much](/blog/how-much-tailoring-is-too-much) gives a practical checklist.
+
 ## Frequently Asked Questions
 
 **Is it lying to leave a job off my resume?**

@@ -80,6 +80,8 @@ Eighteen items reduce to four that matter: **dbt, SQL, Snowflake, and one BI too
 
 **If the posting is entirely vague,** there is little to tailor to. Apply lightly and spend your effort on clearer postings — vagueness often signals an unclear internal brief, which tends to produce a difficult process.
 
+Some postings are full of internal tool names and team jargon; [a JD written for the person already doing the job](/blog/jd-written-for-an-insider) shows how to decode them.
+
 ## Frequently Asked Questions
 
 **Should I still apply if I miss several listed requirements?**

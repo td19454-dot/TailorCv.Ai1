@@ -163,6 +163,8 @@ Keep building on this with the related guides in this series:
 
 You can also [check your resume's ATS score for free](/ats-analysis), [generate a tailored cover letter](/cover-letter), or [build a portfolio website](/portfolio) in minutes.
 
+When you need to cut to fit a page, [cutting irrelevant experience without creating a gap](/blog/cutting-experience-without-gaps) covers which jobs to condense, group or remove safely.
+
 ## Frequently Asked Questions
 
 ### Should my resume be one page or two?

@@ -92,6 +92,8 @@ If a posting genuinely tells you almost nothing beyond title and company, the re
 
 If you have inferred a likely emphasis from a vague posting — say, breadth over specialisation — you can still [scan your resume against the posting text as written](/ats-analysis) to see what little structure the parser does find. Even a vague posting usually contains a handful of specific nouns (a tool, an industry term, a team name) that are worth confirming your resume addresses.
 
+The opposite problem - a posting with too much insider detail - is covered in [a JD written for the person already doing the job](/blog/jd-written-for-an-insider).
+
 ## Frequently Asked Questions
 
 **Should I apply to a posting this vague?**
