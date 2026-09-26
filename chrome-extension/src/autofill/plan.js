@@ -37,6 +37,8 @@ import {
   eeoShapes,
   eeoOptionAllowed,
   READ_FIRST_KEYS,
+  looksLikeOpaqueId,
+  stripRegionSuffix,
   isMotivationQuestion,
   isConditionalFollowUp,
 } from './match.js';
@@ -97,6 +99,15 @@ export function decide(rows, ctx, server, state) {
       return done(d, SKIP, '', '', 0, 'could not read this field');
     }
 
+    // We could not read the question — only its internal id. Never sent to the
+    // model (it would be guessing) and never filled: the person answers it.
+    if (looksLikeOpaqueId(row.label)) {
+      d.noServer = true;
+      return row.required
+        ? done(d, ASK, '', '', 0, "we couldn't read this question — please answer it")
+        : done(d, SKIP, '', '', 0, "we couldn't read this question");
+    }
+
     // Tier 0 — never touched.
     if (isNeverFill(row.label)) {
       return done(d, SKIP, '', '', 0, 'we never fill this kind of field');
@@ -136,7 +147,10 @@ export function decide(rows, ctx, server, state) {
         // worded too differently per employer to hold one stored answer, so the
         // person answers them here, on this form.
         // A specific profile field (nationality) counts as a place for it too.
-        const onProfile = PROFILE_CATEGORIES.has(category) || !!(entry && entry.sensitive);
+        // A demographic question the profile has no field for ("Are you a
+        // military spouse?") is the person's to answer here, not a profile task.
+        const onProfile = (PROFILE_CATEGORIES.has(category) && (category !== 'demographic' || !!entry))
+                          || !!(entry && entry.sensitive);
         return onProfile
           ? done(d, PROFILE, '', '', 0, profileHint(category, entry))
           : done(d, ASK, '', '', 0, 'we never guess this — choose your answer');
@@ -190,6 +204,18 @@ export function decide(rows, ctx, server, state) {
       return row.required
         ? done(d, ASK, '', '', 0, 'needs an answer written for this job')
         : done(d, SKIP, '', '', 0, 'optional — no answer written yet');
+    }
+
+    // "By selecting the checkbox, you agree to our Terms and Conditions and
+    // Privacy Policy": with the profile's standing permission on, it is ticked
+    // straight from that, the same on every form, no model involved. With it
+    // off (the default) the box goes through the usual consent handling below.
+    if (row.kind === 'checkbox' && looksLikeTermsAgreement(row.label)
+        && bank.accepts_employer_terms_and_privacy_policy === 'Yes') {
+      const value = coerce('yes', row);
+      if (value !== null) {
+        return done(d, FILL, value, 'profile', 0.95, "you allowed agreeing to employers' terms");
+      }
     }
 
     // Tier 1 — deterministic profile match.
@@ -302,6 +328,18 @@ const CONSENT_RE = new RegExp([
 
 export function looksLikeConsent(label) {
   return CONSENT_RE.test(String(label == null ? '' : label));
+}
+
+// The narrower set the profile's "Agree to employers' terms / privacy policies"
+// permission speaks for: agreeing to terms, a privacy policy, or acknowledging
+// / certifying the application. NOT marketing or talent-pool opt-ins — the
+// person never said yes to being contacted, only to the employer's terms.
+const TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
+const OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
+
+export function looksLikeTermsAgreement(label) {
+  const t = String(label == null ? '' : label);
+  return TERMS_RE.test(t) && !OPT_IN_RE.test(t);
 }
 
 function base(row) {
@@ -419,14 +457,16 @@ const ETHNICITY_GROUPS = [
              'Native Hawaiian'] },
   { test: /\b(south asian|east asian|southeast asian|asian|desi|chinese|japanese|korean|filipino|vietnamese|asian indian|indian subcontinent)\b/i,
     shapes: ['Asian', 'Asian or Pacific Islander', 'Asian (Not Hispanic or Latino)'] },
+  // Before the Black row: "North African" contains "African", and checked
+  // after it, "Middle Eastern or North African" was recorded as Black.
+  { test: /\b(middle eastern|north african|arab|mena)\b/i,
+    shapes: ['Middle Eastern or North African', 'Middle Eastern / North African',
+             'Middle Eastern', 'MENA'] },
   { test: /\b(black|african american|afro|african)\b/i,
     shapes: ['Black or African American', 'Black or African', 'Black',
              'African American', 'Black (Not Hispanic or Latino)'] },
   { test: /\b(hispanic|latino|latina|latinx|latin american)\b/i,
     shapes: ['Hispanic or Latino', 'Hispanic / Latino', 'Hispanic', 'Latino'] },
-  { test: /\b(middle eastern|north african|arab|mena)\b/i,
-    shapes: ['Middle Eastern or North African', 'Middle Eastern / North African',
-             'Middle Eastern', 'MENA'] },
   { test: /\b(white|caucasian|european)\b/i,
     shapes: ['White', 'White / European', 'Caucasian',
              'White (Not Hispanic or Latino)'] },
@@ -444,7 +484,10 @@ function eeoGuardFor(key, stored) {
 
 /** The index of the group `text` belongs to, or -1. */
 function ethnicityGroup(text) {
-  return ETHNICITY_GROUPS.findIndex(g => g.test.test(String(text || '')));
+  // "(Not Hispanic or Latino)" names a group the answer is NOT in — read with
+  // it, "White (Not Hispanic or Latino)" would be filed under Hispanic.
+  const t = String(text || '').replace(/\(\s*not hispanic or latino\s*\)/ig, ' ');
+  return ETHNICITY_GROUPS.findIndex(g => g.test.test(t));
 }
 
 /** Broader phrasings of the ethnicity `text` names, or []. */
@@ -470,7 +513,12 @@ function ethnicityGuardFor(stored) {
     // Either the form words it exactly as one of the curated phrasings (which
     // are equal-or-broader by construction), or it is a plain widening of what
     // the person themselves wrote.
-    return sameText(candidate, option) || widensOrEquals(stored, option);
+    // Workday qualifies every non-Hispanic group: "Black or African American
+    // (Not Hispanic or Latino)". The curated phrasings already accept that
+    // qualifier for some groups; compare without it so every group does.
+    const plain = String(option).replace(/\s*\(\s*not hispanic or latino\s*\)\s*/i, ' ').trim();
+    return sameText(candidate, option) || sameText(candidate, plain)
+        || widensOrEquals(stored, option) || widensOrEquals(stored, plain);
   };
 }
 
@@ -702,8 +750,11 @@ export function coerce(value, row) {
                 : EEO_GROUPS[row.candidateKey]
                   ? eeoGuardFor(row.candidateKey, candidates[0])
                 : null;
-    const match = bestCandidateMatch(candidates, options, guard);
-    if (match != null) return match;
+    // Self-identification lists are compared without Workday's trailing
+    // "(United States of America)"; the option returned is the real one.
+    const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
+    const match = bestCandidateMatch(candidates, bare, guard);
+    if (match != null) return options[bare.indexOf(match)];
     return declineFallback(text, options);
   }
 

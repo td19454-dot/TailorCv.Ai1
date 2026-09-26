@@ -2175,9 +2175,12 @@
   /** The "form detected" view, for an apply page with no job description. */
   function renderApplyReady(extra) {
     currentView = 'apply';
-    if (!hasForm()) { renderManual(); return; }
+    if (!lastStep) lastStep = stepMarker();
     const page = (extra && extra.page) || 0;
-    AF.ui.renderReady(body, applyForm || refreshApplyMode(), applyCtx, {
+    // A later step of an application we are already filling may have nothing to
+    // fill yet; it still gets this view (and its button), not the paste-a-JD box.
+    if (!hasForm() && !page) { renderManual(); return; }
+    AF.ui.renderReady(body, applyForm || refreshApplyMode() || { fields: [], ats: 'generic' }, applyCtx, {
       onFill: () => runAutofill(),
       onTailor: () => renderManual(),
       onOpenProfile: () => window.open(PROFILE_URL, '_blank'),
@@ -2251,12 +2254,25 @@
   }
 
   /** Attribute-only fingerprint of the fillable controls. No layout reads. */
+  // The step a Workday application is on, by its heading ("My Information",
+  // "My Experience"). Workday swaps steps without changing the URL, and a step
+  // can hold no fields at all until "Add" is pressed — so the field list alone
+  // cannot tell the watcher it moved on. '' where there is no such heading.
+  function stepMarker() {
+    let h = null;
+    try {
+      h = document.querySelector('[data-automation-id="applyFlowPage"] h2, [data-automation-id*="applyFlow" i] h2');
+    } catch (e) { h = null; }
+    return h ? (h.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80) : '';
+  }
+  let lastStep = '';
+
   function fillableFingerprint() {
     const sel = window.__tcvFieldProbe && window.__tcvFieldProbe.FILLABLE_SEL;
     if (!sel) return '';
     let nodes;
     try { nodes = document.querySelectorAll(sel); } catch (e) { return ''; }
-    let out = String(nodes.length);
+    let out = stepMarker() + '#' + String(nodes.length);
     for (let i = 0; i < nodes.length && i < 80; i++) {
       const n = nodes[i];
       if (n.closest && n.closest('#tailorcv-sidebar')) continue;
@@ -2285,6 +2301,21 @@
     if (fp === cheapSignature) return;
     cheapSignature = fp;
 
+    // A new Workday step after a fill: show it, form or not. Before this, a
+    // step with nothing to fill yet ("My Experience": only Add buttons) left
+    // the sidebar on the previous page's results with no way forward.
+    const step = stepMarker();
+    const prevStep = lastStep;
+    lastStep = step;
+    if (step && prevStep && step !== prevStep
+        && (currentView === 'results' || currentView === 'apply')) {
+      refreshApplyMode();
+      const keysNow = applyForm ? fieldKeysOf(applyForm) : [];
+      formSignature = keysNow.slice().sort().join('|');
+      onNextStep();
+      return;
+    }
+
     const had = !!applyForm;
     refreshApplyMode();
     const keys = applyForm ? fieldKeysOf(applyForm) : [];
@@ -2293,10 +2324,17 @@
     formSignature = sig;
     if (!applyForm || !changed) return;
 
-    if (!had) { onFormAppeared(); return; }
+    // Workday passes through a moment with no form between steps (the old one
+    // is torn down before the next renders), so the next step arrives as a form
+    // "appearing" — and onFormAppeared() leaves the results view alone. Checked
+    // first: after a fill, a mostly-new set of fields is the next step, however
+    // it arrived. Before this, the sidebar kept page 1's results and only a tab
+    // switch redrew it.
     if (currentView === 'results' && lastFillKeys && isNewStep(lastFillKeys, keys)) {
       onNextStep();
+      return;
     }
+    if (!had) onFormAppeared();
   }
 
   /**
@@ -2450,6 +2488,10 @@
       formSignature = lastFillKeys.slice().sort().join('|');
       cheapSignature = fillableFingerprint();
     }
+    // The step just filled. Recorded here, not only by the watcher: a form that
+    // arrived by another path never passed through it, and without a previous
+    // step the move to the next one went unnoticed.
+    lastStep = stepMarker();
     renderApplyResults(result);
   }
 

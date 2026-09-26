@@ -27,6 +27,26 @@ export function normalizeOptionText(text) {
 
 export const OPTION_MATCH_THRESHOLD = 0.55;
 
+/**
+ * An option with its trailing region qualifier removed, for comparison only.
+ *
+ * Workday appends the country to every self-identification option: "Asian (Not
+ * Hispanic or Latino) (United States of America)". Compared as written, that
+ * suffix made the option match neither the curated phrasing "Asian (Not
+ * Hispanic or Latino)" nor the person's own "South Asian", so a stored answer
+ * never filled. Only qualifiers that say nothing about the answer go: "(Not
+ * Hispanic or Latino)", "(non-Hispanic)", "(alone)" carry meaning and stay.
+ */
+export function stripRegionSuffix(label) {
+  let s = String(label == null ? '' : label).trim();
+  for (let i = 0; i < 3; i++) {
+    const m = s.match(/^(.*\S)\s*\(([^()]*)\)\s*$/);
+    if (!m || /hispanic|latin|not\b|non\b|only|alone|origin|\d/i.test(m[2])) break;
+    s = m[1].trim();
+  }
+  return s;
+}
+
 const PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
 
 /** Whether an option label is a placeholder rather than a real answer. */
@@ -366,6 +386,21 @@ const NEVER_FILL_PATTERNS = [
   /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/,
   /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/,
 ];
+
+/**
+ * A "label" that is really an internal identifier: Workday's question hash
+ * ("28bff8b9ac631003ae3f11b9c7ba0000"), a UUID, a field name. One unbroken
+ * token with digits in it, no spaces. Nobody can answer that — the model
+ * least of all, which is how "Do you reside in NYC?" got a random Yes.
+ */
+export function looksLikeOpaqueId(label) {
+  const t = String(label || '').replace(/\*+\s*$/, '').trim();
+  if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
+  // A hash or UUID: a long hex run with real digits in it — not a field name
+  // like "address_line_2", which the synonym table can still make sense of.
+  const hex = t.match(/[0-9a-f]{10,}/ig) || [];
+  return hex.some(run => (run.match(/\d/g) || []).length >= 3) || /\d{8,}/.test(t);
+}
 
 export function isNeverFill(label) {
   const sig = questionSignature(label);
@@ -709,7 +744,9 @@ export const FIELD_SYNONYMS = [
   { key: 'expected_salary', sensitive: true, labels: ['expected salary', 'salary expectation', 'desired salary', 'compensation expectation', 'expected ctc', 'desired compensation'] },
   { key: 'gender', sensitive: true, labels: ['gender', 'gender identity', 'gender do you identify as', 'gender you identify with', 'gender identify'] },
   { key: 'race_ethnicity', sensitive: true, labels: ['race', 'ethnicity', 'race ethnicity', 'racial identity', 'hispanic or latino'] },
-  { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service'] },
+  // "Have you ever served or are you currently serving in the United States
+  // military?" — the same fact as veteran status, asked as a Yes/No.
+  { key: 'veteran_status', sensitive: true, labels: ['veteran status', 'military status', 'protected veteran', 'military service', 'served in the military', 'serving in the military', 'served military', 'serving military'] },
   { key: 'disability_status', sensitive: true, labels: ['disability status', 'disability', 'disabled'] },
   { key: 'gender_pronouns', sensitive: true, labels: ['pronouns', 'preferred pronouns'] },
   { key: 'lgbtq_identity', sensitive: true, labels: ['lgbtq', 'sexual orientation', 'transgender'] },

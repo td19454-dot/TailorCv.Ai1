@@ -150,6 +150,11 @@ export function renderReady(body, form, ctx, handlers, extra) {
           </div>
         </div>
       </div>
+      ${!count ? `
+        <div class="tcv-af-note">
+          No fields found on this step yet. If a section opens with <b>Add</b>
+          (Work Experience, Education), open it first, then autofill this page.
+        </div>` : ''}
       ${blockers.length ? `
         <div class="tcv-af-note">
           ${esc(blockers[0])}
@@ -205,6 +210,7 @@ export function renderResults(body, result, ctx, handlers) {
         ${counts[PROFILE] ? pill('ask', `${counts[PROFILE]} for your profile`) : ''}
       </div>
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ''}
+      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">↻ Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ''}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
         ${esc(result.opaqueHosts)} field group(s) on this page are built in a way
@@ -214,7 +220,6 @@ export function renderResults(body, result, ctx, handlers) {
         Review everything, then submit the application yourself. TailorCV never
         submits for you.
       </div>
-      <button class="tcv-btn tcv-btn-ghost" id="tcvAfRerun">↻ Scan again</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
         profile</a> — name, address, phone and eligibility answers all come from there.

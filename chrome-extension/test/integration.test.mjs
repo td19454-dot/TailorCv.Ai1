@@ -705,6 +705,135 @@ test('an unheaded upload after "Resume/CV" does not inherit it', async () => {
   });
 });
 
+// Workday "Application Questions" (Bank of America, ghr.wd1.myworkdayjobs.com):
+// the question is rich text, the button carries only name="<hash>" and
+// aria-label "Select One Required". The sidebar showed the hash as the
+// question, and the model — unable to read it — answered at random.
+const WD_QUESTIONS = `
+  <div data-automation-id="primaryQuestionnairePage">
+    <div data-fkit-id="primaryQuestionnaire--28bff8b9ac631003ae3f11b9c7ba0000">
+      <div class="rich-text"><p>Do you reside in one of the five boroughs of New York City (including the Bronx, Brooklyn, Manhattan, Queens, or Staten Island)?</p><abbr>*</abbr></div>
+      <div><button type="button" aria-haspopup="listbox" name="28bff8b9ac631003ae3f11b9c7ba0000"
+              id="primaryQuestionnaire--28bff8b9ac631003ae3f11b9c7ba0000"
+              aria-label="Select One Required">Select One</button>
+        <input type="text" tabindex="-1" value=""></div>
+    </div>
+    <fieldset data-fkit-id="primaryQuestionnaire--28bff8b9ac631003ae3f125398df0003">
+      <legend><div class="rich-text"><p>Bank of America has a longstanding commitment to hiring and supporting veterans and military spouses/domestic partners.</p>
+        <p>Have you ever served or are you currently serving in the United States military (this includes the National Guard and Reserves)?</p></div><abbr>*</abbr></legend>
+      <div><button type="button" aria-haspopup="listbox" name="28bff8b9ac631003ae3f125398df0003"
+              aria-label="Select One Required">Select One</button>
+        <input type="text" tabindex="-1" value=""></div>
+    </fieldset>
+    <div data-fkit-id="primaryQuestionnaire--28bff8b9ac631003ae3f125398df0006">
+      <div><button type="button" aria-haspopup="listbox" name="28bff8b9ac631003ae3f125398df0006"
+              aria-label="Select One Required">Select One</button></div>
+    </div>
+  </div>`;
+
+test('Workday questionnaire: questions are read from their text, never the hash', async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="formField-email">', WD_QUESTIONS + '\n    <div data-automation-id="formField-email">');
+  await withForm(html, {}, async (env, sent) => {
+    const rows = d.describeFields(d.findForm());
+    const byName = n => rows.find(r => r.el && r.el.getAttribute('name') === n);
+    const nyc = byName('28bff8b9ac631003ae3f11b9c7ba0000');
+    const mil = byName('28bff8b9ac631003ae3f125398df0003');
+    ok(/reside in one of the five boroughs/.test(nyc.label), `NYC label: "${nyc.label}"`);
+    notOk(/military/i.test(nyc.label), 'no text borrowed from the next question');
+    ok(/served or are you currently serving in the United States military/.test(mil.label), `military label: "${mil.label}"`);
+
+    await run_.runAutofill(CTX, null);
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    const labels = plan ? plan.payload.fields.map(f => f.label) : [];
+    notOk(labels.some(l => /^[0-9a-f]{20,}/i.test(l)), `a hash reached the model: ${labels.join(' | ')}`);
+  });
+});
+
+test('a question that cannot be read at all is left for the person, never sent to the model', async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="formField-email">', WD_QUESTIONS + '\n    <div data-automation-id="formField-email">');
+  await withForm(html, {}, async (env, sent) => {
+    const result = await run_.runAutofill(CTX, null);
+    const blind = result.decisions.find(x => x.row && x.row.el
+      && x.row.el.getAttribute('name') === '28bff8b9ac631003ae3f125398df0006');
+    ok(blind, 'the unlabelled dropdown is still listed');
+    notOk(blind.value, 'nothing is filled into it');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    notOk(plan && plan.payload.fields.some(f => /125398df0006/.test(f.label)), 'never asked of the model');
+  });
+});
+
+const WD_ETHNICITY = `
+  <div data-automation-id="formField-ethnicityDropdown">
+    <label for="input-30">What is your ethnicity?<abbr title="required">*</abbr></label>
+    <button type="button" aria-haspopup="listbox" id="input-30"
+            aria-label="What is your ethnicity? Select One Required">Select One</button>
+  </div>`;
+const WD_RACE_OPTIONS = [
+  'American Indian or Alaska Native (Not Hispanic or Latino) (United States of America)',
+  'Asian (Not Hispanic or Latino) (United States of America)',
+  'Black or African American (Not Hispanic or Latino) (United States of America)',
+  'Hispanic or Latino (United States of America)',
+  'White (Not Hispanic or Latino) (United States of America)',
+];
+function wireEthnicity(doc) {
+  const portal = doc.getElementById('wd-portal');
+  const button = doc.getElementById('input-30');
+  button.addEventListener('mousedown', () => {
+    portal.innerHTML = '<ul role="listbox">' + WD_RACE_OPTIONS.map(o =>
+      `<li role="option" data-automation-id="promptOption">${o}</li>`).join('') + '</ul>';
+    for (const li of portal.querySelectorAll('[role=option]')) {
+      li.addEventListener('mousedown', () => { button.textContent = li.textContent; portal.innerHTML = ''; });
+    }
+  });
+}
+const withEthnicity = html => html.replace('<div data-automation-id="formField-email">',
+  WD_ETHNICITY + '\n    <div data-automation-id="formField-email">');
+
+test('Workday: a stored "South Asian" fills the Asian option despite the country suffix', async () => {
+  await withForm(withEthnicity(fixtures.WORKDAY_MYINFO), {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    wireEthnicity(env.document);
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { race_ethnicity: 'South Asian' }) });
+    const result = await run_.runAutofill(ctx, null);
+    eq(env.document.getElementById('input-30').textContent.trim(),
+       'Asian (Not Hispanic or Latino) (United States of America)');
+    eq(byLabel(result.decisions, 'ethnicity').outcome, 'ok');
+  });
+});
+
+test('a dropdown that could not be filled offers its real options in the sidebar', async () => {
+  await withForm(withEthnicity(fixtures.WORKDAY_MYINFO), {}, async (env) => {
+    fixtures.wireWorkday(env.document);
+    wireEthnicity(env.document);
+    // No option fits, so this one comes back to the person.
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK, { race_ethnicity: 'Middle Eastern or North African' }) });
+    const result = await run_.runAutofill(ctx, null);
+    const row = byLabel(result.decisions, 'ethnicity');
+    eq(env.document.getElementById('input-30').textContent.trim(), 'Select One', 'never recorded as Black');
+    const offered = (row.options || []).map(o => (typeof o === 'string' ? o : o.label));
+    ok(offered.includes('Asian (Not Hispanic or Latino) (United States of America)'),
+       `the sidebar gets the page's options, not a text box (got ${offered.length})`);
+  });
+});
+
+test("Workday: the Terms and Conditions checkbox is ticked when the profile allows it", async () => {
+  const html = fixtures.WORKDAY_MYINFO.replace('<div data-automation-id="formField-email">', `
+    <div data-automation-id="formField-acceptTermsAndAgreements">
+      <label for="input-40">By selecting the checkbox, you agree to our Terms and Conditions and Applicant Privacy Policy.<abbr title="required">*</abbr></label>
+      <input type="checkbox" id="input-40" aria-required="true">
+    </div>
+    <div data-automation-id="formField-email">`);
+  await withForm(html, {}, async (env) => {
+    const ctx = Object.assign({}, CTX, { answerBank: Object.assign({}, BANK,
+      { accepts_employer_terms_and_privacy_policy: 'Yes' }) });
+    const result = await run_.runAutofill(ctx, null);
+    ok(env.document.getElementById('input-40').checked, 'the box is ticked');
+    eq(byLabel(result.decisions, 'terms and conditions').outcome, 'ok');
+  });
+});
+
 test('Workday (real markup): names, city and email fill and verify', async () => {
   await withForm(fixtures.WORKDAY_MYINFO, {}, async (env) => {
     fixtures.wireWorkday(env.document);

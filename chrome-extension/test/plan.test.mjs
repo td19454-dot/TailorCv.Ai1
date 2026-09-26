@@ -130,6 +130,18 @@ test('a sensitive field is never sent to the server', () => {
      'not one sensitive question may leave the browser');
 });
 
+test('Bank of America (Workday): military service answered from veteran status; spouse asked', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { veteran_status: 'I have never served in the military' }) };
+  const yesNo = { kind: 'combobox', required: true, options: ['Yes', 'No'] };
+  const served = p.decide([field('Have you ever served or are you currently serving in the United States military (this includes the National Guard and Reserves)?*', yesNo)], ctx, null, null)[0];
+  eq(served.action, p.FILL);
+  eq(served.value, 'No', 'never served -> No');
+  const spouse = p.decide([field('Are you a current or former military spouse or domestic partner?*', yesNo)], ctx, null, null)[0];
+  eq(spouse.action, p.ASK, 'no profile field holds this: the person answers it');
+  eq(spouse.value, '');
+  eq(p.fieldsForServer([spouse]).length, 0, 'and it is never sent to the model');
+});
+
 test('citizenship status and clearance are answered in the sidebar, not sent to the profile', () => {
   // SpaceX (greenhouse spacex/8569186002): the profile has no field for either,
   // so "Set once in your profile" would be a dead end.
@@ -833,6 +845,58 @@ test('"If you answered Yes above, please provide additional information" stays e
   eq(d.action, p.SKIP);
   eq(d.value, '');
   eq(p.fieldsForServer([d]).length, 0, 'the model must never be asked to invent an explanation');
+});
+
+// Workday appends the country to every option and qualifies each non-Hispanic group.
+const WD_RACE = [
+  'American Indian or Alaska Native (Not Hispanic or Latino) (United States of America)',
+  'Asian (Not Hispanic or Latino) (United States of America)',
+  'Black or African American (Not Hispanic or Latino) (United States of America)',
+  'Hispanic or Latino (United States of America)',
+  'Two or More Races (Not Hispanic or Latino) (United States of America)',
+  'White (Not Hispanic or Latino) (United States of America)',
+];
+
+test('ethnicity on Workday: the region suffix does not stop a stored answer from filling', () => {
+  eq(p.coerce('South Asian', ethnicityRow('South Asian', WD_RACE)),
+     'Asian (Not Hispanic or Latino) (United States of America)');
+  eq(p.coerce('Black', ethnicityRow('Black', WD_RACE)),
+     'Black or African American (Not Hispanic or Latino) (United States of America)');
+  eq(p.coerce('White', ethnicityRow('White', WD_RACE)),
+     'White (Not Hispanic or Latino) (United States of America)', '"(Not Hispanic…)" is not read as Hispanic');
+  eq(p.coerce('Hispanic or Latino', ethnicityRow('Hispanic or Latino', WD_RACE)),
+     'Hispanic or Latino (United States of America)');
+});
+
+test('Middle Eastern or North African is never recorded as Black', () => {
+  eq(p.coerce('Middle Eastern or North African', ethnicityRow('Middle Eastern or North African', WD_RACE)), null,
+     'no matching option: the person answers it');
+  eq(p.coerce('Middle Eastern or North African', ethnicityRow('Middle Eastern or North African', RACE_LIST.concat(['Middle Eastern or North African']))),
+     'Middle Eastern or North African');
+});
+
+const termsBox = label => field(label, { kind: 'checkbox', required: true, options: [{ value: 'on', label }] });
+
+test('a terms / privacy checkbox is ticked from the profile permission, with no model', () => {
+  const ctx = { answerBank: { accepts_employer_terms_and_privacy_policy: 'Yes' } };
+  const d = p.decide([termsBox('By selecting the checkbox, you agree to our Terms and Conditions and Applicant Privacy Policy.*')], ctx, null, null)[0];
+  eq(d.action, p.FILL);
+  eq(d.value, 'yes');
+  eq(p.fieldsForServer([d]).length, 0, 'never asked of the model');
+});
+
+test('with the permission off, a terms checkbox takes the usual consent path', () => {
+  const d = p.decide([termsBox('I agree to the Terms of Service')], { answerBank: {} }, null, null)[0];
+  notOk(d.source === 'profile', 'not ticked from a permission the person has not given');
+  eq(p.fieldsForServer([d]).length, 1, 'asked of the server as before');
+});
+
+test('the terms permission does not tick marketing or talent-pool opt-ins', () => {
+  const ctx = { answerBank: { accepts_employer_terms_and_privacy_policy: 'Yes' } };
+  for (const label of ['I would like to receive marketing updates about future roles', 'Join our talent community']) {
+    const d = p.decide([termsBox(label)], ctx, null, null)[0];
+    notOk(d.action === p.FILL && d.source === 'profile', `${label} -> ${d.action}`);
+  }
 });
 
 test('decide does not mutate the rows it is given', () => {

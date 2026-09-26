@@ -417,6 +417,12 @@ export async function commitCombobox(row, value, candidates, readFirst) {
  * failure on a live form is diagnosable from one paste instead of by guessing.
  */
 function reportDropdownFailure(row, value, options) {
+  // Kept on the row so the sidebar can offer these as a dropdown: the options of
+  // a field answered from the profile are only read here, at write time.
+  try {
+    row.seenOptions = (options || []).map(n => (n.textContent || '').replace(/\s+/g, ' ').trim())
+      .filter(Boolean).slice(0, 200);
+  } catch (e) { /* the report below still runs */ }
   try {
     const after = reprobe(row);
     const el = row.el;
@@ -778,12 +784,25 @@ export async function applyDecision(decision) {
       break;
   }
 
+  // A dropdown answered from the profile never had its options read at plan
+  // time. If it did not take, hand the options the writer saw to the sidebar,
+  // so the person picks from the real list instead of typing into a text box.
+  if (!wrote && row.seenOptions && row.seenOptions.length
+      && !(decision.options && decision.options.length)) {
+    decision.options = row.seenOptions.map(label => ({ value: label, label }));
+  }
+
   await sleep(TIMING.settleMs);
   const after = reprobe(row);
   if (!after) return { ok: wrote, outcome: wrote ? 'ok' : 'failed', shown: '' };
   if (after.invalid) return { ok: false, outcome: 'rejected', shown: after.value };
   if (!after.filled) return { ok: false, outcome: 'empty', shown: '' };
-  if (!accepts(decision, value, after.value)) {
+  // A lone checkbox answered "yes" reads back as its own label once ticked —
+  // "By selecting the checkbox, you agree…" — which never equals "yes". Ticked
+  // IS the answer, so a filled single box is a success, not a mismatch.
+  const loneCheckboxTicked = row.kind === 'checkbox' && (row.options || []).length <= 1
+    && /^(yes|true|on|checked)$/i.test(String(value));
+  if (!loneCheckboxTicked && !accepts(decision, value, after.value)) {
     return { ok: false, outcome: 'mismatch', shown: after.value };
   }
   return { ok: true, outcome: 'ok', shown: after.value };

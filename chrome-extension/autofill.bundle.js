@@ -379,9 +379,54 @@
         const lab = wrap.querySelector("label");
         if (lab && txt(lab)) return txt(lab);
       }
+      const q = questionTextAround(el);
+      if (q) return q;
       let aria = attr(el, "aria-label");
       if (shown) aria = aria.split(shown).join(" ");
       return aria.replace(/\brequired\b/ig, "").replace(/\s+/g, " ").trim();
+    }
+    const QUESTION_CONTROL_SEL = 'button[aria-haspopup="listbox"], select, textarea, input:not([type="hidden"]):not([type="file"]):not([type="button"]):not([type="submit"])';
+    function questionTextAround(el) {
+      let fs = null;
+      try {
+        fs = el.closest("fieldset");
+      } catch (e) {
+        fs = null;
+      }
+      if (fs) {
+        let buttons = 0;
+        try {
+          buttons = fs.querySelectorAll('button[aria-haspopup="listbox"]').length;
+        } catch (e) {
+          buttons = 2;
+        }
+        const lg = buttons === 1 ? fs.querySelector("legend") : null;
+        const t = lg ? txt(lg) : "";
+        if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+      }
+      let n = el.parentElement;
+      for (let depth = 0; n && depth < 5; depth++, n = n.parentElement) {
+        if (isFormLevel2(n)) return "";
+        let controls = 0, buttons = 0;
+        try {
+          buttons = n.querySelectorAll('button[aria-haspopup="listbox"]').length;
+          controls = n.querySelectorAll(QUESTION_CONTROL_SEL).length;
+        } catch (e) {
+          return "";
+        }
+        if (buttons > 1 || controls > 2) return "";
+        let clone = null;
+        try {
+          clone = n.cloneNode(true);
+          const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"]');
+          for (let i = 0; i < drop.length; i++) drop[i].remove();
+        } catch (e) {
+          return "";
+        }
+        const t = txt(clone);
+        if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+      }
+      return "";
     }
     function listboxFor(el) {
       if (!el) return null;
@@ -537,13 +582,15 @@
     labelsMatch: () => labelsMatch,
     looksLikeDecline: () => looksLikeDecline,
     looksLikeEeoField: () => looksLikeEeoField,
+    looksLikeOpaqueId: () => looksLikeOpaqueId,
     looksSecret: () => looksSecret,
     matchFieldKey: () => matchFieldKey,
     normalizeOptionText: () => normalizeOptionText,
     parseLooseDate: () => parseLooseDate,
     questionSignature: () => questionSignature,
     similarity: () => similarity,
-    splitPhone: () => splitPhone
+    splitPhone: () => splitPhone,
+    stripRegionSuffix: () => stripRegionSuffix
   });
   function questionSignature(text) {
     let s = String(text == null ? "" : text).toLowerCase().trim();
@@ -556,6 +603,15 @@
     return s.replace(/\s+/g, " ").trim();
   }
   var OPTION_MATCH_THRESHOLD = 0.55;
+  function stripRegionSuffix(label) {
+    let s = String(label == null ? "" : label).trim();
+    for (let i = 0; i < 3; i++) {
+      const m = s.match(/^(.*\S)\s*\(([^()]*)\)\s*$/);
+      if (!m || /hispanic|latin|not\b|non\b|only|alone|origin|\d/i.test(m[2])) break;
+      s = m[1].trim();
+    }
+    return s;
+  }
   var PLACEHOLDER_OPTION_RE = /^(select|choose|please select)\b.*\.{0,3}$|^--+$/i;
   function isPlaceholderOption(label) {
     return PLACEHOLDER_OPTION_RE.test(String(label == null ? "" : label).trim());
@@ -776,6 +832,12 @@ what when where which who will with would you your now future
     /\bpassword\b|\bpasscode\b|\bone time (code|password)\b|\botp\b/,
     /\bdate of birth\b|\bbirth date\b|\bbirthdate\b|\bdob\b/
   ];
+  function looksLikeOpaqueId(label) {
+    const t = String(label || "").replace(/\*+\s*$/, "").trim();
+    if (t.length < 12 || /\s/.test(t) || !/^[\w.:-]+$/.test(t)) return false;
+    const hex = t.match(/[0-9a-f]{10,}/ig) || [];
+    return hex.some((run) => (run.match(/\d/g) || []).length >= 3) || /\d{8,}/.test(t);
+  }
   function isNeverFill(label) {
     const sig = questionSignature(label);
     return NEVER_FILL_PATTERNS.some((re) => re.test(sig));
@@ -1139,7 +1201,9 @@ what when where which who will with would you your now future
     { key: "expected_salary", sensitive: true, labels: ["expected salary", "salary expectation", "desired salary", "compensation expectation", "expected ctc", "desired compensation"] },
     { key: "gender", sensitive: true, labels: ["gender", "gender identity", "gender do you identify as", "gender you identify with", "gender identify"] },
     { key: "race_ethnicity", sensitive: true, labels: ["race", "ethnicity", "race ethnicity", "racial identity", "hispanic or latino"] },
-    { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service"] },
+    // "Have you ever served or are you currently serving in the United States
+    // military?" — the same fact as veteran status, asked as a Yes/No.
+    { key: "veteran_status", sensitive: true, labels: ["veteran status", "military status", "protected veteran", "military service", "served in the military", "serving in the military", "served military", "serving military"] },
     { key: "disability_status", sensitive: true, labels: ["disability status", "disability", "disabled"] },
     { key: "gender_pronouns", sensitive: true, labels: ["pronouns", "preferred pronouns"] },
     { key: "lgbtq_identity", sensitive: true, labels: ["lgbtq", "sexual orientation", "transgender"] }
@@ -2310,6 +2374,10 @@ what when where which who will with would you your now future
       if (!row.readable) {
         return done(d, SKIP, "", "", 0, "could not read this field");
       }
+      if (looksLikeOpaqueId(row.label)) {
+        d.noServer = true;
+        return row.required ? done(d, ASK, "", "", 0, "we couldn't read this question \u2014 please answer it") : done(d, SKIP, "", "", 0, "we couldn't read this question");
+      }
       if (isNeverFill(row.label)) {
         return done(d, SKIP, "", "", 0, "we never fill this kind of field");
       }
@@ -2336,7 +2404,7 @@ what when where which who will with would you your now future
         const entry2 = matchFieldKey(row.label);
         const stored = entry2 && entry2.sensitive ? bank[entry2.key] : "";
         if (!stored) {
-          const onProfile = PROFILE_CATEGORIES.has(category) || !!(entry2 && entry2.sensitive);
+          const onProfile = PROFILE_CATEGORIES.has(category) && (category !== "demographic" || !!entry2) || !!(entry2 && entry2.sensitive);
           return onProfile ? done(d, PROFILE, "", "", 0, profileHint(category, entry2)) : done(d, ASK, "", "", 0, "we never guess this \u2014 choose your answer");
         }
         const shapes = candidatesFor(entry2 ? entry2.key : "", stored, bank);
@@ -2375,6 +2443,12 @@ what when where which who will with would you your now future
         }
         d.askable = true;
         return row.required ? done(d, ASK, "", "", 0, "needs an answer written for this job") : done(d, SKIP, "", "", 0, "optional \u2014 no answer written yet");
+      }
+      if (row.kind === "checkbox" && looksLikeTermsAgreement(row.label) && bank.accepts_employer_terms_and_privacy_policy === "Yes") {
+        const value = coerce("yes", row);
+        if (value !== null) {
+          return done(d, FILL, value, "profile", 0.95, "you allowed agreeing to employers' terms");
+        }
       }
       const entry = matchFieldKey(row.label);
       if (entry && bank[entry.key]) {
@@ -2454,6 +2528,12 @@ what when where which who will with would you your now future
   ].join("|"), "i");
   function looksLikeConsent(label) {
     return CONSENT_RE.test(String(label == null ? "" : label));
+  }
+  var TERMS_RE = /\bterms\b|\bprivacy (policy|notice|statement)\b|\bi agree\b|\bagree to\b|\bi accept\b|\baccept (the|our|these)\b|\backnowledge\b|\bi certify\b|\bcertify that\b|\battest\b/i;
+  var OPT_IN_RE = /\bmarketing\b|\bpromotional\b|\bnewsletter\b|\bsubscribe\b|\btext messages?\b|\bsms\b|\bwhatsapp\b|\bupdates about\b|\btalent (pool|community|network)\b|\bfuture (roles|openings|opportunities)\b|\bjob alerts?\b|\bcontact me\b|\bkeep me\b|\bnotify me\b/i;
+  function looksLikeTermsAgreement(label) {
+    const t = String(label == null ? "" : label);
+    return TERMS_RE.test(t) && !OPT_IN_RE.test(t);
   }
   function base(row) {
     return {
@@ -2555,6 +2635,17 @@ what when where which who will with would you your now future
       test: /\b(south asian|east asian|southeast asian|asian|desi|chinese|japanese|korean|filipino|vietnamese|asian indian|indian subcontinent)\b/i,
       shapes: ["Asian", "Asian or Pacific Islander", "Asian (Not Hispanic or Latino)"]
     },
+    // Before the Black row: "North African" contains "African", and checked
+    // after it, "Middle Eastern or North African" was recorded as Black.
+    {
+      test: /\b(middle eastern|north african|arab|mena)\b/i,
+      shapes: [
+        "Middle Eastern or North African",
+        "Middle Eastern / North African",
+        "Middle Eastern",
+        "MENA"
+      ]
+    },
     {
       test: /\b(black|african american|afro|african)\b/i,
       shapes: [
@@ -2568,15 +2659,6 @@ what when where which who will with would you your now future
     {
       test: /\b(hispanic|latino|latina|latinx|latin american)\b/i,
       shapes: ["Hispanic or Latino", "Hispanic / Latino", "Hispanic", "Latino"]
-    },
-    {
-      test: /\b(middle eastern|north african|arab|mena)\b/i,
-      shapes: [
-        "Middle Eastern or North African",
-        "Middle Eastern / North African",
-        "Middle Eastern",
-        "MENA"
-      ]
     },
     {
       test: /\b(white|caucasian|european)\b/i,
@@ -2599,7 +2681,8 @@ what when where which who will with would you your now future
     };
   }
   function ethnicityGroup(text) {
-    return ETHNICITY_GROUPS.findIndex((g) => g.test.test(String(text || "")));
+    const t = String(text || "").replace(/\(\s*not hispanic or latino\s*\)/ig, " ");
+    return ETHNICITY_GROUPS.findIndex((g) => g.test.test(t));
   }
   function ethnicityShapes(text) {
     const i = ethnicityGroup(text);
@@ -2610,7 +2693,8 @@ what when where which who will with would you your now future
       const want = ethnicityGroup(candidate);
       if (want < 0) return true;
       if (ethnicityGroup(option) !== want) return false;
-      return sameText(candidate, option) || widensOrEquals(stored, option);
+      const plain = String(option).replace(/\s*\(\s*not hispanic or latino\s*\)\s*/i, " ").trim();
+      return sameText(candidate, option) || sameText(candidate, plain) || widensOrEquals(stored, option) || widensOrEquals(stored, plain);
     };
   }
   function sameText(a, b) {
@@ -2741,8 +2825,9 @@ what when where which who will with would you your now future
       if (!options.length) return text;
       const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
       const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
-      const match = bestCandidateMatch(candidates, options, guard);
-      if (match != null) return match;
+      const bare = READ_FIRST_KEYS.has(row.candidateKey) ? options.map(stripRegionSuffix) : options;
+      const match = bestCandidateMatch(candidates, bare, guard);
+      if (match != null) return options[bare.indexOf(match)];
       return declineFallback(text, options);
     }
     const hints = row.hints || {};
@@ -3120,6 +3205,10 @@ what when where which who will with would you your now future
   }
   function reportDropdownFailure(row, value, options) {
     try {
+      row.seenOptions = (options || []).map((n) => (n.textContent || "").replace(/\s+/g, " ").trim()).filter(Boolean).slice(0, 200);
+    } catch (e) {
+    }
+    try {
       const after = reprobe(row);
       const el = row.el;
       console.groupCollapsed(
@@ -3393,12 +3482,16 @@ what when where which who will with would you your now future
         }
         break;
     }
+    if (!wrote && row.seenOptions && row.seenOptions.length && !(decision.options && decision.options.length)) {
+      decision.options = row.seenOptions.map((label) => ({ value: label, label }));
+    }
     await sleep(TIMING.settleMs);
     const after = reprobe(row);
     if (!after) return { ok: wrote, outcome: wrote ? "ok" : "failed", shown: "" };
     if (after.invalid) return { ok: false, outcome: "rejected", shown: after.value };
     if (!after.filled) return { ok: false, outcome: "empty", shown: "" };
-    if (!accepts(decision, value, after.value)) {
+    const loneCheckboxTicked = row.kind === "checkbox" && (row.options || []).length <= 1 && /^(yes|true|on|checked)$/i.test(String(value));
+    if (!loneCheckboxTicked && !accepts(decision, value, after.value)) {
       return { ok: false, outcome: "mismatch", shown: after.value };
     }
     return { ok: true, outcome: "ok", shown: after.value };
@@ -3911,6 +4004,11 @@ what when where which who will with would you your now future
           </div>
         </div>
       </div>
+      ${!count ? `
+        <div class="tcv-af-note">
+          No fields found on this step yet. If a section opens with <b>Add</b>
+          (Work Experience, Education), open it first, then autofill this page.
+        </div>` : ""}
       ${blockers.length ? `
         <div class="tcv-af-note">
           ${esc(blockers[0])}
@@ -3958,6 +4056,7 @@ what when where which who will with would you your now future
         ${counts[PROFILE] ? pill("ask", `${counts[PROFILE]} for your profile`) : ""}
       </div>
       ${result.page > 1 ? `<div class="tcv-source">Page ${esc(result.page)} of this application</div>` : ""}
+      <button class="tcv-btn tcv-btn-start" id="tcvAfRerun">\u21BB Autofill this page</button>
       ${result.serverError ? `<div class="tcv-af-note">${esc(result.serverError)}</div>` : ""}
       ${result.opaqueHosts ? `<div class="tcv-af-note tcv-af-note-quiet">
         ${esc(result.opaqueHosts)} field group(s) on this page are built in a way
@@ -3967,7 +4066,6 @@ what when where which who will with would you your now future
         Review everything, then submit the application yourself. TailorCV never
         submits for you.
       </div>
-      <button class="tcv-btn tcv-btn-ghost" id="tcvAfRerun">\u21BB Scan again</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         Something filled wrong? <a href="#" id="tcvAfEditProfile">Edit your application
         profile</a> \u2014 name, address, phone and eligibility answers all come from there.

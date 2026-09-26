@@ -363,12 +363,19 @@ async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) 
             key = _bank_key_for(value, bank)
             exact_option = bool(f.options) and _is_listed_option(value, f)
             prose = key in PROSE_KEYS or len(str(value)) > 180
+            # A Yes/No the model chose about the candidate ("Do you reside in
+            # NYC?", "Have you attended a community college?") is a claim made in
+            # their name. Being a listed option proves only that it is a valid
+            # choice, not a true one — so it is written for review, never
+            # silently. Consent boxes are the exception: "yes" is the rule there.
+            personal_yes_no = _is_yes_no(value) and not _looks_like_consent(f.label)
             answers[str(f.i)] = {
                 "value": value,
                 "source": "ai",
                 # Verifiable (the value is one of the options the form
                 # itself offers) earns autofill; prose never does.
-                "confidence": 0.55 if prose else (0.8 if exact_option else 0.65),
+                "confidence": 0.55 if prose else (
+                    0.6 if personal_yes_no else (0.8 if exact_option else 0.65)),
             }
 
 
@@ -380,6 +387,27 @@ async def _embed_quietly(labels: list[str]) -> list[list[float]]:
     except Exception:
         logger.warning("could not embed field labels; exact recall still works", exc_info=True)
         return []
+
+
+_YES_NO = {"yes", "no", "y", "n", "true", "false"}
+_CONSENT_RE = None
+
+
+def _is_yes_no(value: str) -> bool:
+    return str(value or "").strip().lower() in _YES_NO
+
+
+def _looks_like_consent(label: str) -> bool:
+    """Consent / opt-in / terms questions, where "yes" is the standing answer."""
+    import re
+
+    global _CONSENT_RE
+    if _CONSENT_RE is None:
+        _CONSENT_RE = re.compile(
+            r"\bconsent\b|\bi agree\b|\bagree to\b|\baccept\b|\backnowledge\b|\bcertify\b"
+            r"|\bprivacy (policy|notice)\b|\bterms\b|\bopt[ -]?in\b|\bsubscribe\b|\bmarketing\b",
+            re.IGNORECASE)
+    return bool(_CONSENT_RE.search(label or ""))
 
 
 def _is_listed_option(value: str, f) -> bool:

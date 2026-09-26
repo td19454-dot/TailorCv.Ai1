@@ -332,6 +332,51 @@ test('Workday: a new step on the SAME URL is offered as the next page', async ()
   ok(await waitForText(page, /Page 2/, 15000), 'the next step must be offered as page 2');
 });
 
+test('Workday: a next step with nothing to fill yet still offers "Autofill this page"', async () => {
+  // nvidia.wd5: after My Information, "My Experience" holds only Add buttons —
+  // no fields until an entry is opened. The sidebar stayed on page 1's results.
+  const withHeading = fixtures.WORKDAY_MYINFO.replace(
+    '<div data-automation-id="applyFlowMyInfoPage">',
+    '<h2>My Information</h2><div data-automation-id="applyFlowMyInfoPage">');
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, withHeading, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+
+  page.document.querySelector('[data-automation-id="applyFlowPage"] h2').textContent = 'My Experience';
+  page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]').innerHTML = `
+    <h3>Work Experience</h3><button type="button" data-automation-id="add-button">Add</button>
+    <h3>Education</h3><button type="button" data-automation-id="add-button">Add</button>`;
+  ok(await waitForText(page, /Page 2/, 15000), 'the new step is shown');
+  ok(await waitForText(page, /Autofill this page/, 5000), 'with a button to fill it');
+  ok(await waitForText(page, /No fields found on this step yet/, 5000), 'and says what to do');
+});
+
+test('Workday: the next step is shown even when the page passes through "no form" on the way', async () => {
+  // nvidia.wd5: page 1 is torn down (a moment with no form at all) before page
+  // 2 renders. The watcher saw page 2 as a form "appearing", left the results
+  // view alone, and the sidebar kept page 1's results until a tab switch.
+  const page = loadPage('<!doctype html><html><body></body></html>', CITI_URL, true);
+  renderLater(page, fixtures.WORKDAY_MYINFO, 200);
+  ok(await waitForText(page, /Autofill this application/, 15000), 'first step must be offered');
+  page.document.getElementById('tcvAfFillBtn').click();
+  ok(await waitForText(page, /filled/i, 20000), 'the first fill must finish');
+
+  const step = page.document.querySelector('[data-automation-id="applyFlowMyInfoPage"]');
+  step.innerHTML = '<div class="loading">Loading…</div>';          // between steps
+  await new Promise(r => setTimeout(r, 2600));                       // the watcher sees "no form"
+  step.innerHTML = `
+    <div data-automation-id="formField-resume"><label for="r1">Resume/CV*</label>
+      <input id="r1" type="file"></div>
+    <div data-automation-id="formField-linkedin"><label for="w1">LinkedIn</label>
+      <input id="w1" type="text"></div>
+    <div data-automation-id="formField-website"><label for="w2">Website</label>
+      <input id="w2" type="text"></div>`;
+  ok(await waitForText(page, /Page 2/, 15000), 'page 2 replaces page 1\'s results');
+  ok(await waitForText(page, /Autofill this page/, 5000), 'with its own button');
+});
+
 test('the form watcher does not repaint the login view', async () => {
   const page = loadPage(JSON_LD_PAGE, CITI_URL, true, { loggedOut: true });
   ok(await waitForText(page, /log ?in|sign ?in|password/i, 10000), 'login view first');

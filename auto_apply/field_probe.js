@@ -476,10 +476,58 @@
       const lab = wrap.querySelector('label');
       if (lab && txt(lab)) return txt(lab);
     }
+    // Workday's "Application Questions" step: the question is rich text in a
+    // <fieldset><legend> (often after an intro paragraph), or a text block
+    // beside the button, and the button carries only name="<hash>" with
+    // aria-label "Select One Required". Without these the field was labelled
+    // by that hash, and the model was asked to answer a question it could not
+    // read — so it guessed.
+    const q = questionTextAround(el);
+    if (q) return q;
     // Last resort: aria-label with the current value and "Required" removed.
     let aria = attr(el, 'aria-label');
     if (shown) aria = aria.split(shown).join(' ');
     return aria.replace(/\brequired\b/ig, '').replace(/\s+/g, ' ').trim();
+  }
+
+  // Selects every control that is its own question, for the bounds below. The
+  // companion text input Workday keeps beside a dropdown is allowed for.
+  const QUESTION_CONTROL_SEL = 'button[aria-haspopup="listbox"], select, textarea, '
+    + 'input:not([type="hidden"]):not([type="file"]):not([type="button"]):not([type="submit"])';
+
+  // The question text around a dropdown button: a fieldset legend holding only
+  // this dropdown, else the text of the nearest wrapper that holds this one
+  // control and no other question. Never wider — reaching into a wrapper with a
+  // second question would label this field with the neighbour's text.
+  function questionTextAround(el) {
+    let fs = null;
+    try { fs = el.closest('fieldset'); } catch (e) { fs = null; }
+    if (fs) {
+      let buttons = 0;
+      try { buttons = fs.querySelectorAll('button[aria-haspopup="listbox"]').length; } catch (e) { buttons = 2; }
+      const lg = buttons === 1 ? fs.querySelector('legend') : null;
+      const t = lg ? txt(lg) : '';
+      if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+    }
+    let n = el.parentElement;
+    for (let depth = 0; n && depth < 5; depth++, n = n.parentElement) {
+      if (isFormLevel(n)) return '';
+      let controls = 0, buttons = 0;
+      try {
+        buttons = n.querySelectorAll('button[aria-haspopup="listbox"]').length;
+        controls = n.querySelectorAll(QUESTION_CONTROL_SEL).length;
+      } catch (e) { return ''; }
+      if (buttons > 1 || controls > 2) return '';   // this button + its companion input, at most
+      let clone = null;
+      try {
+        clone = n.cloneNode(true);
+        const drop = clone.querySelectorAll('button, input, select, textarea, [role="listbox"], [role="option"]');
+        for (let i = 0; i < drop.length; i++) drop[i].remove();
+      } catch (e) { return ''; }
+      const t = txt(clone);
+      if (t && /[a-z]{3}/i.test(t)) return t.slice(0, 600);
+    }
+    return '';
   }
 
   // An already-rendered listbox belonging to this control, if there is one.

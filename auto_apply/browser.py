@@ -292,6 +292,15 @@ index only if nothing in CANDIDATE_DATA answers it, or the field clearly isn't p
 application (a search box, a filter, a nav link).
 - For a Yes/No question (work authorization, sponsorship, relocation, agree-to-terms), return
   exactly "yes" or "no".
+- A Yes/No question about the candidate's OWN circumstances — where they live, which schools
+  or colleges they attended, their family or partner, memberships, past employers, any history —
+  is answered only when CANDIDATE_DATA establishes it. Answer "no" only when CANDIDATE_DATA
+  clearly rules it out: a candidate whose location is "Kolkata, India" does not reside in New
+  York City. Absence is not proof: a resume listing only a university does NOT show the
+  candidate never took a class at a community college, so skip that one. Never answer "yes"
+  to such a question on a guess, and never pick an option just because the field is required:
+  if CANDIDATE_DATA does not settle it, skip that index and the candidate answers it. This
+  overrides "You MUST return one of the listed options" below.
 - For a consent / "I agree" / privacy-policy / terms checkbox, return "yes" — the candidate has
   authorized submitting on their behalf. This includes opt-ins to receive marketing, promotional,
   recruiting or other communications ("Do you consent to receive marketing?"): answer "yes".
