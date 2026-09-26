@@ -231,16 +231,20 @@ test('a checkbox answered no is left alone rather than unchecked', () => {
 
 // ── prose ────────────────────────────────────────────────────
 
-test('long prose is suggested for review, never filled silently', () => {
-  const d = one(field('Why do you want to work here?', { kind: 'textarea', required: true }));
+test('a long written answer is suggested for review, never filled silently', () => {
+  const long = 'x'.repeat(400);
+  const server = { answers: { 0: { value: long, source: 'ai_written', confidence: 0.9 } } };
+  const d = p.decide([field('Why do you want to work here?', { kind: 'textarea', required: true })],
+                     CTX, server, null)[0];
   eq(d.action, p.SUGGEST, 'the user must read a paragraph before it is submitted');
   ok(d.value.length > 180);
 });
 
-test('a short answer to the same question is filled normally', () => {
+test('a stored "why" sentence is not pasted into a motivation question', () => {
   const ctx = { answerBank: { why_do_you_want_this_role: 'Great product.' } };
   const d = p.decide([field('Why this role?', { kind: 'textarea' })], ctx, null, null)[0];
-  eq(d.action, p.SUGGEST, 'the key itself is prose-y, regardless of length');
+  eq(d.value, '', 'written per job by the server instead');
+  eq(d.compose, true);
 });
 
 test('server prose below the autofill threshold is suggested', () => {
@@ -670,14 +674,15 @@ test('a value longer than maxLength is truncated, but prose is not', () => {
 test('summarize counts every action', () => {
   const rows = [
     field('First Name'),                                            // fill
-    field('Why do you want to work here?', { kind: 'textarea' }),    // suggest
+    field('Why do you want to work here?', { kind: 'textarea' }),    // suggest (written by server)
     field('Have you used our product?', { required: true }),         // ask
     field('What is your gender?', { required: true }),               // profile (no stored)
     field('Resume/CV', { kind: 'file', documentSlot: 'resume' }),    // document
     field('Nothing we know', {}),                                   // skip
   ];
   const ctx = { answerBank: Object.assign({}, BANK, { gender: '' }), hasResume: true };
-  const counts = p.summarize(p.decide(rows, ctx, null, null));
+  const server = { answers: { 1: { value: 'Written for this job.', source: 'ai_written', confidence: 0.55 } } };
+  const counts = p.summarize(p.decide(rows, ctx, server, null));
   eq(counts.fill, 1);
   eq(counts.suggest, 1);
   eq(counts.ask, 1);
@@ -700,6 +705,117 @@ test('fieldsForServer carries options and required, and indexes by position', ()
   eq(send[0].required, true);
   deepEq(send[0].options, ['London', 'Berlin']);
   eq(send[0].sensitive, false);
+});
+
+// ── gender / veteran / disability: the profile's short answer, the form's sentence ──
+
+const GENDER_LIST = ['Cisgender woman', 'Cisgender man', 'Transgender woman', 'Transgender man',
+  'Non-binary', 'Two-spirit', 'My gender identity is not listed', "I don't wish to answer"];
+const MILITARY_LIST = ['I am on active duty', 'I am part of the national guard or on reserve',
+  'I have never served in the military', 'I identify as a protected veteran',
+  'I identify as a non-protected veteran', 'I identify in multiple military status categories',
+  "I don't wish to answer"];
+const DISABILITY_LIST = ['Yes, I have a disability', "No, I don't have a disability", "I don't wish to answer"];
+
+function eeoRow(key, stored, options) {
+  return { kind: 'combobox', label: key, options,
+           candidates: p.candidatesFor(key, stored, {}), candidateKey: key };
+}
+
+test('gender: a stored "Male" / "Female" takes the form\'s cisgender wording', () => {
+  eq(p.coerce('Male', eeoRow('gender', 'Male', GENDER_LIST)), 'Cisgender man');
+  eq(p.coerce('Female', eeoRow('gender', 'Female', GENDER_LIST)), 'Cisgender woman');
+  eq(p.coerce('Male', eeoRow('gender', 'Male', ['Male', 'Female', 'Decline'])), 'Male');
+  eq(p.coerce('Female', eeoRow('gender', 'Female', ['Male', 'Female'])), 'Female');
+});
+
+test('gender: never crosses into a transgender or different option', () => {
+  eq(p.coerce('Male', eeoRow('gender', 'Male', ['Transgender man', 'Female'])), null);
+  eq(p.coerce('Non-binary', eeoRow('gender', 'Non-binary', GENDER_LIST)), 'Non-binary');
+});
+
+test('veteran: "Not a veteran" takes "never served", never a veteran option', () => {
+  eq(p.coerce('Not a veteran', eeoRow('veteran_status', 'Not a veteran', MILITARY_LIST)),
+     'I have never served in the military');
+  eq(p.coerce('I am not a protected veteran',
+              eeoRow('veteran_status', 'I am not a protected veteran', MILITARY_LIST)),
+     'I have never served in the military');
+  eq(p.coerce('Not a veteran', eeoRow('veteran_status', 'Not a veteran',
+     ['I identify as a protected veteran', 'I identify as a non-protected veteran'])), null);
+});
+
+test('disability: "No disability" takes the "No, I don\'t…" option, never "Yes"', () => {
+  eq(p.coerce('No disability', eeoRow('disability_status', 'No disability', DISABILITY_LIST)),
+     "No, I don't have a disability");
+  eq(p.coerce('No disability', eeoRow('disability_status', 'No disability',
+     ['Yes, I have a disability', "I don't wish to answer"])), null);
+  eq(p.coerce('Yes, I have a disability', eeoRow('disability_status', 'Yes, I have a disability',
+     DISABILITY_LIST)), 'Yes, I have a disability');
+});
+
+test('EEO: a stored decline still maps onto this form\'s decline', () => {
+  eq(p.coerce('Prefer not to say', eeoRow('disability_status', 'Prefer not to say', DISABILITY_LIST)),
+     "I don't wish to answer");
+});
+
+// The profile page stores the most detailed option; coarser forms get the widened answer.
+test('profile\'s detailed EEO answers widen onto coarser forms', () => {
+  eq(p.coerce('Cisgender man', eeoRow('gender', 'Cisgender man', ['Male', 'Female', 'Decline to self-identify'])), 'Male');
+  eq(p.coerce('Cisgender woman', eeoRow('gender', 'Cisgender woman', ['Male', 'Female'])), 'Female');
+  const binaryVet = ['I am a protected veteran', 'I am not a protected veteran', "I don't wish to answer"];
+  eq(p.coerce('I have never served in the military',
+              eeoRow('veteran_status', 'I have never served in the military', binaryVet)),
+     'I am not a protected veteran');
+  eq(p.coerce('I identify as a non-protected veteran',
+              eeoRow('veteran_status', 'I identify as a non-protected veteran', binaryVet)),
+     'I am not a protected veteran');
+  // ...but a non-protected veteran never becomes "never served".
+  eq(p.coerce('I identify as a non-protected veteran',
+              eeoRow('veteran_status', 'I identify as a non-protected veteran', MILITARY_LIST)),
+     'I identify as a non-protected veteran');
+  eq(p.coerce('I identify as a protected veteran',
+              eeoRow('veteran_status', 'I identify as a protected veteran', binaryVet)),
+     'I am a protected veteran');
+  eq(p.coerce('Yes, I have a disability (or previously had a disability)',
+              eeoRow('disability_status', 'Yes, I have a disability (or previously had a disability)',
+                     ['Yes', 'No', 'Prefer not to say'])), 'Yes');
+});
+
+// ── motivation questions and conditional follow-ups ──────────
+
+test('"Why Anthropic?" is written by the server for this job, never pasted from the profile', () => {
+  const ctx = { answerBank: { why_do_you_want_this_role: 'I want to build.' } };
+  const f = field('Why Anthropic?', { kind: 'textarea', required: true });
+  const first = p.decide([f], ctx, null, null)[0];
+  eq(first.action, p.ASK);
+  eq(first.value, '', 'the stored sentence must not be used as the answer');
+  const send = p.fieldsForServer([first]);
+  eq(send.length, 1);
+  eq(send[0].compose, true);
+  const written = { answers: { 0: { value: 'At Acme I built…', source: 'ai_written', confidence: 0.55 } } };
+  const second = p.decide([f], ctx, written, null)[0];
+  eq(second.action, p.SUGGEST, 'written prose is always reviewed');
+  eq(second.value, 'At Acme I built…');
+});
+
+test('motivation wordings are recognised; unrelated text fields are not', () => {
+  for (const label of ['Why Anthropic?', 'Why Robinhood?*', 'Why do you want to work here?',
+                       'Why are you interested in this role?', 'What excites you about this position?',
+                       'Cover letter', 'What motivates you to apply?']) {
+    eq(p.decide([field(label, { kind: 'textarea' })], CTX, null, null)[0].compose, true, label);
+  }
+  for (const label of ['Describe a project', 'Current company', 'LinkedIn Profile']) {
+    notOk(p.decide([field(label)], CTX, null, null)[0].compose, label);
+  }
+});
+
+test('"If you answered Yes above, please provide additional information" stays empty', () => {
+  const ctx = { answerBank: Object.assign({}, BANK, { cover_letter: 'I want to build.' }) };
+  const f = field('If you answered "Yes" to the above question, please provide additional information here:');
+  const d = p.decide([f], ctx, null, null)[0];
+  eq(d.action, p.SKIP);
+  eq(d.value, '');
+  eq(p.fieldsForServer([d]).length, 0, 'the model must never be asked to invent an explanation');
 });
 
 test('decide does not mutate the rows it is given', () => {

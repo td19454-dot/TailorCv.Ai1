@@ -501,6 +501,138 @@ export function formatDateForField(value, hints) {
   return `${pad(d.m)}/${pad(d.d)}/${d.y}`;
 }
 
+// Gender, veteran and disability status: short stored answers ("Male", "Not a
+// veteran", "No disability") that forms spell as sentences ("Cisgender man",
+// "I have never served in the military", "No, I don't have a disability").
+// Those share too few words with the stored text for the fuzzy matcher, so
+// each answer carries the phrasings forms actually use.
+//
+// `test` recognises the answer in EITHER the stored value or an option; the
+// guard then only lets an option in the SAME group through. That is what keeps
+// "Not a veteran" off "I identify as a non-protected veteran" and "No
+// disability" off "Yes, I have a disability" — each pair shares the words a
+// similarity score would latch onto. `not` excludes look-alikes the test would
+// otherwise catch. Groups are checked in order, so the negative answers come
+// before the affirmative ones whose words they contain.
+const DECLINE_WORDS = /\b(decline|prefer not|don'?t wish|do not wish|not wish to|rather not|choose not)\b/i;
+
+export const EEO_GROUPS = {
+  gender: [
+    { test: /\b(trans(gender)?\s*(woman|female)|trans\s*fem\w*|mtf)\b/i,
+      shapes: ['Transgender woman', 'Trans woman'] },
+    { test: /\b(trans(gender)?\s*(man|male)|trans\s*masc\w*|ftm)\b/i,
+      shapes: ['Transgender man', 'Trans man'] },
+    { test: /\b(non[\s-]?binary|genderqueer|gender\s*non[\s-]?conforming|enby)\b/i,
+      shapes: ['Non-binary', 'Nonbinary', 'Non-binary / non-conforming', 'Genderqueer'] },
+    { test: /^(?!.*\btrans)(?=.*\b(female|woman|women|girl)\b)/i,
+      shapes: ['Female', 'Woman', 'Cisgender woman', 'Cis woman'] },
+    { test: /^(?!.*\btrans)(?=.*\b(male|man|men|boy)\b)/i,
+      shapes: ['Male', 'Man', 'Cisgender man', 'Cis man'] },
+  ],
+  veteran_status: [
+    // Before the veteran rows: "not a protected veteran" contains "protected veteran".
+    { test: /\b(never served|not (a |an )?(protected )?veteran|non[\s-]?veteran|no military|have not served|haven'?t served|not served)\b|^\s*no\b/i,
+      not: /\bnon[\s-]?protected veteran\b/i,
+      shapes: ['I am not a protected veteran', 'I am not a veteran', 'Not a veteran',
+               'I have never served in the military', 'No'] },
+    { test: /\bnon[\s-]?protected veteran\b|\bveteran,? but not (a )?protected\b/i,
+      // One-way: on a form that only asks protected-or-not, "not a protected
+      // veteran" is true of them. "Never served" is not, so no group-level merge.
+      widensTo: /^\s*(i am )?not a protected veteran\s*$/i,
+      shapes: ['I identify as a non-protected veteran', 'Non-protected veteran',
+               'I am not a protected veteran'] },
+    { test: /\b(protected veteran|disabled veteran|recently separated|armed forces service medal)\b/i,
+      shapes: ['I identify as one or more of the classifications of protected veteran',
+               'I identify as a protected veteran', 'Protected veteran'] },
+    { test: /\b(active duty)\b/i, shapes: ['I am on active duty', 'Active duty'] },
+    { test: /\b(national guard|reserves?)\b/i,
+      shapes: ['I am part of the national guard or on reserve', 'National Guard or Reserve'] },
+  ],
+  disability_status: [
+    { test: /\b(no disability|not disabled|(don'?t|do not) have a disability|without a disability)\b|^\s*no\b/i,
+      shapes: ["No, I don't have a disability", 'No, I do not have a disability',
+               "No, I don't have a disability and have not had one in the past",
+               'No disability', 'No'] },
+    { test: /\b(have (had )?a disability|disabled|with a disability)\b|^\s*yes\b/i,
+      not: /\b(don'?t|do not|not) (have|had)\b|\bnot disabled\b/i,
+      shapes: ['Yes, I have a disability (or previously had a disability)',
+               'Yes, I have a disability', 'Yes'] },
+  ],
+};
+
+/**
+ * May `option` answer the stored EEO value in group `want`? The same group, or
+ * an option that group explicitly widens to.
+ */
+export function eeoOptionAllowed(key, want, option) {
+  if (want < 0) return true;
+  if (eeoGroup(key, option) === want) return true;
+  const g = (EEO_GROUPS[key] || [])[want];
+  return !!(g && g.widensTo && g.widensTo.test(String(option || '')));
+}
+
+/** The index of the EEO group `text` belongs to under `key`, or -1. */
+export function eeoGroup(key, text) {
+  const t = String(text || '');
+  if (!t || DECLINE_WORDS.test(t)) return -1;   // declines have their own fallback
+  return (EEO_GROUPS[key] || []).findIndex(g => g.test.test(t) && !(g.not && g.not.test(t)));
+}
+
+export function eeoShapes(key, text) {
+  const i = eeoGroup(key, text);
+  return i < 0 ? [] : EEO_GROUPS[key][i].shapes;
+}
+
+// ── questions an AI writes an answer to ──────────────────────
+//
+// "Why Anthropic?", "Why do you want to work here?", "What excites you about
+// this role?", a cover-letter box. No stored value answers these well: the
+// right answer depends on the company and the job, so they are written per
+// application from the resume (routers/extension_autofill.py _compose_answers)
+// and always offered for review.
+const MOTIVATION_RE = [
+  /\bwhy\b[^?]{0,60}\b(join|work|interested|interest|apply|applying|want|us|role|position|company|team|opportunity|here)\b/i,
+  /^\s*why\s+[^\s?][^?]{0,40}\?\s*\*?\s*$/i,            // "Why Anthropic?" / "Why Robinhood?*"
+  /\bwhat (excites|interests|draws|attracts|motivates) you\b/i,
+  /\bwhat about (this|the) (role|position|company|team|job)\b/i,
+  /\bmotivat(ion|es|ed)\b/i,
+  /\bcover letter\b/i,
+  /\btell us (about yourself|why)\b/i,
+];
+const CHOICE_KINDS = new Set(['select', 'combobox', 'radio', 'checkbox', 'file', 'date-parts']);
+
+/** Should this field's answer be written for this job rather than filled from the profile? */
+export function isMotivationQuestion(label, kind) {
+  if (kind && CHOICE_KINDS.has(kind)) return false;   // listed answers; nothing to write
+  const text = String(label || '');
+  return MOTIVATION_RE.some(re => re.test(text));
+}
+
+/**
+ * A box that only applies when an earlier question was answered a certain way:
+ * "If you answered 'Yes' to the above question, please provide additional
+ * information". Left empty — autofill answered that earlier question itself
+ * and has nothing true to add here, and anything it wrote would be invented.
+ */
+export function isConditionalFollowUp(label) {
+  const text = String(label || '').replace(/[“”"']/g, '');
+  return /^\s*(if|where) (you (answered|selected|chose|checked|said)|yes|so|applicable|the answer)\b/i.test(text)
+      || /\bif you answered yes\b/i.test(text)
+      || /^\s*(please )?(explain|elaborate|specify|provide details)\b[^.?]{0,40}\bif (yes|so|applicable)\b/i.test(text);
+}
+
+// The self-identification dropdowns. Their lists are short and closed, and
+// they filter by substring as you type, so typing the stored answer hides the
+// option that means it ("Male" filters out "Cisgender man", "South Asian"
+// filters out "Asian"). The writer opens these and reads the whole list before
+// typing anything. Long or search-as-you-type lists (city, school, country)
+// are NOT in here: opening those shows nothing, or only the first rows of a
+// virtualised list, so for them typing is how the right option appears.
+export const READ_FIRST_KEYS = new Set([
+  'gender', 'race_ethnicity', 'veteran_status', 'disability_status',
+  'gender_pronouns', 'lgbtq_identity',
+]);
+
 // ── field synonyms: label -> answer-bank key ─────────────────
 //
 // The deterministic tier. Each entry maps one answer_bank() key (see
@@ -561,7 +693,10 @@ export const FIELD_SYNONYMS = [
 
   // narrative
   { key: 'why_do_you_want_this_role', labels: ['why this role', 'why do you want to work here', 'why are you interested', 'why us', 'why this company', 'motivation'] },
-  { key: 'cover_letter', labels: ['cover letter', 'additional information', 'anything else', 'tell us about yourself', 'introduce yourself'] },
+  // Not "additional information" / "anything else": those are mostly follow-ups
+  // ("If you answered Yes, please provide additional information") and got the
+  // stored motivation sentence pasted into them.
+  { key: 'cover_letter', labels: ['cover letter', 'tell us about yourself', 'introduce yourself'] },
 
   // sensitive — stored answers only, never inferred
   { key: 'authorized_to_work_in_country', sensitive: true, labels: ['authorized to work', 'legally authorized to work', 'work authorization', 'eligible to work', 'employment eligibility', 'right to work'] },

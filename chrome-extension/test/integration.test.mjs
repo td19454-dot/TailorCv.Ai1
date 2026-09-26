@@ -98,6 +98,11 @@ async function withForm(html, opts, fn) {
     runtime: {
       sendMessage(msg, cb) {
         sent.push(msg);
+        // A slow /plan, like a real one waiting on its model calls.
+        if (msg.type === 'AF_PLAN' && options.planDelayMs) {
+          setTimeout(() => cb(handleMessage(msg, options)), options.planDelayMs);
+          return;
+        }
         cb(handleMessage(msg, options));
       },
     },
@@ -134,6 +139,11 @@ function handleMessage(msg, options) {
       if (options.serverError) return { error: options.serverError, code: options.serverCode };
       const answers = {};
       for (const field of msg.payload.fields || []) {
+        // A motivation question the server writes for this job (_compose_answers).
+        if (field.compose && options.composeAnswer) {
+          answers[String(field.i)] = { value: options.composeAnswer, source: 'ai_written', confidence: 0.55 };
+          continue;
+        }
         const value = (options.serverAnswers || {})[field.label];
         if (value === undefined) continue;
         answers[String(field.i)] = {
@@ -352,17 +362,43 @@ test('Greenhouse: an unknown product question is answered by the server tier', a
   });
 });
 
-test('Greenhouse: prose is written but flagged for review', async () => {
-  await withForm(fixtures.GREENHOUSE, {}, async (env) => {
+test('Greenhouse: a motivation question is written for the job and flagged for review', async () => {
+  const written = 'y'.repeat(300);
+  await withForm(fixtures.GREENHOUSE, { composeAnswer: written }, async (env, sent) => {
     const ctx = Object.assign({}, CTX, {
-      answerBank: Object.assign({}, BANK, {
-        why_do_you_want_this_role: 'x'.repeat(300),
-      }),
+      answerBank: Object.assign({}, BANK, { why_do_you_want_this_role: 'I want to build.' }),
     });
     const result = await run_.runAutofill(ctx, null);
     const row = byLabel(result.decisions, 'why do you want');
     eq(row.action, p.SUGGEST, 'the user must read it before submitting');
-    eq(valueOf(env, '#q_why').length, 300, 'but it IS written, so they can read it');
+    eq(valueOf(env, '#q_why'), written, 'the written answer, not the stored sentence');
+    const plan = sent.find(m => m.type === 'AF_PLAN');
+    ok(plan && plan.payload.fields.some(f => f.compose), 'sent to the server to be written');
+  });
+});
+
+test('profile answers are in the form while the server is still writing', async () => {
+  await withForm(fixtures.GREENHOUSE, { composeAnswer: 'Written for this job.', planDelayMs: 400 },
+                 async (env) => {
+    const running = run_.runAutofill(CTX, null);
+    await new Promise(r => setTimeout(r, 200));
+    eq(valueOf(env, '#first_name'), 'Ada', 'wave 1 must not wait for the server');
+    eq(valueOf(env, '#q_why'), '', 'the server has not answered yet');
+    const result = await running;
+    eq(valueOf(env, '#q_why'), 'Written for this job.', 'wave 2 writes it when it arrives');
+    eq(byLabel(result.decisions, 'why do you want').action, p.SUGGEST);
+  });
+});
+
+test('a field the user fills while the server is thinking is never overwritten', async () => {
+  await withForm(fixtures.GREENHOUSE, { composeAnswer: 'Written for this job.', planDelayMs: 400 },
+                 async (env) => {
+    const running = run_.runAutofill(CTX, null);
+    await new Promise(r => setTimeout(r, 200));
+    env.document.querySelector('#q_why').value = 'My own words.';
+    const result = await running;
+    eq(valueOf(env, '#q_why'), 'My own words.');
+    eq(byLabel(result.decisions, 'why do you want').action, p.SKIP);
   });
 });
 

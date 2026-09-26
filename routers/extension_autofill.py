@@ -23,6 +23,7 @@ request.
 
 from __future__ import annotations
 
+import asyncio
 import json
 import logging
 import os
@@ -197,7 +198,6 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
     not sent here at all, so this only ever sees the remainder.
     """
     from main import enforce_quota, refund_quota
-    from auto_apply import qa_store
     from auto_apply.match_guard import classify_sensitive, is_never_fill
     from auto_apply.profile import answer_bank, build_applicant_profile
 
@@ -235,63 +235,32 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         answers: dict[str, dict] = {}
         ask: list[int] = []
 
-        # ── Tier 2: recall a stored answer, exactly or semantically ──
-        stored = qa_store.load_answers(db, user.id)
-        recall_targets = [f for f in fields if not f.sensitive and not f.neverFill]
-        label_vectors: list[list[float]] = []
-        if stored and recall_targets:
-            await qa_store.backfill_embeddings(db, user.id, stored)
-            label_vectors = await _embed_quietly([f.label for f in recall_targets])
-
-        for idx, f in enumerate(recall_targets):
-            vector = label_vectors[idx] if idx < len(label_vectors) else []
-            hit = qa_store.recall(f.label, vector, stored)
-            if not hit:
-                continue
-            value = _resolve_against_options(hit["answer"], f)
-            if value is None:
-                continue
-            answers[str(f.i)] = {
-                "value": value,
-                "source": "saved_answer",
-                "confidence": 0.85 if hit["confident"] else 0.6,
-                "matchedQuestion": hit["question"],
-            }
-
-        # ── Tier 3: one LLM call for whatever is left ──
-        # What the model is allowed to see. Everything sensitive, every
-        # never-fill identifier and every document slot is absent, so there is no
-        # index it could return for one of those.
-        remaining = [f for f in fields
-                     if str(f.i) not in answers
-                     and not f.sensitive and not f.neverFill and not f.documentSlot
-                     # Identified but empty in the profile (Middle Name for
-                     # someone with none): the model could only borrow a
-                     # neighbouring value, e.g. the full name.
-                     and not f.recallOnly]
-        if remaining:
-            try:
-                llm = await _llm_answers(bank, remaining, payload)
-            except Exception:
-                logger.exception("autofill plan: answer-mapping LLM call failed")
-                llm = {}
-            for f in remaining:
-                raw = llm.get(str(f.i))
-                if raw is None or not str(raw).strip():
-                    continue
-                value = _resolve_against_options(str(raw), f)
-                if value is None:
-                    continue
-                key = _bank_key_for(value, bank)
-                exact_option = bool(f.options) and _is_listed_option(value, f)
-                prose = key in PROSE_KEYS or len(str(value)) > 180
-                answers[str(f.i)] = {
-                    "value": value,
-                    "source": "ai",
-                    # Verifiable (the value is one of the options the form
-                    # itself offers) earns autofill; prose never does.
-                    "confidence": 0.55 if prose else (0.8 if exact_option else 0.65),
-                }
+        # ── Tier 3a: write the motivation answers for this job ──
+        # Started first and awaited last. It is the slowest call here (it writes
+        # paragraphs) and depends on nothing below, so recall and the mapping
+        # call run while it does; the request costs the slower of the two model
+        # calls rather than their sum.
+        compose_targets = [f for f in fields
+                           if f.compose and not f.sensitive and not f.neverFill]
+        # The resume text is read here, not inside the task: the task must not
+        # touch the DB session that recall is using.
+        resume_text = user.base_resume_text or ""
+        compose_task = (asyncio.create_task(
+                            _compose_answers(resume_text, bank, compose_targets, payload))
+                        if compose_targets else None)
+        try:
+            await _recall_and_map(db, user, bank, fields, payload, answers)
+        except BaseException:
+            if compose_task:
+                compose_task.cancel()
+            raise
+        composed = await _settle(compose_task)
+        for f in compose_targets:
+            text = str(composed.get(str(f.i)) or "").strip()
+            if text:
+                # Prose: always offered for review, never filled silently.
+                answers[str(f.i)] = {"value": text, "source": "ai_written",
+                                     "confidence": 0.55}
 
         # Anything required that nothing answered is the user's to fill in. A
         # sensitive field with no stored answer is always asked, required or not:
@@ -320,6 +289,87 @@ async def autofill_plan(request: Request, payload: AutofillPlanRequest):
         raise HTTPException(status_code=500, detail="Could not build an autofill plan.")
     finally:
         db.close()
+
+
+async def _settle(task) -> dict:
+    """The compose task's answers, or {} if there was none or it failed."""
+    if task is None:
+        return {}
+    try:
+        return await task
+    except Exception:
+        logger.exception("autofill plan: compose LLM call failed")
+        return {}
+
+
+async def _recall_and_map(db, user, bank: dict, fields, payload, answers: dict) -> None:
+    """Tiers 2 and 3b: stored answers, then one mapping call for the rest.
+
+    Fills `answers` in place. Runs while _compose_answers is in flight.
+    """
+    from auto_apply import qa_store
+
+    # ── Tier 2: recall a stored answer, exactly or semantically ──
+    stored = qa_store.load_answers(db, user.id)
+    # Motivation questions are never recalled: the stored answer to "Why
+    # Robinhood?" is exactly the wrong answer to "Why Anthropic?".
+    recall_targets = [f for f in fields
+                      if not f.sensitive and not f.neverFill and not f.compose]
+    label_vectors: list[list[float]] = []
+    if stored and recall_targets:
+        await qa_store.backfill_embeddings(db, user.id, stored)
+        label_vectors = await _embed_quietly([f.label for f in recall_targets])
+
+    for idx, f in enumerate(recall_targets):
+        vector = label_vectors[idx] if idx < len(label_vectors) else []
+        hit = qa_store.recall(f.label, vector, stored)
+        if not hit:
+            continue
+        value = _resolve_against_options(hit["answer"], f)
+        if value is None:
+            continue
+        answers[str(f.i)] = {
+            "value": value,
+            "source": "saved_answer",
+            "confidence": 0.85 if hit["confident"] else 0.6,
+            "matchedQuestion": hit["question"],
+        }
+
+    # ── Tier 3b: one LLM call for whatever is left ──
+    # What the model is allowed to see. Everything sensitive, every
+    # never-fill identifier and every document slot is absent, so there is no
+    # index it could return for one of those.
+    remaining = [f for f in fields
+                 if str(f.i) not in answers
+                 and not f.sensitive and not f.neverFill and not f.documentSlot
+                 and not f.compose
+                 # Identified but empty in the profile (Middle Name for
+                 # someone with none): the model could only borrow a
+                 # neighbouring value, e.g. the full name.
+                 and not f.recallOnly]
+    if remaining:
+        try:
+            llm = await _llm_answers(bank, remaining, payload)
+        except Exception:
+            logger.exception("autofill plan: answer-mapping LLM call failed")
+            llm = {}
+        for f in remaining:
+            raw = llm.get(str(f.i))
+            if raw is None or not str(raw).strip():
+                continue
+            value = _resolve_against_options(str(raw), f)
+            if value is None:
+                continue
+            key = _bank_key_for(value, bank)
+            exact_option = bool(f.options) and _is_listed_option(value, f)
+            prose = key in PROSE_KEYS or len(str(value)) > 180
+            answers[str(f.i)] = {
+                "value": value,
+                "source": "ai",
+                # Verifiable (the value is one of the options the form
+                # itself offers) earns autofill; prose never does.
+                "confidence": 0.55 if prose else (0.8 if exact_option else 0.65),
+            }
 
 
 async def _embed_quietly(labels: list[str]) -> list[list[float]]:
@@ -400,7 +450,11 @@ async def _llm_answers(bank: dict, fields, payload) -> dict:
     from auto_apply.browser import _FIELD_ANSWER_PROMPT
     from functions import get_resume_response
 
-    candidate = dict(bank)
+    # Without the stored "why" text: given it, the model adapted that one
+    # sentence into any free-text box it could not otherwise answer ("If you
+    # answered Yes, please explain" got "I want to build."). Motivation
+    # questions are written separately, per job, by _compose_answers.
+    candidate = {k: v for k, v in bank.items() if k not in PROSE_KEYS}
     if payload.jobTitle:
         candidate["_applying_for"] = payload.jobTitle
     if payload.jobCompany:
@@ -411,6 +465,70 @@ async def _llm_answers(bank: dict, fields, payload) -> dict:
         fields_block=_fields_block(fields),
     )
     raw = await get_resume_response(prompt)
+    parsed = json.loads(raw)
+    answers = parsed.get("answers") if isinstance(parsed, dict) else None
+    return answers if isinstance(answers, dict) else {}
+
+
+_COMPOSE_PROMPT = """You are helping a job candidate answer the free-text questions on ONE job application.
+Write each answer in the candidate's own first-person voice, as they would type it.
+
+THE JOB
+Title: {title}
+Company: {company}
+Application page: {url}
+Job description (may be partial or empty):
+{jd}
+
+THE CANDIDATE'S RESUME
+{resume}
+
+THE CANDIDATE'S OWN NOTE ON WHAT THEY WANT (their angle — build on it, do not quote it verbatim):
+{seed}
+
+QUESTIONS (index: question):
+{questions}
+
+Rules:
+- Tie the candidate's REAL experience from the resume to what this role and company need. Name
+  specific projects, skills or results from the resume; never invent experience, employers,
+  numbers or credentials that are not in it.
+- Say something specific about this company or role only if it is supported by the job
+  description, the page, or the question itself. Never invent company facts, products, values,
+  news or people. If the description is empty, stay specific about the role and the candidate.
+- If the company is not given, infer it from the question ("Why Anthropic?") or the page URL.
+- Length: 80-150 words for a "why" / motivation question; 150-220 words for a cover letter or
+  "tell us about yourself". No greeting or sign-off unless it is a cover letter.
+- Plain, direct, confident, no clichés ("I am passionate about", "I have always dreamed", "a
+  perfect fit"). No placeholders like [Company].
+
+Return ONLY a JSON object: {{"answers": {{"<index>": "<answer>"}}}}
+"""
+
+
+async def _compose_answers(resume_text: str, bank: dict, fields, payload) -> dict:
+    """Write the motivation answers for this one job.
+
+    Separate from _llm_answers on purpose. That call maps stored facts onto
+    fields and is told never to invent; this one is asked to WRITE, from the
+    resume and the job. Each answer comes back as a suggestion the user reviews
+    before submitting — the extension never submits.
+    """
+    from functions import get_resume_response
+
+    resume = (resume_text or "").strip()
+    if not resume:
+        return {}
+    prompt = _COMPOSE_PROMPT.format(
+        title=payload.jobTitle or "(not given)",
+        company=payload.jobCompany or "(not given)",
+        url=payload.url or "",
+        jd=(payload.jdExcerpt or "(none)")[:2000],
+        resume=resume[:8000],
+        seed=str(bank.get("why_do_you_want_this_role") or "(none)")[:1000],
+        questions="\n".join(f"{f.i}: {f.label[:500]}" for f in fields),
+    )
+    raw = await get_resume_response(prompt, temperature=0.4)
     parsed = json.loads(raw)
     answers = parsed.get("answers") if isinstance(parsed, dict) else None
     return answers if isinstance(answers, dict) else {}

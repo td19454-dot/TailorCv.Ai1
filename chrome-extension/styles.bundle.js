@@ -1,1036 +1,1229 @@
 (() => {
   // sidebar.css
-  var sidebar_default = `/* TailorCV Auto Apply \u2014 Injected Sidebar Styles */\r
-\r
-#tailorcv-sidebar {\r
-  position: fixed !important;\r
-  top: 80px !important;\r
-  right: 0 !important;\r
-  width: 400px !important;\r
-  max-width: calc(100vw - 16px) !important;\r
-  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;\r
-  border: 1px solid rgba(79, 127, 255, 0.3) !important;\r
-  border-right: none !important;\r
-  border-radius: 14px 0 0 14px !important;\r
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;\r
-  z-index: 2147483647 !important;\r
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;\r
-  font-size: 15px !important;\r
-  color: #f1f5f9 !important;\r
-  padding: 20px !important;\r
-  transition: transform 0.25s ease !important;\r
-  /* Fixed and anchored at top:80px, so without a cap anything taller than the\r
-     window (the skills pop-up, the changes panel) ran off the bottom unseen. */\r
-  max-height: calc(100vh - 96px) !important;\r
-  overflow-y: auto !important;\r
-  overscroll-behavior: contain !important;\r
-}\r
-\r
-#tailorcv-sidebar.tcv-collapsed {\r
-  /* 120% of the panel's own width guarantees it clears fully off-screen\r
-     (including box-shadow) instead of leaving a text sliver visible. */\r
-  transform: translateX(120%) !important;\r
-}\r
-\r
-/* Small icon-only launcher shown in place of the panel while collapsed. */\r
-#tailorcv-launcher {\r
-  position: fixed !important;\r
-  top: 80px !important;\r
-  right: 0 !important;\r
-  width: 56px !important;\r
-  height: 56px !important;\r
-  display: none !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;\r
-  border: 1px solid rgba(79, 127, 255, 0.3) !important;\r
-  border-right: none !important;\r
-  border-radius: 12px 0 0 12px !important;\r
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;\r
-  z-index: 2147483647 !important;\r
-  cursor: pointer !important;\r
-  padding: 0 !important;\r
-}\r
-\r
-#tailorcv-launcher.tcv-visible {\r
-  display: flex !important;\r
-}\r
-\r
-#tailorcv-launcher img {\r
-  width: 34px !important;\r
-  height: 34px !important;\r
-  border-radius: 8px !important;\r
-  pointer-events: none !important;\r
-}\r
-\r
-#tailorcv-sidebar * {\r
-  box-sizing: border-box !important;\r
-  font-family: inherit !important;\r
-  line-height: 1.4 !important;\r
-}\r
-\r
-.tcv-header {\r
-  position: relative !important;\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  justify-content: space-between !important;\r
-  margin-bottom: 16px !important;\r
-}\r
-\r
-.tcv-header-actions {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  gap: 4px !important;\r
-}\r
-\r
-.tcv-brand {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  gap: 8px !important;\r
-}\r
-\r
-.tcv-logo-icon {\r
-  width: 22px !important;\r
-  height: 22px !important;\r
-  border-radius: 6px !important;\r
-  display: block !important;\r
-}\r
-\r
-.tcv-logo {\r
-  font-size: 18px !important;\r
-  font-weight: 700 !important;\r
-  background: linear-gradient(135deg, #4f7fff, #c9b8ff) !important;\r
-  -webkit-background-clip: text !important;\r
-  -webkit-text-fill-color: transparent !important;\r
-  background-clip: text !important;\r
-}\r
-\r
-.tcv-toggle {\r
-  cursor: pointer !important;\r
-  color: #64748b !important;\r
-  font-size: 18px !important;\r
-  background: none !important;\r
-  border: none !important;\r
-  padding: 4px 6px !important;\r
-  border-radius: 6px !important;\r
-  line-height: 1 !important;\r
-}\r
-.tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }\r
-\r
-/* Account menu: only shown once GET_PROFILE confirms a logged-in session.\r
-   The trigger is a round avatar carrying the user's initial, so it reads as\r
-   an account icon rather than another toolbar action. */\r
-.tcv-account-btn {\r
-  display: none !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  width: 24px !important;\r
-  height: 24px !important;\r
-  cursor: pointer !important;\r
-  color: #fff !important;\r
-  font-size: 12px !important;\r
-  font-weight: 700 !important;\r
-  text-transform: uppercase !important;\r
-  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;\r
-  border: none !important;\r
-  border-radius: 50% !important;\r
-  padding: 0 !important;\r
-  line-height: 1 !important;\r
-}\r
-.tcv-account-btn.tcv-visible { display: inline-flex !important; }\r
-.tcv-account-btn:hover { opacity: 0.85 !important; }\r
-\r
-.tcv-account-menu {\r
-  display: none !important;\r
-  position: absolute !important;\r
-  top: 100% !important;\r
-  right: 0 !important;\r
-  margin-top: 8px !important;\r
-  width: 210px !important;\r
-  background: #101a30 !important;\r
-  border: 1px solid rgba(255,255,255,0.14) !important;\r
-  border-radius: 10px !important;\r
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;\r
-  padding: 8px !important;\r
-  z-index: 10 !important;\r
-}\r
-.tcv-account-menu.tcv-visible { display: block !important; }\r
-\r
-.tcv-account-email {\r
-  font-size: 12px !important;\r
-  color: #8da3c6 !important;\r
-  padding: 4px 8px 8px !important;\r
-  margin-bottom: 4px !important;\r
-  border-bottom: 1px solid rgba(255,255,255,0.08) !important;\r
-  word-break: break-all !important;\r
-}\r
-\r
-.tcv-account-item {\r
-  display: block !important;\r
-  width: 100% !important;\r
-  text-align: left !important;\r
-  background: none !important;\r
-  border: none !important;\r
-  color: #eaf1ff !important;\r
-  font-size: 13px !important;\r
-  font-weight: 400 !important;\r
-  text-decoration: none !important;\r
-  padding: 8px !important;\r
-  border-radius: 6px !important;\r
-  cursor: pointer !important;\r
-}\r
-.tcv-account-item:hover:not(:disabled) { background: rgba(255,255,255,0.08) !important; }\r
-\r
-.tcv-account-logout {\r
-  color: #fca5a5 !important;\r
-}\r
-.tcv-account-logout:disabled { opacity: 0.6 !important; cursor: not-allowed !important; }\r
-\r
-.tcv-stats {\r
-  display: flex !important;\r
-  gap: 8px !important;\r
-  margin-bottom: 16px !important;\r
-}\r
-\r
-.tcv-stat {\r
-  flex: 1 !important;\r
-  text-align: center !important;\r
-  padding: 10px 6px !important;\r
-  border-radius: 10px !important;\r
-  background: rgba(255,255,255,0.05) !important;\r
-}\r
-\r
-.tcv-stat-num {\r
-  font-size: 22px !important;\r
-  font-weight: 700 !important;\r
-  display: block !important;\r
-}\r
-.tcv-stat-num.tcv-blue  { color: #60a5fa !important; }\r
-.tcv-stat-num.tcv-green { color: #4ade80 !important; }\r
-.tcv-stat-num.tcv-red   { color: #f87171 !important; }\r
-\r
-.tcv-stat-label {\r
-  font-size: 10px !important;\r
-  color: #64748b !important;\r
-  text-transform: uppercase !important;\r
-  letter-spacing: 0.06em !important;\r
-}\r
-\r
-.tcv-btn {\r
-  width: 100% !important;\r
-  padding: 13px 16px !important;\r
-  border: none !important;\r
-  border-radius: 10px !important;\r
-  font-size: 15px !important;\r
-  font-weight: 600 !important;\r
-  cursor: pointer !important;\r
-  margin-bottom: 8px !important;\r
-  transition: opacity 0.2s !important;\r
-}\r
-.tcv-btn:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }\r
-\r
-.tcv-btn-start {\r
-  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;\r
-  color: #fff !important;\r
-}\r
-.tcv-btn-start:hover:not(:disabled) { opacity: 0.88 !important; }\r
-\r
-.tcv-btn-stop {\r
-  background: rgba(239,68,68,0.18) !important;\r
-  color: #f87171 !important;\r
-  border: 1px solid rgba(239,68,68,0.35) !important;\r
-}\r
-.tcv-btn-stop:hover { background: rgba(239,68,68,0.28) !important; }\r
-\r
-.tcv-btn-outline {\r
-  background: rgba(255,255,255,0.04) !important;\r
-  color: #eaf1ff !important;\r
-  border: 1px solid rgba(255,255,255,0.18) !important;\r
-}\r
-.tcv-btn-outline:hover { background: rgba(255,255,255,0.09) !important; }\r
-\r
-.tcv-divider {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  gap: 10px !important;\r
-  margin: 14px 0 !important;\r
-  color: #64748b !important;\r
-  font-size: 11px !important;\r
-  text-transform: uppercase !important;\r
-  letter-spacing: 0.06em !important;\r
-}\r
-.tcv-divider::before, .tcv-divider::after {\r
-  content: '' !important;\r
-  flex: 1 !important;\r
-  height: 1px !important;\r
-  background: rgba(255,255,255,0.08) !important;\r
-}\r
-\r
-.tcv-login-links {\r
-  display: flex !important;\r
-  justify-content: space-between !important;\r
-  margin-top: 10px !important;\r
-  gap: 10px !important;\r
-}\r
-.tcv-login-links .tcv-link { font-size: 13px !important; }\r
-\r
-.tcv-status-text {\r
-  font-size: 13px !important;\r
-  color: #64748b !important;\r
-  text-align: center !important;\r
-  margin: 6px 0 10px !important;\r
-  min-height: 18px !important;\r
-}\r
-.tcv-status-text.tcv-ok    { color: #86efac !important; }\r
-.tcv-status-text.tcv-error { color: #fca5a5 !important; }\r
-\r
-.tcv-loading-anim {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  padding: 28px 0 4px !important;\r
-}\r
-.tcv-loading-anim svg,\r
-.tcv-loading-anim img {\r
-  width: 84px !important;\r
-  height: 84px !important;\r
-  display: block !important;\r
-}\r
-\r
-.tcv-loading-label {\r
-  text-align: center !important;\r
-  font-size: 13px !important;\r
-  font-weight: 600 !important;\r
-  color: #4ade80 !important;\r
-  padding-bottom: 24px !important;\r
-}\r
-\r
-.tcv-progress-wrap {\r
-  display: none !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  margin: 14px 0 4px !important;\r
-}\r
-.tcv-progress-wrap.tcv-visible {\r
-  display: flex !important;\r
-}\r
-\r
-.tcv-progress-circle {\r
-  position: relative !important;\r
-  width: 88px !important;\r
-  height: 88px !important;\r
-}\r
-\r
-.tcv-progress-ring {\r
-  transform: rotate(-90deg) !important;\r
-}\r
-\r
-.tcv-progress-track {\r
-  fill: none !important;\r
-  stroke: rgba(255,255,255,0.08) !important;\r
-  stroke-width: 6 !important;\r
-}\r
-\r
-.tcv-progress-bar {\r
-  fill: none !important;\r
-  stroke: url(#tcvProgressGradient) !important;\r
-  stroke-width: 6 !important;\r
-  stroke-linecap: round !important;\r
-}\r
-\r
-.tcv-progress-pct {\r
-  position: absolute !important;\r
-  inset: 0 !important;\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  font-size: 18px !important;\r
-  font-weight: 700 !important;\r
-  color: #eaf1ff !important;\r
-  transition: opacity 0.25s ease !important;\r
-}\r
-.tcv-success-tick {\r
-  display: none !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  width: 100% !important;\r
-  height: 170px !important;\r
-}\r
-.tcv-success-tick.tcv-visible {\r
-  display: flex !important;\r
-}\r
-.tcv-success-tick svg,\r
-.tcv-success-tick img {\r
-  width: 170px !important;\r
-  height: 170px !important;\r
-  display: block !important;\r
-}\r
-\r
-.tcv-score-card {\r
-  display: none !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  gap: 16px !important;\r
-  padding: 16px 12px !important;\r
-  margin: 4px 0 !important;\r
-  border-radius: 12px !important;\r
-  background: linear-gradient(160deg, rgba(79,127,255,0.12), rgba(74,222,128,0.12)) !important;\r
-  border: 1px solid rgba(74,222,128,0.3) !important;\r
-}\r
-.tcv-score-card.tcv-visible {\r
-  display: flex !important;\r
-}\r
-\r
-/* Skills the job asked for that the resume evidences nowhere. Deliberately\r
-   quieter than the score card next to it: this is information, not a result. */\r
-.tcv-skill-gaps {\r
-  padding: 12px !important;\r
-  margin: 4px 0 !important;\r
-  border-radius: 12px !important;\r
-  background: rgba(255,255,255,0.03) !important;\r
-  border: 1px solid rgba(148,163,184,0.18) !important;\r
-}\r
-.tcv-skill-gaps-title {\r
-  font-size: 11px !important;\r
-  font-weight: 700 !important;\r
-  letter-spacing: .04em !important;\r
-  text-transform: uppercase !important;\r
-  color: #94a3b8 !important;\r
-  margin-bottom: 8px !important;\r
-}\r
-.tcv-skill-gaps-pills {\r
-  display: flex !important;\r
-  flex-wrap: wrap !important;\r
-  gap: 6px !important;\r
-}\r
-.tcv-skill-gap-pill {\r
-  display: inline-block !important;\r
-  padding: 3px 9px !important;\r
-  border-radius: 999px !important;\r
-  font-size: 11px !important;\r
-  font-weight: 600 !important;\r
-  color: #cbd5e1 !important;\r
-  background: rgba(79,127,255,0.14) !important;\r
-  border: 1px solid rgba(79,127,255,0.28) !important;\r
-}\r
-.tcv-skill-gap-pill.added {\r
-  color: #6ee7b7 !important;\r
-  background: rgba(16,185,129,0.16) !important;\r
-  border: 1px solid rgba(16,185,129,0.35) !important;\r
-}\r
-.tcv-skill-gaps-note {\r
-  margin-top: 8px !important;\r
-  font-size: 10.5px !important;\r
-  line-height: 1.45 !important;\r
-  color: #7e8ba3 !important;\r
-}\r
-.tcv-skill-gaps-note.tcv-error { color: #fca5a5 !important; }\r
-\r
-/* Post-tailor skills pop-up: the download waits on this, so it is the loudest\r
-   thing in the panel while it is up. */\r
-.tcv-skill-prompt {\r
-  padding: 14px !important;\r
-  margin: 6px 0 !important;\r
-  border-radius: 12px !important;\r
-  background: rgba(79,127,255,0.08) !important;\r
-  border: 1px solid rgba(79,127,255,0.35) !important;\r
-}\r
-.tcv-skill-prompt-title {\r
-  font-size: 13px !important;\r
-  font-weight: 700 !important;\r
-  line-height: 1.35 !important;\r
-  color: #eaf1ff !important;\r
-}\r
-.tcv-skill-prompt-sub {\r
-  margin: 4px 0 10px !important;\r
-  font-size: 11.5px !important;\r
-  line-height: 1.45 !important;\r
-  color: #a5b4cf !important;\r
-}\r
-.tcv-skill-prompt-pills {\r
-  display: flex !important;\r
-  flex-wrap: wrap !important;\r
-  gap: 6px !important;\r
-  margin-bottom: 12px !important;\r
-}\r
-.tcv-skill-prompt-pill {\r
-  padding: 4px 10px !important;\r
-  border-radius: 999px !important;\r
-  font-size: 11.5px !important;\r
-  font-weight: 600 !important;\r
-  cursor: pointer !important;\r
-  color: #cbd5e1 !important;\r
-  background: rgba(255,255,255,0.04) !important;\r
-  border: 1px solid rgba(148,163,184,0.35) !important;\r
-}\r
-.tcv-skill-prompt-pill[aria-pressed="true"] {\r
-  color: #6ee7b7 !important;\r
-  background: rgba(16,185,129,0.16) !important;\r
-  border-color: rgba(16,185,129,0.5) !important;\r
-}\r
-.tcv-skill-prompt-pill[aria-pressed="true"]::before { content: "\u2713 " !important; }\r
-.tcv-skill-prompt-actions {\r
-  display: flex !important;\r
-  flex-direction: column !important;\r
-  gap: 6px !important;\r
-}\r
-.tcv-skill-btn {\r
-  width: 100% !important;\r
-  padding: 8px 10px !important;\r
-  border-radius: 8px !important;\r
-  font-size: 12.5px !important;\r
-  font-weight: 600 !important;\r
-  cursor: pointer !important;\r
-  color: #eaf1ff !important;\r
-  background: rgba(255,255,255,0.06) !important;\r
-  border: 1px solid rgba(255,255,255,0.16) !important;\r
-}\r
-.tcv-skill-btn:hover:not(:disabled) { background: rgba(255,255,255,0.12) !important; }\r
-.tcv-skill-btn-primary {\r
-  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;\r
-  border-color: transparent !important;\r
-}\r
-.tcv-skill-btn-primary:hover:not(:disabled) { opacity: 0.9 !important; background: linear-gradient(135deg, #4f7fff, #7c3aed) !important; }\r
-.tcv-skill-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }\r
-.tcv-skill-notnow {\r
-  display: block !important;\r
-  margin: 8px auto 0 !important;\r
-  background: none !important;\r
-  border: none !important;\r
-  font-size: 11px !important;\r
-  color: #8da3c6 !important;\r
-  text-decoration: underline !important;\r
-  cursor: pointer !important;\r
-}\r
-.tcv-skill-notnow:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }\r
-\r
-/* Account-menu switch for "Add missing skills automatically". */\r
-.tcv-account-switch {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  justify-content: space-between !important;\r
-  gap: 8px !important;\r
-  line-height: 1.3 !important;\r
-}\r
-.tcv-account-switch input {\r
-  position: absolute !important;\r
-  opacity: 0 !important;\r
-  width: 0 !important;\r
-  height: 0 !important;\r
-}\r
-.tcv-switch-track {\r
-  position: relative !important;\r
-  flex: 0 0 30px !important;\r
-  width: 30px !important;\r
-  height: 17px !important;\r
-  border-radius: 999px !important;\r
-  background: rgba(255,255,255,0.18) !important;\r
-  transition: background .15s !important;\r
-}\r
-.tcv-switch-track::after {\r
-  content: "" !important;\r
-  position: absolute !important;\r
-  top: 2px !important;\r
-  left: 2px !important;\r
-  width: 13px !important;\r
-  height: 13px !important;\r
-  border-radius: 50% !important;\r
-  background: #fff !important;\r
-  transition: transform .15s !important;\r
-}\r
-.tcv-account-switch input:checked + .tcv-switch-track { background: #10b981 !important; }\r
-.tcv-account-switch input:checked + .tcv-switch-track::after { transform: translateX(13px) !important; }\r
-.tcv-account-switch input:disabled + .tcv-switch-track { opacity: 0.5 !important; }\r
-\r
-.tcv-changes-panel {\r
-  padding: 0 !important;\r
-  margin: 4px 0 !important;\r
-  border-radius: 12px !important;\r
-  background: rgba(255,255,255,0.03) !important;\r
-  border: 1px solid rgba(148,163,184,0.18) !important;\r
-  overflow: hidden !important;\r
-}\r
-.tcv-changes-toggle {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  justify-content: space-between !important;\r
-  width: 100% !important;\r
-  padding: 12px !important;\r
-  background: none !important;\r
-  border: none !important;\r
-  cursor: pointer !important;\r
-  font-size: 11px !important;\r
-  font-weight: 700 !important;\r
-  letter-spacing: .04em !important;\r
-  text-transform: uppercase !important;\r
-  color: #94a3b8 !important;\r
-}\r
-.tcv-changes-toggle .tcv-changes-chevron {\r
-  transition: transform 0.2s ease !important;\r
-  font-size: 10px !important;\r
-}\r
-.tcv-changes-panel.tcv-changes-open .tcv-changes-chevron {\r
-  transform: rotate(180deg) !important;\r
-}\r
-.tcv-changes-body {\r
-  display: none !important;\r
-  padding: 0 12px 12px !important;\r
-}\r
-.tcv-changes-panel.tcv-changes-open .tcv-changes-body {\r
-  display: block !important;\r
-}\r
-.tcv-changes-entry-label {\r
-  font-size: 10.5px !important;\r
-  font-weight: 700 !important;\r
-  color: #cbd5e1 !important;\r
-  margin: 8px 0 4px !important;\r
-}\r
-.tcv-changes-bullet {\r
-  font-size: 10.5px !important;\r
-  line-height: 1.5 !important;\r
-  margin: 6px 0 !important;\r
-}\r
-.tcv-changes-before {\r
-  color: #7e8ba3 !important;\r
-  text-decoration: line-through !important;\r
-}\r
-.tcv-changes-after {\r
-  color: #e2e8f0 !important;\r
-  margin-top: 2px !important;\r
-}\r
-.tcv-changes-tag {\r
-  display: inline-block !important;\r
-  font-size: 9px !important;\r
-  font-weight: 700 !important;\r
-  letter-spacing: .03em !important;\r
-  text-transform: uppercase !important;\r
-  padding: 1px 6px !important;\r
-  border-radius: 5px !important;\r
-  margin-right: 5px !important;\r
-  background: rgba(79,127,255,0.18) !important;\r
-  color: #93b4ff !important;\r
-}\r
-.tcv-changes-empty {\r
-  font-size: 10.5px !important;\r
-  color: #7e8ba3 !important;\r
-}\r
-\r
-.tcv-score-item {\r
-  display: flex !important;\r
-  flex-direction: column !important;\r
-  align-items: center !important;\r
-  gap: 2px !important;\r
-}\r
-\r
-.tcv-score-num {\r
-  font-size: 26px !important;\r
-  font-weight: 800 !important;\r
-  color: #cbd5e1 !important;\r
-  line-height: 1 !important;\r
-}\r
-.tcv-score-num.tcv-score-after {\r
-  color: #4ade80 !important;\r
-}\r
-\r
-.tcv-score-label {\r
-  font-size: 10px !important;\r
-  font-weight: 600 !important;\r
-  color: #64748b !important;\r
-  text-transform: uppercase !important;\r
-  letter-spacing: 0.05em !important;\r
-}\r
-\r
-.tcv-score-arrow {\r
-  font-size: 20px !important;\r
-  color: #4f7fff !important;\r
-  font-weight: 700 !important;\r
-}\r
-\r
-.tcv-log {\r
-  max-height: 220px !important;\r
-  overflow-y: auto !important;\r
-  border-top: 1px solid rgba(255,255,255,0.07) !important;\r
-  padding-top: 10px !important;\r
-  scrollbar-width: thin !important;\r
-  scrollbar-color: rgba(255,255,255,0.1) transparent !important;\r
-}\r
-\r
-.tcv-log-item {\r
-  font-size: 12px !important;\r
-  padding: 4px 0 !important;\r
-  border-bottom: 1px solid rgba(255,255,255,0.04) !important;\r
-  word-break: break-word !important;\r
-}\r
-.tcv-log-item.tcv-success { color: #86efac !important; }\r
-.tcv-log-item.tcv-fail    { color: #fca5a5 !important; }\r
-.tcv-log-item.tcv-info    { color: #94a3b8 !important; }\r
-\r
-.tcv-msg {\r
-  font-size: 14px !important;\r
-  line-height: 1.5 !important;\r
-  color: #94a3b8 !important;\r
-  margin-bottom: 14px !important;\r
-}\r
-\r
-.tcv-empty-msg {\r
-  font-size: 17px !important;\r
-  font-weight: 600 !important;\r
-  color: #ffffff !important;\r
-  text-align: center !important;\r
-}\r
-\r
-/* Empty base-resume state: a document that shakes to grab attention, then\r
-   settles while its "?" badge pulses, on an endless 3.2s loop. */\r
-.tcv-empty-state {\r
-  display: flex !important;\r
-  justify-content: center !important;\r
-  padding: 10px 0 6px !important;\r
-}\r
-\r
-.tcv-doc-wrap {\r
-  display: inline-block !important;\r
-  transform-origin: 50% 60% !important;\r
-  animation: tcvDocCycle 3.2s ease-in-out infinite !important;\r
-}\r
-\r
-.tcv-doc-badge {\r
-  animation: tcvBadgeCycle 3.2s ease-in-out infinite !important;\r
-}\r
-\r
-@keyframes tcvDocCycle {\r
-  0%     { transform: rotate(0deg) translateY(0px); }\r
-  2.8%   { transform: rotate(-6deg) translateY(-3px); }\r
-  5.6%   { transform: rotate(5deg) translateY(-5px); }\r
-  8.4%   { transform: rotate(-4deg) translateY(-3px); }\r
-  11.25% { transform: rotate(3deg) translateY(-1px); }\r
-  14.1%  { transform: rotate(-2deg) translateY(0px); }\r
-  18.75% { transform: rotate(0deg) translateY(0px); }\r
-  43.75% { transform: rotate(0deg) translateY(0px); }\r
-  71.9%  { transform: rotate(0deg) translateY(-6px); }\r
-  100%   { transform: rotate(0deg) translateY(0px); }\r
-}\r
-\r
-@keyframes tcvBadgeCycle {\r
-  0%     { transform: scale(1); opacity: 1; }\r
-  18.75% { transform: scale(1); opacity: 1; }\r
-  28.75% { transform: scale(1.18); opacity: 0.85; }\r
-  36.25% { transform: scale(0.94); opacity: 1; }\r
-  43.75% { transform: scale(1); opacity: 1; }\r
-  100%   { transform: scale(1); opacity: 1; }\r
-}\r
-\r
-.tcv-field-label {\r
-  display: block !important;\r
-  font-size: 11px !important;\r
-  font-weight: 600 !important;\r
-  color: #8da3c6 !important;\r
-  text-transform: uppercase !important;\r
-  letter-spacing: 0.04em !important;\r
-  margin: 0 0 5px !important;\r
-}\r
-\r
-.tcv-input {\r
-  width: 100% !important;\r
-  background: rgba(255,255,255,0.06) !important;\r
-  border: 1px solid rgba(255,255,255,0.12) !important;\r
-  color: #f1f5f9 !important;\r
-  border-radius: 8px !important;\r
-  padding: 11px 13px !important;\r
-  font-size: 14px !important;\r
-  margin-bottom: 10px !important;\r
-}\r
-.tcv-input:focus { outline: none !important; border-color: #4f7fff !important; }\r
-\r
-.tcv-error {\r
-  font-size: 12px !important;\r
-  color: #f87171 !important;\r
-  min-height: 15px !important;\r
-  margin-top: 6px !important;\r
-}\r
-\r
-.tcv-link {\r
-  display: inline-block !important;\r
-  color: #93c5fd !important;\r
-  text-decoration: underline !important;\r
-  font-size: 13px !important;\r
-  cursor: pointer !important;\r
-}\r
-\r
-.tcv-job-info {\r
-  font-size: 19px !important;\r
-  color: #94a3b8 !important;\r
-  margin-bottom: 14px !important;\r
-  line-height: 1.4 !important;\r
-}\r
-.tcv-job-info b {\r
-  color: #eaf1ff !important;\r
-}\r
-\r
-/* \u2500\u2500 Skill match: a meter, not a line of text \u2500\u2500\r
-   The bar's colour carries the verdict so the number doesn't have to. This is the\r
-   before-tailor browsing signal; the animated success tick + score card handle the\r
-   after-tailor moment. */\r
-.tcv-match {\r
-  padding: 12px 14px !important;\r
-  margin-bottom: 14px !important;\r
-  border-radius: 12px !important;\r
-  background: rgba(255,255,255,0.04) !important;\r
-  border: 1px solid rgba(255,255,255,0.07) !important;\r
-}\r
-.tcv-match-head {\r
-  display: flex !important;\r
-  align-items: baseline !important;\r
-  justify-content: space-between !important;\r
-  margin-bottom: 9px !important;\r
-}\r
-.tcv-match-label {\r
-  font-size: 10px !important;\r
-  font-weight: 600 !important;\r
-  text-transform: uppercase !important;\r
-  letter-spacing: 0.09em !important;\r
-  color: #7c8aa5 !important;\r
-}\r
-.tcv-match-value {\r
-  font-size: 20px !important;\r
-  font-weight: 750 !important;\r
-  color: #eaf1ff !important;\r
-  font-variant-numeric: tabular-nums !important;\r
-  line-height: 1 !important;\r
-}\r
-.tcv-match-bar {\r
-  position: relative !important;\r
-  height: 6px !important;\r
-  border-radius: 99px !important;\r
-  background: rgba(255,255,255,0.08) !important;\r
-  overflow: hidden !important;\r
-}\r
-.tcv-match-fill {\r
-  display: block !important;\r
-  height: 100% !important;\r
-  width: 0;   /* not !important \u2014 paintMatch() sets the real width via inline style */\r
-  border-radius: 99px !important;\r
-  background: linear-gradient(90deg, #4f7fff, #c9b8ff) !important;\r
-  transition: width 0.7s cubic-bezier(.22,.61,.36,1), background 0.4s ease !important;\r
-}\r
-.tcv-match.tcv-low  .tcv-match-fill  { background: linear-gradient(90deg, #f87171, #fb923c) !important; }\r
-.tcv-match.tcv-mid  .tcv-match-fill  { background: linear-gradient(90deg, #fbbf24, #facc15) !important; }\r
-.tcv-match.tcv-high .tcv-match-fill  { background: linear-gradient(90deg, #34d399, #4ade80) !important; }\r
-.tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }\r
-.tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }\r
-.tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }\r
-/* No named skills in the JD \u2014 nothing to score, so explain rather than show a blank bar. */\r
-.tcv-match.tcv-na .tcv-match-value { font-size: 15px !important; color: #94a3b8 !important; }\r
-.tcv-match-note {\r
-  font-size: 11px !important;\r
-  line-height: 1.45 !important;\r
-  color: #8a93a6 !important;\r
-}\r
-\r
-.tcv-upgrade-box {\r
-  text-align: center !important;\r
-  padding: 18px 14px !important;\r
-  border-radius: 12px !important;\r
-  background: linear-gradient(160deg, rgba(79,127,255,0.14), rgba(124,58,237,0.14)) !important;\r
-  border: 1px solid rgba(79,127,255,0.35) !important;\r
-}\r
-.tcv-upgrade-box .tcv-msg { margin-bottom: 14px !important; }\r
-\r
-.tcv-btn-link {\r
-  display: block !important;\r
-  text-align: center !important;\r
-  text-decoration: none !important;\r
-  box-sizing: border-box !important;\r
-}\r
-\r
-.tcv-retry-link {\r
-  display: block !important;\r
-  text-align: center !important;\r
-  margin-top: 12px !important;\r
-  font-size: 12px !important;\r
-}\r
-\r
-/* Where the job description came from, and the way back out of a bad guess. */\r
-.tcv-source {\r
-  font-size: 10px !important;\r
-  color: #64748b !important;\r
-  margin: -4px 0 10px !important;\r
-}\r
-.tcv-source a {\r
-  color: #93c5fd !important;\r
-  text-decoration: underline !important;\r
-  cursor: pointer !important;\r
-}\r
-\r
-/* Manual fallback: the user hands us the job description themselves. */\r
-.tcv-textarea {\r
-  width: 100% !important;\r
-  background: rgba(255,255,255,0.06) !important;\r
-  border: 1px solid rgba(255,255,255,0.12) !important;\r
-  color: #f1f5f9 !important;\r
-  border-radius: 6px !important;\r
-  padding: 8px 10px !important;\r
-  font-size: 12px !important;\r
-  line-height: 1.45 !important;\r
-  font-family: inherit !important;\r
-  resize: vertical !important;\r
-  margin-bottom: 8px !important;\r
-  box-sizing: border-box !important;\r
-}\r
-.tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }\r
-\r
-.tcv-btn-ghost {\r
-  background: rgba(255,255,255,0.06) !important;\r
-  color: #cbd5e1 !important;\r
-  border: 1px solid rgba(255,255,255,0.14) !important;\r
-}\r
-.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }\r
-\r
-/* \u2500\u2500 Application autofill \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\r
-   Same conventions as everything above: flat .tcv- classes, !important on\r
-   every declaration (host pages on LinkedIn and Indeed reset aggressively),\r
-   and the same colour set \u2014 #86efac for good, #fcd34d for review, #60a5fa\r
-   for needs-you, #64748b for quiet. */\r
-\r
-.tcv-af-panel { }\r
-\r
-.tcv-af-summary {\r
-  display: flex !important;\r
-  flex-wrap: wrap !important;\r
-  gap: 6px !important;\r
-  margin-bottom: 12px !important;\r
-}\r
-.tcv-af-summary-pill {\r
-  font-size: 12px !important;\r
-  font-weight: 600 !important;\r
-  padding: 4px 10px !important;\r
-  border-radius: 99px !important;\r
-  background: rgba(255,255,255,0.06) !important;\r
-  border: 1px solid rgba(255,255,255,0.10) !important;\r
-  white-space: nowrap !important;\r
-}\r
-.tcv-af-summary-pill.tcv-af-ok { color: #86efac !important; border-color: rgba(134,239,172,0.3) !important; }\r
-.tcv-af-summary-pill.tcv-af-review { color: #fcd34d !important; border-color: rgba(252,211,77,0.3) !important; }\r
-.tcv-af-summary-pill.tcv-af-ask { color: #60a5fa !important; border-color: rgba(96,165,250,0.3) !important; }\r
-\r
-.tcv-af-group { margin-bottom: 14px !important; }\r
-.tcv-af-group-title {\r
-  font-size: 11px !important;\r
-  font-weight: 700 !important;\r
-  letter-spacing: 0.06em !important;\r
-  text-transform: uppercase !important;\r
-  color: #8da3c6 !important;\r
-  margin-bottom: 6px !important;\r
-}\r
-\r
-.tcv-af-row {\r
-  padding: 9px 11px !important;\r
-  margin-bottom: 6px !important;\r
-  border-radius: 10px !important;\r
-  background: rgba(255,255,255,0.04) !important;\r
-  border: 1px solid rgba(255,255,255,0.07) !important;\r
-}\r
-.tcv-af-row-head {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  gap: 7px !important;\r
-}\r
-.tcv-af-badge {\r
-  flex: 0 0 auto !important;\r
-  width: 16px !important;\r
-  height: 16px !important;\r
-  border-radius: 50% !important;\r
-  display: inline-flex !important;\r
-  align-items: center !important;\r
-  justify-content: center !important;\r
-  font-size: 10px !important;\r
-  font-weight: 700 !important;\r
-  line-height: 1 !important;\r
-}\r
-.tcv-af-badge.tcv-af-ok { background: rgba(134,239,172,0.18) !important; color: #86efac !important; }\r
-.tcv-af-badge.tcv-af-review { background: rgba(252,211,77,0.18) !important; color: #fcd34d !important; }\r
-.tcv-af-badge.tcv-af-ask { background: rgba(96,165,250,0.18) !important; color: #60a5fa !important; }\r
-.tcv-af-badge.tcv-af-unknown { background: rgba(100,116,139,0.20) !important; color: #94a3b8 !important; }\r
-\r
-.tcv-af-row-label {\r
-  flex: 1 1 auto !important;\r
-  font-size: 13px !important;\r
-  font-weight: 600 !important;\r
-  color: #eaf1ff !important;\r
-  overflow-wrap: anywhere !important;\r
-}\r
-.tcv-af-jump {\r
-  flex: 0 0 auto !important;\r
-  font-size: 11px !important;\r
-  color: #93c5fd !important;\r
-  text-decoration: underline !important;\r
-  cursor: pointer !important;\r
-}\r
-.tcv-af-row-value {\r
-  font-size: 12px !important;\r
-  color: #cbd5e1 !important;\r
-  margin: 4px 0 0 23px !important;\r
-  overflow-wrap: anywhere !important;\r
-}\r
-.tcv-af-row-src {\r
-  font-size: 11px !important;\r
-  color: #64748b !important;\r
-  margin: 3px 0 0 23px !important;\r
-  overflow-wrap: anywhere !important;\r
-}\r
-\r
-.tcv-af-ask-form { margin: 8px 0 0 23px !important; }\r
-.tcv-af-ask-input, .tcv-af-ask-select {\r
-  width: 100% !important;\r
-  padding: 8px 10px !important;\r
-  font-size: 13px !important;\r
-  font-family: inherit !important;\r
-  color: #f1f5f9 !important;\r
-  background: rgba(255,255,255,0.06) !important;\r
-  border: 1px solid rgba(255,255,255,0.12) !important;\r
-  border-radius: 8px !important;\r
-  box-sizing: border-box !important;\r
-  margin-bottom: 6px !important;\r
-}\r
-.tcv-af-ask-input:focus, .tcv-af-ask-select:focus {\r
-  outline: none !important;\r
-  border-color: #4f7fff !important;\r
-}\r
-.tcv-af-ask-select option { background: #101a30 !important; color: #f1f5f9 !important; }\r
-.tcv-af-remember {\r
-  display: flex !important;\r
-  align-items: center !important;\r
-  gap: 6px !important;\r
-  font-size: 11px !important;\r
-  color: #94a3b8 !important;\r
-  margin-bottom: 7px !important;\r
-  cursor: pointer !important;\r
-}\r
-.tcv-af-remember input { accent-color: #4f7fff !important; margin: 0 !important; }\r
-.tcv-af-ask-save {\r
-  width: auto !important;\r
-  padding: 7px 14px !important;\r
-  font-size: 12px !important;\r
-  margin-bottom: 0 !important;\r
-}\r
-\r
-.tcv-af-note {\r
-  font-size: 12px !important;\r
-  color: #cbd5e1 !important;\r
-  background: rgba(79,127,255,0.10) !important;\r
-  border: 1px solid rgba(79,127,255,0.22) !important;\r
-  border-radius: 10px !important;\r
-  padding: 9px 11px !important;\r
-  margin-bottom: 10px !important;\r
-  line-height: 1.45 !important;\r
-}\r
-.tcv-af-note a { color: #93c5fd !important; text-decoration: underline !important; }\r
-.tcv-af-note.tcv-af-note-quiet {\r
-  background: transparent !important;\r
-  border: none !important;\r
-  color: #64748b !important;\r
-  padding: 4px 0 0 !important;\r
-  font-size: 11px !important;\r
-}\r
+  var sidebar_default = `/* TailorCV Auto Apply \u2014 Injected Sidebar Styles */
+
+#tailorcv-sidebar {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  width: 380px !important;
+  max-width: calc(100vw - 16px) !important;
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
+  border: none !important;
+  border-left: 1px solid rgba(79, 127, 255, 0.3) !important;
+  border-radius: 0 !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
+  z-index: 2147483647 !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 15px !important;
+  color: #f1f5f9 !important;
+  padding: 0 !important;
+  transition: transform 0.25s ease !important;
+  overflow: hidden !important;
+}
+
+/* Header and tabs stay put; only this part scrolls. */
+.tcv-scroll {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  padding: 4px 16px 20px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.12) transparent !important;
+}
+
+#tailorcv-sidebar.tcv-collapsed {
+  /* 120% of the panel's own width guarantees it clears fully off-screen
+     (including box-shadow) instead of leaving a text sliver visible. */
+  transform: translateX(120%) !important;
+}
+
+/* Small icon-only launcher shown in place of the panel while collapsed. */
+#tailorcv-launcher {
+  position: fixed !important;
+  top: 80px !important;
+  right: 0 !important;
+  width: 56px !important;
+  height: 56px !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
+  border: 1px solid rgba(79, 127, 255, 0.3) !important;
+  border-right: none !important;
+  border-radius: 12px 0 0 12px !important;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
+  z-index: 2147483647 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+}
+
+#tailorcv-launcher.tcv-visible {
+  display: flex !important;
+}
+
+#tailorcv-launcher img {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 8px !important;
+  pointer-events: none !important;
+}
+
+#tailorcv-sidebar * {
+  box-sizing: border-box !important;
+  font-family: inherit !important;
+  line-height: 1.4 !important;
+}
+
+.tcv-header {
+  position: relative !important;
+  flex: 0 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 16px 12px !important;
+}
+
+/* Segmented tab bar under the header. */
+.tcv-tabs {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  gap: 4px !important;
+  margin: 0 16px 14px !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+.tcv-tabs.tcv-hidden { display: none !important; }
+.tcv-tab {
+  flex: 1 1 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 9px 6px !important;
+  border: none !important;
+  border-radius: 9px !important;
+  background: none !important;
+  color: #8da3c6 !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background 0.15s, color 0.15s !important;
+}
+.tcv-tab svg { flex: 0 0 auto !important; }
+.tcv-tab:hover:not(:disabled):not(.tcv-active) { color: #eaf1ff !important; background: rgba(255,255,255,0.04) !important; }
+.tcv-tab.tcv-active {
+  background: rgba(79,127,255,0.16) !important;
+  color: #93b4ff !important;
+  box-shadow: inset 0 0 0 1px rgba(79,127,255,0.3) !important;
+}
+.tcv-tab:disabled { opacity: 0.4 !important; cursor: not-allowed !important; }
+
+/* \u2500\u2500 Cards (job view) \u2500\u2500 */
+.tcv-card {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 12px !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: #eaf1ff !important;
+  text-align: left !important;
+}
+
+.tcv-job-main {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 14px !important;
+}
+.tcv-job-avatar {
+  flex: 0 0 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  background: rgba(79,127,255,0.14) !important;
+  color: #93b4ff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+.tcv-job-text { min-width: 0 !important; }
+.tcv-job-title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  line-height: 1.3 !important;
+  overflow-wrap: anywhere !important;
+}
+.tcv-job-meta {
+  margin-top: 3px !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
+}
+.tcv-job-foot {
+  padding: 10px 14px !important;
+  border-top: 1px solid rgba(255,255,255,0.07) !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
+}
+.tcv-job-foot a {
+  color: #93c5fd !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+.tcv-job-foot a:hover { text-decoration: underline !important; }
+
+/* The one loud button in the view. */
+.tcv-btn.tcv-btn-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 52px !important;
+  margin-bottom: 12px !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 18px rgba(79,127,255,0.28) !important;
+}
+.tcv-btn-cta span { font-size: 13px !important; }
+
+.tcv-btn-outline-accent {
+  background: rgba(79,127,255,0.08) !important;
+  color: #93b4ff !important;
+  border: 1px solid rgba(79,127,255,0.55) !important;
+  margin-bottom: 0 !important;
+}
+.tcv-btn-outline-accent:hover:not(:disabled) { background: rgba(79,127,255,0.16) !important; }
+.tcv-af-panel .tcv-btn-outline-accent { margin-bottom: 8px !important; }
+
+.tcv-resume-card { padding: 14px !important; }
+.tcv-card-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+}
+.tcv-card-head svg { color: #8da3c6 !important; }
+.tcv-resume-file {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 11px 12px !important;
+  margin-bottom: 14px !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  text-decoration: none !important;
+  color: #eaf1ff !important;
+}
+.tcv-resume-file:hover { border-color: rgba(79,127,255,0.45) !important; }
+.tcv-resume-name {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.tcv-chev {
+  color: #7e8ba3 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+
+.tcv-row-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 14px !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+  transition: border-color 0.15s !important;
+}
+.tcv-row-card svg { color: #8da3c6 !important; flex: 0 0 auto !important; }
+.tcv-row-card:hover:not(:disabled) { border-color: rgba(79,127,255,0.45) !important; }
+.tcv-row-card:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }
+.tcv-row-title { flex: 1 1 auto !important; font-weight: 700 !important; }
+.tcv-row-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 13px !important;
+  color: #7e8ba3 !important;
+}
+
+.tcv-header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.tcv-brand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.tcv-logo-icon {
+  width: 26px !important;
+  height: 26px !important;
+  border-radius: 6px !important;
+  display: block !important;
+}
+
+.tcv-logo {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  background: linear-gradient(135deg, #4f7fff, #c9b8ff) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.tcv-toggle {
+  cursor: pointer !important;
+  color: #64748b !important;
+  font-size: 18px !important;
+  background: none !important;
+  border: none !important;
+  padding: 4px !important;
+  border-radius: 6px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }
+
+/* Account menu: only shown once GET_PROFILE confirms a logged-in session.
+   The trigger is a round avatar carrying the user's initial, so it reads as
+   an account icon rather than another toolbar action. */
+.tcv-account-btn {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  cursor: pointer !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+.tcv-account-btn.tcv-visible { display: inline-flex !important; }
+.tcv-account-btn:hover { opacity: 0.85 !important; }
+
+.tcv-account-menu {
+  display: none !important;
+  position: absolute !important;
+  top: 100% !important;
+  right: 0 !important;
+  margin-top: 8px !important;
+  width: 210px !important;
+  background: #101a30 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+  padding: 8px !important;
+  z-index: 10 !important;
+}
+.tcv-account-menu.tcv-visible { display: block !important; }
+
+.tcv-account-email {
+  font-size: 12px !important;
+  color: #8da3c6 !important;
+  padding: 4px 8px 8px !important;
+  margin-bottom: 4px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+  word-break: break-all !important;
+}
+
+.tcv-account-item {
+  display: block !important;
+  width: 100% !important;
+  text-align: left !important;
+  background: none !important;
+  border: none !important;
+  color: #eaf1ff !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  text-decoration: none !important;
+  padding: 8px !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+}
+.tcv-account-item:hover:not(:disabled) { background: rgba(255,255,255,0.08) !important; }
+
+.tcv-account-logout {
+  color: #fca5a5 !important;
+}
+.tcv-account-logout:disabled { opacity: 0.6 !important; cursor: not-allowed !important; }
+
+.tcv-stats {
+  display: flex !important;
+  gap: 8px !important;
+  margin-bottom: 16px !important;
+}
+
+.tcv-stat {
+  flex: 1 !important;
+  text-align: center !important;
+  padding: 10px 6px !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,0.05) !important;
+}
+
+.tcv-stat-num {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  display: block !important;
+}
+.tcv-stat-num.tcv-blue  { color: #60a5fa !important; }
+.tcv-stat-num.tcv-green { color: #4ade80 !important; }
+.tcv-stat-num.tcv-red   { color: #f87171 !important; }
+
+.tcv-stat-label {
+  font-size: 10px !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+
+.tcv-btn {
+  width: 100% !important;
+  padding: 13px 16px !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin-bottom: 8px !important;
+  transition: opacity 0.2s !important;
+}
+.tcv-btn:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }
+
+.tcv-btn-start {
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
+  color: #fff !important;
+}
+.tcv-btn-start:hover:not(:disabled) { opacity: 0.88 !important; }
+
+.tcv-btn-stop {
+  background: rgba(239,68,68,0.18) !important;
+  color: #f87171 !important;
+  border: 1px solid rgba(239,68,68,0.35) !important;
+}
+.tcv-btn-stop:hover { background: rgba(239,68,68,0.28) !important; }
+
+.tcv-btn-outline {
+  background: rgba(255,255,255,0.04) !important;
+  color: #eaf1ff !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+}
+.tcv-btn-outline:hover { background: rgba(255,255,255,0.09) !important; }
+
+.tcv-divider {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 14px 0 !important;
+  color: #64748b !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+}
+.tcv-divider::before, .tcv-divider::after {
+  content: '' !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: rgba(255,255,255,0.08) !important;
+}
+
+.tcv-login-links {
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-top: 10px !important;
+  gap: 10px !important;
+}
+.tcv-login-links .tcv-link { font-size: 13px !important; }
+
+.tcv-status-text {
+  font-size: 13px !important;
+  color: #64748b !important;
+  text-align: center !important;
+  margin: 6px 0 10px !important;
+  min-height: 18px !important;
+}
+.tcv-status-text.tcv-ok    { color: #86efac !important; }
+.tcv-status-text.tcv-error { color: #fca5a5 !important; }
+
+.tcv-loading-anim {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px 0 4px !important;
+}
+.tcv-loading-anim svg,
+.tcv-loading-anim img {
+  width: 84px !important;
+  height: 84px !important;
+  display: block !important;
+}
+
+.tcv-loading-label {
+  text-align: center !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #4ade80 !important;
+  padding-bottom: 24px !important;
+}
+
+.tcv-progress-wrap {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 14px 0 4px !important;
+}
+.tcv-progress-wrap.tcv-visible {
+  display: flex !important;
+}
+
+.tcv-progress-circle {
+  position: relative !important;
+  width: 88px !important;
+  height: 88px !important;
+}
+
+.tcv-progress-ring {
+  transform: rotate(-90deg) !important;
+}
+
+.tcv-progress-track {
+  fill: none !important;
+  stroke: rgba(255,255,255,0.08) !important;
+  stroke-width: 6 !important;
+}
+
+.tcv-progress-bar {
+  fill: none !important;
+  stroke: url(#tcvProgressGradient) !important;
+  stroke-width: 6 !important;
+  stroke-linecap: round !important;
+}
+
+.tcv-progress-pct {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+  transition: opacity 0.25s ease !important;
+}
+.tcv-success-tick {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 170px !important;
+}
+.tcv-success-tick.tcv-visible {
+  display: flex !important;
+}
+.tcv-success-tick svg,
+.tcv-success-tick img {
+  width: 170px !important;
+  height: 170px !important;
+  display: block !important;
+}
+
+.tcv-score-card {
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 16px !important;
+  padding: 16px 12px !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, rgba(79,127,255,0.12), rgba(74,222,128,0.12)) !important;
+  border: 1px solid rgba(74,222,128,0.3) !important;
+}
+.tcv-score-card.tcv-visible {
+  display: flex !important;
+}
+
+/* Skills the job asked for that the resume evidences nowhere. Deliberately
+   quieter than the score card next to it: this is information, not a result. */
+.tcv-skill-gaps {
+  padding: 12px !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+}
+.tcv-skill-gaps-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+  color: #94a3b8 !important;
+  margin-bottom: 8px !important;
+}
+.tcv-skill-gaps-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+}
+.tcv-skill-gap-pill {
+  display: inline-block !important;
+  padding: 3px 9px !important;
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #cbd5e1 !important;
+  background: rgba(79,127,255,0.14) !important;
+  border: 1px solid rgba(79,127,255,0.28) !important;
+}
+.tcv-skill-gap-pill.added {
+  color: #6ee7b7 !important;
+  background: rgba(16,185,129,0.16) !important;
+  border: 1px solid rgba(16,185,129,0.35) !important;
+}
+.tcv-skill-gaps-note {
+  margin-top: 8px !important;
+  font-size: 10.5px !important;
+  line-height: 1.45 !important;
+  color: #7e8ba3 !important;
+}
+.tcv-skill-gaps-note.tcv-error { color: #fca5a5 !important; }
+
+/* Post-tailor skills pop-up: the download waits on this, so it is the loudest
+   thing in the panel while it is up. */
+.tcv-skill-prompt {
+  padding: 14px !important;
+  margin: 6px 0 !important;
+  border-radius: 12px !important;
+  background: rgba(79,127,255,0.08) !important;
+  border: 1px solid rgba(79,127,255,0.35) !important;
+}
+.tcv-skill-prompt-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: #eaf1ff !important;
+}
+.tcv-skill-prompt-sub {
+  margin: 4px 0 10px !important;
+  font-size: 11.5px !important;
+  line-height: 1.45 !important;
+  color: #a5b4cf !important;
+}
+.tcv-skill-prompt-pills {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-bottom: 12px !important;
+}
+.tcv-skill-prompt-pill {
+  padding: 4px 10px !important;
+  border-radius: 999px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  color: #cbd5e1 !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(148,163,184,0.35) !important;
+}
+.tcv-skill-prompt-pill[aria-pressed="true"] {
+  color: #6ee7b7 !important;
+  background: rgba(16,185,129,0.16) !important;
+  border-color: rgba(16,185,129,0.5) !important;
+}
+.tcv-skill-prompt-pill[aria-pressed="true"]::before { content: "\u2713 " !important; }
+.tcv-skill-prompt-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+.tcv-skill-btn {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  border-radius: 8px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  color: #eaf1ff !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+}
+.tcv-skill-btn:hover:not(:disabled) { background: rgba(255,255,255,0.12) !important; }
+.tcv-skill-btn-primary {
+  background: linear-gradient(135deg, #4f7fff, #7c3aed) !important;
+  border-color: transparent !important;
+}
+.tcv-skill-btn-primary:hover:not(:disabled) { opacity: 0.9 !important; background: linear-gradient(135deg, #4f7fff, #7c3aed) !important; }
+.tcv-skill-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+.tcv-skill-notnow {
+  display: block !important;
+  margin: 8px auto 0 !important;
+  background: none !important;
+  border: none !important;
+  font-size: 11px !important;
+  color: #8da3c6 !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+.tcv-skill-notnow:disabled { opacity: 0.5 !important; cursor: not-allowed !important; }
+
+/* Account-menu switch for "Add missing skills automatically". */
+.tcv-account-switch {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  line-height: 1.3 !important;
+}
+.tcv-account-switch input {
+  position: absolute !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.tcv-switch-track {
+  position: relative !important;
+  flex: 0 0 30px !important;
+  width: 30px !important;
+  height: 17px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.18) !important;
+  transition: background .15s !important;
+}
+.tcv-switch-track::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 2px !important;
+  left: 2px !important;
+  width: 13px !important;
+  height: 13px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  transition: transform .15s !important;
+}
+.tcv-account-switch input:checked + .tcv-switch-track { background: #10b981 !important; }
+.tcv-account-switch input:checked + .tcv-switch-track::after { transform: translateX(13px) !important; }
+.tcv-account-switch input:disabled + .tcv-switch-track { opacity: 0.5 !important; }
+
+.tcv-changes-panel {
+  padding: 0 !important;
+  margin: 4px 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+  overflow: hidden !important;
+}
+.tcv-changes-toggle {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding: 12px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+  color: #94a3b8 !important;
+}
+.tcv-changes-toggle .tcv-changes-chevron {
+  transition: transform 0.2s ease !important;
+  font-size: 10px !important;
+}
+.tcv-changes-panel.tcv-changes-open .tcv-changes-chevron {
+  transform: rotate(180deg) !important;
+}
+.tcv-changes-body {
+  display: none !important;
+  padding: 0 12px 12px !important;
+}
+.tcv-changes-panel.tcv-changes-open .tcv-changes-body {
+  display: block !important;
+}
+.tcv-changes-entry-label {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  color: #cbd5e1 !important;
+  margin: 8px 0 4px !important;
+}
+.tcv-changes-bullet {
+  font-size: 10.5px !important;
+  line-height: 1.5 !important;
+  margin: 6px 0 !important;
+}
+.tcv-changes-before {
+  color: #7e8ba3 !important;
+  text-decoration: line-through !important;
+}
+.tcv-changes-after {
+  color: #e2e8f0 !important;
+  margin-top: 2px !important;
+}
+.tcv-changes-tag {
+  display: inline-block !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: .03em !important;
+  text-transform: uppercase !important;
+  padding: 1px 6px !important;
+  border-radius: 5px !important;
+  margin-right: 5px !important;
+  background: rgba(79,127,255,0.18) !important;
+  color: #93b4ff !important;
+}
+.tcv-changes-empty {
+  font-size: 10.5px !important;
+  color: #7e8ba3 !important;
+}
+
+.tcv-score-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+.tcv-score-num {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #cbd5e1 !important;
+  line-height: 1 !important;
+}
+.tcv-score-num.tcv-score-after {
+  color: #4ade80 !important;
+}
+
+.tcv-score-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+.tcv-score-arrow {
+  font-size: 20px !important;
+  color: #4f7fff !important;
+  font-weight: 700 !important;
+}
+
+.tcv-log {
+  max-height: 220px !important;
+  overflow-y: auto !important;
+  border-top: 1px solid rgba(255,255,255,0.07) !important;
+  padding-top: 10px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.1) transparent !important;
+}
+
+.tcv-log-item {
+  font-size: 12px !important;
+  padding: 4px 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.04) !important;
+  word-break: break-word !important;
+}
+.tcv-log-item.tcv-success { color: #86efac !important; }
+.tcv-log-item.tcv-fail    { color: #fca5a5 !important; }
+.tcv-log-item.tcv-info    { color: #94a3b8 !important; }
+
+.tcv-msg {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
+  margin-bottom: 14px !important;
+}
+
+.tcv-empty-msg {
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+/* Empty base-resume state: a document that shakes to grab attention, then
+   settles while its "?" badge pulses, on an endless 3.2s loop. */
+.tcv-empty-state {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 10px 0 6px !important;
+}
+
+.tcv-doc-wrap {
+  display: inline-block !important;
+  transform-origin: 50% 60% !important;
+  animation: tcvDocCycle 3.2s ease-in-out infinite !important;
+}
+
+.tcv-doc-badge {
+  animation: tcvBadgeCycle 3.2s ease-in-out infinite !important;
+}
+
+@keyframes tcvDocCycle {
+  0%     { transform: rotate(0deg) translateY(0px); }
+  2.8%   { transform: rotate(-6deg) translateY(-3px); }
+  5.6%   { transform: rotate(5deg) translateY(-5px); }
+  8.4%   { transform: rotate(-4deg) translateY(-3px); }
+  11.25% { transform: rotate(3deg) translateY(-1px); }
+  14.1%  { transform: rotate(-2deg) translateY(0px); }
+  18.75% { transform: rotate(0deg) translateY(0px); }
+  43.75% { transform: rotate(0deg) translateY(0px); }
+  71.9%  { transform: rotate(0deg) translateY(-6px); }
+  100%   { transform: rotate(0deg) translateY(0px); }
+}
+
+@keyframes tcvBadgeCycle {
+  0%     { transform: scale(1); opacity: 1; }
+  18.75% { transform: scale(1); opacity: 1; }
+  28.75% { transform: scale(1.18); opacity: 0.85; }
+  36.25% { transform: scale(0.94); opacity: 1; }
+  43.75% { transform: scale(1); opacity: 1; }
+  100%   { transform: scale(1); opacity: 1; }
+}
+
+.tcv-field-label {
+  display: block !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #8da3c6 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  margin: 0 0 5px !important;
+}
+
+.tcv-input {
+  width: 100% !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #f1f5f9 !important;
+  border-radius: 8px !important;
+  padding: 11px 13px !important;
+  font-size: 14px !important;
+  margin-bottom: 10px !important;
+}
+.tcv-input:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-error {
+  font-size: 12px !important;
+  color: #f87171 !important;
+  min-height: 15px !important;
+  margin-top: 6px !important;
+}
+
+.tcv-link {
+  display: inline-block !important;
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+}
+
+.tcv-job-info {
+  font-size: 19px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 14px !important;
+  line-height: 1.4 !important;
+}
+.tcv-job-info b {
+  color: #eaf1ff !important;
+}
+
+/* \u2500\u2500 Skill match: a meter, not a line of text \u2500\u2500
+   The bar's colour carries the verdict so the number doesn't have to. This is the
+   before-tailor browsing signal; the animated success tick + score card handle the
+   after-tailor moment. */
+.tcv-match {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 14px !important;
+}
+.tcv-ring-wrap {
+  position: relative !important;
+  flex: 0 0 64px !important;
+  width: 64px !important;
+  height: 64px !important;
+}
+.tcv-ring { transform: rotate(-90deg) !important; display: block !important; }
+.tcv-ring-track {
+  fill: none !important;
+  stroke: rgba(255,255,255,0.08) !important;
+  stroke-width: 6 !important;
+}
+.tcv-ring-bar {
+  fill: none !important;
+  stroke: url(#tcvMatchGradient) !important;
+  stroke-width: 6 !important;
+  stroke-linecap: round !important;
+  /* dashoffset is not !important \u2014 paintMatch() animates it via inline style */
+  transition: stroke-dashoffset 0.8s cubic-bezier(.22,.61,.36,1), stroke 0.4s ease !important;
+}
+.tcv-match-value {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 19px !important;
+  font-weight: 750 !important;
+  color: #eaf1ff !important;
+  font-variant-numeric: tabular-nums !important;
+  line-height: 1 !important;
+}
+.tcv-match-text { min-width: 0 !important; }
+.tcv-match-verdict {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+}
+.tcv-match-sub {
+  margin-top: 2px !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
+}
+/* The ring's colour carries the verdict, so the number does not have to. */
+.tcv-match.tcv-low  .tcv-ring-bar { stroke: #f87171 !important; }
+.tcv-match.tcv-mid  .tcv-ring-bar { stroke: #fbbf24 !important; }
+.tcv-match.tcv-high .tcv-ring-bar { stroke: #34d399 !important; }
+.tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }
+.tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }
+.tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }
+.tcv-match.tcv-na   .tcv-match-value { color: #94a3b8 !important; }
+
+.tcv-upgrade-box {
+  text-align: center !important;
+  padding: 18px 14px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, rgba(79,127,255,0.14), rgba(124,58,237,0.14)) !important;
+  border: 1px solid rgba(79,127,255,0.35) !important;
+}
+.tcv-upgrade-box .tcv-msg { margin-bottom: 14px !important; }
+
+.tcv-btn-link {
+  display: block !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  box-sizing: border-box !important;
+}
+
+.tcv-retry-link {
+  display: block !important;
+  text-align: center !important;
+  margin-top: 12px !important;
+  font-size: 12px !important;
+}
+
+/* Where the job description came from, and the way back out of a bad guess. */
+.tcv-source {
+  font-size: 10px !important;
+  color: #64748b !important;
+  margin: -4px 0 10px !important;
+}
+.tcv-source a {
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+/* Manual fallback: the user hands us the job description themselves. */
+.tcv-textarea {
+  width: 100% !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  color: #f1f5f9 !important;
+  border-radius: 6px !important;
+  padding: 8px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  font-family: inherit !important;
+  resize: vertical !important;
+  margin-bottom: 8px !important;
+  box-sizing: border-box !important;
+}
+.tcv-textarea:focus { outline: none !important; border-color: #4f7fff !important; }
+
+.tcv-btn-ghost {
+  background: rgba(255,255,255,0.06) !important;
+  color: #cbd5e1 !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+}
+.tcv-btn-ghost:hover:not(:disabled) { background: rgba(255,255,255,0.11) !important; }
+
+/* \u2500\u2500 Application autofill \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+   Same conventions as everything above: flat .tcv- classes, !important on
+   every declaration (host pages on LinkedIn and Indeed reset aggressively),
+   and the same colour set \u2014 #86efac for good, #fcd34d for review, #60a5fa
+   for needs-you, #64748b for quiet. */
+
+.tcv-af-panel { }
+
+.tcv-af-summary {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-bottom: 12px !important;
+}
+.tcv-af-summary-pill {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 4px 10px !important;
+  border-radius: 99px !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.10) !important;
+  white-space: nowrap !important;
+}
+.tcv-af-summary-pill.tcv-af-ok { color: #86efac !important; border-color: rgba(134,239,172,0.3) !important; }
+.tcv-af-summary-pill.tcv-af-review { color: #fcd34d !important; border-color: rgba(252,211,77,0.3) !important; }
+.tcv-af-summary-pill.tcv-af-ask { color: #60a5fa !important; border-color: rgba(96,165,250,0.3) !important; }
+
+.tcv-af-group { margin-bottom: 14px !important; }
+.tcv-af-group-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #8da3c6 !important;
+  margin-bottom: 6px !important;
+}
+
+.tcv-af-row {
+  padding: 9px 11px !important;
+  margin-bottom: 6px !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+.tcv-af-row-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+}
+.tcv-af-badge {
+  flex: 0 0 auto !important;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+}
+.tcv-af-badge.tcv-af-ok { background: rgba(134,239,172,0.18) !important; color: #86efac !important; }
+.tcv-af-badge.tcv-af-review { background: rgba(252,211,77,0.18) !important; color: #fcd34d !important; }
+.tcv-af-badge.tcv-af-ask { background: rgba(96,165,250,0.18) !important; color: #60a5fa !important; }
+.tcv-af-badge.tcv-af-unknown { background: rgba(100,116,139,0.20) !important; color: #94a3b8 !important; }
+
+.tcv-af-row-label {
+  flex: 1 1 auto !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #eaf1ff !important;
+  overflow-wrap: anywhere !important;
+}
+.tcv-af-jump {
+  flex: 0 0 auto !important;
+  font-size: 11px !important;
+  color: #93c5fd !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+.tcv-af-row-value {
+  font-size: 12px !important;
+  color: #cbd5e1 !important;
+  margin: 4px 0 0 23px !important;
+  overflow-wrap: anywhere !important;
+}
+.tcv-af-row-src {
+  font-size: 11px !important;
+  color: #64748b !important;
+  margin: 3px 0 0 23px !important;
+  overflow-wrap: anywhere !important;
+}
+
+.tcv-af-ask-form { margin: 8px 0 0 23px !important; }
+.tcv-af-ask-input, .tcv-af-ask-select {
+  width: 100% !important;
+  padding: 8px 10px !important;
+  font-size: 13px !important;
+  font-family: inherit !important;
+  color: #f1f5f9 !important;
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  margin-bottom: 6px !important;
+}
+.tcv-af-ask-input:focus, .tcv-af-ask-select:focus {
+  outline: none !important;
+  border-color: #4f7fff !important;
+}
+.tcv-af-ask-select option { background: #101a30 !important; color: #f1f5f9 !important; }
+.tcv-af-remember {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  color: #94a3b8 !important;
+  margin-bottom: 7px !important;
+  cursor: pointer !important;
+}
+.tcv-af-remember input { accent-color: #4f7fff !important; margin: 0 !important; }
+.tcv-af-ask-save {
+  width: auto !important;
+  padding: 7px 14px !important;
+  font-size: 12px !important;
+  margin-bottom: 0 !important;
+}
+
+.tcv-af-note {
+  font-size: 12px !important;
+  color: #cbd5e1 !important;
+  background: rgba(79,127,255,0.10) !important;
+  border: 1px solid rgba(79,127,255,0.22) !important;
+  border-radius: 10px !important;
+  padding: 9px 11px !important;
+  margin-bottom: 10px !important;
+  line-height: 1.45 !important;
+}
+.tcv-af-note a { color: #93c5fd !important; text-decoration: underline !important; }
+.tcv-af-note.tcv-af-note-quiet {
+  background: transparent !important;
+  border: none !important;
+  color: #64748b !important;
+  padding: 4px 0 0 !important;
+  font-size: 11px !important;
+}
 `;
 
   // src/styles.js

@@ -514,17 +514,24 @@
     DECLINE_OPTION_MARKERS: () => DECLINE_OPTION_MARKERS,
     DOCUMENT_FIELD_MARKERS: () => DOCUMENT_FIELD_MARKERS,
     EEO_FIELD_MARKERS: () => EEO_FIELD_MARKERS,
+    EEO_GROUPS: () => EEO_GROUPS,
     FIELD_SYNONYMS: () => FIELD_SYNONYMS,
     LABEL_STOPWORDS: () => LABEL_STOPWORDS,
     OPTION_MATCH_THRESHOLD: () => OPTION_MATCH_THRESHOLD,
+    READ_FIRST_KEYS: () => READ_FIRST_KEYS,
     SENSITIVE_PATTERNS: () => SENSITIVE_PATTERNS,
     bestOptionMatch: () => bestOptionMatch,
     classifySensitive: () => classifySensitive,
     commitMatches: () => commitMatches,
     distinctive: () => distinctive,
     documentSlotFor: () => documentSlotFor,
+    eeoGroup: () => eeoGroup,
+    eeoOptionAllowed: () => eeoOptionAllowed,
+    eeoShapes: () => eeoShapes,
     findDeclineOption: () => findDeclineOption,
     formatDateForField: () => formatDateForField,
+    isConditionalFollowUp: () => isConditionalFollowUp,
+    isMotivationQuestion: () => isMotivationQuestion,
     isNeverFill: () => isNeverFill,
     isPlaceholderOption: () => isPlaceholderOption,
     labelsMatch: () => labelsMatch,
@@ -946,6 +953,133 @@ what when where which who will with would you your now future
     if (/mm[-/.]dd[-/.]yyyy/.test(hint)) return `${pad(d.m)}/${pad(d.d)}/${d.y}`;
     return `${pad(d.m)}/${pad(d.d)}/${d.y}`;
   }
+  var DECLINE_WORDS = /\b(decline|prefer not|don'?t wish|do not wish|not wish to|rather not|choose not)\b/i;
+  var EEO_GROUPS = {
+    gender: [
+      {
+        test: /\b(trans(gender)?\s*(woman|female)|trans\s*fem\w*|mtf)\b/i,
+        shapes: ["Transgender woman", "Trans woman"]
+      },
+      {
+        test: /\b(trans(gender)?\s*(man|male)|trans\s*masc\w*|ftm)\b/i,
+        shapes: ["Transgender man", "Trans man"]
+      },
+      {
+        test: /\b(non[\s-]?binary|genderqueer|gender\s*non[\s-]?conforming|enby)\b/i,
+        shapes: ["Non-binary", "Nonbinary", "Non-binary / non-conforming", "Genderqueer"]
+      },
+      {
+        test: /^(?!.*\btrans)(?=.*\b(female|woman|women|girl)\b)/i,
+        shapes: ["Female", "Woman", "Cisgender woman", "Cis woman"]
+      },
+      {
+        test: /^(?!.*\btrans)(?=.*\b(male|man|men|boy)\b)/i,
+        shapes: ["Male", "Man", "Cisgender man", "Cis man"]
+      }
+    ],
+    veteran_status: [
+      // Before the veteran rows: "not a protected veteran" contains "protected veteran".
+      {
+        test: /\b(never served|not (a |an )?(protected )?veteran|non[\s-]?veteran|no military|have not served|haven'?t served|not served)\b|^\s*no\b/i,
+        not: /\bnon[\s-]?protected veteran\b/i,
+        shapes: [
+          "I am not a protected veteran",
+          "I am not a veteran",
+          "Not a veteran",
+          "I have never served in the military",
+          "No"
+        ]
+      },
+      {
+        test: /\bnon[\s-]?protected veteran\b|\bveteran,? but not (a )?protected\b/i,
+        // One-way: on a form that only asks protected-or-not, "not a protected
+        // veteran" is true of them. "Never served" is not, so no group-level merge.
+        widensTo: /^\s*(i am )?not a protected veteran\s*$/i,
+        shapes: [
+          "I identify as a non-protected veteran",
+          "Non-protected veteran",
+          "I am not a protected veteran"
+        ]
+      },
+      {
+        test: /\b(protected veteran|disabled veteran|recently separated|armed forces service medal)\b/i,
+        shapes: [
+          "I identify as one or more of the classifications of protected veteran",
+          "I identify as a protected veteran",
+          "Protected veteran"
+        ]
+      },
+      { test: /\b(active duty)\b/i, shapes: ["I am on active duty", "Active duty"] },
+      {
+        test: /\b(national guard|reserves?)\b/i,
+        shapes: ["I am part of the national guard or on reserve", "National Guard or Reserve"]
+      }
+    ],
+    disability_status: [
+      {
+        test: /\b(no disability|not disabled|(don'?t|do not) have a disability|without a disability)\b|^\s*no\b/i,
+        shapes: [
+          "No, I don't have a disability",
+          "No, I do not have a disability",
+          "No, I don't have a disability and have not had one in the past",
+          "No disability",
+          "No"
+        ]
+      },
+      {
+        test: /\b(have (had )?a disability|disabled|with a disability)\b|^\s*yes\b/i,
+        not: /\b(don'?t|do not|not) (have|had)\b|\bnot disabled\b/i,
+        shapes: [
+          "Yes, I have a disability (or previously had a disability)",
+          "Yes, I have a disability",
+          "Yes"
+        ]
+      }
+    ]
+  };
+  function eeoOptionAllowed(key, want, option) {
+    if (want < 0) return true;
+    if (eeoGroup(key, option) === want) return true;
+    const g = (EEO_GROUPS[key] || [])[want];
+    return !!(g && g.widensTo && g.widensTo.test(String(option || "")));
+  }
+  function eeoGroup(key, text) {
+    const t = String(text || "");
+    if (!t || DECLINE_WORDS.test(t)) return -1;
+    return (EEO_GROUPS[key] || []).findIndex((g) => g.test.test(t) && !(g.not && g.not.test(t)));
+  }
+  function eeoShapes(key, text) {
+    const i = eeoGroup(key, text);
+    return i < 0 ? [] : EEO_GROUPS[key][i].shapes;
+  }
+  var MOTIVATION_RE = [
+    /\bwhy\b[^?]{0,60}\b(join|work|interested|interest|apply|applying|want|us|role|position|company|team|opportunity|here)\b/i,
+    /^\s*why\s+[^\s?][^?]{0,40}\?\s*\*?\s*$/i,
+    // "Why Anthropic?" / "Why Robinhood?*"
+    /\bwhat (excites|interests|draws|attracts|motivates) you\b/i,
+    /\bwhat about (this|the) (role|position|company|team|job)\b/i,
+    /\bmotivat(ion|es|ed)\b/i,
+    /\bcover letter\b/i,
+    /\btell us (about yourself|why)\b/i
+  ];
+  var CHOICE_KINDS = /* @__PURE__ */ new Set(["select", "combobox", "radio", "checkbox", "file", "date-parts"]);
+  function isMotivationQuestion(label, kind) {
+    if (kind && CHOICE_KINDS.has(kind)) return false;
+    const text = String(label || "");
+    return MOTIVATION_RE.some((re) => re.test(text));
+  }
+  function isConditionalFollowUp(label) {
+    const text = String(label || "").replace(/[“”"']/g, "");
+    return /^\s*(if|where) (you (answered|selected|chose|checked|said)|yes|so|applicable|the answer)\b/i.test(text) || /\bif you answered yes\b/i.test(text) || /^\s*(please )?(explain|elaborate|specify|provide details)\b[^.?]{0,40}\bif (yes|so|applicable)\b/i.test(text);
+  }
+  var READ_FIRST_KEYS = /* @__PURE__ */ new Set([
+    "gender",
+    "race_ethnicity",
+    "veteran_status",
+    "disability_status",
+    "gender_pronouns",
+    "lgbtq_identity"
+  ]);
   var FIELD_SYNONYMS = [
     // identity
     { key: "first_name", labels: ["first name", "given name", "forename", "legal first name"] },
@@ -990,7 +1124,10 @@ what when where which who will with would you your now future
     { key: "how_did_you_hear_about_us", labels: ["how did you hear", "how did you find", "referral source", "where did you hear about us", "source"] },
     // narrative
     { key: "why_do_you_want_this_role", labels: ["why this role", "why do you want to work here", "why are you interested", "why us", "why this company", "motivation"] },
-    { key: "cover_letter", labels: ["cover letter", "additional information", "anything else", "tell us about yourself", "introduce yourself"] },
+    // Not "additional information" / "anything else": those are mostly follow-ups
+    // ("If you answered Yes, please provide additional information") and got the
+    // stored motivation sentence pasted into them.
+    { key: "cover_letter", labels: ["cover letter", "tell us about yourself", "introduce yourself"] },
     // sensitive — stored answers only, never inferred
     { key: "authorized_to_work_in_country", sensitive: true, labels: ["authorized to work", "legally authorized to work", "work authorization", "eligible to work", "employment eligibility", "right to work"] },
     { key: "requires_visa_sponsorship", sensitive: true, labels: ["require sponsorship", "need sponsorship", "visa sponsorship", "require visa", "sponsorship now or in the future", "sponsor work permit", "sponsor work visa", "sponsor employment visa"] },
@@ -2094,6 +2231,7 @@ what when where which who will with would you your now future
         }
         const shapes = candidatesFor(entry2 ? entry2.key : "", stored, bank);
         if (shapes.length > 1) d.candidates = shapes;
+        if (entry2 && READ_FIRST_KEYS.has(entry2.key)) d.readFirst = { key: entry2.key, stored };
         const value = coerce(stored, Object.assign(
           {},
           row,
@@ -2106,6 +2244,27 @@ what when where which who will with would you your now future
           return done(d, SKIP, row.value, "", 0, "keeping the answer already there");
         }
         return done(d, FILL, value, "profile", 0.95, "");
+      }
+      if (isConditionalFollowUp(row.label)) {
+        d.noServer = true;
+        return row.required ? done(d, ASK, "", "", 0, "only needed for some answers to the question above") : done(d, SKIP, "", "", 0, "only needed if you answered Yes above");
+      }
+      if (isMotivationQuestion(row.label, row.kind)) {
+        d.compose = true;
+        const written = answered[String(row.serverIndex != null ? row.serverIndex : position)];
+        const text = written ? String(written.value || "").trim() : "";
+        if (text) {
+          return done(
+            d,
+            SUGGEST,
+            text,
+            written.source || "ai_written",
+            Number(written.confidence) || 0.55,
+            "written for this job \u2014 read it before you submit"
+          );
+        }
+        d.askable = true;
+        return row.required ? done(d, ASK, "", "", 0, "needs an answer written for this job") : done(d, SKIP, "", "", 0, "optional \u2014 no answer written yet");
       }
       const entry = matchFieldKey(row.label);
       if (entry && bank[entry.key]) {
@@ -2327,6 +2486,12 @@ what when where which who will with would you your now future
       shapes: ["Two or More Races", "Multiracial", "Two or more races (Not Hispanic or Latino)"]
     }
   ];
+  function eeoGuardFor(key, stored) {
+    const want = eeoGroup(key, stored);
+    return function eeoGuard(candidate, option) {
+      return eeoOptionAllowed(key, want, option);
+    };
+  }
   function ethnicityGroup(text) {
     return ETHNICITY_GROUPS.findIndex((g) => g.test.test(String(text || "")));
   }
@@ -2397,6 +2562,7 @@ what when where which who will with would you your now future
     const text = String(value == null ? "" : value).trim();
     if (key === "degree") return uniq(degreeShapes(text).concat([text]));
     if (key === "race_ethnicity") return uniq([text].concat(ethnicityShapes(text)));
+    if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
     if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
     const city = String(b.address_city || "").trim();
     const state2 = String(b.address_state || "").trim();
@@ -2468,7 +2634,7 @@ what when where which who will with would you your now future
       const options = (row.options || []).map((o) => typeof o === "string" ? o : o.label);
       if (!options.length) return text;
       const candidates = row.candidates && row.candidates.length ? row.candidates : [text];
-      const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : null;
+      const guard = row.candidateKey === "degree" ? degreeGuard : row.candidateKey === "race_ethnicity" ? ethnicityGuardFor(candidates[0]) : EEO_GROUPS[row.candidateKey] ? eeoGuardFor(row.candidateKey, candidates[0]) : null;
       const match = bestCandidateMatch(candidates, options, guard);
       if (match != null) return match;
       return declineFallback(text, options);
@@ -2519,7 +2685,7 @@ what when where which who will with would you your now future
     const out = [];
     decisions.forEach((d, i) => {
       if (d.action !== ASK && !d.askable && !d.knownEmpty) return;
-      if (d.sensitive || d.slot) return;
+      if (d.sensitive || d.slot || d.noServer) return;
       if (isNeverFill(d.label)) return;
       if (classifySensitive(d.label)) return;
       out.push({
@@ -2531,6 +2697,7 @@ what when where which who will with would you your now future
         // A field we can name but have no value for: recall a saved answer, but
         // never let the model compose one. Enforced on the server as well.
         recallOnly: !!d.knownEmpty,
+        compose: !!d.compose,
         documentSlot: null,
         options: (d.options || []).map((o) => typeof o === "string" ? o : o.label).filter(Boolean).slice(0, 300)
       });
@@ -2772,7 +2939,7 @@ what when where which who will with would you your now future
     const head = text.split(",")[0].trim();
     return head.length >= 2 ? head : text;
   }
-  async function commitCombobox(row, value, candidates) {
+  async function commitCombobox(row, value, candidates, readFirst) {
     const el = row.el;
     if (!el) return false;
     const shapes = dedupe([value].concat(candidates || []));
@@ -2784,8 +2951,10 @@ what when where which who will with would you your now future
       dismissListbox(el);
       openWidget(row);
       await sleep(TIMING.settleMs);
-      let options;
-      if (isButton) {
+      let options = [];
+      if (readFirst && !isButton) options = await waitForOptions2(el, TIMING.optionWaitMs);
+      if (options.length) {
+      } else if (isButton) {
         options = await waitForOptions2(el, TIMING.optionWaitMs);
       } else {
         const input = typableInput(row) || el;
@@ -2806,6 +2975,22 @@ what when where which who will with would you your now future
           fireKey(input, "keyup", "Enter");
           options = await waitForOptions2(el, TIMING.optionWaitMs);
         }
+      }
+      if (readFirst) {
+        const labels = options.map((n) => (n.textContent || "").replace(/\s+/g, " ").trim());
+        const pick = pickReadFirst(readFirst, labels);
+        if (!pick) {
+          reportDropdownFailure(row, value, options);
+          return false;
+        }
+        const node = options[labels.indexOf(pick)];
+        try {
+          node.scrollIntoView({ block: "nearest" });
+        } catch (e) {
+        }
+        pressPointer(node);
+        await sleep(TIMING.settleMs);
+        return committed(row, pick);
       }
       for (const shape of options.length ? shapes : []) {
         if (!await clickMatchingOption(el, shape, options)) continue;
@@ -2940,6 +3125,15 @@ what when where which who will with would you your now future
     pressPointer(node);
     return true;
   }
+  function pickReadFirst(readFirst, labels) {
+    const pick = coerce(readFirst.stored, {
+      kind: "combobox",
+      options: labels,
+      candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
+      candidateKey: readFirst.key
+    });
+    return pick != null && labels.includes(pick) ? pick : null;
+  }
   function committed(row, value) {
     const after = reprobe(row);
     if (!after) return false;
@@ -3043,6 +3237,7 @@ what when where which who will with would you your now future
     for (const candidate of decision && decision.candidates || []) {
       if (commitMatches(candidate, shown)) return true;
     }
+    if (decision && decision.readFirst && shown && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
     return isPhoneField(decision && decision.row) && samePhone(value, shown);
   }
   function isPhoneField(row) {
@@ -3068,10 +3263,10 @@ what when where which who will with would you your now future
         break;
       case "select":
         wrote = setSelect(row.el, value);
-        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates);
+        if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
         break;
       case "combobox":
-        wrote = await commitCombobox(row, value, decision.candidates);
+        wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
         break;
       case "radio":
       case "checkbox":
@@ -3245,9 +3440,7 @@ what when where which who will with would you your now future
     progress("scanning");
     let rows = describeFields(form);
     if (!rows.length) return { error: "no_fields", decisions: [], counts: summarize([]) };
-    let decisions = await planFor(rows, ctx, progress);
-    progress("filling", { done: 0, total: decisionsToWrite(decisions).length });
-    await writeAll(decisions, ctx, progress);
+    let decisions = await fillInTwoWaves(await planFor(rows, ctx, progress), ctx, progress);
     for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
       const broken = decisions.filter((d) => d.outcome && d.outcome !== "ok" && d.value);
       if (!broken.length) break;
@@ -3275,8 +3468,7 @@ what when where which who will with would you your now future
       if (!added.length) break;
       revealed++;
       progress("scanning", { detail: `${added.length} new field(s) appeared` });
-      const extra = await planFor(added, ctx, progress);
-      await writeAll(extra, ctx, progress);
+      const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
       decisions = decisions.concat(extra);
       rows = fresh;
     }
@@ -3285,6 +3477,7 @@ what when where which who will with would you your now future
     return {
       decisions,
       counts: summarize(decisions),
+      serverError: decisions.serverError || "",
       page: state.page,
       opaqueHosts: form.opaqueHosts || 0,
       ats: form.ats
@@ -3325,8 +3518,10 @@ what when where which who will with would you your now future
       decisions = decide(rows, ctx, null, state);
     }
     const toAsk = fieldsForServer(decisions);
-    if (!toAsk.length) return decisions;
-    progress("thinking", { total: toAsk.length });
+    if (!toAsk.length) return { decisions, server: null };
+    return { decisions, server: askServer(rows, ctx, decisions, toAsk) };
+  }
+  async function askServer(rows, ctx, decisions, toAsk) {
     const res = await send({
       type: "AF_PLAN",
       payload: {
@@ -3348,6 +3543,29 @@ what when where which who will with would you your now future
       return decisions;
     }
     return decide(rows, ctx, res.data || {}, state);
+  }
+  async function fillInTwoWaves(plan, ctx, progress) {
+    const local = plan.decisions;
+    progress("filling", { done: 0, total: decisionsToWrite(local).length });
+    await writeAll(local, ctx, progress);
+    if (!plan.server) return local;
+    progress("thinking");
+    const answered = await plan.server;
+    const wroteLocally = new Set(decisionsToWrite(local));
+    const merged = answered.map((d, i) => wroteLocally.has(local[i]) ? local[i] : d);
+    merged.serverError = answered.serverError;
+    merged.quotaExhausted = answered.quotaExhausted;
+    const wave2 = merged.filter((d, i) => d !== local[i] && decisionsToWrite([d]).length);
+    for (const d of wave2) {
+      const now = reprobe(d.row);
+      if (now && now.filled && !d.row.filled) {
+        d.action = SKIP;
+        d.reason = "you filled this while we were writing";
+        if (d.key && !state.userEdited.includes(d.key)) state.userEdited.push(d.key);
+      }
+    }
+    await writeAll(wave2, ctx, progress);
+    return merged;
   }
   async function writeAll(decisions, ctx, progress, isRepair) {
     const todo = isRepair ? decisions : decisionsToWrite(decisions);
@@ -3560,6 +3778,7 @@ what when where which who will with would you your now future
     profile: "your profile",
     saved_answer: "a saved answer",
     ai: "AI",
+    ai_written: "AI, written for this job",
     you: "you"
   };
   function renderReady(body, form, ctx, handlers, extra) {
@@ -3569,8 +3788,17 @@ what when where which who will with would you your now future
     const page = extra && extra.page || 0;
     body.innerHTML = `
     <div class="tcv-af-panel">
-      <div class="tcv-job-info">${page > 1 ? `Page ${esc(page)} of this application` : "Application form detected"}</div>
-      <div class="tcv-source">${esc(count)} field${count === 1 ? "" : "s"} on this page${form && form.ats && form.ats !== "generic" ? ` \xB7 ${esc(form.ats)}` : ""}</div>
+      <div class="tcv-card tcv-job-card">
+        <div class="tcv-job-main">
+          <div class="tcv-job-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+          </div>
+          <div class="tcv-job-text">
+            <div class="tcv-job-title">${page > 1 ? `Page ${esc(page)} of this application` : "Application form detected"}</div>
+            <div class="tcv-job-meta">${esc(count)} field${count === 1 ? "" : "s"} on this page${form && form.ats && form.ats !== "generic" ? ` \xB7 ${esc(form.ats)}` : ""}</div>
+          </div>
+        </div>
+      </div>
       ${blockers.length ? `
         <div class="tcv-af-note">
           ${esc(blockers[0])}
@@ -3580,8 +3808,8 @@ what when where which who will with would you your now future
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro \u2192</a>
         </div>` : `
-        <button class="tcv-btn tcv-btn-start" id="tcvAfFillBtn">${page > 1 ? "\u270E Autofill this page" : "\u270E Autofill this application"}</button>`}
-      <button class="tcv-btn tcv-btn-ghost" id="tcvAfTailorBtn">\u2726 Tailor my resume for this job</button>
+        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1 ? "Autofill this page" : "Autofill this application"} <span aria-hidden="true">\u25B8</span></button>`}
+      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">\u2726 Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
       </div>

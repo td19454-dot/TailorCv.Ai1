@@ -2,26 +2,36 @@
 
 #tailorcv-sidebar {
   position: fixed !important;
-  top: 80px !important;
+  top: 0 !important;
   right: 0 !important;
-  width: 400px !important;
+  width: 380px !important;
   max-width: calc(100vw - 16px) !important;
+  height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
   background: linear-gradient(160deg, #0f1629, #0e1a2e) !important;
-  border: 1px solid rgba(79, 127, 255, 0.3) !important;
-  border-right: none !important;
-  border-radius: 14px 0 0 14px !important;
+  border: none !important;
+  border-left: 1px solid rgba(79, 127, 255, 0.3) !important;
+  border-radius: 0 !important;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.45) !important;
   z-index: 2147483647 !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
   font-size: 15px !important;
   color: #f1f5f9 !important;
-  padding: 20px !important;
+  padding: 0 !important;
   transition: transform 0.25s ease !important;
-  /* Fixed and anchored at top:80px, so without a cap anything taller than the
-     window (the skills pop-up, the changes panel) ran off the bottom unseen. */
-  max-height: calc(100vh - 96px) !important;
+  overflow: hidden !important;
+}
+
+/* Header and tabs stay put; only this part scrolls. */
+.tcv-scroll {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
+  padding: 4px 16px 20px !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(255,255,255,0.12) transparent !important;
 }
 
 #tailorcv-sidebar.tcv-collapsed {
@@ -69,10 +79,189 @@
 
 .tcv-header {
   position: relative !important;
+  flex: 0 0 auto !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
-  margin-bottom: 16px !important;
+  padding: 16px 16px 12px !important;
+}
+
+/* Segmented tab bar under the header. */
+.tcv-tabs {
+  flex: 0 0 auto !important;
+  display: flex !important;
+  gap: 4px !important;
+  margin: 0 16px 14px !important;
+  padding: 4px !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+}
+.tcv-tabs.tcv-hidden { display: none !important; }
+.tcv-tab {
+  flex: 1 1 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 9px 6px !important;
+  border: none !important;
+  border-radius: 9px !important;
+  background: none !important;
+  color: #8da3c6 !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: background 0.15s, color 0.15s !important;
+}
+.tcv-tab svg { flex: 0 0 auto !important; }
+.tcv-tab:hover:not(:disabled):not(.tcv-active) { color: #eaf1ff !important; background: rgba(255,255,255,0.04) !important; }
+.tcv-tab.tcv-active {
+  background: rgba(79,127,255,0.16) !important;
+  color: #93b4ff !important;
+  box-shadow: inset 0 0 0 1px rgba(79,127,255,0.3) !important;
+}
+.tcv-tab:disabled { opacity: 0.4 !important; cursor: not-allowed !important; }
+
+/* ── Cards (job view) ── */
+.tcv-card {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 0 12px !important;
+  border-radius: 12px !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  color: #eaf1ff !important;
+  text-align: left !important;
+}
+
+.tcv-job-main {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 14px !important;
+}
+.tcv-job-avatar {
+  flex: 0 0 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 10px !important;
+  background: rgba(79,127,255,0.14) !important;
+  color: #93b4ff !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+.tcv-job-text { min-width: 0 !important; }
+.tcv-job-title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  color: #f1f5f9 !important;
+  line-height: 1.3 !important;
+  overflow-wrap: anywhere !important;
+}
+.tcv-job-meta {
+  margin-top: 3px !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
+}
+.tcv-job-foot {
+  padding: 10px 14px !important;
+  border-top: 1px solid rgba(255,255,255,0.07) !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
+}
+.tcv-job-foot a {
+  color: #93c5fd !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+}
+.tcv-job-foot a:hover { text-decoration: underline !important; }
+
+/* The one loud button in the view. */
+.tcv-btn.tcv-btn-cta {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-height: 52px !important;
+  margin-bottom: 12px !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 18px rgba(79,127,255,0.28) !important;
+}
+.tcv-btn-cta span { font-size: 13px !important; }
+
+.tcv-btn-outline-accent {
+  background: rgba(79,127,255,0.08) !important;
+  color: #93b4ff !important;
+  border: 1px solid rgba(79,127,255,0.55) !important;
+  margin-bottom: 0 !important;
+}
+.tcv-btn-outline-accent:hover:not(:disabled) { background: rgba(79,127,255,0.16) !important; }
+.tcv-af-panel .tcv-btn-outline-accent { margin-bottom: 8px !important; }
+
+.tcv-resume-card { padding: 14px !important; }
+.tcv-card-head {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-bottom: 12px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
+}
+.tcv-card-head svg { color: #8da3c6 !important; }
+.tcv-resume-file {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding: 11px 12px !important;
+  margin-bottom: 14px !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  text-decoration: none !important;
+  color: #eaf1ff !important;
+}
+.tcv-resume-file:hover { border-color: rgba(79,127,255,0.45) !important; }
+.tcv-resume-name {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.tcv-chev {
+  color: #7e8ba3 !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+}
+
+.tcv-row-card {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 14px !important;
+  cursor: pointer !important;
+  font-size: 15px !important;
+  transition: border-color 0.15s !important;
+}
+.tcv-row-card svg { color: #8da3c6 !important; flex: 0 0 auto !important; }
+.tcv-row-card:hover:not(:disabled) { border-color: rgba(79,127,255,0.45) !important; }
+.tcv-row-card:disabled { opacity: 0.45 !important; cursor: not-allowed !important; }
+.tcv-row-title { flex: 1 1 auto !important; font-weight: 700 !important; }
+.tcv-row-meta {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 13px !important;
+  color: #7e8ba3 !important;
 }
 
 .tcv-header-actions {
@@ -88,14 +277,14 @@
 }
 
 .tcv-logo-icon {
-  width: 22px !important;
-  height: 22px !important;
+  width: 26px !important;
+  height: 26px !important;
   border-radius: 6px !important;
   display: block !important;
 }
 
 .tcv-logo {
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-weight: 700 !important;
   background: linear-gradient(135deg, #4f7fff, #c9b8ff) !important;
   -webkit-background-clip: text !important;
@@ -109,9 +298,11 @@
   font-size: 18px !important;
   background: none !important;
   border: none !important;
-  padding: 4px 6px !important;
+  padding: 4px !important;
   border-radius: 6px !important;
   line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
 .tcv-toggle:hover { background: rgba(255,255,255,0.08) !important; }
 
@@ -769,60 +960,62 @@
    before-tailor browsing signal; the animated success tick + score card handle the
    after-tailor moment. */
 .tcv-match {
-  padding: 12px 14px !important;
-  margin-bottom: 14px !important;
-  border-radius: 12px !important;
-  background: rgba(255,255,255,0.04) !important;
-  border: 1px solid rgba(255,255,255,0.07) !important;
-}
-.tcv-match-head {
   display: flex !important;
-  align-items: baseline !important;
-  justify-content: space-between !important;
-  margin-bottom: 9px !important;
+  align-items: center !important;
+  gap: 14px !important;
+  margin-bottom: 14px !important;
 }
-.tcv-match-label {
-  font-size: 10px !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.09em !important;
-  color: #7c8aa5 !important;
+.tcv-ring-wrap {
+  position: relative !important;
+  flex: 0 0 64px !important;
+  width: 64px !important;
+  height: 64px !important;
+}
+.tcv-ring { transform: rotate(-90deg) !important; display: block !important; }
+.tcv-ring-track {
+  fill: none !important;
+  stroke: rgba(255,255,255,0.08) !important;
+  stroke-width: 6 !important;
+}
+.tcv-ring-bar {
+  fill: none !important;
+  stroke: url(#tcvMatchGradient) !important;
+  stroke-width: 6 !important;
+  stroke-linecap: round !important;
+  /* dashoffset is not !important — paintMatch() animates it via inline style */
+  transition: stroke-dashoffset 0.8s cubic-bezier(.22,.61,.36,1), stroke 0.4s ease !important;
 }
 .tcv-match-value {
-  font-size: 20px !important;
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 19px !important;
   font-weight: 750 !important;
   color: #eaf1ff !important;
   font-variant-numeric: tabular-nums !important;
   line-height: 1 !important;
 }
-.tcv-match-bar {
-  position: relative !important;
-  height: 6px !important;
-  border-radius: 99px !important;
-  background: rgba(255,255,255,0.08) !important;
-  overflow: hidden !important;
+.tcv-match-text { min-width: 0 !important; }
+.tcv-match-verdict {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #eaf1ff !important;
 }
-.tcv-match-fill {
-  display: block !important;
-  height: 100% !important;
-  width: 0;   /* not !important — paintMatch() sets the real width via inline style */
-  border-radius: 99px !important;
-  background: linear-gradient(90deg, #4f7fff, #c9b8ff) !important;
-  transition: width 0.7s cubic-bezier(.22,.61,.36,1), background 0.4s ease !important;
+.tcv-match-sub {
+  margin-top: 2px !important;
+  font-size: 12.5px !important;
+  color: #7e8ba3 !important;
 }
-.tcv-match.tcv-low  .tcv-match-fill  { background: linear-gradient(90deg, #f87171, #fb923c) !important; }
-.tcv-match.tcv-mid  .tcv-match-fill  { background: linear-gradient(90deg, #fbbf24, #facc15) !important; }
-.tcv-match.tcv-high .tcv-match-fill  { background: linear-gradient(90deg, #34d399, #4ade80) !important; }
+/* The ring's colour carries the verdict, so the number does not have to. */
+.tcv-match.tcv-low  .tcv-ring-bar { stroke: #f87171 !important; }
+.tcv-match.tcv-mid  .tcv-ring-bar { stroke: #fbbf24 !important; }
+.tcv-match.tcv-high .tcv-ring-bar { stroke: #34d399 !important; }
 .tcv-match.tcv-low  .tcv-match-value { color: #fca5a5 !important; }
 .tcv-match.tcv-mid  .tcv-match-value { color: #fcd34d !important; }
 .tcv-match.tcv-high .tcv-match-value { color: #86efac !important; }
-/* No named skills in the JD — nothing to score, so explain rather than show a blank bar. */
-.tcv-match.tcv-na .tcv-match-value { font-size: 15px !important; color: #94a3b8 !important; }
-.tcv-match-note {
-  font-size: 11px !important;
-  line-height: 1.45 !important;
-  color: #8a93a6 !important;
-}
+.tcv-match.tcv-na   .tcv-match-value { color: #94a3b8 !important; }
 
 .tcv-upgrade-box {
   text-align: center !important;

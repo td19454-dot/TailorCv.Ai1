@@ -10,6 +10,9 @@
 // Sequencing notes:
 //   * One /plan request per page. The deterministic tier runs first and locally,
 //     so a form of ordinary identity fields costs no network call at all.
+//   * That request is NOT waited on before writing. The profile answers are
+//     typed while it is in flight, and the server's answers (including the
+//     slow, AI-written ones) are written when they arrive — see fillInTwoWaves.
 //   * Exactly one repair sweep, and it costs no LLM call: it retries only the
 //     fields the page disagreed about, using the other mechanism.
 //   * Fields that appear in response to an answer get one extra round, capped.
@@ -217,9 +220,7 @@ export async function runAutofill(ctx, onProgress) {
   let rows = describeFields(form);
   if (!rows.length) return { error: 'no_fields', decisions: [], counts: summarize([]) };
 
-  let decisions = await planFor(rows, ctx, progress);
-  progress('filling', { done: 0, total: decisionsToWrite(decisions).length });
-  await writeAll(decisions, ctx, progress);
+  let decisions = await fillInTwoWaves(await planFor(rows, ctx, progress), ctx, progress);
 
   // One repair sweep, no LLM: retry only what the page disagreed about.
   for (let sweep = 0; sweep < MAX_REPAIR_SWEEPS; sweep++) {
@@ -259,8 +260,7 @@ export async function runAutofill(ctx, onProgress) {
     if (!added.length) break;
     revealed++;
     progress('scanning', { detail: `${added.length} new field(s) appeared` });
-    const extra = await planFor(added, ctx, progress);
-    await writeAll(extra, ctx, progress);
+    const extra = await fillInTwoWaves(await planFor(added, ctx, progress), ctx, progress);
     decisions = decisions.concat(extra);
     rows = fresh;
   }
@@ -271,6 +271,7 @@ export async function runAutofill(ctx, onProgress) {
   return {
     decisions,
     counts: summarize(decisions),
+    serverError: decisions.serverError || '',
     page: state.page,
     opaqueHosts: form.opaqueHosts || 0,
     ats: form.ats,
@@ -334,9 +335,14 @@ async function planFor(rows, ctx, progress) {
   }
 
   const toAsk = fieldsForServer(decisions);
-  if (!toAsk.length) return decisions;
+  if (!toAsk.length) return { decisions, server: null };
 
-  progress('thinking', { total: toAsk.length });
+  // Started here, awaited by fillInTwoWaves only after the local answers are in.
+  return { decisions, server: askServer(rows, ctx, decisions, toAsk) };
+}
+
+/** The /plan request. Resolves to the full re-decided list, never rejects. */
+async function askServer(rows, ctx, decisions, toAsk) {
   const res = await send({
     type: 'AF_PLAN',
     payload: {
@@ -358,6 +364,43 @@ async function planFor(rows, ctx, progress) {
     return decisions;
   }
   return decide(rows, ctx, res.data || {}, state);
+}
+
+/**
+ * Write a plan's answers in two waves.
+ *
+ * Wave 1 is everything decided locally — the profile, EEO, documents — written
+ * immediately, while the /plan request (and its AI calls, which take seconds)
+ * is still in flight. Wave 2 is whatever the server answered, written when it
+ * arrives. Nothing clashes: wave 2 only ever writes fields wave 1 left alone.
+ *
+ * The person is looking at the form during wave 1 and may start typing. A field
+ * they filled while we waited is theirs, so it is re-read before wave 2 writes.
+ */
+async function fillInTwoWaves(plan, ctx, progress) {
+  const local = plan.decisions;
+  progress('filling', { done: 0, total: decisionsToWrite(local).length });
+  await writeAll(local, ctx, progress);
+  if (!plan.server) return local;
+
+  progress('thinking');
+  const answered = await plan.server;
+  const wroteLocally = new Set(decisionsToWrite(local));
+  const merged = answered.map((d, i) => (wroteLocally.has(local[i]) ? local[i] : d));
+  merged.serverError = answered.serverError;
+  merged.quotaExhausted = answered.quotaExhausted;
+
+  const wave2 = merged.filter((d, i) => d !== local[i] && decisionsToWrite([d]).length);
+  for (const d of wave2) {
+    const now = reprobe(d.row);
+    if (now && now.filled && !d.row.filled) {
+      d.action = SKIP;
+      d.reason = 'you filled this while we were writing';
+      if (d.key && !state.userEdited.includes(d.key)) state.userEdited.push(d.key);
+    }
+  }
+  await writeAll(wave2, ctx, progress);
+  return merged;
 }
 
 /** Write a batch of decisions and record what the page did with each. */

@@ -85,6 +85,9 @@
                                 {% for value, text in spec.options %}
                                     <option value="{{ value }}" {{ "selected" if f.value == value }}>{{ text }}</option>
                                 {% endfor %}
+                                {% if f.value and f.value not in spec.options | map("first") | list %}
+                                    <option value="{{ f.value }}" selected>{{ f.value }} (your earlier answer)</option>
+                                {% endif %}
                                 </select>
                             {% elif spec.kind == "textarea" %}
                                 <textarea id="pf-{{ spec.key }}" name="{{ spec.key }}" maxlength="{{ spec.max_len }}"

@@ -43,6 +43,74 @@ REMOTE = [("", "Not set"), ("remote", "Remote"), ("hybrid", "Hybrid"),
           ("onsite", "On-site"), ("flexible", "Flexible")]
 EEO_NOTE = "Not set — we answer “Decline to self-identify”"
 
+# EEO answers as the MOST detailed lists real forms use (these are Greenhouse's
+# demographic questions, e.g. job-boards.greenhouse.io/robinhood). Storing the
+# finest answer lets the extension widen it onto a coarser form — "Cisgender
+# man" answers "Male", "I have never served in the military" answers "I am not a
+# protected veteran" — which can't be done in the other direction without
+# guessing. Matching lives in chrome-extension/src/autofill/match.js EEO_GROUPS.
+EEO_UNSET = ("", "Not set — we answer “Decline to self-identify”")
+
+
+def _eeo(*labels: str) -> list:
+    return [EEO_UNSET] + [(label, label) for label in labels]
+
+
+GENDER_OPTIONS = _eeo(
+    "Cisgender woman", "Cisgender man", "Transgender woman", "Transgender man",
+    "Non-binary", "Two-spirit", "My gender identity is not listed")
+RACE_OPTIONS = _eeo(
+    "American Indian or Alaskan Native", "Black or African American", "East Asian",
+    "Hispanic or Latino", "Middle Eastern or North African",
+    "Native Hawaiian or Other Pacific Islander", "South Asian", "Southeast Asian", "White",
+    "Two or More Races")
+VETERAN_OPTIONS = _eeo(
+    "I have never served in the military", "I identify as a protected veteran",
+    "I identify as a non-protected veteran", "I am on active duty",
+    "I am part of the national guard or on reserve",
+    "I identify in multiple military status categories")
+DISABILITY_OPTIONS = _eeo(
+    "Yes, I have a disability (or previously had a disability)",
+    "No, I don't have a disability")
+PRONOUN_OPTIONS = _eeo("He/him", "She/her", "They/them", "He/they", "She/they",
+                       "Ze/zir", "My pronouns are not listed")
+LGBTQ_OPTIONS = _eeo("Yes", "No", "Questioning")
+
+# Free-text answers saved before these were dropdowns, mapped onto the option
+# that says the same thing. Only unambiguous ones: "Not a protected veteran" is
+# left alone because a non-protected veteran says that too.
+EEO_LEGACY = {
+    "gender": {"male": "Cisgender man", "man": "Cisgender man",
+               "female": "Cisgender woman", "woman": "Cisgender woman",
+               "non-binary": "Non-binary", "nonbinary": "Non-binary"},
+    "race_ethnicity": {"asian indian": "South Asian", "indian": "South Asian",
+                       "white / european": "White", "caucasian": "White",
+                       "american indian or alaska native": "American Indian or Alaskan Native",
+                       "two or more": "Two or More Races", "multiracial": "Two or More Races"},
+    "veteran_status": {"not a veteran": "I have never served in the military",
+                       "i am not a veteran": "I have never served in the military",
+                       "never served": "I have never served in the military",
+                       "protected veteran": "I identify as a protected veteran",
+                       "i identify as one or more of the classifications of protected veteran":
+                           "I identify as a protected veteran"},
+    "disability_status": {"no disability": "No, I don't have a disability",
+                          "no": "No, I don't have a disability",
+                          "not disabled": "No, I don't have a disability",
+                          "no, i do not have a disability": "No, I don't have a disability",
+                          "yes": "Yes, I have a disability (or previously had a disability)",
+                          "yes, i have a disability":
+                              "Yes, I have a disability (or previously had a disability)"},
+    "gender_pronouns": {"he/him/his": "He/him", "she/her/hers": "She/her",
+                        "they/them/theirs": "They/them"},
+    "lgbtq_identity": {},
+}
+
+
+def eeo_canonical(column: str, value: str) -> str:
+    """The dropdown option an older free-text EEO answer means, or the value as-is."""
+    text = (value or "").strip()
+    return EEO_LEGACY.get(column, {}).get(text.lower(), text)
+
 
 @dataclass
 class Spec:
@@ -134,13 +202,21 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
              max_len=2000),
     ]),
     ("eeo", "Voluntary self-identification", [
-        Spec("gender", "gender", "Gender", placeholder=EEO_NOTE, max_len=60),
-        Spec("raceEthnicity", "race_ethnicity", "Race / ethnicity", placeholder=EEO_NOTE, max_len=80),
-        Spec("veteranStatus", "veteran_status", "Veteran status", placeholder=EEO_NOTE, max_len=80),
-        Spec("disabilityStatus", "disability_status", "Disability status", placeholder=EEO_NOTE,
-             max_len=80),
-        Spec("genderPronouns", "gender_pronouns", "Pronouns", placeholder=EEO_NOTE, max_len=40),
-        Spec("lgbtqIdentity", "lgbtq_identity", "LGBTQ+ identity", placeholder=EEO_NOTE, max_len=60),
+        Spec("gender", "gender", "Gender identity", kind="select", options=GENDER_OPTIONS,
+             help="Also answers plain Male / Female questions.", max_len=60),
+        Spec("raceEthnicity", "race_ethnicity", "Race / ethnicity", kind="select",
+             options=RACE_OPTIONS,
+             help="Forms with broader groups get the group yours belongs to "
+                  "(South Asian → Asian).", max_len=80),
+        Spec("veteranStatus", "veteran_status", "Military / veteran status", kind="select",
+             options=VETERAN_OPTIONS,
+             help="“Never served” also answers “I am not a protected veteran”.", max_len=80),
+        Spec("disabilityStatus", "disability_status", "Disability status", kind="select",
+             options=DISABILITY_OPTIONS, max_len=80),
+        Spec("genderPronouns", "gender_pronouns", "Pronouns", kind="select",
+             options=PRONOUN_OPTIONS, max_len=40),
+        Spec("lgbtqIdentity", "lgbtq_identity", "LGBTQ+ identity", kind="select",
+             options=LGBTQ_OPTIONS, max_len=60),
     ]),
     ("consent", "Permissions", [
         Spec("agreeToEmployerTerms", "agreed_to_employer_terms",
@@ -153,6 +229,8 @@ SECTIONS: list[tuple[str, str, list[Spec]]] = [
 ]
 
 ALL_SPECS = {s.key: s for _, _, specs in SECTIONS for s in specs}
+EEO_COLUMNS = {"gender", "race_ethnicity", "veteran_status", "disability_status",
+               "gender_pronouns", "lgbtq_identity"}
 SELECT_VALUES = {s.key: {v for v, _ in s.options} for s in ALL_SPECS.values() if s.kind == "select"}
 
 
@@ -228,6 +306,15 @@ def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
     for key, spec in ALL_SPECS.items():
         s = stored.get(key)
         e = effective.get(key, s)
+        if spec.column in EEO_COLUMNS:
+            # Shown as saved or empty — the "Decline" fallback is explained by the
+            # empty option, not written into the box as though the user chose it.
+            # An older free-text answer is shown as the option it means, marked
+            # Suggested until saved; one with no clear option stays as it was.
+            canon = eeo_canonical(spec.column, s)
+            fields[key] = {"value": canon,
+                           "source": "saved" if s and canon == s else ("suggested" if s else "")}
+            continue
         # Choices the user makes (yes/no answers, permissions) are only ever what
         # they saved — there is nothing to suggest.
         if spec.kind in ("checkbox", "readonly", "select"):
@@ -237,12 +324,6 @@ def _page_model(stored: dict, effective: dict, facts_cached: bool) -> dict:
             saved = bool(s.get("number"))
             fields[key] = {"value": s if saved else e, "source": "saved" if saved
                            else ("suggested" if e.get("number") else "")}
-            continue
-        if spec.column in {"gender", "race_ethnicity", "veteran_status", "disability_status",
-                           "gender_pronouns", "lgbtq_identity"}:
-            # Shown as saved or empty — the "Decline" fallback is explained by the
-            # placeholder, not written into the box as though the user chose it.
-            fields[key] = {"value": s, "source": "saved" if s else ""}
             continue
         if s:
             fields[key] = {"value": s, "source": "saved"}
@@ -344,6 +425,14 @@ async def save_profile(request: Request, payload: ProfileSave):
             if len(text) > spec.max_len:
                 raise HTTPException(status_code=422,
                                     detail=f"{spec.label} is too long (max {spec.max_len}).")
+            if spec.column in EEO_COLUMNS:
+                text = eeo_canonical(spec.column, text)
+                # An older free-text answer with no matching option may be sent
+                # back unchanged; anything else must be one of the options.
+                if text not in SELECT_VALUES[key] and text != (getattr(prof, spec.column, "") or ""):
+                    raise HTTPException(status_code=422, detail=f"Invalid choice for {spec.label}.")
+                setattr(prof, spec.column, text)
+                continue
             if spec.kind == "select" and text not in SELECT_VALUES[key]:
                 raise HTTPException(status_code=422, detail=f"Invalid choice for {spec.label}.")
             setattr(prof, spec.column, text)

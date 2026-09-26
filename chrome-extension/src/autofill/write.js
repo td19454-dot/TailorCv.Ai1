@@ -16,6 +16,7 @@
 // field is required".
 
 import { commitMatches, bestOptionMatch, looksLikeDecline } from './match.js';
+import { coerce, candidatesFor } from './plan.js';
 import { scrollIntoView, dismissListbox, reprobe, datePartOf, isNodeVisible } from './discover.js';
 import { TIMING, sleep } from './timing.js';
 
@@ -294,7 +295,7 @@ function searchToken(value) {
   return head.length >= 2 ? head : text;
 }
 
-export async function commitCombobox(row, value, candidates) {
+export async function commitCombobox(row, value, candidates, readFirst) {
   const el = row.el;
   if (!el) return false;
   // `value` stays the primary answer; the rest are other shapes of it that
@@ -316,8 +317,14 @@ export async function commitCombobox(row, value, candidates) {
     openWidget(row);
     await sleep(TIMING.settleMs);
 
-    let options;
-    if (isButton) {
+    let options = [];
+    // A short EEO list filters by substring, so typing the stored "Male" hides
+    // "Cisgender man" before it can be matched. Read the whole list first; type
+    // only if opening it showed nothing. See READ_FIRST_KEYS in match.js.
+    if (readFirst && !isButton) options = await waitForOptions(el, TIMING.optionWaitMs);
+    if (options.length) {
+      // already open with the full list
+    } else if (isButton) {
       // A <button> dropdown (Workday): there is no input to type into, and
       // writing a "value" onto a button changes nothing — pressing it is the
       // whole interaction, and the options appear in a portal.
@@ -352,6 +359,23 @@ export async function commitCombobox(row, value, candidates) {
         fireKey(input, 'keyup', 'Enter');
         options = await waitForOptions(el, TIMING.optionWaitMs);
       }
+    }
+
+    // EEO: choose exactly as the planner would have with the list in hand —
+    // same shapes, same guards, same decline fallback — never the bare fuzzy
+    // matcher, which rates "Male" close to "Female".
+    if (readFirst) {
+      const labels = options.map(n => (n.textContent || '').replace(/\s+/g, ' ').trim());
+      const pick = pickReadFirst(readFirst, labels);
+      if (!pick) {
+        reportDropdownFailure(row, value, options);
+        return false;
+      }
+      const node = options[labels.indexOf(pick)];
+      try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+      pressPointer(node);
+      await sleep(TIMING.settleMs);
+      return committed(row, pick);
     }
 
     // Every shape, against the list we already have open: no extra open, no
@@ -506,6 +530,17 @@ async function clickMatchingOption(el, value, nodes) {
   try { node.scrollIntoView({ block: 'nearest' }); } catch (e) {}
   pressPointer(node);
   return true;
+}
+
+/** The option the planner's own rules choose for this EEO answer, or null. */
+function pickReadFirst(readFirst, labels) {
+  const pick = coerce(readFirst.stored, {
+    kind: 'combobox',
+    options: labels,
+    candidates: candidatesFor(readFirst.key, readFirst.stored, {}),
+    candidateKey: readFirst.key,
+  });
+  return pick != null && labels.includes(pick) ? pick : null;
 }
 
 function committed(row, value) {
@@ -680,6 +715,10 @@ function accepts(decision, value, shown) {
   for (const candidate of (decision && decision.candidates) || []) {
     if (commitMatches(candidate, shown)) return true;
   }
+  // An EEO list worded its own way ("Cisgender man" for "Male") is still the
+  // same answer if the planner's rules would have picked what is shown.
+  if (decision && decision.readFirst && shown
+      && pickReadFirst(decision.readFirst, [shown]) === shown) return true;
   return isPhoneField(decision && decision.row) && samePhone(value, shown);
 }
 
@@ -712,10 +751,10 @@ export async function applyDecision(decision) {
       wrote = setSelect(row.el, value);
       // A "select" that has no real <option> children is a custom widget
       // wearing a select's clothes.
-      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates);
+      if (!wrote) wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
       break;
     case 'combobox':
-      wrote = await commitCombobox(row, value, decision.candidates);
+      wrote = await commitCombobox(row, value, decision.candidates, decision.readFirst);
       break;
     case 'radio':
     case 'checkbox':

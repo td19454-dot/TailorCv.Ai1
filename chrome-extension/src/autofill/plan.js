@@ -32,6 +32,13 @@ import {
   formatDateForField,
   splitPhone,
   looksLikeDecline,
+  EEO_GROUPS,
+  eeoGroup,
+  eeoShapes,
+  eeoOptionAllowed,
+  READ_FIRST_KEYS,
+  isMotivationQuestion,
+  isConditionalFollowUp,
 } from './match.js';
 
 export const AUTOFILL_MIN = 0.8;
@@ -128,6 +135,9 @@ export function decide(rows, ctx, server, state) {
       // known group is matched exactly as before.
       const shapes = candidatesFor(entry ? entry.key : '', stored, bank);
       if (shapes.length > 1) d.candidates = shapes;
+      // The writer re-picks from the OPEN list with this same coerce(), since
+      // most EEO dropdowns only show their options once opened.
+      if (entry && READ_FIRST_KEYS.has(entry.key)) d.readFirst = { key: entry.key, stored };
       const value = coerce(stored, Object.assign({}, row,
         { candidates: shapes, candidateKey: entry ? entry.key : '' }));
       if (value === null) {
@@ -141,6 +151,33 @@ export function decide(rows, ctx, server, state) {
         return done(d, SKIP, row.value, '', 0, 'keeping the answer already there');
       }
       return done(d, FILL, value, 'profile', 0.95, '');
+    }
+
+    // "If you answered Yes above, please explain": autofill answered the
+    // question above itself, and has nothing true to add here. Never sent to the
+    // model, which would otherwise invent an explanation.
+    if (isConditionalFollowUp(row.label)) {
+      d.noServer = true;
+      return row.required
+        ? done(d, ASK, '', '', 0, 'only needed for some answers to the question above')
+        : done(d, SKIP, '', '', 0, 'only needed if you answered Yes above');
+    }
+
+    // "Why Anthropic?", "Why this role?", a cover-letter box: written for THIS
+    // job by the server from the resume and the posting — never a stored
+    // sentence pasted in — and always left for review.
+    if (isMotivationQuestion(row.label, row.kind)) {
+      d.compose = true;
+      const written = answered[String(row.serverIndex != null ? row.serverIndex : position)];
+      const text = written ? String(written.value || '').trim() : '';
+      if (text) {
+        return done(d, SUGGEST, text, written.source || 'ai_written',
+                    Number(written.confidence) || 0.55, 'written for this job — read it before you submit');
+      }
+      d.askable = true;
+      return row.required
+        ? done(d, ASK, '', '', 0, 'needs an answer written for this job')
+        : done(d, SKIP, '', '', 0, 'optional — no answer written yet');
     }
 
     // Tier 1 — deterministic profile match.
@@ -384,6 +421,14 @@ const ETHNICITY_GROUPS = [
     shapes: ['Two or More Races', 'Multiracial', 'Two or more races (Not Hispanic or Latino)'] },
 ];
 
+/** An option may answer only if it states the same thing the person stored. */
+function eeoGuardFor(key, stored) {
+  const want = eeoGroup(key, stored);
+  return function eeoGuard(candidate, option) {
+    return eeoOptionAllowed(key, want, option);
+  };
+}
+
 /** The index of the group `text` belongs to, or -1. */
 function ethnicityGroup(text) {
   return ETHNICITY_GROUPS.findIndex(g => g.test.test(String(text || '')));
@@ -527,6 +572,7 @@ export function candidatesFor(key, value, bank) {
   // The stored wording first — a form offering "South Asian" should get it —
   // then the broader categories it belongs to.
   if (key === 'race_ethnicity') return uniq([text].concat(ethnicityShapes(text)));
+  if (EEO_GROUPS[key]) return uniq([text].concat(eeoShapes(key, text)));
   if (!LOCATION_KEYS.has(key)) return text ? [text] : [];
 
   const city = String(b.address_city || '').trim();
@@ -640,6 +686,8 @@ export function coerce(value, row) {
     const guard = row.candidateKey === 'degree' ? degreeGuard
                 : row.candidateKey === 'race_ethnicity'
                   ? ethnicityGuardFor(candidates[0])
+                : EEO_GROUPS[row.candidateKey]
+                  ? eeoGuardFor(row.candidateKey, candidates[0])
                 : null;
     const match = bestCandidateMatch(candidates, options, guard);
     if (match != null) return match;
@@ -736,7 +784,7 @@ export function fieldsForServer(decisions) {
     // `askable` covers the optional fields still worth one line — see the end of
     // decide() for which and why.
     if (d.action !== ASK && !d.askable && !d.knownEmpty) return;
-    if (d.sensitive || d.slot) return;
+    if (d.sensitive || d.slot || d.noServer) return;
     if (isNeverFill(d.label)) return;
     if (classifySensitive(d.label)) return;     // belt and braces
     out.push({
@@ -748,6 +796,7 @@ export function fieldsForServer(decisions) {
       // A field we can name but have no value for: recall a saved answer, but
       // never let the model compose one. Enforced on the server as well.
       recallOnly: !!d.knownEmpty,
+      compose: !!d.compose,
       documentSlot: null,
       options: (d.options || []).map(o => (typeof o === 'string' ? o : o.label))
                                 .filter(Boolean).slice(0, 300),

@@ -120,6 +120,7 @@ const SOURCE_LABEL = {
   profile: 'your profile',
   saved_answer: 'a saved answer',
   ai: 'AI',
+  ai_written: 'AI, written for this job',
   you: 'you',
 };
 
@@ -135,11 +136,20 @@ export function renderReady(body, form, ctx, handlers, extra) {
 
   body.innerHTML = `
     <div class="tcv-af-panel">
-      <div class="tcv-job-info">${page > 1
-        ? `Page ${esc(page)} of this application`
-        : 'Application form detected'}</div>
-      <div class="tcv-source">${esc(count)} field${count === 1 ? '' : 's'} on this page${
-        form && form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
+      <div class="tcv-card tcv-job-card">
+        <div class="tcv-job-main">
+          <div class="tcv-job-avatar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+          </div>
+          <div class="tcv-job-text">
+            <div class="tcv-job-title">${page > 1
+              ? `Page ${esc(page)} of this application`
+              : 'Application form detected'}</div>
+            <div class="tcv-job-meta">${esc(count)} field${count === 1 ? '' : 's'} on this page${
+              form && form.ats && form.ats !== 'generic' ? ` · ${esc(form.ats)}` : ''}</div>
+          </div>
+        </div>
+      </div>
       ${blockers.length ? `
         <div class="tcv-af-note">
           ${esc(blockers[0])}
@@ -149,9 +159,9 @@ export function renderReady(body, form, ctx, handlers, extra) {
         <div class="tcv-af-note">
           You've used your free autofills. <a href="#" id="tcvAfUpgrade">Upgrade to Pro →</a>
         </div>` : `
-        <button class="tcv-btn tcv-btn-start" id="tcvAfFillBtn">${page > 1
-          ? '✎ Autofill this page' : '✎ Autofill this application'}</button>`}
-      <button class="tcv-btn tcv-btn-ghost" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
+        <button class="tcv-btn tcv-btn-start tcv-btn-cta" id="tcvAfFillBtn">${page > 1
+          ? 'Autofill this page' : 'Autofill this application'} <span aria-hidden="true">▸</span></button>`}
+      <button class="tcv-btn tcv-btn-outline-accent" id="tcvAfTailorBtn">✦ Tailor my resume for this job</button>
       <div class="tcv-af-note tcv-af-note-quiet">
         TailorCV never submits an application. You review everything and send it yourself.
       </div>

@@ -139,6 +139,10 @@ class AutofillField(BaseModel):
     # A field the client identified exactly (Middle Name, GitHub URL) but has no
     # value for: stored answers may be recalled for it, the LLM is never asked.
     recallOnly: bool = False
+    # A motivation question ("Why Anthropic?", "Why do you want this role?", a
+    # cover-letter box): answered by a model writing for THIS job from the
+    # resume, never by recalling another company's answer or pasting a stored one.
+    compose: bool = False
     documentSlot: str | None = Field(default=None, max_length=40)
     # Bounded generously: a country picker legitimately has ~250 entries, and the
     # server truncates to what it will actually put in the prompt.
